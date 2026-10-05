@@ -45,7 +45,11 @@ export async function collectEnvironment(state: { signedIn: boolean; aiReady: bo
   }
 }
 
-export function buildReport(env: ReportEnvironment, entries: LogEntry[], note: string, now = new Date()): string {
+/** Per-model stats lines come from local counts and Free2Z catalogue ids, never learner text. Bounded, no control characters. */
+export const MAX_STATS_LINES = 20
+const statsLine = (text: string) => text.replace(/[\u0000-\u001f\u007f]+/g, ' ').trim().slice(0, 300)
+
+export function buildReport(env: ReportEnvironment, entries: LogEntry[], note: string, now = new Date(), modelStats?: readonly string[]): string {
   const recent = entries.slice(-REPORT_LOG_LINES)
   const noteText = scrub(note.replace(/\r\n?/g, '\n').replace(/[\u0000-\u0009\u000b-\u001f\u007f]+/g, ' ').trim().slice(0, MAX_NOTE))
   return [
@@ -60,6 +64,7 @@ export function buildReport(env: ReportEnvironment, entries: LogEntry[], note: s
     'Note:',
     noteText || '(none)',
     '',
+    ...(modelStats ? ['Model stats (this device)', ...(modelStats.length ? modelStats.slice(0, MAX_STATS_LINES).map(statsLine) : ['(none)']), ''] : []),
     `Recent log (last ${recent.length} of ${entries.length})`,
     ...(recent.length ? recent.map(e => `${line(e.t, 40)} ${e.level.toUpperCase()} [${line(e.source, 24)}] ${line(e.message, 400)}`) : ['(empty)']),
     '',

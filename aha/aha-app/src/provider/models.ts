@@ -1,0 +1,193 @@
+/**
+ * Which Free2Z model writes the next activity batch. Pure: no SDK calls, no storage.
+ *
+ * Free2Z's `/v1/models` lists every model the gateway can call, with `capabilities.structured_output` and
+ * per-million-token prices in milli-2Z that already include every markup (chat-api.md §5). AHA never hardcodes an id:
+ * it reads the catalogue, keeps the models that can write a whole strict-schema batch, and estimates what one batch
+ * costs on each. The learner picks one in Settings, or "Best (auto)": the highest-priced eligible model (price is the
+ * quality proxy) whose estimate stays within `AUTO_CEILING_2Z`, stepping down when the balance or the app budget
+ * cannot cover its worst case.
+ */
+import type { Models } from '@free2z/sdk';
+
+/** The batch output budget (journal v2): an eligible model must accept it as a strict `max_output_tokens`. */
+export const BATCH_OUTPUT_TOKENS = 2600n;
+/** The batch request needs about 4k input tokens plus the 2600 output budget; leave room for the schema. */
+export const MIN_CONTEXT_TOKENS = 16_000n;
+/**
+ * Typical batch, measured live (2026-10): about 3–4k input tokens including the strict schema, 0.6–2k output.
+ * The estimate takes the top of both ranges, so "≈ N 2Z" is a little high rather than low.
+ */
+export const TYPICAL_BATCH = Object.freeze({inputTokens: 4000n, outputTokens: 2000n});
+/** "Best (auto)" never picks a model whose typical batch is estimated above this many 2Z. */
+export const AUTO_CEILING_2Z = 10n;
+export const AUTO = 'auto';
+/** The learner's choice: "Best (auto)" or a catalogue model id. */
+export type ModelChoice = typeof AUTO | string;
+
+export interface ModelOption {
+  id: string;
+  /** `display_name`, else the id. */
+  name: string;
+  structured: boolean;
+  maxOutputTokens?: bigint;
+  contextWindow?: bigint;
+  /** milli-2Z per million tokens; both present or the model counts as unpriced. */
+  inputRate?: bigint;
+  outputRate?: bigint;
+  minCharge2z: bigint;
+  /** Typical batch in whole 2Z (`TYPICAL_BATCH`); undefined when unpriced. */
+  batch2z?: bigint;
+  /** Worst case in whole 2Z: the typical input with the full 2600-token output budget. What a hold reserves. */
+  hold2z?: bigint;
+  /** Catalogue order, the service's own preference, used to break ties. */
+  rank: number;
+}
+/** What the step-down compares a model's worst case with. Milli-2Z, as Free2Z reports them; absent = unknown. */
+export interface Affordability { availableMilli2z?: bigint; capRemainingMilli2z?: bigint | null }
+export type PickReason =
+  | 'auto'            // highest-priced eligible model within the ceiling
+  | 'auto_step_down'  // a dearer model within the ceiling did not fit the balance or app budget
+  | 'auto_unaffordable' // nothing within the ceiling fits: the cheapest is sent and Free2Z refuses it calmly at no cost
+  | 'auto_over_ceiling' // every priced structured model is above the ceiling: the cheapest one
+  | 'auto_unpriced'   // structured models exist but none reports prices: catalogue order
+  | 'manual'          // the learner's own choice
+  | 'manual_unavailable' // the learner's choice left the catalogue (or lost eligibility): auto instead
+  | 'prompt_only';    // no eligible structured model: prompt-only JSON on the best-priced usable model
+export interface ModelPick { id: string; name: string; structured: boolean; batch2z?: bigint; reason: PickReason; ceiling2z: bigint }
+
+const safeId = (value: unknown): value is string =>
+  typeof value === 'string' && value.length > 0 && value.length <= 120 && /^[A-Za-z0-9._:/@+-]+$/.test(value);
+const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
+/** The SDK decodes catalogue amounts to bigint; a decimal string or safe integer is accepted too (defensive). */
+function amount(value: unknown): bigint | undefined {
+  if (typeof value === 'bigint') return value >= 0n ? value : undefined;
+  if (typeof value === 'number') return Number.isSafeInteger(value) && value >= 0 ? BigInt(value) : undefined;
+  if (typeof value === 'string' && /^(0|[1-9]\d{0,19})$/.test(value)) return BigInt(value);
+  return undefined;
+}
+const ceilDiv = (n: bigint, d: bigint) => (n + d - 1n) / d;
+/** Free2Z's own client estimate (metering.md §2.5): `max(min_charge_2z, ceil(Σ tokens × rate / 10⁶ / 1000))`. */
+export function estimate2z(inputTokens: bigint, outputTokens: bigint, option: Pick<ModelOption, 'inputRate' | 'outputRate' | 'minCharge2z'>): bigint | undefined {
+  if (option.inputRate === undefined || option.outputRate === undefined) return undefined;
+  const milli = ceilDiv(inputTokens * option.inputRate + outputTokens * option.outputRate, 1_000_000n);
+  const whole = ceilDiv(milli, 1000n);
+  return whole > option.minCharge2z ? whole : option.minCharge2z;
+}
+/**
+ * Every catalogue entry with a usable id, read defensively: `capabilities` is untyped in this SDK pin (only an
+ * explicit `structured_output: true` counts), and a malformed number is treated as absent.
+ */
+export function readCatalog(catalog: Models): ModelOption[] {
+  const seen = new Set<string>();
+  const out: ModelOption[] = [];
+  (Array.isArray(catalog?.models) ? catalog.models : []).forEach((entry: unknown, rank) => {
+    if (!record(entry) || !safeId(entry.id) || seen.has(entry.id)) return;
+    seen.add(entry.id);
+    const capabilities = entry.capabilities, prices = entry.prices;
+    const name = typeof entry.display_name === 'string' && entry.display_name.trim() && entry.display_name.length <= 80
+      && !/[\u0000-\u001f\u007f]/.test(entry.display_name) ? entry.display_name.trim() : entry.id;
+    const inputRate = record(prices) ? amount(prices.input_milli_2z_per_mtok) : undefined;
+    const outputRate = record(prices) ? amount(prices.output_milli_2z_per_mtok) : undefined;
+    const minCharge = amount(entry.min_charge_2z);
+    const option: ModelOption = {
+      id: entry.id, name, rank,
+      structured: record(capabilities) && capabilities.structured_output === true,
+      maxOutputTokens: amount(entry.max_output_tokens), contextWindow: amount(entry.context_window),
+      ...(inputRate !== undefined && outputRate !== undefined ? {inputRate, outputRate} : {}),
+      // Free2Z never charges below 1 2Z per call and refuses a catalogue that names a smaller minimum.
+      minCharge2z: minCharge !== undefined && minCharge >= 1n ? minCharge : 1n,
+    };
+    option.batch2z = estimate2z(TYPICAL_BATCH.inputTokens, TYPICAL_BATCH.outputTokens, option);
+    option.hold2z = estimate2z(TYPICAL_BATCH.inputTokens, BATCH_OUTPUT_TOKENS, option);
+    out.push(option);
+  });
+  return out;
+}
+/**
+ * Can write a whole batch with structured output: an explicit `structured_output: true`, a reported output ceiling of at
+ * least 2600 tokens (strict output is refused otherwise) and a reported context window that holds the request.
+ */
+export function eligible(option: ModelOption): boolean {
+  return option.structured && option.maxOutputTokens !== undefined && option.maxOutputTokens >= BATCH_OUTPUT_TOKENS &&
+    option.contextWindow !== undefined && option.contextWindow >= MIN_CONTEXT_TOKENS;
+}
+/** The prompt-only fallback is as lenient as before: an unreported ceiling is allowed, a reported one must fit the batch. */
+const usable = (option: ModelOption) => option.maxOutputTokens === undefined || option.maxOutputTokens >= BATCH_OUTPUT_TOKENS;
+/** The models Settings offers, in catalogue order. Includes models above the auto ceiling: the learner may choose them. */
+export function choosableModels(catalog: Models): ModelOption[] { return readCatalog(catalog).filter(eligible); }
+
+const fits = (option: ModelOption, money?: Affordability) => {
+  if (!money || option.hold2z === undefined) return true;
+  const hold = option.hold2z * 1000n;
+  return (money.availableMilli2z === undefined || hold <= money.availableMilli2z) &&
+    (money.capRemainingMilli2z === undefined || money.capRemainingMilli2z === null || hold <= money.capRemainingMilli2z);
+};
+/** Dearest first; ties keep catalogue order. */
+const byPriceDesc = (a: ModelOption, b: ModelOption) => a.batch2z! === b.batch2z! ? a.rank - b.rank : a.batch2z! > b.batch2z! ? -1 : 1;
+const pick = (option: ModelOption, reason: PickReason, ceiling2z: bigint): ModelPick =>
+  ({id: option.id, name: option.name, structured: eligible(option), ...(option.batch2z !== undefined ? {batch2z: option.batch2z} : {}), reason, ceiling2z});
+
+/** "Best (auto)" over a set of candidates, or undefined when there are none. */
+function best(candidates: ModelOption[], money: Affordability | undefined, ceiling2z: bigint, unpricedReason: PickReason): ModelPick | undefined {
+  const priced = candidates.filter(o => o.batch2z !== undefined).sort(byPriceDesc);
+  const within = priced.filter(o => o.batch2z! <= ceiling2z);
+  if (within.length) {
+    const index = within.findIndex(o => fits(o, money));
+    if (index === 0) return pick(within[0]!, 'auto', ceiling2z);
+    if (index > 0) return pick(within[index]!, 'auto_step_down', ceiling2z);
+    return pick(within.at(-1)!, 'auto_unaffordable', ceiling2z);
+  }
+  const unpriced = candidates.filter(o => o.batch2z === undefined).sort((a, b) => a.rank - b.rank);
+  if (unpriced.length) return pick(unpriced[0]!, unpricedReason, ceiling2z);
+  if (priced.length) return pick(priced.at(-1)!, 'auto_over_ceiling', ceiling2z);
+  return undefined;
+}
+/**
+ * The model for the next paid request. A manual choice is honoured as long as it is still eligible; otherwise "Best
+ * (auto)" decides. With no eligible structured model, the prompt-only request goes to the best-priced usable model (by
+ * the same rule), or the first usable one in catalogue order when none is priced. Throws only when nothing is usable.
+ */
+export function chooseModel(catalog: Models, choice: ModelChoice = AUTO, money?: Affordability, ceiling2z: bigint = AUTO_CEILING_2Z): ModelPick {
+  const all = readCatalog(catalog);
+  const structured = all.filter(eligible);
+  if (choice !== AUTO) {
+    const chosen = structured.find(o => o.id === choice);
+    if (chosen) return pick(chosen, 'manual', ceiling2z);
+  }
+  const auto = best(structured, money, ceiling2z, 'auto_unpriced')
+    ?? best(all.filter(usable), money, ceiling2z, 'prompt_only');
+  if (!auto) throw new ModelUnavailableError();
+  const reason: PickReason = choice !== AUTO ? 'manual_unavailable' : auto.structured ? auto.reason : 'prompt_only';
+  return {...auto, reason};
+}
+export class ModelUnavailableError extends Error {
+  readonly code = 'model_unavailable';
+  constructor() { super('No suitable math tutor model is available from Free2Z yet. Try Refresh connection in Settings.'); this.name = 'ModelUnavailableError'; }
+}
+
+/** The stored choice (per account, local journal). Anything unreadable is "Best (auto)". */
+export const MODEL_CHOICE_KEY = 'aha-model-choice-v1';
+export function readModelChoice(value: unknown): ModelChoice {
+  return record(value) && value.version === 1 && (value.model === AUTO || safeId(value.model)) ? value.model as string : AUTO;
+}
+export const storedModelChoice = (choice: ModelChoice) => ({version: 1, model: choice === AUTO || safeId(choice) ? choice : AUTO});
+
+/** Settings menu: "Best (auto)" with what it would pick now, then every choosable model. Display only. */
+export interface ModelMenu {
+  choice: ModelChoice;
+  /** Name and estimate of what "Best (auto)" picks right now. */
+  auto?: {id: string; name: string; batch2z?: string};
+  options: {id: string; name: string; batch2z?: string}[];
+}
+export function modelMenu(catalog: Models, choice: ModelChoice, money?: Affordability): ModelMenu {
+  const options = choosableModels(catalog).map(o => ({id: o.id, name: o.name, ...(o.batch2z !== undefined ? {batch2z: o.batch2z.toString()} : {})}));
+  let auto: ModelMenu['auto'];
+  try { const a = chooseModel(catalog, AUTO, money); auto = {id: a.id, name: a.name, ...(a.batch2z !== undefined ? {batch2z: a.batch2z.toString()} : {})}; }
+  catch { auto = undefined; }
+  return {choice: options.some(o => o.id === choice) ? choice : AUTO, ...(auto ? {auto} : {}), options};
+}
+/** One content-free log line per pick, for the device log and the problem report. */
+export function describePick(p: ModelPick): string {
+  return `model ${p.id} (${p.reason}${p.batch2z !== undefined ? `, about ${p.batch2z} 2Z per set` : ', unpriced'}, ${p.structured ? 'structured' : 'prompt-only'}, ceiling ${p.ceiling2z} 2Z)`;
+}

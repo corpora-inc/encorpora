@@ -103,6 +103,8 @@ export interface SpecAttemptData {
   misconceptionTag?: string;
   /** The validated ActivitySpec JSON that was displayed. */
   content: unknown;
+  /** The Free2Z model that wrote it. Attribution for per-model stats only; absent on evidence recorded before. */
+  model?: string;
 }
 export interface SpecEvidence extends EvidenceBase {
   source: 'ai-spec';

@@ -93,6 +93,18 @@ export interface StudioProps {
     status?: string;
     purchaseAvailable?: boolean;
   };
+  /** The AI model row in Settings (connected, once the catalogue has been read). Display only. */
+  modelMenu?: {
+    /** "auto" or a catalogue model id. */
+    choice: string;
+    auto?: { name: string; batch2z?: string };
+    options: { id: string; name: string; batch2z?: string }[];
+  };
+  onChooseModel?: (choice: string) => void;
+  /** Per-model stats lines from local data, for Settings and the problem report. */
+  loadModelStats?: () => Promise<string[]>;
+  /** Name of the model that wrote the AI activity on screen, for the status sheet. */
+  authoringModel?: string;
   learners?: { id: string; name: string }[];
   onSubmit: (answer: string) => void;
   onContinue: () => void;

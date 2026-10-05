@@ -194,6 +194,8 @@ export const OUTPUT_BUDGETS = ['1800', '2600'] as const;
 export type OutputBudget = typeof OUTPUT_BUDGETS[number];
 export interface TutorReply {
   text: string; operationId: string; context?: ResumeContext;
+  /** The model the journaled request was sent to (fresh or same-key recovery): attribution for what it wrote. */
+  model: string;
   /** The request carried `response_format` (strict JSON Schema). Absent: the prompt-only request. */
   structured?: true;
 }
@@ -382,7 +384,7 @@ export class Free2zTutor {
   }
   private deliverable(op: Operation): boolean { return op.answerComplete === true && !!op.context && !op.consumed; }
   private replyValue(op: Operation): TutorReply {
-    return {text:op.text,operationId:op.id,...(op.context ? {context:structuredClone(op.context)} : {}),...(op.request.responseFormat ? {structured:true as const} : {})};
+    return {text:op.text,operationId:op.id,model:op.request.model,...(op.context ? {context:structuredClone(op.context)} : {}),...(op.request.responseFormat ? {structured:true as const} : {})};
   }
   /** Completed content is retained until its lesson/session has durably accepted it. No service call. */
   async pendingReplies(): Promise<TutorReply[]> {
@@ -407,6 +409,17 @@ export class Free2zTutor {
     } finally { this.busy = false; }
   }
   async cancel(): Promise<void> { this.cancelled = true; await this.active?.cancel(); }
+  /**
+   * Activity-batch operations with the model each was sent to and its settled charge (absent until settled), for the
+   * local per-model stats. No service call; no prompts, keys or account ids.
+   */
+  async batchUsage(): Promise<{operationId: string; model: string; charged2z?: bigint}[]> {
+    const ledger = await this.ledger();
+    return ledger.operations.filter(op => op.subject === this.subject && op.context?.kind === 'activities').map(op => ({
+      operationId: op.id, model: op.request.model,
+      ...(op.state === 'finalized' && op.charge?.state === 'charged' && op.charge.charged2z !== undefined ? {charged2z: BigInt(op.charge.charged2z)} : {}),
+    }));
+  }
   async inspectPending(): Promise<PendingOperation[]> {
     const before = await this.current();
     const ledger = await this.ledger();
