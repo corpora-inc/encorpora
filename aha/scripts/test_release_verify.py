@@ -2,6 +2,7 @@ import io
 import json
 import os
 from pathlib import Path
+import plistlib
 import struct
 import subprocess
 import tempfile
@@ -62,6 +63,60 @@ class ReleaseTests(unittest.TestCase):
             with self.assertRaises(ValueError): release.verify_bundle(path)
             with zipfile.ZipFile(path,'w') as z: z.writestr('metadata','empty')
             with self.assertRaises(ValueError): release.verify_bundle(path)
+
+    def test_ipa_executable_must_embed_configured_client_id(self):
+        cid='iVhrb5JkopnFs1sPAyhYGX6UdiHjI03Enpj9Qymg'
+        with tempfile.TemporaryDirectory() as d, patch('sys.stdout',new_callable=io.StringIO):
+            path=Path(d)/'app.ipa'
+            def ipa(binary,executable='aha'):
+                with zipfile.ZipFile(path,'w') as z:
+                    z.writestr('Payload/AHA.app/Info.plist',plistlib.dumps({'CFBundleExecutable':executable}))
+                    z.writestr('Payload/AHA.app/aha',binary)
+                    z.writestr('Payload/AHA.app/Frameworks/x.framework/x',cid.encode())
+            ipa(b'\0prefix'+cid.encode()+b'\0suffix')
+            self.assertEqual(release.verify_client_id(ipa=path,configured=cid+'\n'),1)
+            # The shipped regression: the id lives elsewhere in the IPA but not in the executable.
+            ipa(b'awaits Free2Z client registration')
+            with self.assertRaises(ValueError): release.verify_client_id(ipa=path,configured=cid)
+            ipa(cid.encode(),executable='../aha')
+            with self.assertRaises(ValueError): release.verify_client_id(ipa=path,configured=cid)
+            # Unset repository variable: the unconfigured build is allowed and says so.
+            ipa(b'no id')
+            self.assertEqual(release.verify_client_id(ipa=path,configured=''),0)
+            self.assertEqual(release.verify_client_id(ipa=path,configured=None),0)
+            with self.assertRaises(ValueError): release.verify_client_id(ipa=path,configured='has spaces in it')
+
+    def test_every_aab_abi_must_embed_configured_client_id(self):
+        cid='iVhrb5JkopnFs1sPAyhYGX6UdiHjI03Enpj9Qymg'
+        abis=['arm64-v8a','armeabi-v7a','x86','x86_64']
+        with tempfile.TemporaryDirectory() as d, patch('sys.stdout',new_callable=io.StringIO):
+            path=Path(d)/'app.aab'
+            def aab(libs):
+                with zipfile.ZipFile(path,'w') as z:
+                    z.writestr('base/lib/arm64-v8a/libc++_shared.so',b'unrelated')
+                    for abi,data in libs.items(): z.writestr(f'base/lib/{abi}/libaha_lib.so',data)
+            aab({abi:b'x'+cid.encode() for abi in abis})
+            self.assertEqual(release.verify_client_id(aab=path,configured=cid),4)
+            aab({abi:(cid.encode() if abi!='x86' else b'none') for abi in abis})
+            with self.assertRaises(ValueError): release.verify_client_id(aab=path,configured=cid)
+            aab({abi:cid.encode() for abi in abis[:3]})
+            with self.assertRaises(ValueError): release.verify_client_id(aab=path,configured=cid)
+            aab({})
+            with self.assertRaises(ValueError): release.verify_client_id(aab=path,configured=cid)
+            self.assertEqual(release.verify_client_id(aab=path,configured=''),0)
+
+    def test_workflow_bakes_and_verifies_client_id_on_both_platforms(self):
+        workflow=(Path(__file__).resolve().parents[2]/'.github/workflows/release-aha.yml').read_text()
+        ios=workflow[workflow.index('\n  ios:'):workflow.index('\n  android:')]
+        android=workflow[workflow.index('\n  android:'):]
+        for job,build,check,upload in (
+            (ios,'npx tauri ios build','client-id --ipa','upload-testflight-build'),
+            (android,'npx tauri android build','client-id --aab','upload-google-play')):
+            write=job.index('release-config/free2z-client-id')
+            self.assertLess(write,job.index(build))
+            self.assertLess(job.index(build),job.index(check))
+            self.assertLess(job.index(check),job.index(upload))
+        self.assertIn('AHA_FREE2Z_CLIENT_ID: ${{ vars.AHA_FREE2Z_CLIENT_ID }}',workflow)
 
     @patch.dict(os.environ,{'AHA_TESTFLIGHT_GROUP_ID':'group'})
     def test_ios_rejects_external_empty_or_wrong_app_group(self):
