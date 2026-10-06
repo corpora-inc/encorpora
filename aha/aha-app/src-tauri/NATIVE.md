@@ -10,10 +10,15 @@ Initialize from `aha/aha-app` with `npm run tauri -- ios init --ci` or
 not the ignored generated Xcode project. CLI 2.11.4 generates Android compile/target
 SDK 36; the app config sets minimum API 29. The iOS minimum is 16.
 The generated Android project is never committed, so `build.rs` patches it during
-`tauri android build` with the OAuth intent filter. The studio follows the system
-light/dark theme on both platforms, and so do the status-bar icons: the Android
-template's bare `enableEdgeToEdge()` and the iOS default status-bar style already
-switch with it (`build.rs` restores a project patched before that). Android WebView
+`tauri android build` with the OAuth intent filter and a status-bar bridge. The
+studio's theme follows the WebView's `prefers-color-scheme`. On iOS, WKWebView and
+the default status-bar style both follow the system. Android WebView can disagree
+with the system night mode (an S26 on Android 16 rendered light in night mode), and
+the template's `enableEdgeToEdge()` picks icons once, at launch, from the system
+setting. So `build.rs` adds an `ahaSystemBars` JavaScript interface to the generated
+MainActivity, and `src/ui/systemBars.ts` reports the scheme the page renders, and
+every change to it. The icons follow the rendered theme, never the system setting
+alone. The patch panics if the template drifts. Android WebView
 reports `env(safe-area-inset-*)`; the studio paints a fixed backdrop behind the top
 inset so scrolled content never sits under the clock. If a reused `CARGO_TARGET_DIR`
 skips build scripts after a fresh `android init`, `gen/android/.../generated/` stays
@@ -63,7 +68,13 @@ Simulator with the software keyboard (`ConnectHardwareKeyboard` off), not only i
 The official plugin is pinned to the public source preview
 `d63959f9c766258d7ce827e68f4ddd93d2797f99`; its transitive core is the sole native
 client. Configure the public registration through the build environment variable
-`AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
+`AHA_FREE2Z_CLIENT_ID` or the gitignored file `release-config/free2z-client-id`;
+`build.rs` resolves either (they must agree) into the crate. The file exists because
+`tauri ios build` runs xcodebuild with a cleared environment, so the env var never
+reaches the iOS Rust compile; the release workflow writes the file on both platforms and
+`release_verify.py client-id` fails the release if the IPA executable or any ABI's
+`libaha_lib.so` lacks the configured id. An unconfigured build starts normally with
+sign-in unavailable.
 No credentials, endpoint overrides or callback injection commands are exposed to
 JavaScript. The local `main` window receives only the named Free2Z guest permissions.
 Purchase and checkout commands are not granted in this beta, matching its disabled
