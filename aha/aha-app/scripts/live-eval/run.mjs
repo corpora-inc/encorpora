@@ -32,7 +32,8 @@ const { values: o } = parseArgs({ options: {
   models: { type: 'string', default: 'gpt-4o,gpt-4o-mini,gpt-4.1,gpt-4.1-mini,gpt-5.6-luna' },
   reasoning: { type: 'string', default: 'o4-mini,gpt-5-mini' }, 'reasoning-max-output': { type: 'string', default: '12000' },
   concurrency: { type: 'string', default: '3' }, run: { type: 'string' }, plan: { type: 'boolean', default: false },
-  'client-id': { type: 'string' }, spec: { type: 'string', default: 'v1' }, 'signin-minutes': { type: 'string', default: '60' },
+  'client-id': { type: 'string' }, spec: { type: 'string', default: 'v1' },
+  tools: { type: 'string', default: 'none' }, rounds: { type: 'string', default: '2' }, 'batch-cap': { type: 'string', default: '25' }, 'max-turns': { type: 'string', default: '5' }, 'signin-minutes': { type: 'string', default: '60' },
 } });
 const CAP = /^\d+$/.test(o.cap ?? '') ? BigInt(o.cap) : 0n;
 if (CAP <= 0n) { console.error('live-eval: --cap <whole 2Z> is required (the authorized total).'); process.exit(2); }
@@ -71,6 +72,13 @@ const { buildActivityPrompt } = await imp('src/activity/prompt.ts');
 // --spec v2: the Activity Spec v2 prompt and strict schema (src/activity/v2/prompt.ts), exactly as v2 would send them.
 if (!['v1', 'v2'].includes(o.spec)) { console.error('live-eval: --spec is v1 or v2.'); process.exit(2); }
 const { buildPromptV2 } = o.spec === 'v2' ? await imp('src/activity/v2/prompt.ts') : {};
+// --tools intent|check|intent+check (v2 only): Free2Z function calling. One batch is a conversation of paid
+// turns (tools, tool_choice, parallel calls; the app's validator answers each tool call); every turn goes
+// through the same estimate, spend guard, ledger and receipt path, and a batch stops when its settled turns
+// plus the next hold would exceed --batch-cap 2Z.
+if (o.tools !== 'none' && (o.spec !== 'v2' || !['intent', 'check', 'intent+check'].includes(o.tools))) { console.error('live-eval: --tools is intent|check|intent+check, with --spec v2.'); process.exit(2); }
+const TOOLS = o.tools === 'none' ? null : await import('../spec-eval/tools.mjs');
+const ROUNDS = Number(o.rounds) || 2, BATCH_CAP = BigInt(o['batch-cap']), MAX_TURNS = Number(o['max-turns']) || 5;
 const states = await loadLiveStates(root);
 
 const clientId = o['client-id'] ?? execFileSync('gh', ['variable', 'get', 'AHA_FREE2Z_CLIENT_ID', '--repo', 'corpora-inc/encorpora'], { encoding: 'utf8' }).trim();
@@ -180,18 +188,54 @@ async function main() {
       // THE spend guard: everything ever charged (or still held) + this run's in-flight holds + this hold <= --cap.
       if (committed2z() + inflight + est.hold_2z > CAP) { stop = `spend guard: committed ${committed2z()} + in flight ${inflight} + hold ${est.hold_2z} > cap ${CAP}`; break; }
       if (est.cap_remaining_milli_2z !== undefined && est.cap_remaining_milli_2z !== null && est.hold_2z * 1000n > est.cap_remaining_milli_2z) { stop = 'grant budget remainder below the hold'; break; }
-      inflight += est.hold_2z;
-      const key = crypto.randomUUID();
-      ledger.entries[key] = { run, model: job.model.id, state: job.state.id, hold2z: est.hold_2z.toString(), status: 'sending', at: new Date().toISOString() };
-      saveLedger();
-      let result;
-      try { result = await send(req, key); } finally { inflight -= est.hold_2z; }
-      const entry = ledger.entries[key];
-      if (result.charged2z !== undefined) { entry.charged2z = String(result.charged2z); delete entry.hold2z; }
-      entry.status = result.status; entry.receiptId = result.receiptId ?? null; entry.callId = result.callId ?? null;
-      saveLedger();
-      const record = { model: job.model.id, state: job.state.id, sample: job.sample, arm: o.spec, structured: job.model.structured, reasoning: job.model.reasoning, maxOutputTokens: req.max_output_tokens,
-        estimateInputTokens: est.input_tokens.toString(), hold2z: est.hold_2z.toString(), ...result, prompt: { system: req.messages[0].content[0].text, user: req.messages[1].content[0].text } };
+      /** One paid turn: ledger first (hold counted), then the call, then its settlement. */
+      const paid = async (turnReq, turnEst) => {
+        inflight += turnEst.hold_2z;
+        const key = crypto.randomUUID();
+        ledger.entries[key] = { run, model: job.model.id, state: job.state.id, hold2z: turnEst.hold_2z.toString(), status: 'sending', at: new Date().toISOString() };
+        saveLedger();
+        let r;
+        try { r = await send(turnReq, key); } finally { inflight -= turnEst.hold_2z; }
+        const entry = ledger.entries[key];
+        if (r.charged2z !== undefined) { entry.charged2z = String(r.charged2z); delete entry.hold2z; }
+        entry.status = r.status; entry.receiptId = r.receiptId ?? null; entry.callId = r.callId ?? null;
+        saveLedger();
+        return r;
+      };
+      let result = await paid(req, est);
+      if (TOOLS && result.status === 'ok') {
+        // The tool conversation: answer every tool call with the validator, then ask again, until the model
+        // stops calling, the turn limit, or the batch cap.
+        const turns = [{ turn: 1, callId: result.callId ?? null, charged2z: result.charged2z ?? null, hold2z: est.hold_2z.toString(), finishReason: result.finishReason, toolCalls: result.toolCalls.length, usage: result.usage }];
+        const toolLog = [];
+        let batch2z = BigInt(result.charged2z ?? est.hold_2z);
+        const messages = [...req.messages];
+        let last = result, stopWhy = '';
+        for (let turn = 2; last.status === 'ok' && last.toolCalls?.length; turn++) {
+          messages.push({ role: 'assistant', ...(last.text ? { content: [{ type: 'text', text: last.text }] } : {}), tool_calls: last.toolCalls });
+          for (const tc of last.toolCalls) {
+            let args; try { args = JSON.parse(tc.arguments); } catch { args = null; }
+            const r = args ? req.session.call(tc.name, args) : { text: 'Arguments were not valid JSON.' };
+            toolLog.push({ turn: turn - 1, id: tc.id, name: tc.name, ...(r.record ? { ok: r.record.ok ?? null, slot: r.record.slot ?? null, codes: r.record.codes ?? [] } : { note: r.text.slice(0, 120) }) });
+            messages.push({ role: 'tool', tool_call_id: tc.id, content: [{ type: 'text', text: r.text }] });
+          }
+          if (turn > MAX_TURNS) { stopWhy = `turn limit ${MAX_TURNS}`; break; }
+          const turnReq = { ...req, messages, tool_choice: 'auto' };
+          let turnEst;
+          try { turnEst = await client.estimate(sdkRequest(turnReq)); } catch (e) { stopWhy = `turn estimate refused (${e?.code ?? e})`; break; }
+          if (batch2z + turnEst.hold_2z > BATCH_CAP) { stopWhy = `batch cap: ${batch2z} + hold ${turnEst.hold_2z} > ${BATCH_CAP} 2Z`; break; }
+          if (committed2z() + inflight + turnEst.hold_2z > CAP) { stop = `spend guard: committed ${committed2z()} + hold ${turnEst.hold_2z} > cap ${CAP}`; stopWhy = stop; break; }
+          last = await paid(turnReq, turnEst);
+          batch2z += BigInt(last.charged2z ?? turnEst.hold_2z);
+          turns.push({ turn, callId: last.callId ?? null, charged2z: last.charged2z ?? null, hold2z: turnEst.hold_2z.toString(), finishReason: last.finishReason, toolCalls: last.toolCalls?.length ?? 0, usage: last.usage, ...(last.error ? { error: last.error } : {}) });
+          if (last.fatal) { stop = last.fatal; break; }
+        }
+        const settledAll = turns.every(t => t.charged2z !== null);
+        result = { ...result, status: last.status, text: o.tools === 'check' ? last.text : JSON.stringify(req.session.batch()),
+          charged2z: settledAll ? turns.reduce((t, x) => t + Number(x.charged2z), 0) : undefined, turns, toolLog, stopWhy: stopWhy || null, toolCalls: undefined };
+      }
+      const record = { model: job.model.id, state: job.state.id, sample: job.sample, arm: TOOLS ? `v2+${o.tools}` : o.spec, structured: job.model.structured, reasoning: job.model.reasoning, maxOutputTokens: req.max_output_tokens,
+        estimateInputTokens: est.input_tokens.toString(), hold2z: est.hold_2z.toString(), ...result, prompt: { system: req.messages[0].content[0].text, user: req.messages[1].content[0].text }, ...(TOOLS ? { tools: req.tools.map(t => t.name) } : {}) };
       delete record.receiptId;
       writeFileSync(file, JSON.stringify(record, null, 1));
       done++;
@@ -216,7 +260,20 @@ function slots(n) {
 /** The app's request for this model and learner (src/application/aiActivities.ts + provider/free2z.ts chatRequest). */
 function buildRequest(model, state) {
   const p = o.spec === 'v2' ? buildPromptV2(state.summary, { count: 4, seed: state.id }) : buildActivityPrompt(state.summary, { count: 4 });
-  const system = model.structured ? p.structuredSystem : p.system;
+  let system = model.structured ? p.structuredSystem : p.system;
+  if (TOOLS) {
+    const out = TOOLS.toolOutput(o.tools, 4, ROUNDS);
+    system = o.tools === 'check' ? system.replace('OUTPUT:', `${out} OUTPUT:`) : system.replace(/OUTPUT:[\s\S]*?\n\nEXAMPLES/, `${out}\n\nEXAMPLES`);
+    const session = TOOLS.toolSession({ mode: o.tools, band: p.band, skillIds: [...p.allowedSkillIds], count: 4, rounds: ROUNDS });
+    return {
+      model: model.id,
+      messages: [{ role: 'system', content: [{ type: 'text', text: system }] }, { role: 'user', content: [{ type: 'text', text: p.user }] }],
+      tools: session.tools, tool_choice: 'required', parallel_tool_calls: true,
+      max_output_tokens: BATCH_OUTPUT, max_output_tokens_strict: true,
+      ...(o.tools === 'check' && model.structured ? { response_format: p.responseFormat } : {}),
+      session,
+    };
+  }
   // A reasoning model spends output tokens thinking: 2600 would truncate it, so it gets a larger strict budget.
   const max = model.reasoning ? Math.min(REASONING_OUTPUT, Number(model.maxOutput ?? REASONING_OUTPUT)) : BATCH_OUTPUT;
   return {
@@ -226,7 +283,7 @@ function buildRequest(model, state) {
     ...(model.structured ? { response_format: p.responseFormat } : {}),
   };
 }
-function sdkRequest(req) { return { ...req, max_output_tokens: BigInt(req.max_output_tokens) }; }
+function sdkRequest(req) { const { session: _s, ...r } = req; return { ...r, max_output_tokens: BigInt(req.max_output_tokens) }; }
 
 
 /**
@@ -235,7 +292,8 @@ function sdkRequest(req) { return { ...req, max_output_tokens: BigInt(req.max_ou
  * any call ran. Everything else leaves `charged2z` undefined, so its hold stays counted against --cap.
  */
 async function send(req, key) {
-  const body = JSON.stringify({ ...req, stream: false });
+  const { session: _s, ...wire } = req;
+  const body = JSON.stringify({ ...wire, stream: false });
   let started = Date.now(), lastCallId;
   for (let attempt = 0; attempt < 4; attempt++) {
     const bearer = session.bearer();
@@ -256,7 +314,7 @@ async function send(req, key) {
     lastCallId = callId ?? lastCallId;
     let json; try { json = JSON.parse(text); } catch { json = null; }
     if (res.ok && json?.message) {
-      return { status: 'ok', text: textOf(json.message), finishReason: json.finish_reason, usage: json.usage, usageSource: json.usage_source, latencyMs,
+      return { status: 'ok', text: textOf(json.message), toolCalls: json.message.tool_calls ?? [], finishReason: json.finish_reason, usage: json.usage, usageSource: json.usage_source, latencyMs,
         callId: json.call_id ?? callId, model: json.model, ...await settle(json, json.call_id ?? callId) };
     }
     if (res.ok && json && (json.charge || json.status)) { // an identical-key replay: the call record only, no text

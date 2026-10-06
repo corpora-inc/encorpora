@@ -36,7 +36,7 @@ const evaluate = e => { try { return evaluateConstant(String(e)); } catch { retu
 // ---------- parse + validate (production path) ----------
 const calls = readdirSync(path.join(outDir, 'calls')).filter(f => f.endsWith('.json')).map(f => JSON.parse(readFileSync(path.join(outDir, 'calls', f), 'utf8')));
 // v2 calls (run.mjs --spec v2) go through the v2 validator and resolver, the path v2 will use in production.
-const V2 = calls.some(c => c.arm === 'v2') ? await (await import('../spec-eval/v2.mjs')).loadV2(root) : null;
+const V2 = calls.some(c => String(c.arm).startsWith('v2')) ? await (await import('../spec-eval/v2.mjs')).loadV2(root) : null;
 function parseV2(c, state) {
   const prompt = V2.buildPromptV2(state.summary, { count: 4, seed: state.id });
   const b = V2.analyzeBatch({ id: c.state, count: 4, summary: state.summary }, prompt, c.text);
@@ -48,7 +48,7 @@ const batches = calls.map(c => {
   const state = states.get(c.state);
   const allowed = [...buildActivityPrompt(state.summary, { count: 4 }).allowedSkillIds];
   const parsed = !c.text ? { items: [], rejected: [], errors: [c.error ?? c.status], schemaRejected: 0, semanticRejected: 0 }
-    : c.arm === 'v2' ? parseV2(c, state) : parseBatch(c.text, allowed, 'op', c.model);
+    : String(c.arm).startsWith('v2') ? parseV2(c, state) : parseBatch(c.text, allowed, 'op', c.model);
   const items = parsed.items.map(q => ({ ok: true, index: Number(q.activityId.split(':').pop()), id: q.spec.id, spec: q.spec }));
   return { ...c, arm: c.arm ?? 'v1', key: `${c.model}--${c.state}${c.sample ? `~${c.sample}` : ''}`, grade: state.grade, requested: 4, items, rejected: parsed.rejected, batchErrors: parsed.errors, schemaRejected: parsed.schemaRejected, semanticRejected: parsed.semanticRejected };
 });
