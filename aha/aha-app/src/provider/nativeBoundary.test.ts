@@ -121,7 +121,7 @@ test('a non-boolean capability fails the catalogue read in the SDK: no estimate,
   assert.equal((saved as { operations?: unknown[] } | undefined)?.operations?.length ?? 0, 0);
 });
 
-test('native refusal details reach the app: required 2Z on a top-up refusal at the estimate', async () => {
+test('native refusal details reach the app: required 2Z on a low-balance refusal at the estimate', async () => {
   const { bridge, commands } = pluginBridge([pluginModel('gpt-4o', { structured_output: true })]);
   // tauri-plugin-f2z d4d58ea3 passes the documented `details` with integers as decimal strings.
   (bridge as unknown as Record<string, unknown>).estimate = async () => { throw { code: 'insufficient_balance', status: 402, retryable: false,

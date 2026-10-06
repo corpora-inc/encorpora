@@ -1,5 +1,5 @@
 import type { CanonicalTask } from './types';
-import { expectedAnswer } from './tasks';
+import { counted, expectedAnswer, isOne } from './tasks';
 import { add, compare, divide, formatRational as fmt, multiply, parseRational as p, rational, subtract } from './rational';
 
 /** Local explanations are derived from the same exact quantities as the checked task. */
@@ -45,14 +45,14 @@ export function teachTask(t:CanonicalTask):{hint:string;explanation:string} {
   }
   case 'compare': hint='Use a number line: the number farther right is greater. For fractions, compare equal-sized parts.'; steps=`${t.left} ${answer} ${t.right}. ${answer==='='?'They name the same amount.':`${answer==='>'?t.left:t.right} is farther right on the number line.`}`; break;
   case 'missing': hint='Use the inverse operation to undo the operation beside the box.'; steps=`The box is ${answer}. Check by putting ${answer} back into the original equation.`; break;
-  case 'fraction': hint='The denominator counts all equal parts; the numerator counts only shaded parts.'; steps=`${t.numerator} shaded parts out of ${t.denominator} equal parts give ${t.numerator}/${t.denominator} = ${answer}.`; break;
+  case 'fraction': hint='The denominator counts all equal parts; the numerator counts only shaded parts.'; steps=`${counted(t.numerator,'shaded part')} out of ${counted(t.denominator,'equal part')} ${isOne(t.numerator)?'gives':'give'} ${t.numerator}/${t.denominator} = ${answer}.`; break;
   case 'placeValue': hint='Count places from the right: ones, tens, hundreds, thousands. Multiply the digit by its place value.'; steps=`The digit is ${Math.floor(t.value/10**t.place)%10}; each is worth ${10**t.place}, so its value is ${answer}.`; break;
   case 'round': hint='Find the two neighboring multiples of the rounding place, then choose the closer one.'; steps=`${t.value} rounds to ${answer} at a step size of ${t.place}. At an exact halfway point, choose the value farther from zero.`; break;
   case 'sequence': hint=`The jump stays ${t.step}; add that jump to the last number shown.`; steps=`The last shown value is ${fmt(add(p(t.start),multiply(p(t.step),rational(BigInt(t.count-1)))))}. Add ${t.step} once more to get ${answer}.`; break;
   case 'measure':
-   if(t.shape==='cuboid') {hint=t.measure==='volume'?'Count one layer (width × height), then multiply by the number of layers.':'A box has three pairs of equal faces; add their areas and double the sum.'; steps=t.measure==='volume'?`${t.width} × ${t.height} × ${t.depth} = ${answer} cubic units.`:`2 × ((${t.width} × ${t.height}) + (${t.width} × ${t.depth}) + (${t.height} × ${t.depth})) = ${answer} square units.`;}
-   else if(t.shape==='triangle'){hint='A triangle takes half the area of a rectangle with the same base and perpendicular height.';steps=`(${t.width} × ${t.height}) ÷ 2 = ${answer} square units.`;}
-   else {hint=t.measure==='area'?'Area counts unit squares inside: multiply the two side lengths.':'Perimeter measures the outside edge: add all four side lengths.';steps=t.measure==='area'?`${t.width} × ${t.height} = ${answer} square units.`:`2 × (${t.width} + ${t.height}) = ${answer} units.`;}
+   if(t.shape==='cuboid') {hint=t.measure==='volume'?'Count one layer (width × height), then multiply by the number of layers.':'A box has three pairs of equal faces; add their areas and double the sum.'; steps=t.measure==='volume'?`${t.width} × ${t.height} × ${t.depth} = ${counted(answer,'cubic unit')}.`:`2 × ((${t.width} × ${t.height}) + (${t.width} × ${t.depth}) + (${t.height} × ${t.depth})) = ${counted(answer,'square unit')}.`;}
+   else if(t.shape==='triangle'){hint='A triangle takes half the area of a rectangle with the same base and perpendicular height.';steps=`(${t.width} × ${t.height}) ÷ 2 = ${counted(answer,'square unit')}.`;}
+   else {hint=t.measure==='area'?'Area counts unit squares inside: multiply the two side lengths.':'Perimeter measures the outside edge: add all four side lengths.';steps=t.measure==='area'?`${t.width} × ${t.height} = ${counted(answer,'square unit')}.`:`2 × (${t.width} + ${t.height}) = ${counted(answer,'unit')}.`;}
    break;
   case 'linear': hint='Keep both sides equal: undo the added number, then divide by the coefficient of x.'; steps=`Subtract ${t.b} from both sides: ${t.a} × x = ${fmt(subtract(p(t.c),p(t.b)))}. Divide by ${t.a}: x = ${answer}.`; break;
   case 'power': hint=t.exponent<0?'A negative exponent means the reciprocal of the corresponding positive power.':t.exponent===0?'Every nonzero number raised to the power zero equals one.':'The exponent counts copies of the base multiplied together; it does not multiply the base.'; steps=`(${t.base})^${t.exponent} = ${answer}.`; break;
@@ -67,7 +67,7 @@ export function teachTask(t:CanonicalTask):{hint:string;explanation:string} {
   case 'percent': hint='Percent means per hundred: divide the percent by 100, then multiply by the whole.';steps=`${fmt(divide(p(t.percent),rational(100n)))} × ${t.whole} = ${answer}.`;break;
   case 'rate': hint='To find the amount for one unit, divide the total quantity by the number of units.';steps=`${t.quantity} ÷ ${t.units} = ${answer} per unit.`;break;
   case 'slope': hint='Slope is change in y divided by change in x; subtract the coordinates in the same order.';steps=`(${t.y2} − ${t.y1}) ÷ (${t.x2} − ${t.x1}) = ${answer}.`;break;
-  case 'pythagorean': hint='Square both legs and add their squares; the hypotenuse is the positive square root of that sum.';steps=`${t.a}² + ${t.b}² = ${t.a*t.a+t.b*t.b}. Its positive square root is ${answer} units.`;break;
+  case 'pythagorean': hint='Square both legs and add their squares; the hypotenuse is the positive square root of that sum.';steps=`${t.a}² + ${t.b}² = ${t.a*t.a+t.b*t.b}. Its positive square root is ${counted(answer,'unit')}.`;break;
   case 'evaluate': hint='Replace each x with the given value; do powers first, then multiplication, then addition.';steps=`Substituting ${t.x} for x gives ${answer}.`;break;
  }
  return {hint,explanation:steps};

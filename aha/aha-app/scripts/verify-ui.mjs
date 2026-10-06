@@ -351,7 +351,7 @@ try{
   assert.deepEqual(overlaps,[],'fractions on consecutive lines of an explanation never touch');
   await mathCtx.close();
   console.log('Math typesetting: KaTeX lays out under a style-attribute-blocking CSP, fonts load, MathML hidden, fractions stack and centre (light and dark).');
-  // #892 stable stage. At the S26's 384×832 and an 820×1180 tablet, the focus bar, the problem
+  // #892 stable stage. At the S26's 384×832, an 820×1180 tablet and a 13" iPad (1032×1376), the focus bar, the problem
   // region, the answer field and the Check/Next slot keep their boxes (≤1px) through every state of
   // an item: typing, hint, Show me how, nudge, a wrong answer, an error, the curiosity and flag
   // sheets, a correct answer with its celebration, the next item loading and the AI preparing its
@@ -397,7 +397,7 @@ try{
     await p.getByRole('button',{name:'Next',exact:true}).waitFor();assert.equal(await p.getByRole('button',{name:'Next',exact:true}).isEnabled(),true,'Next is tappable during the celebration');
     await p.waitForTimeout(400);await t.snap('celebration settling');
     await p.locator('.aha-burst').waitFor({state:'detached',timeout:1000});await t.snap('celebration done');};
-  for(const [w,h] of [[384,832],[820,1180]]){
+  for(const [w,h] of [[384,832],[820,1180],[1032,1376]]){
     // Local practice, through the real controller and its test IPC fixture.
     const ctx=await browser.newContext({viewport:{width:w,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});await ctx.addInitScript(fixture);
     const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error'&&!/TEST disk full/.test(m.text()))errors.push(m.text());});
@@ -528,7 +528,26 @@ try{
     }
   }
   assert.deepEqual(jumps,[],'the stable stage never moves the bar, the problem, the answer field or Check/Next within an item');
-  console.log(`Stable stage: ${jumpLog.length} state checks (local practice and an AI spec, 384×832 and 820×1180); largest movement ${Math.max(...jumpLog.map(l=>Number(l.match(/max ([\d.]+)px/)[1])))}px.`);
+  console.log(`Stable stage: ${jumpLog.length} state checks (local practice and an AI spec, 384×832, 820×1180 and 1032×1376); largest movement ${Math.max(...jumpLog.map(l=>Number(l.match(/max ([\d.]+)px/)[1])))}px.`);
+  // Large tablets: on a 13" iPad the problem, its figure and the home hero scale up instead of
+  // sitting phone-sized in an empty field; an 11" tablet keeps the default scale.
+  {
+    const scale=async(w,h)=>{const ctx=await browser.newContext({viewport:{width:w,height:h},deviceScaleFactor:2,isMobile:true,hasTouch:true});await ctx.addInitScript(fixture);
+      const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
+      await p.goto(base);await p.getByRole('button',{name:'Let’s begin',exact:true}).click();await p.getByRole('button',{name:'Check',exact:true}).waitFor();
+      const focus=await p.evaluate(()=>{const prompt=document.querySelector('.stage-prompt');return {root:parseFloat(getComputedStyle(document.documentElement).fontSize),
+        stage:document.querySelector('.focus-stage').getBoundingClientRect().width,prompt:prompt?parseFloat(getComputedStyle(prompt).fontSize):0};});
+      await p.getByRole('button',{name:'Home',exact:true}).click();await p.getByRole('button',{name:'Continue',exact:true}).waitFor();
+      const hero=await p.evaluate(()=>parseFloat(getComputedStyle(document.querySelector('.home-hero h1')).fontSize));
+      await ctx.close();return {...focus,hero};};
+    const tablet=await scale(820,1180),large=await scale(1032,1376);
+    assert.equal(tablet.root,16,'an 11" tablet keeps the default root size');
+    assert.equal(large.root,19,'a 13" iPad steps the root size up');
+    assert.ok(large.stage>=860,`the 13" problem column widens (${large.stage}px)`);
+    assert.ok(large.prompt>=tablet.prompt*1.15,`the 13" prompt is larger (${tablet.prompt}px → ${large.prompt}px)`);
+    assert.ok(large.hero>=tablet.hero*1.3,`the 13" home hero is larger (${tablet.hero}px → ${large.hero}px)`);
+    console.log(`Large tablet scale: 820×1180 prompt ${tablet.prompt}px, hero ${tablet.hero}px; 1032×1376 prompt ${large.prompt}px, hero ${large.hero}px, stage ${large.stage}px.`);
+  }
   // Keyboard dock (founder report, iPhone 14): the focus stage is a fixed frame and only the answer
   // dock rides a software keyboard. TEST-ONLY stand-in for an iOS keyboard: visualViewport shrinks
   // while the layout viewport stays (what WKWebView does); an Android one shrinks the layout
@@ -802,7 +821,7 @@ try{
   }
   const shots=process.env.AHA_UI_SHOTS;
   const clearanceFailures=[];let clearanceChecks=0,growthCards=0;
-  for(const [w,h] of [[384,832],[360,640],[412,915],[820,1180],[1280,800]])for(const v of [{},{inset:48},{inset:48,large:true}]){
+  for(const [w,h] of [[384,832],[360,640],[412,915],[820,1180],[1032,1376],[1280,800]])for(const v of [{},{inset:48},{inset:48,large:true}]){
     const ctx=await browser.newContext({viewport:{width:w,height:h},isMobile:w<1000,hasTouch:w<1000});await ctx.addInitScript(fixture);
     await ctx.addInitScript(db=>{if(!sessionStorage.getItem('seeded')){localStorage.setItem('aha-controller-test-fixture',db);sessionStorage.setItem('seeded','1');}},seeded);
     const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
@@ -834,7 +853,7 @@ try{
   }
   assert.ok(growthCards>=3,`Growth is seeded with several skills (${growthCards})`);
   assert.deepEqual(clearanceFailures,[],'nothing ends under the bottom nav or the gesture bar');
-  console.log(`Bottom-nav clearance: ${clearanceChecks} screen checks (home, Growth with ${growthCards} cards, Settings, sheets) at 5 viewports, with and without a 48px bottom inset and large text.`);
+  console.log(`Bottom-nav clearance: ${clearanceChecks} screen checks (home, Growth with ${growthCards} cards, Settings, sheets) at 6 viewports, with and without a 48px bottom inset and large text.`);
   assert.deepEqual(errors,[],'browser errors');
   console.log('Controller browser regressions passed: disk-full display/grading consistency, first-attempt lock, forgiving retry (nudge line, restart, See how, save failure, leaving mid-retry, one ledger attempt), evidence reload, hint assistance, error-loop worked example and switch, dispute quarantine/continuation, focus, modal errors, problem report, compact layout, #869 focus-mode pass bar (no page scroll, keyboard-safe dock, ≤12 chrome words, 44px targets) for local tasks and every Activity Spec fixture, domain-gated sign key, gate-free Settings (#870). Explicit test IPC fixture; not native acceptance.');
 }finally{

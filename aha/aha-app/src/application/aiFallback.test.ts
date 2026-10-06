@@ -62,6 +62,11 @@ test('fallback status explains the cause and that local practice continues in th
   const outage = aiFallbackStatus(new SdkError('unavailable', {details: {private: 'DO_NOT_RENDER'}}));
   assert.match(outage, /temporarily unavailable/);
   assert.doesNotMatch(outage, /DO_NOT_RENDER/);
+  // A low balance is a neutral statement: said once, with no call to buy or add 2Z.
+  const low = aiFallbackStatus(new SdkError('insufficient_balance', {status: 402}));
+  assert.equal(low.match(/Local practice continues/g)?.length, 1, low);
+  assert.match(low, /AI tutoring will be tried again on a later task\.$/);
+  assert.doesNotMatch(low, /top up|top-up|buy|purchase|add(ing)? 2Z|\$/i);
 });
 
 test('fallback is logged visibly with context, without SDK response details', () => {

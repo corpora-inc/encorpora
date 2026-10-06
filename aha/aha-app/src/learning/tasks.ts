@@ -15,6 +15,11 @@ function value(x:unknown):string {
  const r=p(x); if (r.n < -1000000n*r.d || r.n > 1000000n*r.d || r.d > 1000000n) throw new Error('Task quantity is outside its permitted range.');
  return fmt(r);
 }
+/** English count agreement for a rendered quantity: exactly one (or minus one) takes the singular. */
+export const isOne=(quantity:string|number)=>typeof quantity==='number'?Math.abs(quantity)===1:/^[-−]?1$/.test(quantity);
+/** "1 unit" / "3 units" / "3/4 units". */
+export const counted=(quantity:string|number,singular:string,plural=`${singular}s`)=>`${quantity} ${isOne(quantity)?singular:plural}`;
+const isAre=(quantity:string|number)=>isOne(quantity)?'is':'are';
 function oneOf<T extends string>(x:unknown, allowed:readonly T[]): T {
  if (typeof x !== 'string' || !allowed.includes(x as T)) throw new Error('Unsupported task option.'); return x as T;
 }
@@ -87,18 +92,18 @@ export function renderTask(t:CanonicalTask):string {
   case 'arithmetic': return `${t.left} ${symbols[t.operation]} ${t.right} = ?`;
   case 'compare': return `Compare ${t.left} and ${t.right}. Choose <, =, or >.`;
   case 'missing': return `${t.left} ${symbols[t.operation]} □ = ${t.result}. What belongs in the box?`;
-  case 'fraction': return `A whole is split into ${t.denominator} equal parts. ${t.numerator} are shaded. What fraction is shaded?`;
+  case 'fraction': return `A whole is split into ${counted(t.denominator,'equal part')}. ${t.numerator} ${isAre(t.numerator)} shaded. What fraction is shaded?`;
   case 'placeValue': return `In ${t.value}, what is the value of the digit in the ${['ones','tens','hundreds','thousands','ten-thousands','hundred-thousands'][t.place]} place?`;
   case 'round': return `Round ${t.value} to the nearest ${t.place}. If exactly halfway, round away from zero.`;
   case 'sequence': return `Start at ${t.start} and add ${t.step} each time: ${Array.from({length:t.count},(_,i)=>fmt(add(p(t.start),multiply(p(t.step),rational(BigInt(i)))))).join(', ')}, … What comes next?`;
-  case 'measure': return t.shape==='cuboid'?`A rectangular prism has edges ${t.width}, ${t.height}, and ${t.depth} units. What is its ${t.measure==='volume'?'volume in cubic units':'surface area in square units'}?`:t.shape==='triangle'?`A triangle has base ${t.width} units and perpendicular height ${t.height} units. What is its area in square units?`:`A rectangle is ${t.width} units wide and ${t.height} units long. What is its ${t.measure==='area'?'area in square units':'perimeter in units'}?`;
+  case 'measure': return t.shape==='cuboid'?`A rectangular prism has edges ${t.width}, ${t.height}, and ${t.depth} units. What is its ${t.measure==='volume'?'volume in cubic units':'surface area in square units'}?`:t.shape==='triangle'?`A triangle has base ${counted(t.width,'unit')} and perpendicular height ${counted(t.height,'unit')}. What is its area in square units?`:`A rectangle is ${counted(t.width,'unit')} wide and ${counted(t.height,'unit')} long. What is its ${t.measure==='area'?'area in square units':'perimeter in units'}?`;
   case 'linear': return `Solve for x: (${t.a}) × x + (${t.b}) = ${t.c}.`;
   case 'power': return `What is (${t.base}) raised to the power ${t.exponent}?`;
   case 'factors': return `What is the ${t.operation==='gcd'?'greatest common factor':'least common multiple'} of ${t.left} and ${t.right}?`;
   case 'statistics': return `Find the ${t.operation} of these values: ${t.values.join(', ')}.`;
-  case 'probability': return `There are ${t.total} equally likely outcomes; ${t.favorable} are favorable. What is the probability of a favorable outcome?`;
+  case 'probability': return `There ${isAre(t.total)} ${counted(t.total,'equally likely outcome')}; ${t.favorable} ${isAre(t.favorable)} favorable. What is the probability of a favorable outcome?`;
   case 'percent': return `What is ${t.percent}% of ${t.whole}?`;
-  case 'rate': return `${t.quantity} items are shared equally across ${t.units} units. How many items per unit?`;
+  case 'rate': return `${counted(t.quantity,'item')} ${isAre(t.quantity)} shared equally across ${counted(t.units,'unit')}. How many items per unit?`;
   case 'slope': return `Find the slope of the line through (${t.x1}, ${t.y1}) and (${t.x2}, ${t.y2}).`;
   case 'pythagorean': return `A right triangle has legs ${t.a} and ${t.b} units. What is the hypotenuse length in units?`;
   case 'evaluate': return `When x = ${t.x}, what is ${t.coefficients.map((c,i)=>`(${c})${i===0?'':i===1?' × x':` × x^${i}`}`).join(' + ')}?`;

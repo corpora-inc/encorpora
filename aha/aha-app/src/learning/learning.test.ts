@@ -55,6 +55,24 @@ test('task families have independently enumerated answers',()=>{
  [{kind:'evaluate',coefficients:['2','3','1'],x:'4'},'30'],
  ];for(const [task,expected]of pairs){assert.equal(expectedAnswer(validateTask(task)),expected);assert.ok(renderTask(task).length>5);}
 });
+test('local practice prompts agree in number with their counts',()=>{
+ const one=renderTask(validateTask({kind:'fraction',numerator:1,denominator:4}));
+ assert.match(one,/ 1 is shaded\./);assert.match(one,/4 equal parts\./);
+ assert.match(renderTask(validateTask({kind:'fraction',numerator:3,denominator:4})),/ 3 are shaded\./);
+ assert.match(renderTask(validateTask({kind:'fraction',numerator:0,denominator:4})),/ 0 are shaded\./);
+ assert.match(renderTask(validateTask({kind:'fraction',numerator:1,denominator:1})),/into 1 equal part\. 1 is shaded\./);
+ assert.match(renderTask(validateTask({kind:'probability',favorable:1,total:6})),/There are 6 equally likely outcomes; 1 is favorable\./);
+ assert.match(renderTask(validateTask({kind:'probability',favorable:2,total:6})),/; 2 are favorable\./);
+ assert.match(renderTask(validateTask({kind:'rate',quantity:'1',units:'1'})),/^1 item is shared equally across 1 unit\./);
+ assert.match(renderTask(validateTask({kind:'rate',quantity:'12',units:'3/4'})),/^12 items are shared equally across 3\/4 units\./);
+ assert.match(renderTask(validateTask({kind:'measure',shape:'rectangle',measure:'area',width:'1',height:'3'})),/1 unit wide and 3 units long/);
+ assert.match(renderTask(validateTask({kind:'measure',shape:'triangle',measure:'area',width:'1',height:'2'})),/base 1 unit and perpendicular height 2 units/);
+ assert.match(teachTask(validateTask({kind:'fraction',numerator:1,denominator:3})).explanation,/^1 shaded part out of 3 equal parts gives /);
+ assert.match(teachTask(validateTask({kind:'fraction',numerator:2,denominator:3})).explanation,/^2 shaded parts out of 3 equal parts give /);
+ assert.match(teachTask(validateTask({kind:'measure',shape:'rectangle',measure:'area',width:'1',height:'1'})).explanation,/= 1 square unit\.$/);
+ assert.match(teachTask(validateTask({kind:'measure',shape:'rectangle',measure:'perimeter',width:'1',height:'2'})).explanation,/= 6 units\.$/);
+ for(const skill of skills.filter(s=>s.taskKinds.length))for(let seed=1;seed<=60;seed++){const a=generatePractice(skill.id,seed);for(const text of [a.prompt,a.explanation??''])assert.doesNotMatch(text,/(^|[^\d/.])1 (are|parts|outcomes|units|items|shaded parts|square units|cubic units)\b/,`${skill.id}#${seed}: ${text}`);}
+});
 test('validation rejects dangerous or undefined task shapes before scoring',()=>{
  for(const task of [
  {kind:'arithmetic',operation:'divide',left:'1',right:'0'},
