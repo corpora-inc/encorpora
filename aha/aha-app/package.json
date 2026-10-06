@@ -17,7 +17,9 @@
     "gallery": "node --import tsx scripts/gallery.mjs",
     "sweep": "node scripts/studio-sweep.mjs",
     "spec-eval": "node --import tsx scripts/spec-eval/run.mjs",
-    "flag-review": "node scripts/flag-review.mjs"
+    "flag-review": "node scripts/flag-review.mjs",
+    "live-eval": "node --import tsx scripts/live-eval/run.mjs",
+    "live-eval:score": "node --import tsx scripts/live-eval/score.mjs"
   },
   "dependencies": {
     "@free2z/sdk": "file:vendor/free2z/sdk/d63959f9c766258d7ce827e68f4ddd93d2797f99/free2z-sdk-0.1.0.tgz",

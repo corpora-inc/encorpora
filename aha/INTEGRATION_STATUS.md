@@ -419,11 +419,34 @@ became v3. The changes that followed: a restored queue that is already low is re
 a Continue with an empty queue waits at most 6 s for the batch on its way instead of until it
 lands (about 29 s on device); every decision not to use AI while signed in logs `ai-skip`.
 
+## Live activity-authoring eval (2026-10-05, `scripts/live-eval/`)
+
+The first paid AHA calls. They ran through the AHA public client's loopback sign-in in a dev-only Node harness, not through the app. The founder signed in and consented in their own browser. The grant was enforced, with a 300 2Z `total` budget and scopes `openid offline_access balance:read ai:invoke`. **58 2Z** was spent, and the session was revoked at the end.
+
+- **Catalogue.** `/v1/models` offered only `gpt-4o` and `gpt-4o-mini`, both with structured output. gpt-4.1, gpt-5.x and reasoning models were not offered.
+- **Request.** Each call is v1 exactly as on main: `structuredSystem` with the strict `response_format`, 4 activities and 2600 strict output tokens. It was sent non-streamed, with a new Idempotency-Key per call.
+- **Learners and scoring.** 10 synthetic grade 2–5 learner states, 6 of them on the founder's failure domains. 14 batches went to gpt-4o and 13 to gpt-4o-mini; one batch was lost to a `concurrency_limit` estimate refusal, which cost nothing. Accepted activities were judged on their rendered 384×832 focus-stage screenshot by `codex` gpt-6.1-sol with binary checks.
+- **Calibration.** The judge flagged all 10 of the founder's live flags.
+
+| Model | Accepted | Defects / 100 accepted: any · figure≠text · key wrong · off level | Good / 100 requested | 2Z / call | 2Z / good | p50 / p95 |
+|---|---|---|---|---|---|---|
+| gpt-4o | 91% | 67 · 57 · 20 · 35 | 30 | 3.2 | 2.65 | 8.8 / 12.9 s |
+| gpt-4o-mini | 38% | 60 · 10 · 5 · 35 | 15 | 1.0 | 1.63 | 13.3 / 18.1 s |
+
+What this shows:
+
+- **gpt-4o stays the default.** It returns about twice the good activities per batch and is faster. gpt-4o-mini is cheaper per good activity, but its validator rejection rate (62%: duplicate slice labels and region ids, words in TeX, unshown figures) halves what each wait delivers.
+- **Most of gpt-4o's defects are rendered contradictions.** Examples: "5 plates of 4 candies" over one plate of 4, and "4 rows of 3 fish" drawn as one `picture` group of 12 that the renderer wraps 4 across. Neither can be caught by v1 validation, which is the Activity Spec v2 rationale.
+- **Billing.** Real input was about 7.3k tokens per batch (later calls hit the provider's prompt cache). Calls settled at 3–4 2Z, but the strict estimate's `input_tokens` with its safety factor was about 46k, so each gpt-4o hold was about 18 2Z.
+- **v2.** No v2 arm ran: the v2 prompt (README §15 step 7) does not exist yet.
+
+Re-run: `npm run live-eval -- --cap <2Z>`, then `npm run live-eval:score -- --run <name> --flags <flags.json>`. Outputs and the receipt ledger stay in gitignored `.live-eval/`.
+
 ## Remaining live acceptance
 
 1. Obtain the platform's paid-readiness and first-receipt checkpoint through the
    private coordination runbook; reconcile the shared test allowance before any
-   AHA paid call. No AHA paid call or purchase has been made.
+   AHA paid call. The first paid calls were the dev-only live eval above (58 2Z); no in-app paid call or purchase yet.
 2. Verify native browser redirects, sign-in persistence, authoritative balance,
    fresh enforced grant and advertised models on each mobile platform.
 3. Exercise live AI activity batches: measure parse/acceptance rate, real token use and 2Z per
