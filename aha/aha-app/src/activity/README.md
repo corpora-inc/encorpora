@@ -308,7 +308,7 @@ the fallback, and signed-out practice is unchanged.
    own token), so it prevents that paid call even after the tap stops waiting. Prefetch is skipped during the fallback
    backoff or a Retry-After window, and every such skip logs its reason (`ai-skip`). A Continue
    with an empty queue starts a batch if none is on its way, then waits for it at most
-   `BATCH_WAIT_MS` (6 s). If it has not landed, one local task is served (logged) and the batch
+   `BATCH_WAIT_MS` (10 s, ended early by the first streamed activity). If it has not landed, one local task is served (logged) and the batch
    fills the queue for the task after; a failed batch logs its own `ai-fallback`. Timed recall
    (one local fluency task after every fifth) is logged too, so AI never stops without a reason.
    **Try something harder** never discards a paid, unanswered activity. If a queued activity is

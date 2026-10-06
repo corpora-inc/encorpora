@@ -96,7 +96,7 @@ describe('activity batch prompt', () => {
   it('carries the strict schema for a structured-output gateway', () => {
     const p = buildActivityPrompt(realisticSummary(), { count: 99 });
     assert.equal(p.responseFormat.json_schema.strict, true);
-    assert.match(p.user, /Write 40 activities/, 'clamped to the validator\'s batch bound');
+    assert.match(p.user, /Write exactly 40 activities/, 'clamped to the validator\'s batch bound');
     assert.equal(p.count, 40);
   });
   it('embeds format examples that themselves validate', async () => {

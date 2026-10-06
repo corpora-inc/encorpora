@@ -302,6 +302,11 @@ const journalBytes = (text: string) => encoder.encode(JSON.stringify(text)).leng
 const MAX_JOURNAL_BYTES = 480_000;
 /** System + user prompt characters per request (the prompt-only batch prompt is ~18k with the #929 digest and mix). */
 const MAX_CONTEXT_CHARS = 24_000;
+/**
+ * Sees the journaled reply text after each streamed delta (one paid call either way): lets the caller bank complete
+ * activities early. It cannot change what is journaled, billed or settled; its errors are logged and ignored.
+ */
+export type StreamObserver = (progress: {operationId: string; model: string; text: string}) => void;
 export class TutorServiceError extends Error {
   /** `required2z`: whole 2Z the refused request needed, when Free2Z (or the estimate's hold) reported it. Display only. */
   constructor(public readonly code: string, message: string, public readonly retryAfterSeconds?: number, public readonly required2z?: bigint) { super(message); this.name = 'TutorServiceError'; }
@@ -544,7 +549,7 @@ export class Free2zTutor {
    * carries `response_format` and `structured.system`; otherwise, or after Free2Z refuses the format at no cost, it is
    * the prompt-only request with `system`. The reply text is untrusted either way: callers still validate it.
    */
-  async reply(model: string, system: string, context: string, authorization: PaidAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800', structured?: StructuredOutput): Promise<TutorReply> {
+  async reply(model: string, system: string, context: string, authorization: PaidAuthorization, resumeContext?: ResumeContext, maxOutputTokens: OutputBudget = '1800', structured?: StructuredOutput, onText?: StreamObserver): Promise<TutorReply> {
     if (this.busy) throw new TutorServiceError('busy', 'An AI request is already in progress.');
     if (!validOutputBudget(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
     if (resumeContext !== undefined && !validResumeContext(resumeContext))
@@ -566,16 +571,16 @@ export class Free2zTutor {
       // Only activity batches, and only where the catalogue says the gateway takes it (zuu#1151); otherwise omitted.
       const effort: ReasoningEffort | undefined = savedContext?.kind === 'activities' && supportsReasoningEffort(catalog, model) ? 'low' : undefined;
       if (format && structured) {
-        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens, why, effort); }
+        try { return await this.send(ledger, session, model, structured.system, context, format, authorization, savedContext, maxOutputTokens, why, effort, onText); }
         catch (error) {
           // Fall back only after a refusal of the format itself, which cost nothing, and only with nothing left unsettled.
           if (!isFormatRefusal(error) || ledger.operations.some(op => op.state !== 'finalized')) throw error;
           this.formatRefused.add(model);
           this.notice(`Free2Z refused response_format for ${model}; sent the prompt-only JSON request instead. The refusal cost nothing.`);
-          return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, 'format_refused', effort);
+          return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, 'format_refused', effort, onText);
         }
       }
-      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, why, effort);
+      return await this.send(ledger, session, model, system, context, undefined, authorization, savedContext, maxOutputTokens, why, effort, onText);
     } finally { this.active = undefined; this.busy = false; }
   }
   /** The `response_format` to try first, or `undefined` for the prompt-only request, with the reason for the log. Never throws. */
@@ -593,7 +598,7 @@ export class Free2zTutor {
   }
   /** One fresh operation: estimate and admit, journal (with the exact format, if any), then send. */
   private async send(ledger: Ledger, session: Session, model: string, system: string, context: string, format: SavedResponseFormat | undefined,
-    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget, why: string, effort?: ReasoningEffort): Promise<TutorReply> {
+    authorization: PaidAuthorization, savedContext: ResumeContext | undefined, maxOutputTokens: OutputBudget, why: string, effort?: ReasoningEffort, onText?: StreamObserver): Promise<TutorReply> {
     const messages: ChatRequest['messages'] = [{role:'system',content:[{type:'text',text:system}]},{role:'user',content:[{type:'text',text:context}]}];
     const request = chatRequest({model, messages, maxOutputTokens, ...(format ? {responseFormat: format} : {}), ...(effort ? {reasoningEffort: effort} : {})});
     if (savedContext?.kind === 'activities') this.trace(describeBatchRequest(request, why, 'send'), !!request.response_format);
@@ -607,7 +612,7 @@ export class Free2zTutor {
     if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT_BYTES > MAX_JOURNAL_BYTES)
       throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
     await this.persist(ledger);
-    return await this.run(ledger, op, request, authorization, true);
+    return await this.run(ledger, op, request, authorization, true, onText);
   }
   /** Explicit same-key recovery only; the gateway may replay just a receipt, not content. */
   async recover(operationId: string, authorization: PaidAuthorization): Promise<TutorReply> {
@@ -638,7 +643,7 @@ export class Free2zTutor {
     } finally { this.active = undefined; this.busy = false; }
   }
   /** `fresh`: this is the operation's first send; nothing about it can have reached the gateway before. */
-  private async run(ledger: Ledger, op: Operation, request: ChatRequest, authorization: PaidAuthorization, fresh: boolean): Promise<TutorReply> {
+  private async run(ledger: Ledger, op: Operation, request: ChatRequest, authorization: PaidAuthorization, fresh: boolean, onText?: StreamObserver): Promise<TutorReply> {
     let completed = false;
     // A refusal that provably cost nothing; settles the entry as released/0 so it cannot block later calls.
     let zeroCharge = false;
@@ -719,6 +724,11 @@ export class Free2zTutor {
         }
         // Persist output incrementally; force-kill never turns an uncertain charge into zero.
         await this.persist(ledger);
+        // Observers see only journaled text. They never affect the stream, its billing or its settlement.
+        if (event.type === 'delta' && onText) {
+          try { onText({operationId: op.id, model: op.request.model, text: op.text}); }
+          catch (error) { console.error('[aha] stream observer failed', error); }
+        }
       }
       if (!completed) throw new TutorServiceError('interrupted','The stream ended without a completed lesson.');
       return this.replyValue(op);

@@ -582,6 +582,9 @@ export function Studio(props: StudioProps) {
     if (!spec && props.feedback?.kind === "retry" && props.feedback.message) return setDrawer(drawer === "feedback" ? null : "feedback");
     toggleHelp("explain");
   };
+  // Opening the worked explanation of an AI activity (before or after answering) tells the controller, once per item.
+  const explainSeen_ = drawer === "explain" && !!spec;
+  useEffect(() => { if (explainSeen_) props.onExplainSeen?.(); }, [explainSeen_, taskId]); // eslint-disable-line react-hooks/exhaustive-deps
   const advance = (go: () => void) => { setAdvancing(true); setDrawer(null); go(); };
   const moreHints = spec && drawer === "hint" && !specGraded && revealed < specHints.length;
   const drawerBody = (() => {

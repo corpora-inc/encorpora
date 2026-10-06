@@ -42,7 +42,8 @@ import {
 } from "../provider/free2z";
 import { previewRepository } from "./preview";
 import { needsSpecRestorer, restoreLearning } from "./recovery";
-import { AiQueueBox, BATCH_WAIT_MS, batchSizeFor, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
+import type { ActivitySpec } from "../activity/spec";
+import { AiQueueBox, BATCH_WAIT_MS, wantsRedrill, wantsRepeat, batchSizeFor, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
 import { learningError, refusalAction, retryDeadline, signInFailure } from "./connection";
@@ -171,6 +172,8 @@ export default function Controller() {
   /** An AI activity whose presentation save failed, with its exact activity record for an idempotent retry. */
   const pendingAi = useRef<{item: QueuedActivity; record: {id: string; sessionId: string; createdAt: string; data: Json}} | undefined>(undefined);
   const prefetching = useRef<Promise<void> | undefined>(undefined);
+  /** The bank ran low while a batch was in flight: start the next refill as soon as it settles (single flight). */
+  const refillAfterFlight = useRef(false);
   /** The Stop for the batch in flight while the learner's own tap is still waiting for it (never for a background prefetch). */
   const foregroundStop = useRef<StopToken | undefined>(undefined);
   /** The Stop token of the batch in flight, if a tap started it (kept after the tap stops waiting). */
@@ -185,6 +188,14 @@ export default function Controller() {
   const wantsHarder = useRef(false);
   /** Spec hints revealed for the AI activity on screen (separate from the assistance count). */
   const aiHintsShown = useRef(0);
+  /** The AI activity on screen: its latest answer was correct (undefined before any answer this showing). */
+  const aiFinalCorrect = useRef<boolean | undefined>(undefined);
+  /** The AI activity on screen: the learner opened its worked explanation. */
+  const aiWorked = useRef(false);
+  /** Activities put right on the forgiving retry: their skills get a fresh-variant re-drill slot in the next batch. */
+  const redrillFor = useRef(new Map<string, string[]>());
+  /** Specs shown this session: a later batch never brings the exact same activity back (only the re-present rule does). */
+  const sessionShown = useRef<ActivitySpec[]>([]);
   const sessionWrites = useRef<Promise<unknown>>(Promise.resolve());
   const pendingWorked = useRef(false);
   const sessionId = useRef<string>(crypto.randomUUID());
@@ -201,6 +212,8 @@ export default function Controller() {
     currentAi.current = undefined;
     lastSkip.current = undefined;
     aiQueue.current.replace([]);
+    redrillFor.current.clear();
+    sessionShown.current = [];
     wantsHarder.current = false;
     pendingAi.current = undefined;
     setAiItem(undefined);
@@ -334,7 +347,10 @@ export default function Controller() {
       savedCuriosity.current = undefined;
       hintsUsed.current = item.hintsUsed ?? 0;
       aiHintsShown.current = 0;
+      aiFinalCorrect.current = undefined;
+      aiWorked.current = false;
       firstAnswer.current = undefined;
+      sessionShown.current = [...sessionShown.current.slice(-199), item.spec];
     }));
     if (item.hintsUsed) {
       // Re-shown after a skip: show the last hint it had already used, as a restart does.
@@ -398,6 +414,9 @@ export default function Controller() {
     firstAnswer.current = pendingMiss && !pendingMiss.error && !pendingMiss.correct ? restored.firstAnswer : undefined;
     setActivity(restored.activity);
     currentAi.current = restored.aiActivity;
+    aiFinalCorrect.current = undefined;
+    aiWorked.current = false;
+    if (restored.aiActivity) sessionShown.current = [restored.aiActivity.spec];
     aiQueue.current.replace(restored.aiQueue);
     setAiItem(restored.aiActivity);
     setAiResult(undefined);
@@ -569,6 +588,31 @@ export default function Controller() {
     // Hidden reasoning counts against the output budget: a reasoning model gets its larger budget for any reply.
     return provider.current!.reply(pick.id, system, context, authorization, origin, pick.reasoning ? String(pick.maxOutputTokens) : "1800");
   }
+  /** Evidence and disputes for a learner: what a delivery must never queue again. */
+  async function knownActivities(repo: LocalRepository, profileId: string) {
+    const disputes = await repo.listDisputes(profileId);
+    return {attempted: new Set(learning.current?.attempts.map(a => a.activityId) ?? []), disputed: new Set(disputes.map(d => d.activityId)), current: displayedId()};
+  }
+  /** Specs that new activities must not duplicate: shown this session, on screen, or already banked (remixes included). */
+  const seenSpecs = () => [...sessionShown.current, ...(currentAi.current ? [currentAi.current.spec] : []), ...aiQueue.current.items.map(i => i.spec)];
+  /**
+   * The re-present rule for the AI activity on screen, after each answer and each "Show me how": the exact activity
+   * returns (spaced) only when the final answer was wrong or the worked explanation was opened. Put right on the retry,
+   * its return is withdrawn and its skill gets a fresh-variant re-drill slot in the next batch.
+   */
+  async function reconcileRepeat(save = true) {
+    const item = currentAi.current, first = item && learning.current?.attempts.find(e => e.activityId === item.activityId);
+    if (!item || !first) return;
+    const history = {firstCorrect: first.correct, finalCorrect: aiFinalCorrect.current ?? first.correct, workedOpened: aiWorked.current};
+    const base = item.activityId.replace(/:r\d+$/, "");
+    if (wantsRedrill(history)) redrillFor.current.set(base, [...item.spec.skillIds]); else redrillFor.current.delete(base);
+    const changed = wantsRepeat(history) ? aiQueue.current.remix(item) : aiQueue.current.unremix(item);
+    if (!changed) return;
+    logEvent("info", "ai-queue", wantsRepeat(history)
+      ? `this AI activity returns later for spaced practice (${aiQueue.current.length} banked)`
+      : `put right on the retry: no verbatim repeat; a fresh variant of the skill joins the next batch (${aiQueue.current.length} banked)`);
+    if (save) await saveSession();
+  }
   async function deliverReply(reply: TutorReply): Promise<void> {
     const origin = reply.context;
     if (!origin || origin.profileId !== currentProfile.current?.id)
@@ -581,6 +625,8 @@ export default function Controller() {
       if (!tutor || !isCurrent()) throw new Error("Choose a learner first.");
       const runtime = await loadAiActivities();
       const parsed = runtime.parseBatch(reply.text, origin.allowedSkillIds, reply.operationId, reply.model);
+      const fresh = runtime.freshItems(parsed.items, seenSpecs());
+      if (fresh.length < parsed.items.length) logEvent("info", "ai-batch", `dropped ${parsed.items.length - fresh.length} activities already shown this session or already banked`);
       recordBatch(repo, {op: reply.operationId, model: reply.model, day: new Date().toISOString().slice(0, 10), structured: !!reply.structured,
         kept: parsed.items.length, schema: parsed.schemaRejected, semantic: parsed.semanticRejected,
         ...(!parsed.items.length && !parsed.rejected.length ? {unreadable: true as const} : {}),
@@ -592,11 +638,8 @@ export default function Controller() {
       else logEvent("info", "ai-batch", `${format}: kept ${parsed.items.length}, rejected 0`);
       const outcome = await deliverBatch(aiQueue.current, {
         operationId: reply.operationId,
-        items: parsed.items,
-        known: async () => {
-          const disputes = await repo.listDisputes(origin.profileId);
-          return {attempted: new Set(learning.current?.attempts.map(a => a.activityId) ?? []), disputed: new Set(disputes.map(d => d.activityId)), current: displayedId()};
-        },
+        items: fresh,
+        known: () => knownActivities(repo, origin.profileId),
         isCurrent,
         save: saveSession,
         // The queue is durable now. A failed acknowledgement only keeps the reply saved: the next
@@ -914,10 +957,8 @@ export default function Controller() {
     const aiPath = !!(subject.current && provider.current && journalReadable);
     // An unreadable journal was already logged by aiUnavailable above.
     if (subject.current && !provider.current) aiSkipped("signed in without a Free2Z provider for this account; local practice");
-    // Optional timed recall stays a short local interleave: AI activities are conceptual evidence.
-    const recall = aiPath && !stretch && count.current > 0 && count.current % 5 === 0 ? selectFluencySkill(state) : undefined;
-    if (recall) aiSkipped(`timed recall: one local fluency task after ${count.current} tasks; AI continues on the next task`, "info");
-    if (aiPath && !recall) {
+    // No local interleave while AI serves the learner: the AI batch's adaptive mix covers fluency and review.
+    if (aiPath) {
       // "Try something harder" on an unanswered AI activity never wastes it (#877) and always moves on (#899): a
       // harder queued activity, else the next queued one, else the bounded wait / local task. The skipped one
       // goes to the back of the queue with its hints.
@@ -946,7 +987,9 @@ export default function Controller() {
       if (!item && prefetching.current && !batchStop.current?.stopped) {
         // Wait briefly for the batch on its way, rather than flipping to local practice and back. Stop ends the wait.
         const stop = foregroundStop.current;
-        const landed = await settlesWithin(stop ? Promise.race([prefetching.current, stop.signal]) : prefetching.current, BATCH_WAIT_MS);
+        // The wait ends at the first activity banked from the stream, not at the end of the whole batch.
+        const arrival = Promise.race([prefetching.current, aiQueue.current.arrived()]);
+        const landed = await settlesWithin(stop ? Promise.race([arrival, stop.signal]) : arrival, BATCH_WAIT_MS);
         // Past the wait the batch is a background one: a Stop on a later action never cuts off its paid stream.
         if (foregroundStop.current === stop) foregroundStop.current = undefined;
         assertActionActive();
@@ -973,9 +1016,7 @@ export default function Controller() {
       }
       // Nothing else is queued after a skip: fall through to one local task.
     }
-    if (recall) {
-      next = { ...generateFreshPractice(recall.id, state, crypto.getRandomValues(new Uint32Array(1))[0], "fluency"), id: crypto.randomUUID(), source: "local" };
-    } else {
+    {
       const candidates = selectCandidates(state);
       if (!candidates.length)
         throw new Error(
@@ -1046,20 +1087,46 @@ export default function Controller() {
       const pendingSpecs = [...(currentAi.current ? [currentAi.current.spec] : []), ...aiQueue.current.items.map(i => i.spec)];
       // A small first batch on an empty bank (the learner may be waiting), else the model's full batch (#929).
       const count = batchSizeFor(aiQueue.current.length, pick.batchActivities);
-      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder, pendingSpecs, count);
+      const redrillSent = [...redrillFor.current.keys()];
+      const redrillSkills = [...redrillFor.current.values()].flat();
+      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder, pendingSpecs, count, redrillSkills);
       logEvent("info", "ai-batch", `${stage}: asking for ${count} activities (${aiQueue.current.length} banked)`);
       // Checked with no await before reply(): a Stop after this point reaches the provider through cancel().
       if (stopped()) { logEvent("info", "ai-skip", `${stage}: stopped by the learner before sending; no paid request`); return false; }
       if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed before sending; no batch requested`, "info"); return false; }
+      // Stream-show: every activity is banked (durably, never acknowledged) the moment its JSON completes, so the
+      // first one is ready in seconds. Still one paid call, settled and acknowledged at the end by deliverReply; the
+      // final parse maps to the same ids, so nothing is queued twice, and early items stay if the stream is cut off.
+      const repo = repository.current;
+      let early = 0, banking: Promise<void> = Promise.resolve();
+      const bank = (items: QueuedActivity[], operationId: string) => {
+        banking = banking.then(async () => {
+          if (!stillCurrent() || repo !== repository.current) return;
+          const fresh = runtime.freshItems(items, seenSpecs());
+          const before = aiQueue.current.length;
+          await deliverBatch(aiQueue.current, {operationId, items: fresh, known: () => knownActivities(repo, p.id), isCurrent: () => stillCurrent() && repo === repository.current,
+            save: saveSession, acknowledge: async () => {}});
+          const added = Math.max(0, aiQueue.current.length - before);
+          if (added && !early) logEvent("info", "ai-batch", `${stage}: first streamed activity banked (${aiQueue.current.length} banked)`);
+          early += added;
+        }).catch(e => logError("ai-batch stream", e));
+      };
+      let feed: ((text: string, operationId: string, model?: string) => void) | undefined, feedOp = "";
+      const onText = ({operationId, model, text}: {operationId: string; model: string; text: string}) => {
+        if (!feed) { feedOp = operationId; feed = runtime.streamBatch(request.allowedSkillIds, items => bank(items, feedOp)); }
+        if (operationId === feedOp) feed(text, operationId, model);
+      };
       // The budget for this batch's size, or a reasoning model's 12k (capped by its ceiling). Journaled with the request.
       const reply = await tutor.reply(pick.id, request.system, request.user, authorization,
-        {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(batchBudget(pick, count)), request.structured);
+        {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(batchBudget(pick, count)), request.structured, onText);
+      await banking;
+      redrillSent.forEach(k => redrillFor.current.delete(k));
       // A learner or account switch leaves the completed batch saved for its own learner.
       if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed; the batch stays saved for its learner`, "info"); return false; }
       const queuedBefore = aiQueue.current.length;
       await deliverReply(reply);
       if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed during delivery`, "info"); return false; }
-      if (aiQueue.current.length <= queuedBefore)
+      if (aiQueue.current.length <= queuedBefore && !early)
         throw new TutorServiceError("invalid_batch", "The AI reply did not contain a usable activity. Its usage is recorded; no automatic paid retry was made.");
       aiBackoff.current.recordSuccess();
       lastSkip.current = undefined;
@@ -1096,6 +1163,8 @@ export default function Controller() {
       aiDue: blockedBy === undefined,
     };
     if (shouldPrefetch(state)) { startBatch("prefetch", false); return; }
+    // Low while a batch is still streaming (the learner is already working through it): refill once it settles.
+    if (shouldPrefetch({...state, inFlight: false})) { refillAfterFlight.current = true; return; }
     const why = prefetchBlocked(state, blockedBy);
     if (why) aiSkipped(`not prefetching AI activities: ${why}`);
   }
@@ -1108,6 +1177,7 @@ export default function Controller() {
     const run: Promise<void> = requestBatch(stage, stop).then(() => undefined, e => logError(stage, e))
       .finally(() => {
         if (prefetching.current === run) prefetching.current = undefined;
+        if (refillAfterFlight.current && !prefetching.current) { refillAfterFlight.current = false; maybePrefetch(); }
         if (stop && foregroundStop.current === stop) foregroundStop.current = undefined;
         if (batchStop.current === stop) batchStop.current = undefined;
       });
@@ -1129,7 +1199,13 @@ export default function Controller() {
     const graded = runtime.gradeSpecAttempt(item.spec, response, item.model);
     // Unreadable input is not a mathematical error: ask again and record nothing.
     if (!graded.attempt) { setAiResult(graded.outcome); return; }
-    if (state.attempts.some(e => e.activityId === item.activityId)) { setAiResult(graded.outcome); return; }
+    if (state.attempts.some(e => e.activityId === item.activityId)) {
+      // A retry after the recorded answer: it decides whether the exact activity comes back.
+      setAiResult(graded.outcome);
+      aiFinalCorrect.current = graded.outcome.correct;
+      await reconcileRepeat();
+      return;
+    }
     const updated = recordSpecAttempt(state, {
       id: crypto.randomUUID(),
       activityId: item.activityId,
@@ -1161,7 +1237,8 @@ export default function Controller() {
     setAiResult(graded.outcome);
     // A miss offers the spec's worked explanation through "Show me how", and the activity returns later, unchanged (#929).
     setFeedback(graded.outcome.correct ? undefined : {kind: "retry", title: "Not quite yet.", message: item.spec.explanation});
-    if (!graded.outcome.correct && aiQueue.current.remix(item)) logEvent("info", "ai-queue", `a missed AI activity returns later for spaced practice (${aiQueue.current.length} banked)`);
+    aiFinalCorrect.current = graded.outcome.correct;
+    await reconcileRepeat(false);
     // This write is presentation state; the transaction above already durably recorded the answer.
     await saveSession();
     maybePrefetch();
@@ -1323,6 +1400,7 @@ export default function Controller() {
       const answered = !!learning.current?.attempts.some(e => e.activityId === ai.activityId);
       if (!answered) { hintsUsed.current = Math.min(100, hintsUsed.current + 1); await saveSession(); }
       const hints = ai.spec.hints ?? [];
+      if (kind !== "hint" || !hints.length || answered) { aiWorked.current = true; await reconcileRepeat(); }
       if (kind === "hint" && hints.length && !answered) aiHintsShown.current = Math.min(hints.length, aiHintsShown.current + 1);
       setHint(kind === "hint" && hints.length && !answered ? hints[aiHintsShown.current - 1] : ai.spec.explanation);
       return;
@@ -1553,6 +1631,7 @@ export default function Controller() {
       }}
       onContinue={() => void action(continueLearning, account.connected && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
       onSupport={(kind) => void action(() => support(kind))}
+      onExplainSeen={() => { if (currentAi.current && !aiWorked.current) { aiWorked.current = true; void reconcileRepeat().catch(e => logError("ai-queue", e)); } }}
       onCuriosity={(q) => void action(() => curiosityQuestion(q), "Thinking about your question…")}
       onCloseCuriosity={() => void action(async () => {
         const previous = savedCuriosity.current;

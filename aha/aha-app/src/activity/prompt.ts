@@ -14,7 +14,7 @@ import type { LearnerSummary } from './learnerState';
 /** The icon vocabulary as a category hint, not an enum: ~300 everyday objects are drawn (render/icons.tsx). */
 const ICON_HINT = '~300 everyday objects are drawn (food, animals, nature, vehicles, sport, music, school, home, shapes); other names draw a plain counter';
 export const ACTIVITY_GRAMMAR = `OUTPUT: one minified JSON object, nothing else (no prose, no code fences):
-{"rationale":"<=300 chars: why these activities for this learner now","activities":[Activity, as many as the user message asks]}
+{"rationale":"<=300 chars: why these activities for this learner now","activities":[Activity, exactly as many as the user message asks; never fewer]}
 Activity={version:1,id:"a-<unique lowercase>",title?:str<=60,skillIds:[1-3 ids from STANDARDS],difficulty:1-10,prompt:[Block 1-8],figures?:[Figure 0-4],response:Response,keyCheck?:KeyCheck,hints?:[RT 0-4],explanation:RT,misconceptions?:[{tag,description}]}
 Omit optional fields you do not use. ? = optional.
 Block={type:"text",text:RT}|{type:"math",tex:TeX}|{type:"figure",figureId}  Place each figure once with a figure block; a figure with no block is shown after the first text block.
@@ -164,7 +164,7 @@ export function buildActivityPrompt(summary: LearnerSummary, options: { count?: 
   // and the id starts with the grade. The plan travels as the MIX line.
   const { version: _version, plan: _plan, ...rest } = summary;
   const learner = { ...rest, frontier: summary.frontier.map(({ title: _title, grade: _grade, ...f }) => f) };
-  const user = `LEARNER ${JSON.stringify(learner)}\nSTANDARDS\n${window.lines.join('\n')}\n${line}\nWrite ${count} activities.`;
+  const user = `LEARNER ${JSON.stringify(learner)}\nSTANDARDS\n${window.lines.join('\n')}\n${line}\nWrite exactly ${count} activities: the activities array holds ${count} items. Do not stop early; finish all ${count}.`;
   return {
     system: ACTIVITY_AUTHOR_RULES,
     // The one conditional between the variants: grammar included, or replaced by the schema-only rules.

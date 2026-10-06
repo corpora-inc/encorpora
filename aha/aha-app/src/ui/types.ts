@@ -125,6 +125,8 @@ export interface StudioProps {
   onSupport: (
     action: "hint" | "explain" | "stuck" | "harder" | "dispute",
   ) => void;
+  /** The worked explanation of the AI activity on screen was opened (the re-present rule needs to know). */
+  onExplainSeen?: () => void;
   onCuriosity: (question: string) => void;
   onCloseCuriosity: () => void;
   onManageAccount?: () => void;

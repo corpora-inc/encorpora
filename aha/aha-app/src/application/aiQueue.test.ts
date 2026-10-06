@@ -1,14 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixtures } from '../activity/fixtures';
-import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, REMIX_GAPS, batchSizeFor, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity } from './aiQueue';
+import { BATCH_WAIT_MS, wantsRedrill, wantsRepeat, MAX_QUEUE, PREFETCH_AT, REMIX_GAPS, batchSizeFor, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity } from './aiQueue';
 
 const item = (op: string, i: number): QueuedActivity => ({ activityId: activityIdFor(op, i), operationId: op, spec: fixtures[i % fixtures.length]! });
 const none = { attempted: new Set<string>(), disputed: new Set<string>() };
 
-test('prefetch is single-flight, signed-in only, respects the backoff, and refills the bank at <=8 banked', () => {
+test('prefetch is single-flight, signed-in only, respects the backoff, and refills the bank early (<=20 banked)', () => {
   const ready = { queueLength: PREFETCH_AT, inFlight: false, signedIn: true, aiDue: true };
-  assert.equal(PREFETCH_AT, 8);
+  assert.equal(PREFETCH_AT, 20, 'refill long before a 50-70 s batch could run the bank dry');
   assert.equal(shouldPrefetch(ready), true);
   assert.equal(shouldPrefetch({ ...ready, queueLength: 0 }), true);
   assert.equal(shouldPrefetch({ ...ready, queueLength: PREFETCH_AT + 1 }), false, 'enough banked: no paid call yet');
@@ -28,7 +28,7 @@ test('a low queue that is not refilled always has a reason to log; otherwise the
 });
 
 test('the wait for a batch on its way is bounded and never rejects', async () => {
-  assert.ok(BATCH_WAIT_MS > 0 && BATCH_WAIT_MS <= 6000, 'at most six seconds');
+  assert.ok(BATCH_WAIT_MS > 0 && BATCH_WAIT_MS <= 10000, 'at most ten seconds (it ends at the first streamed activity)');
   assert.equal(await settlesWithin(Promise.resolve(), 50), true);
   assert.equal(await settlesWithin(Promise.reject(new Error('failed batch')), 50), true, 'a failed batch has settled too');
   assert.equal(await settlesWithin(new Promise(() => undefined), 20), false, 'a batch still on its way times out');
@@ -202,7 +202,7 @@ test('bank sizing: a small first batch on an empty bank, the model\'s full batch
 });
 
 test('a missed activity returns later, unchanged and free, on a spaced schedule; a flag removes it and its remixes', () => {
-  const box = new AiQueueBox(Array.from({ length: 20 }, (_, i) => item('op', i + 1)));
+  const box = new AiQueueBox(Array.from({ length: 40 }, (_, i) => item('op', i + 1)));
   const missed: QueuedActivity = { ...item('op', 0), hintsUsed: 2, shown: true };
   assert.equal(box.remix(missed), true);
   const at = box.items.findIndex(q => q.activityId === 'op:0:r1');
@@ -220,4 +220,35 @@ test('a missed activity returns later, unchanged and free, on a spaced schedule;
   assert.ok(box.items.some(q => q.activityId === 'op:50:r1'));
   box.removeContent('op:50');
   assert.ok(!box.items.some(q => q.activityId.startsWith('op:50')), 'a flagged activity never comes back, nor its remix');
+});
+
+test('re-present rule: retry-correct never repeats verbatim (re-drill instead); a final miss returns after ~12', () => {
+  const corrected = { firstCorrect: false, finalCorrect: true, workedOpened: false };
+  assert.equal(wantsRepeat(corrected), false, 'put right on the retry: no exact repeat');
+  assert.equal(wantsRedrill(corrected), true, 'a fresh variant of the skill in the next batch instead');
+  assert.equal(wantsRepeat({ ...corrected, finalCorrect: false }), true, 'final answer wrong: the exact activity returns');
+  assert.equal(wantsRepeat({ ...corrected, workedOpened: true }), true, 'needed the worked explanation: it returns');
+  assert.equal(wantsRedrill({ ...corrected, workedOpened: true }), false);
+  assert.equal(wantsRepeat({ firstCorrect: true, finalCorrect: true, workedOpened: false }), false);
+  assert.equal(wantsRedrill({ firstCorrect: true, finalCorrect: true, workedOpened: false }), false);
+  const box = new AiQueueBox(Array.from({ length: 20 }, (_, i) => item('op', i + 1)));
+  const shown: QueuedActivity = { ...item('op', 0), shown: true };
+  // First answer wrong: the return is scheduled at once (durable), then withdrawn when the retry is right.
+  box.remix(shown);
+  assert.equal(box.items.findIndex(q => q.activityId === 'op:0:r1'), 12, 'a final miss comes back after ~12 others');
+  assert.equal(box.unremix(shown), true);
+  assert.ok(!box.items.some(q => q.activityId.startsWith('op:0')), 'corrected on the retry: never shown verbatim again');
+  assert.equal(box.unremix(shown), false);
+});
+
+test('arrived() resolves when a streamed activity is banked', async () => {
+  const box = new AiQueueBox();
+  let landed = false;
+  const wait = box.arrived().then(() => { landed = true; });
+  box.merge([], none);
+  await Promise.resolve();
+  assert.equal(landed, false, 'nothing added: still waiting');
+  box.merge([item('op', 0)], none);
+  await wait;
+  assert.equal(landed, true);
 });

@@ -47,8 +47,8 @@ export interface BatchRequest {
  * `pendingSpecs` (queued or on-screen activities, oldest first) widen the variety fingerprint so the
  * next batch does not repeat what is already waiting.
  */
-export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false, pendingSpecs: readonly ActivitySpec[] = [], count = BATCH_SIZE): BatchRequest {
-  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder, pendingSpecs });
+export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false, pendingSpecs: readonly ActivitySpec[] = [], count = BATCH_SIZE, redrillSkills: readonly string[] = []): BatchRequest {
+  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder, pendingSpecs, redrillSkills });
   const prompt = buildActivityPrompt(summary, { count });
   const { name, schema } = prompt.responseFormat.json_schema;
   return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], count: prompt.count, maxOutputTokens: Number(batchOutputTokens(prompt.count)), summary,
@@ -101,6 +101,46 @@ export function parseBatch(text: string, allowedSkillIds: readonly string[], ope
     errors: result.errors.slice(0, 5),
     schemaRejected, semanticRejected: result.rejected.length - schemaRejected,
   };
+}
+
+/**
+ * Bank activities while a batch streams (#929 fast start). Feed it the reply text so far; each time one more element of
+ * the "activities" array closes, the text is parsed with `parseBatch` (the same per-item salvage and validation as the
+ * finished reply) and the newly valid activities are handed to `onItems`. Ids follow batch positions, so the final
+ * parse maps to the same ids and the queue deduplicates them. Parsing runs once per completed element, not per delta.
+ */
+export function streamBatch(allowedSkillIds: readonly string[], onItems: (items: QueuedActivity[]) => void) {
+  const emitted = new Set<string>();
+  let scanned = 0, arrayAt = -1, depth = 0, inString = false, escaped = false;
+  return (text: string, operationId: string, model?: string): void => {
+    if (text.length < scanned) return; // never shrinks; a different reply would need a fresh parser
+    if (arrayAt < 0) {
+      const m = /"activities"\s*:\s*\[/.exec(text);
+      if (!m) { scanned = text.length; return; }
+      arrayAt = m.index + m[0].length;
+      scanned = arrayAt;
+    }
+    let closed = false;
+    for (let i = scanned; i < text.length; i++) {
+      const c = text[i];
+      if (inString) { if (escaped) escaped = false; else if (c === '\\') escaped = true; else if (c === '"') inString = false; continue; }
+      if (c === '"') inString = true;
+      else if (c === '{') depth++;
+      else if (c === '}' && depth > 0 && --depth === 0) closed = true;
+    }
+    scanned = text.length;
+    if (!closed) return;
+    const fresh = parseBatch(text, allowedSkillIds, operationId, model).items.filter(i => !emitted.has(i.activityId));
+    fresh.forEach(i => emitted.add(i.activityId));
+    if (fresh.length) onItems(fresh);
+  };
+}
+/** Drop activities whose exact content was already shown this session or is already waiting (a model repeating itself). */
+export function freshItems(items: readonly QueuedActivity[], seen: readonly ActivitySpec[]): QueuedActivity[] {
+  // The model's own id is not content: the same problem under a new id is still the same problem.
+  const key = (spec: ActivitySpec) => specHash({ ...spec, id: '' });
+  const hashes = new Set(seen.map(key));
+  return items.filter(i => { const h = key(i.spec); if (hashes.has(h)) return false; hashes.add(h); return true; });
 }
 
 /** Re-validate a saved activity against the whole graph. */

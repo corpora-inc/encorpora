@@ -5,7 +5,7 @@ import { fixtures } from '../activity/fixtures';
 import { correctResponse, type LearnerResponse } from '../activity/grade';
 import type { ActivitySpec } from '../activity/spec';
 import { createLearner, getSkill, quarantineActivity, recordSpecAttempt, type LearnerState } from '../learning';
-import { buildBatchRequest, gradeSpecAttempt, parseBatch, specRestorer, verifySpecAttempt } from './aiActivities';
+import { buildBatchRequest, freshItems, gradeSpecAttempt, parseBatch, streamBatch, specRestorer, verifySpecAttempt } from './aiActivities';
 import { restoreLearning, needsSpecRestorer, LearningRecoveryError } from './recovery';
 import { activityBatchStrictJsonSchema } from '../activity/schema';
 
@@ -374,6 +374,35 @@ test('the batch prompt budget is the model policy\'s budget for its size; a smal
   assert.equal(BigInt(BATCH_MAX_OUTPUT_TOKENS), batchOutputTokens(BATCH_SIZE));
   const first = buildBatchRequest(createLearner('fresh', 3), 3, at(1), false, [], FIRST_BATCH_ACTIVITIES);
   assert.equal(first.count, 6);
-  assert.match(first.user, /Write 6 activities/);
+  assert.match(first.user, /Write exactly 6 activities/);
   assert.equal(BigInt(first.maxOutputTokens), batchOutputTokens(6));
+});
+
+test('stream-show: each activity is banked as soon as its JSON completes, with the final parse\'s ids; a cut-off stream keeps them', () => {
+  const good = [fx('fx-3-fraction-bar'), fx('fx-2-coins'), fx('fx-5-plant-the-tree')];
+  const text = JSON.stringify({ activities: good, rationale: 'Fractions, money and the plane.' });
+  const window = allIds(good);
+  const banked: string[][] = [];
+  const feed = streamBatch(window, items => banked.push(items.map(i => i.activityId)));
+  // Feed it in small deltas, as the stream arrives.
+  for (let n = 7; n < text.length; n += 7) feed(text.slice(0, n), 'op-s');
+  feed(text, 'op-s');
+  assert.ok(banked.length >= 3, 'one hand-off per completed activity, not one at the end');
+  assert.deepEqual(banked[0], ['op-s:0'], 'the first activity is banked before the second has arrived');
+  assert.deepEqual(banked.flat(), ['op-s:0', 'op-s:1', 'op-s:2'], 'each exactly once');
+  assert.deepEqual(parseBatch(text, window, 'op-s').items.map(i => i.activityId), banked.flat(), 'same ids as the final parse: no double queueing');
+  // A stream cut off mid-way still banked its complete activities.
+  const cut: string[] = [];
+  const feedCut = streamBatch(window, items => cut.push(...items.map(i => i.activityId)));
+  const second = text.indexOf(JSON.stringify(good[1])) + JSON.stringify(good[1]).length;
+  for (let n = 5; n <= second + 20; n += 5) feedCut(text.slice(0, n), 'op-c');
+  assert.deepEqual(cut, ['op-c:0', 'op-c:1']);
+});
+
+test('a batch never brings back an exact activity already shown this session', () => {
+  const a = fx('fx-3-fraction-bar'), b = fx('fx-2-coins');
+  const items = [a, b, a].map((spec, i) => ({ activityId: `op:${i}`, operationId: 'op', spec }));
+  assert.deepEqual(freshItems(items, []).map(i => i.activityId), ['op:0', 'op:1'], 'a repeat inside one batch is dropped');
+  assert.deepEqual(freshItems(items, [b]).map(i => i.activityId), ['op:0'], 'a spec shown earlier this session is dropped');
+  assert.deepEqual(freshItems([{ activityId: 'op2:0', operationId: 'op2', spec: { ...a, id: 'renamed' } }], [a]), [], 'the same problem under a new id is still a repeat');
 });

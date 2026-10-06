@@ -44,8 +44,12 @@ function fixture(specs){
     const allowed=new Set(user.split('\nSTANDARDS\n')[1].split('\nWrite ')[0].split('\n').map(line=>line.split(' ')[0]));
     const usable=specs.filter(f=>f.skillIds.every(id=>allowed.has(id)));
     const pool=usable.length>=3?usable:specs;
+    // The content serial survives reloads (ai.batches restarts at 0 on each launch).
+    const batch=Number(localStorage.getItem('aha-test-batch-serial')||0);
+    localStorage.setItem('aha-test-batch-serial',String(batch+1));
     const start=(ai.batches++*3)%pool.length;
-    let chosen=[0,1,2].map(i=>pool[(start+i)%pool.length]);
+    // TEST-ONLY: a real model writes new content each batch; the app drops exact repeats of anything shown this session.
+    let chosen=[0,1,2].map(i=>pool[(start+i)%pool.length]).map(c=>batch?{...c,explanation:`${c.explanation} (set ${batch})`}:c);
     // TEST-ONLY: pin each activity's difficulty so a scenario can queue a harder or an easier one.
     if(ai.difficulties)chosen=chosen.map((c,i)=>({...c,difficulty:ai.difficulties[i]??c.difficulty}));
     if(ai.malformedNext){
@@ -588,6 +592,8 @@ try {
     await h.waitForFunction(()=>window.__ahaAI.requests.some((r,i)=>i>=2&&/"wantsHarder":true/.test(r.messages[1].content[0].text)));
     const user=await h.evaluate(()=>window.__ahaAI.requests.findLast(r=>/"wantsHarder":true/.test(r.messages[1].content[0].text)).messages[1].content[0].text);
     assert.match(user,/"wantsHarder":true/,'the next batch request tells the model the learner wants harder');
+    // The chained refill may already be on its way before this answer's save lands: wait for the evidence itself.
+    await h.waitForFunction(()=>Object.values(window.__ahaFixture.read().attempts).flat().length>=2);
     const attempts=await hAttempts();
     assert.deepEqual(attempts.map(a=>a.data.activityId),[easy,first],'only the answered activities have evidence');
     assert.deepEqual(hErrors,[]);
@@ -785,7 +791,8 @@ try {
     await oNext.click();
     await o.locator('.focus-stage.is-spec .aha-activity').waitFor();
     assert.notEqual((await os()).aiActivity.operationId,old,'AI resumes from the batch that landed');
-    assert.equal(await oStarts(),1);
+    // The bank ran low while that batch streamed, so one background refill follows it (single flight); the tap made none.
+    assert.equal(await oStarts(),2);
     const j=await o.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1']);
     assert.equal(j.version,4,'the v2 journal is stored as v4 on its first write');
     assert.deepEqual(j.operations.slice(0,2).map(op=>op.id),[archived,old],'the older build’s settled operations are kept');
