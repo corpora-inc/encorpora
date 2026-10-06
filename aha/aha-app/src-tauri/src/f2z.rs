@@ -32,8 +32,10 @@ pub fn app_readiness() -> Readiness {
 /// purchases (its capability excludes them), so it must not ask for either.
 pub const SCOPES: &[&str] = &["openid", "offline_access", "balance:read", "ai:invoke"];
 
+/// Resolved by `build.rs` from `AHA_FREE2Z_CLIENT_ID` or the release-written config file, because
+/// the env var alone never reaches the iOS compile inside Xcode. Empty means unconfigured.
 fn client_id() -> Option<&'static str> {
-    option_env!("AHA_FREE2Z_CLIENT_ID").filter(|value| !value.trim().is_empty())
+    Some(env!("AHA_FREE2Z_CLIENT_ID_RESOLVED")).filter(|value| !value.is_empty())
 }
 pub fn configure<R: tauri::Runtime>(app: tauri::Builder<R>) -> tauri::Builder<R> {
     let Some(id) = client_id() else { return app };
@@ -52,8 +54,38 @@ pub fn configure<R: tauri::Runtime>(app: tauri::Builder<R>) -> tauri::Builder<R>
 }
 
 #[cfg(test)]
+#[allow(dead_code)] // RESOLVED_VAR is only for build.rs.
+#[path = "../build_support/client_id.rs"]
+mod build_client_id;
+
+#[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn build_resolves_client_id_from_env_or_release_file() {
+        use super::build_client_id::resolve;
+        let id = "iVhrb5JkopnFs1sPAyhYGX6UdiHjI03Enpj9Qymg";
+        assert_eq!(resolve(None, None), Ok(None));
+        assert_eq!(resolve(Some("  "), Some("\n")), Ok(None));
+        assert_eq!(resolve(Some(id), None), Ok(Some(id.to_owned())));
+        // Xcode strips the env on iOS: the release-written file alone must configure the build.
+        assert_eq!(
+            resolve(None, Some(&format!("{id}\n"))),
+            Ok(Some(id.to_owned()))
+        );
+        assert_eq!(resolve(Some(id), Some(id)), Ok(Some(id.to_owned())));
+        assert!(resolve(Some(id), Some("someOtherClientId123")).is_err());
+        for bad in [
+            "short",
+            "has space inside id",
+            "quote\"breaks\"rust",
+            &"x".repeat(129),
+        ] {
+            assert!(resolve(Some(bad), None).is_err(), "{bad}");
+            assert!(resolve(None, Some(bad)).is_err(), "{bad}");
+        }
+    }
 
     #[test]
     fn client_registration_exposes_only_public_configuration() {

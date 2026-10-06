@@ -196,6 +196,15 @@ jobs:
       - name: Install and verify frontend
         working-directory: aha/aha-app
         run: npm ci && npm test && npm run build
+      - name: Bake the public Free2Z client id into the native build
+        # `tauri ios build` runs xcodebuild with a cleared environment, so the Rust compile inside
+        # Xcode never sees AHA_FREE2Z_CLIENT_ID. build.rs reads this gitignored file instead, on
+        # both platforms. The id is a public OAuth client id, not a secret.
+        run: |
+          set -euo pipefail
+          if [ -n "$AHA_FREE2Z_CLIENT_ID" ]; then
+            printf '%s\n' "$AHA_FREE2Z_CLIENT_ID" > "$APP_DIR/src-tauri/release-config/free2z-client-id"
+          fi
       - name: Archive with app-specific manual signing
         working-directory: aha/aha-app
         env:
@@ -254,6 +263,10 @@ jobs:
           with open(os.environ['GITHUB_OUTPUT'],'a') as out:
               out.write(f'path={ipas[0].resolve()}\nversion={version}\n')
           PY
+      - name: Verify the IPA ships Free2Z sign-in enabled
+        env:
+          IPA: ${{ steps.ipa.outputs.path }}
+        run: python aha/scripts/release_verify.py client-id --ipa "$IPA"
       - uses: actions/upload-artifact@v4
         if: always() && steps.ipa.outputs.path != ''
         with:
@@ -340,6 +353,15 @@ jobs:
       - name: Install and verify frontend
         working-directory: aha/aha-app
         run: npm ci && npm test && npm run build
+      - name: Bake the public Free2Z client id into the native build
+        # `tauri ios build` runs xcodebuild with a cleared environment, so the Rust compile inside
+        # Xcode never sees AHA_FREE2Z_CLIENT_ID. build.rs reads this gitignored file instead, on
+        # both platforms. The id is a public OAuth client id, not a secret.
+        run: |
+          set -euo pipefail
+          if [ -n "$AHA_FREE2Z_CLIENT_ID" ]; then
+            printf '%s\n' "$AHA_FREE2Z_CLIENT_ID" > "$APP_DIR/src-tauri/release-config/free2z-client-id"
+          fi
       - name: Build AAB
         working-directory: aha/aha-app
         env:
@@ -377,6 +399,10 @@ jobs:
           assert 'PAGE_ALIGNMENT_16K' in config, 'AAB does not request 16 KiB APK packaging'
           PY
           echo "path=$AAB" >> "$GITHUB_OUTPUT"
+      - name: Verify every ABI ships Free2Z sign-in enabled
+        env:
+          AAB: ${{ steps.aab.outputs.path }}
+        run: python aha/scripts/release_verify.py client-id --aab "$AAB"
       - name: Sign app-specific upload bundle
         env:
           AAB: ${{ steps.aab.outputs.path }}

@@ -5,6 +5,7 @@ import argparse
 import datetime
 import json
 import os
+import plistlib
 import re
 from pathlib import Path
 import struct
@@ -69,6 +70,63 @@ def verify_bundle(path: Path) -> int:
         raise ReleaseCheckError('Bundle contains no shared libraries; check cannot pass vacuously')
     print(f'All {count} bundled shared libraries pass ELF LOAD and RELRO 16 KiB checks.')
     return count
+
+
+AAB_ABIS = frozenset({'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'})
+CLIENT_ID_RE = re.compile(r'[A-Za-z0-9._-]{8,128}')
+
+
+def expected_client_id(value: str | None) -> str | None:
+    """The configured public Free2Z client id, or None when the repository variable is unset."""
+    value = (value or '').strip()
+    if not value:
+        return None
+    if not CLIENT_ID_RE.fullmatch(value):
+        raise ReleaseCheckError('AHA_FREE2Z_CLIENT_ID is malformed')
+    return value
+
+
+def ipa_client_id_count(path: Path, client_id: str) -> int:
+    """Asserts the IPA's main executable embeds the client id (Free2Z sign-in enabled)."""
+    with zipfile.ZipFile(path) as ipa:
+        plists = [n for n in ipa.namelist()
+                  if n.startswith('Payload/') and n.count('/') == 2 and n.endswith('.app/Info.plist')]
+        if len(plists) != 1:
+            raise ReleaseCheckError('IPA must contain exactly one Payload app')
+        info = plistlib.loads(ipa.read(plists[0]))
+        executable = info.get('CFBundleExecutable')
+        if not executable or '/' in executable:
+            raise ReleaseCheckError('IPA app has no valid CFBundleExecutable')
+        binary = ipa.read(plists[0][:-len('Info.plist')] + executable)
+    if client_id.encode() not in binary:
+        raise ReleaseCheckError('iOS executable lacks the Free2Z client id; sign-in would ship disabled')
+    print('iOS executable embeds the configured Free2Z client id.')
+    return 1
+
+
+def aab_client_id_count(path: Path, client_id: str) -> int:
+    """Asserts every ABI's libaha_lib.so in the AAB embeds the client id."""
+    needle = client_id.encode()
+    abis = set()
+    with zipfile.ZipFile(path) as bundle:
+        for name in bundle.namelist():
+            parts = name.split('/')
+            if len(parts) == 4 and parts[1] == 'lib' and parts[3] == 'libaha_lib.so':
+                if needle not in bundle.read(name):
+                    raise ReleaseCheckError(f'{parts[2]} libaha_lib.so lacks the Free2Z client id; sign-in would ship disabled')
+                abis.add(parts[2])
+    if abis != AAB_ABIS:
+        raise ReleaseCheckError(f'AAB libaha_lib.so ABIs {sorted(abis)} differ from {sorted(AAB_ABIS)}')
+    print(f'All {len(abis)} libaha_lib.so ABIs embed the configured Free2Z client id.')
+    return len(abis)
+
+
+def verify_client_id(*, ipa: Path | None = None, aab: Path | None = None, configured: str | None = None) -> int:
+    client_id = expected_client_id(configured)
+    if client_id is None:
+        print('AHA_FREE2Z_CLIENT_ID is not configured; this build ships with Free2Z sign-in disabled.')
+        return 0
+    return ipa_client_id_count(ipa, client_id) if ipa else aab_client_id_count(aab, client_id)
 
 
 def required(name: str) -> str:
@@ -384,6 +442,9 @@ def main():
     sub = parser.add_subparsers(dest='command', required=True)
     elf = sub.add_parser('elf'); elf.add_argument('bundle', type=Path)
     sub.add_parser('android-app')
+    client = sub.add_parser('client-id').add_mutually_exclusive_group(required=True)
+    client.add_argument('--ipa', type=Path)
+    client.add_argument('--aab', type=Path)
     audience = sub.add_parser('audience')
     audience.add_argument('--build', required=True)
     audience.add_argument('--since', type=int, required=True)
@@ -416,6 +477,9 @@ def main():
         return
     if args.command == 'elf':
         verify_bundle(args.bundle); return
+    if args.command == 'client-id':
+        verify_client_id(ipa=args.ipa, aab=args.aab, configured=os.environ.get('AHA_FREE2Z_CLIENT_ID'))
+        return
     if args.command == 'android-app':
         play_app_access(Store('android'))
         return

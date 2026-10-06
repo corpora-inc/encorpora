@@ -55,7 +55,13 @@ background/kill/resume behavior need device tests before release claims.
 The official plugin is pinned to the public source preview
 `d63959f9c766258d7ce827e68f4ddd93d2797f99`; its transitive core is the sole native
 client. Configure the public registration through the build environment variable
-`AHA_FREE2Z_CLIENT_ID`. An unconfigured build starts normally with sign-in unavailable.
+`AHA_FREE2Z_CLIENT_ID` or the gitignored file `release-config/free2z-client-id`;
+`build.rs` resolves either (they must agree) into the crate. The file exists because
+`tauri ios build` runs xcodebuild with a cleared environment, so the env var never
+reaches the iOS Rust compile; the release workflow writes the file on both platforms and
+`release_verify.py client-id` fails the release if the IPA executable or any ABI's
+`libaha_lib.so` lacks the configured id. An unconfigured build starts normally with
+sign-in unavailable.
 No credentials, endpoint overrides or callback injection commands are exposed to
 JavaScript. The local `main` window receives only the named Free2Z guest permissions.
 Purchase and checkout commands are not granted in this beta, matching its disabled

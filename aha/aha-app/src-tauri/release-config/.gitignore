@@ -1,0 +1,4 @@
+# The release workflow writes the public Free2Z client id here before a native build
+# (see build_support/client_id.rs). Never commit it.
+*
+!.gitignore
