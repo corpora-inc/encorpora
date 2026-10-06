@@ -16,30 +16,42 @@ import { extractJsonObject, recoverBatchItems, shapeErrors, validateActivityBatc
 import { gradeActivity, type GradeOutcome, type LearnerResponse } from '../activity/grade';
 import { activityIdFor, type QueuedActivity } from './aiQueue';
 import type { StructuredOutput } from '../provider/free2z';
+import { DEFAULT_BATCH_ACTIVITIES, batchOutputTokens } from '../provider/models';
 
 /** Every skill in the bundled graph, including guided-only standards. */
 const GRAPH_SKILL_IDS: ReadonlySet<string> = new Set(skills.map(s => s.id));
-/** The spec prompt's output budget. The provider journal records it per operation (journal v2). */
-export const BATCH_MAX_OUTPUT_TOKENS = 2600;
-export const BATCH_SIZE = 4;
+/**
+ * Activities per paid batch when the model is not known (the prompt default and dev evals). Production sizes each batch
+ * per model and bank (models.ts `batchActivitiesFor`, aiQueue.ts `batchSizeFor`, #929).
+ */
+export const BATCH_SIZE = DEFAULT_BATCH_ACTIVITIES;
+/** The output budget of a default-size batch. The provider journal records each request's own budget (journal v4). */
+export const BATCH_MAX_OUTPUT_TOKENS = Number(batchOutputTokens(BATCH_SIZE));
 
 export interface BatchRequest {
   system: string;
   user: string;
   /** The standards window the model was shown; a fresh or recovered reply is validated against it. */
   allowedSkillIds: string[];
-  maxOutputTokens: typeof BATCH_MAX_OUTPUT_TOKENS;
+  /** Activities asked for. */
+  count: number;
+  /** The output budget for that many (a non-reasoning model; Controller sends `batchBudget(pick, count)`). */
+  maxOutputTokens: number;
   summary: LearnerSummary;
   /** Used instead of `system` when the model advertises structured output: the strict schema plus the grammar-free prompt. */
   structured: StructuredOutput;
 }
 
-/** The learner summary comes from the evidence ledger only: levels and results, never names or ids. */
-export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false): BatchRequest {
-  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder });
-  const prompt = buildActivityPrompt(summary, { count: BATCH_SIZE });
+/**
+ * The learner summary comes from the evidence ledger only: levels and results, never names or ids.
+ * `pendingSpecs` (queued or on-screen activities, oldest first) widen the variety fingerprint so the
+ * next batch does not repeat what is already waiting.
+ */
+export function buildBatchRequest(state: LearnerState, gradeHint: Grade, now = new Date().toISOString(), wantsHarder = false, pendingSpecs: readonly ActivitySpec[] = [], count = BATCH_SIZE): BatchRequest {
+  const summary = buildLearnerSummary({ gradeHint, ledger: state, now, wantsHarder, pendingSpecs });
+  const prompt = buildActivityPrompt(summary, { count });
   const { name, schema } = prompt.responseFormat.json_schema;
-  return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], maxOutputTokens: BATCH_MAX_OUTPUT_TOKENS, summary,
+  return { system: prompt.system, user: prompt.user, allowedSkillIds: [...prompt.allowedSkillIds], count: prompt.count, maxOutputTokens: Number(batchOutputTokens(prompt.count)), summary,
     structured: { name, schema, system: prompt.structuredSystem } };
 }
 
@@ -72,7 +84,8 @@ function rawActivities(text: string): unknown[] {
  */
 export function parseBatch(text: string, allowedSkillIds: readonly string[], operationId: string, model?: string): ParsedBatch {
   const allowed = new Set(allowedSkillIds.filter(id => GRAPH_SKILL_IDS.has(id)));
-  const result = validateActivityBatch(text, { skillIds: allowed });
+  // Fresh and recovered replies alike get the authoring rules; stored evidence restores without them (verifySpec).
+  const result = validateActivityBatch(text, { skillIds: allowed, authoring: true });
   // Ids follow each activity's position in the model's batch, not its position among accepted
   // ones, so a redelivered reply maps to the same ids even if validation rules change in between.
   const rejected = new Set(result.rejected.map(r => r.index));

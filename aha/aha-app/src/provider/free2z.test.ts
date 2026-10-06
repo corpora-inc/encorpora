@@ -801,7 +801,7 @@ test('archiving a settled structured operation drops its saved schema from the l
   assert.deepEqual(archived.request,{model:'verified-model',messages:[],maxOutputTokens:'2600'});
 });
 test('a structured request outside Free2Z limits is never sent: logged, and the prompt-only request goes instead',async()=>{
-  for(const bad of [{...structured,schema:{type:'object',description:'x'.repeat(32*1024)}},{...structured,name:'has space'},{...structured,system:'x'.repeat(20_000)}]){
+  for(const bad of [{...structured,schema:{type:'object',description:'x'.repeat(32*1024)}},{...structured,name:'has space'},{...structured,system:'x'.repeat(24_000)}]){
     const f=structuredFixture();
     await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600',bad);
     assert.ok(f.estimates.every(r=>!('response_format' in r)));assert.ok(!('response_format' in f.calls[0].request));
@@ -867,7 +867,7 @@ test('a request too large for the model (preflight too_large) is refused before 
 
 // ---- Reasoning models: a per-model batch budget (journal v4), "ran out of room", and dropped-stream recovery ----
 const reasoningBudget = '12000';
-test('a reasoning batch journals and sends its per-model budget (journal v4); anything outside 2600..12000 is refused before any call',async()=>{
+test('a reasoning batch journals and sends its per-model budget (journal v4); anything outside 2600..16384 is refused before any call',async()=>{
  const f=fixture();
  const reply=await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget);
  assert.equal(f.estimates.at(-1)!.max_output_tokens,12000n,'the hold estimate uses the reasoning budget');
@@ -878,12 +878,12 @@ test('a reasoning batch journals and sends its per-model budget (journal v4); an
  // A model whose own ceiling is below 12k gets that ceiling (models.ts caps it): any whole number in range is valid.
  await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'8192');
  assert.equal(f.calls[1].request.max_output_tokens,8192n);
- for(const bad of ['12001','2599','0','012000','12000.0','1e4','',' 12000'])
+ for(const bad of ['16385','2599','0','012000','12000.0','1e4','',' 12000'])
   await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,bad),{code:'output_budget_invalid'},bad);
  assert.equal(f.calls.length,2);
 });
 test('journal v4 validation: a reasoning budget needs v4, and a corrupted budget fails closed',async()=>{
- for(const mutate of [(l:any)=>{l.version=3;},(l:any)=>{l.operations[0].request.maxOutputTokens='12001';},(l:any)=>{l.operations[0].request.maxOutputTokens='2599';},(l:any)=>{l.operations[0].request.maxOutputTokens=12000;}]){
+ for(const mutate of [(l:any)=>{l.version=3;},(l:any)=>{l.operations[0].request.maxOutputTokens='16385';},(l:any)=>{l.operations[0].request.maxOutputTokens='2599';},(l:any)=>{l.operations[0].request.maxOutputTokens=12000;}]){
   const f=fixture([]);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,batchContext,reasoningBudget),{code:'interrupted'});
   mutate(f.getValue());
   await assert.rejects(f.tutor.inspectPending(),{code:'journal_invalid'});
@@ -993,4 +993,11 @@ test('"ran out of room" is still detected when the usage event arrives after don
  assert.equal(f.getValue().operations[0].outOfRoom,true);assert.equal(f.logged.length,1);
  assert.equal((await f.tutor.pendingReplies())[0]!.outOfRoom,true,'the restored reply carries it');
  assert.equal(reply.operationId,f.getValue().operations[0].id);
+});
+test('journal v4 accepts every batch budget the bank sizes send (#929): 2600 to 16384, a full 35-activity batch is 15000',async()=>{
+ const {validOutputBudget}=await import('./free2z.ts');
+ const {batchOutputTokens,FIRST_BATCH_ACTIVITIES,MAX_BATCH_ACTIVITIES}=await import('./models.ts');
+ for(const n of [FIRST_BATCH_ACTIVITIES,12,25,MAX_BATCH_ACTIVITIES]) assert.ok(validOutputBudget(String(batchOutputTokens(n))),String(n));
+ assert.ok(validOutputBudget('2600')&&validOutputBudget('4096')&&validOutputBudget('16384'),'older reasoning budgets stay readable');
+ assert.ok(!validOutputBudget('16385')&&!validOutputBudget('2599'));
 });

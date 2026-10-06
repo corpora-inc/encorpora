@@ -42,11 +42,11 @@ import {
 } from "../provider/free2z";
 import { previewRepository } from "./preview";
 import { needsSpecRestorer, restoreLearning } from "./recovery";
-import { AiQueueBox, BATCH_WAIT_MS, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
+import { AiQueueBox, BATCH_WAIT_MS, batchSizeFor, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
 import { learningError, refusalAction, retryDeadline, signInFailure } from "./connection";
-import { AUTO, MODEL_CHOICE_KEY, ModelUnavailableError, chooseModel, describePick, modelMenu, readCatalog, readModelChoice, storedModelChoice, type ModelChoice, type ModelMenu, type ModelPick } from "../provider/models";
+import { AUTO, MODEL_CHOICE_KEY, ModelUnavailableError, batchBudget, chooseModel, describePick, modelMenu, readCatalog, readModelChoice, storedModelChoice, type ModelChoice, type ModelMenu, type ModelPick } from "../provider/models";
 import { BATCH_LOG_KEY, aggregateModelStats, appendBatch, modelStatsLines, readBatchLog, type BatchRecord, type SpecAnswer } from "./modelStats";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
 import { spendingSummary } from "./spending";
@@ -177,6 +177,8 @@ export default function Controller() {
   const batchStop = useRef<StopToken | undefined>(undefined);
   /** The loaded learner had saved AI activities: a low restored queue is refilled once AI is connected. */
   const restoredAi = useRef(false);
+  /** The learner has a saved practice session (practised before): launch may prefetch their bank (#929). */
+  const practisedBefore = useRef(false);
   /** The last ai-skip reason logged (digits ignored), so a long local run logs each reason once. */
   const lastSkip = useRef<string | undefined>(undefined);
   /** The learner asked for harder and no queued activity was; the next paid batch carries the signal. */
@@ -379,6 +381,7 @@ export default function Controller() {
     if (restored.droppedAi) logEvent("warn", "ai-queue", `${restored.droppedAi} saved AI activities no longer validate and were set aside.`);
     // Saved by this build or an older one: what survived re-validation, so a device log shows what the next batch follows.
     restoredAi.current = !!(restored.aiQueue.length || restored.aiActivity);
+    practisedBefore.current = !!saved;
     if (restoredAi.current)
       logEvent("info", "ai-queue", `restored ${restored.aiQueue.length} queued AI activities${restored.aiActivity ? " and the one on screen" : ""}`);
     currentProfile.current = p;
@@ -827,9 +830,9 @@ export default function Controller() {
                 status: readiness.current.reason,
               });
               await restorePaidAnswer();
-              // A restored queue (from this build or an older one) may already be low: refill it now, not on the
-              // next tap, so the learner is not left waiting for a batch the moment the queue runs out.
-              if (await connectAccount() && generation === lifecycle.current && restoredAi.current) maybePrefetch();
+              // Prefetch at launch (#929): a learner who practised before gets their bank filled before the first tap, whether
+              // or not a queue was restored. A brand-new learner's first tap starts it (theirs to Stop).
+              if (await connectAccount() && generation === lifecycle.current && (restoredAi.current || practisedBefore.current)) maybePrefetch();
             }
           }
         }
@@ -1011,7 +1014,7 @@ export default function Controller() {
     if (skippedAi) maybePrefetch();
   }
   /**
-   * One paid batch request (3–5 activities) through the journal, grant and settlement fences.
+   * One paid batch request (up to BATCH_SIZE activities) through the journal, grant and settlement fences.
    * Returns true when activities were queued. When AI cannot produce them it logs, backs off and
    * returns false so local practice continues. Background prefetches never surface an alert.
    */
@@ -1039,13 +1042,18 @@ export default function Controller() {
       const pick = await pickModel();
       const runtime = await loadAiActivities();
       const harder = wantsHarder.current;
-      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder);
+      // Shown and queued AI activities join the variety fingerprint, so the next batch does not repeat them (#894).
+      const pendingSpecs = [...(currentAi.current ? [currentAi.current.spec] : []), ...aiQueue.current.items.map(i => i.spec)];
+      // A small first batch on an empty bank (the learner may be waiting), else the model's full batch (#929).
+      const count = batchSizeFor(aiQueue.current.length, pick.batchActivities);
+      const request = runtime.buildBatchRequest(state, gradeHint(p), undefined, harder, pendingSpecs, count);
+      logEvent("info", "ai-batch", `${stage}: asking for ${count} activities (${aiQueue.current.length} banked)`);
       // Checked with no await before reply(): a Stop after this point reaches the provider through cancel().
       if (stopped()) { logEvent("info", "ai-skip", `${stage}: stopped by the learner before sending; no paid request`); return false; }
       if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed before sending; no batch requested`, "info"); return false; }
-      // The pick's budget: the prompt's 2600, or a reasoning model's 12k (capped by its ceiling). Journaled with the request.
+      // The budget for this batch's size, or a reasoning model's 12k (capped by its ceiling). Journaled with the request.
       const reply = await tutor.reply(pick.id, request.system, request.user, authorization,
-        {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(pick.maxOutputTokens), request.structured);
+        {kind: "activities", profileId: p.id, allowedSkillIds: request.allowedSkillIds}, String(batchBudget(pick, count)), request.structured);
       // A learner or account switch leaves the completed batch saved for its own learner.
       if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed; the batch stays saved for its learner`, "info"); return false; }
       const queuedBefore = aiQueue.current.length;
@@ -1151,8 +1159,9 @@ export default function Controller() {
     count.current++;
     setCompleted(count.current);
     setAiResult(graded.outcome);
-    // A miss offers the spec's worked explanation through "Show me how".
+    // A miss offers the spec's worked explanation through "Show me how", and the activity returns later, unchanged (#929).
     setFeedback(graded.outcome.correct ? undefined : {kind: "retry", title: "Not quite yet.", message: item.spec.explanation});
+    if (!graded.outcome.correct && aiQueue.current.remix(item)) logEvent("info", "ai-queue", `a missed AI activity returns later for spaced practice (${aiQueue.current.length} banked)`);
     // This write is presentation state; the transaction above already durably recorded the answer.
     await saveSession();
     maybePrefetch();
@@ -1283,7 +1292,7 @@ export default function Controller() {
       );
       displayState(updated);
       // A set-aside AI spec can never come back from the queue, a skip's requeue or a restore (#899).
-      aiQueue.current.remove(shownId);
+      aiQueue.current.removeContent(shownId);
       if (pendingAi.current?.item.activityId === shownId) pendingAi.current = undefined;
       currentActivity.current = undefined;
       setActivity(undefined);
@@ -1414,7 +1423,7 @@ export default function Controller() {
       status: readiness.current.reason,
     });
     await loadAccount(repo);
-    if (await connectAccount("sign-in") && restoredAi.current) maybePrefetch();
+    if (await connectAccount("sign-in") && (restoredAi.current || practisedBefore.current)) maybePrefetch();
   }
   async function signOut() {
     await provider.current?.cancel();

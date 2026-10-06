@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { standards } from '../../../curriculum/standards';
 import { fixtures } from './fixtures';
 import { checkTex, renderTex } from './text';
-import { extractJsonObject, FigureSchema, ResponseSchema, validateActivityBatch, validateActivitySpec, type ActivitySpec } from './spec';
+import { extractJsonObject, FigureSchema, MAX_BATCH_ACTIVITIES, ResponseSchema, validateActivityBatch, validateActivitySpec, type ActivitySpec } from './spec';
 import { activityBatchJsonSchema, activityBatchStrictJsonSchema, activitySpecJsonSchema } from './schema';
 
 const skillIds = new Set(standards.map(s => s.id));
@@ -97,7 +97,12 @@ describe('Activity Spec v1 validator', () => {
     assert.equal(validateActivitySpec(noKey, { skillIds, requireKeyCheck: false }).ok, true);
   });
   it('enforces cross-field rules', () => {
-    rejects(s => { s.prompt = s.prompt.filter((b: any) => b.type !== 'figure'); }, /never shown/);
+    // Grammar default (#929): a figure with no figure block is shown after the first text block, never rejected.
+    const unplaced: any = base(); unplaced.prompt = unplaced.prompt.filter((b: any) => b.type !== 'figure');
+    const placed = validateActivitySpec(unplaced, { skillIds });
+    assert.ok(placed.ok);
+    if (placed.ok) { const i = placed.spec.prompt.findIndex(b => b.type === 'text'); assert.deepEqual(placed.spec.prompt[i + 1], { type: 'figure', figureId: unplaced.figures[0].id }); }
+    rejects(s => { s.prompt = s.prompt.filter((b: any) => b.type !== 'figure'); s.prompt.push(...Array.from({ length: 8 - s.prompt.length }, () => ({ type: 'text', text: 'More.' }))); }, /never shown/);
     rejects(s => { s.prompt.push({ type: 'figure', figureId: 'nope' }); }, /does not exist/);
     rejects(s => { s.prompt = [{ type: 'figure', figureId: 'votes' }]; }, /at least one text block/);
     rejects(s => { s.figures[0].yMax = 5; }, /yMax/);
@@ -116,6 +121,35 @@ describe('Activity Spec v1 validator', () => {
     const expr: any = clone(fixtures.find(f => f.id === 'fx-6-write-expression')!);
     expr.response.answer = '3m+2';
     assert.match(String((validateActivitySpec(expr, { skillIds }) as any).errors), /Use only n/);
+  });
+  it('geometry graph paper: grid line budget and whole-unit unit squares', () => {
+    const grid = (): ActivitySpec => clone(fixtures.find(f => f.id === 'fx-3-area-graph-paper')!);
+    const check = (mutate: (s: any) => void) => { const s: any = grid(); mutate(s); return validateActivitySpec(s, { skillIds }); };
+    assert.ok(check(() => {}).ok);
+    assert.ok(check(s => { s.figures[0].grid = null; }).ok, 'unit squares work without graph paper (unit 1)');
+    assert.ok(check(s => { s.figures[0].grid = { unit: 0.5 }; s.figures[0].shapes[0].points[0].x = 1.5; }).ok, 'half-unit grid');
+    const no = (mutate: (s: any) => void, pattern: RegExp) => { const r = check(mutate); assert.equal(r.ok, false); if (!r.ok) assert.match(r.errors.join(' | '), pattern); };
+    no(s => { s.figures[0].width = 60; s.figures[0].grid = { unit: 1 }; s.figures[0].shapes[0].unitSquares = false; }, /more than 50 lines/);
+    no(s => { s.figures[0].shapes[0].points[0].x = 1.5; }, /whole number of grid units/);
+    no(s => { s.figures[0].grid = { unit: 0 }; }, /grid|Too small|>=/i);
+    no(s => { s.figures[0].grid = { unit: 1, color: 'red' }; }, /unknown field|Invalid input/);
+  });
+  it('pictures state equal groups structurally (repeat) and bound what they draw', () => {
+    const eq = (): any => clone(fixtures.find(f => f.id === 'fx-3-equal-groups')!);
+    const ok = (mutate: (s: any) => void) => { const s = eq(); mutate(s); return validateActivitySpec(s, { skillIds }); };
+    assert.ok(ok(() => {}).ok);
+    const no = (mutate: (s: any) => void, pattern: RegExp) => { const r = ok(mutate); assert.equal(r.ok, false); if (!r.ok) assert.match(r.errors.join(' | '), pattern); };
+    no(s => { s.figures[0].groups[0].count = 30; }, /at most 100 icons/);
+    no(s => { s.figures[0].groups = [{ icon: 'egg', count: 1, repeat: 7 }, { icon: 'nest', count: 1, repeat: 6 }]; }, /at most 12 groups/);
+    no(s => { s.figures[0].groups[0].crossedOut = 1; }, /repeated group/);
+    no(s => { s.figures[0].groups[0].id = 'nest'; }, /repeated group/);
+    no(s => { s.figures[0].groups[0].repeat = 0; }, /repeat|>=|Too small/i);
+  });
+  it('icons: any snake_case object name, nothing else', () => {
+    const pic = (): any => clone(fixtures.find(f => (f.figures ?? []).some(x => x.type === 'picture'))!);
+    const withIcon = (icon: string) => { const s = pic(); s.figures.find((x: any) => x.type === 'picture').groups[0].icon = icon; return validateActivitySpec(s, { skillIds }).ok; };
+    for (const ok of ['apple', 'sailboat', 'traffic_cone', 'pinecone', 'constructor']) assert.ok(withIcon(ok), ok);
+    for (const bad of ['Apple', '<svg>', 'https://x.io/a.png', 'a b', '', 'x'.repeat(33), 'café']) assert.equal(withIcon(bad), false, bad);
   });
   it('requires plot answers to be reachable on the per-axis snap grid', () => {
     const plot = (): any => clone(fixtures.find(f => f.id === 'fx-5-plant-the-tree')!);
@@ -197,8 +231,8 @@ describe('batch parsing and validation', () => {
     assert.deepEqual(e.accepted.map(a => a.id), [JSON.parse(acts[0]!).id, JSON.parse(acts[2]!).id]);
     // Valid JSON of the wrong shape stays strict; recovery never widens the envelope rules.
     assert.equal(validateActivityBatch(`{"batch":{"rationale":"r","activities":[${acts[0]},${acts[2]}]}}`, { skillIds }).accepted.length, 0);
-    const six = Array.from({ length: 6 }, (_, i) => acts[0]!.replace('"fx-2-fruit-graph"', `"a-${i}"`)).join(',');
-    assert.equal(validateActivityBatch(`{"rationale":"r","activities":[${six},]}`, { skillIds }).accepted.length, 0, 'more than 5 is rejected even when damaged');
+    const many = Array.from({ length: MAX_BATCH_ACTIVITIES + 1 }, (_, i) => acts[0]!.replace('"fx-2-fruit-graph"', `"a-${i}"`)).join(',');
+    assert.equal(validateActivityBatch(`{"rationale":"r","activities":[${many},]}`, { skillIds }).accepted.length, 0, 'more than the batch bound is rejected even when damaged');
     assert.equal(validateActivityBatch(`{"rationale":5,"activities":[${acts[0]},${missingBrace}]}`, { skillIds }).accepted.length, 0, 'a damaged reply still needs a real rationale');
     // An activity whose "version" key is not first is reported, not silently dropped: it is located
     // as an array element (key order never decides; zuu#1132) and rejected for its own errors.
@@ -218,7 +252,7 @@ describe('batch parsing and validation', () => {
   });
   it('rejects malformed envelopes and duplicate ids', () => {
     assert.match(validateActivityBatch('no json here', { skillIds }).errors[0]!, /no JSON object/);
-    assert.match(validateActivityBatch({ activities: [] , rationale: 'x' }, { skillIds }).errors[0]!, /1–5/);
+    assert.match(validateActivityBatch({ activities: [] , rationale: 'x' }, { skillIds }).errors[0]!, /1–40/);
     assert.match(validateActivityBatch({ ...two(), extra: 1 }, { skillIds }).errors[0]!, /Unknown field/);
     const dup = { rationale: 'x', activities: [base(), base()] };
     const r = validateActivityBatch(dup, { skillIds });
@@ -236,7 +270,7 @@ describe('exported JSON Schemas', () => {
   it('standard schemas are strict objects with bounds', () => {
     walk(activitySpecJsonSchema, o => { if (o.type === 'object' && o.properties) assert.equal(o.additionalProperties, false); });
     const text = JSON.stringify(activityBatchJsonSchema);
-    assert.ok(text.includes('"maxItems":5') && text.includes('"maxLength":1200'));
+    assert.ok(text.includes('"maxItems":40') && text.includes('"maxLength":1200'));
     assert.ok(!text.includes('oneOf'));
   });
   it('strict variant is OpenAI strict-mode compatible', () => {

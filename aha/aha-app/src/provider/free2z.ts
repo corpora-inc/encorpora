@@ -1,7 +1,6 @@
 import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Preflight, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 import { diagnostics } from '../diagnostics/log';
-import { BATCH_OUTPUT_TOKENS, REASONING_BATCH_OUTPUT_TOKENS } from './models';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
 export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'preflight' | 'chat' | 'call'>;
@@ -229,10 +228,18 @@ export type ResumeContext =
 /**
  * Output-token budgets a journaled request may carry. 1800 is the original single-activity and
  * curiosity budget (journal v1 pinned it). 2600 is the Activity Spec batch prompt's budget (v2).
- * v4 adds a reasoning model's per-model batch budget (`validOutputBudget`).
+ * v4 adds a reasoning model's per-model batch budget (`validOutputBudget`), and the 10-activity batch's 5600 (#929)
+ * is one of those whole budgets.
  */
 export const OUTPUT_BUDGETS = ['1800', '2600'] as const;
-/** A canonical decimal: one of `OUTPUT_BUDGETS`, or (journal v4) a reasoning batch budget from 2600 to 12000. */
+/**
+ * The smallest whole batch budget journal v4 accepts. A literal, never the current `BATCH_OUTPUT_TOKENS`: raising the
+ * batch budget must never make an existing journal (a reasoning budget capped by a model's ceiling, say 4096) unreadable.
+ */
+const MIN_V4_BATCH_BUDGET = 2600n;
+/** The largest whole batch budget journal v4 accepts: a full 35-activity batch is 15,000 (models.ts, #929). */
+const MAX_V4_BATCH_BUDGET = 16_384n;
+/** A canonical decimal: one of `OUTPUT_BUDGETS`, or (journal v4) a batch budget from 2600 to 16384. */
 export type OutputBudget = string;
 /**
  * v1: only 1800. v2/v3: `OUTPUT_BUDGETS`. v4: also any canonical whole number from 2600 to 12000, the reasoning-model
@@ -242,7 +249,7 @@ export function validOutputBudget(value: unknown, version: number = JOURNAL_VERS
   if (version === 1) return value === '1800';
   if ((OUTPUT_BUDGETS as readonly unknown[]).includes(value)) return true;
   return version >= 4 && typeof value === 'string' && /^[1-9]\d{3,4}$/.test(value) &&
-    BigInt(value) >= BATCH_OUTPUT_TOKENS && BigInt(value) <= REASONING_BATCH_OUTPUT_TOKENS;
+    BigInt(value) >= MIN_V4_BATCH_BUDGET && BigInt(value) <= MAX_V4_BATCH_BUDGET;
 }
 /** Finish reasons that mean the output budget ran out (the gateway normalises to `length`; providers' own names too). */
 const LENGTH_REASONS = ['length', 'max_tokens', 'max_output_tokens'];
@@ -279,10 +286,22 @@ interface Operation {
 interface Ledger { version: 1 | 2 | 3 | 4; operations: Operation[] }
 export const JOURNAL_VERSION = 4;
 const SLOT = 'aha-billing-v1';
-const MAX_TEXT = 24_000;
+/**
+ * Reply characters per operation. A full 15,000-token batch (#929) is ~54k characters at the measured 3.6 characters per
+ * token; the bound leaves room for denser text, so a long batch is never cut off by the app after being charged.
+ */
+const MAX_TEXT = 64_000;
+/**
+ * The reply's size inside the journal (its JSON-encoded UTF-8 bytes), bounded while it streams. The journal keeps this
+ * much room free before a paid send, so a completed reply always fits the 480 kB journal record.
+ */
+const MAX_TEXT_BYTES = 96_000;
+const encoder = new TextEncoder();
+/** Bytes a string adds inside the journal's JSON (escapes and UTF-8 included). */
+const journalBytes = (text: string) => encoder.encode(JSON.stringify(text)).length - 2;
 const MAX_JOURNAL_BYTES = 480_000;
-/** System + user prompt characters per request (the batch prompt is ~12k). */
-const MAX_CONTEXT_CHARS = 20_000;
+/** System + user prompt characters per request (the prompt-only batch prompt is ~18k with the #929 digest and mix). */
+const MAX_CONTEXT_CHARS = 24_000;
 export class TutorServiceError extends Error {
   /** `required2z`: whole 2Z the refused request needed, when Free2Z (or the estimate's hold) reported it. Display only. */
   constructor(public readonly code: string, message: string, public readonly retryAfterSeconds?: number, public readonly required2z?: bigint) { super(message); this.name = 'TutorServiceError'; }
@@ -585,7 +604,7 @@ export class Free2zTutor {
     if (after.generation !== session.generation || this.cancelled) throw new TutorServiceError('cancelled', 'The request was cancelled before starting.');
     const op: Operation = { id:crypto.randomUUID(),key:crypto.randomUUID(),subject:this.subject,generation:session.generation,createdAt:new Date().toISOString(),request:{model,messages,maxOutputTokens,...(format ? {responseFormat:structuredClone(format)} : {}),...(effort ? {reasoningEffort:effort} : {})},state:'opening',text:'',...(savedContext ? {context:structuredClone(savedContext)} : {}) };
     ledger.operations.push(op);
-    if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT * 6 > MAX_JOURNAL_BYTES)
+    if (new TextEncoder().encode(JSON.stringify(ledger)).length + MAX_TEXT_BYTES > MAX_JOURNAL_BYTES)
       throw new TutorServiceError('journal_capacity', 'Archive usage history before another paid request.');
     await this.persist(ledger);
     return await this.run(ledger, op, request, authorization, true);
@@ -625,6 +644,8 @@ export class Free2zTutor {
     let zeroCharge = false;
     // Reported by the stream's `usage` event; hidden reasoning bills as output and counts against the budget.
     let reasoningTokens: bigint | undefined, outputTokens: bigint | undefined;
+    // The reply's journal bytes so far (a recovery may resume over saved text).
+    let textBytes = journalBytes(op.text);
     /** Only on a delivered activity batch (`answerComplete`), so the journal stays valid. */
     const markOutOfRoom = (finishReason: string) => {
       op.outOfRoom = true;
@@ -673,7 +694,8 @@ export class Free2zTutor {
           if (op.answerComplete && !op.outOfRoom && op.context?.kind === 'activities' && !op.text.trim() && (reasoningTokens ?? 0n) > 0n) markOutOfRoom('stop');
         }
         if (event.type === 'delta') {
-          if (op.text.length + event.text.length > MAX_TEXT) throw new TutorServiceError('output_limit','The lesson exceeded the supported size.');
+          textBytes += journalBytes(event.text);
+          if (op.text.length + event.text.length > MAX_TEXT || textBytes > MAX_TEXT_BYTES) throw new TutorServiceError('output_limit','The lesson exceeded the supported size.');
           op.text += event.text;
         }
         if (event.type === 'tool_call') throw new TutorServiceError('unexpected_tool','This request did not authorize tools.');

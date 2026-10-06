@@ -87,6 +87,9 @@ function fixture(specs){
     }
     if(command==='plugin:f2z|start_chat'){
       ai.starts.push(args.operation);ai.requests.push(args.request);
+      // TEST-ONLY `holdAfter: n`: every batch after the first n stays on its way until releaseHeld() (#929: the bank refills
+      // at <= 8 banked, so a scenario that inspects a 3-activity queue holds the background refill in flight).
+      if(typeof ai.holdAfter==='number'&&ai.starts.length>ai.holdAfter)(ai.held??=new Set()).add(args.operation.operationId);
       if(args.request.response_format&&ai.formatRefusal==='chat')throw {code:'invalid_request',status:400};
       // Shaped as tauri-plugin-f2z d4d58ea3 delivers it: 402 balance / 403 budget, with `refusalDetails` as documented details (decimal strings).
       if(ai.strictRefusal){const reason=ai.strictRefusal;ai.strictRefusal=null;ai.refused=(ai.refused??0)+1;throw {code:reason,status:reason==='cap_exceeded'?403:402,retryable:false,...(ai.refusalDetails?{details:ai.refusalDetails}:{})};}
@@ -113,6 +116,7 @@ function fixture(specs){
     }
     // TEST-ONLY: `holdChat` keeps the next batch on its way until the scenario calls releaseChat().
     if(command==='plugin:f2z|next_chat'&&ai.holdChat){ai.holdChat=false;await new Promise(resolve=>{ai.releaseChat=resolve;});}
+    if(command==='plugin:f2z|next_chat'&&ai.held?.has(args.operationId)){await (ai.heldGate??=new Promise(resolve=>{ai.releaseHeld=()=>{ai.held=new Set();ai.heldGate=undefined;ai.holdAfter=undefined;resolve();};}));}
     if(command==='plugin:f2z|next_chat')return streams.get(args.operationId)?.shift()??null;
     if(command==='plugin:f2z|cancel_chat')return;
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
@@ -237,7 +241,7 @@ try {
   await aiCard.waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),1,'one paid call for a whole batch, through the real SDK native transport');
   const batchRequest=await page.evaluate(()=>window.__ahaAI.requests.at(-1));
-  assert.equal(batchRequest.max_output_tokens,'2600','batch budget is the spec prompt budget');
+  assert.equal(batchRequest.max_output_tokens,'2820','an empty bank asks for a small first batch: 6 × 420 + 300 strict output tokens (#929)');
   assert.equal(batchRequest.max_output_tokens_strict,true,'strict output is required on the paid batch request');
   assert.match(batchRequest.messages[0].content[0].text,/activity author/,'prompt-only JSON via the Activity Spec prompt');
   assert.ok(!batchRequest.messages[1].content[0].text.includes('Explorer'),'learner summary carries no names');
@@ -249,7 +253,7 @@ try {
   assert.equal(await page.getByRole('alert').count(),0,'a failed acknowledgement after the durable queue save is not an alert');
   const unacked=(await journal()).operations.find(o=>o.context?.kind==='activities');
   assert.ok(unacked.answerComplete&&!unacked.consumed,'acknowledgement failed: the completed batch stays saved');
-  assert.equal(unacked.request.maxOutputTokens,'2600');
+  assert.equal(unacked.request.maxOutputTokens,'2820');
   assert.equal((await journal()).version,4,'usage journal v4');
   assert.ok(!('response_format' in batchRequest)&&!('responseFormat' in unacked.request),'a model without the capability gets the prompt-only request');
   // Assistance on an AI activity is recorded before the answer and survives a force-reload.
@@ -287,9 +291,10 @@ try {
   await nextButton.click();
   await aiCard.waitFor();
   await page.waitForFunction(()=>window.__ahaAI.starts.length===1);
-  await page.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).length===3);
-  assert.equal(await page.getByRole('button',{name:'Check',exact:true}).isVisible(),true,'prefetch never blocks the current activity');
-  const prefetched=(await session()).aiQueue.slice(1);
+  const malformedOp=await page.evaluate(()=>window.__ahaAI.starts[0].operationId);
+  await page.waitForFunction(op=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.operationId===op),malformedOp);
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor({timeout:5000});
+  const prefetched=(await session()).aiQueue.filter(q=>q.operationId===malformedOp);
   assert.equal(prefetched.length,2,'malformed batch: the two valid activities are kept, the bad key is dropped');
   assert.ok(prefetched.every(q=>q.spec.id!=='broken-key'));
   assert.ok(await page.evaluate(()=>(localStorage.getItem('aha-diagnostics-log')??'').includes('rejected 1')),'rejected activities are logged as model-quality telemetry');
@@ -301,12 +306,18 @@ try {
   // AI unavailable while the queue drains: queued activities are still served, then local practice takes over.
   await page.evaluate(()=>{window.__ahaAI.models502=true;});
   const startsBeforeDrain=await page.evaluate(()=>window.__ahaAI.starts.length);
-  for(let i=0;i<3;i++){
+  // The missed activity waits in the bank too, for spaced retrieval (#929): three queued plus its remix.
+  assert.ok((await session()).aiQueue.some(q=>q.activityId===`${wrong.activityId}:r1`),'the miss comes back later, unchanged');
+  const served=[];
+  // The bank refills at <= 8 banked, so a background batch may already have landed: drain whatever is banked.
+  for(let i=0;i<16&&((await session()).aiQueue??[]).length;i++){
     await nextButton.click();
     await page.getByRole('button',{name:'Check',exact:true}).waitFor();
     assert.ok((await session()).aiActivity,'queued AI activity served without a new paid call');
+    served.push((await session()).aiActivity);
     await answerCurrent(true);
   }
+  assert.ok(served.some(a=>a.activityId===`${wrong.activityId}:r1`&&a.spec.id===wrong.spec.content.id&&JSON.stringify(a.spec.prompt)===JSON.stringify(wrong.spec.content.prompt)),'the remix is the same activity, free');
   assert.equal((await session()).aiQueue,undefined,'queue drained');
   await nextButton.click();
   await page.getByRole('button',{name:'Check',exact:true}).waitFor();
@@ -314,7 +325,7 @@ try {
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),startsBeforeDrain,'the failed prefetch never reached a paid call');
   await localBanner.waitFor();
   assert.ok(consoleErrors.some(m=>/AI unavailable for prefetch/.test(m)),'the failed prefetch is logged visibly');
-  assert.equal((await page.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat())).filter(a=>a.data.source==='ai-spec').length,5,'every answered AI activity is recorded evidence');
+  assert.equal((await page.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat())).filter(a=>a.data.source==='ai-spec').length,2+served.length,'every answered AI activity is recorded evidence');
   await answerCurrent();
   await page.evaluate(()=>{window.__ahaAI.models502=false;});
   await settings();await page.getByRole('button',{name:'Refresh connection',exact:true}).click();
@@ -526,12 +537,13 @@ try {
   {
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
     await ctx.addInitScript(fixture,batchFixtures);
-    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];});
+    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];window.__ahaAI.holdAfter=1;});
     const h=await ctx.newPage();
     const hErrors=[];h.on('pageerror',e=>hErrors.push(e.message));
     const hs=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
     const hAttempts=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat());
-    const hStarts=()=>h.evaluate(()=>window.__ahaAI.starts.length);
+    // The bank refill (2 banked <= 8) starts in the background and is held in flight: it is never the button's call.
+    const hStarts=async()=>(await h.evaluate(()=>window.__ahaAI.starts.length))-(await h.evaluate(()=>window.__ahaAI.held?.size??0));
     const harder=h.getByRole('button',{name:'Try something harder',exact:true});
     const shown=async()=>(await hs()).aiActivity?.activityId;
     const waitShown=async id=>{await h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId===i,id);};
@@ -567,11 +579,17 @@ try {
     await h.getByRole('button',{name:'Check',exact:true}).click();
     await h.getByRole('button',{name:NEXT}).click();
     await waitShown(first);
-    await h.waitForFunction(()=>window.__ahaAI.starts.length===2);
-    const user=await h.evaluate(()=>window.__ahaAI.requests.at(-1).messages[1].content[0].text);
+    // The held refill lands; the next refill is the first batch built after the signal.
+    await h.evaluate(()=>window.__ahaAI.releaseHeld?.());
+    await h.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).length>=4);
+    const k2=(await hs()).aiActivity.spec.response.answer;
+    await h.locator('.aha-activity input[inputmode="decimal"]').fill(String(k2));
+    await h.getByRole('button',{name:'Check',exact:true}).click();
+    await h.waitForFunction(()=>window.__ahaAI.requests.some((r,i)=>i>=2&&/"wantsHarder":true/.test(r.messages[1].content[0].text)));
+    const user=await h.evaluate(()=>window.__ahaAI.requests.findLast(r=>/"wantsHarder":true/.test(r.messages[1].content[0].text)).messages[1].content[0].text);
     assert.match(user,/"wantsHarder":true/,'the next batch request tells the model the learner wants harder');
     const attempts=await hAttempts();
-    assert.deepEqual(attempts.map(a=>a.data.activityId),[easy],'only the answered activity has evidence');
+    assert.deepEqual(attempts.map(a=>a.data.activityId),[easy,first],'only the answered activities have evidence');
     assert.deepEqual(hErrors,[]);
     await ctx.close();
   }
@@ -579,7 +597,7 @@ try {
   {
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
     await ctx.addInitScript(fixture,batchFixtures);
-    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];});
+    await ctx.addInitScript(()=>{window.__ahaAI.enforced=true;window.__ahaAI.difficulties=[5,8,3];window.__ahaAI.holdAfter=1;});
     const h=await ctx.newPage();
     const hErrors=[];h.on('pageerror',e=>hErrors.push(e.message));
     const hs=()=>h.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
@@ -800,7 +818,9 @@ try {
   const scenario=async knobs=>{
     const ctx=await browser.newContext({viewport:{width:1000,height:900}});
     await ctx.addInitScript(fixture,batchFixtures);
-    await ctx.addInitScript(k=>{Object.assign(window.__ahaAI,k);},knobs);
+    // The bank refill that a 3-activity TEST batch triggers at once (<= 8 banked, #929) is held in flight unless a
+    // scenario opts out; `starts()` counts the paid calls that ran, not the held refill.
+    await ctx.addInitScript(k=>{Object.assign(window.__ahaAI,{holdAfter:1},k);},knobs);
     const p=await ctx.newPage();const pageErrors=[],logged=[],warned=[];
     p.on('pageerror',e=>pageErrors.push(e.message));p.on('console',m=>{if(m.type()==='error')logged.push(m.text());if(m.type()==='warning')warned.push(m.text());});
     await p.goto(base);
@@ -808,7 +828,7 @@ try {
     await p.getByRole('button',{name:'Check',exact:true}).waitFor();
     const openSettings=async()=>{await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('heading',{name:'Settings',exact:true}).waitFor();};
     const figure=async label=>(await p.locator('.balance-row > div').filter({has:p.getByText(label,{exact:true})}).locator('dd').textContent());
-    return {ctx,p,pageErrors,logged,warned,openSettings,figure,starts:()=>p.evaluate(()=>window.__ahaAI.starts.length),
+    return {ctx,p,pageErrors,logged,warned,openSettings,figure,starts:()=>p.evaluate(()=>window.__ahaAI.starts.length-(window.__ahaAI.held?.size??0)),
       source:()=>p.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.activity?.source)};
   };
   {
@@ -835,6 +855,7 @@ try {
     assert.equal(await s.figure('Budget left'),'97.5 2Z');
     // Free2Z stops enforcing this grant: the budget figures are no longer shown as if they applied.
     await s.p.evaluate(()=>{window.__ahaAI.enforced=false;window.__ahaAI.reason='ledger_cap_pending';});
+    await s.p.evaluate(()=>window.__ahaAI.releaseHeld?.());
     await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
     await s.p.getByText('Free2Z is still setting up spending for this app.',{exact:false}).first().waitFor();
     assert.equal(await s.p.getByText('App budget',{exact:true}).count(),0,'no stale budget once not enforced');
@@ -911,6 +932,7 @@ try {
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
     // A successful refresh clears the refusal and its link.
+    await s.p.evaluate(()=>window.__ahaAI.releaseHeld?.());
     await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
     await s.p.locator('.connection-pill').filter({hasText:/^AI ready$/}).waitFor();
     assert.equal(await link.count(),0,'the budget link goes away once AI is ready again');
@@ -932,7 +954,8 @@ try {
     const system=request.messages[0].content[0].text;
     assert.ok(system.includes('activity author')&&system.includes('Every key is required'),'grammar-free structured prompt');
     assert.ok(!system.includes('Response (graded on-device'),'the inline grammar is dropped');
-    const [op]=await journalOps(s);
+    // The open (held refill) operation carries its exact format; a settled one is archived without it.
+    const op=(await journalOps(s)).find(o=>o.request.responseFormat);
     assert.deepEqual(op.request.responseFormat,request.response_format,'the exact format is journaled for same-key recovery');
     assert.equal(await s.p.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].version),4);
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
@@ -940,7 +963,7 @@ try {
   {
     // The gateway refuses the format at send (bare 400 invalid_request, as the native transport delivers it):
     // zero-charge release, then the prompt-only request under a new key. No alert; a warning is logged.
-    const s=await scenario({enforced:true,structured:true,formatRefusal:'chat'});
+    const s=await scenario({enforced:true,structured:true,formatRefusal:'chat',holdAfter:2});
     await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
     assert.equal(await s.starts(),2,'the refused structured send, then the prompt-only send');
     const [first,second]=await s.p.evaluate(()=>window.__ahaAI.requests);
@@ -961,16 +984,16 @@ try {
     await s.p.locator('.focus-stage.is-spec .aha-activity').waitFor();
     assert.equal(await s.starts(),1);
     assert.ok(!('response_format' in await s.p.evaluate(()=>window.__ahaAI.requests[0])));
-    assert.equal((await journalOps(s)).length,1);
+    assert.equal((await journalOps(s)).filter(o=>o.state==='finalized').length,1,'only the prompt-only send settled (the refill is held)');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   {
     // ---- Learner-chosen model (TEST-ONLY fake catalogue of three models, no live Free2Z) ----
-    // Typical batch (4k in / 2k out): Pro ≈ 30 2Z (above the 10 2Z auto ceiling), Standard ≈ 5 2Z, Mini ≈ 2 2Z without structured output.
+    // Per activity at a full 35-activity batch: Pro ≈ 4.2 2Z (above the 1.5 2Z auto ceiling), Standard ≈ 0.68 2Z, Mini without structured output.
     const tier=(id,name,input,output,structured)=>({id,provider:'test',display_name:name,context_window:'128000',max_output_tokens:'16384',
       capabilities:{vision:false,tools:false,reasoning:false,structured_output:structured},prices:{input_milli_2z_per_mtok:String(input),output_milli_2z_per_mtok:String(output)},min_charge_2z:'1',ttfb_timeout_ms:'30000'});
     const pro=tier('fixture-pro','Fixture Pro',2500000,10000000,true),standard=tier('fixture-standard','Fixture Standard',500000,1500000,true),mini=tier('fixture-mini','Fixture Mini',100000,400000,false);
-    const s=await scenario({enforced:true,catalog:[pro,standard,mini]});
+    const s=await scenario({enforced:true,catalog:[pro,standard,mini],holdAfter:null});
     const p=s.p,card=p.locator('.focus-stage.is-spec .aha-activity');
     const data=()=>p.evaluate(()=>window.__ahaFixture.read());
     const sess=async()=>Object.values((await data()).sessions)[0].data;
@@ -978,7 +1001,7 @@ try {
     const answer=async()=>{const st=await sess();await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:NEXT}).waitFor();};
     await card.waitFor();
     let request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
-    assert.equal(request.model,'fixture-standard','Best (auto): the dearest structured model within the 10 2Z ceiling');
+    assert.equal(request.model,'fixture-standard','Best (auto): the dearest structured model within the per-activity ceiling');
     assert.equal(request.response_format?.type,'json_schema','the auto pick advertises structured output');
     let st=await sess();
     assert.ok([st.aiActivity,...st.aiQueue].every(q=>q.model==='fixture-standard'),'every queued AI activity names its model');
@@ -987,7 +1010,7 @@ try {
     await p.getByText('Written by Fixture Standard',{exact:true}).waitFor();
     await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();
     const select=p.getByLabel('AI model',{exact:true});
-    assert.deepEqual(await select.locator('option').allTextContents(),['Best (auto) · ≈ 5 2Z per set','Fixture Pro · ≈ 30 2Z per set','Fixture Standard · ≈ 5 2Z per set'],'eligible models only, each with its estimate');
+    assert.deepEqual(await select.locator('option').allTextContents(),['Best (auto) · ≈ 0.68 2Z per activity','Fixture Pro · ≈ 4.2 2Z per activity','Fixture Standard · ≈ 0.68 2Z per activity'],'eligible models only, each with its estimate');
     assert.equal(await select.inputValue(),'auto');
     // A manual pick, persisted per account in the local journal.
     await select.selectOption('fixture-pro');
@@ -996,15 +1019,21 @@ try {
     await answer();
     assert.equal((await attempt()).spec.model,'fixture-standard','the attempt records the model that wrote the activity');
     // Next activity: the queue runs low and the background batch goes to the learner's choice.
+    // (The bank refills at <= 8 banked, so a refill to auto's pick may already have run before the choice.)
     await p.getByRole('button',{name:NEXT}).click();
-    await p.waitForFunction(()=>window.__ahaAI.starts.length===2);
+    const proQueued=()=>p.evaluate(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-pro'));
+    // The next problem (AI, or the local timed-recall task every fifth), answered whatever it is.
+    const shownKey=d=>d.aiActivity?.activityId??d.activity?.id;
+    const nextShown=async()=>{const before=shownKey(await sess());await p.getByRole('button',{name:NEXT}).click();await p.waitForFunction(id=>{const d=Object.values(window.__ahaFixture.read().sessions)[0].data;return (d.aiActivity?.activityId??d.activity?.id)!==id;},before);await p.getByRole('button',{name:'Check',exact:true}).waitFor();};
+    const answerAny=async()=>{const st=await sess();if(st.aiActivity)return answer();const v=String(expectedAnswer(st.activity.task)),sym={'<':'Less than','>':'Greater than','=':'Equal to'}[v];if(sym)await p.getByRole('button',{name:sym,exact:true}).click();else await p.getByLabel('Your answer',{exact:true}).fill(v);await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:NEXT}).waitFor();};
+    for(let i=0;i<20&&!(await proQueued());i++){await p.getByRole('button',{name:'Check',exact:true}).waitFor();await answerAny();await nextShown();}
     await p.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-pro'));
     request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
     assert.equal(request.model,'fixture-pro','a manual pick is honoured, even above the auto ceiling');
     const proOp=(await data()).journals['aha-billing-v1'].operations.at(-1);
     assert.equal(proOp.request.model,'fixture-pro','the chosen model is persisted in the journal operation (same-key recovery resends to it)');
     // Work through the rest of the first batch to the first Pro activity, answer it, then flag the next one.
-    for(let i=0;i<5&&(await sess()).aiActivity?.model!=='fixture-pro';i++){await answer();await p.getByRole('button',{name:NEXT}).click();await card.waitFor();}
+    for(let i=0;i<20&&(await sess()).aiActivity?.model!=='fixture-pro';i++){await answerAny();await nextShown();}
     st=await sess();
     assert.equal(st.aiActivity.model,'fixture-pro');
     const records=Object.values((await data()).activities).flat();
@@ -1049,6 +1078,7 @@ try {
     await p.getByLabel('AI model',{exact:true}).waitFor();
     assert.equal(await p.getByLabel('AI model',{exact:true}).inputValue(),'fixture-pro','the choice is persisted per account');
     await p.evaluate(m=>{window.__ahaAI.catalog=m;},[standard,mini]);
+    await p.evaluate(()=>window.__ahaAI.releaseHeld?.());
     await p.getByRole('button',{name:'Refresh connection',exact:true}).click();
     await p.waitForFunction(()=>document.querySelector('.model-choice select')?.value==='auto');
     assert.equal((await data()).journals['aha-model-choice-v1'].model,'fixture-pro','one degraded catalogue read never erases the stored choice');
@@ -1066,28 +1096,30 @@ try {
     const data=()=>p.evaluate(()=>window.__ahaFixture.read());
     const sess=async()=>Object.values((await data()).sessions)[0].data;
     await card.waitFor();
-    let request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    let request=await p.evaluate(()=>window.__ahaAI.requests[0]);
     assert.equal(request.model,'fixture-standard','Best (auto) skips the reasoning model even though it would otherwise be the dearest within the ceiling');
-    assert.equal(request.max_output_tokens,'2600');
+    assert.equal(request.max_output_tokens,'2820','the first batch on an empty bank is small');
     await s.openSettings();
     const select=p.getByLabel('AI model',{exact:true});
     assert.deepEqual(await select.locator('option').allTextContents(),
-      ['Best (auto) · ≈ 5 2Z per set','Fixture Reasoner · ≈ 19 2Z per set · thinks longer, costs more','Fixture Standard · ≈ 5 2Z per set'],
+      ['Best (auto) · ≈ 0.68 2Z per activity','Fixture Reasoner · ≈ 2.9 2Z per activity · thinks longer, costs more','Fixture Standard · ≈ 0.68 2Z per activity'],
       'the reasoning model is labelled and its estimate includes reasoning headroom');
     await select.selectOption('fixture-reasoner');
     await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-model-choice-v1']?.model==='fixture-reasoner');
     await p.getByRole('button',{name:'Close settings',exact:true}).click();
+    // The refill to auto's pick that started before the choice lands; the next refill goes to the choice.
+    await p.evaluate(()=>window.__ahaAI.releaseHeld?.());
     const st=await sess();
     await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));
     await p.getByRole('button',{name:'Check',exact:true}).click();
     await p.getByRole('button',{name:NEXT}).click();
-    await p.waitForFunction(()=>window.__ahaAI.starts.length===2);
+    await p.waitForFunction(()=>window.__ahaAI.requests.some(r=>r.model==='fixture-reasoner'));
     await p.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-reasoner'));
-    request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
+    request=await p.evaluate(()=>window.__ahaAI.requests.findLast(r=>r.model==='fixture-reasoner'));
     assert.deepEqual([request.model,request.max_output_tokens,request.max_output_tokens_strict,request.response_format?.type],['fixture-reasoner','12000',true,'json_schema'],
       'the chosen reasoning model gets the 12k strict budget, structured output kept');
     const j=(await data()).journals['aha-billing-v1'];
-    const op=j.operations.at(-1);
+    const op=j.operations.findLast(o=>o.request.model==='fixture-reasoner');
     assert.deepEqual([j.version,op.request.model,op.request.maxOutputTokens,op.outOfRoom],[4,'fixture-reasoner','12000',true],
       'the journal records the per-model budget (same-key recovery replays it) and that the set ran out of room');
     // The cut-off set still yields its whole activities, and the per-model stats say it ran out of room.
@@ -1095,14 +1127,15 @@ try {
     await p.getByText('Model stats',{exact:true}).click();
     await p.locator('.model-stats li').first().waitFor();
     const lines=await p.locator('.model-stats li').allTextContents();
-    assert.ok(lines.some(l=>l.startsWith('fixture-reasoner: 1 set · kept 3, rejected 0 schema + 0 semantic, 1 ran out of room')),lines.join(' / '));
+    // The bank refills at <= 8 banked, so the reasoner may have written more than one set by now: every one ran out of room.
+    assert.ok(lines.some(l=>/^fixture-reasoner: (\d+) sets? · kept \d+, rejected 0 schema \+ 0 semantic, \1 ran out of room/.test(l)),lines.join(' / '));
     assert.ok(lines.some(l=>l.startsWith('fixture-standard:')&&!l.includes('ran out of room')),lines.join(' / '));
     assert.ok(s.warned.some(m=>/batch ran out of room: model=fixture-reasoner finish_reason=length max_output_tokens=12000 reasoning_tokens=11000/.test(m))||
       (await p.evaluate(()=>localStorage.getItem('aha-diagnostics-log')??'')).includes('batch ran out of room: model=fixture-reasoner'),'logged explicitly per model');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

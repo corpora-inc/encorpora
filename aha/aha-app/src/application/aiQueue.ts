@@ -2,11 +2,14 @@
  * Prefetch-queue policy for AI-authored activities. Pure and dependency-free so it lives in the
  * startup bundle; parsing, validation and grading load lazily from ./aiActivities.
  *
- * One paid call returns a batch of 3–5 activities. Validated activities wait in a queue that is
- * saved with the presentation session, so a restart never buys the same activities again. The next
- * batch is requested while the learner works on the last queued activity, which hides latency.
+ * The queue is the learner's problem bank (#929). One paid call returns a batch: a small first one on an empty bank, then
+ * big ones sized to the model (up to `MAX_BATCH_ACTIVITIES`). Validated activities wait in the bank, which is saved with
+ * the presentation session, so a restart never buys the same activities again. The bank is refilled in the background
+ * whenever it runs low, never on the learner's critical path. A missed activity comes back later, unchanged (free
+ * retrieval practice), on a spaced schedule (`remixMiss`).
  */
 import type { ActivitySpec } from '../activity/spec';
+import { FIRST_BATCH_ACTIVITIES, MAX_BATCH_ACTIVITIES } from '../provider/models';
 
 /** A validated activity waiting to be shown (or currently shown). */
 export interface QueuedActivity {
@@ -26,10 +29,49 @@ export interface QueuedActivity {
   shown?: true;
 }
 
-/** Request the next batch when this many or fewer activities remain queued. */
-export const PREFETCH_AT = 1;
-/** Never hold more than this many unseen activities (bounds the session record and wasted spend). */
-export const MAX_QUEUE = 10;
+/**
+ * Refill the bank in the background when this many or fewer activities remain (#929). A big batch streams for a few
+ * minutes; eight activities usually cover it, so the learner rarely meets an empty bank.
+ */
+export const PREFETCH_AT = 8;
+/** Remixed misses that may wait in the bank on top of a refill. */
+export const MAX_REMIXES = 4;
+/**
+ * Never hold more than this many unseen activities (bounds the session record and wasted spend). A refill lands on at
+ * most PREFETCH_AT queued ones plus remixes, so a whole batch always fits and a paid activity is never dropped.
+ */
+export const MAX_QUEUE = PREFETCH_AT + MAX_BATCH_ACTIVITIES + MAX_REMIXES + 1;
+/**
+ * How many activities the next call asks for: a small first batch when the bank is empty, so the first problems arrive in
+ * seconds; otherwise the model's full batch (`ModelPick.batchActivities`).
+ */
+export function batchSizeFor(banked: number, modelBatch: number): number {
+  return banked === 0 ? Math.min(FIRST_BATCH_ACTIVITIES, modelBatch) : modelBatch;
+}
+/** A missed activity returns after this many others, then (if missed again) after this many more. */
+export const REMIX_GAPS = [6, 15] as const;
+/** `${original}:r1`, `${original}:r2`: the remix's own activity id, so its evidence is recorded separately. */
+export const remixId = (activityId: string, round: number) => `${baseId(activityId)}:r${round}`;
+/** The activity id without its remix suffix: the original paid activity. */
+export const baseId = (activityId: string) => activityId.replace(/:r\d+$/, '');
+/** The same paid content: the same original activity, or a remix of it. */
+export const sameContent = (a: QueuedActivity, b: QueuedActivity) => baseId(a.activityId) === baseId(b.activityId);
+const remixRound = (activityId: string) => Number(/:r(\d+)$/.exec(activityId)?.[1] ?? 0);
+/**
+ * Spaced retrieval of a miss (#929): the same activity, unchanged, comes back after REMIX_GAPS[round] others. Free: no
+ * paid call. Returns the queue unchanged after the last round, when the bank already holds MAX_REMIXES remixes, or when
+ * the same content is already waiting. A remix carries no hints and is never marked shown, so it is a fresh attempt;
+ * mastery still needs distinct activities (the engine counts distinct spec hashes), so a remix cannot inflate it.
+ */
+export function remixMiss(queue: readonly QueuedActivity[], missed: QueuedActivity, sameContent: (a: QueuedActivity, b: QueuedActivity) => boolean): QueuedActivity[] {
+  const round = remixRound(missed.activityId);
+  const gap = REMIX_GAPS[round];
+  if (gap === undefined || queue.filter(q => /:r\d+$/.test(q.activityId)).length >= MAX_REMIXES || queue.some(q => sameContent(q, missed))) return [...queue];
+  const { hintsUsed: _h, shown: _s, ...rest } = missed;
+  const item: QueuedActivity = { ...rest, activityId: remixId(missed.activityId, round + 1) };
+  const at = Math.min(gap, queue.length);
+  return [...queue.slice(0, at), item, ...queue.slice(at)];
+}
 
 export const activityIdFor = (operationId: string, index: number): string => `${operationId}:${index}`;
 
@@ -157,6 +199,14 @@ export class AiQueueBox {
   /** Put a skipped activity at the back (no duplicate); paid content waits its turn and is never discarded. */
   requeueBack(item: QueuedActivity): void { this.queue = [...this.queue.filter(q => q.activityId !== item.activityId), item]; }
   remove(activityId: string): void { this.queue = this.queue.filter(q => q.activityId !== activityId); }
+  /** A missed activity comes back later (`remixMiss`). */
+  remix(missed: QueuedActivity): boolean {
+    const before = this.queue.length;
+    this.queue = remixMiss(this.queue, missed, sameContent);
+    return this.queue.length > before;
+  }
+  /** Drop an activity and every remix of it (a flagged activity never comes back, #899). */
+  removeContent(activityId: string): void { const base = baseId(activityId); this.queue = this.queue.filter(q => baseId(q.activityId) !== base); }
   /** Undo one delivery's additions without disturbing anything that happened meanwhile. */
   unmerge(activityIds: readonly string[]): void { const ids = new Set(activityIds); this.queue = this.queue.filter(q => !ids.has(q.activityId)); }
   without(activityId: string): QueuedActivity[] { return this.queue.filter(q => q.activityId !== activityId); }
