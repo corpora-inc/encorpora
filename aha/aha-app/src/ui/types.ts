@@ -72,7 +72,8 @@ export interface StudioProps {
   };
   hint?: string;
   curiosity?: { question: string; answer?: string };
-  session: { completed: number; target: number; minutes?: number; complete?: boolean; summary?: string };
+  /** Items answered in this open-ended run; it never ends. The bar shows the lap toward the next milestone. */
+  session: { completed: number; minutes?: number };
   /** Unused by the studio since Growth reads `growth`; kept optional for older harnesses. */
   progress?: {
     label: string;

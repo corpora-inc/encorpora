@@ -691,6 +691,53 @@ try{
   }
   await seeder.getByRole('button',{name:'Check',exact:true}).waitFor();
   const seeded=await seeder.evaluate(()=>localStorage.getItem('aha-controller-test-fixture'));await seedCtx.close();
+  // Endless focus loop: 26 local items in a row on a phone, never a pause or end screen.
+  {
+    const ITEMS=26;
+    const ctx=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});await ctx.addInitScript(fixture);
+    const P=await ctx.newPage();P.on('pageerror',e=>errors.push(e.message));
+    await P.goto(base);await P.getByRole('button',{name:'Let’s begin',exact:true}).click();
+    const onScreen=d=>d?.aiActivity?.activityId??d?.activity?.id;
+    const now=()=>P.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0]?.data);
+    let ai=0,local=0;
+    for(let i=1;i<=ITEMS;i++){
+      await P.getByRole('button',{name:'Check',exact:true}).waitFor();
+      const d=await now(),id=onScreen(d);
+      if(d.aiActivity){ai++;await P.locator('.aha-activity input[inputmode="decimal"]').fill(String(d.aiActivity.spec.response.answer));}
+      else{
+        local++;const want=expectedAnswer(d.activity.task),sym={'<':'Less than','>':'Greater than','=':'Equal to'}[want];
+        if(d.activity.choices)await P.locator(`input[type=radio][value="${want}"]`).check();
+        else if(sym)await P.getByRole('button',{name:sym,exact:true}).click();
+        else await P.getByLabel('Your answer',{exact:true}).fill(want);
+      }
+      await P.getByRole('button',{name:'Check',exact:true}).click();
+      await P.getByRole('button',{name:'Next',exact:true}).waitFor();
+      assert.equal(await P.getByText(/place to pause/i).count(),0,`item ${i}: no pause or end screen`);
+      const bar=P.locator('.focus-progress');
+      assert.equal(await bar.getAttribute('aria-valuemax'),'10');
+      assert.equal(await bar.getAttribute('aria-valuenow'),String(i%10||10),`item ${i}: the bar marks a lap, not an end`);
+      assert.equal(await bar.evaluate(b=>b.classList.contains('is-milestone')),i%10===0,`item ${i}: a lap glows only as it completes`);
+      await P.getByRole('button',{name:'Next',exact:true}).click();
+      await P.waitForFunction(prev=>{const d=Object.values(window.__ahaFixture.read().sessions)[0]?.data;const now=d?.aiActivity?.activityId??d?.activity?.id;return !!now&&now!==prev;},id);
+    }
+    await P.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.equal(await P.locator('.focus-progress').getAttribute('aria-valuenow'),String(ITEMS%10),'the next item starts a fresh lap');
+    const paidCalls=await P.evaluate(()=>window.__ahaAI?.starts.length??0);
+    // Home steps away at any moment; Continue (and a restart) resume exactly the same item and lap.
+    const resumeAt=onScreen(await now());
+    await P.getByRole('button',{name:'Home',exact:true}).click();
+    await P.getByRole('button',{name:'Continue',exact:true}).click();await P.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.equal(onScreen(await now()),resumeAt,'Home then Continue resumes the same item');
+    await P.reload();await P.getByRole('button',{name:'Continue',exact:true}).click();await P.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.equal(onScreen(await now()),resumeAt,'a restart resumes the same item');
+    assert.equal(await P.locator('.focus-progress').getAttribute('aria-valuenow'),String(ITEMS%10),'a restart keeps the lap');
+    const recorded=await P.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat());
+    assert.equal(recorded.length,ITEMS,'every answer is one durable attempt');
+    assert.equal(new Set(recorded.map(a=>a.sessionId)).size,1,'one open-ended run; no session boundary every ten items');
+    assert.equal(ai,0);assert.equal(local,ITEMS);assert.equal(paidCalls,0);
+    await ctx.close();
+    console.log(`Endless loop: ${ITEMS} local items in a row with no pause or end screen; Home and restart resume the same item.`);
+  }
   const shots=process.env.AHA_UI_SHOTS;
   const clearanceFailures=[];let clearanceChecks=0,growthCards=0;
   for(const [w,h] of [[384,832],[360,640],[412,915],[820,1180],[1280,800]])for(const v of [{},{inset:48},{inset:48,large:true}]){
