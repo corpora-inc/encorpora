@@ -44,7 +44,7 @@ function Harness() {
   const advance = () => { setError(undefined); if (holding) setBusy(true); else next(); };
   window.__stage = { hold: () => setHolding(true), release: () => { setHolding(false); next(); }, fail: setError };
   return <Studio mode="native" practiceMode="ai" practiceStatus="AI tutoring · progress saved on this device" learnerName="Test"
-    session={{ completed: 3, target: 10 }} progress={[]} account={{ connected: true, aiReady: true }}
+    session={{ completed: 3 }} progress={[]} account={{ connected: true, aiReady: true }}
     spec={{ id: `${spec.id}-${index}`, spec, result, onSubmit: r => setResult(gradeActivity(spec, r)) }}
     activityAnswered={!!result && !result.invalid} hint={hint} busy={busy} error={error}
     busyLabel={busy ? 'Preparing your next AI lesson…' : undefined} onCancel={busy ? () => setBusy(false) : undefined}

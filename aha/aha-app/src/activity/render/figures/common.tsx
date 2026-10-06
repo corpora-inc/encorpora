@@ -42,6 +42,8 @@ export const fmt = (n: number) => {
 };
 
 export const series = (c: ColorToken | undefined, i = 0) => `var(--ax-${c && c !== 'plain' ? c : (['teal', 'coral', 'blue', 'gold'] as const)[i % 4]})`;
+/** Outline/stroke colour for a series: gold is a fill hue, too light to draw a 3:1 edge on the light panel. */
+export const edge = (c: ColorToken | undefined, i = 0) => { const s = series(c, i); return s === 'var(--ax-gold)' ? 'var(--ax-gold-edge)' : s; };
 export const tint = (c: ColorToken | undefined, i = 0) => `var(--ax-${c && c !== 'plain' ? c : (['teal', 'coral', 'blue', 'gold'] as const)[i % 4]}-tint)`;
 
 /** Split a label into at most two lines that fit roughly `maxChars` each. */
