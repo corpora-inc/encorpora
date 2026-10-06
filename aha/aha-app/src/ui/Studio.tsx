@@ -33,6 +33,7 @@ let specRenderer: SpecRenderer | undefined;
 const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
 import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
+import { connectionPill } from "./connectionStatus";
 import { isEditable, nextKeyboardLayout, sampleViewport, type KeyboardLayout } from "./keyboard";
 import { logError } from "../diagnostics/log";
 import { ModelChoice, ModelStats } from "./ModelSettings";
@@ -488,6 +489,7 @@ export function Studio(props: StudioProps) {
     ? "Browser preview · sample practice · progress stays in this preview"
     : props.practiceStatus ?? (props.account.aiReady ? "AI tutoring" : "Local practice");
   const ai = props.practiceMode === "ai";
+  const pill = connectionPill(props.account);
   const progress = (lapValue / LAP) * 100;
   const growth = props.growth;
 
@@ -942,9 +944,7 @@ export function Studio(props: StudioProps) {
               A Free2Z account supplies AI access. Progress stays in this app. Selected mathematical
               learning context is sent to Free2Z and its model provider; names aren’t needed.
             </p>
-            <span className={`connection-pill ${props.account.connected && props.account.aiReady ? "ready" : "local"}`}>
-              {props.account.connected ? props.account.aiReady ? "AI ready" : "Connected · AI not ready" : "Local practice"}
-            </span>
+            <span className={`connection-pill ${pill.ready ? "ready" : "local"}`}>{pill.label}</span>
             {props.account.connected && !props.account.aiReady && <p className="account-status">Local practice continues in this account while AI tutoring is unavailable.</p>}
             {props.error && <div className="error-banner" role="alert"><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
             {props.busy && <p className="account-status" role="status">{props.busyLabel ?? "Working on it…"}</p>}
@@ -958,6 +958,7 @@ export function Studio(props: StudioProps) {
             )}
             {props.account.connected && props.modelMenu && <ModelChoice menu={props.modelMenu} busy={props.busy} onChoose={props.onChooseModel} />}
             {props.account.status && <p className="account-status">{props.account.status}</p>}
+            {props.account.connected && props.account.recoveryNote && <p className="account-status">{props.account.recoveryNote}</p>}
             {!props.account.connected && props.account.signInAvailable === false && !props.account.status && (
               <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
             )}

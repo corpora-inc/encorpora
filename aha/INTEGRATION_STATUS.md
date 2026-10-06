@@ -376,9 +376,30 @@ preserves its assistance and timing. Curiosity answers are also saved before
 acknowledgement. Settings can restore saved answers for their original
 learner or explicitly set them aside while retaining usage records.
 
-Unknown settlement blocks fresh paid calls. Explicit recovery uses the original
+Unknown settlement blocks fresh paid calls. Recovery uses the original
 body and key within the service's recovery window. Receipt-only replay does not
-pretend to regenerate text. Learner deletion and backup replacement cannot strand
+pretend to regenerate text.
+
+**Automatic receipt recovery (2026-10-06, S26).** A batch was in flight at 14:33:55Z when the app was reinstalled
+(14:34:16Z). Every later attempt logged `settlement_pending` and served local practice, and Settings showed
+"AI ready" after Refresh connection although the receipt still blocked every batch. Recovery is now automatic
+(`src/application/receiptRecovery.ts`), using only the provider's `reconcile()` (`GET /v1/calls/{id}`) and
+`recover()` (the original Idempotency-Key and identical journaled body; never a fresh key). It runs:
+
+- at launch and on Refresh connection, once the session is restored (ignoring the backoff);
+- on resume (back in the foreground), and immediately before any new paid batch or reply while something is unsettled;
+- in the background after a failure, backing off 15 s, doubling to 10 min, never before a Retry-After.
+
+A recovered batch is queued like a fresh one; a recovered curiosity reply stays saved for the next Continue.
+While anything is unsettled no new paid call is sent (#882), local practice continues, and Settings shows
+"Finishing an earlier AI request…", never "AI ready". Once the journal shows nothing unsettled, AI resumes with
+no tap and no alert. Settings adds a note only after a persistent failure: unsettled for 24 h, past the same-key
+window with no call id, a definitive error, or another learner's request. Every attempt logs `ai-recovery`.
+"Check pending AI usage", "Recover original request" and Refresh connection remain as manual nudges.
+Covered by `receiptRecovery.test.ts` (the real provider over a TEST-ONLY fake SDK) and `test:ai`, which
+restarts mid-batch against a TEST gateway that replays a known key's receipt. That run checks one charge,
+no new key while unsettled, a launch attempt, a background retry, resume, and AI resuming with no manual tap.
+Not yet device-verified. Learner deletion and backup replacement cannot strand
 unsettled requests. Stop during grant/model preparation prevents paid dispatch.
 Capacity Retry-After delays survive the provider adapter and prevent immediate
 manual re-dispatch; no automatic new paid retry or top-up occurs.

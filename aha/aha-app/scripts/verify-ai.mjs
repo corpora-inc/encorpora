@@ -31,6 +31,12 @@ function fixture(specs){
   // with a 100 2Z total app budget once enforced; scenarios switch to no budget or a low balance.
   window.__ahaAI={signedIn:true,enforced:false,reason:'platform_disabled',spendCap:'100',capPeriod:'total',capRemaining:'99000',available:'100000',hold:'1',starts:[],requests:[],batches:0,delayModels:false,releaseModels:null,blockEstimate:false,grants:0,activityAccounts:[],malformedNext:false};
   const ai=window.__ahaAI;
+  // TEST-ONLY: knobs a scenario wants in force at the next launch (a reload re-runs this script).
+  Object.assign(ai,JSON.parse(localStorage.getItem('aha-test-ai-launch')||'{}'));
+  // TEST-ONLY gateway ledger, kept across reloads: every Idempotency-Key whose call was opened, with its one charge.
+  // The same key again replays that call's settled receipt and charges nothing (the Free2Z contract).
+  const gatewayKey='aha-test-gateway';
+  const gateway=()=>JSON.parse(localStorage.getItem(gatewayKey)||'{}');
   /** TEST "model": answers the batch prompt with fixture specs whose skills are in the standards window it was shown. */
   const batchText=user=>{
     const allowed=new Set(user.split('\nSTANDARDS\n')[1].split('\nWrite ')[0].split('\n').map(line=>line.split(' ')[0]));
@@ -83,6 +89,14 @@ function fixture(specs){
       // Shaped as tauri-plugin-f2z d4d58ea3 delivers it: 402 balance / 403 budget, with `refusalDetails` as documented details (decimal strings).
       if(ai.strictRefusal){const reason=ai.strictRefusal;ai.strictRefusal=null;ai.refused=(ai.refused??0)+1;throw {code:reason,status:reason==='cap_exceeded'?403:402,retryable:false,...(ai.refusalDetails?{details:ai.refusalDetails}:{})};}
       if(ai.failOpening){ai.failOpening=false;throw {code:'unavailable',retryAfterSeconds:'5'};}
+      const key=args.operation.idempotencyKey,ledger=gateway();
+      if(ledger[key]){
+        // TEST-ONLY `failRecovery`: the gateway is unreachable for a same-key resend.
+        if(ai.failRecovery)throw {code:'unavailable'};
+        ai.replays=(ai.replays??0)+1;
+        return {operationId:args.operation.operationId,callId:ledger[key].callId,replay:{call_id:ledger[key].callId,status:'settled',charged_2z:'1',receipt_id:'fixture-receipt'}};
+      }
+      ledger[key]={callId:'fixture-call',charged2z:'1'};localStorage.setItem(gatewayKey,JSON.stringify(ledger));
       const user=args.request.messages[1].content[0].text;
       const text=user.startsWith('LEARNER ')?batchText(user):'You can use this idea to share ingredients fairly.';
       // TEST-ONLY: `outOfRoomModel` makes that model's batches end at their budget after hidden reasoning (finish_reason length).
@@ -323,26 +337,18 @@ try {
   await page.getByRole('alert').filter({hasText:'outstanding AI usage before deleting'}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaFixture.read().profiles.length),1,'unresolved request keeps original learner recoverable');
   await page.waitForTimeout(5100);
-  // The unsettled receipt still blocks a NEW paid call but no longer blocks local practice.
+  // Refresh connection runs the same-key receipt recovery itself (founder S26: it used to report "AI ready" while the
+  // receipt still blocked every batch). The recovered batch's queue save fails once (disk full): the completed batch
+  // must stay durable in the journal and reach the learner after a restart without a new call.
+  await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
   await page.getByRole('button',{name:'Refresh connection',exact:true}).click();
   await page.getByText('AI ready',{exact:true}).waitFor();
-  await page.getByRole('button',{name:'Close settings',exact:true}).click();
-  const grantsBeforePending=await page.evaluate(()=>window.__ahaAI.grants),consoleBeforePending=consoleErrors.length;
-  await answerCurrent();
-  await nextButton.click();
-  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
-  assert.ok(await page.evaluate(()=>window.__ahaAI.grants)>grantsBeforePending,'AI was retried after the backoff reset');
-  assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),starts.length,'pending receipt blocks a new paid call');
-  assert.equal((await session()).activity.source,'local','pending receipt does not block local practice');
-  assert.ok(consoleErrors.slice(consoleBeforePending).some(m=>/settlement_pending/.test(m)),'pending-receipt fallback is logged');
-  // Same-key recovery of the interrupted batch. Its queue save fails once (disk full): the completed
-  // batch must stay durable in the journal and reach the learner after a restart without a new call.
-  await settings();
-  await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
-  await page.getByRole('button',{name:'Recover original request',exact:true}).click();
-  await page.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();
   const after=await page.evaluate(()=>window.__ahaAI.starts);
+  assert.equal(after.length,starts.length+1,'Refresh connection resent the interrupted batch once');
   assert.deepEqual(after.at(-1),starts.at(-1),'recovery keeps both original request identifiers');
+  assert.equal(await page.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.filter(o=>o.state!=='finalized').length),0,'Refresh connection settled the receipt');
+  assert.equal(await page.getByRole('button',{name:'Recover original request',exact:true}).count(),0,'nothing left to recover by hand');
+  assert.equal(await page.getByRole('alert').count(),0,'the failed queue save during background delivery is not an alert');
   const undelivered=await page.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.find(o=>o.answerComplete&&!o.consumed));
   assert.ok(undelivered,'paid completion remains durable before UI acknowledgement');
   assert.equal(undelivered.context.kind,'activities','a recovered batch is delivered exactly like a fresh one');
@@ -390,6 +396,68 @@ try {
   await page.getByRole('button',{name:'Close settings',exact:true}).click();
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
   await page.getByRole('button',{name:'Back to the problem',exact:true}).click();
+  // Restart mid-batch (founder S26: a batch was in flight at 14:33:55, the app was reinstalled at 14:34:16, and AI stayed
+  // blocked by settlement_pending until a manual tap). Receipt recovery is automatic: launch, background retry, resume.
+  const unsettled=()=>page.evaluate(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.filter(o=>o.state!=='finalized').length);
+  const recoveryLog=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]').filter(e=>e.source==='ai-recovery').map(e=>e.message));
+  /** Answers until a batch is journaled and opened at the TEST gateway, its stream held: the batch "in flight". */
+  const batchInFlight=async()=>{
+    await page.evaluate(()=>{window.__ahaAI.holdChat=true;});
+    const from=await page.evaluate(()=>window.__ahaAI.starts.length);
+    for(let i=0;i<12&&await page.evaluate(n=>window.__ahaAI.starts.length===n,from);i++){await answerCurrent();await nextButton.click();await page.getByRole('button',{name:'Check',exact:true}).waitFor();}
+    await page.waitForFunction(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.some(o=>o.state==='streaming'));
+    return page.evaluate(()=>window.__ahaAI.starts.at(-1));
+  };
+  const inFlight=await batchInFlight();
+  // Relaunch while Free2Z cannot take the same-key resend.
+  await page.evaluate(()=>localStorage.setItem('aha-test-ai-launch',JSON.stringify({enforced:true,failRecovery:true})));
+  await page.reload();
+  await page.waitForFunction(()=>window.__ahaAI.starts.length>=1);
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.starts[0]),inFlight,'launch recovery resends the original operation and Idempotency-Key');
+  await resume();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
+  await settings();
+  // Never "AI ready" while an unsettled receipt blocks paid calls: a calm settling state, no alert.
+  await page.getByText('Finishing an earlier AI request…',{exact:true}).waitFor();
+  assert.equal(await page.getByText('AI ready',{exact:true}).count(),0,'not AI ready while a receipt is unsettled');
+  assert.equal(await page.getByRole('alert').count(),0,'automatic recovery is not an alert');
+  await page.getByRole('button',{name:'Close settings',exact:true}).click();
+  await answerCurrent();await nextButton.click();await page.getByRole('button',{name:'Check',exact:true}).waitFor();
+  assert.ok((await page.evaluate(()=>window.__ahaAI.starts)).every(x=>x.operationId===inFlight.operationId&&x.idempotencyKey===inFlight.idempotencyKey),
+    'no new paid call while the receipt is unsettled; recovery only ever resends the original key');
+  assert.ok(await unsettled()>0,'the block stays while recovery fails');
+  // Free2Z is reachable again: the background retry settles it with no tap on Refresh, Check or Recover.
+  await page.evaluate(()=>{window.__ahaAI.failRecovery=false;localStorage.removeItem('aha-test-ai-launch');});
+  await page.waitForFunction(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.every(o=>o.state==='finalized'),null,{timeout:45_000});
+  const settledOp=await page.evaluate(id=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.find(o=>o.id===id),inFlight.operationId);
+  assert.equal(settledOp.charge.charged2z,'1','settled from the replayed receipt');
+  assert.equal(await page.evaluate(()=>window.__ahaAI.replays),1,'the gateway replayed the receipt once');
+  const ledger=await page.evaluate(()=>JSON.parse(localStorage.getItem('aha-test-gateway')));
+  assert.equal(Object.keys(ledger).filter(k=>k===inFlight.idempotencyKey).length,1,'one charge for the interrupted batch: no duplicate');
+  // AI resumes: the next batch (a fresh key, only after settlement) is requested and served with no manual step.
+  for(let i=0;i<8&&!(await page.evaluate(k=>window.__ahaAI.starts.some(x=>x.idempotencyKey!==k),inFlight.idempotencyKey));i++){await answerCurrent();await nextButton.click();await page.getByRole('button',{name:'Check',exact:true}).waitFor();}
+  assert.ok(await page.evaluate(k=>window.__ahaAI.starts.some(x=>x.idempotencyKey!==k),inFlight.idempotencyKey),'AI resumes after recovery without a manual tap');
+  await settings();
+  await page.getByText('AI ready',{exact:true}).waitFor();
+  assert.equal(await page.getByText('Finishing an earlier AI request…',{exact:true}).count(),0);
+  assert.equal(await page.getByRole('button',{name:'Recover original request',exact:true}).count(),0,'nothing to recover by hand');
+  await page.getByRole('button',{name:'Close settings',exact:true}).click();
+  const recoveryEvents=await recoveryLog();
+  assert.ok(recoveryEvents.some(m=>/^launch: .*still unsettled/.test(m)),'the failed launch attempt is logged (ai-recovery)');
+  assert.ok(recoveryEvents.some(m=>/^retry: every earlier AI request is settled/.test(m)),'the background retry that settled it is logged (ai-recovery)');
+  // Resume: a batch in flight, relaunched while Free2Z is not ready (no launch recovery possible); returning to the
+  // foreground once it is ready settles it with the original key.
+  const inFlightAgain=await batchInFlight();
+  await page.reload();
+  await page.getByRole('button',{name:'Continue',exact:true}).waitFor();
+  await page.waitForFunction(()=>window.__ahaAI.grants>=1);
+  assert.ok(await unsettled()>0,'still unsettled after a launch that could not recover');
+  await page.evaluate(()=>{window.__ahaAI.enforced=true;document.dispatchEvent(new Event('visibilitychange'));});
+  await page.waitForFunction(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.every(o=>o.state==='finalized'),null,{timeout:20_000});
+  assert.deepEqual(await page.evaluate(()=>window.__ahaAI.starts[0]),inFlightAgain,'resume recovery resends the original operation and key');
+  assert.ok((await recoveryLog()).some(m=>/^resume: every earlier AI request is settled/.test(m)),'resume recovery is logged');
+  await resume();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   await page.evaluate(()=>{window.__ahaAI.failSignOut=true;});
   await settings();await page.getByRole('button',{name:'Sign out',exact:true}).click();
   await page.getByRole('alert').waitFor();
@@ -1025,7 +1093,7 @@ try {
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch and post-fallback curiosity recovery, crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
+  console.log('AI controller fixture passed: signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the 10 2Z ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

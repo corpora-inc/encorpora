@@ -49,6 +49,7 @@ import { AUTO, MODEL_CHOICE_KEY, ModelUnavailableError, chooseModel, describePic
 import { BATCH_LOG_KEY, aggregateModelStats, appendBatch, modelStatsLines, readBatchLog, type BatchRecord, type SpecAnswer } from "./modelStats";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
 import { spendingSummary } from "./spending";
+import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrigger } from "./receiptRecovery";
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
@@ -78,6 +79,8 @@ const gradeHint = (p: Profile): Grade => (p.grade === 0 ? "K" : Math.min(8, Math
 const json = (value: unknown): Json =>
   JSON.parse(JSON.stringify(value)) as Json;
 const native = isTauri();
+const CONNECTED_STATUS = "AI tutoring is connected. Activities use 2Z from your Free2Z balance.";
+const SETTLING_STATUS = "Finishing an earlier AI request. AHA settles it on its own; local practice continues.";
 const preview = previewRepository();
 function visual(v?: VisualSpec): StudioVisual | undefined {
   if (!v) return undefined;
@@ -147,6 +150,11 @@ export default function Controller() {
   const appBudget = useRef<AppBudget | undefined>(undefined);
   const retryAfter = useRef(0);
   const aiBackoff = useRef(new AiBackoff());
+  /** Same-key receipt recovery for this account: backoff state across launch, resume, retry and pre-batch attempts. */
+  const receipts = useRef(new ReceiptRecovery());
+  const recoveryTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  /** An earlier AI request is unsettled (mirrors `account.settling`, readable from async code). */
+  const settling = useRef(false);
   const actionCancelled = useRef(false);
   const learning = useRef<LearnerState | undefined>(undefined);
   const currentProfile = useRef<Profile | undefined>(undefined);
@@ -407,6 +415,9 @@ export default function Controller() {
   async function loadAccount(repo: LocalRepository) {
     const epoch = ++accountEpoch.current;
     clearLearner();
+    receipts.current = new ReceiptRecovery();
+    clearTimeout(recoveryTimer.current);
+    settling.current = false;
     setPendingUsage([]);
     setSavedAnswers([]);
     repository.current = repo;
@@ -454,6 +465,72 @@ export default function Controller() {
     aiBackoff.current.recordFailure(Date.now(), retryAt);
     // A budget refusal also offers the Free2Z account link; any other cause clears it.
     setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e), refusal: refusalAction(e)}));
+    // An unsettled receipt is recovered on its own: show it as settling (never "AI ready") and retry in the background.
+    if (e instanceof TutorServiceError && e.code === "settlement_pending") { showSettling(); scheduleRecovery(RETRY_BASE_MS); }
+  }
+  /** Settings while an earlier request settles: never "AI ready" (it blocks every new paid call, #882), never an alert. */
+  function showSettling(note?: string) {
+    settling.current = true;
+    setAccount(a => ({...a, aiReady: false, settling: true, refusal: undefined, recoveryNote: note, status: SETTLING_STATUS}));
+  }
+  function scheduleRecovery(ms: number) {
+    clearTimeout(recoveryTimer.current);
+    if (alive.current) recoveryTimer.current = setTimeout(() => startRecovery("retry"), ms);
+  }
+  /**
+   * Same-key receipt recovery (receiptRecovery.ts) through the provider's own recover()/reconcile(): the original
+   * Idempotency-Key and identical body, never a fresh key and never a new paid request. Clears the settling state
+   * when the journal shows nothing unsettled; otherwise keeps it and retries in the background. Never throws.
+   */
+  async function recoverReceipts(trigger: RecoveryTrigger, force = false): Promise<RecoveryOutcome | undefined> {
+    const tutor = provider.current, epoch = accountEpoch.current, recovery = receipts.current;
+    if (!tutor || !subject.current) return undefined;
+    let outcome: RecoveryOutcome;
+    try {
+      outcome = await recovery.run(trigger, {
+        tutor,
+        authorize: () => paidAuthorization(false),
+        profileId: () => currentProfile.current?.id,
+        // A recovered batch fills the queue exactly like a fresh one. Any other reply stays saved for the next Continue.
+        deliver: async reply => { if (reply.context?.kind === "activities") await deliverReply(reply); },
+        log: (level, message) => logEvent(level, "ai-recovery", message),
+      }, {force});
+    } catch (error) {
+      logError("ai-recovery", error);
+      return undefined;
+    }
+    if (epoch !== accountEpoch.current || tutor !== provider.current || recovery !== receipts.current || !alive.current) return outcome;
+    try { setPendingUsage(await tutor.inspectPending()); } catch (error) { logError("ai-recovery", error); }
+    if (outcome.state === "clear") {
+      clearTimeout(recoveryTimer.current);
+      if (settling.current) {
+        settling.current = false;
+        // The block is gone: AI is due again now, not after the backoff the blocked attempts built up.
+        aiBackoff.current.recordSuccess();
+        lastSkip.current = undefined;
+        // "AI ready" only when this attempt's free grant check passed; otherwise the next connection check decides.
+        setAccount(a => ({...a, settling: false, recoveryNote: undefined,
+          ...(outcome.authorized ? {aiReady: true, refusal: undefined, status: CONNECTED_STATUS} : {})}));
+      }
+    } else {
+      showSettling(outcome.note);
+      scheduleRecovery(outcome.retryInMs ?? RETRY_BASE_MS);
+    }
+    return outcome;
+  }
+  /**
+   * Background recovery (launch retry, resume, timer) in the single AI slot, so it never collides with a batch; a batch
+   * already in flight recovers first by itself. When it settles something, AI continues with no learner action.
+   */
+  function startRecovery(trigger: RecoveryTrigger) {
+    if (!provider.current || !subject.current || !alive.current) return;
+    if (prefetching.current) { if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS); return; }
+    let resumeAi = false;
+    const run: Promise<void> = recoverReceipts(trigger)
+      .then(outcome => { resumeAi = outcome?.state === "clear" && outcome.attempted; }, e => logError("ai-recovery", e))
+      .finally(() => { if (prefetching.current === run) prefetching.current = undefined; })
+      .then(() => { if (resumeAi && alive.current) maybePrefetch(); });
+    prefetching.current = run;
   }
   /** Why a signed-in AI attempt is not due now, or undefined when it is. */
   function aiBlockedReason(): string | undefined {
@@ -477,6 +554,8 @@ export default function Controller() {
     if (actionCancelled.current) throw new Error("Stopped before starting another paid request. Your recorded progress is safe.");
   }
   async function paidReply(pick: ModelPick, system: string, context: string, authorization: PaidAuthorization, origin: ResumeContext) {
+    // An unsettled earlier request is recovered first; if it stays unsettled the provider still refuses (settlement_pending).
+    await recoverReceipts("before-request");
     assertActionActive();
     // Hidden reasoning counts against the output budget: a reasoning model gets its larger budget for any reply.
     return provider.current!.reply(pick.id, system, context, authorization, origin, pick.reasoning ? String(pick.maxOutputTokens) : "1800");
@@ -643,9 +722,10 @@ export default function Controller() {
     setMenu(m => m && {...m, choice});
     logEvent("info", "ai-model", `choice: ${choice === AUTO ? "Best (auto)" : choice}`);
   }
-  async function refreshConnection() {
+  /** Session, balance, grant and catalogue, then same-key receipt recovery. Ready only with nothing left unsettled. */
+  async function refreshConnection(trigger: RecoveryTrigger): Promise<boolean> {
     checkRetryDelay();
-    if (!subject.current || !provider.current) return;
+    if (!subject.current || !provider.current) return false;
     setAccount(a => ({...a, aiReady: false, status: "Checking Free2Z…", refusal: undefined}));
     selectedModel.current = undefined;
     try {
@@ -655,9 +735,12 @@ export default function Controller() {
       setAccount(a => ({...a, balance: format2z(b.available_milli_2z)}));
       await paidAuthorization();
       await pickModel();
-      setPendingUsage(await provider.current.inspectPending());
+      // Launch and Refresh connection finish any interrupted request now (ignoring the backoff), with no other tap.
+      const receipt = await recoverReceipts(trigger, true);
+      if (receipt && receipt.state !== "clear") return false; // settling: shown calmly; recovery retries on its own
       aiBackoff.current.recordSuccess();
-      setAccount(a => ({...a, aiReady: true, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance." + (session.persistence === "memory_only" ? " Sign-in could not be saved on this device; reconnect after restarting." : "")}));
+      setAccount(a => ({...a, aiReady: true, settling: false, recoveryNote: undefined, status: CONNECTED_STATUS + (session.persistence === "memory_only" ? " Sign-in could not be saved on this device; reconnect after restarting." : "")}));
+      return true;
     } catch (e) {
       setAccount(a => ({...a, aiReady: false, status: learningError(e), refusal: refusalAction(e)}));
       throw e;
@@ -674,8 +757,8 @@ export default function Controller() {
     setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e)}));
   }
   /** Connect, sign-in and Refresh connection: the not-ready state becomes a status line, never a red alert. */
-  async function connectAccount(): Promise<boolean> {
-    try { await refreshConnection(); return true; }
+  async function connectAccount(trigger: RecoveryTrigger = "launch"): Promise<boolean> {
+    try { return await refreshConnection(trigger); }
     catch (e) {
       if (aiNotReady(e)) { showNotReady("connect", e); return false; }
       throw e;
@@ -765,6 +848,8 @@ export default function Controller() {
       if (document.visibilityState === "hidden") {
         if (!actionLock.current) void action(saveSession);
       } else if (subject.current) {
+        // Back in the foreground: finish any interrupted request now, quietly (respects the retry backoff).
+        startRecovery("resume");
         const epoch = accountEpoch.current;
         void getNativeClient()
           .balance()
@@ -784,6 +869,7 @@ export default function Controller() {
       ++lifecycle.current;
       ++accountEpoch.current;
       document.removeEventListener("visibilitychange", visibility);
+      clearTimeout(recoveryTimer.current);
       timer.current.pause(performance.now());
     };
   }, []);
@@ -933,6 +1019,13 @@ export default function Controller() {
     const stillCurrent = () => epoch === accountEpoch.current && tutor === provider.current && currentProfile.current?.id === p.id;
     const stopped = () => !!stop?.stopped;
     try {
+      // An interrupted earlier request is recovered first (same key); while it stays unsettled no batch is requested.
+      const receipt = await recoverReceipts("before-batch");
+      if (receipt && receipt.state !== "clear") {
+        aiSkipped(`${stage}: an earlier AI request is still settling; recovery retries on its own, no new paid request meanwhile`, "info");
+        return false;
+      }
+      if (!stillCurrent()) { aiSkipped(`${stage}: the learner or account changed during receipt recovery; no batch requested`, "info"); return false; }
       // The batch carries the learner's Stop as its own token: an action that started later cannot re-arm it.
       const authorization = await paidAuthorization(false);
       // Refresh advertised availability for each new paid batch. A failed call is never replaced by
@@ -957,7 +1050,8 @@ export default function Controller() {
       aiBackoff.current.recordSuccess();
       lastSkip.current = undefined;
       if (harder) wantsHarder.current = false;
-      setAccount(a => a.aiReady ? a : {...a, aiReady: true, refusal: undefined, status: "AI tutoring is connected. Activities use 2Z from your Free2Z balance."});
+      settling.current = false;
+      setAccount(a => a.aiReady ? a : {...a, aiReady: true, settling: false, recoveryNote: undefined, refusal: undefined, status: CONNECTED_STATUS});
       void getNativeClient().balance()
         .then(b => { if (stillCurrent()) setAccount(a => ({...a, balance: format2z(b.available_milli_2z)})); })
         .catch(e => { logError("balance", e); if (stillCurrent()) setAccount(a => ({...a, status: "Balance refresh is temporarily unavailable. The request receipt remains recorded."})); });
@@ -1310,7 +1404,7 @@ export default function Controller() {
       status: readiness.current.reason,
     });
     await loadAccount(repo);
-    if (await connectAccount() && restoredAi.current) maybePrefetch();
+    if (await connectAccount("sign-in") && restoredAi.current) maybePrefetch();
   }
   async function signOut() {
     await provider.current?.cancel();
@@ -1485,7 +1579,8 @@ export default function Controller() {
           const reply = await provider.current!.recover(id, authorization);
           await deliverReply(reply);
           aiBackoff.current.recordSuccess();
-          setPendingUsage(await provider.current!.inspectPending());
+          // Clears the settling state (and settles anything else still pending) the same way automatic recovery does.
+          await recoverReceipts("manual", true);
           setAccount(a => ({...a, status: "Recovered lesson is ready. The original request identity and recorded usage were preserved."}));
         })
       }
@@ -1494,8 +1589,10 @@ export default function Controller() {
           ? () =>
               void action(async () => {
                 await settlePrefetch();
+                // The same automatic recovery (receipts first, then the original key), so this button is only a nudge.
+                await recoverReceipts("manual", true);
+                // Totals from the journal; touches the service only for a receipt that is still unsettled.
                 const status = await provider.current!.reconcile();
-                setPendingUsage(await provider.current!.inspectPending());
                 setAccount((a) => ({
                   ...a,
                   status: status.pending
@@ -1519,7 +1616,7 @@ export default function Controller() {
           : undefined
       }
       onManageAccount={native ? () => void action(() => invoke("open_free2z_account"), "Opening Free2Z in your browser…") : undefined}
-      onRefreshAccount={() => void action(async () => { await connectAccount(); }, "Checking Free2Z…")}
+      onRefreshAccount={() => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…")}
       onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
