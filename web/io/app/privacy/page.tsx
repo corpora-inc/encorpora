@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
     title: "Privacy Promise – Corpora Inc",
     description:
-        "Privacy information for Corpora offline learning products, with a separate policy for the AHA online tutor beta.",
+        "Privacy information for Corpora offline learning products, with a separate policy for the ¡AHA! mathematics app.",
 };
 
 export default function PrivacyPage() {
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
                     trackers, and the bare minimum of permissions.
                 </p>
                 <p className="text-lg mb-8">
-                    The <Link href="/aha/privacy" className="underline">¡AHA! tutor beta has a separate privacy explanation</Link>.
+                    The <Link href="/aha/privacy" className="underline">¡AHA! mathematics app has its own privacy policy</Link>.
                     Its optional online tutor uses Free2Z authentication and sends selected learning context to AI services;
                     the offline-product promises below do not describe those online features.
                 </p>
