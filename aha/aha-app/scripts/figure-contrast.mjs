@@ -123,6 +123,18 @@ function measure({ figureSel, decorative }) {
   return [...new Set(bad)];
 }
 
+/** The same measurement for any UI on an open page (e.g. the lap recap), in light and dark. */
+export async function auditUiContrast(page, selector) {
+  const out = [];
+  for (const theme of ['light', 'dark']) {
+    await page.emulateMedia({ colorScheme: theme });
+    await page.waitForTimeout(80);
+    for (const v of await page.evaluate(measure, { figureSel: selector, decorative: DECORATIVE })) out.push(`${theme}: ${v}`);
+  }
+  await page.emulateMedia({ colorScheme: null });
+  return out;
+}
+
 /** Audits every fixture and local visual in light and dark; returns violations as `theme: line`. */
 export async function auditFigureContrast(browser, base) {
   const out = [];

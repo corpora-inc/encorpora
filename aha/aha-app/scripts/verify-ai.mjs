@@ -18,6 +18,8 @@ const batchFixtures=fixtures.filter(f=>f.response.type==='numeric');
 // The bounded wait for a batch on its way (BATCH_WAIT_MS, 6 s) plus margin.
 const BATCH_WAIT_TEST_MS=12_000;
 // Overridable so parallel worktrees can run the suite at the same time.
+/** Next, or Keep going in the same slot when the answer completes a lap of ten. */
+const NEXT=/^(Next|Keep going)$/;
 const port=Number(process.env.AHA_AI_PORT||1436),base=`http://127.0.0.1:${port}`;
 const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
@@ -158,7 +160,7 @@ try {
   const session=()=>page.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
   const localBanner=page.getByRole('button',{name:'Local practice · AI tutoring is unavailable right now',exact:true});
   const aiBanner=page.getByRole('button',{name:'AI tutoring · progress saved on this device',exact:true});
-  const nextButton=page.getByRole('button',{name:'Next',exact:true});
+  const nextButton=page.getByRole('button',{name:NEXT});
   const enter=async value=>{const name={'<':'Less than','>':'Greater than','=':'Equal to'}[value];if(name)await page.getByRole('button',{name,exact:true}).click();else await page.getByLabel('Your answer',{exact:true}).fill(value);};
   // A relaunch opens the studio home; one tap re-enters the loop.
   const resume=async()=>{await page.getByRole('button',{name:'Continue',exact:true}).click();};
@@ -563,7 +565,7 @@ try {
     const key=st.aiActivity.spec.response.answer;
     await h.locator('.aha-activity input[inputmode="decimal"]').fill(String(key));
     await h.getByRole('button',{name:'Check',exact:true}).click();
-    await h.getByRole('button',{name:'Next',exact:true}).click();
+    await h.getByRole('button',{name:NEXT}).click();
     await waitShown(first);
     await h.waitForFunction(()=>window.__ahaAI.starts.length===2);
     const user=await h.evaluate(()=>window.__ahaAI.requests.at(-1).messages[1].content[0].text);
@@ -590,7 +592,7 @@ try {
       const st=await hs();
       await h.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));
       await h.getByRole('button',{name:'Check',exact:true}).click();
-      await h.getByRole('button',{name:'Next',exact:true}).click();
+      await h.getByRole('button',{name:NEXT}).click();
     };
     // Drain the queue with no refill possible (the estimate is blocked), landing on the last paid activity.
     await h.evaluate(()=>{window.__ahaAI.blockEstimate=true;});
@@ -635,13 +637,16 @@ try {
         else await P.getByLabel('Your answer',{exact:true}).fill(want);
       }
       await P.getByRole('button',{name:'Check',exact:true}).click();
-      await P.getByRole('button',{name:'Next',exact:true}).waitFor();
+      await P.getByRole('button',{name:NEXT}).waitFor();
       assert.equal(await P.getByText(/place to pause/i).count(),0,`item ${i}: no pause or end screen`);
+      // A completed lap of AI and local items: the recap, from durable evidence, while prefetch carries on.
+      assert.equal(await P.locator('.lap-recap').count(),i%10===0?1:0,`item ${i}: a recap only as a lap completes`);
+      if(i%10===0){assert.match(await P.locator('.lap-recap').innerText(),/10 of 10 correct/);assert.ok(await P.locator('.lap-recap .lap-skill').count()>=1,'the lap names a skill practised');}
       const bar=P.locator('.focus-progress');
       assert.equal(await bar.getAttribute('aria-valuemax'),'10');
       assert.equal(await bar.getAttribute('aria-valuenow'),String(i%10||10),`item ${i}: the bar marks a lap, not an end`);
-      assert.equal(await bar.evaluate(b=>b.classList.contains('is-milestone')),i%10===0,`item ${i}: a lap glows only as it completes`);
-      await P.getByRole('button',{name:'Next',exact:true}).click();
+      assert.equal(await bar.evaluate(b=>b.classList.contains('is-milestone')),i%10===0,`item ${i}: a lap turns gold only as it completes`);
+      await P.getByRole('button',{name:NEXT}).click();
       await P.waitForFunction(prev=>{const d=Object.values(window.__ahaFixture.read().sessions)[0]?.data;const now=d?.aiActivity?.activityId??d?.activity?.id;return !!now&&now!==prev;},id);
     }
     await P.getByRole('button',{name:'Check',exact:true}).waitFor();
@@ -682,7 +687,7 @@ try {
     const second=(await hs()).aiActivity.activityId;
     await h.getByRole('button',{name:'Something seems off',exact:true}).click();
     await h.getByRole('button',{name:'Set it aside',exact:true}).click();
-    await h.getByRole('button',{name:'Next',exact:true}).waitFor();
+    await h.getByRole('button',{name:NEXT}).waitFor();
     let st=await hs();
     assert.ok(!st.aiActivity,'the flagged spec left the screen');
     assert.ok(!st.aiQueue.some(q=>q.activityId===second),'the flagged spec is not queued');
@@ -727,7 +732,7 @@ try {
     const os=()=>o.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data);
     const oStarts=()=>o.evaluate(()=>window.__ahaAI.starts.length);
     const diag=()=>o.evaluate(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]'));
-    const oNext=o.getByRole('button',{name:'Next',exact:true});
+    const oNext=o.getByRole('button',{name:NEXT});
     const answerSpec=async()=>{
       const key=(await os()).aiActivity.spec.response.answer;
       await o.locator('.aha-activity input[inputmode="decimal"]').fill(String(key));
@@ -970,7 +975,7 @@ try {
     const data=()=>p.evaluate(()=>window.__ahaFixture.read());
     const sess=async()=>Object.values((await data()).sessions)[0].data;
     const attempt=async()=>Object.values((await data()).attempts).flat().at(-1).data;
-    const answer=async()=>{const st=await sess();await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:'Next',exact:true}).waitFor();};
+    const answer=async()=>{const st=await sess();await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));await p.getByRole('button',{name:'Check',exact:true}).click();await p.getByRole('button',{name:NEXT}).waitFor();};
     await card.waitFor();
     let request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
     assert.equal(request.model,'fixture-standard','Best (auto): the dearest structured model within the 10 2Z ceiling');
@@ -991,7 +996,7 @@ try {
     await answer();
     assert.equal((await attempt()).spec.model,'fixture-standard','the attempt records the model that wrote the activity');
     // Next activity: the queue runs low and the background batch goes to the learner's choice.
-    await p.getByRole('button',{name:'Next',exact:true}).click();
+    await p.getByRole('button',{name:NEXT}).click();
     await p.waitForFunction(()=>window.__ahaAI.starts.length===2);
     await p.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-pro'));
     request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));
@@ -999,14 +1004,14 @@ try {
     const proOp=(await data()).journals['aha-billing-v1'].operations.at(-1);
     assert.equal(proOp.request.model,'fixture-pro','the chosen model is persisted in the journal operation (same-key recovery resends to it)');
     // Work through the rest of the first batch to the first Pro activity, answer it, then flag the next one.
-    for(let i=0;i<5&&(await sess()).aiActivity?.model!=='fixture-pro';i++){await answer();await p.getByRole('button',{name:'Next',exact:true}).click();await card.waitFor();}
+    for(let i=0;i<5&&(await sess()).aiActivity?.model!=='fixture-pro';i++){await answer();await p.getByRole('button',{name:NEXT}).click();await card.waitFor();}
     st=await sess();
     assert.equal(st.aiActivity.model,'fixture-pro');
     const records=Object.values((await data()).activities).flat();
     assert.equal(records.find(a=>a.id===st.aiActivity.activityId).data.model,'fixture-pro','the activity record names its model');
     await answer();
     assert.equal((await attempt()).spec.model,'fixture-pro');
-    await p.getByRole('button',{name:'Next',exact:true}).click();
+    await p.getByRole('button',{name:NEXT}).click();
     await card.waitFor();
     assert.equal((await sess()).aiActivity.model,'fixture-pro');
     await p.getByRole('button',{name:'Something seems off',exact:true}).click();
@@ -1075,7 +1080,7 @@ try {
     const st=await sess();
     await p.locator('.aha-activity input[inputmode="decimal"]').fill(String(st.aiActivity.spec.response.answer));
     await p.getByRole('button',{name:'Check',exact:true}).click();
-    await p.getByRole('button',{name:'Next',exact:true}).click();
+    await p.getByRole('button',{name:NEXT}).click();
     await p.waitForFunction(()=>window.__ahaAI.starts.length===2);
     await p.waitForFunction(()=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.model==='fixture-reasoner'));
     request=await p.evaluate(()=>window.__ahaAI.requests.at(-1));

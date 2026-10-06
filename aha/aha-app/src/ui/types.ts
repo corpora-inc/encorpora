@@ -1,4 +1,5 @@
 import type { GrowthSummary } from "../application/growth";
+import type { LapRecap } from "../application/lapRecap";
 import type { ActivitySpec } from "../activity/spec";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 export type StudioVisual =
@@ -82,6 +83,8 @@ export interface StudioProps {
   }[];
   /** Growth page and Home summary from durable evidence (application/growth.ts). */
   growth?: GrowthSummary;
+  /** The lap that just ended (application/lapRecap.ts), while session.completed is a whole number of laps. */
+  lapRecap?: LapRecap;
   account: {
     connected: boolean;
     signInAvailable?: boolean;

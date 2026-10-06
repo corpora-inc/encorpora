@@ -329,7 +329,7 @@ input[type="checkbox"] + .ax-choice-badge { border-radius: 8px; }
 .is-compact .ax-stage-area { flex: 1; min-height: 0; position: relative; display: flex; flex-direction: column; }
 .is-compact .ax-stage-scroll {
   flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
-  display: flex; flex-direction: column; justify-content: safe center; gap: 14px; padding: 12px 20px;
+  display: flex; flex-direction: column; justify-content: safe center; --aha-stage-gap: 14px; gap: var(--aha-stage-gap); padding: 12px 20px;
 }
 .is-compact .ax-prompt { gap: 10px; }
 .is-compact .ax-paragraph { font-family: AhaFigures, Georgia, "Times New Roman", serif; font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.5rem); line-height: 1.4; letter-spacing: -0.01em; text-align: center; margin: 0 auto; max-width: 30ch; }

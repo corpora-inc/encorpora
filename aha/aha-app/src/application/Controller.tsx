@@ -1,4 +1,5 @@
 import { growthSummary } from "./growth";
+import { LAP, lapRecap } from "./lapRecap";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Studio, type StudioProps, type StudioVisual } from "../ui/Studio";
@@ -1474,6 +1475,7 @@ export default function Controller() {
   }, []);
   const skill = activity ? getSkill(activity.skillId) : undefined;
   const shown = activity?.id ?? aiItem?.activityId;
+  const growth = growthSummary(learner);
   return (
     <Studio
       practiceStatus={native ? activity?.source === "ai" || aiItem
@@ -1534,7 +1536,8 @@ export default function Controller() {
       loadModelStats={native ? loadModelStats : undefined}
       authoringModel={aiItem?.model ? (modelNames.current.get(aiItem.model) ?? aiItem.model) : undefined}
       learners={profiles.map((p) => ({ id: p.id, name: p.name }))}
-      growth={growthSummary(learner)}
+      growth={growth}
+      lapRecap={completed > 0 && completed % LAP === 0 ? lapRecap(learner, growth.streak) : undefined}
       onSubmit={(answer) => {
         const timing = timer.current.snapshot(performance.now());
         void action(() => submit(answer, timing));

@@ -34,12 +34,13 @@ const loadSpecRenderer = () => import("../activity/render").then(m => (specRende
 import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
 import { connectionPill } from "./connectionStatus";
-import { isEditable, nextKeyboardLayout, sampleViewport, type KeyboardLayout } from "./keyboard";
+import { isEditable, KEYBOARD_SETTLED, listenNativeKeyboard, nextKeyboardLayout, sampleViewport, type KeyboardLayout } from "./keyboard";
 import { logError } from "../diagnostics/log";
 import { ModelChoice, ModelStats } from "./ModelSettings";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
+import { LAP, type LapRecap } from "../application/lapRecap";
 import "katex/dist/katex.min.css";
 import "./studio.css";
 export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
@@ -97,10 +98,12 @@ function HelpDrawer({ kind, onClose, children, footer }: { kind: Exclude<Drawer,
     // A toast arriving under the drawer lifts its bottom edge.
     const rail = ref.current?.parentElement, observer = rail ? new ResizeObserver(fit) : undefined;
     if (rail) observer?.observe(rail);
-    // The dock (and the drawer with it) glides up and down with a software keyboard.
+    // The dock (and the drawer with it) glides up and down with a software keyboard: a CSS
+    // transition on iOS, the keyboard's own animation on Android (which reports when it settles).
     const settled = (e: TransitionEvent) => { if ((e.target as Element).matches?.(".focus-dock, .ax-dock")) fit(); };
     document.addEventListener("transitionend", settled);
-    return () => { vv?.removeEventListener("resize", fit); window.removeEventListener("resize", fit); observer?.disconnect(); document.removeEventListener("transitionend", settled); };
+    window.addEventListener(KEYBOARD_SETTLED, fit);
+    return () => { vv?.removeEventListener("resize", fit); window.removeEventListener("resize", fit); observer?.disconnect(); document.removeEventListener("transitionend", settled); window.removeEventListener(KEYBOARD_SETTLED, fit); };
   }, []);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !document.querySelector("dialog[open]")) onClose(); };
@@ -133,30 +136,50 @@ function dismissKeyboard() {
   if (isEditable(field)) (field as HTMLElement).blur();
 }
 
-/** The focus loop's keyboard dock (keyboard.ts): a fixed stage as tall as the screen was before a
- * keyboard opened, and the keyboard's overlap, as CSS variables on the root. Only the answer dock
- * reads the overlap; the bar and the problem never move and the page never scrolls. */
-function useKeyboardDock(active: boolean) {
+/** The keyboard dock (keyboard.ts): the keyboard's overlap as CSS variables on the root and, in the
+ * focus loop, a fixed stage as tall as the screen was before a keyboard opened. Only the answer dock
+ * (and sheets, which are anchored to the viewport) read the overlap; the bar and the problem never
+ * move and the page never scrolls.
+ *
+ * On Android the shell overlays the keyboard and reports its height every frame, so this runs on
+ * every screen (Settings and sheets rise above the keyboard themselves) and the dock is placed
+ * synchronously on each frame, in step with the keyboard. Elsewhere it reads the viewports, in the
+ * focus loop only (iOS keeps WebKit's own field reveal on other screens). */
+function useKeyboardDock(focus: boolean) {
+  const native = typeof window !== "undefined" && !!window.ahaKeyboard;
   useEffect(() => {
-    if (!active) return;
+    if (!focus && !native) return;
     const root = document.documentElement;
     let layout: KeyboardLayout | undefined;
     let frame = 0;
+    let nativePx: number | undefined;
     const apply = () => {
+      cancelAnimationFrame(frame);
       frame = 0;
       // Belt and braces for the native pin: the stage is fixed, so any page scroll is a stray.
-      if (window.scrollX || window.scrollY) window.scrollTo(0, 0);
-      layout = nextKeyboardLayout(layout, sampleViewport());
-      root.style.setProperty("--aha-stage-h", `${layout.stage}px`);
+      if (focus && (window.scrollX || window.scrollY)) window.scrollTo(0, 0);
+      layout = nextKeyboardLayout(layout, sampleViewport(window, nativePx));
+      if (focus) root.style.setProperty("--aha-stage-h", `${layout.stage}px`);
       root.style.setProperty("--aha-kb", `${layout.keyboard}px`);
       root.style.setProperty("--aha-kb-viewport", `${layout.viewport}px`);
       root.classList.toggle("aha-kb-open", layout.keyboard > 0 || layout.viewport > 0);
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(apply); };
-    root.classList.add("aha-stage-pinned");
+    const stopNative = listenNativeKeyboard(window, (px, settled) => {
+      nativePx = px;
+      apply();
+      if (!settled) return;
+      // A field in a dialog (Settings) is revealed once the dialog has risen above the keyboard:
+      // nothing resizes, so the WebView no longer scrolls it into view itself.
+      const field = document.activeElement;
+      if (px > 0 && isEditable(field) && field?.closest("dialog")) field.scrollIntoView({ block: "nearest" });
+      window.dispatchEvent(new Event(KEYBOARD_SETTLED));
+    });
+    if (stopNative) root.classList.add("aha-kb-native");
+    if (focus) root.classList.add("aha-stage-pinned");
     apply();
-    pinPageScroll(true);
-    const vv = window.visualViewport;
+    if (focus) pinPageScroll(true);
+    const vv = stopNative ? undefined : window.visualViewport;
     vv?.addEventListener("resize", schedule);
     vv?.addEventListener("scroll", schedule);
     window.addEventListener("resize", schedule);
@@ -165,19 +188,20 @@ function useKeyboardDock(active: boolean) {
     document.addEventListener("focusout", schedule);
     return () => {
       cancelAnimationFrame(frame);
+      stopNative?.();
       vv?.removeEventListener("resize", schedule);
       vv?.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("scroll", schedule);
       document.removeEventListener("focusin", schedule);
       document.removeEventListener("focusout", schedule);
-      root.classList.remove("aha-stage-pinned", "aha-kb-open");
+      root.classList.remove("aha-stage-pinned", "aha-kb-open", "aha-kb-native");
       root.style.removeProperty("--aha-stage-h");
       root.style.removeProperty("--aha-kb");
       root.style.removeProperty("--aha-kb-viewport");
-      pinPageScroll(false);
+      if (focus) pinPageScroll(false);
     };
-  }, [active]);
+  }, [focus, native]);
 }
 
 /** Three breathing dots, shown inside a fixed-size control while it waits. */
@@ -249,8 +273,6 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
 }
 
 const STATUS = { confident: "Remembered", growing: "Taking root", review: "Ready to revisit" } as const;
-/** The focus loop is endless; its bar only marks a quiet lap of this many items. */
-const LAP = 10;
 /** "today", "yesterday", "3 days ago", in the device language. */
 function when(at: string) {
   const day = (t: Date) => new Date(t.getFullYear(), t.getMonth(), t.getDate()).getTime();
@@ -272,6 +294,38 @@ function WeekStrip({ growth }: { growth: NonNullable<StudioProps["growth"]> }) {
       </ol>
       {growth.streak >= 2 && <span className="week-streak">{growth.streak} days in a row</span>}
     </div>
+  );
+}
+
+/** The lap's recap: a bead per answer (gold when correct), the count, up to three skills practised
+ * with what took root or was remembered, and the day streak. Information only: the dock's
+ * Keep going (in Check/Next's slot) or a tap or swipe anywhere continues. */
+function LapRecapCard({ recap, id }: { recap: LapRecap; id: string }) {
+  return (
+    <section id={id} className="lap-recap" role="status">
+      <div className="lap-beads" aria-hidden="true">
+        {recap.answers.map((ok, i) => <i key={i} className={ok ? "is-correct" : undefined} style={{ animationDelay: `${120 + i * 45}ms` }} />)}
+      </div>
+      <p className="lap-score">
+        <strong>{recap.correct} of {recap.answers.length} correct</strong>
+        {recap.streak >= 2 && <span className="lap-streak">{recap.streak} days in a row</span>}
+      </p>
+      {!!recap.skills.length && (
+        <ul className="lap-skills" aria-label="Practised">
+          {recap.skills.map(s => (
+            <li key={s.id}>
+              <span className="lap-skill">{s.title}</span>
+              {s.growth && (
+                <span className={`lap-growth is-${s.growth}`}>
+                  <span className={`growth-mark ${s.growth === "remembered" ? "confident" : "growing"}`} aria-hidden="true" />
+                  {s.growth === "remembered" ? STATUS.confident : STATUS.growing}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
 
@@ -301,6 +355,9 @@ export function Studio(props: StudioProps) {
   const armed = useRef(false);
   const streak = useRef(0);
   const [streakShown, setStreakShown] = useState(0);
+  /** The item whose checked answer completed a lap: its recap shows until the learner moves on. */
+  const [recapFor, setRecapFor] = useState<string>();
+  const recapId = useId();
   const [haptics, setHaptics] = useState(() => hapticsEnabled());
   const feedbackRegion = useRef<HTMLDivElement>(null);
   const settingsReturn = useRef<HTMLElement | null>(null);
@@ -412,15 +469,25 @@ export function Studio(props: StudioProps) {
   }, []);
   useKeyboardDock(view === "focus");
   // With the keyboard up, a tap on the problem or a swipe down on the dock puts it away; the dock
-  // glides back down with it.
+  // glides back down with it. A tap, not a touch: dragging the problem scrolls it behind the dock
+  // and keeps the keyboard up.
   const dockSwipe = useRef<{ x: number; y: number } | null>(null);
+  const stageTap = useRef<{ id: number; x: number; y: number } | null>(null);
   const keyboardUp = () => document.documentElement.classList.contains("aha-kb-open");
   const onStagePointerDown = (e: React.PointerEvent) => {
-    if (!keyboardUp()) return;
+    stageTap.current = null;
+    if (!keyboardUp() || !e.isPrimary) return;
     const target = e.target as Element;
     if (target.closest(".focus-bar, dialog")) return;
-    if (!target.closest(".focus-dock, .ax-dock") || target.closest(".dock-grab")) dismissKeyboard();
+    if (!target.closest(".focus-dock, .ax-dock") || target.closest(".dock-grab")) stageTap.current = { id: e.pointerId, x: e.clientX, y: e.clientY };
   };
+  const onStagePointerUp = (e: React.PointerEvent) => {
+    const start = stageTap.current;
+    stageTap.current = null;
+    if (start && start.id === e.pointerId && Math.hypot(e.clientX - start.x, e.clientY - start.y) < 10) dismissKeyboard();
+  };
+  // A scroll takes over the touch (pointercancel): not a tap.
+  const onStagePointerCancel = () => { stageTap.current = null; };
   // A tap on a dock control (Hint, Check, the drawer's buttons) keeps the keyboard up: the button
   // acts without taking focus from the answer (Android moves focus to a tapped button; iOS does not).
   const onStageMouseDown = (e: React.MouseEvent) => {
@@ -475,6 +542,7 @@ export function Studio(props: StudioProps) {
   const lap = completed % LAP;
   const lapDone = completed > 0 && lap === 0 && readyNext;
   const lapValue = lapDone ? LAP : lap;
+  const showRecap = lapDone && !!props.lapRecap && !!taskId && recapFor === taskId && !advancing && view === "focus";
   const learningVisible = view === "focus" && !settings && !sheet && !props.curiosity && hasTask && !readyNext;
   useEffect(() => {
     props.onLearningVisibleChange?.(learningVisible);
@@ -565,12 +633,16 @@ export function Studio(props: StudioProps) {
         expanded={sheet === "ask"} onClick={() => setSheet("ask")} />
     </div>
   ) : null;
-  // Check and Next share one slot at one size; while waiting, the label gives way to dots.
+  // Check and Next share one slot at one size; while waiting, the label gives way to dots. At the
+  // end of a lap the same slot reads Keep going, focused, and the recap floats above the dock.
+  const continueLap = () => { setRecapFor(undefined); advance(props.onContinue); };
   const nextButton = (
-    <button ref={nextRef} className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}`} type="button" disabled={props.busy} onClick={() => advance(props.onContinue)}>
-      <span className="btn-label">Next <ArrowRight size={20} aria-hidden="true" /></span><WaitDots />
+    <button ref={nextRef} className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}${showRecap ? " is-lap" : ""}`} type="button" disabled={props.busy}
+      aria-describedby={showRecap ? recapId : undefined} onClick={showRecap ? continueLap : () => advance(props.onContinue)}>
+      {showRecap ? <span className="btn-label">Keep going</span> : <span className="btn-label">Next <ArrowRight size={20} aria-hidden="true" /></span>}<WaitDots />
     </button>
   );
+  const recapCard = showRecap && props.lapRecap ? <LapRecapCard recap={props.lapRecap} id={recapId} /> : null;
   const stopButton = props.busy && props.onCancel ? (
     <button type="button" className="secondary-button veil-stop" onClick={props.onCancel}>Stop AI request</button>
   ) : null;
@@ -594,25 +666,66 @@ export function Studio(props: StudioProps) {
   // check and a light haptic for correct, escalating a little at three and five in a row; a gentle
   // shake of the answer field and a soft haptic for a miss. All overlays; nothing waits on them.
   const outcomeKey = outcome ? `${taskId}|${outcome.kind}|${outcome.title}` : undefined;
-  useEffect(() => {
+  // The answer that completes a lap (every LAP answers) gets a bigger, gold burst, the success
+  // haptic and the recap instead; after a miss the field shakes first. A layout effect, so the
+  // recap replaces the answer toast before the first paint (no one-frame flash of the toast).
+  useLayoutEffect(() => {
     if (!outcome || !armed.current) return;
     armed.current = false;
+    const lapEnd = outcome.kind !== "nudge" && outcome.kind !== "info" && readyNext && completed > 0 && completed % LAP === 0 && !!props.lapRecap;
     if (outcome.kind === "correct") {
       const run = streak.current += 1;
       setStreakShown(run);
-      burst(nextRef.current, streakLevel(run));
-      void feel(isMilestone(run) ? "milestone" : "correct");
+      if (!lapEnd) {
+        burst(nextRef.current, streakLevel(run));
+        void feel(isMilestone(run) ? "milestone" : "correct");
+      }
     } else if (outcome.kind === "retry" || outcome.kind === "nudge") {
       streak.current = 0;
       setStreakShown(0);
       shake(studioRef.current?.querySelector(".focus-dock .answer-input-wrap, .focus-dock .answer-symbols, .ax-dock .ax-response, .choices label.chosen, .ax-choice.is-checked") ?? null);
-      void feel("wrong");
+      if (!lapEnd) void feel("wrong");
+    }
+    if (lapEnd && taskId) {
+      setRecapFor(taskId);
+      window.setTimeout(() => { burst(nextRef.current, 3); void feel("milestone"); }, outcome.kind === "correct" ? 0 : 360);
     }
   }, [outcomeKey]);
+  // The recap is never a wall: Keep going (focused; Enter or tap), Escape, a tap anywhere else or a
+  // swipe down all continue. The focus bar keeps its own controls (Home steps away as always).
+  const continueLapRef = useRef(continueLap);
+  continueLapRef.current = continueLap;
+  useEffect(() => {
+    if (!showRecap) return;
+    setDrawer(null);
+    nextRef.current?.focus({ preventScroll: true });
+    let done = false, startY: number | null = null, lastY = 0;
+    const go = () => { if (!done) { done = true; continueLapRef.current(); } };
+    const own = (t: EventTarget | null) => t instanceof Element && !!t.closest(".focus-bar, dialog, .dock-primary");
+    const onClick = (e: MouseEvent) => { if (own(e.target)) return; e.preventDefault(); e.stopPropagation(); go(); };
+    const onDown = (e: PointerEvent) => { startY = own(e.target) ? null : e.clientY; lastY = e.clientY; };
+    const onMove = (e: PointerEvent) => { if (startY !== null) lastY = e.clientY; };
+    const onUp = () => { if (startY !== null && lastY - startY > 40) go(); startY = null; };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !document.querySelector("dialog[open]")) { e.preventDefault(); go(); } };
+    window.addEventListener("click", onClick, true);
+    window.addEventListener("pointerdown", onDown, true);
+    window.addEventListener("pointermove", onMove, true);
+    window.addEventListener("pointerup", onUp, true);
+    window.addEventListener("pointercancel", onUp, true);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("click", onClick, true);
+      window.removeEventListener("pointerdown", onDown, true);
+      window.removeEventListener("pointermove", onMove, true);
+      window.removeEventListener("pointerup", onUp, true);
+      window.removeEventListener("pointercancel", onUp, true);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [showRecap]);
   const level = outcome?.kind === "correct" ? streakLevel(streakShown) : 0;
   const milestone = outcome?.kind === "correct" && isMilestone(streakShown);
   // Moving on retires the finished item's toast at once; the veil takes over if the wait is long.
-  const toast = outcome && !advancing ? (
+  const toast = outcome && !advancing && !showRecap ? (
     <div key={`${taskId}|${outcome.kind}|${outcome.title}`} className={`stage-toast feedback-line ${outcome.kind}${level ? ` streak-${level}` : ""}`} role="status" tabIndex={-1} ref={feedbackRegion}>
       {outcome.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
       <strong>{outcome.title}</strong>{milestone && <span className="streak-note">{streakShown} in a row</span>}
@@ -639,7 +752,7 @@ export function Studio(props: StudioProps) {
         disabled={props.busy}
         onSubmit={(response) => { armed.current = true; spec.onSubmit(response); }}
         dockTop={tools}
-        overlay={<>{toast}{helpDrawer}</>}
+        overlay={<>{toast}{recapCard}{helpDrawer}</>}
         stageOverlay={veil}
         next={nextButton}
       />
@@ -671,7 +784,7 @@ export function Studio(props: StudioProps) {
         {veil}
       </div>
       <div className="focus-dock">
-        <div className="stage-overlay-rail">{toast}{helpDrawer}</div>
+        <div className="stage-overlay-rail">{toast}{recapCard}{helpDrawer}</div>
         {tools}
         <div className="dock-row">
           {a.answerKind !== "choice" && (
@@ -744,7 +857,7 @@ export function Studio(props: StudioProps) {
   );
 
   const focus = (
-    <div className="focus-view" onPointerDown={onStagePointerDown} onMouseDown={onStageMouseDown} onTouchStart={onStageTouchStart} onTouchMove={onStageTouchMove}>
+    <div className="focus-view" onPointerDown={onStagePointerDown} onPointerUp={onStagePointerUp} onPointerCancel={onStagePointerCancel} onMouseDown={onStageMouseDown} onTouchStart={onStageTouchStart} onTouchMove={onStageTouchMove}>
       <header className="focus-bar">
         <div className="focus-bar-inner">
           <IconButton label="Home" icon={<House size={22} />} onClick={() => { setDrawer(null); setView("home"); }} />

@@ -4,12 +4,27 @@
  *
  * Platforms disagree about what a keyboard does to the page, so the layout reads one number, the
  * keyboard's overlap with the stage, from whatever the platform reports:
+ * - Android: the shell (build.rs) overlays the keyboard on the page, so the WebView never resizes
+ *   or pans, and reports the keyboard's height itself, every frame of the keyboard's own animation
+ *   (`ahaKeyboard`). That number is the only source there; the viewports are not consulted.
  * - iOS WKWebView keeps the layout viewport and shrinks only the visual viewport.
- * - Android WebView usually shrinks the layout viewport itself (the window resizes).
+ * - A WebView without the bridge may shrink the layout viewport itself (the window resizes).
  * - Desktop has no software keyboard; both viewports are equal.
  * The stage keeps the height it had before the keyboard opened, and the overlap is measured from
  * the bottom of that stage to the bottom of what is visible, so no case counts the keyboard twice.
  */
+
+/** The Android shell's keyboard bridge (`build.rs` adds it to the generated MainActivity). */
+export interface KeyboardBridge {
+  /** The keyboard's current overlap with the bottom of the window, device px (0 when closed). */
+  height(): number;
+}
+/** The shell calls this with the keyboard's height in device px on every animation frame, and with
+ * `settled` once the keyboard has finished opening or closing. */
+export type KeyboardListener = (devicePx: number, settled: boolean) => void;
+declare global { interface Window { ahaKeyboard?: KeyboardBridge; __ahaKeyboard?: KeyboardListener } }
+/** Window event fired when the Android keyboard has finished opening or closing. */
+export const KEYBOARD_SETTLED = "aha-keyboard-settled";
 
 export interface ViewportSample {
   /** window.innerHeight / innerWidth: the layout viewport. */
@@ -20,6 +35,9 @@ export interface ViewportSample {
   visualOffsetTop: number;
   /** A text field has focus. A software keyboard is only ever up while one does. */
   editing: boolean;
+  /** The keyboard's overlap with the window, CSS px, from the Android shell's bridge. Undefined
+   * where there is no bridge (iOS, desktop, a browser). */
+  native?: number;
 }
 
 export interface KeyboardLayout {
@@ -41,6 +59,14 @@ export interface KeyboardLayout {
 export const MIN_KEYBOARD_PX = 24;
 
 export function nextKeyboardLayout(previous: KeyboardLayout | undefined, sample: ViewportSample): KeyboardLayout {
+  if (sample.native !== undefined) {
+    // The keyboard overlays an unchanged WebView, so the stage is the window and the keyboard covers
+    // the stage and the viewport alike. Every frame passes through, with no minimum (the dock follows
+    // the keyboard all the way down) and regardless of focus (the keyboard is still sliding away
+    // after the field blurs).
+    const keyboard = Math.max(0, Math.round(sample.native));
+    return { stage: Math.round(sample.layoutHeight), keyboard, viewport: keyboard, width: sample.layoutWidth };
+  }
   const sameWidth = previous !== undefined && Math.abs(previous.width - sample.layoutWidth) < 1;
   // While editing, a shrinking layout viewport is the keyboard (Android), not a smaller stage.
   const stage = sample.editing && sameWidth ? Math.max(previous.stage, sample.layoutHeight) : sample.layoutHeight;
@@ -66,7 +92,7 @@ export function isEditable(el: Element | null): boolean {
   return el instanceof HTMLElement && el.isContentEditable;
 }
 
-export function sampleViewport(win: Window = window): ViewportSample {
+export function sampleViewport(win: Window = window, native?: number): ViewportSample {
   const vv = win.visualViewport;
   return {
     layoutHeight: win.innerHeight,
@@ -74,5 +100,27 @@ export function sampleViewport(win: Window = window): ViewportSample {
     visualHeight: vv?.height ?? win.innerHeight,
     visualOffsetTop: vv?.offsetTop ?? 0,
     editing: isEditable(win.document.activeElement),
+    native,
   };
+}
+
+interface KeyboardHost {
+  ahaKeyboard?: KeyboardBridge;
+  __ahaKeyboard?: KeyboardListener;
+  devicePixelRatio: number;
+}
+
+/**
+ * Follows the Android shell's keyboard, in CSS px. Calls `onChange` at once with the current height,
+ * then on every frame the shell reports. Returns the unsubscribe function, or undefined when the host
+ * has no bridge (the caller then reads the viewports instead).
+ */
+export function listenNativeKeyboard(host: KeyboardHost, onChange: (cssPx: number, settled: boolean) => void): (() => void) | undefined {
+  const bridge = host.ahaKeyboard;
+  if (!bridge) return undefined;
+  const css = (devicePx: number) => (Number.isFinite(devicePx) ? Math.max(0, devicePx) : 0) / (host.devicePixelRatio || 1);
+  const listener: KeyboardListener = (devicePx, settled) => onChange(css(devicePx), settled);
+  host.__ahaKeyboard = listener;
+  onChange(css(bridge.height()), true);
+  return () => { if (host.__ahaKeyboard === listener) delete host.__ahaKeyboard; };
 }
