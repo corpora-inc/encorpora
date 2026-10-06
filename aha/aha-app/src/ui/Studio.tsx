@@ -39,6 +39,7 @@ import { ModelChoice, ModelStats } from "./ModelSettings";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
+import { LAP, type LapRecap } from "../application/lapRecap";
 import "katex/dist/katex.min.css";
 import "./studio.css";
 export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
@@ -271,8 +272,6 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
 }
 
 const STATUS = { confident: "Remembered", growing: "Taking root", review: "Ready to revisit" } as const;
-/** The focus loop is endless; its bar only marks a quiet lap of this many items. */
-const LAP = 10;
 /** "today", "yesterday", "3 days ago", in the device language. */
 function when(at: string) {
   const day = (t: Date) => new Date(t.getFullYear(), t.getMonth(), t.getDate()).getTime();
@@ -294,6 +293,38 @@ function WeekStrip({ growth }: { growth: NonNullable<StudioProps["growth"]> }) {
       </ol>
       {growth.streak >= 2 && <span className="week-streak">{growth.streak} days in a row</span>}
     </div>
+  );
+}
+
+/** The lap's recap: a bead per answer (gold when correct), the count, up to three skills practised
+ * with what took root or was remembered, and the day streak. Information only: the dock's
+ * Keep going (in Check/Next's slot) or a tap or swipe anywhere continues. */
+function LapRecapCard({ recap, id }: { recap: LapRecap; id: string }) {
+  return (
+    <section id={id} className="lap-recap" role="status">
+      <div className="lap-beads" aria-hidden="true">
+        {recap.answers.map((ok, i) => <i key={i} className={ok ? "is-correct" : undefined} style={{ animationDelay: `${120 + i * 45}ms` }} />)}
+      </div>
+      <p className="lap-score">
+        <strong>{recap.correct} of {recap.answers.length} correct</strong>
+        {recap.streak >= 2 && <span className="lap-streak">{recap.streak} days in a row</span>}
+      </p>
+      {!!recap.skills.length && (
+        <ul className="lap-skills" aria-label="Practised">
+          {recap.skills.map(s => (
+            <li key={s.id}>
+              <span className="lap-skill">{s.title}</span>
+              {s.growth && (
+                <span className={`lap-growth is-${s.growth}`}>
+                  <span className={`growth-mark ${s.growth === "remembered" ? "confident" : "growing"}`} aria-hidden="true" />
+                  {s.growth === "remembered" ? STATUS.confident : STATUS.growing}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
 
@@ -323,6 +354,9 @@ export function Studio(props: StudioProps) {
   const armed = useRef(false);
   const streak = useRef(0);
   const [streakShown, setStreakShown] = useState(0);
+  /** The item whose checked answer completed a lap: its recap shows until the learner moves on. */
+  const [recapFor, setRecapFor] = useState<string>();
+  const recapId = useId();
   const [haptics, setHaptics] = useState(() => hapticsEnabled());
   const feedbackRegion = useRef<HTMLDivElement>(null);
   const settingsReturn = useRef<HTMLElement | null>(null);
@@ -507,6 +541,7 @@ export function Studio(props: StudioProps) {
   const lap = completed % LAP;
   const lapDone = completed > 0 && lap === 0 && readyNext;
   const lapValue = lapDone ? LAP : lap;
+  const showRecap = lapDone && !!props.lapRecap && !!taskId && recapFor === taskId && !advancing && view === "focus";
   const learningVisible = view === "focus" && !settings && !sheet && !props.curiosity && hasTask && !readyNext;
   useEffect(() => {
     props.onLearningVisibleChange?.(learningVisible);
@@ -596,12 +631,16 @@ export function Studio(props: StudioProps) {
         expanded={sheet === "ask"} onClick={() => setSheet("ask")} />
     </div>
   ) : null;
-  // Check and Next share one slot at one size; while waiting, the label gives way to dots.
+  // Check and Next share one slot at one size; while waiting, the label gives way to dots. At the
+  // end of a lap the same slot reads Keep going, focused, and the recap floats above the dock.
+  const continueLap = () => { setRecapFor(undefined); advance(props.onContinue); };
   const nextButton = (
-    <button ref={nextRef} className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}`} type="button" disabled={props.busy} onClick={() => advance(props.onContinue)}>
-      <span className="btn-label">Next <ArrowRight size={20} aria-hidden="true" /></span><WaitDots />
+    <button ref={nextRef} className={`primary-button dock-primary${props.busy && slow ? " is-busy" : ""}${showRecap ? " is-lap" : ""}`} type="button" disabled={props.busy}
+      aria-describedby={showRecap ? recapId : undefined} onClick={showRecap ? continueLap : () => advance(props.onContinue)}>
+      {showRecap ? <span className="btn-label">Keep going</span> : <span className="btn-label">Next <ArrowRight size={20} aria-hidden="true" /></span>}<WaitDots />
     </button>
   );
+  const recapCard = showRecap && props.lapRecap ? <LapRecapCard recap={props.lapRecap} id={recapId} /> : null;
   const stopButton = props.busy && props.onCancel ? (
     <button type="button" className="secondary-button veil-stop" onClick={props.onCancel}>Stop AI request</button>
   ) : null;
@@ -625,25 +664,66 @@ export function Studio(props: StudioProps) {
   // check and a light haptic for correct, escalating a little at three and five in a row; a gentle
   // shake of the answer field and a soft haptic for a miss. All overlays; nothing waits on them.
   const outcomeKey = outcome ? `${taskId}|${outcome.kind}|${outcome.title}` : undefined;
-  useEffect(() => {
+  // The answer that completes a lap (every LAP answers) gets a bigger, gold burst, the success
+  // haptic and the recap instead; after a miss the field shakes first. A layout effect, so the
+  // recap replaces the answer toast before the first paint (no one-frame flash of the toast).
+  useLayoutEffect(() => {
     if (!outcome || !armed.current) return;
     armed.current = false;
+    const lapEnd = outcome.kind !== "nudge" && outcome.kind !== "info" && readyNext && completed > 0 && completed % LAP === 0 && !!props.lapRecap;
     if (outcome.kind === "correct") {
       const run = streak.current += 1;
       setStreakShown(run);
-      burst(nextRef.current, streakLevel(run));
-      void feel(isMilestone(run) ? "milestone" : "correct");
+      if (!lapEnd) {
+        burst(nextRef.current, streakLevel(run));
+        void feel(isMilestone(run) ? "milestone" : "correct");
+      }
     } else if (outcome.kind === "retry" || outcome.kind === "nudge") {
       streak.current = 0;
       setStreakShown(0);
       shake(studioRef.current?.querySelector(".focus-dock .answer-input-wrap, .focus-dock .answer-symbols, .ax-dock .ax-response, .choices label.chosen, .ax-choice.is-checked") ?? null);
-      void feel("wrong");
+      if (!lapEnd) void feel("wrong");
+    }
+    if (lapEnd && taskId) {
+      setRecapFor(taskId);
+      window.setTimeout(() => { burst(nextRef.current, 3); void feel("milestone"); }, outcome.kind === "correct" ? 0 : 360);
     }
   }, [outcomeKey]);
+  // The recap is never a wall: Keep going (focused; Enter or tap), Escape, a tap anywhere else or a
+  // swipe down all continue. The focus bar keeps its own controls (Home steps away as always).
+  const continueLapRef = useRef(continueLap);
+  continueLapRef.current = continueLap;
+  useEffect(() => {
+    if (!showRecap) return;
+    setDrawer(null);
+    nextRef.current?.focus({ preventScroll: true });
+    let done = false, startY: number | null = null, lastY = 0;
+    const go = () => { if (!done) { done = true; continueLapRef.current(); } };
+    const own = (t: EventTarget | null) => t instanceof Element && !!t.closest(".focus-bar, dialog, .dock-primary");
+    const onClick = (e: MouseEvent) => { if (own(e.target)) return; e.preventDefault(); e.stopPropagation(); go(); };
+    const onDown = (e: PointerEvent) => { startY = own(e.target) ? null : e.clientY; lastY = e.clientY; };
+    const onMove = (e: PointerEvent) => { if (startY !== null) lastY = e.clientY; };
+    const onUp = () => { if (startY !== null && lastY - startY > 40) go(); startY = null; };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !document.querySelector("dialog[open]")) { e.preventDefault(); go(); } };
+    window.addEventListener("click", onClick, true);
+    window.addEventListener("pointerdown", onDown, true);
+    window.addEventListener("pointermove", onMove, true);
+    window.addEventListener("pointerup", onUp, true);
+    window.addEventListener("pointercancel", onUp, true);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("click", onClick, true);
+      window.removeEventListener("pointerdown", onDown, true);
+      window.removeEventListener("pointermove", onMove, true);
+      window.removeEventListener("pointerup", onUp, true);
+      window.removeEventListener("pointercancel", onUp, true);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [showRecap]);
   const level = outcome?.kind === "correct" ? streakLevel(streakShown) : 0;
   const milestone = outcome?.kind === "correct" && isMilestone(streakShown);
   // Moving on retires the finished item's toast at once; the veil takes over if the wait is long.
-  const toast = outcome && !advancing ? (
+  const toast = outcome && !advancing && !showRecap ? (
     <div key={`${taskId}|${outcome.kind}|${outcome.title}`} className={`stage-toast feedback-line ${outcome.kind}${level ? ` streak-${level}` : ""}`} role="status" tabIndex={-1} ref={feedbackRegion}>
       {outcome.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
       <strong>{outcome.title}</strong>{milestone && <span className="streak-note">{streakShown} in a row</span>}
@@ -670,7 +750,7 @@ export function Studio(props: StudioProps) {
         disabled={props.busy}
         onSubmit={(response) => { armed.current = true; spec.onSubmit(response); }}
         dockTop={tools}
-        overlay={<>{toast}{helpDrawer}</>}
+        overlay={<>{toast}{recapCard}{helpDrawer}</>}
         stageOverlay={veil}
         next={nextButton}
       />
@@ -702,7 +782,7 @@ export function Studio(props: StudioProps) {
         {veil}
       </div>
       <div className="focus-dock">
-        <div className="stage-overlay-rail">{toast}{helpDrawer}</div>
+        <div className="stage-overlay-rail">{toast}{recapCard}{helpDrawer}</div>
         {tools}
         <div className="dock-row">
           {a.answerKind !== "choice" && (

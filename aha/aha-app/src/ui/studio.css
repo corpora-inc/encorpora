@@ -1518,15 +1518,6 @@ html.aha-stage-pinned body {
   .focus-progress > span {
     transition: width 0.5s ease;
   }
-  /* A finished lap glows once; the loop keeps going and nothing waits on it. */
-  .focus-progress.is-milestone {
-    animation: aha-lap 1.2s ease-out both;
-  }
-}
-@keyframes aha-lap {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal) 60%, transparent); }
-  40% { box-shadow: 0 0 10px 2px color-mix(in srgb, var(--teal) 45%, transparent); }
-  100% { box-shadow: 0 0 0 0 transparent; }
 }
 @keyframes aha-pop {
   from { transform: scale(0.3); opacity: 0; }
@@ -2530,4 +2521,128 @@ html.aha-stage-pinned body {
     min-height: 72px;
     border-radius: 20px;
   }
+}
+
+/* A completed lap (#919's ten-answer bar): the bar fills gold, a bigger gold burst leaves Keep
+   going (in Check/Next's slot), and the recap card rises from the dock in the overlay rail, like
+   the help drawer. Nothing in the stage moves; the card is information, never a target. */
+.focus-progress.is-milestone > span {
+  background: var(--gold);
+}
+.lap-recap {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: min(calc(var(--aha-vvh, 100dvh) * 0.5), 380px);
+  overflow: hidden;
+  padding: 16px 18px 14px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid rgb(var(--gold-rgb) / 0.5);
+  box-shadow: 0 -8px 30px rgb(var(--gold-rgb) / 0.16), 0 2px 6px rgb(var(--shadow-rgb) / 0.08);
+  pointer-events: none;
+  text-align: left;
+}
+.stage-overlay-rail > .lap-recap,
+.ax-overlay > .lap-recap {
+  pointer-events: none;
+}
+/* One bead per answer of the lap, in order: gold for correct, an open ring for a miss. */
+.lap-beads {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.lap-beads > i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+}
+.lap-beads > i.is-correct {
+  border-color: var(--gold);
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--gold) 50%, #fff), var(--gold) 62%);
+}
+.lap-score {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin: 0;
+}
+.lap-score strong {
+  font-size: 1.22rem;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.lap-streak {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--teal-ink);
+}
+.lap-skills {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--divider);
+  display: grid;
+  gap: 6px;
+}
+.lap-skills li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.lap-skill {
+  min-width: 0;
+}
+.lap-growth {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-ink);
+}
+.lap-growth.is-remembered {
+  color: var(--teal-ink);
+}
+.focus-view .dock-primary.is-lap .btn-label {
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lap-recap {
+    animation: aha-lap-in 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+  }
+  .lap-beads > i {
+    animation: aha-pop 0.36s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  }
+  .lap-skills,
+  .lap-streak {
+    animation: aha-fade-in 0.3s ease 0.55s both;
+  }
+  /* Keep going arrives with a gold glow (no transform, so the slot's box holds still). */
+  .focus-view .dock-primary.is-lap {
+    animation: aha-lap-glow 1s ease-out both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lap-recap {
+    animation: aha-fade-in 0.3s ease both;
+  }
+}
+@keyframes aha-lap-in {
+  from { transform: translateY(14px) scale(0.97); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes aha-lap-glow {
+  from { box-shadow: 0 0 0 0 rgb(var(--gold-rgb) / 0.55); }
+  to { box-shadow: 0 0 0 14px rgb(var(--gold-rgb) / 0); }
 }

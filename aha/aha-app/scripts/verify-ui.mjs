@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
-import { auditFigureContrast } from './figure-contrast.mjs';
+import { auditFigureContrast, auditUiContrast } from './figure-contrast.mjs';
 const ownRoot=fileURLToPath(new URL('..',import.meta.url));
 const root=path.resolve(process.env.AHA_UI_APP_ROOT||ownRoot);
 const {expectedAnswer,answerCanBeNegative}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
@@ -477,6 +477,23 @@ try{
     await openStage('fx-2-coins');s.reset();
     await s.snap('coins initial');await answer.fill('68');await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
     await sp.locator('.stage-toast.correct').filter({hasText:'Yes, that’s it.'}).waitFor();await s.snap('correct with celebration');await celebration(sp,s);
+    // The answer that completes a lap: a bigger gold burst from Keep going (in Check/Next's slot,
+    // focused), the recap card rising from the dock, every stage region still, and Keep going moves on.
+    await openStage('fx-2-coins&completed=9');s.reset();await s.snap('lap: last item');
+    await answer.fill('68');await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
+    const recap=sp.locator('.lap-recap');await recap.waitFor();await s.snap('lap recap');
+    assert.equal(await sp.locator('.aha-burst .aha-burst-ring.is-gold').count(),2,'a lap gets the bigger burst: two gold rings');
+    assert.ok(await sp.locator('.aha-burst-bit').count()>=40,'and more confetti than a single answer');
+    assert.equal(await sp.locator('.stage-toast').count(),0,'the recap replaces the answer toast');
+    assert.equal(await sp.getByRole('button',{name:'Next',exact:true}).count(),0,'Keep going takes Next’s place');
+    assert.equal(await sp.evaluate(()=>document.activeElement?.textContent),'Keep going','Keep going is focused');
+    assert.match(await recap.innerText(),/9 of 10 correct/);assert.equal(await recap.locator('li').count(),3,'one to three skills');
+    assert.equal(await recap.locator('.lap-growth').count(),2,'taking root and remembered');
+    await sp.waitForTimeout(900);await s.snap('lap recap settled');
+    if(stageShots)await sp.screenshot({path:path.join(stageShots,`lap-recap-spec-${w}x${h}.png`)});
+    {const low=await auditUiContrast(sp,'.lap-recap');assert.deepEqual(low,[],`${w}×${h}: the lap recap meets WCAG contrast in light and dark`);}
+    await sp.getByRole('button',{name:'Keep going',exact:true}).click();await sp.locator('.lap-recap').waitFor({state:'detached'});
+    await sp.getByRole('button',{name:'Check',exact:true}).waitFor();
     // Reduced motion: no burst and no shake; the toast simply fades in.
     await sp.emulateMedia({reducedMotion:'reduce'});await openStage('fx-2-coins');s.reset();await s.snap('reduced motion initial');
     await answer.fill('68');await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
@@ -835,13 +852,34 @@ try{
         else if(sym)await P.getByRole('button',{name:sym,exact:true}).click();
         else await P.getByLabel('Your answer',{exact:true}).fill(want);
       }
+      const before=await regions(P);
       await P.getByRole('button',{name:'Check',exact:true}).click();
-      await P.getByRole('button',{name:'Next',exact:true}).waitFor();
+      const lapEnd=i%10===0;
+      await P.getByRole('button',{name:lapEnd?'Keep going':'Next',exact:true}).waitFor();
       assert.equal(await P.getByText(/place to pause/i).count(),0,`item ${i}: no pause or end screen`);
+      assert.equal(await P.locator('.lap-recap').count(),lapEnd?1:0,`item ${i}: a recap only as a lap completes`);
       const bar=P.locator('.focus-progress');
       assert.equal(await bar.getAttribute('aria-valuemax'),'10');
       assert.equal(await bar.getAttribute('aria-valuenow'),String(i%10||10),`item ${i}: the bar marks a lap, not an end`);
-      assert.equal(await bar.evaluate(b=>b.classList.contains('is-milestone')),i%10===0,`item ${i}: a lap glows only as it completes`);
+      assert.equal(await bar.evaluate(b=>b.classList.contains('is-milestone')),i%10===0,`item ${i}: a lap turns gold only as it completes`);
+      if(lapEnd){
+        const recap=P.locator('.lap-recap');await P.waitForTimeout(900);
+        assert.match(await recap.innerText(),/^10 of 10 correct/m,`item ${i}: the lap's count, from durable evidence`);
+        const skillsShown=await recap.locator('.lap-skill').allInnerTexts();
+        assert.ok(skillsShown.length>=1&&skillsShown.length<=3,`item ${i}: one to three skills practised`);
+        const titles=new Set((await P.evaluate(()=>Object.values(window.__ahaFixture.read().attempts).flat().slice(-10).map(a=>a.data.skillId))).map(id=>getSkill(id).title));
+        assert.ok(skillsShown.every(t=>titles.has(t)),`item ${i}: the skills are this lap's skill titles`);
+        assert.equal(await P.evaluate(()=>document.activeElement?.textContent),'Keep going','Keep going is focused');
+        const after=await regions(P);
+        for(const k of Object.keys(before)){const d=before[k]&&after[k]?Math.max(...before[k].map((v,j)=>Math.abs(v-after[k][j]))):Infinity;assert.ok(d<=1,`item ${i}: the recap moves no stage region (${k} moved ${d}px)`);}
+        if(i===10&&process.env.AHA_UI_SHOTS)await P.screenshot({path:path.join(process.env.AHA_UI_SHOTS,'lap-recap-local-390x844.png')});
+        if(i===10){await P.keyboard.press('Enter');}
+        else{const r=await P.locator('.focus-bar').boundingBox();await P.touchscreen.tap(r.x+r.width/2,r.y+r.height+60);}
+        await P.waitForFunction(prev=>{const d=Object.values(window.__ahaFixture.read().sessions)[0]?.data;const now=d?.aiActivity?.activityId??d?.activity?.id;return !!now&&now!==prev;},id);
+        await P.getByRole('button',{name:'Check',exact:true}).waitFor();
+        assert.equal(await P.locator('.lap-recap').count(),0,`item ${i+1}: the recap is gone`);
+        continue;
+      }
       await P.getByRole('button',{name:'Next',exact:true}).click();
       await P.waitForFunction(prev=>{const d=Object.values(window.__ahaFixture.read().sessions)[0]?.data;const now=d?.aiActivity?.activityId??d?.activity?.id;return !!now&&now!==prev;},id);
     }

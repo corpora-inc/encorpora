@@ -37,6 +37,7 @@ function safeStorage(): Storage | null {
   }
 }
 
+/** milestone: a streak worth naming, or a completed lap; both get the success notification. */
 export type Feel = "correct" | "milestone" | "wrong";
 let hapticsWarned = false;
 /** A light tap for correct, a success notification for a streak milestone, a soft one for a miss.
@@ -56,12 +57,15 @@ export async function feel(kind: Feel): Promise<void> {
 
 const reducedMotion = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const COLORS = ["#357e75", "#e0a526", "#d3543d", "#86c9bb", "#f3c969"];
+/** A completed lap is mostly gold, with a little of the studio's teal. */
+const LAP_COLORS = ["#e0a526", "#f3c969", "#b9862a", "#357e75", "#f7dc8f"];
 /** Longest burst, in ms; the whole moment stays under ~900ms. */
 export const BURST_MS = 860;
 
 /** Confetti and a radiant ring from the centre of `anchor` (the Next button in Check's slot).
+ * Level 3 is a completed lap: more and farther confetti, mostly gold, and a second ring.
  * Skipped under reduced motion: the toast's gentle fade is the whole celebration then. */
-export function burst(anchor: Element | null, level: 0 | 1 | 2 = 0): void {
+export function burst(anchor: Element | null, level: 0 | 1 | 2 | 3 = 0): void {
   if (!anchor || reducedMotion() || typeof document === "undefined") return;
   const r = anchor.getBoundingClientRect();
   if (!r.width || !r.height) return;
@@ -78,16 +82,27 @@ export function burst(anchor: Element | null, level: 0 | 1 | 2 = 0): void {
     [{ transform: "scale(0.5)", opacity: 0.85 }, { transform: `scale(${2.4 + level * 0.5})`, opacity: 0 }],
     { duration: 560 + level * 80, easing: "cubic-bezier(0.2, 0.7, 0.3, 1)", fill: "forwards" },
   );
-  const count = 16 + level * 8;
+  const lap = level === 3;
+  if (lap) {
+    const echo = document.createElement("i");
+    echo.className = "aha-burst-ring is-gold";
+    layer.append(echo);
+    echo.animate(
+      [{ transform: "scale(0.4)", opacity: 0 }, { transform: "scale(0.9)", opacity: 0.7, offset: 0.25 }, { transform: "scale(5.2)", opacity: 0 }],
+      { duration: 820, delay: 40, easing: "cubic-bezier(0.2, 0.7, 0.3, 1)", fill: "forwards" },
+    );
+  }
+  const palette = lap ? LAP_COLORS : COLORS;
+  const count = lap ? 44 : 16 + level * 8;
   for (let i = 0; i < count; i++) {
     const bit = document.createElement("i");
     const confetti = i % 3 !== 0;
     bit.className = confetti ? "aha-burst-bit is-confetti" : "aha-burst-bit";
-    bit.style.background = COLORS[i % COLORS.length]!;
+    bit.style.background = palette[i % palette.length]!;
     layer.append(bit);
     // Mostly up and out (the dock sits low on the screen), evenly spread with a little jitter.
     const angle = -Math.PI * (0.04 + 0.92 * ((i + Math.random() * 0.8) / count));
-    const distance = (58 + Math.random() * 46) * (1 + level * 0.28);
+    const distance = (58 + Math.random() * (lap ? 90 : 46)) * (1 + level * 0.28);
     const x = Math.cos(angle) * distance * 1.2;
     const y = Math.sin(angle) * distance;
     const spin = (Math.random() - 0.5) * 540;
