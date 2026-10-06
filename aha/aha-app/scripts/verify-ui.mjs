@@ -683,10 +683,11 @@ try{
   await short.close();
   // The Android shell overlays the keyboard: adjustResize under edge-to-edge (no resize, no pan),
   // the IME inset kept from the WebView, and the height pushed to the page on every animation frame.
-  const buildRs=await readFile(path.join(ownRoot,'src-tauri/build.rs'),'utf8');
+  const buildRs=await readFile(path.join(ownRoot,'src-tauri/build_support/android_bridge.rs'),'utf8');
+  assert.match(await readFile(path.join(ownRoot,'src-tauri/build.rs'),'utf8'),/android_bridge::patch_main_activity/,'build.rs applies the Android bridge');
   for(const [needle,why] of [['SOFT_INPUT_ADJUST_RESIZE','the window never pans for the keyboard'],['.setInsets(IME, androidx.core.graphics.Insets.NONE)','the WebView never sees the IME inset, so it never resizes'],
-    ['setWindowInsetsAnimationCallback','the dock follows the keyboard animation frame by frame'],['window.__ahaKeyboard&&window.__ahaKeyboard($px,$settled)','the page hears every frame'],['"ahaKeyboard"','the page can read the current height']])
-    assert.ok(buildRs.includes(needle),`Android keyboard bridge: ${why} (build.rs lacks ${needle})`);
+    ['setWindowInsetsAnimationCallback','the dock follows the keyboard animation frame by frame'],['window.__ahaKeyboard&&window.__ahaKeyboard($px,$settled)','the page hears every frame'],['keyboard.animations++','overlapping keyboard animations are counted, so no early settle mid-animation'],['"ahaKeyboard"','the page can read the current height']])
+    assert.ok(buildRs.includes(needle),`Android keyboard bridge: ${why} (android_bridge.rs lacks ${needle})`);
   console.log(`Keyboard dock: ${keyboardLog.join(', ')}: answer 8px above the keyboard with no gap, Android frame-synced with no overshoot and no WebView resize, bar/problem still, problem scrolls fully behind the dock without closing the keyboard, page unscrolled, hint fits, tap-problem and swipe-down close it.`);
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);

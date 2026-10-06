@@ -103,3 +103,7 @@ pub fn run() {
         .run(tauri::generate_context!())
         .expect("AHA could not open its native application");
 }
+
+#[cfg(test)]
+#[path = "../build_support/android_bridge.rs"]
+mod build_android_bridge;
