@@ -265,6 +265,9 @@ export function validateActivity(raw: unknown, options: ValidateOptions): Valida
     const t = model.target(refPath.filter(Boolean));
     if (!t.ok) return t;
     if (t.value.kind === 'quantity') used.add(t.value.id);
+    // A measure may have no value (a fraction with no selected role has no fraction): report it, never describe it.
+    const valued = model.resolve(refPath.filter(Boolean));
+    if (!valued.ok) return valued;
     const described = model.describe(t.value);
     const key = t.value.key;
     const printed = scope !== 'explanation' && VALUE_BEARING.has(attr);

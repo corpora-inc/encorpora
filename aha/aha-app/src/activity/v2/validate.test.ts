@@ -341,6 +341,11 @@ describe('review regressions: no path around the answer checks', () => {
     assert.ok(check(bare('3.NF.A.3')).ok, JSON.stringify(codesOf(check(bare('3.NF.A.3')))));
     rejects(edit(equalGroupsActivity, a => { a.model.structures = []; a.prompt = [{ text: 'What is {{g}} times {{n}}?', type: 'text' }]; a.response = { ask: 'g', distractors: [], form: 'number' }; }), 'representation');
   });
+  it('reports a placeholder for a measure with no value (no selected parts), and never throws', () => {
+    const a = edit(shadeActivity, x => { x.support.explanation = 'That is {{f.fraction}} of the whole.'; });
+    const v = check(a);
+    assert.ok(!v.ok);
+  });
   it('knows a fraction complement reads its wholes', () => {
     rejects(edit(shadedFractionActivity, a => {
       a.aim.skills = ['3.NF.A.3'];
