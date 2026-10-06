@@ -39,7 +39,10 @@ const TEX_MARKUP = /<\s*\/?\s*(script|style|iframe|img|svg|object|embed|link|met
  * invisible (but copyable, screen-readable) content can never carry the answer. */
 const BLANK_BOX = /(?<!\\)\\boxed\{\\phantom\{0{1,3}\}\}/g;
 const screen = (tex: string) => tex.replace(BLANK_BOX, '\\square');
-const KATEX_OPTIONS = { trust: false, strict: 'error' as const, throwOnError: true, maxExpand: 50, maxSize: 8, output: 'htmlAndMathml' as const };
+/** Children read fractions: inline `\frac` is typeset full size (display style), as in a K–8 textbook,
+ * instead of TeX's 70% script-size digits. `\tfrac` stays available for a deliberately small one. */
+const MACROS = { '\\frac': '\\dfrac' };
+const KATEX_OPTIONS = { trust: false, strict: 'error' as const, throwOnError: true, maxExpand: 50, maxSize: 8, output: 'htmlAndMathml' as const, get macros() { return { ...MACROS }; } };
 
 export function checkTex(tex: string): string | null {
   if (tex.length > 300) return 'Math span is too long (300 characters max).';
@@ -53,13 +56,27 @@ export function checkTex(tex: string): string | null {
   catch (e) { return `Math could not be typeset: ${e instanceof Error ? e.message.slice(0, 120) : 'error'}`; }
 }
 
+/** TeX spaces a comma as punctuation ("1, 000"); a thousands separator between digits is an ordinary symbol. */
+const typeset = (tex: string) => tex.replace(/(\d),(?=\d{3}(?!\d))/g, '$1{,}');
+const unsafe = (tex: string) => tex.length > 300 || FORBIDDEN_TEX.test(screen(tex)) || TEX_MARKUP.test(tex);
+
 /** Renders only TeX that passes the same denylist as validation (defense in depth for unvalidated input). */
 export function renderTex(tex: string, displayMode = false): string {
   try {
-    if (tex.length > 300 || FORBIDDEN_TEX.test(screen(tex)) || TEX_MARKUP.test(tex)) throw new Error('unsafe');
-    return katex.renderToString(tex, { ...KATEX_OPTIONS, displayMode });
+    if (unsafe(tex)) throw new Error('unsafe');
+    return katex.renderToString(typeset(tex), { ...KATEX_OPTIONS, displayMode });
   }
   catch { return katex.renderToString('\\text{?}', { ...KATEX_OPTIONS, displayMode }); }
+}
+
+/** `renderTex` into a DOM element. KaTeX then sets its layout styles through the CSSOM, which CSP
+ * permits, instead of style attributes in markup, which the app's CSP blocks (see render/Tex.tsx). */
+export function renderTexInto(element: HTMLElement, tex: string, displayMode = false): void {
+  try {
+    if (unsafe(tex)) throw new Error('unsafe');
+    katex.render(typeset(tex), element, { ...KATEX_OPTIONS, displayMode });
+  }
+  catch { element.textContent = ''; katex.render('\\text{?}', element, { ...KATEX_OPTIONS, displayMode }); }
 }
 
 // A real tag shape (<b>, </div>, <img src=…, <!--) or an HTML entity used as markup (&lt; &#60;).

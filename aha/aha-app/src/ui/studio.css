@@ -12,6 +12,14 @@
   font-weight: 700;
   font-display: swap;
 }
+/* Lining digits for the serif prompt, from the face the math is set in (see activity.css). */
+@font-face {
+  font-family: AhaFigures;
+  src: url("katex/dist/fonts/KaTeX_Main-Regular.woff2") format("woff2");
+  unicode-range: U+0030-0039, U+2212;
+  size-adjust: 110%;
+  font-display: swap;
+}
 :root {
   font-family: AhaSans, Arial, sans-serif;
   font-synthesis: none;
@@ -248,6 +256,17 @@ h1 {
 }
 .math-prose {
   overflow-wrap: anywhere;
+}
+.math-prose .katex {
+  font-size: 1.1em;
+}
+.math-prose .math-inline {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+}
+.math-prose .math-inline.is-stacked {
+  margin-block: 0.22em;
 }
 .math-prose .katex-display {
   max-width: 100%;
@@ -1030,7 +1049,8 @@ body {
   padding: 8px 20px 12px;
 }
 .stage-prompt {
-  font-family: Georgia, "Times New Roman", serif;
+  /* AhaFigures (activity.css): lining digits that match the math. */
+  font-family: AhaFigures, Georgia, "Times New Roman", serif;
   text-align: center;
   letter-spacing: -0.015em;
   outline: none;

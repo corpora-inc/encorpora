@@ -281,6 +281,63 @@ try{
   console.log(`Focus stage: ${localRuns.length} local tasks and ${fixtures.length} spec fixtures; page scroll in none. ${Math.round(fit*100)}% fit without scrolling inside the stage; inside-stage scroll (tall figures/tables, never the page): ${scrollsInside.join(', ')||'none'}.`);
   assert.ok(fit>=0.9,`at least 90% of fixtures fit the stage without inner scroll (${scrollsInside.join(', ')})`);
   await stageCtx.close();
+  // Inline math under the WebView's CSP. Tauri adds a nonce to style-src (index.html has an inline
+  // <style>), and with a nonce browsers ignore 'unsafe-inline', so every style attribute that arrives as
+  // markup is dropped: KaTeX fractions collapsed into one tiny glyph on device. Block style attributes
+  // here the same way; math must still be laid out (styles go through the CSSOM), fonts must load,
+  // the MathML copy must stay hidden, and fractions must stack, centred and readable, in both themes.
+  const mathSpec={version:1,id:'verify-math',title:'Math typesetting',skillIds:['5.NF.A.1'],difficulty:5,
+    prompt:[{type:'text',text:'Maya has $\\frac{1}{4}$ of a pizza and $2\\frac{3}{8}$ cups of flour. She pays \\$3.50, then $\\$1,250$ for $x$ ovens.'},
+      {type:'text',text:'Work out $3^2 + 4^2 = \\square$ and $12 \\times 3 - 18 \\div 6 = \\boxed{\\phantom{00}}$.'},
+      {type:'math',tex:'\\begin{array}{r} 347 \\\\ +\\,285 \\\\ \\hline \\square \\end{array}'}],
+    response:{type:'multiple_choice',options:[{text:'$\\frac{3}{5}$',correct:false},{text:'$\\frac{4}{5}$',correct:true}]},
+    hints:['Same bottom number: compare $\\frac{3}{5}$ and $\\frac{4}{5}$ by their tops.'],
+    explanation:'Since $4 > 3$, $\\frac{4}{5} > \\frac{3}{5}$. Also $\\frac{4}{8} = \\frac{1}{2}$ and $\\frac{2}{3} > \\frac{1}{2}$.'};
+  const mathCtx=await browser.newContext({viewport:{width:384,height:832},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+  await mathCtx.route(u=>u.pathname.endsWith('/stage.html'),async route=>{const r=await route.fetch();await route.fulfill({response:r,headers:{...r.headers(),'content-security-policy':"style-src-attr 'none'"}});});
+  await mathCtx.addInitScript(spec=>{window.__stageSpec=spec;window.__csp=[];document.addEventListener('securitypolicyviolation',e=>window.__csp.push(e.violatedDirective));},mathSpec);
+  const mp=await mathCtx.newPage();mp.on('pageerror',e=>errors.push(e.message));
+  // A routed document fails local-network checks for Vite's HMR socket; that noise is not the app's.
+  mp.on('console',m=>{if(m.type()==='error'&&!/Content Security Policy|WebSocket|\[vite\]|Vite server/.test(m.text()))errors.push(m.text());});
+  await mp.goto(`${base}/src/activity/gallery/stage.html`);await mp.getByRole('button',{name:'Continue',exact:true}).click();
+  await mp.locator('.ax-paragraph .katex').first().waitFor();await mp.evaluate(()=>document.fonts.ready);
+  const fracCheck=()=>mp.evaluate(()=>{
+    const visible=el=>{const r=el.getBoundingClientRect();return r.width>1&&r.height>1;};
+    /** Geometry of the first fraction in `root`, relative to the font size of the text around it. */
+    const frac=root=>{const f=root.querySelector('.katex-html .mfrac');if(!f)return null;
+      const [num,den]=['.vlist>span:last-child .mord','.vlist>span:first-child .mord'].map(s=>f.querySelector(s));
+      const line=f.querySelector('.frac-line'),lr=line.getBoundingClientRect(),nr=num.getBoundingClientRect(),dr=den.getBoundingClientRect();
+      const text=parseFloat(getComputedStyle(root.closest('p, .ax-choice, .help-step')).fontSize);
+      return {num:num.textContent,den:den.textContent,stacked:nr.bottom<=lr.top+1&&dr.top>=lr.bottom-1,line:lr.width>2&&parseFloat(getComputedStyle(line).borderBottomWidth)>0,
+        height:(dr.bottom-nr.top)/text,lineColor:getComputedStyle(line).borderBottomColor,textColor:getComputedStyle(root).color,center:(nr.top+dr.bottom)/2};};
+    const quarter=document.querySelector('.ax-paragraph .ax-math');
+    const shown=[...quarter.querySelectorAll('.katex-html *')].filter(e=>!e.children.length&&e.textContent.trim()&&visible(e)).map(e=>e.textContent.replace(/\u200b/g,'')).sort().join('');
+    const mathml=[...document.querySelectorAll('.katex-mathml')].map(m=>{const r=m.getBoundingClientRect();return getComputedStyle(m).position==='absolute'&&r.width<=1&&r.height<=1;});
+    const option=document.querySelector('.ax-choice'),badge=option.querySelector('.ax-choice-badge').getBoundingClientRect();
+    const font=f=>[...document.fonts].some(x=>x.family.replace(/"/g,'')===f&&x.status==='loaded')&&document.fonts.check(`16px ${f}`);
+    return {shown,mathml,prompt:frac(quarter),option:frac(option),badgeCenter:(badge.top+badge.bottom)/2,
+      fonts:{main:font('KaTeX_Main'),math:font('KaTeX_Math'),ams:font('KaTeX_AMS')},csp:window.__csp.filter(d=>d==='style-src-attr').length,
+      thousands:document.querySelectorAll('.ax-paragraph .mpunct + .mspace').length};});
+  for(const scheme of ['light','dark']){
+    await mp.emulateMedia({colorScheme:scheme});const m=await fracCheck();
+    assert.equal(m.csp,0,'math never relies on style attributes (blocked by the WebView CSP)');
+    assert.ok(m.mathml.length>=5&&m.mathml.every(Boolean),'every .katex-mathml copy is visually hidden');
+    assert.equal(m.shown,'14','$\\frac{1}{4}$ shows exactly one 1 and one 4 (no duplicate MathML text)');
+    assert.deepEqual(m.fonts,{main:true,math:true,ams:true},'KaTeX fonts load from the bundle');
+    assert.equal(m.thousands,0,'a thousands comma is not spaced as punctuation');
+    for(const [where,f] of [['prompt',m.prompt],['option',m.option]]){
+      assert.ok(f&&f.stacked&&f.line,`${where} fraction: numerator above a visible bar above the denominator (${JSON.stringify(f)})`);
+      assert.ok(f.height>=1.6,`${where} fraction is at least 1.6em of the surrounding text tall (${f.height.toFixed(2)}em)`);
+      assert.equal(f.lineColor,f.textColor,`${where} fraction bar follows the ${scheme} theme's text colour`);}
+    assert.equal(m.prompt.num+m.prompt.den,'14');assert.equal(m.option.num+m.option.den,'35');
+    assert.ok(Math.abs(m.option.center-m.badgeCenter)<=3,`option fraction is centred on its letter badge (${m.option.center} vs ${m.badgeCenter})`);
+  }
+  await mp.getByRole('button',{name:'Show me how',exact:true}).click();await mp.locator('.help-panel.is-explain .katex').first().waitFor();
+  const overlaps=await mp.evaluate(()=>{const rs=[...document.querySelectorAll('.help-panel .ax-math.is-stacked')].map(e=>e.getBoundingClientRect());
+    return rs.flatMap((a,i)=>rs.slice(i+1).filter(b=>Math.abs(a.top-b.top)>2&&a.top<b.bottom-1&&b.top<a.bottom-1).map(()=>i));});
+  assert.deepEqual(overlaps,[],'fractions on consecutive lines of an explanation never touch');
+  await mathCtx.close();
+  console.log('Math typesetting: KaTeX lays out under a style-attribute-blocking CSP, fonts load, MathML hidden, fractions stack and centre (light and dark).');
   // #892 stable stage. At the S26's 384×832 and an 820×1180 tablet, the focus bar, the problem
   // region, the answer field and the Check/Next slot keep their boxes (≤1px) through every state of
   // an item: typing, hint, Show me how, nudge, a wrong answer, an error, the curiosity and flag

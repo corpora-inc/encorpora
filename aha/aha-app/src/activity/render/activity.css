@@ -3,6 +3,10 @@
    for both themes with the dataviz palette validator. */
 @font-face { font-family: AhaSans; src: url("../../ui/fonts/lato-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: AhaSans; src: url("../../ui/fonts/lato-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+/* Georgia's digits are old-style (3 and 5 drop below the line) while KaTeX's are lining, so "\$3.50" in a
+   sentence and "$1.25$" beside it looked like two typefaces. Serif prompts take their digits (and the minus
+   sign) from KaTeX_Main, the face the math is set in, scaled to the math's 1.1em. */
+@font-face { font-family: AhaFigures; src: url("katex/dist/fonts/KaTeX_Main-Regular.woff2") format("woff2"); unicode-range: U+0030-0039, U+2212; size-adjust: 110%; font-display: swap; }
 
 .aha-activity {
   --ax-paper: #f8f7f1; --ax-card: #fffefa; --ax-panel: #f6f5ec; --ax-ink: #263d35; --ax-muted: #5f6a5c;
@@ -67,6 +71,14 @@
 
 .ax-prompt { display: grid; gap: 14px; }
 .ax-paragraph { font-size: 1.08rem; line-height: 1.7; max-width: 62ch; overflow-wrap: anywhere; }
+/* Math typesetting. KaTeX's own layout (vlist offsets, struts, em sizes) must never be restyled: only the
+   outer .katex size is tuned. Computer Modern has a smaller x-height than Georgia/Lato, so 1.1em reads level
+   with the words around it; fractions are display style (text.ts), so line boxes grow to fit them. */
+/* An inline-block keeps the baseline and lets its margin reach the line box: stacked fractions on
+   consecutive lines get leading between them instead of touching. Only stacked math gets the margin,
+   so lines with a plain "3 + 4" keep the paragraph's even rhythm. */
+.ax-math { display: inline-block; max-width: 100%; }
+.ax-math.is-stacked { margin-block: 0.22em; }
 .ax-math .katex { font-size: 1.1em; }
 .ax-math.is-short { white-space: nowrap; }
 .ax-display-math { overflow-x: auto; overflow-y: hidden; padding: 6px 0; font-size: 1.15rem; }
@@ -247,7 +259,7 @@
 input[type="checkbox"] + .ax-choice-badge { border-radius: 8px; }
 .ax-choice.is-checked .ax-choice-badge { background: var(--ax-teal); border-color: var(--ax-teal); color: var(--ax-on-color); }
 .ax-choice-text { min-width: 0; overflow-wrap: anywhere; }
-:is(.ax-choice-text, .ax-order-text) .katex { font-size: 1.3em; }
+:is(.ax-choice-text, .ax-order-text) .katex { font-size: 1.05em; }
 
 .ax-ordering ol { list-style: none; padding: 0; display: grid; gap: 8px; }
 .ax-order-item { display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 12px; min-height: 58px; border: 1.5px solid var(--ax-line); border-radius: 14px; background: var(--ax-card); }
@@ -312,7 +324,7 @@ input[type="checkbox"] + .ax-choice-badge { border-radius: 8px; }
   display: flex; flex-direction: column; justify-content: safe center; gap: 14px; padding: 12px 20px;
 }
 .is-compact .ax-prompt { gap: 10px; }
-.is-compact .ax-paragraph { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.5rem); line-height: 1.4; letter-spacing: -0.01em; text-align: center; margin: 0 auto; max-width: 30ch; }
+.is-compact .ax-paragraph { font-family: AhaFigures, Georgia, "Times New Roman", serif; font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.5rem); line-height: 1.4; letter-spacing: -0.01em; text-align: center; margin: 0 auto; max-width: 30ch; }
 .is-compact .ax-display-math { text-align: center; font-size: 1.35rem; }
 .is-compact .ax-figure { margin: 0; padding: 12px; }
 .is-compact .ax-response { margin-top: 0; }

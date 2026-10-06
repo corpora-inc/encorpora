@@ -73,6 +73,17 @@ describe('Activity renderer', () => {
     assert.ok(html.includes('&lt;b&gt;'), 'markup in text is inert text');
     assert.doesNotMatch(html, /<a\b|javascript:alert/);
   });
+  it('typesets numbers for children: full-size fractions, minus signs, thousands, unbroken short math', () => {
+    const html = render(<RichText text={'Drop to -7 at 3-4 pm. $\\frac{1}{4}$ $12 \\times 3 - 18 \\div 6 = \\boxed{\\phantom{00}}$ $1,250$'} />);
+    assert.ok(html.includes('Drop to \u22127 at 3-4 pm.'), 'a leading hyphen before a number is a minus sign; ranges keep the hyphen');
+    assert.match(html, /<span class="ax-math is-short is-stacked"><span class="katex">/, 'a fraction is short, stacked math');
+    assert.match(html, /<span class="ax-math is-short"><span class="katex">.*?\\times/, 'drawn length, not TeX length, keeps an expression on one line');
+    assert.match(html, /class="mfrac"/);
+    assert.ok(html.includes('style="height:'), 'KaTeX layout styles reach React as style props');
+    const thousands = render(<RichText text={'$1,250$ and $(2, 7)$'} />);
+    assert.equal((thousands.match(/class="mpunct">,<\/span><span class="mspace"/g) ?? []).length, 1, 'only the coordinate comma is spaced as punctuation');
+    assert.match(render(<RichText text={'$\\tfrac{1}{4}$'} />), /mfrac/);
+  });
   it('supports explicit dark and auto themes', () => {
     const spec = fixtures[0]!;
     assert.match(render(<ActivityView spec={spec} onSubmit={noop} theme="dark" />), /data-theme="dark"/);
