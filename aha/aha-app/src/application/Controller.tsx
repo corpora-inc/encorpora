@@ -155,6 +155,8 @@ export default function Controller() {
   const recoveryTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   /** An earlier AI request is unsettled (mirrors `account.settling`, readable from async code). */
   const settling = useRef(false);
+  /** A same-key recovery is running: Stop never cuts off its stream (that would strand an already-paid reply). */
+  const recovering = useRef(false);
   const actionCancelled = useRef(false);
   const learning = useRef<LearnerState | undefined>(undefined);
   const currentProfile = useRef<Profile | undefined>(undefined);
@@ -350,6 +352,7 @@ export default function Controller() {
   const displayedId = () => currentActivity.current?.id ?? currentAi.current?.activityId;
   async function loadProfile(p: Profile) {
     const epoch = accountEpoch.current;
+    if (currentProfile.current?.id !== p.id) receipts.current.learnerChanged();
     const repo = repository.current;
     pendingActivity.current = undefined;
     clearAi();
@@ -486,6 +489,7 @@ export default function Controller() {
     const tutor = provider.current, epoch = accountEpoch.current, recovery = receipts.current;
     if (!tutor || !subject.current) return undefined;
     let outcome: RecoveryOutcome;
+    recovering.current = true;
     try {
       outcome = await recovery.run(trigger, {
         tutor,
@@ -498,7 +502,7 @@ export default function Controller() {
     } catch (error) {
       logError("ai-recovery", error);
       return undefined;
-    }
+    } finally { recovering.current = false; }
     if (epoch !== accountEpoch.current || tutor !== provider.current || recovery !== receipts.current || !alive.current) return outcome;
     try { setPendingUsage(await tutor.inspectPending()); } catch (error) { logError("ai-recovery", error); }
     if (outcome.state === "clear") {
@@ -524,12 +528,13 @@ export default function Controller() {
    */
   function startRecovery(trigger: RecoveryTrigger) {
     if (!provider.current || !subject.current || !alive.current) return;
-    if (prefetching.current) { if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS); return; }
+    // A batch in flight recovers first by itself; a foreground action (curiosity, manual recovery) owns the provider.
+    if (prefetching.current || actionLock.current) { if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS); return; }
     let resumeAi = false;
     const run: Promise<void> = recoverReceipts(trigger)
       .then(outcome => { resumeAi = outcome?.state === "clear" && outcome.attempted; }, e => logError("ai-recovery", e))
       .finally(() => { if (prefetching.current === run) prefetching.current = undefined; })
-      .then(() => { if (resumeAi && alive.current) maybePrefetch(); });
+      .then(() => { if (resumeAi && alive.current && !actionLock.current) maybePrefetch(); });
     prefetching.current = run;
   }
   /** Why a signed-in AI attempt is not due now, or undefined when it is. */
@@ -1050,8 +1055,12 @@ export default function Controller() {
       aiBackoff.current.recordSuccess();
       lastSkip.current = undefined;
       if (harder) wantsHarder.current = false;
-      settling.current = false;
-      setAccount(a => a.aiReady ? a : {...a, aiReady: true, settling: false, recoveryNote: undefined, refusal: undefined, status: CONNECTED_STATUS});
+      // A batch can be delivered while its own charge is still pending: "AI ready" only with nothing unsettled.
+      if ((await tutor.inspectPending()).length) { showSettling(); scheduleRecovery(RETRY_BASE_MS); }
+      else {
+        settling.current = false;
+        setAccount(a => a.aiReady && !a.settling ? a : {...a, aiReady: true, settling: false, recoveryNote: undefined, refusal: undefined, status: CONNECTED_STATUS});
+      }
       void getNativeClient().balance()
         .then(b => { if (stillCurrent()) setAccount(a => ({...a, balance: format2z(b.available_milli_2z)})); })
         .catch(e => { logError("balance", e); if (stillCurrent()) setAccount(a => ({...a, status: "Balance refresh is temporarily unavailable. The request receipt remains recorded."})); });
@@ -1611,7 +1620,8 @@ export default function Controller() {
               // own tap started (and is still waiting for) is theirs to stop, before or during its paid call.
               const own = foregroundStop.current;
               if (own) own.stop();
-              if (own || !prefetching.current) void provider.current?.cancel().catch(fail);
+              // Never cut off a same-key recovery: its reply is already paid for (Stop still ends the wait for it).
+              if ((own || !prefetching.current) && !recovering.current) void provider.current?.cancel().catch(fail);
             }
           : undefined
       }

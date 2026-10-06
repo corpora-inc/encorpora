@@ -72,9 +72,13 @@ export class ReceiptRecovery {
   private failures = 0;
   private nextAt = 0;
   private running?: Promise<RecoveryOutcome>;
+  /** The last blocked attempt's Settings note, kept while deferred so it does not flicker. */
+  private lastNote?: string;
   constructor(private readonly now: () => number = Date.now) {}
   /** Consecutive failed attempts (for tests and diagnostics). */
   get failedAttempts(): number { return this.failures; }
+  /** A different learner is on screen: an operation waiting for them is due now, not after the backoff. */
+  learnerChanged(): void { this.nextAt = 0; }
 
   /**
    * One attempt. Concurrent callers share the attempt in progress. `force` (launch, Refresh connection) ignores the
@@ -90,12 +94,17 @@ export class ReceiptRecovery {
   private async attempt(trigger: RecoveryTrigger, hooks: RecoveryHooks, force: boolean): Promise<RecoveryOutcome> {
     const { tutor, log } = hooks;
     let pending: PendingOperation[];
+    const deferred = (count: number): RecoveryOutcome | undefined => {
+      const now = this.now();
+      return !force && now < this.nextAt
+        ? { state: 'deferred', pending: count, attempted: false, authorized: false, retryInMs: this.nextAt - now, ...(this.lastNote ? { note: this.lastNote } : {}) }
+        : undefined;
+    };
     try { pending = await tutor.inspectPending(); }
-    catch (error) { return this.blocked(trigger, hooks, [], error, false); }
+    catch (error) { return deferred(0) ?? this.blocked(trigger, hooks, [], error, false); }
     if (!pending.length) { this.reset(); return { state: 'clear', pending: 0, attempted: false, authorized: false }; }
-    const now = this.now();
-    if (!force && now < this.nextAt)
-      return { state: 'deferred', pending: pending.length, attempted: false, authorized: false, retryInMs: this.nextAt - now, ...this.persistent(pending, undefined) };
+    const wait = deferred(pending.length);
+    if (wait) return wait;
     log('info', `${trigger}: ${pending.length} unsettled AI request${pending.length === 1 ? '' : 's'}; recovering with the original request identity`);
     let lastError: unknown;
     let authorization: PaidAuthorization | undefined;
@@ -144,6 +153,7 @@ export class ReceiptRecovery {
     const delay = Math.max(Math.min(RETRY_BASE_MS * 2 ** Math.min(this.failures - 1, 20), RETRY_MAX_MS), retryAfterMs(error));
     this.nextAt = this.now() + delay;
     const persistent = this.persistent(pending, error, hooks.profileId());
+    this.lastNote = persistent.note;
     hooks.log(persistent.note ? 'warn' : 'info',
       `${trigger}: ${pending.length || 'some'} AI request${pending.length === 1 ? '' : 's'} still unsettled` +
       `${error === undefined ? '' : ` (${describeError(error)})`}; no new paid request; retrying in ${Math.ceil(delay / 1000)} s`);
@@ -163,5 +173,5 @@ export class ReceiptRecovery {
     return {};
   }
 
-  private reset(): void { this.failures = 0; this.nextAt = 0; }
+  private reset(): void { this.failures = 0; this.nextAt = 0; this.lastNote = undefined; }
 }

@@ -178,6 +178,24 @@ test('an operation of another learner waits for that learner; nothing is resent 
   assert.equal(w.chats.length,chatsBefore);
 });
 
+test('the note is kept while deferred, and selecting the learner makes their request due at once', async () => {
+  const w = world();
+  const op = await w.interruptedBatch('refuse');
+  const tutor = w.restart();
+  let learner = 'learner-2';
+  const hooks = {...w.hooks(tutor), profileId:()=>learner};
+  const recovery = new ReceiptRecovery();
+  assert.equal((await recovery.run('launch', hooks, {force:true})).note,OTHER_LEARNER_NOTE);
+  const deferred = await recovery.run('resume', hooks);
+  assert.equal(deferred.state,'deferred');
+  assert.equal(deferred.note,OTHER_LEARNER_NOTE,'no flicker while deferred');
+  learner = 'learner-1';
+  recovery.learnerChanged();
+  const outcome = await recovery.run('resume', hooks);
+  assert.equal(outcome.state,'clear');
+  assert.equal(w.chats.at(-1)!.key,op.key);
+});
+
 test('nothing pending: clear without any service call or log noise', async () => {
   const w = world();
   const outcome = await new ReceiptRecovery().run('resume', w.hooks(w.restart()));

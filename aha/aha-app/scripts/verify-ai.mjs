@@ -426,14 +426,18 @@ try {
   assert.ok((await page.evaluate(()=>window.__ahaAI.starts)).every(x=>x.operationId===inFlight.operationId&&x.idempotencyKey===inFlight.idempotencyKey),
     'no new paid call while the receipt is unsettled; recovery only ever resends the original key');
   assert.ok(await unsettled()>0,'the block stays while recovery fails');
+  {const s=await session();assert.ok(s.activity?.source==='local'||s.aiActivity,'an unsettled receipt does not block practice (local, or an already-paid queued activity)');}
   // Free2Z is reachable again: the background retry settles it with no tap on Refresh, Check or Recover.
   await page.evaluate(()=>{window.__ahaAI.failRecovery=false;localStorage.removeItem('aha-test-ai-launch');});
   await page.waitForFunction(()=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.every(o=>o.state==='finalized'),null,{timeout:45_000});
   const settledOp=await page.evaluate(id=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.find(o=>o.id===id),inFlight.operationId);
   assert.equal(settledOp.charge.charged2z,'1','settled from the replayed receipt');
   assert.equal(await page.evaluate(()=>window.__ahaAI.replays),1,'the gateway replayed the receipt once');
-  const ledger=await page.evaluate(()=>JSON.parse(localStorage.getItem('aha-test-gateway')));
-  assert.equal(Object.keys(ledger).filter(k=>k===inFlight.idempotencyKey).length,1,'one charge for the interrupted batch: no duplicate');
+  // The TEST gateway charges a key once and replays it after that. Every resend of the interrupted operation carried
+  // its original key, and the journal records exactly one charge for it: no duplicate charge.
+  const resends=await page.evaluate(id=>window.__ahaAI.starts.filter(x=>x.operationId===id),inFlight.operationId);
+  assert.ok(resends.length>=2&&resends.every(x=>x.idempotencyKey===inFlight.idempotencyKey),'every resend of the interrupted batch used its original key');
+  assert.equal(await page.evaluate(id=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.filter(o=>o.id===id&&o.charge?.state==='charged').length,inFlight.operationId),1,'one recorded charge for the interrupted batch');
   // AI resumes: the next batch (a fresh key, only after settlement) is requested and served with no manual step.
   for(let i=0;i<8&&!(await page.evaluate(k=>window.__ahaAI.starts.some(x=>x.idempotencyKey!==k),inFlight.idempotencyKey));i++){await answerCurrent();await nextButton.click();await page.getByRole('button',{name:'Check',exact:true}).waitFor();}
   assert.ok(await page.evaluate(k=>window.__ahaAI.starts.some(x=>x.idempotencyKey!==k),inFlight.idempotencyKey),'AI resumes after recovery without a manual tap');
