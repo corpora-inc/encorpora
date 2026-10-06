@@ -59,13 +59,13 @@ type Scenario = {
 };
 const scenarios: Record<string, Scenario> = {
   "home-new": {},
-  "home-continue": { local: "short", props: { session: { completed: 4, target: 10 }, growth } },
-  "home-complete": { props: { session: { completed: 10, target: 10, complete: true, summary: "Your answers are saved. Come back later for a fresh review, or keep exploring when you feel ready." }, growth } },
+  "home-continue": { local: "short", props: { session: { completed: 4 }, growth } },
+  "home-lap": { props: { session: { completed: 10 }, growth } },
   "home-busy": { props: { busy: true, busyLabel: "Preparing your next discovery…" } },
   "home-error": { props: { error: "The answer save could not be confirmed. We reloaded your durable progress before allowing another attempt." } },
   "home-preview": { props: { mode: "preview" } },
   "growth-empty": { steps: ["Growth"] },
-  "growth-rich": { props: { growth, session: { completed: 6, target: 10 } }, steps: ["Growth"] },
+  "growth-rich": { props: { growth, session: { completed: 6 } }, steps: ["Growth"] },
   "focus-short": { local: "short", steps: ["Continue"] },
   "focus-visual": { local: "visual", steps: ["Continue"] },
   "focus-fraction": { local: "fraction", steps: ["Continue"] },
@@ -77,9 +77,9 @@ const scenarios: Record<string, Scenario> = {
   "focus-showme": { local: "visual", steps: ["Continue", "Show me how"] },
   "focus-nudge": { local: "short", steps: ["Continue", "type:54", "Check"] },
   "focus-correct": { local: "short", steps: ["Continue", "type:56", "Check"] },
-  "focus-streak": { local: "short", props: { session: { completed: 4, target: 10 } }, steps: ["Continue", "type:56", "Check", "Next", "type:56", "Check", "Next", "type:56", "Check"] },
+  "focus-streak": { local: "short", props: { session: { completed: 4 } }, steps: ["Continue", "type:56", "Check", "Next", "type:56", "Check", "Next", "type:56", "Check"] },
   "focus-incorrect": { local: "visual", steps: ["Continue", "type:15", "Check", "type:16", "Check", "See how"] },
-  "focus-pause": { local: "short", props: { session: { completed: 9, target: 10 } }, steps: ["Continue", "type:56", "Check"] },
+  "focus-lap": { local: "short", props: { session: { completed: 9 } }, steps: ["Continue", "type:56", "Check"] },
   "focus-veil": { local: "short", hold: true, steps: ["Continue", "type:56", "Check", "Next"] },
   "focus-preparing": { hold: true, props: { onCancel: noop }, steps: ["Let’s begin"] },
   "focus-empty": { steps: ["Let’s begin"] },
@@ -137,7 +137,6 @@ function Harness() {
   const [busy, setBusy] = useState(false);
   const [round, setRound] = useState(0);
   const [completed, setCompleted] = useState(scenario.props?.session?.completed ?? 3);
-  const target = scenario.props?.session?.target ?? 10;
   const next = () => {
     if (scenario.hold) { setBusy(true); return; }
     setAnswered(false); setFeedback(undefined); setResult(undefined); setHint(undefined); setHints(0); setTries(0); setRound(r => r + 1); setShown(true);
@@ -166,7 +165,7 @@ function Harness() {
   const props: StudioProps = {
     mode: "native", practiceMode: spec ? "ai" : "local", learnerName: "Maple",
     practiceStatus: spec ? "AI tutoring · progress saved on this device" : "Local practice · AI tutoring is not connected",
-    session: { completed, target, complete: completed >= target, summary: "Your answers are saved. Come back later for a fresh review, or keep exploring when you feel ready." },
+    session: { completed },
     growth: growthSummary(undefined), account: { connected: false, signInAvailable: true },
     learners: [{ id: "a", name: "Maple" }],
     activity, activityAnswered: answered, feedback, hint, busy,
@@ -192,7 +191,7 @@ function Harness() {
     onCreateLearner: noop, onSelectLearner: noop, onManageAccount: noop, onRefreshAccount: noop,
     ...scenario.props,
   };
-  if (scenario.props?.session) props.session = { ...scenario.props.session, completed, complete: completed >= target || scenario.props.session.complete };
+  if (scenario.props?.session) props.session = { ...scenario.props.session, completed };
   if (busy) { props.busy = true; props.busyLabel = "Preparing your next discovery…"; }
   return <Studio {...props} />;
 }

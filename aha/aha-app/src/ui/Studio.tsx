@@ -181,6 +181,8 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
 }
 
 const STATUS = { confident: "Remembered", growing: "Taking root", review: "Ready to revisit" } as const;
+/** The focus loop is endless; its bar only marks a quiet lap of this many items. */
+const LAP = 10;
 /** "today", "yesterday", "3 days ago", in the device language. */
 function when(at: string) {
   const day = (t: Date) => new Date(t.getFullYear(), t.getMonth(), t.getDate()).getTime();
@@ -371,8 +373,12 @@ export function Studio(props: StudioProps) {
     setSheet(null);
   };
   const completed = Math.max(0, props.session.completed);
-  const target = Math.max(1, props.session.target);
   const readyNext = props.activityAnswered || props.feedback?.kind === "correct" || specGraded;
+  // The loop never ends. The bar fills over a lap of LAP items; the answer that completes a lap
+  // fills it and glows once, then the next item starts a fresh lap. Nothing waits on it.
+  const lap = completed % LAP;
+  const lapDone = completed > 0 && lap === 0 && readyNext;
+  const lapValue = lapDone ? LAP : lap;
   const learningVisible = view === "focus" && !settings && !sheet && !props.curiosity && hasTask && !readyNext;
   useEffect(() => {
     props.onLearningVisibleChange?.(learningVisible);
@@ -387,7 +393,7 @@ export function Studio(props: StudioProps) {
     ? "Browser preview · sample practice · progress stays in this preview"
     : props.practiceStatus ?? (props.account.aiReady ? "AI tutoring" : "Local practice");
   const ai = props.practiceMode === "ai";
-  const progress = Math.min(100, (completed / target) * 100);
+  const progress = (lapValue / LAP) * 100;
   const growth = props.growth;
 
   // ---------- focus mode pieces ----------
@@ -485,7 +491,6 @@ export function Studio(props: StudioProps) {
     : props.feedback?.kind === "retry" && props.feedback.message && drawer !== "feedback" ? () => setDrawer("feedback")
     : props.feedback?.kind === "nudge" && drawer !== "explain" ? () => toggleHelp("explain")
     : null;
-  const pause = !!props.session.complete && readyNext;
   // The answer's moment, once per checked answer: a burst around Next (in Check's slot), a springy
   // check and a light haptic for correct, escalating a little at three and five in a row; a gentle
   // shake of the answer field and a soft haptic for a miss. All overlays; nothing waits on them.
@@ -510,10 +515,8 @@ export function Studio(props: StudioProps) {
   // Moving on retires the finished item's toast at once; the veil takes over if the wait is long.
   const toast = outcome && !advancing ? (
     <div key={`${taskId}|${outcome.kind}|${outcome.title}`} className={`stage-toast feedback-line ${outcome.kind}${level ? ` streak-${level}` : ""}`} role="status" tabIndex={-1} ref={feedbackRegion}>
-      {pause
-        ? <><Sprout size={22} aria-hidden="true" /><strong>A good place to pause.</strong></>
-        : <>{outcome.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
-          <strong>{outcome.title}</strong>{milestone && <span className="streak-note">{streakShown} in a row</span>}</>}
+      {outcome.kind === "correct" ? <span className="celebrate" aria-hidden="true"><Check size={20} /></span> : <Lightbulb size={20} aria-hidden="true" />}
+      <strong>{outcome.title}</strong>{milestone && <span className="streak-note">{streakShown} in a row</span>}
       {seeHow && <button type="button" className="text-button see-how" disabled={props.busy} onClick={seeHow}>See how</button>}
     </div>
   ) : null;
@@ -625,7 +628,7 @@ export function Studio(props: StudioProps) {
                 <Lightbulb size={20} aria-hidden="true" /><strong>{props.feedback.title}</strong>
               </div>
             ) : (
-              <p className="stage-invite">{props.session.complete ? "A good place to pause." : "Your next “aha” is waiting."}</p>
+              <p className="stage-invite">Your next “aha” is waiting.</p>
             )}
             {props.hint && <div className="hint-note"><SafeMarkdown>{props.hint}</SafeMarkdown></div>}
           </div>
@@ -643,8 +646,8 @@ export function Studio(props: StudioProps) {
       <header className="focus-bar">
         <div className="focus-bar-inner">
           <IconButton label="Home" icon={<House size={22} />} onClick={() => { setDrawer(null); setView("home"); }} />
-          <div className="focus-progress" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target}
-            aria-valuenow={Math.min(completed, target)}>
+          <div className={`focus-progress${lapDone ? " is-milestone" : ""}`} role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={LAP}
+            aria-valuenow={lapValue}>
             <span style={{ width: `${progress}%` }} />
           </div>
           <button type="button" className={`status-dot ${ai ? "is-ai" : "is-local"}`} aria-label={statusText}
@@ -690,20 +693,18 @@ export function Studio(props: StudioProps) {
             <h1 id={`${titleId}-home`}>Big ideas.<br />Little discoveries.</h1>
             <div className="home-today">
               <div className="home-session">
-                <div className="home-meter" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target} aria-valuenow={Math.min(completed, target)}>
+                <div className="home-meter" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={LAP} aria-valuenow={lapValue}>
                   <span style={{ width: `${progress}%` }} />
                 </div>
-                <span className="home-count">{completed} / {target}</span>
               </div>
               {growth && <WeekStrip growth={growth} />}
               {growth?.recent[0] && (
                 <p className="home-recent"><Sprout size={18} aria-hidden="true" /><span>{growth.recent[0].title}</span></p>
               )}
             </div>
-            {props.session.complete && <p className="home-summary">{props.session.summary}</p>}
             {props.error && <div className="error-banner" role={settings ? undefined : "alert"}><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
             <button type="button" className="primary-button home-start" disabled={props.busy && !hasTask} onClick={enterFocus}>
-              {props.busy && !hasTask ? (props.busyLabel ?? "Getting ready…") : hasTask ? "Continue" : props.session.complete ? "Keep exploring" : "Let’s begin"}
+              {props.busy && !hasTask ? (props.busyLabel ?? "Getting ready…") : hasTask ? "Continue" : "Let’s begin"}
               <ArrowRight size={20} aria-hidden="true" />
             </button>
             {props.mode === "preview" && <p className="home-note">{statusText}</p>}

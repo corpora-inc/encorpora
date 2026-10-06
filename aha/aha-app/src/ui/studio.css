@@ -1356,6 +1356,15 @@ body {
   .focus-progress > span {
     transition: width 0.5s ease;
   }
+  /* A finished lap glows once; the loop keeps going and nothing waits on it. */
+  .focus-progress.is-milestone {
+    animation: aha-lap 1.2s ease-out both;
+  }
+}
+@keyframes aha-lap {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal) 60%, transparent); }
+  40% { box-shadow: 0 0 10px 2px color-mix(in srgb, var(--teal) 45%, transparent); }
+  100% { box-shadow: 0 0 0 0 transparent; }
 }
 @keyframes aha-pop {
   from { transform: scale(0.3); opacity: 0; }
@@ -1845,13 +1854,6 @@ body {
   border-radius: 4px;
   background: var(--teal);
 }
-.home-count {
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.home-summary,
 .home-note {
   color: var(--muted);
   font-size: 0.92rem;
