@@ -518,67 +518,6 @@ h1 {
   font-size: 0.75rem;
   color: var(--faint);
 }
-.progress-page {
-  padding: 35px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  border-radius: 16px;
-}
-.progress-heading {
-  max-width: 550px;
-}
-.progress-heading svg {
-  color: var(--teal);
-}
-.progress-heading h2 {
-  font-family: Georgia, serif;
-  font-weight: 400;
-  font-size: 2rem;
-  margin: 10px 0;
-}
-.progress-heading p,
-.empty-progress {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-.empty-progress {
-  margin: 25px 0;
-}
-.progress-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 28px 0;
-}
-.progress-grid article {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 20px;
-}
-.progress-grid h3 {
-  font-size: 1rem;
-  margin: 13px 0 6px;
-}
-.progress-grid p {
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.status-pill {
-  display: inline-block;
-  border-radius: 10px;
-  padding: 3px 8px;
-  background: var(--gold-tint);
-  color: var(--gold-ink);
-  font-size: 0.65rem;
-}
-.status-pill.confident {
-  background: var(--teal-tint);
-  color: var(--teal-ink);
-}
-.status-pill.review {
-  background: var(--coral-tint);
-  color: var(--coral-ink);
-}
 .settings-dialog {
   position: fixed;
   border: 1px solid var(--line);
@@ -723,11 +662,6 @@ h1 {
   font-size: 0.77rem;
   margin: 15px 15px 0 0;
 }
-@media (max-width: 950px) {
-  .progress-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 @media (max-width: 600px) {
   /* Keep the task and answer controls prominent once a phone lesson begins. */
   .wordmark {
@@ -772,15 +706,6 @@ h1 {
   }
   .place-values span {
     font-size: 0.55rem;
-  }
-  .progress-page {
-    padding: 25px 20px;
-  }
-  .progress-heading h2 {
-    font-size: 1.7rem;
-  }
-  .progress-grid {
-    grid-template-columns: 1fr;
   }
   .dialog-header {
     padding: 15px 19px;
@@ -1900,10 +1825,6 @@ body {
   line-height: 1.04;
   letter-spacing: -0.035em;
 }
-.home-lede {
-  color: var(--muted);
-  font-size: 1.1rem;
-}
 .home-session {
   display: flex;
   align-items: center;
@@ -1949,20 +1870,6 @@ body {
   border: 0;
   font-size: 0.8rem;
   padding: 8px 0;
-}
-.home-view .progress-page {
-  max-width: 820px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 24px 0;
-}
-.home-view .progress-heading h1 {
-  font-family: Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 1.6rem + 2vw, 2.8rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 10px;
 }
 @media (min-width: 900px) {
   .home-view {
@@ -2178,4 +2085,211 @@ body {
 .setting-switch input:focus-visible {
   outline: 3px solid rgb(var(--teal-rgb) / 0.4);
   outline-offset: 2px;
+}
+/* Home's quiet "today" panel and the Growth page: skill areas, the week, recent discoveries. */
+.connection-pill {
+  margin-top: 12px;
+}
+.home-today {
+  display: grid;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.home-today .home-session {
+  margin: 0;
+}
+.week-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.week-strip ol {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.week-strip li {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  width: 24px;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--faint);
+}
+.week-strip li.is-today {
+  color: var(--ink);
+  font-weight: 700;
+}
+.week-strip i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+}
+.week-strip li.is-done i {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+.week-streak {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--teal-ink);
+}
+.home-recent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.home-recent svg {
+  color: var(--coral);
+}
+.home-recent span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.progress-page {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+.progress-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+.progress-heading h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 1.7rem + 2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.growth-layout {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 12px;
+}
+.growth-area {
+  padding: 16px 18px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.growth-area h2,
+.growth-recent h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+.growth-area ul,
+.growth-recent ol,
+.growth-key {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.growth-area ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+.growth-area li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.93rem;
+  line-height: 1.4;
+}
+.growth-mark {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: linear-gradient(to top, var(--gold) 50%, transparent 50%);
+  transform: translateY(1px);
+}
+.growth-mark.confident {
+  border-color: var(--teal);
+  background: var(--teal);
+}
+.growth-mark.review {
+  border-color: var(--coral);
+  background: none;
+}
+.growth-side {
+  display: grid;
+  gap: 24px;
+}
+.growth-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.growth-key li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.growth-key .growth-mark {
+  transform: none;
+}
+.growth-recent ol {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+.growth-recent li {
+  display: grid;
+  gap: 2px;
+  padding-left: 12px;
+  border-left: 2px solid var(--coral);
+  font-size: 0.93rem;
+  line-height: 1.4;
+}
+.growth-when {
+  color: var(--faint);
+  font-size: 0.82rem;
+}
+.empty-progress {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+.home-view .primary-button.growth-back {
+  justify-self: start;
+  min-height: 52px;
+  gap: 12px;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+@media (min-width: 900px) {
+  .growth-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
 }

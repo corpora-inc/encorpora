@@ -7,6 +7,7 @@ import ReactDOM from "react-dom/client";
 import { Studio, type StudioProps, type StudioActivity } from "../Studio";
 import { fixtures } from "../../activity/fixtures";
 import { gradeActivity, type GradeOutcome } from "../../activity/grade";
+import { growthSummary } from "../../application/growth";
 
 const noop = () => {};
 const day = 86_400_000;
@@ -27,13 +28,26 @@ const local: Record<string, StudioActivity & { answer: string; hint: string; exp
   long: { id: "l-long", title: "", prompt: "A rectangle is 12 cm long and 7 cm wide. A second rectangle has the same perimeter but is 10 cm long. What is the area of the second rectangle, in square centimetres?", skill: "Perimeter and area", answerKind: "number",
     visual: { type: "rectangle", width: 12, height: 7 }, answer: "90", hint: "Find the perimeter of the first rectangle: 2 × (12 + 7).", explain: "The perimeter is 38 cm, so the second is 10 by 9: **90** square cm." },
 };
-const progress: StudioProps["progress"] = [
-  { label: "Recall multiplication and division facts", detail: "Remembered across delayed reviews", status: "confident" },
-  { label: "Interpret numerator and denominator through parts", detail: "Independent successes · delayed review still ahead", status: "growing" },
-  { label: "Round quantities to tens and hundreds", detail: "2 recent independent successes · still exploring", status: "growing" },
-  { label: "Count square units to measure area", detail: "Remembered across delayed reviews", status: "review" },
-  { label: "Explain equivalence and compare fractional quantities", detail: "1 recent independent successes · still exploring", status: "growing" },
-];
+const week = (done: number[]) => growthSummary(undefined).week.map((d, i) => ({ ...d, practiced: done.includes(6 - i) }));
+const growth: NonNullable<StudioProps["growth"]> = {
+  week: week([0, 1, 2, 3, 5]), streak: 4,
+  areas: [
+    { id: "operations", label: "Operations", skills: [
+      { id: "3.OA.C.7", title: "Recall multiplication and division facts", status: "confident" },
+      { id: "3.OA.A.4", title: "Find missing factors and quotients", status: "growing" },
+      { id: "3.OA.D.9", title: "Identify arithmetic patterns and explain them", status: "review" }] },
+    { id: "fractions", label: "Fractions and ratios", skills: [
+      { id: "3.NF.A.1", title: "Interpret numerator and denominator through parts", status: "growing" },
+      { id: "3.NF.A.3", title: "Explain equivalence and compare fractional quantities", status: "growing" }] },
+    { id: "number", label: "Number sense", skills: [{ id: "3.NBT.A.1", title: "Round quantities to tens and hundreds", status: "confident" }] },
+    { id: "measurement", label: "Measurement", skills: [{ id: "3.MD.C.7", title: "Connect rectangular area with multiplication", status: "review" }] },
+  ],
+  recent: [
+    { skillId: "3.NF.A.3", title: "Explain equivalence and compare fractional quantities", area: "Fractions and ratios", at: ago(0) },
+    { skillId: "3.OA.C.7", title: "Recall multiplication and division facts", area: "Operations", at: ago(1) },
+    { skillId: "3.NBT.A.1", title: "Round quantities to tens and hundreds", area: "Number sense", at: ago(3) },
+  ],
+};
 const signedIn: StudioProps["account"] = { connected: true, aiReady: true, label: "Signed in as maple", balance: "41.2 2Z", budget: "100 2Z per month", budgetLeft: "86.5 2Z", batchCost: "≈ 0.6 2Z" };
 const modelMenu: StudioProps["modelMenu"] = { choice: "auto", auto: { name: "GPT-5 mini", batch2z: "0.6" }, options: [{ id: "a", name: "GPT-5 mini", batch2z: "0.6" }, { id: "b", name: "Claude Sonnet 5", batch2z: "1.4" }] };
 const statsLines = ["GPT-5 mini: 6 batches, 41 answered, 78% correct, 1 flagged, ≈ 0.58 2Z per batch", "Claude Sonnet 5: 2 batches, 14 answered, 86% correct, 0 flagged, ≈ 1.31 2Z per batch"];
@@ -45,13 +59,13 @@ type Scenario = {
 };
 const scenarios: Record<string, Scenario> = {
   "home-new": {},
-  "home-continue": { local: "short", props: { session: { completed: 4, target: 10 }, progress } },
-  "home-complete": { props: { session: { completed: 10, target: 10, complete: true, summary: "Your answers are saved. Come back later for a fresh review, or keep exploring when you feel ready." }, progress } },
+  "home-continue": { local: "short", props: { session: { completed: 4, target: 10 }, growth } },
+  "home-complete": { props: { session: { completed: 10, target: 10, complete: true, summary: "Your answers are saved. Come back later for a fresh review, or keep exploring when you feel ready." }, growth } },
   "home-busy": { props: { busy: true, busyLabel: "Preparing your next discovery…" } },
   "home-error": { props: { error: "The answer save could not be confirmed. We reloaded your durable progress before allowing another attempt." } },
   "home-preview": { props: { mode: "preview" } },
   "growth-empty": { steps: ["Growth"] },
-  "growth-rich": { props: { progress, session: { completed: 6, target: 10 } }, steps: ["Growth"] },
+  "growth-rich": { props: { growth, session: { completed: 6, target: 10 } }, steps: ["Growth"] },
   "focus-short": { local: "short", steps: ["Continue"] },
   "focus-visual": { local: "visual", steps: ["Continue"] },
   "focus-fraction": { local: "fraction", steps: ["Continue"] },
@@ -153,7 +167,7 @@ function Harness() {
     mode: "native", practiceMode: spec ? "ai" : "local", learnerName: "Maple",
     practiceStatus: spec ? "AI tutoring · progress saved on this device" : "Local practice · AI tutoring is not connected",
     session: { completed, target, complete: completed >= target, summary: "Your answers are saved. Come back later for a fresh review, or keep exploring when you feel ready." },
-    progress: [], account: { connected: false, signInAvailable: true },
+    growth: growthSummary(undefined), account: { connected: false, signInAvailable: true },
     learners: [{ id: "a", name: "Maple" }],
     activity, activityAnswered: answered, feedback, hint, busy,
     busyLabel: busy ? "Preparing your next discovery…" : undefined,

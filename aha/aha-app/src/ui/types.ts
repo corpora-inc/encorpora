@@ -1,3 +1,4 @@
+import type { GrowthSummary } from "../application/growth";
 import type { ActivitySpec } from "../activity/spec";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 export type StudioVisual =
@@ -72,11 +73,14 @@ export interface StudioProps {
   hint?: string;
   curiosity?: { question: string; answer?: string };
   session: { completed: number; target: number; minutes?: number; complete?: boolean; summary?: string };
-  progress: {
+  /** Unused by the studio since Growth reads `growth`; kept optional for older harnesses. */
+  progress?: {
     label: string;
     detail: string;
     status: "growing" | "review" | "confident";
   }[];
+  /** Growth page and Home summary from durable evidence (application/growth.ts). */
+  growth?: GrowthSummary;
   account: {
     connected: boolean;
     signInAvailable?: boolean;

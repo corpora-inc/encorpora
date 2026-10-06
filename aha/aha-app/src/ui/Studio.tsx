@@ -180,6 +180,31 @@ function Sheet({ open, onClose, label, children }: { open: boolean; onClose: () 
   );
 }
 
+const STATUS = { confident: "Remembered", growing: "Taking root", review: "Ready to revisit" } as const;
+/** "today", "yesterday", "3 days ago", in the device language. */
+function when(at: string) {
+  const day = (t: Date) => new Date(t.getFullYear(), t.getMonth(), t.getDate()).getTime();
+  const days = Math.round((day(new Date()) - day(new Date(at))) / 86_400_000);
+  return new Intl.RelativeTimeFormat(undefined, { numeric: "auto" }).format(-days, "day");
+}
+/** The last seven days, a dot for each day with practice, and the run of days in a row. */
+function WeekStrip({ growth }: { growth: NonNullable<StudioProps["growth"]> }) {
+  const weekday = new Intl.DateTimeFormat(undefined, { weekday: "narrow" });
+  const done = growth.week.filter(d => d.practiced).length;
+  return (
+    <div className="week-strip">
+      <ol aria-label={`Practice in the last 7 days: ${done}`}>
+        {growth.week.map(d => (
+          <li key={d.date} className={`${d.practiced ? "is-done" : ""}${d.today ? " is-today" : ""}`}>
+            <span aria-hidden="true">{weekday.format(new Date(`${d.date}T12:00`))}</span><i aria-hidden="true" />
+          </li>
+        ))}
+      </ol>
+      {growth.streak >= 2 && <span className="week-streak">{growth.streak} days in a row</span>}
+    </div>
+  );
+}
+
 export function Studio(props: StudioProps) {
   const [view, setView] = useState<View>("home");
   const [settings, setSettings] = useState(false);
@@ -363,6 +388,7 @@ export function Studio(props: StudioProps) {
     : props.practiceStatus ?? (props.account.aiReady ? "AI tutoring" : "Local practice");
   const ai = props.practiceMode === "ai";
   const progress = Math.min(100, (completed / target) * 100);
+  const growth = props.growth;
 
   // ---------- focus mode pieces ----------
   // Stable stage: the bar, the problem region and the answer dock (tools row, answer, Check) keep
@@ -662,12 +688,17 @@ export function Studio(props: StudioProps) {
         {view === "home" ? (
           <section className="home-hero" aria-labelledby={`${titleId}-home`}>
             <h1 id={`${titleId}-home`}>Big ideas.<br />Little discoveries.</h1>
-            <p className="home-lede">A little curiosity goes a long way.</p>
-            <div className="home-session">
-              <div className="home-meter" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target} aria-valuenow={Math.min(completed, target)}>
-                <span style={{ width: `${progress}%` }} />
+            <div className="home-today">
+              <div className="home-session">
+                <div className="home-meter" role="progressbar" aria-label="Progress" aria-valuemin={0} aria-valuemax={target} aria-valuenow={Math.min(completed, target)}>
+                  <span style={{ width: `${progress}%` }} />
+                </div>
+                <span className="home-count">{completed} / {target}</span>
               </div>
-              <span className="home-count">{completed} / {target}</span>
+              {growth && <WeekStrip growth={growth} />}
+              {growth?.recent[0] && (
+                <p className="home-recent"><Sprout size={18} aria-hidden="true" /><span>{growth.recent[0].title}</span></p>
+              )}
             </div>
             {props.session.complete && <p className="home-summary">{props.session.summary}</p>}
             {props.error && <div className="error-banner" role={settings ? undefined : "alert"}><CircleHelp size={20} aria-hidden="true" /><span>{props.error}</span></div>}
@@ -678,27 +709,54 @@ export function Studio(props: StudioProps) {
             {props.mode === "preview" && <p className="home-note">{statusText}</p>}
           </section>
         ) : (
-          <section className="progress-page">
+          <section className="progress-page" aria-labelledby={`${titleId}-growth`}>
             <div className="progress-heading">
-              <h1>Look how you’re growing.</h1>
-              <p>Understanding, fluency and remembering are different kinds of growth. There’s room for all three.</p>
+              <h1 id={`${titleId}-growth`}>Growth</h1>
+              {growth && <WeekStrip growth={growth} />}
             </div>
-            {props.progress.length ? (
-              <div className="progress-grid">
-                {props.progress.map((p, i) => (
-                  <article key={i}>
-                    <span className={`status-pill ${p.status}`}>
-                      {p.status === "confident" ? "Showing confidence" : p.status === "review" ? "Ready to revisit" : "Taking root"}
-                    </span>
-                    <h3>{p.label}</h3>
-                    <p>{p.detail}</p>
-                  </article>
-                ))}
+            {growth?.areas.length ? (
+              <div className="growth-layout">
+                <div className="progress-grid">
+                  {growth.areas.map(area => (
+                    <article key={area.id} className="growth-area">
+                      <h2>{area.label}</h2>
+                      <ul>
+                        {area.skills.map(skill => (
+                          <li key={skill.id}>
+                            <span className={`growth-mark ${skill.status}`} aria-hidden="true" />
+                            <span className="growth-skill">{skill.title}</span>
+                            <span className="sr-only">{STATUS[skill.status]}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  ))}
+                </div>
+                <aside className="growth-side">
+                  <ul className="growth-key" aria-label="Key">
+                    {(["confident", "growing", "review"] as const).map(k => (
+                      <li key={k}><span className={`growth-mark ${k}`} aria-hidden="true" />{STATUS[k]}</li>
+                    ))}
+                  </ul>
+                  {!!growth.recent.length && (
+                    <section className="growth-recent" aria-labelledby={`${titleId}-recent`}>
+                      <h2 id={`${titleId}-recent`}>Recent discoveries</h2>
+                      <ol>
+                        {growth.recent.map(r => (
+                          <li key={r.skillId}>
+                            <span className="growth-skill">{r.title}</span>
+                            <span className="growth-when">{r.area} · {when(r.at)}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </section>
+                  )}
+                </aside>
               </div>
             ) : (
-              <p className="empty-progress">Your first discovery is a great place to start. There’s no whole-grade percentage to chase.</p>
+              <p className="empty-progress">Your first discovery is a great place to start.</p>
             )}
-            <button type="button" className="primary-button" onClick={enterFocus}>
+            <button type="button" className="primary-button growth-back" onClick={enterFocus}>
               Back to exploring <ArrowRight size={18} aria-hidden="true" />
             </button>
           </section>
