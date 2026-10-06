@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { auditFigureContrast } from './figure-contrast.mjs';
 const ownRoot=fileURLToPath(new URL('..',import.meta.url));
@@ -548,16 +549,25 @@ try{
     assert.ok(large.hero>=tablet.hero*1.3,`the 13" home hero is larger (${tablet.hero}px → ${large.hero}px)`);
     console.log(`Large tablet scale: 820×1180 prompt ${tablet.prompt}px, hero ${tablet.hero}px; 1032×1376 prompt ${large.prompt}px, hero ${large.hero}px, stage ${large.stage}px.`);
   }
-  // Keyboard dock (founder report, iPhone 14): the focus stage is a fixed frame and only the answer
-  // dock rides a software keyboard. TEST-ONLY stand-in for an iOS keyboard: visualViewport shrinks
-  // while the layout viewport stays (what WKWebView does); an Android one shrinks the layout
-  // viewport itself (setViewportSize). Either way the answer sits 8px above the keyboard on a
-  // surface that reaches it (no gap), the bar and the problem never move, and the page never scrolls.
+  // Keyboard dock (founder reports: iPhone 14, then S26): the focus stage is a fixed frame and only
+  // the answer dock rides a software keyboard. TEST-ONLY stand-ins for the two keyboards:
+  // - iOS: visualViewport shrinks while the layout viewport stays (what WKWebView does).
+  // - Android: the shell (build.rs) overlays the keyboard on an unchanged WebView and calls
+  //   window.__ahaKeyboard(devicePx, settled) on each frame of the keyboard's animation; the fake
+  //   eases over 8 frames like the IME does, and the viewports never change.
+  // Either way the answer sits 8px above the keyboard on a surface that reaches it (no gap), the bar
+  // and the problem never move, the problem scrolls behind the dock, and the page never scrolls.
   const fakeKeyboard=()=>{const target=new EventTarget();let kb=0;
     const fake=new Proxy(target,{get(t,k){if(k==='height')return innerHeight-kb;if(k==='width')return innerWidth;if(k==='offsetTop'||k==='offsetLeft'||k==='pageTop'||k==='pageLeft')return 0;if(k==='scale')return 1;
       const v=Reflect.get(t,k);return typeof v==='function'?v.bind(t):v;}});
     Object.defineProperty(window,'visualViewport',{configurable:true,get:()=>fake});
     window.__keyboard={show(px){kb=px;target.dispatchEvent(new Event('resize'));},hide(){kb=0;target.dispatchEvent(new Event('resize'));}};};
+  const fakeNativeKeyboard=()=>{let device=0;window.ahaKeyboard={height:()=>device};
+    const frames=to=>{const from=device/devicePixelRatio,dock=[];
+      for(let i=1;i<=8;i++){device=Math.round((from+(to-from)*(1-(1-i/8)**3))*devicePixelRatio);window.__ahaKeyboard?.(device,i===8);
+        dock.push(document.querySelector('.focus-dock .dock-row, .ax-dock-row').getBoundingClientRect().bottom);}
+      return {dock,viewport:[innerHeight,visualViewport.height]};};
+    window.__keyboard={show:frames,hide:()=>frames(0)};};
   const dockGeometry=p=>p.evaluate(()=>{
     const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock'),row=dock.querySelector('.dock-row, .ax-dock-row'),r=dock.getBoundingClientRect(),surface=getComputedStyle(dock,'::after');
     const grab=dock.querySelector('.dock-grab'),g=grab?.getBoundingClientRect();
@@ -566,24 +576,34 @@ try{
       scroll:[window.scrollY,document.scrollingElement.scrollTop,document.documentElement.scrollHeight<=innerHeight],
       open:document.documentElement.classList.contains('aha-kb-open'),focused:document.activeElement?.matches('input:not([type=radio])')??false};});
   const settle=p=>p.evaluate(()=>new Promise(r=>{const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock');
-    const done=()=>Promise.all(dock.getAnimations().map(a=>a.finished.catch(()=>{}))).then(()=>requestAnimationFrame(()=>requestAnimationFrame(r)));requestAnimationFrame(()=>requestAnimationFrame(done));}));
+    const done=()=>Promise.all(dock.getAnimations({subtree:true}).map(a=>a.finished.catch(()=>{}))).then(()=>requestAnimationFrame(()=>requestAnimationFrame(r)));requestAnimationFrame(()=>requestAnimationFrame(done));}));
+  const promptBox=p=>p.evaluate(()=>{const el=document.querySelector('.stage-prompt, .ax-prompt > :first-child');const r=el.getBoundingClientRect();return [r.left,r.top,r.width,r.height].map(Math.round);});
   const keyboardLog=[];
   const keyboardDock=async(p,tag,{android=false}={})=>{
-    const [w,h]=[p.viewportSize().width,p.viewportSize().height],kbH=291;
+    const h=p.viewportSize().height,kbH=291;
     const field=p.locator('.focus-dock .answer-input-wrap input, .ax-dock .ax-response input').first();
     const before=await regions(p),rest=await dockGeometry(p),figuresBefore=await figures(p);
     assert.ok(figuresBefore.every(f=>!f.cropped),`${tag}: no figure is cropped`);
     assert.equal(rest.open,false,`${tag}: no keyboard, no lift`);assert.equal(rest.grab,null,`${tag}: the handle shows only with a keyboard`);
+    const promptBefore=await promptBox(p);
     await field.tap();
-    if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);
+    const opening=await p.evaluate(px=>window.__keyboard.show(px),kbH);
     await settle(p);
     const kbTop=h-kbH,up=await dockGeometry(p),after=await regions(p);
+    if(android){
+      // Frame by frame with the keyboard: never past where it settles (the S26 overshoot), never back.
+      assert.deepEqual(opening.viewport,[h,h],`${tag}: the WebView never resizes for the keyboard`);
+      assert.ok(opening.dock.every((y,i)=>i===0||y<=opening.dock[i-1]+0.5),`${tag}: the dock only rises while the keyboard opens (${opening.dock.map(Math.round)})`);
+      assert.ok(opening.dock.every(y=>y>=up.answerBottom-0.5)&&Math.abs(opening.dock.at(-1)-up.answerBottom)<=0.5,`${tag}: the dock never overshoots the keyboard (${opening.dock.map(Math.round)} → ${Math.round(up.answerBottom)})`);
+      assert.equal(await p.evaluate(()=>getComputedStyle(document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock')).transitionDuration),'0s',`${tag}: no CSS transition trails the keyboard's own animation`);
+    }
     if(stageShots)await p.screenshot({path:path.join(stageShots,`keyboard-${tag.replace(/\W+/g,'-')}.png`)});
     assert.equal(up.focused,true,`${tag}: the answer keeps focus`);
     assert.ok(Math.abs(up.answerBottom+8-kbTop)<=2,`${tag}: the answer sits 8px above the keyboard (answer bottom ${up.answerBottom}, keyboard top ${kbTop})`);
     assert.ok(up.surfaceShown&&up.surfaceBottom>=kbTop-2,`${tag}: the dock's surface reaches the keyboard: no gap (${up.surfaceBottom} vs ${kbTop})`);
     assert.deepEqual(up.scroll,[0,0,true],`${tag}: the page never scrolls`);
     assert.deepEqual([after.bar,after.problem],[before.bar,before.problem],`${tag}: the bar and the problem stay where they were`);
+    assert.deepEqual(await promptBox(p),promptBefore,`${tag}: the problem's text does not move when the keyboard opens`);
     assert.deepEqual(await figures(p),figuresBefore,`${tag}: figures keep their size and are never cropped with the keyboard up`);
     assert.ok(up.grab&&up.grab[0]>=44&&up.grab[1]>=44,`${tag}: the lifted dock's handle is a 44px target (${up.grab})`);
     assert.deepEqual(await coveringInput(p),[],`${tag}: nothing covers the answer while typing`);
@@ -596,29 +616,46 @@ try{
       assert.deepEqual(fit,{belowBar:true,aboveAnswer:true},`${tag}: the hint drawer fits between the bar and the lifted answer`);
       if(stageShots)await p.screenshot({path:path.join(stageShots,`keyboard-${tag.replace(/\W+/g,'-')}-hint.png`)});
       await hintButton.click();await p.locator('.help-panel').waitFor({state:'detached'});await settle(p);}
-    // A tap on the problem puts the keyboard away; the dock glides back down.
+    // The problem scrolls behind the lifted dock and the keyboard, and scrolling keeps the keyboard up.
     const problem=await p.locator('.stage-scroll, .ax-stage-scroll').boundingBox();
+    const scrollCdp=await p.context().newCDPSession(p);
+    // A finger drag (touch events, as on a phone): up by 160px from inside the visible problem.
+    const drag=dy=>[{x:Math.round(problem.x+problem.width/2),y:Math.round(problem.y+200+dy)}];
+    await scrollCdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:drag(0)});
+    for(let dy=-8;dy>=-160;dy-=8)await scrollCdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:drag(dy)});
+    await scrollCdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    await p.waitForFunction(()=>document.querySelector('.stage-scroll, .ax-stage-scroll').scrollTop>0,null,{timeout:2000}).catch(()=>{});
+    const scrolled=await p.evaluate(()=>{const s=document.querySelector('.stage-scroll, .ax-stage-scroll');const top=s.scrollTop;s.scrollTop=s.scrollHeight;
+      const kids=[...s.children].filter(el=>el.getBoundingClientRect().height>0),last=Math.max(...kids.map(el=>el.getBoundingClientRect().bottom));
+      const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock'),surfaceTop=dock.getBoundingClientRect().top+parseFloat(getComputedStyle(dock,'::after').top);
+      const end={last,surfaceTop,max:s.scrollTop};s.scrollTop=0;return {top,...end};});
+    const stillUp=await dockGeometry(p);
+    assert.deepEqual([stillUp.focused,stillUp.open],[true,true],`${tag}: scrolling the problem keeps the keyboard up`);
+    assert.ok(scrolled.top>0,`${tag}: a drag on the problem scrolls it with the keyboard up (scrollTop ${scrolled.top})`);
+    assert.ok(scrolled.last<=scrolled.surfaceTop+1,`${tag}: the end of the problem scrolls into view above the lifted dock (${Math.round(scrolled.last)} vs ${Math.round(scrolled.surfaceTop)})`);
+    // A tap on the problem puts the keyboard away; the dock glides back down.
     await p.touchscreen.tap(problem.x+problem.width/2,problem.y+24);
-    if(android)await p.setViewportSize({width:w,height:h});else await p.evaluate(()=>window.__keyboard.hide());
+    const closing=await p.evaluate(()=>window.__keyboard.hide());
     await settle(p);const down=await dockGeometry(p);
+    if(android)assert.ok(closing.dock.every((y,i)=>i===0||y>=closing.dock[i-1]-0.5)&&closing.dock.every(y=>y<=rest.answerBottom+0.5),`${tag}: the dock follows the closing keyboard down without bouncing (${closing.dock.map(Math.round)})`);
     assert.deepEqual([down.focused,down.open],[false,false],`${tag}: a tap on the problem closes the keyboard`);
     assert.deepEqual(await regions(p),before,`${tag}: everything is back where it started`);
     // A swipe down on the dock does too.
-    await field.tap();if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);await settle(p);
+    await field.tap();await p.evaluate(px=>window.__keyboard.show(px),kbH);await settle(p);
     assert.equal((await dockGeometry(p)).open,true,`${tag}: the keyboard is back`);
     const g=await p.locator('.dock-grab').boundingBox(),cdp=await p.context().newCDPSession(p);
     const at=dy=>[{x:g.x+g.width/2,y:g.y+g.height/2+dy}];
     await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:at(0)});
     for(const dy of [12,30,60])await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:at(dy)});
     await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-    if(android)await p.setViewportSize({width:w,height:h});else await p.evaluate(()=>window.__keyboard.hide());
+    await p.evaluate(()=>window.__keyboard.hide());
     await settle(p);const swiped=await dockGeometry(p);
     assert.deepEqual([swiped.focused,swiped.open],[false,false],`${tag}: a swipe down on the dock closes the keyboard`);
     assert.deepEqual(await regions(p),before,`${tag}: and everything is back where it started`);
     keyboardLog.push(tag);
   };
   for(const android of [false,true]){
-    const kctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});await kctx.addInitScript(fixture);await kctx.addInitScript(fakeKeyboard);
+    const kctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:android?2.8125:3,isMobile:true,hasTouch:true});await kctx.addInitScript(fixture);await kctx.addInitScript(android?fakeNativeKeyboard:fakeKeyboard);
     const kp=await kctx.newPage();kp.on('pageerror',e=>errors.push(e.message));kp.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
     await kp.goto(base);await kp.getByRole('button',{name:'Let’s begin',exact:true}).click();await kp.getByRole('button',{name:'Check',exact:true}).waitFor();
     assert.deepEqual(await kp.evaluate(()=>window.__ahaFixture.pins),[true],'the focus loop asks the native host to pin the page');
@@ -649,7 +686,14 @@ try{
     await sp2.setViewportSize({width:384,height:h});await sp2.goto(`${base}/src/ui/gallery/index.html?s=${s}`);await sp2.waitForFunction(()=>window.__ready);
     const f=await figures(sp2);assert.ok(f.length&&f.every(x=>!x.cropped),`${s} at 384×${h}: the figure is whole (${JSON.stringify(f)})`);}
   await short.close();
-  console.log(`Keyboard dock: ${keyboardLog.join(', ')}: answer 8px above the keyboard with no gap, bar/problem still, page unscrolled, hint fits, tap-problem and swipe-down close it.`);
+  // The Android shell overlays the keyboard: adjustResize under edge-to-edge (no resize, no pan),
+  // the IME inset kept from the WebView, and the height pushed to the page on every animation frame.
+  const buildRs=await readFile(path.join(ownRoot,'src-tauri/build_support/android_bridge.rs'),'utf8');
+  assert.match(await readFile(path.join(ownRoot,'src-tauri/build.rs'),'utf8'),/android_bridge::patch_main_activity/,'build.rs applies the Android bridge');
+  for(const [needle,why] of [['SOFT_INPUT_ADJUST_RESIZE','the window never pans for the keyboard'],['.setInsets(IME, androidx.core.graphics.Insets.NONE)','the WebView never sees the IME inset, so it never resizes'],
+    ['setWindowInsetsAnimationCallback','the dock follows the keyboard animation frame by frame'],['window.__ahaKeyboard&&window.__ahaKeyboard($px,$settled)','the page hears every frame'],['keyboard.animations++','overlapping keyboard animations are counted, so no early settle mid-animation'],['"ahaKeyboard"','the page can read the current height']])
+    assert.ok(buildRs.includes(needle),`Android keyboard bridge: ${why} (android_bridge.rs lacks ${needle})`);
+  console.log(`Keyboard dock: ${keyboardLog.join(', ')}: answer 8px above the keyboard with no gap, Android frame-synced with no overshoot and no WebView resize, bar/problem still, problem scrolls fully behind the dock without closing the keyboard, page unscrolled, hint fits, tap-problem and swipe-down close it.`);
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
   const learner=await fresh.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});

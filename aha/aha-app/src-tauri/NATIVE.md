@@ -10,7 +10,8 @@ Initialize from `aha/aha-app` with `npm run tauri -- ios init --ci` or
 not the ignored generated Xcode project. CLI 2.11.4 generates Android compile/target
 SDK 36; the app config sets minimum API 29. The iOS minimum is 16.
 The generated Android project is never committed, so `build.rs` patches it during
-`tauri android build` with the OAuth intent filter and a status-bar bridge. The
+`tauri android build` with the OAuth intent filter and a native bridge (system bars and the
+keyboard; see below). The
 studio's theme follows the WebView's `prefers-color-scheme`. On iOS, WKWebView and
 the default status-bar style both follow the system. Android WebView can disagree
 with the system night mode (an S26 on Android 16 rendered light in night mode), and
@@ -62,6 +63,21 @@ loop releases the pin, so other screens keep WebKit's reveal behaviour. The main
 `setup` (`create: false` in `tauri.conf.json`) so iOS can drop the keyboard's form toolbar. The web
 side (`src/ui/keyboard.ts`) lifts only the answer dock by the keyboard's overlap; verify on the iOS
 Simulator with the software keyboard (`ConnectHardwareKeyboard` off), not only in a browser.
+
+## Android WebView and the software keyboard
+
+The keyboard overlays the page, as on iOS. The bridge `build.rs` adds to MainActivity
+(`build_support/android_bridge.rs`, unit-tested) sets `SOFT_INPUT_ADJUST_RESIZE`; under the template's
+`enableEdgeToEdge()` that neither resizes nor pans the window, it only delivers IME insets. The
+WebView's insets listener strips the IME inset before the WebView sees it, so the layout and visual
+viewports never change and Chromium never scrolls a focused field into view. The keyboard's height
+reaches the page as `window.__ahaKeyboard(devicePx, settled)` on every frame of
+`WindowInsetsAnimationCompat` (and `window.ahaKeyboard.height()` reads it), and `src/ui/keyboard.ts`
+uses that number alone, never the viewports. Before this, the default soft-input mode panned the
+window while the page's viewport math also moved the dock: on the S26 the answer overshot to
+mid-screen and settled back, and the problem left the screen. Every screen gets the keyboard
+variables on Android, so Settings and sheets rise above the keyboard and reveal their focused field
+once it settles. Verify on a device with `adb shell screenrecord`, not only in a browser.
 
 ## Free2Z native host
 

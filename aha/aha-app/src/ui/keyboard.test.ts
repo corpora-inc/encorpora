@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { MIN_KEYBOARD_PX, nextKeyboardLayout, type KeyboardLayout, type ViewportSample } from "./keyboard";
+import { listenNativeKeyboard, MIN_KEYBOARD_PX, nextKeyboardLayout, type KeyboardLayout, type KeyboardListener, type ViewportSample } from "./keyboard";
 
 const sample = (s: Partial<ViewportSample>): ViewportSample => ({
   layoutHeight: 844, layoutWidth: 390, visualHeight: 844, visualOffsetTop: 0, editing: false, ...s,
@@ -24,7 +24,7 @@ test("iOS: a page scrolled under the keyboard is not counted twice", () => {
   assert.equal(open!.viewport, 171);
 });
 
-test("Android: the WebView itself shrinks; the stage keeps its height and the overlap is the keyboard", () => {
+test("a WebView without the bridge that shrinks itself: the stage keeps its height and the overlap is the keyboard", () => {
   const [rest, focused, open, closedByBack, blurred] = run(
     { layoutHeight: 832, visualHeight: 832, layoutWidth: 384 },
     { layoutHeight: 832, visualHeight: 832, layoutWidth: 384, editing: true },
@@ -71,4 +71,34 @@ test("a visual viewport larger than the layout (pinch-out, rounding) never lifts
   assert.equal(rounding!.keyboard, 0, "nor are a few pixels of viewport rounding");
   const [, shortcuts] = run({ editing: true }, { editing: true, visualHeight: 844 - 55 });
   assert.equal(shortcuts!.keyboard, 55, "iPad's shortcut bar over a hardware keyboard still lifts the dock");
+});
+
+test("Android bridge: the keyboard overlays an unchanged WebView; its height is the overlap, frame by frame", () => {
+  // The S26 report: the window panned and the dock math moved the dock as well, so the answer
+  // overshot to mid-screen and settled back. With the bridge the viewports are never consulted.
+  const frames = [0, 40, 180, 520, 760, 812, 812];
+  const layouts = run({ layoutHeight: 832, layoutWidth: 384 },
+    ...frames.map(native => ({ layoutHeight: 832, layoutWidth: 384, editing: true, native })));
+  assert.deepEqual(layouts.map(l => l.stage), Array(layouts.length).fill(832), "the stage never changes");
+  assert.deepEqual(layouts.slice(1).map(l => l.keyboard), frames, "every frame passes through, small ones too");
+  assert.deepEqual(layouts.slice(1).map(l => l.viewport), frames, "sheets lift by the same overlap");
+  for (let i = 1; i < layouts.length; i++) assert.ok(layouts[i]!.keyboard >= layouts[i - 1]!.keyboard, "an opening keyboard never moves the dock back down");
+  const [ignoresViewport] = run({ layoutHeight: 832, visualHeight: 300, editing: true, native: 0 });
+  assert.equal(ignoresViewport!.keyboard, 0, "a stray visual-viewport change is not counted on top of the bridge");
+  const [closing] = run({ layoutHeight: 832, editing: false, native: 300 });
+  assert.equal(closing!.keyboard, 300, "after the field blurs the dock still follows the keyboard down");
+});
+
+test("listenNativeKeyboard converts the shell's device px to CSS px and unsubscribes cleanly", () => {
+  const seen: [number, boolean][] = [];
+  const host: { ahaKeyboard?: { height(): number }; __ahaKeyboard?: KeyboardListener; devicePixelRatio: number } =
+    { ahaKeyboard: { height: () => 281.25 }, devicePixelRatio: 2.8125 };
+  const stop = listenNativeKeyboard(host, (px, settled) => seen.push([px, settled]));
+  assert.ok(stop);
+  host.__ahaKeyboard!(1406.25, false);
+  host.__ahaKeyboard!(Number.NaN, true);
+  assert.deepEqual(seen, [[100, true], [500, false], [0, true]]);
+  stop!();
+  assert.equal(host.__ahaKeyboard, undefined);
+  assert.equal(listenNativeKeyboard({ devicePixelRatio: 3 }, () => assert.fail("no bridge, no calls")), undefined, "iOS and desktop have no bridge");
 });
