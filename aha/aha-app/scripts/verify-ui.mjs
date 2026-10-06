@@ -6,6 +6,7 @@ import { once } from 'node:events';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { chromium } from 'playwright';
+import { auditFigureContrast } from './figure-contrast.mjs';
 const ownRoot=fileURLToPath(new URL('..',import.meta.url));
 const root=path.resolve(process.env.AHA_UI_APP_ROOT||ownRoot);
 const {expectedAnswer,answerCanBeNegative}=await import(pathToFileURL(path.join(root,'src/learning/tasks.ts')).href);
@@ -65,6 +66,10 @@ try{
   }
   assert.ok(ready,`Vite startup: ${output}`);
   browser=await chromium.launch({headless:true});
+  // Every diagram (Activity Spec fixtures and local task visuals), light and dark: WCAG contrast for every label and line.
+  {const {violations,figures}=await auditFigureContrast(browser,base);
+  assert.deepEqual(violations,[],`diagram labels and lines meet WCAG contrast in light and dark (${violations.length} violations)`);
+  console.log(`Diagram contrast: ${figures} figures in light and dark; every label ≥4.5:1 (3:1 large) and every line ≥3:1.`);}
   const context=await browser.newContext({viewport:{width:1280,height:900}});await context.grantPermissions(['clipboard-read','clipboard-write'],{origin:base});await context.addInitScript(fixture);
   const page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});

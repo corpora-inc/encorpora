@@ -68,6 +68,7 @@
   --fig-coral: #d98666;
   --fig-teal: #88b4a2;
   --fig-teal-fill: #75b3a0;
+  --fig-cuboid-side: #d3543d;
   --skeleton: #e9eadf;
   --skeleton-hi: #f6f5ee;
   --grab: rgb(38 61 53 / 0.2);
@@ -103,7 +104,7 @@
     --coral-ink: #f2a891;
     --gold: #dcae4f;
     --gold-rgb: 220 174 79;
-    --gold-light: #4a3d1c;
+    --gold-light: #5a4a22;
     --gold-tint: #342a17;
     --gold-ink: #efcb7a;
     --sun: #e8b84a;
@@ -123,6 +124,8 @@
     --fig-coral: #e0805f;
     --fig-teal: #6aa794;
     --fig-teal-fill: #3f8f7c;
+    /* A lit solid in the dark: the shaded side stays darker than the top, never the brightest face. */
+    --fig-cuboid-side: #7a3b2e;
     --skeleton: #1f2924;
     --skeleton-hi: #2a3631;
     --grab: rgb(233 237 228 / 0.25);
@@ -273,6 +276,26 @@ h1 {
   margin: auto;
   font-size: 15px;
   font-family: AhaSans, Arial, sans-serif;
+}
+/* Diagram labels are ink in either theme, with a halo in the panel colour so they stay legible over
+   grid lines, marks and fills. Lines take currentColor (ink) or a token; grids are faint texture. */
+.math-visual svg text {
+  fill: currentColor;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: var(--surface-2);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.math-visual .dim-label {
+  font-weight: 700;
+}
+.math-visual .axis-name {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+.math-visual .grid-line {
+  stroke: var(--line);
 }
 .math-visual figcaption {
   font-size: 0.76rem;

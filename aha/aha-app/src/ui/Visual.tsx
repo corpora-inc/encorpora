@@ -146,7 +146,7 @@ export function Visual({ spec }: { spec: StudioVisual }) {
           <g key={i}>
             <path d={`M${x(n)} 57 V73`} stroke="currentColor" />
             <text x={x(n)} y="98" textAnchor="middle">
-              {Number(n.toFixed(3))}
+              {String(Number(n.toFixed(3))).replace("-", "\u2212")}
             </text>
           </g>
         ))}
@@ -168,7 +168,7 @@ export function Visual({ spec }: { spec: StudioVisual }) {
     content = (
       <svg viewBox="0 0 320 270" aria-hidden="true">
         {Array.from({ length: extent * 2 + 1 }, (_, i) => (
-          <g key={i} stroke="var(--line)">
+          <g key={i} className="grid-line">
             <path d={`M${160 + (i - extent) * scale} 30 V240`} />
             <path d={`M55 ${135 + (i - extent) * scale} H265`} />
           </g>
@@ -178,10 +178,10 @@ export function Visual({ spec }: { spec: StudioVisual }) {
           stroke="currentColor"
           strokeWidth="2"
         />
-        <text x="285" y="139">
+        <text x="285" y="139" className="axis-name">
           x
         </text>
-        <text x="168" y="24">
+        <text x="168" y="24" className="axis-name">
           y
         </text>
         <text x="144" y="151">
@@ -195,7 +195,11 @@ export function Visual({ spec }: { spec: StudioVisual }) {
               r="6"
               fill="var(--coral)"
             />
-            <text x={169 + p.x * scale} y={128 - p.y * scale}>
+            <text
+              x={169 + p.x * scale}
+              y={128 - p.y * scale}
+              className="dim-label"
+            >
               {(p.label ?? "").slice(0, 20)}
             </text>
           </g>
@@ -217,13 +221,14 @@ export function Visual({ spec }: { spec: StudioVisual }) {
           strokeWidth="2"
         />
         <path
-          d="M80 195 H310 M80 190 V200 M310 190 V200"
+          d="M80 195 H310 M80 190 V200 M310 190 V200 M335 45 V170 M330 45 H340 M330 170 H340"
           stroke="currentColor"
+          fill="none"
         />
-        <text x="195" y="221" textAnchor="middle">
+        <text x="195" y="221" textAnchor="middle" className="dim-label">
           {spec.width}
         </text>
-        <text x="342" y="114" textAnchor="middle">
+        <text x="347" y="113" className="dim-label">
           {spec.height}
         </text>
       </svg>
@@ -251,7 +256,7 @@ export function Visual({ spec }: { spec: StudioVisual }) {
           />
           <path
             d="M235 85 L290 40 L290 160 L235 205Z"
-            fill="var(--coral)"
+            fill="var(--fig-cuboid-side)"
             stroke="var(--coral)"
             strokeWidth="2"
           />

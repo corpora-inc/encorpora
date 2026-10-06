@@ -188,7 +188,8 @@ export function ScatterPlotFigure({ figure: f }: { figure: FigureOf<'scatter_plo
   );
 }
 
-const PIE_FILLS = ['teal', 'coral', 'blue', 'gold'].flatMap(c => [`var(--ax-${c})`]).concat(['teal', 'coral', 'blue', 'gold'].map(c => `var(--ax-${c}-soft)`));
+/** Slice fills, each paired (in activity.css) with a label ink that clears 4.5:1 on it in both themes. */
+const PIE_FILLS = ['var(--ax-pie-teal)', 'var(--ax-pie-coral)', 'var(--ax-blue)', 'var(--ax-gold)'].concat(['teal', 'coral', 'blue', 'gold'].map(c => `var(--ax-${c}-soft)`));
 export function PieChartFigure({ figure: f, tap }: { figure: FigureOf<'pie_chart'>; tap?: TapInteraction }) {
   const total = f.slices.reduce((s, x) => s + x.value, 0);
   const size = 240, r = 104, c = size / 2;
@@ -210,7 +211,7 @@ export function PieChartFigure({ figure: f, tap }: { figure: FigureOf<'pie_chart
           return (
             <g key={i} {...region}>
               <path d={d} fill={PIE_FILLS[i]} className={`ax-slice${selected ? ' is-selected' : ''}`} />
-              {text && inner && <text x={c + r * 0.64 * Math.cos(mid)} y={c + r * 0.64 * Math.sin(mid) + 5} textAnchor="middle" className={`ax-slice-text${i >= 4 || i === 3 ? ' on-light' : ''}`}>{text}</text>}
+              {text && inner && <text x={c + r * 0.64 * Math.cos(mid)} y={c + r * 0.64 * Math.sin(mid) + 5} textAnchor="middle" className={`ax-slice-text${i >= 4 ? ' on-soft' : i === 3 ? ' on-gold' : ''}`}>{text}</text>}
             </g>
           );
         })}

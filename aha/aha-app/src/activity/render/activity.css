@@ -11,6 +11,11 @@
   --ax-teal-tint: #dcefe7; --ax-coral-tint: #fbe3da; --ax-blue-tint: #e3e9f8; --ax-gold-tint: #f6e9c8;
   --ax-teal-soft: #86c9bb; --ax-coral-soft: #efa492; --ax-blue-soft: #a3b8e8; --ax-gold-soft: #dfc47e;
   --ax-gold-deep: #9c7510; --ax-gold-ink: #6b5009; --ax-on-color: #fffefa;
+  /* Circle-graph slices carry their labels inside, so each fill is paired with a label ink that clears
+     4.5:1 on it (teal and coral run one step deeper than the series hues for that). Same for the coral
+     "?" a data table marks as missing, which sits on card and panel. */
+  --ax-pie-teal: #007a65; --ax-pie-coral: #c2452e; --ax-pie-ink: #fffefa; --ax-pie-ink-gold: #1d2a24; --ax-pie-ink-soft: #1d2a24;
+  --ax-coral-text: #ad3f29; --ax-gold-edge: #9c7510;
   --ax-hint-bg: #fbf3dc; --ax-hint-line: #ead7a0; --ax-ok-bg: #e5f2ea; --ax-ok-line: #a9d3bd; --ax-retry-bg: #fdf0e8; --ax-retry-line: #efc9b6;
   color-scheme: light;
 }
@@ -21,6 +26,7 @@
   --ax-teal-tint: #173b33; --ax-coral-tint: #45291f; --ax-blue-tint: #222e4c; --ax-gold-tint: #3a3118;
   --ax-teal-soft: #2f7f70; --ax-coral-soft: #a5503d; --ax-blue-soft: #4e66a6; --ax-gold-soft: #8a6d1e;
   --ax-gold-deep: #7c5d0b; --ax-gold-ink: #2a1f04; --ax-on-color: #fffefa;
+  --ax-pie-teal: #16a088; --ax-pie-coral: #e3644a; --ax-pie-ink: #10160f; --ax-pie-ink-gold: #10160f; --ax-pie-ink-soft: #fffefa; --ax-coral-text: #ef8a72; --ax-gold-edge: #b2860e;
   --ax-hint-bg: #2c2717; --ax-hint-line: #4d4322; --ax-ok-bg: #173329; --ax-ok-line: #2d6150; --ax-retry-bg: #35231b; --ax-retry-line: #61402f;
   color-scheme: dark;
 }
@@ -32,6 +38,7 @@
     --ax-teal-tint: #173b33; --ax-coral-tint: #45291f; --ax-blue-tint: #222e4c; --ax-gold-tint: #3a3118;
     --ax-teal-soft: #2f7f70; --ax-coral-soft: #a5503d; --ax-blue-soft: #4e66a6; --ax-gold-soft: #8a6d1e;
     --ax-gold-deep: #7c5d0b; --ax-gold-ink: #2a1f04;
+    --ax-pie-teal: #16a088; --ax-pie-coral: #e3644a; --ax-pie-ink: #10160f; --ax-pie-ink-gold: #10160f; --ax-pie-ink-soft: #fffefa; --ax-coral-text: #ef8a72; --ax-gold-edge: #b2860e;
     --ax-hint-bg: #2c2717; --ax-hint-line: #4d4322; --ax-ok-bg: #173329; --ax-ok-line: #2d6150; --ax-retry-bg: #35231b; --ax-retry-line: #61402f;
     color-scheme: dark;
   }
@@ -121,8 +128,9 @@
 .ax-region:focus-visible :is(path, polygon, circle:not(.ax-hit), rect:not(.ax-hit)) { stroke: var(--ax-focus); stroke-width: 3.5; }
 .ax-slice { stroke: var(--ax-panel); stroke-width: 2.5; stroke-linejoin: round; }
 .ax-slice.is-selected { stroke: var(--ax-ink); stroke-width: 3; }
-.ax-slice-text { fill: var(--ax-on-color); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.ax-slice-text.on-light { fill: #1d2a24; }
+.ax-slice-text { fill: var(--ax-pie-ink); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ax-slice-text.on-gold { fill: var(--ax-pie-ink-gold); }
+.ax-slice-text.on-soft { fill: var(--ax-pie-ink-soft); }
 .is-plottable .ax-svg { cursor: crosshair; touch-action: manipulation; }
 
 .ax-legend, .ax-pie-legend { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; font-size: 0.86rem; }
@@ -142,7 +150,7 @@
 .ax-table tbody tr:last-child > * { border-bottom: 0; }
 .ax-table tbody tr:nth-child(even) > * { background: var(--ax-panel); }
 .ax-table .is-num { text-align: right; font-variant-numeric: tabular-nums; }
-.ax-table .is-missing { color: var(--ax-coral); font-weight: 700; }
+.ax-table .is-missing { color: var(--ax-coral-text); font-weight: 700; }
 
 .ax-numberline { stroke: var(--ax-ink); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .ax-frac-label text { fill: var(--ax-ink); font-size: 13.5px; font-variant-numeric: tabular-nums; }
