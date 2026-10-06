@@ -1,6 +1,6 @@
 import React from 'react';
 import type { DrawFigureOf } from '../../draw';
-import { A11ySvg, clamp, regionProps, series, tint, useMeasuredWidth, type TapInteraction } from './common';
+import { A11ySvg, clamp, edge, regionProps, tint, useMeasuredWidth, type TapInteraction } from './common';
 
 type P = { x: number; y: number };
 const sub = (a: P, b: P) => ({ x: a.x - b.x, y: a.y - b.y });
@@ -56,14 +56,14 @@ export function GeometryFigure({ figure: f, tap }: { figure: DrawFigureOf<'geome
           const steps = (lo: number, hi: number) => Array.from({ length: Math.max(0, Math.round((hi - lo) / unitLen) - 1) }, (_, k) => lo + (k + 1) * unitLen);
           const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
           return (
-            <g clipPath={`url(#${clip})`} className="ax-unit-squares" stroke={selected ? 'var(--ax-coral)' : series(s.color, 0)} aria-hidden="true">
+            <g clipPath={`url(#${clip})`} className="ax-unit-squares" stroke={selected ? 'var(--ax-coral)' : edge(s.color, 0)} aria-hidden="true">
               {steps(x0, x1).map(x => { const a = S({ x, y: y0 }), b = S({ x, y: y1 }); return <line key={`x${x}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />; })}
               {steps(y0, y1).map(y => { const a = S({ x: x0, y }), b = S({ x: x1, y }); return <line key={`y${y}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />; })}
             </g>
           );
         })();
         const fill = selected ? 'var(--ax-coral-tint)' : s.color === 'plain' ? 'none' : tint(s.color, 0);
-        const stroke = { stroke: selected ? 'var(--ax-coral)' : series(s.color, 0), strokeWidth: selected ? 3 : 2.25, strokeLinejoin: 'round' as const, strokeDasharray: s.dashed ? '7 5' : undefined };
+        const stroke = { stroke: selected ? 'var(--ax-coral)' : edge(s.color, 0), strokeWidth: selected ? 3 : 2.25, strokeLinejoin: 'round' as const, strokeDasharray: s.dashed ? '7 5' : undefined };
         // On graph paper the fill is translucent so the paper's lines show through.
         const fillOpacity = f.grid && !selected ? 0.5 : undefined;
         return (
@@ -84,7 +84,7 @@ export function GeometryFigure({ figure: f, tap }: { figure: DrawFigureOf<'geome
         const region = s.id && tap ? regionProps(s.label ?? `circle ${s.id}`, selected, () => tap.onSelect(s.id!)) : {};
         return (
           <g key={i} {...region}>
-            <circle cx={c.x} cy={c.y} r={s.r * scale} fill={selected ? 'var(--ax-coral-tint)' : s.color === 'plain' ? 'none' : tint(s.color, 1)} stroke={selected ? 'var(--ax-coral)' : series(s.color, 1)} strokeWidth={selected ? 3 : 2.25} />
+            <circle cx={c.x} cy={c.y} r={s.r * scale} fill={selected ? 'var(--ax-coral-tint)' : s.color === 'plain' ? 'none' : tint(s.color, 1)} stroke={selected ? 'var(--ax-coral)' : edge(s.color, 1)} strokeWidth={selected ? 3 : 2.25} />
             {s.label && <text x={c.x} y={c.y + 5} textAnchor="middle" className="ax-shape-label">{s.label}</text>}
           </g>
         );
