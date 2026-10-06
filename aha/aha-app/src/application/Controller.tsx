@@ -812,12 +812,6 @@ export default function Controller() {
     if (pendingAi.current) { await showSpec(pendingAi.current.item); maybePrefetch(); return; }
     const state = learning.current;
     if (!state) return;
-    if (count.current >= 10) {
-      count.current = 0;
-      setCompleted(0);
-      sessionId.current = crypto.randomUUID();
-      await saveSession();
-    }
     let next: Activity;
     let worked = false;
     let undoSkip = () => {};
@@ -1427,8 +1421,7 @@ export default function Controller() {
             }
           : undefined
       }
-      session={{ completed, target: 10, complete: completed >= 10,
-        summary: "Your answers are saved. Come back later for a fresh review, or keep exploring when you feel ready." }}
+      session={{ completed }}
       feedback={feedback}
       hint={hint}
       curiosity={curiosity}
