@@ -27,6 +27,16 @@ describe("untrusted lesson rendering", () => {
     assert.doesNotMatch(html, /<a\b/);
     assert.ok(!html.includes('class="attack"'));
   });
+  it("typesets inline and display math with KaTeX in prose", () => {
+    const html = renderToStaticMarkup(
+      <SafeMarkdown>{"Half is $\\frac{1}{2}$ and $3 + 4 = 7$.\n\n$$\n2 \\times 3\n$$"}</SafeMarkdown>,
+    );
+    assert.match(html, /<span class="math-inline is-stacked"><span class="katex">/, "a fraction is inline math with leading");
+    assert.match(html, /<span class="math-inline"><span class="katex">/, "plain inline math");
+    assert.match(html, /<div class="math-block"><span class="math-display"><span class="katex-display">/, "display math");
+    assert.match(html, /class="mfrac"/);
+    assert.doesNotMatch(html, /<code\b|<pre\b|language-math/, "math is never left as code");
+  });
   it("bounds visual work and rejects invalid mathematical diagrams", () => {
     assert.equal(
       isSafeVisual({ type: "array", rows: 1000000, columns: 1000000 }),

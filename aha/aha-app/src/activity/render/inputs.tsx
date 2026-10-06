@@ -3,9 +3,9 @@ import { ArrowDown, ArrowUp, Minus, Plus } from 'lucide-react';
 import type { ResponseOf } from '../spec';
 import type { LearnerResponse } from '../grade';
 import { ExprError, parseExpr, type Expr } from '../expr';
-import { renderTex } from '../text';
 import { snapToGrid } from '../spec';
 import { RichText } from './RichText';
+import { texToReact } from './Tex';
 import { fmt } from './figures/common';
 
 
@@ -92,9 +92,9 @@ function texOf(e: Expr, parent = 0): string {
 export function ExpressionInput({ response: r, value, onChange, disabled, onEnter, compact }: { response: ResponseOf<'expression'>; value: string; onChange: (v: string) => void; disabled?: boolean; onEnter?: () => void; compact?: boolean }) {
   const id = useId();
   const input = useRef<HTMLInputElement>(null);
-  let preview: string | null = null, problem: string | null = null;
+  let preview: React.ReactNode = null, problem: string | null = null;
   if (value.trim()) {
-    try { preview = renderTex(texOf(parseExpr(value, r.variables))); }
+    try { preview = texToReact(texOf(parseExpr(value, r.variables))); }
     catch (e) { problem = e instanceof ExprError ? e.message : 'Keep going…'; }
   }
   const insert = (text: string) => {
@@ -114,7 +114,7 @@ export function ExpressionInput({ response: r, value, onChange, disabled, onEnte
         {[...r.variables, '^', '(', ')', '/', '×'].map(k => <button key={k} type="button" disabled={disabled} onClick={() => insert(k === '×' ? '*' : k)} aria-label={k === '^' ? 'power' : k === '/' ? 'divide' : k === '×' ? 'times' : k}>{k}</button>)}
       </div>
       <div id={`${id}-preview`} className={`ax-preview${problem ? ' is-pending' : ''}`} aria-live="polite">
-        {preview ? <><span className="ax-preview-label">Reads as</span><span className="ax-math" dangerouslySetInnerHTML={{ __html: preview }} /></> : problem ? <span>{problem}</span> : null}
+        {preview ? <><span className="ax-preview-label">Reads as</span><span className="ax-math">{preview}</span></> : problem ? <span>{problem}</span> : null}
       </div>
     </div>
   );
