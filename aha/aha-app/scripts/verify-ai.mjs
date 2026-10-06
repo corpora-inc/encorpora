@@ -101,6 +101,7 @@ function fixture(specs){
     if(command==='plugin:f2z|cancel_chat')return;
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
     if(command==='open_free2z_account'){ai.accountOpened=(ai.accountOpened??0)+1;return;}
+    if(command==='pin_page_scroll')return null;
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(!['local-device','test-subject'].includes(r.accountId))throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;

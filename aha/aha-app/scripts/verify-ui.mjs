@@ -25,6 +25,7 @@ function fixture(){
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
     if(command==='plugin:app|version')return '0.1.0-test';
     if(command==='share_report'){window.__ahaFixture.sharedReport=args.report;return true;}
+    if(command==='pin_page_scroll'){(window.__ahaFixture.pins??=[]).push(args.pinned);return null;}
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(r.accountId!=='local-device')throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;
@@ -203,12 +204,19 @@ try{
     const check=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Check');
     return {pageScroll:document.documentElement.scrollHeight>vh,stageScrolls:!!scroll&&scroll.scrollHeight>scroll.clientHeight+1,prompt:visible(prompt),answer:visible(answer)||!!answer?.closest('.ax-stage-scroll'),check:!!check&&check.getBoundingClientRect().bottom<=vh};});
   const helpText=p=>p.locator('.help-panel .help-text').innerText().then(t=>t.trim());
+  /** Every figure in the problem: its box, and whether its own box crops it. */
+  const figures=p=>p.evaluate(()=>[...document.querySelectorAll('.stage-scroll .math-visual, .ax-stage-scroll .ax-figure')].map(el=>{
+    // Cropped: some part (an svg as a whole; shapes inside it clip themselves) reaches outside the
+    // figure's clipping box (it has overflow: hidden).
+    const r=el.getBoundingClientRect(),parts=[...el.querySelectorAll('*')].filter(a=>!a.parentElement.closest('svg')).map(a=>a.getBoundingClientRect()).filter(a=>a.width>0&&a.height>0);
+    return {box:[r.left,r.top,r.width,r.height].map(Math.round),cropped:parts.some(a=>a.top<r.top-1||a.bottom>r.bottom+1)};}));
   const passBar=async(p,label)=>{
     const tall=await layout(p);assert.equal(tall.pageScroll,false,`${label}: no page scroll at 384×832`);
     const words=await chrome(p);assert.ok(words.length<=12,`${label}: chrome text ≤ 12 words (${words.join(' ')})`);
     assert.deepEqual(await smallTargets(p),[],`${label}: tap targets are at least 44×44`);
     await p.setViewportSize({width:384,height:500});await p.waitForTimeout(50);
-    const kbd=await layout(p);await p.setViewportSize({width:384,height:832});
+    const kbd=await layout(p),shortFigures=await figures(p);await p.setViewportSize({width:384,height:832});
+    assert.deepEqual(shortFigures.filter(f=>f.cropped),[],`${label}: no figure is cropped on a short (384×500) stage`);
     assert.equal(kbd.pageScroll,false,`${label}: no page scroll above the keyboard`);
     assert.deepEqual([kbd.prompt,kbd.answer,kbd.check],[true,true,true],`${label}: prompt, answer and Check visible at 384×500`);
     return {...tall,words:words.length};
@@ -464,6 +472,108 @@ try{
   }
   assert.deepEqual(jumps,[],'the stable stage never moves the bar, the problem, the answer field or Check/Next within an item');
   console.log(`Stable stage: ${jumpLog.length} state checks (local practice and an AI spec, 384×832 and 820×1180); largest movement ${Math.max(...jumpLog.map(l=>Number(l.match(/max ([\d.]+)px/)[1])))}px.`);
+  // Keyboard dock (founder report, iPhone 14): the focus stage is a fixed frame and only the answer
+  // dock rides a software keyboard. TEST-ONLY stand-in for an iOS keyboard: visualViewport shrinks
+  // while the layout viewport stays (what WKWebView does); an Android one shrinks the layout
+  // viewport itself (setViewportSize). Either way the answer sits 8px above the keyboard on a
+  // surface that reaches it (no gap), the bar and the problem never move, and the page never scrolls.
+  const fakeKeyboard=()=>{const target=new EventTarget();let kb=0;
+    const fake=new Proxy(target,{get(t,k){if(k==='height')return innerHeight-kb;if(k==='width')return innerWidth;if(k==='offsetTop'||k==='offsetLeft'||k==='pageTop'||k==='pageLeft')return 0;if(k==='scale')return 1;
+      const v=Reflect.get(t,k);return typeof v==='function'?v.bind(t):v;}});
+    Object.defineProperty(window,'visualViewport',{configurable:true,get:()=>fake});
+    window.__keyboard={show(px){kb=px;target.dispatchEvent(new Event('resize'));},hide(){kb=0;target.dispatchEvent(new Event('resize'));}};};
+  const dockGeometry=p=>p.evaluate(()=>{
+    const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock'),row=dock.querySelector('.dock-row, .ax-dock-row'),r=dock.getBoundingClientRect(),surface=getComputedStyle(dock,'::after');
+    const grab=dock.querySelector('.dock-grab'),g=grab?.getBoundingClientRect();
+    return {answerBottom:row.getBoundingClientRect().bottom,surfaceBottom:r.bottom-parseFloat(surface.bottom),surfaceShown:surface.opacity==='1',
+      grab:grab&&grab.checkVisibility()?[Math.round(g.width),Math.round(g.height)]:null,
+      scroll:[window.scrollY,document.scrollingElement.scrollTop,document.documentElement.scrollHeight<=innerHeight],
+      open:document.documentElement.classList.contains('aha-kb-open'),focused:document.activeElement?.matches('input:not([type=radio])')??false};});
+  const settle=p=>p.evaluate(()=>new Promise(r=>{const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock');
+    const done=()=>Promise.all(dock.getAnimations().map(a=>a.finished.catch(()=>{}))).then(()=>requestAnimationFrame(()=>requestAnimationFrame(r)));requestAnimationFrame(()=>requestAnimationFrame(done));}));
+  const keyboardLog=[];
+  const keyboardDock=async(p,tag,{android=false}={})=>{
+    const [w,h]=[p.viewportSize().width,p.viewportSize().height],kbH=291;
+    const field=p.locator('.focus-dock .answer-input-wrap input, .ax-dock .ax-response input').first();
+    const before=await regions(p),rest=await dockGeometry(p),figuresBefore=await figures(p);
+    assert.ok(figuresBefore.every(f=>!f.cropped),`${tag}: no figure is cropped`);
+    assert.equal(rest.open,false,`${tag}: no keyboard, no lift`);assert.equal(rest.grab,null,`${tag}: the handle shows only with a keyboard`);
+    await field.tap();
+    if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);
+    await settle(p);
+    const kbTop=h-kbH,up=await dockGeometry(p),after=await regions(p);
+    if(stageShots)await p.screenshot({path:path.join(stageShots,`keyboard-${tag.replace(/\W+/g,'-')}.png`)});
+    assert.equal(up.focused,true,`${tag}: the answer keeps focus`);
+    assert.ok(Math.abs(up.answerBottom+8-kbTop)<=2,`${tag}: the answer sits 8px above the keyboard (answer bottom ${up.answerBottom}, keyboard top ${kbTop})`);
+    assert.ok(up.surfaceShown&&up.surfaceBottom>=kbTop-2,`${tag}: the dock's surface reaches the keyboard: no gap (${up.surfaceBottom} vs ${kbTop})`);
+    assert.deepEqual(up.scroll,[0,0,true],`${tag}: the page never scrolls`);
+    assert.deepEqual([after.bar,after.problem],[before.bar,before.problem],`${tag}: the bar and the problem stay where they were`);
+    assert.deepEqual(await figures(p),figuresBefore,`${tag}: figures keep their size and are never cropped with the keyboard up`);
+    assert.ok(up.grab&&up.grab[0]>=44&&up.grab[1]>=44,`${tag}: the lifted dock's handle is a 44px target (${up.grab})`);
+    assert.deepEqual(await coveringInput(p),[],`${tag}: nothing covers the answer while typing`);
+    await field.pressSequentially('7');assert.equal(await field.inputValue(),'7',`${tag}: typing works with the dock lifted`);
+    // Help rises from the lifted dock and never covers the answer.
+    const hintButton=p.getByRole('button',{name:'Hint',exact:true});
+    if(await hintButton.isEnabled()){await hintButton.click();await p.locator('.help-panel').waitFor();await settle(p);
+      assert.deepEqual(await dockGeometry(p).then(g=>[g.focused,g.open]),[true,true],`${tag}: Hint opens without putting the keyboard away`);
+      const fit=await p.evaluate(()=>{const d=document.querySelector('.help-panel').getBoundingClientRect(),bar=document.querySelector('.focus-bar').getBoundingClientRect(),dock=document.querySelector('.focus-dock .dock-row, .ax-dock-row').getBoundingClientRect();return {belowBar:d.top>=bar.bottom-1,aboveAnswer:d.bottom<=dock.top};});
+      assert.deepEqual(fit,{belowBar:true,aboveAnswer:true},`${tag}: the hint drawer fits between the bar and the lifted answer`);
+      if(stageShots)await p.screenshot({path:path.join(stageShots,`keyboard-${tag.replace(/\W+/g,'-')}-hint.png`)});
+      await hintButton.click();await p.locator('.help-panel').waitFor({state:'detached'});await settle(p);}
+    // A tap on the problem puts the keyboard away; the dock glides back down.
+    const problem=await p.locator('.stage-scroll, .ax-stage-scroll').boundingBox();
+    await p.touchscreen.tap(problem.x+problem.width/2,problem.y+24);
+    if(android)await p.setViewportSize({width:w,height:h});else await p.evaluate(()=>window.__keyboard.hide());
+    await settle(p);const down=await dockGeometry(p);
+    assert.deepEqual([down.focused,down.open],[false,false],`${tag}: a tap on the problem closes the keyboard`);
+    assert.deepEqual(await regions(p),before,`${tag}: everything is back where it started`);
+    // A swipe down on the dock does too.
+    await field.tap();if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);await settle(p);
+    assert.equal((await dockGeometry(p)).open,true,`${tag}: the keyboard is back`);
+    const g=await p.locator('.dock-grab').boundingBox(),cdp=await p.context().newCDPSession(p);
+    const at=dy=>[{x:g.x+g.width/2,y:g.y+g.height/2+dy}];
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:at(0)});
+    for(const dy of [12,30,60])await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:at(dy)});
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    if(android)await p.setViewportSize({width:w,height:h});else await p.evaluate(()=>window.__keyboard.hide());
+    await settle(p);const swiped=await dockGeometry(p);
+    assert.deepEqual([swiped.focused,swiped.open],[false,false],`${tag}: a swipe down on the dock closes the keyboard`);
+    assert.deepEqual(await regions(p),before,`${tag}: and everything is back where it started`);
+    keyboardLog.push(tag);
+  };
+  for(const android of [false,true]){
+    const kctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});await kctx.addInitScript(fixture);await kctx.addInitScript(fakeKeyboard);
+    const kp=await kctx.newPage();kp.on('pageerror',e=>errors.push(e.message));kp.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+    await kp.goto(base);await kp.getByRole('button',{name:'Let’s begin',exact:true}).click();await kp.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.deepEqual(await kp.evaluate(()=>window.__ahaFixture.pins),[true],'the focus loop asks the native host to pin the page');
+    for(let i=0;i<8&&!(await kp.getByLabel('Your answer',{exact:true}).count());i++){const before=Object.values(await kp.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity.id;
+      await kp.getByRole('button',{name:'Try something harder',exact:true}).click();await kp.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0]?.data.activity?.id!==id,before);await kp.getByRole('button',{name:'Check',exact:true}).waitFor();}
+    await keyboardDock(kp,`local ${android?'Android':'iOS'} 390×844`,{android});
+    await kp.getByRole('button',{name:'Home',exact:true}).click();await kp.getByRole('button',{name:'Continue',exact:true}).waitFor();
+    assert.deepEqual(await kp.evaluate(()=>window.__ahaFixture.pins),[true,false],'leaving the loop releases the pin');
+    // The same dock for an AI-authored activity.
+    await kp.goto(`${base}/src/activity/gallery/stage.html?fixture=fx-k-count-apples`);await kp.getByRole('button',{name:'Continue',exact:true}).click();await kp.locator('.aha-activity.is-compact').waitFor();
+    await keyboardDock(kp,`spec ${android?'Android':'iOS'} 390×844`,{android});
+    // Local practice with a tall rectangle figure (the S26 report: a short stage cropped its top).
+    await kp.goto(`${base}/src/ui/gallery/index.html?s=focus-long`);await kp.waitForFunction(()=>window.__ready);
+    await keyboardDock(kp,`local rectangle ${android?'Android':'iOS'} 390×844`,{android});
+    // Tall figures (a geometry figure, a coordinate plane) with the keyboard up.
+    for(const id of ['fx-3-garden-perimeter','fx-6-distance-on-grid']){
+      await kp.goto(`${base}/src/activity/gallery/stage.html?fixture=${id}`);await kp.getByRole('button',{name:'Continue',exact:true}).click();await kp.locator('.aha-activity.is-compact').waitFor();
+      assert.ok((await figures(kp)).length>0,`${id}: has a figure`);
+      await keyboardDock(kp,`${id} ${android?'Android':'iOS'} 390×844`,{android});
+    }
+    await kctx.close();
+  }
+  // A short stage (small phone, split screen, large text) never crops a figure: it keeps its size
+  // and the problem scrolls inside the stage instead.
+  const short=await browser.newContext({viewport:{width:384,height:832},isMobile:true,hasTouch:true});const sp2=await short.newPage();
+  sp2.on('pageerror',e=>errors.push(e.message));
+  for(const s of ['focus-long','focus-visual','focus-fraction'])for(const h of [832,560,460]){
+    await sp2.setViewportSize({width:384,height:h});await sp2.goto(`${base}/src/ui/gallery/index.html?s=${s}`);await sp2.waitForFunction(()=>window.__ready);
+    const f=await figures(sp2);assert.ok(f.length&&f.every(x=>!x.cropped),`${s} at 384×${h}: the figure is whole (${JSON.stringify(f)})`);}
+  await short.close();
+  console.log(`Keyboard dock: ${keyboardLog.join(', ')}: answer 8px above the keyboard with no gap, bar/problem still, page unscrolled, hint fits, tap-problem and swipe-down close it.`);
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
   const learner=await fresh.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});

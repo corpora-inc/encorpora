@@ -50,6 +50,19 @@ archive still need the Tauri CLI/Gradle/Xcode pipeline; a Rust cross-check is no
 signed or installable distribution artifact. Actual document picking/sharing and
 background/kill/resume behavior need device tests before release claims.
 
+## iOS WebView and the software keyboard
+
+`src/ios_webview.rs` sets the WKWebView scroll view's `contentInsetAdjustmentBehavior` to
+`.never` app-wide (the page applies `env(safe-area-inset-*)` itself; the automatic inset left an
+unpainted band under every screen). While the focus loop is on screen the page calls the
+`pin_page_scroll` command, which disables the scroll view and holds it at its resting offset with
+KVO on `contentOffset`: WebKit otherwise scrolls the page to reveal a focused field even with
+scrolling disabled, which pushed the answer to the top of the screen above a blank gap. Leaving the
+loop releases the pin, so other screens keep WebKit's reveal behaviour. The main window is built in
+`setup` (`create: false` in `tauri.conf.json`) so iOS can drop the keyboard's form toolbar. The web
+side (`src/ui/keyboard.ts`) lifts only the answer dock by the keyboard's overlap; verify on the iOS
+Simulator with the software keyboard (`ConnectHardwareKeyboard` off), not only in a browser.
+
 ## Free2Z native host
 
 The official plugin is pinned to the public source preview

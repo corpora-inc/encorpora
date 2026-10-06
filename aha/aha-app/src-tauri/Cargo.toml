@@ -33,3 +33,8 @@ panic = "abort"
 
 [target.'cfg(target_os = "ios")'.dependencies]
 tauri-plugin-ios-share = { path = "../../../homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share" }
+# Already in the graph through wry; used to configure the WKWebView scroll view (src/ios_webview.rs).
+objc2 = "0.6"
+objc2-core-foundation = { version = "0.3", default-features = false, features = ["std", "CFCGTypes"] }
+objc2-foundation = { version = "0.3", default-features = false, features = ["std", "NSDictionary", "NSKeyValueObserving", "NSString"] }
+objc2-ui-kit = { version = "0.3", default-features = false, features = ["std", "objc2-core-foundation", "UIGeometry", "UIResponder", "UIScrollView", "UIView"] }

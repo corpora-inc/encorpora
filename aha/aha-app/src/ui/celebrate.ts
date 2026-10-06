@@ -102,6 +102,18 @@ export function burst(anchor: Element | null, level: 0 | 1 | 2 = 0): void {
     );
   }
   document.body.append(layer);
+  // The burst stays on Next if the dock moves under it (a closing keyboard lowers the dock).
+  const end = performance.now() + BURST_MS;
+  const follow = () => {
+    if (!layer.isConnected || performance.now() > end) return;
+    const now = anchor.getBoundingClientRect();
+    if (now.width && now.height) {
+      layer.style.left = `${now.left + now.width / 2}px`;
+      layer.style.top = `${now.top + now.height / 2}px`;
+    }
+    requestAnimationFrame(follow);
+  };
+  requestAnimationFrame(follow);
   window.setTimeout(() => layer.remove(), BURST_MS + 80);
 }
 
