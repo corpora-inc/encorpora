@@ -51,7 +51,7 @@ name `¡AHA!`. Do not restore a Unicode executable name.
 ## Free2Z activation boundary
 
 Both delivered builds use supported SDK source revision
-`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; source now pins `d63959f9c766258d7ce827e68f4ddd93d2797f99` for the next build. That pin adds
+`534d2a58c5baa6fa67ccd8a0d5ab1e18adb5b860`; source now pins the release tag `sdk-v0.2.0` (`40bfabff`, tool calling and `reasoning_effort` over `d63959f9`) for the next build. `d63959f9` added
 schema member order preserved end to end (zuu #1143), typed catalogue capabilities, `preflight()`, native refusal details (`required_2z`) and distinct sign-in codes
 (`user_cancelled`, `browser_unavailable`, `timeout`) on top of `42acc57f`'s opt-in `response_format` (#884). It keeps everything `e95becd6`
 added: the sign-in spend-cap hint and `enforcement_reason` decoding, where a reason that contradicts

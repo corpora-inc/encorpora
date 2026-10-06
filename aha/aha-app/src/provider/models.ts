@@ -38,11 +38,16 @@ export const AUTO_CEILING_2Z = 10n;
  * model by hand (Settings → AI model, then Model stats); a manual choice ignores it.
  * - `reasoningAllowed`: reasoning models measured and approved for auto. Empty: auto never picks a reasoning model.
  * - `excluded`: ids auto never picks (for example a model whose sets were measured to be poor). Still choosable by hand.
+ * - `preferred`: ids auto picks first, in order, when the catalogue offers one that is eligible, admitted, within the
+ *   ceiling and affordable; otherwise the price rule decides as before. `gpt-4.1` (non-reasoning) is the founder's
+ *   candidate for grades 3–4, pending the live bake-off (scripts/live-eval). It is behind Free2Z's gateway fence today,
+ *   so it simply is not in `/v1/models` and auto is unchanged until it appears.
  */
-export interface AutoPolicy { readonly reasoningAllowed: readonly string[]; readonly excluded: readonly string[] }
+export interface AutoPolicy { readonly reasoningAllowed: readonly string[]; readonly excluded: readonly string[]; readonly preferred?: readonly string[] }
 export const AUTO_POLICY: AutoPolicy = Object.freeze({
   reasoningAllowed: Object.freeze([] as string[]),
   excluded: Object.freeze([] as string[]),
+  preferred: Object.freeze(['gpt-4.1']),
 });
 export const AUTO = 'auto';
 /** The learner's choice: "Best (auto)" or a catalogue model id. */
@@ -74,6 +79,7 @@ export interface ModelOption {
 export interface Affordability { availableMilli2z?: bigint; capRemainingMilli2z?: bigint | null }
 export type PickReason =
   | 'auto'            // highest-priced eligible model within the ceiling
+  | 'auto_preferred'  // a model `AUTO_POLICY.preferred` names, offered, within the ceiling and affordable
   | 'auto_step_down'  // a dearer model within the ceiling did not fit the balance or app budget
   | 'auto_unaffordable' // nothing within the ceiling fits: the cheapest is sent and Free2Z refuses it calmly at no cost
   | 'auto_over_ceiling' // every priced structured model is above the ceiling: the cheapest one
@@ -165,9 +171,13 @@ const autoCandidate = (policy: AutoPolicy) => (option: ModelOption) =>
   !policy.excluded.includes(option.id) && (!option.reasoning || policy.reasoningAllowed.includes(option.id));
 
 /** "Best (auto)" over a set of candidates, or undefined when there are none. */
-function best(candidates: ModelOption[], money: Affordability | undefined, ceiling2z: bigint, unpricedReason: PickReason): ModelPick | undefined {
+function best(candidates: ModelOption[], money: Affordability | undefined, ceiling2z: bigint, unpricedReason: PickReason, preferred: readonly string[] = []): ModelPick | undefined {
   const priced = candidates.filter(o => o.batch2z !== undefined).sort(byPriceDesc);
   const within = priced.filter(o => o.batch2z! <= ceiling2z);
+  for (const id of preferred) {
+    const option = within.find(o => o.id === id);
+    if (option && fits(option, money)) return pick(option, 'auto_preferred', ceiling2z);
+  }
   if (within.length) {
     const index = within.findIndex(o => fits(o, money));
     if (index === 0) return pick(within[0]!, 'auto', ceiling2z);
@@ -194,7 +204,7 @@ export function chooseModel(catalog: Models, choice: ModelChoice = AUTO, money?:
     if (chosen) return pick(chosen, 'manual', ceiling2z);
   }
   const admitted = autoCandidate(policy);
-  const auto = best(structured.filter(admitted), money, ceiling2z, 'auto_unpriced')
+  const auto = best(structured.filter(admitted), money, ceiling2z, 'auto_unpriced', policy.preferred)
     ?? best(all.filter(usable).filter(admitted), money, ceiling2z, 'prompt_only');
   if (!auto) throw new ModelUnavailableError();
   const reason: PickReason = choice !== AUTO ? 'manual_unavailable' : auto.structured ? auto.reason : 'prompt_only';

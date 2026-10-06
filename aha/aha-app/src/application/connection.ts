@@ -42,9 +42,9 @@ export function learningError(error: unknown): string {
  * error, or the SDK's decoded native `details.required_2z` (bigint, zuu #1136). Otherwise nothing.
  */
 function needed(error: SdkError | TutorServiceError): string {
-  const details: unknown = error instanceof SdkError ? error.details : undefined;
+  const details = error instanceof SdkError ? error.details : undefined;
   const amount = error instanceof TutorServiceError ? error.required2z
-    : details && typeof details === 'object' && !Array.isArray(details) ? (details as Record<string, unknown>).required_2z : undefined;
+    : details && typeof details === 'object' && !Array.isArray(details) ? details.required_2z : undefined;
   return typeof amount === 'bigint' && amount > 0n ? ` The next activities need ${amount} 2Z.` : '';
 }
 

@@ -1,10 +1,10 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05, then to the release tag `sdk-v0.2.0` (`40bfabff`) on 2026-10-06. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Unified public source `d63959f9c766258d7ce827e68f4ddd93d2797f99` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Native SDK and TypeScript facade | Release tag `sdk-v0.2.0` = `40bfabffb3f765046ceafad213a26a5754dbd6b9` (TS SDK, guest API and Rust plugin move together); exact tag-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
 | Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
@@ -29,6 +29,25 @@ contract supplies a live snapshot, not an immutable per-operation policy version
 Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
+
+## SDK `sdk-v0.2.0` adoption (2026-10-06)
+
+The first tagged SDK release (zuu #1180, commit `40bfabff`). Tarball recipe and sha256 values: [vendor/README.md](aha-app/vendor/README.md).
+The breaking items, and what AHA does about each:
+
+- **Rust `OrderedJson`, exhaustive `ChatRequest`/`Tool`.** AHA builds no Rust `ChatRequest`: the webview's journaled body crosses IPC
+  and the plugin deserialises it. The native tests read the fixture bytes as text (never `json!`), so their schema order is the app's.
+- **`serde_json/preserve_order`** was already unified in since `d63959f9` (backup digests hash the canonical form; see below).
+- **Typed `SdkErrorCode`, messages with a developer hint, `retryable` per errors.md.** AHA never shows an SDK message: it classifies by
+  code (`connection.ts`, `aiFallback.ts`), and diagnostics keep the hinted message, which helps a support read.
+- **`ChatEvent.tool_call_delta`.** A batch that did not ask for tools treats it like `tool_call` (`unexpected_tool`).
+- **Native sign-in codes** were adopted with `d63959f9`.
+- **Casts removed.** `reasoning_effort` is a typed `ChatRequest` member (no local `EffortRequest`), the journaled `response_format`
+  is the SDK's `ResponseFormat` (no cast), and refusal `details` are the SDK's `Json`. `supportsReasoningEffort` reads the typed
+  `capabilities.reasoning_effort` and, when a model lists `controls.effort_levels`, sends `low` only if listed.
+- **"Best (auto)" prefers `gpt-4.1`** (`AUTO_POLICY.preferred`), the founder's candidate for grades 3–4 pending the live bake-off: when
+  `/v1/models` offers it (it is behind Free2Z's gateway fence today), it is structured-eligible, within the ceiling and affordable, auto
+  picks it (`auto_preferred`). Otherwise the price rule decides exactly as before.
 
 ## SDK `d63959f9` adoption (2026-10-05)
 

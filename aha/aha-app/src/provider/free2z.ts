@@ -1,4 +1,4 @@
-import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Preflight, type Session, type SignInOptions } from '@free2z/sdk';
+import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Json, type Models, type ObjectData, type Preflight, type ReasoningEffort as SdkReasoningEffort, type ResponseFormat, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 import { diagnostics } from '../diagnostics/log';
 import { BATCH_OUTPUT_TOKENS, REASONING_BATCH_OUTPUT_TOKENS } from './models';
@@ -138,7 +138,7 @@ function preflightEstimate(checked: Preflight): Estimate {
  */
 export interface StructuredOutput { name: string; schema: Record<string, unknown>; system: string }
 /** The exact `response_format` sent, and journaled (v3) so same-key recovery resends an identical body. */
-export interface SavedResponseFormat { type: 'json_schema'; json_schema: { name: string; schema: Record<string, unknown>; strict: true } }
+export interface SavedResponseFormat extends Extract<ResponseFormat, {type: 'json_schema'}> { json_schema: { name: string; schema: {[key: string]: Json | undefined}; strict: true } }
 /** Gateway limits on `response_format` (chat-api.md): the SDKs and the gateway refuse anything outside them. */
 const MAX_SCHEMA_BYTES = 32 * 1024;
 export const RESPONSE_FORMAT_UNSUPPORTED = 'response_format_unsupported';
@@ -160,17 +160,17 @@ export function structuredCapability(catalog: Models, model: string): 'advertise
   return flag === true ? 'advertised' : flag === false ? 'structured_output_false' : 'structured_output_absent';
 }
 /**
- * The catalogue capability (zuu#1151) under which the gateway accepts `reasoning_effort`. Until a model advertises it the
- * field is never sent: today's gateway refuses unknown fields (400, no charge), and the native plugin pinned at d63959f9
- * deserialises `ChatRequest` with `deny_unknown_fields`, so it also needs the SDK/plugin bump that ships with the flag.
+ * Activity batches send `reasoning_effort: "low"` only where the signed catalogue says the gateway takes it
+ * (`capabilities.reasoning_effort === true`, zuu#1151/#1170, typed since SDK 0.2.0) and, when the model lists
+ * `controls.effort_levels`, only if `low` is one of them. Otherwise it is omitted: a gateway or model without it refuses
+ * the field (400, no charge).
  */
-export const REASONING_EFFORT_CAPABILITY = 'reasoning_effort';
-/** Activity batches ask for the least thinking: the set is short, structured, and the hidden tokens bill as output. */
-export type ReasoningEffort = 'low';
-/** The request type plus the field zuu#1151 adds. Absent is never sent. */
-type EffortRequest = ChatRequest & { reasoning_effort?: ReasoningEffort };
+export type ReasoningEffort = Extract<SdkReasoningEffort, 'low'>;
 export function supportsReasoningEffort(catalog: Models, model: string): boolean {
-  return catalog.models.find(m => m.id === model)?.capabilities[REASONING_EFFORT_CAPABILITY] === true;
+  const entry = catalog.models.find(m => m.id === model);
+  if (entry?.capabilities.reasoning_effort !== true) return false;
+  const levels = entry.controls?.effort_levels;
+  return levels === undefined || levels.includes('low');
 }
 /**
  * One content-free line per activity batch: whether the request that goes out carries `response_format`, and if
@@ -179,7 +179,7 @@ export function supportsReasoningEffort(catalog: Models, model: string): boolean
 export function describeBatchRequest(request: ChatRequest, why: string, phase: 'send' | 'recovery'): string {
   const format = request.response_format;
   const transport = 'stream'; // The native plugin offers only the streamed chat (start_chat/next_chat).
-  const effort = (request as EffortRequest).reasoning_effort ? ` reasoning_effort=${(request as EffortRequest).reasoning_effort}` : '';
+  const effort = request.reasoning_effort ? ` reasoning_effort=${request.reasoning_effort}` : '';
   if (format?.type === 'json_schema')
     return `batch ${phase}: structured=yes model=${request.model} response_format.type=json_schema strict=${format.json_schema.strict === true} json_schema.name=${format.json_schema.name} transport=${transport}${effort}`;
   return `batch ${phase}: structured=no reason=${format ? `response_format.type_${format.type}` : why} model=${request.model} transport=${transport}${effort}`;
@@ -676,7 +676,7 @@ export class Free2zTutor {
           if (op.text.length + event.text.length > MAX_TEXT) throw new TutorServiceError('output_limit','The lesson exceeded the supported size.');
           op.text += event.text;
         }
-        if (event.type === 'tool_call') throw new TutorServiceError('unexpected_tool','This request did not authorize tools.');
+        if (event.type === 'tool_call' || event.type === 'tool_call_delta') throw new TutorServiceError('unexpected_tool','This request did not authorize tools.');
         if (event.type === 'done' || event.type === 'error' || event.type === 'replay') {
           const charge = event.type === 'replay' ? event.record.charge : event.charge;
           op.charge = savedCharge(charge); op.state = charge.state === 'pending' ? 'settling' : 'finalized';
@@ -721,8 +721,8 @@ export class Free2zTutor {
 }
 /** The wire request for a journaled body: strict output always, `response_format` and `reasoning_effort` exactly when saved. */
 function chatRequest(saved: SavedRequest): ChatRequest {
-  const request: EffortRequest = {model: saved.model, messages: saved.messages, max_output_tokens: BigInt(saved.maxOutputTokens), max_output_tokens_strict: true,
-    ...(saved.responseFormat ? {response_format: structuredClone(saved.responseFormat) as ChatRequest['response_format']} : {}),
+  const request: ChatRequest = {model: saved.model, messages: saved.messages, max_output_tokens: BigInt(saved.maxOutputTokens), max_output_tokens_strict: true,
+    ...(saved.responseFormat ? {response_format: structuredClone(saved.responseFormat)} : {}),
     ...(saved.reasoningEffort ? {reasoning_effort: saved.reasoningEffort} : {})};
   return request;
 }

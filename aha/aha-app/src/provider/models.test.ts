@@ -213,3 +213,24 @@ test('an explicitly chosen reasoning model is honoured with the 12k budget and l
   assert.deepEqual(menu.options, [{id: 'reasoner', name: 'Test reasoner', batch2z: '19', reasoning: true}, {id: 'standard', name: 'Test standard', batch2z: '5'}]);
   assert.equal(menu.choice, 'reasoner');
 });
+
+test('Best (auto) prefers gpt-4.1 when the catalogue offers it within the ceiling, pending bake-off data', () => {
+  // gpt-4o-like (dearer) and gpt-4.1-like rates: without the preference auto takes the dearest.
+  const gpt4o = entry('gpt-4o', 300_000, 1_200_000), gpt41 = entry('gpt-4.1', 240_000, 960_000), mini41 = entry('gpt-4.1-mini', 48_000, 192_000);
+  assert.deepEqual(AUTO_POLICY.preferred, ['gpt-4.1']);
+  const withIt = chooseModel(catalog(gpt4o, gpt41, mini41));
+  assert.equal(withIt.id, 'gpt-4.1'); assert.equal(withIt.reason, 'auto_preferred');
+  assert.match(describePick(withIt), /auto_preferred/);
+  // Behind the gateway fence (absent from /v1/models): unchanged, the dearest within the ceiling.
+  assert.equal(chooseModel(catalog(gpt4o, mini41)).id, 'gpt-4o');
+  // Above the ceiling, or unaffordable for the balance: the normal rule decides (step down, never a refusal by preference).
+  assert.equal(chooseModel(catalog(gpt4o, gpt41, mini41), AUTO, undefined, 2n).id, 'gpt-4.1-mini');
+  assert.equal(chooseModel(catalog(gpt4o, gpt41, mini41), AUTO, {availableMilli2z: 1000n}).reason, 'auto_step_down');
+  // Not structured-eligible, or excluded by policy: never preferred.
+  assert.equal(chooseModel(catalog(gpt4o, entry('gpt-4.1', 240_000, 960_000, {capabilities: {structured_output: false}}))).id, 'gpt-4o');
+  assert.equal(chooseModel(catalog(gpt4o, gpt41), AUTO, undefined, undefined, {...AUTO_POLICY, excluded: ['gpt-4.1']}).id, 'gpt-4o');
+  // A manual choice still wins over the preference.
+  assert.equal(chooseModel(catalog(gpt4o, gpt41), 'gpt-4o').id, 'gpt-4o');
+  // The Settings menu names the preferred pick as what Best (auto) uses now.
+  assert.equal(modelMenu(catalog(gpt4o, gpt41), AUTO).auto?.id, 'gpt-4.1');
+});

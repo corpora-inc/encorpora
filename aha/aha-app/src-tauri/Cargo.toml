@@ -23,7 +23,7 @@ tauri-plugin-dialog = "=2.7.3"
 tauri-plugin-fs = "=2.5.2"
 tauri-plugin-opener = "=2.5.3"
 tauri-plugin-haptics = "=2.4.1"
-tauri-plugin-f2z = { git = "https://github.com/free2z/zuu", rev = "d63959f9c766258d7ce827e68f4ddd93d2797f99" }
+tauri-plugin-f2z = { git = "https://github.com/free2z/zuu", tag = "sdk-v0.2.0" }
 
 [profile.release]
 opt-level = "z"

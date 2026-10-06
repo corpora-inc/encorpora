@@ -81,8 +81,8 @@ once it settles. Verify on a device with `adb shell screenrecord`, not only in a
 
 ## Free2Z native host
 
-The official plugin is pinned to the public source preview
-`d63959f9c766258d7ce827e68f4ddd93d2797f99`; its transitive core is the sole native
+The official plugin is pinned to the public release tag `sdk-v0.2.0`
+(`40bfabffb3f765046ceafad213a26a5754dbd6b9`); its transitive core is the sole native
 client. Configure the public registration through the build environment variable
 `AHA_FREE2Z_CLIENT_ID` or the gitignored file `release-config/free2z-client-id`;
 `build.rs` resolves either (they must agree) into the crate. The file exists because

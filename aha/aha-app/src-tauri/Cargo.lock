@@ -1166,8 +1166,8 @@ dependencies = [
 
 [[package]]
 name = "f2z-ai-proto"
-version = "0.1.0"
-source = "git+https://github.com/free2z/zuu?rev=d63959f9c766258d7ce827e68f4ddd93d2797f99#d63959f9c766258d7ce827e68f4ddd93d2797f99"
+version = "0.2.0"
+source = "git+https://github.com/free2z/zuu?tag=sdk-v0.2.0#40bfabffb3f765046ceafad213a26a5754dbd6b9"
 dependencies = [
  "ed25519-dalek",
  "serde",
@@ -1176,8 +1176,8 @@ dependencies = [
 
 [[package]]
 name = "f2z-sdk"
-version = "0.1.0"
-source = "git+https://github.com/free2z/zuu?rev=d63959f9c766258d7ce827e68f4ddd93d2797f99#d63959f9c766258d7ce827e68f4ddd93d2797f99"
+version = "0.2.0"
+source = "git+https://github.com/free2z/zuu?tag=sdk-v0.2.0#40bfabffb3f765046ceafad213a26a5754dbd6b9"
 dependencies = [
  "base64 0.22.1",
  "f2z-ai-proto",
@@ -4286,8 +4286,8 @@ dependencies = [
 
 [[package]]
 name = "tauri-plugin-f2z"
-version = "0.1.0"
-source = "git+https://github.com/free2z/zuu?rev=d63959f9c766258d7ce827e68f4ddd93d2797f99#d63959f9c766258d7ce827e68f4ddd93d2797f99"
+version = "0.2.0"
+source = "git+https://github.com/free2z/zuu?tag=sdk-v0.2.0#40bfabffb3f765046ceafad213a26a5754dbd6b9"
 dependencies = [
  "android-native-keyring-store",
  "apple-native-keyring-store",

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Client, NativeTransport, SdkError, type NativeBridge } from '@free2z/sdk';
 import type { ChatEvent, ChatRequest, ChatStream, Grant, Session } from '@free2z/sdk';
-import { Free2zTutor, REASONING_EFFORT_CAPABILITY, SIGN_IN_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, formatRefusal, supportsStructuredOutput, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
+import { Free2zTutor, SIGN_IN_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, formatRefusal, supportsStructuredOutput, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
 const session: Session = {signedIn:true,subject:'adult',generation:'one',grantedScopes:['ai:invoke'],persistence:'persistent'};
 /** Default fixture: an enforced 100 2Z monthly app budget. Every policy branch patches the grant or estimate. */
 const baseGrant = (): Grant => ({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:100n,cap_period:'month',enforced:true,enforcement_reason:'ok',as_of:new Date().toISOString()});
@@ -952,9 +952,8 @@ test('a dropped reasoning stream (idle timeout before the first token) is recove
 
 // ---- reasoning_effort (zuu#1151): sent only when the catalogue advertises it for the model; never otherwise ----
 test('reasoning_effort "low" goes on an activity batch only when /v1/models advertises the capability for that model',async()=>{
- assert.equal(REASONING_EFFORT_CAPABILITY,'reasoning_effort');
  const structured={name:'aha_activity_batch',schema:{type:'object',properties:{},additionalProperties:false},system:'grammar-free'};
- const effortOf=(r:ChatRequest)=>(r as ChatRequest & {reasoning_effort?:string}).reasoning_effort;
+ const effortOf=(r:ChatRequest)=>r.reasoning_effort;
  // With the capability: the estimate, the chat, the journal and same-key recovery all carry it.
  const f=fixture([]);f.setModels([{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:true}}]);
  const traces:string[]=[];const tutor=new Free2zTutor(f.client,f.journal,'adult',undefined,m=>traces.push(m));
@@ -971,6 +970,8 @@ test('reasoning_effort "low" goes on an activity batch only when /v1/models adve
    [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:false}}],'reasoner',batchContext],
    [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true}},{id:'other',capabilities:{reasoning_effort:true}}],'reasoner',batchContext],
    [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:true}}],'reasoner',{kind:'curiosity' as const,profileId:'p',activityId:'a',question:'Why?'}],
+   // SDK 0.2.0 types `controls.effort_levels`: a model that lists its levels without `low` never gets it.
+   [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:true},controls:{effort_levels:['minimal','high']}}],'reasoner',batchContext],
  ] as const){
   const g=fixture();g.setModels(models as any);
   await g.tutor.reply(model,'p','c',g.authorization,ctx,'12000',ctx.kind==='activities'?structured:undefined);

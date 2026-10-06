@@ -1,12 +1,16 @@
-# Official Free2Z source previews
+# Official Free2Z SDK release tarballs
 
-These MIT-licensed tarballs are built without source changes using the official `docs/free2z/sdk/SOURCE-PREVIEW.md` recipe. They are not registry releases.
+These MIT-licensed tarballs are built without source changes using the official `docs/free2z/sdk/SOURCE-PREVIEW.md` recipe at the release tag. They are not registry releases (Free2Z has not published to npm). Each package includes its upstream LICENSE. Native Rust must use the same tag. No private checkout is needed; rebuild from the public immutable tag, never a moving branch.
 
-- `free2z-tauri-plugin-f2z-api-0.1.0.tgz`: free2z/zuu commit `39ec2720c3aff5384c46f6f53fe655657c79c40e`, directory `wallet/plugins/tauri-plugin-f2z`, `npm ci && npm pack`.
-- `free2z-sdk-0.1.0.tgz`: free2z/zuu commit `550c3ff29705620d53da25a1ae5da8f889778789`, directory `ts/free2z/sdk`, `npm ci && npm pack`.
+## Current release: `sdk-v0.2.0`
 
-Each package includes its upstream LICENSE. Native Rust must use the same plugin revision. No private absolute checkout dependency is needed. Rebuild from public immutable Git revisions, not a moving branch.
+Both JavaScript packages under `free2z/sdk/sdk-v0.2.0/` and the native Cargo Git dependency (`tauri-plugin-f2z = { git = "https://github.com/free2z/zuu", tag = "sdk-v0.2.0" }`) use the coordinated release tag `sdk-v0.2.0`, commit `40bfabffb3f765046ceafad213a26a5754dbd6b9` (zuu #1180; release notes `docs/free2z/sdk/RELEASES.md`). Over the previous pin `d63959f9` it adds tool calling (`Tool.strict`, `tool_choice`, `parallel_tool_calls`, the streamed `tool_call_delta` event, `runTools`/`run_tools` capped at 32 rounds, per-round session pinning), opt-in `reasoning_effort` gated by `capabilities.reasoning_effort` and `controls.effort_levels`, the gateway's `: ping` keep-alives, and version `0.2.0` on every package (`@free2z/sdk` 0.2.0 declares `@free2z/tauri-plugin-f2z-api@^0.2.0` as its peer, so a 0.1.0 guest build no longer satisfies it).
 
-## Current unified preview
+Recipe: `git archive sdk-v0.2.0 wallet/plugins/tauri-plugin-f2z ts/free2z/sdk`, then `npm ci && npm pack` in each directory with Node 24.19.0. The same recipe first reproduced the previous `d63959f9` tarballs byte for byte (`3ce0f25c…` and `95e26140…`), so the build is deterministic. Upstream tests at the tag: TS SDK 67/67, guest API 6/6.
 
-Both JavaScript packages under `free2z/sdk/d63959f9c766258d7ce827e68f4ddd93d2797f99/` and the native Cargo Git dependency use official commit `d63959f9c766258d7ce827e68f4ddd93d2797f99` (zuu main after #1134, #1136, #1137, #1138 and #1143, which preserves schema member order end to end and makes the plugin enable serde_json `preserve_order`; earlier: typed estimate budget fields and model catalogue, `preflight()`, typed error codes, native refusal `details`, distinct sign-in codes). Built without source changes from `git archive` of that revision (directories `wallet/plugins/tauri-plugin-f2z` and `ts/free2z/sdk`), then `npm ci` and `npm pack` with Node 24.19.0; each includes its upstream LICENSE. The same recipe reproduced the previous `42acc57f` tarballs byte for byte first. SHA-256: `free2z-sdk-0.1.0.tgz` `3ce0f25c1bc32fc0edbf8e5e22a45c3e4366f74dcc1ae889cfaf4821fb941326`, `free2z-tauri-plugin-f2z-api-0.1.0.tgz` `95e26140f01b6e31778e1c23099c2174ac4f49ab8710a8902827bcb1c4afe03a` (its only content change from `d4d58ea3` is the packed CHANGELOG; the SDK tarball is byte-identical to `d4d58ea3`'s). Upstream tests at that revision: TS SDK 52/52, guest API 6/6. Preview package versions remain `0.1.0`, so each revision gets its own directory (and `package-lock.json` carries the new integrity); the superseded `42acc57f` directory was removed with this pin. The capability explicitly permits `f2z:allow-grant` on the trusted local main window.
+SHA-256:
+
+- `free2z-sdk-0.2.0.tgz` `c9ef5644131ef307f3c2343d21adc5eac5b3a936bb9be2b632ba4283f33e1c3d`
+- `free2z-tauri-plugin-f2z-api-0.2.0.tgz` `957a048dc9e38583267d9b8e1c468f03829a2e9864eebb9d5d1e0ec0e4d6de3d`
+
+Install: `npm install ./vendor/free2z/sdk/sdk-v0.2.0/free2z-tauri-plugin-f2z-api-0.2.0.tgz ./vendor/free2z/sdk/sdk-v0.2.0/free2z-sdk-0.2.0.tgz` (`package-lock.json` carries the integrity). The superseded `d63959f9…` directory and the two unreferenced 0.1.0 tarballs at the vendor root (from `39ec2720`/`550c3ff2`) were removed with this pin. The capability explicitly permits `f2z:allow-grant` on the trusted local main window.

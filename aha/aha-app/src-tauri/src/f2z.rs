@@ -158,7 +158,7 @@ mod tests {
 
     /// zuu#1132/#1143: the schema's member order is the order OpenAI emits the reply's keys in.
     /// The webview's exact bytes (the fixture) cross IPC as a `serde_json::Value` (sorted unless
-    /// `preserve_order` is unified in, which tauri-plugin-f2z d63959f9 declares), then become the
+    /// `preserve_order` is unified in, which tauri-plugin-f2z declares since d63959f9), then become the
     /// pinned `ChatRequest` (`OrderedJson` schema), then the body the SDK sends. Every member must
     /// come out in the order the app wrote it.
     #[test]
