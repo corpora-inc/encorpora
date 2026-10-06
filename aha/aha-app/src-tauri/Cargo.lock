@@ -23,6 +23,10 @@ dependencies = [
 name = "aha"
 version = "0.1.0"
 dependencies = [
+ "objc2",
+ "objc2-core-foundation",
+ "objc2-foundation",
+ "objc2-ui-kit",
  "rusqlite",
  "serde",
  "serde_json",

@@ -33,6 +33,8 @@ let specRenderer: SpecRenderer | undefined;
 const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
 import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
+import { isEditable, nextKeyboardLayout, sampleViewport, type KeyboardLayout } from "./keyboard";
+import { logError } from "../diagnostics/log";
 import { ModelChoice, ModelStats } from "./ModelSettings";
 import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
@@ -94,7 +96,10 @@ function HelpDrawer({ kind, onClose, children, footer }: { kind: Exclude<Drawer,
     // A toast arriving under the drawer lifts its bottom edge.
     const rail = ref.current?.parentElement, observer = rail ? new ResizeObserver(fit) : undefined;
     if (rail) observer?.observe(rail);
-    return () => { vv?.removeEventListener("resize", fit); window.removeEventListener("resize", fit); observer?.disconnect(); };
+    // The dock (and the drawer with it) glides up and down with a software keyboard.
+    const settled = (e: TransitionEvent) => { if ((e.target as Element).matches?.(".focus-dock, .ax-dock")) fit(); };
+    document.addEventListener("transitionend", settled);
+    return () => { vv?.removeEventListener("resize", fit); window.removeEventListener("resize", fit); observer?.disconnect(); document.removeEventListener("transitionend", settled); };
   }, []);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !document.querySelector("dialog[open]")) onClose(); };
@@ -110,6 +115,68 @@ function HelpDrawer({ kind, onClose, children, footer }: { kind: Exclude<Drawer,
       {footer}
     </section>
   );
+}
+
+/** Asks the native host to hold the page still while the focus loop is on screen (iOS WKWebView
+ * otherwise scrolls the page to reveal a focused field). Other hosts ignore it. */
+function pinPageScroll(pinned: boolean) {
+  if (typeof window === "undefined" || !("__TAURI_INTERNALS__" in window)) return;
+  void import("@tauri-apps/api/core")
+    .then(({ invoke }) => invoke("pin_page_scroll", { pinned }))
+    .catch((error: unknown) => logError("keyboard", error));
+}
+
+/** Closes the software keyboard by blurring the field that raised it. */
+function dismissKeyboard() {
+  const field = document.activeElement;
+  if (isEditable(field)) (field as HTMLElement).blur();
+}
+
+/** The focus loop's keyboard dock (keyboard.ts): a fixed stage as tall as the screen was before a
+ * keyboard opened, and the keyboard's overlap, as CSS variables on the root. Only the answer dock
+ * reads the overlap; the bar and the problem never move and the page never scrolls. */
+function useKeyboardDock(active: boolean) {
+  useEffect(() => {
+    if (!active) return;
+    const root = document.documentElement;
+    let layout: KeyboardLayout | undefined;
+    let frame = 0;
+    const apply = () => {
+      frame = 0;
+      // Belt and braces for the native pin: the stage is fixed, so any page scroll is a stray.
+      if (window.scrollX || window.scrollY) window.scrollTo(0, 0);
+      layout = nextKeyboardLayout(layout, sampleViewport());
+      root.style.setProperty("--aha-stage-h", `${layout.stage}px`);
+      root.style.setProperty("--aha-kb", `${layout.keyboard}px`);
+      root.style.setProperty("--aha-kb-viewport", `${layout.viewport}px`);
+      root.classList.toggle("aha-kb-open", layout.keyboard > 0 || layout.viewport > 0);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(apply); };
+    root.classList.add("aha-stage-pinned");
+    apply();
+    pinPageScroll(true);
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", schedule);
+    vv?.addEventListener("scroll", schedule);
+    window.addEventListener("resize", schedule);
+    window.addEventListener("scroll", schedule);
+    document.addEventListener("focusin", schedule);
+    document.addEventListener("focusout", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      vv?.removeEventListener("resize", schedule);
+      vv?.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("scroll", schedule);
+      document.removeEventListener("focusin", schedule);
+      document.removeEventListener("focusout", schedule);
+      root.classList.remove("aha-stage-pinned", "aha-kb-open");
+      root.style.removeProperty("--aha-stage-h");
+      root.style.removeProperty("--aha-kb");
+      root.style.removeProperty("--aha-kb-viewport");
+      pinPageScroll(false);
+    };
+  }, [active]);
 }
 
 /** Three breathing dots, shown inside a fixed-size control while it waits. */
@@ -340,6 +407,34 @@ export function Studio(props: StudioProps) {
     vv.addEventListener("resize", update);
     return () => vv.removeEventListener("resize", update);
   }, []);
+  useKeyboardDock(view === "focus");
+  // With the keyboard up, a tap on the problem or a swipe down on the dock puts it away; the dock
+  // glides back down with it.
+  const dockSwipe = useRef<{ x: number; y: number } | null>(null);
+  const keyboardUp = () => document.documentElement.classList.contains("aha-kb-open");
+  const onStagePointerDown = (e: React.PointerEvent) => {
+    if (!keyboardUp()) return;
+    const target = e.target as Element;
+    if (target.closest(".focus-bar, dialog")) return;
+    if (!target.closest(".focus-dock, .ax-dock") || target.closest(".dock-grab")) dismissKeyboard();
+  };
+  // A tap on a dock control (Hint, Check, the drawer's buttons) keeps the keyboard up: the button
+  // acts without taking focus from the answer (Android moves focus to a tapped button; iOS does not).
+  const onStageMouseDown = (e: React.MouseEvent) => {
+    const target = e.target as Element;
+    if (keyboardUp() && target.closest(".focus-dock button, .ax-dock button")) e.preventDefault();
+  };
+  const onStageTouchStart = (e: React.TouchEvent) => {
+    const target = e.target as Element, touch = e.touches[0];
+    dockSwipe.current = keyboardUp() && touch && e.touches.length === 1 && target.closest(".focus-dock, .ax-dock")
+      && !target.closest(".stage-overlay-rail, .ax-overlay") ? { x: touch.clientX, y: touch.clientY } : null;
+  };
+  const onStageTouchMove = (e: React.TouchEvent) => {
+    const start = dockSwipe.current, touch = e.touches[0];
+    if (!start || !touch) return;
+    const dy = touch.clientY - start.y, dx = Math.abs(touch.clientX - start.x);
+    if (dy > 28 && dy > dx * 1.5) { dockSwipe.current = null; dismissKeyboard(); }
+  };
   // Settings must end above the docked bottom nav (#885). The nav's height follows its text (the
   // Android WebView scales text with the system font size) plus the gesture-bar inset, so measure it.
   const navShown = view !== "focus";
@@ -447,6 +542,8 @@ export function Studio(props: StudioProps) {
   const explainDisabled = props.busy || (!!spec && !spec.spec.explanation.trim());
   const tools = hasTask ? (
     <div className="focus-tools" role="toolbar" aria-label="Help options">
+      {/* Shown with the keyboard up: a handle on the lifted dock; tap or swipe down to close. */}
+      <span className="dock-grab" aria-hidden="true"><i /></span>
       <IconButton label="Hint" icon={<Lightbulb size={22} />} disabled={hintDisabled}
         active={drawer === "hint"} expanded={drawer === "hint"}
         onClick={() => toggleHelp("hint")} />
@@ -598,7 +695,10 @@ export function Studio(props: StudioProps) {
                   enterKeyHint="done"
                   inputMode={a.answerKind === "number" ? "decimal" : "text"}
                   placeholder={a.answerKind === "fraction" ? "Like 3/4" : "Your answer"}
-                  disabled={props.busy || readyNext}
+                  // Read-only, not disabled, while a hint or a check is saving: a disabled field
+                  // loses focus and the keyboard drops mid-answer.
+                  readOnly={props.busy}
+                  disabled={readyNext}
                   maxLength={160}
                 />
               </div>
@@ -639,7 +739,7 @@ export function Studio(props: StudioProps) {
   );
 
   const focus = (
-    <div className="focus-view">
+    <div className="focus-view" onPointerDown={onStagePointerDown} onMouseDown={onStageMouseDown} onTouchStart={onStageTouchStart} onTouchMove={onStageTouchMove}>
       <header className="focus-bar">
         <div className="focus-bar-inner">
           <IconButton label="Home" icon={<House size={22} />} onClick={() => { setDrawer(null); setView("home"); }} />

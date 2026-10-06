@@ -945,11 +945,19 @@ body {
 .aha-studio.view-focus::before {
   content: none;
 }
+/* Keyboard dock (keyboard.ts). The focus view is a fixed frame as tall as the screen was before a
+   software keyboard opened (--aha-stage-h); the page never scrolls as a document. A keyboard lifts
+   only the answer dock, which rides on top of it over the lower part of the problem. */
 .focus-view {
-  height: var(--aha-vvh, 100dvh);
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--aha-stage-h, 100dvh);
+  overscroll-behavior: none;
   display: flex;
   flex-direction: column;
+  /* clip, not hidden: a hidden box is still a scroll container that focus() can scroll. */
   overflow: hidden;
+  overflow: clip;
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
@@ -1077,6 +1085,83 @@ body {
   display: grid;
   gap: 8px;
   padding: 4px 16px max(20px, calc(env(safe-area-inset-bottom) + 18px));
+}
+/* The dock's resting bottom padding (the stage's, for an Activity Spec), mirrored for the lift. */
+:root {
+  --aha-dock-pad: max(20px, calc(env(safe-area-inset-bottom) + 18px));
+  --aha-kb: 0px;
+  --aha-kb-viewport: 0px;
+}
+html.aha-stage-pinned,
+html.aha-stage-pinned body {
+  overscroll-behavior: none;
+}
+.focus-dock,
+.focus-stage.is-spec .ax-dock {
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+/* Lifted: the dock's content sits 8px above the keyboard, and its surface runs down behind the
+   keyboard's top edge, so no strip of the problem ever shows between them. */
+.aha-kb-open .focus-dock,
+.aha-kb-open .focus-stage.is-spec .ax-dock {
+  z-index: 4;
+  transform: translateY(min(0px, calc(var(--aha-dock-pad) - var(--aha-kb) - 8px)));
+}
+.focus-dock::after,
+.focus-stage.is-spec .ax-dock::after {
+  content: "";
+  position: absolute;
+  inset: -20px 0 0;
+  z-index: -1;
+  border-radius: 22px 22px 0 0;
+  background: var(--paper);
+  box-shadow: 0 -1px 0 var(--line), 0 -14px 30px -16px rgb(var(--shadow-rgb) / 0.3);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.aha-kb-open .focus-dock::after,
+.aha-kb-open .focus-stage.is-spec .ax-dock::after {
+  bottom: -96px;
+  opacity: 1;
+}
+/* The lifted dock's handle: a 44px target above the tools; tap or swipe down to close. */
+.dock-grab {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -42px;
+  width: min(50%, 160px);
+  height: 44px;
+  transform: translateX(-50%);
+  justify-items: center;
+  align-content: end;
+  padding-bottom: 10px;
+  touch-action: none;
+  cursor: grab;
+}
+.dock-grab > i {
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--grab);
+}
+.aha-kb-open .dock-grab {
+  display: grid;
+}
+/* Toasts and help keep their 8px above the lifted surface. */
+.aha-kb-open .stage-overlay-rail,
+.aha-kb-open .is-compact .ax-overlay {
+  padding-bottom: 28px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus-dock,
+  .focus-stage.is-spec .ax-dock,
+  .focus-dock::after,
+  .focus-stage.is-spec .ax-dock::after {
+    transition: none;
+  }
 }
 /* Stable stage (#892): the problem region and the dock never change size during an item.
    Transient things are overlays positioned against them: the loading veil over the problem,
@@ -1914,6 +1999,9 @@ body {
   padding: 14px 22px;
 }
 @media (min-width: 700px) {
+  :root {
+    --aha-dock-pad: max(32px, calc(env(safe-area-inset-bottom) + 18px));
+  }
   .focus-dock,
   .focus-stage.is-spec {
     padding-bottom: max(32px, calc(env(safe-area-inset-bottom) + 18px));
@@ -1935,6 +2023,21 @@ body {
   max-height: calc(
     100dvh - 28px - env(safe-area-inset-top) - max(var(--aha-nav-h), env(safe-area-inset-bottom))
   );
+}
+/* In the focus loop the page is pinned (keyboard.ts), so nothing scrolls a field into view: sheets
+   and Settings rise above a software keyboard themselves. They are anchored to the viewport, so
+   they lift by the keyboard's overlap with it (none on Android, where the viewport already ends at
+   the keyboard). */
+.aha-kb-open .sheet {
+  margin-bottom: var(--aha-kb-viewport);
+  max-height: calc(100dvh - var(--aha-kb-viewport) - env(safe-area-inset-top) - 12px);
+}
+.aha-kb-open .sheet-body {
+  padding-bottom: 16px;
+}
+.aha-kb-open .settings-dialog {
+  inset-block-end: calc(var(--aha-kb-viewport) + 10px);
+  max-height: calc(100dvh - 24px - env(safe-area-inset-top) - var(--aha-kb-viewport));
 }
 /* The answer's moment (celebrate.ts). Overlays and transforms only: the bar, the problem, the
    answer field and the Check/Next slot never move. Under reduced motion it is a gentle fade. */

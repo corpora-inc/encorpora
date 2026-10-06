@@ -24,6 +24,7 @@ function fixture(){
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
     if(command==='plugin:app|version')return '0.1.0-test';
     if(command==='share_report'){window.__ahaFixture.sharedReport=args.report;return true;}
+    if(command==='pin_page_scroll'){(window.__ahaFixture.pins??=[]).push(args.pinned);return null;}
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(r.accountId!=='local-device')throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;
@@ -459,6 +460,89 @@ try{
   }
   assert.deepEqual(jumps,[],'the stable stage never moves the bar, the problem, the answer field or Check/Next within an item');
   console.log(`Stable stage: ${jumpLog.length} state checks (local practice and an AI spec, 384×832 and 820×1180); largest movement ${Math.max(...jumpLog.map(l=>Number(l.match(/max ([\d.]+)px/)[1])))}px.`);
+  // Keyboard dock (founder report, iPhone 14): the focus stage is a fixed frame and only the answer
+  // dock rides a software keyboard. TEST-ONLY stand-in for an iOS keyboard: visualViewport shrinks
+  // while the layout viewport stays (what WKWebView does); an Android one shrinks the layout
+  // viewport itself (setViewportSize). Either way the answer sits 8px above the keyboard on a
+  // surface that reaches it (no gap), the bar and the problem never move, and the page never scrolls.
+  const fakeKeyboard=()=>{const target=new EventTarget();let kb=0;
+    const fake=new Proxy(target,{get(t,k){if(k==='height')return innerHeight-kb;if(k==='width')return innerWidth;if(k==='offsetTop'||k==='offsetLeft'||k==='pageTop'||k==='pageLeft')return 0;if(k==='scale')return 1;
+      const v=Reflect.get(t,k);return typeof v==='function'?v.bind(t):v;}});
+    Object.defineProperty(window,'visualViewport',{configurable:true,get:()=>fake});
+    window.__keyboard={show(px){kb=px;target.dispatchEvent(new Event('resize'));},hide(){kb=0;target.dispatchEvent(new Event('resize'));}};};
+  const dockGeometry=p=>p.evaluate(()=>{
+    const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock'),row=dock.querySelector('.dock-row, .ax-dock-row'),r=dock.getBoundingClientRect(),surface=getComputedStyle(dock,'::after');
+    const grab=dock.querySelector('.dock-grab'),g=grab?.getBoundingClientRect();
+    return {answerBottom:row.getBoundingClientRect().bottom,surfaceBottom:r.bottom-parseFloat(surface.bottom),surfaceShown:surface.opacity==='1',
+      grab:grab&&grab.checkVisibility()?[Math.round(g.width),Math.round(g.height)]:null,
+      scroll:[window.scrollY,document.scrollingElement.scrollTop,document.documentElement.scrollHeight<=innerHeight],
+      open:document.documentElement.classList.contains('aha-kb-open'),focused:document.activeElement?.matches('input:not([type=radio])')??false};});
+  const settle=p=>p.evaluate(()=>new Promise(r=>{const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock');
+    const done=()=>Promise.all(dock.getAnimations().map(a=>a.finished.catch(()=>{}))).then(()=>requestAnimationFrame(()=>requestAnimationFrame(r)));requestAnimationFrame(()=>requestAnimationFrame(done));}));
+  const keyboardLog=[];
+  const keyboardDock=async(p,tag,{android=false}={})=>{
+    const [w,h]=[p.viewportSize().width,p.viewportSize().height],kbH=291;
+    const field=p.locator('.focus-dock .answer-input-wrap input, .ax-dock .ax-response input').first();
+    const before=await regions(p),rest=await dockGeometry(p);
+    assert.equal(rest.open,false,`${tag}: no keyboard, no lift`);assert.equal(rest.grab,null,`${tag}: the handle shows only with a keyboard`);
+    await field.tap();
+    if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);
+    await settle(p);
+    const kbTop=h-kbH,up=await dockGeometry(p),after=await regions(p);
+    if(stageShots)await p.screenshot({path:path.join(stageShots,`keyboard-${tag.replace(/\W+/g,'-')}.png`)});
+    assert.equal(up.focused,true,`${tag}: the answer keeps focus`);
+    assert.ok(Math.abs(up.answerBottom+8-kbTop)<=2,`${tag}: the answer sits 8px above the keyboard (answer bottom ${up.answerBottom}, keyboard top ${kbTop})`);
+    assert.ok(up.surfaceShown&&up.surfaceBottom>=kbTop-2,`${tag}: the dock's surface reaches the keyboard: no gap (${up.surfaceBottom} vs ${kbTop})`);
+    assert.deepEqual(up.scroll,[0,0,true],`${tag}: the page never scrolls`);
+    assert.deepEqual([after.bar,after.problem],[before.bar,before.problem],`${tag}: the bar and the problem stay where they were`);
+    assert.ok(up.grab&&up.grab[0]>=44&&up.grab[1]>=44,`${tag}: the lifted dock's handle is a 44px target (${up.grab})`);
+    assert.deepEqual(await coveringInput(p),[],`${tag}: nothing covers the answer while typing`);
+    await field.pressSequentially('7');assert.equal(await field.inputValue(),'7',`${tag}: typing works with the dock lifted`);
+    // Help rises from the lifted dock and never covers the answer.
+    const hintButton=p.getByRole('button',{name:'Hint',exact:true});
+    if(await hintButton.isEnabled()){await hintButton.click();await p.locator('.help-panel').waitFor();await settle(p);
+      assert.deepEqual(await dockGeometry(p).then(g=>[g.focused,g.open]),[true,true],`${tag}: Hint opens without putting the keyboard away`);
+      const fit=await p.evaluate(()=>{const d=document.querySelector('.help-panel').getBoundingClientRect(),bar=document.querySelector('.focus-bar').getBoundingClientRect(),dock=document.querySelector('.focus-dock .dock-row, .ax-dock-row').getBoundingClientRect();return {belowBar:d.top>=bar.bottom-1,aboveAnswer:d.bottom<=dock.top};});
+      assert.deepEqual(fit,{belowBar:true,aboveAnswer:true},`${tag}: the hint drawer fits between the bar and the lifted answer`);
+      if(stageShots)await p.screenshot({path:path.join(stageShots,`keyboard-${tag.replace(/\W+/g,'-')}-hint.png`)});
+      await hintButton.click();await p.locator('.help-panel').waitFor({state:'detached'});await settle(p);}
+    // A tap on the problem puts the keyboard away; the dock glides back down.
+    const problem=await p.locator('.stage-scroll, .ax-stage-scroll').boundingBox();
+    await p.touchscreen.tap(problem.x+problem.width/2,problem.y+24);
+    if(android)await p.setViewportSize({width:w,height:h});else await p.evaluate(()=>window.__keyboard.hide());
+    await settle(p);const down=await dockGeometry(p);
+    assert.deepEqual([down.focused,down.open],[false,false],`${tag}: a tap on the problem closes the keyboard`);
+    assert.deepEqual(await regions(p),before,`${tag}: everything is back where it started`);
+    // A swipe down on the dock does too.
+    await field.tap();if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);await settle(p);
+    assert.equal((await dockGeometry(p)).open,true,`${tag}: the keyboard is back`);
+    const g=await p.locator('.dock-grab').boundingBox(),cdp=await p.context().newCDPSession(p);
+    const at=dy=>[{x:g.x+g.width/2,y:g.y+g.height/2+dy}];
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:at(0)});
+    for(const dy of [12,30,60])await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:at(dy)});
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    if(android)await p.setViewportSize({width:w,height:h});else await p.evaluate(()=>window.__keyboard.hide());
+    await settle(p);const swiped=await dockGeometry(p);
+    assert.deepEqual([swiped.focused,swiped.open],[false,false],`${tag}: a swipe down on the dock closes the keyboard`);
+    assert.deepEqual(await regions(p),before,`${tag}: and everything is back where it started`);
+    keyboardLog.push(tag);
+  };
+  for(const android of [false,true]){
+    const kctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});await kctx.addInitScript(fixture);await kctx.addInitScript(fakeKeyboard);
+    const kp=await kctx.newPage();kp.on('pageerror',e=>errors.push(e.message));kp.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+    await kp.goto(base);await kp.getByRole('button',{name:'Let’s begin',exact:true}).click();await kp.getByRole('button',{name:'Check',exact:true}).waitFor();
+    assert.deepEqual(await kp.evaluate(()=>window.__ahaFixture.pins),[true],'the focus loop asks the native host to pin the page');
+    for(let i=0;i<8&&!(await kp.getByLabel('Your answer',{exact:true}).count());i++){const before=Object.values(await kp.evaluate(()=>window.__ahaFixture.read().sessions))[0].data.activity.id;
+      await kp.getByRole('button',{name:'Try something harder',exact:true}).click();await kp.waitForFunction(id=>Object.values(window.__ahaFixture.read().sessions)[0]?.data.activity?.id!==id,before);await kp.getByRole('button',{name:'Check',exact:true}).waitFor();}
+    await keyboardDock(kp,`local ${android?'Android':'iOS'} 390×844`,{android});
+    await kp.getByRole('button',{name:'Home',exact:true}).click();await kp.getByRole('button',{name:'Continue',exact:true}).waitFor();
+    assert.deepEqual(await kp.evaluate(()=>window.__ahaFixture.pins),[true,false],'leaving the loop releases the pin');
+    // The same dock for an AI-authored activity.
+    await kp.goto(`${base}/src/activity/gallery/stage.html?fixture=fx-k-count-apples`);await kp.getByRole('button',{name:'Continue',exact:true}).click();await kp.locator('.aha-activity.is-compact').waitFor();
+    await keyboardDock(kp,`spec ${android?'Android':'iOS'} 390×844`,{android});
+    await kctx.close();
+  }
+  console.log(`Keyboard dock: ${keyboardLog.join(', ')}: answer 8px above the keyboard with no gap, bar/problem still, page unscrolled, hint fits, tap-problem and swipe-down close it.`);
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);
   const learner=await fresh.newPage();learner.on('pageerror',e=>errors.push(e.message));learner.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
