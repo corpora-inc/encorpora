@@ -1076,7 +1076,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: safe center;
-  gap: 16px;
+  --aha-stage-gap: 16px;
+  gap: var(--aha-stage-gap);
   padding: 8px 20px 12px;
 }
 .stage-prompt {
@@ -1142,6 +1143,8 @@ body {
   --aha-dock-pad: max(20px, calc(env(safe-area-inset-bottom) + 18px));
   --aha-kb: 0px;
   --aha-kb-viewport: 0px;
+  /* How far the dock lifts: its content ends 8px above the keyboard. */
+  --aha-kb-lift: max(0px, calc(var(--aha-kb) + 8px - var(--aha-dock-pad)));
 }
 html.aha-stage-pinned,
 html.aha-stage-pinned body {
@@ -1205,6 +1208,29 @@ html.aha-stage-pinned body {
 .aha-kb-open .stage-overlay-rail,
 .aha-kb-open .is-compact .ax-overlay {
   padding-bottom: 28px;
+}
+/* Android places the dock on every frame of the keyboard's own animation (keyboard.ts); a CSS
+   transition on top would trail it and then overshoot. */
+.aha-kb-native .focus-dock,
+.aha-kb-native .focus-stage.is-spec .ax-dock {
+  transition: none;
+}
+/* The problem stays put and scrolls behind the lifted dock and the keyboard. A spacer after the
+   problem adds the covered height to the scroll range without moving anything: its negative margins
+   take it (and the gap before it) out of the column's size, so a short problem stays centered where
+   it was, but its box still extends what can be scrolled. The extra 24px clears the dock's surface. */
+.stage-scroll::after,
+.is-compact .ax-stage-scroll::after {
+  --aha-kb-scroll: 0px;
+  content: "";
+  flex: none;
+  height: var(--aha-kb-scroll);
+  margin: calc(-1 * var(--aha-stage-gap)) 0 calc(-1 * var(--aha-kb-scroll));
+  pointer-events: none;
+}
+.aha-kb-open .stage-scroll::after,
+.aha-kb-open .is-compact .ax-stage-scroll::after {
+  --aha-kb-scroll: calc(var(--aha-kb-lift) + 24px);
 }
 @media (prefers-reduced-motion: reduce) {
   .focus-dock,
@@ -2468,7 +2494,7 @@ html.aha-stage-pinned body {
     max-width: 880px;
   }
   .stage-scroll {
-    gap: 24px;
+    --aha-stage-gap: 24px;
     padding: 12px 32px 16px;
   }
   /* The phone's 340px field cap left the local answer row hugging the left of the wider column;
