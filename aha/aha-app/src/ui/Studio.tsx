@@ -632,8 +632,9 @@ export function Studio(props: StudioProps) {
   // shake of the answer field and a soft haptic for a miss. All overlays; nothing waits on them.
   const outcomeKey = outcome ? `${taskId}|${outcome.kind}|${outcome.title}` : undefined;
   // The answer that completes a lap (every LAP answers) gets a bigger, gold burst, the success
-  // haptic and the recap instead; after a miss the field shakes first.
-  useEffect(() => {
+  // haptic and the recap instead; after a miss the field shakes first. A layout effect, so the
+  // recap replaces the answer toast before the first paint (no one-frame flash of the toast).
+  useLayoutEffect(() => {
     if (!outcome || !armed.current) return;
     armed.current = false;
     const lapEnd = outcome.kind !== "nudge" && outcome.kind !== "info" && readyNext && completed > 0 && completed % LAP === 0 && !!props.lapRecap;
