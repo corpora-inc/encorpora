@@ -25,6 +25,8 @@ export function learningError(error: unknown): string {
       rate_limited: 'Free2Z is busy. Please wait before trying again. No replacement paid request is sent automatically.',
       concurrency_limit: 'Free2Z is already handling other requests for this account. Please wait before trying again.',
       cancelled: 'The request was stopped. Any recorded usage still needs to settle; check AI usage before starting another paid lesson.',
+      // Recovery runs on its own (application/receiptRecovery.ts); nothing for the learner to do.
+      settlement_pending: 'Finishing an earlier AI request. AHA settles it on its own; no new paid request is sent until it does.',
       too_large: 'This set of activities is too large for the chosen AI model. Choose another model in Settings. Nothing was charged.',
     };
     const message = messages[error.code] ?? (error instanceof TutorServiceError ? error.message : 'Free2Z could not complete this action. Your recorded progress is safe; try Refresh connection in Settings.');

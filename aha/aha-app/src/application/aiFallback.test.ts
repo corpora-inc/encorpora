@@ -56,7 +56,8 @@ test('local tasks served while healthy do not accumulate credit for a later fail
 
 test('fallback status explains the cause and that local practice continues in this account', () => {
   const pending = aiFallbackStatus(new TutorServiceError('settlement_pending', 'An earlier AI request still needs receipt recovery. No new paid request was sent.'));
-  assert.match(pending, /receipt recovery/);
+  assert.match(pending, /Finishing an earlier AI request\. AHA settles it on its own/);
+  assert.doesNotMatch(pending, /Refresh connection|Check pending/, 'automatic recovery: no manual step is asked for');
   assert.match(pending, /Local practice continues in this account/);
   assert.doesNotMatch(pending, /Sign out/);
   const outage = aiFallbackStatus(new SdkError('unavailable', {details: {private: 'DO_NOT_RENDER'}}));

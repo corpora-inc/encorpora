@@ -101,6 +101,10 @@ export interface StudioProps {
     status?: string;
     /** The last AI attempt was refused for this reason (zero cost): `raise_budget` also shows the Free2Z account link. */
     refusal?: "low_balance" | "raise_budget";
+    /** An earlier AI request is still settling; recovery runs on its own and no new paid call is sent until it is done. */
+    settling?: boolean;
+    /** Calm, actionable note shown only after automatic receipt recovery has failed persistently. */
+    recoveryNote?: string;
   };
   /** The AI model row in Settings (connected, once the catalogue has been read). Display only. */
   modelMenu?: {
