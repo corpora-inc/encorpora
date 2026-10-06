@@ -199,12 +199,19 @@ try{
     const check=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Check');
     return {pageScroll:document.documentElement.scrollHeight>vh,stageScrolls:!!scroll&&scroll.scrollHeight>scroll.clientHeight+1,prompt:visible(prompt),answer:visible(answer)||!!answer?.closest('.ax-stage-scroll'),check:!!check&&check.getBoundingClientRect().bottom<=vh};});
   const helpText=p=>p.locator('.help-panel .help-text').innerText().then(t=>t.trim());
+  /** Every figure in the problem: its box, and whether its own box crops it. */
+  const figures=p=>p.evaluate(()=>[...document.querySelectorAll('.stage-scroll .math-visual, .ax-stage-scroll .ax-figure')].map(el=>{
+    // Cropped: some part (an svg as a whole; shapes inside it clip themselves) reaches outside the
+    // figure's clipping box (it has overflow: hidden).
+    const r=el.getBoundingClientRect(),parts=[...el.querySelectorAll('*')].filter(a=>!a.parentElement.closest('svg')).map(a=>a.getBoundingClientRect()).filter(a=>a.width>0&&a.height>0);
+    return {box:[r.left,r.top,r.width,r.height].map(Math.round),cropped:parts.some(a=>a.top<r.top-1||a.bottom>r.bottom+1)};}));
   const passBar=async(p,label)=>{
     const tall=await layout(p);assert.equal(tall.pageScroll,false,`${label}: no page scroll at 384×832`);
     const words=await chrome(p);assert.ok(words.length<=12,`${label}: chrome text ≤ 12 words (${words.join(' ')})`);
     assert.deepEqual(await smallTargets(p),[],`${label}: tap targets are at least 44×44`);
     await p.setViewportSize({width:384,height:500});await p.waitForTimeout(50);
-    const kbd=await layout(p);await p.setViewportSize({width:384,height:832});
+    const kbd=await layout(p),shortFigures=await figures(p);await p.setViewportSize({width:384,height:832});
+    assert.deepEqual(shortFigures.filter(f=>f.cropped),[],`${label}: no figure is cropped on a short (384×500) stage`);
     assert.equal(kbd.pageScroll,false,`${label}: no page scroll above the keyboard`);
     assert.deepEqual([kbd.prompt,kbd.answer,kbd.check],[true,true,true],`${label}: prompt, answer and Check visible at 384×500`);
     return {...tall,words:words.length};
@@ -483,7 +490,8 @@ try{
   const keyboardDock=async(p,tag,{android=false}={})=>{
     const [w,h]=[p.viewportSize().width,p.viewportSize().height],kbH=291;
     const field=p.locator('.focus-dock .answer-input-wrap input, .ax-dock .ax-response input').first();
-    const before=await regions(p),rest=await dockGeometry(p);
+    const before=await regions(p),rest=await dockGeometry(p),figuresBefore=await figures(p);
+    assert.ok(figuresBefore.every(f=>!f.cropped),`${tag}: no figure is cropped`);
     assert.equal(rest.open,false,`${tag}: no keyboard, no lift`);assert.equal(rest.grab,null,`${tag}: the handle shows only with a keyboard`);
     await field.tap();
     if(android)await p.setViewportSize({width:w,height:h-kbH});else await p.evaluate(px=>window.__keyboard.show(px),kbH);
@@ -495,6 +503,7 @@ try{
     assert.ok(up.surfaceShown&&up.surfaceBottom>=kbTop-2,`${tag}: the dock's surface reaches the keyboard: no gap (${up.surfaceBottom} vs ${kbTop})`);
     assert.deepEqual(up.scroll,[0,0,true],`${tag}: the page never scrolls`);
     assert.deepEqual([after.bar,after.problem],[before.bar,before.problem],`${tag}: the bar and the problem stay where they were`);
+    assert.deepEqual(await figures(p),figuresBefore,`${tag}: figures keep their size and are never cropped with the keyboard up`);
     assert.ok(up.grab&&up.grab[0]>=44&&up.grab[1]>=44,`${tag}: the lifted dock's handle is a 44px target (${up.grab})`);
     assert.deepEqual(await coveringInput(p),[],`${tag}: nothing covers the answer while typing`);
     await field.pressSequentially('7');assert.equal(await field.inputValue(),'7',`${tag}: typing works with the dock lifted`);
@@ -540,8 +549,25 @@ try{
     // The same dock for an AI-authored activity.
     await kp.goto(`${base}/src/activity/gallery/stage.html?fixture=fx-k-count-apples`);await kp.getByRole('button',{name:'Continue',exact:true}).click();await kp.locator('.aha-activity.is-compact').waitFor();
     await keyboardDock(kp,`spec ${android?'Android':'iOS'} 390×844`,{android});
+    // Local practice with a tall rectangle figure (the S26 report: a short stage cropped its top).
+    await kp.goto(`${base}/src/ui/gallery/index.html?s=focus-long`);await kp.waitForFunction(()=>window.__ready);
+    await keyboardDock(kp,`local rectangle ${android?'Android':'iOS'} 390×844`,{android});
+    // Tall figures (a geometry figure, a coordinate plane) with the keyboard up.
+    for(const id of ['fx-3-garden-perimeter','fx-6-distance-on-grid']){
+      await kp.goto(`${base}/src/activity/gallery/stage.html?fixture=${id}`);await kp.getByRole('button',{name:'Continue',exact:true}).click();await kp.locator('.aha-activity.is-compact').waitFor();
+      assert.ok((await figures(kp)).length>0,`${id}: has a figure`);
+      await keyboardDock(kp,`${id} ${android?'Android':'iOS'} 390×844`,{android});
+    }
     await kctx.close();
   }
+  // A short stage (small phone, split screen, large text) never crops a figure: it keeps its size
+  // and the problem scrolls inside the stage instead.
+  const short=await browser.newContext({viewport:{width:384,height:832},isMobile:true,hasTouch:true});const sp2=await short.newPage();
+  sp2.on('pageerror',e=>errors.push(e.message));
+  for(const s of ['focus-long','focus-visual','focus-fraction'])for(const h of [832,560,460]){
+    await sp2.setViewportSize({width:384,height:h});await sp2.goto(`${base}/src/ui/gallery/index.html?s=${s}`);await sp2.waitForFunction(()=>window.__ready);
+    const f=await figures(sp2);assert.ok(f.length&&f.every(x=>!x.cropped),`${s} at 384×${h}: the figure is whole (${JSON.stringify(f)})`);}
+  await short.close();
   console.log(`Keyboard dock: ${keyboardLog.join(', ')}: answer 8px above the keyboard with no gap, bar/problem still, page unscrolled, hint fits, tap-problem and swipe-down close it.`);
   // #860: repeated misses change the approach (saved as assistance), then move away from the skill.
   const fresh=await browser.newContext({viewport:{width:390,height:844}});await fresh.addInitScript(fixture);

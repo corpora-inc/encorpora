@@ -42,14 +42,14 @@ fn create_main_window<R: tauri::Runtime>(app: &tauri::App<R>) -> tauri::Result<(
 /// page never scrolls on focus and this does nothing).
 #[tauri::command]
 fn pin_page_scroll<R: tauri::Runtime>(
-    window: tauri::WebviewWindow<R>,
+    webview: tauri::Webview<R>,
     pinned: bool,
 ) -> Result<(), String> {
     #[cfg(target_os = "ios")]
-    return ios_webview::pin(&window, pinned).map_err(|error| error.to_string());
+    return ios_webview::pin(&webview, pinned).map_err(|error| error.to_string());
     #[cfg(not(target_os = "ios"))]
     {
-        let _ = (window, pinned);
+        let _ = (webview, pinned);
         Ok(())
     }
 }
@@ -63,6 +63,17 @@ pub fn run() {
     #[cfg(target_os = "ios")]
     let builder = builder.plugin(tauri_plugin_ios_share::init());
     f2z::configure(builder)
+        .on_page_load(|_webview, payload| {
+            // A (re)loaded page starts unpinned; the focus loop pins it again when it mounts.
+            #[cfg(target_os = "ios")]
+            if payload.event() == tauri::webview::PageLoadEvent::Started
+                && let Err(error) = ios_webview::pin(_webview, false)
+            {
+                eprintln!("AHA could not release the page scroll pin: {error}");
+            }
+            #[cfg(not(target_os = "ios"))]
+            let _ = payload;
+        })
         .setup(|app| {
             create_main_window(app)?;
             #[cfg(target_os = "ios")]

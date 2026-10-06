@@ -95,9 +95,11 @@ pub fn configure<R: Runtime>(app: &tauri::App<R>) -> tauri::Result<()> {
     })
 }
 
-/// Pins (or releases) the page scroll while the focus loop is on screen.
-pub fn pin<R: Runtime>(window: &tauri::WebviewWindow<R>, pinned: bool) -> tauri::Result<()> {
-    window.with_webview(move |webview| {
+/// Pins (or releases) the page scroll while the focus loop is on screen. A page (re)load releases
+/// it too (`lib.rs`): a reload after iOS ends the web content process starts on the home screen,
+/// whose cleanup would otherwise never run.
+pub fn pin<R: Runtime>(webview: &tauri::Webview<R>, pinned: bool) -> tauri::Result<()> {
+    webview.with_webview(move |webview| {
         let Some(mtm) = MainThreadMarker::new() else {
             return;
         };

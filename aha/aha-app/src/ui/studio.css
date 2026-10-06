@@ -1070,8 +1070,16 @@ body {
   border-radius: 16px;
   background: var(--surface-2);
 }
+/* Sized against the stage's stable height: Android's vh shrinks with a resized WebView while the
+   keyboard is up, which would resize the figure under the learner. */
 .focus-stage .math-visual svg {
-  max-height: 34vh;
+  max-height: calc(var(--aha-stage-h, 100vh) * 0.34);
+}
+/* A figure never shrinks below its content. Clipping boxes (overflow: hidden) were shrinkable flex
+   items and a short stage cropped them; a tall problem scrolls inside the stage instead. */
+.stage-scroll > *,
+.is-compact .ax-stage-scroll > * {
+  flex-shrink: 0;
 }
 .focus-stage .choices > label {
   min-height: 52px;
