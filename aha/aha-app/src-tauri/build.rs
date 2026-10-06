@@ -1,7 +1,10 @@
 use std::{env, fs, path::PathBuf};
 
+#[path = "build_support/client_id.rs"]
+mod client_id;
+
 fn main() {
-    println!("cargo:rerun-if-env-changed=AHA_FREE2Z_CLIENT_ID");
+    free2z_client_id();
     println!("cargo:rerun-if-changed=android/oauth-intent.xml");
     // Do not trust NDK detection alone: our NDK 28 diagnostic still produced
     // 4 KiB ELF LOAD segments without an explicit application link policy.
@@ -17,6 +20,39 @@ fn main() {
         status_bar_follows_theme();
     }
     tauri_build::build()
+}
+
+/// Bakes the public Free2Z client id into the crate as `AHA_FREE2Z_CLIENT_ID_RESOLVED` (empty when
+/// unconfigured). The env var alone does not survive `tauri ios build`; see `build_support/client_id.rs`.
+fn free2z_client_id() {
+    let manifest = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR"));
+    let file = manifest.join(client_id::FILE);
+    println!("cargo:rerun-if-env-changed={}", client_id::ENV_VAR);
+    // The directory always exists (its .gitignore is tracked), so watching it never forces a rerun.
+    println!(
+        "cargo:rerun-if-changed={}",
+        file.parent().expect("config directory").display()
+    );
+    let from_env = env::var(client_id::ENV_VAR).ok();
+    let from_file = match fs::read_to_string(&file) {
+        Ok(text) => Some(text),
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => None,
+        Err(e) => panic!("cannot read {}: {e}", file.display()),
+    };
+    let id = client_id::resolve(from_env.as_deref(), from_file.as_deref())
+        .unwrap_or_else(|why| panic!("invalid Free2Z client id configuration: {why}"));
+    if id.is_none() {
+        println!(
+            "cargo:warning=No Free2Z client id ({} or {}); this build has sign-in disabled",
+            client_id::ENV_VAR,
+            client_id::FILE
+        );
+    }
+    println!(
+        "cargo:rustc-env={}={}",
+        client_id::RESOLVED_VAR,
+        id.unwrap_or_default()
+    );
 }
 
 const DEFAULT_EDGE_TO_EDGE: &str = "    enableEdgeToEdge()\n";
