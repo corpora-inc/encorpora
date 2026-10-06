@@ -61,12 +61,23 @@ thread_local! {
         const { RefCell::new(None) };
 }
 
+thread_local! {
+    /// Set while `hold_at_rest` writes the offset: the write re-enters the KVO callback.
+    static HOLDING: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+}
+
 fn hold_at_rest(scroll_view: &UIScrollView) {
+    if HOLDING.get() {
+        return;
+    }
     let inset = scroll_view.adjustedContentInset();
     let rest = CGPoint::new(-inset.left, -inset.top);
     let now = scroll_view.contentOffset();
-    if now.x != rest.x || now.y != rest.y {
+    // Half a point of tolerance: UIKit may round the offset it stores to device pixels.
+    if (now.x - rest.x).abs() > 0.5 || (now.y - rest.y).abs() > 0.5 {
+        HOLDING.set(true);
         scroll_view.setContentOffset(rest);
+        HOLDING.set(false);
     }
 }
 
