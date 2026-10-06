@@ -987,9 +987,6 @@ export function Studio(props: StudioProps) {
                       )}
                     </div>
                   ))}
-                  {props.account.purchaseAvailable && props.onTopUp && (
-                    <button className="primary-button" disabled={props.busy} onClick={props.onTopUp}>Add 2Z <ArrowUpRight size={16} /></button>
-                  )}
                 </>
               ) : (
                 <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false} onClick={props.onSignIn}>

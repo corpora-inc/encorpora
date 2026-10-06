@@ -2449,3 +2449,59 @@ html.aha-stage-pinned body {
     grid-template-columns: minmax(0, 1fr) 280px;
   }
 }
+
+/* ---------- Large tablets ----------
+   A 13" iPad (1032×1376 portrait, 1376×1032 landscape) showed the phone-sized column small in a wide,
+   empty field. From 1024px wide and 900px tall (so a short desktop window keeps the default) the root
+   size steps up, which scales every rem together (prompts, Activity Spec text, the dock, the nav), and
+   the problem and home columns widen so figures, which fill their column, grow with them. Pixel-sized
+   hit areas only get larger. */
+@media (min-width: 1024px) and (min-height: 900px) {
+  :root {
+    font-size: 19px;
+  }
+  .focus-bar-inner {
+    max-width: 960px;
+    height: 56px;
+  }
+  .focus-stage {
+    max-width: 880px;
+  }
+  .stage-scroll {
+    gap: 24px;
+    padding: 12px 32px 16px;
+  }
+  /* The phone's 340px field cap left the local answer row hugging the left of the wider column;
+     it spans the column here, as an Activity Spec's dock does. */
+  .focus-dock .answer-input-wrap {
+    max-width: none;
+  }
+  .stage-prompt.prompt-xl {
+    font-size: 4.2rem;
+  }
+  .stage-prompt.prompt-l {
+    font-size: 2.3rem;
+  }
+  .stage-prompt.prompt-m {
+    font-size: 1.75rem;
+  }
+  .focus-stage .math-visual {
+    padding: 24px;
+    border-radius: 22px;
+  }
+  .focus-stage .math-visual svg {
+    max-height: calc(var(--aha-stage-h, 100vh) * 0.38);
+    font-size: 17px;
+  }
+  .home-hero {
+    max-width: 680px;
+    gap: 24px;
+  }
+  .home-hero h1 {
+    font-size: 4.4rem;
+  }
+  .home-view .primary-button.home-start {
+    min-height: 72px;
+    border-radius: 20px;
+  }
+}

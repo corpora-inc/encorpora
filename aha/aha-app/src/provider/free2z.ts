@@ -79,7 +79,7 @@ export function admitEstimate(estimate: Estimate, budget: AppBudget, availableFa
     throw new TutorServiceError('estimate_invalid', 'Free2Z returned an incomplete estimate. No paid request was sent.');
   if (budget !== null && typeof cap !== 'bigint')
     throw new TutorServiceError('grant_verification_required', 'Free2Z did not report what is left of this app\u2019s budget. No paid request was sent.');
-  // The hold is what the next request needs: the amount a top-up message names.
+  // The hold is what the next request needs: the amount the low-balance message names.
   if (hold * 1000n > available) throw refusal('insufficient_balance', hold);
   if (typeof cap === 'bigint' && hold * 1000n > cap) throw refusal('cap_exceeded', hold);
   return {hold2z: hold, availableMilli2z: available, capRemainingMilli2z: typeof cap === 'bigint' ? cap : null};
@@ -94,7 +94,7 @@ const REFUSAL_CODES = ['insufficient_balance', 'cap_exceeded'];
 const ZERO_CHARGE_CODES = [...REFUSAL_CODES, 'not_enough_2z', 'too_large'];
 const NOT_ENOUGH_2Z = 'Not enough 2Z for the next set of activities. Nothing was charged.';
 const REFUSAL_MESSAGES: Record<string, string> = {
-  insufficient_balance: 'Not enough 2Z: top up in Free2Z. The refusal cost nothing.',
+  insufficient_balance: 'There isn’t enough 2Z in your Free2Z account for AI activities right now. The refusal cost nothing.',
   cap_exceeded: 'App budget reached: raise it in Free2Z. The refusal cost nothing.',
   not_enough_2z: NOT_ENOUGH_2Z,
 };

@@ -793,8 +793,10 @@ try {
     assert.equal(await s.p.getByRole('alert').count(),0,'insufficient balance: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('Not enough 2Z: top up in Free2Z. The next activities need 1 2Z.',{exact:false}).first().waitFor();
-    await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
+    await s.p.getByText('There isn’t enough 2Z in your Free2Z account for AI activities right now. The next activities need 1 2Z. Local practice continues.',{exact:false}).first().waitFor();
+    await s.p.getByText('AI tutoring will be tried again on a later task.',{exact:false}).first().waitFor();
+    // Store-neutral (App Store 3.1.1/3.1.3, Play Payments): no call to buy or add 2Z anywhere on the page.
+    assert.equal(await s.p.getByText(/top up|top-up|buy|purchase|add 2Z/i).count(),0,'a low balance never prompts a purchase');
     assert.equal(await s.p.getByRole('button',{name:'Raise app budget in Free2Z',exact:false}).count(),0,'a balance refusal offers no budget link');
     assert.equal(await s.figure('Available balance'),'0.5 2Z');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
@@ -808,8 +810,8 @@ try {
     assert.equal(await s.p.getByRole('alert').count(),0,'strict refusal: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('Not enough 2Z: top up in Free2Z. The next activities need 3 2Z.',{exact:false}).first().waitFor();
-    await s.p.getByText('Local practice continues in this account',{exact:false}).first().waitFor();
+    await s.p.getByText('There isn’t enough 2Z in your Free2Z account for AI activities right now. The next activities need 3 2Z. Local practice continues.',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByText(/top up|top-up|buy|purchase|add 2Z/i).count(),0,'a low balance never prompts a purchase');
     assert.equal(await s.p.getByRole('button',{name:'Recover original request',exact:true}).count(),0,'a refusal leaves no unsettled receipt to recover');
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');

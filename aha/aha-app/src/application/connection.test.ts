@@ -8,27 +8,28 @@ import { learningError, refusalAction, retryDeadline, SIGN_IN_NOT_COMPLETED, sig
 test('balance and app-budget exhaustion have distinct recovery instructions', () => {
   for (const cap of [learningError(new SdkError('cap_exceeded', {status: 403})), learningError(new TutorServiceError('cap_exceeded', 'x'))]) {
     assert.match(cap, /^App budget reached: raise it in Free2Z\./);
-    assert.match(cap, /Adding 2Z alone does not change it/);
+    assert.match(cap, /separate limit from the 2Z balance/);
     assert.match(cap, /cost nothing/);
   }
   for (const low of [learningError(new SdkError('insufficient_balance', {status: 402})), learningError(new TutorServiceError('insufficient_balance', 'x'))]) {
-    assert.match(low, /^Not enough 2Z: top up in Free2Z\./);
+    assert.match(low, /^There isn’t enough 2Z in your Free2Z account for AI activities right now\./);
+    assert.match(low, /Local practice continues\./);
     assert.match(low, /cost nothing/);
     assert.doesNotMatch(low, /need/, 'no amount when Free2Z did not report one');
   }
 });
-test('a top-up message names the required amount when Free2Z reports it (native details or a local estimate)', () => {
+test('a low-balance message names the required amount when Free2Z reports it (native details or a local estimate)', () => {
   assert.match(learningError(new TutorServiceError('insufficient_balance', 'x', undefined, 7n)), /The next activities need 7 2Z\./);
   // The SDK decodes native refusal details with amounts as bigint (zuu #1136).
   assert.match(learningError(new SdkError('insufficient_balance', {status: 402, details: {required_2z: 12n, reason: 'insufficient_balance'}})), /need 12 2Z/);
   for (const odd of [0n, -1n, '12', 12, undefined])
     assert.doesNotMatch(learningError(new SdkError('insufficient_balance', {status: 402, details: {required_2z: odd}})), /need/, String(odd));
-  // A budget refusal never claims that topping up fixes it, whatever amount it carries.
-  assert.doesNotMatch(learningError(new TutorServiceError('cap_exceeded', 'x', undefined, 7n)), /top up/i);
+  // A budget refusal never suggests adding 2Z fixes it, whatever amount it carries.
+  assert.doesNotMatch(learningError(new TutorServiceError('cap_exceeded', 'x', undefined, 7n)), /top up|add(ing)? 2Z/i);
 });
-test('only the two refusals offer a Free2Z action: top up, or raise the app budget', () => {
-  assert.equal(refusalAction(new TutorServiceError('insufficient_balance', 'x')), 'top_up');
-  assert.equal(refusalAction(new SdkError('insufficient_balance', {status: 402})), 'top_up');
+test('only the two refusals are classified: a low balance (no action), or raise the app budget', () => {
+  assert.equal(refusalAction(new TutorServiceError('insufficient_balance', 'x')), 'low_balance');
+  assert.equal(refusalAction(new SdkError('insufficient_balance', {status: 402})), 'low_balance');
   assert.equal(refusalAction(new TutorServiceError('cap_exceeded', 'x')), 'raise_budget');
   assert.equal(refusalAction(new SdkError('cap_exceeded', {status: 403})), 'raise_budget');
   for (const other of [new TutorServiceError('not_enough_2z', 'x'), new TutorServiceError('settlement_pending', 'x'), new SdkError('unavailable'), new Error('cap_exceeded'), undefined])

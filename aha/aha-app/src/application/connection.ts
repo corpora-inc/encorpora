@@ -6,8 +6,9 @@ import { diagnostics, type DiagnosticsLog } from '../diagnostics/log';
 export function learningError(error: unknown): string {
   if (error instanceof SdkError || error instanceof TutorServiceError) {
     const messages: Record<string, string> = {
-      insufficient_balance: `Not enough 2Z: top up in Free2Z.${needed(error)} The refusal cost nothing; nothing is added automatically.`,
-      cap_exceeded: 'App budget reached: raise it in Free2Z. Adding 2Z alone does not change it. The refusal cost nothing.',
+      // Store-neutral (App Store 3.1.1/3.1.3, Play Payments): a statement of fact, never a call to buy or add 2Z.
+      insufficient_balance: `There isn’t enough 2Z in your Free2Z account for AI activities right now.${needed(error)} Local practice continues. The refusal cost nothing.`,
+      cap_exceeded: 'App budget reached: raise it in Free2Z. The app budget is a separate limit from the 2Z balance. The refusal cost nothing.',
       not_enough_2z: 'Not enough 2Z for the next set of activities. Nothing was charged.',
       ai_not_ready: 'Free2Z AI isn’t switched on for apps yet. Nothing was charged.',
       budget_pending: 'Free2Z is still setting up spending for this app. Nothing was charged.',
@@ -46,12 +47,12 @@ function needed(error: SdkError | TutorServiceError): string {
 }
 
 /**
- * The Free2Z action a refusal calls for: `top_up` (402 `insufficient_balance`) or `raise_budget` (403 `cap_exceeded`,
- * shown with a link to free2z.cash/account/apps). Anything else has no action.
+ * The refusal kind: `low_balance` (402 `insufficient_balance`, a neutral statement with no action) or `raise_budget`
+ * (403 `cap_exceeded`, shown with a link to free2z.cash/account/apps). Anything else is undefined.
  */
-export function refusalAction(error: unknown): 'top_up' | 'raise_budget' | undefined {
+export function refusalAction(error: unknown): 'low_balance' | 'raise_budget' | undefined {
   if (!(error instanceof SdkError || error instanceof TutorServiceError)) return undefined;
-  return error.code === 'insufficient_balance' ? 'top_up' : error.code === 'cap_exceeded' ? 'raise_budget' : undefined;
+  return error.code === 'insufficient_balance' ? 'low_balance' : error.code === 'cap_exceeded' ? 'raise_budget' : undefined;
 }
 
 export function retryDeadline(error: unknown, now = Date.now()): number | undefined {

@@ -97,8 +97,7 @@ export interface StudioProps {
     batchCost?: string;
     status?: string;
     /** The last AI attempt was refused for this reason (zero cost): `raise_budget` also shows the Free2Z account link. */
-    refusal?: "top_up" | "raise_budget";
-    purchaseAvailable?: boolean;
+    refusal?: "low_balance" | "raise_budget";
   };
   /** The AI model row in Settings (connected, once the catalogue has been read). Display only. */
   modelMenu?: {
@@ -125,7 +124,6 @@ export interface StudioProps {
   onSignIn: () => void;
   onSignOut: () => void;
   onRefreshAccount?: () => void;
-  onTopUp?: () => void;
   onRecoverUsage?: () => void;
   onCancel?: () => void;
   savedAnswers?: { operationId: string; learnerName: string; canRestore: boolean }[];

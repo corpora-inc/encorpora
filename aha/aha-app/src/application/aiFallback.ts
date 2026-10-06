@@ -44,7 +44,10 @@ export class AiBackoff {
 
 /** Settings status for a fallback: the classified cause, then that learning continues here. */
 export function aiFallbackStatus(error: unknown): string {
-  return `${learningError(error)} Local practice continues in this account; AI tutoring will be tried again on a later task.`;
+  const message = learningError(error);
+  return /Local practice continues\./.test(message)
+    ? `${message} AI tutoring will be tried again on a later task.`
+    : `${message} Local practice continues in this account; AI tutoring will be tried again on a later task.`;
 }
 
 /** Visible log with context. Only the stable classification and message, never SDK response details. */
