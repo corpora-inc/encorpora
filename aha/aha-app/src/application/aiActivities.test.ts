@@ -72,8 +72,26 @@ test('the batch request summarizes levels and results from the ledger with no na
   assert.equal(k.missStreak, 2, 'repeated misses are fed back so the model changes approach (#860)');
   assert.ok(summary.recentActivities.every(a => a.type === 'numeric' && a.difficulty === 2));
   assert.ok(request.allowedSkillIds.includes('K.CC.B.5'));
-  assert.equal(request.maxOutputTokens, 2600);
+  assert.equal(request.count, 30);
+  assert.equal(request.maxOutputTokens, 30 * 420 + 300, 'the budget fits the batch size');
   assert.ok(text.length < 20_000, 'fits the provider context bound');
+});
+
+test('the batch request carries a variety fingerprint of recent AI activities and queued ones, never answers', () => {
+  let state = createLearner('learner-Maya-secret', 3);
+  state = answer(state, fx('fx-3-area-tiles'), 1, { at: at(0, 1), response: { type: 'numeric', value: '777' } });
+  state = answer(state, fx('fx-3-fraction-bar'), 2, { at: at(0, 2) });
+  assert.equal(buildBatchRequest(createLearner('fresh', 3), 3, at(1)).summary.recentContent, undefined, 'nothing to report before any AI activity');
+  const request = buildBatchRequest(state, 3, at(1), false, [fx('fx-2-fruit-graph')]);
+  const recent = request.summary.recentContent!;
+  assert.equal(recent.n, 3, 'two answered from the ledger plus one queued');
+  assert.ok(recent.figures.includes('array_grid') && recent.figures.includes('fraction_model') && recent.figures.includes('bar_chart'));
+  assert.ok(recent.contexts.includes('tiles') && recent.contexts.includes('fruit'));
+  const text = JSON.stringify(recent);
+  assert.ok(!text.includes('777') && !text.includes('Maya'), 'no learner answers or identifiers');
+  assert.ok(request.user.includes('"recentContent"'), 'the fingerprint reaches the model');
+  // A queued spec that was also answered is counted once.
+  assert.equal(buildBatchRequest(state, 3, at(1), false, [fx('fx-3-fraction-bar')]).summary.recentContent!.n, 2);
 });
 
 test('AI activities are real evidence: a guided-only standard becomes provisional, then retained, under the same rules', () => {
@@ -350,8 +368,12 @@ test('a damaged envelope whose extraction lands on one activity classifies rejec
   assert.deepEqual([parsed.schemaRejected, parsed.semanticRejected], [0, 1]);
 });
 
-test('the batch prompt budget is the model policy\'s non-reasoning batch budget', async () => {
-  const { BATCH_OUTPUT_TOKENS } = await import('../provider/models.ts');
-  const { BATCH_MAX_OUTPUT_TOKENS } = await import('./aiActivities.ts');
-  assert.equal(BigInt(BATCH_MAX_OUTPUT_TOKENS), BATCH_OUTPUT_TOKENS);
+test('the batch prompt budget is the model policy\'s budget for its size; a small first batch asks for less', async () => {
+  const { batchOutputTokens, FIRST_BATCH_ACTIVITIES } = await import('../provider/models.ts');
+  const { BATCH_MAX_OUTPUT_TOKENS, BATCH_SIZE } = await import('./aiActivities.ts');
+  assert.equal(BigInt(BATCH_MAX_OUTPUT_TOKENS), batchOutputTokens(BATCH_SIZE));
+  const first = buildBatchRequest(createLearner('fresh', 3), 3, at(1), false, [], FIRST_BATCH_ACTIVITIES);
+  assert.equal(first.count, 6);
+  assert.match(first.user, /Write 6 activities/);
+  assert.equal(BigInt(first.maxOutputTokens), batchOutputTokens(6));
 });

@@ -79,6 +79,18 @@ export const k2Fixtures: ActivitySpec[] = [
     explanation: '$9 - 4 = 5$. Five cookies are still on the plate.',
   },
   {
+    version: 1, id: 'fx-1-beach-compare', title: 'At the beach', skillIds: ['1.OA.A.1'], difficulty: 3,
+    prompt: [{ type: 'text', text: 'Kofi counts umbrellas and sailboats at the beach.' }, { type: 'figure', figureId: 'beach' }, { type: 'text', text: 'How many more umbrellas than sailboats are there?' }],
+    figures: [{
+      type: 'picture', id: 'beach', alt: 'Two rows: a row of 8 umbrellas and a row of 5 sailboats.', layout: 'column',
+      groups: [{ icon: 'umbrella', count: 8, label: 'Umbrellas', id: 'umbrellas' }, { icon: 'sailboat', count: 5, label: 'Sailboats', id: 'boats' }],
+    }],
+    response: { type: 'numeric', answer: 3, misconceptionAnswers: [{ answer: 13, tag: 'added_instead' }] },
+    keyCheck: { value: '8 - 5' },
+    hints: ['Match each sailboat with an umbrella. How many umbrellas have no partner?'],
+    explanation: '$8 - 5 = 3$. There are 3 more umbrellas.',
+  },
+  {
     version: 1, id: 'fx-1-half-hour', title: 'What time is it?', skillIds: ['1.MD.B.3'], difficulty: 3,
     prompt: [{ type: 'text', text: 'Look at the clock.' }, { type: 'figure', figureId: 'clock' }, { type: 'text', text: 'What time does it show?' }],
     figures: [{ type: 'clock', id: 'clock', alt: 'An analog clock. The short hour hand is halfway between 3 and 4. The long minute hand points to 6.', hour: 3, minute: 30 }],

@@ -49,7 +49,7 @@ const growth: NonNullable<StudioProps["growth"]> = {
   ],
 };
 const signedIn: StudioProps["account"] = { connected: true, aiReady: true, label: "Signed in as maple", balance: "41.2 2Z", budget: "100 2Z per month", budgetLeft: "86.5 2Z", batchCost: "≈ 0.6 2Z" };
-const modelMenu: StudioProps["modelMenu"] = { choice: "auto", auto: { name: "GPT-5 mini", batch2z: "0.6" }, options: [{ id: "a", name: "GPT-5 mini", batch2z: "0.6" }, { id: "b", name: "Claude Sonnet 5", batch2z: "1.4" }] };
+const modelMenu: StudioProps["modelMenu"] = { choice: "auto", auto: { name: "GPT-5 mini", batch2z: "2", activity2z: "0.2" }, options: [{ id: "a", name: "GPT-5 mini", batch2z: "2", activity2z: "0.2" }, { id: "b", name: "Claude Sonnet 5", batch2z: "14", activity2z: "1.4" }] };
 const statsLines = ["GPT-5 mini: 6 batches, 41 answered, 78% correct, 1 flagged, ≈ 0.58 2Z per batch", "Claude Sonnet 5: 2 batches, 14 answered, 86% correct, 0 flagged, ≈ 1.31 2Z per batch"];
 
 type Scenario = {

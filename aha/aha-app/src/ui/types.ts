@@ -110,9 +110,9 @@ export interface StudioProps {
   modelMenu?: {
     /** "auto" or a catalogue model id. */
     choice: string;
-    auto?: { name: string; batch2z?: string };
+    auto?: { name: string; batch2z?: string; activity2z?: string };
     /** `reasoning`: the model thinks longer and costs more; Settings labels it. */
-    options: { id: string; name: string; batch2z?: string; reasoning?: boolean }[];
+    options: { id: string; name: string; batch2z?: string; activity2z?: string; reasoning?: boolean }[];
   };
   onChooseModel?: (choice: string) => void;
   /** Per-model stats lines from local data, for Settings and the problem report. */

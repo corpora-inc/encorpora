@@ -11,11 +11,18 @@
  */
 import * as z from 'zod';
 import { checkPlainText, checkRichText, checkTex } from './text';
+import { rectangleDimensionErrors } from './variety';
 import { closeEnough, evaluate, evaluateConstant, ExprError, parseExpr, samplePoints, variablesUsed } from './expr';
 
 export const ACTIVITY_SPEC_VERSION = 1 as const;
 
-/** Curated, bundled pictograph icons. The model names an icon; it never supplies SVG or URLs. */
+/**
+ * Pictograph icons: the model names an everyday object in singular snake_case ("apple", "sailboat",
+ * "traffic_cone"). The renderer draws it from a broad bundled vocabulary (render/icons.tsx) and falls
+ * back to a neutral counter for any other name. Only the name travels; never SVG, markup or URLs.
+ */
+export const ICON_PATTERN = /^[a-z][a-z_]{0,31}$/;
+/** The original 52-name vocabulary (all still drawn). The drawing IR (draw.ts) uses its first name as a stand-in. */
 export const ICON_NAMES = [
   'apple', 'banana', 'cherry', 'grape', 'carrot', 'cookie', 'cake', 'pizza', 'ice_cream', 'egg', 'candy', 'sandwich',
   'fish', 'bird', 'cat', 'dog', 'rabbit', 'turtle', 'snail', 'bug', 'squirrel', 'paw',
@@ -23,7 +30,6 @@ export const ICON_NAMES = [
   'car', 'bus', 'bike', 'boat', 'rocket', 'train', 'plane',
   'pencil', 'book', 'gift', 'crown', 'gem', 'trophy', 'puzzle', 'block', 'music', 'dice',
 ] as const;
-export type IconName = typeof ICON_NAMES[number];
 export const COLOR_TOKENS = ['teal', 'coral', 'blue', 'gold', 'plain'] as const;
 export type ColorToken = typeof COLOR_TOKENS[number];
 
@@ -41,7 +47,7 @@ const int = (min: number, max: number) => z.number().int().min(min).max(max);
 const id = () => z.string().regex(/^[a-z0-9][a-z0-9_-]{0,47}$/, 'Use a short lowercase ASCII id (a-z, 0-9, _ or -).');
 const tag = () => z.string().regex(/^[a-z][a-z0-9_]{0,47}$/, 'Use a snake_case misconception tag.');
 const color = () => z.enum(COLOR_TOKENS);
-const icon = () => z.enum(ICON_NAMES);
+const icon = () => z.string().regex(ICON_PATTERN, 'Name the object in lowercase snake_case, e.g. "sailboat".');
 const COORD = 1000;
 const point = () => z.strictObject({ x: num(-COORD, COORD), y: num(-COORD, COORD) });
 const axis = () => z.strictObject({ min: num(-COORD, COORD), max: num(-COORD, COORD), step: num(0.001, 1000).optional() });
@@ -92,7 +98,7 @@ const CoordinatePlane = z.strictObject({
   polygons: z.array(z.strictObject({ points: z.array(point()).min(3).max(12), label: plain(16).optional(), color: color().optional() })).max(4).optional(),
 });
 const GeometryShape = z.discriminatedUnion('kind', [
-  z.strictObject({ kind: z.literal('polygon'), points: z.array(point()).min(3).max(12), id: id().optional(), label: plain(24).optional(), color: color().optional(), dashed: z.boolean().optional() }),
+  z.strictObject({ kind: z.literal('polygon'), points: z.array(point()).min(3).max(12), id: id().optional(), label: plain(24).optional(), color: color().optional(), dashed: z.boolean().optional(), unitSquares: z.boolean().optional() }),
   z.strictObject({ kind: z.literal('circle'), center: point(), r: num(0.1, 100), id: id().optional(), label: plain(24).optional(), color: color().optional() }),
   z.strictObject({ kind: z.literal('segment'), from: point(), to: point(), dashed: z.boolean().optional(), arrows: z.enum(['none', 'end', 'both']).optional() }),
   z.strictObject({ kind: z.literal('angle'), vertex: point(), from: point(), to: point(), label: plain(12).optional(), right: z.boolean().optional() }),
@@ -106,6 +112,7 @@ const Geometry = z.strictObject({
   width: num(1, 100).describe('Drawing width in abstract units; y points up from 0 to height.'), height: num(1, 100),
   shapes: z.array(GeometryShape).min(1).max(24),
   notToScale: z.boolean().optional(),
+  grid: z.strictObject({ unit: num(0.1, 50) }).optional(),
 });
 const NumberLine = z.strictObject({
   type: z.literal('number_line'), ...figureBase,
@@ -149,6 +156,7 @@ const Picture = z.strictObject({
   groups: z.array(z.strictObject({
     icon: icon(), count: int(1, 30), label: plain(24).optional(), id: id().optional(), color: color().optional(),
     arrangement: z.enum(['row', 'grid', 'ten_frame', 'scattered']).optional(), crossedOut: int(0, 30).optional(),
+    repeat: int(1, 12).optional(),
   })).min(1).max(6),
   layout: z.enum(['row', 'column']).optional(),
   key: plain(48).optional().describe('Pictograph key, e.g. "Each star = 2 books".'),
@@ -181,7 +189,7 @@ export const ResponseSchema = z.discriminatedUnion('type', [
   }),
   z.strictObject({
     type: z.literal('fraction'), numerator: int(-1e6, 1e6), denominator: int(1, 1e6),
-    form: z.enum(['any', 'simplest', 'exact']).optional(), mixed: z.boolean().optional(), label: label(),
+    form: z.enum(['any', 'simplest', 'exact']).optional().describe('simplest: the key itself must already be in lowest terms (6/8 is wrong, 3/4 is right) and the learner must simplify; any: an equivalent fraction counts.'), mixed: z.boolean().optional(), label: label(),
     misconceptionAnswers: z.array(z.strictObject({ numerator: int(-1e6, 1e6), denominator: int(1, 1e6), tag: tag() })).max(4).optional(),
   }),
   z.strictObject({
@@ -192,7 +200,7 @@ export const ResponseSchema = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('multiple_choice'), options: z.array(choice()).min(2).max(6), shuffle: z.boolean().optional() }),
   z.strictObject({ type: z.literal('multi_select'), options: z.array(choice()).min(2).max(8), shuffle: z.boolean().optional() }),
   z.strictObject({ type: z.literal('ordering'), items: z.array(rich(80)).min(2).max(8).describe('Items in the CORRECT order; the app shuffles them.'), firstLabel: plain(24).optional(), lastLabel: plain(24).optional() }),
-  z.strictObject({ type: z.literal('plot_point'), figureId: id(), x: num(-COORD, COORD), y: num(-COORD, COORD), tolerance: num(0, 5).optional(), snap: num(0.05, 100).optional() }),
+  z.strictObject({ type: z.literal('plot_point'), figureId: id().describe('The id of a coordinate_plane figure in this activity; plot_point needs one.'), x: num(-COORD, COORD), y: num(-COORD, COORD), tolerance: num(0, 5).optional(), snap: num(0.05, 100).optional() }),
   z.strictObject({ type: z.literal('tap_region'), figureId: id(), region: id(), regionMisconceptions: z.array(z.strictObject({ region: id(), tag: tag() })).max(6).optional() }),
 ]);
 export type ResponseSpec = z.infer<typeof ResponseSchema>;
@@ -228,9 +236,11 @@ export const ActivitySpecSchema = z.strictObject({
 });
 export type ActivitySpec = z.infer<typeof ActivitySpecSchema>;
 
+/** At most this many activities in one batch reply (the app asks for up to models.ts MAX_BATCH_ACTIVITIES, 35). */
+export const MAX_BATCH_ACTIVITIES = 40;
 export const ActivityBatchSchema = z.strictObject({
   rationale: plain(600),
-  activities: z.array(ActivitySpecSchema).min(1).max(5),
+  activities: z.array(ActivitySpecSchema).min(1).max(MAX_BATCH_ACTIVITIES),
 });
 
 // ---------- validation ----------
@@ -239,6 +249,11 @@ export interface ValidateOptions {
   skillIds: ReadonlySet<string>;
   /** Numeric, fraction and plot_point keys must carry a matching keyCheck (default true). */
   requireKeyCheck?: boolean;
+  /**
+   * Also apply the rules for newly authored content (`authoringErrors`). Fresh and same-key recovered batches set it;
+   * restoring stored evidence never does, so an activity accepted under earlier rules always restores.
+   */
+  authoring?: boolean;
 }
 export type SpecValidation = { ok: true; spec: ActivitySpec } | { ok: false; errors: string[] };
 
@@ -271,13 +286,30 @@ const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v =
  * and moves `response.keyCheck` to the activity's `keyCheck`: the strict schema carries keyCheck inside the
  * numeric, fraction and plot_point responses, so it is required exactly where the validator requires it
  * (schema.ts). The move never overwrites: a keyCheck given in both places stays put, and the validator
- * rejects the duplicate as an unknown response field. Nothing else changes.
+ * rejects the duplicate as an unknown response field.
+ *
+ * Grammar default (#929): a figure that no figure block places is shown right after the first text block, in
+ * figure order. Models often define a figure and forget its block; the grammar defines where an unplaced figure
+ * goes instead of rejecting the activity. It never moves a placed figure, never adds a block for an id that is
+ * placed already, and adds nothing when the prompt would exceed its 8 blocks (the validator then rejects it).
+ * Idempotent, so stored specs (every figure placed) are unchanged.
  */
 export function normalizeActivity(raw: unknown): unknown {
-  const value = dropNullMembers(raw);
+  const value = placeUnshownFigures(dropNullMembers(raw));
   if (!isRecord(value) || !isRecord(value.response) || !('keyCheck' in value.response) || 'keyCheck' in value) return value;
   const { keyCheck, ...response } = value.response;
   return { ...value, response, keyCheck };
+}
+const MAX_PROMPT_BLOCKS = 8;
+function placeUnshownFigures(value: unknown): unknown {
+  if (!isRecord(value) || !Array.isArray(value.prompt) || !Array.isArray(value.figures)) return value;
+  const placed = new Set(value.prompt.flatMap(b => isRecord(b) && b.type === 'figure' && typeof b.figureId === 'string' ? [b.figureId] : []));
+  const ids = value.figures.flatMap(f => isRecord(f) && typeof f.id === 'string' && !placed.has(f.id) ? [f.id] : []);
+  const missing = [...new Set(ids)];
+  if (!missing.length || value.prompt.length + missing.length > MAX_PROMPT_BLOCKS) return value;
+  const firstText = value.prompt.findIndex(b => isRecord(b) && b.type === 'text');
+  const at = firstText < 0 ? 0 : firstText + 1;
+  return { ...value, prompt: [...value.prompt.slice(0, at), ...missing.map(figureId => ({ type: 'figure', figureId })), ...value.prompt.slice(at)] };
 }
 /** zod's own wording for an unknown member reads "key: …", which the diagnostics scrubber redacts; name the fields instead. */
 function issueText(issue: z.core.$ZodIssue): string {
@@ -398,9 +430,9 @@ export function recoverBatchItems(text: string): { rationale?: string; items: ({
     const elements = arrayElementStarts(text, text.indexOf('[', key));
     // Trust the scan only where it agrees with every "version" start and is plausibly sized: after a
     // structural slip it can lose its place and report nested objects as activities.
-    if (elements.length > versionStarts.length && elements.length <= Math.min(5, located + 1) && versionStarts.every(v => elements.includes(v))) starts = elements;
+    if (elements.length > versionStarts.length && elements.length <= Math.min(MAX_BATCH_ACTIVITIES, located + 1) && versionStarts.every(v => elements.includes(v))) starts = elements;
   }
-  const items: ({ ok: true; value: unknown } | { ok: false; error: string })[] = starts.slice(0, 10).map((start, k) => {
+  const items: ({ ok: true; value: unknown } | { ok: false; error: string })[] = starts.slice(0, MAX_BATCH_ACTIVITIES + 1).map((start, k) => {
     // A malformed activity can swallow its neighbours; never read past the next activity start.
     const window = text.slice(start, starts[k + 1] ?? text.length);
     const r = balancedObjectAt(window, 0);
@@ -409,7 +441,7 @@ export function recoverBatchItems(text: string): { rationale?: string; items: ({
   });
   // An activity whose "version" key is not first cannot be located; count required keys so it is
   // reported as rejected instead of vanishing.
-  for (let n = items.length; n < Math.min(10, located); n++) items.push({ ok: false, error: 'Activity JSON could not be located.' });
+  for (let n = items.length; n < Math.min(MAX_BATCH_ACTIVITIES + 1, located); n++) items.push({ ok: false, error: 'Activity JSON could not be located.' });
   const rationale = /"rationale"\s*:\s*"((?:[^"\\]|\\.){0,600})"/.exec(text)?.[1];
   let decoded: string | undefined;
   try { decoded = rationale === undefined ? undefined : JSON.parse(`"${rationale}"`); } catch { decoded = undefined; }
@@ -439,7 +471,7 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
     else {
       const recovered = text.length <= 150000 ? recoverBatchItems(text) : null;
       if (!recovered?.items.some(i => i.ok)) return empty([extracted.ok ? 'Response is not valid JSON.' : extracted.error]);
-      if (recovered.items.length > 5) return empty(['activities must be a list of 1–5 activities.']);
+      if (recovered.items.length > MAX_BATCH_ACTIVITIES) return empty([`activities must be a list of 1–${MAX_BATCH_ACTIVITIES} activities.`]);
       const incomplete = !extracted.ok && extracted.error.includes('incomplete');
       // Structured output sorts keys by name (zuu#1132), so "rationale" follows "activities" and a reply cut
       // off by the output budget may never reach it, or end inside it. Only that case may lack one; a present but invalid
@@ -473,7 +505,7 @@ export function validateActivityBatch(input: unknown, options: ValidateOptions):
 }
 /** Per-activity validation behind a checked envelope: each invalid or duplicate activity is dropped on its own. */
 function validateActivities(activities: unknown, options: ValidateOptions, rationale: string): BatchValidation {
-  if (!Array.isArray(activities) || activities.length < 1 || activities.length > 5) return { rationale: '', accepted: [], rejected: [], errors: ['activities must be a list of 1–5 activities.'] };
+  if (!Array.isArray(activities) || activities.length < 1 || activities.length > MAX_BATCH_ACTIVITIES) return { rationale: '', accepted: [], rejected: [], errors: [`activities must be a list of 1–${MAX_BATCH_ACTIVITIES} activities.`] };
   const result: BatchValidation = { rationale, accepted: [], rejected: [], errors: [] };
   const seen = new Set<string>();
   activities.forEach((candidate, index) => {
@@ -562,6 +594,15 @@ function figureErrors(f: Figure, where: string, errors: string[]) {
         }
       });
       if (pts.some(p => !inside(p))) errors.push(`${where}: shapes must fit inside width × height.`);
+      // Graph paper: lines every grid.unit from the origin; unit squares tile a polygon in the same unit (1 without a grid).
+      const u = f.grid?.unit ?? 1;
+      if (f.grid && (f.width / u > 50 || f.height / u > 50)) errors.push(`${where}: grid has more than 50 lines across; increase grid.unit.`);
+      const onLattice = (v: number) => Math.abs(v / u - Math.round(v / u)) < 1e-6;
+      f.shapes.forEach((s, i) => {
+        if (s.kind !== 'polygon' || !s.unitSquares) return;
+        if (f.width / u > 50 || f.height / u > 50) errors.push(`${where}.shapes[${i}]: too many unit squares; set grid.unit.`);
+        else if (s.points.some(p => !onLattice(p.x) || !onLattice(p.y))) errors.push(`${where}.shapes[${i}]: unitSquares needs every vertex on a whole number of grid units.`);
+      });
       f.shapes.forEach((s, i) => {
         if (s.kind === 'angle' && (dist(s.vertex, s.from) === 0 || dist(s.vertex, s.to) === 0)) errors.push(`${where}.shapes[${i}]: angle rays need length.`);
         if ((s.kind === 'segment' || s.kind === 'ticks' || s.kind === 'dimension') && dist(s.from, s.to) === 0) errors.push(`${where}.shapes[${i}]: zero-length segment.`);
@@ -597,7 +638,9 @@ function figureErrors(f: Figure, where: string, errors: string[]) {
       if (f.object && (f.object.to <= f.object.from || f.object.to > f.length)) errors.push(`${where}: object must lie on the ruler.`);
       break;
     case 'picture':
-      if (f.groups.reduce((n, g) => n + g.count, 0) > 100) errors.push(`${where}: at most 100 icons in total.`);
+      if (f.groups.reduce((n, g) => n + g.count * (g.repeat ?? 1), 0) > 100) errors.push(`${where}: at most 100 icons in total.`);
+      if (f.groups.reduce((n, g) => n + (g.repeat ?? 1), 0) > 12) errors.push(`${where}: at most 12 groups drawn in total.`);
+      if (f.groups.some(g => (g.repeat ?? 1) > 1 && (g.crossedOut || g.id))) errors.push(`${where}: a repeated group cannot carry crossedOut or an id; list those groups separately.`);
       if (f.groups.some(g => (g.crossedOut ?? 0) > g.count)) errors.push(`${where}: crossedOut exceeds count.`);
       if (f.groups.some(g => g.arrangement === 'ten_frame' && g.count > 20)) errors.push(`${where}: ten frames hold at most 20.`);
       break;
@@ -622,8 +665,19 @@ function evalCheck(source: string, where: string, errors: string[]): number | nu
   } catch (e) { errors.push(`${where}: ${e instanceof ExprError ? e.message : 'invalid keyCheck'}`); return null; }
 }
 
-export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck = true }: ValidateOptions): string[] {
-  const errors: string[] = [];
+/**
+ * Rules for newly authored content only (`ValidateOptions.authoring`), checked on figure data and the keyCheck, never
+ * on prose. A rectangle whose two side lengths the key uses (a keyCheck of "3*5" over a 5 by 3 rectangle: area,
+ * perimeter, counting square units) must show them: unit squares (`unitSquares` or graph paper `grid`) or both
+ * lengths labelled by a dimension, label or polygon label. Otherwise the learner is asked to count or measure what is
+ * not drawn (the founder's four flagged "count the square units" activities, 2026-10-06).
+ */
+export function authoringErrors(spec: ActivitySpec): string[] {
+  return rectangleDimensionErrors(spec);
+}
+
+export function semanticErrors(spec: ActivitySpec, { skillIds, requireKeyCheck = true, authoring = false }: ValidateOptions): string[] {
+  const errors: string[] = authoring ? authoringErrors(spec) : [];
   spec.skillIds.forEach((s, i) => { if (!skillIds.has(s)) errors.push(`skillIds[${i}]: unknown skill ${s}.`); });
   if (!unique(spec.skillIds)) errors.push('skillIds: duplicates.');
   const figures = spec.figures ?? [];

@@ -26,6 +26,42 @@ describe('Activity renderer', () => {
       assert.ok(html.includes('Check my answer'));
     }
   });
+  it('draws geometry graph paper with stronger lines every 5 units, and unit squares clipped to the shape', () => {
+    const small = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-3-area-graph-paper')!} onSubmit={noop} />);
+    assert.equal((small.match(/class="ax-graph-minor"/g) ?? []).length, 9 + 7, '8×6 paper: 9 vertical + 7 horizontal lines');
+    assert.equal((small.match(/class="ax-graph-major"/g) ?? []).length, 0, 'no major lines on small paper');
+    assert.match(small, /<clipPath id="ax-clip\d+-0"><polygon/);
+    assert.equal((small.match(/<g clip-path="url\(#ax-clip\d+-0\)" class="ax-unit-squares"[^>]*>(.*?)<\/g>/)?.[1]!.match(/<line/g) ?? []).length, 4 + 2, '5×3 rectangle: 4 inner vertical + 2 inner horizontal lines');
+    assert.match(small, /class="ax-graph-paper" aria-hidden="true"/);
+    const large = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-3-composite-area-grid')!} onSubmit={noop} />);
+    assert.equal((large.match(/class="ax-graph-major"/g) ?? []).length, 3 + 2, '14×9 paper: x = 0, 5, 10 and y = 0, 5');
+    const plain = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-3-garden-perimeter')!} onSubmit={noop} />);
+    assert.doesNotMatch(plain, /ax-graph|ax-unit-squares/, 'no grid unless asked');
+  });
+  it('draws a repeated picture group as that many identical groups', async () => {
+    const spec = fixtures.find(f => f.id === 'fx-3-equal-groups')!;
+    const html = render(<ActivityView spec={spec} onSubmit={noop} />);
+    assert.equal((html.match(/class="ax-pic-group"/g) ?? []).length, 4);
+    assert.equal((html.match(/class="ax-pic-icon/g) ?? []).length, 12);
+    const { pictureGroups } = await import('../draw');
+    assert.deepEqual(pictureGroups(spec.figures![0] as any).map(g => g.count), [3, 3, 3, 3]);
+  });
+  it('draws any named object from the broad icon vocabulary, and a neutral counter for unknown names', async () => {
+    const { resolveIcon, hasIcon, ICONS } = await import('./icons');
+    assert.ok(Object.keys(ICONS).length >= 200);
+    for (const name of ['apple', 'apples', 'strawberries', 'buses', 'puppy', 'traffic_cone', 'violin', 'umbrella']) assert.ok(resolveIcon(name), name);
+    assert.ok(hasIcon('apples') && hasIcon('puppy') && hasIcon('umbrella') && hasIcon('traffic_cone'));
+    assert.equal(hasIcon('pinecone'), false);
+    assert.equal(resolveIcon('pinecone'), resolveIcon('zzz'), 'unknown names share the neutral counter');
+    for (const proto of ['constructor', 'constructors', 'tostring', 'hasownproperty', 'valueof', '__proto__']) assert.equal(resolveIcon(proto), resolveIcon('zzz'), proto);
+    const spec = structuredClone(fixtures.find(f => (f.figures ?? []).some(x => x.type === 'picture'))!);
+    const picture = spec.figures!.find(x => x.type === 'picture')! as any;
+    picture.groups[0].icon = 'pinecone';
+    const html = render(<ActivityView spec={spec} onSubmit={noop} />);
+    assert.equal((html.match(/class="ax-pic-icon/g) ?? []).length >= picture.groups[0].count, true, 'every object is still drawn and countable');
+    picture.groups[0].icon = 'constructor';
+    assert.doesNotThrow(() => render(<ActivityView spec={spec} onSubmit={noop} />), 'prototype names draw the counter, never crash');
+  });
   it('uses <title>/<desc> on SVG figures and labelled groups for interactive ones', () => {
     const chart = render(<ActivityView spec={fixtures.find(f => f.id === 'fx-2-fruit-graph')!} onSubmit={noop} />);
     assert.match(chart, /<svg[^>]*role="img"[^>]*aria-labelledby="ax-t\d+"[^>]*aria-describedby="ax-d\d+"/);

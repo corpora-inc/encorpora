@@ -1,17 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fixtures } from '../activity/fixtures';
-import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity } from './aiQueue';
+import { BATCH_WAIT_MS, MAX_QUEUE, PREFETCH_AT, REMIX_GAPS, batchSizeFor, activityIdFor, mergeBatch, prefetchBlocked, pruneQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity } from './aiQueue';
 
 const item = (op: string, i: number): QueuedActivity => ({ activityId: activityIdFor(op, i), operationId: op, spec: fixtures[i % fixtures.length]! });
 const none = { attempted: new Set<string>(), disputed: new Set<string>() };
 
-test('prefetch is single-flight, signed-in only, respects the backoff, and fires at <=1 queued', () => {
+test('prefetch is single-flight, signed-in only, respects the backoff, and refills the bank at <=8 banked', () => {
   const ready = { queueLength: PREFETCH_AT, inFlight: false, signedIn: true, aiDue: true };
-  assert.equal(PREFETCH_AT, 1);
+  assert.equal(PREFETCH_AT, 8);
   assert.equal(shouldPrefetch(ready), true);
   assert.equal(shouldPrefetch({ ...ready, queueLength: 0 }), true);
-  assert.equal(shouldPrefetch({ ...ready, queueLength: 2 }), false, 'enough queued: no paid call yet');
+  assert.equal(shouldPrefetch({ ...ready, queueLength: PREFETCH_AT + 1 }), false, 'enough banked: no paid call yet');
   assert.equal(shouldPrefetch({ ...ready, inFlight: true }), false, 'never two batch requests at once');
   assert.equal(shouldPrefetch({ ...ready, signedIn: false }), false, 'signed-out practice never calls AI');
   assert.equal(shouldPrefetch({ ...ready, aiDue: false }), false, 'fallback backoff / Retry-After gate prefetch too');
@@ -188,4 +188,36 @@ test('a skipped activity requeues at the back, keeping its hints, without duplic
 test('a set-aside activity is pruned from a restored queue', () => {
   const a = item('op', 0), b = item('op', 1);
   assert.deepEqual(pruneQueue([a, b], { attempted: new Set(), disputed: new Set([a.activityId]) }).map(q => q.activityId), [b.activityId]);
+});
+
+test('bank sizing: a small first batch on an empty bank, the model\'s full batch otherwise; a full refill always fits', async () => {
+  const { FIRST_BATCH_ACTIVITIES, MAX_BATCH_ACTIVITIES } = await import('../provider/models.ts');
+  assert.equal(batchSizeFor(0, 35), FIRST_BATCH_ACTIVITIES);
+  assert.equal(batchSizeFor(0, 4), 4, 'never more than the model can write');
+  assert.equal(batchSizeFor(3, 35), 35);
+  assert.ok(MAX_QUEUE >= PREFETCH_AT + MAX_BATCH_ACTIVITIES, 'a refill landing at the threshold is never truncated');
+  const banked = Array.from({ length: PREFETCH_AT }, (_, i) => item('old', i));
+  const full = Array.from({ length: MAX_BATCH_ACTIVITIES }, (_, i) => item('new', i));
+  assert.equal(mergeBatch(banked, full, none).added, MAX_BATCH_ACTIVITIES);
+});
+
+test('a missed activity returns later, unchanged and free, on a spaced schedule; a flag removes it and its remixes', () => {
+  const box = new AiQueueBox(Array.from({ length: 20 }, (_, i) => item('op', i + 1)));
+  const missed: QueuedActivity = { ...item('op', 0), hintsUsed: 2, shown: true };
+  assert.equal(box.remix(missed), true);
+  const at = box.items.findIndex(q => q.activityId === 'op:0:r1');
+  assert.equal(at, REMIX_GAPS[0], 'after a few others');
+  assert.equal(box.items[at]!.spec, missed.spec);
+  assert.equal(box.items[at]!.hintsUsed, undefined, 'a fresh attempt: no carried hints');
+  assert.equal(box.items[at]!.shown, undefined);
+  assert.equal(box.remix(missed), false, 'the same content is already waiting');
+  box.remove('op:0:r1');
+  assert.equal(box.remix(box.items.length ? { ...missed, activityId: 'op:0:r1' } : missed), true, 'missed again: a second, longer gap');
+  assert.equal(box.items.findIndex(q => q.activityId === 'op:0:r2'), REMIX_GAPS[1]);
+  box.remove('op:0:r2');
+  assert.equal(box.remix({ ...missed, activityId: 'op:0:r2' }), false, 'two rounds at most');
+  box.remix(item('op', 50));
+  assert.ok(box.items.some(q => q.activityId === 'op:50:r1'));
+  box.removeContent('op:50');
+  assert.ok(!box.items.some(q => q.activityId.startsWith('op:50')), 'a flagged activity never comes back, nor its remix');
 });

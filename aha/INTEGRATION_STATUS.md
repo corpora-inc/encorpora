@@ -86,11 +86,18 @@ Free2Z's `/v1/models` is no longer a gpt-4o-only allowlist. AHA never hardcodes 
 `models.test.ts`) reads the catalogue each batch:
 
 - **Eligible:** `capabilities.structured_output === true` (typed by the SDK since `d4d58ea3`), a reported
-  `max_output_tokens` ≥ 2600 and a reported `context_window` ≥ 16k.
-- **Estimate:** Free2Z's client formula (metering.md §2.5) over a typical batch of 4000 input / 2000 output tokens (the top of
-  the measured 3–4k / 0.6–2k ranges), `max(min_charge_2z, ceil(...))`. Shown in Settings as "≈ N 2Z per set".
-- **Best (auto), the default:** the highest-priced eligible model (price as the quality proxy) whose estimate is ≤ 10 2Z. It
-  steps down when the worst case (4000 input + the 2600 output budget) exceeds the fresh balance or the app budget remainder.
+  `max_output_tokens` that holds the first batch (2,820) and a reported `context_window` ≥ 16k.
+- **Batch size (#929, problem bank):** model-aware, as many activities as the output ceiling (and context) holds at 420
+  tokens each, up to 35; reasoning models 10. The first call on an empty bank asks for 6. The batch shrinks to what the
+  balance and app budget can hold.
+- **Estimate:** Free2Z's client formula (metering.md §2.5) over the live-measured typical call: 8000 input tokens (7.35k
+  measured on gpt-4o plus the #929 digest and mix) and 360 output tokens per activity plus 100, `max(min_charge_2z, ceil(...))`.
+  Shown in Settings as "≈ N 2Z per activity". gpt-4o (0.3 / 1.2 2Z per 1k tokens): 6 per call ≈ 1.0, 12 ≈ 0.67, 25 ≈ 0.56,
+  35 ≈ 0.51 2Z per activity (4 per call was ≈ 1.0–1.25). gpt-4.1-mini at an assumed 48k / 192k milli-2Z per Mtok (OpenAI's
+  ratio to gpt-4o; not in the live catalogue): 6 ≈ 0.17, 12 ≈ 0.17, 25 ≈ 0.12, 35 ≈ 0.09.
+- **Best (auto), the default:** the highest-priced eligible model per activity (price as the quality proxy) whose estimate is
+  ≤ 1.5 2Z per activity (the old 10 2Z per set of 4, re-derived per activity). It steps down when the worst case of its first
+  batch (8000 input + 2,820 output) exceeds the fresh balance or the app budget remainder.
   If nothing fits, it sends the cheapest, which Free2Z refuses calmly at no cost. If every structured model is above the
   ceiling, it picks the cheapest of them. If no eligible model has structured output, the prompt-only request goes to the
   best-priced usable model, or the first one in catalogue order when none is priced (as before).
