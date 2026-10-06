@@ -619,7 +619,12 @@ try{
     // The problem scrolls behind the lifted dock and the keyboard, and scrolling keeps the keyboard up.
     const problem=await p.locator('.stage-scroll, .ax-stage-scroll').boundingBox();
     const scrollCdp=await p.context().newCDPSession(p);
-    await scrollCdp.send('Input.synthesizeScrollGesture',{x:Math.round(problem.x+problem.width/2),y:Math.round(problem.y+80),yDistance:-160,gestureSourceType:'touch',speed:1200});
+    // A finger drag (touch events, as on a phone): up by 160px from inside the visible problem.
+    const drag=dy=>[{x:Math.round(problem.x+problem.width/2),y:Math.round(problem.y+200+dy)}];
+    await scrollCdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:drag(0)});
+    for(let dy=-8;dy>=-160;dy-=8)await scrollCdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:drag(dy)});
+    await scrollCdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    await p.waitForFunction(()=>document.querySelector('.stage-scroll, .ax-stage-scroll').scrollTop>0,null,{timeout:2000}).catch(()=>{});
     const scrolled=await p.evaluate(()=>{const s=document.querySelector('.stage-scroll, .ax-stage-scroll');const top=s.scrollTop;s.scrollTop=s.scrollHeight;
       const kids=[...s.children].filter(el=>el.getBoundingClientRect().height>0),last=Math.max(...kids.map(el=>el.getBoundingClientRect().bottom));
       const dock=document.querySelector('.focus-dock, .focus-stage.is-spec .ax-dock'),surfaceTop=dock.getBoundingClientRect().top+parseFloat(getComputedStyle(dock,'::after').top);
