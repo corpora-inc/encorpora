@@ -140,6 +140,8 @@ export interface SummaryInput {
    * ledger's AI activities in `recentContent`, so the next batch does not repeat them either.
    */
   pendingSpecs?: readonly ActivitySpec[];
+  /** Skills put right on the forgiving retry this session: a fresh-variant re-drill slot in the next batch, first. */
+  redrillSkills?: readonly string[];
 }
 
 /** The validated specs of the most recent AI attempts in the ledger, oldest first, one per spec. */
@@ -156,7 +158,7 @@ function recentLedgerSpecs(ledger: LearnerState | undefined): ActivitySpec[] {
   return out.reverse();
 }
 
-export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10, wantsHarder = false, pendingSpecs = [] }: SummaryInput): LearnerSummary {
+export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], now = new Date().toISOString(), frontierLimit = 10, wantsHarder = false, pendingSpecs = [], redrillSkills = [] }: SummaryInput): LearnerSummary {
   const time = Date.parse(now);
   if (!Number.isFinite(time)) throw new Error('Use a valid timestamp.');
   const attempts = normalize(ledger, activityAttempts);
@@ -223,7 +225,8 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
   };
   const byRecency = [...bySkill.keys()].sort((a, b) => lastSeen(b) - lastSeen(a));
   const retired = byRecency.filter(isRetired).slice(0, 6);
-  const redrill = byRecency.flatMap(id => {
+  const flagged = [...new Set(redrillSkills)].filter(id => bySkill.has(id) && getSkill(id)).map(id => ({ id }));
+  const redrill = [...flagged, ...byRecency.filter(id => !flagged.some(f => f.id === id)).flatMap(id => {
     const history = bySkill.get(id)!;
     let lastMiss = history.length - 1;
     while (lastMiss >= 0 && history[lastMiss]!.correct) lastMiss--;
@@ -232,7 +235,7 @@ export function buildLearnerSummary({ gradeHint, ledger, activityAttempts = [], 
     if (after.filter(a => a.correct && a.hints === 0).length >= 2) return [];
     const tag = history[lastMiss]!.tag;
     return [{ id, ...(tag ? { tag } : {}) }];
-  }).slice(0, 3);
+  })].slice(0, 3);
   const redrillIds = new Set(redrill.map(r => r.id));
   const review = [...[...due].filter(id => getSkill(id) && !redrillIds.has(id)),
     ...byRecency.filter(id => !due.has(id) && !redrillIds.has(id) && !isRetired(id) && summarize(id).state === 'developing' && bySkill.get(id)!.at(-1)!.correct)].slice(0, 4);

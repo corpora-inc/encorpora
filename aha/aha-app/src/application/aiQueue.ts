@@ -5,8 +5,11 @@
  * The queue is the learner's problem bank (#929). One paid call returns a batch: a small first one on an empty bank, then
  * big ones sized to the model (up to `MAX_BATCH_ACTIVITIES`). Validated activities wait in the bank, which is saved with
  * the presentation session, so a restart never buys the same activities again. The bank is refilled in the background
- * whenever it runs low, never on the learner's critical path. A missed activity comes back later, unchanged (free
- * retrieval practice), on a spaced schedule (`remixMiss`).
+ * whenever it runs low, never on the learner's critical path. Each activity is banked the moment its JSON completes in the
+ * stream (`streamBatch` in ./aiActivities), so the first one is ready in seconds, not after the whole batch. An activity whose
+ * final answer was wrong, or whose worked explanation was opened, comes back later, unchanged (free retrieval practice), on
+ * a spaced schedule (`remixMiss`); one put right on the forgiving retry does not (`wantsRepeat`), and its skill gets a
+ * fresh-variant re-drill slot in the next batch instead.
  */
 import type { ActivitySpec } from '../activity/spec';
 import { FIRST_BATCH_ACTIVITIES, MAX_BATCH_ACTIVITIES } from '../provider/models';
@@ -30,10 +33,11 @@ export interface QueuedActivity {
 }
 
 /**
- * Refill the bank in the background when this many or fewer activities remain (#929). A big batch streams for a few
- * minutes; eight activities usually cover it, so the learner rarely meets an empty bank.
+ * Refill the bank in the background when this many or fewer activities remain (#929). A big batch takes 50-70 s to
+ * stream and a learner can answer several activities a minute, so the refill starts with a deep bank (single flight); a
+ * model that under-delivers simply refills again sooner. The learner never waits on a batch while anything is banked.
  */
-export const PREFETCH_AT = 8;
+export const PREFETCH_AT = 20;
 /** Remixed misses that may wait in the bank on top of a refill. */
 export const MAX_REMIXES = 4;
 /**
@@ -49,7 +53,23 @@ export function batchSizeFor(banked: number, modelBatch: number): number {
   return banked === 0 ? Math.min(FIRST_BATCH_ACTIVITIES, modelBatch) : modelBatch;
 }
 /** A missed activity returns after this many others, then (if missed again) after this many more. */
-export const REMIX_GAPS = [6, 15] as const;
+export const REMIX_GAPS = [12, 30] as const;
+/** The answer history of one shown activity, for the re-present rule. */
+export interface AnswerHistory {
+  /** The recorded (first) answer was correct. */
+  firstCorrect: boolean;
+  /** The latest answer (the forgiving retry, if any) was correct. */
+  finalCorrect: boolean;
+  /** The learner opened the worked explanation ("Show me how"). */
+  workedOpened: boolean;
+}
+/**
+ * The exact activity comes back only when the final answer was wrong or the learner needed the worked explanation. Put
+ * right on the retry, it does not repeat verbatim (`wantsRedrill` instead). Nothing else ever repeats an exact activity.
+ */
+export const wantsRepeat = (h: AnswerHistory): boolean => !h.finalCorrect || h.workedOpened;
+/** Missed, then corrected on the retry without the worked explanation: a fresh variant of the skill in the next batch. */
+export const wantsRedrill = (h: AnswerHistory): boolean => !h.firstCorrect && !wantsRepeat(h);
 /** `${original}:r1`, `${original}:r2`: the remix's own activity id, so its evidence is recorded separately. */
 export const remixId = (activityId: string, round: number) => `${baseId(activityId)}:r${round}`;
 /** The activity id without its remix suffix: the original paid activity. */
@@ -98,10 +118,11 @@ export function prefetchBlocked(s: PrefetchState, blockedBy?: string): string | 
 }
 
 /**
- * How long the next task waits for a batch that is already on its way when the queue is empty. Within this bound the
- * learner gets the AI activity; past it, one local task is served and the batch fills the queue for the task after.
+ * How long the next task waits for a batch that is already on its way when the queue is empty. The wait ends as soon as
+ * the first activity of the batch is banked from the stream (`AiQueueBox.arrived`), usually within a few seconds. Past
+ * this bound one local task is served and the batch fills the queue for the task after.
  */
-export const BATCH_WAIT_MS = 6000;
+export const BATCH_WAIT_MS = 10000;
 /**
  * The learner's Stop for one batch their own tap started. The batch outlives the tap (it may land after the bounded
  * wait), so it carries its own token instead of reading whichever action is current: a later action can never re-arm it.
@@ -184,6 +205,7 @@ export class AiQueueBox {
   private queue: QueuedActivity[];
   /** In-flight durable saves per billing operation, so a duplicate delivery waits for the first. */
   readonly deliveries = new Map<string, Promise<void>>();
+  private waiters: (() => void)[] = [];
   constructor(items: readonly QueuedActivity[] = []) { this.queue = [...items]; }
   get items(): readonly QueuedActivity[] { return this.queue; }
   get length(): number { return this.queue.length; }
@@ -192,8 +214,12 @@ export class AiQueueBox {
   merge(items: readonly QueuedActivity[], known: KnownActivities): string[] {
     const before = new Set(this.queue.map(q => q.activityId));
     this.queue = mergeBatch(this.queue, items, known).queue;
-    return this.queue.filter(q => !before.has(q.activityId)).map(q => q.activityId);
+    const added = this.queue.filter(q => !before.has(q.activityId)).map(q => q.activityId);
+    if (added.length) { const waiters = this.waiters; this.waiters = []; waiters.forEach(w => w()); }
+    return added;
   }
+  /** Resolves the next time a delivery (a streamed activity or a whole batch) adds something. Never rejects. */
+  arrived(): Promise<void> { return new Promise(resolve => this.waiters.push(resolve)); }
   /** Put an unanswered activity back at the front of the queue (no duplicate if it is already queued). */
   requeueFront(item: QueuedActivity): void { this.queue = [item, ...this.queue.filter(q => q.activityId !== item.activityId)]; }
   /** Put a skipped activity at the back (no duplicate); paid content waits its turn and is never discarded. */
@@ -204,6 +230,12 @@ export class AiQueueBox {
     const before = this.queue.length;
     this.queue = remixMiss(this.queue, missed, sameContent);
     return this.queue.length > before;
+  }
+  /** Withdraw the scheduled return of `shown` (its answer was put right on the retry). True when one was waiting. */
+  unremix(shown: QueuedActivity): boolean {
+    const id = remixId(shown.activityId, remixRound(shown.activityId) + 1), before = this.queue.length;
+    this.queue = this.queue.filter(q => q.activityId !== id);
+    return this.queue.length < before;
   }
   /** Drop an activity and every remix of it (a flagged activity never comes back, #899). */
   removeContent(activityId: string): void { const base = baseId(activityId); this.queue = this.queue.filter(q => baseId(q.activityId) !== base); }
