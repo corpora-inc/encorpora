@@ -2,6 +2,7 @@ import type { GrowthSummary } from "../application/growth";
 import type { LapRecap } from "../application/lapRecap";
 import type { ActivitySpec } from "../activity/spec";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
+import type { CuriosityKind } from "../application/curiosity";
 export type StudioVisual =
   | { type: "fraction"; numerator: number; denominator: number; label?: string }
   | { type: "array"; rows: number; columns: number; label?: string }
@@ -127,7 +128,8 @@ export interface StudioProps {
   ) => void;
   /** The worked explanation of the AI activity on screen was opened (the re-present rule needs to know). */
   onExplainSeen?: () => void;
-  onCuriosity: (question: string) => void;
+  /** A preset question (application/curiosity.ts); the learner never types one. */
+  onCuriosity: (question: CuriosityKind) => void;
   onCloseCuriosity: () => void;
   onManageAccount?: () => void;
   onSignIn: () => void;

@@ -41,6 +41,7 @@ import { SafeMarkdown } from "./SafeMarkdown";
 import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
 import { LAP, type LapRecap } from "../application/lapRecap";
+import { CURIOSITY_PRESETS, curiosityLabel } from "../application/curiosity";
 import "katex/dist/katex.min.css";
 import "./studio.css";
 export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
@@ -345,7 +346,6 @@ export function Studio(props: StudioProps) {
   const [dismissedError, setDismissedError] = useState<string>();
   const [sheet, setSheet] = useState<Sheet>(null);
   const [answer, setAnswer] = useState("");
-  const [question, setQuestion] = useState("");
   const [newName, setNewName] = useState("");
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
@@ -1007,7 +1007,7 @@ export function Studio(props: StudioProps) {
       <Sheet open={sheet === "ask" && view === "focus" && !settings} onClose={closeAsk} label="Ask a question">
         {props.curiosity ? (
           <section className="curiosity-conversation" aria-label="Curiosity conversation">
-            <p className="curiosity-question">{props.curiosity.question}</p>
+            <p className="curiosity-question">{curiosityLabel(props.curiosity.question)}</p>
             {props.curiosity.answer ? (
               <SafeMarkdown>{props.curiosity.answer}</SafeMarkdown>
             ) : (
@@ -1021,24 +1021,16 @@ export function Studio(props: StudioProps) {
             </button>
           </section>
         ) : (
-          <section className="curiosity-conversation">
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              if (question.trim() && !props.busy) { props.onCuriosity(question.trim()); setQuestion(""); }
-            }}>
-              <label htmlFor="curiosity-question" className="sheet-title">What are you wondering?</label>
-              <div className="curiosity-input">
-                <input id="curiosity-question" value={question} maxLength={400} onChange={(e) => setQuestion(e.target.value)}
-                  placeholder="What could I use this for?" />
-                <button className="icon-button" disabled={!question.trim() || props.busy} aria-label="Ask question">
-                  <ArrowUpRight size={22} />
+          <section className="curiosity-conversation" aria-labelledby={`${titleId}-ask`}>
+            <p id={`${titleId}-ask`} className="sheet-title">What are you wondering?</p>
+            {/* Preset questions only: structured in, structured out. No typed text reaches the model. */}
+            <div className="curiosity-presets">
+              {CURIOSITY_PRESETS.map(p => (
+                <button key={p.id} type="button" className="suggestion" disabled={props.busy} onClick={() => props.onCuriosity(p.id)}>
+                  {p.label}<ArrowUpRight size={17} aria-hidden="true" />
                 </button>
-              </div>
-            </form>
-            <button type="button" className="suggestion" disabled={props.busy}
-              onClick={() => props.onCuriosity("Where would I use this in real life?")}>
-              Where would I use this in real life? ↗
-            </button>
+              ))}
+            </div>
           </section>
         )}
       </Sheet>

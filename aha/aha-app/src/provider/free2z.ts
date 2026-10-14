@@ -1,6 +1,7 @@
 import { Client, NativeTransport, SdkError, type ChatRequest, type ChatStream, type Charge, type Estimate, type Grant, type Models, type ObjectData, type Preflight, type Session, type SignInOptions } from '@free2z/sdk';
 import { nativeBridge } from '@free2z/tauri-plugin-f2z-api';
 import { diagnostics } from '../diagnostics/log';
+import { isCuriosityKind } from '../application/curiosity';
 
 export interface Journal { getJournal(key: string): Promise<unknown>; putJournal(key: string, value: any): Promise<void> }
 export type SdkClient = Pick<Client, 'session' | 'signIn' | 'signOut' | 'balance' | 'grant' | 'models' | 'estimate' | 'preflight' | 'chat' | 'call'>;
@@ -554,6 +555,10 @@ export class Free2zTutor {
     if (!validOutputBudget(maxOutputTokens)) throw new TutorServiceError('output_budget_invalid', 'Unsupported output budget. No paid request was sent.');
     if (resumeContext !== undefined && !validResumeContext(resumeContext))
       throw new TutorServiceError('resume_context_invalid', 'The learning context cannot be safely restored. No paid request was sent.');
+    // Structured in: a new curiosity request is one preset id, never learner text. (A journal saved by an older build
+    // may still hold a typed question; recovering it resends that same paid request and is not a new one.)
+    if (resumeContext?.kind === 'curiosity' && !isCuriosityKind(resumeContext.question))
+      throw new TutorServiceError('free_text_refused', 'Choose one of the questions. No paid request was sent.');
     const savedContext = resumeContext === undefined ? undefined : structuredClone(resumeContext);
     this.busy = true; this.cancelled = false;
     try {

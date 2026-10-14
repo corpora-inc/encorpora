@@ -242,7 +242,20 @@ try{
   }
   // Panels open on demand as sheets; the status dot explains itself.
   await mobile.getByRole('button',{name:'Ask a question',exact:true}).click();await mobile.getByRole('dialog',{name:'Ask a question'}).waitFor();
-  assert.deepEqual(await smallTargets(mobile),[],'curiosity sheet tap targets');await mobile.getByRole('button',{name:'Close',exact:true}).click();
+  assert.deepEqual(await smallTargets(mobile),[],'curiosity sheet tap targets');
+  {
+    // Structured, not chat: preset questions only, no field to type in; measured, not eyeballed.
+    const ask=await mobile.getByRole('dialog',{name:'Ask a question'}).evaluate(d=>{const body=d.querySelector('.sheet-body');return {
+      fields:d.querySelectorAll('input,textarea,[contenteditable]').length,
+      presets:[...d.querySelectorAll('.curiosity-presets button')].map(b=>b.textContent.trim()),
+      words:body.innerText.trim().split(/\s+/).length,overflow:body.scrollHeight-body.clientHeight,sheetBottom:d.getBoundingClientRect().bottom,viewport:innerHeight};});
+    assert.equal(ask.fields,0,'the ask sheet has no free-text field');
+    assert.deepEqual(ask.presets,['Why does this work?','Show another way','What do the words mean?','Where would I use this?']);
+    assert.ok(ask.words<=24,`ask sheet stays brief: ${ask.words} words`);
+    assert.ok(ask.overflow<=1,`ask sheet fits without scrolling at phone width (overflow ${ask.overflow}px)`);
+    assert.ok(ask.sheetBottom<=ask.viewport+1,'ask sheet stays on screen');
+  }
+  await mobile.getByRole('button',{name:'Close',exact:true}).click();
   await mobile.locator('.status-dot').click();await mobile.getByRole('dialog',{name:'Practice status'}).waitFor();
   assert.match(await mobile.getByRole('dialog',{name:'Practice status'}).innerText(),/Local practice/);
   await mobile.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();
@@ -461,7 +474,7 @@ try{
     await sp.evaluate(()=>window.__stage.fail('TEST the save could not be confirmed.'));await sp.getByRole('alert').waitFor();await s.snap('error',{typing:true});
     await sp.getByRole('button',{name:'Dismiss',exact:true}).click();
     await sp.getByRole('button',{name:'Ask a question',exact:true}).click();await sp.getByRole('dialog',{name:'Ask a question'}).waitFor();
-    await sp.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();await sp.getByText('TEST answer',{exact:false}).waitFor();await s.snap('curiosity answered');
+    await sp.getByRole('button',{name:'Where would I use this?',exact:true}).click();await sp.getByText('TEST answer',{exact:false}).waitFor();await s.snap('curiosity answered');
     await sp.getByRole('button',{name:'Close',exact:true}).click();
     await sp.getByRole('button',{name:'Something seems off',exact:true}).click();await sp.getByRole('dialog',{name:'Something seems off'}).waitFor();await s.snap('flag confirm');
     await sp.getByRole('button',{name:'Keep going',exact:true}).click();
