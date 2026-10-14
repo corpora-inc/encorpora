@@ -1575,9 +1575,11 @@ export default function Controller() {
     if (verdict === "minor") {
       gate.current.reset();
       const record = lockedRecord(now, grantOf(consent.current));
-      await device.current.putJournal(CONSENT_KEY, record);
+      // Locked in memory first, so a failed write can never leave the form open for a second guess.
       showConsent(readConsent(record, now));
       logEvent("info", "ai-consent", `the adult step did not pass (${exit}); account exits are paused on this device for a day`);
+      try { await device.current.putJournal(CONSENT_KEY, record); }
+      catch (error) { logError("ai-consent", error); }
       return;
     }
     gate.current.pass(now);
