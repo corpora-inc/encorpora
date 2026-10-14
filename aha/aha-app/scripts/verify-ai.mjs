@@ -124,7 +124,7 @@ function fixture(specs){
     if(command==='plugin:f2z|next_chat')return streams.get(args.operationId)?.shift()??null;
     if(command==='plugin:f2z|cancel_chat')return;
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
-    if(command==='open_free2z_account'){ai.accountOpened=(ai.accountOpened??0)+1;return;}
+    if(command==='open_free2z_account'){ai.accountOpened=(ai.accountOpened??0)+1;(ai.accountPages??=[]).push(args.page);return;}
     if(command==='pin_page_scroll')return null;
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
     const r=args.request;if(!['local-device','test-subject'].includes(r.accountId))throw new Error('Unexpected test account');
@@ -498,13 +498,14 @@ try {
   const connect=page.getByRole('button',{name:'Connect Free2Z',exact:false});
   await connect.waitFor();
   const accountOnly=async()=>({
-    manage:await page.getByRole('button',{name:'Manage allowance or balance',exact:false}).count(),
+    manage:await page.getByRole('button',{name:'Manage Free2Z account',exact:false}).count(),
+    deleteAccount:await page.getByRole('button',{name:'Delete Free2Z account',exact:false}).count(),
     refresh:await page.getByRole('button',{name:'Refresh connection',exact:true}).count(),
     signOut:await page.getByRole('button',{name:'Sign out',exact:true}).count(),
   });
   const disconnected=async why=>{
     await page.locator('.connection-pill').filter({hasText:/^Local practice$/}).waitFor();
-    assert.deepEqual(await accountOnly(),{manage:0,refresh:0,signOut:0},why);
+    assert.deepEqual(await accountOnly(),{manage:0,deleteAccount:0,refresh:0,signOut:0},why);
     // The sign-out/sign-in action may still be finishing (busy) when the pill updates.
     await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>/Connect Free2Z/.test(b.textContent)&&!b.disabled),undefined,{timeout:10_000}).catch(()=>{});
     assert.ok(await connect.isEnabled(),`${why}: Connect stays available`);
@@ -857,8 +858,14 @@ try {
     assert.equal(await s.p.getByText('Budget left',{exact:true}).count(),0,'no remainder row without a budget');
     assert.equal(await s.figure('Each batch of activities'),'About 1 2Z','cost per batch from the settled charge');
     assert.equal(await s.figure('Available balance'),'100 2Z');
-    await s.p.getByRole('button',{name:'Manage allowance or balance',exact:false}).waitFor();
+    // Account exits: a neutral Manage Free2Z account (AHA's own entry) and Delete Free2Z account, both in the system browser.
+    await s.p.getByRole('button',{name:'Manage Free2Z account',exact:true}).click();
+    await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===1);
+    await s.p.getByRole('button',{name:'Delete Free2Z account',exact:true}).click();
+    await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===2);
+    assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['apps','delete'],'the webview names a page, never a URL');
     assert.equal(await s.p.getByRole('button',{name:'Add 2Z',exact:false}).count(),0,'no in-app purchase');
+    assert.equal(await s.p.locator('a[href]').count(),0,'no links out of the app at all');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   {
@@ -907,11 +914,13 @@ try {
     assert.equal(await s.p.getByRole('alert').count(),0,'insufficient balance: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('There isn’t enough 2Z in your Free2Z account for AI activities right now. The next activities need 1 2Z. Local practice continues.',{exact:false}).first().waitFor();
+    // Out of credits is calm: "No credits", Manage Free2Z account leads, and local practice continues.
+    await s.p.locator('.connection-pill').filter({hasText:/^No credits$/}).waitFor();
+    await s.p.getByText('No credits. Local practice continues.',{exact:false}).first().waitFor();
     await s.p.getByText('AI tutoring will be tried again on a later task.',{exact:false}).first().waitFor();
-    // Store-neutral (App Store 3.1.1/3.1.3, Play Payments): no call to buy or add 2Z anywhere on the page.
-    assert.equal(await s.p.getByText(/top up|top-up|buy|purchase|add 2Z/i).count(),0,'a low balance never prompts a purchase');
-    assert.equal(await s.p.getByRole('button',{name:'Raise app budget in Free2Z',exact:false}).count(),0,'a balance refusal offers no budget link');
+    assert.equal((await s.p.locator('.settings-buttons .primary-button').first().textContent()).trim(),'Manage Free2Z account','Manage Free2Z account leads');
+    // Store-neutral (App Store 3.1.1/3.1.3, Play Payments): no call to buy or add 2Z, and no amount needed, anywhere on the page.
+    assert.equal(await s.p.getByText(/top up|top-up|buy|purchase|add 2Z|need \d+ 2Z|raise it/i).count(),0,'a low balance never prompts a purchase');
     assert.equal(await s.figure('Available balance'),'0.5 2Z');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
@@ -924,8 +933,8 @@ try {
     assert.equal(await s.p.getByRole('alert').count(),0,'strict refusal: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/insufficient_balance/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('There isn’t enough 2Z in your Free2Z account for AI activities right now. The next activities need 3 2Z. Local practice continues.',{exact:false}).first().waitFor();
-    assert.equal(await s.p.getByText(/top up|top-up|buy|purchase|add 2Z/i).count(),0,'a low balance never prompts a purchase');
+    await s.p.getByText('No credits. Local practice continues.',{exact:false}).first().waitFor();
+    assert.equal(await s.p.getByText(/top up|top-up|buy|purchase|add 2Z|need \d+ 2Z/i).count(),0,'a low balance never prompts a purchase');
     assert.equal(await s.p.getByRole('button',{name:'Recover original request',exact:true}).count(),0,'a refusal leaves no unsettled receipt to recover');
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
@@ -940,18 +949,20 @@ try {
     assert.equal(await s.p.getByRole('alert').count(),0,'budget refusal: no alert');
     assert.ok(s.logged.some(m=>/AI unavailable/.test(m)&&/cap_exceeded/.test(m)),'logged visibly');
     await s.openSettings();
-    await s.p.getByText('App budget reached: raise it in Free2Z.',{exact:false}).first().waitFor();
+    await s.p.getByText('App budget reached. Local practice continues.',{exact:false}).first().waitFor();
+    await s.p.locator('.connection-pill').filter({hasText:/^App budget reached$/}).waitFor();
     assert.equal(await s.p.getByText('top up',{exact:false}).count(),0,'a budget refusal never says topping up fixes it');
-    const link=s.p.getByRole('button',{name:'Raise app budget in Free2Z',exact:false});
+    const link=s.p.locator('.settings-buttons .primary-button').filter({hasText:'Manage Free2Z account'});
     await link.click();
     await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===1);
+    assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['apps']);
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
     // A successful refresh clears the refusal and its link.
     await s.p.evaluate(()=>window.__ahaAI.releaseHeld?.());
     await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
     await s.p.locator('.connection-pill').filter({hasText:/^AI ready$/}).waitFor();
-    assert.equal(await link.count(),0,'the budget link goes away once AI is ready again');
+    assert.equal(await link.count(),0,'Manage Free2Z account stops leading once AI is ready again');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
   // ---- Structured output (#884; TEST-ONLY fake SDK, no live service) ----

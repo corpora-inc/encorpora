@@ -97,6 +97,33 @@ mod tests {
     }
 
     #[test]
+    fn account_pages_are_fixed_free2z_urls_never_a_checkout() {
+        assert_eq!(FREE2Z_ORIGIN, "https://free2z.cash");
+        assert_eq!(
+            account_url(AccountPage::Apps, Some("aha-test-client")),
+            "https://free2z.cash/account/apps?client_id=aha-test-client"
+        );
+        assert_eq!(
+            account_url(AccountPage::Apps, None),
+            "https://free2z.cash/account/apps"
+        );
+        assert_eq!(
+            account_url(AccountPage::Delete, Some("any")),
+            "https://free2z.cash/account/delete"
+        );
+        for page in [AccountPage::Apps, AccountPage::Delete] {
+            let url = account_url(page, client_id());
+            for banned in ["buy", "purchase", "checkout", "top-up", "topup", "pricing"] {
+                assert!(!url.contains(banned), "{url}");
+            }
+        }
+        // The webview names a page; anything else is refused at deserialization.
+        let page: AccountPage = serde_json::from_str("\"delete\"").unwrap();
+        assert_eq!(page, AccountPage::Delete);
+        assert!(serde_json::from_str::<AccountPage>("\"https://evil.test\"").is_err());
+    }
+
+    #[test]
     fn sign_in_requests_only_the_scopes_aha_uses() {
         let config = Config::new("test-client").with_scopes(SCOPES.iter().copied());
         assert_eq!(
@@ -199,13 +226,36 @@ mod tests {
     }
 }
 
-/// Open only the supported parent recovery page; never accept a URL from lesson content.
+/// The Free2Z web origin, where account pages live: the SDK's production issuer.
+const FREE2Z_ORIGIN: &str = tauri_plugin_f2z::f2z_sdk::DEFAULT_ISSUER;
+
+/// The Free2Z account pages AHA may open. The webview names one of these; it never supplies a URL.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum AccountPage {
+    /// Account management for this app (its grant and budget), opened on AHA's own entry.
+    Apps,
+    /// Free2Z's account deletion page (App Store 5.1.1(v), Play account deletion).
+    Delete,
+}
+
+/// The page's URL on the Free2Z origin. Account management, never a checkout: no purchase path is built here.
+fn account_url(page: AccountPage, client_id: Option<&str>) -> String {
+    match (page, client_id) {
+        // The id is build-validated to ASCII letters, digits, '-', '_' and '.', so it needs no encoding.
+        (AccountPage::Apps, Some(id)) => format!("{FREE2Z_ORIGIN}/account/apps?client_id={id}"),
+        (AccountPage::Apps, None) => format!("{FREE2Z_ORIGIN}/account/apps"),
+        (AccountPage::Delete, _) => format!("{FREE2Z_ORIGIN}/account/delete"),
+    }
+}
+
+/// Opens a Free2Z account page in the system browser (never a webview). An older frontend that sends no page gets
+/// account management.
 #[tauri::command]
-pub fn open_free2z_account(app: tauri::AppHandle) -> Result<(), String> {
+pub fn open_free2z_account(app: tauri::AppHandle, page: Option<AccountPage>) -> Result<(), String> {
     use tauri_plugin_opener::OpenerExt;
+    let url = account_url(page.unwrap_or(AccountPage::Apps), client_id());
     app.opener()
-        .open_url("https://free2z.cash/account/apps", None::<&str>)
-        .map_err(|_| {
-            "Could not open Free2Z. Visit free2z.cash/account/apps in your browser.".to_owned()
-        })
+        .open_url(&url, None::<&str>)
+        .map_err(|_| "Could not open Free2Z. Visit free2z.cash in your browser.".to_owned())
 }

@@ -63,10 +63,11 @@ What AHA adopts:
   nothing is journaled. At the send boundary, a fresh entry is released as `released`/0. Other errors are rethrown, so the
   format-refusal fallback and the uncertain cases are unchanged.
 - **Refusal details (#1136).** The native transport now keeps the documented `details`, with amounts as `bigint`.
-  `insufficient_balance` (402) shows "Not enough 2Z: top up in Free2Z." and, when Free2Z reports `required_2z` (or the local check
-  knows the hold), "The next activities need N 2Z." `cap_exceeded` (403) shows "App budget reached: raise it in Free2Z." with a
-  **Raise app budget in Free2Z** button that opens the fixed `free2z.cash/account/apps` URL (the existing native command). Both
-  say the refusal cost nothing and continue with local practice. #882's invariants hold: only a fresh first send can release;
+  Since the store-compliance pass (2026-10-14) the learner sees neither amounts nor a call to act: `insufficient_balance`
+  (402) shows "No credits. Local practice continues." and `cap_exceeded` (403) "App budget reached. Local practice
+  continues."; the Settings pill reads the same, and **Manage Free2Z account** (system browser,
+  `free2z.cash/account/apps?client_id=<AHA>`) becomes the primary button. Both
+  refusals cost nothing, and local practice continues. #882's invariants hold: only a fresh first send can release;
   refusals during same-key recovery stay uncertain (tests cover estimate and chat). A bare 402/403 with the refusal code (an older
   plugin) is still recognised. Known gap zuu#1145: `cap_exceeded` lacks `resets_at`/`cap_2z`/`cap_period`, so AHA reads none of
   them.
@@ -287,8 +288,10 @@ their original key and body; a migration test covers v1 and v2 containers.
 Settings show, read-only: the available balance, the app budget ("100 2Z per month",
 "No app budget") with what is left when Free2Z has reported it, and the cost of the
 last activity batch ("About N 2Z" from the settled charge, else "Up to N 2Z" from the
-estimate's hold). "Manage allowance or balance" opens the fixed Free2Z account URL.
-There is no in-app purchase.
+estimate's hold). "Manage Free2Z account" opens `free2z.cash/account/apps?client_id=<AHA>` and, when
+connected, "Delete Free2Z account" opens `free2z.cash/account/delete`, both in the system browser through the
+native `open_free2z_account` command, which takes a page name and never a URL. There is no in-app purchase and no
+link to a Free2Z checkout.
 
 Contract questions for the Free2Z team (current spec text leaves these open):
 

@@ -1077,11 +1077,12 @@ export function Studio(props: StudioProps) {
             )}
             <div className="settings-buttons">
               {/* Account-only actions exist only once connected; disconnected shows Connect alone. */}
-              {/* A 403 budget refusal links to the app's Free2Z budget (free2z.cash/account/apps). */}
-              {props.account.connected && !props.account.aiReady && props.account.refusal === "raise_budget" && props.onManageAccount && (
-                <button className="primary-button" disabled={props.busy} onClick={props.onManageAccount}>Raise app budget in Free2Z <ArrowUpRight size={16} /></button>
+              {/* The one neutral exit to Free2Z (system browser, never a checkout). Out of credits or budget, it leads. */}
+              {props.account.connected && props.onManageAccount && (
+                <button className={props.account.refusal && !props.account.aiReady ? "primary-button" : "secondary-button"} disabled={props.busy} onClick={props.onManageAccount}>
+                  Manage Free2Z account <ArrowUpRight size={16} aria-hidden="true" />
+                </button>
               )}
-              {props.account.connected && props.onManageAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onManageAccount}>Manage allowance or balance <ArrowUpRight size={16} /></button>}
               {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
               {props.account.connected ? (
@@ -1117,6 +1118,11 @@ export function Studio(props: StudioProps) {
                 <button className="text-button" disabled={props.busy} onClick={() => props.onDiscardAnswer?.(saved.operationId)}>Set this answer aside</button>
               </div>)}
             </div>}
+            {props.account.connected && props.onDeleteFree2zAccount && (
+              <button className="danger-link" disabled={props.busy} onClick={props.onDeleteFree2zAccount}>
+                Delete Free2Z account <ArrowUpRight size={14} aria-hidden="true" />
+              </button>
+            )}
             <button className="text-button" onClick={closeSettings}>
               <ChevronLeft size={16} /> Back to learning
             </button>

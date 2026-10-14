@@ -101,7 +101,7 @@ export interface StudioProps {
     /** Approximate 2Z per batch of AI activities (last settled charge, else the last estimate's upper bound). */
     batchCost?: string;
     status?: string;
-    /** The last AI attempt was refused for this reason (zero cost): `raise_budget` also shows the Free2Z account link. */
+    /** The last AI attempt was refused for this reason (zero cost): "No credits" or "App budget reached", with Manage Free2Z account. */
     refusal?: "low_balance" | "raise_budget";
     /** An earlier AI request is still settling; recovery runs on its own and no new paid call is sent until it is done. */
     settling?: boolean;
@@ -134,7 +134,10 @@ export interface StudioProps {
   /** A preset question (application/curiosity.ts); the learner never types one. */
   onCuriosity: (question: CuriosityKind) => void;
   onCloseCuriosity: () => void;
+  /** Opens Free2Z account management for AHA in the system browser. */
   onManageAccount?: () => void;
+  /** Opens Free2Z's account deletion page in the system browser (shown only when connected). */
+  onDeleteFree2zAccount?: () => void;
   onSignIn: () => void;
   onSignOut: () => void;
   onRefreshAccount?: () => void;

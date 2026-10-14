@@ -9,5 +9,9 @@ export const SETTLING_LABEL = "Finishing an earlier AI request…";
 export function connectionPill(account: StudioProps["account"]): { label: string; ready: boolean } {
   if (!account.connected) return { label: "Local practice", ready: false };
   if (account.settling) return { label: SETTLING_LABEL, ready: false };
-  return account.aiReady ? { label: "AI ready", ready: true } : { label: "Connected · AI not ready", ready: false };
+  if (account.aiReady) return { label: "AI ready", ready: true };
+  // Out of credits is a calm state, not an error: Settings offers only the neutral Manage Free2Z account exit.
+  if (account.refusal === "low_balance") return { label: "No credits", ready: false };
+  if (account.refusal === "raise_budget") return { label: "App budget reached", ready: false };
+  return { label: "Connected · AI not ready", ready: false };
 }
