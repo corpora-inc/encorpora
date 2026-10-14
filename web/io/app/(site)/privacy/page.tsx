@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         <main className="min-h-screen bg-white text-gray-800 px-6 py-16">
             <div className="max-w-3xl mx-auto">
                 <h1 className="text-5xl font-extrabold mb-6">Privacy Promise</h1>
-                <p className="text-sm text-gray-500 mb-8">Last updated 27 September 2026</p>
+                <p className="text-sm text-gray-500 mb-8">Last updated 14 October 2026</p>
 
                 <p className="text-lg mb-6">
                     This policy covers Corpora’s offline learning products, including <strong>Corpán</strong>, our language
@@ -25,6 +25,11 @@ export default function PrivacyPage() {
                     The <Link href="/aha/privacy" className="underline">¡AHA! mathematics app has its own privacy policy</Link>.
                     Its optional AI lessons use Free2Z sign-in and send structured problem and progress state to AI services;
                     the offline-product promises below do not describe those online features.
+                </p>
+                <p className="text-lg mb-8">
+                    This website, encorpora.io, loads Google’s advertising tag on most of its pages so that we can
+                    measure our own ads, and Google may set cookies when it does; the ¡AHA! pages under /aha/ do not
+                    load it, and the apps described here do not include it.
                 </p>
                 <p className="text-lg mb-12">
                     The apps differ in one respect, and it is worth stating
