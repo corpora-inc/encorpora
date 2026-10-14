@@ -380,9 +380,18 @@ try {
   assert.equal((await session()).aiActivity.operationId,undelivered.id,'the recovered batch is served after the restart');
   await page.evaluate(()=>{window.__ahaAI.enforced=true;});
   await page.getByRole('button',{name:'Ask a question',exact:true}).click();
-  await page.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
+  await page.getByRole('button',{name:'Where would I use this?',exact:true}).click();
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
   await page.waitForFunction(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.curiosity?.answer);
+  {
+    // Structured in: the paid request carries the activity and a preset id, never a typed question.
+    const sent=await page.evaluate(()=>window.__ahaAI.requests.at(-1).messages[1].content[0].text);
+    const body=JSON.parse(sent);
+    assert.equal(body.ask,'real-life');
+    assert.deepEqual(Object.keys(body).sort(),['activity','ask'],'only the activity on screen and the preset id');
+    assert.equal((await session()).curiosity.question,'real-life','the saved question is the preset id');
+    assert.ok(await page.getByText('Where would I use this?',{exact:true}).count(),'shown as its label');
+  }
   await page.reload();await resume();
   await page.getByText('You can use this idea to share ingredients fairly.',{exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>window.__ahaAI.starts.length),0,'paid curiosity restores without a new call');
@@ -391,7 +400,7 @@ try {
   await page.evaluate(()=>{window.__ahaAI.enforced=true;window.__ahaAI.failOpening=true;});
   const curiosityStarts=await page.evaluate(()=>window.__ahaAI.starts.length);
   await page.getByRole('button',{name:'Ask a question',exact:true}).click();
-  await page.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
+  await page.getByRole('button',{name:'Where would I use this?',exact:true}).click();
   await page.getByRole('alert').filter({hasText:'Wait at least 5 seconds'}).waitFor();
   const interrupted=await page.evaluate(()=>window.__ahaAI.starts.at(-1));
   await page.getByRole('button',{name:'Back to the problem',exact:true}).click();
@@ -884,7 +893,7 @@ try {
     await s.p.getByRole('button',{name:'Close settings',exact:true}).click();
     // A curiosity question gets the built-in local answer, not an alert, and no paid call.
     await s.p.getByRole('button',{name:'Ask a question',exact:true}).click();
-    await s.p.getByRole('button',{name:'Where would I use this in real life? ↗',exact:true}).click();
+    await s.p.getByRole('button',{name:'Where would I use this?',exact:true}).click();
     await s.p.getByText('Live tutoring isn’t available yet.',{exact:false}).waitFor();
     assert.equal(await s.p.getByRole('alert').count(),0,'curiosity while platform_disabled: no alert');
     assert.equal(await s.starts(),0,'curiosity while platform_disabled: no paid call');

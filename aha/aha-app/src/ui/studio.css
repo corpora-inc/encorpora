@@ -1881,6 +1881,26 @@ html.aha-stage-pinned body {
   min-height: 44px;
   text-align: left;
 }
+/* Preset curiosity questions: one calm column of choices, each a full-width row. */
+.curiosity-presets {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+.curiosity-presets .suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+}
+.curiosity-presets .suggestion > svg {
+  flex: none;
+}
 @media (min-width: 700px) {
   .sheet {
     margin: auto;
