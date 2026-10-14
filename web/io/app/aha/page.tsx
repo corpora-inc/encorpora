@@ -1,48 +1,51 @@
 import Link from "next/link";
 export const metadata = {
-  title: "¡AHA! — A math studio for curious minds",
+  title: "¡AHA! — Math, one idea at a time",
   description:
-    "An experimental guided mathematics tutor from Corpora. Family beta in development.",
+    "Calm mathematics practice for anyone building math foundations, from counting to linear equations. Works offline; progress stays on your device.",
 };
 export default function AhaPage() {
   return (
     <main className="min-h-screen bg-[#f8f7f1] px-6 py-20 text-[#263d35]">
       <div className="mx-auto max-w-3xl">
-        <p className="text-sm uppercase tracking-widest">
-          Corpora · Family beta in development
-        </p>
+        <p className="text-sm uppercase tracking-widest">Corpora</p>
         <h1 className="mt-8 font-serif text-7xl font-bold">¡AHA!</h1>
-        <h2 className="mt-8 font-serif text-4xl">Let’s make it click.</h2>
+        <h2 className="mt-8 font-serif text-4xl">Math, one idea at a time.</h2>
         <p className="mt-6 text-xl leading-relaxed">
-          A guided math studio for curious minds. One question at a time, with
-          room to ask why, try another explanation, and find the next useful
-          challenge.
+          A calm place to practice mathematics, for anyone building math
+          foundations. Choose a starting point from Kindergarten to Grade 8
+          standards; ¡AHA! adjusts from there, based on how each answer goes.
         </p>
         <div className="mt-10 space-y-5 rounded-2xl border border-[#d9dfcf] bg-[#fffefa] p-7">
           <p>
-            The prototype includes local mathematics practice, visual
-            representations, and a bundled K–8 standards map. Independently
-            checked practice covers selected numerical skills; it does not
-            certify complete mastery of every standard.
+            Each problem has the screen to itself. Ask for a hint, see how it’s
+            done, or try something harder. Every answer is checked on your
+            device.
           </p>
           <p>
-            The planned live tutor uses an adult’s Free2Z account for metered AI
-            access. Live service integration and mobile testing-track delivery
-            are still being verified. This page does not announce a public
-            release or a working paid service.
+            Growth shows your skills by area, your week and your recent
+            discoveries. Skills you have learned come back for review when they
+            are ready to revisit.
           </p>
           <p>
-            Learner progress is stored in the app on your device. Conceptual
-            understanding, arithmetic fluency, and delayed remembering are
-            tracked separately.
+            The core works offline, with built-in practice and no account.
+          </p>
+          <p>
+            You can also connect a Free2Z account for AI-written activities
+            shaped to what you are working on. Free2Z handles sign-in and meters
+            AI use on your own Free2Z account. ¡AHA! sells nothing.
+          </p>
+          <p>
+            Progress stays on your device. There is no Corpora account, no
+            advertising and no analytics.
           </p>
         </div>
         <nav
           className="mt-10 flex flex-wrap gap-6 text-sm underline"
-          aria-label="AHA information"
+          aria-label="¡AHA! information"
         >
-          <Link href="/aha/privacy">Privacy and learning data</Link>
-          <Link href="/aha/support">Beta support</Link>
+          <Link href="/aha/privacy">Privacy policy</Link>
+          <Link href="/aha/support">Support</Link>
           <Link href="/">Corpora</Link>
         </nav>
       </div>
