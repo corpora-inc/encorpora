@@ -3,6 +3,7 @@ import type { LapRecap } from "../application/lapRecap";
 import type { ActivitySpec } from "../activity/spec";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import type { CuriosityKind } from "../application/curiosity";
+import type { ReportReason } from "../application/aiReports";
 export type StudioVisual =
   | { type: "fraction"; numerator: number; denominator: number; label?: string }
   | { type: "array"; rows: number; columns: number; label?: string }
@@ -123,8 +124,10 @@ export interface StudioProps {
   learners?: { id: string; name: string }[];
   onSubmit: (answer: string) => void;
   onContinue: () => void;
+  /** `dispute` sets the activity aside; its reason (a fixed choice, never typed) goes into an AI activity's report. */
   onSupport: (
     action: "hint" | "explain" | "stuck" | "harder" | "dispute",
+    reason?: ReportReason,
   ) => void;
   /** The worked explanation of the AI activity on screen was opened (the re-present rule needs to know). */
   onExplainSeen?: () => void;

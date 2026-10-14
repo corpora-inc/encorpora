@@ -101,7 +101,7 @@ try{
   await page.getByRole('button',{name:'Next',exact:true}).click();await page.getByRole('button',{name:'Check',exact:true}).waitFor();const disputed=await active();
   // Simulate a crash boundary: quarantine commits, but clearing the saved presentation fails.
   await page.evaluate(()=>{window.__ahaFixture.failNextSession=true;});
-  await page.getByRole('button',{name:'Something seems off',exact:true}).click();await page.getByRole('button',{name:'Set it aside',exact:true}).click();await page.getByRole('button',{name:'Next',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Report',exact:true}).click();await page.getByRole('button',{name:'Incorrect',exact:true}).click();await page.getByRole('button',{name:'Next',exact:true}).waitFor();
   await page.getByRole('alert').filter({hasText:'TEST disk full'}).waitFor();
   assert.equal(Object.values((await db()).disputes).flat()[0].activityId,disputed.id);
   assert.equal((await active()).id,disputed.id,'fixture preserves stale pre-dispute presentation');
@@ -139,7 +139,7 @@ try{
   await page.getByRole('button',{name:'Check',exact:true}).waitFor();
   assert.equal((await active()).id,pendingId,'retry saves the same generated activity without regenerating');
   // Quarantine removes the task, but its reassurance and next action must remain visible.
-  await page.getByRole('button',{name:'Something seems off',exact:true}).click();await page.getByRole('button',{name:'Set it aside',exact:true}).click();
+  await page.getByRole('button',{name:'Report',exact:true}).click();await page.getByRole('button',{name:'Incorrect',exact:true}).click();
   await page.getByRole('button',{name:'Next',exact:true}).waitFor();
   assert.match(await page.locator('.stage-message .feedback-line').innerText(),/different example/);
   assert.match(await page.locator('.stage-message .hint-note').innerText(),/won’t count/);
@@ -442,7 +442,7 @@ try{
     await p.locator('.stage-toast').getByRole('button',{name:'See how',exact:true}).click();await p.locator('.help-panel.is-feedback').waitFor();await t.snap('see how after a miss');
     await p.getByRole('button',{name:'Ask a question',exact:true}).click();await p.getByRole('dialog',{name:'Ask a question'}).waitFor();await t.snap('curiosity open');
     await p.getByRole('button',{name:'Close',exact:true}).click();
-    await p.getByRole('button',{name:'Something seems off',exact:true}).click();await p.getByRole('dialog',{name:'Something seems off'}).waitFor();await t.snap('flag confirm');
+    await p.getByRole('button',{name:'Report',exact:true}).click();await p.getByRole('dialog',{name:'Report'}).waitFor();await t.snap('flag confirm');
     await p.getByRole('button',{name:'Keep going',exact:true}).click();
     await p.evaluate(()=>{window.__ahaFixture.hold=new Promise(r=>{window.__ahaFixture.release=r;});});
     await p.getByRole('button',{name:'Next',exact:true}).click();await p.locator('.stage-veil').waitFor();
@@ -476,7 +476,7 @@ try{
     await sp.getByRole('button',{name:'Ask a question',exact:true}).click();await sp.getByRole('dialog',{name:'Ask a question'}).waitFor();
     await sp.getByRole('button',{name:'Where would I use this?',exact:true}).click();await sp.getByText('TEST answer',{exact:false}).waitFor();await s.snap('curiosity answered');
     await sp.getByRole('button',{name:'Close',exact:true}).click();
-    await sp.getByRole('button',{name:'Something seems off',exact:true}).click();await sp.getByRole('dialog',{name:'Something seems off'}).waitFor();await s.snap('flag confirm');
+    await sp.getByRole('button',{name:'Report',exact:true}).click();await sp.getByRole('dialog',{name:'Report'}).waitFor();await s.snap('flag confirm');
     await sp.getByRole('button',{name:'Keep going',exact:true}).click();
     await answer.fill(String(spec.response.answer+1));await watchMotion(sp);await sp.getByRole('button',{name:'Check',exact:true}).click();
     await sp.locator('.stage-toast.retry').waitFor();
@@ -790,7 +790,7 @@ try{
   await retrier.getByRole('button',{name:'Check',exact:true}).waitFor();
   const flagged=await shownTask();
   await respond(missFor(expectedAnswer(flagged.task)));await retrier.locator('.feedback-line.nudge').waitFor();
-  await retrier.getByRole('button',{name:'Something seems off',exact:true}).click();await retrier.getByRole('button',{name:'Set it aside',exact:true}).click();
+  await retrier.getByRole('button',{name:'Report',exact:true}).click();await retrier.getByRole('button',{name:'Incorrect',exact:true}).click();
   await retrier.waitForFunction(id=>(Object.values(window.__ahaFixture.read().disputes).flat()).some(d=>d.activityId===id),flagged.id);
   assert.equal(Object.values((await retryDb()).attempts).flat().filter(r=>r.activityId===flagged.id).length,1,'a flagged pending retry still records its miss');
   await retryContext.close();
@@ -940,7 +940,7 @@ try{
     await p.getByRole('button',{name:'Continue',exact:true}).click();await p.getByRole('button',{name:'Check',exact:true}).waitFor();
     await p.getByRole('button',{name:'Ask a question',exact:true}).click();await p.getByRole('dialog',{name:'Ask a question'}).waitFor();await check('ask sheet');
     await p.getByRole('button',{name:'Close',exact:true}).click();
-    await p.getByRole('button',{name:'Something seems off',exact:true}).click();await p.getByRole('dialog',{name:'Something seems off'}).waitFor();await check('flag sheet');
+    await p.getByRole('button',{name:'Report',exact:true}).click();await p.getByRole('dialog',{name:'Report'}).waitFor();await check('flag sheet');
     await p.getByRole('button',{name:'Keep going',exact:true}).click();
     await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).waitFor();await check('status sheet');
     await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();await p.getByRole('button',{name:'Export backup',exact:true}).waitFor();await check('settings from focus');

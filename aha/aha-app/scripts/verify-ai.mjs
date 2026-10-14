@@ -718,8 +718,8 @@ try {
     await h.getByRole('button',{name:'Try something harder',exact:true}).click();
     await h.waitForFunction(i=>Object.values(window.__ahaFixture.read().sessions)[0]?.data?.aiActivity?.activityId!==i,flagged);
     const second=(await hs()).aiActivity.activityId;
-    await h.getByRole('button',{name:'Something seems off',exact:true}).click();
-    await h.getByRole('button',{name:'Set it aside',exact:true}).click();
+    await h.getByRole('button',{name:'Report',exact:true}).click();
+    await h.getByRole('button',{name:'Incorrect',exact:true}).click();
     await h.getByRole('button',{name:NEXT}).waitFor();
     let st=await hs();
     assert.ok(!st.aiActivity,'the flagged spec left the screen');
@@ -1058,10 +1058,27 @@ try {
     assert.equal((await attempt()).spec.model,'fixture-pro');
     await p.getByRole('button',{name:NEXT}).click();
     await card.waitFor();
-    assert.equal((await sess()).aiActivity.model,'fixture-pro');
-    await p.getByRole('button',{name:'Something seems off',exact:true}).click();
-    await p.getByRole('button',{name:'Set it aside',exact:true}).click();
+    const reportedItem=(await sess()).aiActivity;
+    assert.equal(reportedItem.model,'fixture-pro');
+    await p.getByRole('button',{name:'Report',exact:true}).click();
+    // A fixed reason choice, nothing to type (Play AI-Generated Content policy: report without leaving the app).
+    const reportSheet=await p.getByRole('dialog',{name:'Report'}).evaluate(d=>({fields:d.querySelectorAll('input,textarea').length,
+      reasons:[...d.querySelectorAll('.report-reasons button')].map(b=>b.textContent.trim())}));
+    assert.deepEqual(reportSheet,{fields:0,reasons:['Incorrect','Inappropriate','Unsafe','Something else']});
+    await p.getByRole('button',{name:'Incorrect',exact:true}).click();
     await p.waitForFunction(()=>Object.values(window.__ahaFixture.read().disputes).flat().length===1);
+    {
+      // Recorded on the device with the exact activity, its spec id and the Free2Z call and receipt; queued until the SDK can send it.
+      const outbox=(await data()).journals['aha-ai-reports'];
+      assert.equal(outbox.version,1);
+      assert.equal(outbox.reports.length,1);
+      const {id,createdAt,...report}=outbox.reports[0];
+      assert.ok(id&&Date.parse(createdAt));
+      assert.deepEqual(report,{activityId:reportedItem.activityId,specId:reportedItem.spec.id,operationId:reportedItem.operationId,
+        callId:'fixture-call',receiptId:'fixture-receipt',model:'fixture-pro',reason:'incorrect'});
+      assert.equal(Object.values((await data()).disputes).flat()[0].reason,'Learner reported: incorrect');
+      assert.notEqual((await sess()).aiActivity?.activityId,reportedItem.activityId,'the reported activity is replaced');
+    }
     // Per-model stats from local data only, in Settings and in the problem report.
     await s.openSettings();
     await p.getByText('Model stats',{exact:true}).click();

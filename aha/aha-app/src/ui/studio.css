@@ -1833,6 +1833,13 @@ html.aha-stage-pinned body {
   display: grid;
   gap: 8px;
 }
+/* Report reasons: two by two, then Keep going below. */
+.report-reasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 4px;
+}
 .sheet .primary-button,
 .sheet .secondary-button {
   min-height: 50px;
