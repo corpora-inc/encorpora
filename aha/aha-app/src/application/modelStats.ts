@@ -55,7 +55,7 @@ export interface StatsInput {
   batches: readonly BatchRecord[];
   charges: readonly BatchCharge[];
   answers: readonly SpecAnswer[];
-  /** Activity ids the learner set aside with "Something seems off". */
+  /** Activity ids the learner set aside with Report. */
   flags: readonly string[];
 }
 export interface ModelStats {
@@ -67,7 +67,7 @@ export interface ModelStats {
   unreadable: number;
   /** Sets that ran out of room (truncated, or empty after reasoning). */
   outOfRoom: number;
-  /** "Something seems off" on an activity this model wrote. */
+  /** Report on an activity this model wrote. */
   flags: number;
   /** Settled, charged batches and their total, for the average. */
   chargedBatches: number;

@@ -34,7 +34,7 @@ Screenshots come from `adb screencap`, so they include system bars and safe area
 
 #### Reviewing flagged AI activities
 
-When a learner taps "Something seems off" on an AI activity, the app stores a dispute next to the exact spec it showed. To review those on a debug build attached over USB:
+When a learner taps Report on an AI activity and picks a reason (incorrect, inappropriate, unsafe, something else), the app sets it aside with a dispute next to the exact spec it showed, and records a report (activity, spec id, operation, Free2Z call and receipt ids, model, reason) in the account journal `aha-ai-reports`. Reports wait there until the Free2Z SDK this build pins can send them (`submitReport` in `src/application/aiReports.ts`). To review those on a debug build attached over USB:
 
 ```sh
 npm run flag-review                                  # every flag; or: -- --serial R3GL80264RZ (or ANDROID_SERIAL)

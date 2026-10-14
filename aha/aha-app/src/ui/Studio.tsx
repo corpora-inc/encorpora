@@ -42,6 +42,7 @@ import { Visual } from "./Visual";
 import type { StudioProps } from "./types";
 import { LAP, type LapRecap } from "../application/lapRecap";
 import { CURIOSITY_PRESETS, curiosityLabel } from "../application/curiosity";
+import { REPORT_REASONS } from "../application/aiReports";
 import "katex/dist/katex.min.css";
 import "./studio.css";
 export type { StudioProps, StudioActivity, StudioVisual, StudioSpecActivity } from "./types";
@@ -631,7 +632,7 @@ export function Studio(props: StudioProps) {
         badge={(props.feedback?.kind === "retry" || (!!spec && !!spec.result && !spec.result.correct && !spec.result.invalid)) && drawer !== "feedback" && drawer !== "explain"}
         onClick={showHow} />
       <IconButton label="Try something harder" icon={<TrendingUp size={22} />} disabled={props.busy} onClick={() => advance(() => props.onSupport("harder"))} />
-      <IconButton label="Something seems off" icon={<Flag size={21} />} disabled={props.busy} onClick={() => setSheet("flag")} />
+      <IconButton label="Report" icon={<Flag size={21} />} disabled={props.busy} onClick={() => setSheet("flag")} />
       <IconButton label="Ask a question" icon={<MessageCircle size={22} />} disabled={props.busy}
         expanded={sheet === "ask"} onClick={() => setSheet("ask")} />
     </div>
@@ -996,13 +997,17 @@ export function Studio(props: StudioProps) {
         {ai && props.authoringModel && <p className="status-model">Written by {props.authoringModel}</p>}
         <button type="button" className="secondary-button" onClick={openSettings}><Settings size={17} aria-hidden="true" /> Settings</button>
       </Sheet>
-      <Sheet open={sheet === "flag"} onClose={() => setSheet(null)} label="Something seems off">
-        <p className="sheet-title">Something seems off?</p>
-        <p className="sheet-text">We’ll set this problem aside. It won’t count.</p>
-        <div className="sheet-actions">
-          <button type="button" className="primary-button" disabled={props.busy} onClick={() => { setSheet(null); advance(() => props.onSupport("dispute")); }}>Set it aside</button>
-          <button type="button" className="secondary-button" onClick={() => setSheet(null)}>Keep going</button>
+      <Sheet open={sheet === "flag"} onClose={() => setSheet(null)} label="Report">
+        <p className="sheet-title">What’s wrong?</p>
+        <p className="sheet-text">It’s set aside and won’t count.</p>
+        {/* A fixed choice, never typed text: recorded with the activity and its AI call. */}
+        <div className="report-reasons">
+          {REPORT_REASONS.map(r => (
+            <button key={r.id} type="button" className="secondary-button" disabled={props.busy}
+              onClick={() => { setSheet(null); advance(() => props.onSupport("dispute", r.id)); }}>{r.label}</button>
+          ))}
         </div>
+        <button type="button" className="text-button" onClick={() => setSheet(null)}>Keep going</button>
       </Sheet>
       <Sheet open={sheet === "ask" && view === "focus" && !settings} onClose={closeAsk} label="Ask a question">
         {props.curiosity ? (

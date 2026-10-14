@@ -1,6 +1,6 @@
 /** DEV-ONLY (npm run flag-review): read flagged activities out of a COPY of the app's SQLite DB.
  * Record shapes (src/storage.ts): a `records` row holds JSON `data`;
- *   kind='dispute'  → DisputeRecord  { id, activityId, createdAt, reason }  ("Something seems off")
+ *   kind='dispute'  → DisputeRecord  { id, activityId, createdAt, reason }  (Report)
  *   kind='activity' → ActivityRecord { id, sessionId, createdAt, data } where an AI activity's `data` is
  *     { id, source: 'ai-spec', operationId, model?, spec } (Controller.showSpec; `model` since #905) and a
  *     local task's `data` is the task itself (source: 'local', skillId, prompt, …). */

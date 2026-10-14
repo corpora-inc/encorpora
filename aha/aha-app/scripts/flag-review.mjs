@@ -1,4 +1,4 @@
-/** DEV-ONLY: review the AI activities a learner flagged ("Something seems off") on an attached debug build.
+/** DEV-ONLY: review the AI activities a learner flagged (Report) on an attached debug build.
  * Copies the app DB off the device READ-ONLY (adb exec-out run-as … cat; nothing is written to, tapped
  * on or launched on the device), joins each dispute to its stored Activity Spec and re-renders the spec
  * in the real focus stage (src/activity/gallery/stage.html, compact ActivityView) at the phone viewport

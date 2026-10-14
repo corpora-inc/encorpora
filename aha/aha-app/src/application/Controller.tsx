@@ -54,6 +54,7 @@ import { spendingSummary } from "./spending";
 import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrigger } from "./receiptRecovery";
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 import { CURIOSITY_SYSTEM, curiosityContext, isCuriosityKind, type CuriosityKind } from "./curiosity";
+import { REPORTS_KEY, appendReport, markSent, reportFor, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
 const loadAiActivities = () => import("./aiActivities");
@@ -85,6 +86,11 @@ const native = isTauri();
 const CONNECTED_STATUS = "AI tutoring is connected. Activities use 2Z from your Free2Z balance.";
 const SETTLING_STATUS = "Finishing an earlier AI request. AHA settles it on its own; local practice continues.";
 const preview = previewRepository();
+/**
+ * Free2Z's content-report endpoint. The SDK this build pins has none yet; the follow-up wires its
+ * `reportCall(callId, reason)` here. Until then reports are recorded and wait in the account's outbox.
+ */
+const REPORT_SENDER: ReportSender | undefined = undefined;
 function visual(v?: VisualSpec): StudioVisual | undefined {
   if (!v) return undefined;
   switch (v.kind) {
@@ -1344,11 +1350,31 @@ export default function Controller() {
     await saveSession();
     return true;
   }
-  async function support(kind: Parameters<StudioProps["onSupport"]>[0]) {
+  /**
+   * Records a report of the AI activity on screen in this account's outbox (with the Free2Z call it came from, when the
+   * journal knows it), then hands it to submitReport. A failed write throws: the activity is not set aside unreported.
+   */
+  async function reportAi(item: QueuedActivity, reason: ReportReason) {
+    const repo = repository.current, tutor = provider.current;
+    const call = tutor ? await tutor.callFor(item.operationId).catch((error: unknown) => { logError("ai-report", error); return {}; }) : {};
+    const report: AiReport = {id: crypto.randomUUID(), activityId: item.activityId, specId: item.spec.id, operationId: item.operationId,
+      ...call, ...(item.model ? {model: item.model} : {}), reason, createdAt: new Date().toISOString()};
+    const outbox = appendReport(await repo.getJournal(REPORTS_KEY), report);
+    await repo.putJournal(REPORTS_KEY, outbox);
+    // A repeat report of the same activity (a retry after a failed set-aside) resolves to the stored one, never a second send.
+    const stored = reportFor(outbox, item.activityId) ?? report;
+    logEvent("info", "ai-report", `${stored.reason} report recorded for ${item.activityId}${stored.callId ? "" : " (no Free2Z call id in the journal)"}`);
+    if (await submitReport(stored, REPORT_SENDER, (level, message) => logEvent(level, "ai-report", message)) === "sent")
+      await repo.putJournal(REPORTS_KEY, markSent(await repo.getJournal(REPORTS_KEY), stored.id, new Date().toISOString()));
+  }
+  async function support(kind: Parameters<StudioProps["onSupport"]>[0], reason: ReportReason = "other") {
     const a = currentActivity.current;
     const shownId = displayedId();
     if (!shownId) return;
     if (kind === "dispute") {
+      // An AI activity's report is recorded first, so it is never set aside without its report.
+      const reported = currentAi.current?.activityId === shownId ? currentAi.current : undefined;
+      if (reported) await reportAi(reported, reason);
       // Keep an append-only dispute journal; projection is rebuilt without this item's evidence.
       // A pending retry's miss is recorded first so the disputed item stays auditable.
       await settlePendingRetry();
@@ -1356,7 +1382,7 @@ export default function Controller() {
       const updated = quarantineActivity(
         state,
         shownId,
-        "Learner reported a problem",
+        `Learner reported: ${reason}`,
       );
       await repository.current.recordDispute(
         currentProfile.current!.id,
@@ -1364,7 +1390,7 @@ export default function Controller() {
           id: crypto.randomUUID(),
           activityId: shownId,
           createdAt: new Date().toISOString(),
-          reason: "Learner reported a problem",
+          reason: `Learner reported: ${reason}`,
         },
         json(learningCheckpoint(updated)),
       );
@@ -1631,7 +1657,7 @@ export default function Controller() {
         void action(() => submit(answer, timing));
       }}
       onContinue={() => void action(continueLearning, account.connected && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
-      onSupport={(kind) => void action(() => support(kind))}
+      onSupport={(kind, reason) => void action(() => support(kind, reason))}
       onExplainSeen={() => { if (currentAi.current && !aiWorked.current) { aiWorked.current = true; void reconcileRepeat().catch(e => logError("ai-queue", e)); } }}
       onCuriosity={(q) => void action(() => curiosityQuestion(q), "Thinking about your question…")}
       onCloseCuriosity={() => void action(async () => {

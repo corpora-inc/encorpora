@@ -94,7 +94,7 @@ const scenarios: Record<string, Scenario> = {
   "sheet-ask": { local: "visual", steps: ["Continue", "Ask a question"] },
   "sheet-ask-thinking": { local: "visual", props: { busy: true, curiosity: { question: "real-life" }, onCancel: noop }, steps: ["Continue"] },
   "sheet-ask-answer": { local: "visual", props: { curiosity: { question: "real-life", answer: "Arrays show up whenever things are lined up in **rows**: egg cartons, seats in a theatre, a muffin tray. Counting one row and multiplying is faster than counting every single one." } }, steps: ["Continue"] },
-  "sheet-flag": { local: "short", steps: ["Continue", "Something seems off"] },
+  "sheet-flag": { local: "short", steps: ["Continue", "Report"] },
   "settings-out": { steps: ["settings"] },
   "settings-out-bottom": { steps: ["settings", "scroll-end"] },
   "settings-in": { props: { account: signedIn, modelMenu, loadModelStats: async () => statsLines, learners: [{ id: "a", name: "Maple" }, { id: "b", name: "River" }] }, steps: ["settings"] },

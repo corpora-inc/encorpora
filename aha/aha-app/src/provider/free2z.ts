@@ -515,6 +515,14 @@ export class Free2zTutor {
       ...(op.state === 'finalized' && op.charge?.state === 'charged' && op.charge.charged2z !== undefined ? {charged2z: BigInt(op.charge.charged2z)} : {}),
     }));
   }
+  /**
+   * The Free2Z call and receipt behind an operation, from the local journal only (no service call), so a content report
+   * can name the exact AI call it is about. Empty when the operation is unknown here or never reached the gateway.
+   */
+  async callFor(operationId: string): Promise<{callId?: string; receiptId?: string}> {
+    const op = (await this.ledger()).operations.find(o => o.id === operationId && o.subject === this.subject);
+    return {...(op?.callId ? {callId: op.callId} : {}), ...(op?.charge?.receiptId ? {receiptId: op.charge.receiptId} : {})};
+  }
   async inspectPending(): Promise<PendingOperation[]> {
     const before = await this.current();
     const ledger = await this.ledger();
