@@ -1,18 +1,19 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { checkBirthYear } from "../application/aiConsent";
+import { checkBirthYear, type AccountExit } from "../application/aiConsent";
 
 /**
- * The one-time step before Free2Z sign-in, in Settings only (never in the learning loop). Addressed to the Free2Z
- * account holder: what is sent and to whom, a neutral birth-year screen, and an explicit Allow. The host decides
- * the outcome; this only checks that the year is readable.
+ * The adult step before every account exit, in Settings only (never in the learning loop). Addressed to the Free2Z
+ * account holder: a neutral birth-year screen with nothing pre-filled or suggested, plus, when this device has not
+ * given it yet, what AI lessons send and to whom. The host decides the outcome; this only checks the year is readable.
  */
-export function AiConsent({ busy, connected, locked, onAllow, onCancel }: {
+export function AiConsent({ busy, exit, needsConsent, locked, onPass, onCancel }: {
   busy?: boolean;
-  /** Already signed in (AI paused until allowed): Allow resumes it instead of opening sign-in. */
-  connected: boolean;
+  exit: AccountExit;
+  /** This device has not allowed AI lessons yet: the step also discloses and asks. */
+  needsConsent: boolean;
   locked: boolean;
-  onAllow: (birthYear: string) => void;
+  onPass: (birthYear: string) => void;
   onCancel: () => void;
 }) {
   const [year, setYear] = useState("");
@@ -23,19 +24,21 @@ export function AiConsent({ busy, connected, locked, onAllow, onCancel }: {
   if (locked)
     return (
       <div className="consent-step" role="status">
-        <p>Connecting is for the Free2Z account holder.</p>
+        <p>This is for the Free2Z account holder.</p>
         <button type="button" className="text-button" onClick={onCancel}>OK</button>
       </div>
     );
+  const opensFree2z = exit !== "allow";
+  const label = exit === "allow" ? "Allow" : needsConsent ? "Allow and connect" : "Continue";
   return (
     <form className="consent-step" aria-labelledby={headingId} onSubmit={(e) => {
       e.preventDefault();
       if (busy) return;
       if (checkBirthYear(year, new Date()) === "invalid") { setInvalid(true); return; }
-      onAllow(year);
+      onPass(year);
     }}>
       <h4 id={headingId}>For the Free2Z account holder</h4>
-      <p>AI lessons come from Free2Z, using OpenAI models. AHA sends math problems and progress, never a name.</p>
+      {needsConsent && <p>AI lessons come from Free2Z, using OpenAI models. AHA sends math problems and progress, never a name.</p>}
       <label htmlFor={yearId}>Your birth year</label>
       <input id={yearId} ref={field} className="consent-year" value={year} inputMode="numeric" pattern="[0-9]*" maxLength={4}
         autoComplete="bday-year" enterKeyHint="done" disabled={busy} aria-invalid={invalid || undefined} aria-describedby={invalid ? noteId : undefined}
@@ -43,7 +46,7 @@ export function AiConsent({ busy, connected, locked, onAllow, onCancel }: {
       {invalid && <p id={noteId} className="consent-note">Enter a four-digit year.</p>}
       <div className="settings-buttons">
         <button type="submit" className="primary-button" disabled={busy || year.length !== 4}>
-          {connected ? "Allow" : <>Allow and connect <ArrowUpRight size={17} aria-hidden="true" /></>}
+          {label}{opensFree2z && <ArrowUpRight size={17} aria-hidden="true" />}
         </button>
         <button type="button" className="text-button" onClick={onCancel}>Not now</button>
       </div>

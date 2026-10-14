@@ -352,9 +352,7 @@ export function Studio(props: StudioProps) {
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
   /** Settings shows the one-time adult step (Connect, or Allow AI lessons for a paused session). */
-  const [consenting, setConsenting] = useState(false);
   const consent = props.account.consent ?? "granted";
-  useEffect(() => { if (consent === "granted") setConsenting(false); }, [consent]);
   const promptRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   /** The learner pressed Check: only then does an outcome celebrate (never a restored one). */
@@ -533,7 +531,7 @@ export function Studio(props: StudioProps) {
   const closeSettings = () => {
     setSettings(false);
     setDeleting(false);
-    setConsenting(false);
+    if (props.gate) props.onGateCancel?.();
     settingsReturn.current?.focus?.();
   };
   const closeAsk = () => {
@@ -1082,6 +1080,11 @@ export function Studio(props: StudioProps) {
               <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
             )}
             <div className="settings-buttons">
+              {/* Every exit to a Free2Z page (and AI permission) passes the adult step first; it replaces the buttons. */}
+              {props.gate && props.onGatePass ? (
+                <AiConsent busy={props.busy} exit={props.gate.exit} needsConsent={props.gate.needsConsent} locked={props.gate.locked}
+                  onPass={props.onGatePass} onCancel={() => props.onGateCancel?.()} />
+              ) : <>
               {/* Account-only actions exist only once connected; disconnected shows Connect alone. */}
               {/* The one neutral exit to Free2Z (system browser, never a checkout). Out of credits or budget, it leads. */}
               {props.account.connected && props.onManageAccount && (
@@ -1091,11 +1094,8 @@ export function Studio(props: StudioProps) {
               )}
               {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
-              {consenting && consent !== "granted" && props.onConsent ? (
-                <AiConsent busy={props.busy} connected={props.account.connected} locked={consent === "locked"}
-                  onAllow={props.onConsent} onCancel={() => setConsenting(false)} />
-              ) : props.account.connected && consent !== "granted" && props.onConsent && (
-                <button className="primary-button" disabled={props.busy} onClick={() => setConsenting(true)}>Allow AI lessons</button>
+              {props.account.connected && consent !== "granted" && props.onAllowAi && (
+                <button className="primary-button" disabled={props.busy} onClick={props.onAllowAi}>Allow AI lessons</button>
               )}
               {props.account.connected ? (
                 <>
@@ -1115,12 +1115,12 @@ export function Studio(props: StudioProps) {
                     </div>
                   ))}
                 </>
-              ) : !consenting && (
-                <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false}
-                  onClick={consent !== "granted" && props.onConsent ? () => setConsenting(true) : props.onSignIn}>
+              ) : (
+                <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false} onClick={props.onSignIn}>
                   Connect Free2Z <ArrowUpRight size={17} />
                 </button>
               )}
+              </>}
             </div>
             {!!props.savedAnswers?.length && <div className="pending-usage" role="status">
               <strong>Saved AI answers</strong>
@@ -1131,7 +1131,7 @@ export function Studio(props: StudioProps) {
                 <button className="text-button" disabled={props.busy} onClick={() => props.onDiscardAnswer?.(saved.operationId)}>Set this answer aside</button>
               </div>)}
             </div>}
-            {props.account.connected && props.onDeleteFree2zAccount && (
+            {props.account.connected && props.onDeleteFree2zAccount && !props.gate && (
               <button className="danger-link" disabled={props.busy} onClick={props.onDeleteFree2zAccount}>
                 Delete Free2Z account <ArrowUpRight size={14} aria-hidden="true" />
               </button>

@@ -55,7 +55,7 @@ import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrig
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 import { CURIOSITY_SYSTEM, curiosityContext, isCuriosityKind, type CuriosityKind } from "./curiosity";
 import { REPORTS_KEY, appendReport, markSent, reportFor, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
-import { CONSENT_KEY, checkBirthYear, grantedRecord, lockedRecord, readConsent, type ConsentState } from "./aiConsent";
+import { AdultGate, CONSENT_KEY, CONSENT_VERSION, aiAllowed, checkBirthYear, exitClear, grantOf, grantedRecord, lockedRecord, needsConsent, readConsent, type AccountExit, type ConsentState } from "./aiConsent";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
 const loadAiActivities = () => import("./aiActivities");
@@ -87,6 +87,12 @@ const native = isTauri();
 const CONNECTED_STATUS = "AI tutoring is connected. Activities use 2Z from your Free2Z balance.";
 const SETTLING_STATUS = "Finishing an earlier AI request. AHA settles it on its own; local practice continues.";
 const CONSENT_STATUS = "AI lessons are paused until the account holder allows them.";
+const EXIT_LABEL: Record<AccountExit, string> = {
+  connect: "Waiting for secure Free2Z sign-in…",
+  manage: "Opening Free2Z in your browser…",
+  delete: "Opening Free2Z in your browser…",
+  allow: "Checking Free2Z…",
+};
 const preview = previewRepository();
 /**
  * Free2Z's content-report endpoint. The SDK this build pins has none yet; the follow-up wires its
@@ -149,7 +155,11 @@ export default function Controller() {
   const device = useRef<LocalRepository>(native ? new NativeRepository("local-device") : preview);
   /** The account holder's AI permission on this device. Without it no provider exists, so nothing is sent. */
   const consent = useRef<ConsentState>({status: "needed"});
-  const [consentState, setConsentState] = useState<ConsentState["status"]>("needed");
+  const [consentState, setConsentState] = useState<ConsentState>({status: "needed"});
+  /** The adult step's pass, in memory only (GATE_MS); every account exit checks it. */
+  const gate = useRef(new AdultGate());
+  /** The account exit waiting on the adult step, shown in Settings. */
+  const [gateFor, setGateFor] = useState<AccountExit>();
   const consentTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const subject = useRef<string | undefined>(undefined);
   const selectedModel = useRef<string | undefined>(undefined);
@@ -895,7 +905,7 @@ export default function Controller() {
               const repo = new NativeRepository(s.subject);
               // A session from before this device's permission (an earlier build, a reinstall that kept the keychain, or a
               // permission withdrawn) keeps its local progress, but sends nothing until the account holder allows AI.
-              const allowed = consent.current.status === "granted";
+              const allowed = aiAllowed(consent.current);
               if (allowed) provider.current = new Free2zTutor(client, repo, s.subject);
               else logEvent("info", "ai-consent", "signed in without AI permission on this device; AI paused until it is allowed in Settings");
               await loadAccount(repo);
@@ -1525,7 +1535,7 @@ export default function Controller() {
   }
   function showConsent(state: ConsentState) {
     consent.current = state;
-    setConsentState(state.status);
+    setConsentState(state);
     // A locked step opens again by itself when its day is over.
     clearTimeout(consentTimer.current);
     if (state.status === "locked" && alive.current)
@@ -1539,44 +1549,81 @@ export default function Controller() {
     if (await connectAccount() && (generation === undefined || generation === lifecycle.current) && (restoredAi.current || practisedBefore.current)) maybePrefetch();
   }
   /**
-   * The adult step's Allow. A year that does not pass locks the step on this device for a day and connects nothing;
-   * one that passes records the permission, then opens Free2Z sign-in, or resumes AI for a session already signed in.
+   * Every account exit (Connect, Manage and Delete Free2Z account, Allow AI lessons) starts here. It runs at once only
+   * after a fresh pass of the adult step (and, for Connect and Allow, this device's AI permission); otherwise Settings
+   * shows the step first. Nothing else in the app opens a Free2Z page.
    */
-  async function giveConsent(birthYear: string) {
-    if (consent.current.status === "granted") return;
+  function requestExit(exit: AccountExit) {
+    if (exitClear(exit, gate.current, consent.current, Date.now())) {
+      void action(() => takeExit(exit), EXIT_LABEL[exit]);
+      return;
+    }
+    setGateFor(exit);
+  }
+  /**
+   * The adult step's Continue/Allow. A year that does not pass is refused calmly and locks every exit on this device for
+   * a day; one that passes is remembered for a few minutes, records AI permission where the exit needs it, and takes it.
+   */
+  async function passGate(birthYear: string) {
+    const exit = gateFor;
+    if (!exit) return;
     const verdict = checkBirthYear(birthYear, new Date());
     if (verdict === "invalid") throw new Error("Enter a four-digit year.");
     const now = Date.now();
     // A locked step stays locked until it expires: a second guess changes nothing.
     if (consent.current.status === "locked") return;
     if (verdict === "minor") {
-      const record = lockedRecord(now);
+      gate.current.reset();
+      const record = lockedRecord(now, grantOf(consent.current));
       await device.current.putJournal(CONSENT_KEY, record);
       showConsent(readConsent(record, now));
-      logEvent("info", "ai-consent", "the adult step did not pass; Connect is paused on this device for a day");
+      logEvent("info", "ai-consent", `the adult step did not pass (${exit}); account exits are paused on this device for a day`);
       return;
     }
-    await device.current.putJournal(CONSENT_KEY, grantedRecord(now));
-    showConsent(readConsent(grantedRecord(now), now));
-    logEvent("info", "ai-consent", "AI permission given on this device");
+    gate.current.pass(now);
+    if (needsConsent(exit, consent.current)) {
+      const record = grantedRecord(now);
+      await device.current.putJournal(CONSENT_KEY, record);
+      showConsent(readConsent(record, now));
+      logEvent("info", "ai-consent", "AI permission given on this device");
+    }
+    setGateFor(undefined);
+    await takeExit(exit);
+  }
+  /** Takes an exit. Each one re-checks the gate itself, so no path reaches a Free2Z page around it. */
+  async function takeExit(exit: AccountExit) {
+    if (!exitClear(exit, gate.current, consent.current, Date.now()))
+      throw new Error("This is for the Free2Z account holder.");
+    if (exit === "connect") return signIn();
+    if (exit === "manage") return openAccount("apps");
+    if (exit === "delete") return openAccount("delete");
     if (subject.current && !provider.current) {
       // Signed in already (AI was paused): the same provider and start as a launch with permission.
       provider.current = new Free2zTutor(getNativeClient(), repository.current, subject.current);
       setAccount(a => ({...a, status: readiness.current?.reason}));
       await startAi();
-      return;
     }
-    await signIn();
+  }
+  /** A Free2Z account page in the system browser (the native command takes a page name, never a URL). */
+  async function openAccount(page: "apps" | "delete") {
+    if (!exitClear(page === "apps" ? "manage" : "delete", gate.current, consent.current, Date.now()))
+      throw new Error("This is for the Free2Z account holder.");
+    await invoke("open_free2z_account", {page});
   }
   /**
-   * Signing out withdraws the permission too, so the next Connect asks the account holder again. A lock stays: signing
-   * out is never a way around a year that did not pass.
+   * Signing out withdraws AI permission too, so the next Connect asks the account holder again. A lock stays: signing
+   * out is never a way around a year that did not pass. The step's in-memory pass ends with the session.
    */
   async function withdrawConsent() {
-    if (consent.current.status !== "granted") return;
-    try { await device.current.deleteJournal(CONSENT_KEY); }
-    catch (error) { logError("ai-consent", error); }
-    showConsent({status: "needed"});
+    gate.current.reset();
+    setGateFor(undefined);
+    const state = consent.current;
+    if (!grantOf(state)) return;
+    try {
+      if (state.status === "locked") await device.current.putJournal(CONSENT_KEY, {version: CONSENT_VERSION, lockedUntil: new Date(state.until).toISOString()});
+      else await device.current.deleteJournal(CONSENT_KEY);
+    } catch (error) { logError("ai-consent", error); }
+    showConsent(state.status === "locked" ? {status: "locked", until: state.until} : {status: "needed"});
   }
   /**
    * The tutor whose local journal says what AI usage is outstanding. While AI is paused (signed in without permission)
@@ -1587,8 +1634,9 @@ export default function Controller() {
     return native && subject.current ? new Free2zTutor(getNativeClient(), repository.current, subject.current) : undefined;
   }
   async function signIn() {
-    if (consent.current.status !== "granted")
-      throw new Error("Connect Free2Z from Settings to give AI permission first.");
+    // Only through the adult step (takeExit), with AI permission: the system sign-in is a Free2Z page.
+    if (!exitClear("connect", gate.current, consent.current, Date.now()))
+      throw new Error("This is for the Free2Z account holder.");
     if (!native)
       throw new Error(
         "Free2Z sign-in uses the native app’s secure browser. This browser preview never asks for credentials.",
@@ -1741,7 +1789,11 @@ export default function Controller() {
       feedback={feedback}
       hint={hint}
       curiosity={curiosity}
-      account={{...account, consent: consentState, signInAvailable: native && !!readiness.current?.free2zConfigured}}
+      account={{...account, consent: aiAllowed(consentState) ? "granted" : "needed", signInAvailable: native && !!readiness.current?.free2zConfigured}}
+      gate={gateFor ? {exit: gateFor, needsConsent: needsConsent(gateFor, consentState), locked: consentState.status === "locked"} : undefined}
+      onGatePass={(year) => void action(() => passGate(year), gateFor ? EXIT_LABEL[gateFor] : undefined)}
+      onGateCancel={() => setGateFor(undefined)}
+      onAllowAi={() => requestExit("allow")}
       modelMenu={account.connected && menu ? {choice: menu.choice, ...(menu.auto ? {auto: menu.auto} : {}), options: menu.options} : undefined}
       onChooseModel={(choice) => void action(() => chooseModelSetting(choice))}
       loadModelStats={native ? loadModelStats : undefined}
@@ -1809,7 +1861,7 @@ export default function Controller() {
         })
       }
       onRecoverUsage={
-        account.connected && consentState === "granted"
+        account.connected && aiAllowed(consentState)
           ? () =>
               void action(async () => {
                 await settlePrefetch();
@@ -1840,11 +1892,10 @@ export default function Controller() {
             }
           : undefined
       }
-      onManageAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "apps"}), "Opening Free2Z in your browser…") : undefined}
-      onDeleteFree2zAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "delete"}), "Opening Free2Z in your browser…") : undefined}
-      onRefreshAccount={consentState === "granted" ? () => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…") : undefined}
-      onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
-      onConsent={(year) => void action(() => giveConsent(year), "Connecting Free2Z…")}
+      onManageAccount={native ? () => requestExit("manage") : undefined}
+      onDeleteFree2zAccount={native ? () => requestExit("delete") : undefined}
+      onRefreshAccount={aiAllowed(consentState) ? () => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…") : undefined}
+      onSignIn={() => requestExit("connect")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
         void action(async () => {

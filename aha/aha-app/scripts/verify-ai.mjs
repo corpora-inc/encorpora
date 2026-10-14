@@ -28,11 +28,6 @@ function fixture(specs){
   const key='aha-controller-test-fixture';
   const read=()=>JSON.parse(localStorage.getItem(key)||'null')||{profiles:[],sessions:{},activities:{},attempts:{},disputes:{},snapshots:{}};
   window.__ahaFixture={failNextSession:false,read};window.isTauri=true;
-  // TEST-ONLY: the account holder allowed AI on this "device" once (aiConsent.ts), unless a scenario starts without it.
-  if(!localStorage.getItem('aha-test-consent-seeded')){
-    localStorage.setItem('aha-test-consent-seeded','1');
-    const db=read();(db.journals??={})['aha-ai-consent']={version:1,grantedAt:new Date().toISOString()};localStorage.setItem(key,JSON.stringify(db));
-  }
   const streams=new Map();
   // TEST-ONLY grant/estimate knobs. Default: Free2Z's pre-activation state (enforced:false, platform_disabled)
   // with a 100 2Z total app budget once enforced; scenarios switch to no budget or a low balance.
@@ -135,8 +130,10 @@ function fixture(specs){
     const r=args.request;if(!['local-device','test-subject'].includes(r.accountId))throw new Error('Unexpected test account');
     const db=read(),id=r.profileId;let result;
     switch(r.operation){
-      case 'getJournal':return db.journals?.[r.key]??null;
-      case 'deleteJournal':if(db.journals)delete db.journals[r.key];break;
+      // TEST-ONLY: this "device" already allowed AI lessons (aiConsent.ts) unless a scenario sets noConsent or signs out.
+      case 'getJournal':return db.journals&&r.key in db.journals?db.journals[r.key]
+        :r.key==='aha-ai-consent'&&!ai.noConsent&&!localStorage.getItem('aha-test-consent-withdrawn')?{version:1,grantedAt:'2026-01-01T00:00:00.000Z'}:null;
+      case 'deleteJournal':if(db.journals)delete db.journals[r.key];if(r.key==='aha-ai-consent')localStorage.setItem('aha-test-consent-withdrawn','1');break;
       case 'putJournal':if(ai.failAck&&r.data.operations?.some(o=>o.consumed)){ai.failAck=false;throw new Error('TEST acknowledgement write failed');}(db.journals??={})[r.key]=r.data;break;
       case 'listProfiles':return db.profiles;
       case 'saveProfile':db.profiles=db.profiles.filter(p=>p.id!==id);db.profiles.push(r.data);break;
@@ -522,6 +519,7 @@ try {
     const signIns=()=>page.evaluate(()=>window.__ahaAI.signIns?.length??0);
     const consentRecord=()=>page.evaluate(()=>window.__ahaFixture.read().journals?.['aha-ai-consent']);
     assert.equal(await consentRecord(),undefined,'sign-out withdrew the permission');
+    assert.equal(await page.evaluate(()=>localStorage.getItem('aha-test-consent-withdrawn')),'1');
     const before=await signIns();
     await connect.click();
     const step=page.locator('.consent-step');
@@ -546,13 +544,13 @@ try {
     await page.getByText('Enter a four-digit year.',{exact:true}).waitFor();
     await page.getByLabel('Your birth year',{exact:true}).fill('2015');
     await page.getByRole('button',{name:'Allow and connect',exact:false}).click();
-    await page.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    await page.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     assert.equal(await signIns(),before,'a year that does not pass never opens the sign-in');
     assert.ok(Date.parse((await consentRecord()).lockedUntil)>Date.now()+23*3600_000,'locked for a day');
     assert.ok(!JSON.stringify(await page.evaluate(()=>window.__ahaFixture.read())).includes('2015'),'the year is never stored');
     await page.getByRole('button',{name:'OK',exact:true}).click();
     await connect.click();
-    await page.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    await page.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     assert.equal(await page.getByLabel('Your birth year',{exact:true}).count(),0,'no second guess while locked');
     await page.getByRole('button',{name:'OK',exact:true}).click();
     // The lock survives a relaunch until its day is over (simulated by moving it into the past), then the step asks again.
@@ -561,7 +559,7 @@ try {
     await page.reload();
     await settings();
     await connect.click();
-    await page.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    await page.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     await page.getByRole('button',{name:'OK',exact:true}).click();
     await page.evaluate(()=>{const db=window.__ahaFixture.read();
       db.journals['aha-ai-consent'].lockedUntil=new Date(Date.now()-1000).toISOString();localStorage.setItem('aha-controller-test-fixture',JSON.stringify(db));});
@@ -921,8 +919,22 @@ try {
     assert.equal(await s.figure('Each batch of activities'),'About 1 2Z','cost per batch from the settled charge');
     assert.equal(await s.figure('Available balance'),'100 2Z');
     // Account exits: a neutral Manage Free2Z account (AHA's own entry) and Delete Free2Z account, both in the system browser.
+    // Each exit to a Free2Z page shows the adult step first (nothing pre-filled), and nothing opens until it passes.
+    for(const [name,page] of [['Manage Free2Z account','apps'],['Delete Free2Z account','delete']]){
+      await s.p.getByRole('button',{name,exact:true}).click();
+      await s.p.getByRole('heading',{name:'For the Free2Z account holder',exact:true}).waitFor();
+      assert.equal(await s.p.getByLabel('Your birth year',{exact:true}).inputValue(),'',`${name}: no year pre-filled`);
+      assert.equal(await s.p.evaluate(()=>window.__ahaAI.accountOpened??0),0,`${name}: nothing opens before the step`);
+      assert.equal(await s.p.getByText('OpenAI',{exact:false}).count(),0,`${name}: AI permission was given already; only the age step shows`);
+      await s.p.getByRole('button',{name:'Not now',exact:true}).click();
+      assert.equal(await s.p.evaluate(()=>window.__ahaAI.accountOpened??0),0,`${name}: Not now opens nothing`);
+      void page;
+    }
     await s.p.getByRole('button',{name:'Manage Free2Z account',exact:true}).click();
+    await s.p.getByLabel('Your birth year',{exact:true}).fill('1985');
+    await s.p.getByRole('button',{name:'Continue',exact:false}).click();
     await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===1);
+    // A pass is remembered for a few minutes: the next exit right after opens without asking again.
     await s.p.getByRole('button',{name:'Delete Free2Z account',exact:true}).click();
     await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===2);
     assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['apps','delete'],'the webview names a page, never a URL');
@@ -1016,6 +1028,25 @@ try {
     assert.equal(await s.p.getByText('top up',{exact:false}).count(),0,'a budget refusal never says topping up fixes it');
     const link=s.p.locator('.settings-buttons .primary-button').filter({hasText:'Manage Free2Z account'});
     await link.click();
+    // A year that does not pass is refused calmly and locks every exit: Manage stays closed.
+    await s.p.getByLabel('Your birth year',{exact:true}).fill('2012');
+    await s.p.getByRole('button',{name:'Continue',exact:false}).click();
+    await s.p.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
+    await s.p.getByRole('button',{name:'OK',exact:true}).click();
+    for(const name of ['Manage Free2Z account','Delete Free2Z account']){
+      await s.p.getByRole('button',{name,exact:true}).click();
+      await s.p.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
+      await s.p.getByRole('button',{name:'OK',exact:true}).click();
+    }
+    assert.equal(await s.p.evaluate(()=>window.__ahaAI.accountOpened??0),0,'a lock keeps every Free2Z page closed');
+    assert.equal(await s.p.locator('.connection-pill').filter({hasText:/^App budget reached$/}).count(),1,'a lock never stops AI already allowed (still connected)');
+    // As if the day passed: the lock is lifted and the account holder passes.
+    await s.p.evaluate(()=>{const db=window.__ahaFixture.read();db.journals['aha-ai-consent'].lockedUntil=new Date(Date.now()-1000).toISOString();localStorage.setItem('aha-controller-test-fixture',JSON.stringify(db));});
+    await s.p.reload();await s.p.getByRole('button',{name:'Continue',exact:true}).click();await s.p.getByRole('button',{name:'Check',exact:true}).waitFor();
+    await s.openSettings();
+    await link.click();
+    await s.p.getByLabel('Your birth year',{exact:true}).fill('1985');
+    await s.p.getByRole('button',{name:'Continue',exact:false}).click();
     await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===1);
     assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['apps']);
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
@@ -1147,10 +1178,13 @@ try {
       assert.equal(outbox.reports.length,1);
       const {id,createdAt,...report}=outbox.reports[0];
       assert.ok(id&&Date.parse(createdAt));
-      assert.deepEqual(report,{activityId:reportedItem.activityId,specId:reportedItem.spec.id,operationId:reportedItem.operationId,
-        callId:'fixture-call',receiptId:'fixture-receipt',model:'fixture-pro',reason:'incorrect'});
+      // The report names exactly the activity that was set aside (the one on screen at the tap), from its stored record.
+      const stored=await data(),disputed=Object.values(stored.disputes).flat()[0].activityId;
+      const shownRecord=Object.values(stored.activities).flat().find(x=>x.id===disputed).data;
+      assert.deepEqual(report,{activityId:disputed,specId:shownRecord.spec.id,operationId:shownRecord.operationId,
+        callId:'fixture-call',receiptId:'fixture-receipt',model:shownRecord.model,reason:'incorrect'});
       assert.equal(Object.values((await data()).disputes).flat()[0].reason,'Learner reported: incorrect');
-      assert.notEqual((await sess()).aiActivity?.activityId,reportedItem.activityId,'the reported activity is replaced');
+      assert.notEqual((await sess()).aiActivity?.activityId,disputed,'the reported activity is replaced');
     }
     // Per-model stats from local data only, in Settings and in the problem report.
     await s.openSettings();
@@ -1244,9 +1278,8 @@ try {
     // ---- A session signed in before this device gave AI permission (an earlier build, or a reinstall that kept the
     // keychain): progress loads, but nothing is sent until the account holder allows AI in Settings, never in the loop.
     const ctx=await browser.newContext({viewport:{width:390,height:844}});
-    await ctx.addInitScript(()=>localStorage.setItem('aha-test-consent-seeded','1'));
     await ctx.addInitScript(fixture,batchFixtures);
-    await ctx.addInitScript(()=>{Object.assign(window.__ahaAI,{enforced:true,holdAfter:1});});
+    await ctx.addInitScript(()=>{Object.assign(window.__ahaAI,{enforced:true,holdAfter:1,noConsent:true});});
     const p=await ctx.newPage();const pErrors=[];p.on('pageerror',e=>pErrors.push(e.message));
     const ai=()=>p.evaluate(()=>({grants:window.__ahaAI.grants,starts:window.__ahaAI.starts.length,signIns:window.__ahaAI.signIns?.length??0}));
     await p.goto(base);
@@ -1274,28 +1307,28 @@ try {
   {
     // Signing out never resets a lock: a year that did not pass on a paused session keeps Connect locked after sign-out.
     const ctx=await browser.newContext({viewport:{width:390,height:844}});
-    await ctx.addInitScript(()=>localStorage.setItem('aha-test-consent-seeded','1'));
     await ctx.addInitScript(fixture,batchFixtures);
+    await ctx.addInitScript(()=>{window.__ahaAI.noConsent=true;});
     const p=await ctx.newPage();const pErrors=[];p.on('pageerror',e=>pErrors.push(e.message));
     await p.goto(base);
     await p.getByRole('button',{name:'Settings',exact:true}).click();
     await p.getByRole('button',{name:'Allow AI lessons',exact:true}).click();
     await p.getByLabel('Your birth year',{exact:true}).fill('2016');
     await p.getByRole('button',{name:'Allow',exact:true}).click();
-    await p.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    await p.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     await p.getByRole('button',{name:'OK',exact:true}).click();
     await p.getByRole('button',{name:'Sign out',exact:true}).click();
     const connect=p.getByRole('button',{name:'Connect Free2Z',exact:false});
     await connect.waitFor();
     assert.ok((await p.evaluate(()=>window.__ahaFixture.read().journals['aha-ai-consent'])).lockedUntil,'the lock survives sign-out');
     await connect.click();
-    await p.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    await p.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     assert.equal(await p.getByLabel('Your birth year',{exact:true}).count(),0);
     assert.equal(await p.evaluate(()=>window.__ahaAI.signIns?.length??0),0);
     assert.deepEqual(pErrors,[]);await ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: the one-time adult step and AI permission before Connect (neutral birth year, a day-long lock, re-asked after sign-out, a paused pre-permission session resumed from Settings), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
+  console.log('AI controller fixture passed: the adult step before every Free2Z exit (Connect, Manage, Delete; neutral birth year, nothing pre-filled, a pass remembered for a few minutes, a day-long lock on every exit that keeps AI already allowed) and the one-time AI permission (re-asked after sign-out, a paused pre-permission session resumed from Settings), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
