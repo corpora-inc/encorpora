@@ -844,6 +844,47 @@ h1 {
 .settings-buttons > div {
   width: 100%;
 }
+/* The one-time adult step before Connect: a quiet card that unfolds in place of the button. */
+.settings-buttons > .consent-step {
+  width: 100%;
+  padding: 18px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  animation: aha-toast-in 0.24s ease-out both;
+}
+.consent-step h4 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+.consent-step p {
+  margin: 0 0 14px;
+}
+.consent-step label {
+  display: block;
+  font-size: 0.77rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.consent-year {
+  font: inherit;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  width: 7.5em;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+}
+.consent-step .consent-note {
+  margin: 8px 0 0;
+  color: var(--coral-ink);
+}
+.consent-step .settings-buttons {
+  align-items: center;
+  margin-top: 16px;
+}
 
 /* Edge-to-edge status bar (#855). The studio's top padding keeps the first paint clear of the
    system bar, but it scrolls away with the page; this fixed backdrop stays behind the bar so

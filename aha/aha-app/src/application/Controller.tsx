@@ -55,6 +55,7 @@ import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrig
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 import { CURIOSITY_SYSTEM, curiosityContext, isCuriosityKind, type CuriosityKind } from "./curiosity";
 import { REPORTS_KEY, appendReport, markSent, reportFor, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
+import { CONSENT_KEY, checkBirthYear, grantedRecord, lockedRecord, readConsent, type ConsentState } from "./aiConsent";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
 const loadAiActivities = () => import("./aiActivities");
@@ -85,6 +86,7 @@ const json = (value: unknown): Json =>
 const native = isTauri();
 const CONNECTED_STATUS = "AI tutoring is connected. Activities use 2Z from your Free2Z balance.";
 const SETTLING_STATUS = "Finishing an earlier AI request. AHA settles it on its own; local practice continues.";
+const CONSENT_STATUS = "AI lessons are paused until the account holder allows them.";
 const preview = previewRepository();
 /**
  * Free2Z's content-report endpoint. The SDK this build pins has none yet; the follow-up wires its
@@ -143,6 +145,12 @@ export default function Controller() {
     native ? new NativeRepository("local-device") : preview,
   );
   const provider = useRef<Free2zTutor | undefined>(undefined);
+  /** Per-device records (the adult step's outcome) live in the "local-device" journal, whoever is signed in. */
+  const device = useRef<LocalRepository>(native ? new NativeRepository("local-device") : preview);
+  /** The account holder's AI permission on this device. Without it no provider exists, so nothing is sent. */
+  const consent = useRef<ConsentState>({status: "needed"});
+  const [consentState, setConsentState] = useState<ConsentState["status"]>("needed");
+  const consentTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const subject = useRef<string | undefined>(undefined);
   const selectedModel = useRef<string | undefined>(undefined);
   /** The learner's model choice for this account ("auto" or a catalogue id), stored in the local journal. */
@@ -861,6 +869,8 @@ export default function Controller() {
       try {
         await loadAccount(repository.current);
         if (generation !== lifecycle.current) return;
+        await loadConsent();
+        if (generation !== lifecycle.current) return;
         if (native) {
           readiness.current = await invoke<Readiness>("app_readiness");
           if (generation !== lifecycle.current) return;
@@ -871,18 +881,19 @@ export default function Controller() {
             if (s.signedIn && s.subject) {
               subject.current = s.subject;
               const repo = new NativeRepository(s.subject);
-              provider.current = new Free2zTutor(client, repo, s.subject);
+              // A session from before this device's permission (an earlier build, a reinstall that kept the keychain, or a
+              // permission withdrawn) keeps its local progress, but sends nothing until the account holder allows AI.
+              const allowed = consent.current.status === "granted";
+              if (allowed) provider.current = new Free2zTutor(client, repo, s.subject);
+              else logEvent("info", "ai-consent", "signed in without AI permission on this device; AI paused until it is allowed in Settings");
               await loadAccount(repo);
               if (generation !== lifecycle.current) return;
               setAccount({
                 connected: true,
                 label: "Free2Z account",
-                status: readiness.current.reason,
+                status: allowed ? readiness.current.reason : CONSENT_STATUS,
               });
-              await restorePaidAnswer();
-              // Prefetch at launch (#929): a learner who practised before gets their bank filled before the first tap, whether
-              // or not a queue was restored. A brand-new learner's first tap starts it (theirs to Stop).
-              if (await connectAccount() && generation === lifecycle.current && (restoredAi.current || practisedBefore.current)) maybePrefetch();
+              if (allowed) await startAi(generation);
             }
           }
         }
@@ -906,7 +917,7 @@ export default function Controller() {
       updateTimer();
       if (document.visibilityState === "hidden") {
         if (!actionLock.current) void action(saveSession);
-      } else if (subject.current) {
+      } else if (subject.current && provider.current) {
         // Back in the foreground: finish any interrupted request now, quietly (respects the retry backoff).
         startRecovery("resume");
         const epoch = accountEpoch.current;
@@ -929,6 +940,7 @@ export default function Controller() {
       ++accountEpoch.current;
       document.removeEventListener("visibilitychange", visibility);
       clearTimeout(recoveryTimer.current);
+      clearTimeout(consentTimer.current);
       timer.current.pause(performance.now());
     };
   }, []);
@@ -1492,7 +1504,67 @@ export default function Controller() {
     const text = item.spec.prompt.map(b => b.type === "text" ? b.text : b.type === "math" ? `$${b.tex}$` : "[figure]").join(" ");
     return {title: item.spec.title, skills: item.spec.skillIds, prompt: text.slice(0, 1200)};
   }
+  /** Reads this device's AI permission. Unreadable is logged and treated as not given: AI never starts on a guess. */
+  async function loadConsent() {
+    let data: Json = null;
+    try { data = await device.current.getJournal(CONSENT_KEY); }
+    catch (error) { logError("ai-consent", error); }
+    showConsent(readConsent(data, Date.now()));
+  }
+  function showConsent(state: ConsentState) {
+    consent.current = state;
+    setConsentState(state.status);
+    // A locked step opens again by itself when its day is over.
+    clearTimeout(consentTimer.current);
+    if (state.status === "locked" && alive.current)
+      consentTimer.current = setTimeout(() => void loadConsent(), Math.max(0, state.until - Date.now()) + 1000);
+  }
+  /** The connected session's AI start: a saved answer first, then the connection check, then the launch prefetch. */
+  async function startAi(generation?: number) {
+    await restorePaidAnswer();
+    // Prefetch at launch (#929): a learner who practised before gets their bank filled before the first tap, whether
+    // or not a queue was restored. A brand-new learner's first tap starts it (theirs to Stop).
+    if (await connectAccount() && (generation === undefined || generation === lifecycle.current) && (restoredAi.current || practisedBefore.current)) maybePrefetch();
+  }
+  /**
+   * The adult step's Allow. A year that does not pass locks the step on this device for a day and connects nothing;
+   * one that passes records the permission, then opens Free2Z sign-in, or resumes AI for a session already signed in.
+   */
+  async function giveConsent(birthYear: string) {
+    if (consent.current.status === "granted") return;
+    const verdict = checkBirthYear(birthYear, new Date());
+    if (verdict === "invalid") throw new Error("Enter a four-digit year.");
+    const now = Date.now();
+    // A locked step stays locked until it expires: a second guess changes nothing.
+    if (consent.current.status === "locked") return;
+    if (verdict === "minor") {
+      const record = lockedRecord(now);
+      await device.current.putJournal(CONSENT_KEY, record);
+      showConsent(readConsent(record, now));
+      logEvent("info", "ai-consent", "the adult step did not pass; Connect is paused on this device for a day");
+      return;
+    }
+    await device.current.putJournal(CONSENT_KEY, grantedRecord(now));
+    showConsent(readConsent(grantedRecord(now), now));
+    logEvent("info", "ai-consent", "AI permission given on this device");
+    if (subject.current && !provider.current) {
+      // Signed in already (AI was paused): the same provider and start as a launch with permission.
+      provider.current = new Free2zTutor(getNativeClient(), repository.current, subject.current);
+      setAccount(a => ({...a, status: readiness.current?.reason}));
+      await startAi();
+      return;
+    }
+    await signIn();
+  }
+  /** Signing out withdraws the permission too, so the next Connect asks the account holder again. */
+  async function withdrawConsent() {
+    try { await device.current.deleteJournal(CONSENT_KEY); }
+    catch (error) { logError("ai-consent", error); }
+    showConsent({status: "needed"});
+  }
   async function signIn() {
+    if (consent.current.status !== "granted")
+      throw new Error("Connect Free2Z from Settings to give AI permission first.");
     if (!native)
       throw new Error(
         "Free2Z sign-in uses the native app’s secure browser. This browser preview never asks for credentials.",
@@ -1552,6 +1624,7 @@ export default function Controller() {
     selectedModel.current = undefined;
     appBudget.current = undefined;
     aiBackoff.current = new AiBackoff();
+    await withdrawConsent();
     setAccount({connected: false, status: "Local practice · AI is not connected"});
     await loadAccount(new NativeRepository("local-device"));
     if (failure) throw failure;
@@ -1644,7 +1717,7 @@ export default function Controller() {
       feedback={feedback}
       hint={hint}
       curiosity={curiosity}
-      account={{...account, signInAvailable: native && !!readiness.current?.free2zConfigured}}
+      account={{...account, consent: consentState, signInAvailable: native && !!readiness.current?.free2zConfigured}}
       modelMenu={account.connected && menu ? {choice: menu.choice, ...(menu.auto ? {auto: menu.auto} : {}), options: menu.options} : undefined}
       onChooseModel={(choice) => void action(() => chooseModelSetting(choice))}
       loadModelStats={native ? loadModelStats : undefined}
@@ -1712,7 +1785,7 @@ export default function Controller() {
         })
       }
       onRecoverUsage={
-        account.connected
+        account.connected && consentState === "granted"
           ? () =>
               void action(async () => {
                 await settlePrefetch();
@@ -1745,8 +1818,9 @@ export default function Controller() {
       }
       onManageAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "apps"}), "Opening Free2Z in your browser…") : undefined}
       onDeleteFree2zAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "delete"}), "Opening Free2Z in your browser…") : undefined}
-      onRefreshAccount={() => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…")}
+      onRefreshAccount={consentState === "granted" ? () => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…") : undefined}
       onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
+      onConsent={(year) => void action(() => giveConsent(year), "Waiting for secure Free2Z sign-in…")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
         void action(async () => {

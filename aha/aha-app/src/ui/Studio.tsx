@@ -33,6 +33,7 @@ let specRenderer: SpecRenderer | undefined;
 const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
 import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
+import { AiConsent } from "./AiConsent";
 import { connectionPill } from "./connectionStatus";
 import { isEditable, KEYBOARD_SETTLED, listenNativeKeyboard, nextKeyboardLayout, sampleViewport, type KeyboardLayout } from "./keyboard";
 import { logError } from "../diagnostics/log";
@@ -350,6 +351,10 @@ export function Studio(props: StudioProps) {
   const [newName, setNewName] = useState("");
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
+  /** Settings shows the one-time adult step (Connect, or Allow AI lessons for a paused session). */
+  const [consenting, setConsenting] = useState(false);
+  const consent = props.account.consent ?? "granted";
+  useEffect(() => { if (consent === "granted") setConsenting(false); }, [consent]);
   const promptRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   /** The learner pressed Check: only then does an outcome celebrate (never a restored one). */
@@ -528,6 +533,7 @@ export function Studio(props: StudioProps) {
   const closeSettings = () => {
     setSettings(false);
     setDeleting(false);
+    setConsenting(false);
     settingsReturn.current?.focus?.();
   };
   const closeAsk = () => {
@@ -1085,6 +1091,12 @@ export function Studio(props: StudioProps) {
               )}
               {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
+              {consenting && consent !== "granted" && props.onConsent ? (
+                <AiConsent busy={props.busy} connected={props.account.connected} locked={consent === "locked"}
+                  onAllow={props.onConsent} onCancel={() => setConsenting(false)} />
+              ) : props.account.connected && consent !== "granted" && props.onConsent && (
+                <button className="primary-button" disabled={props.busy} onClick={() => setConsenting(true)}>Allow AI lessons</button>
+              )}
               {props.account.connected ? (
                 <>
                   <button className="secondary-button" disabled={props.busy} onClick={props.onSignOut}><LogOut size={16} /> Sign out</button>
@@ -1103,8 +1115,9 @@ export function Studio(props: StudioProps) {
                     </div>
                   ))}
                 </>
-              ) : (
-                <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false} onClick={props.onSignIn}>
+              ) : !consenting && (
+                <button className="primary-button" disabled={props.busy || props.account.signInAvailable === false}
+                  onClick={consent !== "granted" && props.onConsent ? () => setConsenting(true) : props.onSignIn}>
                   Connect Free2Z <ArrowUpRight size={17} />
                 </button>
               )}

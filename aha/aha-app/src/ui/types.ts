@@ -107,6 +107,11 @@ export interface StudioProps {
     settling?: boolean;
     /** Calm, actionable note shown only after automatic receipt recovery has failed persistently. */
     recoveryNote?: string;
+    /**
+     * The account holder's AI permission on this device (application/aiConsent.ts). Anything but `granted` puts the
+     * one-time adult step before Connect, or pauses AI for a session that is already signed in.
+     */
+    consent?: "granted" | "needed" | "locked";
   };
   /** The AI model row in Settings (connected, once the catalogue has been read). Display only. */
   modelMenu?: {
@@ -139,6 +144,8 @@ export interface StudioProps {
   /** Opens Free2Z's account deletion page in the system browser (shown only when connected). */
   onDeleteFree2zAccount?: () => void;
   onSignIn: () => void;
+  /** The adult step's Allow, with the birth year typed (never stored). The host decides; on a pass it connects. */
+  onConsent?: (birthYear: string) => void;
   onSignOut: () => void;
   onRefreshAccount?: () => void;
   onRecoverUsage?: () => void;
