@@ -55,6 +55,7 @@ import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrig
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 import { CURIOSITY_SYSTEM, curiosityContext, isCuriosityKind, type CuriosityKind } from "./curiosity";
 import { REPORTS_KEY, appendReport, markSent, reportFor, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
+import { AdultGate, CONSENT_KEY, CONSENT_VERSION, aiAllowed, checkBirthYear, exitClear, grantOf, grantedRecord, lockedRecord, needsConsent, readConsent, type AccountExit, type ConsentState } from "./aiConsent";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
 const loadAiActivities = () => import("./aiActivities");
@@ -85,6 +86,13 @@ const json = (value: unknown): Json =>
 const native = isTauri();
 const CONNECTED_STATUS = "AI tutoring is connected. Activities use 2Z from your Free2Z balance.";
 const SETTLING_STATUS = "Finishing an earlier AI request. AHA settles it on its own; local practice continues.";
+const CONSENT_STATUS = "AI lessons are paused until the account holder allows them.";
+const EXIT_LABEL: Record<AccountExit, string> = {
+  connect: "Waiting for secure Free2Z sign-in…",
+  manage: "Opening Free2Z in your browser…",
+  delete: "Opening Free2Z in your browser…",
+  allow: "Checking Free2Z…",
+};
 const preview = previewRepository();
 /**
  * Free2Z's content-report endpoint. The SDK this build pins has none yet; the follow-up wires its
@@ -143,6 +151,16 @@ export default function Controller() {
     native ? new NativeRepository("local-device") : preview,
   );
   const provider = useRef<Free2zTutor | undefined>(undefined);
+  /** Per-device records (the adult step's outcome) live in the "local-device" journal, whoever is signed in. */
+  const device = useRef<LocalRepository>(native ? new NativeRepository("local-device") : preview);
+  /** The account holder's AI permission on this device. Without it no provider exists, so nothing is sent. */
+  const consent = useRef<ConsentState>({status: "needed"});
+  const [consentState, setConsentState] = useState<ConsentState>({status: "needed"});
+  /** The adult step's pass, in memory only (GATE_MS); every account exit checks it. */
+  const gate = useRef(new AdultGate());
+  /** The account exit waiting on the adult step, shown in Settings. */
+  const [gateFor, setGateFor] = useState<AccountExit>();
+  const consentTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const subject = useRef<string | undefined>(undefined);
   const selectedModel = useRef<string | undefined>(undefined);
   /** The learner's model choice for this account ("auto" or a catalogue id), stored in the local journal. */
@@ -167,6 +185,12 @@ export default function Controller() {
   /** A same-key recovery is running: Stop never cuts off its stream (that would strand an already-paid reply). */
   const recovering = useRef(false);
   const actionCancelled = useRef(false);
+  /** A resume arrived while the action slot was held: recover as soon as it is released. */
+  const resumeWhenFree = useRef(false);
+  function releaseActionLock() {
+    actionLock.current = false;
+    if (resumeWhenFree.current) { resumeWhenFree.current = false; startRecovery("resume"); }
+  }
   const learning = useRef<LearnerState | undefined>(undefined);
   const currentProfile = useRef<Profile | undefined>(undefined);
   const currentActivity = useRef<Activity | undefined>(undefined);
@@ -559,7 +583,13 @@ export default function Controller() {
   function startRecovery(trigger: RecoveryTrigger) {
     if (!provider.current || !subject.current || !alive.current) return;
     // A batch in flight recovers first by itself; a foreground action (curiosity, manual recovery) owns the provider.
-    if (prefetching.current || actionLock.current) { if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS); return; }
+    if (prefetching.current || actionLock.current) {
+      if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS);
+      // A return to the foreground while launch or a tap still holds the slot runs as soon as the slot is free,
+      // never dropped (a resume is the only nudge an interrupted request gets until the next timer).
+      else if (trigger === "resume" && actionLock.current && !prefetching.current) resumeWhenFree.current = true;
+      return;
+    }
     let resumeAi = false;
     const run: Promise<void> = recoverReceipts(trigger)
       .then(outcome => { resumeAi = outcome?.state === "clear" && outcome.attempted; }, e => logError("ai-recovery", e))
@@ -849,7 +879,7 @@ export default function Controller() {
           }
         } catch { /* The action error remains visible; session recovery stays explicit. */ }
       }
-      actionLock.current = false;
+      releaseActionLock();
       if (alive.current) setBusy(false);
       updateTimer();
     }
@@ -861,6 +891,8 @@ export default function Controller() {
       try {
         await loadAccount(repository.current);
         if (generation !== lifecycle.current) return;
+        await loadConsent();
+        if (generation !== lifecycle.current) return;
         if (native) {
           readiness.current = await invoke<Readiness>("app_readiness");
           if (generation !== lifecycle.current) return;
@@ -871,18 +903,19 @@ export default function Controller() {
             if (s.signedIn && s.subject) {
               subject.current = s.subject;
               const repo = new NativeRepository(s.subject);
-              provider.current = new Free2zTutor(client, repo, s.subject);
+              // A session from before this device's permission (an earlier build, a reinstall that kept the keychain, or a
+              // permission withdrawn) keeps its local progress, but sends nothing until the account holder allows AI.
+              const allowed = aiAllowed(consent.current);
+              if (allowed) provider.current = new Free2zTutor(client, repo, s.subject);
+              else logEvent("info", "ai-consent", "signed in without AI permission on this device; AI paused until it is allowed in Settings");
               await loadAccount(repo);
               if (generation !== lifecycle.current) return;
               setAccount({
                 connected: true,
                 label: "Free2Z account",
-                status: readiness.current.reason,
+                status: allowed ? readiness.current.reason : CONSENT_STATUS,
               });
-              await restorePaidAnswer();
-              // Prefetch at launch (#929): a learner who practised before gets their bank filled before the first tap, whether
-              // or not a queue was restored. A brand-new learner's first tap starts it (theirs to Stop).
-              if (await connectAccount() && generation === lifecycle.current && (restoredAi.current || practisedBefore.current)) maybePrefetch();
+              if (allowed) await startAi(generation);
             }
           }
         }
@@ -896,7 +929,7 @@ export default function Controller() {
               setSavedAnswers((await provider.current.pendingReplies()).map(r => ({operationId:r.operationId, profileId:r.context?.profileId})));
             } catch { /* Keep the original startup error visible. */ }
           }
-          actionLock.current = false;
+          releaseActionLock();
           setBusy(false);
           updateTimer();
         }
@@ -906,7 +939,7 @@ export default function Controller() {
       updateTimer();
       if (document.visibilityState === "hidden") {
         if (!actionLock.current) void action(saveSession);
-      } else if (subject.current) {
+      } else if (subject.current && provider.current) {
         // Back in the foreground: finish any interrupted request now, quietly (respects the retry backoff).
         startRecovery("resume");
         const epoch = accountEpoch.current;
@@ -929,6 +962,7 @@ export default function Controller() {
       ++accountEpoch.current;
       document.removeEventListener("visibilitychange", visibility);
       clearTimeout(recoveryTimer.current);
+      clearTimeout(consentTimer.current);
       timer.current.pause(performance.now());
     };
   }, []);
@@ -1455,7 +1489,7 @@ export default function Controller() {
     ) {
       setCuriosity({
         question,
-        answer: `You’re exploring ${getSkill(a?.skillId ?? ai?.spec.skillIds[0] ?? "")?.title.toLowerCase() ?? "this idea"}. In local practice I can show the built-in example and explanation. Open Settings to connect Free2Z when live tutoring is available. Your question won’t change your progress.`,
+        answer: `You’re exploring ${getSkill(a?.skillId ?? ai?.spec.skillIds[0] ?? "")?.title.toLowerCase() ?? "this idea"}. In local practice I can show the built-in example and explanation. ${subject.current ? "AI lessons are paused until the account holder allows them in Settings." : "Open Settings to connect Free2Z when live tutoring is available."} Your question won’t change your progress.`,
       });
       return;
     }
@@ -1492,7 +1526,119 @@ export default function Controller() {
     const text = item.spec.prompt.map(b => b.type === "text" ? b.text : b.type === "math" ? `$${b.tex}$` : "[figure]").join(" ");
     return {title: item.spec.title, skills: item.spec.skillIds, prompt: text.slice(0, 1200)};
   }
+  /** Reads this device's AI permission. Unreadable is logged and treated as not given: AI never starts on a guess. */
+  async function loadConsent() {
+    let data: Json = null;
+    try { data = await device.current.getJournal(CONSENT_KEY); }
+    catch (error) { logError("ai-consent", error); }
+    showConsent(readConsent(data, Date.now()));
+  }
+  function showConsent(state: ConsentState) {
+    consent.current = state;
+    setConsentState(state);
+    // A locked step opens again by itself when its day is over.
+    clearTimeout(consentTimer.current);
+    if (state.status === "locked" && alive.current)
+      consentTimer.current = setTimeout(() => void loadConsent(), Math.max(0, state.until - Date.now()) + 1000);
+  }
+  /** The connected session's AI start: a saved answer first, then the connection check, then the launch prefetch. */
+  async function startAi(generation?: number) {
+    await restorePaidAnswer();
+    // Prefetch at launch (#929): a learner who practised before gets their bank filled before the first tap, whether
+    // or not a queue was restored. A brand-new learner's first tap starts it (theirs to Stop).
+    if (await connectAccount() && (generation === undefined || generation === lifecycle.current) && (restoredAi.current || practisedBefore.current)) maybePrefetch();
+  }
+  /**
+   * Every account exit (Connect, Manage and Delete Free2Z account, Allow AI lessons) starts here. It runs at once only
+   * after a fresh pass of the adult step (and, for Connect and Allow, this device's AI permission); otherwise Settings
+   * shows the step first. Nothing else in the app opens a Free2Z page.
+   */
+  function requestExit(exit: AccountExit) {
+    if (exitClear(exit, gate.current, consent.current, Date.now())) {
+      void action(() => takeExit(exit), EXIT_LABEL[exit]);
+      return;
+    }
+    setGateFor(exit);
+  }
+  /**
+   * The adult step's Continue/Allow. A year that does not pass is refused calmly and locks every exit on this device for
+   * a day; one that passes is remembered for a few minutes, records AI permission where the exit needs it, and takes it.
+   */
+  async function passGate(birthYear: string) {
+    const exit = gateFor;
+    if (!exit) return;
+    const verdict = checkBirthYear(birthYear, new Date());
+    if (verdict === "invalid") throw new Error("Enter a four-digit year.");
+    const now = Date.now();
+    // A locked step stays locked until it expires: a second guess changes nothing.
+    if (consent.current.status === "locked") return;
+    if (verdict === "minor") {
+      gate.current.reset();
+      const record = lockedRecord(now, grantOf(consent.current));
+      // Locked in memory first, so a failed write can never leave the form open for a second guess.
+      showConsent(readConsent(record, now));
+      logEvent("info", "ai-consent", `the adult step did not pass (${exit}); account exits are paused on this device for a day`);
+      try { await device.current.putJournal(CONSENT_KEY, record); }
+      catch (error) { logError("ai-consent", error); }
+      return;
+    }
+    gate.current.pass(now);
+    if (needsConsent(exit, consent.current)) {
+      const record = grantedRecord(now);
+      await device.current.putJournal(CONSENT_KEY, record);
+      showConsent(readConsent(record, now));
+      logEvent("info", "ai-consent", "AI permission given on this device");
+    }
+    setGateFor(undefined);
+    await takeExit(exit);
+  }
+  /** Takes an exit. Each one re-checks the gate itself, so no path reaches a Free2Z page around it. */
+  async function takeExit(exit: AccountExit) {
+    if (!exitClear(exit, gate.current, consent.current, Date.now()))
+      throw new Error("This is for the Free2Z account holder.");
+    if (exit === "connect") return signIn();
+    if (exit === "manage") return openAccount("apps");
+    if (exit === "delete") return openAccount("delete");
+    if (subject.current && !provider.current) {
+      // Signed in already (AI was paused): the same provider and start as a launch with permission.
+      provider.current = new Free2zTutor(getNativeClient(), repository.current, subject.current);
+      setAccount(a => ({...a, status: readiness.current?.reason}));
+      await startAi();
+    }
+  }
+  /** A Free2Z account page in the system browser (the native command takes a page name, never a URL). */
+  async function openAccount(page: "apps" | "delete") {
+    if (!exitClear(page === "apps" ? "manage" : "delete", gate.current, consent.current, Date.now()))
+      throw new Error("This is for the Free2Z account holder.");
+    await invoke("open_free2z_account", {page});
+  }
+  /**
+   * Signing out withdraws AI permission too, so the next Connect asks the account holder again. A lock stays: signing
+   * out is never a way around a year that did not pass. The step's in-memory pass ends with the session.
+   */
+  async function withdrawConsent() {
+    gate.current.reset();
+    setGateFor(undefined);
+    const state = consent.current;
+    if (!grantOf(state)) return;
+    try {
+      if (state.status === "locked") await device.current.putJournal(CONSENT_KEY, {version: CONSENT_VERSION, lockedUntil: new Date(state.until).toISOString()});
+      else await device.current.deleteJournal(CONSENT_KEY);
+    } catch (error) { logError("ai-consent", error); }
+    showConsent(state.status === "locked" ? {status: "locked", until: state.until} : {status: "needed"});
+  }
+  /**
+   * The tutor whose local journal says what AI usage is outstanding. While AI is paused (signed in without permission)
+   * there is no provider, so a read-only one over the same account journal answers; it never sends a request.
+   */
+  function usageJournal(): Free2zTutor | undefined {
+    if (provider.current) return provider.current;
+    return native && subject.current ? new Free2zTutor(getNativeClient(), repository.current, subject.current) : undefined;
+  }
   async function signIn() {
+    // Only through the adult step (takeExit), with AI permission: the system sign-in is a Free2Z page.
+    if (!exitClear("connect", gate.current, consent.current, Date.now()))
+      throw new Error("This is for the Free2Z account holder.");
     if (!native)
       throw new Error(
         "Free2Z sign-in uses the native app’s secure browser. This browser preview never asks for credentials.",
@@ -1552,6 +1698,7 @@ export default function Controller() {
     selectedModel.current = undefined;
     appBudget.current = undefined;
     aiBackoff.current = new AiBackoff();
+    await withdrawConsent();
     setAccount({connected: false, status: "Local practice · AI is not connected"});
     await loadAccount(new NativeRepository("local-device"));
     if (failure) throw failure;
@@ -1644,7 +1791,11 @@ export default function Controller() {
       feedback={feedback}
       hint={hint}
       curiosity={curiosity}
-      account={{...account, signInAvailable: native && !!readiness.current?.free2zConfigured}}
+      account={{...account, consent: aiAllowed(consentState) ? "granted" : "needed", signInAvailable: native && !!readiness.current?.free2zConfigured}}
+      gate={gateFor ? {exit: gateFor, needsConsent: needsConsent(gateFor, consentState), locked: consentState.status === "locked"} : undefined}
+      onGatePass={(year) => void action(() => passGate(year), gateFor ? EXIT_LABEL[gateFor] : undefined)}
+      onGateCancel={() => setGateFor(undefined)}
+      onAllowAi={() => requestExit("allow")}
       modelMenu={account.connected && menu ? {choice: menu.choice, ...(menu.auto ? {auto: menu.auto} : {}), options: menu.options} : undefined}
       onChooseModel={(choice) => void action(() => chooseModelSetting(choice))}
       loadModelStats={native ? loadModelStats : undefined}
@@ -1656,7 +1807,7 @@ export default function Controller() {
         const timing = timer.current.snapshot(performance.now());
         void action(() => submit(answer, timing));
       }}
-      onContinue={() => void action(continueLearning, account.connected && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
+      onContinue={() => void action(continueLearning, provider.current && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
       onSupport={(kind, reason) => void action(() => support(kind, reason))}
       onExplainSeen={() => { if (currentAi.current && !aiWorked.current) { aiWorked.current = true; void reconcileRepeat().catch(e => logError("ai-queue", e)); } }}
       onCuriosity={(q) => void action(() => curiosityQuestion(q), "Thinking about your question…")}
@@ -1712,7 +1863,7 @@ export default function Controller() {
         })
       }
       onRecoverUsage={
-        account.connected
+        account.connected && aiAllowed(consentState)
           ? () =>
               void action(async () => {
                 await settlePrefetch();
@@ -1743,10 +1894,10 @@ export default function Controller() {
             }
           : undefined
       }
-      onManageAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "apps"}), "Opening Free2Z in your browser…") : undefined}
-      onDeleteFree2zAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "delete"}), "Opening Free2Z in your browser…") : undefined}
-      onRefreshAccount={() => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…")}
-      onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
+      onManageAccount={native ? () => requestExit("manage") : undefined}
+      onDeleteFree2zAccount={native ? () => requestExit("delete") : undefined}
+      onRefreshAccount={aiAllowed(consentState) ? () => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…") : undefined}
+      onSignIn={() => requestExit("connect")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
         void action(async () => {
@@ -1783,7 +1934,8 @@ export default function Controller() {
       onImport={() =>
         void action(async () => {
           await settlePrefetch();
-          if (provider.current && (await provider.current.inspectPending()).length)
+          const usage = usageJournal();
+          if (usage && (await usage.inspectPending()).length)
             throw new Error("Resolve outstanding AI usage before replacing learner data. This keeps the original request recoverable.");
           const preview = await repository.current.pickBackup();
           if (!preview) return;
@@ -1801,7 +1953,8 @@ export default function Controller() {
         void action(async () => {
           if (currentProfile.current) {
             await settlePrefetch();
-            if (provider.current && (await provider.current.inspectPending()).some(p => !p.profileId || p.profileId === currentProfile.current!.id))
+            const usage = usageJournal();
+            if (usage && (await usage.inspectPending()).some(p => !p.profileId || p.profileId === currentProfile.current!.id))
               throw new Error("Resolve this learner’s outstanding AI usage before deleting their progress. The original request still needs recovery.");
             await repository.current.deleteProfile(currentProfile.current.id);
             await loadAccount(repository.current);

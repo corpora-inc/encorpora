@@ -3,6 +3,7 @@ import type { LapRecap } from "../application/lapRecap";
 import type { ActivitySpec } from "../activity/spec";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import type { CuriosityKind } from "../application/curiosity";
+import type { AccountExit } from "../application/aiConsent";
 import type { ReportReason } from "../application/aiReports";
 export type StudioVisual =
   | { type: "fraction"; numerator: number; denominator: number; label?: string }
@@ -107,6 +108,11 @@ export interface StudioProps {
     settling?: boolean;
     /** Calm, actionable note shown only after automatic receipt recovery has failed persistently. */
     recoveryNote?: string;
+    /**
+     * The account holder's AI permission on this device (application/aiConsent.ts). Anything but `granted` adds the
+     * AI disclosure to the adult step before Connect, or pauses AI for a session that is already signed in.
+     */
+    consent?: "granted" | "needed" | "locked";
   };
   /** The AI model row in Settings (connected, once the catalogue has been read). Display only. */
   modelMenu?: {
@@ -139,6 +145,16 @@ export interface StudioProps {
   /** Opens Free2Z's account deletion page in the system browser (shown only when connected). */
   onDeleteFree2zAccount?: () => void;
   onSignIn: () => void;
+  /** Resume AI for a session signed in without this device's permission (through the adult step). */
+  onAllowAi?: () => void;
+  /**
+   * The adult step the host is showing before an account exit (application/aiConsent.ts): Connect, Manage or Delete
+   * Free2Z account (each opens a Free2Z page), or Allow AI lessons. Absent: no step on screen.
+   */
+  gate?: { exit: AccountExit; needsConsent: boolean; locked: boolean };
+  /** The step's Continue/Allow, with the birth year typed (never stored). The host decides and, on a pass, takes the exit. */
+  onGatePass?: (birthYear: string) => void;
+  onGateCancel?: () => void;
   onSignOut: () => void;
   onRefreshAccount?: () => void;
   onRecoverUsage?: () => void;

@@ -33,6 +33,7 @@ let specRenderer: SpecRenderer | undefined;
 const loadSpecRenderer = () => import("../activity/render").then(m => (specRenderer = m));
 import { burst, feel, hapticsEnabled, isMilestone, setHapticsEnabled, shake, streakLevel } from "./celebrate";
 import { ReportProblem } from "./ReportProblem";
+import { AiConsent } from "./AiConsent";
 import { connectionPill } from "./connectionStatus";
 import { isEditable, KEYBOARD_SETTLED, listenNativeKeyboard, nextKeyboardLayout, sampleViewport, type KeyboardLayout } from "./keyboard";
 import { logError } from "../diagnostics/log";
@@ -350,6 +351,8 @@ export function Studio(props: StudioProps) {
   const [newName, setNewName] = useState("");
   const [startGrade, setStartGrade] = useState(3);
   const [deleting, setDeleting] = useState(false);
+  /** Settings shows the one-time adult step (Connect, or Allow AI lessons for a paused session). */
+  const consent = props.account.consent ?? "granted";
   const promptRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   /** The learner pressed Check: only then does an outcome celebrate (never a restored one). */
@@ -528,6 +531,7 @@ export function Studio(props: StudioProps) {
   const closeSettings = () => {
     setSettings(false);
     setDeleting(false);
+    if (props.gate) props.onGateCancel?.();
     settingsReturn.current?.focus?.();
   };
   const closeAsk = () => {
@@ -1076,6 +1080,11 @@ export function Studio(props: StudioProps) {
               <p className="account-status">AI connection is unavailable in this build. You can keep learning with local practice.</p>
             )}
             <div className="settings-buttons">
+              {/* Every exit to a Free2Z page (and AI permission) passes the adult step first; it replaces the buttons. */}
+              {props.gate && props.onGatePass ? (
+                <AiConsent busy={props.busy} exit={props.gate.exit} needsConsent={props.gate.needsConsent} locked={props.gate.locked}
+                  onPass={props.onGatePass} onCancel={() => props.onGateCancel?.()} />
+              ) : <>
               {/* Account-only actions exist only once connected; disconnected shows Connect alone. */}
               {/* The one neutral exit to Free2Z (system browser, never a checkout). Out of credits or budget, it leads. */}
               {props.account.connected && props.onManageAccount && (
@@ -1085,6 +1094,9 @@ export function Studio(props: StudioProps) {
               )}
               {props.account.connected && props.onRefreshAccount && <button className="secondary-button" disabled={props.busy} onClick={props.onRefreshAccount}>Refresh connection</button>}
               {props.busy && props.onCancel && <button className="secondary-button" onClick={props.onCancel}>Stop AI request</button>}
+              {props.account.connected && consent !== "granted" && props.onAllowAi && (
+                <button className="primary-button" disabled={props.busy} onClick={props.onAllowAi}>Allow AI lessons</button>
+              )}
               {props.account.connected ? (
                 <>
                   <button className="secondary-button" disabled={props.busy} onClick={props.onSignOut}><LogOut size={16} /> Sign out</button>
@@ -1108,6 +1120,7 @@ export function Studio(props: StudioProps) {
                   Connect Free2Z <ArrowUpRight size={17} />
                 </button>
               )}
+              </>}
             </div>
             {!!props.savedAnswers?.length && <div className="pending-usage" role="status">
               <strong>Saved AI answers</strong>
@@ -1118,7 +1131,7 @@ export function Studio(props: StudioProps) {
                 <button className="text-button" disabled={props.busy} onClick={() => props.onDiscardAnswer?.(saved.operationId)}>Set this answer aside</button>
               </div>)}
             </div>}
-            {props.account.connected && props.onDeleteFree2zAccount && (
+            {props.account.connected && props.onDeleteFree2zAccount && !props.gate && (
               <button className="danger-link" disabled={props.busy} onClick={props.onDeleteFree2zAccount}>
                 Delete Free2Z account <ArrowUpRight size={14} aria-hidden="true" />
               </button>
