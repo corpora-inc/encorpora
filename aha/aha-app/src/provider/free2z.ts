@@ -92,10 +92,10 @@ export function admitEstimate(estimate: Estimate, budget: AppBudget, availableFa
 const REFUSAL_CODES = ['insufficient_balance', 'cap_exceeded'];
 /** Codes of the refusals that provably cost nothing: Free2Z (or AHA's own check) refused before any hold. */
 const ZERO_CHARGE_CODES = [...REFUSAL_CODES, 'not_enough_2z', 'too_large'];
-const NOT_ENOUGH_2Z = 'Not enough 2Z for the next set of activities. Nothing was charged.';
+const NOT_ENOUGH_2Z = 'No credits. Nothing was charged.';
 const REFUSAL_MESSAGES: Record<string, string> = {
-  insufficient_balance: 'There isn’t enough 2Z in your Free2Z account for AI activities right now. The refusal cost nothing.',
-  cap_exceeded: 'App budget reached: raise it in Free2Z. The refusal cost nothing.',
+  insufficient_balance: 'No credits. Nothing was charged.',
+  cap_exceeded: 'App budget reached. Nothing was charged.',
   not_enough_2z: NOT_ENOUGH_2Z,
 };
 /** A positive whole-2Z amount, or `undefined`: anything else from the wire is never shown. */

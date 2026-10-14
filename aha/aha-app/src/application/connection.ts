@@ -6,10 +6,11 @@ import { diagnostics, type DiagnosticsLog } from '../diagnostics/log';
 export function learningError(error: unknown): string {
   if (error instanceof SdkError || error instanceof TutorServiceError) {
     const messages: Record<string, string> = {
-      // Store-neutral (App Store 3.1.1/3.1.3, Play Payments): a statement of fact, never a call to buy or add 2Z.
-      insufficient_balance: `There isn’t enough 2Z in your Free2Z account for AI activities right now.${needed(error)} Local practice continues. The refusal cost nothing.`,
-      cap_exceeded: 'App budget reached: raise it in Free2Z. The app budget is a separate limit from the 2Z balance. The refusal cost nothing.',
-      not_enough_2z: 'Not enough 2Z for the next set of activities. Nothing was charged.',
+      // Store-neutral (App Store 3.1.1/3.1.3, Play Payments): a calm statement of fact. No amount, price or call to
+      // buy or add 2Z; Settings offers only the neutral Manage Free2Z account exit.
+      insufficient_balance: 'No credits. Local practice continues.',
+      cap_exceeded: 'App budget reached. Local practice continues.',
+      not_enough_2z: 'No credits. Local practice continues.',
       ai_not_ready: 'Free2Z AI isn’t switched on for apps yet. Nothing was charged.',
       budget_pending: 'Free2Z is still setting up spending for this app. Nothing was charged.',
       insufficient_scope: 'Free2Z has not granted the access needed for this action. Sign in again to review the requested permissions.',
@@ -18,7 +19,7 @@ export function learningError(error: unknown): string {
       token_revoked: 'Free2Z access has changed. Sign in again; your recorded progress remains on this device.',
       insufficient_user_authentication: 'Free2Z needs a fresh sign-in before this action.',
       account_frozen: 'Free2Z has paused spending for this account. You can check the account in Free2Z.',
-      account_in_debt: 'Free2Z reports an outstanding balance. You can review it in Free2Z before paid learning resumes.',
+      account_in_debt: 'Free2Z has paused AI for this account. Local practice continues.',
       model_disabled: 'This tutor model is temporarily unavailable. Refresh the connection before starting another lesson.',
       model_not_found: 'This tutor model is no longer available. Refresh the connection before starting another lesson.',
       unavailable: 'Free2Z is temporarily unavailable. Your progress is saved. Try Refresh connection later; no replacement paid request is sent automatically.',
@@ -38,19 +39,8 @@ export function learningError(error: unknown): string {
 }
 
 /**
- * " The next activities need N 2Z." when the refusal reported a positive whole-2Z amount: `required2z` on AHA's own
- * error, or the SDK's decoded native `details.required_2z` (bigint, zuu #1136). Otherwise nothing.
- */
-function needed(error: SdkError | TutorServiceError): string {
-  const details: unknown = error instanceof SdkError ? error.details : undefined;
-  const amount = error instanceof TutorServiceError ? error.required2z
-    : details && typeof details === 'object' && !Array.isArray(details) ? (details as Record<string, unknown>).required_2z : undefined;
-  return typeof amount === 'bigint' && amount > 0n ? ` The next activities need ${amount} 2Z.` : '';
-}
-
-/**
- * The refusal kind: `low_balance` (402 `insufficient_balance`, a neutral statement with no action) or `raise_budget`
- * (403 `cap_exceeded`, shown with a link to free2z.cash/account/apps). Anything else is undefined.
+ * The refusal kind: `low_balance` (402 `insufficient_balance`, "No credits") or `raise_budget` (403 `cap_exceeded`,
+ * "App budget reached"). Either one makes Manage Free2Z account the primary action in Settings. Anything else is undefined.
  */
 export function refusalAction(error: unknown): 'low_balance' | 'raise_budget' | undefined {
   if (!(error instanceof SdkError || error instanceof TutorServiceError)) return undefined;

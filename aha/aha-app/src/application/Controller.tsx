@@ -490,7 +490,7 @@ export default function Controller() {
     const retryAt = retryDeadline(e);
     retryAfter.current = Math.max(retryAfter.current, retryAt ?? 0);
     aiBackoff.current.recordFailure(Date.now(), retryAt);
-    // A budget refusal also offers the Free2Z account link; any other cause clears it.
+    // A refusal ("No credits" or "App budget reached") makes Manage Free2Z account lead; any other cause clears it.
     setAccount(a => ({...a, aiReady: false, status: aiFallbackStatus(e), refusal: refusalAction(e)}));
     // An unsettled receipt is recovered on its own: show it as settling (never "AI ready") and retry in the background.
     if (e instanceof TutorServiceError && e.code === "settlement_pending") { showSettling(); scheduleRecovery(RETRY_BASE_MS); }
@@ -1717,7 +1717,8 @@ export default function Controller() {
             }
           : undefined
       }
-      onManageAccount={native ? () => void action(() => invoke("open_free2z_account"), "Opening Free2Z in your browser…") : undefined}
+      onManageAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "apps"}), "Opening Free2Z in your browser…") : undefined}
+      onDeleteFree2zAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "delete"}), "Opening Free2Z in your browser…") : undefined}
       onRefreshAccount={() => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…")}
       onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
       onSignOut={() => void action(signOut)}
