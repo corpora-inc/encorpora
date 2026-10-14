@@ -1467,7 +1467,7 @@ export default function Controller() {
     ) {
       setCuriosity({
         question,
-        answer: `You’re exploring ${getSkill(a?.skillId ?? ai?.spec.skillIds[0] ?? "")?.title.toLowerCase() ?? "this idea"}. In local practice I can show the built-in example and explanation. Open Settings to connect Free2Z when live tutoring is available. Your question won’t change your progress.`,
+        answer: `You’re exploring ${getSkill(a?.skillId ?? ai?.spec.skillIds[0] ?? "")?.title.toLowerCase() ?? "this idea"}. In local practice I can show the built-in example and explanation. ${subject.current ? "AI lessons are paused until the account holder allows them in Settings." : "Open Settings to connect Free2Z when live tutoring is available."} Your question won’t change your progress.`,
       });
       return;
     }
@@ -1556,11 +1556,23 @@ export default function Controller() {
     }
     await signIn();
   }
-  /** Signing out withdraws the permission too, so the next Connect asks the account holder again. */
+  /**
+   * Signing out withdraws the permission too, so the next Connect asks the account holder again. A lock stays: signing
+   * out is never a way around a year that did not pass.
+   */
   async function withdrawConsent() {
+    if (consent.current.status !== "granted") return;
     try { await device.current.deleteJournal(CONSENT_KEY); }
     catch (error) { logError("ai-consent", error); }
     showConsent({status: "needed"});
+  }
+  /**
+   * The tutor whose local journal says what AI usage is outstanding. While AI is paused (signed in without permission)
+   * there is no provider, so a read-only one over the same account journal answers; it never sends a request.
+   */
+  function usageJournal(): Free2zTutor | undefined {
+    if (provider.current) return provider.current;
+    return native && subject.current ? new Free2zTutor(getNativeClient(), repository.current, subject.current) : undefined;
   }
   async function signIn() {
     if (consent.current.status !== "granted")
@@ -1729,7 +1741,7 @@ export default function Controller() {
         const timing = timer.current.snapshot(performance.now());
         void action(() => submit(answer, timing));
       }}
-      onContinue={() => void action(continueLearning, account.connected && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
+      onContinue={() => void action(continueLearning, provider.current && aiAttemptDue() ? "Preparing your next AI lesson…" : "Preparing your next discovery…")}
       onSupport={(kind, reason) => void action(() => support(kind, reason))}
       onExplainSeen={() => { if (currentAi.current && !aiWorked.current) { aiWorked.current = true; void reconcileRepeat().catch(e => logError("ai-queue", e)); } }}
       onCuriosity={(q) => void action(() => curiosityQuestion(q), "Thinking about your question…")}
@@ -1820,7 +1832,7 @@ export default function Controller() {
       onDeleteFree2zAccount={native ? () => void action(() => invoke("open_free2z_account", {page: "delete"}), "Opening Free2Z in your browser…") : undefined}
       onRefreshAccount={consentState === "granted" ? () => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…") : undefined}
       onSignIn={() => void action(signIn, "Waiting for secure Free2Z sign-in…")}
-      onConsent={(year) => void action(() => giveConsent(year), "Waiting for secure Free2Z sign-in…")}
+      onConsent={(year) => void action(() => giveConsent(year), "Connecting Free2Z…")}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
         void action(async () => {
@@ -1857,7 +1869,8 @@ export default function Controller() {
       onImport={() =>
         void action(async () => {
           await settlePrefetch();
-          if (provider.current && (await provider.current.inspectPending()).length)
+          const usage = usageJournal();
+          if (usage && (await usage.inspectPending()).length)
             throw new Error("Resolve outstanding AI usage before replacing learner data. This keeps the original request recoverable.");
           const preview = await repository.current.pickBackup();
           if (!preview) return;
@@ -1875,7 +1888,8 @@ export default function Controller() {
         void action(async () => {
           if (currentProfile.current) {
             await settlePrefetch();
-            if (provider.current && (await provider.current.inspectPending()).some(p => !p.profileId || p.profileId === currentProfile.current!.id))
+            const usage = usageJournal();
+            if (usage && (await usage.inspectPending()).some(p => !p.profileId || p.profileId === currentProfile.current!.id))
               throw new Error("Resolve this learner’s outstanding AI usage before deleting their progress. The original request still needs recovery.");
             await repository.current.deleteProfile(currentProfile.current.id);
             await loadAccount(repository.current);

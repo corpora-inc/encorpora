@@ -1271,6 +1271,29 @@ try {
     assert.equal(await p.locator('.consent-step').count(),0);
     assert.deepEqual(pErrors,[]);await ctx.close();
   }
+  {
+    // Signing out never resets a lock: a year that did not pass on a paused session keeps Connect locked after sign-out.
+    const ctx=await browser.newContext({viewport:{width:390,height:844}});
+    await ctx.addInitScript(()=>localStorage.setItem('aha-test-consent-seeded','1'));
+    await ctx.addInitScript(fixture,batchFixtures);
+    const p=await ctx.newPage();const pErrors=[];p.on('pageerror',e=>pErrors.push(e.message));
+    await p.goto(base);
+    await p.getByRole('button',{name:'Settings',exact:true}).click();
+    await p.getByRole('button',{name:'Allow AI lessons',exact:true}).click();
+    await p.getByLabel('Your birth year',{exact:true}).fill('2016');
+    await p.getByRole('button',{name:'Allow',exact:true}).click();
+    await p.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    await p.getByRole('button',{name:'OK',exact:true}).click();
+    await p.getByRole('button',{name:'Sign out',exact:true}).click();
+    const connect=p.getByRole('button',{name:'Connect Free2Z',exact:false});
+    await connect.waitFor();
+    assert.ok((await p.evaluate(()=>window.__ahaFixture.read().journals['aha-ai-consent'])).lockedUntil,'the lock survives sign-out');
+    await connect.click();
+    await p.getByText('Connecting is for the Free2Z account holder.',{exact:true}).waitFor();
+    assert.equal(await p.getByLabel('Your birth year',{exact:true}).count(),0);
+    assert.equal(await p.evaluate(()=>window.__ahaAI.signIns?.length??0),0);
+    assert.deepEqual(pErrors,[]);await ctx.close();
+  }
   assert.deepEqual(errors,[]);
   console.log('AI controller fixture passed: the one-time adult step and AI permission before Connect (neutral birth year, a day-long lock, re-asked after sign-out, a paused pre-permission session resumed from Settings), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
