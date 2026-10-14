@@ -29,3 +29,16 @@ export function curiosityContext(kind: string, activity: { task: unknown } | { a
   if (!isCuriosityKind(kind)) throw new Error("Choose one of the questions.");
   return JSON.stringify({ ...activity, ask: kind });
 }
+
+/**
+ * The provider's boundary check on a new curiosity request: the message itself is exactly the activity and the
+ * preset id its journal record names, nothing else (so a caller cannot record "why" and send typed text).
+ */
+export function isStructuredCuriosity(context: string, question: string): boolean {
+  if (!isCuriosityKind(question)) return false;
+  let body: unknown;
+  try { body = JSON.parse(context); } catch { return false; }
+  if (!body || typeof body !== "object" || Array.isArray(body)) return false;
+  const keys = Object.keys(body);
+  return (body as Record<string, unknown>).ask === question && keys.length === 2 && (keys.includes("task") || keys.includes("activity"));
+}

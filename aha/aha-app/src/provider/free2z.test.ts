@@ -50,6 +50,9 @@ async function liveAuthorization(f: ReturnType<typeof fixture>): Promise<PaidAut
   const policy = {subject:'adult',clientId:'aha-client'};
   return {...policy, verifiedGrant: await verifyPaidGrant(f.client, policy)};
 }
+/** A curiosity request's message as the app builds it: the activity and the preset id, nothing typed. */
+const curiosityC=(ask:string)=>JSON.stringify({task:{kind:'add',a:2,b:3},ask});
+const CURIOSITY_C=curiosityC('why');
 test('formats balances without losing integer precision',()=>{assert.equal(format2z(9007199254740993123n),'9007199254740993.123 2Z');assert.equal(format2z(-1500n),'-1.5 2Z');});
 test('journals before invocation and persists finalized output and exact receipt',async()=>{const f=fixture();const r=await f.tutor.reply('verified-model','policy','context',f.authorization);assert.equal(r.text,'{"activity":true}');assert.equal(f.getValue().operations[0].charge.charged2z,'2');assert.equal(f.getValue().operations[0].state,'finalized');});
 test('a budgeted grant needs the estimate to report the budget remainder; absent or null blocks any paid call',async()=>{for(const cap of [null,undefined]){const f=fixture();f.setCap(cap);await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'grant_verification_required'});assert.equal(f.calls.length,0);assert.equal(f.getValue()?.operations?.length ?? 0,0,'refused before any operation is journaled');}});
@@ -223,7 +226,7 @@ test('validated recovery context survives durable journal and a new provider ins
   {kind:'curiosity' as const,profileId:'learner',activityId:'question-1',question:'real-life'}
  ]){
   const f=fixture();const chat=f.client.chat;f.client.chat=async()=>{throw new SdkError('temporarily_unavailable');};
-  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,context));
+  await assert.rejects(f.tutor.reply('verified-model','p',context.kind==='curiosity'?curiosityC(context.question):'c',f.authorization,context));
   const op=f.getValue().operations[0];assert.deepEqual(op.context,context);
   f.client.chat=chat;const restarted=new Free2zTutor(f.client,f.journal,'adult');const result=await restarted.recover(op.id,f.authorization);
   assert.deepEqual(result.context,context);assert.equal(result.text,'{"activity":true}');assert.equal(result.operationId,op.id);
@@ -236,10 +239,16 @@ test('a new curiosity request carries a preset id only: typed text is refused be
   await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,{kind:'curiosity',profileId:'learner',activityId:'a',question}),{code:'free_text_refused'});
   assert.equal(f.calls.length,0,question);assert.equal(f.getValue(),undefined,question);
  }
+ // The message itself is checked too: a preset id on the record never carries typed text in the body.
+ for(const body of ['c',JSON.stringify({task:{},ask:'real-life'}),JSON.stringify({task:{},ask:'why',question:'tell me a story'}),JSON.stringify({ask:'why'}),'[]']){
+  const f=fixture();
+  await assert.rejects(f.tutor.reply('verified-model','p',body,f.authorization,{kind:'curiosity',profileId:'learner',activityId:'a',question:'why'}),{code:'free_text_refused'});
+  assert.equal(f.calls.length,0,body);assert.equal(f.getValue(),undefined,body);
+ }
 });
 test('a typed curiosity question journaled by an older build is still recovered with its original key (no new request)',async()=>{
  const f=fixture();const chat=f.client.chat;f.client.chat=async()=>{throw new SdkError('temporarily_unavailable');};
- await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization,{kind:'curiosity',profileId:'learner',activityId:'q',question:'why'}));
+ await assert.rejects(f.tutor.reply('verified-model','p',CURIOSITY_C,f.authorization,{kind:'curiosity',profileId:'learner',activityId:'q',question:'why'}));
  const op=f.getValue().operations[0];op.context.question='Where can I use this?';f.setValue(f.getValue());
  f.client.chat=chat;const result=await new Free2zTutor(f.client,f.journal,'adult').recover(op.id,f.authorization);
  assert.equal(result.context?.kind==='curiosity'&&result.context.question,'Where can I use this?');
@@ -291,14 +300,14 @@ test('completed paid lesson survives restart until explicit durable acknowledgem
  assert.equal(f.getValue().operations[0].text,'');assert.equal(f.getValue().operations[0].consumed,true);
 });
 test('failed acknowledgement keeps delivered content recoverable and blocks fresh spending',async()=>{
- const f=fixture();const completed=await f.tutor.reply('verified-model','p','c',f.authorization,{kind:'curiosity',profileId:'learner',activityId:'question',question:'why'});
+ const f=fixture();const completed=await f.tutor.reply('verified-model','p',CURIOSITY_C,f.authorization,{kind:'curiosity',profileId:'learner',activityId:'question',question:'why'});
  const write=f.journal.putJournal;f.journal.putJournal=async()=>{throw new Error('disk full');};
  await assert.rejects(f.tutor.acknowledgeReply(completed.operationId),/disk full/);f.journal.putJournal=write;
  assert.deepEqual(await f.tutor.pendingReplies(),[completed]);assert.equal(f.getValue().operations[0].consumed,undefined);
 });
 test('completed pending-settlement content is available without another billable replay',async()=>{
  const f=fixture([{type:'done',finish_reason:'stop',settlement:'pending',charge:{state:'pending'}} as any]);
- const result=await f.tutor.reply('verified-model','p','c',f.authorization,{kind:'curiosity',profileId:'learner',activityId:'question',question:'why'});
+ const result=await f.tutor.reply('verified-model','p',CURIOSITY_C,f.authorization,{kind:'curiosity',profileId:'learner',activityId:'question',question:'why'});
  assert.deepEqual(await f.tutor.pendingReplies(),[result]);
  assert.equal((await f.tutor.inspectPending())[0].profileId,'learner');assert.equal((await f.tutor.inspectPending())[0].activityId,'question');
  await f.tutor.acknowledgeReply(result.operationId);assert.deepEqual(await f.tutor.pendingReplies(),[]);
@@ -385,7 +394,7 @@ test('a batch cut off by its output budget is still deliverable; other replies a
  assert.equal(reply.text,'{"activity":true}');
  assert.equal((await f.tutor.pendingReplies()).length,1,'saved until the queue is durably stored');
  const g=fixture([{type:'done',finish_reason:'length',settlement:'settled',charge:charged}]);
- await assert.rejects(g.tutor.reply('verified-model','p','c',g.authorization,{kind:'curiosity',profileId:'learner',activityId:'a',question:'why'}),{code:'incomplete_output'});
+ await assert.rejects(g.tutor.reply('verified-model','p',CURIOSITY_C,g.authorization,{kind:'curiosity',profileId:'learner',activityId:'a',question:'why'}),{code:'incomplete_output'});
  assert.equal((await g.tutor.pendingReplies()).length,0);
 });
 test('a receipt-only replay of a batch is never treated as activity content',async()=>{
@@ -503,7 +512,7 @@ test('spending snapshot reports the last estimate, budget remainder and settled 
  f.setHold(4n);await f.tutor.reply('verified-model','p','c',f.authorization,batchContext,'2600');
  assert.deepEqual(f.tutor.spending(),{availableMilli2z:500000n,capRemainingMilli2z:97000n,batchEstimate2z:4n,batchCharge2z:3n});
  const g=fixture();g.setGrant({spend_cap_2z:null});g.setCap(null);
- await g.tutor.reply('verified-model','p','c',await liveAuthorization(g),{kind:'curiosity',profileId:'learner',activityId:'a',question:'why'});
+ await g.tutor.reply('verified-model','p',CURIOSITY_C,await liveAuthorization(g),{kind:'curiosity',profileId:'learner',activityId:'a',question:'why'});
  assert.deepEqual(g.tutor.spending(),{availableMilli2z:500000n,capRemainingMilli2z:null},'a curiosity answer is not a batch cost');
 });
 
@@ -542,7 +551,7 @@ test('a journal written under the test-era policy is still read, blocks fresh sp
 const refusal=(status:number,reason:string,code='insufficient_balance')=>new SdkError(code,{status,details:{reason}});
 test('strict output is sent on the estimate and the chat request for batches, tutor replies and recovery',async()=>{
  for(const [ctx,budget] of [[batchContext,'2600'],[undefined,'1800'],[{kind:'curiosity' as const,profileId:'p',activityId:'a',question:'why'},'1800']] as const){
-  const f=fixture();await f.tutor.reply('verified-model','p','c',f.authorization,ctx,budget as any);
+  const f=fixture();await f.tutor.reply('verified-model','p',ctx?.kind==='curiosity'?CURIOSITY_C:'c',f.authorization,ctx,budget as any);
   assert.equal(f.estimates.length,2,'admission at journal time and again at the send boundary');
   for(const e of f.estimates)assert.equal(e.max_output_tokens_strict,true);
   assert.equal(f.calls[0].request.max_output_tokens_strict,true);
@@ -988,7 +997,7 @@ test('reasoning_effort "low" goes on an activity batch only when /v1/models adve
    [[{id:'reasoner',capabilities:{reasoning:true,structured_output:true,reasoning_effort:true}}],'reasoner',{kind:'curiosity' as const,profileId:'p',activityId:'a',question:'why'}],
  ] as const){
   const g=fixture();g.setModels(models as any);
-  await g.tutor.reply(model,'p','c',g.authorization,ctx,'12000',ctx.kind==='activities'?structured:undefined);
+  await g.tutor.reply(model,'p',ctx.kind==='curiosity'?CURIOSITY_C:'c',g.authorization,ctx,'12000',ctx.kind==='activities'?structured:undefined);
   assert.ok(g.estimates.every(r=>!('reasoning_effort' in r))&&!('reasoning_effort' in g.calls[0].request),JSON.stringify(models));
   assert.ok(!('reasoningEffort' in g.getValue().operations[0].request));
  }
