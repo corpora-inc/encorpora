@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { MAX_REPORTS, REPORT_REASONS, appendReport, isReportReason, markSent, readReports, submitReport, unsent, type AiReport } from "./aiReports";
+import { MAX_REPORTS, REPORT_REASONS, appendReport, isReportReason, markSent, readReports, reportFor, submitReport, unsent, type AiReport } from "./aiReports";
 
 const report = (n: number, extra: Partial<AiReport> = {}): AiReport => ({
   id: `r${n}`, activityId: `op${n}:0`, specId: `spec-${n}`, operationId: `op${n}`, callId: `call-${n}`, reason: "incorrect",
@@ -20,6 +20,8 @@ describe("AI content reports", () => {
   it("reports an activity once", () => {
     const data = appendReport(appendReport(null, report(1)), { ...report(1), id: "again", reason: "unsafe" });
     assert.deepEqual(readReports(data).reports.map(r => [r.id, r.reason]), [["r1", "incorrect"]]);
+    assert.equal(reportFor(data, "op1:0")?.id, "r1", "a repeat report resolves to the stored one");
+    assert.equal(reportFor(data, "op9:0"), undefined);
   });
   it("drops unreadable entries instead of blocking new reports", () => {
     const { reports, dropped } = readReports({ version: 1, reports: [report(1) as never, { id: "x", reason: "typed text" }, null] });
@@ -27,7 +29,7 @@ describe("AI content reports", () => {
     assert.equal(dropped, 2);
     assert.deepEqual(readReports("garbage").reports, []);
   });
-  it("keeps every unsent report and drops the oldest sent ones past the cap", () => {
+  it("stays within the cap: the oldest sent report goes first, then the oldest unsent", () => {
     let data = null as Parameters<typeof appendReport>[0];
     for (let i = 0; i < MAX_REPORTS; i++) data = appendReport(data, report(i));
     data = markSent(data, "r0", "2026-10-14T13:00:00.000Z");
@@ -35,9 +37,13 @@ describe("AI content reports", () => {
     const ids = readReports(data).reports.map(r => r.id);
     assert.equal(ids.length, MAX_REPORTS);
     assert.ok(!ids.includes("r0"), "the sent one made room");
-    // All unsent: nothing is dropped, even past the cap.
+    // All unsent: the oldest unsent one makes room, so the outbox always fits the native record limit.
     data = appendReport(data, report(MAX_REPORTS + 1));
-    assert.equal(unsent(data).length, MAX_REPORTS + 1);
+    const kept = readReports(data).reports.map(r => r.id);
+    assert.equal(kept.length, MAX_REPORTS);
+    assert.equal(unsent(data).length, MAX_REPORTS);
+    assert.ok(!kept.includes("r1") && kept.includes(`r${MAX_REPORTS + 1}`));
+    assert.ok(JSON.stringify(data).length < 512 * 1024 / 4, "far below the 512 KiB native record limit");
   });
   it("queues without a sender, and sends with the call id once one exists", async () => {
     const logs: string[] = [];

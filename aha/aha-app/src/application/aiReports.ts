@@ -18,7 +18,10 @@ export const isReportReason = (value: unknown): value is ReportReason =>
 /** The account journal key of the report outbox (per Free2Z account, like the billing journal; never in backups). */
 export const REPORTS_KEY = "aha-ai-reports";
 const VERSION = 1;
-/** Oldest sent reports are dropped first past this; unsent ones are never dropped to make room. */
+/**
+ * The outbox holds at most this many reports, so it always fits the native record limit: past it the oldest sent
+ * report goes first, then the oldest unsent one (which only happens when nothing can be sent for a long time).
+ */
 export const MAX_REPORTS = 200;
 
 export interface AiReport {
@@ -65,6 +68,10 @@ export function appendReport(data: Json, report: AiReport): Json {
   return storeReports([...reports, report]);
 }
 
+/** The stored report of an activity: what is sent and marked sent, so a repeat report never sends twice. */
+export const reportFor = (data: Json, activityId: string): AiReport | undefined =>
+  readReports(data).reports.find(r => r.activityId === activityId);
+
 export function markSent(data: Json, id: string, at: string): Json {
   return storeReports(readReports(data).reports.map(r => (r.id === id ? { ...r, sentAt: at } : r)));
 }
@@ -72,8 +79,8 @@ export function markSent(data: Json, id: string, at: string): Json {
 function storeReports(reports: AiReport[]): Json {
   let kept = reports;
   while (kept.length > MAX_REPORTS) {
-    const i = kept.findIndex(r => r.sentAt);
-    if (i < 0) break;
+    const sent = kept.findIndex(r => r.sentAt);
+    const i = sent >= 0 ? sent : 0;
     kept = [...kept.slice(0, i), ...kept.slice(i + 1)];
   }
   return { version: VERSION, reports: kept as unknown as Json[] };

@@ -54,7 +54,7 @@ import { spendingSummary } from "./spending";
 import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrigger } from "./receiptRecovery";
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 import { CURIOSITY_SYSTEM, curiosityContext, isCuriosityKind, type CuriosityKind } from "./curiosity";
-import { REPORTS_KEY, appendReport, markSent, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
+import { REPORTS_KEY, appendReport, markSent, reportFor, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
 const loadAiActivities = () => import("./aiActivities");
@@ -1359,10 +1359,13 @@ export default function Controller() {
     const call = tutor ? await tutor.callFor(item.operationId).catch((error: unknown) => { logError("ai-report", error); return {}; }) : {};
     const report: AiReport = {id: crypto.randomUUID(), activityId: item.activityId, specId: item.spec.id, operationId: item.operationId,
       ...call, ...(item.model ? {model: item.model} : {}), reason, createdAt: new Date().toISOString()};
-    await repo.putJournal(REPORTS_KEY, appendReport(await repo.getJournal(REPORTS_KEY), report));
-    logEvent("info", "ai-report", `${reason} report recorded for ${item.activityId}${report.callId ? "" : " (no Free2Z call id in the journal)"}`);
-    if (await submitReport(report, REPORT_SENDER, (level, message) => logEvent(level, "ai-report", message)) === "sent")
-      await repo.putJournal(REPORTS_KEY, markSent(await repo.getJournal(REPORTS_KEY), report.id, new Date().toISOString()));
+    const outbox = appendReport(await repo.getJournal(REPORTS_KEY), report);
+    await repo.putJournal(REPORTS_KEY, outbox);
+    // A repeat report of the same activity (a retry after a failed set-aside) resolves to the stored one, never a second send.
+    const stored = reportFor(outbox, item.activityId) ?? report;
+    logEvent("info", "ai-report", `${stored.reason} report recorded for ${item.activityId}${stored.callId ? "" : " (no Free2Z call id in the journal)"}`);
+    if (await submitReport(stored, REPORT_SENDER, (level, message) => logEvent(level, "ai-report", message)) === "sent")
+      await repo.putJournal(REPORTS_KEY, markSent(await repo.getJournal(REPORTS_KEY), stored.id, new Date().toISOString()));
   }
   async function support(kind: Parameters<StudioProps["onSupport"]>[0], reason: ReportReason = "other") {
     const a = currentActivity.current;
