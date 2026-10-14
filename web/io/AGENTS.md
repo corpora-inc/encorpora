@@ -40,5 +40,6 @@ The YouTube channel features original music videos with AI-generated cinematogra
 ### Infrastructure
 - No Supabase (removed)
 - No shop.encorpora.io (defunct)
-- Google Ads tag `AW-17513523888` must remain in layout.tsx
+- Google Ads tag `AW-17513523888` must remain in `app/(site)/layout.tsx`, the root layout for every page except `/aha/`
+- **No Google Ads/gtag or any other third-party script under `/aha/`.** ¡AHA! is a children's math app whose privacy policy promises no ads or analytics, and its pages are opened from inside the app. `app/aha/layout.tsx` is a separate root layout so the tag is never rendered there and is never carried over by client-side navigation. New site pages go under `app/(site)/`.
 - Static export via `next build` + `web/pages/build.js`
