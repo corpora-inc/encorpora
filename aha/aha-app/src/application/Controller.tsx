@@ -175,6 +175,12 @@ export default function Controller() {
   /** A same-key recovery is running: Stop never cuts off its stream (that would strand an already-paid reply). */
   const recovering = useRef(false);
   const actionCancelled = useRef(false);
+  /** A resume arrived while the action slot was held: recover as soon as it is released. */
+  const resumeWhenFree = useRef(false);
+  function releaseActionLock() {
+    actionLock.current = false;
+    if (resumeWhenFree.current) { resumeWhenFree.current = false; startRecovery("resume"); }
+  }
   const learning = useRef<LearnerState | undefined>(undefined);
   const currentProfile = useRef<Profile | undefined>(undefined);
   const currentActivity = useRef<Activity | undefined>(undefined);
@@ -567,7 +573,13 @@ export default function Controller() {
   function startRecovery(trigger: RecoveryTrigger) {
     if (!provider.current || !subject.current || !alive.current) return;
     // A batch in flight recovers first by itself; a foreground action (curiosity, manual recovery) owns the provider.
-    if (prefetching.current || actionLock.current) { if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS); return; }
+    if (prefetching.current || actionLock.current) {
+      if (trigger === "retry") scheduleRecovery(RETRY_BASE_MS);
+      // A return to the foreground while launch or a tap still holds the slot runs as soon as the slot is free,
+      // never dropped (a resume is the only nudge an interrupted request gets until the next timer).
+      else if (trigger === "resume" && actionLock.current && !prefetching.current) resumeWhenFree.current = true;
+      return;
+    }
     let resumeAi = false;
     const run: Promise<void> = recoverReceipts(trigger)
       .then(outcome => { resumeAi = outcome?.state === "clear" && outcome.attempted; }, e => logError("ai-recovery", e))
@@ -857,7 +869,7 @@ export default function Controller() {
           }
         } catch { /* The action error remains visible; session recovery stays explicit. */ }
       }
-      actionLock.current = false;
+      releaseActionLock();
       if (alive.current) setBusy(false);
       updateTimer();
     }
@@ -907,7 +919,7 @@ export default function Controller() {
               setSavedAnswers((await provider.current.pendingReplies()).map(r => ({operationId:r.operationId, profileId:r.context?.profileId})));
             } catch { /* Keep the original startup error visible. */ }
           }
-          actionLock.current = false;
+          releaseActionLock();
           setBusy(false);
           updateTimer();
         }
