@@ -46,7 +46,7 @@ export default function AhaPrivacyPage() {
               AI lessons are optional. They need a Free2Z account and the
               account holder’s explicit permission. When they are on, structured
               problem and progress state is sent to Free2Z, which uses OpenAI
-              models. No name is ever sent.
+              models. ¡AHA! never sends a name.
             </li>
           </ul>
         </section>
@@ -101,8 +101,8 @@ export default function AhaPrivacyPage() {
           <p className="mt-3">
             <strong>Sign-in.</strong> Sign-in happens on Free2Z’s page in a
             secure browser window; ¡AHA! never sees the password. ¡AHA! asks
-            Free2Z only for an account identifier, the 2Z balance and permission
-            to use AI. It does not ask for a name, email address or picture,
+            Free2Z only for an account identifier, the 2Z balance, permission
+            to use AI, and to stay signed in. It does not ask for a name, email address or picture,
             and it cannot make purchases. The sign-in credential is kept in the
             device’s secure storage and is never included in backups or
             reports.
@@ -115,19 +115,22 @@ export default function AhaPrivacyPage() {
           <ul className={list}>
             <li>
               <strong>To write new activities:</strong> the starting point, the
-              skills being practiced and their levels, counts of recent
-              attempts, correct answers and hints, typical response time, kinds
-              of recent mistakes, skills due for review, and a short list of
-              recent problem settings and numbers so they are not repeated.
+              skills being practiced and their levels, how recent problems went
+              (skill, difficulty, problem type, whether the answer was right and
+              how many hints were used, with overall accuracy and hint rates),
+              typical response time, kinds of recent mistakes, skills due for
+              review, and a short list of recent problem settings and numbers so
+              they are not repeated.
             </li>
             <li>
               <strong>When you ask about a problem:</strong> the text of that
-              problem and the question asked.
+              problem and the question asked. Please don’t include personal
+              details in a question.
             </li>
           </ul>
           <p className="mt-3">
-            No name, nickname, contact details, photo, voice, location or
-            device identifier is sent. Answers are checked on the device.
+            ¡AHA! never adds a name, nickname, contact details, photo, voice,
+            location or device identifier to a request. Answers are checked on the device.
             Because requests are made with the signed-in Free2Z account, Free2Z
             can link them to that account, keeps records of usage and charges,
             and receives the network information any internet request carries,
@@ -155,8 +158,8 @@ export default function AhaPrivacyPage() {
             AI lessons are for a device where an adult Free2Z account holder,
             such as a parent, has given permission. That permission covers the
             structured problem and progress state described above, sent to
-            Free2Z and OpenAI to produce activities. It contains no name or
-            contact details. A parent or account holder can withdraw permission
+            Free2Z and OpenAI to produce activities. ¡AHA! adds no name or
+            contact details to it. A parent or account holder can withdraw permission
             at any time by signing out or removing ¡AHA!’s access, and can
             delete local progress and the Free2Z account as described below.
           </p>
