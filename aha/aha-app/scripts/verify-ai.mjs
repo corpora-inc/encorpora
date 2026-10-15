@@ -940,6 +940,18 @@ try {
     assert.equal(await s.p.getByText('Budget left',{exact:true}).count(),0,'no remainder row without a budget');
     assert.equal(await s.figure('Each batch of activities'),'About 1 2Z','cost per batch from the settled charge');
     assert.equal(await s.figure('Available balance'),'100 2Z');
+    // Delete Free2Z account sits alone on its own row, on the account controls' left edge, well clear of
+    // the buttons above it; the header's close control is Settings' only way back (no "Back to learning").
+    assert.equal(await s.p.getByRole('button',{name:'Back to learning',exact:true}).count(),0,'no duplicate exit beside the delete link');
+    assert.equal(await s.p.getByRole('button',{name:'Close settings',exact:true}).isVisible(),true,'Settings keeps its close control');
+    {
+      const del=await s.p.getByRole('button',{name:'Delete Free2Z account',exact:true}).boundingBox();
+      const rows=await s.p.locator('.settings-body section:first-child .settings-buttons button').evaluateAll(bs=>bs.map(b=>b.getBoundingClientRect().toJSON()));
+      assert.ok(del&&rows.length,'delete link and account controls are on screen');
+      assert.ok(Math.abs(del.x-Math.min(...rows.map(r=>r.x)))<=1,`delete link shares the controls' left edge (${del.x} vs ${Math.min(...rows.map(r=>r.x))})`);
+      assert.ok(del.y-Math.max(...rows.map(r=>r.bottom))>=24,'delete link is clearly separated from the controls above');
+      assert.ok(del.height>=44,'delete link keeps a 44px hit area');
+    }
     // Account exits: a neutral Manage Free2Z account (AHA's own entry) and Delete Free2Z account, both in the system browser.
     // Each exit to a Free2Z page shows the adult step first (nothing pre-filled), and nothing opens until it passes.
     for(const [name,page] of [['Manage Free2Z account','apps'],['Delete Free2Z account','delete']]){

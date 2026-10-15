@@ -98,6 +98,7 @@ const scenarios: Record<string, Scenario> = {
   "settings-out": { steps: ["settings"] },
   "settings-out-bottom": { steps: ["settings", "scroll-end"] },
   "settings-in": { props: { account: signedIn, modelMenu, loadModelStats: async () => statsLines, learners: [{ id: "a", name: "Maple" }, { id: "b", name: "River" }] }, steps: ["settings"] },
+  "settings-in-account-end": { props: { account: signedIn, modelMenu, learners: [{ id: "a", name: "Maple" }, { id: "b", name: "River" }] }, steps: ["settings", "account-end"] },
   "settings-stats": { props: { account: signedIn, modelMenu, loadModelStats: async () => statsLines }, steps: ["settings", "Model stats", "scroll-end"] },
   "settings-budget": { props: { account: { connected: true, aiReady: false, label: "Signed in as maple", balance: "0.4 2Z", refusal: "raise_budget", status: "App budget reached. Local practice continues." } }, steps: ["settings"] },
   "settings-no-credits": { props: { account: { connected: true, aiReady: false, label: "Free2Z account", balance: "0 2Z", refusal: "low_balance", status: "No credits. Local practice continues. AI tutoring will be tried again on a later task." } }, steps: ["settings"] },
@@ -153,6 +154,7 @@ function Harness() {
         else if (step === "settings") press("Settings");
         else if (step === "status") document.querySelector<HTMLElement>(".status-dot")?.click();
         else if (step === "scroll-end") { const d = document.querySelector(".settings-dialog[open]"); d?.scrollTo(0, d.scrollHeight); }
+        else if (step === "account-end") document.querySelector(".settings-dialog[open] .settings-body section:first-child")?.lastElementChild?.scrollIntoView({ block: "center" });
         else press(step);
         await wait(step === "Next" ? 120 : 260);
       }
@@ -190,6 +192,7 @@ function Harness() {
     },
     onCuriosity: noop, onCloseCuriosity: noop, onSignIn: noop, onSignOut: noop, onExport: noop, onImport: noop, onDeleteLearner: noop,
     onCreateLearner: noop, onSelectLearner: noop, onManageAccount: noop, onRefreshAccount: noop,
+    onSwitchAccount: noop, onDeleteFree2zAccount: noop,
     ...scenario.props,
   };
   if (scenario.props?.session) props.session = { ...scenario.props.session, completed };
