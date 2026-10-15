@@ -29,19 +29,22 @@ export default function AhaSupportPage() {
           </p>
         </section>
         <section>
-          <h2 className={h2}>Report a problem with an AI activity</h2>
+          <h2 className={h2}>Report a problem with an activity</h2>
           <p className="mt-3">
-            On the problem, tap the flag, <strong>Something seems off</strong>,
-            then <strong>Set it aside</strong>. The problem is removed and does
-            not count toward progress.
+            On the problem, tap the flag and choose what’s wrong:{" "}
+            <strong>Incorrect</strong>, <strong>Inappropriate</strong>,{" "}
+            <strong>Unsafe</strong> or <strong>Something else</strong>. The
+            problem is set aside and does not count toward progress. For an
+            AI-written activity, that reason is sent to Free2Z with a reference
+            to the AI request that wrote it. Nothing you type is included.
           </p>
           <p className="mt-3">
-            To tell us about it, open Settings, go to{" "}
+            To tell us about anything else, open Settings, go to{" "}
             <strong>Something not working?</strong> and tap{" "}
             <strong>Report a problem</strong>. Add a note, then share or copy
             the report and send it to us. The report shows exactly what it
-            contains before you send it: the app version, device type, recent
-            errors and AI model counts. It contains no names, answers or account
+            contains before you send it: the app version, device type, a short
+            log of recent app events and errors, and AI model counts. It contains no names, answers or account
             details.
           </p>
         </section>
@@ -50,10 +53,11 @@ export default function AhaSupportPage() {
           <p className="mt-3">
             ¡AHA! works without an account, using its built-in practice. To add
             AI activities, open Settings and tap{" "}
-            <strong>Connect Free2Z</strong>. A one-time step asks the Free2Z
-            account holder, an adult, to allow AI lessons. Free2Z’s sign-in
-            then opens in a secure browser window. Review what ¡AHA! asks for
-            and approve it there.
+            <strong>Connect Free2Z</strong>. The Free2Z account holder, an
+            adult, enters their birth year and, the first time, allows AI
+            lessons. Free2Z’s sign-in then opens in a secure browser window.
+            Review what ¡AHA! asks for and approve it there. Settings then shows
+            the connected account’s Free2Z username.
           </p>
           <p className="mt-3">
             Free2Z handles sign-in and meters AI use on your own Free2Z account.
@@ -61,38 +65,40 @@ export default function AhaSupportPage() {
           </p>
         </section>
         <section>
-          <h2 className={h2}>Switch account</h2>
+          <h2 className={h2}>Use a different account</h2>
           <p className="mt-3">
-            Open Settings, tap <strong>Sign out</strong>, then{" "}
-            <strong>Connect Free2Z</strong> and sign in with the other account.
-            Each Free2Z account keeps its own learners and progress on this
-            device, and signing out keeps them. If the sign-in page goes
-            straight back to the previous account, sign out of Free2Z in your
-            browser first.
+            Open Settings and tap <strong>Use a different account</strong>.
+            After the birth-year step, Free2Z asks for a fresh sign-in, so you
+            can choose any account. Each Free2Z account keeps its own learners
+            and progress on this device. <strong>Sign out</strong> disconnects
+            Free2Z and keeps local progress.
           </p>
         </section>
         <section>
           <h2 className={h2}>Manage your Free2Z account</h2>
           <p className="mt-3">
-            Your Free2Z account, the budget for ¡AHA! and the apps you have
-            connected are managed at{" "}
+            In Settings, tap <strong>Manage Free2Z account</strong>. After the
+            birth-year step, ¡AHA!’s page on Free2Z opens in your browser. There
+            you can see the balance, change the budget for ¡AHA! or remove its
+            access. The apps you have connected are also at{" "}
             <a href="https://free2z.cash/account/apps" className={link}>
               free2z.cash/account/apps
             </a>
-            . The manage button in the app’s Settings opens the same page in
-            your browser. Removing ¡AHA! there stops all AI requests from the
-            app.
+            . Removing ¡AHA! there stops all AI requests from the app.
           </p>
         </section>
         <section>
           <h2 className={h2}>Delete your Free2Z account</h2>
           <p className="mt-3">
-            Delete your Free2Z account at{" "}
+            In Settings, tap <strong>Delete Free2Z account</strong>. After the
+            birth-year step, Free2Z’s deletion page opens in your browser. It
+            is also at{" "}
             <a href="https://free2z.cash/account/delete" className={link}>
               free2z.cash/account/delete
             </a>
-            . This deletes the account held by Free2Z. It does not delete
-            progress stored on your device.
+            . Free2Z hides the account right away and deletes it after 30 days;
+            signing in before then keeps it. This deletes the account held by
+            Free2Z. It does not delete progress stored on your device.
           </p>
           <p className="mt-3">
             To delete progress in ¡AHA!, open Settings and tap{" "}
