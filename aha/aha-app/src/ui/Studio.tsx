@@ -1141,9 +1141,6 @@ export function Studio(props: StudioProps) {
                 Delete Free2Z account <ArrowUpRight size={14} aria-hidden="true" />
               </button>
             )}
-            <button className="text-button" onClick={closeSettings}>
-              <ChevronLeft size={16} /> Back to learning
-            </button>
           </section>
           <section>
             <h3>Learners</h3>

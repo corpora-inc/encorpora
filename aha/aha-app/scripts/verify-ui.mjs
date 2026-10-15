@@ -180,7 +180,9 @@ try{
   await page.getByRole('button',{name:'Copy report',exact:true}).click();
   await page.getByRole('button',{name:'Copied',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),report,'copied text matches the shared report');
-  await page.getByRole('button',{name:'Back to learning',exact:true}).click();
+  // Settings has one way back to learning: the header's close control (no second "Back to learning").
+  assert.equal(await page.getByRole('button',{name:'Back to learning',exact:true}).count(),0,'no duplicate exit inside Settings');
+  await page.getByRole('button',{name:'Close settings',exact:true}).click();
   assert.equal(await page.getByRole('dialog').count(),0);
   await page.setViewportSize({width:320,height:740});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'compact layout has no horizontal overflow');

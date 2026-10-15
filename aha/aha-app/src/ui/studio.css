@@ -686,11 +686,17 @@ h1 {
 .new-learner {
   margin-top: 15px;
 }
+/* A destructive link sits alone on its own row, on the section's left edge, a section's rhythm
+   (26px, as .settings-body section) below the controls above, so it is never hit by accident. */
 .danger-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
   color: var(--danger);
   text-decoration: underline;
   font-size: 0.75rem;
-  margin-top: 20px;
+  margin-top: 26px;
   padding: 8px 0;
 }
 .delete-confirm {
