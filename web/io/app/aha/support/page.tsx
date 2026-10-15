@@ -106,8 +106,8 @@ export default function AhaSupportPage() {
           </p>
           <p className="mt-3">
             To delete progress in ¡AHA!, open Settings and tap{" "}
-            <strong>Delete this learner’s local progress</strong>, or remove the
-            app.
+            <strong>Delete this learner’s local progress</strong>. To delete
+            everything, sign out of Free2Z first, then remove the app.
           </p>
         </section>
         <section>

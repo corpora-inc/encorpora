@@ -85,7 +85,11 @@ export default function AhaPrivacyPage() {
           <p className="mt-3">
             Progress is kept separately for each Free2Z account and for use
             without an account. Corpora cannot see any of it. It stays until
-            you delete a learner or remove the app. Your device’s own backup
+            you delete a learner or remove the app. After you restore a backup,
+            one copy of the data from before the restore is also kept until the
+            app is removed. On iPhone and iPad, the Free2Z sign-in stays in the
+            device’s secure storage after the app is removed unless you sign
+            out first. Your device’s own backup
             (iCloud or Google) may include app data under Apple’s or Google’s
             terms.
           </p>
@@ -250,8 +254,9 @@ export default function AhaPrivacyPage() {
           <ul className={list}>
             <li>
               Delete a learner’s progress in Settings with{" "}
-              <strong>Delete this learner’s local progress</strong>, or remove
-              the app to delete everything stored locally.
+              <strong>Delete this learner’s local progress</strong>, or sign
+              out of Free2Z and then remove the app to delete everything stored
+              locally.
             </li>
             <li>Sign out of Free2Z in Settings at any time.</li>
             <li>
