@@ -173,16 +173,18 @@ describe("sending the outbox", () => {
 
 describe("reports wait for AI permission", () => {
   it("sends nothing while AI lessons are not allowed: the flagged report stays queued, untouched", async () => {
-    const o = outbox([report(1)]);
+    // The one just flagged has no call id yet (it would be looked up first); an older one already holds its own.
+    const { callId: _, ...flagged } = report(2);
+    const o = outbox([flagged, report(1)]);
     const backoff = new ReportBackoff();
     const logs: string[] = [];
     let calls = 0;
     const result = await flushReports({ store: o.store, backoff, current: () => true, allowed: () => false,
       log: (_, m) => void logs.push(m), callFor: async () => { calls++; return "late-call"; },
       send: async () => assert.fail("a report left the device without AI permission") });
-    assert.deepEqual(result, { sent: 0, refused: 0, waiting: 1, stopped: "consent" });
+    assert.deepEqual(result, { sent: 0, refused: 0, waiting: 2, stopped: "consent" });
     assert.equal(calls, 0, "nothing is even looked up for sending");
-    assert.deepEqual(o.read(), [report(1)], "queued as recorded: not sent, not refused");
+    assert.deepEqual(o.read(), [flagged, report(1)], "queued as recorded: not sent, not refused, no call id filled in");
     assert.equal(backoff.ready(Date.now()), true, "no backoff: it goes as soon as AI is allowed");
     assert.match(logs.at(-1)!, /until AI lessons are allowed/);
   });
