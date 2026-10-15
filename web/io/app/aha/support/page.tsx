@@ -56,8 +56,8 @@ export default function AhaSupportPage() {
             <strong>Connect Free2Z</strong>. The Free2Z account holder, an
             adult, enters their birth year and, the first time, allows AI
             lessons. Free2Z’s sign-in then opens in a secure browser window.
-            Review what ¡AHA! asks for and approve it there. Settings then shows
-            the connected account’s Free2Z username.
+            Review what ¡AHA! asks for and approve it there. Settings then names
+            the connected account, usually by its Free2Z username.
           </p>
           <p className="mt-3">
             Free2Z handles sign-in and meters AI use on your own Free2Z account.
@@ -98,7 +98,11 @@ export default function AhaSupportPage() {
             </a>
             . Free2Z hides the account right away and deletes it after 30 days;
             signing in before then keeps it. This deletes the account held by
-            Free2Z. It does not delete progress stored on your device.
+            Free2Z. It does not delete progress stored on your device. See{" "}
+            <Link href="/aha/delete-account" className={link}>
+              Delete your account and data
+            </Link>{" "}
+            for what is deleted and kept.
           </p>
           <p className="mt-3">
             To delete progress in ¡AHA!, open Settings and tap{" "}

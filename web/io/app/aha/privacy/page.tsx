@@ -68,8 +68,9 @@ export default function AhaPrivacyPage() {
               recovered without paying twice;
             </li>
             <li>
-              reports of flagged AI activities, up to the latest 200: the reason
-              chosen and the Free2Z request each is about;
+              reports of flagged AI activities, at most 200 for each account:
+              the reason chosen and references to the activity and the Free2Z
+              request it came from;
             </li>
             <li>
               a short technical log of recent app events and errors, used only
@@ -99,8 +100,10 @@ export default function AhaPrivacyPage() {
             <strong>Consent first.</strong> Each button that opens a Free2Z
             page (Connect Free2Z, Use a different account, Manage Free2Z
             account, Delete Free2Z account), and Allow AI lessons, first asks
-            for the account holder’s birth year to confirm they are an adult.
-            The year is checked on the device and is never stored or sent. If
+            for the account holder’s birth year to confirm they are an adult. A
+            pass is remembered in memory for a few minutes, so a second button
+            right after does not ask again. The year is checked on the device
+            and is never stored or sent. If
             it does not pass, these buttons stay closed on this device for a
             day. The first time, the same step explains what AI lessons send
             and to whom, and asks the account holder to allow them. This
@@ -114,7 +117,7 @@ export default function AhaPrivacyPage() {
             the 2Z balance, permission to use AI, and to stay signed in. It does
             not ask for an email address, and it cannot make purchases. The
             sign-in credential is kept in the device’s secure storage and is
-            never included in backups or reports.
+            never included in exported backup files or reports.
           </p>
           <p className="mt-3">
             <strong>Your Free2Z username.</strong> The basic profile gives the
@@ -125,7 +128,7 @@ export default function AhaPrivacyPage() {
             sign-in credential in the device’s secure storage, and does not
             keep the picture. ¡AHA! does not show or use the display name or
             picture. None of them is saved with learning progress, included in
-            backups or reports, or sent to the AI. Progress is kept by the
+            exported backup files or reports, or sent to the AI. Progress is kept by the
             account identifier, not the username.
           </p>
           <p className="mt-3">
@@ -191,9 +194,9 @@ export default function AhaPrivacyPage() {
             AI lessons are for a device where an adult Free2Z account holder,
             such as a parent, has given permission. That permission covers the
             structured problem and progress state described above, sent to
-            Free2Z and OpenAI to produce activities, and reports of flagged AI
-            activities, sent to Free2Z. ¡AHA! adds no name or contact details to
-            them. A parent or account holder can withdraw permission
+            Free2Z and OpenAI to produce activities. ¡AHA! adds no name or
+            contact details to it. Reports of flagged AI activities, described
+            above, carry only a reason and a request reference. A parent or account holder can withdraw permission
             at any time by signing out or removing ¡AHA!’s access, and can
             delete local progress and the Free2Z account as described below.
           </p>
@@ -275,6 +278,13 @@ export default function AhaPrivacyPage() {
               progress in ¡AHA! does not delete records held by Free2Z, and
               deleting the Free2Z account does not delete progress on the
               device.
+            </li>
+            <li>
+              Step-by-step instructions, and what is deleted and kept, are on{" "}
+              <Link href="/aha/delete-account" className={link}>
+                Delete your account and data
+              </Link>
+              .
             </li>
           </ul>
         </section>
