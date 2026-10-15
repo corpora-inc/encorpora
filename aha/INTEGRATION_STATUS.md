@@ -58,7 +58,9 @@ AHA moves from source preview `d63959f9` (which predates `sdk-v0.2.0`) to the co
   marked `child_directed`, so the plugin refuses a detail locally. A report is recorded in the account's outbox
   `aha-ai-reports` first, then sent in the background, so the learner is never blocked. Waiting reports go out on the
   next connect (launch, sign-in and Refresh connection), oldest first and one at a time, under the account that made
-  them. If the account changes mid-send, the send stops. Free2Z's answers are mapped calmly and logged as `ai-report`,
+  them. If the account changes, or a switch begins, sending stops before the next report. Each send is bounded (20 s)
+  and runs outside the outbox's write lock, so a slow Free2Z never holds up a new report or a switch. The backoff is
+  kept per account, so switching away and back does not skip Free2Z's Retry-After. Free2Z's answers are mapped calmly and logged as `ai-report`,
   never shown as an alert:
   - `rate_limited` or `concurrency_limit` (429) stops the flush and waits for Free2Z's Retry-After.
   - Other failures (offline, signed out, `unsupported_operation` from an older plugin) back off: 30 s, doubling to

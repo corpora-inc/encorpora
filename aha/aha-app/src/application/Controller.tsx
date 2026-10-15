@@ -96,6 +96,8 @@ const EXIT_LABEL: Record<AccountExit, string> = {
   allow: "Checking Free2Z…",
 };
 const preview = previewRepository();
+/** The longest one report send may take before it counts as failed (and waits for the next try). */
+const REPORT_TIMEOUT_MS = 20_000;
 function visual(v?: VisualSpec): StudioVisual | undefined {
   if (!v) return undefined;
   switch (v.kind) {
@@ -177,9 +179,15 @@ export default function Controller() {
   /** Same-key receipt recovery for this account: backoff state across launch, resume, retry and pre-batch attempts. */
   const receipts = useRef(new ReceiptRecovery());
   const recoveryTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  /** The report outbox's retry state for the account on screen (reset with the account), and its one-at-a-time chain. */
-  const reportBackoff = useRef(new ReportBackoff());
+  /**
+   * The report outbox: its retry state per account (kept across switches, so Free2Z's Retry-After holds), the chain that
+   * runs its journal writes one at a time, the one send in flight, and a stamp a switch bumps to stop that send.
+   */
+  const reportBackoffs = useRef(new Map<string, ReportBackoff>());
   const outbox = useRef<Promise<unknown>>(Promise.resolve());
+  const reportSend = useRef<Promise<void> | undefined>(undefined);
+  const reportAgain = useRef(false);
+  const reportStamp = useRef(0);
   /** An earlier AI request is unsettled (mirrors `account.settling`, readable from async code). */
   const settling = useRef(false);
   /** A same-key recovery is running: Stop never cuts off its stream (that would strand an already-paid reply). */
@@ -473,7 +481,6 @@ export default function Controller() {
     const epoch = ++accountEpoch.current;
     clearLearner();
     receipts.current = new ReceiptRecovery();
-    reportBackoff.current = new ReportBackoff();
     clearTimeout(recoveryTimer.current);
     settling.current = false;
     setPendingUsage([]);
@@ -1404,7 +1411,7 @@ export default function Controller() {
     logEvent("info", "ai-report", `${reason} report recorded for ${item.activityId}${report.callId ? "" : " (no Free2Z call id in the journal)"}`);
     void sendReports();
   }
-  /** Outbox reads and writes run one at a time, so a send never overwrites a report recorded meanwhile. */
+  /** Outbox reads and writes run one at a time, so a send never overwrites a report recorded meanwhile. Never a send. */
   function inOutbox<T>(work: () => Promise<T>): Promise<T> {
     const run = outbox.current.catch(() => undefined).then(work);
     outbox.current = run.catch(() => undefined);
@@ -1412,23 +1419,36 @@ export default function Controller() {
   }
   /**
    * Sends this account's waiting reports through the SDK's `reportCall(callId, reason)`: a reason, never a `detail`.
-   * Respects Free2Z's rate limit and backs off after any failure (aiReports.ts). Bound to the account it started for:
-   * it stops once another account is on screen or signed in. Never throws.
+   * Respects Free2Z's rate limit and backs off after any failure (aiReports.ts). One send at a time (a request meanwhile
+   * runs once more after it), each bounded by REPORT_TIMEOUT_MS. Bound to the account it started for: it stops before
+   * the next send once another account is on screen or a switch begins. Never throws, never blocks the learner.
    */
   function sendReports(): Promise<void> {
     if (!native || !subject.current) return Promise.resolve();
-    const repo = repository.current, epoch = accountEpoch.current, owner = subject.current, backoff = reportBackoff.current;
+    if (reportSend.current) { reportAgain.current = true; return reportSend.current; }
+    const repo = repository.current, epoch = accountEpoch.current, owner = subject.current, stamp = reportStamp.current;
     const tutor = provider.current, client = getNativeClient();
-    return inOutbox(() => flushReports({
-      store: repo, backoff,
-      send: (callId, reason) => client.reportCall(callId, reason),
+    let backoff = reportBackoffs.current.get(owner);
+    if (!backoff) reportBackoffs.current.set(owner, backoff = new ReportBackoff());
+    const run = flushReports({
+      store: {
+        read: () => inOutbox(() => repo.getJournal(REPORTS_KEY)),
+        update: change => inOutbox(async () => repo.putJournal(REPORTS_KEY, change(await repo.getJournal(REPORTS_KEY)))),
+      },
+      backoff,
+      send: (callId, reason) => client.reportCall(callId, reason, undefined, AbortSignal.timeout(REPORT_TIMEOUT_MS)),
       callFor: tutor ? async op => (await tutor.callFor(op).catch((error: unknown) => { logError("ai-report", error); return {callId: undefined}; })).callId : undefined,
-      current: async () => epoch === accountEpoch.current && repo === repository.current &&
+      current: async () => epoch === accountEpoch.current && repo === repository.current && stamp === reportStamp.current &&
         await client.session().then(s => s.signedIn && s.subject === owner, () => false),
       log: (level, message) => logEvent(level, "ai-report", message),
-    })).then(result => {
+    }).then(result => {
       if (result.sent || result.refused || result.stopped) logEvent("info", "ai-report", `outbox: ${result.sent} sent, ${result.refused} refused, ${result.waiting} waiting${result.stopped ? ` (${result.stopped})` : ""}`);
-    }, error => logError("ai-report", error));
+    }, error => logError("ai-report", error)).finally(() => {
+      reportSend.current = undefined;
+      if (reportAgain.current) { reportAgain.current = false; void sendReports(); }
+    });
+    reportSend.current = run;
+    return run;
   }
   async function support(kind: Parameters<StudioProps["onSupport"]>[0], reason: ReportReason = "other") {
     const a = currentActivity.current;
@@ -1695,11 +1715,12 @@ export default function Controller() {
     const client = getNativeClient();
     const previous = subject.current;
     if (switching) {
-      // Stop this account's AI work and outbox before its session can be replaced; anything unsettled recovers later
-      // under this account, with its original key.
+      // Stop this account's AI work and report sending before its session can be replaced; anything unsettled
+      // recovers later under this account, with its original key, and waiting reports go on its next connect.
+      reportStamp.current++;
+      reportAgain.current = false;
       await provider.current?.cancel();
       await settlePrefetch();
-      await outbox.current;
     }
     // Suggest a modest monthly budget. The user may change or remove it on the consent screen; any choice works.
     let s;
@@ -1714,8 +1735,10 @@ export default function Controller() {
       if (!outcome.quiet) setError(outcome.message);
       return;
     }
-    if (!s.signedIn || !s.subject)
+    if (!s.signedIn || !s.subject) {
+      if (switching) await keepOrDropAfterFailedSwitch(previous);
       throw new Error("Sign-in was not completed.");
+    }
     if (switching) logEvent("info", "sign-in", s.subject === previous ? "use a different account: the same account signed in again" : "use a different account: another account signed in");
     subject.current = s.subject;
     const repo = new NativeRepository(s.subject);

@@ -180,7 +180,11 @@ export class ReportBackoff {
   succeeded(): void { this.failures = 0; this.until = 0; }
 }
 
-export interface OutboxStore { getJournal(key: string): Promise<Json>; putJournal(key: string, data: Json): Promise<void> }
+/**
+ * One account's outbox. `update` is one read-modify-write, run one at a time with every other writer, so a send never
+ * overwrites a report recorded meanwhile. Sends happen outside it: a slow Free2Z never holds the outbox.
+ */
+export interface OutboxStore { read(): Promise<Json>; update(change: (data: Json) => Json): Promise<void> }
 
 export interface FlushResult { sent: number; refused: number; waiting: number; stopped?: "busy" | "failed" | "backoff" | "stale" }
 
@@ -197,7 +201,7 @@ export async function flushReports(o: {
 }): Promise<FlushResult> {
   const now = o.now ?? Date.now;
   const result: FlushResult = { sent: 0, refused: 0, waiting: 0 };
-  const waiting = unsent(await o.store.getJournal(REPORTS_KEY));
+  const waiting = unsent(await o.store.read());
   if (!waiting.length) return result;
   if (!o.backoff.ready(now())) {
     result.waiting = waiting.length; result.stopped = "backoff";
@@ -210,7 +214,7 @@ export async function flushReports(o: {
     if (!report.callId && o.callFor) {
       const callId = await o.callFor(report.operationId);
       if (callId) {
-        await o.store.putJournal(REPORTS_KEY, withCallId(await o.store.getJournal(REPORTS_KEY), report.id, callId));
+        await o.store.update(data => withCallId(data, report.id, callId));
         report = { ...report, callId };
       }
     }
@@ -218,12 +222,13 @@ export async function flushReports(o: {
     if (!(await o.current())) { result.waiting = waiting.length - i; result.stopped = "stale"; return result; }
     const outcome = await submitReport(report, o.send, o.log, now);
     if (outcome.state === "sent") {
-      await o.store.putJournal(REPORTS_KEY, markSent(await o.store.getJournal(REPORTS_KEY), report.id, new Date(now()).toISOString()));
+      const at = new Date(now()).toISOString();
+      await o.store.update(data => markSent(data, report.id, at));
       result.sent++;
     } else if (outcome.state === "refused") {
       // A refusal under a session that changed meanwhile says nothing about this account's call: keep it queued.
       if (!(await o.current())) { result.waiting = waiting.length - i; result.stopped = "stale"; return result; }
-      await o.store.putJournal(REPORTS_KEY, markRefused(await o.store.getJournal(REPORTS_KEY), report.id, outcome.code));
+      await o.store.update(data => markRefused(data, report.id, outcome.code));
       result.refused++;
     } else {
       o.backoff.failed(now(), outcome.state === "busy" ? outcome.retryAt : undefined);

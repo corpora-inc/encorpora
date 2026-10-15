@@ -2,7 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { SdkError } from "@free2z/sdk";
 import type { Json } from "../storage";
-import { MAX_REPORTS, REPORTS_KEY, REPORT_REASONS, REPORT_RETRY_BASE_MS, REPORT_RETRY_MAX_MS, ReportBackoff, appendReport, flushReports, isReportReason, markRefused, markSent, readReports, reportFor, submitReport, unsent, type AiReport, type ReportReason } from "./aiReports";
+import { MAX_REPORTS, REPORT_REASONS, REPORT_RETRY_BASE_MS, REPORT_RETRY_MAX_MS, ReportBackoff, appendReport, flushReports, isReportReason, markRefused, markSent, readReports, reportFor, submitReport, unsent, type AiReport, type ReportReason } from "./aiReports";
 
 const report = (n: number, extra: Partial<AiReport> = {}): AiReport => ({
   id: `r${n}`, activityId: `op${n}:0`, specId: `spec-${n}`, operationId: `op${n}`, callId: `call-${n}`, reason: "incorrect",
@@ -90,7 +90,7 @@ describe("AI content reports", () => {
 function outbox(reports: AiReport[]) {
   let data: Json = null;
   for (const r of reports) data = appendReport(data, r);
-  const store = { getJournal: async (key: string) => { assert.equal(key, REPORTS_KEY); return data; }, putJournal: async (_: string, v: Json) => { data = v; } };
+  const store = { read: async () => data, update: async (change: (d: Json) => Json) => { data = change(data); } };
   return { store, read: () => readReports(data).reports };
 }
 const quiet = () => undefined;
