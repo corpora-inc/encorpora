@@ -16,7 +16,7 @@ export default function AhaPrivacyPage() {
             ¡AHA!
           </Link>
           <h1 className="mt-6 font-serif text-4xl">Privacy policy</h1>
-          <p className="mt-3 text-sm">Updated October 14, 2026</p>
+          <p className="mt-3 text-sm">Updated October 15, 2026</p>
         </header>
         <p>
           ¡AHA! is a mathematics app from Corpora Inc. for learners of all ages,
@@ -68,18 +68,28 @@ export default function AhaPrivacyPage() {
               recovered without paying twice;
             </li>
             <li>
-              a short technical log of recent errors, used only for “Report a
-              problem”;
+              reports of flagged AI activities, at most 200 for each account:
+              the reason chosen and references to the activity and the Free2Z
+              request it came from;
             </li>
             <li>
-              settings, such as haptics, the chosen AI model and whether AI
-              lessons were allowed on this device.
+              a short technical log of recent app events and errors, used only
+              for “Report a problem”;
+            </li>
+            <li>
+              settings, such as haptics, the chosen AI model, whether AI lessons
+              were allowed on this device, and, after a birth year that did not
+              pass, when the adult step can be tried again.
             </li>
           </ul>
           <p className="mt-3">
             Progress is kept separately for each Free2Z account and for use
             without an account. Corpora cannot see any of it. It stays until
-            you delete a learner or remove the app. Your device’s own backup
+            you delete a learner or remove the app. After you restore a backup,
+            one copy of the data from before the restore is also kept until the
+            app is removed. On iPhone and iPad, the Free2Z sign-in stays in the
+            device’s secure storage after the app is removed unless you sign
+            out first. Your device’s own backup
             (iCloud or Google) may include app data under Apple’s or Google’s
             terms.
           </p>
@@ -91,21 +101,39 @@ export default function AhaPrivacyPage() {
             account, and meters AI use on that account. ¡AHA! sells nothing.
           </p>
           <p className="mt-3">
-            <strong>Consent first.</strong> Before ¡AHA! connects to Free2Z, a
-            one-time step asks the Free2Z account holder to confirm they are an
-            adult and to allow AI lessons, after explaining what is sent and to
-            whom. The birth year entered there is checked on the device and is
-            never stored or sent. Nothing is sent to Free2Z before this
-            permission is given.
+            <strong>Consent first.</strong> Each button that opens a Free2Z
+            page (Connect Free2Z, Use a different account, Manage Free2Z
+            account, Delete Free2Z account), and Allow AI lessons, first asks
+            for the account holder’s birth year to confirm they are an adult. A
+            pass is remembered in memory for a few minutes, so a second button
+            right after does not ask again. The year is checked on the device
+            and is never stored or sent. If
+            it does not pass, these buttons stay closed on this device for a
+            day. The first time, the same step explains what AI lessons send
+            and to whom, and asks the account holder to allow them. This
+            permission is kept on the device and withdrawn when you sign out.
+            No problem or progress data is sent to Free2Z before it is given.
           </p>
           <p className="mt-3">
             <strong>Sign-in.</strong> Sign-in happens on Free2Z’s page in a
             secure browser window; ¡AHA! never sees the password. ¡AHA! asks
-            Free2Z only for an account identifier, the 2Z balance, permission
-            to use AI, and to stay signed in. It does not ask for a name, email address or picture,
-            and it cannot make purchases. The sign-in credential is kept in the
-            device’s secure storage and is never included in backups or
-            reports.
+            Free2Z only for an account identifier, the account’s basic profile,
+            the 2Z balance, permission to use AI, and to stay signed in. It does
+            not ask for an email address, and it cannot make purchases. The
+            sign-in credential is kept in the device’s secure storage and is
+            never included in exported backup files or reports.
+          </p>
+          <p className="mt-3">
+            <strong>Your Free2Z username.</strong> The basic profile gives the
+            account’s Free2Z username, and can also include its display name
+            and picture. ¡AHA! shows the username in Settings, as
+            @username, so you can see which account is connected. The Free2Z
+            sign-in component keeps the username and display name with the
+            sign-in credential in the device’s secure storage, and does not
+            keep the picture. ¡AHA! does not show or use the display name or
+            picture. None of them is saved with learning progress, included in
+            exported backup files or reports, or sent to the AI. Progress is kept by the
+            account identifier, not the username.
           </p>
           <p className="mt-3">
             <strong>What is sent.</strong> When AI lessons are on, ¡AHA! sends
@@ -123,9 +151,10 @@ export default function AhaPrivacyPage() {
               they are not repeated.
             </li>
             <li>
-              <strong>When you ask about a problem:</strong> the text of that
-              problem and the question asked. Please don’t include personal
-              details in a question.
+              <strong>When you ask about a problem:</strong> the problem on
+              screen, without its answer, and which of four preset questions
+              was chosen (for example, “Why does this work?”). There is no typed
+              question.
             </li>
           </ul>
           <p className="mt-3">
@@ -138,13 +167,24 @@ export default function AhaPrivacyPage() {
             their own terms and privacy policies.
           </p>
           <p className="mt-3">
+            <strong>Reporting an AI activity.</strong> The flag on a problem
+            offers four reasons: Incorrect, Inappropriate, Unsafe or Something
+            else. Choosing one sets the problem aside. For an AI-written
+            activity, ¡AHA! also sends Free2Z a report with only that reason
+            and the reference of the Free2Z AI request that wrote the activity,
+            from the signed-in account. No typed text, answers or names are
+            included. A report that cannot be sent right away, for example
+            offline, waits on the device and is sent later, when that account
+            is connected. Flagging a built-in practice problem sends nothing.
+          </p>
+          <p className="mt-3">
             <strong>Stopping.</strong> Sign out in Settings at any time, or
             remove ¡AHA!’s access at{" "}
             <a href="https://free2z.cash/account/apps" className={link}>
               free2z.cash/account/apps
             </a>
-            . After that, nothing more is sent. Signing out keeps local
-            progress.
+            . After that, nothing more is sent. Signing out also
+            withdraws AI permission on this device, and keeps local progress.
           </p>
         </section>
         <section>
@@ -159,7 +199,8 @@ export default function AhaPrivacyPage() {
             such as a parent, has given permission. That permission covers the
             structured problem and progress state described above, sent to
             Free2Z and OpenAI to produce activities. ¡AHA! adds no name or
-            contact details to it. A parent or account holder can withdraw permission
+            contact details to it. Reports of flagged AI activities, described
+            above, carry only a reason and a request reference. A parent or account holder can withdraw permission
             at any time by signing out or removing ¡AHA!’s access, and can
             delete local progress and the Free2Z account as described below.
           </p>
@@ -179,9 +220,10 @@ export default function AhaPrivacyPage() {
           <ul className={list}>
             <li>
               <strong>Report a problem</strong> creates a text report with the
-              app version and build, the device type, recent errors, whether
-              you are signed in (yes or no), AI model counts, and any note you
-              add. It contains no names, answers or account details. You see the
+              app version and build, the device type, a short log of recent app
+              events and errors, whether
+              you are signed in and whether AI is ready (yes or no), AI model
+              counts, and any note you add. It contains no names, answers or account details. You see the
               whole report before it leaves the device, and it is shared only
               if you send it, through your device’s share sheet or by copying
               it.
@@ -200,7 +242,8 @@ export default function AhaPrivacyPage() {
         <section>
           <h2 className={h2}>Permissions</h2>
           <p className="mt-3">
-            ¡AHA! uses the network only for Free2Z sign-in and AI lessons. It
+            ¡AHA! uses the network only for Free2Z sign-in, AI lessons and
+            reports of flagged AI activities. It
             does not use the camera, microphone, contacts, location, photos or
             the advertising identifier. Corpora does not sell or share personal
             information.
@@ -211,24 +254,42 @@ export default function AhaPrivacyPage() {
           <ul className={list}>
             <li>
               Delete a learner’s progress in Settings with{" "}
-              <strong>Delete this learner’s local progress</strong>, or remove
-              the app to delete everything stored locally.
+              <strong>Delete this learner’s local progress</strong>, or sign
+              out of Free2Z and then remove the app to delete everything stored
+              locally.
             </li>
             <li>Sign out of Free2Z in Settings at any time.</li>
             <li>
-              Manage the Free2Z account and its connected apps at{" "}
+              <strong>Use a different account</strong> in Settings signs in to
+              another Free2Z account. Each account’s progress and reports stay
+              separate on the device.
+            </li>
+            <li>
+              <strong>Manage Free2Z account</strong> in Settings opens ¡AHA!’s
+              page on Free2Z in your browser, where you can see the balance,
+              change ¡AHA!’s budget or remove its access. It is also at{" "}
               <a href="https://free2z.cash/account/apps" className={link}>
                 free2z.cash/account/apps
               </a>
               .
             </li>
             <li>
-              Delete the Free2Z account at{" "}
+              <strong>Delete Free2Z account</strong> in Settings opens{" "}
               <a href="https://free2z.cash/account/delete" className={link}>
                 free2z.cash/account/delete
-              </a>
-              . Deleting progress in ¡AHA! does not delete records held by
-              Free2Z.
+              </a>{" "}
+              in your browser. Free2Z hides the account right away and deletes
+              it after 30 days; signing in before then keeps it. Deleting
+              progress in ¡AHA! does not delete records held by Free2Z, and
+              deleting the Free2Z account does not delete progress on the
+              device.
+            </li>
+            <li>
+              Step-by-step instructions, and what is deleted and kept, are on{" "}
+              <Link href="/aha/delete-account" className={link}>
+                Delete your account and data
+              </Link>
+              .
             </li>
           </ul>
         </section>
