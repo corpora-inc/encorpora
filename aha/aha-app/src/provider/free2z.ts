@@ -27,6 +27,12 @@ export const SIGN_IN_OPTIONS: Readonly<SignInOptions> = Object.freeze({
   spendCap: Object.freeze({cap2z: SUGGESTED_SPEND_CAP_2Z, period: 'month' as const}),
 });
 /**
+ * "Use a different account": `prompt: 'login'` makes Free2Z ask for a fresh sign-in even when the browser is already
+ * signed in, so the person can choose any account (it needs the `openid` scope, which AHA requests). Not `ephemeral`:
+ * that would make every account holder type their credentials on each switch, while `prompt: 'login'` works everywhere.
+ */
+export const SWITCH_ACCOUNT_OPTIONS: Readonly<SignInOptions> = Object.freeze({...SIGN_IN_OPTIONS, prompt: 'login' as const});
+/**
  * Production policy, "budget optional" (#879). Admits paid AI for this account and app when the grant is
  * fresh, carries `ai:invoke`, and Free2Z enforces it. Any budget (amount, period) or none is the user's choice.
  * `enforced: false` (e.g. `platform_disabled`) is Free2Z's pre-activation state: AI is not ready, no paid calls.
@@ -716,7 +722,8 @@ export class Free2zTutor {
           if (op.text.length + event.text.length > MAX_TEXT || textBytes > MAX_TEXT_BYTES) throw new TutorServiceError('output_limit','The lesson exceeded the supported size.');
           op.text += event.text;
         }
-        if (event.type === 'tool_call') throw new TutorServiceError('unexpected_tool','This request did not authorize tools.');
+        // AHA never sends tools; a streamed tool call in any form (SDK 0.2.0 added `tool_call_delta`) is a protocol error.
+        if (event.type === 'tool_call' || event.type === 'tool_call_delta') throw new TutorServiceError('unexpected_tool','This request did not authorize tools.');
         if (event.type === 'done' || event.type === 'error' || event.type === 'replay') {
           const charge = event.type === 'replay' ? event.record.charge : event.charge;
           op.charge = savedCharge(charge); op.state = charge.state === 'pending' ? 'settling' : 'finalized';

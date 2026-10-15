@@ -1,10 +1,10 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05, then to the tagged release `sdk-v0.3.0` (`6768350bba34c9eacf6700d40a7ad854f40f7809`) on 2026-10-14. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Unified public source `d63959f9c766258d7ce827e68f4ddd93d2797f99` (TS SDK, guest API and Rust plugin move together); exact revision-namespaced tarballs and lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Native SDK and TypeScript facade | Tagged release `sdk-v0.3.0` (`6768350bba34c9eacf6700d40a7ad854f40f7809`; TS SDK, guest API and Rust plugin move together); tarballs packed from the tag, lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
 | Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
@@ -29,6 +29,53 @@ contract supplies a live snapshot, not an immutable per-operation policy version
 Server revocation stamps must not be treated as cap-policy versions. Internal
 acceptance still needs the explicit account and aggregate spending authorization
 recorded privately.
+
+## SDK `sdk-v0.3.0` adoption (2026-10-14)
+
+AHA moves from source preview `d63959f9` (which predates `sdk-v0.2.0`) to the coordinated release tag `sdk-v0.3.0`
+(`6768350bba34c9eacf6700d40a7ad854f40f7809`): Cargo `tag = "sdk-v0.3.0"`, and both npm packages packed from the tag (recipe and SHA-256 in
+[vendor/README.md](aha-app/vendor/README.md)). What AHA adopts:
+
+- **Who is signed in (#931).** `SCOPES` adds `profile`. Settings titles the account "@username" from
+  `session().preferredUsername` (`accountLabel` in `connection.ts`), and "Free2Z account" without it. That is display
+  only: usernames are not unique and can change, so local data stays keyed by `subject`. An account that connected
+  before this build has no username until its next sign-in, and that sign-in asks for consent once more (the new scope).
+- **Use a different account (#931).** A Settings action behind the adult step, like every Free2Z exit. It signs in with
+  `prompt: "login"` (`SWITCH_ACCOUNT_OPTIONS`; it needs `openid`, which AHA requests), so Free2Z asks for a fresh
+  sign-in even when the browser is signed in. `ephemeral` stays off: it would make the account holder type credentials
+  on every switch. Before the sheet opens, the current account's AI work, background batch and report outbox stop. The
+  SDK replaces the session only on success. AHA then loads the new `subject`'s own repository, journal and learners.
+  A closed or failed switch keeps the account it started from (re-checked with `session()`). A switch does not need
+  AI permission again: permission is per device, and a device without it keeps AI paused for the new account too.
+- **Account exits.** "Manage Free2Z account" and "Delete Free2Z account" call the SDK's `openManageAccount()` and
+  `openDeleteAccount()`. The plugin builds `free2z.cash/account/apps?client_id=<AHA>` and `free2z.cash/account/delete`
+  from its native configuration and opens them in the system browser; no URL comes from the webview. The adult step
+  still comes first. AHA's own `open_free2z_account` command, `AccountPage`, and the `tauri-plugin-opener` plugin and
+  dependency are removed. The capability grants `f2z:allow-open-manage-account` and `f2z:allow-open-delete-account`,
+  and not the `*-account-url` commands, which AHA does not need.
+- **Reports.** `submitReport` sends through the SDK's `reportCall(callId, reason)`: one of the four preset reasons, and
+  never a `detail` (AHA is used by children, and a child-directed Free2Z app refuses one). The native `Config` is also
+  marked `child_directed`, so the plugin refuses a detail locally. A report is recorded in the account's outbox
+  `aha-ai-reports` first, then sent in the background, so the learner is never blocked. Waiting reports go out on the
+  next connect (launch, sign-in and Refresh connection), oldest first and one at a time, under the account that made
+  them. If the account changes, or a switch begins, sending stops before the next report. Each send is bounded (20 s)
+  and runs outside the outbox's write lock, so a slow Free2Z never holds up a new report or a switch. The backoff is
+  kept per account, so switching away and back does not skip Free2Z's Retry-After. Free2Z's answers are mapped calmly and logged as `ai-report`,
+  never shown as an alert:
+  - `rate_limited` or `concurrency_limit` (429) stops the flush and waits for Free2Z's Retry-After.
+  - Other failures (offline, signed out, `unsupported_operation` from an older plugin) back off: 30 s, doubling to
+    30 min.
+  - `not_found`, `call_not_found` and `invalid_request` are final: the report is kept, marked `refused`, and never
+    resent.
+  - A report recorded before its call id was known looks the id up again from the billing journal.
+  The capability grants `f2z:allow-report-call`.
+- **0.2.0 breaking changes.** `ChatEvent` gained `tool_call_delta`. AHA's stream loop is not an exhaustive switch; it
+  now treats `tool_call_delta` like `tool_call` (AHA sends no tools, so either one stops the request as
+  `unexpected_tool`). The guest API and `@free2z/sdk` move together at 0.3.0, satisfying the SDK's `^0.3.0` peer.
+- Verified with fakes only: unit tests (the real SDK over plugin-shaped TEST bridges, the outbox, the exits source
+  scan) and `test:ai`. The `test:ai` scenario covers the username, a closed switch, a switch to a second account with
+  its own storage partition, both exits by command, a 429 waited out and then sent once, and no report crossing
+  accounts. Not live-verified, and not device-verified.
 
 ## SDK `d63959f9` adoption (2026-10-05)
 
@@ -290,8 +337,8 @@ Settings show, read-only: the available balance, the app budget ("100 2Z per mon
 last activity batch ("About N 2Z" from the settled charge, else "Up to N 2Z" from the
 estimate's hold). "Manage Free2Z account" opens `free2z.cash/account/apps?client_id=<AHA>` and, when
 connected, "Delete Free2Z account" opens `free2z.cash/account/delete`, both in the system browser through the
-native `open_free2z_account` command, which takes a page name and never a URL. There is no in-app purchase and no
-link to a Free2Z checkout.
+SDK's `openManageAccount()` / `openDeleteAccount()`, which take no URL from the webview (since `sdk-v0.3.0`; before,
+AHA's own `open_free2z_account` command). There is no in-app purchase and no link to a Free2Z checkout.
 
 Contract questions for the Free2Z team (current spec text leaves these open):
 
@@ -342,9 +389,9 @@ that list verbatim as the authorization request's `scope`. So this was a
 client-side request, not a server default. The SDK's own doc comment says to
 narrow it with `Config::with_scopes`.
 
-AHA now requests exactly `openid offline_access balance:read ai:invoke`
-(`SCOPES` in `f2z.rs`, pinned by a Rust unit test). `profile` was dropped too:
-AHA never shows the account's name or picture. `ai:invoke` alone gives the
+AHA now requests exactly `openid profile offline_access balance:read ai:invoke`
+(`SCOPES` in `f2z.rs`, pinned by a Rust unit test). `profile` was dropped here at first, because AHA showed no
+account name; since `sdk-v0.3.0` it is back, for the "@username" in Settings (see "SDK `sdk-v0.3.0` adoption"). `ai:invoke` alone gives the
 `f2z-api` audience that `grant()` needs (zuu `spec/oidc.md` §6 `aud`, `spec/grant.md`).
 Purchase and checkout commands were already outside the Tauri capability.
 
@@ -414,8 +461,8 @@ unsettled requests. Stop during grant/model preparation prevents paid dispatch.
 Capacity Retry-After delays survive the provider adapter and prevent immediate
 manual re-dispatch; no automatic new paid retry or top-up occurs.
 
-App-cap exhaustion and insufficient balance have distinct explanations. A fixed
-native command opens `https://free2z.cash/account/apps` in the system browser for
+App-cap exhaustion and insufficient balance have distinct explanations. The SDK's
+`openManageAccount()` opens `https://free2z.cash/account/apps?client_id=<AHA>` in the system browser for
 parent-managed consent and its Billing link. No learner content can supply that
 URL. Purchase/checkout SDK commands remain outside the app's capabilities.
 

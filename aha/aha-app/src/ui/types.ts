@@ -145,11 +145,13 @@ export interface StudioProps {
   /** Opens Free2Z's account deletion page in the system browser (shown only when connected). */
   onDeleteFree2zAccount?: () => void;
   onSignIn: () => void;
+  /** "Use a different account": a fresh Free2Z sign-in (prompt=login), through the adult step. Shown when connected. */
+  onSwitchAccount?: () => void;
   /** Resume AI for a session signed in without this device's permission (through the adult step). */
   onAllowAi?: () => void;
   /**
-   * The adult step the host is showing before an account exit (application/aiConsent.ts): Connect, Manage or Delete
-   * Free2Z account (each opens a Free2Z page), or Allow AI lessons. Absent: no step on screen.
+   * The adult step the host is showing before an account exit (application/aiConsent.ts): Connect, Use a different
+   * account, Manage or Delete Free2Z account (each opens a Free2Z page), or Allow AI lessons. Absent: no step on screen.
    */
   gate?: { exit: AccountExit; needsConsent: boolean; locked: boolean };
   /** The step's Continue/Allow, with the birth year typed (never stored). The host decides and, on a pass, takes the exit. */

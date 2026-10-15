@@ -51,9 +51,9 @@ describe("AI consent and the adult step", () => {
 
 describe("every account exit passes the adult step", () => {
   const granted = { status: "granted", grantedAt: new Date(NOW).toISOString() } as const;
-  it("enumerates the exits: the three that open Free2Z, and Allow AI lessons", () => {
-    assert.deepEqual([...ACCOUNT_EXITS], ["connect", "manage", "delete", "allow"]);
-    assert.deepEqual([...BROWSER_EXITS], ["connect", "manage", "delete"]);
+  it("enumerates the exits: the four that open Free2Z, and Allow AI lessons", () => {
+    assert.deepEqual([...ACCOUNT_EXITS], ["connect", "switch", "manage", "delete", "allow"]);
+    assert.deepEqual([...BROWSER_EXITS], ["connect", "switch", "manage", "delete"]);
   });
   it("no exit is clear before a pass, with or without AI permission", () => {
     for (const exit of ACCOUNT_EXITS) {
@@ -77,11 +77,11 @@ describe("every account exit passes the adult step", () => {
     gate.pass(NOW);
     for (const exit of ACCOUNT_EXITS) assert.equal(exitClear(exit, gate, { status: "locked", until: NOW + LOCK_MS }, NOW), false, exit);
   });
-  it("Connect and Allow AI lessons also need this device's AI permission; Manage and Delete do not", () => {
+  it("Connect and Allow AI lessons also need this device's AI permission; switching, Manage and Delete do not", () => {
     const gate = new AdultGate();
     gate.pass(NOW);
-    assert.deepEqual(ACCOUNT_EXITS.map(e => needsConsent(e, { status: "needed" })), [true, false, false, true]);
-    assert.deepEqual(ACCOUNT_EXITS.map(e => exitClear(e, gate, { status: "needed" }, NOW)), [false, true, true, false]);
-    assert.deepEqual(ACCOUNT_EXITS.map(e => needsConsent(e, granted)), [false, false, false, false]);
+    assert.deepEqual(ACCOUNT_EXITS.map(e => needsConsent(e, { status: "needed" })), [true, false, false, false, true]);
+    assert.deepEqual(ACCOUNT_EXITS.map(e => exitClear(e, gate, { status: "needed" }, NOW)), [false, true, true, true, false]);
+    assert.deepEqual(ACCOUNT_EXITS.map(e => needsConsent(e, granted)), [false, false, false, false, false]);
   });
 });

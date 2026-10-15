@@ -1,4 +1,4 @@
-import { SdkError } from '@free2z/sdk';
+import { SdkError, type Session } from '@free2z/sdk';
 import { TutorServiceError } from '../provider/free2z';
 import { diagnostics, type DiagnosticsLog } from '../diagnostics/log';
 
@@ -51,6 +51,16 @@ export function retryDeadline(error: unknown, now = Date.now()): number | undefi
   const seconds = error instanceof SdkError || error instanceof TutorServiceError ? error.retryAfterSeconds : undefined;
   return typeof seconds === 'number' && Number.isFinite(seconds) && seconds > 0
     ? now + Math.ceil(seconds * 1000) : undefined;
+}
+
+/**
+ * The connected account as Settings names it: "@username" when Free2Z granted the `profile` scope, else "Free2Z account".
+ * Display only. Usernames are not unique and can change, so nothing is ever keyed by this; local data stays keyed by
+ * `subject`. A session from before AHA asked for `profile` has none until its next sign-in.
+ */
+export function accountLabel(session: Pick<Session, 'preferredUsername'>): string {
+  const name = session.preferredUsername?.trim();
+  return name ? `@${name}` : 'Free2Z account';
 }
 
 /** Shown, at most, after the person closes the Free2Z sign-in themselves. */
