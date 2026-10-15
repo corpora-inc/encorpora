@@ -1421,7 +1421,9 @@ export default function Controller() {
    * Sends this account's waiting reports through the SDK's `reportCall(callId, reason)`: a reason, never a `detail`.
    * Respects Free2Z's rate limit and backs off after any failure (aiReports.ts). One send at a time (a request meanwhile
    * runs once more after it), each bounded by REPORT_TIMEOUT_MS. Bound to the account it started for: it stops before
-   * the next send once another account is on screen or a switch begins. Never throws, never blocks the learner.
+   * the next send once another account is on screen or a switch begins. Nothing leaves the device without this device's
+   * AI permission (`aiAllowed`): a report flagged before it was given waits in the outbox and goes on the connect that
+   * follows Allow AI lessons. Never throws, never blocks the learner.
    */
   function sendReports(): Promise<void> {
     if (!native || !subject.current) return Promise.resolve();
@@ -1440,6 +1442,7 @@ export default function Controller() {
       callFor: tutor ? async op => (await tutor.callFor(op).catch((error: unknown) => { logError("ai-report", error); return {callId: undefined}; })).callId : undefined,
       current: async () => epoch === accountEpoch.current && repo === repository.current && stamp === reportStamp.current &&
         await client.session().then(s => s.signedIn && s.subject === owner, () => false),
+      allowed: () => aiAllowed(consent.current),
       log: (level, message) => logEvent(level, "ai-report", message),
     }).then(result => {
       if (result.sent || result.refused || result.stopped) logEvent("info", "ai-report", `outbox: ${result.sent} sent, ${result.refused} refused, ${result.waiting} waiting${result.stopped ? ` (${result.stopped})` : ""}`);
