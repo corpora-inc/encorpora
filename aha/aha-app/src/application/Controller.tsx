@@ -37,6 +37,7 @@ import {
   type PendingOperation,
   verifyPaidGrant,
   SIGN_IN_OPTIONS,
+  SWITCH_ACCOUNT_OPTIONS,
   type ResumeContext,
   type TutorReply,
 } from "../provider/free2z";
@@ -46,7 +47,7 @@ import type { ActivitySpec } from "../activity/spec";
 import { AiQueueBox, BATCH_WAIT_MS, wantsRedrill, wantsRepeat, batchSizeFor, deliverBatch, prefetchBlocked, presentFromQueue, settlesWithin, shouldPrefetch, stopToken, takeForSkip, takeNext, type QueuedActivity, type StopToken } from "./aiQueue";
 import type { GradeOutcome, LearnerResponse } from "../activity/grade";
 import { learningCheckpoint } from "./checkpoint";
-import { learningError, refusalAction, retryDeadline, signInFailure } from "./connection";
+import { accountLabel, learningError, refusalAction, retryDeadline, signInFailure } from "./connection";
 import { AUTO, MODEL_CHOICE_KEY, ModelUnavailableError, batchBudget, chooseModel, describePick, modelMenu, readCatalog, readModelChoice, storedModelChoice, type ModelChoice, type ModelMenu, type ModelPick } from "../provider/models";
 import { BATCH_LOG_KEY, aggregateModelStats, appendBatch, modelStatsLines, readBatchLog, type BatchRecord, type SpecAnswer } from "./modelStats";
 import { AiBackoff, aiFallbackStatus, logAiFallback } from "./aiFallback";
@@ -54,7 +55,7 @@ import { spendingSummary } from "./spending";
 import { RETRY_BASE_MS, ReceiptRecovery, type RecoveryOutcome, type RecoveryTrigger } from "./receiptRecovery";
 import { describeError, logError, logEvent, type LogLevel } from "../diagnostics/log";
 import { CURIOSITY_SYSTEM, curiosityContext, isCuriosityKind, type CuriosityKind } from "./curiosity";
-import { REPORTS_KEY, appendReport, markSent, reportFor, submitReport, type AiReport, type ReportReason, type ReportSender } from "./aiReports";
+import { REPORTS_KEY, ReportBackoff, appendReport, flushReports, type AiReport, type ReportReason } from "./aiReports";
 import { AdultGate, CONSENT_KEY, CONSENT_VERSION, aiAllowed, checkBirthYear, exitClear, grantOf, grantedRecord, lockedRecord, needsConsent, readConsent, type AccountExit, type ConsentState } from "./aiConsent";
 
 /** Lazily loaded: zod, the activity grammar and the grader stay out of local-practice startup. */
@@ -89,16 +90,12 @@ const SETTLING_STATUS = "Finishing an earlier AI request. AHA settles it on its 
 const CONSENT_STATUS = "AI lessons are paused until the account holder allows them.";
 const EXIT_LABEL: Record<AccountExit, string> = {
   connect: "Waiting for secure Free2Z sign-in…",
+  switch: "Waiting for secure Free2Z sign-in…",
   manage: "Opening Free2Z in your browser…",
   delete: "Opening Free2Z in your browser…",
   allow: "Checking Free2Z…",
 };
 const preview = previewRepository();
-/**
- * Free2Z's content-report endpoint. The SDK this build pins has none yet; the follow-up wires its
- * `reportCall(callId, reason)` here. Until then reports are recorded and wait in the account's outbox.
- */
-const REPORT_SENDER: ReportSender | undefined = undefined;
 function visual(v?: VisualSpec): StudioVisual | undefined {
   if (!v) return undefined;
   switch (v.kind) {
@@ -180,6 +177,9 @@ export default function Controller() {
   /** Same-key receipt recovery for this account: backoff state across launch, resume, retry and pre-batch attempts. */
   const receipts = useRef(new ReceiptRecovery());
   const recoveryTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  /** The report outbox's retry state for the account on screen (reset with the account), and its one-at-a-time chain. */
+  const reportBackoff = useRef(new ReportBackoff());
+  const outbox = useRef<Promise<unknown>>(Promise.resolve());
   /** An earlier AI request is unsettled (mirrors `account.settling`, readable from async code). */
   const settling = useRef(false);
   /** A same-key recovery is running: Stop never cuts off its stream (that would strand an already-paid reply). */
@@ -473,6 +473,7 @@ export default function Controller() {
     const epoch = ++accountEpoch.current;
     clearLearner();
     receipts.current = new ReceiptRecovery();
+    reportBackoff.current = new ReportBackoff();
     clearTimeout(recoveryTimer.current);
     settling.current = false;
     setPendingUsage([]);
@@ -820,6 +821,10 @@ export default function Controller() {
     try {
       const client = getNativeClient();
       const session = await client.session();
+      // The username is display only (data stays keyed by subject); a refresh can drop it when `profile` is withdrawn.
+      if (session.signedIn && session.subject === subject.current) setAccount(a => ({...a, label: accountLabel(session)}));
+      // Reports that waited (offline, signed out, Free2Z busy) go out on the next connect, in the background.
+      void sendReports();
       const b = await client.balance();
       setAccount(a => ({...a, balance: format2z(b.available_milli_2z)}));
       await paidAuthorization();
@@ -912,7 +917,7 @@ export default function Controller() {
               if (generation !== lifecycle.current) return;
               setAccount({
                 connected: true,
-                label: "Free2Z account",
+                label: accountLabel(s),
                 status: allowed ? readiness.current.reason : CONSENT_STATUS,
               });
               if (allowed) await startAi(generation);
@@ -1386,20 +1391,44 @@ export default function Controller() {
   }
   /**
    * Records a report of the AI activity on screen in this account's outbox (with the Free2Z call it came from, when the
-   * journal knows it), then hands it to submitReport. A failed write throws: the activity is not set aside unreported.
+   * journal knows it), then sends the outbox in the background. A failed write throws: the activity is not set aside
+   * unreported. Sending never blocks the learner, and a failure there is only logged: the report waits for the next try.
    */
   async function reportAi(item: QueuedActivity, reason: ReportReason) {
     const repo = repository.current, tutor = provider.current;
     const call = tutor ? await tutor.callFor(item.operationId).catch((error: unknown) => { logError("ai-report", error); return {}; }) : {};
     const report: AiReport = {id: crypto.randomUUID(), activityId: item.activityId, specId: item.spec.id, operationId: item.operationId,
       ...call, ...(item.model ? {model: item.model} : {}), reason, createdAt: new Date().toISOString()};
-    const outbox = appendReport(await repo.getJournal(REPORTS_KEY), report);
-    await repo.putJournal(REPORTS_KEY, outbox);
-    // A repeat report of the same activity (a retry after a failed set-aside) resolves to the stored one, never a second send.
-    const stored = reportFor(outbox, item.activityId) ?? report;
-    logEvent("info", "ai-report", `${stored.reason} report recorded for ${item.activityId}${stored.callId ? "" : " (no Free2Z call id in the journal)"}`);
-    if (await submitReport(stored, REPORT_SENDER, (level, message) => logEvent(level, "ai-report", message)) === "sent")
-      await repo.putJournal(REPORTS_KEY, markSent(await repo.getJournal(REPORTS_KEY), stored.id, new Date().toISOString()));
+    // A repeat report of the same activity (a retry after a failed set-aside) keeps the stored one: never a second send.
+    await inOutbox(async () => repo.putJournal(REPORTS_KEY, appendReport(await repo.getJournal(REPORTS_KEY), report)));
+    logEvent("info", "ai-report", `${reason} report recorded for ${item.activityId}${report.callId ? "" : " (no Free2Z call id in the journal)"}`);
+    void sendReports();
+  }
+  /** Outbox reads and writes run one at a time, so a send never overwrites a report recorded meanwhile. */
+  function inOutbox<T>(work: () => Promise<T>): Promise<T> {
+    const run = outbox.current.catch(() => undefined).then(work);
+    outbox.current = run.catch(() => undefined);
+    return run;
+  }
+  /**
+   * Sends this account's waiting reports through the SDK's `reportCall(callId, reason)`: a reason, never a `detail`.
+   * Respects Free2Z's rate limit and backs off after any failure (aiReports.ts). Bound to the account it started for:
+   * it stops once another account is on screen or signed in. Never throws.
+   */
+  function sendReports(): Promise<void> {
+    if (!native || !subject.current) return Promise.resolve();
+    const repo = repository.current, epoch = accountEpoch.current, owner = subject.current, backoff = reportBackoff.current;
+    const tutor = provider.current, client = getNativeClient();
+    return inOutbox(() => flushReports({
+      store: repo, backoff,
+      send: (callId, reason) => client.reportCall(callId, reason),
+      callFor: tutor ? async op => (await tutor.callFor(op).catch((error: unknown) => { logError("ai-report", error); return {callId: undefined}; })).callId : undefined,
+      current: async () => epoch === accountEpoch.current && repo === repository.current &&
+        await client.session().then(s => s.signedIn && s.subject === owner, () => false),
+      log: (level, message) => logEvent(level, "ai-report", message),
+    })).then(result => {
+      if (result.sent || result.refused || result.stopped) logEvent("info", "ai-report", `outbox: ${result.sent} sent, ${result.refused} refused, ${result.waiting} waiting${result.stopped ? ` (${result.stopped})` : ""}`);
+    }, error => logError("ai-report", error));
   }
   async function support(kind: Parameters<StudioProps["onSupport"]>[0], reason: ReportReason = "other") {
     const a = currentActivity.current;
@@ -1597,8 +1626,8 @@ export default function Controller() {
     if (!exitClear(exit, gate.current, consent.current, Date.now()))
       throw new Error("This is for the Free2Z account holder.");
     if (exit === "connect") return signIn();
-    if (exit === "manage") return openAccount("apps");
-    if (exit === "delete") return openAccount("delete");
+    if (exit === "switch") return signIn(true);
+    if (exit === "manage" || exit === "delete") return openAccount(exit);
     if (subject.current && !provider.current) {
       // Signed in already (AI was paused): the same provider and start as a launch with permission.
       provider.current = new Free2zTutor(getNativeClient(), repository.current, subject.current);
@@ -1606,11 +1635,20 @@ export default function Controller() {
       await startAi();
     }
   }
-  /** A Free2Z account page in the system browser (the native command takes a page name, never a URL). */
-  async function openAccount(page: "apps" | "delete") {
-    if (!exitClear(page === "apps" ? "manage" : "delete", gate.current, consent.current, Date.now()))
+  /**
+   * A Free2Z account page in the system browser, through the SDK: the plugin builds the URL from its native
+   * configuration (`/account/apps?client_id=…`, `/account/delete`) and takes none from the webview.
+   */
+  async function openAccount(exit: "manage" | "delete") {
+    if (!exitClear(exit, gate.current, consent.current, Date.now()))
       throw new Error("This is for the Free2Z account holder.");
-    await invoke("open_free2z_account", {page});
+    const client = getNativeClient();
+    try {
+      await (exit === "manage" ? client.openManageAccount() : client.openDeleteAccount());
+    } catch (error) {
+      logError("account-exit", error);
+      throw new Error("Could not open Free2Z. Visit free2z.cash in your browser.");
+    }
   }
   /**
    * Signing out withdraws AI permission too, so the next Connect asks the account holder again. A lock stays: signing
@@ -1635,9 +1673,15 @@ export default function Controller() {
     if (provider.current) return provider.current;
     return native && subject.current ? new Free2zTutor(getNativeClient(), repository.current, subject.current) : undefined;
   }
-  async function signIn() {
-    // Only through the adult step (takeExit), with AI permission: the system sign-in is a Free2Z page.
-    if (!exitClear("connect", gate.current, consent.current, Date.now()))
+  /**
+   * Connect, or "Use a different account" (`switching`): the SDK's sign-in with `prompt: "login"`, so Free2Z asks for a
+   * fresh sign-in even when the browser is signed in, and the person can choose any account. The new session replaces the
+   * old one natively; this account's open AI work stops first. Each account keeps its own local data (by `subject`).
+   */
+  async function signIn(switching = false) {
+    // Only through the adult step (takeExit): the system sign-in is a Free2Z page. Connect also needs AI permission.
+    const exit: AccountExit = switching ? "switch" : "connect";
+    if (!exitClear(exit, gate.current, consent.current, Date.now()))
       throw new Error("This is for the Free2Z account holder.");
     if (!native)
       throw new Error(
@@ -1649,32 +1693,61 @@ export default function Controller() {
       );
     checkRetryDelay();
     const client = getNativeClient();
+    const previous = subject.current;
+    if (switching) {
+      // Stop this account's AI work and outbox before its session can be replaced; anything unsettled recovers later
+      // under this account, with its original key.
+      await provider.current?.cancel();
+      await settlePrefetch();
+      await outbox.current;
+    }
     // Suggest a modest monthly budget. The user may change or remove it on the consent screen; any choice works.
     let s;
     try {
-      s = await client.signIn(SIGN_IN_OPTIONS);
+      s = await client.signIn(switching ? SWITCH_ACCOUNT_OPTIONS : SIGN_IN_OPTIONS);
     } catch (e) {
-      // Closing the sign-in is a choice, not an error: stay disconnected, at most a one-line note.
+      // Closing the sign-in is a choice, not an error: stay as before (a switch keeps the account it started from).
       const outcome = signInFailure(e); // logs everything else, with its code
       retryAfter.current = Math.max(retryAfter.current, retryDeadline(e) ?? 0);
+      if (switching) await keepOrDropAfterFailedSwitch(previous);
       setAccount(a => a.connected ? a : {...a, status: outcome.quiet ? outcome.note : a.status});
       if (!outcome.quiet) setError(outcome.message);
       return;
     }
     if (!s.signedIn || !s.subject)
       throw new Error("Sign-in was not completed.");
+    if (switching) logEvent("info", "sign-in", s.subject === previous ? "use a different account: the same account signed in again" : "use a different account: another account signed in");
     subject.current = s.subject;
     const repo = new NativeRepository(s.subject);
-    provider.current = new Free2zTutor(client, repo, s.subject);
+    // A switch on a device without AI permission keeps AI paused (permission is per device, given through Connect).
+    const allowed = aiAllowed(consent.current);
+    provider.current = allowed ? new Free2zTutor(client, repo, s.subject) : undefined;
+    selectedModel.current = undefined;
     appBudget.current = undefined;
     aiBackoff.current = new AiBackoff();
     setAccount({
       connected: true,
-      label: "Free2Z account",
-      status: readiness.current.reason,
+      label: accountLabel(s),
+      status: allowed ? readiness.current.reason : CONSENT_STATUS,
     });
     await loadAccount(repo);
-    if (await connectAccount("sign-in") && (restoredAi.current || practisedBefore.current)) maybePrefetch();
+    if (allowed && await connectAccount("sign-in") && (restoredAi.current || practisedBefore.current)) maybePrefetch();
+  }
+  /**
+   * A switch that did not finish leaves the native session as it was (the SDK replaces it only on success). Confirm
+   * that: the same account carries on; anything else (no session) is shown as signed out, never as the old account.
+   */
+  async function keepOrDropAfterFailedSwitch(previous: string | undefined) {
+    const now = await getNativeClient().session().catch((error: unknown) => { logError("sign-in", error); return undefined; });
+    if (now?.signedIn && now.subject === previous) return;
+    logEvent("warn", "sign-in", "use a different account did not finish and the earlier session is gone; showing signed out");
+    subject.current = undefined;
+    provider.current = undefined;
+    selectedModel.current = undefined;
+    appBudget.current = undefined;
+    aiBackoff.current = new AiBackoff();
+    setAccount({connected: false, status: "Local practice · AI is not connected"});
+    await loadAccount(new NativeRepository("local-device"));
   }
   async function signOut() {
     await provider.current?.cancel();
@@ -1898,6 +1971,7 @@ export default function Controller() {
       onDeleteFree2zAccount={native ? () => requestExit("delete") : undefined}
       onRefreshAccount={aiAllowed(consentState) ? () => void action(async () => { await settlePrefetch(); await connectAccount("manual"); }, "Checking Free2Z…") : undefined}
       onSignIn={() => requestExit("connect")}
+      onSwitchAccount={native ? () => requestExit("switch") : undefined}
       onSignOut={() => void action(signOut)}
       onSelectLearner={(id) =>
         void action(async () => {

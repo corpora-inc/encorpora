@@ -57,7 +57,6 @@ fn pin_page_scroll<R: tauri::Runtime>(
 pub fn run() {
     let builder = tauri::Builder::default()
         .plugin(tauri_plugin_fs::init())
-        .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_haptics::init());
     #[cfg(target_os = "ios")]
@@ -97,8 +96,7 @@ pub fn run() {
             documents::pick_backup,
             documents::share_backup,
             documents::share_report,
-            f2z::app_readiness,
-            f2z::open_free2z_account
+            f2z::app_readiness
         ])
         .run(tauri::generate_context!())
         .expect("AHA could not open its native application");

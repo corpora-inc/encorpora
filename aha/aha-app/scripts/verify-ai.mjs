@@ -20,15 +20,21 @@ const BATCH_WAIT_TEST_MS=12_000;
 // Overridable so parallel worktrees can run the suite at the same time.
 /** Next, or Keep going in the same slot when the answer completes a lap of ten. */
 const NEXT=/^(Next|Keep going)$/;
+// The TEST gateway's call id: a UUID, as Free2Z's are (the SDK refuses to report anything else).
+const FIXTURE_CALL='0f1e2d3c-4b5a-4968-8776-655443322110';
 const port=Number(process.env.AHA_AI_PORT||1436),base=`http://127.0.0.1:${port}`;
 const vite=spawn(process.execPath,[path.join(ownRoot,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:root,stdio:['ignore','pipe','pipe']});
 let output='',browser;vite.stdout.on('data',b=>output+=b);vite.stderr.on('data',b=>output+=b);
 function fixture(specs){
   // Only this test owns localStorage. Production has no browser persistence fallback.
   const key='aha-controller-test-fixture';
-  const read=()=>JSON.parse(localStorage.getItem(key)||'null')||{profiles:[],sessions:{},activities:{},attempts:{},disputes:{},snapshots:{}};
+  // The second TEST account (a "Use a different account" scenario) has its own partition, as native storage keys every
+  // record by account; local-device and test-subject share the original one, as earlier scenarios expect.
+  const keyFor=account=>account==='second-subject'?`${key}:${account}`:key;
+  const read=(account)=>JSON.parse(localStorage.getItem(keyFor(account))||'null')||{profiles:[],sessions:{},activities:{},attempts:{},disputes:{},snapshots:{}};
   window.__ahaFixture={failNextSession:false,read};window.isTauri=true;
   const streams=new Map();
+  const FIXTURE_CALL='0f1e2d3c-4b5a-4968-8776-655443322110';
   // TEST-ONLY grant/estimate knobs. Default: Free2Z's pre-activation state (enforced:false, platform_disabled)
   // with a 100 2Z total app budget once enforced; scenarios switch to no budget or a low balance.
   window.__ahaAI={signedIn:true,enforced:false,reason:'platform_disabled',spendCap:'100',capPeriod:'total',capRemaining:'99000',available:'100000',hold:'1',starts:[],requests:[],batches:0,delayModels:false,releaseModels:null,blockEstimate:false,grants:0,activityAccounts:[],malformedNext:false};
@@ -64,14 +70,19 @@ function fixture(specs){
   // `catalog` replaces it with a scenario's own fake models (ids, prices and capabilities are fixtures, not Free2Z's).
   const catalogModels=()=>ai.catalog??[{id:'fixture-model',max_output_tokens:'4096',...(ai.structured?{context_window:'128000',capabilities:{vision:false,tools:false,reasoning:false,structured_output:true}}:{})}];
   const advertises=model=>catalogModels().some(m=>m.id===model&&m.capabilities?.structured_output===true);
-  const session=()=>({signedIn:ai.signedIn,subject:ai.signedIn?'test-subject':null,grantedScopes:['ai:invoke','balance:read'],persistence:'persistent',generation:'1'});
+  // TEST-ONLY accounts: `subject` (default test-subject) and its Free2Z `username` (with the profile scope). A sign-in with
+  // prompt=login ("Use a different account") lands on `nextAccount` when a scenario sets one.
+  const subjectNow=()=>ai.subject??'test-subject';
+  const session=()=>({signedIn:ai.signedIn,subject:ai.signedIn?subjectNow():null,grantedScopes:['openid',...(ai.username?['profile']:[]),'ai:invoke','balance:read'],persistence:'persistent',generation:String(ai.generation??1),...(ai.signedIn&&ai.username?{preferredUsername:ai.username}:{})});
   window.__TAURI_INTERNALS__={invoke:async(command,args)=>{
     if(command==='app_readiness')return {free2zConfigured:true,clientId:'test-client',paidTestingReady:false,externalCheckoutEnabled:false,reason:'Explicit TEST SDK fixture'};
-    if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);if(ai.failSignIn){const e=ai.failSignIn;ai.failSignIn=null;throw e;}ai.signedIn=true;return session();}
+    if(command==='plugin:f2z|sign_in'){(ai.signIns??=[]).push(args.options);if(ai.failSignIn){const e=ai.failSignIn;ai.failSignIn=null;throw e;}
+      if(args.options.prompt==='login'&&ai.nextAccount){Object.assign(ai,ai.nextAccount);ai.nextAccount=null;ai.generation=(ai.generation??1)+1;}
+      ai.signedIn=true;return session();}
     if(command==='plugin:f2z|session')return session();
     if(command==='plugin:f2z|sign_out'){if(ai.failSignOut)throw {code:'storage_error'};ai.signedIn=false;return {revoked:true,generation:'2'};}
     if(command==='plugin:f2z|balance')return {available_milli_2z:ai.available,held_milli_2z:'0',balance_milli_2z:ai.available,debt_milli_2z:'0',as_of:new Date().toISOString()};
-    if(command==='plugin:f2z|grant'){ai.grants++;return {sub:'test-subject',client_id:'test-client',account_epoch:'0',grant_generation:'1',scopes:['ai:invoke'],spend_cap_2z:ai.spendCap,cap_period:ai.capPeriod,enforced:ai.enforced,enforcement_reason:ai.enforced?'ok':ai.reason,as_of:new Date().toISOString()};}
+    if(command==='plugin:f2z|grant'){ai.grants++;return {sub:subjectNow(),client_id:'test-client',account_epoch:'0',grant_generation:'1',scopes:['ai:invoke'],spend_cap_2z:ai.spendCap,cap_period:ai.capPeriod,enforced:ai.enforced,enforcement_reason:ai.enforced?'ok':ai.reason,as_of:new Date().toISOString()};}
     if(command==='plugin:f2z|models'){
       if(ai.delayModels)await new Promise(resolve=>{ai.releaseModels=resolve;});
       if(ai.models502)throw {code:'unavailable'};
@@ -105,18 +116,18 @@ function fixture(specs){
         ai.replays=(ai.replays??0)+1;
         return {operationId:args.operation.operationId,callId:ledger[key].callId,replay:{call_id:ledger[key].callId,status:'settled',charged_2z:'1',receipt_id:'fixture-receipt'}};
       }
-      ledger[key]={callId:'fixture-call',charged2z:'1'};localStorage.setItem(gatewayKey,JSON.stringify(ledger));
+      ledger[key]={callId:FIXTURE_CALL,charged2z:'1'};localStorage.setItem(gatewayKey,JSON.stringify(ledger));
       const user=args.request.messages[1].content[0].text;
       const text=user.startsWith('LEARNER ')?batchText(user):'You can use this idea to share ingredients fairly.';
       // TEST-ONLY: `outOfRoomModel` makes that model's batches end at their budget after hidden reasoning (finish_reason length).
       const outOfRoom=ai.outOfRoomModel===args.request.model;
       streams.set(args.operation.operationId,[
-        {type:'meta',call_id:'fixture-call',model:'fixture-model',hold_2z:'1'},
+        {type:'meta',call_id:FIXTURE_CALL,model:'fixture-model',hold_2z:'1'},
         {type:'delta',text},
         ...(outOfRoom?[{type:'usage',source:'provider',usage:{input_tokens:'500',cached_input_tokens:'0',cache_write_tokens:'0',output_tokens:args.request.max_output_tokens,reasoning_tokens:'11000',images:'0',tool_calls:'0'}}]:[]),
         {type:'done',finish_reason:outOfRoom?'length':'stop',settlement:'settled',charged_2z:'1',receipt_id:'fixture-receipt'},
       ]);
-      return {operationId:args.operation.operationId,callId:'fixture-call'};
+      return {operationId:args.operation.operationId,callId:FIXTURE_CALL};
     }
     // TEST-ONLY: `holdChat` keeps the next batch on its way until the scenario calls releaseChat().
     if(command==='plugin:f2z|next_chat'&&ai.holdChat){ai.holdChat=false;await new Promise(resolve=>{ai.releaseChat=resolve;});}
@@ -124,11 +135,21 @@ function fixture(specs){
     if(command==='plugin:f2z|next_chat')return streams.get(args.operationId)?.shift()??null;
     if(command==='plugin:f2z|cancel_chat')return;
     if(command==='share_backup')throw new Error('TEST backup destination unavailable');
-    if(command==='open_free2z_account'){ai.accountOpened=(ai.accountOpened??0)+1;(ai.accountPages??=[]).push(args.page);return;}
+    // tauri-plugin-f2z sdk-v0.3.0: the plugin builds each page's URL natively; the webview sends no arguments at all.
+    if(command==='plugin:f2z|open_manage_account'||command==='plugin:f2z|open_delete_account'){
+      if(args&&Object.keys(args).length)throw new Error(`TEST plugin: ${command} takes no arguments, got ${JSON.stringify(args)}`);
+      ai.accountOpened=(ai.accountOpened??0)+1;(ai.accountPages??=[]).push(command.endsWith('manage_account')?'manage':'delete');return null;}
+    // tauri-plugin-f2z sdk-v0.3.0 report_call. `reportFail`: a list of native errors for the next sends (a 429, a 404, ...).
+    if(command==='plugin:f2z|report_call'){
+      if('detail' in args)throw new Error('TEST plugin: AHA must never send a report detail');
+      (ai.reportCalls??=[]).push({...args,subject:subjectNow()});
+      const fail=ai.reportFail?.shift();if(fail)throw fail;
+      return {report_id:`report-${ai.reportCalls.length}`,call_id:args.callId,reason:args.reason,created_at:new Date().toISOString().replace(/\.\d+Z$/,'Z')};
+    }
     if(command==='pin_page_scroll')return null;
     if(command!=='local_repository')throw new Error(`Unexpected test IPC: ${command}`);
-    const r=args.request;if(!['local-device','test-subject'].includes(r.accountId))throw new Error('Unexpected test account');
-    const db=read(),id=r.profileId;let result;
+    const r=args.request;if(!['local-device','test-subject','second-subject'].includes(r.accountId))throw new Error('Unexpected test account');
+    const db=read(r.accountId),id=r.profileId;let result;
     switch(r.operation){
       // TEST-ONLY: this "device" already allowed AI lessons (aiConsent.ts) unless a scenario sets noConsent or signs out.
       case 'getJournal':return db.journals&&r.key in db.journals?db.journals[r.key]
@@ -153,7 +174,7 @@ function fixture(specs){
       case 'recordDispute':(db.disputes[id]??=[]).push(r.data);db.snapshots[id]=r.snapshot;break;
       default:throw new Error(`Unexpected test operation: ${r.operation}`);
     }
-    localStorage.setItem(key,JSON.stringify(db));return result;
+    localStorage.setItem(keyFor(r.accountId),JSON.stringify(db));return result;
   }};
 }
 try {
@@ -547,7 +568,8 @@ try {
     await page.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     assert.equal(await signIns(),before,'a year that does not pass never opens the sign-in');
     assert.ok(Date.parse((await consentRecord()).lockedUntil)>Date.now()+23*3600_000,'locked for a day');
-    assert.ok(!JSON.stringify(await page.evaluate(()=>window.__ahaFixture.read())).includes('2015'),'the year is never stored');
+    // As a value of its own, not a digit run inside a random id or a timestamp (which made this flaky).
+    assert.doesNotMatch(JSON.stringify(await page.evaluate(()=>window.__ahaFixture.read())),/(?<![0-9a-fA-F-])2015(?![0-9a-fA-F-])/,'the year is never stored');
     await page.getByRole('button',{name:'OK',exact:true}).click();
     await connect.click();
     await page.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
@@ -937,8 +959,76 @@ try {
     // A pass is remembered for a few minutes: the next exit right after opens without asking again.
     await s.p.getByRole('button',{name:'Delete Free2Z account',exact:true}).click();
     await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===2);
-    assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['apps','delete'],'the webview names a page, never a URL');
+    assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['manage','delete'],'the SDK opens each page by command; the webview sends no URL');
     assert.equal(await s.p.getByRole('button',{name:'Add 2Z',exact:false}).count(),0,'no in-app purchase');
+    assert.equal(await s.p.locator('a[href]').count(),0,'no links out of the app at all');
+    assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
+  }
+  {
+    // SDK sdk-v0.3.0 (TEST-ONLY fake plugin): the account's username, "Use a different account", and the report outbox.
+    const s=await scenario({enforced:true,spendCap:null,capPeriod:'month',capRemaining:null,username:'maths_parent'});
+    const card=s.p.locator('.focus-stage.is-spec .aha-activity');
+    await card.waitFor();
+    const ai=()=>s.p.evaluate(()=>window.__ahaAI);
+    const outboxOf=account=>s.p.evaluate(a=>window.__ahaFixture.read(a).journals?.['aha-ai-reports']??null,account);
+    // Free2Z is rate limiting reports: the activity is still set aside at once, calmly, and its report waits on the device.
+    await s.p.evaluate(()=>{window.__ahaAI.reportFail=[{code:'rate_limited',status:429,retryAfterSeconds:'1'}];});
+    const reported=(await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.aiActivity)).activityId;
+    await s.p.getByRole('button',{name:'Report',exact:true}).click();
+    await s.p.getByRole('button',{name:'Unsafe',exact:true}).click();
+    await s.p.waitForFunction(()=>window.__ahaAI.reportCalls?.length===1);
+    assert.deepEqual((await ai()).reportCalls[0],{callId:FIXTURE_CALL,reason:'unsafe',subject:'test-subject'},'a call id and a reason, never a detail');
+    await s.p.waitForFunction(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]').some(e=>e.source==='ai-report'&&/rate_limited/.test(e.message)));
+    let box=await outboxOf();
+    assert.equal(box.reports.length,1);
+    assert.equal(box.reports[0].activityId,reported);
+    assert.equal(box.reports[0].sentAt,undefined,'a 429 leaves the report waiting');
+    assert.equal(await s.p.getByRole('alert').count(),0,'a busy Free2Z is never an alert to the learner');
+    // The next connect inside Free2Z's Retry-After sends nothing; after it, the report goes once.
+    await s.p.evaluate(()=>window.__ahaAI.releaseHeld?.());
+    await s.openSettings();
+    await s.p.getByRole('heading',{name:'@maths_parent',exact:true}).waitFor();
+    await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await s.p.getByText('AI ready',{exact:true}).waitFor();
+    assert.equal((await ai()).reportCalls.length,1,'no send inside Retry-After');
+    await new Promise(r=>setTimeout(r,1100));
+    await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await s.p.waitForFunction(()=>window.__ahaAI.reportCalls.length===2);
+    await s.p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-ai-reports'].reports[0].sentAt);
+    await s.p.getByText('AI ready',{exact:true}).waitFor();
+    await s.p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await s.p.getByText('AI ready',{exact:true}).waitFor();
+    assert.equal((await ai()).reportCalls.length,2,'a sent report is never sent again');
+    // "Use a different account" sits behind the adult step, like every Free2Z exit.
+    const signIns=async()=>(await ai()).signIns?.length??0;
+    await s.p.getByRole('button',{name:'Use a different account',exact:true}).click();
+    await s.p.getByRole('heading',{name:'For the Free2Z account holder',exact:true}).waitFor();
+    assert.equal(await signIns(),0,'nothing opens before the step');
+    await s.p.evaluate(()=>{window.__ahaAI.failSignIn={code:'user_cancelled'};window.__ahaAI.nextAccount={subject:'second-subject',username:'other_parent'};});
+    await s.p.getByLabel('Your birth year',{exact:true}).fill('1985');
+    await s.p.getByRole('button',{name:'Continue',exact:false}).click();
+    await s.p.waitForFunction(()=>window.__ahaAI.signIns?.length===1);
+    // Closed without signing in: the same account carries on, quietly.
+    await s.p.getByRole('heading',{name:'@maths_parent',exact:true}).waitFor();
+    await s.p.getByRole('button',{name:'Use a different account',exact:true}).waitFor();
+    assert.equal(await s.p.getByRole('alert').count(),0,'closing the switch is not an error');
+    // Again (the pass is remembered for a few minutes): Free2Z asks for a fresh sign-in and another account signs in.
+    await s.p.getByRole('button',{name:'Use a different account',exact:true}).click();
+    await s.p.getByRole('heading',{name:'@other_parent',exact:true}).waitFor();
+    await s.p.getByText('AI ready',{exact:true}).waitFor();
+    assert.deepEqual((await ai()).signIns,Array(2).fill({prompt:'login',spendCap:'100',spendPeriod:'month'}),'prompt=login: Free2Z asks for a fresh sign-in, with the same budget suggestion');
+    await s.p.getByRole('button',{name:'Close settings',exact:true}).click();
+    // The new account has its own data: a fresh learner and no reports; the first account's outbox is untouched.
+    await s.p.getByRole('button',{name:NEXT}).click();
+    await card.waitFor();
+    const second=await s.p.evaluate(()=>window.__ahaFixture.read('second-subject'));
+    assert.ok(Object.values(second.activities).flat().length>0,'the new account practises in its own partition');
+    assert.ok((await ai()).activityAccounts.slice(-1)[0]==='second-subject');
+    assert.equal(second.journals?.['aha-ai-reports'],undefined,'no report crosses accounts');
+    box=await outboxOf();
+    assert.equal(box.reports.length,1);
+    assert.ok(box.reports[0].sentAt);
+    assert.ok((await ai()).reportCalls.every(c=>c.subject==='test-subject'),'every report went out under the account that made it');
     assert.equal(await s.p.locator('a[href]').count(),0,'no links out of the app at all');
     assert.deepEqual(s.pageErrors,[]);await s.ctx.close();
   }
@@ -1048,7 +1138,7 @@ try {
     await s.p.getByLabel('Your birth year',{exact:true}).fill('1985');
     await s.p.getByRole('button',{name:'Continue',exact:false}).click();
     await s.p.waitForFunction(()=>window.__ahaAI.accountOpened===1);
-    assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['apps']);
+    assert.deepEqual(await s.p.evaluate(()=>window.__ahaAI.accountPages),['manage']);
     const journal=await s.p.evaluate(()=>Object.values(window.__ahaFixture.read().journals??{}).flatMap(j=>j.operations??[]));
     assert.ok(journal.length>=1&&journal.every(o=>o.state==='finalized'&&o.charge?.state==='released'&&o.charge.charged2z==='0'),'journal settles the refused operation as released/0');
     // A successful refresh clears the refusal and its link.
@@ -1172,17 +1262,20 @@ try {
     await p.getByRole('button',{name:'Incorrect',exact:true}).click();
     await p.waitForFunction(()=>Object.values(window.__ahaFixture.read().disputes).flat().length===1);
     {
-      // Recorded on the device with the exact activity, its spec id and the Free2Z call and receipt; queued until the SDK can send it.
+      // Recorded on the device with the exact activity, its spec id and the Free2Z call and receipt, then sent to Free2Z
+      // through the SDK's reportCall: the call id and the reason only.
+      await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-ai-reports'].reports[0].sentAt);
       const outbox=(await data()).journals['aha-ai-reports'];
       assert.equal(outbox.version,1);
       assert.equal(outbox.reports.length,1);
-      const {id,createdAt,...report}=outbox.reports[0];
-      assert.ok(id&&Date.parse(createdAt));
+      const {id,createdAt,sentAt,...report}=outbox.reports[0];
+      assert.ok(id&&Date.parse(createdAt)&&Date.parse(sentAt));
+      assert.deepEqual(await p.evaluate(()=>window.__ahaAI.reportCalls),[{callId:FIXTURE_CALL,reason:'incorrect',subject:'test-subject'}]);
       // The report names exactly the activity that was set aside (the one on screen at the tap), from its stored record.
       const stored=await data(),disputed=Object.values(stored.disputes).flat()[0].activityId;
       const shownRecord=Object.values(stored.activities).flat().find(x=>x.id===disputed).data;
       assert.deepEqual(report,{activityId:disputed,specId:shownRecord.spec.id,operationId:shownRecord.operationId,
-        callId:'fixture-call',receiptId:'fixture-receipt',model:shownRecord.model,reason:'incorrect'});
+        callId:FIXTURE_CALL,receiptId:'fixture-receipt',model:shownRecord.model,reason:'incorrect'});
       assert.equal(Object.values((await data()).disputes).flat()[0].reason,'Learner reported: incorrect');
       assert.notEqual((await sess()).aiActivity?.activityId,disputed,'the reported activity is replaced');
     }
@@ -1328,7 +1421,7 @@ try {
     assert.deepEqual(pErrors,[]);await ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: the adult step before every Free2Z exit (Connect, Manage, Delete; neutral birth year, nothing pre-filled, a pass remembered for a few minutes, a day-long lock on every exit that keeps AI already allowed) and the one-time AI permission (re-asked after sign-out, a paused pre-permission session resumed from Settings), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
+  console.log('AI controller fixture passed: the adult step before every Free2Z exit (Connect, Use a different account, Manage, Delete; neutral birth year, nothing pre-filled, a pass remembered for a few minutes, a day-long lock on every exit that keeps AI already allowed) and the one-time AI permission (re-asked after sign-out, a paused pre-permission session resumed from Settings), the SDK 0.3.0 account surfaces (the Free2Z username in Settings, Use a different account with prompt=login landing on another account with its own data, a closed switch keeping the account, Manage and Delete opened by the plugin with no URL from the webview), the report outbox (a reason and the call id, never a detail; a 429 waits out Retry-After and sends once on the next connect; never across accounts), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }

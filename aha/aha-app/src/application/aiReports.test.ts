@@ -1,6 +1,8 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { MAX_REPORTS, REPORT_REASONS, appendReport, isReportReason, markSent, readReports, reportFor, submitReport, unsent, type AiReport } from "./aiReports";
+import { SdkError } from "@free2z/sdk";
+import type { Json } from "../storage";
+import { MAX_REPORTS, REPORTS_KEY, REPORT_REASONS, REPORT_RETRY_BASE_MS, REPORT_RETRY_MAX_MS, ReportBackoff, appendReport, flushReports, isReportReason, markRefused, markSent, readReports, reportFor, submitReport, unsent, type AiReport, type ReportReason } from "./aiReports";
 
 const report = (n: number, extra: Partial<AiReport> = {}): AiReport => ({
   id: `r${n}`, activityId: `op${n}:0`, specId: `spec-${n}`, operationId: `op${n}`, callId: `call-${n}`, reason: "incorrect",
@@ -48,14 +50,123 @@ describe("AI content reports", () => {
   it("queues without a sender, and sends with the call id once one exists", async () => {
     const logs: string[] = [];
     const log = (_: string, m: string) => void logs.push(m);
-    assert.equal(await submitReport(report(1), undefined, log), "queued");
+    assert.deepEqual(await submitReport(report(1), undefined, log), { state: "queued" });
     assert.match(logs.at(-1)!, /queued on this device/);
-    const sent: [string, string][] = [];
-    assert.equal(await submitReport(report(2), async (callId, reason) => void sent.push([callId, reason]), log), "sent");
-    assert.deepEqual(sent, [["call-2", "incorrect"]]);
+    const sent: unknown[][] = [];
+    assert.deepEqual(await submitReport(report(2), async (...args) => void sent.push(args), log), { state: "sent" });
+    assert.deepEqual(sent, [["call-2", "incorrect"]], "a call id and a reason; never a detail");
     const { callId: _, ...noCall } = report(3);
-    assert.equal(await submitReport(noCall, async () => assert.fail("never sent without a call id"), log), "queued");
-    assert.equal(await submitReport(report(4), async () => { throw new Error("offline"); }, log), "queued");
+    assert.deepEqual(await submitReport(noCall, async () => assert.fail("never sent without a call id"), log), { state: "queued" });
+    assert.deepEqual(await submitReport(report(4), async () => { throw new Error("offline"); }, log), { state: "queued" });
     assert.match(logs.at(-1)!, /stays queued: offline/);
+  });
+  it("maps Free2Z's answers calmly: busy with its Retry-After, final refusals, everything else queued", async () => {
+    const logs: [string, string][] = [];
+    const log = (level: string, m: string) => void logs.push([level, m]);
+    const fail = (e: unknown) => async () => { throw e; };
+    assert.deepEqual(await submitReport(report(1), fail(new SdkError("rate_limited", { status: 429, retryAfterSeconds: 30 })), log, () => 1_000),
+      { state: "busy", retryAt: 31_000 });
+    assert.deepEqual(await submitReport(report(1), fail(new SdkError("rate_limited", { status: 429 })), log), { state: "busy" });
+    assert.deepEqual(await submitReport(report(1), fail(new SdkError("concurrency_limit", { status: 429 })), log), { state: "busy" });
+    for (const code of ["not_found", "call_not_found", "invalid_request"] as const)
+      assert.deepEqual(await submitReport(report(1), fail(new SdkError(code)), log), { state: "refused", code });
+    for (const code of ["unavailable", "unsupported_operation", "invalid_token", "signed_out", "transport"] as const)
+      assert.deepEqual(await submitReport(report(1), fail(new SdkError(code)), log), { state: "queued" }, code);
+    assert.ok(logs.every(([level]) => level === "warn" || level === "info"), "logged, never an alert");
+    assert.ok(logs.some(([, m]) => /\[rate_limited\]/.test(m)), "the stable code is in the log");
+    assert.deepEqual(await submitReport({ ...report(1), refused: "not_found" }, async () => assert.fail("a refused report is never resent"), log), { state: "refused", code: "not_found" });
+  });
+  it("a refused report is kept but never sent again, and makes room before an unsent one", () => {
+    let data = markRefused(appendReport(appendReport(null, report(1)), report(2)), "r1", "not_found");
+    assert.deepEqual(unsent(data).map(r => r.id), ["r2"]);
+    assert.equal(readReports(data).reports[0].refused, "not_found");
+    for (let i = 3; i <= MAX_REPORTS + 1; i++) data = appendReport(data, report(i));
+    assert.ok(!readReports(data).reports.some(r => r.id === "r1"), "the refused one goes first");
+    assert.ok(readReports(data).reports.some(r => r.id === "r2"));
+  });
+});
+
+/** An in-memory account journal, and a Free2Z that answers each send from a script. */
+function outbox(reports: AiReport[]) {
+  let data: Json = null;
+  for (const r of reports) data = appendReport(data, r);
+  const store = { getJournal: async (key: string) => { assert.equal(key, REPORTS_KEY); return data; }, putJournal: async (_: string, v: Json) => { data = v; } };
+  return { store, read: () => readReports(data).reports };
+}
+const quiet = () => undefined;
+
+describe("sending the outbox", () => {
+  it("sends every waiting report oldest first, one at a time, and marks each sent", async () => {
+    const o = outbox([report(1), report(2), { ...report(3), sentAt: "2026-10-14T12:30:00.000Z" }]);
+    const sent: unknown[][] = [];
+    let inFlight = 0;
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, log: quiet, now: () => Date.parse("2026-10-14T13:00:00Z"),
+      send: async (...args: [string, ReportReason]) => { assert.equal(++inFlight, 1, "one at a time"); sent.push(args); await Promise.resolve(); inFlight--; } });
+    assert.deepEqual(sent, [["call-1", "incorrect"], ["call-2", "incorrect"]], "never a detail; a sent one never twice");
+    assert.deepEqual(result, { sent: 2, refused: 0, waiting: 0 });
+    assert.deepEqual(o.read().map(r => r.sentAt), ["2026-10-14T13:00:00.000Z", "2026-10-14T13:00:00.000Z", "2026-10-14T12:30:00.000Z"]);
+  });
+  it("looks up a call id the journal learned after the report was recorded", async () => {
+    const { callId: _, ...noCall } = report(1);
+    const o = outbox([noCall, { ...report(2), callId: undefined }]);
+    const sent: string[] = [];
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, log: quiet,
+      callFor: async op => (op === "op1" ? "late-call" : undefined), send: async callId => void sent.push(callId) });
+    assert.deepEqual(sent, ["late-call"]);
+    assert.equal(o.read()[0].callId, "late-call", "stored with its call id");
+    assert.deepEqual(result, { sent: 1, refused: 0, waiting: 1 }, "the one still without a call waits");
+  });
+  it("stops at a rate limit, waits exactly Free2Z's Retry-After, otherwise backs off doubling up to a cap", async () => {
+    const o = outbox([report(1), report(2), report(3)]);
+    const backoff = new ReportBackoff();
+    let clock = 1_000_000, sends = 0;
+    const limited = async () => { sends++; throw new SdkError("rate_limited", { status: 429, retryAfterSeconds: 120 }); };
+    let result = await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: limited });
+    assert.equal(sends, 1, "the first 429 stops the flush: Free2Z is never hammered");
+    assert.deepEqual(result, { sent: 0, refused: 0, waiting: 3, stopped: "busy" });
+    assert.equal(backoff.nextAt, clock + 120_000, "Retry-After beats the shorter base wait");
+    const short = new ReportBackoff();
+    short.failed(clock, clock + 1_000);
+    assert.equal(short.nextAt, clock + 1_000, "a short Retry-After is Free2Z's call, honoured as sent");
+    // Before then nothing is sent, however often a connect asks.
+    clock += 119_000;
+    result = await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: async () => assert.fail("sent during the wait") });
+    assert.deepEqual(result, { sent: 0, refused: 0, waiting: 3, stopped: "backoff" });
+    // After it, the next failure waits twice the base (no Retry-After this time), and so on up to the cap.
+    clock += 1_000;
+    await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: async () => { throw new SdkError("unavailable"); } });
+    assert.equal(backoff.nextAt, clock + 2 * REPORT_RETRY_BASE_MS);
+    const b = new ReportBackoff();
+    for (let i = 0; i < 20; i++) b.failed(0);
+    assert.equal(b.nextAt, REPORT_RETRY_MAX_MS);
+    // Once Free2Z answers again, everything goes and the backoff resets.
+    clock = backoff.nextAt;
+    result = await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: async () => undefined });
+    assert.deepEqual(result, { sent: 3, refused: 0, waiting: 0 });
+    assert.equal(backoff.ready(clock), true);
+    assert.equal(backoff.nextAt, 0);
+  });
+  it("records a final refusal and carries on with the rest", async () => {
+    const o = outbox([report(1), report(2)]);
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, log: quiet,
+      send: async callId => { if (callId === "call-1") throw new SdkError("not_found", { status: 404 }); } });
+    assert.deepEqual(result, { sent: 1, refused: 1, waiting: 0 });
+    assert.deepEqual(o.read().map(r => [r.refused, !!r.sentAt]), [["not_found", false], [undefined, true]]);
+  });
+  it("never sends one account's report under another: it stops once the account changes", async () => {
+    const o = outbox([report(1), report(2)]);
+    let same = true;
+    const sent: string[] = [];
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: async () => same, log: quiet,
+      send: async callId => { sent.push(callId); same = false; } });
+    assert.deepEqual(sent, ["call-1"]);
+    assert.deepEqual(result, { sent: 1, refused: 0, waiting: 1, stopped: "stale" });
+    // A 404 that arrives after the account changed says nothing about this account's call: it stays queued.
+    const p = outbox([report(3)]);
+    let current = true;
+    const refusedLate = await flushReports({ store: p.store, backoff: new ReportBackoff(), current: () => current, log: quiet,
+      send: async () => { current = false; throw new SdkError("not_found", { status: 404 }); } });
+    assert.equal(refusedLate.stopped, "stale");
+    assert.equal(p.read()[0].refused, undefined, "not marked refused");
   });
 });

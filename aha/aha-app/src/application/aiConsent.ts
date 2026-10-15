@@ -3,7 +3,7 @@ import type { Json } from "../storage";
 /**
  * The adult step before every account exit, and the one-time AI permission (Apple 5.1.2(i), COPPA).
  *
- * - Every exit that opens a Free2Z page (Connect, Manage Free2Z account, Delete Free2Z account), and Allow AI lessons,
+ * - Every exit that opens a Free2Z page (Connect, Use a different account, Manage and Delete Free2Z account), and Allow AI lessons,
  *   passes a neutral age screen: a birth year, nothing pre-filled or suggested, nothing on screen saying which answer
  *   passes. A pass is remembered in memory for GATE_MS, so a second exit right after stays smooth.
  * - A year that does not pass is refused calmly and locks every exit on this device for a day, so a second guess is
@@ -63,13 +63,15 @@ export function checkBirthYear(input: string, now: Date): BirthYearCheck {
 }
 
 /**
- * Every way AHA leaves for a Free2Z page (Connect opens the system sign-in; Manage and Delete open account pages in the
- * system browser), plus Allow AI lessons for a session signed in without permission. Each one passes the adult step.
+ * Every way AHA leaves for a Free2Z page (Connect and Use a different account open the system sign-in; Manage and Delete
+ * open account pages in the system browser), plus Allow AI lessons for a session signed in without permission. Each one
+ * passes the adult step. A switch needs no new AI permission: permission is per device, and a device without it keeps AI
+ * paused for the new account too.
  */
-export const ACCOUNT_EXITS = ["connect", "manage", "delete", "allow"] as const;
+export const ACCOUNT_EXITS = ["connect", "switch", "manage", "delete", "allow"] as const;
 export type AccountExit = (typeof ACCOUNT_EXITS)[number];
 /** The exits that open a Free2Z page in the browser. */
-export const BROWSER_EXITS: readonly AccountExit[] = ["connect", "manage", "delete"];
+export const BROWSER_EXITS: readonly AccountExit[] = ["connect", "switch", "manage", "delete"];
 /** A passed step is remembered this long in memory only, so a second exit right after the first stays smooth. */
 export const GATE_MS = 5 * 60 * 1000;
 

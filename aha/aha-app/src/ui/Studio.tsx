@@ -1056,7 +1056,7 @@ export function Studio(props: StudioProps) {
         </div>
         <div className="settings-body">
           <section>
-            <h3>{props.account.connected ? (props.account.label ?? "Connected to Free2Z") : "AI tutoring with Free2Z"}</h3>
+            <h3 className="account-name">{props.account.connected ? (props.account.label ?? "Connected to Free2Z") : "AI tutoring with Free2Z"}</h3>
             <p>
               A Free2Z account supplies AI access. Progress stays in this app. Selected mathematical
               learning context is sent to Free2Z and its model provider; names aren’t needed.
@@ -1099,6 +1099,11 @@ export function Studio(props: StudioProps) {
               )}
               {props.account.connected ? (
                 <>
+                  {props.onSwitchAccount && (
+                    <button className="secondary-button" disabled={props.busy} onClick={props.onSwitchAccount}>
+                      Use a different account <ArrowUpRight size={16} aria-hidden="true" />
+                    </button>
+                  )}
                   <button className="secondary-button" disabled={props.busy} onClick={props.onSignOut}><LogOut size={16} /> Sign out</button>
                   {props.onRecoverUsage && <button className="secondary-button" disabled={props.busy} onClick={props.onRecoverUsage}>Check pending AI usage</button>}
                   {props.pendingUsage?.map((op) => (

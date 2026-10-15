@@ -25,23 +25,39 @@ pub fn app_readiness() -> Readiness {
     }
 }
 
-/// The minimum Free2Z scopes AHA uses: the account subject, a refresh token,
-/// the balance and AI. The SDK's `Config::new` default also asks for `profile`
-/// (name and picture, which AHA never shows) and `purchase:create`, which the
-/// consent screen lists as "Start 2Z credit purchases". AHA never creates
-/// purchases (its capability excludes them), so it must not ask for either.
-pub const SCOPES: &[&str] = &["openid", "offline_access", "balance:read", "ai:invoke"];
+/// The Free2Z scopes AHA uses: the account subject (`openid`, which "Use a
+/// different account" also needs for `prompt=login`), the username Settings
+/// shows (`profile`; display only, data stays keyed by subject), a refresh
+/// token, the balance and AI. The SDK's `Config::new` default also asks for
+/// `purchase:create`, which the consent screen lists as "Start 2Z credit
+/// purchases". AHA never creates purchases (its capability excludes them), so
+/// it must not ask for it. Adding `profile` means an account that connected
+/// before it consents once more at its next sign-in.
+pub const SCOPES: &[&str] = &[
+    "openid",
+    "profile",
+    "offline_access",
+    "balance:read",
+    "ai:invoke",
+];
 
 /// Resolved by `build.rs` from `AHA_FREE2Z_CLIENT_ID` or the release-written config file, because
 /// the env var alone never reaches the iOS compile inside Xcode. Empty means unconfigured.
 fn client_id() -> Option<&'static str> {
     Some(env!("AHA_FREE2Z_CLIENT_ID_RESOLVED")).filter(|value| !value.is_empty())
 }
+/// AHA's SDK configuration. Child-directed: children use AHA, so the SDK refuses locally what
+/// Free2Z refuses for such an app (a report `detail`, which AHA never sends anyway).
+fn sdk_config(client_id: &str) -> Config {
+    Config::new(client_id)
+        .with_scopes(SCOPES.iter().copied())
+        .with_child_directed(true)
+}
 pub fn configure<R: tauri::Runtime>(app: tauri::Builder<R>) -> tauri::Builder<R> {
     let Some(id) = client_id() else { return app };
     app.plugin(
         Builder::new(
-            Config::new(id).with_scopes(SCOPES.iter().copied()),
+            sdk_config(id),
             "https://encorpora.io/aha/purchase-return",
         )
         .windows(["main".to_owned()])
@@ -97,39 +113,20 @@ mod tests {
     }
 
     #[test]
-    fn account_pages_are_fixed_free2z_urls_never_a_checkout() {
-        assert_eq!(FREE2Z_ORIGIN, "https://free2z.cash");
-        assert_eq!(
-            account_url(AccountPage::Apps, Some("aha-test-client")),
-            "https://free2z.cash/account/apps?client_id=aha-test-client"
-        );
-        assert_eq!(
-            account_url(AccountPage::Apps, None),
-            "https://free2z.cash/account/apps"
-        );
-        assert_eq!(
-            account_url(AccountPage::Delete, Some("any")),
-            "https://free2z.cash/account/delete"
-        );
-        for page in [AccountPage::Apps, AccountPage::Delete] {
-            let url = account_url(page, client_id());
-            for banned in ["buy", "purchase", "checkout", "top-up", "topup", "pricing"] {
-                assert!(!url.contains(banned), "{url}");
-            }
-        }
-        // The webview names a page; anything else is refused at deserialization.
-        let page: AccountPage = serde_json::from_str("\"delete\"").unwrap();
-        assert_eq!(page, AccountPage::Delete);
-        assert!(serde_json::from_str::<AccountPage>("\"https://evil.test\"").is_err());
-    }
-
-    #[test]
     fn sign_in_requests_only_the_scopes_aha_uses() {
-        let config = Config::new("test-client").with_scopes(SCOPES.iter().copied());
+        let config = sdk_config("test-client");
+        assert!(config.child_directed);
         assert_eq!(
             config.scopes,
-            ["openid", "offline_access", "balance:read", "ai:invoke"]
+            [
+                "openid",
+                "profile",
+                "offline_access",
+                "balance:read",
+                "ai:invoke"
+            ]
         );
+        assert!(!config.scopes.iter().any(|s| s.contains("purchase")));
     }
 
     #[test]
@@ -139,11 +136,26 @@ mod tests {
         assert_eq!(capability["local"], true);
         assert_eq!(capability["windows"], serde_json::json!(["main"]));
         assert!(capability.get("remote").is_none());
-        for permission in capability["permissions"].as_array().unwrap() {
-            let permission = permission.as_str().unwrap();
+        let permissions: Vec<&str> = capability["permissions"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|p| p.as_str().unwrap())
+            .collect();
+        for permission in &permissions {
             assert!(permission.starts_with("f2z:allow-"));
             assert!(!permission.contains("purchase") && !permission.contains("checkout"));
         }
+        // The account exits open fixed pages the plugin builds natively; reports send a call id and a reason.
+        for needed in [
+            "f2z:allow-open-manage-account",
+            "f2z:allow-open-delete-account",
+            "f2z:allow-report-call",
+        ] {
+            assert!(permissions.contains(&needed), "{needed}");
+        }
+        // The webview never needs the URLs themselves; it only asks the plugin to open them.
+        assert!(!permissions.iter().any(|p| p.ends_with("-account-url")));
     }
 
     /// The exact `start_chat` payload the webview sends for a structured batch (written by
@@ -224,38 +236,4 @@ mod tests {
         sorted.sort_all_objects();
         assert_ne!(sent(sorted), written);
     }
-}
-
-/// The Free2Z web origin, where account pages live: the SDK's production issuer.
-const FREE2Z_ORIGIN: &str = tauri_plugin_f2z::f2z_sdk::DEFAULT_ISSUER;
-
-/// The Free2Z account pages AHA may open. The webview names one of these; it never supplies a URL.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Deserialize)]
-#[serde(rename_all = "lowercase")]
-pub enum AccountPage {
-    /// Account management for this app (its grant and budget), opened on AHA's own entry.
-    Apps,
-    /// Free2Z's account deletion page (App Store 5.1.1(v), Play account deletion).
-    Delete,
-}
-
-/// The page's URL on the Free2Z origin. Account management, never a checkout: no purchase path is built here.
-fn account_url(page: AccountPage, client_id: Option<&str>) -> String {
-    match (page, client_id) {
-        // The id is build-validated to ASCII letters, digits, '-', '_' and '.', so it needs no encoding.
-        (AccountPage::Apps, Some(id)) => format!("{FREE2Z_ORIGIN}/account/apps?client_id={id}"),
-        (AccountPage::Apps, None) => format!("{FREE2Z_ORIGIN}/account/apps"),
-        (AccountPage::Delete, _) => format!("{FREE2Z_ORIGIN}/account/delete"),
-    }
-}
-
-/// Opens a Free2Z account page in the system browser (never a webview). An older frontend that sends no page gets
-/// account management.
-#[tauri::command]
-pub fn open_free2z_account(app: tauri::AppHandle, page: Option<AccountPage>) -> Result<(), String> {
-    use tauri_plugin_opener::OpenerExt;
-    let url = account_url(page.unwrap_or(AccountPage::Apps), client_id());
-    app.opener()
-        .open_url(&url, None::<&str>)
-        .map_err(|_| "Could not open Free2Z. Visit free2z.cash in your browser.".to_owned())
 }

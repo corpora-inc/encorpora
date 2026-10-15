@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Client, NativeTransport, SdkError, type NativeBridge } from '@free2z/sdk';
 import type { ChatEvent, ChatRequest, ChatStream, Grant, Session } from '@free2z/sdk';
-import { Free2zTutor, REASONING_EFFORT_CAPABILITY, SIGN_IN_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, formatRefusal, supportsStructuredOutput, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
+import { Free2zTutor, REASONING_EFFORT_CAPABILITY, SIGN_IN_OPTIONS, SWITCH_ACCOUNT_OPTIONS, SUGGESTED_SPEND_CAP_2Z, admitEstimate, format2z, formatRefusal, supportsStructuredOutput, verifyPaidGrant, type Journal, type PaidAuthorization, type SdkClient } from './free2z.ts';
 const session: Session = {signedIn:true,subject:'adult',generation:'one',grantedScopes:['ai:invoke'],persistence:'persistent'};
 /** Default fixture: an enforced 100 2Z monthly app budget. Every policy branch patches the grant or estimate. */
 const baseGrant = (): Grant => ({sub:'adult',client_id:'aha-client',account_epoch:1n,grant_generation:1n,scopes:['ai:invoke'],spend_cap_2z:100n,cap_period:'month',enforced:true,enforcement_reason:'ok',as_of:new Date().toISOString()});
@@ -352,6 +352,48 @@ test('the vendored SDK sends the spend-cap hint to the native plugin as decimal 
  const signedIn=await new Client(new NativeTransport(bridge)).signIn(SIGN_IN_OPTIONS);
  assert.equal(signedIn.subject,'adult');
  assert.deepEqual(sent,[{spendCap:'100',spendPeriod:'month'}]);
+});
+
+test('"Use a different account" asks Free2Z for a fresh sign-in (prompt=login) with the same budget suggestion',async()=>{
+ assert.deepEqual(SWITCH_ACCOUNT_OPTIONS,{spendCap:{cap2z:100n,period:'month'},prompt:'login'});
+ assert.ok(Object.isFrozen(SWITCH_ACCOUNT_OPTIONS));
+ assert.equal('ephemeral' in SWITCH_ACCOUNT_OPTIONS,false,'prompt=login works on every platform; ephemeral stays off');
+ const sent:unknown[]=[];
+ const bridge={signIn:async(options:unknown)=>{sent.push(options);return {signedIn:true,subject:'second',grantedScopes:['openid','profile','ai:invoke'],persistence:'persistent',generation:'2',preferredUsername:'maths_parent'};}} as unknown as NativeBridge;
+ const switched=await new Client(new NativeTransport(bridge)).signIn(SWITCH_ACCOUNT_OPTIONS);
+ assert.deepEqual(sent,[{prompt:'login',spendCap:'100',spendPeriod:'month'}],'the plugin receives prompt=login through the vendored SDK');
+ assert.equal(switched.subject,'second');
+ assert.equal(switched.preferredUsername,'maths_parent','the username crosses the native boundary for display');
+});
+
+test('the vendored SDK opens the account pages by command, never with a URL from the webview',async()=>{
+ const opened:unknown[][]=[];
+ const bridge={openManageAccount:async(...args:unknown[])=>{opened.push(['manage',...args]);},openDeleteAccount:async(...args:unknown[])=>{opened.push(['delete',...args]);}} as unknown as NativeBridge;
+ const client=new Client(new NativeTransport(bridge));
+ await client.openManageAccount();await client.openDeleteAccount();
+ assert.deepEqual(opened,[['manage'],['delete']]);
+});
+
+test('reports go through the vendored SDK as a call id and a reason, never a detail',async()=>{
+ const sent:unknown[][]=[];
+ const callId='0b6c2d4e-1f3a-4b5c-8d7e-9f0a1b2c3d4e';
+ const bridge={reportCall:async(...args:unknown[])=>{sent.push(args);return {report_id:'rep-1',call_id:callId,reason:'incorrect',created_at:'2026-10-14T12:00:00Z'};}} as unknown as NativeBridge;
+ const client=new Client(new NativeTransport(bridge));
+ const receipt=await client.reportCall(callId,'incorrect');
+ assert.deepEqual(sent,[[callId,'incorrect']],'no third argument: AHA never sends detail');
+ assert.equal(receipt.report_id,'rep-1');
+ // A rate limit from the plugin arrives as a typed SdkError with its Retry-After, which the outbox honours.
+ const limited={reportCall:async()=>{throw {code:'rate_limited',status:429,retryAfterSeconds:'30'};}} as unknown as NativeBridge;
+ await assert.rejects(new Client(new NativeTransport(limited)).reportCall(callId,'unsafe'),(e:unknown)=>e instanceof SdkError&&e.code==='rate_limited'&&e.retryAfterSeconds===30);
+ // A plugin without reporting: unsupported, so the report waits for a build that has it.
+ await assert.rejects(new Client(new NativeTransport({} as NativeBridge)).reportCall(callId,'other'),{code:'unsupported_operation'});
+});
+
+test('a streamed tool call in either form (tool_call, or tool_call_delta since SDK 0.2.0) stops the request',async()=>{
+ for(const event of [{type:'tool_call',id:'t',name:'f',arguments:'{}'},{type:'tool_call_delta',index:0n,arguments:'{'}] as ChatEvent[]){
+  const f=fixture([event,{type:'done',finish_reason:'stop',settlement:'settled',charge:{state:'charged',charged2z:2n,receiptId:'receipt'}}]);
+  await assert.rejects(f.tutor.reply('verified-model','p','c',f.authorization),{code:'unexpected_tool'},event.type);
+ }
 });
 
 // ---- Journal v2: Activity Spec batches (2600-token budget) beside readable, recoverable v1 records ----

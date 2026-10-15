@@ -3,7 +3,7 @@ import test from 'node:test';
 import { SdkError } from '@free2z/sdk';
 import { TutorServiceError } from '../provider/free2z';
 import { DiagnosticsLog } from '../diagnostics/log';
-import { learningError, refusalAction, retryDeadline, SIGN_IN_NOT_COMPLETED, signInFailure } from './connection';
+import { accountLabel, learningError, refusalAction, retryDeadline, SIGN_IN_NOT_COMPLETED, signInFailure } from './connection';
 
 test('out of credits and a reached app budget are calm statements: no amount, price or call to buy', () => {
   for (const cap of [learningError(new SdkError('cap_exceeded', {status: 403})), learningError(new TutorServiceError('cap_exceeded', 'x', undefined, 7n))])
@@ -117,4 +117,11 @@ test('an unknown sign-in code is logged with its code and shown a generic messag
   const other = signInLog();
   assert.equal(signInFailure(new TypeError('bridge exploded'), other).quiet, false);
   assert.match(other.entries()[0].message, /TypeError: bridge exploded/);
+});
+
+test('Settings names the account by its Free2Z username when profile was granted, else generically', () => {
+  assert.equal(accountLabel({ preferredUsername: 'maths_parent' }), '@maths_parent');
+  assert.equal(accountLabel({}), 'Free2Z account', 'a session from before the profile scope');
+  assert.equal(accountLabel({ preferredUsername: '  ' }), 'Free2Z account');
+  assert.equal(accountLabel({ preferredUsername: undefined }), 'Free2Z account');
 });

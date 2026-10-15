@@ -622,6 +622,10 @@ h1 {
   font-size: 1.45rem;
   margin: 10px 0;
 }
+/* A Free2Z username can be long and unbroken. */
+.settings-body .account-name {
+  overflow-wrap: anywhere;
+}
 .settings-body p {
   font-size: 0.82rem;
   color: var(--muted);
