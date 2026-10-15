@@ -186,23 +186,35 @@ export class ReportBackoff {
  */
 export interface OutboxStore { read(): Promise<Json>; update(change: (data: Json) => Json): Promise<void> }
 
-export interface FlushResult { sent: number; refused: number; waiting: number; stopped?: "busy" | "failed" | "backoff" | "stale" }
+export interface FlushResult { sent: number; refused: number; waiting: number; stopped?: "busy" | "failed" | "backoff" | "stale" | "consent" }
 
 /**
  * Sends what waits in one account's outbox, oldest first, one at a time. It stops at the first report that cannot go
  * now (Free2Z busy, offline), so a slow Free2Z is never hammered, and waits out the backoff (and any Retry-After)
  * before the next flush. A report recorded before its call id was known looks it up first. `current()` false (the
  * account changed) stops it before the next send, so one account's report never goes out under another.
+ *
+ * `allowed()` is this device's AI permission (`aiAllowed`). Without it nothing leaves the device and nothing is looked
+ * up: every report stays queued as recorded, with no backoff, and goes on the first flush after permission is given. It
+ * is asked again before every send, so a permission withdrawn mid-flush stops the next one.
  */
 export async function flushReports(o: {
   store: OutboxStore; send: ReportSender; backoff: ReportBackoff;
   callFor?: (operationId: string) => Promise<string | undefined>;
-  current: () => boolean | Promise<boolean>; now?: () => number; log: (level: "info" | "warn", message: string) => void;
+  current: () => boolean | Promise<boolean>; allowed: () => boolean;
+  now?: () => number; log: (level: "info" | "warn", message: string) => void;
 }): Promise<FlushResult> {
   const now = o.now ?? Date.now;
   const result: FlushResult = { sent: 0, refused: 0, waiting: 0 };
   const waiting = unsent(await o.store.read());
   if (!waiting.length) return result;
+  const unallowed = (i: number): boolean => {
+    if (o.allowed()) return false;
+    result.waiting += waiting.length - i; result.stopped = "consent";
+    o.log("info", `${result.waiting} report(s) wait on this device until AI lessons are allowed`);
+    return true;
+  };
+  if (unallowed(0)) return result;
   if (!o.backoff.ready(now())) {
     result.waiting = waiting.length; result.stopped = "backoff";
     o.log("info", `${waiting.length} report(s) wait until ${new Date(o.backoff.nextAt).toISOString()}`);
@@ -211,6 +223,7 @@ export async function flushReports(o: {
   for (let i = 0; i < waiting.length; i++) {
     let report = waiting[i];
     if (!(await o.current())) { result.waiting = waiting.length - i; result.stopped = "stale"; return result; }
+    if (unallowed(i)) return result;
     if (!report.callId && o.callFor) {
       const callId = await o.callFor(report.operationId);
       if (callId) {
@@ -220,6 +233,7 @@ export async function flushReports(o: {
     }
     if (!report.callId) { result.waiting++; continue; }
     if (!(await o.current())) { result.waiting = waiting.length - i; result.stopped = "stale"; return result; }
+    if (unallowed(i)) return result;
     const outcome = await submitReport(report, o.send, o.log, now);
     if (outcome.state === "sent") {
       const at = new Date(now()).toISOString();

@@ -100,7 +100,7 @@ describe("sending the outbox", () => {
     const o = outbox([report(1), report(2), { ...report(3), sentAt: "2026-10-14T12:30:00.000Z" }]);
     const sent: unknown[][] = [];
     let inFlight = 0;
-    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, log: quiet, now: () => Date.parse("2026-10-14T13:00:00Z"),
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, allowed: () => true, log: quiet, now: () => Date.parse("2026-10-14T13:00:00Z"),
       send: async (...args: [string, ReportReason]) => { assert.equal(++inFlight, 1, "one at a time"); sent.push(args); await Promise.resolve(); inFlight--; } });
     assert.deepEqual(sent, [["call-1", "incorrect"], ["call-2", "incorrect"]], "never a detail; a sent one never twice");
     assert.deepEqual(result, { sent: 2, refused: 0, waiting: 0 });
@@ -110,7 +110,7 @@ describe("sending the outbox", () => {
     const { callId: _, ...noCall } = report(1);
     const o = outbox([noCall, { ...report(2), callId: undefined }]);
     const sent: string[] = [];
-    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, log: quiet,
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, allowed: () => true, log: quiet,
       callFor: async op => (op === "op1" ? "late-call" : undefined), send: async callId => void sent.push(callId) });
     assert.deepEqual(sent, ["late-call"]);
     assert.equal(o.read()[0].callId, "late-call", "stored with its call id");
@@ -121,7 +121,7 @@ describe("sending the outbox", () => {
     const backoff = new ReportBackoff();
     let clock = 1_000_000, sends = 0;
     const limited = async () => { sends++; throw new SdkError("rate_limited", { status: 429, retryAfterSeconds: 120 }); };
-    let result = await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: limited });
+    let result = await flushReports({ store: o.store, backoff, current: () => true, allowed: () => true, log: quiet, now: () => clock, send: limited });
     assert.equal(sends, 1, "the first 429 stops the flush: Free2Z is never hammered");
     assert.deepEqual(result, { sent: 0, refused: 0, waiting: 3, stopped: "busy" });
     assert.equal(backoff.nextAt, clock + 120_000, "Retry-After beats the shorter base wait");
@@ -130,25 +130,25 @@ describe("sending the outbox", () => {
     assert.equal(short.nextAt, clock + 1_000, "a short Retry-After is Free2Z's call, honoured as sent");
     // Before then nothing is sent, however often a connect asks.
     clock += 119_000;
-    result = await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: async () => assert.fail("sent during the wait") });
+    result = await flushReports({ store: o.store, backoff, current: () => true, allowed: () => true, log: quiet, now: () => clock, send: async () => assert.fail("sent during the wait") });
     assert.deepEqual(result, { sent: 0, refused: 0, waiting: 3, stopped: "backoff" });
     // After it, the next failure waits twice the base (no Retry-After this time), and so on up to the cap.
     clock += 1_000;
-    await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: async () => { throw new SdkError("unavailable"); } });
+    await flushReports({ store: o.store, backoff, current: () => true, allowed: () => true, log: quiet, now: () => clock, send: async () => { throw new SdkError("unavailable"); } });
     assert.equal(backoff.nextAt, clock + 2 * REPORT_RETRY_BASE_MS);
     const b = new ReportBackoff();
     for (let i = 0; i < 20; i++) b.failed(0);
     assert.equal(b.nextAt, REPORT_RETRY_MAX_MS);
     // Once Free2Z answers again, everything goes and the backoff resets.
     clock = backoff.nextAt;
-    result = await flushReports({ store: o.store, backoff, current: () => true, log: quiet, now: () => clock, send: async () => undefined });
+    result = await flushReports({ store: o.store, backoff, current: () => true, allowed: () => true, log: quiet, now: () => clock, send: async () => undefined });
     assert.deepEqual(result, { sent: 3, refused: 0, waiting: 0 });
     assert.equal(backoff.ready(clock), true);
     assert.equal(backoff.nextAt, 0);
   });
   it("records a final refusal and carries on with the rest", async () => {
     const o = outbox([report(1), report(2)]);
-    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, log: quiet,
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, allowed: () => true, log: quiet,
       send: async callId => { if (callId === "call-1") throw new SdkError("not_found", { status: 404 }); } });
     assert.deepEqual(result, { sent: 1, refused: 1, waiting: 0 });
     assert.deepEqual(o.read().map(r => [r.refused, !!r.sentAt]), [["not_found", false], [undefined, true]]);
@@ -157,16 +157,61 @@ describe("sending the outbox", () => {
     const o = outbox([report(1), report(2)]);
     let same = true;
     const sent: string[] = [];
-    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: async () => same, log: quiet,
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: async () => same, allowed: () => true, log: quiet,
       send: async callId => { sent.push(callId); same = false; } });
     assert.deepEqual(sent, ["call-1"]);
     assert.deepEqual(result, { sent: 1, refused: 0, waiting: 1, stopped: "stale" });
     // A 404 that arrives after the account changed says nothing about this account's call: it stays queued.
     const p = outbox([report(3)]);
     let current = true;
-    const refusedLate = await flushReports({ store: p.store, backoff: new ReportBackoff(), current: () => current, log: quiet,
+    const refusedLate = await flushReports({ store: p.store, backoff: new ReportBackoff(), current: () => current, allowed: () => true, log: quiet,
       send: async () => { current = false; throw new SdkError("not_found", { status: 404 }); } });
     assert.equal(refusedLate.stopped, "stale");
     assert.equal(p.read()[0].refused, undefined, "not marked refused");
+  });
+});
+
+describe("reports wait for AI permission", () => {
+  it("sends nothing while AI lessons are not allowed: the flagged report stays queued, untouched", async () => {
+    // The one just flagged has no call id yet (it would be looked up first); an older one already holds its own.
+    const { callId: _, ...flagged } = report(2);
+    const o = outbox([flagged, report(1)]);
+    const backoff = new ReportBackoff();
+    const logs: string[] = [];
+    let calls = 0;
+    const result = await flushReports({ store: o.store, backoff, current: () => true, allowed: () => false,
+      log: (_, m) => void logs.push(m), callFor: async () => { calls++; return "late-call"; },
+      send: async () => assert.fail("a report left the device without AI permission") });
+    assert.deepEqual(result, { sent: 0, refused: 0, waiting: 2, stopped: "consent" });
+    assert.equal(calls, 0, "nothing is even looked up for sending");
+    assert.deepEqual(o.read(), [flagged, report(1)], "queued as recorded: not sent, not refused, no call id filled in");
+    assert.equal(backoff.ready(Date.now()), true, "no backoff: it goes as soon as AI is allowed");
+    assert.match(logs.at(-1)!, /until AI lessons are allowed/);
+  });
+  it("sends the queued report exactly once after AI lessons are allowed", async () => {
+    const o = outbox([report(1)]);
+    const backoff = new ReportBackoff();
+    let allowed = false;
+    const sent: unknown[][] = [];
+    const flush = () => flushReports({ store: o.store, backoff, current: () => true, allowed: () => allowed, log: quiet,
+      send: async (...args: [string, ReportReason]) => void sent.push(args) });
+    await flush();
+    await flush();
+    assert.deepEqual(sent, [], "still nothing before permission");
+    allowed = true;
+    assert.deepEqual(await flush(), { sent: 1, refused: 0, waiting: 0 });
+    assert.deepEqual(await flush(), { sent: 0, refused: 0, waiting: 0 });
+    assert.deepEqual(sent, [["call-1", "incorrect"]], "once, with its call id and reason");
+    assert.ok(o.read()[0].sentAt, "marked sent");
+  });
+  it("stops before the next send once permission is withdrawn mid-flush", async () => {
+    const o = outbox([report(1), report(2)]);
+    let allowed = true;
+    const sent: string[] = [];
+    const result = await flushReports({ store: o.store, backoff: new ReportBackoff(), current: () => true, allowed: () => allowed, log: quiet,
+      send: async callId => { sent.push(callId); allowed = false; } });
+    assert.deepEqual(sent, ["call-1"]);
+    assert.deepEqual(result, { sent: 1, refused: 0, waiting: 1, stopped: "consent" });
+    assert.equal(o.read()[1].sentAt, undefined, "the second one waits");
   });
 });

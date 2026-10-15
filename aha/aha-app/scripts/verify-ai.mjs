@@ -1398,6 +1398,64 @@ try {
     assert.deepEqual(pErrors,[]);await ctx.close();
   }
   {
+    // ---- A report flagged on a session signed in before this device gave AI permission: the restored AI activity is
+    // set aside at once, but its report waits on the device, and so does one an earlier build queued with its call id.
+    // Nothing reaches Free2Z until AI lessons are allowed; then each report goes exactly once.
+    const ctx=await browser.newContext({viewport:{width:1000,height:900}});
+    await ctx.addInitScript(fixture,batchFixtures);
+    const [f0]=batchFixtures;
+    const op='f1a99ed0-0000-4000-8000-000000000001',earlierCall='1f1e2d3c-4b5a-4968-8776-655443322111';
+    const earlier={id:'earlier-report',activityId:'e0000000-0000-4000-8000-000000000001:0',specId:'earlier-spec',operationId:'e0000000-0000-4000-8000-000000000001',
+      callId:earlierCall,reason:'incorrect',createdAt:'2026-10-05T13:30:00.000Z'};
+    const seeded={profiles:[{id:'explorer',name:'Explorer',grade:3,createdAt:'2026-10-05T13:00:00.000Z'}],
+      sessions:{explorer:{id:'flag-session',updatedAt:'2026-10-05T13:54:15.560Z',data:{activity:null,hintsUsed:0,completed:5,sessionId:'flag-session',
+        aiActivity:{activityId:`${op}:0`,operationId:op,spec:f0},aiQueue:[]}}},
+      activities:{},attempts:{},disputes:{},snapshots:{},
+      journals:{'aha-ai-reports':{version:1,reports:[earlier]},'aha-billing-v1':{version:2,operations:[
+        {id:op,key:'k-flag',subject:'test-subject',generation:'1',createdAt:'2026-10-05T13:24:24.322Z',state:'finalized',callId:FIXTURE_CALL,
+          text:JSON.stringify({rationale:'TEST fixture batch',activities:[f0]}),
+          request:{model:'fixture-model',messages:[{role:'system',content:[{type:'text',text:'TEST system'}]},{role:'user',content:[{type:'text',text:'TEST user'}]}],maxOutputTokens:'2600'},
+          charge:{state:'charged',charged2z:'1',receiptId:'r-flag'},
+          context:{kind:'activities',profileId:'explorer',allowedSkillIds:[...f0.skillIds]},answerComplete:true,consumed:true},
+      ]}}};
+    await ctx.addInitScript(db=>{
+      if(!localStorage.getItem('aha-controller-test-fixture'))localStorage.setItem('aha-controller-test-fixture',JSON.stringify(db));
+      Object.assign(window.__ahaAI,{enforced:true,holdAfter:0,noConsent:true});
+    },seeded);
+    const p=await ctx.newPage();const pErrors=[];p.on('pageerror',e=>pErrors.push(e.message));
+    const reportCalls=()=>p.evaluate(()=>window.__ahaAI.reportCalls?.length??0);
+    const box=()=>p.evaluate(()=>window.__ahaFixture.read().journals['aha-ai-reports']);
+    const diag=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]'));
+    await p.goto(base);
+    await p.getByRole('button',{name:'Continue',exact:true}).click();
+    await p.locator('.focus-stage.is-spec .aha-activity').waitFor();
+    assert.equal(await p.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.aiActivity?.activityId),`${op}:0`,'the restored AI activity is on screen');
+    await p.getByRole('button',{name:'Report',exact:true}).click();
+    await p.getByRole('button',{name:'Unsafe',exact:true}).click();
+    await p.waitForFunction(id=>Object.values(window.__ahaFixture.read().disputes).flat().some(d=>d.activityId===id),`${op}:0`);
+    // The outbox flush that the flag starts has run (whatever it did) before anything is checked.
+    await p.waitForFunction(()=>JSON.parse(localStorage.getItem('aha-diagnostics-log')||'[]').some(e=>e.source==='ai-report'&&/^outbox: |until AI lessons are allowed/.test(e.message)));
+    assert.equal(await reportCalls(),0,'no report leaves the device without AI permission');
+    assert.ok((await diag()).some(e=>e.source==='ai-report'&&/2 report\(s\) wait on this device until AI lessons are allowed/.test(e.message)),'the wait is logged');
+    const reports=(await box()).reports;
+    assert.deepEqual(reports.map(r=>[r.activityId,r.reason,r.sentAt,r.refused]),[[earlier.activityId,'incorrect',undefined,undefined],[`${op}:0`,'unsafe',undefined,undefined]],'both wait in the outbox');
+    assert.notEqual(await p.evaluate(()=>Object.values(window.__ahaFixture.read().sessions)[0].data.aiActivity?.activityId),`${op}:0`,'set aside at once');
+    assert.equal(await p.getByRole('alert').count(),0,'a waiting report is never an alert to the learner');
+    // The account holder allows AI lessons in Settings: the connect that follows sends the waiting report, once.
+    await p.locator('.status-dot').click();await p.getByRole('dialog',{name:'Practice status'}).getByRole('button',{name:'Settings',exact:true}).click();
+    await p.getByRole('button',{name:'Allow AI lessons',exact:true}).click();
+    await p.getByLabel('Your birth year',{exact:true}).fill('1979');
+    await p.getByRole('button',{name:'Allow',exact:true}).click();
+    await p.waitForFunction(()=>window.__ahaAI.reportCalls?.length===2);
+    await p.waitForFunction(()=>window.__ahaFixture.read().journals['aha-ai-reports'].reports.every(r=>r.sentAt));
+    assert.deepEqual(await p.evaluate(()=>window.__ahaAI.reportCalls),[{callId:earlierCall,reason:'incorrect',subject:'test-subject'},{callId:FIXTURE_CALL,reason:'unsafe',subject:'test-subject'}],
+      'oldest first, each with its call id and reason, never a detail');
+    await p.getByRole('button',{name:'Refresh connection',exact:true}).click();
+    await p.locator('.connection-pill').filter({hasText:/^AI ready$/}).waitFor();
+    assert.equal(await reportCalls(),2,'each report sent exactly once');
+    assert.deepEqual(pErrors,[]);await ctx.close();
+  }
+  {
     // Signing out never resets a lock: a year that did not pass on a paused session keeps Connect locked after sign-out.
     const ctx=await browser.newContext({viewport:{width:390,height:844}});
     await ctx.addInitScript(fixture,batchFixtures);
@@ -1421,7 +1479,7 @@ try {
     assert.deepEqual(pErrors,[]);await ctx.close();
   }
   assert.deepEqual(errors,[]);
-  console.log('AI controller fixture passed: the adult step before every Free2Z exit (Connect, Use a different account, Manage, Delete; neutral birth year, nothing pre-filled, a pass remembered for a few minutes, a day-long lock on every exit that keeps AI already allowed) and the one-time AI permission (re-asked after sign-out, a paused pre-permission session resumed from Settings), the SDK 0.3.0 account surfaces (the Free2Z username in Settings, Use a different account with prompt=login landing on another account with its own data, a closed switch keeping the account, Manage and Delete opened by the plugin with no URL from the webview), the report outbox (a reason and the call id, never a detail; a 429 waits out Retry-After and sends once on the next connect; never across accounts), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
+  console.log('AI controller fixture passed: the adult step before every Free2Z exit (Connect, Use a different account, Manage, Delete; neutral birth year, nothing pre-filled, a pass remembered for a few minutes, a day-long lock on every exit that keeps AI already allowed) and the one-time AI permission (re-asked after sign-out, a paused pre-permission session resumed from Settings, a report flagged while paused kept on the device and sent once after Allow), the SDK 0.3.0 account surfaces (the Free2Z username in Settings, Use a different account with prompt=login landing on another account with its own data, a closed switch keeping the account, Manage and Delete opened by the plugin with no URL from the webview), the report outbox (a reason and the call id, never a detail; a 429 waits out Retry-After and sends once on the next connect; never across accounts), signed-in local-practice fallback with backoff, enforced grant, native SDK stream, Stop during preparation, Retry-After, AI activity batches (TEST fixture specs) rendered, answered correct/incorrect and recorded as ai-spec evidence, background prefetch, malformed-batch salvage, force-reload mid-queue without a new paid call, empty-queue local fallback, original-key batch recovery run by Refresh connection and post-fallback curiosity recovery, automatic same-key receipt recovery after a restart mid-batch (launch attempt, a calm settling state instead of AI ready, no new paid call while unsettled, background retry, resume, one charge, AI resuming with no manual tap), crash-safe completed-batch delivery, quiet sign-in cancel (user_cancelled, browser_error fallback) with Connect-only disconnected settings, a specific browser_unavailable message, logged unknown sign-in codes, the optional 100 2Z/month sign-in suggestion, budget-optional admission (no budget, a monthly budget shown read-only with its remainder, platform_disabled, insufficient balance (with the required 2Z) and a 403 budget refusal (with the Free2Z account link) all falling back calmly to local practice), Try something harder keeping a paid AI activity (queued harder one shown without a new call, otherwise the next queued one or a local task; the skipped one goes to the back, never the same problem), flagging an AI spec (set aside, never restored), structured output (response_format with the grammar-free prompt when the model advertises it, prompt-only otherwise, zero-charge fallback after a refusal at the estimate or the send), and a restart over an older build’s state (v2 journal, restored queue refilled at launch, a missed activity returning later for spaced practice, a small first batch on an empty bank then background refills of the problem bank, a bounded wait then one logged local task while a batch is on its way, AI resuming when it lands), and Stop inside the estimate of a tap-started batch never paying, and the learner-chosen model (three fake models: Best (auto) within the per-activity ceiling, a persisted manual pick honoured above it, model attribution on queued activities, activity records and attempts, the status sheet, per-model stats in Settings and the problem report, and a missing choice using auto while the stored choice is kept), and reasoning models (never Best (auto); labelled with a reasoning-headroom estimate; a manual pick sends and journals a 12k strict budget; a set that ran out of room is logged and counted per model). No live service or charge.');
 } finally {
   await browser?.close();if(vite.exitCode===null){const exited=once(vite,'exit');vite.kill('SIGTERM');await exited;}
 }
