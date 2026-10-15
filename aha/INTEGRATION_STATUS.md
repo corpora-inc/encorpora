@@ -1,10 +1,10 @@
 # Free2Z integration evidence
 
-Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05, then to the tagged release `sdk-v0.3.0` (`@@SHA@@`) on 2026-10-14. Source integration, deployed services, and device acceptance are separate evidence.
+Snapshot: 2026-09-28; SDK pin moved to `e95becd6`, then to `42acc57f` on 2026-10-04, then to `d63959f9` on 2026-10-05, then to the tagged release `sdk-v0.3.0` (`6768350bba34c9eacf6700d40a7ad854f40f7809`) on 2026-10-14. Source integration, deployed services, and device acceptance are separate evidence.
 
 | Surface | Evidence | Status |
 |---|---|---|
-| Native SDK and TypeScript facade | Tagged release `sdk-v0.3.0` (`@@SHA@@`; TS SDK, guest API and Rust plugin move together); tarballs packed from the tag, lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
+| Native SDK and TypeScript facade | Tagged release `sdk-v0.3.0` (`6768350bba34c9eacf6700d40a7ad854f40f7809`; TS SDK, guest API and Rust plugin move together); tarballs packed from the tag, lockfiles | Real source preview, not an invented registry release. Delivered store builds predate this pin (`534d2a58`) |
 | Sign-in spend-cap hint | `signIn()` suggests `spendCap: 100 2Z`, `spendPeriod: month` | An optional suggestion the user may change or remove, per zuu `spec/oidc.md` §5.1; deployed IdP support unverified. Admission never compares a grant with it |
 | Spending policy (#879) | "Budget optional": any app budget (amount, period) or none. Paid admission checks account/client/scope/freshness/`enforced`, then the estimate against balance and budget remainder | Implemented and fixture-tested (unit + `test:ai` with a TEST-ONLY fake SDK). **Not live-verified**; the platform still reports `platform_disabled` |
 | AI activity batches (#867) | Activity Spec prompt, journal v2 (2600-token budget, v1 records recoverable), durable prefetch queue, local grading and `ai-spec` evidence | Wired and tested with TEST fixture specs over the real SDK and synthetic native IPC; live gpt-4o output, cost and parse rate unverified |
@@ -33,7 +33,7 @@ recorded privately.
 ## SDK `sdk-v0.3.0` adoption (2026-10-14)
 
 AHA moves from source preview `d63959f9` (which predates `sdk-v0.2.0`) to the coordinated release tag `sdk-v0.3.0`
-(`@@SHA@@`): Cargo `tag = "sdk-v0.3.0"`, and both npm packages packed from the tag (recipe and SHA-256 in
+(`6768350bba34c9eacf6700d40a7ad854f40f7809`): Cargo `tag = "sdk-v0.3.0"`, and both npm packages packed from the tag (recipe and SHA-256 in
 [vendor/README.md](aha-app/vendor/README.md)). What AHA adopts:
 
 - **Who is signed in (#931).** `SCOPES` adds `profile`. Settings titles the account "@username" from

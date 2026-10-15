@@ -56,16 +56,13 @@ fn sdk_config(client_id: &str) -> Config {
 pub fn configure<R: tauri::Runtime>(app: tauri::Builder<R>) -> tauri::Builder<R> {
     let Some(id) = client_id() else { return app };
     app.plugin(
-        Builder::new(
-            sdk_config(id),
-            "https://encorpora.io/aha/purchase-return",
-        )
-        .windows(["main".to_owned()])
-        .mobile_redirects(MobileRedirects {
-            https: None,
-            private_scheme: Some("inc.corpora.aha:/oauth/callback".to_owned()),
-        })
-        .build(),
+        Builder::new(sdk_config(id), "https://encorpora.io/aha/purchase-return")
+            .windows(["main".to_owned()])
+            .mobile_redirects(MobileRedirects {
+                https: None,
+                private_scheme: Some("inc.corpora.aha:/oauth/callback".to_owned()),
+            })
+            .build(),
     )
 }
 
