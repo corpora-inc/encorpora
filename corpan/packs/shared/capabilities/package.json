@@ -1,6 +1,7 @@
 {
   "name": "@corpan/capabilities-dev",
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "description": "Dev/test workspace for the capability modules (contract suite, harness pages, CI lint scripts). Capabilities themselves are consumed via the @shared source alias — this package.json exists ONLY so the contract tests and harnesses have their own devDependencies; nothing here ships.",
   "private": true,
   "type": "module",

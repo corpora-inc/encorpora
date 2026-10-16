@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-truedraw",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "THE TRUE DRAW — a statement is chalked on a slate. Draw if it is true. Hold if it is false. Half right is a very short run.",
   "engines": {

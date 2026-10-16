@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/game-guilty",
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "Shoot the Guilty Number — a fixed-position arithmetic shooter in a bioluminescent trench.",

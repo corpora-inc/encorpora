@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-skyledger",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "SKY LEDGER — the sky is the coordinate plane. Name a falling star's station on the astrolabe and it snaps home and blooms; chain the blooms before the light fades.",
   "engines": {

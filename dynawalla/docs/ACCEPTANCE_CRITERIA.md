@@ -510,9 +510,10 @@ See [PACK_SYSTEM.md](PACK_SYSTEM.md) and
       Never-block-an-offline-subscriber is carried over verbatim.
       Evidence: MET — founder's own words, 2026-07-26, quoted in ADR-0024. R-45 (the
       model has no evidence behind it yet) is **not** closed by this and still stands.
-- [ ] **G-03** `[founder]` The repository license is decided and a `LICENSE` file
+- [x] **G-03** `[founder]` The repository license is decided and a `LICENSE` file
       exists ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)).
-      Evidence: UNMET
+      Evidence: MET — Apache-2.0, founder decision 2026-10-16; `LICENSE` and `NOTICE`
+      at the repo root.
 - [ ] **G-04** `[founder]` The public standards-alignment claim is decided
       ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)); CG-20 stays
       report-only unless it says otherwise.

@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-arena",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "ARENA — a bioluminescent growth arena. You are a number. Eat what is smaller. Flee what is not.",
   "main": "src/index.ts",

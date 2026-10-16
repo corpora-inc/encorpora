@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-horde",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "DEEPSWARM — a bioluminescent horde-survivor. Move; the swarm comes; the light wins.",
   "main": "src/index.ts",

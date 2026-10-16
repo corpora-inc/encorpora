@@ -2,6 +2,7 @@
   "name": "corpan-city-server",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Authoritative Colyseus presence server for Corpan City (M1: real-time movement).",
   "scripts": {

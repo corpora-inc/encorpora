@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-coil",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "THE COIL OF NINETY-SIX — shear the glowing number off an articulated place-value coil; the cut performs the arithmetic.",
   "engines": {

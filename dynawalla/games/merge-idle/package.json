@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-merge-idle",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "ABYSSAL BLOOM — a bioluminescent merge reef. One target at the top; build it out of polyps.",
   "engines": {

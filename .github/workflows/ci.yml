@@ -287,7 +287,7 @@ jobs:
           ungated='^(corpus-reader/src-tauri/|panko/pako/src-tauri/|homeschool-offline/app/src-tauri/|corpan/plugins/tauri-plugin-iap/examples/)'
 
           # Gate-free by design: CI config, agent control plane, docs, dotfiles.
-          exempt='(^\.github/|^\.claude/|^\.gitignore$|^\.gitattributes$|^LICENSE$|\.md$)'
+          exempt='(^\.github/|^\.claude/|^\.gitignore$|^\.gitattributes$|^LICENSE$|^NOTICE$|\.md$)'
 
           n=0
           while IFS= read -r p; do

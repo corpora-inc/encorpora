@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Corpora Inc"]
 description = "Provider-agnostic dictation over OS-native STT — Apple SpeechAnalyzer/SFSpeechRecognizer (iOS) + Android SpeechRecognizer. Zero download, ~0 added app memory, out-of-process. Conforms to corpan-asr-contract."
 edition = "2021"
+license = "Apache-2.0"
 exclude = ["/examples", "/node_modules"]
 links = "tauri-plugin-asr-native"
 

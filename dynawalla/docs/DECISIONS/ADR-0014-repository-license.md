@@ -1,10 +1,21 @@
 # ADR-0014 — Repository license
 
-**Status:** Proposed — awaiting founder (and counsel)
-**Research commissioned 2026-07-25; a recommendation is pending.** The founder asked for
-a dedicated research pass on this specific question rather than a decision from the
-program. Nothing here is decided, and no agent should decide it. Add the recommendation
-to this ADR when it lands; the founder still makes the call.
+**Status:** Accepted — founder decision, 2026-10-16
+
+## Decision
+
+**Apache-2.0.** The founder chose it from the options as "Permissive, with an explicit
+patent grant, and lets forks and outside PRs happen", with a `LICENSE` plus a `NOTICE`
+that keeps third-party assets (fonts, voices, music, store art) under their own terms.
+
+- [`LICENSE`](../../../LICENSE) is the verbatim Apache License 2.0 text.
+- [`NOTICE`](../../../NOTICE) lists what it does not cover: the Corpora, Corpán, ¡AHA!
+  and Dynawalla trademarks (Apache §6 already excludes them), store art, voices,
+  music, and vendored or third-party material, which keeps its own license.
+- First-party `package.json` and `Cargo.toml` manifests declare `Apache-2.0`.
+- "The app is open source anyway" is now a fact about the repository.
+
+The text below is the context as it stood before the decision.
 
 ## Context
 

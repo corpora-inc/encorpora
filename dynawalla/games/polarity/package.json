@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-polarity",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "POLARITY — a neon vector shmup where your ship's sign IS the arithmetic: match a bullet's polarity to absorb it into a running signed sum, flip to phase through the wrong answers.",
   "main": "src/index.ts",

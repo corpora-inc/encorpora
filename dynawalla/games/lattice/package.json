@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-lattice",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "THE LATTICE — a twin-stick arena on a mass-spring grid. Shoot a composite and it splits into two factors; primes cannot be split, so they are what is left to sweep.",
   "engines": {

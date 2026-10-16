@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/game-pacing",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "The onset ramp: calm and roomy at the open, climbing to whatever mayhem a game is capable of. Pure functions, no DOM, no state — so a hundred games can share the curve without sharing any of the integration risk.",

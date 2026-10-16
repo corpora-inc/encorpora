@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-merge",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "FUSE \u2014 a fusion-reactor merge game. Touching tiles that add to the KEY fuse.",
   "engines": {

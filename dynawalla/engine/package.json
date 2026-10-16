@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/engine",
   "version": "0.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "Dynawalla learner model. Pure TypeScript: no IO, no DOM, no clock, no randomness, no app imports.",

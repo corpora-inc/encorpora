@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-colossus",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "COLOSSUS — a giant at the foot of a tower. Punch out the floors whose product matches the keystone; a wrong strike makes the tower taller.",
   "engines": {

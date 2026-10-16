@@ -2,6 +2,7 @@
 name = "aha"
 version = "1.0.0"
 edition = "2024"
+license = "Apache-2.0"
 rust-version = "1.97"
 description = "AHA local-first AI mathematics tutor"
 

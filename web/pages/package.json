@@ -1,6 +1,7 @@
 {
   "name": "encorpora-pages",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "description": "Landing pages for Encorpora GitHub Pages site",
   "private": true,
   "scripts": {

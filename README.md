@@ -67,8 +67,11 @@ See [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md) for deployment architecture.
 Read [AGENTS.md](AGENTS.md) first — it is the runbook, and it applies to humans and
 agents alike.
 
-This repository carries no license file yet — see
-[LICENSING-TODO.md](LICENSING-TODO.md) for the open question.
+## License
+
+Apache License 2.0 — see [LICENSE](LICENSE). [NOTICE](NOTICE) lists what it does
+not cover: the Corpora, Corpán, ¡AHA! and Dynawalla trademarks, store art, voices,
+music, and third-party material under its own license.
 
 ## Community
 

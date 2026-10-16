@@ -438,12 +438,10 @@ working tree with a 52 GB root `target/`, and constant worktree creation multipl
 symlinked-`node_modules` discipline from day one; worktrees live **outside** the repo
 directory.
 
-### R-43 · M · Founder
-**The repo is public with no license.** GitHub reports `license: null` and no `LICENSE`
-file exists, while several shipped decisions rest on "it's open source anyway."
-**Mitigation:** a `LICENSE` placeholder lands in the bootstrap PR pointing at
-[ADR-0014](DECISIONS/ADR-0014-repository-license.md); dedicated research was commissioned
-2026-07-25 and a recommendation is pending; the decision is the founder's and counsel's.
+### R-43 · M · Founder — closed 2026-10-16
+**The repo was public with no license.** Closed: the founder chose Apache-2.0
+([ADR-0014](DECISIONS/ADR-0014-repository-license.md)); `LICENSE` and `NOTICE` are at the
+repo root, and "it's open source anyway" is now true.
 
 ### R-44 · M · Program
 **A role with no name is a gate that does not run.** Several roles in this register are

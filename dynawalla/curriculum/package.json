@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/curriculum-workspace",
   "version": "0.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "Dev workspace for @dynawalla/curriculum (../packs/shared/curriculum): its devDependencies, its test/typecheck/gate commands and the dw-curriculum CLI. Nothing here ships — the library is the source tree this points at.",
