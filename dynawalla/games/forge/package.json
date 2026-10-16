@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-forge",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "FORGE \u2014 an incremental smelting chain where the numbers going up is the reward and the arithmetic is the throttle.",
   "engines": {

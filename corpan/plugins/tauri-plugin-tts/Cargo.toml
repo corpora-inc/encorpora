@@ -4,6 +4,7 @@ version = "0.3.0"
 authors = ["You"]
 description = ""
 edition = "2021"
+license = "Apache-2.0"
 exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
 links = "tauri-plugin-tts"
 

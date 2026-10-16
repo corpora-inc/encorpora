@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/game-host",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "The adapter every arcade pack mounts against: a synchronous game-facing Host over the asynchronous pack SDK, including the difficulty request wire and the prefetch pool behind it.",

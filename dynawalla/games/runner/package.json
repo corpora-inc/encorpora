@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-runner",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "VOLTA \u2014 a behind-the-back endless runner where the lane you pick is the answer you give.",
   "main": "src/index.ts",

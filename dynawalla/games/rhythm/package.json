@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/game-rhythm",
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "Splitbeat — a three-lane rhythm-action game where the bar of music is the fraction bar.",

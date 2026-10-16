@@ -75,7 +75,7 @@ where they will be read before the mistake is made:
 | A `tauri-plugin-orientation` behind `OrientationPorts` — the first native capability with real IPC, and the first to pay the ACL tax | not started |
 | Real online competition in ARENA — designed in [NATIVE_CAPABILITIES.md](NATIVE_CAPABILITIES.md), **not built**; blocked on two founder decisions (a handles-and-scores-only surface, and a ranking that is not throughput) | design only |
 | Founder decisions recorded in ADRs 0001 / 0013 / 0015 / 0017 | done 2026-07-25 |
-| Repository-license research ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)) | commissioned 2026-07-25, recommendation pending |
+| Repository license ([ADR-0014](DECISIONS/ADR-0014-repository-license.md)) | **decided 2026-10-16: Apache-2.0**; `LICENSE` and `NOTICE` at the repo root |
 | Standards-alignment research ([ADR-0010](DECISIONS/ADR-0010-standards-alignment-claim.md)) | commissioned 2026-07-25, recommendation pending |
 | Store reconnaissance — Corpán's live posture, the account reuse matrix, the name check | **returned 2026-07-25**; every `TODO(store-recon)` filled in ADR-0001, ADR-0015, ADR-0016 and [STORE.md](STORE.md) |
 | Is the vendored `ndk-context` `[patch]` actually applying, or already inert? | under investigation — see below |
@@ -183,7 +183,6 @@ Still open, ordered by when they bite:
 | [0016](DECISIONS/ADR-0016-app-store-product-name.md) | Product name — checks returned clean; two counsel-grade collision vectors remain | M1, app-record creation |
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) / [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | **New:** Apple Kids requires **exactly one** of 5-and-under / 6-8 / 9-11, and **no V1 scope on the table fits one band** — declare one and misdeclare the range, ship two SKUs, cut V1 to a single band, or skip the category (a trap under 2.3.8 / 5.1.4(b)) | M1, app-record creation |
 | [0002](DECISIONS/ADR-0002-v1-scope-cut.md) | V1 scope cut: grades 1–5, number and arithmetic | any public scope statement; M4 curriculum breadth |
-| [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license (research in flight) | M0a (fork-PR posture) |
 | [0010](DECISIONS/ADR-0010-standards-alignment-claim.md) | Standards-alignment claim (research in flight) | first public marketing copy |
 | [0001](DECISIONS/ADR-0001-kids-category-posture.md) | The category election itself | M1, first store submission (`G-01`) |
 | — | Whether to add one younger evaluator for the grade 1–2 gap (R-46) | M9 at the latest |

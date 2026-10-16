@@ -2,6 +2,7 @@
   "name": "dynawalla-game-balance",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "Counterpoise - a brass balance where the scale physically is the equals sign.",
   "engines": {

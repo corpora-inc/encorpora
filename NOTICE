@@ -1,0 +1,143 @@
+¡AHA!, Corpán, Dynawalla and other Corpora apps.
+Copyright 2024-2026 Corpora Inc.
+
+Except as stated below, the contents of this repository are licensed under the
+Apache License, Version 2.0 (see LICENSE). This NOTICE states what that license
+does NOT cover. A file or directory that carries its own license notice is
+governed by that notice, not by this repository's LICENSE.
+
+
+1. Trademarks
+-------------
+
+"Corpora", "Corpán" (also written "Corpan"), "¡AHA!", "Dynawalla" and the
+Corpán mark are trademarks of Corpora Inc. So are the other product and pack
+names, logos, app icons and avatars in this repository.
+
+The Apache License does not license them. Its Section 6 says so already: it
+"does not grant permission to use the trade names, trademarks, service marks,
+or product names of the Licensor, except as required for reasonable and
+customary use in describing the origin of the Work and reproducing the content
+of the NOTICE file." You may fork, modify and redistribute the code. You may
+not ship it under these names or with these marks.
+
+The brand files are not licensed under Apache-2.0; all rights are reserved by
+Corpora Inc. They include:
+
+  - the Corpán mark and logos: corpan/corpan-app/src/assets/corpan-mark*.png,
+    corpan/packs/corpan-city/src/assets/corpan-mark.png,
+    corpan/packs/*/corpan-logo.png, corpan/logo_mesh_hifi.svg
+  - dynawalla/brand/
+  - web/io/public/logos/, corpus-reader/public/logo.png
+  - corpan/infra/captures/branding/
+  - app icons: */src-tauri/icons/, */src-tauri/gen/apple/Assets.xcassets/,
+    */src-tauri/gen/android/app/src/main/res/mipmap-*/
+  - pack avatars: corpan/packs/*/*-avatar.png, corpan/packs/*/*-avatar.svg
+
+The Tauri, Vite, React and Svelte logos left in scaffolding (tauri.svg,
+vite.svg, react.svg, svelte.svg) are trademarks of their respective owners.
+
+
+2. Store art, voices and music
+------------------------------
+
+These are not licensed under Apache-2.0.
+
+  - Store art and screenshots: web/io/public/dynawalla/shots/,
+    web/io/public/aha/zpage/, dynawalla/foundations/feel/docs/shots/.
+    All rights reserved by Corpora Inc.
+
+  - Voices: corpan/packs/melopan/public/voice-kit/. Speech rendered by
+    text-to-speech voice cloning from reference recordings of real people
+    (see corpan/packs/melopan/THIRD_PARTY.md). Not covered by this license;
+    rights reserved by their owners, Corpora Inc and the speakers.
+
+  - Music and sound effects whose source is not recorded in this repository:
+    corpan/packs/hover-runner/src/assets/sfx/ (including the music track
+    luna.mp3) and corpan/packs/juice-squeeze/src/audio/assets/. Not covered
+    by this license; rights reserved by their owners.
+
+
+3. Third-party material under its own license
+---------------------------------------------
+
+Each item below keeps its own license. Where a license file exists it stays in
+place next to the material.
+
+  corpan/corpan-app/src-tauri/vendor/llama-cpp-sys-2/
+      Vendored fork of the llama-cpp-sys-2 crate (utilityai/llama-cpp-rs).
+      Crate: MIT OR Apache-2.0 (its Cargo.toml). Bundled llama.cpp and ggml
+      sources: MIT (The ggml authors). Inside llama.cpp/vendor/:
+        cpp-httplib/   MIT (cpp-httplib/LICENSE)
+        nlohmann/      MIT (SPDX headers in json.hpp, json_fwd.hpp)
+        miniaudio/     public domain (Unlicense) or MIT-0, at your choice
+                       (statement at the end of miniaudio.h)
+        stb/           public domain (Unlicense) or MIT, at your choice
+                       (statement at the end of stb_image.h)
+        sheredom/      public domain (Unlicense text in subprocess.h)
+
+  corpan/plugins/tauri-plugin-iap/
+      tauri-plugin-iap, including examples/iap-demo/.
+      MIT, Copyright (c) 2025 Vladimir Pankratov
+      (corpan/plugins/tauri-plugin-iap/LICENSE).
+
+  corpan/plugins/tauri-plugin-corpan-llm/.tauri/tauri-api/
+  corpan/plugins/tauri-plugin-stt/.tauri/tauri-api/
+  homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/.tauri/tauri-api/
+      Tauri API sources. Apache-2.0 OR MIT, Copyright 2019-2024 Tauri
+      Programme within The Commons Conservancy (SPDX headers).
+
+  */gradle/wrapper/gradle-wrapper.jar
+      Gradle Wrapper. Apache-2.0, Gradle Inc.
+
+  corpan/packs/hanzipan/hanziwriter.min.js
+      Hanzi Writer v3.7.3. MIT, Copyright (c) 2014 David Chanin
+      (corpan/packs/hanzipan/HANZIWRITER_LICENSE.txt).
+
+  corpan/dja/hanzi_pack/vendor/makemeahanzi/graphics.txt
+      Make Me a Hanzi stroke data, derived from Arphic PL KaitiM GB and
+      Arphic PL UKai. Arphic Public License (see COPYING and LICENSE in that
+      directory). The stroke data in corpan/packs/hanzipan/data/hanzi.sqlite3
+      (table hanzi_writer) is derived from it and is under the same license.
+
+  aha/aha-app/vendor/
+      Free2Z SDK and tauri-plugin-f2z guest API package tarballs. MIT; each
+      tarball contains its upstream LICENSE (aha/aha-app/vendor/README.md).
+
+  aha/aha-app/src/ui/fonts/lato-*.woff2
+  corpan/packs/lingo-hero/assets/fonts/lato-*.woff2
+      Lato. SIL Open Font License 1.1, Copyright (c) 2010-2011 Łukasz Dziedzic
+      (Lato-LICENSE.txt in each directory).
+
+  math-acceleration-college-algebra-clep/fonts/STIXTwoMath-Regular.ttf
+  math-acceleration-college-algebra-clep/fonts/STIXTwoText-Regular.ttf
+      Copies of web pages from github.com/google/fonts (ofl/stixtwo), saved
+      under font file names; they are not font data. Not covered by this
+      license; rights reserved by their owners.
+
+  3read/lib/three.min.js and the other three.js files in 3read/lib/
+      three.js r66 and its example post-processing passes. MIT, the three.js
+      authors.
+  3read/lib/stats.min.js
+      stats.js. MIT, mr.doob.
+  3read/lib/ubuntu_regular.typeface.js
+      Ubuntu Regular font, converted to typeface.js. Ubuntu Font Licence 1.0,
+      Copyright 2011 Canonical Ltd. (stated in the file).
+  3read/keycodes.js, 3read/options.js
+      BSD-style license, Copyright (c) 2011-2012 The Chromium Authors (stated
+      in the file headers; the LICENSE file they refer to is not in this
+      repository).
+
+  corpan/packs/beatlounge/public/soundfonts/beatlounge-gm.sf2
+      CC0 1.0 Universal
+      (corpan/packs/beatlounge/public/soundfonts/LICENSE.txt).
+
+
+4. Public-domain works
+----------------------
+
+Some packs build on public-domain works: the traditional and classical melodies
+behind the beatlounge demo songs (corpan/packs/beatlounge/src/modules/scenes/
+demos/) and the classical Chinese text of the Zhou Yi (yijing/). Those works
+stay in the public domain. The Apache License covers only Corpora's own
+arrangements, translations, code and other additions.

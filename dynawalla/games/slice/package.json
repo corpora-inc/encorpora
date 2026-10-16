@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-slice",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "MATH NINJA — a night-market slicer with an order to fill. The plate reads 10 + 15 + □ = 33; you cut the fruit that fills it, and telling a helpful gourd from a decoy is arithmetic.",
   "engines": {

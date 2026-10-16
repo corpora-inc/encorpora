@@ -53,7 +53,7 @@ saying what changed, so the history is readable without `git log`.
 | [0011](DECISIONS/ADR-0011-native-workspace-and-patch-placement.md) | `native/` workspace, independent app roots, `[patch]` stays put | Accepted |
 | [0012](DECISIONS/ADR-0012-ota-curriculum-deferral.md) | Curriculum ships bundled; OTA deferred with a stated trigger | Accepted |
 | [0013](DECISIONS/ADR-0013-monetization-model.md) | Monetization model | **Superseded by 0024** |
-| [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license | **Proposed — awaiting founder** (research in flight) |
+| [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license: Apache-2.0 | Accepted |
 | [0015](DECISIONS/ADR-0015-developer-account-topology.md) | Developer-account topology | Accepted |
 | [0016](DECISIONS/ADR-0016-app-store-product-name.md) | App Store product name | **Proposed — awaiting founder** (checks returned 2026-07-25; two counsel-grade collisions open) |
 | [0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) | Human evaluation resourcing | Accepted |
@@ -122,7 +122,7 @@ disagreed with both STATUS.md and MISSION.md about how many decisions were outst
 which is exactly how one goes unnoticed. Do not re-enumerate them here.
 
 The short version, for orientation only: **ADR-0016** (name), **ADR-0002** (scope cut),
-**ADR-0014** (license) and **ADR-0010** (standards claim) are open at the ADR level; and
+and **ADR-0010** (standards claim) are open at the ADR level; and
 and one decision lives *inside* an ADR that is otherwise decided — **ADR-0001's category
 election and age band** (`G-01`). **`G-02` (packaging and pricing) is closed** by
 ADR-0024. The

@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-siege",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "SIEGE \u2014 a molten-forge tower defense where mental arithmetic is the forge that pays for the defense.",
   "main": "src/index.ts",

@@ -1,6 +1,7 @@
 {
   "name": "@dynawalla/game-soundscape",
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "description": "A generative soundscape the whole fleet can play in: 38 modes as exact cents, a mode-and-root the host publishes, and a walker that turns a game's +1 and -1 into a phrase instead of the same ding twice. No Web Audio anywhere in it, so every note is assertable in Node.",

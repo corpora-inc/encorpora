@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-stack",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "MONUMENT — a precision one-tap stacker where the drop must be both aligned and arithmetically true.",
   "engines": {

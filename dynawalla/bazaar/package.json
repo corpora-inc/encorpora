@@ -2,6 +2,7 @@
   "name": "@dynawalla/bazaar",
   "private": true,
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "The bazaar — the endless minaret-punk marketplace the games are stalls in.",
   "engines": {

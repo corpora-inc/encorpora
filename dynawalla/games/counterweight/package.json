@@ -2,6 +2,7 @@
   "name": "@dynawalla/game-counterweight",
   "private": true,
   "version": "0.2.0",
+  "license": "Apache-2.0",
   "type": "module",
   "description": "THE STEELYARD — the weigh-house of the Dynawalla Bazaar. The chit carries a column sum you must evaluate; the pan carries brass you steer with place-value weights. Put on the lightest brass that tips the beam and stamp the docket.",
   "engines": {

@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Mathematics practice for children"
 authors = ["Corpora Inc"]
 edition = "2024"
+license = "Apache-2.0"
 
 [lib]
 # The `_lib` suffix keeps the lib name distinct from the bin name, which
