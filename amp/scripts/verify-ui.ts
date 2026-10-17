@@ -329,6 +329,15 @@ try {
     .getByRole("button", { name: "Create learner", exact: true })
     .click();
   learnerIds.push((await (await creation).json()).id);
+  // A reload keeps the learner chosen on this device.
+  await page.reload();
+  await page.getByRole("combobox", { name: "Learner", exact: true }).waitFor();
+  assert.equal(
+    await page
+      .getByRole("combobox", { name: "Learner", exact: true })
+      .inputValue(),
+    learnerIds.at(-1),
+  );
   await page.getByRole("button", { name: "Practice", exact: true }).click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
