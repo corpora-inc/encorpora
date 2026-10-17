@@ -212,12 +212,17 @@ test("ratio double lines reject a merely affine alignment", () => {
 test("publisher options accept flags before or after the output directory", async () => {
   const { parsePublishingArgs } = await import("../src/publishing/options.js");
   assert.deepEqual(parsePublishingArgs(["--all-pages", "/tmp/book"]), {
+    bookId: "fraction-field-guide",
     outputDirectory: "/tmp/book",
     allPages: true,
   });
   assert.deepEqual(
     parsePublishingArgs(["--output", "/tmp/book", "--all-pages"]),
-    { outputDirectory: "/tmp/book", allPages: true },
+    {
+      bookId: "fraction-field-guide",
+      outputDirectory: "/tmp/book",
+      allPages: true,
+    },
   );
   assert.throws(() => parsePublishingArgs(["--bogus"]), /Unknown/);
   assert.throws(() => parsePublishingArgs(["--output"]), /exactly one/);
