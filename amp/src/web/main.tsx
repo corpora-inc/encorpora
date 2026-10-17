@@ -52,6 +52,7 @@ function App() {
     [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
     [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
+  const [familyLearnerId, setFamilyLearnerId] = useState("");
   const [purchaseView, setPurchaseView] = useState<"annual" | "funded" | null>(
     null,
   );
@@ -132,6 +133,7 @@ function App() {
     setPurchaseView(null);
     setPurchaseReturn(null);
     setFamilySection("learners");
+    setFamilyLearnerId("");
     setPurchaseFocus(undefined);
     accountRef.current = identity;
     setAccountId(identity);
@@ -640,6 +642,8 @@ function App() {
         />
       ) : familyOpen && token ? (
         <FamilyCenter
+          selectedLearnerId={familyLearnerId}
+          onSelectLearner={setFamilyLearnerId}
           initialSection={familySection}
           returnFocus={purchaseFocus}
           onAnnualPurchase={() => openPurchase("annual")}
