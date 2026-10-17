@@ -1,6 +1,20 @@
 import { z } from "zod";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
+  | {
+      kind: "rational-line";
+      denominator: number;
+      maxWhole: number;
+      points: { numerator: number; label: "P" | "A" | "B" }[];
+      unit: string;
+    }
+  | {
+      kind: "fraction-strips";
+      parts: number;
+      wholes: number;
+      rows: { selected: number; label: string }[];
+      unit: string;
+    }
   | { kind: "ten-frame"; first: number; second: number; capacity: 10 | 20 }
   | { kind: "base-ten"; hundreds: number; tens: number; ones: number }
   | {
@@ -53,6 +67,51 @@ export interface GeneratedProblem {
 
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
+    z
+      .object({
+        kind: z.literal("rational-line"),
+        denominator: z.number().int().min(2).max(12),
+        maxWhole: z.number().int().min(1).max(3),
+        points: z
+          .array(
+            z
+              .object({
+                numerator: z.number().int().nonnegative(),
+                label: z.enum(["P", "A", "B"]),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(2),
+        unit: z.string().min(1).max(40),
+      })
+      .strict()
+      .refine(
+        (f) =>
+          f.points.every((p) => p.numerator <= f.denominator * f.maxWhole) &&
+          new Set(f.points.map((p) => p.label)).size === f.points.length &&
+          new Set(f.points.map((p) => p.numerator)).size === f.points.length,
+      ),
+    z
+      .object({
+        kind: z.literal("fraction-strips"),
+        parts: z.number().int().min(2).max(12),
+        wholes: z.number().int().min(1).max(3),
+        rows: z
+          .array(
+            z
+              .object({
+                selected: z.number().int().nonnegative(),
+                label: z.string().min(1).max(40),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(3),
+        unit: z.string().min(1).max(40),
+      })
+      .strict()
+      .refine((f) => f.rows.every((r) => r.selected <= f.parts * f.wholes)),
     z
       .object({
         kind: z.literal("ten-frame"),

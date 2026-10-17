@@ -1,9 +1,13 @@
+import {
+  fractionPracticeBindings,
+  validateFractionPracticeCoverage,
+} from "../src/content/fraction-practice-coverage.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { lessons, baseLessons } from "../src/content/lessons.js";
 import { normalizeAnswer, templates } from "../src/math/engine.js";
 
-test("each implemented family has one navigable lesson with teaching and practice support", () => {
+test("each implemented family has a reference lesson or validated book-page teaching binding", () => {
   const ids = new Set<string>();
   const bindings = new Map<string, number>();
   for (const lesson of lessons) {
@@ -23,7 +27,14 @@ test("each implemented family has one navigable lesson with teaching and practic
     assert.ok(lesson.pitfalls.length >= 2);
     assert.ok(lesson.parentGuide.length > 40);
   }
-  for (const template of templates) assert.equal(bindings.get(template.id), 1);
+  validateFractionPracticeCoverage();
+  for (const binding of fractionPracticeBindings)
+    bindings.set(
+      binding.templateId,
+      (bindings.get(binding.templateId) ?? 0) + 1,
+    );
+  for (const template of templates)
+    assert.equal(bindings.get(template.id), 1, template.id);
 });
 
 test("worked examples have independently calculated exact answers", () => {

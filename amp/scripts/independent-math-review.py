@@ -7,6 +7,7 @@ import sys
 from collections import Counter
 from fractions import Fraction
 from elementary_math_oracle import ELEMENTARY, solve_elementary
+from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -21,7 +22,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE
 
 
 def require(condition, message):
@@ -33,6 +34,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in FRACTION_PRACTICE:
+        return solve_fraction_practice(public)
     if template in ELEMENTARY:
         return solve_elementary(public)
     prompt = public['prompt']
