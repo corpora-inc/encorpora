@@ -1,3 +1,5 @@
+import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
+import { learningConsentActive } from "../server/account-access.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -84,12 +86,19 @@ export class FamilyRepository {
             )
           ).rows.map((row) => row.learner_id as string)
         : [];
+      const effectiveConsent = await learningConsentActive(
+        client,
+        accountId,
+        this.development,
+      );
       return {
         consent: {
           status: consent
             ? consent.withdrawn_at
               ? "withdrawn"
-              : "active"
+              : effectiveConsent
+                ? "active"
+                : "not-recorded"
             : this.development
               ? "development"
               : "not-recorded",
@@ -139,6 +148,7 @@ export class FamilyRepository {
       VALUES($1,'withdrawn-without-record','parent-withdrawal','self-service',now()) ON CONFLICT(account_id) DO UPDATE SET withdrawn_at=COALESCE(amp_parent_consents.withdrawn_at,now())`,
       [accountId],
     );
+    await cancelPendingConsent(client, accountId);
   }
   async withdraw(accountId: string): Promise<void> {
     await this.transaction(accountId, async (client) => {
@@ -319,6 +329,17 @@ export class FamilyRepository {
         datasets.push([
           "funding-request",
           "SELECT jsonb_build_object('id',id,'learnerId',learner_id,'createdAt',created_at,'expiresAt',expires_at,'status',status,'orderId',order_id,'offer',offer_snapshot - 'approvals' - 'enabled' - 'documentPolicyReference' - 'creditAgreementReference') AS value FROM amp_funding_requests WHERE account_id=$1 ORDER BY created_at,id",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_consent_requests') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "consent-enrollment",
+          "SELECT jsonb_build_object('id',id,'phase',phase,'notice',notice,'noticeDigest',notice_digest,'createdAt',created_at,'initialAt',initial_at,'completedAt',completed_at,'withdrawnAt',withdrawn_at,'expiresAt',expires_at,'purgeAfter',purge_after) AS value FROM amp_consent_requests WHERE account_id=$1 ORDER BY created_at,id",
         ]);
       if (await this.stripeTable(client)) {
         datasets.push([

@@ -1,3 +1,4 @@
+import { cancelPendingConsent } from "../src/parent-consent/lifecycle.js";
 import { readFile } from "node:fs/promises";
 import { Pool } from "pg";
 import { z } from "zod";
@@ -17,6 +18,8 @@ if (!process.env.AMP_DATABASE_URL || !process.argv[2])
 const record = schema.parse(
   JSON.parse(await readFile(process.argv[2], "utf8")),
 );
+if (record.verificationMethod === "internal-email-plus-v1")
+  throw new Error("The self-service method requires its own verified workflow");
 const pool = new Pool({ connectionString: process.env.AMP_DATABASE_URL });
 const client = await pool.connect();
 try {
@@ -36,6 +39,7 @@ try {
       record.withdraw,
     ],
   );
+  await cancelPendingConsent(client, record.accountId);
   await client.query("COMMIT");
   console.log("Parent consent record updated.");
 } catch (error) {
