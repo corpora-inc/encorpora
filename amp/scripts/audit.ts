@@ -1,5 +1,6 @@
 import { validateRatioAlignments } from "../books/in-the-same-proportion/alignments.js";
 import { validateRatioPracticeBindings } from "../books/in-the-same-proportion/practice.js";
+import { validateMeasurementCoverage } from "../src/content/measurement-coverage.js";
 import { validateMeasurementAlignments } from "../books/measure-border-cover/alignments.js";
 import { validateMeasurementPracticeBindings } from "../books/measure-border-cover/practice.js";
 import { validateNumberAlignments } from "../books/number-builders/alignments.js";
@@ -30,6 +31,7 @@ try {
   validateMeasurementAlignments(skills, templates, standards);
   validateMeasurementPracticeBindings(templates);
   validateAlgebraCoverage();
+  validateMeasurementCoverage();
   validateFractionPracticeCoverage();
   validateNumberAlignments(skills, templates, standards);
   validateNumberPracticeBindings(templates);

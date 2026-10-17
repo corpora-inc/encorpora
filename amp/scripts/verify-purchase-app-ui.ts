@@ -138,7 +138,7 @@ async function openAccess(page: Page) {
     .click();
   await page.getByRole("button", { name: "Access", exact: true }).click();
   await page
-    .getByRole("button", { name: "Purchase options", exact: true })
+    .getByRole("button", { name: "Purchases & records", exact: true })
     .click();
   await page.locator('[data-purchase-entry="annual"]').waitFor();
 }
@@ -150,7 +150,7 @@ async function visible(page: Page, selector: string) {
       box.y >= 0 &&
       box.x + box.width <= page.viewportSize()!.width + 1 &&
       box.y + box.height <= page.viewportSize()!.height + 1,
-    `${selector} is inside viewport`,
+    `${selector} is inside viewport: ${JSON.stringify(box)}`,
   );
 }
 async function frames(page: Page) {
@@ -190,7 +190,7 @@ try {
     });
     await visible(f.page, ".family-learner:first-child");
     await f.page
-      .getByRole("button", { name: "Purchase options", exact: true })
+      .getByRole("button", { name: "Purchases & records", exact: true })
       .click();
     await f.page.locator('[data-purchase-entry="annual"]').click();
     await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
@@ -408,7 +408,7 @@ try {
   navigated.release();
   await frames(navigated.page);
   await navigated.page
-    .getByRole("heading", { name: "Choose a purchase route" })
+    .getByRole("heading", { name: "Purchases and records" })
     .waitFor();
   assert.equal(await navigated.page.locator(".annual-purchase").count(), 0);
   assert.deepEqual(navigated.faults, []);

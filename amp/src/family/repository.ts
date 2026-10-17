@@ -347,6 +347,26 @@ export class FamilyRepository {
           "SELECT jsonb_build_object('id',id,'learnerId',learner_id,'customerId',customer_id,'subscriptionId',subscription_id,'sessionId',session_id,'closed',closed,'createdAt',created_at) AS value FROM amp_stripe_checkouts WHERE account_id=$1 ORDER BY created_at,id",
         ]);
       }
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_payment_records') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        datasets.push([
+          "payment-record",
+          "SELECT jsonb_build_object('id',id,'learnerReference',learner_id,'baseline',baseline,'status',status,'observedAt',observed_at) AS value FROM amp_payment_records WHERE account_id=$1 ORDER BY observed_at,id",
+        ]);
+        datasets.push([
+          "payment-reconciliation-hold",
+          "SELECT jsonb_build_object('recordId',r.id,'creditNoteId',h.credit_note_id,'observedAt',h.observed_at) AS value FROM amp_payment_holds h JOIN amp_payment_records r ON r.namespace=h.namespace AND r.invoice_id=h.invoice_id WHERE r.account_id=$1 ORDER BY h.observed_at,h.credit_note_id",
+        ]);
+        datasets.push([
+          "payment-observation",
+          "SELECT jsonb_build_object('id',o.id,'recordId',o.record_id,'observation',o.observation,'observedAt',o.observed_at) AS value FROM amp_payment_observations o JOIN amp_payment_records r ON r.id=o.record_id WHERE r.account_id=$1 ORDER BY o.sequence",
+        ]);
+      }
       for (const [type, query] of datasets) {
         if (signal?.aborted) throw new Error("Export canceled");
         await client.query(
