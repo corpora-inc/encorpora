@@ -136,9 +136,7 @@ export function buildApp(options: {
             templates,
             skills,
             attempts: await tx.recentAttempts(),
-            evidence: await tx.progress([
-              ...new Set(templates.map((t) => t.skillId)),
-            ]),
+            evidence: await tx.skillEvidence(),
             count: input.count,
             seed: randomUUID(),
           });
