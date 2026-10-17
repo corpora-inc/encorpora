@@ -34,6 +34,8 @@ type Props = {
   busy: boolean;
   saveBirthYear: (year: number) => void;
   cancel?: () => void;
+  /** Replaces "What year was {name} born?". */
+  title?: string;
 };
 
 /** The only question before practice: it sets where placement begins. */
@@ -43,7 +45,7 @@ export function BirthYearPrompt(props: Props) {
   return (
     <main className="practice-start">
       <section className="start-card birth-year">
-        <h1>What year was {props.name} born?</h1>
+        <h1>{props.title ?? `What year was ${props.name} born?`}</h1>
         <p>
           The first problems check skills expected by that age. Practice then
           moves up or down until each problem is just within reach.

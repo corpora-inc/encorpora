@@ -13,6 +13,14 @@ import {
   learningConsentActive,
 } from "./account-access.js";
 import { randomUUID } from "node:crypto";
+import {
+  isTrialAccount,
+  newTrialToken,
+  TRIAL_ATTEMPTS,
+  TRIAL_DAYS,
+  TRIAL_PREFIX,
+  trialTokenHash,
+} from "./trials";
 import { Pool, type PoolClient } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { eq, and, isNull } from "drizzle-orm";
@@ -66,6 +74,8 @@ export interface LearnerTransaction {
   saveProblem(problem: SavedProblem): Promise<void>;
   saveAttempt(outcome: Outcome): Promise<void>;
   hasAccess(): Promise<boolean>;
+  /** Answers left in an anonymous trial, or null for a parent's learner. */
+  trialRemaining(): Promise<number | null>;
 }
 export interface Repository {
   hasConsent(accountId: string): Promise<boolean>;
@@ -81,6 +91,14 @@ export interface Repository {
     run: (tx: LearnerTransaction) => Promise<T>,
   ): Promise<T>;
   close(): Promise<void>;
+  /** Starts an anonymous placement trial; returns the device's token once. */
+  createTrial(
+    birthYear: number,
+  ): Promise<{ token: string; learnerId: string; expiresAt: string }>;
+  /** The synthetic account for a live trial token, or null. */
+  trialAccount(token: string): Promise<string | null>;
+  /** Moves a trial learner, with all answers, into a parent's account. */
+  adoptTrial(accountId: string, token: string, name: string): Promise<Learner>;
 }
 export class PostgresRepository implements Repository {
   readonly pool: Pool;
@@ -181,6 +199,81 @@ export class PostgresRepository implements Repository {
   }
   async close() {
     await this.pool.end();
+  }
+  async createTrial(birthYear: number) {
+    const id = randomUUID(),
+      learnerId = randomUUID(),
+      token = newTrialToken(),
+      expiresAt = new Date(Date.now() + TRIAL_DAYS * 86400000);
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query(
+        "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Trial',$3)",
+        [learnerId, `${TRIAL_PREFIX}${id}`, birthYear],
+      );
+      await client.query(
+        "INSERT INTO amp_trials(id,token_hash,learner_id,expires_at) VALUES($1,$2,$3,$4)",
+        [id, trialTokenHash(token), learnerId, expiresAt],
+      );
+      await client.query("COMMIT");
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+    return { token, learnerId, expiresAt: expiresAt.toISOString() };
+  }
+  async trialAccount(token: string) {
+    const result = await this.pool.query(
+      "SELECT id FROM amp_trials WHERE token_hash=$1 AND adopted_at IS NULL AND expires_at>now()",
+      [trialTokenHash(token)],
+    );
+    return result.rowCount ? `${TRIAL_PREFIX}${result.rows[0].id}` : null;
+  }
+  async adoptTrial(accountId: string, token: string, name: string) {
+    if (isTrialAccount(accountId))
+      throw new ApiError(403, "Sign in as a parent to keep this progress");
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN");
+      await lockLearningAccount(client, accountId);
+      if (
+        !(await learningConsentActive(
+          client,
+          accountId,
+          this.options.development,
+        ))
+      )
+        throw new ApiError(
+          403,
+          "Parent consent is required before collecting learning data",
+        );
+      const trial = await client.query(
+        "SELECT id,learner_id FROM amp_trials WHERE token_hash=$1 AND adopted_at IS NULL AND expires_at>now() FOR UPDATE",
+        [trialTokenHash(token)],
+      );
+      if (!trial.rowCount)
+        throw new ApiError(404, "This trial has ended or was already saved");
+      const { id, learner_id: learnerId } = trial.rows[0];
+      const moved = await client.query(
+        "UPDATE amp_learners SET account_id=$1,name=$2 WHERE id=$3 AND account_id=$4 AND deleted_at IS NULL RETURNING birth_year",
+        [accountId, name, learnerId, `${TRIAL_PREFIX}${id}`],
+      );
+      if (!moved.rowCount) throw new ApiError(404, "Trial learner not found");
+      await client.query(
+        "UPDATE amp_trials SET adopted_at=now(),adopted_by=$2 WHERE id=$1",
+        [id, accountId],
+      );
+      await client.query("COMMIT");
+      return { id: learnerId, name, birthYear: moved.rows[0].birth_year };
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
   }
 }
 export class PgTransaction implements LearnerTransaction {
@@ -326,6 +419,18 @@ export class PgTransaction implements LearnerTransaction {
         JSON.stringify(outcome),
       ],
     );
+  }
+  async trialRemaining() {
+    const learner = await this.db.query(
+      "SELECT account_id FROM amp_learners WHERE id=$1",
+      [this.learnerId],
+    );
+    if (!isTrialAccount(learner.rows[0]?.account_id ?? "")) return null;
+    const answered = await this.db.query(
+      "SELECT count(*)::int AS n FROM amp_attempts WHERE learner_id=$1",
+      [this.learnerId],
+    );
+    return Math.max(0, TRIAL_ATTEMPTS - answered.rows[0].n);
   }
   async hasAccess() {
     const result = await this.db.query(

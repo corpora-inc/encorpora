@@ -15,6 +15,10 @@ export async function learningConsentActive(
   accountId: string,
   development = false,
 ): Promise<boolean> {
+  // An anonymous trial holds no personal information about a child: no name,
+  // no contact data, only a birth year and answers, deleted unless a parent
+  // adopts them (with consent) into their own account.
+  if (accountId.startsWith("trial:")) return true;
   const result = await client.query(
     "SELECT withdrawn_at,verification_method,evidence_reference FROM amp_parent_consents WHERE account_id=$1",
     [accountId],

@@ -23,6 +23,7 @@ const manager =
         automaticSilentRenew: true,
       })
     : null;
+const devSignedOut = "amp.dev.signedOut";
 export interface AuthSession {
   token: string;
   accountId: string;
@@ -35,11 +36,19 @@ function session(user: User): AuthSession {
 }
 export async function accessSession(): Promise<AuthSession | null> {
   if (nativeRuntime) return nativeSession();
-  if (import.meta.env.DEV && !manager)
+  if (import.meta.env.DEV && !manager) {
+    // Development only: `?signed-out` simulates a visitor without an account
+    // for this tab, so the "Try free" path can be exercised locally.
+    if (new URLSearchParams(location.search).has("signed-out")) {
+      sessionStorage.setItem(devSignedOut, "1");
+      history.replaceState({}, "", location.pathname);
+    }
+    if (sessionStorage.getItem(devSignedOut)) return null;
     return {
       token: "amp-local-development",
       accountId: "development-household",
     };
+  }
   if (!manager) return null;
   if (new URLSearchParams(location.search).has("code")) {
     await manager.signinRedirectCallback();
@@ -50,6 +59,11 @@ export async function accessSession(): Promise<AuthSession | null> {
 }
 export async function signIn() {
   if (nativeRuntime) return nativeSignIn();
+  if (import.meta.env.DEV && !manager) {
+    sessionStorage.removeItem(devSignedOut);
+    location.reload();
+    return;
+  }
   if (!manager)
     throw new Error(
       "Account sign-in has not been configured for this deployment.",
