@@ -6,7 +6,7 @@ import assert from "node:assert/strict";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
-import { migrate } from "./migrate";
+import { migrate } from "./test-database";
 import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
 import { lessons } from "../src/content/lessons";

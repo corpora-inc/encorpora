@@ -8,7 +8,7 @@ import assert from "node:assert/strict";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
-import { migrate } from "./migrate";
+import { migrate } from "./test-database";
 import { templates } from "../src/math/engine";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)

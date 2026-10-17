@@ -5,7 +5,7 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { setTimeout as delay } from "node:timers/promises";
 import { Pool } from "pg";
-import { migrate } from "../scripts/migrate.js";
+import { migrate } from "../scripts/test-database.js";
 
 test(
   "API entrypoint registers unavailable purchases and consent without implicit configuration",

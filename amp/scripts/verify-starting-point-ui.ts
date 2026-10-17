@@ -6,7 +6,7 @@ import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { developmentAuth } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { migrate } from "./migrate.js";
+import { migrate } from "./test-database.js";
 import { templates } from "../src/math/engine.js";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL required");

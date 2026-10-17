@@ -23,11 +23,17 @@ The database volume preserves practice between runs. `docker compose -p amp-foun
 
 ## Verify and publish documents
 
+Create a dedicated fixture database once; do not use the `/amp` development preview:
+
+```sh
+docker compose -p amp-foundation exec -T database createdb -U amp amp_test
+```
+
 ```sh
 npm test
 npm run build
 npm run audit
-export AMP_TEST_DATABASE_URL=postgres://amp:amp@127.0.0.1:55439/amp
+export AMP_TEST_DATABASE_URL=postgres://amp:amp@127.0.0.1:55439/amp_test
 npm run test:db
 npx playwright install chromium
 npm run test:ui
@@ -35,7 +41,7 @@ npm run publications
 npm run production:queue
 ```
 
-Database tests require a disposable database; they create and remove their own fixtures. Browser verification starts its own loopback API and Vite server, so stop development servers on ports 4310/4311 first.
+Database tests require a disposable database; they create and remove their own fixtures. Direct integration and browser entrypoints reject the shared preview target before setup. Use a separate dedicated database per concurrent worker; see [test database safety](docs/test-databases.md). Browser verification starts its own loopback API and Vite server, so stop development servers on ports 4310/4311 first.
 
 Publications are written to `artifacts/publications/` in Letter and A4 formats. Each workbook has a matching solution volume with the same deterministic problems. The lesson library offers authenticated PDF downloads after these artifacts have been built. PDFs and screenshots are generated artifacts, not Git source files.
 

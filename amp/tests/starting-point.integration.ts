@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
-import { migrate } from "../scripts/migrate.js";
+import { migrate } from "../scripts/test-database.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
 import { templates, generateProblem } from "../src/math/engine.js";
