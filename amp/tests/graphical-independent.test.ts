@@ -61,13 +61,13 @@ test("rendered graphical geometry agrees with semantic givens across every graph
             assert.ok(rendered, "Missing named point");
             // Invert screen coordinates to recover the represented mathematical values.
             near(
-              ((Number(rendered.cx) - 45) / 300) * (figure.xMax - figure.xMin) +
+              ((Number(rendered.cx) - 70) / 180) * (figure.xMax - figure.xMin) +
                 figure.xMin,
               point.x,
               "point x",
             );
             near(
-              ((325 - Number(rendered.cy)) / 300) *
+              ((220 - Number(rendered.cy)) / 180) *
                 (figure.yMax - figure.yMin) +
                 figure.yMin,
               point.y,
@@ -78,16 +78,16 @@ test("rendered graphical geometry agrees with semantic givens across every graph
           assert.equal(lines.length, figure.lines?.length ?? 0);
           for (const line of lines) {
             const x1 =
-              ((Number(line.x1) - 45) / 300) * (figure.xMax - figure.xMin) +
+              ((Number(line.x1) - 70) / 180) * (figure.xMax - figure.xMin) +
               figure.xMin;
             const x2 =
-              ((Number(line.x2) - 45) / 300) * (figure.xMax - figure.xMin) +
+              ((Number(line.x2) - 70) / 180) * (figure.xMax - figure.xMin) +
               figure.xMin;
             const y1 =
-              ((325 - Number(line.y1)) / 300) * (figure.yMax - figure.yMin) +
+              ((220 - Number(line.y1)) / 180) * (figure.yMax - figure.yMin) +
               figure.yMin;
             const y2 =
-              ((325 - Number(line.y2)) / 300) * (figure.yMax - figure.yMin) +
+              ((220 - Number(line.y2)) / 180) * (figure.yMax - figure.yMin) +
               figure.yMin;
             assert.ok(x2 > x1, "Line must have nonzero visible width");
             for (const value of [x1, x2])
@@ -120,8 +120,8 @@ test("rendered graphical geometry agrees with semantic givens across every graph
               figure.values[index]!,
               "bar quantity",
             );
-            near(Number(bar.y) + Number(bar.height), 250, "bar baseline");
-            assert.ok(Number(bar.height) > 0 && Number(bar.y) >= 25);
+            near(Number(bar.y) + Number(bar.height), 178, "bar baseline");
+            assert.ok(Number(bar.height) > 0 && Number(bar.y) >= 78);
             if (index)
               assert.ok(
                 Number(bar.x) > Number(bars[index - 1]!.x),
@@ -164,12 +164,12 @@ test("rendered graphical geometry agrees with semantic givens across every graph
           for (let index = 0; index < points.length; index++) {
             const point = points[index]!;
             near(
-              ((Number(point.cx) - 30) / 480) * (figure.max - figure.min) +
+              ((Number(point.cx) - 24) / 272) * (figure.max - figure.min) +
                 figure.min,
               figure.points[index]!,
               "number-line coordinate",
             );
-            near(Number(point.cy), 58, "number-line baseline");
+            near(Number(point.cy), 64, "number-line baseline");
             assert.equal(Number(point["data-mark"]), figure.points[index]);
           }
           break;

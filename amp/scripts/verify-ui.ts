@@ -59,6 +59,8 @@ try {
   await page
     .getByRole("button", { name: "Try this idea", exact: true })
     .click();
+  // Navigation intentionally cancels pending batches; establish practice first.
+  await page.locator(".problem-stage").waitFor();
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },

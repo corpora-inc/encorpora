@@ -93,3 +93,9 @@ Choice questions assess recognition within a bounded vocabulary. They do not
 establish independent explanation, equation construction, or mastery of a whole
 standard. Browser checks cover native radio keyboard behavior, phone layouts,
 selected-distractor feedback, human-readable answers, and focus restoration.
+
+## Practice graph readability
+
+`npm run test:graphical-ui` exercises the actual practice workspace with 33 deterministic public problem fixtures. It checks ordinary phone and landscape compositions, rendered labels of at least 12 CSS pixels, SVG text bounds, text-label collisions and the absence of workspace scrolling. Edge fixtures include signed coordinate corners, near-axis point labels, adjacent negative number-line points, every five-minute clock position and a tall comparison chart. `AMP_GRAPH_BROWSER=webkit` selects WebKit; Chromium is the default. The same check inspects 199 diagrams in the reference-print lesson, workbook and solution layouts, including the general renderer used by printed choice exercises. An isolated test PostgreSQL database is required through `AMP_TEST_DATABASE_URL`.
+
+Coordinate grids retain each unit line and use sparse numbered ticks. Point annotations show letters without printing the requested coordinate. The existing accessible description conveys the graph's quantities verbally; these checks do not establish equivalent assessment difficulty for every assistive presentation. Independent geometry tests recover the mathematical positions and quantities from rendered SVGs. Visual review of the exported screenshots complements the measured checks.
