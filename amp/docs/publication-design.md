@@ -26,17 +26,17 @@ All mathematical diagrams are semantic SVG. Their source records quantities, par
 
 ## Page archetypes
 
-| Archetype | Instructional purpose | Composition |
-| --- | --- | --- |
-| Chapter opening | Pose a question and establish purpose | One strong diagram, short invitation, goals and prerequisite reminder |
-| Concept exploration | Connect language to a mathematical object | Explanatory paragraphs beside or immediately above a large labeled model; one prediction before the conclusion |
-| Worked example | Make reasoning visible | Numbered decisions with matching diagram stages; a final reasonableness check |
-| Guided practice | Transfer part of the reasoning to the learner | One scaffolded task followed by less-supported tasks; space beside each step |
-| Comparison and error analysis | Expose a distinction or misconception | Two aligned representations, a precise question, and room to justify |
-| Independent studio | Practice without solution cues | Two to five substantial tasks with response space sized to the requested work |
-| Transfer investigation | Apply an idea in an unfamiliar context | A coherent situation, data or diagram, connected tasks and room for multiple approaches |
-| Retrieval and reflection | Check retention and connections | Mixed prior concepts, confidence-independent explanation prompts and a concise self-check |
-| Solutions and teaching notes | Explain answers and guide follow-up | Stable task references, reasoning and accepted alternatives; specific misconceptions and next practice |
+| Archetype                     | Instructional purpose                         | Composition                                                                                                    |
+| ----------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Chapter opening               | Pose a question and establish purpose         | One strong diagram, short invitation, goals and prerequisite reminder                                          |
+| Concept exploration           | Connect language to a mathematical object     | Explanatory paragraphs beside or immediately above a large labeled model; one prediction before the conclusion |
+| Worked example                | Make reasoning visible                        | Numbered decisions with matching diagram stages; a final reasonableness check                                  |
+| Guided practice               | Transfer part of the reasoning to the learner | One scaffolded task followed by less-supported tasks; space beside each step                                   |
+| Comparison and error analysis | Expose a distinction or misconception         | Two aligned representations, a precise question, and room to justify                                           |
+| Independent studio            | Practice without solution cues                | Two to five substantial tasks with response space sized to the requested work                                  |
+| Transfer investigation        | Apply an idea in an unfamiliar context        | A coherent situation, data or diagram, connected tasks and room for multiple approaches                        |
+| Retrieval and reflection      | Check retention and connections               | Mixed prior concepts, confidence-independent explanation prompts and a concise self-check                      |
+| Solutions and teaching notes  | Explain answers and guide follow-up           | Stable task references, reasoning and accepted alternatives; specific misconceptions and next practice         |
 
 Adjacent pages should not repeat a single box-and-paragraph composition. Variety follows instructional purpose. A diagram-led concept page, a side-by-side comparison and a spacious investigation can share a consistent typographic system without looking interchangeable.
 
@@ -93,19 +93,31 @@ Opening-page arrays use a cover composition whose multiplication equation is
 derived from the row and column counts. Print layout remains Letter-oriented;
 readers must implement the array variant before registering an array-based book.
 
-
 Integer grouping models can show totals through 30 with whole-unit cells and
 whole-number group sizes. Above 12 units they are limited to 12 groups; the
 last incomplete group displays the exact number of units left. Fractional
 models retain their smaller bounds. Number-line spans above 12 and through 30
-require integer endpoints within −30…30, whole-unit ticks, and an explicit
+require integer endpoints within −30…30, whole-number marked points, whole-unit ticks, and an explicit
 `integerLabelInterval` keeping the scale sparse. Endpoints retain their labels.
 Jumps are forward and disjoint, with at most four per diagram. Backward arrows,
 overlapping jumps and zero-length jumps require a different model contract;
 authors must not use this variant for them. Jump labels use collision lanes.
+Extended integer lines allow at most one additional label lane across marks and
+jumps. Denser labels fail validation because the phone height cap would make
+them too small; shorten labels or split the model into successive figures.
 
 Use `response.size: "extended"` for a task that needs a substantial diagram or
 constraint table. It provides 2.4 inches of workspace with the same physical
 rule/grid spacing as the smaller sizes. Choose sizes from the learner's work,
 then run the full-page overflow check; the publisher does not shrink text to
 make a crowded page fit.
+
+Export a registered book with `npx tsx scripts/publish-book.ts --book
+fraction-field-guide --all-pages`. The identifier resolves through the compiled
+book catalog; the CLI does not import an arbitrary author path. `--output`
+selects a local artifact directory. The default is `artifacts/books/<book-id>`.
+The PDF is `<book-id>.pdf`; `validation.json` records exact content and PDF
+hashes plus all TypeScript authoring modules, shared publisher modules and the
+catalog. Source directories and nested entries must not be symlinks. The HTML
+is a fixed Letter print preview; the application reader provides responsive
+screen layouts. Export checks do not replace mathematical or visual review.

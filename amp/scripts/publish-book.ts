@@ -6,43 +6,26 @@ import { parsePublishingArgs } from "../src/publishing/options.js";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
-import { fractionFieldGuide } from "../books/fraction-field-guide/book.js";
+import { bookFor } from "../src/books/catalog.js";
+import { publicationSourceHashes } from "../src/publishing/source-manifest.js";
 import { renderBook } from "../src/publishing/book.js";
 const options = parsePublishingArgs(process.argv.slice(2));
+const registered = bookFor(options.bookId);
+if (!registered) throw new Error(`Unknown registered book: ${options.bookId}`);
+const book = registered.content;
 const output = resolve(options.outputDirectory);
 const run = promisify(execFile);
 const hash = (data: string | Buffer) =>
   createHash("sha256").update(data).digest("hex");
-const sourcePaths = [
-  "books/fraction-field-guide/book.ts",
-  "books/fraction-field-guide/schema.ts",
-  "src/publishing/book.tsx",
-  "src/publishing/MathText.tsx",
-  "src/publishing/diagrams.tsx",
-  "src/publishing/schema.ts",
-  "src/publishing/label-layout.ts",
-  "src/publishing/ArrayDrawing.tsx",
-  "src/publishing/ArrayCover.tsx",
-  "src/publishing/CoverFigure.tsx",
-  "src/publishing/validate.ts",
-  "src/publishing/options.ts",
-  "scripts/publish-book.ts",
-];
-const sourceHashes = Object.fromEntries(
-  await Promise.all(
-    sourcePaths.map(async (path) => [
-      path,
-      hash(
-        await readFile(fileURLToPath(new URL(`../${path}`, import.meta.url))),
-      ),
-    ]),
-  ),
+const sourceHashes = await publicationSourceHashes(
+  fileURLToPath(new URL("..", import.meta.url)),
+  book.id,
 );
 // Require independent PDF tooling before writing publication artifacts.
 await run("pdfinfo", ["-v"]);
 await run("pdftotext", ["-v"]);
 await mkdir(output, { recursive: true });
-const html = renderBook(fractionFieldGuide);
+const html = renderBook(book);
 await writeFile(resolve(output, "index.html"), html);
 const browser = await chromium.launch({ headless: true });
 try {
@@ -105,23 +88,23 @@ try {
       `Diagram labels overflow: ${JSON.stringify(diagramOverflow)}`,
     );
   await page.pdf({
-    path: resolve(output, "fraction-field-guide.pdf"),
+    path: resolve(output, `${book.id}.pdf`),
     format: "Letter",
     printBackground: true,
     preferCSSPageSize: true,
     tagged: true,
     outline: true,
   });
-  const pdfPath = resolve(output, "fraction-field-guide.pdf");
+  const pdfPath = resolve(output, `${book.id}.pdf`);
   const { stdout: pdfInfo } = await run("pdfinfo", [pdfPath]);
   const physicalPages = Number(/^Pages:\s+(\d+)/m.exec(pdfInfo)?.[1]);
-  if (physicalPages !== fractionFieldGuide.pages.length)
+  if (physicalPages !== book.pages.length)
     throw new Error(`PDF page count mismatch: ${physicalPages}`);
   const { stdout: extractedText } = await run("pdftotext", [pdfPath, "-"], {
     maxBuffer: 8 * 1024 * 1024,
   });
   const normalizedText = extractedText.replace(/\s+/g, " ");
-  const missingTitles = fractionFieldGuide.pages
+  const missingTitles = book.pages
     .filter((p) => !normalizedText.includes(p.title.replace(/\s+/g, " ")))
     .map((p) => p.id);
   if (missingTitles.length)
@@ -157,10 +140,10 @@ try {
     resolve(output, "validation.json"),
     JSON.stringify(
       {
-        book: fractionFieldGuide.id,
-        version: fractionFieldGuide.version,
-        contentSha256: hash(JSON.stringify(fractionFieldGuide)),
-        pages: fractionFieldGuide.pages.length,
+        book: book.id,
+        version: book.version,
+        contentSha256: hash(JSON.stringify(book)),
+        pages: book.pages.length,
         physicalPdfPages: physicalPages,
         pdfTagged: /^Tagged:\s+yes/m.test(pdfInfo),
         extractedTextCharacters: extractedText.length,
@@ -178,9 +161,7 @@ try {
       2,
     ),
   );
-  console.log(
-    `Published ${fractionFieldGuide.pages.length} pages to ${output}`,
-  );
+  console.log(`Published ${book.pages.length} pages to ${output}`);
 } finally {
   await browser.close();
 }

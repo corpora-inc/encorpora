@@ -1,3 +1,4 @@
+import { labelLanes } from "./label-layout.js";
 import type { Diagram, MathBook, Rational } from "./schema.js";
 export function rational(value: Rational): number {
   if (
@@ -97,6 +98,47 @@ export function validateDiagram(d: Diagram): void {
         for (const value of [jump.from, jump.to])
           if (rational(value) < min || rational(value) > max)
             throw new Error("Number-line jump out of range");
+      if (max - min > 12) {
+        if (
+          d.marks.some((mark) => !Number.isInteger(rational(mark.at))) ||
+          jumps.some((jump) => jump.label.length > 12)
+        )
+          throw new Error(
+            "Extended integer lines require whole-number marks and concise jump labels",
+          );
+        const position = (at: number, text: string) => {
+          const half = Math.max(10, text.length * 5.5);
+          return {
+            text,
+            center: Math.max(
+              half + 3,
+              Math.min(317 - half, 24 + ((at - min) / (max - min)) * 272),
+            ),
+          };
+        };
+        const labels = [
+          ...d.marks.map((mark) => position(rational(mark.at), mark.label)),
+          ...Array.from({ length: max - min + 1 }, (_, i) => min + i)
+            .filter(
+              (n) =>
+                (n === min || n === max || n % d.integerLabelInterval! === 0) &&
+                !d.marks.some((mark) => rational(mark.at) === n),
+            )
+            .map((n) => position(n, String(n))),
+        ];
+        const jumpLabels = jumps.map((jump) =>
+          position((rational(jump.from) + rational(jump.to)) / 2, jump.label),
+        );
+        // More than one additional lane shrinks labels under the short-screen SVG cap.
+        if (
+          Math.max(0, ...labelLanes(labels, 11, 5)) +
+            Math.max(0, ...labelLanes(jumpLabels, 11, 5)) >
+          1
+        )
+          throw new Error(
+            "Extended integer line labels are too dense for phone reading",
+          );
+      }
       break;
     }
     case "array":

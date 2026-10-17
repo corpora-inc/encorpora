@@ -293,6 +293,8 @@ test("publication provenance includes nested author modules and rejects path tra
       join(root, "books/example/linked.ts"),
     );
     await assert.rejects(publicationSourceHashes(root, "example"), /symlink/);
+    await symlink(join(root, "books/example"), join(root, "books/linked"));
+    await assert.rejects(publicationSourceHashes(root, "linked"), /symlink/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -343,4 +345,77 @@ test("mobile integer line has exact whole ticks, sparse labels and four disjoint
     ],
   );
   assert.equal((html.match(/marker-end=/g) ?? []).length, 4);
+});
+
+test("mobile line separates neighboring labels without moving their mathematical points", async () => {
+  const { BookIntegerLineDrawing } =
+    await import("../src/web/BookIntegerLineDrawing.js");
+  const d: Extract<Diagram, { kind: "number-line" }> = {
+    kind: "number-line",
+    id: "crowded",
+    alt: "Two nearby named points",
+    caption: "The points remain one unit apart.",
+    wholeLabel: "Each small interval is one unit",
+    min: [0, 1],
+    max: [20, 1],
+    divisionsPerUnit: 1,
+    integerLabelInterval: 5,
+    marks: [
+      { at: [0, 1], label: "Start" },
+      { at: [1, 1], label: "Point" },
+    ],
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(BookIntegerLineDrawing, { diagram: d }),
+  );
+  const labels = [
+    ...html.matchAll(
+      /<text data-line-label="([^"]+)" x="([^"]+)" y="([^"]+)" text-anchor="middle">([^<]+)<\/text>/g,
+    ),
+  ].map((m) => ({
+    at: Number(m[1]),
+    x: Number(m[2]),
+    y: Number(m[3]),
+    text: m[4]!,
+  }));
+  assert.equal(labels.length, 6);
+  for (let i = 0; i < labels.length; i++)
+    for (let j = 0; j < i; j++) {
+      const a = labels[i]!,
+        b = labels[j]!;
+      if (a.y === b.y)
+        assert.ok(Math.abs(a.x - b.x) > (a.text.length + b.text.length) * 5.5);
+    }
+  assert.match(html, /<circle cx="24"/);
+  assert.match(html, /<circle cx="37.6"/);
+});
+
+test("extended integer line rejects dense labels and marks between whole-unit ticks", () => {
+  const d: Extract<Diagram, { kind: "number-line" }> = {
+    kind: "number-line",
+    id: "dense",
+    alt: "Integer points",
+    caption: "Whole units",
+    wholeLabel: "Each interval is one unit",
+    min: [0, 1],
+    max: [20, 1],
+    divisionsPerUnit: 1,
+    integerLabelInterval: 5,
+    marks: [],
+  };
+  assert.throws(
+    () => validateDiagram({ ...d, marks: [{ at: [1, 2], label: "Half" }] }),
+    /whole-number/,
+  );
+  assert.throws(
+    () =>
+      validateDiagram({
+        ...d,
+        marks: Array.from({ length: 12 }, (_, i) => ({
+          at: [i, 1],
+          label: `Point${String(i).padStart(3, "0")}`,
+        })),
+      }),
+    /too dense/,
+  );
 });
