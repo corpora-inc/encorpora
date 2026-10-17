@@ -31,6 +31,7 @@
     "funding:import": "tsx scripts/funding-import.ts",
     "test:annual-ui": "tsx scripts/verify-annual-purchase-ui.ts",
     "test:graphical-ui": "tsx scripts/verify-graphical-ui.ts",
+    "test:measurement-ui": "tsx scripts/verify-measurement-ui.ts",
     "test:progress-ui": "tsx scripts/verify-progress-ui.ts",
     "test:consent-ui": "tsx scripts/verify-consent-ui.ts",
     "consent:policy": "tsx scripts/consent-policy.ts",
@@ -38,7 +39,6 @@
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
     "test:native-session": "tsx scripts/verify-native-session.ts",
     "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts",
-    "test:measurement-ui": "tsx scripts/verify-measurement-ui.ts",
     "consent:deliver": "tsx scripts/consent-delivery.ts"
   },
   "dependencies": {
