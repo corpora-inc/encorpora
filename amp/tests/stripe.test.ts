@@ -250,8 +250,8 @@ test("hosted Checkout fixes product, quantity, customer, metadata and redirects 
     allowed_payment_method_types: ["card"],
     automatic_tax: { enabled: false },
     customer_update: { address: "auto" },
-    success_url: "https://example.test/?billing=processing",
-    cancel_url: "https://example.test/?billing=canceled",
+    success_url: `https://example.test/?billing=processing&purchase=${binding.id}`,
+    cancel_url: `https://example.test/?billing=canceled&purchase=${binding.id}`,
   });
   assert.deepEqual(requestOptions, {
     idempotencyKey: `amp:checkout:${binding.id}`,

@@ -93,8 +93,8 @@ export class StripeGateway {
         allowed_payment_method_types: ["card"],
         automatic_tax: { enabled: this.config.automaticTax },
         customer_update: { address: "auto" },
-        success_url: `${this.config.appOrigin}/?billing=processing`,
-        cancel_url: `${this.config.appOrigin}/?billing=canceled`,
+        success_url: `${this.config.appOrigin}/?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
+        cancel_url: `${this.config.appOrigin}/?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
       },
       { idempotencyKey: `amp:checkout:${checkoutId}` },
     );
