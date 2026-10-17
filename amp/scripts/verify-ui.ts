@@ -11,7 +11,7 @@ const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
 await migrate(url);
-const repository = new PostgresRepository(url);
+const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
 const learner = await repository.create(account, "Browser verification");
 const learnerIds = [learner.id];

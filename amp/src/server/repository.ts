@@ -1,7 +1,11 @@
+import {
+  lockLearningAccount,
+  learningConsentActive,
+} from "./account-access.js";
 import { randomUUID } from "node:crypto";
 import { Pool, type PoolClient } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { eq } from "drizzle-orm";
+import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
 import type { SkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
@@ -54,7 +58,10 @@ export interface Repository {
 }
 export class PostgresRepository implements Repository {
   readonly pool: Pool;
-  constructor(connectionString: string) {
+  constructor(
+    connectionString: string,
+    private readonly options: { development?: boolean } = {},
+  ) {
     this.pool = new Pool({ connectionString, max: 10 });
   }
   async hasConsent(accountId: string) {
@@ -68,14 +75,42 @@ export class PostgresRepository implements Repository {
     return drizzle(this.pool)
       .select({ id: schema.learners.id, name: schema.learners.name })
       .from(schema.learners)
-      .where(eq(schema.learners.accountId, accountId));
+      .where(
+        and(
+          eq(schema.learners.accountId, accountId),
+          isNull(schema.learners.deletedAt),
+        ),
+      );
   }
   async create(accountId: string, name: string) {
     const learner = { id: randomUUID(), name };
-    await drizzle(this.pool)
-      .insert(schema.learners)
-      .values({ ...learner, accountId });
-    return learner;
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN");
+      await lockLearningAccount(client, accountId);
+      if (
+        !(await learningConsentActive(
+          client,
+          accountId,
+          this.options.development,
+        ))
+      )
+        throw new ApiError(
+          403,
+          "Parent consent is required before collecting learning data",
+        );
+      await client.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,$3)",
+        [learner.id, accountId, learner.name],
+      );
+      await client.query("COMMIT");
+      return learner;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
   }
   async transaction<T>(
     accountId: string,
@@ -85,8 +120,20 @@ export class PostgresRepository implements Repository {
     const client = await this.pool.connect();
     try {
       await client.query("BEGIN");
+      await lockLearningAccount(client, accountId);
+      if (
+        !(await learningConsentActive(
+          client,
+          accountId,
+          this.options.development,
+        ))
+      )
+        throw new ApiError(
+          403,
+          "Parent consent is required before collecting learning data",
+        );
       const found = await client.query(
-        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 FOR UPDATE",
+        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR UPDATE",
         [learnerId, accountId],
       );
       if (!found.rowCount) throw new ApiError(404, "Learner not found");

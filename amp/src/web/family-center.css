@@ -1,0 +1,186 @@
+.family-center {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  color: #183e3a;
+}
+.family-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.family-heading h1 {
+  font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+.family-heading h1:focus,
+.family-dialog h2:focus {
+  outline: none;
+}
+.family-intro {
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.family-section {
+  padding: 28px 0;
+  border-bottom: 1px solid #d6dfd2;
+}
+.family-section h2 {
+  font-size: 24px;
+  margin: 0 0 14px;
+}
+.family-section p {
+  max-width: 720px;
+  line-height: 1.6;
+}
+.family-learners {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 18px;
+}
+.family-learner {
+  background: #fffefa;
+  border: 1px solid #d6dfd2;
+  border-radius: 16px;
+  padding: 22px;
+  min-width: 0;
+}
+.family-learner h3 {
+  font-size: 21px;
+  overflow-wrap: anywhere;
+  margin: 0 0 14px;
+}
+.family-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 16px;
+}
+.family-center button {
+  min-height: 44px;
+  padding: 10px 18px;
+  white-space: normal;
+}
+.family-center button:focus-visible,
+.family-center input:focus-visible {
+  outline: 3px solid #367c6b;
+  outline-offset: 3px;
+}
+.family-center button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+.family-center input {
+  width: 100%;
+  font-size: 16px;
+  min-height: 44px;
+}
+.family-center label {
+  display: block;
+  margin: 12px 0 6px;
+}
+.family-danger {
+  background: #923f35;
+  color: #fff;
+}
+.family-danger:hover {
+  background: #733027;
+}
+.family-danger-link {
+  color: #7d382f;
+  background: #f9ebe6;
+}
+.family-secondary,
+.family-access {
+  font-size: 13px;
+  color: #4c625b;
+  line-height: 1.5;
+}
+.family-access {
+  padding-left: 20px;
+}
+.family-billing {
+  margin-top: 20px;
+  border-top: 1px solid #d6dfd2;
+  padding-top: 4px;
+}
+.family-billing p {
+  font-size: 14px;
+}
+.family-notice,
+.family-error {
+  padding: 16px 20px;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+.family-notice {
+  background: #e8f1e3;
+  border: 1px solid #bdcfb5;
+}
+.family-error {
+  background: #fff0e7;
+  border: 1px solid #d6ae95;
+  color: #73372b;
+}
+.family-consent-status {
+  font-weight: 650;
+}
+.family-retention {
+  font-size: 14px;
+}
+.family-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  overflow: auto;
+  border: 1px solid #d6dfd2;
+  border-radius: 18px;
+  padding: 28px;
+  color: #183e3a;
+  background: #fffefa;
+  box-shadow: 0 20px 80px #173e3a33;
+}
+.family-dialog::backdrop {
+  background: #173e3a66;
+}
+.family-dialog h2 {
+  font-size: 27px;
+  line-height: 1.2;
+  margin-top: 0;
+}
+.family-dialog p {
+  line-height: 1.6;
+}
+.family-dialog button {
+  min-height: 44px;
+  padding: 10px 18px;
+}
+.family-dialog .family-actions {
+  justify-content: flex-end;
+}
+@media (max-width: 600px) {
+  .family-heading {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .family-center {
+    padding: 16px 16px 36px;
+  }
+  .family-section {
+    padding: 24px 0;
+  }
+  .family-dialog {
+    padding: 22px;
+  }
+  .family-dialog .family-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .family-dialog h2 {
+    font-size: 24px;
+  }
+}

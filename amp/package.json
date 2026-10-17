@@ -22,7 +22,9 @@
     "production:queue": "tsx scripts/production-queue.ts",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/**/*.ts\"",
     "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
-    "billing:worker": "tsx scripts/stripe-worker.ts"
+    "privacy:retention": "tsx scripts/privacy-retention.ts",
+    "billing:worker": "tsx scripts/stripe-worker.ts",
+    "test:family-ui": "tsx scripts/verify-family-ui.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",

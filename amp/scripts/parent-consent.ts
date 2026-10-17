@@ -18,8 +18,13 @@ const record = schema.parse(
   JSON.parse(await readFile(process.argv[2], "utf8")),
 );
 const pool = new Pool({ connectionString: process.env.AMP_DATABASE_URL });
+const client = await pool.connect();
 try {
-  await pool.query(
+  await client.query("BEGIN");
+  await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+    record.accountId,
+  ]);
+  await client.query(
     `INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference,withdrawn_at)
  VALUES($1,$2,$3,$4,CASE WHEN $5 THEN now() ELSE NULL END)
  ON CONFLICT(account_id) DO UPDATE SET policy_version=EXCLUDED.policy_version,verification_method=EXCLUDED.verification_method,evidence_reference=EXCLUDED.evidence_reference,recorded_at=now(),withdrawn_at=EXCLUDED.withdrawn_at`,
@@ -31,7 +36,12 @@ try {
       record.withdraw,
     ],
   );
+  await client.query("COMMIT");
   console.log("Parent consent record updated.");
+} catch (error) {
+  await client.query("ROLLBACK");
+  throw error;
 } finally {
+  client.release();
   await pool.end();
 }
