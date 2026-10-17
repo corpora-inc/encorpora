@@ -160,3 +160,93 @@ test("extended number lines keep whole-unit ticks and sparse labels with disjoin
     }),
   );
 });
+
+test("phone array geometry partitions the same exact unit cells", async () => {
+  const { BookArrayDrawing } = await import("../src/web/BookArrayDrawing.js");
+  for (const rows of [1, 3, 12])
+    for (const columns of [1, 7, 12]) {
+      const d = {
+        ...array,
+        rows,
+        columns,
+        splitAfterRow: rows > 1 ? 1 : undefined,
+        splitAfterColumn: columns > 1 ? 1 : undefined,
+      };
+      const html = renderToStaticMarkup(
+        React.createElement(BookArrayDrawing, { diagram: d }),
+      );
+      const rects = [...html.matchAll(/<rect\b[^>]*data-array-row[^>]*>/g)].map(
+        ([tag]) =>
+          Object.fromEntries(
+            [...tag.matchAll(/([\w-]+)="([^"]*)"/g)].map(([, k, v]) => [
+              k!,
+              v!,
+            ]),
+          ),
+      );
+      const cell = Math.min(28, 280 / columns, 200 / rows),
+        left = (320 - columns * cell) / 2;
+      assert.equal(rects.length, rows * columns);
+      for (const r of rects) {
+        assert.equal(Number(r.x), left + Number(r["data-array-column"]) * cell);
+        assert.equal(Number(r.y), 10 + Number(r["data-array-row"]) * cell);
+        assert.equal(Number(r.width), cell);
+        assert.equal(Number(r.height), cell);
+      }
+    }
+});
+
+test("extended workspace retains exact physical vector dimensions", async () => {
+  const { renderBook } = await import("../src/publishing/book.js");
+  const html = renderBook({
+    id: "workspace-check",
+    version: "1",
+    title: "Workspace",
+    subtitle: "",
+    audience: "Review",
+    description: "Exact physical workspace",
+    pages: [
+      {
+        id: "work",
+        kind: "workshop",
+        eyebrow: "Draw",
+        title: "Explain a model",
+        blocks: [
+          {
+            kind: "task",
+            id: "draw",
+            prompt: "Draw a labeled model.",
+            response: { kind: "grid", size: "extended" },
+          },
+          {
+            kind: "solution",
+            taskId: "draw",
+            answer: "A labeled model.",
+            reasoning: "Quantities and units agree.",
+          },
+        ],
+      },
+    ],
+  });
+  assert.match(html, /workspace grid extended/);
+  assert.match(html, /viewBox="0 0 691.2 230.4"/);
+  assert.match(html, /\.workspace.extended\{height:2.4in\}/);
+});
+test("publisher selects an identifier rather than loading caller-supplied source paths", async () => {
+  const { parsePublishingArgs } = await import("../src/publishing/options.js");
+  assert.deepEqual(
+    parsePublishingArgs(["--book", "equal-groups-workshop", "--all-pages"]),
+    {
+      bookId: "equal-groups-workshop",
+      outputDirectory: "artifacts/books/equal-groups-workshop",
+      allPages: true,
+    },
+  );
+  for (const args of [
+    ["--book", "../secrets"],
+    ["--book", "/tmp/book.ts"],
+    ["--book", "https://example.org/book"],
+    ["--book", "one", "--book", "two"],
+  ])
+    assert.throws(() => parsePublishingArgs(args));
+});

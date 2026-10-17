@@ -92,3 +92,20 @@ the unit and context. Dashed split boundaries preserve the partition in grayscal
 Opening-page arrays use a cover composition whose multiplication equation is
 derived from the row and column counts. Print layout remains Letter-oriented;
 readers must implement the array variant before registering an array-based book.
+
+
+Integer grouping models can show totals through 30 with whole-unit cells and
+whole-number group sizes. Above 12 units they are limited to 12 groups; the
+last incomplete group displays the exact number of units left. Fractional
+models retain their smaller bounds. Number-line spans above 12 and through 30
+require integer endpoints within −30…30, whole-unit ticks, and an explicit
+`integerLabelInterval` keeping the scale sparse. Endpoints retain their labels.
+Jumps are forward and disjoint, with at most four per diagram. Backward arrows,
+overlapping jumps and zero-length jumps require a different model contract;
+authors must not use this variant for them. Jump labels use collision lanes.
+
+Use `response.size: "extended"` for a task that needs a substantial diagram or
+constraint table. It provides 2.4 inches of workspace with the same physical
+rule/grid spacing as the smaller sizes. Choose sizes from the learner's work,
+then run the full-page overflow check; the publisher does not shrink text to
+make a crowded page fit.

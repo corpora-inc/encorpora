@@ -75,7 +75,7 @@ export type BookBlock =
       prompt: string;
       response: {
         kind: "lines" | "grid" | "blank";
-        size: "short" | "medium" | "large";
+        size: "short" | "medium" | "large" | "extended";
       };
     }
   | {

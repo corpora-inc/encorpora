@@ -55,6 +55,10 @@ export function validateDiagram(d: Diagram): void {
         max - min > 12 &&
         (!Number.isInteger(min) ||
           !Number.isInteger(max) ||
+          Math.abs(min) > 30 ||
+          Math.abs(max) > 30 ||
+          d.marks.length > 12 ||
+          d.marks.some((mark) => mark.label.length > 8) ||
           d.divisionsPerUnit !== 1 ||
           d.integerLabelInterval === undefined ||
           (max - min) / d.integerLabelInterval > 12)
@@ -209,7 +213,9 @@ export function validateBook(book: MathBook): void {
           tasks.add(block.id);
           if (
             !["lines", "grid", "blank"].includes(block.response.kind) ||
-            !["short", "medium", "large"].includes(block.response.size)
+            !["short", "medium", "large", "extended"].includes(
+              block.response.size,
+            )
           )
             throw new Error("Invalid response workspace");
           break;

@@ -158,7 +158,9 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
           .filter(
             (v) =>
               Number.isInteger(v) &&
-              v % (d.integerLabelInterval ?? 1) === 0 &&
+              (v % (d.integerLabelInterval ?? 1) === 0 ||
+                v === min ||
+                v === max) &&
               !d.marks.some(
                 (mark) => BigInt(mark.at[0]) === BigInt(v) * BigInt(mark.at[1]),
               ),
