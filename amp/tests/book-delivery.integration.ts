@@ -34,7 +34,7 @@ test(
     const path = `/api/v1/learners/${learner.id}/books/${book.id}`;
     const post = (
       action: string,
-      payload: unknown = {},
+      payload: { problemId?: string } = {},
       headers: Record<string, string> = {},
     ) =>
       app.inject({
