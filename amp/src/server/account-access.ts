@@ -25,7 +25,7 @@ export async function learningConsentActive(
   if (consent.verification_method !== "internal-email-plus-v1") return true;
   const effective = await client.query(
     `SELECT 1 FROM amp_consent_requests r JOIN amp_consent_policy p ON p.singleton AND p.digest=r.policy_digest AND p.generation=r.policy_generation
-    WHERE r.id::text=$1 AND r.account_id=$2 AND r.phase='active' AND r.completed_at IS NOT NULL AND p.enabled AND p.reviewed_until>now() FOR SHARE OF p`,
+    WHERE r.id::text=$1 AND r.account_id=$2 AND r.phase='active' AND r.completed_at IS NOT NULL AND p.enabled AND p.reviewed_until>clock_timestamp() FOR SHARE OF p`,
     [consent.evidence_reference, accountId],
   );
   return !!effective.rowCount;

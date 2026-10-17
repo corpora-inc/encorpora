@@ -1,3 +1,5 @@
+import { offlineSigningConfiguration } from "../offline/signing.js";
+import { registerOfflineRoutes } from "../offline/routes.js";
 import { consentConfiguration } from "../parent-consent/config.js";
 import { ConsentRepository } from "../parent-consent/repository.js";
 import { registerConsentRoutes } from "../parent-consent/routes.js";
@@ -74,6 +76,11 @@ if (billingConfig) {
     config: billingConfig,
   });
 } else await registerUnavailableBilling(app, authenticate);
+await registerOfflineRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  signer: await offlineSigningConfiguration(process.env),
+});
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {
