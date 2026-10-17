@@ -12,7 +12,12 @@ export interface FundingFact {
 }
 export type ApprovalStage =
   | { status: "not-applied" | "unknown" | "pending" | "rejected" }
-  | { status: "approved"; evidence: string; effectiveOn: string; expiresOn?: string };
+  | {
+      status: "approved";
+      evidence: string;
+      effectiveOn: string;
+      expiresOn?: string;
+    };
 export interface FundingProgram {
   id: string;
   jurisdiction: string;
@@ -21,7 +26,8 @@ export interface FundingProgram {
   researchStatus: "official-sources-reviewed" | "platform-discovered";
   priority: "first-wave" | "second-wave" | "research";
   administrator: string;
-  platform: "ClassWallet" | "Step Up / MyScholarShop" | "Odyssey" | "unverified";
+  platform:
+    "ClassWallet" | "Step Up / MyScholarShop" | "Odyssey" | "unverified";
   facts: readonly FundingFact[];
   annualSubscription: "category-supported-term-unconfirmed" | "unconfirmed";
   purchasingRoutes: readonly ("marketplace" | "direct-pay" | "reimbursement")[];

@@ -1,79 +1,298 @@
-import type { GradeBand, Skill, Standard } from './types.js';
+import type { GradeBand, Skill, Standard } from "./types.js";
 
 // Original K–8 summaries from the Corpora catalog; identifiers reviewed 2026-09-27.
 const rows: [string, string, string][] = [
- ['K/CC','AAABBCC','Count by ones and tens|Continue counting from a given number|Connect written numerals and quantities|Connect counting order to group size|Count arranged and scattered collections|Compare group sizes by matching|Order written numbers through ten'],
- ['K/OA','AAAAA','Represent joining and separating|Solve small addition and subtraction situations|Split small quantities in several ways|Find a partner to make ten|Recall addition and subtraction through five'],
- ['K/NBT','A','Build teen numbers from ten and extras'],
- ['K/MD','AAB','Describe measurable object properties|Compare objects by shared attributes|Sort objects and count categories'],
- ['K/G','AAABBB','Name shapes and describe their positions|Recognize shapes across sizes and orientations|Distinguish flat shapes from solids|Compare shape parts and properties|Construct shapes using everyday materials|Join simple shapes into larger shapes'],
- ['1/OA','AABBCCDD','Model addition and subtraction stories|Combine three small quantities|Use operation structure to simplify calculations|Connect subtraction with a missing addend|Connect counting steps with arithmetic|Develop strategies for small-number arithmetic|Interpret equality in varied equations|Find missing entries in arithmetic equations'],
- ['1/NBT','ABBCCC','Read and count numbers through 120|Compose tens and remaining ones|Compare two-digit quantities|Add using tens and ones|Find ten more or ten less|Subtract quantities of whole tens'],
- ['1/MD','AABC','Order and indirectly compare lengths|Measure by repeating an equal unit|Read hour and half-hour times|Organize and question small categorical datasets'],
- ['1/G','AAA','Separate defining from incidental shape attributes|Compose shapes and solids from pieces|Partition wholes into halves and quarters'],
- ['2/OA','ABCC','Solve one-step and two-step quantity stories|Recall small addition and subtraction facts|Recognize odd and even group sizes|Count equal rows using repeated addition'],
- ['2/NBT','AAAABBBBB','Compose hundreds tens and ones|Skip-count within one thousand|Read expanded and written three-digit numbers|Compare three-digit quantities|Calculate sums and differences through 100|Combine several two-digit addends|Regroup sums and differences through 1000|Mentally change hundreds and tens|Explain arithmetic through place-value structure'],
- ['2/MD','AAAABBCCDD','Choose tools for measuring length|Connect unit size with measurement count|Estimate lengths in familiar units|Find differences between measured lengths|Model length problems with arithmetic|Represent arithmetic on a number line|Read five-minute clock intervals|Calculate values using bills and coins|Display measured lengths in dot plots|Build and interpret categorical graphs'],
- ['2/G','AAA','Identify figures by sides angles and faces|Tile rectangles with equal square rows|Partition wholes into halves thirds quarters'],
- ['3/OA','AAAABBCDD','Interpret multiplication as equal groups|Interpret division as grouping or sharing|Model equal-group stories with operations|Find missing factors and quotients|Use multiplication structure to calculate|Connect division with missing factors|Recall multiplication and division facts|Model two-step stories and check plausibility|Explain regularities in arithmetic patterns'],
- ['3/NBT','AAA','Round quantities to tens and hundreds|Calculate sums and differences through 1000|Multiply small numbers by whole tens'],
- ['3/NF','AAA','Interpret numerator and denominator through parts|Locate fractions along a number line|Explain equivalence and compare fractional quantities'],
- ['3/MD','AABBCCCD','Calculate elapsed time in minutes|Measure and calculate mass and capacity|Interpret scaled categorical graphs|Plot fractional length measurements|Interpret area through unit-square coverage|Count square units to measure area|Connect rectangular area with multiplication|Find perimeters and compare rectangle dimensions'],
- ['3/G','AA','Organize quadrilaterals by shared properties|Describe equal-area pieces with fractions'],
- ['4/OA','AAABC','Interpret multiplicative comparisons|Model multiplicative comparison stories|Solve multistep stories with remainder meaning|Investigate divisors multiples and primality|Extend rules and explain emerging patterns'],
- ['4/NBT','AAABBB','Connect neighboring place-value positions|Represent and compare large whole numbers|Round large quantities to chosen places|Use algorithms for whole-number sums differences|Multiply larger whole numbers with representations|Divide larger whole numbers with remainders'],
- ['4/NF','AABBCCC','Explain equivalent fractional representations|Compare fractions with differing denominators|Compose and decompose like-denominator fractions|Multiply fractions by whole quantities|Connect tenths and hundredths additively|Connect decimal and fractional representations|Compare decimal quantities through hundredths'],
- ['4/MD','AAABCCC','Convert between related measurement units|Solve measurement stories with conversions|Use rectangle area and perimeter relationships|Interpret plots of fractional measurements|Interpret angles through rotations and degrees|Measure and sketch specified angles|Combine and subtract adjacent angle measures'],
- ['4/G','AAA','Identify lines rays and angle relationships|Classify figures through line and angle properties|Identify and draw reflection symmetry'],
- ['5/OA','AAB','Evaluate expressions with grouping symbols|Translate calculation descriptions into expressions|Connect paired patterns with coordinate graphs'],
- ['5/NBT','AAAABBB','Explain tenfold and tenth place-value changes|Connect decimal shifts with powers of ten|Represent and compare thousandth-place decimals|Round decimal quantities to chosen places|Multiply whole numbers using algorithms|Divide whole numbers by two-digit divisors|Calculate decimal sums differences products quotients'],
- ['5/NF','AABBBBB','Calculate sums and differences across denominators|Solve fractional addition and subtraction stories|Interpret a fraction as division|Multiply fractions using quantity and area models|Interpret multiplication as scaling|Solve fractional multiplication situations|Divide unit fractions and whole quantities'],
- ['5/MD','ABCCC','Convert measurements within a unit system|Plot fractional measurements and solve problems|Interpret volume through cubic-unit filling|Count cubes in rectangular prisms|Connect prism volume with multiplication and addition'],
- ['5/G','AABB','Locate points using coordinate axes|Interpret first-quadrant coordinates in situations|Connect inherited properties of shape classes|Organize shapes into classification hierarchies'],
- ['6/RP','AAA','Describe relative quantities using ratios|Interpret rates per single unit|Use ratios for tables percentages conversions'],
- ['6/NS','ABBBCCCC','Divide fractions and model their quotients|Divide whole numbers using algorithms|Calculate with decimals using algorithms|Find common divisors and common multiples|Interpret signed quantities in context|Locate signed numbers and coordinate points|Compare signed values and interpret absolute value|Solve coordinate problems including aligned distances'],
- ['6/EE','AAAABBBBC','Evaluate whole-number powers|Build interpret and evaluate variable expressions|Transform expressions using operation properties|Recognize equivalent expressions|Interpret solutions as values making statements true|Use variables to represent unknown quantities|Solve single-operation equations|Represent inequalities and their solution sets|Connect dependent quantities across representations'],
- ['6/G','AAAA','Find polygon areas by decomposition|Compute prism volume with fractional edges|Use coordinates to determine polygon lengths|Use nets to calculate surface area'],
- ['6/SP','AAABB','Distinguish questions that anticipate variation|Describe dataset center spread and shape|Distinguish center from measures of variability|Represent numerical distributions in varied plots|Summarize data with context and numerical measures'],
- ['7/RP','AAA','Calculate unit rates involving fractions|Represent and recognize proportional relationships|Solve percentage and ratio applications'],
- ['7/NS','AAA','Add and subtract signed rational quantities|Multiply divide and convert signed rationals|Solve contextual rational-number calculations'],
- ['7/EE','AABB','Rewrite linear expressions using algebraic structure|Interpret equivalent forms in context|Solve multistep rational-number situations|Construct and solve equations and inequalities'],
- ['7/G','AAABBB','Calculate measurements from scale drawings|Construct figures and investigate triangle uniqueness|Describe cross-sections of solids|Relate circle radius circumference and area|Use angle relationships to solve unknowns|Measure compound figures and right prisms'],
- ['7/SP','AABBCCCC','Use representative samples for population questions|Estimate population quantities and sampling variation|Compare distributions relative to their variability|Draw population comparisons from sample summaries|Interpret probability on a zero-to-one scale|Compare experimental frequencies with probability predictions|Build and assess event probability models|Organize and simulate compound event outcomes'],
- ['8/NS','AA','Distinguish rational and irrational expansions|Locate irrational values using rational approximations'],
- ['8/EE','AAAABBCC','Use integer exponent relationships|Evaluate roots and interpret root equations|Estimate quantities using powers of ten|Calculate and interpret scientific notation|Connect proportional rates with graph slope|Derive linear equations through slope relationships|Solve and classify single-variable linear equations|Solve simultaneous linear systems'],
- ['8/F','AAABB','Interpret functions as unique output assignments|Compare functions across representations|Distinguish linear from nonlinear functions|Model linear change and interpret parameters|Describe change from graphs and situations'],
- ['8/G','AAAAABBBC','Investigate properties preserved by rigid motions|Describe congruence through sequences of motions|Track coordinates through geometric transformations|Describe similarity through motions and dilation|Reason about triangle angles and parallel lines|Explain the right-triangle square relationship|Apply the right-triangle relationship to lengths|Calculate distances between coordinate points|Compute volumes of cones cylinders spheres'],
- ['8/SP','AAAA','Interpret associations in paired numerical data|Fit informal lines to scatter plots|Interpret linear-model slopes and intercepts|Investigate association with two-way frequency tables'],
+  [
+    "K/CC",
+    "AAABBCC",
+    "Count by ones and tens|Continue counting from a given number|Connect written numerals and quantities|Connect counting order to group size|Count arranged and scattered collections|Compare group sizes by matching|Order written numbers through ten",
+  ],
+  [
+    "K/OA",
+    "AAAAA",
+    "Represent joining and separating|Solve small addition and subtraction situations|Split small quantities in several ways|Find a partner to make ten|Recall addition and subtraction through five",
+  ],
+  ["K/NBT", "A", "Build teen numbers from ten and extras"],
+  [
+    "K/MD",
+    "AAB",
+    "Describe measurable object properties|Compare objects by shared attributes|Sort objects and count categories",
+  ],
+  [
+    "K/G",
+    "AAABBB",
+    "Name shapes and describe their positions|Recognize shapes across sizes and orientations|Distinguish flat shapes from solids|Compare shape parts and properties|Construct shapes using everyday materials|Join simple shapes into larger shapes",
+  ],
+  [
+    "1/OA",
+    "AABBCCDD",
+    "Model addition and subtraction stories|Combine three small quantities|Use operation structure to simplify calculations|Connect subtraction with a missing addend|Connect counting steps with arithmetic|Develop strategies for small-number arithmetic|Interpret equality in varied equations|Find missing entries in arithmetic equations",
+  ],
+  [
+    "1/NBT",
+    "ABBCCC",
+    "Read and count numbers through 120|Compose tens and remaining ones|Compare two-digit quantities|Add using tens and ones|Find ten more or ten less|Subtract quantities of whole tens",
+  ],
+  [
+    "1/MD",
+    "AABC",
+    "Order and indirectly compare lengths|Measure by repeating an equal unit|Read hour and half-hour times|Organize and question small categorical datasets",
+  ],
+  [
+    "1/G",
+    "AAA",
+    "Separate defining from incidental shape attributes|Compose shapes and solids from pieces|Partition wholes into halves and quarters",
+  ],
+  [
+    "2/OA",
+    "ABCC",
+    "Solve one-step and two-step quantity stories|Recall small addition and subtraction facts|Recognize odd and even group sizes|Count equal rows using repeated addition",
+  ],
+  [
+    "2/NBT",
+    "AAAABBBBB",
+    "Compose hundreds tens and ones|Skip-count within one thousand|Read expanded and written three-digit numbers|Compare three-digit quantities|Calculate sums and differences through 100|Combine several two-digit addends|Regroup sums and differences through 1000|Mentally change hundreds and tens|Explain arithmetic through place-value structure",
+  ],
+  [
+    "2/MD",
+    "AAAABBCCDD",
+    "Choose tools for measuring length|Connect unit size with measurement count|Estimate lengths in familiar units|Find differences between measured lengths|Model length problems with arithmetic|Represent arithmetic on a number line|Read five-minute clock intervals|Calculate values using bills and coins|Display measured lengths in dot plots|Build and interpret categorical graphs",
+  ],
+  [
+    "2/G",
+    "AAA",
+    "Identify figures by sides angles and faces|Tile rectangles with equal square rows|Partition wholes into halves thirds quarters",
+  ],
+  [
+    "3/OA",
+    "AAAABBCDD",
+    "Interpret multiplication as equal groups|Interpret division as grouping or sharing|Model equal-group stories with operations|Find missing factors and quotients|Use multiplication structure to calculate|Connect division with missing factors|Recall multiplication and division facts|Model two-step stories and check plausibility|Explain regularities in arithmetic patterns",
+  ],
+  [
+    "3/NBT",
+    "AAA",
+    "Round quantities to tens and hundreds|Calculate sums and differences through 1000|Multiply small numbers by whole tens",
+  ],
+  [
+    "3/NF",
+    "AAA",
+    "Interpret numerator and denominator through parts|Locate fractions along a number line|Explain equivalence and compare fractional quantities",
+  ],
+  [
+    "3/MD",
+    "AABBCCCD",
+    "Calculate elapsed time in minutes|Measure and calculate mass and capacity|Interpret scaled categorical graphs|Plot fractional length measurements|Interpret area through unit-square coverage|Count square units to measure area|Connect rectangular area with multiplication|Find perimeters and compare rectangle dimensions",
+  ],
+  [
+    "3/G",
+    "AA",
+    "Organize quadrilaterals by shared properties|Describe equal-area pieces with fractions",
+  ],
+  [
+    "4/OA",
+    "AAABC",
+    "Interpret multiplicative comparisons|Model multiplicative comparison stories|Solve multistep stories with remainder meaning|Investigate divisors multiples and primality|Extend rules and explain emerging patterns",
+  ],
+  [
+    "4/NBT",
+    "AAABBB",
+    "Connect neighboring place-value positions|Represent and compare large whole numbers|Round large quantities to chosen places|Use algorithms for whole-number sums differences|Multiply larger whole numbers with representations|Divide larger whole numbers with remainders",
+  ],
+  [
+    "4/NF",
+    "AABBCCC",
+    "Explain equivalent fractional representations|Compare fractions with differing denominators|Compose and decompose like-denominator fractions|Multiply fractions by whole quantities|Connect tenths and hundredths additively|Connect decimal and fractional representations|Compare decimal quantities through hundredths",
+  ],
+  [
+    "4/MD",
+    "AAABCCC",
+    "Convert between related measurement units|Solve measurement stories with conversions|Use rectangle area and perimeter relationships|Interpret plots of fractional measurements|Interpret angles through rotations and degrees|Measure and sketch specified angles|Combine and subtract adjacent angle measures",
+  ],
+  [
+    "4/G",
+    "AAA",
+    "Identify lines rays and angle relationships|Classify figures through line and angle properties|Identify and draw reflection symmetry",
+  ],
+  [
+    "5/OA",
+    "AAB",
+    "Evaluate expressions with grouping symbols|Translate calculation descriptions into expressions|Connect paired patterns with coordinate graphs",
+  ],
+  [
+    "5/NBT",
+    "AAAABBB",
+    "Explain tenfold and tenth place-value changes|Connect decimal shifts with powers of ten|Represent and compare thousandth-place decimals|Round decimal quantities to chosen places|Multiply whole numbers using algorithms|Divide whole numbers by two-digit divisors|Calculate decimal sums differences products quotients",
+  ],
+  [
+    "5/NF",
+    "AABBBBB",
+    "Calculate sums and differences across denominators|Solve fractional addition and subtraction stories|Interpret a fraction as division|Multiply fractions using quantity and area models|Interpret multiplication as scaling|Solve fractional multiplication situations|Divide unit fractions and whole quantities",
+  ],
+  [
+    "5/MD",
+    "ABCCC",
+    "Convert measurements within a unit system|Plot fractional measurements and solve problems|Interpret volume through cubic-unit filling|Count cubes in rectangular prisms|Connect prism volume with multiplication and addition",
+  ],
+  [
+    "5/G",
+    "AABB",
+    "Locate points using coordinate axes|Interpret first-quadrant coordinates in situations|Connect inherited properties of shape classes|Organize shapes into classification hierarchies",
+  ],
+  [
+    "6/RP",
+    "AAA",
+    "Describe relative quantities using ratios|Interpret rates per single unit|Use ratios for tables percentages conversions",
+  ],
+  [
+    "6/NS",
+    "ABBBCCCC",
+    "Divide fractions and model their quotients|Divide whole numbers using algorithms|Calculate with decimals using algorithms|Find common divisors and common multiples|Interpret signed quantities in context|Locate signed numbers and coordinate points|Compare signed values and interpret absolute value|Solve coordinate problems including aligned distances",
+  ],
+  [
+    "6/EE",
+    "AAAABBBBC",
+    "Evaluate whole-number powers|Build interpret and evaluate variable expressions|Transform expressions using operation properties|Recognize equivalent expressions|Interpret solutions as values making statements true|Use variables to represent unknown quantities|Solve single-operation equations|Represent inequalities and their solution sets|Connect dependent quantities across representations",
+  ],
+  [
+    "6/G",
+    "AAAA",
+    "Find polygon areas by decomposition|Compute prism volume with fractional edges|Use coordinates to determine polygon lengths|Use nets to calculate surface area",
+  ],
+  [
+    "6/SP",
+    "AAABB",
+    "Distinguish questions that anticipate variation|Describe dataset center spread and shape|Distinguish center from measures of variability|Represent numerical distributions in varied plots|Summarize data with context and numerical measures",
+  ],
+  [
+    "7/RP",
+    "AAA",
+    "Calculate unit rates involving fractions|Represent and recognize proportional relationships|Solve percentage and ratio applications",
+  ],
+  [
+    "7/NS",
+    "AAA",
+    "Add and subtract signed rational quantities|Multiply divide and convert signed rationals|Solve contextual rational-number calculations",
+  ],
+  [
+    "7/EE",
+    "AABB",
+    "Rewrite linear expressions using algebraic structure|Interpret equivalent forms in context|Solve multistep rational-number situations|Construct and solve equations and inequalities",
+  ],
+  [
+    "7/G",
+    "AAABBB",
+    "Calculate measurements from scale drawings|Construct figures and investigate triangle uniqueness|Describe cross-sections of solids|Relate circle radius circumference and area|Use angle relationships to solve unknowns|Measure compound figures and right prisms",
+  ],
+  [
+    "7/SP",
+    "AABBCCCC",
+    "Use representative samples for population questions|Estimate population quantities and sampling variation|Compare distributions relative to their variability|Draw population comparisons from sample summaries|Interpret probability on a zero-to-one scale|Compare experimental frequencies with probability predictions|Build and assess event probability models|Organize and simulate compound event outcomes",
+  ],
+  [
+    "8/NS",
+    "AA",
+    "Distinguish rational and irrational expansions|Locate irrational values using rational approximations",
+  ],
+  [
+    "8/EE",
+    "AAAABBCC",
+    "Use integer exponent relationships|Evaluate roots and interpret root equations|Estimate quantities using powers of ten|Calculate and interpret scientific notation|Connect proportional rates with graph slope|Derive linear equations through slope relationships|Solve and classify single-variable linear equations|Solve simultaneous linear systems",
+  ],
+  [
+    "8/F",
+    "AAABB",
+    "Interpret functions as unique output assignments|Compare functions across representations|Distinguish linear from nonlinear functions|Model linear change and interpret parameters|Describe change from graphs and situations",
+  ],
+  [
+    "8/G",
+    "AAAAABBBC",
+    "Investigate properties preserved by rigid motions|Describe congruence through sequences of motions|Track coordinates through geometric transformations|Describe similarity through motions and dilation|Reason about triangle angles and parallel lines|Explain the right-triangle square relationship|Apply the right-triangle relationship to lengths|Calculate distances between coordinate points|Compute volumes of cones cylinders spheres",
+  ],
+  [
+    "8/SP",
+    "AAAA",
+    "Interpret associations in paired numerical data|Fit informal lines to scatter plots|Interpret linear-model slopes and intercepts|Investigate association with two-way frequency tables",
+  ],
 ];
 
 export const standards: Standard[] = rows.flatMap(([path, clusters, text]) => {
-  const [grade, domain] = path.split('/');
-  const descriptions = text.split('|');
-  if (descriptions.length !== clusters.length) throw new Error(`Invalid standards row: ${path}`);
+  const [grade, domain] = path.split("/");
+  const descriptions = text.split("|");
+  if (descriptions.length !== clusters.length)
+    throw new Error(`Invalid standards row: ${path}`);
   return descriptions.map((description, i) => ({
-    id: `${grade}.${domain}.${clusters[i]}.${i + 1}`, framework: 'CCSS' as const,
-    description, scope: 'standard' as const, sourceReviewedAt: '2026-09-27',
+    id: `${grade}.${domain}.${clusters[i]}.${i + 1}`,
+    framework: "CCSS" as const,
+    description,
+    scope: "standard" as const,
+    sourceReviewedAt: "2026-09-27",
     sourceUrl: `https://www.thecorestandards.org/Math/Content/${path}/`,
   }));
 });
 
 // High-school category and SAT domain references are deliberately broad, not numbered-standard certification.
 const domains: [string, string, string][] = [
- ['HSN', 'Number systems, quantities, complex numbers, vectors and matrices', 'https://www.thecorestandards.org/Math/Content/HSN/'],
- ['HSA', 'Expressions, equations, inequalities and polynomial structure', 'https://www.thecorestandards.org/Math/Content/HSA/'],
- ['HSF', 'Function representations, transformations, models and trigonometry', 'https://www.thecorestandards.org/Math/Content/HSF/'],
- ['HSG', 'Geometric reasoning, transformations, measurement and coordinates', 'https://www.thecorestandards.org/Math/Content/HSG/'],
- ['HSS', 'Data, inference, probability and statistical decisions', 'https://www.thecorestandards.org/Math/Content/HSS/'],
- ['HSM', 'Formulate, analyze, validate and communicate mathematical models', 'https://www.thecorestandards.org/Math/Content/HSM/'],
- ['SAT.algebra', 'Linear equations, functions, systems and inequalities', 'https://satsuite.collegeboard.org/k12-educators/about/alignment/math'],
- ['SAT.advanced-math', 'Equivalent expressions and nonlinear equations and functions', 'https://satsuite.collegeboard.org/k12-educators/about/alignment/math'],
- ['SAT.data', 'Ratios, data, probability, samples and study design', 'https://satsuite.collegeboard.org/k12-educators/about/alignment/math'],
- ['SAT.geometry', 'Measurement, angles, triangles, circles and trigonometry', 'https://satsuite.collegeboard.org/k12-educators/about/alignment/math'],
+  [
+    "HSN",
+    "Number systems, quantities, complex numbers, vectors and matrices",
+    "https://www.thecorestandards.org/Math/Content/HSN/",
+  ],
+  [
+    "HSA",
+    "Expressions, equations, inequalities and polynomial structure",
+    "https://www.thecorestandards.org/Math/Content/HSA/",
+  ],
+  [
+    "HSF",
+    "Function representations, transformations, models and trigonometry",
+    "https://www.thecorestandards.org/Math/Content/HSF/",
+  ],
+  [
+    "HSG",
+    "Geometric reasoning, transformations, measurement and coordinates",
+    "https://www.thecorestandards.org/Math/Content/HSG/",
+  ],
+  [
+    "HSS",
+    "Data, inference, probability and statistical decisions",
+    "https://www.thecorestandards.org/Math/Content/HSS/",
+  ],
+  [
+    "HSM",
+    "Formulate, analyze, validate and communicate mathematical models",
+    "https://www.thecorestandards.org/Math/Content/HSM/",
+  ],
+  [
+    "SAT.algebra",
+    "Linear equations, functions, systems and inequalities",
+    "https://satsuite.collegeboard.org/k12-educators/about/alignment/math",
+  ],
+  [
+    "SAT.advanced-math",
+    "Equivalent expressions and nonlinear equations and functions",
+    "https://satsuite.collegeboard.org/k12-educators/about/alignment/math",
+  ],
+  [
+    "SAT.data",
+    "Ratios, data, probability, samples and study design",
+    "https://satsuite.collegeboard.org/k12-educators/about/alignment/math",
+  ],
+  [
+    "SAT.geometry",
+    "Measurement, angles, triangles, circles and trigonometry",
+    "https://satsuite.collegeboard.org/k12-educators/about/alignment/math",
+  ],
 ];
-standards.push(...domains.map(([id, description, sourceUrl]) => ({ id, description, sourceUrl,
-  framework: id.startsWith('SAT.') ? 'SAT' as const : 'CCSS' as const,
-  sourceReviewedAt: '2026-10-16', scope: 'domain' as const })));
+standards.push(
+  ...domains.map(([id, description, sourceUrl]) => ({
+    id,
+    description,
+    sourceUrl,
+    framework: id.startsWith("SAT.") ? ("SAT" as const) : ("CCSS" as const),
+    sourceReviewedAt: "2026-10-16",
+    scope: "domain" as const,
+  })),
+);
 
 // id | grade band | strand | learning objective | prerequisites | source references
 // Each objective is a planned assessable facet; decomposition and crosswalk review continue before publication.
@@ -392,18 +611,37 @@ fair-random-decisions|precalculus|probability|Design random selection procedures
 decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities payoffs and model assumptions|expected-value,conditional-probability|
 `;
 
-export const skills: Skill[] = outline.trim().split('\n').map(line => {
-  const parts = line.split('|');
-  if (parts.length !== 6) throw new Error(`Invalid skill row: ${line}`);
-  const [id, gradeBand, strand, description, dependencies, references] = parts as [string, GradeBand, string, string, string, string];
-  return {
-    id, title: id.split('-').map(word => word[0]!.toUpperCase() + word.slice(1)).join(' '),
-    description, gradeBand, strand, prerequisites: dependencies ? dependencies.split(',') : [],
-    prerequisiteBasis: 'editorial', status: 'planned', lessonId: `lesson.${id}`,
-    alignments: references ? references.split(',').map(standardId => ({ standardId, facet: description, basis: 'editorial' as const })) : [],
-    facets: [{ id: `${id}.core`, description, status: 'planned' }],
-  };
-});
+export const skills: Skill[] = outline
+  .trim()
+  .split("\n")
+  .map((line) => {
+    const parts = line.split("|");
+    if (parts.length !== 6) throw new Error(`Invalid skill row: ${line}`);
+    const [id, gradeBand, strand, description, dependencies, references] =
+      parts as [string, GradeBand, string, string, string, string];
+    return {
+      id,
+      title: id
+        .split("-")
+        .map((word) => word[0]!.toUpperCase() + word.slice(1))
+        .join(" "),
+      description,
+      gradeBand,
+      strand,
+      prerequisites: dependencies ? dependencies.split(",") : [],
+      prerequisiteBasis: "editorial",
+      status: "planned",
+      lessonId: `lesson.${id}`,
+      alignments: references
+        ? references.split(",").map((standardId) => ({
+            standardId,
+            facet: description,
+            basis: "editorial" as const,
+          }))
+        : [],
+      facets: [{ id: `${id}.core`, description, status: "planned" }],
+    };
+  });
 
 /** Numbered high-school inventory, checked against each official category page on 2026-10-16.
  * Short labels describe planned facets; the linked source owns all qualifications and components.
@@ -416,8 +654,18 @@ const highSchoolRows: [string, string, string, boolean][] = [
   ["HSN.CN.B.5", "Geometric complex arithmetic", "complex-plane", true],
   ["HSN.CN.B.6", "Complex distance and midpoint", "complex-distance", true],
   ["HSN.CN.C.7", "Nonreal quadratic roots", "complex-numbers", false],
-  ["HSN.CN.C.8", "Complex polynomial identities", "complex-factorization", true],
-  ["HSN.CN.C.9", "Polynomial root existence", "fundamental-theorem-algebra", true],
+  [
+    "HSN.CN.C.8",
+    "Complex polynomial identities",
+    "complex-factorization",
+    true,
+  ],
+  [
+    "HSN.CN.C.9",
+    "Polynomial root existence",
+    "fundamental-theorem-algebra",
+    true,
+  ],
   ["HSN.Q.A.1", "Units scales and origins", "units-and-precision", false],
   ["HSN.Q.A.2", "Choose modeling quantities", "model-quantities", false],
   ["HSN.Q.A.3", "Measurement precision", "units-and-precision", false],
@@ -433,165 +681,586 @@ const highSchoolRows: [string, string, string, boolean][] = [
   ["HSN.VM.C.7", "Scalar matrix products", "matrices", true],
   ["HSN.VM.C.8", "Matrix sums and products", "matrices", true],
   ["HSN.VM.C.9", "Matrix operation laws", "matrix-properties", true],
-  ["HSN.VM.C.10", "Identities inverses and determinants", "matrix-inverses", true],
-  ["HSN.VM.C.11", "Matrix vector transformations", "matrix-transformations", true],
-  ["HSN.VM.C.12", "Determinants and transformed area", "matrix-transformations", true],
-  ["HSA.APR.A.1", "Polynomial operations and closure", "polynomial-arithmetic", false],
-  ["HSA.APR.B.2", "Remainders and factor theorem", "polynomial-division", false],
+  [
+    "HSN.VM.C.10",
+    "Identities inverses and determinants",
+    "matrix-inverses",
+    true,
+  ],
+  [
+    "HSN.VM.C.11",
+    "Matrix vector transformations",
+    "matrix-transformations",
+    true,
+  ],
+  [
+    "HSN.VM.C.12",
+    "Determinants and transformed area",
+    "matrix-transformations",
+    true,
+  ],
+  [
+    "HSA.APR.A.1",
+    "Polynomial operations and closure",
+    "polynomial-arithmetic",
+    false,
+  ],
+  [
+    "HSA.APR.B.2",
+    "Remainders and factor theorem",
+    "polynomial-division",
+    false,
+  ],
   ["HSA.APR.B.3", "Zeros and graph sketches", "polynomial-zeros", false],
-  ["HSA.APR.C.4", "Prove polynomial identities", "polynomial-identities", false],
+  [
+    "HSA.APR.C.4",
+    "Prove polynomial identities",
+    "polynomial-identities",
+    false,
+  ],
   ["HSA.APR.C.5", "Binomial expansion", "binomial-theorem", true],
-  ["HSA.APR.D.6", "Polynomial quotient remainder forms", "polynomial-division", false],
-  ["HSA.APR.D.7", "Rational expression arithmetic", "rational-expressions", true],
-  ["HSA.CED.A.1", "Model single-variable constraints", "linear-equation-modeling,nonlinear-equation-modeling", false],
-  ["HSA.CED.A.2", "Model related quantities graphically", "linear-equation-modeling,nonlinear-equation-modeling", false],
+  [
+    "HSA.APR.D.6",
+    "Polynomial quotient remainder forms",
+    "polynomial-division",
+    false,
+  ],
+  [
+    "HSA.APR.D.7",
+    "Rational expression arithmetic",
+    "rational-expressions",
+    true,
+  ],
+  [
+    "HSA.CED.A.1",
+    "Model single-variable constraints",
+    "linear-equation-modeling,nonlinear-equation-modeling",
+    false,
+  ],
+  [
+    "HSA.CED.A.2",
+    "Model related quantities graphically",
+    "linear-equation-modeling,nonlinear-equation-modeling",
+    false,
+  ],
   ["HSA.CED.A.3", "Interpret feasible constraints", "systems-modeling", false],
   ["HSA.CED.A.4", "Isolate formula variables", "formula-rearrangement", false],
-  ["HSA.REI.A.1", "Justify equation transformations", "equation-reasoning", false],
-  ["HSA.REI.A.2", "Detect extraneous solutions", "radical-equations,rational-equations", false],
-  ["HSA.REI.B.3", "Solve symbolic linear constraints", "symbolic-linear-constraints", false],
-  ["HSA.REI.B.4", "Solve and justify quadratics", "quadratic-equations,complete-square,quadratic-formula,complex-numbers", false],
-  ["HSA.REI.C.5", "Justify elimination equivalence", "elimination-proof", false],
+  [
+    "HSA.REI.A.1",
+    "Justify equation transformations",
+    "equation-reasoning",
+    false,
+  ],
+  [
+    "HSA.REI.A.2",
+    "Detect extraneous solutions",
+    "radical-equations,rational-equations",
+    false,
+  ],
+  [
+    "HSA.REI.B.3",
+    "Solve symbolic linear constraints",
+    "symbolic-linear-constraints",
+    false,
+  ],
+  [
+    "HSA.REI.B.4",
+    "Solve and justify quadratics",
+    "quadratic-equations,complete-square,quadratic-formula,complex-numbers",
+    false,
+  ],
+  [
+    "HSA.REI.C.5",
+    "Justify elimination equivalence",
+    "elimination-proof",
+    false,
+  ],
   ["HSA.REI.C.6", "Exact approximate linear systems", "linear-systems", false],
   ["HSA.REI.C.7", "Linear quadratic intersections", "nonlinear-systems", false],
   ["HSA.REI.C.8", "Matrix system representation", "matrix-systems", true],
   ["HSA.REI.C.9", "Inverse matrix solutions", "matrix-systems", true],
   ["HSA.REI.D.10", "Graphs as solution sets", "graph-solution-sets", false],
-  ["HSA.REI.D.11", "Approximate graph intersections", "graphical-equation-solving", false],
+  [
+    "HSA.REI.D.11",
+    "Approximate graph intersections",
+    "graphical-equation-solving",
+    false,
+  ],
   ["HSA.REI.D.12", "Half-plane solution regions", "inequality-regions", false],
   ["HSA.SSE.A.1", "Interpret expression parts", "expression-structure", false],
-  ["HSA.SSE.A.2", "Rewrite through structural recognition", "expression-structure,factor-quadratics", false],
-  ["HSA.SSE.B.3", "Reveal properties through equivalence", "factor-quadratics,complete-square,quadratic-minimum,exponential-models", false],
+  [
+    "HSA.SSE.A.2",
+    "Rewrite through structural recognition",
+    "expression-structure,factor-quadratics",
+    false,
+  ],
+  [
+    "HSA.SSE.B.3",
+    "Reveal properties through equivalence",
+    "factor-quadratics,complete-square,quadratic-minimum,exponential-models",
+    false,
+  ],
   ["HSA.SSE.B.4", "Derive geometric series sums", "sequence-sums", false],
-  ["HSF.BF.A.1", "Build and combine functions", "function-composition,nonlinear-equation-modeling", false],
-  ["HSF.BF.A.2", "Recursive explicit sequence models", "arithmetic-sequences,geometric-sequences", false],
-  ["HSF.BF.B.3", "Function changes and symmetry", "function-transformations", false],
+  [
+    "HSF.BF.A.1",
+    "Build and combine functions",
+    "function-composition,nonlinear-equation-modeling",
+    false,
+  ],
+  [
+    "HSF.BF.A.2",
+    "Recursive explicit sequence models",
+    "arithmetic-sequences,geometric-sequences",
+    false,
+  ],
+  [
+    "HSF.BF.B.3",
+    "Function changes and symmetry",
+    "function-transformations",
+    false,
+  ],
   ["HSF.BF.B.4", "Verify and restrict inverses", "inverse-functions", false],
-  ["HSF.BF.B.5", "Exponential logarithmic inverses", "logarithms,exponential-equations", true],
+  [
+    "HSF.BF.B.5",
+    "Exponential logarithmic inverses",
+    "logarithms,exponential-equations",
+    true,
+  ],
   ["HSF.IF.A.1", "Unique outputs and domains", "function-domain-range", false],
-  ["HSF.IF.A.2", "Evaluate contextual function notation", "function-evaluation", false],
-  ["HSF.IF.A.3", "Sequences as discrete functions", "arithmetic-sequences,geometric-sequences", false],
-  ["HSF.IF.B.4", "Interpret contextual graph features", "quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs", false],
-  ["HSF.IF.B.5", "Contextual domain restrictions", "function-domain-range", false],
+  [
+    "HSF.IF.A.2",
+    "Evaluate contextual function notation",
+    "function-evaluation",
+    false,
+  ],
+  [
+    "HSF.IF.A.3",
+    "Sequences as discrete functions",
+    "arithmetic-sequences,geometric-sequences",
+    false,
+  ],
+  [
+    "HSF.IF.B.4",
+    "Interpret contextual graph features",
+    "quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs",
+    false,
+  ],
+  [
+    "HSF.IF.B.5",
+    "Contextual domain restrictions",
+    "function-domain-range",
+    false,
+  ],
   ["HSF.IF.B.6", "Average rates of change", "average-rate-change", false],
-  ["HSF.IF.C.7", "Graph diverse function families", "piecewise-functions,quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs,logarithms", false],
-  ["HSF.IF.C.8", "Equivalent function representations", "quadratic-graphs,exponential-models", false],
-  ["HSF.IF.C.9", "Compare varied function representations", "cross-representation-comparison", false],
+  [
+    "HSF.IF.C.7",
+    "Graph diverse function families",
+    "piecewise-functions,quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs,logarithms",
+    false,
+  ],
+  [
+    "HSF.IF.C.8",
+    "Equivalent function representations",
+    "quadratic-graphs,exponential-models",
+    false,
+  ],
+  [
+    "HSF.IF.C.9",
+    "Compare varied function representations",
+    "cross-representation-comparison",
+    false,
+  ],
   ["HSF.LE.A.1", "Distinguish growth mechanisms", "growth-comparison", false],
-  ["HSF.LE.A.2", "Construct growth models", "exponential-models,arithmetic-sequences,geometric-sequences", false],
+  [
+    "HSF.LE.A.2",
+    "Construct growth models",
+    "exponential-models,arithmetic-sequences,geometric-sequences",
+    false,
+  ],
   ["HSF.LE.A.3", "Compare eventual growth", "growth-comparison", false],
-  ["HSF.LE.A.4", "Logarithmic exponential solutions", "exponential-equations", false],
-  ["HSF.LE.B.5", "Interpret model parameters", "exponential-models,linear-equation-modeling", false],
+  [
+    "HSF.LE.A.4",
+    "Logarithmic exponential solutions",
+    "exponential-equations",
+    false,
+  ],
+  [
+    "HSF.LE.B.5",
+    "Interpret model parameters",
+    "exponential-models,linear-equation-modeling",
+    false,
+  ],
   ["HSF.TF.A.1", "Radians from unit arcs", "radians-unit-circle", false],
-  ["HSF.TF.A.2", "Extend circle-based trigonometry", "radians-unit-circle", false],
+  [
+    "HSF.TF.A.2",
+    "Extend circle-based trigonometry",
+    "radians-unit-circle",
+    false,
+  ],
   ["HSF.TF.A.3", "Special-angle circle values", "special-angle-values", true],
-  ["HSF.TF.A.4", "Trigonometric parity and periodicity", "trigonometric-symmetry", true],
+  [
+    "HSF.TF.A.4",
+    "Trigonometric parity and periodicity",
+    "trigonometric-symmetry",
+    true,
+  ],
   ["HSF.TF.B.5", "Periodic function models", "periodic-modeling", false],
-  ["HSF.TF.B.6", "Restricted trigonometric inverses", "inverse-trigonometry", true],
-  ["HSF.TF.B.7", "Contextual inverse trigonometry", "trigonometric-equations", true],
-  ["HSF.TF.C.8", "Prove Pythagorean identity", "trigonometric-identities", false],
-  ["HSF.TF.C.9", "Derive angle-sum identities", "trigonometric-identities", true],
+  [
+    "HSF.TF.B.6",
+    "Restricted trigonometric inverses",
+    "inverse-trigonometry",
+    true,
+  ],
+  [
+    "HSF.TF.B.7",
+    "Contextual inverse trigonometry",
+    "trigonometric-equations",
+    true,
+  ],
+  [
+    "HSF.TF.C.8",
+    "Prove Pythagorean identity",
+    "trigonometric-identities",
+    false,
+  ],
+  [
+    "HSF.TF.C.9",
+    "Derive angle-sum identities",
+    "trigonometric-identities",
+    true,
+  ],
   ["HSG.C.A.1", "Circle similarity proof", "circle-similarity", false],
   ["HSG.C.A.2", "Chord tangent arc relationships", "circle-theorems", false],
-  ["HSG.C.A.3", "Circle constructions cyclic quadrilaterals", "triangle-circles", false],
+  [
+    "HSG.C.A.3",
+    "Circle constructions cyclic quadrilaterals",
+    "triangle-circles",
+    false,
+  ],
   ["HSG.C.A.4", "External tangent construction", "tangent-construction", true],
   ["HSG.C.B.5", "Derive arc sector formulas", "arc-sector-measure", false],
-  ["HSG.CO.A.1", "Foundational geometric definitions", "geometric-definitions", false],
-  ["HSG.CO.A.2", "Compare transformation invariants", "transformation-invariants", false],
+  [
+    "HSG.CO.A.1",
+    "Foundational geometric definitions",
+    "geometric-definitions",
+    false,
+  ],
+  [
+    "HSG.CO.A.2",
+    "Compare transformation invariants",
+    "transformation-invariants",
+    false,
+  ],
   ["HSG.CO.A.3", "Polygon symmetries", "polygon-symmetries", false],
   ["HSG.CO.A.4", "Define plane motions", "transformation-invariants", false],
-  ["HSG.CO.A.5", "Construct composed motions", "transformation-constructions", false],
-  ["HSG.CO.B.6", "Congruence through rigid motions", "congruence-criteria", false],
-  ["HSG.CO.B.7", "Triangle congruence correspondence", "congruence-criteria", false],
-  ["HSG.CO.B.8", "Derive triangle congruence criteria", "congruence-criteria", false],
+  [
+    "HSG.CO.A.5",
+    "Construct composed motions",
+    "transformation-constructions",
+    false,
+  ],
+  [
+    "HSG.CO.B.6",
+    "Congruence through rigid motions",
+    "congruence-criteria",
+    false,
+  ],
+  [
+    "HSG.CO.B.7",
+    "Triangle congruence correspondence",
+    "congruence-criteria",
+    false,
+  ],
+  [
+    "HSG.CO.B.8",
+    "Derive triangle congruence criteria",
+    "congruence-criteria",
+    false,
+  ],
   ["HSG.CO.C.9", "Prove line angle theorems", "line-angle-proofs", false],
   ["HSG.CO.C.10", "Prove triangle theorems", "triangle-proofs", false],
-  ["HSG.CO.C.11", "Prove parallelogram theorems", "parallelogram-proofs", false],
-  ["HSG.CO.D.12", "Justified geometric constructions", "geometric-constructions", false],
-  ["HSG.CO.D.13", "Construct inscribed regular polygons", "inscribed-polygons", false],
-  ["HSG.GMD.A.1", "Justify measurement formulas", "measurement-formula-proofs", false],
+  [
+    "HSG.CO.C.11",
+    "Prove parallelogram theorems",
+    "parallelogram-proofs",
+    false,
+  ],
+  [
+    "HSG.CO.D.12",
+    "Justified geometric constructions",
+    "geometric-constructions",
+    false,
+  ],
+  [
+    "HSG.CO.D.13",
+    "Construct inscribed regular polygons",
+    "inscribed-polygons",
+    false,
+  ],
+  [
+    "HSG.GMD.A.1",
+    "Justify measurement formulas",
+    "measurement-formula-proofs",
+    false,
+  ],
   ["HSG.GMD.A.2", "Cavalieri volume reasoning", "cavalieri-principle", true],
   ["HSG.GMD.A.3", "Apply solid volume formulas", "solid-volume-models", false],
-  ["HSG.GMD.B.4", "Sections and rotational solids", "sections-and-revolutions", false],
+  [
+    "HSG.GMD.B.4",
+    "Sections and rotational solids",
+    "sections-and-revolutions",
+    false,
+  ],
   ["HSG.GPE.A.1", "Derive coordinate circles", "circle-equations", false],
   ["HSG.GPE.A.2", "Focus directrix parabolas", "parabola-locus", false],
-  ["HSG.GPE.A.3", "Ellipse hyperbola focal definitions", "conic-sections", true],
+  [
+    "HSG.GPE.A.3",
+    "Ellipse hyperbola focal definitions",
+    "conic-sections",
+    true,
+  ],
   ["HSG.GPE.B.4", "Algebraic geometric proofs", "coordinate-proofs", false],
   ["HSG.GPE.B.5", "Prove perpendicular parallel slopes", "slope-proofs", false],
   ["HSG.GPE.B.6", "Directed segment partitions", "segment-division", false],
-  ["HSG.GPE.B.7", "Coordinate perimeter and area", "coordinate-measurement", false],
+  [
+    "HSG.GPE.B.7",
+    "Coordinate perimeter and area",
+    "coordinate-measurement",
+    false,
+  ],
   ["HSG.MG.A.1", "Choose geometric object models", "geometric-modeling", false],
   ["HSG.MG.A.2", "Area volume density models", "density-modeling", false],
   ["HSG.MG.A.3", "Constrained geometric design", "geometric-design", false],
-  ["HSG.SRT.A.1", "Investigate dilation properties", "dilation-properties", false],
-  ["HSG.SRT.A.2", "Similarity through transformations", "similarity-proofs", false],
+  [
+    "HSG.SRT.A.1",
+    "Investigate dilation properties",
+    "dilation-properties",
+    false,
+  ],
+  [
+    "HSG.SRT.A.2",
+    "Similarity through transformations",
+    "similarity-proofs",
+    false,
+  ],
   ["HSG.SRT.A.3", "Derive angle-angle similarity", "similarity-proofs", false],
-  ["HSG.SRT.B.4", "Prove proportional triangle theorems", "similarity-theorems", false],
-  ["HSG.SRT.B.5", "Apply similarity and congruence", "similarity-proofs,congruence-criteria", false],
-  ["HSG.SRT.C.6", "Define ratios through similarity", "right-triangle-trigonometry", false],
-  ["HSG.SRT.C.7", "Complementary trigonometric relationships", "complementary-trigonometry", false],
-  ["HSG.SRT.C.8", "Applied right-triangle solutions", "right-triangle-trigonometry,special-right-triangles", false],
+  [
+    "HSG.SRT.B.4",
+    "Prove proportional triangle theorems",
+    "similarity-theorems",
+    false,
+  ],
+  [
+    "HSG.SRT.B.5",
+    "Apply similarity and congruence",
+    "similarity-proofs,congruence-criteria",
+    false,
+  ],
+  [
+    "HSG.SRT.C.6",
+    "Define ratios through similarity",
+    "right-triangle-trigonometry",
+    false,
+  ],
+  [
+    "HSG.SRT.C.7",
+    "Complementary trigonometric relationships",
+    "complementary-trigonometry",
+    false,
+  ],
+  [
+    "HSG.SRT.C.8",
+    "Applied right-triangle solutions",
+    "right-triangle-trigonometry,special-right-triangles",
+    false,
+  ],
   ["HSG.SRT.D.9", "Derive trigonometric area", "trigonometric-area", true],
   ["HSG.SRT.D.10", "Prove sine cosine laws", "triangle-law-proofs", true],
   ["HSG.SRT.D.11", "Apply oblique triangle laws", "oblique-triangles", true],
   ["HSS.CP.A.1", "Event set operations", "event-sets", false],
   ["HSS.CP.A.2", "Independence product criterion", "independent-events", false],
-  ["HSS.CP.A.3", "Conditioning and independence", "conditional-probability,independent-events", false],
-  ["HSS.CP.A.4", "Table-based conditional probabilities", "conditional-probability", false],
-  ["HSS.CP.A.5", "Explain everyday conditioning", "conditional-probability", false],
-  ["HSS.CP.B.6", "Conditional event fractions", "conditional-probability", false],
+  [
+    "HSS.CP.A.3",
+    "Conditioning and independence",
+    "conditional-probability,independent-events",
+    false,
+  ],
+  [
+    "HSS.CP.A.4",
+    "Table-based conditional probabilities",
+    "conditional-probability",
+    false,
+  ],
+  [
+    "HSS.CP.A.5",
+    "Explain everyday conditioning",
+    "conditional-probability",
+    false,
+  ],
+  [
+    "HSS.CP.B.6",
+    "Conditional event fractions",
+    "conditional-probability",
+    false,
+  ],
   ["HSS.CP.B.7", "Overlapping event addition", "probability-addition", false],
-  ["HSS.CP.B.8", "Conditional product rule", "probability-multiplication", true],
-  ["HSS.CP.B.9", "Counting-based compound probability", "permutations-combinations", true],
-  ["HSS.IC.A.1", "Random-sample population inference", "statistical-inference", false],
-  ["HSS.IC.A.2", "Simulate model consistency", "simulation-model-checks", false],
+  [
+    "HSS.CP.B.8",
+    "Conditional product rule",
+    "probability-multiplication",
+    true,
+  ],
+  [
+    "HSS.CP.B.9",
+    "Counting-based compound probability",
+    "permutations-combinations",
+    true,
+  ],
+  [
+    "HSS.IC.A.1",
+    "Random-sample population inference",
+    "statistical-inference",
+    false,
+  ],
+  [
+    "HSS.IC.A.2",
+    "Simulate model consistency",
+    "simulation-model-checks",
+    false,
+  ],
   ["HSS.IC.B.3", "Randomization and study types", "study-design", false],
   ["HSS.IC.B.4", "Simulated sampling error", "sampling-margin-error", false],
-  ["HSS.IC.B.5", "Randomized treatment comparisons", "randomization-tests", false],
-  ["HSS.IC.B.6", "Critique statistical reports", "statistical-report-critique", false],
+  [
+    "HSS.IC.B.5",
+    "Randomized treatment comparisons",
+    "randomization-tests",
+    false,
+  ],
+  [
+    "HSS.IC.B.6",
+    "Critique statistical reports",
+    "statistical-report-critique",
+    false,
+  ],
   ["HSS.ID.A.1", "Plot numerical distributions", "distribution-plots", false],
-  ["HSS.ID.A.2", "Compare appropriate summary statistics", "statistical-summary-comparison", false],
-  ["HSS.ID.A.3", "Interpret distributions and outliers", "statistical-summary-comparison", false],
+  [
+    "HSS.ID.A.2",
+    "Compare appropriate summary statistics",
+    "statistical-summary-comparison",
+    false,
+  ],
+  [
+    "HSS.ID.A.3",
+    "Interpret distributions and outliers",
+    "statistical-summary-comparison",
+    false,
+  ],
   ["HSS.ID.A.4", "Assess normal-model fit", "normal-distributions", false],
-  ["HSS.ID.B.5", "Interpret joint marginal frequencies", "categorical-association", false],
-  ["HSS.ID.B.6", "Bivariate models and residuals", "residuals-correlation", false],
-  ["HSS.ID.C.7", "Contextual regression coefficients", "regression-interpretation", false],
-  ["HSS.ID.C.8", "Compute interpret correlation", "residuals-correlation", false],
+  [
+    "HSS.ID.B.5",
+    "Interpret joint marginal frequencies",
+    "categorical-association",
+    false,
+  ],
+  [
+    "HSS.ID.B.6",
+    "Bivariate models and residuals",
+    "residuals-correlation",
+    false,
+  ],
+  [
+    "HSS.ID.C.7",
+    "Contextual regression coefficients",
+    "regression-interpretation",
+    false,
+  ],
+  [
+    "HSS.ID.C.8",
+    "Compute interpret correlation",
+    "residuals-correlation",
+    false,
+  ],
   ["HSS.ID.C.9", "Association versus causation", "causal-claims", false],
-  ["HSS.MD.A.1", "Random variables and distributions", "random-variables", true],
+  [
+    "HSS.MD.A.1",
+    "Random variables and distributions",
+    "random-variables",
+    true,
+  ],
   ["HSS.MD.A.2", "Expected distribution values", "expected-value", true],
-  ["HSS.MD.A.3", "Theoretical probability distributions", "theoretical-distributions", true],
-  ["HSS.MD.A.4", "Empirical probability distributions", "empirical-distributions", true],
+  [
+    "HSS.MD.A.3",
+    "Theoretical probability distributions",
+    "theoretical-distributions",
+    true,
+  ],
+  [
+    "HSS.MD.A.4",
+    "Empirical probability distributions",
+    "empirical-distributions",
+    true,
+  ],
   ["HSS.MD.B.5", "Expected payoff decisions", "expected-value", true],
   ["HSS.MD.B.6", "Randomized fair decisions", "fair-random-decisions", true],
-  ["HSS.MD.B.7", "Analyze probabilistic strategies", "decision-strategies", true],
+  [
+    "HSS.MD.B.7",
+    "Analyze probabilistic strategies",
+    "decision-strategies",
+    true,
+  ],
 ];
 
-const editorialDomains = new Set(['HSN', 'HSA', 'HSF', 'HSG', 'HSS']);
-for (const skill of skills) skill.alignments = skill.alignments.filter(a => !editorialDomains.has(a.standardId));
+const editorialDomains = new Set(["HSN", "HSA", "HSF", "HSG", "HSS"]);
+for (const skill of skills)
+  skill.alignments = skill.alignments.filter(
+    (a) => !editorialDomains.has(a.standardId),
+  );
 for (const [id, description, skillIds, advanced] of highSchoolRows) {
-  standards.push({ id, description, framework: 'CCSS', scope: 'standard',
-    sourceUrl: `https://www.thecorestandards.org/Math/Content/${id.replaceAll('.', '/')}/`,
-    sourceReviewedAt: '2026-10-16', advanced });
-  for (const skillId of skillIds.split(',')) {
-    const skill = skills.find(s => s.id === skillId);
+  standards.push({
+    id,
+    description,
+    framework: "CCSS",
+    scope: "standard",
+    sourceUrl: `https://www.thecorestandards.org/Math/Content/${id.replaceAll(".", "/")}/`,
+    sourceReviewedAt: "2026-10-16",
+    advanced,
+  });
+  for (const skillId of skillIds.split(",")) {
+    const skill = skills.find((s) => s.id === skillId);
     if (!skill) throw new Error(`Missing crosswalk skill ${skillId}`);
-    skill.alignments.push({ standardId: id, facet: description, basis: 'editorial' });
-    skill.facets.push({ id: `${skillId}.${id}`, description, status: 'planned' });
+    skill.alignments.push({
+      standardId: id,
+      facet: description,
+      basis: "editorial",
+    });
+    skill.facets.push({
+      id: `${skillId}.${id}`,
+      description,
+      status: "planned",
+    });
   }
 }
 
 /** Independent numbered cluster ranges catch accidental omissions, additions and wrong cluster letters. */
 export const highSchoolInventory = {
-  HSN: 'CN.A:1-3 CN.B:4-6 CN.C:7-9 Q.A:1-3 RN.A:1-2 RN.B:3 VM.A:1-3 VM.B:4-5 VM.C:6-12',
-  HSA: 'APR.A:1 APR.B:2-3 APR.C:4-5 APR.D:6-7 CED.A:1-4 REI.A:1-2 REI.B:3-4 REI.C:5-9 REI.D:10-12 SSE.A:1-2 SSE.B:3-4',
-  HSF: 'BF.A:1-2 BF.B:3-5 IF.A:1-3 IF.B:4-6 IF.C:7-9 LE.A:1-4 LE.B:5 TF.A:1-4 TF.B:5-7 TF.C:8-9',
-  HSG: 'C.A:1-4 C.B:5 CO.A:1-5 CO.B:6-8 CO.C:9-11 CO.D:12-13 GMD.A:1-3 GMD.B:4 GPE.A:1-3 GPE.B:4-7 MG.A:1-3 SRT.A:1-3 SRT.B:4-5 SRT.C:6-8 SRT.D:9-11',
-  HSS: 'CP.A:1-5 CP.B:6-9 IC.A:1-2 IC.B:3-6 ID.A:1-4 ID.B:5-6 ID.C:7-9 MD.A:1-4 MD.B:5-7',
+  HSN: "CN.A:1-3 CN.B:4-6 CN.C:7-9 Q.A:1-3 RN.A:1-2 RN.B:3 VM.A:1-3 VM.B:4-5 VM.C:6-12",
+  HSA: "APR.A:1 APR.B:2-3 APR.C:4-5 APR.D:6-7 CED.A:1-4 REI.A:1-2 REI.B:3-4 REI.C:5-9 REI.D:10-12 SSE.A:1-2 SSE.B:3-4",
+  HSF: "BF.A:1-2 BF.B:3-5 IF.A:1-3 IF.B:4-6 IF.C:7-9 LE.A:1-4 LE.B:5 TF.A:1-4 TF.B:5-7 TF.C:8-9",
+  HSG: "C.A:1-4 C.B:5 CO.A:1-5 CO.B:6-8 CO.C:9-11 CO.D:12-13 GMD.A:1-3 GMD.B:4 GPE.A:1-3 GPE.B:4-7 MG.A:1-3 SRT.A:1-3 SRT.B:4-5 SRT.C:6-8 SRT.D:9-11",
+  HSS: "CP.A:1-5 CP.B:6-9 IC.A:1-2 IC.B:3-6 ID.A:1-4 ID.B:5-6 ID.C:7-9 MD.A:1-4 MD.B:5-7",
 } as const;
-export const expectedHighSchoolStandardIds = Object.entries(highSchoolInventory).flatMap(([category, clusters]) =>
-  clusters.split(' ').flatMap(cluster => {
-    const [prefix, range] = cluster.split(':') as [string, string];
-    const [first, last = first] = range.split('-').map(Number) as [number, number?];
-    return Array.from({ length: last - first + 1 }, (_, i) => `${category}.${prefix}.${first + i}`);
-  }));
+export const expectedHighSchoolStandardIds = Object.entries(
+  highSchoolInventory,
+).flatMap(([category, clusters]) =>
+  clusters.split(" ").flatMap((cluster) => {
+    const [prefix, range] = cluster.split(":") as [string, string];
+    const [first, last = first] = range.split("-").map(Number) as [
+      number,
+      number?,
+    ];
+    return Array.from(
+      { length: last - first + 1 },
+      (_, i) => `${category}.${prefix}.${first + i}`,
+    );
+  }),
+);

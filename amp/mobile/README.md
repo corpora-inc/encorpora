@@ -2,7 +2,7 @@
 
 This Tauri 2 shell hosts the AMP mathematics interface in a native webview. It is an independent application with the provisional identifier `inc.corpora.amp`. It has no Free2Z dependency, native purchase integration, or privileged frontend commands.
 
-The supported use is a local desktop preview connected to the AMP development server. A compiled binary is not a production-ready mobile learning application. The bundled frontend uses same-origin `/api` requests, while a native webview has a local asset origin. Hosted API routing, system-browser sign-in with a native callback, secure token storage, purchases, offline entitlement verification, and durable offline learner synchronization require explicit integration before distribution. The browser OIDC redirect flow is not a native authentication implementation.
+The supported use is a local desktop preview connected to the AMP development server. A compiled binary is not a production-ready mobile learning application. The bundled frontend uses same-origin `/api` requests, while a native webview has a local asset origin. Hosted API routing, system-browser sign-in with a native callback, secure token storage, and purchases require explicit integration before distribution. The browser OIDC redirect flow is not a native authentication implementation.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ From `amp/mobile`, start the native host:
 npx --yes @tauri-apps/cli@2.11.4 dev
 ```
 
-The shell expects the frontend at `http://localhost:4310`. It does not start either server. Keep development authentication and both servers restricted to the local machine. The configuration's `frontendDist` is `../dist`, resolved relative to `mobile/tauri.conf.json`; see the [Tauri configuration reference](https://v2.tauri.app/reference/config/).
+The shell expects the frontend at `http://127.0.0.1:4310`. It does not start either server. Keep development authentication and both servers restricted to the local machine. The configuration's `frontendDist` is `../dist`, resolved relative to `mobile/tauri.conf.json`; see the [Tauri configuration reference](https://v2.tauri.app/reference/config/).
 
 ## Check the shell
 
