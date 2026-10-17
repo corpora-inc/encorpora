@@ -577,3 +577,15 @@
     grid-row: 4;
   }
 }
+
+@media (max-height: 650px) {
+  .family-body:has(.family-focused-section) {
+    padding-bottom: 8px;
+  }
+  .family-focused-section {
+    gap: 8px;
+  }
+  .family-focused-section .family-learner {
+    padding: 12px;
+  }
+}

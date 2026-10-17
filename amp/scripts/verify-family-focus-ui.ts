@@ -169,12 +169,15 @@ try {
     await page.screenshot({
       path: `artifacts/family-focus/access-${width}.png`,
     });
+    const cardSpace = await page.locator(".family-learners").evaluate((e) => ({
+      content: e.scrollHeight,
+      available: e.clientHeight,
+    }));
     assert.ok(
-      await page
-        .locator(".family-learners")
-        .evaluate((e) => e.scrollHeight <= e.clientHeight + 1),
-      "ordinary active license fits without inner scrolling",
+      cardSpace.content <= cardSpace.available + 1,
+      `ordinary active license fits without inner scrolling at ${width}×${height}: ${JSON.stringify(cardSpace)}`,
     );
+
     await page
       .getByRole("button", { name: "License history and dates" })
       .click();
