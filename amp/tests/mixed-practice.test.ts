@@ -105,8 +105,8 @@ test("missed skills return after intervening work and successful old strands ret
   assert.ok(
     choices.some(
       (choice) =>
-        choice.template.skillId === "addition-within-20" &&
-        choice.reason === "revisit",
+        choice.template.skillId === "make-ten" &&
+        choice.reason === "prerequisite",
     ),
   );
   const old = [
@@ -136,12 +136,13 @@ test("long independent-success sessions traverse strands and do not remain a sin
     seen.add(choice.strand);
     attempts.push(answer(choice.template.id, index));
   }
-  const entryStrands = new Set(
-    templates
-      .filter((t) => t.gradeBand === "K–2")
-      .map((t) => skills.find((s) => s.id === t.skillId)!.strand),
+  // The data entry depends on an unimplemented categorical-data skill. Variety
+  // must not silently treat that missing instruction as learned.
+  assert.ok(seen.size >= 6, `Only visited ${[...seen]}`);
+  assert.equal(
+    attempts.some((attempt) => attempt.skillId === "picture-bar-graphs"),
+    false,
   );
-  assert.ok(seen.size >= entryStrands.size, `Only visited ${[...seen]}`);
   // Sixty correct answers spread across strands do not establish high-school readiness.
   assert.ok(new Set(attempts.map((attempt) => attempt.skillId)).size >= 10);
 });
@@ -407,4 +408,229 @@ test("first-save enrollment excludes already observed strands and later edits ca
     now,
   });
   assert.equal(untouched[0].template.gradeBand, "9–12");
+});
+
+test("beginner batches stay at roots or at most one immediate entry diagnostic", () => {
+  const nodes = new Map(skills.map((s) => [s.id, s]));
+  for (let seed = 0; seed < 200; seed++)
+    for (const count of [1, 3, 5]) {
+      const choices = plan([], count, `entry-${seed}`);
+      let probes = 0;
+      for (const { template } of choices) {
+        const parents = nodes.get(template.skillId)!.prerequisites;
+        if (parents.length) {
+          probes++;
+          assert.ok(
+            parents.every((id) => nodes.get(id)!.prerequisites.length === 0),
+          );
+        }
+      }
+      assert.ok(probes <= (count === 1 ? 0 : 1));
+      const preferred = planMixedPractice({
+        templates,
+        skills,
+        attempts: [],
+        evidence: [],
+        count,
+        seed: `entry-${seed}`,
+        now,
+        startingPoint: { band: "K–2", policyVersion: 1, excludedStrands: [] },
+      });
+      assert.deepEqual(preferred, choices);
+      if (count === 3)
+        assert.equal(new Set(choices.map((c) => c.strand)).size, 3);
+    }
+});
+test("latest mistakes and assistance revoke successor support without rewriting history", () => {
+  const source = templates.find((t) => t.id === "count-objects")!;
+  const child = templates.find((t) => t.id === "join-within-10")!;
+  for (const assisted of [false, true]) {
+    const attempts = [
+      answer(source.id, 0),
+      answer(source.id, 1, assisted, assisted),
+    ];
+    const evidence = projectSkillEvidence(attempts);
+    assert.ok(evidence[0]!.latestIndependent);
+    const choices = planMixedPractice({
+      templates: [source, child],
+      skills,
+      attempts,
+      evidence,
+      count: 3,
+      seed: "revoke",
+      now,
+    });
+    assert.ok(choices.every((c) => c.template.id === source.id));
+    assert.equal(evidence[0]!.creditedRetrievals, 0);
+  }
+  assert.ok(
+    planMixedPractice({
+      templates: [source, child],
+      skills,
+      attempts: [answer(source.id, 0)],
+      evidence: [],
+      count: 1,
+      seed: "advance",
+      now,
+    })[0]!.template.id === child.id,
+  );
+});
+test("unimplemented and unsupported sibling prerequisites block promotion, while advanced anchors stay available", () => {
+  const source = {
+    ...templates[0]!,
+    id: "anchor",
+    skillId: "anchor",
+    gradeBand: "9–12" as const,
+  };
+  const child = { ...source, id: "child", skillId: "child" };
+  const root = {
+    ...source,
+    id: "entry",
+    skillId: "entry",
+    gradeBand: "K–2" as const,
+  };
+  const graph = [
+    { id: "entry", strand: "number", prerequisites: [] },
+    { id: "anchor", strand: "algebra", prerequisites: ["unknown-ancestor"] },
+    {
+      id: "child",
+      strand: "algebra",
+      prerequisites: ["anchor", "missing-sibling"],
+    },
+  ];
+  const attempts = [
+    { ...answer("integer-power", 0), skillId: "anchor", templateId: "anchor" },
+  ];
+  for (let i = 0; i < 40; i++) {
+    const choices = planMixedPractice({
+      templates: [source, child, root],
+      skills: graph,
+      attempts,
+      evidence: [],
+      count: 3,
+      seed: `siblings-${i}`,
+      now,
+    });
+    assert.ok(choices.some((c) => c.template.id === "anchor"));
+    assert.ok(choices.every((c) => c.template.id !== "child"));
+    assert.equal(projectSkillEvidence(attempts).length, 1);
+  }
+});
+test("numeric-only legacy sessions do not borrow unsupported harder work for variety", () => {
+  const legacy = templates.filter(
+    (t) => !t.requiredResponseCapability && !t.requiredFigureCapability,
+  );
+  for (let i = 0; i < 50; i++) {
+    const choices = planMixedPractice({
+      templates: legacy,
+      skills,
+      attempts: [],
+      evidence: [],
+      count: 3,
+      seed: `legacy-${i}`,
+      now,
+    });
+    assert.ok(
+      choices.every(
+        (c) =>
+          c.template.id === "count-objects" ||
+          c.template.id === "join-within-10" ||
+          c.template.id === "pairing-leftover",
+      ),
+    );
+    assert.ok(
+      choices.filter((c) => c.template.id !== "count-objects").length <= 1,
+    );
+  }
+});
+
+test("diagnostic support descends after a same-band miss or assisted result", () => {
+  const make = (id: string) => ({
+    ...templates[0]!,
+    id,
+    skillId: id,
+    gradeBand: "3–5" as const,
+  });
+  const candidates = [make("a"), make("b"), make("c")];
+  const graph = [
+    { id: "a", strand: "operations", prerequisites: [] },
+    { id: "b", strand: "operations", prerequisites: ["a"] },
+    { id: "c", strand: "operations", prerequisites: ["b"] },
+  ];
+  const outcome = (id: string, index: number, assisted = false) => ({
+    ...answer("count-objects", index, assisted, assisted),
+    skillId: id,
+    templateId: id,
+  });
+  const select = (attempts: Outcome[], count = 3) =>
+    planMixedPractice({
+      templates: candidates,
+      skills: graph,
+      attempts,
+      evidence: [],
+      count,
+      seed: "descend",
+      now,
+    });
+  const first = select([outcome("c", 0)]);
+  assert.equal(first.filter((c) => c.template.id === "b").length, 1);
+  for (const assisted of [false, true]) {
+    const next = select([outcome("c", 0), outcome("b", 1, assisted)]);
+    assert.ok(
+      next.some((c) => c.template.id === "a" && c.reason === "prerequisite"),
+    );
+    assert.ok(
+      next.every((c) => c.template.id !== "b" && c.template.id !== "c"),
+    );
+  }
+});
+test("sparse diagnostic fallback shrinks rather than filling a batch and rejects malformed ancestry", () => {
+  const t = templates.find((t) => t.id === "integer-power")!;
+  const input = {
+    templates: [t],
+    skills,
+    attempts: [],
+    evidence: [],
+    count: 5,
+    seed: "sparse",
+    now,
+  };
+  assert.equal(planMixedPractice(input).length, 1);
+  assert.equal(planMixedPractice({ ...input, strictCeiling: true }).length, 0);
+  const malformed = [
+    { id: t.skillId, strand: "algebra", prerequisites: ["cycle"] },
+    { id: "cycle", strand: "algebra", prerequisites: [t.skillId] },
+  ];
+  assert.equal(planMixedPractice({ ...input, skills: malformed }).length, 0);
+  assert.equal(
+    planMixedPractice({
+      ...input,
+      skills: malformed,
+      startingPoint: { band: "9–12", policyVersion: 1, excludedStrands: [] },
+    }).length,
+    0,
+  );
+});
+
+test("failed sparse probes and cyclic remediation cannot bypass descent through fallback", () => {
+  const t = templates.find((t) => t.id === "integer-power")!;
+  const input = {
+    templates: [t],
+    skills,
+    attempts: [answer(t.id, 0, false)],
+    evidence: [],
+    count: 3,
+    seed: "sparse-failed",
+    now,
+  };
+  assert.equal(planMixedPractice(input).length, 0);
+  const b = { ...t, id: "cyclic-b", skillId: "cyclic-b" };
+  const graph = [
+    { id: t.skillId, strand: "algebra", prerequisites: [b.skillId] },
+    { id: b.skillId, strand: "algebra", prerequisites: [t.skillId] },
+  ];
+  assert.equal(
+    planMixedPractice({ ...input, templates: [t, b], skills: graph }).length,
+    0,
+  );
 });

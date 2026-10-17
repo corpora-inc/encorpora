@@ -1,10 +1,12 @@
 import { z } from "zod";
+import { entryFigureSchemas, type EntryFigure } from "./entry-models.js";
 import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
+  | EntryFigure
   | MeasurementFigure
   | {
       kind: "unit-array";
@@ -52,7 +54,7 @@ export type SemanticFigure =
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
   | { kind: "dataset"; values: number[] };
 export interface TemplateMetadata {
-  requiredFigureCapability?: "measurement-models-v1";
+  requiredFigureCapability?: "measurement-models-v1" | "entry-models-v1";
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: "single-choice-v1";
   id: string;
@@ -88,6 +90,7 @@ export interface GeneratedProblem {
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
+    ...entryFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),

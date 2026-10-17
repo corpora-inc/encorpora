@@ -158,7 +158,7 @@ test(
     });
     try {
       await repository.transaction(account, learner.id, async (tx) => {
-        for (const [index, correct] of [true, false].entries()) {
+        for (const [index, correct] of [false, true].entries()) {
           const p = generateProblem("relation-function-choice", randomUUID());
           await tx.saveProblem(p);
           await tx.saveAttempt({

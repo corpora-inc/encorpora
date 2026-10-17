@@ -147,8 +147,8 @@ export function buildApp(options: {
           .max(1)
           .default([]),
         figureCapabilities: z
-          .array(z.literal("measurement-models-v1"))
-          .max(1)
+          .array(z.enum(["measurement-models-v1", "entry-models-v1"]))
+          .max(2)
           .default([]),
       })
       .strict()
@@ -194,6 +194,11 @@ export function buildApp(options: {
             count: input.count,
             seed: randomUUID(),
           });
+      if (!selected.length)
+        throw new ApiError(
+          503,
+          "Practice is unavailable for this app version. Please update and try again.",
+        );
       const problems: PublicProblem[] = [];
       for (const choice of selected) {
         const problem = generatedProblemSchema.parse(

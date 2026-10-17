@@ -10,6 +10,7 @@ from elementary_math_oracle import ELEMENTARY, solve_elementary
 from equal_groups_math_oracle import EQUAL_GROUPS, solve_equal_groups
 from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
 from choice_math_oracle import CHOICE, solve_choice
+from entry_math_oracle import SUPPORTED as ENTRY, solve as solve_entry, self_test as review_entry_fixtures
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 
@@ -26,7 +27,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | ENTRY
 
 
 def require(condition, message):
@@ -38,6 +39,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in ENTRY:
+        return solve_entry(public)
     if template in MEASUREMENT:
         return solve_measurement(public)
     if template in ALGEBRA:
@@ -229,6 +232,7 @@ def solve(public):
 def review(stream):
     review_algebra_fixtures()
     review_measurement_fixtures()
+    review_entry_fixtures()
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
     manifest = json.loads(first_line)
@@ -257,7 +261,7 @@ def review(stream):
         seen.add(identity)
         solved = solve(public)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in CHOICE | ALGEBRA_CHOICE | ENTRY or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')

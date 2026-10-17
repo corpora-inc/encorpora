@@ -57,6 +57,8 @@ export function planMixedPractice(options: {
   attempts: readonly Outcome[];
   evidence: readonly SkillEvidence[];
   startingPoint?: PracticeStartingPoint;
+  /** Offline pools may shrink instead of borrowing work above their ceiling. */
+  strictCeiling?: boolean;
   count: number;
   seed: string;
   now?: number;
@@ -155,7 +157,57 @@ export function planMixedPractice(options: {
       challenge,
     });
   }
+  // Tentative instructional support is deliberately weaker than mastery, but
+  // requires the latest observation to be independently correct. Historical
+  // successes still anchor range; a later mistake cannot support promotion.
+  const independentlySupported = (id: string) => {
+    const last = bySkill.get(id)?.at(-1);
+    return !!last?.correct && !last.assisted;
+  };
+  const isRoot = (id: string) =>
+    nodes.has(id) && nodes.get(id)!.prerequisites.length === 0;
+  const depthCache = new Map<string, number>();
+  function depth(id: string, visiting = new Set<string>()): number {
+    const cached = depthCache.get(id);
+    if (cached !== undefined) return cached;
+    if (visiting.has(id) || !nodes.has(id)) return Infinity;
+    const next = new Set(visiting).add(id),
+      parents = nodes.get(id)!.prerequisites;
+    const value = parents.length
+      ? 1 + Math.max(...parents.map((parent) => depth(parent, next)))
+      : 0;
+    depthCache.set(id, value);
+    return value;
+  }
+  // A range preference authorizes a diagnostic at a strand's entry, not an
+  // arbitrary deep task sharing that broad grade label. A failed initial probe
+  // retains the existing downward range policy; teachable ancestors may also
+  // supply support within its original band.
+  const rangeEntries = new Set<string>();
+  for (const [strand, state] of strandEvidence) {
+    if (
+      !state.initialProbePolicy ||
+      state.level === 0 ||
+      [...stats.values()].some(
+        (entry) =>
+          strandOf(entry.skillId) === strand && entry.latestIndependent,
+      )
+    )
+      continue;
+    const candidates = templates.filter((t) => strandOf(t.skillId) === strand);
+    const distance = Math.min(
+      ...candidates.map((t) => Math.abs(levels[t.gradeBand] - state.level)),
+    );
+    const inRange = candidates.filter(
+      (t) => Math.abs(levels[t.gradeBand] - state.level) === distance,
+    );
+    const shallowest = Math.min(...inRange.map((t) => depth(t.skillId)));
+    for (const t of inRange)
+      if (Number.isFinite(shallowest) && depth(t.skillId) === shallowest)
+        rangeEntries.add(t.id);
+  }
   const chosen: PracticeChoice[] = [];
+  let diagnosticsChosen = 0;
   const recentSkillIds = attempts
     .filter((attempt) => now - Date.parse(attempt.createdAt) < 30 * 60000)
     .slice(-2)
@@ -171,7 +223,16 @@ export function planMixedPractice(options: {
     visited.add(skillId);
     for (const prerequisite of nodes.get(skillId)?.prerequisites ?? []) {
       if (stats.get(prerequisite)?.status === "review-ready") continue;
-      if (implemented.has(prerequisite)) remediation.add(prerequisite);
+      const parentLast = bySkill.get(prerequisite)?.at(-1);
+      const parentReady =
+        nodes.has(prerequisite) &&
+        nodes.get(prerequisite)!.prerequisites.every(independentlySupported);
+      const failedUnsupported =
+        parentLast &&
+        (!parentLast.correct || parentLast.assisted) &&
+        !parentReady;
+      if (implemented.has(prerequisite) && !failedUnsupported)
+        remediation.add(prerequisite);
       else collectPrerequisites(prerequisite, visited);
     }
   }
@@ -193,15 +254,34 @@ export function planMixedPractice(options: {
       const strandLevel = strandState.level;
       const level = levels[template.gradeBand];
       const prerequisites = nodes.get(template.skillId)?.prerequisites ?? [];
-      const ready = prerequisites.every(
-        (id) => stats.get(id)?.status === "review-ready",
-      );
+      const ready =
+        nodes.has(template.skillId) &&
+        prerequisites.every(independentlySupported);
       // Only demonstrated prerequisites may cross a strand boundary. A probe
       // never writes readiness to ancestors or unrelated strands.
       const observedPrerequisites = prerequisites.length > 0 && ready;
       const due = state?.reviewDueAt ?? null;
       const overdue = due !== null && due <= now;
       const returningError = !!last && (!last.correct || last.assisted);
+      const supported = ready || independentlySupported(template.skillId);
+      const genuineSupport =
+        (remediation.has(template.skillId) && supported) ||
+        (returningError && ready) ||
+        (overdue && independentlySupported(template.skillId));
+      const inRange = level <= strandState.ceiling;
+      const diagnosticSupport =
+        remediation.has(template.skillId) &&
+        !supported &&
+        Number.isFinite(depth(template.skillId));
+      const rangeEntry = rangeEntries.has(template.id) && !returningError;
+      const nearDiagnostic =
+        !last &&
+        inRange &&
+        prerequisites.length > 0 &&
+        prerequisites.every(
+          (id) =>
+            independentlySupported(id) || (isRoot(id) && !bySkill.has(id)),
+        );
       const reason: PracticeReason = remediation.has(template.skillId)
         ? "prerequisite"
         : returningError
@@ -257,13 +337,63 @@ export function planMixedPractice(options: {
         reason,
         strand,
         score: score + tie,
+        supportedEligible:
+          genuineSupport ||
+          (supported &&
+            (inRange ||
+              independentlySupported(template.skillId) ||
+              observedPrerequisites)),
+        rangeEntry,
+        nearDiagnostic,
+        diagnosticSupport,
+        poolEligible:
+          inRange ||
+          remediation.has(template.skillId) ||
+          (reason === "review" &&
+            state?.latestIndependent?.templateId === template.id),
         supportEligible:
-          !strandState.initialProbePolicy ||
-          level <= strandState.ceiling ||
-          reason !== "revisit",
+          (genuineSupport || diagnosticSupport) &&
+          (!strandState.initialProbePolicy || inRange || reason !== "revisit"),
       };
     });
-    candidates.sort(
+    const pool = options.strictCeiling
+      ? candidates.filter((entry) => entry.poolEligible)
+      : candidates;
+    const hasSupported = pool.some((entry) => entry.supportedEligible);
+    let eligible = pool.filter(
+      (entry) =>
+        entry.supportedEligible ||
+        entry.rangeEntry ||
+        (entry.diagnosticSupport && diagnosticsChosen === 0) ||
+        (entry.nearDiagnostic &&
+          diagnosticsChosen === 0 &&
+          (!hasSupported || options.count > 1)),
+    );
+    // A capability-restricted catalog may contain no actual entry family. Use
+    // its shallowest available low-range task as an explicit diagnostic, never
+    // pretend unknown prerequisites are ready. Offline never exceeds its pool.
+    const fallback = pool.filter(
+      (entry) =>
+        Number.isFinite(depth(entry.template.skillId)) &&
+        !bySkill.has(entry.template.skillId),
+    );
+    if (!eligible.length && fallback.length && diagnosticsChosen === 0) {
+      const lowest = Math.min(
+        ...fallback.map((entry) => levels[entry.template.gradeBand]),
+      );
+      const shallowest = Math.min(
+        ...fallback
+          .filter((entry) => levels[entry.template.gradeBand] === lowest)
+          .map((entry) => depth(entry.template.skillId)),
+      );
+      eligible = fallback.filter(
+        (entry) =>
+          levels[entry.template.gradeBand] === lowest &&
+          depth(entry.template.skillId) === shallowest,
+      );
+    }
+    if (!eligible.length) break;
+    eligible.sort(
       (a, b) => b.score - a.score || a.template.id.localeCompare(b.template.id),
     );
     // Reserve one eligible support/retrieval slot per batch. Variety cannot
@@ -273,7 +403,7 @@ export function planMixedPractice(options: {
       ["prerequisite", "revisit", "review"].includes(entry.reason),
     );
     const reserved = !supportAlreadyChosen
-      ? candidates.find(
+      ? eligible.find(
           (entry) =>
             entry.supportEligible &&
             ["prerequisite", "revisit", "review"].includes(entry.reason) &&
@@ -284,7 +414,10 @@ export function planMixedPractice(options: {
             ),
         )
       : undefined;
-    const { template, reason, strand } = reserved ?? candidates[0];
+    const selection = reserved ?? eligible[0]!;
+    const { template, reason, strand } = selection;
+    if (!selection.supportedEligible && !selection.rangeEntry)
+      diagnosticsChosen++;
     chosen.push({ template, reason, strand });
   }
   return chosen;

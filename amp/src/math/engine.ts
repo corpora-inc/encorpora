@@ -1,3 +1,4 @@
+import { entryTemplates, generateEntryProblem } from "./entry-practice.js";
 import {
   measurementTemplates,
   generateMeasurementProblem,
@@ -143,6 +144,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...entryTemplates,
   ...measurementTemplates,
   ...baseTemplates,
   ...extendedTemplates,
@@ -232,6 +234,8 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (entryTemplates.some((t) => t.id === templateId))
+    return generateEntryProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
     return generateMeasurementProblem(templateId, seed);
   if (algebraTemplates.some((t) => t.id === templateId))

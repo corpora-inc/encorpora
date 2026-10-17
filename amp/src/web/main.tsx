@@ -545,7 +545,7 @@ function App() {
       ...(templateId ? { templateId } : {}),
       count: templateId ? 1 : 3,
       responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: ["measurement-models-v1"],
+      figureCapabilities: ["measurement-models-v1", "entry-models-v1"],
     }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
       !data ||

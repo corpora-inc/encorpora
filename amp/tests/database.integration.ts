@@ -116,7 +116,11 @@ test(
       const mixed = await app.inject({
         method: "POST",
         url: `${path}/batches`,
-        payload: { count: 3 },
+        payload: {
+          count: 3,
+          responseCapabilities: ["single-choice-v1"],
+          figureCapabilities: ["entry-models-v1"],
+        },
       });
       assert.equal(mixed.statusCode, 200);
       assert.equal(

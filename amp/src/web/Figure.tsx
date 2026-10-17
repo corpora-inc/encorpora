@@ -1,3 +1,4 @@
+import { EntryFigure } from "./EntryFigure";
 import { MeasurementFigure } from "./MeasurementFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
@@ -6,6 +7,9 @@ import { GraphicalFigure } from "./GraphicalFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
+    case "aligned-strips":
+    case "shape-outline":
+      return <EntryFigure figure={figure} />;
     case "length-interval":
     case "measure-rectangle":
     case "rectangle-comparison":
