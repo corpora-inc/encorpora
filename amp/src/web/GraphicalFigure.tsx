@@ -18,6 +18,15 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
         70 + ((n - figure.xMin) / (figure.xMax - figure.xMin)) * 180;
       const y = (n: number) =>
         220 - ((n - figure.yMin) / (figure.yMax - figure.yMin)) * 180;
+      const labelTick = (
+        n: number,
+        min: number,
+        max: number,
+        project: (value: number) => number,
+      ) =>
+        n === 0 ||
+        ((n === min || n === max) &&
+          (min > 0 || max < 0 || Math.abs(project(n) - project(0)) >= 32));
       const pointDescription = figure.points
         .map((p) => `${p.label ?? "Point"} at (${p.x}, ${p.y})`)
         .join("; ");
@@ -39,7 +48,7 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 stroke={n === 0 ? ink : "#789586"}
                 strokeWidth={n === 0 ? 2 : 1}
               />
-              {(n === 0 || n === figure.xMin || n === figure.xMax) && (
+              {labelTick(n, figure.xMin, figure.xMax, x) && (
                 <text
                   x={x(n)}
                   y="249"
@@ -61,7 +70,7 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 stroke={n === 0 ? ink : "#789586"}
                 strokeWidth={n === 0 ? 2 : 1}
               />
-              {(n === 0 || n === figure.yMin || n === figure.yMax) && (
+              {labelTick(n, figure.yMin, figure.yMax, y) && (
                 <text
                   x="58"
                   y={y(n) + 8}

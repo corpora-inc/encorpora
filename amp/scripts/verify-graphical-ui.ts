@@ -9,6 +9,8 @@ import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
 import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
+import { lessons } from "../src/content/lessons";
+import { publicationHtml } from "../src/content/publications";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -261,12 +263,68 @@ try {
       );
     }
   }
+  // Printed choice exercises use the general figure renderer, so verify that
+  // route independently of the compact choice renderer in the app.
+  let printedFigures = 0;
+  const printPage = await browser.newPage();
+  for (const lesson of lessons) {
+    if (
+      !lesson.templateIds.some((id) =>
+        fixtures.some((f) => f.problem.templateId === id),
+      )
+    )
+      continue;
+    for (const kind of ["lesson", "workbook", "solutions"] as const) {
+      await printPage.setContent(publicationHtml(lesson, kind));
+      const result = await printPage
+        .locator(".graphical-figure")
+        .evaluateAll((figures) => {
+          const issues: string[] = [];
+          figures.forEach((figure, index) => {
+            const view = (figure as SVGSVGElement).viewBox.baseVal;
+            const texts = [...figure.querySelectorAll("text")];
+            for (let i = 0; i < texts.length; i++) {
+              const a = texts[i]!.getBBox();
+              if (
+                a.x < view.x - 1 ||
+                a.y < view.y - 1 ||
+                a.x + a.width > view.x + view.width + 1 ||
+                a.y + a.height > view.y + view.height + 1
+              )
+                issues.push(`${index}: clipped ${texts[i]!.textContent}`);
+              for (let j = i + 1; j < texts.length; j++) {
+                const b = texts[j]!.getBBox();
+                if (
+                  Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x) >
+                    1 &&
+                  Math.min(a.y + a.height, b.y + b.height) -
+                    Math.max(a.y, b.y) >
+                    1
+                )
+                  issues.push(
+                    `${index}: overlapping ${texts[i]!.textContent}/${texts[j]!.textContent}`,
+                  );
+              }
+            }
+          });
+          return { count: figures.length, issues };
+        });
+      assert.deepEqual(result.issues, [], `${lesson.id} ${kind}`);
+      printedFigures += result.count;
+    }
+  }
+  assert.equal(printedFigures, 199, "Reference-print graph coverage changed");
+  await printPage.close();
   await writeFile(
     new URL("validation.json", output),
-    JSON.stringify({ fixtures: fixtures.length, frames: rows }, null, 2),
+    JSON.stringify(
+      { fixtures: fixtures.length, printedFigures, frames: rows },
+      null,
+      2,
+    ),
   );
   console.log(
-    `Graph readability passed ${rows.length} views across ${fixtures.length} deterministic fixtures in ${browserName}.`,
+    `Graph readability passed ${rows.length} views across ${fixtures.length} deterministic fixtures and ${printedFigures} printed figures in ${browserName}.`,
   );
 } finally {
   await browser.close();

@@ -286,3 +286,75 @@ test("number line retains all integer ticks and truthful sparse labels", () => {
     assert.equal(attr.x1, attr.x2);
   }
 });
+
+test("unequal axis ranges omit crowded endpoint text without removing its unit gridline", () => {
+  const figure: GraphicalFigureData = {
+    kind: "coordinate-plane",
+    xMin: -1,
+    xMax: 9,
+    yMin: -1,
+    yMax: 10,
+    points: [{ x: 3, y: 5, label: "P" }],
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(GraphicalFigure, { figure }),
+  );
+  const texts = [...html.matchAll(/<text([^>]*)>(.*?)<\/text>/g)].map((m) => ({
+    text: m[2],
+    attrs: Object.fromEntries(
+      [...m[1]!.matchAll(/([\w-]+)="([^"]*)"/g)].map((a) => [a[1]!, a[2]!]),
+    ),
+  }));
+  assert.deepEqual(
+    texts.map((t) => t.text),
+    ["0", "9", "0", "10", "x", "y", "P"],
+  );
+  for (const text of texts.filter((t) => /^\d+$/.test(t.text!))) {
+    if (text.attrs.y === "249")
+      near((Number(text.attrs.x) - 70) / 18 - 1, Number(text.text));
+    else
+      near(
+        (220 - (Number(text.attrs.y) - 8)) / (180 / 11) - 1,
+        Number(text.text),
+      );
+  }
+  const lines = [...html.matchAll(/<line\s([^>]+)>/g)].map((m) =>
+    Object.fromEntries(
+      [...m[1]!.matchAll(/([\w-]+)="([^"]*)"/g)].map((a) => [
+        a[1]!,
+        Number(a[2]),
+      ]),
+    ),
+  );
+  assert.equal(lines.filter((l) => l.x1 === l.x2).length, 11);
+  assert.equal(lines.filter((l) => l.y1 === l.y2).length, 12);
+  assert.ok(
+    lines.some((l) => l.x1 === 70 && l.x2 === 70),
+    "Unlabeled x=-1 boundary remains",
+  );
+  assert.ok(
+    lines.some((l) => l.y1 === 220 && l.y2 === 220),
+    "Unlabeled y=-1 boundary remains",
+  );
+  for (const [min, max] of [
+    [1, 3],
+    [-3, -1],
+  ] as const) {
+    const oneSided = renderToStaticMarkup(
+      React.createElement(GraphicalFigure, {
+        figure: {
+          ...figure,
+          xMin: min,
+          xMax: max,
+          yMin: min,
+          yMax: max,
+          points: [],
+        },
+      }),
+    );
+    assert.deepEqual(
+      [...oneSided.matchAll(/<text[^>]*>(.*?)<\/text>/g)].map((m) => m[1]),
+      [String(min), String(max), String(min), String(max), "x", "y"],
+    );
+  }
+});
