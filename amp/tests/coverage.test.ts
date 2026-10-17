@@ -225,3 +225,51 @@ test("validated book pages connect instruction without promoting mastery or revi
   assert.equal(missing.valid, false);
   assert.deepEqual(missing.missingInstructionTemplateIds, ["example"]);
 });
+
+test("choice book bindings preserve selection-only scope and require matching capability", () => {
+  const binding = {
+    templateId: "example",
+    skillId: skill.id,
+    bookId: "book",
+    pageIds: ["page"],
+    assessedResponse: "single-choice-selection" as const,
+    unassessedRequirements: ["Constructed explanation is not assessed."],
+  };
+  const input = {
+    ...fixture,
+    templates: fixture.templates.map((t) => ({
+      ...t,
+      requiredResponseCapability: "single-choice-v1",
+    })),
+    lessons: [],
+    books: [{ id: "book", pageIds: ["page"] }],
+    bookBindings: [binding],
+  };
+  const report = buildCoverageManifest(input);
+  assert.deepEqual(report.errors, []);
+  assert.equal(report.skills[0]!.fullyCovered, false);
+  assert.equal(report.summary.testedArtifacts, 0);
+  assert.equal(
+    buildCoverageManifest({ ...input, templates: fixture.templates }).valid,
+    false,
+  );
+  assert.equal(
+    buildCoverageManifest({
+      ...input,
+      templates: fixture.templates.map((t) => ({
+        ...t,
+        requiredResponseCapability: "unsupported-v1",
+      })),
+    }).valid,
+    false,
+  );
+  assert.equal(
+    buildCoverageManifest({
+      ...input,
+      bookBindings: [
+        { ...binding, assessedResponse: "numeric-result-only" as const },
+      ],
+    }).valid,
+    false,
+  );
+});
