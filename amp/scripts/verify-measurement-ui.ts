@@ -277,9 +277,13 @@ try {
     await page.getByRole("button", { name: /^Check$/ }).click();
     await page.locator(".feedback.incorrect").waitFor();
     assert.ok(
-      (await page.locator(".solution-panel").innerText()).includes(
-        generated.explanation[0]!,
-      ),
+      (
+        await page
+          .locator(".solution-panel li")
+          .evaluateAll((items) =>
+            items.map((li) => li.getAttribute("data-text")),
+          )
+      ).includes(generated.explanation[0]!),
     );
     assert.equal(
       await page.locator(".problem-stage .solution-panel").count(),

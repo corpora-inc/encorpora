@@ -1,15 +1,18 @@
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { Figure } from "./Figure";
+import { MathText } from "./MathText";
 
 /** The lesson for one problem type: goal, terms, method, worked example. */
 export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   return (
     <article className="problem-lesson">
-      <p className="lesson-goal">{lesson.goal}</p>
+      <p className="lesson-goal">
+        <MathText text={lesson.goal} />
+      </p>
       {lesson.principle && (
         <p className="lesson-principle">
           <strong>Principle</strong>
-          {lesson.principle}
+          <MathText text={lesson.principle} />
         </p>
       )}
       {lesson.terms.length > 0 && (
@@ -17,7 +20,9 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           {lesson.terms.map(({ term, meaning }) => (
             <div key={term}>
               <dt>{term}</dt>
-              <dd>{meaning}</dd>
+              <dd>
+                <MathText text={meaning} />
+              </dd>
             </div>
           ))}
         </dl>
@@ -26,27 +31,36 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <h3>Method</h3>
         <ol className="lesson-method">
           {lesson.method.map((step) => (
-            <li key={step}>{step}</li>
+            <li key={step}>
+              <MathText text={step} />
+            </li>
           ))}
         </ol>
       </section>
       <section className="lesson-example">
         <h3>Example</h3>
-        <p className="lesson-example-prompt">{lesson.example.prompt}</p>
+        <p className="lesson-example-prompt">
+          <MathText text={lesson.example.prompt} />
+        </p>
         {lesson.example.figure && <Figure figure={lesson.example.figure} />}
         <ol>
           {lesson.example.steps.map((step) => (
-            <li key={step}>{step}</li>
+            <li key={step}>
+              <MathText text={step} />
+            </li>
           ))}
         </ol>
         <p className="lesson-example-answer">
-          Answer: <strong>{lesson.example.answer}</strong>
+          Answer:{" "}
+          <strong>
+            <MathText text={lesson.example.answer} />
+          </strong>
         </p>
       </section>
       {lesson.watch && (
         <p className="lesson-watch">
           <strong>Watch for</strong>
-          {lesson.watch}
+          <MathText text={lesson.watch} />
         </p>
       )}
     </article>

@@ -1230,3 +1230,24 @@ html[data-input="pointer"] :focus-visible {
   text-transform: uppercase;
   color: var(--primary);
 }
+/* The empty state adapts to the space the card area actually has. */
+.progress-card-stage {
+  container-type: size;
+}
+@container (max-height: 200px) {
+  .progress-empty svg {
+    display: none;
+  }
+}
+@container (max-height: 110px) {
+  .progress-empty p {
+    display: none;
+  }
+}
+/* Typeset math sits on the text baseline at the text's size. */
+.math .katex {
+  font-size: 1.08em;
+}
+.lesson-principle .math .katex {
+  font-size: 1.05em;
+}

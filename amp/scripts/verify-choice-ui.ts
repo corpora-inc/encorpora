@@ -202,9 +202,9 @@ try {
         await page.unroute("**/attempts");
       }
       assert.ok(
-        (await page.locator(".solution-answer").innerText()).includes(
-          correct.label,
-        ),
+        (await page
+          .locator(".solution-answer")
+          .getAttribute("data-text"))!.includes(correct.label),
       );
       assert.ok(
         (await page.locator(".solution-panel").innerText()).includes(
@@ -217,7 +217,10 @@ try {
         ),
       );
       assert.equal(
-        await page.locator(".solution-panel li").first().innerText(),
+        await page
+          .locator(".solution-panel li")
+          .first()
+          .getAttribute("data-text"),
         privateProblem.choiceFeedback![wrong.id],
       );
       await page.keyboard.press("Escape");

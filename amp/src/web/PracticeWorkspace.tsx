@@ -1,4 +1,5 @@
 import { ProblemLesson } from "./ProblemLesson";
+import { MathText } from "./MathText";
 import { displayAnswer } from "../math/polish";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
@@ -166,7 +167,9 @@ export function PracticeWorkspace(props: Props) {
     problem.response.kind === "choice"
       ? (problem.response.options.find((option) => option.id === value)
           ?.label ?? "Unavailable answer")
-      : displayAnswer(value);
+      : props.strand === "fractions"
+        ? value
+        : displayAnswer(value);
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
@@ -506,8 +509,13 @@ export function PracticeWorkspace(props: Props) {
           aria-label="Problem workspace"
         >
           <div className="problem-content">
-            <h2 ref={prompt} tabIndex={-1} className="question">
-              {problem.prompt}
+            <h2
+              ref={prompt}
+              tabIndex={-1}
+              className="question"
+              data-text={problem.prompt}
+            >
+              <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
               (choice ? (
@@ -566,8 +574,14 @@ export function PracticeWorkspace(props: Props) {
                   "Correct"
                 ) : (
                   <>
-                    <span className="solution-answer">
-                      Answer: <strong>{displayResponse(outcome.answer)}</strong>
+                    <span
+                      className="solution-answer"
+                      data-text={displayResponse(outcome.answer)}
+                    >
+                      Answer:{" "}
+                      <strong>
+                        <MathText text={displayResponse(outcome.answer)} />
+                      </strong>
                     </span>
                     <small>
                       You entered {displayResponse(outcome.response)}
@@ -582,7 +596,9 @@ export function PracticeWorkspace(props: Props) {
             {(!outcome.correct || showWhy) && (
               <ol className="feedback-steps">
                 {outcome.explanation.map((step, index) => (
-                  <li key={index}>{step}</li>
+                  <li key={index} data-text={step}>
+                    <MathText text={step} />
+                  </li>
                 ))}
               </ol>
             )}
@@ -630,10 +646,13 @@ export function PracticeWorkspace(props: Props) {
           {panel === "hint" && (
             <>
               <p className="hint">
-                {hint ||
-                  (busy
-                    ? "Finding your hint…"
-                    : "Your hint could not be loaded. Close this panel and try again.")}
+                {hint ? (
+                  <MathText text={hint} />
+                ) : busy ? (
+                  "Finding your hint…"
+                ) : (
+                  "Your hint could not be loaded. Close this panel and try again."
+                )}
               </p>
               <button onClick={() => setPanel(null)}>
                 Back to the problem

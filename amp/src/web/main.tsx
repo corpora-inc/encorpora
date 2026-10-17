@@ -42,6 +42,7 @@ import {
 } from "./auth";
 import "./style.css";
 import "./practice.css";
+import "katex/dist/katex.min.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
 import { LessonIndex } from "./LessonIndex";

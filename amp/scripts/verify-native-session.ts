@@ -739,7 +739,7 @@ try {
       import.meta.url,
     ).pathname,
   });
-  const prompt = await page.locator(".question").innerText();
+  const prompt = (await page.locator(".question").getAttribute("data-text"))!;
   const givens = /What is (\d+) \+ (\d+)\?/.exec(prompt);
   assert.ok(givens);
   const answer = String(Number(givens[1]) + Number(givens[2]));

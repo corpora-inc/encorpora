@@ -398,9 +398,7 @@ try {
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(fresh.id);
-  await page
-    .getByRole("heading", { name: "None yet", exact: true })
-    .waitFor();
+  await page.getByRole("heading", { name: "None yet", exact: true }).waitFor();
   release();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.locator(".progress-skill-card").count(), 0);

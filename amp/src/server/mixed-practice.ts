@@ -181,7 +181,8 @@ export function planMixedPractice(options: {
       const estimate = strandEstimate(frontier, strand);
       if (Math.abs(distance) <= 1) {
         score += 14 * estimate.sd;
-        score += 10 * Math.max(0, Math.min(2, frontier.expected - estimate.level));
+        score +=
+          10 * Math.max(0, Math.min(2, frontier.expected - estimate.level));
       }
       // Interleave: a miss returns after other work, never as an instant loop.
       if (template.skillId === lastSkill) score -= 200;

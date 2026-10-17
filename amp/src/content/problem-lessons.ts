@@ -1,6 +1,7 @@
 import { generateProblem, templates } from "../math/engine";
 import type { SemanticFigure } from "../math/contracts";
 import { lessons } from "./lessons";
+import { skills } from "../curriculum/catalog";
 import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
 import { principles } from "./problem-principles";
@@ -57,7 +58,10 @@ export function problemLesson(
     response.kind === "choice"
       ? (response.options.find((option) => option.id === example.answer)
           ?.label ?? example.answer)
-      : displayAnswer(example.answer);
+      : skills.find((skill) => skill.id === template.skillId)?.strand ===
+          "fractions"
+        ? example.answer
+        : displayAnswer(example.answer);
   const authored = methods[templateId];
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(templateId),

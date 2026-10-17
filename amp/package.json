@@ -47,6 +47,7 @@
     "drizzle-orm": "^0.45.4",
     "fastify": "^5.6.0",
     "jose": "^6.1.0",
+    "katex": "^0.16.47",
     "oidc-client-ts": "^3.5.0",
     "pdf-lib": "1.17.1",
     "pg": "^8.16.0",
@@ -58,6 +59,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.11.4",
+    "@types/katex": "^0.16.8",
     "@types/node": "^22.18.0",
     "@types/pg": "^8.15.0",
     "@types/react": "^19.2.0",
