@@ -14,7 +14,7 @@ export const frame = (
     id,
     frames,
     occupied: sequence(count),
-    unitLabel: "counter",
+    unitLabel: "Each circle is one counter.",
     ...(options.emphasized
       ? { emphasized: options.emphasized, emphasisLabel: options.legend }
       : {}),
@@ -51,7 +51,7 @@ export const collection = (
   return diagram({
     kind: "count-collection",
     id,
-    unitLabel: "counter",
+    unitLabel: "Each circle is one counter.",
     icon: "circle",
     relationship,
     panels: panels.map((p) => ({
@@ -89,7 +89,7 @@ export const tens = (
     id,
     tens: tenCount,
     ones,
-    unitLabel: "one",
+    unitLabel: "Each small square is one.",
     ...(options.emphasizedTens
       ? { emphasizedTens: options.emphasizedTens }
       : {}),

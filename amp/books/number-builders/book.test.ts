@@ -98,7 +98,8 @@ test("unit exchanges and removal keep the mathematically intended values", () =>
 test("conservation and empty mats are represented explicitly", () => {
   const zero = get("zero-mat");
   assert.equal(zero.kind, "count-collection");
-  if (zero.kind !== "count-collection") throw new Error(zero.id);
+  if (zero.kind !== "count-collection")
+    throw new Error("Expected an empty count collection");
   assert.equal(zero.panels.length, 1);
   assert.equal(zero.panels[0]!.cells.length, 0);
   for (const id of ["same-seven-mats", "eight-rearranged"]) {

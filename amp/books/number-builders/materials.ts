@@ -38,12 +38,7 @@ export function addMaterials(a: Author) {
       ),
       note(
         "Keep the unit the same",
-        "Print this page at its original size. Do not enlarge only the strips or only the loose squares. Ten loose squares can cover the ten cells in one strip.",
-      ),
-      note(
-        "No cutting needed",
-        "You can instead trace the pieces, use matching household blocks or draw tens and ones. Explain the units before trading.",
-        "connect",
+        "Print at original size. Ten loose squares cover one strip. Do not resize strips and squares separately. Instead of cutting, trace the pieces or use matching blocks. Explain the units before trading.",
       ),
     ],
     "guide",

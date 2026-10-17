@@ -58,7 +58,8 @@ export class Author {
     });
   }
   finish() {
-    const grouped = this.keys;
+    const { entry = [], counting = [], ...later } = this.keys;
+    const grouped = { counting: [...entry, ...counting], ...later };
     for (const [section, entries] of Object.entries(grouped)) {
       let cursor = 0;
       const count = Math.ceil(entries.length / 4);

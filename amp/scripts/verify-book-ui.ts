@@ -88,11 +88,22 @@ try {
     }[] = [];
     for (let index = 0; index < frames.length; index++) {
       for (const size of [
-        { width: 390, height: 844 },
-        { width: 320, height: 568 },
-        { width: 844, height: 390 },
+        { width: 390, height: 844, textScale: 1 },
+        { width: 320, height: 568, textScale: 1 },
+        { width: 844, height: 390, textScale: 1 },
+        ...(book.presentation === "early-number"
+          ? [{ width: 390, height: 844, textScale: 1.25 }]
+          : []),
       ]) {
-        await page.setViewportSize(size);
+        await page.locator(".reading-content").evaluate((content) => {
+          (content as HTMLElement).style.removeProperty("font-size");
+        });
+        await page.setViewportSize({ width: size.width, height: size.height });
+        if (size.textScale !== 1)
+          await page.locator(".reading-content").evaluate((content, scale) => {
+            (content as HTMLElement).style.fontSize =
+              `${parseFloat(getComputedStyle(content).fontSize) * scale}px`;
+          }, size.textScale);
         await page.waitForFunction(
           () =>
             Math.abs(

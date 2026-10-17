@@ -51,3 +51,39 @@ test("unknown presentation profiles fail publication validation", () => {
     /Unknown book presentation/,
   );
 });
+test("paired print comparisons retain both models and their captions", () => {
+  const pair: MathBook = {
+    ...sample,
+    presentation: "early-number",
+    pages: [
+      {
+        id: "compare",
+        kind: "lesson",
+        eyebrow: "COMPARE",
+        title: "Same amount",
+        blocks: [1, 2].map((n) => ({
+          kind: "diagram" as const,
+          diagram: {
+            kind: "strips" as const,
+            wholeLabel: "One whole",
+            id: `model-${n}`,
+            alt: `Model ${n}`,
+            caption: `Representation ${n}`,
+            rows: [{ label: "One whole", parts: n * 2, shaded: n }],
+          },
+        })),
+      },
+    ],
+  };
+  const early = renderBook(pair);
+  assert.equal(early.match(/class="early-model-pair"/g)?.length, 1);
+  for (const n of [1, 2])
+    assert.equal(
+      early.match(new RegExp(`Representation ${n}`, "g"))?.length,
+      1,
+    );
+  assert.doesNotMatch(
+    renderBook({ ...pair, presentation: undefined }),
+    /class="early-model-pair"/,
+  );
+});

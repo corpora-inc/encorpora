@@ -201,14 +201,36 @@ export function renderBook(book: MathBook): string {
                       <p className="subtitle">{page.subtitle}</p>
                     )}
                   </header>
-                  {page.blocks.map((block, i) => (
-                    <Block
-                      key={i}
-                      block={block}
-                      opening={page.kind === "opening"}
-                      taskNumbers={taskNumbers}
-                    />
-                  ))}
+                  {page.blocks.map((block, i) => {
+                    const paired =
+                      book.presentation === "early-number" &&
+                      page.blocks[0]?.kind === "diagram" &&
+                      page.blocks[1]?.kind === "diagram";
+                    if (paired && i === 1) return null;
+                    if (paired && i === 0)
+                      return (
+                        <div className="early-model-pair" key={i}>
+                          <Block
+                            block={block}
+                            opening={false}
+                            taskNumbers={taskNumbers}
+                          />
+                          <Block
+                            block={page.blocks[1]!}
+                            opening={false}
+                            taskNumbers={taskNumbers}
+                          />
+                        </div>
+                      );
+                    return (
+                      <Block
+                        key={i}
+                        block={block}
+                        opening={page.kind === "opening"}
+                        taskNumbers={taskNumbers}
+                      />
+                    );
+                  })}
                 </div>
                 <footer className="book-footer">
                   <span>{book.title}</span>

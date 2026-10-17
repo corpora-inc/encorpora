@@ -16,13 +16,16 @@ export const earlyNumberPrintCss = `
 .early-number-page:not(.guide):not(.solutions) .workspace{border-color:#88a9ab}
 .early-number-page:not(.guide):not(.solutions) .worked{padding:12px 16px;background:#eef5f3;border-radius:14px;border:0}
 .early-number-page:not(.guide):not(.solutions) .worked ol{padding-left:28px}
+.early-model-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.early-model-pair .early-number-art{max-width:100%}
+.early-model-pair .book-figure{min-width:0}
 .early-number-page.workshop .page-header{border-color:var(--number-accent)}
 .early-number-page.reflection .page-header{border-color:#895975}
 .early-number-page.opening h1{font-size:48pt}
 .early-number-page.opening .early-number-art{max-width:6.4in}
 .early-number-page.opening{background:linear-gradient(155deg,#f3faf6 0%,#fff 60%)}
 .early-number-page#unit-tools .early-number-art{max-width:6.8in}
-.early-number-page#unit-tools .book-figure svg{max-height:4in}
+.early-number-page#unit-tools .book-figure svg{max-height:none}
 .early-number-page:not(.guide):not(.solutions) .early-unit,.early-number-page:not(.guide):not(.solutions) .early-emphasis{font-size:12pt}
 
 .early-number-page.opening .book-figure svg{max-height:3.5in}
