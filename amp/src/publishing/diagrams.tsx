@@ -1,5 +1,7 @@
 import React from "react";
-import type { Diagram } from "../../books/fraction-field-guide/schema.js";
+import { labelLanes } from "./label-layout.js";
+import { ArrayDrawing } from "./ArrayDrawing.js";
+import type { Diagram } from "./schema.js";
 import {
   rational,
   validateDiagram,
@@ -82,6 +84,11 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
   let height = 180,
     drawing: React.ReactNode;
   switch (d.kind) {
+    case "array": {
+      height = 90 + d.rows * Math.min(38, 420 / d.columns, 240 / d.rows);
+      drawing = <ArrayDrawing diagram={d} />;
+      break;
+    }
     case "strips": {
       height = 40 + d.rows.length * 72;
       const wholes = Math.max(...d.rows.map((r) => r.wholes ?? 1)),
@@ -130,7 +137,14 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
       const min = rational(d.min),
         max = rational(d.max),
         x = (v: number) => left + ((v - min) / (max - min)) * (right - left);
-      const axisY = d.jumps?.length ? 90 : 55;
+      const jumpLanes = labelLanes(
+        (d.jumps ?? []).map((j) => ({
+          center: (x(rational(j.from)) + x(rational(j.to))) / 2,
+          text: j.label,
+        })),
+        10,
+      );
+      const axisY = d.jumps?.length ? 90 + Math.max(0, ...jumpLanes) * 22 : 55;
       const ticks = Array.from(
         { length: Math.round((max - min) * d.divisionsPerUnit) + 1 },
         (_, i) => min + i / d.divisionsPerUnit,
@@ -144,6 +158,9 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
           .filter(
             (v) =>
               Number.isInteger(v) &&
+              (v % (d.integerLabelInterval ?? 1) === 0 ||
+                v === min ||
+                v === max) &&
               !d.marks.some(
                 (mark) => BigInt(mark.at[0]) === BigInt(v) * BigInt(mark.at[1]),
               ),
@@ -209,7 +226,7 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
           {d.jumps?.map((j, i) => {
             const a = x(rational(j.from)),
               b = x(rational(j.to)),
-              y = axisY - 42 - i * 13;
+              y = 48 + jumpLanes[i]! * 22;
             return (
               <g key={i}>
                 <path
@@ -328,16 +345,22 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
                   textAnchor="middle"
                   className="diagram-label"
                 >
-                  {!completeGroup(d.total, d.groupSize, i)
-                    ? "partial"
-                    : `group ${i + 1}`}
+                  {d.unitDivisions === 1
+                    ? completeGroup(d.total, d.groupSize, i)
+                      ? String(i + 1)
+                      : `${Math.round(total - i * size)} left`
+                    : !completeGroup(d.total, d.groupSize, i)
+                      ? "partial"
+                      : `group ${i + 1}`}
                 </text>
               </g>
             );
           })}
           <text x={left} y={169} className="diagram-label">
-            Total amount: {fmt(d.total)} · each small division is 1/
-            {d.unitDivisions}
+            Total amount: {fmt(d.total)} ·{" "}
+            {d.unitDivisions === 1
+              ? "each cell is one whole unit"
+              : `each small division is 1/${d.unitDivisions}`}
           </text>
         </>
       );
