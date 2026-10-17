@@ -65,6 +65,29 @@ const taskSelection: Record<string, string[]> = {
     "delayed-units",
   ],
 };
+const automatedFamilies: Record<string, string[]> = {
+  "length-intervals": ["shifted-ruler-length"],
+  "fractional-scale-bridge": ["fractional-ruler-length"],
+  "perimeter-meaning": [
+    "rectangle-border-length",
+    "rectangle-missing-border-side",
+  ],
+  "rectangle-constraints": [
+    "rectangle-missing-area-side",
+    "same-area-border-choice",
+    "same-border-area-choice",
+    "rectangle-two-constraints-choice",
+    "rectangle-existence-choice",
+  ],
+  "quantity-unit-decision": ["border-or-cover-unit"],
+  "larger-to-smaller-length": ["metric-length-rename"],
+  "multistep-length-conversions": [
+    "metric-length-reverse",
+    "mixed-length-total",
+    "mixed-unit-border",
+  ],
+  "whole-pack-costs": ["whole-pack-ribbon-choice"],
+};
 const row = (
   id: string,
   skillId: string,
@@ -81,7 +104,7 @@ const row = (
   standardIds,
   scope,
   unassessedRequirements,
-  templateIds,
+  templateIds: [...templateIds, ...(automatedFamilies[id] ?? [])],
   relation,
   taskIds:
     taskSelection[id] ??
@@ -129,7 +152,7 @@ export const measurementAlignments: readonly MeasurementAlignment[] = [
     "Extension beyond whole-unit ruler entry: read selected half- and quarter-centimeter intervals and subtract positions.",
     [
       "Fractional scale work is an extension, not a claim that grade-two standards require these fraction computations.",
-      "No automated ruler-reading template is bound to this volume.",
+      "Automated practice reads selected half/quarter-unit positions; physical tool use and a constructed explanation require human observation.",
     ],
     [],
     "reference",
@@ -201,7 +224,7 @@ export const measurementAlignments: readonly MeasurementAlignment[] = [
     "Rectangle area and perimeter relationships, missing factors, counterexamples, and complete searches under positive whole-number side constraints.",
     [
       "No general optimization theorem or unrestricted real-valued design space is claimed.",
-      "Open designs and complete factor-pair arguments require human review; no automated family is bound for these facets.",
+      "Open designs and complete factor-pair arguments require human review; selected numeric and choice responses do not assess that construction.",
     ],
   ),
   row(
@@ -231,8 +254,32 @@ export const measurementAlignments: readonly MeasurementAlignment[] = [
     [
       "Not every measurement system or quantity is taught.",
       "Square-centimeter conversion is a selected conceptual extension, not a complete area-unit conversion curriculum.",
-      "No automated conversion template is bound to this volume.",
+      "Automated practice covers selected metric-length relationships only, without assessing a learner-created conversion model.",
     ],
+  ),
+  row(
+    "quantity-unit-decision",
+    "area-perimeter-models",
+    ["entry-check"],
+    ["4.MD.A.3"],
+    "Distinguish boundary length and square-unit covering as a prerequisite to applying rectangle formulas.",
+    [
+      "Selecting a unit does not assess formula application or complete standard mastery.",
+    ],
+    [],
+    "reference",
+  ),
+  row(
+    "whole-pack-costs",
+    "multistep-whole-stories",
+    ["compare-the-plans"],
+    ["4.OA.A.3"],
+    "Interpret a division remainder to purchase enough whole packs, calculate total bills and compare them under stated rules.",
+    [
+      "Selection does not assess a learner-created equation, independent estimation or explanation; contexts and operations are bounded.",
+    ],
+    [],
+    "practiced",
   ),
   row(
     "material-order-models",

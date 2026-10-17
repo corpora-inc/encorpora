@@ -940,3 +940,17 @@ nav button {
   min-height: 130px;
   flex-shrink: 0;
 }
+
+/* Keep labeled measurement models readable above the desktop answer dock. */
+@media (min-width: 1000px) and (min-height: 621px) {
+  .problem-content:has(.measurement-figure) {
+    padding-block: 6px;
+  }
+  .problem-content:has(.measurement-figure) .question {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+  .problem-content .measurement-figure {
+    margin-top: 8px;
+  }
+}

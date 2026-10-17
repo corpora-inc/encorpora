@@ -188,7 +188,9 @@ export function PracticeWorkspace(props: Props) {
     setEntering(false);
     setLessonError("");
     setCelebrate(false);
-    previousOutcome.current = null;
+    // Returning from a book remounts this workspace with an existing result.
+    // Only a newly received result should open feedback or replay celebration.
+    previousOutcome.current = outcome?.id ?? null;
     if (small || choice) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
