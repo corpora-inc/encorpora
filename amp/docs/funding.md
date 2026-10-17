@@ -27,7 +27,7 @@ cannot substitute for any of these approvals.
 | Florida MyScholarShop | Instructional products use the supplier channel; Find Providers serves services such as tutoring. | Seek product supplier onboarding and separate PEP/FES-UA product eligibility. |
 | Texas TEFA | Applications are rolling; vendors and offerings are reviewed. Online/out-of-state providers can participate after approval. | Confirm business-registration requirements and submit the curriculum through Odyssey. |
 | Alabama CHOOSE | ALDOR approval precedes ClassWallet registration; software and curriculum are expense categories. | Confirm annual digital license terms and required provider attestations. |
-| NC ESA+ | Products must be purchased in its ClassWallet marketplace; not every marketplace item is allowable. | Obtain the curriculum product path; do not offer reimbursement as a universal fallback. |
+| NC ESA+ | New curriculum vendors join ClassWallet; existing listed providers have a reviewed Pay Vendor route. Prior-approved mobile apps have a specific app-store reimbursement exception. | Verify the exact SKU and route; neither marketplace inclusion nor the mobile-app exception establishes AMP eligibility. |
 | West Virginia Hope | Public provider listings require approved marketplace offerings. | Verify current platform and full product application/payment rules. |
 
 Official references: [Arizona](https://www.azed.gov/esa/classwallet),
@@ -158,3 +158,5 @@ written approval evidence, expiration dates, actual listings and payment tests i
 the operating system of record. The registry audit detects broken references,
 missing states, unsupported approval metadata and stale sources. It cannot prove
 legal eligibility, source accuracy or completeness of national research.
+
+NC route evidence checked October 17, 2026: [curriculum vendor and Pay Vendor requirements](https://k12.ncseaa.edu/the-education-student-accounts/current-families/allowable-expenses/curriculum/) and [2026–27 mobile-app reimbursement rules](https://k12.ncseaa.edu/media/wi0miksa/educational-apps.pdf). The app exception permits approved app-store in-app subscriptions, excludes third-party subscription receipts and desktop-designed apps, and is separate from the curriculum marketplace route.
