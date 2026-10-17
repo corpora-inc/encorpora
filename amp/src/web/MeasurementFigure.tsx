@@ -130,7 +130,7 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
         </text>
         {!known && (
           <text
-            style={{ ...text, fontSize: 17, opacity: 0.6 }}
+            style={{ ...text, fontSize: 19, opacity: 0.6 }}
             x={4}
             y={20}
             textAnchor="start"
