@@ -2,8 +2,9 @@
 
 The commerce module is a deterministic, in-memory state-transition library for
 one-student, fixed-term curriculum licenses. It models Stripe, Apple, Google,
-ESA, and free pilot orders. It makes no network calls and contains no payment
-provider, webhook-verification, marketplace, database or tax integration.
+ESA, and free pilot orders. The pure ledger makes no network calls. A PostgreSQL adapter and local
+admin import CLI persist normalized events and project license grants. No payment
+provider, webhook-verification, marketplace or tax integration is implemented.
 
 `contracts.ts` exports the TypeScript interfaces. `ledger.ts` exports
 `emptyCommerceState()`, `reduceCommerce(state, event)`, `activeGrants(state,
@@ -108,3 +109,36 @@ it is a correctness foundation, not a million-order storage engine. Persistence
 should index identities and load the necessary records without weakening global
 uniqueness or audit history. No provider integration is operational merely because
 a channel name is represented in the union.
+
+## PostgreSQL adapter and administrator import
+
+Apply migrations `0001.sql` and `0002-commerce.sql` before import.
+`applyCommerceEvent(pool, input)` validates untrusted JSON with the exported
+`commerceEventSchema`/`parseCommerceEvent`, locks the single ledger row, verifies
+the learner belongs to the purchasing account, reduces the event, and atomically
+persists ledger history and grant projection. The event table rejects row updates
+and deletes. New future-dated events are rejected for reconciliation.
+
+The global lock serializes imports; this is an initial administrative workflow,
+not a high-volume webhook service. PostgreSQL credentials grant administrative
+authority: protect them and never expose this function as a public unauthenticated
+endpoint. Strict schema validation does not authenticate a payment.
+
+Run `tsx scripts/commerce-event.ts EVENT.json` with `AMP_DATABASE_URL` set in the
+process environment. There is no default database. The CLI accepts one regular
+JSON file of at most 64 KiB and prints the resulting order states. Failures print
+a generic rejection without database connection details or student data. It does
+not contact a payment processor, apply for a marketplace, or send email.
+
+Projected grant IDs use `commerce:<orderId>`. The existing grant table's
+`external_order_id` contains JSON encoding of `[channelReference, externalOrderId]`
+to preserve source uniqueness without a change to migration 0001. The projection's
+start time is the later of contractual start and actual grant issuance, preventing
+access before activation. Revocations and completed full refunds update the grant
+in the same transaction. The original term and evidence remain in the ledger.
+
+Integration tests require `AMP_TEST_DATABASE_URL`; without it, database tests skip
+and schema-boundary tests run. Tests create and remove a fresh random PostgreSQL
+schema, exercise concurrent replay, ownership rejection, source collisions, fixed
+term projection, refund/revocation, event immutability and transaction rollback.
+They never use `AMP_DATABASE_URL` or a default production connection.

@@ -6,11 +6,11 @@ const at = '2026-10-16T12:00:00.000Z';
 const later = '2026-10-17T12:00:00.000Z';
 const end = '2027-10-16T12:00:00.000Z';
 const order: OrderInput = { id: 'o1', account: { id: 'parent' }, license: { accountId: 'parent', learnerId: 'child', sku: 'math-year', startsAt: at, endsAt: end }, channel: 'stripe', channelReference: 'merchant', externalOrderId: 'external', amountMinor: 10000, currency: 'USD', activationPolicy: 'after-settlement' };
-function create(input = order): CommerceEvent { return { id: 'created', occurredAt: at, orderId: input.id, channel: input.channel, channelReference: input.channelReference, type: 'order.created', order: input }; }
-function event(type: 'order.approved' | 'order.fulfilled' | 'license.activated' | 'license.revoked' | 'order.rejected', input = order): CommerceEvent {
+function create(input = order) { return { id: 'created', occurredAt: at, orderId: input.id, channel: input.channel, channelReference: input.channelReference, type: 'order.created' as const, order: input }; }
+function event(type: 'order.approved' | 'order.fulfilled' | 'license.activated' | 'license.revoked' | 'order.rejected', input = order) {
   return { id: type, occurredAt: at, orderId: input.id, channel: input.channel, channelReference: input.channelReference, type, evidence: 'reviewed-reference' };
 }
-function paid(type: 'order.settled' | 'refund.requested' | 'refund.completed', input = order): CommerceEvent {
+function paid(type: 'order.settled' | 'refund.requested' | 'refund.completed', input = order) {
   return { id: type, occurredAt: at, orderId: input.id, channel: input.channel, channelReference: input.channelReference, type, evidence: 'payment-reference', amountMinor: input.amountMinor, currency: input.currency };
 }
 function approved(input = order): CommerceState {
