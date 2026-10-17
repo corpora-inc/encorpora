@@ -27,6 +27,7 @@ export function BookReader({
     Math.min(Math.max(0, initialFrame), frames.length - 1),
   );
   const [contents, setContents] = useState(false),
+    [modelOpen, setModelOpen] = useState(false),
     [solution, setSolution] = useState<Solution | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
@@ -35,6 +36,11 @@ export function BookReader({
   const frame = frames[position]!,
     page = book.pages.find((p) => p.id === frame.pageId)!,
     block = frame.block;
+  const nearbyModel = page.blocks
+    .slice(0, frame.blockIndex)
+    .reverse()
+    .find((entry) => entry.kind === "diagram");
+  const model = nearbyModel?.kind === "diagram" ? nearbyModel.diagram : null;
   const pageFrames = frames.filter((f) => f.pageId === frame.pageId),
     step = pageFrames.indexOf(frame) + 1;
   const taskNumbers = useMemo(
@@ -67,6 +73,7 @@ export function BookReader({
       if (
         contents ||
         solution ||
+        modelOpen ||
         event.altKey ||
         event.ctrlKey ||
         event.metaKey ||
@@ -87,7 +94,7 @@ export function BookReader({
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [position, contents, solution, frames.length]);
+  }, [position, contents, solution, modelOpen, frames.length]);
   function content() {
     switch (block.kind) {
       case "text":
@@ -191,6 +198,11 @@ export function BookReader({
           <span>
             Step {step} of {pageFrames.length}
           </span>
+          {model && (block.kind === "task" || block.kind === "worked") && (
+            <button className="text-button" onClick={() => setModelOpen(true)}>
+              See the model
+            </button>
+          )}
           <button
             className="text-button"
             disabled={busy}
@@ -199,9 +211,11 @@ export function BookReader({
               setError("");
               try {
                 await download();
-              } catch {
+              } catch (error) {
                 setError(
-                  "The download could not be prepared. Please try again.",
+                  error instanceof Error
+                    ? error.message
+                    : "The download could not be prepared. Please try again.",
                 );
               } finally {
                 setBusy(false);
@@ -254,6 +268,17 @@ export function BookReader({
                 </button>
               ))}
           </div>
+        </FocusDialog>
+      )}
+      {modelOpen && model && (
+        <FocusDialog
+          title="Keep the model nearby"
+          close={() => setModelOpen(false)}
+        >
+          <BookScreenFigure diagram={model} />
+          <button onClick={() => setModelOpen(false)}>
+            Back to your thinking
+          </button>
         </FocusDialog>
       )}
       {solution && (

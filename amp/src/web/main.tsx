@@ -53,6 +53,10 @@ function App() {
     book: FractionBook;
     initialFrame: number;
   } | null>(null);
+  const bookReturn = useRef<{ selector: string; scroll: number }>({
+    selector: "",
+    scroll: 0,
+  });
   const bookPositions = useRef<Record<string, number>>({});
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
@@ -234,6 +238,13 @@ function App() {
   }
   async function openBook(id: string, fromProblem = false) {
     if (!learner) return;
+    const active = document.activeElement as HTMLElement | null;
+    const returnTo = {
+      selector: active?.dataset.bookId
+        ? `[data-book-id="${CSS.escape(active.dataset.bookId)}"]`
+        : "[data-book-trigger]",
+      scroll: document.querySelector(".library-main")?.scrollTop ?? 0,
+    };
     const data = await api<{
       book: FractionBook;
       suggestedPageId: string | null;
@@ -247,6 +258,7 @@ function App() {
             (frame) => frame.pageId === data.suggestedPageId,
           )
         : -1;
+    bookReturn.current = returnTo;
     setReadingBook({
       book: data.book,
       initialFrame:
@@ -449,15 +461,13 @@ function App() {
           initialFrame={readingBook.initialFrame}
           onClose={() => {
             setReadingBook(null);
-            requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              const library = document.querySelector(".library-main");
+              if (library) library.scrollTop = bookReturn.current.scroll;
               document
-                .querySelector<HTMLElement>(
-                  tab === "practice"
-                    ? ".question"
-                    : ".book-library-card button",
-                )
-                ?.focus({ preventScroll: true }),
-            );
+                .querySelector<HTMLElement>(bookReturn.current.selector)
+                ?.focus({ preventScroll: true });
+            });
           }}
           onPosition={(frame) => {
             bookPositions.current[`${learner.id}:${readingBook.book.id}`] =
@@ -563,7 +573,7 @@ function App() {
           </main>
         )
       ) : tab === "library" ? (
-        <main>
+        <main className="library-main">
           {!readingLesson && (
             <>
               <div className="section-heading">
@@ -594,6 +604,7 @@ function App() {
                     </p>
                     <button
                       disabled={busy}
+                      data-book-id={book.id}
                       onClick={() => void action(() => openBook(book.id))}
                     >
                       Open book

@@ -434,6 +434,7 @@ export function PracticeWorkspace(props: Props) {
               <button
                 className="text-button"
                 disabled={busy}
+                data-book-trigger
                 onClick={props.openBook}
               >
                 Explore the idea

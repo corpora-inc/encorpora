@@ -14,6 +14,9 @@
   min-height: 0;
 }
 .reader-toolbar {
+  min-height: 0;
+  padding: 0;
+  flex-wrap: nowrap;
   height: 64px;
   flex: none;
   display: flex;
@@ -149,6 +152,8 @@
   min-height: 48px;
 }
 .reader-controls {
+  display: block;
+  gap: 0;
   flex: none;
   width: min(100%, 760px);
   margin: 0 auto;
@@ -499,5 +504,54 @@
   .screen-strip p {
     font-size: 12px;
     margin-bottom: 2px;
+  }
+}
+
+@media (max-width: 650px) and (max-height: 650px) {
+  .reader-heading {
+    padding: 12px 4px 8px;
+  }
+  .reader-heading h2 {
+    font-size: 22px;
+  }
+  .reader-heading .eyebrow {
+    margin-bottom: 5px;
+  }
+  .reader-heading > p:last-child:not(.eyebrow) {
+    display: none;
+  }
+  .reading-content {
+    padding: 8px 4px;
+  }
+  .reading-callout {
+    padding: 12px;
+  }
+  .reading-callout h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+  .thinking-space {
+    padding: 6px 0;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .thinking-space span {
+    display: none;
+  }
+  .reading-content p {
+    margin-bottom: 12px;
+  }
+  .reader-controls {
+    padding-bottom: 6px;
+  }
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .reading-task .thinking-space {
+    display: none;
+  }
+}
+@media (max-width: 650px) and (max-height: 650px) {
+  .screen-strip {
+    margin-bottom: 8px;
   }
 }
