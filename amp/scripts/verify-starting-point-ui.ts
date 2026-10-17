@@ -121,7 +121,16 @@ try {
     ),
   );
   await page.evaluate(() => {
-    document.documentElement.style.zoom = "1.25";
+    const values = [
+      ...document.querySelectorAll<HTMLElement>(
+        ".starting-point-workspace h1, .starting-point-workspace p, .starting-point-workspace button, .starting-point-workspace .eyebrow, .starting-point-content, .starting-point-copy strong, .starting-point-copy > span, .starting-point-copy small",
+      ),
+    ].map((element) => ({
+      element,
+      size: parseFloat(getComputedStyle(element).fontSize),
+    }));
+    for (const { element, size } of values)
+      element.style.fontSize = `${size * 1.25}px`;
   });
   await page.screenshot({
     path: new URL("picker-125-percent.png", directory).pathname,
@@ -134,16 +143,13 @@ try {
     const bounds = await choice.boundingBox();
     assert.ok(
       bounds && bounds.y >= 0 && bounds.y + bounds.height <= 568,
-      "An enlarged choice is unreachable",
+      `An enlarged choice is unreachable: ${JSON.stringify(bounds)}`,
     );
   }
   const earliest = page.getByRole("button", { name: /Early number/ });
   await earliest.scrollIntoViewIfNeeded();
   await earliest.click();
   await page.locator(".session-invitation").waitFor();
-  await page.evaluate(() => {
-    document.documentElement.style.zoom = "";
-  });
   await page.locator(".starting-point-trigger").click();
   await page.waitForFunction(
     () =>

@@ -49,22 +49,22 @@
   min-height: 114px;
   padding: 18px;
   text-align: left;
-  background: #f3f5e9;
+  background: var(--starting-card-bg, #f3f5e9);
   color: #173e37;
   border: 1px solid #c4d5c3;
   box-shadow: 0 2px 0 #dce5d4;
   border-radius: 16px;
 }
 .starting-point-options button:nth-child(2) {
-  background: #fdf1dc;
+  --starting-card-bg: #fdf1dc;
   border-color: #e5cfaa;
 }
 .starting-point-options button:nth-child(3) {
-  background: #e8f2ef;
+  --starting-card-bg: #e8f2ef;
   border-color: #b9d7d0;
 }
 .starting-point-options button:nth-child(4) {
-  background: #f0eaf5;
+  --starting-card-bg: #f0eaf5;
   border-color: #d5c7e1;
 }
 .starting-point-options button[aria-pressed="true"] {
@@ -248,11 +248,20 @@
   }
 }
 
-@container (max-width: 250px) {
+@container (max-width: 16em) {
   .starting-point-options {
     grid-template-columns: 1fr;
   }
   .starting-point-options button {
     min-height: 90px;
   }
+}
+
+.starting-point-options button:hover {
+  background: var(--starting-card-bg, #f3f5e9);
+  filter: brightness(0.97);
+}
+.starting-point-top button:hover {
+  background: #e8f2ef;
+  color: #173e37;
 }
