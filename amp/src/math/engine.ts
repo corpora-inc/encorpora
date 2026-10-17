@@ -3,17 +3,17 @@ import type { GeneratedProblem, PublicProblem, SemanticFigure, TemplateMetadata 
 export type { GeneratedProblem, PublicProblem, SemanticFigure, TemplateMetadata } from './contracts.js';
 
 export const templates: readonly TemplateMetadata[] = [
-  { id: 'count-objects', version: 1, title: 'Count objects', skillId: 'counting', gradeBand: 'K–2', description: 'Count up to ten objects.' },
-  { id: 'add-within-20', version: 1, title: 'Add within twenty', skillId: 'addition', gradeBand: 'K–2', description: 'Add two nonnegative whole numbers with a sum at most twenty.' },
-  { id: 'subtract-within-20', version: 1, title: 'Subtract within twenty', skillId: 'subtraction', gradeBand: 'K–2', description: 'Subtract without a negative result.' },
-  { id: 'multiply-facts', version: 1, title: 'Multiplication facts', skillId: 'multiplication', gradeBand: '3–5', description: 'Multiply whole numbers from two through twelve.' },
-  { id: 'fraction-model', version: 1, title: 'Read a fraction', skillId: 'fractions', gradeBand: '3–5', description: 'Express a shaded part of one whole as a fraction.' },
+  { id: 'count-objects', version: 1, title: 'Count objects', skillId: 'count-to-20', gradeBand: 'K–2', description: 'Count up to ten objects.' },
+  { id: 'add-within-20', version: 1, title: 'Add within twenty', skillId: 'addition-within-20', gradeBand: 'K–2', description: 'Add two nonnegative whole numbers with a sum at most twenty.' },
+  { id: 'subtract-within-20', version: 1, title: 'Subtract within twenty', skillId: 'subtraction-within-20', gradeBand: 'K–2', description: 'Subtract without a negative result.' },
+  { id: 'multiply-facts', version: 1, title: 'Multiplication facts', skillId: 'multiplication-facts', gradeBand: '3–5', description: 'Multiply whole numbers from two through twelve.' },
+  { id: 'fraction-model', version: 1, title: 'Read a fraction', skillId: 'fraction-model', gradeBand: '3–5', description: 'Express a shaded part of one whole as a fraction.' },
   { id: 'add-fractions', version: 1, title: 'Add fractions', skillId: 'fraction-addition', gradeBand: '3–5', description: 'Add two positive fractions with possibly different denominators.' },
-  { id: 'rectangle-area', version: 1, title: 'Rectangle area', skillId: 'area', gradeBand: '3–5', description: 'Find area from perpendicular side lengths.' },
+  { id: 'rectangle-area', version: 1, title: 'Rectangle area', skillId: 'rectangle-area', gradeBand: '3–5', description: 'Find area from perpendicular side lengths.' },
   { id: 'linear-equation', version: 1, title: 'Solve a linear equation', skillId: 'linear-equations', gradeBand: '6–8', description: 'Solve an equation with an integer solution.' },
   { id: 'mean-data', version: 1, title: 'Mean of a dataset', skillId: 'statistics-mean', gradeBand: '6–8', description: 'Compute an exact mean of five observations.' },
   { id: 'right-triangle', version: 1, title: 'Pythagorean theorem', skillId: 'pythagorean-theorem', gradeBand: '6–8', description: 'Find a hypotenuse from a scaled integer right triangle.' },
-  { id: 'quadratic-vertex', version: 1, title: 'Quadratic minimum', skillId: 'quadratics', gradeBand: '9–12', description: 'Find the minimum value of a quadratic in vertex form.' },
+  { id: 'quadratic-vertex', version: 1, title: 'Quadratic minimum', skillId: 'quadratic-minimum', gradeBand: '9–12', description: 'Find the minimum value of a quadratic in vertex form.' },
   { id: 'geometric-sequence', version: 1, title: 'Geometric sequences', skillId: 'geometric-sequences', gradeBand: '9–12', description: 'Find a term of a geometric sequence from its first term and ratio.' },
   { id: 'logarithm-integer', version: 1, title: 'Logarithms', skillId: 'logarithms', gradeBand: '9–12', description: 'Evaluate a logarithm whose argument is an integer power of its base.' },
 ];
