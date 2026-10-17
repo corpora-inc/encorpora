@@ -352,6 +352,24 @@ try {
       document.activeElement?.getAttribute("data-book-id") ===
       "fraction-field-guide",
   );
+  // Capability-gated books must also open from an idea and restore its action.
+  await page.getByRole("button", { name: /All ideas/ }).click();
+  await page
+    .getByRole("combobox", { name: "Math area" })
+    .selectOption("algebra");
+  await page.locator('[data-progress-skill="linear-equations"]').click();
+  await page
+    .getByRole("button", { name: "Open related book", exact: true })
+    .click();
+  await page
+    .getByRole("main", { name: "Balance and Change", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "← Back", exact: true }).click();
+  await page.waitForFunction(
+    () =>
+      document.activeElement?.getAttribute("data-book-id") ===
+      "balance-and-change",
+  );
 
   // An old learner's completed response cannot repaint a newly selected learner.
   let release!: () => void, captured!: () => void;
