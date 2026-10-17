@@ -43,7 +43,10 @@ await vite.listen();
 const browser = await (
   process.env.AMP_BROWSER === "webkit" ? webkit : chromium
 ).launch({ headless: true });
-const directory = new URL("../artifacts/choice-review/", import.meta.url);
+const directory = new URL(
+  `../artifacts/choice-review-${process.platform}-${process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium"}/`,
+  import.meta.url,
+);
 await mkdir(directory, { recursive: true });
 try {
   const page = await browser.newPage({ hasTouch: true });
