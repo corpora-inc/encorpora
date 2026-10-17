@@ -302,10 +302,12 @@ export const arUtWyDossiers: DossierInventory = {
         },
         {
           dimension: "invoice",
-          finding: "requirement-established",
+          finding: "unresolved",
           summary:
-            "Combine documents into one upload: vendor, date, itemized prices, total and payment method/proof. A word-processor invoice requires separate bank/card or completed-payment evidence.",
-          sourceIds: ["ut-receipts"],
+            "Prepare system-generated itemized paid receipts with payment method; card receipts need last four digits. September guidance rejects invoices, while August guidance permits some with separate payment proof and excludes manually prepared cash/check documents.",
+          sourceIds: ["ut-spending", "ut-receipts"],
+          unresolvedQuestion:
+            "Which current rule governs invoice-plus-proof submissions? Obtain administrator clarification; do not promise reimbursement with the generic quote.",
         },
         {
           dimension: "refund",
@@ -322,6 +324,7 @@ export const arUtWyDossiers: DossierInventory = {
         "Obtain private onboarding records and exact software/PDF/bundle offering decisions.",
         "Bind approved term and goods/service classification; do not assume an annual service exception applies to software.",
         "Implement portal fulfillment and paid-receipt evidence separately from unpaid quotes; reconcile refunds with the administrator.",
+        "Resolve conflicting receipt guidance; prepare a system-generated paid receipt rather than assume invoice-plus-proof acceptance.",
       ],
       applicationStatus: "unsent",
       offerEnabled: false,
