@@ -250,3 +250,97 @@ test("publisher selects an identifier rather than loading caller-supplied source
   ])
     assert.throws(() => parsePublishingArgs(args));
 });
+
+test("publication provenance includes nested author modules and rejects path traversal/symlinks", async () => {
+  const { mkdtemp, mkdir, writeFile, symlink, rm } =
+    await import("node:fs/promises");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { publicationSourceHashes } =
+    await import("../src/publishing/source-manifest.js");
+  const root = await mkdtemp(join(tmpdir(), "amp-book-source-"));
+  try {
+    for (const path of [
+      "books/example/chapters",
+      "src/publishing",
+      "src/books",
+      "scripts",
+    ])
+      await mkdir(join(root, path), { recursive: true });
+    for (const path of [
+      "books/example/book.ts",
+      "books/example/chapters/one.ts",
+      "src/publishing/schema.ts",
+      "src/books/catalog.ts",
+      "scripts/publish-book.ts",
+    ])
+      await writeFile(join(root, path), path);
+    const before = await publicationSourceHashes(root, "example");
+    assert.equal(Object.keys(before).length, 5);
+    assert.ok(before["books/example/chapters/one.ts"]);
+    await writeFile(
+      join(root, "books/example/chapters/one.ts"),
+      "updated lesson",
+    );
+    const after = await publicationSourceHashes(root, "example");
+    assert.notEqual(
+      before["books/example/chapters/one.ts"],
+      after["books/example/chapters/one.ts"],
+    );
+    await assert.rejects(publicationSourceHashes(root, "../example"));
+    await symlink(
+      join(root, "scripts/publish-book.ts"),
+      join(root, "books/example/linked.ts"),
+    );
+    await assert.rejects(publicationSourceHashes(root, "example"), /symlink/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("mobile integer line has exact whole ticks, sparse labels and four disjoint forward arrows", async () => {
+  const { BookIntegerLineDrawing } =
+    await import("../src/web/BookIntegerLineDrawing.js");
+  const line: Extract<Diagram, { kind: "number-line" }> = {
+    kind: "number-line",
+    id: "twenty",
+    alt: "Four jumps of five reach twenty",
+    caption: "Four equal groups",
+    wholeLabel: "Each small interval is one unit",
+    min: [0, 1],
+    max: [20, 1],
+    divisionsPerUnit: 1,
+    integerLabelInterval: 5,
+    marks: [],
+    jumps: Array.from({ length: 4 }, (_, i) => ({
+      from: [i * 5, 1],
+      to: [(i + 1) * 5, 1],
+      label: "+5",
+    })),
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(BookIntegerLineDrawing, { diagram: line }),
+  );
+  assert.deepEqual(
+    [...html.matchAll(/data-line-tick="([^"]+)"/g)].map((m) => Number(m[1])),
+    Array.from({ length: 21 }, (_, i) => i),
+  );
+  assert.deepEqual(
+    [...html.matchAll(/data-line-label="([^"]+)"/g)].map((m) => Number(m[1])),
+    [0, 5, 10, 15, 20],
+  );
+  assert.deepEqual(
+    [
+      ...html.matchAll(
+        /data-jump-from="([^"]+)" data-jump-to="([^"]+)" d="M([^,]+),[^ ]+ Q[^ ]+ ([^,]+),/g,
+      ),
+    ].map((m) => [Number(m[1]), Number(m[2]), Number(m[3]), Number(m[4])]),
+    [
+      [0, 5, 24, 92],
+      [5, 10, 92, 160],
+      [10, 15, 160, 228],
+      [15, 20, 228, 296],
+    ],
+  );
+  assert.equal((html.match(/marker-end=/g) ?? []).length, 4);
+});
