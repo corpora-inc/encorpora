@@ -1,3 +1,4 @@
+import { equalGroupsDefinitions } from "../../src/content/equal-groups-definitions.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { equalGroupsWorkshop as book } from "./book.js";
@@ -228,7 +229,12 @@ test("practice support has exact template and book pages without grading explana
   validateEqualGroupsPracticeBindings(templates);
   assert.deepEqual(
     equalGroupsPracticeBindings.map((b) => b.templateId).sort(),
-    ["divide-facts", "multiply-facts", "rectangle-area"],
+    [
+      "divide-facts",
+      "multiply-facts",
+      "rectangle-area",
+      ...equalGroupsDefinitions.map((d) => d.id),
+    ].sort(),
   );
   const first = equalGroupsPracticeBindings[0]!;
   for (const b of [

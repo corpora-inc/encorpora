@@ -1,3 +1,4 @@
+import { equalGroupsDefinitions } from "../../src/content/equal-groups-definitions.js";
 import { equalGroupsWorkshop } from "./book.js";
 /** Editorial content relationships; none certify a complete standard or learner mastery. */
 export interface WorkshopAlignment {
@@ -32,7 +33,7 @@ const row = (
   unassessedRequirements,
   templateIds,
 });
-export const equalGroupsAlignments: readonly WorkshopAlignment[] = [
+const authoredAlignments: readonly WorkshopAlignment[] = [
   row(
     "entry-equal-groups",
     "multiplication-meaning",
@@ -367,6 +368,20 @@ export const equalGroupsAlignments: readonly WorkshopAlignment[] = [
     ["Open responses require a reader and are not graded by numeric practice."],
   ),
 ];
+export const equalGroupsAlignments: readonly WorkshopAlignment[] =
+  authoredAlignments.map((alignment) => ({
+    ...alignment,
+    templateIds: [
+      ...alignment.templateIds,
+      ...equalGroupsDefinitions
+        .filter(
+          (d) =>
+            d.skillId === alignment.skillId &&
+            alignment.pageIds.includes(d.pageId),
+        )
+        .map((d) => d.id),
+    ],
+  }));
 export const equalGroupsSources = [
   {
     url: "https://www.thecorestandards.org/Math/Content/2/OA/",
