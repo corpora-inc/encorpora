@@ -13,6 +13,9 @@ export const learners = pgTable(
     id: text("id").primaryKey(),
     accountId: text("account_id").notNull(),
     name: text("name").notNull(),
+    startingBand: text("starting_band"),
+    startingPolicy: integer("starting_policy"),
+    startingExcludedStrands: text("starting_excluded_strands").array(),
     deletedAt: timestamp("deleted_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()

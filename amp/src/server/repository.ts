@@ -1,3 +1,4 @@
+import { skills } from "../curriculum/catalog";
 import {
   lockLearningAccount,
   learningConsentActive,
@@ -10,6 +11,10 @@ import * as schema from "./schema";
 import type { SkillEvidence } from "./evidence.js";
 import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
+import type {
+  StartingBand,
+  PracticeStartingPoint,
+} from "../learning/starting-point";
 export type Learner = { id: string; name: string };
 export type Outcome = {
   ingestionSequence?: string;
@@ -38,6 +43,8 @@ export class ApiError extends Error {
   }
 }
 export interface LearnerTransaction {
+  startingPoint(): Promise<PracticeStartingPoint>;
+  setStartingPoint(band: StartingBand): Promise<void>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
@@ -161,6 +168,29 @@ class PgTransaction implements LearnerTransaction {
     private db: PoolClient,
     private learnerId: string,
   ) {}
+  async startingPoint(): Promise<PracticeStartingPoint> {
+    const result = await this.db.query(
+      'SELECT starting_band AS band,starting_policy AS "policyVersion",COALESCE(starting_excluded_strands,ARRAY[]::text[]) AS "excludedStrands" FROM amp_learners WHERE id=$1',
+      [this.learnerId],
+    );
+    return result.rows[0];
+  }
+  async setStartingPoint(band: StartingBand): Promise<void> {
+    const observed = await this.db.query(
+      "SELECT skill_id FROM amp_skill_evidence WHERE learner_id=$1",
+      [this.learnerId],
+    );
+    const strands = new Map(skills.map((skill) => [skill.id, skill.strand]));
+    const excluded = [
+      ...new Set(
+        observed.rows.map((row) => strands.get(row.skill_id) ?? row.skill_id),
+      ),
+    ].sort();
+    await this.db.query(
+      "UPDATE amp_learners SET starting_band=$2,starting_policy=1,starting_excluded_strands=COALESCE(starting_excluded_strands,$3::text[]) WHERE id=$1",
+      [this.learnerId, band, excluded],
+    );
+  }
   async recentAttempts() {
     const result = await this.db.query(
       "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id=$1 ORDER BY evidence_sequence DESC LIMIT 12",

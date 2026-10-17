@@ -26,6 +26,8 @@ The lesson library opens a selected lesson as the primary view. It does not inse
 
 The curriculum graph separates official requirements, instructional skills, assessment facets, problem families, and prerequisite relationships. State alignment, SAT alignment, and broader mathematical enrichment are distinct crosswalks. Component-level requirements matter: reading a number is not evidence that the learner can explain its place-value structure.
 
+An optional starting range helps the learner begin near familiar material without selecting a permanent track. It influences untouched strands only and carries no assessment credit. Before independent success, unsuccessful or assisted probes step toward nearby support; actual work then determines each strand’s challenge range. Changing this preference preserves questions and observed evidence.
+
 Placement is woven into early practice with clearly bounded exploratory probes. Probes can sample a skill without declaring its ancestors mastered. Each strand maintains its own evidence and challenge range. Selection combines prerequisite support, recent errors, due retrieval, unpracticed facets, representation variety, and meaningful challenge. Within-session reservations prevent a generated batch from repeating one skill accidentally.
 
 Assessment distinguishes independent solutions, hint-assisted work, lesson-assisted work, revisions, and transfer. Time may inform fluency only in tasks explicitly designed for that purpose. Distractors and error categories should identify plausible reasoning, not merely label an answer wrong. Diagnostic claims require calibrated evidence; heuristic selection must not be described as psychometric measurement.

@@ -37,6 +37,7 @@ test(
         "0004-parent-lifecycle.sql",
         "0006-commerce-orders.sql",
         "0008-skill-evidence.sql",
+        "0010-starting-point.sql",
       ])
         await pool.query(
           await readFile(
@@ -72,6 +73,9 @@ test(
         "INSERT INTO amp_instances(id,learner_id,content) VALUES('foreign',$1,'{\"secret\":\"foreign-answer\"}')",
         [other.id],
       );
+      await learning.transaction("parent", child.id, (tx) =>
+        tx.setStartingPoint("9–12"),
+      );
       const exportLines = [];
       for await (const line of family.export("parent"))
         exportLines.push(JSON.parse(line));
@@ -80,6 +84,12 @@ test(
         205,
       );
       assert.equal(exportLines.at(-1).type, "complete");
+      assert.equal(
+        exportLines.find(
+          (line) => line.type === "learner" && line.data.id === child.id,
+        )?.data.starting_band,
+        "9–12",
+      );
       assert.equal(
         JSON.stringify(exportLines).includes("foreign-answer"),
         false,
@@ -163,6 +173,19 @@ test(
         [child.id],
       );
       const receipt = await family.deleteLearning("parent", child.id);
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT starting_band,starting_policy,starting_excluded_strands FROM amp_learners WHERE id=$1",
+            [child.id],
+          )
+        ).rows[0],
+        {
+          starting_band: null,
+          starting_policy: null,
+          starting_excluded_strands: null,
+        },
+      );
       assert.equal(receipt.retainedBillingReferences, 1);
       assert.equal(receipt.billingManagementRequired, true);
       const tombstone = (await family.summary("parent")).learners[0]!;

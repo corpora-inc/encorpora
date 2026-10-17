@@ -213,7 +213,7 @@ export class FamilyRepository {
         ]);
         if (preserve) {
           await client.query(
-            "UPDATE amp_learners SET name='Deleted learner',deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
+            "UPDATE amp_learners SET name='Deleted learner',starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
             [row.id],
           );
           retained++;
