@@ -37,7 +37,7 @@ export function decisions(a: Author) {
   a.page("full-boxes", "Count only complete kits", [
     worked(
       "The packing rule matters",
-      "Seventeen tokens are available. A sealed kit must contain exactly five. How many complete kits can you make?",
+      "Pack 17 tokens into kits of exactly 5. How many full kits can you make?",
       [
         "Three kits use 3 × 5 = 15 tokens.",
         "Two tokens are left, too few for another complete kit.",
