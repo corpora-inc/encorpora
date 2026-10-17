@@ -59,6 +59,58 @@ export function auditFundingRegistry(
     programIds.add(program.id);
     if (!jurisdictions.has(program.jurisdiction))
       fail(`Unknown jurisdiction: ${program.id}`);
+    if (
+      !program.onboarding?.statement.trim() ||
+      !program.onboarding?.sourceIds.length
+    )
+      fail(`Missing onboarding evidence: ${program.id}`);
+    for (const id of program.onboarding?.sourceIds ?? [])
+      if (!sourceIds.has(id))
+        fail(`Unknown onboarding source ${id}: ${program.id}`);
+    const purchaseModels = [
+      "parent-curriculum",
+      "tuition-first",
+      "school-tuition",
+      "approved-specialist",
+      "family-tax-benefit",
+      "institutional",
+    ];
+    if (!purchaseModels.includes(program.purchaseModel))
+      fail(`Missing or invalid purchase model: ${program.id}`);
+    if (
+      ![
+        "operating",
+        "existing-balances-only",
+        "current-year-unconfirmed",
+        "closed",
+      ].includes(program.operatingStatus)
+    )
+      fail(`Missing or invalid operating status: ${program.id}`);
+    if (program.operatingStatus === "closed" && program.purchasingRoutes.length)
+      fail(`Closed program has purchasing routes: ${program.id}`);
+    if (
+      ["closed", "current-year-unconfirmed"].includes(
+        program.operatingStatus,
+      ) &&
+      program.priority !== "research"
+    )
+      fail(`Unavailable or unconfirmed program promoted: ${program.id}`);
+    if (
+      [
+        "family-tax-benefit",
+        "institutional",
+        "school-tuition",
+        "approved-specialist",
+      ].includes(program.purchaseModel) &&
+      program.purchasingRoutes.some((route) =>
+        ["marketplace", "direct-pay", "reimbursement"].includes(route),
+      )
+    )
+      fail(`Unsupported parent purchase route: ${program.id}`);
+    if (program.operatingStatus !== "operating")
+      warnings.push(
+        `Check operating limitation ${program.operatingStatus}: ${program.id}`,
+      );
     if (!program.facts.length) fail(`Missing evidence: ${program.id}`);
     for (const fact of program.facts) {
       if (!fact.statement.trim() || !fact.sourceIds.length)
