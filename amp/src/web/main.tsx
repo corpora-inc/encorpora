@@ -69,6 +69,23 @@ type Catalog = {
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
+// The learner last chosen on this device survives a reload. A per-device
+// convenience only: access is still decided by the server.
+const learnerKey = "amp.learner";
+function rememberedLearner() {
+  try {
+    return localStorage.getItem(learnerKey);
+  } catch {
+    return null;
+  }
+}
+function rememberLearner(id: string | undefined) {
+  try {
+    if (id) localStorage.setItem(learnerKey, id);
+  } catch (error) {
+    console.warn("Learner choice not saved", error);
+  }
+}
 // Copying typeset math gives its plain text, not KaTeX's internal markup.
 addEventListener("copy", (event) => {
   const selection = getSelection();
@@ -196,6 +213,7 @@ function App() {
     accountRef = useRef<string | null>(null);
   const learnerRef = useRef<string | undefined>(undefined);
   learnerRef.current = learner?.id;
+  useEffect(() => rememberLearner(learner?.id), [learner?.id]);
   const [response, setResponse] = useState(""),
     [outcome, setOutcome] = useState<Outcome | null>(null),
     [hint, setHint] = useState(""),
@@ -456,6 +474,7 @@ function App() {
       summary.consent.status === "development";
     const selected = allowed
       ? (available.find((entry) => entry.id === learnerRef.current) ??
+        available.find((entry) => entry.id === rememberedLearner()) ??
         available[0] ??
         null)
       : null;
