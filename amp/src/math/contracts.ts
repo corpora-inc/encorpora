@@ -1,6 +1,8 @@
 import { z } from "zod";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
+  | { kind: "ten-frame"; first: number; second: number; capacity: 10 | 20 }
+  | { kind: "base-ten"; hundreds: number; tens: number; ones: number }
   | {
       kind: "coordinate-plane";
       xMin: number;
@@ -51,6 +53,30 @@ export interface GeneratedProblem {
 
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
+    z
+      .object({
+        kind: z.literal("ten-frame"),
+        first: z.number().int().min(0).max(20),
+        second: z.number().int().min(0).max(20),
+        capacity: z.union([z.literal(10), z.literal(20)]),
+      })
+      .strict()
+      .refine(
+        (f) => f.first + f.second <= f.capacity,
+        "Counters must fit the frames",
+      ),
+    z
+      .object({
+        kind: z.literal("base-ten"),
+        hundreds: z.number().int().min(0).max(9),
+        tens: z.number().int().min(0).max(19),
+        ones: z.number().int().min(0).max(19),
+      })
+      .strict()
+      .refine(
+        (f) => 100 * f.hundreds + 10 * f.tens + f.ones <= 999,
+        "Base-ten total must be at most999",
+      ),
     z
       .object({
         kind: z.literal("coordinate-plane"),

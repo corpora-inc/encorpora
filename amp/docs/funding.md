@@ -2,14 +2,11 @@
 
 This internal operating document describes how Corpora can sell an annual,
 per-student math curriculum through public education purchasing programs. The
-research date is October 16, 2026. It is not an eligibility determination, provider
+inventory review date is October 17, 2026; individual source dates are recorded separately. It is not an eligibility determination, provider
 approval, application submission, or promise that a family will be reimbursed.
 
 The machine-readable inventory in `src/funding/registry.ts` covers all 50 states
-and DC. It contains 14 candidate programs: eight with program-authority or
-administrator sources reviewed and six discovered through a payment platform.
-Every jurisdiction is either partially researched or unresearched. An empty
-program list means research is outstanding; it does not mean funding is absent.
+and DC. It contains 86 researched channel records with program-authority or administrator evidence, including parent curriculum purchases, tuition-first programs, tuition-only school scholarships, family tax benefits and institutional purchasing routes. These are not 86 marketplaces. All six platform-discovered leads have program-specific authority evidence. Every jurisdiction remains partially researched: the records establish named routes, not exhaustive local coverage or the absence of other programs. See [the national review](national-funding-review.md) for scope, purchasing distinctions and operating limitations.
 All Corpora vendor, SKU and listing stages are `not-applied`, and payment setup is
 `not-configured`. These are project workflow defaults, not an investigation of
 Corpora's historic registrations; reconcile existing business records first.
@@ -58,11 +55,7 @@ students receiving special education, with an educational goods/services
 marketplace. It belongs in the inventory alongside ESAs.
 [TEA resources](https://spedtex.tea.texas.gov/resources/pdses-resources)
 
-Odyssey lists Iowa, Georgia, Louisiana, Missouri MOScholars, Wyoming, Utah and
-Texas vendor channels. A platform link establishes a research lead, not current
-legal operation or eligibility for this product. Verify each against the current
-program authority, rules, funding year and any controlling court decisions.
-[Odyssey vendor directory](https://withodyssey.com/en/solutions/vendors)
+The national records distinguish a program's operating status from the availability of a family application window. Closed programs have no purchasing routes; uncertain current-year operation is retained as a research task. Annual digital-license eligibility is unconfirmed unless the cited authority supports the category, and even then the specific term and Corpora SKU require confirmation.
 
 ## Application dossier and fulfillment design
 
@@ -158,8 +151,7 @@ be documented as inapplicable with evidence, not silently deleted. District
 procurement is a separate sales motion and does not confer parent reimbursement.
 
 Add source-linked facts and explicit unknowns, with checked and effective dates
-where available. The current registry stores checked dates; effective periods
-must be captured in facts until a richer policy model is justified. Recheck before
+where available. The registry stores source-check dates, purchase models, operating status and separate onboarding evidence. Effective policy periods are recorded in source-linked facts. Recheck before
 any application, public eligibility claim or purchase; audit warnings after 90
 days are maintenance reminders, not a safe-harbor period. Keep all approved SKUs,
 written approval evidence, expiration dates, actual listings and payment tests in

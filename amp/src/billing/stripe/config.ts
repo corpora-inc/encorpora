@@ -1,0 +1,100 @@
+/** No billing defaults: every merchant, catalog and redirect boundary is explicit. */
+export interface StripeBillingConfig {
+  secretKey: string;
+  webhookSecret: string;
+  accountId: string;
+  livemode: boolean;
+  productId: string;
+  priceId: string;
+  currency: string;
+  amountMinor: number;
+  sku: string;
+  appOrigin: string;
+  portalConfigurationId: string;
+  automaticTax: boolean;
+  consentPolicyVersion: string;
+}
+export class BillingError extends Error {
+  constructor(
+    public readonly code: string,
+    public readonly statusCode = 409,
+  ) {
+    super(code);
+  }
+}
+export function stripeConfig(
+  env: NodeJS.ProcessEnv,
+): StripeBillingConfig | undefined {
+  if (env.AMP_STRIPE_ENABLED !== "true") return undefined;
+  function required(name: string): string {
+    const value = env[name];
+    if (!value || value.trim() !== value)
+      throw new Error(`Missing or invalid ${name}`);
+    return value;
+  }
+  const mode = required("AMP_STRIPE_MODE");
+  if (mode !== "test" && mode !== "live")
+    throw new Error("AMP_STRIPE_MODE must be test or live");
+  if (mode === "live" && env.AMP_STRIPE_LIVE_APPROVED !== "true")
+    throw new Error(
+      "Live Stripe billing requires explicit operational approval",
+    );
+  const secretKey = required("AMP_STRIPE_SECRET_KEY");
+  if (!secretKey.startsWith(mode === "live" ? "sk_live_" : "sk_test_"))
+    throw new Error("Stripe key mode mismatch");
+  const appOrigin = required("AMP_STRIPE_APP_ORIGIN");
+  const origin = new URL(appOrigin);
+  if (
+    origin.origin !== appOrigin ||
+    origin.username ||
+    origin.password ||
+    (origin.protocol !== "https:" &&
+      !(
+        mode === "test" &&
+        origin.protocol === "http:" &&
+        origin.hostname === "127.0.0.1"
+      ))
+  )
+    throw new Error(
+      "Stripe app origin must be an HTTPS origin (loopback HTTP permitted in test mode)",
+    );
+  const amountMinor = Number(required("AMP_STRIPE_AMOUNT_MINOR"));
+  if (!Number.isSafeInteger(amountMinor) || amountMinor <= 0)
+    throw new Error("Invalid Stripe annual price amount");
+  const currency = required("AMP_STRIPE_CURRENCY");
+  if (!/^[a-z]{3}$/.test(currency)) throw new Error("Invalid Stripe currency");
+  const accountId = required("AMP_STRIPE_ACCOUNT_ID");
+  const productId = required("AMP_STRIPE_PRODUCT_ID");
+  const priceId = required("AMP_STRIPE_PRICE_ID");
+  const portalConfigurationId = required("AMP_STRIPE_PORTAL_CONFIGURATION_ID");
+  const webhookSecret = required("AMP_STRIPE_WEBHOOK_SECRET");
+  if (
+    !accountId.startsWith("acct_") ||
+    !productId.startsWith("prod_") ||
+    !priceId.startsWith("price_") ||
+    !portalConfigurationId.startsWith("bpc_") ||
+    !webhookSecret.startsWith("whsec_")
+  )
+    throw new Error("Invalid Stripe resource configuration");
+  const tax = required("AMP_STRIPE_AUTOMATIC_TAX");
+  if (tax !== "true" && tax !== "false")
+    throw new Error("Explicit Stripe tax setting required");
+  return {
+    secretKey,
+    webhookSecret,
+    accountId,
+    livemode: mode === "live",
+    productId,
+    priceId,
+    currency,
+    amountMinor,
+    sku: required("AMP_STRIPE_SKU"),
+    appOrigin,
+    portalConfigurationId,
+    automaticTax: tax === "true",
+    consentPolicyVersion: required("AMP_STRIPE_CONSENT_POLICY_VERSION"),
+  };
+}
+export function stripeNamespace(config: StripeBillingConfig): string {
+  return `${config.accountId}:${config.livemode ? "live" : "test"}`;
+}
