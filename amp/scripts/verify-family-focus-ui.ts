@@ -275,6 +275,26 @@ try {
       pausedSpace.content <= pausedSpace.available + 1,
       `paid license plus paused learning fits ${width}: ${JSON.stringify(pausedSpace)}`,
     );
+    // Force the term line to wrap even when the local font would keep it on one line.
+    await page
+      .locator(".family-license-summary p")
+      .first()
+      .evaluate((e) => {
+        (e as HTMLElement).style.maxWidth = "150px";
+      });
+    const wrappedSpace = await page
+      .locator(".family-learners")
+      .evaluate((e) => ({
+        content: e.scrollHeight,
+        available: e.clientHeight,
+      }));
+    assert.ok(
+      wrappedSpace.content <= wrappedSpace.available + 1,
+      `wrapped term and paused status fit ${width}: ${JSON.stringify(wrappedSpace)}`,
+    );
+    await page.screenshot({
+      path: `artifacts/family-focus/paused-wrapped-${width}.png`,
+    });
     assert.deepEqual(faults, []);
     await page.close();
   }

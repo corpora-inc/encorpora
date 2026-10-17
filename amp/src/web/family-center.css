@@ -589,3 +589,7 @@
     padding: 12px;
   }
 }
+
+.family-focused-section > h2.sr-only {
+  min-height: 0 !important;
+}

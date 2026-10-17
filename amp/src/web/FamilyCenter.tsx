@@ -481,7 +481,10 @@ export function FamilyCenter({
           <>
             {(section === "learners" || section === "access") && (
               <section className="family-section family-focused-section">
-                <h2 tabIndex={-1}>
+                <h2
+                  tabIndex={-1}
+                  className={section === "access" ? "sr-only" : undefined}
+                >
                   {section === "learners"
                     ? "Who’s learning?"
                     : "Learning access"}
