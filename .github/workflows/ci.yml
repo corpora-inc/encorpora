@@ -1388,7 +1388,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: amp-book-overflow-${{ github.run_attempt }}
-          path: amp/artifacts/book-reader/*/overflow-*.png
+          path: |
+            amp/artifacts/book-reader/*/overflow-*.png
+            amp/artifacts/progress-review/overflow-*.png
           if-no-files-found: ignore
           retention-days: 3
 
