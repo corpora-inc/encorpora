@@ -13,7 +13,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import {createRoot} from 'react-dom/client';import {AnnualPurchase} from '../../src/web/AnnualPurchase';import '../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={events:[] as string[],render(identity:string){root.render(<React.StrictMode><AnnualPurchase token={identity} identity={identity} returnState="processing" onClose={()=>root.render(<p>Family screen</p>)} onAccessChanged={()=>harness.events.push(identity)}/></React.StrictMode>);},unmount(){root.render(<p>Other screen</p>)}};(window as any).annualHarness=harness;harness.render('parent');`,
+  `import React from 'react';import {createRoot} from 'react-dom/client';import {AnnualPurchase} from '../../src/web/AnnualPurchase';import '../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={events:[] as string[],render(identity:string,purchaseId?:string){root.render(<React.StrictMode><AnnualPurchase purchaseId={purchaseId} token={identity} identity={identity} returnState="processing" onClose={()=>root.render(<p>Family screen</p>)} onAccessChanged={()=>harness.events.push(identity)}/></React.StrictMode>);},unmount(){root.render(<p>Other screen</p>)}};(window as any).annualHarness=harness;harness.render('parent');`,
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -96,6 +96,13 @@ try {
           : {}),
       },
     }),
+  );
+  await page.route("**/api/v1/billing/purchase/*", (route) =>
+    route.fulfill(
+      route.request().url().endsWith("foreign")
+        ? { status: 404, json: { error: "purchase_not_found" } }
+        : { json: { learnerId: "second" } },
+    ),
   );
   await page.route("**/api/v1/billing/checkout", async (route) => {
     checkoutBodies.push(route.request().postDataJSON());
@@ -288,6 +295,29 @@ try {
       ),
   );
   assert.equal(page.url(), home, "unmounted purchase cannot redirect");
+  holdCheckout = false;
+  phase = "payment-processing";
+  await page.evaluate(() =>
+    (window as any).annualHarness.render("return-parent", "fixture-purchase"),
+  );
+  await page.getByText("Verifying payment", { exact: true }).waitFor();
+  assert.equal(
+    await page.getByLabel("Learner", { exact: true }).inputValue(),
+    "second",
+    "return selects the learner from the owned purchase binding",
+  );
+  await page.evaluate(() =>
+    (window as any).annualHarness.render("foreign-return-parent", "foreign"),
+  );
+  await page.getByRole("alert").waitFor();
+  assert.equal(
+    await page.getByLabel("Learner", { exact: true }).inputValue(),
+    "",
+  );
+  assert.equal(
+    await page.getByRole("button", { name: "Open sandbox checkout" }).count(),
+    0,
+  );
   holdCheckout = false;
   available = false;
   await page.goto(home);

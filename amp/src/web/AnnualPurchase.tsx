@@ -11,6 +11,7 @@ export interface AnnualPurchaseProps {
   identity: string;
   onClose: () => void;
   onAccessChanged?: () => void;
+  purchaseId?: string;
   returnState?: "processing" | "canceled" | "account";
 }
 export function AnnualPurchase(props: AnnualPurchaseProps) {
@@ -67,6 +68,7 @@ function PurchasePanel({
   onClose,
   onAccessChanged,
   returnState,
+  purchaseId,
 }: AnnualPurchaseProps) {
   const tokenRef = useRef(token);
   tokenRef.current = token;
@@ -125,8 +127,13 @@ function PurchasePanel({
     void Promise.allSettled([
       api<{ available: boolean; offer?: AnnualOffer }>("/billing/offer"),
       api<FamilySummary>("/family"),
+      purchaseId
+        ? api<{ learnerId: string }>(
+            `/billing/purchase/${encodeURIComponent(purchaseId)}`,
+          )
+        : Promise.resolve(undefined),
     ])
-      .then(([result, summary]) => {
+      .then(([result, summary, purchase]) => {
         if (!alive.current || epoch !== generation.current) return;
         if (result.status === "fulfilled") {
           setAvailable(result.value.available);
@@ -139,10 +146,29 @@ function PurchasePanel({
           );
         if (summary.status === "fulfilled") {
           setFamily(summary.value);
-          setLearnerId(
-            summary.value.learners.find((learner) => !learner.deletedAt)?.id ??
-              "",
-          );
+          if (purchaseId) {
+            const selected =
+              purchase.status === "fulfilled"
+                ? purchase.value?.learnerId
+                : undefined;
+            if (
+              selected &&
+              summary.value.learners.some(
+                (learner) => learner.id === selected && !learner.deletedAt,
+              )
+            )
+              setLearnerId(selected);
+            else {
+              setLearnerId("");
+              setError(
+                "This purchase could not be matched to an available learner. Check billing or choose a learner to check access.",
+              );
+            }
+          } else
+            setLearnerId(
+              summary.value.learners.find((learner) => !learner.deletedAt)
+                ?.id ?? "",
+            );
         } else
           setError(
             "Family information could not be loaded. Return to Family and try again.",
@@ -333,6 +359,7 @@ function PurchasePanel({
                 setLearnerId(event.target.value);
               }}
             >
+              {!learnerId && <option value="">Choose a learner</option>}
               {choices.map((learner) => (
                 <option value={learner.id} key={learner.id}>
                   {learner.name}

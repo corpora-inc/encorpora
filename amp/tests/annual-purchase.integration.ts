@@ -131,6 +131,24 @@ test(
       assert.ok(results.every((result) => result.statusCode === 200));
       assert.equal(creations, 1);
       assert.equal(
+        (await get(`/api/v1/billing/purchase/${checkoutId}`)).json().learnerId,
+        "child",
+      );
+      assert.equal(
+        (await get(`/api/v1/billing/purchase/${randomUUID()}`)).statusCode,
+        404,
+      );
+      const foreignPurchase = randomUUID();
+      await pool.query(
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id) VALUES($1,$2,'other','foreign',$3)",
+        [foreignPurchase, billing.repository.namespace, randomUUID()],
+      );
+      assert.equal(
+        (await get(`/api/v1/billing/purchase/${foreignPurchase}`)).statusCode,
+        404,
+      );
+
+      assert.equal(
         (await get("/api/v1/billing/status/child")).json().phase,
         "checkout-open",
       );

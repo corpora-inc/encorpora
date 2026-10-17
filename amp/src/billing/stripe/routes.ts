@@ -43,6 +43,22 @@ export async function registerStripeRoutes(
       await gateway.verifyCatalog();
       return { available: true, offer };
     });
+    scope.get<{ Params: { purchaseId: string } }>(
+      "/api/v1/billing/purchase/:purchaseId",
+      async (request, reply) => {
+        const accountId = await options.authenticate(request);
+        reply.header("Cache-Control", "no-store");
+        if (!z.uuid().safeParse(request.params.purchaseId).success)
+          return reply.code(400).send({ error: "invalid_purchase" });
+        const result = await options.pool.query(
+          "SELECT learner_id FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND id=$3",
+          [billing.repository.namespace, accountId, request.params.purchaseId],
+        );
+        if (!result.rowCount)
+          return reply.code(404).send({ error: "purchase_not_found" });
+        return { learnerId: result.rows[0].learner_id };
+      },
+    );
     scope.get<{ Params: { learnerId: string } }>(
       "/api/v1/billing/status/:learnerId",
       async (request, reply) => {
