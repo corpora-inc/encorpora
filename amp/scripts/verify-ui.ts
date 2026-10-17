@@ -20,10 +20,16 @@ const app = buildApp({
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4311 });
+await app.listen({ host: "127.0.0.1", port: 4351 });
 const vite = await createServer({
+  root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: 4310, strictPort: true },
+  server: {
+    host: "127.0.0.1",
+    port: 4350,
+    strictPort: true,
+    proxy: { "/api": { target: "http://127.0.0.1:4351" } },
+  },
 });
 await vite.listen();
 const browser = await chromium.launch({ headless: true });
@@ -34,14 +40,14 @@ try {
   const page = await browser.newPage({ hasTouch: true });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("http://127.0.0.1:4310");
+  await page.goto("http://127.0.0.1:4350");
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learner.id);
   await page
     .getByText("Looking for a particular idea?", { exact: true })
     .click();
-  await page.getByLabel("Choose your practice").selectOption("fraction-model");
+  await page.getByLabel("Choose your practice").selectOption("rectangle-area");
   await page
     .getByRole("button", { name: "Try this idea", exact: true })
     .click();
@@ -146,6 +152,15 @@ try {
   await page.locator("#answer").fill("999999");
   await page.getByRole("button", { name: "Check answer" }).click();
   await page.locator(".solution-panel").waitFor();
+  let releaseNext!: () => void;
+  const nextHeld = new Promise<void>((resolve) => {
+    releaseNext = resolve;
+  });
+  await page.route("**/batches", async (route) => {
+    const result = await route.fetch();
+    await nextHeld;
+    await route.fulfill({ response: result });
+  });
   await page.getByRole("button", { name: "Next problem" }).click();
   await page.locator(".solution-panel").waitFor({ state: "hidden" });
   const delivered = page.waitForResponse((response) =>
@@ -153,12 +168,31 @@ try {
   );
   releaseLesson();
   await delivered;
-  await page.waitForTimeout(50);
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
   assert.equal(
     await page.locator("dialog[open]").count(),
     0,
     "A stale lesson response cannot open another problem's lesson",
   );
+  const nextDelivered = page.waitForResponse((response) =>
+    response.url().endsWith("/batches"),
+  );
+  releaseNext();
+  await nextDelivered;
+  await page.waitForFunction(
+    () =>
+      !(
+        document.querySelector(
+          "select[aria-label='Learner']",
+        ) as HTMLSelectElement
+      )?.disabled,
+  );
+  await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   for (const template of templates) {
     await page
@@ -199,6 +233,14 @@ try {
         geometry.scroll <= geometry.height + 2,
         `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
       );
+      if (template.id === "fraction-group-count" && size.width === 320)
+        await page.screenshot({
+          path: new URL(
+            "../artifacts/screenshots/fraction-group-count-compact.png",
+            import.meta.url,
+          ).pathname,
+          fullPage: true,
+        });
     }
     await page.setViewportSize({ width: 390, height: 844 });
     if (

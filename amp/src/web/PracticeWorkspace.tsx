@@ -10,7 +10,7 @@ import type { Outcome } from "../server/repository";
 import type { Lesson } from "../content/lessons";
 import { Figure } from "./Figure";
 
-function FocusDialog({
+export function FocusDialog({
   title,
   children,
   close,
@@ -111,6 +111,7 @@ type Props = {
   next: () => void;
   requestHint: () => void;
   requestLesson: () => Promise<void>;
+  openBook?: () => void;
   changeTopic: () => void;
 };
 
@@ -144,6 +145,13 @@ export function PracticeWorkspace(props: Props) {
   );
   const [entering, setEntering] = useState(false);
   const [lessonLoading, setLessonLoading] = useState(false);
+  const lessonRequest = useRef(0);
+  function advance() {
+    lessonRequest.current++;
+    setLessonLoading(false);
+    setPanel(null);
+    props.next();
+  }
   const [lessonError, setLessonError] = useState("");
   const [compact, setCompact] = useState(
     () => matchMedia("(max-width: 650px) and (max-height: 780px)").matches,
@@ -228,7 +236,7 @@ export function PracticeWorkspace(props: Props) {
           onSubmit={(event) => {
             event.preventDefault();
             if (!busy && (outcome || response.trim()))
-              outcome ? props.next() : props.submit();
+              outcome ? advance() : props.submit();
           }}
         >
           <label htmlFor="answer">{problem.response.label}</label>
@@ -398,7 +406,7 @@ export function PracticeWorkspace(props: Props) {
               className="compact-answer-action"
               ref={continueButton}
               disabled={busy}
-              onClick={() => (outcome ? props.next() : setEntering(true))}
+              onClick={() => (outcome ? advance() : setEntering(true))}
             >
               {outcome
                 ? "Continue →"
@@ -429,33 +437,46 @@ export function PracticeWorkspace(props: Props) {
                 A little help
               </button>
             )}
-            {lesson && (
+            {props.openBook ? (
               <button
                 className="text-button"
-                disabled={busy || lessonLoading}
-                onClick={async (event) => {
-                  lessonTrigger.current = event.currentTarget;
-                  const requestedProblem = problem.id;
-                  const current = () =>
-                    alive.current &&
-                    currentProblem.current === requestedProblem;
-                  setLessonLoading(true);
-                  setLessonError("");
-                  try {
-                    await props.requestLesson();
-                    if (current()) setPanel("lesson");
-                  } catch {
-                    if (current())
-                      setLessonError(
-                        "The lesson could not be opened. Please try again.",
-                      );
-                  } finally {
-                    if (current()) setLessonLoading(false);
-                  }
-                }}
+                disabled={busy}
+                data-book-trigger
+                onClick={props.openBook}
               >
-                {lessonLoading ? "Opening…" : "The idea"}
+                Explore the idea
               </button>
+            ) : (
+              lesson && (
+                <button
+                  className="text-button"
+                  disabled={busy || lessonLoading}
+                  onClick={async (event) => {
+                    lessonTrigger.current = event.currentTarget;
+                    const requestedProblem = problem.id;
+                    const request = ++lessonRequest.current;
+                    const current = () =>
+                      alive.current &&
+                      lessonRequest.current === request &&
+                      currentProblem.current === requestedProblem;
+                    setLessonLoading(true);
+                    setLessonError("");
+                    try {
+                      await props.requestLesson();
+                      if (current()) setPanel("lesson");
+                    } catch {
+                      if (current())
+                        setLessonError(
+                          "The lesson could not be opened. Please try again.",
+                        );
+                    } finally {
+                      if (current()) setLessonLoading(false);
+                    }
+                  }}
+                >
+                  {lessonLoading ? "Opening…" : "The idea"}
+                </button>
+              )
             )}
             {small && (
               <button
@@ -534,8 +555,7 @@ export function PracticeWorkspace(props: Props) {
               <button
                 disabled={busy}
                 onClick={() => {
-                  setPanel(null);
-                  props.next();
+                  advance();
                 }}
               >
                 Next problem <span aria-hidden="true">→</span>

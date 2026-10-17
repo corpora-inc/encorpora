@@ -82,7 +82,7 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
   return (
     <svg
       className="figure fraction-practice-figure"
-      viewBox={`0 0 360 ${54 + figure.rows.length * 58}`}
+      viewBox={`0 0 360 ${28 + figure.rows.length * 58}`}
       role="img"
       aria-label={description}
     >

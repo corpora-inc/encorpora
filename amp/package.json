@@ -13,7 +13,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "tsx --test tests/*.test.ts",
     "test:db": "tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts",
+    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts",
     "tsc": "tsc --noEmit",
     "build": "npm run tsc && vite build",
     "audit": "tsx scripts/audit.ts",
@@ -24,7 +24,8 @@
     "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
-    "test:family-ui": "tsx scripts/verify-family-ui.ts"
+    "test:family-ui": "tsx scripts/verify-family-ui.ts",
+    "test:book-ui": "tsx scripts/verify-book-ui.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",
