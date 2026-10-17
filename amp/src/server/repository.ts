@@ -68,12 +68,14 @@ export class PostgresRepository implements Repository {
     this.pool = new Pool({ connectionString, max: 10 });
   }
   async hasConsent(accountId: string) {
-    const result = await this.pool.query(
-      "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND withdrawn_at IS NULL",
-      [accountId],
-    );
-    return !!result.rowCount;
+    const client = await this.pool.connect();
+    try {
+      return await learningConsentActive(client, accountId);
+    } finally {
+      client.release();
+    }
   }
+
   async list(accountId: string) {
     return drizzle(this.pool)
       .select({ id: schema.learners.id, name: schema.learners.name })

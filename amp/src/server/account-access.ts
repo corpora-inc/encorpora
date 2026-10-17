@@ -16,9 +16,17 @@ export async function learningConsentActive(
   development = false,
 ): Promise<boolean> {
   const result = await client.query(
-    "SELECT withdrawn_at FROM amp_parent_consents WHERE account_id=$1",
+    "SELECT withdrawn_at,verification_method,evidence_reference FROM amp_parent_consents WHERE account_id=$1",
     [accountId],
   );
   if (!result.rowCount) return development;
-  return result.rows[0].withdrawn_at === null;
+  const consent = result.rows[0];
+  if (consent.withdrawn_at !== null) return false;
+  if (consent.verification_method !== "internal-email-plus-v1") return true;
+  const effective = await client.query(
+    `SELECT 1 FROM amp_consent_requests r JOIN amp_consent_policy p ON p.singleton AND p.digest=r.policy_digest AND p.generation=r.policy_generation
+    WHERE r.id::text=$1 AND r.account_id=$2 AND r.phase='active' AND r.completed_at IS NOT NULL AND p.enabled AND p.reviewed_until>now() FOR SHARE OF p`,
+    [consent.evidence_reference, accountId],
+  );
+  return !!effective.rowCount;
 }
