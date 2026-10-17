@@ -358,3 +358,78 @@
 .family-confirm-learner {
   overflow-wrap: anywhere;
 }
+
+.family-purchase-options {
+  padding: 12px 0 18px;
+  border-bottom: 1px solid #d6dfd2;
+}
+.family-purchase-options h2 {
+  margin: 0 0 6px;
+  font-size: 21px;
+}
+.family-purchase-options p {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+.family-purchase-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.family-purchase-buttons button {
+  text-align: left;
+  font-size: 16px;
+}
+.family-purchase-buttons span {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.shell.purchase-shell {
+  padding: 0;
+  height: var(--practice-vh, 100dvh);
+  overflow: hidden;
+}
+.shell.purchase-shell > header {
+  display: none;
+}
+.shell.purchase-shell > .annual-purchase,
+.shell.purchase-shell > .funding-center {
+  height: 100%;
+}
+@media (max-width: 380px) {
+  .family-purchase-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.family-purchase-open {
+  margin: 0 0 14px;
+  width: 100%;
+}
+.family-purchase-options h2:focus {
+  outline: none;
+}
+@media (min-width: 601px) and (max-height: 500px) {
+  .family-purchase-open {
+    float: right;
+    width: auto;
+    margin: 0 0 8px 12px;
+  }
+  .family-section:has(.family-purchase-open) > h2 {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .family-section:has(.family-purchase-open) .family-learners {
+    clear: both;
+  }
+  .family-section:has(.family-purchase-open) .family-learner {
+    padding: 14px;
+  }
+  .family-section:has(.family-purchase-open) .family-learner h3 {
+    margin-bottom: 8px;
+  }
+}

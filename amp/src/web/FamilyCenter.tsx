@@ -11,6 +11,10 @@ interface Props {
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
   onLearningInvalidated: () => void;
+  initialSection?: "learners" | "access";
+  returnFocus?: "annual" | "funded";
+  onAnnualPurchase?: () => void;
+  onFundedPurchase?: () => void;
 }
 type Confirmation =
   { kind: "withdraw" } | { kind: "delete"; learner?: FamilyLearner };
@@ -32,10 +36,15 @@ export function FamilyCenter({
   onChanged,
   onClose,
   onLearningInvalidated,
+  initialSection = "learners",
+  returnFocus,
+  onAnnualPurchase,
+  onFundedPurchase,
 }: Props) {
   const [section, setSection] = useState<"learners" | "access" | "privacy">(
-    "learners",
+    initialSection,
   );
+  const [purchaseChooser, setPurchaseChooser] = useState(!!returnFocus);
   const [privacy, setPrivacy] = useState<
     "export" | "consent" | "delete" | "retention" | null
   >(null);
@@ -60,7 +69,8 @@ export function FamilyCenter({
     mounted.current = true;
     generation.current++;
     setFamily(null);
-    setSection("learners");
+    setSection(initialSection);
+    setPurchaseChooser(!!returnFocus);
     setPrivacy(null);
     setError("");
     setNotice("");
@@ -74,6 +84,29 @@ export function FamilyCenter({
       downloadFrame.current = null;
     };
   }, [identity]);
+  useLayoutEffect(() => {
+    if (family && returnFocus)
+      document
+        .querySelector<HTMLButtonElement>(
+          `[data-purchase-entry="${returnFocus}"]`,
+        )
+        ?.focus({ preventScroll: true });
+  }, [!!family, returnFocus]);
+  function closeChooser() {
+    setPurchaseChooser(false);
+    requestAnimationFrame(() =>
+      document
+        .querySelector<HTMLButtonElement>("[data-purchase-options]")
+        ?.focus({ preventScroll: true }),
+    );
+  }
+  useLayoutEffect(() => {
+    if (purchaseChooser && !returnFocus)
+      document
+        .querySelector<HTMLElement>(".family-purchase-options h2")
+        ?.focus({ preventScroll: true });
+    if (body.current) body.current.scrollTop = 0;
+  }, [purchaseChooser]);
   const current = (epoch: number) =>
     mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
@@ -297,7 +330,10 @@ export function FamilyCenter({
             Your family.
           </h1>
         </div>
-        <button onClick={onClose} disabled={busy}>
+        <button
+          onClick={purchaseChooser ? closeChooser : onClose}
+          disabled={busy}
+        >
           Back
         </button>
       </div>
@@ -308,6 +344,7 @@ export function FamilyCenter({
             aria-current={section === value ? "page" : undefined}
             onClick={() => {
               setSection(value);
+              setPurchaseChooser(false);
               setRename(null);
               setPrivacy(null);
               setError("");
@@ -341,10 +378,45 @@ export function FamilyCenter({
               <button onClick={() => void action(refresh)}>Try again</button>
             )}
           </div>
+        ) : purchaseChooser ? (
+          <section
+            className="family-purchase-options"
+            aria-label="Purchase options"
+          >
+            <h2 tabIndex={-1}>Choose a purchase route</h2>
+            <p>
+              Check current options for your learner. Access begins only after a
+              verified purchase.
+            </p>
+            <div className="family-purchase-buttons">
+              {onAnnualPurchase && (
+                <button data-purchase-entry="annual" onClick={onAnnualPurchase}>
+                  Annual subscription{" "}
+                  <span>Card payment · current price and terms</span>
+                </button>
+              )}
+              {onFundedPurchase && (
+                <button data-purchase-entry="funded" onClick={onFundedPurchase}>
+                  Education funds{" "}
+                  <span>Program options · quotes and requests</span>
+                </button>
+              )}
+            </div>
+          </section>
         ) : (
           <>
             {(section === "learners" || section === "access") && (
               <section className="family-section">
+                {section === "access" &&
+                  (onAnnualPurchase || onFundedPurchase) && (
+                    <button
+                      className="family-purchase-open"
+                      data-purchase-options
+                      onClick={() => setPurchaseChooser(true)}
+                    >
+                      Purchase options
+                    </button>
+                  )}
                 <h2 tabIndex={-1}>
                   {section === "learners"
                     ? "Who’s learning?"
