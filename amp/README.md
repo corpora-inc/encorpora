@@ -49,6 +49,8 @@ Publications are written to `artifacts/publications/` in Letter and A4 formats. 
 - `src/commerce` separates order approval, delivery, settlement, refund, and student access grants.
 - `src/funding` records US public-funding research, sources, and separate approval gates.
 
-The server accepts numeric answers and fractions. It does not yet grade general symbolic expressions, free-form proofs, or interactive constructions. Review-readiness summarizes evidence from the practiced family; it does not certify an entire standard. Suggested practice cannot infer readiness from unimplemented prerequisites. Families can also be selected explicitly.
+The server accepts numeric answers and fractions. It does not yet grade general symbolic expressions, free-form proofs, or interactive constructions. Review-readiness summarizes evidence from the practiced family; it does not certify an entire standard. Suggested practice cannot infer readiness from unimplemented prerequisites. Default sessions interleave strands, return to missed ideas after intervening work, and reserve space for due retrieval and teachable prerequisites. Choosing an idea starts one focused problem before the mix resumes. Hints and in-session lesson reading are recorded as assistance. The scheduling intervals and grade-band probes are heuristics, not validated difficulty or mastery estimates.
 
-See [curriculum coverage](docs/curriculum.md), [content production](docs/production.md), [commerce](docs/commerce.md), [funding](docs/funding.md), and [deployment requirements](docs/deployment.md).
+Practice occupies the device viewport, with explanations in focus-managed panels. Short phones use a dedicated answer panel; landscape places the keypad beside the question. The lesson library opens a selected lesson directly and restores its catalog position on return.
+
+See [product and experience specification](docs/product-experience.md), [curriculum coverage](docs/curriculum.md), [content production](docs/production.md), [commerce](docs/commerce.md), [funding](docs/funding.md), and [deployment requirements](docs/deployment.md).

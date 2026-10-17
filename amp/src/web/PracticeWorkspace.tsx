@@ -14,18 +14,21 @@ function FocusDialog({
   title,
   children,
   close,
+  returnFocus,
 }: {
   title: string;
   children: ReactNode;
   close: () => void;
+  returnFocus?: HTMLElement | null;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   useLayoutEffect(() => {
     const previous =
-      document.activeElement instanceof HTMLElement
+      returnFocus ??
+      (document.activeElement instanceof HTMLElement
         ? document.activeElement
-        : null;
+        : null);
     dialog.current?.showModal();
     heading.current?.focus({ preventScroll: true });
     return () => {
@@ -123,6 +126,16 @@ export function PracticeWorkspace(props: Props) {
     busy,
     pending,
   } = props;
+  const alive = useRef(true);
+  const currentProblem = useRef(problem.id);
+  currentProblem.current = problem.id;
+  const lessonTrigger = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    alive.current = true;
+    return () => {
+      alive.current = false;
+    };
+  }, []);
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
@@ -420,18 +433,24 @@ export function PracticeWorkspace(props: Props) {
               <button
                 className="text-button"
                 disabled={busy || lessonLoading}
-                onClick={async () => {
+                onClick={async (event) => {
+                  lessonTrigger.current = event.currentTarget;
+                  const requestedProblem = problem.id;
+                  const current = () =>
+                    alive.current &&
+                    currentProblem.current === requestedProblem;
                   setLessonLoading(true);
                   setLessonError("");
                   try {
                     await props.requestLesson();
-                    setPanel("lesson");
+                    if (current()) setPanel("lesson");
                   } catch {
-                    setLessonError(
-                      "The lesson could not be opened. Please try again.",
-                    );
+                    if (current())
+                      setLessonError(
+                        "The lesson could not be opened. Please try again.",
+                      );
                   } finally {
-                    setLessonLoading(false);
+                    if (current()) setLessonLoading(false);
                   }
                 }}
               >
@@ -468,6 +487,7 @@ export function PracticeWorkspace(props: Props) {
       )}
       {panel && (
         <FocusDialog
+          returnFocus={panel === "lesson" ? lessonTrigger.current : undefined}
           title={
             panel === "hint"
               ? "A little help"

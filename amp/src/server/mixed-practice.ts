@@ -171,6 +171,8 @@ export function planMixedPractice(options: {
               : history.length === 0
                 ? 65
                 : 40;
+      if (returningError && !recentSkillIds.includes(template.skillId))
+        score += 35;
       if (state?.status === "review-ready" && !overdue) score -= 35;
       score -= Math.abs(level - strandLevel) * 32;
       if (level > Math.max(ceiling, strandLevel))

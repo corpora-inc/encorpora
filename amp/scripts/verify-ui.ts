@@ -96,6 +96,10 @@ try {
   await page.getByRole("button", { name: "The idea", exact: true }).click();
   await page.locator(".workspace-lesson").waitFor();
   await page.keyboard.press("Escape");
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent),
+    "The idea",
+  );
   await page.getByRole("button", { name: /Your answer: 1/ }).click();
   await page.locator("#answer").fill("999");
   await page.getByRole("button", { name: "Check answer" }).click();
@@ -112,6 +116,39 @@ try {
   await page.getByRole("button", { name: "Continue", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator("#answer").waitFor();
+  let releaseLesson!: () => void;
+  let heldLesson!: () => void;
+  const held = new Promise<void>((resolve) => {
+    heldLesson = resolve;
+  });
+  const release = new Promise<void>((resolve) => {
+    releaseLesson = resolve;
+  });
+  await page.route("**/lesson-support", async (route) => {
+    const result = await route.fetch();
+    heldLesson();
+    await release;
+    await route.fulfill({ response: result });
+  });
+  await page.getByRole("button", { name: "The idea", exact: true }).click();
+  await held;
+  await page.locator("#answer").fill("999999");
+  await page.getByRole("button", { name: "Check answer" }).click();
+  await page.locator(".solution-panel").waitFor();
+  await page.getByRole("button", { name: "Next problem" }).click();
+  await page.locator(".solution-panel").waitFor({ state: "hidden" });
+  const delivered = page.waitForResponse((response) =>
+    response.url().endsWith("/lesson-support"),
+  );
+  releaseLesson();
+  await delivered;
+  await page.waitForTimeout(50);
+  assert.equal(
+    await page.locator("dialog[open]").count(),
+    0,
+    "A stale lesson response cannot open another problem's lesson",
+  );
+  await page.unroute("**/lesson-support");
   for (const template of templates) {
     await page
       .getByRole("button", { name: "Change topic", exact: true })
@@ -128,6 +165,31 @@ try {
       ),
       `Overflow in ${template.id}`,
     );
+    for (const size of [
+      { width: 390, height: 844 },
+      { width: 320, height: 568 },
+      { width: 844, height: 390 },
+    ]) {
+      await page.setViewportSize(size);
+      // Let the media-query subscription commit the appropriate answer surface.
+      await page.waitForFunction(() => {
+        const compact = matchMedia(
+          "(max-width:650px) and (max-height:780px)",
+        ).matches;
+        return !!document.querySelector(".compact-answer-action") === compact;
+      });
+      const geometry = await page
+        .locator(".problem-stage")
+        .evaluate((stage) => ({
+          height: stage.clientHeight,
+          scroll: stage.scrollHeight,
+        }));
+      assert.ok(
+        geometry.scroll <= geometry.height + 2,
+        `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
+      );
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
     if (
       template.id.startsWith("graphed-") ||
       template.id.startsWith("clock-") ||

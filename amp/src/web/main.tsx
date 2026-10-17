@@ -45,7 +45,8 @@ function App() {
     [readingLesson, setReadingLesson] = useState<Lesson | null>(null),
     [lessonSearch, setLessonSearch] = useState("");
   const readerHeading = useRef<HTMLHeadingElement>(null);
-  const readerTrigger = useRef<HTMLButtonElement | null>(null);
+  const readerTriggerId = useRef<string | null>(null);
+  const libraryScroll = useRef(0);
   usePracticeViewport(!!learner);
   useEffect(() => {
     if (readingLesson && tab === "library")
@@ -372,6 +373,7 @@ function App() {
       ) : tab === "practice" ? (
         problem ? (
           <PracticeWorkspace
+            key={problem.id}
             problem={problem}
             meta={meta}
             lesson={
@@ -483,8 +485,12 @@ function App() {
                       <p>{l.summary}</p>
                       <button
                         className="secondary"
+                        data-lesson-id={l.id}
+                        disabled={busy}
                         onClick={(event) => {
-                          readerTrigger.current = event.currentTarget;
+                          readerTriggerId.current = l.id;
+                          libraryScroll.current =
+                            event.currentTarget.closest("main")?.scrollTop ?? 0;
                           void action(async () => {
                             if (
                               problem &&
@@ -514,9 +520,14 @@ function App() {
                   className="text-button"
                   onClick={() => {
                     setReadingLesson(null);
-                    requestAnimationFrame(() =>
-                      readerTrigger.current?.focus({ preventScroll: true }),
-                    );
+                    requestAnimationFrame(() => {
+                      const trigger = document.querySelector<HTMLButtonElement>(
+                        `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
+                      );
+                      const library = trigger?.closest("main");
+                      if (library) library.scrollTop = libraryScroll.current;
+                      trigger?.focus({ preventScroll: true });
+                    });
                   }}
                 >
                   ← All lessons

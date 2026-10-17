@@ -156,6 +156,10 @@ nav button {
   flex-direction: column;
 }
 .problem-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100%;
   width: 100%;
   max-width: 760px;
   margin: auto;
@@ -163,6 +167,7 @@ nav button {
   flex: none;
 }
 .problem-content .question {
+  flex: none;
   font-size: clamp(22px, 3vw, 34px);
   line-height: 1.35;
   margin: 0;
@@ -173,6 +178,8 @@ nav button {
   outline: none;
 }
 .problem-content .figure {
+  flex: 0 1 auto;
+  min-height: 110px;
   height: min(25dvh, 250px);
   max-height: 250px;
   width: 100%;
