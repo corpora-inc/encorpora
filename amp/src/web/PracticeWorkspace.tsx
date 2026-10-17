@@ -116,6 +116,7 @@ type Props = {
   requestLesson: () => Promise<void>;
   openBook?: () => void;
   changeTopic: () => void;
+  strand?: string;
 };
 
 export function PracticeWorkspace(props: Props) {
@@ -149,9 +150,7 @@ export function PracticeWorkspace(props: Props) {
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
-  const [panel, setPanel] = useState<"hint" | "explanation" | "lesson" | null>(
-    null,
-  );
+  const [panel, setPanel] = useState<"hint" | "lesson" | null>(null);
   const [entering, setEntering] = useState(false);
   const [lessonLoading, setLessonLoading] = useState(false);
   const lessonRequest = useRef(0);
@@ -177,6 +176,7 @@ export function PracticeWorkspace(props: Props) {
   );
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
   const [celebrate, setCelebrate] = useState(false);
+  const [showWhy, setShowWhy] = useState(false);
   useEffect(() => {
     const media = matchMedia("(max-width: 650px), (pointer: coarse)");
     const changed = () => setSmall(media.matches);
@@ -195,22 +195,27 @@ export function PracticeWorkspace(props: Props) {
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
-    if (!outcome || busy || previousOutcome.current === outcome.id) return;
+    if (!outcome || previousOutcome.current === outcome.id) return;
     previousOutcome.current = outcome.id;
     input.current?.blur();
     setEntering(false);
-    // Wait for the answer panel to unmount and the enabled Continue target to render.
+    focusNext.current = true;
     const focus = window.setTimeout(() => {
-      continueButton.current?.focus({ preventScroll: true });
-      if (!outcome.correct) setPanel("explanation");
-      else setCelebrate(true);
+      if (outcome.correct) setCelebrate(true);
     }, 0);
     const timeout = window.setTimeout(() => setCelebrate(false), 1100);
     return () => {
       window.clearTimeout(focus);
       window.clearTimeout(timeout);
     };
-  }, [outcome?.id, busy]);
+  }, [outcome?.id]);
+  // Focus Next only after the answer dialog has closed and restored focus.
+  const focusNext = useRef(false);
+  useEffect(() => {
+    if (!outcome || entering || !focusNext.current) return;
+    focusNext.current = false;
+    continueButton.current?.focus({ preventScroll: true });
+  }, [outcome?.id, entering]);
   const locked = busy || pending || !!outcome;
   const keypad = small && !nativeKeyboard && !choice;
   function key(value: string) {
@@ -281,7 +286,7 @@ export function PracticeWorkspace(props: Props) {
             type="submit"
             disabled={busy || (!outcome && !response)}
           >
-            {outcome ? "Continue →" : pending ? "Retry" : "Check answer"}
+            {pending ? "Retry" : "Check"}
           </button>
         </form>
       );
@@ -326,8 +331,7 @@ export function PracticeWorkspace(props: Props) {
               type="submit"
               disabled={busy || (!outcome && !response.trim())}
             >
-              {outcome ? "Continue" : pending ? "Retry" : "Check answer"}
-              <span aria-hidden="true">{outcome ? " →" : " ↵"}</span>
+              {pending ? "Retry" : "Check"}
             </button>
           </div>
           <span id="answer-format" className="sr-only">
@@ -393,18 +397,15 @@ export function PracticeWorkspace(props: Props) {
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface">
         <div className="workspace-toolbar">
-          <div>
-            <span className="eyebrow">
-              {meta?.gradeBand ?? "MATH PRACTICE"}
-            </span>
-            <span className="workspace-topic">{meta?.title ?? "Practice"}</span>
-          </div>
+          <span className="workspace-topic" data-strand={props.strand}>
+            {meta?.title ?? "Practice"}
+          </span>
           <button
             className="text-button"
             onClick={props.changeTopic}
             disabled={busy}
           >
-            Change topic
+            Topics
           </button>
         </div>
         <div
@@ -430,65 +431,81 @@ export function PracticeWorkspace(props: Props) {
           )}
         </div>
         <div className="answer-dock">
-          <div
-            className="answer-status"
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {outcome ? (
-              <>
-                <span
-                  className={`result-mark ${outcome.correct ? "correct" : ""}`}
-                  aria-hidden="true"
-                >
-                  {outcome.correct ? "✓" : "↗"}
+          {outcome ? (
+            <div
+              className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <div className="feedback-head">
+                <span className="result-mark" aria-hidden="true">
+                  {outcome.correct ? "✓" : "✕"}
                 </span>
-                <span>
-                  {outcome.correct
-                    ? "You’ve got it."
-                    : "A chance to understand."}
-                  {outcome.assisted && <small>Practiced with support.</small>}
+                <span className="feedback-title">
+                  {outcome.correct ? (
+                    "Correct"
+                  ) : (
+                    <>
+                      <span className="solution-answer">
+                        Answer:{" "}
+                        <strong>{displayResponse(outcome.answer)}</strong>
+                      </span>
+                      <small>
+                        You entered {displayResponse(outcome.response)}
+                      </small>
+                    </>
+                  )}
                 </span>
-              </>
-            ) : (
-              <span>
-                {pending
-                  ? "Your answer is saved for retry."
-                  : busy
-                    ? "Checking…"
-                    : "Take your time."}
-              </span>
-            )}
-          </div>
-          {compact ? (
+              </div>
+              {outcome.assisted && (
+                <p className="feedback-note">Practiced with support.</p>
+              )}
+              {(!outcome.correct || showWhy) && (
+                <ol className="feedback-steps">
+                  {outcome.explanation.map((step, index) => (
+                    <li key={index}>{step}</li>
+                  ))}
+                </ol>
+              )}
+              <button
+                className="next-action"
+                ref={continueButton}
+                onClick={() => {
+                  if (!busy) advance();
+                }}
+              >
+                Next <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          ) : compact ? (
             <button
               className="compact-answer-action"
-              ref={continueButton}
               disabled={busy}
-              onClick={() => (outcome ? advance() : setEntering(true))}
+              onClick={() => setEntering(true)}
             >
-              {outcome
-                ? "Continue →"
-                : response
-                  ? choice
-                    ? "Review your choice"
-                    : `Your answer: ${response} · Edit`
-                  : choice
-                    ? "Choose an answer"
-                    : "Enter your answer"}
+              {response
+                ? choice
+                  ? "Review your choice"
+                  : `Your answer: ${response} · Edit`
+                : choice
+                  ? "Choose an answer"
+                  : "Enter your answer"}
             </button>
           ) : (
             answerControls()
           )}
           <div className="practice-tools">
             {outcome ? (
-              <button
-                className="text-button"
-                onClick={() => setPanel("explanation")}
-              >
-                See why
-              </button>
+              outcome.correct &&
+              !showWhy && (
+                <button
+                  className="text-button"
+                  onClick={() => setShowWhy(true)}
+                >
+                  See why
+                </button>
+              )
             ) : (
               <button
                 className="text-button"
@@ -498,7 +515,7 @@ export function PracticeWorkspace(props: Props) {
                   if (!hint) props.requestHint();
                 }}
               >
-                A little help
+                Hint
               </button>
             )}
             {props.openBook ? (
@@ -508,7 +525,7 @@ export function PracticeWorkspace(props: Props) {
                 data-book-trigger
                 onClick={props.openBook}
               >
-                Explore the idea
+                Lesson
               </button>
             ) : (
               lesson && (
@@ -538,11 +555,11 @@ export function PracticeWorkspace(props: Props) {
                     }
                   }}
                 >
-                  {lessonLoading ? "Opening…" : "The idea"}
+                  {lessonLoading ? "Opening…" : "Lesson"}
                 </button>
               )
             )}
-            {small && !choice && (
+            {small && !choice && !outcome && (
               <button
                 className="text-button keyboard-choice"
                 onClick={() => {
@@ -581,22 +598,8 @@ export function PracticeWorkspace(props: Props) {
       )}
       {panel && (
         <FocusDialog
-          returnFocus={
-            panel === "lesson"
-              ? lessonTrigger.current
-              : panel === "explanation"
-                ? continueButton.current
-                : undefined
-          }
-          title={
-            panel === "hint"
-              ? "A little help"
-              : panel === "lesson"
-                ? (lesson?.title ?? "The idea")
-                : outcome?.correct
-                  ? "Why it works"
-                  : "Let’s work through it."
-          }
+          returnFocus={panel === "lesson" ? lessonTrigger.current : undefined}
+          title={panel === "hint" ? "Hint" : (lesson?.title ?? "Lesson")}
           close={() => setPanel(null)}
         >
           {panel === "hint" && (
@@ -612,36 +615,6 @@ export function PracticeWorkspace(props: Props) {
               </button>
             </>
           )}
-          {panel === "explanation" && outcome && (
-            <div className="solution-panel">
-              <p className="solution-prompt">{problem.prompt}</p>
-              <p>
-                Your answer:{" "}
-                <strong>{displayResponse(outcome.response)}</strong>
-              </p>
-              <p className="solution-answer">
-                Answer: <strong>{displayResponse(outcome.answer)}</strong>
-              </p>
-              <ol>
-                {outcome.explanation.map((step, index) => (
-                  <li key={index}>{step}</li>
-                ))}
-              </ol>
-              {outcome.assisted && (
-                <p>
-                  Practiced with support. Independent practice will come next.
-                </p>
-              )}
-              <button
-                disabled={busy}
-                onClick={() => {
-                  advance();
-                }}
-              >
-                Next problem <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          )}
           {panel === "lesson" && lesson && (
             <div className="workspace-lesson">
               <p>{lesson.summary}</p>
@@ -654,7 +627,7 @@ export function PracticeWorkspace(props: Props) {
                 </section>
               ))}
               <section className="worked-example">
-                <h3>Let’s try one together</h3>
+                <h3>Worked example</h3>
                 <p>{lesson.workedExample.prompt}</p>
                 <ol>
                   {lesson.workedExample.steps.map((step) => (

@@ -1,0 +1,536 @@
+/* AMP visual system. Loaded after the structural stylesheets: it owns colour,
+   type and surface treatment for the learner experience. */
+:root {
+  --bg: #f4f5fb;
+  --surface: #ffffff;
+  --ink: #15172e;
+  --ink-2: #4a4e6d;
+  --ink-3: #8a8eab;
+  --line: #e3e5f1;
+  --primary: #5b4bff;
+  --primary-2: #8b5cff;
+  --primary-ink: #ffffff;
+  --primary-soft: #eeebff;
+  --good: #0fb47a;
+  --good-soft: #e3f8ef;
+  --bad: #f0445f;
+  --bad-soft: #ffeaee;
+  --key: #ffffff;
+  --key-edge: #d9dcec;
+  --radius: 18px;
+  --shadow: 0 1px 2px #15172e0d, 0 8px 28px #15172e0f;
+  font-family:
+    "SF Pro Text",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Inter,
+    system-ui,
+    sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+[data-strand="number"] {
+  --strand: #2f7bff;
+}
+[data-strand="operations"] {
+  --strand: #7c4dff;
+}
+[data-strand="fractions"] {
+  --strand: #ff7a1a;
+}
+[data-strand="decimals"] {
+  --strand: #e0a400;
+}
+[data-strand="ratio"] {
+  --strand: #ff3d8b;
+}
+[data-strand="algebra"] {
+  --strand: #5b4bff;
+}
+[data-strand="functions"] {
+  --strand: #0a9fe0;
+}
+[data-strand="geometry"] {
+  --strand: #10b3a0;
+}
+[data-strand="measurement"] {
+  --strand: #5cb82e;
+}
+[data-strand="data"] {
+  --strand: #00a9c4;
+}
+[data-strand="probability"] {
+  --strand: #b04dff;
+}
+[data-strand="modeling"] {
+  --strand: #f05a28;
+}
+
+body,
+.shell.app-shell {
+  background: var(--bg);
+}
+h1,
+h2 {
+  font-family: inherit;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+button {
+  background: var(--primary);
+  border-radius: 12px;
+  transition:
+    transform 0.08s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+button:hover {
+  background: #4a3af0;
+}
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #5b4bff66;
+  outline-offset: 2px;
+}
+.text-button,
+.text-button:hover {
+  background: transparent;
+  color: var(--primary);
+  font-weight: 650;
+}
+input,
+select {
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+}
+
+/* Header and sections */
+.app-shell .brand,
+.brand {
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.brand svg path {
+  stroke: var(--primary);
+}
+.app-shell .account select,
+.account-menu summary {
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--surface);
+  box-shadow: var(--shadow);
+  font-weight: 650;
+  color: var(--ink);
+}
+.app-shell > nav {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 0;
+  border-radius: 14px;
+  background: #e6e8f4;
+}
+.app-shell > nav button {
+  flex: 1;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink-2);
+  font-weight: 650;
+  box-shadow: none;
+}
+.app-shell > nav button[aria-current="page"],
+.app-shell > nav button[aria-selected="true"],
+.app-shell > nav button.active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1px 3px #15172e1f;
+}
+
+/* Practice surface */
+.practice-surface {
+  border: 0;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.workspace-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--ink-2);
+}
+.workspace-topic::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--strand, var(--primary));
+  box-shadow: 0 0 0 4px
+    color-mix(in srgb, var(--strand, var(--primary)) 18%, transparent);
+}
+.problem-content .question {
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.answer-dock {
+  border-top: 0;
+}
+.workspace-answer-row input {
+  height: 56px;
+  font-size: 24px;
+  font-weight: 650;
+  border-radius: 14px;
+  background: #f7f8fd;
+}
+.workspace-answer-row input:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+.answer-action,
+.choice-submit,
+.next-action,
+.start-practice {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 6px 18px #5b4bff40;
+  font-weight: 750;
+}
+.answer-action:disabled,
+.choice-submit:disabled {
+  background: #d9dbea;
+  color: #8a8eab;
+  box-shadow: none;
+  opacity: 1;
+}
+.answer-action {
+  height: 56px;
+  border-radius: 14px;
+}
+.math-keypad {
+  gap: 8px;
+}
+.math-keypad button {
+  height: 50px;
+  background: var(--key);
+  color: var(--ink);
+  border: 0;
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 var(--key-edge),
+    0 2px 6px #15172e12;
+  font-size: 21px;
+  font-weight: 600;
+}
+.math-keypad button:hover {
+  background: #f6f6fe;
+}
+.math-keypad button:active {
+  background: var(--primary-soft);
+  transform: scale(0.95);
+}
+.practice-tools button {
+  font-size: 14px;
+}
+.compact-answer-action {
+  background: #f7f8fd;
+  color: var(--ink);
+  border: 1.5px dashed var(--line);
+  border-radius: 14px;
+  box-shadow: none;
+  font-weight: 650;
+}
+.compact-answer-action:hover {
+  background: var(--primary-soft);
+}
+
+/* Inline feedback replaces the answer controls; it never covers the problem. */
+.feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: min(46dvh, 360px);
+  padding: 14px 16px;
+  border-radius: 18px;
+  animation: feedback-in 0.18s ease-out;
+}
+.feedback.correct {
+  background: var(--good-soft);
+}
+.feedback.incorrect {
+  background: var(--bad-soft);
+}
+.feedback-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.feedback .result-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+}
+.feedback.correct .result-mark {
+  background: var(--good);
+}
+.feedback.incorrect .result-mark {
+  background: var(--bad);
+}
+.feedback-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.25;
+}
+.feedback-title small {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.feedback-steps {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+  margin: 0;
+  padding: 0 0 0 22px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.feedback-steps li + li {
+  margin-top: 4px;
+}
+.next-action {
+  flex: none;
+  width: 100%;
+  height: 54px;
+  border-radius: 14px;
+  font-size: 18px;
+}
+.feedback.correct .next-action {
+  background: var(--good);
+  box-shadow: 0 6px 18px #0fb47a40;
+}
+@keyframes feedback-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* Dialogs */
+.practice-dialog {
+  border: 0;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px #15172e40;
+}
+.practice-dialog::backdrop {
+  background: #15172e66;
+  backdrop-filter: blur(4px);
+}
+.dialog-heading h2 {
+  font-weight: 750;
+}
+.dialog-close {
+  background: #f0f1f8;
+  color: var(--ink);
+  border-radius: 50%;
+}
+
+/* Start: birth year, start practice, topic browser */
+.app-shell > main.practice-start {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.start-card {
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.start-card h1 {
+  margin: 0 0 8px;
+  font-size: clamp(26px, 6vw, 38px);
+  line-height: 1.1;
+}
+.start-card p {
+  margin: 0 auto 20px;
+  max-width: 46ch;
+  color: var(--ink-2);
+}
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.year-grid button {
+  min-height: 52px;
+  padding: 8px;
+  background: #f4f5fb;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.year-grid button:hover,
+.year-grid button.selected {
+  background: var(--primary);
+  color: #fff;
+}
+.start-practice {
+  width: 100%;
+  min-height: 68px;
+  border-radius: 18px;
+  font-size: 22px;
+}
+.start-note {
+  margin: 14px 0 0 !important;
+  font-size: 14px;
+}
+.text-button.inline {
+  padding: 0;
+  font-size: inherit;
+}
+.topic-browser {
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.topic-browser h2 {
+  margin: 0 0 14px;
+  font-size: 17px;
+}
+.strand-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.strand-chip {
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--strand) 12%, white);
+  color: color-mix(in srgb, var(--strand) 75%, black);
+  font-size: 14px;
+  font-weight: 700;
+}
+.strand-chip:hover,
+.strand-chip[aria-selected="true"] {
+  background: var(--strand);
+  color: #fff;
+}
+.topic-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.topic-list button {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--strand);
+  border-radius: 12px;
+  background: #f7f8fd;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+.topic-list button:hover {
+  background: color-mix(in srgb, var(--strand) 10%, white);
+}
+@media (max-width: 650px) {
+  .start-card,
+  .topic-browser {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .feedback {
+    padding: 12px;
+    max-height: 52dvh;
+  }
+  .math-keypad button {
+    height: 48px;
+  }
+}
+header {
+  flex-wrap: nowrap;
+  gap: 12px;
+  height: auto;
+  min-height: 64px;
+  border-bottom: 0;
+}
+.intro {
+  padding: 32px 0 24px;
+}
+.intro h1 {
+  margin: 0 0 12px;
+  font-size: clamp(36px, 8vw, 64px);
+  line-height: 1.02;
+}
+.intro p {
+  max-width: 40ch;
+  font-size: 17px;
+  color: var(--ink-2);
+}
+.card {
+  border: 0;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.answer-action {
+  width: 120px;
+}
+.topic-list[hidden] {
+  display: none;
+}
+.feedback-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.practice-celebration span {
+  background: var(--good);
+  color: #fff;
+  border: 0;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 14px #0fb47a26,
+    0 12px 32px #0fb47a55;
+  animation-duration: 0.9s;
+}

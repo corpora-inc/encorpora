@@ -109,4 +109,3 @@ test("mixed planning rejects invalid bounds and supports a one-template catalog"
   });
   assert.equal(choices.length, 3);
 });
-

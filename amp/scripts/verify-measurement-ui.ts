@@ -1,3 +1,4 @@
+import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
 import { measurementDefinitions } from "../src/content/measurement-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -19,7 +20,7 @@ if (!url)
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
-const learner = await repository.create(account, "Browser verification");
+const learner = await repository.create(account, "Browser verification", 2016);
 const learnerIds = [learner.id];
 const app = buildApp({
   repository,
@@ -129,17 +130,11 @@ try {
   for (fixture of fixtures) {
     const id = fixture.problem.templateId;
     const change = page.getByRole("button", {
-      name: "Change topic",
+      name: "Topics",
       exact: true,
     });
     if (await change.count()) await change.click();
-    await page
-      .getByText("Looking for a particular idea?", { exact: true })
-      .click();
-    await page.getByLabel("Choose your practice").selectOption(id);
-    await page
-      .getByRole("button", { name: "Try this idea", exact: true })
-      .click();
+    await startTopic(page, id);
     await page.locator(".problem-stage").waitFor();
     for (const size of [
       { width: 320, height: 568 },
@@ -257,19 +252,11 @@ try {
     "same-area-border-choice",
   ]) {
     await page.setViewportSize({ width: 320, height: 568 });
-    await page
-      .getByRole("button", { name: "Change topic", exact: true })
-      .click();
-    await page
-      .getByText("Looking for a particular idea?", { exact: true })
-      .click();
-    await page.getByLabel("Choose your practice").selectOption(id);
+    await page.getByRole("button", { name: "Topics", exact: true }).click();
     const batchPromise = page.waitForResponse(
       (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
     );
-    await page
-      .getByRole("button", { name: "Try this idea", exact: true })
-      .click();
+    await startTopic(page, id);
     const batch = await (await batchPromise).json();
     const publicProblem: PublicProblem = batch.problems[0];
     const generated = generateProblem(id, publicProblem.seed);
@@ -291,10 +278,8 @@ try {
       await page
         .getByLabel(publicProblem.response.label, { exact: true })
         .fill("0");
-    await page.getByRole("button", { name: /^Check answer/ }).click();
-    await page
-      .getByRole("heading", { name: "Let’s work through it.", exact: true })
-      .waitFor();
+    await page.getByRole("button", { name: /^Check$/ }).click();
+    await page.locator(".feedback.incorrect").waitFor();
     assert.ok(
       (await page.locator(".solution-panel").innerText()).includes(
         generated.explanation[0]!,
@@ -304,9 +289,10 @@ try {
       await page.locator(".problem-stage .solution-panel").count(),
       0,
     );
+    // Feedback is inline and its Next action stays on screen.
     assert.ok(
-      await page.locator("dialog[open]").evaluate((dialog) => {
-        const r = dialog.getBoundingClientRect();
+      await page.locator(".feedback .next-action").evaluate((action) => {
+        const r = action.getBoundingClientRect();
         return (
           r.top >= 0 &&
           r.bottom <= innerHeight + 1 &&
@@ -321,15 +307,13 @@ try {
     await page.keyboard.press("Escape");
     assert.ok(
       await page
-        .getByRole("button", { name: /^Continue/ })
+        .getByRole("button", { name: /^Next/ })
         .evaluate((b) => b === document.activeElement),
     );
     const opening = page.waitForResponse((response) =>
       response.url().endsWith("/books/measure-border-cover/open"),
     );
-    await page
-      .getByRole("button", { name: "Explore the idea", exact: true })
-      .click();
+    await page.getByRole("button", { name: "Lesson", exact: true }).click();
     const response = await opening;
     assert.equal(response.status(), 200);
     const opened = await response.json();
@@ -370,16 +354,8 @@ try {
     assert.equal(await page.locator("dialog[open]").count(), 0);
     assert.equal(await page.locator(".practice-celebration").count(), 0);
   }
-  await page.getByRole("button", { name: "Change topic", exact: true }).click();
-  await page
-    .getByText("Looking for a particular idea?", { exact: true })
-    .click();
-  await page
-    .getByLabel("Choose your practice")
-    .selectOption("whole-pack-ribbon-choice");
-  await page
-    .getByRole("button", { name: "Try this idea", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Topics", exact: true }).click();
+  await startTopic(page, "whole-pack-ribbon-choice");
   await page.locator(".problem-stage").waitFor();
   await page.evaluate(() => {
     const values = [
@@ -415,7 +391,7 @@ try {
   await page.getByRole("radio").last().check();
   assert.ok(
     await page
-      .getByRole("button", { name: "Check answer", exact: true })
+      .getByRole("button", { name: "Check", exact: true })
       .evaluate((button) => {
         const r = button.getBoundingClientRect();
         return r.top >= 0 && r.bottom <= innerHeight;

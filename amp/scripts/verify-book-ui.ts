@@ -73,7 +73,7 @@ try {
     await page
       .getByRole("combobox", { name: "Learner", exact: true })
       .selectOption(learner.id);
-    await page.getByRole("button", { name: "Lesson library" }).click();
+    await page.getByRole("button", { name: "Lessons" }).click();
     await page.locator(`button[data-book-id="${book.id}"]`).click();
     await page.getByRole("main", { name: book.title }).waitFor();
     const frames = readingFrames(book);
@@ -355,9 +355,7 @@ try {
       await route.fulfill({ response });
     });
     await page.locator(`button[data-book-id="${book.id}"]`).click();
-    await page
-      .getByRole("button", { name: "Your progress", exact: true })
-      .click();
+    await page.getByRole("button", { name: "Progress", exact: true }).click();
     releaseOpen();
     await page.waitForResponse((response) => response.url().endsWith("/open"));
     await page.waitForFunction(

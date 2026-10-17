@@ -71,7 +71,12 @@ function simulate(
   }
   return {
     shown,
-    frontier: estimateFrontier({ start, observations: attempts, gradeOf, strandOf }),
+    frontier: estimateFrontier({
+      start,
+      observations: attempts,
+      gradeOf,
+      strandOf,
+    }),
   };
 }
 
@@ -81,18 +86,27 @@ test("birth year places the first problems in material the learner should alread
   assert.equal(initialLevel({ birthYear: 2022, now: october }), 0);
   assert.equal(initialLevel({ birthYear: 1990, now: october }), 12);
   const { shown } = simulate(2016, () => 3, 3);
-  assert.ok(shown.every((entry) => entry.grade === 3), JSON.stringify(shown));
+  assert.ok(
+    shown.every((entry) => entry.grade === 3),
+    JSON.stringify(shown),
+  );
 });
 
 test("a learner far ahead of their age climbs to their frontier within a dozen problems", () => {
   const { shown, frontier } = simulate(2016, () => 7);
-  assert.ok(shown.slice(9, 15).some((entry) => entry.grade >= 6), JSON.stringify(shown));
+  assert.ok(
+    shown.slice(9, 15).some((entry) => entry.grade >= 6),
+    JSON.stringify(shown),
+  );
   assert.ok(frontier.overall.level >= 6, String(frontier.overall.level));
 });
 
 test("a learner missing basics descends as far as counting within a few problems", () => {
   const { shown, frontier } = simulate(2016, () => 0.3);
-  assert.ok(shown.slice(4, 10).some((entry) => entry.grade === 0), JSON.stringify(shown));
+  assert.ok(
+    shown.slice(4, 10).some((entry) => entry.grade === 0),
+    JSON.stringify(shown),
+  );
   assert.ok(shown.slice(10).every((entry) => entry.grade <= 3));
   assert.ok(frontier.overall.level <= 1);
 });
@@ -104,8 +118,12 @@ test("each strand finds its own frontier: a fraction gap does not hold back alge
   assert.ok(strandLevel(frontier, "fractions") <= 4.5);
   assert.ok(strandLevel(frontier, "algebra") >= 6);
   const late = shown.slice(15);
-  assert.ok(late.some((entry) => entry.strand === "fractions" && entry.grade <= 4));
-  assert.ok(late.some((entry) => entry.strand !== "fractions" && entry.grade >= 6));
+  assert.ok(
+    late.some((entry) => entry.strand === "fractions" && entry.grade <= 4),
+  );
+  assert.ok(
+    late.some((entry) => entry.strand !== "fractions" && entry.grade >= 6),
+  );
 });
 
 test("on-level practice stays within a grade of the frontier and keeps mixing strands", () => {
@@ -113,7 +131,11 @@ test("on-level practice stays within a grade of the frontier and keeps mixing st
   const near = shown.filter((entry) => Math.abs(entry.grade - 3) <= 1).length;
   assert.ok(near >= 20, `${near}/30 within a grade`);
   for (let i = 1; i < shown.length; i++)
-    assert.ok(shown.slice(Math.max(0, i - 3), i + 1).some((e) => e.strand !== shown[i].strand));
+    assert.ok(
+      shown
+        .slice(Math.max(0, i - 3), i + 1)
+        .some((e) => e.strand !== shown[i].strand),
+    );
   assert.ok(new Set(shown.map((entry) => entry.strand)).size >= 5);
 });
 
@@ -133,22 +155,39 @@ test("the staircase is deterministic and bounded to the curriculum", () => {
   assert.equal(always(false).overall.level, 0);
   const assisted = estimateFrontier({
     start: 8,
-    observations: [{ templateId: "linear-equation", correct: true, assisted: true }],
+    observations: [
+      { templateId: "linear-equation", correct: true, assisted: true },
+    ],
     gradeOf,
     strandOf,
   });
-  assert.equal(assisted.overall.level, 7, "assistance is not independent success");
+  assert.equal(
+    assisted.overall.level,
+    7,
+    "assistance is not independent success",
+  );
   const easy = estimateFrontier({
     start: 8,
-    observations: [{ templateId: "count-objects", correct: true, assisted: false }],
+    observations: [
+      { templateId: "count-objects", correct: true, assisted: false },
+    ],
     gradeOf,
     strandOf,
   });
-  assert.equal(easy.overall.level, 8, "an easy success carries no upward evidence");
+  assert.equal(
+    easy.overall.level,
+    8,
+    "an easy success carries no upward evidence",
+  );
 });
 
 test("offline packs never exceed a grade above the strand frontier", () => {
-  const frontier = estimateFrontier({ start: 2, observations: [], gradeOf, strandOf });
+  const frontier = estimateFrontier({
+    start: 2,
+    observations: [],
+    gradeOf,
+    strandOf,
+  });
   const choices = planMixedPractice({
     templates,
     skills,

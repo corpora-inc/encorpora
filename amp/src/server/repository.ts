@@ -1,6 +1,10 @@
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
-import { estimateFrontier, initialLevel, type Frontier } from "../learning/frontier";
+import {
+  estimateFrontier,
+  initialLevel,
+  type Frontier,
+} from "../learning/frontier";
 import { templateGrade } from "./mixed-practice";
 const templateById = new Map(templates.map((t) => [t.id, t]));
 const skillById = new Map(skills.map((s) => [s.id, s]));

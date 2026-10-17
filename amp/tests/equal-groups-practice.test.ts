@@ -136,7 +136,7 @@ test("counter boxes preserve exact filled count and equal capacity without print
         slots - total,
       );
       assert.equal((html.match(/<text/g) ?? []).length, 1);
-      assert.match(html, /Filled: items · Outline: empty/);
+      assert.match(html, /● .* · ○ empty place/);
     }
   for (const invalid of [
     { kind: "unit-array", rows: 2, columns: 3, splitAfterRow: 2 },

@@ -68,7 +68,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT id,name,deleted_at FROM amp_learners WHERE account_id=$1 ORDER BY created_at,id",
+          "SELECT id,name,birth_year,deleted_at FROM amp_learners WHERE account_id=$1 ORDER BY created_at,id",
           [accountId],
         )
       ).rows;
@@ -109,6 +109,7 @@ export class FamilyRepository {
         learners: learners.map((row) => ({
           id: row.id,
           name: row.name,
+          birthYear: row.birth_year ?? null,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
           access: grants

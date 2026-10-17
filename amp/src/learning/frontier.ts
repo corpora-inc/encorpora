@@ -23,7 +23,12 @@ export type FrontierObservation = {
   correct: boolean;
   assisted: boolean;
 };
-type Staircase = { level: number; step: number; direction: -1 | 0 | 1; n: number };
+type Staircase = {
+  level: number;
+  step: number;
+  direction: -1 | 0 | 1;
+  n: number;
+};
 export type Frontier = {
   /** Overall estimate; seeds strands the learner has not yet touched. */
   overall: Staircase;
@@ -96,8 +101,7 @@ export function estimateFrontier(options: {
     if (grade === undefined) continue;
     const success = observation.correct && !observation.assisted;
     const strand = options.strandOf(observation.templateId);
-    const current =
-      frontier.strands[strand] ?? fresh(frontier.overall.level);
+    const current = frontier.strands[strand] ?? fresh(frontier.overall.level);
     frontier.strands[strand] = move(current, grade, success);
     frontier.overall = move(frontier.overall, grade, success);
   }

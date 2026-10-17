@@ -1,6 +1,4 @@
 import { consumeInitialConsentChallenge } from "./consent-entry";
-import { StartingPointPicker, startingPointNames } from "./StartingPointPicker";
-import type { StartingBand } from "../learning/starting-point";
 import { nativeRuntime } from "./native-runtime";
 import { NativeGate, NativeFamily } from "./NativeGate";
 import { learningRequest, learningCatalog } from "./learning-transport";
@@ -44,6 +42,8 @@ import {
 } from "./auth";
 import "./style.css";
 import "./practice.css";
+import "./theme.css";
+import { PracticeStart } from "./PracticeStart";
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -52,6 +52,9 @@ class HttpError extends Error {
     super(message);
   }
 }
+type LearnerSummary = Pick<Learner, "id" | "name"> & {
+  birthYear?: number | null;
+};
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
@@ -64,11 +67,8 @@ function App() {
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
     [catalog, setCatalog] = useState<Catalog | null>(null),
-    [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
-    [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
-  const startingPointReturn = useRef(false);
-  const [startingPicker, setStartingPicker] = useState(false);
-  const [startingBand, setStartingBand] = useState<StartingBand | null>(null);
+    [learners, setLearners] = useState<LearnerSummary[]>([]),
+    [learner, setLearner] = useState<LearnerSummary | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
   const nativeFamilyReturn = useRef(false);
   useLayoutEffect(() => {
@@ -195,9 +195,6 @@ function App() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    startingPointReturn.current = false;
-    setStartingPicker(false);
-    setStartingBand(null);
     setFamilyOpen(!!openingConsent);
     setFamilySummary(null);
     setBusy(false);
@@ -371,31 +368,10 @@ function App() {
     progressLessonReturn.current = null;
     if (learner) void refreshProgress();
   }, [learner?.id]);
-  useEffect(() => {
-    setStartingPicker(false);
-  }, [tab, familyOpen, learner?.id]);
-  useEffect(() => {
-    setStartingBand(null);
-  }, [learner?.id]);
-  useLayoutEffect(() => {
-    if (!startingPicker && startingPointReturn.current) {
-      startingPointReturn.current = false;
-      document
-        .querySelector<HTMLButtonElement>(".starting-point-trigger")
-        ?.focus({ preventScroll: true });
-    }
-  }, [startingPicker]);
-  function closeStartingPoint() {
-    startingPointReturn.current = true;
-    setStartingPicker(false);
-  }
   function invalidateLearning() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    startingPointReturn.current = false;
-    setStartingPicker(false);
-    setStartingBand(null);
     setLearner(null);
     setLearners([]);
     setFamilySummary(null);
@@ -535,38 +511,56 @@ function App() {
     setHint("");
     setPending(null);
   }
-  async function loadBatch(templateId = family, openPractice = false) {
-    if (!learner) return;
-    const navigation = ++navigationEpoch.current;
-    const data = await api<{
-      problems: PublicProblem[];
-      lesson: Lesson | null;
-    }>(`/learners/${learner.id}/batches`, {
+  type Batch = { problems: PublicProblem[]; lesson: Lesson | null };
+  function requestBatch(templateId = family) {
+    return api<Batch>(`/learners/${learner!.id}/batches`, {
       ...(templateId ? { templateId } : {}),
-      count: templateId ? 1 : 3,
+      count: 1,
       responseCapabilities: ["single-choice-v1"],
       figureCapabilities: ["measurement-models-v1"],
-    }).catch((error) => navigationFailure(navigation, learner.id, error));
-    if (
-      !data ||
-      navigation !== navigationEpoch.current ||
-      learnerRef.current !== learner.id
-    )
-      return;
+    });
+  }
+  // The next problem is planned as soon as an answer is recorded, so it adapts
+  // to that answer and is already on hand when the learner continues.
+  const upcoming = useRef<{ learnerId: string; batch: Promise<Batch> } | null>(
+    null,
+  );
+  function applyBatch(data: Batch, openPractice = false) {
     if (openPractice) setTab("practice");
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
     setFamily("");
   }
+  async function loadBatch(templateId = family, openPractice = false) {
+    if (!learner) return;
+    upcoming.current = null;
+    const navigation = ++navigationEpoch.current;
+    const data = await requestBatch(templateId).catch((error) =>
+      navigationFailure(navigation, learner.id, error),
+    );
+    if (
+      !data ||
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learner.id
+    )
+      return;
+    applyBatch(data, openPractice);
+  }
   async function next() {
-    if (outcome && !outcome.correct) {
-      setQueue([]);
-      await loadBatch();
-    } else if (queue.length) {
-      showProblem(queue[0]);
-      setQueue(queue.slice(1));
-    } else await loadBatch();
+    const ready = upcoming.current;
+    upcoming.current = null;
+    if (!learner || !ready || ready.learnerId !== learner.id)
+      return loadBatch();
+    const navigation = ++navigationEpoch.current;
+    const data = await ready.batch.catch(() => null);
+    if (
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learner.id
+    )
+      return;
+    if (data) applyBatch(data);
+    else await loadBatch();
   }
   async function submit() {
     if (!learner || !problem) return;
@@ -579,7 +573,11 @@ function App() {
       });
       setOutcome(result);
       setPending(null);
-      await refreshProgress();
+      upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
+      upcoming.current.batch.catch(() => undefined);
+      void refreshProgress().catch((error) =>
+        console.error("Progress refresh failed", error),
+      );
     } catch (e) {
       if (e instanceof HttpError && e.status >= 400 && e.status < 500)
         setPending(null);
@@ -759,21 +757,15 @@ function App() {
       {!learner && !familyOpen && !nativeRuntime && (
         <div className="intro">
           <div>
-            <p className="eyebrow">A LITTLE CURIOSITY. A NEW POSSIBILITY.</p>
-            <h1>
-              Your next <em>aha.</em>
-            </h1>
-            <p>Understand the idea. Find your rhythm. Go a little further.</p>
-          </div>
-          <div className="intro-note">
-            <span className="pulse-dot" />
-            Learning studio preview
-            <br />
-            <small>Explore selected skills across the math journey.</small>
+            <h1>Math at exactly the right level.</h1>
+            <p>
+              One problem at a time, from counting through precalculus. Every
+              answer adjusts what comes next.
+            </p>
           </div>
         </div>
       )}
-      {!familyOpen && learner && !startingPicker && (
+      {!familyOpen && learner && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
             <button
@@ -787,10 +779,10 @@ function App() {
               }}
             >
               {t === "practice"
-                ? "Your practice"
+                ? "Practice"
                 : t === "library"
-                  ? "Lesson library"
-                  : "Your progress"}
+                  ? "Lessons"
+                  : "Progress"}
             </button>
           ))}
         </nav>
@@ -974,22 +966,15 @@ function App() {
           }
         />
       ) : tab === "practice" ? (
-        startingPicker ? (
-          <StartingPointPicker
-            key={learner.id}
-            learnerId={learner.id}
-            api={api}
-            onClose={closeStartingPoint}
-            onSaved={(band) => {
-              setStartingBand(band);
-              closeStartingPoint();
-            }}
-          />
-        ) : problem ? (
+        problem ? (
           <PracticeWorkspace
             key={problem.id}
             problem={problem}
             meta={meta}
+            strand={
+              catalog?.skills.find((skill) => skill.id === problem.skillId)
+                ?.strand
+            }
             lesson={
               catalog?.lessons.find((entry) =>
                 entry.templateIds.includes(problem.templateId),
@@ -1032,60 +1017,29 @@ function App() {
             }}
           />
         ) : (
-          <main className="session-start">
-            <section className="session-invitation">
-              <p className="eyebrow">YOUR OWN PATH THROUGH MATHEMATICS</p>
-              <h1>
-                A little of this.
-                <br />
-                <em>A new way to think.</em>
-              </h1>
-              <p>
-                Familiar ground. Fresh challenges. A mix that changes with you.
-              </p>
-              <button
-                className="starting-point-trigger"
-                aria-label={
-                  startingBand
-                    ? `Starting point: ${startingPointNames[startingBand]}`
-                    : "Choose a starting point"
-                }
-                disabled={busy}
-                onClick={() => setStartingPicker(true)}
-              >
-                {startingBand
-                  ? startingPointNames[startingBand]
-                  : "Choose a starting point"}
-                <span aria-hidden="true">→</span>
-              </button>
-              <button
-                className="start-mix"
-                disabled={busy}
-                onClick={() => void action(loadBatch)}
-              >
-                {family ? "Try this idea" : "Start your mix"}
-                <span aria-hidden="true"> ↗</span>
-              </button>
-              <details className="focus-picker">
-                <summary>Looking for a particular idea?</summary>
-                <label className="family-picker">
-                  Choose your practice
-                  <select
-                    value={family}
-                    onChange={(event) => setFamily(event.target.value)}
-                  >
-                    <option value="">A varied mix for me</option>
-                    {catalog?.templates.map((template) => (
-                      <option key={template.id} value={template.id}>
-                        {template.title} · {template.gradeBand}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <p>Try one problem, then return to your mix.</p>
-              </details>
-            </section>
-          </main>
+          <PracticeStart
+            key={learner.id}
+            name={learner.name}
+            birthYear={learner.birthYear ?? null}
+            templates={catalog?.templates ?? []}
+            skills={catalog?.skills ?? []}
+            busy={busy}
+            saveBirthYear={(birthYear) =>
+              void action(async () => {
+                await api(`/learners/${learner.id}/birth-year`, { birthYear });
+                const updated = { ...learner, birthYear };
+                setLearner(updated);
+                setLearners(
+                  learners.map((entry) =>
+                    entry.id === learner.id ? updated : entry,
+                  ),
+                );
+              })
+            }
+            start={(templateId) =>
+              void action(() => loadBatch(templateId ?? ""))
+            }
+          />
         )
       ) : tab === "library" ? (
         <main className="library-main">

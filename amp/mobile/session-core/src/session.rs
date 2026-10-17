@@ -88,6 +88,10 @@ pub enum LearningRequest {
         learner_id: String,
         body: Value,
     },
+    SetBirthYear {
+        learner_id: String,
+        body: Value,
+    },
     Batch {
         learner_id: String,
         body: Value,
@@ -143,6 +147,9 @@ impl LearningRequest {
                 Some(body),
                 None,
             ),
+            Self::SetBirthYear { learner_id, body } => {
+                (learner_path(&learner_id, "birth-year")?, Some(body), None)
+            }
             Self::Batch { learner_id, body } => {
                 (learner_path(&learner_id, "batches")?, Some(body), None)
             }
@@ -667,6 +674,27 @@ mod tests {
         }
         assert!(LearningRequest::StartingPoint {
             learner_id: "../other".into()
+        }
+        .route(&api)
+        .is_err());
+    }
+
+    #[test]
+    fn birth_year_uses_only_the_owned_learner_route() {
+        let api = Url::parse("https://api.example.test").unwrap();
+        let id = "00000000-0000-0000-0000-000000000001";
+        let body = serde_json::json!({"birthYear":2016});
+        let (write, payload) = LearningRequest::SetBirthYear {
+            learner_id: id.into(),
+            body: body.clone(),
+        }
+        .route(&api)
+        .unwrap();
+        assert_eq!(write.path(), format!("/api/v1/learners/{id}/birth-year"));
+        assert_eq!(payload, Some(body));
+        assert!(LearningRequest::SetBirthYear {
+            learner_id: "../other".into(),
+            body: serde_json::json!({}),
         }
         .route(&api)
         .is_err());

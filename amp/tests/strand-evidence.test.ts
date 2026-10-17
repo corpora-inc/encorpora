@@ -114,4 +114,3 @@ test("an assisted fifth answer cannot promote four independent successes into re
   ])[0]!;
   assert.equal(missed.status, "practicing");
 });
-

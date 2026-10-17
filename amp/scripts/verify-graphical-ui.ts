@@ -1,3 +1,4 @@
+import { startTopic } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
@@ -17,7 +18,7 @@ if (!url)
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
-const learner = await repository.create(account, "Browser verification");
+const learner = await repository.create(account, "Browser verification", 2016);
 const learnerIds = [learner.id];
 const app = buildApp({
   repository,
@@ -159,17 +160,11 @@ try {
   for (fixture of fixtures) {
     const id = fixture.problem.templateId;
     const change = page.getByRole("button", {
-      name: "Change topic",
+      name: "Topics",
       exact: true,
     });
     if (await change.count()) await change.click();
-    await page
-      .getByText("Looking for a particular idea?", { exact: true })
-      .click();
-    await page.getByLabel("Choose your practice").selectOption(id);
-    await page
-      .getByRole("button", { name: "Try this idea", exact: true })
-      .click();
+    await startTopic(page, id);
     await page.locator(".problem-content svg").waitFor();
     for (const size of [
       { width: 320, height: 568 },
