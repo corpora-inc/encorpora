@@ -184,3 +184,173 @@
     font-size: 24px;
   }
 }
+
+/* A parent workspace has its own frame; controls never extend the lesson. */
+.shell.family-shell > .family-center {
+  flex: 1;
+  height: auto;
+}
+.family-center {
+  height: 100dvh;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  padding: 20px;
+  gap: 18px;
+}
+.family-heading {
+  align-items: center;
+  gap: 12px;
+}
+.family-heading .eyebrow {
+  margin: 0 0 6px;
+}
+.family-heading h1 {
+  font-size: clamp(28px, 4vw, 38px);
+}
+.family-heading > button {
+  flex-shrink: 0;
+}
+.family-tabs {
+  margin: 0;
+  border: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #e9eee4;
+  padding: 4px;
+  border-radius: 14px;
+  gap: 4px;
+}
+.family-tabs button {
+  background: transparent;
+  color: #36564d;
+  border-radius: 10px;
+  padding: 10px 4px;
+}
+.family-tabs button[aria-current] {
+  background: #fffefa;
+  color: #14574a;
+  box-shadow: 0 2px 8px #173e3a12;
+}
+.family-body {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 4px 4px 20px;
+  scrollbar-gutter: stable;
+}
+.family-section {
+  padding: 8px 0;
+  border: 0;
+}
+.family-section h2 {
+  font-size: 24px;
+}
+.family-notice,
+.family-error {
+  margin: 0 0 14px;
+}
+.privacy-choices > p {
+  margin: 0 0 20px;
+}
+.privacy-choices > button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  text-align: left;
+  gap: 4px 12px;
+  background: #fffefa;
+  color: #183e3a;
+  border: 1px solid #d6dfd2;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+.privacy-choices strong {
+  font-size: 17px;
+}
+.privacy-choices span {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #4c625b;
+}
+.privacy-choices b {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+.privacy-back {
+  margin: 0 0 12px;
+}
+@media (max-width: 600px) {
+  .family-center {
+    padding: 12px;
+    gap: 12px;
+  }
+  .family-heading {
+    flex-direction: row;
+  }
+  .family-heading h1 {
+    font-size: 28px;
+  }
+  .family-heading .eyebrow {
+    font-size: 10px;
+  }
+  .family-learner {
+    padding: 18px;
+  }
+}
+@media (max-height: 650px) {
+  .family-center {
+    gap: 8px;
+    padding-top: 8px;
+  }
+  .family-heading .eyebrow {
+    display: none;
+  }
+  .family-section h2 {
+    margin-bottom: 8px;
+  }
+  .privacy-choices > p {
+    margin-bottom: 12px;
+  }
+  .privacy-choices > button {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+  }
+}
+@media (max-height: 650px) {
+  .privacy-choices > button {
+    min-height: 56px;
+  }
+  .privacy-choices > button span {
+    display: none;
+  }
+  .privacy-choices > button b {
+    grid-row: 1;
+  }
+}
+.family-section h2:focus {
+  outline: none;
+}
+.family-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.family-dialog-copy {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.family-dialog h2 {
+  overflow-wrap: anywhere;
+}
+.family-dialog .family-actions {
+  flex: none;
+}
+.family-dialog > .family-error {
+  max-height: 20vh;
+  overflow: auto;
+  flex-shrink: 0;
+}

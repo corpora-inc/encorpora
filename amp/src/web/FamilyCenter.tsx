@@ -7,6 +7,7 @@ import type {
 import "./family-center.css";
 interface Props {
   token: string;
+  identity?: string;
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
   onLearningInvalidated: () => void;
@@ -27,10 +28,17 @@ const messages: Record<string, string> = {
 };
 export function FamilyCenter({
   token,
+  identity = token,
   onChanged,
   onClose,
   onLearningInvalidated,
 }: Props) {
+  const [section, setSection] = useState<"learners" | "access" | "privacy">(
+    "learners",
+  );
+  const [privacy, setPrivacy] = useState<
+    "export" | "consent" | "delete" | "retention" | null
+  >(null);
   const [family, setFamily] = useState<FamilySummary | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
@@ -38,16 +46,22 @@ export function FamilyCenter({
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
     [name, setName] = useState("");
+  const body = useRef<HTMLDivElement>(null);
+  const previousPrivacy = useRef(privacy),
+    previousRename = useRef(rename);
   const heading = useRef<HTMLHeadingElement>(null),
     dialog = useRef<HTMLDialogElement>(null),
     dialogHeading = useRef<HTMLHeadingElement>(null),
     trigger = useRef<HTMLElement | null>(null);
   const mounted = useRef(false),
     generation = useRef(0);
+  const downloadFrame = useRef<HTMLIFrameElement | null>(null);
   useLayoutEffect(() => {
     mounted.current = true;
     generation.current++;
     setFamily(null);
+    setSection("learners");
+    setPrivacy(null);
     setError("");
     setNotice("");
     setConfirmation(null);
@@ -56,8 +70,10 @@ export function FamilyCenter({
     return () => {
       mounted.current = false;
       generation.current++;
+      downloadFrame.current?.remove();
+      downloadFrame.current = null;
     };
-  }, [token]);
+  }, [identity]);
   const current = (epoch: number) =>
     mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
@@ -71,7 +87,7 @@ export function FamilyCenter({
     const response = await fetch(`/api/v1${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${tokenRef.current}`,
         "content-type": "application/json",
       },
       body: body === undefined ? undefined : JSON.stringify(body),
@@ -79,12 +95,7 @@ export function FamilyCenter({
       credentials: "same-origin",
     });
     const data = await response.json();
-    if (!current(epoch) || tokenRef.current !== token) {
-      if (path === "/family/export-ticket")
-        await fetch("/api/v1/family/export/revoke", {
-          method: "POST",
-          credentials: "same-origin",
-        }).catch(() => undefined);
+    if (!current(epoch)) {
       throw new Error("Your account session changed.");
     }
     if (!response.ok)
@@ -113,7 +124,7 @@ export function FamilyCenter({
           );
       });
     return () => controller.abort();
-  }, [token]);
+  }, [identity]);
   useLayoutEffect(() => {
     heading.current?.focus({ preventScroll: true });
   }, []);
@@ -131,6 +142,32 @@ export function FamilyCenter({
       });
     };
   }, [confirmation]);
+  useLayoutEffect(() => {
+    if (previousPrivacy.current === privacy) return;
+    const previous = previousPrivacy.current;
+    previousPrivacy.current = privacy;
+    if (body.current) body.current.scrollTop = 0;
+    const target = privacy
+      ? body.current?.querySelector<HTMLElement>(".family-section h2")
+      : body.current?.querySelector<HTMLElement>(
+          `[data-privacy-choice="${previous}"]`,
+        );
+    target?.focus({ preventScroll: true });
+  }, [privacy]);
+  useLayoutEffect(() => {
+    if (rename) {
+      previousRename.current = rename;
+      return;
+    }
+    if (!busy && previousRename.current) {
+      body.current
+        ?.querySelector<HTMLElement>(
+          `[data-rename-id="${CSS.escape(previousRename.current)}"]`,
+        )
+        ?.focus({ preventScroll: true });
+      previousRename.current = null;
+    }
+  }, [rename, busy]);
   async function action(run: () => Promise<void>) {
     if (busy) return;
     const epoch = generation.current;
@@ -153,11 +190,8 @@ export function FamilyCenter({
     setFamily(next);
     onChanged(next);
   }
-  function ask(value: Confirmation) {
-    trigger.current =
-      document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
+  function ask(value: Confirmation, source: HTMLElement) {
+    trigger.current = source;
     setConfirmation(value);
   }
   async function confirm() {
@@ -199,15 +233,47 @@ export function FamilyCenter({
   }
   async function exportData() {
     await action(async () => {
-      await api("/family/export-ticket", {});
-      const link = document.createElement("a");
-      link.href = "/api/v1/family/export";
-      link.download = `amp-family-export-${new Date().toISOString().slice(0, 10)}.ndjson`;
-      document.body.append(link);
-      link.click();
-      link.remove();
+      const epoch = generation.current;
+      const { ticket } = await api<{ ticket: string }>(
+        "/family/export-ticket",
+        {},
+      );
+      if (!current(epoch)) return;
+      if (!/^[A-Za-z0-9_-]{43}$/.test(ticket))
+        throw new Error("The download could not be prepared. Try again.");
+      downloadFrame.current?.remove();
+      const frame = document.createElement("iframe");
+      frame.name = `family-download-${crypto.randomUUID()}`;
+      frame.title = "Family data download";
+      frame.hidden = true;
+      downloadFrame.current = frame;
+      frame.onload = () => {
+        if (!current(epoch) || downloadFrame.current !== frame) return;
+        // An attachment leaves the frame blank. A failed request returns an
+        // error document here instead of replacing the learning application.
+        if (frame.contentDocument?.body.textContent?.trim()) {
+          setNotice("");
+          setError(
+            "The download could not be completed. Request a fresh download and try again.",
+          );
+        }
+      };
+      const form = document.createElement("form"),
+        field = document.createElement("input");
+      form.hidden = true;
+      form.method = "POST";
+      form.action = "/api/v1/family/export";
+      form.target = frame.name;
+      field.type = "hidden";
+      field.name = "ticket";
+      field.value = ticket;
+      form.append(field);
+      document.body.append(frame, form);
+      form.submit();
+      form.remove();
+      setTimeout(() => frame.remove(), 120_000);
       setNotice(
-        "Your download has started. Keep this file private. If the download is interrupted, try again.",
+        "Download requested. Check your browser’s downloads and keep the file private. If it is interrupted, request a fresh download.",
       );
     });
   }
@@ -228,217 +294,316 @@ export function FamilyCenter({
         <div>
           <p className="eyebrow">PARENT ACCOUNT</p>
           <h1 id="family-title" ref={heading} tabIndex={-1}>
-            Your family, your choices.
+            Your family.
           </h1>
         </div>
         <button onClick={onClose} disabled={busy}>
-          Back to learning
+          Back
         </button>
       </div>
-      <p className="family-intro">
-        Manage learner names and learning records. Payment, privacy and practice
-        are separate controls.
-      </p>
-      {error && (
-        <p className="family-error" role="alert">
-          {error}
-        </p>
-      )}
-      {notice && (
-        <p className="family-notice" role="status">
-          {notice}
-        </p>
-      )}
-      {!family ? (
-        <div aria-busy="true">
-          <p>Loading family details…</p>
-          {error && (
-            <button onClick={() => void action(refresh)}>Try again</button>
-          )}
-        </div>
-      ) : (
-        <>
-          <section className="family-section">
-            <h2>Learners</h2>
-            {!family.learners.length && (
-              <p>No learner profiles are stored in this account.</p>
+      <nav className="family-tabs" aria-label="Family sections">
+        {(["learners", "access", "privacy"] as const).map((value) => (
+          <button
+            key={value}
+            aria-current={section === value ? "page" : undefined}
+            onClick={() => {
+              setSection(value);
+              setRename(null);
+              setPrivacy(null);
+              setError("");
+              setNotice("");
+            }}
+            disabled={busy}
+          >
+            {value === "learners"
+              ? "Learners"
+              : value === "access"
+                ? "Access"
+                : "Privacy"}
+          </button>
+        ))}
+      </nav>
+      <div className="family-body" ref={body}>
+        {error && (
+          <p className="family-error" role="alert">
+            {error}
+          </p>
+        )}
+        {notice && (
+          <p className="family-notice" role="status">
+            {notice}
+          </p>
+        )}
+        {!family ? (
+          <div aria-busy="true">
+            <p>Loading family details…</p>
+            {error && (
+              <button onClick={() => void action(refresh)}>Try again</button>
             )}
-            <div className="family-learners">
-              {family.learners.map((learner) => (
-                <article className="family-learner" key={learner.id}>
-                  <h3>
-                    {learner.deletedAt
-                      ? "Deleted learner · billing reference"
-                      : learner.name}
-                  </h3>
-                  {learner.deletedAt ? (
-                    <p>
-                      The name and learning history were removed. This reference
-                      keeps payment and refund records connected.
-                    </p>
-                  ) : rename === learner.id ? (
-                    <form
-                      onSubmit={(event) => {
-                        event.preventDefault();
-                        void action(async () => {
-                          await api(
-                            `/family/learners/${encodeURIComponent(learner.id)}/rename`,
-                            { name },
-                          );
-                          setRename(null);
-                          await refresh();
-                          setNotice("Learner name updated.");
-                        });
-                      }}
-                    >
-                      <label htmlFor={`rename-${learner.id}`}>
-                        Learner display name
-                      </label>
-                      <input
-                        id={`rename-${learner.id}`}
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                        maxLength={80}
-                        autoComplete="off"
-                        autoFocus
-                        disabled={busy}
-                      />
-                      <div className="family-actions">
-                        <button disabled={busy || !name.trim()}>
-                          Save name
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setRename(null)}
-                          disabled={busy}
+          </div>
+        ) : (
+          <>
+            {(section === "learners" || section === "access") && (
+              <section className="family-section">
+                <h2 tabIndex={-1}>
+                  {section === "learners"
+                    ? "Who’s learning?"
+                    : "Learning access"}
+                </h2>
+                {!family.learners.length && (
+                  <p>No learner profiles are stored in this account.</p>
+                )}
+                <div className="family-learners">
+                  {family.learners.map((learner) => (
+                    <article className="family-learner" key={learner.id}>
+                      <h3>
+                        {learner.deletedAt
+                          ? "Deleted learner · billing reference"
+                          : learner.name}
+                      </h3>
+                      {learner.deletedAt ? (
+                        <p>
+                          The name and learning history were removed. This
+                          reference keeps payment and refund records connected.
+                        </p>
+                      ) : section !== "learners" ? null : rename ===
+                        learner.id ? (
+                        <form
+                          onSubmit={(event) => {
+                            event.preventDefault();
+                            void action(async () => {
+                              await api(
+                                `/family/learners/${encodeURIComponent(learner.id)}/rename`,
+                                { name },
+                              );
+                              setRename(null);
+                              await refresh();
+                              setNotice("Learner name updated.");
+                            });
+                          }}
                         >
-                          Cancel
-                        </button>
-                      </div>
-                    </form>
-                  ) : (
-                    <div className="family-actions">
-                      <button
-                        disabled={busy}
-                        onClick={() => {
-                          setRename(learner.id);
-                          setName(learner.name);
-                        }}
-                      >
-                        Edit name
-                      </button>
-                      <button
-                        className="family-danger-link"
-                        disabled={busy}
-                        onClick={() => ask({ kind: "delete", learner })}
-                      >
-                        Delete learning data
-                      </button>
-                    </div>
-                  )}
-                  {!!learner.access.length && (
-                    <ul className="family-access">
-                      {learner.access.map((access, index) => (
-                        <li key={index}>
-                          {access.channel.toUpperCase()} ·{" "}
-                          {access.status === "revoked"
-                            ? "Access revoked"
-                            : `Term ends ${new Date(access.endsAt).toLocaleDateString()}`}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {learner.stripeLinked && (
-                    <div className="family-billing">
-                      <p>
-                        A Stripe purchase is linked. Check billing for its
-                        current renewal status; deleting learning data does not
-                        cancel it.
-                      </p>
-                      <button onClick={() => void billing()} disabled={busy}>
-                        Manage billing and renewal
-                      </button>
-                    </div>
-                  )}
-                </article>
-              ))}
-            </div>
-          </section>
-          <section className="family-section">
-            <h2>Your learning records</h2>
-            <p>
-              Download an NDJSON file containing this account’s learners,
-              problems, answers, licenses, orders and privacy activity. This is
-              a data export, not a printable workbook.
-            </p>
-            <button disabled={busy} onClick={() => void exportData()}>
-              Download family data
-            </button>
-            <p className="family-secondary">
-              The browser saves the streamed file without loading your entire
-              history into this page. A large history may take longer to
-              download.
-            </p>
-          </section>
-          <section className="family-section">
-            <h2>Consent for learning</h2>
-            <p className="family-consent-status">
-              {family.consent.status === "active"
-                ? "Consent is active."
-                : family.consent.status === "withdrawn"
-                  ? "Consent is withdrawn. New learning activity is paused."
-                  : family.consent.status === "development"
-                    ? "Local development access. No verified consent record is present."
-                    : "Verified parent consent is not recorded."}
-            </p>
-            {family.consent.status !== "withdrawn" ? (
-              <>
+                          <label htmlFor={`rename-${learner.id}`}>
+                            Learner display name
+                          </label>
+                          <input
+                            id={`rename-${learner.id}`}
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                            maxLength={80}
+                            autoComplete="off"
+                            autoFocus
+                            disabled={busy}
+                          />
+                          <div className="family-actions">
+                            <button disabled={busy || !name.trim()}>
+                              Save name
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setRename(null)}
+                              disabled={busy}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </form>
+                      ) : (
+                        <div className="family-actions">
+                          <button
+                            data-rename-id={learner.id}
+                            disabled={busy}
+                            onClick={() => {
+                              setRename(learner.id);
+                              setName(learner.name);
+                            }}
+                          >
+                            Edit name
+                          </button>
+                          <button
+                            className="family-danger-link"
+                            disabled={busy}
+                            onClick={(event) =>
+                              ask(
+                                { kind: "delete", learner },
+                                event.currentTarget,
+                              )
+                            }
+                          >
+                            Delete learning data
+                          </button>
+                        </div>
+                      )}
+                      {section === "access" && !learner.access.length && (
+                        <p>No active learning access is recorded.</p>
+                      )}
+                      {section === "access" && !!learner.access.length && (
+                        <ul className="family-access">
+                          {learner.access.map((access, index) => (
+                            <li key={index}>
+                              {access.channel.toUpperCase()} ·{" "}
+                              {access.status === "revoked"
+                                ? "Access revoked"
+                                : `Term ends ${new Date(access.endsAt).toLocaleDateString()}`}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {section === "access" && learner.stripeLinked && (
+                        <div className="family-billing">
+                          <p>
+                            A Stripe purchase is linked. Check billing for its
+                            current renewal status; deleting learning data does
+                            not cancel it.
+                          </p>
+                          <button
+                            onClick={() => void billing()}
+                            disabled={busy}
+                          >
+                            Manage billing and renewal
+                          </button>
+                        </div>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+            {section === "privacy" && !privacy && (
+              <section className="family-section privacy-choices">
+                <h2 tabIndex={-1}>Your learning records</h2>
+                <p>Choose what to keep, share, or remove.</p>
+                {(
+                  [
+                    [
+                      "export",
+                      "Download your records",
+                      "Keep a personal copy of your family’s data.",
+                    ],
+                    [
+                      "consent",
+                      "Learning consent",
+                      "Review consent or pause new activity.",
+                    ],
+                    [
+                      "delete",
+                      "Delete learning data",
+                      "Review what will be permanently removed.",
+                    ],
+                    [
+                      "retention",
+                      "What is retained?",
+                      "Understand billing, sign-in, and backups.",
+                    ],
+                  ] as const
+                ).map(([key, title, detail]) => (
+                  <button
+                    key={key}
+                    data-privacy-choice={key}
+                    onClick={() => setPrivacy(key)}
+                  >
+                    <strong>{title}</strong>
+                    <span>{detail}</span>
+                    <b aria-hidden="true">›</b>
+                  </button>
+                ))}
+              </section>
+            )}
+            {section === "privacy" && privacy && (
+              <button
+                className="privacy-back text-button"
+                onClick={() => setPrivacy(null)}
+              >
+                ← Privacy choices
+              </button>
+            )}
+            {section === "privacy" && privacy === "export" && (
+              <section className="family-section">
+                <h2 tabIndex={-1}>Your learning records</h2>
                 <p>
-                  Withdrawal stops new learning activity. It does not delete
-                  existing records or cancel payment renewal.
+                  Download an NDJSON file containing this account’s learners,
+                  problems, answers, licenses, orders and privacy activity. This
+                  is a data export, not a printable workbook.
+                </p>
+                <button disabled={busy} onClick={() => void exportData()}>
+                  Download family data
+                </button>
+                <p className="family-secondary">
+                  The browser saves the streamed file without loading your
+                  entire history into this page. A large history may take longer
+                  to download.
+                </p>
+              </section>
+            )}
+            {section === "privacy" && privacy === "consent" && (
+              <section className="family-section">
+                <h2 tabIndex={-1}>Consent for learning</h2>
+                <p className="family-consent-status">
+                  {family.consent.status === "active"
+                    ? "Consent is active."
+                    : family.consent.status === "withdrawn"
+                      ? "Consent is withdrawn. New learning activity is paused."
+                      : family.consent.status === "development"
+                        ? "Local development access. No verified consent record is present."
+                        : "Verified parent consent is not recorded."}
+                </p>
+                {family.consent.status !== "withdrawn" ? (
+                  <>
+                    <p>
+                      Withdrawal stops new learning activity. It does not delete
+                      existing records or cancel payment renewal.
+                    </p>
+                    <button
+                      disabled={busy}
+                      onClick={(event) =>
+                        ask({ kind: "withdraw" }, event.currentTarget)
+                      }
+                    >
+                      Withdraw consent
+                    </button>
+                  </>
+                ) : (
+                  <p>
+                    To resume, ask the account administrator to verify consent.
+                    Your billing controls and data export stay available.
+                  </p>
+                )}
+              </section>
+            )}
+            {section === "privacy" && privacy === "delete" && (
+              <section className="family-section family-delete">
+                <h2 tabIndex={-1}>Delete all learning data</h2>
+                <p>
+                  Remove every learner’s name, saved problems and answer history
+                  from the live application, and withdraw consent. This cannot
+                  be undone through AMP.
                 </p>
                 <button
+                  className="family-danger"
                   disabled={busy}
-                  onClick={() => ask({ kind: "withdraw" })}
+                  onClick={(event) =>
+                    ask({ kind: "delete" }, event.currentTarget)
+                  }
                 >
-                  Withdraw consent
+                  Review deletion
                 </button>
-              </>
-            ) : (
-              <p>
-                To resume, ask the account administrator to verify consent. Your
-                billing controls and data export stay available.
-              </p>
+              </section>
             )}
-          </section>
-          <section className="family-section family-delete">
-            <h2>Delete all learning data</h2>
-            <p>
-              Remove every learner’s name, saved problems and answer history
-              from the live application, and withdraw consent. This cannot be
-              undone through AMP.
-            </p>
-            <button
-              className="family-danger"
-              disabled={busy}
-              onClick={() => ask({ kind: "delete" })}
-            >
-              Review deletion
-            </button>
-          </section>
-          <section className="family-section family-retention">
-            <h2>What these controls do not delete</h2>
-            <p>{family.retained.identity}</p>
-            <p>{family.retained.financial}</p>
-            <p>{family.retained.backups}</p>
-            <p>
-              Privacy action records contain no learner names or answer history
-              and expire after {family.retained.privacyAuditDays} days. An
-              operational retention job removes expired records.
-            </p>
-          </section>
-        </>
-      )}
+            {section === "privacy" && privacy === "retention" && (
+              <section className="family-section family-retention">
+                <h2 tabIndex={-1}>What these controls do not delete</h2>
+                <p>{family.retained.identity}</p>
+                <p>{family.retained.financial}</p>
+                <p>{family.retained.backups}</p>
+                <p>
+                  Privacy action records contain no learner names or answer
+                  history and expire after {family.retained.privacyAuditDays}{" "}
+                  days. An operational retention job removes expired records.
+                </p>
+              </section>
+            )}
+          </>
+        )}
+      </div>
       {confirmation && (
         <dialog
           ref={dialog}
@@ -449,36 +614,38 @@ export function FamilyCenter({
             if (!busy) setConfirmation(null);
           }}
         >
-          <h2 id="family-confirm-title" ref={dialogHeading} tabIndex={-1}>
-            {confirmation.kind === "withdraw"
-              ? "Pause new learning activity?"
-              : confirmation.learner
-                ? `Delete ${confirmation.learner.name}’s learning data?`
-                : "Delete all family learning data?"}
-          </h2>
-          {confirmation.kind === "withdraw" ? (
-            <p>
-              Existing learning records stay available to export or delete.
-              Practice pauses after withdrawal. Payment renewal continues unless
-              you cancel it separately.
-            </p>
-          ) : (
-            <>
+          <div className="family-dialog-copy">
+            <h2 id="family-confirm-title" ref={dialogHeading} tabIndex={-1}>
+              {confirmation.kind === "withdraw"
+                ? "Pause new learning activity?"
+                : confirmation.learner
+                  ? `Delete ${confirmation.learner.name}’s learning data?`
+                  : "Delete all family learning data?"}
+            </h2>
+            {confirmation.kind === "withdraw" ? (
               <p>
-                Saved problems, answers and the learner name will be removed
-                from the live application. This cannot be undone. Download your
-                family data first if you want to keep a copy.
+                Existing learning records stay available to export or delete.
+                Practice pauses after withdrawal. Payment renewal continues
+                unless you cancel it separately.
               </p>
-              <p>
-                Payment records and your parent sign-in remain.{" "}
-                <strong>This does not cancel a subscription.</strong> Use
-                billing management to check renewal.{" "}
-                {confirmation.learner
-                  ? "Other learners are not affected."
-                  : "Consent will be withdrawn for this account."}
-              </p>
-            </>
-          )}
+            ) : (
+              <>
+                <p>
+                  Saved problems, answers and the learner name will be removed
+                  from the live application. This cannot be undone. Download
+                  your family data first if you want to keep a copy.
+                </p>
+                <p>
+                  Payment records and your parent sign-in remain.{" "}
+                  <strong>This does not cancel a subscription.</strong> Use
+                  billing management to check renewal.{" "}
+                  {confirmation.learner
+                    ? "Other learners are not affected."
+                    : "Consent will be withdrawn for this account."}
+                </p>
+              </>
+            )}
+          </div>
           <div className="family-actions">
             <button disabled={busy} onClick={() => setConfirmation(null)}>
               Keep my settings

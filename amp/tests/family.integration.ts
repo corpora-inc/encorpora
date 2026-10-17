@@ -253,15 +253,65 @@ test(
         payload: {},
       });
       assert.equal(issued.statusCode, 200);
-      const cookie = String(issued.headers["set-cookie"]);
-      assert.match(cookie, /HttpOnly/);
-      assert.match(cookie, /SameSite=Strict/);
-      assert.match(cookie, /Max-Age=60/);
+      assert.equal(issued.headers["set-cookie"], undefined);
+      const { ticket: browserTicket } = issued.json<{ ticket: string }>();
+      assert.match(browserTicket, /^[A-Za-z0-9_-]{43}$/);
+      // Ambient cookies cannot authorize either another tab or a later account.
+      assert.equal(
+        (
+          await app.inject({
+            url: "/api/v1/family/export",
+            headers: { cookie: `amp-export-ticket=${browserTicket}` },
+          })
+        ).statusCode,
+        401,
+      );
+      assert.equal(
+        (
+          await app.inject({
+            method: "POST",
+            url: "/api/v1/family/export-ticket",
+            payload: {},
+          })
+        ).statusCode,
+        401,
+      );
+      for (const payload of [
+        `ticket=${browserTicket}&ticket=${browserTicket}`,
+        `ticket=${browserTicket}&extra=value`,
+        "ticket=invalid",
+      ]) {
+        assert.equal(
+          (
+            await app.inject({
+              method: "POST",
+              url: "/api/v1/family/export",
+              headers: { "content-type": "application/x-www-form-urlencoded" },
+              payload,
+            })
+          ).statusCode,
+          400,
+        );
+      }
+      assert.equal(
+        (
+          await app.inject({
+            method: "POST",
+            url: "/api/v1/family/export",
+            headers: { "content-type": "application/x-www-form-urlencoded" },
+            payload: `ticket=${browserTicket}&padding=${"a".repeat(1100)}`,
+          })
+        ).statusCode,
+        413,
+      );
       const downloaded = await app.inject({
+        method: "POST",
         url: "/api/v1/family/export",
-        headers: { cookie: cookie.split(";")[0]! },
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        payload: `ticket=${browserTicket}`,
       });
       assert.equal(downloaded.statusCode, 200);
+      assert.equal(downloaded.headers["cache-control"], "no-store");
       assert.match(
         downloaded.headers["content-disposition"] as string,
         /attachment/,
@@ -273,36 +323,21 @@ test(
       assert.equal(
         (
           await app.inject({
+            method: "POST",
             url: "/api/v1/family/export",
-            headers: { cookie: cookie.split(";")[0]! },
+            payload: { ticket: browserTicket },
           })
         ).statusCode,
         401,
       );
-      const revokedTicket = await app.inject({
-        method: "POST",
-        url: "/api/v1/family/export-ticket",
-        headers: { authorization: "Bearer fixture" },
-        payload: {},
-      });
-      const revokeCookie = String(revokedTicket.headers["set-cookie"]).split(
-        ";",
-      )[0]!;
-      const revoked = await app.inject({
-        method: "POST",
-        url: "/api/v1/family/export/revoke",
-        headers: { cookie: revokeCookie },
-      });
-      assert.equal(revoked.statusCode, 200);
-      assert.match(String(revoked.headers["set-cookie"]), /Max-Age=0/);
       assert.equal(
         (
           await app.inject({
             url: "/api/v1/family/export",
-            headers: { cookie: revokeCookie },
+            headers: { authorization: "Bearer fixture" },
           })
         ).statusCode,
-        401,
+        200,
       );
       assert.equal((await api.summary("parent")).consent.status, "withdrawn");
       await pool.query(

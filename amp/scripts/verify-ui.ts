@@ -1,3 +1,4 @@
+import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
 import { createServer } from "vite";
 import { mkdir } from "node:fs/promises";
@@ -17,6 +18,11 @@ const learner = await repository.create(account, "Browser verification");
 const learnerIds = [learner.id];
 const app = buildApp({
   repository,
+  authenticate: developmentAuth(),
+  development: true,
+});
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
   authenticate: developmentAuth(),
   development: true,
 });
@@ -300,6 +306,131 @@ try {
     ),
     "A maximum-length learner nickname must fit a phone viewport",
   );
+  // The real application mounts parent controls independently of learning consent.
+  await page.locator(".account-menu summary").click();
+  await page
+    .locator(".account-menu")
+    .getByRole("button", { name: "Manage family", exact: true })
+    .click();
+  await page.locator(".family-center").waitFor();
+  for (const size of [
+    { width: 390, height: 844 },
+    { width: 320, height: 568 },
+    { width: 844, height: 390 },
+  ]) {
+    await page.setViewportSize(size);
+    await page
+      .getByRole("navigation", { name: "Family sections" })
+      .getByRole("button", { name: "Privacy", exact: true })
+      .click();
+    assert.ok(
+      await page.evaluate(
+        () => document.documentElement.scrollHeight <= innerHeight + 1,
+      ),
+    );
+    const back = await page
+      .getByRole("button", { name: "Back", exact: true })
+      .boundingBox();
+    assert.ok(
+      back && back.y + back.height <= size.height,
+      "Family exit stays visible",
+    );
+    if (size.width !== 844) {
+      const lastChoice = await page
+        .getByRole("button", { name: "What is retained?", exact: false })
+        .boundingBox();
+      assert.ok(
+        lastChoice && lastChoice.y + lastChoice.height <= size.height,
+        "Privacy choices fit phone viewport",
+      );
+    }
+    await page.screenshot({
+      path: new URL(
+        `../artifacts/screenshots/family-in-app-${size.width}.png`,
+        import.meta.url,
+      ).pathname,
+    });
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await page.waitForFunction(() =>
+    document.activeElement?.matches(".account-menu summary"),
+  );
+  let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
+  const familyBatchRelease = new Promise<void>((resolve) => {
+    releaseFamilyBatch = resolve;
+  });
+  const familyBatchWaiting = new Promise<void>((resolve) => {
+    familyBatchHeld = resolve;
+  });
+  await page.route("**/batches", async (route) => {
+    const result = await route.fetch();
+    familyBatchHeld();
+    await familyBatchRelease;
+    await route.fulfill({ response: result });
+  });
+  await page.getByRole("button", { name: "Start your mix" }).click();
+  await familyBatchWaiting;
+  await page.locator(".account-menu summary").click();
+  await page
+    .locator(".account-menu")
+    .getByRole("button", { name: "Manage family", exact: true })
+    .click();
+  await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
+  await page
+    .getByRole("navigation", { name: "Family sections" })
+    .getByRole("button", { name: "Privacy", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Learning consent", exact: false })
+    .click();
+  // Synthetic mutation isolates this browser race from the shared test account.
+  await page.route("**/family/consent/withdraw", (route) =>
+    route.fulfill({ json: { withdrawn: true } }),
+  );
+  await page.route("**/api/v1/family", (route) =>
+    route.fulfill({
+      status: 503,
+      json: { error: "family_service_unavailable" },
+    }),
+  );
+  await page
+    .getByRole("button", { name: "Withdraw consent", exact: true })
+    .click();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Withdraw consent", exact: true })
+    .click();
+  await page
+    .getByText(
+      "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
+      { exact: true },
+    )
+    .waitFor();
+  releaseFamilyBatch();
+  await page.waitForTimeout(100);
+  await page.getByRole("button", { name: "Back", exact: true }).click();
+  assert.equal(
+    await page.locator("#answer").count(),
+    0,
+    "Late batch cannot restore practice after privacy invalidation",
+  );
+  assert.equal(
+    await page.getByRole("button", { name: "Start your mix" }).count(),
+    0,
+  );
+  assert.equal(
+    await page.getByRole("navigation", { name: "Learning sections" }).count(),
+    0,
+  );
+  await page.locator(".account-menu summary").click();
+  await page
+    .locator(".account-menu")
+    .getByRole("button", { name: "Manage family", exact: true })
+    .click();
+  await page
+    .getByRole("heading", { name: "Your family.", exact: true })
+    .waitFor();
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",
