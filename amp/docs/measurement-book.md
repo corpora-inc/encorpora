@@ -30,10 +30,12 @@ Only selected metric-length conversions are taught. Volume, angles, customary
 unit systems and general polygon area are outside the book's scope.
 
 `books/measure-border-cover/alignments.ts` records page, task, skill and standard
-relationships with explicit limits. `practice.ts` binds the existing rectangle
-area family to its teaching pages. Perimeter, ruler reading, conversions and
-open designs have authored instruction but no automated practice binding in this
-volume. Book presence, a page visit, or one correct response does not establish
+relationships with explicit limits. `practice.ts` binds sixteen deterministic
+families to exact teaching pages: rectangle area, ruler intervals, perimeter,
+missing sides, comparisons, selected conversions, bounded design decisions and
+whole-pack costs. Cost comparison draws on selected [grade-four multistep story
+requirements](https://www.thecorestandards.org/Math/Content/4/OA/).
+Constructed designs, explanations and physical measurement require human review. Book presence, a page visit, or one correct response does not establish
 complete standard coverage or durable mastery.
 
 ## Equal-unit region diagrams

@@ -5,6 +5,11 @@ surface coverage and metric lengths. They participate in the same mixed practice
 and spaced review as arithmetic, fractions and algebra. A focused family is also
 available from the practice chooser.
 
+Each family opens its matching teaching page in *Measure, Border, Cover*. Five
+reference lessons provide shorter worked explanations and printable practice.
+The book also includes construction, reasoning and transfer tasks beyond what
+these automated responses assess.
+
 | Family group | What a response establishes | Important limits |
 | --- | --- | --- |
 | Shifted rulers | An exact whole, half or quarter-centimeter interval between displayed positions | Does not assess choosing or using a physical measuring tool. Fractional intervals extend the whole-unit entry skill. |

@@ -1,4 +1,5 @@
 import { measurementTemplates } from "../src/math/measurement-practice.js";
+import { measurementDefinitions } from "../src/content/measurement-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
@@ -323,6 +324,51 @@ try {
         .getByRole("button", { name: /^Continue/ })
         .evaluate((b) => b === document.activeElement),
     );
+    const opening = page.waitForResponse((response) =>
+      response.url().endsWith("/books/measure-border-cover/open"),
+    );
+    await page
+      .getByRole("button", { name: "Explore the idea", exact: true })
+      .click();
+    const response = await opening;
+    assert.equal(response.status(), 200);
+    const opened = await response.json();
+    const destination = measurementDefinitions.find(
+      (entry) => entry.id === id,
+    )!.pageId;
+    assert.equal(opened.suggestedPageId, destination);
+    const teachingPage = opened.book.pages.find(
+      (entry: { id: string }) => entry.id === destination,
+    );
+    await page
+      .getByRole("heading", { name: teachingPage.title, exact: true })
+      .waitFor();
+    assert.ok(
+      await page.locator(".reader-stage").evaluate((stage) => {
+        const bounds = stage.getBoundingClientRect();
+        return (
+          bounds.top >= 0 &&
+          bounds.bottom <= innerHeight + 1 &&
+          stage.scrollHeight <= stage.clientHeight + 1 &&
+          document.documentElement.scrollWidth <= innerWidth
+        );
+      }),
+    );
+    await page.screenshot({
+      path: new URL(`${id}-teaching-page-320.png`, output).pathname,
+    });
+    await page.getByRole("button", { name: /Back/ }).click();
+    await page.waitForFunction(() =>
+      document.activeElement?.hasAttribute("data-book-trigger"),
+    );
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
+    assert.equal(await page.locator("dialog[open]").count(), 0);
+    assert.equal(await page.locator(".practice-celebration").count(), 0);
   }
   await page.getByRole("button", { name: "Change topic", exact: true }).click();
   await page

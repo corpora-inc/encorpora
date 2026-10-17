@@ -1,3 +1,4 @@
+import { measurementDefinitions } from "../../src/content/measurement-definitions.js";
 import { measureBorderCover } from "./book.js";
 import { measurementAlignments } from "./alignments.js";
 export interface MeasurementPracticeBinding {
@@ -5,12 +6,25 @@ export interface MeasurementPracticeBinding {
   skillId: string;
   bookId: string;
   pageIds: string[];
-  assessedResponse: "numeric-result-only";
+  assessedResponse: "numeric-result-only" | "single-choice-selection";
   practiceScope: string;
   unassessedRequirements: string[];
 }
 export const measurementPracticeBindings: readonly MeasurementPracticeBinding[] =
   [
+    ...measurementDefinitions.map((d): MeasurementPracticeBinding => ({
+      templateId: d.id,
+      skillId: d.skillId,
+      bookId: measureBorderCover.id,
+      pageIds: [d.pageId],
+      assessedResponse:
+        d.mode === "choice" ? "single-choice-selection" : "numeric-result-only",
+      practiceScope: `${d.description} ${d.domain}`,
+      unassessedRequirements: [
+        "A selected or numeric answer does not assess a constructed diagram, physical measurement, explanation, transfer or complete standard.",
+        "The declared parameter domain and response form cover selected components only; durable retrieval needs evidence across separated sessions.",
+      ],
+    })),
     {
       templateId: "rectangle-area",
       skillId: "rectangle-area",
@@ -44,8 +58,9 @@ export function validateMeasurementPracticeBindings(
       );
     seen.add(b.templateId);
     if (
-      template.requiredResponseCapability !== undefined ||
-      b.assessedResponse !== "numeric-result-only"
+      template.requiredResponseCapability === "single-choice-v1"
+        ? b.assessedResponse !== "single-choice-selection"
+        : b.assessedResponse !== "numeric-result-only"
     )
       throw new Error(
         `Book response scope disagrees with template capability: ${b.templateId}`,

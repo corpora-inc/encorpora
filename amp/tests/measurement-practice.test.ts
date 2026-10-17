@@ -1,3 +1,4 @@
+import { validateMeasurementCoverage } from "../src/content/measurement-coverage.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { measurementDefinitions } from "../src/content/measurement-definitions.js";
@@ -15,6 +16,7 @@ import { lessons } from "../src/content/lessons.js";
 
 test("measurement families have instruction, deterministic public givens and honest response capabilities", () => {
   assert.equal(measurementDefinitions.length, 15);
+  validateMeasurementCoverage();
   const edges = new Set<string>();
   for (const t of measurementTemplates) {
     assert.equal(templates.filter((p) => p.id === t.id).length, 1);
