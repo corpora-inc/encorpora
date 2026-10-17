@@ -93,6 +93,12 @@ try {
       `Overview scroll ${size.width}: ${JSON.stringify(layout)}`,
     );
     assert.ok(layout.footerBottom <= size.height && layout.body <= size.width);
+    for (const name of ["Math area", "Learner"]) {
+      const target = await page
+        .getByRole("combobox", { name, exact: true })
+        .boundingBox();
+      assert.ok(target && target.height >= 44, `${name} needs a 44px target`);
+    }
     await page
       .getByRole("combobox", { name: "Math area" })
       .selectOption("number");

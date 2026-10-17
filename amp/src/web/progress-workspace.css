@@ -64,11 +64,16 @@
   min-width: 0;
 }
 .progress-controls select {
+  appearance: none;
+  -webkit-appearance: none;
   width: 100%;
   max-width: 260px;
-  padding: 8px 12px;
+  padding: 8px 34px 8px 12px;
   font-size: 0.875rem;
   background: #fffefa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23183e3a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
 }
 .progress-filters {
   display: flex;
