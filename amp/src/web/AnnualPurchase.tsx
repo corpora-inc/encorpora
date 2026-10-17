@@ -5,6 +5,7 @@ import type {
 } from "../billing/stripe/purchase-contracts";
 import type { FamilySummary } from "../family/contracts";
 import "./annual-purchase.css";
+import { FocusDialog } from "./PracticeWorkspace";
 export interface AnnualPurchaseProps {
   token: string;
   identity: string;
@@ -74,6 +75,8 @@ function PurchasePanel({
   const alive = useRef(true),
     revision = useRef(0);
   const requestId = useRef<string | undefined>(undefined);
+  const [terms, setTerms] = useState(false);
+  const termsTrigger = useRef<HTMLElement | null>(null);
   const [offer, setOffer] = useState<AnnualOffer>();
   const [family, setFamily] = useState<FamilySummary>();
   const [available, setAvailable] = useState<boolean>();
@@ -257,6 +260,51 @@ function PurchasePanel({
     phase === "ready" ||
     phase === "checkout-open" ||
     phase === "checkout-expired";
+  const linked = family?.learners.some((learner) => learner.stripeLinked);
+  const consentActive = family?.consent.status === "active";
+  const date = (value?: string) =>
+    value ? new Date(value).toLocaleDateString() : "";
+  const statusCopy: Record<string, [string, string]> = {
+    ready: [
+      "Ready when you are",
+      returnState === "canceled"
+        ? "Checkout was left unfinished. Continue when you’re ready."
+        : "Review the final total in secure checkout before payment.",
+    ],
+    "checkout-open": [
+      "Continue your checkout",
+      "Your existing checkout will reopen. No second checkout is created.",
+    ],
+    "checkout-expired": [
+      "Start a fresh checkout",
+      "The previous checkout expired. No new payment is confirmed.",
+    ],
+    "payment-processing": [
+      "Verifying payment",
+      "Access is waiting for verified payment. Do not purchase again; check access shortly.",
+    ],
+    licensed: [
+      "Access is active.",
+      `Paid access ends ${date(status?.endsAt)}. Check billing for renewal settings.`,
+    ],
+    scheduled: [
+      "Access is scheduled",
+      `${date(status?.startsAt)} – ${date(status?.endsAt)}. Another purchase is not needed.`,
+    ],
+    "needs-review": [
+      "Billing review needed",
+      "Check billing before starting a replacement. For missing access, contact this installation’s support service.",
+    ],
+    deleted: [
+      "Learning profile deleted",
+      "Check billing to cancel any existing renewal.",
+    ],
+    "consent-required": [
+      "Review parent consent",
+      "Purchases are paused. Billing management is available.",
+    ],
+  };
+  const copy = statusCopy[phase ?? ""];
   return (
     <section className="annual-purchase" aria-labelledby="annual-title">
       <header className="annual-header">
@@ -264,194 +312,196 @@ function PurchasePanel({
           Back to family
         </button>
         <h1 id="annual-title" tabIndex={-1} ref={heading}>
-          Annual learning access
+          Annual access
         </h1>
-        <p>
-          Choose a learner. Review the subscription before opening secure
-          checkout.
-        </p>
       </header>
+      {offer?.mode === "test" && (
+        <p className="annual-sandbox">Sandbox · no real payment</p>
+      )}
       <div className="annual-body">
-        {error && (
-          <p role="alert" className="annual-message annual-error">
-            {error}
-          </p>
-        )}
-        {notice && (
-          <p role="status" className="annual-message">
-            {notice}
-          </p>
-        )}
-        {available === undefined && !error && (
-          <p role="status">Loading the annual offer…</p>
-        )}
-        {available === false && (
-          <div className="annual-card">
-            <h2>Purchases are not available here</h2>
-            <p>
-              This installation has no annual checkout configured. No payment
-              can be taken from this screen.
-            </p>
-          </div>
+        {choices.length > 0 && (
+          <label className="annual-learner">
+            Learner
+            <select
+              aria-label="Learner"
+              value={learnerId}
+              disabled={busy}
+              onChange={(event) => {
+                revision.current++;
+                setStatus(undefined);
+                setNotice("");
+                setLearnerId(event.target.value);
+              }}
+            >
+              {choices.map((learner) => (
+                <option value={learner.id} key={learner.id}>
+                  {learner.name}
+                </option>
+              ))}
+            </select>
+          </label>
         )}
         {offer && (
-          <>
-            {offer.mode === "test" && (
-              <p className="annual-sandbox">
-                <strong>Sandbox checkout — no real purchase</strong>
+          <div
+            className={`annual-plan ${canPurchase ? "annual-plan-ready" : ""}`}
+          >
+            <p className="annual-price">
+              {offer.formattedAmount}
+              <span> USD / year</span>
+            </p>
+            <p>One learner · practice, lessons & books</p>
+            {canPurchase && (
+              <p className="annual-renewal">
+                Renews automatically each year until canceled.
                 <br />
-                Use test payment details only. This does not activate a live
-                subscription.
+                Review final total and tax in checkout.
               </p>
             )}
-            <div className="annual-card">
-              <h2>One learner · one year</h2>
-              <p className="annual-price">
-                {offer.formattedAmount}
-                <span> USD / year</span>
-              </p>
-              <p>
-                Adaptive practice and the available lesson and book library.
-                Content coverage is described in the learning catalog.
-              </p>
-              <p>
-                Billed annually. Renews automatically each year unless canceled.
-                Review the final total and any applicable tax in checkout before
-                payment.
-              </p>
-              <p>
-                Manage cancellation in billing. Cancellation stops future
-                renewal at the end of the paid period; it does not request a
-                refund. Deleting learning data does not cancel renewal.
-              </p>
-            </div>
-            {choices.length ? (
-              <label className="annual-learner">
-                Learner
-                <select
-                  value={learnerId}
-                  disabled={busy}
-                  onChange={(event) => {
-                    revision.current++;
-                    setStatus(undefined);
-                    setNotice("");
-                    setLearnerId(event.target.value);
-                  }}
-                >
-                  {choices.map((learner) => (
-                    <option value={learner.id} key={learner.id}>
-                      {learner.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ) : (
-              <p>
-                Add a learner in Family before choosing an annual subscription.
-              </p>
-            )}
-            {family?.consent.status !== "active" && (
-              <p>
-                Recorded parent consent is required before purchase. Review
-                consent in Family.
-              </p>
-            )}
-            {checking && <p role="status">Checking this learner’s access…</p>}
-            {status && (
-              <div className="annual-status" aria-live="polite">
-                {phase === "licensed" && (
-                  <p>
-                    <strong>Access is active.</strong> Paid access ends{" "}
-                    {new Date(status.endsAt!).toLocaleDateString()}. Check
-                    billing for renewal settings.
-                  </p>
-                )}
-                {phase === "scheduled" && (
-                  <p>
-                    A license is scheduled from{" "}
-                    {new Date(status.startsAt!).toLocaleDateString()} through{" "}
-                    {new Date(status.endsAt!).toLocaleDateString()}. Another
-                    purchase is not needed.
-                  </p>
-                )}
-                {phase === "checkout-open" && (
-                  <p>
-                    An open checkout is reserved for this learner. Continue it
-                    to review payment; no second checkout will be created.
-                  </p>
-                )}
-                {phase === "checkout-expired" && (
-                  <p>
-                    Checkout expired. Start again opens a new secure checkout.
-                  </p>
-                )}
-                {phase === "payment-processing" && (
-                  <p>
-                    Checkout completed. Access is waiting for verified payment.
-                    Do not purchase again; check access shortly.
-                  </p>
-                )}
-                {phase === "needs-review" && (
-                  <p>
-                    This subscription needs a billing review before a
-                    replacement can start. Open billing to check payment and
-                    cancellation details. For missing access, contact this
-                    installation’s support service.
-                  </p>
-                )}
-                {phase === "deleted" && (
-                  <p>
-                    This learning profile was deleted. Existing renewal may need
-                    cancellation in billing.
-                  </p>
-                )}
-                {phase === "consent-required" && (
-                  <p>
-                    Purchases are paused until parent consent is recorded.
-                    Billing management is available.
-                  </p>
-                )}
-              </div>
-            )}
-            <div className="annual-actions">
-              {canPurchase && family?.consent.status === "active" && (
-                <button
-                  type="button"
-                  disabled={busy || checking}
-                  onClick={() => void checkout()}
-                >
-                  {busy
-                    ? "Opening checkout…"
-                    : phase === "checkout-open"
-                      ? "Continue secure checkout"
-                      : phase === "checkout-expired"
-                        ? "Start again"
-                        : offer.mode === "test"
-                          ? "Open sandbox checkout"
-                          : "Continue to secure checkout"}
-                </button>
-              )}
-              {learnerId && (
-                <button
-                  type="button"
-                  disabled={busy || checking}
-                  onClick={() => void refresh(learnerId, ++revision.current)}
-                >
-                  Check access
-                </button>
-              )}
-            </div>
-          </>
+          </div>
         )}
-        <div className="annual-actions">
-          {" "}
-          {family?.learners.some((learner) => learner.stripeLinked) && (
-            <button type="button" disabled={busy} onClick={() => void portal()}>
-              Manage billing and cancellation
-            </button>
+        <div className="annual-status" aria-live="polite">
+          {error ? (
+            <p role="alert" className="annual-error">
+              {error}
+            </p>
+          ) : checking ? (
+            <p role="status">Checking access…</p>
+          ) : copy ? (
+            <>
+              <h2>{copy[0]}</h2>
+              <p>{copy[1]}</p>
+            </>
+          ) : available === false ? (
+            <>
+              <h2>Purchases are not available here</h2>
+              <p>No annual checkout is configured. No payment can be taken.</p>
+            </>
+          ) : !choices.length && family ? (
+            <>
+              <h2>Add a learner first</h2>
+              <p>Return to Family to create a learner.</p>
+            </>
+          ) : (
+            <p role="status">Loading the annual offer…</p>
+          )}
+          {offer && canPurchase && !consentActive && (
+            <p>Recorded parent consent is required before purchase.</p>
           )}
         </div>
       </div>
+      <footer className="annual-dock">
+        {offer && canPurchase && consentActive ? (
+          <button
+            className="annual-primary"
+            type="button"
+            disabled={busy || checking}
+            onClick={() => void checkout()}
+          >
+            {busy
+              ? "Opening checkout…"
+              : phase === "checkout-open"
+                ? "Continue secure checkout"
+                : phase === "checkout-expired"
+                  ? "Start again"
+                  : offer.mode === "test"
+                    ? "Open sandbox checkout"
+                    : "Continue to secure checkout"}
+          </button>
+        ) : linked &&
+          ["licensed", "scheduled", "needs-review", "deleted"].includes(
+            phase ?? "",
+          ) ? (
+          <button
+            className="annual-primary"
+            type="button"
+            disabled={busy}
+            onClick={() => void portal()}
+          >
+            Manage billing and cancellation
+          </button>
+        ) : learnerId && available ? (
+          <button
+            className="annual-primary"
+            type="button"
+            disabled={busy || checking}
+            onClick={() => void refresh(learnerId, ++revision.current)}
+          >
+            Check access
+          </button>
+        ) : (
+          <button className="annual-primary" type="button" onClick={onClose}>
+            Return to Family
+          </button>
+        )}
+        <div className="annual-secondary">
+          {offer && (
+            <button
+              type="button"
+              onClick={(event) => {
+                termsTrigger.current = event.currentTarget;
+                setTerms(true);
+              }}
+            >
+              Terms &amp; details
+            </button>
+          )}
+          {learnerId && available && canPurchase && (
+            <button
+              type="button"
+              disabled={busy || checking}
+              onClick={() => void refresh(learnerId, ++revision.current)}
+            >
+              Check access
+            </button>
+          )}
+          {linked &&
+            !["licensed", "scheduled", "needs-review", "deleted"].includes(
+              phase ?? "",
+            ) && (
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => void portal()}
+              >
+                Manage billing
+              </button>
+            )}
+        </div>
+      </footer>
+      {terms && (
+        <FocusDialog
+          title="Annual subscription details"
+          close={() => setTerms(false)}
+          returnFocus={termsTrigger.current}
+        >
+          <p>
+            {offer?.formattedAmount} USD per year for one learner. Billed
+            annually and renewed automatically each year unless canceled.
+          </p>
+          <p>
+            Includes adaptive practice and the available lesson and book
+            library. The learning catalog describes content coverage.
+          </p>
+          <p>
+            Review the final total and applicable tax in checkout before
+            payment.{" "}
+            {offer?.mode === "test"
+              ? "This is sandbox checkout. Use test details only; it does not activate a live subscription."
+              : "Card details are entered on Stripe’s secure hosted checkout."}
+          </p>
+          <p>
+            Manage cancellation in billing. Cancellation stops future renewal at
+            the end of the paid period; it does not request a refund. Deleting
+            learning data does not cancel renewal.
+          </p>
+          <p>
+            Returning from checkout does not confirm payment. Access starts
+            after payment verification. Refunds and unresolved billing require
+            this installation’s support service.
+          </p>
+          {notice && <p>{notice}</p>}
+        </FocusDialog>
+      )}
     </section>
   );
 }

@@ -23,8 +23,12 @@ await vite.listen();
 const browser = await chromium.launch({ headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  page.setDefaultTimeout(10_000);
   const failures: string[] = [];
-  page.on("pageerror", (error) => failures.push(error.message));
+  page.on("pageerror", (error) => {
+    failures.push(error.message);
+    console.error(error.message);
+  });
   let offerFailure = false;
   let available = true,
     phase = "ready",
@@ -127,28 +131,59 @@ try {
   await page.goto(home);
   await page.getByRole("button", { name: "Open sandbox checkout" }).waitFor();
   assert.equal(await page.getByText("$120.00", { exact: false }).count(), 1);
-  assert.equal(
-    await page.getByText("Sandbox checkout — no real purchase").count(),
-    1,
-  );
+  assert.equal(await page.getByText("Sandbox · no real payment").count(), 1);
   await page.screenshot({
     path: new URL("annual-390.png", directory).pathname,
     fullPage: true,
   });
   for (const size of [
     { width: 320, height: 568 },
+    { width: 390, height: 844 },
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(size);
+    for (const control of [
+      page.getByLabel("Learner", { exact: true }),
+      page.getByRole("button", { name: "Open sandbox checkout" }),
+    ]) {
+      const rect = await control.boundingBox();
+      assert.ok(
+        rect &&
+          rect.y >= 0 &&
+          rect.y + rect.height <= size.height &&
+          rect.x >= 0 &&
+          rect.x + rect.width <= size.width,
+        "learner and primary action visible without scrolling",
+      );
+    }
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     );
-    const back = page.getByRole("button", { name: "Back to family" });
-    await back.scrollIntoViewIfNeeded();
-    assert.ok((await back.boundingBox())!.height >= 44);
+    await page.screenshot({
+      path: new URL(`annual-debug-${size.width}.png`, directory).pathname,
+    });
+    if (size.width !== 844)
+      assert.ok(
+        await page
+          .locator(".annual-body")
+          .evaluate(
+            (element) => element.scrollHeight <= element.clientHeight + 1,
+          ),
+        "ordinary phone purchase fits without scrolling",
+      );
+    await page.screenshot({
+      path: new URL(`annual-ready-${size.width}.png`, directory).pathname,
+    });
   }
+  await page.getByRole("button", { name: "Terms & details" }).click();
+  await page.getByRole("dialog").waitFor();
+  await page.keyboard.press("Escape");
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent),
+    "Terms & details",
+  );
   await page.setViewportSize({ width: 390, height: 844 });
   failCheckout = true;
   await page.getByRole("button", { name: "Open sandbox checkout" }).click();
@@ -181,6 +216,27 @@ try {
     await page.getByRole("button", { name: "Open sandbox checkout" }).count(),
     0,
   );
+  for (const size of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+  ]) {
+    await page.setViewportSize(size);
+    const rect = await page
+      .getByRole("button", { name: "Check access" })
+      .boundingBox();
+    assert.ok(rect && rect.y >= 0 && rect.y + rect.height <= size.height);
+    assert.ok(
+      await page
+        .locator(".annual-body")
+        .evaluate(
+          (element) => element.scrollHeight <= element.clientHeight + 1,
+        ),
+    );
+    await page.screenshot({
+      path: new URL(`annual-processing-${size.width}.png`, directory).pathname,
+    });
+  }
+
   assert.deepEqual(
     await page.evaluate(() => (window as any).annualHarness.events),
     [],
@@ -242,9 +298,7 @@ try {
   );
   offerFailure = true;
   await page.goto(home);
-  await page
-    .getByRole("button", { name: "Manage billing and cancellation" })
-    .click();
+  await page.getByRole("button", { name: "Manage billing" }).click();
   await page
     .getByText("The payment destination could not be verified. Try again.")
     .waitFor();
