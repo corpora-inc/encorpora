@@ -13,7 +13,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "tsx --test tests/*.test.ts",
     "test:db": "tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && npm run test:funding-ui",
+    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && npm run test:funding-ui && npm run test:consent-ui",
     "tsc": "tsc --noEmit",
     "build": "npm run tsc && vite build",
     "audit": "tsx scripts/audit.ts",
@@ -28,7 +28,9 @@
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
     "test:funding-ui": "tsx scripts/verify-funding-ui.ts",
     "funding:import": "tsx scripts/funding-import.ts",
-    "test:annual-ui": "tsx scripts/verify-annual-purchase-ui.ts"
+    "test:annual-ui": "tsx scripts/verify-annual-purchase-ui.ts",
+    "test:consent-ui": "tsx scripts/verify-consent-ui.ts",
+    "consent:policy": "tsx scripts/consent-policy.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",

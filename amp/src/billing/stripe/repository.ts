@@ -1,3 +1,4 @@
+import { learningConsentActive } from "../../server/account-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -55,7 +56,7 @@ export class StripeRepository {
       "SELECT 1 FROM amp_parent_consents WHERE account_id=$1 AND policy_version=$2 AND withdrawn_at IS NULL",
       [accountId, this.config.consentPolicyVersion],
     );
-    if (!consent.rowCount)
+    if (!consent.rowCount || !(await learningConsentActive(client, accountId)))
       throw new BillingError("parent_consent_required", 403);
     const learner = await client.query(
       "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",

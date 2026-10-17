@@ -1,3 +1,4 @@
+import { learningConsentActive } from "../../server/account-access.js";
 import { createHash } from "node:crypto";
 import { BillingError, type StripeBillingConfig } from "./config.js";
 import type { StripeBilling } from "./service.js";
@@ -60,7 +61,9 @@ export async function purchaseStatus(
         deleted: !!learner.rows[0].deleted_at,
         grant: grants.rows[0],
         checkout: checkout.rows[0],
-        consent: !!consent.rowCount,
+        consent:
+          !!consent.rowCount &&
+          (await learningConsentActive(client, accountId)),
       };
     });
   }
