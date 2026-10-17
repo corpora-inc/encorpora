@@ -8,6 +8,8 @@ export interface Standard {
   sourceUrl: string;
   sourceReviewedAt: string;
   scope: 'standard' | 'domain';
+  /** Official (+) designation for additional high-school mathematics. */
+  advanced?: boolean;
 }
 export interface Skill {
   id: string;

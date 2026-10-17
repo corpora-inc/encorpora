@@ -316,6 +316,80 @@ conic-sections|precalculus|geometry|Connect conic equations to geometric definit
 parametric-models|precalculus|modeling|Describe motion using paired functions of a parameter|function-composition,vectors|HSM
 polar-coordinates|precalculus|trigonometry|Translate between polar and Cartesian coordinates|radians-unit-circle,coordinate-distance|
 model-validation|precalculus|modeling|Compare model predictions to evidence and communicate limitations|exponential-models,statistical-inference|HSM
+counting-arithmetic|1|operations|Connect counting forward and backward to addition and subtraction|count-to-100,addition-within-20|1.OA.C.5
+mental-tens-hundreds|2|operations|Mentally add or subtract ten or one hundred within one thousand|hundreds-place-value|2.NBT.B.8
+fraction-plot-arithmetic|4|data|Solve addition and subtraction questions from fractional measurement plots|fraction-line-plots,like-fraction-addition|4.MD.B.4
+measurement-conversions|5|measurement|Convert measurements within one system in multistep problems|unit-conversion,decimal-arithmetic|5.MD.A.1
+fraction-plot-computation|5|data|Use fraction operations to solve problems from measurement line plots|fraction-plot-arithmetic,fraction-addition|5.MD.B.2
+complex-conjugates|precalculus|number|Use conjugates to compute complex quotients and moduli|complex-numbers|
+complex-distance|precalculus|number|Find complex-plane distances and midpoints using differences and averages|complex-plane|
+complex-factorization|precalculus|algebra|Extend factorization identities to complex coefficients|complex-numbers,polynomial-arithmetic|
+fundamental-theorem-algebra|precalculus|algebra|Explain polynomial root existence and verify the quadratic case|complex-factorization|
+model-quantities|algebra-1|modeling|Define measurable quantities and their roles before constructing a model|units-and-precision|
+number-system-closure|algebra-2|reasoning|Justify rational and irrational sums and products including nonzero restrictions|irrational-numbers|
+vector-modeling|precalculus|modeling|Resolve and combine velocity or force quantities with vectors|vectors|
+matrix-data|precalculus|number|Organize quantities in matrices and interpret rows columns and entries|two-way-tables|
+matrix-properties|precalculus|reasoning|Demonstrate matrix noncommutativity and justify associative and distributive operations|matrices|
+matrix-inverses|precalculus|algebra|Use identity matrices and determinants to determine and compute inverses|matrices|
+matrix-transformations|precalculus|geometry|Apply matrices to vectors and connect determinants with area changes|matrices,vectors|
+polynomial-identities|algebra-2|reasoning|Prove polynomial identities and use them to establish numerical relationships|polynomial-arithmetic|
+binomial-theorem|precalculus|algebra|Expand integer powers of binomials using combinatorial coefficients|polynomial-arithmetic|
+nonlinear-equation-modeling|algebra-2|modeling|Construct quadratic rational and exponential constraints with valid contextual domains|quadratic-equations,rational-equations,exponential-models|
+equation-reasoning|algebra-1|reasoning|Justify each equation transformation by equality-preserving operations|linear-equations|
+symbolic-linear-constraints|algebra-1|algebra|Solve linear equations and inequalities with literal coefficients and state exceptional cases|linear-equations,linear-inequalities|
+elimination-proof|algebra-1|reasoning|Prove that elimination preserves a linear system's solution set|linear-systems,equation-reasoning|
+matrix-systems|precalculus|algebra|Represent systems as matrix equations and solve using inverses where possible|matrix-inverses,linear-systems|
+graph-solution-sets|algebra-1|algebra|Interpret equation graphs as all ordered pairs satisfying the equation|coordinate-four-quadrants,linear-equations|
+graphical-equation-solving|algebra-2|algebra|Approximate intersections using graphs tables and successive refinement|graph-solution-sets,quadratic-graphs|
+inequality-regions|algebra-1|algebra|Graph intersecting half-planes with correct boundary inclusion|linear-inequalities,slope|
+average-rate-change|algebra-1|functions|Calculate and interpret interval-average rates from graphs tables and formulas|slope,function-evaluation|
+cross-representation-comparison|algebra-2|functions|Compare nonlinear functions given by different representations|compare-functions,quadratic-graphs|
+growth-comparison|algebra-2|functions|Justify linear versus exponential growth and compare eventual polynomial growth|exponential-models,polynomial-zeros|
+special-angle-values|precalculus|trigonometry|Derive exact special-angle values and related quadrant values geometrically|special-right-triangles,radians-unit-circle|
+trigonometric-symmetry|precalculus|trigonometry|Explain odd even and periodic trigonometric relationships using the unit circle|radians-unit-circle|
+periodic-modeling|algebra-2|modeling|Choose trigonometric models with appropriate amplitude frequency and midline|trigonometric-graphs|
+circle-similarity|geometry|reasoning|Prove circle similarity using translations and dilation|similarity-proofs|
+triangle-circles|geometry|geometry|Construct triangle incircles and circumcircles and prove cyclic angle properties|geometric-constructions,circle-theorems|
+tangent-construction|geometry|geometry|Construct tangents from an exterior point and justify perpendicular radii|geometric-constructions,circle-theorems|
+transformation-invariants|geometry|geometry|Define plane motions and compare distance and angle preservation|rigid-motions,geometric-definitions|
+polygon-symmetries|geometry|geometry|Describe rotations and reflections preserving a polygon|rigid-motions|
+transformation-constructions|geometry|geometry|Construct transformed figures and describe compositions carrying one figure to another|transformation-invariants|
+line-angle-proofs|geometry|reasoning|Prove vertical-angle parallel-line and perpendicular-bisector relationships|geometric-proof|
+triangle-proofs|geometry|reasoning|Prove triangle-angle base-angle midsegment and median relationships|geometric-proof,congruence-criteria|
+parallelogram-proofs|geometry|reasoning|Prove parallelogram and rectangle side angle and diagonal properties|geometric-proof,congruence-criteria|
+inscribed-polygons|geometry|geometry|Construct equilateral triangles squares and regular hexagons in circles|geometric-constructions|
+measurement-formula-proofs|geometry|reasoning|Justify circle cylinder cone and pyramid formulas using dissection and comparison|geometric-proof,circle-measurement,prism-volume|
+cavalieri-principle|geometry|reasoning|Use equal cross-sectional areas to justify solid volumes including spheres|measurement-formula-proofs|
+solid-volume-models|geometry|modeling|Solve contextual cylinder pyramid cone and sphere volume problems|curved-solid-volume,surface-area|
+sections-and-revolutions|geometry|geometry|Relate plane slices and rotations of plane figures to three-dimensional solids|solid-cross-sections|
+parabola-locus|geometry|geometry|Derive a parabola equation from equal focus and directrix distances|coordinate-distance,quadratic-graphs|
+slope-proofs|geometry|reasoning|Prove parallel and perpendicular slope criteria and construct corresponding lines|coordinate-proofs|
+segment-division|geometry|geometry|Find a directed segment's internal or external proportional division point|coordinate-four-quadrants,ratios|
+coordinate-measurement|geometry|geometry|Use coordinates to compute polygon perimeters and areas|coordinate-distance,triangle-area|
+density-modeling|geometry|modeling|Model density using area or volume with consistent units|units-and-precision,geometric-modeling|
+geometric-design|geometry|modeling|Construct and compare geometric designs under stated constraints|geometric-modeling,systems-modeling|
+dilation-properties|geometry|geometry|Investigate how dilation changes lengths lines and parallelism|dilations-similarity|
+similarity-theorems|geometry|reasoning|Prove proportional-side and Pythagorean results using triangle similarity|similarity-proofs|
+complementary-trigonometry|geometry|trigonometry|Explain and use sine cosine relationships for complementary angles|right-triangle-trigonometry|
+trigonometric-area|precalculus|trigonometry|Derive and apply the two-sides-and-included-angle triangle area formula|right-triangle-trigonometry,triangle-area|
+triangle-law-proofs|precalculus|reasoning|Derive sine and cosine laws and justify their applicability|trigonometric-area,pythagorean-theorem|
+event-sets|geometry|probability|Represent unions intersections and complements within a sample space|compound-probability|
+probability-addition|geometry|probability|Calculate unions using addition with an overlap correction|event-sets|
+probability-multiplication|precalculus|probability|Apply conditional product rules and interpret joint-event probabilities|conditional-probability|
+permutations-combinations|precalculus|probability|Count ordered and unordered selections to compute compound probabilities|compound-probability|
+simulation-model-checks|algebra-2|data|Simulate a proposed random process and assess consistency with observations|probability,sampling|
+sampling-margin-error|algebra-2|data|Estimate population means or proportions and simulate sampling margins of error|statistical-inference,simulation-model-checks|
+randomization-tests|algebra-2|data|Use randomization simulations to compare treatments and assess observed differences|study-design,simulation-model-checks|
+statistical-report-critique|algebra-2|reasoning|Evaluate reports for sampling bias uncertainty and unsupported causal claims|statistical-inference,study-design|
+statistical-summary-comparison|algebra-1|data|Compare distribution shapes center IQR and standard deviation with outlier context|compare-distributions|
+categorical-association|algebra-1|data|Interpret joint marginal and conditional relative frequencies in two-way tables|two-way-tables|
+regression-interpretation|algebra-1|data|Interpret fitted slopes and intercepts using quantities and units in context|linear-models,scatterplots|
+causal-claims|algebra-1|reasoning|Distinguish association from evidence that supports a causal explanation|study-design,residuals-correlation|
+random-variables|precalculus|probability|Define a numerical random variable and graph its probability distribution|compound-probability,distribution-plots|
+theoretical-distributions|precalculus|probability|Construct theoretical discrete distributions and compute their expectations|random-variables,expected-value|
+empirical-distributions|precalculus|probability|Estimate distributions from observed frequencies and compute expectations|random-variables,expected-value|
+fair-random-decisions|precalculus|probability|Design random selection procedures and justify fairness|probability|
+decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities payoffs and model assumptions|expected-value,conditional-probability|
 `;
 
 export const skills: Skill[] = outline.trim().split('\n').map(line => {
@@ -330,3 +404,194 @@ export const skills: Skill[] = outline.trim().split('\n').map(line => {
     facets: [{ id: `${id}.core`, description, status: 'planned' }],
   };
 });
+
+/** Numbered high-school inventory, checked against each official category page on 2026-10-16.
+ * Short labels describe planned facets; the linked source owns all qualifications and components.
+ */
+const highSchoolRows: [string, string, string, boolean][] = [
+  ["HSN.CN.A.1", "Complex number representation", "complex-numbers", false],
+  ["HSN.CN.A.2", "Complex arithmetic", "complex-numbers", false],
+  ["HSN.CN.A.3", "Conjugates moduli and quotients", "complex-conjugates", true],
+  ["HSN.CN.B.4", "Rectangular and polar forms", "complex-plane", true],
+  ["HSN.CN.B.5", "Geometric complex arithmetic", "complex-plane", true],
+  ["HSN.CN.B.6", "Complex distance and midpoint", "complex-distance", true],
+  ["HSN.CN.C.7", "Nonreal quadratic roots", "complex-numbers", false],
+  ["HSN.CN.C.8", "Complex polynomial identities", "complex-factorization", true],
+  ["HSN.CN.C.9", "Polynomial root existence", "fundamental-theorem-algebra", true],
+  ["HSN.Q.A.1", "Units scales and origins", "units-and-precision", false],
+  ["HSN.Q.A.2", "Choose modeling quantities", "model-quantities", false],
+  ["HSN.Q.A.3", "Measurement precision", "units-and-precision", false],
+  ["HSN.RN.A.1", "Justify rational powers", "rational-exponents", false],
+  ["HSN.RN.A.2", "Rewrite radicals and powers", "rational-exponents", false],
+  ["HSN.RN.B.3", "Rational irrational closure", "number-system-closure", false],
+  ["HSN.VM.A.1", "Vector magnitude and direction", "vectors", true],
+  ["HSN.VM.A.2", "Coordinate vector components", "vectors", true],
+  ["HSN.VM.A.3", "Vector quantity models", "vector-modeling", true],
+  ["HSN.VM.B.4", "Vector sums and differences", "vectors", true],
+  ["HSN.VM.B.5", "Scalar vector products", "vectors", true],
+  ["HSN.VM.C.6", "Matrix data representations", "matrix-data", true],
+  ["HSN.VM.C.7", "Scalar matrix products", "matrices", true],
+  ["HSN.VM.C.8", "Matrix sums and products", "matrices", true],
+  ["HSN.VM.C.9", "Matrix operation laws", "matrix-properties", true],
+  ["HSN.VM.C.10", "Identities inverses and determinants", "matrix-inverses", true],
+  ["HSN.VM.C.11", "Matrix vector transformations", "matrix-transformations", true],
+  ["HSN.VM.C.12", "Determinants and transformed area", "matrix-transformations", true],
+  ["HSA.APR.A.1", "Polynomial operations and closure", "polynomial-arithmetic", false],
+  ["HSA.APR.B.2", "Remainders and factor theorem", "polynomial-division", false],
+  ["HSA.APR.B.3", "Zeros and graph sketches", "polynomial-zeros", false],
+  ["HSA.APR.C.4", "Prove polynomial identities", "polynomial-identities", false],
+  ["HSA.APR.C.5", "Binomial expansion", "binomial-theorem", true],
+  ["HSA.APR.D.6", "Polynomial quotient remainder forms", "polynomial-division", false],
+  ["HSA.APR.D.7", "Rational expression arithmetic", "rational-expressions", true],
+  ["HSA.CED.A.1", "Model single-variable constraints", "linear-equation-modeling,nonlinear-equation-modeling", false],
+  ["HSA.CED.A.2", "Model related quantities graphically", "linear-equation-modeling,nonlinear-equation-modeling", false],
+  ["HSA.CED.A.3", "Interpret feasible constraints", "systems-modeling", false],
+  ["HSA.CED.A.4", "Isolate formula variables", "formula-rearrangement", false],
+  ["HSA.REI.A.1", "Justify equation transformations", "equation-reasoning", false],
+  ["HSA.REI.A.2", "Detect extraneous solutions", "radical-equations,rational-equations", false],
+  ["HSA.REI.B.3", "Solve symbolic linear constraints", "symbolic-linear-constraints", false],
+  ["HSA.REI.B.4", "Solve and justify quadratics", "quadratic-equations,complete-square,quadratic-formula,complex-numbers", false],
+  ["HSA.REI.C.5", "Justify elimination equivalence", "elimination-proof", false],
+  ["HSA.REI.C.6", "Exact approximate linear systems", "linear-systems", false],
+  ["HSA.REI.C.7", "Linear quadratic intersections", "nonlinear-systems", false],
+  ["HSA.REI.C.8", "Matrix system representation", "matrix-systems", true],
+  ["HSA.REI.C.9", "Inverse matrix solutions", "matrix-systems", true],
+  ["HSA.REI.D.10", "Graphs as solution sets", "graph-solution-sets", false],
+  ["HSA.REI.D.11", "Approximate graph intersections", "graphical-equation-solving", false],
+  ["HSA.REI.D.12", "Half-plane solution regions", "inequality-regions", false],
+  ["HSA.SSE.A.1", "Interpret expression parts", "expression-structure", false],
+  ["HSA.SSE.A.2", "Rewrite through structural recognition", "expression-structure,factor-quadratics", false],
+  ["HSA.SSE.B.3", "Reveal properties through equivalence", "factor-quadratics,complete-square,quadratic-minimum,exponential-models", false],
+  ["HSA.SSE.B.4", "Derive geometric series sums", "sequence-sums", false],
+  ["HSF.BF.A.1", "Build and combine functions", "function-composition,nonlinear-equation-modeling", false],
+  ["HSF.BF.A.2", "Recursive explicit sequence models", "arithmetic-sequences,geometric-sequences", false],
+  ["HSF.BF.B.3", "Function changes and symmetry", "function-transformations", false],
+  ["HSF.BF.B.4", "Verify and restrict inverses", "inverse-functions", false],
+  ["HSF.BF.B.5", "Exponential logarithmic inverses", "logarithms,exponential-equations", true],
+  ["HSF.IF.A.1", "Unique outputs and domains", "function-domain-range", false],
+  ["HSF.IF.A.2", "Evaluate contextual function notation", "function-evaluation", false],
+  ["HSF.IF.A.3", "Sequences as discrete functions", "arithmetic-sequences,geometric-sequences", false],
+  ["HSF.IF.B.4", "Interpret contextual graph features", "quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs", false],
+  ["HSF.IF.B.5", "Contextual domain restrictions", "function-domain-range", false],
+  ["HSF.IF.B.6", "Average rates of change", "average-rate-change", false],
+  ["HSF.IF.C.7", "Graph diverse function families", "piecewise-functions,quadratic-graphs,rational-function-behavior,polynomial-behavior,trigonometric-graphs,logarithms", false],
+  ["HSF.IF.C.8", "Equivalent function representations", "quadratic-graphs,exponential-models", false],
+  ["HSF.IF.C.9", "Compare varied function representations", "cross-representation-comparison", false],
+  ["HSF.LE.A.1", "Distinguish growth mechanisms", "growth-comparison", false],
+  ["HSF.LE.A.2", "Construct growth models", "exponential-models,arithmetic-sequences,geometric-sequences", false],
+  ["HSF.LE.A.3", "Compare eventual growth", "growth-comparison", false],
+  ["HSF.LE.A.4", "Logarithmic exponential solutions", "exponential-equations", false],
+  ["HSF.LE.B.5", "Interpret model parameters", "exponential-models,linear-equation-modeling", false],
+  ["HSF.TF.A.1", "Radians from unit arcs", "radians-unit-circle", false],
+  ["HSF.TF.A.2", "Extend circle-based trigonometry", "radians-unit-circle", false],
+  ["HSF.TF.A.3", "Special-angle circle values", "special-angle-values", true],
+  ["HSF.TF.A.4", "Trigonometric parity and periodicity", "trigonometric-symmetry", true],
+  ["HSF.TF.B.5", "Periodic function models", "periodic-modeling", false],
+  ["HSF.TF.B.6", "Restricted trigonometric inverses", "inverse-trigonometry", true],
+  ["HSF.TF.B.7", "Contextual inverse trigonometry", "trigonometric-equations", true],
+  ["HSF.TF.C.8", "Prove Pythagorean identity", "trigonometric-identities", false],
+  ["HSF.TF.C.9", "Derive angle-sum identities", "trigonometric-identities", true],
+  ["HSG.C.A.1", "Circle similarity proof", "circle-similarity", false],
+  ["HSG.C.A.2", "Chord tangent arc relationships", "circle-theorems", false],
+  ["HSG.C.A.3", "Circle constructions cyclic quadrilaterals", "triangle-circles", false],
+  ["HSG.C.A.4", "External tangent construction", "tangent-construction", true],
+  ["HSG.C.B.5", "Derive arc sector formulas", "arc-sector-measure", false],
+  ["HSG.CO.A.1", "Foundational geometric definitions", "geometric-definitions", false],
+  ["HSG.CO.A.2", "Compare transformation invariants", "transformation-invariants", false],
+  ["HSG.CO.A.3", "Polygon symmetries", "polygon-symmetries", false],
+  ["HSG.CO.A.4", "Define plane motions", "transformation-invariants", false],
+  ["HSG.CO.A.5", "Construct composed motions", "transformation-constructions", false],
+  ["HSG.CO.B.6", "Congruence through rigid motions", "congruence-criteria", false],
+  ["HSG.CO.B.7", "Triangle congruence correspondence", "congruence-criteria", false],
+  ["HSG.CO.B.8", "Derive triangle congruence criteria", "congruence-criteria", false],
+  ["HSG.CO.C.9", "Prove line angle theorems", "line-angle-proofs", false],
+  ["HSG.CO.C.10", "Prove triangle theorems", "triangle-proofs", false],
+  ["HSG.CO.C.11", "Prove parallelogram theorems", "parallelogram-proofs", false],
+  ["HSG.CO.D.12", "Justified geometric constructions", "geometric-constructions", false],
+  ["HSG.CO.D.13", "Construct inscribed regular polygons", "inscribed-polygons", false],
+  ["HSG.GMD.A.1", "Justify measurement formulas", "measurement-formula-proofs", false],
+  ["HSG.GMD.A.2", "Cavalieri volume reasoning", "cavalieri-principle", true],
+  ["HSG.GMD.A.3", "Apply solid volume formulas", "solid-volume-models", false],
+  ["HSG.GMD.B.4", "Sections and rotational solids", "sections-and-revolutions", false],
+  ["HSG.GPE.A.1", "Derive coordinate circles", "circle-equations", false],
+  ["HSG.GPE.A.2", "Focus directrix parabolas", "parabola-locus", false],
+  ["HSG.GPE.A.3", "Ellipse hyperbola focal definitions", "conic-sections", true],
+  ["HSG.GPE.B.4", "Algebraic geometric proofs", "coordinate-proofs", false],
+  ["HSG.GPE.B.5", "Prove perpendicular parallel slopes", "slope-proofs", false],
+  ["HSG.GPE.B.6", "Directed segment partitions", "segment-division", false],
+  ["HSG.GPE.B.7", "Coordinate perimeter and area", "coordinate-measurement", false],
+  ["HSG.MG.A.1", "Choose geometric object models", "geometric-modeling", false],
+  ["HSG.MG.A.2", "Area volume density models", "density-modeling", false],
+  ["HSG.MG.A.3", "Constrained geometric design", "geometric-design", false],
+  ["HSG.SRT.A.1", "Investigate dilation properties", "dilation-properties", false],
+  ["HSG.SRT.A.2", "Similarity through transformations", "similarity-proofs", false],
+  ["HSG.SRT.A.3", "Derive angle-angle similarity", "similarity-proofs", false],
+  ["HSG.SRT.B.4", "Prove proportional triangle theorems", "similarity-theorems", false],
+  ["HSG.SRT.B.5", "Apply similarity and congruence", "similarity-proofs,congruence-criteria", false],
+  ["HSG.SRT.C.6", "Define ratios through similarity", "right-triangle-trigonometry", false],
+  ["HSG.SRT.C.7", "Complementary trigonometric relationships", "complementary-trigonometry", false],
+  ["HSG.SRT.C.8", "Applied right-triangle solutions", "right-triangle-trigonometry,special-right-triangles", false],
+  ["HSG.SRT.D.9", "Derive trigonometric area", "trigonometric-area", true],
+  ["HSG.SRT.D.10", "Prove sine cosine laws", "triangle-law-proofs", true],
+  ["HSG.SRT.D.11", "Apply oblique triangle laws", "oblique-triangles", true],
+  ["HSS.CP.A.1", "Event set operations", "event-sets", false],
+  ["HSS.CP.A.2", "Independence product criterion", "independent-events", false],
+  ["HSS.CP.A.3", "Conditioning and independence", "conditional-probability,independent-events", false],
+  ["HSS.CP.A.4", "Table-based conditional probabilities", "conditional-probability", false],
+  ["HSS.CP.A.5", "Explain everyday conditioning", "conditional-probability", false],
+  ["HSS.CP.B.6", "Conditional event fractions", "conditional-probability", false],
+  ["HSS.CP.B.7", "Overlapping event addition", "probability-addition", false],
+  ["HSS.CP.B.8", "Conditional product rule", "probability-multiplication", true],
+  ["HSS.CP.B.9", "Counting-based compound probability", "permutations-combinations", true],
+  ["HSS.IC.A.1", "Random-sample population inference", "statistical-inference", false],
+  ["HSS.IC.A.2", "Simulate model consistency", "simulation-model-checks", false],
+  ["HSS.IC.B.3", "Randomization and study types", "study-design", false],
+  ["HSS.IC.B.4", "Simulated sampling error", "sampling-margin-error", false],
+  ["HSS.IC.B.5", "Randomized treatment comparisons", "randomization-tests", false],
+  ["HSS.IC.B.6", "Critique statistical reports", "statistical-report-critique", false],
+  ["HSS.ID.A.1", "Plot numerical distributions", "distribution-plots", false],
+  ["HSS.ID.A.2", "Compare appropriate summary statistics", "statistical-summary-comparison", false],
+  ["HSS.ID.A.3", "Interpret distributions and outliers", "statistical-summary-comparison", false],
+  ["HSS.ID.A.4", "Assess normal-model fit", "normal-distributions", false],
+  ["HSS.ID.B.5", "Interpret joint marginal frequencies", "categorical-association", false],
+  ["HSS.ID.B.6", "Bivariate models and residuals", "residuals-correlation", false],
+  ["HSS.ID.C.7", "Contextual regression coefficients", "regression-interpretation", false],
+  ["HSS.ID.C.8", "Compute interpret correlation", "residuals-correlation", false],
+  ["HSS.ID.C.9", "Association versus causation", "causal-claims", false],
+  ["HSS.MD.A.1", "Random variables and distributions", "random-variables", true],
+  ["HSS.MD.A.2", "Expected distribution values", "expected-value", true],
+  ["HSS.MD.A.3", "Theoretical probability distributions", "theoretical-distributions", true],
+  ["HSS.MD.A.4", "Empirical probability distributions", "empirical-distributions", true],
+  ["HSS.MD.B.5", "Expected payoff decisions", "expected-value", true],
+  ["HSS.MD.B.6", "Randomized fair decisions", "fair-random-decisions", true],
+  ["HSS.MD.B.7", "Analyze probabilistic strategies", "decision-strategies", true],
+];
+
+const editorialDomains = new Set(['HSN', 'HSA', 'HSF', 'HSG', 'HSS']);
+for (const skill of skills) skill.alignments = skill.alignments.filter(a => !editorialDomains.has(a.standardId));
+for (const [id, description, skillIds, advanced] of highSchoolRows) {
+  standards.push({ id, description, framework: 'CCSS', scope: 'standard',
+    sourceUrl: `https://www.thecorestandards.org/Math/Content/${id.replaceAll('.', '/')}/`,
+    sourceReviewedAt: '2026-10-16', advanced });
+  for (const skillId of skillIds.split(',')) {
+    const skill = skills.find(s => s.id === skillId);
+    if (!skill) throw new Error(`Missing crosswalk skill ${skillId}`);
+    skill.alignments.push({ standardId: id, facet: description, basis: 'editorial' });
+    skill.facets.push({ id: `${skillId}.${id}`, description, status: 'planned' });
+  }
+}
+
+/** Independent numbered cluster ranges catch accidental omissions, additions and wrong cluster letters. */
+export const highSchoolInventory = {
+  HSN: 'CN.A:1-3 CN.B:4-6 CN.C:7-9 Q.A:1-3 RN.A:1-2 RN.B:3 VM.A:1-3 VM.B:4-5 VM.C:6-12',
+  HSA: 'APR.A:1 APR.B:2-3 APR.C:4-5 APR.D:6-7 CED.A:1-4 REI.A:1-2 REI.B:3-4 REI.C:5-9 REI.D:10-12 SSE.A:1-2 SSE.B:3-4',
+  HSF: 'BF.A:1-2 BF.B:3-5 IF.A:1-3 IF.B:4-6 IF.C:7-9 LE.A:1-4 LE.B:5 TF.A:1-4 TF.B:5-7 TF.C:8-9',
+  HSG: 'C.A:1-4 C.B:5 CO.A:1-5 CO.B:6-8 CO.C:9-11 CO.D:12-13 GMD.A:1-3 GMD.B:4 GPE.A:1-3 GPE.B:4-7 MG.A:1-3 SRT.A:1-3 SRT.B:4-5 SRT.C:6-8 SRT.D:9-11',
+  HSS: 'CP.A:1-5 CP.B:6-9 IC.A:1-2 IC.B:3-6 ID.A:1-4 ID.B:5-6 ID.C:7-9 MD.A:1-4 MD.B:5-7',
+} as const;
+export const expectedHighSchoolStandardIds = Object.entries(highSchoolInventory).flatMap(([category, clusters]) =>
+  clusters.split(' ').flatMap(cluster => {
+    const [prefix, range] = cluster.split(':') as [string, string];
+    const [first, last = first] = range.split('-').map(Number) as [number, number?];
+    return Array.from({ length: last - first + 1 }, (_, i) => `${category}.${prefix}.${first + i}`);
+  }));

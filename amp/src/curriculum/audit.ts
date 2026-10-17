@@ -1,4 +1,4 @@
-import { skills, standards } from './catalog.js';
+import { expectedHighSchoolStandardIds, skills, standards } from './catalog.js';
 import type { Skill, Standard } from './types.js';
 
 /** Structural validity never certifies pedagogical quality or complete standards coverage. */
@@ -57,11 +57,19 @@ export function auditCurriculum(skillList: readonly Skill[] = skills, standardLi
   }
   for (const id of skillById.keys()) visit(id);
   const unmappedStandardIds = standardList.filter(s => !mappedStandards.has(s.id)).map(s => s.id);
+  const expectedHighSchoolIds = new Set(expectedHighSchoolStandardIds);
+  const highSchoolStandards = standardList.filter(s => s.scope === 'standard' && /^HS[NASFG]\./.test(s.id));
+  const missingHighSchoolStandardIds = expectedHighSchoolStandardIds.filter(id => !standardById.has(id));
+  const unexpectedHighSchoolStandardIds = highSchoolStandards.filter(s => !expectedHighSchoolIds.has(s.id)).map(s => s.id);
   return {
+    inventoryComplete: missingHighSchoolStandardIds.length === 0 && unexpectedHighSchoolStandardIds.length === 0,
+    missingHighSchoolStandardIds, unexpectedHighSchoolStandardIds,
     valid: errors.length === 0, errors,
     counts: {
       skills: skillList.length, standards: standardList.length,
       numberedStandards: standardList.filter(s => s.scope === 'standard').length,
+      highSchoolStandards: highSchoolStandards.length,
+      advancedHighSchoolStandards: highSchoolStandards.filter(s => s.advanced).length,
       domainReferences: standardList.filter(s => s.scope === 'domain').length,
       mappedStandards: mappedStandards.size,
       plannedSkills: skillList.filter(s => s.status === 'planned').length,
@@ -74,9 +82,50 @@ export function auditCurriculum(skillList: readonly Skill[] = skills, standardLi
     unmappedStandardIds,
     limitations: [
       'A crosswalk identifies an editorially selected facet, not full-standard coverage.',
-      'High-school and SAT references are domains; numbered high-school and state crosswalks require review.',
+      'Numbered high-school crosswalks are planned editorial facets; state crosswalks require separate review.',
       'The inventory omits lettered component records; full source requirements must be checked before coverage claims.',
       'Graph validity and catalog inclusion do not establish content availability, instructional efficacy or score outcomes.',
     ],
   };
+}
+
+
+export const productionArtifacts = ['template', 'explanation', 'lesson', 'workbook', 'answer-key', 'render-validation', 'instructional-review'] as const;
+export type ProductionArtifact = typeof productionArtifacts[number];
+export interface ProductionTask {
+  id: string;
+  skillId: string;
+  artifact: ProductionArtifact;
+  status: 'planned';
+  /** Lower priorities are earlier in the default prerequisite-first production order. */
+  priority: number;
+  prerequisiteSkillIds: string[];
+  facetIds: string[];
+  dependsOn: string[];
+}
+/** A production backlog, not a list of published files or successful review results. */
+export function buildProductionQueue(skillList: readonly Skill[] = skills): ProductionTask[] {
+  const byId = new Map(skillList.map(skill => [skill.id, skill]));
+  if (byId.size !== skillList.length) throw new Error('Production queue requires unique skill IDs.');
+  const depths = new Map<string, number>();
+  const visiting = new Set<string>();
+  function depth(id: string): number {
+    if (visiting.has(id)) throw new Error(`Production queue prerequisite cycle: ${id}`);
+    const cached = depths.get(id); if (cached !== undefined) return cached;
+    const skill = byId.get(id); if (!skill) throw new Error(`Production queue unknown prerequisite: ${id}`);
+    visiting.add(id);
+    const result = skill.prerequisites.length ? 1 + Math.max(...skill.prerequisites.map(depth)) : 0;
+    visiting.delete(id); depths.set(id, result); return result;
+  }
+  const dependencies: Record<ProductionArtifact, ProductionArtifact[]> = {
+    template: [], explanation: ['template'], lesson: ['explanation'], workbook: ['template'],
+    'answer-key': ['workbook'], 'render-validation': ['template', 'lesson', 'workbook', 'answer-key'],
+    'instructional-review': ['explanation', 'lesson', 'workbook', 'answer-key', 'render-validation'],
+  };
+  return skillList.flatMap(skill => productionArtifacts.map((artifact, index) => ({
+    id: `production.${skill.id}.${artifact}`, skillId: skill.id, artifact, status: 'planned' as const,
+    priority: depth(skill.id) * productionArtifacts.length + index,
+    prerequisiteSkillIds: [...skill.prerequisites], facetIds: skill.facets.map(facet => facet.id),
+    dependsOn: dependencies[artifact].map(required => `production.${skill.id}.${required}`),
+  }))).sort((a, b) => a.priority - b.priority || a.id.localeCompare(b.id));
 }
