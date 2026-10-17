@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import Stripe from "stripe";
 import Fastify from "fastify";
-import type { Pool } from "pg";
+import { Pool } from "pg";
+import { StripeRepository } from "../src/billing/stripe/repository.js";
+import { StripeBilling } from "../src/billing/stripe/service.js";
 import { annualEvents } from "../src/billing/stripe/model.js";
 import { emptyCommerceState, reduceCommerce } from "../src/commerce/ledger.js";
 import { stripeConfig } from "../src/billing/stripe/config.js";
@@ -81,13 +83,21 @@ test("gateway validates actual invoice/payment/charge chain and ignores pending 
   const result = await gateway.annualPayment(payment.invoiceId);
   assert.equal(result.paid, 12000);
   assert.equal(result.refunded, false);
-  f.refunds.data.push({ status: "pending", amount: 12000 });
+  f.refunds.data.push({
+    status: "pending",
+    amount: 12000,
+    created: payment.paidAt + 86400,
+  });
   assert.equal(
     (await gateway.annualPayment(payment.invoiceId)).refunded,
     false,
   );
   f.refunds.data[0]!.status = "succeeded";
   assert.equal((await gateway.annualPayment(payment.invoiceId)).refunded, true);
+  assert.equal(
+    (await gateway.annualPayment(payment.invoiceId)).fullRefundAt,
+    payment.paidAt + 86400,
+  );
   f.refunds.data[0]!.amount = 100;
   assert.equal(
     (await gateway.annualPayment(payment.invoiceId)).partialRefund,
@@ -246,4 +256,44 @@ test("hosted Checkout fixes product, quantity, customer, metadata and redirects 
   assert.deepEqual(requestOptions, {
     idempotencyKey: `amp:checkout:${binding.id}`,
   });
+});
+
+test("worker refuses insufficient pools and concurrent passes sharing a pool", async () => {
+  const small = new Pool({ max: 1 });
+  const pool = new Pool({ max: 4 });
+  try {
+    await assert.rejects(
+      new StripeBilling(
+        new StripeRepository(small, config),
+        new StripeGateway(config),
+      ).runBatch(),
+      /at least two/,
+    );
+    const repository = new StripeRepository(pool, config);
+    let release!: () => void;
+    const paused = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    repository.claim = async () => {
+      await paused;
+      return undefined;
+    };
+    const first = new StripeBilling(
+      repository,
+      new StripeGateway(config),
+    ).runBatch();
+    await assert.rejects(
+      new StripeBilling(repository, new StripeGateway(config)).runBatch(),
+      /one Stripe worker pass/,
+    );
+    release();
+    await first;
+    assert.deepEqual(
+      await new StripeBilling(repository, new StripeGateway(config)).runBatch(),
+      { processed: 0, failed: 0 },
+    );
+  } finally {
+    await small.end();
+    await pool.end();
+  }
 });

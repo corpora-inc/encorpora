@@ -31,11 +31,9 @@ export async function registerStripeRoutes(
         typeof error === "object" && error !== null && "statusCode" in error
           ? Number(error.statusCode)
           : 500;
-      return reply
-        .code(status >= 400 && status <= 499 ? status : 503)
-        .send({
-          error: status === 401 ? "sign_in_required" : "billing_unavailable",
-        });
+      return reply.code(status >= 400 && status <= 499 ? status : 503).send({
+        error: status === 401 ? "sign_in_required" : "billing_unavailable",
+      });
     });
     scope.post("/api/v1/billing/checkout", async (request, reply) => {
       const accountId = await options.authenticate(request);

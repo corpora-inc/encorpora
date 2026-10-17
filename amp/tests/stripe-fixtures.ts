@@ -142,7 +142,7 @@ export function remoteFixtures() {
     },
     refunds: {
       has_more: false,
-      data: [] as { status: string; amount: number }[],
+      data: [] as { status: string; amount: number; created: number }[],
     },
   };
 }

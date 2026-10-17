@@ -48,7 +48,10 @@ test(
       let checkoutId = "";
       let refunded = false;
       let remoteFail = false;
-      gateway.verifyCatalog = async () => {};
+      let catalogCalls = 0;
+      gateway.verifyCatalog = async () => {
+        catalogCalls++;
+      };
       gateway.verifyMerchant = async () => {};
       gateway.verifyPortal = async () => {};
       gateway.createCustomer = async () => {
@@ -75,10 +78,12 @@ test(
       assert.equal(new Set(requests.map((x) => x.url)).size, 1);
       assert.equal(checkoutCalls, 1);
       assert.equal(customerCalls, 1);
+      const beforeUnauthorized = catalogCalls;
       await assert.rejects(
         billing.checkout("parent", "other", randomUUID()),
         /learner_not_found/,
       );
+      assert.equal(catalogCalls, beforeUnauthorized);
       await pool.query(
         "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id='parent'",
       );
@@ -98,7 +103,13 @@ test(
       });
       gateway.annualPayment = async () => {
         if (remoteFail) throw new Error("secret provider error body");
-        return { ...payment, checkoutId, refunded, partialRefund: false };
+        return {
+          ...payment,
+          checkoutId,
+          refunded,
+          fullRefundAt: refunded ? payment.paidAt + 86400 : undefined,
+          partialRefund: false,
+        };
       };
       gateway.invoiceFromCharge = async () => payment.invoiceId;
       const event = {
@@ -168,6 +179,7 @@ test(
         invoiceId: "in_refund_first",
         checkoutId,
         refunded: true,
+        fullRefundAt: payment.paidAt + 172800,
         partialRefund: false,
       });
       await repository.enqueue({
@@ -179,6 +191,13 @@ test(
       assert.equal(
         (await pool.query("SELECT count(*) FROM amp_grants")).rows[0].count,
         "1",
+      );
+      const refundEvidence = await pool.query(
+        "SELECT full_refund_at FROM amp_stripe_invoice_evidence WHERE invoice_id='in_refund_first'",
+      );
+      assert.equal(
+        Number(refundEvidence.rows[0].full_refund_at),
+        payment.paidAt + 172800,
       );
       // Exclusive privacy lock serializes a subsequent purchase and forces consent recheck.
       const lock = await pool.connect();

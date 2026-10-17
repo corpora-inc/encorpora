@@ -1,9 +1,11 @@
+import type { Pool } from "pg";
 import { applyCommerceEvent } from "../../commerce/postgres.js";
 import { annualEvents } from "./model.js";
 import { BillingError } from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository, type InboxEvent } from "./repository.js";
 export class StripeBilling {
+  private static runningPools = new WeakSet<Pool>();
   constructor(
     readonly repository: StripeRepository,
     readonly gateway: StripeGateway,
@@ -13,12 +15,12 @@ export class StripeBilling {
     learnerId: string,
     requestId: string,
   ): Promise<{ url: string }> {
-    await this.gateway.verifyCatalog();
     const checkoutId = await this.repository.reserve(
       accountId,
       learnerId,
       requestId,
     );
+    await this.gateway.verifyCatalog();
     const result = await this.repository.transaction<
       { url: string } | { expired: true }
     >(accountId, async (client) => {
@@ -85,7 +87,7 @@ export class StripeBilling {
     if (!customerId) throw new BillingError("billing_account_not_found", 404);
     return { url: await this.gateway.portal(customerId) };
   }
-  async process(event: InboxEvent): Promise<void> {
+  private async process(event: InboxEvent): Promise<void> {
     let invoiceId: string;
     if (event.type === "invoice.paid") invoiceId = event.objectId;
     else if (event.type === "charge.refunded")
@@ -95,6 +97,8 @@ export class StripeBilling {
     else return;
     await this.gateway.verifyMerchant();
     const payment = await this.gateway.annualPayment(invoiceId);
+    if (payment.refunded && !Number.isSafeInteger(payment.fullRefundAt))
+      throw new BillingError("refund_timestamp_missing");
     const binding = await this.repository.binding(payment.checkoutId);
     if (!binding.sessionId) throw new BillingError("checkout_session_missing");
     const session = await this.gateway.checkoutStatus(binding.sessionId);
@@ -128,7 +132,7 @@ export class StripeBilling {
         [
           this.repository.namespace,
           invoiceId,
-          payment.refunded ? Math.max(payment.paidAt, event.created) : null,
+          payment.refunded ? payment.fullRefundAt : null,
           payment.partialRefund,
         ],
       );
@@ -150,23 +154,32 @@ export class StripeBilling {
   async runBatch(limit = 20): Promise<{ processed: number; failed: number }> {
     if (!Number.isInteger(limit) || limit < 1 || limit > 100)
       throw new Error("Worker batch limit must be 1..100");
-    let processed = 0,
-      failed = 0;
-    for (let index = 0; index < limit; index++) {
-      const event = await this.repository.claim();
-      if (!event) break;
-      try {
-        await this.process(event);
-        await this.repository.finish(event);
-        processed++;
-      } catch (error) {
-        await this.repository.finish(
-          event,
-          error instanceof BillingError ? error.code : "processing_failed",
-        );
-        failed++;
+    if ((this.repository.pool.options.max ?? 10) < 2)
+      throw new Error("Stripe worker requires at least two pool connections");
+    if (StripeBilling.runningPools.has(this.repository.pool))
+      throw new Error("Only one Stripe worker pass may use a pool at a time");
+    StripeBilling.runningPools.add(this.repository.pool);
+    try {
+      let processed = 0,
+        failed = 0;
+      for (let index = 0; index < limit; index++) {
+        const event = await this.repository.claim();
+        if (!event) break;
+        try {
+          await this.process(event);
+          await this.repository.finish(event);
+          processed++;
+        } catch (error) {
+          await this.repository.finish(
+            event,
+            error instanceof BillingError ? error.code : "processing_failed",
+          );
+          failed++;
+        }
       }
+      return { processed, failed };
+    } finally {
+      StripeBilling.runningPools.delete(this.repository.pool);
     }
-    return { processed, failed };
   }
 }

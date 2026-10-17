@@ -255,9 +255,13 @@ export class StripeGateway {
       limit: 100,
     });
     requireEvidence(!refunds.has_more, "refund_history_requires_review");
-    const refundedAmount = refunds.data
-      .filter((x) => x.status === "succeeded")
-      .reduce((sum, x) => sum + x.amount, 0);
+    const successfulRefunds = refunds.data.filter(
+      (x) => x.status === "succeeded",
+    );
+    const refundedAmount = successfulRefunds.reduce(
+      (sum, x) => sum + x.amount,
+      0,
+    );
     requireEvidence(refundedAmount <= invoice.total, "refund_amount_mismatch");
     const paidAt = invoice.status_transitions.paid_at;
     requireEvidence(paidAt, "invoice_paid_time_missing");
@@ -275,6 +279,15 @@ export class StripeGateway {
       periodEnd: line.period.end,
       paidAt,
       chargeId: charge.id,
+      // Refund.created is the stable provider timestamp; Stripe does not expose a
+      // separate success-transition instant. Never derive it from an invoice event.
+      fullRefundAt:
+        refundedAmount === invoice.total
+          ? Math.max(
+              paidAt,
+              ...successfulRefunds.map((refund) => refund.created),
+            )
+          : undefined,
       refunded: refundedAmount === invoice.total,
       partialRefund: refundedAmount > 0 && refundedAmount < invoice.total,
     };
