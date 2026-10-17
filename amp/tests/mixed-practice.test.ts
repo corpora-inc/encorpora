@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { planMixedPractice, reviewDueAt } from "../src/server/mixed-practice";
 import { summarize } from "../src/server/progress";
+import { projectSkillEvidence } from "../src/server/evidence.js";
 import { templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
 import type { Outcome } from "../src/server/repository";
@@ -36,9 +37,7 @@ function plan(attempts: Outcome[], count = 3, seed = "fixed", time = now) {
     count,
     seed,
     now: time,
-    evidence: summarize(attempts, [
-      ...new Set(templates.map((entry) => entry.skillId)),
-    ]),
+    evidence: projectSkillEvidence(attempts),
   });
 }
 test("fresh sessions mix distinct strands and reserve different skills within a batch", () => {
@@ -137,14 +136,14 @@ test("long independent-success sessions traverse strands and do not remain a sin
     seen.add(choice.strand);
     attempts.push(answer(choice.template.id, index));
   }
-  assert.ok(seen.size >= 6, `Only visited ${[...seen]}`);
-  assert.ok(
-    attempts.some(
-      (attempt) =>
-        templates.find((entry) => entry.id === attempt.templateId)
-          ?.gradeBand === "9–12",
-    ),
+  const entryStrands = new Set(
+    templates
+      .filter((t) => t.gradeBand === "K–2")
+      .map((t) => skills.find((s) => s.id === t.skillId)!.strand),
   );
+  assert.ok(seen.size >= entryStrands.size, `Only visited ${[...seen]}`);
+  // Sixty correct answers spread across strands do not establish high-school readiness.
+  assert.ok(new Set(attempts.map((attempt) => attempt.skillId)).size >= 10);
 });
 test("mixed planning rejects invalid bounds and supports a one-template catalog", () => {
   assert.throws(() => plan([], 0), /batch size/);
