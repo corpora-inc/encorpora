@@ -1,7 +1,11 @@
+import { ElementaryFigure } from "./ElementaryFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
+    case "ten-frame":
+    case "base-ten":
+      return <ElementaryFigure figure={figure} />;
     case "coordinate-plane":
     case "bar-chart":
     case "clock":

@@ -1,3 +1,4 @@
+import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
@@ -128,6 +129,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...baseTemplates,
   ...extendedTemplates,
   ...graphicalTemplates,
+  ...elementaryTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -196,6 +198,8 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (elementaryTemplates.some((t) => t.id === templateId))
+    return generateElementaryProblem(templateId, seed);
   if (graphicalTemplates.some((t) => t.id === templateId))
     return generateGraphicalProblem(templateId, seed);
   if (extendedTemplates.some((t) => t.id === templateId))

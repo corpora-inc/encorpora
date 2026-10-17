@@ -1,3 +1,4 @@
+import { elementaryLessons } from "./elementary-lessons";
 import { graphicalLessons } from "./graphical-lessons";
 import { extendedLessons } from "./extended-lessons";
 /** Original reference lessons for the implemented templates, not a full course. */
@@ -555,4 +556,5 @@ export const lessons: readonly Lesson[] = [
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,
+  ...elementaryLessons,
 ];
