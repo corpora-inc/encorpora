@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
 import {
   presentOffer,
@@ -24,7 +24,9 @@ const vite = await createServer({
   server: { host: "127.0.0.1", port: 4326, strictPort: true },
 });
 await vite.listen();
-const browser = await chromium.launch();
+const browser = await (
+  process.env.AMP_BROWSER === "webkit" ? webkit : chromium
+).launch();
 try {
   for (const viewport of [
     { width: 320, height: 568 },
