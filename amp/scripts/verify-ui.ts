@@ -11,7 +11,7 @@ const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
 await migrate(url);
-const repository = new PostgresRepository(url);
+const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
 const learner = await repository.create(account, "Browser verification");
 const learnerIds = [learner.id];
@@ -121,6 +121,17 @@ try {
   );
   await page.getByRole("button", { name: "Continue", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator("#answer").waitFor();
+  // Mixed scheduling may choose a book-backed family; select the legacy lesson
+  // explicitly before testing the lifecycle of its lesson-support request.
+  await page.getByRole("button", { name: "Change topic", exact: true }).click();
+  await page
+    .getByText("Looking for a particular idea?", { exact: true })
+    .click();
+  await page.getByLabel("Choose your practice").selectOption("rectangle-area");
+  await page
+    .getByRole("button", { name: "Try this idea", exact: true })
+    .click();
   await page.locator("#answer").waitFor();
   let releaseLesson!: () => void;
   let heldLesson!: () => void;

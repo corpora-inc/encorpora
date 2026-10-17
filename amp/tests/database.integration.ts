@@ -11,7 +11,7 @@ test(
   { skip: !url },
   async () => {
     await migrate(url!);
-    const repository = new PostgresRepository(url!);
+    const repository = new PostgresRepository(url!, { development: true });
     const account = `test:${randomUUID()}`;
     const app = buildApp({
       repository,
@@ -155,7 +155,7 @@ test(
       });
       assert.equal(supportedAnswer.statusCode, 200);
       assert.equal(supportedAnswer.json().assisted, true);
-      const reopened = new PostgresRepository(url!);
+      const reopened = new PostgresRepository(url!, { development: true });
       assert.equal((await reopened.list(account))[0].id, learnerId);
       await reopened.close();
       const hosted = buildApp({

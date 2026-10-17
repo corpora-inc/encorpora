@@ -23,7 +23,7 @@ export async function registerStripeRoutes(
     new StripeRepository(options.pool, options.config),
     gateway,
   );
-  await app.register(async (scope) => {
+  app.register(async (scope) => {
     scope.setErrorHandler((error, _request, reply) => {
       if (error instanceof BillingError)
         return reply.code(error.statusCode).send({ error: error.code });

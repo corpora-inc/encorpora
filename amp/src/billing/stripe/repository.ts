@@ -58,7 +58,7 @@ export class StripeRepository {
     if (!consent.rowCount)
       throw new BillingError("parent_consent_required", 403);
     const learner = await client.query(
-      "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 FOR SHARE",
+      "SELECT 1 FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
       [learnerId, accountId],
     );
     if (!learner.rowCount) throw new BillingError("learner_not_found", 404);

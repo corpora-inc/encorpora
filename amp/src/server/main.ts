@@ -1,3 +1,4 @@
+import { registerFamilyRoutes } from "../family/routes.js";
 import { stripeConfig } from "../billing/stripe/config.js";
 import { registerStripeRoutes } from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
@@ -18,7 +19,9 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   throw new Error(
     "Hosted pilot requires configured consent, privacy, support and identity flows; see deployment documentation",
   );
-const repository = new PostgresRepository(required("AMP_DATABASE_URL"));
+const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
+  development,
+});
 const authenticate = development
   ? developmentAuth()
   : oidcAuth({
@@ -31,6 +34,11 @@ const authenticate = development
           : "rfc9068",
     });
 const app = buildApp({ repository, authenticate, development, logger: true });
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  development,
+});
 const billingConfig = stripeConfig(process.env);
 if (billingConfig) {
   if (development && billingConfig.livemode)
