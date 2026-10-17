@@ -106,6 +106,12 @@ export function validateDiagram(d: Diagram): void {
           throw new Error(
             "Extended integer lines require whole-number marks and concise jump labels",
           );
+      }
+      if (
+        max - min > 12 ||
+        jumps.length > 1 ||
+        d.integerLabelInterval !== undefined
+      ) {
         const position = (at: number, text: string) => {
           const half = Math.max(10, text.length * 5.5);
           return {
@@ -118,10 +124,15 @@ export function validateDiagram(d: Diagram): void {
         };
         const labels = [
           ...d.marks.map((mark) => position(rational(mark.at), mark.label)),
-          ...Array.from({ length: max - min + 1 }, (_, i) => min + i)
+          ...Array.from(
+            { length: Math.floor(max) - Math.ceil(min) + 1 },
+            (_, i) => Math.ceil(min) + i,
+          )
             .filter(
               (n) =>
-                (n === min || n === max || n % d.integerLabelInterval! === 0) &&
+                (n === min ||
+                  n === max ||
+                  n % (d.integerLabelInterval ?? 1) === 0) &&
                 !d.marks.some((mark) => rational(mark.at) === n),
             )
             .map((n) => position(n, String(n))),
@@ -135,9 +146,7 @@ export function validateDiagram(d: Diagram): void {
             Math.max(0, ...labelLanes(jumpLabels, 11, 5)) >
           1
         )
-          throw new Error(
-            "Extended integer line labels are too dense for phone reading",
-          );
+          throw new Error("Number-line labels are too dense for phone reading");
       }
       break;
     }

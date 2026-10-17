@@ -419,3 +419,33 @@ test("extended integer line rejects dense labels and marks between whole-unit ti
     /too dense/,
   );
 });
+
+test("short multiple-jump lines share the phone readability gate", () => {
+  const d: Extract<Diagram, { kind: "number-line" }> = {
+    kind: "number-line",
+    id: "short-jumps",
+    alt: "Two jumps",
+    caption: "Two equal jumps reach four",
+    wholeLabel: "One unit",
+    min: [0, 1],
+    max: [4, 1],
+    divisionsPerUnit: 1,
+    marks: [],
+    jumps: [
+      { from: [0, 1], to: [2, 1], label: "+2" },
+      { from: [2, 1], to: [4, 1], label: "+2" },
+    ],
+  };
+  assert.doesNotThrow(() => validateDiagram(d));
+  assert.throws(
+    () =>
+      validateDiagram({
+        ...d,
+        marks: Array.from({ length: 8 }, (_, i) => ({
+          at: [i, 100],
+          label: `Point${String(i).padStart(3, "0")}`,
+        })),
+      }),
+    /too dense/,
+  );
+});
