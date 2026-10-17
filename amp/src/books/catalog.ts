@@ -1,3 +1,6 @@
+import { measureBorderCover } from "../../books/measure-border-cover/book.js";
+import { measurementAlignments } from "../../books/measure-border-cover/alignments.js";
+import { measurementPracticeBindings } from "../../books/measure-border-cover/practice.js";
 import { numberBuilders } from "../../books/number-builders/book.js";
 import { numberAlignments } from "../../books/number-builders/alignments.js";
 import { numberPracticeBindings } from "../../books/number-builders/practice.js";
@@ -44,6 +47,12 @@ export const books = [
     alignments: numberAlignments,
     bindings: numberPracticeBindings,
     requiredReaderCapabilities: ["early-number-v1"],
+  },
+  {
+    content: measureBorderCover,
+    alignments: measurementAlignments,
+    bindings: measurementPracticeBindings,
+    requiredReaderCapabilities: ["unit-regions-v1", "algebra-models-v1"],
   },
 ] as const;
 export const bookSummaries: BookSummary[] = books.map(

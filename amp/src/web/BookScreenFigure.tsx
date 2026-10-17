@@ -1,3 +1,4 @@
+import { UnitRegionFigure } from "../publishing/UnitRegionFigure.js";
 import { EarlyNumberDiagramFigure } from "../publishing/EarlyNumberDiagramFigure.js";
 import { isEarlyNumberModel } from "../publishing/early-number-models.js";
 import { AlgebraDiagramFigure } from "../publishing/AlgebraDiagramFigure.js";
@@ -18,6 +19,7 @@ const ink = "#18594f",
  * with an SVG viewBox. Mathematical coordinates remain derived from quantities. */
 export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
   const pattern = `reader-${useId().replace(/[^a-z0-9]/gi, "")}`;
+  if (d.kind === "unit-region") return <UnitRegionFigure diagram={d} screen />;
   if (isEarlyNumberModel(d))
     return <EarlyNumberDiagramFigure diagram={d} screen />;
 

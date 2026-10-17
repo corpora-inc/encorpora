@@ -2,6 +2,7 @@
 export const readerCapabilities = [
   "algebra-models-v1",
   "early-number-v1",
+  "unit-regions-v1",
 ] as const;
 export function supportsBook(
   required: readonly string[],

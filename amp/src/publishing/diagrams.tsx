@@ -1,3 +1,4 @@
+import { UnitRegionFigure } from "./UnitRegionFigure.js";
 import { EarlyNumberDiagramFigure } from "./EarlyNumberDiagramFigure.js";
 import { isEarlyNumberModel } from "./early-number-models.js";
 import { AlgebraDiagramFigure } from "./AlgebraDiagramFigure.js";
@@ -81,6 +82,7 @@ function ModelCell({
 }
 export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
   validateDiagram(d);
+  if (d.kind === "unit-region") return <UnitRegionFigure diagram={d} />;
   if (isEarlyNumberModel(d)) return <EarlyNumberDiagramFigure diagram={d} />;
   if (
     d.kind === "balance" ||
