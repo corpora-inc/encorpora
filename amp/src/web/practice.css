@@ -934,3 +934,9 @@ nav button {
     padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
 }
+
+/* A unit grid needs legible labels even when the answer dock is compact. */
+.problem-content .graphical-figure[data-kind="coordinate-plane"] {
+  min-height: 130px;
+  flex-shrink: 0;
+}

@@ -131,22 +131,22 @@ test("SVG coordinates and heights preserve mathematical positions and scales", (
           const attr = attributes(html, `data-point="${point.label}"`);
           near(
             Number(attr.cx),
-            45 + ((point.x - figure.xMin) * 300) / (figure.xMax - figure.xMin),
+            70 + ((point.x - figure.xMin) * 180) / (figure.xMax - figure.xMin),
           );
           near(
             Number(attr.cy),
-            325 - ((point.y - figure.yMin) * 300) / (figure.yMax - figure.yMin),
+            220 - ((point.y - figure.yMin) * 180) / (figure.yMax - figure.yMin),
           );
         }
         if (figure.lines?.length) {
           const line = attributes(html, 'data-line="graph"');
           for (const suffix of ["1", "2"]) {
             const x =
-              ((Number(line[`x${suffix}`]) - 45) / 300) *
+              ((Number(line[`x${suffix}`]) - 70) / 180) *
                 (figure.xMax - figure.xMin) +
               figure.xMin;
             const y =
-              ((325 - Number(line[`y${suffix}`])) / 300) *
+              ((220 - Number(line[`y${suffix}`])) / 180) *
                 (figure.yMax - figure.yMin) +
               figure.yMin;
             near(y, figure.lines[0]!.m * x + figure.lines[0]!.b);
@@ -159,17 +159,15 @@ test("SVG coordinates and heights preserve mathematical positions and scales", (
           }
         }
       } else if (figure.kind === "bar-chart") {
-        const ceiling = Math.max(
-          5,
-          Math.ceil(Math.max(...figure.values) / 5) * 5,
-        );
+        const ceiling =
+          2 * Math.max(5, Math.ceil(Math.max(...figure.values) / 10) * 5);
         for (let i = 0; i < figure.values.length; i++) {
           const attr = attributes(
             html,
             `data-category="${figure.categories[i]}"`,
           );
-          near(Number(attr.height), (210 * figure.values[i]!) / ceiling);
-          near(Number(attr.y) + Number(attr.height), 250);
+          near(Number(attr.height), (100 * figure.values[i]!) / ceiling);
+          near(Number(attr.y) + Number(attr.height), 178);
         }
       } else if (figure.kind === "clock") {
         for (const hand of ["hour", "minute"]) {
@@ -180,7 +178,7 @@ test("SVG coordinates and heights preserve mathematical positions and scales", (
             hand === "hour"
               ? (figure.hour % 12) * 30 + figure.minute / 2
               : figure.minute * 6;
-          const length = hand === "hour" ? 58 : 88;
+          const length = hand === "hour" ? 58 : 77;
           near(dx, Math.sin((angle * Math.PI) / 180) * length);
           near(dy, Math.cos((angle * Math.PI) / 180) * length);
         }
@@ -189,7 +187,7 @@ test("SVG coordinates and heights preserve mathematical positions and scales", (
           const attr = attributes(html, `data-mark="${value}"`);
           near(
             Number(attr.cx),
-            30 + ((value - figure.min) * 480) / (figure.max - figure.min),
+            24 + ((value - figure.min) * 272) / (figure.max - figure.min),
           );
         }
       }
@@ -202,4 +200,89 @@ test("unknown templates and invalid seeds are rejected", () => {
     assert.throws(() =>
       generateGraphicalProblem(graphicalTemplates[0]!.id, seed),
     );
+});
+
+test("sparse axis labels retain every unit interval and never annotate point answers", () => {
+  const figure: GraphicalFigureData = {
+    kind: "coordinate-plane",
+    xMin: -6,
+    xMax: 6,
+    yMin: -4,
+    yMax: 4,
+    points: [{ x: 3, y: -2, label: "P" }],
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(GraphicalFigure, { figure }),
+  );
+  const lines = [...html.matchAll(/<line\s([^>]+)>/g)].map((m) =>
+    Object.fromEntries(
+      [...m[1]!.matchAll(/([\w-]+)="([^"]*)"/g)].map((a) => [
+        a[1]!,
+        Number(a[2]),
+      ]),
+    ),
+  );
+  const vertical = lines.filter((line) => line.x1 === line.x2);
+  const horizontal = lines.filter((line) => line.y1 === line.y2);
+  assert.equal(vertical.length, 13);
+  assert.equal(horizontal.length, 9);
+  for (let i = 1; i < vertical.length; i++)
+    near(vertical[i]!.x1! - vertical[i - 1]!.x1!, 15);
+  for (let i = 1; i < horizontal.length; i++)
+    near(horizontal[i - 1]!.y1! - horizontal[i]!.y1!, 22.5);
+  const visibleText = [...html.matchAll(/<text[^>]*>(.*?)<\/text>/g)].map(
+    (m) => m[1],
+  );
+  assert.deepEqual(visibleText, [
+    "-6",
+    "0",
+    "6",
+    "-4",
+    "0",
+    "4",
+    "x",
+    "y",
+    "P",
+  ]);
+  const point = attributes(html, 'data-point="P"');
+  near((Number(point.cx) - vertical[0]!.x1!) / 15 - 6, 3);
+  near(4 - (Number(point.cy) - horizontal.at(-1)!.y1!) / 22.5, -2);
+});
+
+test("number line retains all integer ticks and truthful sparse labels", () => {
+  const figure: GraphicalFigureData = {
+    kind: "number-line",
+    min: -12,
+    max: 12,
+    points: [-3, -2],
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(GraphicalFigure, { figure }),
+  );
+  const ticks = [...html.matchAll(/data-tick="(-?\d+)"/g)].map((m) =>
+    Number(m[1]),
+  );
+  assert.deepEqual(
+    ticks,
+    Array.from({ length: 25 }, (_, i) => i - 12),
+  );
+  const labels = [...html.matchAll(/<text[^>]*>(.*?)<\/text>/g)].map(
+    (m) => m[1],
+  );
+  assert.deepEqual(labels, [
+    "-12",
+    "-10",
+    "-5",
+    "0",
+    "5",
+    "10",
+    "12",
+    "-3",
+    "-2",
+  ]);
+  for (const tick of ticks) {
+    const attr = attributes(html, `data-tick="${tick}"`);
+    near((Number(attr.x1) - 24) / (272 / 24) - 12, tick);
+    assert.equal(attr.x1, attr.x2);
+  }
 });

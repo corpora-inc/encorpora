@@ -15,17 +15,17 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
   switch (figure.kind) {
     case "coordinate-plane": {
       const x = (n: number) =>
-        45 + ((n - figure.xMin) / (figure.xMax - figure.xMin)) * 300;
+        70 + ((n - figure.xMin) / (figure.xMax - figure.xMin)) * 180;
       const y = (n: number) =>
-        325 - ((n - figure.yMin) / (figure.yMax - figure.yMin)) * 300;
+        220 - ((n - figure.yMin) / (figure.yMax - figure.yMin)) * 180;
       const pointDescription = figure.points
         .map((p) => `${p.label ?? "Point"} at (${p.x}, ${p.y})`)
         .join("; ");
       return (
         <svg
           data-kind={figure.kind}
-          className="figure"
-          viewBox="0 0 390 365"
+          className="figure graphical-figure"
+          viewBox="0 0 320 260"
           role="img"
           aria-label={`Coordinate grid, one unit per grid step. ${pointDescription}${figure.lines?.length ? ". A straight line passes through the marked points." : ""}`}
         >
@@ -33,36 +33,59 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
             <g key={`x${n}`}>
               <line
                 x1={x(n)}
-                y1="25"
+                y1="40"
                 x2={x(n)}
-                y2="325"
-                stroke={n === 0 ? ink : "#cad8d2"}
+                y2="220"
+                stroke={n === 0 ? ink : "#789586"}
                 strokeWidth={n === 0 ? 2 : 1}
               />
-              <text x={x(n)} y="344" textAnchor="middle" fontSize="12">
-                {n}
-              </text>
+              {(n === 0 || n === figure.xMin || n === figure.xMax) && (
+                <text
+                  x={x(n)}
+                  y="249"
+                  textAnchor="middle"
+                  style={{ fontSize: 24 }}
+                >
+                  {n}
+                </text>
+              )}
             </g>
           ))}
           {range(figure.yMin, figure.yMax).map((n) => (
             <g key={`y${n}`}>
               <line
-                x1="45"
+                x1="70"
                 y1={y(n)}
-                x2="345"
+                x2="250"
                 y2={y(n)}
-                stroke={n === 0 ? ink : "#cad8d2"}
+                stroke={n === 0 ? ink : "#789586"}
                 strokeWidth={n === 0 ? 2 : 1}
               />
-              <text x="35" y={y(n) + 4} textAnchor="end" fontSize="12">
-                {n}
-              </text>
+              {(n === 0 || n === figure.yMin || n === figure.yMax) && (
+                <text
+                  x="58"
+                  y={y(n) + 8}
+                  textAnchor="end"
+                  style={{ fontSize: 24 }}
+                >
+                  {n}
+                </text>
+              )}
             </g>
           ))}
-          <text x="363" y={y(0) + 5}>
+          <text
+            x="270"
+            y={y(Math.min(figure.yMax, Math.max(figure.yMin, 0))) + 8}
+            style={{ fontSize: 24 }}
+          >
             x
           </text>
-          <text x={x(0) - 4} y="16">
+          <text
+            x={x(Math.min(figure.xMax, Math.max(figure.xMin, 0)))}
+            y="28"
+            textAnchor="middle"
+            style={{ fontSize: 24 }}
+          >
             y
           </text>
           {figure.lines?.map((line, i) => {
@@ -99,7 +122,17 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 stroke="white"
                 strokeWidth="1"
               />
-              <text x={x(p.x) + 9} y={y(p.y) - 8} fill={ink} fontWeight="bold">
+              <text
+                x={x(p.x) + (p.x < 0 && x(0) - x(p.x) < 30 ? -10 : 10)}
+                textAnchor={p.x < 0 && x(0) - x(p.x) < 30 ? "end" : "start"}
+                y={
+                  y(p.y) < 70 || (p.y < 0 && y(p.y) - y(0) < 35)
+                    ? y(p.y) + 25
+                    : y(p.y) - 10
+                }
+                fill={ink}
+                style={{ fontSize: 24, fontWeight: 700 }}
+              >
                 {p.label}
               </text>
             </g>
@@ -108,39 +141,37 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
       );
     }
     case "bar-chart": {
-      const ceiling = Math.max(
-          5,
-          Math.ceil(Math.max(...figure.values) / 5) * 5,
-        ),
-        scale = 210 / ceiling;
-      const column = 300 / figure.categories.length;
+      const step = Math.max(5, Math.ceil(Math.max(...figure.values) / 10) * 5),
+        ceiling = step * 2,
+        scale = 100 / ceiling;
+      const column = 240 / figure.categories.length;
       return (
         <svg
           data-kind={figure.kind}
-          className="figure"
-          viewBox="0 0 400 300"
+          className="figure graphical-figure"
+          viewBox="0 0 320 240"
           role="img"
           aria-label={`${figure.valueLabel} by category. ${figure.categories.map((category, i) => `${category}: ${figure.values[i]}`).join("; ")}.`}
         >
-          <text x="50" y="20" fill={ink}>
+          <text x="48" y="34" fill={ink} style={{ fontSize: 28 }}>
             {figure.valueLabel}
           </text>
-          {range(0, ceiling / 5).map((n) => (
+          {range(0, 2).map((n) => (
             <g key={n}>
               <line
-                x1="50"
-                x2="350"
-                y1={250 - n * 5 * scale}
-                y2={250 - n * 5 * scale}
+                x1="48"
+                x2="288"
+                y1={178 - n * step * scale}
+                y2={178 - n * step * scale}
                 stroke="#cad8d2"
               />
               <text
-                x="40"
-                y={254 - n * 5 * scale}
+                x="38"
+                y={187 - n * step * scale}
                 textAnchor="end"
-                fontSize="12"
+                style={{ fontSize: 28 }}
               >
-                {n * 5}
+                {n * step}
               </text>
             </g>
           ))}
@@ -148,24 +179,25 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
             <g key={i}>
               <rect
                 data-category={figure.categories[i]}
-                x={50 + column * i + column * 0.2}
-                y={250 - value * scale}
+                x={48 + column * i + column * 0.2}
+                y={178 - value * scale}
                 width={column * 0.6}
                 height={value * scale}
                 fill={accent}
               />
               <text
-                x={50 + column * (i + 0.5)}
-                y={242 - value * scale}
+                x={48 + column * (i + 0.5)}
+                y={166 - value * scale}
                 textAnchor="middle"
+                style={{ fontSize: 28 }}
               >
                 {value}
               </text>
               <text
-                x={50 + column * (i + 0.5)}
-                y="276"
+                x={48 + column * (i + 0.5)}
+                y="218"
                 textAnchor="middle"
-                fontSize="14"
+                style={{ fontSize: 28 }}
               >
                 {figure.categories[i]}
               </text>
@@ -180,12 +212,12 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
         y: 145 - Math.cos((angle * Math.PI) / 180) * length,
       });
       const hour = end((figure.hour % 12) * 30 + figure.minute * 0.5, 58),
-        minute = end(figure.minute * 6, 88);
+        minute = end(figure.minute * 6, 77);
       return (
         <svg
           data-kind={figure.kind}
-          className="figure"
-          viewBox="0 0 320 290"
+          className="figure graphical-figure"
+          viewBox="0 15 320 260"
           role="img"
           aria-label={`Clock showing ${figure.hour}:${String(figure.minute).padStart(2, "0")}. The shorter hand shows the hour; the longer hand shows minutes.`}
         >
@@ -198,14 +230,14 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
             strokeWidth="3"
           />
           {range(1, 12).map((n) => {
-            const p = end(n * 30, 101);
+            const p = end(n * 30, 93);
             return (
               <text
                 key={n}
                 x={p.x}
-                y={p.y + 5}
+                y={p.y + 10}
                 textAnchor="middle"
-                fontSize="16"
+                style={{ fontSize: 30, fontFamily: "Arial, sans-serif" }}
               >
                 {n}
               </text>
@@ -244,36 +276,74 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
     }
     case "number-line": {
       const x = (n: number) =>
-        30 + ((n - figure.min) / (figure.max - figure.min)) * 480;
+        24 + ((n - figure.min) / (figure.max - figure.min)) * 272;
       return (
         <svg
           data-kind={figure.kind}
-          className="figure"
-          viewBox="0 0 540 125"
+          className="figure graphical-figure"
+          viewBox="0 0 320 110"
           role="img"
           aria-label={`Number line with one-unit ticks from ${figure.min} to ${figure.max}. Marked points: ${figure.points.join(", ")}.`}
         >
-          <line x1="25" y1="58" x2="515" y2="58" stroke={ink} strokeWidth="2" />
+          <line x1="20" y1="64" x2="300" y2="64" stroke={ink} strokeWidth="2" />
           {range(figure.min, figure.max).map((n) => (
             <g key={n}>
-              <line x1={x(n)} y1="50" x2={x(n)} y2="66" stroke={ink} />
-              <text x={x(n)} y="88" textAnchor="middle" fontSize="12">
-                {n}
-              </text>
+              <line
+                data-tick={n}
+                x1={x(n)}
+                y1="56"
+                x2={x(n)}
+                y2="72"
+                stroke={ink}
+              />
+              {(n % 5 === 0 || n === figure.min || n === figure.max) && (
+                <text
+                  x={x(n)}
+                  y="98"
+                  textAnchor="middle"
+                  style={{ fontSize: 18 }}
+                >
+                  {n}
+                </text>
+              )}
             </g>
           ))}
-          {figure.points.map((n, i) => (
-            <circle
-              key={i}
-              data-mark={n}
-              cx={x(n)}
-              cy="58"
-              r="6"
-              fill="#9c4420"
-              stroke="white"
-              strokeWidth="1"
-            />
-          ))}
+          {figure.points.map((n, i) => {
+            const crowded = figure.points.some(
+              (other, j) => j !== i && Math.abs(x(other) - x(n)) < 40,
+            );
+            const labelY = crowded && i % 2 ? 50 : 26;
+            return (
+              <g key={i}>
+                <line
+                  x1={x(n)}
+                  y1={labelY + 5}
+                  x2={x(n)}
+                  y2="58"
+                  stroke="#9c4420"
+                  strokeWidth="1.5"
+                />
+                <text
+                  x={x(n)}
+                  y={labelY}
+                  textAnchor="middle"
+                  fill="#9c4420"
+                  style={{ fontSize: 18, fontWeight: 700 }}
+                >
+                  {n}
+                </text>
+                <circle
+                  data-mark={n}
+                  cx={x(n)}
+                  cy="64"
+                  r="5"
+                  fill="#9c4420"
+                  stroke="white"
+                  strokeWidth="1"
+                />
+              </g>
+            );
+          })}
         </svg>
       );
     }
