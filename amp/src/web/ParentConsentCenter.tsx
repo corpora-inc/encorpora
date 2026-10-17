@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { ConsentView } from "../parent-consent/contracts.js";
 import type { ConsentChallenge } from "./consent-link.js";
 import "./parent-consent.css";
@@ -71,7 +71,7 @@ export function ParentConsentCenter({
     }
   }
   const previousIdentity = useRef(identity);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (previousIdentity.current !== identity) {
       setChallenge(null);
       previousIdentity.current = identity;
@@ -218,8 +218,9 @@ export function ParentConsentCenter({
           <>
             <h2>Enrollment is unavailable</h2>
             <p>
-              This deployment has not enabled the reviewed consent method. No
-              new learning consent can be granted here.
+              Consent enrollment is not available here. No new learning consent
+              can be recorded. Return to your family settings or check again
+              later.
             </p>
           </>
         )}
@@ -284,7 +285,8 @@ export function ParentConsentCenter({
             {phase === "active" && (
               <p>
                 You can create a learner and use available learning access.
-                Consent does not purchase a subscription.
+                Consent does not purchase a subscription. Withdrawing consent
+                does not cancel paid renewal.
               </p>
             )}
             {consumedInitial && (
