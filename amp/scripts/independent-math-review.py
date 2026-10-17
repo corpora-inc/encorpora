@@ -7,6 +7,7 @@ import sys
 from collections import Counter
 from fractions import Fraction
 from elementary_math_oracle import ELEMENTARY, solve_elementary
+from equal_groups_math_oracle import EQUAL_GROUPS, solve_equal_groups
 from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
 from choice_math_oracle import CHOICE, solve_choice
 
@@ -23,7 +24,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS
 
 
 def require(condition, message):
@@ -37,6 +38,8 @@ def solve(public):
     template = public['templateId']
     if template in CHOICE:
         return solve_choice(public)
+    if template in EQUAL_GROUPS:
+        return solve_equal_groups(public)
     if template in FRACTION_PRACTICE:
         return solve_fraction_practice(public)
     if template in ELEMENTARY:

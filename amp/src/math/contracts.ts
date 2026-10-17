@@ -2,6 +2,13 @@ import { z } from "zod";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | {
+      kind: "unit-array";
+      rows: number;
+      columns: number;
+      splitAfterRow?: number;
+    }
+  | { kind: "grouped-counters"; total: number; groupSize: number; unit: string }
+  | {
       kind: "rational-line";
       denominator: number;
       maxWhole: number;
@@ -74,6 +81,24 @@ export interface GeneratedProblem {
 
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
+    z
+      .object({
+        kind: z.literal("unit-array"),
+        rows: z.number().int().min(1).max(10),
+        columns: z.number().int().min(1).max(10),
+        splitAfterRow: z.number().int().min(1).optional(),
+      })
+      .strict()
+      .refine((f) => f.splitAfterRow === undefined || f.splitAfterRow < f.rows),
+    z
+      .object({
+        kind: z.literal("grouped-counters"),
+        total: z.number().int().min(1).max(64),
+        groupSize: z.number().int().min(2).max(8),
+        unit: z.string().min(1).max(20),
+      })
+      .strict()
+      .refine((f) => Math.ceil(f.total / f.groupSize) <= 8),
     z
       .object({
         kind: z.literal("rational-line"),

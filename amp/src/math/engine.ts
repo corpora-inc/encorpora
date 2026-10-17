@@ -1,5 +1,9 @@
 import { choiceTemplates, generateChoiceProblem } from "./choice.js";
 import {
+  equalGroupsTemplates,
+  generateEqualGroupsProblem,
+} from "./equal-groups-practice.js";
+import {
   fractionPracticeTemplates,
   generateFractionPracticeProblem,
 } from "./fraction-practice";
@@ -137,6 +141,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
   ...choiceTemplates,
+  ...equalGroupsTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -219,6 +224,8 @@ export function generateProblem(
 ): GeneratedProblem {
   if (choiceTemplates.some((t) => t.id === templateId))
     return generateChoiceProblem(templateId, seed);
+  if (equalGroupsTemplates.some((t) => t.id === templateId))
+    return generateEqualGroupsProblem(templateId, seed);
   if (fractionPracticeTemplates.some((t) => t.id === templateId))
     return generateFractionPracticeProblem(templateId, seed);
   if (elementaryTemplates.some((t) => t.id === templateId))
