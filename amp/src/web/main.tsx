@@ -1,4 +1,6 @@
 import { consumeInitialConsentChallenge } from "./consent-entry";
+import { nativeRuntime } from "./native-runtime";
+import { NativePreview } from "./NativePreview";
 import { ParentConsentCenter } from "./ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "./consent-link";
 import {
@@ -53,7 +55,8 @@ type Catalog = {
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
-const initialPurchaseReturn = capturePurchaseReturn();
+const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
+if (nativeRuntime) consumeInitialConsentChallenge();
 function App() {
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
@@ -1230,4 +1233,6 @@ function App() {
     </div>
   );
 }
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  nativeRuntime ? <NativePreview /> : <App />,
+);

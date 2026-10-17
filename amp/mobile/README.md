@@ -1,23 +1,29 @@
 # AMP native preview
 
-This Tauri 2 shell hosts the AMP mathematics interface in a native webview. It is an independent application with the provisional identifier `inc.corpora.amp`. It has no Free2Z dependency, native purchase integration, or privileged frontend commands.
+This independent Tauri 2 application uses the provisional identifier `inc.corpora.amp`. Its native preview displays service availability through a Rust HTTPS transport. Parent sign-in, learning sessions, purchases, book downloads and family exports are unavailable in the native interface. Those features require a configured web application; this shell does not establish that a public service or payment offer is available.
 
-The supported use is a local desktop preview connected to the AMP development server. A compiled binary is not a production-ready mobile learning application. The bundled frontend uses same-origin `/api` requests, while a native webview has a local asset origin. Hosted API routing, system-browser sign-in with a native callback, secure token storage, and purchases require explicit integration before distribution. The browser OIDC redirect flow is not a native authentication implementation.
+The native application does not initialize the browser OIDC manager, use development authentication, or mount the browser learning workspace. Its only privileged commands are `native_status` and `read_public_resource`, restricted to the bundled main window. The latter accepts the enum `health` or `catalog`; it cannot accept URLs, headers, credentials or arbitrary API paths.
+
+## Service configuration
+
+Set `AMP_NATIVE_API_ORIGIN` when compiling Rust to a trusted HTTPS API origin, for example `https://api.example.test`. The origin must have a DNS hostname, port 443, and no user information, path, query or fragment. No origin is configured by default. Missing or invalid configuration disables network reads. Configuration changes require rebuilding the native binary.
+
+The transport rejects HTTP redirects, uses no proxy or cookie storage, imposes an eight-second request deadline, allows four simultaneous requests and reads at most 2 MiB of JSON per response. Errors expose fixed categories rather than remote response bodies or operational URLs. The webview CSP does not grant access to the configured remote API; reads go through the scoped Rust command. The public catalog is content metadata, not authority to access learner data.
+
+## Authentication boundary
+
+There is no native credential setter or authenticated API command. A later native session implementation must use a maintained OAuth/OIDC implementation, system-browser authorization, PKCE, exact issuer/audience/nonce validation, one-use state and exact callback matching. Cold-start and running callbacks, expiry, refresh, sign-out and stale asynchronous responses require independent verification before authenticated learning can be enabled. Memory-only credentials would require signing in again after process exit; persistent credentials require platform secure storage.
+
+These requirements follow [OAuth for Native Apps](https://www.rfc-editor.org/rfc/rfc8252), [Tauri capabilities](https://v2.tauri.app/security/capabilities/) and [Tauri deep links](https://v2.tauri.app/plugin/deep-linking/). A browser harness is not evidence of device sign-in or store readiness.
 
 ## Prerequisites
 
 - Node.js 22 or later and the dependencies installed in the parent `amp` directory.
 - A Rust toolchain with rustfmt and clippy; this shell is checked with Rust 1.93.
 - The platform's [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/): Xcode and command-line tools on macOS, or the corresponding Linux/Windows system dependencies.
-- A configured local AMP API and PostgreSQL database for interactive practice. Follow the parent project's setup instructions.
+- A reachable HTTPS API is optional for the public connection check. No learner database is needed to open the native preview.
 
 ## Run the desktop preview
-
-Start the API from `amp` in one terminal using the documented local development environment:
-
-```sh
-npm run dev:api
-```
 
 Start the frontend from `amp` in another terminal:
 
@@ -31,7 +37,7 @@ From `amp/mobile`, start the native host:
 npx --yes @tauri-apps/cli@2.11.4 dev
 ```
 
-The shell expects the frontend at `http://127.0.0.1:4310`. It does not start either server. Keep development authentication and both servers restricted to the local machine. The configuration's `frontendDist` is `../dist`, resolved relative to `mobile/tauri.conf.json`; see the [Tauri configuration reference](https://v2.tauri.app/reference/config/).
+The shell expects the frontend at `http://127.0.0.1:4310`. It does not start the frontend server. Keep that server restricted to the local machine. Native preview mode does not use browser development authentication. The configuration's `frontendDist` is `../dist`, resolved relative to `mobile/tauri.conf.json`; see the [Tauri configuration reference](https://v2.tauri.app/reference/config/).
 
 ## Check the shell
 
@@ -51,7 +57,7 @@ cargo test --locked
 cargo build --locked --features custom-protocol
 ```
 
-The last command creates a desktop executable with bundled frontend assets. It does not establish that sign-in, API requests or purchases work from the bundled origin. Installer generation is disabled with `bundle.active: false`.
+The last command creates a desktop executable with bundled frontend assets. It embeds the native preview interface and public transport. It does not implement sign-in or purchases. Installer generation is disabled with `bundle.active: false`.
 
 ## iOS and Android work
 
