@@ -1,0 +1,119 @@
+.annual-purchase {
+  width: min(100%, 48rem);
+  height: 100%;
+  min-height: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  color: #172c3b;
+}
+.annual-header {
+  flex: none;
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid #cbd6dc;
+}
+.annual-header h1 {
+  margin: 0.6rem 0 0.3rem;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+}
+.annual-header p {
+  margin: 0;
+}
+.annual-body {
+  overflow-y: auto;
+  min-height: 0;
+  padding: 1rem 1.25rem 2rem;
+  overscroll-behavior: contain;
+}
+.annual-card {
+  border: 1px solid #b9ccd3;
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  margin-bottom: 1.25rem;
+}
+.annual-card h2 {
+  margin-top: 0;
+}
+.annual-card p {
+  line-height: 1.55;
+}
+.annual-price {
+  font-size: 2.4rem;
+  font-weight: 750;
+  margin: 0.5rem 0;
+}
+.annual-price span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.annual-learner {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+.annual-learner select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.65rem;
+  color: #172c3b;
+  background: white;
+  border: 1px solid #80959e;
+  border-radius: 0.6rem;
+  font: inherit;
+}
+.annual-purchase button {
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+}
+.annual-purchase button:focus-visible,
+.annual-purchase select:focus-visible {
+  outline: 3px solid #176d8b;
+  outline-offset: 3px;
+}
+.annual-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.annual-message,
+.annual-sandbox,
+.annual-status {
+  padding: 0.85rem 1rem;
+  border-radius: 0.7rem;
+  background: #e9f3f6;
+  line-height: 1.5;
+}
+.annual-error {
+  background: #fff0e9;
+  border: 1px solid #ab4f20;
+}
+.annual-sandbox {
+  background: #fff3d1;
+  border: 1px solid #8e660b;
+}
+@media (max-width: 420px) {
+  .annual-header,
+  .annual-body {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+  .annual-actions {
+    flex-direction: column;
+  }
+}
+.annual-header {
+  display: block;
+}
+.annual-header h1 {
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+.annual-header h1:focus {
+  outline: none;
+}
+.annual-card h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}

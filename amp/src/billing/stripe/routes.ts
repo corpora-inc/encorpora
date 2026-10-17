@@ -1,3 +1,4 @@
+import { annualOffer, purchaseStatus } from "./purchase.js";
 import { createHash } from "node:crypto";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
@@ -35,17 +36,40 @@ export async function registerStripeRoutes(
         error: status === 401 ? "sign_in_required" : "billing_unavailable",
       });
     });
+    scope.get("/api/v1/billing/offer", async (request, reply) => {
+      await options.authenticate(request);
+      reply.header("Cache-Control", "no-store");
+      const offer = annualOffer(options.config);
+      await gateway.verifyCatalog();
+      return { available: true, offer };
+    });
+    scope.get<{ Params: { learnerId: string } }>(
+      "/api/v1/billing/status/:learnerId",
+      async (request, reply) => {
+        const accountId = await options.authenticate(request);
+        reply.header("Cache-Control", "no-store");
+        if (!request.params.learnerId || request.params.learnerId.length > 200)
+          return reply.code(400).send({ error: "invalid_learner" });
+        return purchaseStatus(billing, accountId, request.params.learnerId);
+      },
+    );
     scope.post("/api/v1/billing/checkout", async (request, reply) => {
       const accountId = await options.authenticate(request);
       const body = z
         .strictObject({
           learnerId: z.string().min(1).max(200),
           requestId: z.uuid(),
+          offerId: z.string().length(64).optional(),
         })
         .safeParse(request.body);
       if (!body.success)
         return reply.code(400).send({ error: "invalid_checkout_request" });
       reply.header("Cache-Control", "no-store");
+      if (
+        body.data.offerId &&
+        body.data.offerId !== annualOffer(options.config).id
+      )
+        return reply.code(409).send({ error: "offer_changed" });
       return billing.checkout(
         accountId,
         body.data.learnerId,
@@ -100,4 +124,16 @@ export async function registerStripeRoutes(
     });
   });
   return billing;
+}
+
+/** Absence of merchant configuration is an explicit parent-facing state. */
+export async function registerUnavailableBilling(
+  app: FastifyInstance,
+  authenticate: Authenticator,
+): Promise<void> {
+  app.get("/api/v1/billing/offer", async (request, reply) => {
+    await authenticate(request);
+    reply.header("Cache-Control", "no-store");
+    return { available: false };
+  });
 }
