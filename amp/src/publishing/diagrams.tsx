@@ -283,7 +283,12 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
             {d.wholeLabel} · group size {fmt(d.groupSize)}
           </text>
           {Array.from(
-            { length: Math.ceil(total * d.unitDivisions) },
+            {
+              length: Number(
+                (BigInt(d.total[0]) * BigInt(d.unitDivisions)) /
+                  BigInt(d.total[1]),
+              ),
+            },
             (_, i) => {
               const start = i / d.unitDivisions,
                 end = Math.min(total, (i + 1) / d.unitDivisions);

@@ -96,14 +96,16 @@ export function CoverFigure({
         <text x="605" y="235" className="cover-caption" textAnchor="middle">
           1
         </text>
-        <text
-          x={155 + fraction * 450}
-          y="235"
-          className="cover-caption"
-          textAnchor="middle"
-        >
-          {shaded}/{parts}
-        </text>
+        {shaded > 0 && shaded < parts && (
+          <text
+            x={155 + fraction * 450}
+            y="235"
+            className="cover-caption"
+            textAnchor="middle"
+          >
+            {shaded}/{parts}
+          </text>
+        )}
       </svg>
       <figcaption>{d.caption}</figcaption>
     </figure>
