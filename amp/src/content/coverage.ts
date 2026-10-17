@@ -1,3 +1,5 @@
+import { fractionFieldGuide } from "../../books/fraction-field-guide/book.js";
+import { fractionPracticeBindings } from "./fraction-practice-coverage.js";
 import {
   skills as catalogSkills,
   standards as catalogStandards,
@@ -45,7 +47,21 @@ export interface FacetMapping {
   extent: "partial" | "complete";
   rationale: string;
 }
+export interface CoverageBook {
+  id: string;
+  pageIds: readonly string[];
+}
+export interface CoverageBookBinding {
+  templateId: string;
+  skillId: string;
+  bookId: string;
+  pageIds: readonly string[];
+  assessedResponse: "numeric-result-only";
+  unassessedRequirements: readonly string[];
+}
 export interface CoverageInput {
+  books?: readonly CoverageBook[];
+  bookBindings?: readonly CoverageBookBinding[];
   skills?: readonly Skill[];
   standards?: readonly Standard[];
   templates?: readonly CoverageTemplate[];
@@ -72,6 +88,18 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
   const standards = input.standards ?? catalogStandards;
   const templates = input.templates ?? catalogTemplates;
   const lessons = input.lessons ?? catalogLessons;
+  const books =
+    input.books ??
+    (input.templates
+      ? []
+      : [
+          {
+            id: fractionFieldGuide.id,
+            pageIds: fractionFieldGuide.pages.map((page) => page.id),
+          },
+        ]);
+  const bookBindings =
+    input.bookBindings ?? (input.templates ? [] : fractionPracticeBindings);
   const publications = input.publications ?? [];
   const evidence = input.evidence ?? [];
   const mappings = input.facetMappings ?? [];
@@ -88,6 +116,55 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
   const standardById = unique(standards, "standard");
   const templateById = unique(templates, "template");
   const lessonById = unique(lessons, "lesson");
+  const bookById = unique(books, "book");
+  for (const book of books)
+    if (
+      !book.id.trim() ||
+      !book.pageIds.length ||
+      new Set(book.pageIds).size !== book.pageIds.length ||
+      book.pageIds.some((id) => !id.trim())
+    )
+      errors.push(`Invalid book pages: ${book.id}`);
+  const validBookBindings: CoverageBookBinding[] = [];
+  const bookBindingKeys = new Set<string>();
+  for (const binding of bookBindings) {
+    const key = `${binding.templateId}:${binding.bookId}`;
+    const template = templateById.get(binding.templateId),
+      book = bookById.get(binding.bookId);
+    if (bookBindingKeys.has(key)) {
+      errors.push(`Duplicate book binding: ${key}`);
+      continue;
+    }
+    bookBindingKeys.add(key);
+    if (
+      !template ||
+      !book ||
+      template.skillId !== binding.skillId ||
+      !skillById.has(binding.skillId) ||
+      !binding.pageIds.length ||
+      new Set(binding.pageIds).size !== binding.pageIds.length ||
+      binding.pageIds.some((id) => !book.pageIds.includes(id)) ||
+      binding.assessedResponse !== "numeric-result-only" ||
+      !binding.unassessedRequirements.length ||
+      binding.unassessedRequirements.some((requirement) => !requirement.trim())
+    ) {
+      errors.push(`Invalid book teaching binding: ${key}`);
+      continue;
+    }
+    validBookBindings.push(binding);
+  }
+  const missingInstructionTemplateIds = templates
+    .filter(
+      (template) =>
+        !lessons.some((lesson) => lesson.templateIds.includes(template.id)) &&
+        !validBookBindings.some(
+          (binding) => binding.templateId === template.id,
+        ),
+    )
+    .map((template) => template.id)
+    .sort();
+  for (const id of missingInstructionTemplateIds)
+    errors.push(`Template has no validated instruction: ${id}`);
   const facetOwner = new Map<string, string>();
   for (const skill of skills) {
     for (const facet of skill.facets) {
@@ -113,6 +190,11 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
   for (const id of orphanTemplateIds) errors.push(`Orphan template: ${id}`);
   for (const id of orphanLessonIds) errors.push(`Orphan lesson: ${id}`);
   const artifacts = [
+    ...books.map((book) => ({
+      id: `book.${book.id}`,
+      kind: "book" as const,
+      sourceId: book.id,
+    })),
     ...templates.map((t) => ({
       id: `template.${t.id}`,
       kind: "template" as const,
@@ -281,6 +363,18 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
         facets,
         templateIds: linkedTemplates,
         lessonIds: linkedLessons,
+        bookPageBindings: validBookBindings
+          .filter((binding) => linkedTemplates.includes(binding.templateId))
+          .map((binding) => ({
+            ...binding,
+            pageIds: [...binding.pageIds].sort(),
+            unassessedRequirements: [...binding.unassessedRequirements],
+          }))
+          .sort((a, b) =>
+            `${a.templateId}:${a.bookId}`.localeCompare(
+              `${b.templateId}:${b.bookId}`,
+            ),
+          ),
         publicationIds: linkedPublications,
         allDeclaredFacetsReviewed:
           facets.length > 0 && facets.every((f) => f.independentlyReviewed),
@@ -310,6 +404,10 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
       facets: facetOwner.size,
       templatesPresent: templates.length,
       lessonsPresent: lessons.length,
+      booksPresent: books.length,
+      bookLinkedTemplates: new Set(
+        validBookBindings.map((binding) => binding.templateId),
+      ).size,
       publicationRecords: publications.length,
       generatedArtifacts: artifactStates.filter((a) => a.generated).length,
       testedArtifacts: artifactStates.filter((a) => a.tested).length,
@@ -320,6 +418,18 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
       fullyCoveredSkills: 0,
       fullyCoveredStandards: 0,
     },
+    missingInstructionTemplateIds,
+    bookBindings: validBookBindings
+      .map((binding) => ({
+        ...binding,
+        pageIds: [...binding.pageIds].sort(),
+        unassessedRequirements: [...binding.unassessedRequirements],
+      }))
+      .sort((a, b) =>
+        `${a.templateId}:${a.bookId}`.localeCompare(
+          `${b.templateId}:${b.bookId}`,
+        ),
+      ),
     orphanTemplateIds,
     orphanLessonIds,
     standards: standardCoverage,

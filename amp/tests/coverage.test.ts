@@ -180,3 +180,48 @@ test("agent queue has bounded nonoverlapping ownership separate review and no ex
     /Unsafe ownership/,
   );
 });
+
+test("validated book pages connect instruction without promoting mastery or review status", () => {
+  const binding = {
+    templateId: "example",
+    skillId: skill.id,
+    bookId: "book",
+    pageIds: ["page"],
+    assessedResponse: "numeric-result-only" as const,
+    unassessedRequirements: ["Independent written explanation."],
+  };
+  const input = {
+    ...fixture,
+    lessons: [],
+    books: [{ id: "book", pageIds: ["page"] }],
+    bookBindings: [binding],
+  };
+  const report = buildCoverageManifest(input);
+  assert.deepEqual(report.errors, []);
+  assert.deepEqual(report.missingInstructionTemplateIds, []);
+  assert.deepEqual(report.skills[0]!.bookPageBindings, [binding]);
+  assert.equal(report.summary.bookLinkedTemplates, 1);
+  assert.equal(report.summary.testedArtifacts, 0);
+  assert.equal(report.summary.publishedArtifacts, 0);
+  assert.equal(report.skills[0]!.fullyCovered, false);
+  assert.equal(
+    report.artifacts.find((a) => a.id === "book.book")?.independentlyReviewed,
+    false,
+  );
+  for (const bad of [
+    { ...binding, pageIds: ["missing"] },
+    { ...binding, bookId: "missing" },
+    { ...binding, skillId: "missing" },
+    { ...binding, unassessedRequirements: [] },
+  ]) {
+    const invalid = buildCoverageManifest({ ...input, bookBindings: [bad] });
+    assert.equal(invalid.valid, false);
+    assert.deepEqual(invalid.missingInstructionTemplateIds, ["example"]);
+    assert.ok(
+      invalid.errors.some((e) => e.includes("Invalid book teaching binding")),
+    );
+  }
+  const missing = buildCoverageManifest({ ...input, bookBindings: [] });
+  assert.equal(missing.valid, false);
+  assert.deepEqual(missing.missingInstructionTemplateIds, ["example"]);
+});

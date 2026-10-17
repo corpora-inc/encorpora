@@ -1,3 +1,4 @@
+import { buildCoverageManifest } from "../src/content/coverage.js";
 import {
   fractionPracticeBindings,
   validateFractionPracticeCoverage,
@@ -10,7 +11,8 @@ import { templates } from "../src/math/engine";
 import { lessons } from "../src/content/lessons";
 const curriculum = auditCurriculum(),
   funding = auditFundingRegistry(fundingRegistry);
-const errors = [...curriculum.errors, ...funding.errors];
+const coverage = buildCoverageManifest();
+const errors = [...curriculum.errors, ...funding.errors, ...coverage.errors];
 const bookTemplateIds = new Set<string>();
 try {
   validateFractionPracticeCoverage();
@@ -37,6 +39,11 @@ console.log(
     {
       curriculum,
       funding,
+      contentCoverage: {
+        valid: coverage.valid,
+        summary: coverage.summary,
+        missingInstructionTemplateIds: coverage.missingInstructionTemplateIds,
+      },
       referenceContent: {
         templates: templates.length,
         lessons: lessons.length,
