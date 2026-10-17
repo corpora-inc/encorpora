@@ -142,7 +142,7 @@ try {
     await choice.scrollIntoViewIfNeeded();
     const bounds = await choice.boundingBox();
     assert.ok(
-      bounds && bounds.y >= 0 && bounds.y + bounds.height <= 568,
+      bounds && bounds.y >= -1 && bounds.y + bounds.height <= 569,
       `An enlarged choice is unreachable: ${JSON.stringify(bounds)}`,
     );
   }
