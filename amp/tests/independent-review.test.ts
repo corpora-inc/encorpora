@@ -26,6 +26,12 @@ test('independent exact oracle checks the complete inventory and rejects corrupt
   assert.notEqual(duplicate.status, 0); assert.match(duplicate.stderr, /Duplicate case/);
   const unknown = review(JSON.stringify({ ...manifest, templates: [...manifest.templates, 'unreviewed-family'] }) + '\n');
   assert.notEqual(unknown.status, 0); assert.match(unknown.stderr, /inventory mismatch/);
+  const graphIndex = lines.findIndex((line, index) => index > 0 && JSON.parse(line).problem.public.templateId === 'graphed-line-slope');
+  assert.ok(graphIndex > 0, 'The graphical consistency regression must visit a slope case');
+  const graph = JSON.parse(lines[graphIndex]!);
+  graph.problem.public.figure.lines[0].m += 0.5;
+  const wrongLine = review([...lines.slice(0, graphIndex), JSON.stringify(graph), ...lines.slice(graphIndex + 1)].join('\n') + '\n');
+  assert.notEqual(wrongLine.status, 0); assert.match(wrongLine.stderr, /Line slope contradicts points/);
   const undersized = review(JSON.stringify({ ...manifest, seedCount: 255 }) + '\n');
   assert.notEqual(undersized.status, 0); assert.match(undersized.stderr, /at least 256/);
 });

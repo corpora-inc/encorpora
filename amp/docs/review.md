@@ -62,3 +62,20 @@ consistency, not rendered SVG/PDF appearance or screen-reader behavior. It does
 not certify every explanation, lesson quality, full accessibility, curriculum
 completeness, standards alignment, adaptive effectiveness or student outcomes.
 Editorial and visual review are separate release requirements.
+
+## Graphical families
+
+The oracle also solves coordinate reading, slope from marked points, chart totals
+and differences, elapsed minutes from an analog start time, and number-line
+distance. It checks bounds, labels, category references, clock domains and whether
+a represented straight line passes through the marked points. Slope answers use
+exact fractions; floating line coefficients are checked within 1e-12 only for
+rendering consistency. A negative test corrupts a line coefficient while keeping
+the answer intact, demonstrating that inconsistent visual givens are rejected.
+
+`tests/graphical-independent.test.ts` renders 256 seeds for every graphical family
+and independently recovers mathematical coordinates from SVG attributes. It
+checks line collinearity and clipping, bar proportions and baselines, partial-hour
+clock hand angles, and number-line point placement. It fails if a new graphical
+representation lacks a geometry check. These tests check SVG geometry, not the
+visual readability of printed labels or browser/font differences.

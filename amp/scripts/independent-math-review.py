@@ -17,6 +17,8 @@ SUPPORTED = frozenset({
     'percent-of', 'integer-addition', 'integer-power', 'line-slope',
     'linear-system-x', 'simple-probability', 'arithmetic-term',
     'function-evaluation', 'unit-price', 'decimal-multiplication', 'operation-order',
+    'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
+    'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
 
 
@@ -33,6 +35,61 @@ def solve(public):
     numbers = [int(value) for value in re.findall(r'-?[0-9]+', prompt)]
     figure = public.get('figure')
     f = Fraction
+    if template in {'coordinate-point-reading', 'graphed-line-slope'}:
+        require(figure['kind'] == 'coordinate-plane', 'Wrong coordinate representation')
+        require(figure['xMin'] < figure['xMax'] and figure['yMin'] < figure['yMax'], 'Invalid coordinate bounds')
+        points = figure['points']
+        require(all(figure['xMin'] <= point['x'] <= figure['xMax'] and
+                    figure['yMin'] <= point['y'] <= figure['yMax'] and
+                    type(point['x']) is int and type(point['y']) is int for point in points),
+                'Coordinates must be visible integer grid points')
+        if template == 'coordinate-point-reading':
+            require(len(points) == 1 and points[0]['label'] == 'P', 'Expected one point P')
+            requested = re.search(r'What is the ([xy])-coordinate of point P', prompt)
+            require(requested is not None, 'Ambiguous requested coordinate')
+            return points[0][requested[1]]
+        require(len(points) == 2 and [point['label'] for point in points] == ['A', 'B'], 'Expected points A and B')
+        left, right = points
+        slope = f(right['y']-left['y'], right['x']-left['x'])
+        lines = figure['lines']
+        require(len(lines) == 1, 'Expected a single line')
+        line = lines[0]
+        # Rendering uses floating coefficients; grading remains an exact rational.
+        require(math.isfinite(line['m']) and math.isfinite(line['b']) and
+                math.isclose(line['m'], float(slope), rel_tol=0, abs_tol=1e-12), 'Line slope contradicts points')
+        require(all(math.isclose(line['m']*point['x']+line['b'], point['y'], rel_tol=0, abs_tol=1e-12)
+                    for point in points), 'Drawn line does not pass through marked points')
+        return slope
+    if template in {'bar-chart-total', 'bar-chart-difference'}:
+        require(figure['kind'] == 'bar-chart' and figure['valueLabel'] == 'Trees', 'Wrong chart representation')
+        categories, values = figure['categories'], figure['values']
+        require(len(categories) == len(values) == 3 and len(set(categories)) == 3 and
+                all(type(value) is int and value >= 0 for value in values), 'Invalid category counts')
+        counts = dict(zip(categories, values))
+        if template == 'bar-chart-total':
+            return sum(values)
+        requested = re.search(r'How many more (\w+) trees than (\w+) trees', prompt)
+        require(requested is not None and requested[1] in counts and requested[2] in counts, 'Unknown named category')
+        difference = counts[requested[1]] - counts[requested[2]]
+        require(difference > 0, 'More-than prompt names the wrong larger category')
+        return difference
+    if template == 'clock-elapsed-minutes':
+        require(figure['kind'] == 'clock' and 1 <= figure['hour'] <= 12 and
+                0 <= figure['minute'] < 60, 'Invalid clock')
+        end_time = re.search(r'ends at ([0-9]+):([0-9]{2}) later that same morning', prompt)
+        require(end_time is not None, 'Missing same-morning ending time')
+        hour, minute = map(int, end_time.groups())
+        require(1 <= hour < 12 and 0 <= minute < 60, 'Ending time outside morning')
+        elapsed = hour*60 + minute - (figure['hour']*60 + figure['minute'])
+        require(0 < elapsed <= 120, 'Duration outside supported bounds')
+        return elapsed
+    if template == 'number-line-distance':
+        require(figure['kind'] == 'number-line' and figure['min'] < figure['max'], 'Invalid number line')
+        left, right = figure['points']
+        require(all(type(point) is int and figure['min'] <= point <= figure['max'] for point in (left, right)),
+                'Marked points must be visible integer ticks')
+        require(left != right, 'Distance question needs distinct points')
+        return abs(right-left)
     if template == 'count-objects':
         require(figure['kind'] == 'collection' and 1 <= figure['count'] <= 10, 'Invalid counting representation')
         return figure['count']
