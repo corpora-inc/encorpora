@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-native-sign-out"
+description = "Enables the native_sign_out command without any pre-configured scope."
+commands.allow = ["native_sign_out"]
+
+[[permission]]
+identifier = "deny-native-sign-out"
+description = "Denies the native_sign_out command without any pre-configured scope."
+commands.deny = ["native_sign_out"]

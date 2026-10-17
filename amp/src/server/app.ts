@@ -84,6 +84,10 @@ export function buildApp(options: {
     product: "AMP",
     version: 1,
   }));
+  // Identity binding precedes learning consent; this endpoint grants no access.
+  app.get("/api/v1/session", async (request) => ({
+    accountId: await options.authenticate(request),
+  }));
   app.get("/api/v1/catalog", async () => ({
     templates,
     lessons,

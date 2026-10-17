@@ -36,6 +36,7 @@
     "consent:policy": "tsx scripts/consent-policy.ts",
     "test:purchase-app-ui": "tsx scripts/verify-purchase-app-ui.ts",
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
+    "test:native-session": "tsx scripts/verify-native-session.ts",
     "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts"
   },
   "dependencies": {

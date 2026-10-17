@@ -2,7 +2,8 @@ import { consumeInitialConsentChallenge } from "./consent-entry";
 import { StartingPointPicker, startingPointNames } from "./StartingPointPicker";
 import type { StartingBand } from "../learning/starting-point";
 import { nativeRuntime } from "./native-runtime";
-import { NativePreview } from "./NativePreview";
+import { NativeGate, NativeFamily } from "./NativeGate";
+import { learningRequest, learningCatalog } from "./learning-transport";
 import { ParentConsentCenter } from "./ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "./consent-link";
 import {
@@ -69,6 +70,15 @@ function App() {
   const [startingPicker, setStartingPicker] = useState(false);
   const [startingBand, setStartingBand] = useState<StartingBand | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
+  const nativeFamilyReturn = useRef(false);
+  useLayoutEffect(() => {
+    if (!familyOpen && nativeFamilyReturn.current) {
+      nativeFamilyReturn.current = false;
+      document
+        .querySelector<HTMLElement>(".account-menu summary")
+        ?.focus({ preventScroll: true });
+    }
+  }, [familyOpen]);
   const [consentOpen, setConsentOpen] = useState(false);
   const [consentChallenge, setConsentChallenge] =
     useState<ConsentChallenge | null>(null);
@@ -244,16 +254,7 @@ function App() {
   }, []);
   async function api<T>(path: string, body?: unknown): Promise<T> {
     const epoch = authEpoch.current;
-    const result = await fetch(`/api/v1${path}`, {
-      method: body === undefined ? "GET" : "POST",
-      headers: {
-        "content-type": "application/json",
-        ...(tokenRef.current
-          ? { authorization: `Bearer ${tokenRef.current}` }
-          : {}),
-      },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
+    const result = await learningRequest(path, tokenRef.current, body);
     const data = await result.json();
     if (epoch !== authEpoch.current)
       throw new Error("Your account session changed.");
@@ -279,7 +280,7 @@ function App() {
       onSessionChanged((session) => {
         authSessionRevision.current++;
         updateAuth(session);
-      }),
+      }, setError),
     [],
   );
   useEffect(() => {
@@ -291,11 +292,7 @@ function App() {
       .catch((e) => {
         if (revision === authSessionRevision.current) setError(String(e));
       });
-    void fetch("/api/v1/catalog")
-      .then((r) => {
-        if (!r.ok) throw new Error("The learning service is unavailable.");
-        return r.json();
-      })
+    void learningCatalog()
       .then(setCatalog)
       .catch((e) => setError(String(e)));
   }, []);
@@ -631,6 +628,8 @@ function App() {
     });
   }
   async function downloadBook(id: string) {
+    if (nativeRuntime)
+      throw new Error("PDF downloads require the configured web application.");
     if (!learner || !token) return;
     const epoch = authEpoch.current;
     const result = await fetch(
@@ -657,6 +656,8 @@ function App() {
     URL.revokeObjectURL(url);
   }
   async function download(kind: "lesson" | "workbook" | "solutions") {
+    if (nativeRuntime)
+      throw new Error("PDF downloads require the configured web application.");
     const publicationLesson = readingLesson ?? lesson;
     if (!learner || !publicationLesson || !token) return;
     const epoch = authEpoch.current;
@@ -718,7 +719,7 @@ function App() {
                 <button className="text-button" onClick={openFamily}>
                   Manage family
                 </button>
-                {learningAllowed && (
+                {learningAllowed && !nativeRuntime && (
                   <button
                     className="text-button"
                     disabled={busy}
@@ -754,7 +755,7 @@ function App() {
           )}
         </div>
       </header>
-      {!learner && !familyOpen && (
+      {!learner && !familyOpen && !nativeRuntime && (
         <div className="intro">
           <div>
             <p className="eyebrow">A LITTLE CURIOSITY. A NEW POSSIBILITY.</p>
@@ -798,7 +799,15 @@ function App() {
           {error}
         </div>
       )}
-      {familyOpen && token && consentOpen ? (
+      {familyOpen && token && nativeRuntime ? (
+        <NativeFamily
+          onClose={() => {
+            nativeFamilyReturn.current = true;
+            setFamilyOpen(false);
+          }}
+          onSignOut={() => void action(signOut)}
+        />
+      ) : familyOpen && token && consentOpen ? (
         <ParentConsentCenter
           key={`${accountId}:${renderedConsentEpoch}`}
           token={token}
@@ -894,11 +903,25 @@ function App() {
               : "Parent consent is needed."}
           </h2>
           <p>
-            Open Family → Privacy → Learning consent to review enrollment. Your
-            records and billing controls stay available while learning is
-            paused.
+            {nativeRuntime
+              ? "Learning consent must be completed in the configured web application before this learner can practice."
+              : "Open Family → Privacy → Learning consent to review enrollment. Your records and billing controls stay available while learning is paused."}
           </p>
           <button onClick={openFamily}>Manage family</button>
+        </section>
+      ) : !learner && nativeRuntime ? (
+        <section className="card welcome">
+          <h2>Set up a learner</h2>
+          <p>
+            Create a learner profile in the configured web application, then
+            return here to practice.
+          </p>
+          <button onClick={() => void action(loadFamily)}>
+            Check for learners
+          </button>
+          <button className="secondary" onClick={openFamily}>
+            Family settings
+          </button>
         </section>
       ) : !learner ? (
         <section className="card welcome">
@@ -945,7 +968,9 @@ function App() {
             bookPositions.current[`${learner.id}:${readingBook.book.id}`] =
               frame;
           }}
-          download={() => downloadBook(readingBook.book.id)}
+          download={
+            nativeRuntime ? undefined : () => downloadBook(readingBook.book.id)
+          }
         />
       ) : tab === "practice" ? (
         startingPicker ? (
@@ -1067,7 +1092,11 @@ function App() {
             <>
               <div className="section-heading">
                 <h2>A library for curious minds.</h2>
-                <p>Read, explore, and print a lesson to keep nearby.</p>
+                <p>
+                  {nativeRuntime
+                    ? "Read and explore a mathematical idea."
+                    : "Read, explore, and print a lesson to keep nearby."}
+                </p>
               </div>
               {books.map((book) => (
                 <article key={book.id} className="card book-library-card">
@@ -1190,30 +1219,37 @@ function App() {
                     ? "← Your idea"
                     : "← All lessons"}
                 </button>
-                <button className="text-button" onClick={() => window.print()}>
-                  Print lesson
-                </button>
+                {!nativeRuntime && (
+                  <button
+                    className="text-button"
+                    onClick={() => window.print()}
+                  >
+                    Print lesson
+                  </button>
+                )}
               </div>
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
-              <details className="reader-downloads">
-                <summary>Download &amp; print</summary>
-                <div className="downloads">
-                  {(["lesson", "workbook", "solutions"] as const).map(
-                    (kind) => (
-                      <button
-                        className="secondary"
-                        key={kind}
-                        disabled={busy}
-                        onClick={() => void action(() => download(kind))}
-                      >
-                        Download {kind} PDF
-                      </button>
-                    ),
-                  )}
-                </div>
-              </details>
+              {!nativeRuntime && (
+                <details className="reader-downloads">
+                  <summary>Download &amp; print</summary>
+                  <div className="downloads">
+                    {(["lesson", "workbook", "solutions"] as const).map(
+                      (kind) => (
+                        <button
+                          className="secondary"
+                          key={kind}
+                          disabled={busy}
+                          onClick={() => void action(() => download(kind))}
+                        >
+                          Download {kind} PDF
+                        </button>
+                      ),
+                    )}
+                  </div>
+                </details>
+              )}
               {readingLesson.sections.map((s) => (
                 <section key={s.title}>
                   <h3>{s.title}</h3>
@@ -1271,7 +1307,7 @@ function App() {
           }
         />
       )}
-      {!learner && !familyOpen && (
+      {!learner && !familyOpen && !nativeRuntime && (
         <footer>
           <span>
             {product.name} · A {product.company} learning studio
@@ -1288,5 +1324,11 @@ function App() {
   );
 }
 createRoot(document.getElementById("root")!).render(
-  nativeRuntime ? <NativePreview /> : <App />,
+  nativeRuntime ? (
+    <NativeGate>
+      <App />
+    </NativeGate>
+  ) : (
+    <App />
+  ),
 );

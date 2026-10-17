@@ -1,6 +1,17 @@
 {
   "identifier": "preview",
-  "description": "Bundled main window can inspect native availability and read the public AMP catalog.",
-  "windows": ["main"],
-  "permissions": ["allow-native-status", "allow-read-public-resource"]
+  "description": "Bundled main window can use configured native identity and fixed learning routes. Tokens remain in Rust memory.",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "allow-native-status",
+    "allow-read-public-resource",
+    "allow-native-session",
+    "allow-native-sign-in",
+    "allow-native-sign-out",
+    "allow-native-learning-request",
+    "core:event:allow-listen",
+    "core:event:allow-unlisten"
+  ]
 }

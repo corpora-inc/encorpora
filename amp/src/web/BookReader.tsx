@@ -21,7 +21,7 @@ export function BookReader({
   initialFrame?: number;
   onClose: () => void;
   onPosition: (frame: number) => void;
-  download: () => Promise<void>;
+  download?: () => Promise<void>;
 }) {
   const frames = useMemo(() => readingFrames(book), [book]);
   const [position, setPosition] = useState(
@@ -209,27 +209,29 @@ export function BookReader({
               See the model
             </button>
           )}
-          <button
-            className="text-button"
-            disabled={busy}
-            onClick={async () => {
-              setBusy(true);
-              setError("");
-              try {
-                await download();
-              } catch (error) {
-                setError(
-                  error instanceof Error
-                    ? error.message
-                    : "The download could not be prepared. Please try again.",
-                );
-              } finally {
-                setBusy(false);
-              }
-            }}
-          >
-            {busy ? "Preparing…" : "Download book"}
-          </button>
+          {download && (
+            <button
+              className="text-button"
+              disabled={busy}
+              onClick={async () => {
+                setBusy(true);
+                setError("");
+                try {
+                  await download();
+                } catch (error) {
+                  setError(
+                    error instanceof Error
+                      ? error.message
+                      : "The download could not be prepared. Please try again.",
+                  );
+                } finally {
+                  setBusy(false);
+                }
+              }}
+            >
+              {busy ? "Preparing…" : "Download book"}
+            </button>
+          )}
         </div>
         <div className="reader-navigation">
           <button
