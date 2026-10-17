@@ -36,9 +36,13 @@ export function registerBookRoutes(
     if (!problemId) return null;
     const problem = await tx.problem(problemId);
     if (!problem) throw new ApiError(404, "Problem not found");
-    const alignment = book.alignments.find(
-      (entry) => entry.skillId === problem.public.skillId,
-    );
+    const alignment =
+      book.bindings.find(
+        (entry) =>
+          entry.templateId === problem.public.templateId &&
+          entry.skillId === problem.public.skillId,
+      ) ??
+      book.alignments.find((entry) => entry.skillId === problem.public.skillId);
     if (!alignment) return null;
     // Reading support describes this instance only and never rewrites an already
     // submitted attempt or manufactures mastery from a book visit.

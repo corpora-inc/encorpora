@@ -1,3 +1,4 @@
+import { fractionPracticeBindings } from "../src/content/fraction-practice-coverage.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";
@@ -62,6 +63,27 @@ test(
           .statusCode,
         404,
       );
+      for (const binding of fractionPracticeBindings) {
+        const linked = generateProblem(binding.templateId, randomUUID());
+        await repository.transaction(account, learner.id, (tx) =>
+          tx.saveProblem(linked),
+        );
+        const result = await post("open", { problemId: linked.public.id });
+        assert.equal(result.statusCode, 200);
+        assert.equal(
+          result.json().suggestedPageId,
+          binding.pageIds[0],
+          binding.templateId,
+        );
+        assert.equal(
+          await repository.transaction(
+            account,
+            learner.id,
+            async (tx) => (await tx.problem(linked.public.id))?.lessonViewed,
+          ),
+          true,
+        );
+      }
       const problem = generateProblem("fraction-model", randomUUID());
       const foreign = generateProblem("fraction-model", randomUUID());
       await repository.transaction(account, learner.id, (tx) =>
