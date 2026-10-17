@@ -88,11 +88,25 @@ try {
     }[] = [];
     for (let index = 0; index < frames.length; index++) {
       for (const size of [
-        { width: 390, height: 844 },
-        { width: 320, height: 568 },
-        { width: 844, height: 390 },
+        { width: 390, height: 844, textScale: 1 },
+        { width: 320, height: 568, textScale: 1 },
+        { width: 844, height: 390, textScale: 1 },
+        ...(book.presentation === "early-number"
+          ? [
+              { width: 390, height: 844, textScale: 1.25 },
+              { width: 320, height: 568, textScale: 1.25 },
+            ]
+          : []),
       ]) {
-        await page.setViewportSize(size);
+        await page.locator(".reading-content").evaluate((content) => {
+          (content as HTMLElement).style.removeProperty("font-size");
+        });
+        await page.setViewportSize({ width: size.width, height: size.height });
+        if (size.textScale !== 1)
+          await page.locator(".reading-content").evaluate((content, scale) => {
+            (content as HTMLElement).style.fontSize =
+              `${parseFloat(getComputedStyle(content).fontSize) * scale}px`;
+          }, size.textScale);
         await page.waitForFunction(
           () =>
             Math.abs(
@@ -105,13 +119,27 @@ try {
         );
         if (index === 93 && size.width === 320)
           await page.screenshot({ path: `${output}/compact-model.png` });
+        if (
+          book.presentation === "early-number" &&
+          frames[index]!.block.kind === "callout" &&
+          book.pages.find((p) => p.id === frames[index]!.pageId)?.kind ===
+            "guide" &&
+          size.width === 320 &&
+          size.textScale === 1.25
+        )
+          await page.screenshot({
+            path: `${output}/enlarged-guide-${index}.png`,
+          });
         const bounds = await page
           .locator(".reader-stage")
           .evaluate((stage) => ({
             height: stage.clientHeight,
             scroll: stage.scrollHeight,
           }));
-        if (bounds.scroll > bounds.height + 2)
+        if (bounds.scroll > bounds.height + 2) {
+          await page.screenshot({
+            path: `${output}/overflow-${index}-${size.width}-${size.textScale}.png`,
+          });
           overflow.push({
             index,
             kind: frames[index]!.block.kind,
@@ -120,6 +148,7 @@ try {
             scroll: bounds.scroll,
             available: bounds.height,
           });
+        }
         assert.ok(
           await page.evaluate(
             () => document.documentElement.scrollWidth <= innerWidth,
@@ -244,7 +273,7 @@ try {
     await page.unroute(pattern);
     assert.deepEqual(errors, []);
     console.log(
-      `${book.id}: checked ${frames.length} frames across three device layouts.`,
+      `${book.id}: checked ${frames.length} frames across three device layouts${book.presentation === "early-number" ? " and two 125% body-text passes" : ""}.`,
     );
     await page.close();
   }

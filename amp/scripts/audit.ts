@@ -1,3 +1,5 @@
+import { validateNumberAlignments } from "../books/number-builders/alignments.js";
+import { validateNumberPracticeBindings } from "../books/number-builders/practice.js";
 import { validateAlgebraCoverage } from "../src/content/algebra-coverage.js";
 import { validateBalanceAlignments } from "../books/balance-and-change/alignments.js";
 import { validateBalancePracticeBindings } from "../books/balance-and-change/practice.js";
@@ -21,6 +23,8 @@ const bookTemplateIds = new Set<string>();
 try {
   validateAlgebraCoverage();
   validateFractionPracticeCoverage();
+  validateNumberAlignments(skills, templates, standards);
+  validateNumberPracticeBindings(templates);
   validateBalanceAlignments(skills, templates, standards);
   validateBalancePracticeBindings(templates);
   validateEqualGroupsAlignments(skills, templates, standards);

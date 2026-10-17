@@ -12,7 +12,7 @@ export type ReadingFrame = {
 /** Worked examples reveal a decision at a time; their prompt stays beside each
  * step. All other authored blocks retain their original order and identity. */
 /** Split long prose at sentence boundaries while retaining every word. */
-export function readingParagraphs(text: string): string[] {
+export function readingParagraphs(text: string, maximumLength = 180): string[] {
   const sentences = Array.from(
     new Intl.Segmenter("en", { granularity: "sentence" }).segment(text),
     (part) => part.segment,
@@ -21,7 +21,7 @@ export function readingParagraphs(text: string): string[] {
   for (const sentence of sentences) {
     const value = sentence.trim();
     const last = chunks.at(-1);
-    if (last && last.length + value.length + 1 <= 180)
+    if (last && last.length + value.length + 1 <= maximumLength)
       chunks[chunks.length - 1] = `${last} ${value}`;
     else chunks.push(value);
   }
@@ -40,7 +40,10 @@ export function readingFrames(book: FractionBook): ReadingFrame[] {
               block,
             }))
           : block.kind === "text" || block.kind === "callout"
-            ? readingParagraphs(block.text).map((text, fragment) => ({
+            ? readingParagraphs(
+                block.text,
+                book.presentation === "early-number" ? 140 : 180,
+              ).map((text, fragment) => ({
                 pageId: page.id,
                 blockIndex,
                 fragment,

@@ -99,6 +99,8 @@ export interface BookPage {
   blocks: BookBlock[];
 }
 export interface MathBook {
+  /** Learner typography; guides and reasoned keys retain adult typesetting. */
+  presentation?: "early-number";
   id: string;
   version: string;
   title: string;

@@ -1,3 +1,6 @@
+import { numberBuilders } from "../../books/number-builders/book.js";
+import { numberAlignments } from "../../books/number-builders/alignments.js";
+import { numberPracticeBindings } from "../../books/number-builders/practice.js";
 import { balanceAndChange } from "../../books/balance-and-change/book.js";
 import { balanceAlignments } from "../../books/balance-and-change/alignments.js";
 import { balancePracticeBindings } from "../../books/balance-and-change/practice.js";
@@ -35,6 +38,12 @@ export const books = [
     alignments: balanceAlignments,
     bindings: balancePracticeBindings,
     requiredReaderCapabilities: ["algebra-models-v1"],
+  },
+  {
+    content: numberBuilders,
+    alignments: numberAlignments,
+    bindings: numberPracticeBindings,
+    requiredReaderCapabilities: ["early-number-v1"],
   },
 ] as const;
 export const bookSummaries: BookSummary[] = books.map(

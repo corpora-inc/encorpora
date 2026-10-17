@@ -8,6 +8,7 @@ import { MathText } from "../publishing/MathText.js";
 import { FocusDialog } from "./PracticeWorkspace.js";
 import { BookScreenFigure } from "./BookScreenFigure.js";
 import "./book-reader.css";
+import "./early-number-reader.css";
 type Solution = Extract<BookBlock, { kind: "solution" }>;
 export function BookReader({
   book,
@@ -161,7 +162,12 @@ export function BookReader({
     }
   }
   return (
-    <main className="book-reader" aria-label={book.title}>
+    <main
+      className="book-reader"
+      aria-label={book.title}
+      data-presentation={book.presentation}
+      data-page-kind={page.kind}
+    >
       <header className="reader-toolbar">
         <button className="text-button" onClick={onClose}>
           ← Back

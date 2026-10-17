@@ -1,0 +1,53 @@
+/* Learner pages use short spoken invitations; adult guide and key prose stay distinct. */
+.book-reader[data-presentation="early-number"] .reading-content {
+  font-family: Arial, sans-serif;
+}
+.book-reader[data-presentation="early-number"]:not([data-page-kind="guide"])
+  .reading-content {
+  font-size: 24px;
+  line-height: 1.4;
+}
+.book-reader[data-presentation="early-number"] .reading-prose {
+  font-family: Arial, sans-serif;
+}
+.book-reader[data-presentation="early-number"] .reader-heading h2 {
+  color: #184e57;
+}
+.book-reader[data-presentation="early-number"] .reading-equation {
+  font-size: 30px;
+  color: #184e57;
+}
+.book-reader[data-presentation="early-number"] .reading-callout {
+  border-radius: 0 20px 20px 0;
+}
+.book-reader[data-presentation="early-number"] .book-screen-figure figcaption {
+  font-size: 18px;
+  line-height: 1.35;
+}
+.book-reader[data-presentation="early-number"] .reading-solution {
+  font-size: 16px;
+  line-height: 1.45;
+}
+@media (max-width: 650px) {
+  .book-reader[data-presentation="early-number"]:not([data-page-kind="guide"])
+    .reading-content {
+    font-size: 21px;
+    line-height: 1.35;
+  }
+  .book-reader[data-presentation="early-number"] .reading-callout {
+    padding: 12px;
+  }
+  .book-reader[data-presentation="early-number"] .reading-equation {
+    font-size: 27px;
+  }
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .book-reader[data-presentation="early-number"]:not([data-page-kind="guide"])
+    .reading-content {
+    font-size: 21px;
+    line-height: 1.3;
+  }
+  .book-reader[data-presentation="early-number"] .reading-equation {
+    font-size: 26px;
+  }
+}
