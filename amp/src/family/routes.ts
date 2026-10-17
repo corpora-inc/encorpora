@@ -19,7 +19,7 @@ export async function registerFamilyRoutes(
   const learnerParams = z.strictObject({
     learnerId: z.string().min(1).max(200),
   });
-  await app.register(async (scope) => {
+  app.register(async (scope) => {
     scope.setErrorHandler((error, _request, reply) => {
       if (error instanceof FamilyError)
         return reply.code(error.statusCode).send({ error: error.code });
@@ -29,12 +29,10 @@ export async function registerFamilyRoutes(
         typeof error === "object" && error !== null && "statusCode" in error
           ? Number(error.statusCode)
           : 500;
-      return reply
-        .code(status >= 400 && status < 500 ? status : 503)
-        .send({
-          error:
-            status === 401 ? "sign_in_required" : "family_service_unavailable",
-        });
+      return reply.code(status >= 400 && status < 500 ? status : 503).send({
+        error:
+          status === 401 ? "sign_in_required" : "family_service_unavailable",
+      });
     });
     scope.addHook("onRequest", async (_request, reply) => {
       reply.header("Cache-Control", "no-store");

@@ -25,6 +25,7 @@ test(
         "0001.sql",
         "0002-commerce.sql",
         "0003-parent-consent.sql",
+        "0004-parent-lifecycle.sql",
         "0005-stripe.sql",
       ])
         await pool.query(

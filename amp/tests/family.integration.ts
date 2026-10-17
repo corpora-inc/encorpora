@@ -4,7 +4,10 @@ import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { Pool } from "pg";
 import Fastify from "fastify";
+import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 import { FamilyRepository } from "../src/family/repository.js";
+import { registerStripeRoutes } from "../src/billing/stripe/routes.js";
+import { config as stripeFixtureConfig } from "./stripe-fixtures.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { generateProblem } from "../src/math/engine.js";
@@ -147,10 +150,10 @@ test(
       assert.ok(afterWithdrawal.length > 205);
       // Simulate installed Stripe bindings without a remote payment or dependency on migration0005.
       await pool.query(
-        "CREATE TABLE amp_stripe_checkouts(id text,account_id text,learner_id text,closed boolean)",
+        "CREATE TABLE amp_stripe_checkouts(id text,account_id text,learner_id text,closed boolean,customer_id text,subscription_id text,session_id text,created_at timestamptz DEFAULT now())",
       );
       await pool.query(
-        "INSERT INTO amp_stripe_checkouts VALUES('fixture','parent',$1,false)",
+        "INSERT INTO amp_stripe_checkouts(id,account_id,learner_id,closed) VALUES('fixture','parent',$1,false)",
         [child.id],
       );
       await pool.query(
@@ -222,6 +225,11 @@ test(
           return "parent";
         },
       });
+      await registerStripeRoutes(app, {
+        pool,
+        config: stripeFixtureConfig,
+        authenticate: async () => "parent",
+      });
       assert.equal(
         (await app.inject({ url: "/api/v1/family" })).statusCode,
         401,
@@ -271,6 +279,27 @@ test(
         401,
       );
       assert.equal((await api.summary("parent")).consent.status, "withdrawn");
+      await pool.query(
+        "UPDATE amp_privacy_events SET expires_at=now()-interval '1 second' WHERE action='export.started'",
+      );
+      const retainedBefore = (
+        await pool.query("SELECT count(*) FROM amp_grants")
+      ).rows[0].count;
+      const purged = await purgeExpiredPrivacyRecords(pool);
+      assert.ok(purged.expiredExportTickets >= 1);
+      assert.ok(purged.expiredPrivacyEvents >= 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*) FROM amp_privacy_events WHERE expires_at<=now()",
+          )
+        ).rows[0].count,
+        "0",
+      );
+      assert.equal(
+        (await pool.query("SELECT count(*) FROM amp_grants")).rows[0].count,
+        retainedBefore,
+      );
     } finally {
       await app.close();
       await learning.close();

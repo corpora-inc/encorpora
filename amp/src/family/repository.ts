@@ -285,6 +285,12 @@ export class FamilyRepository {
           "SELECT to_jsonb(p) - 'account_id' AS value FROM amp_privacy_events p WHERE account_id=$1 ORDER BY occurred_at,id",
         ],
       ];
+      if (await this.stripeTable(client)) {
+        datasets.push([
+          "stripe-purchase",
+          "SELECT jsonb_build_object('id',id,'learnerId',learner_id,'customerId',customer_id,'subscriptionId',subscription_id,'sessionId',session_id,'closed',closed,'createdAt',created_at) AS value FROM amp_stripe_checkouts WHERE account_id=$1 ORDER BY created_at,id",
+        ]);
+      }
       for (const [type, query] of datasets) {
         if (signal?.aborted) throw new Error("Export canceled");
         await client.query(

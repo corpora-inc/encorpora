@@ -1,7 +1,7 @@
 .family-center {
   width: min(100%, 900px);
   margin: 0 auto;
-  padding: 24px 4px 48px;
+  padding: 24px 20px 48px;
   color: #183e3a;
 }
 .family-heading {
@@ -12,6 +12,7 @@
 }
 .family-heading h1 {
   font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: -0.03em;
   line-height: 1.15;
   margin: 0;
 }
@@ -167,7 +168,7 @@
     gap: 16px;
   }
   .family-center {
-    padding: 16px 4px 36px;
+    padding: 16px 16px 36px;
   }
   .family-section {
     padding: 24px 0;

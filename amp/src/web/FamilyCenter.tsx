@@ -9,6 +9,7 @@ interface Props {
   token: string;
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
+  onLearningInvalidated: () => void;
 }
 type Confirmation =
   { kind: "withdraw" } | { kind: "delete"; learner?: FamilyLearner };
@@ -18,13 +19,18 @@ const messages: Record<string, string> = {
     "This learner is no longer available. Refresh your family details.",
   invalid_family_request: "Check the name and try again.",
   family_service_unavailable:
-    "Family settings could not be saved. Your information is still here; try again.",
+    "Family settings could not be confirmed. Refresh your family details before retrying.",
   billing_account_not_found:
     "There is no linked Stripe billing account. Contact your purchase provider for billing help.",
   billing_unavailable:
     "Billing management is unavailable. Try again or contact your purchase provider; renewal has not been canceled.",
 };
-export function FamilyCenter({ token, onChanged, onClose }: Props) {
+export function FamilyCenter({
+  token,
+  onChanged,
+  onClose,
+  onLearningInvalidated,
+}: Props) {
   const [family, setFamily] = useState<FamilySummary | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
@@ -36,6 +42,24 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
     dialog = useRef<HTMLDialogElement>(null),
     dialogHeading = useRef<HTMLHeadingElement>(null),
     trigger = useRef<HTMLElement | null>(null);
+  const mounted = useRef(false),
+    generation = useRef(0);
+  useLayoutEffect(() => {
+    mounted.current = true;
+    generation.current++;
+    setFamily(null);
+    setError("");
+    setNotice("");
+    setConfirmation(null);
+    setRename(null);
+    setBusy(false);
+    return () => {
+      mounted.current = false;
+      generation.current++;
+    };
+  }, [token]);
+  const current = (epoch: number) =>
+    mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
   tokenRef.current = token;
   async function api<T>(
@@ -43,6 +67,7 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
     body?: unknown,
     signal?: AbortSignal,
   ): Promise<T> {
+    const epoch = generation.current;
     const response = await fetch(`/api/v1${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
@@ -54,7 +79,7 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
       credentials: "same-origin",
     });
     const data = await response.json();
-    if (tokenRef.current !== token)
+    if (!current(epoch) || tokenRef.current !== token)
       throw new Error("Your account session changed.");
     if (!response.ok)
       throw new Error(
@@ -71,7 +96,10 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
     setConfirmation(null);
     setRename(null);
     void api<FamilySummary>("/family", undefined, controller.signal)
-      .then(setFamily)
+      .then((next) => {
+        setFamily(next);
+        onChanged(next);
+      })
       .catch((e) => {
         if (!controller.signal.aborted)
           setError(
@@ -99,19 +127,23 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
   }, [confirmation]);
   async function action(run: () => Promise<void>) {
     if (busy) return;
+    const epoch = generation.current;
     setBusy(true);
     setError("");
     setNotice("");
     try {
       await run();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Please try again.");
+      if (current(epoch))
+        setError(e instanceof Error ? e.message : "Please try again.");
     } finally {
-      setBusy(false);
+      if (current(epoch)) setBusy(false);
     }
   }
   async function refresh() {
+    const epoch = generation.current;
     const next = await api<FamilySummary>("/family");
+    if (!current(epoch)) return;
     setFamily(next);
     onChanged(next);
   }
@@ -129,7 +161,8 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
       if (selected.kind === "withdraw") {
         await api("/family/consent/withdraw", {});
         setConfirmation(null);
-        await refresh();
+        setFamily(null);
+        onLearningInvalidated();
         setNotice(
           "Consent withdrawn. New learning activity is paused. You can still export or delete learning data and manage billing. Renewal has not been canceled.",
         );
@@ -141,10 +174,20 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
           { confirmation: "delete-learning-data" },
         );
         setConfirmation(null);
-        await refresh();
+        setFamily(null);
+        onLearningInvalidated();
         setNotice(
           `${receipt.deletedLearners} learner ${receipt.deletedLearners === 1 ? "history was" : "histories were"} removed from the live application. ${receipt.retainedBillingReferences ? "Only the linked billing references remain. " : ""}${receipt.consentWithdrawn ? "Consent is withdrawn. " : ""}${receipt.billingManagementRequired ? "A billing link remains: check and cancel renewal in billing if needed." : "Check your purchase provider for any renewal commitments."}`,
         );
+      }
+      const epoch = generation.current;
+      try {
+        await refresh();
+      } catch {
+        if (current(epoch))
+          setError(
+            "Your change was saved, but refreshed family details could not be loaded. Try refreshing; do not repeat the deletion.",
+          );
       }
     });
   }
@@ -153,12 +196,12 @@ export function FamilyCenter({ token, onChanged, onClose }: Props) {
       await api("/family/export-ticket", {});
       const link = document.createElement("a");
       link.href = "/api/v1/family/export";
-      link.download = "";
+      link.download = `amp-family-export-${new Date().toISOString().slice(0, 10)}.ndjson`;
       document.body.append(link);
       link.click();
       link.remove();
       setNotice(
-        "Your download has started. Keep this file private. It is complete only if its final line says complete; if the connection stops, download again.",
+        "Your download has started. Keep this file private. If the download is interrupted, try again.",
       );
     });
   }
