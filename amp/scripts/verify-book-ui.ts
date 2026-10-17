@@ -119,6 +119,17 @@ try {
         );
         if (index === 93 && size.width === 320)
           await page.screenshot({ path: `${output}/compact-model.png` });
+        if (
+          book.presentation === "early-number" &&
+          frames[index]!.block.kind === "callout" &&
+          book.pages.find((p) => p.id === frames[index]!.pageId)?.kind ===
+            "guide" &&
+          size.width === 320 &&
+          size.textScale === 1.25
+        )
+          await page.screenshot({
+            path: `${output}/enlarged-guide-${index}.png`,
+          });
         const bounds = await page
           .locator(".reader-stage")
           .evaluate((stage) => ({

@@ -1,7 +1,9 @@
 /* Learner pages use short spoken invitations; adult guide and key prose stay distinct. */
+.book-reader[data-presentation="early-number"] .reading-content {
+  font-family: Arial, sans-serif;
+}
 .book-reader[data-presentation="early-number"]:not([data-page-kind="guide"])
   .reading-content {
-  font-family: Arial, sans-serif;
   font-size: 24px;
   line-height: 1.4;
 }
