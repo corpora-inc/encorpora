@@ -1,3 +1,7 @@
+import {
+  recordFinancialEvidence,
+  holdFinancialRecord,
+} from "../evidence/repository.js";
 import type { Pool } from "pg";
 import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
 import { annualEvents } from "./model.js";
@@ -97,11 +101,28 @@ export class StripeBilling {
     if (event.type === "invoice.paid") invoiceId = event.objectId;
     else if (event.type === "charge.refunded")
       invoiceId = await this.gateway.invoiceFromCharge(event.objectId);
-    else if (event.type === "refund.created" || event.type === "refund.updated")
+    else if (
+      ["refund.created", "refund.updated", "refund.failed"].includes(event.type)
+    )
       invoiceId = await this.gateway.invoiceFromRefund(event.objectId);
+    else if (
+      [
+        "credit_note.created",
+        "credit_note.updated",
+        "credit_note.voided",
+      ].includes(event.type)
+    )
+      invoiceId = await this.gateway.invoiceFromCreditNote(event.objectId);
     else return;
     await this.gateway.verifyMerchant();
-    const payment = await this.gateway.annualPayment(invoiceId);
+    if (event.type.startsWith("credit_note."))
+      await holdFinancialRecord(
+        this.repository,
+        invoiceId,
+        event.eventId,
+        event.objectId,
+      );
+    let payment = await this.gateway.annualPayment(invoiceId);
     if (payment.refunded && !Number.isSafeInteger(payment.fullRefundAt))
       throw new BillingError("refund_timestamp_missing");
     const binding = await this.repository.binding(payment.checkoutId);
@@ -112,12 +133,23 @@ export class StripeBilling {
       session.subscriptionId !== payment.subscriptionId
     )
       throw new BillingError("checkout_subscription_mismatch");
+    let projectionError: unknown;
     await this.repository.transaction(binding.accountId, async (client) => {
       // Serializes invoice deliveries across workers, including refund-before-payment ordering.
       await client.query(
         "SELECT pg_advisory_xact_lock(hashtextextended($1,2))",
         [`${this.repository.namespace}:${invoiceId}`],
       );
+      // Re-fetch under the invoice lock: an earlier lookup is only for finding ownership.
+      payment = await this.gateway.annualPayment(invoiceId);
+      if (
+        payment.checkoutId !== binding.id ||
+        payment.customerId !== binding.customerId ||
+        payment.subscriptionId !== session.subscriptionId
+      )
+        throw new BillingError("payment_binding_changed");
+      // Validate annual mapping before retaining financial facts.
+      annualEvents(this.gateway.config, binding, payment);
       const row = await client.query(
         "SELECT subscription_id FROM amp_stripe_checkouts WHERE id=$1 FOR UPDATE",
         [binding.id],
@@ -131,7 +163,7 @@ export class StripeBilling {
         "UPDATE amp_stripe_checkouts SET subscription_id=$2 WHERE id=$1",
         [binding.id, payment.subscriptionId],
       );
-      await this.repository.pool.query(
+      await client.query(
         `INSERT INTO amp_stripe_invoice_evidence(namespace,invoice_id,full_refund_at,partial_refund) VALUES($1,$2,$3,$4)
         ON CONFLICT(namespace,invoice_id) DO UPDATE SET full_refund_at=COALESCE(amp_stripe_invoice_evidence.full_refund_at,EXCLUDED.full_refund_at),partial_refund=EXCLUDED.partial_refund`,
         [
@@ -141,19 +173,59 @@ export class StripeBilling {
           payment.partialRefund,
         ],
       );
-      const evidence = await this.repository.pool.query(
+      const evidence = await client.query(
         "SELECT full_refund_at FROM amp_stripe_invoice_evidence WHERE namespace=$1 AND invoice_id=$2",
         [this.repository.namespace, invoiceId],
       );
       const refundAt = evidence.rows[0].full_refund_at;
       if (refundAt !== null) payment.fullRefundAt = Number(refundAt);
-      for (const commerceEvent of annualEvents(
-        this.gateway.config,
+      await recordFinancialEvidence(
+        client,
+        this.repository.namespace,
         binding,
         payment,
-      ))
-        await applyCommerceEventInTransaction(client, commerceEvent);
+        payment.financial,
+        event.eventId,
+        this.gateway.config.documentProfile,
+      );
+      await client.query("SAVEPOINT access_projection");
+      try {
+        for (const commerceEvent of annualEvents(
+          this.gateway.config,
+          binding,
+          payment,
+        )) {
+          if (commerceEvent.type === "license.activated") {
+            const replay = await client.query(
+              "SELECT 1 FROM amp_commerce_events WHERE channel='stripe' AND channel_reference=$1 AND event_id=$2",
+              [this.repository.namespace, commerceEvent.id],
+            );
+            if (!replay.rowCount) {
+              const collision = await client.query(
+                "SELECT 1 FROM amp_payment_records WHERE namespace=$1 AND invoice_id=$2 AND review_reason IN ('financial_charge_collision','financial_baseline_collision','financial_refund_history_collision')",
+                [this.repository.namespace, payment.invoiceId],
+              );
+              if (collision.rowCount)
+                throw new BillingError(
+                  "payment_identity_requires_reconciliation",
+                );
+            }
+            if (!replay.rowCount)
+              await this.repository.assertPurchaseAllowed(
+                client,
+                binding.accountId,
+                binding.learnerId,
+              );
+          }
+          await applyCommerceEventInTransaction(client, commerceEvent);
+        }
+        await client.query("RELEASE SAVEPOINT access_projection");
+      } catch (error) {
+        await client.query("ROLLBACK TO SAVEPOINT access_projection");
+        projectionError = error;
+      }
     });
+    if (projectionError) throw projectionError;
   }
   /** One bounded pass. Durable failures retain only a safe category, never API bodies. */
   async runBatch(limit = 20): Promise<{ processed: number; failed: number }> {

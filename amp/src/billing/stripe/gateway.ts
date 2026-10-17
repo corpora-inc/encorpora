@@ -1,3 +1,5 @@
+import { normalizeFinancialEvidence } from "../evidence/normalize.js";
+import type { FinancialResult } from "../evidence/contracts.js";
 import Stripe from "stripe";
 import { BillingError, type StripeBillingConfig } from "./config.js";
 import type { AnnualPayment } from "./model.js";
@@ -139,6 +141,14 @@ export class StripeGateway {
     );
     return event;
   }
+  async invoiceFromCreditNote(creditNoteId: string): Promise<string> {
+    const note = await this.client.creditNotes.retrieve(creditNoteId);
+    requireEvidence(
+      note.livemode === this.config.livemode && id(note.invoice),
+      "credit_note_mapping_mismatch",
+    );
+    return id(note.invoice)!;
+  }
   async invoiceFromRefund(refundId: string): Promise<string> {
     const refund = await this.client.refunds.retrieve(refundId);
     const chargeId = id(refund.charge);
@@ -164,15 +174,20 @@ export class StripeGateway {
     );
     return id(payments.data[0]!.invoice)!;
   }
-  async annualPayment(
-    invoiceId: string,
-  ): Promise<AnnualPayment & { refunded: boolean; partialRefund: boolean }> {
+  async annualPayment(invoiceId: string): Promise<
+    AnnualPayment & {
+      refunded: boolean;
+      partialRefund: boolean;
+      financial?: FinancialResult;
+    }
+  > {
     const invoice = await this.client.invoices.retrieve(invoiceId);
     const subscriptionId = id(
       invoice.parent?.subscription_details?.subscription,
     );
     requireEvidence(
-      invoice.livemode === this.config.livemode &&
+      invoice.id === invoiceId &&
+        invoice.livemode === this.config.livemode &&
         invoice.status === "paid" &&
         subscriptionId &&
         invoice.collection_method === "charge_automatically" &&
@@ -220,6 +235,7 @@ export class StripeGateway {
         subscription.livemode === this.config.livemode &&
         id(subscription.customer) === id(invoice.customer) &&
         subscription.metadata.amp_checkout_id &&
+        id(payment.invoice) === invoiceId &&
         payment.livemode === this.config.livemode &&
         payment.amount_paid === invoice.total &&
         payment.currency === invoice.currency &&
@@ -266,6 +282,7 @@ export class StripeGateway {
     const paidAt = invoice.status_transitions.paid_at;
     requireEvidence(paidAt, "invoice_paid_time_missing");
     return {
+      financial: normalizeFinancialEvidence(invoice, charge.id, refunds.data),
       invoiceId,
       subscriptionId,
       customerId: id(invoice.customer)!,
