@@ -1,3 +1,4 @@
+import { validateAlgebraModel } from "./algebra-models.js";
 import { labelLanes } from "./label-layout.js";
 import type { Diagram, MathBook, Rational } from "./schema.js";
 export function rational(value: Rational): number {
@@ -37,6 +38,11 @@ export function validateDiagram(d: Diagram): void {
   if (!d.id || !d.alt?.trim() || !d.caption?.trim())
     throw new Error("Diagram requires id, alternative text and caption");
   switch (d.kind) {
+    case "balance":
+    case "coordinate-plot":
+    case "value-table":
+      validateAlgebraModel(d);
+      break;
     case "strips":
       integer(d.rows.length, 1, 8);
       for (const row of d.rows) {
