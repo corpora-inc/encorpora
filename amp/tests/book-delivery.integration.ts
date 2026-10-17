@@ -63,6 +63,44 @@ test(
           .statusCode,
         404,
       );
+      const listPath = `/api/v1/learners/${learner.id}/books`;
+      const legacyList = await app.inject({ method: "GET", url: listPath });
+      assert.ok(
+        !legacyList
+          .json()
+          .books.some((b: { id: string }) => b.id === "balance-and-change"),
+      );
+      const capableList = await app.inject({
+        method: "GET",
+        url: `${listPath}?readerCapabilities=algebra-models-v1`,
+      });
+      assert.ok(
+        capableList
+          .json()
+          .books.some((b: { id: string }) => b.id === "balance-and-change"),
+      );
+      const unsupportedProblem = generateProblem(
+        "linear-equation",
+        randomUUID(),
+      );
+      await repository.transaction(account, learner.id, (tx) =>
+        tx.saveProblem(unsupportedProblem),
+      );
+      const unsupported = await app.inject({
+        method: "POST",
+        url: `${listPath}/balance-and-change/open`,
+        payload: { problemId: unsupportedProblem.public.id },
+      });
+      assert.equal(unsupported.statusCode, 409);
+      assert.equal(
+        await repository.transaction(
+          account,
+          learner.id,
+          async (tx) =>
+            (await tx.problem(unsupportedProblem.public.id))?.lessonViewed,
+        ),
+        undefined,
+      );
       for (const { content, bindings } of books)
         for (const binding of bindings) {
           const linked = generateProblem(binding.templateId, randomUUID());
@@ -72,7 +110,10 @@ test(
           const result = await app.inject({
             method: "POST",
             url: `/api/v1/learners/${learner.id}/books/${content.id}/open`,
-            payload: { problemId: linked.public.id },
+            payload: {
+              problemId: linked.public.id,
+              readerCapabilities: ["algebra-models-v1"],
+            },
           });
           assert.equal(result.statusCode, 200);
           assert.equal(result.json().book.id, content.id);
