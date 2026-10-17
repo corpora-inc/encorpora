@@ -31,29 +31,47 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
   recursive: true,
 });
 try {
-  const page = await browser.newPage();
+  const page = await browser.newPage({ hasTouch: true });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4310");
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learner.id);
+  await page
+    .getByText("Looking for a particular idea?", { exact: true })
+    .click();
+  await page.getByLabel("Choose your practice").selectOption("fraction-model");
+  await page
+    .getByRole("button", { name: "Try this idea", exact: true })
+    .click();
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },
     { width: 320, height: 720 },
+    { width: 320, height: 568 },
+    { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport);
     await page
       .getByRole("button", { name: "Your practice", exact: true })
       .click();
-    if (await page.getByRole("button", { name: "Let’s begin" }).isVisible()) {
-      await page
-        .getByLabel("Choose your practice")
-        .selectOption("fraction-model");
-      await page.getByRole("button", { name: "Let’s begin" }).click();
-    }
-    await page.locator("#answer").waitFor();
+    await page.locator(".problem-stage").waitFor();
+    assert.ok(
+      await page.evaluate(() => {
+        const stage = document.querySelector(".problem-stage")!;
+        const action = document.querySelector(
+          ".compact-answer-action, .answer-action",
+        )!;
+        const box = action.getBoundingClientRect();
+        return (
+          stage.clientHeight >= 180 &&
+          stage.scrollHeight <= stage.clientHeight + 2 &&
+          box.bottom <= innerHeight
+        );
+      }),
+      `Question and answer action must fit ${viewport.width}×${viewport.height}`,
+    );
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -68,25 +86,78 @@ try {
       fullPage: true,
     });
   }
-  await page.getByRole("button", { name: "A little help" }).click();
-  await page.locator(".hint").waitFor();
-  await page.locator("#answer").fill("0");
-  await page.getByRole("button", { name: "Check answer" }).click();
-  await page.getByRole("status").waitFor();
-  assert.ok(
-    await page
-      .getByRole("status")
-      .innerText()
-      .then((t) => t.includes("Practiced with a hint")),
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page
+    .getByRole("button", { name: "Enter your answer", exact: true })
+    .click();
+  await page.getByRole("button", { name: "1", exact: true }).click();
+  assert.equal(await page.locator("#answer").inputValue(), "1");
+  await page.getByRole("button", { name: "Close panel", exact: true }).click();
+  await page.getByRole("button", { name: "The idea", exact: true }).click();
+  await page.locator(".workspace-lesson").waitFor();
+  await page.keyboard.press("Escape");
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent),
+    "The idea",
   );
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByRole("button", { name: /Your answer: 1/ }).click();
+  await page.locator("#answer").fill("999");
+  await page.getByRole("button", { name: "Check answer" }).click();
+  await page.locator(".solution-panel").waitFor();
+  assert.match(
+    await page.locator(".solution-panel").innerText(),
+    /Practiced with support/,
+  );
+  await page.keyboard.press("Escape");
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent),
+    "Continue →",
+  );
+  await page.getByRole("button", { name: "Continue", exact: false }).click();
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.locator("#answer").waitFor();
+  let releaseLesson!: () => void;
+  let heldLesson!: () => void;
+  const held = new Promise<void>((resolve) => {
+    heldLesson = resolve;
+  });
+  const release = new Promise<void>((resolve) => {
+    releaseLesson = resolve;
+  });
+  await page.route("**/lesson-support", async (route) => {
+    const result = await route.fetch();
+    heldLesson();
+    await release;
+    await route.fulfill({ response: result });
+  });
+  await page.getByRole("button", { name: "The idea", exact: true }).click();
+  await held;
+  await page.locator("#answer").fill("999999");
+  await page.getByRole("button", { name: "Check answer" }).click();
+  await page.locator(".solution-panel").waitFor();
+  await page.getByRole("button", { name: "Next problem" }).click();
+  await page.locator(".solution-panel").waitFor({ state: "hidden" });
+  const delivered = page.waitForResponse((response) =>
+    response.url().endsWith("/lesson-support"),
+  );
+  releaseLesson();
+  await delivered;
+  await page.waitForTimeout(50);
+  assert.equal(
+    await page.locator("dialog[open]").count(),
+    0,
+    "A stale lesson response cannot open another problem's lesson",
+  );
+  await page.unroute("**/lesson-support");
   for (const template of templates) {
     await page
       .getByRole("button", { name: "Change topic", exact: true })
       .click();
+    await page
+      .getByText("Looking for a particular idea?", { exact: true })
+      .click();
     await page.getByLabel("Choose your practice").selectOption(template.id);
-    await page.getByRole("button", { name: "Let’s begin" }).click();
+    await page.getByRole("button", { name: "Try this idea" }).click();
     await page.locator("#answer").waitFor();
     assert.ok(
       await page.evaluate(
@@ -94,6 +165,31 @@ try {
       ),
       `Overflow in ${template.id}`,
     );
+    for (const size of [
+      { width: 390, height: 844 },
+      { width: 320, height: 568 },
+      { width: 844, height: 390 },
+    ]) {
+      await page.setViewportSize(size);
+      // Let the media-query subscription commit the appropriate answer surface.
+      await page.waitForFunction(() => {
+        const compact = matchMedia(
+          "(max-width:650px) and (max-height:780px)",
+        ).matches;
+        return !!document.querySelector(".compact-answer-action") === compact;
+      });
+      const geometry = await page
+        .locator(".problem-stage")
+        .evaluate((stage) => ({
+          height: stage.clientHeight,
+          scroll: stage.scrollHeight,
+        }));
+      assert.ok(
+        geometry.scroll <= geometry.height + 2,
+        `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
+      );
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
     if (
       template.id.startsWith("graphed-") ||
       template.id.startsWith("clock-") ||
@@ -114,6 +210,7 @@ try {
     .click();
   await page.locator(".lesson-reader").waitFor();
   if (process.env.AMP_VERIFY_DOWNLOADS === "true") {
+    await page.getByText("Download & print", { exact: true }).click();
     const downloading = page.waitForEvent("download");
     await page
       .getByRole("button", { name: "Download lesson PDF", exact: true })
@@ -126,6 +223,7 @@ try {
     .getByRole("button", { name: "Your progress", exact: true })
     .click();
   await page.locator(".progress-card").first().waitFor();
+  await page.locator(".account-menu summary").click();
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
   await page
     .getByLabel("Learner name", { exact: true })
@@ -142,7 +240,7 @@ try {
   await page
     .getByRole("button", { name: "Your practice", exact: true })
     .click();
-  await page.getByRole("button", { name: "Let’s begin" }).waitFor();
+  await page.getByRole("button", { name: "Start your mix" }).waitFor();
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
