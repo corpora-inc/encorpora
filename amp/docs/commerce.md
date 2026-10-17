@@ -3,8 +3,11 @@
 The commerce module is a deterministic, in-memory state-transition library for
 one-student, fixed-term curriculum licenses. It models Stripe, Apple, Google,
 ESA, and free pilot orders. The pure ledger makes no network calls. A PostgreSQL adapter and local
-admin import CLI persist normalized events and project license grants. No payment
-provider, webhook-verification, marketplace or tax integration is implemented.
+admin import CLI persist normalized events and project license grants. The optional
+[Stripe adapter](stripe.md) implements annual checkout, signed webhooks, verified
+payment reconciliation and portal access. Operational activation requires verified
+merchant configuration and provider acceptance tests. Apple, Google, and ESA
+provider adapters and tax integration are separate release requirements.
 
 `contracts.ts` exports the TypeScript interfaces. `ledger.ts` exports
 `emptyCommerceState()`, `reduceCommerce(state, event)`, `activeGrants(state,
