@@ -43,7 +43,9 @@ import {
 import "./style.css";
 import "./practice.css";
 import "./theme.css";
-import { PracticeStart } from "./PracticeStart";
+import { BirthYearPrompt } from "./BirthYearPrompt";
+import { LessonIndex } from "./LessonIndex";
+import type { ProblemLessonView } from "../content/problem-lessons";
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -70,6 +72,9 @@ function App() {
     [learners, setLearners] = useState<LearnerSummary[]>([]),
     [learner, setLearner] = useState<LearnerSummary | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
+  const [changingBirthYear, setChangingBirthYear] = useState(false);
+  // Outside immersive practice: home, lessons, progress and family are visible.
+  const [exploring, setExploring] = useState(true);
   const nativeFamilyReturn = useRef(false);
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
@@ -527,6 +532,7 @@ function App() {
   );
   function applyBatch(data: Batch, openPractice = false) {
     if (openPractice) setTab("practice");
+    setExploring(false);
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
@@ -675,13 +681,13 @@ function App() {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
+  // Practice is immersive: no header or tabs, one exit back to everything else.
+  const immersive =
+    !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
-  const supportBook = problem
-    ? preferredBookForProblem(books, problem)
-    : undefined;
   return (
     <div
-      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${immersive ? "immersive" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -718,6 +724,26 @@ function App() {
                 <button className="text-button" onClick={openFamily}>
                   Manage family
                 </button>
+                {learner && learner.birthYear != null && (
+                  <button
+                    className="text-button"
+                    disabled={busy}
+                    onClick={(event) => {
+                      event.currentTarget
+                        .closest("details")
+                        ?.removeAttribute("open");
+                      navigationEpoch.current++;
+                      setProblem(null);
+                      setQueue([]);
+                      setOutcome(null);
+                      setPending(null);
+                      setTab("practice");
+                      setChangingBirthYear(true);
+                    }}
+                  >
+                    Change birth year
+                  </button>
+                )}
                 {learningAllowed && !nativeRuntime && (
                   <button
                     className="text-button"
@@ -966,8 +992,9 @@ function App() {
           }
         />
       ) : tab === "practice" ? (
-        problem ? (
+        problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
+            exit={() => setExploring(true)}
             key={problem.id}
             problem={problem}
             meta={meta}
@@ -980,11 +1007,6 @@ function App() {
                 entry.templateIds.includes(problem.templateId),
               ) ?? lesson
             }
-            openBook={
-              supportBook
-                ? () => void action(() => openBook(supportBook.id, true))
-                : undefined
-            }
             response={response}
             setResponse={setResponse}
             outcome={outcome}
@@ -993,12 +1015,14 @@ function App() {
             pending={!!pending}
             submit={() => void action(submit)}
             next={() => void action(next)}
-            requestLesson={async () => {
-              if (!outcome)
-                await api(`/learners/${learner.id}/lesson-support`, {
-                  problemId: problem.id,
-                });
-            }}
+            requestLesson={async () =>
+              (
+                await api<{ lesson: ProblemLessonView }>(
+                  `/learners/${learner.id}/lesson-support`,
+                  { problemId: problem.id },
+                )
+              ).lesson
+            }
             requestHint={() =>
               void action(async () => {
                 const data = await api<{ hint: string }>(
@@ -1008,26 +1032,46 @@ function App() {
                 setHint(data.hint);
               })
             }
-            changeTopic={() => {
-              setProblem(null);
-              setQueue([]);
-              setOutcome(null);
-              setPending(null);
-              setFamily("");
-            }}
           />
+        ) : learner.birthYear != null && !changingBirthYear ? (
+          <main className="practice-start">
+            <section className="start-card">
+              <button
+                className="go-button"
+                disabled={busy}
+                onClick={() =>
+                  problem
+                    ? setExploring(false)
+                    : void action(() => loadBatch(""))
+                }
+              >
+                Go
+              </button>
+              <p className="start-note">
+                {problem
+                  ? "Continue where you left off."
+                  : `Mixed problems at ${learner.name}’s level.`}
+              </p>
+            </section>
+          </main>
         ) : (
-          <PracticeStart
+          <BirthYearPrompt
             key={learner.id}
             name={learner.name}
             birthYear={learner.birthYear ?? null}
-            templates={catalog?.templates ?? []}
-            skills={catalog?.skills ?? []}
             busy={busy}
+            cancel={
+              learner.birthYear == null
+                ? undefined
+                : () => setChangingBirthYear(false)
+            }
             saveBirthYear={(birthYear) =>
               void action(async () => {
-                await api(`/learners/${learner.id}/birth-year`, { birthYear });
+                await api(`/learners/${learner.id}/birth-year`, {
+                  birthYear,
+                });
                 const updated = { ...learner, birthYear };
+                setChangingBirthYear(false);
                 setLearner(updated);
                 setLearners(
                   learners.map((entry) =>
@@ -1036,108 +1080,48 @@ function App() {
                 );
               })
             }
-            start={(templateId) =>
-              void action(() => loadBatch(templateId ?? ""))
-            }
           />
         )
       ) : tab === "library" ? (
         <main className="library-main">
           {!readingLesson && (
             <>
-              <div className="section-heading">
-                <h2>A library for curious minds.</h2>
-                <p>
-                  {nativeRuntime
-                    ? "Read and explore a mathematical idea."
-                    : "Read, explore, and print a lesson to keep nearby."}
-                </p>
-              </div>
-              {books.map((book) => (
-                <article key={book.id} className="card book-library-card">
-                  <div className="book-jacket" aria-hidden="true">
-                    <span>Explore · explain · practice</span>
-                    <strong>{book.subtitle}</strong>
-                    <span>{book.title}</span>
-                  </div>
-                  <div>
-                    <p className="eyebrow">
-                      ILLUSTRATED MATHEMATICS · {book.pages} PAGES
-                    </p>
-                    <h2>{book.title}</h2>
-                    <p>{book.description}</p>
-                    <button
-                      disabled={busy}
-                      data-book-id={book.id}
-                      onClick={() => void action(() => openBook(book.id))}
-                    >
-                      Open book
-                    </button>
-                  </div>
-                </article>
-              ))}
-              <label className="library-search">
-                Find an idea
-                <input
-                  type="search"
-                  value={lessonSearch}
-                  onChange={(event) => setLessonSearch(event.target.value)}
-                  placeholder="Fractions, shapes, equations…"
-                />
-              </label>
-              <div className="library-grid">
-                {catalog?.lessons
-                  .filter((entry) =>
-                    `${entry.title} ${entry.summary}`
-                      .toLowerCase()
-                      .includes(lessonSearch.toLowerCase()),
-                  )
-                  .map((l) => (
-                    <article key={l.id} className="card lesson-card">
-                      <p className="eyebrow">MINI-LESSON</p>
-                      <h3>{l.title}</h3>
-                      <p>{l.summary}</p>
+              <LessonIndex
+                templates={catalog?.templates ?? []}
+                skills={catalog?.skills ?? []}
+                busy={busy}
+                loadLesson={async (templateId) =>
+                  (
+                    await api<{ lesson: ProblemLessonView }>(
+                      `/problem-lessons/${templateId}`,
+                    )
+                  ).lesson
+                }
+                practice={(templateId) =>
+                  void action(() => loadBatch(templateId, true))
+                }
+              />
+              <section className="book-list" aria-label="Printable books">
+                <h2>Printable books</h2>
+                <ul>
+                  {books.map((book) => (
+                    <li key={book.id}>
+                      <span>
+                        {book.title}
+                        <small>{book.pages} pages</small>
+                      </span>
                       <button
-                        className="secondary"
-                        data-lesson-id={l.id}
+                        className="text-button"
                         disabled={busy}
-                        onClick={(event) => {
-                          const navigation = ++navigationEpoch.current;
-                          progressLessonReturn.current = null;
-                          readerTriggerId.current = l.id;
-                          libraryScroll.current =
-                            event.currentTarget.closest("main")?.scrollTop ?? 0;
-                          void action(async () => {
-                            if (
-                              problem &&
-                              !outcome &&
-                              l.templateIds.includes(problem.templateId)
-                            ) {
-                              await api(
-                                `/learners/${learner.id}/lesson-support`,
-                                { problemId: problem.id },
-                              ).catch((error) =>
-                                navigationFailure(
-                                  navigation,
-                                  learner.id,
-                                  error,
-                                ),
-                              );
-                            }
-                            if (
-                              navigation !== navigationEpoch.current ||
-                              learnerRef.current !== learner.id
-                            )
-                              return;
-                            setReadingLesson(l);
-                          });
-                        }}
+                        data-book-id={book.id}
+                        onClick={() => void action(() => openBook(book.id))}
                       >
-                        Read lesson
+                        Open book
                       </button>
-                    </article>
+                    </li>
                   ))}
-              </div>
+                </ul>
+              </section>
             </>
           )}
           {readingLesson && (

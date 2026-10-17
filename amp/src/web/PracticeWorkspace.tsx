@@ -1,3 +1,5 @@
+import { ProblemLesson } from "./ProblemLesson";
+import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import {
   useEffect,
@@ -113,11 +115,28 @@ type Props = {
   submit: () => void;
   next: () => void;
   requestHint: () => void;
-  requestLesson: () => Promise<void>;
-  openBook?: () => void;
-  changeTopic: () => void;
+  /** Leave immersive practice for home, lessons, progress and settings. */
+  exit: () => void;
+  requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
 };
+
+const keyboardKey = "amp.keyboard";
+/** A per-device convenience; practice works the same without storage. */
+function prefersDeviceKeyboard() {
+  try {
+    return localStorage.getItem(keyboardKey) === "device";
+  } catch {
+    return false;
+  }
+}
+function rememberKeyboard(device: boolean) {
+  try {
+    localStorage.setItem(keyboardKey, device ? "device" : "keypad");
+  } catch (error) {
+    console.warn("Keyboard preference not saved", error);
+  }
+}
 
 export function PracticeWorkspace(props: Props) {
   const {
@@ -170,7 +189,9 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const [nativeKeyboard, setNativeKeyboard] = useState(false);
+  const [nativeKeyboard, setNativeKeyboard] = useState(prefersDeviceKeyboard);
+  const [problemLessonView, setProblemLessonView] =
+    useState<ProblemLessonView | null>(null);
   const [small, setSmall] = useState(
     () => matchMedia("(max-width: 650px), (pointer: coarse)").matches,
   );
@@ -397,16 +418,17 @@ export function PracticeWorkspace(props: Props) {
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface">
         <div className="workspace-toolbar">
+          <button
+            className="workspace-exit"
+            aria-label="Exit practice"
+            title="Exit practice"
+            onClick={props.exit}
+          >
+            ✕
+          </button>
           <span className="workspace-topic" data-strand={props.strand}>
             {meta?.title ?? "Practice"}
           </span>
-          <button
-            className="text-button"
-            onClick={props.changeTopic}
-            disabled={busy}
-          >
-            Topics
-          </button>
         </div>
         <div
           className="problem-stage"
@@ -518,52 +540,43 @@ export function PracticeWorkspace(props: Props) {
                 Hint
               </button>
             )}
-            {props.openBook ? (
-              <button
-                className="text-button"
-                disabled={busy}
-                data-book-trigger
-                onClick={props.openBook}
-              >
-                Lesson
-              </button>
-            ) : (
-              lesson && (
-                <button
-                  className="text-button"
-                  disabled={busy || lessonLoading}
-                  onClick={async (event) => {
-                    lessonTrigger.current = event.currentTarget;
-                    const requestedProblem = problem.id;
-                    const request = ++lessonRequest.current;
-                    const current = () =>
-                      alive.current &&
-                      lessonRequest.current === request &&
-                      currentProblem.current === requestedProblem;
-                    setLessonLoading(true);
-                    setLessonError("");
-                    try {
-                      await props.requestLesson();
-                      if (current()) setPanel("lesson");
-                    } catch {
-                      if (current())
-                        setLessonError(
-                          "The lesson could not be opened. Please try again.",
-                        );
-                    } finally {
-                      if (current()) setLessonLoading(false);
-                    }
-                  }}
-                >
-                  {lessonLoading ? "Opening…" : "Lesson"}
-                </button>
-              )
-            )}
+            <button
+              className="text-button"
+              disabled={lessonLoading}
+              onClick={async (event) => {
+                lessonTrigger.current = event.currentTarget;
+                const requestedProblem = problem.id;
+                const request = ++lessonRequest.current;
+                const current = () =>
+                  alive.current &&
+                  lessonRequest.current === request &&
+                  currentProblem.current === requestedProblem;
+                setLessonLoading(true);
+                setLessonError("");
+                try {
+                  const view = await props.requestLesson();
+                  if (current()) {
+                    setProblemLessonView(view);
+                    setPanel("lesson");
+                  }
+                } catch {
+                  if (current())
+                    setLessonError(
+                      "The lesson could not be opened. Please try again.",
+                    );
+                } finally {
+                  if (current()) setLessonLoading(false);
+                }
+              }}
+            >
+              {lessonLoading ? "Opening…" : "Lesson"}
+            </button>
             {small && !choice && !outcome && (
               <button
                 className="text-button keyboard-choice"
                 onClick={() => {
                   setNativeKeyboard(!nativeKeyboard);
+                  rememberKeyboard(!nativeKeyboard);
                   input.current?.blur();
                   requestAnimationFrame(() =>
                     input.current?.focus({ preventScroll: true }),
@@ -599,7 +612,9 @@ export function PracticeWorkspace(props: Props) {
       {panel && (
         <FocusDialog
           returnFocus={panel === "lesson" ? lessonTrigger.current : undefined}
-          title={panel === "hint" ? "Hint" : (lesson?.title ?? "Lesson")}
+          title={
+            panel === "hint" ? "Hint" : (problemLessonView?.title ?? "Lesson")
+          }
           close={() => setPanel(null)}
         >
           {panel === "hint" && (
@@ -615,31 +630,13 @@ export function PracticeWorkspace(props: Props) {
               </button>
             </>
           )}
-          {panel === "lesson" && lesson && (
-            <div className="workspace-lesson">
-              <p>{lesson.summary}</p>
-              {lesson.sections.map((section) => (
-                <section key={section.title}>
-                  <h3>{section.title}</h3>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </section>
-              ))}
-              <section className="worked-example">
-                <h3>Worked example</h3>
-                <p>{lesson.workedExample.prompt}</p>
-                <ol>
-                  {lesson.workedExample.steps.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ol>
-                <strong>{lesson.workedExample.answer}</strong>
-              </section>
-              <button onClick={() => setPanel(null)}>
+          {panel === "lesson" && problemLessonView && (
+            <>
+              <ProblemLesson lesson={problemLessonView} />
+              <button className="lesson-return" onClick={() => setPanel(null)}>
                 Back to the problem
               </button>
-            </div>
+            </>
           )}
         </FocusDialog>
       )}

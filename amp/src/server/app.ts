@@ -16,6 +16,7 @@ import { auditCurriculum } from "../curriculum/audit";
 import { ApiError, type Outcome, type Repository } from "./repository";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
+import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 const idSchema = z.string().uuid();
@@ -89,6 +90,14 @@ export function buildApp(options: {
   app.get("/api/v1/session", async (request) => ({
     accountId: await options.authenticate(request),
   }));
+  app.get("/api/v1/problem-lessons/:templateId", async (request) => {
+    const { templateId } = z
+      .object({ templateId: z.string().max(100) })
+      .parse(request.params);
+    if (!hasProblemLesson(templateId))
+      throw new ApiError(404, "Lesson not found");
+    return { lesson: problemLesson(templateId, "library") };
+  });
   app.get("/api/v1/catalog", async () => ({
     templates,
     lessons,
@@ -302,15 +311,21 @@ export function buildApp(options: {
     return options.repository.transaction(account, learnerId, async (tx) => {
       const problem = await tx.problem(problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
-      if (
-        !lessons.some((lesson) =>
-          lesson.templateIds.includes(problem.public.templateId),
-        )
-      )
+      if (!hasProblemLesson(problem.public.templateId))
         throw new ApiError(404, "Lesson not found");
-      problem.lessonViewed = true;
-      await tx.saveProblem(problem);
-      return { recorded: true };
+      // Reading the lesson before answering counts as assistance.
+      if (!(await tx.attemptByProblem(problemId))) {
+        problem.lessonViewed = true;
+        await tx.saveProblem(problem);
+      }
+      return {
+        recorded: true,
+        lesson: problemLesson(
+          problem.public.templateId,
+          problem.public.seed,
+          problem.public.prompt,
+        ),
+      };
     });
   });
   app.post("/api/v1/learners/:learnerId/attempts", async (request) => {

@@ -423,9 +423,7 @@ try {
     .locator(".account-menu")
     .getByRole("button", { name: "Manage family", exact: true })
     .click();
-  await page
-    .getByRole("heading", { name: "Family", exact: true })
-    .waitFor();
+  await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",
