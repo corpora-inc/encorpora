@@ -86,6 +86,8 @@ async function setup(
       });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
+    if (path.endsWith("/frontier"))
+      return route.fulfill({ json: { overall: 3, strands: {} } });
     if (path.endsWith("/progress"))
       return route.fulfill({ json: { skills: [] } });
     if (path.endsWith("/billing/offer"))

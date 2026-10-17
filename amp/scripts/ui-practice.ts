@@ -10,7 +10,7 @@ export async function exitPractice(page: Page) {
 export async function go(page: Page) {
   await exitPractice(page);
   await page.getByRole("button", { name: "Practice", exact: true }).click();
-  await page.getByRole("button", { name: "Go", exact: true }).click();
+  await page.getByRole("button", { name: /^(Go|Continue)$/ }).click();
 }
 
 /** Practice one problem type from its lesson in the Lessons section. */
@@ -35,7 +35,7 @@ export async function startTopic(page: Page, templateId: string) {
 export async function resume(page: Page) {
   if (await page.locator(".problem-stage").isVisible()) return;
   await page.getByRole("button", { name: "Practice", exact: true }).click();
-  const go = page.getByRole("button", { name: "Go", exact: true });
+  const go = page.getByRole("button", { name: /^(Go|Continue)$/ });
   await Promise.race([
     go.waitFor(),
     page.locator(".problem-stage").waitFor(),

@@ -1,9 +1,11 @@
+import { useId } from "react";
 import type { SemanticFigure } from "../math/contracts.js";
 type FractionFigure = Extract<
   SemanticFigure,
   { kind: "rational-line" | "fraction-strips" }
 >;
 export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
+  const clipId = useId().replace(/:/g, "");
   if (figure.kind === "rational-line") {
     const steps = figure.denominator * figure.maxWhole,
       x = (n: number) => 24 + (n / steps) * 312;
@@ -106,23 +108,31 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
             )}
             {Array.from({ length: figure.wholes }, (_, whole) => {
               const x0 = left + whole * (wholeWidth + gap);
+              const clip = `${clipId}-${index}-${whole}`;
               return (
                 <g key={whole} data-whole={whole}>
-                  {Array.from({ length: figure.parts }, (_, part) => {
-                    const n = whole * figure.parts + part;
-                    return (
-                      <rect
-                        key={n}
-                        data-piece={n}
-                        data-shaded={n < row.selected ? "true" : "false"}
-                        x={x0 + part * pieceWidth}
-                        y={y}
-                        width={pieceWidth}
-                        height="30"
-                        className={n < row.selected ? "fig-fill" : "fig-empty"}
-                      />
-                    );
-                  })}
+                  <clipPath id={clip}>
+                    <rect x={x0} y={y} width={wholeWidth} height="30" rx="6" />
+                  </clipPath>
+                  <g clipPath={`url(#${clip})`}>
+                    {Array.from({ length: figure.parts }, (_, part) => {
+                      const n = whole * figure.parts + part;
+                      return (
+                        <rect
+                          key={n}
+                          data-piece={n}
+                          data-shaded={n < row.selected ? "true" : "false"}
+                          x={x0 + part * pieceWidth}
+                          y={y}
+                          width={pieceWidth}
+                          height="30"
+                          className={
+                            n < row.selected ? "fig-fill" : "fig-empty"
+                          }
+                        />
+                      );
+                    })}
+                  </g>
                   <rect
                     x={x0}
                     y={y}

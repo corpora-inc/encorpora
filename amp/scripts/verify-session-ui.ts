@@ -83,6 +83,8 @@ async function fixturePage(family: (token: string) => FamilySummary) {
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
       return route.fulfill({ json: { skills: [] } });
+    if (path.endsWith("/frontier"))
+      return route.fulfill({ json: { overall: 3, strands: {} } });
     errors.push(`Unexpected API request ${route.request().method()} ${path}`);
     return route.fulfill({
       status: 404,
