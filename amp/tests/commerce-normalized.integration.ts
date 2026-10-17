@@ -151,6 +151,7 @@ test(
         await pool.query("SELECT * FROM amp_commerce_events ORDER BY sequence")
       ).rows;
       await pool.query(await sql("0006-commerce-orders.sql"));
+      await pool.query(await sql("0008-skill-evidence.sql"));
       assert.equal(
         (await pool.query("SELECT to_regclass('amp_commerce_ledger') AS old"))
           .rows[0].old,
@@ -265,6 +266,7 @@ test(
   async () =>
     fixture(async (pool) => {
       await pool.query(await sql("0006-commerce-orders.sql"));
+      await pool.query(await sql("0008-skill-evidence.sql"));
       const a = order("a"),
         b = order("b", "normalized-other", "other-child");
       await applyCommerceEvent(pool, event(a, "order.created"));
@@ -337,6 +339,7 @@ test(
   async () =>
     fixture(async (pool) => {
       await pool.query(await sql("0006-commerce-orders.sql"));
+      await pool.query(await sql("0008-skill-evidence.sql"));
       const blocker = await pool.connect();
       try {
         await blocker.query("BEGIN");
@@ -388,6 +391,7 @@ test(
   async () =>
     fixture(async (pool) => {
       await pool.query(await sql("0006-commerce-orders.sql"));
+      await pool.query(await sql("0008-skill-evidence.sql"));
       const reconciliation = await pool.connect(),
         privacy = await pool.connect();
       let waiting: Promise<unknown> | undefined;
@@ -449,6 +453,7 @@ test(
   async () =>
     fixture(async (pool) => {
       await pool.query(await sql("0006-commerce-orders.sql"));
+      await pool.query(await sql("0008-skill-evidence.sql"));
       const a = order("source-a"),
         b = { ...order("source-b"), externalOrderId: a.externalOrderId };
       const results = await Promise.allSettled(
@@ -517,6 +522,7 @@ test(
   async () =>
     fixture(async (pool) => {
       await pool.query(await sql("0006-commerce-orders.sql"));
+      await pool.query(await sql("0008-skill-evidence.sql"));
       const invoice = await pool.connect(),
         replay = await pool.connect();
       let waiting: Promise<unknown> | undefined;

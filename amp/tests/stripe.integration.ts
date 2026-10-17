@@ -28,6 +28,7 @@ test(
         "0004-parent-lifecycle.sql",
         "0005-stripe.sql",
         "0006-commerce-orders.sql",
+        "0008-skill-evidence.sql",
       ])
         await pool.query(
           await readFile(

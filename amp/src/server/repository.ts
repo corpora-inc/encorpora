@@ -7,10 +7,12 @@ import { Pool, type PoolClient } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
+import type { SkillEvidence } from "./evidence.js";
 import type { SkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
 export type Learner = { id: string; name: string };
 export type Outcome = {
+  ingestionSequence?: string;
   id: string;
   problemId: string;
   requestId: string;
@@ -37,6 +39,7 @@ export class ApiError extends Error {
 }
 export interface LearnerTransaction {
   recentAttempts(): Promise<Outcome[]>;
+  skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
   attemptByProblem(problemId: string): Promise<Outcome | undefined>;
   progress(skillIds: string[]): Promise<SkillProgress[]>;
@@ -158,10 +161,12 @@ class PgTransaction implements LearnerTransaction {
   ) {}
   async recentAttempts() {
     const result = await this.db.query(
-      "SELECT outcome FROM amp_attempts WHERE learner_id=$1 ORDER BY created_at DESC,id DESC LIMIT 200",
+      "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id=$1 ORDER BY evidence_sequence DESC LIMIT 12",
       [this.learnerId],
     );
-    return result.rows.map((r) => r.outcome as Outcome).reverse();
+    return result.rows
+      .map((r) => ({ ...r.outcome, ingestionSequence: r.sequence }) as Outcome)
+      .reverse();
   }
   async attemptByRequest(requestId: string) {
     const result = await this.db.query(
@@ -177,30 +182,26 @@ class PgTransaction implements LearnerTransaction {
     );
     return result.rows[0]?.outcome as Outcome | undefined;
   }
-  async progress(skillIds: string[]): Promise<SkillProgress[]> {
+  async skillEvidence(): Promise<SkillEvidence[]> {
     const result = await this.db.query(
-      `WITH ranked AS (
-    SELECT outcome,created_at,row_number() OVER(PARTITION BY outcome->>'skillId' ORDER BY created_at DESC,id DESC) AS rank
-    FROM amp_attempts WHERE learner_id=$1
-   ) SELECT outcome->>'skillId' AS skill_id,count(*)::int AS attempts,
-    count(*) FILTER (WHERE (outcome->>'correct')::boolean AND NOT (outcome->>'assisted')::boolean)::int AS independent,
-    count(*) FILTER (WHERE rank<=5 AND (outcome->>'correct')::boolean AND NOT (outcome->>'assisted')::boolean)::int AS recent,
-    max(created_at) AS last FROM ranked GROUP BY outcome->>'skillId'`,
+      "SELECT state FROM amp_skill_evidence WHERE learner_id=$1 ORDER BY skill_id",
       [this.learnerId],
     );
+    return result.rows.map((row) => row.state as SkillEvidence);
+  }
+  async progress(skillIds: string[]): Promise<SkillProgress[]> {
+    const bySkill = new Map(
+      (await this.skillEvidence()).map((entry) => [entry.skillId, entry]),
+    );
     return skillIds.map((skillId) => {
-      const row = result.rows.find((r) => r.skill_id === skillId);
+      const state = bySkill.get(skillId);
       return {
         skillId,
-        attempts: row?.attempts ?? 0,
-        independentCorrect: row?.independent ?? 0,
-        recentIndependentCorrect: row?.recent ?? 0,
-        status: !row
-          ? "new"
-          : row.attempts >= 5 && row.recent >= 4
-            ? "review-ready"
-            : "practicing",
-        lastPracticedAt: row?.last?.toISOString() ?? null,
+        attempts: state?.attempts ?? 0,
+        independentCorrect: state?.independentCorrect ?? 0,
+        recentIndependentCorrect: state?.recentIndependentCorrect ?? 0,
+        status: state?.status ?? "new",
+        lastPracticedAt: state?.lastPracticedAt ?? null,
       };
     });
   }

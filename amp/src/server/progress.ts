@@ -24,7 +24,10 @@ export function summarize(
       status:
         all.length === 0
           ? "new"
-          : recent.length >= 5 && independent >= 4
+          : recent.length >= 5 &&
+              independent >= 4 &&
+              !!recent.at(-1)?.correct &&
+              !recent.at(-1)?.assisted
             ? "review-ready"
             : "practicing",
       lastPracticedAt: all.at(-1)?.createdAt ?? null,

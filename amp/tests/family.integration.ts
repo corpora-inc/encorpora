@@ -36,6 +36,7 @@ test(
         "0003-parent-consent.sql",
         "0004-parent-lifecycle.sql",
         "0006-commerce-orders.sql",
+        "0008-skill-evidence.sql",
       ])
         await pool.query(
           await readFile(

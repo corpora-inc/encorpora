@@ -184,6 +184,10 @@ export class FamilyRepository {
           linked ||= !!open.rowCount;
         }
         if (!row.deleted_at) deleted++;
+        await client.query(
+          "DELETE FROM amp_skill_evidence WHERE learner_id=$1",
+          [row.id],
+        );
         await client.query("DELETE FROM amp_instances WHERE learner_id=$1", [
           row.id,
         ]);
@@ -273,6 +277,10 @@ export class FamilyRepository {
         [
           "attempt",
           "SELECT to_jsonb(a) AS value FROM amp_attempts a JOIN amp_learners l ON l.id=a.learner_id WHERE l.account_id=$1 ORDER BY a.id",
+        ],
+        [
+          "derived-skill-evidence",
+          "SELECT jsonb_build_object('learnerId',e.learner_id,'evidence',e.state) AS value FROM amp_skill_evidence e JOIN amp_learners l ON l.id=e.learner_id WHERE l.account_id=$1 ORDER BY e.learner_id,e.skill_id",
         ],
         [
           "license",

@@ -1,7 +1,11 @@
 import { createHash } from "node:crypto";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "./repository";
-import type { SkillProgress } from "./progress";
+import {
+  projectSkillEvidence,
+  type SkillEvidence,
+  type PracticeObservation,
+} from "./evidence.js";
 
 export type PracticeReason =
   "review" | "revisit" | "prerequisite" | "frontier" | "explore";
@@ -50,7 +54,7 @@ export function planMixedPractice(options: {
   templates: readonly TemplateMetadata[];
   skills: readonly SkillNode[];
   attempts: readonly Outcome[];
-  evidence: readonly SkillProgress[];
+  evidence: readonly SkillEvidence[];
   count: number;
   seed: string;
   now?: number;
@@ -64,41 +68,61 @@ export function planMixedPractice(options: {
   )
     throw new Error("Invalid practice batch size");
   const now = options.now ?? Date.now();
-  const attempts = [...options.attempts].sort(
-    (a, b) =>
-      Date.parse(a.createdAt) - Date.parse(b.createdAt) ||
-      a.id.localeCompare(b.id),
-  );
+  const attempts = [...options.attempts];
   const nodes = new Map(skills.map((skill) => [skill.id, skill]));
   const byTemplate = new Map(
     templates.map((template) => [template.id, template]),
   );
-  const stats = new Map(evidence.map((entry) => [entry.skillId, entry]));
-  const bySkill = new Map<string, Outcome[]>();
-  for (const attempt of attempts)
-    bySkill.set(attempt.skillId, [
-      ...(bySkill.get(attempt.skillId) ?? []),
-      attempt,
-    ]);
-  const strandOf = (skillId: string) => nodes.get(skillId)?.strand ?? skillId;
-  const recent = attempts.slice(-12);
-  const independent = recent.filter(
-    (attempt) =>
-      attempt.correct &&
-      !attempt.assisted &&
-      byTemplate.has(attempt.templateId),
+  // Global recency controls interleaving only. Retained skill observations
+  // determine support and each strand's independent challenge range.
+  const stats = new Map(
+    projectSkillEvidence(attempts).map((entry) => [entry.skillId, entry]),
   );
-  const recentDifficulty = independent.length
-    ? levels[byTemplate.get(independent.at(-1)!.templateId)!.gradeBand]
-    : 0;
-  const recentErrors = recent
-    .slice(-3)
-    .filter((attempt) => !attempt.correct || attempt.assisted).length;
-  const allCorrect =
-    recent.length >= 3 &&
-    recent.slice(-3).every((attempt) => attempt.correct && !attempt.assisted);
-  const baseline = Math.max(0, recentDifficulty - (recentErrors >= 2 ? 1 : 0));
-  const ceiling = Math.min(3, baseline + (allCorrect ? 1 : 0));
+  for (const entry of evidence) stats.set(entry.skillId, entry);
+  const bySkill = new Map<string, PracticeObservation[]>(
+    [...stats].map(([id, entry]) => [id, entry.recentOutcomes]),
+  );
+  const strandOf = (skillId: string) => nodes.get(skillId)?.strand ?? skillId;
+  const strandEvidence = new Map<
+    string,
+    { level: number; ceiling: number; challenge: boolean }
+  >();
+  for (const strand of new Set(
+    templates.map((template) => strandOf(template.skillId)),
+  )) {
+    const entries = [...stats.values()].filter(
+      (entry) => strandOf(entry.skillId) === strand,
+    );
+    const observed = entries
+      .flatMap((entry) => entry.recentOutcomes)
+      .sort((a, b) =>
+        Number(BigInt(a.ingestionSequence) - BigInt(b.ingestionSequence)),
+      )
+      .slice(-3);
+    const successes = entries
+      .flatMap((entry) =>
+        entry.latestIndependent ? [entry.latestIndependent] : [],
+      )
+      .filter((entry) => byTemplate.has(entry.templateId));
+    const anchor = Math.max(
+      0,
+      ...successes.map(
+        (entry) => levels[byTemplate.get(entry.templateId)!.gradeBand],
+      ),
+    );
+    const errors = observed.filter(
+      (entry) => !entry.correct || entry.assisted,
+    ).length;
+    const level = Math.max(0, anchor - (errors >= 2 ? 1 : 0));
+    const challenge =
+      observed.length >= 3 &&
+      observed.every((entry) => entry.correct && !entry.assisted);
+    strandEvidence.set(strand, {
+      level,
+      ceiling: Math.min(3, level + Number(challenge)),
+      challenge,
+    });
+  }
   const chosen: PracticeChoice[] = [];
   const recentSkillIds = attempts
     .filter((attempt) => now - Date.parse(attempt.createdAt) < 30 * 60000)
@@ -119,11 +143,10 @@ export function planMixedPractice(options: {
       else collectPrerequisites(prerequisite, visited);
     }
   }
-  for (const attempt of recent) {
-    const latestOnSkill = bySkill.get(attempt.skillId)?.at(-1);
-    if (latestOnSkill !== attempt || (attempt.correct && !attempt.assisted))
-      continue;
-    collectPrerequisites(attempt.skillId);
+  for (const entry of stats.values()) {
+    const attempt = entry.recentOutcomes.at(-1);
+    if (attempt && (!attempt.correct || attempt.assisted))
+      collectPrerequisites(attempt.skillId);
   }
   for (let slot = 0; slot < options.count; slot++) {
     const lastChoice = chosen.at(-1);
@@ -134,22 +157,17 @@ export function planMixedPractice(options: {
       const history = bySkill.get(template.skillId) ?? [];
       const last = history.at(-1);
       const state = stats.get(template.skillId);
-      const strandSuccesses = independent.filter(
-        (attempt) => strandOf(attempt.skillId) === strand,
-      );
-      const strandLevel = strandSuccesses.length
-        ? levels[byTemplate.get(strandSuccesses.at(-1)!.templateId)!.gradeBand]
-        : baseline;
+      const strandState = strandEvidence.get(strand)!;
+      const strandLevel = strandState.level;
       const level = levels[template.gradeBand];
       const prerequisites = nodes.get(template.skillId)?.prerequisites ?? [];
       const ready = prerequisites.every(
         (id) => stats.get(id)?.status === "review-ready",
       );
-      const due =
-        reviewDueAt(history) ??
-        (state?.lastPracticedAt
-          ? Date.parse(state.lastPracticedAt) + 3 * DAY
-          : null);
+      // Only demonstrated prerequisites may cross a strand boundary. A probe
+      // never writes readiness to ancestors or unrelated strands.
+      const observedPrerequisites = prerequisites.length > 0 && ready;
+      const due = state?.reviewDueAt ?? null;
       const overdue = due !== null && due <= now;
       const returningError = !!last && (!last.correct || last.assisted);
       const reason: PracticeReason = remediation.has(template.skillId)
@@ -175,9 +193,14 @@ export function planMixedPractice(options: {
         score += 35;
       if (state?.status === "review-ready" && !overdue) score -= 35;
       score -= Math.abs(level - strandLevel) * 32;
-      if (level > Math.max(ceiling, strandLevel))
-        score -= 160 * (level - Math.max(ceiling, strandLevel));
-      if (allCorrect && level === ceiling && !history.length) score += 26;
+      if (level > strandState.ceiling && !observedPrerequisites && !last)
+        score -= 160 * (level - strandState.ceiling);
+      if (
+        strandState.challenge &&
+        level === strandState.ceiling &&
+        !history.length
+      )
+        score += 26;
       // Learning work is interleaved, including remediation: avoid a miss turning
       // into an endless same-template loop. No synthetic success is recorded.
       if (template.skillId === lastSkill) score -= 180;
