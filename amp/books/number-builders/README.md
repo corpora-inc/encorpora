@@ -1,6 +1,6 @@
 # Number Builders
 
-*Count, Compose, and Change* is an illustrated early-number book and workbook. It connects small collections, parts of five and ten, teen numbers, tens and ones, addition/subtraction stories and selected two-digit strategies. An adult can read the invitations aloud while the learner points, moves counters, draws or explains.
+_Count, Compose, and Change_ is an illustrated early-number book and workbook. It connects small collections, parts of five and ten, teen numbers, tens and ones, addition/subtraction stories and selected two-digit strategies. An adult can read the invitations aloud while the learner points, moves counters, draws or explains.
 
 The instructional route begins with one-to-one counting and cardinality. Rearrangements preserve the count; a ten-strip preserves the value of ten loose units. Those ideas support missing parts, make-ten strategies and exchanging a ten before subtraction. Comparison and unknown-start stories prevent learners from relying on keywords. Mixed and later-return tasks invite a different representation or independent attempt.
 
@@ -13,6 +13,20 @@ This is a connected selection of K–2 number-and-operations ideas, not a comple
 `alignments.ts` links selected standards and skills to exact pages and tasks, with explicit exclusions. `practice.ts` binds 17 existing numeric problem families to relevant instruction and records their ranges. A numeric result cannot establish one-to-one pointing, unit reasoning, a learner-created model or an oral explanation. Intermediate-part questions in make-ten practice are distinguished from final-total questions.
 
 The exact models derive quantities from occupied cells or unit counts. Ten-frames have two rows of five. Ten-strips contain ten unit squares, and noncanonical collections preserve the same units when a ten is unpacked. Conserved comparison panels must contain the same count. Color is supplemented by outlines, patterns and labels.
+
+## Reading and printing
+
+The `early-number` presentation uses larger sans-serif learner text and exact models, with separate adult-guide and answer-key typography. Paired print models show an exchange or comparison together; the reading workspace presents each model in sequence. The app requires the `early-number-v1` reader capability before offering this title.
+
+Print the reusable tools at actual size on Letter paper. Rods and loose squares share one drawing scale: ten loose squares cover one ten-strip. Scaling an entire page preserves this relationship; scaling individual pieces separately does not. An adult can prepare the pieces, or the learner can trace them and use safe household counters.
+
+From the AMP package directory, publish the registered title with:
+
+```sh
+npx tsx scripts/publish-book.ts --book number-builders --all-pages
+```
+
+The exporter checks page and diagram bounds, extracted PDF text and physical page count. The source manifest identifies the authored modules and publisher used for that artifact. These checks establish document integrity and layout; they do not measure learning outcomes.
 
 ## Standards sources
 
