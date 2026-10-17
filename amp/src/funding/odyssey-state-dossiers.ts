@@ -463,7 +463,7 @@ export const odysseyStateDossiers: DossierInventory = {
       readinessGaps: [
         "Funded eligibility and selected educational setting are prerequisites; LA GATOR home-based education is not concurrent enrollment in either excluded registered home-study route.",
         "Resolve exact material/software classification and approved editions; no inference from category names alone.",
-        "If budgeted ESA receipts exceed $100,000, document the applicable operational-history, CPA or bond/credit criterion.",
+        "If budgeted ESA receipts exceed $100,000 in a fiscal year, document the applicable operational-history, CPA or bond/credit criterion.",
         "Confirm software-specific refund/proration and fulfillment; retain separate approval, delivery and settlement evidence.",
       ],
       applicationStatus: "unsent",
