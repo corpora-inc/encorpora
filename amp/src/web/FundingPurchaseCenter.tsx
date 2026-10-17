@@ -65,6 +65,7 @@ export function FundingPurchaseCenter({
   const [busy, setBusy] = useState(false),
     [loading, setLoading] = useState(true),
     [error, setError] = useState("");
+  const body = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null),
     epoch = useRef(0),
     mounted = useRef(false),
@@ -101,6 +102,7 @@ export function FundingPurchaseCenter({
   }, [identity]);
   useLayoutEffect(() => {
     heading.current?.focus({ preventScroll: true });
+    if (body.current) body.current.scrollTop = 0;
   }, [selected, identity]);
   async function response(path: string, body?: unknown) {
     const active = epoch.current;
@@ -244,7 +246,7 @@ export function FundingPurchaseCenter({
     <section className="funding-center" aria-label="Education fund purchases">
       <header className="funding-heading">
         <h1 ref={heading} tabIndex={-1}>
-          {selected ? "Your purchase request" : "Use education funds"}
+          {selected ? "Purchase request" : "Education funds"}
         </h1>
         <button
           onClick={() => {
@@ -258,13 +260,15 @@ export function FundingPurchaseCenter({
           Back
         </button>
       </header>
-      <div className="funding-body">
+      <div ref={body} className="funding-body">
         {error && (
           <div className="funding-error" role="alert">
             <p>{error}</p>
-            <button onClick={() => void action(refresh)} disabled={busy}>
-              Refresh status
-            </button>
+            {!request && (
+              <button onClick={() => void action(refresh)} disabled={busy}>
+                Refresh status
+              </button>
+            )}
           </div>
         )}
         {loading ? (
@@ -285,7 +289,11 @@ export function FundingPurchaseCenter({
             </p>
             <p className="funding-price">
               {money(request.offer.totalMinor)}{" "}
-              <span>for one learner · 12 months</span>
+              <span>
+                {learners.find((l) => l.id === request.learnerId)?.name ??
+                  "Student reference: " + request.learnerId}{" "}
+                · 12 months
+              </span>
             </p>
             {request.commerce ? (
               <>
@@ -421,7 +429,11 @@ export function FundingPurchaseCenter({
                     <p>{offer.productDescription}</p>
                     <p className="funding-price">
                       {money(offer.totalMinor)}{" "}
-                      <span>for one learner · 12 months</span>
+                      <span>
+                        {learners.find((l) => l.id === learnerId)?.name ??
+                          "Student reference: " + learnerId}{" "}
+                        · 12 months
+                      </span>
                     </p>
                     <p>
                       Includes {money(offer.taxMinor)} tax. The license term
@@ -462,20 +474,22 @@ export function FundingPurchaseCenter({
           <>
             {usable && (
               <>
-                <button
-                  disabled={
-                    busy || request.status === "parent-reported-submitted"
-                  }
-                  onClick={() =>
-                    void action(() =>
-                      update(request, "parent-reported-submitted"),
-                    )
-                  }
-                >
-                  {request.status === "parent-reported-submitted"
-                    ? "Submission reported"
-                    : "I submitted the program request"}
-                </button>
+                {request.status === "parent-reported-submitted" ? (
+                  <p className="funding-footer-status">
+                    Submission reported · awaiting verification
+                  </p>
+                ) : (
+                  <button
+                    disabled={busy}
+                    onClick={() =>
+                      void action(() =>
+                        update(request, "parent-reported-submitted"),
+                      )
+                    }
+                  >
+                    I submitted the program request
+                  </button>
+                )}
                 <button
                   className="funding-secondary"
                   disabled={busy}
@@ -496,12 +510,21 @@ export function FundingPurchaseCenter({
             </button>
           </>
         ) : (
-          <button
-            disabled={loading || busy || !offer || !learnerId || !consentActive}
-            onClick={() => void action(prepare)}
-          >
-            {busy ? "Preparing…" : "Prepare unpaid quote"}
-          </button>
+          <>
+            {offer && (
+              <p className="funding-footer-status">
+                {money(offer.totalMinor)} total · one learner · 12 months
+              </p>
+            )}
+            <button
+              disabled={
+                loading || busy || !offer || !learnerId || !consentActive
+              }
+              onClick={() => void action(prepare)}
+            >
+              {busy ? "Preparing…" : "Prepare unpaid quote"}
+            </button>
+          </>
         )}
       </footer>
     </section>

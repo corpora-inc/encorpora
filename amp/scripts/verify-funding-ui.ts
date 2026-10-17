@@ -36,6 +36,8 @@ try {
     page.on("pageerror", (e) => errors.push(e.message));
     let record: FundingRequest | undefined;
     let creates = 0;
+    let offerWithdrawn = false,
+      failRead = false;
     let holdCreate = false;
     let heldResolve!: () => void, releaseResolve!: () => void;
     let held = Promise.resolve(),
@@ -44,7 +46,9 @@ try {
       const request = route.request(),
         path = new URL(request.url()).pathname;
       if (path.endsWith("/offers"))
-        return route.fulfill({ json: { offers: [presentOffer(offer)] } });
+        return route.fulfill({
+          json: { offers: offerWithdrawn ? [] : [presentOffer(offer)] },
+        });
       if (path.endsWith("/quote"))
         return route.fulfill({
           contentType: "application/pdf",
@@ -78,18 +82,36 @@ try {
         }
         return route.fulfill({ json: snapshot }).catch(() => {});
       }
+      if (failRead) {
+        failRead = false;
+        return route.fulfill({
+          status: 503,
+          json: { error: "funding_service_unavailable" },
+        });
+      }
       return route.fulfill({
-        json: { requests: record ? [presentRequest(record)] : [] },
+        json: {
+          requests: record
+            ? [{ ...presentRequest(record), offerAvailable: !offerWithdrawn }]
+            : [],
+        },
       });
     });
     await page.goto(
       "http://127.0.0.1:4326/artifacts/funding-review/index.html",
     );
+    await page.getByRole("button", { name: "Prepare unpaid quote" }).waitFor();
+    await page.screenshot({
+      path: new URL(`offer-${viewport.width}.png`, directory).pathname,
+    });
     await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
     await page
       .getByRole("button", { name: "Download unpaid PDF quote" })
       .waitFor();
     assert.equal(creates, 1);
+    await page.screenshot({
+      path: new URL(`prepared-${viewport.width}.png`, directory).pathname,
+    });
     await page.evaluate(() =>
       (window as any).fundingRender("parent-a", "renewed-token"),
     );
@@ -104,7 +126,10 @@ try {
     await page
       .getByRole("button", { name: "I submitted the program request" })
       .click();
-    await page.getByRole("button", { name: "Submission reported" }).waitFor();
+    await page.locator(".funding-footer-status").waitFor();
+    await page.locator(".funding-body").evaluate((el) => {
+      el.scrollTop = 0;
+    });
     assert.equal(record?.orderId, null);
     const geometry = await page.evaluate(() => ({
       viewport: innerWidth,
@@ -123,6 +148,33 @@ try {
     assert.ok(geometry.body >= 100, JSON.stringify(geometry));
     await page.screenshot({
       path: new URL(`request-${viewport.width}.png`, directory).pathname,
+    });
+    offerWithdrawn = true;
+    await page.getByRole("button", { name: "Refresh status" }).click();
+    await page
+      .getByText("Offer no longer available", { exact: true })
+      .waitFor();
+    assert.equal(
+      await page
+        .getByRole("button", { name: "Download unpaid PDF quote" })
+        .count(),
+      0,
+    );
+    await page.screenshot({
+      path: new URL(`withdrawn-${viewport.width}.png`, directory).pathname,
+    });
+    offerWithdrawn = false;
+    record!.expiresAt = "2020-01-01T00:00:00.000Z";
+    await page.getByRole("button", { name: "Refresh status" }).click();
+    await page.getByText("Quote expired", { exact: true }).waitFor();
+    await page.screenshot({
+      path: new URL(`expired-${viewport.width}.png`, directory).pathname,
+    });
+    failRead = true;
+    await page.getByRole("button", { name: "Refresh status" }).click();
+    await page.getByRole("alert").waitFor();
+    await page.screenshot({
+      path: new URL(`error-${viewport.width}.png`, directory).pathname,
     });
     record = undefined;
     await page.evaluate(() =>

@@ -11,6 +11,10 @@
 }
 .funding-heading {
   display: flex;
+  flex-wrap: nowrap;
+  height: auto;
+  min-height: 48px;
+  padding: 0 0 10px;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
@@ -39,6 +43,7 @@
 }
 .funding-heading button {
   flex-shrink: 0;
+  order: -1;
 }
 .funding-body {
   min-height: 0;
@@ -61,7 +66,8 @@
   min-height: 48px;
   font-size: 16px;
   padding: 10px;
-  white-space: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .funding-offer {
   margin-top: 20px;
@@ -94,6 +100,11 @@
 .funding-footer {
   border-top: 1px solid #d6dfd2;
   padding-top: 12px;
+  margin: 0;
+  flex-direction: row;
+  font-size: 16px;
+  letter-spacing: normal;
+  color: inherit;
 }
 .funding-footer button {
   flex: 1;
@@ -167,11 +178,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .funding-footer > button:first-child:not(.funding-secondary) {
+  .funding-footer > button:not(.funding-secondary) {
     grid-column: 1 / -1;
   }
   .funding-heading h1 {
-    font-size: 26px;
+    font-size: 22px;
   }
   .funding-offer {
     padding: 16px;
@@ -195,4 +206,21 @@
   .funding-primary {
     padding: 10px 14px;
   }
+}
+
+.funding-footer-status {
+  grid-column: 1 / -1;
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #18594f;
+}
+
+.funding-center .funding-secondary:hover {
+  background: #dce6d7;
+  color: #183e3a;
+}
+.funding-footer > button:only-child {
+  grid-column: 1 / -1;
 }
