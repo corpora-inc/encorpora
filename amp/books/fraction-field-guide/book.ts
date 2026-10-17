@@ -1497,16 +1497,20 @@ pages.push(
 );
 
 for (const [section, solutions] of Object.entries(keys)) {
-  for (let offset = 0; offset < solutions.length; offset += 5) {
+  const pageCount = Math.ceil(solutions.length / 5);
+  let offset = 0;
+  for (let index = 0; index < pageCount; index++) {
+    const count = Math.ceil((solutions.length - offset) / (pageCount - index));
     pages.push(
       page(
-        `key-${section}-${offset / 5 + 1}`,
+        `key-${section}-${index + 1}`,
         "Solutions • reasoning and checks",
         `${section[0]!.toUpperCase()}${section.slice(1)} field notes`,
-        solutions.slice(offset, offset + 5),
+        solutions.slice(offset, offset + count),
         "solutions",
       ),
     );
+    offset += count;
   }
 }
 export const fractionFieldGuide: FractionBook = {

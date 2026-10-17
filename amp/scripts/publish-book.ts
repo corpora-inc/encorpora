@@ -17,6 +17,7 @@ const sourcePaths = [
   "books/fraction-field-guide/book.ts",
   "books/fraction-field-guide/schema.ts",
   "src/publishing/book.tsx",
+  "src/publishing/MathText.tsx",
   "src/publishing/diagrams.tsx",
   "src/publishing/CoverFigure.tsx",
   "src/publishing/validate.ts",
@@ -154,6 +155,7 @@ try {
       {
         book: fractionFieldGuide.id,
         version: fractionFieldGuide.version,
+        contentSha256: hash(JSON.stringify(fractionFieldGuide)),
         pages: fractionFieldGuide.pages.length,
         physicalPdfPages: physicalPages,
         pdfTagged: /^Tagged:\s+yes/m.test(pdfInfo),

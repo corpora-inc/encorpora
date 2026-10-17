@@ -222,3 +222,22 @@ test("publisher options accept flags before or after the output directory", asyn
   assert.throws(() => parsePublishingArgs(["--bogus"]), /Unknown/);
   assert.throws(() => parsePublishingArgs(["--output"]), /exactly one/);
 });
+
+test("solution pages balance each section without orphaning a short remainder", async () => {
+  const { fractionFieldGuide } =
+    await import("../books/fraction-field-guide/book.js");
+  const sections = new Map<string, number[]>();
+  for (const page of fractionFieldGuide.pages.filter(
+    (p) => p.kind === "solutions",
+  )) {
+    const section = /^key-(.+)-\d+$/.exec(page.id)?.[1];
+    assert.ok(section);
+    const counts = sections.get(section) ?? [];
+    counts.push(page.blocks.filter((b) => b.kind === "solution").length);
+    sections.set(section, counts);
+  }
+  for (const counts of sections.values()) {
+    assert.ok(Math.max(...counts) <= 5);
+    assert.ok(Math.max(...counts) - Math.min(...counts) <= 1);
+  }
+});
