@@ -116,6 +116,17 @@ try {
   await page.getByRole("button", { name: "Continue", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator("#answer").waitFor();
+  // Mixed scheduling may choose a book-backed family; select the legacy lesson
+  // explicitly before testing the lifecycle of its lesson-support request.
+  await page.getByRole("button", { name: "Change topic", exact: true }).click();
+  await page
+    .getByText("Looking for a particular idea?", { exact: true })
+    .click();
+  await page.getByLabel("Choose your practice").selectOption("rectangle-area");
+  await page
+    .getByRole("button", { name: "Try this idea", exact: true })
+    .click();
+  await page.locator("#answer").waitFor();
   let releaseLesson!: () => void;
   let heldLesson!: () => void;
   const held = new Promise<void>((resolve) => {
