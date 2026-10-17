@@ -6,6 +6,12 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   return (
     <article className="problem-lesson">
       <p className="lesson-goal">{lesson.goal}</p>
+      {lesson.principle && (
+        <p className="lesson-principle">
+          <strong>Principle</strong>
+          {lesson.principle}
+        </p>
+      )}
       {lesson.terms.length > 0 && (
         <dl className="lesson-terms">
           {lesson.terms.map(({ term, meaning }) => (

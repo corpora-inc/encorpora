@@ -61,7 +61,7 @@ try {
     await exitPractice(page);
     await page.getByRole("button", { name: "Progress", exact: true }).click();
     await page
-      .getByRole("heading", { name: "Nothing practiced yet", exact: true })
+      .getByRole("heading", { name: "None yet", exact: true })
       .waitFor();
     await page.screenshot({
       path: new URL(`empty-${size.width}.png`, dir).pathname,
@@ -399,7 +399,7 @@ try {
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(fresh.id);
   await page
-    .getByRole("heading", { name: "Nothing practiced yet", exact: true })
+    .getByRole("heading", { name: "None yet", exact: true })
     .waitFor();
   release();
   await page.unrouteAll({ behavior: "wait" });

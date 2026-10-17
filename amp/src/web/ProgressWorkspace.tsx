@@ -515,16 +515,16 @@ export function ProgressWorkspace({
                   </svg>
                   <h2>
                     {view.filter === "review"
-                      ? "Nothing due for review"
+                      ? "Nothing due"
                       : view.filter === "explore"
-                        ? "Every idea here is practiced"
-                        : "Nothing practiced yet"}
+                        ? "All practiced"
+                        : "None yet"}
                   </h2>
                   <p>
                     {view.filter === "review"
-                      ? "Spaced review will bring ideas back when they are due."
+                      ? "Ideas return here when review is due."
                       : view.filter === "explore"
-                        ? "Choose another area to find new ideas."
+                        ? "Choose another area."
                         : "Practiced ideas appear here."}
                   </p>
                 </div>

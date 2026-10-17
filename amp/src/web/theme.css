@@ -1196,3 +1196,37 @@ html[data-input="pointer"] :focus-visible {
 .frontier-axis span:nth-child(3) {
   right: 0;
 }
+.answer-dock > div > .practice-tools {
+  margin-top: 8px;
+}
+/* Empty states stay within one compact block on small screens. */
+.shell .progress-empty h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 22px;
+  margin: 10px 0 6px;
+}
+@media (max-width: 400px), (max-height: 620px) {
+  .shell .progress-empty svg {
+    width: 110px;
+    max-height: 40px;
+  }
+  .shell .progress-empty {
+    padding: 8px 12px;
+  }
+}
+.lesson-principle {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.lesson-principle strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
+}

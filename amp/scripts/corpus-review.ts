@@ -47,9 +47,10 @@ type Case = {
 const RUBRIC = `You review one problem from a K–12 math practice app. The image shows exactly what the learner sees: the question and any diagram. The answer and worked steps are given below.
 
 Judge it as a demanding math editor. The standard: direct, concise, complete, unambiguous, grammatical, and a diagram that shows the relevant quantities and relationships. No filler.
+Rigor and vocabulary: the question and worked steps should use correct mathematical terms for the grade (sum, difference, product, quotient, factor, numerator, denominator, equivalent, coefficient, term, slope, …) and name the property a step relies on where that teaches something (e.g. "by the distributive property of multiplication over addition"). Flag vague, informal or dumbed-down wording as an issue.
 
 Reply with JSON only:
-{"clarity": 1-5, "figure": 1-5 or null if no figure, "ambiguous": "how a careful learner could misread what is asked" or null,
+{"clarity": 1-5, "figure": 1-5 or null if no figure, "rigor": 1-5, "ambiguous": "how a careful learner could misread what is asked" or null,
  "issues": ["each concrete problem: wording, grammar, singular/plural, unit, label that does not match the picture, picture that omits a quantity, answer-format unclear, explanation error"],
  "verdict": "ok" or "fix", "rewrite": "a better question wording, or null if ok"}`;
 
