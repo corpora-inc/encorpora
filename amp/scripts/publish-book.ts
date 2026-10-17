@@ -87,6 +87,27 @@ try {
     throw new Error(
       `Diagram labels overflow: ${JSON.stringify(diagramOverflow)}`,
     );
+  const comparisonScaleErrors = await page.evaluate(() => {
+    const scales = new Map<string, number>();
+    return Array.from(
+      document.querySelectorAll<HTMLElement>("[data-region-frame]"),
+    ).flatMap((figure) => {
+      const key = `${figure.closest("article")!.id}/${figure.dataset.regionUnit}/${figure.dataset.regionFrame}`;
+      const cell = figure
+        .querySelector("[data-region-cell]")!
+        .getBoundingClientRect();
+      const prior = scales.get(key);
+      scales.set(key, cell.width);
+      return Math.abs(cell.width - cell.height) > 0.1 ||
+        (prior !== undefined && Math.abs(prior - cell.width) > 0.1)
+        ? [key]
+        : [];
+    });
+  });
+  if (comparisonScaleErrors.length)
+    throw new Error(
+      `Comparison regions use inconsistent physical unit scales: ${comparisonScaleErrors.join(", ")}`,
+    );
   await page.pdf({
     path: resolve(output, `${book.id}.pdf`),
     format: "Letter",
@@ -154,6 +175,7 @@ try {
         pdfSha256: hash(await readFile(pdfPath)),
         overflow,
         diagramOverflow,
+        comparisonScaleErrors,
         review:
           "Automated layout validation only; independent mathematical and rendered-page review required.",
       },

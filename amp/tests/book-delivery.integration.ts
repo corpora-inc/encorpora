@@ -76,6 +76,19 @@ test(
           .json()
           .books.some((b: { id: string }) => b.id === "number-builders"),
       );
+      assert.ok(
+        !legacyList
+          .json()
+          .books.some((b: { id: string }) => b.id === "measure-border-cover"),
+      );
+      for (const capabilities of [["algebra-models-v1"], ["unit-regions-v1"]]) {
+        const unsupportedMeasurement = await app.inject({
+          method: "POST",
+          url: `${listPath}/measure-border-cover/open`,
+          payload: { readerCapabilities: capabilities },
+        });
+        assert.equal(unsupportedMeasurement.statusCode, 409);
+      }
       const unsupportedNumber = await app.inject({
         method: "POST",
         url: `${listPath}/number-builders/open`,
