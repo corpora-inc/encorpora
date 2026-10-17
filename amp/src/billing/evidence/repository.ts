@@ -137,15 +137,18 @@ export async function recordFinancialEvidence(
         reason: "financial_refund_history_collision",
       };
   }
-  let documentHold = [
+  const stickyReasons = [
     "financial_charge_collision",
     "financial_baseline_collision",
     "financial_refund_history_collision",
     "provider_credit_note_requires_review",
     "renewal_profile_requires_review",
-  ].includes(stored.review_reason)
+  ];
+  let documentHold = stickyReasons.includes(stored.review_reason)
     ? (stored.review_reason as string)
-    : null;
+    : financial.kind === "review" && stickyReasons.includes(financial.reason)
+      ? financial.reason
+      : null;
   const creditHold = await client.query(
     "SELECT 1 FROM amp_payment_holds WHERE namespace=$1 AND invoice_id=$2 LIMIT 1",
     [namespace, payment.invoiceId],
@@ -178,7 +181,7 @@ export async function recordFinancialEvidence(
     [
       stored.id,
       financial.kind === "verified" && !documentHold ? "verified" : "review",
-      financial.kind === "review" ? financial.reason : documentHold,
+      documentHold ?? (financial.kind === "review" ? financial.reason : null),
     ],
   );
 }

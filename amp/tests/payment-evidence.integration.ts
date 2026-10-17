@@ -506,7 +506,24 @@ test(
       assert.equal(changed.status, "review");
       assert.equal(changed.review_reason, "renewal_profile_requires_review");
       assert.equal(changed.baseline.paidMinor, 12000);
+      // Transient unavailable tax evidence cannot erase the durable renewal hold.
+      const originalTaxes = invoice.total_taxes;
+      Object.assign(invoice, { total_taxes: undefined });
+      await send("invoice.paid", invoice.id);
+      await billing.runBatch();
       settings.documentProfile = structuredClone(syntheticDocumentProfile);
+      invoice.total_taxes = originalTaxes;
+      await send("invoice.paid", invoice.id);
+      await billing.runBatch();
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT review_reason FROM amp_payment_records WHERE invoice_id=$1",
+            [invoice.id],
+          )
+        ).rows[0].review_reason,
+        "renewal_profile_requires_review",
+      );
       // A credit note preceding the invoice persists through a failed fetch and later void.
       invoice.id = "in_credit_first";
       f.charge.id = "ch_credit";
@@ -568,6 +585,45 @@ test(
         headers: { authorization: "Bearer parent" },
       });
       assert.equal(firstAdjustment.statusCode, 200, firstAdjustment.body);
+      // Collision → transient missing evidence → original facts must stay held.
+      const originalPaidAt = invoice.status_transitions.paid_at;
+      invoice.status_transitions.paid_at += 1;
+      await send("invoice.paid", invoice.id);
+      await billing.runBatch();
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT review_reason FROM amp_payment_records WHERE invoice_id=$1",
+            [invoice.id],
+          )
+        ).rows[0].review_reason,
+        "financial_baseline_collision",
+      );
+      Object.assign(invoice, { total_taxes: undefined });
+      await send("invoice.paid", invoice.id);
+      await billing.runBatch();
+      invoice.status_transitions.paid_at = originalPaidAt;
+      invoice.total_taxes = originalTaxes;
+      await send("invoice.paid", invoice.id);
+      await billing.runBatch();
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT review_reason FROM amp_payment_records WHERE invoice_id=$1",
+            [invoice.id],
+          )
+        ).rows[0].review_reason,
+        "financial_baseline_collision",
+      );
+      assert.equal(
+        (
+          await app.inject({
+            url: `/api/v1/payments/${refundRecord}/record.pdf`,
+            headers: { authorization: "Bearer parent" },
+          })
+        ).statusCode,
+        409,
+      );
       // A single captured charge cannot become a second paid entitlement.
       invoice.id = "in_duplicate_charge";
       f.payments.data[0]!.invoice = invoice.id;
