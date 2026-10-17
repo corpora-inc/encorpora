@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-native-learning-request"
+description = "Enables the native_learning_request command without any pre-configured scope."
+commands.allow = ["native_learning_request"]
+
+[[permission]]
+identifier = "deny-native-learning-request"
+description = "Denies the native_learning_request command without any pre-configured scope."
+commands.deny = ["native_learning_request"]

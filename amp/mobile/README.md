@@ -1,20 +1,53 @@
 # AMP native preview
 
-This independent Tauri 2 application uses the provisional identifier `inc.corpora.amp`. Its native preview displays service availability through a Rust HTTPS transport. Parent sign-in, learning sessions, purchases, book downloads and family exports are unavailable in the native interface. Those features require a configured web application; this shell does not establish that a public service or payment offer is available.
+This independent Tauri 2 application uses the provisional identifier `inc.corpora.amp`. A configured native build lets a parent sign in through the system browser, select an existing owned learner, practice, review progress and read books in the app. Server-side consent, learner ownership and student-license checks govern access.
 
-The native application does not initialize the browser OIDC manager, use development authentication, or mount the browser learning workspace. Its only privileged commands are `native_status` and `read_public_resource`, restricted to the bundled main window. The latter accepts the enum `health` or `catalog`; it cannot accept URLs, headers, credentials or arbitrary API paths.
+Learner creation, consent enrollment, purchases, PDF downloads and family data exports require the configured web application. The native interface does not expose those actions. No public service, live identity registration or payment offer is included. Without identity configuration, the app displays a public service-connection preview.
 
-## Service configuration
+## Service and identity configuration
 
-Set `AMP_NATIVE_API_ORIGIN` when compiling Rust to a trusted HTTPS API origin, for example `https://api.example.test`. The origin must have a DNS hostname, port 443, and no user information, path, query or fragment. No origin is configured by default. Missing or invalid configuration disables network reads. Configuration changes require rebuilding the native binary.
+Set `AMP_NATIVE_API_ORIGIN` when compiling Rust to a trusted HTTPS API origin, for example `https://api.example.test`. It must have a DNS hostname, port 443, and no user information, path, query or fragment. No origin is configured by default.
 
-The transport rejects HTTP redirects, uses no proxy or cookie storage, imposes an eight-second request deadline, allows four simultaneous requests and reads at most 2 MiB of JSON per response. Errors expose fixed categories rather than remote response bodies or operational URLs. The webview CSP does not grant access to the configured remote API; reads go through the scoped Rust command. The public catalog is content metadata, not authority to access learner data.
+Native sign-in additionally requires `AMP_NATIVE_OIDC_CONFIG`, a build-time JSON object with these fields. Use deployment configuration outside this public repository for actual provider identifiers.
 
-## Authentication boundary
+```json
+{
+  "issuer": "https://identity.example.test/",
+  "authorization": "https://identity.example.test/authorize",
+  "token": "https://identity.example.test/token",
+  "jwks": "https://identity.example.test/jwks",
+  "api": "https://api.example.test/",
+  "clientId": "NATIVE_PUBLIC_CLIENT_ID",
+  "resource": "API_RESOURCE_AUDIENCE",
+  "scopes": []
+}
+```
 
-There is no native credential setter or authenticated API command. A later native session implementation must use a maintained OAuth/OIDC implementation, system-browser authorization, PKCE, exact issuer/audience/nonce validation, one-use state and exact callback matching. Cold-start and running callbacks, expiry, refresh, sign-out and stale asynchronous responses require independent verification before authenticated learning can be enabled. Memory-only credentials would require signing in again after process exit; persistent credentials require platform secure storage.
+All endpoint URLs must use HTTPS on port 443 without credentials, queries or fragments. `api` must match `AMP_NATIVE_API_ORIGIN`. The provider must register the public native client and the exact callback `inc.corpora.amp://oauth/callback`, support authorization code with S256 PKCE and the configured resource parameter, and issue an API access token accepted by AMP's server. No client secret is used. The `openid` scope is automatic; additional provider-approved scopes, including `offline_access` where appropriate, are explicit configuration. Refresh is available only when the provider issues a refresh token.
 
-These requirements follow [OAuth for Native Apps](https://www.rfc-editor.org/rfc/rfc8252), [Tauri capabilities](https://v2.tauri.app/security/capabilities/) and [Tauri deep links](https://v2.tauri.app/plugin/deep-linking/). A browser harness is not evidence of device sign-in or store readiness.
+The issuer and JWKS are pinned explicitly; the client does not discover or accept additional endpoints. ID tokens must use RS256 or ES256. The maintained [OpenID Connect Rust client](https://docs.rs/openidconnect/latest/openidconnect/) verifies signatures, issuer, client audience, expiry and nonce; the app also checks issue time and an access-token hash when present. Before exposing a session, `/api/v1/session` must return the same identity using the server's independent API access-token verifier. An ID token alone cannot authorize learner access.
+
+## Session and transport boundaries
+
+Authorization opens the system browser. A random state, nonce and PKCE verifier belong to one pending transaction with a five-minute lifetime. The exact callback is consumed before code exchange, preventing duplicate redemption. Invalid or unsolicited links cannot create a session. Cold-start links without an in-memory pending transaction require a new sign-in.
+
+Access and refresh tokens stay in Rust memory. JavaScript receives a random opaque handle, not a bearer token, and can invoke only the fixed learning-request enum. Tokens are not persisted; quitting the native process requires signing in again. Refresh operations are serialized and retain the same account identity. Sign-out clears the native session and pending authorization; generation checks reject obsolete exchanges and API responses. Local sign-out does not clear the identity provider's system-browser cookies, revoke provider tokens or undo a request the server already committed.
+
+The session transport rejects redirects and ambient proxies, accepts at most 16 KiB of request JSON and 2 MiB of response JSON, and imposes ten-second request deadlines with four simultaneous network operations. Public health/catalog reads have their own four-request budget and eight-second deadline. The webview CSP does not permit direct remote API access. Privileged commands are restricted to the bundled main window; there is no arbitrary URL, header or credential setter. These boundaries do not make a compromised frontend harmless: it can still request the learning actions allowed to the current parent.
+
+The design follows [OAuth for Native Apps](https://www.rfc-editor.org/rfc/rfc8252), [Tauri capabilities](https://v2.tauri.app/security/capabilities/) and [Tauri deep links](https://v2.tauri.app/plugin/deep-linking/).
+
+## Verification and release limits
+
+`session-core` is the production Rust path dependency used by both Tauri and the signed-provider fixture. The fixture drives browser authorization, verifies PKCE independently, signs real ephemeral tokens, and exercises the same Rust verification/session logic against real AMP routes and an isolated PostgreSQL schema. Its loopback configuration constructor exists only under `cfg(test)`; there is no insecure runtime switch or fixture feature in the shipped application.
+
+From `amp`, with a dedicated test database configured through `AMP_TEST_DATABASE_URL`, run:
+
+```sh
+npm run test:native-session
+```
+
+The harness supplies a controlled OS callback adapter. It proves the shared session core and app interaction, not operating-system callback registration. Live provider registration, signed app installation, actual iOS/Android cold-start and running callback delivery, system-browser return, device accessibility and store review require separate verification. The app does not claim offline practice or persistent native credentials.
 
 ## Prerequisites
 
@@ -54,10 +87,13 @@ cargo fmt --check
 cargo check --locked
 cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
+cargo fmt --check --manifest-path session-core/Cargo.toml
+cargo clippy --locked --manifest-path session-core/Cargo.toml --all-targets -- -D warnings
+cargo test --locked --manifest-path session-core/Cargo.toml
 cargo build --locked --features custom-protocol
 ```
 
-The last command creates a desktop executable with bundled frontend assets. It embeds the native preview interface and public transport. It does not implement sign-in or purchases. Installer generation is disabled with `bundle.active: false`.
+The last command creates a desktop executable with bundled frontend assets. It embeds the frontend and the configured native transport/session capabilities. It does not implement native purchases. Installer generation is disabled with `bundle.active: false`.
 
 ## iOS and Android work
 

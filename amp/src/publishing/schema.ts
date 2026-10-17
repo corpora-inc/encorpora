@@ -1,3 +1,4 @@
+import type { UnitRegionModel } from "./unit-regions.js";
 import type { EarlyNumberModel } from "./early-number-models.js";
 import type { AlgebraModel } from "./algebra-models.js";
 /** Original book authoring contract; all measurements are exact rational pairs. */
@@ -8,6 +9,7 @@ export type Diagram = {
   alt: string;
 } & (
   | EarlyNumberModel
+  | UnitRegionModel
   | AlgebraModel
   | {
       kind: "strips";

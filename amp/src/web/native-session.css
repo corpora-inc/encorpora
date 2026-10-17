@@ -1,0 +1,47 @@
+.native-family {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  gap: 20px;
+}
+.native-family h2 {
+  margin: 0;
+  font-size: 32px;
+}
+.native-family p {
+  margin: 0;
+}
+.native-family .eyebrow {
+  margin-bottom: 12px;
+}
+.native-family-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.native-family-actions button {
+  min-height: 48px;
+}
+@media (max-width: 360px) {
+  .native-family {
+    padding: 18px;
+    gap: 16px;
+  }
+  .native-family-actions {
+    display: grid;
+  }
+}
+@media (max-height: 450px) and (orientation: landscape) {
+  .native-family {
+    padding: 16px 20px;
+    gap: 12px;
+  }
+  .native-family .eyebrow {
+    margin-bottom: 6px;
+  }
+  .native-family h2 {
+    font-size: 28px;
+  }
+}

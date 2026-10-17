@@ -1,3 +1,4 @@
+import { UnitRegionCover } from "./UnitRegionCover.js";
 import { earlyNumberPrintCss } from "./early-number-print.js";
 import { MathText } from "./MathText.js";
 export { MathText } from "./MathText.js";
@@ -9,6 +10,7 @@ import { CoverFigure } from "./CoverFigure.js";
 import { BookDiagram } from "./diagrams.js";
 import { validateBook } from "./validate.js";
 export const bookCss = `
+.unit-region-art{max-width:4.3in;margin:auto}.unit-region-art svg{width:100%;display:block}.unit-region-key{font:10pt Arial,sans-serif;line-height:1.3;margin:4pt 0}
 .early-number-art{max-width:4.2in;margin:auto}.early-number-art svg{width:100%;display:block}.early-collection-panels{display:grid;gap:8pt}.early-panel-label,.early-unit,.early-emphasis{font:11pt Arial,sans-serif;margin:4pt 0}.early-panel-label{font-weight:bold}
 
 .cover-composition{margin:25px 0}.cover-composition svg{display:block;width:100%;font-family:Arial,sans-serif}.cover-number{font-size:68px;font-weight:700;fill:#16483f}.cover-kicker{font-size:13px;letter-spacing:2px;font-weight:700;fill:#16483f}.cover-caption{font-size:13px;fill:#16483f}.inline-fraction{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.05;font-size:.83em;margin:0 .12em;min-width:.6em;white-space:nowrap}.inline-fraction>span:first-child{border-bottom:1px solid currentColor;padding:0 .13em .07em}.inline-fraction>span:last-child{padding:.07em .13em 0}*{box-sizing:border-box}html{background:#e7ebe6;color:#182723}body{margin:0;font-family:Georgia,'Times New Roman',serif;font-size:12pt;line-height:1.45}a{color:inherit} .book-page{position:relative;width:8.5in;height:11in;padding:.55in .62in .55in .68in;background:#fff;margin:24px auto;box-shadow:0 5px 30px #173f3020;break-after:page;overflow:visible}.page-content{height:9.55in}.page-header{border-top:4px solid #16483f;padding-top:12px;margin-bottom:20px}.eyebrow,.book-footer,.task-label,.callout-label{font-family:Arial,sans-serif;font-weight:700;letter-spacing:.06em;font-size:9pt;text-transform:uppercase;color:#16483f}h1{font-family:Arial,sans-serif;font-size:25pt;line-height:1.12;letter-spacing:-.035em;margin:9px 0 8px;color:#16483f}h2{font-family:Arial,sans-serif;font-size:13pt;line-height:1.2;margin:0 0 8px;color:#16483f}.subtitle{font-size:12pt;color:#466258;line-height:1.35;max-width:90%;margin:0}.book-footer{position:absolute;bottom:.35in;left:.68in;right:.62in;border-top:1px solid #9aaea4;padding-top:7px;display:flex;justify-content:space-between;font-size:8pt;letter-spacing:.015em}.text-block{margin:0 0 13px}.callout{border-left:4px solid #348879;background:#eff6f2;padding:10px 14px;margin:14px 0}.callout p{margin:4px 0 0}.tone-predict{border-color:#b56a1d;background:#fff7e9}.tone-misconception{border-color:#a14b39;background:#fbf0ed}.tone-connect{background:#f0f2f8;border-color:#5a6481}.book-figure{margin:15px 0 17px;border-bottom:1px solid #b6c8be;padding-bottom:8px}.algebra-figure .algebra-art svg{max-height:2.5in;width:100%}.algebra-key{font-size:10pt;line-height:1.3;margin:4pt 0}.algebra-key p{margin:2pt 0}.algebra-table{border-collapse:collapse;width:100%;font-size:12pt;text-align:center}.algebra-table th,.algebra-table td{border:1px solid #aac4b7;padding:5pt 8pt}.algebra-table th{background:#e4f0eb}
@@ -92,6 +94,8 @@ function Block({
         </aside>
       );
     case "diagram":
+      if (opening && b.diagram.kind === "unit-region")
+        return <UnitRegionCover diagram={b.diagram} />;
       if (opening && b.diagram.kind === "array")
         return <ArrayCover diagram={b.diagram} />;
       return opening &&

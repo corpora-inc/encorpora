@@ -1,4 +1,10 @@
 import { nativeRuntime } from "./native-runtime";
+import {
+  nativeSession,
+  nativeSignIn,
+  nativeSignOut,
+  nativeSessionEvents,
+} from "./native-session";
 import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
 const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
 const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
@@ -28,7 +34,7 @@ function session(user: User): AuthSession {
   };
 }
 export async function accessSession(): Promise<AuthSession | null> {
-  if (nativeRuntime) return null;
+  if (nativeRuntime) return nativeSession();
   if (import.meta.env.DEV && !manager)
     return {
       token: "amp-local-development",
@@ -43,8 +49,7 @@ export async function accessSession(): Promise<AuthSession | null> {
   return user && !user.expired ? session(user) : null;
 }
 export async function signIn() {
-  if (nativeRuntime)
-    throw new Error("Parent sign-in is not available in this native preview.");
+  if (nativeRuntime) return nativeSignIn();
   if (!manager)
     throw new Error(
       "Account sign-in has not been configured for this deployment.",
@@ -52,12 +57,15 @@ export async function signIn() {
   await manager.signinRedirect();
 }
 export async function signOut() {
+  if (nativeRuntime) return nativeSignOut();
   if (manager) await manager.signoutRedirect();
 }
 
 export function onSessionChanged(
   update: (session: AuthSession | null) => void,
+  error?: (message: string) => void,
 ) {
+  if (nativeRuntime) return nativeSessionEvents(update, error);
   if (!manager) return () => {};
   const loaded = (user: User) => update(session(user));
   const unloaded = () => update(null);

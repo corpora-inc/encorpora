@@ -1,3 +1,4 @@
+import { validateUnitRegionModel } from "./unit-regions.js";
 import {
   isEarlyNumberModel,
   validateEarlyNumberModel,
@@ -47,6 +48,9 @@ export function validateDiagram(d: Diagram): void {
   }
 
   switch (d.kind) {
+    case "unit-region":
+      validateUnitRegionModel(d);
+      break;
     case "balance":
     case "coordinate-plot":
     case "value-table":
