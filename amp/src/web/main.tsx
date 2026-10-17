@@ -1,3 +1,7 @@
+import { BookReader } from "./BookReader";
+import { readingFrames } from "../books/reading";
+import type { BookSummary } from "../books/catalog";
+import type { FractionBook } from "../../books/fraction-field-guide/schema";
 import { product } from "../product";
 import React, { useEffect, useState, useRef } from "react";
 import { createRoot } from "react-dom/client";
@@ -44,6 +48,12 @@ function App() {
     [lesson, setLesson] = useState<Lesson | null>(null),
     [readingLesson, setReadingLesson] = useState<Lesson | null>(null),
     [lessonSearch, setLessonSearch] = useState("");
+  const [books, setBooks] = useState<BookSummary[]>([]);
+  const [readingBook, setReadingBook] = useState<{
+    book: FractionBook;
+    initialFrame: number;
+  } | null>(null);
+  const bookPositions = useRef<Record<string, number>>({});
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
   const libraryScroll = useRef(0);
@@ -81,6 +91,9 @@ function App() {
     setName("");
     setLesson(null);
     setReadingLesson(null);
+    setReadingBook(null);
+    setBooks([]);
+    bookPositions.current = {};
     setFamily("");
     setLearners([]);
     setLearner(null);
@@ -144,6 +157,16 @@ function App() {
       });
   }, [accountId]);
   useEffect(() => {
+    setReadingBook(null);
+    setBooks([]);
+    if (learner)
+      void api<{ books: BookSummary[] }>(`/learners/${learner.id}/books`)
+        .then((data) => {
+          if (learnerRef.current === learner.id) setBooks(data.books);
+        })
+        .catch((e) =>
+          setError(e instanceof Error ? e.message : "Could not load books"),
+        );
     setProblem(null);
     setQueue([]);
     setOutcome(null);
@@ -209,6 +232,55 @@ function App() {
       throw e;
     }
   }
+  async function openBook(id: string, fromProblem = false) {
+    if (!learner) return;
+    const data = await api<{
+      book: FractionBook;
+      suggestedPageId: string | null;
+    }>(`/learners/${learner.id}/books/${id}/open`, {
+      ...(problem ? { problemId: problem.id } : {}),
+    });
+    if (learnerRef.current !== learner.id) return;
+    const suggested =
+      fromProblem && data.suggestedPageId
+        ? readingFrames(data.book).findIndex(
+            (frame) => frame.pageId === data.suggestedPageId,
+          )
+        : -1;
+    setReadingBook({
+      book: data.book,
+      initialFrame:
+        suggested >= 0
+          ? suggested
+          : (bookPositions.current[`${learner.id}:${id}`] ?? 0),
+    });
+  }
+  async function downloadBook(id: string) {
+    if (!learner || !token) return;
+    const epoch = authEpoch.current;
+    const result = await fetch(
+      `/api/v1/learners/${learner.id}/books/${id}/download`,
+      {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(problem ? { problemId: problem.id } : {}),
+      },
+    );
+    if (!result.ok)
+      throw new Error((await result.json()).error ?? "Download unavailable");
+    const blob = await result.blob();
+    if (epoch !== authEpoch.current || learnerRef.current !== learner.id)
+      return;
+    const url = URL.createObjectURL(blob),
+      link = document.createElement("a");
+    link.href = url;
+    link.download = `${id}.pdf`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
   async function download(kind: "lesson" | "workbook" | "solutions") {
     const publicationLesson = readingLesson ?? lesson;
     if (!learner || !publicationLesson || !token) return;
@@ -231,7 +303,7 @@ function App() {
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
   return (
     <div
-      className={`shell ${learner ? "app-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""}`}
+      className={`shell ${learner ? "app-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -370,6 +442,29 @@ function App() {
             <button disabled={busy}>Create learner</button>
           </form>
         </section>
+      ) : readingBook ? (
+        <BookReader
+          key={`${learner.id}:${readingBook.book.id}`}
+          book={readingBook.book}
+          initialFrame={readingBook.initialFrame}
+          onClose={() => {
+            setReadingBook(null);
+            requestAnimationFrame(() =>
+              document
+                .querySelector<HTMLElement>(
+                  tab === "practice"
+                    ? ".question"
+                    : ".book-library-card button",
+                )
+                ?.focus({ preventScroll: true }),
+            );
+          }}
+          onPosition={(frame) => {
+            bookPositions.current[`${learner.id}:${readingBook.book.id}`] =
+              frame;
+          }}
+          download={() => downloadBook(readingBook.book.id)}
+        />
       ) : tab === "practice" ? (
         problem ? (
           <PracticeWorkspace
@@ -380,6 +475,19 @@ function App() {
               catalog?.lessons.find((entry) =>
                 entry.templateIds.includes(problem.templateId),
               ) ?? lesson
+            }
+            openBook={
+              books.find((book) => book.skills.includes(problem.skillId))
+                ? () =>
+                    void action(() =>
+                      openBook(
+                        books.find((book) =>
+                          book.skills.includes(problem.skillId),
+                        )!.id,
+                        true,
+                      ),
+                    )
+                : undefined
             }
             response={response}
             setResponse={setResponse}
@@ -462,6 +570,37 @@ function App() {
                 <h2>A library for curious minds.</h2>
                 <p>Read, explore, and print a lesson to keep nearby.</p>
               </div>
+              {books.map((book) => (
+                <article key={book.id} className="card book-library-card">
+                  <div className="book-jacket" aria-hidden="true">
+                    <span>Explore · explain · practice</span>
+                    <strong>
+                      Measure,
+                      <br />
+                      Share,
+                      <br />
+                      &amp; Scale
+                    </strong>
+                    <span>A fraction field guide</span>
+                  </div>
+                  <div>
+                    <p className="eyebrow">
+                      ILLUSTRATED FIELD GUIDE · {book.pages} PAGES
+                    </p>
+                    <h2>{book.title}</h2>
+                    <p>
+                      Follow an idea from its first picture to a new challenge.
+                      Read, investigate, and compare your reasoning.
+                    </p>
+                    <button
+                      disabled={busy}
+                      onClick={() => void action(() => openBook(book.id))}
+                    >
+                      Open book
+                    </button>
+                  </div>
+                </article>
+              ))}
               <label className="library-search">
                 Find an idea
                 <input

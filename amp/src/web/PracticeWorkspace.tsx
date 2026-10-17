@@ -10,7 +10,7 @@ import type { Outcome } from "../server/repository";
 import type { Lesson } from "../content/lessons";
 import { Figure } from "./Figure";
 
-function FocusDialog({
+export function FocusDialog({
   title,
   children,
   close,
@@ -111,6 +111,7 @@ type Props = {
   next: () => void;
   requestHint: () => void;
   requestLesson: () => Promise<void>;
+  openBook?: () => void;
   changeTopic: () => void;
 };
 
@@ -429,33 +430,43 @@ export function PracticeWorkspace(props: Props) {
                 A little help
               </button>
             )}
-            {lesson && (
+            {props.openBook ? (
               <button
                 className="text-button"
-                disabled={busy || lessonLoading}
-                onClick={async (event) => {
-                  lessonTrigger.current = event.currentTarget;
-                  const requestedProblem = problem.id;
-                  const current = () =>
-                    alive.current &&
-                    currentProblem.current === requestedProblem;
-                  setLessonLoading(true);
-                  setLessonError("");
-                  try {
-                    await props.requestLesson();
-                    if (current()) setPanel("lesson");
-                  } catch {
-                    if (current())
-                      setLessonError(
-                        "The lesson could not be opened. Please try again.",
-                      );
-                  } finally {
-                    if (current()) setLessonLoading(false);
-                  }
-                }}
+                disabled={busy}
+                onClick={props.openBook}
               >
-                {lessonLoading ? "Opening…" : "The idea"}
+                Explore the idea
               </button>
+            ) : (
+              lesson && (
+                <button
+                  className="text-button"
+                  disabled={busy || lessonLoading}
+                  onClick={async (event) => {
+                    lessonTrigger.current = event.currentTarget;
+                    const requestedProblem = problem.id;
+                    const current = () =>
+                      alive.current &&
+                      currentProblem.current === requestedProblem;
+                    setLessonLoading(true);
+                    setLessonError("");
+                    try {
+                      await props.requestLesson();
+                      if (current()) setPanel("lesson");
+                    } catch {
+                      if (current())
+                        setLessonError(
+                          "The lesson could not be opened. Please try again.",
+                        );
+                    } finally {
+                      if (current()) setLessonLoading(false);
+                    }
+                  }}
+                >
+                  {lessonLoading ? "Opening…" : "The idea"}
+                </button>
+              )
             )}
             {small && (
               <button

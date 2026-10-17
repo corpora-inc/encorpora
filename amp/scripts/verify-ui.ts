@@ -41,7 +41,7 @@ try {
   await page
     .getByText("Looking for a particular idea?", { exact: true })
     .click();
-  await page.getByLabel("Choose your practice").selectOption("fraction-model");
+  await page.getByLabel("Choose your practice").selectOption("rectangle-area");
   await page
     .getByRole("button", { name: "Try this idea", exact: true })
     .click();
