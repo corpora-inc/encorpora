@@ -16,6 +16,8 @@ The [bulk-upload guide](https://support.withodyssey.com/hc/en-us/articles/512852
 
 Before integrating orders, obtain the Missouri vendor agreement and approved digital fulfillment model. Define order/student references, SKU version, amount/tax, licensed dates, delivery evidence, receipt identifier, settlement reference and refund-to-wallet reconciliation. Do not infer payment deadlines from another state's rules or use school tuition invoices as the software contract. Order submission is not settlement.
 
+Source provenance: the Treasurer page links the Odyssey vendor application. The category and upload articles are linked from the separate [Odyssey MOScholars vendor help section](https://support.withodyssey.com/hc/en-us/sections/50886172082715-For-Vendors); they are not direct links from the Treasurer page. Administrator guidance does not supersede the state handbook or an issued agreement.
+
 ## Tennessee EFS
 
 The [official FAQ](https://www.tn.gov/education/efs/efs-faqs.html) excludes standalone software. Its exception concerns software included without additional cost in an otherwise approved expense. Adding PDFs or calling an app curriculum does not establish that exception. Keep the standalone annual app offer disabled.

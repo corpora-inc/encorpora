@@ -25,7 +25,7 @@ export const moMsTnDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/51891552203035-Missouri-Marketplace-Categories-for-Offerings",
       publisher: "Odyssey / MOScholars",
       locator:
-        "September 21, 2026; educational software/apps, curriculum and individual subscriptions; family/lifetime exclusion",
+        "September 21, 2026; Educational Applications restriction. Provenance: Treasurer provider page links Odyssey vendor intake; article belongs to the separate Odyssey MOScholars vendor help section",
       checkedOn: "2026-10-17",
       authorityLink: "https://treasurer.mo.gov/moscholars/Providers",
     },
@@ -34,7 +34,7 @@ export const moMsTnDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/52032964552091-Is-the-MOScholars-Marketplace-the-Same-as-the-School-Portal",
       publisher: "Odyssey / MOScholars",
       locator:
-        "June 22, 2026; non-tuition marketplace versus school tuition portal",
+        "June 22, 2026; non-tuition marketplace versus school tuition portal. Administrator provenance follows Treasurer-linked Odyssey intake, not a direct Treasurer article link",
       checkedOn: "2026-10-17",
       authorityLink: "https://treasurer.mo.gov/moscholars/Providers",
     },
@@ -43,7 +43,7 @@ export const moMsTnDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/51427028992155-How-to-Upload-Offerings-to-the-Odyssey-Marketplace",
       publisher: "Odyssey / MOScholars",
       locator:
-        "June 8, 2026; separately reviewed offerings, SKU, category, duration, age/grade, price, stock and media",
+        "June 8, 2026; offering fields. Linked from Odyssey MOScholars vendor help section; Treasurer establishes administrator through its vendor-intake link",
       checkedOn: "2026-10-17",
       authorityLink: "https://treasurer.mo.gov/moscholars/Providers",
     },
@@ -52,7 +52,7 @@ export const moMsTnDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/51285284490651-How-to-Upload-Multiple-Offerings-at-Once-Bulk-Upload-Guide",
       publisher: "Odyssey / MOScholars",
       locator:
-        "June 4, 2026; dashboard CSV template and exact categories; platform guidance linked from MOScholars vendor section",
+        "June 4, 2026; dashboard CSV. Linked from Odyssey MOScholars vendor help section; Treasurer establishes administrator through its vendor-intake link",
       checkedOn: "2026-10-17",
       authorityLink: "https://treasurer.mo.gov/moscholars/Providers",
     },
@@ -61,7 +61,7 @@ export const moMsTnDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/52212935604891-How-to-Use-the-Odyssey-Marketplace",
       publisher: "Odyssey / MOScholars",
       locator:
-        "June 30, 2026; student assignment, available funds, offering return/cancellation policy and order submission",
+        "June 30, 2026; family order workflow. Odyssey MOScholars family help section; administrator authority follows Treasurer-linked intake",
       checkedOn: "2026-10-17",
       authorityLink: "https://treasurer.mo.gov/moscholars/Providers",
     },
@@ -126,7 +126,7 @@ export const moMsTnDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/51282311836571-Missouri-Marketplace-Categories-for-Offerings",
       publisher: "Odyssey / MOScholars",
       locator:
-        "October 7, 2026; educational subscriptions/software and a tuition category that differs from the separate-portal article; both remain linked",
+        "October 7, 2026; taxonomy/tuition inconsistency. Both category articles are linked from Odyssey MOScholars vendor help section; Treasurer links the administrator intake, not these articles",
       checkedOn: "2026-10-17",
       authorityLink: "https://treasurer.mo.gov/moscholars/Providers",
     },
