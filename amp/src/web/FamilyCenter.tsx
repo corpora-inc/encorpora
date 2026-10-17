@@ -8,6 +8,7 @@ import type {
   DeletionReceipt,
 } from "../family/contracts.js";
 import "./family-center.css";
+import { nativeRuntime } from "./native-runtime";
 interface Props {
   token: string;
   identity?: string;
@@ -65,6 +66,9 @@ export function FamilyCenter({
   );
   const [localLearnerId, setLocalLearnerId] = useState("");
   const [accessDetails, setAccessDetails] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [newName, setNewName] = useState("");
+  const [newBirthYear, setNewBirthYear] = useState("");
   const accessTrigger = useRef<HTMLElement | null>(null);
   const [purchaseChooser, setPurchaseChooser] = useState(!!returnFocus);
   const [privacy, setPrivacy] = useState<
@@ -394,8 +398,9 @@ export function FamilyCenter({
         <button
           onClick={purchaseChooser ? closeChooser : onClose}
           disabled={busy}
+          className="family-back"
         >
-          Back
+          <span aria-hidden="true">←</span> Back
         </button>
       </div>
       <nav className="family-tabs" aria-label="Family sections">
@@ -675,6 +680,73 @@ export function FamilyCenter({
                       Purchases &amp; records
                     </button>
                   </div>
+                )}
+                {section === "learners" && !nativeRuntime && !adding && (
+                  <button
+                    className="secondary family-add-toggle"
+                    disabled={busy}
+                    onClick={() => setAdding(true)}
+                  >
+                    <span aria-hidden="true">+</span> Add learner
+                  </button>
+                )}
+                {section === "learners" && !nativeRuntime && adding && (
+                  <form
+                    className="family-add-learner"
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      const name = newName.trim();
+                      if (!name) return;
+                      void action(async () => {
+                        await api("/learners", {
+                          name,
+                          ...(newBirthYear
+                            ? { birthYear: Number(newBirthYear) }
+                            : {}),
+                        });
+                        await refresh();
+                        setNewName("");
+                        setNewBirthYear("");
+                        setAdding(false);
+                        setNotice(`${name} added.`);
+                      });
+                    }}
+                  >
+                    <label>
+                      <span>Name</span>
+                      <input
+                        value={newName}
+                        maxLength={60}
+                        placeholder="First name or nickname"
+                        onChange={(event) => setNewName(event.target.value)}
+                      />
+                    </label>
+                    <label>
+                      <span>Birth year</span>
+                      <select
+                        value={newBirthYear}
+                        onChange={(event) =>
+                          setNewBirthYear(event.target.value)
+                        }
+                      >
+                        <option value="">Choose</option>
+                        {Array.from(
+                          { length: 16 },
+                          (_, i) => new Date().getFullYear() - 4 - i,
+                        ).map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                        <option value={new Date().getFullYear() - 25}>
+                          Adult
+                        </option>
+                      </select>
+                    </label>
+                    <button disabled={busy || !newName.trim()}>
+                      Add learner
+                    </button>
+                  </form>
                 )}
               </section>
             )}

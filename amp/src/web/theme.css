@@ -1400,3 +1400,119 @@ html[data-input="pointer"] :focus-visible {
     font-size: 17px;
   }
 }
+.family-add-learner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: end;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+.family-add-learner label {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+.family-add-learner label span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.family-add-learner input,
+.family-add-learner select,
+.family-add-learner button {
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+}
+.family-add-learner select {
+  min-width: 112px;
+}
+@media (max-width: 520px) {
+  .family-add-learner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .family-add-learner button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Family: its tabs sit exactly where the app's tabs sit, with Back inline.
+   The heading stays for screen readers but takes no space. */
+.shell .family-center {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-auto-rows: auto;
+  column-gap: 8px;
+  width: 100%;
+  padding: 0 0 24px;
+  color: var(--ink);
+}
+.shell .family-center > * {
+  grid-column: 1 / -1;
+}
+.shell .family-center > .family-heading {
+  display: contents;
+}
+.shell .family-heading > div {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.shell .family-center .family-back {
+  grid-column: 1;
+  grid-row: 1;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+.shell .family-center .family-back:hover {
+  background: var(--surface-2);
+}
+.shell .family-center > .family-tabs {
+  grid-column: 2;
+  grid-row: 1;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 12px;
+  background: #ebebe1;
+}
+.shell .family-tabs button {
+  min-height: 38px;
+  padding: 6px 8px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.shell .family-tabs button[aria-current] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1px 2px #183e3a20;
+}
+.shell .family-center > .family-body,
+.shell .family-center > section,
+.shell .family-center > p {
+  margin-top: 16px;
+}
+.family-add-toggle {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 12px;
+}
+.shell .family-center > .family-body {
+  padding-inline: 0;
+}

@@ -45,6 +45,7 @@ import "./practice.css";
 import "katex/dist/katex.min.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
+import { useLearnerStore } from "./learner-store";
 import { calculatorAllowed } from "../math/calculator";
 import { gradeNumber } from "../learning/frontier";
 import type { GradeBand } from "../curriculum/types";
@@ -69,23 +70,6 @@ type Catalog = {
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
-// The learner last chosen on this device survives a reload. A per-device
-// convenience only: access is still decided by the server.
-const learnerKey = "amp.learner";
-function rememberedLearner() {
-  try {
-    return localStorage.getItem(learnerKey);
-  } catch {
-    return null;
-  }
-}
-function rememberLearner(id: string | undefined) {
-  try {
-    if (id) localStorage.setItem(learnerKey, id);
-  } catch (error) {
-    console.warn("Learner choice not saved", error);
-  }
-}
 // Copying typeset math gives its plain text, not KaTeX's internal markup.
 addEventListener("copy", (event) => {
   const selection = getSelection();
@@ -125,8 +109,12 @@ function App() {
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
     [catalog, setCatalog] = useState<Catalog | null>(null),
-    [learners, setLearners] = useState<LearnerSummary[]>([]),
-    [learner, setLearner] = useState<LearnerSummary | null>(null);
+    [learners, setLearners] = useState<LearnerSummary[]>([]);
+  // The current learner is global state shared by every screen (see
+  // learner-store.ts); this component derives the learner object from it.
+  const learnerId = useLearnerStore((state) => state.learnerId);
+  const selectLearner = useLearnerStore((state) => state.select);
+  const learner = learners.find((entry) => entry.id === learnerId) ?? null;
   const [familyOpen, setFamilyOpen] = useState(false);
   const [changingBirthYear, setChangingBirthYear] = useState(false);
   // Outside immersive practice: home, lessons, progress and family are visible.
@@ -213,7 +201,6 @@ function App() {
     accountRef = useRef<string | null>(null);
   const learnerRef = useRef<string | undefined>(undefined);
   learnerRef.current = learner?.id;
-  useEffect(() => rememberLearner(learner?.id), [learner?.id]);
   const [response, setResponse] = useState(""),
     [outcome, setOutcome] = useState<Outcome | null>(null),
     [hint, setHint] = useState(""),
@@ -267,7 +254,6 @@ function App() {
     bookPositions.current = {};
     setFamily("");
     setLearners([]);
-    setLearner(null);
     setProgress(null);
     setProgressError("");
     setProgressView(initialProgressView);
@@ -433,7 +419,6 @@ function App() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    setLearner(null);
     setLearners([]);
     setFamilySummary(null);
     setProblem(null);
@@ -473,13 +458,16 @@ function App() {
       summary.consent.status === "active" ||
       summary.consent.status === "development";
     const selected = allowed
-      ? (available.find((entry) => entry.id === learnerRef.current) ??
-        available.find((entry) => entry.id === rememberedLearner()) ??
+      ? (available.find(
+          (entry) => entry.id === useLearnerStore.getState().learnerId,
+        ) ??
         available[0] ??
         null)
       : null;
     learnerRef.current = selected?.id;
-    setLearner(selected);
+    // Keep the chosen learner unless it no longer exists or learning is not
+    // allowed; never forget the choice merely because data is reloading.
+    if (selected) selectLearner(selected.id);
   }
   function closePurchase() {
     setPurchaseFocus(purchaseView ?? undefined);
@@ -787,11 +775,7 @@ function App() {
               aria-label="Learner"
               value={learner?.id ?? ""}
               disabled={busy}
-              onChange={(e) =>
-                setLearner(
-                  learners.find((l) => l.id === e.target.value) ?? null,
-                )
-              }
+              onChange={(e) => selectLearner(e.target.value || null)}
             >
               {!learner && <option value="">Select a learner</option>}
               {learners.map((l) => (
@@ -837,7 +821,7 @@ function App() {
                         .closest("details")
                         ?.removeAttribute("open");
                       setName("");
-                      setLearner(null);
+                      selectLearner(null);
                     }}
                   >
                     Add learner
@@ -950,8 +934,13 @@ function App() {
         <FamilyCenter
           onConsentEnrollment={() => openConsent()}
           returnToConsent={consentReturn}
-          selectedLearnerId={familyLearnerId}
-          onSelectLearner={setFamilyLearnerId}
+          selectedLearnerId={familyLearnerId || learnerId || ""}
+          onSelectLearner={(id) => {
+            setFamilyLearnerId(id);
+            // Choosing a live learner in Family makes them the current
+            // learner everywhere; billing references do not.
+            if (learners.some((entry) => entry.id === id)) selectLearner(id);
+          }}
           initialSection={familySection}
           returnFocus={purchaseFocus}
           onAnnualPurchase={() => openPurchase("annual")}
@@ -1036,7 +1025,7 @@ function App() {
               void action(async () => {
                 const l = await api<Learner>("/learners", { name });
                 setLearners([...learners, l]);
-                setLearner(l);
+                selectLearner(l.id);
               });
             }}
           >
@@ -1157,7 +1146,6 @@ function App() {
                 });
                 const updated = { ...learner, birthYear };
                 setChangingBirthYear(false);
-                setLearner(updated);
                 setLearners(
                   learners.map((entry) =>
                     entry.id === learner.id ? updated : entry,
