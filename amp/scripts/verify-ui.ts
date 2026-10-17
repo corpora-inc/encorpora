@@ -424,7 +424,7 @@ try {
     .getByRole("button", { name: "Manage family", exact: true })
     .click();
   await page
-    .getByRole("heading", { name: "Your family.", exact: true })
+    .getByRole("heading", { name: "Family", exact: true })
     .waitFor();
   assert.deepEqual(errors, []);
   console.log(

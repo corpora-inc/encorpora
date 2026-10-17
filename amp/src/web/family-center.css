@@ -618,3 +618,8 @@
     line-height: 1.25;
   }
 }
+@media (max-height: 620px) {
+  .family-heading h1 {
+    font-size: 24px;
+  }
+}

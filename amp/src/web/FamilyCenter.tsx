@@ -387,9 +387,8 @@ export function FamilyCenter({
     <section className="family-center" aria-labelledby="family-title">
       <div className="family-heading">
         <div>
-          <p className="eyebrow">PARENT ACCOUNT</p>
           <h1 id="family-title" ref={heading} tabIndex={-1}>
-            Your family.
+            Family
           </h1>
         </div>
         <button
