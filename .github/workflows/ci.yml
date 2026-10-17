@@ -1366,6 +1366,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: amp/package-lock.json
+      - name: Install PDF inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
       - run: npm test
       - run: npm run build
@@ -1377,6 +1379,14 @@ jobs:
       - run: npm run publications
       - run: npm run production:queue
       - run: npm run review:math
+      - name: Preserve synthetic book overflow screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-book-overflow-${{ github.run_attempt }}
+          path: amp/artifacts/book-reader/*/overflow-*.png
+          if-no-files-found: ignore
+          retention-days: 3
 
   amp-native:
     name: amp-native

@@ -4,7 +4,7 @@
 
 ## Product description for review
 
-AMP is a parent-managed mathematics practice and reading product from Corpora. Learners answer generated problems, receive explanations and practice selected skills at an adjusted level. A parent can review recent independent and assisted attempts. Original downloadable books combine worked examples, diagrams, practice space and reasoned answers. The catalog includes *Fraction Field Guide* and *The Equal Groups Workshop*; verify the exact included editions against the release manifest supplied with the application.
+AMP is a parent-managed mathematics practice and reading product from Corpora. Learners answer generated problems, receive explanations and practice selected skills at an adjusted level. A parent can review recent independent and assisted attempts. Original downloadable books combine worked examples, diagrams, practice space and reasoned answers. The registered catalog identifies the original titles and editions; verify the exact included materials against the release manifest supplied with the application.
 
 The product is self-paced software and instructional material. It does not provide a live teacher, private-school enrollment, therapy, accredited course credit or proctored testing. The released catalog covers selected skills; it must not be marketed as complete K–12 coverage, a complete grade-level course, or a guarantee of a perfect SAT score. Proposed future content is excluded from the evidence packet.
 
