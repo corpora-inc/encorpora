@@ -5,6 +5,7 @@ import type { DossierInventory } from "./dossier.js";
 import { arUtWyDossiers } from "./ar-ut-wy-dossiers.js";
 import { inNhScDossiers } from "./in-nh-sc-dossiers.js";
 import { moMsTnDossiers } from "./mo-ms-tn-dossiers.js";
+import { idOkAkDossiers } from "./id-ok-ak-dossiers.js";
 const inventories = [
   firstWaveDossiers,
   additionalProviderDossiers,
@@ -12,6 +13,7 @@ const inventories = [
   arUtWyDossiers,
   inNhScDossiers,
   moMsTnDossiers,
+  idOkAkDossiers,
 ];
 /** Concatenation preserves duplicate IDs for audit rejection, never silently overwriting evidence. */
 export const providerDossiers: DossierInventory = {
