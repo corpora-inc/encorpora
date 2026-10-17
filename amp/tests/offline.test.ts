@@ -142,6 +142,17 @@ test("capabilities are explicit; request bodies cannot claim evidence or trusted
       { ...legacy, figureCapabilities: ["measurement-models-v1"] },
       measurement,
     ),
+    measurement.filter((t) => !t.requiredResponseCapability),
+  );
+  assert.deepEqual(
+    supportedOfflineTemplates(
+      {
+        ...legacy,
+        figureCapabilities: ["measurement-models-v1"],
+        responseCapabilities: ["single-choice-v1"],
+      },
+      measurement,
+    ),
     measurement,
   );
   assert.deepEqual(supportedOfflineTemplates(legacy, [choice, visual, early]), [
