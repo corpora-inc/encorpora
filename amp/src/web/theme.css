@@ -1001,10 +1001,13 @@ button:focus:not(:focus-visible) {
   margin-inline: auto;
 }
 
-/* One header geometry on every screen; the scrollbar gutter is always reserved
-   so the centred column never shifts when a page starts or stops scrolling. */
+/* One header geometry on every screen. Scrolling pages draw no window
+   scrollbar, so no page loses width to one and the column never shifts. */
 html:has(.shell.flow) {
-  scrollbar-gutter: stable both-edges;
+  scrollbar-width: none;
+}
+html:has(.shell.flow)::-webkit-scrollbar {
+  display: none;
 }
 .shell.app-shell > header {
   height: 60px;
