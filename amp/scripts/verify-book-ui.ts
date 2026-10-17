@@ -92,7 +92,14 @@ try {
         { width: 390, height: 844, textScale: 1 },
         { width: 320, height: 568, textScale: 1 },
         { width: 844, height: 390, textScale: 1 },
-        ...(book.presentation === "early-number"
+        ...(book.presentation === "early-number" ||
+        (frames[index]!.block.kind === "worked" &&
+          (
+            frames[index]!.block as Extract<
+              import("../src/publishing/schema.js").BookBlock,
+              { kind: "worked" }
+            >
+          ).promptPresentation === "context")
           ? [
               { width: 390, height: 844, textScale: 1.25 },
               { width: 320, height: 568, textScale: 1.25 },
@@ -155,12 +162,79 @@ try {
             );
           comparisonScales.set(key, cell.width);
         }
+        if (
+          frames[index]!.block.kind === "worked" &&
+          frames[index]!.step === 0 &&
+          size.width === 320 &&
+          size.textScale === 1.25
+        ) {
+          const trigger = page.getByRole("button", {
+            name: "Read the question",
+            exact: true,
+          });
+          await trigger.click();
+          const dialog = page.getByRole("dialog", {
+            name: "The question",
+            exact: true,
+          });
+          await dialog.waitFor();
+          const worked = frames[index]!.block as Extract<
+            import("../src/publishing/schema.js").BookBlock,
+            { kind: "worked" }
+          >;
+          const restoredPrompt = await dialog
+            .locator("p")
+            .first()
+            .evaluate((el) => {
+              const copy = el.cloneNode(true) as HTMLElement;
+              copy.querySelectorAll('[role="math"]').forEach((fraction) => {
+                fraction.replaceWith(
+                  (fraction.getAttribute("aria-label") ?? "").replace(
+                    " over ",
+                    "/",
+                  ),
+                );
+              });
+              return copy.textContent;
+            });
+          assert.equal(restoredPrompt, worked.prompt);
+          const positionBefore = await page
+            .locator(".reader-position")
+            .innerText();
+          await page.keyboard.press("ArrowRight");
+          await page.keyboard.press("ArrowLeft");
+          assert.equal(
+            await page.locator(".reader-position").innerText(),
+            positionBefore,
+          );
+          await page.keyboard.press("Escape");
+          assert.equal(
+            await trigger.evaluate((el) => el === document.activeElement),
+            true,
+          );
+          await trigger.click();
+          await dialog
+            .getByRole("button", { name: "Back to the reasoning", exact: true })
+            .click();
+          assert.equal(
+            await trigger.evaluate((el) => el === document.activeElement),
+            true,
+          );
+        }
         const bounds = await page
           .locator(".reader-stage")
           .evaluate((stage) => ({
             height: stage.clientHeight,
             scroll: stage.scrollHeight,
           }));
+        if (
+          frames[index]!.block.kind === "worked" &&
+          size.width === 320 &&
+          size.textScale === 1.25
+        )
+          await page.screenshot({
+            path: `${output}/worked-context-${index}-125.png`,
+          });
         if (bounds.scroll > bounds.height + 2) {
           await page.screenshot({
             path: `${output}/overflow-${index}-${size.width}-${size.textScale}.png`,

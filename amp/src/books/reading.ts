@@ -9,8 +9,8 @@ export type ReadingFrame = {
   block: BookBlock;
   fragment?: number;
 };
-/** Worked examples reveal a decision at a time; their prompt stays beside each
- * step. All other authored blocks retain their original order and identity. */
+/** Context examples introduce their question before each reasoning step.
+ * Equation examples keep the expression beside each step. */
 /** Split long prose at sentence boundaries while retaining every word. */
 export function readingParagraphs(text: string, maximumLength = 180): string[] {
   const sentences = Array.from(
@@ -33,12 +33,19 @@ export function readingFrames(book: FractionBook): ReadingFrame[] {
     .flatMap((page) =>
       page.blocks.flatMap((block, blockIndex): ReadingFrame[] =>
         block.kind === "worked"
-          ? Array.from({ length: block.steps.length + 1 }, (_, step) => ({
-              pageId: page.id,
-              blockIndex,
-              step,
-              block,
-            }))
+          ? Array.from(
+              {
+                length:
+                  block.steps.length +
+                  (block.promptPresentation === "context" ? 2 : 1),
+              },
+              (_, step) => ({
+                pageId: page.id,
+                blockIndex,
+                step: step - (block.promptPresentation === "context" ? 1 : 0),
+                block,
+              }),
+            )
           : block.kind === "text" || block.kind === "callout"
             ? readingParagraphs(
                 block.text,

@@ -29,6 +29,7 @@ export function BookReader({
   );
   const [contents, setContents] = useState(false),
     [modelOpen, setModelOpen] = useState(false),
+    [questionOpen, setQuestionOpen] = useState(false),
     [solution, setSolution] = useState<Solution | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
@@ -75,6 +76,7 @@ export function BookReader({
         contents ||
         solution ||
         modelOpen ||
+        questionOpen ||
         event.altKey ||
         event.ctrlKey ||
         event.metaKey ||
@@ -95,7 +97,7 @@ export function BookReader({
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [position, contents, solution, modelOpen, frames.length]);
+  }, [position, contents, solution, modelOpen, questionOpen, frames.length]);
   function content() {
     switch (block.kind) {
       case "text":
@@ -119,10 +121,25 @@ export function BookReader({
         return (
           <section className="reading-worked">
             <p className="reading-kicker">{block.title}</p>
-            <p className="reading-equation">
-              <MathText text={block.prompt} />
-            </p>
-            {frame.step! < block.steps.length ? (
+            {block.promptPresentation !== "context" || frame.step === -1 ? (
+              <p
+                className={
+                  block.promptPresentation === "context"
+                    ? "reading-context"
+                    : "reading-equation"
+                }
+              >
+                <MathText text={block.prompt} />
+              </p>
+            ) : (
+              <button
+                className="text-button"
+                onClick={() => setQuestionOpen(true)}
+              >
+                Read the question
+              </button>
+            )}
+            {frame.step === -1 ? null : frame.step! < block.steps.length ? (
               <>
                 <span className="reading-step">{frame.step! + 1}</span>
                 <p>
@@ -286,6 +303,16 @@ export function BookReader({
           <BookScreenFigure diagram={model} />
           <button onClick={() => setModelOpen(false)}>
             Back to your thinking
+          </button>
+        </FocusDialog>
+      )}
+      {questionOpen && block.kind === "worked" && (
+        <FocusDialog title="The question" close={() => setQuestionOpen(false)}>
+          <p>
+            <MathText text={block.prompt} />
+          </p>
+          <button onClick={() => setQuestionOpen(false)}>
+            Back to the reasoning
           </button>
         </FocusDialog>
       )}

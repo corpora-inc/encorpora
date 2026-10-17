@@ -18,7 +18,14 @@ for (const { content: book } of books)
         else if (block.kind === "worked")
           assert.deepEqual(
             parts.map((f) => f.step),
-            Array.from({ length: block.steps.length + 1 }, (_, i) => i),
+            Array.from(
+              {
+                length:
+                  block.steps.length +
+                  (block.promptPresentation === "context" ? 2 : 1),
+              },
+              (_, i) => i - (block.promptPresentation === "context" ? 1 : 0),
+            ),
           );
         else
           assert.deepEqual(

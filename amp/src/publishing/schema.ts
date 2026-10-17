@@ -1,3 +1,4 @@
+import type { RatioModel } from "./ratio-models.js";
 import type { UnitRegionModel } from "./unit-regions.js";
 import type { EarlyNumberModel } from "./early-number-models.js";
 import type { AlgebraModel } from "./algebra-models.js";
@@ -8,6 +9,7 @@ export type Diagram = {
   caption: string;
   alt: string;
 } & (
+  | RatioModel
   | EarlyNumberModel
   | UnitRegionModel
   | AlgebraModel
@@ -70,6 +72,8 @@ export type BookBlock =
   | { kind: "diagram"; diagram: Diagram }
   | {
       kind: "worked";
+      /** Contextual prose uses body type; omitted prompts retain equation emphasis. */
+      promptPresentation?: "context";
       title: string;
       prompt: string;
       steps: string[];

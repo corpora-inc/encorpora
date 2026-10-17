@@ -110,6 +110,11 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.reading-context {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.4;
+}
 .reading-equation {
   font-size: 26px;
   font-weight: 600;
@@ -694,5 +699,68 @@
   }
   .unit-region-art svg {
     max-height: 180px;
+  }
+}
+
+.ratio-model-art {
+  width: 100%;
+  max-width: 360px;
+  min-width: 0;
+  margin: auto;
+}
+.ratio-tape-row {
+  margin: 5px 0;
+}
+.ratio-row-label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3px 12px;
+  font:
+    14px/1.25 Arial,
+    sans-serif;
+  margin: 0 0 2px;
+}
+.ratio-row-label strong {
+  white-space: normal;
+}
+.ratio-tape-row svg {
+  width: 100%;
+  display: block;
+}
+.ratio-whole-label {
+  font:
+    14px/1.3 Arial,
+    sans-serif;
+  font-weight: bold;
+  margin: 4px 0;
+}
+.ratio-model-key {
+  font:
+    14px/1.3 Arial,
+    sans-serif;
+  margin: 4px 0;
+}
+.percent-grid-figure .ratio-model-art {
+  max-width: 300px;
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .ratio-model-figure {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+  }
+  .percent-grid-figure .ratio-model-art svg {
+    max-height: 150px;
+  }
+  .ratio-tape-row {
+    margin: 2px 0;
+  }
+  .ratio-tape-row svg {
+    max-height: 31px;
+  }
+  .ratio-row-label {
+    margin: 0;
   }
 }

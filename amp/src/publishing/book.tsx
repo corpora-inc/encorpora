@@ -1,3 +1,4 @@
+import { RatioCover } from "./RatioCover.js";
 import { UnitRegionCover } from "./UnitRegionCover.js";
 import { earlyNumberPrintCss } from "./early-number-print.js";
 import { MathText } from "./MathText.js";
@@ -10,6 +11,10 @@ import { CoverFigure } from "./CoverFigure.js";
 import { BookDiagram } from "./diagrams.js";
 import { validateBook } from "./validate.js";
 export const bookCss = `
+.ratio-cover{margin:20px 0}.ratio-cover svg{display:block;width:100%;max-height:none!important}.ratio-cover figcaption{margin-top:9px}
+
+.ratio-model-art{width:100%;max-width:4.6in;margin:auto}.ratio-tape-row{margin:5pt 0}.ratio-row-label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:3pt 14pt;font:11pt Arial,sans-serif;margin:0 0 2pt}.ratio-row-label strong{white-space:normal}.ratio-tape-row svg{width:100%;display:block}.ratio-whole-label{font:11pt Arial,sans-serif;font-weight:bold;margin:4pt 0}.ratio-model-key{font:10pt/1.3 Arial,sans-serif;margin:5pt 0}.percent-grid-figure .ratio-model-art{max-width:3.5in}
+
 .unit-region-art{max-width:4.3in;margin:auto}.unit-region-art svg{width:100%;display:block}.unit-region-key{font:10pt Arial,sans-serif;line-height:1.3;margin:4pt 0}
 .early-number-art{max-width:4.2in;margin:auto}.early-number-art svg{width:100%;display:block}.early-collection-panels{display:grid;gap:8pt}.early-panel-label,.early-unit,.early-emphasis{font:11pt Arial,sans-serif;margin:4pt 0}.early-panel-label{font-weight:bold}
 
@@ -94,6 +99,13 @@ function Block({
         </aside>
       );
     case "diagram":
+      if (
+        opening &&
+        b.diagram.kind === "ratio-tape" &&
+        b.diagram.rows.length === 2 &&
+        b.diagram.rows.every((r) => r.parts <= 6)
+      )
+        return <RatioCover diagram={b.diagram} />;
       if (opening && b.diagram.kind === "unit-region")
         return <UnitRegionCover diagram={b.diagram} />;
       if (opening && b.diagram.kind === "array")

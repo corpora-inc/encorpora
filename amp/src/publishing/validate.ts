@@ -1,3 +1,4 @@
+import { validateRatioModel } from "./ratio-models.js";
 import { validateUnitRegionModel } from "./unit-regions.js";
 import {
   isEarlyNumberModel,
@@ -48,6 +49,10 @@ export function validateDiagram(d: Diagram): void {
   }
 
   switch (d.kind) {
+    case "ratio-tape":
+    case "percent-grid":
+      validateRatioModel(d);
+      break;
     case "unit-region":
       validateUnitRegionModel(d);
       break;
@@ -305,7 +310,13 @@ export function validateBook(book: MathBook): void {
           break;
         case "text":
         case "callout":
+          break;
         case "worked":
+          if (
+            block.promptPresentation !== undefined &&
+            block.promptPresentation !== "context"
+          )
+            throw new Error("Invalid worked prompt presentation");
           break;
         default:
           throw new Error(
