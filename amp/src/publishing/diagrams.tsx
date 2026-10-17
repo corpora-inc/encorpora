@@ -1,3 +1,4 @@
+import { AlgebraDiagramFigure } from "./AlgebraDiagramFigure.js";
 import React from "react";
 import { labelLanes } from "./label-layout.js";
 import { ArrayDrawing } from "./ArrayDrawing.js";
@@ -78,6 +79,12 @@ function ModelCell({
 }
 export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
   validateDiagram(d);
+  if (
+    d.kind === "balance" ||
+    d.kind === "coordinate-plot" ||
+    d.kind === "value-table"
+  )
+    return <AlgebraDiagramFigure diagram={d} />;
   const width = 600,
     left = 50,
     right = 550;

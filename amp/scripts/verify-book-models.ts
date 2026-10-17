@@ -1,3 +1,4 @@
+import { algebraModels } from "../tests/fixtures/algebra-models.js";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
@@ -7,6 +8,7 @@ import { chromium } from "playwright";
 import { BookScreenFigure } from "../src/web/BookScreenFigure.js";
 import type { Diagram } from "../src/publishing/schema.js";
 const models: Diagram[] = [
+  ...algebraModels,
   {
     kind: "array",
     id: "split-array",
