@@ -22,6 +22,8 @@ export type FrontierObservation = {
   templateId: string;
   correct: boolean;
   assisted: boolean;
+  /** ISO time of the answer; drives how much the estimate may have moved. */
+  createdAt?: string;
 };
 /** A grade-level estimate: posterior mean, standard deviation, evidence. */
 export type Estimate = {
@@ -84,8 +86,7 @@ function summarize(log: number[], answered: number, independent: number) {
   const total = weights.reduce((sum, w) => sum + w, 0);
   const level = weights.reduce((sum, w, i) => sum + w * GRID[i]!, 0) / total;
   const variance =
-    weights.reduce((sum, w, i) => sum + w * (GRID[i]! - level) ** 2, 0) /
-    total;
+    weights.reduce((sum, w, i) => sum + w * (GRID[i]! - level) ** 2, 0) / total;
   return {
     level: Math.round(level * 100) / 100,
     sd: Math.round(Math.sqrt(variance) * 100) / 100,
@@ -94,47 +95,113 @@ function summarize(log: number[], answered: number, independent: number) {
   };
 }
 
-/** Bayesian estimate of each strand's grade level from the attempt history.
- * Deterministic: the same history always gives the same estimate. */
+// Ability changes: before each answer the estimate is allowed to drift. A
+// little drift per answer makes older evidence fade; more with time away
+// because learning happens between sessions; and an answer the estimate
+// found very unlikely re-widens it, so a learner who has moved is followed
+// quickly rather than anchored by old results.
+const DRIFT_PER_ANSWER = 0.03; // grade² of variance
+const DRIFT_PER_DAY = 0.02;
+const SURPRISE_DRIFT = 0.3;
+const DAY = 86400000;
+function blur(log: number[], variance: number) {
+  if (variance <= 0) return log;
+  const sd = Math.sqrt(variance) * 10; // in grid steps of 0.1 grade
+  const radius = Math.ceil(3 * sd);
+  const kernel = Array.from({ length: 2 * radius + 1 }, (_, i) =>
+    Math.exp(-(((i - radius) / sd) ** 2) / 2),
+  );
+  const top = Math.max(...log);
+  const weights = log.map((value) => Math.exp(value - top));
+  return weights.map((_, i) => {
+    let sum = 0;
+    for (let k = -radius; k <= radius; k++) {
+      const j = Math.min(GRID.length - 1, Math.max(0, i + k));
+      sum += weights[j]! * kernel[k + radius]!;
+    }
+    return Math.log(sum + 1e-300);
+  });
+}
+
+type Evidence = { grade: number; strand: string; success: boolean; at: number };
+function fold(
+  start: number[],
+  items: readonly Evidence[],
+  now: number,
+): Estimate {
+  let log = start;
+  let previous: number | null = null;
+  let surprise = 0;
+  for (const item of items) {
+    const days =
+      previous === null
+        ? 0
+        : Math.min(30, Math.max(0, (item.at - previous) / DAY));
+    log = blur(
+      log,
+      (previous === null ? 0 : DRIFT_PER_ANSWER) +
+        DRIFT_PER_DAY * days +
+        surprise,
+    );
+    previous = item.at;
+    const top = Math.max(...log);
+    const weights = log.map((value) => Math.exp(value - top));
+    const total = weights.reduce((sum, w) => sum + w, 0);
+    const expected =
+      weights.reduce(
+        (sum, w, i) => sum + w * success(GRID[i]!, item.grade),
+        0,
+      ) / total;
+    surprise =
+      (item.success ? 1 - expected : expected) > 0.75 ? SURPRISE_DRIFT : 0;
+    for (let i = 0; i < GRID.length; i++) {
+      const p = success(GRID[i]!, item.grade);
+      log[i] = log[i]! + Math.log(item.success ? p : 1 - p);
+    }
+  }
+  if (previous !== null)
+    log = blur(
+      log,
+      DRIFT_PER_DAY * Math.min(30, Math.max(0, (now - previous) / DAY)),
+    );
+  return summarize(
+    log,
+    items.length,
+    items.filter((item) => item.success).length,
+  );
+}
+
+/** Bayesian estimate of each strand's grade level from the attempt history,
+ * allowing the level to change over time. Deterministic for a given history
+ * and time. */
 export function estimateFrontier(options: {
   start: number;
   observations: readonly FrontierObservation[];
   gradeOf: (templateId: string) => number | undefined;
   strandOf: (templateId: string) => string;
+  now?: number;
 }): Frontier {
-  const evidence = options.observations.flatMap((observation) => {
+  const evidence: Evidence[] = [];
+  options.observations.forEach((observation, index) => {
     const grade = options.gradeOf(observation.templateId);
-    return grade === undefined
-      ? []
-      : [
-          {
-            grade,
-            strand: options.strandOf(observation.templateId),
-            success: observation.correct && !observation.assisted,
-          },
-        ];
+    if (grade === undefined) return;
+    evidence.push({
+      grade,
+      strand: options.strandOf(observation.templateId),
+      success: observation.correct && !observation.assisted,
+      at: observation.createdAt
+        ? Date.parse(observation.createdAt)
+        : index * 60000,
+    });
   });
-  const fold = (
-    log: number[],
-    items: readonly { grade: number; success: boolean }[],
-  ) => {
-    for (const item of items)
-      for (let i = 0; i < GRID.length; i++) {
-        const p = success(GRID[i]!, item.grade);
-        log[i] += Math.log(item.success ? p : 1 - p);
-      }
-    return summarize(
-      log,
-      items.length,
-      items.filter((item) => item.success).length,
-    );
-  };
-  const overall = fold(prior(options.start, PRIOR_SD), evidence);
+  const now = options.now ?? evidence.at(-1)?.at ?? 0;
+  const overall = fold(prior(options.start, PRIOR_SD), evidence, now);
   const strands: Record<string, Estimate> = {};
   for (const strand of new Set(evidence.map((item) => item.strand)))
     strands[strand] = fold(
       prior(overall.level, Math.max(STRAND_SD, overall.sd)),
       evidence.filter((item) => item.strand === strand),
+      now,
     );
   return { expected: options.start, overall, strands };
 }

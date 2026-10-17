@@ -224,7 +224,7 @@ export class PgTransaction implements LearnerTransaction {
     );
     const history = await this.db.query(
       `SELECT outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted FROM amp_attempts
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt" FROM amp_attempts
         WHERE learner_id=$1 ORDER BY evidence_sequence`,
       [this.learnerId],
     );
@@ -235,6 +235,7 @@ export class PgTransaction implements LearnerTransaction {
         now,
       }),
       observations: history.rows,
+      now,
       gradeOf: (id) => {
         const template = templateById.get(id);
         return template && templateGrade(template, skillById);

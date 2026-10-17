@@ -193,3 +193,36 @@ test("offline packs never exceed a grade above the strand frontier", () => {
   assert.ok(choices.length > 0);
   assert.ok(choices.every((choice) => gradeOf(choice.template.id) <= 3));
 });
+
+test("a learner who improves is followed: old misses fade and surprises re-widen the estimate", () => {
+  const day = 86400000;
+  const answer = (templateId: string, correct: boolean, at: number) => ({
+    templateId,
+    correct,
+    assisted: false,
+    createdAt: new Date(october + at).toISOString(),
+  });
+  // A long run of misses on grade-6 work, then (days later) steady success
+  // on grade-7 work.
+  const misses = Array.from({ length: 60 }, (_, i) =>
+    answer("divide-fractions", false, i * 60000),
+  );
+  const successes = Array.from({ length: 30 }, (_, i) =>
+    answer("linear-equation", true, 5 * day + i * 60000),
+  );
+  const estimate = (observations: typeof misses) =>
+    estimateFrontier({
+      start: 4,
+      observations,
+      gradeOf,
+      strandOf,
+      now: Date.parse(observations.at(-1)!.createdAt) - october + october,
+    }).overall;
+  const low = estimate(misses);
+  assert.ok(low.level < 5, JSON.stringify(low));
+  const turning = estimate([...misses, ...successes.slice(0, 4)]);
+  assert.ok(turning.sd > low.sd, "surprising successes re-widen the estimate");
+  const after = estimate([...misses, ...successes]);
+  assert.ok(after.level > 7, JSON.stringify(after));
+  assert.ok(after.sd < 1.2, JSON.stringify(after));
+});
