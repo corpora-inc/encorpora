@@ -179,6 +179,9 @@ try {
   const privacy = async (name: string) => {
     await section("Privacy");
     await page.getByRole("button", { name, exact: false }).click();
+    await page.waitForFunction(() =>
+      document.activeElement?.matches(".family-section h2"),
+    );
   };
   for (const [width, height] of [
     [1280, 844],
@@ -207,6 +210,36 @@ try {
     }
     await section("Learners");
   }
+  family = {
+    ...family,
+    learners: family.learners.map((learner) => ({
+      ...learner,
+      name: "W".repeat(80),
+    })),
+  };
+  await page.reload();
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page
+    .getByRole("button", { name: "Delete learning data", exact: true })
+    .click();
+  const confirmation = page.getByRole("dialog");
+  await confirmation.waitFor();
+  assert.ok(
+    await confirmation.evaluate(
+      (node) => node.scrollWidth <= node.clientWidth + 1,
+    ),
+  );
+  const confirmBounds = await confirmation
+    .getByRole("button", { name: "Delete learning data", exact: true })
+    .boundingBox();
+  assert.ok(
+    confirmBounds && confirmBounds.y + confirmBounds.height <= 568,
+    "Long-name confirmation keeps actions visible",
+  );
+  await page.screenshot({
+    path: new URL("family-long-name-confirmation-320.png", directory).pathname,
+  });
+  await page.keyboard.press("Escape");
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Edit name", exact: true }).click();
   await page.getByLabel("Learner display name").fill("Renamed learner");
@@ -214,6 +247,9 @@ try {
   await page
     .getByRole("heading", { name: "Renamed learner", exact: true })
     .waitFor();
+  await page.waitForFunction(
+    () => document.activeElement?.textContent === "Edit name",
+  );
   await section("Learners");
   await page
     .getByRole("button", { name: "Delete learning data", exact: true })
@@ -228,6 +264,16 @@ try {
     "Delete learning data",
   );
   await privacy("Download your records");
+  await page
+    .getByRole("button", { name: "← Privacy choices", exact: true })
+    .click();
+  await page.waitForFunction(
+    () =>
+      document.activeElement?.getAttribute("data-privacy-choice") === "export",
+  );
+  await page
+    .getByRole("button", { name: "Download your records", exact: false })
+    .click();
   const downloaded = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download family data" }).click();
   assert.match((await downloaded).suggestedFilename(), /\.ndjson$/);

@@ -237,8 +237,12 @@ function App() {
   }
   async function loadFamily() {
     const revision = familyRevision.current;
-    const summary = await api<FamilySummary>("/family");
-    if (revision === familyRevision.current) acceptFamily(summary);
+    try {
+      const summary = await api<FamilySummary>("/family");
+      if (revision === familyRevision.current) acceptFamily(summary);
+    } catch (error) {
+      if (revision === familyRevision.current) throw error;
+    }
   }
   function acceptFamily(summary: FamilySummary) {
     familyRevision.current++;

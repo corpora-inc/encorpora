@@ -619,9 +619,14 @@ export function FamilyCenter({
               {confirmation.kind === "withdraw"
                 ? "Pause new learning activity?"
                 : confirmation.learner
-                  ? `Delete ${confirmation.learner.name}’s learning data?`
+                  ? "Delete this learner’s data?"
                   : "Delete all family learning data?"}
             </h2>
+            {confirmation.kind === "delete" && confirmation.learner && (
+              <p className="family-confirm-learner">
+                <strong>Learner:</strong> {confirmation.learner.name}
+              </p>
+            )}
             {confirmation.kind === "withdraw" ? (
               <p>
                 Existing learning records stay available to export or delete.

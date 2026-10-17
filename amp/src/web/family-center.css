@@ -354,3 +354,7 @@
   overflow: auto;
   flex-shrink: 0;
 }
+
+.family-confirm-learner {
+  overflow-wrap: anywhere;
+}
