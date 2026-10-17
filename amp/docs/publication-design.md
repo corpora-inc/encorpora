@@ -26,17 +26,17 @@ All mathematical diagrams are semantic SVG. Their source records quantities, par
 
 ## Page archetypes
 
-| Archetype | Instructional purpose | Composition |
-| --- | --- | --- |
-| Chapter opening | Pose a question and establish purpose | One strong diagram, short invitation, goals and prerequisite reminder |
-| Concept exploration | Connect language to a mathematical object | Explanatory paragraphs beside or immediately above a large labeled model; one prediction before the conclusion |
-| Worked example | Make reasoning visible | Numbered decisions with matching diagram stages; a final reasonableness check |
-| Guided practice | Transfer part of the reasoning to the learner | One scaffolded task followed by less-supported tasks; space beside each step |
-| Comparison and error analysis | Expose a distinction or misconception | Two aligned representations, a precise question, and room to justify |
-| Independent studio | Practice without solution cues | Two to five substantial tasks with response space sized to the requested work |
-| Transfer investigation | Apply an idea in an unfamiliar context | A coherent situation, data or diagram, connected tasks and room for multiple approaches |
-| Retrieval and reflection | Check retention and connections | Mixed prior concepts, confidence-independent explanation prompts and a concise self-check |
-| Solutions and teaching notes | Explain answers and guide follow-up | Stable task references, reasoning and accepted alternatives; specific misconceptions and next practice |
+| Archetype                     | Instructional purpose                         | Composition                                                                                                    |
+| ----------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Chapter opening               | Pose a question and establish purpose         | One strong diagram, short invitation, goals and prerequisite reminder                                          |
+| Concept exploration           | Connect language to a mathematical object     | Explanatory paragraphs beside or immediately above a large labeled model; one prediction before the conclusion |
+| Worked example                | Make reasoning visible                        | Numbered decisions with matching diagram stages; a final reasonableness check                                  |
+| Guided practice               | Transfer part of the reasoning to the learner | One scaffolded task followed by less-supported tasks; space beside each step                                   |
+| Comparison and error analysis | Expose a distinction or misconception         | Two aligned representations, a precise question, and room to justify                                           |
+| Independent studio            | Practice without solution cues                | Two to five substantial tasks with response space sized to the requested work                                  |
+| Transfer investigation        | Apply an idea in an unfamiliar context        | A coherent situation, data or diagram, connected tasks and room for multiple approaches                        |
+| Retrieval and reflection      | Check retention and connections               | Mixed prior concepts, confidence-independent explanation prompts and a concise self-check                      |
+| Solutions and teaching notes  | Explain answers and guide follow-up           | Stable task references, reasoning and accepted alternatives; specific misconceptions and next practice         |
 
 Adjacent pages should not repeat a single box-and-paragraph composition. Variety follows instructional purpose. A diagram-led concept page, a side-by-side comparison and a spacious investigation can share a consistent typographic system without looking interchangeable.
 
@@ -81,3 +81,48 @@ npx tsx scripts/publish-book.ts artifacts/books/fraction-field-guide
 The authoring source is `books/fraction-field-guide/book.ts`; its typed contract is `books/fraction-field-guide/schema.ts`. The command writes `index.html`, `fraction-field-guide.pdf`, representative page screenshots, extracted PDF text and `validation.json` to the selected directory. Add `--all-pages` after the output directory to render a PNG of every page for review. An existing artifact with the same filename is replaced. Keep generated output outside source control unless a publication release explicitly calls for it.
 
 The exporter rejects unresolved solutions, invalid diagram quantities and page content that extends outside the printable composition. This is a local content build, not an upload or publishing action. The exported HTML is a print preview with fixed Letter-page geometry; readers on small screens may need horizontal scrolling. The PDF includes browser-generated tags and an outline. A responsive reading edition, A4 output and a dedicated PDF accessibility audit require additional work. Validation records SHA-256 hashes of authoring and publisher sources, HTML and PDF; it checks the physical PDF page count and extracted headings independently with Poppler.
+
+The shared authoring contract is `src/publishing/schema.ts`. `MathBook` describes
+any authored math book; the fraction schema preserves its existing type exports.
+An `array` diagram represents equal unit cells in rows and columns. Optional
+interior row and column splits partition those cells into disjoint regions;
+they do not represent overlapping fractional shares. Each dimension supports
+1–12 cells. Supply short axis labels, a caption and alternative text that state
+the unit and context. Dashed split boundaries preserve the partition in grayscale.
+Opening-page arrays use a cover composition whose multiplication equation is
+derived from the row and column counts. Print layout remains Letter-oriented;
+the responsive reader uses the same exact cell counts with HTML axis labels and
+patterned regions.
+
+Integer grouping models can show totals through 30 with whole-unit cells and
+whole-number group sizes. Above 12 units they are limited to 12 groups; the
+last incomplete group displays the exact number of units left. Fractional
+models retain their smaller bounds. Number-line spans above 12 and through 30
+require integer endpoints within −30…30, whole-number marked points, whole-unit ticks, and an explicit
+`integerLabelInterval` keeping the scale sparse. Endpoints retain their labels.
+Jumps are forward and disjoint, with at most four per diagram. Backward arrows,
+overlapping jumps and zero-length jumps require a different model contract;
+authors must not use this variant for them. Jump labels use collision lanes.
+Extended integer lines allow at most one additional label lane across marks and
+jumps. Denser labels fail validation because the phone height cap would make
+them too small; shorten labels or split the model into successive figures.
+
+Use `response.size: "extended"` for a task that needs a substantial diagram or
+constraint table. It provides 2.4 inches of workspace with the same physical
+rule/grid spacing as the smaller sizes. Choose sizes from the learner's work,
+then run the full-page overflow check; the publisher does not shrink text to
+make a crowded page fit.
+
+Export a registered book with `npx tsx scripts/publish-book.ts --book
+fraction-field-guide --all-pages`. The identifier resolves through the compiled
+book catalog; the CLI does not import an arbitrary author path. `--output`
+selects a local artifact directory. The default is `artifacts/books/<book-id>`.
+The PDF is `<book-id>.pdf`; `validation.json` records exact content and PDF
+hashes plus all TypeScript authoring modules, shared publisher modules and the
+catalog. Source directories and nested entries must not be symlinks. `npx tsx scripts/verify-book-models.ts` checks representative array, integer
+remainder and four-jump diagrams using the application CSS at 320×568 and
+844×390. It rejects clipped labels, effective SVG text below 13 screen pixels
+and figures outside the viewport; generated screenshots require visual review.
+The HTML
+is a fixed Letter print preview; the application reader provides responsive
+screen layouts. Export checks do not replace mathematical or visual review.

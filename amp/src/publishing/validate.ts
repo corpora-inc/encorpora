@@ -1,8 +1,5 @@
-import type {
-  Diagram,
-  FractionBook,
-  Rational,
-} from "../../books/fraction-field-guide/schema.js";
+import { labelLanes } from "./label-layout.js";
+import type { Diagram, MathBook, Rational } from "./schema.js";
 export function rational(value: Rational): number {
   if (
     !Array.isArray(value) ||
@@ -51,9 +48,25 @@ export function validateDiagram(d: Diagram): void {
     case "number-line": {
       const min = rational(d.min),
         max = rational(d.max);
-      if (min >= max || max - min > 12)
+      if (min >= max || max - min > 30)
         throw new Error("Invalid number-line extent");
       integer(d.divisionsPerUnit, 1, 24);
+      integer(d.integerLabelInterval ?? 1, 1, 30);
+      if (
+        max - min > 12 &&
+        (!Number.isInteger(min) ||
+          !Number.isInteger(max) ||
+          Math.abs(min) > 30 ||
+          Math.abs(max) > 30 ||
+          d.marks.length > 12 ||
+          d.marks.some((mark) => mark.label.length > 8) ||
+          d.divisionsPerUnit !== 1 ||
+          d.integerLabelInterval === undefined ||
+          (max - min) / d.integerLabelInterval > 12)
+      )
+        throw new Error(
+          "Extended integer number lines require sparse explicit labels and whole-unit ticks",
+        );
       integer(d.jumps?.length ?? 0, 0, 4);
       for (const endpoint of [d.min, d.max])
         if (
@@ -69,12 +82,91 @@ export function validateDiagram(d: Diagram): void {
       for (const mark of d.marks)
         if (rational(mark.at) < min || rational(mark.at) > max)
           throw new Error("Number-line mark out of range");
-      for (const jump of d.jumps ?? [])
+      const jumps = d.jumps ?? [];
+      for (let i = 0; i < jumps.length; i++) {
+        const a = rational(jumps[i]!.from),
+          b = rational(jumps[i]!.to);
+        if (a >= b) throw new Error("Number-line jumps must move forward");
+        for (let j = 0; j < i; j++) {
+          const c = rational(jumps[j]!.from),
+            e = rational(jumps[j]!.to);
+          if (Math.max(a, c) < Math.min(b, e))
+            throw new Error("Number-line jumps must be disjoint");
+        }
+      }
+      for (const jump of jumps)
         for (const value of [jump.from, jump.to])
           if (rational(value) < min || rational(value) > max)
             throw new Error("Number-line jump out of range");
+      if (max - min > 12) {
+        if (
+          d.marks.some((mark) => !Number.isInteger(rational(mark.at))) ||
+          jumps.some((jump) => jump.label.length > 12)
+        )
+          throw new Error(
+            "Extended integer lines require whole-number marks and concise jump labels",
+          );
+      }
+      if (
+        max - min > 12 ||
+        jumps.length > 1 ||
+        d.integerLabelInterval !== undefined
+      ) {
+        if (
+          d.marks.some((mark) => mark.label.length > 12) ||
+          jumps.some((jump) => jump.label.length > 12)
+        )
+          throw new Error(
+            "Sparse or multiple-jump lines require concise labels",
+          );
+        const position = (at: number, text: string) => {
+          const half = Math.max(10, text.length * 5.5);
+          return {
+            text,
+            center: Math.max(
+              half + 3,
+              Math.min(317 - half, 24 + ((at - min) / (max - min)) * 272),
+            ),
+          };
+        };
+        const labels = [
+          ...d.marks.map((mark) => position(rational(mark.at), mark.label)),
+          ...Array.from(
+            { length: Math.floor(max) - Math.ceil(min) + 1 },
+            (_, i) => Math.ceil(min) + i,
+          )
+            .filter(
+              (n) =>
+                (n === min ||
+                  n === max ||
+                  n % (d.integerLabelInterval ?? 1) === 0) &&
+                !d.marks.some((mark) => rational(mark.at) === n),
+            )
+            .map((n) => position(n, String(n))),
+        ];
+        const jumpLabels = jumps.map((jump) =>
+          position((rational(jump.from) + rational(jump.to)) / 2, jump.label),
+        );
+        // More than one additional lane shrinks labels under the short-screen SVG cap.
+        if (
+          Math.max(0, ...labelLanes(labels, 11, 5)) +
+            Math.max(0, ...labelLanes(jumpLabels, 11, 5)) >
+          1
+        )
+          throw new Error("Number-line labels are too dense for phone reading");
+      }
       break;
     }
+    case "array":
+      integer(d.rows, 1, 12);
+      integer(d.columns, 1, 12);
+      if (!d.rowLabel.trim() || !d.columnLabel.trim())
+        throw new Error("Array axis labels required");
+      if (d.splitAfterColumn !== undefined)
+        integer(d.splitAfterColumn, 1, d.columns - 1);
+      if (d.splitAfterRow !== undefined)
+        integer(d.splitAfterRow, 1, d.rows - 1);
+      break;
     case "area":
       integer(d.columns, 1, 12);
       integer(d.rows, 1, 12);
@@ -94,7 +186,12 @@ export function validateDiagram(d: Diagram): void {
           throw new Error("Group units must align with exact subdivisions");
       if (
         total <= 0 ||
-        total > 12 ||
+        total > 30 ||
+        (total > 12 &&
+          (!Number.isInteger(total) ||
+            !Number.isInteger(size) ||
+            d.unitDivisions !== 1 ||
+            exactGroupCount(d.total, d.groupSize) > 12)) ||
         size <= 0 ||
         size > total ||
         exactGroupCount(d.total, d.groupSize) > 24
@@ -133,7 +230,7 @@ export function validateDiagram(d: Diagram): void {
       throw new Error(`Unknown diagram kind: ${(d as { kind: string }).kind}`);
   }
 }
-export function validateBook(book: FractionBook): void {
+export function validateBook(book: MathBook): void {
   if (!book.id || !book.title || !book.version || !book.pages.length)
     throw new Error("Book metadata and pages required");
   const ids = new Set<string>(),
@@ -174,7 +271,9 @@ export function validateBook(book: FractionBook): void {
           tasks.add(block.id);
           if (
             !["lines", "grid", "blank"].includes(block.response.kind) ||
-            !["short", "medium", "large"].includes(block.response.size)
+            !["short", "medium", "large", "extended"].includes(
+              block.response.size,
+            )
           )
             throw new Error("Invalid response workspace");
           break;
