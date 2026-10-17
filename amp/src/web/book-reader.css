@@ -150,6 +150,8 @@
 }
 .reading-task button {
   min-height: 48px;
+  padding: 10px 16px;
+  font-size: 16px;
 }
 .reader-controls {
   display: block;
@@ -521,7 +523,7 @@
     display: none;
   }
   .reading-content {
-    padding: 8px 4px;
+    padding: 4px;
   }
   .reading-callout {
     padding: 12px;
@@ -549,9 +551,21 @@
   .reading-task .thinking-space {
     display: none;
   }
+  .reading-task .reading-kicker {
+    margin-bottom: 8px;
+  }
 }
 @media (max-width: 650px) and (max-height: 650px) {
   .screen-strip {
+    margin-bottom: 4px;
+  }
+  .book-screen-figure figcaption {
+    margin-top: 10px;
+  }
+  .reading-task .reading-kicker {
     margin-bottom: 8px;
+  }
+  .reading-task .thinking-space {
+    display: none;
   }
 }

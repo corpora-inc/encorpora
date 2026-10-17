@@ -184,7 +184,7 @@ export function BookReader({
         tabIndex={0}
         aria-label="Reading workspace"
       >
-        <div className={`reading-content reading-${block.kind}`}>
+        <div className="reading-content" data-frame-kind={block.kind}>
           {content()}
         </div>
       </section>
