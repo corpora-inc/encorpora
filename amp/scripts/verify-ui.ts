@@ -139,6 +139,24 @@ try {
   // explicitly before testing the lifecycle of its lesson-support request.
   await startTopic(page, "mean-data");
   await page.locator("#answer").waitFor();
+  // A malformed answer is caught at the input: no request, nothing moves.
+  {
+    let attempts = 0;
+    const count = (request: { url(): string }) => {
+      if (request.url().endsWith("/attempts")) attempts++;
+    };
+    page.on("request", count);
+    const before = (await page.locator(".question").boundingBox())!.y;
+    await page.locator("#answer").fill("not a number");
+    await page.getByRole("button", { name: "Check", exact: true }).click();
+    await page.locator(".answer-error").waitFor();
+    assert.equal(attempts, 0);
+    assert.equal((await page.locator(".question").boundingBox())!.y, before);
+    assert.equal(await page.locator(".shell > .error").count(), 0);
+    await page.locator("#answer").fill("");
+    await page.locator(".answer-error").waitFor({ state: "detached" });
+    page.off("request", count);
+  }
   let releaseLesson!: () => void;
   let heldLesson!: () => void;
   const held = new Promise<void>((resolve) => {

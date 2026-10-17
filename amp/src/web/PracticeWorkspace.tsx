@@ -1,6 +1,7 @@
 import { ProblemLesson } from "./ProblemLesson";
 import { MathText } from "./MathText";
 import { Calculator } from "./Calculator";
+import { acceptedAnswer } from "../math/answer-format";
 import { displayAnswer } from "../math/polish";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
@@ -120,6 +121,9 @@ type Props = {
   requestHint: () => void;
   /** This problem allows a calculator (computation is not the skill). */
   calculator?: boolean;
+  /** A request error to show at the answer rather than at the top of the app. */
+  error?: string;
+  clearError?: () => void;
   /** Leave immersive practice for home, lessons, progress and settings. */
   exit: () => void;
   requestLesson: () => Promise<ProblemLessonView>;
@@ -206,6 +210,13 @@ export function PracticeWorkspace(props: Props) {
   const [celebrate, setCelebrate] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [answerError, setAnswerError] = useState("");
+  // Typing clears a message about the previous answer.
+  useEffect(() => {
+    setAnswerError("");
+    props.clearError?.();
+  }, [response]);
+  const inputError = answerError || props.error || "";
   useEffect(() => {
     const media = matchMedia("(max-width: 650px), (pointer: coarse)");
     const changed = () => setSmall(media.matches);
@@ -323,8 +334,14 @@ export function PracticeWorkspace(props: Props) {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            if (!busy && (outcome || response.trim()))
-              outcome ? advance() : props.submit();
+            if (busy || !(outcome || response.trim())) return;
+            if (outcome) return advance();
+            // Catch a malformed answer at the input, without a request.
+            if (!acceptedAnswer(response))
+              return setAnswerError(
+                "Enter a number, decimal, or fraction such as 3/4.",
+              );
+            props.submit();
           }}
         >
           <label htmlFor="answer">{problem.response.label}</label>
@@ -553,6 +570,11 @@ export function PracticeWorkspace(props: Props) {
           )}
         </div>
         <div className="answer-dock">
+          {inputError && !outcome && (
+            <p className="answer-error" role="alert">
+              {inputError}
+            </p>
+          )}
           <div
             className="answer-controls"
             style={outcome ? { visibility: "hidden" } : undefined}
