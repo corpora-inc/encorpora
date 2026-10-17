@@ -33,13 +33,8 @@ export function supportedOfflineTemplates(
     (t) =>
       (!t.requiredResponseCapability ||
         input.responseCapabilities.includes(t.requiredResponseCapability)) &&
-      // The optional field permits forward-compatible integration of the measurement renderer contract.
-      (!(t as TemplateMetadata & { requiredFigureCapability?: string })
-        .requiredFigureCapability ||
-        input.figureCapabilities.includes(
-          (t as TemplateMetadata & { requiredFigureCapability?: string })
-            .requiredFigureCapability as "measurement-models-v1",
-        )),
+      (!t.requiredFigureCapability ||
+        input.figureCapabilities.includes(t.requiredFigureCapability)),
   );
 }
 export function uniquePoolChoices(

@@ -8,7 +8,7 @@ import {
   assertPackAuthorization,
   offlineSigningConfiguration,
 } from "../src/offline/signing.js";
-import { generateProblem } from "../src/math/engine.js";
+import { generateProblem, templates } from "../src/math/engine.js";
 import { gradeOfflineV1, normalizeAnswer } from "../src/offline/grader-v1.js";
 import { planMixedPractice } from "../src/server/mixed-practice.js";
 import {
@@ -129,9 +129,21 @@ test("capabilities are explicit; request bodies cannot claim evidence or trusted
   };
   const visual = {
     ...early,
-    requiredFigureCapability: "measurement-models-v1",
+    requiredFigureCapability: "measurement-models-v1" as const,
   };
   const legacy = issueSchema.parse({ requestId: randomUUID() });
+  const measurement = templates.filter(
+    (t) => t.requiredFigureCapability === "measurement-models-v1",
+  );
+  assert.ok(measurement.length > 0);
+  assert.equal(supportedOfflineTemplates(legacy, measurement).length, 0);
+  assert.deepEqual(
+    supportedOfflineTemplates(
+      { ...legacy, figureCapabilities: ["measurement-models-v1"] },
+      measurement,
+    ),
+    measurement,
+  );
   assert.deepEqual(supportedOfflineTemplates(legacy, [choice, visual, early]), [
     early,
   ]);
