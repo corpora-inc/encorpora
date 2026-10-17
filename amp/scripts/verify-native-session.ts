@@ -437,6 +437,48 @@ try {
     request: { kind: "learners" },
   });
   assert.deepEqual(own.data.learners, [learnerA]);
+  const initialPreference = await rpc("request", {
+    handle: session.token,
+    request: { kind: "starting-point", learnerId: learnerA.id },
+  });
+  assert.deepEqual(initialPreference.data, { band: null, policyVersion: null });
+  for (const kind of ["starting-point", "set-starting-point"]) {
+    const foreign = await rpc("request", {
+      handle: session.token,
+      request: {
+        kind,
+        learnerId: learnerB.id,
+        ...(kind === "set-starting-point" ? { body: { band: "9–12" } } : {}),
+      },
+    });
+    assert.equal(foreign.status, 404);
+  }
+  for (const body of [
+    { band: "9-12" },
+    { band: "9–12", excludedStrands: [] },
+  ]) {
+    const invalid = await rpc("request", {
+      handle: session.token,
+      request: { kind: "set-starting-point", learnerId: learnerA.id, body },
+    });
+    assert.equal(invalid.status, 400);
+  }
+  const savedPreference = await rpc("request", {
+    handle: session.token,
+    request: {
+      kind: "set-starting-point",
+      learnerId: learnerA.id,
+      body: { band: "3–5" },
+    },
+  });
+  assert.equal(savedPreference.status, 200);
+  assert.deepEqual(savedPreference.data, { band: "3–5", policyVersion: 1 });
+  const readPreference = await rpc("request", {
+    handle: session.token,
+    request: { kind: "starting-point", learnerId: learnerA.id },
+  });
+  assert.deepEqual(readPreference.data, savedPreference.data);
+
   const denied = await rpc("request", {
     handle: session.token,
     request: { kind: "batch", learnerId: learnerB.id, body: { count: 1 } },
@@ -465,6 +507,16 @@ try {
     403,
     "Verified native identity must not bypass withdrawn consent",
   );
+  const pausedPreference = await rpc("request", {
+    handle: session.token,
+    request: {
+      kind: "set-starting-point",
+      learnerId: learnerA.id,
+      body: { band: "6–8" },
+    },
+  });
+  assert.equal(pausedPreference.status, 403);
+
   await repository.pool.query(
     "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id=$1",
     [accounts[0]],
@@ -663,6 +715,28 @@ try {
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learnerA.id);
+  await page
+    .getByRole("button", { name: "Choose a starting point", exact: true })
+    .click();
+  await page
+    .getByRole("heading", { name: "Where to begin?", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: /Algebra & functions/ }).click();
+  await page
+    .getByRole("button", {
+      name: "Starting point: Algebra & functions",
+      exact: true,
+    })
+    .waitFor();
+  assert.equal(
+    (
+      await repository.pool.query(
+        "SELECT starting_band FROM amp_learners WHERE id=$1",
+        [learnerA.id],
+      )
+    ).rows[0].starting_band,
+    "9–12",
+  );
   await page
     .getByText("Looking for a particular idea?", { exact: true })
     .click();
