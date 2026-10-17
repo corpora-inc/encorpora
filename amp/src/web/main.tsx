@@ -407,6 +407,18 @@ function App() {
       if (current()) setProgressLoading(false);
     }
   }
+  function navigationFailure(
+    navigation: number,
+    learnerId: string,
+    error: unknown,
+  ): null {
+    if (
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learnerId
+    )
+      return null;
+    throw error;
+  }
   async function practiceFromProgress(templateId?: string) {
     await loadBatch(templateId ?? "", true);
   }
@@ -420,7 +432,7 @@ function App() {
     )
       await api(`/learners/${learner.id}/lesson-support`, {
         problemId: problem.id,
-      });
+      }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
       navigation !== navigationEpoch.current ||
       learnerRef.current !== learner.id
@@ -447,8 +459,9 @@ function App() {
       ...(templateId ? { templateId } : {}),
       count: templateId ? 1 : 3,
       responseCapabilities: ["single-choice-v1"],
-    });
+    }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
+      !data ||
       navigation !== navigationEpoch.current ||
       learnerRef.current !== learner.id
     )
@@ -505,8 +518,9 @@ function App() {
       suggestedPageId: string | null;
     }>(`/learners/${learner.id}/books/${id}/open`, {
       ...(problem ? { problemId: problem.id } : {}),
-    });
+    }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
+      !data ||
       learnerRef.current !== learner.id ||
       navigationEpoch.current !== navigation
     )
@@ -971,6 +985,12 @@ function App() {
                               await api(
                                 `/learners/${learner.id}/lesson-support`,
                                 { problemId: problem.id },
+                              ).catch((error) =>
+                                navigationFailure(
+                                  navigation,
+                                  learner.id,
+                                  error,
+                                ),
                               );
                             }
                             if (

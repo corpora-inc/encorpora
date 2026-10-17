@@ -298,6 +298,33 @@ try {
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.getByRole("alert").count(), 0);
 
+  // A failed request for a view the learner has left cannot paint an unrelated error.
+  let releaseBatch!: () => void, sawBatch!: () => void;
+  const batchWait = new Promise<void>((resolve) => (releaseBatch = resolve));
+  const batchStarted = new Promise<void>((resolve) => (sawBatch = resolve));
+  await page.route("**/batches", async (route) => {
+    sawBatch();
+    await batchWait;
+    await route.fulfill({
+      status: 503,
+      json: { error: "Obsolete practice request" },
+    });
+  });
+  await page
+    .getByRole("button", { name: "Try one problem", exact: true })
+    .click();
+  await batchStarted;
+  await page
+    .getByRole("button", { name: "Lesson library", exact: true })
+    .click();
+  releaseBatch();
+  await page.unrouteAll({ behavior: "wait" });
+  assert.equal(await page.getByRole("alert").count(), 0);
+  assert.equal(await page.locator(".progress-workspace").count(), 0);
+  await page
+    .getByRole("button", { name: "Your progress", exact: true })
+    .click();
+
   // Returning after an orientation change retains the selected card and keyboard focus.
   await page.setViewportSize({ width: 320, height: 568 });
   await page.getByRole("button", { name: /All ideas/ }).click();
