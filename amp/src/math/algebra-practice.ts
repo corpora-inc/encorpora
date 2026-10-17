@@ -400,7 +400,7 @@ export function generateAlgebraProblem(
         drop = r(0, 1) ? r(1, 3) : 0,
         end = start - drop;
       prompt =
-        "x: time (minutes). y: distance from home (meters). What happens to the distance from A to B?";
+        "x: minutes; y: meters from home. From A to B, how does y change?";
       figure = {
         kind: "coordinate-plane",
         xMin: -1,

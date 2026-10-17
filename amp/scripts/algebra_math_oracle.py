@@ -209,7 +209,7 @@ def solve_algebra(public):
         require(a*crossing+b == c*crossing+d, 'Crossing check failed')
         return crossing
     if template == 'distance-graph-meaning':
-        require(prompt == 'x: time (minutes). y: distance from home (meters). What happens to the distance from A to B?', 'Unreviewed time/distance wording')
+        require(prompt == 'x: minutes; y: meters from home. From A to B, how does y change?', 'Unreviewed time/distance wording')
         figure = public['figure']
         require(figure['kind'] == 'coordinate-plane', 'Invalid qualitative graph')
         require(figure['xMin'] < figure['xMax'] and figure['yMin'] < figure['yMax'], 'Invalid graph axes')
@@ -256,7 +256,7 @@ def review_algebra_fixtures():
         (public('check-equation-candidate', 'Does x = 0 satisfy x + 4 = 2? Choose the accurate check.', ['Left = 4; right = 2. No.', 'Left = 3; right = 2. No.', 'Left = 4; right = 4. Yes.']), '0'),
         (public('relation-function-choice', 'Which list of (input, output) pairs represents a function?', ['(1, 2), (1, 2), (3, 2)', '(1, 2), (1, 3), (2, 2)', '(1, 2), (2, 2), (2, 3)']), '0'),
         (public('proportional-rule-choice', 'Which rule is proportional for all real inputs x?', ['y = -3x', 'y = -3x + 2', 'y = 3x + 1']), '0'),
-        (public('distance-graph-meaning', 'x: time (minutes). y: distance from home (meters). What happens to the distance from A to B?', ['The traveler must be standing still.', 'Distance from home stays constant.', 'Distance from home decreases.'], {'kind':'coordinate-plane','xMin':-1,'xMax':5,'yMin':-1,'yMax':10,'points':[{'x':0,'y':4,'label':'A'},{'x':4,'y':4,'label':'B'}],'lines':[{'m':0,'b':4}]}), '1'),
+        (public('distance-graph-meaning', 'x: minutes; y: meters from home. From A to B, how does y change?', ['The traveler must be standing still.', 'Distance from home stays constant.', 'Distance from home decreases.'], {'kind':'coordinate-plane','xMin':-1,'xMax':5,'yMin':-1,'yMax':10,'points':[{'x':0,'y':4,'label':'A'},{'x':4,'y':4,'label':'B'}],'lines':[{'m':0,'b':4}]}), '1'),
     ]
     for given, expected in cases:
         require(solve_algebra(given) == expected, f'Handwritten oracle fixture failed: {given}')
