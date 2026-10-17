@@ -1,6 +1,9 @@
 import { registerFamilyRoutes } from "../family/routes.js";
 import { stripeConfig } from "../billing/stripe/config.js";
-import { registerStripeRoutes } from "../billing/stripe/routes.js";
+import {
+  registerStripeRoutes,
+  registerUnavailableBilling,
+} from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
 import { developmentAuth, oidcAuth } from "./auth";
 import { PostgresRepository } from "./repository";
@@ -50,7 +53,7 @@ if (billingConfig) {
     authenticate,
     config: billingConfig,
   });
-}
+} else await registerUnavailableBilling(app, authenticate);
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {

@@ -25,6 +25,11 @@ export class StripeBilling {
       { url: string } | { expired: true }
     >(accountId, async (client) => {
       await this.repository.assertPurchaseAllowed(client, accountId, learnerId);
+      const grants = await client.query(
+        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
+        [learnerId],
+      );
+      if (grants.rowCount) throw new BillingError("learner_already_licensed");
       const result = await client.query(
         "SELECT * FROM amp_stripe_checkouts WHERE id=$1 AND account_id=$2 FOR UPDATE",
         [checkoutId, accountId],

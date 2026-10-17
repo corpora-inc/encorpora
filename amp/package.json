@@ -24,9 +24,10 @@
     "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
-    "test:family-ui": "tsx scripts/verify-family-ui.ts && tsx scripts/verify-session-ui.ts",
+    "test:family-ui": "tsx scripts/verify-family-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
-    "test:choice-ui": "tsx scripts/verify-choice-ui.ts"
+    "test:choice-ui": "tsx scripts/verify-choice-ui.ts",
+    "test:annual-ui": "tsx scripts/verify-annual-purchase-ui.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",
