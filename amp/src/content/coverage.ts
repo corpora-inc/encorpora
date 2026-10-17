@@ -9,6 +9,7 @@ import { templates as catalogTemplates } from "../math/engine.js";
 import { lessons as catalogLessons } from "./lessons.js";
 
 export interface CoverageTemplate {
+  requiredResponseCapability?: string;
   id: string;
   skillId: string;
   version: number;
@@ -55,7 +56,7 @@ export interface CoverageBookBinding {
   skillId: string;
   bookId: string;
   pageIds: readonly string[];
-  assessedResponse: "numeric-result-only";
+  assessedResponse: "numeric-result-only" | "single-choice-selection";
   unassessedRequirements: readonly string[];
 }
 export interface CoverageInput {
@@ -146,7 +147,12 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
       !binding.pageIds.length ||
       new Set(binding.pageIds).size !== binding.pageIds.length ||
       binding.pageIds.some((id) => !book.pageIds.includes(id)) ||
-      binding.assessedResponse !== "numeric-result-only" ||
+      binding.assessedResponse !==
+        (template.requiredResponseCapability === undefined
+          ? "numeric-result-only"
+          : template.requiredResponseCapability === "single-choice-v1"
+            ? "single-choice-selection"
+            : null) ||
       !binding.unassessedRequirements.length ||
       binding.unassessedRequirements.some((requirement) => !requirement.trim())
     ) {

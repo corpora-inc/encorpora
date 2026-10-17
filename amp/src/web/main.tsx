@@ -14,6 +14,7 @@ import type { FamilySummary } from "../family/contracts";
 import { preferredBookForProblem } from "../books/selection";
 import { BookReader } from "./BookReader";
 import { readingFrames } from "../books/reading";
+import { readerCapabilities } from "../books/capabilities";
 import type { BookSummary } from "../books/catalog";
 import type { FractionBook } from "../../books/fraction-field-guide/schema";
 import { product } from "../product";
@@ -326,7 +327,9 @@ function App() {
     setBooks([]);
     const epoch = authEpoch.current;
     if (learner)
-      void api<{ books: BookSummary[] }>(`/learners/${learner.id}/books`)
+      void api<{ books: BookSummary[] }>(
+        `/learners/${learner.id}/books?readerCapabilities=${readerCapabilities.join(",")}`,
+      )
         .then((data) => {
           if (learnerRef.current === learner.id) setBooks(data.books);
         })
@@ -488,6 +491,7 @@ function App() {
       book: FractionBook;
       suggestedPageId: string | null;
     }>(`/learners/${learner.id}/books/${id}/open`, {
+      readerCapabilities,
       ...(problem ? { problemId: problem.id } : {}),
     });
     if (
