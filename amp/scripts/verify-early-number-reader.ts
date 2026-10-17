@@ -176,6 +176,8 @@ try {
     printBackground: true,
     tagged: true,
   });
+  if (pdf.length > 2 * 1024 * 1024)
+    throw new Error("Early-number proof PDF exceeds the 2MiB fixture budget");
   const physicalPages = (await PDFDocument.load(pdf)).getPageCount();
   if (physicalPages !== book.pages.length)
     throw new Error("Unexpected print page count");
@@ -187,7 +189,10 @@ try {
   await writeFile(
     resolve(output, "validation.json"),
     JSON.stringify(
-      { readerFrames: review, print: { physicalPages, overflow, labels } },
+      {
+        readerFrames: review,
+        print: { physicalPages, bytes: pdf.length, overflow, labels },
+      },
       null,
       2,
     ),

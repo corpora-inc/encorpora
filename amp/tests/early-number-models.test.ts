@@ -100,7 +100,7 @@ test("collection arrangement preserves one-to-one units and explicit conservatio
   assert.match(svg, /width="304" height="116"/);
   assert.equal((svg.match(/data-unit=/g) ?? []).length, 0);
 });
-test("panel patterns have unique IDs and labels are escaped", () => {
+test("explicit finite hatching avoids pattern resources and labels are escaped", () => {
   const d = fixture("same-seven");
   if (d.kind !== "count-collection") throw Error();
   for (const p of d.panels) {
@@ -110,9 +110,57 @@ test("panel patterns have unique IDs and labels are escaped", () => {
   const svg = renderToStaticMarkup(
     React.createElement(BookDiagram, { diagram: d }),
   );
-  const ids = [...svg.matchAll(/<pattern id="([^"]+)"/g)].map((m) => m[1]);
-  assert.equal(new Set(ids).size, ids.length);
-  assert.equal(ids.length, 2);
+  assert.ok(!svg.includes("<pattern"));
+  assert.equal((svg.match(/data-hatching="true"/g) ?? []).length, 2);
+  assert.ok((svg.match(/<path /g) ?? []).length < 24);
   assert.ok(!svg.includes("<img"));
   assert.match(svg, /&lt;img src=x&gt;/);
+});
+
+test("every decorative hatch endpoint lies inside its own counted unit", () => {
+  let checked = 0;
+  for (const id of [
+    "five-and-two",
+    "unbundle-remove",
+    "emphasized-collection",
+  ]) {
+    const svg = renderToStaticMarkup(
+      React.createElement(BookDiagram, { diagram: fixture(id) }),
+    );
+    for (const match of svg.matchAll(
+      /<(rect|circle)([^>]*data-unit[^>]*)><\/\1><g data-hatching="true"[^>]*>(.*?)<\/g>/g,
+    )) {
+      const attrs = Object.fromEntries(
+        [...match[2]!.matchAll(/\s([a-z]+)="([^"]+)"/g)].map((a) => [
+          a[1],
+          Number(a[2]),
+        ]),
+      );
+      const paths = [
+        ...match[3]!.matchAll(
+          /d="M([\d.e+-]+),([\d.e+-]+) L([\d.e+-]+),([\d.e+-]+)"/g,
+        ),
+      ];
+      assert.ok(paths.length >= 3);
+      for (const path of paths)
+        for (const [x, y] of [
+          [Number(path[1]), Number(path[2])],
+          [Number(path[3]), Number(path[4])],
+        ]) {
+          if (match[1] === "circle")
+            assert.ok(
+              Math.hypot(x - attrs.cx!, y - attrs.cy!) <= attrs.r! + 1e-9,
+            );
+          else
+            assert.ok(
+              x >= attrs.x! - 1e-9 &&
+                x <= attrs.x! + attrs.width! + 1e-9 &&
+                y >= attrs.y! - 1e-9 &&
+                y <= attrs.y! + attrs.height! + 1e-9,
+            );
+        }
+      checked++;
+    }
+  }
+  assert.equal(checked, 22); // two frame counters, sixteen base units, four collection counters.
 });

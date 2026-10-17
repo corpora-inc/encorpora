@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React from "react";
 import type { Diagram } from "./schema.js";
 import {
   validateEarlyNumberModel,
@@ -6,6 +6,90 @@ import {
 } from "./early-number-models.js";
 export type EarlyNumberDiagram = Diagram & EarlyNumberModel;
 const ink = "#18594f";
+/** Finite strokes avoid PDF expansion of repeated SVG pattern resources. */
+function Unit({
+  x,
+  y,
+  size,
+  circle = false,
+  marked = false,
+  unit,
+}: {
+  x: number;
+  y: number;
+  size: number;
+  circle?: boolean;
+  marked?: boolean;
+  unit: string | number;
+}) {
+  const lines: React.ReactNode[] = [];
+  if (marked) {
+    if (circle) {
+      const radius = size / 2;
+      // Intersect x+y=s with x²+y²=r² in coordinates centered on the unit.
+      for (let s = -size; s <= size; s += 6) {
+        const discriminant = 2 * radius * radius - s * s;
+        if (discriminant <= 0) continue;
+        const root = Math.sqrt(discriminant);
+        const a = (s - root) / 2,
+          b = (s + root) / 2;
+        lines.push(
+          <path
+            key={s}
+            d={`M${x + radius + a},${y + radius + b} L${x + radius + b},${y + radius + a}`}
+          />,
+        );
+      }
+    } else {
+      // Clip the diagonal (s+t,size-t) to the square, retaining actual endpoints.
+      for (let s = -size + 6; s < size; s += 6) {
+        const lo = Math.max(0, -s),
+          hi = Math.min(size, size - s);
+        if (hi <= lo) continue;
+        lines.push(
+          <path
+            key={s}
+            d={`M${x + s + lo},${y + size - lo} L${x + s + hi},${y + size - hi}`}
+          />,
+        );
+      }
+    }
+  }
+  const style = {
+    fill: marked ? "#f3dca2" : "#8abbb0",
+    stroke: ink,
+    strokeWidth: circle ? (marked ? 3 : 1.5) : 1,
+  };
+  return (
+    <g>
+      {circle ? (
+        <circle
+          data-unit={unit}
+          data-emphasized={marked || undefined}
+          cx={x + size / 2}
+          cy={y + size / 2}
+          r={size / 2}
+          {...style}
+        />
+      ) : (
+        <rect
+          data-unit={unit}
+          data-emphasized={marked || undefined}
+          x={x}
+          y={y}
+          width={size}
+          height={size}
+          {...style}
+        />
+      )}
+      {marked && (
+        <g data-hatching="true" fill="none" stroke={ink} strokeWidth="1.3">
+          {lines}
+        </g>
+      )}
+    </g>
+  );
+}
 /** The same unit geometry is used in print and screen, including exchange tools. */
 export function EarlyNumberDiagramFigure({
   diagram: d,
@@ -15,17 +99,6 @@ export function EarlyNumberDiagramFigure({
   screen?: boolean;
 }) {
   validateEarlyNumberModel(d);
-  const pattern = `early-${useId().replace(/[^a-z0-9]/gi, "")}`;
-  const defs = (id = pattern) => (
-    <defs>
-      <pattern id={id} width="6" height="6" patternUnits="userSpaceOnUse">
-        <rect width="6" height="6" fill="#f3dca2" />
-        <path d="M-1 1L1-1M0 6L6 0M5 7L7 5" stroke={ink} strokeWidth="1.3" />
-      </pattern>
-    </defs>
-  );
-  const fill = (marked: boolean, id = pattern) =>
-    marked ? `url(#${id})` : "#8abbb0";
   let art: React.ReactNode;
   if (d.kind === "ten-frame") {
     art = (
@@ -34,7 +107,6 @@ export function EarlyNumberDiagramFigure({
         role="img"
         aria-label={d.alt}
       >
-        {defs()}
         {Array.from({ length: d.frames }, (_, frame) => (
           <g key={frame} data-frame={frame}>
             {Array.from({ length: 10 }, (_, i) => {
@@ -53,17 +125,13 @@ export function EarlyNumberDiagramFigure({
                     strokeWidth="1.5"
                   />
                   {d.occupied.includes(index) && (
-                    <circle
-                      data-unit={index}
-                      data-emphasized={
-                        d.emphasized?.includes(index) || undefined
-                      }
-                      cx={x + 24}
-                      cy={y + 24}
-                      r="16"
-                      fill={fill(!!d.emphasized?.includes(index))}
-                      stroke={ink}
-                      strokeWidth={d.emphasized?.includes(index) ? 3 : 1.5}
+                    <Unit
+                      unit={index}
+                      x={x + 8}
+                      y={y + 8}
+                      size={32}
+                      circle
+                      marked={d.emphasized?.includes(index)}
                     />
                   )}
                 </g>
@@ -76,7 +144,6 @@ export function EarlyNumberDiagramFigure({
   } else if (d.kind === "base-ten") {
     art = (
       <svg viewBox="0 0 320 236" role="img" aria-label={d.alt}>
-        {defs()}
         <rect
           x="8"
           y="4"
@@ -89,31 +156,25 @@ export function EarlyNumberDiagramFigure({
         {Array.from({ length: d.tens }, (_, rod) => (
           <g key={rod} data-ten={rod}>
             {Array.from({ length: 10 }, (_, unit) => (
-              <rect
+              <Unit
                 key={unit}
-                data-unit="ten-cell"
+                unit="ten-cell"
                 x={16 + rod * 24}
                 y={16 + unit * 20}
-                width="20"
-                height="20"
-                fill={fill(!!d.emphasizedTens?.includes(rod))}
-                stroke={ink}
-                strokeWidth="1"
+                size={20}
+                marked={d.emphasizedTens?.includes(rod)}
               />
             ))}
           </g>
         ))}
         {Array.from({ length: d.ones }, (_, unit) => (
-          <rect
+          <Unit
             key={unit}
-            data-unit="one-cell"
+            unit="one-cell"
             x={180 + (unit % 5) * 24}
             y={16 + Math.floor(unit / 5) * 30}
-            width="20"
-            height="20"
-            fill={fill(!!d.emphasizedOnes?.includes(unit))}
-            stroke={ink}
-            strokeWidth="1"
+            size={20}
+            marked={d.emphasizedOnes?.includes(unit)}
           />
         ))}
       </svg>
@@ -125,7 +186,6 @@ export function EarlyNumberDiagramFigure({
           <div key={i} className="early-collection-panel">
             <p className="early-panel-label">{panel.label}</p>
             <svg viewBox="0 0 320 124" role="img" aria-label={panel.label}>
-              {defs(`${pattern}-${i}`)}
               <rect
                 x="8"
                 y="4"
@@ -135,35 +195,17 @@ export function EarlyNumberDiagramFigure({
                 fill="#fffefa"
                 stroke={ink}
               />
-              {panel.cells.map((cell, index) => {
-                const x = 40 + cell.column * 48,
-                  y = 20 + cell.row * 28,
-                  marked = !!panel.emphasized?.includes(index);
-                return d.icon === "circle" ? (
-                  <circle
-                    key={index}
-                    data-unit={index}
-                    cx={x}
-                    cy={y}
-                    r="10"
-                    fill={fill(marked, `${pattern}-${i}`)}
-                    stroke={ink}
-                    strokeWidth={marked ? 3 : 1.5}
-                  />
-                ) : (
-                  <rect
-                    key={index}
-                    data-unit={index}
-                    x={x - 10}
-                    y={y - 10}
-                    width="20"
-                    height="20"
-                    fill={fill(marked, `${pattern}-${i}`)}
-                    stroke={ink}
-                    strokeWidth={marked ? 3 : 1.5}
-                  />
-                );
-              })}
+              {panel.cells.map((cell, index) => (
+                <Unit
+                  key={index}
+                  unit={index}
+                  x={30 + cell.column * 48}
+                  y={10 + cell.row * 28}
+                  size={20}
+                  circle={d.icon === "circle"}
+                  marked={panel.emphasized?.includes(index)}
+                />
+              ))}
             </svg>
             {panel.emphasisLabel && (
               <p className="early-emphasis">▨ {panel.emphasisLabel}</p>
