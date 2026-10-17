@@ -8,7 +8,7 @@ import { generatedProblemSchema, type PublicProblem } from "../math/contracts";
 import {
   generateProblem,
   gradeAnswer,
-  normalizeAnswer,
+  isValidResponse,
   templates,
 } from "../math/engine";
 import { skills } from "../curriculum/catalog";
@@ -115,6 +115,10 @@ export function buildApp(options: {
       .object({
         templateId: z.string().max(100).optional(),
         count: z.number().int().min(1).max(5).default(3),
+        responseCapabilities: z
+          .array(z.literal("single-choice-v1"))
+          .max(1)
+          .default([]),
       })
       .strict()
       .parse(request.body ?? {});
@@ -126,6 +130,18 @@ export function buildApp(options: {
         : undefined;
       if (input.templateId && !focused)
         throw new ApiError(400, "Unknown problem family");
+      const supported = templates.filter(
+        (template) =>
+          !template.requiredResponseCapability ||
+          input.responseCapabilities.includes(
+            template.requiredResponseCapability,
+          ),
+      );
+      if (focused && !supported.includes(focused))
+        throw new ApiError(
+          400,
+          "This answer format needs an updated app. Refresh the page to try this problem.",
+        );
       const selected = focused
         ? Array.from({ length: input.count }, () => ({
             template: focused,
@@ -135,7 +151,7 @@ export function buildApp(options: {
               "math",
           }))
         : planMixedPractice({
-            templates,
+            templates: supported,
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
@@ -247,11 +263,6 @@ export function buildApp(options: {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const input = attemptSchema.parse(request.body);
-    if (normalizeAnswer(input.response) === null)
-      throw new ApiError(
-        400,
-        "Enter a number, decimal, or fraction such as 3/4",
-      );
     return options.repository.transaction(account, learnerId, async (tx) => {
       const duplicate = await tx.attemptByRequest(input.requestId);
       if (duplicate) {
@@ -267,6 +278,13 @@ export function buildApp(options: {
       }
       const problem = await tx.problem(input.problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
+      if (!isValidResponse(problem.public, input.response))
+        throw new ApiError(
+          400,
+          problem.public.response.kind === "choice"
+            ? "Choose one of the displayed answers"
+            : "Enter a number, decimal, or fraction such as 3/4",
+        );
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -279,7 +297,9 @@ export function buildApp(options: {
         response: input.response,
         correct: gradeAnswer(problem, input.response),
         assisted: !!problem.hintViewed || !!problem.lessonViewed,
-        explanation: problem.explanation,
+        explanation: problem.choiceFeedback?.[input.response]
+          ? [problem.choiceFeedback[input.response]!, ...problem.explanation]
+          : problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),
       };

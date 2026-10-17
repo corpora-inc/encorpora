@@ -1,3 +1,4 @@
+import { ChoiceFigure } from "./ChoiceFigure";
 import {
   useEffect,
   useLayoutEffect,
@@ -15,11 +16,13 @@ export function FocusDialog({
   children,
   close,
   returnFocus,
+  className = "",
 }: {
   title: string;
   children: ReactNode;
   close: () => void;
   returnFocus?: HTMLElement | null;
+  className?: string;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
@@ -39,7 +42,7 @@ export function FocusDialog({
   return (
     <dialog
       ref={dialog}
-      className="practice-dialog"
+      className={`practice-dialog ${className}`}
       aria-labelledby="practice-dialog-title"
       onCancel={(event) => {
         event.preventDefault();
@@ -137,6 +140,12 @@ export function PracticeWorkspace(props: Props) {
       alive.current = false;
     };
   }, []);
+  const choice = problem.response.kind === "choice";
+  const displayResponse = (value: string) =>
+    problem.response.kind === "choice"
+      ? (problem.response.options.find((option) => option.id === value)
+          ?.label ?? "Unavailable answer")
+      : value;
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
@@ -180,7 +189,7 @@ export function PracticeWorkspace(props: Props) {
     setLessonError("");
     setCelebrate(false);
     previousOutcome.current = null;
-    if (small) prompt.current?.focus({ preventScroll: true });
+    if (small || choice) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
@@ -201,7 +210,7 @@ export function PracticeWorkspace(props: Props) {
     };
   }, [outcome?.id, busy]);
   const locked = busy || pending || !!outcome;
-  const keypad = small && !nativeKeyboard;
+  const keypad = small && !nativeKeyboard && !choice;
   function key(value: string) {
     if (locked) return;
     const start = input.current?.selectionStart ?? response.length;
@@ -230,6 +239,49 @@ export function PracticeWorkspace(props: Props) {
     });
   }
   function answerControls() {
+    if (problem.response.kind === "choice")
+      return (
+        <form
+          className="choice-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (!busy && (outcome || response))
+              outcome ? advance() : props.submit();
+          }}
+        >
+          <fieldset disabled={locked}>
+            <legend>{problem.response.label}</legend>
+            <div className="choice-options">
+              {problem.response.options.map((option, index) => (
+                <label
+                  key={option.id}
+                  className={`choice-option ${response === option.id ? "selected" : ""}`}
+                >
+                  <input
+                    type="radio"
+                    name={`answer-${problem.id}`}
+                    value={option.id}
+                    checked={response === option.id}
+                    onChange={() => setResponse(option.id)}
+                  />
+                  <span className="choice-letter" aria-hidden="true">
+                    {"ABCD"[index]}
+                  </span>
+                  <span>{option.label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <button
+            ref={compact ? undefined : continueButton}
+            className="choice-submit"
+            type="submit"
+            disabled={busy || (!outcome && !response)}
+          >
+            {outcome ? "Continue →" : pending ? "Retry" : "Check answer"}
+          </button>
+        </form>
+      );
     return (
       <>
         <form
@@ -266,7 +318,7 @@ export function PracticeWorkspace(props: Props) {
               maxLength={100}
             />
             <button
-              ref={continueButton}
+              ref={compact ? undefined : continueButton}
               className="answer-action"
               type="submit"
               disabled={busy || (!outcome && !response.trim())}
@@ -361,7 +413,12 @@ export function PracticeWorkspace(props: Props) {
             <h2 ref={prompt} tabIndex={-1} className="question">
               {problem.prompt}
             </h2>
-            {problem.figure && <Figure figure={problem.figure} />}
+            {problem.figure &&
+              (choice ? (
+                <ChoiceFigure figure={problem.figure} />
+              ) : (
+                <Figure figure={problem.figure} />
+              ))}
           </div>
           {celebrate && (
             <div className="practice-celebration" aria-hidden="true">
@@ -411,8 +468,12 @@ export function PracticeWorkspace(props: Props) {
               {outcome
                 ? "Continue →"
                 : response
-                  ? `Your answer: ${response} · Edit`
-                  : "Enter your answer"}
+                  ? choice
+                    ? "Review your choice"
+                    : `Your answer: ${response} · Edit`
+                  : choice
+                    ? "Choose an answer"
+                    : "Enter your answer"}
             </button>
           ) : (
             answerControls()
@@ -478,7 +539,7 @@ export function PracticeWorkspace(props: Props) {
                 </button>
               )
             )}
-            {small && (
+            {small && !choice && (
               <button
                 className="text-button keyboard-choice"
                 onClick={() => {
@@ -501,14 +562,29 @@ export function PracticeWorkspace(props: Props) {
         </p>
       )}
       {compact && entering && !panel && (
-        <FocusDialog title="Your answer" close={() => setEntering(false)}>
+        <FocusDialog
+          className={choice ? "choice-entry-dialog" : ""}
+          title="Your answer"
+          close={() => setEntering(false)}
+        >
           <p className="answer-prompt-summary">{problem.prompt}</p>
+          {choice && problem.figure && (
+            <div className="choice-model">
+              <ChoiceFigure figure={problem.figure} />
+            </div>
+          )}
           <div className="answer-dock compact-entry">{answerControls()}</div>
         </FocusDialog>
       )}
       {panel && (
         <FocusDialog
-          returnFocus={panel === "lesson" ? lessonTrigger.current : undefined}
+          returnFocus={
+            panel === "lesson"
+              ? lessonTrigger.current
+              : panel === "explanation"
+                ? continueButton.current
+                : undefined
+          }
           title={
             panel === "hint"
               ? "A little help"
@@ -537,10 +613,11 @@ export function PracticeWorkspace(props: Props) {
             <div className="solution-panel">
               <p className="solution-prompt">{problem.prompt}</p>
               <p>
-                Your answer: <strong>{outcome.response}</strong>
+                Your answer:{" "}
+                <strong>{displayResponse(outcome.response)}</strong>
               </p>
               <p className="solution-answer">
-                Answer: <strong>{outcome.answer}</strong>
+                Answer: <strong>{displayResponse(outcome.answer)}</strong>
               </p>
               <ol>
                 {outcome.explanation.map((step, index) => (

@@ -9,6 +9,7 @@ from fractions import Fraction
 from elementary_math_oracle import ELEMENTARY, solve_elementary
 from equal_groups_math_oracle import EQUAL_GROUPS, solve_equal_groups
 from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
+from choice_math_oracle import CHOICE, solve_choice
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -23,7 +24,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | EQUAL_GROUPS
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS
 
 
 def require(condition, message):
@@ -35,6 +36,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in CHOICE:
+        return solve_choice(public)
     if template in EQUAL_GROUPS:
         return solve_equal_groups(public)
     if template in FRACTION_PRACTICE:
@@ -244,9 +247,15 @@ def review(stream):
         identity = (template, seed)
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
-        expected = Fraction(solve(public))
+        solved = solve(public)
         # Generated answer is used only as the value under test, never as an oracle input.
-        actual = Fraction(problem['answer'])
+        if template in CHOICE:
+            expected = solved
+            actual = problem['answer']
+            require(isinstance(actual, str), 'Choice answer must be an option ID')
+        else:
+            expected = Fraction(solved)
+            actual = Fraction(problem['answer'])
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')

@@ -386,6 +386,7 @@ function App() {
     }>(`/learners/${learner.id}/batches`, {
       ...(family ? { templateId: family } : {}),
       count: family ? 1 : 3,
+      responseCapabilities: ["single-choice-v1"],
     });
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
