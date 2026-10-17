@@ -626,3 +626,45 @@
     padding: 3px 8px;
   }
 }
+
+.early-number-figure .early-number-art {
+  min-width: 0;
+  width: 100%;
+  max-width: 360px;
+  margin: auto;
+}
+.early-number-art svg {
+  width: 100%;
+  display: block;
+}
+.early-number-figure .early-unit,
+.early-number-figure .early-emphasis,
+.early-number-figure .early-panel-label {
+  font-size: 14px;
+  line-height: 1.3;
+  margin: 3px 0;
+}
+.early-panel-label {
+  font-weight: 650;
+}
+.early-collection-panels {
+  display: grid;
+  gap: 6px;
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .early-number-figure {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+  }
+  .early-number-figure .early-number-art {
+    max-width: none;
+  }
+  .early-number-art > svg {
+    max-height: 180px;
+  }
+  .early-collection-panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

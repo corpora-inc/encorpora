@@ -1,3 +1,7 @@
+import {
+  isEarlyNumberModel,
+  validateEarlyNumberModel,
+} from "./early-number-models.js";
 import { validateAlgebraModel } from "./algebra-models.js";
 import { labelLanes } from "./label-layout.js";
 import type { Diagram, MathBook, Rational } from "./schema.js";
@@ -37,6 +41,11 @@ function integer(value: number, min: number, max: number) {
 export function validateDiagram(d: Diagram): void {
   if (!d.id || !d.alt?.trim() || !d.caption?.trim())
     throw new Error("Diagram requires id, alternative text and caption");
+  if (isEarlyNumberModel(d)) {
+    validateEarlyNumberModel(d);
+    return;
+  }
+
   switch (d.kind) {
     case "balance":
     case "coordinate-plot":
