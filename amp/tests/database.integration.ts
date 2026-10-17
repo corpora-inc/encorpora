@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
-import { migrate } from "../scripts/migrate";
+import { migrate } from "../scripts/test-database";
 import { PostgresRepository } from "../src/server/repository";
 import { buildApp } from "../src/server/app";
 import { generateProblem } from "../src/math/engine";

@@ -1,3 +1,4 @@
+import "../scripts/test-database-preflight.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";

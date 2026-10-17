@@ -6,7 +6,7 @@ import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { developmentAuth } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { migrate } from "./migrate.js";
+import { migrate } from "./test-database.js";
 import { generateProblem } from "../src/math/engine.js";
 import { seedProgress } from "../tests/progress.fixture.js";
 const url = process.env.AMP_TEST_DATABASE_URL;

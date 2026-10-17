@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import Fastify from "fastify";
-import { migrate } from "../scripts/migrate.js";
+import { migrate } from "../scripts/test-database.js";
 import { FundingPurchaseRepository } from "../src/funding-purchase/repository.js";
 import { registerFundingPurchaseRoutes } from "../src/funding-purchase/routes.js";
 import {

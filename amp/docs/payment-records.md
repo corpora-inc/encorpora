@@ -43,9 +43,7 @@ Run `npm test`, `npm run tsc`, `npm run build`, the dedicated-database suite wit
 
 Stripe’s primary references describe [payment receipts](https://docs.stripe.com/receipts), [refund status and failures](https://docs.stripe.com/refunds), and [invoice amount fields](https://docs.stripe.com/api/invoices/object). These integration references do not establish government-program eligibility.
 
-Database integration checks require a dedicated fixture database, such as
-`amp_paid_evidence_1031`, through `AMP_TEST_DATABASE_URL`. The `test:db` runner
-rejects the shared `/amp` preview before starting tests. This guard is specific
-to the test runner; `db:migrate` retains its deployment behavior. Directly running
-an individual integration file bypasses the runner guard and must use the same
-dedicated fixture target.
+Database integration checks require a dedicated fixture database through
+`AMP_TEST_DATABASE_URL`. The runner and direct integration/browser entrypoints
+reject the shared `/amp` preview before setup. Production `db:migrate` retains
+its deployment behavior. See [test database safety](test-databases.md).

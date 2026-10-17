@@ -7,7 +7,7 @@ import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { developmentAuth } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { migrate } from "./migrate.js";
+import { migrate } from "./test-database.js";
 import { generateProblem } from "../src/math/engine.js";
 import { choiceTemplates } from "../src/math/choice.js";
 import type { PublicProblem } from "../src/math/contracts.js";

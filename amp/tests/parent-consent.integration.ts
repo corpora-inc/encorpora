@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { randomUUID, randomBytes } from "node:crypto";
 import { Pool } from "pg";
 import Fastify from "fastify";
-import { migrate } from "../scripts/migrate.js";
+import { migrate } from "../scripts/test-database.js";
 import { ConsentRepository } from "../src/parent-consent/repository.js";
 import { ConsentSecrets, noticeDigest } from "../src/parent-consent/crypto.js";
 import { installConsentPolicy } from "../src/parent-consent/policy.js";

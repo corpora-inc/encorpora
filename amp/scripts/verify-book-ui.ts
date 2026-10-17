@@ -6,7 +6,7 @@ import assert from "node:assert/strict";
 import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { developmentAuth } from "../src/server/auth.js";
-import { migrate } from "./migrate.js";
+import { migrate } from "./test-database.js";
 import { books, bookFor } from "../src/books/catalog.js";
 import { readingFrames } from "../src/books/reading.js";
 const args = process.argv.slice(2);

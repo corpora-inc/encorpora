@@ -13,7 +13,7 @@ import { buildApp } from "../src/server/app.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { verifyAccessToken } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { migrate } from "./migrate.js";
+import { migrate } from "./test-database.js";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database)

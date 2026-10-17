@@ -1,3 +1,4 @@
+import "../scripts/test-database-preflight.js";
 import { StripeBilling } from "../src/billing/stripe/service.js";
 import { StripeRepository } from "../src/billing/stripe/repository.js";
 import { registerPaymentEvidenceRoutes } from "../src/billing/evidence/routes.js";
