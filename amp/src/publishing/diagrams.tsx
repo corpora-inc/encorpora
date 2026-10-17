@@ -1,3 +1,5 @@
+import { EarlyNumberDiagramFigure } from "./EarlyNumberDiagramFigure.js";
+import { isEarlyNumberModel } from "./early-number-models.js";
 import { AlgebraDiagramFigure } from "./AlgebraDiagramFigure.js";
 import React from "react";
 import { labelLanes } from "./label-layout.js";
@@ -79,6 +81,7 @@ function ModelCell({
 }
 export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
   validateDiagram(d);
+  if (isEarlyNumberModel(d)) return <EarlyNumberDiagramFigure diagram={d} />;
   if (
     d.kind === "balance" ||
     d.kind === "coordinate-plot" ||
