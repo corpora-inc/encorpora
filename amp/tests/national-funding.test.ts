@@ -87,3 +87,31 @@ test("federal advance elections are a dated future lead, not purchasing approval
   assert.ok(!federal.advanceElectionStates.includes("CA"));
   assert.ok(federal.electionListAsOf <= federal.checkedOn);
 });
+
+test("new base leads require explicit researched classification", async () => {
+  const { expandFundingRegistry } =
+    await import("../src/funding/expand-registry.js");
+  const { fundingRegistry } = await import("../src/funding/registry.js");
+  const existing = fundingRegistry.programs[0]!;
+  assert.throws(
+    () =>
+      expandFundingRegistry({
+        ...fundingRegistry,
+        programs: [{ ...existing, id: "unreviewed-new-lead" }],
+      }),
+    /Explicit funding classification required: unreviewed-new-lead/,
+  );
+});
+
+test("source publisher roles are declared in each research record", () => {
+  for (const record of nationalProgramReviews) {
+    for (const source of [...record.evidence, record.onboarding]) {
+      assert.ok(
+        ["program-authority", "program-administrator"].includes(
+          source.publisher,
+        ),
+        record.id,
+      );
+    }
+  }
+});

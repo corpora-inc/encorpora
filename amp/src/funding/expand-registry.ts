@@ -14,46 +14,106 @@ export function expandFundingRegistry(
   base: BaseFundingRegistry,
 ): FundingRegistry {
   const sources: FundingSource[] = [...base.sources];
-  const programs = new Map<string, FundingProgram>(
-    base.programs.map((program) => [
-      program.id,
-      {
-        ...program,
-        purchaseModel: "parent-curriculum",
-        operatingStatus: "operating",
-        onboarding: {
-          statement: program.nextAction,
-          sourceIds: program.facts[0]!.sourceIds,
-        },
+  const baseClassifications: Record<
+    string,
+    {
+      purchaseModel: FundingProgram["purchaseModel"];
+      operatingStatus: FundingProgram["operatingStatus"];
+      onboardingSource: string;
+    }
+  > = {
+    "az-esa": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "az",
+    },
+    "fl-pep": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "fl-vendor",
+    },
+    "fl-fes-ua": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "fl-vendor",
+    },
+    "tx-tefa": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "tx",
+    },
+    "tx-pdses": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "pdses",
+    },
+    "al-choose": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "al",
+    },
+    "nc-esa-plus": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "nc",
+    },
+    "wv-hope": {
+      purchaseModel: "parent-curriculum",
+      operatingStatus: "operating",
+      onboardingSource: "wv",
+    },
+  };
+  const programs = new Map<string, FundingProgram>();
+  for (const program of base.programs) {
+    if (nationalProgramReviews.some((review) => review.id === program.id))
+      continue;
+    const classification = baseClassifications[program.id];
+    if (!classification)
+      throw new Error(
+        `Explicit funding classification required: ${program.id}`,
+      );
+    programs.set(program.id, {
+      ...program,
+      purchaseModel: classification.purchaseModel,
+      operatingStatus: classification.operatingStatus,
+      onboarding: {
+        statement: program.nextAction,
+        sourceIds: [classification.onboardingSource],
       },
-    ]),
-  );
+    });
+  }
   for (const review of nationalProgramReviews) {
-    const previous = programs.get(review.id);
-    const addSource = (url: string, suffix: string): string => {
+    const previous = base.programs.find((program) => program.id === review.id);
+    const addSource = (
+      url: string,
+      suffix: string,
+      publisher: FundingSource["publisher"],
+    ): string => {
       const id = `national-${review.id}-${suffix}`;
-      const administrator =
-        /scholarshipfund\.org|cfe-fund\.org|aceohio\.org|withodyssey\.com/.test(
-          new URL(url).hostname,
-        );
       sources.push({
         id,
         title: `${review.name}: ${suffix}`,
         url,
         checkedOn: nationalReviewCheckedOn,
-        publisher: administrator
-          ? "program-administrator"
-          : "program-authority",
+        publisher,
       });
       return id;
     };
     const facts = review.evidence.map((source, index) => ({
       statement: source.statement,
-      sourceIds: [addSource(source.url, `evidence-${index + 1}`)],
+      sourceIds: [
+        addSource(source.url, `evidence-${index + 1}`, source.publisher),
+      ],
     }));
     const onboarding = {
       statement: review.onboarding.requirements,
-      sourceIds: [addSource(review.onboarding.url, "onboarding")],
+      sourceIds: [
+        addSource(
+          review.onboarding.url,
+          "onboarding",
+          review.onboarding.publisher,
+        ),
+      ],
     };
     const routes: Record<string, FundingProgram["purchasingRoutes"]> = {
       "ia-students-first": ["marketplace"],

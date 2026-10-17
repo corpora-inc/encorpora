@@ -19,8 +19,16 @@ export interface NationalProgramReview {
   operatingStatus: OperatingStatus;
   platform:
     "ClassWallet" | "Step Up / MyScholarShop" | "Odyssey" | "unverified";
-  evidence: readonly { url: string; statement: string }[];
-  onboarding: { url: string; requirements: string };
+  evidence: readonly {
+    url: string;
+    statement: string;
+    publisher: "program-authority" | "program-administrator";
+  }[];
+  onboarding: {
+    url: string;
+    requirements: string;
+    publisher: "program-authority" | "program-administrator";
+  };
   unknowns: readonly string[];
 }
 export const nationalReviewCheckedOn = "2026-10-17";
@@ -37,12 +45,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://educate.iowa.gov/pk-12/educational-choice/education-savings-accounts",
         statement:
           "Participants attend accredited Iowa nonpublic schools. Each semester tuition and fees are paid before remaining funds become available for approved marketplace expenses. Awards are student-specific.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://educate.iowa.gov/pk-12/educational-choice/education-savings-accounts",
       requirements:
         "Apply through the vendor registration linked by Iowa DOE; vendor and offerings must be approved. Confirm current settlement terms because the linked vendor FAQ dates to 2023.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -60,12 +70,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://mygeorgiapromise.org/",
         statement:
           "The program accepts service provider and vendor applications year-round; approved expense categories include curricula and supplemental materials.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://mygeorgiapromise.org/",
       requirements:
         "Use the official provider/vendor application and obtain offering approval; confirm educational-product documentation in the current provider handbook.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -83,12 +95,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://doe.louisiana.gov/topic-pages/louisiana-school-choice/la-gator/la-gator-policy",
         statement:
           "LA GATOR provides K–12 education savings accounts; provider applications require LDOE consideration. Participation excludes concurrent BESE-approved home study or registered nonpublic home study not seeking approval.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://doe.louisiana.gov/topic-pages/louisiana-school-choice/la-gator/la-gator-service-providers",
       requirements:
         "Use LDOE service-provider instructions and Odyssey setup. Confirm curriculum category, catalog price limits and provider documentation.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -106,12 +120,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://treasurer.mo.gov/moscholars/Providers",
         statement:
           "The Treasurer links Odyssey vendor applications. Educational-products vendors supply business registration or articles of incorporation.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://treasurer.mo.gov/moscholars/Providers",
       requirements:
         "Operate as a US entity; offer eligible products; comply with related-party restrictions; do not share, refund or rebate scholarship funds to a parent/student.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -129,12 +145,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://edu.wyoming.gov/parents/education-savings-accounts/",
         statement:
           "The authority reports distribution authorized after the Supreme Court lifted an injunction. Curriculum is eligible; K–12 core curriculum is among specified reimbursement categories. Broader litigation continues.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://wyoming-vendors.withodyssey.com",
       requirements:
         "Use the linked education service provider application and handbook. Verify product approval and that a requested reimbursement fits the specifically permitted category.",
+      publisher: "program-administrator",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -152,12 +170,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://schools.utah.gov/utahfitsallscholarship",
         statement:
           "USBE identifies Odyssey as program manager effective May 16, 2025.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://support.withodyssey.com/hc/en-us/articles/37494425843611-Who-can-be-a-Utah-Fits-All-Scholarship-provider",
       requirements:
         "Provide EIN, address, contacts and offering descriptions; provider and each offering are reviewed separately. Direct delivery is required; ownership changes require reapplication.",
+      publisher: "program-administrator",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -175,12 +195,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://dese.ade.arkansas.gov/Offices/office-of-school-choice-and-parent-empowerment/education-freedom-accounts/information-for-service-providers",
         statement:
           "The authority accepts new service-provider/vendor applications for persons or entities supplying qualifying goods and services.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://learns.ade.arkansas.gov/",
       requirements:
         "Apply through the linked EFA vendor/service-provider process. Product vendors must establish eligible goods; tutoring credentials are a separate service category.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -198,12 +220,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.in.gov/doe/eoq/esa",
         statement:
           "IDOE administers the disability-and-sibling ESA in 2026–27. Subscriptions qualify when sold by approved vendors in ClassWallet Marketplace.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.in.gov/doe/eoq/esa",
       requirements:
         "Apply through Access Indiana and ClassWallet; approval is communicated by email. The authority identifies quarterly invoice processing through ClassWallet.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -221,12 +245,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://nh.scholarshipfund.org/apply/nh-education-freedom-accounts/",
         statement:
           "The administrator describes approved tuition, online learning, tutoring and educational-material purchases through EFA funds.",
+        publisher: "program-administrator",
       },
     ],
     onboarding: {
       url: "https://nh.scholarshipfund.org/contact/",
       requirements:
         "Apply through CSF education-provider registration. Verify the product-vendor path and ClassWallet setup separately from credentials for direct instructional services.",
+      publisher: "program-administrator",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -244,12 +270,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://opi.mt.gov/Families-Students/Parent-Resources/Education-Savings-Account",
         statement:
           "OPI describes reimbursement for eligible children with disabilities and a litigation stay through the end of a school year; its linked announcement is December 18, 2025.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://opi.mt.gov/Families-Students/Parent-Resources/Education-Savings-Account",
       requirements:
         "Prepare itemized proof of purchase for parent reimbursement under the OPI handbook; verify current operation before accepting any funded order.",
+      publisher: "program-authority",
     },
     unknowns: [
       "The reviewed authority notice does not establish litigation or operating status for the 2026–27 year; obtain current written confirmation. Confirm digital curriculum eligibility.",
@@ -267,12 +295,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.mdek12.org/specialeducation/esa/",
         statement:
           "MDE publishes 2026–27 application, school-assurance and reimbursement forms for eligible students with special needs who leave public school.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.mdek12.org/specialeducation/esa/",
       requirements:
         "Use the current MDE allowable-expenses list and reimbursement documentation. A school-assurance application is not a general product-vendor approval.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm online math curriculum within the current allowable list and whether a vendor approval is needed for product reimbursement; do not infer it from private-school eligibility.",
@@ -290,12 +320,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://ed.sc.gov/newsroom/estf-faq/",
         statement:
           "SCDE describes direct account purchases/payments; enrollment in Option 1–3 homeschool associations is not eligible for ESTF.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.ed.sc.gov/newsroom/strategic-engagement/education-scholarship-trust-fund-program/",
       requirements:
         "Apply as an education service provider through SCDE. Verify the curriculum supplier category and listing after approval.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -313,12 +345,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.tn.gov/education/iea/iea-parents-students.html.html",
         statement:
           "Approved expenses include homeschool curricula and approved online programs for eligible students with disabilities.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.tn.gov/education/iea/iea-parents-students.html.html",
       requirements:
         "Use the current IEA account-holder handbook for eligible curriculum and documentation; service-provider credentials must not be substituted for product rules.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -336,12 +370,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.tn.gov/education/efs/efs-faqs.html",
         statement:
           "Students enroll in registered Tennessee nonpublic schools. Tuition and fees take priority; remaining scholarship funds may pay specified approved educational expenses.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.tn.gov/education/efs/efs-faqs.html",
       requirements:
         "Verify the digital curriculum category with current EFS rules. School registration alone is not a standalone subscription-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm whether standalone adaptive software qualifies; residual-funds categories and bundled-software rules must be checked before listing.",
@@ -359,12 +395,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.tn.gov/education/esa/parents-and-students.html",
         statement:
           "Tennessee maintains a separate ESA program from IEA and EFS with its own parent and student requirements.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.tn.gov/education/esa/parents-and-students.html",
       requirements:
         "Review the ESA-specific provider application and purchasing handbook; do not reuse an EFS or IEA approval.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Verify current county/student eligibility, residual expense categories, annual subscription terms and vendor payment route.",
@@ -382,12 +420,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://scholarship.cfe-fund.org/2026/07/20/scholarship-fund-use-guide/",
         statement:
           "The administrator distinguishes approved curriculum providers from subscription product providers, which may be subject to a 20% product cap.",
+        publisher: "program-administrator",
       },
     ],
     onboarding: {
       url: "https://serviceprovider.cfe-fund.org/",
       requirements:
         "Apply through Children First Education Fund as the appropriate product provider. Obtain written classification of the curriculum plus digital subscription bundle.",
+      publisher: "program-administrator",
     },
     unknowns: [
       "Resolve curriculum-versus-subscription classification and associated spending cap; confirm current annual term and payment process.",
@@ -405,12 +445,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.fldoe.org/schools/school-choice/k-12-scholarship-programs/reading/",
         statement:
           "No further accounts are awarded effective July 1, 2025; existing balances can purchase literacy and mathematics goods and services.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.fldoe.org/schools/school-choice/k-12-scholarship-programs/reading/",
       requirements:
         "Confirm Step Up product eligibility for existing-balance purchases only; do not advertise new scholarship enrollment.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the released annual student SKU, eligible term, refund rules and current purchasing approval before offering funded checkout.",
@@ -428,12 +470,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://tax.idaho.gov/taxes/income-tax/individual-income/popular-credits-and-deductions/parental-choice-tax-credit-and-advance-payment/",
         statement:
           "For 2026 onward qualifying nonpublic curriculum can come from multiple developers but must collectively cover four core subjects. The Tax Commission cannot prequalify expenses.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://tax.idaho.gov/taxes/income-tax/individual-income/popular-credits-and-deductions/parental-choice-tax-credit-and-advance-payment/",
       requirements:
         "Issue paid invoices identifying provider, item, amount and payment date. Families apply for an award; this is not vendor marketplace onboarding.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Determine how this math-only SKU fits a family’s qualifying four-subject curriculum; no automatic credit or advance-payment eligibility claim.",
@@ -451,12 +495,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://oklahoma.gov/tax/helpcenter/income-tax.html",
         statement:
           "Oklahoma describes a refundable homeschool credit based on qualified annual expenses, capped at $1,000 per eligible student.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://oklahoma.gov/tax/helpcenter/income-tax.html",
       requirements:
         "Provide itemized paid curriculum receipts; parents claim the credit under current tax instructions, rather than purchasing with a vendor wallet.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm subscription classification and tax-year documentation; do not apply private-school EVN procedures to homeschool purchases.",
@@ -474,12 +520,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://tax.ohio.gov/individual/file-now/ohio-tax-credits-and-their-required-documentation",
         statement:
           "Qualifying home-education expenses include subscriptions, software and applications. The cap is $250 per qualifying student from tax year 2025.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://tax.ohio.gov/individual/file-now/ohio-tax-credits-and-their-required-documentation",
       requirements:
         "Provide paid itemized receipts. The parent claims the tax credit; Corpora does not receive approval or settlement from a scholarship marketplace.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm the learner qualifies for parent-directed home education and retain current tax-year documentation; do not promise tax savings.",
@@ -497,12 +545,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.revenue.state.mn.us/qualifying-expenses",
         statement:
           "Educational software used at home can qualify subject to computer/software limits; records of actual paid expenses are required.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.revenue.state.mn.us/qualifying-expenses",
       requirements:
         "Supply itemized paid invoices with educational product description; families assess credit/subtraction eligibility under current tax guidance.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm SaaS subscription treatment, applicable family limits and the separate credit/subtraction eligibility rules.",
@@ -520,12 +570,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://revenue.louisiana.gov/individuals/general-resources/school-expense-deduction/",
         statement:
           "Louisiana allows deductions for specified school and homeschool expenses, including necessary textbooks and curricula; deductions are not credits.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://revenue.louisiana.gov/individuals/general-resources/school-expense-deduction/",
       requirements:
         "Supply itemized paid curriculum receipts. Families retain evidence and claim the deduction on applicable Louisiana returns.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm subscription treatment and relevant homeschool or school-required category; do not treat deduction amounts as funds available to spend.",
@@ -543,12 +595,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://tax.illinois.gov/research/publications/pubs/education-expense-credit-general-rules.html",
         statement:
           "Illinois publishes rules for qualifying K–12 education expenses and documentation.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://tax.illinois.gov/research/publications/pubs/education-expense-credit-general-rules.html",
       requirements:
         "Use current Publication 112 and homeschool-specific instructions before describing any purchase as qualifying.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Establish whether digital subscriptions or downloadable workbooks meet the qualifying book/lab-fee rules; do not assume software qualifies.",
@@ -566,12 +620,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://k12.ncseaa.edu/opportunity-scholarship/faq/",
         statement:
           "Funds can only pay tuition and fees at registered private schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://k12.ncseaa.edu/opportunity-scholarship/faq/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -589,12 +645,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://azdor.gov/reports-statistics-and-legal-research/report-school-tuition-organization-income-tax-credits",
         statement:
           "Arizona identifies four tax credits supporting STO scholarships for attendance at Arizona private schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://azdor.gov/reports-statistics-and-legal-research/report-school-tuition-organization-income-tax-credits",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -612,12 +670,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.revenue.alabama.gov/individual-corporate/alabama-accountability-act/",
         statement:
           "Scholarship granting organizations support eligible low-income students attending public or private schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.revenue.alabama.gov/individual-corporate/alabama-accountability-act/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -635,12 +695,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://apps.gadoe.org/sboe/SBOE%20Rules/160-5-1-.34.pdf",
         statement:
           "Participating private schools require a completed application and State Board authorization under program rules.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://apps.gadoe.org/sboe/SBOE%20Rules/160-5-1-.34.pdf",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -658,12 +720,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://dor.georgia.gov/qualified-education-expense-tax-credit",
         statement:
           "Georgia publishes a separate qualified education expense donation tax-credit program; it must not be confused with Georgia Promise.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://dor.georgia.gov/qualified-education-expense-tax-credit",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -681,12 +745,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://educate.iowa.gov/pk-12/educational-choice/school-tuition-organizations",
         statement:
           "Iowa STOs fund tuition grants; this is separate from Students First ESA marketplace purchases.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://educate.iowa.gov/pk-12/educational-choice/school-tuition-organizations",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -704,12 +770,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.ksrevenue.gov/prtaxcredits-lowincomestudents.html",
         statement:
           "Eligible scholarships pay all or part of tuition at qualified Kansas schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.ksrevenue.gov/prtaxcredits-lowincomestudents.html",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -727,12 +795,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://marylandpublicschools.org/pages/boost/index.aspx",
         statement:
           "The program serves participating registered nonpublic schools; awards may be reduced to tuition owed.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://marylandpublicschools.org/pages/boost/index.aspx",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -750,12 +820,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://doe.nv.gov/offices/office-of-student-and-school-supports/private-schools/nevada-educational-choice-scholarship-program-opportunity-scholarship",
         statement:
           "Income-eligible private-school students apply through SGOs for tuition, fees and transportation associated with attendance.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://doe.nv.gov/offices/office-of-student-and-school-supports/private-schools/nevada-educational-choice-scholarship-program-opportunity-scholarship",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -773,12 +845,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://revenue.mt.gov/taxes/tax-credits/student-scholarship-org-credit",
         statement:
           "Approved SSOs receive donations to support instruction at qualified education providers.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://revenue.mt.gov/taxes/tax-credits/student-scholarship-org-credit",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -796,12 +870,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.pa.gov/agencies/revenue/business-tax-credits-and-economic-development-programs/business-tax-credits-and-incentives/educational-tax-credits",
         statement:
           "EITC supports scholarship and educational-improvement organizations through business contribution tax credits.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.pa.gov/agencies/revenue/business-tax-credits-and-economic-development-programs/business-tax-credits-and-incentives/educational-tax-credits",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -819,12 +895,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.pa.gov/agencies/education/programs-and-services/schools/school-services/opportunity-scholarship-tax-credit-program",
         statement:
           "Eligible students apply through approved organizations to attend participating public or nonpublic schools; school participation information is updated annually.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.pa.gov/agencies/education/programs-and-services/schools/school-services/opportunity-scholarship-tax-credit-program",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -842,12 +920,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://tax.ri.gov/tax-sections/credits/scholarship-credit",
         statement:
           "Rhode Island publishes the scholarship-organization contribution credit and organization reporting process.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://tax.ri.gov/tax-sections/credits/scholarship-credit",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -865,12 +945,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://dlr.sd.gov/insurance/tax_credit_program/sgo_information.aspx",
         statement:
           "South Dakota administers a scholarship granting organization tax-credit program under Chapter 13-65.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://dlr.sd.gov/insurance/tax_credit_program/sgo_information.aspx",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -888,12 +970,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.doe.virginia.gov/data-policy-funding/school-finance/education-improvement-scholarships-tax-credits-program",
         statement:
           "Approved foundations pay eligible schools directly for qualifying students.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.doe.virginia.gov/data-policy-funding/school-finance/education-improvement-scholarships-tax-credits-program",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -911,12 +995,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://sms.dpi.wi.gov/choiceparent/",
         statement:
           "Wisconsin offers applications for participating private-school choice programs, with distinct program school lists.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://sms.dpi.wi.gov/choiceparent/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -934,12 +1020,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://dpi.wi.gov/sites/default/files/imce/parental-education-options/SNSP/snsp_faq_rev._june_2022_parent.pdf",
         statement:
           "DPI parent guidance describes eligible students attending participating private schools; the reviewed FAQ is dated June 2022.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://dpi.wi.gov/sites/default/files/imce/parental-education-options/SNSP/snsp_faq_rev._june_2022_parent.pdf",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -957,12 +1045,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.ed.gov/grants-and-programs/grants-special-populations/grants-economically-disadvantaged-students/dc-school-choice-scholarships-opportunity-and-results-act",
         statement:
           "The federally funded DC program enables eligible students to attend participating private schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.ed.gov/grants-and-programs/grants-special-populations/grants-economically-disadvantaged-students/dc-school-choice-scholarships-opportunity-and-results-act",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -980,12 +1070,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.maine.gov/doe/funding/reports/tuition/faqs",
         statement:
           "Sending local school units pay tuition to approved schools when they do not operate the relevant grades; this is not a state parent voucher.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.maine.gov/doe/funding/reports/tuition/faqs",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1003,12 +1095,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://education.vermont.gov/accountability-data/financial-reports/tuition-rates",
         statement:
           "Eligible districts pay public-school tuition or tuition up to specified limits to approved independent schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://education.vermont.gov/accountability-data/financial-reports/tuition-rates",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1026,12 +1120,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.oklahoma.gov/education/services/school-choice/lnh-scholarship.html",
         statement:
           "Eligible students with special needs use scholarships toward tuition and eligible expenses at participating private schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.oklahoma.gov/education/services/school-choice/lnh-scholarship.html",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1049,12 +1145,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://oklahoma.gov/tax/individuals/parental-choice-tax-credit.html",
         statement:
           "Participating private schools register with the Tax Commission and supply student enrollment verification numbers for family applications.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://oklahoma.gov/tax/individuals/parental-choice-tax-credit.html",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1072,12 +1170,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://oklahoma.gov/education/services/school-choice.html",
         statement:
           "The authority identifies tuition scholarships through the Equal Opportunity scholarship program.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://oklahoma.gov/education/services/school-choice.html",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1095,12 +1195,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://doe.louisiana.gov/topic-pages/louisiana-school-choice/tuition-donation-credit-program",
         statement:
           "Families apply for scholarships through participating school tuition organizations.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://doe.louisiana.gov/topic-pages/louisiana-school-choice/tuition-donation-credit-program",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1118,12 +1220,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.in.gov/doe/students/indiana-choice-scholarship-program/school-scholarships/",
         statement:
           "IDOE provides school scholarship information separately from the Education Scholarship Account program.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.in.gov/doe/students/indiana-choice-scholarship-program/school-scholarships/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1141,12 +1245,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://educ.state.ak.us/alaskan_schools/corres",
         statement:
           "Alaska DEED lists statewide correspondence schools and guidance on correspondence allotments.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://educ.state.ak.us/alaskan_schools/corres",
       requirements:
         "Approach individual public correspondence programs using their vendor and learning-plan approval procedures; verify current law and local purchasing policy.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1164,12 +1270,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.cde.ca.gov/sp/eo/is/faq.asp",
         statement:
           "Independent study operates through LEAs and their curriculum policies; public funds cannot provide benefits solely to independent-study families contrary to statutory parity rules.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.cde.ca.gov/sp/eo/is/faq.asp",
       requirements:
         "Qualify with the individual district or charter purchaser. No statewide homeschool parent wallet or automatic vendor approval is established.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1187,12 +1295,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://ed.cde.state.co.us/standardsandinstruction/support/curriculum-adoption-and-implementation",
         statement:
           "CDE guidance directs schools to work with district procurement teams to purchase selected curriculum.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://ed.cde.state.co.us/standardsandinstruction/support/curriculum-adoption-and-implementation",
       requirements:
         "Prepare standards alignment and accessible samples for local curriculum review; follow the purchaser’s contracting procedure.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1209,12 +1319,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
       {
         url: "https://portal.ct.gov/sde/academic-office/federal-programs/title-i",
         statement: "Connecticut awards Title I subgrants to LEAs.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://portal.ct.gov/sde/academic-office/federal-programs/title-i",
       requirements:
         "Sell through an LEA procurement aligned to its approved program and allowable costs; Title I is not a family voucher.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1232,12 +1344,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://mymarketplace.delaware.gov/vendors/procurement-education.shtml",
         statement:
           "Delaware publishes vendor procurement methods and contract requirements.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://mymarketplace.delaware.gov/vendors/procurement-education.shtml",
       requirements:
         "Use the vendor learning center and relevant bid notices. Contract holders may have reporting obligations; registration alone is not a contract.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1255,12 +1369,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://hawaiipublicschools.org/useful-links/vendors-working-with-hidoe/",
         statement:
           "Schools and offices make purchasing decisions subject to procurement laws and department rules.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://hawaiipublicschools.org/useful-links/vendors-working-with-hidoe/",
       requirements:
         "Follow HIDOE vendor instructions and applicable HANDS/HIePRO notices; confirm current solicitation thresholds.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1278,12 +1394,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.education.ky.gov/districts/business/Pages/default.aspx",
         statement:
           "KDE publishes bid/proposal opportunities and directs new vendors to Vendor Self Service.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.education.ky.gov/districts/business/Pages/default.aspx",
       requirements:
         "Register through Commonwealth eProcurement and follow district instructional-resource review requirements.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1300,12 +1418,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
       {
         url: "https://www.mass.gov/how-to/find-grant-and-contract-opportunities-on-commbuys-procurement-system",
         statement: "COMMBUYS provides state grant and contract opportunities.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.mass.gov/how-to/find-grant-and-contract-opportunities-on-commbuys-procurement-system",
       requirements:
         "Register/search applicable solicitations and school purchasing channels; a portal account does not establish an education contract.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1323,12 +1443,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.michigan.gov/mde/services/financial-management/grants/section-35p",
         statement:
           "MDE identifies Section 35p tutoring grants and requires district support letters for applicant partnerships.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.michigan.gov/mde/services/financial-management/grants/section-35p",
       requirements:
         "Assess provider eligibility and evidence requirements against the current grant; a standalone app must not be presented as staffed tutoring.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1346,12 +1468,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.nj.gov/education/nonpublic/state/tech/guidelines.shtml",
         statement:
           "Public district boards provide technology to qualifying nonpublic schools within appropriated funding.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.nj.gov/education/nonpublic/state/tech/guidelines.shtml",
       requirements:
         "Work through district and nonpublic-school consultation and procurement; verify subscription eligibility under current program rules.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1369,12 +1493,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://web.ped.nm.gov/bureaus/instructional-materials/publishers/",
         statement:
           "NMPED publishes publisher requests for applications, adoption forms and submission guidance.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://web.ped.nm.gov/bureaus/instructional-materials/publishers/",
       requirements:
         "Follow the applicable subject/grade adoption RFA or establish the separate supplemental-material procurement route.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1392,12 +1518,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.nysed.gov/nonpublic-schools/handbook-services-pupils-attending-nonpublic-schools",
         statement:
           "Districts purchase and loan software for public and nonpublic pupils; software leases are paid annually rather than prepaid as a multiyear lump sum.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.nysed.gov/nonpublic-schools/handbook-services-pupils-attending-nonpublic-schools",
       requirements:
         "Qualify the SKU with the school/district materials administrator and contract purchaser; students do not receive a cash wallet.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1415,12 +1543,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.cde.nd.gov/information/resources/how-enroll-resources",
         statement:
           "From August 2026 families requesting district payment for NDCDE courses use a prescribed or district-equivalent enrollment form.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.cde.nd.gov/information/resources/how-enroll-resources",
       requirements:
         "Treat this as a district course channel, not permission to bill a generic app; investigate course/provider approval separately.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1438,12 +1568,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.oregon.gov/ode/educator-resources/teachingcontent/instructional-materials/pages/adopted-instructional-materials.aspx",
         statement:
           "ODE publishes adopted instructional materials and related district guidance.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.oregon.gov/ode/educator-resources/teachingcontent/instructional-materials/pages/adopted-instructional-materials.aspx",
       requirements:
         "Follow current publisher adoption requirements or district independent/supplemental material purchasing procedures.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1461,12 +1593,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://ospi.k12.wa.us/student-success/learning-alternatives",
         statement:
           "OSPI describes ALE and online learning as public K–12 educational options.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://ospi.k12.wa.us/student-success/learning-alternatives",
       requirements:
         "Work through the district’s learning plan, materials and vendor review; online-course provider approval is a separate process from supplemental software.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Identify a budget owner and applicable solicitation; verify digital license, accessibility, student-data and purchasing terms. This does not establish parent reimbursement eligibility.",
@@ -1484,12 +1618,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://revenue.nebraska.gov/tax-credits/opportunity-scholarship-act",
         statement:
           "The Act was repealed effective October 31, 2024; DOR no longer accepts its SGO certification or tax-credit reservation applications.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://revenue.nebraska.gov/tax-credits/opportunity-scholarship-act",
       requirements:
         "Do not apply under this repealed program. Review the separate federal 2027 scholarship channel.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Do not confuse legacy scholarships or the repealed LB1402 state program with new federal participation.",
@@ -1507,12 +1643,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.aceohio.org/",
         statement:
           "The program administrator states the ACE program closed October 15, 2025.",
+        publisher: "program-administrator",
       },
     ],
     onboarding: {
       url: "https://www.aceohio.org/",
       requirements:
         "Do not build a new ACE payment integration or advertise available awards.",
+      publisher: "program-administrator",
     },
     unknowns: [
       "Legacy reimbursements or disputes are not evidence of an operating purchasing program.",
@@ -1530,12 +1668,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.in.gov/doe/students/indiana-choice-scholarship-program/",
         statement:
           "Eligible K–12 students use Choice Scholarships to offset tuition at participating schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.in.gov/doe/students/indiana-choice-scholarship-program/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1553,12 +1693,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://education.ohio.gov/Topics/Other-Resources/Scholarships/",
         statement:
           "Ohio lists three school scholarships separately from its Autism and Jon Peterson special-needs provider programs.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://education.ohio.gov/Topics/Other-Resources/Scholarships/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1576,12 +1718,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://education.ohio.gov/Topics/Other-Resources/Scholarships/Autism-Scholarship/How-to-Apply-for-an-Autism-Scholarship",
         statement:
           "Families select a participating approved provider to serve their child’s educational needs.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://education.ohio.gov/Topics/Other-Resources/Scholarships/Autism-Scholarship/How-to-Apply-for-an-Autism-Scholarship",
       requirements:
         "Review provider registration and service-plan requirements; a curriculum publisher must not claim approval as a special-education provider.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Determine whether the product can be purchased by an approved provider within the student plan; direct parent software reimbursement is not established.",
@@ -1599,12 +1743,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://codes.ohio.gov/ohio-revised-code/section-3310.58/9-30-2025",
         statement:
           "Private schools or entities must register with DEW before receiving payments for qualifying special-education services.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://codes.ohio.gov/ohio-revised-code/section-3310.58/9-30-2025",
       requirements:
         "Assess approved-provider qualifications and student-plan requirements; pursue school/provider purchasing if the app does not qualify as a service.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No standalone curriculum entitlement established; confirm eligible service scope and actual provider contracting.",
@@ -1622,12 +1768,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://nh.scholarshipfund.org/apply/nh-education-tax-credit-scholarships/",
         statement:
           "CSF describes a separate tax-credit scholarship program supporting private, online and homeschool education.",
+        publisher: "program-administrator",
       },
     ],
     onboarding: {
       url: "https://nh.scholarshipfund.org/apply/nh-education-tax-credit-scholarships/",
       requirements:
         "Confirm CSF’s ETC-specific curriculum purchase and receipt process; EFA vendor approval does not establish ETC purchase eligibility.",
+      publisher: "program-administrator",
     },
     unknowns: [
       "Confirm homeschool expense limits, annual subscription terms and how ETC awards interact with EFA awards.",
@@ -1645,12 +1793,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.fldoe.org/file/20902/10-2.pdf",
         statement:
           "The authority publishes a joint FTC/FES-EO purchasing guide; private-school scholarship purchases follow rules distinct from PEP and FES-UA.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.fldoe.org/file/20902/10-2.pdf",
       requirements:
         "Use Step Up supplier onboarding and verify current-year FTC/FES-EO residual-fund curriculum rules.",
+      publisher: "program-authority",
     },
     unknowns: [
       "The reviewed guide is 2025–26; confirm the 2026–27 guide, tuition priority, remaining funds and annual license eligibility.",
@@ -1668,12 +1818,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.in.gov/doe/eoq/csa",
         statement:
           "IDOE administers career scholarship accounts with approved career learning providers.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.in.gov/doe/eoq/csa",
       requirements:
         "Review career-provider eligibility and the all-inclusive approved program process; do not substitute generic math practice for a qualifying career program.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm whether any released offering meets career-program requirements; no general K–12 curriculum wallet eligibility is established.",
@@ -1691,12 +1843,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://doe.louisiana.gov/topic-pages/louisiana-school-choice/school-choice-program-for-certain-students-with-exceptionalities",
         statement:
           "Qualifying families receive tuition assistance at eligible BESE-approved private schools with special-needs programs in specified parishes.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://doe.louisiana.gov/topic-pages/louisiana-school-choice/school-choice-program-for-certain-students-with-exceptionalities",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1714,12 +1868,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.mdek12.org/elementaryedu/dyslexia/",
         statement:
           "MDE lists its Dyslexia Therapy Scholarship and participating specialized schools.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.mdek12.org/elementaryedu/dyslexia/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1737,12 +1893,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://mdek12.org/specialeducation/scholarship-information/",
         statement:
           "MDE lists the Nate Rogers scholarship among its K–12 private-school scholarship programs.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://mdek12.org/specialeducation/scholarship-information/",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1760,12 +1918,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://www.dor.sc.gov/tax-credits/ecenc-program-credits",
         statement:
           "SCDOR describes Exceptional SC grants and a parental refundable credit for qualifying exceptional-needs education; these are separate from ESTF.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://www.dor.sc.gov/tax-credits/ecenc-program-credits",
       requirements:
         "Sell curriculum to participating schools under their purchasing rules. School/SGO qualification is not a product-vendor application.",
+      publisher: "program-authority",
     },
     unknowns: [
       "No direct parent purchase of this standalone curriculum established by the reviewed source. Confirm school procurement and budget authority.",
@@ -1783,12 +1943,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://empoweringparents.idaho.gov/faqs",
         statement:
           "New grants ended under 2025 legislation. Existing awards expire three years after issuance and use ClassWallet; the FAQ rejects service payments beyond three months and limits reimbursement to home internet.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://empoweringparents.idaho.gov/faqs",
       requirements:
         "Confirm curriculum vendor registration and product classification for existing balances; do not offer annual service invoices without a written eligibility decision.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Confirm whether the annual digital curriculum SKU is treated as a product or prohibited service prepayment; no new grant applications.",
@@ -1806,12 +1968,14 @@ export const nationalProgramReviews: readonly NationalProgramReview[] = [
         url: "https://tax.illinois.gov/programs/investinkids",
         statement:
           "The scholarship tax-credit program expired December 31, 2023; later contributions do not receive the credit.",
+        publisher: "program-authority",
       },
     ],
     onboarding: {
       url: "https://tax.illinois.gov/programs/investinkids",
       requirements:
         "Do not pursue new vendor access under this expired program.",
+      publisher: "program-authority",
     },
     unknowns: [
       "Legacy tax-credit carryforwards do not establish an active curriculum purchasing channel.",
