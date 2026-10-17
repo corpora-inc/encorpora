@@ -55,3 +55,7 @@ The [Indiana, New Hampshire and South Carolina supplement](in-nh-sc-routes.md) d
 - [Readiness register](readiness.md): concrete owners, proof and launch blockers.
 
 Completing a checklist does not enable an offer. Record vendor acceptance, exact SKU/version/term approval, listing, payment setup, document route and activation policy in the restricted operational evidence store. Then have an independent reviewer assess the configured offer against that evidence.
+
+## Supplier review packet
+
+The [Florida supplier packet](florida-supplier-packet.md) builds a standalone product brief, neutral catalog and source-matching previews, with a separate internal readiness audit. It is an unsent candidate packet, not an approved offer.

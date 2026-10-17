@@ -54,7 +54,7 @@ type Harness = {
   putShouldFail: { value: boolean }
 }
 
-function setup(backing?: Map<string, unknown>): Harness {
+function setup(backing?: Map<string, unknown>, beforePut?: () => Promise<void>): Harness {
   const index = makeFakeIndex(backing)
   const online = { value: true }
   const clock = { now: 1_000_000 }
@@ -72,6 +72,7 @@ function setup(backing?: Map<string, unknown>): Harness {
     nativePut: async (url) => {
       if (putShouldFail.value) throw new Error("scripted put failure")
       puts.push(url)
+      if (beforePut) await beforePut()
       const hash = await hashUrl(url)
       const relPath = `img/${hash}.png`
       disk.push({ relPath, size: 1000, modifiedMs: clock.now })
@@ -275,19 +276,29 @@ test("orphan sweep: fs-only files (no index row) are deleted on the slow cadence
 })
 
 test("repairImage drops the broken row, deletes the file, and re-fetches when online", async () => {
-  const h = setup()
+  let releaseRefill!: () => void
+  const refillHeld = new Promise<void>((resolve) => { releaseRefill = resolve })
+  const h = setup(undefined, () => refillHeld)
   const url = "https://cdn.test/cover.png"
   const seeded = await seedRecord(h, url)
+  const hash = await hashUrl(url)
   await hydrateImageIndex()
   assert.ok(peekCachedImage(url))
 
-  await repairImage(url)
-  assert.equal(peekCachedImage(url), undefined, "row dropped")
-  const hash = await hashUrl(url)
-  assert.equal(h.index.backing.has(hash), false, "persisted row dropped")
-  assert.deepEqual(h.deletes[0], [seeded.relPath])
-  await waitFor(() => h.puts.length === 1)
-  assert.deepEqual(h.puts, [url], "online repair re-downloads")
+  try {
+    await repairImage(url)
+    await waitFor(() => h.puts.length === 1)
+    // Refill is deliberately in flight: inspect deletion before it can persist.
+    assert.equal(peekCachedImage(url), undefined, "row dropped")
+    assert.equal(h.index.backing.has(hash), false, "persisted row dropped")
+    assert.deepEqual(h.deletes[0], [seeded.relPath])
+    assert.deepEqual(h.puts, [url], "online repair re-downloads")
+  } finally {
+    releaseRefill()
+    await __settleImageCacheForTests()
+  }
+  assert.ok(peekCachedImage(url), "refill restored the mirror")
+  assert.equal(h.index.backing.has(hash), true, "refill persisted the replacement")
 })
 
 test("repairImage offline: row dropped, NO re-fetch", async () => {
