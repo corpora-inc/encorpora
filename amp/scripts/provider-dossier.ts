@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { firstWaveDossiers } from "../src/funding/first-wave-dossiers.js";
+import { providerDossiers } from "../src/funding/provider-dossiers.js";
 import { auditDossiers } from "../src/funding/dossier.js";
 import { fundingRegistry } from "../src/funding/registry.js";
 import { books } from "../src/books/catalog.js";
@@ -9,7 +9,7 @@ if (args.length > 1)
   throw new Error("Usage: tsx scripts/provider-dossier.ts [YYYY-MM-DD]");
 const asOf = args[0] ?? new Date().toISOString().slice(0, 10);
 const errors = auditDossiers(
-  firstWaveDossiers,
+  providerDossiers,
   asOf,
   fundingRegistry.programs.map((p) => p.id),
 );
@@ -42,8 +42,8 @@ if (errors.length) {
             .digest("hex"),
           templateIds: b.bindings.map((x) => x.templateId),
         })),
-        programs: firstWaveDossiers.dossiers,
-        sources: firstWaveDossiers.sources,
+        programs: providerDossiers.dossiers,
+        sources: providerDossiers.sources,
       },
       null,
       2,
