@@ -9,6 +9,7 @@ import { fundingRegistry } from "../src/funding/registry.js";
 import { arUtWyDossiers } from "../src/funding/ar-ut-wy-dossiers.js";
 import { inNhScDossiers } from "../src/funding/in-nh-sc-dossiers.js";
 import { moMsTnDossiers } from "../src/funding/mo-ms-tn-dossiers.js";
+import { idOkAkDossiers } from "../src/funding/id-ok-ak-dossiers.js";
 const ids = fundingRegistry.programs.map((p) => p.id);
 test("combined evidence preserves all route sets without promoting offers", () => {
   assert.deepEqual(auditDossiers(providerDossiers, "2026-10-17", ids), []);
@@ -19,6 +20,7 @@ test("combined evidence preserves all route sets without promoting offers", () =
     ...arUtWyDossiers.dossiers,
     ...inNhScDossiers.dossiers,
     ...moMsTnDossiers.dossiers,
+    ...idOkAkDossiers.dossiers,
   ]);
   assert.deepEqual(
     additionalProviderDossiers.dossiers.map((d) => d.programId).sort(),
