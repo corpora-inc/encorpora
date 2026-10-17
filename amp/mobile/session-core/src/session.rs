@@ -81,6 +81,13 @@ pub enum LearningRequest {
     Progress {
         learner_id: String,
     },
+    StartingPoint {
+        learner_id: String,
+    },
+    SetStartingPoint {
+        learner_id: String,
+        body: Value,
+    },
     Batch {
         learner_id: String,
         body: Value,
@@ -128,6 +135,14 @@ impl LearningRequest {
             Self::Family {} => ("/api/v1/family".into(), None, None),
             Self::Learners {} => ("/api/v1/learners".into(), None, None),
             Self::Progress { learner_id } => (learner_path(&learner_id, "progress")?, None, None),
+            Self::StartingPoint { learner_id } => {
+                (learner_path(&learner_id, "starting-point")?, None, None)
+            }
+            Self::SetStartingPoint { learner_id, body } => (
+                learner_path(&learner_id, "starting-point")?,
+                Some(body),
+                None,
+            ),
             Self::Batch { learner_id, body } => {
                 (learner_path(&learner_id, "batches")?, Some(body), None)
             }
@@ -626,6 +641,35 @@ mod tests {
         .route(&api)
         .unwrap();
         assert_eq!(url.as_str(),"https://api.example.test/api/v1/learners/00000000-0000-0000-0000-000000000001/progress");
+    }
+
+    #[test]
+    fn starting_preferences_use_only_owned_learner_route_and_explicit_method() {
+        let api = Url::parse("https://api.example.test").unwrap();
+        let id = "00000000-0000-0000-0000-000000000001";
+        let (read, body) = LearningRequest::StartingPoint {
+            learner_id: id.into(),
+        }
+        .route(&api)
+        .unwrap();
+        assert_eq!(read.path(), format!("/api/v1/learners/{id}/starting-point"));
+        assert!(body.is_none());
+        for band in ["K–2", "3–5", "6–8", "9–12"] {
+            let body = serde_json::json!({"band":band});
+            let (write, payload) = LearningRequest::SetStartingPoint {
+                learner_id: id.into(),
+                body: body.clone(),
+            }
+            .route(&api)
+            .unwrap();
+            assert_eq!(write, read);
+            assert_eq!(payload, Some(body));
+        }
+        assert!(LearningRequest::StartingPoint {
+            learner_id: "../other".into()
+        }
+        .route(&api)
+        .is_err());
     }
 
     /// Stdio adapter for the browser/signed-provider integration proof. The production
