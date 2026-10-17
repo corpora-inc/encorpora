@@ -1,3 +1,7 @@
+import {
+  algebraTemplates,
+  generateAlgebraProblem,
+} from "./algebra-practice.js";
 import { choiceTemplates, generateChoiceProblem } from "./choice.js";
 import {
   equalGroupsTemplates,
@@ -140,6 +144,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
+  ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
 ];
@@ -222,6 +227,8 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (algebraTemplates.some((t) => t.id === templateId))
+    return generateAlgebraProblem(templateId, seed);
   if (choiceTemplates.some((t) => t.id === templateId))
     return generateChoiceProblem(templateId, seed);
   if (equalGroupsTemplates.some((t) => t.id === templateId))

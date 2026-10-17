@@ -243,6 +243,7 @@ export function PracticeWorkspace(props: Props) {
       return (
         <form
           className="choice-form"
+          data-choice-count={problem.response.options.length}
           onSubmit={(event) => {
             event.preventDefault();
             if (!busy && (outcome || response))

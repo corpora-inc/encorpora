@@ -159,7 +159,7 @@ test(
     try {
       await repository.transaction(account, learner.id, async (tx) => {
         for (const [index, correct] of [true, false].entries()) {
-          const p = generateProblem("graph-equation-choice", randomUUID());
+          const p = generateProblem("relation-function-choice", randomUUID());
           await tx.saveProblem(p);
           await tx.saveAttempt({
             id: randomUUID(),
@@ -195,7 +195,7 @@ test(
           .json()
           .problems.some(
             (p: { templateId: string }) =>
-              p.templateId === "graph-equation-choice",
+              p.templateId === "relation-function-choice",
           ),
         "Positive control: due choice-only skill is eligible for a capable client",
       );
