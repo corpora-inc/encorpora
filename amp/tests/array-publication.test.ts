@@ -441,6 +441,14 @@ test("short multiple-jump lines share the phone readability gate", () => {
     () =>
       validateDiagram({
         ...d,
+        jumps: d.jumps!.map((jump) => ({ ...jump, label: "x".repeat(40) })),
+      }),
+    /concise/,
+  );
+  assert.throws(
+    () =>
+      validateDiagram({
+        ...d,
         marks: Array.from({ length: 8 }, (_, i) => ({
           at: [i, 100],
           label: `Point${String(i).padStart(3, "0")}`,

@@ -112,6 +112,13 @@ export function validateDiagram(d: Diagram): void {
         jumps.length > 1 ||
         d.integerLabelInterval !== undefined
       ) {
+        if (
+          d.marks.some((mark) => mark.label.length > 12) ||
+          jumps.some((jump) => jump.label.length > 12)
+        )
+          throw new Error(
+            "Sparse or multiple-jump lines require concise labels",
+          );
         const position = (at: number, text: string) => {
           const half = Math.max(10, text.length * 5.5);
           return {
