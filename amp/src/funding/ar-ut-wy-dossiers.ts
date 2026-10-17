@@ -222,7 +222,7 @@ export const arUtWyDossiers: DossierInventory = {
         },
       ],
       readinessGaps: [
-        "Resolve the contradictory publisher intake instructions before choosing an application path.",
+        "Resolve the publisher intake distinction before choosing an application path.",
         "Obtain private entity/tax/payment documents and category-specific obligations; service-provider bond applicability to a publisher is unresolved.",
         "Design a reviewed named-student invoice and one-use preapproval evidence workflow; generic quote is insufficient.",
         "Confirm digital fulfillment, settlement timing, annual term and contract-specific cancellation/refund handling.",
