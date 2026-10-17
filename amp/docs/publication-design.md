@@ -91,7 +91,8 @@ they do not represent overlapping fractional shares. Each dimension supports
 the unit and context. Dashed split boundaries preserve the partition in grayscale.
 Opening-page arrays use a cover composition whose multiplication equation is
 derived from the row and column counts. Print layout remains Letter-oriented;
-readers must implement the array variant before registering an array-based book.
+the responsive reader uses the same exact cell counts with HTML axis labels and
+patterned regions.
 
 Integer grouping models can show totals through 30 with whole-unit cells and
 whole-number group sizes. Above 12 units they are limited to 12 groups; the
@@ -118,6 +119,10 @@ book catalog; the CLI does not import an arbitrary author path. `--output`
 selects a local artifact directory. The default is `artifacts/books/<book-id>`.
 The PDF is `<book-id>.pdf`; `validation.json` records exact content and PDF
 hashes plus all TypeScript authoring modules, shared publisher modules and the
-catalog. Source directories and nested entries must not be symlinks. The HTML
+catalog. Source directories and nested entries must not be symlinks. `npx tsx scripts/verify-book-models.ts` checks representative array, integer
+remainder and four-jump diagrams using the application CSS at 320×568 and
+844×390. It rejects clipped labels, effective SVG text below 13 screen pixels
+and figures outside the viewport; generated screenshots require visual review.
+The HTML
 is a fixed Letter print preview; the application reader provides responsive
 screen layouts. Export checks do not replace mathematical or visual review.

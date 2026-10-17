@@ -1,3 +1,5 @@
+import { BookArrayDrawing } from "./BookArrayDrawing.js";
+import { BookIntegerLineDrawing } from "./BookIntegerLineDrawing.js";
 import { exactGroupCount, completeGroup } from "../publishing/validate.js";
 import { useId } from "react";
 import type {
@@ -26,7 +28,9 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
     </defs>
   );
   let drawing;
-  if (d.kind === "strips") {
+  if (d.kind === "array") {
+    drawing = <BookArrayDrawing diagram={d} />;
+  } else if (d.kind === "strips") {
     const max = Math.max(...d.rows.map((row) => row.wholes ?? 1));
     drawing = (
       <>
@@ -65,6 +69,13 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
         ))}
       </>
     );
+  } else if (
+    d.kind === "number-line" &&
+    (value(d.max) - value(d.min) > 12 ||
+      (d.jumps?.length ?? 0) > 1 ||
+      d.integerLabelInterval !== undefined)
+  ) {
+    drawing = <BookIntegerLineDrawing diagram={d} />;
   } else if (d.kind === "number-line") {
     const min = value(d.min),
       max = value(d.max),
@@ -208,17 +219,41 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
                   stroke={ink}
                   strokeWidth="2"
                 />
-                <text x={(a + b) / 2} y="80" textAnchor="middle">
+                <text
+                  x={
+                    d.unitDivisions === 1 &&
+                    !completeGroup(d.total, d.groupSize, i)
+                      ? b
+                      : (a + b) / 2
+                  }
+                  y={
+                    d.unitDivisions === 1 &&
+                    !completeGroup(d.total, d.groupSize, i)
+                      ? 103
+                      : 80
+                  }
+                  textAnchor={
+                    d.unitDivisions === 1 &&
+                    !completeGroup(d.total, d.groupSize, i)
+                      ? "end"
+                      : "middle"
+                  }
+                >
                   {completeGroup(d.total, d.groupSize, i)
                     ? String(i + 1)
-                    : "part"}
+                    : d.unitDivisions === 1
+                      ? `${total - i * size} left`
+                      : "part"}
                 </text>
               </g>
             );
           })}
         </svg>
         <p className="model-key">
-          Total: {label(d.total)} · each small division is 1/{d.unitDivisions}
+          Total: {label(d.total)} ·{" "}
+          {d.unitDivisions === 1
+            ? "each cell is one whole unit"
+            : `each small division is 1/${d.unitDivisions}`}
         </p>
       </>
     );
