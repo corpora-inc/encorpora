@@ -885,3 +885,12 @@ header {
     gap: 12px;
   }
 }
+.figure .base-block {
+  fill: #cfe3d8;
+  stroke: var(--fig-ink);
+  stroke-width: 1.25;
+}
+.figure .base-cell {
+  stroke: #7fa596;
+  stroke-width: 0.6;
+}
