@@ -957,6 +957,8 @@ function App() {
                         data-lesson-id={l.id}
                         disabled={busy}
                         onClick={(event) => {
+                          const navigation = ++navigationEpoch.current;
+                          progressLessonReturn.current = null;
                           readerTriggerId.current = l.id;
                           libraryScroll.current =
                             event.currentTarget.closest("main")?.scrollTop ?? 0;
@@ -971,6 +973,11 @@ function App() {
                                 { problemId: problem.id },
                               );
                             }
+                            if (
+                              navigation !== navigationEpoch.current ||
+                              learnerRef.current !== learner.id
+                            )
+                              return;
                             setReadingLesson(l);
                           });
                         }}

@@ -551,7 +551,7 @@ nav button {
   }
 }
 
-.app-shell > main:not(.practice-workspace):not(.progress-workspace) {
+.app-shell > main:not(.practice-workspace):where(:not(.progress-workspace)) {
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -625,7 +625,7 @@ nav button {
   .app-shell .account-menu summary {
     font-size: 12px;
   }
-  .app-shell > main:not(.practice-workspace):not(.progress-workspace) {
+  .app-shell > main:not(.practice-workspace):where(:not(.progress-workspace)) {
     padding-top: 18px;
   }
 }

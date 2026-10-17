@@ -120,6 +120,34 @@ try {
     await page.screenshot({
       path: new URL(`explore-${size.width}.png`, dir).pathname,
     });
+    for (const filterName of ["Explore", "Practiced", /^Review/]) {
+      await page
+        .getByRole("button", {
+          name: filterName,
+          exact: typeof filterName === "string",
+        })
+        .click();
+      for (;;) {
+        await page.waitForTimeout(30);
+        const fits = await page
+          .locator(".progress-card-stage")
+          .evaluate((e) => e.scrollHeight <= e.clientHeight + 2);
+        if (!fits)
+          await page.screenshot({
+            path: new URL(`overflow-${size.width}.png`, dir).pathname,
+          });
+        assert.ok(
+          fits,
+          `${String(filterName)} ${size.width}: ${await page.locator(".progress-page-controls").innerText()}`,
+        );
+        const next = page.getByRole("button", {
+          name: "Next ideas",
+          exact: true,
+        });
+        if (await next.isDisabled()) break;
+        await next.click();
+      }
+    }
   }
 
   await page.setViewportSize({ width: 390, height: 844 });

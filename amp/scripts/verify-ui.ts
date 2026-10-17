@@ -292,7 +292,7 @@ try {
   await page
     .getByRole("button", { name: "Your progress", exact: true })
     .click();
-  await page.locator(".progress-card").first().waitFor();
+  await page.locator(".progress-skill-card").first().waitFor();
   await page.locator(".account-menu summary").click();
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
   await page
