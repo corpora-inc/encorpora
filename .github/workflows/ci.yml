@@ -1366,6 +1366,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: amp/package-lock.json
+      - name: Install PDF inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
       - run: npm test
       - run: npm run build
