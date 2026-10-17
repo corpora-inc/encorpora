@@ -8,6 +8,7 @@ import {
 } from "../server/repository.js";
 import type { Authenticator } from "../server/auth.js";
 import { bookFor, bookSummaries } from "./catalog.js";
+import { supportsBook } from "./capabilities.js";
 import { loadBookPdf } from "./publication.js";
 export function registerBookRoutes(
   app: FastifyInstance,
@@ -23,6 +24,12 @@ export function registerBookRoutes(
     .strict();
   const reading = z
     .object({ problemId: z.string().min(1).max(160).optional() })
+    .strict();
+  const opening = reading.extend({
+    readerCapabilities: z.array(z.string().min(1).max(64)).max(16).default([]),
+  });
+  const listing = z
+    .object({ readerCapabilities: z.string().max(1024).optional() })
     .strict();
   async function access(tx: LearnerTransaction) {
     if (!options.development && !(await tx.hasAccess()))
@@ -58,8 +65,12 @@ export function registerBookRoutes(
       .object({ learnerId: z.string().uuid() })
       .strict()
       .parse(request.params);
+    const query = listing.parse(request.query);
+    const advertised = query.readerCapabilities?.split(",") ?? [];
     return options.repository.transaction(account, learnerId, async () => ({
-      books: bookSummaries,
+      books: bookSummaries.filter((book) =>
+        supportsBook(book.requiredReaderCapabilities, advertised),
+      ),
     }));
   });
   app.post(
@@ -67,11 +78,18 @@ export function registerBookRoutes(
     async (request) => {
       const account = await options.parent(request);
       const { learnerId, bookId } = params.parse(request.params);
-      const input = reading.parse(request.body ?? {});
+      const input = opening.parse(request.body ?? {});
       const book = bookFor(bookId);
       if (!book) throw new ApiError(404, "Book not found");
       return options.repository.transaction(account, learnerId, async (tx) => {
         await access(tx);
+        if (
+          !supportsBook(
+            book.requiredReaderCapabilities,
+            input.readerCapabilities,
+          )
+        )
+          throw new ApiError(409, "Refresh the app to read this book");
         return {
           book: book.content,
           suggestedPageId: await support(tx, book, input.problemId),
