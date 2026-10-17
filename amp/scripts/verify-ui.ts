@@ -1,3 +1,4 @@
+import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -16,7 +17,7 @@ if (!url)
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
-const learner = await repository.create(account, "Browser verification");
+const learner = await repository.create(account, "Browser verification", 2016);
 const learnerIds = [learner.id];
 const app = buildApp({
   repository,
@@ -52,13 +53,7 @@ try {
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learner.id);
-  await page
-    .getByText("Looking for a particular idea?", { exact: true })
-    .click();
-  await page.getByLabel("Choose your practice").selectOption("mean-data");
-  await page
-    .getByRole("button", { name: "Try this idea", exact: true })
-    .click();
+  await startTopic(page, "mean-data");
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
   for (const viewport of [
@@ -69,24 +64,32 @@ try {
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport);
-    await page
-      .getByRole("button", { name: "Your practice", exact: true })
-      .click();
+    await resume(page);
+    // Let the resize event apply the practice viewport height.
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
     await page.locator(".problem-stage").waitFor();
+    const fit = await page.evaluate(() => {
+      const stage = document.querySelector(".problem-stage")!;
+      const action = document.querySelector(
+        ".compact-answer-action, .answer-action",
+      )!;
+      return {
+        stage: stage.clientHeight,
+        content: stage.scrollHeight,
+        actionBottom: Math.round(action.getBoundingClientRect().bottom),
+        height: innerHeight,
+      };
+    });
     assert.ok(
-      await page.evaluate(() => {
-        const stage = document.querySelector(".problem-stage")!;
-        const action = document.querySelector(
-          ".compact-answer-action, .answer-action",
-        )!;
-        const box = action.getBoundingClientRect();
-        return (
-          stage.clientHeight >= 180 &&
-          stage.scrollHeight <= stage.clientHeight + 2 &&
-          box.bottom <= innerHeight
-        );
-      }),
-      `Question and answer action must fit ${viewport.width}×${viewport.height}`,
+      fit.stage >= 180 &&
+        fit.content <= fit.stage + 2 &&
+        fit.actionBottom <= fit.height,
+      `Question and answer action must fit ${viewport.width}×${viewport.height}: ${JSON.stringify(fit)}`,
     );
     assert.ok(
       await page.evaluate(
@@ -109,16 +112,16 @@ try {
   await page.getByRole("button", { name: "1", exact: true }).click();
   assert.equal(await page.locator("#answer").inputValue(), "1");
   await page.getByRole("button", { name: "Close panel", exact: true }).click();
-  await page.getByRole("button", { name: "The idea", exact: true }).click();
-  await page.locator(".workspace-lesson").waitFor();
+  await page.getByRole("button", { name: "Lesson", exact: true }).click();
+  await page.locator(".problem-lesson").waitFor();
   await page.keyboard.press("Escape");
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
-    "The idea",
+    "Lesson",
   );
   await page.getByRole("button", { name: /Your answer: 1/ }).click();
   await page.locator("#answer").fill("999");
-  await page.getByRole("button", { name: "Check answer" }).click();
+  await page.getByRole("button", { name: "Check" }).click();
   await page.locator(".solution-panel").waitFor();
   assert.match(
     await page.locator(".solution-panel").innerText(),
@@ -127,21 +130,14 @@ try {
   await page.keyboard.press("Escape");
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
-    "Continue →",
+    "Next →",
   );
-  await page.getByRole("button", { name: "Continue", exact: false }).click();
+  await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator("#answer").waitFor();
   // Mixed scheduling may choose a book-backed family; select the legacy lesson
   // explicitly before testing the lifecycle of its lesson-support request.
-  await page.getByRole("button", { name: "Change topic", exact: true }).click();
-  await page
-    .getByText("Looking for a particular idea?", { exact: true })
-    .click();
-  await page.getByLabel("Choose your practice").selectOption("mean-data");
-  await page
-    .getByRole("button", { name: "Try this idea", exact: true })
-    .click();
+  await startTopic(page, "mean-data");
   await page.locator("#answer").waitFor();
   let releaseLesson!: () => void;
   let heldLesson!: () => void;
@@ -157,11 +153,8 @@ try {
     await release;
     await route.fulfill({ response: result });
   });
-  await page.getByRole("button", { name: "The idea", exact: true }).click();
+  await page.getByRole("button", { name: "Lesson", exact: true }).click();
   await held;
-  await page.locator("#answer").fill("999999");
-  await page.getByRole("button", { name: "Check answer" }).click();
-  await page.locator(".solution-panel").waitFor();
   let releaseNext!: () => void;
   const nextHeld = new Promise<void>((resolve) => {
     releaseNext = resolve;
@@ -171,8 +164,12 @@ try {
     await nextHeld;
     await route.fulfill({ response: result });
   });
-  await page.getByRole("button", { name: "Next problem" }).click();
-  await page.locator(".solution-panel").waitFor({ state: "hidden" });
+  await page.locator("#answer").fill("999999");
+  await page.getByRole("button", { name: "Check" }).click();
+  await page.locator(".solution-panel").waitFor();
+  // Next waits on the held, already-requested problem; the lesson that was
+  // requested for the answered problem must not open meanwhile.
+  await page.getByRole("button", { name: "Next", exact: true }).click();
   const delivered = page.waitForResponse((response) =>
     response.url().endsWith("/lesson-support"),
   );
@@ -205,14 +202,7 @@ try {
   await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   for (const template of templates) {
-    await page
-      .getByRole("button", { name: "Change topic", exact: true })
-      .click();
-    await page
-      .getByText("Looking for a particular idea?", { exact: true })
-      .click();
-    await page.getByLabel("Choose your practice").selectOption(template.id);
-    await page.getByRole("button", { name: "Try this idea" }).click();
+    await startTopic(page, template.id);
     await page.locator("#answer, .choice-form").first().waitFor();
     assert.ok(
       await page.evaluate(
@@ -278,25 +268,19 @@ try {
         fullPage: true,
       });
   }
-  await page.getByRole("button", { name: "Lesson library" }).click();
-  await page
-    .getByRole("button", { name: "Read lesson", exact: true })
-    .first()
-    .click();
-  await page.locator(".lesson-reader").waitFor();
-  if (process.env.AMP_VERIFY_DOWNLOADS === "true") {
-    await page.getByText("Download & print", { exact: true }).click();
-    const downloading = page.waitForEvent("download");
-    await page
-      .getByRole("button", { name: "Download lesson PDF", exact: true })
-      .click();
-    const download = await downloading;
-    assert.match(download.suggestedFilename(), /\.pdf$/);
-    assert.equal(await download.failure(), null);
-  }
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  // Lessons: every problem type has its own short lesson.
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Lessons", exact: true }).click();
+  await page.locator(".topic-list:not([hidden]) button").first().click();
+  await page.locator(".lesson-sheet .problem-lesson").waitFor();
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  await page.getByRole("button", { name: "← All lessons" }).click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
   await page.locator(".account-menu summary").click();
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
@@ -312,10 +296,8 @@ try {
     .getByRole("button", { name: "Create learner", exact: true })
     .click();
   learnerIds.push((await (await creation).json()).id);
-  await page
-    .getByRole("button", { name: "Your practice", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Start your mix" }).waitFor();
+  await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -357,7 +339,7 @@ try {
         .boundingBox();
       assert.ok(
         lastChoice && lastChoice.y + lastChoice.height <= size.height,
-        "Privacy choices fit phone viewport",
+        `Privacy choices fit phone viewport at ${size.width}×${size.height}: ${JSON.stringify(lastChoice)}`,
       );
     }
     await page.screenshot({
@@ -385,7 +367,8 @@ try {
     await familyBatchRelease;
     await route.fulfill({ response: result });
   });
-  await page.getByRole("button", { name: "Start your mix" }).click();
+  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await page.getByRole("button", { name: "Go", exact: true }).click();
   await familyBatchWaiting;
   await page.locator(".account-menu summary").click();
   await page
@@ -432,7 +415,7 @@ try {
     "Late batch cannot restore practice after privacy invalidation",
   );
   assert.equal(
-    await page.getByRole("button", { name: "Start your mix" }).count(),
+    await page.getByRole("button", { name: "Go", exact: true }).count(),
     0,
   );
   assert.equal(
@@ -444,9 +427,7 @@ try {
     .locator(".account-menu")
     .getByRole("button", { name: "Manage family", exact: true })
     .click();
-  await page
-    .getByRole("heading", { name: "Your family.", exact: true })
-    .waitFor();
+  await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",

@@ -1,3 +1,4 @@
+import { exitPractice, resume } from "./ui-practice";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -57,9 +58,8 @@ try {
     await page
       .getByRole("combobox", { name: "Learner", exact: true })
       .selectOption(fresh.id);
-    await page
-      .getByRole("button", { name: "Your progress", exact: true })
-      .click();
+    await exitPractice(page);
+    await page.getByRole("button", { name: "Progress", exact: true }).click();
     await page
       .getByRole("heading", { name: "Let curiosity lead", exact: true })
       .waitFor();
@@ -216,9 +216,8 @@ try {
   assert.equal(batch.problems.length, 1);
   const problem = batch.problems[0];
   assert.equal(problem.skillId, "count-to-20");
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page
     .getByRole("button", { name: "Open related book", exact: true })
     .click();
@@ -226,32 +225,30 @@ try {
     .getByRole("main", { name: "Number Builders", exact: true })
     .waitFor();
   await page.getByRole("button", { name: "← Back", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Your practice", exact: true })
-    .click();
+  await resume(page);
   await page
     .locator("#answer")
     .fill(String(generateProblem(problem.templateId, problem.seed).answer));
-  await page.getByRole("button", { name: "Check answer", exact: true }).click();
-  await page
-    .locator(".answer-status")
-    .filter({ hasText: "Practiced with support" })
-    .waitFor();
-  assert.match(
-    await page.locator(".answer-status").innerText(),
-    /Practiced with support/,
-  );
-  await page.keyboard.press("Escape");
+  // The next problem is planned as soon as the answer is recorded.
   const mixPromise = page.waitForResponse(
     (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
   );
-  await page.getByRole("button", { name: /^Continue/ }).click();
+  await page.getByRole("button", { name: "Check", exact: true }).click();
+  await page
+    .locator(".feedback")
+    .filter({ hasText: "Practiced with support" })
+    .waitFor();
+  assert.match(
+    await page.locator(".feedback").innerText(),
+    /Practiced with support/,
+  );
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: /^Next/ }).click();
   const mixResponse = await mixPromise;
   assert.equal(mixResponse.request().postDataJSON().templateId, undefined);
-  assert.equal((await mixResponse.json()).problems.length, 3);
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  assert.equal((await mixResponse.json()).problems.length, 1);
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page
     .locator(".progress-counts strong")
     .first()
@@ -268,9 +265,8 @@ try {
       json: { error: "History temporarily unavailable" },
     }),
   );
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page
     .getByRole("alert")
     .filter({ hasText: "History temporarily unavailable" })
@@ -298,13 +294,11 @@ try {
       });
     } else await route.continue();
   });
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await oldStarted;
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator('.progress-workspace[aria-busy="false"]').waitFor();
   releaseOld();
   await page.unrouteAll({ behavior: "wait" });
@@ -326,16 +320,14 @@ try {
     .getByRole("button", { name: "Try one problem", exact: true })
     .click();
   await batchStarted;
-  await page
-    .getByRole("button", { name: "Lesson library", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Lessons", exact: true }).click();
   releaseBatch();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.getByRole("alert").count(), 0);
   assert.equal(await page.locator(".progress-workspace").count(), 0);
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
 
   // Returning after an orientation change retains the selected card and keyboard focus.
   await page.setViewportSize({ width: 320, height: 568 });
@@ -400,9 +392,8 @@ try {
     await held;
     await route.fulfill({ response });
   });
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await started;
   await page
     .getByRole("combobox", { name: "Learner", exact: true })

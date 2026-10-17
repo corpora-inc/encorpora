@@ -16,10 +16,12 @@ import { auditCurriculum } from "../curriculum/audit";
 import { ApiError, type Outcome, type Repository } from "./repository";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
+import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
+const birthYearSchema = z.number().int().min(1900).max(2100);
 const attemptSchema = z
   .object({
     problemId: z.string().min(1).max(160),
@@ -88,6 +90,14 @@ export function buildApp(options: {
   app.get("/api/v1/session", async (request) => ({
     accountId: await options.authenticate(request),
   }));
+  app.get("/api/v1/problem-lessons/:templateId", async (request) => {
+    const { templateId } = z
+      .object({ templateId: z.string().max(100) })
+      .parse(request.params);
+    if (!hasProblemLesson(templateId))
+      throw new ApiError(404, "Lesson not found");
+    return { lesson: problemLesson(templateId, "library") };
+  });
   app.get("/api/v1/catalog", async () => ({
     templates,
     lessons,
@@ -100,11 +110,16 @@ export function buildApp(options: {
   }));
   app.post("/api/v1/learners", async (request, reply) => {
     const account = await parent(request);
-    const { name } = z
-      .object({ name: z.string().trim().min(1).max(60) })
+    const { name, birthYear } = z
+      .object({
+        name: z.string().trim().min(1).max(60),
+        birthYear: birthYearSchema.optional(),
+      })
       .strict()
       .parse(request.body);
-    return reply.code(201).send(await options.repository.create(account, name));
+    return reply
+      .code(201)
+      .send(await options.repository.create(account, name, birthYear));
   });
   app.get("/api/v1/learners/:learnerId/progress", async (request) => {
     const account = await parent(request);
@@ -113,6 +128,22 @@ export function buildApp(options: {
       asOf: new Date().toISOString(),
       skills: await tx.progress([...new Set(templates.map((t) => t.skillId))]),
     }));
+  });
+  app.get("/api/v1/learners/:learnerId/frontier", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      const frontier = await tx.frontier();
+      return {
+        overall: frontier.overall.level,
+        strands: Object.fromEntries(
+          Object.entries(frontier.strands).map(([strand, state]) => [
+            strand,
+            state.level,
+          ]),
+        ),
+      };
+    });
   });
   app.get("/api/v1/learners/:learnerId/starting-point", async (request) => {
     const account = await parent(request);
@@ -133,6 +164,18 @@ export function buildApp(options: {
       await tx.setStartingPoint(band);
       const { policyVersion } = await tx.startingPoint();
       return { band, policyVersion };
+    });
+  });
+  app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { birthYear } = z
+      .object({ birthYear: birthYearSchema })
+      .strict()
+      .parse(request.body);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      await tx.setBirthYear(birthYear);
+      return { birthYear };
     });
   });
   app.post("/api/v1/learners/:learnerId/batches", async (request) => {
@@ -190,7 +233,7 @@ export function buildApp(options: {
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
-            startingPoint: await tx.startingPoint(),
+            frontier: await tx.frontier(),
             count: input.count,
             seed: randomUUID(),
           });
@@ -284,15 +327,21 @@ export function buildApp(options: {
     return options.repository.transaction(account, learnerId, async (tx) => {
       const problem = await tx.problem(problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
-      if (
-        !lessons.some((lesson) =>
-          lesson.templateIds.includes(problem.public.templateId),
-        )
-      )
+      if (!hasProblemLesson(problem.public.templateId))
         throw new ApiError(404, "Lesson not found");
-      problem.lessonViewed = true;
-      await tx.saveProblem(problem);
-      return { recorded: true };
+      // Reading the lesson before answering counts as assistance.
+      if (!(await tx.attemptByProblem(problemId))) {
+        problem.lessonViewed = true;
+        await tx.saveProblem(problem);
+      }
+      return {
+        recorded: true,
+        lesson: problemLesson(
+          problem.public.templateId,
+          problem.public.seed,
+          problem.public.prompt,
+        ),
+      };
     });
   });
   app.post("/api/v1/learners/:learnerId/attempts", async (request) => {

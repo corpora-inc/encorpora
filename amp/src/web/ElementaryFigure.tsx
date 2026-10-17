@@ -59,109 +59,140 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
       </svg>
     );
   }
-  return (
-    <svg
-      className="figure elementary-figure"
-      viewBox="0 0 370 210"
-      role="img"
-      aria-label={`Base-ten model: ${figure.hundreds} hundred flats, ${figure.tens} ten rods, and ${figure.ones} one squares. A hundred flat has ten rows of ten units; a rod has ten units.`}
-    >
-      <text x="76" y="22" textAnchor="middle" style={{ fontSize: 17 }}>
-        Hundreds
-      </text>
-      <text x="204" y="22" textAnchor="middle" style={{ fontSize: 17 }}>
-        Tens
-      </text>
-      <text x="307" y="22" textAnchor="middle" style={{ fontSize: 17 }}>
-        Ones
-      </text>
-      <line x1="150" x2="150" y1="30" y2="180" stroke="#ccd8d3" />
-      <line x1="262" x2="262" y1="30" y2="180" stroke="#ccd8d3" />
-      {Array.from({ length: figure.hundreds }, (_, i) => {
-        const x = 12 + (i % 3) * 44,
-          y = 38 + Math.floor(i / 3) * 44;
-        return (
-          <g key={`h${i}`} data-unit="hundred">
-            <rect
-              x={x}
-              y={y}
-              width="40"
-              height="40"
-              fill="#d9e9e1"
-              stroke={ink}
-              strokeWidth="1"
-            />
-            {Array.from({ length: 9 }, (_, j) => (
-              <React.Fragment key={j}>
-                <line
-                  x1={x + 4 * (j + 1)}
-                  x2={x + 4 * (j + 1)}
-                  y1={y}
-                  y2={y + 40}
-                  stroke={first}
-                  strokeWidth=".4"
-                />
-                <line
-                  x1={x}
-                  x2={x + 40}
-                  y1={y + 4 * (j + 1)}
-                  y2={y + 4 * (j + 1)}
-                  stroke={first}
-                  strokeWidth=".4"
-                />
-              </React.Fragment>
-            ))}
-          </g>
-        );
-      })}
-      {Array.from({ length: figure.tens }, (_, i) => {
-        const x = 160 + (i % 10) * 9,
-          y = 38 + Math.floor(i / 10) * 48;
-        return (
-          <g key={`t${i}`} data-unit="ten">
-            <rect
-              x={x}
-              y={y}
-              width="4"
-              height="40"
-              fill="#d9e9e1"
-              stroke={ink}
-              strokeWidth=".7"
-            />
-            {Array.from({ length: 9 }, (_, j) => (
-              <line
-                key={j}
-                x1={x}
-                x2={x + 4}
-                y1={y + 4 * (j + 1)}
-                y2={y + 4 * (j + 1)}
-                stroke={first}
-                strokeWidth=".4"
-              />
-            ))}
-          </g>
-        );
-      })}
-      {Array.from({ length: figure.ones }, (_, i) => (
-        <rect
-          key={`o${i}`}
-          data-unit="one"
-          x={277 + (i % 5) * 14}
-          y={38 + Math.floor(i / 5) * 14}
-          width="4"
-          height="4"
-          fill={ink}
+  // Columns appear only for places in use; units are large enough to count.
+  const u = figure.hundreds ? 8 : 12,
+    rod = 10 * u,
+    columns: {
+      key: "hundred" | "ten" | "one";
+      label: string;
+      count: number;
+      width: number;
+      height: number;
+    }[] = [];
+  if (figure.hundreds)
+    columns.push({
+      key: "hundred",
+      label: "Hundreds",
+      count: figure.hundreds,
+      width: Math.min(3, figure.hundreds) * (rod + 6),
+      height: Math.ceil(figure.hundreds / 3) * (rod + 6),
+    });
+  columns.push({
+    key: "ten",
+    label: "Tens",
+    count: figure.tens,
+    width: Math.max(u + 6, Math.min(10, figure.tens) * (u + 5)),
+    height: Math.ceil(Math.max(1, figure.tens) / 10) * (rod + 8),
+  });
+  columns.push({
+    key: "one",
+    label: "Ones",
+    count: figure.ones,
+    width: Math.max(u + 6, Math.min(5, Math.max(1, figure.ones)) * (u + 5)),
+    height: Math.ceil(Math.max(1, figure.ones) / 5) * (u + 5),
+  });
+  const gap = 28,
+    top = 30,
+    width =
+      columns.reduce((sum, c) => sum + c.width, 0) + gap * (columns.length + 1),
+    height = top + Math.max(...columns.map((c) => c.height)) + 12;
+  let cursor = gap;
+  const placed = columns.map((c) => {
+    const x = cursor;
+    cursor += c.width + gap;
+    return { ...c, x };
+  });
+  const cells = (x: number, y: number, across: number, down: number) => (
+    <>
+      {Array.from({ length: across - 1 }, (_, j) => (
+        <line
+          key={`a${j}`}
+          x1={x + u * (j + 1)}
+          x2={x + u * (j + 1)}
+          y1={y}
+          y2={y + down * u}
+          className="base-cell"
         />
       ))}
-      <text x="76" y="195" textAnchor="middle" style={{ fontSize: 14 }}>
-        each = 100
-      </text>
-      <text x="204" y="195" textAnchor="middle" style={{ fontSize: 14 }}>
-        each = 10
-      </text>
-      <text x="307" y="195" textAnchor="middle" style={{ fontSize: 14 }}>
-        each = 1
-      </text>
+      {Array.from({ length: down - 1 }, (_, j) => (
+        <line
+          key={`d${j}`}
+          x1={x}
+          x2={x + across * u}
+          y1={y + u * (j + 1)}
+          y2={y + u * (j + 1)}
+          className="base-cell"
+        />
+      ))}
+    </>
+  );
+  return (
+    <svg
+      className="figure elementary-figure base-ten-figure"
+      viewBox={`0 0 ${width} ${height}`}
+      role="img"
+      aria-label={`Base-ten model: ${figure.hundreds} hundred flats, ${figure.tens} ten rods, and ${figure.ones} one cubes. A hundred flat has ten rows of ten units; a rod has ten units.`}
+    >
+      {placed.map((c) => (
+        <g key={c.key}>
+          <text
+            x={c.x + c.width / 2}
+            y={18}
+            textAnchor="middle"
+            className="fig-scale"
+          >
+            {c.label}
+          </text>
+          {Array.from({ length: c.count }, (_, i) => {
+            if (c.key === "hundred") {
+              const x = c.x + (i % 3) * (rod + 6),
+                y = top + Math.floor(i / 3) * (rod + 6);
+              return (
+                <g key={i} data-unit="hundred">
+                  <rect
+                    x={x}
+                    y={y}
+                    width={rod}
+                    height={rod}
+                    rx={2}
+                    className="base-block"
+                  />
+                  {cells(x, y, 10, 10)}
+                </g>
+              );
+            }
+            if (c.key === "ten") {
+              const x = c.x + (i % 10) * (u + 5),
+                y = top + Math.floor(i / 10) * (rod + 8);
+              return (
+                <g key={i} data-unit="ten">
+                  <rect
+                    x={x}
+                    y={y}
+                    width={u}
+                    height={rod}
+                    rx={2}
+                    className="base-block"
+                  />
+                  {cells(x, y, 1, 10)}
+                </g>
+              );
+            }
+            return (
+              <rect
+                key={i}
+                data-unit="one"
+                x={c.x + (i % 5) * (u + 5)}
+                y={top + Math.floor(i / 5) * (u + 5)}
+                width={u}
+                height={u}
+                rx={2}
+                className="base-block"
+              />
+            );
+          })}
+        </g>
+      ))}
     </svg>
   );
 }

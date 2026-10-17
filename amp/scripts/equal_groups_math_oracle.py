@@ -1,5 +1,6 @@
 """Independent exact answers for equal-group stories, derived only from public givens."""
 import re
+from oracle_wording import tolerant
 from fractions import Fraction
 
 EQUAL_GROUPS = frozenset({
@@ -19,7 +20,7 @@ def require(condition, message):
 
 
 def counts(pattern, prompt):
-    match = re.fullmatch(pattern, prompt)
+    match = re.fullmatch(tolerant(pattern), prompt)
     require(match is not None, 'Ambiguous or unsupported equal-groups wording')
     return tuple(int(value) for value in match.groups())
 

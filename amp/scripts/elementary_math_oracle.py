@@ -77,7 +77,7 @@ def solve_elementary(public):
         return sum(numbers)
     if name == 'make-ten-remainder':
         first, second, moved, source, repeated = numbers
-        frame(first, 0, 10)
+        frame(first, second, 20)
         require(second == source == repeated and first + moved == 10 and second >= moved, 'Invalid make-ten split')
         return second - moved
     if name == 'subtract-through-ten':

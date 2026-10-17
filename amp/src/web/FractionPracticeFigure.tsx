@@ -1,9 +1,11 @@
+import { useId } from "react";
 import type { SemanticFigure } from "../math/contracts.js";
 type FractionFigure = Extract<
   SemanticFigure,
   { kind: "rational-line" | "fraction-strips" }
 >;
 export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
+  const clipId = useId().replace(/:/g, "");
   if (figure.kind === "rational-line") {
     const steps = figure.denominator * figure.maxWhole,
       x = (n: number) => 24 + (n / steps) * 312;
@@ -76,57 +78,86 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
       </svg>
     );
   }
-  const pieces = figure.parts * figure.wholes,
-    unitWidth = 312 / figure.wholes;
-  const description = `Each whole represents ${figure.unit} and has ${figure.parts} equal parts. ${figure.rows.map((row) => `${row.label}: ${row.selected} shaded parts`).join(". ")}. Heavy outlines separate wholes.`;
+  // Each whole is its own bar; a 0, 1, 2… scale ties the bars to the number line.
+  const gap = 10,
+    left = 20,
+    span = 320,
+    wholeWidth = (span - gap * (figure.wholes - 1)) / figure.wholes,
+    pieceWidth = wholeWidth / figure.parts,
+    labelled = figure.rows.length > 1,
+    rowHeight = labelled ? 62 : 40,
+    top = labelled ? 26 : 6,
+    height = top + figure.rows.length * rowHeight + 22;
+  const description = `${figure.rows.map((row) => `${row.label}: ${row.selected} of the equal parts shaded`).join(". ")}. Each whole is a separate bar cut into ${figure.parts} equal parts.`;
   return (
     <svg
       className="figure fraction-practice-figure"
-      viewBox={`0 0 360 ${28 + figure.rows.length * 58}`}
+      viewBox={`0 0 360 ${height}`}
       role="img"
       aria-label={description}
     >
       <title>{description}</title>
-      <text x="180" y="18" textAnchor="middle" fontSize="18">
-        Each whole: {figure.unit}
-      </text>
       {figure.rows.map((row, index) => {
-        const y = 48 + index * 58;
+        const y = top + index * rowHeight;
         return (
           <g key={index} data-row={index}>
-            <text x="24" y={y - 7} fontSize="18">
-              {row.label}
-            </text>
-            {Array.from({ length: pieces }, (_, n) => (
-              <rect
-                data-piece={n}
-                data-shaded={n < row.selected ? "true" : "false"}
-                key={n}
-                x={24 + (n / pieces) * 312}
-                y={y}
-                width={312 / pieces}
-                height="26"
-                fill={n < row.selected ? "#287d70" : "#fffdf8"}
-                stroke="#183f3b"
-                strokeWidth="0.7"
-              />
-            ))}
-            {Array.from({ length: figure.wholes }, (_, n) => (
-              <rect
-                data-whole={n}
-                key={n}
-                x={24 + n * unitWidth}
-                y={y}
-                width={unitWidth}
-                height="26"
-                fill="none"
-                stroke="#183f3b"
-                strokeWidth="2.2"
-              />
-            ))}
+            {labelled && (
+              <text x={left} y={y - 8} className="fig-label">
+                {row.label}
+              </text>
+            )}
+            {Array.from({ length: figure.wholes }, (_, whole) => {
+              const x0 = left + whole * (wholeWidth + gap);
+              const clip = `${clipId}-${index}-${whole}`;
+              return (
+                <g key={whole} data-whole={whole}>
+                  <clipPath id={clip}>
+                    <rect x={x0} y={y} width={wholeWidth} height="30" rx="6" />
+                  </clipPath>
+                  <g clipPath={`url(#${clip})`}>
+                    {Array.from({ length: figure.parts }, (_, part) => {
+                      const n = whole * figure.parts + part;
+                      return (
+                        <rect
+                          key={n}
+                          data-piece={n}
+                          data-shaded={n < row.selected ? "true" : "false"}
+                          x={x0 + part * pieceWidth}
+                          y={y}
+                          width={pieceWidth}
+                          height="30"
+                          className={
+                            n < row.selected ? "fig-fill" : "fig-empty"
+                          }
+                        />
+                      );
+                    })}
+                  </g>
+                  <rect
+                    x={x0}
+                    y={y}
+                    width={wholeWidth}
+                    height="30"
+                    rx="6"
+                    className="fig-outline"
+                  />
+                </g>
+              );
+            })}
           </g>
         );
       })}
+      {Array.from({ length: figure.wholes + 1 }, (_, n) => (
+        <text
+          key={n}
+          x={left + n * (wholeWidth + gap) - (n === 0 ? 0 : gap / 2)}
+          y={height - 4}
+          textAnchor="middle"
+          className="fig-scale"
+        >
+          {n}
+        </text>
+      ))}
     </svg>
   );
 }

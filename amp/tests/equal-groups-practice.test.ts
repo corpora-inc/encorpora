@@ -11,7 +11,11 @@ import {
   generateEqualGroupsProblem,
   equalGroupsTemplates,
 } from "../src/math/equal-groups-practice.js";
-import { generateProblem, templates } from "../src/math/engine.js";
+import {
+  generateProblem,
+  polishProblem,
+  templates,
+} from "../src/math/engine.js";
 import {
   generatedProblemSchema,
   semanticFigureSchema,
@@ -25,7 +29,7 @@ test("twenty bounded families have registry, component, and exact book support w
     assert.equal(templates.filter((x) => x.id === t.id).length, 1);
     assert.deepEqual(
       generateProblem(t.id, "registry"),
-      generateEqualGroupsProblem(t.id, "registry"),
+      polishProblem(generateEqualGroupsProblem(t.id, "registry")),
     );
   }
   assert.ok(
@@ -136,7 +140,7 @@ test("counter boxes preserve exact filled count and equal capacity without print
         slots - total,
       );
       assert.equal((html.match(/<text/g) ?? []).length, 1);
-      assert.match(html, /Filled: items · Outline: empty/);
+      assert.match(html, /● .* · ○ empty place/);
     }
   for (const invalid of [
     { kind: "unit-array", rows: 2, columns: 3, splitAfterRow: 2 },

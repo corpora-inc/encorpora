@@ -3,6 +3,7 @@ import copy
 import math
 import ast
 import re
+from oracle_wording import tolerant
 from fractions import Fraction as F
 
 
@@ -103,7 +104,7 @@ def require(condition, message):
 
 
 def match(pattern, text):
-    found = re.fullmatch(pattern, text)
+    found = re.fullmatch(tolerant(pattern), text)
     require(found is not None, f'Unsupported or ambiguous public wording: {text}')
     return found.groups()
 

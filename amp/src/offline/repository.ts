@@ -184,7 +184,7 @@ export class OfflineRepository {
           skills,
           attempts: await tx.recentAttempts(),
           evidence: await tx.skillEvidence(),
-          startingPoint: await tx.startingPoint(),
+          frontier: await tx.frontier(now.getTime()),
           count: 5,
           seed: packId,
           now: now.getTime(),

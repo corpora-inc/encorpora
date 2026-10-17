@@ -263,8 +263,8 @@
   color: #183e3a;
   border: 1px solid #d6dfd2;
   border-radius: 14px;
-  padding: 16px;
-  margin-bottom: 10px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
 }
 .privacy-choices strong {
   font-size: 17px;
@@ -616,5 +616,10 @@
   .family-purchase-buttons span {
     margin-top: 2px;
     line-height: 1.25;
+  }
+}
+@media (max-height: 620px) {
+  .family-heading h1 {
+    font-size: 24px;
   }
 }

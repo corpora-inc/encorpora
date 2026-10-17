@@ -1,6 +1,7 @@
 export interface FamilyLearner {
   id: string;
   name: string;
+  birthYear?: number | null;
   deletedAt: string | null;
   access: {
     channel: string;
