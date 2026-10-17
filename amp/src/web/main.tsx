@@ -5,7 +5,7 @@ import type { PublicProblem, TemplateMetadata } from "../math/contracts";
 import type { Learner, Outcome } from "../server/repository";
 import type { SkillProgress } from "../server/progress";
 import type { Lesson } from "../content/lessons";
-import { Figure } from "./Figure";
+import { PracticeWorkspace, usePracticeViewport } from "./PracticeWorkspace";
 import {
   accessSession,
   onSessionChanged,
@@ -14,6 +14,7 @@ import {
   type AuthSession,
 } from "./auth";
 import "./style.css";
+import "./practice.css";
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -40,7 +41,16 @@ function App() {
     [family, setFamily] = useState(""),
     [problem, setProblem] = useState<PublicProblem | null>(null),
     [queue, setQueue] = useState<PublicProblem[]>([]),
-    [lesson, setLesson] = useState<Lesson | null>(null);
+    [lesson, setLesson] = useState<Lesson | null>(null),
+    [readingLesson, setReadingLesson] = useState<Lesson | null>(null),
+    [lessonSearch, setLessonSearch] = useState("");
+  const readerHeading = useRef<HTMLHeadingElement>(null);
+  const readerTrigger = useRef<HTMLButtonElement | null>(null);
+  usePracticeViewport(!!learner);
+  useEffect(() => {
+    if (readingLesson && tab === "library")
+      readerHeading.current?.focus({ preventScroll: true });
+  }, [readingLesson, tab]);
   const authEpoch = useRef(0),
     tokenRef = useRef<string | null>(null),
     accountRef = useRef<string | null>(null);
@@ -69,6 +79,7 @@ function App() {
     authEpoch.current++;
     setName("");
     setLesson(null);
+    setReadingLesson(null);
     setFamily("");
     setLearners([]);
     setLearner(null);
@@ -163,11 +174,12 @@ function App() {
       lesson: Lesson | null;
     }>(`/learners/${learner.id}/batches`, {
       ...(family ? { templateId: family } : {}),
-      count: 3,
+      count: family ? 1 : 3,
     });
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
+    setFamily("");
   }
   async function next() {
     if (outcome && !outcome.correct) {
@@ -197,10 +209,11 @@ function App() {
     }
   }
   async function download(kind: "lesson" | "workbook" | "solutions") {
-    if (!learner || !lesson || !token) return;
+    const publicationLesson = readingLesson ?? lesson;
+    if (!learner || !publicationLesson || !token) return;
     const epoch = authEpoch.current;
     const result = await fetch(
-      `/api/v1/learners/${learner.id}/publications/${lesson.id}/${kind}`,
+      `/api/v1/learners/${learner.id}/publications/${publicationLesson.id}/${kind}`,
       { headers: { authorization: `Bearer ${token}` } },
     );
     if (!result.ok)
@@ -210,13 +223,15 @@ function App() {
     const url = URL.createObjectURL(blob),
       a = document.createElement("a");
     a.href = url;
-    a.download = `${lesson.id}-${kind}.pdf`;
+    a.download = `${publicationLesson.id}-${kind}.pdf`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
   return (
-    <div className="shell">
+    <div
+      className={`shell ${learner ? "app-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""}`}
+    >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
           <svg viewBox="0 0 64 32" aria-hidden="true">
@@ -246,47 +261,61 @@ function App() {
             </select>
           )}
           {token && learners.length > 0 && (
-            <button
-              className="text-button"
-              disabled={busy}
-              onClick={() => {
-                setName("");
-                setLearner(null);
-              }}
-            >
-              Add learner
-            </button>
-          )}
-          {token && catalog?.mode !== "development" && (
-            <button
-              className="text-button"
-              onClick={() => void action(signOut)}
-            >
-              Sign out
-            </button>
+            <details className="account-menu">
+              <summary aria-label="Family menu">Family</summary>
+              <div className="account-menu-content">
+                {" "}
+                {token && learners.length > 0 && (
+                  <button
+                    className="text-button"
+                    disabled={busy}
+                    onClick={(event) => {
+                      event.currentTarget
+                        .closest("details")
+                        ?.removeAttribute("open");
+                      setName("");
+                      setLearner(null);
+                    }}
+                  >
+                    Add learner
+                  </button>
+                )}
+                {token && catalog?.mode !== "development" && (
+                  <button
+                    className="text-button"
+                    onClick={() => void action(signOut)}
+                  >
+                    Sign out
+                  </button>
+                )}
+              </div>
+            </details>
           )}
         </div>
       </header>
-      <div className="intro">
-        <div>
-          <p className="eyebrow">A LITTLE CURIOSITY. A NEW POSSIBILITY.</p>
-          <h1>
-            Your next <em>aha.</em>
-          </h1>
-          <p>Understand the idea. Find your rhythm. Go a little further.</p>
+      {!learner && (
+        <div className="intro">
+          <div>
+            <p className="eyebrow">A LITTLE CURIOSITY. A NEW POSSIBILITY.</p>
+            <h1>
+              Your next <em>aha.</em>
+            </h1>
+            <p>Understand the idea. Find your rhythm. Go a little further.</p>
+          </div>
+          <div className="intro-note">
+            <span className="pulse-dot" />
+            Learning studio preview
+            <br />
+            <small>Explore selected skills across the math journey.</small>
+          </div>
         </div>
-        <div className="intro-note">
-          <span className="pulse-dot" />
-          Learning studio preview
-          <br />
-          <small>Explore selected skills across the math journey.</small>
-        </div>
-      </div>
+      )}
       <nav aria-label="Learning sections">
         {(["practice", "library", "progress"] as const).map((t) => (
           <button
             key={t}
             className={tab === t ? "active" : ""}
+            aria-current={tab === t ? "page" : undefined}
             onClick={() => setTab(t)}
           >
             {t === "practice"
@@ -341,206 +370,146 @@ function App() {
           </form>
         </section>
       ) : tab === "practice" ? (
-        <main className="practice-layout">
-          <section className="card practice">
-            <div className="card-top">
-              <span className="eyebrow">
-                {meta?.gradeBand ?? "YOUR OWN PATH"}
-              </span>
-              <span className="quiet">
-                {meta?.title ?? "Find your next step"}
-              </span>
-              {problem && (
-                <button
-                  className="text-button"
-                  disabled={busy}
-                  onClick={() => {
-                    setProblem(null);
-                    setQueue([]);
-                    setOutcome(null);
-                    setPending(null);
-                  }}
-                >
-                  Change topic
-                </button>
-              )}
-            </div>
-            {!problem ? (
-              <>
-                <h2>Ready when you are, {learner.name}.</h2>
-                <p className="lead">
-                  Take your time. Every question is a chance to understand
-                  something more deeply.
-                </p>
+        problem ? (
+          <PracticeWorkspace
+            problem={problem}
+            meta={meta}
+            lesson={
+              catalog?.lessons.find((entry) =>
+                entry.templateIds.includes(problem.templateId),
+              ) ?? lesson
+            }
+            response={response}
+            setResponse={setResponse}
+            outcome={outcome}
+            hint={hint}
+            busy={busy}
+            pending={!!pending}
+            submit={() => void action(submit)}
+            next={() => void action(next)}
+            requestHint={() =>
+              void action(async () => {
+                const data = await api<{ hint: string }>(
+                  `/learners/${learner.id}/hints`,
+                  { problemId: problem.id },
+                );
+                setHint(data.hint);
+              })
+            }
+            changeTopic={() => {
+              setProblem(null);
+              setQueue([]);
+              setOutcome(null);
+              setPending(null);
+              setFamily("");
+            }}
+          />
+        ) : (
+          <main className="session-start">
+            <section className="session-invitation">
+              <p className="eyebrow">YOUR OWN PATH THROUGH MATHEMATICS</p>
+              <h1>
+                A little of this.
+                <br />
+                <em>A new way to think.</em>
+              </h1>
+              <p>
+                A mix of ideas, familiar ground, and fresh challenges. Your
+                practice changes with you.
+              </p>
+              <button
+                className="start-mix"
+                disabled={busy}
+                onClick={() => void action(loadBatch)}
+              >
+                {family ? "Try this idea" : "Start your mix"}
+                <span aria-hidden="true"> ↗</span>
+              </button>
+              <details className="focus-picker">
+                <summary>Looking for a particular idea?</summary>
                 <label className="family-picker">
                   Choose your practice
                   <select
                     value={family}
-                    onChange={(e) => setFamily(e.target.value)}
+                    onChange={(event) => setFamily(event.target.value)}
                   >
-                    <option value="">Suggested next step</option>
-                    {catalog?.templates.map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.title} · {t.gradeBand}
+                    <option value="">A varied mix for me</option>
+                    {catalog?.templates.map((template) => (
+                      <option key={template.id} value={template.id}>
+                        {template.title} · {template.gradeBand}
                       </option>
                     ))}
                   </select>
                 </label>
-                <button disabled={busy} onClick={() => void action(loadBatch)}>
-                  Let’s begin <span aria-hidden="true">↗</span>
-                </button>
-              </>
-            ) : (
-              <>
-                <h2 className="question">{problem.prompt}</h2>
-                {problem.figure && <Figure figure={problem.figure} />}
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    void action(submit);
-                  }}
-                >
-                  <label htmlFor="answer">{problem.response.label}</label>
-                  <div className="answer-row">
-                    <input
-                      id="answer"
-                      autoComplete="off"
-                      inputMode={
-                        problem.response.kind === "number" ? "decimal" : "text"
-                      }
-                      value={response}
-                      onChange={(e) => setResponse(e.target.value)}
-                      disabled={!!outcome || !!pending || busy}
-                      placeholder={
-                        problem.response.kind === "fraction"
-                          ? "For example, 3/4"
-                          : "Your answer"
-                      }
-                      required
-                      maxLength={100}
-                    />
-                    {!outcome && (
-                      <button disabled={busy || !response.trim()}>
-                        {pending ? "Retry submission" : "Check answer"}
-                      </button>
-                    )}
-                  </div>
-                </form>
-                {!outcome && (
-                  <button
-                    className="text-button"
-                    disabled={busy}
-                    onClick={() =>
-                      void action(async () => {
-                        const data = await api<{ hint: string }>(
-                          `/learners/${learner.id}/hints`,
-                          { problemId: problem.id },
-                        );
-                        setHint(data.hint);
-                      })
-                    }
-                  >
-                    A little help
-                  </button>
-                )}
-                {hint && !outcome && <p className="hint">{hint}</p>}
-                {outcome && (
-                  <div
-                    className={`feedback ${outcome.correct ? "correct" : ""}`}
-                    role="status"
-                  >
-                    <h3>
-                      {outcome.correct
-                        ? "You’ve got it."
-                        : "Let’s work through it."}
-                    </h3>
-                    <p>
-                      Answer: <strong>{outcome.answer}</strong>
-                    </p>
-                    <ol>
-                      {outcome.explanation.map((step, i) => (
-                        <li key={i}>{step}</li>
-                      ))}
-                    </ol>
-                    {outcome.assisted && (
-                      <p className="quiet">
-                        Practiced with a hint. Independent practice will come
-                        next.
-                      </p>
-                    )}
-                    <button disabled={busy} onClick={() => void action(next)}>
-                      Continue <span aria-hidden="true">→</span>
-                    </button>
-                  </div>
-                )}
-              </>
-            )}
-          </section>
-          <aside>
-            <section className="card companion">
-              <p className="eyebrow">THE IDEA BEHIND IT</p>
-              <h3>{lesson?.title ?? "Understanding comes first."}</h3>
-              <p>
-                {lesson?.summary ??
-                  "Explore a lesson, see an example, and bring the idea back to your practice."}
-              </p>
-              {lesson ? (
-                <>
-                  <ul>
-                    {lesson.objectives.map((o) => (
-                      <li key={o}>{o}</li>
-                    ))}
-                  </ul>
-                  <button
-                    className="secondary"
-                    onClick={() => setTab("library")}
-                  >
-                    Explore the lesson
-                  </button>
-                </>
-              ) : (
-                <p className="quiet">
-                  Your practice will connect to a lesson here.
-                </p>
-              )}
+                <p>Try one problem, then return to your mix.</p>
+              </details>
             </section>
-            <section className="gentle-note">
-              <span aria-hidden="true">✧</span>
-              <p>
-                No race. No countdown.
-                <br />
-                Make room for the idea.
-              </p>
-            </section>
-          </aside>
-        </main>
+          </main>
+        )
       ) : tab === "library" ? (
         <main>
-          <div className="section-heading">
-            <h2>A library for curious minds.</h2>
-            <p>Read, explore, and print a lesson to keep nearby.</p>
-          </div>
-          <div className="library-grid">
-            {catalog?.lessons.map((l) => (
-              <article key={l.id} className="card lesson-card">
-                <p className="eyebrow">MINI-LESSON</p>
-                <h3>{l.title}</h3>
-                <p>{l.summary}</p>
-                <button className="secondary" onClick={() => setLesson(l)}>
-                  Read lesson
-                </button>
-              </article>
-            ))}
-          </div>
-          {lesson && (
+          {!readingLesson && (
+            <>
+              <div className="section-heading">
+                <h2>A library for curious minds.</h2>
+                <p>Read, explore, and print a lesson to keep nearby.</p>
+              </div>
+              <label className="library-search">
+                Find an idea
+                <input
+                  type="search"
+                  value={lessonSearch}
+                  onChange={(event) => setLessonSearch(event.target.value)}
+                  placeholder="Fractions, shapes, equations…"
+                />
+              </label>
+              <div className="library-grid">
+                {catalog?.lessons
+                  .filter((entry) =>
+                    `${entry.title} ${entry.summary}`
+                      .toLowerCase()
+                      .includes(lessonSearch.toLowerCase()),
+                  )
+                  .map((l) => (
+                    <article key={l.id} className="card lesson-card">
+                      <p className="eyebrow">MINI-LESSON</p>
+                      <h3>{l.title}</h3>
+                      <p>{l.summary}</p>
+                      <button
+                        className="secondary"
+                        onClick={(event) => {
+                          readerTrigger.current = event.currentTarget;
+                          setReadingLesson(l);
+                        }}
+                      >
+                        Read lesson
+                      </button>
+                    </article>
+                  ))}
+              </div>
+            </>
+          )}
+          {readingLesson && (
             <article className="card lesson-reader">
               <div className="card-top">
-                <p className="eyebrow">LEARN THE IDEA</p>
+                <button
+                  className="text-button"
+                  onClick={() => {
+                    setReadingLesson(null);
+                    requestAnimationFrame(() =>
+                      readerTrigger.current?.focus({ preventScroll: true }),
+                    );
+                  }}
+                >
+                  ← All lessons
+                </button>
                 <button className="text-button" onClick={() => window.print()}>
                   Print lesson
                 </button>
               </div>
-              <h2>{lesson.title}</h2>
+              <h2 ref={readerHeading} tabIndex={-1}>
+                {readingLesson.title}
+              </h2>
               <div className="downloads">
                 {(["lesson", "workbook", "solutions"] as const).map((kind) => (
                   <button
@@ -553,7 +522,7 @@ function App() {
                   </button>
                 ))}
               </div>
-              {lesson.sections.map((s) => (
+              {readingLesson.sections.map((s) => (
                 <section key={s.title}>
                   <h3>{s.title}</h3>
                   {s.paragraphs.map((p) => (
@@ -563,22 +532,22 @@ function App() {
               ))}
               <section className="worked-example">
                 <h3>Let’s try one together</h3>
-                <p>{lesson.workedExample.prompt}</p>
+                <p>{readingLesson.workedExample.prompt}</p>
                 <ol>
-                  {lesson.workedExample.steps.map((s) => (
+                  {readingLesson.workedExample.steps.map((s) => (
                     <li key={s}>{s}</li>
                   ))}
                 </ol>
-                <strong>{lesson.workedExample.answer}</strong>
+                <strong>{readingLesson.workedExample.answer}</strong>
               </section>
               <h3>Things to watch for</h3>
               <ul>
-                {lesson.pitfalls.map((p) => (
+                {readingLesson.pitfalls.map((p) => (
                   <li key={p}>{p}</li>
                 ))}
               </ul>
               <h3>For the grown-up nearby</h3>
-              <p>{lesson.parentGuide}</p>
+              <p>{readingLesson.parentGuide}</p>
             </article>
           )}
         </main>
@@ -616,17 +585,19 @@ function App() {
           </div>
         </main>
       )}
-      <footer>
-        <span>
-          {product.name} · A {product.company} learning studio
-        </span>
-        <span>
-          {catalog?.mode === "development"
-            ? "Local development · sample practice"
-            : "Selected curriculum preview"}{" "}
-          · English
-        </span>
-      </footer>
+      {!learner && (
+        <footer>
+          <span>
+            {product.name} · A {product.company} learning studio
+          </span>
+          <span>
+            {catalog?.mode === "development"
+              ? "Local development · sample practice"
+              : "Selected curriculum preview"}{" "}
+            · English
+          </span>
+        </footer>
+      )}
     </div>
   );
 }
