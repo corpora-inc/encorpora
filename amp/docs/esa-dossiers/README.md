@@ -61,3 +61,5 @@ Completing a checklist does not enable an offer. Record vendor acceptance, exact
 ## Supplier review packet
 
 The [Florida supplier packet](florida-supplier-packet.md) builds a standalone product brief, neutral catalog and source-matching previews, with a separate internal readiness audit. It is an unsent candidate packet, not an approved offer.
+
+[Idaho, Oklahoma and Alaska materials purchasing](id-ok-ak.md) distinguishes parent tax credits from Galena/IDEA district purchase orders, with paid-receipt, fiscal-window and annual-license uncertainties.
