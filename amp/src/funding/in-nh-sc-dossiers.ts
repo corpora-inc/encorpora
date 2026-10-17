@@ -151,7 +151,7 @@ export const inNhScDossiers: DossierInventory = {
       url: "https://www.scstatehouse.gov/code/t59c008.php",
       publisher: "South Carolina Legislature",
       locator:
-        "Sections 59-8-120(G), 125(A), 140: no direct parent refunds/reimbursement, annual provider reapplication and online-provider duties",
+        "Sections 59-8-120(G), 125(A), 140 and 150(B): no direct parent refunds/reimbursement, annual provider reapplication, documents and surety bond",
       checkedOn: "2026-10-17",
     },
   ],
@@ -360,7 +360,7 @@ export const inNhScDossiers: DossierInventory = {
             "SCDE approval precedes ClassWallet registration/bank setup. Current law requires annual provider reapplication; the guide has background-check attestations.",
           sourceIds: ["sc-intake", "sc-provider-guide", "sc-law"],
           unresolvedQuestion:
-            "Which nonstudent-facing publisher classification and staff attestations apply to Corpora?",
+            "Which nonstudent-facing publisher classification, staff attestations and surety-bond obligations apply to Corpora?",
         },
         {
           dimension: "software-subscription",
@@ -441,6 +441,7 @@ export const inNhScDossiers: DossierInventory = {
       readinessGaps: [
         "Reach funded eligible families; the 2026–27 application cap is filled and Option 1–3 homeschool enrollment is excluded.",
         "Confirm app/PDF category and publisher attestation duties; do not borrow tutor or school eligibility.",
+        "Section 59-8-150(B)(2) requires a bond before the school year for expected receipts of at least $50,000; after the first year the threshold is more than $50,000 received in the previous school year. Confirm publisher applicability and operative agreement before scaling.",
         "Design reviewed named parent/student invoices, distinct from opaque-reference quotes.",
         "Obtain actual digital fulfillment/refund terms before choosing activation policy or enabling an offer.",
       ],
