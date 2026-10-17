@@ -79,8 +79,14 @@ export function FamilyCenter({
       credentials: "same-origin",
     });
     const data = await response.json();
-    if (!current(epoch) || tokenRef.current !== token)
+    if (!current(epoch) || tokenRef.current !== token) {
+      if (path === "/family/export-ticket")
+        await fetch("/api/v1/family/export/revoke", {
+          method: "POST",
+          credentials: "same-origin",
+        }).catch(() => undefined);
       throw new Error("Your account session changed.");
+    }
     if (!response.ok)
       throw new Error(
         messages[data.error] ??

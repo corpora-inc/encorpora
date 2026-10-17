@@ -27,6 +27,7 @@ A linked Stripe purchase displays a billing-management action and an explicit re
 | POST | `/api/v1/family/delete-learning-data` | Same explicit confirmation |
 | POST | `/api/v1/family/export-ticket` | Request a browser download ticket |
 | GET | `/api/v1/family/export` | Stream an authorized export |
+| POST | `/api/v1/family/export/revoke` | Revoke the browser cookie capability, including after sign-out |
 
 All learning writers acquire `pg_advisory_xact_lock_shared(hashtextextended(accountId,0))` before learner locks and recheck consent inside the transaction. Parent privacy mutations and the consent-administration command acquire the corresponding exclusive account lock, then learner locks in sorted ID order. A transaction that started first can finish before withdrawal commits; no new learning write can pass the consent check after withdrawal commits. Deleted learners are excluded from practice and purchase authorization even after later re-consent.
 
@@ -34,7 +35,7 @@ Financial reconciliation may write to a deleted learner's opaque reference. It c
 
 ## Streaming export
 
-The browser first authenticates a POST to obtain a one-use download ticket. The server stores only a SHA-256 digest and sets a 60-second HttpOnly, SameSite=Strict cookie scoped to the export path. Hosted cookies require HTTPS. Export credentials never appear in a URL, DOM attribute or local storage. The native browser download then consumes the ticket atomically. Bearer-authenticated GET is also supported for tooling.
+The browser first authenticates a POST to obtain a one-use download ticket. The server stores only a SHA-256 digest and sets a 60-second HttpOnly, SameSite=Strict cookie scoped to the export path. Hosted cookies require HTTPS. Export credentials never appear in a URL, DOM attribute or local storage. The native browser download then consumes the ticket atomically. Bearer-authenticated GET is also supported for tooling. The host must revoke pending export cookies on sign-out or account changes using the revoke endpoint; no bearer token is required to remove this capability. The component also revokes a ticket response that arrives after it unmounts or its account changes. Revocation cannot recall a file already delivered to the browser.
 
 A repeatable-read PostgreSQL snapshot and cursors fetch at most 100 records at a time. The application does not collect the complete history in memory or build a browser Blob. Download aborts close the cursor transaction and release the connection. Individual statements have a 15-second timeout; an idle snapshot expires after 30 seconds and the whole download is bounded to two minutes. The final `complete` record is written only after successful traversal. An interrupted or exceptionally large export can be retried; bulk archival delivery beyond these limits needs a separately authorized asynchronous export job.
 

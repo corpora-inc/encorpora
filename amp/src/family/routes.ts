@@ -90,6 +90,17 @@ export async function registerFamilyRoutes(
       reply.header("Set-Cookie", cookie(ticket, 60));
       return { ready: true };
     });
+    // Removing a capability needs no bearer token, including after sign-out.
+    scope.post("/api/v1/family/export/revoke", async (request, reply) => {
+      const ticket = request.headers.cookie
+        ?.split(";")
+        .map((part) => part.trim())
+        .find((part) => part.startsWith("amp-export-ticket="))
+        ?.slice("amp-export-ticket=".length);
+      reply.header("Set-Cookie", cookie("", 0));
+      if (ticket) await repository.revokeExportTicket(ticket);
+      return { revoked: true };
+    });
     scope.get("/api/v1/family/export", async (request, reply) => {
       let account: string;
       if (request.headers.authorization)

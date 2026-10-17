@@ -221,6 +221,12 @@ export class FamilyRepository {
     );
     return ticket;
   }
+  async revokeExportTicket(ticket: string): Promise<void> {
+    if (!/^[A-Za-z0-9_-]{43}$/.test(ticket)) return;
+    await this.pool.query("DELETE FROM amp_export_tickets WHERE digest=$1", [
+      createHash("sha256").update(ticket).digest("hex"),
+    ]);
+  }
   async consumeExportTicket(ticket: string): Promise<string> {
     if (!/^[A-Za-z0-9_-]{43}$/.test(ticket))
       throw new FamilyError(401, "export_ticket_invalid");

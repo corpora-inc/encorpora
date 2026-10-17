@@ -278,6 +278,31 @@ test(
         ).statusCode,
         401,
       );
+      const revokedTicket = await app.inject({
+        method: "POST",
+        url: "/api/v1/family/export-ticket",
+        headers: { authorization: "Bearer fixture" },
+        payload: {},
+      });
+      const revokeCookie = String(revokedTicket.headers["set-cookie"]).split(
+        ";",
+      )[0]!;
+      const revoked = await app.inject({
+        method: "POST",
+        url: "/api/v1/family/export/revoke",
+        headers: { cookie: revokeCookie },
+      });
+      assert.equal(revoked.statusCode, 200);
+      assert.match(String(revoked.headers["set-cookie"]), /Max-Age=0/);
+      assert.equal(
+        (
+          await app.inject({
+            url: "/api/v1/family/export",
+            headers: { cookie: revokeCookie },
+          })
+        ).statusCode,
+        401,
+      );
       assert.equal((await api.summary("parent")).consent.status, "withdrawn");
       await pool.query(
         "UPDATE amp_privacy_events SET expires_at=now()-interval '1 second' WHERE action='export.started'",
