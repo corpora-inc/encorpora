@@ -1033,7 +1033,7 @@ function App() {
               })
             }
           />
-        ) : learner.birthYear != null && !changingBirthYear ? (
+        ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
           <main className="practice-start">
             <section className="start-card">
               <button

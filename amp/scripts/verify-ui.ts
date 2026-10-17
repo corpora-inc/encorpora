@@ -268,22 +268,17 @@ try {
         fullPage: true,
       });
   }
-  await page.getByRole("button", { name: "Lessons" }).click();
-  await page
-    .getByRole("button", { name: "Read lesson", exact: true })
-    .first()
-    .click();
-  await page.locator(".lesson-reader").waitFor();
-  if (process.env.AMP_VERIFY_DOWNLOADS === "true") {
-    await page.getByText("Download & print", { exact: true }).click();
-    const downloading = page.waitForEvent("download");
-    await page
-      .getByRole("button", { name: "Download lesson PDF", exact: true })
-      .click();
-    const download = await downloading;
-    assert.match(download.suggestedFilename(), /\.pdf$/);
-    assert.equal(await download.failure(), null);
-  }
+  // Lessons: every problem type has its own short lesson.
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Lessons", exact: true }).click();
+  await page.locator(".topic-list:not([hidden]) button").first().click();
+  await page.locator(".lesson-sheet .problem-lesson").waitFor();
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  await page.getByRole("button", { name: "← All lessons" }).click();
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
@@ -301,7 +296,7 @@ try {
     .getByRole("button", { name: "Create learner", exact: true })
     .click();
   learnerIds.push((await (await creation).json()).id);
-  await resume(page);
+  await page.getByRole("button", { name: "Practice", exact: true }).click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(
@@ -373,7 +368,7 @@ try {
     await route.fulfill({ response: result });
   });
   await page.getByRole("button", { name: "2016", exact: true }).click();
-  await page.getByRole("button", { name: /^Start practice/ }).click();
+  await page.getByRole("button", { name: "Go", exact: true }).click();
   await familyBatchWaiting;
   await page.locator(".account-menu summary").click();
   await page
@@ -420,7 +415,7 @@ try {
     "Late batch cannot restore practice after privacy invalidation",
   );
   assert.equal(
-    await page.getByRole("button", { name: /^Start practice/ }).count(),
+    await page.getByRole("button", { name: "Go", exact: true }).count(),
     0,
   );
   assert.equal(

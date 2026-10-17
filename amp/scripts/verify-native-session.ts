@@ -717,7 +717,7 @@ try {
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learnerA.id);
   await page.getByRole("button", { name: "2016", exact: true }).click();
-  await page.getByRole("button", { name: /^Start practice/ }).waitFor();
+  await page.getByRole("button", { name: "Go", exact: true }).waitFor();
   assert.equal(
     (
       await repository.pool.query(

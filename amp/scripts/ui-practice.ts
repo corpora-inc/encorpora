@@ -35,5 +35,15 @@ export async function startTopic(page: Page, templateId: string) {
 export async function resume(page: Page) {
   if (await page.locator(".problem-stage").isVisible()) return;
   await page.getByRole("button", { name: "Practice", exact: true }).click();
-  await page.getByRole("button", { name: "Go", exact: true }).click();
+  const go = page.getByRole("button", { name: "Go", exact: true });
+  await Promise.race([
+    go.waitFor(),
+    page.locator(".problem-stage").waitFor(),
+  ]).catch(async (error) => {
+    await page.screenshot({
+      path: "/private/tmp/claude-501/-Users-skyl-Code-corpora-encorpora/20514e70-c8cd-4bc7-8d21-138b610db6f7/scratchpad/resume-fail.png",
+    });
+    throw error;
+  });
+  if (await go.isVisible()) await go.click();
 }

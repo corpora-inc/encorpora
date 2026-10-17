@@ -302,7 +302,6 @@ export function PracticeWorkspace(props: Props) {
             </div>
           </fieldset>
           <button
-            ref={compact ? undefined : continueButton}
             className="choice-submit"
             type="submit"
             disabled={busy || (!outcome && !response)}
@@ -347,7 +346,6 @@ export function PracticeWorkspace(props: Props) {
               maxLength={100}
             />
             <button
-              ref={compact ? undefined : continueButton}
               className="answer-action"
               type="submit"
               disabled={busy || (!outcome && !response.trim())}

@@ -315,7 +315,7 @@ try {
         .getByRole("heading", { name: "What year was Current learner born?" })
         .waitFor();
       assert.equal(
-        await page.getByRole("button", { name: /^Start practice/ }).count(),
+        await page.getByRole("button", { name: "Go", exact: true }).count(),
         0,
       );
       assert.deepEqual(errors, []);
