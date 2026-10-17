@@ -1,7 +1,6 @@
-import {
-  fractionPracticeBindings,
-  validateFractionPracticeCoverage,
-} from "../src/content/fraction-practice-coverage.js";
+import { books } from "../src/books/catalog.js";
+import { validateEqualGroupsPracticeBindings } from "../books/equal-groups-workshop/practice.js";
+import { validateFractionPracticeCoverage } from "../src/content/fraction-practice-coverage.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { lessons, baseLessons } from "../src/content/lessons.js";
@@ -27,14 +26,27 @@ test("each implemented family has a reference lesson or validated book-page teac
     assert.ok(lesson.pitfalls.length >= 2);
     assert.ok(lesson.parentGuide.length > 40);
   }
+  for (const [id, count] of bindings)
+    assert.equal(count, 1, `Duplicate reference lesson for ${id}`);
   validateFractionPracticeCoverage();
-  for (const binding of fractionPracticeBindings)
-    bindings.set(
-      binding.templateId,
-      (bindings.get(binding.templateId) ?? 0) + 1,
-    );
+  validateEqualGroupsPracticeBindings(templates);
+  const bookLinks = new Set<string>();
+  for (const book of books)
+    for (const binding of book.bindings) {
+      const key = `${book.content.id}:${binding.templateId}`;
+      assert.equal(
+        bookLinks.has(key),
+        false,
+        `Duplicate book teaching link: ${key}`,
+      );
+      bookLinks.add(key);
+      bindings.set(
+        binding.templateId,
+        (bindings.get(binding.templateId) ?? 0) + 1,
+      );
+    }
   for (const template of templates)
-    assert.equal(bindings.get(template.id), 1, template.id);
+    assert.ok((bindings.get(template.id) ?? 0) >= 1, template.id);
 });
 
 test("worked examples have independently calculated exact answers", () => {

@@ -1,3 +1,6 @@
+import { equalGroupsWorkshop } from "../../books/equal-groups-workshop/book.js";
+import { equalGroupsAlignments } from "../../books/equal-groups-workshop/alignments.js";
+import { equalGroupsPracticeBindings } from "../../books/equal-groups-workshop/practice.js";
 import { fractionPracticeBindings } from "../content/fraction-practice-coverage.js";
 import { fractionFieldGuide } from "../../books/fraction-field-guide/book.js";
 import { fractionBookAlignments } from "../../books/fraction-field-guide/alignments.js";
@@ -11,6 +14,11 @@ export const books = [
     content: fractionFieldGuide,
     alignments: fractionBookAlignments,
     bindings: fractionPracticeBindings,
+  },
+  {
+    content: equalGroupsWorkshop,
+    alignments: equalGroupsAlignments,
+    bindings: equalGroupsPracticeBindings,
   },
 ] as const;
 export const bookSummaries: BookSummary[] = books.map(
