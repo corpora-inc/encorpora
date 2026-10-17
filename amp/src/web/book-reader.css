@@ -517,7 +517,7 @@
     font-size: 22px;
   }
   .reader-heading .eyebrow {
-    margin-bottom: 5px;
+    display: none;
   }
   .reader-heading > p:last-child:not(.eyebrow) {
     display: none;
