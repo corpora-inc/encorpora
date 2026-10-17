@@ -1,5 +1,6 @@
 import { offlineSigningConfiguration } from "../offline/signing.js";
 import { registerOfflineRoutes } from "../offline/routes.js";
+import { registerPaymentEvidenceRoutes } from "../billing/evidence/routes.js";
 import { consentConfiguration } from "../parent-consent/config.js";
 import { ConsentRepository } from "../parent-consent/repository.js";
 import { registerConsentRoutes } from "../parent-consent/routes.js";
@@ -63,6 +64,10 @@ await registerConsentRoutes(app, {
     consentConfig.secrets,
     consentConfig.transportEnabled,
   ),
+});
+await registerPaymentEvidenceRoutes(app, {
+  pool: repository.pool,
+  authenticate,
 });
 const billingConfig = stripeConfig(process.env);
 if (billingConfig) {

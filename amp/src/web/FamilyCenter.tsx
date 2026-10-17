@@ -1,3 +1,4 @@
+import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
 import { licenseSummary, licenseChannel } from "./family-access";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -51,6 +52,14 @@ export function FamilyCenter({
   onAnnualPurchase,
   onFundedPurchase,
 }: Props) {
+  const [paymentHistoryOpen, setPaymentHistoryOpen] = useState(false);
+  const paymentTrigger = useRef<HTMLButtonElement>(null);
+  const paymentWasOpen = useRef(false);
+  useLayoutEffect(() => {
+    if (paymentWasOpen.current && !paymentHistoryOpen)
+      paymentTrigger.current?.focus({ preventScroll: true });
+    paymentWasOpen.current = paymentHistoryOpen;
+  }, [paymentHistoryOpen]);
   const [section, setSection] = useState<"learners" | "access" | "privacy">(
     initialSection,
   );
@@ -81,6 +90,7 @@ export function FamilyCenter({
   useLayoutEffect(() => {
     mounted.current = true;
     generation.current++;
+    setPaymentHistoryOpen(false);
     setFamily(null);
     setLocalLearnerId("");
     setAccessDetails(false);
@@ -365,6 +375,14 @@ export function FamilyCenter({
       window.location.assign(url.href);
     });
   }
+  if (paymentHistoryOpen)
+    return (
+      <PaymentHistoryCenter
+        token={token}
+        identity={identity}
+        onClose={() => setPaymentHistoryOpen(false)}
+      />
+    );
   return (
     <section className="family-center" aria-labelledby="family-title">
       <div className="family-heading">
@@ -457,12 +475,19 @@ export function FamilyCenter({
             className="family-purchase-options"
             aria-label="Purchase options"
           >
-            <h2 tabIndex={-1}>Choose a purchase route</h2>
+            <h2 tabIndex={-1}>Purchases and records</h2>
             <p>
-              Check current options for your learner. Access begins only after a
-              verified purchase.
+              Review payment records or choose a purchase route for your
+              learner.
             </p>
             <div className="family-purchase-buttons">
+              <button
+                ref={paymentTrigger}
+                data-payment-history
+                onClick={() => setPaymentHistoryOpen(true)}
+              >
+                Payment records <span>Paid receipts and refund PDFs</span>
+              </button>
               {onAnnualPurchase && (
                 <button data-purchase-entry="annual" onClick={onAnnualPurchase}>
                   Annual subscription{" "}
@@ -630,33 +655,28 @@ export function FamilyCenter({
                     </article>
                   ))}
                 </div>
-                {section === "access" &&
-                  (selectedLearner?.stripeLinked ||
-                    onAnnualPurchase ||
-                    onFundedPurchase) && (
-                    <div className="family-profile-actions">
-                      {selectedLearner?.stripeLinked && (
-                        <div className="family-billing">
-                          <button
-                            aria-label="Manage billing and renewal"
-                            disabled={busy}
-                            onClick={() => void billing()}
-                          >
-                            Manage billing
-                          </button>
-                        </div>
-                      )}
-                      {(onAnnualPurchase || onFundedPurchase) && (
+                {section === "access" && (
+                  <div className="family-profile-actions">
+                    {selectedLearner?.stripeLinked && (
+                      <div className="family-billing">
                         <button
-                          className="family-purchase-open"
-                          data-purchase-options
-                          onClick={() => setPurchaseChooser(true)}
+                          aria-label="Manage billing and renewal"
+                          disabled={busy}
+                          onClick={() => void billing()}
                         >
-                          Purchase options
+                          Manage billing
                         </button>
-                      )}
-                    </div>
-                  )}
+                      </div>
+                    )}
+                    <button
+                      className="family-purchase-open"
+                      data-purchase-options
+                      onClick={() => setPurchaseChooser(true)}
+                    >
+                      Purchases &amp; records
+                    </button>
+                  </div>
+                )}
               </section>
             )}
             {section === "privacy" && !privacy && (

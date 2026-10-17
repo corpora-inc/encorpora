@@ -27,6 +27,7 @@ test(
         "0003-parent-consent.sql",
         "0004-parent-lifecycle.sql",
         "0005-stripe.sql",
+        "0011-paid-evidence.sql",
         "0006-commerce-orders.sql",
         "0008-skill-evidence.sql",
       ])
@@ -141,6 +142,16 @@ test(
       assert.equal(failure.status, "pending");
       remoteFail = false;
       await pool.query("UPDATE amp_stripe_inbox SET available_at=now()");
+      assert.deepEqual(await billing.runBatch(), { processed: 0, failed: 1 });
+      assert.equal(
+        (await pool.query("SELECT count(*)::int AS count FROM amp_grants"))
+          .rows[0].count,
+        0,
+      );
+      await pool.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id='parent'",
+      );
+      await pool.query("UPDATE amp_stripe_inbox SET available_at=now()");
       assert.deepEqual(await billing.runBatch(), { processed: 1, failed: 0 });
       assert.equal(
         (await pool.query("SELECT status FROM amp_grants")).rows[0].status,
@@ -207,6 +218,9 @@ test(
       await lock.query("BEGIN");
       await lock.query(
         "SELECT pg_advisory_xact_lock(hashtextextended('parent',0))",
+      );
+      await lock.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id='parent'",
       );
       let finished = false;
       const blocked = repository
