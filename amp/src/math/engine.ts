@@ -1,4 +1,8 @@
 import {
+  measurementTemplates,
+  generateMeasurementProblem,
+} from "./measurement-practice.js";
+import {
   algebraTemplates,
   generateAlgebraProblem,
 } from "./algebra-practice.js";
@@ -139,6 +143,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...measurementTemplates,
   ...baseTemplates,
   ...extendedTemplates,
   ...graphicalTemplates,
@@ -227,6 +232,8 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (measurementTemplates.some((t) => t.id === templateId))
+    return generateMeasurementProblem(templateId, seed);
   if (algebraTemplates.some((t) => t.id === templateId))
     return generateAlgebraProblem(templateId, seed);
   if (choiceTemplates.some((t) => t.id === templateId))
