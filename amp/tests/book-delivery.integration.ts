@@ -1,3 +1,4 @@
+import { readerCapabilities } from "../src/books/capabilities.js";
 import { books } from "../src/books/catalog.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -70,6 +71,17 @@ test(
           .json()
           .books.some((b: { id: string }) => b.id === "balance-and-change"),
       );
+      assert.ok(
+        !legacyList
+          .json()
+          .books.some((b: { id: string }) => b.id === "number-builders"),
+      );
+      const unsupportedNumber = await app.inject({
+        method: "POST",
+        url: `${listPath}/number-builders/open`,
+        payload: { readerCapabilities: ["algebra-models-v1"] },
+      });
+      assert.equal(unsupportedNumber.statusCode, 409);
       const capableList = await app.inject({
         method: "GET",
         url: `${listPath}?readerCapabilities=algebra-models-v1`,
@@ -112,7 +124,7 @@ test(
             url: `/api/v1/learners/${learner.id}/books/${content.id}/open`,
             payload: {
               problemId: linked.public.id,
-              readerCapabilities: ["algebra-models-v1"],
+              readerCapabilities,
             },
           });
           assert.equal(result.statusCode, 200);

@@ -19,6 +19,7 @@ addGuide(author);
 addMaterials(author);
 export const numberBuilders: MathBook = {
   id: "number-builders",
+  presentation: "early-number",
   version: "1.0.0",
   title: "Number Builders",
   subtitle: "Count, Compose, and Change",

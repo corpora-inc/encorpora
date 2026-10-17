@@ -1,3 +1,4 @@
+import { earlyNumberPrintCss } from "./early-number-print.js";
 import { MathText } from "./MathText.js";
 export { MathText } from "./MathText.js";
 import React from "react";
@@ -167,7 +168,10 @@ export function renderBook(book: MathBook): string {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>{book.title}</title>
-          <style>{bookCss}</style>
+          <style>
+            {bookCss +
+              (book.presentation === "early-number" ? earlyNumberPrintCss : "")}
+          </style>
         </head>
         <body>
           <nav className="screen-controls" aria-label="Book information">
@@ -186,7 +190,7 @@ export function renderBook(book: MathBook): string {
               <article
                 key={page.id}
                 id={page.id}
-                className={`book-page ${page.kind}`}
+                className={`book-page ${page.kind}${book.presentation === "early-number" ? " early-number-page" : ""}`}
                 aria-labelledby={`heading-${page.id}`}
               >
                 <div className="page-content">

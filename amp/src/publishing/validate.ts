@@ -237,6 +237,8 @@ export function validateDiagram(d: Diagram): void {
   }
 }
 export function validateBook(book: MathBook): void {
+  if (book.presentation !== undefined && book.presentation !== "early-number")
+    throw new Error("Unknown book presentation");
   if (!book.id || !book.title || !book.version || !book.pages.length)
     throw new Error("Book metadata and pages required");
   const ids = new Set<string>(),
