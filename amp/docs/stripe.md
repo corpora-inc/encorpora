@@ -2,7 +2,7 @@
 
 AMP's optional Stripe adapter sells one annual license for one learner. It uses hosted Checkout for card entry and the hosted customer portal for payment details and cancellation. Billing is disabled by default. Native in-app purchases and ESA funding use separate purchase channels; this adapter does not implement them.
 
-The parent web UI must call `POST /api/v1/billing/checkout` with an authenticated parent token and `{learnerId, requestId}`. `requestId` is a UUID retained across retries of the same purchase. The returned URL opens hosted Checkout. Prices, customer IDs, redirects and subscription metadata are chosen by the server. The return page says payment is processing until the existing entitlement endpoint reports access. A successful browser redirect is not proof of payment.
+The [parent annual purchase workspace](annual-purchase.md) calls `POST /api/v1/billing/checkout` with an authenticated parent token and `{learnerId, requestId, offerId}`. The offer fingerprint detects changes between price display and checkout. `requestId` is a UUID retained across retries of the same purchase. The returned URL opens hosted Checkout. Prices, customer IDs, redirects and subscription metadata are chosen by the server. The return page says payment is processing until the existing entitlement endpoint reports access. A successful browser redirect is not proof of payment.
 
 `POST /api/v1/billing/portal` accepts an empty body and returns a hosted portal URL for the authenticated parent's stored customer. It remains accessible after consent withdrawal so a parent can cancel renewal. Cancellation takes effect at the end of the paid term. Failed renewal payments create no new license and do not revoke an already paid term.
 
@@ -30,7 +30,7 @@ Review unresolved events by namespace and event ID using the Stripe Dashboard an
 
 Customer and checkout reservations are durable before remote calls. Remote creation uses stable Stripe idempotency keys. Unresolved creation older than 23 hours fails closed because Stripe may prune older idempotency keys. Reconcile the remote object before repairing its local mapping. An expired Checkout session is closed locally and returns `checkout_expired_retry_with_new_request`; the next explicit purchase needs a fresh request UUID. A completed subscription prevents duplicate purchase. Starting a replacement subscription after cancellation requires support reconciliation of the old binding; automatic replacement is not implemented.
 
-Checkout holds a shared account advisory lock and checks current consent and learner ownership inside the transaction. Privacy withdrawal/deletion must acquire the matching exclusive `pg_advisory_xact_lock(hashtextextended(accountId,0))` before learner locks. Financial bindings intentionally do not cascade with learner deletion. Deletion must preserve the ability to cancel renewal and reconcile payments; the parent lifecycle service must block or resolve active subscriptions before deleting learners.
+Checkout holds a shared account advisory lock and checks current consent and learner ownership inside the transaction. Privacy withdrawal/deletion must acquire the matching exclusive `pg_advisory_xact_lock(hashtextextended(accountId,0))` before learner locks. Financial bindings intentionally do not cascade with learning-data deletion. The parent lifecycle service retains an opaque billing tombstone and cancellation access while removing the learner’s name and learning records.
 
 ## Verification
 
@@ -41,3 +41,5 @@ Before enabling actual test-mode Checkout for parents, run an operator-owned Str
 Official references: [webhook signatures and delivery](https://docs.stripe.com/webhooks), [subscription events](https://docs.stripe.com/billing/subscriptions/webhooks), [Checkout sessions](https://docs.stripe.com/api/checkout/sessions/create), [InvoicePayments](https://docs.stripe.com/api/invoice-payment/object), and [customer portal](https://docs.stripe.com/customer-management).
 
 Commerce imports use indexed per-order storage. Stripe passes its transaction client into the importer, so invoice binding and order/event/grant effects commit together without nested account-lock connections. Measured reconciliation throughput, database capacity and bounded worker concurrency are required before a large rollout.
+
+The authenticated annual offer and owned learner status endpoints support the [parent web purchase workspace](annual-purchase.md). USD offer presentation is verified against the configured catalog. Browser return hints do not grant access; current and scheduled ledger licenses suppress duplicate purchases.

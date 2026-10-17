@@ -1,0 +1,262 @@
+.annual-purchase {
+  width: min(100%, 46rem);
+  height: 100dvh;
+  min-height: 0;
+  margin: auto;
+  padding: 16px 20px max(12px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #183e3a;
+  box-sizing: border-box;
+}
+.annual-header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+.annual-header h1 {
+  margin: 0;
+  font-size: clamp(24px, 5vw, 32px);
+  letter-spacing: -0.6px;
+  line-height: 1.1;
+}
+.annual-header h1:focus {
+  outline: none;
+}
+.annual-purchase button {
+  min-height: 46px;
+  padding: 10px 14px;
+}
+.annual-purchase button:focus-visible,
+.annual-purchase select:focus-visible {
+  outline: 3px solid #176d8b;
+  outline-offset: 3px;
+}
+.annual-sandbox {
+  flex: none;
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #fff1c7;
+  color: #604400;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: center;
+  font-weight: 650;
+}
+.annual-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.annual-learner {
+  display: grid;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 650;
+  flex: none;
+}
+.annual-learner select {
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 12px;
+  color: #183e3a;
+  background: white;
+  border: 1px solid #9eb4ab;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 17px;
+}
+.annual-plan {
+  flex: none;
+  padding: 12px 14px;
+  border: 1px solid #c8d8cf;
+  border-radius: 16px;
+  background: #fff;
+}
+.annual-plan p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.annual-plan .annual-price {
+  color: #183e3a;
+  font-size: 30px;
+  font-weight: 750;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.annual-price span {
+  font-size: 15px;
+  font-weight: 500;
+}
+.annual-plan .annual-renewal {
+  margin-top: 9px;
+  font-size: 14px;
+}
+.annual-status {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min-content;
+  padding: 8px 4px;
+}
+.annual-status h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1.15;
+}
+.annual-status p {
+  margin: 0;
+  line-height: 1.45;
+  font-size: 16px;
+}
+.annual-status .annual-error {
+  color: #8d3518;
+  border-left: 3px solid #ad572c;
+  padding-left: 10px;
+}
+.annual-dock {
+  flex: none;
+  padding-top: 8px;
+  border-top: 1px solid #cedbd3;
+}
+.annual-primary {
+  width: 100%;
+}
+.annual-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.annual-secondary button {
+  background: transparent;
+  color: #235a50;
+  border: none;
+  padding: 8px;
+  font-size: 13px;
+  flex: 1;
+}
+@media (max-width: 360px), (max-height: 650px) {
+  .annual-purchase {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .annual-header h1 {
+    font-size: 24px;
+  }
+  .annual-header button {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .annual-body {
+    gap: 9px;
+  }
+  .annual-plan {
+    padding: 10px 12px;
+  }
+  .annual-plan .annual-price {
+    font-size: 27px;
+  }
+  .annual-status h2 {
+    font-size: 21px;
+    margin-bottom: 5px;
+  }
+  .annual-status p {
+    font-size: 14px;
+  }
+  .annual-plan .annual-renewal {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .annual-secondary button {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+@media (max-height: 480px) and (min-width: 600px) {
+  .annual-purchase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    column-gap: 22px;
+    max-width: 900px;
+  }
+  .annual-header,
+  .annual-sandbox {
+    grid-column: 1 / -1;
+  }
+  .annual-body {
+    grid-column: 1;
+  }
+  .annual-dock {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: center;
+  }
+  .annual-status {
+    justify-content: flex-start;
+  }
+}
+.annual-header {
+  height: auto;
+  border: 0;
+}
+.annual-dock {
+  margin: 0;
+  text-align: left;
+  letter-spacing: normal;
+}
+.annual-learner select {
+  margin: 0;
+}
+.annual-dock {
+  display: block;
+}
+.annual-header {
+  min-height: 0;
+  flex-wrap: nowrap;
+}
+.annual-primary {
+  font-size: 16px;
+  line-height: 1.3;
+}
+@media (max-height: 480px) and (min-width: 600px) {
+  .annual-purchase {
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+  }
+  .annual-body {
+    display: contents;
+  }
+  .annual-learner {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .annual-plan {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: start;
+  }
+  .annual-status {
+    grid-column: 2;
+    grid-row: 3;
+    padding: 0;
+  }
+  .annual-dock {
+    grid-column: 2;
+    grid-row: 4;
+    align-self: end;
+  }
+}

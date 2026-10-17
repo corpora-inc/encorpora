@@ -74,6 +74,11 @@ export class StripeRepository {
         "SELECT pg_advisory_xact_lock(hashtextextended($1,1))",
         [`${this.namespace}:${learnerId}`],
       );
+      const grants = await client.query(
+        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
+        [learnerId],
+      );
+      if (grants.rowCount) throw new BillingError("learner_already_licensed");
       const retry = await client.query(
         "SELECT id,learner_id,closed FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
         [this.namespace, accountId, requestId],
@@ -88,11 +93,6 @@ export class StripeRepository {
         [this.namespace, learnerId],
       );
       if (open.rowCount) return open.rows[0].id as string;
-      const grants = await client.query(
-        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
-        [learnerId],
-      );
-      if (grants.rowCount) throw new BillingError("learner_already_licensed");
       await client.query(
         "INSERT INTO amp_stripe_customers(namespace,account_id,reservation_id) VALUES($1,$2,$3) ON CONFLICT DO NOTHING",
         [this.namespace, accountId, randomUUID()],
