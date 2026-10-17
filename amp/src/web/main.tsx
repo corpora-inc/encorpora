@@ -1,3 +1,6 @@
+import { consumeInitialConsentChallenge } from "./consent-entry";
+import { ParentConsentCenter } from "./ParentConsentCenter";
+import { takeConsentChallenge, type ConsentChallenge } from "./consent-link";
 import { AnnualPurchase } from "./AnnualPurchase";
 import { FundingPurchaseCenter } from "./FundingPurchaseCenter";
 import {
@@ -52,13 +55,25 @@ function App() {
     [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
     [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
+  const [consentOpen, setConsentOpen] = useState(false);
+  const [consentChallenge, setConsentChallenge] =
+    useState<ConsentChallenge | null>(null);
+  const pendingConsent = useRef<ConsentChallenge | null | undefined>(undefined);
+  if (pendingConsent.current === undefined)
+    pendingConsent.current = consumeInitialConsentChallenge();
+  const [hasPendingConsent, setHasPendingConsent] = useState(
+    !!pendingConsent.current,
+  );
+  const consentEpoch = useRef(0);
+  const renderedConsentEpoch = consentEpoch.current;
   const [familyLearnerId, setFamilyLearnerId] = useState("");
   const [purchaseView, setPurchaseView] = useState<"annual" | "funded" | null>(
     null,
   );
-  const [familySection, setFamilySection] = useState<"learners" | "access">(
-    "learners",
-  );
+  const [familySection, setFamilySection] = useState<
+    "learners" | "access" | "privacy"
+  >("learners");
+  const [consentReturn, setConsentReturn] = useState(false);
   const [purchaseFocus, setPurchaseFocus] = useState<
     "annual" | "funded" | undefined
   >();
@@ -126,6 +141,14 @@ function App() {
     tokenRef.current = next;
     setToken(next);
     if (accountRef.current === identity) return;
+    const openingConsent =
+      accountRef.current === null ? (pendingConsent.current ?? null) : null;
+    pendingConsent.current = null;
+    setHasPendingConsent(false);
+    consentEpoch.current++;
+    setConsentChallenge(openingConsent);
+    setConsentOpen(!!openingConsent);
+    setConsentReturn(false);
     if (accountRef.current !== null) {
       clearPurchaseReturn();
       pendingPurchaseReturn.current = null;
@@ -140,7 +163,7 @@ function App() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    setFamilyOpen(false);
+    setFamilyOpen(!!openingConsent);
     setFamilySummary(null);
     setBusy(false);
     setName("");
@@ -162,6 +185,35 @@ function App() {
     setError("");
     setToken(next);
   }
+  function openConsent(challenge: ConsentChallenge | null = null) {
+    consentEpoch.current++;
+    navigationEpoch.current++;
+    setConsentChallenge(challenge);
+    setConsentOpen(true);
+    setFamilyOpen(true);
+    setPurchaseView(null);
+    setReadingBook(null);
+  }
+  function closeConsent() {
+    consentEpoch.current++;
+    setConsentOpen(false);
+    setConsentChallenge(null);
+    setFamilySection("privacy");
+    setConsentReturn(true);
+  }
+  useEffect(() => {
+    const receive = () => {
+      const challenge = takeConsentChallenge(window.location, window.history);
+      if (!challenge) return;
+      if (tokenRef.current) openConsent(challenge);
+      else {
+        pendingConsent.current = challenge;
+        setHasPendingConsent(true);
+      }
+    };
+    window.addEventListener("hashchange", receive);
+    return () => window.removeEventListener("hashchange", receive);
+  }, []);
   async function api<T>(path: string, body?: unknown): Promise<T> {
     const epoch = authEpoch.current;
     const result = await fetch(`/api/v1${path}`, {
@@ -509,7 +561,7 @@ function App() {
     : undefined;
   return (
     <div
-      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -567,6 +619,10 @@ function App() {
                     onClick={() => {
                       clearPurchaseReturn();
                       pendingPurchaseReturn.current = null;
+                      pendingConsent.current = null;
+                      setHasPendingConsent(false);
+                      setConsentChallenge(null);
+                      consentEpoch.current++;
                       void action(signOut);
                     }}
                   >
@@ -578,7 +634,7 @@ function App() {
           )}
         </div>
       </header>
-      {!learner && (
+      {!learner && !familyOpen && (
         <div className="intro">
           <div>
             <p className="eyebrow">A LITTLE CURIOSITY. A NEW POSSIBILITY.</p>
@@ -621,7 +677,24 @@ function App() {
           {error}
         </div>
       )}
-      {familyOpen && token && purchaseView === "annual" ? (
+      {familyOpen && token && consentOpen ? (
+        <ParentConsentCenter
+          key={`${accountId}:${renderedConsentEpoch}`}
+          token={token}
+          identity={accountId ?? token}
+          challenge={consentChallenge}
+          onClose={closeConsent}
+          onChanged={() => {
+            if (
+              accountRef.current !== accountId ||
+              renderedConsentEpoch !== consentEpoch.current
+            )
+              return;
+            invalidateLearning();
+            void action(loadFamily);
+          }}
+        />
+      ) : familyOpen && token && purchaseView === "annual" ? (
         <AnnualPurchase
           token={token}
           identity={accountId ?? token}
@@ -642,6 +715,8 @@ function App() {
         />
       ) : familyOpen && token ? (
         <FamilyCenter
+          onConsentEnrollment={() => openConsent()}
+          returnToConsent={consentReturn}
           selectedLearnerId={familyLearnerId}
           onSelectLearner={setFamilyLearnerId}
           initialSection={familySection}
@@ -669,6 +744,12 @@ function App() {
             Sign in as a parent to manage your learners and continue their
             practice.
           </p>
+          {hasPendingConsent && (
+            <p>
+              After signing in, reopen your consent email link to review it. The
+              private link is not saved in this browser.
+            </p>
+          )}
           <button onClick={() => void action(signIn)} disabled={busy}>
             Parent sign in
           </button>
@@ -692,8 +773,9 @@ function App() {
               : "Parent consent is needed."}
           </h2>
           <p>
-            Ask the account administrator to verify consent before starting
-            practice. Your records and billing controls are available in Family.
+            Open Family → Privacy → Learning consent to review enrollment. Your
+            records and billing controls stay available while learning is
+            paused.
           </p>
           <button onClick={openFamily}>Manage family</button>
         </section>
@@ -1021,7 +1103,7 @@ function App() {
           </div>
         </main>
       )}
-      {!learner && (
+      {!learner && !familyOpen && (
         <footer>
           <span>
             {product.name} · A {product.company} learning studio

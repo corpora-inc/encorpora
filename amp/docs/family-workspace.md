@@ -7,3 +7,11 @@ Access presents the selected learner’s current license, nearest scheduled term
 Billing and purchase actions occupy a fixed action area. Long names and larger text can scroll inside the profile content without hiding these actions. The selector includes deleted profiles only as billing references, without their erased learner names. Billing controls are available after withdrawal or learning-data deletion. Withdrawal and deletion do not cancel a subscription; the parent must manage renewal with the purchase provider.
 
 Phone and landscape browser checks exercise current and future terms, revoked history, long names, deleted references, ownership of rename requests, selection after deletion, dialog focus, and visible touch targets. Financial eligibility for deletion is enforced by the backend; a profile with active or scheduled paid access cannot be silently erased while its renewal mapping is lost.
+
+## Consent entry
+
+Family → Privacy → Learning consent opens a separate focused workspace for reviewing the notice, requesting enrollment, responding to email links, and reviewing current consent. Enrollment availability and existing effective consent are separate states. The application registers the workflow with delivery disabled because it includes no production mail adapter. A private policy or cryptographic secret alone does not enable enrollment or establish legal compliance; see [parent consent enrollment](parent-consent.md).
+
+Consent email fragments are removed before browser authentication initializes. The challenge is held in memory, never browser storage or a purchase-return record. After an external sign-in redirect, reopen the email link. Signing out or changing parent accounts clears the held challenge; renewing the same parent’s access token preserves the current workspace. Returning to family settings restores focus to its consent action.
+
+A completed consent mutation immediately invalidates local learning state before refreshing family metadata. An obsolete response from a closed workspace or another account cannot restore that state. Consent, a paid license, subscription cancellation, and deletion are independent decisions; granting consent does not purchase access, and withdrawing it does not cancel renewal.

@@ -13,7 +13,9 @@ interface Props {
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
   onLearningInvalidated: () => void;
-  initialSection?: "learners" | "access";
+  initialSection?: "learners" | "access" | "privacy";
+  onConsentEnrollment?: () => void;
+  returnToConsent?: boolean;
   selectedLearnerId?: string;
   onSelectLearner?: (id: string) => void;
   returnFocus?: "annual" | "funded";
@@ -41,6 +43,8 @@ export function FamilyCenter({
   onClose,
   onLearningInvalidated,
   initialSection = "learners",
+  onConsentEnrollment,
+  returnToConsent = false,
   selectedLearnerId,
   onSelectLearner,
   returnFocus,
@@ -56,7 +60,7 @@ export function FamilyCenter({
   const [purchaseChooser, setPurchaseChooser] = useState(!!returnFocus);
   const [privacy, setPrivacy] = useState<
     "export" | "consent" | "delete" | "retention" | null
-  >(null);
+  >(returnToConsent ? "consent" : null);
   const [family, setFamily] = useState<FamilySummary | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
@@ -82,7 +86,7 @@ export function FamilyCenter({
     setAccessDetails(false);
     setSection(initialSection);
     setPurchaseChooser(!!returnFocus);
-    setPrivacy(null);
+    setPrivacy(returnToConsent ? "consent" : null);
     setError("");
     setNotice("");
     setConfirmation(null);
@@ -103,6 +107,12 @@ export function FamilyCenter({
         )
         ?.focus({ preventScroll: true });
   }, [!!family, returnFocus]);
+  useLayoutEffect(() => {
+    if (family && returnToConsent)
+      document
+        .querySelector<HTMLElement>("[data-consent-enrollment]")
+        ?.focus({ preventScroll: true });
+  }, [!!family, returnToConsent]);
   function closeChooser() {
     setPurchaseChooser(false);
     requestAnimationFrame(() =>
@@ -727,7 +737,15 @@ export function FamilyCenter({
                         ? "Local development access. No verified consent record is present."
                         : "Verified parent consent is not recorded."}
                 </p>
-                {family.consent.status !== "withdrawn" ? (
+                {onConsentEnrollment && (
+                  <button data-consent-enrollment onClick={onConsentEnrollment}>
+                    {family.consent.status === "active"
+                      ? "Review consent enrollment"
+                      : "Review consent options"}
+                  </button>
+                )}
+                {family.consent.status === "active" ||
+                family.consent.status === "development" ? (
                   <>
                     <p>
                       Withdrawal stops new learning activity. It does not delete
@@ -744,8 +762,9 @@ export function FamilyCenter({
                   </>
                 ) : (
                   <p>
-                    To resume, ask the account administrator to verify consent.
+                    Review consent options to check enrollment availability.
                     Your billing controls and data export stay available.
+                    Pausing learning does not cancel paid subscriptions.
                   </p>
                 )}
               </section>

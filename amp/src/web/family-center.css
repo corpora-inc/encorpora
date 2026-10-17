@@ -395,7 +395,8 @@
   display: none;
 }
 .shell.purchase-shell > .annual-purchase,
-.shell.purchase-shell > .funding-center {
+.shell.purchase-shell > .funding-center,
+.shell.purchase-shell > .parent-consent-center {
   height: 100%;
 }
 @media (max-width: 380px) {

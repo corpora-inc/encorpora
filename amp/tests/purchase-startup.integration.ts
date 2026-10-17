@@ -8,7 +8,7 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 
 test(
-  "API entrypoint registers disabled annual billing and empty funded purchase routes",
+  "API entrypoint registers unavailable purchases and consent without implicit configuration",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const admin = new Pool({
@@ -34,6 +34,8 @@ test(
             AMP_PORT: "4391",
             AMP_STRIPE_ENABLED: "false",
             AMP_FUNDING_OFFERS_FILE: "",
+            AMP_CONSENT_POLICY_FILE: "",
+            AMP_CONSENT_SECRET_BASE64: undefined,
           },
           stdio: "ignore",
         },
@@ -55,6 +57,17 @@ test(
         ["billing/offer", { available: false }],
         ["funding/offers", { offers: [] }],
         ["funding/requests", { requests: [] }],
+        [
+          "consent",
+          {
+            consentActive: false,
+            available: false,
+            notice: null,
+            noticeDigest: null,
+            confirmationDelayHours: null,
+            request: null,
+          },
+        ],
       ] as const) {
         const response = await fetch(`http://127.0.0.1:4391/api/v1/${path}`, {
           headers: { authorization: "Bearer amp-local-development" },
@@ -67,6 +80,19 @@ test(
         "http://127.0.0.1:4391/api/v1/funding/requests",
       );
       assert.equal(unauthorized.status, 401);
+      assert.equal(
+        (await fetch("http://127.0.0.1:4391/api/v1/consent")).status,
+        401,
+      );
+      assert.equal(
+        (
+          await admin.query(
+            `SELECT count(*)::int AS count FROM ${schema}.amp_consent_policy`,
+          )
+        ).rows[0].count,
+        0,
+        "startup does not install policy",
+      );
     } finally {
       if (child && child.exitCode === null) {
         const exited = once(child, "exit");
