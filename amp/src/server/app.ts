@@ -133,16 +133,8 @@ export function buildApp(options: {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
-      const frontier = await tx.frontier();
-      return {
-        overall: frontier.overall.level,
-        strands: Object.fromEntries(
-          Object.entries(frontier.strands).map(([strand, state]) => [
-            strand,
-            state.level,
-          ]),
-        ),
-      };
+      // Estimates, uncertainty and evidence counts per strand.
+      return tx.frontier();
     });
   });
   app.get("/api/v1/learners/:learnerId/starting-point", async (request) => {

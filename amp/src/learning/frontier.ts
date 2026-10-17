@@ -23,16 +23,19 @@ export type FrontierObservation = {
   correct: boolean;
   assisted: boolean;
 };
-type Staircase = {
+/** A grade-level estimate: posterior mean, standard deviation, evidence. */
+export type Estimate = {
   level: number;
-  step: number;
-  direction: -1 | 0 | 1;
-  n: number;
+  sd: number;
+  answered: number;
+  independent: number;
 };
 export type Frontier = {
-  /** Overall estimate; seeds strands the learner has not yet touched. */
-  overall: Staircase;
-  strands: Record<string, Staircase>;
+  /** The grade a learner of this age is typically working in. */
+  expected: number;
+  /** Pooled over every strand; seeds strands the learner has not practiced. */
+  overall: Estimate;
+  strands: Record<string, Estimate>;
 };
 
 /** Grades a learner born in `birthYear` should have completed by `now`.
@@ -44,7 +47,8 @@ export function completedGrade(birthYear: number, now = Date.now()): number {
   return schoolYear - birthYear - 7;
 }
 
-const bandStart = { "K–2": 1, "3–5": 3, "6–8": 6, "9–12": 9 } as const;
+const bandStart = { "K–2": 1, "3–5": 4, "6–8": 7, "9–12": 10 } as const;
+/** The grade a learner is typically working in now: born 2016 → grade 4. */
 export function initialLevel(options: {
   birthYear?: number | null;
   band?: keyof typeof bandStart | null;
@@ -52,62 +56,106 @@ export function initialLevel(options: {
 }): number {
   const level =
     options.birthYear != null
-      ? completedGrade(options.birthYear, options.now)
+      ? completedGrade(options.birthYear, options.now) + 1
       : options.band
         ? bandStart[options.band]
-        : 1;
+        : 2;
   return Math.min(MAX_GRADE, Math.max(0, level));
 }
 
-const FIRST_STEP = 1;
-const MIN_STEP = 0.25;
-const MAX_STEP = 2;
-function fresh(level: number): Staircase {
-  return { level, step: FIRST_STEP, direction: 0, n: 0 };
+// A grid posterior over grade level. Grade -1 lets "below kindergarten" be
+// expressed; 13 is college-level.
+const GRID = Array.from({ length: 141 }, (_, i) => -1 + i / 10);
+const PRIOR_SD = 2.5;
+const STRAND_SD = 1.75;
+/** P(independent success) for a learner at `theta` on a grade-`grade` problem:
+ * about 70% when the problem is at the learner's level, with a small floor
+ * and ceiling for lucky guesses and slips. */
+function success(theta: number, grade: number) {
+  const p = 1 / (1 + Math.exp(-1.7 * (theta - grade + 0.5)));
+  return 0.04 + 0.92 * p;
+}
+function prior(mean: number, sd: number) {
+  return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
+}
+function summarize(log: number[], answered: number, independent: number) {
+  const top = Math.max(...log);
+  const weights = log.map((value) => Math.exp(value - top));
+  const total = weights.reduce((sum, w) => sum + w, 0);
+  const level = weights.reduce((sum, w, i) => sum + w * GRID[i]!, 0) / total;
+  const variance =
+    weights.reduce((sum, w, i) => sum + w * (GRID[i]! - level) ** 2, 0) /
+    total;
+  return {
+    level: Math.round(level * 100) / 100,
+    sd: Math.round(Math.sqrt(variance) * 100) / 100,
+    answered,
+    independent,
+  };
 }
 
-/** Adaptive staircase in grade units. Consecutive moves in one direction grow
- * the step, so a strong learner climbs several grades in a few problems and a
- * struggling learner descends as far as counting. Each reversal halves the step,
- * so the estimate settles on the level where the learner succeeds about as often
- * as not. An easy success or an out-of-reach miss carries little information
- * and barely moves it. */
-function move(state: Staircase, grade: number, success: boolean): Staircase {
-  const direction = success ? 1 : -1;
-  if (success && grade < state.level - 1) return { ...state, n: state.n + 1 };
-  const step =
-    state.direction === 0
-      ? state.step
-      : direction === state.direction
-        ? Math.min(MAX_STEP, state.step * 1.5)
-        : Math.max(MIN_STEP, state.step / 2);
-  const reach = !success && grade > state.level + 1 ? 0.5 : 1;
-  const level = Math.min(
-    MAX_GRADE,
-    Math.max(0, state.level + direction * step * reach),
-  );
-  return { level, step, direction, n: state.n + 1 };
-}
-
+/** Bayesian estimate of each strand's grade level from the attempt history.
+ * Deterministic: the same history always gives the same estimate. */
 export function estimateFrontier(options: {
   start: number;
   observations: readonly FrontierObservation[];
   gradeOf: (templateId: string) => number | undefined;
   strandOf: (templateId: string) => string;
 }): Frontier {
-  const frontier: Frontier = { overall: fresh(options.start), strands: {} };
-  for (const observation of options.observations) {
+  const evidence = options.observations.flatMap((observation) => {
     const grade = options.gradeOf(observation.templateId);
-    if (grade === undefined) continue;
-    const success = observation.correct && !observation.assisted;
-    const strand = options.strandOf(observation.templateId);
-    const current = frontier.strands[strand] ?? fresh(frontier.overall.level);
-    frontier.strands[strand] = move(current, grade, success);
-    frontier.overall = move(frontier.overall, grade, success);
-  }
-  return frontier;
+    return grade === undefined
+      ? []
+      : [
+          {
+            grade,
+            strand: options.strandOf(observation.templateId),
+            success: observation.correct && !observation.assisted,
+          },
+        ];
+  });
+  const fold = (
+    log: number[],
+    items: readonly { grade: number; success: boolean }[],
+  ) => {
+    for (const item of items)
+      for (let i = 0; i < GRID.length; i++) {
+        const p = success(GRID[i]!, item.grade);
+        log[i] += Math.log(item.success ? p : 1 - p);
+      }
+    return summarize(
+      log,
+      items.length,
+      items.filter((item) => item.success).length,
+    );
+  };
+  const overall = fold(prior(options.start, PRIOR_SD), evidence);
+  const strands: Record<string, Estimate> = {};
+  for (const strand of new Set(evidence.map((item) => item.strand)))
+    strands[strand] = fold(
+      prior(overall.level, Math.max(STRAND_SD, overall.sd)),
+      evidence.filter((item) => item.strand === strand),
+    );
+  return { expected: options.start, overall, strands };
 }
 
+/** A strand's estimate; untouched strands inherit the overall level with the
+ * wider uncertainty of a strand that has no evidence of its own. */
+export function strandEstimate(frontier: Frontier, strand: string): Estimate {
+  return (
+    frontier.strands[strand] ?? {
+      level: frontier.overall.level,
+      sd: Math.max(STRAND_SD, frontier.overall.sd),
+      answered: 0,
+      independent: 0,
+    }
+  );
+}
 export function strandLevel(frontier: Frontier, strand: string): number {
-  return (frontier.strands[strand] ?? frontier.overall).level;
+  return strandEstimate(frontier, strand).level;
+}
+/** The grade to aim the next problem at: above the estimate while it is
+ * uncertain (to learn the most), settling just below it (about 80% success). */
+export function targetGrade(estimate: Estimate): number {
+  return estimate.level - 0.5 + 0.3 * estimate.sd;
 }

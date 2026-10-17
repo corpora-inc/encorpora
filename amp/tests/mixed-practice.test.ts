@@ -48,7 +48,12 @@ test("fresh sessions mix distinct strands and reserve different skills within a 
       new Set(choices.map((choice) => choice.template.skillId)).size,
       3,
     );
-    assert.ok(choices.every((choice) => choice.template.gradeBand === "K–2"));
+    // Without a birth year, placement starts in the early grades.
+    assert.ok(
+      choices.every((choice) =>
+        ["K–2", "3–5"].includes(choice.template.gradeBand),
+      ),
+    );
   }
   assert.deepEqual(plan([], 3, "same"), plan([], 3, "same"));
 });

@@ -822,13 +822,6 @@ header {
   background: var(--surface-2);
   box-shadow: inset 0 0 0 1px var(--line);
 }
-.frontier-fill {
-  position: absolute;
-  inset: 0 auto 0 0;
-  border-radius: inherit;
-  background: color-mix(in srgb, var(--strand) 70%, white);
-  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
 .frontier-dot {
   position: absolute;
   top: 50%;
@@ -841,10 +834,7 @@ header {
   transform: translate(-50%, -50%);
   transition: left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.frontier-track.estimated .frontier-fill {
-  background: transparent;
-}
-.frontier-track.estimated .frontier-dot {
+.frontier-track.estimated .frontier-track.estimated .frontier-dot {
   background: var(--surface);
 }
 .home-birth-year {
@@ -909,7 +899,7 @@ header {
   flex: none;
   min-height: 0;
   overflow: visible;
-  padding: 24px 0 64px;
+  padding: 16px 0 64px;
 }
 
 /* Focus: a thin ring for keyboard users, nothing after a click. */
@@ -1040,4 +1030,169 @@ html:has(.shell.flow)::-webkit-scrollbar {
   .shell.app-shell.flow > nav {
     top: calc(48px + env(safe-area-inset-top, 0px));
   }
+}
+
+/* ── Controls: exact shapes ──────────────────────────────────────────────
+   Round controls are true circles (equal width, height and min sizes);
+   quiet text actions are real buttons with one width, padding and radius. */
+.workspace-exit,
+.dialog-close {
+  flex: none;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+.feedback .result-mark {
+  aspect-ratio: 1;
+  min-width: 30px;
+}
+.practice-tools {
+  gap: 8px;
+}
+.practice-tools button,
+.feedback .practice-tools button {
+  min-width: 112px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.text-button {
+  border-radius: 10px;
+}
+.practice-tools .text-button:hover,
+.home-birth-year:hover,
+.lesson-sheet-bar .text-button:hover {
+  background: var(--primary-soft);
+  text-decoration: none;
+}
+.home-birth-year,
+.lesson-sheet-bar .text-button {
+  padding: 10px 14px;
+}
+
+/* Content starts the same distance below the tabs on every section. */
+.app-shell > main.progress-workspace {
+  padding-top: 16px;
+}
+/* Focus rings follow the input in use: keyboard shows them; a click or tap
+   (including focus the app moves after navigation) does not. */
+html[data-input="pointer"] :focus-visible {
+  outline: none;
+}
+@media (max-height: 620px) {
+  .app-shell > main.progress-workspace {
+    padding-bottom: 8px;
+  }
+}
+@media (max-height: 620px) {
+  .shell .progress-detail-content h1 {
+    font-size: 24px;
+    line-height: 1.1;
+  }
+}
+.progress-status {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.progress-detail-content footer button,
+.progress-detail footer button {
+  font-size: 15px;
+}
+
+/* Where you are: age-centred grade-level estimates with 90% ranges. */
+.home-level {
+  margin: 6px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.frontier-map li {
+  display: block;
+}
+.frontier-row {
+  display: grid;
+  grid-template-columns: min(132px, 34%) 1fr;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 8px;
+  margin: 0 -8px;
+  box-sizing: content-box;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font-weight: inherit;
+  text-align: left;
+}
+.frontier-row:hover,
+.frontier-row[aria-expanded="true"] {
+  background: var(--surface-2);
+}
+.frontier-map ul {
+  gap: 2px;
+}
+.frontier-track {
+  height: 10px;
+  background: var(--surface-2);
+}
+.frontier-center {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: 50%;
+  width: 1.5px;
+  background: var(--line-2);
+}
+.frontier-range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--strand) 32%, transparent);
+  transition:
+    left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.frontier-track.estimated .frontier-range {
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--strand) 22%, transparent) 0 4px,
+    transparent 4px 7px
+  );
+}
+.frontier-detail {
+  margin: 4px 0 8px calc(min(132px, 34%) + 16px);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.frontier-axis {
+  position: relative;
+  height: 18px;
+  margin: 10px 0 0 calc(min(132px, 34%) + 16px);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.frontier-axis span {
+  position: absolute;
+  white-space: nowrap;
+}
+.frontier-axis span:nth-child(1) {
+  left: 0;
+}
+.frontier-axis span:nth-child(2) {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.frontier-axis span:nth-child(3) {
+  right: 0;
 }

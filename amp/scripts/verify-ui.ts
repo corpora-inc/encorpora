@@ -287,7 +287,19 @@ try {
           const r = document.querySelector(selector)!.getBoundingClientRect();
           return [r.x, r.y, r.width, r.height].map(Math.round).join(",");
         })
-        .join(" | "),
+        .join(" | ")
+        .concat(
+          // Content starts the same distance below the tabs everywhere.
+          ` | gap ${Math.round(
+            document
+              .querySelector(
+                ".home-hero, .lesson-index, .lesson-sheet, .progress-surface, .start-card",
+              )!
+              .getBoundingClientRect().top -
+              document.querySelector(".shell > nav")!.getBoundingClientRect()
+                .bottom,
+          )}`,
+        ),
     );
   const sections: string[] = [];
   for (const section of ["Lessons", "Progress", "Practice"]) {

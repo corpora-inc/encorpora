@@ -80,14 +80,15 @@ function simulate(
   };
 }
 
-test("birth year places the first problems in material the learner should already know", () => {
+test("birth year centres placement on the grade a learner of that age is in", () => {
   assert.equal(completedGrade(2016, october), 3);
   assert.equal(completedGrade(2016, Date.parse("2026-06-01T00:00:00Z")), 2);
+  assert.equal(initialLevel({ birthYear: 2016, now: october }), 4);
   assert.equal(initialLevel({ birthYear: 2022, now: october }), 0);
   assert.equal(initialLevel({ birthYear: 1990, now: october }), 12);
-  const { shown } = simulate(2016, () => 3, 3);
+  const { shown } = simulate(2016, () => 4, 3);
   assert.ok(
-    shown.every((entry) => entry.grade === 3),
+    shown.every((entry) => entry.grade >= 3 && entry.grade <= 5),
     JSON.stringify(shown),
   );
 });
@@ -139,45 +140,35 @@ test("on-level practice stays within a grade of the frontier and keeps mixing st
   assert.ok(new Set(shown.map((entry) => entry.strand)).size >= 5);
 });
 
-test("the staircase is deterministic and bounded to the curriculum", () => {
-  const always = (correct: boolean) =>
+test("the estimate narrows with evidence and discounts uninformative answers", () => {
+  const run = (templateId: string, correct: boolean, assisted = false, n = 1) =>
     estimateFrontier({
       start: 6,
-      observations: Array.from({ length: 40 }, () => ({
-        templateId: "logarithm-integer",
+      observations: Array.from({ length: n }, () => ({
+        templateId,
         correct,
-        assisted: false,
+        assisted,
       })),
       gradeOf,
       strandOf,
-    });
-  assert.equal(always(true).overall.level, 12);
-  assert.equal(always(false).overall.level, 0);
-  const assisted = estimateFrontier({
-    start: 8,
-    observations: [
-      { templateId: "linear-equation", correct: true, assisted: true },
-    ],
-    gradeOf,
-    strandOf,
-  });
-  assert.equal(
-    assisted.overall.level,
-    7,
-    "assistance is not independent success",
+    }).overall;
+  const prior = run("linear-equation", true, false, 0);
+  assert.equal(prior.level, 6);
+  assert.ok(prior.sd > 2);
+  const strong = run("logarithm-integer", true, false, 20);
+  assert.ok(strong.level > 11.5 && strong.sd < 1, JSON.stringify(strong));
+  const weak = run("count-objects", false, false, 20);
+  assert.ok(weak.level < 0.5 && weak.sd < 1, JSON.stringify(weak));
+  // Help is not independent success.
+  assert.ok(
+    run("linear-equation", true, true).level <
+      run("linear-equation", true).level,
   );
-  const easy = estimateFrontier({
-    start: 8,
-    observations: [
-      { templateId: "count-objects", correct: true, assisted: false },
-    ],
-    gradeOf,
-    strandOf,
-  });
-  assert.equal(
-    easy.overall.level,
-    8,
-    "an easy success carries no upward evidence",
+  // Counting correctly says almost nothing about a grade-6 learner.
+  assert.ok(Math.abs(run("count-objects", true).level - prior.level) < 0.15);
+  assert.deepEqual(
+    run("linear-equation", true, false, 3),
+    run("linear-equation", true, false, 3),
   );
 });
 

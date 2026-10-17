@@ -65,6 +65,20 @@ type Catalog = {
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
+// Focus rings follow the input in use (see theme.css).
+addEventListener(
+  "pointerdown",
+  () => (document.documentElement.dataset.input = "pointer"),
+  true,
+);
+addEventListener(
+  "keydown",
+  (event) => {
+    if (!["Shift", "Control", "Alt", "Meta"].includes(event.key))
+      document.documentElement.dataset.input = "keyboard";
+  },
+  true,
+);
 const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) consumeInitialConsentChallenge();
 function App() {

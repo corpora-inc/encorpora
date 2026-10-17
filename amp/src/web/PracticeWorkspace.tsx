@@ -478,7 +478,7 @@ export function PracticeWorkspace(props: Props) {
               );
             }}
           >
-            {nativeKeyboard ? "Math keypad" : "Device keyboard"}
+            {nativeKeyboard ? "Keypad" : "Keyboard"}
           </button>
         )}
       </div>

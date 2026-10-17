@@ -98,7 +98,7 @@ try {
       await page.getByRole("radio").first().waitFor();
       assert.equal(
         await page
-          .getByRole("button", { name: "Device keyboard", exact: true })
+          .getByRole("button", { name: "Keyboard", exact: true })
           .count(),
         0,
       );

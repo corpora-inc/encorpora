@@ -6,7 +6,8 @@ import {
   estimateFrontier,
   gradeNumber,
   initialLevel,
-  strandLevel,
+  strandEstimate,
+  targetGrade,
   type Frontier,
 } from "../learning/frontier";
 import { projectSkillEvidence, type SkillEvidence } from "./evidence.js";
@@ -101,7 +102,7 @@ export function planMixedPractice(options: {
     strandFloor.set(strand, Math.min(strandFloor.get(strand) ?? grade, grade));
   }
   const targetOf = (strand: string) => {
-    const level = strandLevel(frontier, strand);
+    const level = targetGrade(strandEstimate(frontier, strand));
     const floor = strandFloor.get(strand)!;
     return level < floor && frontier.overall.level >= floor ? floor : level;
   };
@@ -175,8 +176,13 @@ export function planMixedPractice(options: {
       if (reason === "review") score = Math.max(score, 60) + 10;
       if (state?.status === "review-ready" && !overdue) score -= 60;
       if (!state && Math.abs(distance) <= 1) score += 12;
-      // Placement sweeps every strand early so no strand waits on a stale seed.
-      if (!(strand in frontier.strands) && Math.abs(distance) <= 1) score += 25;
+      // Seek information where the estimate is least certain, and lean into
+      // strands below the level expected for the learner's age.
+      const estimate = strandEstimate(frontier, strand);
+      if (Math.abs(distance) <= 1) {
+        score += 14 * estimate.sd;
+        score += 10 * Math.max(0, Math.min(2, frontier.expected - estimate.level));
+      }
       // Interleave: a miss returns after other work, never as an instant loop.
       if (template.skillId === lastSkill) score -= 200;
       if (strand === lastStrand) score -= 45;
