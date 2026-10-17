@@ -104,7 +104,7 @@ export interface ConsentView {
     createdAt: string;
     expiresAt: string;
     confirmationAfter: string | null;
-    delivery: "queued" | "accepted" | "rejected" | null;
+    delivery: "queued" | "accepted" | "rejected" | "stopped-unknown" | null;
   } | null;
 }
 export class ConsentError extends Error {
@@ -126,7 +126,16 @@ export interface ConsentMail {
 export type DeliveryResult =
   | { kind: "accepted"; receipt: string }
   | { kind: "rejected" }
-  | { kind: "unknown" };
+  | { kind: "unknown" }
+  | { kind: "conflict" };
 export interface ConsentTransport {
-  send(message: ConsentMail): Promise<DeliveryResult>;
+  readonly binding: {
+    provider: string;
+    sender: string;
+    credentialFingerprint: string;
+  };
+  send(
+    message: ConsentMail,
+    options: { signal: AbortSignal },
+  ): Promise<DeliveryResult>;
 }

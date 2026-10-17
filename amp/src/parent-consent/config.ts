@@ -1,6 +1,7 @@
+import { resendConfiguration } from "./resend.js";
 import { ConsentSecrets } from "./crypto.js";
 import { loadConsentPolicy } from "./policy.js";
-/** Configuration alone never enables delivery or installs a reviewed policy. */
+/** Transport opt-in never installs or approves a reviewed consent policy. */
 export async function consentConfiguration(env: NodeJS.ProcessEnv) {
   const encoded = env.AMP_CONSENT_SECRET_BASE64;
   let secrets: ConsentSecrets | null = null;
@@ -12,11 +13,14 @@ export async function consentConfiguration(env: NodeJS.ProcessEnv) {
       );
     secrets = new ConsentSecrets(bytes);
   }
+  const policy = await loadConsentPolicy(env.AMP_CONSENT_POLICY_FILE);
+  const delivery = resendConfiguration(env, policy);
+  if (delivery && !secrets)
+    throw new Error("Consent delivery requires encryption configuration");
   return {
-    policy: await loadConsentPolicy(env.AMP_CONSENT_POLICY_FILE),
+    policy,
+    delivery,
     secrets,
-    // The application includes no production mail transport. A future adapter
-    // must be explicitly supplied and verified before this can become true.
-    transportEnabled: false,
+    transportEnabled: delivery !== null,
   };
 }
