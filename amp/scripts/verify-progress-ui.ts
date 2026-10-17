@@ -140,6 +140,30 @@ try {
           fits,
           `${String(filterName)} ${size.width}: ${await page.locator(".progress-page-controls").innerText()}`,
         );
+        const cardIds = await page
+          .locator(".progress-skill-card")
+          .evaluateAll((elements) =>
+            elements.map((e) => e.getAttribute("data-progress-skill")!),
+          );
+        for (const id of cardIds) {
+          await page.locator(`[data-progress-skill="${id}"]`).click();
+          const bounds = await page
+            .locator(".progress-detail-content")
+            .evaluate((e) => ({
+              height: e.clientHeight,
+              scroll: e.scrollHeight,
+            }));
+          if (bounds.scroll > bounds.height + 2)
+            await page.screenshot({
+              path: new URL(`detail-overflow-${size.width}-${id}.png`, dir)
+                .pathname,
+            });
+          assert.ok(
+            bounds.scroll <= bounds.height + 2,
+            `${id} ${size.width} detail: ${JSON.stringify(bounds)}`,
+          );
+          await page.getByRole("button", { name: /All ideas/ }).click();
+        }
         const next = page.getByRole("button", {
           name: "Next ideas",
           exact: true,

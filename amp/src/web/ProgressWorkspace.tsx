@@ -102,30 +102,30 @@ function nextStep(skill: LearnerSkillProgress, asOf: string) {
   if (!skill.attempts)
     return {
       title: "A new idea to explore",
-      text: "Try one example to see how this idea feels. Then return to your varied mix.",
+      text: "Try an example, then return to your varied mix.",
     };
   const last = skill.recent.at(-1);
   if (last?.assisted)
     return {
       title: "Try a fresh example",
-      text: "You used some support. Read the idea again if it helps, then try a new problem in your own way.",
+      text: "Use the lesson if it helps, then try a fresh example on your own.",
     };
   if (last && !last.correct)
     return {
       title: "Another way into the idea",
-      text: "A missed answer helps us choose useful practice. A lesson can help you see a different approach.",
+      text: "Read the lesson for a different approach, then try a fresh example.",
     };
   if (reviewSuggested(skill, asOf))
     return {
       title: "A good time to revisit",
-      text: "You worked this out before. A fresh example is a chance to recall it after a break.",
+      text: "You solved this before. Try recalling it after a break.",
     };
   return {
     title: "Keep a mix of ideas",
     text:
       skill.independentOccasions >= 2
-        ? "You recalled this after a break. We’ll mix it in again so it stays familiar."
-        : "You worked this out independently. We’ll mix it in again so it stays familiar.",
+        ? "You recalled this after a break. It will return in your mix."
+        : "You solved this independently. It will return in your mix.",
   };
 }
 export function ProgressWorkspace({
@@ -351,8 +351,8 @@ export function ProgressWorkspace({
                   </div>
                   <p className="progress-key">
                     <span>✓ Independent</span>
-                    <span>◇ With help</span>
-                    <span>↻ Try again</span>
+                    <span>◇ Help</span>
+                    <span>↻ Retry</span>
                   </p>
                 </section>
               )}

@@ -723,3 +723,20 @@
   height: 1rem;
   pointer-events: none;
 }
+
+@media (max-height: 650px) and (max-width: 600px) {
+  .progress-counts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    line-height: 1.2;
+  }
+  .progress-counts > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .progress-counts span {
+    font-size: 0.75rem;
+  }
+}
