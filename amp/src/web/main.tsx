@@ -1,3 +1,11 @@
+import { AnnualPurchase } from "./AnnualPurchase";
+import { FundingPurchaseCenter } from "./FundingPurchaseCenter";
+import {
+  capturePurchaseReturn,
+  clearPurchaseReturn,
+  parsePurchaseReturn,
+  type PurchaseReturn,
+} from "./purchase-return";
 import { FamilyCenter } from "./FamilyCenter";
 import type { FamilySummary } from "../family/contracts";
 import { preferredBookForProblem } from "../books/selection";
@@ -36,6 +44,7 @@ type Catalog = {
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
+const initialPurchaseReturn = capturePurchaseReturn();
 function App() {
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
@@ -43,6 +52,20 @@ function App() {
     [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
     [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
+  const [purchaseView, setPurchaseView] = useState<"annual" | "funded" | null>(
+    null,
+  );
+  const [familySection, setFamilySection] = useState<"learners" | "access">(
+    "learners",
+  );
+  const [purchaseFocus, setPurchaseFocus] = useState<
+    "annual" | "funded" | undefined
+  >();
+  const [purchaseReturn, setPurchaseReturn] = useState<PurchaseReturn | null>(
+    null,
+  );
+  const pendingPurchaseReturn = useRef(initialPurchaseReturn);
+  const returnIdentity = useRef<string | null>(null);
   const [familySummary, setFamilySummary] = useState<FamilySummary | null>(
     null,
   );
@@ -102,6 +125,14 @@ function App() {
     tokenRef.current = next;
     setToken(next);
     if (accountRef.current === identity) return;
+    if (accountRef.current !== null) {
+      clearPurchaseReturn();
+      pendingPurchaseReturn.current = null;
+    }
+    setPurchaseView(null);
+    setPurchaseReturn(null);
+    setFamilySection("learners");
+    setPurchaseFocus(undefined);
     accountRef.current = identity;
     setAccountId(identity);
     authEpoch.current++;
@@ -190,6 +221,53 @@ function App() {
     if (token) void action(loadFamily);
   }, [accountId]);
   useEffect(() => {
+    if (!accountId || !token || !pendingPurchaseReturn.current) return;
+    const context = parsePurchaseReturn(pendingPurchaseReturn.current);
+    pendingPurchaseReturn.current = null;
+    if (!context) {
+      clearPurchaseReturn();
+      return;
+    }
+    returnIdentity.current = accountId;
+    const epoch = authEpoch.current;
+    const navigation = navigationEpoch.current;
+    void (async () => {
+      try {
+        if (context.purchaseId)
+          await api<{ learnerId: string }>(
+            `/billing/purchase/${context.purchaseId}`,
+          );
+        if (
+          epoch !== authEpoch.current ||
+          returnIdentity.current !== accountRef.current ||
+          navigation !== navigationEpoch.current ||
+          !parsePurchaseReturn(context)
+        )
+          return;
+        navigationEpoch.current++;
+        setReadingBook(null);
+        setFamilyOpen(true);
+        setFamilySection("access");
+        setPurchaseReturn(context);
+        setPurchaseView("annual");
+      } catch {
+        if (
+          epoch === authEpoch.current &&
+          navigation === navigationEpoch.current &&
+          parsePurchaseReturn(context)
+        ) {
+          setFamilyOpen(true);
+          setFamilySection("access");
+          setError(
+            "This purchase return could not be matched to your account. Open Annual subscription to check your learner’s access.",
+          );
+        }
+      } finally {
+        clearPurchaseReturn();
+      }
+    })();
+  }, [accountId]);
+  useEffect(() => {
     setReadingBook(null);
     setBooks([]);
     const epoch = authEpoch.current;
@@ -261,10 +339,28 @@ function App() {
     learnerRef.current = selected?.id;
     setLearner(selected);
   }
+  function closePurchase() {
+    setPurchaseFocus(purchaseView ?? undefined);
+    setPurchaseView(null);
+    setPurchaseReturn(null);
+    setFamilySection("access");
+    setError("");
+    void action(loadFamily);
+  }
+  function openPurchase(view: "annual" | "funded") {
+    navigationEpoch.current++;
+    setPurchaseReturn(null);
+    setPurchaseFocus(undefined);
+    setPurchaseView(view);
+    setError("");
+  }
   function openFamily() {
     navigationEpoch.current++;
     setReadingBook(null);
     setFamilyOpen(true);
+    setFamilySection("learners");
+    setPurchaseView(null);
+    setPurchaseFocus(undefined);
     document.querySelector(".account-menu")?.removeAttribute("open");
   }
   async function refreshProgress() {
@@ -283,6 +379,7 @@ function App() {
   }
   async function loadBatch() {
     if (!learner) return;
+    navigationEpoch.current++;
     const data = await api<{
       problems: PublicProblem[];
       lesson: Lesson | null;
@@ -410,7 +507,7 @@ function App() {
     : undefined;
   return (
     <div
-      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -465,7 +562,11 @@ function App() {
                 {token && catalog?.mode !== "development" && (
                   <button
                     className="text-button"
-                    onClick={() => void action(signOut)}
+                    onClick={() => {
+                      clearPurchaseReturn();
+                      pendingPurchaseReturn.current = null;
+                      void action(signOut);
+                    }}
                   >
                     Sign out
                   </button>
@@ -518,8 +619,31 @@ function App() {
           {error}
         </div>
       )}
-      {familyOpen && token ? (
+      {familyOpen && token && purchaseView === "annual" ? (
+        <AnnualPurchase
+          token={token}
+          identity={accountId ?? token}
+          returnState={purchaseReturn?.state}
+          purchaseId={purchaseReturn?.purchaseId}
+          onClose={closePurchase}
+          onAccessChanged={() => void action(loadFamily)}
+        />
+      ) : familyOpen && token && purchaseView === "funded" ? (
+        <FundingPurchaseCenter
+          token={token}
+          identity={accountId ?? token}
+          learners={
+            familySummary?.learners.filter((entry) => !entry.deletedAt) ?? []
+          }
+          consentActive={familySummary?.consent.status === "active"}
+          onClose={closePurchase}
+        />
+      ) : familyOpen && token ? (
         <FamilyCenter
+          initialSection={familySection}
+          returnFocus={purchaseFocus}
+          onAnnualPurchase={() => openPurchase("annual")}
+          onFundedPurchase={() => openPurchase("funded")}
           token={token}
           identity={accountId ?? token}
           onChanged={acceptFamily}

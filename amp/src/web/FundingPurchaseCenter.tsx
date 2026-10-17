@@ -403,9 +403,11 @@ export function FundingPurchaseCenter({
           </>
         ) : (
           <>
-            <p>
-              Choose a program and learner. Your program reviews the purchase.
-            </p>
+            {!!offers.length && (
+              <p>
+                Choose a program and learner. Your program reviews the purchase.
+              </p>
+            )}
             {!consentActive && (
               <p className="funding-notice">
                 Verified parent consent is needed to prepare a new request.
@@ -499,62 +501,64 @@ export function FundingPurchaseCenter({
           </>
         )}
       </div>
-      <footer className="funding-footer">
-        {request ? (
-          <>
-            {usable && request.status !== "parent-reported-submitted" ? (
-              <>
-                <button
-                  disabled={busy}
-                  onClick={() => void action(() => quote(request))}
-                >
-                  Download unpaid PDF quote
-                </button>
-                <a
-                  className="funding-primary funding-program-link"
-                  href={request.offer.destinationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setProgramOpened(request.id)}
-                >
-                  Open program purchase page ↗
-                </a>
-              </>
-            ) : (
-              <>
-                {request.status === "parent-reported-submitted" && usable && (
-                  <p className="funding-footer-status">
-                    Submission reported · awaiting verification
-                  </p>
-                )}
-                <button
-                  className="funding-secondary"
-                  disabled={busy}
-                  onClick={() => void action(refresh)}
-                >
-                  Refresh status
-                </button>
-              </>
-            )}
-          </>
-        ) : (
-          <>
-            {offer && (
-              <p className="funding-footer-status">
-                {money(offer.totalMinor)} total · one learner · 12 months
-              </p>
-            )}
-            <button
-              disabled={
-                loading || busy || !offer || !learnerId || !consentActive
-              }
-              onClick={() => void action(prepare)}
-            >
-              {busy ? "Preparing…" : "Prepare unpaid quote"}
-            </button>
-          </>
-        )}
-      </footer>
+      {(request || offer) && (
+        <footer className="funding-footer">
+          {request ? (
+            <>
+              {usable && request.status !== "parent-reported-submitted" ? (
+                <>
+                  <button
+                    disabled={busy}
+                    onClick={() => void action(() => quote(request))}
+                  >
+                    Download unpaid PDF quote
+                  </button>
+                  <a
+                    className="funding-primary funding-program-link"
+                    href={request.offer.destinationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setProgramOpened(request.id)}
+                  >
+                    Open program purchase page ↗
+                  </a>
+                </>
+              ) : (
+                <>
+                  {request.status === "parent-reported-submitted" && usable && (
+                    <p className="funding-footer-status">
+                      Submission reported · awaiting verification
+                    </p>
+                  )}
+                  <button
+                    className="funding-secondary"
+                    disabled={busy}
+                    onClick={() => void action(refresh)}
+                  >
+                    Refresh status
+                  </button>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              {offer && (
+                <p className="funding-footer-status">
+                  {money(offer.totalMinor)} total · one learner · 12 months
+                </p>
+              )}
+              <button
+                disabled={
+                  loading || busy || !offer || !learnerId || !consentActive
+                }
+                onClick={() => void action(prepare)}
+              >
+                {busy ? "Preparing…" : "Prepare unpaid quote"}
+              </button>
+            </>
+          )}
+        </footer>
+      )}
     </section>
   );
 }

@@ -1,3 +1,5 @@
+import { registerFundingPurchaseRoutes } from "../funding-purchase/routes.js";
+import { loadFundingOffers } from "../funding-purchase/config.js";
 import { registerFamilyRoutes } from "../family/routes.js";
 import { stripeConfig } from "../billing/stripe/config.js";
 import {
@@ -41,6 +43,11 @@ await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
   development,
+});
+await registerFundingPurchaseRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  offers: await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE),
 });
 const billingConfig = stripeConfig(process.env);
 if (billingConfig) {
