@@ -1,3 +1,7 @@
+import {
+  fractionPracticeTemplates,
+  generateFractionPracticeProblem,
+} from "./fraction-practice";
 import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
@@ -130,6 +134,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
+  ...fractionPracticeTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -198,6 +203,8 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (fractionPracticeTemplates.some((t) => t.id === templateId))
+    return generateFractionPracticeProblem(templateId, seed);
   if (elementaryTemplates.some((t) => t.id === templateId))
     return generateElementaryProblem(templateId, seed);
   if (graphicalTemplates.some((t) => t.id === templateId))

@@ -1,8 +1,12 @@
+import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
+    case "rational-line":
+    case "fraction-strips":
+      return <FractionPracticeFigure figure={figure} />;
     case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
