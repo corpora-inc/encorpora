@@ -37,8 +37,12 @@ test("measurement book keys and curricular links retain selected component limit
   }
   validateMeasurementAlignments(skills, templates, standards);
   validateMeasurementPracticeBindings(templates);
-  assert.equal(measurementPracticeBindings.length, 1);
-  assert.equal(measurementPracticeBindings[0]!.templateId, "rectangle-area");
+  assert.equal(measurementPracticeBindings.length, 16);
+  assert.equal(
+    measurementPracticeBindings.filter((b) => b.templateId === "rectangle-area")
+      .length,
+    1,
+  );
   for (const changed of [
     { ...measurementAlignments[0]!, pageIds: ["absent"] },
     { ...measurementAlignments[0]!, taskIds: ["absent"] },
