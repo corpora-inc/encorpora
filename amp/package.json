@@ -1,0 +1,50 @@
+{
+  "name": "@corpora/amp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:api": "tsx watch src/server/main.ts",
+    "start": "tsx src/server/main.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "test": "tsx --test tests/*.test.ts",
+    "test:db": "tsx --test tests/*.integration.ts",
+    "test:ui": "tsx scripts/verify-ui.ts",
+    "tsc": "tsc --noEmit",
+    "build": "npm run tsc && vite build",
+    "audit": "tsx scripts/audit.ts",
+    "publications": "tsx scripts/publications.ts",
+    "commerce:import": "tsx scripts/commerce-event.ts",
+    "production:queue": "tsx scripts/production-queue.ts",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/**/*.ts\"",
+    "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl"
+  },
+  "dependencies": {
+    "@fastify/rate-limit": "^10.3.0",
+    "drizzle-orm": "^0.45.4",
+    "fastify": "^5.6.0",
+    "jose": "^6.1.0",
+    "oidc-client-ts": "^3.5.0",
+    "pg": "^8.16.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4",
+    "@types/node": "^22.18.0",
+    "@types/pg": "^8.15.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "playwright": "^1.55.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0"
+  }
+}

@@ -24,6 +24,8 @@ jobs:
     name: changes
     runs-on: ubuntu-latest
     outputs:
+      amp: ${{ steps.filter.outputs.amp }}
+      amp_native: ${{ steps.filter.outputs.amp_native }}
       aha_app: ${{ steps.filter.outputs.aha_app }}
       ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
       corpan_app: ${{ steps.filter.outputs.corpan_app }}
@@ -91,6 +93,8 @@ jobs:
           # reviewer, whose failure mode when it regresses is to PASS wrongly —
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
+          set_output amp_native '^(amp/mobile/|\.github/workflows/ci\.yml$)'
+          set_output amp '^(amp/|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
@@ -265,7 +269,7 @@ jobs:
           # app compiles all of them). `.github/workflows/ios-native.yml`
           # additionally compiles their Swift, but it is advisory and does not
           # count here.
-          covered='^(corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/)'
+          covered='^(amp/|corpan/corpan-app/|corpan/dja/|corpan/infra/terraform/lambda/|corpan/packs/|corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|web/(io|data|pages|scripts)/|corpan/plugins/|dynawalla/dynawalla-app/|dynawalla/(curriculum|engine|games|packs)/)'
 
           # Carve-outs checked BEFORE `covered`, because a broader area prefix
           # would otherwise swallow them. grep -E has no negative lookahead,
@@ -1331,11 +1335,83 @@ jobs:
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
   # Skipped needs are fine; any failure or cancellation fails the gate.
+  amp:
+    name: amp
+    needs: changes
+    if: needs.changes.outputs.amp == 'true'
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: amp
+          POSTGRES_PASSWORD: amp
+          POSTGRES_DB: amp_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U amp"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    defaults:
+      run:
+        working-directory: amp
+    env:
+      AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run audit
+      - run: npm run test:db
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
+      - run: npm run publications
+      - run: npm run production:queue
+      - run: npm run review:math
+
+  amp-native:
+    name: amp-native
+    needs: changes
+    if: needs.changes.outputs.amp_native == 'true'
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: amp/mobile
+    steps:
+      - uses: actions/checkout@v4
+      - run: git lfs pull --include="amp/mobile/icons/icon.png" --exclude=""
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - uses: dtolnay/rust-toolchain@1.93.0
+        with:
+          components: rustfmt, clippy
+      - run: npm ci
+        working-directory: amp
+      - run: npm run build
+        working-directory: amp
+      - run: cargo fmt --check
+      - run: cargo check --locked
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo test --locked
+
   ci-gate:
     name: ci-gate
     needs:
       [
         changes,
+        amp,
+        amp-native,
         aha-app,
         aha-native,
         ci-scripts,
