@@ -1,3 +1,5 @@
+import { FamilyCenter } from "./FamilyCenter";
+import type { FamilySummary } from "../family/contracts";
 import { BookReader } from "./BookReader";
 import { readingFrames } from "../books/reading";
 import type { BookSummary } from "../books/catalog";
@@ -37,8 +39,15 @@ function App() {
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
     [catalog, setCatalog] = useState<Catalog | null>(null),
-    [learners, setLearners] = useState<Learner[]>([]),
-    [learner, setLearner] = useState<Learner | null>(null);
+    [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
+    [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
+  const [familyOpen, setFamilyOpen] = useState(false);
+  const [familySummary, setFamilySummary] = useState<FamilySummary | null>(
+    null,
+  );
+  const learningAllowed =
+    familySummary?.consent.status === "active" ||
+    familySummary?.consent.status === "development";
   const [tab, setTab] = useState<"practice" | "library" | "progress">(
       "practice",
     ),
@@ -62,11 +71,13 @@ function App() {
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
   const libraryScroll = useRef(0);
-  usePracticeViewport(!!learner);
+  usePracticeViewport(!!learner || familyOpen);
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
   }, [readingLesson, tab]);
+  const authSessionRevision = useRef(0),
+    familyRevision = useRef(0);
   const authEpoch = useRef(0),
     tokenRef = useRef<string | null>(null),
     accountRef = useRef<string | null>(null);
@@ -93,6 +104,11 @@ function App() {
     accountRef.current = identity;
     setAccountId(identity);
     authEpoch.current++;
+    navigationEpoch.current++;
+    learnerRef.current = undefined;
+    setFamilyOpen(false);
+    setFamilySummary(null);
+    setBusy(false);
     setName("");
     setLesson(null);
     setReadingLesson(null);
@@ -118,7 +134,9 @@ function App() {
       method: body === undefined ? "GET" : "POST",
       headers: {
         "content-type": "application/json",
-        ...(token ? { authorization: `Bearer ${token}` } : {}),
+        ...(tokenRef.current
+          ? { authorization: `Bearer ${tokenRef.current}` }
+          : {}),
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -130,21 +148,35 @@ function App() {
     return data;
   }
   async function action(run: () => Promise<void>) {
+    const epoch = authEpoch.current;
     setBusy(true);
     setError("");
     try {
       await run();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong");
+      if (epoch === authEpoch.current)
+        setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
-      setBusy(false);
+      if (epoch === authEpoch.current) setBusy(false);
     }
   }
-  useEffect(() => onSessionChanged(updateAuth), []);
+  useEffect(
+    () =>
+      onSessionChanged((session) => {
+        authSessionRevision.current++;
+        updateAuth(session);
+      }),
+    [],
+  );
   useEffect(() => {
+    const revision = authSessionRevision.current;
     void accessSession()
-      .then(updateAuth)
-      .catch((e) => setError(String(e)));
+      .then((session) => {
+        if (revision === authSessionRevision.current) updateAuth(session);
+      })
+      .catch((e) => {
+        if (revision === authSessionRevision.current) setError(String(e));
+      });
     void fetch("/api/v1/catalog")
       .then((r) => {
         if (!r.ok) throw new Error("The learning service is unavailable.");
@@ -154,12 +186,7 @@ function App() {
       .catch((e) => setError(String(e)));
   }, []);
   useEffect(() => {
-    if (token)
-      void action(async () => {
-        const data = await api<{ learners: Learner[] }>("/learners");
-        setLearners(data.learners);
-        setLearner(data.learners[0] ?? null);
-      });
+    if (token) void action(loadFamily);
   }, [accountId]);
   useEffect(() => {
     setReadingBook(null);
@@ -180,10 +207,65 @@ function App() {
     setPending(null);
     setProgress([]);
     if (learner)
-      void refreshProgress().catch((e) =>
-        setError(e instanceof Error ? e.message : "Could not load progress"),
-      );
+      void refreshProgress().catch((e) => {
+        if (epoch === authEpoch.current && learnerRef.current === learner.id)
+          setError(e instanceof Error ? e.message : "Could not load progress");
+      });
   }, [learner?.id]);
+  function invalidateLearning() {
+    authEpoch.current++;
+    navigationEpoch.current++;
+    learnerRef.current = undefined;
+    setLearner(null);
+    setLearners([]);
+    setFamilySummary(null);
+    setProblem(null);
+    setQueue([]);
+    setOutcome(null);
+    setPending(null);
+    setResponse("");
+    setHint("");
+    setProgress([]);
+    setLesson(null);
+    setReadingLesson(null);
+    setReadingBook(null);
+    setBooks([]);
+    bookPositions.current = {};
+    setFamily("");
+    setBusy(false);
+    setError("");
+  }
+  async function loadFamily() {
+    const revision = familyRevision.current;
+    try {
+      const summary = await api<FamilySummary>("/family");
+      if (revision === familyRevision.current) acceptFamily(summary);
+    } catch (error) {
+      if (revision === familyRevision.current) throw error;
+    }
+  }
+  function acceptFamily(summary: FamilySummary) {
+    familyRevision.current++;
+    setFamilySummary(summary);
+    const available = summary.learners.filter((entry) => !entry.deletedAt);
+    setLearners(available);
+    const allowed =
+      summary.consent.status === "active" ||
+      summary.consent.status === "development";
+    const selected = allowed
+      ? (available.find((entry) => entry.id === learnerRef.current) ??
+        available[0] ??
+        null)
+      : null;
+    learnerRef.current = selected?.id;
+    setLearner(selected);
+  }
+  function openFamily() {
+    navigationEpoch.current++;
+    setReadingBook(null);
+    setFamilyOpen(true);
+    document.querySelector(".account-menu")?.removeAttribute("open");
+  }
   async function refreshProgress() {
     if (!learner) return;
     const data = await api<{ skills: SkillProgress[] }>(
@@ -323,7 +405,7 @@ function App() {
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
   return (
     <div
-      className={`shell ${learner ? "app-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -334,7 +416,7 @@ function App() {
           <span>MATHEMATICS</span>
         </a>
         <div className="account">
-          {token && learners.length > 0 && (
+          {token && !familyOpen && learningAllowed && learners.length > 0 && (
             <select
               aria-label="Learner"
               value={learner?.id ?? ""}
@@ -353,12 +435,14 @@ function App() {
               ))}
             </select>
           )}
-          {token && learners.length > 0 && (
+          {token && !familyOpen && (
             <details className="account-menu">
               <summary aria-label="Family menu">Family</summary>
               <div className="account-menu-content">
-                {" "}
-                {token && learners.length > 0 && (
+                <button className="text-button" onClick={openFamily}>
+                  Manage family
+                </button>
+                {learningAllowed && (
                   <button
                     className="text-button"
                     disabled={busy}
@@ -403,31 +487,48 @@ function App() {
           </div>
         </div>
       )}
-      <nav aria-label="Learning sections">
-        {(["practice", "library", "progress"] as const).map((t) => (
-          <button
-            key={t}
-            className={tab === t ? "active" : ""}
-            aria-current={tab === t ? "page" : undefined}
-            onClick={() => {
-              navigationEpoch.current++;
-              setTab(t);
-            }}
-          >
-            {t === "practice"
-              ? "Your practice"
-              : t === "library"
-                ? "Lesson library"
-                : "Your progress"}
-          </button>
-        ))}
-      </nav>
+      {!familyOpen && learner && (
+        <nav aria-label="Learning sections">
+          {(["practice", "library", "progress"] as const).map((t) => (
+            <button
+              key={t}
+              className={tab === t ? "active" : ""}
+              aria-current={tab === t ? "page" : undefined}
+              onClick={() => {
+                navigationEpoch.current++;
+                setTab(t);
+              }}
+            >
+              {t === "practice"
+                ? "Your practice"
+                : t === "library"
+                  ? "Lesson library"
+                  : "Your progress"}
+            </button>
+          ))}
+        </nav>
+      )}
       {error && (
         <div role="alert" className="error">
           {error}
         </div>
       )}
-      {!token ? (
+      {familyOpen && token ? (
+        <FamilyCenter
+          token={token}
+          identity={accountId ?? token}
+          onChanged={acceptFamily}
+          onLearningInvalidated={invalidateLearning}
+          onClose={() => {
+            setFamilyOpen(false);
+            requestAnimationFrame(() =>
+              document
+                .querySelector<HTMLElement>(".account-menu summary")
+                ?.focus({ preventScroll: true }),
+            );
+          }}
+        />
+      ) : !token ? (
         <section className="card welcome">
           <p className="eyebrow">ONE ACCOUNT. EVERY LEARNING DEVICE.</p>
           <h2>A place to grow in mathematics.</h2>
@@ -438,6 +539,30 @@ function App() {
           <button onClick={() => void action(signIn)} disabled={busy}>
             Parent sign in
           </button>
+        </section>
+      ) : !familySummary ? (
+        <section className="card welcome" aria-busy={busy}>
+          <h2>{error ? "Let’s reconnect." : "Getting your family ready…"}</h2>
+          {error && (
+            <button onClick={() => void action(loadFamily)}>Try again</button>
+          )}
+          <button className="secondary" onClick={openFamily}>
+            Manage family
+          </button>
+        </section>
+      ) : !learningAllowed ? (
+        <section className="card welcome">
+          <p className="eyebrow">PARENT ACCOUNT</p>
+          <h2>
+            {familySummary.consent.status === "withdrawn"
+              ? "Learning is paused."
+              : "Parent consent is needed."}
+          </h2>
+          <p>
+            Ask the account administrator to verify consent before starting
+            practice. Your records and billing controls are available in Family.
+          </p>
+          <button onClick={openFamily}>Manage family</button>
         </section>
       ) : !learner ? (
         <section className="card welcome">

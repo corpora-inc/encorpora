@@ -1,3 +1,4 @@
+import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
 import { createServer } from "vite";
 import { mkdir } from "node:fs/promises";
@@ -15,6 +16,11 @@ const repository = new PostgresRepository(url, { development: true });
 const learner = await repository.create("development-household", "Book review");
 const app = buildApp({
   repository,
+  authenticate: developmentAuth(),
+  development: true,
+});
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
   authenticate: developmentAuth(),
   development: true,
 });
