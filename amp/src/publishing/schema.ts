@@ -16,6 +16,8 @@ export type Diagram = {
       min: Rational;
       max: Rational;
       divisionsPerUnit: number;
+      /** Integer labels only; ticks retain the authored subdivisions. */
+      integerLabelInterval?: number;
       marks: { at: Rational; label: string }[];
       jumps?: { from: Rational; to: Rational; label: string }[];
     }

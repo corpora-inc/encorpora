@@ -91,3 +91,72 @@ test("array rectangle coordinates tile one contiguous area without overlap", () 
     7 * cell * (4 * cell),
   );
 });
+test("bounded whole-unit groups show exact remainder cells", () => {
+  const d: Diagram = {
+    kind: "groups",
+    id: "tokens",
+    alt: "Seventeen tokens in groups of five with two tokens left.",
+    caption: "Three complete groups and two tokens left.",
+    wholeLabel: "one token",
+    total: [17, 1],
+    groupSize: [5, 1],
+    unitDivisions: 1,
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(BookDiagram, { diagram: d }),
+  );
+  assert.equal((html.match(/<rect/g) ?? []).length, 17);
+  assert.equal((html.match(/data-complete="true"/g) ?? []).length, 3);
+  assert.equal((html.match(/data-complete="false"/g) ?? []).length, 1);
+  assert.match(html, /2 left/);
+  for (const invalid of [
+    { ...d, total: [31, 1] },
+    { ...d, total: [29, 2] },
+    { ...d, unitDivisions: 2 },
+    { ...d, groupSize: [1, 1] },
+  ])
+    assert.throws(() => validateDiagram(invalid as Diagram));
+});
+test("extended number lines keep whole-unit ticks and sparse labels with disjoint jumps", () => {
+  const d: Extract<Diagram, { kind: "number-line" }> = {
+    kind: "number-line",
+    id: "jumps",
+    alt: "Four jumps of five reach twenty.",
+    caption: "Count jumps rather than endpoints.",
+    wholeLabel: "one unit",
+    min: [0, 1],
+    max: [20, 1],
+    divisionsPerUnit: 1,
+    integerLabelInterval: 5,
+    marks: [],
+    jumps: Array.from({ length: 4 }, (_, i) => ({
+      from: [i * 5, 1],
+      to: [(i + 1) * 5, 1],
+      label: "5",
+    })),
+  };
+  const html = renderToStaticMarkup(
+    React.createElement(BookDiagram, { diagram: d }),
+  );
+  assert.equal((html.match(/marker-end=/g) ?? []).length, 4);
+  assert.equal((html.match(/y="48"/g) ?? []).length, 4);
+  assert.match(html, />20<\/text>/);
+  assert.ok(!html.includes(">19</text>"));
+  assert.throws(() => validateDiagram({ ...d, integerLabelInterval: 1 }));
+  assert.throws(() => validateDiagram({ ...d, divisionsPerUnit: 2 }));
+  assert.throws(() =>
+    validateDiagram({
+      ...d,
+      jumps: [
+        { from: [0, 1], to: [10, 1], label: "10" },
+        { from: [5, 1], to: [15, 1], label: "10" },
+      ],
+    }),
+  );
+  assert.throws(() =>
+    validateDiagram({
+      ...d,
+      jumps: [{ from: [0, 1], to: [0, 1], label: "0" }],
+    }),
+  );
+});

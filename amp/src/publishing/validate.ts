@@ -47,9 +47,21 @@ export function validateDiagram(d: Diagram): void {
     case "number-line": {
       const min = rational(d.min),
         max = rational(d.max);
-      if (min >= max || max - min > 12)
+      if (min >= max || max - min > 30)
         throw new Error("Invalid number-line extent");
       integer(d.divisionsPerUnit, 1, 24);
+      integer(d.integerLabelInterval ?? 1, 1, 30);
+      if (
+        max - min > 12 &&
+        (!Number.isInteger(min) ||
+          !Number.isInteger(max) ||
+          d.divisionsPerUnit !== 1 ||
+          d.integerLabelInterval === undefined ||
+          (max - min) / d.integerLabelInterval > 12)
+      )
+        throw new Error(
+          "Extended integer number lines require sparse explicit labels and whole-unit ticks",
+        );
       integer(d.jumps?.length ?? 0, 0, 4);
       for (const endpoint of [d.min, d.max])
         if (
@@ -65,7 +77,19 @@ export function validateDiagram(d: Diagram): void {
       for (const mark of d.marks)
         if (rational(mark.at) < min || rational(mark.at) > max)
           throw new Error("Number-line mark out of range");
-      for (const jump of d.jumps ?? [])
+      const jumps = d.jumps ?? [];
+      for (let i = 0; i < jumps.length; i++) {
+        const a = rational(jumps[i]!.from),
+          b = rational(jumps[i]!.to);
+        if (a >= b) throw new Error("Number-line jumps must move forward");
+        for (let j = 0; j < i; j++) {
+          const c = rational(jumps[j]!.from),
+            e = rational(jumps[j]!.to);
+          if (Math.max(a, c) < Math.min(b, e))
+            throw new Error("Number-line jumps must be disjoint");
+        }
+      }
+      for (const jump of jumps)
         for (const value of [jump.from, jump.to])
           if (rational(value) < min || rational(value) > max)
             throw new Error("Number-line jump out of range");
@@ -100,7 +124,12 @@ export function validateDiagram(d: Diagram): void {
           throw new Error("Group units must align with exact subdivisions");
       if (
         total <= 0 ||
-        total > 12 ||
+        total > 30 ||
+        (total > 12 &&
+          (!Number.isInteger(total) ||
+            !Number.isInteger(size) ||
+            d.unitDivisions !== 1 ||
+            exactGroupCount(d.total, d.groupSize) > 12)) ||
         size <= 0 ||
         size > total ||
         exactGroupCount(d.total, d.groupSize) > 24
