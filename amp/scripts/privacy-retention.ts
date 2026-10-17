@@ -1,3 +1,4 @@
+import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
 import { Pool } from "pg";
 import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 if (!process.env.AMP_DATABASE_URL)
@@ -7,7 +8,12 @@ const pool = new Pool({
   max: 1,
 });
 try {
-  console.log(JSON.stringify(await purgeExpiredPrivacyRecords(pool)));
+  console.log(
+    JSON.stringify({
+      ...(await purgeExpiredPrivacyRecords(pool)),
+      expiredFundingRequests: await purgeExpiredFundingRequests(pool),
+    }),
+  );
 } finally {
   await pool.end();
 }

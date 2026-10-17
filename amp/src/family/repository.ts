@@ -160,6 +160,11 @@ export class FamilyRepository {
       if (learnerId && !rows.length)
         throw new FamilyError(404, "learner_not_found");
       const stripe = await this.stripeTable(client);
+      const funding = !!(
+        await client.query(
+          "SELECT to_regclass('amp_funding_requests') AS relation",
+        )
+      ).rows[0]?.relation;
       let retained = 0,
         linked = false,
         deleted = 0;
@@ -183,6 +188,11 @@ export class FamilyRepository {
           );
           linked ||= !!open.rowCount;
         }
+        if (funding)
+          await client.query(
+            "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL",
+            [row.id, accountId],
+          );
         if (!row.deleted_at) deleted++;
         await client.query(
           "DELETE FROM amp_skill_evidence WHERE learner_id=$1",
@@ -299,6 +309,17 @@ export class FamilyRepository {
           "SELECT to_jsonb(p) - 'account_id' AS value FROM amp_privacy_events p WHERE account_id=$1 ORDER BY occurred_at,id",
         ],
       ];
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_funding_requests') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "funding-request",
+          "SELECT jsonb_build_object('id',id,'learnerId',learner_id,'createdAt',created_at,'expiresAt',expires_at,'status',status,'orderId',order_id,'offer',offer_snapshot - 'approvals' - 'enabled' - 'documentPolicyReference' - 'creditAgreementReference') AS value FROM amp_funding_requests WHERE account_id=$1 ORDER BY created_at,id",
+        ]);
       if (await this.stripeTable(client)) {
         datasets.push([
           "stripe-purchase",

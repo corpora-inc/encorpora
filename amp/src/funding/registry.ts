@@ -63,6 +63,20 @@ const baseFundingRegistry: BaseFundingRegistry = {
       checkedOn: "2026-10-16",
     },
     {
+      id: "nc-curriculum",
+      title: "NC ESA+ curriculum purchasing and vendor routes",
+      url: "https://k12.ncseaa.edu/the-education-student-accounts/current-families/allowable-expenses/curriculum/",
+      publisher: "program-authority",
+      checkedOn: "2026-10-17",
+    },
+    {
+      id: "nc-apps-2026",
+      title: "NC ESA+ educational apps, effective 2026–27",
+      url: "https://k12.ncseaa.edu/media/wi0miksa/educational-apps.pdf",
+      publisher: "program-authority",
+      checkedOn: "2026-10-17",
+    },
+    {
       id: "wv",
       title: "West Virginia approved school and provider directory",
       url: "https://hopescholarshipwv.gov/Home/Schools/Participating-Schools/portalid/7",
@@ -777,17 +791,22 @@ const baseFundingRegistry: BaseFundingRegistry = {
       facts: [
         {
           statement:
-            "Products must be purchased in the NC ESA+ ClassWallet marketplace; presence in that marketplace does not make every product allowable.",
-          sourceIds: ["nc"],
+            "New curriculum vendors must join ClassWallet Marketplace. Existing Product Provider List vendors use Pay Vendor with exact-item, final-price documentation and SEAA review; marketplace presence alone does not establish eligibility.",
+          sourceIds: ["nc-curriculum"],
         },
         {
           statement:
             "Curricular products include lesson plans, learning kits and workbooks; service providers follow a separate enrollment path.",
-          sourceIds: ["nc"],
+          sourceIds: ["nc-curriculum"],
+        },
+        {
+          statement:
+            "For 2026–27, prior-approved mobile educational apps and app-store in-app subscriptions may be reimbursed. Third-party subscription receipts and desktop-designed apps are excluded; AMP approval is unestablished.",
+          sourceIds: ["nc-apps-2026"],
         },
       ],
       annualSubscription: "unconfirmed",
-      purchasingRoutes: ["marketplace"],
+      purchasingRoutes: ["marketplace", "direct-pay", "reimbursement"],
       corpora: {
         vendor: {
           status: "not-applied",
