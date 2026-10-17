@@ -1,6 +1,6 @@
+import { consumeInitialConsentChallenge } from "./consent-entry";
 import { StartingPointPicker, startingPointNames } from "./StartingPointPicker";
 import type { StartingBand } from "../learning/starting-point";
-import { consumeInitialConsentChallenge } from "./consent-entry";
 import { nativeRuntime } from "./native-runtime";
 import { NativePreview } from "./NativePreview";
 import { ParentConsentCenter } from "./ParentConsentCenter";
