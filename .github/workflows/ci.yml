@@ -93,7 +93,7 @@ jobs:
           # reviewer, whose failure mode when it regresses is to PASS wrongly —
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
-          set_output amp_native '^(amp/mobile/|\.github/workflows/ci\.yml$)'
+          set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           set_output amp '^(amp/|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
@@ -1374,6 +1374,10 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:ui
       - run: npm run test:family-ui
+      - uses: dtolnay/rust-toolchain@1.93.0
+        if: needs.changes.outputs.amp_native == 'true'
+      - run: npm run test:native-session
+        if: needs.changes.outputs.amp_native == 'true'
       - run: npm run publications
       - run: npm run production:queue
       - run: npm run review:math
@@ -1405,6 +1409,9 @@ jobs:
       - run: cargo check --locked
       - run: cargo clippy --locked --all-targets -- -D warnings
       - run: cargo test --locked
+      - run: cargo fmt --check --manifest-path session-core/Cargo.toml
+      - run: cargo clippy --locked --manifest-path session-core/Cargo.toml --all-targets -- -D warnings
+      - run: cargo test --locked --manifest-path session-core/Cargo.toml
 
   ci-gate:
     name: ci-gate
