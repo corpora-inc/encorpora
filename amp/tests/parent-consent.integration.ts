@@ -204,6 +204,10 @@ test(
       assert.equal(await active(pool), false);
       assert.equal(await active(pool, "manual"), true);
       assert.equal((await r.view("parent")).request?.phase, "policy-changed");
+      assert.equal(
+        (await new FamilyRepository(pool).summary("parent")).consent.status,
+        "not-recorded",
+      );
       await purgeConsentRecords(pool);
       assert.equal((await r.view("parent")).request?.phase, "expired");
       assert(
@@ -214,6 +218,17 @@ test(
         "UPDATE amp_consent_requests SET purge_after=now()-interval '1 second'",
       );
       assert.equal(await purgeConsentRecords(pool), 1);
+      const marker = (
+        await pool.query(
+          "SELECT * FROM amp_parent_consents WHERE account_id='parent'",
+        )
+      ).rows[0];
+      assert.equal(marker.verification_method, "parent-withdrawal");
+      assert.equal(marker.evidence_reference, "preference-only");
+      assert(marker.withdrawn_at);
+      assert.equal(await active(pool), false);
+      assert.equal(await active(pool, "manual"), true);
+
       await assert.rejects(r.begin("new-parent", begin()), /unavailable/);
       await assert.rejects(
         r.acknowledge("parent", ack(mails[1]!)),
@@ -221,7 +236,7 @@ test(
       );
       assert.equal(
         (await new FamilyRepository(pool).summary("parent")).consent.status,
-        "not-recorded",
+        "withdrawn",
       );
     }),
 );

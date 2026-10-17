@@ -67,9 +67,15 @@ export async function purgeConsentRecords(pool: Pool): Promise<number> {
         [account],
       );
       const result = await client.query(
-        "DELETE FROM amp_consent_requests WHERE account_id=$1 AND ((completed_at IS NULL AND expires_at<=now()) OR purge_after<=now())",
+        "DELETE FROM amp_consent_requests WHERE account_id=$1 AND ((completed_at IS NULL AND expires_at<=now()) OR purge_after<=now()) RETURNING id",
         [account],
       );
+      if (result.rowCount)
+        await client.query(
+          `UPDATE amp_parent_consents SET policy_version='consent-evidence-deleted',verification_method='parent-withdrawal',evidence_reference='preference-only',recorded_at=now(),withdrawn_at=COALESCE(withdrawn_at,now())
+        WHERE account_id=$1 AND verification_method='internal-email-plus-v1' AND evidence_reference=ANY($2::text[])`,
+          [account, result.rows.map((row) => String(row.id))],
+        );
       removed += result.rowCount ?? 0;
       await client.query("COMMIT");
     } catch (e) {
