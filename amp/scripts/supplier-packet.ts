@@ -154,13 +154,24 @@ try {
   ])
     if (!text.replace(/\s+/g, " ").includes(required))
       throw new Error(`Missing PDF text: ${required}`);
-  for (let i = 0; i < pageCount; i++)
-    await page
-      .locator(".page")
-      .nth(i)
-      .screenshot({
-        path: join(output, `page-${String(i + 1).padStart(2, "0")}.png`),
-      });
+  for (let i = 0; i < pageCount; i++) {
+    const article = page.locator(".page").nth(i);
+    const screenshot = await article.screenshot({
+      path: join(output, `page-${String(i + 1).padStart(2, "0")}.png`),
+    });
+    const sample = article.locator("img.sample");
+    if (await sample.count()) {
+      const src = await sample.getAttribute("src");
+      if (
+        !src?.startsWith("data:image/png;base64,") ||
+        sha256(screenshot) !==
+          sha256(
+            Buffer.from(src.slice("data:image/png;base64,".length), "base64"),
+          )
+      )
+        throw new Error("Packet sample differs from full-size source capture");
+    }
+  }
   await writeFile(join(output, "index.html"), html);
   await writeFile(join(output, "catalog.json"), catalogText);
   await writeFile(join(output, "catalog.csv"), catalogCsv(catalog));

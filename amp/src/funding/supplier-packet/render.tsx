@@ -140,7 +140,7 @@ export function renderSupplierPacket(
         before an offer is made.
       </p>
       <p className="note">
-        Unsent draft · Evidence reviewed {asOf}. No vendor selection, product
+        Unsent draft · Packet date {asOf}. No vendor selection, product
         approval, marketplace listing or payment authorization is asserted.
       </p>
     </>,
