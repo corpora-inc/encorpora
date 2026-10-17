@@ -51,6 +51,9 @@ def solve(public):
     if template in ELEMENTARY:
         return solve_elementary(public)
     prompt = public['prompt']
+    # Standard notation omits a coefficient of 1 ("x + 5y", "−x²"); restore it
+    # for terms inside equations and expressions before reading the givens.
+    prompt = re.sub(r'([:;=+−-]\s*)([xy])(?=²|\s*[+=−-]|\s*$)', r'\g<1>1\2', prompt)
     numbers = [int(value) for value in re.findall(r'-?[0-9]+', prompt)]
     figure = public.get('figure')
     f = Fraction

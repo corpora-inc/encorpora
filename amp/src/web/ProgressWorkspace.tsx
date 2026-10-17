@@ -98,35 +98,19 @@ function Observations({ skill }: { skill: LearnerSkillProgress }) {
     </span>
   );
 }
+/** One factual status line: what practice will do with this idea next. */
 function nextStep(skill: LearnerSkillProgress, asOf: string) {
-  if (!skill.attempts)
-    return {
-      title: "A new idea to explore",
-      text: "Try an example, then return to your varied mix.",
-    };
   const last = skill.recent.at(-1);
-  if (last?.assisted)
-    return {
-      title: "Try a fresh example",
-      text: "Use the lesson if it helps, then try a fresh example on your own.",
-    };
-  if (last && !last.correct)
-    return {
-      title: "Another way into the idea",
-      text: "Read the lesson for a different approach, then try a fresh example.",
-    };
-  if (reviewSuggested(skill, asOf))
-    return {
-      title: "A good time to revisit",
-      text: "You solved this before. Try recalling it after a break.",
-    };
-  return {
-    title: "Keep a mix of ideas",
-    text:
-      skill.independentOccasions >= 2
-        ? "You recalled this after a break. It will return in your mix."
-        : "You solved this independently. It will return in your mix.",
-  };
+  const title = !skill.attempts
+    ? "Not practiced yet."
+    : last?.assisted
+      ? "Last answer used help. It returns soon."
+      : last && !last.correct
+        ? "Last answer was incorrect. It returns soon."
+        : reviewSuggested(skill, asOf)
+          ? "Due for review."
+          : "Answered independently. Review is scheduled.";
+  return { title };
 }
 export function ProgressWorkspace({
   snapshot,
@@ -200,6 +184,19 @@ export function ProgressWorkspace({
     measure();
     return () => observer.disconnect();
   }, [view.skillId, !!snapshot, largeText]);
+  // The estimate above cannot know how card text wraps; if a page still
+  // overflows, show one row fewer so cards never scroll inside the stage.
+  useLayoutEffect(() => {
+    const stage = list.current;
+    if (!stage || capacity <= 1) return;
+    if (stage.scrollHeight > stage.clientHeight + 2) {
+      const grid = stage.querySelector(".progress-cards");
+      const columns = grid
+        ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
+        : 1;
+      setCapacity(Math.max(1, capacity - columns));
+    }
+  });
   const entries = (snapshot?.skills ?? []).flatMap((evidence) => {
     const definition = skills.find((skill) => skill.id === evidence.skillId);
     return definition ? [{ evidence, definition }] : [];
@@ -357,8 +354,7 @@ export function ProgressWorkspace({
                 </section>
               )}
               <section className="progress-next-step">
-                <h2>{step!.title}</h2>
-                <p>{step!.text}</p>
+                <p className="progress-status">{step!.title}</p>
               </section>
             </div>
             <footer className="progress-detail-actions">
@@ -386,20 +382,18 @@ export function ProgressWorkspace({
                   Read the lesson
                 </button>
               ) : null}
-              <small>One focused problem, then back to your mix.</small>
             </footer>
           </>
         ) : (
           <>
             <header className="progress-heading">
               <div>
-                <p className="eyebrow">A PICTURE OF YOUR PRACTICE</p>
-                <h1>Your progress</h1>
+                <h1>Progress</h1>
                 <p>
                   {snapshot
                     ? practiced.length
                       ? `${practiced.length} ideas practiced · ${practiced.reduce((sum, { evidence }) => sum + evidence.attempts, 0)} problems tried`
-                      : "Every new idea starts somewhere."
+                      : "No problems answered yet."
                     : "Gathering your practice history…"}
                 </p>
               </div>
@@ -408,7 +402,7 @@ export function ProgressWorkspace({
                 disabled={busy || loading}
                 onClick={() => onPractice()}
               >
-                Start a mix <span aria-hidden="true">↗</span>
+                Go
               </button>
             </header>
             {snapshot && (
@@ -521,17 +515,17 @@ export function ProgressWorkspace({
                   </svg>
                   <h2>
                     {view.filter === "review"
-                      ? "Room for something different"
+                      ? "Nothing due"
                       : view.filter === "explore"
-                        ? "You’ve tried these ideas"
-                        : "Let curiosity lead"}
+                        ? "All practiced"
+                        : "None yet"}
                   </h2>
                   <p>
                     {view.filter === "review"
-                      ? "No review is suggested here right now. Your mix can introduce another idea."
+                      ? "Ideas return here when review is due."
                       : view.filter === "explore"
-                        ? "Choose another area or revisit an idea you’ve practiced."
-                        : "Your practice will build this picture. Start with a varied mix of ideas."}
+                        ? "Choose another area."
+                        : "Practiced ideas appear here."}
                   </p>
                 </div>
               )}
@@ -548,7 +542,7 @@ export function ProgressWorkspace({
               <span aria-live="polite">
                 {filtered.length
                   ? `${page * capacity + 1}–${Math.min((page + 1) * capacity, filtered.length)} of ${filtered.length} ideas`
-                  : "Practice grows at your pace"}
+                  : ""}
               </span>
               <button
                 className="secondary"

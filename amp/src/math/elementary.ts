@@ -354,7 +354,7 @@ export function generateElementaryProblem(
       const a = r(6, 9),
         b = r(11 - a, 9),
         needed = 10 - a;
-      figure = { kind: "ten-frame", first: a, second: 0, capacity: 10 };
+      figure = { kind: "ten-frame", first: a, second: b, capacity: 20 };
       prompt = `To add ${a} + ${b}, move ${needed} from ${b} to make ten. How much of ${b} is left?`;
       answer = b - needed;
       hint = "Split the second addend into the part used and the part left.";

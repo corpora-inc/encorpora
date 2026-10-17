@@ -19,6 +19,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
+import { polish } from "./polish";
 import type {
   GeneratedProblem,
   PublicProblem,
@@ -228,7 +229,55 @@ function random(
     return lo + (n % range);
   };
 }
+/** Sums past ten are taught through ten: complete a ten, then add the rest. */
+function addWithinTwenty(a: number, b: number): string[] {
+  const sum = a + b,
+    big = Math.max(a, b),
+    small = Math.min(a, b);
+  if (small === 0) return [`Adding 0 changes nothing: ${a} + ${b} = ${sum}.`];
+  if (sum <= 10) return [`Count on ${b} from ${a}: ${a} + ${b} = ${sum}.`];
+  if (big < 10) {
+    const need = 10 - big;
+    return [
+      `${big} needs ${need} more to make 10.`,
+      `Split ${small} into ${need} and ${small - need}.`,
+      `10 + ${small - need} = ${sum}.`,
+    ];
+  }
+  const ones = big - 10;
+  return [
+    `${big} is 10 + ${ones}.`,
+    `Add the ones: ${ones} + ${small} = ${ones + small}.`,
+    `10 + ${ones + small} = ${sum}.`,
+  ];
+}
 export function generateProblem(
+  templateId: string,
+  seed: string,
+): GeneratedProblem {
+  return polishProblem(generateRawProblem(templateId, seed));
+}
+/** Every learner-facing string passes the same copy-edit. */
+export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
+  const text = (value: string) => polish(value);
+  return {
+    ...problem,
+    public: { ...problem.public, prompt: text(problem.public.prompt) },
+    explanation: problem.explanation.map(text),
+    hint: text(problem.hint),
+    ...(problem.choiceFeedback
+      ? {
+          choiceFeedback: Object.fromEntries(
+            Object.entries(problem.choiceFeedback).map(([k, v]) => [
+              k,
+              text(v),
+            ]),
+          ),
+        }
+      : {}),
+  };
+}
+function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
@@ -277,11 +326,8 @@ export function generateProblem(
         b = r(0, 20 - a);
       prompt = `What is ${a} + ${b}?`;
       answer = `${a + b}`;
-      hint = "Start at the first number and count on.";
-      explanation = [
-        `Start with ${a} and add ${b} more.`,
-        `${a} + ${b} = ${answer}.`,
-      ];
+      hint = "Make a ten first, then add what is left.";
+      explanation = addWithinTwenty(a, b);
       break;
     }
     case "subtract-within-20": {
@@ -375,9 +421,11 @@ export function generateProblem(
       answer = rational(BigInt(sum), 5n);
       kind = "fraction";
       hint = "Add all observations, then divide by the number of observations.";
+      const mean = sum % 5 === 0 ? `${sum / 5}` : `${sum / 5} = ${answer}`;
       explanation = [
-        `The sum is ${values.join(" + ")} = ${sum}.`,
-        `Divide by five: ${sum}/5 = ${answer}.`,
+        "The mean is the sum of the values divided by the number of values.",
+        `Sum: ${values.join(" + ")} = ${sum}.`,
+        `There are 5 values: ${sum} ÷ 5 = ${mean}.`,
       ];
       break;
     }

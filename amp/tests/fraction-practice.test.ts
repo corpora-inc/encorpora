@@ -7,7 +7,11 @@ import {
   generateFractionPracticeProblem,
   fractionPracticeDefinitions,
 } from "../src/math/fraction-practice.js";
-import { generateProblem, templates } from "../src/math/engine.js";
+import {
+  generateProblem,
+  polishProblem,
+  templates,
+} from "../src/math/engine.js";
 import {
   generatedProblemSchema,
   semanticFigureSchema,
@@ -38,7 +42,7 @@ test("21 fraction families have stable public engine and book/skill/component bi
     );
     assert.deepEqual(
       generateProblem(template.id, "binding"),
-      generateFractionPracticeProblem(template.id, "binding"),
+      polishProblem(generateFractionPracticeProblem(template.id, "binding")),
     );
     assert.ok(
       fractionPracticeBindings.find((b) => b.templateId === template.id)!
@@ -258,9 +262,15 @@ test("SVG geometry preserves fractional unit lengths and shaded counts without a
         const widths = [
           ...svg.matchAll(/data-piece="\d+"[^>]+\swidth="([^"]+)"/g),
         ].map((m) => Number(m[1]));
+        // Every piece has one width; wholes are separate bars with 10-unit gaps.
         assert.ok(
           widths.every(
-            (w) => Math.abs(w * figure.parts * figure.wholes - 312) < 1e-10,
+            (w) =>
+              Math.abs(
+                w * figure.parts * figure.wholes +
+                  10 * (figure.wholes - 1) -
+                  320,
+              ) < 1e-10,
           ),
         );
       }

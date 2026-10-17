@@ -117,6 +117,14 @@ try {
       if (path.endsWith("/family")) return route.fulfill({ json: family });
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
+      if (path.endsWith("/frontier"))
+        return route.fulfill({
+          json: {
+            expected: 4,
+            overall: { level: 4, sd: 2.5, answered: 0, independent: 0 },
+            strands: {},
+          },
+        });
       if (path.endsWith("/progress"))
         return route.fulfill({ json: { skills: [] } });
       if (path.endsWith("/rename")) {

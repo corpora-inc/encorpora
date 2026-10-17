@@ -1,6 +1,4 @@
 import { consumeInitialConsentChallenge } from "./consent-entry";
-import { StartingPointPicker, startingPointNames } from "./StartingPointPicker";
-import type { StartingBand } from "../learning/starting-point";
 import { nativeRuntime } from "./native-runtime";
 import { NativeGate, NativeFamily } from "./NativeGate";
 import { learningRequest, learningCatalog } from "./learning-transport";
@@ -44,6 +42,16 @@ import {
 } from "./auth";
 import "./style.css";
 import "./practice.css";
+import "katex/dist/katex.min.css";
+import "./theme.css";
+import { BirthYearPrompt } from "./BirthYearPrompt";
+import { calculatorAllowed } from "../math/calculator";
+import { gradeNumber } from "../learning/frontier";
+import type { GradeBand } from "../curriculum/types";
+import { LessonIndex } from "./LessonIndex";
+import { Home, type FrontierMap } from "./Home";
+import { strandNames } from "./BirthYearPrompt";
+import type { ProblemLessonView } from "../content/problem-lessons";
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -52,24 +60,60 @@ class HttpError extends Error {
     super(message);
   }
 }
+type LearnerSummary = Pick<Learner, "id" | "name"> & {
+  birthYear?: number | null;
+};
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
+// Copying typeset math gives its plain text, not KaTeX's internal markup.
+addEventListener("copy", (event) => {
+  const selection = getSelection();
+  if (!selection || selection.isCollapsed || !event.clipboardData) return;
+  const fragment = selection.getRangeAt(0).cloneContents();
+  if (!fragment.querySelector(".katex")) return;
+  fragment
+    .querySelectorAll<HTMLElement>(".math[data-plain]")
+    .forEach((math) => math.replaceWith(math.dataset.plain ?? ""));
+  fragment.querySelectorAll(".katex-html").forEach((html) => html.remove());
+  fragment
+    .querySelectorAll(".katex-mathml annotation")
+    .forEach((annotation) => annotation.remove());
+  event.clipboardData.setData(
+    "text/plain",
+    (fragment.textContent ?? "").replace(/\s+/g, " ").trim(),
+  );
+  event.preventDefault();
+});
+// Focus rings follow the input in use (see theme.css).
+addEventListener(
+  "pointerdown",
+  () => (document.documentElement.dataset.input = "pointer"),
+  true,
+);
+addEventListener(
+  "keydown",
+  (event) => {
+    if (!["Shift", "Control", "Alt", "Meta"].includes(event.key))
+      document.documentElement.dataset.input = "keyboard";
+  },
+  true,
+);
 const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) consumeInitialConsentChallenge();
 function App() {
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
     [catalog, setCatalog] = useState<Catalog | null>(null),
-    [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
-    [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
-  const startingPointReturn = useRef(false);
-  const [startingPicker, setStartingPicker] = useState(false);
-  const [startingBand, setStartingBand] = useState<StartingBand | null>(null);
+    [learners, setLearners] = useState<LearnerSummary[]>([]),
+    [learner, setLearner] = useState<LearnerSummary | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
+  const [changingBirthYear, setChangingBirthYear] = useState(false);
+  // Outside immersive practice: home, lessons, progress and family are visible.
+  const [exploring, setExploring] = useState(true);
   const nativeFamilyReturn = useRef(false);
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
@@ -141,7 +185,6 @@ function App() {
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
   const libraryScroll = useRef(0);
-  usePracticeViewport(!!learner || familyOpen);
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
@@ -195,9 +238,6 @@ function App() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    startingPointReturn.current = false;
-    setStartingPicker(false);
-    setStartingBand(null);
     setFamilyOpen(!!openingConsent);
     setFamilySummary(null);
     setBusy(false);
@@ -371,31 +411,10 @@ function App() {
     progressLessonReturn.current = null;
     if (learner) void refreshProgress();
   }, [learner?.id]);
-  useEffect(() => {
-    setStartingPicker(false);
-  }, [tab, familyOpen, learner?.id]);
-  useEffect(() => {
-    setStartingBand(null);
-  }, [learner?.id]);
-  useLayoutEffect(() => {
-    if (!startingPicker && startingPointReturn.current) {
-      startingPointReturn.current = false;
-      document
-        .querySelector<HTMLButtonElement>(".starting-point-trigger")
-        ?.focus({ preventScroll: true });
-    }
-  }, [startingPicker]);
-  function closeStartingPoint() {
-    startingPointReturn.current = true;
-    setStartingPicker(false);
-  }
   function invalidateLearning() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    startingPointReturn.current = false;
-    setStartingPicker(false);
-    setStartingBand(null);
     setLearner(null);
     setLearners([]);
     setFamilySummary(null);
@@ -535,38 +554,57 @@ function App() {
     setHint("");
     setPending(null);
   }
-  async function loadBatch(templateId = family, openPractice = false) {
-    if (!learner) return;
-    const navigation = ++navigationEpoch.current;
-    const data = await api<{
-      problems: PublicProblem[];
-      lesson: Lesson | null;
-    }>(`/learners/${learner.id}/batches`, {
+  type Batch = { problems: PublicProblem[]; lesson: Lesson | null };
+  function requestBatch(templateId = family) {
+    return api<Batch>(`/learners/${learner!.id}/batches`, {
       ...(templateId ? { templateId } : {}),
-      count: templateId ? 1 : 3,
+      count: 1,
       responseCapabilities: ["single-choice-v1"],
       figureCapabilities: ["measurement-models-v1"],
-    }).catch((error) => navigationFailure(navigation, learner.id, error));
+    });
+  }
+  // The next problem is planned as soon as an answer is recorded, so it adapts
+  // to that answer and is already on hand when the learner continues.
+  const upcoming = useRef<{ learnerId: string; batch: Promise<Batch> } | null>(
+    null,
+  );
+  function applyBatch(data: Batch, openPractice = false) {
+    if (openPractice) setTab("practice");
+    setExploring(false);
+    showProblem(data.problems[0]);
+    setQueue(data.problems.slice(1));
+    setLesson(data.lesson);
+    setFamily("");
+  }
+  async function loadBatch(templateId = family, openPractice = false) {
+    if (!learner) return;
+    upcoming.current = null;
+    const navigation = ++navigationEpoch.current;
+    const data = await requestBatch(templateId).catch((error) =>
+      navigationFailure(navigation, learner.id, error),
+    );
     if (
       !data ||
       navigation !== navigationEpoch.current ||
       learnerRef.current !== learner.id
     )
       return;
-    if (openPractice) setTab("practice");
-    showProblem(data.problems[0]);
-    setQueue(data.problems.slice(1));
-    setLesson(data.lesson);
-    setFamily("");
+    applyBatch(data, openPractice);
   }
   async function next() {
-    if (outcome && !outcome.correct) {
-      setQueue([]);
-      await loadBatch();
-    } else if (queue.length) {
-      showProblem(queue[0]);
-      setQueue(queue.slice(1));
-    } else await loadBatch();
+    const ready = upcoming.current;
+    upcoming.current = null;
+    if (!learner || !ready || ready.learnerId !== learner.id)
+      return loadBatch();
+    const navigation = ++navigationEpoch.current;
+    const data = await ready.batch.catch(() => null);
+    if (
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learner.id
+    )
+      return;
+    if (data) applyBatch(data);
+    else await loadBatch();
   }
   async function submit() {
     if (!learner || !problem) return;
@@ -579,7 +617,11 @@ function App() {
       });
       setOutcome(result);
       setPending(null);
-      await refreshProgress();
+      upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
+      upcoming.current.batch.catch(() => undefined);
+      void refreshProgress().catch((error) =>
+        console.error("Progress refresh failed", error),
+      );
     } catch (e) {
       if (e instanceof HttpError && e.status >= 400 && e.status < 500)
         setPending(null);
@@ -677,13 +719,40 @@ function App() {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
+  // Home shows where the learner stands in each strand; refresh it on return.
+  const [frontierMap, setFrontierMap] = useState<FrontierMap | null>(null);
+  const homeStrands = Object.keys(strandNames).filter((strand) =>
+    catalog?.skills.some(
+      (skill) =>
+        skill.strand === strand &&
+        catalog.templates.some((t) => t.skillId === skill.id),
+    ),
+  );
+  useEffect(() => {
+    if (!learner || tab !== "practice" || !exploring) return;
+    const id = learner.id;
+    api<FrontierMap>(`/learners/${id}/frontier`)
+      .then((map) => {
+        if (learnerRef.current === id) setFrontierMap(map);
+      })
+      .catch((error) => console.error("Frontier map failed to load", error));
+  }, [learner?.id, learner?.birthYear, tab, exploring]);
+  // Practice is immersive: no header or tabs, one exit back to everything else.
+  const immersive =
+    !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
+  // Home and Lessons are ordinary pages that scroll with the window; practice,
+  // reading, progress and family settings own a fixed device-sized screen.
+  const flowPage =
+    !!learner &&
+    !familyOpen &&
+    !readingBook &&
+    !immersive &&
+    (tab === "practice" || tab === "library");
+  usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
-  const supportBook = problem
-    ? preferredBookForProblem(books, problem)
-    : undefined;
   return (
     <div
-      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -720,6 +789,26 @@ function App() {
                 <button className="text-button" onClick={openFamily}>
                   Manage family
                 </button>
+                {learner && learner.birthYear != null && (
+                  <button
+                    className="text-button"
+                    disabled={busy}
+                    onClick={(event) => {
+                      event.currentTarget
+                        .closest("details")
+                        ?.removeAttribute("open");
+                      navigationEpoch.current++;
+                      setProblem(null);
+                      setQueue([]);
+                      setOutcome(null);
+                      setPending(null);
+                      setTab("practice");
+                      setChangingBirthYear(true);
+                    }}
+                  >
+                    Change birth year
+                  </button>
+                )}
                 {learningAllowed && !nativeRuntime && (
                   <button
                     className="text-button"
@@ -759,21 +848,15 @@ function App() {
       {!learner && !familyOpen && !nativeRuntime && (
         <div className="intro">
           <div>
-            <p className="eyebrow">A LITTLE CURIOSITY. A NEW POSSIBILITY.</p>
-            <h1>
-              Your next <em>aha.</em>
-            </h1>
-            <p>Understand the idea. Find your rhythm. Go a little further.</p>
-          </div>
-          <div className="intro-note">
-            <span className="pulse-dot" />
-            Learning studio preview
-            <br />
-            <small>Explore selected skills across the math journey.</small>
+            <h1>Math at exactly the right level.</h1>
+            <p>
+              One problem at a time, from counting through precalculus. Every
+              answer adjusts what comes next.
+            </p>
           </div>
         </div>
       )}
-      {!familyOpen && learner && !startingPicker && (
+      {!familyOpen && learner && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
             <button
@@ -787,10 +870,10 @@ function App() {
               }}
             >
               {t === "practice"
-                ? "Your practice"
+                ? "Practice"
                 : t === "library"
-                  ? "Lesson library"
-                  : "Your progress"}
+                  ? "Lessons"
+                  : "Progress"}
             </button>
           ))}
         </nav>
@@ -974,31 +1057,30 @@ function App() {
           }
         />
       ) : tab === "practice" ? (
-        startingPicker ? (
-          <StartingPointPicker
-            key={learner.id}
-            learnerId={learner.id}
-            api={api}
-            onClose={closeStartingPoint}
-            onSaved={(band) => {
-              setStartingBand(band);
-              closeStartingPoint();
-            }}
-          />
-        ) : problem ? (
+        problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
+            exit={() => setExploring(true)}
             key={problem.id}
             problem={problem}
             meta={meta}
+            strand={
+              catalog?.skills.find((skill) => skill.id === problem.skillId)
+                ?.strand
+            }
+            calculator={(() => {
+              const skill = catalog?.skills.find(
+                (entry) => entry.id === problem.skillId,
+              );
+              return calculatorAllowed(
+                { id: problem.templateId },
+                skill?.strand,
+                gradeNumber[skill?.gradeBand as GradeBand] ?? 0,
+              );
+            })()}
             lesson={
               catalog?.lessons.find((entry) =>
                 entry.templateIds.includes(problem.templateId),
               ) ?? lesson
-            }
-            openBook={
-              supportBook
-                ? () => void action(() => openBook(supportBook.id, true))
-                : undefined
             }
             response={response}
             setResponse={setResponse}
@@ -1008,12 +1090,14 @@ function App() {
             pending={!!pending}
             submit={() => void action(submit)}
             next={() => void action(next)}
-            requestLesson={async () => {
-              if (!outcome)
-                await api(`/learners/${learner.id}/lesson-support`, {
-                  problemId: problem.id,
-                });
-            }}
+            requestLesson={async () =>
+              (
+                await api<{ lesson: ProblemLessonView }>(
+                  `/learners/${learner.id}/lesson-support`,
+                  { problemId: problem.id },
+                )
+              ).lesson
+            }
             requestHint={() =>
               void action(async () => {
                 const data = await api<{ hint: string }>(
@@ -1023,167 +1107,87 @@ function App() {
                 setHint(data.hint);
               })
             }
-            changeTopic={() => {
-              setProblem(null);
-              setQueue([]);
-              setOutcome(null);
-              setPending(null);
-              setFamily("");
-            }}
+          />
+        ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
+          <Home
+            name={learner.name}
+            resuming={!!problem}
+            frontier={frontierMap}
+            strands={homeStrands}
+            busy={busy}
+            go={() =>
+              problem ? setExploring(false) : void action(() => loadBatch(""))
+            }
+            changeBirthYear={() => setChangingBirthYear(true)}
           />
         ) : (
-          <main className="session-start">
-            <section className="session-invitation">
-              <p className="eyebrow">YOUR OWN PATH THROUGH MATHEMATICS</p>
-              <h1>
-                A little of this.
-                <br />
-                <em>A new way to think.</em>
-              </h1>
-              <p>
-                Familiar ground. Fresh challenges. A mix that changes with you.
-              </p>
-              <button
-                className="starting-point-trigger"
-                aria-label={
-                  startingBand
-                    ? `Starting point: ${startingPointNames[startingBand]}`
-                    : "Choose a starting point"
-                }
-                disabled={busy}
-                onClick={() => setStartingPicker(true)}
-              >
-                {startingBand
-                  ? startingPointNames[startingBand]
-                  : "Choose a starting point"}
-                <span aria-hidden="true">→</span>
-              </button>
-              <button
-                className="start-mix"
-                disabled={busy}
-                onClick={() => void action(loadBatch)}
-              >
-                {family ? "Try this idea" : "Start your mix"}
-                <span aria-hidden="true"> ↗</span>
-              </button>
-              <details className="focus-picker">
-                <summary>Looking for a particular idea?</summary>
-                <label className="family-picker">
-                  Choose your practice
-                  <select
-                    value={family}
-                    onChange={(event) => setFamily(event.target.value)}
-                  >
-                    <option value="">A varied mix for me</option>
-                    {catalog?.templates.map((template) => (
-                      <option key={template.id} value={template.id}>
-                        {template.title} · {template.gradeBand}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <p>Try one problem, then return to your mix.</p>
-              </details>
-            </section>
-          </main>
+          <BirthYearPrompt
+            key={learner.id}
+            name={learner.name}
+            birthYear={learner.birthYear ?? null}
+            busy={busy}
+            cancel={
+              learner.birthYear == null
+                ? undefined
+                : () => setChangingBirthYear(false)
+            }
+            saveBirthYear={(birthYear) =>
+              void action(async () => {
+                await api(`/learners/${learner.id}/birth-year`, {
+                  birthYear,
+                });
+                const updated = { ...learner, birthYear };
+                setChangingBirthYear(false);
+                setLearner(updated);
+                setLearners(
+                  learners.map((entry) =>
+                    entry.id === learner.id ? updated : entry,
+                  ),
+                );
+              })
+            }
+          />
         )
       ) : tab === "library" ? (
         <main className="library-main">
           {!readingLesson && (
             <>
-              <div className="section-heading">
-                <h2>A library for curious minds.</h2>
-                <p>
-                  {nativeRuntime
-                    ? "Read and explore a mathematical idea."
-                    : "Read, explore, and print a lesson to keep nearby."}
-                </p>
-              </div>
-              {books.map((book) => (
-                <article key={book.id} className="card book-library-card">
-                  <div className="book-jacket" aria-hidden="true">
-                    <span>Explore · explain · practice</span>
-                    <strong>{book.subtitle}</strong>
-                    <span>{book.title}</span>
-                  </div>
-                  <div>
-                    <p className="eyebrow">
-                      ILLUSTRATED MATHEMATICS · {book.pages} PAGES
-                    </p>
-                    <h2>{book.title}</h2>
-                    <p>{book.description}</p>
-                    <button
-                      disabled={busy}
-                      data-book-id={book.id}
-                      onClick={() => void action(() => openBook(book.id))}
-                    >
-                      Open book
-                    </button>
-                  </div>
-                </article>
-              ))}
-              <label className="library-search">
-                Find an idea
-                <input
-                  type="search"
-                  value={lessonSearch}
-                  onChange={(event) => setLessonSearch(event.target.value)}
-                  placeholder="Fractions, shapes, equations…"
-                />
-              </label>
-              <div className="library-grid">
-                {catalog?.lessons
-                  .filter((entry) =>
-                    `${entry.title} ${entry.summary}`
-                      .toLowerCase()
-                      .includes(lessonSearch.toLowerCase()),
-                  )
-                  .map((l) => (
-                    <article key={l.id} className="card lesson-card">
-                      <p className="eyebrow">MINI-LESSON</p>
-                      <h3>{l.title}</h3>
-                      <p>{l.summary}</p>
+              <LessonIndex
+                templates={catalog?.templates ?? []}
+                skills={catalog?.skills ?? []}
+                busy={busy}
+                loadLesson={async (templateId) =>
+                  (
+                    await api<{ lesson: ProblemLessonView }>(
+                      `/problem-lessons/${templateId}`,
+                    )
+                  ).lesson
+                }
+                practice={(templateId) =>
+                  void action(() => loadBatch(templateId, true))
+                }
+              />
+              <section className="book-list" aria-label="Printable books">
+                <h2>Printable books</h2>
+                <ul>
+                  {books.map((book) => (
+                    <li key={book.id}>
+                      <span>
+                        {book.title}
+                        <small>{book.pages} pages</small>
+                      </span>
                       <button
-                        className="secondary"
-                        data-lesson-id={l.id}
+                        className="text-button"
                         disabled={busy}
-                        onClick={(event) => {
-                          const navigation = ++navigationEpoch.current;
-                          progressLessonReturn.current = null;
-                          readerTriggerId.current = l.id;
-                          libraryScroll.current =
-                            event.currentTarget.closest("main")?.scrollTop ?? 0;
-                          void action(async () => {
-                            if (
-                              problem &&
-                              !outcome &&
-                              l.templateIds.includes(problem.templateId)
-                            ) {
-                              await api(
-                                `/learners/${learner.id}/lesson-support`,
-                                { problemId: problem.id },
-                              ).catch((error) =>
-                                navigationFailure(
-                                  navigation,
-                                  learner.id,
-                                  error,
-                                ),
-                              );
-                            }
-                            if (
-                              navigation !== navigationEpoch.current ||
-                              learnerRef.current !== learner.id
-                            )
-                              return;
-                            setReadingLesson(l);
-                          });
-                        }}
+                        data-book-id={book.id}
+                        onClick={() => void action(() => openBook(book.id))}
                       >
-                        Read lesson
+                        Open book
                       </button>
-                    </article>
+                    </li>
                   ))}
-              </div>
+                </ul>
+              </section>
             </>
           )}
           {readingLesson && (

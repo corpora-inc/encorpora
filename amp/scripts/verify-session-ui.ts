@@ -83,6 +83,14 @@ async function fixturePage(family: (token: string) => FamilySummary) {
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
       return route.fulfill({ json: { skills: [] } });
+    if (path.endsWith("/frontier"))
+      return route.fulfill({
+        json: {
+          expected: 4,
+          overall: { level: 4, sd: 2.5, answered: 0, independent: 0 },
+          strands: {},
+        },
+      });
     errors.push(`Unexpected API request ${route.request().method()} ${path}`);
     return route.fulfill({
       status: 404,
@@ -281,12 +289,11 @@ try {
       release = resolve;
     });
     try {
-      await page.route("**/starting-point", async (route) => {
-        if (route.request().method() === "GET")
-          return route.fulfill({ json: { band: null, policyVersion: null } });
+      // A birth year saved for the old account cannot land on the new one.
+      await page.route("**/birth-year", async (route) => {
         arrived();
         await proceed;
-        await route.fulfill({ json: { band: "9–12", policyVersion: 1 } });
+        await route.fulfill({ json: { birthYear: 2016 } });
       });
       await open(page);
       await page.evaluate(() =>
@@ -295,16 +302,7 @@ try {
           accountId: "old-parent",
         }),
       );
-      await page.locator(".starting-point-trigger").click();
-      await page.waitForFunction(
-        () =>
-          !(
-            document.querySelector(
-              ".starting-point-options button",
-            ) as HTMLButtonElement
-          )?.disabled,
-      );
-      await page.getByRole("button", { name: /Algebra & functions/ }).click();
+      await page.getByRole("button", { name: "2016", exact: true }).click();
       await received;
       await page.evaluate(() =>
         (window as any).sessionReview.emit({
@@ -315,18 +313,18 @@ try {
       await page
         .getByRole("option", { name: "Current learner", exact: true })
         .waitFor({ state: "attached" });
-      const oldResponse = page.waitForResponse(
-        (response) =>
-          response.url().endsWith("/starting-point") &&
-          response.request().method() === "POST",
+      const oldResponse = page.waitForResponse((response) =>
+        response.url().endsWith("/birth-year"),
       );
       release();
       await (await oldResponse).finished();
       await settledRender(page);
-      assert.equal(await page.locator(".starting-point-workspace").count(), 0);
+      await page
+        .getByRole("heading", { name: "What year was Current learner born?" })
+        .waitFor();
       assert.equal(
-        await page.locator(".starting-point-trigger").innerText(),
-        "Choose a starting point→",
+        await page.getByRole("button", { name: "Go", exact: true }).count(),
+        0,
       );
       assert.deepEqual(errors, []);
     } finally {

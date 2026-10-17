@@ -100,7 +100,7 @@ export function EqualGroupsFigure({
         style={{ fontSize: 20 }}
         fill={ink}
       >
-        Filled: items · Outline: empty
+        ● {figure.unit} · ○ empty place
       </text>
       {Array.from({ length: count }, (_, group) => {
         const x = left + (group % columns) * (boxWidth + gap),

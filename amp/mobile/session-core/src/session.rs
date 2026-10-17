@@ -78,13 +78,23 @@ pub struct NativeSession {
 pub enum LearningRequest {
     Family {},
     Learners {},
+    ProblemLesson {
+        template_id: String,
+    },
     Progress {
+        learner_id: String,
+    },
+    Frontier {
         learner_id: String,
     },
     StartingPoint {
         learner_id: String,
     },
     SetStartingPoint {
+        learner_id: String,
+        body: Value,
+    },
+    SetBirthYear {
         learner_id: String,
         body: Value,
     },
@@ -134,7 +144,9 @@ impl LearningRequest {
         let (path, body, query) = match self {
             Self::Family {} => ("/api/v1/family".into(), None, None),
             Self::Learners {} => ("/api/v1/learners".into(), None, None),
+            Self::ProblemLesson { template_id } => (problem_lesson_path(&template_id)?, None, None),
             Self::Progress { learner_id } => (learner_path(&learner_id, "progress")?, None, None),
+            Self::Frontier { learner_id } => (learner_path(&learner_id, "frontier")?, None, None),
             Self::StartingPoint { learner_id } => {
                 (learner_path(&learner_id, "starting-point")?, None, None)
             }
@@ -143,6 +155,9 @@ impl LearningRequest {
                 Some(body),
                 None,
             ),
+            Self::SetBirthYear { learner_id, body } => {
+                (learner_path(&learner_id, "birth-year")?, Some(body), None)
+            }
             Self::Batch { learner_id, body } => {
                 (learner_path(&learner_id, "batches")?, Some(body), None)
             }
@@ -202,6 +217,17 @@ impl LearningRequest {
         }
         Ok((url, body))
     }
+}
+fn problem_lesson_path(template_id: &str) -> Result<String, SessionError> {
+    let slug = !template_id.is_empty()
+        && template_id.len() <= 100
+        && template_id
+            .bytes()
+            .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == b'-');
+    if !slug {
+        return Err(SessionError::UnsupportedRequest);
+    }
+    Ok(format!("/api/v1/problem-lessons/{template_id}"))
 }
 fn learner_path(id: &str, action: &str) -> Result<String, SessionError> {
     if !uuid(id) {
@@ -667,6 +693,46 @@ mod tests {
         }
         assert!(LearningRequest::StartingPoint {
             learner_id: "../other".into()
+        }
+        .route(&api)
+        .is_err());
+    }
+
+    #[test]
+    fn problem_lessons_accept_only_template_slugs() {
+        let api = Url::parse("https://api.example.test").unwrap();
+        let (read, body) = LearningRequest::ProblemLesson {
+            template_id: "mean-data".into(),
+        }
+        .route(&api)
+        .unwrap();
+        assert_eq!(read.path(), "/api/v1/problem-lessons/mean-data");
+        assert!(body.is_none());
+        for bad in ["", "../family", "Mean", "a/b", &"x".repeat(101)] {
+            assert!(LearningRequest::ProblemLesson {
+                template_id: bad.into()
+            }
+            .route(&api)
+            .is_err());
+        }
+    }
+
+    #[test]
+    fn birth_year_uses_only_the_owned_learner_route() {
+        let api = Url::parse("https://api.example.test").unwrap();
+        let id = "00000000-0000-0000-0000-000000000001";
+        let body = serde_json::json!({"birthYear":2016});
+        let (write, payload) = LearningRequest::SetBirthYear {
+            learner_id: id.into(),
+            body: body.clone(),
+        }
+        .route(&api)
+        .unwrap();
+        assert_eq!(write.path(), format!("/api/v1/learners/{id}/birth-year"));
+        assert_eq!(payload, Some(body));
+        assert!(LearningRequest::SetBirthYear {
+            learner_id: "../other".into(),
+            body: serde_json::json!({}),
         }
         .route(&api)
         .is_err());

@@ -150,7 +150,14 @@ test(
     await migrate(url!);
     const repository = new PostgresRepository(url!, { development: true });
     const account = `test:${randomUUID()}`;
-    const learner = await repository.create(account, "Compatibility explorer");
+    // Placement starts at grade 8, where this skill lives, in any month.
+    const now = new Date();
+    const schoolYear = now.getUTCFullYear() - (now.getUTCMonth() < 7 ? 1 : 0);
+    const learner = await repository.create(
+      account,
+      "Compatibility explorer",
+      schoolYear - 15,
+    );
     const app = buildApp({
       repository,
       development: true,

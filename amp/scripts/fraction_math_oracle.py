@@ -1,5 +1,6 @@
 """Exact fraction-practice oracle derived only from the public question and diagram."""
 import re
+from oracle_wording import tolerant
 from fractions import Fraction
 
 FRACTION_PRACTICE = frozenset({
@@ -17,7 +18,7 @@ def require(ok, message):
         raise ValueError(message)
 
 def match(pattern, prompt):
-    found = re.fullmatch(pattern, prompt)
+    found = re.fullmatch(tolerant(pattern), prompt)
     require(found is not None, 'Unrecognized fraction prompt: ' + prompt)
     return tuple(map(int, found.groups()))
 
@@ -46,8 +47,7 @@ def solve_fraction_practice(public):
         strip(1, d, 'one whole')
         return Fraction(1, d)
     if name == 'fraction-unit-count':
-        d, repeated = match(r'Each whole has (\d+) equal pieces\. How many 1/(\d+) pieces are shaded across all the strips\?', prompt)
-        require(d == repeated, 'Inconsistent fractional unit')
+        d, = match(r'Each whole is cut into (\d+) equal pieces\. How many pieces are shaded\?', prompt)
         require(diagram is not None, 'Missing count diagram')
         count = diagram['rows'][0]['selected']
         strip(count, d, 'one whole')
@@ -58,7 +58,7 @@ def solve_fraction_practice(public):
         require([p['label'] for p in diagram['points']] == ['P'], 'Missing P')
         return Fraction(diagram['points'][0]['numerator'], d)
     if name == 'fraction-whole-as-parts':
-        whole, d = match(r'Write (\d+) wholes as \?/(\d+)\. What is the missing numerator\?', prompt)
+        whole, d = match(r'Write (\d+) wholes? as \?/(\d+)\. What is the missing numerator\?', prompt)
         strip(whole*d, d, 'one whole')
         return whole*d
     if name == 'equivalent-numerator':
@@ -102,11 +102,11 @@ def solve_fraction_practice(public):
         require([p['label'] for p in diagram['points']] == ['A', 'B'], 'Missing distance markers')
         return abs(Fraction(diagram['points'][1]['numerator']-diagram['points'][0]['numerator'], d))
     if name == 'whole-times-fraction':
-        count, n, d = match(r'Each of (\d+) containers holds (\d+)/(\d+) liter\. How many liters do they hold altogether\?', prompt)
+        count, n, d = match(r'Each of (\d+) container(?:s)? holds (\d+)/(\d+) liter\. How many liters do they hold altogether\?', prompt)
         strip(n, d, 'one liter')
         return count*Fraction(n, d)
     if name == 'whole-sharing-fraction':
-        total, count = match(r'Share (\d+) liters equally among (\d+) people\. How many liters does each person receive\?', prompt)
+        total, count = match(r'Share (\d+) liter(?:s)? equally among (\d+) people\. How many liters does each person receive\?', prompt)
         return Fraction(total, count)
     if name in {'unit-fraction-share', 'fraction-share-amount'}:
         n, d, count = match(r'Share (\d+)/(\d+) liter equally among (\d+) people\. How many liters does each person receive\?', prompt)
@@ -114,16 +114,16 @@ def solve_fraction_practice(public):
         require((n == 1) if name == 'unit-fraction-share' else (n >= 2), 'Wrong sharing family numerator')
         return Fraction(n, d)/count
     if name == 'whole-unit-groups':
-        d, total = match(r'How many 1/(\d+)-liter containers can be filled from (\d+) liters\?', prompt)
+        d, total = match(r'How many 1/(\d+)-liter containers can be filled from (\d+) liter(?:s)?\?', prompt)
         strip(total*d, d, 'one liter')
         return Fraction(total, 1)/Fraction(1, d)
     if name == 'fraction-group-count':
-        n, d, total, total_d = match(r'A container holds (\d+)/(\d+) liter\. How many containerfuls are in (\d+)/(\d+) liters\? Count a partial containerful as a fraction\.', prompt)
+        n, d, total, total_d = match(r'A container holds (\d+)/(\d+) liter\. How many containerfuls are in (\d+)/(\d+) liter(?:s)?\? Count a partial containerful as a fraction\.', prompt)
         require(d == total_d, 'Unexpected common-unit model')
         strip(total, d, 'one liter')
         require(len(diagram['rows']) == 2 and diagram['rows'][1]['selected'] == n, 'Container model disagrees with group size')
         return Fraction(total, total_d)/Fraction(n, d)
     if name == 'fraction-of-quantity':
-        total, n, d = match(r'A jug holds (\d+) liters\. You use (\d+)/(\d+) of its water\. How many liters do you use\?', prompt)
+        total, n, d = match(r'A jug holds (\d+) liter(?:s)?\. You use (\d+)/(\d+) of its water\. How many liters do you use\?', prompt)
         return Fraction(n, d)*total
     raise ValueError('Unimplemented fraction solver: '+name)

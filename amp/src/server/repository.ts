@@ -1,4 +1,13 @@
 import { skills } from "../curriculum/catalog";
+import { templates } from "../math/engine";
+import {
+  estimateFrontier,
+  initialLevel,
+  type Frontier,
+} from "../learning/frontier";
+import { templateGrade } from "./mixed-practice";
+const templateById = new Map(templates.map((t) => [t.id, t]));
+const skillById = new Map(skills.map((s) => [s.id, s]));
 import {
   lockLearningAccount,
   learningConsentActive,
@@ -15,7 +24,7 @@ import type {
   StartingBand,
   PracticeStartingPoint,
 } from "../learning/starting-point";
-export type Learner = { id: string; name: string };
+export type Learner = { id: string; name: string; birthYear: number | null };
 export type Outcome = {
   ingestionSequence?: string;
   id: string;
@@ -45,6 +54,9 @@ export class ApiError extends Error {
 export interface LearnerTransaction {
   startingPoint(): Promise<PracticeStartingPoint>;
   setStartingPoint(band: StartingBand): Promise<void>;
+  setBirthYear(birthYear: number): Promise<void>;
+  /** Placement estimate replayed from the learner's whole attempt history. */
+  frontier(now?: number): Promise<Frontier>;
   recentAttempts(): Promise<Outcome[]>;
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
@@ -58,7 +70,11 @@ export interface LearnerTransaction {
 export interface Repository {
   hasConsent(accountId: string): Promise<boolean>;
   list(accountId: string): Promise<Learner[]>;
-  create(accountId: string, name: string): Promise<Learner>;
+  create(
+    accountId: string,
+    name: string,
+    birthYear?: number | null,
+  ): Promise<Learner>;
   transaction<T>(
     accountId: string,
     learnerId: string,
@@ -85,7 +101,11 @@ export class PostgresRepository implements Repository {
 
   async list(accountId: string) {
     return drizzle(this.pool)
-      .select({ id: schema.learners.id, name: schema.learners.name })
+      .select({
+        id: schema.learners.id,
+        name: schema.learners.name,
+        birthYear: schema.learners.birthYear,
+      })
       .from(schema.learners)
       .where(
         and(
@@ -94,8 +114,8 @@ export class PostgresRepository implements Repository {
         ),
       );
   }
-  async create(accountId: string, name: string) {
-    const learner = { id: randomUUID(), name };
+  async create(accountId: string, name: string, birthYear?: number | null) {
+    const learner = { id: randomUUID(), name, birthYear: birthYear ?? null };
     const client = await this.pool.connect();
     try {
       await client.query("BEGIN");
@@ -112,8 +132,8 @@ export class PostgresRepository implements Repository {
           "Parent consent is required before collecting learning data",
         );
       await client.query(
-        "INSERT INTO amp_learners(id,account_id,name) VALUES($1,$2,$3)",
-        [learner.id, accountId, learner.name],
+        "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
+        [learner.id, accountId, learner.name, learner.birthYear],
       );
       await client.query("COMMIT");
       return learner;
@@ -190,6 +210,39 @@ export class PgTransaction implements LearnerTransaction {
       "UPDATE amp_learners SET starting_band=$2,starting_policy=1,starting_excluded_strands=COALESCE(starting_excluded_strands,$3::text[]) WHERE id=$1",
       [this.learnerId, band, excluded],
     );
+  }
+  async setBirthYear(birthYear: number) {
+    await this.db.query("UPDATE amp_learners SET birth_year=$2 WHERE id=$1", [
+      this.learnerId,
+      birthYear,
+    ]);
+  }
+  async frontier(now = Date.now()): Promise<Frontier> {
+    const learner = await this.db.query(
+      "SELECT birth_year,starting_band FROM amp_learners WHERE id=$1",
+      [this.learnerId],
+    );
+    const history = await this.db.query(
+      `SELECT outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt" FROM amp_attempts
+        WHERE learner_id=$1 ORDER BY evidence_sequence`,
+      [this.learnerId],
+    );
+    return estimateFrontier({
+      start: initialLevel({
+        birthYear: learner.rows[0]?.birth_year,
+        band: learner.rows[0]?.starting_band,
+        now,
+      }),
+      observations: history.rows,
+      now,
+      gradeOf: (id) => {
+        const template = templateById.get(id);
+        return template && templateGrade(template, skillById);
+      },
+      strandOf: (id) =>
+        skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
+    });
   }
   async recentAttempts() {
     const result = await this.db.query(

@@ -86,39 +86,58 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
     );
   }
   if (figure.kind === "measure-rectangle") {
+    // Known sides are drawn to scale. An unknown side cannot be: the drawing
+    // would reveal the answer, so that case uses a neutral 3:2 shape.
+    const cm = (m: { value: number; unit: string }) =>
+      m.value * ({ km: 100000, m: 100, cm: 1, mm: 0.1 }[m.unit] ?? 1);
+    const known = figure.width && figure.height;
+    const ratio = known
+      ? Math.min(4, Math.max(1 / 4, cm(figure.width!) / cm(figure.height!)))
+      : 1.5;
+    const w = ratio >= 2.2 ? 220 : 100 * ratio,
+      h = ratio >= 2.2 ? 220 / ratio : 100,
+      x = 88 + (220 - w) / 2,
+      y = 32 + (100 - h) / 2;
     return (
       <svg
         className="figure measurement-figure"
         data-kind={figure.kind}
         viewBox="0 0 320 166"
         role="img"
-        aria-label={`Schematic rectangle, not to scale. Horizontal side: ${figure.width ? measure(figure.width) : "unknown"}. Perpendicular vertical side: ${figure.height ? measure(figure.height) : "unknown"}. Opposite sides have equal lengths.`}
+        aria-label={`Rectangle${known ? "" : ", not to scale"}. Horizontal side: ${figure.width ? measure(figure.width) : "unknown"}. Perpendicular vertical side: ${figure.height ? measure(figure.height) : "unknown"}. Opposite sides have equal lengths.`}
       >
         <rect
-          x={104}
-          y={23}
-          width={166}
-          height={74}
-          rx={1}
-          fill="#e3eee4"
+          x={x}
+          y={y}
+          width={w}
+          height={h}
+          rx={3}
+          fill="#e3eee8"
           stroke={teal}
-          strokeWidth={3}
+          strokeWidth={2.5}
         />
-        <path d="M104 85 h12 v12" fill="none" stroke={teal} />
-        <text style={text} x={187} y={127} textAnchor="middle">
+        <path
+          d={`M${x} ${y + h - 12} h12 v12`}
+          fill="none"
+          stroke={teal}
+          strokeWidth={1.5}
+        />
+        <text style={text} x={x + w / 2} y={y + h + 24} textAnchor="middle">
           {measure(figure.width)}
         </text>
-        <text style={text} x={92} y={68} textAnchor="end">
+        <text style={text} x={x - 10} y={y + h / 2 + 6} textAnchor="end">
           {measure(figure.height)}
         </text>
-        <text
-          style={{ ...text, fontSize: 22 }}
-          x={160}
-          y={158}
-          textAnchor="middle"
-        >
-          Schematic · not to scale
-        </text>
+        {!known && (
+          <text
+            style={{ ...text, fontSize: 19, opacity: 0.6 }}
+            x={4}
+            y={20}
+            textAnchor="start"
+          >
+            Not to scale
+          </text>
+        )}
       </svg>
     );
   }

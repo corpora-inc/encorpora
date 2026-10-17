@@ -2,6 +2,7 @@
 import json
 import math
 import re
+from oracle_wording import tolerant
 from fractions import Fraction
 
 SUPPORTED = {
@@ -20,7 +21,7 @@ def require(condition, message):
 
 
 def match(pattern, text):
-    result = re.fullmatch(pattern, text)
+    result = re.fullmatch(tolerant(pattern), text)
     require(result is not None, 'Unrecognized public wording: ' + text)
     return result.groups()
 

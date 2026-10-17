@@ -1,3 +1,4 @@
+import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -18,6 +19,7 @@ const repository = new PostgresRepository(url, { development: true });
 const learner = await repository.create(
   "development-household",
   "Interpretation explorer",
+  2016,
 );
 const app = buildApp({
   repository,
@@ -69,26 +71,13 @@ try {
         (t) => t.requiredResponseCapability === "single-choice-v1",
       ),
     ]) {
-      if (
-        await page
-          .getByRole("button", { name: "Change topic", exact: true })
-          .count()
-      )
-        await page
-          .getByRole("button", { name: "Change topic", exact: true })
-          .click();
-      await page
-        .getByText("Looking for a particular idea?", { exact: true })
-        .click();
-      await page.getByLabel("Choose your practice").selectOption(template.id);
       const batchPromise = page.waitForResponse(
         (response) =>
           response.url().endsWith("/batches") &&
-          response.request().method() === "POST",
+          response.request().method() === "POST" &&
+          response.request().postDataJSON()?.templateId === template.id,
       );
-      await page
-        .getByRole("button", { name: "Try this idea", exact: true })
-        .click();
+      await startTopic(page, template.id);
       const batch = await (await batchPromise).json();
       const problem: PublicProblem = batch.problems[0];
       assert.equal(problem.templateId, template.id);
@@ -109,7 +98,7 @@ try {
       await page.getByRole("radio").first().waitFor();
       assert.equal(
         await page
-          .getByRole("button", { name: "Device keyboard", exact: true })
+          .getByRole("button", { name: "Keyboard", exact: true })
           .count(),
         0,
       );
@@ -198,9 +187,7 @@ try {
             });
           } else await route.continue();
         });
-      await page
-        .getByRole("button", { name: "Check answer", exact: true })
-        .click();
+      await page.getByRole("button", { name: "Check", exact: true }).click();
       if (lostAcknowledgment) {
         await page
           .getByRole("button", { name: "Retry", exact: true })
@@ -208,18 +195,16 @@ try {
         assert.ok(await page.getByRole("radio").first().isDisabled());
         await page.getByRole("button", { name: "Retry", exact: true }).click();
       }
-      await page
-        .getByRole("heading", { name: "Let’s work through it.", exact: true })
-        .waitFor();
+      await page.locator(".feedback.incorrect").waitFor();
       if (lostAcknowledgment) {
         assert.equal(submissions.length, 2);
         assert.deepEqual(submissions[0], submissions[1]);
         await page.unroute("**/attempts");
       }
       assert.ok(
-        (await page.locator(".solution-answer").innerText()).includes(
-          correct.label,
-        ),
+        (await page
+          .locator(".solution-answer")
+          .getAttribute("data-text"))!.includes(correct.label),
       );
       assert.ok(
         (await page.locator(".solution-panel").innerText()).includes(
@@ -232,12 +217,15 @@ try {
         ),
       );
       assert.equal(
-        await page.locator(".solution-panel li").first().innerText(),
+        await page
+          .locator(".solution-panel li")
+          .first()
+          .getAttribute("data-text"),
         privateProblem.choiceFeedback![wrong.id],
       );
       await page.keyboard.press("Escape");
       assert.equal(await page.locator("dialog[open]").count(), 0);
-      const continueButton = page.getByRole("button", { name: /^Continue/ });
+      const continueButton = page.getByRole("button", { name: /^Next/ });
       await continueButton.waitFor();
       assert.ok(
         await continueButton.evaluate(

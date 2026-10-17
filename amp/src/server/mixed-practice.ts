@@ -1,12 +1,16 @@
 import { createHash } from "node:crypto";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "./repository";
-import type { PracticeStartingPoint } from "../learning/starting-point";
+import type { GradeBand } from "../curriculum/types";
 import {
-  projectSkillEvidence,
-  type SkillEvidence,
-  type PracticeObservation,
-} from "./evidence.js";
+  estimateFrontier,
+  gradeNumber,
+  initialLevel,
+  strandEstimate,
+  targetGrade,
+  type Frontier,
+} from "../learning/frontier";
+import { projectSkillEvidence, type SkillEvidence } from "./evidence.js";
 
 export type PracticeReason =
   "review" | "revisit" | "prerequisite" | "frontier" | "explore";
@@ -15,14 +19,13 @@ export type PracticeChoice = {
   reason: PracticeReason;
   strand: string;
 };
-type SkillNode = { id: string; prerequisites: string[]; strand: string };
-const DAY = 86400000;
-const levels: Record<TemplateMetadata["gradeBand"], number> = {
-  "K–2": 0,
-  "3–5": 1,
-  "6–8": 2,
-  "9–12": 3,
+type SkillNode = {
+  id: string;
+  prerequisites: string[];
+  strand: string;
+  gradeBand?: GradeBand;
 };
+const DAY = 86400000;
 
 /** Scheduling heuristic, not a psychometric mastery estimate. Assistance and
  * errors reset spacing; independently successful retrievals widen it. */
@@ -50,17 +53,19 @@ export function reviewDueAt(attempts: readonly Outcome[]): number | null {
 }
 
 /** Select across strands for each problem, reserving variety within a batch.
- * An exploratory probe never grants credit to its unobserved prerequisites. */
+ * Each strand aims at its own estimated frontier; due reviews, missed skills
+ * and unmet prerequisites take reserved slots. Nothing grants ancestor credit. */
 export function planMixedPractice(options: {
   templates: readonly TemplateMetadata[];
   skills: readonly SkillNode[];
   attempts: readonly Outcome[];
   evidence: readonly SkillEvidence[];
-  startingPoint?: PracticeStartingPoint;
+  /** Placement estimate; without one, the recent attempts start from grade 1. */
+  frontier?: Frontier;
   count: number;
   seed: string;
   now?: number;
-  /** Finite offline pools may shrink instead of filling with above-range probes. */
+  /** Finite offline pools shrink instead of filling with above-frontier work. */
   strictCeiling?: boolean;
 }): PracticeChoice[] {
   const { templates, skills, evidence, seed } = options;
@@ -74,96 +79,43 @@ export function planMixedPractice(options: {
   const now = options.now ?? Date.now();
   const attempts = [...options.attempts];
   const nodes = new Map(skills.map((skill) => [skill.id, skill]));
-  const byTemplate = new Map(
-    templates.map((template) => [template.id, template]),
+  const strandOf = (skillId: string) => nodes.get(skillId)?.strand ?? skillId;
+  const gradeOfTemplate = new Map(
+    templates.map((template) => [template.id, templateGrade(template, nodes)]),
   );
-  // Global recency controls interleaving only. Retained skill observations
-  // determine support and each strand's independent challenge range.
+  const frontier =
+    options.frontier ??
+    estimateFrontier({
+      start: initialLevel({}),
+      observations: attempts,
+      gradeOf: (id) => gradeOfTemplate.get(id),
+      strandOf: (id) =>
+        strandOf(templates.find((t) => t.id === id)?.skillId ?? id),
+    });
+  // A strand estimated below its easiest material still offers that material
+  // once the learner's overall level reaches it; otherwise one bad run would
+  // hide a whole strand for good.
+  const strandFloor = new Map<string, number>();
+  for (const template of templates) {
+    const strand = strandOf(template.skillId);
+    const grade = gradeOfTemplate.get(template.id)!;
+    strandFloor.set(strand, Math.min(strandFloor.get(strand) ?? grade, grade));
+  }
+  const targetOf = (strand: string) => {
+    const level = targetGrade(strandEstimate(frontier, strand));
+    const floor = strandFloor.get(strand)!;
+    return level < floor && frontier.overall.level >= floor ? floor : level;
+  };
   const stats = new Map(
     projectSkillEvidence(attempts).map((entry) => [entry.skillId, entry]),
   );
   for (const entry of evidence) stats.set(entry.skillId, entry);
-  const bySkill = new Map<string, PracticeObservation[]>(
-    [...stats].map(([id, entry]) => [id, entry.recentOutcomes]),
-  );
-  const strandOf = (skillId: string) => nodes.get(skillId)?.strand ?? skillId;
-  const strandEvidence = new Map<
-    string,
-    {
-      level: number;
-      ceiling: number;
-      challenge: boolean;
-      initialProbePolicy: boolean;
-    }
-  >();
-  for (const strand of new Set(
-    templates.map((template) => strandOf(template.skillId)),
-  )) {
-    const initialProbePolicy =
-      options.startingPoint?.policyVersion === 1 &&
-      !options.startingPoint.excludedStrands.includes(strand);
-    const entries = [...stats.values()].filter(
-      (entry) => strandOf(entry.skillId) === strand,
-    );
-    const observed = entries
-      .flatMap((entry) => entry.recentOutcomes)
-      .sort((a, b) =>
-        Number(BigInt(a.ingestionSequence) - BigInt(b.ingestionSequence)),
-      )
-      .slice(-3);
-    const successes = entries
-      .flatMap((entry) =>
-        entry.latestIndependent ? [entry.latestIndependent] : [],
-      )
-      .filter((entry) => byTemplate.has(entry.templateId));
-    const latestProbe = [...observed]
-      .reverse()
-      .find((entry) => byTemplate.has(entry.templateId));
-    // A preference starts only untouched strands. Before the first independent
-    // success, actual attempted tasks determine a local downward probe sequence.
-    // It supplies neither a floor nor prerequisite/mastery credit.
-    const provisional =
-      initialProbePolicy && !successes.length
-        ? latestProbe
-          ? Math.max(
-              0,
-              levels[byTemplate.get(latestProbe.templateId)!.gradeBand] - 1,
-            )
-          : entries.length === 0 &&
-              options.startingPoint?.policyVersion === 1 &&
-              options.startingPoint.band
-            ? levels[options.startingPoint.band]
-            : 0
-        : 0;
-    const anchor = Math.max(
-      0,
-      ...successes.map(
-        (entry) => levels[byTemplate.get(entry.templateId)!.gradeBand],
-      ),
-    );
-    const errors = observed.filter(
-      (entry) => !entry.correct || entry.assisted,
-    ).length;
-    const level = successes.length
-      ? Math.max(0, anchor - (errors >= 2 ? 1 : 0))
-      : provisional;
-    const challenge =
-      observed.length >= 3 &&
-      observed.every((entry) => entry.correct && !entry.assisted);
-    strandEvidence.set(strand, {
-      level,
-      initialProbePolicy,
-      ceiling: Math.min(3, level + Number(challenge)),
-      challenge,
-    });
-  }
   const chosen: PracticeChoice[] = [];
   const recentSkillIds = attempts
     .filter((attempt) => now - Date.parse(attempt.createdAt) < 30 * 60000)
     .slice(-2)
     .map((attempt) => attempt.skillId);
   const latest = attempts.at(-1);
-  const latestStrand = latest ? strandOf(latest.skillId) : null;
   const remediation = new Set<string>();
   const implemented = new Set(templates.map((template) => template.skillId));
   // Cross catalog gaps to the nearest teachable ancestors on each branch.
@@ -177,78 +129,69 @@ export function planMixedPractice(options: {
       else collectPrerequisites(prerequisite, visited);
     }
   }
+  // Only repeated trouble sends a learner down the graph; one slip is revisited.
   for (const entry of stats.values()) {
-    const attempt = entry.recentOutcomes.at(-1);
-    if (attempt && (!attempt.correct || attempt.assisted))
-      collectPrerequisites(attempt.skillId);
+    const misses = entry.recentOutcomes
+      .slice(-2)
+      .filter((attempt) => !attempt.correct || attempt.assisted).length;
+    if (misses >= 2) collectPrerequisites(entry.skillId);
   }
   for (let slot = 0; slot < options.count; slot++) {
     const lastChoice = chosen.at(-1);
     const lastSkill = lastChoice?.template.skillId ?? latest?.skillId;
-    const lastStrand = lastChoice?.strand ?? latestStrand;
+    const lastStrand =
+      lastChoice?.strand ?? (latest ? strandOf(latest.skillId) : null);
     const candidates = templates.map((template) => {
       const strand = strandOf(template.skillId);
-      const history = bySkill.get(template.skillId) ?? [];
-      const last = history.at(-1);
       const state = stats.get(template.skillId);
-      const strandState = strandEvidence.get(strand)!;
-      const strandLevel = strandState.level;
-      const level = levels[template.gradeBand];
-      const prerequisites = nodes.get(template.skillId)?.prerequisites ?? [];
-      const ready = prerequisites.every(
-        (id) => stats.get(id)?.status === "review-ready",
-      );
-      // Only demonstrated prerequisites may cross a strand boundary. A probe
-      // never writes readiness to ancestors or unrelated strands.
-      const observedPrerequisites = prerequisites.length > 0 && ready;
+      const last = state?.recentOutcomes.at(-1);
+      const grade = gradeOfTemplate.get(template.id)!;
+      const target = targetOf(strand);
       const due = state?.reviewDueAt ?? null;
       const overdue = due !== null && due <= now;
       const returningError = !!last && (!last.correct || last.assisted);
-      const reason: PracticeReason = remediation.has(template.skillId)
-        ? "prerequisite"
-        : returningError
-          ? "revisit"
-          : overdue
-            ? "review"
-            : ready
-              ? "frontier"
-              : "explore";
+      // Support returns only within reach: a miss above the lowered frontier
+      // is evidence about the frontier, not a skill to repeat yet.
+      const distance = grade - target;
+      const reachable = distance <= 1;
+      const reason: PracticeReason =
+        remediation.has(template.skillId) && reachable
+          ? "prerequisite"
+          : returningError && distance <= 0.25
+            ? "revisit"
+            : overdue && distance <= 0.5
+              ? "review"
+              : state
+                ? "frontier"
+                : "explore";
+      // Aim at the frontier: work far below it teaches little, and work well
+      // beyond it cannot be done yet.
       let score =
-        reason === "prerequisite"
-          ? 95
-          : reason === "revisit"
-            ? 90
-            : reason === "review"
-              ? 80
-              : history.length === 0
-                ? 65
-                : 40;
-      if (returningError && !recentSkillIds.includes(template.skillId))
-        score += 35;
-      if (state?.status === "review-ready" && !overdue) score -= 35;
-      score -= Math.abs(level - strandLevel) * 32;
-      if (
-        level > strandState.ceiling &&
-        reason !== "prerequisite" &&
-        !observedPrerequisites &&
-        (!last || (strandState.initialProbePolicy && returningError))
-      )
-        score -= 160 * (level - strandState.ceiling);
-      if (
-        strandState.challenge &&
-        level === strandState.ceiling &&
-        !history.length
-      )
-        score += 26;
-      // Learning work is interleaved, including remediation: avoid a miss turning
-      // into an endless same-template loop. No synthetic success is recorded.
-      if (template.skillId === lastSkill) score -= 180;
-      if (strand === lastStrand) score -= 55;
-      if (recentSkillIds.includes(template.skillId)) score -= 55;
+        100 -
+        Math.abs(distance) * 30 -
+        (distance > 1 ? (distance - 1) * 120 : 0) -
+        (distance < -1.5 ? (-distance - 1.5) * 40 : 0);
+      if (reason === "prerequisite") score = Math.max(score, 85) + 20;
+      if (reason === "revisit") score = Math.max(score, 70) + 15;
+      if (reason === "review") score = Math.max(score, 60) + 10;
+      if (state?.status === "review-ready" && !overdue) score -= 60;
+      if (!state && Math.abs(distance) <= 1) score += 12;
+      // Seek information where the estimate is least certain, and lean into
+      // strands below the level expected for the learner's age.
+      const estimate = strandEstimate(frontier, strand);
+      if (Math.abs(distance) <= 1) {
+        score += 14 * estimate.sd;
+        score +=
+          10 * Math.max(0, Math.min(2, frontier.expected - estimate.level));
+      }
+      // Interleave: a miss returns after other work, never as an instant loop.
+      if (template.skillId === lastSkill) score -= 200;
+      if (strand === lastStrand) score -= 45;
+      if (recentSkillIds.includes(template.skillId)) score -= 60;
       score -=
         chosen.filter((entry) => entry.template.skillId === template.skillId)
           .length * 150;
-      score -= chosen.filter((entry) => entry.strand === strand).length * 35;
+      score -= chosen.filter((entry) => entry.strand === strand).length * 120;
       const tie =
         createHash("sha256")
           .update(`${seed}:${slot}:${template.id}`)
@@ -258,16 +201,9 @@ export function planMixedPractice(options: {
         template,
         reason,
         strand,
-        score: score + tie,
-        poolEligible:
-          level <= strandState.ceiling ||
-          reason === "prerequisite" ||
-          (reason === "review" &&
-            state?.latestIndependent?.templateId === template.id),
-        supportEligible:
-          !strandState.initialProbePolicy ||
-          level <= strandState.ceiling ||
-          reason !== "revisit",
+        score: score + tie * 8,
+        poolEligible: grade <= target + 1 || reason === "prerequisite",
+        support: ["prerequisite", "revisit", "review"].includes(reason),
       };
     });
     const eligible = options.strictCeiling
@@ -277,17 +213,14 @@ export function planMixedPractice(options: {
     eligible.sort(
       (a, b) => b.score - a.score || a.template.id.localeCompare(b.template.id),
     );
-    // Reserve one eligible support/retrieval slot per batch. Variety cannot
-    // indefinitely starve a gap or a due review; immediate repetitions are
-    // deferred until other work has intervened.
-    const supportAlreadyChosen = chosen.some((entry) =>
+    // Reserve one support/retrieval slot per batch so variety cannot starve a
+    // gap or a due review; immediate repetitions wait for intervening work.
+    const reserved = !chosen.some((entry) =>
       ["prerequisite", "revisit", "review"].includes(entry.reason),
-    );
-    const reserved = !supportAlreadyChosen
+    )
       ? eligible.find(
           (entry) =>
-            entry.supportEligible &&
-            ["prerequisite", "revisit", "review"].includes(entry.reason) &&
+            entry.support &&
             !recentSkillIds.includes(entry.template.skillId) &&
             entry.template.skillId !== lastSkill &&
             !chosen.some(
@@ -300,3 +233,17 @@ export function planMixedPractice(options: {
   }
   return chosen;
 }
+
+export function templateGrade(
+  template: TemplateMetadata,
+  nodes: ReadonlyMap<string, { gradeBand?: GradeBand }>,
+): number {
+  const band = nodes.get(template.skillId)?.gradeBand;
+  return band ? gradeNumber[band] : coarse[template.gradeBand];
+}
+const coarse: Record<TemplateMetadata["gradeBand"], number> = {
+  "K–2": 1,
+  "3–5": 4,
+  "6–8": 7,
+  "9–12": 10,
+};

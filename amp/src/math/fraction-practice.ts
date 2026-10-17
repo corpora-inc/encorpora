@@ -123,7 +123,7 @@ export function generateFractionPracticeProblem(
       figure = strips(d, n, "one whole");
       kind = "number";
       label = "Number of pieces";
-      prompt = `Each whole has ${d} equal pieces. How many 1/${d} pieces are shaded across all the strips?`;
+      prompt = `Each whole is cut into ${d} equal pieces. How many pieces are shaded?`;
       answer = `${n}`;
       hint =
         "Count shaded pieces; crossing a whole boundary does not change their size.";

@@ -1,3 +1,4 @@
+import { exitPractice, startTopic } from "./ui-practice";
 /** Controlled system-browser/OS-callback adapter around the production Rust session core. */
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
@@ -715,35 +716,18 @@ try {
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learnerA.id);
-  await page
-    .getByRole("button", { name: "Choose a starting point", exact: true })
-    .click();
-  await page
-    .getByRole("heading", { name: "Where to begin?", exact: true })
-    .waitFor();
-  await page.getByRole("button", { name: /Algebra & functions/ }).click();
-  await page
-    .getByRole("button", {
-      name: "Starting point: Algebra & functions",
-      exact: true,
-    })
-    .waitFor();
+  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await page.getByRole("button", { name: "Go", exact: true }).waitFor();
   assert.equal(
     (
       await repository.pool.query(
-        "SELECT starting_band FROM amp_learners WHERE id=$1",
+        "SELECT birth_year FROM amp_learners WHERE id=$1",
         [learnerA.id],
       )
-    ).rows[0].starting_band,
-    "9–12",
+    ).rows[0].birth_year,
+    2016,
   );
-  await page
-    .getByText("Looking for a particular idea?", { exact: true })
-    .click();
-  await page.getByLabel("Choose your practice").selectOption("add-within-20");
-  await page
-    .getByRole("button", { name: "Try this idea", exact: true })
-    .click();
+  await startTopic(page, "add-within-20");
   await page.locator(".problem-stage").waitFor();
   assert.deepEqual(browserApiRequests, []);
   await mkdir(new URL("../artifacts/native-session/", import.meta.url), {
@@ -755,14 +739,14 @@ try {
       import.meta.url,
     ).pathname,
   });
-  const prompt = await page.locator(".question").innerText();
+  const prompt = (await page.locator(".question").getAttribute("data-text"))!;
   const givens = /What is (\d+) \+ (\d+)\?/.exec(prompt);
   assert.ok(givens);
   const answer = String(Number(givens[1]) + Number(givens[2]));
   for (const digit of answer)
     await page.getByRole("button", { name: digit, exact: true }).click();
-  await page.getByRole("button", { name: "Check answer", exact: true }).click();
-  await page.getByText("You’ve got it.", { exact: true }).waitFor();
+  await page.getByRole("button", { name: "Check", exact: true }).click();
+  await page.locator(".feedback.correct").waitFor();
   const attempts = await repository.pool.query(
     "SELECT outcome FROM amp_attempts WHERE learner_id=$1",
     [learnerA.id],
@@ -770,13 +754,11 @@ try {
   assert.equal(attempts.rowCount, 1);
   assert.equal(attempts.rows[0].outcome.correct, true);
   assert.equal(attempts.rows[0].outcome.assisted, false);
-  await page
-    .getByRole("button", { name: "Your progress", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-workspace").waitFor();
-  await page
-    .getByRole("button", { name: "Lesson library", exact: true })
-    .click();
+  await exitPractice(page);
+  await page.getByRole("button", { name: "Lessons", exact: true }).click();
   await page
     .getByRole("button", { name: "Open book", exact: true })
     .first()

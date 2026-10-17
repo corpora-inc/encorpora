@@ -1,3 +1,8 @@
+import { ProblemLesson } from "./ProblemLesson";
+import { MathText } from "./MathText";
+import { Calculator } from "./Calculator";
+import { displayAnswer } from "../math/polish";
+import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import {
   useEffect,
@@ -113,10 +118,30 @@ type Props = {
   submit: () => void;
   next: () => void;
   requestHint: () => void;
-  requestLesson: () => Promise<void>;
-  openBook?: () => void;
-  changeTopic: () => void;
+  /** This problem allows a calculator (computation is not the skill). */
+  calculator?: boolean;
+  /** Leave immersive practice for home, lessons, progress and settings. */
+  exit: () => void;
+  requestLesson: () => Promise<ProblemLessonView>;
+  strand?: string;
 };
+
+const keyboardKey = "amp.keyboard";
+/** A per-device convenience; practice works the same without storage. */
+function prefersDeviceKeyboard() {
+  try {
+    return localStorage.getItem(keyboardKey) === "device";
+  } catch {
+    return false;
+  }
+}
+function rememberKeyboard(device: boolean) {
+  try {
+    localStorage.setItem(keyboardKey, device ? "device" : "keypad");
+  } catch (error) {
+    console.warn("Keyboard preference not saved", error);
+  }
+}
 
 export function PracticeWorkspace(props: Props) {
   const {
@@ -145,13 +170,13 @@ export function PracticeWorkspace(props: Props) {
     problem.response.kind === "choice"
       ? (problem.response.options.find((option) => option.id === value)
           ?.label ?? "Unavailable answer")
-      : value;
+      : props.strand === "fractions"
+        ? value
+        : displayAnswer(value);
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
-  const [panel, setPanel] = useState<"hint" | "explanation" | "lesson" | null>(
-    null,
-  );
+  const [panel, setPanel] = useState<"hint" | "lesson" | null>(null);
   const [entering, setEntering] = useState(false);
   const [lessonLoading, setLessonLoading] = useState(false);
   const lessonRequest = useRef(0);
@@ -171,12 +196,16 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const [nativeKeyboard, setNativeKeyboard] = useState(false);
+  const [nativeKeyboard, setNativeKeyboard] = useState(prefersDeviceKeyboard);
+  const [problemLessonView, setProblemLessonView] =
+    useState<ProblemLessonView | null>(null);
   const [small, setSmall] = useState(
     () => matchMedia("(max-width: 650px), (pointer: coarse)").matches,
   );
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
   const [celebrate, setCelebrate] = useState(false);
+  const [showWhy, setShowWhy] = useState(false);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
   useEffect(() => {
     const media = matchMedia("(max-width: 650px), (pointer: coarse)");
     const changed = () => setSmall(media.matches);
@@ -195,22 +224,27 @@ export function PracticeWorkspace(props: Props) {
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
-    if (!outcome || busy || previousOutcome.current === outcome.id) return;
+    if (!outcome || previousOutcome.current === outcome.id) return;
     previousOutcome.current = outcome.id;
     input.current?.blur();
     setEntering(false);
-    // Wait for the answer panel to unmount and the enabled Continue target to render.
+    focusNext.current = true;
     const focus = window.setTimeout(() => {
-      continueButton.current?.focus({ preventScroll: true });
-      if (!outcome.correct) setPanel("explanation");
-      else setCelebrate(true);
+      if (outcome.correct) setCelebrate(true);
     }, 0);
     const timeout = window.setTimeout(() => setCelebrate(false), 1100);
     return () => {
       window.clearTimeout(focus);
       window.clearTimeout(timeout);
     };
-  }, [outcome?.id, busy]);
+  }, [outcome?.id]);
+  // Focus Next only after the answer dialog has closed and restored focus.
+  const focusNext = useRef(false);
+  useEffect(() => {
+    if (!outcome || entering || !focusNext.current) return;
+    focusNext.current = false;
+    continueButton.current?.focus({ preventScroll: true });
+  }, [outcome?.id, entering]);
   const locked = busy || pending || !!outcome;
   const keypad = small && !nativeKeyboard && !choice;
   function key(value: string) {
@@ -276,12 +310,11 @@ export function PracticeWorkspace(props: Props) {
             </div>
           </fieldset>
           <button
-            ref={compact ? undefined : continueButton}
             className="choice-submit"
             type="submit"
             disabled={busy || (!outcome && !response)}
           >
-            {outcome ? "Continue →" : pending ? "Retry" : "Check answer"}
+            {pending ? "Retry" : "Check"}
           </button>
         </form>
       );
@@ -321,13 +354,11 @@ export function PracticeWorkspace(props: Props) {
               maxLength={100}
             />
             <button
-              ref={compact ? undefined : continueButton}
               className="answer-action"
               type="submit"
               disabled={busy || (!outcome && !response.trim())}
             >
-              {outcome ? "Continue" : pending ? "Retry" : "Check answer"}
-              <span aria-hidden="true">{outcome ? " →" : " ↵"}</span>
+              {pending ? "Retry" : "Check"}
             </button>
           </div>
           <span id="answer-format" className="sr-only">
@@ -389,23 +420,110 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
+  function tools() {
+    return (
+      <div className="practice-tools">
+        {outcome ? (
+          outcome.correct &&
+          !showWhy && (
+            <button className="text-button" onClick={() => setShowWhy(true)}>
+              See why
+            </button>
+          )
+        ) : (
+          <button
+            className="text-button"
+            disabled={busy}
+            onClick={() => {
+              setPanel("hint");
+              if (!hint) props.requestHint();
+            }}
+          >
+            Hint
+          </button>
+        )}
+        <button
+          className="text-button"
+          disabled={lessonLoading}
+          onClick={async (event) => {
+            lessonTrigger.current = event.currentTarget;
+            const requestedProblem = problem.id;
+            const request = ++lessonRequest.current;
+            const current = () =>
+              alive.current &&
+              lessonRequest.current === request &&
+              currentProblem.current === requestedProblem;
+            setLessonLoading(true);
+            setLessonError("");
+            try {
+              const view = await props.requestLesson();
+              if (current()) {
+                setProblemLessonView(view);
+                setPanel("lesson");
+              }
+            } catch {
+              if (current())
+                setLessonError(
+                  "The lesson could not be opened. Please try again.",
+                );
+            } finally {
+              if (current()) setLessonLoading(false);
+            }
+          }}
+        >
+          {lessonLoading ? "Opening…" : "Lesson"}
+        </button>
+        {small && !choice && !outcome && (
+          <button
+            className="text-button keyboard-choice"
+            onClick={() => {
+              setNativeKeyboard(!nativeKeyboard);
+              rememberKeyboard(!nativeKeyboard);
+              input.current?.blur();
+              requestAnimationFrame(() =>
+                input.current?.focus({ preventScroll: true }),
+              );
+            }}
+          >
+            {nativeKeyboard ? "Keypad" : "Keyboard"}
+          </button>
+        )}
+      </div>
+    );
+  }
   return (
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface">
         <div className="workspace-toolbar">
-          <div>
-            <span className="eyebrow">
-              {meta?.gradeBand ?? "MATH PRACTICE"}
-            </span>
-            <span className="workspace-topic">{meta?.title ?? "Practice"}</span>
-          </div>
           <button
-            className="text-button"
-            onClick={props.changeTopic}
-            disabled={busy}
+            className="workspace-exit"
+            aria-label="Exit practice"
+            title="Exit practice"
+            onClick={props.exit}
           >
-            Change topic
+            ✕
           </button>
+          <span className="workspace-topic" data-strand={props.strand}>
+            {meta?.title ?? "Practice"}
+          </span>
+          {props.calculator ? (
+            <button
+              className="calculator-toggle"
+              aria-label="Calculator"
+              title="Calculator"
+              aria-pressed={calculatorOpen}
+              disabled={!!outcome}
+              onClick={() => setCalculatorOpen(!calculatorOpen)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="3" width="14" height="18" rx="2.5" />
+                <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
+                <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
+              </svg>
+            </button>
+          ) : (
+            <span className="no-calculator">No calculator</span>
+          )}
         </div>
         <div
           className="problem-stage"
@@ -413,8 +531,13 @@ export function PracticeWorkspace(props: Props) {
           aria-label="Problem workspace"
         >
           <div className="problem-content">
-            <h2 ref={prompt} tabIndex={-1} className="question">
-              {problem.prompt}
+            <h2
+              ref={prompt}
+              tabIndex={-1}
+              className="question"
+              data-text={problem.prompt}
+            >
+              <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
               (choice ? (
@@ -431,133 +554,97 @@ export function PracticeWorkspace(props: Props) {
         </div>
         <div className="answer-dock">
           <div
-            className="answer-status"
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
+            className="answer-controls"
+            style={outcome ? { visibility: "hidden" } : undefined}
           >
-            {outcome ? (
-              <>
-                <span
-                  className={`result-mark ${outcome.correct ? "correct" : ""}`}
-                  aria-hidden="true"
-                >
-                  {outcome.correct ? "✓" : "↗"}
-                </span>
-                <span>
-                  {outcome.correct
-                    ? "You’ve got it."
-                    : "A chance to understand."}
-                  {outcome.assisted && <small>Practiced with support.</small>}
-                </span>
-              </>
-            ) : (
-              <span>
-                {pending
-                  ? "Your answer is saved for retry."
-                  : busy
-                    ? "Checking…"
-                    : "Take your time."}
-              </span>
-            )}
-          </div>
-          {compact ? (
-            <button
-              className="compact-answer-action"
-              ref={continueButton}
-              disabled={busy}
-              onClick={() => (outcome ? advance() : setEntering(true))}
-            >
-              {outcome
-                ? "Continue →"
-                : response
+            {compact ? (
+              <button
+                className="compact-answer-action"
+                disabled={busy}
+                onClick={() => setEntering(true)}
+              >
+                {response
                   ? choice
                     ? "Review your choice"
                     : `Your answer: ${response} · Edit`
                   : choice
                     ? "Choose an answer"
                     : "Enter your answer"}
-            </button>
-          ) : (
-            answerControls()
-          )}
-          <div className="practice-tools">
-            {outcome ? (
-              <button
-                className="text-button"
-                onClick={() => setPanel("explanation")}
-              >
-                See why
               </button>
             ) : (
-              <button
-                className="text-button"
-                disabled={busy}
-                onClick={() => {
-                  setPanel("hint");
-                  if (!hint) props.requestHint();
-                }}
-              >
-                A little help
-              </button>
-            )}
-            {props.openBook ? (
-              <button
-                className="text-button"
-                disabled={busy}
-                data-book-trigger
-                onClick={props.openBook}
-              >
-                Explore the idea
-              </button>
-            ) : (
-              lesson && (
-                <button
-                  className="text-button"
-                  disabled={busy || lessonLoading}
-                  onClick={async (event) => {
-                    lessonTrigger.current = event.currentTarget;
-                    const requestedProblem = problem.id;
-                    const request = ++lessonRequest.current;
-                    const current = () =>
-                      alive.current &&
-                      lessonRequest.current === request &&
-                      currentProblem.current === requestedProblem;
-                    setLessonLoading(true);
-                    setLessonError("");
-                    try {
-                      await props.requestLesson();
-                      if (current()) setPanel("lesson");
-                    } catch {
-                      if (current())
-                        setLessonError(
-                          "The lesson could not be opened. Please try again.",
-                        );
-                    } finally {
-                      if (current()) setLessonLoading(false);
-                    }
-                  }}
-                >
-                  {lessonLoading ? "Opening…" : "The idea"}
-                </button>
-              )
-            )}
-            {small && !choice && (
-              <button
-                className="text-button keyboard-choice"
-                onClick={() => {
-                  setNativeKeyboard(!nativeKeyboard);
-                  input.current?.blur();
-                  requestAnimationFrame(() =>
-                    input.current?.focus({ preventScroll: true }),
-                  );
-                }}
-              >
-                {nativeKeyboard ? "Math keypad" : "Device keyboard"}
-              </button>
+              answerControls()
             )}
           </div>
+          {/* Keeps its space under the feedback sheet so nothing moves. */}
+          <div style={outcome ? { visibility: "hidden" } : undefined}>
+            {tools()}
+          </div>
         </div>
+        {calculatorOpen && !outcome && (
+          <Calculator
+            close={() => setCalculatorOpen(false)}
+            use={(value) => {
+              setResponse(value);
+              setCalculatorOpen(false);
+            }}
+          />
+        )}
+        {outcome && (
+          <div
+            className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div className="feedback-head">
+              <span className="result-mark" aria-hidden="true">
+                {outcome.correct ? "✓" : "✕"}
+              </span>
+              <span className="feedback-title">
+                {outcome.correct ? (
+                  "Correct"
+                ) : (
+                  <>
+                    <span
+                      className="solution-answer"
+                      data-text={displayResponse(outcome.answer)}
+                    >
+                      Answer:{" "}
+                      <strong>
+                        <MathText text={displayResponse(outcome.answer)} />
+                      </strong>
+                    </span>
+                    <small>
+                      You entered {displayResponse(outcome.response)}
+                    </small>
+                  </>
+                )}
+              </span>
+            </div>
+            {outcome.assisted && (
+              <p className="feedback-note">Practiced with support.</p>
+            )}
+            {(!outcome.correct || showWhy) && (
+              <ol className="feedback-steps">
+                {outcome.explanation.map((step, index) => (
+                  <li key={index} data-text={step}>
+                    <MathText text={step} />
+                  </li>
+                ))}
+              </ol>
+            )}
+            <button
+              className="next-action"
+              ref={continueButton}
+              onClick={() => {
+                if (!busy) advance();
+              }}
+            >
+              Next <span aria-hidden="true">→</span>
+            </button>
+            {tools()}
+          </div>
+        )}
       </section>
       {lessonError && (
         <p className="workspace-error" role="alert">
@@ -581,92 +668,35 @@ export function PracticeWorkspace(props: Props) {
       )}
       {panel && (
         <FocusDialog
-          returnFocus={
-            panel === "lesson"
-              ? lessonTrigger.current
-              : panel === "explanation"
-                ? continueButton.current
-                : undefined
-          }
+          returnFocus={panel === "lesson" ? lessonTrigger.current : undefined}
           title={
-            panel === "hint"
-              ? "A little help"
-              : panel === "lesson"
-                ? (lesson?.title ?? "The idea")
-                : outcome?.correct
-                  ? "Why it works"
-                  : "Let’s work through it."
+            panel === "hint" ? "Hint" : (problemLessonView?.title ?? "Lesson")
           }
           close={() => setPanel(null)}
         >
           {panel === "hint" && (
             <>
               <p className="hint">
-                {hint ||
-                  (busy
-                    ? "Finding your hint…"
-                    : "Your hint could not be loaded. Close this panel and try again.")}
+                {hint ? (
+                  <MathText text={hint} />
+                ) : busy ? (
+                  "Finding your hint…"
+                ) : (
+                  "Your hint could not be loaded. Close this panel and try again."
+                )}
               </p>
               <button onClick={() => setPanel(null)}>
                 Back to the problem
               </button>
             </>
           )}
-          {panel === "explanation" && outcome && (
-            <div className="solution-panel">
-              <p className="solution-prompt">{problem.prompt}</p>
-              <p>
-                Your answer:{" "}
-                <strong>{displayResponse(outcome.response)}</strong>
-              </p>
-              <p className="solution-answer">
-                Answer: <strong>{displayResponse(outcome.answer)}</strong>
-              </p>
-              <ol>
-                {outcome.explanation.map((step, index) => (
-                  <li key={index}>{step}</li>
-                ))}
-              </ol>
-              {outcome.assisted && (
-                <p>
-                  Practiced with support. Independent practice will come next.
-                </p>
-              )}
-              <button
-                disabled={busy}
-                onClick={() => {
-                  advance();
-                }}
-              >
-                Next problem <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          )}
-          {panel === "lesson" && lesson && (
-            <div className="workspace-lesson">
-              <p>{lesson.summary}</p>
-              {lesson.sections.map((section) => (
-                <section key={section.title}>
-                  <h3>{section.title}</h3>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </section>
-              ))}
-              <section className="worked-example">
-                <h3>Let’s try one together</h3>
-                <p>{lesson.workedExample.prompt}</p>
-                <ol>
-                  {lesson.workedExample.steps.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ol>
-                <strong>{lesson.workedExample.answer}</strong>
-              </section>
-              <button onClick={() => setPanel(null)}>
+          {panel === "lesson" && problemLessonView && (
+            <>
+              <ProblemLesson lesson={problemLessonView} />
+              <button className="lesson-return" onClick={() => setPanel(null)}>
                 Back to the problem
               </button>
-            </div>
+            </>
           )}
         </FocusDialog>
       )}
