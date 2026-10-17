@@ -71,14 +71,11 @@ try {
         (t) => t.requiredResponseCapability === "single-choice-v1",
       ),
     ]) {
-      if (
-        await page.getByRole("button", { name: "Topics", exact: true }).count()
-      )
-        await page.getByRole("button", { name: "Topics", exact: true }).click();
       const batchPromise = page.waitForResponse(
         (response) =>
           response.url().endsWith("/batches") &&
-          response.request().method() === "POST",
+          response.request().method() === "POST" &&
+          response.request().postDataJSON()?.templateId === template.id,
       );
       await startTopic(page, template.id);
       const batch = await (await batchPromise).json();

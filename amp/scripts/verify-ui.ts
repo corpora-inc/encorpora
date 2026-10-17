@@ -1,4 +1,4 @@
-import { startTopic } from "./ui-practice";
+import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -64,22 +64,32 @@ try {
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport);
-    await page.getByRole("button", { name: "Practice", exact: true }).click();
+    await resume(page);
+    // Let the resize event apply the practice viewport height.
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
     await page.locator(".problem-stage").waitFor();
+    const fit = await page.evaluate(() => {
+      const stage = document.querySelector(".problem-stage")!;
+      const action = document.querySelector(
+        ".compact-answer-action, .answer-action",
+      )!;
+      return {
+        stage: stage.clientHeight,
+        content: stage.scrollHeight,
+        actionBottom: Math.round(action.getBoundingClientRect().bottom),
+        height: innerHeight,
+      };
+    });
     assert.ok(
-      await page.evaluate(() => {
-        const stage = document.querySelector(".problem-stage")!;
-        const action = document.querySelector(
-          ".compact-answer-action, .answer-action",
-        )!;
-        const box = action.getBoundingClientRect();
-        return (
-          stage.clientHeight >= 180 &&
-          stage.scrollHeight <= stage.clientHeight + 2 &&
-          box.bottom <= innerHeight
-        );
-      }),
-      `Question and answer action must fit ${viewport.width}×${viewport.height}`,
+      fit.stage >= 180 &&
+        fit.content <= fit.stage + 2 &&
+        fit.actionBottom <= fit.height,
+      `Question and answer action must fit ${viewport.width}×${viewport.height}: ${JSON.stringify(fit)}`,
     );
     assert.ok(
       await page.evaluate(
@@ -103,7 +113,7 @@ try {
   assert.equal(await page.locator("#answer").inputValue(), "1");
   await page.getByRole("button", { name: "Close panel", exact: true }).click();
   await page.getByRole("button", { name: "Lesson", exact: true }).click();
-  await page.locator(".workspace-lesson").waitFor();
+  await page.locator(".problem-lesson").waitFor();
   await page.keyboard.press("Escape");
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
@@ -127,7 +137,6 @@ try {
   await page.locator("#answer").waitFor();
   // Mixed scheduling may choose a book-backed family; select the legacy lesson
   // explicitly before testing the lifecycle of its lesson-support request.
-  await page.getByRole("button", { name: "Topics", exact: true }).click();
   await startTopic(page, "mean-data");
   await page.locator("#answer").waitFor();
   let releaseLesson!: () => void;
@@ -193,7 +202,6 @@ try {
   await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   for (const template of templates) {
-    await page.getByRole("button", { name: "Topics", exact: true }).click();
     await startTopic(page, template.id);
     await page.locator("#answer, .choice-form").first().waitFor();
     assert.ok(
@@ -276,6 +284,7 @@ try {
     assert.match(download.suggestedFilename(), /\.pdf$/);
     assert.equal(await download.failure(), null);
   }
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
   await page.locator(".account-menu summary").click();
@@ -292,7 +301,7 @@ try {
     .getByRole("button", { name: "Create learner", exact: true })
     .click();
   learnerIds.push((await (await creation).json()).id);
-  await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await resume(page);
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(

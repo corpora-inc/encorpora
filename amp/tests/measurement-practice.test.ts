@@ -11,7 +11,11 @@ import {
   measurementFigureSchema,
   rectangleComparisonLayout,
 } from "../src/math/measurement-models.js";
-import { generateProblem, templates } from "../src/math/engine.js";
+import {
+  generateProblem,
+  polishProblem,
+  templates,
+} from "../src/math/engine.js";
 import { lessons } from "../src/content/lessons.js";
 
 test("measurement families have instruction, deterministic public givens and honest response capabilities", () => {
@@ -26,7 +30,9 @@ test("measurement families have instruction, deterministic public givens and hon
       const p = generateProblem(t.id, `measurement-boundary-${seed}`);
       assert.deepEqual(
         p,
-        generateMeasurementProblem(t.id, `measurement-boundary-${seed}`),
+        polishProblem(
+          generateMeasurementProblem(t.id, `measurement-boundary-${seed}`),
+        ),
       );
       generatedProblemSchema.parse(p);
       assert.ok(p.public.prompt.length <= 205, `${t.id} prompt too long`);

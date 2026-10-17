@@ -127,7 +127,7 @@ header {
 }
 .app-shell .account select,
 .account-menu summary {
-  min-height: 40px;
+  min-height: 44px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background-color: var(--surface);
@@ -297,23 +297,40 @@ header {
   background: var(--primary-soft);
 }
 
-/* Inline feedback replaces the answer controls; it never covers the problem. */
+/* Feedback is a sheet over the bottom of the card: the problem never moves. */
+.practice-surface {
+  position: relative;
+  overflow: hidden;
+}
 .feedback {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: min(46dvh, 360px);
-  padding: 14px;
+  width: min(calc(100% - 24px), 620px);
+  max-height: min(72%, 440px);
+  margin: 0 auto;
+  padding: 16px;
   border: 1px solid var(--line);
-  border-radius: 16px;
-  animation: feedback-in 0.16s ease-out;
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 -8px 40px #14182424;
+  animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.feedback .practice-tools {
+  margin-top: -4px;
 }
 .feedback.correct {
-  background: var(--good-soft);
+  background: #effaf5eb;
   border-color: #cdeedd;
 }
 .feedback.incorrect {
-  background: var(--bad-soft);
+  background: #fdf3f3eb;
   border-color: #f5d5d6;
 }
 .feedback-head {
@@ -376,7 +393,7 @@ header {
 @keyframes feedback-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(24px);
   }
 }
 .practice-celebration span {
@@ -688,8 +705,11 @@ header {
     border-radius: 16px;
   }
   .feedback {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
     padding: 12px;
-    max-height: 52dvh;
   }
   .math-keypad button {
     height: 46px;
@@ -698,4 +718,43 @@ header {
 .dialog-content,
 .problem-lesson {
   color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .feedback {
+    animation: none;
+  }
+}
+/* Figure tokens: every diagram draws from these. */
+.figure {
+  --fig-ink: #2a3042;
+  --fig-line: #9aa1b5;
+  --fig-fill: #6366f1;
+  --fig-empty: #ffffff;
+  font-family: inherit;
+}
+.figure .fig-fill {
+  fill: var(--fig-fill);
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+.figure .fig-empty {
+  fill: var(--fig-empty);
+  stroke: var(--fig-line);
+  stroke-width: 1;
+}
+.figure .fig-outline {
+  fill: none;
+  stroke: var(--fig-ink);
+  stroke-width: 1.75;
+}
+.figure .fig-label {
+  fill: var(--fig-ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+.figure .fig-scale {
+  fill: var(--fig-line);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }

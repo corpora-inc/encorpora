@@ -1,3 +1,4 @@
+import { exitPractice } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
 import { createServer } from "vite";
@@ -355,6 +356,7 @@ try {
       await route.fulfill({ response });
     });
     await page.locator(`button[data-book-id="${book.id}"]`).click();
+    await exitPractice(page);
     await page.getByRole("button", { name: "Progress", exact: true }).click();
     releaseOpen();
     await page.waitForResponse((response) => response.url().endsWith("/open"));

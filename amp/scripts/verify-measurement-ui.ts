@@ -1,6 +1,5 @@
 import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
-import { measurementDefinitions } from "../src/content/measurement-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
@@ -129,11 +128,6 @@ try {
   });
   for (fixture of fixtures) {
     const id = fixture.problem.templateId;
-    const change = page.getByRole("button", {
-      name: "Topics",
-      exact: true,
-    });
-    if (await change.count()) await change.click();
     await startTopic(page, id);
     await page.locator(".problem-stage").waitFor();
     for (const size of [
@@ -252,9 +246,11 @@ try {
     "same-area-border-choice",
   ]) {
     await page.setViewportSize({ width: 320, height: 568 });
-    await page.getByRole("button", { name: "Topics", exact: true }).click();
     const batchPromise = page.waitForResponse(
-      (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
+      (r) =>
+        r.url().endsWith("/batches") &&
+        r.request().method() === "POST" &&
+        r.request().postDataJSON()?.templateId === id,
     );
     await startTopic(page, id);
     const batch = await (await batchPromise).json();
@@ -310,51 +306,31 @@ try {
         .getByRole("button", { name: /^Next/ })
         .evaluate((b) => b === document.activeElement),
     );
+    // Lesson opens the short lesson for this exact problem type, not a book.
     const opening = page.waitForResponse((response) =>
-      response.url().endsWith("/books/measure-border-cover/open"),
+      response.url().endsWith("/lesson-support"),
     );
     await page.getByRole("button", { name: "Lesson", exact: true }).click();
-    const response = await opening;
-    assert.equal(response.status(), 200);
-    const opened = await response.json();
-    const destination = measurementDefinitions.find(
-      (entry) => entry.id === id,
-    )!.pageId;
-    assert.equal(opened.suggestedPageId, destination);
-    const teachingPage = opened.book.pages.find(
-      (entry: { id: string }) => entry.id === destination,
-    );
-    await page
-      .getByRole("heading", { name: teachingPage.title, exact: true })
-      .waitFor();
+    const opened = await (await opening).json();
+    assert.equal(opened.lesson.templateId, id);
+    await page.locator(".problem-lesson").waitFor();
     assert.ok(
-      await page.locator(".reader-stage").evaluate((stage) => {
-        const bounds = stage.getBoundingClientRect();
+      await page.locator("dialog[open]").evaluate((dialog) => {
+        const r = dialog.getBoundingClientRect();
         return (
-          bounds.top >= 0 &&
-          bounds.bottom <= innerHeight + 1 &&
-          stage.scrollHeight <= stage.clientHeight + 1 &&
+          r.top >= 0 &&
+          r.bottom <= innerHeight + 1 &&
           document.documentElement.scrollWidth <= innerWidth
         );
       }),
     );
     await page.screenshot({
-      path: new URL(`${id}-teaching-page-320.png`, output).pathname,
+      path: new URL(`${id}-lesson-320.png`, output).pathname,
     });
-    await page.getByRole("button", { name: /Back/ }).click();
-    await page.waitForFunction(() =>
-      document.activeElement?.hasAttribute("data-book-trigger"),
-    );
-    await page.evaluate(
-      () =>
-        new Promise<void>((resolve) =>
-          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
-        ),
-    );
+    await page.getByRole("button", { name: "Back to the problem" }).click();
     assert.equal(await page.locator("dialog[open]").count(), 0);
     assert.equal(await page.locator(".practice-celebration").count(), 0);
   }
-  await page.getByRole("button", { name: "Topics", exact: true }).click();
   await startTopic(page, "whole-pack-ribbon-choice");
   await page.locator(".problem-stage").waitFor();
   await page.evaluate(() => {

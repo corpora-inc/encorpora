@@ -1,3 +1,4 @@
+import { exitPractice, resume } from "./ui-practice";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -57,6 +58,7 @@ try {
     await page
       .getByRole("combobox", { name: "Learner", exact: true })
       .selectOption(fresh.id);
+    await exitPractice(page);
     await page.getByRole("button", { name: "Progress", exact: true }).click();
     await page
       .getByRole("heading", { name: "Let curiosity lead", exact: true })
@@ -214,6 +216,7 @@ try {
   assert.equal(batch.problems.length, 1);
   const problem = batch.problems[0];
   assert.equal(problem.skillId, "count-to-20");
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page
     .getByRole("button", { name: "Open related book", exact: true })
@@ -222,7 +225,7 @@ try {
     .getByRole("main", { name: "Number Builders", exact: true })
     .waitFor();
   await page.getByRole("button", { name: "← Back", exact: true }).click();
-  await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await resume(page);
   await page
     .locator("#answer")
     .fill(String(generateProblem(problem.templateId, problem.seed).answer));
@@ -244,6 +247,7 @@ try {
   const mixResponse = await mixPromise;
   assert.equal(mixResponse.request().postDataJSON().templateId, undefined);
   assert.equal((await mixResponse.json()).problems.length, 1);
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page
     .locator(".progress-counts strong")
@@ -261,6 +265,7 @@ try {
       json: { error: "History temporarily unavailable" },
     }),
   );
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page
     .getByRole("alert")
@@ -289,8 +294,10 @@ try {
       });
     } else await route.continue();
   });
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await oldStarted;
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator('.progress-workspace[aria-busy="false"]').waitFor();
   releaseOld();
@@ -313,11 +320,13 @@ try {
     .getByRole("button", { name: "Try one problem", exact: true })
     .click();
   await batchStarted;
+  await exitPractice(page);
   await page.getByRole("button", { name: "Lessons", exact: true }).click();
   releaseBatch();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.getByRole("alert").count(), 0);
   assert.equal(await page.locator(".progress-workspace").count(), 0);
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
 
   // Returning after an orientation change retains the selected card and keyboard focus.
@@ -383,6 +392,7 @@ try {
     await held;
     await route.fulfill({ response });
   });
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await started;
   await page

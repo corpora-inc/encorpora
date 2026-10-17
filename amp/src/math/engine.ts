@@ -19,6 +19,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
+import { polish } from "./polish";
 import type {
   GeneratedProblem,
   PublicProblem,
@@ -251,6 +252,32 @@ function addWithinTwenty(a: number, b: number): string[] {
   ];
 }
 export function generateProblem(
+  templateId: string,
+  seed: string,
+): GeneratedProblem {
+  return polishProblem(generateRawProblem(templateId, seed));
+}
+/** Every learner-facing string passes the same copy-edit. */
+export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
+  const text = (value: string) => polish(value);
+  return {
+    ...problem,
+    public: { ...problem.public, prompt: text(problem.public.prompt) },
+    explanation: problem.explanation.map(text),
+    hint: text(problem.hint),
+    ...(problem.choiceFeedback
+      ? {
+          choiceFeedback: Object.fromEntries(
+            Object.entries(problem.choiceFeedback).map(([k, v]) => [
+              k,
+              text(v),
+            ]),
+          ),
+        }
+      : {}),
+  };
+}
+function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {

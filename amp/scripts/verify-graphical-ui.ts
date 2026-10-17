@@ -159,11 +159,6 @@ try {
   });
   for (fixture of fixtures) {
     const id = fixture.problem.templateId;
-    const change = page.getByRole("button", {
-      name: "Topics",
-      exact: true,
-    });
-    if (await change.count()) await change.click();
     await startTopic(page, id);
     await page.locator(".problem-content svg").waitFor();
     for (const size of [

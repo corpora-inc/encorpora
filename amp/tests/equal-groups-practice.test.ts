@@ -11,7 +11,11 @@ import {
   generateEqualGroupsProblem,
   equalGroupsTemplates,
 } from "../src/math/equal-groups-practice.js";
-import { generateProblem, templates } from "../src/math/engine.js";
+import {
+  generateProblem,
+  polishProblem,
+  templates,
+} from "../src/math/engine.js";
 import {
   generatedProblemSchema,
   semanticFigureSchema,
@@ -25,7 +29,7 @@ test("twenty bounded families have registry, component, and exact book support w
     assert.equal(templates.filter((x) => x.id === t.id).length, 1);
     assert.deepEqual(
       generateProblem(t.id, "registry"),
-      generateEqualGroupsProblem(t.id, "registry"),
+      polishProblem(generateEqualGroupsProblem(t.id, "registry")),
     );
   }
   assert.ok(

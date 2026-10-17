@@ -9,7 +9,11 @@ import {
   algebraTemplates,
   generateAlgebraProblem,
 } from "../src/math/algebra-practice.js";
-import { generateProblem, templates } from "../src/math/engine.js";
+import {
+  generateProblem,
+  polishProblem,
+  templates,
+} from "../src/math/engine.js";
 import { generatedProblemSchema } from "../src/math/contracts.js";
 import { lessons } from "../src/content/lessons.js";
 test("sixteen algebra families have exact teaching pages, bounded scope and reference instruction", () => {
@@ -26,7 +30,7 @@ test("sixteen algebra families have exact teaching pages, bounded scope and refe
     );
     assert.deepEqual(
       generateProblem(d.id, "dispatch"),
-      generateAlgebraProblem(d.id, "dispatch"),
+      polishProblem(generateAlgebraProblem(d.id, "dispatch")),
     );
   }
 });

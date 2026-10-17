@@ -414,6 +414,77 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
+  function tools() {
+    return (
+      <div className="practice-tools">
+        {outcome ? (
+          outcome.correct &&
+          !showWhy && (
+            <button className="text-button" onClick={() => setShowWhy(true)}>
+              See why
+            </button>
+          )
+        ) : (
+          <button
+            className="text-button"
+            disabled={busy}
+            onClick={() => {
+              setPanel("hint");
+              if (!hint) props.requestHint();
+            }}
+          >
+            Hint
+          </button>
+        )}
+        <button
+          className="text-button"
+          disabled={lessonLoading}
+          onClick={async (event) => {
+            lessonTrigger.current = event.currentTarget;
+            const requestedProblem = problem.id;
+            const request = ++lessonRequest.current;
+            const current = () =>
+              alive.current &&
+              lessonRequest.current === request &&
+              currentProblem.current === requestedProblem;
+            setLessonLoading(true);
+            setLessonError("");
+            try {
+              const view = await props.requestLesson();
+              if (current()) {
+                setProblemLessonView(view);
+                setPanel("lesson");
+              }
+            } catch {
+              if (current())
+                setLessonError(
+                  "The lesson could not be opened. Please try again.",
+                );
+            } finally {
+              if (current()) setLessonLoading(false);
+            }
+          }}
+        >
+          {lessonLoading ? "Opening…" : "Lesson"}
+        </button>
+        {small && !choice && !outcome && (
+          <button
+            className="text-button keyboard-choice"
+            onClick={() => {
+              setNativeKeyboard(!nativeKeyboard);
+              rememberKeyboard(!nativeKeyboard);
+              input.current?.blur();
+              requestAnimationFrame(() =>
+                input.current?.focus({ preventScroll: true }),
+              );
+            }}
+          >
+            {nativeKeyboard ? "Math keypad" : "Device keyboard"}
+          </button>
+        )}
+      </div>
+    );
+  }
   return (
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface">
@@ -453,141 +524,81 @@ export function PracticeWorkspace(props: Props) {
           )}
         </div>
         <div className="answer-dock">
-          {outcome ? (
-            <div
-              className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}
-              role="status"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <div className="feedback-head">
-                <span className="result-mark" aria-hidden="true">
-                  {outcome.correct ? "✓" : "✕"}
-                </span>
-                <span className="feedback-title">
-                  {outcome.correct ? (
-                    "Correct"
-                  ) : (
-                    <>
-                      <span className="solution-answer">
-                        Answer:{" "}
-                        <strong>{displayResponse(outcome.answer)}</strong>
-                      </span>
-                      <small>
-                        You entered {displayResponse(outcome.response)}
-                      </small>
-                    </>
-                  )}
-                </span>
-              </div>
-              {outcome.assisted && (
-                <p className="feedback-note">Practiced with support.</p>
-              )}
-              {(!outcome.correct || showWhy) && (
-                <ol className="feedback-steps">
-                  {outcome.explanation.map((step, index) => (
-                    <li key={index}>{step}</li>
-                  ))}
-                </ol>
-              )}
+          <div
+            className="answer-controls"
+            style={outcome ? { visibility: "hidden" } : undefined}
+          >
+            {compact ? (
               <button
-                className="next-action"
-                ref={continueButton}
-                onClick={() => {
-                  if (!busy) advance();
-                }}
-              >
-                Next <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          ) : compact ? (
-            <button
-              className="compact-answer-action"
-              disabled={busy}
-              onClick={() => setEntering(true)}
-            >
-              {response
-                ? choice
-                  ? "Review your choice"
-                  : `Your answer: ${response} · Edit`
-                : choice
-                  ? "Choose an answer"
-                  : "Enter your answer"}
-            </button>
-          ) : (
-            answerControls()
-          )}
-          <div className="practice-tools">
-            {outcome ? (
-              outcome.correct &&
-              !showWhy && (
-                <button
-                  className="text-button"
-                  onClick={() => setShowWhy(true)}
-                >
-                  See why
-                </button>
-              )
-            ) : (
-              <button
-                className="text-button"
+                className="compact-answer-action"
                 disabled={busy}
-                onClick={() => {
-                  setPanel("hint");
-                  if (!hint) props.requestHint();
-                }}
+                onClick={() => setEntering(true)}
               >
-                Hint
+                {response
+                  ? choice
+                    ? "Review your choice"
+                    : `Your answer: ${response} · Edit`
+                  : choice
+                    ? "Choose an answer"
+                    : "Enter your answer"}
               </button>
-            )}
-            <button
-              className="text-button"
-              disabled={lessonLoading}
-              onClick={async (event) => {
-                lessonTrigger.current = event.currentTarget;
-                const requestedProblem = problem.id;
-                const request = ++lessonRequest.current;
-                const current = () =>
-                  alive.current &&
-                  lessonRequest.current === request &&
-                  currentProblem.current === requestedProblem;
-                setLessonLoading(true);
-                setLessonError("");
-                try {
-                  const view = await props.requestLesson();
-                  if (current()) {
-                    setProblemLessonView(view);
-                    setPanel("lesson");
-                  }
-                } catch {
-                  if (current())
-                    setLessonError(
-                      "The lesson could not be opened. Please try again.",
-                    );
-                } finally {
-                  if (current()) setLessonLoading(false);
-                }
-              }}
-            >
-              {lessonLoading ? "Opening…" : "Lesson"}
-            </button>
-            {small && !choice && !outcome && (
-              <button
-                className="text-button keyboard-choice"
-                onClick={() => {
-                  setNativeKeyboard(!nativeKeyboard);
-                  rememberKeyboard(!nativeKeyboard);
-                  input.current?.blur();
-                  requestAnimationFrame(() =>
-                    input.current?.focus({ preventScroll: true }),
-                  );
-                }}
-              >
-                {nativeKeyboard ? "Math keypad" : "Device keyboard"}
-              </button>
+            ) : (
+              answerControls()
             )}
           </div>
+          {/* Keeps its space under the feedback sheet so nothing moves. */}
+          <div style={outcome ? { visibility: "hidden" } : undefined}>
+            {tools()}
+          </div>
         </div>
+        {outcome && (
+          <div
+            className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div className="feedback-head">
+              <span className="result-mark" aria-hidden="true">
+                {outcome.correct ? "✓" : "✕"}
+              </span>
+              <span className="feedback-title">
+                {outcome.correct ? (
+                  "Correct"
+                ) : (
+                  <>
+                    <span className="solution-answer">
+                      Answer: <strong>{displayResponse(outcome.answer)}</strong>
+                    </span>
+                    <small>
+                      You entered {displayResponse(outcome.response)}
+                    </small>
+                  </>
+                )}
+              </span>
+            </div>
+            {outcome.assisted && (
+              <p className="feedback-note">Practiced with support.</p>
+            )}
+            {(!outcome.correct || showWhy) && (
+              <ol className="feedback-steps">
+                {outcome.explanation.map((step, index) => (
+                  <li key={index}>{step}</li>
+                ))}
+              </ol>
+            )}
+            <button
+              className="next-action"
+              ref={continueButton}
+              onClick={() => {
+                if (!busy) advance();
+              }}
+            >
+              Next <span aria-hidden="true">→</span>
+            </button>
+            {tools()}
+          </div>
+        )}
       </section>
       {lessonError && (
         <p className="workspace-error" role="alert">

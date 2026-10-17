@@ -30,3 +30,10 @@ export async function startTopic(page: Page, templateId: string) {
     .getByRole("button", { name: "Practice this", exact: true })
     .click();
 }
+
+/** Return to the current problem, from anywhere in the app. */
+export async function resume(page: Page) {
+  if (await page.locator(".problem-stage").isVisible()) return;
+  await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await page.getByRole("button", { name: "Go", exact: true }).click();
+}

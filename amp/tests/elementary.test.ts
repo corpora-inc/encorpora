@@ -7,7 +7,11 @@ import {
   elementaryGrades,
   generateElementaryProblem,
 } from "../src/math/elementary.js";
-import { templates, generateProblem } from "../src/math/engine.js";
+import {
+  templates,
+  generateProblem,
+  polishProblem,
+} from "../src/math/engine.js";
 import {
   generatedProblemSchema,
   semanticFigureSchema,
@@ -33,7 +37,7 @@ test("24 elementary families have grade-specific catalog, lesson and public engi
     );
     assert.deepEqual(
       generateProblem(template.id, "registry"),
-      generateElementaryProblem(template.id, "registry"),
+      polishProblem(generateElementaryProblem(template.id, "registry")),
     );
   }
 });

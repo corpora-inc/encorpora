@@ -1,4 +1,4 @@
-import { startTopic } from "./ui-practice";
+import { exitPractice, startTopic } from "./ui-practice";
 /** Controlled system-browser/OS-callback adapter around the production Rust session core. */
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
@@ -754,8 +754,10 @@ try {
   assert.equal(attempts.rowCount, 1);
   assert.equal(attempts.rows[0].outcome.correct, true);
   assert.equal(attempts.rows[0].outcome.assisted, false);
+  await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-workspace").waitFor();
+  await exitPractice(page);
   await page.getByRole("button", { name: "Lessons", exact: true }).click();
   await page
     .getByRole("button", { name: "Open book", exact: true })
