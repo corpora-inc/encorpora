@@ -29,6 +29,7 @@ export function ParentConsentCenter({
     pending = useRef(false),
     controller = useRef<AbortController | null>(null),
     heading = useRef<HTMLHeadingElement>(null),
+    emailInput = useRef<HTMLInputElement>(null),
     retry = useRef<{ email: string; digest: string; id: string } | null>(null);
   tokenRef.current = token;
   if (identityRef.current !== identity) {
@@ -89,6 +90,7 @@ export function ParentConsentCenter({
     };
   }, [identity]);
   async function act(kind: "begin" | "ack" | "withdraw") {
+    if (kind === "begin" && !emailInput.current?.reportValidity()) return;
     if (pending.current) return;
     pending.current = true;
     const current = epoch.current;
@@ -204,9 +206,12 @@ export function ParentConsentCenter({
       </header>
       <div className="parent-consent-body">
         {error && (
-          <p role="alert" className="consent-alert">
-            {error}
-          </p>
+          <div role="alert" className="consent-alert">
+            <p>{error}</p>
+            <button type="button" disabled={busy} onClick={() => void load()}>
+              Refresh details
+            </button>
+          </div>
         )}
         {!view && !error && <p role="status">Loading privacy details…</p>}
         {view && !view.available && !view.consentActive && (
@@ -240,6 +245,8 @@ export function ParentConsentCenter({
                 <label>
                   Email address
                   <input
+                    ref={emailInput}
+                    required
                     aria-label="Parent email address"
                     type="email"
                     autoComplete="email"
@@ -255,7 +262,7 @@ export function ParentConsentCenter({
                 {view.request?.delivery === "accepted"
                   ? "The email provider accepted your notice. Open its link while signed in to this parent account."
                   : view.request?.delivery === "rejected"
-                    ? "The provider could not accept this notice. Withdraw this request and check the address before starting again."
+                    ? "Delivery could not be confirmed. Withdraw this request and check the address before starting again."
                     : "Your notice is queued for delivery. Refresh to check its progress."}
               </p>
             )}
@@ -268,7 +275,9 @@ export function ParentConsentCenter({
                 <p>
                   {view.request?.delivery === "accepted"
                     ? "Open the delayed confirmation email to finish."
-                    : `The next notice is scheduled no earlier than ${view.request?.confirmationAfter ? new Date(view.request.confirmationAfter).toLocaleString() : "the confirmation time"}.`}
+                    : view.request?.delivery === "rejected"
+                      ? "Delivery could not be confirmed. Withdraw this request and start again."
+                      : `The next notice is scheduled no earlier than ${view.request?.confirmationAfter ? new Date(view.request.confirmationAfter).toLocaleString() : "the confirmation time"}.`}
                 </p>
               </>
             )}

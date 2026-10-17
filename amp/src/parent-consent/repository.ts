@@ -83,7 +83,7 @@ export class ConsentRepository {
       const delivery = row
         ? (
             await client.query(
-              "SELECT accepted_at,rejected_at FROM amp_consent_outbox WHERE request_id=$1 AND stage=$2",
+              "SELECT accepted_at,rejected_at,attempts FROM amp_consent_outbox WHERE request_id=$1 AND stage=$2",
               [
                 row.id,
                 row.phase === "awaiting-initial" ? "initial" : "confirmation",
@@ -122,7 +122,7 @@ export class ConsentRepository {
               delivery: delivery
                 ? delivery.accepted_at
                   ? "accepted"
-                  : delivery.rejected_at
+                  : delivery.rejected_at || delivery.attempts >= 8
                     ? "rejected"
                     : "queued"
                 : null,

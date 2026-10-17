@@ -241,6 +241,10 @@ test(
         r.acknowledge("parent", ack(mails[0]!)),
         /not_ready/,
       );
+      await pool.query("UPDATE amp_consent_outbox SET attempts=8");
+      assert.equal((await r.view("parent")).request?.delivery, "rejected");
+      assert.equal(await deliverConsentMail(r, transport(mails)), false);
+      await pool.query("UPDATE amp_consent_outbox SET attempts=1");
       await pool.query(
         "UPDATE amp_consent_outbox SET available_at=now()-interval '1 minute'",
       );

@@ -136,6 +136,10 @@ try {
       assert(result.height >= 48);
     }
     await capture("start");
+    await page.getByLabel("Parent email address").fill("parent@");
+    await page.getByRole("checkbox").check();
+    await page.getByRole("button", { name: "Email my privacy notice" }).click();
+    assert.equal(writes, 0, "invalid email must not be posted");
     await page.getByLabel("Parent email address").fill("parent@example.com");
     await page.getByRole("checkbox").check();
     await page.evaluate(() => {
