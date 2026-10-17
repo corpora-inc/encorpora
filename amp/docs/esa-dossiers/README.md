@@ -1,6 +1,6 @@
 # ESA supplier dossiers
 
-These unsent application drafts help Corpora prepare an educational math product for Arizona ESA, Florida PEP and FES-UA through Step Up, Texas TEFA, Alabama CHOOSE, North Carolina ESA+ West Virginia Hope, Iowa Students First, Georgia Promise and Louisiana GATOR. Evidence was checked October 17, 2026. No document establishes Corpora approval, a live listing, an accepted annual term, or a reimbursement guarantee. Private identity, banking and tax records belong in the restricted company record system, never this public repository.
+These unsent application drafts help Corpora prepare an educational math product for Arizona ESA, Florida PEP and FES-UA through Step Up, Texas TEFA, Alabama CHOOSE, North Carolina ESA+, West Virginia Hope, Iowa Students First, Georgia Promise Louisiana GATOR, Arkansas EFA, Utah Fits All and Wyoming ESA. Evidence was checked October 17, 2026. No document establishes Corpora approval, a live listing, an accepted annual term, or a reimbursement guarantee. Private identity, banking and tax records belong in the restricted company record system, never this public repository.
 
 The [combined structured requirements](../../src/funding/provider-dossiers.ts) distinguish ten dimensions for each program: vendor, software subscription, digital curriculum, printable download, bundle, term, listing, payment, invoice and refund. Each conclusion names its source and section; unresolved questions are explicit. The [audit](../../src/funding/dossier.ts) rejects missing dimensions, broken evidence references, invalid/future dates and evidence older than 90 days. This internal refresh interval is not an agency rule. The audit checks evidence organization, not factual truth, eligibility or legal compliance; recheck sources immediately before submission even when the audit passes.
 
@@ -43,6 +43,8 @@ Use the [Comptroller's application entry](https://educationfreedom.texas.gov/pro
 The [Alabama, North Carolina and West Virginia supplement](additional-routes.md) supplies route-specific application and transaction drafts. It distinguishes new marketplace vendors, existing listed providers and a separate state portal. It is not exhaustive coverage of the national inventory.
 
 The [Iowa, Georgia and Louisiana supplement](odyssey-state-routes.md) qualifies reachable buyers, tuition-first spending, product categories and the portal work required for each state. Shared administration does not establish shared eligibility.
+
+The [Arkansas, Utah and Wyoming supplement](ar-ut-wy-routes.md) distinguishes publisher intake, preapproval, award-year timing, digital delivery and state-specific reimbursement limits.
 
 ## Working packet
 
