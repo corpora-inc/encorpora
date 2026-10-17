@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "./repository";
+import type { PracticeStartingPoint } from "../learning/starting-point";
 import {
   projectSkillEvidence,
   type SkillEvidence,
@@ -55,6 +56,7 @@ export function planMixedPractice(options: {
   skills: readonly SkillNode[];
   attempts: readonly Outcome[];
   evidence: readonly SkillEvidence[];
+  startingPoint?: PracticeStartingPoint;
   count: number;
   seed: string;
   now?: number;
@@ -85,11 +87,19 @@ export function planMixedPractice(options: {
   const strandOf = (skillId: string) => nodes.get(skillId)?.strand ?? skillId;
   const strandEvidence = new Map<
     string,
-    { level: number; ceiling: number; challenge: boolean }
+    {
+      level: number;
+      ceiling: number;
+      challenge: boolean;
+      initialProbePolicy: boolean;
+    }
   >();
   for (const strand of new Set(
     templates.map((template) => strandOf(template.skillId)),
   )) {
+    const initialProbePolicy =
+      options.startingPoint?.policyVersion === 1 &&
+      !options.startingPoint.excludedStrands.includes(strand);
     const entries = [...stats.values()].filter(
       (entry) => strandOf(entry.skillId) === strand,
     );
@@ -104,6 +114,25 @@ export function planMixedPractice(options: {
         entry.latestIndependent ? [entry.latestIndependent] : [],
       )
       .filter((entry) => byTemplate.has(entry.templateId));
+    const latestProbe = [...observed]
+      .reverse()
+      .find((entry) => byTemplate.has(entry.templateId));
+    // A preference starts only untouched strands. Before the first independent
+    // success, actual attempted tasks determine a local downward probe sequence.
+    // It supplies neither a floor nor prerequisite/mastery credit.
+    const provisional =
+      initialProbePolicy && !successes.length
+        ? latestProbe
+          ? Math.max(
+              0,
+              levels[byTemplate.get(latestProbe.templateId)!.gradeBand] - 1,
+            )
+          : entries.length === 0 &&
+              options.startingPoint?.policyVersion === 1 &&
+              options.startingPoint.band
+            ? levels[options.startingPoint.band]
+            : 0
+        : 0;
     const anchor = Math.max(
       0,
       ...successes.map(
@@ -113,12 +142,15 @@ export function planMixedPractice(options: {
     const errors = observed.filter(
       (entry) => !entry.correct || entry.assisted,
     ).length;
-    const level = Math.max(0, anchor - (errors >= 2 ? 1 : 0));
+    const level = successes.length
+      ? Math.max(0, anchor - (errors >= 2 ? 1 : 0))
+      : provisional;
     const challenge =
       observed.length >= 3 &&
       observed.every((entry) => entry.correct && !entry.assisted);
     strandEvidence.set(strand, {
       level,
+      initialProbePolicy,
       ceiling: Math.min(3, level + Number(challenge)),
       challenge,
     });
@@ -193,7 +225,12 @@ export function planMixedPractice(options: {
         score += 35;
       if (state?.status === "review-ready" && !overdue) score -= 35;
       score -= Math.abs(level - strandLevel) * 32;
-      if (level > strandState.ceiling && !observedPrerequisites && !last)
+      if (
+        level > strandState.ceiling &&
+        reason !== "prerequisite" &&
+        !observedPrerequisites &&
+        (!last || (strandState.initialProbePolicy && returningError))
+      )
         score -= 160 * (level - strandState.ceiling);
       if (
         strandState.challenge &&
@@ -215,7 +252,16 @@ export function planMixedPractice(options: {
           .update(`${seed}:${slot}:${template.id}`)
           .digest()
           .readUInt32BE(0) / 0x100000000;
-      return { template, reason, strand, score: score + tie };
+      return {
+        template,
+        reason,
+        strand,
+        score: score + tie,
+        supportEligible:
+          !strandState.initialProbePolicy ||
+          level <= strandState.ceiling ||
+          reason !== "revisit",
+      };
     });
     candidates.sort(
       (a, b) => b.score - a.score || a.template.id.localeCompare(b.template.id),
@@ -229,6 +275,7 @@ export function planMixedPractice(options: {
     const reserved = !supportAlreadyChosen
       ? candidates.find(
           (entry) =>
+            entry.supportEligible &&
             ["prerequisite", "revisit", "review"].includes(entry.reason) &&
             !recentSkillIds.includes(entry.template.skillId) &&
             entry.template.skillId !== lastSkill &&
