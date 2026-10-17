@@ -112,6 +112,7 @@ export function presentRequest(
   request: FundingRequest,
   commerce: { order: CommerceOrder; grant: LicenseGrant | null } | null = null,
   at = new Date(),
+  offerAvailable = true,
 ) {
   const {
     accountId: _accountId,
@@ -123,6 +124,7 @@ export function presentRequest(
   return {
     ...publicRequest,
     offer: presentOffer(request.offer),
+    offerAvailable,
     expired: !request.orderId && Date.parse(request.expiresAt) <= at.getTime(),
     paymentStatus: order?.settlement ?? "not-verified",
     accessStatus:

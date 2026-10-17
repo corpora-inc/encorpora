@@ -91,6 +91,7 @@ export async function registerFundingPurchaseRoutes(
         params.parse(request.params).id,
       );
       if (
+        !repository.offerAvailable(record) ||
         record.orderId ||
         record.status === "cancelled" ||
         Date.parse(record.expiresAt) <= Date.now()

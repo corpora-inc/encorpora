@@ -36,6 +36,10 @@ try {
     page.on("pageerror", (e) => errors.push(e.message));
     let record: FundingRequest | undefined;
     let creates = 0;
+    let holdCreate = false;
+    let heldResolve!: () => void, releaseResolve!: () => void;
+    let held = Promise.resolve(),
+      release = Promise.resolve();
     await page.route("**/api/v1/funding/**", async (route) => {
       const request = route.request(),
         path = new URL(request.url()).pathname;
@@ -66,7 +70,13 @@ try {
           offer,
           orderId: null,
         };
-        return route.fulfill({ json: presentRequest(record) });
+        const snapshot = presentRequest(record);
+        if (holdCreate) {
+          holdCreate = false;
+          heldResolve();
+          await release;
+        }
+        return route.fulfill({ json: snapshot }).catch(() => {});
       }
       return route.fulfill({
         json: { requests: record ? [presentRequest(record)] : [] },
@@ -123,6 +133,37 @@ try {
       await page
         .getByRole("button", { name: "Prepare unpaid quote" })
         .isDisabled(),
+    );
+    // A prior account's delayed mutation must not select its request in the new account.
+    await page.evaluate(() =>
+      (window as any).fundingRender("parent-a", "token-a", true),
+    );
+    await page.getByRole("button", { name: "Prepare unpaid quote" }).waitFor();
+    held = new Promise<void>((resolve) => {
+      heldResolve = resolve;
+    });
+    release = new Promise<void>((resolve) => {
+      releaseResolve = resolve;
+    });
+    holdCreate = true;
+    await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
+    await held;
+    record = undefined;
+    await page.evaluate(() =>
+      (window as any).fundingRender("parent-c", "token-c", true),
+    );
+    await page.getByRole("button", { name: "Prepare unpaid quote" }).waitFor();
+    releaseResolve();
+    await page.waitForTimeout(100);
+    assert.equal(
+      await page
+        .getByRole("button", { name: "Download unpaid PDF quote" })
+        .count(),
+      0,
+    );
+    assert.equal(
+      await page.locator("#funding-learner").inputValue(),
+      "10720fef-40bf-4e75-8982-208b5e05f84a",
     );
     assert.deepEqual(errors, []);
     await page.close();

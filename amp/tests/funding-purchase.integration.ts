@@ -185,6 +185,34 @@ test(
       } finally {
         await app.close();
       }
+      const disabled = new FundingPurchaseRepository(pool, []);
+      assert.equal(
+        (await disabled.present("owner", request)).offerAvailable,
+        false,
+      );
+      await assert.rejects(
+        disabled.update("owner", request.id, "parent-reported-submitted"),
+        /offer_unavailable/,
+      );
+      const withdrawnApp = Fastify();
+      await registerFundingPurchaseRoutes(withdrawnApp, {
+        pool,
+        offers: [],
+        authenticate: async () => "owner",
+      });
+      try {
+        assert.equal(
+          (
+            await withdrawnApp.inject({
+              method: "GET",
+              url: `/api/v1/funding/requests/${request.id}/quote`,
+            })
+          ).statusCode,
+          409,
+        );
+      } finally {
+        await withdrawnApp.close();
+      }
       await pool.query(
         "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id='owner'",
       );
@@ -252,6 +280,11 @@ test(
       assert.equal(
         (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
         1,
+      );
+      const disabledRepository = new FundingPurchaseRepository(pool, []);
+      assert.equal(
+        (await disabledRepository.present("owner", request)).offerAvailable,
+        false,
       );
       const safe = await repo.present(
         "owner",
@@ -335,6 +368,54 @@ test(
       assert.equal(
         (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
         0,
+      );
+    }),
+);
+
+test(
+  "family export isolates and redacts funding snapshots; learning deletion purges drafts but retains converted records",
+  enabled,
+  async () =>
+    fixture(async (pool, repo) => {
+      const { FamilyRepository } = await import("../src/family/repository.js");
+      const family = new FamilyRepository(pool);
+      const converted = await repo.create("owner", create());
+      await provisionFundingRequest(pool, bundle(converted.id), [offer]);
+      const draft = await repo.create("owner", create());
+      const foreign = await repo.create("other", {
+        ...create(),
+        learnerId: "foreign",
+      });
+      const exported: { type: string; value?: unknown }[] = [];
+      for await (const chunk of family.export("owner"))
+        exported.push(JSON.parse(chunk));
+      const requests = exported.filter((row) => row.type === "funding-request");
+      assert.equal(requests.length, 2);
+      const serialized = JSON.stringify(requests);
+      assert.ok(serialized.includes(converted.id));
+      assert.ok(serialized.includes(draft.id));
+      assert.ok(!serialized.includes(foreign.id));
+      for (const privateText of [
+        "private-",
+        "idempotency_key",
+        "conversion_payload",
+        "account_id",
+      ])
+        assert.ok(!serialized.includes(privateText));
+      await family.deleteLearning("owner", "child");
+      const kept = (
+        await pool.query(
+          "SELECT id FROM amp_funding_requests WHERE account_id='owner'",
+        )
+      ).rows;
+      assert.deepEqual(kept, [{ id: converted.id }]);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT deleted_at IS NOT NULL AS deleted FROM amp_learners WHERE id='child'",
+          )
+        ).rows[0].deleted,
+        true,
       );
     }),
 );

@@ -10,7 +10,7 @@ No program offers are enabled by default. The national funding registry records 
 
 The PDF identifies the student by an opaque reference. Enable an offer only when the specific program accepts that identifier and this quote format. Programs requiring legal student names, additional tax forms or their own invoice format require another supported workflow. The supplied standard PDF fonts support Western Latin text, including accents; configuration rejects unsupported text before showing offers. Text is never silently transliterated or discarded.
 
-A request expires after at most 30 days, bounded by the offer's validity. Disabling an offer or changing its configuration blocks conversion of an unconverted request. It does not revoke existing licenses. An exact replay of a completed conversion remains a no-op even if its offer has since been disabled.
+A request expires after at most 30 days, bounded by the offer's validity. Disabling an offer or changing its configuration blocks PDF download, submission reporting and conversion of an unconverted request. Its history displays an unavailable-offer notice. It does not revoke existing licenses. An exact replay of a completed conversion remains a no-op even if its offer has since been disabled.
 
 ## Parent document and status
 
@@ -31,3 +31,7 @@ The default activation policy requires settlement. Activation after approval req
 ## Verification
 
 The tests cover account isolation, server-bound prices, concurrent idempotency, consent/deletion checks, rollback, exact replay, policy mismatch, disabled/revised offers and financial-record retention. `npm run test:funding-ui` exercises three phone/landscape widths, consent gating, token renewal, submission without activation and PDF downloads. `tsx scripts/verify-funding-quote.ts` additionally requires Poppler tools (`pdftotext`, `pdfinfo`, `pdftoppm`) to inspect text, arithmetic, dimensions and rendered pages. Rendering checks do not establish acceptance by any funding program.
+
+## Records and deletion
+
+Learning-data deletion removes unconverted requests, including drafts for a learner whose billing history requires a minimized retained record. Converted requests retain the financial snapshot and order link for reconciliation. Parent export includes an account-scoped funding-request dataset with private approval, credit and document-policy evidence removed. The privacy-retention command removes expired unconverted requests; it does not purge linked financial transactions.

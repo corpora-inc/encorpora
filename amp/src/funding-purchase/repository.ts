@@ -1,3 +1,4 @@
+import { canonicalCommercePayload } from "../commerce/ledger.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -129,12 +130,23 @@ export class FundingPurchaseRepository {
       rows.rows.map((row) => this.present(account, fundingRequestRow(row))),
     );
   }
+  offerAvailable(request: FundingRequest, at = new Date()): boolean {
+    return availableOffers(this.offers, at).some(
+      (offer) =>
+        offer.id === request.offer.id &&
+        offer.revision === request.offer.revision &&
+        canonicalCommercePayload(offer) ===
+          canonicalCommercePayload(request.offer),
+    );
+  }
   async present(account: string, request: FundingRequest) {
     return presentRequest(
       request,
       request.orderId
         ? await readCommerceOrder(this.pool, account, request.orderId)
         : null,
+      new Date(),
+      this.offerAvailable(request),
     );
   }
   async update(
@@ -151,6 +163,11 @@ export class FundingPurchaseRepository {
       if (!result.rowCount)
         throw new FundingPurchaseError(404, "request_not_found");
       const request = fundingRequestRow(result.rows[0]);
+      if (
+        status === "parent-reported-submitted" &&
+        !this.offerAvailable(request, at)
+      )
+        throw new FundingPurchaseError(409, "offer_unavailable");
       if (request.orderId)
         throw new FundingPurchaseError(409, "request_already_provisioned");
       if (Date.parse(request.expiresAt) <= at.getTime())

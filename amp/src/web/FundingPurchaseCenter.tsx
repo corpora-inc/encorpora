@@ -42,11 +42,13 @@ function status(request: PublicFundingRequest) {
         : "License outside its term"
     : request.status === "cancelled"
       ? "Request cancelled"
-      : request.expired
-        ? "Quote expired"
-        : request.status === "parent-reported-submitted"
-          ? "Submission reported"
-          : "Quote prepared";
+      : !request.offerAvailable
+        ? "Offer no longer available"
+        : request.expired
+          ? "Quote expired"
+          : request.status === "parent-reported-submitted"
+            ? "Submission reported"
+            : "Quote prepared";
 }
 export function FundingPurchaseCenter({
   token,
@@ -234,6 +236,7 @@ export function FundingPurchaseCenter({
   }
   const usable =
     request &&
+    request.offerAvailable &&
     !request.orderId &&
     !request.expired &&
     request.status !== "cancelled";
@@ -317,6 +320,14 @@ export function FundingPurchaseCenter({
                   Quote valid until{" "}
                   {new Date(request.expiresAt).toLocaleDateString()}.
                 </p>
+                {!request.offerAvailable && (
+                  <p className="funding-notice">
+                    This offer changed or was withdrawn. Do not submit this
+                    quote. Return to purchase options to check available offers.
+                    If you already submitted it, contact the merchant about your
+                    program order.
+                  </p>
+                )}
                 {usable && (
                   <>
                     <h3>Complete the program’s purchase process</h3>
