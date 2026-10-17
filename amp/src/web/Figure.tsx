@@ -1,3 +1,4 @@
+import { MeasurementFigure } from "./MeasurementFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
@@ -5,6 +6,10 @@ import { GraphicalFigure } from "./GraphicalFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
+    case "length-interval":
+    case "measure-rectangle":
+    case "rectangle-comparison":
+      return <MeasurementFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;

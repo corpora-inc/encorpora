@@ -142,6 +142,10 @@ export function buildApp(options: {
           .array(z.literal("single-choice-v1"))
           .max(1)
           .default([]),
+        figureCapabilities: z
+          .array(z.literal("measurement-models-v1"))
+          .max(1)
+          .default([]),
       })
       .strict()
       .parse(request.body ?? {});
@@ -155,15 +159,19 @@ export function buildApp(options: {
         throw new ApiError(400, "Unknown problem family");
       const supported = templates.filter(
         (template) =>
-          !template.requiredResponseCapability ||
-          input.responseCapabilities.includes(
-            template.requiredResponseCapability,
-          ),
+          (!template.requiredResponseCapability ||
+            input.responseCapabilities.includes(
+              template.requiredResponseCapability,
+            )) &&
+          (!template.requiredFigureCapability ||
+            input.figureCapabilities.includes(
+              template.requiredFigureCapability,
+            )),
       );
       if (focused && !supported.includes(focused))
         throw new ApiError(
           400,
-          "This answer format needs an updated app. Refresh the page to try this problem.",
+          "This problem needs an updated app. Refresh the page to try it.",
         );
       const selected = focused
         ? Array.from({ length: input.count }, () => ({
