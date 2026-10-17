@@ -1,10 +1,10 @@
+import { books } from "../src/books/catalog.js";
+import { validateEqualGroupsAlignments } from "../books/equal-groups-workshop/alignments.js";
+import { validateEqualGroupsPracticeBindings } from "../books/equal-groups-workshop/practice.js";
 import { buildCoverageManifest } from "../src/content/coverage.js";
-import {
-  fractionPracticeBindings,
-  validateFractionPracticeCoverage,
-} from "../src/content/fraction-practice-coverage.js";
+import { validateFractionPracticeCoverage } from "../src/content/fraction-practice-coverage.js";
 import { auditCurriculum } from "../src/curriculum/audit";
-import { skills } from "../src/curriculum/catalog";
+import { skills, standards } from "../src/curriculum/catalog";
 import { auditFundingRegistry } from "../src/funding/audit";
 import { fundingRegistry } from "../src/funding/registry";
 import { templates } from "../src/math/engine";
@@ -16,8 +16,11 @@ const errors = [...curriculum.errors, ...funding.errors, ...coverage.errors];
 const bookTemplateIds = new Set<string>();
 try {
   validateFractionPracticeCoverage();
-  for (const binding of fractionPracticeBindings)
-    bookTemplateIds.add(binding.templateId);
+  validateEqualGroupsAlignments(skills, templates, standards);
+  validateEqualGroupsPracticeBindings(templates);
+  for (const book of books)
+    for (const binding of book.bindings)
+      bookTemplateIds.add(binding.templateId);
 } catch (error) {
   errors.push(
     `Invalid book teaching bindings: ${error instanceof Error ? error.message : String(error)}`,
