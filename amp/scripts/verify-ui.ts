@@ -233,6 +233,14 @@ try {
         geometry.scroll <= geometry.height + 2,
         `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
       );
+      if (template.id === "fraction-group-count" && size.width === 320)
+        await page.screenshot({
+          path: new URL(
+            "../artifacts/screenshots/fraction-group-count-compact.png",
+            import.meta.url,
+          ).pathname,
+          fullPage: true,
+        });
     }
     await page.setViewportSize({ width: 390, height: 844 });
     if (
