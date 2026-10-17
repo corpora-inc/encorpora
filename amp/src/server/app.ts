@@ -20,6 +20,7 @@ import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
+const birthYearSchema = z.number().int().min(1900).max(2100);
 const attemptSchema = z
   .object({
     problemId: z.string().min(1).max(160),
@@ -100,11 +101,16 @@ export function buildApp(options: {
   }));
   app.post("/api/v1/learners", async (request, reply) => {
     const account = await parent(request);
-    const { name } = z
-      .object({ name: z.string().trim().min(1).max(60) })
+    const { name, birthYear } = z
+      .object({
+        name: z.string().trim().min(1).max(60),
+        birthYear: birthYearSchema.optional(),
+      })
       .strict()
       .parse(request.body);
-    return reply.code(201).send(await options.repository.create(account, name));
+    return reply
+      .code(201)
+      .send(await options.repository.create(account, name, birthYear));
   });
   app.get("/api/v1/learners/:learnerId/progress", async (request) => {
     const account = await parent(request);
@@ -133,6 +139,18 @@ export function buildApp(options: {
       await tx.setStartingPoint(band);
       const { policyVersion } = await tx.startingPoint();
       return { band, policyVersion };
+    });
+  });
+  app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { birthYear } = z
+      .object({ birthYear: birthYearSchema })
+      .strict()
+      .parse(request.body);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      await tx.setBirthYear(birthYear);
+      return { birthYear };
     });
   });
   app.post("/api/v1/learners/:learnerId/batches", async (request) => {
@@ -190,7 +208,7 @@ export function buildApp(options: {
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
-            startingPoint: await tx.startingPoint(),
+            frontier: await tx.frontier(),
             count: input.count,
             seed: randomUUID(),
           });

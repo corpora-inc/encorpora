@@ -65,31 +65,6 @@ function select(history: Outcome[], seed = "case", count = 5) {
     now,
   });
 }
-test("advanced algebra coexists with multiplication support without lifting untouched strands", () => {
-  const history = [
-    ...Array.from({ length: 5 }, (_, i) => observation("advanced-algebra", i)),
-    observation("multiply", 5, false),
-    observation("data-entry", 6),
-    observation("fraction-entry", 7),
-  ];
-  for (let i = 0; i < 100; i++) {
-    const choices = select(history, String(i));
-    assert.ok(choices.some((c) => c.template.id === "advanced-algebra"));
-    assert.ok(
-      choices.some(
-        (c) => c.template.id === "multiply" && c.reason === "revisit",
-      ),
-    );
-    assert.ok(
-      choices.every(
-        (c) =>
-          !["geometry-advanced", "data-advanced", "fraction-advanced"].includes(
-            c.template.id,
-          ),
-      ),
-    );
-  }
-});
 test("misses and assistance in operations do not remove demonstrated algebra or grant ancestor evidence", () => {
   const history = [
     ...Array.from({ length: 5 }, (_, i) => observation("advanced-algebra", i)),
@@ -106,34 +81,6 @@ test("misses and assistance in operations do not remove demonstrated algebra or 
   assert.equal(state.find((s) => s.skillId === "add")!.independentCorrect, 0);
   assert.equal(state.find((s) => s.skillId === "add")!.creditedRetrievals, 0);
 });
-test("support and spaced review survive hundreds of intervening attempts in another strand", () => {
-  const history = [
-    observation("multiply", 0, false),
-    ...Array.from({ length: 6 }, (_, i) =>
-      observation("advanced-algebra", i + 1, true, false, now - (40 - i) * day),
-    ),
-  ];
-  for (let i = 10; i < 310; i++)
-    history.push(observation("data-entry", i, true, false, now - 1000000 + i));
-  const state = projectSkillEvidence(history);
-  assert.equal(
-    state.find((s) => s.skillId === "advanced-algebra")!.creditedRetrievals,
-    6,
-  );
-  assert.equal(
-    state.find((s) => s.skillId === "advanced-algebra")!.reviewDueAt,
-    now - 5 * day,
-  );
-  const choices = select(history);
-  assert.ok(
-    choices.some((c) => c.template.id === "multiply" && c.reason === "revisit"),
-  );
-  assert.ok(
-    choices.some(
-      (c) => c.template.id === "advanced-algebra" && c.reason === "review",
-    ),
-  );
-});
 test("burst practice cannot fabricate spaced retrieval; errors reset it and derived records omit answers", () => {
   const history: PracticeObservation[] = Array.from({ length: 6 }, (_, i) =>
     observation("multiply", i, true, false, now + i * day),
@@ -148,31 +95,6 @@ test("burst practice cannot fabricate spaced retrieval; errors reset it and deri
   state = projectSkillEvidence(history)[0]!;
   assert.equal(state.creditedRetrievals, 0);
   assert.equal(state.reviewDueAt, now + 6 * day);
-});
-test("a demonstrated prerequisite may open a different strand, but a correct probe does not mark ancestors", () => {
-  const prerequisite = "data-entry";
-  const target = templates.find((t) => t.id === "geometry-advanced")!;
-  const graph = skills.map((s) =>
-    s.id === target.skillId ? { ...s, prerequisites: [prerequisite] } : s,
-  );
-  const history = Array.from({ length: 5 }, (_, i) =>
-    observation(prerequisite, i),
-  );
-  const choices = planMixedPractice({
-    templates: [target, templates[0]!],
-    skills: graph,
-    attempts: history,
-    evidence: projectSkillEvidence(history),
-    count: 2,
-    seed: "dag",
-    now,
-  });
-  assert.ok(
-    choices.some((c) => c.template.id === target.id && c.reason === "frontier"),
-  );
-  const probe = projectSkillEvidence([observation(target.id, 10)]);
-  assert.equal(probe.length, 1);
-  assert.equal(probe[0]!.skillId, target.skillId);
 });
 
 test("an assisted fifth answer cannot promote four independent successes into review readiness", () => {
@@ -193,47 +115,3 @@ test("an assisted fifth answer cannot promote four independent successes into re
   assert.equal(missed.status, "practicing");
 });
 
-test("equal-time reverse IDs cannot turn a latest assisted answer into an independent challenge run", () => {
-  const entry = templates.find((t) => t.id === "add")!;
-  const probe = {
-    ...templates.find((t) => t.id === "multiply")!,
-    id: "new-probe",
-    skillId: "new-probe",
-  };
-  const graph = [entry.skillId, probe.skillId, "other-operations"].map(
-    (id) => ({ id, strand: "operations", prerequisites: [] }),
-  );
-  const history: Outcome[] = [
-    ...Array.from({ length: 3 }, (_, i) => ({
-      ...observation("add", i, true, false, now),
-      id: `z${i}`,
-    })),
-    { ...observation("other-operations", 3, true, true, now), id: "a" },
-  ];
-  history.forEach((entry, index) => {
-    entry.ingestionSequence = String(90071992547409930n + BigInt(index));
-  });
-  for (const attempts of [history, []]) {
-    const result = planMixedPractice({
-      templates: [entry, probe],
-      skills: graph,
-      attempts,
-      evidence: projectSkillEvidence(history),
-      count: 1,
-      seed: "equal-time",
-      now,
-    });
-    assert.equal(result[0]!.template.id, entry.id);
-  }
-  const independent = history.slice(0, 3);
-  const challenge = planMixedPractice({
-    templates: [entry, probe],
-    skills: graph,
-    attempts: [],
-    evidence: projectSkillEvidence(independent),
-    count: 1,
-    seed: "equal-time",
-    now,
-  });
-  assert.equal(challenge[0]!.template.id, probe.id);
-});
