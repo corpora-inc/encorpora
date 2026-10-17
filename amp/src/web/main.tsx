@@ -1,3 +1,8 @@
+import {
+  ProgressWorkspace,
+  initialProgressView,
+  type ProgressView,
+} from "./ProgressWorkspace";
 import { AnnualPurchase } from "./AnnualPurchase";
 import { FundingPurchaseCenter } from "./FundingPurchaseCenter";
 import {
@@ -19,7 +24,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import type { PublicProblem, TemplateMetadata } from "../math/contracts";
 import type { Learner, Outcome } from "../server/repository";
-import type { SkillProgress } from "../server/progress";
+import type { ProgressSnapshot } from "../server/progress";
 import type { Lesson } from "../content/lessons";
 import { PracticeWorkspace, usePracticeViewport } from "./PracticeWorkspace";
 import {
@@ -88,6 +93,12 @@ function App() {
     initialFrame: number;
   } | null>(null);
   const navigationEpoch = useRef(0);
+  const progressRevision = useRef(0);
+  const [progressView, setProgressView] =
+    useState<ProgressView>(initialProgressView);
+  const [progressLoading, setProgressLoading] = useState(false);
+  const [progressError, setProgressError] = useState("");
+  const progressLessonReturn = useRef<string | null>(null);
   const bookReturn = useRef<{ selector: string; scroll: number }>({
     selector: "",
     scroll: 0,
@@ -113,7 +124,9 @@ function App() {
     [hint, setHint] = useState(""),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
-    [progress, setProgress] = useState<SkillProgress[]>([]),
+    [progress, setProgress] = useState<
+      (ProgressSnapshot & { learnerId: string }) | null
+    >(null),
     [name, setName] = useState(""),
     [pending, setPending] = useState<{
       requestId: string;
@@ -151,7 +164,10 @@ function App() {
     setFamily("");
     setLearners([]);
     setLearner(null);
-    setProgress([]);
+    setProgress(null);
+    setProgressError("");
+    setProgressView(initialProgressView);
+    progressLessonReturn.current = null;
     setProblem(null);
     setQueue([]);
     setOutcome(null);
@@ -287,12 +303,11 @@ function App() {
     setQueue([]);
     setOutcome(null);
     setPending(null);
-    setProgress([]);
-    if (learner)
-      void refreshProgress().catch((e) => {
-        if (epoch === authEpoch.current && learnerRef.current === learner.id)
-          setError(e instanceof Error ? e.message : "Could not load progress");
-      });
+    setProgress(null);
+    setProgressError("");
+    setProgressView(initialProgressView);
+    progressLessonReturn.current = null;
+    if (learner) void refreshProgress();
   }, [learner?.id]);
   function invalidateLearning() {
     authEpoch.current++;
@@ -307,7 +322,10 @@ function App() {
     setPending(null);
     setResponse("");
     setHint("");
-    setProgress([]);
+    setProgress(null);
+    setProgressError("");
+    setProgressView(initialProgressView);
+    progressLessonReturn.current = null;
     setLesson(null);
     setReadingLesson(null);
     setReadingBook(null);
@@ -368,10 +386,64 @@ function App() {
   }
   async function refreshProgress() {
     if (!learner) return;
-    const data = await api<{ skills: SkillProgress[] }>(
-      `/learners/${learner.id}/progress`,
-    );
-    if (learnerRef.current === learner.id) setProgress(data.skills);
+    const revision = ++progressRevision.current;
+    const epoch = authEpoch.current;
+    const current = () =>
+      revision === progressRevision.current &&
+      epoch === authEpoch.current &&
+      learnerRef.current === learner.id;
+    setProgressLoading(true);
+    setProgressError("");
+    try {
+      const data = await api<ProgressSnapshot>(
+        `/learners/${learner.id}/progress`,
+      );
+      if (current()) setProgress({ ...data, learnerId: learner.id });
+    } catch (error) {
+      if (current())
+        setProgressError(
+          error instanceof Error
+            ? error.message
+            : "Could not load practice history.",
+        );
+    } finally {
+      if (current()) setProgressLoading(false);
+    }
+  }
+  function navigationFailure(
+    navigation: number,
+    learnerId: string,
+    error: unknown,
+  ): null {
+    if (
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learnerId
+    )
+      return null;
+    throw error;
+  }
+  async function practiceFromProgress(templateId?: string) {
+    await loadBatch(templateId ?? "", true);
+  }
+  async function lessonFromProgress(selected: Lesson, skillId: string) {
+    if (!learner) return;
+    const navigation = navigationEpoch.current;
+    if (
+      problem &&
+      !outcome &&
+      selected.templateIds.includes(problem.templateId)
+    )
+      await api(`/learners/${learner.id}/lesson-support`, {
+        problemId: problem.id,
+      }).catch((error) => navigationFailure(navigation, learner.id, error));
+    if (
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learner.id
+    )
+      return;
+    progressLessonReturn.current = skillId;
+    setReadingLesson(selected);
+    setTab("library");
   }
   function showProblem(p: PublicProblem) {
     setProblem(p);
@@ -380,17 +452,24 @@ function App() {
     setHint("");
     setPending(null);
   }
-  async function loadBatch() {
+  async function loadBatch(templateId = family, openPractice = false) {
     if (!learner) return;
-    navigationEpoch.current++;
+    const navigation = ++navigationEpoch.current;
     const data = await api<{
       problems: PublicProblem[];
       lesson: Lesson | null;
     }>(`/learners/${learner.id}/batches`, {
-      ...(family ? { templateId: family } : {}),
-      count: family ? 1 : 3,
+      ...(templateId ? { templateId } : {}),
+      count: templateId ? 1 : 3,
       responseCapabilities: ["single-choice-v1"],
-    });
+    }).catch((error) => navigationFailure(navigation, learner.id, error));
+    if (
+      !data ||
+      navigation !== navigationEpoch.current ||
+      learnerRef.current !== learner.id
+    )
+      return;
+    if (openPractice) setTab("practice");
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
@@ -423,10 +502,14 @@ function App() {
       throw e;
     }
   }
-  async function openBook(id: string, fromProblem = false) {
+  async function openBook(
+    id: string,
+    fromProblem = false,
+    trigger?: HTMLElement,
+  ) {
     if (!learner) return;
     const navigation = navigationEpoch.current;
-    const active = document.activeElement as HTMLElement | null;
+    const active = trigger ?? (document.activeElement as HTMLElement | null);
     const returnTo = {
       selector: active?.dataset.bookId
         ? `[data-book-id="${CSS.escape(active.dataset.bookId)}"]`
@@ -439,8 +522,9 @@ function App() {
     }>(`/learners/${learner.id}/books/${id}/open`, {
       readerCapabilities,
       ...(problem ? { problemId: problem.id } : {}),
-    });
+    }).catch((error) => navigationFailure(navigation, learner.id, error));
     if (
+      !data ||
       learnerRef.current !== learner.id ||
       navigationEpoch.current !== navigation
     )
@@ -607,6 +691,7 @@ function App() {
               onClick={() => {
                 navigationEpoch.current++;
                 setTab(t);
+                if (t === "progress") void refreshProgress();
               }}
             >
               {t === "practice"
@@ -890,6 +975,8 @@ function App() {
                         data-lesson-id={l.id}
                         disabled={busy}
                         onClick={(event) => {
+                          const navigation = ++navigationEpoch.current;
+                          progressLessonReturn.current = null;
                           readerTriggerId.current = l.id;
                           libraryScroll.current =
                             event.currentTarget.closest("main")?.scrollTop ?? 0;
@@ -902,8 +989,19 @@ function App() {
                               await api(
                                 `/learners/${learner.id}/lesson-support`,
                                 { problemId: problem.id },
+                              ).catch((error) =>
+                                navigationFailure(
+                                  navigation,
+                                  learner.id,
+                                  error,
+                                ),
                               );
                             }
+                            if (
+                              navigation !== navigationEpoch.current ||
+                              learnerRef.current !== learner.id
+                            )
+                              return;
                             setReadingLesson(l);
                           });
                         }}
@@ -922,6 +1020,19 @@ function App() {
                   className="text-button"
                   onClick={() => {
                     setReadingLesson(null);
+                    if (progressLessonReturn.current) {
+                      const skillId = progressLessonReturn.current;
+                      progressLessonReturn.current = null;
+                      setTab("progress");
+                      requestAnimationFrame(() =>
+                        document
+                          .querySelector<HTMLElement>(
+                            `[data-progress-lesson="${CSS.escape(skillId)}"]`,
+                          )
+                          ?.focus({ preventScroll: true }),
+                      );
+                      return;
+                    }
                     requestAnimationFrame(() => {
                       const trigger = document.querySelector<HTMLButtonElement>(
                         `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
@@ -932,7 +1043,9 @@ function App() {
                     });
                   }}
                 >
-                  ← All lessons
+                  {progressLessonReturn.current
+                    ? "← Your idea"
+                    : "← All lessons"}
                 </button>
                 <button className="text-button" onClick={() => window.print()}>
                   Print lesson
@@ -988,38 +1101,32 @@ function App() {
           )}
         </main>
       ) : (
-        <main>
-          <div className="section-heading">
-            <h2>Small steps, visible growth.</h2>
-            <p>
-              These summaries describe practiced problem families, not
-              whole-grade mastery.
-            </p>
-          </div>
-          <div className="progress-list">
-            {progress.map((s) => (
-              <article className="card progress-card" key={s.skillId}>
-                <div>
-                  <h3>
-                    {catalog?.templates.find((t) => t.skillId === s.skillId)
-                      ?.title ?? s.skillId}
-                  </h3>
-                  <p>
-                    {s.attempts} attempts · {s.independentCorrect} independently
-                    correct
-                  </p>
-                </div>
-                <span className={`status ${s.status}`}>
-                  {s.status === "review-ready"
-                    ? "Ready for review"
-                    : s.status === "practicing"
-                      ? "Building understanding"
-                      : "Not explored yet"}
-                </span>
-              </article>
-            ))}
-          </div>
-        </main>
+        <ProgressWorkspace
+          key={`${accountId}:${learner.id}`}
+          snapshot={progress?.learnerId === learner.id ? progress : null}
+          skills={catalog?.skills ?? []}
+          templates={catalog?.templates ?? []}
+          lessons={catalog?.lessons ?? []}
+          books={books}
+          view={progressView}
+          setView={(update) => {
+            navigationEpoch.current++;
+            setProgressView(update);
+          }}
+          busy={busy}
+          loading={progressLoading}
+          error={progressError}
+          onRetry={() => void refreshProgress()}
+          onPractice={(templateId) =>
+            void action(() => practiceFromProgress(templateId))
+          }
+          onLesson={(selected, skillId) =>
+            void action(() => lessonFromProgress(selected, skillId))
+          }
+          onBook={(id, trigger) =>
+            void action(() => openBook(id, false, trigger))
+          }
+        />
       )}
       {!learner && (
         <footer>

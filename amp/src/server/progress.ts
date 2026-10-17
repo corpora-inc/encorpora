@@ -7,6 +7,12 @@ export type SkillProgress = {
   status: "new" | "practicing" | "review-ready";
   lastPracticedAt: string | null;
 };
+export type LearnerSkillProgress = SkillProgress & {
+  reviewDueAt: string | null;
+  independentOccasions: number;
+  recent: { correct: boolean; assisted: boolean; at: string }[];
+};
+export type ProgressSnapshot = { asOf: string; skills: LearnerSkillProgress[] };
 /** Evidence summaries are not certification of whole-standard mastery. */
 export function summarize(
   attempts: Outcome[],
