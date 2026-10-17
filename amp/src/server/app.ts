@@ -16,6 +16,7 @@ import { auditCurriculum } from "../curriculum/audit";
 import { ApiError, type Outcome, type Repository } from "./repository";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
+import { isTrialAccount } from "./trials";
 import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
@@ -72,8 +73,20 @@ export function buildApp(options: {
       .code(500)
       .send({ error: "Unable to complete the request. Please try again." });
   });
+  // Practice routes also accept an anonymous trial token. Family, billing,
+  // consent and export routes are registered with the parent authenticator
+  // alone, so a trial token can never reach them.
+  async function learningAccount(request: Parameters<Authenticator>[0]) {
+    const trial = request.headers.authorization?.match(
+      /^Trial ([A-Za-z0-9_-]{20,100})$/,
+    )?.[1];
+    if (!trial) return options.authenticate(request);
+    const account = await options.repository.trialAccount(trial);
+    if (!account) throw new ApiError(401, "This free trial has ended");
+    return account;
+  }
   async function parent(request: Parameters<Authenticator>[0]) {
-    const account = await options.authenticate(request);
+    const account = await learningAccount(request);
     if (!options.development && !(await options.repository.hasConsent(account)))
       throw new ApiError(
         403,
@@ -110,6 +123,8 @@ export function buildApp(options: {
   }));
   app.post("/api/v1/learners", async (request, reply) => {
     const account = await parent(request);
+    if (isTrialAccount(account))
+      throw new ApiError(403, "Create an account to add learners");
     const { name, birthYear } = z
       .object({
         name: z.string().trim().min(1).max(60),
@@ -158,6 +173,30 @@ export function buildApp(options: {
       return { band, policyVersion };
     });
   });
+  app.post(
+    "/api/v1/trials",
+    { config: { rateLimit: { max: 20, timeWindow: "1 hour" } } },
+    async (request, reply) => {
+      const { birthYear } = z
+        .object({ birthYear: birthYearSchema })
+        .strict()
+        .parse(request.body);
+      return reply
+        .code(201)
+        .send(await options.repository.createTrial(birthYear));
+    },
+  );
+  app.post("/api/v1/trials/adopt", async (request) => {
+    const account = await options.authenticate(request);
+    const { token, name } = z
+      .object({
+        token: z.string().regex(/^[A-Za-z0-9_-]{20,100}$/),
+        name: z.string().trim().min(1).max(60),
+      })
+      .strict()
+      .parse(request.body);
+    return options.repository.adoptTrial(account, token, name);
+  });
   app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -189,7 +228,11 @@ export function buildApp(options: {
       .strict()
       .parse(request.body ?? {});
     return options.repository.transaction(account, learnerId, async (tx) => {
-      if (!options.development && !(await tx.hasAccess()))
+      // A trial practices until its allowance is used, then sees the paywall.
+      const trialRemaining = await tx.trialRemaining();
+      if (trialRemaining !== null) {
+        if (trialRemaining <= 0) throw new ApiError(402, "trial-complete");
+      } else if (!options.development && !(await tx.hasAccess()))
         throw new ApiError(403, "An active student license is required");
       const focused = input.templateId
         ? templates.find((t) => t.id === input.templateId)
@@ -212,8 +255,12 @@ export function buildApp(options: {
           400,
           "This problem needs an updated app. Refresh the page to try it.",
         );
+      const count =
+        trialRemaining === null
+          ? input.count
+          : Math.min(input.count, trialRemaining);
       const selected = focused
-        ? Array.from({ length: input.count }, () => ({
+        ? Array.from({ length: count }, () => ({
             template: focused,
             reason: "focus",
             strand:
@@ -226,7 +273,7 @@ export function buildApp(options: {
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
             frontier: await tx.frontier(),
-            count: input.count,
+            count,
             seed: randomUUID(),
           });
       const problems: PublicProblem[] = [];
@@ -239,6 +286,7 @@ export function buildApp(options: {
       }
       return {
         problems,
+        ...(trialRemaining !== null ? { trialRemaining } : {}),
         selection: selected.map((choice, i) => ({
           problemId: problems[i].id,
           reason: choice.reason,
@@ -353,6 +401,10 @@ export function buildApp(options: {
           );
         return duplicate;
       }
+      // Problems fetched in advance cannot extend a trial's allowance.
+      const trialRemaining = await tx.trialRemaining();
+      if (trialRemaining !== null && trialRemaining <= 0)
+        throw new ApiError(402, "trial-complete");
       const problem = await tx.problem(input.problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
       if (!isValidResponse(problem.public, input.response))

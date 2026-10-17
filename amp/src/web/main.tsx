@@ -45,6 +45,7 @@ import "./practice.css";
 import "katex/dist/katex.min.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
+import { TrialApp, storedTrial, clearStoredTrial } from "./TrialApp";
 import { useLearnerStore } from "./learner-store";
 import { calculatorAllowed } from "../math/calculator";
 import { gradeNumber } from "../learning/frontier";
@@ -117,6 +118,11 @@ function App() {
   const learner = learners.find((entry) => entry.id === learnerId) ?? null;
   const [familyOpen, setFamilyOpen] = useState(false);
   const [changingBirthYear, setChangingBirthYear] = useState(false);
+  // "Try free": anonymous placement before any account (see TrialApp).
+  const [trialMode, setTrialMode] = useState(() => !!storedTrial());
+  const [trialImmersive, setTrialImmersive] = useState(false);
+  const [trialToSave, setTrialToSave] = useState(storedTrial);
+  const [trialName, setTrialName] = useState("");
   // Outside immersive practice: home, lessons, progress and family are visible.
   const [exploring, setExploring] = useState(true);
   const nativeFamilyReturn = useRef(false);
@@ -587,9 +593,20 @@ function App() {
     if (!learner) return;
     upcoming.current = null;
     const navigation = ++navigationEpoch.current;
-    const data = await requestBatch(templateId).catch((error) =>
-      navigationFailure(navigation, learner.id, error),
-    );
+    const data = await requestBatch(templateId).catch((error) => {
+      // No license yet: go to purchase rather than show an error.
+      if (
+        error instanceof HttpError &&
+        error.status === 403 &&
+        /license/i.test(error.message)
+      ) {
+        setExploring(true);
+        openFamily();
+        setFamilySection("access");
+        return null;
+      }
+      return navigationFailure(navigation, learner.id, error);
+    });
     if (
       !data ||
       navigation !== navigationEpoch.current ||
@@ -745,21 +762,30 @@ function App() {
       .catch((error) => console.error("Frontier map failed to load", error));
   }, [learner?.id, learner?.birthYear, tab, exploring]);
   // Practice is immersive: no header or tabs, one exit back to everything else.
+  const trialActive = trialMode && !token && !nativeRuntime;
   const immersive =
-    !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
+    (!!learner &&
+      tab === "practice" &&
+      !!problem &&
+      !exploring &&
+      !familyOpen) ||
+    (trialActive && trialImmersive);
   // Home and Lessons are ordinary pages that scroll with the window; practice,
   // reading, progress and family settings own a fixed device-sized screen.
+  // Signed out, the welcome and the trial share the app's header and column.
+  const signedOut = !token && !nativeRuntime;
   const flowPage =
-    !!learner &&
-    !familyOpen &&
-    !readingBook &&
-    !immersive &&
-    (tab === "practice" || tab === "library");
+    (signedOut && !(trialActive && trialImmersive)) ||
+    (!!learner &&
+      !familyOpen &&
+      !readingBook &&
+      !immersive &&
+      (tab === "practice" || tab === "library"));
   usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
   return (
     <div
-      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>
@@ -770,21 +796,25 @@ function App() {
           <span>MATHEMATICS</span>
         </a>
         <div className="account">
-          {token && !familyOpen && learningAllowed && learners.length > 0 && (
-            <select
-              aria-label="Learner"
-              value={learner?.id ?? ""}
-              disabled={busy}
-              onChange={(e) => selectLearner(e.target.value || null)}
-            >
-              {!learner && <option value="">Select a learner</option>}
-              {learners.map((l) => (
-                <option key={l.id} value={l.id}>
-                  {l.name}
-                </option>
-              ))}
-            </select>
-          )}
+          {token &&
+            !familyOpen &&
+            !trialToSave &&
+            learningAllowed &&
+            learners.length > 0 && (
+              <select
+                aria-label="Learner"
+                value={learner?.id ?? ""}
+                disabled={busy}
+                onChange={(e) => selectLearner(e.target.value || null)}
+              >
+                {!learner && <option value="">Select a learner</option>}
+                {learners.map((l) => (
+                  <option key={l.id} value={l.id}>
+                    {l.name}
+                  </option>
+                ))}
+              </select>
+            )}
           {token && !familyOpen && (
             <details className="account-menu">
               <summary aria-label="Family menu">Family</summary>
@@ -848,7 +878,7 @@ function App() {
           )}
         </div>
       </header>
-      {!learner && !familyOpen && !nativeRuntime && (
+      {!learner && !familyOpen && !nativeRuntime && !trialActive && (
         <div className="intro">
           <div>
             <h1>Math at exactly the right level.</h1>
@@ -859,7 +889,7 @@ function App() {
           </div>
         </div>
       )}
-      {!familyOpen && learner && (
+      {!familyOpen && learner && !trialToSave && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
             <button
@@ -958,13 +988,26 @@ function App() {
             );
           }}
         />
+      ) : !token && trialActive ? (
+        <TrialApp
+          catalog={catalog}
+          onImmersive={setTrialImmersive}
+          signIn={() => {
+            setTrialToSave(storedTrial());
+            void action(signIn);
+          }}
+        />
       ) : !token ? (
         <section className="card welcome">
-          <p className="eyebrow">ONE ACCOUNT. EVERY LEARNING DEVICE.</p>
-          <h2>A place to grow in mathematics.</h2>
+          <h2>
+            {nativeRuntime
+              ? "Sign in to continue."
+              : "Find the level in 20 problems."}
+          </h2>
           <p>
-            Sign in as a parent to manage your learners and continue their
-            practice.
+            {nativeRuntime
+              ? "Sign in as a parent to choose a learner."
+              : "Free, with no account. Each answer sets the next problem; the result is an estimated grade level in every area."}
           </p>
           {hasPendingConsent && (
             <p>
@@ -972,7 +1015,20 @@ function App() {
               private link is not saved in this browser.
             </p>
           )}
-          <button onClick={() => void action(signIn)} disabled={busy}>
+          {!nativeRuntime && (
+            <button
+              className="go-button"
+              onClick={() => setTrialMode(true)}
+              disabled={busy}
+            >
+              Try free
+            </button>
+          )}
+          <button
+            className={nativeRuntime ? undefined : "secondary"}
+            onClick={() => void action(signIn)}
+            disabled={busy}
+          >
             Parent sign in
           </button>
         </section>
@@ -1014,6 +1070,55 @@ function App() {
           <button className="secondary" onClick={openFamily}>
             Family settings
           </button>
+        </section>
+      ) : trialToSave && !nativeRuntime ? (
+        <section className="card welcome trial-save">
+          <h2>Save this placement</h2>
+          <p>Name the learner to keep every answer and estimate.</p>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              void action(async () => {
+                const adopted = await api<{ id: string }>("/trials/adopt", {
+                  token: trialToSave,
+                  name: trialName.trim(),
+                });
+                clearStoredTrial();
+                setTrialToSave(null);
+                setTrialMode(false);
+                await loadFamily();
+                selectLearner(adopted.id);
+                // Next step: choose how to pay (card or ESA).
+                openFamily();
+                setFamilySection("access");
+              });
+            }}
+          >
+            <label>
+              Learner name
+              <input
+                required
+                maxLength={60}
+                value={trialName}
+                onChange={(event) => setTrialName(event.target.value)}
+              />
+            </label>
+            <button disabled={busy || !trialName.trim()}>
+              Save and continue
+            </button>
+            <button
+              type="button"
+              className="secondary"
+              disabled={busy}
+              onClick={() => {
+                clearStoredTrial();
+                setTrialToSave(null);
+                setTrialMode(false);
+              }}
+            >
+              Discard placement
+            </button>
+          </form>
         </section>
       ) : !learner ? (
         <section className="card welcome">
@@ -1321,7 +1426,7 @@ function App() {
           }
         />
       )}
-      {!learner && !familyOpen && !nativeRuntime && (
+      {!learner && !familyOpen && !nativeRuntime && !trialActive && (
         <footer>
           <span>
             {product.name} · A {product.company} learning studio

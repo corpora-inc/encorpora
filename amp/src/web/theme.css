@@ -122,6 +122,8 @@ header {
 }
 .app-shell .brand,
 .brand {
+  flex-shrink: 0;
+  white-space: nowrap;
   color: var(--ink);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -876,6 +878,9 @@ header {
 .shell.app-shell.flow > header,
 .shell.app-shell.flow > nav,
 .shell.app-shell.flow > main,
+.shell.app-shell.flow > .intro,
+.shell.app-shell.flow > section,
+.shell.app-shell.flow > footer,
 .shell.app-shell.flow > .error {
   width: min(calc(100% - 32px), 800px);
   margin-inline: auto;
@@ -1542,4 +1547,77 @@ html[data-input="pointer"] :focus-visible {
 /* Proportional figures in sentences: tabular digits leave gaps in "11". */
 .problem-content .question {
   font-variant-numeric: lining-nums proportional-nums;
+}
+
+/* Try free: map and paywall pages */
+.app-shell > main.trial-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0 64px;
+}
+.paywall {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.paywall h2 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: 28px;
+}
+.paywall ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.paywall-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-3);
+  text-align: center;
+}
+.welcome .go-button,
+.welcome .go-button + .secondary {
+  width: 100%;
+}
+.welcome .go-button {
+  margin-bottom: 8px;
+}
+.trial-save form,
+.trial-save label {
+  display: grid;
+  gap: 8px;
+}
+.trial-save form {
+  gap: 12px;
+}
+.trial-save input {
+  width: 100%;
+}
+@media (max-width: 360px) {
+  .frontier-row {
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+  }
+  .frontier-name {
+    font-size: 13px;
+  }
+  .frontier-axis,
+  .frontier-detail {
+    margin-left: 108px;
+  }
+  /* The heading explains the centre line; two end labels fit. */
+  .frontier-axis span:nth-child(2) {
+    display: none;
+  }
+}
+/* Signed out: the welcome card sits in the app column. */
+.shell.app-shell.flow > section.welcome {
+  margin-bottom: 32px;
 }
