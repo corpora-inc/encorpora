@@ -20,10 +20,16 @@ const app = buildApp({
   authenticate: developmentAuth(),
   development: true,
 });
-await app.listen({ host: "127.0.0.1", port: 4311 });
+await app.listen({ host: "127.0.0.1", port: 4351 });
 const vite = await createServer({
+  root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: 4310, strictPort: true },
+  server: {
+    host: "127.0.0.1",
+    port: 4350,
+    strictPort: true,
+    proxy: { "/api": { target: "http://127.0.0.1:4351" } },
+  },
 });
 await vite.listen();
 const browser = await chromium.launch({ headless: true });
@@ -34,7 +40,7 @@ try {
   const page = await browser.newPage({ hasTouch: true });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("http://127.0.0.1:4310");
+  await page.goto("http://127.0.0.1:4350");
   await page
     .getByRole("combobox", { name: "Learner", exact: true })
     .selectOption(learner.id);
