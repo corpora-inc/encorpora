@@ -646,6 +646,46 @@ test(
         ).rows[0].count,
         0,
       );
+      // A later credit-note label cannot hide an irreversible identity collision.
+      await send("credit_note.created", "cn_after_collision");
+      await billing.runBatch();
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT review_reason FROM amp_payment_records WHERE invoice_id=$1",
+            [invoice.id],
+          )
+        ).rows[0].review_reason,
+        "provider_credit_note_requires_review",
+      );
+      // Restore fixture eligibility to prove the collision itself blocks access.
+      await pool.query(
+        "UPDATE amp_learners SET deleted_at=NULL WHERE id='child'",
+      );
+      await pool.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id='parent'",
+      );
+      f.charge.id = "ch_corrected_after_collision";
+      f.intent.latest_charge = f.charge.id;
+      const correctedRetry = await send("invoice.paid", invoice.id);
+      assert.equal((await billing.runBatch()).failed, 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT error_code FROM amp_stripe_inbox WHERE event_id=$1",
+            [correctedRetry.eventId],
+          )
+        ).rows[0].error_code,
+        "payment_identity_requires_reconciliation",
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS count FROM amp_commerce_orders WHERE external_order_id='in_duplicate_charge'",
+          )
+        ).rows[0].count,
+        0,
+      );
     } finally {
       await app.close();
       await pool.end();

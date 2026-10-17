@@ -202,7 +202,7 @@ export class StripeBilling {
             );
             if (!replay.rowCount) {
               const collision = await client.query(
-                "SELECT 1 FROM amp_payment_records WHERE namespace=$1 AND invoice_id=$2 AND review_reason IN ('financial_charge_collision','financial_baseline_collision','financial_refund_history_collision')",
+                "SELECT 1 FROM amp_payment_records r JOIN amp_payment_observations o ON o.record_id=r.id WHERE r.namespace=$1 AND r.invoice_id=$2 AND o.observation->>'kind'='review' AND o.observation->>'reason' IN ('financial_charge_collision','financial_baseline_collision','financial_refund_history_collision') LIMIT 1",
                 [this.repository.namespace, payment.invoiceId],
               );
               if (collision.rowCount)
