@@ -1,17 +1,18 @@
 import { firstWaveDossiers } from "./first-wave-dossiers.js";
 import { additionalProviderDossiers } from "./additional-provider-dossiers.js";
+import { odysseyStateDossiers } from "./odyssey-state-dossiers.js";
 import type { DossierInventory } from "./dossier.js";
-/** Concatenation preserves duplicate IDs for the audit to reject; never silently overwrite evidence. */
+const inventories = [
+  firstWaveDossiers,
+  additionalProviderDossiers,
+  odysseyStateDossiers,
+];
+/** Concatenation preserves duplicate IDs for audit rejection, never silently overwriting evidence. */
 export const providerDossiers: DossierInventory = {
-  checkedOn: [firstWaveDossiers.checkedOn, additionalProviderDossiers.checkedOn]
+  checkedOn: inventories
+    .map((i) => i.checkedOn)
     .sort()
     .at(-1)!,
-  sources: [
-    ...firstWaveDossiers.sources,
-    ...additionalProviderDossiers.sources,
-  ],
-  dossiers: [
-    ...firstWaveDossiers.dossiers,
-    ...additionalProviderDossiers.dossiers,
-  ],
+  sources: inventories.flatMap((i) => i.sources),
+  dossiers: inventories.flatMap((i) => i.dossiers),
 };
