@@ -511,7 +511,9 @@ export function FamilyCenter({
                 <div className="family-learners">
                   {(selectedLearner ? [selectedLearner] : []).map((learner) => (
                     <article className="family-learner" key={learner.id}>
-                      <h3>
+                      <h3
+                        className={section === "access" ? "sr-only" : undefined}
+                      >
                         {learner.deletedAt
                           ? "Deleted learner · billing reference"
                           : learner.name}
@@ -608,12 +610,7 @@ export function FamilyCenter({
                           {access.kind === "active" &&
                             !["active", "development"].includes(
                               family.consent.status,
-                            ) && (
-                              <p>
-                                Learning is paused until parent consent is
-                                verified.
-                              </p>
-                            )}
+                            ) && <p>Learning paused: consent needed.</p>}
                           {!!learner.access.length && (
                             <button
                               className="text-button"

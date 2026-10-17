@@ -248,6 +248,33 @@ try {
       await page.getByLabel("Family learner", { exact: true }).inputValue(),
       "avery",
     );
+    family.consent.status = "withdrawn";
+    family.consent.withdrawnAt = date(0);
+    await page.reload();
+    await page
+      .getByRole("button", { name: "Manage family", exact: true })
+      .click();
+    await page.getByRole("button", { name: "Access", exact: true }).click();
+    await page
+      .getByText("Learning paused: consent needed.", {
+        exact: true,
+      })
+      .waitFor();
+    await fits(page, ".family-billing button");
+    await fits(page, ".family-purchase-open");
+    await page.screenshot({
+      path: `artifacts/family-focus/paused-${width}.png`,
+    });
+    const pausedSpace = await page
+      .locator(".family-learners")
+      .evaluate((e) => ({
+        content: e.scrollHeight,
+        available: e.clientHeight,
+      }));
+    assert.ok(
+      pausedSpace.content <= pausedSpace.available + 1,
+      `paid license plus paused learning fits ${width}: ${JSON.stringify(pausedSpace)}`,
+    );
     assert.deepEqual(faults, []);
     await page.close();
   }
