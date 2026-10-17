@@ -1,3 +1,4 @@
+import { AlgebraDiagramFigure } from "../publishing/AlgebraDiagramFigure.js";
 import { BookArrayDrawing } from "./BookArrayDrawing.js";
 import { BookIntegerLineDrawing } from "./BookIntegerLineDrawing.js";
 import { exactGroupCount, completeGroup } from "../publishing/validate.js";
@@ -15,6 +16,12 @@ const ink = "#18594f",
  * with an SVG viewBox. Mathematical coordinates remain derived from quantities. */
 export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
   const pattern = `reader-${useId().replace(/[^a-z0-9]/gi, "")}`;
+  if (
+    d.kind === "balance" ||
+    d.kind === "coordinate-plot" ||
+    d.kind === "value-table"
+  )
+    return <AlgebraDiagramFigure diagram={d} screen />;
   const defs = (id = pattern) => (
     <defs>
       <pattern id={id} width="7" height="7" patternUnits="userSpaceOnUse">
