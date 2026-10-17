@@ -22,6 +22,7 @@
 }
 .starting-point-content {
   width: min(100%, 680px);
+  container-type: inline-size;
   margin: auto;
   padding: 14px 4px;
 }
@@ -244,5 +245,14 @@
   }
   .session-start .session-invitation .focus-picker {
     margin-top: 4px;
+  }
+}
+
+@container (max-width: 250px) {
+  .starting-point-options {
+    grid-template-columns: 1fr;
+  }
+  .starting-point-options button {
+    min-height: 90px;
   }
 }

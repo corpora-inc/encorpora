@@ -127,6 +127,16 @@ try {
     path: new URL("picker-125-percent.png", directory).pathname,
   });
   // Enlarged text may scroll within the focused screen; every choice must remain reachable.
+  for (const choice of await page
+    .locator(".starting-point-options button")
+    .all()) {
+    await choice.scrollIntoViewIfNeeded();
+    const bounds = await choice.boundingBox();
+    assert.ok(
+      bounds && bounds.y >= 0 && bounds.y + bounds.height <= 568,
+      "An enlarged choice is unreachable",
+    );
+  }
   const earliest = page.getByRole("button", { name: /Early number/ });
   await earliest.scrollIntoViewIfNeeded();
   await earliest.click();
