@@ -1,5 +1,6 @@
 import { ProblemLesson } from "./ProblemLesson";
 import { MathText } from "./MathText";
+import { Calculator } from "./Calculator";
 import { displayAnswer } from "../math/polish";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
@@ -117,6 +118,8 @@ type Props = {
   submit: () => void;
   next: () => void;
   requestHint: () => void;
+  /** This problem allows a calculator (computation is not the skill). */
+  calculator?: boolean;
   /** Leave immersive practice for home, lessons, progress and settings. */
   exit: () => void;
   requestLesson: () => Promise<ProblemLessonView>;
@@ -202,6 +205,7 @@ export function PracticeWorkspace(props: Props) {
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
   const [celebrate, setCelebrate] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
   useEffect(() => {
     const media = matchMedia("(max-width: 650px), (pointer: coarse)");
     const changed = () => setSmall(media.matches);
@@ -502,6 +506,24 @@ export function PracticeWorkspace(props: Props) {
           <span className="workspace-topic" data-strand={props.strand}>
             {meta?.title ?? "Practice"}
           </span>
+          {props.calculator ? (
+            <button
+              className="calculator-toggle"
+              aria-label="Calculator"
+              title="Calculator"
+              aria-pressed={calculatorOpen}
+              disabled={!!outcome}
+              onClick={() => setCalculatorOpen(!calculatorOpen)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="3" width="14" height="18" rx="2.5" />
+                <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
+                <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
+              </svg>
+            </button>
+          ) : (
+            <span className="no-calculator">No calculator</span>
+          )}
         </div>
         <div
           className="problem-stage"
@@ -558,6 +580,15 @@ export function PracticeWorkspace(props: Props) {
             {tools()}
           </div>
         </div>
+        {calculatorOpen && !outcome && (
+          <Calculator
+            close={() => setCalculatorOpen(false)}
+            use={(value) => {
+              setResponse(value);
+              setCalculatorOpen(false);
+            }}
+          />
+        )}
         {outcome && (
           <div
             className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}

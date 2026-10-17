@@ -45,6 +45,9 @@ import "./practice.css";
 import "katex/dist/katex.min.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
+import { calculatorAllowed } from "../math/calculator";
+import { gradeNumber } from "../learning/frontier";
+import type { GradeBand } from "../curriculum/types";
 import { LessonIndex } from "./LessonIndex";
 import { Home, type FrontierMap } from "./Home";
 import { strandNames } from "./BirthYearPrompt";
@@ -66,6 +69,25 @@ type Catalog = {
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
 };
+// Copying typeset math gives its plain text, not KaTeX's internal markup.
+addEventListener("copy", (event) => {
+  const selection = getSelection();
+  if (!selection || selection.isCollapsed || !event.clipboardData) return;
+  const fragment = selection.getRangeAt(0).cloneContents();
+  if (!fragment.querySelector(".katex")) return;
+  fragment
+    .querySelectorAll<HTMLElement>(".math[data-plain]")
+    .forEach((math) => math.replaceWith(math.dataset.plain ?? ""));
+  fragment.querySelectorAll(".katex-html").forEach((html) => html.remove());
+  fragment
+    .querySelectorAll(".katex-mathml annotation")
+    .forEach((annotation) => annotation.remove());
+  event.clipboardData.setData(
+    "text/plain",
+    (fragment.textContent ?? "").replace(/\s+/g, " ").trim(),
+  );
+  event.preventDefault();
+});
 // Focus rings follow the input in use (see theme.css).
 addEventListener(
   "pointerdown",
@@ -1045,6 +1067,16 @@ function App() {
               catalog?.skills.find((skill) => skill.id === problem.skillId)
                 ?.strand
             }
+            calculator={(() => {
+              const skill = catalog?.skills.find(
+                (entry) => entry.id === problem.skillId,
+              );
+              return calculatorAllowed(
+                { id: problem.templateId },
+                skill?.strand,
+                gradeNumber[skill?.gradeBand as GradeBand] ?? 0,
+              );
+            })()}
             lesson={
               catalog?.lessons.find((entry) =>
                 entry.templateIds.includes(problem.templateId),

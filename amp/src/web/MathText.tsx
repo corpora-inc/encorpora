@@ -12,6 +12,7 @@ export function MathText({ text }: { text: string }) {
           <span
             key={i}
             className="math"
+            data-plain={segment.plain}
             dangerouslySetInnerHTML={{ __html: render(segment.text) }}
           />
         ) : (
@@ -38,9 +39,9 @@ const escape = (s: string) =>
     (c) => `&${{ "&": "amp", "<": "lt", ">": "gt", '"': "quot" }[c]};`,
   );
 
-type Segment = { text: string; math: boolean };
+type Segment = { text: string; math: boolean; plain?: string };
 const MATHY = /^[\d.,()[\]+−×÷=<>≤≥≠/^_²³ⁿᵖ⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉|√·a-zA-Z-]+$/;
-const OPERATION = /[=+−×÷<>≤≥≠/^_²³ⁿᵖ₀-₉√]|\d-|-\d|\b\d+[a-z]\b/;
+const OPERATION = /[=+−×÷<>≤≥≠/^_²³ⁿᵖ₀-₉√]|\b[a-z]\(|\d-|-\d|\b\d+[a-z]\b/;
 
 function mathyWord(word: string) {
   if (!MATHY.test(word)) return false;
@@ -60,7 +61,11 @@ function segments(text: string): Segment[] {
   // Explicit TeX first.
   text.split(/(\$[^$]+\$)/).forEach((part) => {
     if (part.startsWith("$") && part.endsWith("$") && part.length > 2) {
-      out.push({ text: part.slice(1, -1), math: true });
+      out.push({
+        text: part.slice(1, -1),
+        math: true,
+        plain: part.slice(1, -1),
+      });
       return;
     }
     const words = part.split(/(\s+)/);
@@ -89,7 +94,7 @@ function segments(text: string): Segment[] {
         for (const part of parts)
           if (/^[,:]\s+$/.test(part) || !OPERATION.test(part))
             push(part, false);
-          else out.push({ text: toTex(part), math: true });
+          else out.push({ text: toTex(part), math: true, plain: part });
       } else push(run.join(""), false);
       push(tail, false);
       run = [];
