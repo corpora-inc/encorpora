@@ -163,7 +163,7 @@ export class PostgresRepository implements Repository {
     await this.pool.end();
   }
 }
-class PgTransaction implements LearnerTransaction {
+export class PgTransaction implements LearnerTransaction {
   constructor(
     private db: PoolClient,
     private learnerId: string,

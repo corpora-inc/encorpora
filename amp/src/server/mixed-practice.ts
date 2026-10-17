@@ -60,6 +60,8 @@ export function planMixedPractice(options: {
   count: number;
   seed: string;
   now?: number;
+  /** Finite offline pools may shrink instead of filling with above-range probes. */
+  strictCeiling?: boolean;
 }): PracticeChoice[] {
   const { templates, skills, evidence, seed } = options;
   if (!templates.length) throw new Error("No active templates");
@@ -257,13 +259,22 @@ export function planMixedPractice(options: {
         reason,
         strand,
         score: score + tie,
+        poolEligible:
+          level <= strandState.ceiling ||
+          reason === "prerequisite" ||
+          (reason === "review" &&
+            state?.latestIndependent?.templateId === template.id),
         supportEligible:
           !strandState.initialProbePolicy ||
           level <= strandState.ceiling ||
           reason !== "revisit",
       };
     });
-    candidates.sort(
+    const eligible = options.strictCeiling
+      ? candidates.filter((entry) => entry.poolEligible)
+      : candidates;
+    if (!eligible.length) break;
+    eligible.sort(
       (a, b) => b.score - a.score || a.template.id.localeCompare(b.template.id),
     );
     // Reserve one eligible support/retrieval slot per batch. Variety cannot
@@ -273,7 +284,7 @@ export function planMixedPractice(options: {
       ["prerequisite", "revisit", "review"].includes(entry.reason),
     );
     const reserved = !supportAlreadyChosen
-      ? candidates.find(
+      ? eligible.find(
           (entry) =>
             entry.supportEligible &&
             ["prerequisite", "revisit", "review"].includes(entry.reason) &&
@@ -284,7 +295,7 @@ export function planMixedPractice(options: {
             ),
         )
       : undefined;
-    const { template, reason, strand } = reserved ?? candidates[0];
+    const { template, reason, strand } = reserved ?? eligible[0];
     chosen.push({ template, reason, strand });
   }
   return chosen;

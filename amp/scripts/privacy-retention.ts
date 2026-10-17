@@ -1,3 +1,4 @@
+import { purgeOfflinePacks } from "../src/offline/retention.js";
 import { purgeConsentRecords } from "../src/parent-consent/lifecycle.js";
 import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
 import { Pool } from "pg";
@@ -12,6 +13,7 @@ try {
   console.log(
     JSON.stringify({
       ...(await purgeExpiredPrivacyRecords(pool)),
+      expiredOfflinePacks: await purgeOfflinePacks(pool),
       expiredConsentRecords: await purgeConsentRecords(pool),
       expiredFundingRequests: await purgeExpiredFundingRequests(pool),
     }),

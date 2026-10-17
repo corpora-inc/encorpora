@@ -175,6 +175,11 @@ export class FamilyRepository {
           "SELECT to_regclass('amp_funding_requests') AS relation",
         )
       ).rows[0]?.relation;
+      const offline = !!(
+        await client.query(
+          "SELECT to_regclass('amp_offline_packs') AS relation",
+        )
+      ).rows[0]?.relation;
       let retained = 0,
         linked = false,
         deleted = 0;
@@ -202,6 +207,11 @@ export class FamilyRepository {
           await client.query(
             "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL",
             [row.id, accountId],
+          );
+        if (offline)
+          await client.query(
+            "DELETE FROM amp_offline_packs WHERE learner_id=$1",
+            [row.id],
           );
         if (!row.deleted_at) deleted++;
         await client.query(
@@ -319,6 +329,31 @@ export class FamilyRepository {
           "SELECT to_jsonb(p) - 'account_id' AS value FROM amp_privacy_events p WHERE account_id=$1 ORDER BY occurred_at,id",
         ],
       ];
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_offline_packs') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push(
+          [
+            "offline-pack",
+            "SELECT to_jsonb(p) - 'signed_pack' - 'request_digest' - 'consent_revision' - 'binding' AS value FROM amp_offline_packs p JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY p.id",
+          ],
+          [
+            "offline-problem",
+            "SELECT to_jsonb(i) AS value FROM amp_offline_instances i JOIN amp_offline_packs p ON p.id=i.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY i.id",
+          ],
+          [
+            "offline-provisional-attempt",
+            "SELECT to_jsonb(a) AS value FROM amp_offline_attempts a JOIN amp_offline_packs p ON p.id=a.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY a.id",
+          ],
+          [
+            "offline-receipt",
+            "SELECT to_jsonb(r) - 'input_digest' AS value FROM amp_offline_receipts r JOIN amp_offline_packs p ON p.id=r.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY r.pack_id,r.request_id",
+          ],
+        );
       if (
         (
           await client.query(
