@@ -2,10 +2,8 @@ import { MathText } from "./MathText.js";
 export { MathText } from "./MathText.js";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import type {
-  BookBlock,
-  FractionBook,
-} from "../../books/fraction-field-guide/schema.js";
+import type { BookBlock, MathBook } from "./schema.js";
+import { ArrayCover } from "./ArrayCover.js";
 import { CoverFigure } from "./CoverFigure.js";
 import { BookDiagram } from "./diagrams.js";
 import { validateBook } from "./validate.js";
@@ -88,6 +86,8 @@ function Block({
         </aside>
       );
     case "diagram":
+      if (opening && b.diagram.kind === "array")
+        return <ArrayCover diagram={b.diagram} />;
       return opening &&
         b.diagram.kind === "strips" &&
         b.diagram.rows.length === 1 &&
@@ -150,7 +150,7 @@ function Block({
       );
   }
 }
-export function renderBook(book: FractionBook): string {
+export function renderBook(book: MathBook): string {
   validateBook(book);
   const taskNumbers = new Map<string, number>();
   for (const page of book.pages)

@@ -81,3 +81,14 @@ npx tsx scripts/publish-book.ts artifacts/books/fraction-field-guide
 The authoring source is `books/fraction-field-guide/book.ts`; its typed contract is `books/fraction-field-guide/schema.ts`. The command writes `index.html`, `fraction-field-guide.pdf`, representative page screenshots, extracted PDF text and `validation.json` to the selected directory. Add `--all-pages` after the output directory to render a PNG of every page for review. An existing artifact with the same filename is replaced. Keep generated output outside source control unless a publication release explicitly calls for it.
 
 The exporter rejects unresolved solutions, invalid diagram quantities and page content that extends outside the printable composition. This is a local content build, not an upload or publishing action. The exported HTML is a print preview with fixed Letter-page geometry; readers on small screens may need horizontal scrolling. The PDF includes browser-generated tags and an outline. A responsive reading edition, A4 output and a dedicated PDF accessibility audit require additional work. Validation records SHA-256 hashes of authoring and publisher sources, HTML and PDF; it checks the physical PDF page count and extracted headings independently with Poppler.
+
+The shared authoring contract is `src/publishing/schema.ts`. `MathBook` describes
+any authored math book; the fraction schema preserves its existing type exports.
+An `array` diagram represents equal unit cells in rows and columns. Optional
+interior row and column splits partition those cells into disjoint regions;
+they do not represent overlapping fractional shares. Each dimension supports
+1–12 cells. Supply short axis labels, a caption and alternative text that state
+the unit and context. Dashed split boundaries preserve the partition in grayscale.
+Opening-page arrays use a cover composition whose multiplication equation is
+derived from the row and column counts. Print layout remains Letter-oriented;
+readers must implement the array variant before registering an array-based book.

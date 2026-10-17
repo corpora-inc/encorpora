@@ -1,8 +1,4 @@
-import type {
-  Diagram,
-  FractionBook,
-  Rational,
-} from "../../books/fraction-field-guide/schema.js";
+import type { Diagram, MathBook, Rational } from "./schema.js";
 export function rational(value: Rational): number {
   if (
     !Array.isArray(value) ||
@@ -75,6 +71,16 @@ export function validateDiagram(d: Diagram): void {
             throw new Error("Number-line jump out of range");
       break;
     }
+    case "array":
+      integer(d.rows, 1, 12);
+      integer(d.columns, 1, 12);
+      if (!d.rowLabel.trim() || !d.columnLabel.trim())
+        throw new Error("Array axis labels required");
+      if (d.splitAfterColumn !== undefined)
+        integer(d.splitAfterColumn, 1, d.columns - 1);
+      if (d.splitAfterRow !== undefined)
+        integer(d.splitAfterRow, 1, d.rows - 1);
+      break;
     case "area":
       integer(d.columns, 1, 12);
       integer(d.rows, 1, 12);
@@ -133,7 +139,7 @@ export function validateDiagram(d: Diagram): void {
       throw new Error(`Unknown diagram kind: ${(d as { kind: string }).kind}`);
   }
 }
-export function validateBook(book: FractionBook): void {
+export function validateBook(book: MathBook): void {
   if (!book.id || !book.title || !book.version || !book.pages.length)
     throw new Error("Book metadata and pages required");
   const ids = new Set<string>(),

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Diagram } from "../../books/fraction-field-guide/schema.js";
+import type { Diagram } from "./schema.js";
 /** The cover connects three exact representations of the author's same unit fraction amount. */
 export function CoverFigure({
   diagram: d,

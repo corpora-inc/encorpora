@@ -1,5 +1,6 @@
 import React from "react";
-import type { Diagram } from "../../books/fraction-field-guide/schema.js";
+import { ArrayDrawing } from "./ArrayDrawing.js";
+import type { Diagram } from "./schema.js";
 import {
   rational,
   validateDiagram,
@@ -82,6 +83,11 @@ export function BookDiagram({ diagram: d }: { diagram: Diagram }) {
   let height = 180,
     drawing: React.ReactNode;
   switch (d.kind) {
+    case "array": {
+      height = 90 + d.rows * Math.min(38, 420 / d.columns, 240 / d.rows);
+      drawing = <ArrayDrawing diagram={d} />;
+      break;
+    }
     case "strips": {
       height = 40 + d.rows.length * 72;
       const wholes = Math.max(...d.rows.map((r) => r.wholes ?? 1)),
