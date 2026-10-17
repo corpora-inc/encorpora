@@ -335,7 +335,7 @@ try {
         .boundingBox();
       assert.ok(
         lastChoice && lastChoice.y + lastChoice.height <= size.height,
-        "Privacy choices fit phone viewport",
+        `Privacy choices fit phone viewport at ${size.width}×${size.height}: ${JSON.stringify(lastChoice)}`,
       );
     }
     await page.screenshot({
