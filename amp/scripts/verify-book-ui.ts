@@ -77,6 +77,7 @@ try {
     await page.locator(`button[data-book-id="${book.id}"]`).click();
     await page.getByRole("main", { name: book.title }).waitFor();
     const frames = readingFrames(book);
+    const comparisonScales = new Map<string, number>();
     const overflow: {
       index: number;
       kind: string;
@@ -130,6 +131,30 @@ try {
           await page.screenshot({
             path: `${output}/enlarged-guide-${index}.png`,
           });
+        const block = frames[index]!.block;
+        if (
+          block.kind === "diagram" &&
+          block.diagram.kind === "unit-region" &&
+          block.diagram.scaleFrame
+        ) {
+          const key = `${frames[index]!.pageId}/${block.diagram.unit}/${JSON.stringify(block.diagram.scaleFrame)}/${size.width}/${size.height}/${size.textScale}`;
+          const cell = await page
+            .locator("[data-region-cell]")
+            .first()
+            .boundingBox();
+          assert.ok(cell);
+          assert.ok(
+            Math.abs(cell.width - cell.height) < 0.1,
+            "Region units must be square",
+          );
+          const prior = comparisonScales.get(key);
+          if (prior !== undefined)
+            assert.ok(
+              Math.abs(prior - cell.width) < 0.1,
+              `Comparison unit scales differ: ${key}`,
+            );
+          comparisonScales.set(key, cell.width);
+        }
         const bounds = await page
           .locator(".reader-stage")
           .evaluate((stage) => ({
@@ -180,8 +205,10 @@ try {
     );
     await page.getByRole("button", { name: "Contents", exact: true }).click();
     await page
-      .locator(".book-contents button")
-      .filter({ hasText: modelPage.title })
+      .getByRole("button", {
+        name: `${modelPage.eyebrow} ${modelPage.title}`,
+        exact: true,
+      })
       .click();
     assert.equal(
       await page.locator(".reader-heading h2").innerText(),
@@ -198,8 +225,10 @@ try {
     );
     await page.getByRole("button", { name: "Contents", exact: true }).click();
     await page
-      .locator(".book-contents button")
-      .filter({ hasText: modelPage.title })
+      .getByRole("button", {
+        name: `${modelPage.eyebrow} ${modelPage.title}`,
+        exact: true,
+      })
       .click();
     for (
       let n = 0;
