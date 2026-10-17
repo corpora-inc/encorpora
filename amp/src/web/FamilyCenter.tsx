@@ -681,7 +681,6 @@ export function FamilyCenter({
             {section === "privacy" && !privacy && (
               <section className="family-section privacy-choices">
                 <h2 tabIndex={-1}>Your learning records</h2>
-                <p>Choose what to keep, share, or remove.</p>
                 {(
                   [
                     [
