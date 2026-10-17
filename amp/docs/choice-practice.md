@@ -13,6 +13,11 @@ A public response is either `{kind: "number" | "fraction", label}` or
 four distinct statements. IDs are `option-a` through `option-d` and identify
 positions after a deterministic shuffle. They carry no correctness metadata.
 
+Batch requests opt in with `responseCapabilities: ["single-choice-v1"]`.
+Omitting that capability keeps mixed batches numeric/fraction-only. A focused
+request for an unsupported response family returns an update message before
+creating an instance. Each new template declares its required capability.
+
 The grading record retains the correct option ID, explanation, hint, and private
 feedback keyed by incorrect option IDs. The server validates a submitted ID
 against the owned, stored problem before grading. Choice labels are presentation

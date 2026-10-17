@@ -40,6 +40,8 @@ export type SemanticFigure =
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
   | { kind: "dataset"; values: number[] };
 export interface TemplateMetadata {
+  /** Absent for the original number/fraction protocol. */
+  requiredResponseCapability?: "single-choice-v1";
   id: string;
   version: 1;
   title: string;

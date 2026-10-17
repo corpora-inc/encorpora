@@ -22,15 +22,35 @@ test(
     const learner = await repository.create(account, "Choice explorer");
     const path = `/api/v1/learners/${learner.id}`;
     try {
+      const instanceCount = async () =>
+        (
+          await repository.pool.query(
+            "SELECT count(*)::int AS total FROM amp_instances WHERE learner_id=$1",
+            [learner.id],
+          )
+        ).rows[0].total as number;
       for (const templateId of [
         "fraction-equivalence-choice",
         "equation-solution-count",
         "graph-equation-choice",
       ]) {
-        const batch = await app.inject({
+        const beforeUnsupported = await instanceCount();
+        const unsupported = await app.inject({
           method: "POST",
           url: `${path}/batches`,
           payload: { templateId, count: 1 },
+        });
+        assert.equal(unsupported.statusCode, 400);
+        assert.equal(await instanceCount(), beforeUnsupported);
+        assert.match(unsupported.json().error, /updated app/);
+        const batch = await app.inject({
+          method: "POST",
+          url: `${path}/batches`,
+          payload: {
+            templateId,
+            count: 1,
+            responseCapabilities: ["single-choice-v1"],
+          },
         });
         assert.equal(batch.statusCode, 200);
         const p = batch.json().problems[0];
@@ -95,11 +115,97 @@ test(
         });
         assert.equal(repeat.statusCode, 409);
       }
+      const legacy = await app.inject({
+        method: "POST",
+        url: `${path}/batches`,
+        payload: { count: 5 },
+      });
+      assert.equal(legacy.statusCode, 200);
+      assert.ok(
+        legacy
+          .json()
+          .problems.every((problem: { response: { kind: string } }) =>
+            ["number", "fraction"].includes(problem.response.kind),
+          ),
+      );
       const { rows } = await repository.pool.query(
         "SELECT count(*)::int AS total FROM amp_attempts WHERE learner_id=$1",
         [learner.id],
       );
       assert.equal(rows[0].total, 3);
+    } finally {
+      await repository.pool.query("DELETE FROM amp_learners WHERE id=$1", [
+        learner.id,
+      ]);
+      await app.close();
+      await repository.close();
+    }
+  },
+);
+
+test(
+  "legacy clients exclude a choice-only skill even when advanced evidence makes it due",
+  { skip: !url },
+  async () => {
+    await migrate(url!);
+    const repository = new PostgresRepository(url!, { development: true });
+    const account = `test:${randomUUID()}`;
+    const learner = await repository.create(account, "Compatibility explorer");
+    const app = buildApp({
+      repository,
+      development: true,
+      authenticate: async () => account,
+    });
+    try {
+      await repository.transaction(account, learner.id, async (tx) => {
+        for (const [index, correct] of [true, false].entries()) {
+          const p = generateProblem("graph-equation-choice", randomUUID());
+          await tx.saveProblem(p);
+          await tx.saveAttempt({
+            id: randomUUID(),
+            requestId: randomUUID(),
+            problemId: p.public.id,
+            skillId: p.public.skillId,
+            templateId: p.public.templateId,
+            response: correct ? p.answer : Object.keys(p.choiceFeedback!)[0]!,
+            correct,
+            assisted: false,
+            answer: p.answer,
+            explanation: p.explanation,
+            createdAt: new Date(
+              Date.now() - (2 - index) * 86400000,
+            ).toISOString(),
+          });
+        }
+      });
+      const legacy = await app.inject({
+        method: "POST",
+        url: `/api/v1/learners/${learner.id}/batches`,
+        payload: { count: 5 },
+      });
+      const modern = await app.inject({
+        method: "POST",
+        url: `/api/v1/learners/${learner.id}/batches`,
+        payload: { count: 5, responseCapabilities: ["single-choice-v1"] },
+      });
+      assert.equal(legacy.statusCode, 200);
+      assert.equal(modern.statusCode, 200);
+      assert.ok(
+        modern
+          .json()
+          .problems.some(
+            (p: { templateId: string }) =>
+              p.templateId === "graph-equation-choice",
+          ),
+        "Positive control: due choice-only skill is eligible for a capable client",
+      );
+      assert.ok(
+        legacy
+          .json()
+          .problems.every(
+            (p: { response: { kind: string } }) => p.response.kind !== "choice",
+          ),
+      );
     } finally {
       await repository.pool.query("DELETE FROM amp_learners WHERE id=$1", [
         learner.id,

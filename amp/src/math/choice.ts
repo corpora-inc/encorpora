@@ -9,6 +9,7 @@ export const choiceTemplates: readonly TemplateMetadata[] = [
   {
     id: "fraction-equivalence-choice",
     version: 1,
+    requiredResponseCapability: "single-choice-v1",
     title: "Different pieces, same amount",
     skillId: "fraction-equivalence",
     gradeBand: "3–5",
@@ -18,6 +19,7 @@ export const choiceTemplates: readonly TemplateMetadata[] = [
   {
     id: "equation-solution-count",
     version: 1,
+    requiredResponseCapability: "single-choice-v1",
     title: "One, none, or every number?",
     skillId: "linear-equations",
     gradeBand: "6–8",
@@ -27,6 +29,7 @@ export const choiceTemplates: readonly TemplateMetadata[] = [
   {
     id: "graph-equation-choice",
     version: 1,
+    requiredResponseCapability: "single-choice-v1",
     title: "Find the graph’s rule",
     skillId: "linear-models",
     gradeBand: "6–8",

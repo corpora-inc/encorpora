@@ -115,6 +115,10 @@ export function buildApp(options: {
       .object({
         templateId: z.string().max(100).optional(),
         count: z.number().int().min(1).max(5).default(3),
+        responseCapabilities: z
+          .array(z.literal("single-choice-v1"))
+          .max(1)
+          .default([]),
       })
       .strict()
       .parse(request.body ?? {});
@@ -126,6 +130,18 @@ export function buildApp(options: {
         : undefined;
       if (input.templateId && !focused)
         throw new ApiError(400, "Unknown problem family");
+      const supported = templates.filter(
+        (template) =>
+          !template.requiredResponseCapability ||
+          input.responseCapabilities.includes(
+            template.requiredResponseCapability,
+          ),
+      );
+      if (focused && !supported.includes(focused))
+        throw new ApiError(
+          400,
+          "This answer format needs an updated app. Refresh the page to try this problem.",
+        );
       const selected = focused
         ? Array.from({ length: input.count }, () => ({
             template: focused,
@@ -135,7 +151,7 @@ export function buildApp(options: {
               "math",
           }))
         : planMixedPractice({
-            templates,
+            templates: supported,
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
