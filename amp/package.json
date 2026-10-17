@@ -12,7 +12,7 @@
     "start": "tsx src/server/main.ts",
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "tsx --test tests/*.test.ts",
-    "test:db": "tsx --test tests/*.integration.ts",
+    "test:db": "tsx scripts/test-database-preflight.ts && tsx --test tests/*.integration.ts",
     "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:starting-point-ui",
     "tsc": "tsc --noEmit",
     "build": "npm run tsc && vite build",
@@ -24,7 +24,7 @@
     "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
-    "test:family-ui": "tsx scripts/verify-family-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui",
+    "test:family-ui": "tsx scripts/verify-family-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
     "test:choice-ui": "tsx scripts/verify-choice-ui.ts",
     "test:funding-ui": "tsx scripts/verify-funding-ui.ts",
@@ -38,6 +38,7 @@
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
     "test:native-session": "tsx scripts/verify-native-session.ts",
     "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts",
+    "test:payment-ui": "tsx scripts/verify-payment-ui.ts",
     "consent:deliver": "tsx scripts/consent-delivery.ts"
   },
   "dependencies": {

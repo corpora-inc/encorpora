@@ -1,5 +1,8 @@
+import type { DocumentProfile } from "../evidence/contracts.js";
+import { parseDocumentProfile } from "../evidence/profile.js";
 /** No billing defaults: every merchant, catalog and redirect boundary is explicit. */
 export interface StripeBillingConfig {
+  documentProfile?: DocumentProfile;
   secretKey: string;
   webhookSecret: string;
   accountId: string;
@@ -79,7 +82,7 @@ export function stripeConfig(
   const tax = required("AMP_STRIPE_AUTOMATIC_TAX");
   if (tax !== "true" && tax !== "false")
     throw new Error("Explicit Stripe tax setting required");
-  return {
+  const config: StripeBillingConfig = {
     secretKey,
     webhookSecret,
     accountId,
@@ -94,6 +97,12 @@ export function stripeConfig(
     automaticTax: tax === "true",
     consentPolicyVersion: required("AMP_STRIPE_CONSENT_POLICY_VERSION"),
   };
+  if (env.AMP_PAYMENT_DOCUMENT_PROFILE)
+    config.documentProfile = parseDocumentProfile(
+      JSON.parse(env.AMP_PAYMENT_DOCUMENT_PROFILE),
+      config,
+    );
+  return config;
 }
 export function stripeNamespace(config: StripeBillingConfig): string {
   return `${config.accountId}:${config.livemode ? "live" : "test"}`;

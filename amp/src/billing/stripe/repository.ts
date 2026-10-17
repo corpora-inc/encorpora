@@ -1,3 +1,4 @@
+import { parseDocumentProfile } from "../evidence/profile.js";
 import { learningConsentActive } from "../../server/account-access.js";
 import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
@@ -100,8 +101,19 @@ export class StripeRepository {
       );
       const checkoutId = randomUUID();
       await client.query(
-        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id) VALUES($1,$2,$3,$4,$5)",
-        [checkoutId, this.namespace, accountId, learnerId, requestId],
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,document_profile) VALUES($1,$2,$3,$4,$5,$6)",
+        [
+          checkoutId,
+          this.namespace,
+          accountId,
+          learnerId,
+          requestId,
+          this.config.documentProfile
+            ? JSON.stringify(
+                parseDocumentProfile(this.config.documentProfile, this.config),
+              )
+            : null,
+        ],
       );
       return checkoutId;
     });

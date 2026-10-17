@@ -593,3 +593,28 @@
 .family-focused-section > h2.sr-only {
   min-height: 0 !important;
 }
+
+/* Three purchase destinations retain readable labels in a bounded workspace. */
+.family-purchase-options {
+  padding-top: 4px;
+}
+.family-purchase-buttons button {
+  padding: 10px 12px;
+}
+@media (min-width: 601px) and (max-height: 500px) {
+  .family-purchase-buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) and (max-height: 650px) {
+  .family-purchase-options p {
+    margin-bottom: 8px;
+  }
+  .family-purchase-buttons {
+    gap: 8px;
+  }
+  .family-purchase-buttons span {
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+}
