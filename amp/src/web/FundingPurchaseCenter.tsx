@@ -62,6 +62,7 @@ export function FundingPurchaseCenter({
   const [offerId, setOfferId] = useState(""),
     [learnerId, setLearnerId] = useState(""),
     [selected, setSelected] = useState<string | null>(null);
+  const [programOpened, setProgramOpened] = useState<string | null>(null);
   const [busy, setBusy] = useState(false),
     [loading, setLoading] = useState(true),
     [error, setError] = useState("");
@@ -87,6 +88,7 @@ export function FundingPurchaseCenter({
     setOffers([]);
     setRequests([]);
     setSelected(null);
+    setProgramOpened(null);
     setOfferId("");
     setLearnerId("");
     setError("");
@@ -264,7 +266,8 @@ export function FundingPurchaseCenter({
         {error && (
           <div className="funding-error" role="alert">
             <p>{error}</p>
-            {!request && (
+            {(!request ||
+              (usable && request.status !== "parent-reported-submitted")) && (
               <button onClick={() => void action(refresh)} disabled={busy}>
                 Refresh status
               </button>
@@ -320,62 +323,88 @@ export function FundingPurchaseCenter({
               </>
             ) : (
               <>
-                <p>
-                  This is an unpaid quote. Reporting submission does not verify
-                  program approval, payment or learning access.
-                </p>
-                <p>
-                  Quote valid until{" "}
-                  {new Date(request.expiresAt).toLocaleDateString()}.
+                <p className="funding-short-note">
+                  Unpaid quote · no learning access yet.
                 </p>
                 {!request.offerAvailable && (
                   <p className="funding-notice">
                     This offer changed or was withdrawn. Do not submit this
-                    quote. Return to purchase options to check available offers.
-                    If you already submitted it, contact the merchant about your
-                    program order.
+                    quote. Return to purchase options; contact the merchant if
+                    you already submitted it.
                   </p>
                 )}
-                {usable && (
-                  <>
-                    <h3>Complete the program’s purchase process</h3>
-                    <p>{request.offer.instructions}</p>
-                    <p>
-                      Use your program account directly. Do not share its
-                      password with AMP.
-                    </p>
-                    <p>
-                      Cancelling this quote here does not cancel an order you
-                      submitted to the program. Contact the program separately
-                      about its order.
-                    </p>
-                    <div className="funding-actions">
+                <details className="funding-details">
+                  <summary>Quote details and instructions</summary>
+                  <p>{request.offer.instructions}</p>
+                  <p>
+                    Valid until{" "}
+                    {new Date(request.expiresAt).toLocaleDateString()}.
+                    Reporting submission does not verify approval, payment or
+                    learning access.
+                  </p>
+                  <p>
+                    Use your program account directly. Do not share its password
+                    with AMP.
+                  </p>
+                  <p>Request reference: {request.id}</p>
+                  {usable && request.status !== "parent-reported-submitted" && (
+                    <button
+                      className="funding-secondary"
+                      disabled={busy}
+                      onClick={() => void action(refresh)}
+                    >
+                      Refresh status
+                    </button>
+                  )}
+                  {usable && (
+                    <>
+                      <p>
+                        Cancelling this quote here does not cancel an order you
+                        submitted to the program. Contact the program separately
+                        about its order.
+                      </p>
                       <button
+                        className="funding-secondary"
                         disabled={busy}
-                        onClick={() => void action(() => quote(request))}
+                        onClick={() =>
+                          void action(() => update(request, "cancelled"))
+                        }
                       >
-                        Download unpaid PDF quote
+                        Cancel quote here
                       </button>
-                      <a
-                        className="funding-primary"
-                        href={request.offer.destinationUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Open program purchase page ↗
-                      </a>
-                    </div>
-                  </>
-                )}
+                    </>
+                  )}
+                </details>
+                {usable &&
+                  request.status !== "parent-reported-submitted" &&
+                  (programOpened === request.id ? (
+                    <button
+                      className="funding-secondary funding-report"
+                      disabled={busy}
+                      onClick={() =>
+                        void action(() =>
+                          update(request, "parent-reported-submitted"),
+                        )
+                      }
+                    >
+                      I submitted the program request
+                    </button>
+                  ) : (
+                    <button
+                      className="funding-text-action"
+                      disabled={busy}
+                      onClick={() => setProgramOpened(request.id)}
+                    >
+                      Already submitted through your program?
+                    </button>
+                  ))}
               </>
             )}
-            <p className="funding-reference">Request reference: {request.id}</p>
           </>
         ) : (
           <>
             <p>
-              Choose a verified purchase option for your program. Your program
-              decides whether it will approve this student’s purchase.
+              Choose a program and learner. Your program reviews the purchase.
             </p>
             {!consentActive && (
               <p className="funding-notice">
@@ -424,7 +453,8 @@ export function FundingPurchaseCenter({
                   </p>
                 )}
                 {offer && (
-                  <article className="funding-offer">
+                  <details className="funding-details">
+                    <summary>Product details</summary>
                     <h2>{offer.productTitle}</h2>
                     <p>{offer.productDescription}</p>
                     <p className="funding-price">
@@ -439,7 +469,7 @@ export function FundingPurchaseCenter({
                       Includes {money(offer.taxMinor)} tax. The license term
                       starts on the day learning access is activated.
                     </p>
-                  </article>
+                  </details>
                 )}
               </>
             ) : (
@@ -472,42 +502,40 @@ export function FundingPurchaseCenter({
       <footer className="funding-footer">
         {request ? (
           <>
-            {usable && (
+            {usable && request.status !== "parent-reported-submitted" ? (
               <>
-                {request.status === "parent-reported-submitted" ? (
+                <button
+                  disabled={busy}
+                  onClick={() => void action(() => quote(request))}
+                >
+                  Download unpaid PDF quote
+                </button>
+                <a
+                  className="funding-primary funding-program-link"
+                  href={request.offer.destinationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setProgramOpened(request.id)}
+                >
+                  Open program purchase page ↗
+                </a>
+              </>
+            ) : (
+              <>
+                {request.status === "parent-reported-submitted" && usable && (
                   <p className="funding-footer-status">
                     Submission reported · awaiting verification
                   </p>
-                ) : (
-                  <button
-                    disabled={busy}
-                    onClick={() =>
-                      void action(() =>
-                        update(request, "parent-reported-submitted"),
-                      )
-                    }
-                  >
-                    I submitted the program request
-                  </button>
                 )}
                 <button
                   className="funding-secondary"
                   disabled={busy}
-                  onClick={() =>
-                    void action(() => update(request, "cancelled"))
-                  }
+                  onClick={() => void action(refresh)}
                 >
-                  Cancel quote here
+                  Refresh status
                 </button>
               </>
             )}
-            <button
-              className="funding-secondary"
-              disabled={busy}
-              onClick={() => void action(refresh)}
-            >
-              Refresh status
-            </button>
           </>
         ) : (
           <>

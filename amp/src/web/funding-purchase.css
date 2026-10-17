@@ -224,3 +224,66 @@
 .funding-footer > button:only-child {
   grid-column: 1 / -1;
 }
+
+.funding-body > .funding-status {
+  margin-bottom: 6px;
+}
+.funding-body > h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+.funding-body > .funding-price {
+  margin: 8px 0;
+  font-size: 26px;
+}
+.funding-price span {
+  margin-top: 0;
+}
+.funding-body > .funding-short-note {
+  margin-bottom: 8px;
+}
+.funding-details {
+  border-top: 1px solid #d6dfd2;
+  margin-top: 10px;
+}
+.funding-details summary {
+  min-height: 48px;
+  padding: 10px 0;
+  font-weight: 650;
+  cursor: pointer;
+}
+.funding-details[open] > p {
+  margin: 10px 0;
+}
+.funding-details summary:focus-visible {
+  outline: 3px solid #367c6b;
+  outline-offset: 2px;
+}
+.funding-text-action {
+  background: transparent;
+  color: #18594f;
+  text-decoration: underline;
+  font-weight: 500;
+  text-align: left;
+}
+.funding-center .funding-text-action:hover {
+  background: #e9eee4;
+  color: #18594f;
+}
+.funding-center .funding-text-action,
+.funding-center .funding-report {
+  padding: 8px 0;
+  width: 100%;
+}
+.funding-program-link {
+  background: #e9eee4;
+  color: #183e3a;
+}
+.funding-program-link:hover {
+  background: #dce6d7;
+  color: #183e3a;
+}
+.funding-footer > .funding-program-link {
+  flex: 1;
+  grid-column: 1 / -1;
+}

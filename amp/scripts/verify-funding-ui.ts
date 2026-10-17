@@ -34,6 +34,11 @@ try {
     { width: 844, height: 390 },
   ]) {
     const page = await browser.newPage({ viewport });
+    await page
+      .context()
+      .route("https://example.com/**", (route) =>
+        route.fulfill({ body: "Synthetic program destination" }),
+      );
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     let record: FundingRequest | undefined;
@@ -114,6 +119,20 @@ try {
     await page.screenshot({
       path: new URL(`prepared-${viewport.width}.png`, directory).pathname,
     });
+    const nextActions = await page
+      .locator(".funding-footer button, .funding-footer a")
+      .evaluateAll((elements) =>
+        elements.map((el) => {
+          const r = el.getBoundingClientRect();
+          return { top: r.top, bottom: r.bottom, width: r.width };
+        }),
+      );
+    assert.equal(nextActions.length, 2);
+    assert.ok(
+      nextActions.every(
+        (r) => r.top >= 0 && r.bottom <= viewport.height && r.width >= 44,
+      ),
+    );
     await page.evaluate(() =>
       (window as any).fundingRender("parent-a", "renewed-token"),
     );
@@ -125,6 +144,11 @@ try {
       .getByRole("button", { name: "Download unpaid PDF quote" })
       .click();
     assert.match((await download).suggestedFilename(), /\.pdf$/);
+    const popupPromise = page.waitForEvent("popup");
+    await page
+      .getByRole("link", { name: "Open program purchase page" })
+      .click();
+    await (await popupPromise).close();
     await page
       .getByRole("button", { name: "I submitted the program request" })
       .click();
