@@ -1,5 +1,5 @@
 import type { Pool } from "pg";
-import { applyCommerceEvent } from "../../commerce/postgres.js";
+import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
 import { annualEvents } from "./model.js";
 import { BillingError } from "./config.js";
 import { StripeGateway } from "./gateway.js";
@@ -147,7 +147,7 @@ export class StripeBilling {
         binding,
         payment,
       ))
-        await applyCommerceEvent(this.repository.pool, commerceEvent);
+        await applyCommerceEventInTransaction(client, commerceEvent);
     });
   }
   /** One bounded pass. Durable failures retain only a safe category, never API bodies. */

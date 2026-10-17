@@ -172,7 +172,7 @@ export class FamilyRepository {
           : { rowCount: 0 };
         const financial = await client.query(
           `SELECT 1 FROM amp_grants WHERE learner_id=$1 AND channel<>'pilot'
-          UNION ALL SELECT 1 FROM amp_commerce_ledger,jsonb_array_elements(state->'orders') o WHERE o->'license'->>'learnerId'=$1 LIMIT 1`,
+          UNION ALL SELECT 1 FROM amp_commerce_orders WHERE learner_id=$1 LIMIT 1`,
           [row.id],
         );
         const preserve = !!subscription.rowCount || !!financial.rowCount;
@@ -280,11 +280,11 @@ export class FamilyRepository {
         ],
         [
           "order",
-          "SELECT o AS value FROM amp_commerce_ledger,jsonb_array_elements(state->'orders') o WHERE o->'account'->>'id'=$1",
+          "SELECT order_state AS value FROM amp_commerce_orders WHERE account_id=$1 ORDER BY id",
         ],
         [
           "commerce-event",
-          "SELECT e.payload AS value FROM amp_commerce_events e WHERE e.order_id IN (SELECT o->>'id' FROM amp_commerce_ledger,jsonb_array_elements(state->'orders') o WHERE o->'account'->>'id'=$1) ORDER BY e.order_id,e.event_id",
+          "SELECT e.payload AS value FROM amp_commerce_events e JOIN amp_commerce_orders o ON o.id=e.order_id WHERE o.account_id=$1 ORDER BY e.order_id,e.sequence",
         ],
         [
           "privacy-event",

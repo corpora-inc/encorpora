@@ -40,4 +40,4 @@ Before enabling actual test-mode Checkout for parents, run an operator-owned Str
 
 Official references: [webhook signatures and delivery](https://docs.stripe.com/webhooks), [subscription events](https://docs.stripe.com/billing/subscriptions/webhooks), [Checkout sessions](https://docs.stripe.com/api/checkout/sessions/create), [InvoicePayments](https://docs.stripe.com/api/invoice-payment/object), and [customer portal](https://docs.stripe.com/customer-management).
 
-The underlying commerce projection uses a globally locked JSON ledger. It preserves reference-flow ordering but is not a high-volume billing store. A normalized ledger and measured reconciliation throughput are required before a large rollout.
+Commerce imports use indexed per-order storage. Stripe passes its transaction client into the importer, so invoice binding and order/event/grant effects commit together without nested account-lock connections. Measured reconciliation throughput, database capacity and bounded worker concurrency are required before a large rollout.

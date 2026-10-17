@@ -3,8 +3,11 @@
 The commerce module is a deterministic, in-memory state-transition library for
 one-student, fixed-term curriculum licenses. It models Stripe, Apple, Google,
 ESA, and free pilot orders. The pure ledger makes no network calls. A PostgreSQL adapter and local
-admin import CLI persist normalized events and project license grants. No payment
-provider, webhook-verification, marketplace or tax integration is implemented.
+admin import CLI persist normalized events and project license grants. The optional
+[Stripe adapter](stripe.md) implements annual checkout, signed webhooks, verified
+payment reconciliation and portal access. Operational activation requires verified
+merchant configuration and provider acceptance tests. Apple, Google, and ESA
+provider adapters and tax integration are separate release requirements.
 
 `contracts.ts` exports the TypeScript interfaces. `ledger.ts` exports
 `emptyCommerceState()`, `reduceCommerce(state, event)`, `activeGrants(state,
@@ -89,7 +92,7 @@ A server integration must:
 1. Authenticate provider callbacks or authorized staff actions, verify signatures
    and ownership, and normalize the actual provider contract into these events.
    Never expose a client endpoint that trusts a caller's settlement assertion.
-2. Load the relevant complete ledger state under a serializable transaction or
+2. Load the relevant complete order state under a serializable transaction or
    an equivalent lock plus unique constraints. Reduce and persist the event,
    order, grant and evidence changes atomically. Failed transitions must not
    consume the event ID. Preserve event history for replay and reconciliation.
@@ -104,25 +107,27 @@ A server integration must:
    as the corresponding ledger event. Authenticate access to downloaded content
    according to the product's licensed retention/offline policy.
 
-The current in-memory reducer scans arrays and retains full canonical payloads;
-it is a correctness foundation, not a million-order storage engine. Persistence
-should index identities and load the necessary records without weakening global
-uniqueness or audit history. No provider integration is operational merely because
-a channel name is represented in the union.
+The pure reducer operates on supplied arrays. The PostgreSQL adapter supplies one order, its grant, and the incoming event's replay record. It does not load another account's history. A provider integration is not operational merely because its channel appears in the contract.
 
 ## PostgreSQL adapter and administrator import
 
-Apply migrations `0001.sql` and `0002-commerce.sql` before import.
-`applyCommerceEvent(pool, input)` validates untrusted JSON with the exported
-`commerceEventSchema`/`parseCommerceEvent`, locks the single ledger row, verifies
-the learner belongs to the purchasing account, reduces the event, and atomically
-persists ledger history and grant projection. The event table rejects row updates
-and deletes. New future-dated events are rejected for reconciliation.
+Apply all migrations before import. `applyCommerceEvent(pool, input)` validates JSON with `commerceEventSchema`/`parseCommerceEvent`, verifies learner ownership, and commits the order state, immutable event and access grant together. Its return value is an **order-scoped** `CommerceState`; its `events` array describes this event's replay identity, not the order's full history. The event table rejects updates and deletes. Future-dated events require reconciliation.
 
-The global lock serializes imports; this is an initial administrative workflow,
-not a high-volume webhook service. PostgreSQL credentials grant administrative
-authority: protect them and never expose this function as a public unauthenticated
-endpoint. Strict schema validation does not authenticate a payment.
+`amp_commerce_orders` indexes account and learner ownership and enforces unique `(channel, channel_reference, external_order_id)` identity. The adapter acquires a shared account privacy lock, then order and source-event locks, before locking the learner. Unrelated orders can proceed concurrently. Event IDs retain their unique source namespace, and a changed replay payload fails even when it names another order. Failed transitions roll back without consuming an event ID.
+
+`applyCommerceEventInTransaction(client, input)` performs the same operation on a caller's open PostgreSQL transaction. The caller must roll back on any error and use one order per transaction. A multi-order integration must acquire account and order locks in stable sorted order first. Stripe reconciliation uses its existing transaction connection, avoiding a second connection waiting behind a privacy writer for an account lock already held by the first. Financial reconciliation remains available after consent withdrawal; it cannot restore deleted learning data or bypass the deleted-learner practice guard.
+
+`readCommerceOrder(pool, authenticatedAccountId, orderId)` returns one owned order and its grant, or null for missing/foreign orders. Callers must obtain the account ID from verified authentication. Parent export and deletion query the indexed ownership columns; neither scans a global JSON history.
+
+Database credentials confer administrative authority. Do not expose event imports as a parent-controlled approval, settlement or activation endpoint. Schema validation does not authenticate payment. Measured production throughput, connection quotas, provider acceptance and operational reconciliation remain deployment requirements.
+
+## Migration and rollback
+
+Migration `0006-commerce-orders.sql` takes a deployment-time lock, copies each order and exact grant snapshot, verifies source event payloads against the immutable event table, and verifies every commerce access projection. Duplicate identities, missing events/grants, ownership mismatches or projection drift abort the entire migration. The snapshot table is removed only after parity succeeds. No event, grant or learner record is deleted or rewritten by this migration.
+
+Stop API and billing workers for cutover, take a database backup, run the migration runner, deploy the compatible binaries, and verify order reads, refunds and family exports before resuming traffic. Old binaries fail closed because the singleton table no longer exists. This is not a rolling dual-write deployment. If migration fails, its transaction preserves the original schema and data; investigate the mismatch rather than weakening parity checks. After a successful cutover, rollback requires a tested reconstruction or backup-recovery procedure that preserves any financial events received since cutover. Do not restore an old snapshot over newer payment evidence.
+
+Order state includes its own evidence references; large histories still require retention policy and measured query/storage limits. Removing global serialization is not evidence of million-family capacity.
 
 Run `tsx scripts/commerce-event.ts EVENT.json` with `AMP_DATABASE_URL` set in the
 process environment. There is no default database. The CLI accepts one regular

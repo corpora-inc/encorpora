@@ -42,14 +42,15 @@ function money(amount: number, currency: string): void {
     "Invalid currency code",
   );
 }
-function canonical(value: unknown): string {
+export function canonicalCommercePayload(value: unknown): string {
   if (value === null || typeof value === "string" || typeof value === "boolean")
     return JSON.stringify(value);
   if (typeof value === "number") {
     requireCondition(Number.isFinite(value), "Nonfinite payload");
     return JSON.stringify(value);
   }
-  if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
+  if (Array.isArray(value))
+    return `[${value.map(canonicalCommercePayload).join(",")}]`;
   requireCondition(
     typeof value === "object" &&
       Object.getPrototypeOf(value) === Object.prototype,
@@ -57,7 +58,10 @@ function canonical(value: unknown): string {
   );
   return `{${Object.entries(value)
     .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
-    .map(([key, item]) => `${JSON.stringify(key)}:${canonical(item)}`)
+    .map(
+      ([key, item]) =>
+        `${JSON.stringify(key)}:${canonicalCommercePayload(item)}`,
+    )
     .join(",")}}`;
 }
 function validateOrder(order: OrderInput): void {
@@ -115,7 +119,7 @@ export function reduceCommerce(
     "Unknown commerce channel",
   );
   const eventTime = timestamp(event.occurredAt);
-  const payload = canonical(event);
+  const payload = canonicalCommercePayload(event);
   const prior = state.events.find(
     (item) =>
       item.id === event.id &&

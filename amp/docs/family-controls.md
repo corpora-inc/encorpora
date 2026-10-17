@@ -39,7 +39,7 @@ The browser first authenticates a POST to obtain a one-use download ticket. The 
 
 A repeatable-read PostgreSQL snapshot and cursors fetch at most 100 records at a time. The application does not collect the complete history in memory or build a browser Blob. Download aborts close the cursor transaction and release the connection. Individual statements have a 15-second timeout; an idle snapshot expires after 30 seconds and the whole download is bounded to two minutes. The final `complete` record is written only after successful traversal. An interrupted or exceptionally large export can be retried; bulk archival delivery beyond these limits needs a separately authorized asynchronous export job.
 
-The commerce ledger's JSON projection is a separate scaling limit: cursor batching bounds application memory but does not make that projection suitable for millions of financial records. Normalize the ledger before high-volume deployment. Do not advertise unlimited-size exports based only on the cursor implementation.
+Financial export uses indexed account-owned order rows and their immutable events. Cursor batching bounds application memory; it does not establish unlimited export size or production capacity. The two-minute export limit and connection/concurrency quotas still apply.
 
 ## Retention and deletion boundaries
 
