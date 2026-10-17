@@ -1,3 +1,4 @@
+import { validateEqualGroupsCoverage } from "../src/content/equal-groups-coverage.js";
 import { books } from "../src/books/catalog.js";
 import { validateEqualGroupsAlignments } from "../books/equal-groups-workshop/alignments.js";
 import { validateEqualGroupsPracticeBindings } from "../books/equal-groups-workshop/practice.js";
@@ -18,6 +19,7 @@ try {
   validateFractionPracticeCoverage();
   validateEqualGroupsAlignments(skills, templates, standards);
   validateEqualGroupsPracticeBindings(templates);
+  validateEqualGroupsCoverage();
   for (const book of books)
     for (const binding of book.bindings)
       bookTemplateIds.add(binding.templateId);

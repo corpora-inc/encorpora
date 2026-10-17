@@ -1,3 +1,4 @@
+import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
 import { createServer } from "vite";
@@ -239,6 +240,16 @@ try {
         geometry.scroll <= geometry.height + 2,
         `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
       );
+      if (
+        size.width === 320 &&
+        equalGroupsDefinitions.some((d) => d.id === template.id)
+      )
+        await page.screenshot({
+          path: new URL(
+            `../artifacts/screenshots/${template.id}-compact.png`,
+            import.meta.url,
+          ).pathname,
+        });
       if (template.id === "fraction-group-count" && size.width === 320)
         await page.screenshot({
           path: new URL(

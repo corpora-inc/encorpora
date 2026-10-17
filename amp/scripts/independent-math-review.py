@@ -7,6 +7,7 @@ import sys
 from collections import Counter
 from fractions import Fraction
 from elementary_math_oracle import ELEMENTARY, solve_elementary
+from equal_groups_math_oracle import EQUAL_GROUPS, solve_equal_groups
 from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
 
 # Add an independently derived solver here before adding a generated family.
@@ -22,7 +23,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | EQUAL_GROUPS
 
 
 def require(condition, message):
@@ -34,6 +35,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in EQUAL_GROUPS:
+        return solve_equal_groups(public)
     if template in FRACTION_PRACTICE:
         return solve_fraction_practice(public)
     if template in ELEMENTARY:

@@ -1,4 +1,8 @@
 import {
+  equalGroupsTemplates,
+  generateEqualGroupsProblem,
+} from "./equal-groups-practice.js";
+import {
   fractionPracticeTemplates,
   generateFractionPracticeProblem,
 } from "./fraction-practice";
@@ -135,6 +139,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
+  ...equalGroupsTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -203,6 +208,8 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (equalGroupsTemplates.some((t) => t.id === templateId))
+    return generateEqualGroupsProblem(templateId, seed);
   if (fractionPracticeTemplates.some((t) => t.id === templateId))
     return generateFractionPracticeProblem(templateId, seed);
   if (elementaryTemplates.some((t) => t.id === templateId))
