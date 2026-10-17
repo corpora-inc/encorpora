@@ -64,14 +64,14 @@ body,
 .shell.app-shell {
   background: var(--bg);
 }
-h2,
-h3 {
+/* The book reader keeps its own typography. */
+.shell:not(.reading-shell) :is(h2, h3) {
   font-family: inherit;
   font-weight: 700;
   letter-spacing: -0.015em;
 }
 /* Display headings keep the editorial serif of the paper-and-green studio. */
-h1,
+.shell:not(.reading-shell) h1,
 .lesson-sheet h2,
 .dialog-heading h2 {
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
