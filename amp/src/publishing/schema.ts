@@ -1,3 +1,4 @@
+import type { EarlyNumberModel } from "./early-number-models.js";
 import type { AlgebraModel } from "./algebra-models.js";
 /** Original book authoring contract; all measurements are exact rational pairs. */
 export type Rational = [numerator: number, denominator: number];
@@ -6,6 +7,7 @@ export type Diagram = {
   caption: string;
   alt: string;
 } & (
+  | EarlyNumberModel
   | AlgebraModel
   | {
       kind: "strips";

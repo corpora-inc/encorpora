@@ -41,7 +41,10 @@ test("semantic diagrams use consistent exact units and valid model geometry", ()
   for (const diagram of diagrams) {
     // This book uses fractional models; unit arrays belong to other authored books.
     assert.ok(
-      diagram.kind !== "array" &&
+      diagram.kind !== "ten-frame" &&
+        diagram.kind !== "base-ten" &&
+        diagram.kind !== "count-collection" &&
+        diagram.kind !== "array" &&
         diagram.kind !== "balance" &&
         diagram.kind !== "coordinate-plot" &&
         diagram.kind !== "value-table",
