@@ -104,6 +104,27 @@ const baseFundingRegistry: BaseFundingRegistry = {
       publisher: "payment-platform",
       checkedOn: "2026-10-16",
     },
+    {
+      id: "az-handbook-checked-2026",
+      title: "ADE-linked current handbook, titled 2025–2026",
+      url: "https://www.azed.gov/sites/default/files/2025/06/ESA%202025-2026%20Handbook.pdf",
+      publisher: "program-authority",
+      checkedOn: "2026-10-17",
+    },
+    {
+      id: "fl-supplier-intake-2026",
+      title: "MyScholarShop supplier interest form, public onboarding steps",
+      url: "https://survey.alchemer.com/s3/7190874/MyScholarShop-Supplier-Interest-Form",
+      publisher: "program-administrator",
+      checkedOn: "2026-10-17",
+    },
+    {
+      id: "tx-software-cap-2026",
+      title: "TEFA purchase restrictions, updated October 5, 2026",
+      url: "https://support.withodyssey.com/hc/en-us/articles/52391445784347-What-Are-the-Purchase-Restrictions-for-TEFA",
+      publisher: "program-administrator",
+      checkedOn: "2026-10-17",
+    },
   ],
   jurisdictions: [
     {
@@ -528,6 +549,11 @@ const baseFundingRegistry: BaseFundingRegistry = {
       facts: [
         {
           statement:
+            "The currently linked handbook limits online subscriptions to the contract year and requires student name and service dates on invoices; its title is 2025–2026, so confirm current-year applicability.",
+          sourceIds: ["az-handbook-checked-2026"],
+        },
+        {
+          statement:
             "ADE provides a vendor registration link and distinguishes Marketplace, Direct Pay and reimbursement.",
           sourceIds: ["az"],
         },
@@ -569,6 +595,11 @@ const baseFundingRegistry: BaseFundingRegistry = {
       administrator: "Step Up For Students",
       platform: "Step Up / MyScholarShop",
       facts: [
+        {
+          statement:
+            "The linked supplier intake names Mirakl while the landing page retains Ariba instructions; obtain the issued onboarding packet before choosing an integration.",
+          sourceIds: ["fl-supplier-intake-2026"],
+        },
         {
           statement:
             "PEP permits educational application subscriptions; when a single-user subscription exists, a multi-user purchase is prorated to the student portion.",
@@ -619,6 +650,11 @@ const baseFundingRegistry: BaseFundingRegistry = {
       facts: [
         {
           statement:
+            "The linked supplier intake names Mirakl while the landing page retains Ariba instructions; obtain the issued onboarding packet before choosing an integration.",
+          sourceIds: ["fl-supplier-intake-2026"],
+        },
+        {
+          statement:
             "MyScholarShop offers eligible instructional materials and curriculum with direct scholarship payment and supports families with FES-UA funds.",
           sourceIds: ["fl-shop"],
         },
@@ -660,6 +696,11 @@ const baseFundingRegistry: BaseFundingRegistry = {
       administrator: "Texas Comptroller of Public Accounts",
       platform: "Odyssey",
       facts: [
+        {
+          statement:
+            "Software Programs share the collective technology purchase limit of ten percent of the annual award; exact SKU classification requires review.",
+          sourceIds: ["tx-software-cap-2026"],
+        },
         {
           statement:
             "Vendor applications are rolling; the Comptroller reviews vendors and offerings for marketplace eligibility.",
