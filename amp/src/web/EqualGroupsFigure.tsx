@@ -89,13 +89,13 @@ export function EqualGroupsFigure({
   return (
     <svg
       className="figure equal-groups-figure"
-      viewBox={`0 0 380 ${rows * 88 + 16}`}
+      viewBox={`0 0 380 ${rows * 88 + 32}`}
       role="img"
       aria-label={`${figure.total} ${figure.unit} arranged in boxes with room for ${figure.groupSize} each; outlined circles are empty places.`}
     >
       <text
         x="190"
-        y={rows * 88 + 9}
+        y={rows * 88 + 21}
         textAnchor="middle"
         style={{ fontSize: 20 }}
         fill={ink}
