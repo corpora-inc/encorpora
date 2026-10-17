@@ -40,6 +40,7 @@ try {
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },
+    { width: 320, height: 720 },
   ]) {
     await page.setViewportSize(viewport);
     await page
@@ -56,7 +57,7 @@ try {
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
-      "Viewport must not overflow",
+      `Viewport must not overflow at ${viewport.width}px`,
     );
     await page.screenshot({
       path: new URL(
