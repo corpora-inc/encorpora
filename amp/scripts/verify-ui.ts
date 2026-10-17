@@ -338,6 +338,28 @@ try {
       .inputValue(),
     learnerIds.at(-1),
   );
+  // Family opens on the current learner, and choosing one there makes them
+  // the current learner on every screen.
+  await page.locator(".account-menu summary").click();
+  await page
+    .locator(".account-menu")
+    .getByRole("button", { name: "Manage family", exact: true })
+    .click();
+  assert.equal(
+    await page.getByLabel("Family learner").inputValue(),
+    learnerIds.at(-1),
+  );
+  await page.getByLabel("Family learner").selectOption(learnerIds[0]!);
+  await page.getByRole("button", { name: "Back", exact: true }).click();
+  assert.equal(
+    await page
+      .getByRole("combobox", { name: "Learner", exact: true })
+      .inputValue(),
+    learnerIds[0],
+  );
+  await page
+    .getByRole("combobox", { name: "Learner", exact: true })
+    .selectOption(learnerIds.at(-1)!);
   await page.getByRole("button", { name: "Practice", exact: true }).click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
