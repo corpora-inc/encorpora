@@ -308,7 +308,21 @@ rust.stdin.write(
 function rpc(command: string, args: Record<string, unknown> = {}) {
   return new Promise<any>((resolve, reject) => {
     const id = ++sequence;
-    pending.set(id, { resolve, reject });
+    const timeout = setTimeout(() => {
+      pending.delete(id);
+      reject(Error("Rust fixture command timed out"));
+    }, 60000);
+    timeout.unref();
+    pending.set(id, {
+      resolve: (value) => {
+        clearTimeout(timeout);
+        resolve(value);
+      },
+      reject: (error) => {
+        clearTimeout(timeout);
+        reject(error);
+      },
+    });
     rust.stdin.write(JSON.stringify({ id, command, ...args }) + "\n");
   });
 }
