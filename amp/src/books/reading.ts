@@ -9,8 +9,9 @@ export type ReadingFrame = {
   block: BookBlock;
   fragment?: number;
 };
-/** Context examples introduce their question before each reasoning step.
- * Equation examples keep the expression beside each step. */
+/** Context examples start with one question frame; the full question remains
+ * available in a dialog from each reasoning step. Equation examples keep their
+ * expression beside each step. */
 /** Split long prose at sentence boundaries while retaining every word. */
 export function readingParagraphs(text: string, maximumLength = 180): string[] {
   const sentences = Array.from(
