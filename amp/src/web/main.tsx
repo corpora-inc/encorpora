@@ -45,6 +45,8 @@ import "./practice.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
 import { LessonIndex } from "./LessonIndex";
+import { Home, type FrontierMap } from "./Home";
+import { strandNames } from "./BirthYearPrompt";
 import type { ProblemLessonView } from "../content/problem-lessons";
 class HttpError extends Error {
   constructor(
@@ -681,6 +683,24 @@ function App() {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
+  // Home shows where the learner stands in each strand; refresh it on return.
+  const [frontierMap, setFrontierMap] = useState<FrontierMap | null>(null);
+  const homeStrands = Object.keys(strandNames).filter((strand) =>
+    catalog?.skills.some(
+      (skill) =>
+        skill.strand === strand &&
+        catalog.templates.some((t) => t.skillId === skill.id),
+    ),
+  );
+  useEffect(() => {
+    if (!learner || tab !== "practice" || !exploring) return;
+    const id = learner.id;
+    api<FrontierMap>(`/learners/${id}/frontier`)
+      .then((map) => {
+        if (learnerRef.current === id) setFrontierMap(map);
+      })
+      .catch((error) => console.error("Frontier map failed to load", error));
+  }, [learner?.id, learner?.birthYear, tab, exploring]);
   // Practice is immersive: no header or tabs, one exit back to everything else.
   const immersive =
     !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
@@ -1034,26 +1054,17 @@ function App() {
             }
           />
         ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
-          <main className="practice-start">
-            <section className="start-card">
-              <button
-                className="go-button"
-                disabled={busy}
-                onClick={() =>
-                  problem
-                    ? setExploring(false)
-                    : void action(() => loadBatch(""))
-                }
-              >
-                Go
-              </button>
-              <p className="start-note">
-                {problem
-                  ? "Continue where you left off."
-                  : `Mixed problems at ${learner.name}’s level.`}
-              </p>
-            </section>
-          </main>
+          <Home
+            name={learner.name}
+            resuming={!!problem}
+            frontier={frontierMap}
+            strands={homeStrands}
+            busy={busy}
+            go={() =>
+              problem ? setExploring(false) : void action(() => loadBatch(""))
+            }
+            changeBirthYear={() => setChangingBirthYear(true)}
+          />
         ) : (
           <BirthYearPrompt
             key={learner.id}

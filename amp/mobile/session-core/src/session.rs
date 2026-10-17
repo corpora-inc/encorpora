@@ -81,6 +81,9 @@ pub enum LearningRequest {
     Progress {
         learner_id: String,
     },
+    Frontier {
+        learner_id: String,
+    },
     StartingPoint {
         learner_id: String,
     },
@@ -139,6 +142,7 @@ impl LearningRequest {
             Self::Family {} => ("/api/v1/family".into(), None, None),
             Self::Learners {} => ("/api/v1/learners".into(), None, None),
             Self::Progress { learner_id } => (learner_path(&learner_id, "progress")?, None, None),
+            Self::Frontier { learner_id } => (learner_path(&learner_id, "frontier")?, None, None),
             Self::StartingPoint { learner_id } => {
                 (learner_path(&learner_id, "starting-point")?, None, None)
             }

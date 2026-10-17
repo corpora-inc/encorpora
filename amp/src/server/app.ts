@@ -129,6 +129,22 @@ export function buildApp(options: {
       skills: await tx.progress([...new Set(templates.map((t) => t.skillId))]),
     }));
   });
+  app.get("/api/v1/learners/:learnerId/frontier", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      const frontier = await tx.frontier();
+      return {
+        overall: frontier.overall.level,
+        strands: Object.fromEntries(
+          Object.entries(frontier.strands).map(([strand, state]) => [
+            strand,
+            state.level,
+          ]),
+        ),
+      };
+    });
+  });
   app.get("/api/v1/learners/:learnerId/starting-point", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);

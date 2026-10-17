@@ -2,21 +2,21 @@
    type and surface treatment. Neutral surfaces, one accent, colour only where
    it carries meaning (strand, correct, incorrect). */
 :root {
-  --bg: #f5f6f8;
-  --surface: #ffffff;
-  --surface-2: #f8f9fb;
-  --ink: #141824;
-  --ink-2: #4a5161;
-  --ink-3: #8a90a0;
-  --line: #e3e6ec;
-  --line-2: #d3d7df;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-soft: #eef0ff;
-  --good: #0e9f6e;
-  --good-soft: #effaf5;
-  --bad: #e5484d;
-  --bad-soft: #fdf3f3;
+  --bg: #f7f6f0;
+  --surface: #fffefa;
+  --surface-2: #f3f2ea;
+  --ink: #183e3a;
+  --ink-2: #4c625b;
+  --ink-3: #84928b;
+  --line: #e2e5da;
+  --line-2: #cfd6c6;
+  --primary: #1f5f55;
+  --primary-hover: #174b43;
+  --primary-soft: #e3eee8;
+  --good: #2f8a5b;
+  --good-soft: #eaf4ec;
+  --bad: #b4532a;
+  --bad-soft: #fbefe8;
   --space: 16px;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
@@ -24,52 +24,59 @@
   background: var(--bg);
 }
 [data-strand="number"] {
-  --strand: #3b6fe0;
+  --strand: #3f6fa8;
 }
 [data-strand="operations"] {
-  --strand: #6b55d6;
+  --strand: #6a5aa0;
 }
 [data-strand="fractions"] {
-  --strand: #e07a2e;
+  --strand: #c46a2f;
 }
 [data-strand="decimals"] {
-  --strand: #c99a12;
+  --strand: #b08a1e;
 }
 [data-strand="ratio"] {
-  --strand: #d64f86;
+  --strand: #b0506f;
 }
 [data-strand="algebra"] {
-  --strand: #4f46e5;
+  --strand: #1f5f55;
 }
 [data-strand="functions"] {
-  --strand: #1d8fc4;
+  --strand: #2f7f9f;
 }
 [data-strand="geometry"] {
-  --strand: #179a8a;
+  --strand: #3d8a6e;
 }
 [data-strand="measurement"] {
-  --strand: #5b9a2f;
+  --strand: #6b8f2f;
 }
 [data-strand="data"] {
-  --strand: #1b9bb0;
+  --strand: #2f8a8a;
 }
 [data-strand="probability"] {
-  --strand: #9358d6;
+  --strand: #8a5aa0;
 }
 [data-strand="modeling"] {
-  --strand: #d9622b;
+  --strand: #b4532a;
 }
 
 body,
 .shell.app-shell {
   background: var(--bg);
 }
-h1,
 h2,
 h3 {
   font-family: inherit;
   font-weight: 700;
   letter-spacing: -0.015em;
+}
+/* Display headings keep the editorial serif of the paper-and-green studio. */
+h1,
+.lesson-sheet h2,
+.dialog-heading h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 button {
   background: var(--primary);
@@ -91,7 +98,7 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #4f46e555;
+  outline: 3px solid #1f5f5555;
   outline-offset: 2px;
 }
 .text-button,
@@ -148,7 +155,7 @@ header {
   padding: 3px;
   border: 0;
   border-radius: 12px;
-  background: #e9ebf0;
+  background: #ebebe1;
 }
 .app-shell > nav button {
   flex: 1;
@@ -167,7 +174,7 @@ header {
 .app-shell > nav button.active {
   background: var(--surface);
   color: var(--ink);
-  box-shadow: 0 1px 2px #14182420;
+  box-shadow: 0 1px 2px #183e3a20;
 }
 
 /* Immersive practice: the problem owns the screen. */
@@ -203,7 +210,7 @@ header {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--surface);
-  box-shadow: 0 1px 2px #1418240d;
+  box-shadow: 0 1px 2px #183e3a0d;
 }
 .workspace-toolbar {
   gap: 12px;
@@ -255,7 +262,7 @@ header {
 }
 .answer-action:disabled,
 .choice-submit:disabled {
-  background: #e4e6ec;
+  background: #e6e8df;
   color: var(--ink-3);
   opacity: 1;
 }
@@ -319,19 +326,19 @@ header {
   border-radius: 18px;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 -8px 40px #14182424;
+  box-shadow: 0 -8px 40px #183e3a24;
   animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .feedback .practice-tools {
   margin-top: -4px;
 }
 .feedback.correct {
-  background: #effaf5eb;
-  border-color: #cdeedd;
+  background: #eaf4eceb;
+  border-color: #cfe3d3;
 }
 .feedback.incorrect {
-  background: #fdf3f3eb;
-  border-color: #f5d5d6;
+  background: #fbefe8eb;
+  border-color: #efd6c8;
 }
 .feedback-head {
   display: flex;
@@ -404,7 +411,7 @@ header {
   border: 0;
   font-size: 36px;
   font-weight: 700;
-  box-shadow: 0 0 0 10px #0e9f6e1f;
+  box-shadow: 0 0 0 10px #2f8a5b1f;
   animation-duration: 0.8s;
 }
 
@@ -414,10 +421,10 @@ header {
   border-radius: 20px;
   background: var(--surface);
   color: var(--ink);
-  box-shadow: 0 20px 60px #1418242e;
+  box-shadow: 0 20px 60px #183e3a2e;
 }
 .practice-dialog::backdrop {
-  background: #14182452;
+  background: #183e3a52;
 }
 .dialog-heading {
   border-bottom: 1px solid var(--line);
@@ -726,10 +733,10 @@ header {
 }
 /* Figure tokens: every diagram draws from these. */
 .figure {
-  --fig-ink: #2a3042;
-  --fig-line: #9aa1b5;
-  --fig-fill: #6366f1;
-  --fig-empty: #ffffff;
+  --fig-ink: #183e3a;
+  --fig-line: #a9b5ab;
+  --fig-fill: #2f7d6f;
+  --fig-empty: #fffefa;
   font-family: inherit;
 }
 .figure .fig-fill {
@@ -757,4 +764,124 @@ header {
   font-size: 13px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+}
+
+/* Home */
+.frontier-scale span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.frontier-scale span:first-child {
+  transform: none;
+}
+.frontier-scale span:last-child {
+  transform: translateX(-100%);
+}
+.app-shell > main.home {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 24px 0;
+}
+.home-hero {
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.home-hero h1 {
+  margin: 0;
+  font-size: clamp(32px, 6vw, 48px);
+  line-height: 1.05;
+}
+.frontier-map {
+  padding: 20px 24px 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.frontier-scale {
+  position: relative;
+  height: 16px;
+  margin: 0 0 12px calc(min(132px, 34%) + 16px);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.frontier-map ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.frontier-map li {
+  display: grid;
+  grid-template-columns: min(132px, 34%) 1fr;
+  align-items: center;
+  gap: 16px;
+}
+.frontier-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.frontier-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.frontier-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--strand) 70%, white);
+  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.frontier-dot {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--strand);
+  box-shadow: 0 0 0 1px var(--strand);
+  transform: translate(-50%, -50%);
+  transition: left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.frontier-track.estimated .frontier-fill {
+  background: transparent;
+}
+.frontier-track.estimated .frontier-dot {
+  background: var(--surface);
+}
+.home-birth-year {
+  align-self: center;
+  font-size: 13px;
+}
+@media (max-width: 650px) {
+  .home-hero,
+  .frontier-map {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+  .frontier-scale {
+    margin-left: calc(34% + 12px);
+  }
+  .frontier-map li {
+    gap: 12px;
+  }
 }
