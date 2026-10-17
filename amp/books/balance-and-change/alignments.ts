@@ -40,6 +40,31 @@ const row = (
 /** Editorial relationships to selected requirements; neither content presence nor a visit establishes mastery. */
 export const balanceAlignments: readonly AlgebraAlignment[] = [
   row(
+    "delayed-equation-retrieval",
+    "linear-equations",
+    ["delayed-return"],
+    ["8.EE.C.7"],
+    "Return to a rational equation and an identity without adjacent worked examples.",
+    [
+      "A later attempt is evidence for the selected forms, not complete equation mastery.",
+    ],
+    [],
+    "practiced",
+    ["delayed-rational", "delayed-identity"],
+  ),
+  row(
+    "delayed-model-retrieval",
+    "linear-models",
+    ["delayed-return"],
+    ["8.F.B.4"],
+    "Reconstruct a linear rule and zero-input value from two observations under an explicit linear assumption.",
+    ["One reconstruction does not establish general modeling or transfer."],
+    [],
+    "practiced",
+    ["delayed-model"],
+  ),
+
+  row(
     "entry-equation-probe",
     "one-step-equations",
     ["entry"],
@@ -137,7 +162,6 @@ export const balanceAlignments: readonly AlgebraAlignment[] = [
       "real-solution-sets",
       "false-move",
       "equation-studio",
-      "delayed-return",
     ],
     ["8.EE.C.7"],
     "Solve and check selected linear equations and distinguish one, no, or all-real solution sets.",
