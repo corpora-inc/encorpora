@@ -74,7 +74,7 @@ export function buildApp(options: {
     if (!options.development && !(await options.repository.hasConsent(account)))
       throw new ApiError(
         403,
-        "Verified parent consent is required. Contact support to complete pilot enrollment.",
+        "Verified parent consent is required. Open Family → Privacy → Learning consent to review enrollment.",
       );
     return account;
   }
@@ -105,6 +105,7 @@ export function buildApp(options: {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => ({
+      asOf: new Date().toISOString(),
       skills: await tx.progress([...new Set(templates.map((t) => t.skillId))]),
     }));
   });

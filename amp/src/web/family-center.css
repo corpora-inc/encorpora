@@ -395,7 +395,8 @@
   display: none;
 }
 .shell.purchase-shell > .annual-purchase,
-.shell.purchase-shell > .funding-center {
+.shell.purchase-shell > .funding-center,
+.shell.purchase-shell > .parent-consent-center {
   height: 100%;
 }
 @media (max-width: 380px) {
@@ -432,4 +433,163 @@
   .family-section:has(.family-purchase-open) .family-learner h3 {
     margin-bottom: 8px;
   }
+}
+
+/* One selected profile occupies the workspace; other profiles stay in the selector. */
+.family-body:has(.family-focused-section) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.family-focused-section {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+.family-focused-section > h2 {
+  flex: none;
+  margin: 0;
+}
+.family-center .family-profile-select {
+  flex: none;
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  font-size: 13px;
+}
+.family-profile-select select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 8px 10px;
+  border: 1px solid #9eb4ab;
+  border-radius: 10px;
+  color: #183e3a;
+  background: #fffefa;
+  font: inherit;
+  font-size: 17px;
+  appearance: none;
+  height: 46px;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23183e3a' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.family-focused-section .family-learners {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.family-focused-section .family-learner {
+  padding: 14px;
+}
+.family-focused-section .family-learner h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.family-focused-section .family-learner p {
+  margin: 6px 0 10px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.family-focused-section .family-actions {
+  margin-top: 8px;
+  gap: 8px;
+}
+.family-focused-section .family-actions button {
+  font-size: 14px;
+  padding: 9px 12px;
+}
+.family-license-summary strong {
+  display: block;
+  font-size: 16px;
+}
+.family-license-summary .text-button {
+  padding: 4px 0;
+  min-height: 44px;
+  font-size: 14px;
+}
+.family-focused-section .family-billing {
+  margin-top: 8px;
+}
+.family-focused-section .family-billing button {
+  width: 100%;
+  font-size: 14px;
+  padding: 9px 10px;
+}
+.family-license-history {
+  padding-left: 20px;
+}
+.family-license-history li {
+  margin: 0 0 14px;
+}
+@media (min-width: 601px) and (max-height: 500px) {
+  .family-focused-section {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.2fr);
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: 18px;
+  }
+  .family-focused-section > h2 {
+    grid-column: 1;
+    min-height: 0 !important;
+  }
+  .family-focused-section > .family-profile-select {
+    grid-column: 1;
+  }
+  .family-focused-section > .family-learners {
+    grid-column: 2;
+    grid-row: 1 / 5;
+    align-self: stretch;
+  }
+}
+.family-profile-actions {
+  flex: none;
+  display: flex;
+  gap: 8px;
+}
+.family-profile-actions > * {
+  flex: 1;
+  min-width: 0;
+}
+.family-profile-actions .family-billing {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.family-profile-actions .family-purchase-open,
+.family-profile-actions .family-billing button {
+  width: 100%;
+  float: none;
+  margin: 0;
+  min-height: 46px;
+  padding: 9px;
+  font-size: 14px;
+}
+@media (min-width: 601px) and (max-height: 500px) {
+  .family-profile-actions {
+    grid-column: 1;
+    grid-row: 4;
+  }
+}
+
+@media (max-height: 650px) {
+  .family-body:has(.family-focused-section) {
+    padding-bottom: 8px;
+  }
+  .family-focused-section {
+    gap: 8px;
+  }
+  .family-focused-section .family-learner {
+    padding: 12px;
+  }
+}
+
+.family-focused-section > h2.sr-only {
+  min-height: 0 !important;
 }

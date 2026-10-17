@@ -8,7 +8,7 @@ import { drizzle } from "drizzle-orm/node-postgres";
 import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
 import type { SkillEvidence } from "./evidence.js";
-import type { SkillProgress } from "./progress";
+import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
 export type Learner = { id: string; name: string };
 export type Outcome = {
@@ -42,7 +42,7 @@ export interface LearnerTransaction {
   skillEvidence(): Promise<SkillEvidence[]>;
   attemptByRequest(requestId: string): Promise<Outcome | undefined>;
   attemptByProblem(problemId: string): Promise<Outcome | undefined>;
-  progress(skillIds: string[]): Promise<SkillProgress[]>;
+  progress(skillIds: string[]): Promise<LearnerSkillProgress[]>;
   problem(id: string): Promise<SavedProblem | undefined>;
   saveProblem(problem: SavedProblem): Promise<void>;
   saveAttempt(outcome: Outcome): Promise<void>;
@@ -191,7 +191,7 @@ class PgTransaction implements LearnerTransaction {
     );
     return result.rows.map((row) => row.state as SkillEvidence);
   }
-  async progress(skillIds: string[]): Promise<SkillProgress[]> {
+  async progress(skillIds: string[]): Promise<LearnerSkillProgress[]> {
     const bySkill = new Map(
       (await this.skillEvidence()).map((entry) => [entry.skillId, entry]),
     );
@@ -204,6 +204,18 @@ class PgTransaction implements LearnerTransaction {
         recentIndependentCorrect: state?.recentIndependentCorrect ?? 0,
         status: state?.status ?? "new",
         lastPracticedAt: state?.lastPracticedAt ?? null,
+        reviewDueAt:
+          state?.reviewDueAt == null
+            ? null
+            : new Date(state.reviewDueAt).toISOString(),
+        independentOccasions: state?.creditedRetrievals ?? 0,
+        recent: (state?.recentOutcomes ?? []).map(
+          ({ correct, assisted, createdAt }) => ({
+            correct,
+            assisted,
+            at: createdAt,
+          }),
+        ),
       };
     });
   }

@@ -1,8 +1,8 @@
-# First-wave ESA supplier dossiers
+# ESA supplier dossiers
 
-These unsent application drafts help Corpora prepare an educational math product for Arizona ESA, Florida PEP and FES-UA through Step Up, and Texas TEFA. Evidence was checked October 17, 2026. No document establishes Corpora approval, a live listing, an accepted annual term, or a reimbursement guarantee. Private identity, banking and tax records belong in the restricted company record system, never this public repository.
+These unsent application drafts help Corpora prepare an educational math product for Arizona ESA, Florida PEP and FES-UA through Step Up, Texas TEFA, Alabama CHOOSE, North Carolina ESA+ West Virginia Hope, Iowa Students First, Georgia Promise and Louisiana GATOR. Evidence was checked October 17, 2026. No document establishes Corpora approval, a live listing, an accepted annual term, or a reimbursement guarantee. Private identity, banking and tax records belong in the restricted company record system, never this public repository.
 
-The [structured requirements](../../src/funding/first-wave-dossiers.ts) distinguish ten dimensions for each program: vendor, software subscription, digital curriculum, printable download, bundle, term, listing, payment, invoice and refund. Each conclusion names its source and section; unresolved questions are explicit. The [audit](../../src/funding/dossier.ts) rejects missing dimensions, broken evidence references, invalid/future dates and evidence older than 90 days. This internal refresh interval is not an agency rule. The audit checks evidence organization, not factual truth, eligibility or legal compliance; recheck sources immediately before submission even when the audit passes.
+The [combined structured requirements](../../src/funding/provider-dossiers.ts) distinguish ten dimensions for each program: vendor, software subscription, digital curriculum, printable download, bundle, term, listing, payment, invoice and refund. Each conclusion names its source and section; unresolved questions are explicit. The [audit](../../src/funding/dossier.ts) rejects missing dimensions, broken evidence references, invalid/future dates and evidence older than 90 days. This internal refresh interval is not an agency rule. The audit checks evidence organization, not factual truth, eligibility or legal compliance; recheck sources immediately before submission even when the audit passes.
 
 ## Recommended preparation order
 
@@ -37,6 +37,12 @@ Use the [Comptroller's application entry](https://educationfreedom.texas.gov/pro
 [Offering categories](https://support.withodyssey.com/hc/en-us/articles/47640100236827-Texas-Marketplace-Categories-for-Offerings) distinguish software, educational applications, online programs, curriculum and workbooks. [October 5 purchase restrictions](https://support.withodyssey.com/hc/en-us/articles/52391445784347-What-Are-the-Purchase-Restrictions-for-TEFA) put software programs inside a collective technology limit of 10% of the student's annual award. Do not recategorize a software bundle as curriculum to avoid that limit; obtain the exact offering decision.
 
 [General Odyssey payment guidance](https://support.withodyssey.com/hc/en-us/articles/22601445865883-How-Do-Vendors-Get-Paid) requires portal-based transaction documents and fulfillment evidence before the Net 30 period begins. This raises two blockers: the parent-download quote route is not established for TEFA, and fulfillment before settlement may require an explicit approved credit policy. The generic default activates only after settlement. Verify TEFA-specific digital delivery and contractual applicability before changing either behavior. [Refund guidance](https://support.withodyssey.com/hc/en-us/articles/33948374261275-How-To-Report-A-Refund) uses Odyssey approval; no digital-license-specific exception is assumed.
+
+## Additional provider routes
+
+The [Alabama, North Carolina and West Virginia supplement](additional-routes.md) supplies route-specific application and transaction drafts. It distinguishes new marketplace vendors, existing listed providers and a separate state portal. It is not exhaustive coverage of the national inventory.
+
+The [Iowa, Georgia and Louisiana supplement](odyssey-state-routes.md) qualifies reachable buyers, tuition-first spending, product categories and the portal work required for each state. Shared administration does not establish shared eligibility.
 
 ## Working packet
 
