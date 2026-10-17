@@ -207,6 +207,16 @@ try {
       await page.getByLabel("Family learner", { exact: true }).inputValue(),
       "jordan",
     );
+    await page.evaluate(() => {
+      (
+        window as unknown as { familyFocus: { emit(session: unknown): void } }
+      ).familyFocus.emit({ accountId: "parent", token: "renewed-fixture" });
+    });
+    assert.equal(
+      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      "jordan",
+      "same-parent token renewal preserves family selection",
+    );
     await page
       .getByLabel("Family learner", { exact: true })
       .selectOption("reference");
