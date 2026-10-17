@@ -53,6 +53,7 @@ function App() {
     book: FractionBook;
     initialFrame: number;
   } | null>(null);
+  const navigationEpoch = useRef(0);
   const bookReturn = useRef<{ selector: string; scroll: number }>({
     selector: "",
     scroll: 0,
@@ -163,14 +164,16 @@ function App() {
   useEffect(() => {
     setReadingBook(null);
     setBooks([]);
+    const epoch = authEpoch.current;
     if (learner)
       void api<{ books: BookSummary[] }>(`/learners/${learner.id}/books`)
         .then((data) => {
           if (learnerRef.current === learner.id) setBooks(data.books);
         })
-        .catch((e) =>
-          setError(e instanceof Error ? e.message : "Could not load books"),
-        );
+        .catch((e) => {
+          if (learnerRef.current === learner.id && epoch === authEpoch.current)
+            setError(e instanceof Error ? e.message : "Could not load books");
+        });
     setProblem(null);
     setQueue([]);
     setOutcome(null);
@@ -238,6 +241,7 @@ function App() {
   }
   async function openBook(id: string, fromProblem = false) {
     if (!learner) return;
+    const navigation = navigationEpoch.current;
     const active = document.activeElement as HTMLElement | null;
     const returnTo = {
       selector: active?.dataset.bookId
@@ -251,7 +255,11 @@ function App() {
     }>(`/learners/${learner.id}/books/${id}/open`, {
       ...(problem ? { problemId: problem.id } : {}),
     });
-    if (learnerRef.current !== learner.id) return;
+    if (
+      learnerRef.current !== learner.id ||
+      navigationEpoch.current !== navigation
+    )
+      return;
     const suggested =
       fromProblem && data.suggestedPageId
         ? readingFrames(data.book).findIndex(
@@ -401,7 +409,10 @@ function App() {
             key={t}
             className={tab === t ? "active" : ""}
             aria-current={tab === t ? "page" : undefined}
-            onClick={() => setTab(t)}
+            onClick={() => {
+              navigationEpoch.current++;
+              setTab(t);
+            }}
           >
             {t === "practice"
               ? "Your practice"
@@ -584,14 +595,8 @@ function App() {
                 <article key={book.id} className="card book-library-card">
                   <div className="book-jacket" aria-hidden="true">
                     <span>Explore · explain · practice</span>
-                    <strong>
-                      Measure,
-                      <br />
-                      Share,
-                      <br />
-                      &amp; Scale
-                    </strong>
-                    <span>A fraction field guide</span>
+                    <strong>{book.subtitle}</strong>
+                    <span>{book.title}</span>
                   </div>
                   <div>
                     <p className="eyebrow">

@@ -141,6 +141,15 @@ try {
   await page.locator("#answer").fill("999999");
   await page.getByRole("button", { name: "Check answer" }).click();
   await page.locator(".solution-panel").waitFor();
+  let releaseNext!: () => void;
+  const nextHeld = new Promise<void>((resolve) => {
+    releaseNext = resolve;
+  });
+  await page.route("**/batches", async (route) => {
+    const result = await route.fetch();
+    await nextHeld;
+    await route.fulfill({ response: result });
+  });
   await page.getByRole("button", { name: "Next problem" }).click();
   await page.locator(".solution-panel").waitFor({ state: "hidden" });
   const delivered = page.waitForResponse((response) =>
@@ -148,12 +157,31 @@ try {
   );
   releaseLesson();
   await delivered;
-  await page.waitForTimeout(50);
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
   assert.equal(
     await page.locator("dialog[open]").count(),
     0,
     "A stale lesson response cannot open another problem's lesson",
   );
+  const nextDelivered = page.waitForResponse((response) =>
+    response.url().endsWith("/batches"),
+  );
+  releaseNext();
+  await nextDelivered;
+  await page.waitForFunction(
+    () =>
+      !(
+        document.querySelector(
+          "select[aria-label='Learner']",
+        ) as HTMLSelectElement
+      )?.disabled,
+  );
+  await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   for (const template of templates) {
     await page

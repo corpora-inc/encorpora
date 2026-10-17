@@ -145,6 +145,13 @@ export function PracticeWorkspace(props: Props) {
   );
   const [entering, setEntering] = useState(false);
   const [lessonLoading, setLessonLoading] = useState(false);
+  const lessonRequest = useRef(0);
+  function advance() {
+    lessonRequest.current++;
+    setLessonLoading(false);
+    setPanel(null);
+    props.next();
+  }
   const [lessonError, setLessonError] = useState("");
   const [compact, setCompact] = useState(
     () => matchMedia("(max-width: 650px) and (max-height: 780px)").matches,
@@ -229,7 +236,7 @@ export function PracticeWorkspace(props: Props) {
           onSubmit={(event) => {
             event.preventDefault();
             if (!busy && (outcome || response.trim()))
-              outcome ? props.next() : props.submit();
+              outcome ? advance() : props.submit();
           }}
         >
           <label htmlFor="answer">{problem.response.label}</label>
@@ -399,7 +406,7 @@ export function PracticeWorkspace(props: Props) {
               className="compact-answer-action"
               ref={continueButton}
               disabled={busy}
-              onClick={() => (outcome ? props.next() : setEntering(true))}
+              onClick={() => (outcome ? advance() : setEntering(true))}
             >
               {outcome
                 ? "Continue →"
@@ -447,8 +454,10 @@ export function PracticeWorkspace(props: Props) {
                   onClick={async (event) => {
                     lessonTrigger.current = event.currentTarget;
                     const requestedProblem = problem.id;
+                    const request = ++lessonRequest.current;
                     const current = () =>
                       alive.current &&
+                      lessonRequest.current === request &&
                       currentProblem.current === requestedProblem;
                     setLessonLoading(true);
                     setLessonError("");
@@ -546,8 +555,7 @@ export function PracticeWorkspace(props: Props) {
               <button
                 disabled={busy}
                 onClick={() => {
-                  setPanel(null);
-                  props.next();
+                  advance();
                 }}
               >
                 Next problem <span aria-hidden="true">→</span>

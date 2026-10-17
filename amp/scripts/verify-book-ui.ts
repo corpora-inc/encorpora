@@ -154,6 +154,16 @@ try {
     await page.evaluate(() => document.activeElement?.textContent),
     "See the model",
   );
+  await page.route("**/books/*/download", (route) =>
+    route.fulfill({
+      status: 503,
+      contentType: "application/json",
+      body: JSON.stringify({
+        error:
+          "This book’s download is being prepared. The reading edition is available.",
+      }),
+    }),
+  );
   await page
     .getByRole("button", { name: "Download book", exact: true })
     .click();
@@ -165,6 +175,36 @@ try {
   await page.waitForFunction(
     () => document.activeElement?.textContent?.trim() === "Open book",
   );
+  let releaseOpen!: () => void;
+  const delayedOpen = new Promise<void>((resolve) => {
+    releaseOpen = resolve;
+  });
+  const pattern = "**/books/*/open";
+  await page.route(pattern, async (route) => {
+    const response = await route.fetch();
+    await delayedOpen;
+    await route.fulfill({ response });
+  });
+  await page.getByRole("button", { name: "Open book", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Your progress", exact: true })
+    .click();
+  releaseOpen();
+  await page.waitForResponse((response) => response.url().endsWith("/open"));
+  await page.waitForFunction(
+    () =>
+      !(
+        document.querySelector(
+          "select[aria-label='Learner']",
+        ) as HTMLSelectElement
+      )?.disabled,
+  );
+  assert.equal(
+    await page.locator(".book-reader").count(),
+    0,
+    "Delayed open cannot replace a newer navigation choice",
+  );
+  await page.unroute(pattern);
   assert.deepEqual(errors, []);
   console.log(
     `Book reader checked ${frames.length} frames across three device layouts.`,
