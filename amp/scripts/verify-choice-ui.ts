@@ -1,3 +1,4 @@
+import { algebraTemplates } from "../src/math/algebra-practice.js";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -42,7 +43,10 @@ await vite.listen();
 const browser = await (
   process.env.AMP_BROWSER === "webkit" ? webkit : chromium
 ).launch({ headless: true });
-const directory = new URL("../artifacts/choice-review/", import.meta.url);
+const directory = new URL(
+  `../artifacts/choice-review-${process.platform}-${process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium"}/`,
+  import.meta.url,
+);
 await mkdir(directory, { recursive: true });
 try {
   const page = await browser.newPage({ hasTouch: true });
@@ -59,7 +63,12 @@ try {
     { width: 1280, height: 900 },
   ]) {
     await page.setViewportSize(size);
-    for (const template of choiceTemplates) {
+    for (const template of [
+      ...choiceTemplates,
+      ...algebraTemplates.filter(
+        (t) => t.requiredResponseCapability === "single-choice-v1",
+      ),
+    ]) {
       if (
         await page
           .getByRole("button", { name: "Change topic", exact: true })
@@ -105,6 +114,9 @@ try {
         0,
       );
       assert.equal(await page.locator(".math-keypad").count(), 0);
+      await page.screenshot({
+        path: new URL(`${template.id}-${size.width}.png`, directory).pathname,
+      });
       assert.ok(
         await page.evaluate(() => {
           const box = document
@@ -130,6 +142,37 @@ try {
         }),
         `${template.id} choices and action must fit ${size.width}x${size.height}`,
       );
+      for (const graph of await page.locator(".choice-coordinate").all()) {
+        const issues = await graph.evaluate((svg) =>
+          [...svg.querySelectorAll("text")].flatMap((text) => {
+            const box = text.getBBox(),
+              scale = text.getScreenCTM(),
+              font = parseFloat(getComputedStyle(text).fontSize);
+            const pixels = scale ? font * Math.hypot(scale.a, scale.b) : 0;
+            return box.x >= -1 &&
+              box.x + box.width <= 301 &&
+              box.y >= -1 &&
+              box.y + box.height <= 177 &&
+              pixels >= 12
+              ? []
+              : [
+                  {
+                    text: text.textContent,
+                    x: box.x,
+                    y: box.y,
+                    width: box.width,
+                    height: box.height,
+                    pixels,
+                  },
+                ];
+          }),
+        );
+        assert.deepEqual(
+          issues,
+          [],
+          `${template.id} coordinate labels must stay within the figure and render at least12px`,
+        );
+      }
       await page.getByRole("radio").first().focus();
       await page.keyboard.press("ArrowRight");
       assert.ok(

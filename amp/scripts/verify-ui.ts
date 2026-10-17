@@ -1,3 +1,4 @@
+import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
@@ -242,7 +243,9 @@ try {
       );
       if (
         size.width === 320 &&
-        equalGroupsDefinitions.some((d) => d.id === template.id)
+        [...equalGroupsDefinitions, ...algebraDefinitions].some(
+          (d) => d.id === template.id,
+        )
       )
         await page.screenshot({
           path: new URL(
