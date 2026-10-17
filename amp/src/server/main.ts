@@ -1,3 +1,6 @@
+import { consentConfiguration } from "../parent-consent/config.js";
+import { ConsentRepository } from "../parent-consent/repository.js";
+import { registerConsentRoutes } from "../parent-consent/routes.js";
 import { registerFundingPurchaseRoutes } from "../funding-purchase/routes.js";
 import { loadFundingOffers } from "../funding-purchase/config.js";
 import { registerFamilyRoutes } from "../family/routes.js";
@@ -48,6 +51,16 @@ await registerFundingPurchaseRoutes(app, {
   pool: repository.pool,
   authenticate,
   offers: await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE),
+});
+const consentConfig = await consentConfiguration(process.env);
+await registerConsentRoutes(app, {
+  authenticate,
+  repository: new ConsentRepository(
+    repository.pool,
+    consentConfig.policy,
+    consentConfig.secrets,
+    consentConfig.transportEnabled,
+  ),
 });
 const billingConfig = stripeConfig(process.env);
 if (billingConfig) {

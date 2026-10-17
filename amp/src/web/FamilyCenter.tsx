@@ -1,3 +1,5 @@
+import { FocusDialog } from "./PracticeWorkspace";
+import { licenseSummary, licenseChannel } from "./family-access";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   FamilySummary,
@@ -11,7 +13,11 @@ interface Props {
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
   onLearningInvalidated: () => void;
-  initialSection?: "learners" | "access";
+  initialSection?: "learners" | "access" | "privacy";
+  onConsentEnrollment?: () => void;
+  returnToConsent?: boolean;
+  selectedLearnerId?: string;
+  onSelectLearner?: (id: string) => void;
   returnFocus?: "annual" | "funded";
   onAnnualPurchase?: () => void;
   onFundedPurchase?: () => void;
@@ -37,6 +43,10 @@ export function FamilyCenter({
   onClose,
   onLearningInvalidated,
   initialSection = "learners",
+  onConsentEnrollment,
+  returnToConsent = false,
+  selectedLearnerId,
+  onSelectLearner,
   returnFocus,
   onAnnualPurchase,
   onFundedPurchase,
@@ -44,10 +54,13 @@ export function FamilyCenter({
   const [section, setSection] = useState<"learners" | "access" | "privacy">(
     initialSection,
   );
+  const [localLearnerId, setLocalLearnerId] = useState("");
+  const [accessDetails, setAccessDetails] = useState(false);
+  const accessTrigger = useRef<HTMLElement | null>(null);
   const [purchaseChooser, setPurchaseChooser] = useState(!!returnFocus);
   const [privacy, setPrivacy] = useState<
     "export" | "consent" | "delete" | "retention" | null
-  >(null);
+  >(returnToConsent ? "consent" : null);
   const [family, setFamily] = useState<FamilySummary | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
@@ -69,9 +82,11 @@ export function FamilyCenter({
     mounted.current = true;
     generation.current++;
     setFamily(null);
+    setLocalLearnerId("");
+    setAccessDetails(false);
     setSection(initialSection);
     setPurchaseChooser(!!returnFocus);
-    setPrivacy(null);
+    setPrivacy(returnToConsent ? "consent" : null);
     setError("");
     setNotice("");
     setConfirmation(null);
@@ -92,6 +107,12 @@ export function FamilyCenter({
         )
         ?.focus({ preventScroll: true });
   }, [!!family, returnFocus]);
+  useLayoutEffect(() => {
+    if (family && returnToConsent)
+      document
+        .querySelector<HTMLElement>("[data-consent-enrollment]")
+        ?.focus({ preventScroll: true });
+  }, [!!family, returnToConsent]);
   function closeChooser() {
     setPurchaseChooser(false);
     requestAnimationFrame(() =>
@@ -107,6 +128,27 @@ export function FamilyCenter({
         ?.focus({ preventScroll: true });
     if (body.current) body.current.scrollTop = 0;
   }, [purchaseChooser]);
+  const profileId = selectedLearnerId ?? localLearnerId;
+  const selectedLearner =
+    family?.learners.find((entry) => entry.id === profileId) ??
+    family?.learners.find((entry) => !entry.deletedAt) ??
+    family?.learners[0];
+  function selectLearner(id: string) {
+    setLocalLearnerId(id);
+    onSelectLearner?.(id);
+    setRename(null);
+    setAccessDetails(false);
+    setError("");
+    setNotice("");
+    if (body.current) body.current.scrollTop = 0;
+  }
+  useLayoutEffect(() => {
+    if (selectedLearner && selectedLearner.id !== profileId) {
+      setLocalLearnerId(selectedLearner.id);
+      onSelectLearner?.(selectedLearner.id);
+    }
+  }, [selectedLearner?.id, profileId, onSelectLearner]);
+  const access = licenseSummary(selectedLearner?.access ?? []);
   const current = (epoch: number) =>
     mounted.current && generation.current === epoch;
   const tokenRef = useRef(token);
@@ -248,6 +290,8 @@ export function FamilyCenter({
         );
         setConfirmation(null);
         setFamily(null);
+        setLocalLearnerId("");
+        onSelectLearner?.("");
         onLearningInvalidated();
         setNotice(
           `${receipt.deletedLearners} learner ${receipt.deletedLearners === 1 ? "history was" : "histories were"} removed from the live application. ${receipt.retainedBillingReferences ? "Only the linked billing references remain. " : ""}${receipt.consentWithdrawn ? "Consent is withdrawn. " : ""}${receipt.billingManagementRequired ? "A billing link remains: check and cancel renewal in billing if needed." : "Check your purchase provider for any renewal commitments."}`,
@@ -360,6 +404,36 @@ export function FamilyCenter({
           </button>
         ))}
       </nav>
+      {accessDetails && selectedLearner && (
+        <FocusDialog
+          title="License history"
+          close={() => setAccessDetails(false)}
+          returnFocus={accessTrigger.current}
+        >
+          <p>
+            {selectedLearner.deletedAt
+              ? "Retained billing reference"
+              : selectedLearner.name}
+          </p>
+          <ul className="family-license-history">
+            {selectedLearner.access.map((entry, index) => (
+              <li key={index}>
+                <strong>
+                  {licenseChannel(entry.channel)}
+                  {entry.status === "revoked" ? " · revoked" : ""}
+                </strong>
+                <br />
+                {new Date(entry.startsAt).toLocaleDateString()} –{" "}
+                {new Date(entry.endsAt).toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+          <p>
+            A license term does not confirm automatic renewal. Use your
+            provider’s billing controls to check or cancel renewal.
+          </p>
+        </FocusDialog>
+      )}
       <div className="family-body" ref={body}>
         {error && (
           <p className="family-error" role="alert">
@@ -406,18 +480,11 @@ export function FamilyCenter({
         ) : (
           <>
             {(section === "learners" || section === "access") && (
-              <section className="family-section">
-                {section === "access" &&
-                  (onAnnualPurchase || onFundedPurchase) && (
-                    <button
-                      className="family-purchase-open"
-                      data-purchase-options
-                      onClick={() => setPurchaseChooser(true)}
-                    >
-                      Purchase options
-                    </button>
-                  )}
-                <h2 tabIndex={-1}>
+              <section className="family-section family-focused-section">
+                <h2
+                  tabIndex={-1}
+                  className={section === "access" ? "sr-only" : undefined}
+                >
                   {section === "learners"
                     ? "Who’s learning?"
                     : "Learning access"}
@@ -425,18 +492,39 @@ export function FamilyCenter({
                 {!family.learners.length && (
                   <p>No learner profiles are stored in this account.</p>
                 )}
+                {!!family.learners.length && (
+                  <label className="family-profile-select">
+                    <span>Learner or billing reference</span>
+                    <select
+                      aria-label="Family learner"
+                      value={selectedLearner?.id ?? ""}
+                      disabled={busy}
+                      onChange={(event) => selectLearner(event.target.value)}
+                    >
+                      {family.learners.map((entry, index) => (
+                        <option key={entry.id} value={entry.id}>
+                          {entry.deletedAt
+                            ? `Deleted learner · reference ${index + 1}`
+                            : entry.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                )}
                 <div className="family-learners">
-                  {family.learners.map((learner) => (
+                  {(selectedLearner ? [selectedLearner] : []).map((learner) => (
                     <article className="family-learner" key={learner.id}>
-                      <h3>
+                      <h3
+                        className={section === "access" ? "sr-only" : undefined}
+                      >
                         {learner.deletedAt
                           ? "Deleted learner · billing reference"
                           : learner.name}
                       </h3>
                       {learner.deletedAt ? (
                         <p>
-                          The name and learning history were removed. This
-                          reference keeps payment and refund records connected.
+                          Learning data was deleted. Billing records are
+                          retained.
                         </p>
                       ) : section !== "learners" ? null : rename ===
                         learner.id ? (
@@ -505,39 +593,70 @@ export function FamilyCenter({
                           </button>
                         </div>
                       )}
-                      {section === "access" && !learner.access.length && (
-                        <p>No active learning access is recorded.</p>
-                      )}
-                      {section === "access" && !!learner.access.length && (
-                        <ul className="family-access">
-                          {learner.access.map((access, index) => (
-                            <li key={index}>
-                              {access.channel.toUpperCase()} ·{" "}
-                              {access.status === "revoked"
-                                ? "Access revoked"
-                                : `Term ends ${new Date(access.endsAt).toLocaleDateString()}`}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {section === "access" && learner.stripeLinked && (
-                        <div className="family-billing">
-                          <p>
-                            A Stripe purchase is linked. Check billing for its
-                            current renewal status; deleting learning data does
-                            not cancel it.
-                          </p>
-                          <button
-                            onClick={() => void billing()}
-                            disabled={busy}
-                          >
-                            Manage billing and renewal
-                          </button>
+                      {section === "access" && (
+                        <div className="family-license-summary">
+                          <strong>
+                            {access.kind === "active"
+                              ? "License active"
+                              : access.kind === "scheduled"
+                                ? "License scheduled"
+                                : "No current license"}
+                          </strong>
+                          {access.license && (
+                            <p>
+                              {licenseChannel(access.license.channel)} ·{" "}
+                              {access.kind === "scheduled"
+                                ? `Starts ${new Date(access.license.startsAt).toLocaleDateString()}`
+                                : `Ends ${new Date(access.license.endsAt).toLocaleDateString()}`}
+                            </p>
+                          )}
+                          {access.kind === "active" &&
+                            !["active", "development"].includes(
+                              family.consent.status,
+                            ) && <p>Learning paused: consent needed.</p>}
+                          {!!learner.access.length && (
+                            <button
+                              className="text-button"
+                              onClick={(event) => {
+                                accessTrigger.current = event.currentTarget;
+                                setAccessDetails(true);
+                              }}
+                            >
+                              License history and dates
+                            </button>
+                          )}
                         </div>
                       )}
                     </article>
                   ))}
                 </div>
+                {section === "access" &&
+                  (selectedLearner?.stripeLinked ||
+                    onAnnualPurchase ||
+                    onFundedPurchase) && (
+                    <div className="family-profile-actions">
+                      {selectedLearner?.stripeLinked && (
+                        <div className="family-billing">
+                          <button
+                            aria-label="Manage billing and renewal"
+                            disabled={busy}
+                            onClick={() => void billing()}
+                          >
+                            Manage billing
+                          </button>
+                        </div>
+                      )}
+                      {(onAnnualPurchase || onFundedPurchase) && (
+                        <button
+                          className="family-purchase-open"
+                          data-purchase-options
+                          onClick={() => setPurchaseChooser(true)}
+                        >
+                          Purchase options
+                        </button>
+                      )}
+                    </div>
+                  )}
               </section>
             )}
             {section === "privacy" && !privacy && (
@@ -618,7 +737,15 @@ export function FamilyCenter({
                         ? "Local development access. No verified consent record is present."
                         : "Verified parent consent is not recorded."}
                 </p>
-                {family.consent.status !== "withdrawn" ? (
+                {onConsentEnrollment && (
+                  <button data-consent-enrollment onClick={onConsentEnrollment}>
+                    {family.consent.status === "active"
+                      ? "Review consent enrollment"
+                      : "Review consent options"}
+                  </button>
+                )}
+                {family.consent.status === "active" ||
+                family.consent.status === "development" ? (
                   <>
                     <p>
                       Withdrawal stops new learning activity. It does not delete
@@ -635,8 +762,9 @@ export function FamilyCenter({
                   </>
                 ) : (
                   <p>
-                    To resume, ask the account administrator to verify consent.
+                    Review consent options to check enrollment availability.
                     Your billing controls and data export stay available.
+                    Pausing learning does not cancel paid subscriptions.
                   </p>
                 )}
               </section>
