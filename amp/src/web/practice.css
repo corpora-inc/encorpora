@@ -681,8 +681,12 @@ nav button {
   .compact-entry .math-keypad {
     gap: 4px;
   }
+  .problem-content {
+    padding-block: 4px;
+  }
   .problem-content .figure {
     height: min(27dvh, 180px);
+    margin-top: 8px;
   }
 }
 @media (max-height: 500px) and (min-width: 651px) {

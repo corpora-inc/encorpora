@@ -1,3 +1,4 @@
+import { registerBookRoutes } from "../books/routes.js";
 import { readFile } from "node:fs/promises";
 import Fastify from "fastify";
 import rateLimit from "@fastify/rate-limit";
@@ -30,6 +31,7 @@ export function buildApp(options: {
   authenticate: Authenticator;
   development?: boolean;
   logger?: boolean;
+  bookPublicationDirectory?: string;
 }) {
   if (options.development && process.env.NODE_ENV === "production")
     throw new Error("Development mode is forbidden in production");
@@ -284,6 +286,12 @@ export function buildApp(options: {
       await tx.saveAttempt(outcome);
       return outcome;
     });
+  });
+  registerBookRoutes(app, {
+    repository: options.repository,
+    parent,
+    development: options.development,
+    publicationDirectory: options.bookPublicationDirectory,
   });
   return app;
 }
