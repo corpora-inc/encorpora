@@ -96,13 +96,13 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
       : 1.5;
     const w = ratio >= 2.2 ? 220 : 100 * ratio,
       h = ratio >= 2.2 ? 220 / ratio : 100,
-      x = 172 - w / 2,
-      y = 16 + (100 - h) / 2;
+      x = 88 + (220 - w) / 2,
+      y = 32 + (100 - h) / 2;
     return (
       <svg
         className="figure measurement-figure"
         data-kind={figure.kind}
-        viewBox="0 0 320 150"
+        viewBox="0 0 320 166"
         role="img"
         aria-label={`Rectangle${known ? "" : ", not to scale"}. Horizontal side: ${figure.width ? measure(figure.width) : "unknown"}. Perpendicular vertical side: ${figure.height ? measure(figure.height) : "unknown"}. Opposite sides have equal lengths.`}
       >
@@ -130,10 +130,10 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
         </text>
         {!known && (
           <text
-            style={{ ...text, fontSize: 13, opacity: 0.6 }}
-            x={316}
-            y={146}
-            textAnchor="end"
+            style={{ ...text, fontSize: 17, opacity: 0.6 }}
+            x={4}
+            y={20}
+            textAnchor="start"
           >
             Not to scale
           </text>
