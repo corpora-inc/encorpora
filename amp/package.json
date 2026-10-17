@@ -36,11 +36,8 @@
     "consent:policy": "tsx scripts/consent-policy.ts",
     "test:purchase-app-ui": "tsx scripts/verify-purchase-app-ui.ts",
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
-<<<<<<< HEAD
-    "test:native-session": "tsx scripts/verify-native-session.ts"
-=======
+    "test:native-session": "tsx scripts/verify-native-session.ts",
     "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts"
->>>>>>> origin/main
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",
