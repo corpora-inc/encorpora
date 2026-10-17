@@ -195,13 +195,16 @@ try {
       "About practice history",
   );
   await page
-    .getByRole("button", { name: "Read the lesson", exact: true })
+    .getByRole("button", { name: "Open related book", exact: true })
     .click();
-  await page.getByRole("button", { name: "Your idea", exact: false }).click();
+  await page
+    .getByRole("main", { name: "Number Builders", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "← Back", exact: true }).click();
   await page.waitForFunction(
     () =>
-      document.activeElement?.getAttribute("data-progress-lesson") ===
-      "count-to-20",
+      document.activeElement?.getAttribute("data-book-id") ===
+      "number-builders",
   );
   const batchPromise = page.waitForResponse(
     (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
@@ -217,9 +220,12 @@ try {
     .getByRole("button", { name: "Your progress", exact: true })
     .click();
   await page
-    .getByRole("button", { name: "Read the lesson", exact: true })
+    .getByRole("button", { name: "Open related book", exact: true })
     .click();
-  await page.getByRole("button", { name: "Your idea", exact: false }).click();
+  await page
+    .getByRole("main", { name: "Number Builders", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "← Back", exact: true }).click();
   await page
     .getByRole("button", { name: "Your practice", exact: true })
     .click();
@@ -339,6 +345,19 @@ try {
       document.activeElement?.getAttribute("data-progress-skill") ===
       "count-to-20",
   );
+  // Unbound skills retain the reference-lesson route and its return focus.
+  await page.getByRole("combobox", { name: "Math area" }).selectOption("data");
+  await page.locator('[data-progress-skill="statistics-mean"]').click();
+  await page
+    .getByRole("button", { name: "Read the lesson", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Your idea", exact: false }).click();
+  await page.waitForFunction(
+    () =>
+      document.activeElement?.getAttribute("data-progress-lesson") ===
+      "statistics-mean",
+  );
+  await page.getByRole("button", { name: /All ideas/ }).click();
   await page
     .getByRole("combobox", { name: "Math area" })
     .selectOption("fractions");
