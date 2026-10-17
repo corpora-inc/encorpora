@@ -125,7 +125,10 @@ try {
             height: stage.clientHeight,
             scroll: stage.scrollHeight,
           }));
-        if (bounds.scroll > bounds.height + 2)
+        if (bounds.scroll > bounds.height + 2) {
+          await page.screenshot({
+            path: `${output}/overflow-${index}-${size.width}-${size.textScale}.png`,
+          });
           overflow.push({
             index,
             kind: frames[index]!.block.kind,
@@ -134,6 +137,7 @@ try {
             scroll: bounds.scroll,
             available: bounds.height,
           });
+        }
         assert.ok(
           await page.evaluate(
             () => document.documentElement.scrollWidth <= innerWidth,

@@ -36,14 +36,14 @@ export function addGuide(a: Author) {
         "The later exchange examples extend into selected second-grade strategies. They are not a reason to rush a kindergartner through two-digit subtraction. Stay with small collections until the learner can explain the units and parts being used.",
       ),
       note(
-        "Use the keys as a conversation",
+        "Talk through the keys",
         "Each task has an answer or an acceptance rule, followed by reasoning and a check. A different drawing or valid strategy can be correct. Ask how it represents the same quantities. The book does not automatically score spoken explanations, drawings or invented stories.",
       ),
       text(
         "After a break, revisit the same idea with different numbers or a different model. A remembered answer from a nearby example and an independent later solution are different kinds of evidence. Fluency grows with meaningful practice; this volume does not certify it from a stopwatch or a completed page.",
       ),
       note(
-        "What this volume leaves for other study",
+        "Further study",
         "Hundreds and counting to 1,000, the full K–2 geometry and measurement curriculum, time, money and data need additional instruction. Pictured collections and practice links cover stated ranges, not every requirement of a grade.",
       ),
     ],
