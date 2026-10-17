@@ -10,6 +10,7 @@ import {
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `const listeners=new Set();window.familyFocus={emit(s){for(const f of listeners)f(s);}};export async function accessSession(){return {token:'fixture',accountId:'parent'};}export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f);}export async function signIn(){}export async function signOut(){window.familyFocus.emit(null);}`;
 const vite = await createServer({
+  cacheDir: "node_modules/.vite-family-focus",
   root: fileURLToPath(new URL("../", import.meta.url)),
   configFile: fileURLToPath(new URL("../vite.config.ts", import.meta.url)),
   plugins: [
@@ -48,7 +49,10 @@ try {
     const page = await browser.newPage({ viewport: { width, height } });
     page.setDefaultTimeout(12000);
     const faults: string[] = [];
-    page.on("pageerror", (e) => faults.push(e.message));
+    page.on("pageerror", (e) => {
+      faults.push(e.message);
+      console.error("Family fixture page error:", e.message);
+    });
     const now = Date.now(),
       date = (days: number) => new Date(now + days * 86400000).toISOString();
     const family: FamilySummary = {
