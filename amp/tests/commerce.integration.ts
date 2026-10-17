@@ -108,6 +108,12 @@ test(
         ),
       );
       await pool.query(
+        await readFile(
+          new URL("../migrations/0006-commerce-orders.sql", import.meta.url),
+          "utf8",
+        ),
+      );
+      await pool.query(
         "INSERT INTO amp_learners(id,account_id,name) VALUES('child','parent','Test student')",
       );
       const replay = await Promise.all([
@@ -282,14 +288,11 @@ test(
         0,
       );
       const rolledBack = (
-        await pool.query("SELECT state FROM amp_commerce_ledger WHERE id=1")
-      ).rows[0].state;
-      assert.equal(
-        rolledBack.grants.some(
-          (grant: { orderId: string }) => grant.orderId === "o3",
-        ),
-        false,
-      );
+        await pool.query(
+          "SELECT grant_state FROM amp_commerce_orders WHERE id='o3'",
+        )
+      ).rows[0];
+      assert.equal(rolledBack.grant_state, null);
       await assert.rejects(
         pool.query("UPDATE amp_commerce_events SET order_id='tampered'"),
         /append-only/,
