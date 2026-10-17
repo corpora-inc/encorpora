@@ -1,0 +1,267 @@
+.app-shell > main.starting-point-workspace {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 8px 18px;
+}
+.starting-point-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.starting-point-top button {
+  white-space: nowrap;
+  min-height: 44px;
+  padding: 8px 14px;
+  background: transparent;
+  color: #173e37;
+  border: 1px solid #c6d8cf;
+}
+.starting-point-top .eyebrow {
+  margin: 0;
+}
+.starting-point-content {
+  width: min(100%, 680px);
+  container-type: inline-size;
+  margin: auto;
+  padding: 14px 4px;
+}
+.starting-point-content h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -1px;
+  margin: 0 0 12px;
+}
+.starting-point-content > p {
+  margin: 0 0 20px;
+  line-height: 1.45;
+}
+.starting-point-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.starting-point-options button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 114px;
+  padding: 18px;
+  text-align: left;
+  background: var(--starting-card-bg, #f3f5e9);
+  color: #173e37;
+  border: 1px solid #c4d5c3;
+  box-shadow: 0 2px 0 #dce5d4;
+  border-radius: 16px;
+}
+.starting-point-options button:nth-child(2) {
+  --starting-card-bg: #fdf1dc;
+  border-color: #e5cfaa;
+}
+.starting-point-options button:nth-child(3) {
+  --starting-card-bg: #e8f2ef;
+  border-color: #b9d7d0;
+}
+.starting-point-options button:nth-child(4) {
+  --starting-card-bg: #f0eaf5;
+  border-color: #d5c7e1;
+}
+.starting-point-options button[aria-pressed="true"] {
+  outline: 2px solid #226356;
+  outline-offset: 2px;
+}
+.starting-point-mark {
+  font:
+    italic 36px Georgia,
+    serif;
+  width: 32px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.starting-point-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.starting-point-copy strong {
+  font-size: 17px;
+  line-height: 1.15;
+}
+.starting-point-copy > span {
+  font-size: 13px;
+  line-height: 1.3;
+}
+.starting-point-copy small {
+  padding-right: 16px;
+  color: #4a625b;
+  font-size: 12px;
+}
+.starting-point-check {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  font-size: 14px;
+}
+.starting-point-content > .starting-point-note {
+  margin: 18px 0 0;
+  color: #50665e;
+  font-size: 13px;
+}
+.starting-point-content > .starting-point-error {
+  margin: 12px 0 0;
+  color: #912f30;
+  font-size: 14px;
+}
+.session-invitation .starting-point-trigger {
+  display: block;
+  margin: 0 auto 16px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #c6d8cf;
+  background: transparent;
+  color: #225c50;
+  font-size: 14px;
+}
+.session-invitation .starting-point-trigger span {
+  margin-left: 12px;
+}
+@media (max-width: 650px) {
+  .starting-point-options {
+    gap: 10px;
+  }
+  .starting-point-options button {
+    min-height: 112px;
+    padding: 13px 10px;
+    align-items: flex-start;
+  }
+  .starting-point-mark {
+    display: none;
+  }
+  .starting-point-copy strong {
+    font-size: 16px;
+  }
+  .starting-point-content {
+    padding: 12px 2px;
+  }
+  .starting-point-content > p {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .session-start .session-invitation > p:not(.eyebrow) {
+    margin: 14px auto;
+  }
+  .session-invitation .focus-picker {
+    margin-top: 12px;
+  }
+  .session-invitation .starting-point-trigger {
+    margin-bottom: 10px;
+  }
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .starting-point-content {
+    padding: 4px;
+  }
+  .starting-point-content h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .starting-point-content > p {
+    margin-bottom: 10px;
+  }
+  .starting-point-options {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .starting-point-options button {
+    min-height: 100px;
+    padding: 12px;
+  }
+  .starting-point-mark {
+    display: none;
+  }
+  .starting-point-copy strong {
+    font-size: 15px;
+  }
+  .starting-point-content > .starting-point-note {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .session-start .session-invitation {
+    padding: 6px 8px;
+  }
+  .session-start .session-invitation h1 {
+    font-size: 34px;
+  }
+  .session-start .session-invitation > .eyebrow {
+    margin-bottom: 14px;
+  }
+  .session-start .session-invitation > p:not(.eyebrow) {
+    margin: 12px auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .starting-point-content {
+    padding-block: 8px;
+  }
+  .starting-point-content > .starting-point-note {
+    margin-top: 12px;
+  }
+  .starting-point-options button {
+    padding: 10px;
+  }
+  .starting-point-copy > span {
+    font-weight: 400;
+  }
+}
+.app-shell > main.starting-point-workspace:not(.practice-workspace) {
+  padding: 10px 8px 16px;
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .session-start .session-invitation {
+    padding: 0 8px;
+  }
+  .session-start .session-invitation .eyebrow {
+    margin-bottom: 6px;
+  }
+  .session-start .session-invitation h1 {
+    font-size: 34px;
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+  .session-start .session-invitation > p:not(.eyebrow) {
+    margin: 8px auto;
+    font-size: 14px;
+  }
+  .session-start .session-invitation .starting-point-trigger {
+    display: inline-block;
+    margin: 0 12px 0 0;
+  }
+  .session-start .session-invitation .start-mix {
+    min-height: 44px;
+    padding: 10px 24px;
+  }
+  .session-start .session-invitation .focus-picker {
+    margin-top: 4px;
+  }
+}
+
+@container (max-width: 16em) {
+  .starting-point-options {
+    grid-template-columns: 1fr;
+  }
+  .starting-point-options button {
+    min-height: 90px;
+  }
+}
+
+.starting-point-options button:hover {
+  background: var(--starting-card-bg, #f3f5e9);
+  filter: brightness(0.97);
+}
+.starting-point-top button:hover {
+  background: #e8f2ef;
+  color: #173e37;
+}
