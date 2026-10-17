@@ -51,7 +51,7 @@ fn configured_origin(raw: Option<&str>) -> Result<Option<Url>, TransportError> {
         || url.fragment().is_some()
         || url.path() != "/"
         || url.port_or_known_default() != Some(443)
-        || !matches!(url.host(), Some(url::Host::Domain(host)) if host.contains('.') && host != "localhost" && !host.ends_with(".localhost"))
+        || !matches!(url.host(), Some(url::Host::Domain(host)) if host.contains('.') && host.trim_end_matches('.') != "localhost" && !host.trim_end_matches('.').ends_with(".localhost"))
     {
         return Err(TransportError::InvalidConfiguration);
     }
@@ -156,6 +156,8 @@ mod tests {
             "https://[::1]",
             "https://localhost",
             "https://api.localhost",
+            "https://localhost.",
+            "https://api.localhost.",
         ] {
             assert_eq!(
                 configured_origin(Some(raw)),
