@@ -10,9 +10,14 @@ test("national inventory covers every jurisdiction without claiming completed re
   const result = auditFundingRegistry(fundingRegistry);
   assert.deepEqual(result.errors, []);
   assert.equal(result.counts.jurisdictions, 51);
-  assert.equal(result.counts.programs, 14);
-  assert.equal(result.counts.reviewedPrograms, 8);
-  assert.ok(result.counts.unresearchedJurisdictions > 0);
+  assert.equal(result.counts.programs, 86);
+  assert.equal(result.counts.reviewedPrograms, result.counts.programs);
+  assert.equal(result.counts.unresearchedJurisdictions, 0);
+  assert.ok(
+    fundingRegistry.jurisdictions.every(
+      (state) => state.researchStatus === "partial",
+    ),
+  );
   for (const program of fundingRegistry.programs) {
     assert.equal(program.corpora.vendor.status, "not-applied");
     assert.equal(program.corpora.sku.status, "not-applied");
@@ -115,6 +120,57 @@ test("future, impossible, unsafe and stale source evidence is surfaced", () => {
   assert.ok(
     auditFundingRegistry(fundingRegistry, "2027-02-01").warnings.some(
       (warning) => warning.includes("older than 90 days"),
+    ),
+  );
+});
+
+test("closed channels and institutional/tax channels cannot masquerade as parent marketplaces", () => {
+  const registry = copy();
+  registry.programs = registry.programs.map((program) =>
+    program.id === "oh-ace-closed"
+      ? {
+          ...program,
+          priority: "first-wave",
+          purchasingRoutes: ["marketplace"],
+        }
+      : program.id === "oh-home-credit"
+        ? { ...program, purchasingRoutes: ["reimbursement"] }
+        : program.id === "mt-special-needs-esa"
+          ? { ...program, priority: "second-wave" }
+          : program,
+  );
+  const errors = auditFundingRegistry(registry).errors;
+  assert.ok(
+    errors.includes("Closed program has purchasing routes: oh-ace-closed"),
+  );
+  assert.ok(
+    errors.includes(
+      "Unavailable or unconfirmed program promoted: oh-ace-closed",
+    ),
+  );
+  assert.ok(
+    errors.includes(
+      "Unavailable or unconfirmed program promoted: mt-special-needs-esa",
+    ),
+  );
+  assert.ok(
+    errors.includes("Unsupported parent purchase route: oh-home-credit"),
+  );
+});
+
+test("onboarding requirements must cite known evidence separately from category facts", () => {
+  const registry = copy();
+  registry.programs = registry.programs.map((program) =>
+    program.id === "in-esa"
+      ? {
+          ...program,
+          onboarding: { statement: "Application", sourceIds: ["missing"] },
+        }
+      : program,
+  );
+  assert.ok(
+    auditFundingRegistry(registry).errors.includes(
+      "Unknown onboarding source missing: in-esa",
     ),
   );
 });

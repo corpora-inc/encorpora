@@ -1,3 +1,5 @@
+import type { OperatingStatus, PurchaseModel } from "./national-review.js";
+
 /** Research evidence is not a determination that a purchase is eligible. */
 export interface FundingSource {
   id: string;
@@ -22,7 +24,15 @@ export interface FundingProgram {
   id: string;
   jurisdiction: string;
   name: string;
-  kind: "esa" | "special-education-grant" | "scholarship";
+  kind:
+    | "esa"
+    | "special-education-grant"
+    | "scholarship"
+    | "family-tax-benefit"
+    | "institutional";
+  purchaseModel: PurchaseModel;
+  operatingStatus: OperatingStatus;
+  onboarding: FundingFact;
   researchStatus: "official-sources-reviewed" | "platform-discovered";
   priority: "first-wave" | "second-wave" | "research";
   administrator: string;
@@ -30,7 +40,15 @@ export interface FundingProgram {
     "ClassWallet" | "Step Up / MyScholarShop" | "Odyssey" | "unverified";
   facts: readonly FundingFact[];
   annualSubscription: "category-supported-term-unconfirmed" | "unconfirmed";
-  purchasingRoutes: readonly ("marketplace" | "direct-pay" | "reimbursement")[];
+  purchasingRoutes: readonly (
+    | "marketplace"
+    | "direct-pay"
+    | "reimbursement"
+    | "family-payment"
+    | "school-contract"
+    | "provider-contract"
+    | "institutional-contract"
+  )[];
   /** Independent gates: none is inferred from another gate or from platform registration. */
   corpora: {
     vendor: ApprovalStage;
@@ -56,3 +74,11 @@ export interface FundingRegistry {
   jurisdictions: readonly FundingJurisdiction[];
   programs: readonly FundingProgram[];
 }
+
+/** Input preserved for the original research records; enrichment adds purchasing distinctions. */
+export type BaseFundingRegistry = Omit<FundingRegistry, "programs"> & {
+  programs: readonly Omit<
+    FundingProgram,
+    "purchaseModel" | "operatingStatus" | "onboarding"
+  >[];
+};
