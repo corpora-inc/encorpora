@@ -184,6 +184,7 @@ export function ParentConsentCenter({
       view?.available &&
       challenge.noticeDigest === view.noticeDigest &&
       challenge.requestId === view.request?.id &&
+      view.request?.delivery !== "stopped-unknown" &&
       ((challenge.stage === "initial" && phase === "awaiting-initial") ||
         (challenge.stage === "confirmation" &&
           phase === "awaiting-confirmation"))
@@ -262,9 +263,11 @@ export function ParentConsentCenter({
               <p>
                 {view.request?.delivery === "accepted"
                   ? "The email provider accepted your notice. Open its link while signed in to this parent account."
-                  : view.request?.delivery === "rejected"
-                    ? "Delivery could not be confirmed. Withdraw this request and check the address before starting again."
-                    : "Your notice is queued for delivery. Refresh to check its progress."}
+                  : view.request?.delivery === "stopped-unknown"
+                    ? "We could not confirm delivery. Automatic retries have stopped. Withdraw this request before starting again."
+                    : view.request?.delivery === "rejected"
+                      ? "Delivery could not be confirmed. Withdraw this request and check the address before starting again."
+                      : "Your notice is queued for delivery. Refresh to check its progress."}
               </p>
             )}
             {phase === "awaiting-confirmation" && !canAck && (
@@ -276,9 +279,11 @@ export function ParentConsentCenter({
                 <p>
                   {view.request?.delivery === "accepted"
                     ? "Open the delayed confirmation email to finish."
-                    : view.request?.delivery === "rejected"
-                      ? "Delivery could not be confirmed. Withdraw this request and start again."
-                      : `The next notice is scheduled no earlier than ${view.request?.confirmationAfter ? new Date(view.request.confirmationAfter).toLocaleString() : "the confirmation time"}.`}
+                    : view.request?.delivery === "stopped-unknown"
+                      ? "We could not confirm delivery. Automatic retries have stopped. Withdraw this request before starting again."
+                      : view.request?.delivery === "rejected"
+                        ? "Delivery could not be confirmed. Withdraw this request and start again."
+                        : `The next notice is scheduled no earlier than ${view.request?.confirmationAfter ? new Date(view.request.confirmationAfter).toLocaleString() : "the confirmation time"}.`}
                 </p>
               </>
             )}
@@ -397,6 +402,15 @@ export function ParentConsentCenter({
             onClick={() => void act("begin")}
           >
             {busy ? "Saving…" : "Email my privacy notice"}
+          </button>
+        ) : view?.request?.delivery === "stopped-unknown" &&
+          phase !== "withdrawn" ? (
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => void act("withdraw")}
+          >
+            {busy ? "Withdrawing…" : "Withdraw this request"}
           </button>
         ) : canAck ? (
           <button

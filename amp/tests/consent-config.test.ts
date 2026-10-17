@@ -6,6 +6,7 @@ test("consent configuration never enables an absent mail transport", async () =>
     policy: null,
     secrets: null,
     transportEnabled: false,
+    delivery: null,
   });
   assert.equal(
     (

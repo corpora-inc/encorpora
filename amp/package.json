@@ -37,7 +37,8 @@
     "test:purchase-app-ui": "tsx scripts/verify-purchase-app-ui.ts",
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
     "test:native-session": "tsx scripts/verify-native-session.ts",
-    "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts"
+    "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts",
+    "consent:deliver": "tsx scripts/consent-delivery.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",
@@ -50,6 +51,7 @@
     "pg": "^8.16.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "resend": "6.34.1",
     "stripe": "23.0.0",
     "zod": "^4.1.0"
   },
