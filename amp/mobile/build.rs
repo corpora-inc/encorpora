@@ -1,3 +1,7 @@
 fn main() {
-    tauri_build::build()
+    println!("cargo:rerun-if-env-changed=AMP_NATIVE_API_ORIGIN");
+    tauri_build::try_build(tauri_build::Attributes::new().app_manifest(
+        tauri_build::AppManifest::new().commands(&["native_status", "read_public_resource"]),
+    ))
+    .expect("Unable to build native command permissions");
 }

@@ -633,3 +633,35 @@ footer {
 .figure[data-kind="number-line"] {
   max-height: none;
 }
+
+/* The native preview has no authenticated browser workspace. */
+.native-preview {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.native-preview .welcome {
+  max-width: 560px;
+  margin: 0;
+}
+.native-preview h1 {
+  letter-spacing: -0.03em;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  line-height: 1.15;
+}
+.native-preview button {
+  min-height: 44px;
+}
+@media (max-height: 450px) and (orientation: landscape) {
+  .native-preview {
+    padding: 12px;
+  }
+  .native-preview .welcome {
+    max-width: 760px;
+    padding: 16px;
+  }
+  .native-preview p {
+    margin: 8px 0;
+  }
+}

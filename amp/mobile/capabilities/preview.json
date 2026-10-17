@@ -1,0 +1,6 @@
+{
+  "identifier": "preview",
+  "description": "Bundled main window can inspect native availability and read the public AMP catalog.",
+  "windows": ["main"],
+  "permissions": ["allow-native-status", "allow-read-public-resource"]
+}
