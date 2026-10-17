@@ -3,12 +3,21 @@ import type { SkillProgress } from "./progress.js";
 
 export type PracticeObservation = Pick<
   Outcome,
-  "id" | "skillId" | "templateId" | "correct" | "assisted" | "createdAt"
+  | "id"
+  | "skillId"
+  | "templateId"
+  | "correct"
+  | "assisted"
+  | "createdAt"
+  | "ingestionSequence"
 >;
+export type OrderedPracticeObservation = PracticeObservation & {
+  ingestionSequence: string;
+};
 export type SkillEvidence = SkillProgress & {
   version: 1;
-  recentOutcomes: PracticeObservation[];
-  latestIndependent: PracticeObservation | null;
+  recentOutcomes: OrderedPracticeObservation[];
+  latestIndependent: OrderedPracticeObservation | null;
   creditedRetrievals: number;
   creditedAtMs: number | null;
   reviewDueAt: number | null;
@@ -23,8 +32,9 @@ export function projectSkillEvidence(
   observations: readonly PracticeObservation[],
 ): SkillEvidence[] {
   const result = new Map<string, SkillEvidence>();
-  for (const source of observations) {
-    const observation: PracticeObservation = {
+  for (const [index, source] of observations.entries()) {
+    const observation: OrderedPracticeObservation = {
+      ingestionSequence: source.ingestionSequence ?? String(index + 1),
       id: source.id,
       skillId: source.skillId,
       templateId: source.templateId,

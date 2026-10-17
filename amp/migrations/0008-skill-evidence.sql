@@ -21,7 +21,7 @@ CREATE TABLE amp_skill_evidence (
   CHECK ((state->>'skillId'=skill_id AND state->>'version'='1') IS TRUE)
 );
 
-CREATE FUNCTION amp_project_skill_observation(p_learner text,p_outcome jsonb)
+CREATE FUNCTION amp_project_skill_observation(p_learner text,p_outcome jsonb,p_sequence bigint)
 RETURNS void LANGUAGE plpgsql AS $$
 DECLARE
   previous jsonb;
@@ -38,7 +38,7 @@ DECLARE
 BEGIN
   INSERT INTO amp_skill_evidence(learner_id,skill_id,state) VALUES(p_learner,skill,jsonb_build_object('version',1,'skillId',skill)) ON CONFLICT DO NOTHING;
   SELECT state INTO previous FROM amp_skill_evidence WHERE learner_id=p_learner AND skill_id=skill FOR UPDATE;
-  observation := jsonb_build_object('id',p_outcome->>'id','skillId',skill,'templateId',p_outcome->>'templateId',
+  observation := jsonb_build_object('ingestionSequence',p_sequence::text,'id',p_outcome->>'id','skillId',skill,'templateId',p_outcome->>'templateId',
     'correct',(p_outcome->>'correct')::boolean,'assisted',(p_outcome->>'assisted')::boolean,'createdAt',p_outcome->>'createdAt');
   SELECT jsonb_agg(value ORDER BY ordinality) INTO recent FROM (
     SELECT value,ordinality FROM jsonb_array_elements(COALESCE(previous->'recentOutcomes','[]'::jsonb)||jsonb_build_array(observation)) WITH ORDINALITY
@@ -68,12 +68,12 @@ END $$;
 
 -- A bounded-memory replay of retained facts, not reconstruction of missing history.
 DO $$ DECLARE item record; BEGIN
-  FOR item IN SELECT learner_id,outcome FROM amp_attempts ORDER BY learner_id,outcome->>'skillId',evidence_sequence LOOP
-    PERFORM amp_project_skill_observation(item.learner_id,item.outcome);
+  FOR item IN SELECT learner_id,outcome,evidence_sequence FROM amp_attempts ORDER BY learner_id,outcome->>'skillId',evidence_sequence LOOP
+    PERFORM amp_project_skill_observation(item.learner_id,item.outcome,item.evidence_sequence);
   END LOOP;
 END $$;
 CREATE FUNCTION amp_update_skill_evidence() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN
-  PERFORM amp_project_skill_observation(NEW.learner_id,NEW.outcome);
+  PERFORM amp_project_skill_observation(NEW.learner_id,NEW.outcome,NEW.evidence_sequence);
   RETURN NEW;
 END $$;
 CREATE TRIGGER amp_attempt_skill_evidence AFTER INSERT ON amp_attempts

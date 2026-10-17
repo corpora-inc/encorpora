@@ -12,6 +12,7 @@ import type { SkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
 export type Learner = { id: string; name: string };
 export type Outcome = {
+  ingestionSequence?: string;
   id: string;
   problemId: string;
   requestId: string;
@@ -160,10 +161,12 @@ class PgTransaction implements LearnerTransaction {
   ) {}
   async recentAttempts() {
     const result = await this.db.query(
-      "SELECT outcome FROM amp_attempts WHERE learner_id=$1 ORDER BY evidence_sequence DESC LIMIT 12",
+      "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id=$1 ORDER BY evidence_sequence DESC LIMIT 12",
       [this.learnerId],
     );
-    return result.rows.map((r) => r.outcome as Outcome).reverse();
+    return result.rows
+      .map((r) => ({ ...r.outcome, ingestionSequence: r.sequence }) as Outcome)
+      .reverse();
   }
   async attemptByRequest(requestId: string) {
     const result = await this.db.query(

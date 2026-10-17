@@ -127,11 +127,18 @@ test(
       const digest = await factsDigest(pool);
       await pool.query(await sql("0008-skill-evidence.sql"));
       assert.equal(await factsDigest(pool), digest);
-      const expected = () =>
-        projectSkillEvidence(history).sort((a, b) =>
-          a.skillId.localeCompare(b.skillId),
-        );
-      assert.deepEqual(await states(pool), expected());
+      const expected = async () =>
+        projectSkillEvidence(
+          (
+            await pool.query(
+              "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id='child' ORDER BY evidence_sequence",
+            )
+          ).rows.map((row) => ({
+            ...row.outcome,
+            ingestionSequence: row.sequence,
+          })),
+        ).sort((a, b) => a.skillId.localeCompare(b.skillId));
+      assert.deepEqual(await states(pool), await expected());
       assert.equal((await states(pool))[0].creditedRetrievals, 6);
       assert.equal((await states(pool))[0].reviewDueAt, origin + 35 * 86400000);
       for (let i = 230; i < 530; i++) {
@@ -145,7 +152,7 @@ test(
         await insert(pool, o);
         history.push(o);
       }
-      assert.deepEqual(await states(pool), expected());
+      assert.deepEqual(await states(pool), await expected());
       const assisted = outcome(
         600,
         "multiplication-facts",
@@ -155,7 +162,7 @@ test(
       );
       await insert(pool, assisted);
       history.push(assisted);
-      assert.deepEqual(await states(pool), expected());
+      assert.deepEqual(await states(pool), await expected());
       assert.equal((await states(pool))[0].reviewDueAt, origin + 7 * 86400000);
       const before = await states(pool);
       await assert.rejects(insert(pool, assisted), { code: "23505" });
@@ -211,9 +218,11 @@ test(
       );
       const actualOrder = (
         await pool.query(
-          "SELECT outcome FROM amp_attempts WHERE learner_id='child' ORDER BY evidence_sequence",
+          "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id='child' ORDER BY evidence_sequence",
         )
-      ).rows.map((r) => r.outcome as Outcome);
+      ).rows.map(
+        (r) => ({ ...r.outcome, ingestionSequence: r.sequence }) as Outcome,
+      );
       assert.equal(actualOrder.length, 24);
       assert.deepEqual(await states(pool), projectSkillEvidence(actualOrder));
       assert.equal((await states(pool))[0].attempts, 24);

@@ -8,7 +8,7 @@ Retrieval intervals are six hours, one day, three days, seven days, fourteen day
 
 ## Independent strands
 
-Each strand has its own observed challenge range. A correct advanced algebra answer does not raise an untouched geometry strand, and a multiplication error does not lower the algebra range. The range uses observed independent successes in that strand and its latest three outcomes. A recent run of independent success permits exploration one broad grade band higher; repeated difficulty lowers that strand's suggested range. A previously attempted skill can return for support or review even if it is above the suggested range.
+Each strand has its own observed challenge range. A correct advanced algebra answer does not raise an untouched geometry strand, and a multiplication error does not lower the algebra range. The range starts from the highest broad grade band with an observed independent success in that strand and considers its latest three outcomes. Two or more recent errors or assisted answers lower that suggested range by one band; older successes are not erased. A recent run of independent success permits exploration one broad grade band higher; repeated difficulty lowers that strand's suggested range. A previously attempted skill can return for support or review even if it is above the suggested range.
 
 Demonstrated prerequisites can make a task in another strand eligible. A successful exploratory task never grants evidence to unobserved ancestors. When a learner struggles, the planner crosses unimplemented curriculum nodes to find the nearest implemented prerequisite needing practice. That search does not certify intermediate skills.
 

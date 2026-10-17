@@ -68,11 +68,7 @@ export function planMixedPractice(options: {
   )
     throw new Error("Invalid practice batch size");
   const now = options.now ?? Date.now();
-  const attempts = [...options.attempts].sort(
-    (a, b) =>
-      Date.parse(a.createdAt) - Date.parse(b.createdAt) ||
-      a.id.localeCompare(b.id),
-  );
+  const attempts = [...options.attempts];
   const nodes = new Map(skills.map((skill) => [skill.id, skill]));
   const byTemplate = new Map(
     templates.map((template) => [template.id, template]),
@@ -99,10 +95,8 @@ export function planMixedPractice(options: {
     );
     const observed = entries
       .flatMap((entry) => entry.recentOutcomes)
-      .sort(
-        (a, b) =>
-          Date.parse(a.createdAt) - Date.parse(b.createdAt) ||
-          a.id.localeCompare(b.id),
+      .sort((a, b) =>
+        Number(BigInt(a.ingestionSequence) - BigInt(b.ingestionSequence)),
       )
       .slice(-3);
     const successes = entries

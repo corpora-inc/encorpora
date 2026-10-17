@@ -192,3 +192,48 @@ test("an assisted fifth answer cannot promote four independent successes into re
   ])[0]!;
   assert.equal(missed.status, "practicing");
 });
+
+test("equal-time reverse IDs cannot turn a latest assisted answer into an independent challenge run", () => {
+  const entry = templates.find((t) => t.id === "add")!;
+  const probe = {
+    ...templates.find((t) => t.id === "multiply")!,
+    id: "new-probe",
+    skillId: "new-probe",
+  };
+  const graph = [entry.skillId, probe.skillId, "other-operations"].map(
+    (id) => ({ id, strand: "operations", prerequisites: [] }),
+  );
+  const history: Outcome[] = [
+    ...Array.from({ length: 3 }, (_, i) => ({
+      ...observation("add", i, true, false, now),
+      id: `z${i}`,
+    })),
+    { ...observation("other-operations", 3, true, true, now), id: "a" },
+  ];
+  history.forEach((entry, index) => {
+    entry.ingestionSequence = String(90071992547409930n + BigInt(index));
+  });
+  for (const attempts of [history, []]) {
+    const result = planMixedPractice({
+      templates: [entry, probe],
+      skills: graph,
+      attempts,
+      evidence: projectSkillEvidence(history),
+      count: 1,
+      seed: "equal-time",
+      now,
+    });
+    assert.equal(result[0]!.template.id, entry.id);
+  }
+  const independent = history.slice(0, 3);
+  const challenge = planMixedPractice({
+    templates: [entry, probe],
+    skills: graph,
+    attempts: [],
+    evidence: projectSkillEvidence(independent),
+    count: 1,
+    seed: "equal-time",
+    now,
+  });
+  assert.equal(challenge[0]!.template.id, probe.id);
+});
