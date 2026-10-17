@@ -13,6 +13,7 @@
 }
 body {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 button,
 input,

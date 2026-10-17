@@ -14,6 +14,7 @@ await migrate(url);
 const repository = new PostgresRepository(url);
 const account = "development-household";
 const learner = await repository.create(account, "Browser verification");
+const learnerIds = [learner.id];
 const app = buildApp({
   repository,
   authenticate: developmentAuth(),
@@ -125,6 +126,29 @@ try {
     .getByRole("button", { name: "Your progress", exact: true })
     .click();
   await page.locator(".progress-card").first().waitFor();
+  await page.getByRole("button", { name: "Add learner", exact: true }).click();
+  await page
+    .getByLabel("Learner name", { exact: true })
+    .fill("LongNickname".repeat(5));
+  const creation = page.waitForResponse(
+    (response) =>
+      response.url().endsWith("/learners") &&
+      response.request().method() === "POST",
+  );
+  await page
+    .getByRole("button", { name: "Create learner", exact: true })
+    .click();
+  learnerIds.push((await (await creation).json()).id);
+  await page
+    .getByRole("button", { name: "Your practice", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Let’s begin" }).waitFor();
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+    "A maximum-length learner nickname must fit a phone viewport",
+  );
   assert.deepEqual(errors, []);
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",
@@ -133,8 +157,9 @@ try {
   await browser.close();
   await vite.close();
   await app.close();
-  await repository.pool.query("DELETE FROM amp_learners WHERE id=$1", [
-    learner.id,
-  ]);
+  await repository.pool.query(
+    "DELETE FROM amp_learners WHERE id=ANY($1::text[])",
+    [learnerIds],
+  );
   await repository.close();
 }
