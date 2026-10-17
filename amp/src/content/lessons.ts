@@ -1,3 +1,4 @@
+import { choiceLessons } from "./choice-lessons.js";
 import { elementaryLessons } from "./elementary-lessons";
 import { graphicalLessons } from "./graphical-lessons";
 import { extendedLessons } from "./extended-lessons";
@@ -557,4 +558,5 @@ export const lessons: readonly Lesson[] = [
   ...extendedLessons,
   ...graphicalLessons,
   ...elementaryLessons,
+  ...choiceLessons,
 ];

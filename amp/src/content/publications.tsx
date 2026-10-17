@@ -15,7 +15,7 @@ export function publicationHtml(
       generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
     ),
   );
-  const title = `${lesson.title} · ${kind === "lesson" ? "Mini-textbook" : kind === "workbook" ? "Practice workbook" : "Worked solutions"}`;
+  const title = `${lesson.title} · ${kind === "lesson" ? "Reference lesson" : kind === "workbook" ? "Practice workbook" : "Worked solutions"}`;
   const body = (
     <article>
       <header>
@@ -79,7 +79,14 @@ export function publicationHtml(
               <h2>
                 {i + 1}. {p.public.prompt}
               </h2>
-              {p.public.figure && <Figure figure={p.public.figure} />}{" "}
+              {p.public.figure && <Figure figure={p.public.figure} />}
+              {p.public.response.kind === "choice" && (
+                <ol type="A" className="print-choices">
+                  {p.public.response.options.map((option) => (
+                    <li key={option.id}>{option.label}</li>
+                  ))}
+                </ol>
+              )}
               {kind === "solutions" ? (
                 <>
                   <ol>
@@ -88,7 +95,14 @@ export function publicationHtml(
                     ))}
                   </ol>
                   <p>
-                    <strong>Answer: {p.answer}</strong>
+                    <strong>
+                      Answer:{" "}
+                      {p.public.response.kind === "choice"
+                        ? p.public.response.options.find(
+                            (option) => option.id === p.answer,
+                          )?.label
+                        : p.answer}
+                    </strong>
                   </p>
                 </>
               ) : (
@@ -113,7 +127,7 @@ export function publicationHtml(
         <head>
           <meta charSet="utf-8" />
           <title>{title}</title>
-          <style>{`@page{margin:18mm}body{font-family:Arial,sans-serif;color:#183e3a;line-height:1.6;font-size:11pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:2px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:28pt;line-height:1.2}h2{font-size:14pt;break-after:avoid}p,li{orphans:3;widows:3}section{margin:20px 0}.example{padding:18px;border:1px solid #9ab}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-bottom:18px}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}svg text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{font-size:8pt;margin-top:30px;color:#567;border-top:1px solid #ccd;padding-top:10px}`}</style>
+          <style>{`@page{margin:18mm}body{font-family:Arial,sans-serif;color:#183e3a;line-height:1.6;font-size:11pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:2px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:28pt;line-height:1.2}h2{font-size:14pt;break-after:avoid}p,li{orphans:3;widows:3}section{margin:20px 0}.example{padding:18px;border:1px solid #9ab}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-bottom:18px}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}svg text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;padding-left:24px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{font-size:8pt;margin-top:30px;color:#567;border-top:1px solid #ccd;padding-top:10px}`}</style>
         </head>
         <body>{body}</body>
       </html>,
