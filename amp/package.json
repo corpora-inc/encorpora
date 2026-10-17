@@ -22,7 +22,8 @@
     "production:queue": "tsx scripts/production-queue.ts",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/**/*.ts\"",
     "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
-    "privacy:retention": "tsx scripts/privacy-retention.ts"
+    "privacy:retention": "tsx scripts/privacy-retention.ts",
+    "billing:worker": "tsx scripts/stripe-worker.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",
@@ -33,6 +34,7 @@
     "pg": "^8.16.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "stripe": "23.0.0",
     "zod": "^4.1.0"
   },
   "devDependencies": {

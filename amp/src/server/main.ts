@@ -1,4 +1,6 @@
 import { registerFamilyRoutes } from "../family/routes.js";
+import { stripeConfig } from "../billing/stripe/config.js";
+import { registerStripeRoutes } from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
 import { developmentAuth, oidcAuth } from "./auth";
 import { PostgresRepository } from "./repository";
@@ -37,6 +39,18 @@ await registerFamilyRoutes(app, {
   authenticate,
   development,
 });
+const billingConfig = stripeConfig(process.env);
+if (billingConfig) {
+  if (development && billingConfig.livemode)
+    throw new Error(
+      "Live billing is forbidden with development authentication",
+    );
+  await registerStripeRoutes(app, {
+    pool: repository.pool,
+    authenticate,
+    config: billingConfig,
+  });
+}
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {

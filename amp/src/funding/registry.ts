@@ -1,7 +1,8 @@
-import type { FundingRegistry } from "./types.js";
+import { expandFundingRegistry } from "./expand-registry.js";
+import type { BaseFundingRegistry } from "./types.js";
 
 /** Internal research inventory. No Corpora vendor or product approval is asserted. */
-export const fundingRegistry: FundingRegistry = {
+const baseFundingRegistry: BaseFundingRegistry = {
   version: 1,
   checkedOn: "2026-10-16",
   sources: [
@@ -1075,3 +1076,5 @@ export const fundingRegistry: FundingRegistry = {
     },
   ],
 };
+
+export const fundingRegistry = expandFundingRegistry(baseFundingRegistry);
