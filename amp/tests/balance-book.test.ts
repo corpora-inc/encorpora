@@ -40,7 +40,7 @@ test("algebra volume has unique anchors, reasoned keys and explicit assessment b
     balancePracticeBindings.filter(
       (b) => b.assessedResponse === "single-choice-selection",
     ).length,
-    2,
+    7,
   );
   for (const alignment of balanceAlignments)
     assert.ok(alignment.unassessedRequirements.length);

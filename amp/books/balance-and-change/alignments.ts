@@ -1,3 +1,4 @@
+import { algebraDefinitions } from "../../src/content/algebra-definitions.js";
 import { balanceAndChange } from "./book.js";
 export interface AlgebraAlignment {
   id: string;
@@ -38,7 +39,7 @@ const row = (
       ),
 });
 /** Editorial relationships to selected requirements; neither content presence nor a visit establishes mastery. */
-export const balanceAlignments: readonly AlgebraAlignment[] = [
+const originalAlignments: readonly AlgebraAlignment[] = [
   row(
     "delayed-equation-retrieval",
     "linear-equations",
@@ -352,6 +353,41 @@ export const balanceAlignments: readonly AlgebraAlignment[] = [
     [],
     "reference",
     ["mixed-remainder"],
+  ),
+];
+const practiceStandards: Record<string, string[]> = {
+  "variable-expressions": ["6.EE.A.2"],
+  "expression-properties": ["6.EE.A.3", "6.EE.A.4"],
+  "linear-expressions": ["7.EE.A.1"],
+  "linear-equations": ["8.EE.C.7"],
+  slope: ["8.EE.B.5", "8.EE.B.6"],
+  "linear-models": ["8.F.B.4"],
+  "function-notation": ["8.F.A.1"],
+  "proportional-relationships": ["7.RP.A.2"],
+  "linear-systems": ["8.EE.C.8"],
+  "qualitative-graphs": ["8.F.B.5"],
+};
+export const balanceAlignments: readonly AlgebraAlignment[] = [
+  ...originalAlignments,
+  ...algebraDefinitions.map((d) =>
+    row(
+      `bounded-practice-${d.id}`,
+      d.skillId,
+      [d.pageId],
+      practiceStandards[d.skillId]!,
+      `${d.description} ${d.domain}`,
+      [
+        "This selected response does not assess constructed explanations, complete standard coverage, or durable mastery.",
+        ...(d.id === "proportional-rule-choice"
+          ? [
+              "Signed real-valued rules extend the algebraic criterion; they do not assess all grade-seven physical ratio contexts.",
+            ]
+          : []),
+      ],
+      [d.id],
+      "practiced",
+      [],
+    ),
   ),
 ];
 export function validateBalanceAlignments(

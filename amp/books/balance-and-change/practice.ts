@@ -1,3 +1,4 @@
+import { algebraDefinitions } from "../../src/content/algebra-definitions.js";
 import { balanceAndChange } from "./book.js";
 import { balanceAlignments } from "./alignments.js";
 export interface AlgebraPracticeBinding {
@@ -30,6 +31,18 @@ const bind = (
   unassessedRequirements: [choice ? choiceLimit : numericLimit, ...limits],
 });
 export const balancePracticeBindings: readonly AlgebraPracticeBinding[] = [
+  ...algebraDefinitions.map((d) =>
+    bind(
+      d.id,
+      d.skillId,
+      [d.pageId],
+      `${d.description} ${d.domain}`,
+      [
+        "Bounded forms and selected responses do not assess independent symbolic construction, explanation, all contexts, or transfer.",
+      ],
+      d.mode === "choice",
+    ),
+  ),
   bind(
     "linear-equation",
     "linear-equations",

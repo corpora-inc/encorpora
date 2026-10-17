@@ -63,7 +63,7 @@ export function ChoiceFigure({ figure }: { figure: SemanticFigure }) {
       <text x={285} y={y(0) + 5}>
         x
       </text>
-      <text x={x(0) + 7} y={14}>
+      <text x={x(0) + 7} y={18}>
         y
       </text>
       {figure.lines?.map((line, i) => {
@@ -91,7 +91,12 @@ export function ChoiceFigure({ figure }: { figure: SemanticFigure }) {
       {figure.points.map((p) => (
         <g key={p.label}>
           <circle cx={x(p.x)} cy={y(p.y)} r={4} fill="#9c4420" stroke="white" />
-          <text x={x(p.x) + 9} y={y(p.y) + 19} className="choice-point-label">
+          <text
+            x={x(p.x) + (x(p.x) > 195 ? -9 : 9)}
+            y={y(p.y) + 19}
+            textAnchor={x(p.x) > 195 ? "end" : "start"}
+            className="choice-point-label"
+          >
             {p.label} ({p.x}, {p.y})
           </text>
         </g>
