@@ -1003,7 +1003,7 @@ button:focus:not(:focus-visible) {
 
 /* One header geometry on every screen; the scrollbar gutter is always reserved
    so the centred column never shifts when a page starts or stops scrolling. */
-html {
+html:has(.shell.flow) {
   scrollbar-gutter: stable;
 }
 .shell.app-shell > header {
