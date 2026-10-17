@@ -2,7 +2,9 @@
 
 AMP provides authenticated parent controls for learner names, consent withdrawal, learning-data deletion and a downloadable family data export. The controls use the same parent identity as practice and billing. They are accessible after consent withdrawal; a child or another parent cannot select an account ID in the request to act on someone else's records.
 
-`FamilyCenter` is a standalone React component. The application supplies `token`, `onChanged(summary)`, `onLearningInvalidated()` and `onClose`. Immediately after confirmed withdrawal/deletion, `onLearningInvalidated()` runs before any refresh. The host must clear any active question and cached learning results, use the returned non-deleted learners, and keep the family center available when consent is withdrawn. The component does not change the browser's identity-provider account or claim to cancel a subscription.
+The Family menu opens a dedicated parent workspace with Learners, Access and Privacy sections. It stays available when consent is withdrawn or no active learner exists. Confirmed withdrawal or deletion clears active questions, queued problems and cached learning results before refreshing family details. If that refresh fails, practice stays paused until account state is confirmed. Returning to learning restores focus to the Family menu.
+
+`FamilyCenter` receives the authenticated account identity separately from its renewable access token. An identity change invalidates pending actions and downloads; token renewal for the same parent preserves the workspace. The component does not change the identity-provider account or cancel subscriptions.
 
 ## Parent choices
 
@@ -26,8 +28,8 @@ A linked Stripe purchase displays a billing-management action and an explicit re
 | POST | `/api/v1/family/learners/:learnerId/delete-learning-data` | `{confirmation:"delete-learning-data"}` |
 | POST | `/api/v1/family/delete-learning-data` | Same explicit confirmation |
 | POST | `/api/v1/family/export-ticket` | Request a browser download ticket |
-| GET | `/api/v1/family/export` | Stream an authorized export |
-| POST | `/api/v1/family/export/revoke` | Revoke the browser cookie capability, including after sign-out |
+| POST | `/api/v1/family/export` | Consume an explicit one-use ticket and stream an export |
+| GET | `/api/v1/family/export` | Stream an export using bearer authentication |
 
 All learning writers acquire `pg_advisory_xact_lock_shared(hashtextextended(accountId,0))` before learner locks and recheck consent inside the transaction. Parent privacy mutations and the consent-administration command acquire the corresponding exclusive account lock, then learner locks in sorted ID order. A transaction that started first can finish before withdrawal commits; no new learning write can pass the consent check after withdrawal commits. Deleted learners are excluded from practice and purchase authorization even after later re-consent.
 
@@ -35,7 +37,9 @@ Financial reconciliation may write to a deleted learner's opaque reference. It c
 
 ## Streaming export
 
-The browser first authenticates a POST to obtain a one-use download ticket. The server stores only a SHA-256 digest and sets a 60-second HttpOnly, SameSite=Strict cookie scoped to the export path. Hosted cookies require HTTPS. Export credentials never appear in a URL, DOM attribute or local storage. The native browser download then consumes the ticket atomically. Bearer-authenticated GET is also supported for tooling. The host must revoke pending export cookies on sign-out or account changes using the revoke endpoint; no bearer token is required to remove this capability. The component also revokes a ticket response that arrives after it unmounts or its account changes. Revocation cannot recall a file already delivered to the browser.
+The browser authenticates a POST to obtain a one-use download ticket, valid for 60 seconds. The server stores only its SHA-256 digest. The current account submits that ticket in a transient native POST form targeting a hidden download frame. The form is removed immediately; tickets never enter URLs, cookies or persistent browser storage. A response arriving after an account change or unmount cannot submit a download. Other tabs receive no ambient export authority. An already submitted authorized download may finish after navigation or an account change.
+
+The export endpoint accepts exactly one bounded ticket field and consumes it atomically. Replays, expired tickets and malformed forms fail. A failed attachment request stays inside the download frame, leaving the application available with a retry message. The interface reports that a download was requested, not that the browser saved a complete file. Bearer-authenticated GET is supported for tooling and ignores cookies. Request-body logging must not be enabled on ticket routes.
 
 A repeatable-read PostgreSQL snapshot and cursors fetch at most 100 records at a time. The application does not collect the complete history in memory or build a browser Blob. Download aborts close the cursor transaction and release the connection. Individual statements have a 15-second timeout; an idle snapshot expires after 30 seconds and the whole download is bounded to two minutes. The final `complete` record is written only after successful traversal. An interrupted or exceptionally large export can be retried; bulk archival delivery beyond these limits needs a separately authorized asynchronous export job.
 
@@ -51,7 +55,7 @@ The FTC describes parental rights to review/delete children's information and re
 
 ## Verification
 
-Run `npm test`, `npm run tsc`, `npm run build`, and `npm run test:family-ui`. With `AMP_TEST_DATABASE_URL` set to a development database, run `npm run test:db`. The family integration test creates an isolated schema and verifies cross-account rejection, a 205-record cursor export, private-evidence exclusion, consumed/expired tickets, concurrent withdrawal and learning writes, deletion with paid billing references, and access after withdrawal. Browser verification checks 320/390/1280-pixel layouts, confirmation focus, rename, native download, withdrawal and retained billing controls using synthetic responses.
+Run `npm test`, `npm run tsc`, `npm run build`, and `npm run test:family-ui`. With `AMP_TEST_DATABASE_URL` set to a development database, run `npm run test:db`. The family integration test creates an isolated schema and verifies cross-account rejection, a 205-record cursor export, private-evidence exclusion, consumed/expired tickets, concurrent withdrawal and learning writes, deletion with paid billing references, and access after withdrawal. Browser verification checks small phones, landscape and desktop layouts, confirmation and submenu focus, long learner names, rename, actual HTTP attachment downloads, withdrawal and retained billing controls using synthetic accounts. Held responses verify that obsolete session bootstrap results, family snapshots, export tickets and practice batches cannot restore stale state. Set `AMP_BROWSER=webkit` for the family and session browser suites to exercise WebKit. Confirmation actions stay visible while lengthy disclosures scroll within the dialog.
 
 Production acceptance also requires a real parent identity/recovery journey, a real merchant billing portal, scheduled retention with alerts, documented backup behavior, and a support process for identity/account deletion and financial disputes. Keep the hosted-launch guard in place until those deployment-specific flows are verified.
 

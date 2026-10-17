@@ -1,5 +1,5 @@
 import { Readable } from "node:stream";
-import type { FastifyInstance } from "fastify";
+import type { FastifyInstance, FastifyReply } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
@@ -81,40 +81,41 @@ export async function registerFamilyRoutes(
       );
       return repository.deleteLearning(account);
     });
-    const cookie = (value: string, age: number) =>
-      `amp-export-ticket=${value}; Path=/api/v1/family/export; HttpOnly; SameSite=Strict; Max-Age=${age}${options.development ? "" : "; Secure"}`;
-    scope.post("/api/v1/family/export-ticket", async (request, reply) => {
+    scope.post("/api/v1/family/export-ticket", async (request) => {
       const account = await options.authenticate(request);
       empty.parse(request.body);
-      const ticket = await repository.issueExportTicket(account);
-      reply.header("Set-Cookie", cookie(ticket, 60));
-      return { ready: true };
+      return { ticket: await repository.issueExportTicket(account) };
     });
-    // Removing a capability needs no bearer token, including after sign-out.
-    scope.post("/api/v1/family/export/revoke", async (request, reply) => {
-      const ticket = request.headers.cookie
-        ?.split(";")
-        .map((part) => part.trim())
-        .find((part) => part.startsWith("amp-export-ticket="))
-        ?.slice("amp-export-ticket=".length);
-      reply.header("Set-Cookie", cookie("", 0));
-      if (ticket) await repository.revokeExportTicket(ticket);
-      return { revoked: true };
+    // Native form downloads stream without sharing authority through cookies or URLs.
+    // Reject duplicate fields before converting to an object.
+    scope.addContentTypeParser(
+      "application/x-www-form-urlencoded",
+      { parseAs: "string", bodyLimit: 1024 },
+      (_request, body, done) => {
+        const fields = [...new URLSearchParams(String(body))];
+        if (fields.length !== 1 || fields[0]![0] !== "ticket")
+          return done(new FamilyError(400, "invalid_family_request"));
+        done(null, { ticket: fields[0]![1] });
+      },
+    );
+    const ticketBody = z.strictObject({
+      ticket: z.string().regex(/^[A-Za-z0-9_-]{43}$/),
     });
-    scope.get("/api/v1/family/export", async (request, reply) => {
-      let account: string;
-      if (request.headers.authorization)
-        account = await options.authenticate(request);
-      else {
-        const ticket = request.headers.cookie
-          ?.split(";")
-          .map((part) => part.trim())
-          .find((part) => part.startsWith("amp-export-ticket="))
-          ?.slice("amp-export-ticket=".length);
-        if (!ticket) throw new FamilyError(401, "sign_in_required");
-        account = await repository.consumeExportTicket(ticket);
-        reply.header("Set-Cookie", cookie("", 0));
-      }
+    scope.post(
+      "/api/v1/family/export",
+      { bodyLimit: 1024 },
+      async (request, reply) => {
+        const { ticket } = ticketBody.parse(request.body);
+        return streamExport(
+          await repository.consumeExportTicket(ticket),
+          reply,
+        );
+      },
+    );
+    scope.get("/api/v1/family/export", async (request, reply) =>
+      streamExport(await options.authenticate(request), reply),
+    );
+    function streamExport(account: string, reply: FastifyReply) {
       const abort = new AbortController();
       const stream = Readable.from(repository.export(account, abort.signal));
       const timeout = setTimeout(() => {
@@ -135,7 +136,7 @@ export async function registerFamilyRoutes(
           `attachment; filename="amp-family-export-${new Date().toISOString().slice(0, 10)}.ndjson"`,
         )
         .send(stream);
-    });
+    }
   });
   return repository;
 }
