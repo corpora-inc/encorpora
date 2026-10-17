@@ -190,7 +190,7 @@ export function planMixedPractice(options: {
       score -=
         chosen.filter((entry) => entry.template.skillId === template.skillId)
           .length * 150;
-      score -= chosen.filter((entry) => entry.strand === strand).length * 35;
+      score -= chosen.filter((entry) => entry.strand === strand).length * 120;
       const tie =
         createHash("sha256")
           .update(`${seed}:${slot}:${template.id}`)
