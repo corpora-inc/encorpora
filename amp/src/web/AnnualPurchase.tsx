@@ -285,7 +285,7 @@ function PurchasePanel({
     ],
     licensed: [
       "Access is active.",
-      `Paid access ends ${date(status?.endsAt)}. Check billing for renewal settings.`,
+      `Access ends ${date(status?.endsAt)}. Check billing for any subscription renewal.`,
     ],
     scheduled: [
       "Access is scheduled",
