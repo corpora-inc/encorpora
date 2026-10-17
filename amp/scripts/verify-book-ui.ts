@@ -92,7 +92,10 @@ try {
         { width: 320, height: 568, textScale: 1 },
         { width: 844, height: 390, textScale: 1 },
         ...(book.presentation === "early-number"
-          ? [{ width: 390, height: 844, textScale: 1.25 }]
+          ? [
+              { width: 390, height: 844, textScale: 1.25 },
+              { width: 320, height: 568, textScale: 1.25 },
+            ]
           : []),
       ]) {
         await page.locator(".reading-content").evaluate((content) => {
@@ -255,7 +258,7 @@ try {
     await page.unroute(pattern);
     assert.deepEqual(errors, []);
     console.log(
-      `${book.id}: checked ${frames.length} frames across three device layouts.`,
+      `${book.id}: checked ${frames.length} frames across three device layouts${book.presentation === "early-number" ? " and two 125% body-text passes" : ""}.`,
     );
     await page.close();
   }

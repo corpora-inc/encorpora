@@ -87,3 +87,44 @@ test("paired print comparisons retain both models and their captions", () => {
     /class="early-model-pair"/,
   );
 });
+test("early-reader prose breaks retain every sentence in order", async () => {
+  const { readingFrames } = await import("../src/books/reading.js");
+  const prose =
+    "Use safe household counters or draw small marks. The size of a counter does not change the count. This mat can be copied and reused; learners do not need to cut anything.";
+  const book: MathBook = {
+    ...sample,
+    presentation: "early-number",
+    pages: [
+      {
+        id: "instructions",
+        kind: "guide",
+        eyebrow: "FOR YOUR PARTNER",
+        title: "Build together",
+        blocks: [
+          {
+            kind: "callout",
+            title: "For a counting partner",
+            tone: "connect",
+            text: prose,
+          },
+        ],
+      },
+    ],
+  };
+  const frames = readingFrames(book);
+  assert.equal(frames.length, 2);
+  assert.equal(
+    frames
+      .map((frame) => (frame.block.kind === "callout" ? frame.block.text : ""))
+      .join(" "),
+    prose,
+  );
+  assert.deepEqual(
+    frames.map((frame) => [frame.pageId, frame.blockIndex, frame.fragment]),
+    [
+      ["instructions", 0, 0],
+      ["instructions", 0, 1],
+    ],
+  );
+  assert.equal(readingFrames({ ...book, presentation: undefined }).length, 1);
+});
