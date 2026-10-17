@@ -622,3 +622,130 @@ nav button {
     padding-top: 18px;
   }
 }
+/* Small portrait screens keep the full model visible; answer entry gets its own
+   focused panel with a persistent problem summary and an explicit return. */
+.compact-answer-action {
+  width: 100%;
+  min-height: 48px;
+  margin: 4px 0;
+}
+.answer-prompt-summary {
+  font-size: 16px;
+  margin: 0 0 14px;
+}
+.compact-entry {
+  border: 0;
+  padding: 0;
+}
+.reader-downloads {
+  margin: 12px 0 24px;
+  border-block: 1px solid #dfe5d8;
+}
+.reader-downloads summary {
+  cursor: pointer;
+  padding: 14px 0;
+  color: #18594f;
+}
+.reader-downloads .downloads {
+  margin: 0 0 16px;
+}
+.workspace-error {
+  position: absolute;
+  bottom: 0;
+  background: #fffefa;
+  padding: 12px;
+}
+@media (max-width: 650px) {
+  .math-keypad button {
+    height: 44px;
+    min-height: 44px;
+  }
+}
+@media (max-height: 780px) and (max-width: 650px) {
+  .practice-dialog {
+    max-height: calc(100dvh - 24px);
+  }
+  .compact-entry .workspace-answer-row {
+    gap: 6px;
+  }
+  .compact-entry .answer-action {
+    width: 108px;
+  }
+  .compact-entry .math-keypad {
+    gap: 4px;
+  }
+  .problem-content .figure {
+    height: min(27dvh, 180px);
+  }
+}
+@media (max-height: 500px) and (min-width: 651px) {
+  .practice-shell > header {
+    display: none;
+  }
+  .shell.practice-shell {
+    padding-inline: 16px;
+  }
+  .practice-shell > nav button {
+    min-height: 44px;
+    padding: 8px 16px;
+  }
+  .practice-surface {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 38%);
+    grid-template-rows: 44px minmax(0, 1fr);
+    gap: 0 18px;
+    padding: 4px 14px;
+  }
+  .workspace-toolbar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .problem-stage {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .answer-dock {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    border-top: 0;
+    padding: 0;
+    align-self: center;
+  }
+  .answer-status {
+    min-height: 24px;
+    font-size: 12px;
+  }
+  .answer-dock label {
+    margin-bottom: 2px;
+  }
+  .workspace-answer-row {
+    gap: 6px;
+  }
+  .workspace-answer-row input,
+  .answer-action {
+    height: 44px;
+  }
+  .answer-action {
+    width: 114px;
+    font-size: 13px;
+    padding: 8px;
+  }
+  .math-keypad {
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .practice-tools {
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .practice-tools button {
+    font-size: 11px;
+  }
+  .problem-content .question {
+    font-size: 22px;
+  }
+  .problem-content .figure {
+    height: 150px;
+    margin-top: 8px;
+  }
+}

@@ -113,6 +113,48 @@ test(
         );
       assert.equal(addition.attempts, 2);
       assert.equal(addition.independentCorrect, 1);
+      const mixed = await app.inject({
+        method: "POST",
+        url: `${path}/batches`,
+        payload: { count: 3 },
+      });
+      assert.equal(mixed.statusCode, 200);
+      assert.equal(
+        new Set(
+          mixed
+            .json()
+            .selection.map((entry: { strand: string }) => entry.strand),
+        ).size,
+        3,
+      );
+      const supportProblem = mixed.json().problems[0];
+      const stolenSupport = await app.inject({
+        method: "POST",
+        url: `${path}/lesson-support`,
+        headers: { "x-test-account": "other" },
+        payload: { problemId: supportProblem.id },
+      });
+      assert.equal(stolenSupport.statusCode, 404);
+      const support = await app.inject({
+        method: "POST",
+        url: `${path}/lesson-support`,
+        payload: { problemId: supportProblem.id },
+      });
+      assert.equal(support.statusCode, 200);
+      const supportedAnswer = await app.inject({
+        method: "POST",
+        url: `${path}/attempts`,
+        payload: {
+          problemId: supportProblem.id,
+          requestId: randomUUID(),
+          response: generateProblem(
+            supportProblem.templateId,
+            supportProblem.seed,
+          ).answer,
+        },
+      });
+      assert.equal(supportedAnswer.statusCode, 200);
+      assert.equal(supportedAnswer.json().assisted, true);
       const reopened = new PostgresRepository(url!);
       assert.equal((await reopened.list(account))[0].id, learnerId);
       await reopened.close();

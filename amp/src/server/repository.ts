@@ -19,7 +19,10 @@ export type Outcome = {
   answer: string;
   createdAt: string;
 };
-export type SavedProblem = GeneratedProblem & { hintViewed?: boolean };
+export type SavedProblem = GeneratedProblem & {
+  hintViewed?: boolean;
+  lessonViewed?: boolean;
+};
 export class ApiError extends Error {
   constructor(
     public statusCode: number,

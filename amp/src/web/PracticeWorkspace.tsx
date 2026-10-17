@@ -107,6 +107,7 @@ type Props = {
   submit: () => void;
   next: () => void;
   requestHint: () => void;
+  requestLesson: () => Promise<void>;
   changeTopic: () => void;
 };
 
@@ -128,6 +129,18 @@ export function PracticeWorkspace(props: Props) {
   const [panel, setPanel] = useState<"hint" | "explanation" | "lesson" | null>(
     null,
   );
+  const [entering, setEntering] = useState(false);
+  const [lessonLoading, setLessonLoading] = useState(false);
+  const [lessonError, setLessonError] = useState("");
+  const [compact, setCompact] = useState(
+    () => matchMedia("(max-width: 650px) and (max-height: 780px)").matches,
+  );
+  useEffect(() => {
+    const media = matchMedia("(max-width: 650px) and (max-height: 780px)");
+    const changed = () => setCompact(media.matches);
+    media.addEventListener("change", changed);
+    return () => media.removeEventListener("change", changed);
+  }, []);
   const [nativeKeyboard, setNativeKeyboard] = useState(false);
   const [small, setSmall] = useState(
     () => matchMedia("(max-width: 650px), (pointer: coarse)").matches,
@@ -142,23 +155,30 @@ export function PracticeWorkspace(props: Props) {
   }, []);
   useLayoutEffect(() => {
     setPanel(null);
+    setEntering(false);
+    setLessonError("");
     setCelebrate(false);
     previousOutcome.current = null;
     if (small) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
-    if (!outcome || previousOutcome.current === outcome.id) return;
+    if (!outcome || busy || previousOutcome.current === outcome.id) return;
     previousOutcome.current = outcome.id;
     input.current?.blur();
-    continueButton.current?.focus({ preventScroll: true });
-    if (!outcome.correct) setPanel("explanation");
-    else {
-      setCelebrate(true);
-      const timeout = window.setTimeout(() => setCelebrate(false), 1100);
-      return () => window.clearTimeout(timeout);
-    }
-  }, [outcome?.id]);
+    setEntering(false);
+    // Wait for the answer panel to unmount and the enabled Continue target to render.
+    const focus = window.setTimeout(() => {
+      continueButton.current?.focus({ preventScroll: true });
+      if (!outcome.correct) setPanel("explanation");
+      else setCelebrate(true);
+    }, 0);
+    const timeout = window.setTimeout(() => setCelebrate(false), 1100);
+    return () => {
+      window.clearTimeout(focus);
+      window.clearTimeout(timeout);
+    };
+  }, [outcome?.id, busy]);
   const locked = busy || pending || !!outcome;
   const keypad = small && !nativeKeyboard;
   function key(value: string) {
@@ -187,6 +207,111 @@ export function PracticeWorkspace(props: Props) {
       input.current?.focus({ preventScroll: true });
       input.current?.setSelectionRange(caret, caret);
     });
+  }
+  function answerControls() {
+    return (
+      <>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (!busy && (outcome || response.trim()))
+              outcome ? props.next() : props.submit();
+          }}
+        >
+          <label htmlFor="answer">{problem.response.label}</label>
+          <div className="workspace-answer-row">
+            <input
+              id="answer"
+              ref={input}
+              autoComplete="off"
+              autoCapitalize="none"
+              spellCheck={false}
+              inputMode={
+                keypad
+                  ? "none"
+                  : problem.response.kind === "fraction"
+                    ? "text"
+                    : "decimal"
+              }
+              value={response}
+              onChange={(event) => setResponse(event.target.value)}
+              readOnly={locked}
+              aria-describedby="answer-format"
+              placeholder={
+                problem.response.kind === "fraction"
+                  ? "For example, 3/4"
+                  : "Your answer"
+              }
+              maxLength={100}
+            />
+            <button
+              ref={continueButton}
+              className="answer-action"
+              type="submit"
+              disabled={busy || (!outcome && !response.trim())}
+            >
+              {outcome ? "Continue" : pending ? "Retry" : "Check answer"}
+              <span aria-hidden="true">{outcome ? " →" : " ↵"}</span>
+            </button>
+          </div>
+          <span id="answer-format" className="sr-only">
+            Enter a number, decimal or fraction. Negative answers use a minus
+            sign.
+          </span>
+        </form>
+        {keypad && (
+          <div className="math-keypad" aria-label="Math keypad">
+            {[
+              "7",
+              "8",
+              "9",
+              "backspace",
+              "4",
+              "5",
+              "6",
+              "clear",
+              "1",
+              "2",
+              "3",
+              "sign",
+              "0",
+              ".",
+              "/",
+            ].map((value) => (
+              <button
+                type="button"
+                key={value}
+                disabled={locked}
+                className={value === "0" ? "zero-key" : ""}
+                aria-label={
+                  value === "backspace"
+                    ? "Delete last character"
+                    : value === "clear"
+                      ? "Clear answer"
+                      : value === "sign"
+                        ? "Change positive or negative sign"
+                        : value === "/"
+                          ? "Fraction slash"
+                          : value === "."
+                            ? "Decimal point"
+                            : value
+                }
+                onPointerDown={(event) => event.preventDefault()}
+                onClick={() => key(value)}
+              >
+                {value === "backspace"
+                  ? "⌫"
+                  : value === "clear"
+                    ? "Clear"
+                    : value === "sign"
+                      ? "±"
+                      : value}
+              </button>
+            ))}
+          </div>
+        )}
+      </>
+    );
   }
   return (
     <main className="practice-workspace" aria-label="Math practice">
@@ -242,7 +367,7 @@ export function PracticeWorkspace(props: Props) {
                   {outcome.correct
                     ? "You’ve got it."
                     : "A chance to understand."}
-                  {outcome.assisted && <small>Practiced with a hint.</small>}
+                  {outcome.assisted && <small>Practiced with support.</small>}
                 </span>
               </>
             ) : (
@@ -255,104 +380,21 @@ export function PracticeWorkspace(props: Props) {
               </span>
             )}
           </div>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              if (!busy && (outcome || response.trim()))
-                outcome ? props.next() : props.submit();
-            }}
-          >
-            <label htmlFor="answer">{problem.response.label}</label>
-            <div className="workspace-answer-row">
-              <input
-                id="answer"
-                ref={input}
-                autoComplete="off"
-                autoCapitalize="none"
-                spellCheck={false}
-                inputMode={
-                  keypad
-                    ? "none"
-                    : problem.response.kind === "fraction"
-                      ? "text"
-                      : "decimal"
-                }
-                value={response}
-                onChange={(event) => setResponse(event.target.value)}
-                readOnly={locked}
-                aria-describedby="answer-format"
-                placeholder={
-                  problem.response.kind === "fraction"
-                    ? "For example, 3/4"
-                    : "Your answer"
-                }
-                maxLength={100}
-              />
-              <button
-                ref={continueButton}
-                className="answer-action"
-                type="submit"
-                disabled={busy || (!outcome && !response.trim())}
-              >
-                {outcome ? "Continue" : pending ? "Retry" : "Check answer"}
-                <span aria-hidden="true">{outcome ? " →" : " ↵"}</span>
-              </button>
-            </div>
-            <span id="answer-format" className="sr-only">
-              Enter a number, decimal or fraction. Negative answers use a minus
-              sign.
-            </span>
-          </form>
-          {keypad && (
-            <div className="math-keypad" aria-label="Math keypad">
-              {[
-                "7",
-                "8",
-                "9",
-                "backspace",
-                "4",
-                "5",
-                "6",
-                "clear",
-                "1",
-                "2",
-                "3",
-                "sign",
-                "0",
-                ".",
-                "/",
-              ].map((value) => (
-                <button
-                  type="button"
-                  key={value}
-                  disabled={locked}
-                  className={value === "0" ? "zero-key" : ""}
-                  aria-label={
-                    value === "backspace"
-                      ? "Delete last character"
-                      : value === "clear"
-                        ? "Clear answer"
-                        : value === "sign"
-                          ? "Change positive or negative sign"
-                          : value === "/"
-                            ? "Fraction slash"
-                            : value === "."
-                              ? "Decimal point"
-                              : value
-                  }
-                  onPointerDown={(event) => event.preventDefault()}
-                  onClick={() => key(value)}
-                >
-                  {value === "backspace"
-                    ? "⌫"
-                    : value === "clear"
-                      ? "Clear"
-                      : value === "sign"
-                        ? "±"
-                        : value}
-                </button>
-              ))}
-            </div>
+          {compact ? (
+            <button
+              className="compact-answer-action"
+              ref={continueButton}
+              disabled={busy}
+              onClick={() => (outcome ? props.next() : setEntering(true))}
+            >
+              {outcome
+                ? "Continue →"
+                : response
+                  ? `Your answer: ${response} · Edit`
+                  : "Enter your answer"}
+            </button>
+          ) : (
+            answerControls()
           )}
           <div className="practice-tools">
             {outcome ? (
@@ -377,9 +419,23 @@ export function PracticeWorkspace(props: Props) {
             {lesson && (
               <button
                 className="text-button"
-                onClick={() => setPanel("lesson")}
+                disabled={busy || lessonLoading}
+                onClick={async () => {
+                  setLessonLoading(true);
+                  setLessonError("");
+                  try {
+                    await props.requestLesson();
+                    setPanel("lesson");
+                  } catch {
+                    setLessonError(
+                      "The lesson could not be opened. Please try again.",
+                    );
+                  } finally {
+                    setLessonLoading(false);
+                  }
+                }}
               >
-                The idea
+                {lessonLoading ? "Opening…" : "The idea"}
               </button>
             )}
             {small && (
@@ -399,6 +455,17 @@ export function PracticeWorkspace(props: Props) {
           </div>
         </div>
       </section>
+      {lessonError && (
+        <p className="workspace-error" role="alert">
+          {lessonError}
+        </p>
+      )}
+      {compact && entering && !panel && (
+        <FocusDialog title="Your answer" close={() => setEntering(false)}>
+          <p className="answer-prompt-summary">{problem.prompt}</p>
+          <div className="answer-dock compact-entry">{answerControls()}</div>
+        </FocusDialog>
+      )}
       {panel && (
         <FocusDialog
           title={
@@ -441,7 +508,7 @@ export function PracticeWorkspace(props: Props) {
               </ol>
               {outcome.assisted && (
                 <p>
-                  Practiced with a hint. Independent practice will come next.
+                  Practiced with support. Independent practice will come next.
                 </p>
               )}
               <button

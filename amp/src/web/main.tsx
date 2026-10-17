@@ -387,6 +387,12 @@ function App() {
             pending={!!pending}
             submit={() => void action(submit)}
             next={() => void action(next)}
+            requestLesson={async () => {
+              if (!outcome)
+                await api(`/learners/${learner.id}/lesson-support`, {
+                  problemId: problem.id,
+                });
+            }}
             requestHint={() =>
               void action(async () => {
                 const data = await api<{ hint: string }>(
@@ -479,7 +485,19 @@ function App() {
                         className="secondary"
                         onClick={(event) => {
                           readerTrigger.current = event.currentTarget;
-                          setReadingLesson(l);
+                          void action(async () => {
+                            if (
+                              problem &&
+                              !outcome &&
+                              l.templateIds.includes(problem.templateId)
+                            ) {
+                              await api(
+                                `/learners/${learner.id}/lesson-support`,
+                                { problemId: problem.id },
+                              );
+                            }
+                            setReadingLesson(l);
+                          });
                         }}
                       >
                         Read lesson
@@ -510,18 +528,23 @@ function App() {
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
-              <div className="downloads">
-                {(["lesson", "workbook", "solutions"] as const).map((kind) => (
-                  <button
-                    className="secondary"
-                    key={kind}
-                    disabled={busy}
-                    onClick={() => void action(() => download(kind))}
-                  >
-                    Download {kind} PDF
-                  </button>
-                ))}
-              </div>
+              <details className="reader-downloads">
+                <summary>Download &amp; print</summary>
+                <div className="downloads">
+                  {(["lesson", "workbook", "solutions"] as const).map(
+                    (kind) => (
+                      <button
+                        className="secondary"
+                        key={kind}
+                        disabled={busy}
+                        onClick={() => void action(() => download(kind))}
+                      >
+                        Download {kind} PDF
+                      </button>
+                    ),
+                  )}
+                </div>
+              </details>
               {readingLesson.sections.map((s) => (
                 <section key={s.title}>
                   <h3>{s.title}</h3>
