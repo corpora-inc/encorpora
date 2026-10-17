@@ -49,7 +49,13 @@ const begin = () => ({
   noticeDigest: noticeDigest(p),
   parentAttestation: true,
 });
+const binding = {
+  provider: "synthetic",
+  sender: "notice@example.com",
+  credentialFingerprint: "fixture-credential",
+};
 const transport = (mails: ConsentMail[]) => ({
+  binding,
   async send(m: ConsentMail) {
     mails.push(m);
     return { kind: "accepted" as const, receipt: `fixture-${mails.length}` };
@@ -160,6 +166,7 @@ test(
       const start = new Promise<void>((resolve) => (started = resolve)),
         hold = new Promise<void>((resolve) => (release = resolve));
       const sending = deliverConsentMail(r, {
+        binding,
         async send(m) {
           mails.push(m);
           started();
@@ -247,6 +254,7 @@ test(
     fixture(async (pool, r, mails) => {
       await r.begin("parent", begin());
       await deliverConsentMail(r, {
+        binding,
         async send(m) {
           mails.push(m);
           return { kind: "unknown" };
@@ -257,7 +265,10 @@ test(
         /not_ready/,
       );
       await pool.query("UPDATE amp_consent_outbox SET attempts=8");
-      assert.equal((await r.view("parent")).request?.delivery, "rejected");
+      assert.equal(
+        (await r.view("parent")).request?.delivery,
+        "stopped-unknown",
+      );
       assert.equal(await deliverConsentMail(r, transport(mails)), false);
       await pool.query("UPDATE amp_consent_outbox SET attempts=1");
       await pool.query(
@@ -386,6 +397,7 @@ test(
       const held = new Promise<void>((resolve) => (entered = resolve)),
         resume = new Promise<void>((resolve) => (release = resolve));
       const first = deliverConsentMail(r, {
+        binding,
         async send(mail) {
           mails.push(mail);
           entered();
@@ -415,5 +427,248 @@ test(
       await deliverConsentMail(r, transport(mails));
       assert.equal(mails[2]!.recipient, "replacement@example.com");
       assert.equal(await active(pool), false);
+    }),
+);
+
+test(
+  "dispatch binding commits before external send; retries are exact and credential rotation stops ambiguity",
+  enabled,
+  async () =>
+    fixture(async (pool, r, mails) => {
+      await r.begin("parent", begin());
+      let release!: () => void, started!: () => void;
+      const entered = new Promise<void>((resolve) => (started = resolve)),
+        hold = new Promise<void>((resolve) => (release = resolve));
+      const sending = deliverConsentMail(r, {
+        binding,
+        async send(m) {
+          mails.push(m);
+          started();
+          await hold;
+          return { kind: "unknown" };
+        },
+      });
+      await entered;
+      const row = (
+        await pool.query(
+          "SELECT first_dispatch_at,delivery_binding,attempts FROM amp_consent_outbox",
+        )
+      ).rows[0];
+      assert.ok(row.first_dispatch_at instanceof Date);
+      assert.equal(row.attempts, 1);
+      assert.equal(row.delivery_binding.sender, binding.sender);
+      assert.equal(
+        row.delivery_binding.credentialFingerprint,
+        binding.credentialFingerprint,
+      );
+      assert.equal(
+        JSON.stringify(row.delivery_binding).includes("parent@example.com"),
+        false,
+      );
+      assert.equal(await deliverConsentMail(r, transport(mails)), false);
+      await assert.rejects(
+        pool.query("UPDATE amp_consent_outbox SET first_dispatch_at=now()"),
+        /immutable/,
+      );
+      release();
+      await sending;
+      await pool.query(
+        "UPDATE amp_consent_outbox SET available_at=now()-interval '1 second'",
+      );
+      await deliverConsentMail(r, {
+        binding,
+        async send(m) {
+          assert.deepEqual(m, mails[0]);
+          mails.push(m);
+          return { kind: "unknown" };
+        },
+      });
+      const again = (
+        await pool.query(
+          "SELECT first_dispatch_at,delivery_binding FROM amp_consent_outbox",
+        )
+      ).rows[0];
+      assert.deepEqual(again, {
+        first_dispatch_at: row.first_dispatch_at,
+        delivery_binding: row.delivery_binding,
+      });
+      await pool.query(
+        "UPDATE amp_consent_outbox SET available_at=now()-interval '1 second'",
+      );
+      assert.equal(
+        await deliverConsentMail(r, {
+          binding: { ...binding, credentialFingerprint: "rotated" },
+          async send() {
+            assert.fail("Changed credentials must not retry an uncertain send");
+          },
+        }),
+        true,
+      );
+      assert.equal(
+        (await r.view("parent")).request?.delivery,
+        "stopped-unknown",
+      );
+      assert.equal(
+        (await pool.query("SELECT stopped_reason FROM amp_consent_outbox"))
+          .rows[0].stopped_reason,
+        "binding-changed",
+      );
+      assert.equal(await active(pool), false);
+    }),
+);
+
+test(
+  "expired idempotency window and historical attempts stop without external dispatch",
+  enabled,
+  async () =>
+    fixture(async (pool, r) => {
+      const input = begin();
+      await r.begin("parent", input);
+      await pool.query("UPDATE amp_consent_outbox SET attempts=1");
+      let calls = 0;
+      const mock = {
+        binding,
+        async send() {
+          calls++;
+          return { kind: "unknown" as const };
+        },
+      };
+      await deliverConsentMail(r, mock);
+      assert.equal(calls, 0);
+      assert.equal(
+        (await pool.query("SELECT stopped_reason FROM amp_consent_outbox"))
+          .rows[0].stopped_reason,
+        "historical-unknown",
+      );
+      await new FamilyRepository(pool).withdraw("parent");
+      await r.begin("parent", begin());
+      // An aged first boundary is installed before dispatch; no recorded boundary is mutated.
+      const record = (
+        await pool.query(
+          "SELECT r.*,o.id AS outbox_id FROM amp_consent_requests r JOIN amp_consent_outbox o ON o.request_id=r.id WHERE r.phase='awaiting-initial'",
+        )
+      ).rows[0];
+      const { consentMail } = await import("../src/parent-consent/mail.js");
+      const { digest } = await import("../src/parent-consent/crypto.js");
+      const mail = consentMail(p, {
+        id: record.id,
+        recipient: r.secrets!.decrypt(record.recipient_ciphertext, record.id),
+        token: r.secrets!.token(r.binding(record), "initial"),
+        stage: "initial",
+        idempotencyKey: `amp-consent:${record.outbox_id}`,
+        noticeHash: record.notice_digest,
+      });
+      await pool.query(
+        "UPDATE amp_consent_outbox SET first_dispatch_at=now()-interval '23 hours',delivery_binding=$2,attempts=1 WHERE id=$1",
+        [record.outbox_id, { ...binding, payloadDigest: digest(mail) }],
+      );
+      await deliverConsentMail(r, mock);
+      assert.equal(calls, 0);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_consent_outbox WHERE id=$1",
+            [record.outbox_id],
+          )
+        ).rows[0].stopped_reason,
+        "retry-window-ended",
+      );
+    }),
+);
+
+test(
+  "delivery migration preserves historical ambiguous records and closes their retry boundary",
+  enabled,
+  async () =>
+    fixture(async (pool, r) => {
+      await r.begin("parent", begin());
+      await pool.query(
+        "DROP TRIGGER amp_consent_dispatch_immutable ON amp_consent_outbox; DROP FUNCTION amp_preserve_consent_dispatch(); ALTER TABLE amp_consent_outbox DROP COLUMN first_dispatch_at,DROP COLUMN delivery_binding,DROP COLUMN stopped_at,DROP COLUMN stopped_reason; DELETE FROM amp_migrations WHERE name='0012-consent-delivery.sql'; UPDATE amp_consent_outbox SET attempts=1",
+      );
+      const before = (
+        await pool.query("SELECT id,request_id,stage FROM amp_consent_outbox")
+      ).rows;
+      await migrate(pool.options.connectionString!);
+      const after = (
+        await pool.query("SELECT id,request_id,stage FROM amp_consent_outbox")
+      ).rows;
+      assert.deepEqual(after, before);
+      const row = (
+        await pool.query(
+          "SELECT first_dispatch_at,delivery_binding,stopped_reason FROM amp_consent_outbox",
+        )
+      ).rows[0];
+      assert.deepEqual(row, {
+        first_dispatch_at: null,
+        delivery_binding: null,
+        stopped_reason: "historical-unknown",
+      });
+      assert.equal(
+        (await r.view("parent")).request?.delivery,
+        "stopped-unknown",
+      );
+    }),
+);
+
+test(
+  "a stalled transport is aborted and cannot hold the worker beyond its deadline",
+  enabled,
+  async () =>
+    fixture(async (pool, r) => {
+      await r.begin("parent", begin());
+      let aborted = false;
+      const started = performance.now();
+      await deliverConsentMail(r, {
+        binding,
+        async send(_mail, { signal }) {
+          signal.addEventListener("abort", () => {
+            aborted = true;
+          });
+          return new Promise(() => {});
+        },
+      });
+      assert.equal(aborted, true);
+      assert.ok(performance.now() - started < 12000);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT accepted_at,attempts,lease_id FROM amp_consent_outbox",
+          )
+        ).rows[0].accepted_at,
+        null,
+      );
+      assert.equal(await active(pool), false);
+    }),
+);
+
+test(
+  "definitive first rejection stops; provider conflict stays explicitly uncertain",
+  enabled,
+  async () =>
+    fixture(async (pool, r) => {
+      for (const kind of ["rejected", "conflict"] as const) {
+        const account = `parent-${kind}`;
+        await r.begin(account, begin());
+        await deliverConsentMail(r, {
+          binding,
+          async send() {
+            return { kind };
+          },
+        });
+        assert.equal(
+          (await r.view(account)).request?.delivery,
+          kind === "rejected" ? "rejected" : "stopped-unknown",
+        );
+        assert.equal(await active(pool, account), false);
+      }
+      assert.equal(
+        await deliverConsentMail(r, {
+          binding,
+          async send() {
+            assert.fail("Terminal deliveries cannot retry");
+          },
+        }),
+        false,
+      );
     }),
 );

@@ -17,7 +17,11 @@ await writeFile(
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
-  server: { host: "127.0.0.1", port: 4386, strictPort: true },
+  server: {
+    host: "127.0.0.1",
+    port: Number(process.env.AMP_CONSENT_UI_PORT ?? 4386),
+    strictPort: true,
+  },
 });
 await vite.listen();
 const browser = await (
@@ -106,7 +110,7 @@ try {
       return route.fulfill({ json: snapshot }).catch(() => {});
     });
     await page.goto(
-      "http://127.0.0.1:4386/artifacts/consent-review/index.html",
+      `http://127.0.0.1:${process.env.AMP_CONSENT_UI_PORT ?? 4386}/artifacts/consent-review/index.html`,
     );
     await page
       .getByRole("heading", { name: "Your permission comes first" })
@@ -153,6 +157,22 @@ try {
     await page.getByRole("heading", { name: "Your privacy notice" }).waitFor();
     assert.equal(writes, 1);
     await capture("first-email");
+    view.request!.delivery = "stopped-unknown";
+    await page.getByRole("button", { name: "Refresh status" }).click();
+    await page
+      .getByRole("button", { name: "Withdraw this request", exact: true })
+      .waitFor();
+    await capture("delivery-stopped");
+    await page
+      .getByRole("button", { name: "Withdraw this request", exact: true })
+      .click();
+    await page
+      .getByRole("button", { name: "Email my privacy notice" })
+      .waitFor();
+    assert.equal(view.request!.phase, "withdrawn");
+    view.request!.phase = "awaiting-initial";
+    view.request!.delivery = "accepted";
+
     const challenge = {
       requestId: view.request!.id,
       stage: "initial",

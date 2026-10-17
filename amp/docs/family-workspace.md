@@ -10,7 +10,7 @@ Phone and landscape browser checks exercise current and future terms, revoked hi
 
 ## Consent entry
 
-Family → Privacy → Learning consent opens a separate focused workspace for reviewing the notice, requesting enrollment, responding to email links, and reviewing current consent. Enrollment availability and existing effective consent are separate states. The application registers the workflow with delivery disabled because it includes no production mail adapter. A private policy or cryptographic secret alone does not enable enrollment or establish legal compliance; see [parent consent enrollment](parent-consent.md).
+Family → Privacy → Learning consent opens a separate focused workspace for reviewing the notice, requesting enrollment, responding to email links, and reviewing current consent. Enrollment availability and existing effective consent are separate states. Delivery is disabled by default. The opt-in Resend worker requires explicit provider configuration and a separately installed reviewed policy. A private policy or cryptographic secret alone does not enable enrollment or establish legal compliance; see [parent consent enrollment](parent-consent.md).
 
 Consent email fragments are removed before browser authentication initializes. The challenge is held in memory, never browser storage or a purchase-return record. After an external sign-in redirect, reopen the email link. Signing out or changing parent accounts clears the held challenge; renewing the same parent’s access token preserves the current workspace. Returning to family settings restores focus to its consent action.
 
