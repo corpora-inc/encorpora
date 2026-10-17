@@ -13,7 +13,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "tsx --test tests/*.test.ts",
     "test:db": "tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts",
+    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && npm run test:funding-ui",
     "tsc": "tsc --noEmit",
     "build": "npm run tsc && vite build",
     "audit": "tsx scripts/audit.ts",
@@ -25,7 +25,9 @@
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
     "test:family-ui": "tsx scripts/verify-family-ui.ts && tsx scripts/verify-session-ui.ts",
-    "test:book-ui": "tsx scripts/verify-book-ui.ts"
+    "test:book-ui": "tsx scripts/verify-book-ui.ts",
+    "test:funding-ui": "tsx scripts/verify-funding-ui.ts",
+    "funding:import": "tsx scripts/funding-import.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",
@@ -33,6 +35,7 @@
     "fastify": "^5.6.0",
     "jose": "^6.1.0",
     "oidc-client-ts": "^3.5.0",
+    "pdf-lib": "1.17.1",
     "pg": "^8.16.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
