@@ -13,6 +13,7 @@ export const learners = pgTable(
     id: text("id").primaryKey(),
     accountId: text("account_id").notNull(),
     name: text("name").notNull(),
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()
       .notNull(),

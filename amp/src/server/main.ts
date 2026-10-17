@@ -1,3 +1,4 @@
+import { registerFamilyRoutes } from "../family/routes.js";
 import { buildApp } from "./app";
 import { developmentAuth, oidcAuth } from "./auth";
 import { PostgresRepository } from "./repository";
@@ -16,7 +17,9 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   throw new Error(
     "Hosted pilot requires configured consent, privacy, support and identity flows; see deployment documentation",
   );
-const repository = new PostgresRepository(required("AMP_DATABASE_URL"));
+const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
+  development,
+});
 const authenticate = development
   ? developmentAuth()
   : oidcAuth({
@@ -29,6 +32,11 @@ const authenticate = development
           : "rfc9068",
     });
 const app = buildApp({ repository, authenticate, development, logger: true });
+await registerFamilyRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  development,
+});
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {
