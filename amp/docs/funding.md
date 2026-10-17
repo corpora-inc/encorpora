@@ -38,11 +38,7 @@ Official references: [Arizona](https://www.azed.gov/esa/classwallet),
 [NC ESA+](https://k12.ncseaa.edu/the-education-student-accounts/current-families/allowable-expenses/),
 [West Virginia directory](https://hopescholarshipwv.gov/Home/Schools/Participating-Schools/portalid/7).
 
-Step Up describes supplier interest, vetting, an onboarding call, Ariba setup,
-questionnaire, test catalog, test orders/invoices/credit memos, and live catalog
-publication. Its page contains overlapping process descriptions: obtain the
-current onboarding checklist before implementing the integration.
-[Step Up supplier onboarding](https://www.sufs.org/schools-and-providers/vendors/)
+The [current linked supplier intake](https://survey.alchemer.com/s3/7190874/MyScholarShop-Supplier-Interest-Form) identifies Mirakl, while the [supplier landing page](https://www.sufs.org/schools-and-providers/vendors/) also contains Ariba instructions. Obtain the issued onboarding packet before selecting an integration. The [first-wave application dossiers](esa-dossiers/README.md), checked October 17, 2026, record this conflict, Arizona contract-year and named-student document requirements, and Texas portal-only transaction documents and software caps. They include unsent product/application/document drafts and explicit company readiness gaps.
 
 ClassWallet supports ecommerce plugins, cXML and Pay by ClassWallet API, with a
 percentage processing fee. The actual contracted fee must be obtained;
