@@ -1,6 +1,6 @@
 # ESA supplier dossiers
 
-These unsent application drafts help Corpora prepare an educational math product for Arizona ESA, Florida PEP and FES-UA through Step Up, Texas TEFA, Alabama CHOOSE, North Carolina ESA+, West Virginia Hope, Iowa Students First, Georgia Promise Louisiana GATOR, Arkansas EFA, Utah Fits All, Wyoming ESA, Indiana ESA, New Hampshire EFA and South Carolina ESTF. Evidence was checked October 17, 2026. No document establishes Corpora approval, a live listing, an accepted annual term, or a reimbursement guarantee. Private identity, banking and tax records belong in the restricted company record system, never this public repository.
+These unsent application drafts help Corpora prepare an educational math product for Arizona ESA, Florida PEP and FES-UA through Step Up, Texas TEFA, Alabama CHOOSE, North Carolina ESA+, West Virginia Hope, Iowa Students First, Georgia Promise, Louisiana GATOR, Arkansas EFA, Utah Fits All, Wyoming ESA, Indiana ESA, New Hampshire EFA and South Carolina ESTF. Evidence was checked October 17, 2026. No document establishes Corpora approval, a live listing, an accepted annual term, or a reimbursement guarantee. Private identity, banking and tax records belong in the restricted company record system, never this public repository.
 
 The [combined structured requirements](../../src/funding/provider-dossiers.ts) distinguish ten dimensions for each program: vendor, software subscription, digital curriculum, printable download, bundle, term, listing, payment, invoice and refund. Each conclusion names its source and section; unresolved questions are explicit. The [audit](../../src/funding/dossier.ts) rejects missing dimensions, broken evidence references, invalid/future dates and evidence older than 90 days. This internal refresh interval is not an agency rule. The audit checks evidence organization, not factual truth, eligibility or legal compliance; recheck sources immediately before submission even when the audit passes.
 
@@ -47,6 +47,8 @@ The [Iowa, Georgia and Louisiana supplement](odyssey-state-routes.md) qualifies 
 The [Arkansas, Utah and Wyoming supplement](ar-ut-wy-routes.md) distinguishes publisher intake, preapproval, award-year timing, digital delivery and state-specific reimbursement limits.
 
 The [Indiana, New Hampshire and South Carolina supplement](in-nh-sc-routes.md) distinguishes monthly curriculum subscriptions, retailer versus instructional-provider requirements and portal-only payments.
+
+The [Missouri, Mississippi and Tennessee qualification supplement](mo-ms-tn.md) records Missouri product/subscription eligibility and school-year prepayment limits, Tennessee EFS standalone-software exclusion, and explicit document-retrieval gaps for Mississippi ESA, Tennessee IEA and Tennessee ESA. The latter three are incomplete qualification records, not submission-ready packets.
 
 ## Working packet
 
