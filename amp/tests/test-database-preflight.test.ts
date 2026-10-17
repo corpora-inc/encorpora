@@ -70,6 +70,12 @@ test("direct fixture entrypoints reject preview targets before setup", async () 
 
 test("fixture migration validates its explicit target independently of environment", async () => {
   const { migrate } = await import("../scripts/test-database.js");
+  for (const missing of [undefined, null, "", " "]) {
+    await assert.rejects(
+      migrate(missing as unknown as string),
+      /explicit fixture database URL/,
+    );
+  }
   await assert.rejects(
     migrate("postgres://fixture:fixture@127.0.0.1:1/amp"),
     /shared \/amp preview/,
