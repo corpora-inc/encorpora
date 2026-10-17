@@ -13,7 +13,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "tsx --test tests/*.test.ts",
     "test:db": "tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui",
+    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:starting-point-ui",
     "tsc": "tsc --noEmit",
     "build": "npm run tsc && vite build",
     "audit": "tsx scripts/audit.ts",
@@ -35,7 +35,8 @@
     "test:consent-ui": "tsx scripts/verify-consent-ui.ts",
     "consent:policy": "tsx scripts/consent-policy.ts",
     "test:purchase-app-ui": "tsx scripts/verify-purchase-app-ui.ts",
-    "test:native-ui": "tsx scripts/verify-native-preview.ts"
+    "test:native-ui": "tsx scripts/verify-native-preview.ts",
+    "test:starting-point-ui": "tsx scripts/verify-starting-point-ui.ts"
   },
   "dependencies": {
     "@fastify/rate-limit": "^10.3.0",

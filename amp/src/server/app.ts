@@ -17,6 +17,7 @@ import { ApiError, type Outcome, type Repository } from "./repository";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
 import { lessons } from "../content/lessons";
+import { startingBands } from "../learning/starting-point";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
 const attemptSchema = z
@@ -109,6 +110,27 @@ export function buildApp(options: {
       skills: await tx.progress([...new Set(templates.map((t) => t.skillId))]),
     }));
   });
+  app.get("/api/v1/learners/:learnerId/starting-point", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      const { band, policyVersion } = await tx.startingPoint();
+      return { band, policyVersion };
+    });
+  });
+  app.post("/api/v1/learners/:learnerId/starting-point", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { band } = z
+      .object({ band: z.enum(startingBands) })
+      .strict()
+      .parse(request.body);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      await tx.setStartingPoint(band);
+      const { policyVersion } = await tx.startingPoint();
+      return { band, policyVersion };
+    });
+  });
   app.post("/api/v1/learners/:learnerId/batches", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -156,6 +178,7 @@ export function buildApp(options: {
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
+            startingPoint: await tx.startingPoint(),
             count: input.count,
             seed: randomUUID(),
           });

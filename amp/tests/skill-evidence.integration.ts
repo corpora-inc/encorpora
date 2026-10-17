@@ -126,6 +126,7 @@ test(
       await insert(pool, outcome(9000, "foreign-skill"), "other");
       const digest = await factsDigest(pool);
       await pool.query(await sql("0008-skill-evidence.sql"));
+      await pool.query(await sql("0010-starting-point.sql"));
       assert.equal(await factsDigest(pool), digest);
       const expected = async () =>
         projectSkillEvidence(
@@ -192,6 +193,7 @@ test(
   async () =>
     fixture(async (pool, learning) => {
       await pool.query(await sql("0008-skill-evidence.sql"));
+      await pool.query(await sql("0010-starting-point.sql"));
       const client = await pool.connect();
       try {
         await client.query("BEGIN");

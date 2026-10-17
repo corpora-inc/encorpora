@@ -267,6 +267,73 @@ try {
       await page.close();
     }
   }
+  {
+    const { page, errors } = await fixturePage((token) =>
+      token === "Bearer old-token"
+        ? summary("Old learner", "old-child")
+        : summary("Current learner"),
+    );
+    let arrived!: () => void, release!: () => void;
+    const received = new Promise<void>((resolve) => {
+      arrived = resolve;
+    });
+    const proceed = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    try {
+      await page.route("**/starting-point", async (route) => {
+        if (route.request().method() === "GET")
+          return route.fulfill({ json: { band: null, policyVersion: null } });
+        arrived();
+        await proceed;
+        await route.fulfill({ json: { band: "9–12", policyVersion: 1 } });
+      });
+      await open(page);
+      await page.evaluate(() =>
+        (window as any).sessionReview.emit({
+          token: "old-token",
+          accountId: "old-parent",
+        }),
+      );
+      await page.locator(".starting-point-trigger").click();
+      await page.waitForFunction(
+        () =>
+          !(
+            document.querySelector(
+              ".starting-point-options button",
+            ) as HTMLButtonElement
+          )?.disabled,
+      );
+      await page.getByRole("button", { name: /Algebra & functions/ }).click();
+      await received;
+      await page.evaluate(() =>
+        (window as any).sessionReview.emit({
+          token: "new-token",
+          accountId: "current-parent",
+        }),
+      );
+      await page
+        .getByRole("option", { name: "Current learner", exact: true })
+        .waitFor({ state: "attached" });
+      const oldResponse = page.waitForResponse(
+        (response) =>
+          response.url().endsWith("/starting-point") &&
+          response.request().method() === "POST",
+      );
+      release();
+      await (await oldResponse).finished();
+      await settledRender(page);
+      assert.equal(await page.locator(".starting-point-workspace").count(), 0);
+      assert.equal(
+        await page.locator(".starting-point-trigger").innerText(),
+        "Choose a starting point→",
+      );
+      assert.deepEqual(errors, []);
+    } finally {
+      release();
+      await page.close();
+    }
+  }
   console.log(
     "Session UI: obsolete bootstrap success/error and held family metadata cannot replace newer identity or family state.",
   );

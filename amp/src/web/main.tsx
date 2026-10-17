@@ -1,4 +1,6 @@
 import { consumeInitialConsentChallenge } from "./consent-entry";
+import { StartingPointPicker, startingPointNames } from "./StartingPointPicker";
+import type { StartingBand } from "../learning/starting-point";
 import { nativeRuntime } from "./native-runtime";
 import { NativePreview } from "./NativePreview";
 import { ParentConsentCenter } from "./ParentConsentCenter";
@@ -25,7 +27,7 @@ import { readerCapabilities } from "../books/capabilities";
 import type { BookSummary } from "../books/catalog";
 import type { FractionBook } from "../../books/fraction-field-guide/schema";
 import { product } from "../product";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import type { PublicProblem, TemplateMetadata } from "../math/contracts";
 import type { Learner, Outcome } from "../server/repository";
@@ -63,6 +65,9 @@ function App() {
     [catalog, setCatalog] = useState<Catalog | null>(null),
     [learners, setLearners] = useState<Pick<Learner, "id" | "name">[]>([]),
     [learner, setLearner] = useState<Pick<Learner, "id" | "name"> | null>(null);
+  const startingPointReturn = useRef(false);
+  const [startingPicker, setStartingPicker] = useState(false);
+  const [startingBand, setStartingBand] = useState<StartingBand | null>(null);
   const [familyOpen, setFamilyOpen] = useState(false);
   const [consentOpen, setConsentOpen] = useState(false);
   const [consentChallenge, setConsentChallenge] =
@@ -180,6 +185,9 @@ function App() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
+    startingPointReturn.current = false;
+    setStartingPicker(false);
+    setStartingBand(null);
     setFamilyOpen(!!openingConsent);
     setFamilySummary(null);
     setBusy(false);
@@ -366,10 +374,31 @@ function App() {
     progressLessonReturn.current = null;
     if (learner) void refreshProgress();
   }, [learner?.id]);
+  useEffect(() => {
+    setStartingPicker(false);
+  }, [tab, familyOpen, learner?.id]);
+  useEffect(() => {
+    setStartingBand(null);
+  }, [learner?.id]);
+  useLayoutEffect(() => {
+    if (!startingPicker && startingPointReturn.current) {
+      startingPointReturn.current = false;
+      document
+        .querySelector<HTMLButtonElement>(".starting-point-trigger")
+        ?.focus({ preventScroll: true });
+    }
+  }, [startingPicker]);
+  function closeStartingPoint() {
+    startingPointReturn.current = true;
+    setStartingPicker(false);
+  }
   function invalidateLearning() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
+    startingPointReturn.current = false;
+    setStartingPicker(false);
+    setStartingBand(null);
     setLearner(null);
     setLearners([]);
     setFamilySummary(null);
@@ -742,7 +771,7 @@ function App() {
           </div>
         </div>
       )}
-      {!familyOpen && learner && (
+      {!familyOpen && learner && !startingPicker && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
             <button
@@ -919,7 +948,18 @@ function App() {
           download={() => downloadBook(readingBook.book.id)}
         />
       ) : tab === "practice" ? (
-        problem ? (
+        startingPicker ? (
+          <StartingPointPicker
+            key={learner.id}
+            learnerId={learner.id}
+            api={api}
+            onClose={closeStartingPoint}
+            onSaved={(band) => {
+              setStartingBand(band);
+              closeStartingPoint();
+            }}
+          />
+        ) : problem ? (
           <PracticeWorkspace
             key={problem.id}
             problem={problem}
@@ -975,9 +1015,23 @@ function App() {
                 <em>A new way to think.</em>
               </h1>
               <p>
-                A mix of ideas, familiar ground, and fresh challenges. Your
-                practice changes with you.
+                Familiar ground. Fresh challenges. A mix that changes with you.
               </p>
+              <button
+                className="starting-point-trigger"
+                aria-label={
+                  startingBand
+                    ? `Starting point: ${startingPointNames[startingBand]}`
+                    : "Choose a starting point"
+                }
+                disabled={busy}
+                onClick={() => setStartingPicker(true)}
+              >
+                {startingBand
+                  ? startingPointNames[startingBand]
+                  : "Choose a starting point"}
+                <span aria-hidden="true">→</span>
+              </button>
               <button
                 className="start-mix"
                 disabled={busy}
