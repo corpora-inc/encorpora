@@ -1516,3 +1516,30 @@ html[data-input="pointer"] :focus-visible {
 .shell .family-center > .family-body {
   padding-inline: 0;
 }
+/* Answer messages float just above the answer row; nothing moves. */
+.answer-dock {
+  position: relative;
+}
+.answer-error {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 4;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 8px 12px;
+  border: 1px solid #efd6c8;
+  border-radius: 10px;
+  background: var(--bad-soft);
+  color: #8a3a1c;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px #183e3a14;
+  animation: feedback-in 0.16s ease-out;
+}
+/* Proportional figures in sentences: tabular digits leave gaps in "11". */
+.problem-content .question {
+  font-variant-numeric: lining-nums proportional-nums;
+}

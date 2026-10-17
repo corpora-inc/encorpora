@@ -881,7 +881,7 @@ function App() {
           ))}
         </nav>
       )}
-      {error && (
+      {error && !immersive && (
         <div role="alert" className="error">
           {error}
         </div>
@@ -1075,6 +1075,8 @@ function App() {
               catalog?.skills.find((skill) => skill.id === problem.skillId)
                 ?.strand
             }
+            error={error}
+            clearError={() => setError("")}
             calculator={(() => {
               const skill = catalog?.skills.find(
                 (entry) => entry.id === problem.skillId,
