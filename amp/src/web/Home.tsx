@@ -24,19 +24,9 @@ export function Home(props: Props) {
         </button>
       </section>
       <section className="frontier-map" aria-label="Where you are">
-        <div className="frontier-scale" aria-hidden="true">
-          {(
-            [
-              ["Counting", 0],
-              ["Fractions", 4],
-              ["Algebra", 9],
-              ["SAT", MAX],
-            ] as const
-          ).map(([label, grade]) => (
-            <span key={label} style={{ left: `${(grade / MAX) * 100}%` }}>
-              {label}
-            </span>
-          ))}
+        <div className="frontier-heading">
+          <h2>Where you are</h2>
+          <p>Each line runs from counting to SAT math.</p>
         </div>
         <ul>
           {props.strands.map((strand) => {

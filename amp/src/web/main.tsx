@@ -148,7 +148,6 @@ function App() {
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
   const libraryScroll = useRef(0);
-  usePracticeViewport(!!learner || familyOpen);
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
@@ -704,10 +703,19 @@ function App() {
   // Practice is immersive: no header or tabs, one exit back to everything else.
   const immersive =
     !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
+  // Home and Lessons are ordinary pages that scroll with the window; practice,
+  // reading, progress and family settings own a fixed device-sized screen.
+  const flowPage =
+    !!learner &&
+    !familyOpen &&
+    !readingBook &&
+    !immersive &&
+    (tab === "practice" || tab === "library");
+  usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
   return (
     <div
-      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${immersive ? "immersive" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
         <a className="brand" href="/" aria-label={`${product.name} home`}>

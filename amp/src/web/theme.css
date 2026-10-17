@@ -767,17 +767,6 @@ header {
 }
 
 /* Home */
-.frontier-scale span {
-  position: absolute;
-  transform: translateX(-50%);
-  white-space: nowrap;
-}
-.frontier-scale span:first-child {
-  transform: none;
-}
-.frontier-scale span:last-child {
-  transform: translateX(-100%);
-}
 .app-shell > main.home {
   flex: 1;
   min-height: 0;
@@ -807,16 +796,6 @@ header {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--surface);
-}
-.frontier-scale {
-  position: relative;
-  height: 16px;
-  margin: 0 0 12px calc(min(132px, 34%) + 16px);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-3);
 }
 .frontier-map ul {
   display: grid;
@@ -878,9 +857,6 @@ header {
     padding: 18px 16px;
     border-radius: 16px;
   }
-  .frontier-scale {
-    margin-left: calc(34% + 12px);
-  }
   .frontier-map li {
     gap: 12px;
   }
@@ -893,4 +869,172 @@ header {
 .figure .base-cell {
   stroke: #7fa596;
   stroke-width: 0.6;
+}
+
+/* ── Page layout ──────────────────────────────────────────────────────────
+   Home and Lessons are ordinary pages: the window scrolls, the header and
+   tabs stay pinned, and every block sits on one centred column. */
+.shell.app-shell.flow {
+  position: static;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 100dvh;
+  padding: 0 0 env(safe-area-inset-bottom, 0px);
+}
+.shell.app-shell.flow > header,
+.shell.app-shell.flow > nav,
+.shell.app-shell.flow > main,
+.shell.app-shell.flow > .error {
+  width: min(calc(100% - 32px), 800px);
+  margin-inline: auto;
+}
+.shell.app-shell.flow > header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 64px;
+  min-height: 64px;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+}
+.shell.app-shell.flow > nav {
+  position: sticky;
+  top: 64px;
+  z-index: 20;
+  box-shadow: 0 0 0 6px var(--bg);
+}
+.shell.app-shell.flow > main {
+  flex: none;
+  min-height: 0;
+  overflow: visible;
+  padding: 24px 0 64px;
+}
+
+/* Focus: a thin ring for keyboard users, nothing after a click. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Lessons */
+.lesson-sheet {
+  max-width: none;
+}
+.topic-list {
+  grid-auto-rows: 1fr;
+}
+.topic-list button {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1.3;
+}
+.lesson-example .figure {
+  max-width: 460px;
+  margin-inline: auto;
+}
+.lesson-watch strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.lesson-example,
+.lesson-watch {
+  background: var(--surface-2);
+}
+.frontier-heading {
+  margin-bottom: 16px;
+}
+.frontier-heading h2 {
+  margin: 0 0 2px;
+  font-size: 17px;
+}
+.frontier-heading p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+.shell .lesson-sheet h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: 28px;
+}
+.account-menu summary {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  line-height: 1;
+}
+.app-shell .account select {
+  height: 44px;
+}
+.feedback .practice-tools {
+  justify-content: center;
+}
+
+/* Every screen shares one column so the header and tabs never move; practice
+   gets a wider, centred focus column. */
+.shell.app-shell:not(.flow):not(.reading-shell):not(.immersive) {
+  left: 0;
+  right: 0;
+  max-width: 832px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+.shell.app-shell.immersive {
+  left: 0;
+  right: 0;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+/* One header geometry on every screen; the scrollbar gutter is always reserved
+   so the centred column never shifts when a page starts or stops scrolling. */
+html {
+  scrollbar-gutter: stable;
+}
+.shell.app-shell > header {
+  height: 60px;
+  min-height: 60px;
+}
+.shell.app-shell.flow {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.shell.app-shell.flow > header {
+  top: env(safe-area-inset-top, 0px);
+  height: 60px;
+  min-height: 60px;
+  padding-top: 0;
+}
+.shell.app-shell.flow > nav {
+  top: calc(60px + env(safe-area-inset-top, 0px));
+}
+@media (max-width: 650px) {
+  .shell.app-shell:not(.flow):not(.immersive):not(.reading-shell) {
+    padding-inline: 16px;
+  }
+}
+/* Short landscape screens keep a compact header on every page type. */
+@media (max-height: 620px) and (min-width: 651px) {
+  .shell.app-shell > header,
+  .shell.app-shell.flow > header {
+    height: 48px;
+    min-height: 48px;
+  }
+  .shell.app-shell.flow > nav {
+    top: calc(48px + env(safe-area-inset-top, 0px));
+  }
 }

@@ -1,6 +1,7 @@
 import { generateProblem, templates } from "../math/engine";
 import type { SemanticFigure } from "../math/contracts";
 import { lessons } from "./lessons";
+import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
 
 /** One short lesson per problem type: what is given, what to find, how to
@@ -53,7 +54,7 @@ export function problemLesson(
     response.kind === "choice"
       ? (response.options.find((option) => option.id === example.answer)
           ?.label ?? example.answer)
-      : example.answer;
+      : displayAnswer(example.answer);
   const authored = methods[templateId];
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(templateId),

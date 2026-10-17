@@ -54,3 +54,14 @@ export function polish(text: string): string {
       .replace(/(^|[^\d./])1([a-z])(?![a-z])/g, "$1$2")
   );
 }
+
+/** Shows tenths, hundredths and thousandths as decimals: 8379/100 → 83.79.
+ * Other fractions stay fractions; they are the answer's natural form. */
+export function displayAnswer(value: string): string {
+  const match = /^(-?\d+)\/(10|100|1000)$/.exec(value);
+  if (!match) return value;
+  const places = match[2]!.length - 1;
+  return (Number(match[1]) / Number(match[2]))
+    .toFixed(places)
+    .replace(/\.?0+$/, "");
+}

@@ -393,13 +393,12 @@ export function ProgressWorkspace({
           <>
             <header className="progress-heading">
               <div>
-                <p className="eyebrow">A PICTURE OF YOUR PRACTICE</p>
-                <h1>Your progress</h1>
+                <h1>Progress</h1>
                 <p>
                   {snapshot
                     ? practiced.length
                       ? `${practiced.length} ideas practiced · ${practiced.reduce((sum, { evidence }) => sum + evidence.attempts, 0)} problems tried`
-                      : "Every new idea starts somewhere."
+                      : "No problems answered yet."
                     : "Gathering your practice history…"}
                 </p>
               </div>
@@ -408,7 +407,7 @@ export function ProgressWorkspace({
                 disabled={busy || loading}
                 onClick={() => onPractice()}
               >
-                Start a mix <span aria-hidden="true">↗</span>
+                Go
               </button>
             </header>
             {snapshot && (
@@ -521,17 +520,17 @@ export function ProgressWorkspace({
                   </svg>
                   <h2>
                     {view.filter === "review"
-                      ? "Room for something different"
+                      ? "Nothing due for review"
                       : view.filter === "explore"
-                        ? "You’ve tried these ideas"
-                        : "Let curiosity lead"}
+                        ? "Every idea here is practiced"
+                        : "Nothing practiced yet"}
                   </h2>
                   <p>
                     {view.filter === "review"
-                      ? "No review is suggested here right now. Your mix can introduce another idea."
+                      ? "Spaced review will bring ideas back when they are due."
                       : view.filter === "explore"
-                        ? "Choose another area or revisit an idea you’ve practiced."
-                        : "Your practice will build this picture. Start with a varied mix of ideas."}
+                        ? "Choose another area to find new ideas."
+                        : "Practiced ideas appear here."}
                   </p>
                 </div>
               )}
@@ -548,7 +547,7 @@ export function ProgressWorkspace({
               <span aria-live="polite">
                 {filtered.length
                   ? `${page * capacity + 1}–${Math.min((page + 1) * capacity, filtered.length)} of ${filtered.length} ideas`
-                  : "Practice grows at your pace"}
+                  : ""}
               </span>
               <button
                 className="secondary"

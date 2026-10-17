@@ -78,6 +78,9 @@ pub struct NativeSession {
 pub enum LearningRequest {
     Family {},
     Learners {},
+    ProblemLesson {
+        template_id: String,
+    },
     Progress {
         learner_id: String,
     },
@@ -141,6 +144,7 @@ impl LearningRequest {
         let (path, body, query) = match self {
             Self::Family {} => ("/api/v1/family".into(), None, None),
             Self::Learners {} => ("/api/v1/learners".into(), None, None),
+            Self::ProblemLesson { template_id } => (problem_lesson_path(&template_id)?, None, None),
             Self::Progress { learner_id } => (learner_path(&learner_id, "progress")?, None, None),
             Self::Frontier { learner_id } => (learner_path(&learner_id, "frontier")?, None, None),
             Self::StartingPoint { learner_id } => {
@@ -213,6 +217,17 @@ impl LearningRequest {
         }
         Ok((url, body))
     }
+}
+fn problem_lesson_path(template_id: &str) -> Result<String, SessionError> {
+    let slug = !template_id.is_empty()
+        && template_id.len() <= 100
+        && template_id
+            .bytes()
+            .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == b'-');
+    if !slug {
+        return Err(SessionError::UnsupportedRequest);
+    }
+    Ok(format!("/api/v1/problem-lessons/{template_id}"))
 }
 fn learner_path(id: &str, action: &str) -> Result<String, SessionError> {
     if !uuid(id) {
@@ -681,6 +696,25 @@ mod tests {
         }
         .route(&api)
         .is_err());
+    }
+
+    #[test]
+    fn problem_lessons_accept_only_template_slugs() {
+        let api = Url::parse("https://api.example.test").unwrap();
+        let (read, body) = LearningRequest::ProblemLesson {
+            template_id: "mean-data".into(),
+        }
+        .route(&api)
+        .unwrap();
+        assert_eq!(read.path(), "/api/v1/problem-lessons/mean-data");
+        assert!(body.is_none());
+        for bad in ["", "../family", "Mean", "a/b", &"x".repeat(101)] {
+            assert!(LearningRequest::ProblemLesson {
+                template_id: bad.into()
+            }
+            .route(&api)
+            .is_err());
+        }
     }
 
     #[test]

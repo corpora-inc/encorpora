@@ -279,6 +279,27 @@ try {
     ),
   );
   await page.getByRole("button", { name: "← All lessons" }).click();
+  // The header and tabs hold the same geometry on every section.
+  const chrome = async () =>
+    page.evaluate(() =>
+      [".shell > header .brand", ".shell > header .account", ".shell > nav"]
+        .map((selector) => {
+          const r = document.querySelector(selector)!.getBoundingClientRect();
+          return [r.x, r.y, r.width, r.height].map(Math.round).join(",");
+        })
+        .join(" | "),
+    );
+  const sections: string[] = [];
+  for (const section of ["Lessons", "Progress", "Practice"]) {
+    await page.getByRole("button", { name: section, exact: true }).click();
+    await page.waitForTimeout(150);
+    sections.push(await chrome());
+  }
+  assert.equal(
+    new Set(sections).size,
+    1,
+    `Header moved: ${sections.join(" / ")}`,
+  );
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();

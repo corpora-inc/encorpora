@@ -1,4 +1,5 @@
 import { ProblemLesson } from "./ProblemLesson";
+import { displayAnswer } from "../math/polish";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import {
@@ -165,7 +166,7 @@ export function PracticeWorkspace(props: Props) {
     problem.response.kind === "choice"
       ? (problem.response.options.find((option) => option.id === value)
           ?.label ?? "Unavailable answer")
-      : value;
+      : displayAnswer(value);
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);

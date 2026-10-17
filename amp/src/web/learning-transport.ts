@@ -3,6 +3,7 @@ import { nativeRuntime } from "./native-runtime";
 
 type NativeRequest = {
   kind: string;
+  templateId?: string;
   learnerId?: string;
   bookId?: string;
   body?: unknown;
@@ -11,6 +12,9 @@ type NativeRequest = {
 function nativeRequest(path: string, body?: unknown): NativeRequest {
   if (path === "/family" && body === undefined) return { kind: "family" };
   if (path === "/learners" && body === undefined) return { kind: "learners" };
+  const lesson = /^\/problem-lessons\/([a-z0-9-]{1,100})$/.exec(path);
+  if (lesson && body === undefined)
+    return { kind: "problem-lesson", templateId: lesson[1] };
   const url = new URL(path, "https://native.invalid");
   const match =
     /^\/learners\/([0-9a-f-]{36})\/(progress|frontier|starting-point|birth-year|batches|attempts|hints|lesson-support|books)(?:\/([a-z0-9-]+)\/open)?$/.exec(

@@ -37,7 +37,12 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           Answer: <strong>{lesson.example.answer}</strong>
         </p>
       </section>
-      {lesson.watch && <p className="lesson-watch">{lesson.watch}</p>}
+      {lesson.watch && (
+        <p className="lesson-watch">
+          <strong>Watch for</strong>
+          {lesson.watch}
+        </p>
+      )}
     </article>
   );
 }

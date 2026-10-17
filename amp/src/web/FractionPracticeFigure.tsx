@@ -87,7 +87,7 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
     labelled = figure.rows.length > 1,
     rowHeight = labelled ? 62 : 40,
     top = labelled ? 26 : 6,
-    height = top + figure.rows.length * rowHeight + 22;
+    height = top + figure.rows.length * rowHeight + 10;
   const description = `${figure.rows.map((row) => `${row.label}: ${row.selected} of the equal parts shaded`).join(". ")}. Each whole is a separate bar cut into ${figure.parts} equal parts.`;
   return (
     <svg
