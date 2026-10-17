@@ -15,7 +15,7 @@ export function publicationHtml(
       generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
     ),
   );
-  const title = `${lesson.title} · ${kind === "lesson" ? "Mini-textbook" : kind === "workbook" ? "Practice workbook" : "Worked solutions"}`;
+  const title = `${lesson.title} · ${kind === "lesson" ? "Reference lesson" : kind === "workbook" ? "Practice workbook" : "Worked solutions"}`;
   const body = (
     <article>
       <header>
@@ -79,7 +79,14 @@ export function publicationHtml(
               <h2>
                 {i + 1}. {p.public.prompt}
               </h2>
-              {p.public.figure && <Figure figure={p.public.figure} />}{" "}
+              {p.public.figure && <Figure figure={p.public.figure} />}
+              {p.public.response.kind === "choice" && (
+                <ol type="A" className="print-choices">
+                  {p.public.response.options.map((option) => (
+                    <li key={option.id}>{option.label}</li>
+                  ))}
+                </ol>
+              )}
               {kind === "solutions" ? (
                 <>
                   <ol>
@@ -88,7 +95,14 @@ export function publicationHtml(
                     ))}
                   </ol>
                   <p>
-                    <strong>Answer: {p.answer}</strong>
+                    <strong>
+                      Answer:{" "}
+                      {p.public.response.kind === "choice"
+                        ? p.public.response.options.find(
+                            (option) => option.id === p.answer,
+                          )?.label
+                        : p.answer}
+                    </strong>
                   </p>
                 </>
               ) : (

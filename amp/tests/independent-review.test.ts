@@ -79,6 +79,36 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   );
   assert.notEqual(wrongLine.status, 0);
   assert.match(wrongLine.stderr, /Line slope contradicts points/);
+  const choiceIndex = lines.findIndex(
+    (line, index) =>
+      index > 0 &&
+      JSON.parse(line).problem.public.templateId ===
+        "fraction-equivalence-choice",
+  );
+  assert.ok(choiceIndex > 0);
+  const choice = JSON.parse(lines[choiceIndex]!);
+  choice.problem.public.response.options[1].label =
+    choice.problem.public.response.options[0].label;
+  const duplicateChoice = review(
+    [
+      ...lines.slice(0, choiceIndex),
+      JSON.stringify(choice),
+      ...lines.slice(choiceIndex + 1),
+    ].join("\n") + "\n",
+  );
+  assert.notEqual(duplicateChoice.status, 0);
+  assert.match(duplicateChoice.stderr, /duplicate choice|exactly one/i);
+  const wrongChoice = JSON.parse(lines[choiceIndex]!);
+  wrongChoice.problem.answer = "option-z";
+  const choiceMismatch = review(
+    [
+      ...lines.slice(0, choiceIndex),
+      JSON.stringify(wrongChoice),
+      ...lines.slice(choiceIndex + 1),
+    ].join("\n") + "\n",
+  );
+  assert.notEqual(choiceMismatch.status, 0);
+  assert.match(choiceMismatch.stderr, /Mismatch/);
   const undersized = review(
     JSON.stringify({ ...manifest, seedCount: 255 }) + "\n",
   );

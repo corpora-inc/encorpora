@@ -8,7 +8,7 @@ import { generatedProblemSchema, type PublicProblem } from "../math/contracts";
 import {
   generateProblem,
   gradeAnswer,
-  normalizeAnswer,
+  isValidResponse,
   templates,
 } from "../math/engine";
 import { skills } from "../curriculum/catalog";
@@ -247,11 +247,6 @@ export function buildApp(options: {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const input = attemptSchema.parse(request.body);
-    if (normalizeAnswer(input.response) === null)
-      throw new ApiError(
-        400,
-        "Enter a number, decimal, or fraction such as 3/4",
-      );
     return options.repository.transaction(account, learnerId, async (tx) => {
       const duplicate = await tx.attemptByRequest(input.requestId);
       if (duplicate) {
@@ -267,6 +262,13 @@ export function buildApp(options: {
       }
       const problem = await tx.problem(input.problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
+      if (!isValidResponse(problem.public, input.response))
+        throw new ApiError(
+          400,
+          problem.public.response.kind === "choice"
+            ? "Choose one of the displayed answers"
+            : "Enter a number, decimal, or fraction such as 3/4",
+        );
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -279,7 +281,9 @@ export function buildApp(options: {
         response: input.response,
         correct: gradeAnswer(problem, input.response),
         assisted: !!problem.hintViewed || !!problem.lessonViewed,
-        explanation: problem.explanation,
+        explanation: problem.choiceFeedback?.[input.response]
+          ? [problem.choiceFeedback[input.response]!, ...problem.explanation]
+          : problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),
       };

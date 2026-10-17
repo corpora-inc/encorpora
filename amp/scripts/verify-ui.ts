@@ -209,7 +209,7 @@ try {
       .click();
     await page.getByLabel("Choose your practice").selectOption(template.id);
     await page.getByRole("button", { name: "Try this idea" }).click();
-    await page.locator("#answer").waitFor();
+    await page.locator("#answer, .choice-form").first().waitFor();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

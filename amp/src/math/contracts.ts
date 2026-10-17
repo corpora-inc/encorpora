@@ -47,6 +47,9 @@ export interface TemplateMetadata {
   gradeBand: "K–2" | "3–5" | "6–8" | "9–12";
   description: string;
 }
+export type ProblemResponse =
+  | { kind: "number" | "fraction"; label: string }
+  | { kind: "choice"; label: string; options: { id: string; label: string }[] };
 export interface PublicProblem {
   id: string;
   templateId: string;
@@ -54,7 +57,7 @@ export interface PublicProblem {
   seed: string;
   prompt: string;
   skillId: string;
-  response: { kind: "number" | "fraction"; label: string };
+  response: ProblemResponse;
   figure?: SemanticFigure;
 }
 /** Keep this object on the grading side; send only `public` before an attempt. */
@@ -63,6 +66,8 @@ export interface GeneratedProblem {
   answer: string;
   explanation: string[];
   hint: string;
+  /** Private, selected-distractor feedback; never included before submission. */
+  choiceFeedback?: Record<string, string>;
 }
 
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
@@ -237,6 +242,40 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
       })
       .strict(),
   ]);
+const choiceIdSchema = z.string().regex(/^option-[a-d]$/);
+export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
+  z
+    .object({
+      kind: z.enum(["number", "fraction"]),
+      label: z.string().trim().min(1).max(200),
+    })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("choice"),
+      label: z.string().trim().min(1).max(200),
+      options: z
+        .array(
+          z
+            .object({
+              id: choiceIdSchema,
+              label: z.string().trim().min(1).max(120),
+            })
+            .strict(),
+        )
+        .min(2)
+        .max(4),
+    })
+    .strict()
+    .refine(
+      (value) =>
+        new Set(value.options.map((option) => option.id)).size ===
+          value.options.length &&
+        new Set(value.options.map((option) => option.label)).size ===
+          value.options.length,
+      "Choices need unique identifiers and labels",
+    ),
+]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
     id: z.string().regex(/^[a-f0-9]{64}$/),
@@ -245,12 +284,7 @@ export const publicProblemSchema: z.ZodType<PublicProblem> = z
     seed: z.string().min(1).max(128),
     prompt: z.string().min(1).max(4000),
     skillId: z.string().min(1).max(100),
-    response: z
-      .object({
-        kind: z.enum(["number", "fraction"]),
-        label: z.string().min(1).max(200),
-      })
-      .strict(),
+    response: problemResponseSchema,
     figure: semanticFigureSchema.optional(),
   })
   .strict();
@@ -260,5 +294,19 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     answer: z.string().min(1).max(100),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
+    choiceFeedback: z
+      .record(choiceIdSchema, z.string().trim().min(1).max(1000))
+      .optional(),
   })
-  .strict();
+  .strict()
+  .refine((problem) => {
+    const response = problem.public.response;
+    if (response.kind !== "choice") return !problem.choiceFeedback;
+    const ids = response.options.map((option) => option.id);
+    return (
+      ids.includes(problem.answer) &&
+      Object.keys(problem.choiceFeedback ?? {}).every(
+        (id) => ids.includes(id) && id !== problem.answer,
+      )
+    );
+  }, "Choice answers and private feedback must reference displayed options");
