@@ -39,6 +39,8 @@ test("every learner task has one detailed solution and every HTML anchor is uniq
 
 test("semantic diagrams use consistent exact units and valid model geometry", () => {
   for (const diagram of diagrams) {
+    // This book uses fractional models; unit arrays belong to other authored books.
+    assert.ok(diagram.kind !== "array");
     assert.ok(diagram.kind === "double-line" || diagram.wholeLabel.length);
     assert.ok(diagram.caption.length > 20 && diagram.alt.length > 20);
     if (diagram.kind === "strips") {
