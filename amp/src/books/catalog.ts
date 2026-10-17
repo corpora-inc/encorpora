@@ -1,3 +1,6 @@
+import { inTheSameProportion } from "../../books/in-the-same-proportion/book.js";
+import { ratioAlignments } from "../../books/in-the-same-proportion/alignments.js";
+import { ratioPracticeBindings } from "../../books/in-the-same-proportion/practice.js";
 import { measureBorderCover } from "../../books/measure-border-cover/book.js";
 import { measurementAlignments } from "../../books/measure-border-cover/alignments.js";
 import { measurementPracticeBindings } from "../../books/measure-border-cover/practice.js";
@@ -53,6 +56,12 @@ export const books = [
     alignments: measurementAlignments,
     bindings: measurementPracticeBindings,
     requiredReaderCapabilities: ["unit-regions-v1", "algebra-models-v1"],
+  },
+  {
+    content: inTheSameProportion,
+    alignments: ratioAlignments,
+    bindings: ratioPracticeBindings,
+    requiredReaderCapabilities: ["ratio-models-v1", "algebra-models-v1"],
   },
 ] as const;
 export const bookSummaries: BookSummary[] = books.map(

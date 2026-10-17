@@ -89,6 +89,19 @@ test(
         });
         assert.equal(unsupportedMeasurement.statusCode, 409);
       }
+      assert.ok(
+        !legacyList
+          .json()
+          .books.some((b: { id: string }) => b.id === "in-the-same-proportion"),
+      );
+      for (const capabilities of [["algebra-models-v1"], ["ratio-models-v1"]]) {
+        const response = await app.inject({
+          method: "POST",
+          url: `${listPath}/in-the-same-proportion/open`,
+          payload: { readerCapabilities: capabilities },
+        });
+        assert.equal(response.statusCode, 409);
+      }
       const unsupportedNumber = await app.inject({
         method: "POST",
         url: `${listPath}/number-builders/open`,

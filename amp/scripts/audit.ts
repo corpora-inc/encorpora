@@ -1,3 +1,5 @@
+import { validateRatioAlignments } from "../books/in-the-same-proportion/alignments.js";
+import { validateRatioPracticeBindings } from "../books/in-the-same-proportion/practice.js";
 import { validateMeasurementCoverage } from "../src/content/measurement-coverage.js";
 import { validateMeasurementAlignments } from "../books/measure-border-cover/alignments.js";
 import { validateMeasurementPracticeBindings } from "../books/measure-border-cover/practice.js";
@@ -24,6 +26,8 @@ const coverage = buildCoverageManifest();
 const errors = [...curriculum.errors, ...funding.errors, ...coverage.errors];
 const bookTemplateIds = new Set<string>();
 try {
+  validateRatioAlignments(skills, templates, standards);
+  validateRatioPracticeBindings(templates);
   validateMeasurementAlignments(skills, templates, standards);
   validateMeasurementPracticeBindings(templates);
   validateAlgebraCoverage();
