@@ -79,3 +79,17 @@ checks line collinearity and clipping, bar proportions and baselines, partial-ho
 clock hand angles, and number-line point placement. It fails if a new graphical
 representation lacks a geometry check. These tests check SVG geometry, not the
 visual readability of printed labels or browser/font differences.
+
+## Interpretation choices
+
+`choice_math_oracle.py` derives a unique correct option from the public fraction,
+equation, or graph. It compares exact rational values and rejects mathematically
+equivalent duplicate options. Graph cases check that the drawn line passes through
+both given points. Correct choice IDs are compared as strings; numeric families
+retain exact rational comparison. The choice oracle and instructional examples
+were reviewed by a worker separate from their author.
+
+Choice questions assess recognition within a bounded vocabulary. They do not
+establish independent explanation, equation construction, or mastery of a whole
+standard. Browser checks cover native radio keyboard behavior, phone layouts,
+selected-distractor feedback, human-readable answers, and focus restoration.

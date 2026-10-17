@@ -1,3 +1,8 @@
+import { choiceTemplates, generateChoiceProblem } from "./choice.js";
+import {
+  equalGroupsTemplates,
+  generateEqualGroupsProblem,
+} from "./equal-groups-practice.js";
 import {
   fractionPracticeTemplates,
   generateFractionPracticeProblem,
@@ -135,6 +140,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
+  ...choiceTemplates,
+  ...equalGroupsTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -172,10 +179,22 @@ export function normalizeAnswer(input: string): string | null {
     10n ** BigInt(decimals.length),
   );
 }
+export function isValidResponse(
+  problem: PublicProblem,
+  response: string,
+): boolean {
+  return problem.response.kind === "choice"
+    ? problem.response.options.some((option) => option.id === response)
+    : normalizeAnswer(response) !== null;
+}
 export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "choice")
+    return (
+      isValidResponse(problem.public, response) && response === problem.answer
+    );
   const answer = normalizeAnswer(response);
   return answer !== null && answer === normalizeAnswer(problem.answer);
 }
@@ -203,6 +222,10 @@ export function generateProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (choiceTemplates.some((t) => t.id === templateId))
+    return generateChoiceProblem(templateId, seed);
+  if (equalGroupsTemplates.some((t) => t.id === templateId))
+    return generateEqualGroupsProblem(templateId, seed);
   if (fractionPracticeTemplates.some((t) => t.id === templateId))
     return generateFractionPracticeProblem(templateId, seed);
   if (elementaryTemplates.some((t) => t.id === templateId))

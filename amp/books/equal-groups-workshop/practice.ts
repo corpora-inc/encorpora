@@ -1,3 +1,4 @@
+import { equalGroupsDefinitions } from "../../src/content/equal-groups-definitions.js";
 import { equalGroupsWorkshop } from "./book.js";
 import { equalGroupsAlignments } from "./alignments.js";
 export interface WorkshopPracticeBinding {
@@ -11,6 +12,18 @@ export interface WorkshopPracticeBinding {
 }
 /** Related calculation practice is narrower than the book's constructed responses. */
 export const equalGroupsPracticeBindings: readonly WorkshopPracticeBinding[] = [
+  ...equalGroupsDefinitions.map((d) => ({
+    templateId: d.id,
+    skillId: d.skillId,
+    bookId: equalGroupsWorkshop.id,
+    pageIds: [d.pageId],
+    assessedResponse: "numeric-result-only" as const,
+    practiceScope: `${d.description} ${d.domain}`,
+    unassessedRequirements: [
+      "A numeric response does not assess a learner-created model, equation, or explanation.",
+      "Selected domains and contexts do not establish complete standards coverage or fluent recall.",
+    ],
+  })),
   {
     templateId: "multiply-facts",
     practiceScope:
