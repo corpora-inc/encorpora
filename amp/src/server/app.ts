@@ -3,7 +3,7 @@ import Fastify from "fastify";
 import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
 import { randomUUID } from "node:crypto";
-import { generatedProblemSchema } from "../math/contracts";
+import { generatedProblemSchema, type PublicProblem } from "../math/contracts";
 import {
   generateProblem,
   gradeAnswer,
@@ -14,7 +14,7 @@ import { skills } from "../curriculum/catalog";
 import { auditCurriculum } from "../curriculum/audit";
 import { ApiError, type Outcome, type Repository } from "./repository";
 import type { Authenticator } from "./auth";
-import { chooseTemplate } from "./progress";
+import { planMixedPractice } from "./mixed-practice";
 import { lessons } from "../content/lessons";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
@@ -25,7 +25,6 @@ const attemptSchema = z
     response: z.string().trim().min(1).max(200),
   })
   .strict();
-const prerequisites = new Map(skills.map((s) => [s.id, s.prerequisites]));
 export function buildApp(options: {
   repository: Repository;
   authenticate: Authenticator;
@@ -120,28 +119,48 @@ export function buildApp(options: {
     return options.repository.transaction(account, learnerId, async (tx) => {
       if (!options.development && !(await tx.hasAccess()))
         throw new ApiError(403, "An active student license is required");
-      const selected = input.templateId
+      const focused = input.templateId
         ? templates.find((t) => t.id === input.templateId)
-        : chooseTemplate(
+        : undefined;
+      if (input.templateId && !focused)
+        throw new ApiError(400, "Unknown problem family");
+      const selected = focused
+        ? Array.from({ length: input.count }, () => ({
+            template: focused,
+            reason: "focus",
+            strand:
+              skills.find((skill) => skill.id === focused.skillId)?.strand ??
+              "math",
+          }))
+        : planMixedPractice({
             templates,
-            await tx.recentAttempts(),
-            prerequisites,
-            Date.now(),
-            await tx.progress([...new Set(templates.map((t) => t.skillId))]),
-          );
-      if (!selected) throw new ApiError(400, "Unknown problem family");
-      const problems = [];
-      for (let i = 0; i < input.count; i++) {
+            skills,
+            attempts: await tx.recentAttempts(),
+            evidence: await tx.progress([
+              ...new Set(templates.map((t) => t.skillId)),
+            ]),
+            count: input.count,
+            seed: randomUUID(),
+          });
+      const problems: PublicProblem[] = [];
+      for (const choice of selected) {
         const problem = generatedProblemSchema.parse(
-          generateProblem(selected.id, randomUUID()),
+          generateProblem(choice.template.id, randomUUID()),
         );
         await tx.saveProblem(problem);
         problems.push(problem.public);
       }
       return {
         problems,
+        selection: selected.map((choice, i) => ({
+          problemId: problems[i].id,
+          reason: choice.reason,
+          strand: choice.strand,
+        })),
         lesson:
-          lessons.find((l) => l.templateIds.includes(selected.id)) ?? null,
+          lessons.find((l) =>
+            l.templateIds.includes(selected[0].template.id),
+          ) ?? null,
       };
     });
   });
@@ -203,6 +222,27 @@ export function buildApp(options: {
       return { hint: problem.hint };
     });
   });
+  app.post("/api/v1/learners/:learnerId/lesson-support", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { problemId } = z
+      .object({ problemId: z.string().min(1).max(160) })
+      .strict()
+      .parse(request.body);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      const problem = await tx.problem(problemId);
+      if (!problem) throw new ApiError(404, "Problem not found");
+      if (
+        !lessons.some((lesson) =>
+          lesson.templateIds.includes(problem.public.templateId),
+        )
+      )
+        throw new ApiError(404, "Lesson not found");
+      problem.lessonViewed = true;
+      await tx.saveProblem(problem);
+      return { recorded: true };
+    });
+  });
   app.post("/api/v1/learners/:learnerId/attempts", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -238,7 +278,7 @@ export function buildApp(options: {
         templateId: problem.public.templateId,
         response: input.response,
         correct: gradeAnswer(problem, input.response),
-        assisted: !!problem.hintViewed,
+        assisted: !!problem.hintViewed || !!problem.lessonViewed,
         explanation: problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),
