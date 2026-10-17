@@ -1,3 +1,4 @@
+import type { AlgebraModel } from "./algebra-models.js";
 /** Original book authoring contract; all measurements are exact rational pairs. */
 export type Rational = [numerator: number, denominator: number];
 export type Diagram = {
@@ -5,6 +6,7 @@ export type Diagram = {
   caption: string;
   alt: string;
 } & (
+  | AlgebraModel
   | {
       kind: "strips";
       wholeLabel: string;
