@@ -23,6 +23,7 @@ async function fixture(
   const admin = new Pool({ connectionString: url, max: 1 });
   const scoped = new URL(url);
   scoped.searchParams.set("options", `-c search_path=${schema}`);
+  scoped.searchParams.set("application_name", schema);
   const pool = new Pool({ connectionString: scoped.href, max: 8 });
   try {
     await admin.query(`CREATE SCHEMA ${schema}`);
@@ -416,6 +417,105 @@ test(
           )
         ).rows[0].deleted,
         true,
+      );
+    }),
+);
+
+test(
+  "parallel different requests serialize before overlap checks; scheduled grants block a new annual term",
+  enabled,
+  async () =>
+    fixture(async (pool, repo) => {
+      const requests = await Promise.all([
+        repo.create("owner", create()),
+        repo.create("owner", create()),
+      ]);
+      const inputs = requests.map((request) => bundle(request.id));
+      const barrier = await pool.connect();
+      const schema = (await pool.query("SELECT current_schema() AS name"))
+        .rows[0].name;
+      await barrier.query("BEGIN");
+      await barrier.query(
+        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+        ["owner"],
+      );
+      let pending: Promise<PromiseSettledResult<unknown>[]> | undefined;
+      try {
+        pending = Promise.allSettled(
+          inputs.map((input) => provisionFundingRequest(pool, input, [offer])),
+        );
+        const deadline = Date.now() + 2500;
+        let waiting = 0;
+        while (Date.now() < deadline) {
+          waiting = Number(
+            (
+              await pool.query(
+                "SELECT count(*) AS n FROM pg_stat_activity WHERE application_name=$1 AND wait_event='advisory'",
+                [schema],
+              )
+            ).rows[0].n,
+          );
+          if (waiting === 2) break;
+          await new Promise((resolve) => setTimeout(resolve, 20));
+        }
+        assert.equal(
+          waiting,
+          2,
+          "both conversions must reach the database barrier before release",
+        );
+      } finally {
+        await barrier.query("ROLLBACK");
+        barrier.release();
+      }
+      const results = await pending!;
+      assert.equal(results.filter((r) => r.status === "fulfilled").length, 1);
+      const failure = results.find(
+        (r) => r.status === "rejected",
+      ) as PromiseRejectedResult;
+      assert.match(String(failure.reason), /overlapping_learning_access/);
+      assert.equal(
+        (await pool.query("SELECT count(*)::int AS n FROM amp_commerce_orders"))
+          .rows[0].n,
+        1,
+      );
+      assert.equal(
+        (await pool.query("SELECT count(*)::int AS n FROM amp_grants")).rows[0]
+          .n,
+        1,
+      );
+      const loser = results.findIndex((r) => r.status === "rejected");
+      const winner = results.findIndex((r) => r.status === "fulfilled");
+      await applyCommerceEvent(pool, {
+        ...inputs[winner]!.events.at(-1)!,
+        id: randomUUID(),
+        type: "license.revoked",
+        occurredAt: new Date().toISOString(),
+        evidence: "fixture-revocation",
+      });
+      // An independently scheduled entitlement must also block overlapping access.
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('scheduled-fixture','child','apple','scheduled-fixture','active',now()+interval '30 days',now()+interval '90 days')",
+      );
+      await assert.rejects(
+        provisionFundingRequest(pool, inputs[loser], [offer]),
+        /overlapping_learning_access/,
+      );
+      // A half-open adjacent term does not overlap.
+      const start = (
+        inputs[loser]!.events[0] as Extract<
+          CommerceEvent,
+          { type: "order.created" }
+        >
+      ).order.license.startsAt;
+      await pool.query(
+        "UPDATE amp_grants SET starts_at=$1::timestamptz-interval '1 year',ends_at=$1 WHERE id='scheduled-fixture'",
+        [start],
+      );
+      await provisionFundingRequest(pool, inputs[loser], [offer]);
+      assert.equal(
+        (await pool.query("SELECT count(*)::int AS n FROM amp_commerce_orders"))
+          .rows[0].n,
+        2,
       );
     }),
 );

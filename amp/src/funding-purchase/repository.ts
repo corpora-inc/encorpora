@@ -37,13 +37,19 @@ export class FundingPurchaseRepository {
   async transaction<T>(
     account: string,
     run: (client: PoolClient) => Promise<T>,
+    exclusiveAccount = false,
   ): Promise<T> {
     const client = await this.pool.connect();
     try {
       await client.query("BEGIN");
       await client.query("SET LOCAL lock_timeout='5s'");
       await client.query("SET LOCAL statement_timeout='30s'");
-      await lockLearningAccount(client, account);
+      if (exclusiveAccount)
+        await client.query(
+          "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+          [account],
+        );
+      else await lockLearningAccount(client, account);
       const result = await run(client);
       await client.query("COMMIT");
       return result;

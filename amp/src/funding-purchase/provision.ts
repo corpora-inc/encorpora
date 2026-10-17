@@ -68,64 +68,78 @@ export async function provisionFundingRequest(
   )
     throw new FundingPurchaseError(400, "annual_activation_term_required");
   const repository = new FundingPurchaseRepository(pool, []);
-  return repository.transaction(created.order.account.id, async (client) => {
-    const result = await client.query(
-      "SELECT * FROM amp_funding_requests WHERE id=$1 AND account_id=$2 FOR UPDATE",
-      [data.requestId, created.order.account.id],
-    );
-    if (!result.rowCount)
-      throw new FundingPurchaseError(404, "request_not_found");
-    const row = result.rows[0],
-      request = fundingRequestRow(row);
-    if (request.orderId) {
+  return repository.transaction(
+    created.order.account.id,
+    async (client) => {
+      const result = await client.query(
+        "SELECT * FROM amp_funding_requests WHERE id=$1 AND account_id=$2 FOR UPDATE",
+        [data.requestId, created.order.account.id],
+      );
+      if (!result.rowCount)
+        throw new FundingPurchaseError(404, "request_not_found");
+      const row = result.rows[0],
+        request = fundingRequestRow(row);
+      if (request.orderId) {
+        if (
+          canonicalCommercePayload(row.conversion_payload) !==
+          canonicalCommercePayload(data)
+        )
+          throw new FundingPurchaseError(409, "provisioning_payload_mismatch");
+        return { requestId: request.id, orderId: request.orderId };
+      }
+      const live = availableOffers(offers, new Date()).find(
+        (o) =>
+          o.id === request.offer.id && o.revision === request.offer.revision,
+      );
       if (
-        canonicalCommercePayload(row.conversion_payload) !==
-        canonicalCommercePayload(data)
+        !live ||
+        canonicalCommercePayload(live) !==
+          canonicalCommercePayload(request.offer)
       )
-        throw new FundingPurchaseError(409, "provisioning_payload_mismatch");
-      return { requestId: request.id, orderId: request.orderId };
-    }
-    const live = availableOffers(offers, new Date()).find(
-      (o) => o.id === request.offer.id && o.revision === request.offer.revision,
-    );
-    if (
-      !live ||
-      canonicalCommercePayload(live) !== canonicalCommercePayload(request.offer)
-    )
-      throw new FundingPurchaseError(409, "offer_unavailable");
-    if (!(await learningConsentActive(client, request.accountId)))
-      throw new FundingPurchaseError(403, "verified_consent_required");
-    const learner = await client.query(
-      "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
-      [request.learnerId, request.accountId],
-    );
-    if (!learner.rowCount)
-      throw new FundingPurchaseError(404, "learner_not_found");
-    if (
-      request.status === "cancelled" ||
-      Date.parse(request.expiresAt) <= Date.now()
-    )
-      throw new FundingPurchaseError(409, "request_not_provisionable");
-    if (Date.parse(created.occurredAt) < Date.parse(request.createdAt))
-      throw new FundingPurchaseError(409, "provisioning_predates_quote");
-    const o = request.offer,
-      order = created.order;
-    if (
-      order.license.accountId !== request.accountId ||
-      order.license.learnerId !== request.learnerId ||
-      order.license.sku !== o.sku ||
-      order.amountMinor !== o.subtotalMinor + o.taxMinor ||
-      order.currency !== o.currency ||
-      order.activationPolicy !== o.activationPolicy ||
-      order.channelReference !== o.channelReference
-    )
-      throw new FundingPurchaseError(409, "order_quote_mismatch");
-    for (const event of data.events)
-      await applyCommerceEventInTransaction(client, event);
-    await client.query(
-      "UPDATE amp_funding_requests SET order_id=$2,conversion_payload=$3 WHERE id=$1",
-      [request.id, order.id, JSON.stringify(data)],
-    );
-    return { requestId: request.id, orderId: order.id };
-  });
+        throw new FundingPurchaseError(409, "offer_unavailable");
+      if (!(await learningConsentActive(client, request.accountId)))
+        throw new FundingPurchaseError(403, "verified_consent_required");
+      const learner = await client.query(
+        "SELECT id FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL FOR SHARE",
+        [request.learnerId, request.accountId],
+      );
+      if (!learner.rowCount)
+        throw new FundingPurchaseError(404, "learner_not_found");
+      if (
+        request.status === "cancelled" ||
+        Date.parse(request.expiresAt) <= Date.now()
+      )
+        throw new FundingPurchaseError(409, "request_not_provisionable");
+      if (Date.parse(created.occurredAt) < Date.parse(request.createdAt))
+        throw new FundingPurchaseError(409, "provisioning_predates_quote");
+      const o = request.offer,
+        order = created.order;
+      if (
+        order.license.accountId !== request.accountId ||
+        order.license.learnerId !== request.learnerId ||
+        order.license.sku !== o.sku ||
+        order.amountMinor !== o.subtotalMinor + o.taxMinor ||
+        order.currency !== o.currency ||
+        order.activationPolicy !== o.activationPolicy ||
+        order.channelReference !== o.channelReference
+      )
+        throw new FundingPurchaseError(409, "order_quote_mismatch");
+      // The exclusive account lock is acquired before request/order/learner locks.
+      // It serializes this bounded operator import with other grant and privacy writers.
+      const overlap = await client.query(
+        "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND starts_at<$3 AND ends_at>$2 LIMIT 1",
+        [request.learnerId, order.license.startsAt, order.license.endsAt],
+      );
+      if (overlap.rowCount)
+        throw new FundingPurchaseError(409, "overlapping_learning_access");
+      for (const event of data.events)
+        await applyCommerceEventInTransaction(client, event);
+      await client.query(
+        "UPDATE amp_funding_requests SET order_id=$2,conversion_payload=$3 WHERE id=$1",
+        [request.id, order.id, JSON.stringify(data)],
+      );
+      return { requestId: request.id, orderId: order.id };
+    },
+    true,
+  );
 }
