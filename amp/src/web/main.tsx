@@ -1,5 +1,6 @@
 import { FamilyCenter } from "./FamilyCenter";
 import type { FamilySummary } from "../family/contracts";
+import { preferredBookForProblem } from "../books/selection";
 import { BookReader } from "./BookReader";
 import { readingFrames } from "../books/reading";
 import type { BookSummary } from "../books/catalog";
@@ -403,6 +404,9 @@ function App() {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
+  const supportBook = problem
+    ? preferredBookForProblem(books, problem)
+    : undefined;
   return (
     <div
       className={`shell ${learner || familyOpen ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${learner && tab === "practice" && problem ? "practice-shell" : ""} ${readingBook ? "reading-shell" : ""}`}
@@ -623,16 +627,8 @@ function App() {
               ) ?? lesson
             }
             openBook={
-              books.find((book) => book.skills.includes(problem.skillId))
-                ? () =>
-                    void action(() =>
-                      openBook(
-                        books.find((book) =>
-                          book.skills.includes(problem.skillId),
-                        )!.id,
-                        true,
-                      ),
-                    )
+              supportBook
+                ? () => void action(() => openBook(supportBook.id, true))
                 : undefined
             }
             response={response}
@@ -725,13 +721,10 @@ function App() {
                   </div>
                   <div>
                     <p className="eyebrow">
-                      ILLUSTRATED FIELD GUIDE · {book.pages} PAGES
+                      ILLUSTRATED MATHEMATICS · {book.pages} PAGES
                     </p>
                     <h2>{book.title}</h2>
-                    <p>
-                      Follow an idea from its first picture to a new challenge.
-                      Read, investigate, and compare your reasoning.
-                    </p>
+                    <p>{book.description}</p>
                     <button
                       disabled={busy}
                       data-book-id={book.id}

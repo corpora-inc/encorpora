@@ -1,5 +1,4 @@
-import { fractionFieldGuide } from "../../books/fraction-field-guide/book.js";
-import { fractionPracticeBindings } from "./fraction-practice-coverage.js";
+import { books as registeredBooks } from "../books/catalog.js";
 import {
   skills as catalogSkills,
   standards as catalogStandards,
@@ -92,14 +91,17 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
     input.books ??
     (input.templates
       ? []
-      : [
-          {
-            id: fractionFieldGuide.id,
-            pageIds: fractionFieldGuide.pages.map((page) => page.id),
-          },
-        ]);
+      : registeredBooks.map(({ content }) => ({
+          id: content.id,
+          pageIds: content.pages.map((page) => page.id),
+        })));
   const bookBindings =
-    input.bookBindings ?? (input.templates ? [] : fractionPracticeBindings);
+    input.bookBindings ??
+    (input.templates
+      ? []
+      : registeredBooks.flatMap<CoverageBookBinding>(({ bindings }) => [
+          ...bindings,
+        ]));
   const publications = input.publications ?? [];
   const evidence = input.evidence ?? [];
   const mappings = input.facetMappings ?? [];
