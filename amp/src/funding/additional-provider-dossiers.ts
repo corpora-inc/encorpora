@@ -137,7 +137,7 @@ export const additionalProviderDossiers: DossierInventory = {
           dimension: "term",
           finding: "requirement-established",
           summary:
-            "Expenses pertain to the funded academic year; educational subscriptions must fall within 2026–27.",
+            "Service invoices pertain to the funded academic year; the online-learning-program category restricts educational subscriptions to 2026–27. Exact software-category treatment requires confirmation.",
           sourceIds: ["al-guide"],
         },
         {
