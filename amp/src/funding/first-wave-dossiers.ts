@@ -10,7 +10,7 @@ export const firstWaveDossiers: DossierInventory = {
       publisher: "Arizona Department of Education",
       checkedOn: "2026-10-17",
       locator:
-        "Current handbook linked on Oct 17; titled2025\u201326; printed pp23\u201324,43; PDF pp30\u201331,50",
+        "Current handbook linked on Oct 17; titled 2025\u201326; printed pp. 23\u201324, 43; PDF pp. 30\u201331, 50",
       authorityLink: "https://www.azed.gov/esa/parent-handbook",
     },
     {
@@ -52,7 +52,7 @@ export const firstWaveDossiers: DossierInventory = {
       publisher:
         "Florida Center for Students with Unique Abilities, University of Central Florida",
       checkedOn: "2026-10-17",
-      locator: "2026\u201327 guide, July 1,2026; printed pp5,12",
+      locator: "2026\u201327 guide, July 1, 2026; printed pp. 5, 12",
       authorityLink: "https://www.stepupforstudents.org/resources/ua/",
     },
     {
@@ -61,7 +61,7 @@ export const firstWaveDossiers: DossierInventory = {
       publisher: "Step Up For Students",
       checkedOn: "2026-10-17",
       locator:
-        "2026\u201327, modified Sep 16,2026; Supporting Documentation; Refunds; Subscriptions",
+        "2026\u201327, modified Sep 16, 2026; Supporting Documentation; Refunds; Subscriptions",
     },
     {
       id: "fl-ua-handbook",
@@ -69,7 +69,7 @@ export const firstWaveDossiers: DossierInventory = {
       publisher: "Step Up For Students",
       checkedOn: "2026-10-17",
       locator:
-        "2026\u201327, modifiedSep 16,2026; Instructional Materials documentation; MyScholarShop; Subscriptions",
+        "2026\u201327, modified Sep 16, 2026; Instructional Materials documentation; MyScholarShop; Subscriptions",
     },
     {
       id: "tx-authority",
@@ -85,7 +85,7 @@ export const firstWaveDossiers: DossierInventory = {
       publisher: "Odyssey",
       checkedOn: "2026-10-17",
       locator:
-        "Updated Jun 30,2026; General Eligibility and Educational Products",
+        "Updated Jun 30, 2026; General Eligibility and Educational Products",
       authorityLink: "https://educationfreedom.texas.gov/providers-vendors/",
     },
     {
@@ -93,7 +93,7 @@ export const firstWaveDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/47640100236827-Texas-Marketplace-Categories-for-Offerings",
       publisher: "Odyssey",
       checkedOn: "2026-10-17",
-      locator: "Updated Mar 24,2026; TX Subcategories",
+      locator: "Updated Mar 24, 2026; TX Subcategories",
       authorityLink: "https://educationfreedom.texas.gov/providers-vendors/",
     },
     {
@@ -101,7 +101,7 @@ export const firstWaveDossiers: DossierInventory = {
       url: "https://support.withodyssey.com/hc/en-us/articles/52391445784347-What-Are-the-Purchase-Restrictions-for-TEFA",
       publisher: "Odyssey",
       checkedOn: "2026-10-17",
-      locator: "Updated Oct 5,2026; collective technology restriction",
+      locator: "Updated Oct 5, 2026; collective technology restriction",
       authorityLink: "https://educationfreedom.texas.gov/providers-vendors/",
     },
     {
@@ -110,7 +110,7 @@ export const firstWaveDossiers: DossierInventory = {
       publisher: "Odyssey",
       checkedOn: "2026-10-17",
       locator:
-        "Updated Sep 12,2025; general marketplace payment and document handling, not TEFA-specific contract",
+        "Updated Sep 12, 2025; general marketplace payment and document handling, not TEFA-specific contract",
       authorityLink: "https://educationfreedom.texas.gov/providers-vendors/",
     },
     {
@@ -475,7 +475,7 @@ export const firstWaveDossiers: DossierInventory = {
           dimension: "payment",
           finding: "requirement-established",
           summary:
-            "General Odyssey guidance uses Stripe ACH and Net30 after valid fulfillment tracking/receipt. Digital-product trigger and TEFA contract must be confirmed.",
+            "General Odyssey guidance uses Stripe ACH and Net 30 after valid fulfillment tracking/receipt. Digital-product trigger and TEFA contract must be confirmed.",
           sourceIds: ["odyssey-payment"],
         },
         {
