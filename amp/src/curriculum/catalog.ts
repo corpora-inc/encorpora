@@ -649,6 +649,12 @@ const pythagoreanSkill = skills.find(
 )!;
 pythagoreanSkill.facets.push(
   {
+    id: "pythagorean-theorem.integer-hypotenuse",
+    description:
+      "Find the hypotenuse from both legs in scaled 3–4–5 or 5–12–13 right triangles with integer scale factors 1 through 6, all lengths in centimeters; template right-triangle.",
+    status: "implemented",
+  },
+  {
     id: "pythagorean-theorem.integer-missing-leg",
     description:
       "Find either leg from the hypotenuse and other leg in positive integer right triangles with hypotenuse at most 50, with all lengths in centimeters; template right-triangle-missing-leg.",

@@ -116,7 +116,7 @@ export function generateRightTriangleProblem(
       `Square the other two lengths and add: ${a}² + ${b}² = ${a * a} + ${b * b} = ${a * a + b * b}.`,
       `Square the longest length: ${c}² = ${c} × ${c} = ${c * c}.`,
       category === 0
-        ? `The results are equal: ${a * a + b * b} = ${c * c}. By the converse of the Pythagorean theorem, the triangle is right.`
+        ? `The results are equal: ${a}² + ${b}² = ${c}². By the converse of the Pythagorean theorem, the triangle is right.`
         : `The results differ: ${a * a + b * b} ≠ ${c * c}. Every right triangle satisfies the square relationship, so this triangle is not right.`,
     ];
     choiceFeedback = Object.fromEntries(

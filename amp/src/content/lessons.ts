@@ -15,10 +15,15 @@ export interface Lesson {
   summary: string;
   templateIds: string[];
   objectives: string[];
+  /** Omit a generic practice figure when authored illustrations teach the same representation. */
+  includeGeneratedRepresentation?: boolean;
   sections: {
     title: string;
     paragraphs: string[];
-    illustration?: "thirds-and-fourths";
+    illustration?:
+      | "thirds-and-fourths"
+      | "right-triangle-orientation"
+      | "pythagorean-rearrangement";
   }[];
   workedExample: {
     prompt: string;

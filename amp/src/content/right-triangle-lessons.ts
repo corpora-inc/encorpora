@@ -84,8 +84,8 @@ const squareDefinitions: Lesson["sections"][number] = {
   title: "A squared length represents an area",
   paragraphs: [
     "To square a number means to multiply it by itself. The raised 2 records that operation: 6² = 6 × 6 = 36. Squaring 6 does not mean doubling it; 2 × 6 = 12.",
-    "A square is a flat shape with four equal sides and four right angles. Its area measures how much surface it covers. A square centimeter is the area of a square measuring 1 cm on each side. A square with side 6 cm contains 6 rows of 6 such squares, so its area is 36 square centimeters, written 36 cm². Its side length is 6 cm, not 36 cm.",
-    "Measure all triangle sides in the same unit. Let a and b stand for the numerical lengths of its legs and c for the numerical length of its hypotenuse. The squares built on these sides have numerical areas a², b², and c² in the corresponding square unit.",
+    "A square's area measures how much surface it covers. A square centimeter is the area of a square measuring 1 cm on each side. A square with side 6 cm contains 6 rows of 6 such squares, so its area is 36 square centimeters, written 36 cm². Its side length is 6 cm, not 36 cm.",
+    "Measure all triangle sides in the same unit. Let \\(a\\) and \\(b\\) stand for the numerical lengths of its legs and \\(c\\) for the numerical length of its hypotenuse. The squares built on these sides have numerical areas a², b², and c² in the corresponding square unit.",
   ],
 };
 const relationship: Lesson["sections"][number] = {
@@ -110,6 +110,7 @@ export const pythagoreanLesson: Lesson = {
   summary:
     "Use equal areas to understand why the two leg squares determine the longest side.",
   templateIds: ["right-triangle"],
+  includeGeneratedRepresentation: false,
   objectives: [
     "Identify a right triangle's legs and hypotenuse in any orientation.",
     "Explain the square relationship by rearranging equal pieces.",
@@ -120,7 +121,7 @@ export const pythagoreanLesson: Lesson = {
       title: "Before calculating",
       paragraphs: [
         "You will add and multiply whole numbers and measure lengths in one unit.",
-        "For example, 6 × 8 means six groups of eight, totaling 48. This lesson explains the angle, area, square, and square-root ideas used to find a missing side.",
+        "For example, 6 × 8 means six groups of eight, totaling 48.",
       ],
     },
     { ...triangleDefinitions, illustration: "right-triangle-orientation" },
@@ -130,9 +131,9 @@ export const pythagoreanLesson: Lesson = {
       title: "Why rearranging the pieces proves the relationship",
       paragraphs: [
         "Compare two squares with the same side length a + b. Each contains four copies of the same right triangle. Sliding or turning a piece preserves its area. Remove these four triangles from each outer square. Because the whole areas are equal and the removed areas are equal, the uncovered areas must be equal.",
-        "In the first arrangement, the uncovered middle shape has four sides of length c: each is a triangle's hypotenuse. Its corners are right angles. To see why, a triangle's three angles total 180°, so the two angles other than its 90° angle total 90°. At each middle corner those two angles and the uncovered angle together make a straight angle of 180°. The uncovered angle is therefore 180° − 90° = 90°. Thus the middle shape is a square, with area c².",
-        "In the second arrangement, the uncovered shapes are squares with side lengths a and b, so their total area is a² + b². Equal uncovered areas give c² = a² + b². The arrangement works for any positive leg lengths a and b; it does not depend on the example's numbers.",
-        "In the pictured example, a = 3 and b = 4, so each outer square has side 7 and area 49. Each triangle is half of a 3-by-4 rectangle, with area 12 ÷ 2 = 6. Four triangles cover 24. Either arrangement leaves 49 − 24 = 25: a 5-by-5 square, or a 3-by-3 square and a 4-by-4 square together.",
+        "In the first arrangement, the uncovered middle shape has four sides of length \\(c\\): each is a triangle's hypotenuse. Its corners are right angles. To see why, a triangle's three angles total 180°, so the two angles other than its 90° angle total 90°. At each middle corner those two angles and the uncovered angle together make a straight angle of 180°. The uncovered angle is therefore 180° − 90° = 90°. Thus the middle shape is a square, with area c².",
+        "In the second arrangement, the uncovered shapes are squares with side lengths \\(a\\) and \\(b\\), so their total area is a² + b². Equal uncovered areas give c² = a² + b². The arrangement works for any positive leg lengths \\(a\\) and \\(b\\); it does not depend on the example's numbers.",
+        "In the pictured example, \\(a = 3\\) and \\(b = 4\\), so each outer square has side 7 and area 49. Each triangle is half of a 3-by-4 rectangle, with area 12 ÷ 2 = 6. Four triangles cover 24. Either arrangement leaves \\(49 - 24 = 25\\): a 5-by-5 square, or a 3-by-3 square and a 4-by-4 square together.",
       ],
       illustration: "pythagorean-rearrangement",
     },
@@ -142,7 +143,7 @@ export const pythagoreanLesson: Lesson = {
     prompt:
       "A right triangle has legs of 6 cm and 8 cm. Find its hypotenuse length.",
     steps: [
-      "The legs meet at the right angle. Let c be the hypotenuse length in centimeters, opposite that angle.",
+      "The legs meet at the right angle. Let \\(c\\) be the hypotenuse length in centimeters, opposite that angle.",
       "Write the Pythagorean relationship: 6² + 8² = c².",
       "Square each leg length: 6² = 6 × 6 = 36 and 8² = 8 × 8 = 64.",
       "Add the two squares: c² = 36 + 64 = 100.",
@@ -153,7 +154,7 @@ export const pythagoreanLesson: Lesson = {
     answerUnit: "centimeters",
   },
   pitfalls: [
-    "The equation a² + b² = c² requires a right triangle, with c opposite the right angle. Two given side lengths alone do not establish a right angle.",
+    "The Pythagorean equation a² + b² = c² applies only to right triangles, with \\(c\\) opposite the right angle. Two given side lengths alone do not establish a right angle.",
     "Square each leg separately. (6 + 8)² = 196, whereas 6² + 8² = 100.",
     "The sum of the squares gives the square of the missing length. Take its positive square root and report centimeters, not square centimeters.",
   ],
@@ -185,7 +186,7 @@ export const missingLegLesson: Lesson = {
     {
       title: "Remove the known part",
       paragraphs: [
-        "Suppose the hypotenuse is 13 cm and one leg is 5 cm. Let x stand for the other leg's length in centimeters. The two leg squares together equal the hypotenuse square: x² + 5² = 13².",
+        "Suppose the hypotenuse is 13 cm and one leg is 5 cm. Let \\(x\\) stand for the other leg's length in centimeters. The two leg squares together equal the hypotenuse square: x² + 5² = 13².",
         "The hypotenuse square has area 169 cm². One leg square has area 25 cm². The other leg square supplies the rest: 169 − 25 = 144 cm². In the equation, subtract the same number from both sides to preserve equality: x² + 25 − 25 = 169 − 25, so x² = 144.",
         "A square root is the nonnegative number (zero or greater) whose square is a given number. Since 12 × 12 = 144, √144 = 12. A side has positive length, so x = 12 and the missing side is 12 cm long. The value −12 also squares to 144, but it cannot be a side length.",
         "This is subtraction because the hypotenuse square is the total and one leg square is a known part. Adding 169 and 25 would find a larger total instead of the missing part. Subtract the squares, not the lengths: 13 − 5 = 8, and 8² + 5² = 89, not 169.",
@@ -194,7 +195,7 @@ export const missingLegLesson: Lesson = {
     {
       title: "Either leg can be unknown",
       paragraphs: [
-        "The letters are names for lengths, not fixed positions on the page. With hypotenuse c, known leg a, and missing leg x, use x² = c² − a². The hypotenuse must exceed the known leg, so the difference is positive.",
+        "The letters are names for lengths, not fixed positions on the page. With hypotenuse \\(c\\), known leg \\(a\\), and missing leg \\(x\\), use x² = c² − a². The hypotenuse must exceed the known leg, so the difference is positive.",
         "A root need not be a whole number. A hypotenuse of 3 cm and leg of 1 cm give x² = 9 − 1 = 8 and x = √8. The missing side is √8 cm long. Keep this exact form unless asked to round. Check any proposed length by squaring it and restoring the original sum.",
       ],
     },
@@ -203,7 +204,7 @@ export const missingLegLesson: Lesson = {
     prompt:
       "A right triangle has a hypotenuse of 13 cm and one leg of 5 cm. Find the other leg.",
     steps: [
-      "Let x be the missing leg length in centimeters. The hypotenuse is 13 cm, so x² + 5² = 13².",
+      "Let \\(x\\) be the missing leg length in centimeters. The hypotenuse is 13 cm, so x² + 5² = 13².",
       "Calculate 5² = 25 and 13² = 169: x² + 25 = 169.",
       "Subtract 25 from both sides: x² = 169 − 25 = 144.",
       "Take the positive square root: x = √144 = 12, since 12 × 12 = 144.",
@@ -244,7 +245,7 @@ export const converseLesson: Lesson = {
     {
       title: "Compare squares of lengths",
       paragraphs: [
-        "Squaring means multiplying a number by itself: 5² = 5 × 5 = 25. Let c name the longest numerical side length and a and b the other two, all measured in one unit. Calculate a² + b² and c² separately.",
+        "Squaring means multiplying a number by itself: 5² = 5 × 5 = 25. Let \\(c\\) name the longest numerical side length and \\(a\\) and \\(b\\) the other two, all measured in one unit. Calculate a² + b² and c² separately.",
         "The Pythagorean theorem says that every right triangle satisfies a² + b² = c². Therefore, if these two results differ, the given triangle is not right. For lengths 4 cm, 5 cm, and 6 cm, compare 4² + 5² = 16 + 25 = 41 with 6² = 36. Since 41 ≠ 36, there is no right angle.",
         "The converse says that if a triangle satisfies a² + b² = c², then it has a right angle opposite its longest side. A converse exchanges a statement's condition and conclusion. It needs justification: reversing a true statement does not automatically produce another true statement.",
       ],
@@ -252,8 +253,8 @@ export const converseLesson: Lesson = {
     {
       title: "Why equality guarantees a right angle",
       paragraphs: [
-        "Construct a separate right triangle with legs of lengths a and b. Call its hypotenuse length h. The Pythagorean theorem gives h² = a² + b². If the original triangle satisfies a² + b² = c², then h² = c². Because h and c are positive lengths, h = c.",
-        "The constructed right triangle and the original triangle now have the same three side lengths. Three fixed side lengths determine a triangle's angles: a circle consists of points at a fixed distance, called its radius, from a point called its center. Fix one side as a base. A vertex at the required distances from the base endpoints must lie on both circles centered at those endpoints, with radii equal to the other two side lengths. The possible meeting points lie on opposite sides of the base and are mirror images. Thus the triangles have equal corresponding angles. This fact is called side-side-side congruence; congruent figures have the same shape and size. The original triangle therefore has the constructed triangle's right angle.",
+        "Construct a separate right triangle with legs of lengths \\(a\\) and \\(b\\). Call its hypotenuse length \\(h\\). The Pythagorean theorem gives h² = a² + b². If the original triangle satisfies a² + b² = c², then h² = c². Because \\(h\\) and \\(c\\) are positive lengths, h = c.",
+        "The constructed right triangle and the original triangle now have the same three side lengths. Three fixed side lengths determine a triangle's angles: a circle consists of points at a fixed distance, called its radius, from a point called its center. Fix one side as a base. A vertex at the required distances from the base endpoints must lie on both circles centered at those endpoints, with radii equal to the other two side lengths. Two distinct circles intersect at no more than two points. For a triangle, the two possible meeting points lie on opposite sides of the base and are mirror images. Thus the triangles have equal corresponding angles. This fact is called side-side-side congruence; congruent figures have the same shape and size. The original triangle therefore has the constructed triangle's right angle.",
       ],
     },
     {
@@ -261,7 +262,7 @@ export const converseLesson: Lesson = {
       paragraphs: [
         "For lengths 13 cm, 5 cm, and 12 cm, the longest is 13 cm even though it is listed first. Compare 5² + 12² = 25 + 144 = 169 with 13² = 169. They are equal, so the triangle is right.",
         "Unequal results can occur in either direction. For 4 cm, 5 cm, and 6 cm, the sum 41 exceeds 36. For 2 cm, 3 cm, and 4 cm, the sum 4 + 9 = 13 is below 16. Both triangles are not right. The test asks for equality, not which result is greater.",
-        "Do not use c as a name for an arbitrary listed side. In a right triangle the hypotenuse is the longest, so only the longest side can occupy that role in the test. Until the equality is established, call it the longest side rather than a hypotenuse.",
+        "Do not use \\(c\\) as a name for an arbitrary listed side. In a right triangle the hypotenuse is the longest, so only the longest side can occupy that role in the test. Until the equality is established, call it the longest side rather than a hypotenuse.",
       ],
     },
   ],

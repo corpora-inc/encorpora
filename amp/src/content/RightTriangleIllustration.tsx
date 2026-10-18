@@ -1,27 +1,13 @@
 import React from "react";
 /** Exact Euclidean constructions; labels use lengths, while regions show areas. */
 export function RightTriangleOrientation() {
-  return (
-    <figure
-      className="lesson-illustration"
-      style={{ margin: "24px 0", breakInside: "avoid" }}
-    >
-      <svg
-        data-lesson-illustration="right-triangle-orientation"
-        viewBox="0 0 400 510"
-        role="img"
-        aria-label="Two congruent right triangles in different orientations. Both have legs of 6 centimeters and 8 centimeters, and an unknown hypotenuse opposite the marked right angle."
-        style={{
-          width: "100%",
-          maxWidth: 400,
-          display: "block",
-          margin: "0 auto",
-          fontFamily: "Arial, sans-serif",
-          fontSize: 24,
-          fill: "#173b37",
-        }}
-      >
-        <title>The hypotenuse stays opposite the right angle</title>
+  const panels = [
+    {
+      id: "original",
+      viewBox: "0 40 400 220",
+      description:
+        "A right triangle has horizontal leg 8 cm and vertical leg 6 cm. Its unknown hypotenuse is opposite the marked right angle.",
+      diagram: (
         <g data-triangle="original">
           <polygon
             points="90,190 250,190 90,70"
@@ -44,16 +30,21 @@ export function RightTriangleOrientation() {
           <text x="74" y="151" textAnchor="end">
             6 cm
           </text>
-          <text x="204" y="112" textAnchor="middle">
+          <text x="214" y="104" textAnchor="middle">
             hypotenuse
           </text>
           <text x="226" y="139" textAnchor="middle">
             ? cm
           </text>
-          <text x="106" y="43">
-            Right angle marked
-          </text>
         </g>
+      ),
+    },
+    {
+      id: "rotated",
+      viewBox: "0 260 400 250",
+      description:
+        "The same right triangle after half a turn has legs 8 cm and 6 cm. The unknown hypotenuse remains opposite the marked right angle.",
+      diagram: (
         <g data-triangle="rotated">
           <polygon
             points="270,310 110,310 270,430"
@@ -86,11 +77,48 @@ export function RightTriangleOrientation() {
             Same triangle, half a turn
           </text>
         </g>
-      </svg>
+      ),
+    },
+  ];
+  return (
+    <figure
+      className="lesson-illustration"
+      style={{ margin: "24px 0", breakInside: "avoid" }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 12,
+        }}
+      >
+        {panels.map((panel) => (
+          <svg
+            key={panel.id}
+            data-lesson-illustration={`right-triangle-orientation-${panel.id}`}
+            viewBox={panel.viewBox}
+            role="img"
+            aria-label={panel.description}
+            style={{
+              flex: "1 1 240px",
+              width: "100%",
+              maxWidth: 400,
+              fontFamily: "Arial, sans-serif",
+              fontSize: 24,
+              fill: "#173b37",
+            }}
+          >
+            <title>The hypotenuse stays opposite the right angle</title>
+            {panel.diagram}
+          </svg>
+        ))}
+      </div>
       <figcaption>
         The small square marks the 90° angle. The two triangle sides meeting at
         that corner are the legs. The hypotenuse joins their other endpoints and
-        never touches the marked corner.
+        never touches the marked corner. The second drawing is the first
+        triangle turned halfway around.
       </figcaption>
     </figure>
   );
