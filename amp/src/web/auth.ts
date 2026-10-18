@@ -6,6 +6,7 @@ import {
   nativeSessionEvents,
 } from "./native-session";
 import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
+import { accountClient } from "./account-client";
 const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
 const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
 const manager =
@@ -24,6 +25,22 @@ const manager =
       })
     : null;
 const devSignedOut = "amp.dev.signedOut";
+
+/** How this deployment signs parents in, as the API reports it. */
+export type AuthConfig =
+  | { mode: "accounts"; passwords: boolean; providers: string[] }
+  | { mode: "oidc" | "development" };
+let config: Promise<AuthConfig> | null = null;
+export function authConfig(): Promise<AuthConfig> {
+  const fallback: AuthConfig = { mode: manager ? "oidc" : "development" };
+  config ??= fetch("/api/v1/auth-config")
+    .then((r) => (r.ok ? (r.json() as Promise<AuthConfig>) : fallback))
+    .catch((error) => {
+      console.warn("Sign-in configuration unavailable", error);
+      return fallback;
+    });
+  return config;
+}
 export interface AuthSession {
   token: string;
   accountId: string;
@@ -36,6 +53,14 @@ function session(user: User): AuthSession {
 }
 export async function accessSession(): Promise<AuthSession | null> {
   if (nativeRuntime) return nativeSession();
+  if ((await authConfig()).mode === "accounts") {
+    // AMP's own accounts: the session token doubles as the API bearer token.
+    const { data, error } = await accountClient.getSession();
+    if (error) throw new Error(error.message ?? "Sign-in could not be checked");
+    return data
+      ? { token: data.session.token, accountId: `amp|${data.user.id}` }
+      : null;
+  }
   if (import.meta.env.DEV && !manager) {
     // Development only: `?signed-out` simulates a visitor without an account
     // for this tab, so the "Try free" path can be exercised locally.
@@ -57,8 +82,13 @@ export async function accessSession(): Promise<AuthSession | null> {
   const user = await manager.getUser();
   return user && !user.expired ? session(user) : null;
 }
-export async function signIn() {
+/** Starts sign-in; `create` opens the new-account form. */
+export async function signIn(intent?: "create") {
   if (nativeRuntime) return nativeSignIn();
+  if ((await authConfig()).mode === "accounts") {
+    location.assign(intent === "create" ? "/?sign-in=create" : "/?sign-in");
+    return;
+  }
   if (import.meta.env.DEV && !manager) {
     sessionStorage.removeItem(devSignedOut);
     location.reload();
@@ -72,6 +102,11 @@ export async function signIn() {
 }
 export async function signOut() {
   if (nativeRuntime) return nativeSignOut();
+  if ((await authConfig()).mode === "accounts") {
+    await accountClient.signOut();
+    location.assign("/");
+    return;
+  }
   if (manager) await manager.signoutRedirect();
 }
 
