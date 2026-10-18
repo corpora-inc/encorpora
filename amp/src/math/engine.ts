@@ -3,6 +3,10 @@ import {
   generateDescriptiveStatisticsProblem,
 } from "./descriptive-statistics-practice";
 import {
+  percentChangeTemplates,
+  generatePercentChangeProblem,
+} from "./percent-change-practice";
+import {
   linearSystemTemplates,
   generateLinearSystemProblem,
 } from "./linear-system-practice";
@@ -175,6 +179,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
   ...graphicalTemplates,
@@ -293,6 +298,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...descriptiveStatisticsTemplates,
+    ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -320,6 +326,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
     return generateDescriptiveStatisticsProblem(templateId, seed);
+  if (percentChangeTemplates.some((t) => t.id === templateId))
+    return generatePercentChangeProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
     return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))

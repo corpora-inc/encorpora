@@ -1,4 +1,5 @@
 import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
+import { percentChangePrinciples } from "./percent-change-lessons";
 import { inequalityPrinciples } from "./inequality-lessons";
 import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
@@ -10,6 +11,7 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...polynomialPrinciples,
+  ...percentChangePrinciples,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
   // Counting, place value, early operations

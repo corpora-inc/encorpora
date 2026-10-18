@@ -1,4 +1,5 @@
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
+import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
@@ -20,6 +21,10 @@ export function LessonIllustration({
     return <DescriptiveStatisticsIllustration kind="range" />;
   if (kind === "descriptive-iqr")
     return <DescriptiveStatisticsIllustration kind="iqr" />;
+  if (kind === "percent-change-bars" || kind === "percent-change-reverse")
+    return (
+      <PercentChangeIllustration reverse={kind === "percent-change-reverse"} />
+    );
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
