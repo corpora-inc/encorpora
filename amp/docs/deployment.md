@@ -4,6 +4,37 @@ The hosted API requires PostgreSQL, a configured OIDC issuer, and a same-origin 
 
 ## Identity and enrollment
 
+### AMP accounts (`AMP_AUTH_MODE=accounts`)
+
+Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`, implemented with Better Auth (`src/server/accounts.ts`). They support email and password, passkeys, TOTP two-factor with backup codes, and Google, Apple, Microsoft and GitHub sign-in, with linked logins. Web sessions use an HttpOnly cookie. The session token also works as `Authorization: Bearer` for the API and native apps. An account id is `amp|<user id>`.
+
+**Required settings**
+- `AMP_ACCOUNTS_URL`: the public HTTPS origin. Loopback HTTP is allowed outside production.
+- `AMP_ACCOUNTS_SECRET`: at least 32 random characters.
+
+**Email.** `AMP_MAIL_RESEND_API_KEY` and `AMP_MAIL_FROM` send verification and reset emails.
+- In production without mail, email and password sign-in is off.
+- With mail, new password accounts must confirm their email before signing in.
+- In development, links are printed to the server log.
+
+**Providers.** Each provider is enabled only when all of its settings are present.
+- Google: `AMP_GOOGLE_CLIENT_ID` and `AMP_GOOGLE_CLIENT_SECRET`.
+- GitHub: `AMP_GITHUB_CLIENT_ID` and `AMP_GITHUB_CLIENT_SECRET`.
+- Microsoft: `AMP_MICROSOFT_CLIENT_ID` and `AMP_MICROSOFT_CLIENT_SECRET`, plus optional `AMP_MICROSOFT_TENANT_ID` (default `common`).
+- Apple: `AMP_APPLE_CLIENT_ID` (the Services ID), `AMP_APPLE_TEAM_ID`, `AMP_APPLE_KEY_ID` and `AMP_APPLE_PRIVATE_KEY` (the .p8 PEM; `\n` escapes are accepted), plus optional `AMP_APPLE_BUNDLE_ID`. The Apple client secret is minted at startup and is valid for 150 days, so a deploy refreshes it.
+- Register each provider's redirect URI as `<AMP_ACCOUNTS_URL>/api/auth/callback/<google|apple|microsoft|github>`.
+
+`AMP_ACCOUNTS_TRUSTED_ORIGINS` lists extra allowed origins, such as native app schemes.
+
+**Linking.**
+- A sign-in with the same email links to an existing account only when the provider has verified the email.
+- A signed-in parent may link a login that uses a different email.
+- Each provider identity belongs to one account.
+
+**Rate limits.** Sign-in attempts are throttled per client. The server uses the client address that `AMP_TRUSTED_PROXIES` resolves and ignores forwarded headers from untrusted peers.
+
+### External OIDC (`AMP_AUTH_MODE=oidc`)
+
 Set `AMP_AUTH_MODE=oidc`, `AMP_DATABASE_URL`, `AMP_OIDC_ISSUER`, `AMP_OIDC_AUDIENCE`, and `AMP_OIDC_JWKS_URL`. The audience is the API resource, not the browser client. Signed access tokens require issuer, audience, subject, issued-at, and expiration. The default token profile requires `typ=at+jwt`; `AMP_OIDC_TOKEN_PROFILE=token-use-access` instead requires the signed `token_use=access` claim while retaining API audience validation. ID tokens are not API credentials.
 
 Build the browser with `VITE_AMP_AUTHORITY`, `VITE_AMP_CLIENT_ID`, and the API-authorized `VITE_AMP_SCOPES`. Set `VITE_AMP_RESOURCE` when the issuer supports resource indicators. Register the exact HTTPS origin callback. The browser uses a public authorization-code/PKCE client; never embed a client secret.
@@ -22,7 +53,7 @@ The preview catalog exposes its reference lessons for exploration. A commercial 
 
 ## Operations
 
-Serve `dist/` and proxy `/api` to the application. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The local PDF delivery adapter reads built artifacts; production distribution needs an immutable object-storage/CDN release and download policy.
+Serve `dist/` and proxy `/api` to the application. `Dockerfile` builds both: target `api` (the server, migrations and scheduled jobs; non-root, read-only root filesystem compatible) and target `web` (nginx serving `dist/` with a single-page fallback, `docker/nginx.conf`). Each listens on port 8080. Deployment configuration for a particular host lives outside this repository. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The local PDF delivery adapter reads built artifacts; production distribution needs an immutable object-storage/CDN release and download policy.
 
 Requests with credentials are limited per credential (600 a minute), so one household or co-op behind a single address is not limited as one client. Anonymous requests, including trial creation (20 an hour), are limited per client address. The client address is by default the direct peer, and `X-Forwarded-For` is ignored. Behind a load balancer, set `AMP_TRUSTED_PROXIES` to a comma-separated list of the proxy CIDRs. On Google Cloud that means the load-balancer ranges `35.191.0.0/16` and `130.211.0.0/22` plus the ingress address as a `/32`. Each visitor then has their own limit instead of all visitors sharing one bucket. A forged leading `X-Forwarded-For` entry does not change the client address (`tests/trusted-proxy.test.ts`). List only addresses that are actually proxies.
 

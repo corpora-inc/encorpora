@@ -8,7 +8,7 @@ import { noticeDigest } from "../src/parent-consent/crypto.js";
 import type { ConsentView } from "../src/parent-consent/contracts.js";
 import { retentionNotice } from "../src/family/contracts.js";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `const listeners=new Set();window.authFragment=location.hash;window.consentApp={emit(s){for(const f of listeners)f(s)}};export async function accessSession(){return {token:'fixture',accountId:'parent'}};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export async function signOut(){window.consentApp.emit(null)}`;
+const auth = `const listeners=new Set();window.authFragment=location.hash;window.consentApp={emit(s){for(const f of listeners)f(s)}};export async function accessSession(){return {token:'fixture',accountId:'parent'}};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-consent-app",
   root: fileURLToPath(new URL("../", import.meta.url)),

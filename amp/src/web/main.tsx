@@ -38,6 +38,8 @@ import {
   onSessionChanged,
   signIn,
   signOut,
+  authConfig,
+  type AuthConfig,
   type AuthSession,
 } from "./auth";
 import "./style.css";
@@ -45,6 +47,7 @@ import "./practice.css";
 import "katex/dist/katex.min.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
+import { AccountSignIn } from "./AccountSignIn";
 import { ChooseHowToPay } from "./ChooseHowToPay";
 import { TrialApp, storedTrial, clearStoredTrial } from "./TrialApp";
 import { useLearnerStore } from "./learner-store";
@@ -777,7 +780,17 @@ function App() {
       .catch((error) => console.error("Frontier map failed to load", error));
   }, [learner?.id, learner?.birthYear, tab, exploring]);
   // Practice is immersive: no header or tabs, one exit back to everything else.
-  const trialActive = trialMode && !token && !nativeRuntime;
+  // `/?sign-in` (or a password-reset link) shows AMP's own sign-in screen.
+  // Development sign-in has no session to end, so it offers no sign-out.
+  const [authMode, setAuthMode] = useState<AuthConfig["mode"]>();
+  useEffect(() => {
+    void authConfig().then((config) => setAuthMode(config.mode));
+  }, []);
+  const [signingIn] = useState(() => {
+    const params = new URLSearchParams(location.search);
+    return params.has("sign-in") || params.has("reset-password");
+  });
+  const trialActive = trialMode && !token && !nativeRuntime && !signingIn;
   const immersive =
     (!!learner &&
       tab === "practice" &&
@@ -872,7 +885,7 @@ function App() {
                     Add learner
                   </button>
                 )}
-                {token && catalog?.mode !== "development" && (
+                {token && authMode && authMode !== "development" && (
                   <button
                     className="text-button"
                     onClick={() => {
@@ -893,17 +906,21 @@ function App() {
           )}
         </div>
       </header>
-      {!learner && !familyOpen && !nativeRuntime && !trialActive && (
-        <div className="intro">
-          <div>
-            <h1>Math at exactly the right level.</h1>
-            <p>
-              One problem at a time, from counting through precalculus. Every
-              answer adjusts what comes next.
-            </p>
+      {!learner &&
+        !familyOpen &&
+        !nativeRuntime &&
+        !trialActive &&
+        !(signingIn && !token) && (
+          <div className="intro">
+            <div>
+              <h1>Math at exactly the right level.</h1>
+              <p>
+                One problem at a time, from counting through precalculus. Every
+                answer adjusts what comes next.
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
       {!familyOpen && learner && !trialToSave && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
@@ -1028,9 +1045,11 @@ function App() {
           onImmersive={setTrialImmersive}
           signIn={() => {
             setTrialToSave(storedTrial());
-            void action(signIn);
+            void action(() => signIn("create"));
           }}
         />
+      ) : !token && signingIn && !nativeRuntime ? (
+        <AccountSignIn />
       ) : !token ? (
         <section className="card welcome">
           <h2>
