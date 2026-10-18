@@ -205,6 +205,8 @@ try {
       document.activeElement?.getAttribute("data-book-id") ===
       "number-builders",
   );
+  assert.equal(new URL(page.url()).pathname, "/progress");
+  assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
   const batchPromise = page.waitForResponse(
     (r) => r.url().endsWith("/batches") && r.request().method() === "POST",
   );
@@ -217,6 +219,7 @@ try {
   assert.equal(problem.skillId, "count-to-20");
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
+  assert.equal(new URL(page.url()).searchParams.get("skill"), "count-to-20");
   await page
     .getByRole("button", { name: "Open related book", exact: true })
     .click();

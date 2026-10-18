@@ -153,7 +153,11 @@ function LegacyScreen() {
   const tab = route.tab;
   const setTab = (tab: "practice" | "library" | "progress") =>
     navigate(
-      tab === "library" ? "/lessons" : tab === "progress" ? "/progress" : "/",
+      tab === "library"
+        ? "/lessons"
+        : tab === "progress"
+          ? progressReturn.current.href
+          : "/",
     );
   const exploring = route.exploring;
   const setExploring = (value: boolean) => navigate(value ? "/" : "/practice");
@@ -178,6 +182,26 @@ function LegacyScreen() {
   const learnerId = useLearnerStore((state) => state.learnerId);
   const selectLearner = useLearnerStore((state) => state.select);
   const learner = learners.find((entry) => entry.id === learnerId) ?? null;
+  // Remember a tab's return URL, not a second copy of its screen/filter state.
+  const progressReturn = useRef({ identity: "", href: "/progress" });
+  useLayoutEffect(() => {
+    if (!accountId || !learner) {
+      progressReturn.current = { identity: "", href: "/progress" };
+      return;
+    }
+    const identity = `${accountId}:${learner.id}`;
+    const changed =
+      progressReturn.current.identity !== "" &&
+      progressReturn.current.identity !== identity;
+    if (progressReturn.current.identity !== identity)
+      progressReturn.current = { identity, href: "/progress" };
+    if (route.location.pathname === "/progress") {
+      if (changed) navigate("/progress", { replace: true });
+      else
+        progressReturn.current.href =
+          route.location.pathname + route.location.search;
+    }
+  }, [accountId, learner?.id, route.location.pathname, route.location.search]);
 
   const changingBirthYear = route.location.pathname === "/profile/birth-year";
   const setChangingBirthYear = (open: boolean) =>
@@ -261,10 +285,13 @@ function LegacyScreen() {
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressError, setProgressError] = useState("");
   const progressLessonReturn = useRef<string | null>(null);
-  const bookReturn = useRef<{ selector: string; scroll: number }>({
-    selector: "",
-    scroll: 0,
-  });
+  const bookReturn = useRef<{ href: string; selector: string; scroll: number }>(
+    {
+      href: "/lessons",
+      selector: "",
+      scroll: 0,
+    },
+  );
   const bookPositions = useRef<Record<string, number>>({});
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
@@ -829,6 +856,10 @@ function LegacyScreen() {
     const navigation = navigationEpoch.current;
     const active = trigger ?? (document.activeElement as HTMLElement | null);
     const returnTo = {
+      href:
+        route.parts[0] === "books"
+          ? "/lessons"
+          : route.location.pathname + route.location.search,
       selector: active?.dataset.bookId
         ? `[data-book-id="${CSS.escape(active.dataset.bookId)}"]`
         : "[data-book-trigger]",
@@ -1378,7 +1409,7 @@ function LegacyScreen() {
           initialFrame={readingBook.initialFrame}
           onClose={() => {
             setReadingBook(null);
-            navigate("/lessons");
+            navigate(bookReturn.current.href);
             requestAnimationFrame(() => {
               const library = document.querySelector(".library-main");
               if (library) library.scrollTop = bookReturn.current.scroll;
