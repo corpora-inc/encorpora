@@ -458,6 +458,24 @@ def check_inequality_content(records):
     require(header['emptyOverrideValid'] is True and header['emptyOverrideBindings'] == bindings,
             'Empty production-queue mapping input must preserve default bindings')
     require(header['isolatedBindings'] == [], 'Custom template inventories must not inherit unrelated defaults')
+    probes = header['mappingProbes']
+    key = probes['replacementKey']
+    expected_keys = {f'{template}:{facet}' for template, facet in expected_facets.items()}
+    require(key in expected_keys, 'Replacement probe must exercise an actual default mapping')
+    for name in ('replacement', 'completeWithoutEvidence'):
+        probe = probes[name]
+        require(probe['valid'] is True and probe['errors'] == [] and probe['bindings'] == bindings,
+                f'Same-key {name} must replace its default without granting independent review')
+    duplicate = probes['duplicate']
+    require(duplicate['valid'] is False and duplicate['errors'] == [f'Duplicate facet mapping: {key}'] and
+            duplicate['bindings'] == bindings, 'Duplicate supplied mappings must remain validation errors')
+    invalid = probes['invalidReplacement']
+    retained = [binding for binding in bindings if f"{binding['templateId']}:{binding['facetId']}" != key]
+    require(invalid['valid'] is False and invalid['errors'] == [f'Invalid facet mapping: {key}'] and
+            invalid['bindings'] == retained, 'Invalid replacement must not silently retain its valid default')
+    explicit = probes['explicitCatalogSkills']
+    require(explicit['valid'] is True and explicit['errors'] == [] and explicit['bindings'] == [],
+            'Any explicit skill inventory, including catalog skills, must suppress default mappings')
 
     seen, patterns, first_answers = set(), {t: set() for t in INEQUALITY}, {t: set() for t in INEQUALITY}
     total = 0
@@ -538,7 +556,7 @@ def check_inequality_content(records):
     require(seen == {(template, str(edition)) for template in INEQUALITY for edition in range(1, 17)},
             'Missing inequality worksheet editions or families')
     check_worksheet_order_variation(patterns, first_answers)
-    return {'worksheets': len(seen), 'problems': total, 'defaultFacetBindings': 3,
+    return {'worksheets': len(seen), 'problems': total, 'defaultFacetBindings': 3, 'mappingOverrideProbes': 5,
             'distinctClassificationOrders': {t: len(patterns[t]) for t in sorted(INEQUALITY)},
             'mismatches': 0}
 
@@ -556,6 +574,13 @@ def review_inequality_content_mutations(records):
     changed()[0]['defaultBindings'] = []
     changed()[0]['emptyOverrideBindings'] = []
     changed()[0]['isolatedBindings'] = copy.deepcopy(records[0]['defaultBindings'])
+    changed()[0]['mappingProbes']['replacement']['valid'] = False
+    changed()[0]['mappingProbes']['replacement']['bindings'].append(copy.deepcopy(records[0]['defaultBindings'][0]))
+    changed()[0]['mappingProbes']['completeWithoutEvidence']['bindings'][0]['independentlyReviewed'] = True
+    changed()[0]['mappingProbes']['duplicate']['valid'] = True
+    changed()[0]['mappingProbes']['duplicate']['errors'] = []
+    changed()[0]['mappingProbes']['invalidReplacement']['bindings'] = copy.deepcopy(records[0]['defaultBindings'])
+    changed()[0]['mappingProbes']['explicitCatalogSkills']['bindings'] = copy.deepcopy(records[0]['defaultBindings'])
     changed()[0]['declaredMappings'][0]['extent'] = 'complete'
     changed()[0]['defaultBindings'][0]['skillId'] = 'simple-inequalities'
     changed()[0]['defaultBindings'][0]['facetId'] = 'linear-inequalities.unknown'

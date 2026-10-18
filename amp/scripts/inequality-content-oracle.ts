@@ -14,6 +14,7 @@ import {
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
 import { generateProblem, templates } from "../src/math/engine";
+import { skills as catalogSkills } from "../src/curriculum/catalog";
 
 const ids = [
   "affine-linear-inequality",
@@ -37,6 +38,27 @@ async function main() {
   const manifest = buildCoverageManifest();
   const emptyOverride = buildCoverageManifest({ facetMappings: [] });
   const isolated = buildCoverageManifest({ templates: [] });
+  const replacement: FacetMapping = {
+    ...inequalityFacetMappings[0]!,
+    rationale:
+      "Caller-supplied partial mapping for the same template and facet.",
+  };
+  const replacementManifest = buildCoverageManifest({
+    facetMappings: [replacement],
+  });
+  const completeManifest = buildCoverageManifest({
+    facetMappings: [{ ...replacement, extent: "complete" }],
+    evidence: [],
+  });
+  const duplicateManifest = buildCoverageManifest({
+    facetMappings: [replacement, replacement],
+  });
+  // An invalid supplied value must be validated instead of silently retaining
+  // its valid default. This makes replacement precedence observable.
+  const invalidReplacement = buildCoverageManifest({
+    facetMappings: [{ ...replacement, rationale: "" }],
+  });
+  const explicitSkills = buildCoverageManifest({ skills: catalogSkills });
   const bindings = (value: ReturnType<typeof buildCoverageManifest>) =>
     value.skills.flatMap((skill) =>
       skill.facets.flatMap((facet) =>
@@ -65,6 +87,34 @@ async function main() {
     emptyOverrideValid: emptyOverride.valid,
     emptyOverrideBindings: bindings(emptyOverride),
     isolatedBindings: bindings(isolated),
+    mappingProbes: {
+      replacementKey: `${replacement.templateId}:${replacement.facetId}`,
+      replacement: {
+        valid: replacementManifest.valid,
+        errors: replacementManifest.errors,
+        bindings: bindings(replacementManifest),
+      },
+      completeWithoutEvidence: {
+        valid: completeManifest.valid,
+        errors: completeManifest.errors,
+        bindings: bindings(completeManifest),
+      },
+      duplicate: {
+        valid: duplicateManifest.valid,
+        errors: duplicateManifest.errors,
+        bindings: bindings(duplicateManifest),
+      },
+      invalidReplacement: {
+        valid: invalidReplacement.valid,
+        errors: invalidReplacement.errors,
+        bindings: bindings(invalidReplacement),
+      },
+      explicitCatalogSkills: {
+        valid: explicitSkills.valid,
+        errors: explicitSkills.errors,
+        bindings: bindings(explicitSkills),
+      },
+    },
   });
   const browser = await chromium.launch({ headless: true });
   try {
