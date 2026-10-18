@@ -1,0 +1,3811 @@
+{
+  "sourceCommit": "a163bce4b44001bd5c662b743c079a5c8872d139",
+  "sourceCatalogSha256": "805d2be8c8c27f24c7a587ec8d813a91c5466997bcfaf261dd953f57af22fbc8",
+  "templates": [
+    {
+      "id": "shifted-ruler-length",
+      "title": "Measure from a shifted start",
+      "skillId": "ruler-measurement",
+      "description": "Read a whole-unit interval from a nonzero ruler position.",
+      "version": 1,
+      "gradeBand": "K–2",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "fractional-ruler-length",
+      "title": "Read the spaces between marks",
+      "skillId": "ruler-measurement",
+      "description": "Read an exact half- or quarter-unit distance.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "rectangle-border-length",
+      "title": "Follow the whole border",
+      "skillId": "perimeter",
+      "description": "Find the complete perimeter of a rectangle.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "rectangle-missing-border-side",
+      "title": "Find a missing side from the border",
+      "skillId": "perimeter",
+      "description": "Recover a rectangle side from perimeter and one perpendicular side.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "rectangle-missing-area-side",
+      "title": "Find the missing factor",
+      "skillId": "area-perimeter-models",
+      "description": "Recover a rectangle side from area and one perpendicular side.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "border-or-cover-unit",
+      "title": "Choose the right kind of unit",
+      "skillId": "area-perimeter-models",
+      "description": "Distinguish boundary length from surface coverage.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "same-area-border-choice",
+      "title": "Same area, different border",
+      "skillId": "area-perimeter-models",
+      "description": "Compare perimeters of two rectangles with equal area.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredResponseCapability": "single-choice-v1",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "same-border-area-choice",
+      "title": "Same border, different area",
+      "skillId": "area-perimeter-models",
+      "description": "Compare areas of two rectangles with equal perimeter.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredResponseCapability": "single-choice-v1",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "metric-length-rename",
+      "title": "Rename with smaller units",
+      "skillId": "unit-conversion",
+      "description": "Convert a whole count of a larger metric length unit to a smaller unit.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "metric-length-reverse",
+      "title": "Rename with larger units",
+      "skillId": "measurement-conversions",
+      "description": "Convert a whole count of smaller metric units to an exact larger-unit value.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "mixed-length-total",
+      "title": "Bring lengths to one unit",
+      "skillId": "measurement-conversions",
+      "description": "Add lengths expressed in meters and centimeters.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "mixed-unit-border",
+      "title": "One unit around the border",
+      "skillId": "measurement-conversions",
+      "description": "Convert perpendicular rectangle sides to one unit before finding perimeter.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredFigureCapability": "measurement-models-v1"
+    },
+    {
+      "id": "rectangle-two-constraints-choice",
+      "title": "Meet both design conditions",
+      "skillId": "area-perimeter-models",
+      "description": "Choose a positive whole-number rectangle meeting area and perimeter constraints.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "rectangle-existence-choice",
+      "title": "Can the design exist?",
+      "skillId": "area-perimeter-models",
+      "description": "Decide whether given area and perimeter allow positive whole-number sides.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "whole-pack-ribbon-choice",
+      "title": "Compare what you must buy",
+      "skillId": "multistep-whole-stories",
+      "description": "Compare total costs under whole-pack and divisible-length purchase rules.",
+      "version": 1,
+      "gradeBand": "3–5",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "count-objects",
+      "version": 1,
+      "title": "Count objects",
+      "skillId": "count-to-20",
+      "gradeBand": "K–2",
+      "description": "Count up to ten objects."
+    },
+    {
+      "id": "add-within-20",
+      "version": 1,
+      "title": "Add within twenty",
+      "skillId": "addition-within-20",
+      "gradeBand": "K–2",
+      "description": "Add two nonnegative whole numbers with a sum at most twenty."
+    },
+    {
+      "id": "subtract-within-20",
+      "version": 1,
+      "title": "Subtract within twenty",
+      "skillId": "subtraction-within-20",
+      "gradeBand": "K–2",
+      "description": "Subtract without a negative result."
+    },
+    {
+      "id": "multiply-facts",
+      "version": 1,
+      "title": "Multiplication facts",
+      "skillId": "multiplication-facts",
+      "gradeBand": "3–5",
+      "description": "Multiply whole numbers from two through twelve."
+    },
+    {
+      "id": "fraction-model",
+      "version": 1,
+      "title": "Read a fraction",
+      "skillId": "fraction-model",
+      "gradeBand": "3–5",
+      "description": "Express a shaded part of one whole as a fraction."
+    },
+    {
+      "id": "add-fractions",
+      "version": 1,
+      "title": "Add fractions",
+      "skillId": "fraction-addition",
+      "gradeBand": "3–5",
+      "description": "Add two positive fractions with possibly different denominators."
+    },
+    {
+      "id": "rectangle-area",
+      "version": 1,
+      "title": "Rectangle area",
+      "skillId": "rectangle-area",
+      "gradeBand": "3–5",
+      "description": "Find area from perpendicular side lengths."
+    },
+    {
+      "id": "linear-equation",
+      "version": 1,
+      "title": "Solve a linear equation",
+      "skillId": "linear-equations",
+      "gradeBand": "6–8",
+      "description": "Solve an equation with an integer solution."
+    },
+    {
+      "id": "mean-data",
+      "version": 1,
+      "title": "Mean of a dataset",
+      "skillId": "statistics-mean",
+      "gradeBand": "6–8",
+      "description": "Compute an exact mean of five observations."
+    },
+    {
+      "id": "right-triangle",
+      "version": 1,
+      "title": "Pythagorean theorem",
+      "skillId": "pythagorean-theorem",
+      "gradeBand": "6–8",
+      "description": "Find a hypotenuse from a scaled integer right triangle."
+    },
+    {
+      "id": "quadratic-vertex",
+      "version": 1,
+      "title": "Quadratic minimum",
+      "skillId": "quadratic-minimum",
+      "gradeBand": "9–12",
+      "description": "Find the minimum value of a quadratic in vertex form."
+    },
+    {
+      "id": "geometric-sequence",
+      "version": 1,
+      "title": "Geometric sequences",
+      "skillId": "geometric-sequences",
+      "gradeBand": "9–12",
+      "description": "Find a term of a geometric sequence from its first term and ratio."
+    },
+    {
+      "id": "logarithm-integer",
+      "version": 1,
+      "title": "Logarithms",
+      "skillId": "logarithms",
+      "gradeBand": "9–12",
+      "description": "Evaluate a logarithm whose argument is an integer power of its base."
+    },
+    {
+      "id": "divide-facts",
+      "version": 1,
+      "title": "Division facts",
+      "skillId": "division-facts",
+      "gradeBand": "3–5",
+      "description": "Divide whole numbers into equal groups."
+    },
+    {
+      "id": "place-value-digit",
+      "version": 1,
+      "title": "Value of a digit",
+      "skillId": "hundreds-place-value",
+      "gradeBand": "K–2",
+      "description": "Find the value represented by a digit in a three-digit number."
+    },
+    {
+      "id": "decimal-addition",
+      "version": 1,
+      "title": "Add decimals",
+      "skillId": "decimal-arithmetic",
+      "gradeBand": "3–5",
+      "description": "Add two amounts expressed in hundredths."
+    },
+    {
+      "id": "compare-fractions",
+      "version": 1,
+      "title": "Compare fractions",
+      "skillId": "fraction-comparison",
+      "gradeBand": "3–5",
+      "description": "Choose the larger of two distinct positive fractions."
+    },
+    {
+      "id": "multiply-fractions",
+      "version": 1,
+      "title": "Multiply fractions",
+      "skillId": "fraction-multiplication",
+      "gradeBand": "3–5",
+      "description": "Multiply two positive proper fractions."
+    },
+    {
+      "id": "divide-fractions",
+      "version": 1,
+      "title": "Divide fractions",
+      "skillId": "fraction-division",
+      "gradeBand": "6–8",
+      "description": "Divide a positive fraction by another positive fraction."
+    },
+    {
+      "id": "ratio-missing",
+      "version": 1,
+      "title": "Equivalent ratios",
+      "skillId": "ratios",
+      "gradeBand": "6–8",
+      "description": "Scale a ratio to find a missing quantity."
+    },
+    {
+      "id": "percent-of",
+      "version": 1,
+      "title": "Percent of a quantity",
+      "skillId": "percentages",
+      "gradeBand": "6–8",
+      "description": "Find an exact percentage of a whole-number quantity."
+    },
+    {
+      "id": "integer-addition",
+      "version": 1,
+      "title": "Add signed integers",
+      "skillId": "signed-addition",
+      "gradeBand": "6–8",
+      "description": "Combine positive and negative integer changes."
+    },
+    {
+      "id": "integer-power",
+      "version": 1,
+      "title": "Evaluate powers",
+      "skillId": "integer-powers",
+      "gradeBand": "6–8",
+      "description": "Evaluate a whole-number base raised to a nonnegative integer exponent."
+    },
+    {
+      "id": "line-slope",
+      "version": 1,
+      "title": "Slope through two points",
+      "skillId": "slope",
+      "gradeBand": "6–8",
+      "description": "Find slope as change in y divided by change in x."
+    },
+    {
+      "id": "linear-system-x",
+      "version": 1,
+      "title": "Solve a linear system",
+      "skillId": "linear-systems",
+      "gradeBand": "9–12",
+      "description": "Find x in a system with a unique integer solution."
+    },
+    {
+      "id": "simple-probability",
+      "version": 1,
+      "title": "Probability of one draw",
+      "skillId": "probability",
+      "gradeBand": "6–8",
+      "description": "Find a probability from equally likely objects."
+    },
+    {
+      "id": "arithmetic-term",
+      "version": 1,
+      "title": "Arithmetic sequences",
+      "skillId": "arithmetic-sequences",
+      "gradeBand": "6–8",
+      "description": "Find a term given the first term and a common difference."
+    },
+    {
+      "id": "function-evaluation",
+      "version": 1,
+      "title": "Evaluate a function",
+      "skillId": "function-evaluation",
+      "gradeBand": "9–12",
+      "description": "Evaluate a quadratic expression at an integer input."
+    },
+    {
+      "id": "unit-price",
+      "version": 1,
+      "title": "Proportional cost",
+      "skillId": "proportional-relationships",
+      "gradeBand": "6–8",
+      "description": "Use a constant unit price to find a total cost."
+    },
+    {
+      "id": "decimal-multiplication",
+      "version": 1,
+      "title": "Multiply decimals",
+      "skillId": "decimal-arithmetic",
+      "gradeBand": "3–5",
+      "description": "Multiply two positive amounts expressed in tenths."
+    },
+    {
+      "id": "operation-order",
+      "version": 1,
+      "title": "Order of operations",
+      "skillId": "numerical-expressions",
+      "gradeBand": "3–5",
+      "description": "Evaluate an expression with parentheses, multiplication and addition."
+    },
+    {
+      "id": "quadratic-factored-solutions",
+      "title": "Solve a factored quadratic",
+      "skillId": "quadratic-equations",
+      "description": "Find every real solution of a quadratic written as a product of linear factors.",
+      "version": 1,
+      "gradeBand": "9–12",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "quadratic-expanded-solutions",
+      "title": "Solve a quadratic by factoring",
+      "skillId": "quadratic-equations",
+      "description": "Factor an expanded quadratic and identify its complete real solution set.",
+      "version": 1,
+      "gradeBand": "9–12",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "quadratic-real-solution-count",
+      "title": "Count real quadratic solutions",
+      "skillId": "quadratic-formula",
+      "description": "Use the discriminant to count distinct real solutions without calculating the roots.",
+      "version": 1,
+      "gradeBand": "9–12"
+    },
+    {
+      "id": "polynomial-addition",
+      "title": "Add polynomials",
+      "description": "Combine like terms in a sum of polynomials.",
+      "skillId": "polynomial-arithmetic",
+      "version": 1,
+      "gradeBand": "9–12",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "polynomial-subtraction",
+      "title": "Subtract polynomials",
+      "description": "Distribute a subtraction sign and combine like terms.",
+      "skillId": "polynomial-arithmetic",
+      "version": 1,
+      "gradeBand": "9–12",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "polynomial-multiplication",
+      "title": "Multiply polynomials",
+      "description": "Distribute every term and combine like terms in a polynomial product.",
+      "skillId": "polynomial-arithmetic",
+      "version": 1,
+      "gradeBand": "9–12",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "coordinate-point-reading",
+      "version": 1,
+      "title": "Read a coordinate",
+      "skillId": "coordinate-four-quadrants",
+      "gradeBand": "6–8",
+      "description": "Read one coordinate of a labeled point on a unit grid."
+    },
+    {
+      "id": "graphed-line-slope",
+      "version": 1,
+      "title": "Slope from a graph",
+      "skillId": "slope",
+      "gradeBand": "6–8",
+      "description": "Find exact slope from two labeled lattice points."
+    },
+    {
+      "id": "bar-chart-total",
+      "version": 1,
+      "title": "Total from a bar chart",
+      "skillId": "picture-bar-graphs",
+      "gradeBand": "K–2",
+      "description": "Add three category counts from a labeled bar chart."
+    },
+    {
+      "id": "bar-chart-difference",
+      "version": 1,
+      "title": "Compare chart categories",
+      "skillId": "picture-bar-graphs",
+      "gradeBand": "K–2",
+      "description": "Find how many more items one category contains than another."
+    },
+    {
+      "id": "clock-elapsed-minutes",
+      "version": 1,
+      "title": "Elapsed minutes",
+      "skillId": "elapsed-time",
+      "gradeBand": "3–5",
+      "description": "Find a duration up to two hours between times on the same morning."
+    },
+    {
+      "id": "number-line-distance",
+      "version": 1,
+      "title": "Distance on a number line",
+      "skillId": "absolute-value",
+      "gradeBand": "6–8",
+      "description": "Find the nonnegative distance between two signed integers."
+    },
+    {
+      "id": "join-within-10",
+      "title": "Join two small groups",
+      "skillId": "addition-within-10",
+      "description": "Model joining within ten with a ten-frame.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "take-away-within-10",
+      "title": "Take some away",
+      "skillId": "subtraction-within-10",
+      "description": "Find a remainder in a removal story within ten.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "number-bond-missing",
+      "title": "Find the other part",
+      "skillId": "number-bonds",
+      "description": "Complete a two-part decomposition of a number through ten.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "ten-frame-complement",
+      "title": "Fill a ten-frame",
+      "skillId": "make-ten",
+      "description": "Find the empty places needed to complete ten.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "teen-frame-compose",
+      "title": "One ten and extra ones",
+      "skillId": "teen-place-value",
+      "description": "Compose eleven through nineteen from ten ones and extras.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "unknown-addend-story",
+      "title": "Find what was added",
+      "skillId": "missing-addend",
+      "description": "Recover an unknown change from a start and total within twenty.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "missing-start-story",
+      "title": "Find the starting amount",
+      "skillId": "addition-stories",
+      "description": "Recover a starting amount from a removal and remaining amount.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "balanced-addition",
+      "title": "Make both sides equal",
+      "skillId": "equality",
+      "description": "Find a missing number in an equation with arithmetic on both sides.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "three-addend-story",
+      "title": "Combine three groups",
+      "skillId": "three-addends",
+      "description": "Add three quantities with a total at most twenty.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "make-ten-remainder",
+      "title": "Split an addend to make ten",
+      "skillId": "addition-within-20",
+      "description": "Find the part of an addend left after completing a ten.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "subtract-through-ten",
+      "title": "Split a subtraction at ten",
+      "skillId": "subtraction-within-20",
+      "description": "Find the amount still to subtract after reaching ten.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "tens-ones-model",
+      "title": "Read tens and ones",
+      "skillId": "tens-and-ones",
+      "description": "Compose a two-digit number from ten rods and unit squares.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "ten-more-or-less",
+      "title": "Change one ten",
+      "skillId": "ten-more-less",
+      "description": "Find ten more or ten less without recounting ones.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "add-ones-regroup",
+      "title": "Make a new ten",
+      "skillId": "add-two-digit",
+      "description": "Add a one-digit number to a two-digit number by regrouping ones.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "subtract-whole-tens",
+      "title": "Subtract bundles of ten",
+      "skillId": "ten-more-less",
+      "description": "Subtract whole tens with a nonnegative result.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "hundreds-model",
+      "title": "Read hundreds tens and ones",
+      "skillId": "hundreds-place-value",
+      "description": "Compose a three-digit number including zero-place cases.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "expanded-form-missing",
+      "title": "Complete expanded form",
+      "skillId": "hundreds-place-value",
+      "description": "Find a missing place-value amount in an expanded equation.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "exchange-base-ten",
+      "title": "Exchange equal units",
+      "skillId": "hundreds-place-value",
+      "description": "Regroup ten ones or ten tens while preserving value.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "add-several-two-digit",
+      "title": "Add several groups",
+      "skillId": "multiple-addends",
+      "description": "Combine three or four two-digit quantities.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "add-with-regrouping",
+      "title": "Regroup a three-digit sum",
+      "skillId": "regroup-hundreds",
+      "description": "Add within one thousand with a required ones-to-tens exchange.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "subtract-with-regrouping",
+      "title": "Exchange to subtract",
+      "skillId": "regroup-hundreds",
+      "description": "Subtract within one thousand including borrowing across a zero tens place.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "skip-count-missing",
+      "title": "Find the next count",
+      "skillId": "skip-counting",
+      "description": "Continue a count by fives tens or hundreds within one thousand.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "two-step-change",
+      "title": "Follow two changes",
+      "skillId": "two-step-stories",
+      "description": "Solve a join-then-remove story within one hundred.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "continue-count-to-120",
+      "title": "Continue counting",
+      "skillId": "tens-and-ones",
+      "description": "Continue by ones from any supported starting point through 120.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "unit-piece-size",
+      "title": "Size of one equal part",
+      "skillId": "unit-fractions",
+      "description": "Name one part of a whole partitioned into 2, 3, 4, 6, or 8 equal pieces.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "fraction-unit-count",
+      "title": "Count fractional units",
+      "skillId": "unit-fractions",
+      "description": "Count shaded equal units, including quantities greater than one.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "fraction-line-position",
+      "title": "Read a fraction location",
+      "skillId": "fractions-number-line",
+      "description": "Read a marked position on a zero-based rational number line through three wholes.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "fraction-whole-as-parts",
+      "title": "Rename a whole in fractional units",
+      "skillId": "equivalent-fractions",
+      "description": "Find the numerator when a whole number is expressed using a specified denominator.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "equivalent-numerator",
+      "title": "Rename with smaller pieces",
+      "skillId": "fraction-equivalence",
+      "description": "Find a missing numerator when both counts scale by an integer factor.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "equivalent-denominator",
+      "title": "Rename with larger pieces",
+      "skillId": "fraction-equivalence",
+      "description": "Find a missing denominator when equal groups are collected.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "like-fraction-missing-part",
+      "title": "Complete a fractional amount",
+      "skillId": "like-fraction-addition",
+      "description": "Find the missing addend with a shared denominator.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "like-fraction-difference",
+      "title": "Remove like fractional units",
+      "skillId": "like-fraction-addition",
+      "description": "Subtract positive like-denominator amounts with a nonnegative result.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "mixed-to-improper-numerator",
+      "title": "Count the parts in a mixed amount",
+      "skillId": "mixed-numbers",
+      "description": "Find the numerator of a mixed number renamed with its existing denominator.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "improper-whole-part",
+      "title": "Find full wholes in an amount",
+      "skillId": "mixed-numbers",
+      "description": "Count complete wholes in a positive improper fraction.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "improper-fractional-part",
+      "title": "Find the part beyond full wholes",
+      "skillId": "mixed-numbers",
+      "description": "Find the fractional remainder after removing complete wholes.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "mixed-fraction-difference",
+      "title": "Subtract through a whole",
+      "skillId": "mixed-numbers",
+      "description": "Subtract mixed numbers with like denominators, requiring one whole to be regrouped.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "unlike-fraction-difference",
+      "title": "Subtract using a shared unit",
+      "skillId": "fraction-addition",
+      "description": "Subtract distinct-denominator positive fractions with a nonnegative difference.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "fraction-distance-gap",
+      "title": "Measure a fractional gap",
+      "skillId": "fraction-addition",
+      "description": "Find the distance between two marked rational positions on a common-unit line.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "whole-times-fraction",
+      "title": "Several groups of a fraction",
+      "skillId": "fraction-times-whole",
+      "description": "Find the total of a whole number of equal fractional-liter portions.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "whole-sharing-fraction",
+      "title": "Share whole quantities equally",
+      "skillId": "fraction-as-division",
+      "description": "Share a whole number of liters among a whole-number group, including improper shares.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "unit-fraction-share",
+      "title": "Share one fractional unit",
+      "skillId": "unit-fraction-division",
+      "description": "Divide a unit fraction of a liter among a positive whole-number group.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "whole-unit-groups",
+      "title": "Count unit-fraction groups",
+      "skillId": "unit-fraction-division",
+      "description": "Count unit-fraction-liter containers in a whole number of liters.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "fraction-group-count",
+      "title": "Count full and partial groups",
+      "skillId": "fraction-division",
+      "description": "Measure a rational total in fractional-liter container units, allowing partial groups.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "fraction-share-amount",
+      "title": "Share a fractional total",
+      "skillId": "fraction-division",
+      "description": "Share a positive non-unit fractional-liter amount among a whole-number group.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "fraction-of-quantity",
+      "title": "Scale a whole amount",
+      "skillId": "fraction-multiplication",
+      "description": "Take a proper fraction of a positive whole-liter amount.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "substitute-linear-expression",
+      "title": "Put a value into a rule",
+      "skillId": "variable-expressions",
+      "description": "Evaluate a signed linear expression at an integer or half-integer input.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "distributive-expression-choice",
+      "title": "Multiply into parentheses",
+      "skillId": "expression-properties",
+      "description": "Recognize an equivalent expansion of a signed grouped expression.",
+      "version": 1,
+      "gradeBand": "6–8",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "combine-like-coefficient",
+      "title": "Collect the x terms",
+      "skillId": "linear-expressions",
+      "description": "Find only the coefficient of x after combining like terms.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "grouped-linear-equation",
+      "title": "Unwrap an equation",
+      "skillId": "linear-equations",
+      "description": "Solve a grouped linear equation with an exact rational result.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "negative-coefficient-equation",
+      "title": "Undo a negative multiplier",
+      "skillId": "linear-equations",
+      "description": "Solve an equation with a negative coefficient.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "rational-coefficient-equation",
+      "title": "Undo a fraction multiplier",
+      "skillId": "linear-equations",
+      "description": "Solve an equation whose x coefficient is a noninteger fraction.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "both-sides-linear-equation",
+      "title": "Bring the unknowns together",
+      "skillId": "linear-equations",
+      "description": "Solve a unique-solution equation with variables on both sides.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "check-equation-candidate",
+      "title": "Test a proposed answer",
+      "skillId": "linear-equations",
+      "description": "Select the correct substitution check of a proposed integer value.",
+      "version": 1,
+      "gradeBand": "6–8",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "unequal-step-rate",
+      "title": "Look past the step sizes",
+      "skillId": "slope",
+      "description": "Find a constant rate from linear observations with unequal input steps.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "recover-linear-intercept",
+      "title": "Find the output at zero",
+      "skillId": "linear-models",
+      "description": "Recover a zero-input output from a stated rate and another observation.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "predict-linear-output",
+      "title": "Extend a linear pattern",
+      "skillId": "linear-models",
+      "description": "Predict an output from two points under an explicit linear assumption.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "relation-function-choice",
+      "title": "One input, one output?",
+      "skillId": "function-notation",
+      "description": "Identify a finite relation with exactly one output for each input.",
+      "version": 1,
+      "gradeBand": "6–8",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "proportional-rule-choice",
+      "title": "Find a proportional rule",
+      "skillId": "proportional-relationships",
+      "description": "Recognize a real-valued rule y=kx among affine rules with nonzero intercepts.",
+      "version": 1,
+      "gradeBand": "6–8",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "shared-plan-input",
+      "title": "Find when two plans meet",
+      "skillId": "linear-systems",
+      "description": "Find the nonnegative input where two affine cost rules agree.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "first-cheaper-whole-input",
+      "title": "Find the first lower price",
+      "skillId": "linear-models",
+      "description": "Find the first whole input at which a fixed-fee plan is strictly cheaper.",
+      "version": 1,
+      "gradeBand": "6–8"
+    },
+    {
+      "id": "distance-graph-meaning",
+      "title": "Read a distance graph",
+      "skillId": "qualitative-graphs",
+      "description": "Interpret a level or falling distance-from-home segment without inferring a route or motion speed.",
+      "version": 1,
+      "gradeBand": "6–8",
+      "requiredResponseCapability": "single-choice-v1"
+    },
+    {
+      "id": "fraction-equivalence-choice",
+      "version": 1,
+      "requiredResponseCapability": "single-choice-v1",
+      "title": "Different pieces, same amount",
+      "skillId": "fraction-equivalence",
+      "gradeBand": "3–5",
+      "description": "Select an equivalent name for a proper fraction among scaling and additive misconceptions."
+    },
+    {
+      "id": "equation-solution-count",
+      "version": 1,
+      "requiredResponseCapability": "single-choice-v1",
+      "title": "One, none, or every number?",
+      "skillId": "linear-equations",
+      "gradeBand": "6–8",
+      "description": "Classify the solution set of a linear equation with positive integer coefficients on both sides."
+    },
+    {
+      "id": "graph-equation-choice",
+      "version": 1,
+      "requiredResponseCapability": "single-choice-v1",
+      "title": "Find the graph’s rule",
+      "skillId": "linear-models",
+      "gradeBand": "6–8",
+      "description": "Match an increasing line with positive integer slope and intercept to its equation."
+    },
+    {
+      "id": "full-kits",
+      "title": "Count complete kits",
+      "skillId": "multistep-whole-stories",
+      "description": "Count complete fixed-size kits from a whole-item stock, including exact division.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "seats-needed",
+      "title": "Make room for everyone",
+      "skillId": "multistep-whole-stories",
+      "description": "Find the smallest whole number of vehicles with enough seats, including exact division.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "kit-leftovers",
+      "title": "Find unused items",
+      "skillId": "multistep-whole-stories",
+      "description": "Count items left after making as many complete kits as possible.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "share-whole-items",
+      "title": "Share equally among trays",
+      "skillId": "division-meaning",
+      "description": "Find items per share from a total and a given number of equal shares.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "measure-whole-pieces",
+      "title": "Measure equal pieces",
+      "skillId": "division-meaning",
+      "description": "Count fixed-length pieces in an exactly divisible whole-centimeter length.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "small-array-total",
+      "title": "Count a unit array",
+      "skillId": "arrays",
+      "description": "Count unit squares in arrays no larger than five rows by five columns.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "pairing-leftover",
+      "title": "Pair the counters",
+      "skillId": "odd-and-even",
+      "description": "Find whether zero or one counter remains after pairing a quantity through twenty.",
+      "version": 1,
+      "gradeBand": "K–2"
+    },
+    {
+      "id": "equal-tray-total",
+      "title": "Count equal trays",
+      "skillId": "multiplication-meaning",
+      "description": "Find a total from equal visible groups of items.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "unknown-group-size",
+      "title": "Find the group size",
+      "skillId": "missing-factor",
+      "description": "Find an unknown factor from a group count and a total.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "unknown-dividend",
+      "title": "Find the starting total",
+      "skillId": "missing-factor",
+      "description": "Find the unknown dividend in a whole-number division equation.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "split-array-part",
+      "title": "Use one part of an array",
+      "skillId": "operation-properties",
+      "description": "Find a partial product represented by a disjoint row region of an array.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "nested-bag-total",
+      "title": "Count groups inside groups",
+      "skillId": "operation-properties",
+      "description": "Find the total in crates containing equal bags of equal items.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "zero-one-groups",
+      "title": "Use zero and one groups",
+      "skillId": "multiplication-meaning",
+      "description": "Find products when a group count or group size is zero or one.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "comparison-amount",
+      "title": "Find a compared amount",
+      "skillId": "multiplicative-comparison",
+      "description": "Find a quantity described as a whole-number multiple of another.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "comparison-factor",
+      "title": "Find how many times as many",
+      "skillId": "multiplicative-comparison",
+      "description": "Find the multiplicative comparison factor from two whole-number quantities.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "delivery-then-use",
+      "title": "Combine deliveries and use some",
+      "skillId": "multi-operation-stories",
+      "description": "Find remaining stock after equal deliveries and a known use.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "purchase-change",
+      "title": "Find change after equal purchases",
+      "skillId": "multi-operation-stories",
+      "description": "Find whole-dollar change after buying several equally priced items.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "factor-partner",
+      "title": "Find the other factor",
+      "skillId": "factors-multiples",
+      "description": "Complete one specified factor pair for a whole number through one hundred.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "tens-contribution",
+      "title": "Find the tens partial product",
+      "skillId": "whole-multiplication",
+      "description": "Find the tens contribution in a two-digit by one-digit product.",
+      "version": 1,
+      "gradeBand": "3–5"
+    },
+    {
+      "id": "neighbor-product-change",
+      "title": "Compare neighboring products",
+      "skillId": "arithmetic-patterns",
+      "description": "Find the change when an equal-row array gains one row.",
+      "version": 1,
+      "gradeBand": "3–5"
+    }
+  ],
+  "skills": [
+    {
+      "id": "count-to-20",
+      "prerequisites": [],
+      "strand": "number",
+      "gradeBand": "K"
+    },
+    {
+      "id": "count-to-100",
+      "prerequisites": [
+        "count-to-20"
+      ],
+      "strand": "number",
+      "gradeBand": "K"
+    },
+    {
+      "id": "write-numerals",
+      "prerequisites": [
+        "count-to-20"
+      ],
+      "strand": "number",
+      "gradeBand": "K"
+    },
+    {
+      "id": "compare-small-groups",
+      "prerequisites": [
+        "count-to-20"
+      ],
+      "strand": "number",
+      "gradeBand": "K"
+    },
+    {
+      "id": "compare-numerals",
+      "prerequisites": [
+        "write-numerals"
+      ],
+      "strand": "number",
+      "gradeBand": "K"
+    },
+    {
+      "id": "addition-within-10",
+      "prerequisites": [
+        "count-to-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "K"
+    },
+    {
+      "id": "subtraction-within-10",
+      "prerequisites": [
+        "addition-within-10"
+      ],
+      "strand": "operations",
+      "gradeBand": "K"
+    },
+    {
+      "id": "number-bonds",
+      "prerequisites": [
+        "addition-within-10"
+      ],
+      "strand": "operations",
+      "gradeBand": "K"
+    },
+    {
+      "id": "make-ten",
+      "prerequisites": [
+        "number-bonds"
+      ],
+      "strand": "operations",
+      "gradeBand": "K"
+    },
+    {
+      "id": "facts-within-5",
+      "prerequisites": [
+        "subtraction-within-10"
+      ],
+      "strand": "operations",
+      "gradeBand": "K"
+    },
+    {
+      "id": "teen-place-value",
+      "prerequisites": [
+        "make-ten"
+      ],
+      "strand": "number",
+      "gradeBand": "K"
+    },
+    {
+      "id": "compare-attributes",
+      "prerequisites": [],
+      "strand": "measurement",
+      "gradeBand": "K"
+    },
+    {
+      "id": "sort-and-count",
+      "prerequisites": [
+        "count-to-20"
+      ],
+      "strand": "data",
+      "gradeBand": "K"
+    },
+    {
+      "id": "name-shapes",
+      "prerequisites": [],
+      "strand": "geometry",
+      "gradeBand": "K"
+    },
+    {
+      "id": "compose-shapes",
+      "prerequisites": [
+        "name-shapes"
+      ],
+      "strand": "geometry",
+      "gradeBand": "K"
+    },
+    {
+      "id": "addition-within-20",
+      "prerequisites": [
+        "make-ten"
+      ],
+      "strand": "operations",
+      "gradeBand": "1"
+    },
+    {
+      "id": "subtraction-within-20",
+      "prerequisites": [
+        "addition-within-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "1"
+    },
+    {
+      "id": "addition-stories",
+      "prerequisites": [
+        "addition-within-20"
+      ],
+      "strand": "modeling",
+      "gradeBand": "1"
+    },
+    {
+      "id": "three-addends",
+      "prerequisites": [
+        "addition-within-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "1"
+    },
+    {
+      "id": "equality",
+      "prerequisites": [
+        "addition-within-20"
+      ],
+      "strand": "algebra",
+      "gradeBand": "1"
+    },
+    {
+      "id": "missing-addend",
+      "prerequisites": [
+        "equality",
+        "subtraction-within-20"
+      ],
+      "strand": "algebra",
+      "gradeBand": "1"
+    },
+    {
+      "id": "tens-and-ones",
+      "prerequisites": [
+        "teen-place-value"
+      ],
+      "strand": "number",
+      "gradeBand": "1"
+    },
+    {
+      "id": "compare-two-digit",
+      "prerequisites": [
+        "tens-and-ones"
+      ],
+      "strand": "number",
+      "gradeBand": "1"
+    },
+    {
+      "id": "add-two-digit",
+      "prerequisites": [
+        "tens-and-ones",
+        "addition-within-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "1"
+    },
+    {
+      "id": "ten-more-less",
+      "prerequisites": [
+        "tens-and-ones"
+      ],
+      "strand": "operations",
+      "gradeBand": "1"
+    },
+    {
+      "id": "measure-equal-units",
+      "prerequisites": [
+        "compare-attributes"
+      ],
+      "strand": "measurement",
+      "gradeBand": "1"
+    },
+    {
+      "id": "clock-half-hours",
+      "prerequisites": [
+        "count-to-100"
+      ],
+      "strand": "measurement",
+      "gradeBand": "1"
+    },
+    {
+      "id": "categorical-data",
+      "prerequisites": [
+        "sort-and-count"
+      ],
+      "strand": "data",
+      "gradeBand": "1"
+    },
+    {
+      "id": "halves-and-quarters",
+      "prerequisites": [
+        "compose-shapes"
+      ],
+      "strand": "fractions",
+      "gradeBand": "1"
+    },
+    {
+      "id": "shape-attributes",
+      "prerequisites": [
+        "name-shapes"
+      ],
+      "strand": "geometry",
+      "gradeBand": "1"
+    },
+    {
+      "id": "hundreds-place-value",
+      "prerequisites": [
+        "tens-and-ones"
+      ],
+      "strand": "number",
+      "gradeBand": "2"
+    },
+    {
+      "id": "skip-counting",
+      "prerequisites": [
+        "count-to-100"
+      ],
+      "strand": "number",
+      "gradeBand": "2"
+    },
+    {
+      "id": "compare-three-digit",
+      "prerequisites": [
+        "hundreds-place-value"
+      ],
+      "strand": "number",
+      "gradeBand": "2"
+    },
+    {
+      "id": "addition-within-100",
+      "prerequisites": [
+        "add-two-digit"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "subtraction-within-100",
+      "prerequisites": [
+        "addition-within-100",
+        "subtraction-within-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "regroup-hundreds",
+      "prerequisites": [
+        "hundreds-place-value",
+        "subtraction-within-100"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "multiple-addends",
+      "prerequisites": [
+        "addition-within-100"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "two-step-stories",
+      "prerequisites": [
+        "addition-stories",
+        "subtraction-within-100"
+      ],
+      "strand": "modeling",
+      "gradeBand": "2"
+    },
+    {
+      "id": "addition-facts",
+      "prerequisites": [
+        "subtraction-within-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "odd-and-even",
+      "prerequisites": [
+        "count-to-20"
+      ],
+      "strand": "number",
+      "gradeBand": "2"
+    },
+    {
+      "id": "arrays",
+      "prerequisites": [
+        "skip-counting"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "ruler-measurement",
+      "prerequisites": [
+        "measure-equal-units"
+      ],
+      "strand": "measurement",
+      "gradeBand": "2"
+    },
+    {
+      "id": "number-line-arithmetic",
+      "prerequisites": [
+        "subtraction-within-100"
+      ],
+      "strand": "number",
+      "gradeBand": "2"
+    },
+    {
+      "id": "clock-five-minutes",
+      "prerequisites": [
+        "clock-half-hours",
+        "skip-counting"
+      ],
+      "strand": "measurement",
+      "gradeBand": "2"
+    },
+    {
+      "id": "money-values",
+      "prerequisites": [
+        "addition-within-100"
+      ],
+      "strand": "measurement",
+      "gradeBand": "2"
+    },
+    {
+      "id": "line-plots",
+      "prerequisites": [
+        "ruler-measurement"
+      ],
+      "strand": "data",
+      "gradeBand": "2"
+    },
+    {
+      "id": "picture-bar-graphs",
+      "prerequisites": [
+        "categorical-data"
+      ],
+      "strand": "data",
+      "gradeBand": "2"
+    },
+    {
+      "id": "thirds-and-partitions",
+      "prerequisites": [
+        "halves-and-quarters"
+      ],
+      "strand": "fractions",
+      "gradeBand": "2"
+    },
+    {
+      "id": "polygon-properties",
+      "prerequisites": [
+        "shape-attributes"
+      ],
+      "strand": "geometry",
+      "gradeBand": "2"
+    },
+    {
+      "id": "multiplication-meaning",
+      "prerequisites": [
+        "arrays"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "multiplication-facts",
+      "prerequisites": [
+        "multiplication-meaning"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "division-meaning",
+      "prerequisites": [
+        "multiplication-meaning"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "division-facts",
+      "prerequisites": [
+        "division-meaning",
+        "multiplication-facts"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "missing-factor",
+      "prerequisites": [
+        "division-facts"
+      ],
+      "strand": "algebra",
+      "gradeBand": "3"
+    },
+    {
+      "id": "operation-properties",
+      "prerequisites": [
+        "multiplication-meaning"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "multiplicative-stories",
+      "prerequisites": [
+        "division-meaning"
+      ],
+      "strand": "modeling",
+      "gradeBand": "3"
+    },
+    {
+      "id": "multi-operation-stories",
+      "prerequisites": [
+        "multiplicative-stories",
+        "two-step-stories"
+      ],
+      "strand": "modeling",
+      "gradeBand": "3"
+    },
+    {
+      "id": "arithmetic-patterns",
+      "prerequisites": [
+        "multiplication-facts"
+      ],
+      "strand": "algebra",
+      "gradeBand": "3"
+    },
+    {
+      "id": "round-whole-numbers",
+      "prerequisites": [
+        "hundreds-place-value"
+      ],
+      "strand": "number",
+      "gradeBand": "3"
+    },
+    {
+      "id": "add-subtract-thousands",
+      "prerequisites": [
+        "regroup-hundreds"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "multiply-tens",
+      "prerequisites": [
+        "multiplication-facts",
+        "tens-and-ones"
+      ],
+      "strand": "operations",
+      "gradeBand": "3"
+    },
+    {
+      "id": "unit-fractions",
+      "prerequisites": [
+        "thirds-and-partitions"
+      ],
+      "strand": "fractions",
+      "gradeBand": "3"
+    },
+    {
+      "id": "fraction-model",
+      "prerequisites": [
+        "unit-fractions"
+      ],
+      "strand": "fractions",
+      "gradeBand": "3"
+    },
+    {
+      "id": "fractions-number-line",
+      "prerequisites": [
+        "unit-fractions",
+        "number-line-arithmetic"
+      ],
+      "strand": "fractions",
+      "gradeBand": "3"
+    },
+    {
+      "id": "equivalent-fractions",
+      "prerequisites": [
+        "fractions-number-line"
+      ],
+      "strand": "fractions",
+      "gradeBand": "3"
+    },
+    {
+      "id": "compare-fractions",
+      "prerequisites": [
+        "equivalent-fractions"
+      ],
+      "strand": "fractions",
+      "gradeBand": "3"
+    },
+    {
+      "id": "elapsed-time",
+      "prerequisites": [
+        "clock-five-minutes"
+      ],
+      "strand": "measurement",
+      "gradeBand": "3"
+    },
+    {
+      "id": "mass-volume",
+      "prerequisites": [
+        "multiplicative-stories"
+      ],
+      "strand": "measurement",
+      "gradeBand": "3"
+    },
+    {
+      "id": "scaled-graphs",
+      "prerequisites": [
+        "picture-bar-graphs",
+        "multiplication-facts"
+      ],
+      "strand": "data",
+      "gradeBand": "3"
+    },
+    {
+      "id": "fraction-line-plots",
+      "prerequisites": [
+        "line-plots",
+        "unit-fractions"
+      ],
+      "strand": "data",
+      "gradeBand": "3"
+    },
+    {
+      "id": "rectangle-area",
+      "prerequisites": [
+        "arrays",
+        "multiplication-facts"
+      ],
+      "strand": "geometry",
+      "gradeBand": "3"
+    },
+    {
+      "id": "perimeter",
+      "prerequisites": [
+        "addition-within-100"
+      ],
+      "strand": "geometry",
+      "gradeBand": "3"
+    },
+    {
+      "id": "quadrilateral-categories",
+      "prerequisites": [
+        "polygon-properties"
+      ],
+      "strand": "geometry",
+      "gradeBand": "3"
+    },
+    {
+      "id": "partition-area",
+      "prerequisites": [
+        "rectangle-area",
+        "unit-fractions"
+      ],
+      "strand": "fractions",
+      "gradeBand": "3"
+    },
+    {
+      "id": "multiplicative-comparison",
+      "prerequisites": [
+        "multiplicative-stories"
+      ],
+      "strand": "modeling",
+      "gradeBand": "4"
+    },
+    {
+      "id": "multistep-whole-stories",
+      "prerequisites": [
+        "multi-operation-stories",
+        "round-whole-numbers"
+      ],
+      "strand": "modeling",
+      "gradeBand": "4"
+    },
+    {
+      "id": "factors-multiples",
+      "prerequisites": [
+        "division-facts"
+      ],
+      "strand": "number",
+      "gradeBand": "4"
+    },
+    {
+      "id": "rule-patterns",
+      "prerequisites": [
+        "arithmetic-patterns"
+      ],
+      "strand": "algebra",
+      "gradeBand": "4"
+    },
+    {
+      "id": "large-place-value",
+      "prerequisites": [
+        "round-whole-numbers"
+      ],
+      "strand": "number",
+      "gradeBand": "4"
+    },
+    {
+      "id": "whole-add-subtract",
+      "prerequisites": [
+        "add-subtract-thousands"
+      ],
+      "strand": "operations",
+      "gradeBand": "4"
+    },
+    {
+      "id": "whole-multiplication",
+      "prerequisites": [
+        "multiply-tens",
+        "operation-properties"
+      ],
+      "strand": "operations",
+      "gradeBand": "4"
+    },
+    {
+      "id": "whole-division",
+      "prerequisites": [
+        "division-facts",
+        "large-place-value"
+      ],
+      "strand": "operations",
+      "gradeBand": "4"
+    },
+    {
+      "id": "fraction-equivalence",
+      "prerequisites": [
+        "equivalent-fractions",
+        "multiplication-facts"
+      ],
+      "strand": "fractions",
+      "gradeBand": "4"
+    },
+    {
+      "id": "fraction-comparison",
+      "prerequisites": [
+        "fraction-equivalence"
+      ],
+      "strand": "fractions",
+      "gradeBand": "4"
+    },
+    {
+      "id": "like-fraction-addition",
+      "prerequisites": [
+        "unit-fractions",
+        "addition-within-20"
+      ],
+      "strand": "fractions",
+      "gradeBand": "4"
+    },
+    {
+      "id": "mixed-numbers",
+      "prerequisites": [
+        "like-fraction-addition"
+      ],
+      "strand": "fractions",
+      "gradeBand": "4"
+    },
+    {
+      "id": "fraction-times-whole",
+      "prerequisites": [
+        "multiplication-meaning",
+        "unit-fractions"
+      ],
+      "strand": "fractions",
+      "gradeBand": "4"
+    },
+    {
+      "id": "decimal-fractions",
+      "prerequisites": [
+        "fraction-equivalence"
+      ],
+      "strand": "decimals",
+      "gradeBand": "4"
+    },
+    {
+      "id": "compare-decimals",
+      "prerequisites": [
+        "decimal-fractions"
+      ],
+      "strand": "decimals",
+      "gradeBand": "4"
+    },
+    {
+      "id": "unit-conversion",
+      "prerequisites": [
+        "whole-multiplication"
+      ],
+      "strand": "measurement",
+      "gradeBand": "4"
+    },
+    {
+      "id": "area-perimeter-models",
+      "prerequisites": [
+        "rectangle-area",
+        "perimeter"
+      ],
+      "strand": "geometry",
+      "gradeBand": "4"
+    },
+    {
+      "id": "angle-measure",
+      "prerequisites": [
+        "polygon-properties"
+      ],
+      "strand": "geometry",
+      "gradeBand": "4"
+    },
+    {
+      "id": "lines-symmetry",
+      "prerequisites": [
+        "shape-attributes"
+      ],
+      "strand": "geometry",
+      "gradeBand": "4"
+    },
+    {
+      "id": "powers-of-ten",
+      "prerequisites": [
+        "large-place-value",
+        "decimal-fractions"
+      ],
+      "strand": "number",
+      "gradeBand": "5"
+    },
+    {
+      "id": "decimal-place-value",
+      "prerequisites": [
+        "compare-decimals",
+        "round-whole-numbers"
+      ],
+      "strand": "decimals",
+      "gradeBand": "5"
+    },
+    {
+      "id": "multidigit-products",
+      "prerequisites": [
+        "whole-multiplication"
+      ],
+      "strand": "operations",
+      "gradeBand": "5"
+    },
+    {
+      "id": "multidigit-quotients",
+      "prerequisites": [
+        "whole-division",
+        "multidigit-products"
+      ],
+      "strand": "operations",
+      "gradeBand": "5"
+    },
+    {
+      "id": "decimal-arithmetic",
+      "prerequisites": [
+        "decimal-place-value",
+        "multidigit-quotients"
+      ],
+      "strand": "decimals",
+      "gradeBand": "5"
+    },
+    {
+      "id": "fraction-addition",
+      "prerequisites": [
+        "fraction-equivalence",
+        "like-fraction-addition"
+      ],
+      "strand": "fractions",
+      "gradeBand": "5"
+    },
+    {
+      "id": "fraction-as-division",
+      "prerequisites": [
+        "division-meaning",
+        "unit-fractions"
+      ],
+      "strand": "fractions",
+      "gradeBand": "5"
+    },
+    {
+      "id": "fraction-multiplication",
+      "prerequisites": [
+        "fraction-times-whole",
+        "fraction-equivalence"
+      ],
+      "strand": "fractions",
+      "gradeBand": "5"
+    },
+    {
+      "id": "unit-fraction-division",
+      "prerequisites": [
+        "fraction-as-division"
+      ],
+      "strand": "fractions",
+      "gradeBand": "5"
+    },
+    {
+      "id": "numerical-expressions",
+      "prerequisites": [
+        "operation-properties"
+      ],
+      "strand": "algebra",
+      "gradeBand": "5"
+    },
+    {
+      "id": "coordinate-first-quadrant",
+      "prerequisites": [
+        "number-line-arithmetic"
+      ],
+      "strand": "geometry",
+      "gradeBand": "5"
+    },
+    {
+      "id": "related-patterns",
+      "prerequisites": [
+        "rule-patterns",
+        "coordinate-first-quadrant"
+      ],
+      "strand": "algebra",
+      "gradeBand": "5"
+    },
+    {
+      "id": "volume-cubes",
+      "prerequisites": [
+        "rectangle-area"
+      ],
+      "strand": "geometry",
+      "gradeBand": "5"
+    },
+    {
+      "id": "prism-volume",
+      "prerequisites": [
+        "volume-cubes",
+        "multidigit-products"
+      ],
+      "strand": "geometry",
+      "gradeBand": "5"
+    },
+    {
+      "id": "shape-hierarchy",
+      "prerequisites": [
+        "quadrilateral-categories"
+      ],
+      "strand": "geometry",
+      "gradeBand": "5"
+    },
+    {
+      "id": "ratios",
+      "prerequisites": [
+        "fraction-as-division"
+      ],
+      "strand": "ratio",
+      "gradeBand": "6"
+    },
+    {
+      "id": "unit-rates",
+      "prerequisites": [
+        "ratios"
+      ],
+      "strand": "ratio",
+      "gradeBand": "6"
+    },
+    {
+      "id": "ratio-tables",
+      "prerequisites": [
+        "unit-rates"
+      ],
+      "strand": "ratio",
+      "gradeBand": "6"
+    },
+    {
+      "id": "percentages",
+      "prerequisites": [
+        "ratio-tables"
+      ],
+      "strand": "ratio",
+      "gradeBand": "6"
+    },
+    {
+      "id": "fraction-division",
+      "prerequisites": [
+        "fraction-multiplication",
+        "unit-fraction-division"
+      ],
+      "strand": "fractions",
+      "gradeBand": "6"
+    },
+    {
+      "id": "integer-division",
+      "prerequisites": [
+        "multidigit-quotients"
+      ],
+      "strand": "operations",
+      "gradeBand": "6"
+    },
+    {
+      "id": "decimal-algorithms",
+      "prerequisites": [
+        "decimal-arithmetic"
+      ],
+      "strand": "decimals",
+      "gradeBand": "6"
+    },
+    {
+      "id": "gcf-lcm",
+      "prerequisites": [
+        "factors-multiples"
+      ],
+      "strand": "number",
+      "gradeBand": "6"
+    },
+    {
+      "id": "signed-numbers",
+      "prerequisites": [
+        "number-line-arithmetic"
+      ],
+      "strand": "number",
+      "gradeBand": "6"
+    },
+    {
+      "id": "absolute-value",
+      "prerequisites": [
+        "signed-numbers"
+      ],
+      "strand": "number",
+      "gradeBand": "6"
+    },
+    {
+      "id": "coordinate-four-quadrants",
+      "prerequisites": [
+        "signed-numbers",
+        "coordinate-first-quadrant"
+      ],
+      "strand": "geometry",
+      "gradeBand": "6"
+    },
+    {
+      "id": "integer-powers",
+      "prerequisites": [
+        "powers-of-ten"
+      ],
+      "strand": "algebra",
+      "gradeBand": "6"
+    },
+    {
+      "id": "variable-expressions",
+      "prerequisites": [
+        "numerical-expressions",
+        "integer-powers"
+      ],
+      "strand": "algebra",
+      "gradeBand": "6"
+    },
+    {
+      "id": "expression-properties",
+      "prerequisites": [
+        "variable-expressions"
+      ],
+      "strand": "algebra",
+      "gradeBand": "6"
+    },
+    {
+      "id": "one-step-equations",
+      "prerequisites": [
+        "missing-addend",
+        "variable-expressions"
+      ],
+      "strand": "algebra",
+      "gradeBand": "6"
+    },
+    {
+      "id": "simple-inequalities",
+      "prerequisites": [
+        "signed-numbers",
+        "one-step-equations"
+      ],
+      "strand": "algebra",
+      "gradeBand": "6"
+    },
+    {
+      "id": "dependent-variables",
+      "prerequisites": [
+        "coordinate-first-quadrant",
+        "variable-expressions"
+      ],
+      "strand": "algebra",
+      "gradeBand": "6"
+    },
+    {
+      "id": "triangle-area",
+      "prerequisites": [
+        "rectangle-area",
+        "fraction-multiplication"
+      ],
+      "strand": "geometry",
+      "gradeBand": "6"
+    },
+    {
+      "id": "fractional-prism-volume",
+      "prerequisites": [
+        "prism-volume",
+        "fraction-multiplication"
+      ],
+      "strand": "geometry",
+      "gradeBand": "6"
+    },
+    {
+      "id": "coordinate-polygons",
+      "prerequisites": [
+        "coordinate-four-quadrants"
+      ],
+      "strand": "geometry",
+      "gradeBand": "6"
+    },
+    {
+      "id": "surface-area",
+      "prerequisites": [
+        "triangle-area",
+        "prism-volume"
+      ],
+      "strand": "geometry",
+      "gradeBand": "6"
+    },
+    {
+      "id": "statistical-questions",
+      "prerequisites": [
+        "categorical-data"
+      ],
+      "strand": "data",
+      "gradeBand": "6"
+    },
+    {
+      "id": "statistics-mean",
+      "prerequisites": [
+        "decimal-arithmetic"
+      ],
+      "strand": "data",
+      "gradeBand": "6"
+    },
+    {
+      "id": "mean-median",
+      "prerequisites": [
+        "decimal-arithmetic"
+      ],
+      "strand": "data",
+      "gradeBand": "6"
+    },
+    {
+      "id": "distribution-plots",
+      "prerequisites": [
+        "line-plots",
+        "mean-median"
+      ],
+      "strand": "data",
+      "gradeBand": "6"
+    },
+    {
+      "id": "variability",
+      "prerequisites": [
+        "distribution-plots"
+      ],
+      "strand": "data",
+      "gradeBand": "6"
+    },
+    {
+      "id": "rational-unit-rates",
+      "prerequisites": [
+        "unit-rates",
+        "fraction-division"
+      ],
+      "strand": "ratio",
+      "gradeBand": "7"
+    },
+    {
+      "id": "proportional-relationships",
+      "prerequisites": [
+        "ratio-tables",
+        "dependent-variables"
+      ],
+      "strand": "ratio",
+      "gradeBand": "7"
+    },
+    {
+      "id": "percent-change",
+      "prerequisites": [
+        "percentages"
+      ],
+      "strand": "ratio",
+      "gradeBand": "7"
+    },
+    {
+      "id": "signed-addition",
+      "prerequisites": [
+        "signed-numbers",
+        "fraction-addition"
+      ],
+      "strand": "number",
+      "gradeBand": "7"
+    },
+    {
+      "id": "signed-multiplication",
+      "prerequisites": [
+        "signed-addition",
+        "fraction-division"
+      ],
+      "strand": "number",
+      "gradeBand": "7"
+    },
+    {
+      "id": "rational-stories",
+      "prerequisites": [
+        "signed-multiplication"
+      ],
+      "strand": "modeling",
+      "gradeBand": "7"
+    },
+    {
+      "id": "linear-expressions",
+      "prerequisites": [
+        "expression-properties",
+        "signed-multiplication"
+      ],
+      "strand": "algebra",
+      "gradeBand": "7"
+    },
+    {
+      "id": "two-step-equations",
+      "prerequisites": [
+        "one-step-equations",
+        "signed-addition"
+      ],
+      "strand": "algebra",
+      "gradeBand": "7"
+    },
+    {
+      "id": "linear-inequalities",
+      "prerequisites": [
+        "simple-inequalities",
+        "signed-multiplication"
+      ],
+      "strand": "algebra",
+      "gradeBand": "7"
+    },
+    {
+      "id": "scale-drawings",
+      "prerequisites": [
+        "proportional-relationships",
+        "triangle-area"
+      ],
+      "strand": "geometry",
+      "gradeBand": "7"
+    },
+    {
+      "id": "triangle-construction",
+      "prerequisites": [
+        "angle-measure"
+      ],
+      "strand": "geometry",
+      "gradeBand": "7"
+    },
+    {
+      "id": "solid-cross-sections",
+      "prerequisites": [
+        "surface-area"
+      ],
+      "strand": "geometry",
+      "gradeBand": "7"
+    },
+    {
+      "id": "circle-measurement",
+      "prerequisites": [
+        "decimal-arithmetic",
+        "integer-powers"
+      ],
+      "strand": "geometry",
+      "gradeBand": "7"
+    },
+    {
+      "id": "angle-relationships",
+      "prerequisites": [
+        "angle-measure",
+        "two-step-equations"
+      ],
+      "strand": "geometry",
+      "gradeBand": "7"
+    },
+    {
+      "id": "composite-measurement",
+      "prerequisites": [
+        "surface-area",
+        "fractional-prism-volume"
+      ],
+      "strand": "geometry",
+      "gradeBand": "7"
+    },
+    {
+      "id": "sampling",
+      "prerequisites": [
+        "statistical-questions"
+      ],
+      "strand": "data",
+      "gradeBand": "7"
+    },
+    {
+      "id": "compare-distributions",
+      "prerequisites": [
+        "variability"
+      ],
+      "strand": "data",
+      "gradeBand": "7"
+    },
+    {
+      "id": "probability",
+      "prerequisites": [
+        "ratios"
+      ],
+      "strand": "probability",
+      "gradeBand": "7"
+    },
+    {
+      "id": "compound-probability",
+      "prerequisites": [
+        "probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "7"
+    },
+    {
+      "id": "irrational-numbers",
+      "prerequisites": [
+        "fraction-as-division",
+        "decimal-algorithms"
+      ],
+      "strand": "number",
+      "gradeBand": "8"
+    },
+    {
+      "id": "approximate-roots",
+      "prerequisites": [
+        "irrational-numbers",
+        "integer-powers"
+      ],
+      "strand": "number",
+      "gradeBand": "8"
+    },
+    {
+      "id": "exponent-laws",
+      "prerequisites": [
+        "integer-powers",
+        "signed-multiplication"
+      ],
+      "strand": "algebra",
+      "gradeBand": "8"
+    },
+    {
+      "id": "scientific-notation",
+      "prerequisites": [
+        "exponent-laws"
+      ],
+      "strand": "number",
+      "gradeBand": "8"
+    },
+    {
+      "id": "slope",
+      "prerequisites": [
+        "proportional-relationships",
+        "coordinate-four-quadrants"
+      ],
+      "strand": "algebra",
+      "gradeBand": "8"
+    },
+    {
+      "id": "linear-equations",
+      "prerequisites": [
+        "two-step-equations",
+        "linear-expressions"
+      ],
+      "strand": "algebra",
+      "gradeBand": "8"
+    },
+    {
+      "id": "linear-systems",
+      "prerequisites": [
+        "linear-equations",
+        "slope"
+      ],
+      "strand": "algebra",
+      "gradeBand": "8"
+    },
+    {
+      "id": "function-notation",
+      "prerequisites": [
+        "dependent-variables"
+      ],
+      "strand": "functions",
+      "gradeBand": "8"
+    },
+    {
+      "id": "compare-functions",
+      "prerequisites": [
+        "function-notation",
+        "slope"
+      ],
+      "strand": "functions",
+      "gradeBand": "8"
+    },
+    {
+      "id": "linear-models",
+      "prerequisites": [
+        "slope",
+        "compare-functions"
+      ],
+      "strand": "modeling",
+      "gradeBand": "8"
+    },
+    {
+      "id": "qualitative-graphs",
+      "prerequisites": [
+        "function-notation"
+      ],
+      "strand": "functions",
+      "gradeBand": "8"
+    },
+    {
+      "id": "rigid-motions",
+      "prerequisites": [
+        "coordinate-four-quadrants"
+      ],
+      "strand": "geometry",
+      "gradeBand": "8"
+    },
+    {
+      "id": "dilations-similarity",
+      "prerequisites": [
+        "rigid-motions",
+        "scale-drawings"
+      ],
+      "strand": "geometry",
+      "gradeBand": "8"
+    },
+    {
+      "id": "triangle-angle-theorems",
+      "prerequisites": [
+        "angle-relationships"
+      ],
+      "strand": "geometry",
+      "gradeBand": "8"
+    },
+    {
+      "id": "pythagorean-theorem",
+      "prerequisites": [
+        "approximate-roots",
+        "triangle-area"
+      ],
+      "strand": "geometry",
+      "gradeBand": "8"
+    },
+    {
+      "id": "coordinate-distance",
+      "prerequisites": [
+        "pythagorean-theorem",
+        "coordinate-four-quadrants"
+      ],
+      "strand": "geometry",
+      "gradeBand": "8"
+    },
+    {
+      "id": "curved-solid-volume",
+      "prerequisites": [
+        "circle-measurement",
+        "prism-volume"
+      ],
+      "strand": "geometry",
+      "gradeBand": "8"
+    },
+    {
+      "id": "scatterplots",
+      "prerequisites": [
+        "coordinate-four-quadrants",
+        "linear-models"
+      ],
+      "strand": "data",
+      "gradeBand": "8"
+    },
+    {
+      "id": "two-way-tables",
+      "prerequisites": [
+        "probability"
+      ],
+      "strand": "data",
+      "gradeBand": "8"
+    },
+    {
+      "id": "units-and-precision",
+      "prerequisites": [
+        "unit-conversion",
+        "scientific-notation"
+      ],
+      "strand": "modeling",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "expression-structure",
+      "prerequisites": [
+        "linear-expressions"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "formula-rearrangement",
+      "prerequisites": [
+        "linear-equations"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "linear-equation-modeling",
+      "prerequisites": [
+        "linear-models",
+        "linear-equations"
+      ],
+      "strand": "modeling",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "systems-modeling",
+      "prerequisites": [
+        "linear-systems",
+        "linear-inequalities"
+      ],
+      "strand": "modeling",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "function-domain-range",
+      "prerequisites": [
+        "function-notation"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "function-evaluation",
+      "prerequisites": [
+        "variable-expressions",
+        "function-notation"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "piecewise-functions",
+      "prerequisites": [
+        "function-domain-range",
+        "function-evaluation"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "arithmetic-sequences",
+      "prerequisites": [
+        "related-patterns",
+        "linear-models"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "geometric-sequences",
+      "prerequisites": [
+        "exponent-laws"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "polynomial-arithmetic",
+      "prerequisites": [
+        "expression-properties",
+        "exponent-laws"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "factor-quadratics",
+      "prerequisites": [
+        "polynomial-arithmetic"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "quadratic-equations",
+      "prerequisites": [
+        "factor-quadratics",
+        "approximate-roots"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "complete-square",
+      "prerequisites": [
+        "quadratic-equations"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "quadratic-formula",
+      "prerequisites": [
+        "complete-square"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "quadratic-graphs",
+      "prerequisites": [
+        "quadratic-equations",
+        "function-domain-range"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "quadratic-minimum",
+      "prerequisites": [
+        "quadratic-graphs"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "exponential-models",
+      "prerequisites": [
+        "geometric-sequences",
+        "percent-change"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "residuals-correlation",
+      "prerequisites": [
+        "scatterplots"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "geometric-definitions",
+      "prerequisites": [
+        "lines-symmetry"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "geometric-proof",
+      "prerequisites": [
+        "geometric-definitions",
+        "triangle-angle-theorems"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "congruence-criteria",
+      "prerequisites": [
+        "rigid-motions",
+        "geometric-proof"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "similarity-proofs",
+      "prerequisites": [
+        "dilations-similarity",
+        "geometric-proof"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "geometric-constructions",
+      "prerequisites": [
+        "geometric-definitions"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "right-triangle-trigonometry",
+      "prerequisites": [
+        "similarity-proofs",
+        "pythagorean-theorem"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "special-right-triangles",
+      "prerequisites": [
+        "right-triangle-trigonometry"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "circle-theorems",
+      "prerequisites": [
+        "angle-relationships",
+        "geometric-proof"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "arc-sector-measure",
+      "prerequisites": [
+        "circle-measurement",
+        "percentages"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "circle-equations",
+      "prerequisites": [
+        "coordinate-distance",
+        "complete-square"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "coordinate-proofs",
+      "prerequisites": [
+        "slope",
+        "coordinate-distance",
+        "geometric-proof"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "geometric-modeling",
+      "prerequisites": [
+        "composite-measurement",
+        "curved-solid-volume"
+      ],
+      "strand": "modeling",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "conditional-probability",
+      "prerequisites": [
+        "compound-probability",
+        "two-way-tables"
+      ],
+      "strand": "probability",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "independent-events",
+      "prerequisites": [
+        "conditional-probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "rational-exponents",
+      "prerequisites": [
+        "exponent-laws",
+        "approximate-roots"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "radical-equations",
+      "prerequisites": [
+        "rational-exponents",
+        "quadratic-equations"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "complex-numbers",
+      "prerequisites": [
+        "quadratic-formula"
+      ],
+      "strand": "number",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "polynomial-division",
+      "prerequisites": [
+        "polynomial-arithmetic"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "polynomial-zeros",
+      "prerequisites": [
+        "polynomial-division",
+        "complex-numbers"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "rational-expressions",
+      "prerequisites": [
+        "factor-quadratics",
+        "fraction-division"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "rational-equations",
+      "prerequisites": [
+        "rational-expressions"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "nonlinear-systems",
+      "prerequisites": [
+        "linear-systems",
+        "quadratic-equations"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "function-transformations",
+      "prerequisites": [
+        "quadratic-graphs",
+        "piecewise-functions"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "function-composition",
+      "prerequisites": [
+        "function-domain-range",
+        "function-evaluation"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "inverse-functions",
+      "prerequisites": [
+        "function-composition"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "logarithms",
+      "prerequisites": [
+        "exponential-models",
+        "inverse-functions"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "exponential-equations",
+      "prerequisites": [
+        "logarithms"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "sequence-sums",
+      "prerequisites": [
+        "geometric-sequences"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "radians-unit-circle",
+      "prerequisites": [
+        "arc-sector-measure",
+        "special-right-triangles"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "trigonometric-graphs",
+      "prerequisites": [
+        "radians-unit-circle",
+        "function-transformations"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "normal-distributions",
+      "prerequisites": [
+        "variability"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "study-design",
+      "prerequisites": [
+        "sampling"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "statistical-inference",
+      "prerequisites": [
+        "study-design",
+        "compare-distributions"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "expected-value",
+      "prerequisites": [
+        "conditional-probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "polynomial-behavior",
+      "prerequisites": [
+        "polynomial-zeros"
+      ],
+      "strand": "functions",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "rational-function-behavior",
+      "prerequisites": [
+        "rational-expressions",
+        "function-domain-range"
+      ],
+      "strand": "functions",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "inverse-trigonometry",
+      "prerequisites": [
+        "inverse-functions",
+        "trigonometric-graphs"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "trigonometric-identities",
+      "prerequisites": [
+        "radians-unit-circle",
+        "geometric-proof"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "trigonometric-equations",
+      "prerequisites": [
+        "inverse-trigonometry",
+        "trigonometric-identities"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "oblique-triangles",
+      "prerequisites": [
+        "right-triangle-trigonometry"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "vectors",
+      "prerequisites": [
+        "coordinate-distance",
+        "right-triangle-trigonometry"
+      ],
+      "strand": "number",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "matrices",
+      "prerequisites": [
+        "linear-systems",
+        "vectors"
+      ],
+      "strand": "number",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "complex-plane",
+      "prerequisites": [
+        "complex-numbers",
+        "radians-unit-circle"
+      ],
+      "strand": "number",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "conic-sections",
+      "prerequisites": [
+        "circle-equations",
+        "complete-square"
+      ],
+      "strand": "geometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "parametric-models",
+      "prerequisites": [
+        "function-composition",
+        "vectors"
+      ],
+      "strand": "modeling",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "polar-coordinates",
+      "prerequisites": [
+        "radians-unit-circle",
+        "coordinate-distance"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "model-validation",
+      "prerequisites": [
+        "exponential-models",
+        "statistical-inference"
+      ],
+      "strand": "modeling",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "counting-arithmetic",
+      "prerequisites": [
+        "count-to-100",
+        "addition-within-20"
+      ],
+      "strand": "operations",
+      "gradeBand": "1"
+    },
+    {
+      "id": "mental-tens-hundreds",
+      "prerequisites": [
+        "hundreds-place-value"
+      ],
+      "strand": "operations",
+      "gradeBand": "2"
+    },
+    {
+      "id": "fraction-plot-arithmetic",
+      "prerequisites": [
+        "fraction-line-plots",
+        "like-fraction-addition"
+      ],
+      "strand": "data",
+      "gradeBand": "4"
+    },
+    {
+      "id": "measurement-conversions",
+      "prerequisites": [
+        "unit-conversion",
+        "decimal-arithmetic"
+      ],
+      "strand": "measurement",
+      "gradeBand": "5"
+    },
+    {
+      "id": "fraction-plot-computation",
+      "prerequisites": [
+        "fraction-plot-arithmetic",
+        "fraction-addition"
+      ],
+      "strand": "data",
+      "gradeBand": "5"
+    },
+    {
+      "id": "complex-conjugates",
+      "prerequisites": [
+        "complex-numbers"
+      ],
+      "strand": "number",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "complex-distance",
+      "prerequisites": [
+        "complex-plane"
+      ],
+      "strand": "number",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "complex-factorization",
+      "prerequisites": [
+        "complex-numbers",
+        "polynomial-arithmetic"
+      ],
+      "strand": "algebra",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "fundamental-theorem-algebra",
+      "prerequisites": [
+        "complex-factorization"
+      ],
+      "strand": "algebra",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "model-quantities",
+      "prerequisites": [
+        "units-and-precision"
+      ],
+      "strand": "modeling",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "number-system-closure",
+      "prerequisites": [
+        "irrational-numbers"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "vector-modeling",
+      "prerequisites": [
+        "vectors"
+      ],
+      "strand": "modeling",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "matrix-data",
+      "prerequisites": [
+        "two-way-tables"
+      ],
+      "strand": "number",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "matrix-properties",
+      "prerequisites": [
+        "matrices"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "matrix-inverses",
+      "prerequisites": [
+        "matrices"
+      ],
+      "strand": "algebra",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "matrix-transformations",
+      "prerequisites": [
+        "matrices",
+        "vectors"
+      ],
+      "strand": "geometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "polynomial-identities",
+      "prerequisites": [
+        "polynomial-arithmetic"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "binomial-theorem",
+      "prerequisites": [
+        "polynomial-arithmetic"
+      ],
+      "strand": "algebra",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "nonlinear-equation-modeling",
+      "prerequisites": [
+        "quadratic-equations",
+        "rational-equations",
+        "exponential-models"
+      ],
+      "strand": "modeling",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "equation-reasoning",
+      "prerequisites": [
+        "linear-equations"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "symbolic-linear-constraints",
+      "prerequisites": [
+        "linear-equations",
+        "linear-inequalities"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "elimination-proof",
+      "prerequisites": [
+        "linear-systems",
+        "equation-reasoning"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "matrix-systems",
+      "prerequisites": [
+        "matrix-inverses",
+        "linear-systems"
+      ],
+      "strand": "algebra",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "graph-solution-sets",
+      "prerequisites": [
+        "coordinate-four-quadrants",
+        "linear-equations"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "graphical-equation-solving",
+      "prerequisites": [
+        "graph-solution-sets",
+        "quadratic-graphs"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "inequality-regions",
+      "prerequisites": [
+        "linear-inequalities",
+        "slope"
+      ],
+      "strand": "algebra",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "average-rate-change",
+      "prerequisites": [
+        "slope",
+        "function-evaluation"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "cross-representation-comparison",
+      "prerequisites": [
+        "compare-functions",
+        "quadratic-graphs"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "growth-comparison",
+      "prerequisites": [
+        "exponential-models",
+        "polynomial-zeros"
+      ],
+      "strand": "functions",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "special-angle-values",
+      "prerequisites": [
+        "special-right-triangles",
+        "radians-unit-circle"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "trigonometric-symmetry",
+      "prerequisites": [
+        "radians-unit-circle"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "periodic-modeling",
+      "prerequisites": [
+        "trigonometric-graphs"
+      ],
+      "strand": "modeling",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "circle-similarity",
+      "prerequisites": [
+        "similarity-proofs"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "triangle-circles",
+      "prerequisites": [
+        "geometric-constructions",
+        "circle-theorems"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "tangent-construction",
+      "prerequisites": [
+        "geometric-constructions",
+        "circle-theorems"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "transformation-invariants",
+      "prerequisites": [
+        "rigid-motions",
+        "geometric-definitions"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "polygon-symmetries",
+      "prerequisites": [
+        "rigid-motions"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "transformation-constructions",
+      "prerequisites": [
+        "transformation-invariants"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "line-angle-proofs",
+      "prerequisites": [
+        "geometric-proof"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "triangle-proofs",
+      "prerequisites": [
+        "geometric-proof",
+        "congruence-criteria"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "parallelogram-proofs",
+      "prerequisites": [
+        "geometric-proof",
+        "congruence-criteria"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "inscribed-polygons",
+      "prerequisites": [
+        "geometric-constructions"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "measurement-formula-proofs",
+      "prerequisites": [
+        "geometric-proof",
+        "circle-measurement",
+        "prism-volume"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "cavalieri-principle",
+      "prerequisites": [
+        "measurement-formula-proofs"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "solid-volume-models",
+      "prerequisites": [
+        "curved-solid-volume",
+        "surface-area"
+      ],
+      "strand": "modeling",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "sections-and-revolutions",
+      "prerequisites": [
+        "solid-cross-sections"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "parabola-locus",
+      "prerequisites": [
+        "coordinate-distance",
+        "quadratic-graphs"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "slope-proofs",
+      "prerequisites": [
+        "coordinate-proofs"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "segment-division",
+      "prerequisites": [
+        "coordinate-four-quadrants",
+        "ratios"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "coordinate-measurement",
+      "prerequisites": [
+        "coordinate-distance",
+        "triangle-area"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "density-modeling",
+      "prerequisites": [
+        "units-and-precision",
+        "geometric-modeling"
+      ],
+      "strand": "modeling",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "geometric-design",
+      "prerequisites": [
+        "geometric-modeling",
+        "systems-modeling"
+      ],
+      "strand": "modeling",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "dilation-properties",
+      "prerequisites": [
+        "dilations-similarity"
+      ],
+      "strand": "geometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "similarity-theorems",
+      "prerequisites": [
+        "similarity-proofs"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "complementary-trigonometry",
+      "prerequisites": [
+        "right-triangle-trigonometry"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "trigonometric-area",
+      "prerequisites": [
+        "right-triangle-trigonometry",
+        "triangle-area"
+      ],
+      "strand": "trigonometry",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "triangle-law-proofs",
+      "prerequisites": [
+        "trigonometric-area",
+        "pythagorean-theorem"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "event-sets",
+      "prerequisites": [
+        "compound-probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "probability-addition",
+      "prerequisites": [
+        "event-sets"
+      ],
+      "strand": "probability",
+      "gradeBand": "geometry"
+    },
+    {
+      "id": "probability-multiplication",
+      "prerequisites": [
+        "conditional-probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "permutations-combinations",
+      "prerequisites": [
+        "compound-probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "simulation-model-checks",
+      "prerequisites": [
+        "probability",
+        "sampling"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "sampling-margin-error",
+      "prerequisites": [
+        "statistical-inference",
+        "simulation-model-checks"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "randomization-tests",
+      "prerequisites": [
+        "study-design",
+        "simulation-model-checks"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "statistical-report-critique",
+      "prerequisites": [
+        "statistical-inference",
+        "study-design"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "algebra-2"
+    },
+    {
+      "id": "statistical-summary-comparison",
+      "prerequisites": [
+        "compare-distributions"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "categorical-association",
+      "prerequisites": [
+        "two-way-tables"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "regression-interpretation",
+      "prerequisites": [
+        "linear-models",
+        "scatterplots"
+      ],
+      "strand": "data",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "causal-claims",
+      "prerequisites": [
+        "study-design",
+        "residuals-correlation"
+      ],
+      "strand": "reasoning",
+      "gradeBand": "algebra-1"
+    },
+    {
+      "id": "random-variables",
+      "prerequisites": [
+        "compound-probability",
+        "distribution-plots"
+      ],
+      "strand": "probability",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "theoretical-distributions",
+      "prerequisites": [
+        "random-variables",
+        "expected-value"
+      ],
+      "strand": "probability",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "empirical-distributions",
+      "prerequisites": [
+        "random-variables",
+        "expected-value"
+      ],
+      "strand": "probability",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "fair-random-decisions",
+      "prerequisites": [
+        "probability"
+      ],
+      "strand": "probability",
+      "gradeBand": "precalculus"
+    },
+    {
+      "id": "decision-strategies",
+      "prerequisites": [
+        "expected-value",
+        "conditional-probability"
+      ],
+      "strand": "modeling",
+      "gradeBand": "precalculus"
+    }
+  ]
+}
