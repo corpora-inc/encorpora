@@ -236,7 +236,10 @@ export class StripeGateway {
     const details = line.pricing?.price_details;
     const config = planConfig(
       this.config,
-      id(details?.price) === this.config.monthlyPriceId ? "month" : "year",
+      this.config.monthlyPriceId &&
+        id(details?.price) === this.config.monthlyPriceId
+        ? "month"
+        : "year",
     );
     requireEvidence(
       line.quantity === 1 &&

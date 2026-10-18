@@ -216,10 +216,14 @@ function PurchasePanel({
       if (!alive.current || stamp !== revision.current) return;
       setStatus(next);
       if (next.interval)
-        setOffer(
-          (current) =>
-            offers.find((plan) => plan.interval === next.interval) ?? current,
-        );
+        setOffer((current) => {
+          const selected = offers.find(
+            (plan) => plan.interval === next.interval,
+          );
+          if (selected && selected.id !== current?.id)
+            requestId.current = undefined;
+          return selected ?? current;
+        });
       if (next.phase === "licensed") {
         setNotice("Verified access is ready for this learner.");
         onAccessChanged?.();
@@ -348,7 +352,7 @@ function PurchasePanel({
     ],
     "awaiting-payment": [
       "No current paid access",
-      "A renewal may be processing. Check access shortly, or open billing to check payment or cancellation.",
+      "Check billing for payment, refund or cancellation status. Check access again after a payment settles.",
     ],
     "needs-review": [
       "Billing review needed",
