@@ -21,8 +21,11 @@ export function useReimbursementPrograms(token: string) {
         };
         if (!controller.signal.aborted) setPrograms(data.programs);
       })
-      .catch(() => {
-        if (!controller.signal.aborted) setPrograms([]);
+      .catch((error) => {
+        if (!controller.signal.aborted) {
+          console.warn("Reimbursement guidance unavailable", error);
+          setPrograms([]);
+        }
       });
     return () => controller.abort();
   }, [token]);

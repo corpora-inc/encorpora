@@ -448,6 +448,11 @@ test(
       assert.equal(JSON.stringify(replayedLegacy.baseline), legacyBaseline);
       assert.equal(replayedLegacy.status, "verified");
       assert.equal(
+        replayedLegacy.observations.length,
+        legacy.observations.length,
+        "method metadata must not invent a refund observation",
+      );
+      assert.equal(
         (
           await app.inject({
             method: "GET",

@@ -9,6 +9,7 @@ import {
   receiptRequestSchema,
   receiptFields,
 } from "../src/billing/evidence/reimbursement.js";
+import { PDFDocument, StandardFonts } from "pdf-lib";
 import { paymentPdf } from "../src/billing/evidence/pdf.js";
 import { syntheticPaymentRecord } from "./payment-evidence-fixtures.js";
 
@@ -23,6 +24,7 @@ test("program configuration permits only supported receipt fields and safe instr
   assert.equal(reimbursementProgramsSchema.parse([entry]).length, 1);
   for (const change of [
     { officialUrl: "javascript:alert(1)" },
+    { officialUrl: "not a url" },
     { officialUrl: "https://user:pass@example.test" },
     { requiredFields: ["bankAccount"] },
     { state: "Arizona" },
@@ -37,13 +39,42 @@ test("program configuration permits only supported receipt fields and safe instr
   );
 });
 test("receipt name is explicit, bounded and supported by the PDF font", () => {
-  for (const learnerName of ["Jo Example", "Élodie Muñoz", "", undefined])
+  for (const learnerName of [
+    "Jo Example",
+    "Élodie Muñoz",
+    "Šimon Žák",
+    "Œuvre",
+    "E\u0301lodie",
+    "",
+    undefined,
+  ])
     assert.ok(receiptRequestSchema.safeParse({ learnerName }).success);
   for (const learnerName of ["测试", "name\nforged field", "a".repeat(121)])
     assert.equal(
       receiptRequestSchema.safeParse({ learnerName }).success,
       false,
     );
+});
+test("accepted printable repertoire agrees with the PDF font and composes accents", async () => {
+  const font = await (
+    await PDFDocument.create()
+  ).embedFont(StandardFonts.Helvetica);
+  for (const point of [
+    ...Array.from({ length: 256 }, (_, i) => i),
+    ...Array.from({ length: 512 }, (_, i) => i + 256),
+    ...Array.from({ length: 256 }, (_, i) => i + 0x2000),
+  ]) {
+    const character = String.fromCodePoint(point);
+    const parsed = receiptRequestSchema.safeParse({ learnerName: character });
+    if (parsed.success && parsed.data.learnerName)
+      assert.doesNotThrow(() => font.encodeText(parsed.data.learnerName!));
+  }
+  assert.equal(
+    receiptRequestSchema.parse({ learnerName: "E\u0301lodie" }).learnerName,
+    "Élodie",
+  );
+  for (const learnerName of ["Šimon Žák", "Œuvre", "E\u0301lodie"])
+    await paymentPdf(syntheticPaymentRecord, undefined, learnerName);
 });
 test("receipts deterministically include the parent name and every supported required field without changing facts", async () => {
   const record = structuredClone(syntheticPaymentRecord);

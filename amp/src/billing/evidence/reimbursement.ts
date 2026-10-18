@@ -28,8 +28,14 @@ export const reimbursementProgramsSchema = z
           .url()
           .max(500)
           .refine((value) => {
-            const url = new URL(value);
-            return url.protocol === "https:" && !url.username && !url.password;
+            try {
+              const url = new URL(value);
+              return (
+                url.protocol === "https:" && !url.username && !url.password
+              );
+            } catch {
+              return false;
+            }
           }),
         requiredFields: z.array(z.enum(fields)).min(1).max(fields.length),
       })
@@ -42,15 +48,19 @@ export const reimbursementProgramsSchema = z
 export type ReimbursementProgram = z.infer<
   typeof reimbursementProgramsSchema
 >[number];
-// Standard PDF fonts support this character set. Reject unsupported names before
+// WinAnsi (Helvetica) printable repertoire, checked against the font in tests. Reject unsupported names before
 // generating a document rather than silently changing a child's name.
 export const receiptRequestSchema = z
   .object({
     learnerName: z
       .string()
-      .trim()
-      .max(120)
-      .regex(/^[\x20-\x7e\xa0-\xff€‘’“”–—…]*$/u)
+      .transform((value) => value.normalize("NFC").trim())
+      .pipe(
+        z
+          .string()
+          .max(120)
+          .regex(/^[\x20-\x7e\xa0-\xff€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸŽž]*$/u),
+      )
       .optional(),
     programId: z
       .string()

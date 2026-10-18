@@ -340,7 +340,7 @@ try {
     await page.getByRole("button", { name: "Download payment PDF" }).click();
     await page
       .getByRole("alert")
-      .filter({ hasText: "Latin letters" })
+      .filter({ hasText: "basic Latin letters" })
       .waitFor();
   }
   mode = "review";

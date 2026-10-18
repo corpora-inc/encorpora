@@ -124,7 +124,7 @@ export function PaymentHistoryCenter({
       !receiptRequestSchema.safeParse({ learnerName }).success
     ) {
       setError(
-        "This PDF supports Latin letters and accents. Contact purchase support for a receipt using another writing system.",
+        "This PDF supports basic Latin letters and some accents. Contact purchase support if the font cannot print your name.",
       );
       return;
     }
@@ -144,7 +144,7 @@ export function PaymentHistoryCenter({
           method: adjustmentId ? "GET" : "POST",
           headers: {
             authorization: `Bearer ${tokenRef.current}`,
-            "content-type": "application/json",
+            ...(!adjustmentId ? { "content-type": "application/json" } : {}),
           },
           ...(!adjustmentId
             ? {
@@ -162,11 +162,17 @@ export function PaymentHistoryCenter({
         const data = (await response.json().catch(() => ({}))) as {
           error?: string;
         };
+        if (data.error === "reimbursement_program_unavailable") {
+          if (generation === epoch.current) setProgramId("");
+          throw new Error(
+            "This reimbursement program is unavailable. Select another program or Personal records.",
+          );
+        }
         if (data.error === "receipt_learner_name_required")
           throw new Error("Enter the learner name required by your program.");
         if (data.error === "receipt_payment_method_unavailable")
           throw new Error(
-            "This older payment has no recorded payment method. Contact purchase support for that evidence.",
+            "This payment has no recorded payment method. Contact purchase support for that evidence.",
           );
       }
       if (
@@ -289,7 +295,7 @@ export function PaymentHistoryCenter({
                   )
                     setError("");
                   if (
-                    error.startsWith("This PDF supports Latin letters") &&
+                    error.startsWith("This PDF supports basic Latin letters") &&
                     receiptRequestSchema.safeParse({ learnerName: name })
                       .success
                   )

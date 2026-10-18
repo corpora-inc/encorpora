@@ -49,8 +49,8 @@ export function ReceiptDetails({
       </label>
       <p id="receipt-name-help">
         Added only to this download; not saved to the account. This PDF supports
-        Latin letters and accents. Contact purchase support if your name uses
-        another writing system.
+        basic Latin letters and some accents. Contact purchase support if the
+        font cannot print your name.
       </p>
       {program && (
         <details>

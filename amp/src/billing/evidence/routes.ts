@@ -54,6 +54,8 @@ export async function registerPaymentEvidenceRoutes(
           await paymentHistory(options.pool, accountId, request.params.id)
         )[0];
         if (!record) throw new BillingError("payment_not_found", 404);
+        if (record.status !== "verified" || !record.baseline)
+          throw new BillingError("payment_record_requires_review");
         const program = options.reimbursementPrograms?.find(
           (p) => p.id === parsed.data.programId,
         );

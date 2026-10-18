@@ -2,7 +2,7 @@
 
 Parents can download verified card-payment receipts from **Family → Purchases & records → Payment records**. Each receipt includes the seller's snapshotted legal name and address, product description and quantity, purchase date, invoice term, taxes, amount paid, refunds, and recorded payment method. Seller and product details must be configured through the payment document profile before checkout. A receipt is evidence of a purchase, not confirmation of program eligibility.
 
-A parent may enter a learner name for a download. AMP neither infers it from a learner profile nor stores it in payment history. The PDF labels it as parent-entered. The current PDF font supports Latin letters and accents; the form rejects unsupported characters without changing the name. Purchase support must handle names in other writing systems.
+A parent may enter a learner name for a download. AMP neither infers it from a learner profile nor stores it in payment history. The PDF labels it as parent-entered. The current PDF font supports basic Latin letters and some accents; the form rejects unsupported characters without changing the name. Purchase support must handle names in other writing systems.
 
 Set `AMP_REIMBURSEMENT_PROGRAMS_FILE` to a UTF-8 JSON file containing an array of programs. Each entry has:
 

@@ -121,7 +121,7 @@ export function normalizeFinancialEvidence(
   return {
     kind: "verified",
     observation: {
-      ...(paymentMethod && /^[a-z_]{1,60}$/.test(paymentMethod)
+      ...(paymentMethod && /^[a-z0-9_]{1,60}$/.test(paymentMethod)
         ? { paymentMethod }
         : {}),
       invoiceReason:
