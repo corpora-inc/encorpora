@@ -2,7 +2,9 @@
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
 import json
 import math
+import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 from collections import Counter
@@ -300,9 +302,16 @@ def review(stream):
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
     publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
     if publications.exists():
+        reader = subprocess.run(
+            ['node', '--import', 'tsx', 'scripts/verify-reader-typesetting.ts'],
+            cwd=publications.parent.parent,
+            env={**os.environ, 'READER_REVIEW_OUT': str(publications.parent / 'reader-typesetting-review')},
+            capture_output=True, text=True, timeout=120)
+        require(reader.returncode == 0, f'Reader typesetting review failed: {reader.stderr}')
+        print('Independent reader typesetting review: ' + reader.stdout.strip(), file=sys.stderr)
         print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
     else:
-        print('Print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
+        print('Reader typesetting and print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 

@@ -5,7 +5,10 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { chromium } from "playwright";
 import { PrintMathText, printMathStyles } from "../src/content/PrintMathText";
-import { RightTriangleOrientation } from "../src/content/RightTriangleIllustration";
+import {
+  RightTriangleOrientation,
+  PythagoreanRearrangement,
+} from "../src/content/RightTriangleIllustration";
 import { printMathCss } from "../src/content/print-fonts";
 import { segmentPrintText } from "../src/content/math-typesetting";
 
@@ -43,6 +46,7 @@ const content = renderToStaticMarkup(
         "article",
         { className: "card lesson-reader" },
         e(RightTriangleOrientation),
+        e(PythagoreanRearrangement),
         e(
           "section",
           { className: "worked-example" },
@@ -92,7 +96,12 @@ try {
         const font = parseFloat(getComputedStyle(label).fontSize);
         const scale = label.getScreenCTM()!;
         const renderedPx = font * Math.hypot(scale.a, scale.b);
-        if (font < 24 || renderedPx < 14)
+        const expectedFont = svg.dataset.lessonIllustration?.startsWith(
+          "right-triangle-orientation",
+        )
+          ? 24
+          : 21;
+        if (font < expectedFont || renderedPx < 14)
           errors.push(
             `small authored label: ${label.textContent} (${font}px / ${renderedPx}px rendered)`,
           );
@@ -183,7 +192,7 @@ try {
       fullPage: true,
     });
     assert.deepEqual(result.errors, [], `reader width ${width}`);
-    assert.equal(result.labels.length, 11);
+    assert.equal(result.labels.length, 22);
     for (const example of result.examples) {
       const expected =
         example.index === 8
@@ -257,7 +266,7 @@ try {
   console.log(
     JSON.stringify({
       viewports: 3,
-      labelChecks: 33,
+      labelChecks: 66,
       fixtures: fixtures.length,
       rejectedLayoutMutations: 2,
       networkRequests: requests.length,
