@@ -4,6 +4,8 @@ import { mkdir } from "node:fs/promises";
 import { chromium, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts.js";
+import { presentOffer } from "../src/funding-purchase/contracts.js";
+import { testFundingOffer } from "../tests/funding-purchase.fixture.js";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `
 const listeners=new Set();
@@ -45,7 +47,12 @@ const offer = {
 async function setup(
   width = 390,
   height = 844,
-  options: { disabled?: boolean; foreign?: boolean; hold?: boolean } = {},
+  options: {
+    disabled?: boolean;
+    foreign?: boolean;
+    hold?: boolean;
+    funds?: boolean;
+  } = {},
 ) {
   const page = await browser.newPage({ viewport: { width, height } });
   page.setDefaultTimeout(12000);
@@ -119,7 +126,11 @@ async function setup(
       );
     }
     if (path.endsWith("/funding/offers"))
-      return route.fulfill({ json: { offers: [] } });
+      return route.fulfill({
+        json: {
+          offers: options.funds ? [presentOffer(testFundingOffer)] : [],
+        },
+      });
     if (path.endsWith("/funding/requests"))
       return route.fulfill({ json: { requests: [] } });
     faults.push(`Unexpected ${route.request().method()} ${path}`);
@@ -443,6 +454,57 @@ try {
       await f.page.getByText(/purchase return could not be matched/).count(),
       0,
     );
+    assert.deepEqual(f.faults, []);
+    await f.page.close();
+  }
+  // "Get a year of AMP": card price and a state's education-fund programs,
+  // each leading to its purchase screen with the choice carried over.
+  for (const [width, height] of [
+    [320, 568],
+    [390, 844],
+    [1280, 900],
+  ]) {
+    const f = await setup(width, height, { funds: true });
+    await f.page.goto("http://127.0.0.1:4390");
+    await openAccess(f.page);
+    await f.page.getByRole("button", { name: "Back", exact: true }).click();
+    await f.page
+      .getByRole("button", { name: "Get a year of AMP", exact: true })
+      .click();
+    await f.page.getByRole("heading", { name: "One year of AMP" }).waitFor();
+    await f.page.getByText("$120.00").waitFor();
+    await f.page.getByLabel("State").selectOption("AZ");
+    const program = f.page.locator(`[data-offer="${testFundingOffer.id}"]`);
+    await program.waitFor();
+    assert.match((await program.textContent()) ?? "", /\$123\.00/);
+    const overflow = await f.page.evaluate(() => {
+      const pane = document.querySelector(".choose-pay")!;
+      return Math.max(
+        document.documentElement.scrollWidth - innerWidth,
+        pane.scrollWidth - pane.clientWidth,
+      );
+    });
+    assert.ok(overflow <= 0, `choose-how-to-pay overflows at ${width}px`);
+    await f.page.screenshot({
+      path: `artifacts/purchase-app/choose-${width}.png`,
+      fullPage: true,
+    });
+    await program.click();
+    await f.page.locator("#funding-offer").waitFor();
+    assert.equal(
+      await f.page.locator("#funding-offer").inputValue(),
+      testFundingOffer.id,
+    );
+    // Back returns to the choice, not to Family.
+    await f.page.getByRole("button", { name: "Back", exact: true }).click();
+    await f.page.getByRole("button", { name: "Pay by card" }).click();
+    await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
+    await f.page.getByRole("button", { name: "Back to family" }).click();
+    await f.page.getByRole("heading", { name: "One year of AMP" }).waitFor();
+    await f.page.getByRole("button", { name: "Back to family" }).click();
+    await f.page
+      .getByRole("button", { name: "Get a year of AMP", exact: true })
+      .waitFor();
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }

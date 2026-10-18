@@ -45,6 +45,7 @@ import "./practice.css";
 import "katex/dist/katex.min.css";
 import "./theme.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
+import { ChooseHowToPay } from "./ChooseHowToPay";
 import { TrialApp, storedTrial, clearStoredTrial } from "./TrialApp";
 import { useLearnerStore } from "./learner-store";
 import { calculatorAllowed } from "../math/calculator";
@@ -146,9 +147,9 @@ function App() {
   const consentEpoch = useRef(0);
   const renderedConsentEpoch = consentEpoch.current;
   const [familyLearnerId, setFamilyLearnerId] = useState("");
-  const [purchaseView, setPurchaseView] = useState<"annual" | "funded" | null>(
-    null,
-  );
+  const [purchaseView, setPurchaseView] = useState<
+    "choose" | "annual" | "funded" | null
+  >(null);
   const [familySection, setFamilySection] = useState<
     "learners" | "access" | "privacy"
   >("learners");
@@ -476,14 +477,27 @@ function App() {
     if (selected) selectLearner(selected.id);
   }
   function closePurchase() {
-    setPurchaseFocus(purchaseView ?? undefined);
+    // A purchase opened from "how to pay" returns there.
+    if (purchaseView !== "choose" && purchaseFromChoice) {
+      setPurchaseFromChoice(false);
+      setPurchaseView("choose");
+      setError("");
+      return;
+    }
+    setPurchaseFocus(
+      purchaseView === "choose" ? undefined : (purchaseView ?? undefined),
+    );
     setPurchaseView(null);
     setPurchaseReturn(null);
     setFamilySection("access");
     setError("");
     void action(loadFamily);
   }
-  function openPurchase(view: "annual" | "funded") {
+  // The education-fund offer chosen on the "how to pay" screen, if any.
+  const [purchaseOffer, setPurchaseOffer] = useState("");
+  const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
+  function openPurchase(view: "choose" | "annual" | "funded") {
+    setPurchaseFromChoice(false);
     navigationEpoch.current++;
     setPurchaseReturn(null);
     setPurchaseFocus(undefined);
@@ -603,6 +617,7 @@ function App() {
         setExploring(true);
         openFamily();
         setFamilySection("access");
+        openPurchase("choose");
         return null;
       }
       return navigationFailure(navigation, learner.id, error);
@@ -941,9 +956,25 @@ function App() {
             void action(loadFamily);
           }}
         />
+      ) : familyOpen && token && purchaseView === "choose" ? (
+        <ChooseHowToPay
+          token={token}
+          learnerName={learner?.name ?? null}
+          onCard={() => {
+            openPurchase("annual");
+            setPurchaseFromChoice(true);
+          }}
+          onFunds={(offerId) => {
+            setPurchaseOffer(offerId);
+            openPurchase("funded");
+            setPurchaseFromChoice(true);
+          }}
+          onClose={closePurchase}
+        />
       ) : familyOpen && token && purchaseView === "annual" ? (
         <AnnualPurchase
           token={token}
+          preferredLearnerId={learnerId ?? undefined}
           identity={accountId ?? token}
           returnState={purchaseReturn?.state}
           purchaseId={purchaseReturn?.purchaseId}
@@ -953,6 +984,8 @@ function App() {
       ) : familyOpen && token && purchaseView === "funded" ? (
         <FundingPurchaseCenter
           token={token}
+          preferredOfferId={purchaseOffer}
+          preferredLearnerId={learnerId ?? undefined}
           identity={accountId ?? token}
           learners={
             familySummary?.learners.filter((entry) => !entry.deletedAt) ?? []
@@ -975,6 +1008,7 @@ function App() {
           returnFocus={purchaseFocus}
           onAnnualPurchase={() => openPurchase("annual")}
           onFundedPurchase={() => openPurchase("funded")}
+          onChoosePayment={() => openPurchase("choose")}
           token={token}
           identity={accountId ?? token}
           onChanged={acceptFamily}
@@ -1088,9 +1122,10 @@ function App() {
                 setTrialMode(false);
                 await loadFamily();
                 selectLearner(adopted.id);
-                // Next step: choose how to pay (card or ESA).
+                // Next: choose how to pay (card or ESA).
                 openFamily();
                 setFamilySection("access");
+                openPurchase("choose");
               });
             }}
           >

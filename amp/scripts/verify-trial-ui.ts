@@ -131,6 +131,11 @@ try {
   const name = `Trial ${Date.now()}`;
   await page.getByLabel("Learner name").fill(name);
   await page.getByRole("button", { name: "Save and continue" }).click();
+  // Saving leads straight to the paywall: card or education funds.
+  await page.getByRole("heading", { name: "One year of AMP" }).waitFor();
+  await page.getByText(name, { exact: true }).waitFor();
+  await fits(page, "choose");
+  await page.getByRole("button", { name: "Back to family" }).click();
   await page.getByRole("button", { name: "Purchases & records" }).waitFor();
 
   // Every trial answer now belongs to the saved learner.

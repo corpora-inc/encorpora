@@ -23,6 +23,8 @@ interface Props {
   returnFocus?: "annual" | "funded";
   onAnnualPurchase?: () => void;
   onFundedPurchase?: () => void;
+  /** Opens "choose how to pay" for the selected learner. */
+  onChoosePayment?: () => void;
 }
 type Confirmation =
   { kind: "withdraw" } | { kind: "delete"; learner?: FamilyLearner };
@@ -52,6 +54,7 @@ export function FamilyCenter({
   returnFocus,
   onAnnualPurchase,
   onFundedPurchase,
+  onChoosePayment,
 }: Props) {
   const [paymentHistoryOpen, setPaymentHistoryOpen] = useState(false);
   const paymentTrigger = useRef<HTMLButtonElement>(null);
@@ -672,6 +675,16 @@ export function FamilyCenter({
                         </button>
                       </div>
                     )}
+                    {onChoosePayment &&
+                      selectedLearner &&
+                      access.kind === "none" && (
+                        <button
+                          className="go-button family-get-access"
+                          onClick={onChoosePayment}
+                        >
+                          Get a year of AMP
+                        </button>
+                      )}
                     <button
                       className="family-purchase-open"
                       data-purchase-options
