@@ -3,6 +3,10 @@ import {
   generateFactoringProblem,
 } from "./factoring-practice";
 import {
+  circleMeasurementTemplates,
+  generateCircleMeasurementProblem,
+} from "./circle-measurement-practice";
+import {
   descriptiveStatisticsTemplates,
   generateDescriptiveStatisticsProblem,
 } from "./descriptive-statistics-practice";
@@ -183,6 +187,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...circleMeasurementTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -303,6 +308,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...factoringTemplates,
+    ...circleMeasurementTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
@@ -332,6 +338,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (factoringTemplates.some((t) => t.id === templateId))
     return generateFactoringProblem(templateId, seed);
+  if (circleMeasurementTemplates.some((t) => t.id === templateId))
+    return generateCircleMeasurementProblem(templateId, seed);
   if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
