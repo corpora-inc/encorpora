@@ -1,4 +1,8 @@
 import {
+  polynomialTemplates,
+  generatePolynomialProblem,
+} from "./polynomial-practice";
+import {
   quadraticTemplates,
   generateQuadraticProblem,
 } from "./quadratic-practice";
@@ -152,6 +156,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...baseTemplates,
   ...extendedTemplates,
   ...quadraticTemplates,
+  ...polynomialTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -286,6 +291,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (polynomialTemplates.some((t) => t.id === templateId))
+    return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
