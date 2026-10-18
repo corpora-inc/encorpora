@@ -1,3 +1,4 @@
+import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
 import { LessonIllustration } from "./LessonIllustration";
 import { product } from "../product";
 import React from "react";
@@ -13,10 +14,12 @@ export function publicationHtml(
   kind: PublicationKind,
   edition = "1",
 ) {
-  const problems = lesson.templateIds.flatMap((id) =>
-    Array.from({ length: 12 }, (_, i) =>
-      generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
-    ),
+  const problems = lesson.templateIds.flatMap(
+    (id) =>
+      rightTriangleWorksheetProblems(id, lesson.id, edition) ??
+      Array.from({ length: 12 }, (_, i) =>
+        generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
+      ),
   );
   const kindLabel =
     kind === "lesson"
@@ -75,18 +78,19 @@ export function publicationHtml(
               />
             </p>
           </section>
-          {problems[0]?.public.figure && (
-            <section className="representation">
-              <h2>Explore the representation</h2>
-              <p>
-                <PrintMathText text={problems[0].public.prompt} />
-              </p>
-              <Figure figure={problems[0].public.figure} />
-              <p>
-                <PrintMathText text={problems[0].explanation.join(" ")} />
-              </p>
-            </section>
-          )}
+          {lesson.includeGeneratedRepresentation !== false &&
+            problems[0]?.public.figure && (
+              <section className="representation">
+                <h2>Explore the representation</h2>
+                <p>
+                  <PrintMathText text={problems[0].public.prompt} />
+                </p>
+                <Figure figure={problems[0].public.figure} />
+                <p>
+                  <PrintMathText text={problems[0].explanation.join(" ")} />
+                </p>
+              </section>
+            )}
           <h2>Common stumbling blocks</h2>
           <ul>
             {lesson.pitfalls.map((p) => (

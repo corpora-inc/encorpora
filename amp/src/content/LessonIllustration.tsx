@@ -1,7 +1,19 @@
+import {
+  RightTriangleOrientation,
+  PythagoreanRearrangement,
+} from "./RightTriangleIllustration";
+import type { Lesson } from "./lessons";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
-export function LessonIllustration({ kind }: { kind: "thirds-and-fourths" }) {
+export function LessonIllustration({
+  kind,
+}: {
+  kind: NonNullable<Lesson["sections"][number]["illustration"]>;
+}) {
+  if (kind === "right-triangle-orientation")
+    return <RightTriangleOrientation />;
+  if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
   const rows = [
     { label: "One third", parts: 3, selected: 1, group: 1, y: 36 },
     {
