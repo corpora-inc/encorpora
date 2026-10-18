@@ -269,6 +269,8 @@ try {
   await page.getByRole("button", { name: "Back", exact: true }).click();
   await page.locator(".account-menu summary").click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  // Sign-out redirects asynchronously; finish it before starting another navigation.
+  await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await signedIn(page);
@@ -457,15 +459,21 @@ try {
   for (const page of browser.contexts().flatMap((c) => c.pages())) {
     console.error(
       "Visible account errors:",
-      await page.locator("[role=alert]").allTextContents(),
+      await page
+        .locator("[role=alert]")
+        .allTextContents()
+        .catch(() => []),
     );
-    await page.screenshot({
-      path: new URL("accounts-failure.png", shots).pathname,
-      mask: [
-        page.locator(".security-backup code"),
-        page.locator(".security-qr"),
-      ],
-    });
+    // A navigation can destroy the page during diagnostics; preserve the test failure.
+    await page
+      .screenshot({
+        path: new URL("accounts-failure.png", shots).pathname,
+        mask: [
+          page.locator(".security-backup code"),
+          page.locator(".security-qr"),
+        ],
+      })
+      .catch(() => {});
   }
   throw failure;
 } finally {
