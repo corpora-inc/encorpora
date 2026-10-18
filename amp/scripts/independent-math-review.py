@@ -12,6 +12,7 @@ from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
 from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
+from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -26,7 +27,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC
 
 
 def require(condition, message):
@@ -38,6 +39,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in QUADRATIC:
+        return solve_quadratic(public)
     if template in MEASUREMENT:
         return solve_measurement(public)
     if template in ALGEBRA:
@@ -232,6 +235,7 @@ def solve(public):
 def review(stream):
     review_algebra_fixtures()
     review_measurement_fixtures()
+    review_quadratic_fixtures()
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
     manifest = json.loads(first_line)
@@ -260,7 +264,7 @@ def review(stream):
         seen.add(identity)
         solved = solve(public)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
