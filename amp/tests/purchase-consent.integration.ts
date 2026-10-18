@@ -785,13 +785,40 @@ test(
         await app.close();
       }
       await installConsentPolicy(f.pool, f.policy);
-      f.gateway.createCheckout = async () => {
+      f.gateway.createCheckout = async (...args) => {
+        await create(...args); // Provider succeeds, but AMP never receives/returns its URL.
         throw new Error("ambiguous provider timeout");
       };
       await assert.rejects(
         f.checkout("ambiguous"),
         /ambiguous provider timeout/,
       );
+      const unbound = (
+        await f.pool.query(
+          "SELECT id,session_id FROM amp_stripe_checkouts WHERE account_id='ambiguous'",
+        )
+      ).rows[0];
+      assert.equal(unbound.session_id, null);
+      assert.ok(
+        (
+          await f.pool.query(
+            "SELECT customer_id FROM amp_stripe_customers WHERE account_id='ambiguous'",
+          )
+        ).rows[0].customer_id,
+      );
+      assert.ok(f.sessions.has(`cs_${unbound.id}`));
+      await assert.rejects(
+        f.checkout("ambiguous", "month"),
+        /checkout_plan_conflict/,
+      );
+      // Move both sides of the fixture clock past the immutable provider deadline.
+      await f.pool.query(
+        "UPDATE amp_stripe_customers SET created_at=now()-interval '2 days' WHERE account_id='ambiguous'",
+      );
+      await f.pool.query(
+        "UPDATE amp_stripe_checkouts SET created_at=now()-interval '2 days' WHERE account_id='ambiguous'",
+      );
+      f.sessions.set(`cs_${unbound.id}`, { status: "expired", url: null });
       await f.pool.query(
         "ALTER TABLE amp_purchase_consents DISABLE TRIGGER amp_purchase_notice_immutable",
       );
@@ -803,12 +830,23 @@ test(
       );
       await assert.rejects(
         f.checkout("ambiguous"),
-        /checkout_requires_reconciliation/,
+        /checkout_expired_retry_with_new_request/,
       );
       assert.equal(
         (
           await f.pool.query(
             "SELECT count(*)::int n FROM amp_stripe_checkouts WHERE account_id='ambiguous'",
+          )
+        ).rows[0].n,
+        1,
+      );
+      f.gateway.createCheckout = create;
+      const replacement = await f.checkout("ambiguous");
+      assert.notEqual(replacement.id, unbound.id);
+      assert.equal(
+        (
+          await f.pool.query(
+            "SELECT count(*)::int n FROM amp_stripe_checkouts WHERE account_id='ambiguous' AND NOT closed",
           )
         ).rows[0].n,
         1,
@@ -981,6 +1019,40 @@ test(
       assert.equal(
         (await paymentHistory(f.pool, "first"))[0]!.baseline!.paidMinor,
         p.paid,
+      );
+    }),
+);
+
+test(
+  "queued cancellation cannot remove independently recovered paid access",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      const row = await f.checkout();
+      const p = f.settle(row);
+      assert.deepEqual(await f.deliver(p), { processed: 1, failed: 0 });
+      await f.pool.query(
+        "INSERT INTO amp_enrollment_cancellations(checkout_id,subscription_id,reason) VALUES($1,$2,'purchase_consent_requires_review')",
+        [row.id, p.subscriptionId],
+      );
+      assert.deepEqual(await f.billing.runBatch(), { processed: 0, failed: 0 });
+      assert.equal(f.cancellations.size, 0);
+      assert.equal(
+        (
+          await f.pool.query(
+            "SELECT closed FROM amp_stripe_checkouts WHERE id=$1",
+            [row.id],
+          )
+        ).rows[0].closed,
+        false,
+      );
+      assert.ok(
+        (
+          await f.pool.query(
+            "SELECT completed_at FROM amp_enrollment_cancellations WHERE checkout_id=$1",
+            [row.id],
+          )
+        ).rows[0].completed_at,
       );
     }),
 );

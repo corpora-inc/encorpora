@@ -41,7 +41,7 @@ export function registerEnrollmentRoutes(
         }
         const purchase = (
           await client.query(
-            `SELECT c.id,c.session_id,c.billing_interval,c.closed,p.revoked_at,p.consent_at,p.checkout_id AS consent_id,
+            `SELECT c.id,c.session_id,c.billing_interval,c.closed,p.revoked_at,p.consent_at,p.expires_at,p.checkout_id AS consent_id,
           EXISTS(SELECT 1 FROM amp_consent_policy policy WHERE policy.singleton AND policy.enabled AND policy.reviewed_until>clock_timestamp() AND policy.digest=p.policy_digest AND policy.generation=p.policy_generation) AS policy_valid,c.assigned_learner_id,EXISTS(SELECT 1 FROM amp_enrollment_cancellations cancelled WHERE cancelled.checkout_id=c.id) AS rejected,
           EXISTS(SELECT 1 FROM amp_account_entitlements e WHERE e.checkout_id=c.id AND e.status='active' AND e.ends_at>now()) AS paid
           FROM amp_stripe_checkouts c LEFT JOIN amp_purchase_consents p ON p.checkout_id=c.id WHERE c.namespace=$1 AND c.account_id=$2 AND c.learner_id IS NULL ORDER BY c.created_at DESC,c.id DESC LIMIT 1`,
@@ -67,24 +67,26 @@ export function registerEnrollmentRoutes(
         ? p.assigned_learner_id
           ? "assigned"
           : "paid"
-        : (p.paid && !local.claimAllowed) ||
-            p.rejected ||
-            p.revoked_at ||
-            !p.consent_id ||
-            !p.policy_valid ||
-            !local.notice
-          ? "requires-review"
-          : p.assigned_learner_id
-            ? "assigned"
-            : p.paid
-              ? "paid"
-              : p.consent_at
-                ? "payment-inactive"
-                : session?.status === "complete"
-                  ? "processing"
-                  : session?.status === "expired" || p.closed
-                    ? "expired"
-                    : "checkout-open";
+        : !p.session_id && p.expires_at?.getTime() <= Date.now()
+          ? "expired"
+          : (p.paid && !local.claimAllowed) ||
+              p.rejected ||
+              p.revoked_at ||
+              !p.consent_id ||
+              !p.policy_valid ||
+              !local.notice
+            ? "requires-review"
+            : p.assigned_learner_id
+              ? "assigned"
+              : p.paid
+                ? "paid"
+                : p.consent_at
+                  ? "payment-inactive"
+                  : session?.status === "complete"
+                    ? "processing"
+                    : session?.status === "expired" || p.closed
+                      ? "expired"
+                      : "checkout-open";
     return {
       available: !!local.notice,
       notice: local.notice,

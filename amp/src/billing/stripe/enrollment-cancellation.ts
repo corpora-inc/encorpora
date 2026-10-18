@@ -89,6 +89,17 @@ export async function stopRejectedEnrollmentRenewals(
           )
         ).rows[0];
         if (!action) return;
+        const granted = await client.query(
+          "SELECT 1 FROM amp_account_entitlements WHERE checkout_id=$1 LIMIT 1",
+          [item.checkout_id],
+        );
+        if (granted.rowCount) {
+          await client.query(
+            "UPDATE amp_enrollment_cancellations SET completed_at=now(),error_code=NULL WHERE checkout_id=$1",
+            [item.checkout_id],
+          );
+          return;
+        }
         const binding = await repository.binding(item.checkout_id);
         if (
           binding.accountId !== item.account_id ||

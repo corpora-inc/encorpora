@@ -117,6 +117,7 @@ export async function prepareEnrollmentCheckout(
   repository: StripeRepository,
   account: string,
   id: string,
+  recordAttempt = true,
 ): Promise<number | null> {
   return repository.transaction(account, async (client) => {
     const row = (
@@ -128,10 +129,12 @@ export async function prepareEnrollmentCheckout(
     if (!row) throw new BillingError("purchase_consent_requires_review");
     const expiresAt = Math.floor(row.expires_at.getTime() / 1000);
     if (row.session_id) return expiresAt;
-    // Stripe requires at least 30 minutes on a new session. An unattempted
-    // reservation can be safely retired; an ambiguous remote result cannot.
-    if (expiresAt <= Math.floor(Date.now() / 1000) + 30 * 60) {
-      if (row.creation_started_at)
+    // Leave an hour for Stripe's 30-minute minimum and the 23-hour retry bound.
+    // Before expiry, an ambiguous create cannot authorize a replacement.
+    // After the fixed provider deadline, an unbound session is expired and its
+    // URL was never returned (the binding transaction did not commit).
+    if (expiresAt <= Math.floor(Date.now() / 1000) + 60 * 60) {
+      if (row.creation_started_at && expiresAt > Math.floor(Date.now() / 1000))
         throw new BillingError("checkout_requires_reconciliation");
       await client.query(
         "UPDATE amp_stripe_checkouts SET closed=true WHERE id=$1",
@@ -144,11 +147,53 @@ export async function prepareEnrollmentCheckout(
       return null;
     }
     await assertEnrollmentIntent(repository, client, account, id);
-    await client.query(
-      "UPDATE amp_stripe_checkouts SET creation_started_at=COALESCE(creation_started_at,now()) WHERE id=$1",
-      [id],
-    );
+    if (recordAttempt)
+      await client.query(
+        "UPDATE amp_stripe_checkouts SET creation_started_at=COALESCE(creation_started_at,now()) WHERE id=$1",
+        [id],
+      );
     return expiresAt;
+  });
+}
+
+/** A session failure must not roll back its already-resolved adult customer.
+ * No learner data is sent when creating this opaque customer reservation. */
+export async function ensureEnrollmentCustomer(
+  billing: StripeBilling,
+  account: string,
+): Promise<void> {
+  const repository = billing.repository;
+  await repository.transaction(account, async (client) => {
+    const customer = (
+      await client.query(
+        "SELECT * FROM amp_stripe_customers WHERE namespace=$1 AND account_id=$2 FOR UPDATE",
+        [repository.namespace, account],
+      )
+    ).rows[0];
+    if (!customer) throw new BillingError("customer_reservation_missing");
+    if (customer.customer_id) return;
+    if (Date.now() - customer.created_at.getTime() > 23 * 3600_000) {
+      const attempted = await client.query(
+        "SELECT 1 FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND (creation_started_at IS NOT NULL OR (learner_id IS NOT NULL AND NOT closed)) LIMIT 1",
+        [repository.namespace, account],
+      );
+      if (attempted.rowCount)
+        throw new BillingError("customer_requires_reconciliation");
+      // No session creation was attempted. A possible orphan customer has no
+      // returned session or charge authority; use a fresh opaque reservation.
+      customer.reservation_id = randomUUID();
+      await client.query(
+        "UPDATE amp_stripe_customers SET reservation_id=$3,created_at=now() WHERE namespace=$1 AND account_id=$2",
+        [repository.namespace, account, customer.reservation_id],
+      );
+    }
+    const customerId = await billing.gateway.createCustomer(
+      customer.reservation_id,
+    );
+    await client.query(
+      "UPDATE amp_stripe_customers SET customer_id=$3 WHERE namespace=$1 AND account_id=$2",
+      [repository.namespace, account, customerId],
+    );
   });
 }
 

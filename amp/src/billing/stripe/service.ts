@@ -5,6 +5,7 @@ import {
 import {
   reserveEnrollment,
   prepareEnrollmentCheckout,
+  ensureEnrollmentCustomer,
   assertEnrollmentIntent,
   settleEnrollment,
   type PurchaseAcknowledgement,
@@ -83,17 +84,27 @@ export class StripeBilling {
       });
       checkoutId = await reserve();
     }
-    const enrollmentExpiresAt =
-      learnerId === null
-        ? await prepareEnrollmentCheckout(
-            this.repository,
-            accountId,
-            checkoutId,
-          )
-        : undefined;
-    if (enrollmentExpiresAt === null)
-      throw new BillingError("checkout_expired_retry_with_new_request");
     await this.gateway.verifyCatalog();
+    let enrollmentExpiresAt: number | undefined;
+    if (learnerId === null) {
+      const deadline = await prepareEnrollmentCheckout(
+        this.repository,
+        accountId,
+        checkoutId,
+        false,
+      );
+      if (deadline === null)
+        throw new BillingError("checkout_expired_retry_with_new_request");
+      await ensureEnrollmentCustomer(this, accountId);
+      const prepared = await prepareEnrollmentCheckout(
+        this.repository,
+        accountId,
+        checkoutId,
+      );
+      if (prepared === null)
+        throw new BillingError("checkout_expired_retry_with_new_request");
+      enrollmentExpiresAt = prepared;
+    }
     const result = await this.repository.transaction<
       { url: string } | { expired: true }
     >(accountId, async (client) => {
