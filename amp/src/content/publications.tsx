@@ -1,3 +1,5 @@
+import { inequalityWorksheet } from "./inequality-worksheets";
+import { inequalityTemplates } from "../math/inequality-practice";
 import { LessonIllustration } from "./LessonIllustration";
 import { product } from "../product";
 import React from "react";
@@ -14,9 +16,11 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    Array.from({ length: 12 }, (_, i) =>
-      generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
-    ),
+    inequalityTemplates.some((t) => t.id === id)
+      ? inequalityWorksheet(id, lesson.id, edition)
+      : Array.from({ length: 12 }, (_, i) =>
+          generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
+        ),
   );
   const kindLabel =
     kind === "lesson"

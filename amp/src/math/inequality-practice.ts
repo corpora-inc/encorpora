@@ -109,16 +109,17 @@ export const inequalityTemplates: readonly TemplateMetadata[] = [
   requiredResponseCapability: "single-choice-v1",
 }));
 
-export function generateInequalityProblem(
+function generateInequalityCase(
   templateId: string,
   seed: string,
-): GeneratedProblem {
+): { problem: GeneratedProblem; tags: string[] } {
   const metadata = inequalityTemplates.find((t) => t.id === templateId);
   if (!metadata) throw new Error(`Unknown inequality template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed),
     op = relations[r(0, 3)]!;
+  const tags = [`operator:${op}`];
   let left: string, right: string, hint: string;
   const explanation: string[] = [];
   let candidates: { label: string; correct: boolean; feedback?: string }[];
@@ -137,6 +138,7 @@ export function generateInequalityProblem(
     const increasing = op === "<" || op === "≤";
     const delta = equality ? 0 : (increasing === truth ? 1 : -1) * r(1, 8);
     const rhs = lhs + delta;
+    tags.push(equality ? "equal" : "unequal", truth ? "true" : "false");
     left = `${number(q(factor))}(${linear(q(a), q(b))})${constant(q(d))}`;
     right = linear(q(coefficient), q(rhs));
     hint =
@@ -193,6 +195,12 @@ export function generateInequalityProblem(
     }
     const remaining = sub(rhsConstant, lhsConstant);
     const solvedOp = coefficient.n < 0 ? reverse[op] : op;
+    tags.push(
+      coefficient.n < 0 ? "negative" : "positive",
+      target.n === 0 ? "zero" : "nonzero",
+      target.d === 1 ? "integer-boundary" : "fraction-boundary",
+      coefficient.d === 1 ? "integer-coefficient" : "fraction-coefficient",
+    );
     if (lhsConstant.n !== 0)
       explanation.push(
         `Subtract ${number(lhsConstant)} from both sides: ${term(coefficient)} ${op} ${number(rhsConstant)} − ${operand(lhsConstant)} = ${number(remaining)}.`,
@@ -238,28 +246,43 @@ export function generateInequalityProblem(
     throw new Error("Expected exactly one correct solution set");
   const answer = options.find((o) => o.correct)!.id;
   return {
-    public: {
-      id: createHash("sha256")
-        .update(JSON.stringify([templateId, 1, seed]))
-        .digest("hex"),
-      templateId,
-      templateVersion: 1,
-      seed,
-      skillId: metadata.skillId,
-      prompt: `Solve for real x: ${left} ${op} ${right}.`,
-      response: {
-        kind: "choice",
-        label: "Choose the complete solution set",
-        options: options.map(({ id, label }) => ({ id, label })),
+    tags,
+    problem: {
+      public: {
+        id: createHash("sha256")
+          .update(JSON.stringify([templateId, 1, seed]))
+          .digest("hex"),
+        templateId,
+        templateVersion: 1,
+        seed,
+        skillId: metadata.skillId,
+        prompt: `Solve for real x: ${left} ${op} ${right}.`,
+        response: {
+          kind: "choice",
+          label: "Choose the complete solution set",
+          options: options.map(({ id, label }) => ({ id, label })),
+        },
       },
+      answer,
+      hint,
+      explanation,
+      choiceFeedback: Object.fromEntries(
+        options
+          .filter((o) => !o.correct)
+          .map((o) => [o.id, o.feedback ?? feedback]),
+      ),
     },
-    answer,
-    hint,
-    explanation,
-    choiceFeedback: Object.fromEntries(
-      options
-        .filter((o) => !o.correct)
-        .map((o) => [o.id, o.feedback ?? feedback]),
-    ),
   };
+}
+
+export function generateInequalityProblem(
+  templateId: string,
+  seed: string,
+): GeneratedProblem {
+  return generateInequalityCase(templateId, seed).problem;
+}
+
+/** Private authoring information for representative worksheets; never part of a public problem. */
+export function inequalityPrintCase(templateId: string, seed: string) {
+  return generateInequalityCase(templateId, seed);
 }
