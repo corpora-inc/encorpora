@@ -267,6 +267,22 @@ def check_manifest(record):
             'Missing circle facets or unsupported completeness claim')
     require(len(record['bindings']) == 4 and {b['templateId'] for b in record['bindings']} == CIRCLE,
             'Circle templates are not bound to default curriculum facets')
+    expected_facets = {
+        'circle-circumference-coefficient': 'circle-measurement.exact-circumference',
+        'circle-area-coefficient': 'circle-measurement.exact-area',
+        'arc-length-coefficient': 'arc-sector-measure.degree-arc-length',
+        'sector-area-coefficient': 'arc-sector-measure.degree-sector-area',
+    }
+    require(all(m['facetId'] == expected_facets[m['templateId']] for m in record['mappings']) and
+            all(b['facetId'] == expected_facets[b['templateId']] and
+                b['skillId'] == b['facetId'].split('.')[0] and b['independentlyReviewed'] is False
+                for b in record['bindings']), 'Incorrect circle facet binding or verification claim')
+    expected_inputs = [('0.125', '1/8'), ('1/8', '1/8'), ('2/16', '1/8'),
+                       ('12.25', '49/4'), ('49/4', '49/4'), ('98/8', '49/4'),
+                       ('−3', '-3'), ('-3', '-3')]
+    require(record['equivalentInputs'] == [{'input': value, 'normalized': normalized}
+                                           for value, normalized in expected_inputs],
+            'Equivalent exact circle answer input regression')
     skills = {s['id']: s for s in record['skills']}
     require(set(skills) == {'circle-measurement', 'arc-sector-measure'}, 'Missing circle skills')
     require(skills['circle-measurement']['gradeBand'] == '7' and
@@ -298,7 +314,10 @@ def check_figures(figures):
         require(scale > 0 and math.isclose(pixels, radius*scale) and float(circle['cx']) == cx and float(circle['cy']) == cy,
                 'Circle boundary contradicts its scale or center')
         labels = [n.text() for n in nodes if n.tag == 'text']
-        require(f'r = {radius} cm' in labels and 'O' in labels, 'Wrong circle radius or center label')
+        require(f'r = {radius} cm' in labels, 'Wrong circle radius label')
+        centers = [n for n in nodes if n.tag == 'circle' and n.attributes.get('r') == '3']
+        require(len(centers) == 1 and float(centers[0].attributes['cx']) == cx and
+                float(centers[0].attributes['cy']) == cy, 'Missing or misplaced circle center dot')
         def segment(name, start, end):
             line = one('data-segment', name).attributes
             require(all(math.isclose(float(line[k]), v, abs_tol=1e-8) for k,v in zip(['x1','y1','x2','y2'], [*start,*end])), 'Wrong radius/diameter endpoints')
@@ -394,6 +413,8 @@ def review_content_mutations(records):
     probe(worksheet, check_worksheet, lambda r:r.__setitem__('workbookHtml', r['solutionsHtml']))
     probe(lesson, check_lesson, lambda r:r['lesson']['workedExample'].__setitem__('answer', '999'))
     probe(records[0], check_manifest, lambda r:r['mappings'][0].__setitem__('extent', 'complete'))
+    probe(records[0], check_manifest, lambda r:r['bindings'][0].__setitem__('independentlyReviewed', True))
+    probe(records[0], check_manifest, lambda r:r['equivalentInputs'][0].__setitem__('normalized', '999'))
     probe(records[0]['illustrations'], check_figures, lambda f:f[0].__setitem__('html', f[0]['html'].replace('r="110"', 'r="111"')))
     probe(records[0]['illustrations'], check_figures, lambda f:f[2].__setitem__('html', f[2]['html'].replace('150°', '160°')))
     probe(records[0]['illustrations'], check_figures, lambda f:f[3].__setitem__('html', f[3]['html'].replace('0 1 0', '0 0 0')))

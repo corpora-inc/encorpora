@@ -65,7 +65,16 @@ async function main() {
           })),
       ),
     ),
-    equivalentInputs: ["0.125", "1/8", "2/16", "−3", "-3"].map((input) => ({
+    equivalentInputs: [
+      "0.125",
+      "1/8",
+      "2/16",
+      "12.25",
+      "49/4",
+      "98/8",
+      "−3",
+      "-3",
+    ].map((input) => ({
       input,
       normalized: normalizeAnswer(input),
     })),
