@@ -15,6 +15,7 @@ export function normalizeFinancialEvidence(
   invoice: Stripe.Invoice,
   chargeId: string,
   refunds: Stripe.Refund[],
+  paymentMethod?: string,
 ): FinancialResult {
   const review = (reason: string): FinancialResult => ({
     kind: "review",
@@ -120,6 +121,9 @@ export function normalizeFinancialEvidence(
   return {
     kind: "verified",
     observation: {
+      ...(paymentMethod && /^[a-z0-9_]{1,60}$/.test(paymentMethod)
+        ? { paymentMethod }
+        : {}),
       invoiceReason:
         invoice.billing_reason === "subscription_create"
           ? "subscription_create"

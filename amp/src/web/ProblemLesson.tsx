@@ -1,9 +1,17 @@
+import { lazy, Suspense } from "react";
+import { AnimationBoundary } from "./lesson-animation/AnimationBoundary";
+import { animationModel } from "./lesson-animation/model";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { Figure } from "./Figure";
 import { MathText } from "./MathText";
 
+const LessonAnimation = lazy(
+  () => import("./lesson-animation/LessonAnimation"),
+);
+
 /** The lesson for one problem type: goal, terms, method, worked example. */
 export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
+  const animation = animationModel(lesson);
   return (
     <article className="problem-lesson">
       <p className="lesson-goal">
@@ -42,7 +50,36 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <p className="lesson-example-prompt">
           <MathText text={lesson.example.prompt} />
         </p>
-        {lesson.example.figure && <Figure figure={lesson.example.figure} />}
+        {animation?.kind === "exchange" && lesson.example.figure && (
+          <Figure figure={lesson.example.figure} />
+        )}
+        {animation ? (
+          <AnimationBoundary
+            key={JSON.stringify(animation)}
+            fallback={
+              animation.kind === "exchange" ? null : (
+                <Figure figure={lesson.example.figure!} />
+              )
+            }
+          >
+            <Suspense
+              fallback={
+                <div
+                  style={{ height: 460, margin: "12px 0" }}
+                  role="status"
+                  aria-label="Loading example model"
+                />
+              }
+            >
+              <LessonAnimation
+                key={JSON.stringify(animation)}
+                model={animation}
+              />
+            </Suspense>
+          </AnimationBoundary>
+        ) : (
+          lesson.example.figure && <Figure figure={lesson.example.figure} />
+        )}
         <ol>
           {lesson.example.steps.map((step) => (
             <li key={step}>

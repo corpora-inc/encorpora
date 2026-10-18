@@ -53,6 +53,7 @@ async function setup(
     hold?: boolean;
     funds?: boolean;
     monthly?: boolean;
+    reimbursement?: boolean;
   } = {},
 ) {
   const page = await browser.newPage({ viewport: { width, height } });
@@ -144,6 +145,25 @@ async function setup(
           : { json: { learnerId: `child-${parent}-2` } },
       );
     }
+    if (
+      path === "/api/v1/payments/reimbursement-programs" &&
+      route.request().method() === "GET"
+    )
+      return route.fulfill({
+        json: {
+          programs: options.reimbursement
+            ? [
+                {
+                  id: "synthetic-program",
+                  state: "AZ",
+                  programName: "Synthetic education program",
+                  officialUrl: "https://example.test/reimbursement",
+                  requiredFields: ["learnerName", "paymentMethod"],
+                },
+              ]
+            : [],
+        },
+      });
     if (path.endsWith("/billing/checkout")) {
       checkoutBodies.push(route.request().postDataJSON());
       return route.fulfill({
@@ -538,12 +558,15 @@ try {
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }
-  for (const [width, height] of [
-    [320, 568],
-    [390, 844],
-    [1280, 900],
-  ]) {
-    const f = await setup(width, height, { monthly: true });
+  for (const [width, height, reimbursement] of [
+    [320, 568, false],
+    [390, 844, false],
+    [1280, 900, false],
+    [320, 568, true],
+    [390, 844, true],
+    [1280, 900, true],
+  ] as const) {
+    const f = await setup(width, height, { monthly: true, reimbursement });
     f.setStatus("ready");
     await f.page.route("https://checkout.stripe.com/**", (route) =>
       route.fulfill({
@@ -561,12 +584,21 @@ try {
       .getByRole("button", { name: "Monthly $14.00 / month", exact: true })
       .click();
     await f.page.screenshot({
-      path: `artifacts/purchase-app/monthly-choice-${width}.png`,
+      path: `artifacts/purchase-app/monthly-choice-${width}${reimbursement ? "-reimbursement" : ""}.png`,
       fullPage: true,
     });
-    await f.page
-      .getByRole("button", { name: "Pay by card", exact: true })
-      .click();
+    if (reimbursement) {
+      await f.page
+        .getByRole("combobox", { name: "Reimbursement state" })
+        .selectOption("AZ");
+      await f.page
+        .getByRole("button", { name: "Continue to card payment", exact: true })
+        .click();
+    } else {
+      await f.page
+        .getByRole("button", { name: "Pay by card", exact: true })
+        .click();
+    }
     const monthlyButton = f.page.getByRole("button", {
       name: "Monthly $14.00 / month",
       exact: true,
@@ -578,7 +610,7 @@ try {
       .waitFor();
     await visible(f.page, ".annual-primary");
     await f.page.screenshot({
-      path: `artifacts/purchase-app/monthly-selected-${width}.png`,
+      path: `artifacts/purchase-app/monthly-selected-${width}${reimbursement ? "-reimbursement" : ""}.png`,
       fullPage: true,
     });
     await f.page

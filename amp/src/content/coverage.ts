@@ -1,3 +1,4 @@
+import { actualFacetMappings } from "./facet-mappings";
 import { books as registeredBooks } from "../books/catalog.js";
 import {
   skills as catalogSkills,
@@ -105,7 +106,21 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
         ]));
   const publications = input.publications ?? [];
   const evidence = input.evidence ?? [];
-  const mappings = input.facetMappings ?? [];
+  const suppliedMappings = input.facetMappings ?? [];
+  const suppliedMappingKeys = new Set(
+    suppliedMappings.map(
+      (mapping) => `${mapping.templateId}:${mapping.facetId}`,
+    ),
+  );
+  const defaults = input.templates || input.skills ? [] : actualFacetMappings;
+  // Explicit mappings may refine a default; duplicate supplied records remain errors.
+  const mappings = [
+    ...defaults.filter(
+      (mapping) =>
+        !suppliedMappingKeys.has(`${mapping.templateId}:${mapping.facetId}`),
+    ),
+    ...suppliedMappings,
+  ];
   const errors: string[] = [];
   function unique<T extends { id: string }>(rows: readonly T[], kind: string) {
     const map = new Map<string, T>();
