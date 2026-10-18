@@ -160,17 +160,20 @@ function problemGroup(templateId: string, r: Random): Pair[] {
         }
       }
     }
-    if (byMiddle.size >= 2)
+    if (byMiddle.size >= 4)
       return shuffle(
         [...byMiddle.values()].map(
           (choices) => choices[r(0, choices.length - 1)]!,
         ),
         r,
       ).slice(0, 4);
+    // Redraw before selecting a question when integer factors cannot supply four
+    // distinct middle coefficients. Every offered answer keeps the outer terms.
+    return problemGroup(templateId, r);
   }
   // Vary two coefficients before choosing which question to ask. In a cubic
   // product, keep the leading coefficient fixed and vary the other factor's
-  // linear term and constant, so the outer terms cannot determine the answer.
+  // linear term and constant. A cross term is needed to resolve the final choice.
   const length = Math.max(left.length, right.length);
   const padded = Array.from({ length }, (_, k) => right[k] ?? 0);
   const powers = multiply
@@ -291,13 +294,22 @@ export function generatePolynomialProblem(
         const feedback: string[] = [];
         for (let k = correct.length - 1; k >= 0; k--) {
           if ((item.result[k] ?? 0) === correct[k]) continue;
-          feedback.push(
-            multiply
-              ? k === 0
-                ? "The constant term comes from multiplying the two constants."
-                : `For the ${power(k)} term, include every term product whose exponents on x add to ${k}. Multiply the signed coefficients, then add the products.`
-              : `For ${k ? `the ${power(k)} term` : "the constant term"}, calculate ${signed(a[k] ?? 0)} ${subtract ? "−" : "+"} ${signed(b[k] ?? 0)}.`,
-          );
+          const target = k ? `the ${power(k)} term` : "the constant term";
+          if (multiply) {
+            const products = a.flatMap((c, j) => {
+              const d = b[k - j] ?? 0;
+              return c && d ? [`(${signed(c)} × ${signed(d)})`] : [];
+            });
+            feedback.push(
+              products.length
+                ? `For ${target}, calculate ${products.length > 1 ? "the sum of coefficient products" : "the coefficient product"}: ${products.join(" + ")}.`
+                : `The coefficient of ${k ? power(k) : "the constant term"} is 0: no nonzero term products contribute to ${target}.`,
+            );
+          } else {
+            feedback.push(
+              `For ${target}, calculate ${signed(a[k] ?? 0)} ${subtract ? "−" : "+"} ${signed(b[k] ?? 0)}.`,
+            );
+          }
         }
         choiceFeedback[id] = feedback.join(" ");
       }
