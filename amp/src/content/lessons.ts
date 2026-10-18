@@ -1,3 +1,4 @@
+import { inequalityLessons } from "./inequality-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
@@ -22,6 +23,7 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | "thirds-and-fourths"
+      | "inequality-half-lines"
       | "right-triangle-orientation"
       | "pythagorean-rearrangement";
   }[];
@@ -495,6 +497,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...inequalityLessons,
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,

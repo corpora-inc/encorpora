@@ -1,3 +1,5 @@
+import { inequalityWorksheet } from "./inequality-worksheets";
+import { inequalityTemplates } from "../math/inequality-practice";
 import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
 import { LessonIllustration } from "./LessonIllustration";
 import { product } from "../product";
@@ -14,12 +16,13 @@ export function publicationHtml(
   kind: PublicationKind,
   edition = "1",
 ) {
-  const problems = lesson.templateIds.flatMap(
-    (id) =>
-      rightTriangleWorksheetProblems(id, lesson.id, edition) ??
-      Array.from({ length: 12 }, (_, i) =>
-        generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
-      ),
+  const problems = lesson.templateIds.flatMap((id) =>
+    inequalityTemplates.some((t) => t.id === id)
+      ? inequalityWorksheet(id, lesson.id, edition)
+      : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
+        Array.from({ length: 12 }, (_, i) =>
+          generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
+        )),
   );
   const kindLabel =
     kind === "lesson"

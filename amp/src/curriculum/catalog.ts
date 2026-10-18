@@ -439,7 +439,7 @@ signed-multiplication|7|number|Multiply and divide signed rational numbers|signe
 rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
 linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
-linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication|7.EE.B.4
+linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
 scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proportional-relationships,triangle-area|7.G.A.1
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
 solid-cross-sections|7|geometry|Identify plane cross-sections of solids|surface-area|7.G.A.3
@@ -1289,3 +1289,31 @@ export const expectedHighSchoolStandardIds = Object.entries(
     );
   }),
 );
+
+// Narrow implemented tasks do not certify the broader planned inequality skill.
+const inequalitySkill = skills.find((s) => s.id === "linear-inequalities")!;
+inequalitySkill.alignments.push({
+  standardId: "SAT.algebra",
+  facet:
+    "Solve one-variable linear inequalities with numerical rational coefficients; two-variable inequalities and systems require separate assessment.",
+  basis: "editorial",
+});
+for (const [id, description] of [
+  [
+    "affine-solution-set",
+    "Solve one-variable affine inequalities with signed rational coefficients and exact half-line boundaries.",
+  ],
+  [
+    "grouped-solution-set",
+    "Distribute and collect terms on both sides of a linear inequality before solving exactly.",
+  ],
+  [
+    "cancellation-solution-set",
+    "Classify a linear inequality with cancelling variable terms as all real numbers or no real numbers.",
+  ],
+])
+  inequalitySkill.facets.push({
+    id: `linear-inequalities.${id}`,
+    description,
+    status: "implemented",
+  });

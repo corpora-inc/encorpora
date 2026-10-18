@@ -112,6 +112,8 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
       (mapping) => `${mapping.templateId}:${mapping.facetId}`,
     ),
   );
+  // Any explicit inventory is isolated, even if it passes the catalog arrays.
+  // Its caller must supply the applicable mappings.
   const defaults = input.templates || input.skills ? [] : actualFacetMappings;
   // Explicit mappings may refine a default; duplicate supplied records remain errors.
   const mappings = [
