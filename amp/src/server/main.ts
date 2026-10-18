@@ -1,6 +1,7 @@
 import { isIP } from "node:net";
 import { offlineSigningConfiguration } from "../offline/signing.js";
 import { registerOfflineRoutes } from "../offline/routes.js";
+import { loadReimbursementPrograms } from "../billing/evidence/reimbursement-config.js";
 import { registerPaymentEvidenceRoutes } from "../billing/evidence/routes.js";
 import { consentConfiguration } from "../parent-consent/config.js";
 import { ConsentRepository } from "../parent-consent/repository.js";
@@ -108,6 +109,9 @@ await registerConsentRoutes(app, {
 await registerPaymentEvidenceRoutes(app, {
   pool: repository.pool,
   authenticate,
+  reimbursementPrograms: await loadReimbursementPrograms(
+    process.env.AMP_REIMBURSEMENT_PROGRAMS_FILE,
+  ),
 });
 const billingConfig = stripeConfig(process.env);
 if (billingConfig) {

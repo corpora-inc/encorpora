@@ -1,0 +1,71 @@
+.reimbursement-guide {
+  border-top: 1px solid #d2d8ce;
+  margin-top: 20px;
+  padding-top: 16px;
+  overflow-wrap: anywhere;
+}
+.reimbursement-guide h3,
+.reimbursement-guide h4 {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+.reimbursement-guide p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.reimbursement-guide article {
+  margin-block: 16px;
+}
+.reimbursement-guide a {
+  color: #175c4d;
+  text-underline-offset: 3px;
+  display: inline-block;
+  padding-block: 8px;
+}
+.reimbursement-guide .go-button {
+  margin-top: 12px;
+  white-space: normal;
+}
+.receipt-details {
+  margin-block: 20px;
+}
+.receipt-details label {
+  display: grid;
+  gap: 8px;
+  margin-block: 12px;
+}
+.receipt-details input,
+.receipt-details select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid #aabfb5;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+  color: #173b34;
+  font: inherit;
+}
+.receipt-details p {
+  font-size: 0.9rem;
+}
+
+.reimbursement-guide summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.reimbursement-guide summary:focus-visible {
+  outline: 3px solid #ba592b;
+  outline-offset: 3px;
+}
+.reimbursement-guide ul,
+.receipt-details ul {
+  padding-left: 1.4rem;
+  line-height: 1.6;
+}

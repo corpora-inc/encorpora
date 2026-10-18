@@ -6,6 +6,7 @@ import {
   type PDFPage,
 } from "pdf-lib";
 import type { PaymentHistoryItem } from "./contracts.js";
+import { receiptRequestSchema } from "./reimbursement.js";
 import { BillingError } from "../stripe/config.js";
 export const paymentMoney = (minor: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
@@ -24,7 +25,9 @@ function date(value: string | number) {
 export async function paymentPdf(
   record: PaymentHistoryItem,
   adjustmentId?: string,
+  learnerName?: string,
 ): Promise<Uint8Array> {
+  learnerName = receiptRequestSchema.parse({ learnerName }).learnerName;
   const b = record.baseline;
   if (!b || record.status !== "verified")
     throw new BillingError("payment_record_requires_review");
@@ -148,7 +151,14 @@ export async function paymentPdf(
   );
   field(
     "Purchase",
-    `${b.profile.product.title}\n${b.profile.product.description}\nSKU: ${b.profile.sku} · Quantity: 1`,
+    `${b.profile.product.title}\n${b.profile.product.description}\nSKU: ${b.profile.sku} · Quantity: 1\nItem amount before tax: ${paymentMoney(b.preTaxMinor)}`,
+  );
+  if (learnerName) field("Learner name (entered by parent)", learnerName);
+  field(
+    "Payment method",
+    b.paymentMethod
+      ? b.paymentMethod.replaceAll("_", " ")
+      : "Not recorded; contact purchase support for payment-method evidence.",
   );
   field(
     "References",
