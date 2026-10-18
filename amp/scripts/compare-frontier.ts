@@ -3,7 +3,7 @@ import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
-import { simulateFrontier } from "./frontier/simulation";
+import { simulateFrontier, simulationCatalog } from "./frontier/simulation";
 import {
   developmentPopulations,
   evaluationPopulations,
@@ -69,7 +69,17 @@ try {
     seeds.map((s) => simulateFrontier(p, s)),
   );
   console.log(
-    JSON.stringify({ baselineCommit, partition, baseline, current }, null, 2),
+    JSON.stringify(
+      {
+        baselineCommit,
+        catalog: simulationCatalog,
+        partition,
+        baseline,
+        current,
+      },
+      null,
+      2,
+    ),
   );
 } finally {
   await rm(scratch, { recursive: true });

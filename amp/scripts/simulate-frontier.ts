@@ -1,5 +1,5 @@
 import { performance } from "node:perf_hooks";
-import { simulateFrontier } from "./frontier/simulation";
+import { simulateFrontier, simulationCatalog } from "./frontier/simulation";
 import {
   developmentPopulations,
   evaluationPopulations,
@@ -30,6 +30,7 @@ console.log(
   JSON.stringify(
     {
       model: "editorial-v1",
+      catalog: simulationCatalog,
       partition,
       disclaimer:
         "Synthetic regression scenarios, not evidence of learning efficacy or real learner calibration.",

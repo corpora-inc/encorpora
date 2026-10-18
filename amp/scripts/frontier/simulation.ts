@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { templates } from "../../src/math/engine";
 import { skills } from "../../src/curriculum/catalog";
 import {
@@ -15,6 +16,17 @@ import { planExperimentalMixedPractice as planMixedPractice } from "../../src/se
 import { projectSkillEvidence } from "../../src/server/evidence";
 import type { Outcome } from "../../src/server/repository";
 import { SyntheticLearner, type Population } from "./synthetic-learner";
+
+/** Both policies receive these exact catalog objects. This fingerprints planning
+ * metadata; the simulation does not execute problem generators or lessons. */
+export const simulationCatalog = {
+  format: "template-and-skill-json-v1",
+  sha256: createHash("sha256")
+    .update(JSON.stringify({ templates, skills }))
+    .digest("hex"),
+  templateCount: templates.length,
+  skillCount: skills.length,
+};
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
 const byId = new Map(templates.map((template) => [template.id, template]));
