@@ -3,6 +3,10 @@ import {
   generateAbsoluteValueProblem,
 } from "./absolute-value-practice";
 import {
+  descriptiveStatisticsTemplates,
+  generateDescriptiveStatisticsProblem,
+} from "./descriptive-statistics-practice";
+import {
   percentChangeTemplates,
   generatePercentChangeProblem,
 } from "./percent-change-practice";
@@ -172,6 +176,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
   ...baseTemplates,
@@ -298,6 +303,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...absoluteValueTemplates,
+    ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
@@ -326,6 +332,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
+  if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
+    return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
