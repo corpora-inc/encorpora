@@ -142,7 +142,7 @@ function quadraticGroups(monic: boolean): Item[][] {
           }
       }
   return [...groups.values()]
-    .filter((g) => g.size >= 2)
+    .filter((g) => g.size >= 3)
     .map((g) => [...g.values()]);
 }
 function monomialGroups(): Item[][] {
@@ -267,10 +267,20 @@ export function factoringPrintCase(id: string, seed: string) {
     const inner = product(selected.left, selected.right),
       m = a * u,
       n = b * s;
-    if (k !== 1)
+    if (id === "nonmonic-quadratic-factorization") {
+      const magnitudes = selected.p.filter((c) => c !== 0).map(Math.abs);
       explanation.push(
-        `Extract ${signed(k)} so the inside quadratic has a positive leading coefficient: ${shown} = ${signed(k)}(${format(inner)}).`,
+        `The GCF of the nonzero coefficient magnitudes ${magnitudes.reverse().join(", ")} is ${Math.abs(k)}.`,
       );
+      if (k < 0)
+        explanation.push(
+          "The leading coefficient is negative. Extract the negative of the coefficient GCF to leave a positive leading coefficient inside.",
+        );
+      if (k !== 1)
+        explanation.push(
+          `Extract ${signed(k)}: ${shown} = ${k === -1 ? "−" : signed(k)}(${format(inner)}).`,
+        );
+    }
     explanation.push(
       `For ${format(inner)}, the leading coefficient is ${a * b}, the middle coefficient is ${signed(m + n)}, and the constant is ${signed(s * u)}.`,
     );
