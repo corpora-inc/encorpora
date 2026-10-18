@@ -16,6 +16,9 @@ const COMPUTATION_TEMPLATES = new Set([
   "power-of-power-exponent",
   "integer-power",
   "operation-order",
+  "median-data",
+  "range-data",
+  "interquartile-range-data",
 ]);
 export function calculatorAllowed(
   template: Pick<TemplateMetadata, "id">,

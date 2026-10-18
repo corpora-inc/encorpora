@@ -3,6 +3,10 @@ import {
   generateIntegerExponentProblem,
 } from "./integer-exponent-practice";
 import {
+  descriptiveStatisticsTemplates,
+  generateDescriptiveStatisticsProblem,
+} from "./descriptive-statistics-practice";
+import {
   percentChangeTemplates,
   generatePercentChangeProblem,
 } from "./percent-change-practice";
@@ -173,6 +177,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 
 export const templates: readonly TemplateMetadata[] = [
   ...integerExponentTemplates,
+  ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
   ...baseTemplates,
@@ -298,6 +303,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...integerExponentTemplates,
+    ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
@@ -326,6 +332,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (integerExponentTemplates.some((t) => t.id === templateId))
     return generateIntegerExponentProblem(templateId, seed);
+  if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
+    return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))

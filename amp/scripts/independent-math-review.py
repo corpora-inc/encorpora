@@ -23,6 +23,7 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 
@@ -39,7 +40,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM | INTEGER_EXPONENT | PERCENT_CHANGE
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM | INTEGER_EXPONENT | PERCENT_CHANGE | DESCRIPTIVE_STATISTICS
 
 
 def require(condition, message):
@@ -53,6 +54,8 @@ def solve(public):
     template = public['templateId']
     if template in INTEGER_EXPONENT:
         return solve_integer_exponent(public)
+    if template in DESCRIPTIVE_STATISTICS:
+        return solve_descriptive_statistics(public)
     if template in PERCENT_CHANGE:
         return solve_percent_change(public)
     if template in LINEAR_SYSTEM:
@@ -258,6 +261,8 @@ def solve(public):
 
 def review(stream):
     review_integer_exponent_fixtures()
+    review_descriptive_statistics_fixtures()
+    review_statistics_content_mutations()
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
@@ -314,6 +319,8 @@ def review(stream):
         if template in LINEAR_SYSTEM:
             system_review.record(public, solved)
             review_linear_system_explanation(public, problem['explanation'], problem['choiceFeedback'])
+        if template in DESCRIPTIVE_STATISTICS:
+            review_statistics_explanation(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
@@ -327,6 +334,7 @@ def review(stream):
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
+    print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)
     print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)

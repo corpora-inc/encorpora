@@ -446,6 +446,7 @@ solid-cross-sections|7|geometry|Identify plane cross-sections of solids|surface-
 circle-measurement|7|geometry|Calculate circle area and circumference|decimal-arithmetic,integer-powers|7.G.B.4
 angle-relationships|7|geometry|Solve unknown angles using supplementary vertical and adjacent relationships|angle-measure,two-step-equations|7.G.B.5
 composite-measurement|7|geometry|Find area surface area and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6
+signed-data-summaries|7|data|Calculate exact median range and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data
 sampling|7|data|Explain why sample selection affects population conclusions|statistical-questions|7.SP.A.1,7.SP.A.2
 compare-distributions|7|data|Compare centers and spread of two distributions|variability|7.SP.B.3,7.SP.B.4
 probability|7|probability|Calculate simple event probabilities and compare observed frequencies|ratios|7.SP.C.5,7.SP.C.6,7.SP.C.7
@@ -1394,3 +1395,24 @@ integerExponentSkill.facets.push({
     "Find the combined integer exponent of a power raised to an integer power.",
   status: "implemented",
 });
+// Narrow computational facets do not certify the full statistics domain.
+const signedDataSkill = skills.find((s) => s.id === "signed-data-summaries")!;
+for (const [id, description] of [
+  [
+    "finite-median",
+    "Calculate the exact median of five to nine listed signed whole or decimal values, retaining repetitions.",
+  ],
+  [
+    "finite-range",
+    "Calculate the exact range of five to nine listed signed whole or decimal values.",
+  ],
+  [
+    "median-halves-iqr",
+    "Calculate exact interquartile range for five to nine listed values under the stated median-of-halves convention.",
+  ],
+])
+  signedDataSkill.facets.push({
+    id: `signed-data-summaries.${id}`,
+    description,
+    status: "implemented",
+  });

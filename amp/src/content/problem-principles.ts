@@ -1,4 +1,5 @@
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
+import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
 import { percentChangePrinciples } from "./percent-change-lessons";
 import { inequalityPrinciples } from "./inequality-lessons";
 import { linearSystemPrinciples } from "./linear-system-lessons";
@@ -9,6 +10,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
   ...integerExponentPrinciples,
+  ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...polynomialPrinciples,
   ...percentChangePrinciples,
