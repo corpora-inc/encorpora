@@ -251,11 +251,7 @@ export function expressionToTex(source: string): string | null {
           "fraction",
           right.end,
         );
-        left = node(
-          factorPrefix + factor.tex,
-          "fraction",
-          right.end,
-        );
+        left = node(factorPrefix + factor.tex, "fraction", right.end);
       } else {
         const symbol =
           operator === "implicit"
@@ -331,7 +327,9 @@ export function segmentPrintText(text: string): PrintSegment[] {
       /□|\b(?:mm|cm|dm|km|mg|kg|ml|hz|ft|yd|mi|oz|lb)\s*[+−-]/i.test(source) ||
       (/[A-Za-z][+−-]\d/.test(source) && expressionToTex(source) === null) ||
       /\b(?:of|Row|Day)\s+\d+\s*(?:[+−-]|=)/i.test(source) ||
-      /\b(?:\d+|[A-Z])-\d+|\b\d+(?:st|nd|rd|th|s)\b|\bTerm\s+\d+\s*=/i.test(source)
+      /\b(?:\d+|[A-Z])-\d+|\b\d+(?:st|nd|rd|th|s)\b|\bTerm\s+\d+\s*=/i.test(
+        source,
+      )
     ) {
       plain(source);
       return;
@@ -384,8 +382,7 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const converted = expressionToTex(tex);
     const isTex = match[1] !== undefined || /\\[A-Za-z]+/.test(tex);
     const explicit =
-      isTex ||
-      (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
+      isTex || (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
     if (!explicit) {
       // A currency marker must not consume the opening delimiter of later TeX.
       explicitPattern.lastIndex = match.index + 1;
