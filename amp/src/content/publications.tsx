@@ -1,3 +1,5 @@
+import { percentChangeWorksheet } from "./percent-change-worksheets";
+import { percentChangeTemplates } from "../math/percent-change-practice";
 import { inequalityWorksheet } from "./inequality-worksheets";
 import { inequalityTemplates } from "../math/inequality-practice";
 import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
@@ -17,12 +19,14 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    inequalityTemplates.some((t) => t.id === id)
-      ? inequalityWorksheet(id, lesson.id, edition)
-      : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
-        Array.from({ length: 12 }, (_, i) =>
-          generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
-        )),
+    percentChangeTemplates.some((t) => t.id === id)
+      ? percentChangeWorksheet(id, lesson.id, edition)
+      : inequalityTemplates.some((t) => t.id === id)
+        ? inequalityWorksheet(id, lesson.id, edition)
+        : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
+          Array.from({ length: 12 }, (_, i) =>
+            generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
+          )),
   );
   const kindLabel =
     kind === "lesson"

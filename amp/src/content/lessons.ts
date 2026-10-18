@@ -1,3 +1,4 @@
+import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
@@ -23,6 +24,8 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | "thirds-and-fourths"
+      | "percent-change-bars"
+      | "percent-change-reverse"
       | "inequality-half-lines"
       | "right-triangle-orientation"
       | "pythagorean-rearrangement";
@@ -497,6 +500,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...percentChangeLessons,
   ...inequalityLessons,
   ...baseLessons,
   ...extendedLessons,

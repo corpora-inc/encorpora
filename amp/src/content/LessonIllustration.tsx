@@ -1,3 +1,4 @@
+import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import {
   RightTriangleOrientation,
@@ -12,6 +13,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "percent-change-bars" || kind === "percent-change-reverse")
+    return (
+      <PercentChangeIllustration reverse={kind === "percent-change-reverse"} />
+    );
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;

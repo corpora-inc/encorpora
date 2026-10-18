@@ -1,3 +1,4 @@
+import { percentChangePrinciples } from "./percent-change-lessons";
 import { inequalityPrinciples } from "./inequality-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
@@ -7,6 +8,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...polynomialPrinciples,
+  ...percentChangePrinciples,
   ...inequalityPrinciples,
   // Counting, place value, early operations
   "count-objects":

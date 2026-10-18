@@ -433,7 +433,7 @@ distribution-plots|6|data|Interpret dot plots histograms and box plots|line-plot
 variability|6|data|Describe spread shape outliers and appropriate summaries|distribution-plots|6.SP.B.5
 rational-unit-rates|7|ratio|Calculate unit rates involving fractional quantities|unit-rates,fraction-division|7.RP.A.1
 proportional-relationships|7|ratio|Identify and represent proportional relationships|ratio-tables,dependent-variables|7.RP.A.2
-percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages|7.RP.A.3
+percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3
 signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1
 signed-multiplication|7|number|Multiply and divide signed rational numbers|signed-addition,fraction-division|7.NS.A.2
 rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
@@ -1316,4 +1316,32 @@ for (const [id, description] of [
     id: `linear-inequalities.${id}`,
     description,
     status: "implemented",
+  });
+
+// These numeric tasks cover selected single-change applications, not all percent reasoning.
+const percentChangeSkill = skills.find((s) => s.id === "percent-change")!;
+percentChangeSkill.alignments.push({
+  standardId: "SAT.data",
+  facet:
+    "Calculate relative percentage changes, changed quantities and original quantities using change multipliers.",
+  basis: "editorial",
+});
+for (const [suffix, description] of [
+  [
+    "relative-change",
+    "Calculate an exact increase or decrease relative to a positive original quantity, including percentage-valued shares.",
+  ],
+  [
+    "changed-quantity",
+    "Calculate the quantity resulting from one percentage increase or decrease.",
+  ],
+  [
+    "original-quantity",
+    "Recover an original quantity from a final quantity and a nonzero percentage-change multiplier.",
+  ],
+])
+  percentChangeSkill.facets.push({
+    id: `percent-change.${suffix}`,
+    description: description!,
+    status: "planned",
   });
