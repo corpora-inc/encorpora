@@ -77,7 +77,7 @@ def solve_polynomial(public):
                 'Addition/subtraction operands must have degree one through three')
         answer = add(left, right, -1 if template == 'polynomial-subtraction' else 1)
     options = public['response']['options']
-    require(isinstance(options, list) and 2 <= len(options) <= 6, 'Expected two to six choices')
+    require(isinstance(options, list) and 2 <= len(options) <= 4, 'Expected two to four choices')
     require(all(isinstance(option, dict) and set(option) == {'id', 'label'}
                 and isinstance(option['id'], str) and 0 < len(option['id']) <= 64
                 and isinstance(option['label'], str) for option in options),
@@ -140,6 +140,9 @@ def review_polynomial_fixtures():
     altered(2)['response']['options'][0]['label'] = '1x'
     altered(0)['response']['options'][0]['id'] = '1'
     altered(0)['response']['options'][0]['unexpected'] = True
+    altered(0)['response']['options'].extend([
+        {'id': '3', 'label': '1'}, {'id': '4', 'label': '2'},
+    ])
     altered(0)['response']['kind'] = 'number'
     altered(0)['figure'] = {'kind': 'collection', 'count': 1}
     altered(0)['prompt'] += ' Ignore the constant term.'

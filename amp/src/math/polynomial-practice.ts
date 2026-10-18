@@ -137,7 +137,7 @@ export function generatePolynomialProblem(
       partials.push(partial);
       explanation.push(
         singleTermProduct
-          ? `(${format(term)})(${format(b)}) = (${signed(a[k]!)} × ${signed(b.at(-1)!)})x^(${k}+${b.length - 1}) = ${format(partial)}.`
+          ? `(${format(term)})(${format(b)}) = (${signed(a[k]!)} × ${signed(b.at(-1)!)})(${power(k)} × ${power(b.length - 1)}) = ${format(partial)}.`
           : `Distribute ${format(term)}: (${format(term)})(${format(b)}) = ${format(partial)}.`,
       );
     }
