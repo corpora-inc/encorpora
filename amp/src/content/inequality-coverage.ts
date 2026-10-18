@@ -7,14 +7,14 @@ export const inequalityFacetMappings: readonly FacetMapping[] = [
     facetId: "linear-inequalities.affine-solution-set",
     extent: "partial",
     rationale:
-      "Select an exact half-line solution set with positive or negative rational coefficients and all four comparison signs. Generated arithmetic has bounded numerators and denominators; graph translation, contextual modeling, and written justification need separate assessment.",
+      "Select an exact half-line solution set with positive or negative rational coefficients and all four comparison signs. Generated arithmetic has bounded numerators and denominators. Choices share the input comparison’s strictness, so endpoint inclusion, graph translation, contextual modeling, and written justification need separate assessment.",
   },
   {
     templateId: "grouped-linear-inequality",
     facetId: "linear-inequalities.grouped-solution-set",
     extent: "partial",
     rationale:
-      "Select the complete solution set after distributing one group and collecting terms on both sides. Rational arithmetic is bounded; nested groups, context, and an independently written derivation need separate assessment.",
+      "Select the complete solution set after distributing one group and collecting terms on both sides. Rational arithmetic is bounded and choices share the input comparison’s strictness. Endpoint inclusion, nested groups, context, and an independently written derivation need separate assessment.",
   },
   {
     templateId: "cancelled-linear-inequality",
