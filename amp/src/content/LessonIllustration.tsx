@@ -1,3 +1,4 @@
+import { FactoringIllustration } from "./FactoringIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
@@ -15,6 +16,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
+  if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
+  if (kind === "factoring-nonmonic")
+    return <FactoringIllustration kind="nonmonic" />;
   if (kind === "descriptive-median")
     return <DescriptiveStatisticsIllustration kind="median" />;
   if (kind === "descriptive-range")

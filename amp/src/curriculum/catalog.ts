@@ -481,7 +481,7 @@ piecewise-functions|algebra-1|functions|Interpret piecewise and absolute-value f
 arithmetic-sequences|algebra-1|functions|Translate arithmetic sequences between recursive and explicit rules|related-patterns,linear-models|HSF
 geometric-sequences|algebra-1|functions|Translate geometric sequences between recursive and explicit rules|exponent-laws|HSF
 polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math
-factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic|HSA,SAT.advanced-math
+factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic,gcf-lcm|HSA,SAT.advanced-math
 quadratic-equations|algebra-1|algebra|Solve quadratic equations and check their real solutions|factor-quadratics,approximate-roots|HSA,SAT.advanced-math
 complete-square|algebra-1|algebra|Rewrite quadratics by completing the square|quadratic-equations|HSA,SAT.advanced-math
 quadratic-formula|algebra-1|algebra|Use the quadratic formula and interpret the discriminant|complete-square|HSA,SAT.advanced-math
@@ -1388,6 +1388,28 @@ for (const [id, description] of [
 ])
   signedDataSkill.facets.push({
     id: `signed-data-summaries.${id}`,
+    description,
+    status: "implemented",
+  });
+
+// Narrow integer-factor tasks do not assess every polynomial factorization method.
+const factoringSkill = skills.find((s) => s.id === "factor-quadratics")!;
+for (const [id, description] of [
+  [
+    "monomial-gcf",
+    "Extract the positive greatest common monomial factor from a bounded integer polynomial of degree one through three.",
+  ],
+  [
+    "monic-integer-factors",
+    "Factor bounded monic quadratics with nonzero constant terms into integer linear factors.",
+  ],
+  [
+    "nonmonic-integer-factors",
+    "Factor bounded nonmonic quadratics into primitive integer linear factors while retaining signed numerical content.",
+  ],
+])
+  factoringSkill.facets.push({
+    id: `factor-quadratics.${id}`,
     description,
     status: "implemented",
   });

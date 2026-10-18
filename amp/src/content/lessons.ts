@@ -1,3 +1,4 @@
+import { factoringLessons } from "./factoring-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
@@ -25,6 +26,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "factoring-gcf"
+      | "factoring-monic"
+      | "factoring-nonmonic"
       | "descriptive-median"
       | "descriptive-range"
       | "descriptive-iqr"
@@ -504,6 +508,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...factoringLessons,
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,

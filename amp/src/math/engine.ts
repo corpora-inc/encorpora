@@ -1,4 +1,8 @@
 import {
+  factoringTemplates,
+  generateFactoringProblem,
+} from "./factoring-practice";
+import {
   descriptiveStatisticsTemplates,
   generateDescriptiveStatisticsProblem,
 } from "./descriptive-statistics-practice";
@@ -172,6 +176,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...factoringTemplates,
   ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
@@ -297,6 +302,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...factoringTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
@@ -324,6 +330,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (factoringTemplates.some((t) => t.id === templateId))
+    return generateFactoringProblem(templateId, seed);
   if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))

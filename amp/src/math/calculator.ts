@@ -12,6 +12,9 @@ const COMPUTATION_STRANDS = new Set([
 const COMPUTATION_TEMPLATES = new Set([
   "integer-power",
   "operation-order",
+  "greatest-monomial-factor",
+  "monic-quadratic-factorization",
+  "nonmonic-quadratic-factorization",
   "median-data",
   "range-data",
   "interquartile-range-data",
