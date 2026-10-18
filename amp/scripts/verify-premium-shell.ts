@@ -139,7 +139,19 @@ try {
       page.setDefaultTimeout(12000);
       const faults: string[] = [],
         logs: string[] = [];
+      const authRequests: Record<string, number> = {};
+      page.on("request", (request) => {
+        const path = new URL(request.url()).pathname;
+        if (path.startsWith("/api/auth/"))
+          authRequests[path] = (authRequests[path] ?? 0) + 1;
+      });
       page.on("pageerror", (e) => faults.push(e.message));
+      page.on("response", (response) => {
+        if (response.status() === 429)
+          faults.push(
+            `Unexpected fixture rate limit: ${new URL(response.url()).pathname}`,
+          );
+      });
       page.on("console", (e) => {
         if (e.type() === "error") logs.push(e.text());
       });
@@ -200,6 +212,7 @@ try {
           throw e;
         });
       assert.ok(page.url().endsWith("/practice"));
+      console.log("Signup through first problem auth requests", authRequests);
       await fits(page);
       await contrast(
         page,
@@ -506,7 +519,12 @@ try {
         path: `${shots}/consent-unavailable-${width}-${theme}.png`,
       });
       assert.deepEqual(faults, []);
+      console.log("Complete viewport fixture auth requests", authRequests);
       await context.close();
+      // Each synthetic parent/viewport gets its own Fastify request budget.
+      // Production auth limits remain enabled throughout every individual flow.
+      await app.close();
+      app = await startServer();
     }
   console.log(
     `Premium shell: real parent sign-up → learner → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; ${process.argv.includes("--smoke") ? "320px" : "4 widths"} × ${process.argv.includes("--dark-only") ? "dark theme" : "2 themes"} passed. Development consent is a test fixture, not purchase-consent acceptance.`,

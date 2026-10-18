@@ -20,7 +20,7 @@ import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
 import { LessonIllustration } from "../../content/LessonIllustration";
 import { nativeRuntime } from "../native-runtime";
-import { NativeGate, NativeFamily } from "../NativeGate";
+import { NativeFamily } from "../NativeGate";
 import { learningRequest, learningCatalog } from "../learning-transport";
 import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
@@ -122,13 +122,7 @@ addEventListener(
 const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) consumeInitialConsentChallenge();
 export function LegacyApp() {
-  return nativeRuntime ? (
-    <NativeGate>
-      <LegacyScreen />
-    </NativeGate>
-  ) : (
-    <LegacyScreen />
-  );
+  return <LegacyScreen />;
 }
 function LegacyScreen() {
   const route = useAppRoute();
@@ -211,6 +205,10 @@ function LegacyScreen() {
   const [trialImmersive, setTrialImmersive] = useState(false);
   const [trialToSave, setTrialToSave] = useState(storedTrial);
   const [trialName, setTrialName] = useState("");
+  const [adoptedTrial, setAdoptedTrial] = useState<{
+    identity: string;
+    id: string;
+  } | null>(null);
   // Outside immersive practice: home, lessons, progress and family are visible.
 
   const nativeFamilyReturn = useRef(false);
@@ -338,6 +336,8 @@ function LegacyScreen() {
 
     setConsentReturn(false);
     if (accountRef.current !== null) {
+      setAdoptedTrial(null);
+      setTrialToSave(storedTrial());
       clearPurchaseReturn();
       pendingPurchaseReturn.current = null;
     }
@@ -1360,16 +1360,24 @@ function LegacyScreen() {
             onSubmit={(event) => {
               event.preventDefault();
               void action(async () => {
-                const adopted = await api<{ id: string }>("/trials/adopt", {
-                  token: trialToSave,
-                  name: trialName.trim(),
-                });
+                const identity = accountRef.current!;
+                const adopted =
+                  adoptedTrial?.identity === identity
+                    ? adoptedTrial
+                    : await api<{ id: string }>("/trials/adopt", {
+                        token: trialToSave,
+                        name: trialName.trim(),
+                      });
+                setAdoptedTrial({ identity, id: adopted.id });
                 clearStoredTrial();
+                // Keep this view mounted until the saved learner is observable.
+                // A failed refresh retries the read, never the consumed adoption.
+                await loadFamily();
+                if (identity !== accountRef.current) return;
+                selectLearner(adopted.id);
                 setTrialToSave(null);
                 setTrialMode(false);
-                await loadFamily();
-                selectLearner(adopted.id);
-                // Next: choose how to pay (card or ESA).
+                setAdoptedTrial(null);
                 openPurchase("choose");
               });
             }}
@@ -1380,16 +1388,17 @@ function LegacyScreen() {
                 required
                 maxLength={60}
                 value={trialName}
+                disabled={busy || !!adoptedTrial}
                 onChange={(event) => setTrialName(event.target.value)}
               />
             </label>
             <button disabled={busy || !trialName.trim()}>
-              Save and continue
+              {adoptedTrial ? "Continue to plans" : "Save and continue"}
             </button>
             <button
               type="button"
               className="secondary"
-              disabled={busy}
+              disabled={busy || !!adoptedTrial}
               onClick={() => {
                 clearStoredTrial();
                 setTrialToSave(null);
