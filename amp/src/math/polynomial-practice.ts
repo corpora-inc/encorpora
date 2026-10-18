@@ -233,7 +233,7 @@ export function generatePolynomialProblem(
       a.filter(Boolean).length === 1 && b.filter(Boolean).length === 1;
     hint = singleTermProduct
       ? "Multiply the signed coefficients. For powers with the same base, add the exponents."
-      : "Distribute every term of the first factor to every term of the second. Multiply coefficients, add exponents on powers of x, then combine like terms.";
+      : "Multiply each term of the first factor by every term of the second. Multiply coefficients, add exponents on powers of x, then combine like terms.";
     const partials: Polynomial[] = [];
     explanation = [
       singleTermProduct
@@ -260,7 +260,7 @@ export function generatePolynomialProblem(
       explanation.push(
         singleTermProduct
           ? `(${format(term)})(${format(b)}) = (${signed(a[k]!)} × ${signed(b.at(-1)!)})(${power(k)} × ${power(b.length - 1)}) = ${format(partial)}.`
-          : `Products with ${format(term)}: ${termProducts.join("; ")}.`,
+          : `${termProducts.length === 1 ? "Product" : "Products"} with ${format(term)}: ${termProducts.join("; ")}.`,
       );
       if (!singleTermProduct && termProducts.length > 1)
         explanation.push(`Add these term products: ${format(partial)}.`);
