@@ -1,3 +1,4 @@
+import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
@@ -24,6 +25,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "descriptive-median"
+      | "descriptive-range"
+      | "descriptive-iqr"
       | "thirds-and-fourths"
       | "percent-change-bars"
       | "percent-change-reverse"
@@ -500,6 +504,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
