@@ -19,7 +19,6 @@ function q(n: number, d = 1): Q {
 const add = (a: Q, b: Q) => q(a.n * b.d + b.n * a.d, a.d * b.d);
 const sub = (a: Q, b: Q) => q(a.n * b.d - b.n * a.d, a.d * b.d);
 const mul = (a: Q, b: Q) => q(a.n * b.n, a.d * b.d);
-const div = (a: Q, b: Q) => q(a.n * b.d, a.d * b.n);
 const eq = (a: Q, b: Q) => a.n === b.n && a.d === b.d;
 const num = (a: Q) =>
   `${a.n < 0 ? "−" : ""}${Math.abs(a.n)}${a.d === 1 ? "" : `/${a.d}`}`;
@@ -429,7 +428,7 @@ function generateCase(
   }
   const options = shuffle(candidates, r).map((candidate, i) => ({
     ...candidate,
-    id: `option-${i + 1}`,
+    id: `option-${String.fromCharCode(97 + i)}`,
   }));
   return {
     tags,
