@@ -4,7 +4,7 @@ The hosted API requires PostgreSQL, a configured OIDC issuer, and a same-origin 
 
 ## Database connection budget
 
-`AMP_DATABASE_POOL_MAX` sets the maximum connections for each API or job process. It must be an integer of at least 2; omitting it defaults to 10. Invalid values stop startup. Set it explicitly in hosted deployments, for example `AMP_DATABASE_POOL_MAX=3`.
+`AMP_DATABASE_POOL_MAX` sets the maximum connections for each API or job process. It must be an integer of at least 2. When omitted, it defaults to 3 if `NODE_ENV=production` or `AMP_AUTH_MODE` is `accounts` or `oidc`; otherwise it defaults to 10 for local development. An explicit value overrides either default. Invalid values stop startup. Set it explicitly in hosted deployments, for example `AMP_DATABASE_POOL_MAX=3`.
 
 The API shares one pool across learning, accounts, family exports, consent, billing, funding and payment evidence. A single API process configured with `3` therefore holds at most three database connections in total. Migrations, imports, consent delivery, billing workers and retention jobs each run with their own pool and read the same setting. They are additional processes: budget their connections alongside every API replica and rolling-deployment overlap. This setting is not a deployment-wide cap; enforce a database role connection limit as an additional boundary when sharing a database server.
 
