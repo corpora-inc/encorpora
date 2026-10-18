@@ -175,8 +175,8 @@ export function CircleMeasurementIllustration({
         )}
         <circle cx={cx} cy={cy} r="3" fill="currentColor" />
         <text
-          x={cx - (kind === "circle-sector" ? 25 : 17)}
-          y={cy + (kind === "circle-sector" ? 70 : 23)}
+          x={cx - (angle === null ? 20 : kind === "circle-sector" ? 25 : 17)}
+          y={cy + (angle === null ? -12 : kind === "circle-sector" ? 70 : 23)}
           textAnchor="middle"
           style={{ ...textStyle, fontSize: 23 }}
         >
