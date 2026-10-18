@@ -24,6 +24,7 @@ jobs:
     name: changes
     runs-on: ubuntu-latest
     outputs:
+      corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
       amp_native: ${{ steps.filter.outputs.amp_native }}
       aha_app: ${{ steps.filter.outputs.aha_app }}
@@ -94,6 +95,8 @@ jobs:
           # so its tests must run on any change to it (or to this workflow, or
           # to the workflow that invokes it).
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
+          # The static site imports AMP figures, content, audit and theme at build time.
+          set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/theme\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
           set_output amp '^(amp/|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
@@ -1425,6 +1428,36 @@ jobs:
       - run: cargo clippy --locked --manifest-path session-core/Cargo.toml --all-targets -- -D warnings
       - run: cargo test --locked --manifest-path session-core/Cargo.toml
 
+  corpora-site:
+    name: Corpora site
+    needs: changes
+    if: needs.changes.outputs.corpora_site == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            amp/package-lock.json
+            corpora-site/package-lock.json
+      - run: npm ci --no-audit --no-fund
+        working-directory: amp
+      - run: npm ci --no-audit --no-fund
+        working-directory: corpora-site
+      - run: npx playwright install --with-deps chromium
+        working-directory: corpora-site
+      - run: npm test && npm run tsc && npm run build && npm run test:ui
+        working-directory: corpora-site
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: corpora-site-proof
+          path: corpora-site/artifacts/
+          retention-days: 7
+
   ci-gate:
     name: ci-gate
     needs:
@@ -1435,6 +1468,7 @@ jobs:
         aha-app,
         aha-native,
         ci-scripts,
+        corpora-site,
         corpan-app,
         dja,
         dynawalla-app,
