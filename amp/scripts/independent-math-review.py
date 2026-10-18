@@ -4,6 +4,7 @@ import json
 import math
 import re
 import sys
+from pathlib import Path
 from collections import Counter
 from fractions import Fraction
 from elementary_math_oracle import ELEMENTARY, solve_elementary
@@ -14,6 +15,8 @@ from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_mea
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
+from print_math_oracle import review_print_math
+from print_pdf_oracle import review_print_pdfs
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -282,6 +285,12 @@ def review(stream):
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
+    publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
+    if publications.exists():
+        print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
+    else:
+        print('Print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 
