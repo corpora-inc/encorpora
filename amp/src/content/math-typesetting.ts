@@ -329,6 +329,8 @@ export function segmentPrintText(text: string): PrintSegment[] {
     // a unary sign, or a range/ordinal/label into arithmetic.
     if (
       /□|\b(?:mm|cm|dm|km|mg|kg|ml|hz|ft|yd|mi|oz|lb)\s*[+−-]/i.test(source) ||
+      (/[A-Za-z][+−-]\d/.test(source) && expressionToTex(source) === null) ||
+      /\b(?:of|Row|Day)\s+\d+\s*(?:[+−-]|=)/i.test(source) ||
       /\b(?:\d+|[A-Z])-\d+|\b\d+(?:st|nd|rd|th|s)\b|\bTerm\s+\d+\s*=/i.test(source)
     ) {
       plain(source);
