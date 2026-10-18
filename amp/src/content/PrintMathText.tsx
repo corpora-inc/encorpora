@@ -2,6 +2,8 @@ import React from "react";
 import katex from "katex";
 import { segmentPrintText } from "./math-typesetting";
 
+export const printMathStyles = `.print-math{display:inline-block;break-inside:avoid}p>.print-math:has(.mfrac,.sqrt){padding:.2em 0}.print-math .katex{font-size:1.08em}`;
+
 /** Static, accessible mathematics. The original source is the only fallback. */
 export function PrintMathText({ text }: { text: string }) {
   return (
