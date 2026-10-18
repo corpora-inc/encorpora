@@ -2,6 +2,7 @@ import { teachingMaterial } from "./trial-material";
 import {
   readTrialProgress,
   recordTrialEvent,
+  recordTrialMilestones,
   TEACHING_ATTEMPTS,
   type TrialProgress,
 } from "./trial-progress";
@@ -441,11 +442,7 @@ export class PgTransaction implements LearnerTransaction {
         JSON.stringify(outcome),
       ],
     );
-    const progress = await this.trialProgress();
-    if (progress?.phase === "lesson")
-      await recordTrialEvent(this.db, this.learnerId, "placement_done");
-    if (progress?.phase === "complete")
-      await recordTrialEvent(this.db, this.learnerId, "teaching_done");
+    await recordTrialMilestones(this.db, this.learnerId);
   }
   async trialPlacementProblems() {
     const result = await this.db.query(
@@ -479,6 +476,11 @@ export class PgTransaction implements LearnerTransaction {
     const progress = await this.trialProgress();
     if (!progress || progress.phase === "placement")
       throw new ApiError(409, "Finish placement first");
+    if (progress.phase === "unavailable")
+      throw new ApiError(
+        409,
+        "No fresh teaching sequence is available at this level",
+      );
     if (progress.phase !== "lesson") return;
     const material = await this.trialMaterial();
     if (!material) throw new ApiError(409, "This lesson is unavailable");

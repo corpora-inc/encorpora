@@ -94,7 +94,12 @@ try {
       await page.locator("#answer").fill("1");
       await page.locator("#answer").press("Enter");
     }
-    assert.equal((await attempt).status(), 200);
+    const attemptResponse = await attempt;
+    assert.equal(
+      attemptResponse.status(),
+      200,
+      `Placement answer ${answered + 1}: ${await attemptResponse.text()}`,
+    );
     answered++;
     // Every outcome shows the feedback overlay; its Next button advances.
     const next = page.locator(".next-action");
@@ -122,6 +127,35 @@ try {
   await page
     .getByRole("button", { name: "Try four problems", exact: true })
     .waitFor();
+  // A genuinely exhausted family still offers a clear way to save placement.
+  // The database regression covers exhaustion; here verify its rendered state.
+  await page.route("**/trial-progress", async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      json: {
+        ...(await response.json()),
+        phase: "unavailable",
+        templateId: null,
+        lesson: null,
+      },
+    });
+  });
+  await page.reload();
+  await page
+    .getByRole("button", {
+      name: "Save placement in a parent account",
+      exact: true,
+    })
+    .waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Try four problems", exact: true })
+      .count(),
+    0,
+  );
+  await fits(page, "unavailable");
+  await page.unroute("**/trial-progress");
   // Reloading the lesson retains server-owned phase and selected family.
   await page.reload();
   await page

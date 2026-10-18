@@ -13,7 +13,7 @@ import { TRIAL_ATTEMPTS } from "./trials";
 
 export const TEACHING_ATTEMPTS = 4;
 export type TrialProgress = {
-  phase: "placement" | "lesson" | "teaching" | "complete";
+  phase: "placement" | "lesson" | "teaching" | "complete" | "unavailable";
   templateId: string | null;
   placementAnswered: number;
   totals: { independent: number; assisted: number };
@@ -97,7 +97,16 @@ export async function readTrialProgress(
       targetGrade(
         strandEstimate(estimate, nodes.get(template.skillId)?.strand ?? "math"),
       );
-    const reachable = templates.filter((template) => distance(template) <= 1);
+    // Below the earliest supported grade, introductory material is the only
+    // meaningful next step. Never lift other strands to their own higher floor.
+    const earliestGrade = Math.min(
+      ...templates.map((template) => templateGrade(template, nodes)),
+    );
+    const reachable = templates.filter(
+      (template) =>
+        distance(template) <= 1 ||
+        templateGrade(template, nodes) === earliestGrade,
+    );
     const candidates = [
       ...new Set([
         ...[...placement]
@@ -124,16 +133,39 @@ export async function readTrialProgress(
         ),
     );
     if (!selected)
-      throw Object.assign(
-        new Error("No trial lesson is available at this level"),
-        { statusCode: 409 },
-      );
+      return {
+        ...trialProgress(
+          attempts.rows.map((row) => row.outcome),
+          null,
+          false,
+        ),
+        phase: "unavailable",
+        templateId: null,
+        before: { correct: 0, answered: 0 },
+      };
   }
   return trialProgress(
     attempts.rows.map((row) => row.outcome),
     selected ?? null,
     !!trial.rows[0].teaching_started_at,
   );
+}
+
+/** Persisted-answer milestones must never depend on lesson availability. */
+export async function recordTrialMilestones(db: PoolClient, learnerId: string) {
+  const result = await db.query(
+    `SELECT t.teaching_started_at,(SELECT count(*)::int FROM amp_attempts a WHERE a.learner_id=t.learner_id) AS answered
+    FROM amp_trials t WHERE t.learner_id=$1 AND t.adopted_at IS NULL AND t.expires_at>now()`,
+    [learnerId],
+  );
+  const trial = result.rows[0];
+  if (trial?.answered === TRIAL_ATTEMPTS)
+    await recordTrialEvent(db, learnerId, "placement_done");
+  if (
+    trial?.teaching_started_at &&
+    trial.answered === TRIAL_ATTEMPTS + TEACHING_ATTEMPTS
+  )
+    await recordTrialEvent(db, learnerId, "teaching_done");
 }
 
 /** Only a random analytics id and a fixed event name enter the event table. */

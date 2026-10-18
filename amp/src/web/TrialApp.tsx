@@ -252,26 +252,43 @@ export function TrialApp(props: Props) {
           </p>
         </details>
         {error && <p role="alert">{error}</p>}
-        {progress && progress.phase !== "placement" && (
-          <TrialTeaching
-            progress={progress}
-            frontier={frontier!}
-            catalog={props.catalog}
-            busy={busy}
-            signIn={props.signIn}
-            begin={() =>
-              void run(async () => {
-                await api(`/learners/${learnerId}/trial-teaching`, {});
-                setProgress(
-                  await api<TrialView>(`/learners/${learnerId}/trial-progress`),
-                );
-                setFinished(false);
-                await show(await request(learnerId!));
-              })
-            }
-            printable={() => api(`/learners/${learnerId}/trial-printable`)}
-          />
+        {progress?.phase === "unavailable" && (
+          <section className="trial-teaching">
+            <h2>Placement complete</h2>
+            <p>
+              AMP does not have four fresh teaching questions available at this
+              level. The map shows the answers recorded so far; no teaching
+              result has been inferred.
+            </p>
+            <button className="go-button" onClick={props.signIn}>
+              Save placement in a parent account
+            </button>
+          </section>
         )}
+        {progress &&
+          progress.phase !== "placement" &&
+          progress.phase !== "unavailable" && (
+            <TrialTeaching
+              progress={progress}
+              frontier={frontier!}
+              catalog={props.catalog}
+              busy={busy}
+              signIn={props.signIn}
+              begin={() =>
+                void run(async () => {
+                  await api(`/learners/${learnerId}/trial-teaching`, {});
+                  setProgress(
+                    await api<TrialView>(
+                      `/learners/${learnerId}/trial-progress`,
+                    ),
+                  );
+                  setFinished(false);
+                  await show(await request(learnerId!));
+                })
+              }
+              printable={() => api(`/learners/${learnerId}/trial-printable`)}
+            />
+          )}
       </main>
     );
   if (!token || !learnerId)
