@@ -49,6 +49,11 @@ const isIdentifier = (word: string) =>
   (!nonVariables.has(word.toLowerCase()) &&
     (/^[A-Za-z]{1,2}$/.test(word) || /^[A-Z]{3}$/.test(word)));
 const numberPattern = /^(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\.[0-9]+)?/;
+// A space after the coordinate comma distinguishes a pair from (1,234).
+// Keep this grammar narrow: numeric coordinates or the names x and y.
+const coordinatePattern = "[+−-]?(?:[0-9]+(?:\\.[0-9]+)?(?:/[0-9]+)?|[xy])";
+const pairPattern = `\\(\\s*(${coordinatePattern})\\s*,\\s+(${coordinatePattern})\\s*\\)`;
+const completePair = new RegExp(`^${pairPattern}$`);
 type Token = { value: string; start: number; end: number };
 type Expression = {
   tex: string;
@@ -91,6 +96,14 @@ function tokens(source: string): Token[] | null {
  */
 export function expressionToTex(source: string): string | null {
   if (!source.trim() || source.length > 1024) return null;
+  const pair = completePair.exec(source.trim());
+  if (pair) {
+    const first = expressionToTex(pair[1]!),
+      second = expressionToTex(pair[2]!);
+    return first !== null && second !== null
+      ? `\\left(${first},\\,${second}\\right)`
+      : null;
+  }
   const input = tokens(source) ?? [];
   if (!input.length || input.length > 256) return null;
   let index = 0,
@@ -357,9 +370,21 @@ export function segmentPrintText(text: string): PrintSegment[] {
     };
     const pieces =
       source.match(
-        /\$[+-]?(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\.[0-9]+)?(?:\/[A-Za-z]+)?|(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\.[0-9]+)?|[A-Za-z]+|[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺]+|[₀₁₂₃₄₅₆₇₈₉ₙ]+|\s+|./gu,
+        new RegExp(
+          `${pairPattern}|\\$[+-]?(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\\.[0-9]+)?(?:\\/[A-Za-z]+)?|(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\\.[0-9]+)?|[A-Za-z]+|[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺]+|[₀₁₂₃₄₅₆₇₈₉ₙ]+|\\s+|.`,
+          "gu",
+        ),
       ) ?? [];
     for (const piece of pieces) {
+      if (completePair.test(piece)) {
+        flush();
+        segments.push({
+          kind: "math",
+          source: piece,
+          tex: expressionToTex(piece)!,
+        });
+        continue;
+      }
       const eligible =
         /^\s+$/.test(piece) ||
         /^[0-9]/.test(piece) ||
