@@ -63,7 +63,15 @@ function combineSteps(a: Polynomial, b: Polynomial): string[] {
   for (let k = Math.max(a.length, b.length) - 1; k >= 0; k--) {
     const c = a[k] ?? 0,
       d = b[k] ?? 0;
-    if (!c || !d) continue;
+    if (!c && !d) continue;
+    if (!c || !d) {
+      const term = Array<number>(k + 1).fill(0);
+      term[k] = c + d;
+      steps.push(
+        `Keep ${format(term)}; the other polynomial has no ${k ? `${power(k)} term` : "constant term"}.`,
+      );
+      continue;
+    }
     steps.push(
       `${k ? `Coefficient of ${power(k)}` : "Constant term"}: ${signed(c)} + ${signed(d)} = ${String(c + d).replace("-", "−")}.${c + d === 0 ? " These terms cancel." : ""}`,
     );
@@ -135,11 +143,39 @@ export function generatePolynomialProblem(
       term[k] = a[k]!;
       const partial = product(term, b);
       partials.push(partial);
+      const termProducts: string[] = [];
+      for (let j = b.length - 1; j >= 0; j--) {
+        if (!b[j]) continue;
+        const other = Array<number>(j + 1).fill(0);
+        other[j] = b[j]!;
+        const contribution = Array<number>(correct.length).fill(0);
+        contribution[k + j] = a[k]! * b[j]!;
+        termProducts.push(
+          `(${format(term)})(${format(other)}) = ${format(contribution)}`,
+        );
+        for (const multiplier of [1, 2]) {
+          const wrong = combine(correct, contribution, -multiplier);
+          candidates.push({
+            value: wrong,
+            feedback: `${multiplier === 1 ? "Include" : "Check the sign of"} the product (${format(term)})(${format(other)}). Every pair of terms contributes to the result.`,
+          });
+        }
+        if (k + j > 0) {
+          const wrong = combine(correct, contribution, -1);
+          wrong[k + j - 1]! += contribution[k + j]!;
+          candidates.push({
+            value: wrong,
+            feedback: `When multiplying (${format(term)})(${format(other)}), add the exponents on x. Do not lower the resulting power.`,
+          });
+        }
+      }
       explanation.push(
         singleTermProduct
           ? `(${format(term)})(${format(b)}) = (${signed(a[k]!)} × ${signed(b.at(-1)!)})(${power(k)} × ${power(b.length - 1)}) = ${format(partial)}.`
-          : `Distribute ${format(term)}: (${format(term)})(${format(b)}) = ${format(partial)}.`,
+          : `Products with ${format(term)}: ${termProducts.join("; ")}.`,
       );
+      if (!singleTermProduct && termProducts.length > 1)
+        explanation.push(`Add these term products: ${format(partial)}.`);
     }
     if (partials.length === 2) {
       explanation.push(
@@ -151,14 +187,6 @@ export function generatePolynomialProblem(
       value: partials[0]!,
       feedback:
         "Distribute every nonzero term of the first factor, then add the partial products.",
-    });
-    const ends = Array<number>(correct.length).fill(0);
-    ends[0] = a[0]! * b[0]!;
-    ends[ends.length - 1] = a.at(-1)! * b.at(-1)!;
-    candidates.push({
-      value: ends,
-      feedback:
-        "Multiplying only the first and last terms omits products. Distribute every term to every term.",
     });
     candidates.push({
       value: combine(a, b),
@@ -200,24 +228,76 @@ export function generatePolynomialProblem(
   explanation.push(
     `${label === "0" ? "All terms cancel, so the" : "The"} ${multiply ? "product" : subtract ? "difference" : "sum"} is ${label}.`,
   );
-  // Single-coefficient variations require comparing complete expressions.
-  for (let k = correct.length - 1; k >= 0; k--) {
-    for (const change of [1, -1, 2]) {
-      const wrong = [...correct];
-      wrong[k]! += change;
-      candidates.push({
-        value: wrong,
-        feedback: `${k ? `Check the coefficient of ${power(k)}` : "Check the constant term"}. ${multiply ? "Include every product contributing to that power." : "Combine only like terms, keeping their signs."}`,
-      });
+  if (!multiply) {
+    const signedB = b.map((c) => (subtract ? -c : c));
+    for (let k = 0; k < correct.length; k++) {
+      const c = a[k] ?? 0,
+        d = signedB[k] ?? 0;
+      const location = k
+        ? `the coefficient of ${power(k)}`
+        : "the constant term";
+      for (const term of [c, d]) {
+        if (!term) continue;
+        for (const multiplier of [1, 2]) {
+          const wrong = [...correct];
+          wrong[k]! -= multiplier * term;
+          candidates.push({
+            value: wrong,
+            feedback: `Check ${location}. ${multiplier === 1 ? "Include each given term" : "Keep each term's sign"} when combining like terms.`,
+          });
+        }
+      }
+      if (c && d) {
+        const wrong = [...correct];
+        wrong[k] = c * d;
+        candidates.push({
+          value: wrong,
+          feedback: `Add the signed coefficients of like terms; multiplying them does not give ${location} in the sum.`,
+        });
+      }
+      if (correct[k] && k > 0) {
+        const wrong = [...correct];
+        wrong[k - 1]! += wrong[k]!;
+        wrong[k] = 0;
+        candidates.push({
+          value: wrong,
+          feedback:
+            "Only terms with the same power of x are like terms. Combining coefficients must not change their power.",
+        });
+      }
     }
   }
-  const options = [{ label, feedback: "" }];
+  // Sample distinct mathematical errors; no fixed ±1 sequence or privileged
+  // coefficient can reveal the key from the options alone.
+  const pool: { label: string; feedback: string }[] = [];
   for (const candidate of candidates) {
     const candidateLabel = format(candidate.value);
-    if (!options.some((o) => o.label === candidateLabel))
-      options.push({ label: candidateLabel, feedback: candidate.feedback });
-    if (options.length === 4) break;
+    if (
+      candidateLabel !== label &&
+      !pool.some((o) => o.label === candidateLabel)
+    )
+      pool.push({ label: candidateLabel, feedback: candidate.feedback });
   }
+  // Very sparse operands can have fewer than three distinct modelled errors.
+  while (pool.length < 3) {
+    const wrong = [...correct],
+      k = r(0, wrong.length - 1);
+    wrong[k]! += nz(7);
+    const candidateLabel = format(wrong);
+    if (
+      candidateLabel !== label &&
+      !pool.some((o) => o.label === candidateLabel)
+    )
+      pool.push({
+        label: candidateLabel,
+        feedback: `${k ? `Check the coefficient of ${power(k)}` : "Check the constant term"}. Follow the indicated operation and keep the signs.`,
+      });
+  }
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = r(0, i);
+    [pool[i], pool[j]] = [pool[j]!, pool[i]!];
+  }
+  const options = [{ label, feedback: "" }, ...pool.slice(0, 3)];
   for (let i = options.length - 1; i > 0; i--) {
     const j = r(0, i);
     [options[i], options[j]] = [options[j]!, options[i]!];
