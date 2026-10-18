@@ -18,6 +18,7 @@ export function AbsoluteValueIllustration({
       style={{ margin: "1.2rem 0", breakInside: "avoid" }}
     >
       <svg
+        data-lesson-illustration="absolute-value"
         viewBox={`0 0 400 ${shifted ? 190 : 325}`}
         role="img"
         aria-label={
