@@ -1,3 +1,4 @@
+import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
@@ -31,6 +32,10 @@ export interface Lesson {
       | "descriptive-range"
       | "descriptive-iqr"
       | "thirds-and-fourths"
+      | "circle-circumference"
+      | "circle-area"
+      | "circle-arc"
+      | "circle-sector"
       | "percent-change-bars"
       | "percent-change-reverse"
       | "inequality-half-lines"
@@ -511,6 +516,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

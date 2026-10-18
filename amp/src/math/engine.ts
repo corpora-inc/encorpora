@@ -1,4 +1,8 @@
 import {
+  circleMeasurementTemplates,
+  generateCircleMeasurementProblem,
+} from "./circle-measurement-practice";
+import {
   integerExponentTemplates,
   generateIntegerExponentProblem,
 } from "./integer-exponent-practice";
@@ -184,6 +188,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...circleMeasurementTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -302,6 +307,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...circleMeasurementTemplates,
     ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
@@ -330,6 +336,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (circleMeasurementTemplates.some((t) => t.id === templateId))
+    return generateCircleMeasurementProblem(templateId, seed);
   if (integerExponentTemplates.some((t) => t.id === templateId))
     return generateIntegerExponentProblem(templateId, seed);
   if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))

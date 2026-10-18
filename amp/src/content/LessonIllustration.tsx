@@ -1,3 +1,4 @@
+import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
@@ -16,6 +17,13 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "circle-circumference" ||
+    kind === "circle-area" ||
+    kind === "circle-arc" ||
+    kind === "circle-sector"
+  )
+    return <CircleMeasurementIllustration kind={kind} />;
   if (kind === "integer-exponent-ladder")
     return <IntegerExponentIllustration />;
   if (kind === "descriptive-median")

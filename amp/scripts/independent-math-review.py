@@ -23,6 +23,7 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
@@ -40,7 +41,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM | INTEGER_EXPONENT | PERCENT_CHANGE | DESCRIPTIVE_STATISTICS
+SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -52,6 +53,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in CIRCLE:
+        return solve_circle(public)
     if template in INTEGER_EXPONENT:
         return solve_integer_exponent(public)
     if template in DESCRIPTIVE_STATISTICS:
@@ -260,6 +263,7 @@ def solve(public):
 
 
 def review(stream):
+    review_circle_fixtures()
     review_integer_exponent_fixtures()
     review_descriptive_statistics_fixtures()
     review_statistics_content_mutations()
@@ -332,6 +336,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
     print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)
