@@ -180,9 +180,22 @@ export const missingLegLesson: Lesson = {
         "For example, 1 meter and 30 centimeters must be converted to 100 centimeters and 30 centimeters before their numerical lengths are squared.",
       ],
     },
-    { ...triangleDefinitions, illustration: "right-triangle-orientation" },
-    squareDefinitions,
-    relationship,
+    {
+      ...triangleDefinitions,
+      paragraphs: triangleDefinitions.paragraphs.slice(0, 2),
+      illustration: "right-triangle-orientation",
+    },
+    {
+      ...squareDefinitions,
+      paragraphs: squareDefinitions.paragraphs.slice(0, 2),
+    },
+    {
+      title: "The hypotenuse square is the whole",
+      paragraphs: [
+        "In every right triangle, the square on the hypotenuse has the same area as the two leg squares together. This is the Pythagorean theorem. A theorem is a mathematical statement established by reasoning.",
+        "When the hypotenuse is known, its square gives the whole area. The known leg square supplies one part. Subtract that part from the whole to find the area of the missing leg square.",
+      ],
+    },
     {
       title: "Remove the known part",
       paragraphs: [
@@ -208,7 +221,7 @@ export const missingLegLesson: Lesson = {
       "Calculate 5² = 25 and 13² = 169: x² + 25 = 169.",
       "Subtract 25 from both sides: x² = 169 − 25 = 144.",
       "Take the positive square root: x = √144 = 12, since 12 × 12 = 144.",
-      "Check: 12² + 5² = 144 + 25 = 169 = 13². The leg 12 cm is shorter than the hypotenuse 13 cm.",
+      "Check: 12² + 5² = 144 + 25 = 169 = 13². The leg 12 cm is shorter than the hypotenuse 13 cm.",
     ],
     answer: "12",
     answerUnit: "centimeters",
