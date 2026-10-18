@@ -817,6 +817,11 @@ def check_system_worksheet_coverage(template, problems):
     return tags
 
 
+def review_worksheet_position_counts(counts):
+    require(set(counts) == LINEAR_SYSTEM and all(len(counts[t]) >= 2 for t in LINEAR_SYSTEM),
+            'Worksheet answer-position counts must vary between editions')
+
+
 def check_linear_system_content(records):
     import hashlib
     import json
@@ -857,6 +862,7 @@ def check_linear_system_content(records):
             require(outcome=='infinite' and worked['answer']==COUNT_LABELS[2], 'Incorrect standalone count example')
     figures=review_system_figures(header['lessonHtml'])
     seen=set(); patterns={t:set() for t in LINEAR_SYSTEM}; first={t:set() for t in LINEAR_SYSTEM}
+    position_counts={t:set() for t in LINEAR_SYSTEM}
     worksheet_review=LinearSystemReview()
     total=0
     for sheet in records[1:]:
@@ -902,15 +908,31 @@ def check_linear_system_content(records):
         require(hashes==sorted(hashes),'Worksheet order depends on selection requirements rather than its independent hash')
         check_system_worksheet_coverage(template,problems)
         patterns[template].add(tuple(classifications))
+        counts=Counter(problem['answer'] for problem in problems)
+        position_counts[template].add(tuple(counts[f'option-{chr(97+i)}'] for i in range(4 if template==PAIR else 3)))
     require(len(seen)==32,'Missing system worksheet editions')
     require(all(len(patterns[t])>=4 and len(first[t])>=2 for t in LINEAR_SYSTEM),'System worksheet classification/first-answer order is too repetitive')
+    review_worksheet_position_counts(position_counts)
     return {'worksheets':len(seen),'problems':total,'figures':figures,'partialFacetBindings':2,'mismatches':0,
             'worksheetChoiceChecks':{t:worksheet_review.choice_report(t) for t in sorted(LINEAR_SYSTEM)},
+            'distinctAnswerPositionCounts':{t:len(position_counts[t]) for t in sorted(LINEAR_SYSTEM)},
             'distinctClassificationOrders':{t:len(patterns[t]) for t in sorted(LINEAR_SYSTEM)}}
 
 
 def review_linear_system_content_mutations(records):
     rejected = 0
+    variable_counts={PAIR:{(3,3,3,3),(2,3,3,4)},COUNT:{(4,4,4),(3,4,5)}}
+    review_worksheet_position_counts(variable_counts)
+    for template in LINEAR_SYSTEM:
+        fixed=copy.deepcopy(variable_counts)
+        fixed[template]={next(iter(fixed[template]))}
+        try:
+            review_worksheet_position_counts(fixed)
+        except ValueError as error:
+            require('answer-position counts must vary' in str(error), 'Position-quota mutation failed for unrelated reason')
+            rejected += 1
+        else:
+            raise ValueError('Fixed answer-position quotas escaped independent review')
 
     def reject(mutator, expected):
         nonlocal rejected
