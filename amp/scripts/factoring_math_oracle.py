@@ -204,7 +204,7 @@ def review_equalities(text):
 def review_explanation(problem):
     public = problem['public']
     key = solve_factoring(public)
-    require(problem['answer'] == key, 'Incorrect factoring answer')
+    require(problem['answer'] == key, 'Mismatch: incorrect factoring answer')
     target = read_polynomial(public['prompt'].split(': ', 1)[1][:-1])
     steps = problem['explanation']
     require(isinstance(steps, list) and len(steps) >= 3
