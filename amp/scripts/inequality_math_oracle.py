@@ -416,6 +416,267 @@ def review_inequality_corpus_fixtures():
     return {'calibratedCorpusCases': sum(map(len, corpus.values())), 'rejectedCorpusMutations': len(invalid)}
 
 
+def check_worksheet_order_variation(patterns, first_answers):
+    for template in INEQUALITY:
+        # Collisions are valid. These thresholds reject fixed requirement ordering,
+        # not ordinary repeat patterns (six all/six none has only924 patterns).
+        require(len(patterns[template]) >= 4, 'Worksheet classification order is too repetitive')
+        require(len(first_answers[template]) >= 2, 'First worksheet answer is constant across editions')
+
+
+def check_inequality_content(records):
+    """Solve selected public problems; author tags and answers never guide coverage."""
+    import hashlib
+    import json
+    require(records and records[0].get('kind') == 'inequality-content-manifest',
+            'Missing inequality content manifest')
+    header = records[0]
+    require(header.get('editions') == 16, 'Require sixteen worksheet editions')
+    expected_facets = {
+        'affine-linear-inequality': 'linear-inequalities.affine-solution-set',
+        'grouped-linear-inequality': 'linear-inequalities.grouped-solution-set',
+        'cancelled-linear-inequality': 'linear-inequalities.cancellation-solution-set',
+    }
+    templates = header['templates']
+    require(len(templates) == 3 and {item['id'] for item in templates} == INEQUALITY and
+            all(item['skillId'] == 'linear-inequalities' for item in templates),
+            'Incorrect inequality template/skill inventory')
+    for name in ('declaredMappings', 'registeredMappings'):
+        mappings = header[name]
+        require(len(mappings) == 3 and {m['templateId'] for m in mappings} == INEQUALITY and
+                all(m['facetId'] == expected_facets[m['templateId']] and
+                    m['extent'] == 'partial' and isinstance(m['rationale'], str) and
+                    m['rationale'].strip() for m in mappings),
+                f'Expected exactly three partial inequality bindings in {name}')
+    require(header['coverageValid'] is True, 'Default coverage manifest is invalid')
+    bindings = header['defaultBindings']
+    require(len(bindings) == 3 and {b['templateId'] for b in bindings} == INEQUALITY and
+            all(b['facetId'] == expected_facets[b['templateId']] and
+                b['skillId'] == 'linear-inequalities' and b['independentlyReviewed'] is False
+                for b in bindings), 'Default facet registry must expose the three partial task bindings')
+
+    require(header['emptyOverrideValid'] is True and header['emptyOverrideBindings'] == bindings,
+            'Empty production-queue mapping input must preserve default bindings')
+    require(header['isolatedBindings'] == [], 'Custom template inventories must not inherit unrelated defaults')
+
+    seen, patterns, first_answers = set(), {t: set() for t in INEQUALITY}, {t: set() for t in INEQUALITY}
+    total = 0
+    for sheet in records[1:]:
+        require(sheet.get('kind') == 'inequality-worksheet', 'Unexpected inequality content record')
+        template, edition = sheet['templateId'], sheet['edition']
+        require(template in INEQUALITY and edition in {str(i) for i in range(1, 17)},
+                'Worksheet outside declared inventory')
+        identity = template, edition
+        require(identity not in seen, 'Duplicate inequality worksheet')
+        seen.add(identity)
+        require(sheet['lessonId'] == template, 'Incorrect standalone lesson association')
+        problems, replayed = sheet['problems'], sheet['replayed']
+        require(len(problems) == len(replayed) == 12 and problems == replayed,
+                'Selected worksheet must replay to twelve unchanged runtime problems')
+        require(len({p['public']['prompt'] for p in problems}) == 12 and
+                len({p['public']['seed'] for p in problems}) == 12,
+                'Worksheet needs twelve distinct givens and seeds')
+        ordered_hashes = []
+        derived = []
+        workbook, solutions = sheet['workbook'], sheet['solutions']
+        require(len(workbook) == len(solutions) == 12, 'Workbook/key exercise count mismatch')
+        for index, problem in enumerate(problems):
+            require(set(problem) == {'public', 'answer', 'hint', 'explanation', 'choiceFeedback'},
+                    'Unexpected generated worksheet fields')
+            public = problem['public']
+            require(set(public) == {'id', 'templateId', 'templateVersion', 'seed', 'skillId', 'prompt', 'response'},
+                    'Private or unexpected fields in public worksheet payload')
+            require(public['templateId'] == template and public['skillId'] == 'linear-inequalities' and
+                    public['templateVersion'] == 1 and re.fullmatch(r'[a-f0-9]{64}', public['id']) and
+                    re.fullmatch(rf'print:{re.escape(template)}:{edition}:(0|[1-9][0-9]*)', public['seed']),
+                    'Invalid worksheet problem identity')
+            require(set(public['response']) == {'kind', 'label', 'options'}, 'Unexpected public response fields')
+            answer = solve_inequality(public)
+            require(problem['answer'] == answer, 'Worksheet answer differs from independent solution')
+            values = parsed(public)
+            derived.append(values)
+            options = public['response']['options']
+            labels = [option['label'] for option in options]
+            correct_label = next(option['label'] for option in options if option['id'] == answer)
+            for rendered in (workbook[index], solutions[index]):
+                require(rendered['prompt'] == public['prompt'] and rendered['choices'] == labels,
+                        'Workbook/key prompt or choice order differs from selected problem')
+                require(rendered['hiddenAnswerMarkers'] == 0, 'Hidden answer markers in rendered exercise')
+            require(workbook[index]['answer'] is None and workbook[index]['steps'] == [],
+                    'Worksheet contains an answer or worked steps')
+            require(solutions[index]['answer'] == f'Answer: {correct_label}' and
+                    solutions[index]['steps'] == problem['explanation'],
+                    'Worked key answer or steps differ from the selected problem')
+            material = ['inequality-sheet-order', template, sheet['lessonId'], edition, public['seed']]
+            ordered_hashes.append(hashlib.sha256(json.dumps(material, separators=(',', ':')).encode()).hexdigest())
+        require(ordered_hashes == sorted(ordered_hashes), 'Worksheet must use independent edition-derived order')
+        require(Counter(op for _, op, _, _ in derived) == dict.fromkeys(OPS, 3),
+                'Worksheet needs three examples of every comparison operator')
+        if template == 'cancelled-linear-inequality':
+            for op in OPS:
+                classes = ['equal' if left[1] == right[1] else 'true' if result == ('all',) else 'false'
+                           for left, sign, right, result in derived if sign == op]
+                require(sorted(classes) == ['equal', 'false', 'true'],
+                        'Each operator needs equal constants, unequal true, and unequal false examples')
+            require(sum(result == ('all',) for _, _, _, result in derived) == 6,
+                    'Cancellation worksheet must balance all-real/no-real outcomes')
+            signature = tuple(result[0] for _, _, _, result in derived)
+        else:
+            require(any(result[1] == 0 for _, _, _, result in derived), 'Worksheet is missing a zero boundary')
+            require(any(result[1].denominator > 1 for _, _, _, result in derived),
+                    'Worksheet is missing a fractional boundary')
+            require({left[0] > right[0] for left, _, right, _ in derived} == {True, False},
+                    'Worksheet must exercise both coefficient signs')
+            if template == 'affine-linear-inequality':
+                require(any(left[0].denominator > 1 for left, _, _, _ in derived),
+                        'Affine worksheet must include a fractional coefficient')
+            signature = tuple((op, left[0] > right[0], result[1] == 0)
+                              for left, op, right, result in derived)
+        patterns[template].add(signature)
+        first_answers[template].add(derived[0][3])
+        total += len(problems)
+    require(seen == {(template, str(edition)) for template in INEQUALITY for edition in range(1, 17)},
+            'Missing inequality worksheet editions or families')
+    check_worksheet_order_variation(patterns, first_answers)
+    return {'worksheets': len(seen), 'problems': total, 'defaultFacetBindings': 3,
+            'distinctClassificationOrders': {t: len(patterns[t]) for t in sorted(INEQUALITY)},
+            'mismatches': 0}
+
+
+def review_inequality_content_mutations(records):
+    """Start with independently checked evidence; prove known regressions fail."""
+    mutations = []
+    def changed():
+        value = copy.deepcopy(records)
+        mutations.append(value)
+        return value
+    changed().pop()
+    changed().append(copy.deepcopy(records[1]))
+    changed()[0]['registeredMappings'] = []
+    changed()[0]['defaultBindings'] = []
+    changed()[0]['emptyOverrideBindings'] = []
+    changed()[0]['isolatedBindings'] = copy.deepcopy(records[0]['defaultBindings'])
+    changed()[0]['declaredMappings'][0]['extent'] = 'complete'
+    changed()[0]['defaultBindings'][0]['skillId'] = 'simple-inequalities'
+    changed()[0]['defaultBindings'][0]['facetId'] = 'linear-inequalities.unknown'
+    changed()[1]['problems'][0]['public']['tags'] = ['zero']
+    changed()[1]['workbook'][0]['answer'] = 'Answer: x < 0'
+    changed()[1]['workbook'][0]['hiddenAnswerMarkers'] = 1
+    changed()[1]['solutions'][0]['answer'] = 'Answer: no such set'
+    value = changed()
+    value[1]['workbook'][0], value[1]['workbook'][1] = value[1]['workbook'][1], value[1]['workbook'][0]
+    value = changed()
+    value[1]['problems'][0] = copy.deepcopy(value[1]['problems'][1])
+    value[1]['replayed'] = copy.deepcopy(value[1]['problems'])
+    # Reversing all parallel arrays preserves answer-key correspondence but must
+    # still fail the independently recomputed ordering contract.
+    value = changed()
+    for field in ('problems', 'replayed', 'workbook', 'solutions'):
+        value[1][field].reverse()
+    expected_failures = {}
+    def replace_prompt(sheet, index, public):
+        problem = sheet['problems'][index]
+        problem['public'] = public
+        problem['answer'] = solve_inequality(public)
+        sheet['replayed'][index] = copy.deepcopy(problem)
+        labels = [option['label'] for option in public['response']['options']]
+        answer = next(option['label'] for option in public['response']['options'] if option['id'] == problem['answer'])
+        for kind in ('workbook', 'solutions'):
+            sheet[kind][index]['prompt'] = public['prompt']
+            sheet[kind][index]['choices'] = labels
+        sheet['solutions'][index]['answer'] = f'Answer: {answer}'
+
+    def linear(a, b):
+        if a == 0:
+            return str(b)
+        term = ('x' if a == 1 else '-x' if a == -1 else f'{a}x'
+                if a.denominator == 1 else f'{a} × x')
+        return term + (f" {'+' if b > 0 else '-'} {abs(b)}" if b else '')
+
+    value = changed()
+    sheet = next(row for row in value[1:] if row['templateId'] == 'affine-linear-inequality')
+    for index, problem in enumerate(sheet['problems']):
+        left, op, right, result = parsed(problem['public'])
+        if result[1] != 0:
+            continue
+        original = problem['public']
+        left_text = re.fullmatch(r'Solve for real x: (.+) ([<≤>≥]) (.+)\.', original['prompt'])[1]
+        for replacement in (Fraction(i) for i in range(-12, 13) if i):
+            public = copy.deepcopy(original)
+            total = left[1] + (left[0]-right[0])*replacement
+            public['prompt'] = f'Solve for real x: {left_text} {op} {linear(right[0], total)}.'
+            for option in public['response']['options']:
+                sign, boundary = solution(option['label'])
+                if boundary == 0:
+                    option['label'] = f'x {sign} {replacement}'
+            try:
+                solve_inequality(public)
+            except ValueError:
+                continue
+            replace_prompt(sheet, index, public)
+            break
+        else:
+            raise ValueError('Could not construct missing-zero mutation')
+    expected_failures[id(value)] = 'Worksheet is missing a zero boundary'
+
+    value = changed()
+    sheet = next(row for row in value[1:] if row['templateId'] == 'cancelled-linear-inequality')
+    for index, problem in enumerate(sheet['problems']):
+        left, op, right, result = parsed(problem['public'])
+        if left[1] != right[1] or op not in ('<', '>'):
+            continue
+        public = copy.deepcopy(problem['public'])
+        left_text = re.fullmatch(r'Solve for real x: (.+) ([<≤>≥]) (.+)\.', public['prompt'])[1]
+        total = left[1] + (-1 if op == '<' else 1)
+        public['prompt'] = f'Solve for real x: {left_text} {op} {linear(right[0], total)}.'
+        replace_prompt(sheet, index, public)
+    expected_failures[id(value)] = 'Each operator needs equal constants'
+
+    rejected = 0
+    for mutated in mutations:
+        try:
+            check_inequality_content(mutated)
+        except (ValueError, KeyError, TypeError, ZeroDivisionError) as error:
+            expected = expected_failures.get(id(mutated))
+            require(expected is None or expected in str(error),
+                    f'Content mutation failed for an unrelated reason: {error}')
+            rejected += 1
+        else:
+            raise ValueError('Inequality content oracle accepted a known regression')
+    # Four distinct patterns among sixteen editions explicitly permits repeated
+    # patterns; uniqueness of every shuffle is not a mathematical requirement.
+    patterns = {template: {(i,) for i in range(4)} for template in INEQUALITY}
+    first_answers = {template: {('all',), ('none',)} for template in INEQUALITY}
+    check_worksheet_order_variation(patterns, first_answers)
+    for kind in ('pattern', 'first-answer'):
+        bad_patterns, bad_first = copy.deepcopy(patterns), copy.deepcopy(first_answers)
+        if kind == 'pattern':
+            bad_patterns['cancelled-linear-inequality'] = {(0,)}
+        else:
+            bad_first['affine-linear-inequality'] = {('<', Fraction(0))}
+        try:
+            check_worksheet_order_variation(bad_patterns, bad_first)
+        except ValueError:
+            rejected += 1
+        else:
+            raise ValueError('Fixed worksheet answer order escaped review')
+    return rejected
+
+
+def review_inequality_content():
+    import json
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    result = subprocess.run(['node', '--import', 'tsx', str(root/'scripts/inequality-content-oracle.ts')],
+                            cwd=root, capture_output=True, text=True, timeout=180)
+    require(result.returncode == 0, f'Inequality content export failed: {result.stderr[:2000]}')
+    records = [json.loads(line) for line in result.stdout.splitlines()]
+    report = check_inequality_content(records)
+    report['rejectedMutations'] = review_inequality_content_mutations(records)
+    return report
+
+
 if __name__ == '__main__':
     import json
     print(json.dumps(review_inequality_fixtures()))
