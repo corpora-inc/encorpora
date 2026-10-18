@@ -51,6 +51,7 @@ export interface RefundFact {
   status: "pending" | "requires_action" | "succeeded" | "failed" | "canceled";
 }
 export interface FinancialObservation {
+  paymentMethod?: string;
   invoiceReason: "subscription_create" | "subscription_cycle";
   preTaxMinor: number;
   tax: TaxAmount[];
@@ -62,6 +63,7 @@ export type FinancialResult =
   | { kind: "verified"; observation: FinancialObservation }
   | { kind: "review"; reason: string; creditNoteId?: string };
 export interface PaymentBaseline {
+  paymentMethod?: string;
   invoiceReason: "subscription_create" | "subscription_cycle";
   invoiceId: string;
   chargeId: string;

@@ -304,7 +304,12 @@ export class StripeGateway {
     const paidAt = invoice.status_transitions.paid_at;
     requireEvidence(paidAt, "invoice_paid_time_missing");
     return {
-      financial: normalizeFinancialEvidence(invoice, charge.id, refunds.data),
+      financial: normalizeFinancialEvidence(
+        invoice,
+        charge.id,
+        refunds.data,
+        charge.payment_method_details?.type,
+      ),
       invoiceId,
       subscriptionId,
       customerId: id(invoice.customer)!,

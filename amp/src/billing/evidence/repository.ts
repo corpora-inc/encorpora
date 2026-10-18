@@ -108,6 +108,12 @@ export async function recordFinancialEvidence(
   if (financial.kind === "verified") {
     const observation = financial.observation;
     baseline = {
+      // Existing immutable baselines never gain newly observed fields on replay.
+      ...(!stored.baseline || stored.baseline.paymentMethod !== undefined
+        ? observation.paymentMethod
+          ? { paymentMethod: observation.paymentMethod }
+          : {}
+        : {}),
       invoiceReason: observation.invoiceReason,
       invoiceId: payment.invoiceId,
       chargeId: payment.chargeId,
@@ -170,6 +176,14 @@ export async function recordFinancialEvidence(
       "UPDATE amp_payment_records SET baseline=$2,baseline_sha256=$3 WHERE id=$1",
       [stored.id, JSON.stringify(baseline), evidenceDigest(baseline)],
     );
+  if (financial.kind === "verified") {
+    // Method is identity metadata captured in the baseline, not a refund event.
+    // Exclude it from observation storage/hash so upgrades do not invent an
+    // empty refund adjustment when a legacy invoice is replayed.
+    const observation = { ...financial.observation };
+    delete observation.paymentMethod;
+    financial = { kind: "verified", observation };
+  }
   const digest = evidenceDigest(financial);
   if (last?.observation_sha256 !== digest)
     await client.query(
