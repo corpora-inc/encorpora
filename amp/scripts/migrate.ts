@@ -1,8 +1,8 @@
-import { Pool } from "pg";
+import { createDatabasePool } from "../src/server/database.js";
 import { readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 export async function migrate(connectionString: string) {
-  const pool = new Pool({ connectionString });
+  const pool = createDatabasePool({ connectionString });
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
