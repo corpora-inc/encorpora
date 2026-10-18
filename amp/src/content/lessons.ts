@@ -1,3 +1,4 @@
+import { rightTriangleLessons } from "./right-triangle-lessons";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
@@ -390,48 +391,6 @@ export const baseLessons: Lesson[] = [
       "Use five small piles of counters. Redistribute them to model a fair share, then discuss why a fractional mean can be meaningful even when counters are indivisible.",
   },
   {
-    id: "pythagorean-theorem",
-    title: "Find the long side of a right triangle",
-    summary: "The squares of the two legs sum to the square of the hypotenuse.",
-    templateIds: ["right-triangle"],
-    objectives: [
-      "Identify the hypotenuse opposite the right angle.",
-      "Use a² + b² = c² and take a positive square root.",
-    ],
-    sections: [
-      {
-        title: "Identify the right angle",
-        paragraphs: [
-          "The legs meet at the right angle. The hypotenuse is opposite that angle and is the longest side.",
-          "For a right triangle with legs a and b and hypotenuse c, a² + b² = c². The theorem applies to right triangles; it is not a formula for arbitrary triangles.",
-        ],
-      },
-      {
-        title: "Square, add, then take the root",
-        paragraphs: [
-          "Square each leg length separately and add the squares. This gives the square of the hypotenuse, not its length.",
-          "Take the positive square root because a side length is positive. Check that the result is larger than either leg and smaller than their sum.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt:
-        "A right triangle has perpendicular legs 6 cm and 8 cm. Find the hypotenuse length in centimeters.",
-      steps: [
-        "c² = 6² + 8² = 36 + 64 = 100.",
-        "c = √100 = 10.",
-        "10 is greater than either leg and less than 6 + 8.",
-      ],
-      answer: "10",
-    },
-    pitfalls: [
-      "Squaring a sum is different from adding two squares.",
-      "The hypotenuse is not one of the sides that form the right angle.",
-    ],
-    parentGuide:
-      "Sketch the right angle clearly, label the legs, and ask the learner to identify the hypotenuse before calculating.",
-  },
-  {
     id: "quadratics",
     title: "Read a quadratic minimum",
     summary: "Vertex form makes the extreme value of a quadratic visible.",
@@ -558,6 +517,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
   ...baseLessons,

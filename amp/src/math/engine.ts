@@ -1,4 +1,8 @@
 import {
+  rightTriangleTemplates,
+  generateRightTriangleProblem,
+} from "./right-triangle-practice";
+import {
   polynomialTemplates,
   generatePolynomialProblem,
 } from "./polynomial-practice";
@@ -152,6 +156,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...rightTriangleTemplates,
   ...measurementTemplates,
   ...baseTemplates,
   ...extendedTemplates,
@@ -291,6 +296,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (rightTriangleTemplates.some((t) => t.id === templateId))
+    return generateRightTriangleProblem(templateId, seed);
   if (polynomialTemplates.some((t) => t.id === templateId))
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
