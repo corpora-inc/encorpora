@@ -26,7 +26,7 @@ export function publicationHtml(
   kind: PublicationKind,
   edition = "1",
 ) {
-  const problems = lesson.templateIds.flatMap((id) =>
+  const fallbackWorksheet = (id: string) =>
     circleMeasurementTemplates.some((t) => t.id === id)
       ? circleMeasurementWorksheet(id, lesson.id, edition)
       : descriptiveStatisticsTemplates.some((t) => t.id === id)
@@ -37,12 +37,14 @@ export function publicationHtml(
             ? linearSystemWorksheet(id, lesson.id, edition)
             : inequalityTemplates.some((t) => t.id === id)
               ? inequalityWorksheet(id, lesson.id, edition)
-              : absoluteValueTemplates.some((t) => t.id === id)
-                ? absoluteValueWorksheet(id, lesson.id, edition)
-                : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
-                  Array.from({ length: 12 }, (_, i) =>
-                    generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
-                  )),
+              : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
+                Array.from({ length: 12 }, (_, i) =>
+                  generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
+                ));
+  const problems = lesson.templateIds.flatMap((id) =>
+    absoluteValueTemplates.some((template) => template.id === id)
+      ? absoluteValueWorksheet(id, lesson.id, edition)
+      : fallbackWorksheet(id),
   );
   const kindLabel =
     kind === "lesson"
