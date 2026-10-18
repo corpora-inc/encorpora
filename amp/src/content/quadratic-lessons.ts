@@ -28,8 +28,8 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
       ["root", "A value of x that makes the polynomial equal zero."],
     ],
     method: [
-      "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out x.",
-      "Otherwise, find integers m and n with m + n = b and mn = ac. Replace bx by mx + nx and factor by grouping.",
+      "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out x. Otherwise, divide out any common numerical factor.",
+      "Otherwise, divide out any common numerical factor, then find integers m and n with m + n = b and mn = ac. Replace bx by mx + nx and factor by grouping.",
       "Check the factors by multiplication. Set each factor equal to zero and solve both equations.",
       "List each distinct root once and check it in the original equation.",
     ],
@@ -65,7 +65,7 @@ export const quadraticPrinciples: Record<string, string> = {
   "quadratic-factored-solutions":
     "Zero-product property: a product of real numbers is zero if and only if at least one factor is zero.",
   "quadratic-expanded-solutions":
-    "The distributive property preserves a polynomial when factoring; the zero-product property then gives its roots.",
+    "Factoring uses the distributive property in reverse: the factored form equals the original polynomial. The zero-product property then gives its roots.",
   "quadratic-real-solution-count":
     "In the quadratic formula x = (−b ± √(b² − 4ac))/(2a), the discriminant controls whether the square-root branches are real and distinct.",
 };
@@ -127,8 +127,8 @@ export const quadraticLessons: Lesson[] = [
       {
         title: "Find and check the factors",
         paragraphs: [
-          "A quadratic polynomial has highest power x². In ax² + bx + c, the numbers a, b, and c are coefficients, with a ≠ 0. Factoring rewrites the polynomial as a product without changing its value.",
-          "If c = 0, factor out x: ax² + bx = x(ax + b). Otherwise, find integers m and n whose sum is b and whose product is ac. Replace bx by mx + nx, then factor the two pairs of terms by grouping.",
+          "A quadratic polynomial has highest power x². In ax² + bx + c, the numbers a, b, and c are coefficients, with a ≠ 0. The term bx is the linear term; c is the constant term. Factoring rewrites the polynomial as a product without changing its value.",
+          "If c = 0, factor out x: ax² + bx = x(ax + b). Otherwise, divide out any common numerical factor, then find integers m and n whose sum is b and whose product is ac. Replace bx by mx + nx, then factor the two pairs of terms by grouping.",
         ],
       },
       {

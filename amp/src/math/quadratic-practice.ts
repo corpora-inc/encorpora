@@ -73,14 +73,21 @@ function polynomial(a: number, b: number, c: number) {
   }
   return terms.join("") || "0";
 }
+function gcd(a: number, b: number): number {
+  a = Math.abs(a);
+  b = Math.abs(b);
+  while (b) [a, b] = [b, a % b];
+  return a;
+}
+const minus = (text: string) => text.replace(/-(?=\d)/g, "−");
 function solveFactor(a: number, b: number): string {
   const equation = `${polynomial(0, a, b)} = 0`;
   if (b === 0)
     return a === 1
       ? "The factor x is zero exactly when x = 0."
       : `Divide both sides of ${equation} by (${a}): x = 0.`;
-  const operation = b < 0 ? `add ${-b}` : `subtract ${b}`;
-  return `In ${equation}, ${operation} on both sides${a === 1 ? "" : `, then divide both sides by (${a})`}: x = ${fraction(-b, a)}.`;
+  const operation = b < 0 ? `add ${-b} to` : `subtract ${b} from`;
+  return `In ${equation}, ${operation} both sides${a === 1 ? "" : `, then divide both sides by (${a})`}: x = ${fraction(-b, a)}.`;
 }
 
 type Root = { n: number; d: number };
@@ -154,28 +161,61 @@ export function generateQuadraticProblem(
     ];
     const correct = rootSet(roots);
     prompt = `Solve ${templateId === "quadratic-factored-solutions" ? `(${left})(${right})` : expanded} = 0. Choose the complete set of real solutions.`;
+    let la = a,
+      lb = b,
+      ra = c,
+      rb = d;
+    const factoring: string[] = [];
     hint =
-      templateId === "quadratic-factored-solutions"
-        ? "A product equals zero exactly when at least one factor equals zero. Solve each linear equation and keep each distinct solution."
-        : b * d === 0
-          ? "Factor out x, then set each factor equal to zero. Keep the solution from the factor x."
-          : `Find two integers with product ${a * c * b * d} and sum ${a * d + b * c}. Use them to split the linear term, then factor by grouping.`;
+      "A product equals zero exactly when at least one factor equals zero. Solve each linear equation and keep each distinct solution.";
+    if (templateId === "quadratic-expanded-solutions") {
+      const A = a * c,
+        B = a * d + b * c,
+        C = b * d;
+      if (C === 0) {
+        la = 1;
+        lb = 0;
+        ra = A;
+        rb = B;
+        hint =
+          "Factor out x, then set each factor equal to zero. Keep the solution from the factor x.";
+        factoring.push(
+          `Factor out x: ${expanded} = x(${polynomial(0, A, B)}) = 0.`,
+        );
+      } else {
+        // Remove numerical content, then extract greatest common factors from
+        // the two groups. The displayed method does not depend on hidden factors.
+        const common = Math.sign(A) * gcd(A, gcd(B, C));
+        const aa = A / common,
+          bb = B / common,
+          cc = C / common;
+        const m = (a * d) / common,
+          n = (b * c) / common;
+        la = gcd(aa, m);
+        ra = aa / la;
+        rb = m / la;
+        lb = n / ra;
+        const reduced = polynomial(aa, bb, cc);
+        const commonBinomial = polynomial(0, ra, rb);
+        hint = `${common === 1 ? "" : `Divide both sides by (${common}). `}Find two integers with product ${aa * cc} and sum ${bb}. Use them to ${bb === 0 ? "introduce opposite linear terms" : "split the linear term"}, then factor by grouping.`;
+        if (common !== 1)
+          factoring.push(
+            `Divide both sides by the nonzero common factor ${common}: ${reduced} = 0.`,
+          );
+        factoring.push(
+          `Use ${m} and ${n}: their sum is ${bb} and their product is ${aa * cc}, the leading coefficient times the constant term.`,
+          `${bb === 0 ? "Insert cancelling linear terms" : "Split the linear term"}: ${reduced} = (${polynomial(aa, m, 0)}) + (${polynomial(0, n, cc)}).`,
+          `Factor each group by the distributive property: ${polynomial(0, la, 0)}(${commonBinomial}) + (${lb})(${commonBinomial}) = (${polynomial(0, la, lb)})(${commonBinomial}) = 0.`,
+        );
+      }
+    }
+    const solvedLeft = polynomial(0, la, lb),
+      solvedRight = polynomial(0, ra, rb);
     explanation = [
-      ...(templateId === "quadratic-expanded-solutions"
-        ? b * d === 0
-          ? [
-              `Factor out x: ${expanded} = x(${polynomial(0, a * c, a * d + b * c)}).`,
-              `Factoring the remaining linear expression gives (${left})(${right}) = 0.`,
-            ]
-          : [
-              `To split the linear term, use ${a * d} and ${b * c}: their sum is ${a * d + b * c} and their product is ${a * c * b * d}, the product of the leading coefficient and constant term.`,
-              `Split the linear term: ${expanded} = ${polynomial(a * c, a * d, 0)} + (${polynomial(0, b * c, b * d)}).`,
-              `By the distributive property: ${polynomial(0, a, 0)}(${right}) + (${b})(${right}) = (${left})(${right}) = 0.`,
-            ]
-        : []),
-      `By the zero-product property, ${left} = 0${left === right ? "" : ` or ${right} = 0`}.`,
-      solveFactor(a, b),
-      ...(left === right ? [] : [solveFactor(c, d)]),
+      ...factoring,
+      `By the zero-product property, ${solvedLeft} = 0${solvedLeft === solvedRight ? "" : ` or ${solvedRight} = 0`}.`,
+      solveFactor(la, lb),
+      ...(solvedLeft === solvedRight ? [] : [solveFactor(ra, rb)]),
       `${correct}. ${fraction(-b, a) === fraction(-d, c) ? "Both factors give the same root, so list it once." : "Each root makes one factor zero; both belong in the solution set."}`,
     ];
     const options = [{ label: correct, feedback: "" }];
@@ -186,12 +226,12 @@ export function generateQuadraticProblem(
           i === index ? { n: root.n + root.d, d: root.d } : root,
         ),
         feedback:
-          "Check both listed values. One correct root is not enough: the choice must contain every root and no extra values.",
+          "Check every listed value. One correct root is not enough: the choice must contain every root and no extra values.",
       })),
       {
         roots: roots.map(({ n, d }) => ({ n: -n, d })),
         feedback:
-          "Solving ax + b = 0 requires subtracting b before dividing by a. Check the signs of both roots.",
+          "Solving ax + b = 0 requires subtracting b before dividing by a. Check the sign of each root.",
       },
       ...[1, -1, 2, -2].map((shift) => ({
         roots: roots.map(({ n, d }) => ({ n: n + shift * d, d })),
@@ -218,7 +258,7 @@ export function generateQuadraticProblem(
         const id = `option-${"abcd"[i]}`;
         if (option.label === correct) answer = id;
         else choiceFeedback![id] = option.feedback;
-        return { id, label: option.label };
+        return { id, label: minus(option.label) };
       }),
     };
   }
@@ -230,13 +270,13 @@ export function generateQuadraticProblem(
       templateId,
       templateVersion: 1,
       seed,
-      prompt,
+      prompt: minus(prompt),
       skillId: meta.skillId,
       response,
     },
     answer,
-    hint,
-    explanation,
+    hint: minus(hint),
+    explanation: explanation.map(minus),
     ...(choiceFeedback ? { choiceFeedback } : {}),
   };
 }
