@@ -224,6 +224,8 @@ export function expressionToTex(source: string): string | null {
 
   function product(): Expression {
     let left = signed();
+    let factorPrefix = "";
+    let factor = left;
     while (
       ["×", "*", "·", "÷", "/"].includes(peek() ?? "") ||
       startsAtom(peek())
@@ -241,13 +243,20 @@ export function expressionToTex(source: string): string | null {
       const right = signed();
       if (!explicit && right.kind === "number")
         throw new Error("Adjacent numbers need an operator");
-      if (operator === "/")
-        left = node(
-          `\\frac{${inside(left)}}{${inside(right)}}`,
+      if (operator === "/") {
+        // Keep each explicitly multiplied fraction as a visible factor. A
+        // division chain still associates left to right, including after ÷.
+        factor = node(
+          `\\frac{${inside(factor)}}{${inside(right)}}`,
           "fraction",
           right.end,
         );
-      else {
+        left = node(
+          factorPrefix + factor.tex,
+          "fraction",
+          right.end,
+        );
+      } else {
         const symbol =
           operator === "implicit"
             ? ""
@@ -256,7 +265,11 @@ export function expressionToTex(source: string): string | null {
               : operator === "·"
                 ? " \\cdot "
                 : " \\times ";
+        factorPrefix = ["×", "*", "·"].includes(operator)
+          ? left.tex + symbol
+          : "";
         left = node(left.tex + symbol + right.tex, "product", right.end);
+        factor = factorPrefix ? right : left;
       }
     }
     return left;
@@ -311,11 +324,23 @@ export function segmentPrintText(text: string): PrintSegment[] {
     else segments.push({ kind: "text", source });
   };
   function prose(source: string) {
+    // These prose operands and labels are outside the expression grammar. Keep
+    // their complete context rather than turning a trailing binary sign into
+    // a unary sign, or a range/ordinal/label into arithmetic.
+    if (
+      /□|\b(?:mm|cm|dm|km|mg|kg|ml|hz|ft|yd|mi|oz|lb)\s*[+−-]/i.test(source) ||
+      /\b(?:\d+|[A-Z])-\d+|\b\d+(?:st|nd|rd|th|s)\b|\bTerm\s+\d+\s*=/i.test(source)
+    ) {
+      plain(source);
+      return;
+    }
     let run = "";
     const flush = () => {
       if (!run) return;
       const candidate = run.trim();
-      const tex = expressionToTex(candidate);
+      const tex = /^[+−-]\s/.test(candidate)
+        ? null
+        : expressionToTex(candidate);
       // Single prose letters (notably the articles A/a) are not formula delimiters.
       const mathematical =
         /[=+−\-±×*·÷/^_<>≤≥≠√%⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ₀-₉ₙ]/.test(candidate) ||
@@ -354,17 +379,18 @@ export function segmentPrintText(text: string): PrintSegment[] {
   while ((match = explicitPattern.exec(text))) {
     const source = match[0],
       tex = match[1] ?? match[2]!;
+    const converted = expressionToTex(tex);
+    const isTex = match[1] !== undefined || /\\[A-Za-z]+/.test(tex);
     const explicit =
-      match[1] !== undefined ||
-      /\\[A-Za-z]+/.test(tex) ||
-      (expressionToTex(tex) !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
+      isTex ||
+      (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
     if (!explicit) {
       // A currency marker must not consume the opening delimiter of later TeX.
       explicitPattern.lastIndex = match.index + 1;
       continue;
     }
     prose(text.slice(previous, match.index));
-    segments.push({ kind: "math", source, tex });
+    segments.push({ kind: "math", source, tex: isTex ? tex : converted! });
     previous = match.index + source.length;
   }
   prose(text.slice(previous));
