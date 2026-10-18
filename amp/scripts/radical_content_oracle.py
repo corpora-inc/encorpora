@@ -30,12 +30,21 @@ def check_problem(problem):
     require(not any(key in public for key in ('answer', 'hint', 'explanation', 'choiceFeedback')),
             'Private grading content in public radical payload')
     answer = solve_radical(public)
+    target = public_target(public)
+    if target:
+        signature = lambda value: frozenset((r, c > 0) for r, c in value.items())
+        alternatives = [read_choice(o['label']) for o in public['response']['options'] if o['id'] != answer]
+        require(any(signature(value) == signature(target) for value in alternatives),
+                'Radical support/sign identifies answer without coefficient work')
     require(problem['answer'] == answer, 'Mismatch: incorrect radical answer')
     require(isinstance(problem.get('hint'), str) and problem['hint'].strip(), 'Missing radical hint')
     steps = problem.get('explanation')
     require(isinstance(steps, list) and len(steps) >= 2 and all(isinstance(s, str) and s.strip() for s in steps),
             'Missing explicit radical worked steps')
     checked = [value for step in steps for value in equalities(step)]
+    if any('Both simplified terms are whole numbers' in step for step in steps):
+        require(not any(c < 0 for value in checked for c in value.values()),
+                'Negative integers described as whole numbers')
     stated = [tex_value(source) for step in steps[-2:]
               for source in re.findall(r'\$([^$]+)\$', step) if '=' not in source]
     require(checked and public_target(public) in checked + stated,
@@ -131,7 +140,7 @@ def check_worksheet(record):
 
 
 class RadicalCorpus:
-    """Coverage and named answer-only cues; not a universal shortcut proof."""
+    """Coverage and named choice/prompt cues; not a universal shortcut proof."""
     def __init__(self):
         self.counts = Counter()
         self.variety = {template: set() for template in RADICAL_TYPES}
@@ -149,6 +158,14 @@ class RadicalCorpus:
                    'rational': [int(not v or set(v) == {1}) for v in values],
                    'fraction': [int(any(c.denominator > 1 for c in v.values())) for v in values]}
         guesses = {f'position-{i}': i for i in range(4)}
+        # Deliberately discard every coefficient magnitude: a learner should
+        # not identify the answer merely by reducing the prompt's radicands.
+        target = public_target(public)
+        support = lambda value: frozenset(value)
+        signed_support = lambda value: frozenset((r, c > 0) for r, c in value.items())
+        for name, signature in [('radical-support', support), ('signed-radical-support', signed_support)]:
+            matches = [i for i, value in enumerate(values) if signature(value) == signature(target)]
+            guesses['prompt-' + name] = matches[0] if target and len(matches) == 1 else None
         for name, metric in metrics.items():
             for label, extreme in [('minimum', min(metric)), ('maximum', max(metric))]:
                 winners = [i for i, value in enumerate(metric) if value == extreme]
@@ -167,9 +184,9 @@ class RadicalCorpus:
                 n = evidence['applications']
                 if n >= 64:
                     require(evidence['correct']/n <= .40,
-                            f'Known radical answer-only shortcut: {template}/{name}')
+                            f'Known radical choice shortcut: {template}/{name}')
         return {template: {'cases': self.counts[template], 'categories': sorted(self.variety[template]),
-                           'namedAnswerOnlyChecks': self.cues[template]} for template in sorted(RADICAL_TYPES)}
+                           'namedChoiceChecks': self.cues[template]} for template in sorted(RADICAL_TYPES)}
 
 
 FACETS = dict(zip(['simplify-square-root', 'combine-square-roots', 'multiply-square-roots',
@@ -395,6 +412,8 @@ def review_handwritten_content():
     bad = copy.deepcopy(problem); bad['explanation'][1] = '$1 = 1$.'; probes.append(bad)
     bad = copy.deepcopy(problem); bad['public']['answer'] = 'option-a'; probes.append(bad)
     bad = copy.deepcopy(problem); del bad['choiceFeedback']['option-b']; probes.append(bad)
+    bad = copy.deepcopy(problem); bad['public']['response']['options'][1]['label'] = r'$3\sqrt{5}$'; probes.append(bad)
+    bad = copy.deepcopy(problem); bad['public']['response']['options'][1]['label'] = r'$-3\sqrt{2}$'; probes.append(bad)
     for bad in probes:
         try: check_problem(bad)
         except ValueError: continue
