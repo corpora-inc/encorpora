@@ -176,7 +176,6 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
-  ...factoringTemplates,
   ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
@@ -193,6 +192,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...factoringTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
