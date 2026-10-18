@@ -1,0 +1,33 @@
+.plan-options {
+  min-width: 0;
+}
+.plan-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.plan-options-grid > * {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid #9eb4ab;
+  border-radius: 10px;
+  background: white;
+  color: #183e3a;
+  text-align: left;
+  font: inherit;
+}
+.plan-options-grid button[aria-pressed="true"] {
+  border: 2px solid #235a50;
+  padding: 9px;
+  background: #eaf3ee;
+}
+.plan-options-grid span {
+  font-size: 14px;
+}
+.plan-options .plan-saving {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+}

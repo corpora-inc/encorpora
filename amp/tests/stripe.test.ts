@@ -60,7 +60,7 @@ test("annual terms and server mappings reject tampering", () => {
     { subtotal: 1 },
     { paid: 0 },
     { periodEnd: payment.periodStart + 30 * 86400 },
-    { paidAt: payment.periodEnd },
+    { paidAt: payment.periodStart - 1 },
   ])
     assert.throws(() =>
       annualEvents(config, binding, { ...payment, ...changed }),
