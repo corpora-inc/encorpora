@@ -168,20 +168,17 @@ export function CircleMeasurementIllustration({
             >
               {angle}°
             </text>
-            <text x={cx + 56} y={cy + 33} textAnchor="middle" style={textStyle}>
+            <text
+              x={cx + 54}
+              y={cy + 31}
+              textAnchor="middle"
+              style={{ ...textStyle, fontSize: 22 }}
+            >
               r = {radius} cm
             </text>
           </>
         )}
         <circle cx={cx} cy={cy} r="3" fill="currentColor" />
-        <text
-          x={cx - (angle === null ? 20 : kind === "circle-sector" ? 25 : 17)}
-          y={cy + (angle === null ? -12 : kind === "circle-sector" ? 70 : 23)}
-          textAnchor="middle"
-          style={{ ...textStyle, fontSize: 23 }}
-        >
-          O
-        </text>
         {kind === "circle-area" && (
           <>
             <rect

@@ -1410,6 +1410,8 @@ for (const [skillId, facets] of [
       standardId: "SAT.geometry",
       basis: "editorial",
       facet:
-        "Calculate exact circle circumference and area from a radius or diameter; broader modeling and inverse measurements require separate assessment.",
+        skillId === "circle-measurement"
+          ? "Calculate exact circle circumference and area from a radius or diameter; broader modeling and inverse measurements require separate assessment."
+          : "Calculate exact arc length and sector area from a stated central angle in degrees; radians, inverse measurements and contextual models require separate assessment.",
     });
 }
