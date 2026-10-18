@@ -26,6 +26,8 @@ def compare(a, op, b):
 def affine(source):
     """Restricted arithmetic grammar, yielding (variable coefficient, constant)."""
     text = source.replace('−', '-')
+    require(re.search(r'[0-9]+/[0-9]+x', text) is None,
+            'A fractional coefficient must be grouped before multiplying x')
     tokens = re.findall(r'[0-9]+(?:/[0-9]+)?|x|[()+-]', text)
     require(''.join(tokens) == re.sub(r'\s+', '', text), 'Unsupported affine notation')
     position = 0
@@ -296,7 +298,7 @@ def review_inequality_fixtures():
     altered()['response']['options'][0]['unexpected'] = True
     altered()['response']['options'][0]['id'] = 'correct-answer'
     for expression in ('x²', 'x(x + 1)', 'x/2', '0x', 'x2', 'x +', '(x + 1',
-                       'x + y', '1/0x', '__import__("os")', '100001x', '10x', '(1/7)x'):
+                       'x + y', '1/0x', '1/2x', '−1/2x', '__import__("os")', '100001x', '10x', '(1/7)x'):
         item = altered()
         item['prompt'] = f'Solve for real x: {expression} < 4.'
     for public in invalid:
