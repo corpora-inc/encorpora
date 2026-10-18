@@ -2,9 +2,15 @@
 Copyright 2024-2026 Corpora Inc.
 
 Except as stated below, the contents of this repository are licensed under the
-Apache License, Version 2.0 (see LICENSE). This NOTICE states what that license
-does NOT cover. A file or directory that carries its own license notice is
-governed by that notice, not by this repository's LICENSE.
+Business Source License 1.1 (see LICENSE), with an Additional Use Grant for
+personal, non-commercial and non-profit educational use. Each version converts
+to the Apache License, Version 2.0 four years after it is published. Versions
+published before this change were released under the Apache License, Version
+2.0 and remain available under it (LICENSES/Apache-2.0.txt); contributions made
+under that license keep their notices. Package manifests that still say
+"Apache-2.0" are being updated; LICENSE governs. This NOTICE states what the
+license does NOT cover. A file or directory that carries its own license notice
+is governed by that notice, not by this repository's LICENSE.
 
 
 1. Trademarks
@@ -14,14 +20,12 @@ governed by that notice, not by this repository's LICENSE.
 Corpán mark are trademarks of Corpora Inc. So are the other product and pack
 names, logos, app icons and avatars in this repository.
 
-The Apache License does not license them. Its Section 6 says so already: it
-"does not grant permission to use the trade names, trademarks, service marks,
-or product names of the Licensor, except as required for reasonable and
-customary use in describing the origin of the Work and reproducing the content
-of the NOTICE file." You may fork, modify and redistribute the code. You may
-not ship it under these names or with these marks.
+The license does not license them; it says so already ("This License does not
+grant you any right in any trademark or logo of Licensor"). The Apache License
+2.0, for earlier versions, does the same in its Section 6. You may not ship the
+code under these names or with these marks.
 
-The brand files are not licensed under Apache-2.0; all rights are reserved by
+The brand files are not licensed under the repository license; all rights are reserved by
 Corpora Inc. They include:
 
   - the Corpán mark and logos: corpan/corpan-app/src/assets/corpan-mark*.png,
@@ -42,7 +46,7 @@ vite.svg, react.svg, svelte.svg) are trademarks of their respective owners.
 2. Store art, voices and music
 ------------------------------
 
-These are not licensed under Apache-2.0.
+These are not licensed under the repository license.
 
   - Store art and screenshots: web/io/public/dynawalla/shots/,
     web/io/public/aha/zpage/, dynawalla/foundations/feel/docs/shots/.
@@ -156,5 +160,5 @@ place next to the material.
 Some packs build on public-domain works: the traditional and classical melodies
 behind the beatlounge demo songs (corpan/packs/beatlounge/src/modules/scenes/
 demos/) and the classical Chinese text of the Zhou Yi (yijing/). Those works
-stay in the public domain. The Apache License covers only Corpora's own
+stay in the public domain. The repository license covers only Corpora's own
 arrangements, translations, code and other additions.
