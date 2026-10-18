@@ -1,4 +1,8 @@
 import {
+  linearSystemTemplates,
+  generateLinearSystemProblem,
+} from "./linear-system-practice";
+import {
   inequalityTemplates,
   generateInequalityProblem,
 } from "./inequality-practice";
@@ -167,6 +171,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...inequalityTemplates,
+  ...linearSystemTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -281,9 +286,10 @@ export function generateProblem(
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
-  const preserveAlgebra = inequalityTemplates.some(
-    (t) => t.id === problem.public.templateId,
-  );
+  const preserveAlgebra = [
+    ...inequalityTemplates,
+    ...linearSystemTemplates,
+  ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
     ...problem,
@@ -306,6 +312,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (linearSystemTemplates.some((t) => t.id === templateId))
+    return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))
     return generateInequalityProblem(templateId, seed);
   if (rightTriangleTemplates.some((t) => t.id === templateId))
