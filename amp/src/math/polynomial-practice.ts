@@ -58,7 +58,11 @@ function product(a: Polynomial, b: Polynomial): Polynomial {
   );
   return result;
 }
-function combineSteps(a: Polynomial, b: Polynomial): string[] {
+function combineSteps(
+  a: Polynomial,
+  b: Polynomial,
+  source = "polynomial",
+): string[] {
   const steps: string[] = [];
   for (let k = Math.max(a.length, b.length) - 1; k >= 0; k--) {
     const c = a[k] ?? 0,
@@ -68,7 +72,7 @@ function combineSteps(a: Polynomial, b: Polynomial): string[] {
       const term = Array<number>(k + 1).fill(0);
       term[k] = c + d;
       steps.push(
-        `Keep ${format(term)}; the other polynomial has no ${k ? `${power(k)} term` : "constant term"}.`,
+        `Keep ${format(term)}; the other ${source} has no ${k ? `${power(k)} term` : "constant term"}.`,
       );
       continue;
     }
@@ -181,7 +185,9 @@ export function generatePolynomialProblem(
       explanation.push(
         `Add the partial products: (${format(partials[0]!)}) + (${format(partials[1]!)}).`,
       );
-      explanation.push(...combineSteps(partials[0]!, partials[1]!));
+      explanation.push(
+        ...combineSteps(partials[0]!, partials[1]!, "partial product"),
+      );
     }
     candidates.push({
       value: partials[0]!,
@@ -243,7 +249,7 @@ export function generatePolynomialProblem(
           wrong[k]! -= multiplier * term;
           candidates.push({
             value: wrong,
-            feedback: `Check ${location}. ${multiplier === 1 ? "Include each given term" : "Keep each term's sign"} when combining like terms.`,
+            feedback: `Check ${location}. ${multiplier === 1 ? "Include each given term when combining like terms." : subtract ? "Keep the first polynomial's signs and negate every term of the second polynomial before combining like terms." : "Keep each term's sign when combining like terms."}`,
           });
         }
       }
