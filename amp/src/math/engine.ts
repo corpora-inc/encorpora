@@ -1,4 +1,8 @@
 import {
+  quadraticTemplates,
+  generateQuadraticProblem,
+} from "./quadratic-practice";
+import {
   measurementTemplates,
   generateMeasurementProblem,
 } from "./measurement-practice.js";
@@ -147,6 +151,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...measurementTemplates,
   ...baseTemplates,
   ...extendedTemplates,
+  ...quadraticTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -281,6 +286,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (quadraticTemplates.some((t) => t.id === templateId))
+    return generateQuadraticProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
     return generateMeasurementProblem(templateId, seed);
   if (algebraTemplates.some((t) => t.id === templateId))

@@ -1,9 +1,11 @@
+import { quadraticMethods } from "./quadratic-lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 /** Authored methods, keyed by template id. Keep each one short and complete:
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...quadraticMethods,
   // Counting and early operations
   "count-objects": {
     goal: "Given a picture of dots, find how many there are.",

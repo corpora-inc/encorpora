@@ -1,3 +1,4 @@
+import { quadraticLessons } from "./quadratic-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
 import { choiceLessons } from "./choice-lessons.js";
@@ -556,6 +557,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...quadraticLessons,
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,
