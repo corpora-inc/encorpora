@@ -1,3 +1,4 @@
+import { radicalLessons } from "./radical-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
@@ -26,6 +27,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "radical-square-grid"
+      | "radical-like-lengths"
+      | "radical-product-grid"
+      | "radical-rationalize"
       | "descriptive-median"
       | "descriptive-range"
       | "descriptive-iqr"
@@ -513,6 +518,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...radicalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,

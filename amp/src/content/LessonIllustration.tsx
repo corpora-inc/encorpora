@@ -1,3 +1,4 @@
+import { RadicalIllustration } from "./RadicalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
@@ -16,6 +17,13 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "radical-square-grid" ||
+    kind === "radical-like-lengths" ||
+    kind === "radical-product-grid" ||
+    kind === "radical-rationalize"
+  )
+    return <RadicalIllustration kind={kind} />;
   if (
     kind === "circle-circumference" ||
     kind === "circle-area" ||
