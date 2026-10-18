@@ -495,6 +495,11 @@ class LinearSystemReview:
                 'x-zero': lambda pair: pair[0] == 0,
                 'y-zero': lambda pair: pair[1] == 0,
                 'either-zero': lambda pair: 0 in pair,
+                # Held-out predicates: the worksheet selector does not optimize
+                # sign agreement or equality between the two coordinates.
+                'same-sign': lambda pair: pair[0]*pair[1] > 0,
+                'opposite-sign': lambda pair: pair[0]*pair[1] < 0,
+                'equal-coordinates': lambda pair: pair[0] == pair[1],
             }.items():
                 selected = {i for i,pair in enumerate(values) if predicate(pair)}
                 if selected:
@@ -502,7 +507,13 @@ class LinearSystemReview:
             measures = {
                 'x': [x for x,y in values], 'y': [y for x,y in values],
                 'magnitude': [abs(x)+abs(y) for x,y in values],
+                'coordinate-sum': [x+y for x,y in values],
+                'coordinate-product': [x*y for x,y in values],
+                'maximum-coordinate-magnitude': [max(abs(x),abs(y)) for x,y in values],
                 'fraction-count': [sum(value.denominator != 1 for value in pair) for pair in values],
+                # This complements fraction-count; retain it as an explicit
+                # common guessing rule, not independent held-out evidence.
+                'integer-count': [sum(value.denominator == 1 for value in pair) for pair in values],
                 'zero-count': [sum(value == 0 for value in pair) for pair in values],
                 'negative-count': [sum(value < 0 for value in pair) for pair in values],
             }
@@ -702,6 +713,29 @@ def review_linear_system_fixtures():
             require('Known system choice shortcut' in str(error),'Choice mutation failed for an unrelated reason')
         else:
             raise ValueError('Known worksheet-only shortcut escaped its regression check')
+    # A tied cue must use its actual matching-choice fraction, not always 1/4.
+    # For the square (0,0),(2,0),(0,2),(2,2), the origin minimizes the sum,
+    # but three choices minimize the product and two have equal coordinates.
+    import hashlib
+    import json
+    square=copy.deepcopy(fixtures[12][0])
+    square.update(templateVersion=1,skillId='linear-systems',seed='handwritten-choice-cues')
+    square['id']=hashlib.sha256(json.dumps([PAIR,1,square['seed']],separators=(',',':')).encode()).hexdigest()
+    square['response']['label']='Choose the ordered pair.'
+    cues=LinearSystemReview(); cues.record(square,'option-a')
+    for rule,hits,chance in [
+        ('min:coordinate-sum',1,Fraction(1,4)),
+        ('max:coordinate-sum',0,Fraction(1,4)),
+        ('min:coordinate-product',1,Fraction(3,4)),
+        ('max:coordinate-product',0,Fraction(1,4)),
+        ('min:maximum-coordinate-magnitude',1,Fraction(1,4)),
+        ('max:maximum-coordinate-magnitude',0,Fraction(3,4)),
+        ('same-sign',0,Fraction(1,4)),
+        ('equal-coordinates',1,Fraction(1,2)),
+    ]:
+        require(cues.attacks[PAIR][rule]==[1,hits,chance], 'Incorrect tied-choice cue baseline')
+    require('opposite-sign' not in cues.attacks[PAIR] and 'min:integer-count' not in cues.attacks[PAIR],
+            'Empty or all-choice cues must not count as informative guesses')
     return {'handwrittenCases': len(fixtures), 'rejectedMutations': len(invalid),
             'rejectedWorkedMutations':len(worked_mutations),'rejectedChoiceShortcuts':len(bad_attacks)}
 
