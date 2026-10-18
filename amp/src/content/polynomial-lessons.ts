@@ -140,7 +140,7 @@ export const polynomialLessons: Lesson[] = [
       "Subtracting a negative coefficient adds its positive opposite: 3 − (−4) = 7.",
     ],
     parentGuide:
-      "Have the learner rewrite the subtraction as addition before combining terms. Ask which signs change and why; each term in the second parentheses is multiplied by −1.",
+      "Have the learner rewrite the subtraction as addition before combining terms. Ask which signs change and why; each term in the second polynomial is multiplied by −1.",
   },
   {
     id: "polynomial-multiplication",

@@ -63,7 +63,7 @@ function combineSteps(a: Polynomial, b: Polynomial): string[] {
   for (let k = Math.max(a.length, b.length) - 1; k >= 0; k--) {
     const c = a[k] ?? 0,
       d = b[k] ?? 0;
-    if (!c && !d) continue;
+    if (!c || !d) continue;
     steps.push(
       `${k ? `Coefficient of ${power(k)}` : "Constant term"}: ${signed(c)} + ${signed(d)} = ${String(c + d).replace("-", "−")}.${c + d === 0 ? " These terms cancel." : ""}`,
     );
@@ -121,9 +121,14 @@ export function generatePolynomialProblem(
     hint =
       "Distribute every term of the first factor to every term of the second. Multiply coefficients, add exponents on powers of x, then combine like terms.";
     const partials: Polynomial[] = [];
+    const singleTermProduct =
+      a.filter(Boolean).length === 1 && b.filter(Boolean).length === 1;
     explanation = [
-      "Use the distributive property. In each term product, multiply coefficients and add exponents on powers of x.",
+      singleTermProduct
+        ? "Multiply the coefficients and add the exponents on x."
+        : "Use the distributive property. In each term product, multiply coefficients and add exponents on powers of x.",
     ];
+
     for (let k = a.length - 1; k >= 0; k--) {
       if (!a[k]) continue;
       const term = Array<number>(k + 1).fill(0);
@@ -131,7 +136,9 @@ export function generatePolynomialProblem(
       const partial = product(term, b);
       partials.push(partial);
       explanation.push(
-        `Distribute ${format(term)}: (${format(term)})(${format(b)}) = ${format(partial)}.`,
+        singleTermProduct
+          ? `(${format(term)})(${format(b)}) = (${signed(a[k]!)} × ${signed(b.at(-1)!)})x^(${k}+${b.length - 1}) = ${format(partial)}.`
+          : `Distribute ${format(term)}: (${format(term)})(${format(b)}) = ${format(partial)}.`,
       );
     }
     if (partials.length === 2) {
@@ -161,7 +168,7 @@ export function generatePolynomialProblem(
   } else {
     prompt = `Simplify (${format(a)}) ${subtract ? "−" : "+"} (${format(b)}).`;
     hint = subtract
-      ? "Subtracting a polynomial means adding its opposite: change every sign in the second parentheses. Then combine terms with the same power of x."
+      ? "Subtracting a polynomial means adding its opposite: change every sign in the second polynomial. Then combine like terms, which have the same power of x."
       : "Like terms have the same power of x. Add their coefficients, keep the power unchanged, and treat a missing term as having coefficient zero.";
     const signedB = b.map((c) => (subtract ? -c : c));
     explanation = [
@@ -191,7 +198,7 @@ export function generatePolynomialProblem(
     }
   }
   explanation.push(
-    `In descending powers of x, the result is ${label}.${label === "0" ? " All terms cancel." : ""}`,
+    `${label === "0" ? "All terms cancel, so the" : "The"} ${multiply ? "product" : subtract ? "difference" : "sum"} is ${label}.`,
   );
   // Single-coefficient variations require comparing complete expressions.
   for (let k = correct.length - 1; k >= 0; k--) {
