@@ -111,7 +111,7 @@ export function CircleMeasurementIllustration({
               stroke="currentColor"
               strokeWidth="3"
             />
-            <text x={cx + 13} y={cy - 45} style={textStyle}>
+            <text x={cx} y={32} textAnchor="middle" style={textStyle}>
               r = {radius} cm
             </text>
             <text x={cx} y={cy + 39} textAnchor="middle" style={textStyle}>
