@@ -113,7 +113,7 @@ def numeric_value(source):
 
 def review_explanation(problem):
     public=problem['public']; ordered=sorted(data_values(public)); steps=problem['explanation']
-    require(Fraction(problem['answer']) == solve_descriptive_statistics(public),'Incorrect exact answer')
+    require(Fraction(problem['answer']) == solve_descriptive_statistics(public),'Mismatch: incorrect exact answer')
     first=steps[0].split(': ',1)[1].removesuffix('.')
     require([Fraction(x.replace('−','-')) for x in first.split(', ')] == ordered,
             'Explanation changed or incorrectly sorted observations')
