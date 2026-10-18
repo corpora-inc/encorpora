@@ -4,6 +4,7 @@ import { segmentPrintText } from "./math-typesetting";
 
 // Keep KaTeX bases atomic for PDF pagination. Explicit breaks between bases
 // retain operator wrapping while nowrap joins the final base to punctuation.
+// WebKit needs each break inside a normal-whitespace span to wrap within nowrap.
 // Neither the source text nor MathML includes these layout-only break points.
 export const printMathStyles = `
 .print-math{display:inline-block;break-inside:avoid}
