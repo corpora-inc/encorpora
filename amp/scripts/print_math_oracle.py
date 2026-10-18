@@ -168,7 +168,7 @@ ARITHMETIC = [
 ]
 STRUCTURAL = ['√(−9)²', 'x_(n+1)', 'log_2(8)', '$x_12$']
 DELIMITED = [('$x^10$', {'x': 2}, Fraction(1024)), ('$2^(n+1)$', {'n': 2}, Fraction(8)), ('$x^-2$', {'x': 2}, Fraction(1, 4)), (r'\(x^{10}\)', {'x': 2}, Fraction(1024))]
-BOUNDARIES = ['Write □ − 4 = 6.', 'Write □−4 = 6.', '5 + 7 = □ + 8.', '200 cm + 35 cm = 235 cm', '200 cm+35 cm=235 cm', 'Wait 1-2 minutes.', 'grades K-12', 'page 3-4', 'the 2nd term', 'the 1st term', 'the 1990s', 'Term 3 = 1 × 4^2 = 16']
+BOUNDARIES = ['Write □ − 4 = 6.', 'Write □−4 = 6.', '5 + 7 = □ + 8.', '200 cm + 35 cm = 235 cm', '200 cm+35 cm=235 cm', 'Wait 1-2 minutes.', 'grades K-12', 'page 3-4', 'the 2nd term', 'the 1st term', 'the 1990s', 'Term 3 = 1 × 4^2 = 16', 'Those four area-24 rectangles have perimeters.', 'grade-3', 'area−24', 'item+3', 'apples−3', '200cm+35cm', 'log base 3 of 81 = 4 means exactly 3⁴ = 81', '6 groups of 2 = 12', 'half of 8 = 4', 'Day 3 − Day 1 = 2', 'Row 3 = 15']
 LITERAL = ['x^ = 2', 'x + √', '(x + 1', '1 1/2', '2 3', '2x/3y', '3 cm²', '12:30']
 PROSE = [
     '$5 or $10', 'A costs $4 each; B costs $3/m.', '2 × $5 = $10.',
