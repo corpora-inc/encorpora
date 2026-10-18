@@ -1,5 +1,5 @@
 import { afterEach, expect, test, vi } from "vitest";
-import { act, render, cleanup } from "@testing-library/react";
+import { act, render, cleanup, screen } from "@testing-library/react";
 import { Providers } from "../../app/providers";
 import {
   queryClient,
@@ -11,10 +11,15 @@ import {
 import type { AuthSession } from "../../auth";
 const events = vi.hoisted(() => ({
   update: (_session: AuthSession | null) => {},
+  failure: (_message: string) => {},
 }));
 vi.mock("../../auth", () => ({
   accessSession: vi.fn(),
-  onSessionChanged: (update: typeof events.update) => {
+  onSessionChanged: (
+    update: typeof events.update,
+    failure: typeof events.failure,
+  ) => {
+    events.failure = failure;
     events.update = update;
     return () => {};
   },
@@ -25,6 +30,7 @@ afterEach(() => {
   cleanup();
   queryClient.clear();
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
 });
 test("a mutation refresh cancels the old response before it can overwrite the canonical snapshot", async () => {
   let release!: (response: Response) => void;
@@ -71,4 +77,28 @@ test("an account switch removes and cancels the previous account's cached/in-fli
   expect(queryClient.getQueryData(sessionOptions.queryKey)?.accountId).toBe(
     "parent-b",
   );
+});
+
+test("session-check failures preserve the workspace and show a safe logged error", async () => {
+  const log = vi.spyOn(console, "error").mockImplementation(() => {});
+  render(
+    <Providers>
+      <h1>Family workspace</h1>
+    </Providers>,
+  );
+  act(() => events.failure("private transport details"));
+  expect((await screen.findByRole("alert")).textContent).toBe(
+    "Your sign-in could not be checked. Refresh to try again.",
+  );
+  expect(
+    screen.getByRole("heading", { name: "Family workspace" }),
+  ).toBeTruthy();
+  expect(log).toHaveBeenCalledWith(
+    "AMP action failed",
+    expect.objectContaining({
+      kind: "authentication",
+      message: "Your sign-in could not be checked. Refresh to try again.",
+    }),
+  );
+  expect(JSON.stringify(log.mock.calls)).not.toContain("private transport");
 });
