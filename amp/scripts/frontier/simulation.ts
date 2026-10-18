@@ -17,25 +17,35 @@ import { projectSkillEvidence } from "../../src/server/evidence";
 import type { Outcome } from "../../src/server/repository";
 import { SyntheticLearner, type Population } from "./synthetic-learner";
 
-/** Both policies receive these exact catalog objects. This fingerprints planning
- * metadata; the simulation does not execute problem generators or lessons. */
-export const simulationCatalog = {
-  format: "template-and-skill-json-v1",
-  sha256: createHash("sha256")
-    .update(JSON.stringify({ templates, skills }))
-    .digest("hex"),
-  templateCount: templates.length,
-  skillCount: skills.length,
+// Explicit input contract: a new required planner field must cause a type
+// error here until the fixture schema and baseline comparison are reviewed.
+export type SimulationDataset = {
+  templates: Parameters<typeof planMixedPractice>[0]["templates"];
+  skills: readonly Pick<
+    Parameters<typeof planMixedPractice>[0]["skills"][number],
+    "id" | "prerequisites" | "strand" | "gradeBand"
+  >[];
 };
+const currentDataset: SimulationDataset = { templates, skills };
+/** Identify the actual supplied planning metadata; generators and lessons are
+ * not executed. Fixed regression fixtures and live catalogs have separate IDs. */
+export function describeSimulationCatalog(dataset: SimulationDataset) {
+  return {
+    format: "template-and-skill-json-v1",
+    sha256: createHash("sha256")
+      .update(
+        JSON.stringify({
+          templates: dataset.templates,
+          skills: dataset.skills,
+        }),
+      )
+      .digest("hex"),
+    templateCount: dataset.templates.length,
+    skillCount: dataset.skills.length,
+  };
+}
+export const simulationCatalog = describeSimulationCatalog(currentDataset);
 
-const nodes = new Map(skills.map((skill) => [skill.id, skill]));
-const byId = new Map(templates.map((template) => [template.id, template]));
-const items = new Map(
-  templates.map((t) => [t.id, templateCalibration(t, nodes)]),
-);
-const gradeOf = (id: string) => templateGrade(byId.get(id)!, nodes);
-const strandOf = (id: string) => nodes.get(byId.get(id)!.skillId)!.strand;
-const strands = [...new Set(templates.map((t) => strandOf(t.id)))].sort();
 const startAt = Date.parse("2026-01-01T12:00:00Z");
 const DAY = 86400000;
 export const defaultTargetBand = [0.7, 0.85] as const;
@@ -60,7 +70,17 @@ function runSimulation(
     plan: planMixedPractice,
     calibrated: true,
   },
+  dataset: SimulationDataset = currentDataset,
 ) {
+  const { templates, skills } = dataset;
+  const nodes = new Map(skills.map((skill) => [skill.id, skill]));
+  const byId = new Map(templates.map((template) => [template.id, template]));
+  const items = new Map(
+    templates.map((t) => [t.id, templateCalibration(t, nodes)]),
+  );
+  const gradeOf = (id: string) => templateGrade(byId.get(id)!, nodes);
+  const strandOf = (id: string) => nodes.get(byId.get(id)!.skillId)!.strand;
+  const strands = [...new Set(templates.map((t) => strandOf(t.id)))].sort();
   const jumpAt = Math.floor((total * 0.4) / 3) * 3;
   const learner = new SyntheticLearner(population, jumpAt, seed);
   const attempts: Outcome[] = [];
@@ -279,6 +299,7 @@ function runSimulation(
   const final = estimate(attempts.length);
   return {
     checkpoints,
+    catalog: describeSimulationCatalog(dataset),
     finalStrands: Object.fromEntries(
       strands.map((strand) => [
         strand,
@@ -347,6 +368,7 @@ export function simulateFrontier(
     plan: planMixedPractice,
     calibrated: true,
   },
+  dataset: SimulationDataset = currentDataset,
 ) {
   if (!Number.isInteger(total) || total < 9 || total % 3 !== 0)
     throw new Error(
@@ -357,6 +379,7 @@ export function simulateFrontier(
     seed,
     total,
     policy,
+    dataset,
   );
   if (!population.jump)
     return {
@@ -369,7 +392,9 @@ export function simulateFrontier(
     seed,
     total,
     policy,
+    dataset,
   );
+  const strands = Object.keys(run.finalStrands);
   const detected = new Map<string, { streak: number; delay: number | null }>();
   const opposite = new Map<string, { streak: number; delay: number | null }>();
   const pre = checkpoints.find((c) => c.attempts === run.jumpAt)!;

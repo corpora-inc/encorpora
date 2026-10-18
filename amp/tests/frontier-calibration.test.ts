@@ -13,7 +13,18 @@ import {
 import { estimateExperimentalFrontier as estimateFrontier } from "../src/learning/experimental-frontier";
 import { projectSkillEvidence } from "../src/server/evidence";
 import { planExperimentalMixedPractice as planMixedPractice } from "../src/server/experimental-mixed-practice";
-import { simulateFrontier } from "../scripts/frontier/simulation";
+import {
+  simulateFrontier,
+  describeSimulationCatalog,
+  simulationCatalog,
+} from "../scripts/frontier/simulation";
+import { loadFrozenCatalog } from "../scripts/frontier/frozen-catalog";
+const frozenDataset = loadFrozenCatalog();
+const simulateFrozen = (
+  population: Parameters<typeof simulateFrontier>[0],
+  seed: number,
+  total = 180,
+) => simulateFrontier(population, seed, total, undefined, frozenDataset);
 import {
   evaluationPopulations,
   developmentPopulations,
@@ -106,12 +117,12 @@ test("the target band is configurable, validated, and independent of catalog ord
     assert.throws(() => select(band), /target success band/);
 });
 
-test("independent synthetic evaluation scenarios bound error, review debt, diversity and detection", () => {
+test("frozen-catalog synthetic evaluation bounds error, review debt, diversity and detection", () => {
   const runs = evaluationPopulations.flatMap((population) =>
-    [101, 307].map((seed) => simulateFrontier(population, seed)),
+    [101, 307].map((seed) => simulateFrozen(population, seed)),
   );
   // Bounds characterize this fixed experiment, not a monotonic guarantee or
-  // evidence of efficacy. Curriculum additions may warrant a reviewed update.
+  // evidence of efficacy. Live curriculum changes do not alter this dataset.
   for (const run of runs) {
     const label = `${run.population}:${run.seed}`;
     assert.equal(run.attempts, 180);
@@ -166,8 +177,8 @@ test("independent synthetic evaluation scenarios bound error, review debt, diver
     "aggregate predicted-band coverage",
   );
   assert.deepEqual(
-    simulateFrontier(evaluationPopulations[0]!, 101, 30),
-    simulateFrontier(evaluationPopulations[0]!, 101, 30),
+    simulateFrozen(evaluationPopulations[0]!, 101, 30),
+    simulateFrozen(evaluationPopulations[0]!, 101, 30),
   );
 });
 
@@ -307,7 +318,7 @@ test("prerequisite repair is not starved by an overdue review", () => {
 
 test("fixed development experiment preserves baseline precision, detection, review and diversity", () => {
   const runs = developmentPopulations.flatMap((p) =>
-    [11, 29].map((seed) => simulateFrontier(p, seed)),
+    [11, 29].map((seed) => simulateFrozen(p, seed)),
   );
   const mean = (metric: "finalMeanAbsoluteError" | "maxStrandShare") =>
     runs.reduce((sum, r) => sum + r[metric], 0) / runs.length;
@@ -401,4 +412,81 @@ test("reserved review keeps its reason when it is also probe eligible", () => {
     })[0]!.reason,
     "probe",
   );
+});
+
+test("pinned metrics use a fingerprinted dataset and live simulations keep the current catalog", () => {
+  assert.equal(
+    frozenDataset.sourceCommit,
+    "a163bce4b44001bd5c662b743c079a5c8872d139",
+  );
+  assert.equal(
+    frozenDataset.sourceCatalogSha256,
+    "805d2be8c8c27f24c7a587ec8d813a91c5466997bcfaf261dd953f57af22fbc8",
+  );
+  const identity = describeSimulationCatalog(frozenDataset);
+  assert.deepEqual(identity, {
+    format: "template-and-skill-json-v1",
+    sha256: "aa57b327d416c7353acafa1579a6d3db0d25f75e489ef9aafce63deef604aa4c",
+    templateCount: 142,
+    skillCount: 312,
+  });
+  assert.deepEqual(
+    simulateFrozen(developmentPopulations[0]!, 11, 9).catalog,
+    identity,
+  );
+  assert.deepEqual(
+    simulateFrontier(developmentPopulations[0]!, 11, 9).catalog,
+    simulationCatalog,
+  );
+  // Renamed IDs expose accidental lookups into the live catalog, including the
+  // paired no-jump control, without freezing or altering production content.
+  const renamed = {
+    ...frozenDataset,
+    templates: frozenDataset.templates.map((template) => ({
+      ...template,
+      id: `snapshot-only:${template.id}`,
+      skillId: `snapshot-only:${template.skillId}`,
+    })),
+    skills: frozenDataset.skills.map((skill) => ({
+      ...skill,
+      id: `snapshot-only:${skill.id}`,
+      strand: `snapshot-strand:${skill.strand}`,
+      prerequisites: skill.prerequisites.map((id) => `snapshot-only:${id}`),
+    })),
+  };
+  assert.notEqual(describeSimulationCatalog(renamed).sha256, identity.sha256);
+  const run = simulateFrontier(
+    developmentPopulations[1]!,
+    11,
+    9,
+    {
+      estimate: estimateFrontier,
+      plan: (options) => {
+        assert.strictEqual(options.templates, renamed.templates);
+        assert.strictEqual(options.skills, renamed.skills);
+        const choices = planMixedPractice(options);
+        assert.ok(
+          choices.every((choice) =>
+            choice.strand.startsWith("snapshot-strand:"),
+          ),
+        );
+        return choices;
+      },
+      calibrated: true,
+    },
+    renamed,
+  );
+  assert.deepEqual(run.catalog, describeSimulationCatalog(renamed));
+  assert.ok(
+    Object.keys(run.finalStrands).every((strand) =>
+      strand.startsWith("snapshot-strand:"),
+    ),
+  );
+  for (const skill of frozenDataset.skills)
+    assert.deepEqual(Object.keys(skill).sort(), [
+      "gradeBand",
+      "id",
+      "prerequisites",
+      "strand",
+    ]);
 });

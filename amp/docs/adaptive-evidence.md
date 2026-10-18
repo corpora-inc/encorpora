@@ -40,15 +40,22 @@ Support, probing and catalog gaps can put a selection outside the band. The obje
 Run from `amp/`:
 
 ```sh
+# Live-catalog diagnostics
 npx tsx scripts/simulate-frontier.ts development
 npx tsx scripts/simulate-frontier.ts evaluation
 npx tsx scripts/compare-frontier.ts 86dfa922c audit
 npx tsx scripts/compare-frontier.ts 86dfa922c stress
 npx tsx scripts/fit-frontier-calibration.ts
+# Reproduce the fixed-dataset result table
+npx tsx scripts/compare-frontier.ts 86dfa922c development frozen-v1
+npx tsx scripts/compare-frontier.ts 86dfa922c evaluation frozen-v1
+npx tsx scripts/compare-frontier.ts 86dfa922c audit frozen-v1
+npx tsx scripts/compare-frontier.ts 86dfa922c stress frozen-v1
+# Regression checks
 npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts
 ```
 
-Comparison requires a Git checkout containing baseline commit `86dfa922c`. Only pass trusted baseline commits: the comparison command executes source code from the selected commit. It loads that planner, estimator and evidence projection into a temporary directory. Both policies receive the same current template metadata and skill catalog objects, populations and seeds. Report metadata records the baseline commit, catalog counts and SHA-256 of `JSON.stringify({ templates, skills })` in source order (`template-and-skill-json-v1`). This identifies planning metadata; simulations do not execute problem generators or lesson content. The experimental run executes the actual experimental planner, estimator and evidence projection; it supplies twelve recent attempts and durable skill summaries as the API does. Six answers form a simulated day, with three-answer batches and 180 answers per run.
+Comparison uses the current catalog unless `frozen-v1` selects the regression fixture. It requires a Git checkout containing baseline commit `86dfa922c`. Only pass trusted baseline commits: the comparison command executes source code from the selected commit. It loads that planner, estimator and evidence projection into a temporary directory. Both policies receive the same selected template metadata and skill catalog objects, populations and seeds. Report metadata records the baseline commit, catalog counts and SHA-256 of `JSON.stringify({ templates, skills })` in source order (`template-and-skill-json-v1`). This identifies planning metadata; simulations do not execute problem generators or lesson content. The experimental run executes the actual experimental planner, estimator and evidence projection; it supplies twelve recent attempts and durable skill summaries as the API does. Six answers form a simulated day, with three-answer batches and 180 answers per run.
 
 Synthetic learners use a separate probit response curve, template-specific perturbations, slips, guesses, uneven strand ability, learning, forgetting and outside-learning jumps. Their response model does not import the estimator's logistic curve or item parameters. The ordinary scenarios still share a grade ruler with the model. Stress cases deliberately shift item difficulty by ±1 or compress the high-school ruler to expose that assumption. Assistance behavior is not simulated.
 
@@ -66,9 +73,11 @@ Reports include:
 
 ## Results and production blocker
 
+The metric regression tests use the frozen 142-template, 312-skill dataset in `tests/fixtures/frontier-catalog-v1.json`, extracted from source commit `a163bce4b44001bd5c662b743c079a5c8872d139`. Its full source-catalog fingerprint is `805d2be8c8c27f24c7a587ec8d813a91c5466997bcfaf261dd953f57af22fbc8`. The fixture retains complete template metadata and the skill fields the planner consumes (ID, prerequisites, strand and grade); its fingerprint is `aa57b327d416c7353acafa1579a6d3db0d25f75e489ef9aafce63deef604aa4c`. Tests verify that identity and both the injected and default-live catalog paths. The frozen CLI also checks the pinned identity before running. Editorial calibration overrides, `gradeCalibration`, `gradeNumber`, coarse-band mapping, estimator and scheduler logic are versioned policy under test, not fixture data or part of the catalog fingerprint. Policy edits are expected to change measurements and must satisfy the fixed-data regression checks. The narrowed skill type catches new required fields; optional inputs and future template fields still require review of their absent-value behavior on frozen data. A fingerprint does not validate a policy's use of those inputs. Updating a fixture is an explicit experiment change that requires fresh baseline comparisons; adding production content does not change pinned thresholds.
+
 The declared development objective is lower mean absolute strand error while preserving baseline paired detection, review service and diversity. Fixed development regression checks enforce those criteria. They do not establish general improvement. Component ablations on development runs produced mean errors of 0.6375 for baseline, 0.5572 for the complete experiment, 0.5873 with only its estimator, 0.7313 with only its planner, 0.6732 without probes and 0.6956 with review-only support reservation.
 
-Each entry below is baseline → experimental policy, averaged over six runs:
+Each entry below is baseline `86dfa922c` → experimental policy on that frozen dataset, averaged over six runs. The current-catalog CLI is a separate diagnostic and its outputs must not be compared against these fixed-data thresholds:
 
 | Scenarios | Final error, grades | Independent band share | Review adherence | Largest strand share | Paired detections |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -94,9 +103,11 @@ Audit results expose important losses:
 
 Compressed-secondary stress errors increase from 0.650 to 0.840 and 0.829 to 1.051. Estimator-only experiments improve overall averages but worsen both early evaluation runs (0.609 → 0.777 and 0.402 → 0.506). A conservative alternative using legacy scheduling and half-strength editorial difficulty/discrimination adjustments also fails the development objective (0.637 → 0.705) and worsens early strata. Point estimates, pooled priors and sparse item coverage do not reliably identify independent strand ability or a misspecified difficulty scale.
 
+A catalog evaluation at source commit `ac9b3ebd76baaf26c60750b659d3dd906466a7c8` with 144 templates and 312 skills (`7e53011b87c55fe4d10ef620b0fe53654c3f4fcf8afd95d18736d105c69b3be2`) gives mean error 0.779 → 0.707, paired detections 30 → 28 and wrong-direction crossings 0 → 2. Both policies receive the same current metadata. This illustrates catalog sensitivity; it does not replace the fixed-dataset results or satisfy production acceptance.
+
 **Production promotion is blocked by these regressions.** The experiment cannot justify replacing the production estimator or scheduler. Promotion requires a predeclared precision objective and per-stratum nonregression criteria, successful independent evaluation of young, advanced, uneven and misspecified-scale populations, fair repair/review service, and version-safe historical replay. A claim of learner-calibrated success probabilities additionally requires suitably consented response data with sufficient per-template evidence, an anchored ability scale and held-out learners. Synthetic averages cannot satisfy that requirement.
 
-The fitting command estimates difficulty and discrimination on 400 synthetic responses per template and scores 400 separate responses with a different ability distribution. It prints proposed parameters and validation losses; fits are never loaded by production or the experimental scheduler. Across the 142-template diagnostic, mean held-out log loss decreases from 0.4399 to 0.4314 and mean probability error against the synthetic curve from 0.0506 to 0.0250. Some individual fits worsen. This checks the fitting implementation on a specified synthetic family, not parameter transfer to learners.
+The fitting command estimates difficulty and discrimination on 400 synthetic responses per template and scores 400 separate responses with a different ability distribution. It prints proposed parameters and validation losses; fits are never loaded by production or the experimental scheduler. The fitting command uses the current catalog. In the 142-template diagnostic from source commit `a163bce4b44001bd5c662b743c079a5c8872d139`, mean held-out log loss decreases from 0.4399 to 0.4314 and mean probability error against the synthetic curve from 0.0506 to 0.0250. Some individual fits worsen. This checks the fitting implementation on a specified synthetic family, not parameter transfer to learners.
 
 ## Storage and cost
 
