@@ -1,4 +1,5 @@
 import { absoluteValueLessons } from "./absolute-value-lessons";
+import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
@@ -27,6 +28,8 @@ export interface Lesson {
       | "absolute-value-distance"
       | "absolute-value-shifted"
       | "thirds-and-fourths"
+      | "percent-change-bars"
+      | "percent-change-reverse"
       | "inequality-half-lines"
       | "linear-system-intersection"
       | "linear-system-count"
@@ -504,6 +507,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...polynomialLessons,
   ...absoluteValueLessons,
+  ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
   ...baseLessons,

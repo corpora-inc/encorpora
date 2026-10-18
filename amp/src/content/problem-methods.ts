@@ -1,4 +1,5 @@
 import { absoluteValueMethods } from "./absolute-value-lessons";
+import { percentChangeMethods } from "./percent-change-lessons";
 import { inequalityMethods } from "./inequality-lessons";
 import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
@@ -13,6 +14,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...polynomialMethods,
   ...absoluteValueMethods,
+  ...percentChangeMethods,
   ...inequalityMethods,
   ...linearSystemMethods,
   // Counting and early operations

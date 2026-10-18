@@ -1,4 +1,5 @@
 import { AbsoluteValueIllustration } from "./AbsoluteValueIllustration";
+import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
@@ -17,6 +18,10 @@ export function LessonIllustration({
   if (kind === "absolute-value-distance") return <AbsoluteValueIllustration />;
   if (kind === "absolute-value-shifted")
     return <AbsoluteValueIllustration shifted />;
+  if (kind === "percent-change-bars" || kind === "percent-change-reverse")
+    return (
+      <PercentChangeIllustration reverse={kind === "percent-change-reverse"} />
+    );
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
