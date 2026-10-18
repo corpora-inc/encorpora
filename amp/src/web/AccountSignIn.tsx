@@ -40,7 +40,11 @@ export function AccountSignIn() {
   const [backup, setBackup] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(
-    params.get("error") ? "That sign-in did not complete. Try again." : "",
+    params.get("error") === "link_failed"
+      ? "That login could not be linked. Sign in again, then try linking it from Security."
+      : params.get("error")
+        ? "That sign-in did not complete. Try again."
+        : "",
   );
   const [notice, setNotice] = useState("");
   useEffect(() => {

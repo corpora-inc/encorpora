@@ -8,7 +8,7 @@ type Summary = {
   passwords: boolean;
   hasPassword: boolean;
   twoFactorEnabled: boolean;
-  freshUntil: string;
+  freshForMs: number;
   providers: string[];
   accounts: { id: string; provider: string; available: boolean }[];
   passkeys: { id: string; name: string | null; createdAt: string }[];
@@ -47,7 +47,8 @@ function checked<T>(result: {
 }
 export function AccountSecurity() {
   const [summary, setSummary] = useState<Summary | null>(null);
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(performance.now());
+  const [freshUntil, setFreshUntil] = useState(0);
   const [panel, setPanel] = useState("passkeys");
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
@@ -90,14 +91,18 @@ export function AccountSecurity() {
       )}
     </div>
   );
+  function acceptSummary(data: Summary) {
+    setSummary(data);
+    setFreshUntil(performance.now() + data.freshForMs);
+  }
   async function refresh() {
-    setSummary(await security<Summary>("summary"));
+    acceptSummary(await security<Summary>("summary"));
   }
   useEffect(() => {
     let live = true;
     void security<Summary>("summary")
       .then((data) => {
-        if (live) setSummary(data);
+        if (live) acceptSummary(data);
       })
       .catch((failure) => {
         if (live) setError(failure.message);
@@ -109,13 +114,13 @@ export function AccountSecurity() {
   useEffect(() => {
     if (!summary) return;
     const timer = setTimeout(
-      () => setNow(Date.now()),
-      Math.max(0, Date.parse(summary.freshUntil) - Date.now()) + 25,
+      () => setNow(performance.now()),
+      Math.max(0, freshUntil - performance.now()) + 25,
     );
     return () => clearTimeout(timer);
-  }, [summary?.freshUntil]);
+  }, [freshUntil]);
   async function run(work: () => Promise<void>) {
-    if (summary && Date.now() >= Date.parse(summary.freshUntil)) {
+    if (summary && performance.now() >= freshUntil) {
       setError("Sign in again before changing security settings.");
       return;
     }
@@ -176,7 +181,7 @@ export function AccountSecurity() {
         <>
           <p className="security-email">{summary.email}</p>
           <p className="security-fresh">
-            {now >= Date.parse(summary.freshUntil)
+            {now >= freshUntil
               ? "Sign in again to change these settings."
               : "Changes require a sign-in within the last five minutes."}{" "}
             <a href="/?sign-in&return=security">Sign in again</a>.
@@ -603,8 +608,9 @@ export function AccountSecurity() {
                                   checked(
                                     await accountClient.linkSocial({
                                       provider,
-                                      callbackURL: "/",
-                                      errorCallbackURL: "/?sign-in",
+                                      callbackURL: "/?security",
+                                      errorCallbackURL:
+                                        "/?sign-in&return=security&error=link_failed",
                                     }),
                                   );
                                 })

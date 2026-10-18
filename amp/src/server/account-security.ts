@@ -8,7 +8,9 @@ import {
 import { bearer } from "better-auth/plugins";
 import {
   APIError,
+  isAPIError,
   changePassword,
+  callbackOAuth,
   createAuthEndpoint,
   createAuthMiddleware,
   freshSessionMiddleware,
@@ -178,10 +180,9 @@ export function accountSecurity(pool: Pool, config: AccountsConfig) {
       // Only this reserved identifier prefix contains library-generated JSON
       // OAuth state. Other verification values are deliberately not cast.
       await db.query(
-        `DELETE FROM amp_auth_verifications WHERE id IN (
-        SELECT id FROM (SELECT id, value FROM amp_auth_verifications WHERE identifier LIKE 'auth-state:%') AS pending
-        WHERE (value::jsonb #>> '{link,userId}')=$1
-      )`,
+        `DELETE FROM amp_auth_verifications WHERE CASE
+          WHEN identifier LIKE 'auth-state:%' THEN value::jsonb #>> '{link,userId}'
+          ELSE NULL END = $1`,
         [userId],
       );
       await db.query("COMMIT");
@@ -258,6 +259,8 @@ export function accountSecurity(pool: Pool, config: AccountsConfig) {
               await addOAuthServerContext({
                 ampLinkSessionId: session.session.id,
               });
+            if (ctx.path === "/passkey/verify-registration" && ctx.body)
+              ctx.body.createSession = false;
             if (ctx.path === "/change-password" && ctx.body)
               ctx.body.revokeOtherSessions = true;
             if (
@@ -273,6 +276,29 @@ export function accountSecurity(pool: Pool, config: AccountsConfig) {
       ],
     },
     endpoints: {
+      callbackOAuth: Object.assign(
+        async (ctx: Parameters<typeof callbackOAuth>[0]) => {
+          try {
+            return await callbackOAuth(ctx);
+          } catch (error) {
+            const state = await getOAuthState();
+            if (
+              state &&
+              (!isAPIError(error) || (state.link && error.statusCode >= 400))
+            )
+              throw new APIError("FOUND", undefined, {
+                location: new URL(
+                  state.link
+                    ? "/?sign-in&return=security&error=link_failed"
+                    : "/?sign-in&error=sign_in_failed",
+                  config.baseURL,
+                ).href,
+              });
+            throw error;
+          }
+        },
+        { path: callbackOAuth.path, options: callbackOAuth.options },
+      ),
       changePassword: serializeSecurityEndpoint(changePassword),
       securitySummary: createAuthEndpoint(
         "/security/summary",
@@ -304,10 +330,12 @@ export function accountSecurity(pool: Pool, config: AccountsConfig) {
             twoFactorEnabled: !!(
               user as typeof user & { twoFactorEnabled?: boolean }
             ).twoFactorEnabled,
-            freshUntil: new Date(
+            freshForMs: Math.max(
+              0,
               new Date(session.createdAt).getTime() +
-                SECURITY_FRESH_SECONDS * 1000,
-            ).toISOString(),
+                SECURITY_FRESH_SECONDS * 1000 -
+                Date.now(),
+            ),
             providers: enabled,
             accounts: accounts.rows
               .filter((a) => a.providerId !== "credential")

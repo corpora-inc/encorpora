@@ -1,3 +1,12 @@
+import {
+  getCurrentAuthEndpointContext,
+  runWithRequestState,
+} from "@better-auth/core/context";
+import { google } from "better-auth/social-providers";
+import {
+  rememberVerifiedProvider,
+  sessionMethodAuthority,
+} from "../src/server/account-authority";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -424,6 +433,13 @@ test(
           const pendingState = new URL(pendingLink.json().url).searchParams.get(
             "state",
           )!;
+          const unrelatedVerification = randomUUID();
+          await repo.pool.query(
+            `INSERT INTO amp_auth_verifications
+            (id, identifier, value, "expiresAt", "createdAt", "updatedAt")
+            VALUES ($1, 'unrelated-verification', 'not-json', now()+interval '1 hour', now(), now())`,
+            [unrelatedVerification],
+          );
           const bearerToken = secondSession.headers["set-auth-token"] as string;
           assert.equal(
             (
@@ -544,6 +560,15 @@ test(
             (await post(last.path, { id: last.id }, owner.cookie)).json().code,
             "LAST_SIGN_IN_METHOD",
           );
+          assert.equal(
+            (
+              await repo.pool.query(
+                "SELECT value FROM amp_auth_verifications WHERE id=$1",
+                [unrelatedVerification],
+              )
+            ).rows[0]?.value,
+            "not-json",
+          );
           const summary = (await get("/security/summary", owner.cookie)).json();
           assert.equal(
             summary.accounts.find(
@@ -647,6 +672,10 @@ test(
       await t.test(
         "configured provider linking issues OAuth authorization; unconfigured provider fails",
         async () => {
+          await repo.pool.query(
+            'UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1',
+            [other.user],
+          );
           const login = await post("/sign-in/email", {
             email: "other@example.com",
             password,
@@ -671,7 +700,7 @@ test(
             use: "sig",
           };
           const idToken = await new SignJWT({
-            email: "linked@example.com",
+            email: "other@example.com",
             email_verified: true,
             name: "Linked Parent",
           })
@@ -730,6 +759,68 @@ test(
                 await post(
                   "/security/unlink-account",
                   { id: row.rows[0].id },
+                  cookies(login),
+                )
+              ).statusCode,
+              200,
+            );
+            // A removed identity cannot reconnect through verified matching email.
+            const sessionCount = async () =>
+              Number(
+                (
+                  await repo.pool.query(
+                    'SELECT count(*) FROM amp_auth_sessions WHERE "userId"=$1',
+                    [other.user],
+                  )
+                ).rows[0].count,
+              );
+            const beforeSignIn = await sessionCount();
+            const signIn = await post("/sign-in/social", {
+              provider: "google",
+              callbackURL: "/",
+            });
+            const signInState = new URL(signIn.json().url).searchParams.get(
+              "state",
+            )!;
+            const refused = await app!.inject({
+              method: "GET",
+              url: `/api/auth/callback/google?code=test-code&state=${encodeURIComponent(signInState)}`,
+              headers: { cookie: cookies(signIn) },
+            });
+            assert.equal(refused.statusCode, 302);
+            assert.ok(
+              String(refused.headers.location).includes("error="),
+              "implicit linking refused",
+            );
+            assert.equal(await sessionCount(), beforeSignIn);
+            assert.equal(
+              (
+                await repo.pool.query(
+                  'SELECT id FROM amp_auth_accounts WHERE "userId"=$1 AND "accountId"=$2',
+                  [other.user, "test-linked-identity"],
+                )
+              ).rowCount,
+              0,
+            );
+            // Direct-token explicit linking retains the same fresh-session guard.
+            const direct = await post(
+              "/link-social",
+              { provider: "google", idToken: { token: idToken } },
+              cookies(login),
+            );
+            assert.equal(direct.statusCode, 200);
+            const directRow = (
+              await repo.pool.query(
+                'SELECT id, "ampLinkSessionId" FROM amp_auth_accounts WHERE "userId"=$1 AND "accountId"=$2',
+                [other.user, "test-linked-identity"],
+              )
+            ).rows[0];
+            assert.ok(directRow && directRow.ampLinkSessionId === null);
+            assert.equal(
+              (
+                await post(
+                  "/security/unlink-account",
+                  { id: directRow.id },
                   cookies(login),
                 )
               ).statusCode,
@@ -824,10 +915,16 @@ test(
               );
               releaseExchange();
               const rejected = await paused;
-              assert.ok(
-                rejected.statusCode >= 400 ||
-                  String(rejected.headers.location).includes("error="),
+              assert.equal(rejected.statusCode, 302);
+              const rejectionURL = new URL(
+                String(rejected.headers.location),
+                origin,
               );
+              assert.equal(
+                rejectionURL.searchParams.get("error"),
+                "link_failed",
+              );
+              assert.equal(rejectionURL.searchParams.get("return"), "security");
               assert.equal(
                 (
                   await repo.pool.query(
@@ -842,6 +939,170 @@ test(
               releaseExchange();
               await paused;
               console.error = logError;
+              globalThis.fetch = normalFetch;
+            }
+            // Verified provider subjects stay isolated across overlapping requests.
+            const verifier = rememberVerifiedProvider(
+              google({ clientId: "test-client", clientSecret: "test-secret" }),
+            );
+            const secondToken = await new SignJWT({
+              email: "separate@example.com",
+              email_verified: true,
+            })
+              .setProtectedHeader({ alg: "RS256", kid: jwk.kid })
+              .setIssuer("https://accounts.google.com")
+              .setAudience("test-client")
+              .setSubject("separate-identity")
+              .setIssuedAt()
+              .setExpirationTime("5m")
+              .sign(pair.privateKey);
+            let arrivals = 0;
+            let releaseIdentities!: () => void;
+            const identitiesReady = new Promise<void>((resolve) => {
+              releaseIdentities = resolve;
+            });
+            const identities = await Promise.all(
+              [idToken, secondToken].map((token) =>
+                runWithRequestState(new WeakMap(), async () => {
+                  await verifier({ idToken: token });
+                  if (++arrivals === 2) releaseIdentities();
+                  await identitiesReady;
+                  return sessionMethodAuthority({ path: "/callback/:id" });
+                }),
+              ),
+            );
+            assert.deepEqual(
+              identities.map((identity) => identity.ampMethodId),
+              ["test-linked-identity", "separate-identity"],
+            );
+            await assert.rejects(
+              runWithRequestState(new WeakMap(), () =>
+                sessionMethodAuthority({ path: "/callback/:id" }),
+              ),
+              /could not be verified/,
+            );
+
+            // New-provider signup and subsequent sign-in use the same verified
+            // request-local subject; transient authority never reaches the client.
+            for (const expectedAction of ["signup", "sign-in"]) {
+              const response = await post("/sign-in/social", {
+                provider: "google",
+                idToken: { token: secondToken },
+              });
+              assert.equal(response.statusCode, 200, expectedAction);
+              assert.equal(response.json().user.email, "separate@example.com");
+              assert.ok(!response.body.includes("ampMethod"));
+              const summary = await get("/security/summary", cookies(response));
+              assert.equal(summary.statusCode, 200);
+            }
+
+            // Pause an ordinary provider sign-in after the library has resolved
+            // its account, immediately before session creation, then remove it.
+            const loginMethod = await addProvider(other.user, "google");
+            await repo.pool.query(
+              'UPDATE amp_auth_accounts SET "accountId"=$1 WHERE id=$2',
+              ["test-linked-identity", loginMethod],
+            );
+            const ordinarySignIn = await post("/sign-in/social", {
+              provider: "google",
+              callbackURL: "/",
+            });
+            const ordinaryState = new URL(
+              ordinarySignIn.json().url,
+            ).searchParams.get("state")!;
+            const ordinaryCallback = await app!.inject({
+              method: "GET",
+              url: `/api/auth/callback/google?code=test-code&state=${encodeURIComponent(ordinaryState)}`,
+              headers: { cookie: cookies(ordinarySignIn) },
+            });
+            assert.equal(ordinaryCallback.statusCode, 302);
+            assert.ok(
+              !String(ordinaryCallback.headers.location).includes("error="),
+            );
+            assert.equal(
+              (await get("/security/summary", cookies(ordinaryCallback)))
+                .statusCode,
+              200,
+            );
+            const signInPending = await post("/sign-in/social", {
+              provider: "google",
+              callbackURL: "/",
+            });
+            const authenticationState = new URL(
+              signInPending.json().url,
+            ).searchParams.get("state")!;
+            const authContext = await accounts.auth.$context;
+            const createSession = authContext.internalAdapter.createSession;
+            let atSession!: () => void, releaseSession!: () => void;
+            const sessionEntered = new Promise<void>((resolve) => {
+              atSession = resolve;
+            });
+            const sessionRelease = new Promise<void>((resolve) => {
+              releaseSession = resolve;
+            });
+            authContext.internalAdapter.createSession = async (...args) => {
+              if (
+                getCurrentAuthEndpointContext().path?.startsWith("/callback/")
+              ) {
+                atSession();
+                await sessionRelease;
+              }
+              return createSession(...args);
+            };
+            const originalError = console.error;
+            console.error = () => {};
+            const authentication = app!
+              .inject({
+                method: "GET",
+                url: `/api/auth/callback/google?code=test-code&state=${encodeURIComponent(authenticationState)}`,
+                headers: { cookie: cookies(signInPending) },
+              })
+              .then((response) => response);
+            try {
+              await Promise.race([
+                sessionEntered,
+                delay(3000).then(() => {
+                  throw new Error("provider session barrier not reached");
+                }),
+              ]);
+              const current = cookies(
+                await post("/sign-in/email", {
+                  email: "other@example.com",
+                  password,
+                }),
+              );
+              assert.equal(
+                (
+                  await post(
+                    "/security/unlink-account",
+                    { id: loginMethod },
+                    current,
+                  )
+                ).statusCode,
+                200,
+              );
+              const remainingSessions = await sessionCount();
+              releaseSession();
+              const response = await authentication;
+              assert.equal(response.statusCode, 302);
+              assert.ok(
+                String(response.headers.location).includes("error="),
+                "removed provider cannot complete in-flight sign-in",
+              );
+              assert.equal(await sessionCount(), remainingSessions);
+              assert.equal(
+                (
+                  await repo.pool.query(
+                    `SELECT id FROM amp_auth_sessions WHERE "ampMethodKind" IS NOT NULL OR "ampMethodId" IS NOT NULL OR "ampMethodProvider" IS NOT NULL`,
+                  )
+                ).rowCount,
+                0,
+              );
+            } finally {
+              releaseSession();
+              await authentication;
+              authContext.internalAdapter.createSession = createSession;
+              console.error = originalError;
             }
           } finally {
             globalThis.fetch = realFetch;

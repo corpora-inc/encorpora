@@ -1,4 +1,9 @@
 import {
+  rememberVerifiedProvider,
+  sessionMethodAuthority,
+} from "./account-authority";
+import { google, github, microsoft, apple } from "better-auth/social-providers";
+import {
   accountSecurity,
   accountLinkSession,
   serializeSecurityEndpoint,
@@ -216,6 +221,15 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   passkeyPlugin.endpoints.updatePasskey = serializeSecurityEndpoint(
     passkeyPlugin.endpoints.updatePasskey,
   );
+  const appleOptions = config.apple
+    ? {
+        clientId: config.apple.clientId,
+        clientSecret: await appleClientSecret(config.apple),
+        ...(config.apple.bundleId && {
+          appBundleIdentifier: config.apple.bundleId,
+        }),
+      }
+    : undefined;
   const auth = betterAuth({
     appName: "AMP",
     baseURL: config.baseURL,
@@ -230,6 +244,26 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     session: {
       modelName: "amp_auth_sessions",
       freshAge: SECURITY_FRESH_SECONDS,
+      additionalFields: {
+        ampMethodKind: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+        ampMethodId: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+        ampMethodProvider: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+      },
     },
     verification: { modelName: "amp_auth_verifications" },
     account: {
@@ -242,9 +276,13 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           returned: false,
         },
       },
-      // Same-email sign-ins link only when the provider verified the email;
-      // a signed-in parent may link a login with a different email.
-      accountLinking: { enabled: true, allowDifferentEmails: true },
+      // Existing parents link identities explicitly from fresh Security sessions.
+      // A removed identity cannot reconnect through a matching provider email.
+      accountLinking: {
+        enabled: true,
+        allowDifferentEmails: true,
+        disableImplicitLinking: true,
+      },
     },
     emailAndPassword: {
       enabled: config.passwords,
@@ -260,6 +298,13 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         ),
     },
     databaseHooks: {
+      session: {
+        create: {
+          before: async (session, context) => ({
+            data: { ...session, ...(await sessionMethodAuthority(context)) },
+          }),
+        },
+      },
       account: {
         create: {
           before: async (account, context) => {
@@ -291,16 +336,28 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         ),
     },
     socialProviders: {
-      ...(config.google && { google: config.google }),
-      ...(config.github && { github: config.github }),
-      ...(config.microsoft && { microsoft: config.microsoft }),
-      ...(config.apple && {
+      ...(config.google && {
+        google: {
+          ...config.google,
+          getUserInfo: rememberVerifiedProvider(google(config.google)),
+        },
+      }),
+      ...(config.github && {
+        github: {
+          ...config.github,
+          getUserInfo: rememberVerifiedProvider(github(config.github)),
+        },
+      }),
+      ...(config.microsoft && {
+        microsoft: {
+          ...config.microsoft,
+          getUserInfo: rememberVerifiedProvider(microsoft(config.microsoft)),
+        },
+      }),
+      ...(appleOptions && {
         apple: {
-          clientId: config.apple.clientId,
-          clientSecret: await appleClientSecret(config.apple),
-          ...(config.apple.bundleId && {
-            appBundleIdentifier: config.apple.bundleId,
-          }),
+          ...appleOptions,
+          getUserInfo: rememberVerifiedProvider(apple(appleOptions)),
         },
       }),
     },

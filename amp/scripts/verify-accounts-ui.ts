@@ -182,6 +182,10 @@ try {
   }
   await openSecurity();
   await fits(page, "security");
+  await page.evaluate(() => {
+    const realNow = Date.now;
+    Date.now = () => realNow() + 86_400_000;
+  });
   await page.getByLabel("Name for this passkey").fill("Personal laptop");
   await page.getByRole("button", { name: "Add passkey", exact: true }).click();
   await page.getByText("Passkey added.", { exact: true }).waitFor();
@@ -369,6 +373,81 @@ try {
       )
     ).rowCount,
     0,
+  );
+  // An authentication proof read before removal cannot mint a session after
+  // removal commits. The passkey row barrier pauses its verified counter write.
+  await app.close();
+  app = await startAccountsServer();
+  await cdp.send("WebAuthn.clearCredentials", { authenticatorId });
+  const prepareLogin = await app.inject({
+    method: "POST",
+    url: "/api/auth/sign-in/email",
+    remoteAddress: "203.0.113.252",
+    headers: { origin },
+    payload: { email, password: "A new security passphrase" },
+  });
+  assert.equal(prepareLogin.statusCode, 200);
+  await page.context().addCookies(
+    ([] as string[])
+      .concat(prepareLogin.headers["set-cookie"] ?? [])
+      .map((cookie) => {
+        const pair = cookie.split(";")[0];
+        const equals = pair.indexOf("=");
+        return {
+          name: pair.slice(0, equals),
+          value: pair.slice(equals + 1),
+          url: origin,
+        };
+      }),
+  );
+  const prepared = await page.evaluate(async () => {
+    const modulePath = "/src/web/account-client.ts";
+    const { accountClient } = await import(modulePath);
+    const added = await accountClient.passkey.addPasskey({
+      name: "Authentication race key",
+    });
+    if (added.error)
+      return `registration: ${added.error.code ?? added.error.message}`;
+    await accountClient.signOut();
+    return null;
+  });
+  assert.equal(prepared, null);
+  const authenticationKey = (
+    await repository.pool.query(
+      'SELECT id FROM amp_auth_passkeys WHERE "userId"=$1',
+      [parent],
+    )
+  ).rows[0].id;
+  const proofBarrier = await repository.pool.connect();
+  await proofBarrier.query("BEGIN");
+  await proofBarrier.query(
+    "SELECT id FROM amp_auth_passkeys WHERE id=$1 FOR UPDATE",
+    [authenticationKey],
+  );
+  const authenticating = page.evaluate(async () => {
+    const modulePath = "/src/web/account-client.ts";
+    const { accountClient } = await import(modulePath);
+    return (await accountClient.signIn.passkey()).error?.code ?? null;
+  });
+  let removingProof: Promise<{ statusCode: number }> | undefined;
+  try {
+    await waitForBlocked(1);
+    removingProof = app.inject({
+      method: "POST",
+      url: "/api/auth/security/delete-passkey",
+      remoteAddress: "203.0.113.251",
+      headers: { origin, cookie: caregiverCookie },
+      payload: { id: authenticationKey },
+    });
+    await waitForBlocked(2);
+  } finally {
+    await proofBarrier.query("COMMIT");
+    proofBarrier.release();
+  }
+  assert.equal((await removingProof!).statusCode, 200);
+  assert.ok(
+    await authenticating,
+    "removed passkey cannot finish an in-flight sign-in",
   );
   assert.deepEqual(errors, []);
   console.log(
