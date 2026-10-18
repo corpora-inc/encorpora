@@ -88,7 +88,8 @@ function multipliers(
   variable: "a" | "b",
 ): [number, number] {
   const g = gcd(first[variable], second[variable]);
-  return [second[variable] / g, -first[variable] / g];
+  const sign = second[variable] < 0 ? -1 : 1;
+  return [(sign * second[variable]) / g, (-sign * first[variable]) / g];
 }
 /** Check every possible target and row pair before any target is selected. */
 function admissible(points: Point[], maxScale: 1 | 2): boolean {
@@ -286,7 +287,9 @@ function uniqueSteps(rows: [Row, Row], solution: Point): string[] {
       `Substitute ${knownVariable} = ${num(solution[known])} in the original ${rowIndex === 0 ? "first" : "second"} equation, ${equation(row)}. Its ${knownVariable} term is ${num(q(knownCoefficient))} × ${operand(solution[known])} = ${num(product)}.`,
     );
     steps.push(
-      `${product.n < 0 ? "Add" : "Subtract"} ${num(q(Math.abs(product.n), product.d))} ${product.n < 0 ? "to" : "from"} both sides: ${term(coefficient, variable)} = ${num(row.c)} ${product.n < 0 ? "+" : "−"} ${num(q(Math.abs(product.n), product.d))} = ${num(remainder)}.`,
+      product.n === 0
+        ? `The equation becomes ${term(coefficient, variable)} = ${num(remainder)}.`
+        : `${product.n < 0 ? "Add" : "Subtract"} ${num(q(Math.abs(product.n), product.d))} ${product.n < 0 ? "to" : "from"} both sides: ${term(coefficient, variable)} = ${num(row.c)} ${product.n < 0 ? "+" : "−"} ${num(q(Math.abs(product.n), product.d))} = ${num(remainder)}.`,
     );
   } else
     steps.push(
@@ -349,6 +352,8 @@ function generateCase(
     const data = uniqueCase(r);
     rows = data.rows;
     const [x, y] = data.solution;
+    if (data.points.some((point) => point[0].n === 0 && point[1].n === 0))
+      tags.push("origin-option");
     tags.push(
       x.n === 0 && y.n === 0
         ? "origin"
