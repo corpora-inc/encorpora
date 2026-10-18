@@ -17,7 +17,7 @@ interface Props {
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
   onLearningInvalidated: () => void;
-  initialSection?: "learners" | "access" | "privacy";
+  initialSection?: "learners" | "access" | "privacy" | "security";
   onConsentEnrollment?: () => void;
   returnToConsent?: boolean;
   selectedLearnerId?: string;
@@ -473,7 +473,7 @@ export function FamilyCenter({
         </FocusDialog>
       )}
       <div className="family-body" ref={body}>
-        {section === "security" && <AccountSecurity />}
+        {section === "security" && accountsEnabled && <AccountSecurity />}
         {error && (
           <p className="family-error" role="alert">
             {error}

@@ -1,4 +1,5 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { notifyAccountSessionChanged } from "./auth";
 import { accountClient } from "./account-client";
 import "./account-security.css";
 
@@ -46,6 +47,7 @@ function checked<T>(result: {
 }
 export function AccountSecurity() {
   const [summary, setSummary] = useState<Summary | null>(null);
+  const [now, setNow] = useState(Date.now());
   const [panel, setPanel] = useState("passkeys");
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
@@ -65,6 +67,29 @@ export function AccountSecurity() {
     id: string;
     label: string;
   } | null>(null);
+  const feedbackRef = useRef<HTMLDivElement>(null);
+  const confirmRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (error || notice)
+      feedbackRef.current?.scrollIntoView({ block: "nearest" });
+  }, [error, notice]);
+  useEffect(() => {
+    if (confirm) confirmRef.current?.scrollIntoView({ block: "nearest" });
+  }, [confirm]);
+  const feedback = (error || notice) && (
+    <div ref={feedbackRef}>
+      {error && (
+        <p role="alert" className="account-error">
+          {error}
+        </p>
+      )}
+      {notice && (
+        <p role="status" className="account-notice">
+          {notice}
+        </p>
+      )}
+    </div>
+  );
   async function refresh() {
     setSummary(await security<Summary>("summary"));
   }
@@ -81,7 +106,19 @@ export function AccountSecurity() {
       live = false;
     };
   }, []);
+  useEffect(() => {
+    if (!summary) return;
+    const timer = setTimeout(
+      () => setNow(Date.now()),
+      Math.max(0, Date.parse(summary.freshUntil) - Date.now()) + 25,
+    );
+    return () => clearTimeout(timer);
+  }, [summary?.freshUntil]);
   async function run(work: () => Promise<void>) {
+    if (summary && Date.now() >= Date.parse(summary.freshUntil)) {
+      setError("Sign in again before changing security settings.");
+      return;
+    }
     setBusy(true);
     setError("");
     setNotice("");
@@ -89,12 +126,12 @@ export function AccountSecurity() {
       await work();
       await refresh();
     } catch (failure) {
+      setNotice("");
       setError(failure instanceof Error ? failure.message : "Try again.");
     } finally {
       setBusy(false);
       setPassword("");
       setNewPassword("");
-      window.dispatchEvent(new Event("amp-account-session-changed"));
     }
   }
   function switchPanel(next: string) {
@@ -130,17 +167,7 @@ export function AccountSecurity() {
       <h2 id="security-title" tabIndex={-1}>
         Sign-in &amp; security
       </h2>
-      <p>Manage how you sign in to your parent account.</p>
-      {error && (
-        <p role="alert" className="account-error">
-          {error}
-        </p>
-      )}
-      {notice && (
-        <p role="status" className="account-notice">
-          {notice}
-        </p>
-      )}
+      {!summary && feedback}
       {!summary ? (
         <button disabled={busy} onClick={() => void run(async () => {})}>
           Load security settings
@@ -149,8 +176,10 @@ export function AccountSecurity() {
         <>
           <p className="security-email">{summary.email}</p>
           <p className="security-fresh">
-            Changes require a sign-in within the last five minutes.{" "}
-            <a href="/?sign-in">Sign in again</a>.
+            {now >= Date.parse(summary.freshUntil)
+              ? "Sign in again to change these settings."
+              : "Changes require a sign-in within the last five minutes."}{" "}
+            <a href="/?sign-in&return=security">Sign in again</a>.
           </p>
           <div className="security-panels">
             {(
@@ -309,6 +338,7 @@ export function AccountSecurity() {
                                     revokeOtherSessions: true,
                                   }),
                                 );
+                                notifyAccountSessionChanged();
                                 setNotice(
                                   "Password changed. Other sessions have been signed out.",
                                 );
@@ -361,9 +391,7 @@ export function AccountSecurity() {
                           </>
                         )
                       ) : (
-                        <p>
-                          Password sign-in is not available on this deployment.
-                        </p>
+                        <p>Password sign-in is not available.</p>
                       ))}
                     {id === "totp" && (
                       <>
@@ -406,6 +434,7 @@ export function AccountSecurity() {
                                       code,
                                     }),
                                   );
+                                  notifyAccountSessionChanged();
                                   setEnrollment(null);
                                   setCode("");
                                   setNotice(
@@ -487,6 +516,7 @@ export function AccountSecurity() {
                                           password,
                                         }),
                                       );
+                                      notifyAccountSessionChanged();
                                       setBackupCodes([]);
                                       setNotice(
                                         "Authenticator disabled for password sign-in.",
@@ -500,6 +530,7 @@ export function AccountSecurity() {
                             </div>
                           </form>
                         )}
+                        {feedback}
                         {!!backupCodes.length && (
                           <div className="security-backup security-secret">
                             <h4>Save your backup codes</h4>
@@ -583,14 +614,12 @@ export function AccountSecurity() {
                             </button>
                           ))}
                         {!summary.providers.length && (
-                          <p>
-                            No external sign-in providers are available on this
-                            deployment.
-                          </p>
+                          <p>No external sign-in providers are available.</p>
                         )}
                         <p>Keep at least one available way to sign in.</p>
                       </>
                     )}
+                    {id !== "totp" && feedback}
                   </div>
                 )}
               </section>
@@ -598,11 +627,15 @@ export function AccountSecurity() {
           </div>
           {confirm && (
             <div
+              ref={confirmRef}
               className="security-confirm"
               role="group"
               aria-label="Confirm removal"
             >
-              <p>Remove {confirm.label} from this account?</p>
+              <p>
+                Remove {confirm.label} from this account? Other sessions will be
+                signed out.
+              </p>
               <div className="security-actions">
                 <button
                   disabled={busy}
@@ -614,8 +647,11 @@ export function AccountSecurity() {
                           : "delete-passkey",
                         { id: confirm.id },
                       );
+                      notifyAccountSessionChanged();
                       setConfirm(null);
-                      setNotice("Sign-in method removed.");
+                      setNotice(
+                        "Sign-in method removed. Other sessions have been signed out.",
+                      );
                     })
                   }
                 >

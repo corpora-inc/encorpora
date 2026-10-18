@@ -1,4 +1,9 @@
-import { accountSecurity, SECURITY_FRESH_SECONDS } from "./account-security";
+import {
+  accountSecurity,
+  accountLinkSession,
+  serializeSecurityEndpoint,
+  SECURITY_FRESH_SECONDS,
+} from "./account-security";
 import { betterAuth } from "better-auth";
 import { bearer, twoFactor } from "better-auth/plugins";
 import { fromNodeHeaders } from "better-auth/node";
@@ -183,6 +188,34 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     } else throw new Error("Email delivery is not configured");
   }
   const { origin, hostname } = new URL(config.baseURL);
+  const twoFactorPlugin = twoFactor({
+    issuer: "AMP",
+    schema: { twoFactor: { modelName: "amp_auth_two_factors" } },
+  });
+  const protectedTwoFactor = new Set([
+    "/two-factor/enable",
+    "/two-factor/disable",
+    "/two-factor/generate-backup-codes",
+    "/two-factor/verify-totp",
+  ]);
+  for (const [key, endpoint] of Object.entries(twoFactorPlugin.endpoints)) {
+    if (protectedTwoFactor.has(endpoint.path))
+      Object.assign(twoFactorPlugin.endpoints, {
+        [key]: serializeSecurityEndpoint(endpoint),
+      });
+  }
+  const passkeyPlugin = passkey({
+    rpID: hostname,
+    rpName: "AMP",
+    origin,
+    schema: { passkey: { modelName: "amp_auth_passkeys" } },
+  });
+  passkeyPlugin.endpoints.verifyPasskeyRegistration = serializeSecurityEndpoint(
+    passkeyPlugin.endpoints.verifyPasskeyRegistration,
+  );
+  passkeyPlugin.endpoints.updatePasskey = serializeSecurityEndpoint(
+    passkeyPlugin.endpoints.updatePasskey,
+  );
   const auth = betterAuth({
     appName: "AMP",
     baseURL: config.baseURL,
@@ -201,6 +234,14 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     verification: { modelName: "amp_auth_verifications" },
     account: {
       modelName: "amp_auth_accounts",
+      additionalFields: {
+        ampLinkSessionId: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+      },
       // Same-email sign-ins link only when the provider verified the email;
       // a signed-in parent may link a login with a different email.
       accountLinking: { enabled: true, allowDifferentEmails: true },
@@ -219,6 +260,15 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         ),
     },
     databaseHooks: {
+      account: {
+        create: {
+          before: async (account, context) => {
+            const sessionId = await accountLinkSession(account.userId, context);
+            if (sessionId)
+              return { data: { ...account, ampLinkSessionId: sessionId } };
+          },
+        },
+      },
       user: {
         create: {
           before: async (user, context) => {
@@ -257,16 +307,8 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     plugins: [
       accountSecurity(pool, config),
       bearer(),
-      twoFactor({
-        issuer: "AMP",
-        schema: { twoFactor: { modelName: "amp_auth_two_factors" } },
-      }),
-      passkey({
-        rpID: hostname,
-        rpName: "AMP",
-        origin,
-        schema: { passkey: { modelName: "amp_auth_passkeys" } },
-      }),
+      twoFactorPlugin,
+      passkeyPlugin,
     ],
     rateLimit: { enabled: true, storage: "memory" },
     // Internal failures reach clients as a generic 500; log the cause.

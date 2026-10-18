@@ -135,8 +135,6 @@
   font-size: 0.85rem;
 }
 .security-confirm {
-  position: sticky;
-  bottom: 0;
   border: 1px solid #aebbaf;
   border-radius: 12px;
   background: #fffefa;
@@ -146,4 +144,28 @@
 }
 .family-tabs:has([data-security-tab]) {
   grid-template-columns: repeat(4, 1fr);
+}
+/* Four sections need a full row on phones; never clip the active section. */
+.shell .family-center:has([data-security-tab]) > .family-tabs {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.shell .family-center:has([data-security-tab]) .family-tabs button {
+  min-width: 0;
+  padding-inline: 4px;
+}
+.shell .family-center:has([data-security-tab]) .family-heading > div {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+}
+.shell .family-center:has([data-security-tab]) .family-heading h1 {
+  font-size: 1.2rem;
+  margin: 0;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { accountClient } from "./account-client";
-import { authConfig, signIn } from "./auth";
+import { authConfig, signIn, notifyAccountSessionChanged } from "./auth";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -59,7 +59,11 @@ export function AccountSignIn() {
     setError("");
     setNotice("");
   }
-  const done = () => location.replace("/");
+  const returnTo = params.get("return") === "security" ? "/?security" : "/";
+  const done = () => {
+    notifyAccountSessionChanged();
+    location.replace(returnTo);
+  };
   async function run(work: () => Promise<void>) {
     setBusy(true);
     setError("");
@@ -137,8 +141,11 @@ export function AccountSignIn() {
       fail(
         await accountClient.signIn.social({
           provider,
-          callbackURL: "/",
-          errorCallbackURL: "/?sign-in",
+          callbackURL: returnTo,
+          errorCallbackURL:
+            params.get("return") === "security"
+              ? "/?sign-in&return=security"
+              : "/?sign-in",
         }),
       );
     });
