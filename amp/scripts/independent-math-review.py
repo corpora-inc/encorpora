@@ -15,6 +15,8 @@ from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_mea
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
+from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview
+from right_triangle_figure_oracle import review_right_triangle_figures
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 
@@ -31,7 +33,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | RIGHT_TRIANGLE
 
 
 def require(condition, message):
@@ -43,6 +45,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in RIGHT_TRIANGLE:
+        return solve_right_triangle(public)
     if template in POLYNOMIAL:
         return solve_polynomial(public)
     if template in QUADRATIC:
@@ -243,6 +247,7 @@ def review(stream):
     review_measurement_fixtures()
     review_quadratic_fixtures()
     review_polynomial_fixtures()
+    review_right_triangle_fixtures()
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
     manifest = json.loads(first_line)
@@ -255,6 +260,7 @@ def review(stream):
     require(type(start) is int and type(count) is int and start >= 0 and count >= 256, 'Require at least 256 seeds per family')
     seen, counts = set(), Counter()
     polynomial_shortcuts = PolynomialShortcutReview()
+    right_triangles = RightTriangleCorpusReview()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -271,10 +277,12 @@ def review(stream):
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
         solved = solve(public)
+        if template in RIGHT_TRIANGLE:
+            right_triangles.record(public, solved)
         if template in POLYNOMIAL:
             polynomial_shortcuts.record(public, solved)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | RIGHT_TRIANGLE_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -284,7 +292,9 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
     publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
     if publications.exists():
