@@ -37,7 +37,8 @@ export const integerExponentLessons: Lesson[] = [
       {
         title: "Follow the pattern through zero",
         paragraphs: [
-          "In the table, the base stays 2. Moving down one row decreases the exponent by 1 and divides the value by 2. The values stay positive even when the exponents become negative.",
+          "In the table, the base stays 2. Moving down one row decreases the exponent by 1 and divides the value by 2.",
+          "The values stay positive even when the exponents become negative.",
         ],
         illustration: "integer-exponent-ladder",
       },
