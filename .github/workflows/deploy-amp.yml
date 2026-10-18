@@ -1,0 +1,106 @@
+# Deploys AMP (amp/) to its own namespaces on the shared GKE cluster.
+# Manual until the one-time setup in amp/deploy/README.md is done: run it
+# from Actions with environment "stage" or "prod". Each GitHub environment
+# (amp-stage, amp-prod) holds its non-secret settings as variables; the only
+# secret material is the Secret Manager env file, fetched at deploy time.
+name: deploy-amp
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: stage or prod
+        required: true
+        type: choice
+        options: [stage, prod]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-amp-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: amp-${{ inputs.environment }}
+    timeout-minutes: 30
+    env:
+      AMP_GSA: ${{ vars.AMP_GSA }}
+      AMP_SQL_INSTANCE: ${{ vars.AMP_SQL_INSTANCE }}
+      AMP_STATIC_IP_NAME: ${{ vars.AMP_STATIC_IP_NAME }}
+      AMP_INGRESS_IP: ${{ vars.AMP_INGRESS_IP }}
+      AMP_HOSTNAME: ${{ vars.AMP_HOSTNAME }}
+      AMP_ACME_EMAIL: ${{ vars.AMP_ACME_EMAIL }}
+      AMP_API_IMAGE: ${{ vars.AMP_REGISTRY }}/api:${{ github.sha }}
+      AMP_WEB_IMAGE: ${{ vars.AMP_REGISTRY }}/web:${{ github.sha }}
+      NAMESPACE: ${{ inputs.environment == 'prod' && 'amp' || 'amp-stage' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.AMP_WIF_PROVIDER }}
+          service_account: ${{ vars.AMP_DEPLOYER_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          install_components: gke-gcloud-auth-plugin,kubectl
+
+      - name: Build and push images
+        working-directory: amp
+        run: |
+          gcloud auth configure-docker "${AMP_API_IMAGE%%/*}" --quiet
+          docker build --target api -t "$AMP_API_IMAGE" .
+          docker build --target web -t "$AMP_WEB_IMAGE" \
+            --build-arg VITE_AMP_AUTHORITY="${{ vars.VITE_AMP_AUTHORITY }}" \
+            --build-arg VITE_AMP_CLIENT_ID="${{ vars.VITE_AMP_CLIENT_ID }}" \
+            --build-arg VITE_AMP_SCOPES="${{ vars.VITE_AMP_SCOPES }}" \
+            --build-arg VITE_AMP_RESOURCE="${{ vars.VITE_AMP_RESOURCE }}" .
+          docker push "$AMP_API_IMAGE"
+          docker push "$AMP_WEB_IMAGE"
+
+      - name: Connect to the cluster
+        run: >
+          gcloud container clusters get-credentials "${{ vars.AMP_CLUSTER }}"
+          --zone "${{ vars.AMP_CLUSTER_ZONE }}"
+          --project "${{ vars.AMP_GCP_PROJECT }}"
+
+      - name: Apply manifests
+        working-directory: amp
+        run: |
+          deploy/render.sh "${{ inputs.environment }}" > "$RUNNER_TEMP/amp.yaml"
+          # The namespace must exist before the secret is written into it.
+          kubectl apply -f deploy/k8s/${{ inputs.environment }}/namespace.yaml
+
+          # Secrets: one Secret Manager env file → the amp-env Secret.
+          # Values are never printed.
+          umask 077
+          gcloud secrets versions access latest \
+            --secret="${{ vars.AMP_ENV_SECRET }}" \
+            --project "${{ vars.AMP_GCP_PROJECT }}" > "$RUNNER_TEMP/amp.env"
+          kubectl -n "$NAMESPACE" create secret generic amp-env \
+            --from-env-file="$RUNNER_TEMP/amp.env" \
+            --dry-run=client -o yaml | kubectl apply -f - > /dev/null
+          rm -f "$RUNNER_TEMP/amp.env"
+
+          kubectl apply -f "$RUNNER_TEMP/amp.yaml"
+          # cert-manager edits the Ingress during renewals: create it once only.
+          if ! kubectl -n "$NAMESPACE" get ingress amp > /dev/null 2>&1; then
+            deploy/render.sh "${{ inputs.environment }}" ingress | kubectl apply -f -
+          fi
+
+      - name: Wait for rollout
+        run: |
+          for name in amp-sql-proxy amp-api amp-web; do
+            kubectl -n "$NAMESPACE" rollout status deployment/$name --timeout=600s
+          done
+
+      - name: Smoke test
+        run: |
+          curl --fail --silent --show-error --retry 10 --retry-delay 15 \
+            --retry-all-errors "https://$AMP_HOSTNAME/api/v1/health"
+          curl --fail --silent --show-error --output /dev/null \
+            "https://$AMP_HOSTNAME/"

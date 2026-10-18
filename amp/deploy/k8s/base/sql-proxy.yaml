@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amp-sql-proxy
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: amp-sql-proxy }
+  template:
+    metadata:
+      labels: { app: amp-sql-proxy }
+    spec:
+      serviceAccountName: amp
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        seccompProfile: { type: RuntimeDefault }
+      containers:
+        - name: proxy
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.24.1
+          args: ["--address=0.0.0.0", "--port=5432", "${AMP_SQL_INSTANCE}"]
+          ports: [{ containerPort: 5432 }]
+          readinessProbe:
+            tcpSocket: { port: 5432 }
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 25m, memory: 64Mi }
+            limits: { cpu: 250m, memory: 256Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: [ALL] }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: amp-sql-proxy
+spec:
+  selector: { app: amp-sql-proxy }
+  ports: [{ port: 5432, targetPort: 5432 }]
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: amp-sql-proxy
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels: { app: amp-sql-proxy }

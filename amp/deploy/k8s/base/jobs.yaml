@@ -1,0 +1,122 @@
+# Daily: expired trials, export tickets, audit events and offline packs.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: amp-privacy-retention
+spec:
+  schedule: "17 7 * * *"
+  suspend: false
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 600
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: amp
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            seccompProfile: { type: RuntimeDefault }
+          containers:
+            - name: job
+              image: ${AMP_API_IMAGE}
+              command: ["node_modules/.bin/tsx", "scripts/privacy-retention.ts"]
+              envFrom:
+                - configMapRef: { name: amp-config }
+                - secretRef: { name: amp-env }
+              resources:
+                requests: { cpu: 50m, memory: 192Mi }
+                limits: { cpu: 500m, memory: 512Mi }
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities: { drop: [ALL] }
+              volumeMounts: [{ name: tmp, mountPath: /tmp }]
+          volumes: [{ name: tmp, emptyDir: { medium: Memory, sizeLimit: 128Mi } }]
+---
+# Stripe webhook events → licenses. Enabled by an overlay once Stripe is configured.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: amp-billing-worker
+spec:
+  schedule: "* * * * *"
+  suspend: true
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 600
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: amp
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            seccompProfile: { type: RuntimeDefault }
+          containers:
+            - name: job
+              image: ${AMP_API_IMAGE}
+              command: ["node_modules/.bin/tsx", "scripts/stripe-worker.ts"]
+              envFrom:
+                - configMapRef: { name: amp-config }
+                - secretRef: { name: amp-env }
+              resources:
+                requests: { cpu: 50m, memory: 192Mi }
+                limits: { cpu: 500m, memory: 512Mi }
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities: { drop: [ALL] }
+              volumeMounts: [{ name: tmp, mountPath: /tmp }]
+          volumes: [{ name: tmp, emptyDir: { medium: Memory, sizeLimit: 128Mi } }]
+---
+# Consent notices by email. Enabled by an overlay once delivery is approved.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: amp-consent-delivery
+spec:
+  schedule: "*/5 * * * *"
+  suspend: true
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 600
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccountName: amp
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            seccompProfile: { type: RuntimeDefault }
+          containers:
+            - name: job
+              image: ${AMP_API_IMAGE}
+              command: ["node_modules/.bin/tsx", "scripts/consent-delivery.ts"]
+              envFrom:
+                - configMapRef: { name: amp-config }
+                - secretRef: { name: amp-env }
+              resources:
+                requests: { cpu: 50m, memory: 192Mi }
+                limits: { cpu: 500m, memory: 512Mi }
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities: { drop: [ALL] }
+              volumeMounts: [{ name: tmp, mountPath: /tmp }]
+          volumes: [{ name: tmp, emptyDir: { medium: Memory, sizeLimit: 128Mi } }]

@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amp-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: amp-web }
+  template:
+    metadata:
+      labels: { app: amp-web }
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        seccompProfile: { type: RuntimeDefault }
+      containers:
+        - name: web
+          image: ${AMP_WEB_IMAGE}
+          ports: [{ containerPort: 8080 }]
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 20m, memory: 32Mi }
+            limits: { cpu: 200m, memory: 128Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: [ALL] }
+          volumeMounts:
+            - { name: tmp, mountPath: /tmp }
+            - { name: cache, mountPath: /var/cache/nginx }
+      volumes:
+        - { name: tmp, emptyDir: { medium: Memory, sizeLimit: 16Mi } }
+        - { name: cache, emptyDir: { sizeLimit: 64Mi } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: amp-web
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+    cloud.google.com/backend-config: '{"default": "amp-web"}'
+spec:
+  selector: { app: amp-web }
+  ports: [{ port: 80, targetPort: 8080 }]
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: amp-web
+spec:
+  healthCheck:
+    type: HTTP
+    requestPath: /healthz
+    port: 8080
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: amp-web
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels: { app: amp-web }
