@@ -1,3 +1,4 @@
+import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
@@ -13,6 +14,8 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "integer-exponent-ladder")
+    return <IntegerExponentIllustration />;
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;

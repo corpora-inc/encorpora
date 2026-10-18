@@ -9,7 +9,14 @@ const COMPUTATION_STRANDS = new Set([
   "fractions",
   "decimals",
 ]);
-const COMPUTATION_TEMPLATES = new Set(["integer-power", "operation-order"]);
+const COMPUTATION_TEMPLATES = new Set([
+  "negative-integer-power",
+  "product-of-powers-exponent",
+  "quotient-of-powers-exponent",
+  "power-of-power-exponent",
+  "integer-power",
+  "operation-order",
+]);
 export function calculatorAllowed(
   template: Pick<TemplateMetadata, "id">,
   strand: string | undefined,

@@ -1,4 +1,8 @@
 import {
+  integerExponentTemplates,
+  generateIntegerExponentProblem,
+} from "./integer-exponent-practice";
+import {
   linearSystemTemplates,
   generateLinearSystemProblem,
 } from "./linear-system-practice";
@@ -164,6 +168,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...integerExponentTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
   ...baseTemplates,
@@ -287,6 +292,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...integerExponentTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -312,6 +318,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (integerExponentTemplates.some((t) => t.id === templateId))
+    return generateIntegerExponentProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
     return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))

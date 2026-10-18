@@ -452,7 +452,7 @@ probability|7|probability|Calculate simple event probabilities and compare obser
 compound-probability|7|probability|Enumerate compound outcomes with tables trees and simulations|probability|7.SP.C.8
 irrational-numbers|8|number|Distinguish rational numbers from irrational numbers|fraction-as-division,decimal-algorithms|8.NS.A.1
 approximate-roots|8|number|Approximate roots and compare irrational values|irrational-numbers,integer-powers|8.NS.A.2,8.EE.A.2
-exponent-laws|8|algebra|Simplify expressions with integer exponents|integer-powers,signed-multiplication|8.EE.A.1
+exponent-laws|8|algebra|Simplify expressions with integer exponents|integer-powers,signed-multiplication,signed-addition,fraction-division|8.EE.A.1
 scientific-notation|8|number|Represent compare and calculate very large or small quantities|exponent-laws|8.EE.A.3,8.EE.A.4
 slope|8|algebra|Find and interpret slope from points tables and graphs|proportional-relationships,coordinate-four-quadrants|8.EE.B.5,8.EE.B.6
 linear-equations|8|algebra|Solve linear equations with variables on both sides|two-step-equations,linear-expressions|8.EE.C.7
@@ -1340,3 +1340,29 @@ for (const [id, description] of [
     description,
     status: "implemented",
   });
+
+const integerExponentSkill = skills.find((s) => s.id === "exponent-laws")!;
+integerExponentSkill.facets.push({
+  id: "exponent-laws.negative-rational-powers",
+  description:
+    "Evaluate negative integer powers of bounded nonzero rational bases.",
+  status: "implemented",
+});
+integerExponentSkill.facets.push({
+  id: "exponent-laws.same-base-product",
+  description:
+    "Find the combined integer exponent of two powers with the same nonzero base.",
+  status: "implemented",
+});
+integerExponentSkill.facets.push({
+  id: "exponent-laws.same-base-quotient",
+  description:
+    "Find the combined integer exponent of a quotient with the same nonzero base.",
+  status: "implemented",
+});
+integerExponentSkill.facets.push({
+  id: "exponent-laws.nested-integer-powers",
+  description:
+    "Find the combined integer exponent of a power raised to an integer power.",
+  status: "implemented",
+});

@@ -1,3 +1,4 @@
+import { integerExponentLessons } from "./integer-exponent-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
@@ -23,6 +24,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "integer-exponent-ladder"
       | "thirds-and-fourths"
       | "inequality-half-lines"
       | "linear-system-intersection"
@@ -497,6 +499,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...integerExponentLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
