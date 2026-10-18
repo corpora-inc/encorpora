@@ -34,10 +34,20 @@ export function IntegerExponentIllustration() {
           </text>
           {rows.map(([exponent, value], i) => (
             <g key={exponent} data-exponent={exponent} data-value={value}>
-              <text style={{ fontSize: 28 }} x="74" y={88 + i * 68} textAnchor="middle">
+              <text
+                style={{ fontSize: 28 }}
+                x="74"
+                y={88 + i * 68}
+                textAnchor="middle"
+              >
                 {exponent}
               </text>
-              <text style={{ fontSize: 28 }} x="242" y={88 + i * 68} textAnchor="middle">
+              <text
+                style={{ fontSize: 28 }}
+                x="242"
+                y={88 + i * 68}
+                textAnchor="middle"
+              >
                 {value}
               </text>
               {i < 5 && (
@@ -48,7 +58,12 @@ export function IntegerExponentIllustration() {
                     fill="none"
                     strokeWidth="2"
                   />
-                  <text style={{ fontSize: 26 }} x="300" y={119 + i * 68} fontSize="26">
+                  <text
+                    style={{ fontSize: 26 }}
+                    x="300"
+                    y={119 + i * 68}
+                    fontSize="26"
+                  >
                     ÷2
                   </text>
                 </g>
