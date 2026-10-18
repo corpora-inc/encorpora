@@ -144,6 +144,30 @@ export function Legal({
               collect it.
             </p>
           )}
+          <h2>Trial milestones</h2>
+          <p>
+            AMP records its own trial milestones to understand how families move
+            from starting practice to a purchase. Each record contains a random
+            identifier, an event type, and a timestamp. The events are starting
+            a trial, completing placement, completing the teaching sequence,
+            opening the plan screen, and purchasing access. These are individual
+            event records, not summarized totals.
+          </p>
+          <p>
+            The trial record links that identifier to a learner while the trial
+            record exists. A trial saved into a family account keeps this link
+            until the learner is deleted. Removing an expired, unclaimed trial
+            during cleanup, or deleting its learner, removes that link. The
+            event records themselves remain. The {TRIAL_DAYS}-day trial cleanup
+            does not delete them, and the service does not automatically expire
+            them.
+          </p>
+          <p className="notice">
+            The retention review must establish a purpose-limited deletion
+            schedule for these event records and confirm the legal basis for
+            collecting them, including during placement by children under 13.
+            Removing a learner link is not the same as deleting the records.
+          </p>
           <h2>Parent accounts and learning records</h2>
           <p>
             The account service processes a parent’s email, sign-in information,

@@ -60,3 +60,25 @@ test("worksheet markup separates questions from the solution key", () => {
   assert.ok(!questions.includes("<details"));
   assert.ok(!questions.includes("Answer:"));
 });
+
+test("privacy distinguishes expiring trial records from retained linked milestone events", () => {
+  const html = renderToStaticMarkup(
+    createElement(Page, {
+      route: "/legal/privacy/",
+      config: configSchema.parse({}),
+    }),
+  );
+  assert.ok(html.includes("Trial milestones"));
+  assert.ok(html.includes("random identifier, an event type, and a timestamp"));
+  assert.ok(
+    html.includes(
+      "A trial saved into a family account keeps this link until the learner is deleted.",
+    ),
+  );
+  assert.ok(
+    html.includes("Removing an expired, unclaimed trial during cleanup"),
+  );
+  assert.ok(html.includes("trial cleanup does not delete them"));
+  assert.ok(html.includes("does not automatically expire them"));
+  assert.ok(html.includes("purpose-limited deletion"));
+});
