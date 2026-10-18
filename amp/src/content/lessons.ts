@@ -1,3 +1,4 @@
+import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
@@ -13,8 +14,17 @@ export interface Lesson {
   summary: string;
   templateIds: string[];
   objectives: string[];
-  sections: { title: string; paragraphs: string[] }[];
-  workedExample: { prompt: string; steps: string[]; answer: string };
+  sections: {
+    title: string;
+    paragraphs: string[];
+    illustration?: "thirds-and-fourths";
+  }[];
+  workedExample: {
+    prompt: string;
+    steps: string[];
+    answer: string;
+    answerUnit?: string;
+  };
   pitfalls: string[];
   parentGuide: string;
 }
@@ -223,47 +233,7 @@ export const baseLessons: Lesson[] = [
     parentGuide:
       "Fold a paper into equal parts. Shade half, then add more folds. Ask why the shaded amount stays the same even though its fraction name changes.",
   },
-  {
-    id: "fraction-addition",
-    title: "Add parts of the same size",
-    summary: "Common denominators make fraction units comparable.",
-    templateIds: ["add-fractions"],
-    objectives: [
-      "Find equivalent fractions with a common denominator.",
-      "Add numerators and preserve the common unit.",
-    ],
-    sections: [
-      {
-        title: "Match the units",
-        paragraphs: [
-          "One third and one fourth describe different-sized pieces of the same whole. Rename both using twelfths: 1/3 = 4/12 and 1/4 = 3/12.",
-          "A common denominator can be the product of the original denominators. A smaller common multiple often makes the arithmetic easier.",
-        ],
-      },
-      {
-        title: "Combine and simplify",
-        paragraphs: [
-          "Four twelfths plus three twelfths is seven twelfths. Add the numerators because they count pieces; keep the denominator because it names the piece size.",
-          "After adding, divide numerator and denominator by a common factor when possible. A result larger than one is valid if the combined amount exceeds a whole.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is 1/3 + 1/4?",
-      steps: [
-        "Use a common denominator of 12.",
-        "1/3 = 4/12 and 1/4 = 3/12.",
-        "4/12 + 3/12 = 7/12.",
-      ],
-      answer: "7/12",
-    },
-    pitfalls: [
-      "Do not add the denominators: that changes the size of the pieces.",
-      "Multiply both numerator and denominator when forming an equivalent fraction.",
-    ],
-    parentGuide:
-      "Draw two equal-sized rectangles partitioned into twelfths. Shade one third in one and one fourth in the other, then count the combined twelfths.",
-  },
+  fractionAdditionLesson,
   {
     id: "area",
     title: "Cover a rectangle with unit squares",
