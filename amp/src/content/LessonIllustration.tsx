@@ -1,4 +1,5 @@
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
+import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
@@ -16,6 +17,10 @@ export function LessonIllustration({
 }) {
   if (kind === "integer-exponent-ladder")
     return <IntegerExponentIllustration />;
+  if (kind === "percent-change-bars" || kind === "percent-change-reverse")
+    return (
+      <PercentChangeIllustration reverse={kind === "percent-change-reverse"} />
+    );
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;

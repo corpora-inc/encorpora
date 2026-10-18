@@ -1,4 +1,5 @@
 import { integerExponentLessons } from "./integer-exponent-lessons";
+import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
@@ -26,6 +27,8 @@ export interface Lesson {
     illustration?:
       | "integer-exponent-ladder"
       | "thirds-and-fourths"
+      | "percent-change-bars"
+      | "percent-change-reverse"
       | "inequality-half-lines"
       | "linear-system-intersection"
       | "linear-system-count"
@@ -503,6 +506,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
   ...baseLessons,
