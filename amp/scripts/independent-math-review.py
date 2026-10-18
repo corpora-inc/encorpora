@@ -20,6 +20,7 @@ from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomi
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
+from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 
@@ -36,7 +37,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE
+SUPPORTED = ABSOLUTE_VALUE | SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE
 
 
 def require(condition, message):
@@ -48,6 +49,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in ABSOLUTE_VALUE:
+        return solve_absolute_value(public)
     if template in INEQUALITY:
         return solve_inequality(public)
     if template in RIGHT_TRIANGLE:
@@ -248,6 +251,7 @@ def solve(public):
 
 
 def review(stream):
+    review_absolute_value_fixtures()
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
@@ -293,7 +297,7 @@ def review(stream):
         if template in INEQUALITY:
             inequality_review.record(public, solved)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in ABSOLUTE_VALUE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
