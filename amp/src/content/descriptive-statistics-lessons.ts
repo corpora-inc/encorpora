@@ -7,7 +7,7 @@ const foundations: Lesson["sections"] = [
     paragraphs: [
       "This lesson uses counting, ordering signed numbers, addition, subtraction and division by 2. Data are recorded observations. A numerical value is the number recorded for one observation. A dataset is the collection of those observations; the same value can occur more than once. For example, 2, 2, 5 contains three observations, not two.",
       "Order the values from least to greatest without changing or removing any of them. On a number line, lesser values lie farther left. Every negative number is less than zero; among negative numbers, the one farther left is smaller. Thus −4 is less than −1, even though 4 is greater than 1.",
-      "A decimal records parts of a whole. One tenth divides a whole into ten equal parts, so 0.3 means three tenths and −0.3 is three tenths to the left of zero. Compare whole-number parts first, then tenths: 1.2 is less than 1.7. Sorting changes the positions of observations, not their values or their number. Keep repeated values in separate positions.",
+      "A decimal records parts of a whole. One tenth divides a whole into ten equal parts, so 0.3 means three tenths and −0.3 is three tenths to the left of zero. For nonnegative decimals, compare whole-number parts first, then tenths: 1.2 is less than 1.7. For negative decimals, the one with the greater distance from zero is smaller: −1.7 is less than −1.2 because it lies farther left. Sorting changes the positions of observations, not their values or their number. Keep repeated values in separate positions.",
     ],
   },
 ];
@@ -32,7 +32,7 @@ const medianDefinition: Lesson["sections"][number] = {
   paragraphs: [
     "The median is a measure of center based on positions in the ordered dataset. Count the observations after sorting them. An odd count leaves one middle observation with the same number of observations on either side. For 1, 2, 2, 7, 9, the third value is the median, 2: two observations precede it and two follow it.",
     "An even count leaves two middle observations. The median is their mean, found by adding them and dividing by 2. For six observations, the middle positions are third and fourth. For eight observations, they are fourth and fifth. Positions count from 1; a repeated value occupies a position each time it occurs.",
-    "The median describes the center by order, whereas the arithmetic mean uses the sum of every observation. They need not agree. The median is also different from the midpoint of the smallest and largest values: those endpoints do not identify the middle positions.",
+    "The median describes the center by order, whereas the arithmetic mean uses the sum of every observation. They need not agree. The median need not equal the midpoint of the smallest and largest values: those endpoints do not identify the middle positions.",
   ],
 };
 

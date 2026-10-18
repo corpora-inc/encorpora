@@ -8,7 +8,14 @@ function q(n: number, d = 1): Rational {
   while (b) [a, b] = [b, a % b];
   return { n: n / a, d: d / a };
 }
-const exact = (v: Rational) => `${v.n}${v.d === 1 ? "" : `/${v.d}`}`;
+const exact = (v: Rational) => {
+  const hundredths = (v.n * 100) / v.d;
+  if (!Number.isSafeInteger(hundredths))
+    throw new Error("Statistics answer must be exact to hundredths");
+  const magnitude = Math.abs(hundredths),
+    remainder = magnitude % 100;
+  return `${hundredths < 0 ? "-" : ""}${Math.floor(magnitude / 100)}${remainder ? `.${String(remainder).padStart(2, "0").replace(/0$/, "")}` : ""}`;
+};
 const shown = (v: Rational) => exact(v).replace("-", "−");
 /** Values are integer tenths throughout; only text rendering uses a decimal point. */
 const decimal = (v: number) =>
@@ -37,7 +44,7 @@ export const descriptiveStatisticsTemplates: readonly TemplateMetadata[] = [
     id: "median-data",
     version: 1,
     title: "Median of data",
-    skillId: "mean-median",
+    skillId: "signed-data-summaries",
     gradeBand: "6–8",
     description:
       "Order a finite dataset and find its middle value or the mean of its two middle values.",
@@ -46,7 +53,7 @@ export const descriptiveStatisticsTemplates: readonly TemplateMetadata[] = [
     id: "range-data",
     version: 1,
     title: "Range of data",
-    skillId: "mean-median",
+    skillId: "signed-data-summaries",
     gradeBand: "6–8",
     description:
       "Find the distance between the greatest and least values in a finite dataset.",
@@ -55,7 +62,7 @@ export const descriptiveStatisticsTemplates: readonly TemplateMetadata[] = [
     id: "interquartile-range-data",
     version: 1,
     title: "Interquartile range",
-    skillId: "variability",
+    skillId: "signed-data-summaries",
     gradeBand: "6–8",
     description:
       "Find quartiles by the stated median-of-halves convention and subtract the lower quartile from the upper.",

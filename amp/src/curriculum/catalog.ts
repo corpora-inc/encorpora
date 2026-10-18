@@ -446,6 +446,7 @@ solid-cross-sections|7|geometry|Identify plane cross-sections of solids|surface-
 circle-measurement|7|geometry|Calculate circle area and circumference|decimal-arithmetic,integer-powers|7.G.B.4
 angle-relationships|7|geometry|Solve unknown angles using supplementary vertical and adjacent relationships|angle-measure,two-step-equations|7.G.B.5
 composite-measurement|7|geometry|Find area surface area and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6
+signed-data-summaries|7|data|Calculate exact median range and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data
 sampling|7|data|Explain why sample selection affects population conclusions|statistical-questions|7.SP.A.1,7.SP.A.2
 compare-distributions|7|data|Compare centers and spread of two distributions|variability|7.SP.B.3,7.SP.B.4
 probability|7|probability|Calculate simple event probabilities and compare observed frequencies|ratios|7.SP.C.5,7.SP.C.6,7.SP.C.7
@@ -1341,49 +1342,24 @@ for (const [id, description] of [
     status: "implemented",
   });
 
-// Bounded numerical calculations leave broader interpretation facets planned.
-for (const [skillId, facets] of [
+// Narrow computational facets do not certify the full statistics domain.
+const signedDataSkill = skills.find((s) => s.id === "signed-data-summaries")!;
+for (const [id, description] of [
   [
-    "mean-median",
-    [
-      [
-        "finite-median",
-        "Calculate the exact median of a finite list, retaining repeated observations.",
-      ],
-      [
-        "finite-range",
-        "Calculate the range of a finite list as maximum minus minimum.",
-      ],
-    ],
+    "finite-median",
+    "Calculate the exact median of five to nine listed signed whole or decimal values, retaining repetitions.",
   ],
   [
-    "variability",
-    [
-      [
-        "median-halves-iqr",
-        "Calculate interquartile range under an explicit median-of-halves convention.",
-      ],
-    ],
+    "finite-range",
+    "Calculate the exact range of five to nine listed signed whole or decimal values.",
   ],
-] as const) {
-  const skill = skills.find((s) => s.id === skillId)!;
-  for (const prerequisite of [
-    "decimal-arithmetic",
-    "absolute-value",
-    "signed-addition",
-  ])
-    if (!skill.prerequisites.includes(prerequisite))
-      skill.prerequisites.push(prerequisite);
-  for (const [id, description] of facets)
-    skill.facets.push({
-      id: `${skillId}.${id}`,
-      description,
-      status: "implemented",
-    });
-  skill.alignments.push({
-    standardId: "SAT.data",
-    basis: "editorial",
-    facet:
-      "Calculate bounded numerical measures of center or spread; graphical interpretation, distribution comparison, and selecting an appropriate summary require separate assessment.",
+  [
+    "median-halves-iqr",
+    "Calculate exact interquartile range for five to nine listed values under the stated median-of-halves convention.",
+  ],
+])
+  signedDataSkill.facets.push({
+    id: `signed-data-summaries.${id}`,
+    description,
+    status: "implemented",
   });
-}
