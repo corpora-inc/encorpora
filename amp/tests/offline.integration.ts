@@ -5,7 +5,7 @@ import { Pool } from "pg";
 import { generateKeyPair, exportPKCS8, exportSPKI } from "jose";
 import { migrate } from "../scripts/migrate.js";
 import { PostgresRepository } from "../src/server/repository.js";
-import { buildApp } from "../src/server/app.js";
+import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app.js";
 import {
   packSigner,
   verifyPack,
@@ -685,7 +685,7 @@ test(
         assert.equal(oversized.statusCode, 413);
         assert.equal(oversized.json().error, "request_too_large");
         let limited = false;
-        for (let i = 0; i < 185; i++) {
+        for (let i = 0; i < GLOBAL_RATE_LIMIT + 5; i++) {
           const response = await app.inject({
             method: "POST",
             url,

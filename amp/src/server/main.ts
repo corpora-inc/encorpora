@@ -1,3 +1,4 @@
+import { isIP } from "node:net";
 import { offlineSigningConfiguration } from "../offline/signing.js";
 import { registerOfflineRoutes } from "../offline/routes.js";
 import { registerPaymentEvidenceRoutes } from "../billing/evidence/routes.js";
@@ -15,6 +16,18 @@ import {
 import { buildApp } from "./app";
 import { developmentAuth, oidcAuth } from "./auth";
 import { PostgresRepository } from "./repository";
+/** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
+ * ingress address. Anything else is a configuration error. */
+function trustedProxies(value: string | undefined) {
+  const list = (value ?? "")
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+  for (const entry of list)
+    if (!isIP(entry.split("/")[0]!) || !/^[^/]+(\/\d{1,3})?$/.test(entry))
+      throw new Error(`Invalid AMP_TRUSTED_PROXIES entry: ${entry}`);
+  return list;
+}
 function required(name: string) {
   const value = process.env[name];
   if (!value) throw new Error(`${name} is required`);
@@ -44,7 +57,13 @@ const authenticate = development
           ? "token-use-access"
           : "rfc9068",
     });
-const app = buildApp({ repository, authenticate, development, logger: true });
+const app = buildApp({
+  repository,
+  authenticate,
+  development,
+  logger: true,
+  trustedProxies: trustedProxies(process.env.AMP_TRUSTED_PROXIES),
+});
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,

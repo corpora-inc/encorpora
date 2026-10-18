@@ -46,6 +46,7 @@
     "@tauri-apps/api": "^2.12.4",
     "drizzle-orm": "^0.45.4",
     "fastify": "^5.6.0",
+    "fastify-plugin": "^5.1.0",
     "jose": "^6.1.0",
     "katex": "^0.16.47",
     "oidc-client-ts": "^3.5.0",

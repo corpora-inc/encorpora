@@ -1,9 +1,10 @@
+import fp from "fastify-plugin";
 import { registerBookRoutes } from "../books/routes.js";
 import { readFile } from "node:fs/promises";
-import Fastify from "fastify";
+import Fastify, { type FastifyInstance } from "fastify";
 import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { generatedProblemSchema, type PublicProblem } from "../math/contracts";
 import {
   generateProblem,
@@ -30,21 +31,48 @@ const attemptSchema = z
     response: z.string().trim().min(1).max(200),
   })
   .strict();
-export function buildApp(options: {
+/** Requests per minute per credential, or per address when anonymous. */
+export const GLOBAL_RATE_LIMIT = 600;
+type AppOptions = {
   repository: Repository;
   authenticate: Authenticator;
   development?: boolean;
   logger?: boolean;
   bookPublicationDirectory?: string;
-}) {
+  /** Load-balancer addresses (CIDRs) whose X-Forwarded-For is believed, so
+   * rate limits apply per visitor rather than per proxy. Empty: none. */
+  trustedProxies?: readonly string[];
+};
+export function buildApp(options: AppOptions) {
   if (options.development && process.env.NODE_ENV === "production")
     throw new Error("Development mode is forbidden in production");
   const app = Fastify({
     logger: options.logger ?? false,
     bodyLimit: 32 * 1024,
-    trustProxy: false,
+    trustProxy: options.trustedProxies?.length
+      ? [...options.trustedProxies]
+      : false,
   });
-  app.register(rateLimit, { max: 180, timeWindow: "1 minute" });
+  // Signed-in requests are limited per credential, so a household or co-op
+  // behind one address is not throttled as one client; anonymous requests
+  // are limited per client address.
+  app.register(rateLimit, {
+    max: GLOBAL_RATE_LIMIT,
+    timeWindow: "1 minute",
+    keyGenerator: (request) => {
+      const credential = request.headers.authorization;
+      return credential
+        ? `credential:${createHash("sha256").update(credential).digest("hex")}`
+        : `address:${request.ip}`;
+    },
+  });
+  // Routes load after the limiter so its per-route hook sees every route;
+  // fastify-plugin keeps hooks and the error handler on the root instance.
+  app.register(fp(async (app) => routes(app, options)));
+  return app;
+}
+
+function routes(app: FastifyInstance, options: AppOptions) {
   app.addHook("onRequest", async (request, reply) => {
     if (request.url !== "/api/v1/catalog" && request.url !== "/api/v1/health")
       reply.header("Cache-Control", "no-store");
@@ -442,5 +470,4 @@ export function buildApp(options: {
     development: options.development,
     publicationDirectory: options.bookPublicationDirectory,
   });
-  return app;
 }
