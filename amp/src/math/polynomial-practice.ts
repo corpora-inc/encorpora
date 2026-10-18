@@ -270,7 +270,7 @@ export function generatePolynomialProblem(
         `Add the partial products: (${format(partials[0]!)}) + (${format(partials[1]!)}).`,
       );
       const hasLikeTerms = partials[0]!.some(
-        (coefficient, k) => coefficient !== 0 && partials[1]![k] !== 0,
+        (coefficient, k) => coefficient !== 0 && (partials[1]![k] ?? 0) !== 0,
       );
       explanation.push(
         ...(hasLikeTerms
