@@ -192,7 +192,12 @@ export function expressionToTex(source: string): string | null {
             ? take().value.replace("−", "-")
             : "";
         upper = atom();
-        upper = node(sign + inside(upper), "exponent", upper.end);
+        // An external sign applies to the whole written exponent group.
+        upper = node(
+          sign + (sign ? upper.tex : inside(upper)),
+          "exponent",
+          upper.end,
+        );
       } else {
         const text = [...exponent.value]
           .map((c) => superscriptValues[superscripts.indexOf(c)])
