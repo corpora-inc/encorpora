@@ -289,6 +289,8 @@ def review(stream):
     publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
     if publications.exists():
         print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
+    else:
+        print('Print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 

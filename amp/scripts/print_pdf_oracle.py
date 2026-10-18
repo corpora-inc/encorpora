@@ -2,7 +2,9 @@
 
 Run after `npm run publications`. The standard math review also runs this check
 when an export directory exists; CI exports the corpus before that review.
-The bounds detect misplaced/clipped text, not overall visual quality.
+PDF bounds detect text outside the intended margins. A separate browser check
+detects overflow and clipping in the source HTML, before text can be lost or
+shrunk in the PDF. Neither check certifies overall visual quality.
 """
 from hashlib import sha256
 from pathlib import Path
@@ -79,6 +81,14 @@ def review_print_pdfs(directory):
         for name in names), 'Invalid publication filename')
     require(set(names) == {path.name for path in directory.glob('*.pdf')},
             'PDF files do not match the publication inventory')
+    root = Path(__file__).resolve().parent.parent
+    documents = [{'file': str((directory / re.sub(r'-(Letter|A4)\.pdf$', '.html', name)).resolve()),
+                  'format': 'Letter' if name.endswith('-Letter.pdf') else 'A4'} for name in names]
+    layout = subprocess.run(['node', '--import', 'tsx', str(root / 'scripts/print-layout-oracle.ts')],
+                            cwd=root, input=json.dumps(documents), capture_output=True, text=True, timeout=180)
+    require(layout.returncode == 0, f'Print HTML layout review failed: {layout.stderr[:2000]}')
+    layout_report = json.loads(layout.stdout)
+    require(layout_report['documents'] == len(entries), 'Incomplete print HTML layout review')
     pages = 0
     for entry in entries:
         filename = entry['filename']
@@ -91,7 +101,7 @@ def review_print_pdfs(directory):
                                 capture_output=True, text=True, timeout=30)
         require(result.returncode == 0, f'PDF text inspection failed: {filename}')
         pages += check_page_bounds(result.stdout, filename)
-    return {'pdfs': len(entries), 'pages': pages, 'rejectedMutations': rejected}
+    return {'pdfs': len(entries), 'pages': pages, 'rejectedMutations': rejected, 'layout': layout_report}
 
 
 if __name__ == '__main__':
