@@ -1,5 +1,6 @@
 import { factoringFacetMappings } from "./factoring-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
+import { integerExponentFacetMappings } from "./integer-exponent-coverage";
 import { descriptiveStatisticsFacetMappings } from "./descriptive-statistics-coverage";
 import { percentChangeFacetMappings } from "./percent-change-coverage";
 import type { FacetMapping } from "./coverage";
@@ -11,6 +12,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 export const actualFacetMappings: readonly FacetMapping[] = [
   ...factoringFacetMappings,
   ...circleMeasurementFacetMappings,
+  ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
   ...percentChangeFacetMappings,
   ...rightTriangleFacetMappings,

@@ -1,5 +1,6 @@
 import { factoringMethods } from "./factoring-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
+import { integerExponentMethods } from "./integer-exponent-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
 import { inequalityMethods } from "./inequality-lessons";
@@ -14,6 +15,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
   ...factoringMethods,
+  ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...polynomialMethods,
