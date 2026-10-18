@@ -1,4 +1,4 @@
-import { absoluteValuePrinciples } from "./absolute-value-lessons";
+import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
 import { percentChangePrinciples } from "./percent-change-lessons";
 import { inequalityPrinciples } from "./inequality-lessons";
@@ -6,13 +6,15 @@ import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
+import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
-  ...polynomialPrinciples,
   ...absoluteValuePrinciples,
+  ...polynomialPrinciples,
+  ...circleMeasurementPrinciples,
   ...percentChangePrinciples,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,

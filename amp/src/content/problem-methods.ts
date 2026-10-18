@@ -1,4 +1,4 @@
-import { absoluteValueMethods } from "./absolute-value-lessons";
+import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
 import { inequalityMethods } from "./inequality-lessons";
@@ -6,6 +6,7 @@ import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
+import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 /** Authored methods, keyed by template id. Keep each one short and complete:
@@ -14,8 +15,9 @@ import type { ProblemMethod } from "./problem-lessons";
 export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
-  ...polynomialMethods,
   ...absoluteValueMethods,
+  ...polynomialMethods,
+  ...circleMeasurementMethods,
   ...percentChangeMethods,
   ...inequalityMethods,
   ...linearSystemMethods,

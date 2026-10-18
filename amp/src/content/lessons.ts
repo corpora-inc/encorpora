@@ -1,4 +1,4 @@
-import { absoluteValueLessons } from "./absolute-value-lessons";
+import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
@@ -7,6 +7,7 @@ import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
+import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
 import { choiceLessons } from "./choice-lessons.js";
@@ -26,18 +27,22 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
-      | "absolute-value-distance"
-      | "absolute-value-shifted"
       | "descriptive-median"
       | "descriptive-range"
       | "descriptive-iqr"
       | "thirds-and-fourths"
+      | "circle-circumference"
+      | "circle-area"
+      | "circle-arc"
+      | "circle-sector"
       | "percent-change-bars"
       | "percent-change-reverse"
       | "inequality-half-lines"
       | "linear-system-intersection"
       | "linear-system-count"
       | "right-triangle-orientation"
+      | "absolute-value-distance"
+      | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
   workedExample: {
@@ -510,8 +515,9 @@ export const lessons: readonly Lesson[] = [
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
-  ...polynomialLessons,
   ...absoluteValueLessons,
+  ...polynomialLessons,
+  ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

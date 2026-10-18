@@ -444,7 +444,7 @@ linear-inequalities|7|algebra|Solve inequalities and interpret direction changes
 scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proportional-relationships,triangle-area|7.G.A.1
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
 solid-cross-sections|7|geometry|Identify plane cross-sections of solids|surface-area|7.G.A.3
-circle-measurement|7|geometry|Calculate circle area and circumference|decimal-arithmetic,integer-powers|7.G.B.4
+circle-measurement|7|geometry|Calculate circle area and circumference|decimal-arithmetic,integer-powers,fraction-multiplication|7.G.B.4
 angle-relationships|7|geometry|Solve unknown angles using supplementary vertical and adjacent relationships|angle-measure,two-step-equations|7.G.B.5
 composite-measurement|7|geometry|Find area surface area and volume of compound figures|surface-area,fractional-prism-volume|7.G.B.6
 signed-data-summaries|7|data|Calculate exact median range and interquartile range of signed numerical data|mean-median,decimal-arithmetic,signed-addition,absolute-value|6.SP.B.5,SAT.data
@@ -498,7 +498,7 @@ geometric-constructions|geometry|geometry|Construct bisectors perpendiculars and
 right-triangle-trigonometry|geometry|trigonometry|Use sine cosine and tangent ratios to solve right triangles|similarity-proofs,pythagorean-theorem|HSG,SAT.geometry
 special-right-triangles|geometry|trigonometry|Derive and use special right-triangle side ratios|right-triangle-trigonometry|HSG,SAT.geometry
 circle-theorems|geometry|geometry|Relate chords tangents arcs and inscribed angles|angle-relationships,geometric-proof|HSG,SAT.geometry
-arc-sector-measure|geometry|geometry|Calculate arc length and sector area|circle-measurement,percentages|HSG,SAT.geometry
+arc-sector-measure|geometry|geometry|Calculate arc length and sector area|circle-measurement,percentages,angle-measure,fraction-multiplication|HSG,SAT.geometry
 circle-equations|geometry|geometry|Interpret and construct coordinate equations of circles|coordinate-distance,complete-square|HSG,SAT.geometry
 coordinate-proofs|geometry|geometry|Use slopes distances and midpoints to prove geometric claims|slope,coordinate-distance,geometric-proof|HSG
 geometric-modeling|geometry|modeling|Choose geometric models for design density and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM
@@ -1293,6 +1293,29 @@ export const expectedHighSchoolStandardIds = Object.entries(
 );
 
 // Narrow implemented tasks do not certify the broader planned inequality skill.
+const absoluteValueSkill = skills.find(
+  (s) => s.id === "absolute-value-equations",
+)!;
+for (const [id, description] of [
+  [
+    "direct-solution-set",
+    "Select complete real solution sets for absolute-value equations with bounded rational distances.",
+  ],
+  [
+    "affine-solution-set",
+    "Solve a single absolute value of an affine expression with bounded integer coefficients and rational targets.",
+  ],
+  [
+    "transformed-solution-set",
+    "Isolate a scaled, shifted absolute value and classify bounded exact solution sets, including true and false constant equations.",
+  ],
+])
+  absoluteValueSkill.facets.push({
+    id: `absolute-value-equations.${id}`,
+    description,
+    status: "implemented",
+  });
+
 const inequalitySkill = skills.find((s) => s.id === "linear-inequalities")!;
 inequalitySkill.alignments.push({
   standardId: "SAT.algebra",
@@ -1371,29 +1394,52 @@ for (const [id, description] of [
     status: "implemented",
   });
 
-const absoluteValueSkill = skills.find(
-  (s) => s.id === "absolute-value-equations",
-)!;
-for (const [id, description] of [
+// Exact forward formulas are bounded facets of broader circle measurement.
+for (const [skillId, facets] of [
   [
-    "direct-solution-set",
-    "Select complete real solution sets for absolute-value equations with bounded rational distances.",
+    "circle-measurement",
+    [
+      [
+        "exact-circumference",
+        "Calculate exact circle circumference from a positive radius or diameter.",
+      ],
+      [
+        "exact-area",
+        "Calculate exact circle area from a positive radius or diameter.",
+      ],
+    ],
   ],
   [
-    "affine-solution-set",
-    "Solve a single absolute value of an affine expression with bounded integer coefficients and rational targets.",
+    "arc-sector-measure",
+    [
+      [
+        "degree-arc-length",
+        "Calculate exact arc length using a stated central angle in degrees.",
+      ],
+      [
+        "degree-sector-area",
+        "Calculate exact sector area using a stated central angle in degrees.",
+      ],
+    ],
   ],
-  [
-    "transformed-solution-set",
-    "Isolate a scaled, shifted absolute value and classify bounded exact solution sets, including true and false constant equations.",
-  ],
-])
-  absoluteValueSkill.facets.push({
-    id: `absolute-value-equations.${id}`,
-    description,
-    status: "implemented",
-  });
-
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+  if (!skill.alignments.some((a) => a.standardId === "SAT.geometry"))
+    skill.alignments.push({
+      standardId: "SAT.geometry",
+      basis: "editorial",
+      facet:
+        skillId === "circle-measurement"
+          ? "Calculate exact circle circumference and area from a radius or diameter; broader modeling and inverse measurements require separate assessment."
+          : "Calculate exact arc length and sector area from a stated central angle in degrees; radians, inverse measurements and contextual models require separate assessment.",
+    });
+}
 // Narrow computational facets do not certify the full statistics domain.
 const signedDataSkill = skills.find((s) => s.id === "signed-data-summaries")!;
 for (const [id, description] of [

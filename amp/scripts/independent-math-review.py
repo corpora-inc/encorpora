@@ -16,13 +16,14 @@ from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
+from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures, review_absolute_value_content, review_absolute_value_content_mutations
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
-from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures, review_absolute_value_content, review_absolute_value_content_mutations
+from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
@@ -40,7 +41,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = ABSOLUTE_VALUE | SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM | PERCENT_CHANGE | DESCRIPTIVE_STATISTICS
+SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM
 
 
 def require(condition, message):
@@ -49,11 +50,13 @@ def require(condition, message):
         raise ValueError(message)
 
 
+SUPPORTED |= ABSOLUTE_VALUE
+
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
-    if template in ABSOLUTE_VALUE:
-        return solve_absolute_value(public)
+    if template in CIRCLE:
+        return solve_circle(public)
     if template in DESCRIPTIVE_STATISTICS:
         return solve_descriptive_statistics(public)
     if template in PERCENT_CHANGE:
@@ -68,6 +71,8 @@ def solve(public):
         return solve_polynomial(public)
     if template in QUADRATIC:
         return solve_quadratic(public)
+    if template in ABSOLUTE_VALUE:
+        return solve_absolute_value(public)
     if template in MEASUREMENT:
         return solve_measurement(public)
     if template in ALGEBRA:
@@ -260,13 +265,14 @@ def solve(public):
 
 
 def review(stream):
-    review_absolute_value_fixtures()
-    review_absolute_value_content_mutations()
+    review_circle_fixtures()
     review_descriptive_statistics_fixtures()
     review_statistics_content_mutations()
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
+    review_absolute_value_fixtures()
+    review_absolute_value_content_mutations()
     review_polynomial_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
@@ -329,7 +335,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
-    print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
+    print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)
     print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
@@ -338,6 +344,7 @@ def review(stream):
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
     publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'

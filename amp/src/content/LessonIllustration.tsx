@@ -1,4 +1,4 @@
-import { AbsoluteValueIllustration } from "./AbsoluteValueIllustration";
+import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
@@ -7,6 +7,7 @@ import {
   RightTriangleOrientation,
   PythagoreanRearrangement,
 } from "./RightTriangleIllustration";
+import { AbsoluteValueIllustration } from "./AbsoluteValueIllustration";
 import type { Lesson } from "./lessons";
 import React from "react";
 
@@ -16,9 +17,13 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
-  if (kind === "absolute-value-distance") return <AbsoluteValueIllustration />;
-  if (kind === "absolute-value-shifted")
-    return <AbsoluteValueIllustration shifted />;
+  if (
+    kind === "circle-circumference" ||
+    kind === "circle-area" ||
+    kind === "circle-arc" ||
+    kind === "circle-sector"
+  )
+    return <CircleMeasurementIllustration kind={kind} />;
   if (kind === "descriptive-median")
     return <DescriptiveStatisticsIllustration kind="median" />;
   if (kind === "descriptive-range")
@@ -32,6 +37,9 @@ export function LessonIllustration({
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
+  if (kind === "absolute-value-distance") return <AbsoluteValueIllustration />;
+  if (kind === "absolute-value-shifted")
+    return <AbsoluteValueIllustration shifted />;
   if (kind === "inequality-half-lines") return <InequalityHalfLines />;
   if (kind === "linear-system-intersection")
     return <LinearSystemIllustration kind="intersection" />;

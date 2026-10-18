@@ -1,7 +1,7 @@
 import {
-  absoluteValueTemplates,
-  generateAbsoluteValueProblem,
-} from "./absolute-value-practice";
+  circleMeasurementTemplates,
+  generateCircleMeasurementProblem,
+} from "./circle-measurement-practice";
 import {
   descriptiveStatisticsTemplates,
   generateDescriptiveStatisticsProblem,
@@ -30,6 +30,10 @@ import {
   quadraticTemplates,
   generateQuadraticProblem,
 } from "./quadratic-practice";
+import {
+  absoluteValueTemplates,
+  generateAbsoluteValueProblem,
+} from "./absolute-value-practice";
 import {
   measurementTemplates,
   generateMeasurementProblem,
@@ -183,6 +187,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...circleMeasurementTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -302,11 +307,12 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
-    ...absoluteValueTemplates,
+    ...circleMeasurementTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
+    ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -330,8 +336,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
-  if (absoluteValueTemplates.some((t) => t.id === templateId))
-    return generateAbsoluteValueProblem(templateId, seed);
+  if (circleMeasurementTemplates.some((t) => t.id === templateId))
+    return generateCircleMeasurementProblem(templateId, seed);
   if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
@@ -346,6 +352,8 @@ function generateRawProblem(
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
+  if (absoluteValueTemplates.some((t) => t.id === templateId))
+    return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
     return generateMeasurementProblem(templateId, seed);
   if (algebraTemplates.some((t) => t.id === templateId))
