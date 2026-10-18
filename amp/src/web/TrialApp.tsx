@@ -11,6 +11,11 @@ import {
   gradeName,
   type FrontierMap as FrontierData,
 } from "./Home";
+import {
+  TrialTeaching,
+  type TrialView,
+  type TrialCatalog,
+} from "./TrialTeaching";
 import { PracticeWorkspace } from "./PracticeWorkspace";
 
 /** The trial token lives on this device only; it holds no personal data. */
@@ -30,10 +35,7 @@ export function clearStoredTrial() {
   }
 }
 
-type Catalog = {
-  templates: TemplateMetadata[];
-  skills: { id: string; gradeBand: string; strand: string }[];
-};
+type Catalog = TrialCatalog;
 type Batch = { problems: PublicProblem[]; trialRemaining?: number };
 type Props = {
   catalog: Catalog | null;
@@ -56,6 +58,7 @@ export function TrialApp(props: Props) {
   const [error, setError] = useState("");
   const [remaining, setRemaining] = useState<number | null>(null);
   const [finished, setFinished] = useState(false);
+  const [progress, setProgress] = useState<TrialView | null>(null);
   const [frontier, setFrontier] = useState<FrontierData | null>(null);
   const upcoming = useRef<Promise<Batch | "complete"> | null>(null);
   const practicing = !!problem && !finished;
@@ -75,6 +78,10 @@ export function TrialApp(props: Props) {
     if (response.status === 401 && auth) {
       clearStoredTrial();
       setToken(null);
+      setLearnerId(null);
+      setProblem(null);
+      setFinished(false);
+      setProgress(null);
     }
     if (!response.ok) throw new Error(data.error ?? "Please try again.");
     return data as T;
@@ -85,8 +92,13 @@ export function TrialApp(props: Props) {
     try {
       await work();
     } catch (failure) {
-      if (failure instanceof TrialComplete) await finish(true);
-      else {
+      if (failure instanceof TrialComplete) {
+        try {
+          await finish(true);
+        } catch (error) {
+          setError(error instanceof Error ? error.message : "Try again.");
+        }
+      } else {
         console.error("Trial request failed", failure);
         setError(failure instanceof Error ? failure.message : "Try again.");
       }
@@ -94,13 +106,21 @@ export function TrialApp(props: Props) {
       setBusy(false);
     }
   }
-  async function finish(complete = false) {
+  async function finish(complete = false, id = learnerId) {
     setFinished(true);
     setFrontier(null);
     if (complete) setRemaining(0);
     setProblem(null);
-    if (learnerId)
-      setFrontier(await api<FrontierData>(`/learners/${learnerId}/frontier`));
+    if (id) {
+      const [map, stage] = await Promise.all([
+        api<FrontierData>(`/learners/${id}/frontier`),
+        api<TrialView>(`/learners/${id}/trial-progress`),
+      ]);
+      setFrontier(map);
+      setProgress(stage);
+      if (stage.phase === "complete")
+        await api(`/learners/${id}/trial-paywall`, {});
+    }
   }
   function request(id: string) {
     return api<Batch>(`/learners/${id}/batches`, {
@@ -112,8 +132,8 @@ export function TrialApp(props: Props) {
       throw failure;
     });
   }
-  function show(batch: Batch | "complete") {
-    if (batch === "complete") return finish(true);
+  function show(batch: Batch | "complete", id = learnerId) {
+    if (batch === "complete") return finish(true, id);
     setProblem(batch.problems[0] ?? null);
     setRemaining(batch.trialRemaining ?? null);
     setResponse("");
@@ -130,7 +150,9 @@ export function TrialApp(props: Props) {
       const id = learners[0]?.id;
       if (!id) return;
       setLearnerId(id);
-      await show(await request(id));
+      const stage = await api<TrialView>(`/learners/${id}/trial-progress`);
+      setProgress(stage);
+      await show(await request(id), id);
     });
   }, [token]);
 
@@ -172,50 +194,84 @@ export function TrialApp(props: Props) {
 
   // The map appears only with the estimate, never from placeholder values.
   if (finished && !frontier)
-    return <main className="trial-result" aria-busy="true" />;
+    return (
+      <main className="trial-result" aria-busy={!error}>
+        {error && (
+          <>
+            <p role="alert">{error}</p>
+            <button onClick={() => void run(() => finish())}>Retry</button>
+          </>
+        )}
+      </main>
+    );
   if (finished)
     return (
       <main className="trial-result">
         <section className="home-hero">
           <div>
-            <h1>Placement</h1>
+            <h1>
+              {progress?.phase === "complete"
+                ? "Your practice preview"
+                : "Placement"}
+            </h1>
             {frontier && frontier.overall.answered > 0 && (
               <p className="home-level">
                 Estimated level: {gradeName(frontier.overall.level)}
               </p>
             )}
           </div>
-          {remaining !== null && remaining > 0 && (
-            <button
-              className="secondary"
-              disabled={busy}
-              onClick={() =>
-                void run(async () => {
-                  setFinished(false);
-                  await show(await request(learnerId!));
-                })
-              }
-            >
-              Continue ({remaining} left)
-            </button>
-          )}
+          {progress?.phase === "placement" &&
+            remaining !== null &&
+            remaining > 0 && (
+              <button
+                className="secondary"
+                disabled={busy}
+                onClick={() =>
+                  void run(async () => {
+                    setFinished(false);
+                    await show(await request(learnerId!));
+                  })
+                }
+              >
+                Continue ({remaining} left)
+              </button>
+            )}
         </section>
-        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
-        <section className="paywall">
-          <h2>Unlock a year of AMP</h2>
-          <ul>
-            <li>Practice that adapts to every answer, counting to SAT.</li>
-            <li>A short lesson for every type of problem.</li>
-            <li>Printable worksheets with full solutions.</li>
-          </ul>
-          <button className="go-button" onClick={props.signIn}>
-            Create a parent account
-          </button>
-          <p className="paywall-note">
-            Pay by card or with your state’s ESA. This progress is saved to your
-            family.
+        <details className="trial-placement-map">
+          <summary>View placement map and uncertainty</summary>
+          <FrontierMap
+            name="the learner"
+            frontier={frontier}
+            strands={strands}
+          />
+          <p className="trial-note">
+            The shaded ranges show uncertainty in the grade-level estimates.{" "}
+            {progress?.placementAnswered ?? 0} placement answers sample a few
+            problem types; they do not establish a grade placement or full
+            curriculum mastery.
           </p>
-        </section>
+        </details>
+        {error && <p role="alert">{error}</p>}
+        {progress && progress.phase !== "placement" && (
+          <TrialTeaching
+            progress={progress}
+            frontier={frontier!}
+            catalog={props.catalog}
+            busy={busy}
+            signIn={props.signIn}
+            begin={() =>
+              void run(async () => {
+                await api(`/learners/${learnerId}/trial-teaching`, {});
+                setProgress(
+                  await api<TrialView>(`/learners/${learnerId}/trial-progress`),
+                );
+                setFinished(false);
+                await show(await request(learnerId!));
+              })
+            }
+            printable={() => api(`/learners/${learnerId}/trial-printable`)}
+          />
+        )}
       </main>
     );
   if (!token || !learnerId)

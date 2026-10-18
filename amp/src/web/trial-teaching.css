@@ -1,0 +1,133 @@
+.trial-teaching {
+  padding: clamp(18px, 4vw, 30px);
+  border: 1px solid var(--line, #dcded5);
+  border-radius: 20px;
+  background: var(--paper, #fffef9);
+}
+.trial-teaching h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.25rem, 4vw, 1.65rem);
+}
+.trial-teaching > p {
+  line-height: 1.6;
+}
+.trial-step {
+  margin-top: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.trial-teaching > button {
+  display: block;
+  margin-top: 18px;
+  max-width: 100%;
+  white-space: normal;
+}
+.trial-note {
+  font-size: 0.9rem;
+  color: #526456;
+}
+.trial-scores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 12px;
+}
+.trial-scores > div {
+  padding: 16px;
+  border-radius: 12px;
+  background: #edf2e9;
+}
+.trial-scores dt {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.trial-scores dd {
+  margin: 8px 0 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+.trial-plan {
+  padding-left: 22px;
+  line-height: 1.65;
+}
+.trial-plan li + li {
+  margin-top: 12px;
+}
+.trial-teaching summary {
+  cursor: pointer;
+  padding: 12px 0;
+}
+.trial-coverage-list {
+  max-height: 18rem;
+  overflow: auto;
+  padding-left: 22px;
+  line-height: 1.6;
+}
+.trial-print-sheet {
+  display: none;
+}
+@media print {
+  body > *:not(.trial-print-sheet) {
+    display: none !important;
+  }
+  body,
+  .trial-print-sheet {
+    background: white;
+    color: black;
+  }
+  .trial-print-sheet {
+    display: block;
+    font-size: 11pt;
+    padding: 0;
+  }
+  .trial-print-sheet h1 {
+    font-size: 22pt;
+  }
+  .trial-print-sheet .problem-lesson,
+  .trial-print-sheet .lesson-example {
+    max-height: none;
+    overflow: visible;
+    border: 0;
+    padding: 0;
+  }
+  .trial-print-sheet .lesson-example,
+  .trial-print-sheet .trial-print-examples article {
+    break-inside: avoid;
+  }
+  .trial-print-sheet svg {
+    max-width: 100%;
+    max-height: 160px;
+  }
+  .trial-print-examples {
+    break-before: page;
+  }
+  @page {
+    size: auto;
+    margin: 18mm;
+  }
+}
+.trial-evidence {
+  margin: 16px 0 0;
+}
+.trial-evidence > div {
+  padding: 12px 0;
+  border-top: 1px solid #dcded5;
+}
+.trial-evidence dt {
+  font-weight: 650;
+}
+.trial-evidence dd {
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
+.trial-placement-map > summary {
+  cursor: pointer;
+  padding: 14px 2px;
+  font-weight: 600;
+}
+.trial-placement-map[open] > summary {
+  margin-bottom: 10px;
+}
+.trial-teaching .problem-lesson {
+  margin-top: 20px;
+}

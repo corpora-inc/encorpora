@@ -1,3 +1,10 @@
+import { teachingMaterial } from "./trial-material";
+import {
+  readTrialProgress,
+  recordTrialEvent,
+  TEACHING_ATTEMPTS,
+  type TrialProgress,
+} from "./trial-progress";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import {
@@ -50,6 +57,7 @@ export type Outcome = {
 export type SavedProblem = GeneratedProblem & {
   hintViewed?: boolean;
   lessonViewed?: boolean;
+  trialTeaching?: boolean;
 };
 export class ApiError extends Error {
   constructor(
@@ -76,6 +84,11 @@ export interface LearnerTransaction {
   hasAccess(): Promise<boolean>;
   /** Answers left in an anonymous trial, or null for a parent's learner. */
   trialRemaining(): Promise<number | null>;
+  trialProgress(): Promise<TrialProgress | null>;
+  beginTrialTeaching(): Promise<void>;
+  trialPaywall(): Promise<void>;
+  trialPlacementProblems(): Promise<SavedProblem[]>;
+  trialMaterial(): Promise<ReturnType<typeof teachingMaterial>>;
 }
 export interface Repository {
   hasConsent(accountId: string): Promise<boolean>;
@@ -187,6 +200,14 @@ export class PostgresRepository implements Repository {
         [learnerId, accountId],
       );
       if (!found.rowCount) throw new ApiError(404, "Learner not found");
+      if (isTrialAccount(accountId)) {
+        const live = await client.query(
+          "SELECT 1 FROM amp_trials WHERE learner_id=$1 AND adopted_at IS NULL AND expires_at>now()",
+          [learnerId],
+        );
+        if (!live.rowCount)
+          throw new ApiError(401, "This free trial has ended");
+      }
       const result = await run(new PgTransaction(client, learnerId));
       await client.query("COMMIT");
       return result;
@@ -216,6 +237,7 @@ export class PostgresRepository implements Repository {
         "INSERT INTO amp_trials(id,token_hash,learner_id,expires_at) VALUES($1,$2,$3,$4)",
         [id, trialTokenHash(token), learnerId, expiresAt],
       );
+      await recordTrialEvent(client, learnerId, "trial_started");
       await client.query("COMMIT");
     } catch (error) {
       await client.query("ROLLBACK");
@@ -419,18 +441,66 @@ export class PgTransaction implements LearnerTransaction {
         JSON.stringify(outcome),
       ],
     );
+    const progress = await this.trialProgress();
+    if (progress?.phase === "lesson")
+      await recordTrialEvent(this.db, this.learnerId, "placement_done");
+    if (progress?.phase === "complete")
+      await recordTrialEvent(this.db, this.learnerId, "teaching_done");
+  }
+  async trialPlacementProblems() {
+    const result = await this.db.query(
+      "SELECT content FROM amp_instances WHERE learner_id=$1 AND NOT COALESCE((content->>'trialTeaching')::boolean,false)",
+      [this.learnerId],
+    );
+    return result.rows.map((row) => row.content as SavedProblem);
+  }
+  async trialProgress() {
+    return readTrialProgress(this.db, this.learnerId, () => this.frontier());
+  }
+  async trialMaterial() {
+    const stored = await this.db.query(
+      "SELECT teaching_material FROM amp_trials WHERE learner_id=$1 AND adopted_at IS NULL",
+      [this.learnerId],
+    );
+    if (stored.rows[0]?.teaching_material)
+      return stored.rows[0].teaching_material as NonNullable<
+        ReturnType<typeof teachingMaterial>
+      >;
+    const progress = await this.trialProgress();
+    return progress?.templateId && progress.phase !== "placement"
+      ? teachingMaterial(
+          progress.templateId,
+          this.learnerId,
+          (await this.trialPlacementProblems()).map((p) => p.public),
+        )
+      : null;
+  }
+  async beginTrialTeaching() {
+    const progress = await this.trialProgress();
+    if (!progress || progress.phase === "placement")
+      throw new ApiError(409, "Finish placement first");
+    if (progress.phase !== "lesson") return;
+    const material = await this.trialMaterial();
+    if (!material) throw new ApiError(409, "This lesson is unavailable");
+    await this.db.query(
+      "UPDATE amp_trials SET teaching_template_id=$2,teaching_started_at=now(),teaching_material=$3 WHERE learner_id=$1 AND adopted_at IS NULL",
+      [this.learnerId, progress.templateId, JSON.stringify(material)],
+    );
+  }
+  async trialPaywall() {
+    const progress = await this.trialProgress();
+    if (!progress || progress.phase !== "complete")
+      throw new ApiError(409, "Finish the teaching sequence first");
+    await recordTrialEvent(this.db, this.learnerId, "paywall");
   }
   async trialRemaining() {
-    const learner = await this.db.query(
-      "SELECT account_id FROM amp_learners WHERE id=$1",
-      [this.learnerId],
-    );
-    if (!isTrialAccount(learner.rows[0]?.account_id ?? "")) return null;
-    const answered = await this.db.query(
-      "SELECT count(*)::int AS n FROM amp_attempts WHERE learner_id=$1",
-      [this.learnerId],
-    );
-    return Math.max(0, TRIAL_ATTEMPTS - answered.rows[0].n);
+    const progress = await this.trialProgress();
+    if (!progress) return null;
+    if (progress.phase === "placement")
+      return TRIAL_ATTEMPTS - progress.placementAnswered;
+    if (progress.phase === "teaching")
+      return TEACHING_ATTEMPTS - progress.after.answered;
+    return 0;
   }
   async hasAccess() {
     const result = await this.db.query(
