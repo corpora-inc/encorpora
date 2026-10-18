@@ -1,3 +1,4 @@
+import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
 import { licenseSummary, licenseChannel } from "./family-access";
@@ -11,6 +12,7 @@ import "./family-center.css";
 import { nativeRuntime } from "./native-runtime";
 interface Props {
   token: string;
+  accountsEnabled?: boolean;
   identity?: string;
   onChanged: (summary: FamilySummary) => void;
   onClose: () => void;
@@ -42,6 +44,7 @@ const messages: Record<string, string> = {
 };
 export function FamilyCenter({
   token,
+  accountsEnabled = false,
   identity = token,
   onChanged,
   onClose,
@@ -64,9 +67,9 @@ export function FamilyCenter({
       paymentTrigger.current?.focus({ preventScroll: true });
     paymentWasOpen.current = paymentHistoryOpen;
   }, [paymentHistoryOpen]);
-  const [section, setSection] = useState<"learners" | "access" | "privacy">(
-    initialSection,
-  );
+  const [section, setSection] = useState<
+    "learners" | "access" | "privacy" | "security"
+  >(initialSection);
   const [localLearnerId, setLocalLearnerId] = useState("");
   const [accessDetails, setAccessDetails] = useState(false);
   const [adding, setAdding] = useState(false);
@@ -407,9 +410,17 @@ export function FamilyCenter({
         </button>
       </div>
       <nav className="family-tabs" aria-label="Family sections">
-        {(["learners", "access", "privacy"] as const).map((value) => (
+        {(
+          [
+            "learners",
+            "access",
+            "privacy",
+            ...(accountsEnabled ? ["security" as const] : []),
+          ] as const
+        ).map((value) => (
           <button
             key={value}
+            data-security-tab={value === "security" ? "" : undefined}
             aria-current={section === value ? "page" : undefined}
             onClick={() => {
               setSection(value);
@@ -425,7 +436,9 @@ export function FamilyCenter({
               ? "Learners"
               : value === "access"
                 ? "Access"
-                : "Privacy"}
+                : value === "privacy"
+                  ? "Privacy"
+                  : "Security"}
           </button>
         ))}
       </nav>
@@ -460,6 +473,7 @@ export function FamilyCenter({
         </FocusDialog>
       )}
       <div className="family-body" ref={body}>
+        {section === "security" && <AccountSecurity />}
         {error && (
           <p className="family-error" role="alert">
             {error}

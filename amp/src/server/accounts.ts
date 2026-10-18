@@ -1,3 +1,4 @@
+import { accountSecurity, SECURITY_FRESH_SECONDS } from "./account-security";
 import { betterAuth } from "better-auth";
 import { bearer, twoFactor } from "better-auth/plugins";
 import { fromNodeHeaders } from "better-auth/node";
@@ -193,7 +194,10 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       ...(config.apple ? ["https://appleid.apple.com"] : []),
     ],
     user: { modelName: "amp_auth_users" },
-    session: { modelName: "amp_auth_sessions" },
+    session: {
+      modelName: "amp_auth_sessions",
+      freshAge: SECURITY_FRESH_SECONDS,
+    },
     verification: { modelName: "amp_auth_verifications" },
     account: {
       modelName: "amp_auth_accounts",
@@ -251,6 +255,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       }),
     },
     plugins: [
+      accountSecurity(pool, config),
       bearer(),
       twoFactor({
         issuer: "AMP",

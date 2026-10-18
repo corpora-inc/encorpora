@@ -156,6 +156,21 @@ export function AccountSignIn() {
           {error}
         </p>
       )}
+      {step === "sign-in" && (
+        <button
+          type="button"
+          className="secondary"
+          disabled={busy}
+          onClick={() =>
+            void run(async () => {
+              fail(await accountClient.signIn.passkey());
+              done();
+            })
+          }
+        >
+          Sign in with a passkey
+        </button>
+      )}
       {showProviders && providers.length > 0 && (
         <div className="account-providers">
           {providers.map((provider) => (

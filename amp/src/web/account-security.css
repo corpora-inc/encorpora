@@ -1,0 +1,149 @@
+.account-security {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 12px 4px;
+}
+.account-security h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+.account-security p {
+  line-height: 1.5;
+}
+.security-email {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+.security-fresh {
+  font-size: 0.875rem;
+  color: #486357;
+}
+.security-fresh a {
+  color: #14574a;
+  text-underline-offset: 3px;
+}
+.security-panels {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.security-panel {
+  border: 1px solid #cdd8cb;
+  border-radius: 14px;
+  background: #fffefa;
+  overflow: hidden;
+}
+.security-panel h3 {
+  margin: 0;
+}
+.security-panel-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: transparent;
+  color: #173e3a;
+  padding: 16px;
+  border-radius: 0;
+  font-size: 1.05rem;
+}
+.security-panel-toggle small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-top: 4px;
+  color: #486357;
+}
+.security-panel-body {
+  padding: 0 16px 16px;
+  display: grid;
+  gap: 12px;
+}
+.security-panel-body p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.account-security form,
+.account-security label {
+  display: grid;
+  gap: 8px;
+}
+.account-security form {
+  gap: 14px;
+}
+.account-security label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.account-security input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 11px;
+  border: 1px solid #aebbaf;
+  border-radius: 8px;
+  font: inherit;
+  background: white;
+  color: #173e3a;
+}
+.security-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.account-security button {
+  min-height: 44px;
+  white-space: normal;
+}
+.security-method {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dce3d7;
+  overflow-wrap: anywhere;
+}
+.security-qr {
+  max-width: 100%;
+  height: auto;
+  justify-self: center;
+}
+.security-secret code {
+  overflow-wrap: anywhere;
+}
+.security-backup {
+  display: grid;
+  gap: 12px;
+  background: #eef2e8;
+  padding: 12px;
+  border-radius: 10px;
+}
+.security-backup h4 {
+  margin: 0;
+}
+.security-backup ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.security-backup code {
+  font-size: 0.85rem;
+}
+.security-confirm {
+  position: sticky;
+  bottom: 0;
+  border: 1px solid #aebbaf;
+  border-radius: 12px;
+  background: #fffefa;
+  padding: 12px;
+  margin-top: 16px;
+  box-shadow: 0 -4px 20px #173e3a14;
+}
+.family-tabs:has([data-security-tab]) {
+  grid-template-columns: repeat(4, 1fr);
+}

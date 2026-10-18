@@ -120,7 +120,16 @@ export function onSessionChanged(
   error?: (message: string) => void,
 ) {
   if (nativeRuntime) return nativeSessionEvents(update, error);
-  if (!manager) return () => {};
+  if (!manager) {
+    const changed = () => {
+      void accessSession()
+        .then(update)
+        .catch((failure) => error?.(String(failure)));
+    };
+    window.addEventListener("amp-account-session-changed", changed);
+    return () =>
+      window.removeEventListener("amp-account-session-changed", changed);
+  }
   const loaded = (user: User) => update(session(user));
   const unloaded = () => update(null);
   manager.events.addUserLoaded(loaded);

@@ -1014,6 +1014,7 @@ function App() {
         />
       ) : familyOpen && token ? (
         <FamilyCenter
+          accountsEnabled={authMode === "accounts"}
           onConsentEnrollment={() => openConsent()}
           returnToConsent={consentReturn}
           selectedLearnerId={familyLearnerId || learnerId || ""}
