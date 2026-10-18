@@ -109,7 +109,7 @@ def parsed(public):
         require(grouped is not None, 'Expected a grouped linear left side')
         inner = affine(grouped[2])
         require(inner[0].denominator == inner[1].denominator == 1 and
-                1 <= abs(inner[0]) <= 6 and abs(inner[1]) <= 6,
+                1 <= abs(inner[0]) <= 6 and 1 <= abs(inner[1]) <= 6,
                 'Grouped coefficients outside reviewed domain')
         require(right[0] != 0, 'Both-sides family needs a variable term on the right')
         if template == 'grouped-linear-inequality':
@@ -151,6 +151,17 @@ def solve_inequality(public):
         for boundary in boundaries:
             require(abs(boundary.numerator) <= 12 and boundary.denominator <= 6,
                     'Candidate boundary outside reviewed domain')
+        coefficient = left[0]-right[0]
+        require(abs(coefficient.numerator) <= 48, 'Remaining coefficient exceeds arithmetic budget')
+        # Check both possible boundaries, not only the true answer: target-dependent
+        # rejection would make the arithmetic budget an answer-choice shortcut.
+        for boundary in boundaries:
+            product = coefficient*boundary
+            total = left[1]+product
+            require(abs(product.numerator) <= 96 and product.denominator <= 24 and
+                    abs(total.numerator) <= 96 and total.denominator <= 24 and
+                    math.lcm(total.denominator, left[1].denominator) <= 24,
+                    'A candidate boundary exceeds the symmetric arithmetic budget')
         # Check the derived set at its endpoint and on both open sides using
         # direct substitution into the public expressions, independently of labels.
         boundary = expected[1]
@@ -308,6 +319,13 @@ def review_inequality_fixtures():
                        'x + y', '1/0x', '1/2x', '−1/2x', '1/2 x', 'x × x', '2 ×', '× 2x', '2 × × x', '__import__("os")', '100001x', '10x', '(1/7)x'):
         item = altered()
         item['prompt'] = f'Solve for real x: {expression} < 4.'
+    invalid.extend([
+        problem(a, '9x < 90', halves('10', '11')),
+        problem(a, '1/6 × x + 1/5 < 41/180', halves('1/6', '5/6')),
+        problem(g, '4(6x + 1) < (−11/4)x + 4', halves('0', '1')),
+        problem(g, '2(x) < x + 1', halves('1', '2')),
+        problem(c, '2(x) ≤ 2x', ['All real numbers', 'No real numbers']),
+    ])
     for public in invalid:
         try:
             solve_inequality(public)
