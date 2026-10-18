@@ -696,7 +696,7 @@ export function FamilyCenter({
                           className="go-button family-get-access"
                           onClick={onChoosePayment}
                         >
-                          Get a year of AMP
+                          Choose an AMP plan
                         </button>
                       )}
                     <button

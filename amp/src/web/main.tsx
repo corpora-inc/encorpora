@@ -500,8 +500,12 @@ function App() {
   }
   // The education-fund offer chosen on the "how to pay" screen, if any.
   const [purchaseOffer, setPurchaseOffer] = useState("");
+  const [purchaseInterval, setPurchaseInterval] = useState<"year" | "month">(
+    "year",
+  );
   const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
   function openPurchase(view: "choose" | "annual" | "funded") {
+    setPurchaseInterval("year");
     setPurchaseFromChoice(false);
     navigationEpoch.current++;
     setPurchaseReturn(null);
@@ -979,8 +983,9 @@ function App() {
         <ChooseHowToPay
           token={token}
           learnerName={learner?.name ?? null}
-          onCard={() => {
+          onCard={(interval) => {
             openPurchase("annual");
+            setPurchaseInterval(interval);
             setPurchaseFromChoice(true);
           }}
           onFunds={(offerId) => {
@@ -992,6 +997,7 @@ function App() {
         />
       ) : familyOpen && token && purchaseView === "annual" ? (
         <AnnualPurchase
+          preferredInterval={purchaseInterval}
           token={token}
           preferredLearnerId={learnerId ?? undefined}
           identity={accountId ?? token}

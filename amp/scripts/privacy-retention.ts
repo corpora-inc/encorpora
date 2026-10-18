@@ -1,14 +1,13 @@
 import { purgeOfflinePacks } from "../src/offline/retention.js";
 import { purgeConsentRecords } from "../src/parent-consent/lifecycle.js";
 import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
-import { Pool } from "pg";
+import { createDatabasePool } from "../src/server/database.js";
 import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 import { purgeExpiredTrials } from "../src/server/trials.js";
 if (!process.env.AMP_DATABASE_URL)
   throw new Error("AMP_DATABASE_URL is required");
-const pool = new Pool({
+const pool = createDatabasePool({
   connectionString: process.env.AMP_DATABASE_URL,
-  max: 1,
 });
 try {
   console.log(

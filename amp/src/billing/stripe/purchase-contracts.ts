@@ -5,7 +5,7 @@ export interface AnnualOffer {
   currency: "USD";
   amountMinor: number;
   formattedAmount: string;
-  interval: "year";
+  interval: "year" | "month";
   learnerCount: 1;
 }
 export interface PurchaseStatus {
@@ -18,8 +18,10 @@ export interface PurchaseStatus {
     | "checkout-expired"
     | "payment-processing"
     | "needs-review"
+    | "awaiting-payment"
     | "consent-required"
     | "deleted";
+  interval?: "year" | "month";
   startsAt?: string;
   endsAt?: string;
 }

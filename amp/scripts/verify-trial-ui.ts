@@ -125,7 +125,7 @@ try {
   await page.getByLabel("Learner name").fill(name);
   await page.getByRole("button", { name: "Save and continue" }).click();
   // Saving leads straight to the paywall: card or education funds.
-  await page.getByRole("heading", { name: "One year of AMP" }).waitFor();
+  await page.getByRole("heading", { name: "Choose your AMP plan" }).waitFor();
   await page.getByText(name, { exact: true }).waitFor();
   await fits(page, "choose");
   await page.getByRole("button", { name: "Back to family" }).click();

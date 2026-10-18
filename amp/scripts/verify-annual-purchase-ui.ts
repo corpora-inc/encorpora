@@ -30,6 +30,12 @@ try {
     console.error(error.message);
   });
   let offerFailure = false;
+  let monthlyEnabled = false;
+  const monthlyConfig = {
+    ...config,
+    monthlyPriceId: "price_monthly_fixture",
+    monthlyAmountMinor: 1400,
+  };
   let available = true,
     phase = "ready",
     failCheckout = false,
@@ -41,6 +47,7 @@ try {
     learnerId: string;
     requestId: string;
     offerId: string;
+    interval: "year" | "month";
   }[] = [];
   const family = {
     consent: {
@@ -76,7 +83,18 @@ try {
         ? { status: 503, json: { error: "billing_unavailable" } }
         : {
             json: available
-              ? { available: true, offer: annualOffer(config) }
+              ? {
+                  available: true,
+                  offer: annualOffer(config),
+                  ...(monthlyEnabled
+                    ? {
+                        offers: [
+                          annualOffer(monthlyConfig),
+                          annualOffer(monthlyConfig, "month"),
+                        ],
+                      }
+                    : {}),
+                }
               : { available: false },
           },
     ),
@@ -336,6 +354,59 @@ try {
     page.url(),
     home,
     "checkout host cannot substitute for billing portal",
+  );
+  monthlyEnabled = true;
+  available = true;
+  offerFailure = false;
+  phase = "ready";
+  await page.goto(home);
+  await page
+    .getByRole("button", { name: "Monthly $14.00 / month", exact: true })
+    .waitFor();
+  await page
+    .getByText("Save $48.00 a year with annual", { exact: false })
+    .waitFor();
+  for (const size of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 1280, height: 900 },
+  ]) {
+    await page.setViewportSize(size);
+    for (const control of [
+      page.getByRole("button", { name: "Monthly $14.00 / month", exact: true }),
+      page.getByRole("button", { name: "Open sandbox checkout" }),
+    ]) {
+      const rect = await control.boundingBox();
+      assert.ok(
+        rect &&
+          rect.x >= 0 &&
+          rect.x + rect.width <= size.width &&
+          rect.y >= 0 &&
+          rect.y + rect.height <= size.height,
+        "plan and primary action visible",
+      );
+    }
+    assert.ok(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    await page.screenshot({
+      path: new URL(`monthly-ready-${size.width}.png`, directory).pathname,
+    });
+  }
+  await page
+    .getByRole("button", { name: "Monthly $14.00 / month", exact: true })
+    .click();
+  await page
+    .getByText("Renews automatically each month", { exact: false })
+    .waitFor();
+  await page.getByRole("button", { name: "Open sandbox checkout" }).click();
+  await page.waitForURL("https://checkout.stripe.com/fixture");
+  assert.equal(checkoutBodies.at(-1)!.interval, "month");
+  assert.equal(
+    checkoutBodies.at(-1)!.offerId,
+    annualOffer(monthlyConfig, "month").id,
   );
   assert.deepEqual(failures, []);
   console.log(
