@@ -29,17 +29,22 @@ const devSignedOut = "amp.dev.signedOut";
 /** How this deployment signs parents in, as the API reports it. */
 export type AuthConfig =
   | { mode: "accounts"; passwords: boolean; providers: string[] }
-  | { mode: "oidc" | "development" };
+  | { mode: "oidc" | "development" | "native" };
 let config: Promise<AuthConfig> | null = null;
 export function authConfig(): Promise<AuthConfig> {
+  // The native app signs in through its own session layer, not this API.
+  if (nativeRuntime) return Promise.resolve({ mode: "native" });
   const fallback: AuthConfig = { mode: manager ? "oidc" : "development" };
-  config ??= fetch("/api/v1/auth-config")
-    .then((r) => (r.ok ? (r.json() as Promise<AuthConfig>) : fallback))
-    .catch((error) => {
-      console.warn("Sign-in configuration unavailable", error);
-      return fallback;
-    });
-  return config;
+  config ??= fetch("/api/v1/auth-config").then((r) => {
+    if (r.ok) return r.json() as Promise<AuthConfig>;
+    throw new Error(`auth-config ${r.status}`);
+  });
+  // A failed lookup is not remembered: the next call asks again.
+  return config.catch((error) => {
+    console.warn("Sign-in configuration unavailable", error);
+    config = null;
+    return fallback;
+  });
 }
 export interface AuthSession {
   token: string;

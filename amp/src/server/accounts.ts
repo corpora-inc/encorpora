@@ -134,6 +134,20 @@ export function accountsConfiguration(env: NodeJS.ProcessEnv): AccountsConfig {
   };
 }
 
+/** A sign-in provider may create an account only for an email it has
+ * verified. Otherwise anyone could pre-create an account under a parent's
+ * address (e.g. a Microsoft tenant asserting any email); the parent's later
+ * confirmation would hand that account to the attacker's login. Unverified
+ * provider logins can still be linked to a signed-in account. */
+export function providerSignupRefused(
+  user: { emailVerified?: boolean | null },
+  path: string | undefined,
+) {
+  const viaProvider =
+    !!path && (path.startsWith("/callback/") || path === "/sign-in/social");
+  return viaProvider && !user.emailVerified;
+}
+
 export function enabledProviders(config: AccountsConfig): SocialProvider[] {
   return SOCIAL_PROVIDERS.filter((p) => !!config[p]);
 }
@@ -200,14 +214,25 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           url,
         ),
     },
+    databaseHooks: {
+      user: {
+        create: {
+          before: async (user, context) => {
+            if (providerSignupRefused(user, context?.path)) return false;
+          },
+        },
+      },
+    },
     emailVerification: {
       sendOnSignUp: true,
+      // An unconfirmed parent who signs in gets a fresh link (no lockout).
+      sendOnSignIn: true,
       autoSignInAfterVerification: true,
       sendVerificationEmail: ({ user, url }) =>
         send(
           user.email,
           "Confirm your email for AMP",
-          "Confirm this address to finish creating your AMP parent account.",
+          "Confirm this address to finish creating your AMP parent account. If you did not create an AMP account, ignore this email; nothing happens without your confirmation.",
           url,
         ),
     },
@@ -239,9 +264,15 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       }),
     ],
     rateLimit: { enabled: true, storage: "memory" },
+    // Internal failures reach clients as a generic 500; log the cause.
+    onAPIError: {
+      onError: (error) => console.error("[accounts] request failed", error),
+    },
     advanced: {
       cookiePrefix: "amp",
       ipAddress: { ipAddressHeaders: [CLIENT_IP_HEADER] },
+      // Migrations (0016) define the schema; skip the startup catalog scan.
+      database: { validateSchema: false },
     },
   });
   return { auth, config };
@@ -288,8 +319,10 @@ export async function registerAccountRoutes(
         headers.set(CLIENT_IP_HEADER, request.ip);
         const body =
           request.method === "GET" ? undefined : (request.body as Buffer);
+        // Only the path and query are taken from the request line.
+        const { pathname, search } = new URL(request.url, "http://local");
         const response = await auth.handler(
-          new Request(new URL(request.url, config.baseURL), {
+          new Request(new URL(pathname + search, config.baseURL), {
             method: request.method,
             headers,
             ...(body?.length ? { body: new Uint8Array(body) } : {}),

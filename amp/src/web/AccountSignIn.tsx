@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { accountClient } from "./account-client";
-import { authConfig } from "./auth";
+import { authConfig, signIn } from "./auth";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -45,7 +45,11 @@ export function AccountSignIn() {
   const [notice, setNotice] = useState("");
   useEffect(() => {
     void authConfig().then((config) => {
-      if (config.mode !== "accounts") return;
+      if (config.mode !== "accounts") {
+        history.replaceState({}, "", "/");
+        void signIn();
+        return;
+      }
       setProviders(config.providers);
       setPasswords(config.passwords);
     });
@@ -76,6 +80,8 @@ export function AccountSignIn() {
     void run(async () => {
       if (step === "sign-in") {
         const result = await accountClient.signIn.email({ email, password });
+        if (result.error?.code === "EMAIL_NOT_VERIFIED")
+          return go("check-email");
         fail(result);
         if (
           result.data &&

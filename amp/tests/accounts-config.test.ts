@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 import {
   accountsConfiguration,
   enabledProviders,
+  providerSignupRefused,
 } from "../src/server/accounts.js";
+import { redactUrl } from "../src/server/app.js";
 
 const base = {
   AMP_ACCOUNTS_URL: "https://amp.example.com",
@@ -82,4 +84,32 @@ test("account settings: origin, secret, providers and passwords", () => {
     }).baseURL,
     "http://127.0.0.1:4310",
   );
+});
+
+test("providers cannot create accounts for emails they have not verified", () => {
+  const unverified = { emailVerified: false };
+  assert.equal(providerSignupRefused(unverified, "/callback/microsoft"), true);
+  assert.equal(providerSignupRefused(unverified, "/sign-in/social"), true);
+  assert.equal(
+    providerSignupRefused({ emailVerified: true }, "/callback/google"),
+    false,
+  );
+  // Email sign-up proves the address separately, by confirmation link.
+  assert.equal(providerSignupRefused(unverified, "/sign-up/email"), false);
+});
+
+test("request logs never carry one-time tokens", () => {
+  assert.equal(
+    redactUrl("/api/auth/reset-password/abc123?callbackURL=%2F%3Freset"),
+    "/api/auth/reset-password/[redacted]?callbackURL=[redacted]",
+  );
+  assert.equal(
+    redactUrl("/api/auth/verify-email?token=eyJ.secret&callbackURL=/"),
+    "/api/auth/verify-email?token=[redacted]&callbackURL=[redacted]",
+  );
+  assert.equal(
+    redactUrl("/api/auth/callback/github?code=c0de&state=s7"),
+    "/api/auth/callback/github?code=[redacted]&state=[redacted]",
+  );
+  assert.equal(redactUrl("/api/v1/learners"), "/api/v1/learners");
 });

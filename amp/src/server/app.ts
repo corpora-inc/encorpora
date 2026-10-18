@@ -31,6 +31,20 @@ const attemptSchema = z
     response: z.string().trim().min(1).max(200),
   })
   .strict();
+/** Strips one-time secrets (password-reset and verification tokens, OAuth
+ * codes) from a URL before it is logged. */
+export function redactUrl(url: string) {
+  const parsed = new URL(url, "http://local");
+  const path = parsed.pathname.replace(
+    /^(\/api\/auth\/reset-password\/)[^/]+/,
+    "$1[redacted]",
+  );
+  for (const key of ["token", "code", "state", "callbackURL"])
+    if (parsed.searchParams.has(key))
+      parsed.searchParams.set(key, "[redacted]");
+  return path + (parsed.search ? decodeURIComponent(parsed.search) : "");
+}
+
 /** Requests per minute per credential, or per address when anonymous. */
 export const GLOBAL_RATE_LIMIT = 600;
 type AppOptions = {
@@ -47,7 +61,17 @@ export function buildApp(options: AppOptions) {
   if (options.development && process.env.NODE_ENV === "production")
     throw new Error("Development mode is forbidden in production");
   const app = Fastify({
-    logger: options.logger ?? false,
+    logger: options.logger
+      ? {
+          serializers: {
+            req: (request) => ({
+              method: request.method,
+              url: redactUrl(request.url),
+              remoteAddress: request.ip,
+            }),
+          },
+        }
+      : false,
     bodyLimit: 32 * 1024,
     trustProxy: options.trustedProxies?.length
       ? [...options.trustedProxies]
@@ -77,6 +101,13 @@ function routes(app: FastifyInstance, options: AppOptions) {
     if (request.url !== "/api/v1/catalog" && request.url !== "/api/v1/health")
       reply.header("Cache-Control", "no-store");
     reply.header("X-Content-Type-Options", "nosniff");
+  });
+  // Fastify's default 404 logs the raw URL; this one logs it redacted.
+  app.setNotFoundHandler((request, reply) => {
+    request.log.info(
+      `Route ${request.method}:${redactUrl(request.url)} not found`,
+    );
+    return reply.code(404).send({ error: "Not found" });
   });
   app.setErrorHandler((error, _request, reply) => {
     if (error instanceof ZodError)
