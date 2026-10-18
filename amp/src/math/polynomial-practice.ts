@@ -142,13 +142,13 @@ function problemGroup(templateId: string, r: Random): Pair[] {
       if (!a || leading % a !== 0) continue;
       const c = leading / a;
       if (!c || Math.abs(c) > 4) continue;
-      for (let b = -8; b <= 8; b++) {
+      for (let b = -9; b <= 9; b++) {
         const constants =
           b === 0
             ? constant === 0
-              ? Array.from({ length: 17 }, (_, i) => i - 8)
+              ? Array.from({ length: 19 }, (_, i) => i - 9)
               : []
-            : constant % b === 0 && Math.abs(constant / b) <= 8
+            : constant % b === 0 && Math.abs(constant / b) <= 9
               ? [constant / b]
               : [];
         for (const d of constants) {
@@ -160,15 +160,26 @@ function problemGroup(templateId: string, r: Random): Pair[] {
         }
       }
     }
-    if (byMiddle.size >= 4)
-      return shuffle(
+    if (byMiddle.size >= 3) {
+      const candidates = shuffle(
         [...byMiddle.values()].map(
           (choices) => choices[r(0, choices.length - 1)]!,
         ),
         r,
-      ).slice(0, 4);
-    // Redraw before selecting a question when integer factors cannot supply four
-    // distinct middle coefficients. Every offered answer keeps the outer terms.
+      );
+      // Retain the square or conjugate product that defined this group. The
+      // requested problem is still chosen uniformly from the completed group.
+      if (variant <= 1) {
+        const original = pair(left, right);
+        return [
+          original,
+          ...candidates.filter((item) => item.result[1] !== original.result[1]),
+        ].slice(0, 4);
+      }
+      return candidates.slice(0, 4);
+    }
+    // Some outer coefficients admit only one or two integer-factorable results.
+    // Redraw those groups before selecting a question; do not vary outer terms.
     return problemGroup(templateId, r);
   }
   // Vary two coefficients before choosing which question to ask. In a cubic
@@ -303,7 +314,7 @@ export function generatePolynomialProblem(
             feedback.push(
               products.length
                 ? `For ${target}, calculate ${products.length > 1 ? "the sum of coefficient products" : "the coefficient product"}: ${products.join(" + ")}.`
-                : `The coefficient of ${k ? power(k) : "the constant term"} is 0: no nonzero term products contribute to ${target}.`,
+                : `${k ? `The coefficient of ${power(k)}` : "The constant term"} is 0: no nonzero term products contribute to ${target}.`,
             );
           } else {
             feedback.push(
