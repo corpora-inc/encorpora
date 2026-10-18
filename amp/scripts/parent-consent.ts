@@ -1,6 +1,6 @@
 import { cancelPendingConsent } from "../src/parent-consent/lifecycle.js";
 import { readFile } from "node:fs/promises";
-import { Pool } from "pg";
+import { createDatabasePool } from "../src/server/database.js";
 import { z } from "zod";
 const schema = z
   .object({
@@ -20,7 +20,7 @@ const record = schema.parse(
 );
 if (record.verificationMethod === "internal-email-plus-v1")
   throw new Error("The self-service method requires its own verified workflow");
-const pool = new Pool({ connectionString: process.env.AMP_DATABASE_URL });
+const pool = createDatabasePool({ connectionString: process.env.AMP_DATABASE_URL });
 const client = await pool.connect();
 try {
   await client.query("BEGIN");

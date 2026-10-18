@@ -1,12 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { AnnualOffer } from "../billing/stripe/purchase-contracts";
 import type { PublicFundingOffer } from "../funding-purchase/contracts.js";
+import { PlanOptions } from "./PlanOptions";
 import { stateNames } from "./us-states";
 
 type Props = {
   token: string;
   learnerName: string | null;
-  onCard: () => void;
+  onCard: (interval: "year" | "month") => void;
   onFunds: (offerId: string) => void;
   onClose: () => void;
 };
@@ -16,10 +17,11 @@ const usd = (minor: number) =>
     minor / 100,
   );
 
-/** The paywall: one year of AMP, paid by card or with a state's education
- * funds. Prices come from the server's configured offers. */
+/** Parent payment choices. Prices come from verified configured offers. */
 export function ChooseHowToPay(props: Props) {
   const [card, setCard] = useState<AnnualOffer | null>();
+  const [cards, setCards] = useState<AnnualOffer[]>([]);
+  const [selected, setSelected] = useState<AnnualOffer>();
   const [funds, setFunds] = useState<PublicFundingOffer[]>();
   const [state, setState] = useState("");
   const heading = useRef<HTMLHeadingElement>(null);
@@ -32,8 +34,18 @@ export function ChooseHowToPay(props: Props) {
       return (await response.json()) as T;
     };
     let alive = true;
-    void load<{ available: boolean; offer?: AnnualOffer }>("/billing/offer")
-      .then((data) => alive && setCard(data.available ? data.offer : null))
+    void load<{
+      available: boolean;
+      offer?: AnnualOffer;
+      offers?: AnnualOffer[];
+    }>("/billing/offer")
+      .then((data) => {
+        if (alive) {
+          setCard(data.available ? data.offer : null);
+          setCards(data.offers ?? (data.offer ? [data.offer] : []));
+          setSelected(data.offer);
+        }
+      })
       .catch((error) => {
         console.warn("Card offer unavailable", error);
         if (alive) setCard(null);
@@ -63,7 +75,7 @@ export function ChooseHowToPay(props: Props) {
       <div className="choose-pay-body">
         <div className="choose-pay-intro">
           <h1 id="choose-pay-title" tabIndex={-1} ref={heading}>
-            One year of AMP
+            Choose your AMP plan
           </h1>
           {props.learnerName && <p className="pay-for">{props.learnerName}</p>}
           <p>
@@ -79,10 +91,19 @@ export function ChooseHowToPay(props: Props) {
             </p>
           ) : card ? (
             <>
-              <p className="pay-price">
-                {card.formattedAmount} <span>for 12 months</span>
+              <PlanOptions
+                offers={cards}
+                selected={selected?.id}
+                onSelect={setSelected}
+              />
+              <p className="pay-muted">
+                One learner. Renews each {selected?.interval ?? "year"} until
+                canceled. Review tax in checkout.
               </p>
-              <button className="go-button" onClick={props.onCard}>
+              <button
+                className="go-button"
+                onClick={() => props.onCard(selected?.interval ?? "year")}
+              >
                 Pay by card
               </button>
             </>

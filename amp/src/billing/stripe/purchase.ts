@@ -1,10 +1,19 @@
 import { learningConsentActive } from "../../server/account-access.js";
 import { createHash } from "node:crypto";
-import { BillingError, type StripeBillingConfig } from "./config.js";
+import {
+  BillingError,
+  planConfig,
+  type BillingInterval,
+  type StripeBillingConfig,
+} from "./config.js";
 import type { StripeBilling } from "./service.js";
 import type { AnnualOffer, PurchaseStatus } from "./purchase-contracts.js";
 
-export function annualOffer(config: StripeBillingConfig): AnnualOffer {
+export function annualOffer(
+  configuration: StripeBillingConfig,
+  interval: BillingInterval = "year",
+): AnnualOffer {
+  const config = planConfig(configuration, interval);
   if (config.currency !== "usd")
     throw new BillingError("offer_currency_unsupported", 503);
   return {
@@ -16,6 +25,7 @@ export function annualOffer(config: StripeBillingConfig): AnnualOffer {
           config.currency,
           config.livemode,
           config.sku,
+          interval,
         ]),
       )
       .digest("hex"),
@@ -26,7 +36,7 @@ export function annualOffer(config: StripeBillingConfig): AnnualOffer {
       style: "currency",
       currency: "USD",
     }).format(config.amountMinor / 100),
-    interval: "year",
+    interval,
     learnerCount: 1,
   };
 }
@@ -50,7 +60,7 @@ export async function purchaseStatus(
         [learnerId],
       );
       const checkout = await client.query(
-        "SELECT id,session_id,subscription_id,created_at FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND account_id=$3 AND NOT closed LIMIT 1",
+        "SELECT id,session_id,subscription_id,created_at,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND account_id=$3 AND NOT closed LIMIT 1",
         [repository.namespace, learnerId, accountId],
       );
       const consent = await client.query(
@@ -72,6 +82,7 @@ export async function purchaseStatus(
     local.grant
       ? {
           learnerId,
+          interval: local.checkout?.billing_interval,
           phase:
             local.grant.starts_at.getTime() <= Date.now()
               ? "licensed"
@@ -87,6 +98,7 @@ export async function purchaseStatus(
   if (!local.checkout.session_id)
     return {
       learnerId,
+      interval: local.checkout.billing_interval,
       phase:
         Date.now() - local.checkout.created_at.getTime() < 23 * 3600_000
           ? "checkout-open"
@@ -104,6 +116,7 @@ export async function purchaseStatus(
     return { learnerId, phase: "needs-review" };
   return {
     learnerId,
+    interval: local.checkout.billing_interval,
     phase:
       session.status === "open"
         ? "checkout-open"
@@ -111,7 +124,7 @@ export async function purchaseStatus(
           ? "checkout-expired"
           : session.status === "complete"
             ? local.checkout.subscription_id
-              ? "needs-review"
+              ? "awaiting-payment"
               : "payment-processing"
             : "needs-review",
   };

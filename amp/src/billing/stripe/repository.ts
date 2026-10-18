@@ -4,6 +4,8 @@ import { randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
   BillingError,
+  planConfig,
+  type BillingInterval,
   stripeNamespace,
   type StripeBillingConfig,
 } from "./config.js";
@@ -69,7 +71,9 @@ export class StripeRepository {
     accountId: string,
     learnerId: string,
     requestId: string,
+    interval: BillingInterval = "year",
   ): Promise<string> {
+    const selected = planConfig(this.config, interval);
     return this.transaction(accountId, async (client) => {
       await this.assertPurchaseAllowed(client, accountId, learnerId);
       await client.query(
@@ -82,37 +86,46 @@ export class StripeRepository {
       );
       if (grants.rowCount) throw new BillingError("learner_already_licensed");
       const retry = await client.query(
-        "SELECT id,learner_id,closed FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
+        "SELECT id,learner_id,closed,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND request_id=$3",
         [this.namespace, accountId, requestId],
       );
       if (retry.rowCount) {
-        if (retry.rows[0].learner_id !== learnerId || retry.rows[0].closed)
+        if (
+          retry.rows[0].learner_id !== learnerId ||
+          retry.rows[0].closed ||
+          retry.rows[0].billing_interval !== interval
+        )
           throw new BillingError("checkout_request_conflict");
         return retry.rows[0].id as string;
       }
       const open = await client.query(
-        "SELECT id FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND NOT closed",
+        "SELECT id,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND NOT closed",
         [this.namespace, learnerId],
       );
-      if (open.rowCount) return open.rows[0].id as string;
+      if (open.rowCount) {
+        if (open.rows[0].billing_interval !== interval)
+          throw new BillingError("checkout_plan_conflict");
+        return open.rows[0].id as string;
+      }
       await client.query(
         "INSERT INTO amp_stripe_customers(namespace,account_id,reservation_id) VALUES($1,$2,$3) ON CONFLICT DO NOTHING",
         [this.namespace, accountId, randomUUID()],
       );
       const checkoutId = randomUUID();
       await client.query(
-        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,document_profile) VALUES($1,$2,$3,$4,$5,$6)",
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,document_profile,billing_interval) VALUES($1,$2,$3,$4,$5,$6,$7)",
         [
           checkoutId,
           this.namespace,
           accountId,
           learnerId,
           requestId,
-          this.config.documentProfile
+          selected.documentProfile
             ? JSON.stringify(
-                parseDocumentProfile(this.config.documentProfile, this.config),
+                parseDocumentProfile(selected.documentProfile, selected),
               )
             : null,
+          interval,
         ],
       );
       return checkoutId;
@@ -134,6 +147,7 @@ export class StripeRepository {
       subscriptionId: r.subscription_id ?? undefined,
       sessionId: r.session_id ?? undefined,
       createdAt: r.created_at,
+      interval: r.billing_interval,
     };
   }
   async enqueue(event: InboxEvent): Promise<void> {
