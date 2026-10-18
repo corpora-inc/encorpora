@@ -4,7 +4,6 @@
 import { once } from "node:events";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
 import { inequalityWorksheet } from "../src/content/inequality-worksheets";
 import { inequalityFacetMappings } from "../src/content/inequality-coverage";
 import {
@@ -116,70 +115,31 @@ async function main() {
       },
     },
   });
-  const browser = await chromium.launch({ headless: true });
-  try {
-    const page = await browser.newPage();
-    for (let index = 1; index <= 16; index++) {
-      const edition = String(index);
-      for (const templateId of ids) {
-        const matching = lessons.filter((lesson) =>
-          lesson.templateIds.includes(templateId),
-        );
-        if (matching.length !== 1)
-          throw new Error(`Expected one standalone lesson for ${templateId}`);
-        const lesson = matching[0]!;
-        const problems = inequalityWorksheet(templateId, lesson.id, edition);
-        const rendered: Record<string, unknown> = {};
-        for (const kind of ["workbook", "solutions"] as const) {
-          await page.setContent(publicationHtml(lesson, kind, edition), {
-            waitUntil: "domcontentloaded",
-          });
-          rendered[kind] = await page
-            .locator(".exercise")
-            .evaluateAll((nodes) =>
-              nodes.map((node) => {
-                const copy = node.cloneNode(true) as Element;
-                for (const math of copy.querySelectorAll(".print-math"))
-                  math.replaceWith(
-                    document.createTextNode(
-                      math.getAttribute("data-plain") ?? "",
-                    ),
-                  );
-                return {
-                  prompt: copy
-                    .querySelector("h2")
-                    ?.textContent?.trim()
-                    .replace(/^\d+\. /, ""),
-                  choices: [...copy.querySelectorAll(".print-choices>li")].map(
-                    (element) => element.textContent?.trim(),
-                  ),
-                  answer:
-                    copy.querySelector("p>strong")?.textContent?.trim() ?? null,
-                  steps: [
-                    ...copy.querySelectorAll("ol:not(.print-choices)>li"),
-                  ].map((element) => element.textContent?.trim()),
-                  hiddenAnswerMarkers: copy.querySelectorAll(
-                    "[data-answer],[data-correct],script,input[type=hidden]",
-                  ).length,
-                };
-              }),
-            );
-        }
-        await emit({
-          kind: "inequality-worksheet",
-          edition,
-          templateId,
-          lessonId: lesson.id,
-          problems,
-          replayed: problems.map((problem) =>
-            generateProblem(templateId, problem.public.seed),
-          ),
-          ...rendered,
-        });
-      }
+  for (let index = 1; index <= 16; index++) {
+    const edition = String(index);
+    for (const templateId of ids) {
+      const matching = lessons.filter((lesson) =>
+        lesson.templateIds.includes(templateId),
+      );
+      if (matching.length !== 1)
+        throw new Error(`Expected one standalone lesson for ${templateId}`);
+      const lesson = matching[0]!;
+      const problems = inequalityWorksheet(templateId, lesson.id, edition);
+      await emit({
+        kind: "inequality-worksheet",
+        edition,
+        templateId,
+        lessonId: lesson.id,
+        problems,
+        replayed: problems.map((problem) =>
+          generateProblem(templateId, problem.public.seed),
+        ),
+        // The independent Python parser extracts exercise structure from these
+        // actual publication documents. Browser layout is reviewed separately.
+        workbookHtml: publicationHtml(lesson, "workbook", edition),
+        solutionsHtml: publicationHtml(lesson, "solutions", edition),
+      });
     }
-  } finally {
-    await browser.close();
   }
 }
 main().catch((error) => {

@@ -7,6 +7,7 @@ import math
 import re
 from collections import Counter
 from fractions import Fraction
+from html.parser import HTMLParser
 
 INEQUALITY = frozenset({'affine-linear-inequality', 'grouped-linear-inequality',
                         'cancelled-linear-inequality'})
@@ -416,6 +417,172 @@ def review_inequality_corpus_fixtures():
     return {'calibratedCorpusCases': sum(map(len, corpus.values())), 'rejectedCorpusMutations': len(invalid)}
 
 
+class PublicationNode:
+    def __init__(self, tag, attributes=()):
+        self.tag, self.attributes, self.children = tag, dict(attributes), []
+
+    def has_class(self, name):
+        return name in self.attributes.get('class', '').split()
+
+    def descendants(self):
+        for child in self.children:
+            if isinstance(child, PublicationNode):
+                yield child
+                yield from child.descendants()
+
+    def text(self):
+        if self.has_class('print-math'):
+            require(isinstance(self.attributes.get('data-plain'), str) and
+                    self.attributes['data-plain'].strip(), 'Printed math lacks its plain expression')
+            return self.attributes['data-plain']
+        return ''.join(child.text() if isinstance(child, PublicationNode) else child
+                       for child in self.children)
+
+
+class PublicationParser(HTMLParser):
+    """Strict publication tree: reject malformed markup instead of repairing it.
+
+    No browser, JavaScript execution, third-party parser, or author answer helper.
+    Math is compared through the same data-plain text used by print rendering.
+    """
+    VOID = frozenset('area base br col embed hr img input link meta param source track wbr'.split())
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.root = PublicationNode('#document')
+        self.stack = [self.root]
+
+    def handle_starttag(self, tag, attributes):
+        require(len({key for key, _ in attributes}) == len(attributes), 'Duplicate HTML attribute')
+        node = PublicationNode(tag, attributes)
+        self.stack[-1].children.append(node)
+        if tag not in self.VOID:
+            self.stack.append(node)
+
+    def handle_startendtag(self, tag, attributes):
+        self.handle_starttag(tag, attributes)
+        if tag not in self.VOID:
+            self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        require(len(self.stack) > 1 and self.stack[-1].tag == tag, 'Mismatched HTML closing tag')
+        self.stack.pop()
+
+    def handle_data(self, data):
+        self.stack[-1].children.append(data)
+
+    def handle_decl(self, declaration):
+        require(declaration.lower() == 'doctype html', 'Unexpected HTML declaration')
+
+    def handle_pi(self, data):
+        raise ValueError('Unexpected HTML processing instruction')
+
+    def unknown_decl(self, data):
+        raise ValueError('Unknown HTML declaration')
+
+    def close(self):
+        super().close()
+        require(len(self.stack) == 1, 'Unclosed HTML element')
+
+
+def publication_exercises(html):
+    require(isinstance(html, str) and html.strip(), 'Missing publication HTML')
+    parser = PublicationParser()
+    parser.feed(html)
+    parser.close()
+    roots = [child for child in parser.root.children if isinstance(child, PublicationNode)]
+    require(len(roots) == 1 and roots[0].tag == 'html' and
+            all(isinstance(child, PublicationNode) or not child.strip() for child in parser.root.children),
+            'Expected one complete HTML document')
+    exercises = [node for node in parser.root.descendants() if node.has_class('exercise')]
+    require(exercises, 'Publication has no exercises')
+    result = []
+    for index, exercise in enumerate(exercises, 1):
+        nodes = list(exercise.descendants())
+        require(not any(node.has_class('exercise') for node in nodes), 'Nested publication exercises')
+        headings = [node for node in nodes if node.tag == 'h2']
+        require(len(headings) == 1, 'Exercise must have exactly one question heading')
+        heading = headings[0].text().strip()
+        prefix = f'{index}. '
+        require(heading.startswith(prefix), 'Incorrect exercise numbering')
+        lists = [node for node in nodes if node.tag == 'ol']
+        choices = [node for node in lists if node.has_class('print-choices')]
+        steps = [node for node in lists if not node.has_class('print-choices')]
+        require(len(choices) == 1 and len(steps) <= 1, 'Unexpected exercise list structure')
+
+        def items(ordered_list):
+            children = [child for child in ordered_list.children if isinstance(child, PublicationNode)]
+            require(children and all(child.tag == 'li' for child in children) and
+                    all(isinstance(child, PublicationNode) or not child.strip()
+                        for child in ordered_list.children), 'Malformed exercise list')
+            return [child.text().strip() for child in children]
+
+        answers = [child for node in nodes if node.tag == 'p' for child in node.children
+                   if isinstance(child, PublicationNode) and child.tag == 'strong']
+        require(len(answers) <= 1, 'Multiple exercise answers')
+        children = [child for child in exercise.children if isinstance(child, PublicationNode)]
+        require(all(isinstance(child, PublicationNode) or not child.strip() for child in exercise.children),
+                'Unexpected text outside exercise structure')
+        if steps:
+            require([child.tag for child in children] == ['h2', 'ol', 'ol', 'p'] and len(answers) == 1 and
+                    all(child is answers[0] or isinstance(child, str) and not child.strip()
+                        for child in children[-1].children), 'Malformed worked-solution structure')
+        else:
+            require([child.tag for child in children] == ['h2', 'ol', 'div'] and not answers and
+                    children[-1].has_class('writing') and not children[-1].children,
+                    'Malformed answer-free workbook structure')
+        # Validate even unused mathematical nodes so malformed markup cannot
+        # disappear merely because it occurs outside a question/list/answer.
+        for node in nodes:
+            if node.has_class('print-math'):
+                node.text()
+        result.append({
+            'prompt': heading[len(prefix):],
+            'choices': items(choices[0]),
+            'answer': answers[0].text().strip() if answers else None,
+            'steps': items(steps[0]) if steps else [],
+            'hiddenAnswerMarkers': sum(
+                'data-answer' in node.attributes or 'data-correct' in node.attributes or
+                node.tag == 'script' or (node.tag == 'input' and node.attributes.get('type', '').lower() == 'hidden')
+                for node in nodes),
+        })
+    return result
+
+
+def review_publication_parser_fixtures():
+    fixture = ('<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>'
+               '<section class="exercise"><h2>1. Solve '
+               '<span class="print-math" data-plain="x &lt; 1/2"><span>typeset</span></span>.</h2>'
+               '<ol class="print-choices"><li>x &lt; 1/2</li><li>x &gt; 1/2</li></ol>'
+               '<div class="writing"></div></section></body></html>')
+    require(publication_exercises(fixture) == [{
+        'prompt': 'Solve x < 1/2.', 'choices': ['x < 1/2', 'x > 1/2'],
+        'answer': None, 'steps': [], 'hiddenAnswerMarkers': 0,
+    }], 'Publication parser did not preserve mathematical plain text')
+    malformed = [
+        fixture.replace('</html>', ''),
+        fixture.replace('</section>', '</div>'),
+        fixture.replace('data-plain="x &lt; 1/2"', ''),
+        fixture.replace('class="exercise"', 'class="exercise" class="other"'),
+        fixture.replace('<h2>', '<h3>').replace('</h2>', '</h3>'),
+        fixture.replace('1. Solve', '2. Solve'),
+        fixture.replace('<div class="writing"></div>', '<ol class="print-choices"><li>extra</li></ol>'),
+        fixture.replace('<li>x &gt; 1/2</li>', '<p>x &gt; 1/2</p>'),
+        fixture.replace('<div class="writing"></div>', '<section class="exercise"></section>'),
+    ]
+    for value in malformed:
+        try:
+            publication_exercises(value)
+        except ValueError:
+            pass
+        else:
+            raise ValueError('Publication parser accepted malformed exercise HTML')
+    hidden = fixture.replace('<li>x &gt; 1/2</li>', '<li>x &gt; 1/2<input type="hidden" data-answer="a"></li>')
+    require(publication_exercises(hidden)[0]['hiddenAnswerMarkers'] == 1,
+            'Publication parser missed an answer marker')
+    return len(malformed)
+
+
 def check_worksheet_order_variation(patterns, first_answers):
     for template in INEQUALITY:
         # Collisions are valid. These thresholds reject fixed requirement ordering,
@@ -697,8 +864,13 @@ def review_inequality_content():
                             cwd=root, capture_output=True, text=True, timeout=180)
     require(result.returncode == 0, f'Inequality content export failed: {result.stderr[:2000]}')
     records = [json.loads(line) for line in result.stdout.splitlines()]
+    for record in records[1:]:
+        for kind in ('workbook', 'solutions'):
+            require(kind not in record, 'Content exporter must supply actual publication HTML')
+            record[kind] = publication_exercises(record.pop(f'{kind}Html'))
     report = check_inequality_content(records)
     report['rejectedMutations'] = review_inequality_content_mutations(records)
+    report['rejectedHtmlMutations'] = review_publication_parser_fixtures()
     return report
 
 
