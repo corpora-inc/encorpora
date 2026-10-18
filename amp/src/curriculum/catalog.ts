@@ -1267,6 +1267,12 @@ export const expectedHighSchoolStandardIds = Object.entries(
 
 // Narrow implemented tasks do not certify the broader planned inequality skill.
 const inequalitySkill = skills.find((s) => s.id === "linear-inequalities")!;
+inequalitySkill.alignments.push({
+  standardId: "SAT.algebra",
+  facet:
+    "Solve one-variable linear inequalities with numerical rational coefficients; two-variable inequalities and systems require separate assessment.",
+  basis: "editorial",
+});
 for (const [id, description] of [
   [
     "affine-solution-set",

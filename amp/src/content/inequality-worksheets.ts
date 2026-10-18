@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { inequalityPrintCase } from "../math/inequality-practice";
 import type { GeneratedProblem } from "../math/contracts";
 
@@ -56,5 +57,25 @@ export function inequalityWorksheet(
     selected.push(candidate.problem);
     prompts.add(candidate.problem.public.prompt);
   }
-  return selected;
+  return selected
+    .map((problem) => ({
+      problem,
+      order: createHash("sha256")
+        .update(
+          JSON.stringify([
+            "inequality-sheet-order",
+            templateId,
+            lessonId,
+            edition,
+            problem.public.seed,
+          ]),
+        )
+        .digest("hex"),
+    }))
+    .sort(
+      (a, b) =>
+        a.order.localeCompare(b.order) ||
+        a.problem.public.id.localeCompare(b.problem.public.id),
+    )
+    .map(({ problem }) => problem);
 }
