@@ -1,0 +1,15 @@
+# AMP on GKE. Placeholders ${AMP_*} are filled at deploy time by
+# deploy/render.sh from GitHub environment variables; no account identifier
+# or secret lives in this public repository.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: amp
+resources:
+  - quota.yaml
+  - serviceaccount.yaml
+  - sql-proxy.yaml
+  - api.yaml
+  - web.yaml
+  - jobs.yaml

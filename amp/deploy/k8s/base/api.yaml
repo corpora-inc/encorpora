@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amp-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: amp-api }
+  template:
+    metadata:
+      labels: { app: amp-api }
+    spec:
+      serviceAccountName: amp
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        seccompProfile: { type: RuntimeDefault }
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels: { app: amp-api }
+      # Each new pod migrates before serving. scripts/migrate.ts holds an
+      # advisory lock in one transaction, so replicas apply it once.
+      # Migrations must stay additive: old pods keep serving during rollout.
+      initContainers:
+        - name: migrate
+          image: ${AMP_API_IMAGE}
+          command: ["node_modules/.bin/tsx", "scripts/migrate.ts"]
+          envFrom:
+            - secretRef: { name: amp-env }
+          resources:
+            requests: { cpu: 50m, memory: 192Mi }
+            limits: { cpu: 500m, memory: 512Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: [ALL] }
+          volumeMounts: [{ name: tmp, mountPath: /tmp }]
+      containers:
+        - name: api
+          image: ${AMP_API_IMAGE}
+          ports: [{ containerPort: 8080 }]
+          envFrom:
+            - configMapRef: { name: amp-config }
+            - secretRef: { name: amp-env }
+          startupProbe:
+            httpGet: { path: /api/v1/health, port: 8080 }
+            periodSeconds: 3
+            failureThreshold: 40
+          readinessProbe:
+            httpGet: { path: /api/v1/health, port: 8080 }
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /api/v1/health, port: 8080 }
+            periodSeconds: 20
+            failureThreshold: 3
+          resources:
+            requests: { cpu: 100m, memory: 256Mi }
+            limits: { cpu: "1", memory: 768Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: [ALL] }
+          volumeMounts: [{ name: tmp, mountPath: /tmp }]
+      volumes: [{ name: tmp, emptyDir: { medium: Memory, sizeLimit: 128Mi } }]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: amp-api
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+    cloud.google.com/backend-config: '{"default": "amp-api"}'
+spec:
+  selector: { app: amp-api }
+  ports: [{ port: 80, targetPort: 8080 }]
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: amp-api
+spec:
+  timeoutSec: 120
+  healthCheck:
+    type: HTTP
+    requestPath: /api/v1/health
+    port: 8080
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: amp-api
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels: { app: amp-api }
