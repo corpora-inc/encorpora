@@ -148,7 +148,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
           "Quartiles mark positions that divide ordered data into lower and upper parts. Here the lower quartile, called Q1, is the median of the lower half. The upper quartile, called Q3, is the median of the upper half. The overall median separates the halves.",
           "Use this convention: with an even number of observations, split the ordered list into two equal halves. With an odd number, exclude the single overall middle observation from both halves, then use the values on either side. Exclude that one position only; keep other observations with the same value. Other quartile conventions exist, so follow the convention stated in the question.",
           "For seven ordered values, the fourth is the overall median; positions 1–3 form the lower half and positions 5–7 form the upper half. Each half has three values, so use its middle value. For nine ordered values, exclude position 5; each remaining half has four values, so average its two middle values.",
-          "For six ordered values, split after position 3. Each half has three observations even though the whole dataset has an even count. For eight values, split after position 4; each half has four observations. Decide whether to average by counting the values in the half you are using, not by the parity of the original count.",
+          "For six ordered values, split after position 3. Each half has three observations even though the whole dataset has an even count. For eight values, split after position 4; each half has four observations. Decide whether to average by counting the values in the half you are using, not by whether the original count is odd or even.",
         ],
       },
       {
