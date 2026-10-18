@@ -30,6 +30,7 @@ const fixtures = [
   "x = 5!! Then continue.",
   "\\(x=5\\)... Next.",
   "x = 5?!;: Then continue.",
+  "3 × (3/2) + 2(−1) = 9/2 − 2 = 9/2 − 4/2 = 5/2.",
 ];
 const css = [
   readFileSync(new URL("../src/web/style.css", import.meta.url), "utf8"),
