@@ -135,8 +135,8 @@ const hints: Record<string, string> = {
   "rationalize-radical-denominator":
     "Simplify the denominator's square root first. Multiply the numerator and denominator by its remaining square root. Their quotient stays unchanged because the multiplying fraction equals 1.",
 };
-function simplifyCase(r: Random, zero = false): Case {
-  const n = zero ? 0 : r(0, 400),
+function simplifyCase(r: Random, zero = false, given?: number): Case {
+  const n = given ?? (zero ? 0 : r(0, 400)),
     [a, b] = root(n),
     value = term(q(1), n),
     answer = text(value);
@@ -177,7 +177,11 @@ function simplifyCase(r: Random, zero = false): Case {
   };
 }
 const bases = [1, 2, 3, 5, 6, 7, 10, 11];
-function combineCase(r: Random, cancellation = false): Case {
+function combineCase(
+  r: Random,
+  cancellation = false,
+  given?: [number, number, number, number],
+): Case {
   const mode = cancellation ? 0 : r(0, 3);
   let a: number, b: number, m: number, n: number;
   if (mode <= 1) {
@@ -199,6 +203,7 @@ function combineCase(r: Random, cancellation = false): Case {
     m = r(1, 200);
     n = r(1, 200);
   }
+  if (given) [a, m, b, n] = given;
   const first = term(q(a), m),
     second = term(q(b), n),
     value = sum(first, second);
@@ -215,7 +220,7 @@ function combineCase(r: Random, cancellation = false): Case {
       ? "Equal terms with opposite signs cancel. Their sum is 0."
       : rm === rn
         ? rm === 1
-          ? "Both simplified terms are whole numbers."
+          ? "Both simplified terms are integers."
           : `The coefficient counts copies of $\\sqrt{${rm}}$; the radicand stays ${rm}.`
         : "Addition and subtraction do not combine different numbers under a square-root sign.",
   ];
@@ -235,12 +240,17 @@ function combineCase(r: Random, cancellation = false): Case {
     key: JSON.stringify([a, m, b, n]),
   };
 }
-function multiplyCase(r: Random): Case {
-  const a = nonzero(r, 6),
-    b = nonzero(r, 6),
-    m = r(1, 100),
-    n = r(1, 100),
-    product = a * b;
+function multiplyCase(
+  r: Random,
+  given?: [number, number, number, number],
+): Case {
+  const [a, m, b, n] = given ?? [
+    nonzero(r, 6),
+    r(1, 100),
+    nonzero(r, 6),
+    r(1, 100),
+  ];
+  const product = a * b;
   const [factor, remaining] = root(m * n),
     value = term(q(product), m * n),
     source = `(${rawTerm(a, m)})(${rawTerm(b, n)})`;
@@ -263,12 +273,12 @@ function multiplyCase(r: Random): Case {
     key: JSON.stringify([a, m, b, n]),
   };
 }
-function rationalizeCase(r: Random): Case {
-  const a = nonzero(r, 12),
-    b = r(1, 6);
+function rationalizeCase(r: Random, given?: [number, number, number]): Case {
+  const a = given?.[0] ?? nonzero(r, 12),
+    b = given?.[1] ?? r(1, 6);
   let n: number, factor: number, remaining: number;
   do {
-    n = r(2, 100);
+    n = given?.[2] ?? r(2, 100);
     [factor, remaining] = root(n);
   } while (remaining === 1);
   const denominatorCoefficient = b * factor,
@@ -322,15 +332,66 @@ export function radicalPrintCase(
         : id === "multiply-square-roots"
           ? multiplyCase(r)
           : rationalizeCase(r);
+  // Each support/sign group contains multiple coefficients. Matching the radical
+  // part or its sign cannot identify a nonzero answer without coefficient work.
+  const support = (c: Case) =>
+    [...c.value]
+      .sort(([a], [b]) => a - b)
+      .map(
+        ([radicand, coefficient]) => `${radicand}:${Math.sign(coefficient.n)}`,
+      )
+      .join(",");
+  const sibling = (first: Case): Case => {
+    if (id === "simplify-square-root") {
+      const [, inside] = root(Number(first.key));
+      const coefficient = r(1, Math.floor(Math.sqrt(400 / inside)));
+      return simplifyCase(r, false, coefficient * coefficient * inside);
+    }
+    const givens = JSON.parse(first.key) as number[];
+    if (id === "combine-square-roots")
+      return combineCase(r, false, [
+        nonzero(r, 6),
+        givens[1]!,
+        nonzero(r, 6),
+        givens[3]!,
+      ]);
+    if (id === "multiply-square-roots")
+      return multiplyCase(r, [
+        nonzero(r, 6),
+        givens[1]!,
+        nonzero(r, 6),
+        givens[3]!,
+      ]);
+    return rationalizeCase(r, [nonzero(r, 12), r(1, 6), givens[2]!]);
+  };
   const candidates: Case[] = [];
   const zeroCohort =
     (id === "simplify-square-root" || id === "combine-square-roots") &&
     r(0, 3) === 0;
   if (zeroCohort) candidates.push(create(true));
+  const groupSize = zeroCohort ? 3 : 2;
   for (let attempts = 0; candidates.length < 4 && attempts < 256; attempts++) {
-    const candidate = create();
-    if (candidates.every((c) => text(c.value) !== text(candidate.value)))
-      candidates.push(candidate);
+    const first = create();
+    if (
+      !first.value.size ||
+      candidates.some((c) => support(c) === support(first))
+    )
+      continue;
+    if (
+      id === "simplify-square-root" &&
+      root(Number(first.key))[1] * groupSize ** 2 > 400
+    )
+      continue;
+    const group = [first];
+    for (let trial = 0; group.length < groupSize && trial < 256; trial++) {
+      const candidate = sibling(first);
+      if (
+        support(candidate) === support(first) &&
+        group.every((c) => text(c.value) !== text(candidate.value))
+      )
+        group.push(candidate);
+    }
+    if (group.length === groupSize) candidates.push(...group);
   }
   if (candidates.length !== 4)
     throw new Error("Could not form distinct exact radical choices");

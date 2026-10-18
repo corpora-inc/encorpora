@@ -3,7 +3,7 @@ export const radicalFacetMappings: readonly FacetMapping[] = [
   [
     "simplify-square-root",
     "numeric-square-root-simplification",
-    "Simplify square roots of integers from 0 through 400, including zero, perfect squares and square-factor extraction.",
+    "Simplify square roots of nonnegative integers at most 400 with square-free parts at most 100, including zero, perfect squares and square-factor extraction.",
   ],
   [
     "combine-square-roots",
