@@ -126,6 +126,10 @@ function runSimulation(
       now,
       targetBand: defaultTargetBand,
     });
+    if (choices.length !== Math.min(3, total - n))
+      throw new Error(
+        "Simulation policy must return a complete three-answer batch",
+      );
     let reviewed = false;
     if (n === jumpAt)
       for (const strand of strands) {
@@ -343,7 +347,11 @@ export function simulateFrontier(
     policy,
   );
   if (!population.jump)
-    return { ...run, rawDirectionalMovement: run.jumpDetection };
+    return {
+      ...run,
+      rawDirectionalMovement: run.jumpDetection,
+      oppositeDirectionCrossings: null,
+    };
   const control = runSimulation(
     { ...population, jump: 0 },
     seed,
@@ -351,8 +359,13 @@ export function simulateFrontier(
     policy,
   );
   const detected = new Map<string, { streak: number; delay: number | null }>();
+  const opposite = new Map<string, { streak: number; delay: number | null }>();
   const pre = checkpoints.find((c) => c.attempts === run.jumpAt)!;
   for (const [i, checkpoint] of checkpoints.entries()) {
+    if (control.checkpoints[i]?.attempts !== checkpoint.attempts)
+      throw new Error(
+        "Paired simulation checkpoints must have matching answer counts",
+      );
     if (checkpoint.attempts <= run.jumpAt!) continue;
     for (const strand of strands) {
       const d = detected.get(strand) ?? { streak: 0, delay: null };
@@ -368,11 +381,22 @@ export function simulateFrontier(
       if (d.delay === null && d.streak >= 2)
         d.delay = checkpoint.attempts - run.jumpAt!;
       detected.set(strand, d);
+      const wrong = opposite.get(strand) ?? { streak: 0, delay: null };
+      wrong.streak =
+        contrast <= -Math.abs(population.jump) / 2 && exposures >= 3
+          ? wrong.streak + 1
+          : 0;
+      if (wrong.delay === null && wrong.streak >= 2)
+        wrong.delay = checkpoint.attempts - run.jumpAt!;
+      opposite.set(strand, wrong);
     }
   }
   return {
     ...run,
     rawDirectionalMovement: run.jumpDetection,
+    oppositeDirectionCrossings: Object.fromEntries(
+      strands.map((s) => [s, opposite.get(s)?.delay ?? null]),
+    ),
     jumpDetection: Object.fromEntries(
       strands.map((s) => [s, detected.get(s)?.delay ?? null]),
     ),

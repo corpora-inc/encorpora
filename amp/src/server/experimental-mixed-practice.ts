@@ -153,8 +153,8 @@ export function planExperimentalMixedPractice(options: {
         Math.max(lastStrandPractice.get(strand) ?? -Infinity, at),
       );
   }
-  // At most one reserved information probe per six answered problems. It
-  // checks reachable, neglected strands even when their mean misses the band.
+  // Full three-answer batches reserve at most one probe per six answers.
+  // Partial/abandoned batches can repeat the qualifying answer-count phase.
   const probeBatch =
     !options.strictCeiling &&
     frontier.overall.answered > 0 &&
@@ -327,7 +327,7 @@ export function planExperimentalMixedPractice(options: {
     const { template, strand, predictedSuccess } = pick;
     chosen.push({
       template,
-      reason: pick === probe ? "probe" : pick.reason,
+      reason: pick === probe && pick !== reserved ? "probe" : pick.reason,
       strand,
       predictedSuccess,
     });

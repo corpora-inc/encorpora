@@ -167,7 +167,7 @@ export function estimateExperimentalFrontier(options: {
   observations: readonly FrontierObservation[];
   gradeOf: (templateId: string) => number | undefined;
   strandOf: (templateId: string) => string;
-  /** Production callers share these parameters with the planner. */
+  /** Experimental callers share these parameters with the experimental planner. */
   itemOf?: (
     templateId: string,
     templateVersion: number,
@@ -227,8 +227,8 @@ export function strandEstimate(frontier: Frontier, strand: string): Estimate {
 export function strandLevel(frontier: Frontier, strand: string): number {
   return strandEstimate(frontier, strand).level;
 }
-/** The grade to aim the next problem at: above the estimate while it is
- * uncertain (to learn the most), settling just below it (about 80% success). */
+/** Legacy grade heuristic retained for experimental reachability constraints;
+ * it does not establish expected learning gain or measured success probability. */
 export function targetGrade(estimate: Estimate): number {
   return estimate.level - 0.5 + 0.3 * estimate.sd;
 }
