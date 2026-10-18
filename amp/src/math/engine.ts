@@ -1,4 +1,8 @@
 import {
+  absoluteValueTemplates,
+  generateAbsoluteValueProblem,
+} from "./absolute-value-practice";
+import {
   linearSystemTemplates,
   generateLinearSystemProblem,
 } from "./linear-system-practice";
@@ -172,6 +176,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
+  ...absoluteValueTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -287,6 +292,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...absoluteValueTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -312,6 +318,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (absoluteValueTemplates.some((t) => t.id === templateId))
+    return generateAbsoluteValueProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
     return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))

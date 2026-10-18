@@ -439,6 +439,7 @@ signed-multiplication|7|number|Multiply and divide signed rational numbers|signe
 rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
 linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
+absolute-value-equations|algebra-1|algebra|Solve absolute-value equations and interpret complete real solution sets|absolute-value,two-step-equations,signed-multiplication|SAT.advanced-math
 linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
 scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proportional-relationships,triangle-area|7.G.A.1
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
@@ -1337,6 +1338,29 @@ for (const [id, description] of [
 ])
   linearSystemSkill.facets.push({
     id: `linear-systems.${id}`,
+    description,
+    status: "implemented",
+  });
+
+const absoluteValueSkill = skills.find(
+  (s) => s.id === "absolute-value-equations",
+)!;
+for (const [id, description] of [
+  [
+    "direct-solution-set",
+    "Select complete real solution sets for absolute-value equations with bounded rational distances.",
+  ],
+  [
+    "affine-solution-set",
+    "Solve a single absolute value of an affine expression with bounded integer coefficients and rational targets.",
+  ],
+  [
+    "transformed-solution-set",
+    "Isolate a scaled, shifted absolute value and classify bounded exact solution sets, including true and false constant equations.",
+  ],
+])
+  absoluteValueSkill.facets.push({
+    id: `absolute-value-equations.${id}`,
     description,
     status: "implemented",
   });

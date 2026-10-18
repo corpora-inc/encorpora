@@ -1,3 +1,4 @@
+import { AbsoluteValueIllustration } from "./AbsoluteValueIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
@@ -13,6 +14,9 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "absolute-value-distance") return <AbsoluteValueIllustration />;
+  if (kind === "absolute-value-shifted")
+    return <AbsoluteValueIllustration shifted />;
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;

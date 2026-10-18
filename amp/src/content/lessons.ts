@@ -1,3 +1,4 @@
+import { absoluteValueLessons } from "./absolute-value-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
@@ -23,6 +24,8 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "absolute-value-distance"
+      | "absolute-value-shifted"
       | "thirds-and-fourths"
       | "inequality-half-lines"
       | "linear-system-intersection"
@@ -500,6 +503,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...absoluteValueLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
   ...baseLessons,
