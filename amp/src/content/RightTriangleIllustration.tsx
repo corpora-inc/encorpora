@@ -1,4 +1,7 @@
 import React from "react";
+
+const orientationLabel = { font: "24px Arial, sans-serif", fill: "#173b37" };
+const areaLabel = { font: "21px Arial, sans-serif", fill: "#173b37" };
 /** Exact Euclidean constructions; labels use lengths, while regions show areas. */
 export function RightTriangleOrientation() {
   const panels = [
@@ -21,19 +24,19 @@ export function RightTriangleOrientation() {
             stroke="#173b37"
             strokeWidth="2"
           />
-          <text x="170" y="222" textAnchor="middle">
+          <text style={orientationLabel} x="170" y="222" textAnchor="middle">
             leg: 8 cm
           </text>
-          <text x="74" y="125" textAnchor="end">
+          <text style={orientationLabel} x="74" y="125" textAnchor="end">
             leg
           </text>
-          <text x="74" y="151" textAnchor="end">
+          <text style={orientationLabel} x="74" y="151" textAnchor="end">
             6 cm
           </text>
-          <text x="214" y="104" textAnchor="middle">
+          <text style={orientationLabel} x="214" y="104" textAnchor="middle">
             hypotenuse
           </text>
-          <text x="226" y="139" textAnchor="middle">
+          <text style={orientationLabel} x="226" y="139" textAnchor="middle">
             ? cm
           </text>
         </g>
@@ -58,22 +61,22 @@ export function RightTriangleOrientation() {
             stroke="#173b37"
             strokeWidth="2"
           />
-          <text x="190" y="290" textAnchor="middle">
+          <text style={orientationLabel} x="190" y="290" textAnchor="middle">
             leg: 8 cm
           </text>
-          <text x="288" y="366">
+          <text style={orientationLabel} x="288" y="366">
             leg
           </text>
-          <text x="288" y="392">
+          <text style={orientationLabel} x="288" y="392">
             6 cm
           </text>
-          <text x="162" y="416" textAnchor="middle">
+          <text style={orientationLabel} x="162" y="416" textAnchor="middle">
             hypotenuse
           </text>
-          <text x="162" y="443" textAnchor="middle">
+          <text style={orientationLabel} x="162" y="443" textAnchor="middle">
             ? cm
           </text>
-          <text x="200" y="490" textAnchor="middle">
+          <text style={orientationLabel} x="200" y="490" textAnchor="middle">
             Same triangle, half a turn
           </text>
         </g>
@@ -241,10 +244,10 @@ export function PythagoreanRearrangement() {
             }}
           >
             <title>{arrangement.name}</title>
-            <text x="164" y="26" textAnchor="middle">
+            <text style={areaLabel} x="164" y="26" textAnchor="middle">
               {arrangement.name}
             </text>
-            <text x="164" y="53" textAnchor="middle">
+            <text style={areaLabel} x="164" y="53" textAnchor="middle">
               Outer side: 7 cm (a + b)
             </text>
             {arrangement.squares.map((vertices, i) => (
@@ -269,6 +272,7 @@ export function PythagoreanRearrangement() {
             ))}
             {arrangement.labels.map(({ x, y, value }) => (
               <text
+                style={areaLabel}
                 key={value}
                 x={24 + x * 40}
                 y={74 + y * 40}
@@ -277,10 +281,10 @@ export function PythagoreanRearrangement() {
                 {value}
               </text>
             ))}
-            <text x="164" y="378" textAnchor="middle">
+            <text style={areaLabel} x="164" y="378" textAnchor="middle">
               {arrangement.caption}
             </text>
-            <text x="164" y="407" textAnchor="middle">
+            <text style={areaLabel} x="164" y="407" textAnchor="middle">
               Uncovered area: 25 cm²
             </text>
           </svg>
