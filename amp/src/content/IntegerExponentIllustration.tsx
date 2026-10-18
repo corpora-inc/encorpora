@@ -11,7 +11,10 @@ export function IntegerExponentIllustration() {
     ["−2", "1/4"],
   ];
   return (
-    <figure data-lesson-illustration="integer-exponent-ladder">
+    <figure
+      data-lesson-illustration="integer-exponent-ladder"
+      style={{ margin: "24px 0", breakInside: "avoid" }}
+    >
       <svg
         data-lesson-illustration="integer-exponent-ladder"
         viewBox="0 0 360 456"
@@ -77,7 +80,7 @@ export function IntegerExponentIllustration() {
           opacity=".3"
         />
       </svg>
-      <figcaption>
+      <figcaption style={{ marginTop: 12, lineHeight: 1.6 }}>
         The base is 2 in every row. Decreasing the exponent by 1 divides the
         value by 2.
       </figcaption>
