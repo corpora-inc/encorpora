@@ -16,6 +16,7 @@ from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_a
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
+from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
 from print_math_oracle import review_print_math
@@ -34,7 +35,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM
 
 
 def require(condition, message):
@@ -46,6 +47,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in LINEAR_SYSTEM:
+        return solve_linear_system(public)
     if template in INEQUALITY:
         return solve_inequality(public)
     if template in RIGHT_TRIANGLE:
@@ -251,6 +254,7 @@ def review(stream):
     review_quadratic_fixtures()
     review_polynomial_fixtures()
     review_inequality_fixtures()
+    review_linear_system_fixtures()
     review_right_triangle_fixtures()
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
@@ -265,6 +269,7 @@ def review(stream):
     seen, counts = set(), Counter()
     polynomial_shortcuts = PolynomialShortcutReview()
     inequality_review = InequalityReview()
+    system_review = LinearSystemReview()
     right_triangles = RightTriangleCorpusReview()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
@@ -290,8 +295,10 @@ def review(stream):
             polynomial_shortcuts.record(public, solved)
         if template in INEQUALITY:
             inequality_review.record(public, solved)
+        if template in LINEAR_SYSTEM:
+            system_review.record(public, solved)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -303,6 +310,7 @@ def review(stream):
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
+    print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
