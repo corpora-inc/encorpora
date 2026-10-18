@@ -78,7 +78,7 @@ const order: Lesson["sections"][number] = {
     "Adding the same number to both quantities moves them equally far along the number line, so their order stays the same. Subtracting the same number also preserves their order. For example, 2 < 5 gives 2 − 7 < 5 − 7, or −5 < −2. A negative result does not by itself require reversing the sign.",
     "Multiplying by a positive number changes distances from zero but preserves left-to-right order. Multiplying by a negative number also reflects the line through zero, reversing that order. For example, −2 < 3, but multiplying both sides by −2 gives 4 > −6. Division by a negative number has the same effect, because dividing by that number means multiplying by its reciprocal, which is also negative.",
     "A reciprocal is the number that multiplies a nonzero number to give 1. The reciprocal of −2 is −1/2. Thus dividing by −2 means multiplying by −1/2. Reverse < to >, > to <, ≤ to ≥, or ≥ to ≤. Whether equality is allowed stays unchanged. Division by zero is undefined.",
-    "The notation 2/3 × x means multiply x by 2/3; its coefficient is 2/3. A fractional coefficient follows the same rules. To solve −2/3 × x ≤ 4, multiply both sides by its reciprocal, −3/2, and reverse ≤ to ≥. The result is x ≥ 4 × (−3/2) = −6.",
+    "The notation 2/3 × x means multiply x by 2/3; its coefficient is 2/3. A fractional coefficient follows the same rules. To solve −2/3 × x ≤ 4, multiply both sides by the reciprocal of −2/3, which is −3/2, and reverse ≤ to ≥. The result is x ≥ 4 × (−3/2) = −6.",
   ],
 };
 export const inequalityLessons: Lesson[] = [

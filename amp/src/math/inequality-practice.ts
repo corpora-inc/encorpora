@@ -105,7 +105,7 @@ function manageable(
   });
 }
 const remove = (value: Rational, variable = false) =>
-  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? term(q(Math.abs(value.n), value.d)) : number(q(Math.abs(value.n), value.d))}`;
+  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? term(q(Math.abs(value.n), value.d)) : number(q(Math.abs(value.n), value.d))} ${value.n < 0 ? "to" : "from"} both sides`;
 const difference = (a: Rational, b: Rational) =>
   `${number(a)} ${b.n < 0 ? "+" : "−"} ${number(q(Math.abs(b.n), b.d))}`;
 
@@ -177,7 +177,7 @@ function generateInequalityCase(
         : [
             `Combine the constants: ${linear(q(coefficient), q(lhs))} ${op} ${right}.`,
           ]),
-      `${remove(q(coefficient), true)} from both sides: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
+      `${remove(q(coefficient), true)}: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
       `This comparison is ${truth ? "true" : "false"}. No x remains, so ${truth ? "every real value of x makes the original inequality true" : "no real value of x makes the original inequality true"}.`,
     );
     const correct = truth ? "All real numbers" : "No real numbers";
@@ -221,7 +221,7 @@ function generateInequalityCase(
           : [
               `Combine the constants: ${linear(q(k * a), lhsConstant)} ${op} ${right}.`,
             ]),
-        `${remove(other, true)} from both sides. The x coefficient becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
+        `${remove(other, true)}. The x coefficient becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
       );
     }
     const remaining = sub(rhsConstant, lhsConstant);
@@ -234,7 +234,7 @@ function generateInequalityCase(
     );
     if (lhsConstant.n !== 0)
       explanation.push(
-        `${remove(lhsConstant)} from both sides: ${term(coefficient)} ${op} ${difference(rhsConstant, lhsConstant)} = ${number(remaining)}.`,
+        `${remove(lhsConstant)}: ${term(coefficient)} ${op} ${difference(rhsConstant, lhsConstant)} = ${number(remaining)}.`,
       );
     else
       explanation.push(

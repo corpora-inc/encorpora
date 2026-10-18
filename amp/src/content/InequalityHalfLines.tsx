@@ -119,7 +119,7 @@ export function InequalityHalfLines() {
       <figcaption
         style={{ marginTop: "10px", fontSize: "0.95em", lineHeight: 1.6 }}
       >
-        The thick ray marks all solutions and continues in the arrow’s
+        The thick half-line marks all solutions and continues in the arrow’s
         direction. An open circle excludes 2; a filled circle includes 2. Each
         interval between neighboring ticks represents one unit.
       </figcaption>
