@@ -22,6 +22,7 @@ from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, rev
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
+from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 
@@ -38,7 +39,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM
+SUPPORTED = SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM
 
 
 def require(condition, message):
@@ -50,6 +51,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in CIRCLE:
+        return solve_circle(public)
     if template in PERCENT_CHANGE:
         return solve_percent_change(public)
     if template in LINEAR_SYSTEM:
@@ -254,6 +257,7 @@ def solve(public):
 
 
 def review(stream):
+    review_circle_fixtures()
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
@@ -317,6 +321,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
