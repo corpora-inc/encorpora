@@ -518,7 +518,7 @@ try {
   await page.route("**/family/consent/withdraw", (route) =>
     route.fulfill({ json: { withdrawn: true } }),
   );
-  await page.route("**/api/v1/family", (route) =>
+  await page.route("**/api/v1/me", (route) =>
     route.fulfill({
       status: 503,
       json: { error: "family_service_unavailable" },

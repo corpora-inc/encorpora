@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
@@ -115,7 +116,8 @@ try {
         return route.fulfill({
           json: { templates: [], lessons: [], skills: [], mode: "fixture" },
         });
-      if (path.endsWith("/family")) return route.fulfill({ json: family });
+      if (path.endsWith("/me"))
+        return route.fulfill({ json: fixtureMe(family) });
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
       if (path.endsWith("/frontier"))

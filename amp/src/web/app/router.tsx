@@ -12,7 +12,7 @@ import {
 import { z } from "zod";
 import { nativeRuntime } from "../native-runtime";
 import { queryClient, sessionOptions, meOptions } from "../lib/query";
-import { LoadingScreen, RouteError } from "./LoadingScreen";
+import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 const searchSchema = z
   .object({
     return: z.enum(["security"]).optional(),
@@ -51,7 +51,7 @@ async function beforeStart({ location }: { location: { pathname: string } }) {
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) throw redirect({ to: "/sign-in" });
   if (!nativeRuntime) {
-    const me = await queryClient.fetchQuery(meOptions(session));
+    const me = await queryClient.ensureQueryData(meOptions(session));
     if (!me.signedIn) throw redirect({ to: "/sign-in" });
     if (
       me.next === "verify-email" &&
@@ -81,12 +81,12 @@ const home = createRoute({
     if ("sign-in" in search)
       throw redirect({
         to: search["sign-in"] === "create" ? "/sign-up" : "/sign-in",
-        search: { return: search.return },
+        search: { return: search.return, error: search.error },
       });
     if ("reset-password" in search)
       throw redirect({
         to: "/reset-password",
-        search: { token: search.token },
+        search: { token: search.token, error: search.error },
       });
   },
 });
@@ -169,7 +169,7 @@ export const router = createRouter({
     ? createMemoryHistory({ initialEntries: ["/"] })
     : createBrowserHistory(),
   defaultPendingComponent: LoadingScreen,
-  defaultPendingMs: 0,
+  defaultPendingMs: 250,
   defaultPendingMinMs: 0,
 });
 declare module "@tanstack/react-router" {

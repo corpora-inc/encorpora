@@ -39,3 +39,12 @@
   color: var(--ink-2);
   font-size: var(--text-label);
 }
+
+.verificationActions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.verificationActions button {
+  width: 100%;
+}

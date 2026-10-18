@@ -23,16 +23,28 @@ const titles: Record<Step, string> = {
   "two-factor": "Enter your code",
 };
 
-/** Parent sign-in for AMP's own accounts. Success reloads the app, which then
- * finds the session (and saves a trial placement if one is waiting). */
+/** Parent sign-in with URL-backed steps and account-scoped session refresh. */
 export function SignInScreen() {
   const routeLocation = useLocation(),
     navigate = useNavigate();
   const params = new URLSearchParams(routeLocation.searchStr);
   const resetToken = params.get("token");
-  const step: Step =
-    (params.has("reset-password") && resetToken) ||
-    routeLocation.pathname === "/reset-password"
+  const invalidReset =
+    routeLocation.pathname === "/reset-password" &&
+    (!resetToken || params.has("error"));
+  useEffect(() => {
+    if (invalidReset)
+      void navigate({
+        to: "/sign-in/$step",
+        params: { step: "forgot" },
+        search: { error: "reset_link_invalid" },
+        replace: true,
+      });
+  }, [invalidReset]);
+  const step: Step = invalidReset
+    ? "forgot"
+    : (params.has("reset-password") && resetToken) ||
+        routeLocation.pathname === "/reset-password"
       ? "reset"
       : routeLocation.pathname === "/sign-up" ||
           params.get("sign-in") === "create"
@@ -66,11 +78,13 @@ export function SignInScreen() {
   const [backup, setBackup] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(
-    params.get("error") === "link_failed"
-      ? "That login could not be linked. Sign in again, then try linking it from Security."
-      : params.get("error")
-        ? "That sign-in did not complete. Try again."
-        : "",
+    invalidReset || params.get("error") === "reset_link_invalid"
+      ? "That password reset link expired or is invalid. Request a new link."
+      : params.get("error") === "link_failed"
+        ? "That login could not be linked. Sign in again, then try linking it from Security."
+        : params.get("error")
+          ? "That sign-in did not complete. Try again."
+          : "",
   );
   useLoggedError(error);
   const [notice, setNotice] = useState("");

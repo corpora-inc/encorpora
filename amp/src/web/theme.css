@@ -60,6 +60,7 @@ body,
 }
 button {
   background: var(--primary);
+  color: var(--on-primary);
   border-radius: 12px;
   transition:
     background 0.12s ease,
@@ -223,7 +224,8 @@ header {
 .answer-dock {
   border-top: 0;
 }
-.answer-dock label {
+.answer-dock label,
+.choice-form legend {
   color: var(--ink-2);
 }
 .workspace-answer-row input {
@@ -1790,4 +1792,14 @@ html[data-input="pointer"] :focus-visible {
 .account-error {
   background: var(--bad-soft);
   color: var(--bad);
+}
+
+.secondary {
+  color: var(--primary);
+  background: transparent;
+  border-color: var(--line-2);
+}
+.secondary:hover {
+  color: var(--primary);
+  background: var(--primary-soft);
 }

@@ -1,4 +1,10 @@
-import { refreshMe } from "../lib/query";
+import {
+  refreshMe,
+  sessionOptions,
+  queryClient,
+  meOptions,
+} from "../lib/query";
+import { useQuery } from "@tanstack/react-query";
 import {
   useFamilyCache,
   setNativeFamilySnapshot,
@@ -42,8 +48,6 @@ import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
 import { PracticeWorkspace, usePracticeViewport } from "../PracticeWorkspace";
 import {
-  accessSession,
-  onSessionChanged,
   signIn,
   signOut,
   authConfig,
@@ -268,8 +272,7 @@ function LegacyScreen() {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
   }, [readingLesson, tab]);
-  const authSessionRevision = useRef(0),
-    familyRequest = useRef(0);
+  const familyRequest = useRef(0);
   const authEpoch = useRef(0),
     tokenRef = useRef<string | null>(null),
     accountRef = useRef<string | null>(null);
@@ -411,26 +414,15 @@ function LegacyScreen() {
       if (epoch === authEpoch.current) setBusy(false);
     }
   }
-  useEffect(
-    () =>
-      onSessionChanged((session) => {
-        authSessionRevision.current++;
-        updateAuth(session);
-      }, setError),
-    [],
-  );
+  const sessionQuery = useQuery(sessionOptions);
   useEffect(() => {
-    const revision = authSessionRevision.current;
-    void accessSession()
-      .then((session) => {
-        if (revision === authSessionRevision.current) updateAuth(session);
-      })
-      .catch((e) => {
-        if (revision === authSessionRevision.current) {
-          setSessionReady(true);
-          setError("Sign-in could not be checked. Refresh to try again.");
-        }
-      });
+    if (sessionQuery.isSuccess) updateAuth(sessionQuery.data);
+    else if (sessionQuery.error) {
+      setSessionReady(true);
+      setError("Sign-in could not be checked. Refresh to try again.");
+    }
+  }, [sessionQuery.data, sessionQuery.isSuccess, sessionQuery.error]);
+  useEffect(() => {
     void learningCatalog()
       .then(setCatalog)
       .catch((e) => setError(String(e)));
@@ -438,7 +430,7 @@ function LegacyScreen() {
   useEffect(() => {
     if (!token) return;
     const epoch = authEpoch.current;
-    void loadFamily().catch(() => {
+    void loadFamily(false).catch(() => {
       if (epoch === authEpoch.current)
         setError(
           "Family details could not be refreshed. Check your connection and try again.",
@@ -540,17 +532,20 @@ function LegacyScreen() {
     setBusy(false);
     setError("");
   }
-  async function loadFamily() {
+  async function loadFamily(refresh = true) {
     const revision = familyRevision(accountRef.current);
     const request = ++familyRequest.current;
     const identity = accountRef.current;
     try {
       const summary = nativeRuntime
         ? await api<FamilySummary>("/family")
-        : await refreshMe({
-            accountId: identity!,
-            token: tokenRef.current!,
-          }).then((me) => {
+        : await (
+            refresh
+              ? refreshMe({ accountId: identity!, token: tokenRef.current! })
+              : queryClient.fetchQuery(
+                  meOptions({ accountId: identity!, token: tokenRef.current! }),
+                )
+          ).then((me) => {
             if (!me.signedIn)
               throw new Error("Your session ended. Sign in again.");
             return me.family;

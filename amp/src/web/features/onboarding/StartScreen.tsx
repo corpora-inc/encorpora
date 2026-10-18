@@ -1,3 +1,4 @@
+import { AppError } from "../../lib/AppError";
 import { storedTrial } from "../../lib/pending-trial";
 import { Button } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
@@ -13,7 +14,7 @@ import {
 } from "@tanstack/react-router";
 import { sessionOptions, meOptions, invalidateAccount } from "../../lib/query";
 import type { AuthSession } from "../../auth";
-import { LoadingScreen, RouteError } from "../../app/LoadingScreen";
+import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { ParentConsentCenter } from "../../ParentConsentCenter";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
 import { useLearnerStore } from "../../learner-store";
@@ -42,8 +43,15 @@ function SignedInStart({ session }: { session: AuthSession }) {
         email: query.data?.signedIn ? (query.data.account.email ?? "") : "",
         callbackURL: "/start/name",
       });
-      if (result.error)
-        throw new Error("We could not send the email. Please try again.");
+      if (result.error) {
+        const error = new AppError(
+          "unavailable",
+          "We could not send the email. Please try again.",
+          true,
+        );
+        error.log();
+        throw error;
+      }
       return "Verification email sent. Check your inbox.";
     },
   });
@@ -64,7 +72,27 @@ function SignedInStart({ session }: { session: AuthSession }) {
     if (location.pathname === "/start/birth-year" && !name.trim())
       void navigate({ to: "/start/name", replace: true });
   }, [location.pathname, name]);
-  if (query.error)
+  useEffect(() => {
+    if (!me?.signedIn) return;
+    if (
+      me.next === "verify-email" &&
+      location.pathname !== "/start/verify-email"
+    )
+      void navigate({ to: "/start/verify-email", replace: true });
+    else if (
+      me.next !== "verify-email" &&
+      me.consent.status !== "active" &&
+      location.pathname !== "/start/consent"
+    )
+      void navigate({ to: "/start/consent", replace: true });
+    else if (
+      me.next !== "verify-email" &&
+      me.consent.status === "active" &&
+      ["/start/consent", "/start/verify-email"].includes(location.pathname)
+    )
+      void navigate({ to: "/start/name", replace: true });
+  }, [me, location.pathname]);
+  if (query.error && !query.data)
     return (
       <RouteError error={query.error} reset={() => void query.refetch()} />
     );
@@ -89,27 +117,29 @@ function SignedInStart({ session }: { session: AuthSession }) {
         <section className="start-card">
           <h1>Check your email</h1>
           <p>Confirm your address to continue setting up your family.</p>
-          <Button
-            disabled={confirmation.isPending || verification.isPending}
-            onClick={() => {
-              verification.reset();
-              confirmation.mutate();
-            }}
-          >
-            {confirmation.isPending
-              ? "Checking confirmation…"
-              : "I confirmed my email"}
-          </Button>
-          <Button
-            disabled={verification.isPending || confirmation.isPending}
-            onClick={() => {
-              confirmation.reset();
-              verification.mutate();
-            }}
-          >
-            {verification.isPending ? "Sending email…" : "Send another email"}
-          </Button>
-          <Link to="/sign-in">Back to sign in</Link>
+          <div className={styles.verificationActions}>
+            <Button
+              disabled={confirmation.isPending || verification.isPending}
+              onClick={() => {
+                verification.reset();
+                confirmation.mutate();
+              }}
+            >
+              {confirmation.isPending
+                ? "Checking confirmation…"
+                : "I confirmed my email"}
+            </Button>
+            <Button
+              disabled={verification.isPending || confirmation.isPending}
+              onClick={() => {
+                confirmation.reset();
+                verification.mutate();
+              }}
+            >
+              {verification.isPending ? "Sending email…" : "Send another email"}
+            </Button>
+            <Link to="/sign-in">Back to sign in</Link>
+          </div>
         </section>
       </main>
     );

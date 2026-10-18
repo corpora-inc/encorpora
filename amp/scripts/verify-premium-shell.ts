@@ -1,7 +1,8 @@
+import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, type Page, type Locator } from "playwright";
-import { createServer } from "vite";
+import { createServer, preview } from "vite";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import {
@@ -36,15 +37,17 @@ async function startServer() {
   return app;
 }
 let app = await startServer();
-const vite = await createServer({
-  server: {
-    host: "127.0.0.1",
-    port: 4384,
-    strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4385" } },
-  },
-});
-await vite.listen();
+const serverOptions = {
+  host: "127.0.0.1",
+  port: 4384,
+  strictPort: true,
+  proxy: { "/api": { target: "http://127.0.0.1:4385" } },
+};
+const built = process.argv.includes("--production");
+const vite = built
+  ? await preview({ preview: serverOptions })
+  : await createServer({ server: serverOptions });
+if ("listen" in vite) await vite.listen();
 const browser = await chromium.launch();
 const originalInfo = console.info;
 console.info = (...args) => {
@@ -118,7 +121,9 @@ async function contrast(page: Page, selector: string) {
 }
 try {
   let signupCount = 0;
-  for (const theme of ["light", "dark"] as const)
+  for (const theme of (["light", "dark"] as const).filter(
+    (value) => !process.argv.includes("--dark-only") || value === "dark",
+  ))
     for (const width of process.argv.includes("--smoke")
       ? [320]
       : [320, 390, 768, 1280]) {
@@ -196,12 +201,33 @@ try {
         });
       assert.ok(page.url().endsWith("/practice"));
       await fits(page);
+      await contrast(
+        page,
+        ".problem-content .question,.problem-content .katex,.choice-form legend",
+      );
       await page.screenshot({
         path: `${shots}/practice-${width}-${theme}.png`,
       });
-      await page.reload();
-      await page.locator(".problem-stage").waitFor();
-      await fits(page);
+      for (
+        let reload = 0;
+        reload < (process.argv.includes("--reload-proof") ? 5 : 1);
+        reload++
+      ) {
+        await page.reload();
+        await page
+          .locator(".problem-stage")
+          .waitFor()
+          .catch(async (error) => {
+            console.log(
+              "Reload failure",
+              await page.locator("body").innerText(),
+              logs,
+            );
+            await page.screenshot({ path: `${shots}/reload-failure.png` });
+            throw error;
+          });
+        await fits(page);
+      }
       await page.goto(`${origin}/family/learners`);
       await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
       const tabs = page.locator(".family-tabs"),
@@ -291,7 +317,10 @@ try {
       release();
       await page.unrouteAll({ behavior: "wait" });
       await ready(page);
-      await contrast(page, ".family-back,.family-tabs button");
+      await contrast(
+        page,
+        ".family-back,.family-tabs button,.family-center h1,.family-center h2,.family-center h3,.account-label,.family-body button:not(:disabled)",
+      );
       await page.screenshot({ path: `${shots}/family-${width}-${theme}.png` });
       await fits(page);
       await page.goto(`${origin}/lessons`);
@@ -354,6 +383,82 @@ try {
           .getByRole("heading", { name: "Jordan", exact: true })
           .waitFor();
       }
+      if (width === 320 && theme === "light") {
+        const actual = await (
+          await context.request.get(`${origin}/api/v1/me`)
+        ).json();
+        await page.route("**/api/v1/me", (route) =>
+          route.fulfill({
+            json: {
+              ...actual,
+              next: "verify-email",
+              account: { ...actual.account, emailVerified: false },
+            },
+          }),
+        );
+        await page.goto(`${origin}/start/name`);
+        await page.getByRole("heading", { name: "Check your email" }).waitFor();
+        assert.match(page.url(), /start\/verify-email/);
+        let releaseEmail!: () => void;
+        const emailHold = new Promise<void>((resolve) => {
+          releaseEmail = resolve;
+        });
+        await page.route(
+          "**/api/auth/send-verification-email",
+          async (route) => {
+            await emailHold;
+            await route.fulfill({
+              status: 503,
+              json: { message: "synthetic email failure" },
+            });
+          },
+        );
+        const resend = page.getByRole("button", { name: "Send another email" }),
+          box = await resend.boundingBox();
+        await resend.click();
+        await page
+          .getByRole("button", { name: "Sending email…", disabled: true })
+          .waitFor();
+        await stable(
+          page.getByRole("button", { name: "Sending email…" }),
+          box,
+          "email pending controls stay in place",
+        );
+        releaseEmail();
+        await page
+          .getByText("We could not send the email. Please try again.", {
+            exact: true,
+          })
+          .waitFor();
+        await stable(resend, box, "email failure controls stay in place");
+        await page.getByRole("button", { name: "Dismiss message" }).click();
+        await page
+          .getByRole("button", { name: "I confirmed my email" })
+          .click();
+        await page
+          .getByText(
+            "Your email is not confirmed yet. Open the link in your email, then try again.",
+            { exact: true },
+          )
+          .waitFor();
+        const accessibility = await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze();
+        assert.deepEqual(
+          accessibility.violations
+            .filter((v) => ["serious", "critical"].includes(v.impact ?? ""))
+            .map((v) => v.id),
+          [],
+        );
+        await page.screenshot({
+          path: `${shots}/verification-error-320-light.png`,
+        });
+        await page.unrouteAll({ behavior: "wait" });
+        await page.goto(`${origin}/family/learners`);
+        await page
+          .getByRole("heading", { name: "Jordan", exact: true })
+          .waitFor();
+      }
       // Capability fixture: a parent without consent never sees a learner-write button.
       const response = await context.request.get(`${origin}/api/v1/me`),
         me = await response.json();
@@ -402,11 +507,9 @@ try {
       });
       assert.deepEqual(faults, []);
       await context.close();
-      await app.close();
-      app = await startServer();
     }
   console.log(
-    `Premium shell: real parent sign-up → learner → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; ${process.argv.includes("--smoke") ? "320px" : "4 widths"} × 2 themes passed. Development consent is a test fixture, not purchase-consent acceptance.`,
+    `Premium shell: real parent sign-up → learner → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; ${process.argv.includes("--smoke") ? "320px" : "4 widths"} × ${process.argv.includes("--dark-only") ? "dark theme" : "2 themes"} passed. Development consent is a test fixture, not purchase-consent acceptance.`,
   );
 } finally {
   await browser.close();

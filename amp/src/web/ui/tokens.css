@@ -8,6 +8,7 @@
   --line: #e2e5da;
   --line-2: #cfd6c6;
   --primary: #1f5f55;
+  --on-primary: #fffefa;
   --primary-hover: #174b43;
   --primary-soft: #e3eee8;
   --good: #2f8a5b;
@@ -32,6 +33,7 @@
     --line: #365148;
     --line-2: #4a665a;
     --primary: #8bd1b5;
+    --on-primary: #122522;
     --primary-hover: #a4e0c7;
     --primary-soft: #284d40;
     --good: #91d6ac;

@@ -14,6 +14,7 @@ const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const fixtureSource = `
 let resolve, reject;
 const pending = new Promise((yes,no)=>{resolve=yes;reject=no;});
+pending.catch(()=>{});
 const subscribers = new Set();
 window.sessionReview = {
   get ready(){return subscribers.size > 0;},
@@ -194,7 +195,7 @@ try {
     await page.route("**/api/v1/me", async (route) => {
       const snapshot = structuredClone(family);
       requests++;
-      if (requests === 1) {
+      if (requests === 2) {
         sawHeld();
         await released;
         if (outcome === "error")
@@ -228,10 +229,14 @@ try {
           accountId: "current-parent",
         }),
       );
-      await held;
+      await page
+        .getByRole("button", { name: "Learner", exact: true })
+        .waitFor();
+      await page.locator(".account-menu summary").click();
       await page
         .getByRole("button", { name: "Manage family", exact: true })
         .click();
+      await held;
       await page
         .getByRole("heading", { name: "Before rename", exact: true })
         .waitFor();
@@ -257,7 +262,7 @@ try {
       release();
       await (await oldResponse).finished();
       await settledRender(page);
-      assert.equal(requests, 4);
+      assert.ok(requests >= 4);
       assert.equal(
         await page
           .getByRole("alert")

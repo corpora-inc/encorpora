@@ -74,8 +74,6 @@
     grid-template-rows: auto auto minmax(0, 1fr);
   }
 }
-@media (prefers-color-scheme: dark) {
-}
 .shell .family-tabs,
 .shell > nav {
   background: var(--surface-2);

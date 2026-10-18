@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import { QueryClientProvider, useQuery } from "@tanstack/react-query";
 import {
   createRootRoute,
@@ -48,6 +54,13 @@ export function FamilyFixture({
   useEffect(() => {
     void refreshMe({ token, accountId: identity }).catch(() => {});
   }, [identity, token, location.pathname]);
+  const generation = useRef(0);
+  useEffect(() => {
+    generation.current++;
+    return () => {
+      generation.current++;
+    };
+  }, [identity]);
   const section = location.pathname.split("/")[2];
   return (
     <FamilyCenter
@@ -58,8 +71,9 @@ export function FamilyFixture({
       }
       onSectionChange={(s) => navigate("/family/" + s)}
       onChanged={async () => {
+        const epoch = generation.current;
         const me = await refreshMe({ token, accountId: identity });
-        if (me.signedIn)
+        if (epoch === generation.current && me.signedIn)
           events.push(
             "changed:" + me.family.learners.map((l) => l.name).join(","),
           );

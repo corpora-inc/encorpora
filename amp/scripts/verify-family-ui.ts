@@ -360,7 +360,10 @@ try {
       { exact: true },
     )
     .waitFor();
-  assert.match(await page.getByRole("status").innerText(), /Consent withdrawn/);
+  assert.match(
+    await page.locator(".family-notice").innerText(),
+    /Consent withdrawn/,
+  );
   assert.ok(
     (
       await page.evaluate(
