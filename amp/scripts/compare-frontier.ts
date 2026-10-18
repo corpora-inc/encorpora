@@ -7,6 +7,7 @@ import { simulateFrontier } from "./frontier/simulation";
 import {
   developmentPopulations,
   evaluationPopulations,
+  stressPopulations,
 } from "./frontier/synthetic-learner";
 import type { estimateFrontier } from "../src/learning/frontier";
 import type { planMixedPractice } from "../src/server/mixed-practice";
@@ -17,8 +18,8 @@ const baselineCommit = process.argv[2] ?? "86dfa922c";
 const partition = process.argv[3] ?? "evaluation";
 if (!/^[a-f0-9]{7,40}$/.test(baselineCommit))
   throw new Error("Supply a hexadecimal baseline commit");
-if (!["development", "evaluation", "audit"].includes(partition))
-  throw new Error("Use development, evaluation, or audit");
+if (!["development", "evaluation", "audit", "stress"].includes(partition))
+  throw new Error("Use development, evaluation, audit, or stress");
 const root = fileURLToPath(new URL("..", import.meta.url));
 const scratch = await mkdtemp(join(tmpdir(), "amp-frontier-baseline-"));
 try {
@@ -44,13 +45,17 @@ try {
   const populations =
     partition === "development"
       ? developmentPopulations
-      : evaluationPopulations;
+      : partition === "stress"
+        ? stressPopulations
+        : evaluationPopulations;
   const seeds =
     partition === "development"
       ? [11, 29]
       : partition === "audit"
         ? [607, 991]
-        : [101, 307];
+        : partition === "stress"
+          ? [4001, 5003]
+          : [101, 307];
   const baseline = populations.flatMap((p) =>
     seeds.map((s) =>
       simulateFrontier(p, s, 180, {

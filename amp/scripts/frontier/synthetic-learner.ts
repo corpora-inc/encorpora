@@ -24,6 +24,8 @@ export type Population = {
   guess: number;
   noise: number;
   jump: number;
+  difficultyOffset?: number;
+  highSchoolScale?: number;
 };
 export const developmentPopulations: readonly Population[] = [
   {
@@ -122,7 +124,13 @@ export function syntheticProbability(
   ability: number,
   population: Population,
 ): number {
-  const difficulty = grade - 0.4 + (hash(template.id) - 0.5) * 0.7;
+  const ruler =
+    grade >= 9 ? 8 + (grade - 8) * (population.highSchoolScale ?? 1) : grade;
+  const difficulty =
+    ruler -
+    0.4 +
+    (hash(template.id) - 0.5) * 0.7 +
+    (population.difficultyOffset ?? 0);
   const width = population.noise * (0.85 + 0.3 * hash(`${template.id}:width`));
   const guess = template.requiredResponseCapability
     ? Math.max(0.2, population.guess)
@@ -177,3 +185,16 @@ export class SyntheticLearner {
     return { correct, probability, ability };
   }
 }
+
+/** Deliberately misspecified ruler: diagnose assumptions, never tune to these. */
+export const stressPopulations: readonly Population[] = [
+  { ...developmentPopulations[0]!, name: "harder-items", difficultyOffset: 1 },
+  { ...developmentPopulations[0]!, name: "easier-items", difficultyOffset: -1 },
+  {
+    ...evaluationPopulations[2]!,
+    name: "compressed-secondary",
+    ability: 9,
+    start: 9,
+    highSchoolScale: 0.6,
+  },
+];

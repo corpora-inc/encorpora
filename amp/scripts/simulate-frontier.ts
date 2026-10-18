@@ -3,18 +3,25 @@ import { simulateFrontier } from "./frontier/simulation";
 import {
   developmentPopulations,
   evaluationPopulations,
+  stressPopulations,
 } from "./frontier/synthetic-learner";
 const partition = process.argv[2] ?? "evaluation";
-if (!["development", "evaluation", "audit"].includes(partition))
-  throw new Error("Use development, evaluation, or audit");
+if (!["development", "evaluation", "audit", "stress"].includes(partition))
+  throw new Error("Use development, evaluation, audit, or stress");
 const populations =
-  partition === "development" ? developmentPopulations : evaluationPopulations;
+  partition === "development"
+    ? developmentPopulations
+    : partition === "stress"
+      ? stressPopulations
+      : evaluationPopulations;
 const seeds =
   partition === "development"
     ? [11, 29]
     : partition === "audit"
       ? [607, 991]
-      : [101, 307];
+      : partition === "stress"
+        ? [4001, 5003]
+        : [101, 307];
 const started = performance.now();
 const runs = populations.flatMap((population) =>
   seeds.map((seed) => simulateFrontier(population, seed)),

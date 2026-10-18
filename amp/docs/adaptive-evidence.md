@@ -1,48 +1,41 @@
-# Practice evidence and strand selection
+# Practice evidence and frontier experiments
 
-AMP selects mixed practice from implemented problem families. Its scheduling rules are not a validated mastery estimate, a grade placement test, or a standardized-test score prediction. Curriculum links alone do not establish that a learner has demonstrated a skill.
+AMP selects mixed practice from implemented problem families. Production uses the Bayesian grade-based estimator in `src/learning/frontier.ts` and scheduler in `src/server/mixed-practice.ts`. These organize practice; they are not validated grade placement, mastery or standardized-test score estimates. Curriculum links do not establish that a learner has demonstrated a skill.
 
-Each skill has a durable evidence summary derived from retained attempts: total attempts, independent correct answers, the latest five outcomes, the latest independent success, and a retrieval schedule. Summaries exclude response text, answers and explanations. An assisted answer contributes an attempt but no independent success. A skill is **review-ready** only after at least five attempts, with at least four of the latest five independently correct and the latest attempt independently correct. Errors and assistance return it to **practicing**.
+## Production evidence and selection
 
-Retrieval intervals are six hours, one day, three days, seven days, fourteen days and thirty days. A correct independent retrieval advances spacing only if six hours have elapsed since the last credited retrieval. A burst cannot manufacture spaced retrievals. Errors and assistance reset spacing. Response speed does not affect these scheduling rules.
+Each skill has a durable summary: attempts, independent correct answers, the latest five outcomes, latest independent success and retrieval schedule. Summaries exclude response text, answers and explanations. Assistance contributes an attempt but no independent success. A skill is **review-ready** only after at least five attempts, with four of the latest five independently correct and the latest independently correct. Errors and assistance return it to **practicing**.
 
-## Strand estimates and item difficulty
+Retrieval intervals are six hours, one day, three days, seven days, fourteen days and thirty days. Independent success advances spacing only after six hours since the last credited retrieval. Errors and assistance reset it. Response speed does not affect this scheduling rule.
 
-The frontier is a Bayesian grid estimate for each strand. Its coordinate is a curriculum-grade index: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty or that a learner has attained a school grade.
+The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 1–8 use their numbers, and Algebra 1, Geometry, Algebra 2 and Precalculus occupy 9–12. This ordering is a scheduling convenience, not proof that courses have equivalent difficulty. The prior starts from age or a selected grade band. A pooled estimate seeds untouched strands and centers broad priors for observed strands. Each observed strand also uses its own outcomes. Evidence can therefore influence another strand through the pooled prior; it is not independent evidence of proficiency there. Drift per answer and elapsed day, plus widening after surprising outcomes, lets estimates follow changes without erasing attempts.
 
-The prior starts from the selected band or age-based starting point. The pooled estimate seeds untouched strands and centers broad priors for observed strands; each observed strand also incorporates its own outcomes. Evidence in one strand can therefore influence another through the pooled prior. This is not independent evidence of proficiency in the other strand. Assisted answers count as unsuccessful independent retrievals. Drift per answer and elapsed day, plus extra widening after surprising outcomes, lets the posterior follow improvement and regression without erasing attempts.
+Production aims near `level − 0.5 + 0.3 × uncertainty`. Due reviews, errors and unmet implemented prerequisites can reserve support work. Repeated difficulty follows prerequisite links across unimplemented nodes to the nearest teachable ancestor; success never grants unobserved ancestor credit. Recent skills and repeated strands receive penalties. Batches have at most five problems. Offline pools retain a grade ceiling. Unused batches on another device are not cross-device reservations.
 
-`src/learning/item-calibration.ts` supplies shared parameters to the planner and production estimator:
+Production selection reasons describe a prerequisite, revisit after an error or assistance, scheduled review, work in a skill with recorded evidence (`frontier`), or an unobserved skill (`explore`).
+
+## Isolated experimental model
+
+`src/learning/experimental-frontier.ts`, `src/learning/item-calibration.ts` and `src/server/experimental-mixed-practice.ts` are research modules. API, web and offline production import graphs exclude them; a regression test checks that boundary. There is no environment switch or production routing to the experimental policy. It requires an explicit code import.
+
+The item model is
 
 ```text
 P(success | ability) = guess + (1 − guess − slip) /
   (1 + exp(−discrimination × (ability − difficulty)))
 ```
 
-Difficulty is ability at the midpoint between the guess floor and slip ceiling; discrimination controls the slope. Defaults use the skill's grade minus 0.5, plus a small bounded adjustment for direct prerequisite count, an editorial proxy for depth. Broad template bands supply a fallback when skill metadata is absent. A version-keyed table distinguishes simple retrieval and multistep families. Four-option templates receive a 0.25 guess floor; free response receives 0.04. These are editorial assumptions, not parameters validated with learners. New template IDs receive defaults automatically. Production replay joins each retained problem instance to recover its generator version. Likelihood caches distinguish versions. An observation whose version has no registered calibration is omitted from the frontier estimate, while its attempt and skill evidence remain intact. Missing versions in the original outcome protocol mean version 1. Register historical parameters before retiring a generator version if its evidence must contribute to frontier replay.
+Difficulty is ability at the midpoint between guess floor and slip ceiling; discrimination controls slope. Editorial defaults use the skill's grade minus 0.5 and a bounded adjustment for direct prerequisite count. Broad template bands supply a fallback. A version-keyed table distinguishes simple retrieval and multistep families. Choice templates receive a provisional 0.25 guess floor, free response 0.04. These parameters are not learner-calibrated.
 
-## Selection policy
+The experimental estimator accepts an explicit version-aware `itemOf` callback. Its likelihood cache distinguishes generator versions. If that callback has no calibration for a recorded version, the observation is omitted from this estimate; the original attempt remains intact. Missing versions denote the original version-one outcome protocol. Any production integration must recover recorded versions from retained problem instances and retain historical calibration entries, not infer a past version from the active generator.
 
-The default target is 70–85% conditional success **at the posterior mean**. This prediction does not integrate ability uncertainty and is not a measured learner success rate. Internal callers can set `targetBand`; invalid or nonfinite bands are rejected. It is not a learner-controlled request field.
+The experimental scheduler targets a configurable 70–85% conditional success band at the posterior mean. This does not integrate uncertainty and is not a measured learner success rate. Invalid bands are rejected. Expected local information, approximated at five posterior points, favors uncertain strands. In-band items are preferred when immediate-repeat and batch-diversity constraints permit them.
 
-Scores penalize distance outside the band and distinguish candidates within it by proximity to its midpoint. Expected local information, approximated at five points around the estimate, adds a bounded preference for uncertain strands. This is a learning-opportunity heuristic, not measured expected learning gain. Grade-distance safeguards discourage inaccessible advanced work. Offline pools retain their strict ceiling.
+Repair and retrieval share a support reservation through alternating three-answer phases. Reviews favor nearby work, another strand, and oldest due time. A bounded information probe can occupy one slot in qualifying online batches on a six-answer cadence. It checks a strand not practiced for a day, with success of at least 0.35 after removing guessing and slipping, and positive expected information. Experimental selections identify these checks with `reason: "probe"`. Offline experiments disable probes. Repeated requests at the same answered count can propose the same probe; cadence is based on recorded answers, not durable issuance records.
 
-Durable evidence supplies due reviews and support needs. After repeated difficulty, the planner crosses unimplemented nodes to find the nearest implemented prerequisites needing practice. No selection or advanced answer grants ancestor credit. One eligible support or retrieval slot is reserved within each batch. Due successful reviews take precedence, favoring work within 1.5 grades below the target, a different recent strand, and then the oldest due time. Other slots prefer in-band work when it satisfies the immediate-repeat and batch-diversity constraints. Scores choose among those candidates; sparse catalogs fall back to the highest score. A separate bounded information probe checks a reachable strand not practiced for at least a day, on a six-answer cadence. It requires an independent-success prediction of at least 0.35 and positive expected information. High mean-success items can qualify because uncertainty may conceal regression. At most one probe is selected in a qualifying batch; a support reservation can take precedence. Offline batches disable probes because they lack immediate feedback. Recent skills and repeated strands receive penalties, and seeded hashes break ties deterministically.
+Support, probing and catalog gaps can put a selection outside the band. The objective is a scheduling heuristic, not measured expected learning gain. Fixed inputs, seed and time give deterministic choices. The seed breaks near-exact score ties; it does not randomize across materially different scores.
 
-Batches contain at most five problems. Unused problems on another device are not cross-device reservations. Selection reasons describe the task's purpose:
-
-- **prerequisite**: an implemented prerequisite of a skill with repeated difficulty;
-- **revisit**: a reachable skill whose last answer was wrong or assisted;
-- **review**: a reachable skill whose retrieval interval has elapsed;
-- **frontier**: another task in a skill with recorded evidence;
-- **explore**: a task in a skill without recorded evidence;
-- **probe**: a bounded information check of a neglected, reachable strand.
-
-The signed version-one offline protocol keeps its original reason vocabulary.
-
-Support reservations, interleaving and catalog gaps can put the chosen task outside the band. The band is an objective, not a guarantee. Selection is deterministic for fixed inputs, seed and time.
-
-## Reproducible synthetic checks
+## Reproduce the experiments
 
 Run from `amp/`:
 
@@ -50,34 +43,63 @@ Run from `amp/`:
 npx tsx scripts/simulate-frontier.ts development
 npx tsx scripts/simulate-frontier.ts evaluation
 npx tsx scripts/compare-frontier.ts 86dfa922c audit
+npx tsx scripts/compare-frontier.ts 86dfa922c stress
 npx tsx scripts/fit-frontier-calibration.ts
-npx tsx --test tests/frontier-calibration.test.ts
+npx tsx --test tests/frontier-calibration.test.ts tests/frontier-isolation.test.ts
 ```
 
-The simulation runs the real planner, estimator and evidence projection. The planner receives twelve recent attempts and durable summaries, as the API does. Synthetic learners use a separate probit response model with template-specific difficulty/noise perturbations, slips, guesses, uneven strands, practice gains, forgetting and positive or negative outside-learning jumps. Their response model does not import the planner's logistic curve or item parameters. Six answers form a simulated day; batches contain three answers. Runs contain 180 attempts.
+Comparison requires a Git checkout containing baseline commit `86dfa922c`. It loads that planner, estimator and evidence projection into a temporary directory. Both policies use the same current catalog, populations and seeds. The experimental run executes the actual experimental planner, estimator and evidence projection; it supplies twelve recent attempts and durable skill summaries as the API does. Six answers form a simulated day, with three-answer batches and 180 answers per run.
 
-Development scenarios use seeds 11 and 29. Evaluation scenarios use seeds 101 and 307 with different ability, noise, learning and forgetting parameters. These scenarios informed policy development; they are not untouched validation. A final frozen-policy audit uses new seeds 607 and 991 with the same evaluation population families. Reports include:
+Synthetic learners use a separate probit response curve, template-specific perturbations, slips, guesses, uneven strand ability, learning, forgetting and outside-learning jumps. Their response model does not import the estimator's logistic curve or item parameters. The ordinary scenarios still share a grade ruler with the model. Stress cases deliberately shift item difficulty by ±1 or compress the high-school ruler to expose that assumption. Assistance behavior is not simulated.
 
-- Mean absolute strand-estimate error every 30 attempts, including untouched strands.
-- First sustained convergence within ±0.5 grade: three consecutive batch checkpoints after at least three answers in that strand. Counts are total learner attempts, not strand attempts; `null` means unreached.
-- Detection delay: at least three post-jump strand answers and two consecutive checkpoints showing movement of at least half the jump from its pre-jump estimate. `null` means undetected. This measures directional response, not arrival at the new ability.
-- Target-band share under both the planner prediction and the independent synthetic probability, plus their mean absolute difference.
-- Feasible-band opportunities: an in-band template existed within the grade ceiling, avoiding recent skills and strands already selected in the batch. Missed opportunities distinguish deliberate support and probe selections from unexplained misses. This is conditional on the estimate, not an oracle of real ability.
-- Batches with due successful retrievals, batches serving at least one, reviews served and mean delay. The denominator includes overdue work outside the lowered frontier, exposing unserved demand. The ratio does not mean every due skill was reviewed.
-- Maximum strand share, longest consecutive strand run and per-strand visit counts.
+Development seeds are 11 and 29. Evaluation seeds 101 and 307 use different ability, noise, learning and forgetting parameters; these scenarios informed development. Audit seeds 607 and 991 were inspected after an initial freeze and rerun following independent-review corrections. They are not an untouched final validation set. Stress seeds are 4001 and 5003. No synthetic result establishes learning efficacy.
 
-Regression tolerances cover error, band coverage, review service, concentration and change detection. They do not promise monotonic improvement. Curriculum additions can change the experiment; tolerance changes require inspection of the full reports and censored results. Some strands never converge or detect a jump. Sparse advanced material, pooled priors and forced review/diversity choices limit placement and target-band accuracy.
+Reports include:
 
-The fitting command estimates difficulty and discrimination on 400 synthetic responses per template and scores a separate 400-response validation sample with a different ability distribution. It prints proposed parameters and both validation losses; some fits can worsen validation. Diagnostic fits are never loaded by the API. Real-attempt fitting requires an independently anchored ability scale, sufficient per-template data, privacy controls and held-out learners. Across the 142-template fitting experiment, mean held-out response log loss decreased from 0.4399 to 0.4314, and mean absolute probability error against the synthetic response curve decreased from 0.0506 to 0.0250. This supports the fitting implementation on that synthetic family, not transfer of those parameters to real learners. Synthetic fitting and simulation cannot establish learning efficacy or justify sales claims.
+- Mean absolute strand error every thirty attempts, including untouched strands.
+- First convergence within ±0.5 grade for three consecutive batch checkpoints, after three strand answers. Counts are total learner answers; `null` means unreached.
+- Paired detection delay against a no-jump control with the same seed and policy. Require three post-jump strand answers and two checkpoints differing by at least half the imposed jump in its direction. Before the intervention, histories match; afterwards their practice can diverge. `null` means undetected. `rawDirectionalMovement` separately measures movement from the pre-jump estimate and can be confounded by ordinary initial convergence.
+- Band share under both the planner prediction and independent synthetic probability, and their mean absolute difference.
+- Feasible-band opportunities under grade, recent-skill and batch-diversity constraints. Misses distinguish deliberate support and probes from unexplained misses; feasibility is conditional on estimated ability.
+- Batches with due successful retrievals, batches serving one, reviews served and mean delay. The denominator includes overdue work beyond the lowered frontier; the ratio does not mean every due skill was reviewed.
+- Largest strand share, longest consecutive strand run, visits and final per-strand estimates alongside synthetic abilities.
 
-Per-candidate work is constant-sized: one probability, five information points and existing evidence checks. The estimator builds each template's grid likelihood once per request and reuses it. Historical replay remains proportional to retained attempts; this change does not establish bounded long-term request latency.
+## Results and production blocker
 
-## Storage and privacy
+The declared development objective is lower mean absolute strand error while preserving baseline paired detection, review service and diversity. Fixed development regression checks enforce those criteria. They do not establish general improvement. Component ablations on development runs produced mean errors of 0.6375 for baseline, 0.5572 for the complete experiment, 0.5873 with only its estimator, 0.7313 with only its planner, 0.6732 without probes and 0.6956 with review-only support reservation.
 
-Migration `0008-skill-evidence.sql` builds summaries from attempts present in the database. Missing or deleted history is not reconstructed. Historical ordering uses creation time and attempt ID. Future attempts receive a monotonically increasing ingestion sequence under the learner lock, defining order for equal timestamps and concurrent requests. Original attempt facts are retained unchanged.
+Each entry below is baseline → experimental policy, averaged over six runs:
 
-An insertion trigger updates the summary in the attempt transaction. A rejected duplicate or rolled-back transaction adds no evidence. Scheduling summaries use one row per observed skill and an indexed twelve-attempt recency window. The frontier separately replays retained history; it does not use a durable posterior checkpoint.
+| Scenarios | Final error, grades | Independent band share | Review adherence | Largest strand share | Paired detections |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Development | 0.637 → 0.557 | 26.9% → 26.6% | 83.6% → 85.3% | 29.2% → 22.7% | 29 → 34 |
+| Evaluation | 0.714 → 0.775 | 15.9% → 18.9% | 84.7% → 85.3% | 27.7% → 24.7% | 29 → 29 |
+| Audit | 0.708 → 0.723 | 17.3% → 21.0% | 82.7% → 86.2% | 27.6% → 25.1% | 25 → 30 |
+| Stress | 0.971 → 0.972 | 22.1% → 21.3% | 85.5% → 87.1% | 23.5% → 27.1% | 17 → 17 |
 
-Parent exports identify summaries as `derived-skill-evidence`. Learning-data deletion purges summaries and history, including when an opaque learner record must be retained for billing. Consent withdrawal blocks learning writes under the account lock; it does not itself delete retained history.
+Development, evaluation and audit each have 48 changed-strand cases; stress has 24. Censored cases stay in those denominators. Audit median delay among detected strands is 36 → 48 answers. Ordinary directional movement counts 27 → 26; it must not replace paired detection of 25 → 30.
 
-Apply the migration with learning writers stopped before starting an application version that reads the projection. Back up the database and test against a representative isolated database first. Backfill is a transactional, bounded-memory replay whose duration grows with retained attempts. Fixtures require a dedicated database or isolated schema. This design does not establish throughput at millions of learners; capacity testing is separate work.
+Audit results expose important losses:
+
+| Population / seed | Final error, grades | Independent band share | Review adherence |
+| --- | ---: | ---: | ---: |
+| early-uneven / 607 | 0.644 → 0.891 | 30.0% → 30.0% | 86.0% → 82.8% |
+| early-uneven / 991 | 0.571 → 0.563 | 17.2% → 28.3% | 81.0% → 77.6% |
+| advanced-jump / 607 | 0.358 → 0.571 | 2.2% → 4.4% | 83.3% → 91.4% |
+| advanced-jump / 991 | 0.514 → 0.865 | 3.9% → 7.8% | 89.1% → 91.4% |
+| uneven-loss / 607 | 1.021 → 0.693 | 27.2% → 30.0% | 82.8% → 84.5% |
+| uneven-loss / 991 | 1.141 → 0.756 | 23.3% → 25.6% | 74.1% → 89.7% |
+
+Compressed-secondary stress errors increase from 0.650 to 0.840 and 0.829 to 1.051. Estimator-only experiments improve overall averages but worsen both early evaluation runs (0.609 → 0.777 and 0.402 → 0.506). A conservative alternative using legacy scheduling and half-strength editorial difficulty/discrimination adjustments also fails the development objective (0.637 → 0.705) and worsens early strata. Point estimates, pooled priors and sparse item coverage do not reliably identify independent strand ability or a misspecified difficulty scale.
+
+**Production promotion is blocked by these regressions.** The experiment cannot justify replacing the production estimator or scheduler. Promotion requires a predeclared precision objective and per-stratum nonregression criteria, successful independent evaluation of young, advanced, uneven and misspecified-scale populations, fair repair/review service, and version-safe historical replay. A claim of learner-calibrated success probabilities additionally requires suitably consented response data with sufficient per-template evidence, an anchored ability scale and held-out learners. Synthetic averages cannot satisfy that requirement.
+
+The fitting command estimates difficulty and discrimination on 400 synthetic responses per template and scores 400 separate responses with a different ability distribution. It prints proposed parameters and validation losses; fits are never loaded by production or the experimental scheduler. Across the 142-template diagnostic, mean held-out log loss decreases from 0.4399 to 0.4314 and mean probability error against the synthetic curve from 0.0506 to 0.0250. Some individual fits worsen. This checks the fitting implementation on a specified synthetic family, not parameter transfer to learners.
+
+## Storage and cost
+
+Migration `0008-skill-evidence.sql` builds summaries from retained attempts; missing history is not reconstructed. Historical order uses creation time and attempt ID. Future attempts receive an ingestion sequence under the learner lock. An insertion trigger updates summaries in the attempt transaction. Duplicate or rolled-back attempts add no evidence.
+
+Scheduling reads durable skill rows and an indexed twelve-attempt recency window. Production frontier replay separately scans retained history. The experimental estimator caches per-version grid likelihoods within one call; it also replays history. Neither design establishes bounded long-term latency. Candidate selection adds constant-sized probability/information calculations per template. Capacity testing is separate work.
+
+Parent exports identify summaries as `derived-skill-evidence`. Learning-data deletion purges summaries and attempts, including when billing requires retaining an opaque learner record. Consent withdrawal blocks new learning writes under the account lock without itself deleting history. Apply the evidence migration with learning writers stopped, after backup and a representative isolated-database test. Backfill is a transactional, bounded-memory replay whose duration grows with history.

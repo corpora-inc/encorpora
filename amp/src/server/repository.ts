@@ -5,10 +5,9 @@ import {
   initialLevel,
   type Frontier,
 } from "../learning/frontier";
-import { templateGrade, templateCalibration } from "../learning/item-calibration";
+import { templateGrade } from "./mixed-practice";
 const templateById = new Map(templates.map((t) => [t.id, t]));
 const skillById = new Map(skills.map((s) => [s.id, s]));
-const itemByVersion = new Map(templates.map((t) => [`${t.id}@${t.version}`, templateCalibration(t, skillById)]));
 import {
   lockLearningAccount,
   learningConsentActive,
@@ -318,11 +317,9 @@ export class PgTransaction implements LearnerTransaction {
       [this.learnerId],
     );
     const history = await this.db.query(
-      `SELECT a.outcome->>'templateId' AS "templateId",(a.outcome->>'correct')::boolean AS correct,
-        (a.outcome->>'assisted')::boolean AS assisted,a.outcome->>'createdAt' AS "createdAt",
-        (i.content->'public'->>'templateVersion')::int AS "templateVersion"
-        FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id AND i.learner_id=a.learner_id
-        WHERE a.learner_id=$1 ORDER BY a.evidence_sequence`,
+      `SELECT outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt" FROM amp_attempts
+        WHERE learner_id=$1 ORDER BY evidence_sequence`,
       [this.learnerId],
     );
     return estimateFrontier({
@@ -332,7 +329,6 @@ export class PgTransaction implements LearnerTransaction {
         now,
       }),
       observations: history.rows,
-      itemOf: (id, version) => itemByVersion.get(`${id}@${version}`),
       now,
       gradeOf: (id) => {
         const template = templateById.get(id);

@@ -1,17 +1,17 @@
 import { templates } from "../../src/math/engine";
 import { skills } from "../../src/curriculum/catalog";
 import {
-  estimateFrontier,
+  estimateExperimentalFrontier as estimateFrontier,
   strandEstimate,
   targetGrade,
-} from "../../src/learning/frontier";
+} from "../../src/learning/experimental-frontier";
 import {
   templateCalibration,
   templateGrade,
   itemSuccess,
   gradeCalibration,
 } from "../../src/learning/item-calibration";
-import { planMixedPractice } from "../../src/server/mixed-practice";
+import { planExperimentalMixedPractice as planMixedPractice } from "../../src/server/experimental-mixed-practice";
 import { projectSkillEvidence } from "../../src/server/evidence";
 import type { Outcome } from "../../src/server/repository";
 import { SyntheticLearner, type Population } from "./synthetic-learner";
@@ -28,11 +28,22 @@ const startAt = Date.parse("2026-01-01T12:00:00Z");
 const DAY = 86400000;
 export const defaultTargetBand = [0.7, 0.85] as const;
 
-export function simulateFrontier(
+type SimulationPolicy = {
+  estimate: typeof estimateFrontier;
+  plan: (
+    options: Parameters<typeof planMixedPractice>[0],
+  ) => Pick<
+    ReturnType<typeof planMixedPractice>[number],
+    "template" | "strand" | "reason"
+  >[];
+  calibrated: boolean;
+};
+
+function runSimulation(
   population: Population,
   seed: number,
   total = 180,
-  policy = {
+  policy: SimulationPolicy = {
     estimate: estimateFrontier,
     plan: planMixedPractice,
     calibrated: true,
@@ -56,6 +67,11 @@ export function simulateFrontier(
   const beforeJump = new Map<string, number>();
   const visitsBeforeJump = new Map<string, number>();
   const trajectory: { attempts: number; meanAbsoluteError: number }[] = [];
+  const checkpoints: {
+    attempts: number;
+    levels: Record<string, number>;
+    visits: Record<string, number>;
+  }[] = [];
   let dueBatches = 0,
     reviewBatches = 0,
     reviews = 0,
@@ -192,6 +208,13 @@ export function simulateFrontier(
     }
     if (reviewed) reviewBatches++;
     const after = estimate(attempts.length);
+    checkpoints.push({
+      attempts: attempts.length,
+      levels: Object.fromEntries(
+        strands.map((s) => [s, strandEstimate(after, s).level]),
+      ),
+      visits: Object.fromEntries(visits),
+    });
     let totalError = 0;
     for (const strand of strands) {
       const error = Math.abs(
@@ -239,6 +262,7 @@ export function simulateFrontier(
   }
   const final = estimate(attempts.length);
   return {
+    checkpoints,
     finalStrands: Object.fromEntries(
       strands.map((strand) => [
         strand,
@@ -292,5 +316,65 @@ export function simulateFrontier(
     maxStrandShare: Math.max(...visits.values()) / attempts.length,
     longestStrandRun: longestRun,
     strandVisits: Object.fromEntries(visits),
+  };
+}
+
+/** Compare changed learners with a no-jump control using common random numbers.
+ * Before the intervention the histories are identical. Afterwards selection and
+ * practice can diverge; the contrast includes that policy-mediated response. */
+export function simulateFrontier(
+  population: Population,
+  seed: number,
+  total = 180,
+  policy: SimulationPolicy = {
+    estimate: estimateFrontier,
+    plan: planMixedPractice,
+    calibrated: true,
+  },
+) {
+  if (!Number.isInteger(total) || total < 9 || total % 3 !== 0)
+    throw new Error(
+      "Simulation length must be a multiple of three, at least nine",
+    );
+  const { checkpoints, ...run } = runSimulation(
+    population,
+    seed,
+    total,
+    policy,
+  );
+  if (!population.jump)
+    return { ...run, rawDirectionalMovement: run.jumpDetection };
+  const control = runSimulation(
+    { ...population, jump: 0 },
+    seed,
+    total,
+    policy,
+  );
+  const detected = new Map<string, { streak: number; delay: number | null }>();
+  const pre = checkpoints.find((c) => c.attempts === run.jumpAt)!;
+  for (const [i, checkpoint] of checkpoints.entries()) {
+    if (checkpoint.attempts <= run.jumpAt!) continue;
+    for (const strand of strands) {
+      const d = detected.get(strand) ?? { streak: 0, delay: null };
+      const contrast =
+        (checkpoint.levels[strand]! - control.checkpoints[i]!.levels[strand]!) *
+        Math.sign(population.jump);
+      const exposures =
+        (checkpoint.visits[strand] ?? 0) - (pre.visits[strand] ?? 0);
+      d.streak =
+        contrast >= Math.abs(population.jump) / 2 && exposures >= 3
+          ? d.streak + 1
+          : 0;
+      if (d.delay === null && d.streak >= 2)
+        d.delay = checkpoint.attempts - run.jumpAt!;
+      detected.set(strand, d);
+    }
+  }
+  return {
+    ...run,
+    rawDirectionalMovement: run.jumpDetection,
+    jumpDetection: Object.fromEntries(
+      strands.map((s) => [s, detected.get(s)?.delay ?? null]),
+    ),
   };
 }
