@@ -83,6 +83,15 @@ const coordinates = {
   ],
 };
 
+const fractionCalculations = {
+  title: "Calculate with fractions",
+  paragraphs: [
+    "To multiply a fraction by a whole number, multiply its numerator and keep its denominator: 3 × (5/4) = 15/4. Three groups of five quarters contain fifteen quarters. Apply the usual sign rule: (−2) × (3/4) = −6/4 = −3/2. The last equality divides both numerator and denominator by 2; dividing both by the same nonzero number preserves the fraction's value.",
+    "To divide a fraction by a positive whole number, multiply the denominator by that number: (5/4) ÷ 2 = 5/8. Halving each quarter makes an eighth. For example, (−5/4) ÷ 5 = −5/20 = −1/4, reducing by dividing numerator and denominator by 5. For a negative divisor, also reverse the sign: (−9/2) ÷ (−3) = 9/6 = 3/2. Division by zero is never permitted.",
+    "To add or subtract fractions, first name their parts with a common denominator. Multiplying numerator and denominator by the same nonzero number preserves the value: 1/2 = 3/6 and 1/3 = 2/6. Thus 1/2 + 1/3 = 3/6 + 2/6 = 5/6. Add the counts of sixths; keep their name, sixths. Whole numbers can be renamed too: −2 − 2/3 = −6/3 − 2/3 = −8/3.",
+  ],
+};
+
 export const linearSystemPairLesson: Lesson = {
   id: "linear-system-pair",
   title: "Solve two equations together",
@@ -102,6 +111,7 @@ export const linearSystemPairLesson: Lesson = {
         "A fraction a/b means a divided by a nonzero b. The numerator a is above the fraction bar; the denominator b is below it. When b is a positive whole number, divide one unit into b equal parts. A nonnegative whole-number numerator counts those parts. Dividing one unit into two equal parts makes halves, so 3/2 counts three halves. A minus sign gives the negative number: −3/2 means negative three halves. To add or subtract fractions, express them with the same denominator: 9/2 − 2 = 9/2 − 4/2 = 5/2.",
       ],
     },
+    fractionCalculations,
     foundations,
     {
       title: "One equation is only one condition",
@@ -176,6 +186,7 @@ export const linearSystemCountLesson: Lesson = {
         "A fraction a/b means a divided by a nonzero b. The numerator a is above the fraction bar; the denominator b is below it. When b is a positive whole number, divide one unit into b equal parts. A nonnegative whole-number numerator counts those parts. Dividing one unit into two equal parts makes halves, so 3/2 counts three halves. A minus sign gives the negative number: −3/2 means negative three halves.",
       ],
     },
+    fractionCalculations,
     foundations,
     coordinates,
     {
