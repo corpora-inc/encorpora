@@ -17,6 +17,7 @@ from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_mea
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
+from factoring_math_oracle import FACTORING, solve_factoring, review_factoring_fixtures, review_explanation as review_factoring_explanation, FactoringReview, review_factoring_content
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
@@ -40,6 +41,7 @@ SUPPORTED = frozenset({
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
 SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM | PERCENT_CHANGE
+SUPPORTED |= FACTORING
 
 
 def require(condition, message):
@@ -63,6 +65,8 @@ def solve(public):
         return solve_right_triangle(public)
     if template in POLYNOMIAL:
         return solve_polynomial(public)
+    if template in FACTORING:
+        return solve_factoring(public)
     if template in QUADRATIC:
         return solve_quadratic(public)
     if template in MEASUREMENT:
@@ -263,6 +267,7 @@ def review(stream):
     review_measurement_fixtures()
     review_quadratic_fixtures()
     review_polynomial_fixtures()
+    review_factoring_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
     review_linear_system_fixtures()
@@ -279,6 +284,7 @@ def review(stream):
     require(type(start) is int and type(count) is int and start >= 0 and count >= 256, 'Require at least 256 seeds per family')
     seen, counts = set(), Counter()
     polynomial_shortcuts = PolynomialShortcutReview()
+    factoring_review = FactoringReview()
     inequality_review = InequalityReview()
     system_review = LinearSystemReview()
     right_triangles = RightTriangleCorpusReview()
@@ -304,6 +310,9 @@ def review(stream):
             review_converse_explanation(public, problem['explanation'])
         if template in POLYNOMIAL:
             polynomial_shortcuts.record(public, solved)
+        if template in FACTORING:
+            factoring_review.record(public, solved)
+            review_factoring_explanation(problem)
         if template in PERCENT_CHANGE:
             review_percent_explanation(public, problem['explanation'])
         if template in INEQUALITY:
@@ -314,7 +323,7 @@ def review(stream):
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | FACTORING | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -332,6 +341,8 @@ def review(stream):
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent factoring breadth and named choice shortcuts: ' + json.dumps(factoring_review.finish(count)), file=sys.stderr)
+    print('Independent factoring content: ' + json.dumps(review_factoring_content()), file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
     publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
