@@ -229,6 +229,7 @@ def review_explanation(problem):
                     if power else 'A nonzero constant term has no factor x, so no power of x is common to every term.')
         require(steps[1] == expected, 'Incorrect common variable factor')
     else:
+        require(len(public['response']['options']) >= 3, 'Quadratic practice must have at least three distinct middle coefficients')
         claim = [step for step in steps if step.startswith('For ')]
         require(len(claim) == 1, 'Missing quadratic coefficient identification')
         found = re.fullmatch(r'For (.+), the leading coefficient is (−?-?[0-9]+), the middle coefficient is (−?-?[0-9]+), and the constant is (−?-?[0-9]+)\.', claim[0])
@@ -239,6 +240,13 @@ def review_explanation(problem):
         factor = target[2]/inner[2]
         require(tuple(factor*v for v in inner) == target and inner[2] > 0,
                 'Inside quadratic is not the original with signed content extracted')
+        if public['templateId'] == 'nonmonic-quadratic-factorization':
+            common, _ = greatest_monomial(target)
+            magnitudes = ', '.join(str(abs(int(value))) for value in reversed(target) if value)
+            require(steps[0] == f'The GCF of the nonzero coefficient magnitudes {magnitudes} is {common}.',
+                    'Incorrect or missing numerical-content derivation')
+            sign_step = 'The leading coefficient is negative. Extract the negative of the coefficient GCF to leave a positive leading coefficient inside.'
+            require((sign_step in steps) == (target[2] < 0), 'Wrong explanation for extracting a negative common factor')
     return chains
 
 
@@ -479,6 +487,13 @@ def review_content_mutations(records):
     bad = copy.deepcopy(figure); bad['html'] = bad['html'].replace('>6x²<','>7x²<',1); reject(check_figure,bad)
     bad = copy.deepcopy(figure); bad['html'] = bad['html'].replace('x="175"','x="174"',1); reject(check_figure,bad)
     bad = copy.deepcopy(figure); bad['html'] = bad['html'].replace('width="260"','width="259"',1); reject(check_figure,bad)
+    quadratic = next(record['problem'] for record in records if record['kind'] == 'factoring-runtime'
+                     and record['templateId'] == 'nonmonic-quadratic-factorization')
+    bad = copy.deepcopy(quadratic); bad['explanation'][0] += ' Ignore the GCF.'; reject(review_explanation,bad)
+    bad = copy.deepcopy(quadratic)
+    options = bad['public']['response']['options']; key = bad['answer']
+    bad['public']['response']['options'] = [option for option in options if option['id'] == key] + [next(option for option in options if option['id'] != key)]
+    reject(review_explanation,bad)
     return rejected
 
 
