@@ -27,9 +27,9 @@ function choiceFeatures(candidate: Candidate): number[] {
   const x = points.map((p) => p[0]!.value),
     y = points.map((p) => p[1]!.value);
   const zeroCount = points.map((p) => p.filter((v) => v.value === 0).length);
-  const result = [0, 1, 2, 3].map((position) =>
-    feature(points.map((_, i) => i === position)),
-  );
+  // Letter positions are independently shuffled by the generator. Do not impose
+  // equal letter counts: those would reveal the last answer from earlier ones.
+  const result: number[] = [];
   for (const matches of [
     points.map((_, i) => x[i] === 0 && y[i] === 0),
     x.map((v) => v === 0),
@@ -68,7 +68,7 @@ function balanceChoices(
   const all = (1 << requirements.length) - 1;
   const sum = selected.reduce(
     (total, c) => total.map((v, i) => v + data.get(c)!.features[i]!),
-    new Array<number>(20).fill(0),
+    new Array<number>(data.get(selected[0]!)!.features.length).fill(0),
   );
   const loss = (values: number[]) =>
     values.reduce((total, value) => total + value * value, 0);
