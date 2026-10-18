@@ -20,6 +20,7 @@ from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomi
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
+from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
@@ -37,7 +38,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | LINEAR_SYSTEM | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -49,6 +50,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in INTEGER_EXPONENT:
+        return solve_integer_exponent(public)
     if template in LINEAR_SYSTEM:
         return solve_linear_system(public)
     if template in INEQUALITY:
@@ -251,6 +254,7 @@ def solve(public):
 
 
 def review(stream):
+    review_integer_exponent_fixtures()
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
@@ -272,6 +276,7 @@ def review(stream):
     polynomial_shortcuts = PolynomialShortcutReview()
     inequality_review = InequalityReview()
     system_review = LinearSystemReview()
+    exponent_review = IntegerExponentReview()
     right_triangles = RightTriangleCorpusReview()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
@@ -289,6 +294,9 @@ def review(stream):
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
         solved = solve(public)
+        if template in INTEGER_EXPONENT:
+            exponent_review.record(public, solved)
+            review_integer_exponent_explanation(public, problem["explanation"])
         if template in RIGHT_TRIANGLE:
             right_triangles.record(public, solved)
         if template in RIGHT_TRIANGLE_CHOICE:
@@ -311,6 +319,8 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
+    print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
     print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)
