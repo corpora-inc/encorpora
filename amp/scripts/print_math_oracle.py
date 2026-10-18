@@ -152,6 +152,7 @@ ARITHMETIC = [
     ('(−x)²', {'x': 3}, Fraction(9)),
     ('x^(m+n)', {'x': 2, 'm': 2, 'n': 3}, Fraction(32)),
     ('x^(-2)', {'x': 2}, Fraction(1, 4)),
+    ('2^-(2+3)', {}, Fraction(1, 32)),
     ('1/2 + 1/3 = 5/6', {}, True),
     ('8/4/2', {}, Fraction(1)),
     ('8/(4/2)', {}, Fraction(4)),
@@ -269,6 +270,7 @@ def review_mutations(records):
         return copy
     mutations = [
         records[:-1],
+        changed('2^-(2+3)', 'html', '<math><msup><mn>2</mn><mrow><mo>−</mo><mn>2</mn><mo>+</mo><mn>3</mn></mrow></msup></math>'),
         changed(STRUCTURAL[0], 'html', '<math><msqrt><msup><mrow><mo>−</mo><mn>9</mn></mrow><mn>2</mn></msup></msqrt></math>'),
         changed(STRUCTURAL[1], 'html', '<math><msub><mi>x</mi><mi>n</mi></msub><mo>+</mo><mn>1</mn></math>'),
         changed(STRUCTURAL[2], 'html', '<math><msub><mi>log</mi><mn>8</mn></msub><mn>2</mn></math>'),
