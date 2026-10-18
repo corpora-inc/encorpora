@@ -1,7 +1,7 @@
 import { FundingPurchaseError } from "../src/funding-purchase/contracts.js";
 import { loadFundingOffers } from "../src/funding-purchase/config.js";
 import { readFile, stat } from "node:fs/promises";
-import { Pool } from "pg";
+import { createDatabasePool } from "../src/server/database.js";
 import { provisionFundingRequest } from "../src/funding-purchase/provision.js";
 async function main() {
   const args = process.argv.slice(2),
@@ -12,7 +12,7 @@ async function main() {
   if (!info.isFile() || info.size > 65536)
     throw new Error("Bounded JSON file required");
   const input = JSON.parse(await readFile(args[0], "utf8"));
-  const pool = new Pool({ connectionString: url, max: 1 });
+  const pool = createDatabasePool({ connectionString: url });
   try {
     console.log(
       JSON.stringify(
