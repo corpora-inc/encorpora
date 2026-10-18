@@ -13,7 +13,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "test": "tsx --test tests/*.test.ts",
     "test:db": "tsx scripts/test-database-preflight.ts && tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui",
+    "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui",
     "tsc": "tsc --noEmit",
     "build": "npm run tsc && vite build",
     "audit": "tsx scripts/audit.ts",
@@ -39,7 +39,8 @@
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
     "test:native-session": "tsx scripts/verify-native-session.ts",
     "test:payment-ui": "tsx scripts/verify-payment-ui.ts",
-    "consent:deliver": "tsx scripts/consent-delivery.ts"
+    "consent:deliver": "tsx scripts/consent-delivery.ts",
+    "test:lesson-animation-ui": "tsx scripts/verify-lesson-animation-ui.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

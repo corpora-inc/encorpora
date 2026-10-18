@@ -3,9 +3,30 @@ import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
+import { loadReimbursementPrograms } from "../src/billing/evidence/reimbursement-config.js";
 import { paymentPdf } from "../src/billing/evidence/pdf.js";
 import { syntheticPaymentRecord as record } from "../tests/payment-evidence-fixtures.js";
 import { retentionNotice } from "../src/family/contracts.js";
+const programs = process.env.AMP_REIMBURSEMENT_REVIEW_CONFIG
+  ? await loadReimbursementPrograms(process.env.AMP_REIMBURSEMENT_REVIEW_CONFIG)
+  : [
+      {
+        id: "fixture-program",
+        state: "AZ",
+        programName: "Synthetic education program",
+        officialUrl: "https://example.test/reimbursement",
+        requiredFields: [
+          "sellerName",
+          "sellerAddress",
+          "purchaseDate",
+          "product",
+          "licenseTerm",
+          "amountPaid",
+          "paymentMethod",
+          "learnerName",
+        ],
+      },
+    ];
 const engine = process.env.AMP_BROWSER === "webkit" ? webkit : chromium;
 const directory = new URL(
   `../artifacts/payment-review-${process.env.AMP_BROWSER ?? "chromium"}/`,
@@ -106,7 +127,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import{createRoot}from'react-dom/client';import{FamilyCenter}from'../../src/web/FamilyCenter';import{PaymentHistoryCenter}from'../../src/web/PaymentHistoryCenter';import'../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={render(identity='parent',token=identity){root.render(<React.StrictMode><PaymentHistoryCenter token={token} identity={identity} onClose={()=>root.render(<h1>Family screen</h1>)}/></React.StrictMode>);},family(){root.render(<FamilyCenter token="parent" identity="parent" initialSection="access" onChanged={()=>{}} onLearningInvalidated={()=>{}} onClose={()=>{}}/>);},unmount(){root.render(<h1>Other screen</h1>)}};(window as any).paymentHarness=harness;harness.render();`,
+  `import React from 'react';import{createRoot}from'react-dom/client';import{FamilyCenter}from'../../src/web/FamilyCenter';import{ChooseHowToPay}from'../../src/web/ChooseHowToPay';import'../../src/web/theme.css';import{PaymentHistoryCenter}from'../../src/web/PaymentHistoryCenter';import'../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={pay(){root.render(<div className="shell purchase-shell"><ChooseHowToPay token="parent" learnerName={null} onCard={()=>harness.render()} onFunds={()=>{}} onClose={()=>{}}/></div>);},render(identity='parent',token=identity){root.render(<React.StrictMode><PaymentHistoryCenter token={token} identity={identity} onClose={()=>root.render(<h1>Family screen</h1>)}/></React.StrictMode>);},family(){root.render(<FamilyCenter token="parent" identity="parent" initialSection="access" onChanged={()=>{}} onLearningInvalidated={()=>{}} onClose={()=>{}}/>);},unmount(){root.render(<h1>Other screen</h1>)}};(window as any).paymentHarness=harness;harness.render();`,
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -166,9 +187,35 @@ try {
             },
     });
   });
-  await page.route("**/api/v1/payments/**/*.pdf", (route) =>
-    route.fulfill({ contentType: "application/pdf", body: Buffer.from(pdf) }),
+  await page.route("**/api/v1/payments/reimbursement-programs", (route) =>
+    route.fulfill({ json: { programs } }),
   );
+  await page.route("**/api/v1/billing/offer", (route) =>
+    route.fulfill({
+      json: {
+        available: true,
+        offer: { formattedAmount: "Synthetic price", amountMinor: 12000 },
+      },
+    }),
+  );
+  await page.route("**/api/v1/funding/offers", (route) =>
+    route.fulfill({ json: { offers: [] } }),
+  );
+  await page.route("**/api/v1/payments/**/*.pdf", async (route) => {
+    const details =
+      route.request().method() === "POST" ? route.request().postDataJSON() : {};
+    if (details.programId && !details.learnerName?.trim())
+      return route.fulfill({
+        status: 400,
+        json: { error: "receipt_learner_name_required" },
+      });
+    await route.fulfill({
+      contentType: "application/pdf",
+      body: Buffer.from(
+        await paymentPdf(record, undefined, details.learnerName),
+      ),
+    });
+  });
   let familyLearners = [
     {
       id: "child",
@@ -221,6 +268,7 @@ try {
     { width: 320, height: 568 },
     { width: 390, height: 844 },
     { width: 844, height: 390 },
+    { width: 1280, height: 900 },
   ]) {
     await page.setViewportSize(size);
     await page.goto(url);
@@ -232,6 +280,68 @@ try {
     const download = page.waitForEvent("download");
     await page.getByRole("button", { name: "Download payment PDF" }).click();
     assert.match((await download).suggestedFilename(), /^payment-.*\.pdf$/);
+  }
+  for (const size of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 1280, height: 900 },
+  ]) {
+    await page.setViewportSize(size);
+    await page.goto(url);
+    await page.evaluate(() => (window as any).paymentHarness.pay());
+    await page
+      .getByRole("combobox", { name: "Reimbursement state" })
+      .selectOption("AZ");
+    const link = page.getByRole("link", {
+      name: /Official .* reimbursement instructions/,
+    });
+    assert.equal(await link.getAttribute("href"), programs[0]!.officialUrl);
+    await link.scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: new URL(`reimbursement-${size.width}.png`, directory).pathname,
+    });
+    assert.equal(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+      false,
+    );
+    await page
+      .getByRole("button", { name: "Continue to card payment" })
+      .click();
+    await page.getByRole("button", { name: /AMP annual/ }).click();
+    await page
+      .getByRole("combobox", { name: "Reimbursement program (optional)" })
+      .selectOption(programs[0]!.id);
+    await page.getByRole("button", { name: "Download payment PDF" }).click();
+    await page
+      .getByRole("alert")
+      .filter({ hasText: "Enter the learner name" })
+      .waitFor();
+    await page
+      .getByRole("textbox", { name: /Learner name/ })
+      .fill("Élodie Muñoz");
+    await page.getByRole("alert").waitFor({ state: "detached" });
+    await page
+      .getByRole("textbox", { name: /Learner name/ })
+      .scrollIntoViewIfNeeded();
+    await shot(`receipt-details-${size.width}`);
+    const downloadPromise = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Download payment PDF" }).click();
+    const download = await downloadPromise;
+    const path = new URL(`named-receipt-${size.width}.pdf`, directory).pathname;
+    await download.saveAs(path);
+    assert.ok(
+      execFileSync("pdftotext", [path, "-"], { encoding: "utf8" }).includes(
+        "Élodie Muñoz",
+      ),
+    );
+    await page.getByRole("textbox", { name: /Learner name/ }).fill("测试");
+    await page.getByRole("button", { name: "Download payment PDF" }).click();
+    await page
+      .getByRole("alert")
+      .filter({ hasText: "basic Latin letters" })
+      .waitFor();
   }
   mode = "review";
   await page.goto(url);

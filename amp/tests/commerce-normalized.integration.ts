@@ -83,6 +83,8 @@ async function fixture(run: (pool: Pool) => Promise<void>) {
       "0002-commerce.sql",
       "0003-parent-consent.sql",
       "0004-parent-lifecycle.sql",
+      "0015-trials.sql",
+      "0018-trial-teaching.sql",
     ])
       await pool.query(await sql(name));
     await pool.query(

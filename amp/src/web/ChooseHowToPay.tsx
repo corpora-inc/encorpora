@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { AnnualOffer } from "../billing/stripe/purchase-contracts";
 import type { PublicFundingOffer } from "../funding-purchase/contracts.js";
+import { ReimbursementGuide } from "./ReimbursementGuide";
 import { PlanOptions } from "./PlanOptions";
 import { stateNames } from "./us-states";
 
@@ -146,8 +147,15 @@ export function ChooseHowToPay(props: Props) {
               ))}
             </>
           ) : (
-            <p className="pay-muted">No education-fund program is available.</p>
+            <p className="pay-muted">
+              Direct payment from a program is not available.
+            </p>
           )}
+          <ReimbursementGuide
+            token={props.token}
+            onCard={() => props.onCard(selected?.interval ?? "year")}
+            cardAvailable={!!card}
+          />
         </section>
       </div>
     </section>

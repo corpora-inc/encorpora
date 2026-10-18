@@ -6,6 +6,7 @@ import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { registerFamilyRoutes } from "../src/family/routes.js";
+import { TEACHING_ATTEMPTS } from "../src/server/trial-progress";
 import { TRIAL_ATTEMPTS } from "../src/server/trials";
 import { migrate } from "./migrate";
 
@@ -93,7 +94,12 @@ try {
       await page.locator("#answer").fill("1");
       await page.locator("#answer").press("Enter");
     }
-    assert.equal((await attempt).status(), 200);
+    const attemptResponse = await attempt;
+    assert.equal(
+      attemptResponse.status(),
+      200,
+      `Placement answer ${answered + 1}: ${await attemptResponse.text()}`,
+    );
     answered++;
     // Every outcome shows the feedback overlay; its Next button advances.
     const next = page.locator(".next-action");
@@ -102,14 +108,123 @@ try {
   }
   assert.equal(answered, TRIAL_ATTEMPTS);
 
-  // The result: an estimate, the map, the paywall, and no further practice.
+  // Placement is followed by the existing lesson, not a purchase prompt.
+  await page
+    .getByText("View placement map and uncertainty", { exact: true })
+    .click();
   await result.locator(".frontier-map").waitFor();
+  await page
+    .getByText("View placement map and uncertainty", { exact: true })
+    .click();
   await result.getByText(/^Estimated level:/).waitFor();
   assert.equal(
     await result.getByRole("button", { name: /left\)$/ }).count(),
     0,
   );
   await fits(page, "result");
+
+  assert.equal(await page.locator(".paywall").count(), 0);
+  await page
+    .getByRole("button", { name: "Try four problems", exact: true })
+    .waitFor();
+  // A genuinely exhausted family still offers a clear way to save placement.
+  // The database regression covers exhaustion; here verify its rendered state.
+  await page.route("**/trial-progress", async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      json: {
+        ...(await response.json()),
+        phase: "unavailable",
+        templateId: null,
+        lesson: null,
+      },
+    });
+  });
+  await page.reload();
+  await page
+    .getByRole("button", {
+      name: "Save placement in a parent account",
+      exact: true,
+    })
+    .waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Try four problems", exact: true })
+      .count(),
+    0,
+  );
+  await fits(page, "unavailable");
+  await page.unroute("**/trial-progress");
+  // Reloading the lesson retains server-owned phase and selected family.
+  await page.reload();
+  await page
+    .getByRole("button", { name: "Try four problems", exact: true })
+    .waitFor();
+  await page.evaluate(() => {
+    window.print = () => {
+      document.body.dataset.printed = "yes";
+    };
+  });
+  await page
+    .getByRole("button", {
+      name: "Print lesson and worked examples",
+      exact: true,
+    })
+    .click();
+  await page.waitForFunction(() => document.body.dataset.printed === "yes");
+  assert.equal(await page.locator(".trial-print-examples article").count(), 3);
+  await page.pdf({
+    path: new URL("trial-lesson.pdf", shots).pathname,
+    format: "A4",
+  });
+  await page
+    .getByRole("button", { name: "Try four problems", exact: true })
+    .click();
+  for (let i = 0; i < TEACHING_ATTEMPTS; i++) {
+    await page.locator(".problem-stage").waitFor();
+    const attempt = page.waitForResponse((r) => r.url().endsWith("/attempts"));
+    if (await page.locator(".choice-option").count()) {
+      await page.locator(".choice-option").first().click();
+      await page.locator(".choice-submit").click();
+    } else {
+      await page.locator("#answer").fill("1");
+      await page.locator("#answer").press("Enter");
+    }
+    assert.equal((await attempt).status(), 200);
+    await page.locator(".next-action").click();
+    await page.locator(".next-action").waitFor({ state: "hidden" });
+  }
+  await page.locator(".paywall").waitFor();
+  await page
+    .getByRole("heading", { name: "Next practice sessions", exact: true })
+    .waitFor();
+  await page
+    .getByRole("heading", { name: "What you can practice", exact: true })
+    .waitFor();
+  await page
+    .getByText(
+      `Across this trial: ${TRIAL_ATTEMPTS + TEACHING_ATTEMPTS} independent answers and 0 answers with support.`,
+      { exact: true },
+    )
+    .waitFor();
+  await fits(page, "teaching-complete");
+  const trialToken = await page.evaluate(() =>
+    localStorage.getItem("amp.trial"),
+  );
+  const analytics = await repository.pool.query(
+    "SELECT analytics_id FROM amp_trials WHERE token_hash=encode(sha256($1::bytea),'hex')",
+    [trialToken],
+  );
+  assert.deepEqual(
+    (
+      await repository.pool.query(
+        "SELECT event FROM amp_trial_events WHERE trial_id=$1 ORDER BY event",
+        [analytics.rows[0].analytics_id],
+      )
+    ).rows.map((row) => row.event),
+    ["paywall", "placement_done", "teaching_done", "trial_started"],
+  );
 
   // Signing in offers to save the placement before anything else.
   await page
@@ -143,14 +258,19 @@ try {
     url: `/api/v1/learners/${saved.id}/frontier`,
     headers,
   });
-  assert.equal(frontier.json().overall.answered, TRIAL_ATTEMPTS);
+  assert.equal(
+    frontier.json().overall.answered,
+    TRIAL_ATTEMPTS + TEACHING_ATTEMPTS,
+  );
   assert.equal(
     await page.evaluate(() => localStorage.getItem("amp.trial")),
     null,
     "the trial token is removed from the device",
   );
   assert.deepEqual(errors, []);
-  console.log("Trial funnel verified: placement, paywall, sign-in, save.");
+  console.log(
+    "Trial funnel verified: placement, lesson, printable, focused practice, paywall events, sign-in, save.",
+  );
 } finally {
   await browser.close();
   await vite.close();
