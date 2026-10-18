@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { PrintMathText, printMathStyles } from "../src/content/PrintMathText";
 import {
   RightTriangleOrientation,
@@ -25,6 +25,12 @@ const fixtures = [
   "A costs $4 each; B costs $3/m.",
   "200 cm + 35 cm = 235 cm.",
   "Unsupported \\(\\unknowncommand\\).",
+  "Find all real x for which −2(x − 3) + 1 ≥ −2x + 7.",
+  "Combine the constants: −2x + 7 ≥ −2x + 7.",
+  "x = 5!! Then continue.",
+  "\\(x=5\\)... Next.",
+  "x = 5?!;: Then continue.",
+  "3 × (3/2) + 2(−1) = 9/2 − 2 = 9/2 − 4/2 = 5/2.",
 ];
 const css = [
   readFileSync(new URL("../src/web/style.css", import.meta.url), "utf8"),
@@ -53,20 +59,50 @@ const content = renderToStaticMarkup(
           e(
             "ol",
             null,
-            fixtures.map((text, index) =>
-              e(
-                "li",
-                { key: index, "data-fixture": index },
-                e(PrintMathText, { text }),
+            fixtures
+              .slice(0, 9)
+              .map((text, index) =>
+                e(
+                  "li",
+                  { key: index, "data-fixture": index },
+                  e(PrintMathText, { text }),
+                ),
               ),
-            ),
+          ),
+        ),
+        e(
+          "section",
+          { className: "worked-example" },
+          e("h3", null, "A worked example"),
+          e(
+            "p",
+            { "data-fixture": 9 },
+            e(PrintMathText, { text: fixtures[9] }),
+          ),
+          e(
+            "ol",
+            null,
+            fixtures
+              .slice(10)
+              .map((text, index) =>
+                e(
+                  "li",
+                  { key: index, "data-fixture": 10 + index },
+                  e(PrintMathText, { text }),
+                ),
+              ),
           ),
         ),
       ),
     ),
   ),
 );
-const browser = await chromium.launch();
+const engine = process.env.READER_REVIEW_BROWSER ?? "chromium";
+assert.ok(
+  engine === "chromium" || engine === "webkit",
+  "supported reader review browser",
+);
+const browser = await (engine === "webkit" ? webkit : chromium).launch();
 const page = await browser.newPage();
 const requests: string[] = [];
 await page.route(/^https?:/, async (route) => {
@@ -74,8 +110,13 @@ await page.route(/^https?:/, async (route) => {
   await route.abort();
 });
 const results: unknown[] = [];
+const layoutFailures: { width: number; errors: string[] }[] = [];
+// Nearby widths expose line-boundary failures that three device presets miss.
+const widths = [
+  ...new Set([320, 390, 844, ...Array.from({ length: 20 }, (_, i) => 321 + i)]),
+];
 try {
-  for (const width of [320, 390, 844]) {
+  for (const width of widths) {
     await page.setViewportSize({ width, height: width === 844 ? 390 : 844 });
     await page.setContent(
       `<!doctype html><html><head><style>${css}</style></head><body>${content}</body></html>`,
@@ -132,6 +173,13 @@ try {
             `source text changed: fixture ${index}: ${copy.textContent}`,
           );
         const bound = root.getBoundingClientRect();
+        // WebKit ignores bare wbr under nowrap. Require its empty parent to
+        // restore normal whitespace while the math-to-punctuation edge stays glued.
+        for (const br of root.querySelectorAll(".print-math-punctuation wbr"))
+          if (getComputedStyle(br.parentElement!).whiteSpace !== "normal")
+            errors.push(
+              `unbreakable WebKit operator boundary: fixture ${index}`,
+            );
         for (const math of root.querySelectorAll<HTMLElement>(".print-math")) {
           const r = math.getBoundingClientRect();
           if (r.left < bound.left - 1 || r.right > bound.right + 1)
@@ -143,7 +191,8 @@ try {
         while ((node = walker.nextNode())) {
           if (node.parentElement?.closest(".katex")) continue;
           const value = node.textContent ?? "";
-          if (!/^[.,;:!?]/.test(value)) continue;
+          const punctuation = /^[.,;:!?]+/.exec(value)?.[0];
+          if (!punctuation) continue;
           // The last KaTeX before this punctuation must share its final line.
           const preceding = [
             ...root.querySelectorAll<HTMLElement>(".katex"),
@@ -165,10 +214,14 @@ try {
           }
           const range = document.createRange();
           range.setStart(node, 0);
-          range.setEnd(node, 1);
+          range.setEnd(node, punctuation.length);
           const p = range.getBoundingClientRect(),
             m = last.getBoundingClientRect();
-          if (p.top >= m.bottom - 1 || p.bottom <= m.top + 1)
+          if (
+            [...range.getClientRects()].some(
+              (r) => r.top >= m.bottom - 1 || r.bottom <= m.top + 1,
+            )
+          )
             errors.push(`detached punctuation: fixture ${index} '${value[0]}'`);
           if (p.left - m.right > 4 || p.left < m.right - 2)
             errors.push(
@@ -178,6 +231,7 @@ try {
         }
         return {
           index,
+          width: bound.width,
           checkedPunctuation: checked,
           annotations: [...root.querySelectorAll("math annotation")].map(
             (a) => a.textContent,
@@ -191,7 +245,8 @@ try {
       path: `${out}/reader-${width}.png`,
       fullPage: true,
     });
-    assert.deepEqual(result.errors, [], `reader width ${width}`);
+    if (result.errors.length)
+      layoutFailures.push({ width, errors: result.errors });
     assert.equal(result.labels.length, 22);
     for (const example of result.examples) {
       const expected =
@@ -208,10 +263,15 @@ try {
     }
     assert.ok(
       result.examples
-        .slice(0, 5)
+        .filter((example) => example.index < 5 || example.index >= 9)
         .every((example) => example.checkedPunctuation > 0),
     );
   }
+  assert.deepEqual(
+    layoutFailures,
+    [],
+    "reader layout at preset and boundary widths",
+  );
   // The known old font regression must be observable under these exact styles.
   await page.setViewportSize({ width: 320, height: 844 });
   await page.addStyleTag({
@@ -251,6 +311,24 @@ try {
       );
     });
   assert.ok(brokenGap > 4, "multiline punctuation-gap mutation must fail");
+  // A bare wbr happens to work in Chromium, but regresses WebKit wrapping.
+  // Its structural guard must therefore reject it even in Chromium-only CI.
+  const bareBreaksRejected = await page.evaluate(() => {
+    const breaks = [
+      ...document.querySelectorAll(".print-math-punctuation wbr"),
+    ];
+    for (const br of breaks) br.parentElement!.replaceWith(br);
+    return (
+      breaks.length > 0 &&
+      breaks.some(
+        (br) => getComputedStyle(br.parentElement!).whiteSpace !== "normal",
+      )
+    );
+  });
+  assert.ok(
+    bareBreaksRejected,
+    "bare-break WebKit regression must be rejected",
+  );
   // Verify the real KaTeX font was loaded, rather than a fallback width.
   assert.equal(
     await page.evaluate(() =>
@@ -265,10 +343,11 @@ try {
   );
   console.log(
     JSON.stringify({
-      viewports: 3,
-      labelChecks: 66,
+      browser: engine,
+      viewports: widths.length,
+      labelChecks: 22 * widths.length,
       fixtures: fixtures.length,
-      rejectedLayoutMutations: 2,
+      rejectedLayoutMutations: 3,
       networkRequests: requests.length,
       output: out,
     }),
