@@ -1,3 +1,7 @@
+import { useLoggedError, requestMessage } from "./feedback";
+import { useAppRoute, type FamilySection } from "./app-routes";
+import { useLearnerStore } from "./learner-store";
+import { Select, BirthYearPicker } from "./PremiumControls";
 import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
 import { FocusDialog } from "./PracticeWorkspace";
@@ -12,6 +16,7 @@ import "./family-center.css";
 import { nativeRuntime } from "./native-runtime";
 interface Props {
   token: string;
+  onSectionChange?: (section: FamilySection) => void;
   accountsEnabled?: boolean;
   identity?: string;
   onChanged: (summary: FamilySummary) => void;
@@ -44,6 +49,7 @@ const messages: Record<string, string> = {
 };
 export function FamilyCenter({
   token,
+  onSectionChange,
   accountsEnabled = false,
   identity = token,
   onChanged,
@@ -59,31 +65,44 @@ export function FamilyCenter({
   onFundedPurchase,
   onChoosePayment,
 }: Props) {
-  const [paymentHistoryOpen, setPaymentHistoryOpen] = useState(false);
+  const route = useAppRoute();
+  const paymentHistoryOpen = route.parts[2] === "records";
+  const setPaymentHistoryOpen = (open: boolean) =>
+    route.navigate(
+      open ? "/family/access/records" : "/family/access/purchases",
+    );
   const paymentTrigger = useRef<HTMLButtonElement>(null);
   const paymentWasOpen = useRef(false);
-  useLayoutEffect(() => {
-    if (paymentWasOpen.current && !paymentHistoryOpen)
-      paymentTrigger.current?.focus({ preventScroll: true });
-    paymentWasOpen.current = paymentHistoryOpen;
-  }, [paymentHistoryOpen]);
-  const [section, setSection] = useState<
-    "learners" | "access" | "privacy" | "security"
-  >(initialSection);
+  const section = initialSection;
+  const setSection = (section: FamilySection) => onSectionChange?.(section);
   const [localLearnerId, setLocalLearnerId] = useState("");
   const [accessDetails, setAccessDetails] = useState(false);
-  const [adding, setAdding] = useState(false);
+  const adding = route.parts[2] === "new";
+  const setAdding = (open: boolean) =>
+    route.navigate(open ? "/family/learners/new" : "/family/learners");
   const [newName, setNewName] = useState("");
   const [newBirthYear, setNewBirthYear] = useState("");
   const accessTrigger = useRef<HTMLElement | null>(null);
-  const [purchaseChooser, setPurchaseChooser] = useState(!!returnFocus);
-  const [privacy, setPrivacy] = useState<
-    "export" | "consent" | "delete" | "retention" | null
-  >(returnToConsent ? "consent" : null);
-  const [family, setFamily] = useState<FamilySummary | null>(null),
-    [busy, setBusy] = useState(false),
+  const purchaseChooser = route.parts[2] === "purchases";
+  const setPurchaseChooser = (open: boolean) => {
+    if (open) route.navigate("/family/access/purchases");
+  };
+  const privacy =
+    section === "privacy" &&
+    ["export", "consent", "delete", "retention"].includes(route.parts[2])
+      ? (route.parts[2] as "export" | "consent" | "delete" | "retention")
+      : null;
+  const setPrivacy = (value: typeof privacy) => {
+    if (value) route.navigate(`/family/privacy/${value}`);
+  };
+  const family = useLearnerStore((state) =>
+    state.identity === identity ? state.family : null,
+  );
+  const setFamily = useLearnerStore((state) => state.acceptFamily);
+  const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
+  useLoggedError(error);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null),
     [rename, setRename] = useState<string | null>(null),
     [name, setName] = useState("");
@@ -100,13 +119,10 @@ export function FamilyCenter({
   useLayoutEffect(() => {
     mounted.current = true;
     generation.current++;
-    setPaymentHistoryOpen(false);
-    setFamily(null);
+
     setLocalLearnerId("");
     setAccessDetails(false);
-    setSection(initialSection);
-    setPurchaseChooser(!!returnFocus);
-    setPrivacy(returnToConsent ? "consent" : null);
+
     setError("");
     setNotice("");
     setConfirmation(null);
@@ -133,13 +149,16 @@ export function FamilyCenter({
         .querySelector<HTMLElement>("[data-consent-enrollment]")
         ?.focus({ preventScroll: true });
   }, [!!family, returnToConsent]);
-  function closeChooser() {
-    setPurchaseChooser(false);
-    requestAnimationFrame(() =>
+  const chooserWasOpen = useRef(purchaseChooser);
+  useLayoutEffect(() => {
+    if (chooserWasOpen.current && !purchaseChooser)
       document
         .querySelector<HTMLButtonElement>("[data-purchase-options]")
-        ?.focus({ preventScroll: true }),
-    );
+        ?.focus({ preventScroll: true });
+    chooserWasOpen.current = purchaseChooser;
+  }, [purchaseChooser]);
+  function closeChooser() {
+    route.navigate("/family/access");
   }
   useLayoutEffect(() => {
     if (purchaseChooser && !returnFocus)
@@ -148,6 +167,11 @@ export function FamilyCenter({
         ?.focus({ preventScroll: true });
     if (body.current) body.current.scrollTop = 0;
   }, [purchaseChooser]);
+  useLayoutEffect(() => {
+    if (paymentWasOpen.current && !paymentHistoryOpen)
+      paymentTrigger.current?.focus({ preventScroll: true });
+    paymentWasOpen.current = paymentHistoryOpen;
+  }, [paymentHistoryOpen]);
   const profileId = selectedLearnerId ?? localLearnerId;
   const selectedLearner =
     family?.learners.find((entry) => entry.id === profileId) ??
@@ -196,32 +220,20 @@ export function FamilyCenter({
     if (!response.ok)
       throw new Error(
         messages[data.error] ??
-          "This action could not be completed. Try again or contact support.",
+          requestMessage(
+            data.error,
+            body === undefined
+              ? "Loading family details"
+              : path === "/learners"
+                ? "Saving this learner"
+                : "Saving your family change",
+          ),
       );
     return data;
   }
-  useEffect(() => {
-    const controller = new AbortController();
-    setFamily(null);
-    setError("");
-    setNotice("");
-    setConfirmation(null);
-    setRename(null);
-    void api<FamilySummary>("/family", undefined, controller.signal)
-      .then((next) => {
-        setFamily(next);
-        onChanged(next);
-      })
-      .catch((e) => {
-        if (!controller.signal.aborted)
-          setError(
-            e instanceof Error ? e.message : "Could not load family settings.",
-          );
-      });
-    return () => controller.abort();
-  }, [identity]);
   useLayoutEffect(() => {
-    heading.current?.focus({ preventScroll: true });
+    if (!returnToConsent && !returnFocus)
+      heading.current?.focus({ preventScroll: true });
   }, []);
   useLayoutEffect(() => {
     if (!confirmation) return;
@@ -282,7 +294,6 @@ export function FamilyCenter({
     const epoch = generation.current;
     const next = await api<FamilySummary>("/family");
     if (!current(epoch)) return;
-    setFamily(next);
     onChanged(next);
   }
   function ask(value: Confirmation, source: HTMLElement) {
@@ -296,7 +307,7 @@ export function FamilyCenter({
       if (selected.kind === "withdraw") {
         await api("/family/consent/withdraw", {});
         setConfirmation(null);
-        setFamily(null);
+
         onLearningInvalidated();
         setNotice(
           "Consent withdrawn. New learning activity is paused. You can still export or delete learning data and manage billing. Renewal has not been canceled.",
@@ -309,7 +320,7 @@ export function FamilyCenter({
           { confirmation: "delete-learning-data" },
         );
         setConfirmation(null);
-        setFamily(null);
+
         setLocalLearnerId("");
         onSelectLearner?.("");
         onLearningInvalidated();
@@ -526,7 +537,9 @@ export function FamilyCenter({
         ) : (
           <>
             {(section === "learners" || section === "access") && (
-              <section className="family-section family-focused-section">
+              <section
+                className={`family-section family-focused-section ${!family.learners.length || adding ? "family-setup-section" : ""}`}
+              >
                 <h2
                   tabIndex={-1}
                   className={section === "access" ? "sr-only" : undefined}
@@ -535,17 +548,31 @@ export function FamilyCenter({
                     ? "Who’s learning?"
                     : "Learning access"}
                 </h2>
-                {!family.learners.length && (
-                  <p>No learner profiles are stored in this account.</p>
-                )}
+                {!["active", "development"].includes(family.consent.status) &&
+                  section === "learners" && (
+                    <div className="family-first-step">
+                      <h3>Start with parent consent</h3>
+                      <p>
+                        Review how AMP uses learning data before adding a
+                        learner. Then choose a name and starting level.
+                      </p>
+                      <button onClick={onConsentEnrollment}>
+                        Continue setup
+                      </button>
+                    </div>
+                  )}
+                {!family.learners.length &&
+                  ["active", "development"].includes(family.consent.status) && (
+                    <p>No learner profiles are stored in this account.</p>
+                  )}
                 {!!family.learners.length && (
                   <label className="family-profile-select">
                     <span>Learner or billing reference</span>
-                    <select
+                    <Select
                       aria-label="Family learner"
                       value={selectedLearner?.id ?? ""}
                       disabled={busy}
-                      onChange={(event) => selectLearner(event.target.value)}
+                      onValueChange={(event) => selectLearner(event)}
                     >
                       {family.learners.map((entry, index) => (
                         <option key={entry.id} value={entry.id}>
@@ -554,7 +581,7 @@ export function FamilyCenter({
                             : entry.name}
                         </option>
                       ))}
-                    </select>
+                    </Select>
                   </label>
                 )}
                 <div className="family-learners">
@@ -708,73 +735,65 @@ export function FamilyCenter({
                     </button>
                   </div>
                 )}
-                {section === "learners" && !nativeRuntime && !adding && (
-                  <button
-                    className="secondary family-add-toggle"
-                    disabled={busy}
-                    onClick={() => setAdding(true)}
-                  >
-                    <span aria-hidden="true">+</span> Add learner
-                  </button>
-                )}
-                {section === "learners" && !nativeRuntime && adding && (
-                  <form
-                    className="family-add-learner"
-                    onSubmit={(event) => {
-                      event.preventDefault();
-                      const name = newName.trim();
-                      if (!name) return;
-                      void action(async () => {
-                        await api("/learners", {
-                          name,
-                          ...(newBirthYear
-                            ? { birthYear: Number(newBirthYear) }
-                            : {}),
-                        });
-                        await refresh();
-                        setNewName("");
-                        setNewBirthYear("");
-                        setAdding(false);
-                        setNotice(`${name} added.`);
-                      });
-                    }}
-                  >
-                    <label>
-                      <span>Name</span>
-                      <input
-                        value={newName}
-                        maxLength={60}
-                        placeholder="First name or nickname"
-                        onChange={(event) => setNewName(event.target.value)}
-                      />
-                    </label>
-                    <label>
-                      <span>Birth year</span>
-                      <select
-                        value={newBirthYear}
-                        onChange={(event) =>
-                          setNewBirthYear(event.target.value)
-                        }
-                      >
-                        <option value="">Choose</option>
-                        {Array.from(
-                          { length: 16 },
-                          (_, i) => new Date().getFullYear() - 4 - i,
-                        ).map((year) => (
-                          <option key={year} value={year}>
-                            {year}
-                          </option>
-                        ))}
-                        <option value={new Date().getFullYear() - 25}>
-                          Adult
-                        </option>
-                      </select>
-                    </label>
-                    <button disabled={busy || !newName.trim()}>
-                      Add learner
+                {section === "learners" &&
+                  !nativeRuntime &&
+                  ["active", "development"].includes(family.consent.status) &&
+                  !adding && (
+                    <button
+                      className="secondary family-add-toggle"
+                      disabled={busy}
+                      onClick={() => setAdding(true)}
+                    >
+                      <span aria-hidden="true">+</span> Add learner
                     </button>
-                  </form>
-                )}
+                  )}
+                {section === "learners" &&
+                  !nativeRuntime &&
+                  ["active", "development"].includes(family.consent.status) &&
+                  adding && (
+                    <form
+                      className="family-add-learner"
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        const name = newName.trim();
+                        if (!name) return;
+                        void action(async () => {
+                          await api("/learners", {
+                            name,
+                            ...(newBirthYear
+                              ? { birthYear: Number(newBirthYear) }
+                              : {}),
+                          });
+                          await refresh();
+                          setNewName("");
+                          setNewBirthYear("");
+                          setAdding(false);
+                          setNotice(`${name} added.`);
+                        });
+                      }}
+                    >
+                      <label>
+                        <span>Name</span>
+                        <input
+                          value={newName}
+                          maxLength={60}
+                          placeholder="First name or nickname"
+                          onChange={(event) => setNewName(event.target.value)}
+                        />
+                      </label>
+                      <label>
+                        <span>Birth year</span>
+                        <BirthYearPicker
+                          value={newBirthYear}
+                          onChange={setNewBirthYear}
+                          disabled={busy}
+                        />
+                      </label>
+                      <button disabled={busy || !newName.trim()}>
+                        Add learner
+                      </button>
+                    </form>
+                  )}
               </section>
             )}
             {section === "privacy" && !privacy && (
@@ -819,7 +838,7 @@ export function FamilyCenter({
             {section === "privacy" && privacy && (
               <button
                 className="privacy-back text-button"
-                onClick={() => setPrivacy(null)}
+                onClick={() => route.navigate("/family/privacy")}
               >
                 ← Privacy choices
               </button>

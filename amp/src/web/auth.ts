@@ -91,7 +91,7 @@ export async function accessSession(): Promise<AuthSession | null> {
 export async function signIn(intent?: "create") {
   if (nativeRuntime) return nativeSignIn();
   if ((await authConfig()).mode === "accounts") {
-    location.assign(intent === "create" ? "/?sign-in=create" : "/?sign-in");
+    location.assign(intent === "create" ? "/sign-up" : "/sign-in");
     return;
   }
   if (import.meta.env.DEV && !manager) {

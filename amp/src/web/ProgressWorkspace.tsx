@@ -1,3 +1,4 @@
+import { Select } from "./PremiumControls";
 import { FocusDialog } from "./PracticeWorkspace";
 import {
   useLayoutEffect,
@@ -409,11 +410,11 @@ export function ProgressWorkspace({
               <div className="progress-controls">
                 <label>
                   <span className="sr-only">Math area</span>
-                  <select
+                  <Select
                     aria-label="Math area"
                     value={view.strand}
-                    onChange={(e) =>
-                      setView({ ...view, strand: e.target.value, page: 0 })
+                    onValueChange={(e) =>
+                      setView({ ...view, strand: e, page: 0 })
                     }
                   >
                     <option value="">Every math area</option>
@@ -422,7 +423,7 @@ export function ProgressWorkspace({
                         {areaName(area)}
                       </option>
                     ))}
-                  </select>
+                  </Select>
                 </label>
                 <div
                   className="progress-filters"

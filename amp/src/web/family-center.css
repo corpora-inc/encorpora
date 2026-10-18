@@ -2,7 +2,7 @@
   width: min(100%, 900px);
   margin: 0 auto;
   padding: 24px 20px 48px;
-  color: #183e3a;
+  color: var(--ink, #183e3a);
 }
 .family-heading {
   display: flex;
@@ -27,7 +27,7 @@
 }
 .family-section {
   padding: 28px 0;
-  border-bottom: 1px solid #d6dfd2;
+  border-bottom: 1px solid var(--line, #d6dfd2);
 }
 .family-section h2 {
   font-size: 24px;
@@ -43,8 +43,8 @@
   gap: 18px;
 }
 .family-learner {
-  background: #fffefa;
-  border: 1px solid #d6dfd2;
+  background: var(--surface, #fffefa);
+  border: 1px solid var(--line, #d6dfd2);
   border-radius: 16px;
   padding: 22px;
   min-width: 0;
@@ -98,7 +98,7 @@
 .family-secondary,
 .family-access {
   font-size: 13px;
-  color: #4c625b;
+  color: var(--ink-2, #4c625b);
   line-height: 1.5;
 }
 .family-access {
@@ -106,7 +106,7 @@
 }
 .family-billing {
   margin-top: 20px;
-  border-top: 1px solid #d6dfd2;
+  border-top: 1px solid var(--line, #d6dfd2);
   padding-top: 4px;
 }
 .family-billing p {
@@ -137,11 +137,11 @@
   width: min(560px, calc(100vw - 32px));
   max-height: calc(100dvh - 40px);
   overflow: auto;
-  border: 1px solid #d6dfd2;
+  border: 1px solid var(--line, #d6dfd2);
   border-radius: 18px;
   padding: 28px;
-  color: #183e3a;
-  background: #fffefa;
+  color: var(--ink, #183e3a);
+  background: var(--surface, #fffefa);
   box-shadow: 0 20px 80px #173e3a33;
 }
 .family-dialog::backdrop {
@@ -216,7 +216,7 @@
   border: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: #e9eee4;
+  background: var(--surface-2, #e9eee4);
   padding: 4px;
   border-radius: 14px;
   gap: 4px;
@@ -228,7 +228,7 @@
   padding: 10px 4px;
 }
 .family-tabs button[aria-current] {
-  background: #fffefa;
+  background: var(--surface, #fffefa);
   color: #14574a;
   box-shadow: 0 2px 8px #173e3a12;
 }
@@ -259,9 +259,9 @@
   grid-template-columns: 1fr auto;
   text-align: left;
   gap: 4px 12px;
-  background: #fffefa;
-  color: #183e3a;
-  border: 1px solid #d6dfd2;
+  background: var(--surface, #fffefa);
+  color: var(--ink, #183e3a);
+  border: 1px solid var(--line, #d6dfd2);
   border-radius: 14px;
   padding: 12px 16px;
   margin-bottom: 8px;
@@ -272,7 +272,7 @@
 .privacy-choices span {
   font-size: 14px;
   line-height: 1.4;
-  color: #4c625b;
+  color: var(--ink-2, #4c625b);
 }
 .privacy-choices b {
   grid-column: 2;
@@ -361,7 +361,7 @@
 
 .family-purchase-options {
   padding: 12px 0 18px;
-  border-bottom: 1px solid #d6dfd2;
+  border-bottom: 1px solid var(--line, #d6dfd2);
 }
 .family-purchase-options h2 {
   margin: 0 0 6px;
@@ -467,8 +467,8 @@
   padding: 8px 10px;
   border: 1px solid #9eb4ab;
   border-radius: 10px;
-  color: #183e3a;
-  background: #fffefa;
+  color: var(--ink, #183e3a);
+  background: var(--surface, #fffefa);
   font: inherit;
   font-size: 17px;
   appearance: none;

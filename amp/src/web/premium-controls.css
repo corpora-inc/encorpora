@@ -1,0 +1,86 @@
+.premium-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--line, #a5b9b1);
+  border-radius: 12px;
+  color: var(--ink, #183e3a);
+  background: var(--surface, #fffefa);
+  text-align: left;
+  font: inherit;
+}
+.premium-select > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.premium-select:focus-visible {
+  outline: 3px solid var(--accent, #367c6b);
+  outline-offset: 3px;
+}
+.premium-options {
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 16px;
+  border: 1px solid var(--line, #a5b9b1);
+  border-radius: 20px;
+  color: var(--ink, #183e3a);
+  background: var(--surface, #fffefa);
+  box-shadow: 0 20px 80px #0004;
+}
+.premium-options::backdrop {
+  background: #102d2966;
+  backdrop-filter: blur(4px);
+}
+.premium-options-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.premium-options-heading button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.premium-options [role="listbox"] {
+  display: grid;
+  gap: 6px;
+  max-height: 60dvh;
+  overflow: auto;
+}
+.premium-options [role="option"] {
+  min-height: 48px;
+  text-align: left;
+  border-radius: 10px;
+  background: var(--surface-2, #eef1e9);
+  color: inherit;
+  padding: 10px 14px;
+}
+.premium-options [aria-selected="true"] {
+  background: var(--ink, #183e3a);
+  color: var(--surface, #fffefa);
+}
+
+.premium-options:has([aria-label="Birth year"]) [role="listbox"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.premium-options:has([aria-label="Birth year"]) [role="option"] {
+  text-align: center;
+  padding: 10px 4px;
+}
+.premium-options-heading button {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.premium-select:hover,
+.premium-options-heading button:hover,
+.premium-options [role="option"]:hover {
+  background: var(--primary-soft);
+  color: var(--ink);
+}

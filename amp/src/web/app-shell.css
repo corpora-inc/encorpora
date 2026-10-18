@@ -1,0 +1,239 @@
+.shell .family-center {
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+}
+.shell .family-center > .family-body {
+  margin-top: 0;
+}
+.shell .family-tabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.shell .family-tabs button {
+  min-height: 44px;
+  padding: 6px;
+  font-size: 13px;
+}
+.shell .family-center:has(.family-setup-section) .family-body {
+  overflow: auto;
+}
+.family-setup-section {
+  display: block;
+}
+.family-setup-section > h2 {
+  margin-bottom: 16px;
+}
+.family-setup-section .family-learners:empty {
+  display: none;
+}
+.family-setup-section > p {
+  margin: 0 0 20px;
+}
+.family-first-step {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.family-first-step h3 {
+  font-size: 25px;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+.family-first-step p {
+  line-height: 1.6;
+}
+.family-first-step button {
+  width: 100%;
+  margin-top: 12px;
+}
+.shell .family-add-learner {
+  grid-template-columns: minmax(0, 1fr);
+}
+.shell .family-add-learner label {
+  min-width: 0;
+}
+.shell .family-add-learner label span {
+  white-space: nowrap;
+}
+.shell .family-add-learner input {
+  width: 100%;
+  min-width: 0;
+}
+@media (max-width: 520px) {
+  .shell .family-center {
+    grid-template-columns: 1fr;
+  }
+  .shell .family-center > .family-tabs {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .shell .family-center .family-back {
+    justify-self: start;
+  }
+  .shell .family-center {
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #122522;
+    --surface: #1a302c;
+    --surface-2: #233c36;
+    --ink: #e9f0e8;
+    --ink-2: #b6c9bd;
+    --ink-3: #95aa9e;
+    --line: #365148;
+    --line-2: #4a665a;
+    --primary: #8bd1b5;
+    --primary-hover: #a4e0c7;
+    --primary-soft: #284d40;
+    --good: #91d6ac;
+    --good-soft: #244633;
+    --bad: #ffb18d;
+    --bad-soft: #4f3028;
+  }
+}
+.shell .family-tabs,
+.shell > nav {
+  background: var(--surface-2);
+}
+.family-learner,
+.family-dialog,
+.privacy-choices > button {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.family-secondary,
+.family-access,
+.privacy-choices span {
+  color: var(--ink-2);
+}
+.premium-select {
+  background: var(--surface);
+  color: var(--ink);
+}
+/* Transient feedback overlays the workspace; it never adds a layout row. */
+.shell .error,
+.family-error,
+.family-notice,
+.annual-error,
+.funding-error,
+.consent-error,
+.consent-alert,
+.account-error,
+.account-notice {
+  position: fixed;
+  z-index: 100;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, calc(100vw - 32px));
+  max-height: 25dvh;
+  overflow: auto;
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 8px 32px #0003;
+  line-height: 1.5;
+}
+.shell input:not([type="checkbox"]):not([type="radio"]) {
+  min-height: 48px;
+  min-width: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 10px 14px;
+  font-size: 16px;
+}
+.shell .account .premium-select {
+  max-width: 180px;
+  width: auto;
+}
+.shell .account .premium-select > span:first-child {
+  max-width: 100px;
+}
+
+.app-loading {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px system-ui;
+}
+.app-loading strong {
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+.shell.family-shell .family-center {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+.shell.family-shell .family-center > .family-heading {
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.shell.family-shell
+  .family-center:has([data-security-tab])
+  .family-heading
+  > div,
+.shell.family-shell .family-heading > div {
+  position: static;
+  width: auto;
+  height: auto;
+  clip-path: none;
+  overflow: visible;
+  grid-column: auto;
+  order: 2;
+}
+.shell.family-shell .family-heading h1 {
+  font-size: 22px;
+}
+.shell.family-shell .family-center > .family-tabs {
+  grid-column: 1;
+  grid-row: 2;
+  background: var(--surface-2);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.shell.family-shell .family-center:has([data-security-tab]) > .family-tabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.shell.family-shell .family-center > .family-body {
+  grid-column: 1;
+  grid-row: 3;
+}
+.shell.family-shell .family-center p {
+  color: var(--ink-2);
+}
+.shell .family-tabs button,
+.shell .family-center .family-back {
+  color: var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+  .shell .go-button,
+  .shell .family-add-learner > button,
+  .family-first-step > button {
+    color: var(--bg);
+  }
+}
+.shell .family-tabs button:hover {
+  background: var(--primary-soft);
+  color: var(--ink);
+}
+
+.loading-retry {
+  min-height: 48px;
+  min-width: 120px;
+  margin-top: 12px;
+}

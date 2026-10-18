@@ -1,3 +1,6 @@
+import { useLearnerStore } from "./learner-store";
+import { useLoggedError, requestMessage } from "./feedback";
+import { Select } from "./PremiumControls";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   AnnualOffer,
@@ -71,6 +74,7 @@ function paymentUrl(
 }
 function PurchasePanel({
   token,
+  identity,
   onClose,
   onAccessChanged,
   returnState,
@@ -89,13 +93,20 @@ function PurchasePanel({
   const termsTrigger = useRef<HTMLElement | null>(null);
   const [offer, setOffer] = useState<AnnualOffer>();
   const [offers, setOffers] = useState<AnnualOffer[]>([]);
-  const [family, setFamily] = useState<FamilySummary>();
+  const family = useLearnerStore((state) =>
+    state.identity === identity ? state.family : null,
+  );
+  const setFamily = (summary: FamilySummary) => {
+    useLearnerStore.getState().setIdentity(identity);
+    useLearnerStore.getState().acceptFamily(summary);
+  };
   const [available, setAvailable] = useState<boolean>();
   const [learnerId, setLearnerId] = useState("");
   const [status, setStatus] = useState<PurchaseStatus>();
   const [busy, setBusy] = useState(false),
     [checking, setChecking] = useState(false);
   const [error, setError] = useState("");
+  useLoggedError(error);
   const [notice, setNotice] = useState(
     returnState === "processing"
       ? "Checking verified access. Returning from checkout does not confirm payment."
@@ -385,15 +396,15 @@ function PurchasePanel({
         {choices.length > 0 && (
           <label className="annual-learner">
             Learner
-            <select
+            <Select
               aria-label="Learner"
               value={learnerId}
               disabled={busy}
-              onChange={(event) => {
+              onValueChange={(event) => {
                 revision.current++;
                 setStatus(undefined);
                 setNotice("");
-                setLearnerId(event.target.value);
+                setLearnerId(event);
               }}
             >
               {!learnerId && <option value="">Choose a learner</option>}
@@ -402,7 +413,7 @@ function PurchasePanel({
                   {learner.name}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
         )}
         {offer && (

@@ -109,10 +109,7 @@ try {
         json: { error: "unexpected_fixture" },
       });
     });
-    await page.goto("http://127.0.0.1:4387");
-    await page
-      .getByRole("button", { name: "Manage family", exact: true })
-      .click();
+    await page.goto("http://127.0.0.1:4387/family/learners");
     await page.getByRole("button", { name: "Privacy", exact: true }).click();
     await page.screenshot({
       path: `artifacts/consent-app/privacy-${width}.png`,
@@ -217,11 +214,9 @@ try {
         window as unknown as { consentApp: { emit(s: unknown): void } }
       ).consentApp.emit({ token: "other", accountId: "other" }),
     );
-    await page
-      .getByRole("heading", { name: "Parent consent is needed." })
-      .waitFor();
+    await page.waitForURL("**/start/name");
     assert.equal(
-      await page.locator(".parent-consent-center").count(),
+      await page.getByRole("heading", { name: "Review and respond" }).count(),
       0,
       "account switch closes old challenge",
     );

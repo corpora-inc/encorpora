@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { exitPractice, resume } from "./ui-practice";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -55,9 +56,10 @@ try {
     { width: 1280, height: 900 },
   ]) {
     await page.setViewportSize(size);
-    await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .selectOption(fresh.id);
+    await choose(
+      page.getByRole("button", { name: "Learner", exact: true }),
+      fresh.id,
+    );
     await exitPractice(page);
     await page.getByRole("button", { name: "Progress", exact: true }).click();
     await page
@@ -66,9 +68,10 @@ try {
     await page.screenshot({
       path: new URL(`empty-${size.width}.png`, dir).pathname,
     });
-    await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .selectOption(learner.id);
+    await choose(
+      page.getByRole("button", { name: "Learner", exact: true }),
+      learner.id,
+    );
     await page.locator(".progress-skill-card").first().waitFor();
     await page.waitForTimeout(100);
     await page.screenshot({
@@ -95,13 +98,11 @@ try {
     assert.ok(layout.footerBottom <= size.height && layout.body <= size.width);
     for (const name of ["Math area", "Learner"]) {
       const target = await page
-        .getByRole("combobox", { name, exact: true })
+        .getByRole("button", { name, exact: true })
         .boundingBox();
       assert.ok(target && target.height >= 44, `${name} needs a 44px target`);
     }
-    await page
-      .getByRole("combobox", { name: "Math area" })
-      .selectOption("number");
+    await choose(page.getByRole("button", { name: "Math area" }), "number");
     await page.locator('[data-progress-skill="count-to-20"]').click();
     await page.locator(".progress-detail-content").waitFor();
     await page.screenshot({
@@ -120,7 +121,7 @@ try {
         document.activeElement?.getAttribute("data-progress-skill") ===
         "count-to-20",
     );
-    await page.getByRole("combobox", { name: "Math area" }).selectOption("");
+    await choose(page.getByRole("button", { name: "Math area" }), "");
     await page.getByRole("button", { name: "Explore", exact: true }).click();
     await page.locator(".progress-skill-card").first().waitFor();
     await page.screenshot({
@@ -182,9 +183,7 @@ try {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Practiced", exact: true }).click();
-  await page
-    .getByRole("combobox", { name: "Math area" })
-    .selectOption("number");
+  await choose(page.getByRole("button", { name: "Math area" }), "number");
   await page.locator('[data-progress-skill="count-to-20"]').click();
   await page.getByRole("button", { name: "About practice history" }).click();
   await page.getByRole("heading", { name: "Reading your practice" }).waitFor();
@@ -338,7 +337,7 @@ try {
       "count-to-20",
   );
   // Unbound skills retain the reference-lesson route and its return focus.
-  await page.getByRole("combobox", { name: "Math area" }).selectOption("data");
+  await choose(page.getByRole("button", { name: "Math area" }), "data");
   await page.locator('[data-progress-skill="statistics-mean"]').click();
   await page
     .getByRole("button", { name: "Read the lesson", exact: true })
@@ -350,9 +349,7 @@ try {
       "statistics-mean",
   );
   await page.getByRole("button", { name: /All ideas/ }).click();
-  await page
-    .getByRole("combobox", { name: "Math area" })
-    .selectOption("fractions");
+  await choose(page.getByRole("button", { name: "Math area" }), "fractions");
   await page.locator('[data-progress-skill="fraction-equivalence"]').click();
   await page
     .getByRole("button", { name: "Open related book", exact: true })
@@ -365,9 +362,7 @@ try {
   );
   // Capability-gated books must also open from an idea and restore its action.
   await page.getByRole("button", { name: /All ideas/ }).click();
-  await page
-    .getByRole("combobox", { name: "Math area" })
-    .selectOption("algebra");
+  await choose(page.getByRole("button", { name: "Math area" }), "algebra");
   await page.locator('[data-progress-skill="linear-equations"]').click();
   await page
     .getByRole("button", { name: "Open related book", exact: true })
@@ -395,23 +390,23 @@ try {
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await started;
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(fresh.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    fresh.id,
+  );
   await page.getByRole("heading", { name: "None yet", exact: true }).waitFor();
   release();
   await page.unrouteAll({ behavior: "wait" });
   assert.equal(await page.locator(".progress-skill-card").count(), 0);
 
   // Text enlargement preserves access to every action without horizontal clipping.
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
   await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page
-    .getByRole("combobox", { name: "Math area" })
-    .selectOption("number");
+  await choose(page.getByRole("button", { name: "Math area" }), "number");
   await page.locator('[data-progress-skill="count-to-20"]').click();
   await page.getByRole("button", { name: "About practice history" }).click();
   await page

@@ -1,3 +1,4 @@
+import { Select } from "./PremiumControls";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { AnnualOffer } from "../billing/stripe/purchase-contracts";
 import type { PublicFundingOffer } from "../funding-purchase/contracts.js";
@@ -122,9 +123,10 @@ export function ChooseHowToPay(props: Props) {
             <>
               <label>
                 State
-                <select
+                <Select
+                  aria-label="State"
                   value={state}
-                  onChange={(event) => setState(event.target.value)}
+                  onValueChange={(event) => setState(event)}
                 >
                   <option value="">Choose your state</option>
                   {states.map((code) => (
@@ -132,7 +134,7 @@ export function ChooseHowToPay(props: Props) {
                       {stateNames[code] ?? code}
                     </option>
                   ))}
-                </select>
+                </Select>
               </label>
               {programs.map((offer) => (
                 <button

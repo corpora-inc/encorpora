@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
 import assert from "node:assert/strict";
@@ -55,9 +56,10 @@ try {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4390");
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },

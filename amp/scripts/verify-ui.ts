@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
@@ -6,7 +7,7 @@ import { chromium } from "playwright";
 import { createServer } from "vite";
 import { mkdir } from "node:fs/promises";
 import assert from "node:assert/strict";
-import { buildApp } from "../src/server/app";
+import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
@@ -48,12 +49,34 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
 try {
   const page = await browser.newPage({ hasTouch: true });
   const errors: string[] = [];
+  let windowStart = Date.now(),
+    requestsInWindow = 0;
+  page.on("request", (request) => {
+    if (!request.url().includes("/api/")) return;
+    if (Date.now() - windowStart >= 60_000) {
+      windowStart = Date.now();
+      requestsInWindow = 0;
+    }
+    requestsInWindow++;
+  });
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4350");
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
+  await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
   await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
-  await startTopic(page, "mean-data");
+    .getByRole("button", { name: "Practice this", exact: true })
+    .waitFor();
+  await page.reload();
+  await page
+    .getByRole("button", { name: "Practice this", exact: true })
+    .waitFor();
+  assert.ok(page.url().includes("topic=mean-data"));
+  await page
+    .getByRole("button", { name: "Practice this", exact: true })
+    .click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
   for (const viewport of [
@@ -132,9 +155,15 @@ try {
     await page.evaluate(() => document.activeElement?.textContent),
     "Next →",
   );
+  const practiceHistoryLength = await page.evaluate(() => history.length);
   await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator("#answer").waitFor();
+  assert.equal(
+    await page.evaluate(() => history.length),
+    practiceHistoryLength,
+    "next problem does not add a screen history entry",
+  );
   // Mixed scheduling may choose a book-backed family; select the legacy lesson
   // explicitly before testing the lifecycle of its lesson-support request.
   await startTopic(page, "mean-data");
@@ -213,14 +242,27 @@ try {
     () =>
       !(
         document.querySelector(
-          "select[aria-label='Learner']",
+          "button[aria-label='Learner']",
         ) as HTMLSelectElement
       )?.disabled,
   );
   await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   for (const template of templates) {
-    await startTopic(page, template.id);
+    // Respect the real server rate limit during this accelerated catalog sweep.
+    if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75)
+      await page.waitForTimeout(
+        Math.max(0, 60_100 - (Date.now() - windowStart)),
+      );
+    await startTopic(page, template.id).catch(async (failure) => {
+      console.error(
+        "Lesson navigation failed",
+        template.id,
+        new URL(page.url()).pathname,
+        await page.locator("body").innerText(),
+      );
+      throw failure;
+    });
     await page.locator("#answer, .choice-form").first().waitFor();
     assert.ok(
       await page.evaluate(
@@ -343,17 +385,18 @@ try {
       response.url().endsWith("/learners") &&
       response.request().method() === "POST",
   );
-  await page
-    .getByRole("button", { name: "Create learner", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByRole("button", { name: "2016", exact: true }).click();
   learnerIds.push((await (await creation).json()).id);
+  await page.locator(".problem-stage").waitFor();
+  await exitPractice(page);
   // A reload keeps the learner chosen on this device.
   await page.reload();
-  await page.getByRole("combobox", { name: "Learner", exact: true }).waitFor();
+  await page.getByRole("button", { name: "Learner", exact: true }).waitFor();
   assert.equal(
     await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .inputValue(),
+      .getByRole("button", { name: "Learner", exact: true })
+      .getAttribute("data-value"),
     learnerIds.at(-1),
   );
   // Family opens on the current learner, and choosing one there makes them
@@ -364,21 +407,27 @@ try {
     .getByRole("button", { name: "Manage family", exact: true })
     .click();
   assert.equal(
-    await page.getByLabel("Family learner").inputValue(),
+    await page.getByLabel("Family learner").getAttribute("data-value"),
     learnerIds.at(-1),
   );
-  await page.getByLabel("Family learner").selectOption(learnerIds[0]!);
+  await choose(page.getByLabel("Family learner"), learnerIds[0]!);
   await page.getByRole("button", { name: "Back", exact: true }).click();
   assert.equal(
     await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .inputValue(),
+      .getByRole("button", { name: "Learner", exact: true })
+      .getAttribute("data-value"),
     learnerIds[0],
   );
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learnerIds.at(-1)!);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learnerIds.at(-1)!,
+  );
   await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await page.locator(".account-menu summary").click();
+  await page
+    .locator(".account-menu")
+    .getByRole("button", { name: "Change birth year", exact: true })
+    .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(

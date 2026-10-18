@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -196,9 +197,7 @@ try {
       await page.evaluate(() => document.activeElement?.textContent),
       "License history and dates",
     );
-    await page
-      .getByLabel("Family learner", { exact: true })
-      .selectOption("jordan");
+    await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
     await page.getByText("License scheduled", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-billing").count(), 0);
     await page.getByRole("button", { name: "Learners", exact: true }).click();
@@ -219,7 +218,9 @@ try {
       path: `artifacts/family-focus/no-license-${width}.png`,
     });
     assert.equal(
-      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      await page
+        .getByLabel("Family learner", { exact: true })
+        .getAttribute("data-value"),
       "jordan",
     );
     await page.evaluate(() => {
@@ -228,21 +229,22 @@ try {
       ).familyFocus.emit({ accountId: "parent", token: "renewed-fixture" });
     });
     assert.equal(
-      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      await page
+        .getByLabel("Family learner", { exact: true })
+        .getAttribute("data-value"),
       "jordan",
       "same-parent token renewal preserves family selection",
     );
-    await page
-      .getByLabel("Family learner", { exact: true })
-      .selectOption("reference");
+    await choose(
+      page.getByLabel("Family learner", { exact: true }),
+      "reference",
+    );
     await page.getByRole("button", { name: "Access", exact: true }).click();
     await fits(page, ".family-billing button");
     await page.screenshot({
       path: `artifacts/family-focus/reference-${width}.png`,
     });
-    await page
-      .getByLabel("Family learner", { exact: true })
-      .selectOption("jordan");
+    await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
     await page.getByRole("button", { name: "Learners", exact: true }).click();
     await page
       .getByRole("button", { name: "Delete learning data", exact: true })
@@ -253,15 +255,14 @@ try {
       .click();
     await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
     assert.equal(
-      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      await page
+        .getByLabel("Family learner", { exact: true })
+        .getAttribute("data-value"),
       "avery",
     );
     family.consent.status = "withdrawn";
     family.consent.withdrawnAt = date(0);
     await page.reload();
-    await page
-      .getByRole("button", { name: "Manage family", exact: true })
-      .click();
     await page.getByRole("button", { name: "Access", exact: true }).click();
     await page
       .getByText("Learning paused: consent needed.", {

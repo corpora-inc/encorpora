@@ -320,7 +320,9 @@ try {
   );
   await page.getByText("Verifying payment", { exact: true }).waitFor();
   assert.equal(
-    await page.getByLabel("Learner", { exact: true }).inputValue(),
+    await page
+      .getByLabel("Learner", { exact: true })
+      .getAttribute("data-value"),
     "second",
     "return selects the learner from the owned purchase binding",
   );
@@ -329,7 +331,9 @@ try {
   );
   await page.getByRole("alert").waitFor();
   assert.equal(
-    await page.getByLabel("Learner", { exact: true }).inputValue(),
+    await page
+      .getByLabel("Learner", { exact: true })
+      .getAttribute("data-value"),
     "",
   );
   assert.equal(

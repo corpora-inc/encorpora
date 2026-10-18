@@ -1,3 +1,4 @@
+import { Select } from "./PremiumControls";
 import { useEffect, useState } from "react";
 import {
   receiptFields,
@@ -66,14 +67,18 @@ export function ReimbursementGuide({
         <>
           <label>
             Reimbursement state
-            <select value={state} onChange={(e) => setState(e.target.value)}>
+            <Select
+              aria-label="Reimbursement state"
+              value={state}
+              onValueChange={(e) => setState(e)}
+            >
               <option value="">Choose your state</option>
               {states.map((code) => (
                 <option key={code} value={code}>
                   {stateNames[code] ?? code}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
           {programs!
             .filter((p) => p.state === state)

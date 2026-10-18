@@ -1,0 +1,58 @@
+.guided-start {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: 24px 16px;
+  color: var(--ink);
+  background: var(--bg);
+}
+.guided-start .start-card {
+  width: min(100%, 480px);
+  margin: 0;
+}
+.guided-start h1 {
+  font-size: clamp(28px, 6vw, 42px);
+  line-height: 1.15;
+  margin: 20px 0 16px;
+}
+.guided-start p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.guided-start form {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+.guided-start label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.guided-start button {
+  min-height: 48px;
+}
+.setup-progress {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.shell.start-shell {
+  height: 100dvh;
+  padding: 0;
+  overflow: hidden;
+}
+.shell.start-shell > header,
+.shell.start-shell > nav,
+.shell.start-shell > .intro,
+.shell.start-shell > footer {
+  display: none;
+}
+.shell.start-shell > .parent-consent-center {
+  height: 100%;
+}

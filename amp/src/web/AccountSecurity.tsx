@@ -1,3 +1,4 @@
+import { useLoggedError } from "./feedback";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { notifyAccountSessionChanged } from "./auth";
 import { accountClient } from "./account-client";
@@ -71,12 +72,9 @@ export function AccountSecurity() {
   const feedbackRef = useRef<HTMLDivElement>(null);
   const confirmRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (error || notice)
-      feedbackRef.current?.scrollIntoView({ block: "nearest" });
-  }, [error, notice]);
-  useEffect(() => {
     if (confirm) confirmRef.current?.scrollIntoView({ block: "nearest" });
   }, [confirm]);
+  useLoggedError(error);
   const feedback = (error || notice) && (
     <div ref={feedbackRef}>
       {error && (
@@ -184,7 +182,7 @@ export function AccountSecurity() {
             {now >= freshUntil
               ? "Sign in again to change these settings."
               : "Changes require a sign-in within the last five minutes."}{" "}
-            <a href="/?sign-in&return=security">Sign in again</a>.
+            <a href="/sign-in?return=security">Sign in again</a>.
           </p>
           <div className="security-panels">
             {(
@@ -610,7 +608,7 @@ export function AccountSecurity() {
                                       provider,
                                       callbackURL: "/?security",
                                       errorCallbackURL:
-                                        "/?sign-in&return=security&error=link_failed",
+                                        "/sign-in?return=security&error=link_failed",
                                     }),
                                   );
                                 })

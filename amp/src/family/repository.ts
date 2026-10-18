@@ -68,7 +68,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT id,name,birth_year,deleted_at FROM amp_learners WHERE account_id=$1 ORDER BY created_at,id",
+          "SELECT l.id,l.name,l.birth_year,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -112,6 +112,10 @@ export class FamilyRepository {
           birthYear: row.birth_year ?? null,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
+          canPractice:
+            !row.deleted_at &&
+            effectiveConsent &&
+            (this.development || row.has_access),
           access: grants
             .filter((g) => g.learner_id === row.id)
             .map((g) => ({

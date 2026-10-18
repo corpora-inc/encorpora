@@ -119,10 +119,13 @@ try {
         }),
       );
       await page
-        .getByRole("option", { name: "Current learner", exact: true })
+        .getByRole("button", { name: "Learner", exact: true })
+        .filter({ hasText: "Current learner" })
         .waitFor({ state: "attached" });
       assert.equal(
-        await page.getByLabel("Learner", { exact: true }).inputValue(),
+        await page
+          .getByLabel("Learner", { exact: true })
+          .getAttribute("data-value"),
         "current-child",
       );
       await page.evaluate((result) => {
@@ -136,12 +139,15 @@ try {
       }, outcome);
       await settledRender(page);
       assert.equal(
-        await page.getByLabel("Learner", { exact: true }).inputValue(),
+        await page
+          .getByLabel("Learner", { exact: true })
+          .getAttribute("data-value"),
         "current-child",
       );
       assert.equal(
         await page
-          .getByRole("option", { name: "Current learner", exact: true })
+          .getByRole("button", { name: "Learner", exact: true })
+          .filter({ hasText: "Current learner" })
           .count(),
         1,
       );
@@ -164,7 +170,7 @@ try {
       await page.evaluate(() => (window as any).sessionReview.reject());
       await page
         .getByRole("alert")
-        .filter({ hasText: "obsolete bootstrap error" })
+        .filter({ hasText: "Sign-in could not be checked" })
         .waitFor();
       assert.deepEqual(errors, []);
     } finally {
@@ -241,7 +247,8 @@ try {
         .waitFor();
       await page.getByRole("button", { name: "Back", exact: true }).click();
       await page
-        .getByRole("option", { name: "After rename", exact: true })
+        .getByRole("button", { name: "Learner", exact: true })
+        .filter({ hasText: "After rename" })
         .waitFor({ state: "attached" });
       const oldResponse = page.waitForResponse(
         (response) => new URL(response.url()).pathname === "/api/v1/family",
@@ -249,7 +256,7 @@ try {
       release();
       await (await oldResponse).finished();
       await settledRender(page);
-      assert.equal(requests, 3);
+      assert.equal(requests, 4);
       assert.equal(
         await page
           .getByRole("alert")
@@ -259,13 +266,15 @@ try {
       );
       assert.equal(
         await page
-          .getByRole("option", { name: "After rename", exact: true })
+          .getByRole("button", { name: "Learner", exact: true })
+          .filter({ hasText: "After rename" })
           .count(),
         1,
       );
       assert.equal(
         await page
-          .getByRole("option", { name: "Before rename", exact: true })
+          .getByRole("button", { name: "Learner", exact: true })
+          .filter({ hasText: "Before rename" })
           .count(),
         0,
       );
@@ -311,7 +320,8 @@ try {
         }),
       );
       await page
-        .getByRole("option", { name: "Current learner", exact: true })
+        .getByRole("button", { name: "Learner", exact: true })
+        .filter({ hasText: "Current learner" })
         .waitFor({ state: "attached" });
       const oldResponse = page.waitForResponse((response) =>
         response.url().endsWith("/birth-year"),

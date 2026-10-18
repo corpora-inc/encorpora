@@ -7,7 +7,7 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: 18px;
-  color: #183e3a;
+  color: var(--ink, #183e3a);
 }
 .funding-heading {
   display: flex;
@@ -72,8 +72,8 @@
 .funding-offer {
   margin-top: 20px;
   padding: 20px;
-  background: #fffefa;
-  border: 1px solid #d6dfd2;
+  background: var(--surface, #fffefa);
+  border: 1px solid var(--line, #d6dfd2);
   border-radius: 16px;
 }
 .funding-body h2 {
@@ -98,7 +98,7 @@
   flex-wrap: wrap;
 }
 .funding-footer {
-  border-top: 1px solid #d6dfd2;
+  border-top: 1px solid var(--line, #d6dfd2);
   padding-top: 12px;
   margin: 0;
   flex-direction: row;
@@ -110,8 +110,8 @@
   flex: 1;
 }
 .funding-secondary {
-  background: #e9eee4;
-  color: #183e3a;
+  background: var(--surface-2, #e9eee4);
+  color: var(--ink, #183e3a);
 }
 .funding-primary {
   display: inline-flex;
@@ -129,7 +129,7 @@
 }
 .funding-reference {
   font-size: 13px;
-  color: #4c625b;
+  color: var(--ink-2, #4c625b);
   overflow-wrap: anywhere;
   margin-top: 20px !important;
 }
@@ -149,9 +149,9 @@
   gap: 6px;
   text-align: left;
   width: 100%;
-  background: #fffefa;
-  color: #183e3a;
-  border: 1px solid #d6dfd2;
+  background: var(--surface, #fffefa);
+  color: var(--ink, #183e3a);
+  border: 1px solid var(--line, #d6dfd2);
   border-radius: 12px;
   margin-bottom: 12px;
 }
@@ -219,7 +219,7 @@
 
 .funding-center .funding-secondary:hover {
   background: #dce6d7;
-  color: #183e3a;
+  color: var(--ink, #183e3a);
 }
 .funding-footer > button:only-child {
   grid-column: 1 / -1;
@@ -243,7 +243,7 @@
   margin-bottom: 8px;
 }
 .funding-details {
-  border-top: 1px solid #d6dfd2;
+  border-top: 1px solid var(--line, #d6dfd2);
   margin-top: 10px;
 }
 .funding-details summary {
@@ -267,7 +267,7 @@
   text-align: left;
 }
 .funding-center .funding-text-action:hover {
-  background: #e9eee4;
+  background: var(--surface-2, #e9eee4);
   color: #18594f;
 }
 .funding-center .funding-text-action,
@@ -276,12 +276,12 @@
   width: 100%;
 }
 .funding-program-link {
-  background: #e9eee4;
-  color: #183e3a;
+  background: var(--surface-2, #e9eee4);
+  color: var(--ink, #183e3a);
 }
 .funding-program-link:hover {
   background: #dce6d7;
-  color: #183e3a;
+  color: var(--ink, #183e3a);
 }
 .funding-footer > .funding-program-link {
   flex: 1;

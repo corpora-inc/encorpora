@@ -1407,7 +1407,7 @@ html[data-input="pointer"] :focus-visible {
 }
 .family-add-learner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: end;
   gap: 10px;
   margin: 0 0 16px;
@@ -1438,7 +1438,7 @@ html[data-input="pointer"] :focus-visible {
 }
 @media (max-width: 520px) {
   .family-add-learner {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
   }
   .family-add-learner button {
     grid-column: 1 / -1;

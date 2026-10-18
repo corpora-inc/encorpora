@@ -1,3 +1,5 @@
+import { useAppRoute } from "./app-routes";
+import { useLoggedError, requestMessage } from "./feedback";
 import { useEffect, useState, type FormEvent } from "react";
 import { accountClient } from "./account-client";
 import { authConfig, signIn, notifyAccountSessionChanged } from "./auth";
@@ -22,15 +24,30 @@ const titles: Record<Step, string> = {
 /** Parent sign-in for AMP's own accounts. Success reloads the app, which then
  * finds the session (and saves a trial placement if one is waiting). */
 export function AccountSignIn() {
+  const { navigate, location: routeLocation } = useAppRoute();
   const params = new URLSearchParams(location.search);
   const resetToken = params.get("token");
-  const [step, setStep] = useState<Step>(
-    params.has("reset-password") && resetToken
+  const step: Step =
+    (params.has("reset-password") && resetToken) ||
+    routeLocation.pathname === "/reset-password"
       ? "reset"
-      : params.get("sign-in") === "create"
+      : routeLocation.pathname === "/sign-up" ||
+          params.get("sign-in") === "create"
         ? "create"
-        : "sign-in",
-  );
+        : ["forgot", "check-email", "two-factor"].includes(
+              routeLocation.pathname.split("/")[2],
+            )
+          ? (routeLocation.pathname.split("/")[2] as Step)
+          : "sign-in";
+  const setStep = (next: Step) =>
+    navigate(
+      (next === "create"
+        ? "/sign-up"
+        : next === "sign-in"
+          ? "/sign-in"
+          : `/sign-in/${next}`) +
+        (params.get("return") === "security" ? "?return=security" : ""),
+    );
   const [providers, setProviders] = useState<string[]>([]);
   const [passwords, setPasswords] = useState(true);
   const [name, setName] = useState("");
@@ -46,6 +63,7 @@ export function AccountSignIn() {
         ? "That sign-in did not complete. Try again."
         : "",
   );
+  useLoggedError(error);
   const [notice, setNotice] = useState("");
   useEffect(() => {
     void authConfig().then((config) => {
@@ -63,10 +81,11 @@ export function AccountSignIn() {
     setError("");
     setNotice("");
   }
-  const returnTo = params.get("return") === "security" ? "/?security" : "/";
+  const returnTo =
+    params.get("return") === "security" ? "/family/security" : "/";
   const done = () => {
     notifyAccountSessionChanged();
-    location.replace(returnTo);
+    navigate(returnTo, { replace: true });
   };
   async function run(work: () => Promise<void>) {
     setBusy(true);
@@ -103,7 +122,7 @@ export function AccountSignIn() {
           name: name.trim(),
           email,
           password,
-          callbackURL: "/",
+          callbackURL: "/start/name",
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet.

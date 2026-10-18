@@ -1,3 +1,4 @@
+import { Select } from "./PremiumControls";
 import { receiptFields } from "../billing/evidence/reimbursement.js";
 import { useReimbursementPrograms } from "./ReimbursementGuide.js";
 export function ReceiptDetails({
@@ -24,14 +25,18 @@ export function ReceiptDetails({
       {!!programs?.length && (
         <label>
           Reimbursement program (optional)
-          <select value={programId} onChange={(e) => onProgram(e.target.value)}>
+          <Select
+            aria-label="Reimbursement program (optional)"
+            value={programId}
+            onValueChange={(e) => onProgram(e)}
+          >
             <option value="">Personal records</option>
             {programs.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.state} · {p.programName}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
       )}
       <label>

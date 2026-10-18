@@ -1,16 +1,17 @@
+import { consumeInitialConsentChallenge } from "./consent-entry";
+import { GuidedStart } from "./GuidedStart";
+import { useLoggedError, requestMessage } from "./feedback";
+import { BrowserRouter, MemoryRouter, Navigate } from "react-router-dom";
+import { useAppRoute } from "./app-routes";
+import { Select } from "./PremiumControls";
 import { PrintMathText, printMathStyles } from "../content/PrintMathText";
 import { LessonIllustration } from "../content/LessonIllustration";
-import { consumeInitialConsentChallenge } from "./consent-entry";
 import { nativeRuntime } from "./native-runtime";
 import { NativeGate, NativeFamily } from "./NativeGate";
 import { learningRequest, learningCatalog } from "./learning-transport";
 import { ParentConsentCenter } from "./ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "./consent-link";
-import {
-  ProgressWorkspace,
-  initialProgressView,
-  type ProgressView,
-} from "./ProgressWorkspace";
+import { ProgressWorkspace, type ProgressView } from "./ProgressWorkspace";
 import { AnnualPurchase } from "./AnnualPurchase";
 import { FundingPurchaseCenter } from "./FundingPurchaseCenter";
 import {
@@ -48,6 +49,8 @@ import "./style.css";
 import "./practice.css";
 import "katex/dist/katex.min.css";
 import "./theme.css";
+import "./premium-controls.css";
+import "./app-shell.css";
 import { BirthYearPrompt } from "./BirthYearPrompt";
 import { AccountSignIn } from "./AccountSignIn";
 import { ChooseHowToPay } from "./ChooseHowToPay";
@@ -68,9 +71,6 @@ class HttpError extends Error {
     super(message);
   }
 }
-type LearnerSummary = Pick<Learner, "id" | "name"> & {
-  birthYear?: number | null;
-};
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
@@ -113,24 +113,63 @@ addEventListener(
 const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) consumeInitialConsentChallenge();
 function App() {
+  const route = useAppRoute();
+  const { navigate } = route;
+  useEffect(() => {
+    document.querySelector(".account-menu")?.removeAttribute("open");
+  }, [route.location.pathname]);
+  const familySummary = useLearnerStore((state) => state.family);
+  const setFamilySummary = useLearnerStore((state) => state.acceptFamily);
+  const learners =
+    familySummary?.learners.filter((entry) => !entry.deletedAt) ?? [];
+  const familyOpen = route.familyOpen;
+  const setFamilyOpen = (open: boolean) =>
+    navigate(open ? "/family/learners" : "/");
+  const consentOpen = route.consentOpen;
+  const setConsentOpen = (open: boolean) => {
+    if (open) navigate("/consent");
+  };
+  const purchaseView = route.purchaseView;
+  const setPurchaseView = (view: "choose" | "annual" | "funded" | null) => {
+    if (view) navigate(`/purchase/${view}`);
+  };
+  const familySection = route.familySection;
+  const setFamilySection = (section: typeof familySection) =>
+    navigate(`/family/${section}`);
+  const tab = route.tab;
+  const setTab = (tab: "practice" | "library" | "progress") =>
+    navigate(
+      tab === "library" ? "/lessons" : tab === "progress" ? "/progress" : "/",
+    );
+  const exploring = route.exploring;
+  const setExploring = (value: boolean) => navigate(value ? "/" : "/practice");
+  const [sessionReady, setSessionReady] = useState(false);
   const [token, setToken] = useState<string | null>(null),
     [accountId, setAccountId] = useState<string | null>(null),
-    [catalog, setCatalog] = useState<Catalog | null>(null),
-    [learners, setLearners] = useState<LearnerSummary[]>([]);
+    [catalog, setCatalog] = useState<Catalog | null>(null);
+  const readingLesson =
+    route.parts[0] === "lessons" && route.parts[1]
+      ? (catalog?.lessons.find((entry) => entry.id === route.parts[1]) ?? null)
+      : null;
+  const setReadingLesson = (lesson: Lesson | null) => {
+    if (lesson) navigate(`/lessons/${encodeURIComponent(lesson.id)}`);
+  };
   // The current learner is global state shared by every screen (see
   // learner-store.ts); this component derives the learner object from it.
   const learnerId = useLearnerStore((state) => state.learnerId);
   const selectLearner = useLearnerStore((state) => state.select);
   const learner = learners.find((entry) => entry.id === learnerId) ?? null;
-  const [familyOpen, setFamilyOpen] = useState(false);
-  const [changingBirthYear, setChangingBirthYear] = useState(false);
+
+  const changingBirthYear = route.location.pathname === "/profile/birth-year";
+  const setChangingBirthYear = (open: boolean) =>
+    navigate(open ? "/profile/birth-year" : "/");
   // "Try free": anonymous placement before any account (see TrialApp).
   const [trialMode, setTrialMode] = useState(() => !!storedTrial());
   const [trialImmersive, setTrialImmersive] = useState(false);
   const [trialToSave, setTrialToSave] = useState(storedTrial);
   const [trialName, setTrialName] = useState("");
   // Outside immersive practice: home, lessons, progress and family are visible.
-  const [exploring, setExploring] = useState(true);
+
   const nativeFamilyReturn = useRef(false);
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
@@ -140,7 +179,7 @@ function App() {
         ?.focus({ preventScroll: true });
     }
   }, [familyOpen]);
-  const [consentOpen, setConsentOpen] = useState(false);
+
   const [consentChallenge, setConsentChallenge] =
     useState<ConsentChallenge | null>(null);
   const pendingConsent = useRef<ConsentChallenge | null | undefined>(undefined);
@@ -152,12 +191,6 @@ function App() {
   const consentEpoch = useRef(0);
   const renderedConsentEpoch = consentEpoch.current;
   const [familyLearnerId, setFamilyLearnerId] = useState("");
-  const [purchaseView, setPurchaseView] = useState<
-    "choose" | "annual" | "funded" | null
-  >(null);
-  const [familySection, setFamilySection] = useState<
-    "learners" | "access" | "privacy" | "security"
-  >("learners");
   const [consentReturn, setConsentReturn] = useState(false);
   const [purchaseFocus, setPurchaseFocus] = useState<
     "annual" | "funded" | undefined
@@ -167,30 +200,45 @@ function App() {
   );
   const pendingPurchaseReturn = useRef(initialPurchaseReturn);
   const returnIdentity = useRef<string | null>(null);
-  const [familySummary, setFamilySummary] = useState<FamilySummary | null>(
-    null,
-  );
   const learningAllowed =
     familySummary?.consent.status === "active" ||
     familySummary?.consent.status === "development";
-  const [tab, setTab] = useState<"practice" | "library" | "progress">(
-      "practice",
-    ),
-    [family, setFamily] = useState(""),
+  const [family, setFamily] = useState(""),
     [problem, setProblem] = useState<PublicProblem | null>(null),
     [queue, setQueue] = useState<PublicProblem[]>([]),
     [lesson, setLesson] = useState<Lesson | null>(null),
-    [readingLesson, setReadingLesson] = useState<Lesson | null>(null),
     [lessonSearch, setLessonSearch] = useState("");
   const [books, setBooks] = useState<BookSummary[]>([]);
-  const [readingBook, setReadingBook] = useState<{
+  const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
     initialFrame: number;
   } | null>(null);
+  const readingBook =
+    route.parts[0] === "books" && loadedBook?.book.id === route.parts[1]
+      ? loadedBook
+      : null;
   const navigationEpoch = useRef(0);
   const progressRevision = useRef(0);
-  const [progressView, setProgressView] =
-    useState<ProgressView>(initialProgressView);
+  const progressParams = new URLSearchParams(route.location.search);
+  const progressView: ProgressView = {
+    filter: ["review", "explore"].includes(progressParams.get("filter") ?? "")
+      ? (progressParams.get("filter") as "review" | "explore")
+      : "practiced",
+    strand: progressParams.get("strand") ?? "",
+    page: Math.max(0, Number(progressParams.get("page")) || 0),
+    skillId: progressParams.get("skill"),
+  };
+  const setProgressView: React.Dispatch<React.SetStateAction<ProgressView>> = (
+    update,
+  ) => {
+    const next = typeof update === "function" ? update(progressView) : update;
+    const query = new URLSearchParams();
+    if (next.filter !== "practiced") query.set("filter", next.filter);
+    if (next.strand) query.set("strand", next.strand);
+    if (next.page) query.set("page", String(next.page));
+    if (next.skillId) query.set("skill", next.skillId);
+    navigate(`/progress${query.size ? `?${query}` : ""}`);
+  };
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressError, setProgressError] = useState("");
   const progressLessonReturn = useRef<string | null>(null);
@@ -207,7 +255,7 @@ function App() {
       readerHeading.current?.focus({ preventScroll: true });
   }, [readingLesson, tab]);
   const authSessionRevision = useRef(0),
-    familyRevision = useRef(0);
+    familyRequest = useRef(0);
   const authEpoch = useRef(0),
     tokenRef = useRef<string | null>(null),
     accountRef = useRef<string | null>(null);
@@ -226,9 +274,12 @@ function App() {
       requestId: string;
       response: string;
     } | null>(null);
+  useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
+    setSessionReady(true);
     const next = session?.token ?? null,
       identity = session?.accountId ?? null;
+    const previousIdentity = accountRef.current;
     if (tokenRef.current === next && accountRef.current === identity) return;
     tokenRef.current = next;
     setToken(next);
@@ -239,42 +290,46 @@ function App() {
     setHasPendingConsent(false);
     consentEpoch.current++;
     setConsentChallenge(openingConsent);
-    setConsentOpen(!!openingConsent);
+
     setConsentReturn(false);
     if (accountRef.current !== null) {
       clearPurchaseReturn();
       pendingPurchaseReturn.current = null;
     }
-    setPurchaseView(null);
+
     setPurchaseReturn(null);
     const openingSecurity =
       !nativeRuntime &&
       accountRef.current === null &&
       identity?.startsWith("amp|") &&
       new URLSearchParams(location.search).has("security");
-    setFamilySection(openingSecurity ? "security" : "learners");
-    if (openingSecurity) history.replaceState({}, "", "/");
+    if (openingSecurity) navigate("/family/security", { replace: true });
+
     setFamilyLearnerId("");
     setPurchaseFocus(undefined);
     accountRef.current = identity;
     setAccountId(identity);
     authEpoch.current++;
+    familyRequest.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    setFamilyOpen(!!openingConsent || !!openingSecurity);
+    if (openingConsent) navigate("/consent", { replace: true });
+    else if (previousIdentity && previousIdentity !== identity)
+      navigate("/", { replace: true });
+    useLearnerStore.getState().setIdentity(identity);
     setFamilySummary(null);
     setBusy(false);
     setName("");
     setLesson(null);
-    setReadingLesson(null);
+
     setReadingBook(null);
     setBooks([]);
     bookPositions.current = {};
     setFamily("");
-    setLearners([]);
+
     setProgress(null);
     setProgressError("");
-    setProgressView(initialProgressView);
+
     progressLessonReturn.current = null;
     setProblem(null);
     setQueue([]);
@@ -290,15 +345,14 @@ function App() {
     navigationEpoch.current++;
     setConsentChallenge(challenge);
     setConsentOpen(true);
-    setFamilyOpen(true);
-    setPurchaseView(null);
+
     setReadingBook(null);
   }
   function closeConsent() {
     consentEpoch.current++;
-    setConsentOpen(false);
+
     setConsentChallenge(null);
-    setFamilySection("privacy");
+    navigate("/family/privacy/consent");
     setConsentReturn(true);
   }
   useEffect(() => {
@@ -332,7 +386,13 @@ function App() {
       await run();
     } catch (e) {
       if (epoch === authEpoch.current)
-        setError(e instanceof Error ? e.message : "Something went wrong");
+        setError(
+          e instanceof HttpError
+            ? requestMessage(e.message, "Your request")
+            : e instanceof Error
+              ? e.message
+              : "Your request failed. Check your connection and try again.",
+        );
     } finally {
       if (epoch === authEpoch.current) setBusy(false);
     }
@@ -352,15 +412,25 @@ function App() {
         if (revision === authSessionRevision.current) updateAuth(session);
       })
       .catch((e) => {
-        if (revision === authSessionRevision.current) setError(String(e));
+        if (revision === authSessionRevision.current) {
+          setSessionReady(true);
+          setError("Sign-in could not be checked. Refresh to try again.");
+        }
       });
     void learningCatalog()
       .then(setCatalog)
       .catch((e) => setError(String(e)));
   }, []);
   useEffect(() => {
-    if (token) void action(loadFamily);
-  }, [accountId]);
+    if (!token) return;
+    const epoch = authEpoch.current;
+    void loadFamily().catch(() => {
+      if (epoch === authEpoch.current)
+        setError(
+          "Family details could not be refreshed. Check your connection and try again.",
+        );
+    });
+  }, [accountId, route.location.pathname]);
   useEffect(() => {
     if (!accountId || !token || !pendingPurchaseReturn.current) return;
     const context = parsePurchaseReturn(pendingPurchaseReturn.current);
@@ -387,8 +457,6 @@ function App() {
           return;
         navigationEpoch.current++;
         setReadingBook(null);
-        setFamilyOpen(true);
-        setFamilySection("access");
         setPurchaseReturn(context);
         setPurchaseView("annual");
       } catch {
@@ -397,8 +465,7 @@ function App() {
           navigation === navigationEpoch.current &&
           parsePurchaseReturn(context)
         ) {
-          setFamilyOpen(true);
-          setFamilySection("access");
+          navigate("/family/access");
           setError(
             "This purchase return could not be matched to your account. Open Annual subscription to check your learner’s access.",
           );
@@ -429,15 +496,16 @@ function App() {
     setPending(null);
     setProgress(null);
     setProgressError("");
-    setProgressView(initialProgressView);
+
     progressLessonReturn.current = null;
     if (learner) void refreshProgress();
   }, [learner?.id]);
   function invalidateLearning() {
     authEpoch.current++;
+    familyRequest.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    setLearners([]);
+
     setFamilySummary(null);
     setProblem(null);
     setQueue([]);
@@ -447,10 +515,10 @@ function App() {
     setHint("");
     setProgress(null);
     setProgressError("");
-    setProgressView(initialProgressView);
+
     progressLessonReturn.current = null;
     setLesson(null);
-    setReadingLesson(null);
+
     setReadingBook(null);
     setBooks([]);
     bookPositions.current = {};
@@ -459,19 +527,27 @@ function App() {
     setError("");
   }
   async function loadFamily() {
-    const revision = familyRevision.current;
+    const revision = useLearnerStore.getState().revision;
+    const request = ++familyRequest.current;
+    const identity = accountRef.current;
     try {
       const summary = await api<FamilySummary>("/family");
-      if (revision === familyRevision.current) acceptFamily(summary);
+      if (
+        identity === accountRef.current &&
+        request === familyRequest.current &&
+        revision === useLearnerStore.getState().revision
+      )
+        acceptFamily(summary);
     } catch (error) {
-      if (revision === familyRevision.current) throw error;
+      if (identity === accountRef.current && request === familyRequest.current)
+        throw error;
     }
   }
   function acceptFamily(summary: FamilySummary) {
-    familyRevision.current++;
+    familyRequest.current++;
     setFamilySummary(summary);
     const available = summary.learners.filter((entry) => !entry.deletedAt);
-    setLearners(available);
+
     const allowed =
       summary.consent.status === "active" ||
       summary.consent.status === "development";
@@ -487,6 +563,37 @@ function App() {
     // allowed; never forget the choice merely because data is reloading.
     if (selected) selectLearner(selected.id);
   }
+  useEffect(() => {
+    if (
+      token &&
+      route.signingIn &&
+      new URLSearchParams(route.location.search).get("return") !== "security"
+    )
+      navigate("/", { replace: true });
+  }, [token, route.signingIn]);
+  const starting = route.parts[0] === "start";
+  useEffect(() => {
+    if (
+      !nativeRuntime &&
+      token &&
+      familySummary &&
+      route.location.pathname === "/" &&
+      (!learners.length ||
+        (!learningAllowed && familySummary.consent.status !== "withdrawn"))
+    )
+      navigate("/start/name", { replace: true });
+  }, [accountId, familySummary, route.location.pathname]);
+  useEffect(() => {
+    if (
+      route.parts[0] === "practice" &&
+      learner?.birthYear != null &&
+      !problem &&
+      !busy &&
+      !error &&
+      learningAllowed
+    )
+      void action(() => loadBatch(""));
+  }, [route.location.pathname, learner?.id, learner?.birthYear, busy, error]);
   function closePurchase() {
     // A purchase opened from "how to pay" returns there.
     if (purchaseView !== "choose" && purchaseFromChoice) {
@@ -498,9 +605,11 @@ function App() {
     setPurchaseFocus(
       purchaseView === "choose" ? undefined : (purchaseView ?? undefined),
     );
-    setPurchaseView(null);
+
     setPurchaseReturn(null);
-    setFamilySection("access");
+    navigate(
+      purchaseView === "choose" ? "/family/access" : "/family/access/purchases",
+    );
     setError("");
     void action(loadFamily);
   }
@@ -522,9 +631,8 @@ function App() {
   function openFamily() {
     navigationEpoch.current++;
     setReadingBook(null);
-    setFamilyOpen(true);
-    setFamilySection("learners");
-    setPurchaseView(null);
+    navigate("/family/learners");
+
     setPurchaseFocus(undefined);
     document.querySelector(".account-menu")?.removeAttribute("open");
   }
@@ -567,7 +675,7 @@ function App() {
     throw error;
   }
   async function practiceFromProgress(templateId?: string) {
-    await loadBatch(templateId ?? "", true);
+    await loadBatch(templateId ?? "");
   }
   async function openReferenceLesson(selected: Lesson, skillId: string | null) {
     if (!learner) return;
@@ -587,7 +695,6 @@ function App() {
       return;
     progressLessonReturn.current = skillId;
     setReadingLesson(selected);
-    setTab("library");
   }
   function showProblem(p: PublicProblem) {
     setProblem(p);
@@ -610,16 +717,22 @@ function App() {
   const upcoming = useRef<{ learnerId: string; batch: Promise<Batch> } | null>(
     null,
   );
-  function applyBatch(data: Batch, openPractice = false) {
-    if (openPractice) setTab("practice");
-    setExploring(false);
+  function applyBatch(data: Batch) {
+    if (route.location.pathname !== "/practice") navigate("/practice");
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);
     setFamily("");
   }
-  async function loadBatch(templateId = family, openPractice = false) {
+  async function loadBatch(templateId = family) {
     if (!learner) return;
+    const capability = familySummary?.learners.find(
+      (entry) => entry.id === learner.id,
+    )?.canPractice;
+    if (capability === false) {
+      navigate("/purchase/choose", { replace: true });
+      return;
+    }
     upcoming.current = null;
     const navigation = ++navigationEpoch.current;
     const data = await requestBatch(templateId).catch((error) => {
@@ -629,10 +742,7 @@ function App() {
         error.status === 403 &&
         /license/i.test(error.message)
       ) {
-        setExploring(true);
-        openFamily();
-        setFamilySection("access");
-        openPurchase("choose");
+        navigate("/purchase/choose", { replace: true });
         return null;
       }
       return navigationFailure(navigation, learner.id, error);
@@ -643,7 +753,7 @@ function App() {
       learnerRef.current !== learner.id
     )
       return;
-    applyBatch(data, openPractice);
+    applyBatch(data);
   }
   async function next() {
     const ready = upcoming.current;
@@ -716,6 +826,7 @@ function App() {
           )
         : -1;
     bookReturn.current = returnTo;
+    if (route.location.pathname !== `/books/${id}`) navigate(`/books/${id}`);
     setReadingBook({
       book: data.book,
       initialFrame:
@@ -724,6 +835,15 @@ function App() {
           : (bookPositions.current[`${learner.id}:${id}`] ?? 0),
     });
   }
+  useEffect(() => {
+    if (
+      route.parts[0] === "books" &&
+      route.parts[1] &&
+      learner &&
+      loadedBook?.book.id !== route.parts[1]
+    )
+      void action(() => openBook(route.parts[1]));
+  }, [route.location.pathname, learner?.id]);
   async function downloadBook(id: string) {
     if (nativeRuntime)
       throw new Error("PDF downloads require the configured web application.");
@@ -798,11 +918,15 @@ function App() {
   useEffect(() => {
     void authConfig().then((config) => setAuthMode(config.mode));
   }, []);
-  const [signingIn] = useState(() => {
-    const params = new URLSearchParams(location.search);
-    return params.has("sign-in") || params.has("reset-password");
-  });
-  const trialActive = trialMode && !token && !nativeRuntime && !signingIn;
+  const signingIn =
+    route.signingIn &&
+    (!token ||
+      new URLSearchParams(route.location.search).get("return") === "security");
+  const trialActive =
+    (trialMode || route.parts[0] === "try") &&
+    !token &&
+    !nativeRuntime &&
+    !signingIn;
   const immersive =
     (!!learner &&
       tab === "practice" &&
@@ -823,12 +947,40 @@ function App() {
       (tab === "practice" || tab === "library"));
   usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
+  if (!sessionReady || (starting && token && !familySummary))
+    return (
+      <div className="app-loading" aria-busy={!error}>
+        <strong>AMP</strong>
+        <p>Opening your workspace…</p>
+        <button
+          className="loading-retry"
+          style={{ visibility: error ? "visible" : "hidden" }}
+          disabled={!error || busy}
+          onClick={() => void action(loadFamily)}
+        >
+          Try again
+        </button>
+        {error && (
+          <p className="account-error" role="alert">
+            {error}
+          </p>
+        )}
+      </div>
+    );
   return (
     <div
-      className={`shell ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
+      className={`shell ${starting ? "start-shell" : ""} ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
-        <a className="brand" href="/" aria-label={`${product.name} home`}>
+        <a
+          onClick={(event) => {
+            event.preventDefault();
+            navigate("/");
+          }}
+          className="brand"
+          href="/"
+          aria-label={`${product.name} home`}
+        >
           <svg viewBox="0 0 64 32" aria-hidden="true">
             <path d="M0 16 C8 16 8 1 16 1 S24 31 32 31 S40 1 48 1 S56 16 64 16" />
           </svg>
@@ -841,11 +993,11 @@ function App() {
             !trialToSave &&
             learningAllowed &&
             learners.length > 0 && (
-              <select
+              <Select
                 aria-label="Learner"
                 value={learner?.id ?? ""}
                 disabled={busy}
-                onChange={(e) => selectLearner(e.target.value || null)}
+                onValueChange={(e) => selectLearner(e || null)}
               >
                 {!learner && <option value="">Select a learner</option>}
                 {learners.map((l) => (
@@ -853,7 +1005,7 @@ function App() {
                     {l.name}
                   </option>
                 ))}
-              </select>
+              </Select>
             )}
           {token && !familyOpen && (
             <details className="account-menu">
@@ -875,7 +1027,6 @@ function App() {
                       setQueue([]);
                       setOutcome(null);
                       setPending(null);
-                      setTab("practice");
                       setChangingBirthYear(true);
                     }}
                   >
@@ -891,7 +1042,7 @@ function App() {
                         .closest("details")
                         ?.removeAttribute("open");
                       setName("");
-                      selectLearner(null);
+                      navigate("/start/name");
                     }}
                   >
                     Add learner
@@ -960,7 +1111,31 @@ function App() {
           {error}
         </div>
       )}
-      {familyOpen && token && nativeRuntime ? (
+      {starting &&
+      token &&
+      !nativeRuntime &&
+      familySummary &&
+      !(trialToSave && learningAllowed) ? (
+        <GuidedStart
+          key={accountId}
+          token={token}
+          identity={accountId ?? token}
+          busy={busy}
+          refresh={() => void action(loadFamily)}
+          onClose={openFamily}
+          create={(name, birthYear) =>
+            void action(async () => {
+              const created = await api<Learner>("/learners", {
+                name,
+                birthYear,
+              });
+              await loadFamily();
+              selectLearner(created.id);
+              navigate("/practice", { replace: true });
+            })
+          }
+        />
+      ) : familyOpen && token && nativeRuntime ? (
         <NativeFamily
           onClose={() => {
             nativeFamilyReturn.current = true;
@@ -1037,6 +1212,7 @@ function App() {
             if (learners.some((entry) => entry.id === id)) selectLearner(id);
           }}
           initialSection={familySection}
+          onSectionChange={setFamilySection}
           returnFocus={purchaseFocus}
           onAnnualPurchase={() => openPurchase("annual")}
           onFundedPurchase={() => openPurchase("funded")}
@@ -1086,7 +1262,10 @@ function App() {
           {!nativeRuntime && (
             <button
               className="go-button"
-              onClick={() => setTrialMode(true)}
+              onClick={() => {
+                setTrialMode(true);
+                navigate("/try");
+              }}
               disabled={busy}
             >
               Try free
@@ -1116,14 +1295,17 @@ function App() {
           <h2>
             {familySummary.consent.status === "withdrawn"
               ? "Learning is paused."
-              : "Parent consent is needed."}
+              : "Let’s set up your family."}
           </h2>
           <p>
             {nativeRuntime
               ? "Learning consent must be completed in the configured web application before this learner can practice."
-              : "Open Family → Privacy → Learning consent to review enrollment. Your records and billing controls stay available while learning is paused."}
+              : "Review how AMP uses learning data before adding a learner. Consent is the first step; your learner’s name and starting level come next."}
           </p>
-          <button onClick={openFamily}>Manage family</button>
+          <button onClick={() => openConsent()}>Continue setup</button>
+          <button className="secondary" onClick={openFamily}>
+            Manage family
+          </button>
         </section>
       ) : !learner && nativeRuntime ? (
         <section className="card welcome">
@@ -1157,8 +1339,6 @@ function App() {
                 await loadFamily();
                 selectLearner(adopted.id);
                 // Next: choose how to pay (card or ESA).
-                openFamily();
-                setFamilySection("access");
                 openPurchase("choose");
               });
             }}
@@ -1190,31 +1370,7 @@ function App() {
           </form>
         </section>
       ) : !learner ? (
-        <section className="card welcome">
-          <h2>Who is learning today?</h2>
-          <p>Use a first name or nickname to create a learner profile.</p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              void action(async () => {
-                const l = await api<Learner>("/learners", { name });
-                setLearners([...learners, l]);
-                selectLearner(l.id);
-              });
-            }}
-          >
-            <label>
-              Learner name
-              <input
-                required
-                maxLength={60}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <button disabled={busy}>Create learner</button>
-          </form>
-        </section>
+        <Navigate to="/start/name" replace />
       ) : readingBook ? (
         <BookReader
           key={`${learner.id}:${readingBook.book.id}`}
@@ -1222,6 +1378,7 @@ function App() {
           initialFrame={readingBook.initialFrame}
           onClose={() => {
             setReadingBook(null);
+            navigate("/lessons");
             requestAnimationFrame(() => {
               const library = document.querySelector(".library-main");
               if (library) library.scrollTop = bookReturn.current.scroll;
@@ -1238,6 +1395,11 @@ function App() {
             nativeRuntime ? undefined : () => downloadBook(readingBook.book.id)
           }
         />
+      ) : route.parts[0] === "books" ? (
+        <main className="library-main" aria-busy={!error}>
+          <h1>Opening your book…</h1>
+          <button onClick={() => navigate("/lessons")}>Back to lessons</button>
+        </main>
       ) : tab === "practice" ? (
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
@@ -1322,11 +1484,7 @@ function App() {
                 });
                 const updated = { ...learner, birthYear };
                 setChangingBirthYear(false);
-                setLearners(
-                  learners.map((entry) =>
-                    entry.id === learner.id ? updated : entry,
-                  ),
-                );
+                await loadFamily();
               })
             }
           />
@@ -1347,7 +1505,7 @@ function App() {
                   ).lesson
                 }
                 practice={(templateId) =>
-                  void action(() => loadBatch(templateId, true))
+                  void action(() => loadBatch(templateId))
                 }
               />
               <details className="book-list">
@@ -1404,7 +1562,7 @@ function App() {
                 <button
                   className="text-button"
                   onClick={() => {
-                    setReadingLesson(null);
+                    navigate("/lessons");
                     if (progressLessonReturn.current) {
                       const skillId = progressLessonReturn.current;
                       progressLessonReturn.current = null;
@@ -1558,10 +1716,14 @@ function App() {
 }
 createRoot(document.getElementById("root")!).render(
   nativeRuntime ? (
-    <NativeGate>
-      <App />
-    </NativeGate>
+    <MemoryRouter>
+      <NativeGate>
+        <App />
+      </NativeGate>
+    </MemoryRouter>
   ) : (
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   ),
 );

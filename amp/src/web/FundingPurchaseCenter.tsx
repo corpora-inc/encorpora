@@ -1,3 +1,5 @@
+import { useLoggedError, requestMessage } from "./feedback";
+import { Select } from "./PremiumControls";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   PublicFundingOffer,
@@ -71,6 +73,7 @@ export function FundingPurchaseCenter({
   const [busy, setBusy] = useState(false),
     [loading, setLoading] = useState(true),
     [error, setError] = useState("");
+  useLoggedError(error);
   const body = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null),
     epoch = useRef(0),
@@ -430,11 +433,12 @@ export function FundingPurchaseCenter({
             {offers.length ? (
               <>
                 <label htmlFor="funding-offer">Program and product</label>
-                <select
+                <Select
+                  aria-label="Program and product"
                   id="funding-offer"
                   value={offerId}
-                  onChange={(e) => {
-                    setOfferId(e.target.value);
+                  onValueChange={(e) => {
+                    setOfferId(e);
                     retry.current = null;
                   }}
                   disabled={busy}
@@ -444,13 +448,14 @@ export function FundingPurchaseCenter({
                       {o.programName} · {o.productTitle}
                     </option>
                   ))}
-                </select>
+                </Select>
                 <label htmlFor="funding-learner">Learner</label>
-                <select
+                <Select
+                  aria-label="Learner"
                   id="funding-learner"
                   value={learnerId}
-                  onChange={(e) => {
-                    setLearnerId(e.target.value);
+                  onValueChange={(e) => {
+                    setLearnerId(e);
                     retry.current = null;
                   }}
                   disabled={busy || !learners.length}
@@ -460,7 +465,7 @@ export function FundingPurchaseCenter({
                       {l.name}
                     </option>
                   ))}
-                </select>
+                </Select>
                 {!learners.length && (
                   <p>
                     Add an eligible learner in family settings before preparing

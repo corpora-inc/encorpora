@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -317,8 +318,9 @@ try {
     .waitFor();
   await signedOut.page.waitForFunction(
     () =>
-      document.querySelector<HTMLSelectElement>(".annual-learner select")
-        ?.value === "child-a-2",
+      document
+        .querySelector<HTMLButtonElement>(".annual-learner .premium-select")
+        ?.getAttribute("data-value") === "child-a-2",
   );
   assert.equal(
     await signedOut.page.evaluate(() =>
@@ -343,7 +345,8 @@ try {
   );
   await expired.page.goto("http://127.0.0.1:4390");
   await expired.page
-    .getByRole("option", { name: "Learner A 1" })
+    .getByRole("button", { name: "Learner", exact: true })
+    .filter({ hasText: "Learner A 1" })
     .waitFor({ state: "attached" });
   assert.equal(expired.started(), false);
   assert.equal(await expired.page.locator(".annual-purchase").count(), 0);
@@ -378,7 +381,7 @@ try {
   await ready.page.locator('[data-purchase-entry="annual"]').click();
   await ready.page.locator(".annual-primary").waitFor();
   await visible(ready.page, ".annual-primary");
-  await visible(ready.page, ".annual-learner select");
+  await visible(ready.page, ".annual-learner .premium-select");
   await ready.page.screenshot({
     path: "artifacts/purchase-app/annual-ready-320.png",
   });
@@ -391,8 +394,9 @@ try {
   await returned.page.getByRole("heading", { name: "Annual access" }).waitFor();
   await returned.page.waitForFunction(
     () =>
-      document.querySelector<HTMLSelectElement>(".annual-learner select")
-        ?.value === "child-a-2",
+      document
+        .querySelector<HTMLButtonElement>(".annual-learner .premium-select")
+        ?.getAttribute("data-value") === "child-a-2",
   );
   assert.equal(new URL(returned.page.url()).search, "");
   assert.equal(
@@ -424,7 +428,9 @@ try {
     }),
   );
   assert.equal(
-    await returned.page.locator(".annual-learner select").inputValue(),
+    await returned.page
+      .locator(".annual-learner .premium-select")
+      .getAttribute("data-value"),
     "child-a-2",
   );
   await returned.page.evaluate(() =>
@@ -434,7 +440,8 @@ try {
     }),
   );
   await returned.page
-    .getByRole("option", { name: "Learner B 1" })
+    .getByRole("button", { name: "Learner", exact: true })
+    .filter({ hasText: "Learner B 1" })
     .waitFor({ state: "attached" });
   assert.equal(await returned.page.locator(".annual-purchase").count(), 0);
   await returned.page.evaluate(
@@ -493,7 +500,8 @@ try {
     f.release();
     await frames(f.page);
     await f.page
-      .getByRole("option", { name: "Learner B 1" })
+      .getByRole("button", { name: "Learner", exact: true })
+      .filter({ hasText: "Learner B 1" })
       .waitFor({ state: "attached" });
     assert.equal(await f.page.locator(".annual-purchase").count(), 0);
     assert.equal(
@@ -521,7 +529,7 @@ try {
       .getByRole("heading", { name: "Choose your AMP plan" })
       .waitFor();
     await f.page.getByText("$120.00").waitFor();
-    await f.page.getByLabel("State").selectOption("AZ");
+    await choose(f.page.getByLabel("State"), "AZ");
     const program = f.page.locator(`[data-offer="${testFundingOffer.id}"]`);
     await program.waitFor();
     assert.match((await program.textContent()) ?? "", /\$123\.00/);
@@ -540,7 +548,7 @@ try {
     await program.click();
     await f.page.locator("#funding-offer").waitFor();
     assert.equal(
-      await f.page.locator("#funding-offer").inputValue(),
+      await f.page.locator("#funding-offer").getAttribute("data-value"),
       testFundingOffer.id,
     );
     // Back returns to the choice, not to Family.
@@ -588,9 +596,10 @@ try {
       fullPage: true,
     });
     if (reimbursement) {
-      await f.page
-        .getByRole("combobox", { name: "Reimbursement state" })
-        .selectOption("AZ");
+      await choose(
+        f.page.getByRole("button", { name: "Reimbursement state" }),
+        "AZ",
+      );
       await f.page
         .getByRole("button", { name: "Continue to card payment", exact: true })
         .click();

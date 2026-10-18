@@ -65,6 +65,32 @@ test(
         (await family.summary("parent")).learners[0]!.name,
         "New display name",
       );
+      assert.equal(
+        (await family.summary("parent")).learners[0]!.canPractice,
+        false,
+      );
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('capability',$1,'stripe','capability','active',now()-interval '1 day',now()+interval '1 day')",
+        [child.id],
+      );
+      assert.equal(
+        (await family.summary("parent")).learners[0]!.canPractice,
+        true,
+      );
+      for (const update of [
+        "starts_at=now()+interval '1 hour'",
+        "starts_at=now()-interval '2 days',ends_at=now()-interval '1 day'",
+        "ends_at=now()+interval '1 day',status='revoked'",
+      ]) {
+        await pool.query(
+          `UPDATE amp_grants SET ${update} WHERE id='capability'`,
+        );
+        assert.equal(
+          (await family.summary("parent")).learners[0]!.canPractice,
+          false,
+        );
+      }
+      await pool.query("DELETE FROM amp_grants WHERE id='capability'");
       for (let i = 0; i < 205; i++)
         await pool.query(
           "INSERT INTO amp_instances(id,learner_id,content) VALUES($1,$2,$3)",
@@ -172,6 +198,11 @@ test(
       await pool.query(
         "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('paid',$1,'stripe','invoice','active',now(),now()+interval '1 year')",
         [child.id],
+      );
+      assert.equal(
+        (await family.summary("parent")).learners[0]!.canPractice,
+        false,
+        "withdrawn consent blocks an active grant",
       );
       const receipt = await family.deleteLearning("parent", child.id);
       assert.deepEqual(
