@@ -1,5 +1,6 @@
 import { radicalMethods } from "./radical-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
+import { integerExponentMethods } from "./integer-exponent-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
 import { inequalityMethods } from "./inequality-lessons";
@@ -13,6 +14,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...polynomialMethods,

@@ -1,5 +1,6 @@
 import { radicalFacetMappings } from "./radical-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
+import { integerExponentFacetMappings } from "./integer-exponent-coverage";
 import { descriptiveStatisticsFacetMappings } from "./descriptive-statistics-coverage";
 import { percentChangeFacetMappings } from "./percent-change-coverage";
 import type { FacetMapping } from "./coverage";
@@ -11,6 +12,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 export const actualFacetMappings: readonly FacetMapping[] = [
   ...radicalFacetMappings,
   ...circleMeasurementFacetMappings,
+  ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
   ...percentChangeFacetMappings,
   ...rightTriangleFacetMappings,
