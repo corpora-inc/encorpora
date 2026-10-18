@@ -21,7 +21,8 @@ import {
   TRIAL_PREFIX,
   trialTokenHash,
 } from "./trials";
-import { Pool, type PoolClient } from "pg";
+import type { Pool, PoolClient } from "pg";
+import { createDatabasePool } from "./database.js";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
@@ -106,7 +107,7 @@ export class PostgresRepository implements Repository {
     connectionString: string,
     private readonly options: { development?: boolean } = {},
   ) {
-    this.pool = new Pool({ connectionString, max: 10 });
+    this.pool = createDatabasePool({ connectionString });
   }
   async hasConsent(accountId: string) {
     const client = await this.pool.connect();

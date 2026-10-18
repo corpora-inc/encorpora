@@ -52,6 +52,8 @@ async function setup(
     foreign?: boolean;
     hold?: boolean;
     funds?: boolean;
+    monthly?: boolean;
+    reimbursement?: boolean;
   } = {},
 ) {
   const page = await browser.newPage({ viewport: { width, height } });
@@ -61,6 +63,7 @@ async function setup(
   let lookupStarted = false;
   let familyReads = 0;
   let status = "payment-processing";
+  const checkoutBodies: { interval: string; offerId: string }[] = [];
   page.on("pageerror", (e) => faults.push(e.message));
   await page.route("**/api/v1/**", async (route) => {
     const path = new URL(route.request().url()).pathname;
@@ -107,7 +110,24 @@ async function setup(
       return route.fulfill({
         json: options.disabled
           ? { available: false }
-          : { available: true, offer },
+          : {
+              available: true,
+              offer,
+              ...(options.monthly
+                ? {
+                    offers: [
+                      offer,
+                      {
+                        ...offer,
+                        id: "b".repeat(64),
+                        interval: "month",
+                        amountMinor: 1400,
+                        formattedAmount: "$14.00",
+                      },
+                    ],
+                  }
+                : {}),
+            },
       });
     if (path.includes("/billing/status/"))
       return route.fulfill({
@@ -129,7 +149,27 @@ async function setup(
       path === "/api/v1/payments/reimbursement-programs" &&
       route.request().method() === "GET"
     )
-      return route.fulfill({ json: { programs: [] } });
+      return route.fulfill({
+        json: {
+          programs: options.reimbursement
+            ? [
+                {
+                  id: "synthetic-program",
+                  state: "AZ",
+                  programName: "Synthetic education program",
+                  officialUrl: "https://example.test/reimbursement",
+                  requiredFields: ["learnerName", "paymentMethod"],
+                },
+              ]
+            : [],
+        },
+      });
+    if (path.endsWith("/billing/checkout")) {
+      checkoutBodies.push(route.request().postDataJSON());
+      return route.fulfill({
+        json: { url: "https://checkout.stripe.com/fixture" },
+      });
+    }
     if (path.endsWith("/funding/offers"))
       return route.fulfill({
         json: {
@@ -150,6 +190,7 @@ async function setup(
     release: () => release?.(),
     started: () => lookupStarted,
     familyReads: () => familyReads,
+    checkoutBodies,
     setStatus: (next: string) => {
       status = next;
     },
@@ -219,7 +260,7 @@ try {
     await f.page.locator('[data-purchase-entry="annual"]').click();
     await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
     await f.page
-      .getByText("No annual checkout is configured. No payment can be taken.")
+      .getByText("No card checkout is configured. No payment can be taken.")
       .waitFor();
     await f.page.getByRole("button", { name: "Back to family" }).click();
     await f.page.waitForFunction(
@@ -462,7 +503,7 @@ try {
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }
-  // "Get a year of AMP": card price and a state's education-fund programs,
+  // "Choose an AMP plan": card price and a state's education-fund programs,
   // each leading to its purchase screen with the choice carried over.
   for (const [width, height] of [
     [320, 568],
@@ -474,9 +515,11 @@ try {
     await openAccess(f.page);
     await f.page.getByRole("button", { name: "Back", exact: true }).click();
     await f.page
-      .getByRole("button", { name: "Get a year of AMP", exact: true })
+      .getByRole("button", { name: "Choose an AMP plan", exact: true })
       .click();
-    await f.page.getByRole("heading", { name: "One year of AMP" }).waitFor();
+    await f.page
+      .getByRole("heading", { name: "Choose your AMP plan" })
+      .waitFor();
     await f.page.getByText("$120.00").waitFor();
     await f.page.getByLabel("State").selectOption("AZ");
     const program = f.page.locator(`[data-offer="${testFundingOffer.id}"]`);
@@ -505,11 +548,77 @@ try {
     await f.page.getByRole("button", { name: "Pay by card" }).click();
     await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
     await f.page.getByRole("button", { name: "Back to family" }).click();
-    await f.page.getByRole("heading", { name: "One year of AMP" }).waitFor();
+    await f.page
+      .getByRole("heading", { name: "Choose your AMP plan" })
+      .waitFor();
     await f.page.getByRole("button", { name: "Back to family" }).click();
     await f.page
-      .getByRole("button", { name: "Get a year of AMP", exact: true })
+      .getByRole("button", { name: "Choose an AMP plan", exact: true })
       .waitFor();
+    assert.deepEqual(f.faults, []);
+    await f.page.close();
+  }
+  for (const [width, height, reimbursement] of [
+    [320, 568, false],
+    [390, 844, false],
+    [1280, 900, false],
+    [320, 568, true],
+    [390, 844, true],
+    [1280, 900, true],
+  ] as const) {
+    const f = await setup(width, height, { monthly: true, reimbursement });
+    f.setStatus("ready");
+    await f.page.route("https://checkout.stripe.com/**", (route) =>
+      route.fulfill({
+        contentType: "text/html",
+        body: "Synthetic hosted checkout",
+      }),
+    );
+    await f.page.goto("http://127.0.0.1:4390");
+    await openAccess(f.page);
+    await f.page.getByRole("button", { name: "Back", exact: true }).click();
+    await f.page
+      .getByRole("button", { name: "Choose an AMP plan", exact: true })
+      .click();
+    await f.page
+      .getByRole("button", { name: "Monthly $14.00 / month", exact: true })
+      .click();
+    await f.page.screenshot({
+      path: `artifacts/purchase-app/monthly-choice-${width}${reimbursement ? "-reimbursement" : ""}.png`,
+      fullPage: true,
+    });
+    if (reimbursement) {
+      await f.page
+        .getByRole("combobox", { name: "Reimbursement state" })
+        .selectOption("AZ");
+      await f.page
+        .getByRole("button", { name: "Continue to card payment", exact: true })
+        .click();
+    } else {
+      await f.page
+        .getByRole("button", { name: "Pay by card", exact: true })
+        .click();
+    }
+    const monthlyButton = f.page.getByRole("button", {
+      name: "Monthly $14.00 / month",
+      exact: true,
+    });
+    await monthlyButton.waitFor();
+    assert.equal(await monthlyButton.getAttribute("aria-pressed"), "true");
+    await f.page
+      .getByText("Renews automatically each month", { exact: false })
+      .waitFor();
+    await visible(f.page, ".annual-primary");
+    await f.page.screenshot({
+      path: `artifacts/purchase-app/monthly-selected-${width}${reimbursement ? "-reimbursement" : ""}.png`,
+      fullPage: true,
+    });
+    await f.page
+      .getByRole("button", { name: "Open sandbox checkout", exact: true })
+      .click();
+    await f.page.waitForURL("https://checkout.stripe.com/fixture");
+    assert.equal(f.checkoutBodies[0]?.interval, "month");
+    assert.equal(f.checkoutBodies[0]?.offerId, "b".repeat(64));
     assert.deepEqual(f.faults, []);
     await f.page.close();
   }

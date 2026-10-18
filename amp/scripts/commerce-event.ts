@@ -1,5 +1,5 @@
 import { readFile, stat } from "node:fs/promises";
-import { Pool } from "pg";
+import { createDatabasePool } from "../src/server/database.js";
 import {
   applyCommerceEvent,
   parseCommerceEvent,
@@ -20,7 +20,7 @@ async function main(): Promise<void> {
   if (!info.isFile() || info.size > 65536)
     throw new Error("Event must be a regular JSON file of at most 64 KiB");
   const event = parseCommerceEvent(JSON.parse(await readFile(args[0], "utf8")));
-  const pool = new Pool({ connectionString: databaseUrl, max: 1 });
+  const pool = createDatabasePool({ connectionString: databaseUrl });
   try {
     const state = await applyCommerceEvent(pool, event);
     const order = state.orders.find((item) => item.id === event.orderId)!;

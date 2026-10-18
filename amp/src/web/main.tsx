@@ -1,3 +1,5 @@
+import { PrintMathText, printMathStyles } from "../content/PrintMathText";
+import { LessonIllustration } from "../content/LessonIllustration";
 import { consumeInitialConsentChallenge } from "./consent-entry";
 import { nativeRuntime } from "./native-runtime";
 import { NativeGate, NativeFamily } from "./NativeGate";
@@ -498,8 +500,12 @@ function App() {
   }
   // The education-fund offer chosen on the "how to pay" screen, if any.
   const [purchaseOffer, setPurchaseOffer] = useState("");
+  const [purchaseInterval, setPurchaseInterval] = useState<"year" | "month">(
+    "year",
+  );
   const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
   function openPurchase(view: "choose" | "annual" | "funded") {
+    setPurchaseInterval("year");
     setPurchaseFromChoice(false);
     navigationEpoch.current++;
     setPurchaseReturn(null);
@@ -557,7 +563,7 @@ function App() {
   async function practiceFromProgress(templateId?: string) {
     await loadBatch(templateId ?? "", true);
   }
-  async function lessonFromProgress(selected: Lesson, skillId: string) {
+  async function openReferenceLesson(selected: Lesson, skillId: string | null) {
     if (!learner) return;
     const navigation = navigationEpoch.current;
     if (
@@ -977,8 +983,9 @@ function App() {
         <ChooseHowToPay
           token={token}
           learnerName={learner?.name ?? null}
-          onCard={() => {
+          onCard={(interval) => {
             openPurchase("annual");
+            setPurchaseInterval(interval);
             setPurchaseFromChoice(true);
           }}
           onFunds={(offerId) => {
@@ -990,6 +997,7 @@ function App() {
         />
       ) : familyOpen && token && purchaseView === "annual" ? (
         <AnnualPurchase
+          preferredInterval={purchaseInterval}
           token={token}
           preferredLearnerId={learnerId ?? undefined}
           identity={accountId ?? token}
@@ -1335,6 +1343,30 @@ function App() {
                   void action(() => loadBatch(templateId, true))
                 }
               />
+              <details className="book-list">
+                <summary>Reference lessons and worksheets</summary>
+                <ul>
+                  {(catalog?.lessons ?? []).map((reference) => (
+                    <li key={reference.id}>
+                      <button
+                        className="text-button"
+                        data-lesson-id={reference.id}
+                        disabled={busy}
+                        onClick={(event) => {
+                          readerTriggerId.current = reference.id;
+                          libraryScroll.current =
+                            event.currentTarget.closest("main")?.scrollTop ?? 0;
+                          void action(() =>
+                            openReferenceLesson(reference, null),
+                          );
+                        }}
+                      >
+                        {reference.title}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
               <section className="book-list" aria-label="Printable books">
                 <h2>Printable books</h2>
                 <ul>
@@ -1360,6 +1392,7 @@ function App() {
           )}
           {readingLesson && (
             <article className="card lesson-reader">
+              <style>{`${printMathStyles}.lesson-reader .worked-example li{padding:5px 0;line-height:1.6}`}</style>
               <div className="card-top">
                 <button
                   className="text-button"
@@ -1382,6 +1415,8 @@ function App() {
                       const trigger = document.querySelector<HTMLButtonElement>(
                         `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
                       );
+                      const details = trigger?.closest("details");
+                      if (details) details.open = true;
                       const library = trigger?.closest("main");
                       if (library) library.scrollTop = libraryScroll.current;
                       trigger?.focus({ preventScroll: true });
@@ -1427,28 +1462,46 @@ function App() {
                 <section key={s.title}>
                   <h3>{s.title}</h3>
                   {s.paragraphs.map((p) => (
-                    <p key={p}>{p}</p>
+                    <p key={p}>
+                      <PrintMathText text={p} />
+                    </p>
                   ))}
+                  {s.illustration && (
+                    <LessonIllustration kind={s.illustration} />
+                  )}
                 </section>
               ))}
               <section className="worked-example">
-                <h3>Let’s try one together</h3>
-                <p>{readingLesson.workedExample.prompt}</p>
+                <h3>A worked example</h3>
+                <p>
+                  <PrintMathText text={readingLesson.workedExample.prompt} />
+                </p>
                 <ol>
                   {readingLesson.workedExample.steps.map((s) => (
-                    <li key={s}>{s}</li>
+                    <li key={s}>
+                      <PrintMathText text={s} />
+                    </li>
                   ))}
                 </ol>
-                <strong>{readingLesson.workedExample.answer}</strong>
+                <strong>
+                  <PrintMathText text={readingLesson.workedExample.answer} />
+                  {readingLesson.workedExample.answerUnit
+                    ? ` ${readingLesson.workedExample.answerUnit}`
+                    : ""}
+                </strong>
               </section>
               <h3>Things to watch for</h3>
               <ul>
                 {readingLesson.pitfalls.map((p) => (
-                  <li key={p}>{p}</li>
+                  <li key={p}>
+                    <PrintMathText text={p} />
+                  </li>
                 ))}
               </ul>
               <h3>For the grown-up nearby</h3>
-              <p>{readingLesson.parentGuide}</p>
+              <p>
+                <PrintMathText text={readingLesson.parentGuide} />
+              </p>
             </article>
           )}
         </main>
@@ -1473,7 +1526,7 @@ function App() {
             void action(() => practiceFromProgress(templateId))
           }
           onLesson={(selected, skillId) =>
-            void action(() => lessonFromProgress(selected, skillId))
+            void action(() => openReferenceLesson(selected, skillId))
           }
           onBook={(id, trigger) =>
             void action(() => openBook(id, false, trigger))
