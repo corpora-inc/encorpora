@@ -238,7 +238,7 @@ export function generatePolynomialProblem(
     explanation = [
       singleTermProduct
         ? "Multiply the coefficients. The product of powers property adds exponents when multiplying powers with the same base, x."
-        : "Use the distributive property. In each term product, multiply coefficients and add exponents on powers of x.",
+        : "Use the distributive property. In each term product, multiply coefficients and add exponents of powers with the same base, x.",
     ];
     for (let k = a.length - 1; k >= 0; k--) {
       if (!a[k]) continue;
@@ -269,8 +269,15 @@ export function generatePolynomialProblem(
       explanation.push(
         `Add the partial products: (${format(partials[0]!)}) + (${format(partials[1]!)}).`,
       );
+      const hasLikeTerms = partials[0]!.some(
+        (coefficient, k) => coefficient !== 0 && partials[1]![k] !== 0,
+      );
       explanation.push(
-        ...combineSteps(partials[0]!, partials[1]!, "partial product"),
+        ...(hasLikeTerms
+          ? combineSteps(partials[0]!, partials[1]!, "partial product")
+          : [
+              "There are no like terms to combine: each nonzero term has a different power of x.",
+            ]),
       );
     }
   } else {
