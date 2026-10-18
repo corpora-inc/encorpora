@@ -98,18 +98,14 @@ function generateCase(
     b = direct ? 0 : nz(r, 12),
     k = transformed ? nz(r, 4) : 1,
     d = transformed ? nz(r, 12) : 0;
-  const draw = r(0, 19),
-    kind =
-      transformed && draw >= 16
-        ? draw < 18
-          ? "constant-interior"
-          : "zero-factor"
-        : draw % 4 === 0
-          ? "negative"
-          : draw % 4 === 1
-            ? "zero"
-            : "positive";
-  const tags = [kind];
+  const draw = r(0, 19);
+  let kind =
+    transformed && draw >= 16
+      ? draw < 18
+        ? "constant-interior"
+        : "zero-factor"
+      : "positive";
+  const tags: string[] = [];
   let c = q(r(1, 12), r(1, 4)),
     e: Q,
     correct: string,
@@ -139,7 +135,7 @@ function generateCase(
     let distances = [c, other];
     let pairs = distances.map((value) => roots(a, b, value));
     let singles: Q[];
-    if (direct) singles = [q(0), q(nz(r, 12), r(1, 4))];
+    if (direct) singles = [q(0)];
     else {
       let b1: number, b2: number;
       do {
@@ -150,11 +146,12 @@ function generateCase(
       } while (b2 === b || b2 === b1);
       singles = [q(-b1, a), q(-b2, a)];
     }
-    // Pick the option layout before choosing a correct numerical candidate.
-    // Both layouts occur with every target sign; the protocol supports four options.
-    if (r(0, 1) === 0) {
-      singles = [singles[direct ? 0 : r(0, 1)]!];
-    } else {
+    // Direct equations have only one possible singleton solution, zero.
+    // Affine equations vary the layout; every offered set is equally likely
+    // to be selected before the prompt is constructed from that set.
+    if (!direct && r(0, 1) === 0) {
+      singles = [singles[r(0, 1)]!];
+    } else if (!direct) {
       const keep = r(0, 1);
       distances = [distances[keep]!];
       pairs = [pairs[keep]!];
@@ -164,18 +161,19 @@ function generateCase(
       ...singles.map((v) => label([v])),
       "No real solutions",
     ];
-    if (kind === "positive") {
-      const chosen = r(0, pairs.length - 1);
+    const chosen = r(0, candidates.length - 1);
+    correct = candidates[chosen]!;
+    if (chosen < pairs.length) {
+      kind = "positive";
       c = distances[chosen]!;
-      correct = label(pairs[chosen]!);
-    } else if (kind === "zero") {
-      const selected = direct ? 0 : r(0, singles.length - 1);
-      b = direct ? 0 : (-singles[selected]!.n * a) / singles[selected]!.d;
+    } else if (chosen < pairs.length + singles.length) {
+      kind = "zero";
+      const singleton = singles[chosen - pairs.length]!;
+      b = direct ? 0 : (-singleton.n * a) / singleton.d;
       c = q(0);
-      correct = label([singles[selected]!]);
     } else {
+      kind = "negative";
       c = neg(c);
-      correct = "No real solutions";
     }
     e = add(mul(q(k), c), q(d));
     if (transformed) {
@@ -225,6 +223,7 @@ function generateCase(
       k < 0 ? "negative-factor" : "positive-factor",
     );
   }
+  tags.push(kind);
   const equation = `${transformed ? factor(k) : ""}|${inner(a, b)}|${transformed ? constant(d) : ""} = ${fmt(e)}`;
   const options = shuffle(candidates, r).map((text, i) => ({
     id: `option-${"abcd"[i]}`,
