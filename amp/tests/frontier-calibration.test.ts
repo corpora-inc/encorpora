@@ -375,7 +375,7 @@ test("reserved review keeps its reason when it is also probe eligible", () => {
   const request = {
     templates: [template],
     skills: [skill],
-    attempts,
+    attempts: [],
     evidence: projectSkillEvidence(attempts),
     count: 1,
     seed: "support-probe",
