@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { accountClient } from "./account-client";
-import { authConfig, signIn } from "./auth";
+import { authConfig, signIn, notifyAccountSessionChanged } from "./auth";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -40,7 +40,11 @@ export function AccountSignIn() {
   const [backup, setBackup] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(
-    params.get("error") ? "That sign-in did not complete. Try again." : "",
+    params.get("error") === "link_failed"
+      ? "That login could not be linked. Sign in again, then try linking it from Security."
+      : params.get("error")
+        ? "That sign-in did not complete. Try again."
+        : "",
   );
   const [notice, setNotice] = useState("");
   useEffect(() => {
@@ -59,7 +63,11 @@ export function AccountSignIn() {
     setError("");
     setNotice("");
   }
-  const done = () => location.replace("/");
+  const returnTo = params.get("return") === "security" ? "/?security" : "/";
+  const done = () => {
+    notifyAccountSessionChanged();
+    location.replace(returnTo);
+  };
   async function run(work: () => Promise<void>) {
     setBusy(true);
     setError("");
@@ -137,8 +145,11 @@ export function AccountSignIn() {
       fail(
         await accountClient.signIn.social({
           provider,
-          callbackURL: "/",
-          errorCallbackURL: "/?sign-in",
+          callbackURL: returnTo,
+          errorCallbackURL:
+            params.get("return") === "security"
+              ? "/?sign-in&return=security"
+              : "/?sign-in",
         }),
       );
     });
@@ -155,6 +166,21 @@ export function AccountSignIn() {
         <p className="account-error" role="alert">
           {error}
         </p>
+      )}
+      {step === "sign-in" && (
+        <button
+          type="button"
+          className="secondary"
+          disabled={busy}
+          onClick={() =>
+            void run(async () => {
+              fail(await accountClient.signIn.passkey());
+              done();
+            })
+          }
+        >
+          Sign in with a passkey
+        </button>
       )}
       {showProviders && providers.length > 0 && (
         <div className="account-providers">

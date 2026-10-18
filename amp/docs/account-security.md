@@ -1,0 +1,18 @@
+# Parent account security
+
+With `AMP_AUTH_MODE=accounts`, **Family → Security** manages a parent's sign-in methods. These controls do not change learner access or billing.
+
+- **Passkeys:** register a device or security key, give it a name, rename or remove it, and use it on the sign-in screen. WebAuthn requires HTTPS, or `localhost` for local development; a loopback IP address is not a valid relying-party domain.
+- **Password:** change the password and revoke other sessions. A parent without a password can request an emailed, single-use setup link. Password sign-in and setup appear only when this deployment enables passwords.
+- **Authenticator:** enter the password, scan the QR code and verify a six-digit code before activation. Save the displayed backup codes privately. Each code works once; replacing the codes invalidates the previous set. Codes are not included in ordinary settings responses or retained in browser storage.
+- **Linked logins:** link or unlink configured Google, Apple, Microsoft or GitHub identities. An unavailable provider is labeled and does not count as a fallback sign-in method. Removing a method signs out other sessions. Matching email addresses do not automatically link identities; linking requires an explicit request from Security.
+
+The authenticator challenge protects **password sign-in**. Passkeys and external providers use their own authentication checks; AMP does not add an authenticator challenge to those flows.
+
+Security changes require a session created within the last five minutes. The **Sign in again** link supports password, passkey and configured provider sign-in and returns to Security. Password changes and authenticator changes also require the current password. A reset link expires after one hour and revokes existing sessions when used.
+
+Security mutations and method removal serialize per parent inside database transactions, with live session ownership, expiry and freshness checked after acquiring the lock. Password rotations and authenticator/passkey writes use the library handlers within that transaction. Explicit OAuth linking binds the callback to its initiating session and rechecks that authority at the final account insertion, including when the callback consumed its state before revocation. The temporary session reference is cleared before storage. Passkey and provider sign-in also recheck the exact verified method during session insertion under the same parent lock, so a removed method cannot finish an in-flight sign-in. These temporary authority fields are never accepted from clients or retained in account/session records.
+
+Method removal is server-authorized. At least one usable password, configured provider or passkey must survive. A password counts only when password sign-in is enabled and the email meets this deployment’s verification requirement. AMP blocks Better Auth's separate raw removal endpoints, which cannot enforce this cross-method invariant. Other accounts' methods cannot be renamed or removed.
+
+`tests/account-security.integration.ts` covers account ownership, origins, stale sessions, password revocation, authenticator verification and recovery, signed OAuth callback fixtures, simultaneous provider/passkey removal, competing password rotations, OAuth callbacks paused during token exchange, provider sign-in paused before session creation, and request-local provider identity isolation. `scripts/verify-accounts-ui.ts` exercises the real server with a virtual WebAuthn authenticator and checks revocation during passkey enrollment and sign-in, device-clock skew, and the interface at 320, 390 and 1280 pixels. Its screenshots mask setup secrets and recovery codes.

@@ -22,7 +22,7 @@ window.sessionReview = {
 };
 export function accessSession(){return pending;}
 export function onSessionChanged(callback){subscribers.add(callback);return ()=>subscribers.delete(callback);}
-export async function signIn(){}
+export async function signIn(){}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.sessionReview.emit(session));}
 export async function signOut(){window.sessionReview.emit(null);}export async function authConfig(){return {mode:"oidc"};}
 `;
 const vite = await createServer({

@@ -1,3 +1,14 @@
+import {
+  rememberVerifiedProvider,
+  sessionMethodAuthority,
+} from "./account-authority";
+import { google, github, microsoft, apple } from "better-auth/social-providers";
+import {
+  accountSecurity,
+  accountLinkSession,
+  serializeSecurityEndpoint,
+  SECURITY_FRESH_SECONDS,
+} from "./account-security";
 import { betterAuth } from "better-auth";
 import { bearer, twoFactor } from "better-auth/plugins";
 import { fromNodeHeaders } from "better-auth/node";
@@ -182,6 +193,43 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     } else throw new Error("Email delivery is not configured");
   }
   const { origin, hostname } = new URL(config.baseURL);
+  const twoFactorPlugin = twoFactor({
+    issuer: "AMP",
+    schema: { twoFactor: { modelName: "amp_auth_two_factors" } },
+  });
+  const protectedTwoFactor = new Set([
+    "/two-factor/enable",
+    "/two-factor/disable",
+    "/two-factor/generate-backup-codes",
+    "/two-factor/verify-totp",
+  ]);
+  for (const [key, endpoint] of Object.entries(twoFactorPlugin.endpoints)) {
+    if (protectedTwoFactor.has(endpoint.path))
+      Object.assign(twoFactorPlugin.endpoints, {
+        [key]: serializeSecurityEndpoint(endpoint),
+      });
+  }
+  const passkeyPlugin = passkey({
+    rpID: hostname,
+    rpName: "AMP",
+    origin,
+    schema: { passkey: { modelName: "amp_auth_passkeys" } },
+  });
+  passkeyPlugin.endpoints.verifyPasskeyRegistration = serializeSecurityEndpoint(
+    passkeyPlugin.endpoints.verifyPasskeyRegistration,
+  );
+  passkeyPlugin.endpoints.updatePasskey = serializeSecurityEndpoint(
+    passkeyPlugin.endpoints.updatePasskey,
+  );
+  const appleOptions = config.apple
+    ? {
+        clientId: config.apple.clientId,
+        clientSecret: await appleClientSecret(config.apple),
+        ...(config.apple.bundleId && {
+          appBundleIdentifier: config.apple.bundleId,
+        }),
+      }
+    : undefined;
   const auth = betterAuth({
     appName: "AMP",
     baseURL: config.baseURL,
@@ -193,13 +241,48 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       ...(config.apple ? ["https://appleid.apple.com"] : []),
     ],
     user: { modelName: "amp_auth_users" },
-    session: { modelName: "amp_auth_sessions" },
+    session: {
+      modelName: "amp_auth_sessions",
+      freshAge: SECURITY_FRESH_SECONDS,
+      additionalFields: {
+        ampMethodKind: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+        ampMethodId: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+        ampMethodProvider: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+      },
+    },
     verification: { modelName: "amp_auth_verifications" },
     account: {
       modelName: "amp_auth_accounts",
-      // Same-email sign-ins link only when the provider verified the email;
-      // a signed-in parent may link a login with a different email.
-      accountLinking: { enabled: true, allowDifferentEmails: true },
+      additionalFields: {
+        ampLinkSessionId: {
+          type: "string",
+          required: false,
+          input: false,
+          returned: false,
+        },
+      },
+      // Existing parents link identities explicitly from fresh Security sessions.
+      // A removed identity cannot reconnect through a matching provider email.
+      accountLinking: {
+        enabled: true,
+        allowDifferentEmails: true,
+        disableImplicitLinking: true,
+      },
     },
     emailAndPassword: {
       enabled: config.passwords,
@@ -215,6 +298,22 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         ),
     },
     databaseHooks: {
+      session: {
+        create: {
+          before: async (session, context) => ({
+            data: { ...session, ...(await sessionMethodAuthority(context)) },
+          }),
+        },
+      },
+      account: {
+        create: {
+          before: async (account, context) => {
+            const sessionId = await accountLinkSession(account.userId, context);
+            if (sessionId)
+              return { data: { ...account, ampLinkSessionId: sessionId } };
+          },
+        },
+      },
       user: {
         create: {
           before: async (user, context) => {
@@ -237,31 +336,36 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         ),
     },
     socialProviders: {
-      ...(config.google && { google: config.google }),
-      ...(config.github && { github: config.github }),
-      ...(config.microsoft && { microsoft: config.microsoft }),
-      ...(config.apple && {
+      ...(config.google && {
+        google: {
+          ...config.google,
+          getUserInfo: rememberVerifiedProvider(google(config.google)),
+        },
+      }),
+      ...(config.github && {
+        github: {
+          ...config.github,
+          getUserInfo: rememberVerifiedProvider(github(config.github)),
+        },
+      }),
+      ...(config.microsoft && {
+        microsoft: {
+          ...config.microsoft,
+          getUserInfo: rememberVerifiedProvider(microsoft(config.microsoft)),
+        },
+      }),
+      ...(appleOptions && {
         apple: {
-          clientId: config.apple.clientId,
-          clientSecret: await appleClientSecret(config.apple),
-          ...(config.apple.bundleId && {
-            appBundleIdentifier: config.apple.bundleId,
-          }),
+          ...appleOptions,
+          getUserInfo: rememberVerifiedProvider(apple(appleOptions)),
         },
       }),
     },
     plugins: [
+      accountSecurity(pool, config),
       bearer(),
-      twoFactor({
-        issuer: "AMP",
-        schema: { twoFactor: { modelName: "amp_auth_two_factors" } },
-      }),
-      passkey({
-        rpID: hostname,
-        rpName: "AMP",
-        origin,
-        schema: { passkey: { modelName: "amp_auth_passkeys" } },
-      }),
+      twoFactorPlugin,
+      passkeyPlugin,
     ],
     rateLimit: { enabled: true, storage: "memory" },
     // Internal failures reach clients as a generic 500; log the cause.

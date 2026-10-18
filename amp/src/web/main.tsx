@@ -156,7 +156,7 @@ function App() {
     "choose" | "annual" | "funded" | null
   >(null);
   const [familySection, setFamilySection] = useState<
-    "learners" | "access" | "privacy"
+    "learners" | "access" | "privacy" | "security"
   >("learners");
   const [consentReturn, setConsentReturn] = useState(false);
   const [purchaseFocus, setPurchaseFocus] = useState<
@@ -247,7 +247,13 @@ function App() {
     }
     setPurchaseView(null);
     setPurchaseReturn(null);
-    setFamilySection("learners");
+    const openingSecurity =
+      !nativeRuntime &&
+      accountRef.current === null &&
+      identity?.startsWith("amp|") &&
+      new URLSearchParams(location.search).has("security");
+    setFamilySection(openingSecurity ? "security" : "learners");
+    if (openingSecurity) history.replaceState({}, "", "/");
     setFamilyLearnerId("");
     setPurchaseFocus(undefined);
     accountRef.current = identity;
@@ -255,7 +261,7 @@ function App() {
     authEpoch.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    setFamilyOpen(!!openingConsent);
+    setFamilyOpen(!!openingConsent || !!openingSecurity);
     setFamilySummary(null);
     setBusy(false);
     setName("");
@@ -1020,6 +1026,7 @@ function App() {
         />
       ) : familyOpen && token ? (
         <FamilyCenter
+          accountsEnabled={authMode === "accounts"}
           onConsentEnrollment={() => openConsent()}
           returnToConsent={consentReturn}
           selectedLearnerId={familyLearnerId || learnerId || ""}
@@ -1056,7 +1063,7 @@ function App() {
             void action(() => signIn("create"));
           }}
         />
-      ) : !token && signingIn && !nativeRuntime ? (
+      ) : signingIn && !nativeRuntime ? (
         <AccountSignIn />
       ) : !token ? (
         <section className="card welcome">

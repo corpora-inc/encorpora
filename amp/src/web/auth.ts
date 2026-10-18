@@ -115,12 +115,38 @@ export async function signOut() {
   if (manager) await manager.signoutRedirect();
 }
 
+/** Notify this tab and other tabs without putting credentials in messages/storage. */
+export function notifyAccountSessionChanged() {
+  window.dispatchEvent(new Event("amp-account-session-changed"));
+  if ("BroadcastChannel" in window) {
+    const channel = new BroadcastChannel("amp-account-session");
+    channel.postMessage("changed");
+    channel.close();
+  }
+}
+
 export function onSessionChanged(
   update: (session: AuthSession | null) => void,
   error?: (message: string) => void,
 ) {
   if (nativeRuntime) return nativeSessionEvents(update, error);
-  if (!manager) return () => {};
+  if (!manager) {
+    const changed = () => {
+      void accessSession()
+        .then(update)
+        .catch((failure) => error?.(String(failure)));
+    };
+    const channel =
+      "BroadcastChannel" in window
+        ? new BroadcastChannel("amp-account-session")
+        : null;
+    if (channel) channel.onmessage = changed;
+    window.addEventListener("amp-account-session-changed", changed);
+    return () => {
+      window.removeEventListener("amp-account-session-changed", changed);
+      channel?.close();
+    };
+  }
   const loaded = (user: User) => update(session(user));
   const unloaded = () => update(null);
   manager.events.addUserLoaded(loaded);
