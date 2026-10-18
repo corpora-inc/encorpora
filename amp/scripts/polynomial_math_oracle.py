@@ -95,59 +95,96 @@ def choice_coefficients(options):
     return [value + (0,) * (4-len(value)) for value in coefficients]
 
 
-def known_choice_shortcut(options):
+def known_choice_shortcut(values):
     """Reproduce the reviewed option-only attack, including its last-match ordering."""
-    values = choice_coefficients(options)
-
     def near(i, j):
         changed = [k for k in range(4) if values[i][k] != values[j][k]]
         return changed[0] if len(changed) == 1 else None
 
     guess = None
-    # Prefer the middle of a +/-1 triple differing at just one coefficient.
-    for i in range(len(options)):
+    for i in range(len(values)):
         for k in range(4):
-            differences = {values[j][k]-values[i][k] for j in range(len(options))
+            differences = {values[j][k]-values[i][k] for j in range(len(values))
                            if i != j and near(i, j) == k}
             if {-1, 1} <= differences:
-                guess = options[i]['id']
-    # Otherwise choose the lower member of a pair differing by one coefficient unit.
+                guess = i
     if guess is None:
-        for i in range(len(options)):
-            for j in range(len(options)):
+        for i in range(len(values)):
+            for j in range(len(values)):
                 k = near(i, j) if i != j else None
                 if k is not None and values[j][k]-values[i][k] == 1:
-                    guess = options[i]['id']
+                    guess = i
     return guess
 
 
-def coefficient_agreement_shortcut(options):
-    """Guess only when one option uniquely maximizes coefficient agreements."""
-    values = choice_coefficients(options)
+def unique_extreme(scores, extreme):
+    target = extreme(scores)
+    winners = [i for i, score in enumerate(scores) if score == target]
+    return winners[0] if len(winners) == 1 else None
+
+
+def coefficient_agreement_shortcut(values):
     scores = [sum(a == b for j, other in enumerate(values) if i != j
                   for a, b in zip(value, other)) for i, value in enumerate(values)]
-    winners = [i for i, score in enumerate(scores) if score == max(scores)]
-    return options[winners[0]]['id'] if len(winners) == 1 else None
+    return unique_extreme(scores, max)
 
 
 CHOICE_SHORTCUTS = {'unit-coefficient-neighbors': known_choice_shortcut,
                    'coefficient-agreement': coefficient_agreement_shortcut}
+for metric_name, metric in {
+    'signed-sum': sum,
+    'l1': lambda value: sum(abs(a) for a in value),
+    'linf': lambda value: max(abs(a) for a in value),
+    'term-count': lambda value: sum(a != 0 for a in value),
+}.items():
+    for direction, extreme in [('min', min), ('max', max)]:
+        CHOICE_SHORTCUTS[f'{metric_name}-{direction}'] = (
+            lambda values, metric=metric, extreme=extreme:
+                unique_extreme([metric(value) for value in values], extreme))
+
+
+def shortcut_evidence(counts, label):
+    """Compare this rule's predictions with their individual uniform-choice baselines.
+
+    The one-sided Hoeffding bound assumes independent uniform keys conditional on
+    public options. It detects these named rules, not every possible shortcut.
+    """
+    import math
+    n, correct, chance = counts['applications'], counts['correct'], counts['chanceTwelfths']
+    accuracy = correct/n if n else None
+    mean_chance = chance/(12*n) if n else None
+    excess = (12*correct-chance)/(12*n) if n else 0
+    bound = math.exp(-2*n*max(0, excess)**2) if n else None
+    # Compare excess > 3/20 exactly; avoid floating error at the 0.15 boundary.
+    material_excess = 60*correct > 5*chance + 9*n
+    require(not (n >= 32 and material_excess and bound < 0.001),
+            f'Known choice-only shortcut regression: {label}, {correct}/{n} correct; '
+            f'chance={mean_chance}, Hoeffding upper bound={bound}')
+    status = ('no-applications' if not n else 'insufficient-evidence'
+              if n < 32 or (material_excess and bound >= 0.001) else 'threshold-not-exceeded')
+    return {key: value for key, value in counts.items() if key != 'chanceTwelfths'} | {
+        'meanChance': mean_chance, 'accuracy': accuracy, 'hoeffdingUpperBound': bound, 'status': status,
+    }
 
 
 class PolynomialShortcutReview:
-    """Regression checks for known shortcuts, not general leakage certification."""
+    """Regression checks for named shortcuts, not general leakage certification."""
     def __init__(self):
-        self.counts = {name: {template: {'cases': 0, 'applications': 0, 'correct': 0}
+        self.counts = {name: {template: {'cases': 0, 'applications': 0, 'correct': 0, 'chanceTwelfths': 0}
                              for template in sorted(POLYNOMIAL)} for name in CHOICE_SHORTCUTS}
 
     def record(self, public, independent_answer):
+        options = public['response']['options']
+        values = choice_coefficients(options)
         for name, predict in CHOICE_SHORTCUTS.items():
             counts = self.counts[name][public['templateId']]
-            guess = predict(public['response']['options'])
+            guess = predict(values)
             counts['cases'] += 1
             if guess is not None:
                 counts['applications'] += 1
-                counts['correct'] += guess == independent_answer
+                counts['correct'] += options[guess]['id'] == independent_answer
+                # Two, three, and four choices have exact baselines in twelfths.
+                counts['chanceTwelfths'] += 12//len(options)
 
     def finish(self, expected_per_family):
         require(type(expected_per_family) is int and expected_per_family >= 256,
@@ -158,87 +195,107 @@ class PolynomialShortcutReview:
             for template, counts in families.items():
                 require(counts['cases'] == expected_per_family,
                         f'Incomplete shortcut review coverage for {template}')
-                applications, correct = counts['applications'], counts['correct']
-                enough = applications >= 32
-                require(not enough or 4*correct <= 3*applications,
-                        f'Known choice-only shortcut regression: {name}/{template}, '
-                        f'{correct}/{applications} correct predictions exceeds 75%')
-                report[name][template] = {**counts, 'status': 'threshold-not-exceeded' if enough
-                                         else 'insufficient-applications'}
+                report[name][template] = shortcut_evidence(counts, f'{name}/{template}')
         return report
 
 
 def review_shortcut_fixtures():
-    """Prove exploit rejection, mixed-error acceptance, and explicit evidence limits."""
+    """Handwritten attack predictions, calibrated null corpora, and evidence limits."""
     import random
 
-    prompts = {
-        'polynomial-addition': 'Simplify (x²) + (x).',
-        'polynomial-subtraction': 'Simplify (x²) − (−x).',
-        'polynomial-multiplication': 'Expand and simplify (x)(x + 1).',
-    }
-    def given(template, pattern):
-        labels = {
-            'triple': ['x² + x − 1', 'x² + x', 'x² + x + 1', '2x² + 8x + 7'],
-            'pair': ['x² + x', 'x² + x + 1', '5x² + 9x + 12', '2x² + 8x + 7'],
-            'wrong': ['x² + x', 'x² + x + 1', 'x² + x + 2', '2x² + 8x + 7'],
-            'similarity': ['x² + x', 'x² + x + 2', 'x² + 3x', '3x² + x'],
-            'similarity-wrong': ['x² + x', 'x² + x + 2', 'x² + 3x + 2', '3x² + x + 2'],
-            'rectangle': ['x² + x', 'x² + x + 2', 'x² + 3x', 'x² + 3x + 2'],
-            'absent': ['x² + x', '2x² + 2x', '3x² + 3x', '4x² + 4x'],
-        }[pattern]
-        return {'templateId': template, 'prompt': prompts[template],
-                'response': {'kind': 'choice', 'options': [
-                    {'id': str(index), 'label': label} for index, label in enumerate(labels)]}}
+    def values(labels):
+        return choice_coefficients([{'label': label} for label in labels])
 
-    def corpus(patterns):
-        review = PolynomialShortcutReview()
-        for template in sorted(POLYNOMIAL):
-            for pattern in patterns[template]:
-                public = given(template, pattern)
-                review.record(public, solve_polynomial(public))
-        return review
+    triples = ['x² + x − 1', 'x² + x', 'x² + x + 1', '2x² + 8x + 7']
+    pairs = ['x² + x', 'x² + x + 1', '5x² + 9x + 12', '2x² + 8x + 7']
+    similarity = ['x² + x', 'x² + x + 2', 'x² + 3x', '3x² + x']
+    require(known_choice_shortcut(values(triples)) == 1, 'Missed middle-of-triple attack')
+    require(known_choice_shortcut(values(pairs)) == 0, 'Missed lower-neighbor attack')
+    require(coefficient_agreement_shortcut(values(similarity)) == 0, 'Missed agreement attack')
+    measured = values(['x³ − 2x² + 3x − 5', 'x²', '2x + 1'])
+    expected = {'signed-sum-min': 0, 'signed-sum-max': 2, 'l1-min': 1, 'l1-max': 0,
+                'linf-min': 1, 'linf-max': 0, 'term-count-min': 1, 'term-count-max': 0}
+    for name, index in expected.items():
+        require(CHOICE_SHORTCUTS[name](measured) == index, f'Wrong extremum prediction: {name}')
+    tied = values(['x', '−x'])
+    require(all(CHOICE_SHORTCUTS[name](tied) is None for name in expected if not name.startswith('signed')),
+            'Tied extrema must abstain')
+
+    def counts(n, correct, choices=4):
+        return {'cases': max(256, n), 'applications': n, 'correct': correct,
+                'chanceTwelfths': n*(12//choices)}
 
     rejected = 0
-    for template in sorted(POLYNOMIAL):
-        for pattern in ('triple', 'pair', 'similarity'):
-            patterns = {name: ['absent']*256 for name in POLYNOMIAL}
-            patterns[template] = [pattern]*32 + ['absent']*224
-            try:
-                corpus(patterns).finish(256)
-            except ValueError as error:
-                algorithm = 'coefficient-agreement' if pattern == 'similarity' else 'unit-coefficient-neighbors'
-                require(f'{algorithm}/{template}' in str(error), 'Wrong shortcut rejected the fixture')
-                rejected += 1
-            else:
-                raise ValueError(f'Known shortcut was not rejected: {pattern}')
-    for algorithm, correct, wrong in [
-        ('unit-coefficient-neighbors', 'triple', 'wrong'),
-        ('coefficient-agreement', 'similarity', 'similarity-wrong'),
-    ]:
-        mixed = [correct]*64 + [wrong]*192
-        random.Random(817).shuffle(mixed)
-        report = corpus({name: mixed for name in POLYNOMIAL}).finish(256)[algorithm]
-        require(all(item['correct'] == 64 and item['applications'] == 256
-                    and item['status'] == 'threshold-not-exceeded' for item in report.values()),
-                'Mixed errors must not trigger the known shortcut threshold')
-        # Exactly 75% is allowed; the regression threshold is strictly greater.
-        corpus({name: [correct]*24 + [wrong]*8 + ['absent']*224
-                for name in POLYNOMIAL}).finish(256)
-        report = corpus({name: [correct]*31 + ['absent']*225 for name in POLYNOMIAL}).finish(256)[algorithm]
-        require(all(item['status'] == 'insufficient-applications' for item in report.values()),
-                'Few shortcut applications cannot certify the accuracy threshold')
-    report = corpus({name: ['rectangle']*256 for name in POLYNOMIAL}).finish(256)
-    require(all(item['applications'] == 0 for families in report.values() for item in families.values()),
-            'Balanced rectangle must give neither shortcut a unique prediction')
-    for count, expected in [(31, 31), (255, 256)]:
+    for n, correct, choices in [(32, 32, 4), (32, 32, 3), (32, 32, 2),
+                                (10000, 4500, 4), (10000, 4700, 4), (1000, 401, 4)]:
         try:
-            corpus({name: ['triple']*count for name in POLYNOMIAL}).finish(expected)
+            shortcut_evidence(counts(n, correct, choices), 'handwritten-leak')
         except ValueError:
             rejected += 1
         else:
-            raise ValueError('Insufficient corpus coverage was accepted')
-    return {'rejectedShortcutCorpora': rejected, 'acceptedShortcutCorpora': 7}
+            raise ValueError('Known excess-over-chance leak was accepted')
+    for choices in (2, 3, 4):
+        evidence = shortcut_evidence(counts(1200, 1200//choices, choices), 'uniform-key')
+        require(evidence['accuracy'] == evidence['meanChance'] and evidence['hoeffdingUpperBound'] == 1,
+                'Chance baseline must depend on option count')
+    require(shortcut_evidence(counts(1000, 400), 'exact-margin')['status'] == 'threshold-not-exceeded',
+            'Exact 0.15 excess must not exceed the threshold')
+    require(shortcut_evidence(counts(32, 17), 'weak-bound')['status'] == 'insufficient-evidence',
+            'Applications alone do not establish the requested Hoeffding bound')
+    require(shortcut_evidence(counts(31, 31), 'few-predictions')['status'] == 'insufficient-evidence',
+            'Fewer than 32 predictions cannot establish the gate threshold')
+    require(shortcut_evidence(counts(0, 0), 'abstention')['status'] == 'no-applications',
+            'No predictions must be reported honestly')
+
+    def public(template, labels, k=1):
+        prompts = {'polynomial-addition': f'Simplify (x²) + ({k}x).',
+                   'polynomial-subtraction': f'Simplify (x²) − (−{k}x).',
+                   'polynomial-multiplication': f'Expand and simplify (x)(x + {k}).'}
+        return {'templateId': template, 'prompt': prompts[template], 'response': {'kind': 'choice',
+                'options': [{'id': str(i), 'label': label} for i, label in enumerate(labels)]}}
+
+    # Reproduce each old attack in a complete public-prompt corpus.
+    for labels, algorithm in [(triples, 'unit-coefficient-neighbors'),
+                              (pairs, 'unit-coefficient-neighbors'), (similarity, 'coefficient-agreement')]:
+        review = PolynomialShortcutReview()
+        for template in sorted(POLYNOMIAL):
+            given = public(template, labels)
+            for _ in range(256):
+                review.record(given, solve_polynomial(given))
+        try:
+            review.finish(256)
+        except ValueError as error:
+            require(algorithm in str(error), 'Wrong rule rejected the attack corpus')
+            rejected += 1
+        else:
+            raise ValueError('Old option-only attack corpus was accepted')
+
+    # For every option set, ask each valid associated problem equally often.
+    # Shuffle order independently; exercise each fixed option count and mixed counts.
+    for sizes in [(2,), (3,), (4,), (2, 3, 4)]:
+        schedule = [(size, k) for size in sizes for k in range(1, size+1)]*144
+        random.Random(817).shuffle(schedule)
+        review = PolynomialShortcutReview()
+        for template in sorted(POLYNOMIAL):
+            for size, k in schedule:
+                given = public(template, [f'x² + {i}x' for i in range(1, size+1)], k)
+                review.record(given, solve_polynomial(given))
+        report = review.finish(len(schedule))
+        for families in report.values():
+            for evidence in families.values():
+                if evidence['applications']:
+                    require(abs(evidence['accuracy']-evidence['meanChance']) < 1e-12,
+                            'Uniform keys must calibrate each applying rule to chance')
+                else:
+                    require(evidence['status'] == 'no-applications', 'Missing abstention report')
+    for declared in (31, 256):
+        try:
+            PolynomialShortcutReview().finish(declared)
+        except ValueError:
+            rejected += 1
+        else:
+            raise ValueError('Small or incomplete corpus was accepted')
+    return {'rejectedShortcutFixtures': rejected, 'calibratedShortcutCorpora': 4}
 
 
 def review_polynomial_fixtures():

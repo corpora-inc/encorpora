@@ -98,6 +98,103 @@ function random(id: string, seed: string) {
   };
 }
 
+type Pair = { left: Polynomial; right: Polynomial; result: Polynomial };
+type Random = (lo: number, hi: number) => number;
+function shuffle<T>(values: T[], r: Random): T[] {
+  for (let i = values.length - 1; i > 0; i--) {
+    const j = r(0, i);
+    [values[i], values[j]] = [values[j]!, values[i]!];
+  }
+  return values;
+}
+function problemGroup(templateId: string, r: Random): Pair[] {
+  const nz = (max: number) => r(1, max) * (r(0, 1) ? 1 : -1);
+  const make = (degree: number, max: number): Polynomial =>
+    Array.from({ length: degree + 1 }, (_, k) =>
+      k === degree ? nz(max) : r(-max, max),
+    );
+  const multiply = templateId === "polynomial-multiplication";
+  const subtract = templateId === "polynomial-subtraction";
+  const left = make(multiply ? 1 : r(1, 3), multiply ? 4 : 8);
+  let right = make(multiply ? r(1, 2) : r(1, 3), multiply ? 4 : 8);
+  const variant = r(0, 5);
+  if (multiply && right.length === 2 && variant === 0) right = [...left];
+  if (multiply && right.length === 2 && variant === 1)
+    right = [-left[0]!, left[1]!];
+  if (!multiply && variant === 0) right = left.map((c) => (subtract ? c : -c));
+  if (!multiply && variant === 1) {
+    right = [...left];
+    right[0]! += nz(3);
+  }
+  const pair = (a: Polynomial, b: Polynomial): Pair => ({
+    left: a,
+    right: b,
+    result: multiply ? product(a, b) : combine(a, b, subtract ? -1 : 1),
+  });
+
+  if (multiply && right.length === 2) {
+    // Common leading and constant coefficients require the learner to calculate
+    // cross products. Include squares, conjugate factors, and missing constants.
+    const leading = left[1]! * right[1]!,
+      constant = left[0]! * right[0]!;
+    const byMiddle = new Map<number, Pair[]>();
+    for (let a = -4; a <= 4; a++) {
+      if (!a || leading % a !== 0) continue;
+      const c = leading / a;
+      if (!c || Math.abs(c) > 4) continue;
+      for (let b = -8; b <= 8; b++) {
+        const constants =
+          b === 0
+            ? constant === 0
+              ? Array.from({ length: 17 }, (_, i) => i - 8)
+              : []
+            : constant % b === 0 && Math.abs(constant / b) <= 8
+              ? [constant / b]
+              : [];
+        for (const d of constants) {
+          const item = pair([b, a], [d, c]),
+            middle = item.result[1]!;
+          const choices = byMiddle.get(middle) ?? [];
+          choices.push(item);
+          byMiddle.set(middle, choices);
+        }
+      }
+    }
+    if (byMiddle.size >= 2)
+      return shuffle(
+        [...byMiddle.values()].map(
+          (choices) => choices[r(0, choices.length - 1)]!,
+        ),
+        r,
+      ).slice(0, 4);
+  }
+  // Vary two coefficients before choosing which question to ask. In a cubic
+  // product, keep the leading coefficient fixed and vary the other factor's
+  // linear term and constant, so the outer terms cannot determine the answer.
+  const length = Math.max(left.length, right.length);
+  const padded = Array.from({ length }, (_, k) => right[k] ?? 0);
+  const powers = multiply
+    ? [0, 1]
+    : shuffle(
+        Array.from({ length }, (_, k) => k),
+        r,
+      ).slice(0, 2);
+  const changes = powers.map((k) => {
+    let delta: number;
+    do {
+      delta = nz(5);
+    } while (k > 0 && padded[k] !== 0 && padded[k]! + delta === 0);
+    return { k, delta };
+  });
+  return Array.from({ length: 4 }, (_, mask) => {
+    const b = [...padded];
+    changes.forEach(({ k, delta }, i) => {
+      if (mask & (1 << i)) b[k]! += delta;
+    });
+    return pair(left, b);
+  });
+}
+
 export function generatePolynomialProblem(
   templateId: string,
   seed: string,
@@ -107,27 +204,15 @@ export function generatePolynomialProblem(
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
-  const nz = (max: number) => r(1, max) * (r(0, 1) ? 1 : -1);
-  const make = (degree: number, max: number): Polynomial =>
-    Array.from({ length: degree + 1 }, (_, k) =>
-      k === degree ? nz(max) : r(-max, max),
-    );
+  // The group and all answer values exist before the requested problem is
+  // selected uniformly. No statistic of the options alone privileges the key.
+  const group = problemGroup(templateId, r);
+  const selected = group[r(0, group.length - 1)]!;
+  const { left: a, right: b, result: correct } = selected;
   const multiply = templateId === "polynomial-multiplication";
   const subtract = templateId === "polynomial-subtraction";
-  const a = make(multiply ? 1 : r(1, 3), multiply ? 4 : 8);
-  let b = make(multiply ? r(1, 2) : r(1, 3), multiply ? 4 : 8);
-  const variant = r(0, 5);
-  if (multiply && variant === 0) b = [...a];
-  if (multiply && variant === 1) b = [-a[0]!, a[1]!];
-  if (!multiply && variant === 0) b = a.map((c) => (subtract ? c : -c));
-  if (!multiply && variant === 1) {
-    b = [...a];
-    b[0]! += nz(3);
-  }
-  const correct = multiply ? product(a, b) : combine(a, b, subtract ? -1 : 1);
   const label = format(correct);
   let prompt: string, hint: string, explanation: string[];
-  const candidates: { value: Polynomial; feedback: string }[] = [];
   if (multiply) {
     prompt = `Expand and simplify (${format(a)})(${format(b)}).`;
     hint =
@@ -140,7 +225,6 @@ export function generatePolynomialProblem(
         ? "Multiply the coefficients and add the exponents on x."
         : "Use the distributive property. In each term product, multiply coefficients and add exponents on powers of x.",
     ];
-
     for (let k = a.length - 1; k >= 0; k--) {
       if (!a[k]) continue;
       const term = Array<number>(k + 1).fill(0);
@@ -157,21 +241,6 @@ export function generatePolynomialProblem(
         termProducts.push(
           `(${format(term)})(${format(other)}) = ${format(contribution)}`,
         );
-        for (const multiplier of [1, 2]) {
-          const wrong = combine(correct, contribution, -multiplier);
-          candidates.push({
-            value: wrong,
-            feedback: `${multiplier === 1 ? "Include" : "Check the sign of"} the product (${format(term)})(${format(other)}). Every pair of terms contributes to the result.`,
-          });
-        }
-        if (k + j > 0) {
-          const wrong = combine(correct, contribution, -1);
-          wrong[k + j - 1]! += contribution[k + j]!;
-          candidates.push({
-            value: wrong,
-            feedback: `When multiplying (${format(term)})(${format(other)}), add the exponents on x. Do not lower the resulting power.`,
-          });
-        }
       }
       explanation.push(
         singleTermProduct
@@ -189,16 +258,6 @@ export function generatePolynomialProblem(
         ...combineSteps(partials[0]!, partials[1]!, "partial product"),
       );
     }
-    candidates.push({
-      value: partials[0]!,
-      feedback:
-        "Distribute every nonzero term of the first factor, then add the partial products.",
-    });
-    candidates.push({
-      value: combine(a, b),
-      feedback:
-        "These factors are multiplied. Distribute each term; adding corresponding coefficients computes a sum.",
-    });
   } else {
     prompt = `Simplify (${format(a)}) ${subtract ? "−" : "+"} (${format(b)}).`;
     hint = subtract
@@ -215,142 +274,33 @@ export function generatePolynomialProblem(
         `Rewrite the difference as a sum: (${format(a)}) + (${format(signedB)}).`,
       );
     explanation.push(...combineSteps(a, signedB));
-    candidates.push({
-      value: combine(a, b, subtract ? 1 : -1),
-      feedback: subtract
-        ? "The subtraction sign changes every sign in the second polynomial before like terms are combined."
-        : "The polynomials are added. Keep each coefficient's sign and add coefficients of like terms.",
-    });
-    if (subtract) {
-      const partialSign = [...b];
-      partialSign[partialSign.length - 1]! *= -1;
-      candidates.push({
-        value: combine(a, partialSign),
-        feedback:
-          "A minus sign before parentheses negates every term inside, not just the leading term.",
-      });
-    }
   }
   explanation.push(
     `${label === "0" ? "All terms cancel, so the" : "The"} ${multiply ? "product" : subtract ? "difference" : "sum"} is ${label}.`,
   );
-  if (!multiply) {
-    const signedB = b.map((c) => (subtract ? -c : c));
-    for (let k = 0; k < correct.length; k++) {
-      const c = a[k] ?? 0,
-        d = signedB[k] ?? 0;
-      const location = k
-        ? `the coefficient of ${power(k)}`
-        : "the constant term";
-      for (const term of [c, d]) {
-        if (!term) continue;
-        for (const multiplier of [1, 2]) {
-          const wrong = [...correct];
-          wrong[k]! -= multiplier * term;
-          candidates.push({
-            value: wrong,
-            feedback: `Check ${location}. ${multiplier === 1 ? "Include each given term when combining like terms." : subtract ? "Keep the first polynomial's signs and negate every term of the second polynomial before combining like terms." : "Keep each term's sign when combining like terms."}`,
-          });
-        }
-      }
-      if (c && d) {
-        const wrong = [...correct];
-        wrong[k] = c * d;
-        candidates.push({
-          value: wrong,
-          feedback: `Add the signed coefficients of like terms; multiplying them does not give ${location} in the sum.`,
-        });
-      }
-      if (correct[k] && k > 0) {
-        const wrong = [...correct];
-        wrong[k - 1]! += wrong[k]!;
-        wrong[k] = 0;
-        candidates.push({
-          value: wrong,
-          feedback:
-            "Only terms with the same power of x are like terms. Combining coefficients must not change their power.",
-        });
-      }
-    }
-  }
-  // Balance the choices across two independent coefficient decisions. Each
-  // value occurs equally often, so coefficient agreement cannot identify the key.
-  const active = new Set<number>();
-  if (multiply)
-    a.forEach((c, i) =>
-      b.forEach((d, j) => {
-        if (c && d) active.add(i + j);
-      }),
-    );
-  else for (let k = 0; k < correct.length; k++) if (a[k] || b[k]) active.add(k);
-  const powers = [...active];
-  for (let i = powers.length - 1; i > 0; i--) {
-    const j = r(0, i);
-    [powers[i], powers[j]] = [powers[j]!, powers[i]!];
-  }
-  const options: { label: string; feedback: string }[] = [];
-  const checkCoefficient = (k: number) =>
-    `${k ? `Check the coefficient of ${power(k)}` : "Check the constant term"}. ${multiply ? "Multiply the signed coefficients and include each term product." : "Combine the signed coefficients using the indicated operation."}`;
-  if (powers.length === 1) {
-    // A monomial has one coefficient decision. Randomize the correct value's
-    // rank as well as its displayed position, avoiding a fixed middle answer.
-    const k = powers[0]!,
-      rank = r(0, 3),
-      step = r(2, 7);
-    for (let i = 0; i < 4; i++) {
-      const value = [...correct];
-      value[k]! += (i - rank) * step;
-      options.push({
-        label: format(value),
-        feedback: i === rank ? "" : checkCoefficient(k),
-      });
-    }
-  } else {
-    const errors = powers.slice(0, 2).map((k) => {
-      const choices = new Map<number, string>();
-      for (const candidate of candidates) {
-        const difference = correct.map((c, j) => (candidate.value[j] ?? 0) - c);
-        if (
-          difference[k] &&
-          difference.every((delta, j) => j === k || delta === 0)
-        )
-          choices.set(difference[k]!, candidate.feedback);
-      }
-      const entries = [...choices];
-      const [delta, feedback] = entries.length
-        ? entries[r(0, entries.length - 1)]!
-        : [nz(7), checkCoefficient(k)];
-      return { k, delta, feedback };
-    });
-    for (let mask = 0; mask < 4; mask++) {
-      const value = [...correct],
-        feedback: string[] = [];
-      errors.forEach((error, i) => {
-        if (mask & (1 << i)) {
-          value[error.k]! += error.delta;
-          feedback.push(error.feedback);
-        }
-      });
-      options.push({
-        label: format(value),
-        feedback: [...new Set(feedback)].join(" "),
-      });
-    }
-  }
-  for (let i = options.length - 1; i > 0; i--) {
-    const j = r(0, i);
-    [options[i], options[j]] = [options[j]!, options[i]!];
-  }
   let answer = "";
   const choiceFeedback: Record<string, string> = {};
   const response: GeneratedProblem["public"]["response"] = {
     kind: "choice",
     label: "Choose the simplified expression",
-    options: options.map((option, i) => {
+    options: shuffle([...group], r).map((item, i) => {
       const id = `option-${"abcd"[i]}`;
-      if (option.label === label) answer = id;
-      else choiceFeedback[id] = option.feedback;
-      return { id, label: option.label };
+      if (item === selected) answer = id;
+      else {
+        const feedback: string[] = [];
+        for (let k = correct.length - 1; k >= 0; k--) {
+          if ((item.result[k] ?? 0) === correct[k]) continue;
+          feedback.push(
+            multiply
+              ? k === 0
+                ? "The constant term comes from multiplying the two constants."
+                : `For the ${power(k)} term, include every term product whose exponents on x add to ${k}. Multiply the signed coefficients, then add the products.`
+              : `For ${k ? `the ${power(k)} term` : "the constant term"}, calculate ${signed(a[k] ?? 0)} ${subtract ? "−" : "+"} ${signed(b[k] ?? 0)}.`,
+          );
+        }
+        choiceFeedback[id] = feedback.join(" ");
+      }
+      return { id, label: format(item.result) };
     }),
   };
   return {
