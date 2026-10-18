@@ -464,7 +464,15 @@ class LinearSystemReview:
         self.attacks = {template: {} for template in LINEAR_SYSTEM}
 
     def record(self, public, independent_answer):
+        import hashlib
+        import json
         template = public['templateId']
+        require(set(public)=={'id','templateId','templateVersion','seed','skillId','prompt','response'} and
+                public['templateVersion']==1 and public['skillId']=='linear-systems',
+                'Unexpected public system payload or metadata')
+        material=json.dumps([template,1,public['seed']],separators=(',',':'),ensure_ascii=False)
+        require(public['id']==hashlib.sha256(material.encode()).hexdigest(), 'Incorrect full system identity digest')
+        require(set(public['response'])=={'kind','label','options'}, 'Unexpected system response fields')
         counts = self.coverage[template]
         counts['cases'] += 1
         tags = system_tags(public)
@@ -477,6 +485,15 @@ class LinearSystemReview:
         counts[f'{outcome}/position:{correct}'] += 1
         rules = {f'position:{index}': {index} for index in range(len(options))}
         if template == PAIR:
+            for name,predicate in {
+                'origin': lambda pair: pair == (0,0),
+                'x-zero': lambda pair: pair[0] == 0,
+                'y-zero': lambda pair: pair[1] == 0,
+                'either-zero': lambda pair: 0 in pair,
+            }.items():
+                selected = {i for i,pair in enumerate(values) if predicate(pair)}
+                if selected:
+                    rules[name] = selected
             measures = {
                 'x': [x for x,y in values], 'y': [y for x,y in values],
                 'magnitude': [abs(x)+abs(y) for x,y in values],
@@ -494,6 +511,19 @@ class LinearSystemReview:
             evidence[0] += 1
             evidence[1] += correct in selected
             evidence[2] += Fraction(len(selected),len(options))
+
+    def choice_report(self, template):
+        checks = {}
+        for name,(n,hits,chance_sum) in self.attacks[template].items():
+            excess = float(Fraction(hits,n)-chance_sum/n)
+            probability = math.exp(-2*n*max(0,excess)**2)
+            # A rare but strong shortcut must not escape merely because the
+            # worksheet quota produces fewer than 32 exposures (e.g. origin).
+            require(not (n >= 12 and excess > .15 and probability < .001),
+                    f'Known system choice shortcut: {template}/{name}: {hits}/{n}')
+            checks[name] = {'applications':n, 'hits':hits, 'meanChance':float(chance_sum/n),
+                            'hoeffdingUpperBound':probability}
+        return checks
 
     def finish(self, expected_per_family):
         require(type(expected_per_family) is int and expected_per_family >= 256,
@@ -517,14 +547,7 @@ class LinearSystemReview:
             require(all(counts[key] > 0 for key in required),
                     f'Missing system strata in {template}: {[key for key in required if not counts[key]]}')
             require(len(self.systems[template]) >= min(64,expected_per_family//4), 'Insufficient distinct system givens')
-            checks = {}
-            for name,(n,hits,chance_sum) in self.attacks[template].items():
-                excess = float(Fraction(hits,n)-chance_sum/n)
-                probability = math.exp(-2*n*max(0,excess)**2)
-                require(not (n >= 32 and excess > .15 and probability < .001),
-                        f'Known system choice shortcut: {template}/{name}: {hits}/{n}')
-                checks[name] = {'applications':n, 'hits':hits, 'meanChance':float(chance_sum/n),
-                                'hoeffdingUpperBound':probability}
+            checks = self.choice_report(template)
             if template == COUNT:
                 for outcome in ('one','none','infinite'):
                     deviation = abs(counts[f'outcome:{outcome}']/expected_per_family-1/3)
@@ -621,7 +644,47 @@ def review_linear_system_fixtures():
         except (ValueError, KeyError, TypeError, ZeroDivisionError):
             continue
         raise ValueError(f'System oracle accepted an invalid fixture: {value}')
-    return {'handwrittenCases': len(fixtures), 'rejectedMutations': len(invalid)}
+    worked = [
+        'Multiply every term in the first equation by 3: 6x + 9y = 0.',
+        'Multiply every term in the second equation by −2: −6x − 4y = −10.',
+        'Add corresponding sides. The x terms cancel: 5y = 0 − 10 = −10.',
+        'Divide both sides by 5: y = (−10) ÷ 5 = −2.',
+        'Substitute y = −2 in the original first equation, 2x + 3y = 0. Its y term is 3 × (−2) = −6.',
+        'Add 6 to both sides: 2x = 0 + 6 = 6.',
+        'Divide both sides by 2: x = 6 ÷ 2 = 3.',
+        'Write x first and y second: (3, −2).',
+        'Check the first equation: 2 × 3 + 3 × (−2) = 6 − 6 = 0, matching 0.',
+        'Check the second equation: 3 × 3 + 2 × (−2) = 9 − 4 = 5, matching 5.',
+    ]
+    review_linear_system_explanation(fixtures[0][0],worked)
+    worked_mutations=[]
+    for index,before,after in [
+        (0,'9y','8y'), (1,'−10','10'), (2,'5y','4y'), (3,'= −2','= −3'),
+        (4,'3 ×','2 ×'), (5,'Add 6','Subtract 6'), (6,'by 2','by 3'),
+        (7,'(3, −2)','(−2, 3)'), (8,'2 × 3','2 × 2'), (9,'matching 5','matching 4'),
+    ]:
+        changed=list(worked); changed[index]=changed[index].replace(before,after); worked_mutations.append(changed)
+    worked_mutations += [worked[:3]+worked[4:],worked[:-1],worked[-3:]]
+    for changed in worked_mutations:
+        try:
+            review_linear_system_explanation(fixtures[0][0],changed)
+        except ValueError:
+            continue
+        raise ValueError('Worked-solution oracle accepted a mathematical or omitted-step regression')
+    valid=LinearSystemReview(); valid.attacks[PAIR]['origin']=[64,16,Fraction(16)]
+    valid.choice_report(PAIR)
+    bad_attacks=[('origin',[19,16,Fraction(19,4)]),('max:zero-count',[100,56,Fraction(31)]),
+                 ('position:0',[64,64,Fraction(16)])]
+    for name,evidence in bad_attacks:
+        bad=LinearSystemReview(); bad.attacks[PAIR][name]=evidence
+        try:
+            bad.choice_report(PAIR)
+        except ValueError as error:
+            require('Known system choice shortcut' in str(error),'Choice mutation failed for an unrelated reason')
+        else:
+            raise ValueError('Known worksheet-only shortcut escaped its regression check')
+    return {'handwrittenCases': len(fixtures), 'rejectedMutations': len(invalid),
+            'rejectedWorkedMutations':len(worked_mutations),'rejectedChoiceShortcuts':len(bad_attacks)}
 
 def review_system_figures(documents):
     from inequality_math_oracle import PublicationParser
@@ -775,6 +838,7 @@ def check_linear_system_content(records):
             require(outcome=='infinite' and worked['answer']==COUNT_LABELS[2], 'Incorrect standalone count example')
     figures=review_system_figures(header['lessonHtml'])
     seen=set(); patterns={t:set() for t in LINEAR_SYSTEM}; first={t:set() for t in LINEAR_SYSTEM}
+    worksheet_review=LinearSystemReview()
     total=0
     for sheet in records[1:]:
         require(sheet.get('kind')=='linear-system-worksheet', 'Unexpected system content record')
@@ -799,6 +863,7 @@ def check_linear_system_content(records):
             require(set(public['response'])=={'kind','label','options'},'Unexpected system response fields')
             answer=solve_linear_system(public)
             require(problem['answer']==answer,'Printed system answer differs from independent solution')
+            worksheet_review.record(public,answer)
             review_linear_system_explanation(public,problem['explanation'],problem['choiceFeedback'])
             labels=[option['label'] for option in public['response']['options']]
             label=next(option['label'] for option in public['response']['options'] if option['id']==answer)
@@ -821,7 +886,93 @@ def check_linear_system_content(records):
     require(len(seen)==32,'Missing system worksheet editions')
     require(all(len(patterns[t])>=4 and len(first[t])>=2 for t in LINEAR_SYSTEM),'System worksheet classification/first-answer order is too repetitive')
     return {'worksheets':len(seen),'problems':total,'figures':figures,'partialFacetBindings':2,'mismatches':0,
+            'worksheetChoiceChecks':{t:worksheet_review.choice_report(t) for t in sorted(LINEAR_SYSTEM)},
             'distinctClassificationOrders':{t:len(patterns[t]) for t in sorted(LINEAR_SYSTEM)}}
+
+
+def review_linear_system_content_mutations(records):
+    rejected = 0
+
+    def reject(mutator, expected):
+        nonlocal rejected
+        changed = copy.deepcopy(records)
+        mutator(changed)
+        try:
+            check_linear_system_content(changed)
+        except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
+            require(expected in str(error), f'System content mutation failed for an unrelated reason: {error}')
+            rejected += 1
+        else:
+            raise ValueError(f'System content oracle accepted a known regression: {expected}')
+
+    reject(lambda r:r[0].__setitem__('registeredMappings',[]),'partial mappings')
+    reject(lambda r:r[0]['declaredMappings'][0].__setitem__('extent','complete'),'partial mappings')
+    reject(lambda r:r[0]['templates'][0].__setitem__('gradeBand','9–12'),'template metadata')
+    reject(lambda r:r[0]['skill'].__setitem__('prerequisites',[]),'prerequisites')
+    reject(lambda r:r[0].__setitem__('bindings',[]),'registry binding')
+    reject(lambda r:r[0]['bindings'][0].__setitem__('independentlyReviewed',True),'registry binding')
+    reject(lambda r:r[0]['lessonHtml'].pop(),'Missing standalone system diagram')
+    def shifted_scale(r):
+        r[0]['lessonHtml'][0]['html']=re.sub(r'data-unit-scale="([0-9]+)"',
+            lambda match:f'data-unit-scale="{int(match[1])+1}"',r[0]['lessonHtml'][0]['html'],count=1)
+    reject(shifted_scale,'SVG equation endpoints')
+    def wrong_point(r):
+        r[0]['lessonHtml'][0]['html']=r[0]['lessonHtml'][0]['html'].replace('data-shared-point="2,3"','data-shared-point="3,2"')
+    reject(wrong_point,'Diagram point differs')
+    reject(lambda r:r[1]['problems'][0]['public'].__setitem__('tags',['origin']),'ordinary runtime problems')
+    def public_leak(r):
+        r[1]['problems'][0]['public']['tags']=['origin']
+        r[1]['replayed']=copy.deepcopy(r[1]['problems'])
+    reject(public_leak,'unexpected public system fields')
+    def wrong_answer(r):
+        r[1]['problems'][0]['answer']='option-z'
+        r[1]['replayed']=copy.deepcopy(r[1]['problems'])
+    reject(wrong_answer,'Printed system answer')
+    def wrong_feedback(r):
+        feedback=r[1]['problems'][0]['choiceFeedback']
+        feedback[next(iter(feedback))]='This does not work.'
+        r[1]['replayed']=copy.deepcopy(r[1]['problems'])
+    reject(wrong_feedback,'Both original equations need an explicit check')
+    reject(lambda r:r[1]['workbook'][0].__setitem__('hiddenAnswerMarkers',1),'Hidden system answer marker')
+    reject(lambda r:r[1]['workbook'][0].__setitem__('answer','Answer: (0, 0)'),'Workbook exposes')
+    reject(lambda r:r[1]['solutions'][0].__setitem__('answer','Answer: no such pair'),'answer key does not match')
+    reject(lambda r:r[1]['workbook'][0]['choices'].reverse(),'question or choice mismatch')
+    def duplicate_system(r):
+        r[1]['problems'][0]=copy.deepcopy(r[1]['problems'][1])
+        r[1]['replayed']=copy.deepcopy(r[1]['problems'])
+    reject(duplicate_system,'repeats equivalent systems')
+    def wrong_order(r):
+        for name in ('problems','replayed','workbook','solutions'):
+            r[1][name].reverse()
+    reject(wrong_order,'independent hash')
+    reject(lambda r:r.pop(),'Missing system worksheet editions')
+    reject(lambda r:r.append(copy.deepcopy(r[1])),'Duplicate system worksheet')
+
+    pair_sheet=next(row for row in records[1:] if row['templateId']==PAIR)
+    without_origin=[problem for problem in pair_sheet['problems'] if 'origin' not in system_tags(problem['public'])]
+    try:
+        check_system_worksheet_coverage(PAIR,without_origin)
+    except ValueError as error:
+        require('origin' in str(error),'Missing-origin mutation failed for an unrelated reason')
+        rejected += 1
+    else:
+        raise ValueError('Worksheet coverage accepted a missing origin')
+    count_sheet=next(row for row in records[1:] if row['templateId']==COUNT)
+    changed=copy.deepcopy(count_sheet['problems'])
+    for problem in changed:
+        if {'outcome:none','row-scale:negative','vertical'} <= system_tags(problem['public']):
+            first,second=givens(problem['public'])
+            pattern=re.fullmatch(PROMPTS[COUNT],problem['public']['prompt'])
+            a,b,c=first
+            problem['public']['prompt']=problem['public']['prompt'].replace(pattern[1],f'{linear_text(-a,-b)} = {number_text(-c)}',1)
+    try:
+        check_system_worksheet_coverage(COUNT,changed)
+    except ValueError as error:
+        require('Missing count worksheet strata' in str(error),'Negative-scale mutation failed for an unrelated reason')
+        rejected += 1
+    else:
+        raise ValueError('Worksheet coverage accepted missing negative vertical proportionality')
+    return rejected
 
 
 def review_linear_system_content():
@@ -838,7 +989,9 @@ def review_linear_system_content():
         for kind in ('workbook','solutions'):
             require(kind not in sheet,'Exporter must provide actual system publication HTML')
             sheet[kind]=publication_exercises(sheet.pop(f'{kind}Html'))
-    return check_linear_system_content(records)
+    report=check_linear_system_content(records)
+    report['rejectedContentMutations']=review_linear_system_content_mutations(records)
+    return report
 
 
 if __name__ == '__main__':
