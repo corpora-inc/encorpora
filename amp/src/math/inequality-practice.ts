@@ -82,6 +82,33 @@ function boundaries(r: Random): [Rational, Rational] {
   if (second >= first) second++;
   return [q(numerators[first]!, d), q(numerators[second]!, d)];
 }
+// Check both potential answers before choosing the target, so arithmetic limits
+// cannot make one of the displayed boundaries more likely to be correct.
+function manageable(
+  pair: Rational[],
+  coefficient: Rational,
+  constantTerm: Rational,
+): boolean {
+  if (coefficient.n === 0 || Math.abs(coefficient.n) > 48) return false;
+  return pair.every((boundary) => {
+    const product = mul(coefficient, boundary),
+      total = add(product, constantTerm);
+    const commonDenominator =
+      (total.d * constantTerm.d) / gcd(total.d, constantTerm.d);
+    return (
+      Math.abs(product.n) <= 96 &&
+      product.d <= 24 &&
+      Math.abs(total.n) <= 96 &&
+      total.d <= 24 &&
+      commonDenominator <= 24
+    );
+  });
+}
+const remove = (value: Rational, variable = false) =>
+  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? term(q(Math.abs(value.n), value.d)) : number(q(Math.abs(value.n), value.d))}`;
+const difference = (a: Rational, b: Rational) =>
+  `${number(a)} ${b.n < 0 ? "+" : "−"} ${number(q(Math.abs(b.n), b.d))}`;
+
 export const inequalityTemplates: readonly TemplateMetadata[] = [
   {
     id: "affine-linear-inequality",
@@ -127,7 +154,7 @@ function generateInequalityCase(
   if (templateId === "cancelled-linear-inequality") {
     const factor = r(2, 4) * (r(0, 1) ? 1 : -1);
     const a = nz(r, 6),
-      b = r(-6, 6),
+      b = nz(r, 6),
       d = r(-6, 6);
     const coefficient = factor * a,
       lhs = factor * b + d;
@@ -150,7 +177,7 @@ function generateInequalityCase(
         : [
             `Combine the constants: ${linear(q(coefficient), q(lhs))} ${op} ${right}.`,
           ]),
-      `Subtract ${term(q(coefficient))} from both sides: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
+      `${remove(q(coefficient), true)} from both sides: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
       `This comparison is ${truth ? "true" : "false"}. No x remains, so ${truth ? "every real value of x makes the original inequality true" : "no real value of x makes the original inequality true"}.`,
     );
     const correct = truth ? "All real numbers" : "No real numbers";
@@ -160,26 +187,30 @@ function generateInequalityCase(
     }));
     feedback = `After the variable terms cancel, ${number(q(lhs))} ${op} ${number(q(rhs))} is ${truth ? "true" : "false"}. Therefore ${truth ? "every real number" : "no real number"} satisfies the original inequality.`;
   } else {
-    const pair = boundaries(r),
-      target = pair[r(0, 1)]!;
+    const pair = boundaries(r);
+    let target: Rational;
     let coefficient: Rational, lhsConstant: Rational, rhsConstant: Rational;
     if (templateId === "affine-linear-inequality") {
-      coefficient = q(nz(r, 9), r(1, 6));
-      lhsConstant = q(r(-12, 12), r(1, 6));
+      do {
+        coefficient = q(nz(r, 9), r(1, 6));
+        lhsConstant = q(r(-12, 12), r(1, 6));
+      } while (!manageable(pair, coefficient, lhsConstant));
+      target = pair[r(0, 1)]!;
       rhsConstant = add(mul(coefficient, target), lhsConstant);
       left = linear(coefficient, lhsConstant);
       right = number(rhsConstant);
     } else {
-      const k = r(2, 4) * (r(0, 1) ? 1 : -1),
-        a = nz(r, 6),
-        b = r(-6, 6),
-        d = r(-6, 6);
-      let other: Rational;
+      let k: number, a: number, b: number, d: number, other: Rational;
       do {
+        k = r(2, 4) * (r(0, 1) ? 1 : -1);
+        a = nz(r, 6);
+        b = nz(r, 6);
+        d = r(-6, 6);
         other = q(nz(r, 12), r(1, 4));
-      } while (equal(other, q(k * a)));
-      coefficient = sub(q(k * a), other);
-      lhsConstant = q(k * b + d);
+        coefficient = sub(q(k * a), other);
+        lhsConstant = q(k * b + d);
+      } while (!manageable(pair, coefficient, lhsConstant));
+      target = pair[r(0, 1)]!;
       rhsConstant = add(lhsConstant, mul(coefficient, target));
       left = `${number(q(k))}(${linear(q(a), q(b))})${constant(q(d))}`;
       right = linear(other, rhsConstant);
@@ -190,7 +221,7 @@ function generateInequalityCase(
           : [
               `Combine the constants: ${linear(q(k * a), lhsConstant)} ${op} ${right}.`,
             ]),
-        `Subtract ${term(other)} from both sides. The x coefficient becomes ${number(q(k * a))} − ${operand(other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
+        `${remove(other, true)} from both sides. The x coefficient becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
       );
     }
     const remaining = sub(rhsConstant, lhsConstant);
@@ -203,19 +234,34 @@ function generateInequalityCase(
     );
     if (lhsConstant.n !== 0)
       explanation.push(
-        `Subtract ${number(lhsConstant)} from both sides: ${term(coefficient)} ${op} ${number(rhsConstant)} − ${operand(lhsConstant)} = ${number(remaining)}.`,
+        `${remove(lhsConstant)} from both sides: ${term(coefficient)} ${op} ${difference(rhsConstant, lhsConstant)} = ${number(remaining)}.`,
       );
     else
       explanation.push(
         `The variable term is already isolated: ${term(coefficient)} ${op} ${number(remaining)}.`,
       );
+    if (!equal(coefficient, q(1)))
+      explanation.push(
+        `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore x ${solvedOp} ${number(target)}.`,
+      );
     explanation.push(
-      `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore x ${solvedOp} ${number(target)}.`,
       `The solution is x ${solvedOp} ${number(target)}: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`,
     );
-    const test = add(target, q(solvedOp === "<" || solvedOp === "≤" ? -1 : 1));
+    const pointsLeft = solvedOp === "<" || solvedOp === "≤";
+    // Use zero when it is strictly inside; otherwise choose the nearest interior
+    // multiple of the coefficient denominator, so the check product is an integer.
+    const zeroInside = pointsLeft ? target.n > 0 : target.n < 0;
+    const boundaryInMultiples = target.n / (target.d * coefficient.d);
+    const test = q(
+      zeroInside
+        ? 0
+        : coefficient.d *
+            (pointsLeft
+              ? Math.ceil(boundaryInMultiples) - 1
+              : Math.floor(boundaryInMultiples) + 1),
+    );
     explanation.push(
-      `Check the boundary: ${operand(coefficient)} × ${operand(target)} = ${number(remaining)}, so equality occurs there. Check a value inside the solution. Substitute x = ${number(test)}: ${number(mul(coefficient, test))} ${op} ${number(remaining)}, a true comparison in the equivalent inequality.`,
+      `Check the boundary: ${operand(coefficient)} × ${operand(target)} = ${number(remaining)}, so equality occurs there. For the equivalent inequality ${term(coefficient)} ${op} ${number(remaining)}, substitute the interior value x = ${number(test)}. The left side is ${operand(coefficient)} × ${operand(test)} = ${number(mul(coefficient, test))}; the comparison ${number(mul(coefficient, test))} ${op} ${number(remaining)} is true.`,
     );
     const low: Relation = op === "<" || op === ">" ? "<" : "≤";
     const high = reverse[low];
