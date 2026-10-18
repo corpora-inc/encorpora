@@ -1,3 +1,4 @@
+import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
@@ -14,6 +15,12 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "descriptive-median")
+    return <DescriptiveStatisticsIllustration kind="median" />;
+  if (kind === "descriptive-range")
+    return <DescriptiveStatisticsIllustration kind="range" />;
+  if (kind === "descriptive-iqr")
+    return <DescriptiveStatisticsIllustration kind="iqr" />;
   if (kind === "percent-change-bars" || kind === "percent-change-reverse")
     return (
       <PercentChangeIllustration reverse={kind === "percent-change-reverse"} />

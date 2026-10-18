@@ -1,4 +1,8 @@
 import {
+  descriptiveStatisticsTemplates,
+  generateDescriptiveStatisticsProblem,
+} from "./descriptive-statistics-practice";
+import {
   percentChangeTemplates,
   generatePercentChangeProblem,
 } from "./percent-change-practice";
@@ -168,6 +172,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
   ...baseTemplates,
@@ -292,6 +297,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
@@ -318,6 +324,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
+    return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
