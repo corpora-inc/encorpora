@@ -1,4 +1,8 @@
 import {
+  percentChangeTemplates,
+  generatePercentChangeProblem,
+} from "./percent-change-practice";
+import {
   linearSystemTemplates,
   generateLinearSystemProblem,
 } from "./linear-system-practice";
@@ -170,6 +174,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
   ...graphicalTemplates,
@@ -287,6 +292,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -312,6 +318,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (percentChangeTemplates.some((t) => t.id === templateId))
+    return generatePercentChangeProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
     return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))
