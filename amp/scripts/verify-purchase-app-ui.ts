@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
@@ -81,10 +82,10 @@ async function setup(
       return route.fulfill({
         json: { templates: [], lessons: [], skills: [], mode: "fixture" },
       });
-    if (path.endsWith("/family")) {
+    if (path.endsWith("/me")) {
       familyReads++;
       return route.fulfill({
-        json: {
+        json: fixtureMe({
           consent: {
             status: "active",
             policyVersion: "fixture",
@@ -93,7 +94,7 @@ async function setup(
           },
           learners: [child(1), child(2)],
           retained: retentionNotice,
-        },
+        }),
       });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });

@@ -1,10 +1,27 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useRouter } from "@tanstack/react-router";
 export type FamilySection = "learners" | "access" | "privacy" | "security";
 export type PurchaseScreen = "choose" | "annual" | "funded";
 /** URLs own screen identity. Private consent challenges live only in memory. */
 export function useAppRoute() {
-  const location = useLocation(),
-    navigate = useNavigate();
+  const current = useLocation(),
+    router = useRouter();
+  const location = {
+    ...current,
+    search: current.searchStr,
+    key: current.state.key ?? current.href,
+  };
+  // Migration adapter for existing screen links. New features use typed routes directly.
+  const navigate = (
+    to: string | { pathname?: string; search?: string },
+    options: { replace?: boolean } = {},
+  ) => {
+    const href =
+      typeof to === "string"
+        ? to
+        : (to.pathname ?? current.pathname) +
+          (to.search ? (to.search.startsWith("?") ? "" : "?") + to.search : "");
+    void router.navigate({ href, replace: options.replace });
+  };
   const parts = location.pathname.split("/").filter(Boolean);
   const familySection: FamilySection = [
     "access",

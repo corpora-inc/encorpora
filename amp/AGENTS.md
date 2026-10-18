@@ -18,3 +18,7 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Errors explain the failed action and recovery, are logged without private request data, and appear inline in reserved space or as fixed overlays. Async loading and feedback must not move existing controls.
 - Use shared, accessible controls with visible focus, readable labels and touch targets of at least 44 px.
 - Verify real browser behavior and attach synthetic screenshots at 320, 390, 768 and 1280 px in light and dark themes. Measure overflow and bounding boxes during loading, validation and failed requests; verify learner state across navigation.
+
+### Web application boundaries
+
+Follow [the web architecture](docs/architecture/web-app.md). New auth and onboarding screens live in `src/web/features/`; typed TanStack routes and providers live in `src/web/app/`. `main.tsx` only bootstraps providers and the router. TanStack Query owns the account-scoped `/me` resource, including its Family projection; zustand owns selection and memory-only form drafts. Server mutations invalidate that canonical resource. Shared accessible controls and theme tokens live in `src/web/ui/`. The legacy host bridges Family, billing, trial, lessons and practice until their feature migrations; do not add new screens to it.

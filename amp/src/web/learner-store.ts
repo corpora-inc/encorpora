@@ -1,4 +1,3 @@
-import type { FamilySummary } from "../family/contracts";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -7,11 +6,6 @@ import { createJSONStorage, persist } from "zustand/middleware";
  * which learners an account may access. */
 type LearnerState = {
   learnerId: string | null;
-  family: FamilySummary | null;
-  identity: string | null;
-  revision: number;
-  setIdentity: (identity: string | null) => void;
-  acceptFamily: (family: FamilySummary | null) => void;
   select: (learnerId: string | null) => void;
 };
 
@@ -43,15 +37,7 @@ const storage = createJSONStorage(() => ({
 
 export const useLearnerStore = create<LearnerState>()(
   persist(
-    (set, get) => ({
-      family: null,
-      identity: null,
-      revision: 0,
-      setIdentity: (identity) => {
-        if (get().identity !== identity)
-          set({ identity, family: null, revision: get().revision + 1 });
-      },
-      acceptFamily: (family) => set({ family, revision: get().revision + 1 }),
+    (set) => ({
       learnerId: null,
       select: (learnerId) => set({ learnerId }),
     }),

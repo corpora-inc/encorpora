@@ -1,3 +1,5 @@
+import { registerFamilyRoutes } from "../src/family/routes.js";
+import { meSchema } from "../src/account/contracts.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -42,6 +44,15 @@ test(
         development: true,
       });
       await registerAccountRoutes(app, accounts);
+      await registerFamilyRoutes(app, {
+        pool: repository.pool,
+        authenticate: accountsAuth(accounts),
+        development: true,
+      });
+      assert.deepEqual(
+        (await app.inject({ method: "GET", url: "/api/v1/me" })).json(),
+        { signedIn: false, next: "sign-in" },
+      );
       const post = (path: string, payload: object, headers = {}) =>
         app.inject({
           method: "POST",
@@ -62,6 +73,20 @@ test(
       assert.equal(signUp.statusCode, 200, signUp.body);
       const token = signUp.headers["set-auth-token"] as string;
       assert.ok(token, "the session token is returned for bearer clients");
+      const me = meSchema.parse(
+        (
+          await app.inject({
+            method: "GET",
+            url: "/api/v1/me",
+            headers: { authorization: `Bearer ${token}` },
+          })
+        ).json(),
+      );
+      assert.ok(me.signedIn);
+      assert.equal(me.account.email, email);
+      assert.equal(me.next, "add-learner");
+      assert.deepEqual(me.learners, []);
+      assert.ok(!("trial" in me));
       const cookies = ([] as string[])
         .concat(signUp.headers["set-cookie"] ?? [])
         .map((c) => c.split(";")[0])

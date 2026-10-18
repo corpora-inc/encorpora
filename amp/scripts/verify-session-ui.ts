@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { chromium, webkit, type Page } from "playwright";
@@ -75,10 +76,10 @@ async function fixturePage(family: (token: string) => FamilySummary) {
       return route.fulfill({
         json: { templates: [], lessons: [], skills: [], mode: "fixture" },
       });
-    if (path === "/api/v1/family") {
+    if (path === "/api/v1/me") {
       const token = route.request().headers().authorization ?? "";
       familyTokens.push(token);
-      return route.fulfill({ json: family(token) });
+      return route.fulfill({ json: fixtureMe(family(token)) });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
@@ -190,7 +191,7 @@ try {
       sawHeld = resolve;
     });
     let requests = 0;
-    await page.route("**/api/v1/family", async (route) => {
+    await page.route("**/api/v1/me", async (route) => {
       const snapshot = structuredClone(family);
       requests++;
       if (requests === 1) {
@@ -202,7 +203,7 @@ try {
             json: { error: "obsolete_family_error" },
           });
       }
-      await route.fulfill({ json: snapshot });
+      await route.fulfill({ json: fixtureMe(snapshot) });
     });
     await page.route(
       "**/api/v1/family/learners/current-child/rename",
@@ -251,7 +252,7 @@ try {
         .filter({ hasText: "After rename" })
         .waitFor({ state: "attached" });
       const oldResponse = page.waitForResponse(
-        (response) => new URL(response.url()).pathname === "/api/v1/family",
+        (response) => new URL(response.url()).pathname === "/api/v1/me",
       );
       release();
       await (await oldResponse).finished();

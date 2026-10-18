@@ -1,3 +1,4 @@
+import { accountSummary } from "../src/account/repository.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { randomUUID } from "node:crypto";
@@ -66,6 +67,10 @@ test(
         "New display name",
       );
       assert.equal(
+        (await accountSummary(pool, family, "parent")).next,
+        "choose-plan",
+      );
+      assert.equal(
         (await family.summary("parent")).learners[0]!.canPractice,
         false,
       );
@@ -76,6 +81,10 @@ test(
       assert.equal(
         (await family.summary("parent")).learners[0]!.canPractice,
         true,
+      );
+      assert.equal(
+        (await accountSummary(pool, family, "parent")).next,
+        "practice",
       );
       for (const update of [
         "starts_at=now()+interval '1 hour'",

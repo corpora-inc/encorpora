@@ -1,0 +1,26 @@
+.viewport {
+  position: fixed;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(480px, calc(100vw - 32px));
+  z-index: 1200;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-overlay);
+}
+.toast button {
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+}

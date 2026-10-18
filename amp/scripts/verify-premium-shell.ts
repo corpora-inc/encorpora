@@ -119,7 +119,9 @@ async function contrast(page: Page, selector: string) {
 try {
   let signupCount = 0;
   for (const theme of ["light", "dark"] as const)
-    for (const width of [320, 390, 768, 1280]) {
+    for (const width of process.argv.includes("--smoke")
+      ? [320]
+      : [320, 390, 768, 1280]) {
       // Better Auth shares its configured sign-up burst limit across instances.
       if (signupCount++ && (signupCount - 1) % 3 === 0)
         await new Promise((resolve) => setTimeout(resolve, 11000));
@@ -246,6 +248,7 @@ try {
         path: `${shots}/family-error-${width}-${theme}.png`,
       });
       await page.unroute("**/api/v1/learners");
+      await page.getByRole("button", { name: "Dismiss message" }).click();
       await page
         .getByRole("button", { name: "Add learner", exact: true })
         .click();
@@ -272,7 +275,7 @@ try {
       let release!: () => void, entered!: () => void;
       const held = new Promise<void>((resolve) => (release = resolve)),
         requested = new Promise<void>((resolve) => (entered = resolve));
-      await page.route("**/api/v1/family", async (r) => {
+      await page.route("**/api/v1/me", async (r) => {
         entered();
         await held;
         await r.continue();
@@ -328,7 +331,7 @@ try {
         .getByRole("heading", { name: "Jordan", exact: true })
         .waitFor();
       if (width === 320 && theme === "light") {
-        await page.route("**/api/v1/family", (route) =>
+        await page.route("**/api/v1/me", (route) =>
           route.fulfill({
             status: 503,
             json: { error: "family_service_unavailable" },
@@ -341,7 +344,7 @@ try {
           .waitFor();
         await fits(page);
         await page.screenshot({ path: `${shots}/cold-family-error.png` });
-        await page.unroute("**/api/v1/family");
+        await page.unroute("**/api/v1/me");
         await page
           .getByRole("button", { name: "Try again", exact: true })
           .click();
@@ -352,14 +355,20 @@ try {
           .waitFor();
       }
       // Capability fixture: a parent without consent never sees a learner-write button.
-      const response = await context.request.get(`${origin}/api/v1/family`),
-        family = await response.json();
-      await page.route("**/api/v1/family", (route) =>
+      const response = await context.request.get(`${origin}/api/v1/me`),
+        me = await response.json();
+      await page.route("**/api/v1/me", (route) =>
         route.fulfill({
           json: {
-            ...family,
+            ...me,
             learners: [],
-            consent: { ...family.consent, status: "not-recorded" },
+            next: "choose-plan",
+            consent: { status: "none", method: null },
+            family: {
+              ...me.family,
+              learners: [],
+              consent: { ...me.family.consent, status: "not-recorded" },
+            },
           },
         }),
       );
@@ -397,7 +406,7 @@ try {
       app = await startServer();
     }
   console.log(
-    "Premium shell: real parent sign-up → learner → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; 4 widths × 2 themes passed. Development consent is a test fixture, not purchase-consent acceptance.",
+    `Premium shell: real parent sign-up → learner → first problem; routes, refresh/history, mutation consistency, failed-save and pending-refresh geometry; ${process.argv.includes("--smoke") ? "320px" : "4 widths"} × 2 themes passed. Development consent is a test fixture, not purchase-consent acceptance.`,
   );
 } finally {
   await browser.close();

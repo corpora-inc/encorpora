@@ -1,28 +1,8 @@
+@import "./ui/tokens.css";
 /* AMP visual system. Loaded after the structural stylesheets: it owns colour,
    type and surface treatment. Neutral surfaces, one accent, colour only where
    it carries meaning (strand, correct, incorrect). */
-:root {
-  --bg: #f7f6f0;
-  --surface: #fffefa;
-  --surface-2: #f3f2ea;
-  --ink: #183e3a;
-  --ink-2: #4c625b;
-  --ink-3: #84928b;
-  --line: #e2e5da;
-  --line-2: #cfd6c6;
-  --primary: #1f5f55;
-  --primary-hover: #174b43;
-  --primary-soft: #e3eee8;
-  --good: #2f8a5b;
-  --good-soft: #eaf4ec;
-  --bad: #b4532a;
-  --bad-soft: #fbefe8;
-  --space: 16px;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
-  color: var(--ink);
-  background: var(--bg);
-}
+
 [data-strand="number"] {
   --strand: #3f6fa8;
 }

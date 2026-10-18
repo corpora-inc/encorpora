@@ -1,8 +1,10 @@
-import { useAppRoute } from "./app-routes";
-import { useLoggedError, requestMessage } from "./feedback";
+import styles from "./Auth.module.css";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import { queryClient, sessionOptions } from "../../lib/query";
+import { useLoggedError, requestMessage } from "../../feedback";
 import { useEffect, useState, type FormEvent } from "react";
-import { accountClient } from "./account-client";
-import { authConfig, signIn, notifyAccountSessionChanged } from "./auth";
+import { accountClient } from "../../account-client";
+import { authConfig, signIn, notifyAccountSessionChanged } from "../../auth";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -23,9 +25,10 @@ const titles: Record<Step, string> = {
 
 /** Parent sign-in for AMP's own accounts. Success reloads the app, which then
  * finds the session (and saves a trial placement if one is waiting). */
-export function AccountSignIn() {
-  const { navigate, location: routeLocation } = useAppRoute();
-  const params = new URLSearchParams(location.search);
+export function SignInScreen() {
+  const routeLocation = useLocation(),
+    navigate = useNavigate();
+  const params = new URLSearchParams(routeLocation.searchStr);
   const resetToken = params.get("token");
   const step: Step =
     (params.has("reset-password") && resetToken) ||
@@ -39,15 +42,21 @@ export function AccountSignIn() {
             )
           ? (routeLocation.pathname.split("/")[2] as Step)
           : "sign-in";
-  const setStep = (next: Step) =>
-    navigate(
-      (next === "create"
-        ? "/sign-up"
-        : next === "sign-in"
-          ? "/sign-in"
-          : `/sign-in/${next}`) +
-        (params.get("return") === "security" ? "?return=security" : ""),
-    );
+  const setStep = (next: Step) => {
+    const search =
+      params.get("return") === "security"
+        ? { return: "security" as const }
+        : {};
+    if (next === "create") void navigate({ to: "/sign-up", search });
+    else if (next === "sign-in") void navigate({ to: "/sign-in", search });
+    else if (next === "reset")
+      void navigate({
+        to: "/reset-password",
+        search: { ...search, token: resetToken ?? undefined },
+      });
+    else
+      void navigate({ to: "/sign-in/$step", params: { step: next }, search });
+  };
   const [providers, setProviders] = useState<string[]>([]);
   const [passwords, setPasswords] = useState(true);
   const [name, setName] = useState("");
@@ -83,9 +92,20 @@ export function AccountSignIn() {
   }
   const returnTo =
     params.get("return") === "security" ? "/family/security" : "/";
-  const done = () => {
+  const done = async () => {
     notifyAccountSessionChanged();
-    navigate(returnTo, { replace: true });
+    await queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 });
+    if (returnTo === "/family/security")
+      await navigate({
+        to: "/$",
+        params: { _splat: "family/security" },
+        replace: true,
+      });
+    else
+      await navigate({
+        to: step === "create" ? "/start/name" : "/",
+        replace: true,
+      });
   };
   async function run(work: () => Promise<void>) {
     setBusy(true);
@@ -116,7 +136,7 @@ export function AccountSignIn() {
           result.data.twoFactorRedirect
         )
           return go("two-factor");
-        done();
+        await done();
       } else if (step === "create") {
         const result = await accountClient.signUp.email({
           name: name.trim(),
@@ -126,7 +146,7 @@ export function AccountSignIn() {
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet.
-        if (result.data?.token) done();
+        if (result.data?.token) await done();
         else go("check-email");
       } else if (step === "forgot") {
         fail(
@@ -155,7 +175,7 @@ export function AccountSignIn() {
             ? await accountClient.twoFactor.verifyBackupCode({ code })
             : await accountClient.twoFactor.verifyTotp({ code }),
         );
-        done();
+        await done();
       }
     });
   }
@@ -174,7 +194,7 @@ export function AccountSignIn() {
     });
   const showProviders = step === "sign-in" || step === "create";
   return (
-    <section className="card welcome account-sign-in">
+    <section className={`card welcome account-sign-in ${styles.frame}`}>
       <h2>{titles[step]}</h2>
       {notice && (
         <p className="account-notice" role="status">
@@ -194,7 +214,7 @@ export function AccountSignIn() {
           onClick={() =>
             void run(async () => {
               fail(await accountClient.signIn.passkey());
-              done();
+              await done();
             })
           }
         >

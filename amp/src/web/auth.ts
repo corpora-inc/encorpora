@@ -131,10 +131,16 @@ export function onSessionChanged(
 ) {
   if (nativeRuntime) return nativeSessionEvents(update, error);
   if (!manager) {
+    let generation = 0;
     const changed = () => {
+      const current = ++generation;
       void accessSession()
-        .then(update)
-        .catch((failure) => error?.(String(failure)));
+        .then((session) => {
+          if (current === generation) update(session);
+        })
+        .catch((failure) => {
+          if (current === generation) error?.(String(failure));
+        });
     };
     const channel =
       "BroadcastChannel" in window
@@ -143,6 +149,7 @@ export function onSessionChanged(
     if (channel) channel.onmessage = changed;
     window.addEventListener("amp-account-session-changed", changed);
     return () => {
+      generation++;
       window.removeEventListener("amp-account-session-changed", changed);
       channel?.close();
     };

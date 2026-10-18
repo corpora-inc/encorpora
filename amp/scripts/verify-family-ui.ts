@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -14,7 +15,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React,{useEffect} from 'react';import {createRoot} from 'react-dom/client';import {MemoryRouter,useNavigate,useLocation} from 'react-router-dom';import {FamilyCenter} from '../../src/web/FamilyCenter';import {useLearnerStore} from '../../src/web/learner-store';import '../../src/web/style.css';import '../../src/web/theme.css';import '../../src/web/premium-controls.css';const root=createRoot(document.getElementById('root')!);function Fixture({token,identity}){const navigate=useNavigate(),location=useLocation();useEffect(()=>{let active=true;useLearnerStore.getState().setIdentity(identity);fetch('/api/v1/family',{headers:{authorization:'Bearer '+token}}).then(r=>r.json()).then(summary=>{if(active)useLearnerStore.getState().acceptFamily(summary)});return()=>{active=false}},[identity,location.key]);return <FamilyCenter token={token} identity={identity} initialSection={['learners','access','privacy'].includes(location.pathname.split('/')[2])?location.pathname.split('/')[2]:'learners'} onSectionChange={s=>navigate('/family/'+s)} onChanged={summary=>{useLearnerStore.getState().acceptFamily(summary);harness.events.push('changed:'+summary.learners.map(l=>l.name).join(','))}} onClose={()=>{}} onLearningInvalidated={()=>harness.events.push('invalidated')}/>;}const harness={events:[] as string[],render(token:string,identity=token){root.render(<MemoryRouter initialEntries={["/family/learners"]}><Fixture token={token} identity={identity}/></MemoryRouter>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
+  `import React from 'react';import {createRoot} from 'react-dom/client';import {FixtureRouter,FamilyFixture} from '../../scripts/family-fixture';import '../../src/web/style.css';import '../../src/web/theme.css';import '../../src/web/premium-controls.css';const root=createRoot(document.getElementById('root')!);const harness={events:[] as string[],render(token:string,identity=token){root.render(<FixtureRouter><FamilyFixture token={token} identity={identity} events={harness.events}/></FixtureRouter>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
 );
 let failExport = false,
   exportPosts = 0;
@@ -88,7 +89,7 @@ try {
   let held!: () => void, releaseSummary!: () => void;
   let summaryHeld = Promise.resolve(),
     summaryRelease = Promise.resolve();
-  await page.route("**/api/v1/family", async (route) => {
+  await page.route("**/api/v1/me", async (route) => {
     if (failNextSummary) {
       failNextSummary = false;
       return route.fulfill({
@@ -102,7 +103,7 @@ try {
       held();
       await summaryRelease;
     }
-    return route.fulfill({ json: snapshot });
+    return route.fulfill({ json: fixtureMe(snapshot) });
   });
   await page.route(
     "**/api/v1/family/learners/fixture/rename",

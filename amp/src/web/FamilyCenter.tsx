@@ -1,6 +1,7 @@
+import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
-import { useLearnerStore } from "./learner-store";
+import { useFamilyCache } from "./lib/family-cache";
 import { Select, BirthYearPicker } from "./PremiumControls";
 import { AccountSecurity } from "./AccountSecurity";
 import { PaymentHistoryCenter } from "./PaymentHistoryCenter";
@@ -19,7 +20,7 @@ interface Props {
   onSectionChange?: (section: FamilySection) => void;
   accountsEnabled?: boolean;
   identity?: string;
-  onChanged: (summary: FamilySummary) => void;
+  onChanged: () => void | Promise<void>;
   onClose: () => void;
   onLearningInvalidated: () => void;
   initialSection?: "learners" | "access" | "privacy" | "security";
@@ -95,10 +96,7 @@ export function FamilyCenter({
   const setPrivacy = (value: typeof privacy) => {
     if (value) route.navigate(`/family/privacy/${value}`);
   };
-  const family = useLearnerStore((state) =>
-    state.identity === identity ? state.family : null,
-  );
-  const setFamily = useLearnerStore((state) => state.acceptFamily);
+  const family = useFamilyCache(identity);
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
@@ -291,10 +289,7 @@ export function FamilyCenter({
     }
   }
   async function refresh() {
-    const epoch = generation.current;
-    const next = await api<FamilySummary>("/family");
-    if (!current(epoch)) return;
-    onChanged(next);
+    await onChanged();
   }
   function ask(value: Confirmation, source: HTMLElement) {
     trigger.current = source;
@@ -485,11 +480,7 @@ export function FamilyCenter({
       )}
       <div className="family-body" ref={body}>
         {section === "security" && accountsEnabled && <AccountSecurity />}
-        {error && (
-          <p className="family-error" role="alert">
-            {error}
-          </p>
-        )}
+        <Toast message={error} onDismiss={() => setError("")} />
         {notice && (
           <p className="family-notice" role="status">
             {notice}

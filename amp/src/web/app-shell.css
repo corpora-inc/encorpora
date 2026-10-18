@@ -75,24 +75,6 @@
   }
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --bg: #122522;
-    --surface: #1a302c;
-    --surface-2: #233c36;
-    --ink: #e9f0e8;
-    --ink-2: #b6c9bd;
-    --ink-3: #95aa9e;
-    --line: #365148;
-    --line-2: #4a665a;
-    --primary: #8bd1b5;
-    --primary-hover: #a4e0c7;
-    --primary-soft: #284d40;
-    --good: #91d6ac;
-    --good-soft: #244633;
-    --bad: #ffb18d;
-    --bad-soft: #4f3028;
-  }
 }
 .shell .family-tabs,
 .shell > nav {
@@ -236,4 +218,13 @@
   min-height: 48px;
   min-width: 120px;
   margin-top: 12px;
+}
+
+.shell.start-shell {
+  height: 100dvh;
+  padding: 0;
+  overflow: hidden;
+}
+.shell.start-shell > .parent-consent-center {
+  height: 100%;
 }
