@@ -16,14 +16,12 @@ import { buildCoverageManifest } from "../src/content/coverage.js";
 import { validateFractionPracticeCoverage } from "../src/content/fraction-practice-coverage.js";
 import { auditCurriculum } from "../src/curriculum/audit";
 import { skills, standards } from "../src/curriculum/catalog";
-import { auditFundingRegistry } from "../src/funding/audit";
-import { fundingRegistry } from "../src/funding/registry";
 import { templates } from "../src/math/engine";
 import { lessons } from "../src/content/lessons";
-const curriculum = auditCurriculum(),
-  funding = auditFundingRegistry(fundingRegistry);
+// The funding research registry and its audit are kept privately.
+const curriculum = auditCurriculum();
 const coverage = buildCoverageManifest();
-const errors = [...curriculum.errors, ...funding.errors, ...coverage.errors];
+const errors = [...curriculum.errors, ...coverage.errors];
 const bookTemplateIds = new Set<string>();
 try {
   validateRatioAlignments(skills, templates, standards);
@@ -63,7 +61,6 @@ console.log(
   JSON.stringify(
     {
       curriculum,
-      funding,
       contentCoverage: {
         valid: coverage.valid,
         summary: coverage.summary,

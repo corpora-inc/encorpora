@@ -15,8 +15,6 @@ import {
   renderSupplierPacket,
   type PacketPreview,
 } from "../src/funding/supplier-packet/render.js";
-import { firstWaveDossiers } from "../src/funding/first-wave-dossiers.js";
-import { auditDossiers } from "../src/funding/dossier.js";
 import { transactionDocumentTemplates } from "../src/funding/supplier-packet/documents.js";
 const args = new Map<string, string>();
 for (let i = 2; i < process.argv.length; i += 2) {
@@ -53,17 +51,18 @@ const evidence = args.has("--evidence")
       records: [],
     };
 const readiness = auditPacketEvidence(evidence, catalogHash, asOf);
-const dossier = firstWaveDossiers.dossiers.find(
-  (d) => d.programId === "fl-pep",
-)!;
-const ids = new Set(dossier.requirements.flatMap((r) => r.sourceIds));
-const sources = firstWaveDossiers.sources.filter((s) => ids.has(s.id));
-const researchErrors = auditDossiers(
-  { checkedOn: firstWaveDossiers.checkedOn, sources, dossiers: [dossier] },
-  asOf,
-  ["fl-pep"],
-);
-if (researchErrors.length) throw new Error(researchErrors.join("; "));
+// Program research is private. The audited dossier export (--dossier) and the
+// operations draft (--operations) come from the private research repository.
+if (!args.has("--dossier") || !args.has("--operations"))
+  throw new Error(
+    "--dossier <program-dossier.json> and --operations <operations-draft.md> are required",
+  );
+const { sources, dossier } = JSON.parse(
+  await readFile(resolve(args.get("--dossier")!), "utf8"),
+) as { sources: unknown[]; dossier: { programId: string } };
+if (dossier?.programId !== "fl-pep" || !Array.isArray(sources))
+  throw new Error("--dossier must be the audited fl-pep dossier export");
+const operationsDraft = await readFile(resolve(args.get("--operations")!));
 const run = promisify(execFile);
 await run("pdfinfo", ["-v"]);
 await run("pdftotext", ["-v"]);
@@ -183,10 +182,7 @@ try {
     join(output, "transaction-document-templates.json"),
     JSON.stringify(transactionDocumentTemplates(), null, 2),
   );
-  await writeFile(
-    join(output, "operations-draft.md"),
-    await readFile(join(root, "docs/esa-dossiers/florida-operations-draft.md")),
-  );
+  await writeFile(join(output, "operations-draft.md"), operationsDraft);
   // Public readiness lists requirement IDs only; restricted references never enter generated output.
   await writeFile(
     join(output, "readiness.json"),
@@ -201,7 +197,6 @@ try {
   const packetSourceFiles = [
     "src/funding/supplier-packet/catalog.ts",
     "src/funding/supplier-packet/documents.ts",
-    "docs/esa-dossiers/florida-operations-draft.md",
     "src/funding/supplier-packet/evidence.ts",
     "src/funding/supplier-packet/publication.ts",
     "src/funding/supplier-packet/render.tsx",
@@ -230,7 +225,11 @@ try {
       {
         asOf,
         sourceCommit: commit.trim(),
-        packetSourceHashes,
+        packetSourceHashes: {
+          ...packetSourceHashes,
+          "private:operations-draft.md": sha256(operationsDraft),
+          "private:dossier.json": sha256(JSON.stringify({ sources, dossier })),
+        },
         packetSourceDirty: !!sourceStatus.trim(),
         catalogSha256: catalogHash,
         pdfSha256: sha256(await readFile(pdfPath)),

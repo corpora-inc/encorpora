@@ -55,4 +55,4 @@ Placement starts from the learner's birth year: the estimate begins at the grade
 
 Practice occupies the device viewport, with explanations in focus-managed panels. Short phones use a dedicated answer panel; landscape places the keypad beside the question. The lesson library opens a selected lesson directly and restores its catalog position on return.
 
-See [product and experience specification](docs/product-experience.md), [curriculum coverage](docs/curriculum.md), [content production](docs/production.md), [commerce](docs/commerce.md), [funding](docs/funding.md), and [deployment requirements](docs/deployment.md).
+See [product and experience specification](docs/product-experience.md), [curriculum coverage](docs/curriculum.md), [content production](docs/production.md), [commerce](docs/commerce.md), and [deployment requirements](docs/deployment.md).
