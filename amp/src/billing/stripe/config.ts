@@ -3,6 +3,9 @@ import { parseDocumentProfile } from "../evidence/profile.js";
 /** No billing defaults: every merchant, catalog and redirect boundary is explicit. */
 export interface StripeBillingConfig {
   documentProfile?: DocumentProfile;
+  monthlyDocumentProfile?: DocumentProfile;
+  monthlyPriceId?: string;
+  monthlyAmountMinor?: number;
   secretKey: string;
   webhookSecret: string;
   accountId: string;
@@ -97,6 +100,28 @@ export function stripeConfig(
     automaticTax: tax === "true",
     consentPolicyVersion: required("AMP_STRIPE_CONSENT_POLICY_VERSION"),
   };
+  if (env.AMP_STRIPE_MONTHLY_PRICE_ID || env.AMP_STRIPE_MONTHLY_AMOUNT_MINOR) {
+    config.monthlyPriceId = required("AMP_STRIPE_MONTHLY_PRICE_ID");
+    config.monthlyAmountMinor = Number(
+      required("AMP_STRIPE_MONTHLY_AMOUNT_MINOR"),
+    );
+    if (
+      !config.monthlyPriceId.startsWith("price_") ||
+      config.monthlyPriceId === priceId ||
+      !Number.isSafeInteger(config.monthlyAmountMinor) ||
+      config.monthlyAmountMinor <= 0
+    )
+      throw new Error("Invalid Stripe monthly price configuration");
+  }
+  if (config.monthlyPriceId && !env.AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE)
+    throw new Error(
+      "Monthly billing requires AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE",
+    );
+  if (env.AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE)
+    config.monthlyDocumentProfile = parseDocumentProfile(
+      JSON.parse(env.AMP_PAYMENT_MONTHLY_DOCUMENT_PROFILE),
+      planConfig(config, "month"),
+    );
   if (env.AMP_PAYMENT_DOCUMENT_PROFILE)
     config.documentProfile = parseDocumentProfile(
       JSON.parse(env.AMP_PAYMENT_DOCUMENT_PROFILE),
@@ -106,4 +131,25 @@ export function stripeConfig(
 }
 export function stripeNamespace(config: StripeBillingConfig): string {
   return `${config.accountId}:${config.livemode ? "live" : "test"}`;
+}
+
+export type BillingInterval = "year" | "month";
+/** Selected catalog identity; the annual environment remains backwards compatible. */
+export function planConfig(
+  config: StripeBillingConfig,
+  interval: BillingInterval = "year",
+): StripeBillingConfig {
+  if (interval === "year") return config;
+  if (
+    !config.monthlyPriceId ||
+    !Number.isSafeInteger(config.monthlyAmountMinor) ||
+    config.monthlyAmountMinor! <= 0
+  )
+    throw new BillingError("monthly_plan_unavailable", 503);
+  return {
+    ...config,
+    priceId: config.monthlyPriceId,
+    amountMinor: config.monthlyAmountMinor!,
+    documentProfile: config.monthlyDocumentProfile,
+  };
 }

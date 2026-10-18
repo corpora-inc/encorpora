@@ -32,6 +32,7 @@ test(
         "0004-parent-lifecycle.sql",
         "0005-stripe.sql",
         "0011-paid-evidence.sql",
+        "0017-monthly-billing.sql",
         "0006-commerce-orders.sql",
         "0008-skill-evidence.sql",
       ])
@@ -226,7 +227,7 @@ test(
       );
       assert.equal(
         (await get("/api/v1/billing/status/child")).json().phase,
-        "needs-review",
+        "awaiting-payment",
       ); // Completed subscription is not silently replaced after refund/expiry.
       let release!: () => void;
       let started!: () => void;
