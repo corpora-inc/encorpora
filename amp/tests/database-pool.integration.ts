@@ -9,7 +9,7 @@ import { migrate } from "../scripts/migrate.js";
 
 test(
   "hosted API shares a three-connection budget across accounts, learning and family services",
-  { skip: !process.env.AMP_TEST_DATABASE_URL, timeout: 30000 },
+  { skip: !process.env.AMP_TEST_DATABASE_URL, timeout: 60000 },
   async () => {
     const schema = `amp_pool_${randomUUID().replaceAll("-", "")}`;
     const admin = new Pool({
@@ -72,23 +72,45 @@ test(
       // The OS assigns a free port; this test does not compete with browser suites.
       let origin = "";
       let output = "";
+      let startupErrors = "";
+      let spawnError: Error | undefined;
+      const closed = new Promise<void>((resolve) =>
+        child!.once("close", resolve),
+      );
+      child.on("error", (error) => {
+        spawnError = error;
+      });
       child.stdout!.on("data", (chunk) => {
-        output += chunk.toString();
+        output = (output + chunk.toString()).slice(-4096);
         origin =
           output.match(
             /Server listening at (http:\/\/127\.0\.0\.1:\d+)/,
           )?.[1] ?? origin;
       });
-      child.stderr!.resume();
-      for (let i = 0; i < 200 && !origin; i++) {
-        assert.equal(
-          child.exitCode,
-          null,
-          "hosted API must not exit before readiness",
-        );
+      child.stderr!.on("data", (chunk) => {
+        startupErrors = (startupErrors + chunk.toString()).slice(-4096);
+      });
+      // Concurrent database suites compete for CPU while tsx loads the API.
+      // Bound startup separately from the workload and keep the cap assertions exact.
+      const readyDeadline = performance.now() + 20000;
+      while (!origin && performance.now() < readyDeadline) {
+        if (
+          spawnError ||
+          child.exitCode !== null ||
+          child.signalCode !== null
+        ) {
+          // Exit can precede the last stderr chunk; allow bounded pipe drainage.
+          await Promise.race([closed, delay(1000)]);
+          throw new Error(
+            `Hosted API failed before readiness (exit=${child.exitCode}, signal=${child.signalCode}): ${spawnError?.message ?? startupErrors}`,
+          );
+        }
         await delay(25);
       }
-      assert.ok(origin, "hosted API listens on its assigned port");
+      assert.ok(
+        origin,
+        `Hosted API did not listen within 20 seconds (exit=${child.exitCode}, signal=${child.signalCode}). stderr: ${startupErrors || "<empty>"}; stdout: ${output || "<empty>"}`,
+      );
       const get = async (path: string) => {
         const response = await fetch(`${origin}${path}`, {
           headers: { authorization: `Bearer ${token}` },
@@ -153,7 +175,11 @@ test(
       sampling = false;
       await sampler;
       if (locked) await admin.query("ROLLBACK");
-      if (child && child.exitCode === null) {
+      if (
+        child?.pid !== undefined &&
+        child.exitCode === null &&
+        child.signalCode === null
+      ) {
         const exited = once(child, "exit");
         child.kill("SIGTERM");
         const deadline = setTimeout(() => child?.kill("SIGKILL"), 5000);

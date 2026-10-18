@@ -1,0 +1,30 @@
+{
+  "name": "@corpora/site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsx --tsconfig tsconfig.json scripts/build.tsx",
+    "test": "tsx --tsconfig tsconfig.json --test tests/*.test.ts",
+    "tsc": "tsc --noEmit",
+    "test:ui": "tsx --tsconfig tsconfig.json scripts/verify-ui.ts",
+    "preview": "tsx --tsconfig tsconfig.json scripts/serve.ts"
+  },
+  "dependencies": {
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "lighthouse": "12.8.2",
+    "playwright": "^1.55.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "chrome-launcher": "^1.2.1"
+  }
+}
