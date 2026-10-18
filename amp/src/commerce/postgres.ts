@@ -1,3 +1,4 @@
+import { recordTrialEvent } from "../server/trial-progress.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import type {
@@ -288,5 +289,8 @@ export async function applyCommerceEventInTransaction(
       JSON.stringify(event),
     ],
   );
+  // A conversion requires settled money, not a checkout click or a free grant.
+  if (event.type === "order.settled" && event.amountMinor > 0)
+    await recordTrialEvent(client, target.license.learnerId, "purchase");
   return next;
 }
