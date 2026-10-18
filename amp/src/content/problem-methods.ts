@@ -1,3 +1,4 @@
+import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
 import { inequalityMethods } from "./inequality-lessons";
@@ -14,6 +15,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...polynomialMethods,
+  ...circleMeasurementMethods,
   ...percentChangeMethods,
   ...inequalityMethods,
   ...linearSystemMethods,
