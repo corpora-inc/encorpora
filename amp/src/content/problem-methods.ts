@@ -1,3 +1,4 @@
+import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -6,6 +7,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
+  ...polynomialMethods,
   // Counting and early operations
   "count-objects": {
     goal: "Given a picture of dots, find how many there are.",
