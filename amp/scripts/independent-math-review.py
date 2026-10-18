@@ -21,7 +21,7 @@ from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequali
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
-from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures
+from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures, review_absolute_value_content, review_absolute_value_content_mutations
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 
@@ -255,6 +255,7 @@ def solve(public):
 
 def review(stream):
     review_absolute_value_fixtures()
+    review_absolute_value_content_mutations()
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
@@ -315,6 +316,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
     print('Independent linear-system coverage: ' + json.dumps(system_review.finish(count)), file=sys.stderr)

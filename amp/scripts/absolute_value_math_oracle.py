@@ -1,5 +1,10 @@
 """Independent exact solution of c|ax+b|+d=e by sign intervals."""
 import copy
+import json
+import subprocess
+import xml.etree.ElementTree as ET
+from collections import Counter
+from pathlib import Path
 import re
 from fractions import Fraction as F
 
@@ -169,5 +174,78 @@ def review_absolute_value_fixtures():
         else: raise ValueError('Malformed or mathematically invalid task accepted')
     return {'core': count, 'public': len(fixtures), 'mutants': len(bad)}
 
+
+
+
+def review_absolute_value_content(data=None):
+    if data is None:
+        app=Path(__file__).resolve().parent.parent
+        data=json.loads(subprocess.check_output(['node','--import','tsx','scripts/absolute-value-content-oracle.ts'],cwd=app,text=True))
+    totals=Counter()
+    for sheet in data['worksheets']:
+        problems=sheet['problems'];require(len(problems)==12 and sheet['replayMatches'],'Worksheet size or deterministic replay')
+        require(len({p['public']['prompt'] for p in problems})==12,'Duplicate equation in worksheet')
+        counts=Counter()
+        for p in problems:
+            public=p['public']; require(solve_absolute_value(public)==p['answer'],'Worksheet answer mismatch')
+            require(2<=len(public['response']['options'])<=4,'Published four-choice protocol exceeded')
+            equation=public['prompt'][6:].removesuffix('. Choose the complete set of real solutions.')
+            a,b,c,d,e=parse_equation(equation)
+            if not a or not c:
+                feature='constant-interior' if not a else 'zero-factor'
+                counts[feature]+=1
+                counts[(feature,solve_coefficients(a,b,c,d,e)==ALL_REAL)]+=1
+            else:
+                target=(e-d)/c
+                counts['positive' if target>0 else 'negative' if target<0 else 'zero']+=1
+            totals['problems']+=1
+        kind=sheet['templateId']
+        if kind.endswith('direct-equation'):
+            require((counts['positive'],counts['zero'],counts['negative'])==(7,1,4),'Direct worksheet loses target cases')
+        elif kind.endswith('affine-equation'):
+            require((counts['positive'],counts['zero'],counts['negative'])==(6,3,3),'Affine worksheet loses target cases')
+        else:
+            require((counts['positive'],counts['zero'],counts['negative'])==(4,2,2),'Transformed worksheet loses target cases')
+            require(all(counts[(feature,truth)]==1 for feature in ('constant-interior','zero-factor') for truth in (False,True)),'Missing true/false zero-coefficient case')
+    for fixture in data['notation']['valid']:
+        tex=fixture['tex'];require(isinstance(tex,str) and tex.count('\\left|')==tex.count('\\right|')>0,'Absolute-value expression is not fully typeset')
+    require(all(x['tex'] is None for x in data['notation']['invalid']),'Ambiguous or malformed bars accepted')
+    for fixture in data['notation']['prose']:
+        require(''.join(x['source'] for x in fixture['segments'])==fixture['source'],'Typesetting changed source characters')
+        if '|x|' in fixture['source']:
+            require(any(x['kind']=='math' and '|x|' in x['source'] for x in fixture['segments']),'Bars left untypeset in prose')
+    for figure in data['figures']:
+        center=2 if figure['shifted'] else 0
+        root=ET.fromstring(figure['html']);svg=root.find('svg');require(svg is not None,'Missing number line')
+        points=[p for p in svg.iter('circle') if 'data-solution' in p.attrib]
+        require([int(p.attrib['data-solution']) for p in points]==[center-3,center+3],'Incorrect solution points')
+        for p,value in zip(points,[center-3,center+3]):
+            require(F(p.attrib['cx'])==200+48*(value-center) and F(p.attrib['cy'])==110,'Incorrect distance coordinates')
+        values=[(e.text,F(e.attrib['x'])) for e in svg.iter('text') if e.attrib.get('y')=='148']
+        require([x[0] for x in values]==[str(x).replace('-','−') for x in range(center-3,center+4)],'Incorrect tick labels')
+        require([x[1] for x in values]==[200+48*(x-center) for x in range(center-3,center+4)],'Unequal unit spacing')
+        if not figure['shifted']:
+            zero=[p for p in svg.iter('circle') if 'data-zero-solution' in p.attrib]
+            require(len(zero)==1 and zero[0].attrib['cx']=='200' and zero[0].attrib['cy']=='254','Zero-distance solution point')
+    require({l['id'] for l in data['lessons']}==ABSOLUTE_VALUE,'Missing standalone lesson')
+    require([read_solution(l['workedExample']['answer']) for l in data['lessons']]==[frozenset({F(-3),F(3)}),frozenset({F(1,4),F(11,4)}),frozenset({F(-4,3),F(2)})],'Incorrect standalone worked answers')
+    return {'worksheets':len(data['worksheets']),'problems':totals['problems'],'figures':len(data['figures']),'notationFixtures':sum(len(x) for x in data['notation'].values())}
+
+def review_absolute_value_content_mutations():
+    app=Path(__file__).resolve().parent.parent
+    data=json.loads(subprocess.check_output(['node','--import','tsx','scripts/absolute-value-content-oracle.ts'],cwd=app,text=True))
+    mutants=[]
+    bad=copy.deepcopy(data);bad['figures'][0]['html']=bad['figures'][0]['html'].replace('cx="56"','cx="57"',1);mutants.append(bad)
+    bad=copy.deepcopy(data);bad['lessons'][0]['workedExample']['answer']='x = 3';mutants.append(bad)
+    bad=copy.deepcopy(data);bad['worksheets'][0]['problems'][1]=bad['worksheets'][0]['problems'][0];mutants.append(bad)
+    bad=copy.deepcopy(data);bad['notation']['valid'][0]['tex']=None;mutants.append(bad)
+    for bad in mutants:
+        try:review_absolute_value_content(bad)
+        except (ValueError,KeyError,TypeError):pass
+        else:raise ValueError('Corrupted absolute-value content accepted')
+    return len(mutants)
+
 if __name__ == '__main__':
     print(review_absolute_value_fixtures())
+    print(review_absolute_value_content())
+    print({'contentMutantsRejected':review_absolute_value_content_mutations()})
