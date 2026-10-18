@@ -1621,3 +1621,108 @@ html[data-input="pointer"] :focus-visible {
 .shell.app-shell.flow > section.welcome {
   margin-bottom: 32px;
 }
+/* Choose how to pay */
+.shell.purchase-shell > .choose-pay {
+  height: 100%;
+}
+.choose-pay {
+  width: min(100%, 800px);
+  margin: 0 auto;
+  /* The shell supplies the side gutter, as on every other page. */
+  padding: 16px 0 max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+.choose-pay::-webkit-scrollbar {
+  display: none;
+}
+.choose-pay-header {
+  display: flex;
+  height: auto;
+}
+.choose-pay-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+.choose-pay-intro h1 {
+  margin: 8px 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(32px, 7vw, 44px);
+}
+.choose-pay-intro h1:focus {
+  outline: none;
+}
+.choose-pay-intro p {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.choose-pay-intro .pay-for {
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.pay-option {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.pay-option h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.pay-option label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pay-option select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 12px;
+  background: var(--surface);
+}
+.pay-price {
+  margin: 0;
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.pay-price span,
+.pay-muted {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+.pay-muted {
+  margin: 0;
+}
+.pay-program {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-height: 56px;
+  padding: 10px 16px;
+  text-align: left;
+}
+.pay-program span {
+  font-weight: 500;
+  opacity: 0.85;
+}
+.family-get-access {
+  width: 100%;
+  margin: 0 0 12px;
+}

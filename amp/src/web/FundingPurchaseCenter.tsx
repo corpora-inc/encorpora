@@ -10,6 +10,9 @@ interface Props {
   learners: readonly { id: string; name: string }[];
   consentActive: boolean;
   onClose: () => void;
+  /** Selections made on the "how to pay" screen, used when available. */
+  preferredOfferId?: string;
+  preferredLearnerId?: string;
 }
 const errors: Record<string, string> = {
   verified_consent_required:
@@ -56,6 +59,8 @@ export function FundingPurchaseCenter({
   learners,
   consentActive,
   onClose,
+  preferredOfferId,
+  preferredLearnerId,
 }: Props) {
   const [offers, setOffers] = useState<PublicFundingOffer[]>([]),
     [requests, setRequests] = useState<PublicFundingRequest[]>([]);
@@ -146,7 +151,11 @@ export function FundingPurchaseCenter({
     setOffers(a.offers);
     setRequests(b.requests);
     setOfferId((old) =>
-      a.offers.some((o) => o.id === old) ? old : (a.offers[0]?.id ?? ""),
+      a.offers.some((o) => o.id === old)
+        ? old
+        : a.offers.some((o) => o.id === preferredOfferId)
+          ? preferredOfferId!
+          : (a.offers[0]?.id ?? ""),
     );
     setLoading(false);
   }
@@ -163,7 +172,11 @@ export function FundingPurchaseCenter({
   }, [identity]);
   useEffect(() => {
     setLearnerId((old) =>
-      learners.some((l) => l.id === old) ? old : (learners[0]?.id ?? ""),
+      learners.some((l) => l.id === old)
+        ? old
+        : learners.some((l) => l.id === preferredLearnerId)
+          ? preferredLearnerId!
+          : (learners[0]?.id ?? ""),
     );
   }, [learners, identity]);
   async function action(run: () => Promise<void>) {

@@ -8,6 +8,8 @@ import "./annual-purchase.css";
 import { FocusDialog } from "./PracticeWorkspace";
 export interface AnnualPurchaseProps {
   token: string;
+  /** The learner to select first, when it is in the family. */
+  preferredLearnerId?: string;
   identity: string;
   onClose: () => void;
   onAccessChanged?: () => void;
@@ -69,6 +71,7 @@ function PurchasePanel({
   onAccessChanged,
   returnState,
   purchaseId,
+  preferredLearnerId,
 }: AnnualPurchaseProps) {
   const tokenRef = useRef(token);
   tokenRef.current = token;
@@ -166,8 +169,13 @@ function PurchasePanel({
             }
           } else
             setLearnerId(
-              summary.value.learners.find((learner) => !learner.deletedAt)
-                ?.id ?? "",
+              (
+                summary.value.learners.find(
+                  (learner) =>
+                    !learner.deletedAt && learner.id === preferredLearnerId,
+                ) ??
+                summary.value.learners.find((learner) => !learner.deletedAt)
+              )?.id ?? "",
             );
         } else
           setError(
