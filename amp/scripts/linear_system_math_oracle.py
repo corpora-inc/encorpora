@@ -394,13 +394,18 @@ def review_linear_system_explanation(public, steps, feedback=None):
             require(product == row[index]*point[index], 'Incorrect substituted product')
             substitution = row,index,product
         removed = re.match(r'(Add|Subtract) (.*?) (to|from) both sides: (.*?)\.',step)
-        if removed:
+        zero_product = re.fullmatch(r'The equation becomes (.*?)\.', step)
+        if removed or zero_product:
             require(substitution is not None, 'Coordinate recovery lacks its original substitution')
             row,index,product = substitution
-            operation,magnitude,direction,chain = removed.groups()
-            require(operation == ('Add' if product < 0 else 'Subtract') and
-                    direction == ('to' if product < 0 else 'from') and arithmetic(magnitude) == abs(product),
-                    'Incorrect operation when removing the substituted term')
+            if zero_product:
+                require(product == 0, 'A nonzero substituted term cannot simply disappear')
+                chain = zero_product[1]
+            else:
+                operation,magnitude,direction,chain = removed.groups()
+                require(operation == ('Add' if product < 0 else 'Subtract') and
+                        direction == ('to' if product < 0 else 'from') and arithmetic(magnitude) == abs(product),
+                        'Incorrect operation when removing the substituted term')
             left, numeric = chain.split(' = ',1)
             value = numeric_chain(numeric)
             actual = equation(f'{left} = {number_text(value)}',96,96,12)
@@ -657,6 +662,19 @@ def review_linear_system_fixtures():
         'Check the second equation: 3 × 3 + 2 × (−2) = 9 − 4 = 5, matching 5.',
     ]
     review_linear_system_explanation(fixtures[0][0],worked)
+    zero_worked = [
+        'Multiply every term in the first equation by 3: 6x + 9y = 0.',
+        'Multiply every term in the second equation by −2: −6x − 4y = 0.',
+        'Add corresponding sides. The x terms cancel: 5y = 0 + 0 = 0.',
+        'Divide both sides by 5: y = 0 ÷ 5 = 0.',
+        'Substitute y = 0 in the original first equation, 2x + 3y = 0. Its y term is 3 × 0 = 0.',
+        'The equation becomes 2x = 0.',
+        'Divide both sides by 2: x = 0 ÷ 2 = 0.',
+        'Write x first and y second: (0, 0).',
+        'Check the first equation: 2 × 0 + 3 × 0 = 0 + 0 = 0, matching 0.',
+        'Check the second equation: 3 × 0 + 2 × 0 = 0 + 0 = 0, matching 0.',
+    ]
+    review_linear_system_explanation(fixtures[4][0],zero_worked)
     worked_mutations=[]
     for index,before,after in [
         (0,'9y','8y'), (1,'−10','10'), (2,'5y','4y'), (3,'= −2','= −3'),
@@ -665,6 +683,7 @@ def review_linear_system_fixtures():
     ]:
         changed=list(worked); changed[index]=changed[index].replace(before,after); worked_mutations.append(changed)
     worked_mutations += [worked[:3]+worked[4:],worked[:-1],worked[-3:]]
+    changed=list(worked); changed[5]='The equation becomes 2x = 6.'; worked_mutations.append(changed)
     for changed in worked_mutations:
         try:
             review_linear_system_explanation(fixtures[0][0],changed)
