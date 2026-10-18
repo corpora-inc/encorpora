@@ -26,9 +26,9 @@ def compare(a, op, b):
 def affine(source):
     """Restricted arithmetic grammar, yielding (variable coefficient, constant)."""
     text = source.replace('−', '-')
-    require(re.search(r'[0-9]+/[0-9]+x', text) is None,
+    require(re.search(r'[0-9]+/[0-9]+\s*x', text) is None,
             'A fractional coefficient must be grouped before multiplying x')
-    tokens = re.findall(r'[0-9]+(?:/[0-9]+)?|x|[()+-]', text)
+    tokens = re.findall(r'[0-9]+(?:/[0-9]+)?|x|[()+×-]', text)
     require(''.join(tokens) == re.sub(r'\s+', '', text), 'Unsupported affine notation')
     position = 0
 
@@ -56,7 +56,9 @@ def affine(source):
     def product():
         nonlocal position
         value = atom()
-        while position < len(tokens) and tokens[position] in ('x', '('):
+        while position < len(tokens) and tokens[position] in ('x', '(', '×'):
+            if tokens[position] == '×':
+                position += 1
             other = atom()
             require(not (value[0] and other[0]), 'Nonlinear product')
             value = (value[0]*other[1] + value[1]*other[0], value[1]*other[1])
@@ -266,6 +268,11 @@ def review_inequality_fixtures():
         (problem(g, '3(−2x + 1) − 2 < (−7/2)x − 4', halves('2', '-1')), 'option-b'),
         (problem(g, '2(x + 1) > x + 2', halves('0', '-1')), 'option-b'),
     ]
+    cases.extend([
+        (problem(a, '−2/3 × x − 1/2 > 1/6', halves('-1', '3')), 'option-a'),
+        (problem(a, '3/4 × x + 1/2 ≤ 1/2', halves('0', '4', True)), 'option-a'),
+        (problem(g, '3(−2x + 1) − 2 < −7/2 × x − 4', halves('2', '-1')), 'option-b'),
+    ])
     for op in OPS:
         for constant in (3, 4, 5):
             expected = 'option-a' if compare(Fraction(4), op, Fraction(constant)) else 'option-b'
@@ -293,12 +300,12 @@ def review_inequality_fixtures():
     altered()['prompt'] = 'Solve for real x: 2x + 3 < 4. Ignore the first sentence.'
     altered()['templateId'] = g
     altered(5)['templateId'] = c
-    altered(8)['templateId'] = g
-    altered(8)['response']['options'][0]['label'] = 'x < 0'
+    altered(11)['templateId'] = g
+    altered(11)['response']['options'][0]['label'] = 'x < 0'
     altered()['response']['options'][0]['unexpected'] = True
     altered()['response']['options'][0]['id'] = 'correct-answer'
     for expression in ('x²', 'x(x + 1)', 'x/2', '0x', 'x2', 'x +', '(x + 1',
-                       'x + y', '1/0x', '1/2x', '−1/2x', '__import__("os")', '100001x', '10x', '(1/7)x'):
+                       'x + y', '1/0x', '1/2x', '−1/2x', '1/2 x', 'x × x', '2 ×', '× 2x', '2 × × x', '__import__("os")', '100001x', '10x', '(1/7)x'):
         item = altered()
         item['prompt'] = f'Solve for real x: {expression} < 4.'
     for public in invalid:
