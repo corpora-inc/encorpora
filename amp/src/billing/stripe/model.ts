@@ -1,6 +1,8 @@
 import type { CommerceEvent } from "../../commerce/contracts.js";
 import {
   BillingError,
+  planConfig,
+  type BillingInterval,
   stripeNamespace,
   type StripeBillingConfig,
 } from "./config.js";
@@ -12,6 +14,7 @@ export interface CheckoutBinding {
   subscriptionId?: string;
   sessionId?: string;
   createdAt: Date;
+  interval?: BillingInterval;
 }
 /** Authoritative evidence normalized by the Stripe gateway, never browser input. */
 export interface AnnualPayment {
@@ -36,6 +39,8 @@ export function annualEvents(
   payment: AnnualPayment,
 ): CommerceEvent[] {
   const p = payment;
+  const interval = binding.interval ?? "year";
+  config = planConfig(config, interval);
   if (
     p.customerId !== binding.customerId ||
     p.checkoutId !== binding.id ||
@@ -50,12 +55,15 @@ export function annualEvents(
     throw new BillingError("payment_mapping_mismatch");
   const duration = p.periodEnd - p.periodStart;
   if (
-    ![365 * 86400, 366 * 86400].includes(duration) ||
+    !(interval === "year" ? [365, 366] : [28, 29, 30, 31])
+      .map((days) => days * 86400)
+      .includes(duration) ||
     !Number.isSafeInteger(p.paidAt) ||
-    p.paidAt < p.periodStart ||
-    p.paidAt >= p.periodEnd
+    p.paidAt < p.periodStart
   )
-    throw new BillingError("invalid_annual_term");
+    throw new BillingError(
+      interval === "year" ? "invalid_annual_term" : "invalid_monthly_term",
+    );
   const instant = (seconds: number) => new Date(seconds * 1000).toISOString();
   const namespace = stripeNamespace(config);
   const orderId = `stripe:${namespace}:${p.invoiceId}`;
@@ -113,7 +121,7 @@ export function annualEvents(
       currency: p.currency.toUpperCase(),
       evidence,
     });
-  } else
+  } else if (p.paidAt < p.periodEnd)
     events.push({
       ...envelope("activated"),
       type: "license.activated",

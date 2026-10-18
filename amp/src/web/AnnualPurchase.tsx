@@ -5,9 +5,11 @@ import type {
 } from "../billing/stripe/purchase-contracts";
 import type { FamilySummary } from "../family/contracts";
 import "./annual-purchase.css";
+import { PlanOptions } from "./PlanOptions";
 import { FocusDialog } from "./PracticeWorkspace";
 export interface AnnualPurchaseProps {
   token: string;
+  preferredInterval?: "year" | "month";
   /** The learner to select first, when it is in the family. */
   preferredLearnerId?: string;
   identity: string;
@@ -46,7 +48,9 @@ const messages: Record<string, string> = {
   offer_changed:
     "The offer changed. Reload this screen to review the current price.",
   offer_currency_unsupported:
-    "Annual checkout requires a configured US-dollar offer.",
+    "Card checkout requires a configured US-dollar offer.",
+  checkout_plan_conflict:
+    "An existing checkout uses a different plan. Check access to load that plan; let the checkout expire before changing it.",
   sign_in_required: "Sign in again to view your family’s billing information.",
 };
 function paymentUrl(
@@ -72,6 +76,7 @@ function PurchasePanel({
   returnState,
   purchaseId,
   preferredLearnerId,
+  preferredInterval,
 }: AnnualPurchaseProps) {
   const tokenRef = useRef(token);
   tokenRef.current = token;
@@ -83,6 +88,7 @@ function PurchasePanel({
   const [terms, setTerms] = useState(false);
   const termsTrigger = useRef<HTMLElement | null>(null);
   const [offer, setOffer] = useState<AnnualOffer>();
+  const [offers, setOffers] = useState<AnnualOffer[]>([]);
   const [family, setFamily] = useState<FamilySummary>();
   const [available, setAvailable] = useState<boolean>();
   const [learnerId, setLearnerId] = useState("");
@@ -128,7 +134,9 @@ function PurchasePanel({
   useEffect(() => {
     const epoch = generation.current;
     void Promise.allSettled([
-      api<{ available: boolean; offer?: AnnualOffer }>("/billing/offer"),
+      api<{ available: boolean; offer?: AnnualOffer; offers?: AnnualOffer[] }>(
+        "/billing/offer",
+      ),
       api<FamilySummary>("/family"),
       purchaseId
         ? api<{ learnerId: string }>(
@@ -140,7 +148,14 @@ function PurchasePanel({
         if (!alive.current || epoch !== generation.current) return;
         if (result.status === "fulfilled") {
           setAvailable(result.value.available);
-          setOffer(result.value.offer);
+          const plans =
+            result.value.offers ??
+            (result.value.offer ? [result.value.offer] : []);
+          setOffers(plans);
+          setOffer(
+            plans.find((plan) => plan.interval === preferredInterval) ??
+              result.value.offer,
+          );
         } else
           setError(
             result.reason instanceof Error
@@ -200,6 +215,11 @@ function PurchasePanel({
       );
       if (!alive.current || stamp !== revision.current) return;
       setStatus(next);
+      if (next.interval)
+        setOffer(
+          (current) =>
+            offers.find((plan) => plan.interval === next.interval) ?? current,
+        );
       if (next.phase === "licensed") {
         setNotice("Verified access is ready for this learner.");
         onAccessChanged?.();
@@ -233,6 +253,7 @@ function PurchasePanel({
           learnerId,
           requestId: requestId.current,
           offerId: offer.id,
+          interval: offer.interval,
         });
       let result;
       try {
@@ -300,7 +321,7 @@ function PurchasePanel({
     value ? new Date(value).toLocaleDateString() : "";
   const statusCopy: Record<string, [string, string]> = {
     ready: [
-      "Ready when you are",
+      "Review your plan",
       returnState === "canceled"
         ? "Checkout was left unfinished. Continue when you’re ready."
         : "Review the final total in secure checkout before payment.",
@@ -325,6 +346,10 @@ function PurchasePanel({
       "Access is scheduled",
       `${date(status?.startsAt)} – ${date(status?.endsAt)}. Another purchase is not needed.`,
     ],
+    "awaiting-payment": [
+      "No current paid access",
+      "A renewal may be processing. Check access shortly, or open billing to check payment or cancellation.",
+    ],
     "needs-review": [
       "Billing review needed",
       "Check billing before starting a replacement. For missing access, contact this installation’s support service.",
@@ -346,7 +371,7 @@ function PurchasePanel({
           Back to family
         </button>
         <h1 id="annual-title" tabIndex={-1} ref={heading}>
-          Annual access
+          {offers.length > 1 ? "Learning access" : "Annual access"}
         </h1>
       </header>
       {offer?.mode === "test" && (
@@ -380,14 +405,27 @@ function PurchasePanel({
           <div
             className={`annual-plan ${canPurchase ? "annual-plan-ready" : ""}`}
           >
-            <p className="annual-price">
-              {offer.formattedAmount}
-              <span> USD / year</span>
-            </p>
+            {offers.length > 1 && (
+              <PlanOptions
+                offers={offers}
+                selected={offer.id}
+                disabled={busy || !canPurchase || phase === "checkout-open"}
+                onSelect={(next) => {
+                  setOffer(next);
+                  requestId.current = undefined;
+                }}
+              />
+            )}
+            {offers.length <= 1 && (
+              <p className="annual-price">
+                {offer.formattedAmount}
+                <span> USD / {offer.interval}</span>
+              </p>
+            )}
             <p>One learner · practice, lessons & books</p>
             {canPurchase && (
               <p className="annual-renewal">
-                Renews automatically each year until canceled.
+                Renews automatically each {offer.interval} until canceled.
                 <br />
                 Review final total and tax in checkout.
               </p>
@@ -401,7 +439,7 @@ function PurchasePanel({
             </p>
           ) : checking ? (
             <p role="status">Checking access…</p>
-          ) : copy ? (
+          ) : phase === "ready" && returnState !== "canceled" ? null : copy ? (
             <>
               <h2>{copy[0]}</h2>
               <p>{copy[1]}</p>
@@ -409,7 +447,7 @@ function PurchasePanel({
           ) : available === false ? (
             <>
               <h2>Purchases are not available here</h2>
-              <p>No annual checkout is configured. No payment can be taken.</p>
+              <p>No card checkout is configured. No payment can be taken.</p>
             </>
           ) : !choices.length && family ? (
             <>
@@ -417,7 +455,7 @@ function PurchasePanel({
               <p>Return to Family to create a learner.</p>
             </>
           ) : (
-            <p role="status">Loading the annual offer…</p>
+            <p role="status">Loading payment plans…</p>
           )}
           {offer && canPurchase && !consentActive && (
             <p>Recorded parent consent is required before purchase.</p>
@@ -443,9 +481,13 @@ function PurchasePanel({
                     : "Continue to secure checkout"}
           </button>
         ) : linked &&
-          ["licensed", "scheduled", "needs-review", "deleted"].includes(
-            phase ?? "",
-          ) ? (
+          [
+            "licensed",
+            "scheduled",
+            "awaiting-payment",
+            "needs-review",
+            "deleted",
+          ].includes(phase ?? "") ? (
           <button
             className="annual-primary"
             type="button"
@@ -480,19 +522,25 @@ function PurchasePanel({
               Terms &amp; details
             </button>
           )}
-          {learnerId && available && canPurchase && (
-            <button
-              type="button"
-              disabled={busy || checking}
-              onClick={() => void refresh(learnerId, ++revision.current)}
-            >
-              Check access
-            </button>
-          )}
+          {learnerId &&
+            available &&
+            (canPurchase || phase === "awaiting-payment") && (
+              <button
+                type="button"
+                disabled={busy || checking}
+                onClick={() => void refresh(learnerId, ++revision.current)}
+              >
+                Check access
+              </button>
+            )}
           {linked &&
-            !["licensed", "scheduled", "needs-review", "deleted"].includes(
-              phase ?? "",
-            ) && (
+            ![
+              "licensed",
+              "scheduled",
+              "awaiting-payment",
+              "needs-review",
+              "deleted",
+            ].includes(phase ?? "") && (
               <button
                 type="button"
                 disabled={busy}
@@ -505,13 +553,13 @@ function PurchasePanel({
       </footer>
       {terms && (
         <FocusDialog
-          title="Annual subscription details"
+          title="Subscription details"
           close={() => setTerms(false)}
           returnFocus={termsTrigger.current}
         >
           <p>
-            {offer?.formattedAmount} USD per year for one learner. Billed
-            annually and renewed automatically each year unless canceled.
+            {offer?.formattedAmount} USD per {offer?.interval} for one learner.
+            Renews automatically each {offer?.interval} unless canceled.
           </p>
           <p>
             Includes adaptive practice and the available lesson and book
@@ -531,8 +579,9 @@ function PurchasePanel({
           </p>
           <p>
             Returning from checkout does not confirm payment. Access starts
-            after payment verification. Refunds and unresolved billing require
-            this installation’s support service.
+            after payment verification. Request a refund within 30 days of
+            payment through support. A full refund removes access for that
+            payment; cancellation alone does not refund a payment.
           </p>
           {notice && <p>{notice}</p>}
         </FocusDialog>
