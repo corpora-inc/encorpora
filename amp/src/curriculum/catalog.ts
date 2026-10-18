@@ -1340,3 +1340,50 @@ for (const [id, description] of [
     description,
     status: "implemented",
   });
+
+// Bounded numerical calculations leave broader interpretation facets planned.
+for (const [skillId, facets] of [
+  [
+    "mean-median",
+    [
+      [
+        "finite-median",
+        "Calculate the exact median of a finite list, retaining repeated observations.",
+      ],
+      [
+        "finite-range",
+        "Calculate the range of a finite list as maximum minus minimum.",
+      ],
+    ],
+  ],
+  [
+    "variability",
+    [
+      [
+        "median-halves-iqr",
+        "Calculate interquartile range under an explicit median-of-halves convention.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const prerequisite of [
+    "decimal-arithmetic",
+    "absolute-value",
+    "signed-addition",
+  ])
+    if (!skill.prerequisites.includes(prerequisite))
+      skill.prerequisites.push(prerequisite);
+  for (const [id, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${id}`,
+      description,
+      status: "implemented",
+    });
+  skill.alignments.push({
+    standardId: "SAT.data",
+    basis: "editorial",
+    facet:
+      "Calculate bounded numerical measures of center or spread; graphical interpretation, distribution comparison, and selecting an appropriate summary require separate assessment.",
+  });
+}

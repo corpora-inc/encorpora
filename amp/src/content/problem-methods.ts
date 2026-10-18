@@ -1,3 +1,4 @@
+import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { inequalityMethods } from "./inequality-lessons";
 import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
@@ -9,6 +10,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...polynomialMethods,
   ...inequalityMethods,

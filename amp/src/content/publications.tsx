@@ -1,3 +1,5 @@
+import { descriptiveStatisticsWorksheet } from "./descriptive-statistics-worksheets";
+import { descriptiveStatisticsTemplates } from "../math/descriptive-statistics-practice";
 import { inequalityWorksheet } from "./inequality-worksheets";
 import { linearSystemWorksheet } from "./linear-system-worksheets";
 import { linearSystemTemplates } from "../math/linear-system-practice";
@@ -19,14 +21,16 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    linearSystemTemplates.some((t) => t.id === id)
-      ? linearSystemWorksheet(id, lesson.id, edition)
-      : inequalityTemplates.some((t) => t.id === id)
-        ? inequalityWorksheet(id, lesson.id, edition)
-        : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
-          Array.from({ length: 12 }, (_, i) =>
-            generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
-          )),
+    descriptiveStatisticsTemplates.some((t) => t.id === id)
+      ? descriptiveStatisticsWorksheet(id, lesson.id, edition)
+      : linearSystemTemplates.some((t) => t.id === id)
+        ? linearSystemWorksheet(id, lesson.id, edition)
+        : inequalityTemplates.some((t) => t.id === id)
+          ? inequalityWorksheet(id, lesson.id, edition)
+          : (rightTriangleWorksheetProblems(id, lesson.id, edition) ??
+            Array.from({ length: 12 }, (_, i) =>
+              generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
+            )),
   );
   const kindLabel =
     kind === "lesson"

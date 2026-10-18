@@ -1,3 +1,4 @@
+import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
@@ -13,6 +14,12 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "descriptive-median")
+    return <DescriptiveStatisticsIllustration kind="median" />;
+  if (kind === "descriptive-range")
+    return <DescriptiveStatisticsIllustration kind="range" />;
+  if (kind === "descriptive-iqr")
+    return <DescriptiveStatisticsIllustration kind="iqr" />;
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
