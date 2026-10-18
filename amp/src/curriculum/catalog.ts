@@ -1345,3 +1345,26 @@ for (const [suffix, description] of [
     description: description!,
     status: "planned",
   });
+
+const linearSystemSkill = skills.find((s) => s.id === "linear-systems")!;
+linearSystemSkill.alignments.push({
+  standardId: "SAT.algebra",
+  facet:
+    "Solve two-variable linear systems with numerical coefficients and distinguish zero, one, and infinitely many shared ordered pairs; modeling and symbolic parameter conditions require separate assessment.",
+  basis: "editorial",
+});
+for (const [id, description] of [
+  [
+    "ordered-pair-solutions",
+    "Find the exact ordered pair satisfying two linear equations and check both original equations.",
+  ],
+  [
+    "solution-count",
+    "Distinguish zero, one, and infinitely many shared ordered pairs of two linear equations.",
+  ],
+])
+  linearSystemSkill.facets.push({
+    id: `linear-systems.${id}`,
+    description,
+    status: "implemented",
+  });

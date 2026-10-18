@@ -1,5 +1,6 @@
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
+import { LinearSystemIllustration } from "./LinearSystemIllustration";
 import {
   RightTriangleOrientation,
   PythagoreanRearrangement,
@@ -21,6 +22,10 @@ export function LessonIllustration({
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
   if (kind === "inequality-half-lines") return <InequalityHalfLines />;
+  if (kind === "linear-system-intersection")
+    return <LinearSystemIllustration kind="intersection" />;
+  if (kind === "linear-system-count")
+    return <LinearSystemIllustration kind="count" />;
   const rows = [
     { label: "One third", parts: 3, selected: 1, group: 1, y: 36 },
     {

@@ -1,5 +1,6 @@
 import { percentChangePrinciples } from "./percent-change-lessons";
 import { inequalityPrinciples } from "./inequality-lessons";
+import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
@@ -10,6 +11,7 @@ export const principles: Record<string, string> = {
   ...polynomialPrinciples,
   ...percentChangePrinciples,
   ...inequalityPrinciples,
+  ...linearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":
     "One-to-one correspondence: each object is matched with exactly one counting number; the last number named is the cardinality of the set.",

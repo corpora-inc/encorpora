@@ -3,6 +3,10 @@ import {
   generatePercentChangeProblem,
 } from "./percent-change-practice";
 import {
+  linearSystemTemplates,
+  generateLinearSystemProblem,
+} from "./linear-system-practice";
+import {
   inequalityTemplates,
   generateInequalityProblem,
 } from "./inequality-practice";
@@ -172,6 +176,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
+  ...linearSystemTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -289,6 +294,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   const preserveAlgebra = [
     ...percentChangeTemplates,
     ...inequalityTemplates,
+    ...linearSystemTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -314,6 +320,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (linearSystemTemplates.some((t) => t.id === templateId))
+    return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))
     return generateInequalityProblem(templateId, seed);
   if (rightTriangleTemplates.some((t) => t.id === templateId))

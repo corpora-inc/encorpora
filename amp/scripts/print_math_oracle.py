@@ -178,10 +178,53 @@ PROSE = [
     'The variable x has coefficient −1.',
     r'$\notacommand{x}$', '<img src=x onerror=alert(1)> + 2',
 ]
+ORDERED_PAIRS = [
+    ('(3/2, −1)', {}, (Fraction(3, 2), Fraction(-1))),
+    ('(−3/2, 1/4)', {}, (Fraction(-3, 2), Fraction(1, 4))),
+    ('(+2, -3/4)', {}, (Fraction(2), Fraction(-3, 4))),
+    ('(0, 0)', {}, (Fraction(0), Fraction(0))),
+    ('(0.5, 2)', {}, (Fraction(1, 2), Fraction(2))),
+    ('(x, y)', {'x': -2, 'y': 3}, (Fraction(-2), Fraction(3))),
+    ('(−x, +y)', {'x': -2, 'y': 3}, (Fraction(2), Fraction(3))),
+]
+PAIR_PROSE = 'Point (−3/2, 1/4), then (0, 0).'
+PAIR_LITERAL = ['(red, blue)', '(1,2)', '(1, 2, 3)', '(x + 1, y)',
+                '(1/, 2)', '(1, )', '(1,234)', '(1,234, 5)', '(a, b)']
+
+
+def fixture_sources():
+    return ([item[0] for item in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE +
+            [item[0] for item in DELIMITED] + BOUNDARIES +
+            [item[0] for item in ORDERED_PAIRS] + [PAIR_PROSE] + PAIR_LITERAL)
+
+
+def evaluate_pair(root, variables):
+    """Read two fenced MathML operands; never infer them from generated TeX."""
+    while tag(root) in ('math', 'semantics', 'mrow', 'mstyle', 'mpadded'):
+        children = [child for child in root if tag(child) != 'annotation']
+        if len(children) != 1:
+            break
+        root = children[0]
+    children = []
+    for child in root:
+        if tag(child) in ('mtext', 'mspace'):
+            require(not ''.join(child.itertext()).strip(), 'Non-whitespace text inside an ordered pair')
+        else:
+            children.append(child)
+    require(len(children) >= 5 and tag(children[0]) == tag(children[-1]) == 'mo' and
+            ''.join(children[0].itertext()) == '(' and ''.join(children[-1].itertext()) == ')',
+            'An ordered pair needs both outer parentheses')
+    separators = [i for i, child in enumerate(children)
+                  if tag(child) == 'mo' and ''.join(child.itertext()) == ',']
+    require(len(separators) == 1, 'An ordered pair needs exactly one coordinate comma')
+    comma = separators[0]
+    require(1 < comma < len(children)-2, 'An ordered pair needs two coordinates')
+    return (evaluate_row(children[1:comma], variables, 1),
+            evaluate_row(children[comma+1:-1], variables, 1))
 
 
 def check_records(records):
-    sources = [item[0] for item in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE + [item[0] for item in DELIMITED] + BOUNDARIES
+    sources = fixture_sources()
     require(len(records) == len(sources), 'Incomplete print review response')
     by_source = {}
     for source, record in zip(sources, records):
@@ -265,7 +308,29 @@ def check_records(records):
     require(any(s['kind'] == 'math' and s['source'] == 'x' for s in by_source[PROSE[7]]['segments']),
             'A standalone reference to x should use mathematical type')
     require(PROSE[8] in by_source[PROSE[8]]['html'], 'Failed TeX did not preserve original source')
-    return {'arithmetic': len(ARITHMETIC), 'structural': len(STRUCTURAL), 'literal': len(LITERAL), 'prose': len(PROSE), 'delimited': len(DELIMITED), 'boundaries': len(BOUNDARIES)}
+    for source, variables, expected in ORDERED_PAIRS:
+        record = by_source[source]
+        roots = math_roots(record['html'])
+        require(len(roots) == 1 and len(record['segments']) == 1 and
+                record['segments'][0]['kind'] == 'math', 'An ordered pair must be one complete math segment')
+        require(evaluate_pair(roots[0], variables) == expected, 'An ordered pair changed coordinate order, sign or value')
+        require(sum(tag(element) == 'mfrac' for element in roots[0].iter()) == source.count('/'),
+                'Fractional coordinates must use stacked fraction structure')
+    prose_segments = by_source[PAIR_PROSE]['segments']
+    require([(s['kind'], s['source']) for s in prose_segments] ==
+            [('text','Point '), ('math','(−3/2, 1/4)'), ('text',', then '),
+             ('math','(0, 0)'), ('text','.')], 'Ordered-pair punctuation or prose boundaries changed')
+    roots = math_roots(by_source[PAIR_PROSE]['html'])
+    require(len(roots) == 2 and [evaluate_pair(root,{}) for root in roots] ==
+            [(Fraction(-3,2),Fraction(1,4)), (Fraction(0),Fraction(0))],
+            'Pairs embedded in prose changed mathematical meaning')
+    for source in PAIR_LITERAL:
+        require(not math_roots(by_source[source]['html']) and
+                all(s['kind'] == 'text' for s in by_source[source]['segments']),
+                f'Unsupported pair or ordinary prose was guessed: {source}')
+        if source != '(1,234)':
+            require(by_source[source]['tex'] is None, f'Unsupported coordinate syntax accepted: {source}')
+    return {'arithmetic': len(ARITHMETIC), 'structural': len(STRUCTURAL), 'literal': len(LITERAL), 'prose': len(PROSE), 'delimited': len(DELIMITED), 'boundaries': len(BOUNDARIES), 'orderedPairs': len(ORDERED_PAIRS), 'pairBoundaries': len(PAIR_LITERAL)+1}
 
 
 def self_test():
@@ -284,7 +349,7 @@ def self_test():
 
 def review_mutations(records):
     from copy import deepcopy
-    sources = [s for s, _, _ in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE + [s for s, _, _ in DELIMITED] + BOUNDARIES
+    sources = fixture_sources()
     def changed(source, field, value):
         copy = deepcopy(records)
         copy[sources.index(source)][field] = value
@@ -305,6 +370,12 @@ def review_mutations(records):
         changed(PROSE[1], 'segments', [{'kind': 'math', 'source': PROSE[1], 'tex': '3/m'}]),
         changed(PROSE[8], 'html', 'notacommand'),
         changed(PROSE[9], 'html', '<img src=x onerror=alert(1)> + 2'),
+        changed(ORDERED_PAIRS[0][0], 'html', '<math><mrow><mo>(</mo><mn>3</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>)</mo></mrow></math>'),
+        changed(ORDERED_PAIRS[0][0], 'html', '<math><mrow><mo>(</mo><mo>−</mo><mn>1</mn><mo>,</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow></math>'),
+        changed(ORDERED_PAIRS[0][0], 'html', '<math><mrow><mo>(</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>−</mo><mn>1</mn><mo>)</mo></mrow></math>'),
+        changed(ORDERED_PAIRS[0][0], 'html', '<math><mrow><mo>(</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>,</mo><mo>−</mo><mn>1</mn></mrow></math>'),
+        changed(PAIR_PROSE, 'segments', [{'kind':'math','source':PAIR_PROSE,'tex':'(0,0)'}]),
+        changed('(1,234)', 'segments', [{'kind':'math','source':'(1,234)','tex':'(1,234)'}]),
     ]
     for mutated in mutations:
         try:
@@ -319,7 +390,7 @@ def review_print_math():
     self_test()
     root = Path(__file__).resolve().parent.parent
     result = subprocess.run(['node', '--import', 'tsx', str(root/'scripts/export-print-math.ts')],
-                            cwd=root, input=json.dumps([s for s, _, _ in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE + [s for s, _, _ in DELIMITED] + BOUNDARIES),
+                            cwd=root, input=json.dumps(fixture_sources()),
                             text=True, capture_output=True, timeout=60)
     require(result.returncode == 0, f'Print fixture export failed: {result.stderr[:1000]}')
     records = json.loads(result.stdout)

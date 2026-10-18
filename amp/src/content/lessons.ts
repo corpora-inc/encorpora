@@ -1,5 +1,6 @@
 import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
+import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
@@ -27,6 +28,8 @@ export interface Lesson {
       | "percent-change-bars"
       | "percent-change-reverse"
       | "inequality-half-lines"
+      | "linear-system-intersection"
+      | "linear-system-count"
       | "right-triangle-orientation"
       | "pythagorean-rearrangement";
   }[];
@@ -502,6 +505,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
+  ...linearSystemLessons,
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,
