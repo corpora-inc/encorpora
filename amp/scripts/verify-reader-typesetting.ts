@@ -172,14 +172,13 @@ try {
             `source text changed: fixture ${index}: ${copy.textContent}`,
           );
         const bound = root.getBoundingClientRect();
-        if (
-          innerWidth === 320 &&
-          ((index === 9 && Math.abs(bound.width - 190) > 1) ||
-            (index === 10 && Math.abs(bound.width - 150) > 1))
-        )
-          errors.push(
-            `actual reader width changed: fixture ${index}, ${bound.width}px`,
-          );
+        // WebKit ignores bare wbr under nowrap. Require its empty parent to
+        // restore normal whitespace while the math-to-punctuation edge stays glued.
+        for (const br of root.querySelectorAll(".print-math-punctuation wbr"))
+          if (getComputedStyle(br.parentElement!).whiteSpace !== "normal")
+            errors.push(
+              `unbreakable WebKit operator boundary: fixture ${index}`,
+            );
         for (const math of root.querySelectorAll<HTMLElement>(".print-math")) {
           const r = math.getBoundingClientRect();
           if (r.left < bound.left - 1 || r.right > bound.right + 1)
@@ -311,6 +310,24 @@ try {
       );
     });
   assert.ok(brokenGap > 4, "multiline punctuation-gap mutation must fail");
+  // A bare wbr happens to work in Chromium, but regresses WebKit wrapping.
+  // Its structural guard must therefore reject it even in Chromium-only CI.
+  const bareBreaksRejected = await page.evaluate(() => {
+    const breaks = [
+      ...document.querySelectorAll(".print-math-punctuation wbr"),
+    ];
+    for (const br of breaks) br.parentElement!.replaceWith(br);
+    return (
+      breaks.length > 0 &&
+      breaks.some(
+        (br) => getComputedStyle(br.parentElement!).whiteSpace !== "normal",
+      )
+    );
+  });
+  assert.ok(
+    bareBreaksRejected,
+    "bare-break WebKit regression must be rejected",
+  );
   // Verify the real KaTeX font was loaded, rather than a fallback width.
   assert.equal(
     await page.evaluate(() =>
@@ -329,7 +346,7 @@ try {
       viewports: widths.length,
       labelChecks: 22 * widths.length,
       fixtures: fixtures.length,
-      rejectedLayoutMutations: 2,
+      rejectedLayoutMutations: 3,
       networkRequests: requests.length,
       output: out,
     }),
