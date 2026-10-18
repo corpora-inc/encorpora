@@ -13,6 +13,9 @@
   margin: 0;
 }
 .root h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   font-size: clamp(var(--text-title-min), 6vw, var(--text-title-max));
   line-height: 1.15;
   margin: var(--space-5) 0 var(--space-4);

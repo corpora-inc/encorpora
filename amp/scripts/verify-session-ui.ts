@@ -192,19 +192,46 @@ try {
       sawHeld = resolve;
     });
     let requests = 0;
+    let networkDone!: Promise<"finished" | "failed">;
+    let finishHandler!: () => void;
+    const handlerDone = new Promise<void>((resolve) => {
+      finishHandler = resolve;
+    });
     await page.route("**/api/v1/me", async (route) => {
       const snapshot = structuredClone(family);
       requests++;
-      if (requests === 2) {
-        sawHeld();
-        await released;
-        if (outcome === "error")
-          return route.fulfill({
-            status: 503,
-            json: { error: "obsolete_family_error" },
-          });
+      const isHeld = requests === 2;
+      try {
+        if (isHeld) {
+          const request = route.request();
+          // Mutation refresh cancels this exact query. Chromium may report an
+          // aborted request instead of a response; an unrelated /me is not proof.
+          networkDone = Promise.race([
+            page
+              .waitForEvent("requestfinished", {
+                predicate: (value) => value === request,
+              })
+              .then(() => "finished" as const),
+            page
+              .waitForEvent("requestfailed", {
+                predicate: (value) => value === request,
+              })
+              .then(() => "failed" as const),
+          ]);
+          sawHeld();
+          await released;
+          if (outcome === "error") {
+            await route.fulfill({
+              status: 503,
+              json: { error: "obsolete_family_error" },
+            });
+            return;
+          }
+        }
+        await route.fulfill({ json: fixtureMe(snapshot) });
+      } finally {
+        if (isHeld) finishHandler();
       }
-      await route.fulfill({ json: fixtureMe(snapshot) });
     });
     await page.route(
       "**/api/v1/family/learners/current-child/rename",
@@ -256,11 +283,9 @@ try {
         .getByRole("button", { name: "Learner", exact: true })
         .filter({ hasText: "After rename" })
         .waitFor({ state: "attached" });
-      const oldResponse = page.waitForResponse(
-        (response) => new URL(response.url()).pathname === "/api/v1/me",
-      );
       release();
-      await (await oldResponse).finished();
+      await handlerDone;
+      console.log(`Held ${outcome} request: ${await networkDone}`);
       await settledRender(page);
       assert.ok(requests >= 4);
       assert.equal(
