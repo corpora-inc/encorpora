@@ -41,7 +41,13 @@ export async function registerStripeRoutes(
       reply.header("Cache-Control", "no-store");
       const offer = annualOffer(options.config);
       await gateway.verifyCatalog();
-      return { available: true, offer };
+      return {
+        available: true,
+        offer,
+        offers: options.config.monthlyPriceId
+          ? [offer, annualOffer(options.config, "month")]
+          : [offer],
+      };
     });
     scope.get<{ Params: { purchaseId: string } }>(
       "/api/v1/billing/purchase/:purchaseId",
@@ -76,6 +82,7 @@ export async function registerStripeRoutes(
           learnerId: z.string().min(1).max(200),
           requestId: z.uuid(),
           offerId: z.string().length(64).optional(),
+          interval: z.enum(["year", "month"]).default("year"),
         })
         .safeParse(request.body);
       if (!body.success)
@@ -83,13 +90,14 @@ export async function registerStripeRoutes(
       reply.header("Cache-Control", "no-store");
       if (
         body.data.offerId &&
-        body.data.offerId !== annualOffer(options.config).id
+        body.data.offerId !== annualOffer(options.config, body.data.interval).id
       )
         return reply.code(409).send({ error: "offer_changed" });
       return billing.checkout(
         accountId,
         body.data.learnerId,
         body.data.requestId,
+        body.data.interval,
       );
     });
     scope.post("/api/v1/billing/portal", async (request, reply) => {

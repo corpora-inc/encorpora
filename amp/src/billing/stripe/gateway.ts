@@ -1,7 +1,12 @@
 import { normalizeFinancialEvidence } from "../evidence/normalize.js";
 import type { FinancialResult } from "../evidence/contracts.js";
 import Stripe from "stripe";
-import { BillingError, type StripeBillingConfig } from "./config.js";
+import {
+  BillingError,
+  planConfig,
+  type BillingInterval,
+  type StripeBillingConfig,
+} from "./config.js";
 import type { AnnualPayment } from "./model.js";
 const id = (
   value: string | { id: string } | null | undefined,
@@ -47,26 +52,33 @@ export class StripeGateway {
   }
   async verifyCatalog(): Promise<void> {
     await this.verifyPortal();
-    const price = await this.client.prices.retrieve(this.config.priceId, {
-      expand: ["product"],
-    });
-    const product = price.product;
-    requireEvidence(
-      price.active &&
-        price.livemode === this.config.livemode &&
-        price.currency === this.config.currency &&
-        price.unit_amount === this.config.amountMinor &&
-        price.billing_scheme === "per_unit" &&
-        !price.transform_quantity &&
-        price.recurring?.interval === "year" &&
-        price.recurring.interval_count === 1 &&
-        price.recurring.usage_type === "licensed" &&
-        typeof product !== "string" &&
-        !product.deleted &&
-        product.active &&
-        product.id === this.config.productId,
-      "annual_catalog_mismatch",
-    );
+    for (const interval of (this.config.monthlyPriceId
+      ? ["year", "month"]
+      : ["year"]) as BillingInterval[]) {
+      const config = planConfig(this.config, interval);
+      const price = await this.client.prices.retrieve(config.priceId, {
+        expand: ["product"],
+      });
+      const product = price.product;
+      requireEvidence(
+        price.active &&
+          price.livemode === config.livemode &&
+          price.currency === config.currency &&
+          price.unit_amount === config.amountMinor &&
+          price.billing_scheme === "per_unit" &&
+          !price.transform_quantity &&
+          price.recurring?.interval === interval &&
+          price.recurring.interval_count === 1 &&
+          price.recurring.usage_type === "licensed" &&
+          typeof product !== "string" &&
+          !product.deleted &&
+          product.active &&
+          product.id === config.productId,
+        interval === "year"
+          ? "annual_catalog_mismatch"
+          : "monthly_catalog_mismatch",
+      );
+    }
   }
   async createCustomer(reservationId: string): Promise<string> {
     const customer = await this.client.customers.create(
@@ -82,6 +94,7 @@ export class StripeGateway {
   async createCheckout(
     checkoutId: string,
     customerId: string,
+    interval: BillingInterval = "year",
   ): Promise<{ id: string; url: string }> {
     const session = await this.client.checkout.sessions.create(
       {
@@ -90,7 +103,9 @@ export class StripeGateway {
         client_reference_id: checkoutId,
         metadata: { amp_checkout_id: checkoutId },
         subscription_data: { metadata: { amp_checkout_id: checkoutId } },
-        line_items: [{ price: this.config.priceId, quantity: 1 }],
+        line_items: [
+          { price: planConfig(this.config, interval).priceId, quantity: 1 },
+        ],
         allow_promotion_codes: false,
         allowed_payment_method_types: ["card"],
         automatic_tax: { enabled: this.config.automaticTax },
@@ -193,8 +208,6 @@ export class StripeGateway {
         invoice.collection_method === "charge_automatically" &&
         invoice.amount_remaining === 0 &&
         invoice.amount_paid === invoice.total &&
-        invoice.total >= this.config.amountMinor &&
-        invoice.subtotal === this.config.amountMinor &&
         invoice.currency === this.config.currency &&
         invoice.discounts.length === 0 &&
         !invoice.total_discount_amounts?.some((x) => x.amount !== 0) &&
@@ -221,16 +234,25 @@ export class StripeGateway {
     const line = lines.data[0]!;
     const payment = payments.data[0]!;
     const details = line.pricing?.price_details;
+    const config = planConfig(
+      this.config,
+      this.config.monthlyPriceId &&
+        id(details?.price) === this.config.monthlyPriceId
+        ? "month"
+        : "year",
+    );
     requireEvidence(
       line.quantity === 1 &&
         (line.quantity_decimal == null ||
           Number(line.quantity_decimal) === 1) &&
-        line.subtotal === this.config.amountMinor &&
+        line.subtotal === config.amountMinor &&
+        invoice.subtotal === config.amountMinor &&
+        invoice.total >= config.amountMinor &&
         line.currency === this.config.currency &&
         !line.parent?.subscription_item_details?.proration &&
         id(line.parent?.subscription_item_details?.subscription) ===
           subscriptionId &&
-        id(details?.price) === this.config.priceId &&
+        id(details?.price) === config.priceId &&
         id(details?.product) === this.config.productId &&
         subscription.livemode === this.config.livemode &&
         id(subscription.customer) === id(invoice.customer) &&
@@ -287,7 +309,7 @@ export class StripeGateway {
       subscriptionId,
       customerId: id(invoice.customer)!,
       checkoutId: subscription.metadata.amp_checkout_id!,
-      priceId: this.config.priceId,
+      priceId: config.priceId,
       productId: this.config.productId,
       currency: invoice.currency,
       subtotal: invoice.subtotal,

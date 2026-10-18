@@ -2,6 +2,12 @@
 
 The hosted API requires PostgreSQL, a configured OIDC issuer, and a same-origin HTTPS reverse proxy for the browser application and `/api`. Development authentication must never be exposed publicly. Run migrations before starting a deployment; applied migrations have checksums and must not be edited.
 
+## Database connection budget
+
+`AMP_DATABASE_POOL_MAX` sets the maximum connections for each API or job process. It must be an integer of at least 2. When omitted, it defaults to 3 if `NODE_ENV=production` or `AMP_AUTH_MODE` is `accounts` or `oidc`; otherwise it defaults to 10 for local development. An explicit value overrides either default. Invalid values stop startup. Set it explicitly in hosted deployments, for example `AMP_DATABASE_POOL_MAX=3`.
+
+The API shares one pool across learning, accounts, family exports, consent, billing, funding and payment evidence. A single API process configured with `3` therefore holds at most three database connections in total. Migrations, imports, consent delivery, billing workers and retention jobs each run with their own pool and read the same setting. They are additional processes: budget their connections alongside every API replica and rolling-deployment overlap. This setting is not a deployment-wide cap; enforce a database role connection limit as an additional boundary when sharing a database server.
+
 ## Identity and enrollment
 
 ### AMP accounts (`AMP_AUTH_MODE=accounts`)
@@ -63,7 +69,7 @@ Retention policy must cover profiles, attempts, consent evidence, generated inst
 
 Schedule `npm run privacy:retention` daily with `AMP_DATABASE_URL` in protected job configuration. The job deletes expired 60-second export tickets, privacy audit events after their 90-day retention period, eligible expired consent and funding records, and offline packs 30 days after their expiry; it does not delete commerce records. The database integration suite runs the actual purge implementation and verifies that financial grants survive. Monitor job failures and verify restored backups reapply deletion and consent restrictions before serving requests.
 
-Family exports stream bounded cursor batches with a two-minute limit. The export pool needs at least two connections: export audit writes use a connection separate from the snapshot cursor. Concurrent exports can exhaust a shared pool; production capacity requires a separately sized export pool or a bounded global concurrency quota, plus per-account request quotas. The existing peer-address limiter does not establish that capacity. Browser exports use a one-time, 60-second capability held only in memory and submitted in a native POST form body, never a URL or ambient cookie. Account and component-generation guards suppress stale download responses. Downloads already delivered to the browser cannot be recalled.
+Family exports stream bounded cursor batches with a two-minute limit. The shared API pool requires at least two connections so a snapshot export can hold one while other requests use another. Export audit writes use the snapshot connection before and after its read-only transaction. Concurrent exports can occupy the entire pool and queue other requests; production capacity requires a bounded global concurrency quota plus per-account request quotas. The existing peer-address limiter does not establish that capacity. Browser exports use a one-time, 60-second capability held only in memory and submitted in a native POST form body, never a URL or ambient cookie. Account and component-generation guards suppress stale download responses. Downloads already delivered to the browser cannot be recalled.
 
 Native app distribution, store purchasing, automated provider onboarding, public hosting, and complete curriculum certification are separate release requirements. Local browser tests and PDF generation do not establish those outcomes.
 

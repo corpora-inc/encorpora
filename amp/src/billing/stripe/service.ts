@@ -4,8 +4,9 @@ import {
 } from "../evidence/repository.js";
 import type { Pool } from "pg";
 import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
+import { recordSubscriptionEvent } from "./subscriptions.js";
 import { annualEvents } from "./model.js";
-import { BillingError } from "./config.js";
+import { BillingError, planConfig, type BillingInterval } from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository, type InboxEvent } from "./repository.js";
 export class StripeBilling {
@@ -18,12 +19,54 @@ export class StripeBilling {
     accountId: string,
     learnerId: string,
     requestId: string,
+    interval: BillingInterval = "year",
   ): Promise<{ url: string }> {
-    const checkoutId = await this.repository.reserve(
-      accountId,
-      learnerId,
-      requestId,
-    );
+    let checkoutId: string;
+    try {
+      checkoutId = await this.repository.reserve(
+        accountId,
+        learnerId,
+        requestId,
+        interval,
+      );
+    } catch (error) {
+      if (
+        !(error instanceof BillingError) ||
+        error.code !== "checkout_plan_conflict"
+      )
+        throw error;
+      // Only provider-confirmed expiry permits replacing another plan's checkout.
+      await this.repository.transaction(accountId, async (client) => {
+        await this.repository.assertPurchaseAllowed(
+          client,
+          accountId,
+          learnerId,
+        );
+        const open = await client.query(
+          "SELECT id,session_id FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND account_id=$3 AND NOT closed FOR UPDATE",
+          [this.repository.namespace, learnerId, accountId],
+        );
+        const row = open.rows[0];
+        if (row) {
+          if (
+            !row.session_id ||
+            (await this.gateway.checkoutStatus(row.session_id)).status !==
+              "expired"
+          )
+            throw error;
+          await client.query(
+            "UPDATE amp_stripe_checkouts SET closed=true WHERE id=$1",
+            [row.id],
+          );
+        }
+      });
+      checkoutId = await this.repository.reserve(
+        accountId,
+        learnerId,
+        requestId,
+        interval,
+      );
+    }
     await this.gateway.verifyCatalog();
     const result = await this.repository.transaction<
       { url: string } | { expired: true }
@@ -75,7 +118,11 @@ export class StripeBilling {
         "UPDATE amp_stripe_customers SET customer_id=$3 WHERE namespace=$1 AND account_id=$2",
         [this.repository.namespace, accountId, customerId],
       );
-      const session = await this.gateway.createCheckout(checkoutId, customerId);
+      const session = await this.gateway.createCheckout(
+        checkoutId,
+        customerId,
+        row.billing_interval,
+      );
       await client.query(
         "UPDATE amp_stripe_checkouts SET customer_id=$2,session_id=$3,session_url=$4 WHERE id=$1",
         [checkoutId, customerId, session.id, session.url],
@@ -97,6 +144,15 @@ export class StripeBilling {
     return { url: await this.gateway.portal(customerId) };
   }
   private async process(event: InboxEvent): Promise<void> {
+    if (
+      [
+        "customer.subscription.updated",
+        "customer.subscription.deleted",
+      ].includes(event.type)
+    ) {
+      await recordSubscriptionEvent(this.repository, this.gateway, event);
+      return;
+    }
     let invoiceId: string;
     if (event.type === "invoice.paid") invoiceId = event.objectId;
     else if (event.type === "charge.refunded")
@@ -186,7 +242,7 @@ export class StripeBilling {
         payment,
         payment.financial,
         event.eventId,
-        this.gateway.config.documentProfile,
+        planConfig(this.gateway.config, binding.interval).documentProfile,
       );
       await client.query("SAVEPOINT access_projection");
       try {
