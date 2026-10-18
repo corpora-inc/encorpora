@@ -1,3 +1,4 @@
+import { inequalityLessons } from "./inequality-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
@@ -17,7 +18,7 @@ export interface Lesson {
   sections: {
     title: string;
     paragraphs: string[];
-    illustration?: "thirds-and-fourths";
+    illustration?: "thirds-and-fourths" | "inequality-half-lines";
   }[];
   workedExample: {
     prompt: string;
@@ -530,6 +531,7 @@ export const baseLessons: Lesson[] = [
 export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...polynomialLessons,
+  ...inequalityLessons,
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,

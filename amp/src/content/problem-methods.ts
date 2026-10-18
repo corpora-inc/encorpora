@@ -1,3 +1,4 @@
+import { inequalityMethods } from "./inequality-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -8,6 +9,7 @@ import type { ProblemMethod } from "./problem-lessons";
 export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...polynomialMethods,
+  ...inequalityMethods,
   // Counting and early operations
   "count-objects": {
     goal: "Given a picture of dots, find how many there are.",

@@ -1,4 +1,8 @@
 import {
+  inequalityTemplates,
+  generateInequalityProblem,
+} from "./inequality-practice";
+import {
   polynomialTemplates,
   generatePolynomialProblem,
 } from "./polynomial-practice";
@@ -157,6 +161,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...inequalityTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -267,9 +272,14 @@ export function generateProblem(
 ): GeneratedProblem {
   return polishProblem(generateRawProblem(templateId, seed));
 }
-/** Every learner-facing string passes the same copy-edit. */
+/** Apply the legacy count copy-edit without changing authored algebra notation. */
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
-  const text = (value: string) => polish(value);
+  // These authored algebra strings need their grouping parentheses and complete identities.
+  // The general noun/number copy-edit removes both, changing fractional division.
+  const preserveAlgebra = inequalityTemplates.some(
+    (t) => t.id === problem.public.templateId,
+  );
+  const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
     ...problem,
     public: { ...problem.public, prompt: text(problem.public.prompt) },
@@ -291,6 +301,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (inequalityTemplates.some((t) => t.id === templateId))
+    return generateInequalityProblem(templateId, seed);
   if (polynomialTemplates.some((t) => t.id === templateId))
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))

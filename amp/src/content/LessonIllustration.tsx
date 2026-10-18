@@ -1,7 +1,13 @@
+import { InequalityHalfLines } from "./InequalityHalfLines";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
-export function LessonIllustration({ kind }: { kind: "thirds-and-fourths" }) {
+export function LessonIllustration({
+  kind,
+}: {
+  kind: "thirds-and-fourths" | "inequality-half-lines";
+}) {
+  if (kind === "inequality-half-lines") return <InequalityHalfLines />;
   const rows = [
     { label: "One third", parts: 3, selected: 1, group: 1, y: 36 },
     {

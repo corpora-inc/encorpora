@@ -1,3 +1,4 @@
+import { inequalityPrinciples } from "./inequality-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
@@ -5,6 +6,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...polynomialPrinciples,
+  ...inequalityPrinciples,
   // Counting, place value, early operations
   "count-objects":
     "One-to-one correspondence: each object is matched with exactly one counting number; the last number named is the cardinality of the set.",
