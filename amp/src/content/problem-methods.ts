@@ -1,4 +1,5 @@
 import { inequalityMethods } from "./inequality-lessons";
+import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -1090,17 +1091,5 @@ export const methods: Record<string, ProblemMethod> = {
       "Try powers of b until you reach N.",
     ],
   },
-  // Geometry
-  "right-triangle": {
-    goal: "Given the two legs of a right triangle, find the hypotenuse.",
-    terms: [
-      ["legs", "The two sides that form the right angle."],
-      ["hypotenuse", "The longest side, opposite the right angle."],
-    ],
-    method: [
-      "a² + b² = c².",
-      "Square the legs and add.",
-      "Take the square root.",
-    ],
-  },
+  ...rightTriangleMethods,
 };

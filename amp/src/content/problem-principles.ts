@@ -1,4 +1,5 @@
 import { inequalityPrinciples } from "./inequality-lessons";
+import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
@@ -142,8 +143,7 @@ export const principles: Record<string, string> = {
     "A rectangle with whole-number sides, area A and perimeter P exists exactly when some factor pair (l, w) of A satisfies 2(l + w) = P.",
   "whole-pack-ribbon-choice":
     "Ceiling division: when only whole packs are sold, the number of packs is ⌈need ÷ pack size⌉.",
-  "right-triangle":
-    "Pythagorean theorem: in a right triangle with legs a and b and hypotenuse c, a² + b² = c².",
+  ...rightTrianglePrinciples,
   "coordinate-point-reading":
     "Cartesian coordinates: a point (x, y) lies x units horizontally and y units vertically from the origin.",
   // Data and probability

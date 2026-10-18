@@ -643,6 +643,31 @@ export const skills: Skill[] = outline
     };
   });
 
+// These narrow assessments do not complete the broad Pythagorean skill.
+const pythagoreanSkill = skills.find(
+  (skill) => skill.id === "pythagorean-theorem",
+)!;
+pythagoreanSkill.facets.push(
+  {
+    id: "pythagorean-theorem.integer-hypotenuse",
+    description:
+      "Find the hypotenuse from both legs in scaled 3–4–5 or 5–12–13 right triangles with integer scale factors 1 through 6, all lengths in centimeters; template right-triangle.",
+    status: "implemented",
+  },
+  {
+    id: "pythagorean-theorem.integer-missing-leg",
+    description:
+      "Find either leg from the hypotenuse and other leg in positive integer right triangles with hypotenuse at most 50, with all lengths in centimeters; template right-triangle-missing-leg.",
+    status: "implemented",
+  },
+  {
+    id: "pythagorean-theorem.integer-converse",
+    description:
+      "Classify an existing triangle as right or not right from positive integer centimeter side lengths at most 30, including both directions of unequal square comparisons; template pythagorean-converse.",
+    status: "implemented",
+  },
+);
+
 /** Numbered high-school inventory, checked against each official category page on 2026-10-16.
  * Short labels describe planned facets; the linked source owns all qualifications and components.
  */

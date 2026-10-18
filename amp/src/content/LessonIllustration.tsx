@@ -1,12 +1,20 @@
 import { InequalityHalfLines } from "./InequalityHalfLines";
+import {
+  RightTriangleOrientation,
+  PythagoreanRearrangement,
+} from "./RightTriangleIllustration";
+import type { Lesson } from "./lessons";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
 export function LessonIllustration({
   kind,
 }: {
-  kind: "thirds-and-fourths" | "inequality-half-lines";
+  kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "right-triangle-orientation")
+    return <RightTriangleOrientation />;
+  if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
   if (kind === "inequality-half-lines") return <InequalityHalfLines />;
   const rows = [
     { label: "One third", parts: 3, selected: 1, group: 1, y: 36 },
