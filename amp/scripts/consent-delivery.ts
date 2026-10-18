@@ -1,4 +1,5 @@
-import { Pool } from "pg";
+import { createDatabasePool } from "../src/server/database.js";
+import type { Pool } from "pg";
 import { consentConfiguration } from "../src/parent-consent/config.js";
 import { ConsentRepository } from "../src/parent-consent/repository.js";
 import { ResendConsentTransport } from "../src/parent-consent/resend.js";
@@ -11,9 +12,8 @@ try {
   const config = await consentConfiguration(process.env);
   if (!config.delivery || !config.transportEnabled)
     throw new Error("Delivery disabled");
-  pool = new Pool({
+  pool = createDatabasePool({
     connectionString: process.env.AMP_DATABASE_URL,
-    max: 2,
     connectionTimeoutMillis: 5000,
     statement_timeout: 15000,
   });
