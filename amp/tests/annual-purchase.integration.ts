@@ -30,6 +30,8 @@ test(
         "0002-commerce.sql",
         "0003-parent-consent.sql",
         "0004-parent-lifecycle.sql",
+        "0015-trials.sql",
+        "0018-trial-teaching.sql",
         "0005-stripe.sql",
         "0011-paid-evidence.sql",
         "0017-monthly-billing.sql",

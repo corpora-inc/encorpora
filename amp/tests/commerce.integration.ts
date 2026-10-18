@@ -113,6 +113,18 @@ test(
           "utf8",
         ),
       );
+      for (const file of [
+        "0003-parent-consent.sql",
+        "0004-parent-lifecycle.sql",
+        "0015-trials.sql",
+        "0018-trial-teaching.sql",
+      ])
+        await pool.query(
+          await readFile(
+            new URL(`../migrations/${file}`, import.meta.url),
+            "utf8",
+          ),
+        );
       await pool.query(
         "INSERT INTO amp_learners(id,account_id,name) VALUES('child','parent','Test student')",
       );
