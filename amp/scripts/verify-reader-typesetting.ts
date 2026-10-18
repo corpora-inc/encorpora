@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { PrintMathText, printMathStyles } from "../src/content/PrintMathText";
 import {
   RightTriangleOrientation,
@@ -96,7 +96,12 @@ const content = renderToStaticMarkup(
     ),
   ),
 );
-const browser = await chromium.launch();
+const engine = process.env.READER_REVIEW_BROWSER ?? "chromium";
+assert.ok(
+  engine === "chromium" || engine === "webkit",
+  "supported reader review browser",
+);
+const browser = await (engine === "webkit" ? webkit : chromium).launch();
 const page = await browser.newPage();
 const requests: string[] = [];
 await page.route(/^https?:/, async (route) => {
@@ -320,6 +325,7 @@ try {
   );
   console.log(
     JSON.stringify({
+      browser: engine,
       viewports: widths.length,
       labelChecks: 22 * widths.length,
       fixtures: fixtures.length,
