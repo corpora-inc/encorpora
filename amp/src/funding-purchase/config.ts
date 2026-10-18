@@ -1,7 +1,7 @@
 import { validateQuoteFonts } from "./quote-pdf.js";
 import { readFile, stat } from "node:fs/promises";
 import { z } from "zod";
-import { fundingRegistry } from "../funding/registry.js";
+import { fundingPrograms } from "./programs.js";
 import {
   fundingOfferSchema,
   availableOffers,
@@ -21,10 +21,7 @@ export async function loadFundingOffers(
     .parse(JSON.parse(await readFile(path, "utf8")));
   availableOffers(offers, new Date());
   for (const offer of offers) {
-    const program = fundingRegistry.programs.find(
-      (p) => p.id === offer.programId,
-    );
-    if (!program || program.jurisdiction !== offer.jurisdiction)
+    if (fundingPrograms.get(offer.programId) !== offer.jurisdiction)
       throw new Error(
         "Funding offer references an unknown program/jurisdiction",
       );
