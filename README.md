@@ -69,7 +69,12 @@ agents alike.
 
 ## License
 
-Apache License 2.0 — see [LICENSE](LICENSE). [NOTICE](NOTICE) lists what it does
+Business Source License 1.1 — see [LICENSE](LICENSE). You may read, modify and
+use this code, including for personal, non-commercial and non-profit
+educational use; offering it, or anything built on it, commercially requires a
+license from Corpora Inc. Each version becomes Apache License 2.0 four years
+after publication, and versions published before this change remain Apache
+2.0 ([LICENSES/Apache-2.0.txt](LICENSES/Apache-2.0.txt)). [NOTICE](NOTICE) lists what it does
 not cover: the Corpora, Corpán, ¡AHA! and Dynawalla trademarks, store art, voices,
 music, and third-party material under its own license.
 

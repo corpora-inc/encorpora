@@ -1,6 +1,6 @@
 # ADR-0014 — Repository license
 
-**Status:** Accepted — founder decision, 2026-10-16
+**Status:** Superseded by [ADR-0026](ADR-0026-repository-license-busl.md) (2026-10-17). Accepted — founder decision, 2026-10-16
 
 ## Decision
 

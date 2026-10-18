@@ -53,7 +53,7 @@ saying what changed, so the history is readable without `git log`.
 | [0011](DECISIONS/ADR-0011-native-workspace-and-patch-placement.md) | `native/` workspace, independent app roots, `[patch]` stays put | Accepted |
 | [0012](DECISIONS/ADR-0012-ota-curriculum-deferral.md) | Curriculum ships bundled; OTA deferred with a stated trigger | Accepted |
 | [0013](DECISIONS/ADR-0013-monetization-model.md) | Monetization model | **Superseded by 0024** |
-| [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license: Apache-2.0 | Accepted |
+| [0014](DECISIONS/ADR-0014-repository-license.md) | Repository license: Apache-2.0 | Superseded by 0026 |
 | [0015](DECISIONS/ADR-0015-developer-account-topology.md) | Developer-account topology | Accepted |
 | [0016](DECISIONS/ADR-0016-app-store-product-name.md) | App Store product name | **Proposed — awaiting founder** (checks returned 2026-07-25; two counsel-grade collisions open) |
 | [0017](DECISIONS/ADR-0017-human-evaluation-resourcing.md) | Human evaluation resourcing | Accepted |
@@ -64,6 +64,7 @@ saying what changed, so the history is readable without `git log`.
 | [0022](DECISIONS/ADR-0022-host-ships-no-content.md) | The host ships no content; packs are the product | Accepted |
 | [0024](DECISIONS/ADR-0024-day-pass-not-subscription.md) | The day pass replaces the subscription | Accepted |
 | [0025](DECISIONS/ADR-0025-native-capability-interface.md) | The native side is reached through the pack capability seam | Accepted |
+| [0026](DECISIONS/ADR-0026-repository-license-busl.md) | Repository license: BUSL-1.1 (→ Apache-2.0 after four years) | Accepted |
 
 ## Reversed on 2026-07-26
 
