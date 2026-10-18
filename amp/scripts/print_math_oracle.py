@@ -157,6 +157,8 @@ ARITHMETIC = [
     ('8/4/2', {}, Fraction(1)),
     ('8/(4/2)', {}, Fraction(4)),
     ('3.5 + 1.25', {}, Fraction(19, 4)),
+    ('5/10 × 1/3', {}, Fraction(1, 6)),
+    ('8 ÷ 4 / 2', {}, Fraction(1)),
     ('(A + B)C = AC + BC', {'A': 2, 'B': 3, 'C': 4}, True),
     ('(x + 3)²', {'x': 2}, Fraction(25)),
     ('(−2x)(−3) = 6x', {'x': 2}, True),
@@ -164,7 +166,9 @@ ARITHMETIC = [
     ('(−b ± √(b² − 4ac))/(2a)', {'a': 1, 'b': -3, 'c': 2}, Fraction(2)),
     ('x² ≥ 0', {'x': -3}, True),
 ]
-STRUCTURAL = ['√(−9)²', 'x_(n+1)', 'log_2(8)']
+STRUCTURAL = ['√(−9)²', 'x_(n+1)', 'log_2(8)', '$x_12$']
+DELIMITED = [('$x^10$', {'x': 2}, Fraction(1024)), ('$2^(n+1)$', {'n': 2}, Fraction(8)), ('$x^-2$', {'x': 2}, Fraction(1, 4)), (r'\(x^{10}\)', {'x': 2}, Fraction(1024))]
+BOUNDARIES = ['Write □ − 4 = 6.', 'Write □−4 = 6.', '5 + 7 = □ + 8.', '200 cm + 35 cm = 235 cm', '200 cm+35 cm=235 cm', 'Wait 1-2 minutes.', 'grades K-12', 'page 3-4', 'the 2nd term', 'the 1st term', 'the 1990s', 'Term 3 = 1 × 4^2 = 16']
 LITERAL = ['x^ = 2', 'x + √', '(x + 1', '1 1/2', '2 3', '2x/3y', '3 cm²', '12:30']
 PROSE = [
     '$5 or $10', 'A costs $4 each; B costs $3/m.', '2 × $5 = $10.',
@@ -177,7 +181,7 @@ PROSE = [
 
 
 def check_records(records):
-    sources = [item[0] for item in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE
+    sources = [item[0] for item in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE + [item[0] for item in DELIMITED] + BOUNDARIES
     require(len(records) == len(sources), 'Incomplete print review response')
     by_source = {}
     for source, record in zip(sources, records):
@@ -225,6 +229,23 @@ def check_records(records):
             and ''.join(logarithm[0][0].itertext()) == 'log\u2061'
             and evaluate(logarithm[0][1]) == 2 and evaluate(logarithm[1]) == 8,
             'Logarithm base or argument changed')
+    legacy_subscript = structural_roots[STRUCTURAL[3]]
+    require(tag(legacy_subscript) == 'msub' and len(legacy_subscript) == 2
+            and ''.join(legacy_subscript[0].itertext()) == 'x' and evaluate(legacy_subscript[1]) == 12,
+            'Legacy dollar subscript must retain its complete index')
+    product = unwrap(math_roots(by_source['5/10 × 1/3']['html'])[0])
+    require(len(product) == 3 and tag(unwrap(product[0])) == 'mfrac'
+            and tag(product[1]) == 'mo' and ''.join(product[1].itertext()) == '×'
+            and tag(unwrap(product[2])) == 'mfrac',
+            'A product of fractions must show its two fraction factors')
+    for source, variables, expected in DELIMITED:
+        roots = math_roots(by_source[source]['html'])
+        require(len(roots) == 1 and evaluate(roots[0], variables) == expected,
+                f'Delimited notation changed meaning: {source}')
+    for source in BOUNDARIES:
+        record = by_source[source]
+        require(not any(s['kind'] == 'math' for s in record['segments']),
+                f'Prose or an incomplete equation was typeset as arithmetic: {source}')
     for source in LITERAL:
         require(by_source[source]['tex'] is None, f'Ambiguous or malformed notation was guessed: {source}')
     for source in PROSE[:3]:
@@ -244,7 +265,7 @@ def check_records(records):
     require(any(s['kind'] == 'math' and s['source'] == 'x' for s in by_source[PROSE[7]]['segments']),
             'A standalone reference to x should use mathematical type')
     require(PROSE[8] in by_source[PROSE[8]]['html'], 'Failed TeX did not preserve original source')
-    return {'arithmetic': len(ARITHMETIC), 'structural': len(STRUCTURAL), 'literal': len(LITERAL), 'prose': len(PROSE)}
+    return {'arithmetic': len(ARITHMETIC), 'structural': len(STRUCTURAL), 'literal': len(LITERAL), 'prose': len(PROSE), 'delimited': len(DELIMITED), 'boundaries': len(BOUNDARIES)}
 
 
 def self_test():
@@ -263,13 +284,16 @@ def self_test():
 
 def review_mutations(records):
     from copy import deepcopy
-    sources = [s for s, _, _ in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE
+    sources = [s for s, _, _ in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE + [s for s, _, _ in DELIMITED] + BOUNDARIES
     def changed(source, field, value):
         copy = deepcopy(records)
         copy[sources.index(source)][field] = value
         return copy
     mutations = [
         records[:-1],
+        changed(BOUNDARIES[0], 'segments', [{'kind': 'math', 'source': BOUNDARIES[0], 'tex': '-4=6'}]),
+        changed(DELIMITED[0][0], 'html', '<math><msup><mi>x</mi><mn>1</mn></msup><mn>0</mn></math>'),
+        changed('5/10 × 1/3', 'html', '<math><mfrac><mrow><mfrac><mn>5</mn><mn>10</mn></mfrac><mo>×</mo><mn>1</mn></mrow><mn>3</mn></mfrac></math>'),
         changed('2^-(2+3)', 'html', '<math><msup><mn>2</mn><mrow><mo>−</mo><mn>2</mn><mo>+</mo><mn>3</mn></mrow></msup></math>'),
         changed(STRUCTURAL[0], 'html', '<math><msqrt><msup><mrow><mo>−</mo><mn>9</mn></mrow><mn>2</mn></msup></msqrt></math>'),
         changed(STRUCTURAL[1], 'html', '<math><msub><mi>x</mi><mi>n</mi></msub><mo>+</mo><mn>1</mn></math>'),
@@ -295,7 +319,7 @@ def review_print_math():
     self_test()
     root = Path(__file__).resolve().parent.parent
     result = subprocess.run(['node', '--import', 'tsx', str(root/'scripts/export-print-math.ts')],
-                            cwd=root, input=json.dumps([s for s, _, _ in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE),
+                            cwd=root, input=json.dumps([s for s, _, _ in ARITHMETIC] + STRUCTURAL + LITERAL + PROSE + [s for s, _, _ in DELIMITED] + BOUNDARIES),
                             text=True, capture_output=True, timeout=60)
     require(result.returncode == 0, f'Print fixture export failed: {result.stderr[:1000]}')
     records = json.loads(result.stdout)
