@@ -15,7 +15,7 @@ from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_mea
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
-from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview
+from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
@@ -279,6 +279,8 @@ def review(stream):
         solved = solve(public)
         if template in RIGHT_TRIANGLE:
             right_triangles.record(public, solved)
+        if template in RIGHT_TRIANGLE_CHOICE:
+            review_converse_explanation(public, problem['explanation'])
         if template in POLYNOMIAL:
             polynomial_shortcuts.record(public, solved)
         # Generated answer is used only as the value under test, never as an oracle input.

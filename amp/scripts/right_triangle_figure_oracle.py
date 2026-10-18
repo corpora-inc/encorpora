@@ -1,12 +1,50 @@
 """Check actual rendered teaching diagrams with exact geometry, not renderer helpers."""
 import copy
 import json
+import math
 import re
 import subprocess
 import xml.etree.ElementTree as ET
 from fractions import Fraction as F
 from pathlib import Path
-from right_triangle_math_oracle import require
+from right_triangle_math_oracle import (
+    require, PATTERNS, CONVERSE, triangle_class, review_converse_explanation,
+)
+
+
+def check_worked_examples(lessons):
+    expected_ids = {'pythagorean-theorem', 'right-triangle-missing-leg', 'pythagorean-converse'}
+    require(isinstance(lessons, list) and len(lessons) == 3 and
+            {lesson['id'] for lesson in lessons} == expected_ids, 'Missing right-triangle worked lesson')
+    for lesson in lessons:
+        example = lesson['workedExample']
+        prompt, answer = example['prompt'], example['answer']
+        require(isinstance(example['steps'], list) and example['steps'] and
+                all(isinstance(step, str) and step for step in example['steps']), 'Missing worked steps')
+        if lesson['id'] == 'pythagorean-theorem':
+            found = re.fullmatch(r'A right triangle has legs of ([1-9][0-9]*) cm and ([1-9][0-9]*) cm\. '
+                                 r'Find its hypotenuse length\.', prompt)
+            require(found is not None, 'Ambiguous hypotenuse worked prompt')
+            a, b = map(int, found.groups())
+            square = a*a+b*b
+        elif lesson['id'] == 'right-triangle-missing-leg':
+            found = re.fullmatch(r'A right triangle has a hypotenuse of ([1-9][0-9]*) cm and one leg of '
+                                 r'([1-9][0-9]*) cm\. Find the other leg\.', prompt)
+            require(found is not None, 'Ambiguous missing-leg worked prompt')
+            c, a = map(int, found.groups())
+            require(c > a, 'Worked hypotenuse must exceed the known leg')
+            square = c*c-a*a
+        else:
+            found = re.fullmatch(PATTERNS[CONVERSE], prompt)
+            require(found is not None, 'Ambiguous converse worked prompt')
+            category = triangle_class(tuple(map(int, found.groups())))
+            expected = 'Right triangle' if category == 'right' else 'Not a right triangle'
+            require(answer == expected and not example.get('answerUnit'), 'Wrong converse worked answer')
+            review_converse_explanation({'templateId': CONVERSE, 'prompt': prompt}, example['steps'])
+            continue
+        root = math.isqrt(square)
+        require(root*root == square and F(answer) == root, 'Wrong exact worked length')
+        require(example.get('answerUnit') in ('cm', 'centimeters'), 'Worked length must have a separate length unit')
 
 
 def vertices(polygon):
@@ -109,6 +147,7 @@ def review_right_triangle_figures():
                             cwd=amp, check=True, capture_output=True, text=True)
     data = json.loads(result.stdout)
     require(data['format'] == 1, 'Unsupported diagram export')
+    check_worked_examples(data['lessons'])
     orientation = ET.fromstring(data['illustrations']['orientation'])
     rearrangement = ET.fromstring(data['illustrations']['rearrangement'])
     check_orientation(orientation)
@@ -142,8 +181,21 @@ def review_right_triangle_figures():
         except ValueError:
             continue
         raise ValueError('Accepted corrupted teaching geometry')
+    lesson_mutations = []
+    for index in range(3):
+        broken = copy.deepcopy(data['lessons'])
+        broken[index]['workedExample']['answer'] = '-999'
+        lesson_mutations.append(broken)
+    lesson_mutations.append(data['lessons'][:-1])
+    for broken in lesson_mutations:
+        try:
+            check_worked_examples(broken)
+        except ValueError:
+            continue
+        raise ValueError('Accepted a missing or incorrect worked lesson')
     return {'orientationTriangles': 2, 'congruentProofTriangles': 8,
-            'uncoveredSquares': 3, 'rejectedGeometryMutations': len(mutations)}
+            'uncoveredSquares': 3, 'rejectedGeometryMutations': len(mutations),
+            'workedExamples': 3, 'rejectedWorkedExampleMutations': len(lesson_mutations)}
 
 
 if __name__ == '__main__':

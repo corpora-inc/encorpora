@@ -6,6 +6,7 @@ import {
   PythagoreanRearrangement,
 } from "../src/content/RightTriangleIllustration.js";
 import { generateProblem } from "../src/math/engine.js";
+import { lessons } from "../src/content/lessons.js";
 
 const args = process.argv.slice(2);
 const count = args.length === 0 ? 0 : Number(args[1]);
@@ -23,6 +24,9 @@ const templates = ["right-triangle-missing-leg", "pythagorean-converse"];
 process.stdout.write(
   JSON.stringify({
     format: 1,
+    lessons: lessons.filter((lesson) =>
+      ["pythagorean-theorem", ...templates].includes(lesson.id),
+    ),
     illustrations: {
       orientation: renderToStaticMarkup(
         createElement(RightTriangleOrientation),

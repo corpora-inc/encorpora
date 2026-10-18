@@ -79,6 +79,23 @@ def finite_domains():
     return missing, converse
 
 
+def review_converse_explanation(public, explanation):
+    """Review the exported, polished explanation, independently of the answer key."""
+    require(public['templateId'] == CONVERSE, 'Explanation check requires a converse problem')
+    require(isinstance(explanation, list) and explanation and
+            all(isinstance(step, str) and step for step in explanation), 'Missing converse explanation')
+    a, b, c = sorted(givens(public))
+    category = triangle_class((a, b, c))
+    text = ' '.join(explanation)
+    if category == 'right':
+        relations = re.findall(r'(?<![0-9])([0-9]+)²\s*\+\s*([0-9]+)²\s*=\s*([0-9]+)²', text)
+        require(any(sorted((int(x), int(y))) == [a, b] and int(z) == c for x, y, z in relations),
+                'Polished converse explanation lost the exact side-square equality')
+    else:
+        require(re.search(rf'(?<![0-9]){a*a+b*b}\s*≠\s*{c*c}(?![0-9])', text) is not None,
+                'Polished nonright explanation must show the exact unequal squared totals')
+
+
 MISSING_DOMAIN, CONVERSE_DOMAIN = finite_domains()
 RIGHT_DOMAIN = {sides for sides, category in CONVERSE_DOMAIN.items() if category == 'right'}
 
@@ -179,6 +196,18 @@ def review_right_triangle_fixtures():
     for template, values, expected in handwritten:
         require(solve_right_triangle(fixture_public(template, values)) == expected,
                 'Handwritten triangle fixture failed')
+    explanation_public = fixture_public(CONVERSE, (24, 26, 10))
+    review_converse_explanation(explanation_public, ['The results are equal: 10² + 24² = 26².'])
+    review_converse_explanation(fixture_public(CONVERSE, (4, 5, 6)), ['The results differ: 41 ≠ 36.'])
+    rejected_explanations = 0
+    for explanation in ([], ['The results are equal: 676.'], ['10² + 24² ≠ 26².'],
+                        ['10² + 24² = 25².'], ['a² + b² = c².']):
+        try:
+            review_converse_explanation(explanation_public, explanation)
+        except ValueError:
+            rejected_explanations += 1
+        else:
+            raise ValueError('Accepted a missing or corrupted polished converse equality')
     require(len(MISSING_DOMAIN) == 40 and len(CONVERSE_DOMAIN) == 2600
             and Counter(CONVERSE_DOMAIN.values()) == {'right': 11, 'acute': 1342, 'obtuse': 1247},
             'Independent domain inventory changed')
@@ -266,7 +295,8 @@ def review_right_triangle_fixtures():
             raise ValueError(f'Accepted corrupt triangle coverage: {mutation}')
     return {'handwrittenCases': len(handwritten), 'missingLegDomainCases': len(MISSING_DOMAIN),
             'conversePermutationChoiceCases': exhaustive, 'rejectedMutations': len(bad),
-            'rejectedCoverageMutations': rejected_coverage}
+            'rejectedCoverageMutations': rejected_coverage,
+            'rejectedExplanationMutations': rejected_explanations}
 
 
 if __name__ == '__main__':
