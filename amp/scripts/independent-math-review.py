@@ -18,6 +18,7 @@ from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_a
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
+from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from right_triangle_figure_oracle import review_right_triangle_figures
 from print_math_oracle import review_print_math
@@ -36,7 +37,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE
+SUPPORTED = SUPPORTED | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE
 
 
 def require(condition, message):
@@ -48,6 +49,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in PERCENT_CHANGE:
+        return solve_percent_change(public)
     if template in INEQUALITY:
         return solve_inequality(public)
     if template in RIGHT_TRIANGLE:
@@ -253,6 +256,7 @@ def review(stream):
     review_quadratic_fixtures()
     review_polynomial_fixtures()
     review_inequality_fixtures()
+    review_percent_change_fixtures()
     review_right_triangle_fixtures()
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
@@ -290,6 +294,8 @@ def review(stream):
             review_converse_explanation(public, problem['explanation'])
         if template in POLYNOMIAL:
             polynomial_shortcuts.record(public, solved)
+        if template in PERCENT_CHANGE:
+            review_percent_explanation(public, problem['explanation'])
         if template in INEQUALITY:
             inequality_review.record(public, solved)
         # Generated answer is used only as the value under test, never as an oracle input.
@@ -303,6 +309,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
     print('Independent inequality coverage: ' + json.dumps(inequality_review.finish(count)), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
