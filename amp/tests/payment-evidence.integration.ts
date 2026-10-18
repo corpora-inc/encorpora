@@ -72,6 +72,7 @@ test(
         status: string;
       }[] = [];
       let failInvoiceFetch = false;
+      let paymentMethod: string | undefined = "card";
       const real = new Stripe(config.secretKey);
       const client = {
         webhooks: real.webhooks,
@@ -86,7 +87,12 @@ test(
         subscriptions: { retrieve: async () => f.subscription },
         invoicePayments: { list: async () => f.payments },
         paymentIntents: { retrieve: async () => f.intent },
-        charges: { retrieve: async () => f.charge },
+        charges: {
+          retrieve: async () => ({
+            ...f.charge,
+            payment_method_details: { type: paymentMethod },
+          }),
+        },
         refunds: {
           list: async () => ({ has_more: false, data: refunds }),
           retrieve: async (id: string) =>
@@ -110,6 +116,15 @@ test(
       });
       await registerPaymentEvidenceRoutes(app, {
         pool,
+        reimbursementPrograms: [
+          {
+            id: "fixture-program",
+            state: "AZ",
+            programName: "Synthetic program",
+            officialUrl: "https://example.test/rules",
+            requiredFields: ["learnerName", "paymentMethod"],
+          },
+        ],
         authenticate: async (request) => {
           const token = request.headers.authorization;
           if (!token)
@@ -191,6 +206,39 @@ test(
       );
       assert.equal(receipt.headers["cache-control"], "no-store");
       assert.equal(receipt.rawPayload.subarray(0, 5).toString(), "%PDF-");
+      const receiptPost = `/api/v1/payments/${history[0]!.id}/receipt.pdf`;
+      assert.equal(history[0]!.baseline!.paymentMethod, "card");
+      for (const [authorization, payload, status] of [
+        ["Bearer parent", { programId: "fixture-program" }, 400],
+        ["Bearer other", { learnerName: "Jo Example" }, 404],
+        ["", { learnerName: "Jo Example" }, 401],
+        ["Bearer parent", { learnerName: "测试" }, 400],
+        [
+          "Bearer parent",
+          { learnerName: "Jo Example", programId: "unknown" },
+          400,
+        ],
+        [
+          "Bearer parent",
+          { learnerName: "Jo Example", programId: "fixture-program" },
+          200,
+        ],
+      ] as const) {
+        const response = await app.inject({
+          method: "POST",
+          url: receiptPost,
+          headers: { authorization },
+          payload,
+        });
+        assert.equal(response.statusCode, status, response.body.slice(0, 100));
+        assert.equal(response.headers["cache-control"], "no-store");
+      }
+      assert.equal(
+        JSON.stringify((await paymentHistory(pool, "parent"))[0]).includes(
+          "Jo Example",
+        ),
+        false,
+      );
 
       await app.inject({
         method: "POST",
@@ -343,6 +391,7 @@ test(
         await secondPool.end();
       }
       // A second, genuine annual invoice arrives after consent withdrawal. Financial facts commit; access cannot activate.
+      paymentMethod = undefined; // A legacy record has no stored method evidence.
       invoice.id = "in_second";
       invoice.billing_reason = "subscription_cycle";
       invoice.status_transitions.paid_at = f.lines.data[0]!.period.end;
@@ -373,6 +422,40 @@ test(
           )
         ).rows[0].count,
         0,
+      );
+      const legacy = history.find(
+        (item) => item.baseline?.invoiceId === "in_second",
+      )!;
+      const legacyBaseline = JSON.stringify(legacy.baseline);
+      assert.equal(legacy.baseline!.paymentMethod, undefined);
+      const incomplete = await app.inject({
+        method: "POST",
+        url: `/api/v1/payments/${legacy.id}/receipt.pdf`,
+        headers: { authorization: "Bearer parent" },
+        payload: { programId: "fixture-program", learnerName: "Jo Example" },
+      });
+      assert.equal(incomplete.statusCode, 409);
+      assert.equal(
+        incomplete.json().error,
+        "receipt_payment_method_unavailable",
+      );
+      paymentMethod = "card";
+      await send("invoice.paid", invoice.id);
+      await billing.runBatch();
+      const replayedLegacy = (await paymentHistory(pool, "parent")).find(
+        (item) => item.id === legacy.id,
+      )!;
+      assert.equal(JSON.stringify(replayedLegacy.baseline), legacyBaseline);
+      assert.equal(replayedLegacy.status, "verified");
+      assert.equal(
+        (
+          await app.inject({
+            method: "GET",
+            url: `/api/v1/payments/${legacy.id}/record.pdf`,
+            headers: { authorization: "Bearer parent" },
+          })
+        ).statusCode,
+        200,
       );
       await send("credit_note.created", "cn_fixture");
       await billing.runBatch();

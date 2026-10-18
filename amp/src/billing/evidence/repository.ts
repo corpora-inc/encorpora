@@ -108,6 +108,12 @@ export async function recordFinancialEvidence(
   if (financial.kind === "verified") {
     const observation = financial.observation;
     baseline = {
+      // Existing immutable baselines never gain newly observed fields on replay.
+      ...(!stored.baseline || stored.baseline.paymentMethod !== undefined
+        ? observation.paymentMethod
+          ? { paymentMethod: observation.paymentMethod }
+          : {}
+        : {}),
       invoiceReason: observation.invoiceReason,
       invoiceId: payment.invoiceId,
       chargeId: payment.chargeId,

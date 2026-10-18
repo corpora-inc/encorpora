@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./payment-history.css";
+import { ReceiptDetails } from "./ReceiptDetails.js";
+import { receiptRequestSchema } from "../billing/evidence/reimbursement.js";
 export interface PaymentSummary {
   id: string;
   learnerReference: string;
@@ -36,6 +38,8 @@ export function PaymentHistoryCenter({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
+  const [learnerName, setLearnerName] = useState("");
+  const [programId, setProgramId] = useState("");
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const epoch = useRef(0),
     controllers = useRef(new Set<AbortController>()),
@@ -48,6 +52,8 @@ export function PaymentHistoryCenter({
     setRecords(null);
     setNextCursor(null);
     setSelected(null);
+    setLearnerName("");
+    setProgramId("");
     setBusy(false);
     setError("");
     setNotice("");
@@ -113,6 +119,15 @@ export function PaymentHistoryCenter({
   const record = records?.find((item) => item.id === selected);
   async function download(adjustmentId?: string) {
     if (!record) return;
+    if (
+      !adjustmentId &&
+      !receiptRequestSchema.safeParse({ learnerName }).success
+    ) {
+      setError(
+        "This PDF supports Latin letters and accents. Contact purchase support for a receipt using another writing system.",
+      );
+      return;
+    }
     const generation = epoch.current,
       controller = new AbortController();
     controllers.current.add(controller);
@@ -122,15 +137,38 @@ export function PaymentHistoryCenter({
     try {
       const suffix = adjustmentId
         ? `adjustments/${encodeURIComponent(adjustmentId)}.pdf`
-        : "record.pdf";
+        : "receipt.pdf";
       const response = await fetch(
         `/api/v1/payments/${encodeURIComponent(record.id)}/${suffix}`,
         {
-          headers: { authorization: `Bearer ${tokenRef.current}` },
+          method: adjustmentId ? "GET" : "POST",
+          headers: {
+            authorization: `Bearer ${tokenRef.current}`,
+            "content-type": "application/json",
+          },
+          ...(!adjustmentId
+            ? {
+                body: JSON.stringify({
+                  learnerName,
+                  ...(programId ? { programId } : {}),
+                }),
+              }
+            : {}),
           signal: controller.signal,
           credentials: "same-origin",
         },
       );
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        if (data.error === "receipt_learner_name_required")
+          throw new Error("Enter the learner name required by your program.");
+        if (data.error === "receipt_payment_method_unavailable")
+          throw new Error(
+            "This older payment has no recorded payment method. Contact purchase support for that evidence.",
+          );
+      }
       if (
         !response.ok ||
         !response.headers.get("content-type")?.startsWith("application/pdf")
@@ -237,6 +275,29 @@ export function PaymentHistoryCenter({
                 tax eligibility are determined separately.
               </p>
             )}
+            {record.status === "verified" && (
+              <ReceiptDetails
+                token={token}
+                learnerName={learnerName}
+                programId={programId}
+                onName={(name) => {
+                  setLearnerName(name);
+                  if (
+                    error ===
+                      "Enter the learner name required by your program." &&
+                    name.trim()
+                  )
+                    setError("");
+                  if (
+                    error.startsWith("This PDF supports Latin letters") &&
+                    receiptRequestSchema.safeParse({ learnerName: name })
+                      .success
+                  )
+                    setError("");
+                }}
+                onProgram={setProgramId}
+              />
+            )}
             <details>
               <summary>References and observation time</summary>
               <p>Record: {record.id}</p>
@@ -268,8 +329,8 @@ export function PaymentHistoryCenter({
         ) : (
           <>
             <p>
-              Verified web annual payments and refund adjustments. Unpaid quotes
-              and checkout attempts are not receipts.
+              Verified web payments and refund adjustments. Unpaid quotes and
+              checkout attempts are not receipts.
             </p>
             {records === null ? (
               <p role="status">
@@ -294,6 +355,8 @@ export function PaymentHistoryCenter({
                       onClick={() => {
                         invalidateNavigation();
                         setSelected(item.id);
+                        setLearnerName("");
+                        setProgramId("");
                         setError("");
                         setNotice("");
                       }}

@@ -35,6 +35,7 @@ export const syntheticPaymentRecord: PaymentHistoryItem = {
   successfulRefundMinor: 0,
   netPaidMinor: 12000,
   baseline: {
+    paymentMethod: "card",
     invoiceReason: "subscription_create",
     invoiceId: "in_synthetic",
     chargeId: "ch_synthetic",
