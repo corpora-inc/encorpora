@@ -1,3 +1,4 @@
+import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
@@ -558,6 +559,7 @@ export const baseLessons: Lesson[] = [
 
 export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
+  ...polynomialLessons,
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,
