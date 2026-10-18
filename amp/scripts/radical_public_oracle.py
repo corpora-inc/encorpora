@@ -17,7 +17,7 @@ def tex_value(source):
     require(isinstance(source, str) and 0 < len(source) <= 512,
             'Invalid radical expression length')
     source = source.replace('−', '-').replace(' ', '')
-    tokens = re.findall(r'\\sqrt|\\frac|[0-9]+|[{}()+\-]', source)
+    tokens = re.findall(r'\\sqrt|\\frac|\\times|\\cdot|[0-9]+|[{}()+\-]', source)
     require(''.join(tokens) == source and len(tokens) <= 128,
             'Unsupported radical expression token')
     index = 0
@@ -67,8 +67,13 @@ def tex_value(source):
         if peek() in ('+', '-'):
             sign = -1 if take() == '-' else 1
         result = scale(atom(depth), sign)
-        while peek() and (peek().isdecimal() or peek() in ('(', r'\sqrt', r'\frac')):
-            result = multiply(result, atom(depth))
+        while peek() and (peek().isdecimal() or peek() in ('(', r'\sqrt', r'\frac', r'\times', r'\cdot')):
+            sign = 1
+            if peek() in (r'\times', r'\cdot'):
+                take()
+                if peek() in ('+', '-'):
+                    sign = -1 if take() == '-' else 1
+            result = multiply(result, scale(atom(depth), sign))
         return result
 
     def expression(depth):
@@ -101,14 +106,23 @@ def canonical_tex(value):
 
 
 def read_choice(label):
-    require(isinstance(label, str) and label.startswith('$') and label.endswith('$'),
-            'Choice must use explicit math delimiters')
-    source = label[1:-1]
+    require(isinstance(label, str), 'Radical choice must be text')
+    plain_integer = re.fullmatch(r'-?(?:0|[1-9][0-9]*)', label) is not None
+    require(plain_integer or (label.startswith('$') and label.endswith('$')),
+            'Noninteger choices must use explicit math delimiters')
+    source = label if plain_integer else label[1:-1]
     value = tex_value(source)
+    is_integer = not value or (set(value) == {1} and value[1].denominator == 1)
+    require(is_integer == plain_integer, 'Integer choices must be plain text to avoid currency delimiters')
     compact = lambda text: text.replace(' ', '').replace('−', '-')
     require(compact(source) == compact(canonical_tex(value)),
             'Choice is not reduced canonical radical notation')
     return value
+
+
+def choice_label(value):
+    source = canonical_tex(value)
+    return source if not value or (set(value) == {1} and value[1].denominator == 1) else '$' + source + '$'
 
 
 def public_target(public):
@@ -183,7 +197,7 @@ def review_fixtures():
         target = tex_value(expected)
         require(public_target({'templateId': template, 'prompt': prompt}) == target,
                 'Handwritten public radical fixture failed')
-        labels = [f'${expected}$'] + [f'${canonical_tex(add(target, rational(k)))}$' for k in (1, 2, 3)]
+        labels = [choice_label(target)] + [choice_label(add(target, rational(k))) for k in (1, 2, 3)]
         public = {'templateId': template, 'prompt': prompt, 'response': {
             'kind': 'choice', 'label': 'Simplified expression', 'options': [
                 {'id': f'option-{letter}', 'label': label} for letter, label in zip('abcd', labels)]}}
