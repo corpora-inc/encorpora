@@ -1,4 +1,5 @@
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
+import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
@@ -27,6 +28,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "integer-exponent-ladder"
       | "descriptive-median"
       | "descriptive-range"
       | "descriptive-iqr"
@@ -512,6 +514,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...integerExponentLessons,
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,

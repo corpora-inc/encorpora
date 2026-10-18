@@ -10,6 +10,10 @@ const COMPUTATION_STRANDS = new Set([
   "decimals",
 ]);
 const COMPUTATION_TEMPLATES = new Set([
+  "negative-integer-power",
+  "product-of-powers-exponent",
+  "quotient-of-powers-exponent",
+  "power-of-power-exponent",
   "integer-power",
   "operation-order",
   "median-data",

@@ -1,4 +1,5 @@
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
+import { integerExponentPrinciples } from "./integer-exponent-lessons";
 import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
 import { percentChangePrinciples } from "./percent-change-lessons";
 import { inequalityPrinciples } from "./inequality-lessons";
@@ -10,6 +11,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...absoluteValuePrinciples,

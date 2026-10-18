@@ -22,6 +22,7 @@ from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequali
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
+from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
 from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
@@ -41,7 +42,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM
+SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -57,6 +58,8 @@ def solve(public):
     template = public['templateId']
     if template in CIRCLE:
         return solve_circle(public)
+    if template in INTEGER_EXPONENT:
+        return solve_integer_exponent(public)
     if template in DESCRIPTIVE_STATISTICS:
         return solve_descriptive_statistics(public)
     if template in PERCENT_CHANGE:
@@ -266,6 +269,7 @@ def solve(public):
 
 def review(stream):
     review_circle_fixtures()
+    review_integer_exponent_fixtures()
     review_descriptive_statistics_fixtures()
     review_statistics_content_mutations()
     review_algebra_fixtures()
@@ -292,6 +296,7 @@ def review(stream):
     polynomial_shortcuts = PolynomialShortcutReview()
     inequality_review = InequalityReview()
     system_review = LinearSystemReview()
+    exponent_review = IntegerExponentReview()
     right_triangles = RightTriangleCorpusReview()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
@@ -309,6 +314,9 @@ def review(stream):
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
         solved = solve(public)
+        if template in INTEGER_EXPONENT:
+            exponent_review.record(public, solved)
+            review_integer_exponent_explanation(public, problem["explanation"])
         if template in RIGHT_TRIANGLE:
             right_triangles.record(public, solved)
         if template in RIGHT_TRIANGLE_CHOICE:
@@ -336,6 +344,8 @@ def review(stream):
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
+    print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
+    print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
     print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)
     print('Independent percent-change review: ' + json.dumps(review_percent_change_content()), file=sys.stderr)
     print('Independent inequality worksheet/registry review: ' + json.dumps(review_inequality_content()), file=sys.stderr)
