@@ -1,3 +1,4 @@
+import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
@@ -25,6 +26,10 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | "thirds-and-fourths"
+      | "circle-circumference"
+      | "circle-area"
+      | "circle-arc"
+      | "circle-sector"
       | "percent-change-bars"
       | "percent-change-reverse"
       | "inequality-half-lines"
@@ -503,6 +508,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

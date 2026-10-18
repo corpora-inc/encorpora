@@ -1,3 +1,4 @@
+import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
 import { LinearSystemIllustration } from "./LinearSystemIllustration";
@@ -14,6 +15,13 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "circle-circumference" ||
+    kind === "circle-area" ||
+    kind === "circle-arc" ||
+    kind === "circle-sector"
+  )
+    return <CircleMeasurementIllustration kind={kind} />;
   if (kind === "percent-change-bars" || kind === "percent-change-reverse")
     return (
       <PercentChangeIllustration reverse={kind === "percent-change-reverse"} />
