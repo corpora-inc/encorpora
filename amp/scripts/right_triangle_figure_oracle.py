@@ -7,6 +7,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 from fractions import Fraction as F
 from pathlib import Path
+from right_triangle_publication_oracle import review_right_triangle_publications, review_right_triangle_coverage
 from right_triangle_math_oracle import (
     require, PATTERNS, CONVERSE, triangle_class, review_converse_explanation,
 )
@@ -77,10 +78,11 @@ def disjoint_interiors(left, right):
 
 
 def check_orientation(root):
-    svg = root.find(".//svg[@data-lesson-illustration='right-triangle-orientation']")
-    require(svg is not None and svg.get('role') == 'img' and svg.get('aria-label'), 'Missing accessible orientation figure')
     both = []
     for name in ('original', 'rotated'):
+        svg = root.find(f".//svg[@data-lesson-illustration='right-triangle-orientation-{name}']")
+        require(svg is not None and svg.get('role') == 'img' and svg.get('aria-label'),
+                'Missing accessible orientation panel')
         group = svg.find(f"g[@data-triangle='{name}']")
         require(group is not None and len(group.findall('polygon')) == 1, 'Missing orientation triangle')
         points = vertices(group.find('polygon'))
@@ -148,6 +150,8 @@ def review_right_triangle_figures():
     data = json.loads(result.stdout)
     require(data['format'] == 1, 'Unsupported diagram export')
     check_worked_examples(data['lessons'])
+    publications = review_right_triangle_publications(data['publications'])
+    coverage = review_right_triangle_coverage(data['coverage'])
     orientation = ET.fromstring(data['illustrations']['orientation'])
     rearrangement = ET.fromstring(data['illustrations']['rearrangement'])
     check_orientation(orientation)
@@ -195,7 +199,8 @@ def review_right_triangle_figures():
         raise ValueError('Accepted a missing or incorrect worked lesson')
     return {'orientationTriangles': 2, 'congruentProofTriangles': 8,
             'uncoveredSquares': 3, 'rejectedGeometryMutations': len(mutations),
-            'workedExamples': 3, 'rejectedWorkedExampleMutations': len(lesson_mutations)}
+            'workedExamples': 3, 'rejectedWorkedExampleMutations': len(lesson_mutations),
+            'publications': publications, 'coverage': coverage}
 
 
 if __name__ == '__main__':
