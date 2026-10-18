@@ -3,6 +3,10 @@ import {
   generateCircleMeasurementProblem,
 } from "./circle-measurement-practice";
 import {
+  integerExponentTemplates,
+  generateIntegerExponentProblem,
+} from "./integer-exponent-practice";
+import {
   descriptiveStatisticsTemplates,
   generateDescriptiveStatisticsProblem,
 } from "./descriptive-statistics-practice";
@@ -176,6 +180,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...integerExponentTemplates,
   ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
   ...measurementTemplates,
@@ -303,6 +308,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...circleMeasurementTemplates,
+    ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
     ...inequalityTemplates,
@@ -332,6 +338,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (circleMeasurementTemplates.some((t) => t.id === templateId))
     return generateCircleMeasurementProblem(templateId, seed);
+  if (integerExponentTemplates.some((t) => t.id === templateId))
+    return generateIntegerExponentProblem(templateId, seed);
   if (descriptiveStatisticsTemplates.some((t) => t.id === templateId))
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))

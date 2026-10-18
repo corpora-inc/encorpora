@@ -1,4 +1,5 @@
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
+import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
 import { PercentChangeIllustration } from "./PercentChangeIllustration";
 import { InequalityHalfLines } from "./InequalityHalfLines";
@@ -23,6 +24,8 @@ export function LessonIllustration({
     kind === "circle-sector"
   )
     return <CircleMeasurementIllustration kind={kind} />;
+  if (kind === "integer-exponent-ladder")
+    return <IntegerExponentIllustration />;
   if (kind === "descriptive-median")
     return <DescriptiveStatisticsIllustration kind="median" />;
   if (kind === "descriptive-range")
