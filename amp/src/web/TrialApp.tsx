@@ -254,11 +254,11 @@ export function TrialApp(props: Props) {
         {error && <p role="alert">{error}</p>}
         {progress?.phase === "unavailable" && (
           <section className="trial-teaching">
-            <h2>Placement complete</h2>
+            <h2>Your placement is saved</h2>
             <p>
-              AMP does not have four fresh teaching questions available at this
-              level. The map shows the answers recorded so far; no teaching
-              result has been inferred.
+              AMP does not have a complete follow-up lesson and practice set for
+              this starting point. You can review your placement map or save it
+              in a parent account.
             </p>
             <button className="go-button" onClick={props.signIn}>
               Save placement in a parent account
