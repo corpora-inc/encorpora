@@ -95,17 +95,10 @@ try {
     }
     assert.equal((await attempt).status(), 200);
     answered++;
-    const next = page.getByRole("button", { name: /^(Next|Continue)/ });
-    if (await page.locator(".choice-submit").count())
-      await page.locator(".choice-submit").click();
-    else if (await next.count()) await next.first().click();
-    else await page.locator("#answer").press("Enter");
-    await page.waitForFunction(
-      (count) =>
-        !!document.querySelector(".trial-result") ||
-        document.querySelectorAll(".problem-stage").length > 0,
-      answered,
-    );
+    // Every outcome shows the feedback overlay; its Next button advances.
+    const next = page.locator(".next-action");
+    await next.click();
+    await next.waitFor({ state: "hidden" });
   }
   assert.equal(answered, TRIAL_ATTEMPTS);
 

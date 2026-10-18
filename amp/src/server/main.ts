@@ -15,6 +15,12 @@ import {
 } from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
 import { developmentAuth, oidcAuth } from "./auth";
+import {
+  accountsAuth,
+  accountsConfiguration,
+  createAccounts,
+  registerAccountRoutes,
+} from "./accounts";
 import { PostgresRepository } from "./repository";
 /** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
  * ingress address. Anything else is a configuration error. */
@@ -37,8 +43,9 @@ const development = process.env.AMP_AUTH_MODE === "development";
 const host = process.env.AMP_HOST ?? "127.0.0.1";
 if (development && !["127.0.0.1", "::1"].includes(host))
   throw new Error("Development API must bind to loopback");
-if (!development && process.env.AMP_AUTH_MODE !== "oidc")
-  throw new Error("Set AMP_AUTH_MODE to oidc or development");
+const authMode = process.env.AMP_AUTH_MODE;
+if (!development && authMode !== "oidc" && authMode !== "accounts")
+  throw new Error("Set AMP_AUTH_MODE to accounts, oidc or development");
 if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   throw new Error(
     "Hosted pilot requires configured consent, privacy, support and identity flows; see deployment documentation",
@@ -46,17 +53,25 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   development,
 });
+// AMP's own parent accounts (email, passkeys, Google, Apple, Microsoft,
+// GitHub), stored in AMP's database.
+const accounts =
+  authMode === "accounts"
+    ? await createAccounts(repository.pool, accountsConfiguration(process.env))
+    : null;
 const authenticate = development
   ? developmentAuth()
-  : oidcAuth({
-      issuer: required("AMP_OIDC_ISSUER"),
-      audience: required("AMP_OIDC_AUDIENCE"),
-      jwksUrl: required("AMP_OIDC_JWKS_URL"),
-      accessTokenProfile:
-        process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
-          ? "token-use-access"
-          : "rfc9068",
-    });
+  : accounts
+    ? accountsAuth(accounts)
+    : oidcAuth({
+        issuer: required("AMP_OIDC_ISSUER"),
+        audience: required("AMP_OIDC_AUDIENCE"),
+        jwksUrl: required("AMP_OIDC_JWKS_URL"),
+        accessTokenProfile:
+          process.env.AMP_OIDC_TOKEN_PROFILE === "token-use-access"
+            ? "token-use-access"
+            : "rfc9068",
+      });
 const app = buildApp({
   repository,
   authenticate,
@@ -64,6 +79,12 @@ const app = buildApp({
   logger: true,
   trustedProxies: trustedProxies(process.env.AMP_TRUSTED_PROXIES),
 });
+if (accounts) await registerAccountRoutes(app, accounts);
+// Without AMP accounts, the browser uses the development or OIDC flow.
+else
+  app.get("/api/v1/auth-config", async () => ({
+    mode: development ? "development" : "oidc",
+  }));
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
