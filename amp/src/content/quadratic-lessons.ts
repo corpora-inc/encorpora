@@ -28,7 +28,7 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
       ["root", "A value of x that makes the polynomial equal zero."],
     ],
     method: [
-      "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out x. Otherwise, divide out any common numerical factor.",
+      "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out x.",
       "Otherwise, divide out any common numerical factor, then find integers m and n with m + n = b and mn = ac. Replace bx by mx + nx and factor by grouping.",
       "Check the factors by multiplication. Set each factor equal to zero and solve both equations.",
       "List each distinct root once and check it in the original equation.",
