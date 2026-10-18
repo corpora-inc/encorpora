@@ -3,6 +3,7 @@ import {
   sessionOptions,
   queryClient,
   meOptions,
+  meKey,
 } from "../lib/query";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -512,7 +513,15 @@ function LegacyScreen() {
     navigationEpoch.current++;
     learnerRef.current = undefined;
 
-    setFamilySummary(null);
+    // A successful destructive privacy mutation invalidates the last server
+    // snapshot even if its follow-up refresh fails. Reset notifies mounted
+    // disabled Family observers and drops obsolete consent/access immediately.
+    if (nativeRuntime) setFamilySummary(null);
+    else
+      void queryClient.resetQueries({
+        queryKey: meKey(accountRef.current),
+        exact: true,
+      });
     setProblem(null);
     setQueue([]);
     setOutcome(null);

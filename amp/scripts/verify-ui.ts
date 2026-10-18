@@ -485,6 +485,14 @@ try {
   await page.waitForFunction(() =>
     document.activeElement?.matches(".account-menu summary"),
   );
+  // Family exits to the workspace; open the profile route before editing again.
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.locator(".account-menu summary").click();
+  await page
+    .locator(".account-menu")
+    .getByRole("button", { name: "Change birth year", exact: true })
+    .click();
+  await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
   const familyBatchRelease = new Promise<void>((resolve) => {
     releaseFamilyBatch = resolve;

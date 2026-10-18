@@ -102,3 +102,36 @@ test("session-check failures preserve the workspace and show a safe logged error
   );
   expect(JSON.stringify(log.mock.calls)).not.toContain("private transport");
 });
+
+test("privacy invalidation clears mounted disabled Family observers despite a failed refresh", async () => {
+  const { useFamilyCache } = await import("../family-cache");
+  const { QueryClientProvider } = await import("@tanstack/react-query");
+  function FamilyObserver() {
+    const family = useFamilyCache(parent.accountId);
+    return <p>{family ? "Cached learning access" : "No learning access"}</p>;
+  }
+  queryClient.setQueryData(meKey(parent.accountId), {
+    signedIn: true,
+    family: { consent: { status: "active" }, learners: [] },
+  });
+  render(
+    <QueryClientProvider client={queryClient}>
+      <FamilyObserver />
+    </QueryClientProvider>,
+  );
+  expect(screen.getByText("Cached learning access")).toBeTruthy();
+  vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue(new Response("{}", { status: 503 })),
+  );
+  await act(async () => {
+    await queryClient.resetQueries({
+      queryKey: meKey(parent.accountId),
+      exact: true,
+    });
+    await expect(refreshMe(parent)).rejects.toThrow();
+  });
+  expect(await screen.findByText("No learning access")).toBeTruthy();
+  expect(queryClient.getQueryData(meKey(parent.accountId))).toBeUndefined();
+});
