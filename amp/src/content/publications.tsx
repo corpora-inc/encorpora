@@ -4,6 +4,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Figure } from "../web/Figure";
 import { generateProblem } from "../math/engine";
 import type { Lesson } from "./lessons";
+import { PrintMathText } from "./PrintMathText";
+import { printMathCss } from "./print-fonts";
 export type PublicationKind = "lesson" | "workbook" | "solutions";
 export function publicationHtml(
   lesson: Lesson,
@@ -15,57 +17,84 @@ export function publicationHtml(
       generateProblem(id, `print:${lesson.id}:${edition}:${i}`),
     ),
   );
-  const title = `${lesson.title} · ${kind === "lesson" ? "Reference lesson" : kind === "workbook" ? "Practice workbook" : "Worked solutions"}`;
+  const kindLabel =
+    kind === "lesson"
+      ? "Reference lesson"
+      : kind === "workbook"
+        ? "Practice workbook"
+        : "Worked solutions";
+  const title = `${lesson.title} · ${kindLabel}`;
   const body = (
     <article>
       <header>
         <span>{product.name} / MATHEMATICS</span>
         <span>Edition {edition}</span>
       </header>
-      <h1>{title}</h1>
-      <p className="summary">{lesson.summary}</p>
+      <h1>{lesson.title}</h1>
+      <p className="publication-kind">{kindLabel}</p>
+      <p className="summary">
+        <PrintMathText text={lesson.summary} />
+      </p>
       {kind === "lesson" ? (
         <>
           <h2>What you will learn</h2>
           <ul>
             {lesson.objectives.map((o) => (
-              <li key={o}>{o}</li>
+              <li key={o}>
+                <PrintMathText text={o} />
+              </li>
             ))}
           </ul>
           {lesson.sections.map((section) => (
             <section key={section.title}>
               <h2>{section.title}</h2>
               {section.paragraphs.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+                  <PrintMathText text={p} />
+                </p>
               ))}
             </section>
           ))}
           <section className="example">
             <h2>A worked example</h2>
-            <p>{lesson.workedExample.prompt}</p>
+            <p>
+              <PrintMathText text={lesson.workedExample.prompt} />
+            </p>
             <ol>
               {lesson.workedExample.steps.map((s) => (
-                <li key={s}>{s}</li>
+                <li key={s}>
+                  <PrintMathText text={s} />
+                </li>
               ))}
             </ol>
-            <strong>{lesson.workedExample.answer}</strong>
+            <strong>
+              <PrintMathText text={lesson.workedExample.answer} />
+            </strong>
           </section>
           {problems[0]?.public.figure && (
-            <section>
+            <section className="representation">
               <h2>Explore the representation</h2>
-              <p>{problems[0].public.prompt}</p>
+              <p>
+                <PrintMathText text={problems[0].public.prompt} />
+              </p>
               <Figure figure={problems[0].public.figure} />
-              <p>{problems[0].explanation.join(" ")}</p>
+              <p>
+                <PrintMathText text={problems[0].explanation.join(" ")} />
+              </p>
             </section>
           )}
           <h2>Common stumbling blocks</h2>
           <ul>
             {lesson.pitfalls.map((p) => (
-              <li key={p}>{p}</li>
+              <li key={p}>
+                <PrintMathText text={p} />
+              </li>
             ))}
           </ul>
           <h2>For a parent or learning partner</h2>
-          <p>{lesson.parentGuide}</p>
+          <p>
+            <PrintMathText text={lesson.parentGuide} />
+          </p>
         </>
       ) : (
         <>
@@ -77,13 +106,15 @@ export function publicationHtml(
           {problems.map((p, i) => (
             <section className="exercise" key={p.public.id}>
               <h2>
-                {i + 1}. {p.public.prompt}
+                {i + 1}. <PrintMathText text={p.public.prompt} />
               </h2>
               {p.public.figure && <Figure figure={p.public.figure} />}
               {p.public.response.kind === "choice" && (
                 <ol type="A" className="print-choices">
                   {p.public.response.options.map((option) => (
-                    <li key={option.id}>{option.label}</li>
+                    <li key={option.id}>
+                      <PrintMathText text={option.label} />
+                    </li>
                   ))}
                 </ol>
               )}
@@ -91,17 +122,23 @@ export function publicationHtml(
                 <>
                   <ol>
                     {p.explanation.map((s, j) => (
-                      <li key={j}>{s}</li>
+                      <li key={j}>
+                        <PrintMathText text={s} />
+                      </li>
                     ))}
                   </ol>
                   <p>
                     <strong>
                       Answer:{" "}
-                      {p.public.response.kind === "choice"
-                        ? p.public.response.options.find(
-                            (option) => option.id === p.answer,
-                          )?.label
-                        : p.answer}
+                      <PrintMathText
+                        text={
+                          p.public.response.kind === "choice"
+                            ? p.public.response.options.find(
+                                (option) => option.id === p.answer,
+                              )!.label
+                            : p.answer
+                        }
+                      />
                     </strong>
                   </p>
                 </>
@@ -127,7 +164,8 @@ export function publicationHtml(
         <head>
           <meta charSet="utf-8" />
           <title>{title}</title>
-          <style>{`@page{margin:18mm}body{font-family:Arial,sans-serif;color:#183e3a;line-height:1.6;font-size:11pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:2px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:28pt;line-height:1.2}h2{font-size:14pt;break-after:avoid}p,li{orphans:3;widows:3}section{margin:20px 0}.example{padding:18px;border:1px solid #9ab}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-bottom:18px}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}svg text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;padding-left:24px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{font-size:8pt;margin-top:30px;color:#567;border-top:1px solid #ccd;padding-top:10px}`}</style>
+          <style>{printMathCss()}</style>
+          <style>{`@page{margin:18mm}body{font-family:Arial,sans-serif;color:#18332f;line-height:1.55;font-size:10.5pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:1.3px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:27pt;line-height:1.2;margin:24px 0 8px}h2{font-size:12.5pt;line-height:1.5;break-after:avoid}p,li{orphans:3;widows:3}li{margin:3px 0}section{margin:20px 0}.publication-kind{font-size:10pt;letter-spacing:1px;margin:0 0 20px;color:#47635d}.example{padding:18px;border:1px solid #9ab;break-inside:avoid}.representation{break-inside:avoid}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-bottom:15px}.print-math .katex{font-size:1.08em}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}.figure text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-left:24px;line-height:1.8;row-gap:2px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{font-size:8pt;margin-top:30px;color:#567;border-top:1px solid #ccd;padding-top:10px}`}</style>
         </head>
         <body>{body}</body>
       </html>,
