@@ -90,6 +90,157 @@ def solve_polynomial(public):
     return correct[0]
 
 
+def choice_coefficients(options):
+    coefficients = [polynomial(option['label']) for option in options]
+    return [value + (0,) * (4-len(value)) for value in coefficients]
+
+
+def known_choice_shortcut(options):
+    """Reproduce the reviewed option-only attack, including its last-match ordering."""
+    values = choice_coefficients(options)
+
+    def near(i, j):
+        changed = [k for k in range(4) if values[i][k] != values[j][k]]
+        return changed[0] if len(changed) == 1 else None
+
+    guess = None
+    # Prefer the middle of a +/-1 triple differing at just one coefficient.
+    for i in range(len(options)):
+        for k in range(4):
+            differences = {values[j][k]-values[i][k] for j in range(len(options))
+                           if i != j and near(i, j) == k}
+            if {-1, 1} <= differences:
+                guess = options[i]['id']
+    # Otherwise choose the lower member of a pair differing by one coefficient unit.
+    if guess is None:
+        for i in range(len(options)):
+            for j in range(len(options)):
+                k = near(i, j) if i != j else None
+                if k is not None and values[j][k]-values[i][k] == 1:
+                    guess = options[i]['id']
+    return guess
+
+
+def coefficient_agreement_shortcut(options):
+    """Guess only when one option uniquely maximizes coefficient agreements."""
+    values = choice_coefficients(options)
+    scores = [sum(a == b for j, other in enumerate(values) if i != j
+                  for a, b in zip(value, other)) for i, value in enumerate(values)]
+    winners = [i for i, score in enumerate(scores) if score == max(scores)]
+    return options[winners[0]]['id'] if len(winners) == 1 else None
+
+
+CHOICE_SHORTCUTS = {'unit-coefficient-neighbors': known_choice_shortcut,
+                   'coefficient-agreement': coefficient_agreement_shortcut}
+
+
+class PolynomialShortcutReview:
+    """Regression checks for known shortcuts, not general leakage certification."""
+    def __init__(self):
+        self.counts = {name: {template: {'cases': 0, 'applications': 0, 'correct': 0}
+                             for template in sorted(POLYNOMIAL)} for name in CHOICE_SHORTCUTS}
+
+    def record(self, public, independent_answer):
+        for name, predict in CHOICE_SHORTCUTS.items():
+            counts = self.counts[name][public['templateId']]
+            guess = predict(public['response']['options'])
+            counts['cases'] += 1
+            if guess is not None:
+                counts['applications'] += 1
+                counts['correct'] += guess == independent_answer
+
+    def finish(self, expected_per_family):
+        require(type(expected_per_family) is int and expected_per_family >= 256,
+                'Shortcut review requires a manifest with at least 256 cases per family')
+        report = {}
+        for name, families in self.counts.items():
+            report[name] = {}
+            for template, counts in families.items():
+                require(counts['cases'] == expected_per_family,
+                        f'Incomplete shortcut review coverage for {template}')
+                applications, correct = counts['applications'], counts['correct']
+                enough = applications >= 32
+                require(not enough or 4*correct <= 3*applications,
+                        f'Known choice-only shortcut regression: {name}/{template}, '
+                        f'{correct}/{applications} correct predictions exceeds 75%')
+                report[name][template] = {**counts, 'status': 'threshold-not-exceeded' if enough
+                                         else 'insufficient-applications'}
+        return report
+
+
+def review_shortcut_fixtures():
+    """Prove exploit rejection, mixed-error acceptance, and explicit evidence limits."""
+    import random
+
+    prompts = {
+        'polynomial-addition': 'Simplify (x²) + (x).',
+        'polynomial-subtraction': 'Simplify (x²) − (−x).',
+        'polynomial-multiplication': 'Expand and simplify (x)(x + 1).',
+    }
+    def given(template, pattern):
+        labels = {
+            'triple': ['x² + x − 1', 'x² + x', 'x² + x + 1', '2x² + 8x + 7'],
+            'pair': ['x² + x', 'x² + x + 1', '5x² + 9x + 12', '2x² + 8x + 7'],
+            'wrong': ['x² + x', 'x² + x + 1', 'x² + x + 2', '2x² + 8x + 7'],
+            'similarity': ['x² + x', 'x² + x + 2', 'x² + 3x', '3x² + x'],
+            'similarity-wrong': ['x² + x', 'x² + x + 2', 'x² + 3x + 2', '3x² + x + 2'],
+            'rectangle': ['x² + x', 'x² + x + 2', 'x² + 3x', 'x² + 3x + 2'],
+            'absent': ['x² + x', '2x² + 2x', '3x² + 3x', '4x² + 4x'],
+        }[pattern]
+        return {'templateId': template, 'prompt': prompts[template],
+                'response': {'kind': 'choice', 'options': [
+                    {'id': str(index), 'label': label} for index, label in enumerate(labels)]}}
+
+    def corpus(patterns):
+        review = PolynomialShortcutReview()
+        for template in sorted(POLYNOMIAL):
+            for pattern in patterns[template]:
+                public = given(template, pattern)
+                review.record(public, solve_polynomial(public))
+        return review
+
+    rejected = 0
+    for template in sorted(POLYNOMIAL):
+        for pattern in ('triple', 'pair', 'similarity'):
+            patterns = {name: ['absent']*256 for name in POLYNOMIAL}
+            patterns[template] = [pattern]*32 + ['absent']*224
+            try:
+                corpus(patterns).finish(256)
+            except ValueError as error:
+                algorithm = 'coefficient-agreement' if pattern == 'similarity' else 'unit-coefficient-neighbors'
+                require(f'{algorithm}/{template}' in str(error), 'Wrong shortcut rejected the fixture')
+                rejected += 1
+            else:
+                raise ValueError(f'Known shortcut was not rejected: {pattern}')
+    for algorithm, correct, wrong in [
+        ('unit-coefficient-neighbors', 'triple', 'wrong'),
+        ('coefficient-agreement', 'similarity', 'similarity-wrong'),
+    ]:
+        mixed = [correct]*64 + [wrong]*192
+        random.Random(817).shuffle(mixed)
+        report = corpus({name: mixed for name in POLYNOMIAL}).finish(256)[algorithm]
+        require(all(item['correct'] == 64 and item['applications'] == 256
+                    and item['status'] == 'threshold-not-exceeded' for item in report.values()),
+                'Mixed errors must not trigger the known shortcut threshold')
+        # Exactly 75% is allowed; the regression threshold is strictly greater.
+        corpus({name: [correct]*24 + [wrong]*8 + ['absent']*224
+                for name in POLYNOMIAL}).finish(256)
+        report = corpus({name: [correct]*31 + ['absent']*225 for name in POLYNOMIAL}).finish(256)[algorithm]
+        require(all(item['status'] == 'insufficient-applications' for item in report.values()),
+                'Few shortcut applications cannot certify the accuracy threshold')
+    report = corpus({name: ['rectangle']*256 for name in POLYNOMIAL}).finish(256)
+    require(all(item['applications'] == 0 for families in report.values() for item in families.values()),
+            'Balanced rectangle must give neither shortcut a unique prediction')
+    for count, expected in [(31, 31), (255, 256)]:
+        try:
+            corpus({name: ['triple']*count for name in POLYNOMIAL}).finish(expected)
+        except ValueError:
+            rejected += 1
+        else:
+            raise ValueError('Insufficient corpus coverage was accepted')
+    return {'rejectedShortcutCorpora': rejected, 'acceptedShortcutCorpora': 7}
+
+
 def review_polynomial_fixtures():
     """Hand-computed signs, cancellations, products, and malformed public payloads."""
     def public(operation, left, right, labels):
@@ -164,7 +315,8 @@ def review_polynomial_fixtures():
         except ValueError:
             continue
         raise ValueError(f'Polynomial oracle accepted invalid fixture: {given}')
-    return {'handwrittenCases': len(cases), 'rejectedMutations': len(invalid)}
+    return {'handwrittenCases': len(cases), 'rejectedMutations': len(invalid),
+            **review_shortcut_fixtures()}
 
 
 if __name__ == '__main__':

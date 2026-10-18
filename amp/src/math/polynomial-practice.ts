@@ -267,37 +267,70 @@ export function generatePolynomialProblem(
       }
     }
   }
-  // Sample distinct mathematical errors; no fixed ±1 sequence or privileged
-  // coefficient can reveal the key from the options alone.
-  const pool: { label: string; feedback: string }[] = [];
-  for (const candidate of candidates) {
-    const candidateLabel = format(candidate.value);
-    if (
-      candidateLabel !== label &&
-      !pool.some((o) => o.label === candidateLabel)
-    )
-      pool.push({ label: candidateLabel, feedback: candidate.feedback });
-  }
-  // Very sparse operands can have fewer than three distinct modelled errors.
-  while (pool.length < 3) {
-    const wrong = [...correct],
-      k = r(0, wrong.length - 1);
-    wrong[k]! += nz(7);
-    const candidateLabel = format(wrong);
-    if (
-      candidateLabel !== label &&
-      !pool.some((o) => o.label === candidateLabel)
-    )
-      pool.push({
-        label: candidateLabel,
-        feedback: `${k ? `Check the coefficient of ${power(k)}` : "Check the constant term"}. Follow the indicated operation and keep the signs.`,
-      });
-  }
-  for (let i = pool.length - 1; i > 0; i--) {
+  // Balance the choices across two independent coefficient decisions. Each
+  // value occurs equally often, so coefficient agreement cannot identify the key.
+  const active = new Set<number>();
+  if (multiply)
+    a.forEach((c, i) =>
+      b.forEach((d, j) => {
+        if (c && d) active.add(i + j);
+      }),
+    );
+  else for (let k = 0; k < correct.length; k++) if (a[k] || b[k]) active.add(k);
+  const powers = [...active];
+  for (let i = powers.length - 1; i > 0; i--) {
     const j = r(0, i);
-    [pool[i], pool[j]] = [pool[j]!, pool[i]!];
+    [powers[i], powers[j]] = [powers[j]!, powers[i]!];
   }
-  const options = [{ label, feedback: "" }, ...pool.slice(0, 3)];
+  const options: { label: string; feedback: string }[] = [];
+  const checkCoefficient = (k: number) =>
+    `${k ? `Check the coefficient of ${power(k)}` : "Check the constant term"}. ${multiply ? "Multiply the signed coefficients and include each term product." : "Combine the signed coefficients using the indicated operation."}`;
+  if (powers.length === 1) {
+    // A monomial has one coefficient decision. Randomize the correct value's
+    // rank as well as its displayed position, avoiding a fixed middle answer.
+    const k = powers[0]!,
+      rank = r(0, 3),
+      step = r(2, 7);
+    for (let i = 0; i < 4; i++) {
+      const value = [...correct];
+      value[k]! += (i - rank) * step;
+      options.push({
+        label: format(value),
+        feedback: i === rank ? "" : checkCoefficient(k),
+      });
+    }
+  } else {
+    const errors = powers.slice(0, 2).map((k) => {
+      const choices = new Map<number, string>();
+      for (const candidate of candidates) {
+        const difference = correct.map((c, j) => (candidate.value[j] ?? 0) - c);
+        if (
+          difference[k] &&
+          difference.every((delta, j) => j === k || delta === 0)
+        )
+          choices.set(difference[k]!, candidate.feedback);
+      }
+      const entries = [...choices];
+      const [delta, feedback] = entries.length
+        ? entries[r(0, entries.length - 1)]!
+        : [nz(7), checkCoefficient(k)];
+      return { k, delta, feedback };
+    });
+    for (let mask = 0; mask < 4; mask++) {
+      const value = [...correct],
+        feedback: string[] = [];
+      errors.forEach((error, i) => {
+        if (mask & (1 << i)) {
+          value[error.k]! += error.delta;
+          feedback.push(error.feedback);
+        }
+      });
+      options.push({
+        label: format(value),
+        feedback: [...new Set(feedback)].join(" "),
+      });
+    }
+  }
   for (let i = options.length - 1; i > 0; i--) {
     const j = r(0, i);
     [options[i], options[j]] = [options[j]!, options[i]!];

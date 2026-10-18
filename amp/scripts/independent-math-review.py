@@ -13,7 +13,7 @@ from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
-from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures
+from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -251,6 +251,7 @@ def review(stream):
     start, count = manifest['seedStart'], manifest['seedCount']
     require(type(start) is int and type(count) is int and start >= 0 and count >= 256, 'Require at least 256 seeds per family')
     seen, counts = set(), Counter()
+    polynomial_shortcuts = PolynomialShortcutReview()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -267,6 +268,8 @@ def review(stream):
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
         solved = solve(public)
+        if template in POLYNOMIAL:
+            polynomial_shortcuts.record(public, solved)
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
@@ -278,6 +281,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 
