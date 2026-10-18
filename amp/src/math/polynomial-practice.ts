@@ -215,14 +215,15 @@ export function generatePolynomialProblem(
   let prompt: string, hint: string, explanation: string[];
   if (multiply) {
     prompt = `Expand and simplify (${format(a)})(${format(b)}).`;
-    hint =
-      "Distribute every term of the first factor to every term of the second. Multiply coefficients, add exponents on powers of x, then combine like terms.";
-    const partials: Polynomial[] = [];
     const singleTermProduct =
       a.filter(Boolean).length === 1 && b.filter(Boolean).length === 1;
+    hint = singleTermProduct
+      ? "Multiply the signed coefficients. For powers with the same base, add the exponents."
+      : "Distribute every term of the first factor to every term of the second. Multiply coefficients, add exponents on powers of x, then combine like terms.";
+    const partials: Polynomial[] = [];
     explanation = [
       singleTermProduct
-        ? "Multiply the coefficients and add the exponents on x."
+        ? "Multiply the coefficients. The product of powers property adds exponents when multiplying powers with the same base, x."
         : "Use the distributive property. In each term product, multiply coefficients and add exponents on powers of x.",
     ];
     for (let k = a.length - 1; k >= 0; k--) {
