@@ -125,6 +125,11 @@ async function setup(
           : { json: { learnerId: `child-${parent}-2` } },
       );
     }
+    if (
+      path === "/api/v1/payments/reimbursement-programs" &&
+      route.request().method() === "GET"
+    )
+      return route.fulfill({ json: { programs: [] } });
     if (path.endsWith("/funding/offers"))
       return route.fulfill({
         json: {
