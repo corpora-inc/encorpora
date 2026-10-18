@@ -39,7 +39,7 @@ async function inspect(html: string, format: "Letter" | "A4") {
       for (const font of document.fonts)
         if (font.status === "error") issues.push(`Font failed: ${font.family}`);
       const elements = document.querySelectorAll<HTMLElement>(
-        "article,section,p,li,h1,h2,footer,.print-choices,.print-math",
+        "article,section,p,li,h1,h2,footer,figcaption,.print-choices,.print-math,.lesson-illustration",
       );
       for (const element of elements) {
         const r = element.getBoundingClientRect();
@@ -82,14 +82,14 @@ async function inspect(html: string, format: "Letter" | "A4") {
           );
       }
       for (const section of document.querySelectorAll(
-        ".exercise,.example,.representation",
+        ".exercise,.example,.representation,.lesson-illustration",
       ))
         if (section.getBoundingClientRect().height > pageHeight)
           issues.push(
             "A section kept together is taller than a printable page",
           );
       for (const svg of document.querySelectorAll<SVGSVGElement>(
-        "svg.figure",
+        "svg.figure,svg[data-lesson-illustration]",
       )) {
         const v = svg.viewBox.baseVal;
         for (const label of svg.querySelectorAll("text")) {
@@ -119,6 +119,8 @@ try {
     `<p style="width:80px;overflow:hidden;white-space:nowrap">${"Hidden text ".repeat(30)}TAIL</p>`,
     `<div style="height:5px;overflow:hidden"><p>Clipped paragraph</p></div>`,
     `<p style="position:relative;left:-800px">Missing left-hand text</p>`,
+    `<figure class="lesson-illustration" style="height:2000px;break-inside:avoid">Oversized lesson illustration</figure>`,
+    `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="95" y="20">Clipped label</text></svg>`,
   ];
   for (const mutation of mutations)
     if (
