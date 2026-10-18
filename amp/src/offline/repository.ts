@@ -207,7 +207,8 @@ export class OfflineRepository {
           items.push({
             problem: problem.public,
             graderVersion: 1,
-            reason: variant === 0 ? choice.reason : "variant",
+            // Preserve the closed version-one offline reason vocabulary.
+            reason: variant === 0 ? (choice.reason === "probe" ? "explore" : choice.reason) : "variant",
             strand: choice.strand,
             selfCheck: {
               answer: problem.answer,

@@ -1,25 +1,16 @@
-import type { GradeBand } from "../curriculum/types";
+import {
+  gradeCalibration,
+  itemSuccess,
+  type ItemCalibration,
+} from "./item-calibration";
+export { gradeNumber } from "./item-calibration";
 
-/** Grade position on one axis: K = 0 … 8, then the high-school courses. */
-export const gradeNumber: Record<GradeBand, number> = {
-  K: 0,
-  "1": 1,
-  "2": 2,
-  "3": 3,
-  "4": 4,
-  "5": 5,
-  "6": 6,
-  "7": 7,
-  "8": 8,
-  "algebra-1": 9,
-  geometry: 10,
-  "algebra-2": 11,
-  precalculus: 12,
-};
 export const MAX_GRADE = 12;
 
 export type FrontierObservation = {
   templateId: string;
+  /** Missing versions belong to the original version-one outcome protocol. */
+  templateVersion?: number;
   correct: boolean;
   assisted: boolean;
   /** ISO time of the answer; drives how much the estimate may have moved. */
@@ -70,13 +61,6 @@ export function initialLevel(options: {
 const GRID = Array.from({ length: 141 }, (_, i) => -1 + i / 10);
 const PRIOR_SD = 2.5;
 const STRAND_SD = 1.75;
-/** P(independent success) for a learner at `theta` on a grade-`grade` problem:
- * about 70% when the problem is at the learner's level, with a small floor
- * and ceiling for lucky guesses and slips. */
-function success(theta: number, grade: number) {
-  const p = 1 / (1 + Math.exp(-1.7 * (theta - grade + 0.5)));
-  return 0.04 + 0.92 * p;
-}
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
 }
@@ -123,7 +107,12 @@ function blur(log: number[], variance: number) {
   });
 }
 
-type Evidence = { grade: number; strand: string; success: boolean; at: number };
+type Evidence = {
+  probabilities: readonly number[];
+  strand: string;
+  success: boolean;
+  at: number;
+};
 function fold(
   start: number[],
   items: readonly Evidence[],
@@ -148,14 +137,12 @@ function fold(
     const weights = log.map((value) => Math.exp(value - top));
     const total = weights.reduce((sum, w) => sum + w, 0);
     const expected =
-      weights.reduce(
-        (sum, w, i) => sum + w * success(GRID[i]!, item.grade),
-        0,
-      ) / total;
+      weights.reduce((sum, w, i) => sum + w * item.probabilities[i]!, 0) /
+      total;
     surprise =
       (item.success ? 1 - expected : expected) > 0.75 ? SURPRISE_DRIFT : 0;
     for (let i = 0; i < GRID.length; i++) {
-      const p = success(GRID[i]!, item.grade);
+      const p = item.probabilities[i]!;
       log[i] = log[i]! + Math.log(item.success ? p : 1 - p);
     }
   }
@@ -179,14 +166,32 @@ export function estimateFrontier(options: {
   observations: readonly FrontierObservation[];
   gradeOf: (templateId: string) => number | undefined;
   strandOf: (templateId: string) => string;
+  /** Production callers share these parameters with the planner. */
+  itemOf?: (
+    templateId: string,
+    templateVersion: number,
+  ) => ItemCalibration | undefined;
   now?: number;
 }): Frontier {
   const evidence: Evidence[] = [];
+  const likelihoods = new Map<string, number[]>();
   options.observations.forEach((observation, index) => {
     const grade = options.gradeOf(observation.templateId);
     if (grade === undefined) return;
+    const version = observation.templateVersion ?? 1;
+    const identity = `${observation.templateId}@${version}`;
+    let probabilities = likelihoods.get(identity);
+    if (!probabilities) {
+      const item = options.itemOf
+        ? options.itemOf(observation.templateId, version)
+        : gradeCalibration(grade);
+      // Retain the attempt fact, but do not infer ability with another version's parameters.
+      if (!item) return;
+      probabilities = GRID.map((theta) => itemSuccess(theta, item));
+      likelihoods.set(identity, probabilities);
+    }
     evidence.push({
-      grade,
+      probabilities,
       strand: options.strandOf(observation.templateId),
       success: observation.correct && !observation.assisted,
       at: observation.createdAt
