@@ -7,6 +7,7 @@ import { shapeMethods } from "./shape-lessons";
 import { polygonMethods } from "./polygon-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
+import { bivariateMethods } from "./bivariate-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
 import { timeMoneyMethods } from "./time-money-lessons";
@@ -14,6 +15,7 @@ import { attributeMethods } from "./attribute-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
+import { realNumberMethods } from "./real-number-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
 import { multiplyDivideMethods } from "./multiply-divide-lessons";
@@ -49,6 +51,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...linePlotMethods,
   ...distributionMethods,
   ...inferenceMethods,
+  ...bivariateMethods,
   ...radicalMethods,
   ...partWholeMethods,
   ...decimalMethods,
@@ -60,6 +63,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...realNumberMethods,
   ...numberSystemMethods,
   ...ratioRateMethods,
   ...patternFunctionMethods,

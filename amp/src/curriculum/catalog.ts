@@ -1656,6 +1656,62 @@ for (const [suffix, description] of [
     status: "implemented",
   });
 
+// Grade 8 real-number tasks; each facet is bounded by its coverage rationale.
+for (const [skillId, suffix, description] of [
+  [
+    "irrational-numbers",
+    "classify-forms",
+    "Identify the rational or irrational number among roots, integers, fractions, terminating and repeating decimals, multiples of π and a non-repeating patterned decimal.",
+  ],
+  [
+    "irrational-numbers",
+    "repeating-to-fraction",
+    "Write a repeating decimal as a fraction in simplest form.",
+  ],
+  [
+    "approximate-roots",
+    "integer-bounds",
+    "Locate a square or cube root of a whole number between consecutive whole numbers.",
+  ],
+  [
+    "approximate-roots",
+    "nearest-tenth",
+    "Approximate the square root of a whole number to the nearest tenth using squares of tenths and the halfway point.",
+  ],
+  [
+    "approximate-roots",
+    "compare-forms",
+    "Order square roots, cube roots, fractions and decimals by placing each between consecutive tenths.",
+  ],
+  [
+    "approximate-roots",
+    "root-equations",
+    "Find all real solutions of x² = p for positive rational p and x³ = p for integer p, with root symbols for irrational solutions.",
+  ],
+  [
+    "scientific-notation",
+    "standard-form",
+    "Convert positive numbers between scientific notation and standard form.",
+  ],
+  [
+    "scientific-notation",
+    "compare-magnitude",
+    "Find how many times as large one number in scientific notation is as another.",
+  ],
+  [
+    "scientific-notation",
+    "operations",
+    "Multiply, divide, add and subtract numbers in scientific notation, giving the result in scientific notation.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
@@ -2149,6 +2205,26 @@ for (const [skillId, suffix, description] of [
     "compare-distributions",
     "box-plot-comparison",
     "Compare medians and interquartile ranges of two box plots on one scale.",
+  ],
+  [
+    "scatterplots",
+    "association-patterns",
+    "Classify a scatter plot's association as positive linear, negative linear, nonlinear or none.",
+  ],
+  [
+    "scatterplots",
+    "trend-line-models",
+    "Predict with a trend line and interpret its slope in context.",
+  ],
+  [
+    "two-way-tables",
+    "complete-tables",
+    "Find missing counts in a two-way table from its row and column totals.",
+  ],
+  [
+    "two-way-tables",
+    "relative-frequency-association",
+    "Compare relative frequencies within rows to judge association.",
   ],
 ])
   skills

@@ -10,6 +10,7 @@ import { clockSchema } from "./clock";
 import { fractionBarSchema } from "./fraction-bar";
 import { graphSchema } from "./graph";
 import { numberLineSchema } from "./number-line";
+import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
 
 export const componentSchemas = [
@@ -20,6 +21,7 @@ export const componentSchemas = [
   fractionBarSchema,
   graphSchema,
   numberLineSchema,
+  tableSchema,
   tenFrameSchema,
 ] as const;
 
@@ -30,4 +32,5 @@ export * from "./clock";
 export * from "./fraction-bar";
 export * from "./graph";
 export * from "./number-line";
+export * from "./table";
 export * from "./ten-frame";
