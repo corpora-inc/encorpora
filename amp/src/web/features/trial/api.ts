@@ -1,4 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
+import { stepsSchema } from "../../../math/scene/timeline";
 import { z } from "zod";
 import {
   figureCapabilities,
@@ -187,7 +188,7 @@ export function answer(
 export function hint(session: TrialSession, problemId: string) {
   return request(
     `/learners/${encodeURIComponent(session.learnerId)}/hints`,
-    z.object({ hint: z.string() }),
+    z.object({ hint: z.string(), cue: stepsSchema.optional() }),
     { trial: session.token, body: { problemId } },
   );
 }

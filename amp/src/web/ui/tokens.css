@@ -290,6 +290,11 @@
   --radius-panel: 20px;
   --target-size: 48px;
   --motion-fast: 150ms;
+  /* Figure timelines: one step, a traced stroke, the pause between steps. */
+  --motion-step: 900ms;
+  --motion-trace: 1300ms;
+  --motion-hold: 1400ms;
+  --ease-standard: cubic-bezier(0.22, 0.7, 0.18, 1);
   --text-body: 17px;
   --text-label: 14px;
   --text-small: 13px;
@@ -308,5 +313,8 @@
 @media (prefers-reduced-motion: reduce) {
   :root {
     --motion-fast: 0ms;
+    --motion-step: 0ms;
+    --motion-trace: 0ms;
+    --motion-hold: 0ms;
   }
 }
