@@ -12,6 +12,11 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import {
+  NumberSystemIllustration,
+  numberSystemIllustrationKinds,
+  type NumberSystemIllustrationKind,
+} from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
@@ -45,6 +50,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
+    return (
+      <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
+    );
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))

@@ -1,3 +1,4 @@
+import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
@@ -50,6 +51,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factsFacetMappings,
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
+  ...numberSystemFacetMappings,
   ...ratioRateFacetMappings,
   ...patternFunctionFacetMappings,
   ...equationFacetMappings,

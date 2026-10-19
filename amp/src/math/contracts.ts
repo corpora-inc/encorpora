@@ -38,6 +38,7 @@ import {
   type GeometryFigure,
 } from "./geometry-figures.js";
 import { sceneSchema, type Scene } from "./scene/spec.js";
+import { stepsSchema, type Step } from "./scene/timeline.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
 export type FunctionDisplayFigure = {
@@ -126,6 +127,16 @@ export type SemanticFigure =
     }
   | { kind: "clock"; hour: number; minute: number }
   | { kind: "number-line"; min: number; max: number; points: number[] }
+  | {
+      /** One-unit ticks with 0 emphasized; jumps are signed changes drawn from `start`. */
+      kind: "signed-line";
+      min: number;
+      max: number;
+      labelEvery: number;
+      points: { value: number; label: string }[];
+      start?: number;
+      jumps?: number[];
+    }
   | { kind: "collection"; count: number }
   | { kind: "fraction"; selected: number; parts: number }
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
@@ -195,9 +206,13 @@ export interface GeneratedProblem {
   /** One teaching step for this instance, written by the generator from its
    * own givens: it names the problem's quantities and the first move of the
    * authored method, and never states the answer. Gated by
-   * tests/instance-hints.test.ts. A figure cue (an element of this problem's
-   * figure to highlight) will travel beside it as its own optional field. */
+   * tests/instance-hints.test.ts. Its figure cue (elements of this problem's
+   * scene to highlight) travels beside it as `hintCue`. */
   hint: string;
+  /** The hint's figure cue: timeline steps over this problem's own scene
+   * (`public.figure.scene`), e.g. highlight `area.region.0.0`. Private, served
+   * with the hint; it targets elements, never states the answer. */
+  hintCue?: Step[];
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
 }
@@ -479,6 +494,41 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
       ),
     z
       .object({
+        kind: z.literal("signed-line"),
+        min: z.number().int().max(0),
+        max: z.number().int().min(0),
+        labelEvery: z.number().int().min(1).max(10),
+        points: z
+          .array(
+            z
+              .object({
+                value: z.number().finite(),
+                label: z.string().regex(/^[A-Z]$/),
+              })
+              .strict(),
+          )
+          .max(2),
+        start: z.number().finite().optional(),
+        jumps: z.array(z.number().finite()).min(1).max(4).optional(),
+      })
+      .strict()
+      .refine((v) => {
+        const inside = (n: number) =>
+          n >= v.min && n <= v.max && Number.isInteger(n * 2);
+        if (v.max - v.min < 4 || v.max - v.min > 30) return false;
+        if (!v.points.every((p) => inside(p.value))) return false;
+        if ((v.start === undefined) !== (v.jumps === undefined)) return false;
+        if (v.start === undefined) return v.points.length > 0;
+        let at = v.start;
+        if (!inside(at)) return false;
+        for (const jump of v.jumps!) {
+          at += jump;
+          if (jump === 0 || !inside(at)) return false;
+        }
+        return true;
+      }),
+    z
+      .object({
         kind: z.literal("collection"),
         count: z.number().int().min(1).max(20),
       })
@@ -613,6 +663,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     answer: z.string().min(1).max(100),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
+    hintCue: stepsSchema.optional(),
     choiceFeedback: z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),

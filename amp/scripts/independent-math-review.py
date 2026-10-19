@@ -34,6 +34,7 @@ from print_pdf_oracle import review_print_pdfs
 from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
+from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve_number_system, review_number_system_fixtures, review_problem as review_number_system_problem, review_number_system_content, review_content_mutations as review_number_system_mutations
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
@@ -65,7 +66,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | EARLY_OPERATIONS | MULTIPLY_DIVIDE | ATTRIBUTE | POLYGONS
+SUPPORTED = NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS
 
 
 def require(condition, message):
@@ -79,6 +80,8 @@ SUPPORTED |= ABSOLUTE_VALUE
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in NUMBER_SYSTEM:
+        return solve_number_system(public)
     if template in MULTIPLY_DIVIDE:
         return solve_multiply_divide(public)
     if template in RATIO_RATE:
@@ -218,6 +221,19 @@ def solve(public):
         return figure['count']
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
+        # The scene: a 0–20 number line marked at the greater addend, with
+        # jumps from it that total the other addend; the sum stays unknown.
+        require(figure['kind'] == 'scene', 'Number-line scene required')
+        (line,) = figure['scene']['elements']
+        require(line['type'] == 'numberLine' and line['min'] == 0 and line['max'] == 20, 'A 0 to 20 number line')
+        require([m['at'] for m in line['marks']] == [max(numbers)], 'The greater addend is marked')
+        position = max(numbers)
+        for hop in line.get('hops', []):
+            require(hop['from'] == position, 'Jumps continue from the last landing')
+            position += hop['by']
+        require(position == sum(numbers), 'Jumps total the other addend')
+        hops = line.get('hops', [])
+        require(not hops or hops[-1].get('landing', 'derived') != 'shown', 'The sum stays unknown')
         return sum(numbers)
     if template == 'subtract-within-20':
         a, b = numbers
@@ -325,6 +341,8 @@ def solve(public):
 
 
 def review(stream):
+    review_number_system_fixtures()
+    review_number_system_mutations()
     review_multiply_divide_fixtures()
     review_ratio_rate_fixtures()
     review_ratio_rate_mutations()
@@ -428,6 +446,8 @@ def review(stream):
             review_equation_problem(problem)
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
+        if template in NUMBER_SYSTEM:
+            review_number_system_problem(problem)
         if template in RATIO_RATE:
             review_ratio_rate_problem(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
@@ -450,7 +470,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in ABSOLUTE_VALUE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in ABSOLUTE_VALUE | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -466,6 +486,7 @@ def review(stream):
             review_polygon_problem(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent number-system content: ' + json.dumps(review_number_system_content()), file=sys.stderr)
     print('Independent multiply-divide coverage: ' + json.dumps(multiply_divide_corpus.finish()), file=sys.stderr)
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
     print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
