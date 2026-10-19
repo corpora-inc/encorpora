@@ -21,7 +21,9 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 export type AnimationModel =
+  | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
   | AreaAnimation
@@ -40,6 +42,14 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    lesson.templateId === "make-ten-fact" &&
+    f?.kind === "ten-frame-pair" &&
+    integer(f.first, 1, 9) &&
+    integer(f.second, 1, 9) &&
+    f.first + f.second > 10
+  )
+    return { kind: "make-ten", figure: f };
   if (
     (lesson.templateId === "name-equal-share" ||
       lesson.templateId === "name-share") &&
@@ -191,6 +201,28 @@ const plotted = (v: number, d: number) => {
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "make-ten") {
+    const { first: a, second: b } = model.figure;
+    const need = 10 - a,
+      rest = b - need;
+    return [
+      {
+        title: "Two frames",
+        text: `${a} in the first frame, ${b} in the second.`,
+        math: `$${a} + ${b}$`,
+      },
+      {
+        title: "Fill the first ten",
+        text: `${a} needs ${need} more to make 10. Move ${need} from the second frame.`,
+        math: `$${b} = ${need} + ${rest}$`,
+      },
+      {
+        title: "Ten and the rest",
+        text: `One full ten and ${rest} more. No counter was added or lost.`,
+        math: `$${a} + ${b} = 10 + ${rest} = ${a + b}$`,
+      },
+    ];
+  }
   if (model.kind === "partition") {
     const n = model.shape.sizes.length,
       k = model.shape.shaded.length;
