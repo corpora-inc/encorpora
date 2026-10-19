@@ -7,6 +7,7 @@ import { angleSchema, protractorSchema } from "./angle";
 import { areaModelSchema } from "./area-model";
 import { arraySchema } from "./array";
 import { barChartSchema } from "./bar-chart";
+import { barsSchema } from "./bars";
 import { baseTenSchema } from "./base-ten";
 import { boxPlotSchema } from "./box-plot";
 import { clockSchema } from "./clock";
@@ -30,6 +31,7 @@ export const componentSchemas = [
   areaModelSchema,
   arraySchema,
   barChartSchema,
+  barsSchema,
   baseTenSchema,
   boxPlotSchema,
   clockSchema,
@@ -54,6 +56,7 @@ export * from "./angle";
 export * from "./area-model";
 export * from "./array";
 export * from "./bar-chart";
+export * from "./bars";
 export * from "./base-ten";
 export * from "./box-plot";
 export * from "./clock";

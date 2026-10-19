@@ -21,6 +21,14 @@ import {
   venn,
 } from "./author";
 import type { Scene } from "./spec";
+import {
+  exponentialGraph,
+  exponentialLessonScenes,
+  logGraph,
+  raceBars,
+  raceGraph,
+  stepTable,
+} from "../exponential-scenes";
 import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 
 /** Reference scenes for every component: the gallery renders them at four
@@ -292,6 +300,32 @@ export const galleryCases: GalleryCase[] = [
     scene: fractionBar({ shaded: 5, parts: 4, wholes: 2 }).scene(),
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
+  // Exponential growth and logarithms: tables, bars and curves.
+  // The full model: the players step through these in lessons.
+  ...Object.entries(exponentialLessonScenes).map(([name, scene]) => ({
+    name: `Exponential lesson: ${name}`,
+    scene: { ...scene, steps: undefined },
+    reveal: true,
+  })),
+  {
+    name: "Table: constant ratio, a later value asked",
+    scene: stepTable([0, 1, 2, 3], [5, 15, 45, 135], "×3"),
+  },
+  {
+    name: "Graph: exponential through marked points",
+    scene: exponentialGraph(3, 2, [0, 1, 2]),
+  },
+  { name: "Graph: line against exponential", scene: raceGraph(12, 20, 2, 8) },
+  { name: "Graph: log curve, height asked", scene: logGraph(2, 16, 17) },
+  {
+    name: "Bars: two offers by day",
+    scene: raceBars(
+      [0, 1, 2, 3],
+      { label: "Offer A", values: [40, 65, 90, 115] },
+      { label: "Offer B", values: [1, 2, 4, 8] },
+      "Day",
+    ),
+  },
   {
     name: "Venn: counts in every region",
     scene: venn("Art", "Music", { universe: "40 students" })

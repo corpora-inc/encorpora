@@ -11,6 +11,7 @@ import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
 import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
+import { exponentialPrinciples } from "./exponential-lessons";
 import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { similarityTrigPrinciples } from "./similarity-trig-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
@@ -51,6 +52,7 @@ export const principles: Record<string, string> = {
   ...shapePrinciples,
   ...anglePrinciples,
   ...polygonPrinciples,
+  ...exponentialPrinciples,
   ...probabilityRulesPrinciples,
   ...similarityTrigPrinciples,
   ...integerExponentPrinciples,
