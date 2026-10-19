@@ -1,11 +1,18 @@
-import { registerComponent, type Prim } from "../layout";
+import { z } from "zod";
 import {
-  axisStep,
-  type Fn,
-  type Graph,
-  type LineSpec,
-  type Point,
-} from "../spec";
+  base,
+  coord,
+  color,
+  dash,
+  fill,
+  graphLabel,
+  label,
+  num as zNum,
+  pointSchema,
+  small,
+} from "../base";
+import { registerComponent, type Prim } from "../layout";
+import type { Point } from "../spec";
 import { typeset } from "../type";
 import {
   clipHalfPlane,
@@ -18,6 +25,277 @@ import {
 } from "../functions";
 import { clean, num, point, spoken, spokenPoint } from "./format";
 import { ticks } from "./number-line";
+
+/** Exact function families. Each knows its own zeros, vertex, intercepts and
+ * asymptotes, so those can be drawn and named without sampling error. */
+export const coefficients = z.array(coord).min(1).max(7);
+export const fnSchema = z.discriminatedUnion("f", [
+  /** c[0] + c[1]x + c[2]x² + … */
+  z.object({ f: z.literal("poly"), c: coefficients }).strict(),
+  z
+    .object({ f: z.literal("rational"), num: coefficients, den: coefficients })
+    .strict(),
+  /** a·bˣ⁻ʰ + k */
+  z
+    .object({
+      f: z.literal("exp"),
+      a: coord,
+      b: zNum.positive().refine((b) => b !== 1),
+      h: coord.optional(),
+      k: coord.optional(),
+    })
+    .strict(),
+  /** a·log_b(x − h) + k */
+  z
+    .object({
+      f: z.literal("log"),
+      a: coord,
+      base: zNum.positive().refine((b) => b !== 1),
+      h: coord.optional(),
+      k: coord.optional(),
+    })
+    .strict(),
+  /** a·trig(b(x − h)) + k */
+  z
+    .object({
+      f: z.enum(["sin", "cos", "tan"]),
+      a: coord,
+      b: coord.refine((b) => b !== 0),
+      h: coord.optional(),
+      k: coord.optional(),
+    })
+    .strict(),
+  /** a·|x − h| + k and a·√(x − h) + k */
+  z
+    .object({
+      f: z.enum(["abs", "sqrt"]),
+      a: coord,
+      h: coord.optional(),
+      k: coord.optional(),
+    })
+    .strict(),
+]);
+export type Fn = z.infer<typeof fnSchema>;
+/** a·x + b·y = c, or slope-intercept, or vertical. */
+export const lineSpecSchema = z.union([
+  z.object({ m: coord, b: coord }).strict(),
+  z.object({ x: coord }).strict(),
+  z.object({ a: coord, b: coord, c: coord }).strict(),
+  z.object({ through: z.tuple([pointSchema, pointSchema]) }).strict(),
+]);
+export type LineSpec = z.infer<typeof lineSpecSchema>;
+export const endStyle = z.enum(["open", "closed", "arrow", "none"]);
+export const featureNames = [
+  "zeros",
+  "vertex",
+  "yint",
+  "asymptotes",
+  "holes",
+] as const;
+/** A coordinate plane and everything drawn on it: the function-graph figure. */
+export const graphSchema = z
+  .object({
+    ...base,
+    type: z.literal("graph"),
+    x: z.tuple([coord, coord]),
+    y: z.tuple([coord, coord]),
+    /** Gridline spacing (false: no grid) and tick-label spacing; a pair sets
+     * x and y separately, as data plots with unlike units need. */
+    grid: z
+      .union([
+        zNum.positive(),
+        z.tuple([zNum.positive(), zNum.positive()]),
+        z.literal(false),
+      ])
+      .optional(),
+    tick: z
+      .union([zNum.positive(), z.tuple([zNum.positive(), zNum.positive()])])
+      .optional(),
+    /** Ratio of a y unit to an x unit on screen; 1 keeps circles round. */
+    aspect: zNum.min(0.05).max(20).optional(),
+    labels: z.enum(["auto", "all", "ends", "none"]).optional(),
+    axisNames: z.tuple([label, label]).optional(),
+    points: z
+      .array(
+        z
+          .object({
+            x: coord,
+            y: coord,
+            label: graphLabel,
+            open: z.boolean().optional(),
+            color,
+            derived: z.boolean().optional(),
+          })
+          .strict(),
+      )
+      .max(60)
+      .optional(),
+    lines: z
+      .array(
+        z
+          .object({
+            line: lineSpecSchema,
+            dash: dash.optional(),
+            color,
+            label: graphLabel,
+          })
+          .strict(),
+      )
+      .max(6)
+      .optional(),
+    curves: z
+      .array(
+        z
+          .object({
+            fn: fnSchema,
+            domain: z.tuple([coord, coord]).optional(),
+            ends: z.tuple([endStyle, endStyle]).optional(),
+            dash: dash.optional(),
+            color,
+            label: graphLabel,
+            features: z.array(z.enum(featureNames)).max(5).optional(),
+            /** Coordinates beside feature points; masked unless revealed. */
+            featureLabels: z.enum(["shown", "derived"]).optional(),
+          })
+          .strict(),
+      )
+      .max(8)
+      .optional(),
+    /** Intersections of half-planes a·x + b·y (op) c: a solution set. */
+    regions: z
+      .array(
+        z
+          .object({
+            halfPlanes: z
+              .array(
+                z
+                  .object({
+                    a: coord,
+                    b: coord,
+                    c: coord,
+                    op: z.enum(["<", "<=", ">", ">="]),
+                    boundary: z.boolean().optional(),
+                  })
+                  .strict()
+                  .refine((h) => h.a !== 0 || h.b !== 0),
+              )
+              .min(1)
+              .max(6),
+            color: z.enum(["accent", "warm", "gold"]).optional(),
+          })
+          .strict(),
+      )
+      .max(4)
+      .optional(),
+    /** The part of the plane above or below a drawn curve. */
+    curveRegions: z
+      .array(
+        z
+          .object({
+            curve: small.max(7),
+            side: z.enum(["above", "below"]),
+            color: z.enum(["accent", "warm", "gold"]).optional(),
+          })
+          .strict(),
+      )
+      .max(4)
+      .optional(),
+    circles: z
+      .array(
+        z
+          .object({
+            center: pointSchema,
+            r: zNum.positive(),
+            showCenter: z.boolean().optional(),
+            radius: z.boolean().optional(),
+            dash: dash.optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(4)
+      .optional(),
+    segments: z
+      .array(
+        z
+          .object({
+            from: pointSchema,
+            to: pointSchema,
+            dash: dash.optional(),
+            arrow: z.boolean().optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(20)
+      .optional(),
+    /** Run and rise between two points of a line. */
+    slopeTriangles: z
+      .array(
+        z
+          .object({
+            from: pointSchema,
+            to: pointSchema,
+            labels: z.enum(["shown", "derived", "none"]).optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(4)
+      .optional(),
+    /** The line through two points of a curve. */
+    secants: z
+      .array(
+        z
+          .object({
+            curve: small.max(7),
+            x: z.tuple([coord, coord]),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+    /** Scatter points with an optional fitted line and residual sticks. */
+    scatter: z
+      .object({
+        points: z.array(pointSchema).min(1).max(200),
+        fit: z.object({ m: coord, b: coord }).strict().optional(),
+        residuals: z.boolean().optional(),
+        /** A trial line (a flat guess, say) with its own residuals, so a
+         * walkthrough can compare it with the fit. */
+        trial: z.object({ m: coord, b: coord }).strict().optional(),
+        /** An x at which the fit predicts: a point on the line whose y label
+         * is derived (the number to find). */
+        predict: coord.optional(),
+      })
+      .strict()
+      .refine(
+        (sc) => sc.predict === undefined || sc.fit,
+        "Predicting needs a fit",
+      )
+      .optional(),
+  })
+  .strict()
+  .refine((g) => g.x[1] > g.x[0] && g.y[1] > g.y[0], "Ranges increase")
+  .refine(
+    (g) =>
+      g.grid === false ||
+      ((g.x[1] - g.x[0]) / axisStep(g.grid, 0, 1) <= 60 &&
+        (g.y[1] - g.y[0]) / axisStep(g.grid, 1, 1) <= 60),
+    "At most 60 gridlines per axis",
+  );
+export type Graph = z.infer<typeof graphSchema>;
+/** One axis's spacing from a shared or per-axis setting. */
+export function axisStep<T>(
+  value: number | readonly [number, number] | undefined | T,
+  axis: 0 | 1,
+  fallback: number,
+): number {
+  if (typeof value === "number") return value;
+  if (Array.isArray(value)) return value[axis] as number;
+  return fallback;
+}
 
 const nice = (range: number, most: number) => {
   for (const m of [
@@ -127,6 +405,24 @@ const around = (d: number): [number, number, -1 | 0 | 1, -1 | 0 | 1][] => [
   [d + 2, 0, -1, 0],
   [-d - 2, 0, 1, 0],
 ];
+
+/** Label positions around a point, those pointing into the window first, so
+ * a label at a curve's exit stays inside the plot instead of widening it. */
+const inward = (
+  [x, y]: Point,
+  [x0, x1]: [number, number],
+  [y0, y1]: [number, number],
+  d: number,
+) => {
+  const ex = (x1 - x0) * 0.08,
+    ey = (y1 - y0) * 0.08;
+  const score = ([dx, dy]: [number, number, ...unknown[]]) =>
+    (x > x1 - ex && dx > 0 ? 1 : 0) +
+    (x < x0 + ex && dx < 0 ? 1 : 0) +
+    (y > y1 - ey && dy < 0 ? 1 : 0) +
+    (y < y0 + ey && dy > 0 ? 1 : 0);
+  return [...around(d), ...around(d * 2.4)].sort((a, b) => score(a) - score(b));
+};
 
 function gridWords(g: Graph) {
   const shared = nice(Math.max(g.x[1] - g.x[0], g.y[1] - g.y[0]), 20);
@@ -261,7 +557,8 @@ registerComponent("graph", {
       }
     }
     // Axes, with arrows where they continue past the window.
-    const ext = 14 / s;
+    // Axis arrows run past the window far enough to clear the end labels.
+    const ext = 22 / s;
     const both = (lo: number, hi: number, at: number) =>
       at > lo && at < hi ? "both" : "end";
     prims.push({
@@ -293,8 +590,12 @@ registerComponent("graph", {
       at: P(x1 + ext, ax),
       text: nx,
       font: nameFont(nx),
-      offset: [6, 0],
-      align: [-1, 0],
+      // Beside the arrow, or centered under the tick labels: whichever
+      // costs the figure less room (a long word title usually goes below).
+      place: [
+        [6, 0, -1, 0],
+        [((x0 + x1) / 2 - (x1 + ext)) * s, 28, 0, -1],
+      ],
     });
     prims.push({
       type: "text",
@@ -302,8 +603,10 @@ registerComponent("graph", {
       at: P(ay, y1 + ext / k),
       text: ny,
       font: nameFont(ny),
-      offset: [0, -6],
-      align: [0, 1],
+      place: [
+        [0, -6, 0, 1],
+        [6, -6, -1, 1],
+      ],
     });
     // Tick labels: a stride that fits, from the grid or a nice step.
     const mode = g.labels ?? "auto";
@@ -349,8 +652,17 @@ registerComponent("graph", {
       // counts gridlines; otherwise every stride tick.
       const xs = mode === "ends" ? [x0, x1] : ticks(x0, x1, xStep),
         ys = mode === "ends" ? [y0, y1] : ticks(y0, y1, yStep);
-      const keep = (vals: number[]) => vals;
-      for (const v of keep(xs)) {
+      // A side of an axis shorter than a stride and a half is room to draw,
+      // not a scale: its labels would only crowd the origin.
+      const keep = (vals: number[], lo: number, hi: number, st: number) =>
+        mode === "ends"
+          ? vals
+          : vals.filter(
+              (v) =>
+                !(lo < 0 && hi > 0) ||
+                (v < 0 ? -lo >= 1.5 * st : v > 0 ? hi >= 1.5 * st : true),
+            );
+      for (const v of keep(xs, x0, x1, xStep)) {
         if (v === ay && ax === 0 && ay === 0) continue;
         prims.push({
           type: "tick",
@@ -372,7 +684,7 @@ registerComponent("graph", {
           optional: true,
         });
       }
-      for (const v of keep(ys)) {
+      for (const v of keep(ys, y0, y1, yStep)) {
         if (v === ax && ax === 0 && ay === 0) continue;
         prims.push({
           type: "tick",
@@ -401,8 +713,13 @@ registerComponent("graph", {
           at: P(0, 0),
           text: "0",
           size: "sm",
-          offset: [-5, 5],
-          align: [1, -1],
+
+          place: [
+            [-5, 5, 1, -1],
+            [5, 5, -1, -1],
+            [-5, -5, 1, 1],
+          ],
+          optional: true,
           halo: true,
         });
     }
@@ -429,7 +746,7 @@ registerComponent("graph", {
           text: l.label,
           color,
           halo: true,
-          place: around(10).slice(1).concat(around(22)),
+          place: inward(seg[1], g.x, g.y, 10),
         });
     }
     for (const [i, c] of (g.circles ?? []).entries()) {
@@ -636,14 +953,44 @@ registerComponent("graph", {
       }
       if (d.c.label && visible.length) {
         const last = visible.at(-1)!;
+        const end = last.at(-1)!;
+        // Candidates beside points along the curve whose label box stays
+        // inside the plot, then the end point's own, inward first.
+        const t = typeset(d.c.label, "math", "md");
+        const w = t.width,
+          h = t.ascent + t.descent;
+        const px = ([x, y]: Point) => [x * s, -y * k * s] as const;
+        const [ex, ey] = px(end);
+        const [wx0, wy1] = px([x0, y0]),
+          [wx1, wy0] = px([x1, y1]);
+        const along: [number, number, -1 | 0 | 1, -1 | 0 | 1][] = [];
+        for (const f of [1, 0.85, 0.7, 0.55, 0.4, 0.25]) {
+          const q =
+            last[Math.min(last.length - 1, Math.round((last.length - 1) * f))]!;
+          const [qx, qy] = px(q);
+          for (const [dx, dy, ax, ay] of [...around(10), ...around(26)]) {
+            const left = qx + dx - ((ax + 1) / 2) * w,
+              top = qy + dy - ((ay + 1) / 2) * h;
+            if (left >= wx0 && left + w <= wx1 && top >= wy0 && top + h <= wy1)
+              along.push([qx - ex + dx, qy - ey + dy, ax, ay]);
+          }
+        }
         prims.push({
           type: "text",
           id: `curve.${i}.label`,
-          at: P(...last.at(-1)!),
+          at: P(...end),
           text: d.c.label,
           color,
           halo: true,
-          place: around(10).slice(1).concat(around(24)),
+          place: [
+            ...along.slice(0, 24),
+            ...inward(end, g.x, g.y, 10),
+            // Failing those, a caption above or below the plot, where a
+            // width-bound figure has room to spare.
+            [wx0 - ex, wy0 - ey - 26, -1, 1],
+            [wx0 - ex, wy1 - ey + 30, -1, -1],
+            [wx1 - ex, wy0 - ey - 26, 1, 1],
+          ],
         });
       }
     }
@@ -693,8 +1040,10 @@ registerComponent("graph", {
           color,
           derived,
           halo: true,
-          offset: [0, up ? 6 : -6],
-          align: [0, up ? -1 : 1],
+          place: [
+            [0, up ? 6 : -6, 0, up ? -1 : 1],
+            [0, up ? -6 : 6, 0, up ? 1 : -1],
+          ],
         });
         prims.push({
           type: "text",
@@ -705,8 +1054,10 @@ registerComponent("graph", {
           color,
           derived,
           halo: true,
-          offset: [right ? 6 : -6, 0],
-          align: [right ? -1 : 1, 0],
+          place: [
+            [right ? 6 : -6, 0, right ? -1 : 1, 0],
+            [right ? -6 : 6, 0, right ? 1 : -1, 0],
+          ],
         });
       }
     }
@@ -761,6 +1112,75 @@ registerComponent("graph", {
               data: { residual: clean(y - (fit.m * x + fit.b)) },
             });
       }
+      const trial = g.scatter.trial;
+      if (trial) {
+        const seg = lineInWindow(trial, g.x, g.y);
+        if (seg)
+          prims.push({
+            type: "segment",
+            id: "trial",
+            from: P(...seg[0]),
+            to: P(...seg[1]),
+            stroke: "axis",
+            width: 2.5,
+            dash: "dash",
+          });
+        if (g.scatter.residuals)
+          for (const [j, [x, y]] of g.scatter.points.entries())
+            prims.push({
+              type: "segment",
+              id: `trial.residual.${j}`,
+              from: P(x, y),
+              to: P(x, trial.m * x + trial.b),
+              stroke: "gold",
+              width: 1.75,
+              data: { residual: clean(y - (trial.m * x + trial.b)) },
+            });
+      }
+      if (fit && g.scatter.predict !== undefined) {
+        const x = g.scatter.predict,
+          y = fit.m * x + fit.b;
+        prims.push(
+          {
+            type: "segment",
+            id: "predict.guide.up",
+            from: P(x, ax),
+            to: P(x, y),
+            stroke: "warm",
+            width: 1.75,
+            dash: "dash",
+          },
+          {
+            type: "segment",
+            id: "predict.guide.across",
+            from: P(x, y),
+            to: P(ay, y),
+            stroke: "warm",
+            width: 1.75,
+            dash: "dash",
+          },
+          {
+            type: "point",
+            id: "predict",
+            at: P(x, y),
+            r: 5.5,
+            color: "warm",
+            data: { point: "predict" },
+          },
+          {
+            type: "text",
+            id: "predict.label",
+            at: P(ay, y),
+            text: num(y),
+            bold: true,
+            color: "warm",
+            derived: true,
+            halo: true,
+            offset: [-8, 0],
+            align: [1, 0],
+          },
+        );
+      }
       for (const [j, q] of g.scatter.points.entries())
         prims.push({
           type: "point",
@@ -794,6 +1214,16 @@ registerComponent("graph", {
           place: around(8).concat(around(20)),
         });
     }
+    // Every stroke but the grid and the shading is something labels avoid.
+    for (const p of prims)
+      if (
+        (p.type === "segment" ||
+          p.type === "polyline" ||
+          p.type === "polygon" ||
+          p.type === "circle") &&
+        !/^(grid\.|region\.|curve\.\d+\.region)/.test(p.id ?? "")
+      )
+        p.obstacle = true;
     return prims;
   },
   describe(g, reveal) {
@@ -869,6 +1299,12 @@ registerComponent("graph", {
     if (g.scatter)
       out.push(
         `A scatter plot of ${g.scatter.points.length} points${g.scatter.fit ? `, with the line ${lineText(g.scatter.fit)}${g.scatter.residuals ? " and a residual segment from each point to the line" : ""}` : ""}.`,
+      );
+    if (g.scatter?.trial)
+      out.push(`A trial line ${lineText(g.scatter.trial)} for comparison.`);
+    if (g.scatter?.fit && g.scatter.predict !== undefined)
+      out.push(
+        `At x = ${spoken(g.scatter.predict)} the line predicts ${reveal ? spoken(g.scatter.fit.m * g.scatter.predict + g.scatter.fit.b) : "the number to find"}.`,
       );
     for (const p of g.points ?? [])
       out.push(

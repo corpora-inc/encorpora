@@ -4,6 +4,8 @@
  * cue), at 320, 390, 768 and 1280 px in light and dark.
  *
  *   npx tsx scripts/verify-scene-player-ui.ts   screenshots in artifacts/scene-player/
+ *   npx tsx scripts/verify-scene-player-ui.ts complete-square-solutions ...
+ *       the lessons of the named problem types instead, every width and theme
  *
  * Fails on horizontal overflow, a panel that changes size between steps,
  * controls under 44 px, playback that does not finish, or a reduced-motion
@@ -17,10 +19,13 @@ import { createServer } from "vite";
 import { problemLesson } from "../src/content/problem-lessons";
 import { generateProblem } from "../src/math/engine";
 
-const lessons = [
-  problemLesson("add-within-20", "scene-player"),
-  problemLesson("tens-contribution", "scene-player"),
-];
+const only = process.argv.slice(2);
+const lessons = only.length
+  ? only.map((id) => problemLesson(id, "scene-player"))
+  : [
+      problemLesson("add-within-20", "scene-player"),
+      problemLesson("tens-contribution", "scene-player"),
+    ];
 const hints = ["add-within-20", "tens-contribution"].map((id, i) => {
   // A crossing-ten sum makes the two-jump hint.
   for (let s = 0; ; s++) {
@@ -95,12 +100,14 @@ const out = new URL("../artifacts/scene-player/", import.meta.url);
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch();
 const failures: string[] = [];
-const views = [
-  ["lesson", 0, "lesson-add"],
-  ["lesson", 1, "lesson-area"],
-  ["hint", 0, "hint-add"],
-  ["hint", 1, "hint-area"],
-] as const;
+const views: (readonly ["lesson" | "hint", number, string])[] = only.length
+  ? only.map((id, i) => ["lesson", i, `lesson-${id}`] as const)
+  : [
+      ["lesson", 0, "lesson-add"],
+      ["lesson", 1, "lesson-area"],
+      ["hint", 0, "hint-add"],
+      ["hint", 1, "hint-area"],
+    ];
 try {
   for (const theme of ["light", "dark"])
     for (const width of [320, 390, 768, 1280])
@@ -136,7 +143,7 @@ try {
           const b = (await button.boundingBox())!;
           if (b.height < 44) failures.push(`${tag}: control under 44 px`);
         }
-        if (theme === "light" || width === 390)
+        if (theme === "light" || width === 390 || only.length)
           await panel.screenshot({
             path: new URL(`${name}-${theme}-${width}-start.png`, out).pathname,
           });
@@ -151,14 +158,14 @@ try {
           await panel.getByRole("button", { name: "Next" }).click();
           if ((await box()) !== initial)
             failures.push(`${tag}: panel resized at step ${s + 1}`);
-          if (s === 1 && (theme === "light" || width === 390))
+          if (s === 1 && (theme === "light" || width === 390 || only.length))
             await panel.screenshot({
               path: new URL(`${name}-${theme}-${width}-step.png`, out).pathname,
             });
         }
         if ((await panel.getAttribute("data-done")) !== "true")
           failures.push(`${tag}: Next did not finish`);
-        if (theme === "light" || width === 390)
+        if (theme === "light" || width === 390 || only.length)
           await panel.screenshot({
             path: new URL(`${name}-${theme}-${width}-end.png`, out).pathname,
           });
@@ -179,25 +186,27 @@ try {
         await page.close();
       }
   // Reduced motion: the final frame and every caption, no controls.
-  const page = await browser.newPage({
-    viewport: { width: 390, height: 1000 },
-    reducedMotion: "reduce",
-  });
-  await page.goto(
-    `http://127.0.0.1:${address.port}/scene-player?view=lesson&i=1`,
-  );
-  const panel = page.locator(".scene-player");
-  await panel.waitFor();
-  assert.equal(await panel.getAttribute("data-done"), "true");
-  assert.equal(await panel.locator("button").count(), 0);
-  assert.equal(
-    await panel.locator(".scene-player-all li").count(),
-    lessons[1]!.example.figure!.kind === "scene" ? 5 : -1,
-  );
-  await panel.screenshot({
-    path: new URL("lesson-area-reduced-390.png", out).pathname,
-  });
-  await page.close();
+  if (!only.length) {
+    const page = await browser.newPage({
+      viewport: { width: 390, height: 1000 },
+      reducedMotion: "reduce",
+    });
+    await page.goto(
+      `http://127.0.0.1:${address.port}/scene-player?view=lesson&i=1`,
+    );
+    const panel = page.locator(".scene-player");
+    await panel.waitFor();
+    assert.equal(await panel.getAttribute("data-done"), "true");
+    assert.equal(await panel.locator("button").count(), 0);
+    assert.equal(
+      await panel.locator(".scene-player-all li").count(),
+      lessons[1]!.example.figure!.kind === "scene" ? 5 : -1,
+    );
+    await panel.screenshot({
+      path: new URL("lesson-area-reduced-390.png", out).pathname,
+    });
+    await page.close();
+  }
 } finally {
   await browser.close();
   server.close();

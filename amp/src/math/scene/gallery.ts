@@ -1,6 +1,7 @@
 import type { SemanticFigure } from "../contracts";
 import {
   angle,
+  scene,
   protractor,
   areaModel,
   array,
@@ -10,6 +11,8 @@ import {
   fractionBar,
   graph,
   numberLine,
+  rowBars,
+  polyArea,
   table,
   tenFrame,
 } from "./author";
@@ -183,6 +186,76 @@ export const galleryCases: GalleryCase[] = [
     }).scene(),
   },
   {
+    name: "Tiles: (x + 3)(x + 2), terms to find",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [2, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (x − 2)(x + 4), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 1],
+        [-2, 0],
+      ],
+      [
+        [1, 1],
+        [4, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (2x + 1)(x + 3), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [2, 1],
+        [1, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: x² + 6x missing its corner",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      {
+        products: "shown",
+        missing: [[1, 1]],
+      },
+    ).scene(),
+  },
+  {
+    name: "Tiles: 6x(x³ − 2x + 5), not to scale, revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 3],
+        [-2, 1],
+        [5, 0],
+      ],
+      [[6, 1]],
+    ).scene(),
+  },
+  {
     name: "Array: 7 × 6 split after 4 rows",
     scene: array(7, 6, { splitAfterRow: 4 }).scene(),
   },
@@ -207,6 +280,53 @@ export const galleryCases: GalleryCase[] = [
   {
     name: "Protractor: 0 on the right, ray at 75",
     scene: protractor([0, 75], ["P", "Q", "R"]).scene({ width: 340 }),
+  },
+  {
+    name: "Protractor sweep: 0 on the left, along the outer scale (lesson)",
+    reveal: true,
+    scene: scene(
+      protractor([180, 130], ["A", "B", "C"]).id("p").element(),
+      angle({
+        rays: [180, 130],
+        length: 1.25,
+        marksOnly: true,
+        marks: [
+          {
+            from: 0,
+            to: 1,
+            measure: true,
+            derived: true,
+            color: "warm",
+            clockwise: true,
+          },
+        ],
+      })
+        .id("sweep")
+        .element(),
+    ).build({
+      width: 340,
+      steps: [
+        {
+          caption: "Ray BA lies on 0 of the outer scale.",
+          actions: [
+            { do: "highlight", target: "p.ray.0" },
+            { do: "highlight", target: "p.outer.0" },
+          ],
+        },
+        {
+          caption: "Follow the outer scale from 0 to ray BC.",
+          actions: [
+            { do: "trace", target: "sweep.mark.0" },
+            { do: "highlight", target: "p.ray.1" },
+          ],
+        },
+        {
+          caption: "Angle ABC measures {sweep.measure.0}.",
+          actions: [{ do: "appear", target: "sweep.measure.0" }],
+          audience: "lesson",
+        },
+      ],
+    }),
   },
   {
     name: "Angle: parts with the unknown masked",
@@ -254,6 +374,42 @@ export const galleryCases: GalleryCase[] = [
       .point(2, 55, undefined, { open: true })
       .point(8, 85, undefined, { open: true })
       .scene(),
+  },
+  {
+    name: "Scatter plot: a flat trial line, the trend line and a prediction (lesson)",
+    reveal: true,
+    scene: graph({
+      id: "g",
+      x: [0, 10],
+      y: [0, 30],
+      grid: [1, 5],
+      aspect: 0.24,
+      axisNames: ["age (years)", "value (thousand $)"],
+    })
+      .scatter(
+        [
+          [1, 26],
+          [3, 21],
+          [5, 18],
+          [7, 12],
+          [9, 5],
+        ],
+        { m: -2, b: 26 },
+        true,
+      )
+      .trial(0, 16)
+      .predict(6)
+      .scene(),
+  },
+  {
+    name: "Row bars: counts on one scale, then each row as 100%",
+    scene: rowBars({
+      parts: ["Yes", "No"],
+      rows: [
+        { label: "Grade 7", counts: [18, 2] },
+        { label: "Grade 8", counts: [24, 36] },
+      ],
+    }).scene(),
   },
   {
     name: "Two-way table: the cell to find (problem)",

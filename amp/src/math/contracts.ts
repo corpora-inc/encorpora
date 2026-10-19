@@ -3,6 +3,7 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import { angleFigureSchemas, type AngleFigure } from "./geometry-models.js";
 import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
 import {
   timeMoneyFigureSchemas,
@@ -73,8 +74,9 @@ export type SemanticFigure =
   | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
-  | FunctionDisplayFigure
   | GeometryFigure
+  | FunctionDisplayFigure
+  | AngleFigure
   | ShapeFigure
   /** Any figure built with the scene framework (docs/figures.md). */
   | { kind: "scene"; scene: Scene }
@@ -213,6 +215,10 @@ export interface GeneratedProblem {
    * (`public.figure.scene`), e.g. highlight `area.region.0.0`. Private, served
    * with the hint; it targets elements, never states the answer. */
   hintCue?: Step[];
+  /** A worked model of this instance for its lesson: a scene with steps that
+   * may show the answer (the factors of a tile rectangle, say). Used only
+   * when this instance is a lesson's example; never sent with a problem. */
+  walkthrough?: Scene;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
 }
@@ -295,6 +301,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     functionDisplaySchema,
     ...measurementFigureSchemas,
+    ...angleFigureSchemas,
     ...ratioRateFigureSchemas,
     ...partWholeFigureSchemas,
     ...attributeFigureSchemas,
@@ -664,6 +671,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
     hintCue: stepsSchema.optional(),
+    walkthrough: sceneSchema.optional(),
     choiceFeedback: z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),

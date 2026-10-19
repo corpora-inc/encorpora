@@ -1,3 +1,4 @@
+import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
@@ -16,6 +17,7 @@ import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
+import { angleTriangleFacetMappings } from "./angle-triangle-coverage";
 import { realNumberFacetMappings } from "./real-number-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
@@ -36,6 +38,7 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...factoringFacetMappings,
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,
   ...angleFacetMappings,
@@ -56,6 +59,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factsFacetMappings,
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
+  ...angleTriangleFacetMappings,
   ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
   ...ratioRateFacetMappings,

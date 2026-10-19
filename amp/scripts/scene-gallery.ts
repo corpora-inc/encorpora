@@ -3,6 +3,8 @@
  * its old renderer, at 320, 390, 768 and 1280 px in light and dark.
  *
  *   npx tsx scripts/scene-gallery.ts      screenshots in artifacts/scene-gallery/
+ *   npx tsx scripts/scene-gallery.ts Tiles   only cases whose name contains
+ *                                            "Tiles", each card at every width
  *
  * Fails on horizontal overflow, a label outside its view box, two labels that
  * overlap, or a label wider than the layout's estimate (fonts must never
@@ -30,15 +32,17 @@ document.documentElement.dataset.theme = theme || 'light';
 const h = React.createElement;
 const legacy = (f) => f.kind === 'ten-frame' ? h(ElementaryFigure,{figure:f}) : h(GraphicalFigure,{figure:f});
 window.__layouts = {};
-galleryCases.forEach((c, i) => { window.__layouts['case-'+i] = layoutScene(c.scene, {reveal: !!c.reveal}); });
-parityFigures.forEach((f, i) => { window.__layouts['parity-'+i] = layoutScene(legacyScene(f)); });
+const only = new URLSearchParams(location.search).get('only');
+const shown = (c) => !only || c.name.includes(only);
+galleryCases.forEach((c, i) => { if (shown(c)) window.__layouts['case-'+i] = layoutScene(c.scene, {reveal: !!c.reveal}); });
+if (!only) parityFigures.forEach((f, i) => { window.__layouts['parity-'+i] = layoutScene(legacyScene(f)); });
 const card = (id, title, body) => h('section',{id, key:id, className:'gallery-card', style:{background:'var(--color-surface-raised)', color:'var(--color-on-surface-raised)', border:'1px solid var(--color-border)', borderRadius:16, padding:12, margin:'12px 0'}}, h('h2',{style:{fontSize:15, margin:'0 0 8px'}}, title), body);
 function App(){
   return h('main',{style:{maxWidth:720, margin:'0 auto', padding:'8px 16px 40px', background:'var(--color-surface)'}},
     h('h1',{key:'t1',style:{fontSize:20}},'Scene gallery'),
-    h(React.Fragment,{key:'c'},galleryCases.map((c,i)=>card('case-'+i, c.name, h(SceneFigure,{scene:c.scene, reveal:!!c.reveal})))),
+    h(React.Fragment,{key:'c'},galleryCases.map((c,i)=>shown(c) && card('case-'+i, c.name, h(SceneFigure,{scene:c.scene, reveal:!!c.reveal})))),
     h('h1',{key:'t2',style:{fontSize:20}},'Legacy parity'),
-    h(React.Fragment,{key:'p'},parityFigures.map((f,i)=>card('parity-'+i, f.kind + ': legacy, then scene', h('div',{style:{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:12, alignItems:'center'}}, h('div',{className:'legacy'}, legacy(f)), h('div',{className:'ported'}, h(Figure,{figure:f})))))),
+    h(React.Fragment,{key:'p'},(only ? [] : parityFigures).map((f,i)=>card('parity-'+i, f.kind + ': legacy, then scene', h('div',{style:{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:12, alignItems:'center'}}, h('div',{className:'legacy'}, legacy(f)), h('div',{className:'ported'}, h(Figure,{figure:f})))))),
   );
 }
 createRoot(document.getElementById('root')).render(h(App));
@@ -78,6 +82,7 @@ const address = server.address();
 assert(address && typeof address !== "string");
 const out = new URL("../artifacts/scene-gallery/", import.meta.url);
 await mkdir(out, { recursive: true });
+const only = process.argv[2];
 const browser = await chromium.launch();
 const failures: string[] = [];
 const report: unknown[] = [];
@@ -96,7 +101,7 @@ try {
           failures.push(`${theme} ${width}: ${m.text()}`),
       );
       await page.goto(
-        `http://127.0.0.1:${address.port}/scene-gallery?theme=${theme}`,
+        `http://127.0.0.1:${address.port}/scene-gallery?theme=${theme}${only ? `&only=${encodeURIComponent(only)}` : ""}`,
       );
       await page.locator(".gallery-card").first().waitFor();
       await page.evaluate(async () => {
@@ -149,8 +154,36 @@ try {
             ]),
           );
           const boxes: { id: string; b: DOMRect }[] = [];
+          // Glyph boxes: the text (and fraction bars), not a label's backing.
+          const glyphs = (g: SVGGElement) => {
+            const parts = [
+              ...g.querySelectorAll<SVGGraphicsElement>("text, line"),
+            ].map((e) => e.getBBox());
+            const x0 = Math.min(...parts.map((p) => p.x)),
+              y0 = Math.min(...parts.map((p) => p.y)),
+              x1 = Math.max(...parts.map((p) => p.x + p.width)),
+              y1 = Math.max(...parts.map((p) => p.y + p.height));
+            return new DOMRect(x0, y0, x1 - x0, y1 - y0);
+          };
           for (const g of svg.querySelectorAll<SVGGElement>("g[data-label]")) {
-            const b = g.getBBox();
+            const b = glyphs(g);
+            // Math runs sit at TeX spacing: no gap wider than a thick space.
+            const spans = [...g.querySelectorAll<SVGTSpanElement>("tspan")];
+            for (let i = 0; i + 1 < spans.length; i++) {
+              const a = spans[i]!,
+                c = spans[i + 1]!;
+              const size = parseFloat(getComputedStyle(a).fontSize);
+              const gap =
+                c.getStartPositionOfChar(0).x -
+                a.getEndPositionOfChar(a.getNumberOfChars() - 1).x;
+              if (
+                Math.abs(a.y.baseVal[0]!.value - c.y.baseVal[0]!.value) < 0.5 &&
+                (gap > 0.3 * size + 1 || gap < -1)
+              )
+                found.push(
+                  `${card.id}: label ${g.getAttribute("data-id")} "${g.textContent}" has a ${gap.toFixed(1)} px gap before "${c.textContent}"`,
+                );
+            }
             const id = g.getAttribute("data-id")!;
             if (
               b.x < v.x - 1 ||
@@ -167,6 +200,51 @@ try {
                 `${card.id}: label ${id} "${g.textContent}" measures ${b.width.toFixed(1)} > estimate ${est.toFixed(1)}`,
               );
             boxes.push({ id, b });
+          }
+          // No stroke (axis, arrowhead, line, curve, boundary) crosses a label.
+          const strokes = [
+            ...svg.querySelectorAll<SVGGeometryElement>("line, path"),
+          ].filter(
+            (e) =>
+              !e.closest("g[data-label]") &&
+              !/\.grid\.|region/.test(e.getAttribute("data-id") ?? "") &&
+              (e.getAttribute("stroke") ?? "none") !== "none",
+          );
+          const samples: [number, number][] = [];
+          for (const e of strokes) {
+            const len = e.getTotalLength();
+            if (!(len > 0)) continue;
+            const n = Math.max(1, Math.min(800, Math.ceil(len / 1.5)));
+            for (let i = 0; i <= n; i++) {
+              const p = e.getPointAtLength((len * i) / n);
+              samples.push([p.x, p.y]);
+            }
+          }
+          for (const g of svg.querySelectorAll<SVGGElement>("g[data-label]")) {
+            // A label on a paper backing hides the stroke beneath it.
+            if (g.querySelector("rect")) continue;
+            const t = g.querySelector("text")!.getBBox();
+            const x0 = t.x + 1,
+              x1 = t.x + t.width - 1,
+              y0 = t.y + t.height * 0.22,
+              y1 = t.y + t.height * 0.86;
+            if (samples.some(([x, y]) => x > x0 && x < x1 && y > y0 && y < y1))
+              found.push(
+                `${card.id}: a stroke crosses label ${g.getAttribute("data-id")} "${g.textContent}"`,
+              );
+          }
+          // A coordinate plane fills most of its figure: labels do not starve it.
+          const xAxis = svg.querySelector<SVGLineElement>(
+            'line[data-id$=".axis.x"]',
+          );
+          if (xAxis && card.id.startsWith("case-")) {
+            const span = Math.abs(
+              xAxis.x2.baseVal.value - xAxis.x1.baseVal.value,
+            );
+            if (span < 0.55 * v.width)
+              found.push(
+                `${card.id}: plot spans ${((span / v.width) * 100).toFixed(0)}% of the figure width`,
+              );
           }
           // Ink boxes: getBBox includes the font's internal leading, so trim it.
           const ink = (b: DOMRect) => ({
@@ -192,11 +270,11 @@ try {
         path: new URL(`gallery-${theme}-${width}.png`, out).pathname,
         fullPage: true,
       });
-      if (width === 390)
+      if (width === 390 || only)
         for (const card of await page.locator(".gallery-card").all()) {
           const id = await card.getAttribute("id");
           await card.screenshot({
-            path: new URL(`${id}-${theme}-390.png`, out).pathname,
+            path: new URL(`${id}-${theme}-${width}.png`, out).pathname,
           });
         }
       report.push({ theme, width, issues: issues.length });

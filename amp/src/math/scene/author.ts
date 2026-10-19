@@ -10,8 +10,11 @@ import {
   type Graph,
   type LineSpec,
   type NumberLine,
+  type PolyArea,
+  type Term,
   type Point,
   type Scene,
+  type RowBars,
   type Table,
   type TenFrame,
 } from "./spec";
@@ -300,9 +303,24 @@ class GraphBuilder extends Builder<Graph> {
     this.spec.scatter = { points, fit, residuals };
     return this;
   }
+  /** A trial line (with residuals when the scatter has them) to compare with the fit. */
+  trial(m: number, b: number) {
+    this.spec.scatter = { ...this.spec.scatter!, trial: { m, b } };
+    return this;
+  }
+  /** The fit's prediction at x: a point whose y label is derived. */
+  predict(x: number) {
+    this.spec.scatter = { ...this.spec.scatter!, predict: x };
+    return this;
+  }
 }
 export const graph = (spec: Omit<Graph, "type">) =>
   new GraphBuilder({ type: "graph", ...spec } as Graph);
+
+class RowBarsBuilder extends Builder<RowBars> {}
+/** Rows as bars, first on one count scale, then each stretched to 100%. */
+export const rowBars = (spec: Omit<RowBars, "type">) =>
+  new RowBarsBuilder({ type: "rowBars", ...spec } as RowBars);
 
 class TableBuilder extends Builder<Table> {}
 /** A table; with `sums`, the last column and row are totals, and derived
@@ -340,6 +358,14 @@ export const areaModel = (
     down: Array.isArray(down) ? down : placeValueParts(down),
     ...options,
   } as AreaModel);
+
+/** polyArea([[1, 1], [3, 0]], [[1, 1], [2, 0]]) is (x + 3)(x + 2) as tiles;
+ * the region terms stay masked unless a lesson reveals them. */
+export const polyArea = (
+  across: Term[],
+  down: Term[],
+  options: Partial<Omit<PolyArea, "type" | "across" | "down">> = {},
+) => new Simple<PolyArea>({ type: "polyArea", across, down, ...options });
 
 class Simple<T extends Element> extends Builder<T> {}
 export const array = (

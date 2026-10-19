@@ -483,7 +483,7 @@ piecewise-functions|algebra-1|functions|Interpret piecewise and absolute-value f
 arithmetic-sequences|algebra-1|functions|Translate arithmetic sequences between recursive and explicit rules|related-patterns,linear-models|HSF
 geometric-sequences|algebra-1|functions|Translate geometric sequences between recursive and explicit rules|exponent-laws|HSF
 polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math
-factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic|HSA,SAT.advanced-math
+factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic,gcf-lcm|HSA,SAT.advanced-math
 quadratic-equations|algebra-1|algebra|Solve quadratic equations and check their real solutions|factor-quadratics,approximate-roots|HSA,SAT.advanced-math
 complete-square|algebra-1|algebra|Rewrite quadratics by completing the square|quadratic-equations|HSA,SAT.advanced-math
 quadratic-formula|algebra-1|algebra|Use the quadratic formula and interpret the discriminant|complete-square|HSA,SAT.advanced-math
@@ -1666,6 +1666,28 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Narrow integer-factor tasks do not assess every polynomial factorization method.
+const factoringSkill = skills.find((s) => s.id === "factor-quadratics")!;
+for (const [id, description] of [
+  [
+    "monomial-gcf",
+    "Extract the positive greatest common monomial factor from a bounded integer polynomial of degree one through three.",
+  ],
+  [
+    "monic-integer-factors",
+    "Factor bounded monic quadratics with nonzero constant terms into integer linear factors.",
+  ],
+  [
+    "nonmonic-integer-factors",
+    "Factor bounded nonmonic quadratics into primitive integer linear factors while retaining signed numerical content.",
+  ],
+])
+  factoringSkill.facets.push({
+    id: `factor-quadratics.${id}`,
+    description,
+    status: "implemented",
+  });
+
 // Numeric square-root tasks cover bounded parts of rational-exponent work.
 const radicalSkill = skills.find((s) => s.id === "rational-exponents")!;
 for (const [suffix, description] of [
@@ -1750,6 +1772,56 @@ for (const [skillId, suffix, description] of [
 
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
+  [
+    "angle-relationships",
+    "known-angle-pairs",
+    "Find an unknown angle from supplementary, complementary, vertical, adjacent or full-turn relationships shown in an exact figure.",
+  ],
+  [
+    "angle-relationships",
+    "angle-equations",
+    "Write and solve a linear equation for an unknown angle from supplementary, complementary, adjacent or vertical angles.",
+  ],
+  [
+    "triangle-angle-theorems",
+    "triangle-sum",
+    "Find unknown triangle angles, or x, from the 180° angle sum.",
+  ],
+  [
+    "triangle-angle-theorems",
+    "exterior-angle",
+    "Use an exterior angle as the sum of the two remote interior angles.",
+  ],
+  [
+    "triangle-angle-theorems",
+    "parallel-transversal",
+    "Find angles where a transversal crosses parallel lines using equal and supplementary pairs.",
+  ],
+  [
+    "triangle-construction",
+    "side-lengths",
+    "Decide which side-length triples form a triangle by the triangle inequality.",
+  ],
+  [
+    "triangle-construction",
+    "third-side-range",
+    "Find the possible whole-number lengths of a triangle's third side.",
+  ],
+  [
+    "triangle-construction",
+    "determining-conditions",
+    "Decide whether given side and angle conditions determine exactly one triangle, more than one, or none.",
+  ],
+  [
+    "solid-cross-sections",
+    "prism-pyramid-sections",
+    "Name the plane sections of right rectangular prisms and pyramids.",
+  ],
+  [
+    "solid-cross-sections",
+    "section-areas",
+    "Find the areas of plane sections of right rectangular prisms and pyramids.",
+  ],
   [
     "gcf-lcm",
     "greatest-common-factor",

@@ -1,5 +1,76 @@
+import { z } from "zod";
+import { base, color, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import type { Angle, Point } from "../spec";
+import type { Point } from "../spec";
+
+const direction = zNum.min(-720).max(720);
+const pointName = z.string().regex(/^[A-Z]$/);
+/** A protractor centered on a vertex, unit radius. Outer numbers count from
+ * 0 on the left, inner numbers from 0 on the right. Rays are directions in
+ * degrees (counterclockwise from the right) within the half turn. */
+export const protractorSchema = z
+  .object({
+    ...base,
+    type: z.literal("protractor"),
+    rays: z.tuple([zNum.min(0).max(180), zNum.min(0).max(180)]),
+    /** End of the first ray, the vertex, end of the second ray. */
+    labels: z.tuple([pointName, pointName, pointName]).optional(),
+  })
+  .strict()
+  .refine((p) => p.rays[0] !== p.rays[1], "Two distinct rays");
+
+/** Rays from one vertex, drawn to their true directions, with angle marks
+ * between chosen pairs. A right angle is marked with a square. */
+export const angleSchema = z
+  .object({
+    ...base,
+    type: z.literal("angle"),
+    rays: z.array(direction).min(2).max(4),
+    /** Ray length in math units. */
+    length: zNum.positive().max(10).optional(),
+    /** Arrowheads at the ray ends: rays go on forever. */
+    arrows: z.boolean().optional(),
+    /** Draw only the marks, over rays another element draws. */
+    marksOnly: z.boolean().optional(),
+    labels: z
+      .object({
+        vertex: pointName,
+        ends: z.array(pointName).min(2).max(4),
+      })
+      .strict()
+      .optional(),
+    /** Marks counterclockwise from ray `from` to ray `to`. */
+    marks: z
+      .array(
+        z
+          .object({
+            from: z.number().int().min(0).max(3),
+            to: z.number().int().min(0).max(3),
+            /** Write the measure in degrees beside the mark. */
+            measure: z.boolean().optional(),
+            /** The measure is the unknown: drawn as "?" unless revealed. */
+            derived: z.boolean().optional(),
+            /** Sweep clockwise from `from` to `to` instead. */
+            clockwise: z.boolean().optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (a) =>
+      (!a.labels || a.labels.ends.length === a.rays.length) &&
+      (a.marks ?? []).every(
+        (m) =>
+          m.from < a.rays.length && m.to < a.rays.length && m.from !== m.to,
+      ),
+    "Labels and marks name existing rays",
+  );
+export type Protractor = z.infer<typeof protractorSchema>;
+export type Angle = z.infer<typeof angleSchema>;
 
 const at = (deg: number, r: number): Point => {
   const t = (deg * Math.PI) / 180;
@@ -48,7 +119,7 @@ registerComponent("protractor", {
       prims.push({
         type: "text",
         id: `outer.${180 - d}`,
-        at: at(d + lift, 0.82),
+        at: at(d + lift, 0.845),
         text: String(180 - d),
         font: "sans",
         size: "sm",
@@ -58,7 +129,7 @@ registerComponent("protractor", {
       prims.push({
         type: "text",
         id: `inner.${d}`,
-        at: at(d + lift * 1.4, 0.66),
+        at: at(d + lift * 1.4, 0.625),
         text: String(d),
         font: "sans",
         size: "sm",
@@ -218,10 +289,21 @@ registerComponent("angle", {
                 (0.22 * L) / Math.sin(((span / 2) * Math.PI) / 180),
               ),
             );
+        // Over another figure, try spots along the bisector, from just
+        // outside the arc inward, and keep the first one clear of its labels.
+        const mid = ((a + sweep / 2) * Math.PI) / 180;
+        const u = [Math.cos(mid), -Math.sin(mid)] as const;
         prims.push({
           type: "text",
           id: `measure.${i}`,
-          at: at(a + sweep / 2, out),
+          at: at(a + sweep / 2, c.marksOnly ? r : out),
+          ...(c.marksOnly
+            ? {
+                place: [16, 30, -14, 44, -26].map(
+                  (d) => [u[0] * d, u[1] * d, 0, 0] as [number, number, 0, 0],
+                ),
+              }
+            : {}),
           text: degrees(span),
           font: "sans",
           bold: true,
@@ -291,5 +373,3 @@ registerComponent("angle", {
 function add(a: Point, b: Point): Point {
   return [a[0] + b[0], a[1] + b[1]];
 }
-
-export type { Angle };

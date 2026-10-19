@@ -165,7 +165,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["integer-addition", "root-between-integers", "scientific-to-standard"],
     ["unit-price", "fraction-unit-rate"],
     ["simple-probability"],
-    ["circle-area-coefficient", "circle-circumference-coefficient"],
+    [
+      "circle-area-coefficient",
+      "circle-circumference-coefficient",
+      "triangle-angle-sum",
+      "angle-pair-measure",
+    ],
   ],
   // High school: an equation, the Pythagorean theorem, a unit rate, slope.
   [

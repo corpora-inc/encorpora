@@ -1,4 +1,8 @@
 import {
+  angleTriangleTemplates,
+  generateAngleTriangleProblem,
+} from "./angle-triangle-practice";
+import {
   numberSystemTemplates,
   generateNumberSystemProblem,
 } from "./number-system-practice";
@@ -88,6 +92,10 @@ import {
   rationalTemplates,
   generateRationalProblem,
 } from "./rational-practice";
+import {
+  factoringTemplates,
+  generateFactoringProblem,
+} from "./factoring-practice";
 import {
   circleMeasurementTemplates,
   generateCircleMeasurementProblem,
@@ -289,6 +297,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...angleTriangleTemplates,
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...ratioRateTemplates,
@@ -310,6 +319,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
   ...bivariateTemplates,
@@ -451,6 +461,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
     ...angleTemplates,
@@ -467,6 +478,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...angleTriangleTemplates,
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...ratioRateTemplates,
@@ -502,6 +514,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (factoringTemplates.some((t) => t.id === templateId))
+    return generateFactoringProblem(templateId, seed);
   if (numberSystemTemplates.some((t) => t.id === templateId))
     return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))
@@ -538,6 +552,8 @@ function generateRawProblem(
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (angleTriangleTemplates.some((t) => t.id === templateId))
+    return generateAngleTriangleProblem(templateId, seed);
   if (realNumberTemplates.some((t) => t.id === templateId))
     return generateRealNumberProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
