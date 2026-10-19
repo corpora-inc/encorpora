@@ -1,3 +1,4 @@
+import { StateIdentity, stateNames } from "./state-identity.js";
 import React from "./react.js";
 import type { ReactNode } from "react";
 import {
@@ -385,10 +386,6 @@ function Amp({ config }: { config: SiteConfig }) {
     </>
   );
 }
-const stateNames: Record<string, string> = Object.fromEntries(
-  "AL:Alabama|AK:Alaska|AZ:Arizona|AR:Arkansas|CA:California|CO:Colorado|CT:Connecticut|DE:Delaware|DC:District of Columbia|FL:Florida|GA:Georgia|HI:Hawaii|ID:Idaho|IL:Illinois|IN:Indiana|IA:Iowa|KS:Kansas|KY:Kentucky|LA:Louisiana|ME:Maine|MD:Maryland|MA:Massachusetts|MI:Michigan|MN:Minnesota|MS:Mississippi|MO:Missouri|MT:Montana|NE:Nebraska|NV:Nevada|NH:New Hampshire|NJ:New Jersey|NM:New Mexico|NY:New York|NC:North Carolina|ND:North Dakota|OH:Ohio|OK:Oklahoma|OR:Oregon|PA:Pennsylvania|RI:Rhode Island|SC:South Carolina|SD:South Dakota|TN:Tennessee|TX:Texas|UT:Utah|VT:Vermont|VA:Virginia|WA:Washington|WV:West Virginia|WI:Wisconsin|WY:Wyoming"
-    .split("|").map((entry) => entry.split(":")),
-);
 function Esa({ config }: { config: SiteConfig }) {
   const states = [...new Set(config.funding.map((r) => r.state))].sort();
   return (
@@ -417,10 +414,7 @@ function Esa({ config }: { config: SiteConfig }) {
             >
               {states.map((s) => (
                 <a href={`#state-${s}`} key={s}>
-                  <span className="state-badge" aria-hidden="true">
-                    <svg viewBox="0 0 40 48" fill="none"><path d="M20 46S3 29 3 20a17 17 0 1 1 34 0c0 9-17 26-17 26Z" fill="currentColor" /></svg>
-                    <span>{s}</span>
-                  </span>
+                  <StateIdentity state={s} compact />
                   <span>{stateNames[s] ?? s}<small>{config.funding.filter((r) => r.state === s).length} {config.funding.filter((r) => r.state === s).length === 1 ? "program" : "programs"}</small></span>
                 </a>
               ))}
@@ -432,7 +426,7 @@ function Esa({ config }: { config: SiteConfig }) {
             </p>
             {states.map((state) => (
               <section className="state" id={`state-${state}`} key={state}>
-                <h3>{stateNames[state] ?? state}</h3>
+                <h3 className="state-heading"><StateIdentity state={state} compact />{stateNames[state] ?? state}</h3>
                 <div className="program-grid">
                 {config.funding
                   .filter((r) => r.state === state)
