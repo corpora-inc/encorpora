@@ -6,6 +6,7 @@ import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
+import { AreaModelFigure } from "./AreaModelFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
@@ -69,6 +70,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <FractionPracticeFigure figure={figure} />;
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "area-model":
+      return <AreaModelFigure figure={figure} />;
     case "function-display":
       return <FunctionDisplay figure={figure} />;
     case "ten-frame-pair":

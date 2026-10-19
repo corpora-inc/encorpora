@@ -634,6 +634,8 @@ footer {
 }
 .figure[data-kind="number-line"] {
   max-height: none;
+  /* Wide enough to read every tick; labels stay near prose size. */
+  max-width: 480px;
 }
 .figure[data-kind="balance-scale"] {
   max-width: 480px;

@@ -2086,6 +2086,47 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Multiplication and division tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "multiply-tens",
+    "one-digit-times-tens",
+    "Multiply a one-digit number by a multiple of ten from 10 to 90.",
+  ],
+  [
+    "whole-multiplication",
+    "one-digit-factor",
+    "Multiply a two- to four-digit number by a one-digit number.",
+  ],
+  [
+    "whole-multiplication",
+    "two-digit-area-model",
+    "Find a two-digit by two-digit product from an area model split by place value.",
+  ],
+  [
+    "multidigit-products",
+    "two-digit-multiplier",
+    "Multiply a two- or three-digit number by a two-digit number.",
+  ],
+  [
+    "whole-division",
+    "one-digit-divisor",
+    "Find whole-number quotients and remainders for dividends up to 9,999 and one-digit divisors.",
+  ],
+  [
+    "multidigit-quotients",
+    "two-digit-divisor",
+    "Find exact whole-number quotients for dividends up to 9,999 and two-digit divisors.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // One-digit multiplication and division with arrays cover bounded parts of their skills.
 for (const [skillId, suffix, description] of [
   [
