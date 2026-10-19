@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
-import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
+import {
+  animationFrames,
+  fiveNumbers,
+  jumpStops,
+  type AnimationModel,
+} from "./model";
 import { MadGapStage } from "./ComparisonAnimation";
 import {
   BalanceFrame,
@@ -35,6 +40,10 @@ import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "opposite":
+      return <OppositeModel model={model} step={step} />;
+    case "jumps":
+      return <JumpsModel model={model} step={step} />;
     case "pour":
       return (
         <g transform="translate(20 4) scale(0.86)">
@@ -1617,6 +1626,196 @@ function MakeTenModel({
           {frame === 0 ? "10" : `${b - need}`}
         </text>
       ))}
+    </>
+  );
+}
+
+const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
+/** A number line across the stage: one-unit ticks, labels every 5, 0 emphasized. */
+function StageLine({
+  min,
+  max,
+  y,
+  x,
+}: {
+  min: number;
+  max: number;
+  y: number;
+  x: (n: number) => number;
+}) {
+  return (
+    <>
+      <line x1="12" x2="308" y1={y} y2={y} className="animation-outline" />
+      {Array.from({ length: max - min + 1 }, (_, i) => {
+        const n = min + i,
+          major = n % 5 === 0;
+        return (
+          <g key={n}>
+            <line
+              x1={x(n)}
+              x2={x(n)}
+              y1={y - (n === 0 ? 10 : major ? 7 : 4)}
+              y2={y + (n === 0 ? 10 : major ? 7 : 4)}
+              className="animation-outline"
+              strokeWidth={n === 0 ? 2.5 : 1}
+            />
+            {major && (
+              <text
+                x={x(n)}
+                y={y + 26}
+                textAnchor="middle"
+                style={{ fontWeight: n === 0 ? 700 : 400 }}
+              >
+                {shown(n)}
+              </text>
+            )}
+          </g>
+        );
+      })}
+    </>
+  );
+}
+function OppositeModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "opposite" }>;
+  step: number;
+}) {
+  const { value: a, min, max } = model,
+    y = 130;
+  const x = (n: number) => 24 + ((n - min) / (max - min)) * 272;
+  const radius = Math.abs(x(a) - x(0));
+  // Rotating about 0 by a half turn lands exactly on the opposite, passing above the line.
+  const turn = a < 0 ? 180 : -180;
+  const brace = (to: number, show: boolean) => (
+    <g className="animation-fade" style={{ opacity: show ? 1 : 0 }}>
+      <path
+        d={`M${x(to)} ${y + 34} v8 H${x(0)} v-8`}
+        className="animation-outline"
+      />
+      <text x={(x(to) + x(0)) / 2} y={y + 60} textAnchor="middle">
+        {Math.abs(a)}
+      </text>
+    </g>
+  );
+  return (
+    <>
+      <StageLine min={min} max={max} y={y} x={x} />
+      <path
+        d={`M${x(a)} ${y} A${radius} ${radius} 0 0 ${a < 0 ? 1 : 0} ${x(-a)} ${y}`}
+        className="animation-guide animation-fade"
+        style={{ opacity: step > 0 ? 1 : 0 }}
+      />
+      {brace(a, true)}
+      {brace(-a, step === 2)}
+      <circle cx={x(a)} cy={y} r="7" className="animation-warm-dot" />
+      <text x={x(a)} y={y - 16} textAnchor="middle" style={{ fontWeight: 700 }}>
+        P
+      </text>
+      <g
+        className="animation-move"
+        style={{
+          transformOrigin: `${x(0)}px ${y}px`,
+          transform: `rotate(${step > 0 ? turn : 0}deg)`,
+        }}
+      >
+        <circle
+          data-opposite-mark={step > 0 ? -a : a}
+          cx={x(a)}
+          cy={y}
+          r="7"
+          className="animation-accent-dot"
+        />
+      </g>
+      <text
+        x={x(-a)}
+        y={y - 16}
+        textAnchor="middle"
+        className="animation-fade"
+        style={{ opacity: step === 2 ? 1 : 0, fontWeight: 700 }}
+      >
+        {shown(-a)}
+      </text>
+    </>
+  );
+}
+function JumpsModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "jumps" }>;
+  step: number;
+}) {
+  const { start, jumps, min, max } = model,
+    y = 140;
+  const x = (n: number) => 24 + ((n - min) / (max - min)) * 272;
+  const stops = jumpStops(start, jumps),
+    end = stops.at(-1)!;
+  return (
+    <>
+      <StageLine min={min} max={max} y={y} x={x} />
+      {jumps.map((jump, i) => {
+        const from = x(stops[i]!),
+          to = x(stops[i + 1]!),
+          lift = 28 + i * 22,
+          control = y - 4 - lift * 1.6;
+        return (
+          <g key={i} data-jump={jump}>
+            <path
+              d={`M${from} ${y - 4} Q${(from + to) / 2} ${control} ${to} ${y - 4}`}
+              pathLength={1}
+              className={`animation-draw ${jump < 0 ? "animation-jump-negative" : "animation-jump-positive"}`}
+              style={{
+                strokeDashoffset: step > 0 ? 0 : 1,
+                transitionDelay: step > 0 ? `${i * 450}ms` : "0ms",
+              }}
+            />
+          </g>
+        );
+      })}
+      {jumps.map((jump, i) => {
+        const lift = 28 + i * 22;
+        return (
+          <text
+            key={i}
+            x={(x(stops[i]!) + x(stops[i + 1]!)) / 2}
+            y={y - 8 - lift}
+            textAnchor="middle"
+            className="animation-fade animation-halo"
+            style={{
+              opacity: step > 0 ? 1 : 0,
+              fontWeight: 700,
+              transitionDelay: step > 0 ? `${i * 450 + 300}ms` : "0ms",
+            }}
+          >
+            {jump > 0 ? `+${jump}` : shown(jump)}
+          </text>
+        );
+      })}
+      <circle cx={x(start)} cy={y} r="6" className="animation-accent-dot" />
+      <text x={x(start)} y={y + 48} textAnchor="middle">
+        {shown(start)}
+      </text>
+      <circle
+        data-end-mark={end}
+        cx={x(end)}
+        cy={y}
+        r="7"
+        className="animation-ring animation-fade"
+        style={{
+          opacity: step === 2 ? 1 : 0,
+        }}
+      />
+      <text
+        x={x(end)}
+        y={y + 48}
+        textAnchor="middle"
+        className="animation-fade"
+        style={{ opacity: step === 2 ? 1 : 0, fontWeight: 700 }}
+      >
+        {shown(end)}
+      </text>
     </>
   );
 }

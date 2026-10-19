@@ -1,3 +1,7 @@
+import {
+  numberSystemTemplates,
+  generateNumberSystemProblem,
+} from "./number-system-practice";
 import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   equationTemplates,
@@ -270,6 +274,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...equationTemplates,
@@ -442,6 +447,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...numberSystemTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -474,6 +480,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (numberSystemTemplates.some((t) => t.id === templateId))
+    return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
