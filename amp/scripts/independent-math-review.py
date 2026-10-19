@@ -30,6 +30,8 @@ from print_pdf_oracle import review_print_pdfs
 from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
+from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
+from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -44,7 +46,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -58,6 +60,8 @@ def solve(public):
     template = public['templateId']
     if template in RADICAL_TYPES:
         return solve_radical(public)
+    if template in RATIONAL_TYPES:
+        return solve_rational(public)
     if template in CIRCLE:
         return solve_circle(public)
     if template in INTEGER_EXPONENT:
@@ -270,6 +274,7 @@ def solve(public):
 def review(stream):
     review_radical_arithmetic()
     review_radical_fixtures()
+    review_rational_fixtures()
     review_circle_fixtures()
     review_integer_exponent_fixtures()
     review_descriptive_statistics_fixtures()
@@ -298,6 +303,7 @@ def review(stream):
     system_review = LinearSystemReview()
     exponent_review = IntegerExponentReview()
     right_triangles = RightTriangleCorpusReview()
+    rational_corpus = RationalCorpus()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -335,6 +341,9 @@ def review(stream):
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in RADICAL_TYPES:
             review_radical_problem(problem)
+        if template in RATIONAL_TYPES:
+            review_rational_problem(problem)
+            rational_corpus.record(public, solved)
         if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
@@ -347,6 +356,8 @@ def review(stream):
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)
+    print('Independent rational coverage: ' + json.dumps(rational_corpus.finish(count)), file=sys.stderr)
+    print('Independent rational content: ' + json.dumps(review_rational_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
     print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)
