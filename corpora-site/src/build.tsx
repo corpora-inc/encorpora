@@ -11,7 +11,7 @@ export async function buildSite(
   await mkdir(`${output}/assets`, { recursive: true });
   // Extract the existing token block; loading the entire app stylesheet would
   // import app layout selectors into an unrelated document.
-  const theme = await readFile("../amp/src/web/theme.css", "utf8");
+  const theme = await readFile("../amp/src/web/ui/tokens.css", "utf8");
   const tokens = theme.match(/:root\s*\{[^}]+\}/)?.[0];
   if (!tokens) throw new Error("AMP theme token block not found");
   await writeFile(

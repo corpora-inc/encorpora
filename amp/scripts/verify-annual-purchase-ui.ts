@@ -1,3 +1,5 @@
+import type { FamilySummary } from "../src/family/contracts";
+import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium } from "playwright";
@@ -13,7 +15,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import {createRoot} from 'react-dom/client';import {AnnualPurchase} from '../../src/web/AnnualPurchase';import '../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={events:[] as string[],render(identity:string,purchaseId?:string){root.render(<React.StrictMode><AnnualPurchase purchaseId={purchaseId} token={identity} identity={identity} returnState="processing" onClose={()=>root.render(<p>Family screen</p>)} onAccessChanged={()=>harness.events.push(identity)}/></React.StrictMode>);},unmount(){root.render(<p>Other screen</p>)}};(window as any).annualHarness=harness;harness.render('parent');`,
+  `import React from 'react';import {createRoot} from 'react-dom/client';import{QueryClientProvider}from'@tanstack/react-query';import{queryClient}from'../../src/web/lib/query';import {AnnualPurchase} from '../../src/web/AnnualPurchase';import '../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={events:[] as string[],render(identity:string,purchaseId?:string){root.render(<React.StrictMode><QueryClientProvider client={queryClient}><AnnualPurchase purchaseId={purchaseId} token={identity} identity={identity} returnState="processing" onClose={()=>root.render(<p>Family screen</p>)} onAccessChanged={()=>harness.events.push(identity)}/></QueryClientProvider></React.StrictMode>);},unmount(){root.render(<p>Other screen</p>)}};(window as any).annualHarness=harness;harness.render('parent');`,
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -49,7 +51,7 @@ try {
     offerId: string;
     interval: "year" | "month";
   }[] = [];
-  const family = {
+  const family: FamilySummary = {
     consent: {
       status: "active",
       policyVersion: "fixture",
@@ -74,8 +76,8 @@ try {
     ],
     retained: retentionNotice,
   };
-  await page.route("**/api/v1/family", (route) =>
-    route.fulfill({ json: family }),
+  await page.route("**/api/v1/me", (route) =>
+    route.fulfill({ json: fixtureMe(family) }),
   );
   await page.route("**/api/v1/billing/offer", (route) =>
     route.fulfill(
@@ -320,7 +322,9 @@ try {
   );
   await page.getByText("Verifying payment", { exact: true }).waitFor();
   assert.equal(
-    await page.getByLabel("Learner", { exact: true }).inputValue(),
+    await page
+      .getByLabel("Learner", { exact: true })
+      .getAttribute("data-value"),
     "second",
     "return selects the learner from the owned purchase binding",
   );
@@ -329,7 +333,9 @@ try {
   );
   await page.getByRole("alert").waitFor();
   assert.equal(
-    await page.getByLabel("Learner", { exact: true }).inputValue(),
+    await page
+      .getByLabel("Learner", { exact: true })
+      .getAttribute("data-value"),
     "",
   );
   assert.equal(

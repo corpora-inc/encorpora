@@ -1,4 +1,5 @@
 import { factoringMethods } from "./factoring-lessons";
+import { radicalMethods } from "./radical-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { integerExponentMethods } from "./integer-exponent-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
@@ -19,6 +20,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...polynomialMethods,
+  ...radicalMethods,
   ...circleMeasurementMethods,
   ...percentChangeMethods,
   ...inequalityMethods,

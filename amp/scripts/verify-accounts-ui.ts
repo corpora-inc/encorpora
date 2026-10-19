@@ -1,3 +1,4 @@
+import { exitPractice } from "./ui-practice";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
 import assert from "node:assert/strict";
@@ -113,6 +114,11 @@ try {
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByLabel("Learner name").fill("Sample learner");
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await page.locator(".problem-stage").waitFor();
+  await exitPractice(page);
   await signedIn(page);
 
   // Sign out, then back in; a wrong password is reported in place.
@@ -172,11 +178,7 @@ try {
     },
   );
   async function openSecurity() {
-    await page.locator(".account-menu summary").click();
-    await page
-      .getByRole("button", { name: "Manage family", exact: true })
-      .click();
-    await page.getByRole("button", { name: "Security", exact: true }).click();
+    await page.goto(`${origin}/family/security`);
     await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
     await page.getByLabel("Name for this passkey").waitFor();
   }
@@ -218,6 +220,20 @@ try {
   await page.getByRole("button", { name: "Replace backup codes" }).click();
   await page.getByText("New backup codes created.", { exact: false }).waitFor();
   await page.getByRole("button", { name: "I saved these codes" }).click();
+  // Let the real per-address authentication rate window expire.
+  await delay(11_000);
+  // Recent authentication must retain the return route through the TOTP step.
+  await page.getByRole("link", { name: "Sign in again", exact: true }).click();
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("Password", { exact: true }).fill(changed);
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await page.waitForURL("**/sign-in/two-factor?return=security");
+  await page
+    .getByLabel("Code from your authenticator app")
+    .fill(await createOTP(rawSecret).totp());
+  await page.getByRole("button", { name: "Verify", exact: true }).click();
+  await page.waitForURL(origin + "/family/security");
+  await page.getByRole("button", { name: "Authenticator On" }).click();
   await page.getByLabel("Current password").fill(changed);
   await page.getByRole("button", { name: "Disable authenticator" }).click();
   await page
@@ -282,7 +298,7 @@ try {
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByRole("heading", { name: "Sign in", exact: true }).waitFor();
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
-  await page.waitForURL(origin + "/");
+  await page.waitForURL(origin + "/family/security");
   await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
   await page.getByRole("button", { name: "Remove", exact: true }).click();
   await page.getByRole("button", { name: "Confirm removal" }).click();

@@ -1,4 +1,5 @@
 import { factoringLessons } from "./factoring-lessons";
+import { radicalLessons } from "./radical-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
@@ -31,6 +32,10 @@ export interface Lesson {
       | "factoring-gcf"
       | "factoring-monic"
       | "factoring-nonmonic"
+      | "radical-square-grid"
+      | "radical-like-lengths"
+      | "radical-product-grid"
+      | "radical-rationalize"
       | "integer-exponent-ladder"
       | "descriptive-median"
       | "descriptive-range"
@@ -521,6 +526,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...radicalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,

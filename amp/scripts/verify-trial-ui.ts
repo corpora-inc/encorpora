@@ -66,6 +66,48 @@ try {
   const page = await browser.newPage({
     viewport: { width: 1280, height: 900 },
   });
+  let adoptedId: string | null = null;
+  let adoptionRequests = 0;
+  let failSavedRefresh = true;
+  let releaseSavedRefresh!: () => void;
+  const savedRefreshHeld = new Promise<void>((resolve) => {
+    releaseSavedRefresh = resolve;
+  });
+  let sawSavedRefresh!: () => void;
+  const savedRefreshStarted = new Promise<void>((resolve) => {
+    sawSavedRefresh = resolve;
+  });
+  await page.route("**/trials/adopt", async (route) => {
+    adoptionRequests++;
+    const response = await route.fetch();
+    adoptedId = (await response.json()).id;
+    await route.fulfill({ response });
+  });
+  await page.route("**/api/v1/me", async (route) => {
+    if (adoptedId && failSavedRefresh) {
+      failSavedRefresh = false;
+      sawSavedRefresh();
+      await savedRefreshHeld;
+      await route.fulfill({
+        status: 503,
+        json: { error: "family_service_unavailable" },
+      });
+      return;
+    }
+    const response = await route.fetch();
+    const me = await response.json();
+    // Isolate a new household even when the shared local fixture has learners.
+    if (me.signedIn) {
+      me.learners = me.learners.filter(
+        (entry: { id: string }) => entry.id === adoptedId,
+      );
+      me.family.learners = me.family.learners.filter(
+        (entry: { id: string }) => entry.id === adoptedId,
+      );
+      me.next = adoptedId ? "practice" : "add-learner";
+    }
+    await route.fulfill({ json: me });
+  });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4352/?signed-out");
@@ -239,9 +281,40 @@ try {
   const name = `Trial ${Date.now()}`;
   await page.getByLabel("Learner name").fill(name);
   await page.getByRole("button", { name: "Save and continue" }).click();
+  await savedRefreshStarted;
+  await page
+    .getByRole("button", { name: "Continue to plans", exact: true })
+    .waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Continue to plans", exact: true })
+      .isDisabled(),
+    true,
+  );
+  assert.equal(
+    await page
+      .getByRole("heading", { name: "Save this placement" })
+      .isVisible(),
+    true,
+  );
+  assert.ok(!new URL(page.url()).pathname.startsWith("/start"));
+  releaseSavedRefresh();
+  await page
+    .getByRole("alert")
+    .filter({ hasText: "Family details could not be loaded. Try again." })
+    .waitFor();
+  await page
+    .getByRole("button", { name: "Continue to plans", exact: true })
+    .click();
   // Saving leads straight to the paywall: card or education funds.
   await page.getByRole("heading", { name: "Choose your AMP plan" }).waitFor();
   await page.getByText(name, { exact: true }).waitFor();
+  assert.equal(new URL(page.url()).pathname, "/purchase/choose");
+  assert.equal(
+    adoptionRequests,
+    1,
+    "refresh retry must not repeat the consumed adoption",
+  );
   await fits(page, "choose");
   await page.getByRole("button", { name: "Back to family" }).click();
   await page.getByRole("button", { name: "Purchases & records" }).waitFor();

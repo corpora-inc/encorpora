@@ -13,7 +13,7 @@ The failures that follow from this, as seen on stage:
 - Generic banners that shift the layout.
 - Raw native inputs, and overlapping or squashed layouts.
 
-These are failures of structure, not of individual screens. Every rule below enforces the **Premium UI standard** in `/Users/skyl/Code/corpora/AGENTS.md`.
+These are failures of structure, not of individual screens. Every rule below enforces the **Premium UI standard** in `amp/AGENTS.md`.
 
 ## Decisions
 

@@ -1,4 +1,5 @@
 import { FactoringIllustration } from "./FactoringIllustration";
+import { RadicalIllustration } from "./RadicalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
@@ -22,6 +23,13 @@ export function LessonIllustration({
   if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
   if (kind === "factoring-nonmonic")
     return <FactoringIllustration kind="nonmonic" />;
+  if (
+    kind === "radical-square-grid" ||
+    kind === "radical-like-lengths" ||
+    kind === "radical-product-grid" ||
+    kind === "radical-rationalize"
+  )
+    return <RadicalIllustration kind={kind} />;
   if (
     kind === "circle-circumference" ||
     kind === "circle-area" ||

@@ -28,6 +28,9 @@ from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_f
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
+from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
+from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
+from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -42,7 +45,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | INTEGER_EXPONENT
+SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | INTEGER_EXPONENT
 SUPPORTED |= FACTORING
 
 
@@ -55,6 +58,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in RADICAL_TYPES:
+        return solve_radical(public)
     if template in CIRCLE:
         return solve_circle(public)
     if template in INTEGER_EXPONENT:
@@ -267,6 +272,8 @@ def solve(public):
 
 
 def review(stream):
+    review_radical_arithmetic()
+    review_radical_fixtures()
     review_circle_fixtures()
     review_integer_exponent_fixtures()
     review_descriptive_statistics_fixtures()
@@ -335,7 +342,9 @@ def review(stream):
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | FACTORING | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in RADICAL_TYPES:
+            review_radical_problem(problem)
+        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | FACTORING | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -346,6 +355,7 @@ def review(stream):
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
+    print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
     print('Independent statistics content: '+json.dumps(review_descriptive_statistics_content()),file=sys.stderr)
