@@ -422,4 +422,8 @@ export const parityFigures: SemanticFigure[] = [
   },
   { kind: "ten-frame", first: 7, second: 2, capacity: 10 },
   { kind: "ten-frame", first: 9, second: 6, capacity: 20 },
+  { kind: "base-ten", hundreds: 2, tens: 4, ones: 7 },
+  { kind: "base-ten", hundreds: 0, tens: 13, ones: 6 },
+  { kind: "unit-array", rows: 7, columns: 6, splitAfterRow: 4 },
+  { kind: "unit-array", rows: 3, columns: 9 },
 ];

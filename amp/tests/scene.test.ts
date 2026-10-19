@@ -367,3 +367,18 @@ test("primitives annotate a component in its own coordinates", () => {
     scene({ type: "numberLine", min: 3, max: 1 } as never).build(),
   );
 });
+
+test("print SVG sets words in the worksheet face and keeps every paint a role", async () => {
+  const { SceneFigure } = await import("../src/web/scene/SceneFigure.js");
+  const s = graph({ x: [0, 10], y: [0, 10], axisNames: ["hours", "score"] })
+    .point(3, 4, "A")
+    .scene();
+  const html = renderToStaticMarkup(
+    React.createElement(SceneFigure, { scene: s, medium: "print" }),
+  );
+  assert.match(html, /font-family:Arial, Helvetica, sans-serif/);
+  assert.match(html, /font-family:KaTeX_Main/);
+  assert.match(html, /aria-label="Coordinate plane/);
+  // Paints are theme roles: no literal colors reach the page.
+  assert.doesNotMatch(html, /(fill|stroke)="#[0-9a-f]{3,8}"/i);
+});

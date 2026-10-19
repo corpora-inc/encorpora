@@ -5,7 +5,6 @@ import { TimeMoneyFigure } from "./TimeMoneyFigure";
 import { DecimalFigure } from "./DecimalFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
-import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
 import { AreaModelFigure } from "./AreaModelFigure";
 import { FactsFigure } from "./FactsFigure";
@@ -71,14 +70,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "shape-puzzle":
     case "solid-shape":
       return <ShapeFigure figure={figure} />;
-    case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
     case "rational-line":
     case "fraction-strips":
       return <FractionPracticeFigure figure={figure} />;
-    case "base-ten":
-      return <ElementaryFigure figure={figure} />;
     case "area-model":
       return <AreaModelFigure figure={figure} />;
     case "function-display":
