@@ -18,6 +18,7 @@ import {
   tenFrame,
   tree,
   triangle,
+  circleDiagram,
   venn,
 } from "./author";
 import type { Scene } from "./spec";
@@ -995,6 +996,42 @@ export const galleryCases: GalleryCase[] = [
       .angle(1, { mark: "arc", label: "30°" })
       .angle(2, { mark: "arc", arcs: 2, label: "60°" })
       .scene(),
+  },
+  {
+    name: "Circle: inscribed and central angles on one arc",
+    scene: circleDiagram({
+      points: [
+        { name: "A", at: 200 },
+        { name: "B", at: 330 },
+        { name: "C", at: 95 },
+      ],
+      center: true,
+      segments: [
+        { from: "C", to: "A" },
+        { from: "C", to: "B" },
+        { from: "O", to: "A", dash: true },
+        { from: "O", to: "B", dash: true },
+      ],
+      angles: [
+        { at: "C", from: "A", to: "B", label: "?" },
+        { at: "O", from: "A", to: "B", label: "130°", color: "accent" },
+      ],
+      arcs: [{ from: "A", to: "B" }],
+    }).scene({ title: "Inscribed angle ACB and central angle AOB" }),
+  },
+  {
+    name: "Circle: a tangent meets the radius at a right angle",
+    scene: circleDiagram({
+      points: [{ name: "T", at: 90 }],
+      outside: [{ name: "P", at: 30, dist: 2 }],
+      center: true,
+      segments: [
+        { from: "O", to: "T", label: "5" },
+        { from: "T", to: "P", label: null, color: "accent" },
+        { from: "O", to: "P", label: "10", dash: true },
+      ],
+      angles: [{ at: "T", from: "O", to: "P", mark: "right" }],
+    }).scene({ title: "Tangent PT and radius OT" }),
   },
 ];
 

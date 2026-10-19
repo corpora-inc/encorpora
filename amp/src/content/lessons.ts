@@ -31,6 +31,7 @@ import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { similarityTrigLessons } from "./similarity-trig-lessons";
+import { coordinateCircleLessons } from "./coordinate-circle-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { exponentialLessons } from "./exponential-lessons";
 import { comparisonLessons } from "./comparison-lessons";
@@ -582,6 +583,7 @@ export const lessons: readonly Lesson[] = [
   ...exponentialLessons,
   ...probabilityRulesLessons,
   ...similarityTrigLessons,
+  ...coordinateCircleLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

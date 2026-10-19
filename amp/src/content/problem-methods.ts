@@ -14,6 +14,7 @@ import { polygonMethods } from "./polygon-lessons";
 import { exponentialMethods } from "./exponential-lessons";
 import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { similarityTrigMethods } from "./similarity-trig-lessons";
+import { coordinateCircleMethods } from "./coordinate-circle-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { bivariateMethods } from "./bivariate-lessons";
@@ -59,6 +60,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...exponentialMethods,
   ...probabilityRulesMethods,
   ...similarityTrigMethods,
+  ...coordinateCircleMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,

@@ -89,6 +89,10 @@ import {
   generateExponentialProblem,
 } from "./exponential-practice";
 import {
+  coordinateCircleTemplates,
+  generateCoordinateCircleProblem,
+} from "./coordinate-circle-practice";
+import {
   similarityTrigTemplates,
   generateSimilarityTrigProblem,
 } from "./similarity-trig-practice";
@@ -337,6 +341,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...numberSystemTemplates,
   ...probabilityRulesTemplates,
   ...similarityTrigTemplates,
+  ...coordinateCircleTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
@@ -528,6 +533,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...numberSystemTemplates,
     ...probabilityRulesTemplates,
     ...similarityTrigTemplates,
+    ...coordinateCircleTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -617,6 +623,8 @@ function generateRawProblem(
     return generateProbabilityRulesProblem(templateId, seed);
   if (similarityTrigTemplates.some((t) => t.id === templateId))
     return generateSimilarityTrigProblem(templateId, seed);
+  if (coordinateCircleTemplates.some((t) => t.id === templateId))
+    return generateCoordinateCircleProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (numberSenseTemplates.some((t) => t.id === templateId))

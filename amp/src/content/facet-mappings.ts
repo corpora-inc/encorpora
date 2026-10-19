@@ -16,6 +16,7 @@ import { polygonFacetMappings } from "./polygon-coverage";
 import { exponentialFacetMappings } from "./exponential-coverage";
 import { probabilityRulesFacetMappings } from "./probability-rules-coverage";
 import { similarityTrigFacetMappings } from "./similarity-trig-coverage";
+import { coordinateCircleFacetMappings } from "./coordinate-circle-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
@@ -54,6 +55,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...exponentialFacetMappings,
   ...probabilityRulesFacetMappings,
   ...similarityTrigFacetMappings,
+  ...coordinateCircleFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
   ...bivariateFacetMappings,

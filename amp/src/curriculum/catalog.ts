@@ -1396,6 +1396,42 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// High-school coordinate geometry and circles (G-GPE, G-C).
+for (const [skillId, suffix, description] of [
+  [
+    "circle-equations",
+    "center-radius",
+    "Read the center and radius of a circle from its standard or general equation, and find r² from a center and a point or a graph.",
+  ],
+  [
+    "coordinate-measurement",
+    "perimeter-area",
+    "Find perimeters with the distance formula and areas of triangles and quadrilaterals from vertex coordinates.",
+  ],
+  [
+    "segment-division",
+    "internal-ratio",
+    "Find the point that divides a directed segment internally in a ratio or at a fraction of the way.",
+  ],
+  [
+    "slope-proofs",
+    "parallel-perpendicular",
+    "Use equal and negative reciprocal slopes for parallel and perpendicular lines, lines through a point and missing coordinates.",
+  ],
+  [
+    "circle-theorems",
+    "inscribed-tangent",
+    "Use inscribed and central angles on one arc, the right angle in a semicircle, and tangents perpendicular to radii.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // High-school similarity and right-triangle trigonometry (G-SRT).
 for (const [skillId, suffix, description] of [
   [
