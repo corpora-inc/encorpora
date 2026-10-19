@@ -384,6 +384,32 @@ test("Checkout leaves payment methods to the Dashboard and uses flexible billing
   }
 });
 
+test("purchase-backed consent Checkout offers only reviewed card and Link methods", async () => {
+  // Consent by purchase accepts only card (including Apple Pay and Google Pay)
+  // and Link; any other method would settle and then be rejected.
+  const { calls, gateway } = checkoutCapture();
+  const expiresAt = 1_900_000_000;
+  await gateway.createCheckout(
+    binding.id,
+    binding.customerId,
+    "year",
+    true,
+    expiresAt,
+  );
+  assert.deepEqual(calls[0]!.allowed_payment_method_types, ["card", "link"]);
+  assert.equal(calls[0]!.expires_at, expiresAt);
+  assert.deepEqual(
+    (calls[0]!.subscription_data as Record<string, unknown>).billing_mode,
+    { type: "flexible" },
+  );
+  assert.equal(
+    calls[0]!.success_url,
+    `https://example.test/start/purchase?billing=processing&purchase=${binding.id}`,
+  );
+  await gateway.createCheckout(binding.id, binding.customerId, "year", false);
+  assert.equal("allowed_payment_method_types" in calls[1]!, false);
+});
+
 test("automatic tax collects the full billing address and saves it to the customer", async () => {
   const taxed = checkoutCapture({ ...config, automaticTax: true });
   await taxed.gateway.createCheckout(binding.id, binding.customerId);
@@ -464,9 +490,22 @@ test("non-card payment methods settle and are recorded by their Stripe type", as
   }
 });
 
-test("worker refuses insufficient pools and concurrent passes sharing a pool", async () => {
+test("worker refuses insufficient pools and concurrent passes sharing a pool", async (t) => {
   const small = new Pool({ max: 1 });
   const pool = new Pool({ max: 4 });
+  let cancellationReads = 0;
+  t.mock.method(pool, "query", async (sql: string) => {
+    if (
+      sql === "SELECT to_regclass('amp_enrollment_cancellations') AS relation"
+    )
+      return { rows: [{ relation: "amp_enrollment_cancellations" }] };
+    assert.match(
+      sql,
+      /^SELECT c\.checkout_id,b\.account_id FROM amp_enrollment_cancellations/,
+    );
+    cancellationReads++;
+    return { rows: [] };
+  });
   try {
     await assert.rejects(
       new StripeBilling(
@@ -498,6 +537,7 @@ test("worker refuses insufficient pools and concurrent passes sharing a pool", a
       await new StripeBilling(repository, new StripeGateway(config)).runBatch(),
       { processed: 0, failed: 0 },
     );
+    assert.equal(cancellationReads, 2);
   } finally {
     await small.end();
     await pool.end();

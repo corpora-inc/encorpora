@@ -18,9 +18,15 @@ if (!process.env.AMP_DATABASE_URL || !process.argv[2])
 const record = schema.parse(
   JSON.parse(await readFile(process.argv[2], "utf8")),
 );
-if (record.verificationMethod === "internal-email-plus-v1")
+if (
+  ["internal-email-plus-v1", "monetary-transaction"].includes(
+    record.verificationMethod,
+  )
+)
   throw new Error("The self-service method requires its own verified workflow");
-const pool = createDatabasePool({ connectionString: process.env.AMP_DATABASE_URL });
+const pool = createDatabasePool({
+  connectionString: process.env.AMP_DATABASE_URL,
+});
 const client = await pool.connect();
 try {
   await client.query("BEGIN");

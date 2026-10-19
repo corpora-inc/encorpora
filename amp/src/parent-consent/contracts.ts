@@ -57,7 +57,8 @@ export const consentPolicySchema = z
     review: z.strictObject({
       reference: text.max(500),
       expiresAt: z.iso.datetime(),
-      noDisclosureUnder312_2: z.literal(true),
+      noDisclosureUnder312_2: z.boolean(),
+      paymentNotificationsReviewed: z.boolean().optional(),
       providerContractsReviewed: z.literal(true),
       deploymentFlowsComplete: z.literal(true),
     }),
