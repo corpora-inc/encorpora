@@ -483,7 +483,7 @@ piecewise-functions|algebra-1|functions|Interpret piecewise and absolute-value f
 arithmetic-sequences|algebra-1|functions|Translate arithmetic sequences between recursive and explicit rules|related-patterns,linear-models|HSF
 geometric-sequences|algebra-1|functions|Translate geometric sequences between recursive and explicit rules|exponent-laws|HSF
 polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math
-factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic|HSA,SAT.advanced-math
+factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic,gcf-lcm|HSA,SAT.advanced-math
 quadratic-equations|algebra-1|algebra|Solve quadratic equations and check their real solutions|factor-quadratics,approximate-roots|HSA,SAT.advanced-math
 complete-square|algebra-1|algebra|Rewrite quadratics by completing the square|quadratic-equations|HSA,SAT.advanced-math
 quadratic-formula|algebra-1|algebra|Use the quadratic formula and interpret the discriminant|complete-square|HSA,SAT.advanced-math
@@ -1439,6 +1439,42 @@ for (const [skillId, facets] of [
     });
 }
 
+// Grade 4 angle measure, lines and symmetry, read from exact figures.
+for (const [skillId, facets] of [
+  [
+    "angle-measure",
+    [
+      ["turns", "Find an angle as a fraction of the 360° in a full turn."],
+      [
+        "protractor",
+        "Read whole-degree angles on a protractor, choosing the scale that starts at 0.",
+      ],
+      [
+        "additive",
+        "Find a whole angle or a missing part of angles that do not overlap.",
+      ],
+    ],
+  ],
+  [
+    "lines-symmetry",
+    [
+      [
+        "lines-angles",
+        "Name lines, rays and segments; classify angles and triangles by angle; tell parallel from perpendicular lines.",
+      ],
+      ["symmetry", "Identify and count lines of symmetry of polygons."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // K–1 shapes: named from exact drawn figures in any orientation and size.
 for (const [skillId, facets] of [
   [
@@ -1626,6 +1662,28 @@ for (const [id, description] of [
 ])
   signedDataSkill.facets.push({
     id: `signed-data-summaries.${id}`,
+    description,
+    status: "implemented",
+  });
+
+// Narrow integer-factor tasks do not assess every polynomial factorization method.
+const factoringSkill = skills.find((s) => s.id === "factor-quadratics")!;
+for (const [id, description] of [
+  [
+    "monomial-gcf",
+    "Extract the positive greatest common monomial factor from a bounded integer polynomial of degree one through three.",
+  ],
+  [
+    "monic-integer-factors",
+    "Factor bounded monic quadratics with nonzero constant terms into integer linear factors.",
+  ],
+  [
+    "nonmonic-integer-factors",
+    "Factor bounded nonmonic quadratics into primitive integer linear factors while retaining signed numerical content.",
+  ],
+])
+  factoringSkill.facets.push({
+    id: `factor-quadratics.${id}`,
     description,
     status: "implemented",
   });
@@ -2255,6 +2313,26 @@ for (const [skillId, suffix, description] of [
     "compare-distributions",
     "box-plot-comparison",
     "Compare medians and interquartile ranges of two box plots on one scale.",
+  ],
+  [
+    "scatterplots",
+    "association-patterns",
+    "Classify a scatter plot's association as positive linear, negative linear, nonlinear or none.",
+  ],
+  [
+    "scatterplots",
+    "trend-line-models",
+    "Predict with a trend line and interpret its slope in context.",
+  ],
+  [
+    "two-way-tables",
+    "complete-tables",
+    "Find missing counts in a two-way table from its row and column totals.",
+  ],
+  [
+    "two-way-tables",
+    "relative-frequency-association",
+    "Compare relative frequencies within rows to judge association.",
   ],
 ])
   skills

@@ -1,6 +1,8 @@
 import {
   sceneSchema,
+  type Angle,
   type AreaModel,
+  type Protractor,
   type Clock,
   type Element,
   type Fn,
@@ -8,8 +10,11 @@ import {
   type Graph,
   type LineSpec,
   type NumberLine,
+  type PolyArea,
+  type Term,
   type Point,
   type Scene,
+  type Table,
   type TenFrame,
 } from "./spec";
 import type { Action, Step } from "./timeline";
@@ -301,6 +306,12 @@ class GraphBuilder extends Builder<Graph> {
 export const graph = (spec: Omit<Graph, "type">) =>
   new GraphBuilder({ type: "graph", ...spec } as Graph);
 
+class TableBuilder extends Builder<Table> {}
+/** A table; with `sums`, the last column and row are totals, and derived
+ * cells (null in `rows`) are found from them. */
+export const table = (spec: Omit<Table, "type">) =>
+  new TableBuilder({ type: "table", ...spec } as Table);
+
 /** Place-value parts of a whole number: 345 → [300, 40, 5]. */
 export function placeValueParts(n: number) {
   const digits = String(Math.trunc(Math.abs(n))).split("");
@@ -331,6 +342,14 @@ export const areaModel = (
     down: Array.isArray(down) ? down : placeValueParts(down),
     ...options,
   } as AreaModel);
+
+/** polyArea([[1, 1], [3, 0]], [[1, 1], [2, 0]]) is (x + 3)(x + 2) as tiles;
+ * the region terms stay masked unless a lesson reveals them. */
+export const polyArea = (
+  across: Term[],
+  down: Term[],
+  options: Partial<Omit<PolyArea, "type" | "across" | "down">> = {},
+) => new Simple<PolyArea>({ type: "polyArea", across, down, ...options });
 
 class Simple<T extends Element> extends Builder<T> {}
 export const array = (
@@ -365,3 +384,18 @@ export const fractionBar = (
 ) => new Simple<FractionBar>({ type: "fractionBar", bars });
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
+
+/** A protractor on a vertex: one ray on its baseline, the other crossing
+ * the scales. */
+export const protractor = (
+  rays: [number, number],
+  labels?: [string, string, string],
+) =>
+  new Simple<Protractor>({
+    type: "protractor",
+    rays,
+    ...(labels ? { labels } : {}),
+  });
+/** Rays from one vertex with angle marks between chosen pairs. */
+export const angle = (spec: Omit<Angle, "type">) =>
+  new Simple<Angle>({ type: "angle", ...spec });

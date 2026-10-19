@@ -20,9 +20,14 @@ INFERENCE = frozenset({
     'representative-sample-choice', 'sample-proportion-estimate', 'sample-estimates-plot',
     'means-in-mads', 'double-box-compare', 'compare-distributions-choice',
 })
-DATA_DISPLAY = EARLY_DATA | LINE_PLOTS | DISTRIBUTIONS | INFERENCE
+BIVARIATE = frozenset({
+    'scatter-association-choice', 'trend-line-predict', 'trend-slope-meaning',
+    'two-way-missing', 'two-way-row-percent', 'two-way-association-choice',
+})
+DATA_DISPLAY = EARLY_DATA | LINE_PLOTS | DISTRIBUTIONS | INFERENCE | BIVARIATE
 DATA_DISPLAY_CHOICE = frozenset({'sort-shapes-most', 'statistical-question-choice', 'typical-value-choice',
-                                 'representative-sample-choice', 'compare-distributions-choice'})
+                                 'representative-sample-choice', 'compare-distributions-choice',
+                                 'scatter-association-choice', 'trend-slope-meaning', 'two-way-association-choice'})
 
 # The reviewer's own judgment: each chooses at random from the whole population.
 REPRESENTATIVE = {
@@ -372,6 +377,8 @@ def solve_data_display(public):
         return solve_distribution(public)
     if template in INFERENCE:
         return solve_inference(public)
+    if template in BIVARIATE:
+        return solve_bivariate(public)
     figure = public['figure']
     prompt = public['prompt']
     if template in LINE_PLOTS:
@@ -459,6 +466,27 @@ def review_data_display_fixtures():
         'prompt': 'Beans. How much greater is the interquartile range of the sunny bed than that of the shady bed?'}) == '10', 'box IQR fixture')
     require(solve_inference({'templateId': 'sample-proportion-estimate', 'prompt':
         'A random sample of 40 of the 1,200 fish in a lake includes 6 trout. About how many of all 1,200 fish are trout?'}) == '180', 'proportion fixture')
+    scene = lambda e: {'kind': 'scene', 'scene': {'v': 1, 'elements': [e]}}
+    t = {'type': 'table', 'title': 'Has a curfew', 'columns': ['Yes', 'No', 'Total'], 'sums': True, 'derived': [[0, 0]],
+         'rows': [{'label': 'Grade 7', 'cells': [None, None, 40]}, {'label': 'Grade 8', 'cells': [30, 20, 50]},
+                  {'label': 'Total', 'cells': [42, 48, 90]}]}
+    require(solve_bivariate({'templateId': 'two-way-missing', 'figure': scene(t),
+        'prompt': 'Curfews. How many seventh graders have a curfew?'}) == '12', 'two-way fixture')
+    bad = dict(t, rows=t['rows'][:2] + [{'label': 'Total', 'cells': [42, 48, 91]}])
+    try:
+        solve_bivariate({'templateId': 'two-way-missing', 'figure': scene(bad), 'prompt': 'Curfews. How many seventh graders have a curfew?'})
+        raise RuntimeError
+    except ValueError:
+        pass
+    except RuntimeError:
+        raise ValueError('An inconsistent table was accepted')
+    line = {'type': 'graph', 'x': [0, 10], 'y': [0, 30], 'axisNames': ['age (years)', 'value (thousand $)'],
+            'scatter': {'points': [[1, 26], [3, 21], [5, 18], [7, 12], [9, 5]], 'fit': {'m': -2, 'b': 26}},
+            'points': [{'x': 2, 'y': 22, 'open': True}, {'x': 8, 'y': 10, 'open': True}]}
+    require(solve_bivariate({'templateId': 'trend-line-predict', 'figure': scene(line),
+        'prompt': 'Cars, with a trend line through (2, 22) and (8, 10). Predict the value of a car that is 6 years old.'}) == '14', 'trend fixture')
+    require(_classify([[x, 2 * x + (x % 3) - 1] for x in range(10)]) == 'Positive linear association', 'linear fixture')
+    require(_classify([[x, (x - 5) ** 2] for x in range(11)]) == 'Nonlinear association', 'curve fixture')
     bars = {'kind': 'scaled-bar-graph', 'step': 10, 'max': 60, 'unit': 'cans',
             'categories': [{'label': 'Mon', 'value': 30}, {'label': 'Tue', 'value': 45},
                            {'label': 'Wed', 'value': 15}, {'label': 'Thu', 'value': 50}]}
@@ -475,3 +503,167 @@ def review_data_display_fixtures():
         except ValueError:
             continue
         raise ValueError('Unreadable chart was accepted')
+
+
+def _fit(points):
+    """Exact least squares: Pearson r squared (with its sign) and parabola R squared."""
+    n = len(points)
+    xs = [Fraction(x) for x, _ in points]
+    ys = [Fraction(y) for _, y in points]
+    mx, my = sum(xs) / n, sum(ys) / n
+    sxx = sum((x - mx) ** 2 for x in xs)
+    syy = sum((y - my) ** 2 for y in ys)
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    require(sxx > 0 and syy > 0, 'Degenerate scatter')
+    r2 = sxy * sxy / (sxx * syy)
+    # Parabola through least squares on centered x: solve the 3x3 normal equations exactly.
+    us = [x - mx for x in xs]
+    m = [[sum(u ** (i + j) for u in us) for j in range(3)] for i in range(3)]
+    v = [sum(u ** i * y for u, y in zip(us, ys)) for i in range(3)]
+    for c in range(3):  # Gauss-Jordan with exact rationals
+        p = next(r for r in range(c, 3) if m[r][c] != 0)
+        m[c], m[p], v[c], v[p] = m[p], m[c], v[p], v[c]
+        for r in range(3):
+            if r != c and m[r][c]:
+                k = m[r][c] / m[c][c]
+                m[r] = [a - k * b for a, b in zip(m[r], m[c])]
+                v[r] -= k * v[c]
+    coef = [v[i] / m[i][i] for i in range(3)]
+    sse = sum((y - (coef[0] + coef[1] * u + coef[2] * u * u)) ** 2 for u, y in zip(us, ys))
+    return (1 if sxy > 0 else -1), r2, 1 - sse / syy
+
+
+def _classify(points):
+    sign, r2, quad = _fit(points)
+    if r2 >= Fraction(7, 10) and quad - r2 < Fraction(1, 10):
+        return 'Positive linear association' if sign > 0 else 'Negative linear association'
+    if quad >= Fraction(8, 10) and r2 <= Fraction(4, 10):
+        return 'Nonlinear association'
+    if r2 <= Fraction(1, 10) and quad <= Fraction(1, 5):
+        return 'No association'
+    raise ValueError('Ambiguous scatter pattern')
+
+
+# The reviewer's reading of each context: x phrase per axis label, and the y rate wording.
+X_UNITS = {'hours studied': 'hour of study', 'age (years)': 'year of age', 'temperature (°F)': 'degree'}
+ROWS = {'Grade 7': 'seventh graders', 'Grade 8': 'eighth graders', 'Athlete': 'athletes',
+        'Non-athlete': 'non-athletes', 'Dog owner': 'dog owners', 'No dog': 'adults without a dog'}
+TRAITS = {'Has a curfew': ('have a curfew', 'do not have a curfew'),
+          'Eats breakfast daily': ('eat breakfast daily', 'do not eat breakfast daily'),
+          'Walks daily': ('walk daily', 'do not walk daily')}
+
+
+def _complete_table(t):
+    """Fill every blank of a summed table from its row and column totals."""
+    g = [list(r['cells']) for r in t['rows']]
+    known = lambda v: isinstance(v, int)
+    n, m = len(g), len(g[0])
+    for _ in range(n * m):
+        for i in range(n):
+            if sum(not known(v) for v in g[i]) == 1:
+                k = next(j for j in range(m) if not known(g[i][j]))
+                g[i][k] = g[i][-1] - sum(g[i][j] for j in range(m - 1) if j != k) if k < m - 1 else sum(g[i][:-1])
+        for j in range(m):
+            col = [g[i][j] for i in range(n)]
+            if sum(not known(v) for v in col) == 1:
+                k = next(i for i in range(n) if not known(col[i]))
+                g[k][j] = col[-1] - sum(col[i] for i in range(n - 1) if i != k) if k < n - 1 else sum(col[:-1])
+    require(all(known(v) and v >= 0 for row in g for v in row), 'Table cannot be completed')
+    for i in range(n):
+        require(sum(g[i][:-1]) == g[i][-1], 'Row does not add up')
+    for j in range(m):
+        require(sum(g[i][j] for i in range(n - 1)) == g[-1][j], 'Column does not add up')
+    return g
+
+
+def _element(public, kind):
+    f = public['figure']
+    require(f['kind'] == 'scene' and len(f['scene']['elements']) == 1, 'One-element scene required')
+    e = f['scene']['elements'][0]
+    require(e['type'] == kind, f'{kind} required')
+    return e
+
+
+def solve_bivariate(public):
+    template, prompt = public['templateId'], public['prompt']
+    if template.startswith('two-way'):
+        t = _element(public, 'table')
+        require(t['columns'] == ['Yes', 'No', 'Total'] and t.get('sums') and t['rows'][-1]['label'] == 'Total', 'Two-way table with totals required')
+        trait, negation = TRAITS[t['title']]
+        nouns = [ROWS[r['label']] for r in t['rows'][:-1]]
+        g = _complete_table(t)
+        question = prompt.split('. ')[-1]
+        if template == 'two-way-missing':
+            m = re.fullmatch(r'How many (.+?) (' + re.escape(negation) + '|' + re.escape(trait) + r')\?', question)
+            require(m is not None and m[1] in nouns, f'Unexpected table question {prompt}')
+            i, j = nouns.index(m[1]), 0 if m[2] == trait else 1
+            require(t.get('derived') == [[i, j]], 'The asked cell must be the marked one')
+            return str(g[i][j])
+        if template == 'two-way-row-percent':
+            m = re.fullmatch(r'What percent of the (.+?) ' + re.escape(trait) + r'\?', question)
+            require(m is not None and m[1] in nouns, f'Unexpected percent question {prompt}')
+            i = nouns.index(m[1])
+            pct = Fraction(100 * g[i][0], g[i][2])
+            require(pct.denominator == 1, 'Percent must be whole')
+            return str(pct.numerator)
+        require(template == 'two-way-association-choice' and question == f'Is there an association between the group and whether they {trait}?', 'Unexpected association prompt')
+        pct = [Fraction(100 * g[i][0], g[i][2]) for i in range(2)]
+        gap = abs(pct[0] - pct[1])
+        require(gap >= 20 or gap <= 5, 'Ambiguous association')
+        associated = gap >= 20
+        valid = []
+        for o in public['response']['options']:
+            label = o['label']
+            if (m := re.fullmatch(r'Yes: (\d+)% of (.+?) ' + re.escape(trait) + r', but only (\d+)% of (.+?)\.', label)):
+                truth = associated and pct[nouns.index(m[2])] == int(m[1]) and pct[nouns.index(m[4])] == int(m[3]) and m[2] != m[4]
+            elif (m := re.fullmatch(r'No: (\d+)% of (.+?) and (\d+)% of (.+?) ' + re.escape(trait) + r', about the same\.', label)):
+                truth = (not associated) and pct[nouns.index(m[2])] == int(m[1]) and pct[nouns.index(m[4])] == int(m[3])
+            elif re.fullmatch(r'(No: about as many|Yes: more) .+ \(\d+\) (as|than) .+ \(\d+\) ' + re.escape(trait) + r'\.', label):
+                truth = False  # compares counts from groups of different sizes
+            else:
+                raise ValueError(f'Unreadable association option {label}')
+            if truth:
+                valid.append(o['id'])
+        require(len(valid) == 1, 'Exactly one supported conclusion required')
+        return valid[0]
+    g = _element(public, 'graph')
+    points = g['scatter']['points']
+    marks = [[p['x'], p['y']] for p in g.get('points', [])]
+    for px, py in points + marks:
+        require(g['x'][0] <= px <= g['x'][1] and g['y'][0] <= py <= g['y'][1], 'Point off the grid')
+    if template == 'scatter-association-choice':
+        require(prompt.endswith('Which describes the association?') and 'fit' not in g['scatter'] and not marks, 'Unexpected association prompt')
+        truth = _classify(points)
+        valid = [o['id'] for o in public['response']['options'] if o['label'] == truth]
+        require(len(valid) == 1, 'One matching description required')
+        return valid[0]
+    require(len(marks) == 2 and 'fit' in g['scatter'], 'A trend line with two marked points required')
+    (x1, y1), (x2, y2) = marks
+    fit = g['scatter']['fit']
+    require(all(fit['m'] * x + fit['b'] == y for x, y in marks), 'Marked points must lie on the drawn line')
+    m = re.search(r'with a trend line through \((\d+), (\d+)\) and \((\d+), (\d+)\)\.', prompt)
+    require(m is not None and [int(v) for v in m.groups()] == [x1, y1, x2, y2], 'Stated line contradicts the drawn line')
+    slope = Fraction(y2 - y1, x2 - x1)
+    if template == 'trend-line-predict':
+        m = re.search(r'(?:who studies (\d+) hours?|car that is (\d+) years? old|sell on a (\d+)°F day)\.$', prompt)
+        require(m is not None, f'Unexpected prediction {prompt}')
+        x = int(next(g for g in m.groups() if g is not None))
+        value = y1 + slope * (x - x1)
+        require(value.denominator == 1, 'Prediction must be whole')
+        return str(value.numerator)
+    require(template == 'trend-slope-meaning' and prompt.endswith('What does the slope of the trend line mean?'), 'Unexpected slope prompt')
+    unit = X_UNITS[g['axisNames'][0]]
+    valid = []
+    for o in public['response']['options']:
+        label = o['label']
+        rate = re.fullmatch(r'Each additional (.+?) goes with (?:about (\d+) (more|fewer) [a-z ]+|a value about (\d+) thousand dollars (higher|lower))\.', label)
+        if rate and rate[1] == unit:
+            k = int(rate[2] or rate[4])
+            up = (rate[3] or rate[5]) in ('more', 'higher')
+            truth = k == abs(slope) and up == (slope > 0)
+        else:
+            truth = False  # a single point, the intercept, or the quantities swapped
+        if truth:
+            valid.append(o['id'])
+    require(len(valid) == 1, 'Exactly one slope interpretation required')
+    return valid[0]
