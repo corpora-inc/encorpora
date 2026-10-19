@@ -262,7 +262,11 @@ class GraphBuilder extends Builder<Graph> {
   }
   line(
     line: LineSpec,
-    options: { dash?: "solid" | "dash" | "dot"; label?: string } = {},
+    options: {
+      dash?: "solid" | "dash" | "dot";
+      label?: string;
+      color?: "accent" | "warm" | "gold" | "ink";
+    } = {},
   ) {
     return this.push("lines", { line, ...options });
   }

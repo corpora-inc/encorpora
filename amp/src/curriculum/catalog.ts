@@ -1860,6 +1860,46 @@ for (const [skillId, suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "systems-modeling",
+    "two-unknowns",
+    "Write and solve a count equation and a value equation for two unknown amounts.",
+  ],
+  [
+    "systems-modeling",
+    "feasible-combination",
+    "Choose the combination that meets every constraint of a situation, with the feasible region shaded.",
+  ],
+  [
+    "inequality-regions",
+    "read-region",
+    "Read the inequality or system shown by a shaded half-plane or overlap, with solid or dashed boundaries.",
+  ],
+  [
+    "inequality-regions",
+    "test-point",
+    "Decide which point solves a two-variable inequality, including points on the boundary.",
+  ],
+  [
+    "symbolic-linear-constraints",
+    "letter-coefficients",
+    "Solve linear equations and inequalities with a letter coefficient under its stated condition.",
+  ],
+  [
+    "symbolic-linear-constraints",
+    "exceptional-cases",
+    "Find the parameter value that gives a linear equation or system no solution or infinitely many.",
+  ],
+  [
+    "equation-reasoning",
+    "justify-steps",
+    "Name the property that justifies each step of solving a linear equation, and find a broken step.",
+  ],
+  [
+    "elimination-proof",
+    "sum-keeps-solutions",
+    "Add equations of a system and recognize the equivalent system and why it keeps every solution.",
+  ],
+  [
     "coordinate-polygons",
     "aligned-side-lengths",
     "Find the length of a horizontal or vertical side of a polygon from the coordinates of its endpoints, including sides that cross an axis.",

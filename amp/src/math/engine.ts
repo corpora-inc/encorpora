@@ -32,6 +32,10 @@ import {
   generateDistributionProblem,
 } from "./distribution-practice";
 import {
+  twoVariableTemplates,
+  generateTwoVariableProblem,
+} from "./two-variable-practice";
+import {
   linearFunctionTemplates,
   generateLinearFunctionProblem,
 } from "./linear-function-practice";
@@ -331,6 +335,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
+  ...twoVariableTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -499,6 +504,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...angleTemplates,
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
+    ...twoVariableTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
@@ -567,6 +573,8 @@ function generateRawProblem(
     return generateShapeProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (twoVariableTemplates.some((t) => t.id === templateId))
+    return generateTwoVariableProblem(templateId, seed);
   if (linearFunctionTemplates.some((t) => t.id === templateId))
     return generateLinearFunctionProblem(templateId, seed);
   if (angleTemplates.some((t) => t.id === templateId))
