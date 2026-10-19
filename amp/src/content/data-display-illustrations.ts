@@ -48,6 +48,33 @@ export const dataIllustrations = {
     max: 60,
     unit: "cans",
   },
+  "data-line-plot-inches": {
+    kind: "line-plot",
+    denominator: 1,
+    start: 3,
+    end: 9,
+    values: [4, 5, 5, 6, 6, 6, 8],
+    mark: "x",
+    unit: "inches",
+  },
+  "data-line-plot-quarters": {
+    kind: "line-plot",
+    denominator: 4,
+    start: 4,
+    end: 12,
+    values: [5, 6, 6, 9, 9, 9, 11],
+    mark: "x",
+    unit: "inches",
+  },
+  "data-line-plot-share": {
+    kind: "line-plot",
+    denominator: 4,
+    start: 0,
+    end: 8,
+    values: [1, 2, 2, 3, 7],
+    mark: "x",
+    unit: "liters",
+  },
 } as const satisfies Record<string, DataDisplayFigure>;
 export type DataIllustration = keyof typeof dataIllustrations;
 export const isDataIllustration = (kind: string): kind is DataIllustration =>

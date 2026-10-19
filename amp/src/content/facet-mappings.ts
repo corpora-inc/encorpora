@@ -1,3 +1,4 @@
+import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
@@ -15,6 +16,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...linePlotFacetMappings,
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
   ...comparisonFacetMappings,

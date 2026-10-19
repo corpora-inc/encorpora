@@ -10,6 +10,7 @@ export default defineConfig({
       "@tanstack/react-router",
       "@tanstack/react-query",
       "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
       "@radix-ui/react-toast",
       "zod",
       "zustand",
