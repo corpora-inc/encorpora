@@ -63,7 +63,7 @@ export const attributeFigureSchemas = [
     ),
   z
     .object({
-      kind: z.literal("balance"),
+      kind: z.literal("mass-balance"),
       /** The beam drops on the heavier side. */
       tilt: z.enum(["left", "right", "level"]),
       left: z

@@ -1,12 +1,17 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
 import { AttributeFigure } from "./AttributeFigure";
+import { TimeMoneyFigure } from "./TimeMoneyFigure";
+import { DecimalFigure } from "./DecimalFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
+import { FactsFigure } from "./FactsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
+import { GeometryFigure } from "./GeometryFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
@@ -16,10 +21,17 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <MeasurementFigure figure={figure} />;
     case "length-rods":
     case "unit-measure":
-    case "balance":
+    case "mass-balance":
     case "pour":
     case "liquid-scale":
       return <AttributeFigure figure={figure} />;
+    case "analog-clocks":
+    case "money-sets":
+      return <TimeMoneyFigure figure={figure} />;
+    case "decimal-grid":
+    case "decimal-line":
+    case "place-value-chart":
+      return <DecimalFigure figure={figure} />;
     case "partitioned-shapes":
     case "area-partition":
     case "fraction-bars":
@@ -28,7 +40,14 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "picture-graph":
     case "scaled-bar-graph":
     case "line-plot":
+    case "histogram":
+    case "box-plot":
       return <DataDisplayFigure figure={figure} />;
+    case "cube-prism":
+    case "box-prism":
+    case "composite-prism":
+    case "quadrant-grid":
+      return <GeometryFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
@@ -38,6 +57,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "ten-frame-pair":
+      return <FactsFigure figure={figure} />;
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
@@ -46,6 +67,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "clock":
     case "number-line":
       return <GraphicalFigure figure={figure} />;
+    case "balance-scale":
+    case "inequality-lines":
+      return <EquationFigure figure={figure} />;
     case "collection":
       return (
         <svg

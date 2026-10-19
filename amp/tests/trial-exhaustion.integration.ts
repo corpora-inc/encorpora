@@ -129,9 +129,25 @@ test(
         const selected = templates.find(
           (t) => t.id === batch.json().problems[0].templateId,
         )!;
+        // Each strand aims at its own estimate, so a strand with a (guessed)
+        // success may sit above the overall level. Whatever strand is chosen,
+        // the learner gets that strand's easiest material, never an advanced
+        // fallback, and never more than a grade above the catalog's start.
+        const strandOf = (t: (typeof templates)[number]) =>
+          nodes.get(t.skillId)?.strand ?? t.skillId;
+        const strandFloor = Math.min(
+          ...templates
+            .filter((t) => strandOf(t) === strandOf(selected))
+            .map((t) => templateGrade(t, nodes)),
+        );
+        assert.equal(
+          templateGrade(selected, nodes),
+          strandFloor,
+          `a below-catalog learner gets introductory material, not an advanced fallback (${selected.id})`,
+        );
         assert.ok(
-          templateGrade(selected, nodes) === earliest,
-          "a below-catalog learner gets introductory material, not an advanced fallback",
+          strandFloor <= earliest + 1,
+          `${selected.id} is within a grade of the catalog's earliest material`,
         );
         const saved = await app.inject({
           method: "POST",

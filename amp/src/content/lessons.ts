@@ -1,10 +1,17 @@
+import { equationLessons } from "./equation-lessons";
+import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
+import { decimalLessons } from "./decimal-lessons";
+import { timeMoneyLessons } from "./time-money-lessons";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { addSubtractLessons } from "./add-subtract-lessons";
+import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -35,6 +42,32 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "clock-hour-half"
+      | "clock-five-minutes"
+      | "coin-values"
+      | "coin-count-on"
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
+      | "decimal-tenths-hundredths"
+      | "decimal-compare-chart"
+      | "decimal-rounding-line"
+      | "decimal-aligned-sum"
+      | "column-addition"
+      | "base-ten-trade"
+      | "column-subtraction-zero"
+      | "column-multidigit"
+      | "volume-layers"
+      | "prism-composite"
+      | "ordered-pair-path"
+      | "five-frame-facts"
+      | "count-on-hops"
+      | "make-ten-frames"
+      | "ten-hundred-digits"
       | "equal-shares"
       | "same-share-shapes"
       | "equal-area-regions"
@@ -547,12 +580,19 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...earlyDataLessons,
   ...linePlotLessons,
+  ...distributionLessons,
   ...radicalLessons,
   ...partWholeLessons,
+  ...decimalLessons,
+  ...timeMoneyLessons,
   ...comparisonLessons,
+  ...addSubtractLessons,
+  ...factsLessons,
   ...combinatoricsLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
+  ...volumeCoordinateLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

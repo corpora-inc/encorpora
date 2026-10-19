@@ -1,6 +1,10 @@
+import { equationWorksheet } from "./equation-worksheets";
+import { equationTemplates } from "../math/equation-practice";
 import { readFileSync } from "node:fs";
 import { distinctWorksheet } from "./distinct-worksheet";
 import { partWholeTemplates } from "../math/part-whole-practice";
+import { decimalTemplates } from "../math/decimal-practice";
+import { timeMoneyTemplates } from "../math/time-money-practice";
 import { combinatoricsWorksheet } from "./combinatorics-worksheets";
 import { combinatoricsTemplates } from "../math/combinatorics-practice";
 import { radicalWorksheet } from "./radical-worksheets";
@@ -31,7 +35,11 @@ import { PrintMathText, printMathStyles } from "./PrintMathText";
 import { printMathCss } from "./print-fonts";
 export type PublicationKind = "lesson" | "workbook" | "solutions";
 /** Families whose printed sheets are twelve distinct ordinary problems. */
-const distinctWorksheetTemplates = [...partWholeTemplates];
+const distinctWorksheetTemplates = [
+  ...partWholeTemplates,
+  ...decimalTemplates,
+  ...timeMoneyTemplates,
+];
 /** Print pages use the light color roles: figures paint with role tokens. */
 let tokens: string | undefined;
 function printTokens() {
@@ -47,7 +55,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    distinctWorksheetTemplates.some((t) => t.id === id)
+    equationTemplates.some((t) => t.id === id)
+      ? equationWorksheet(id, lesson.id, edition)
+      : distinctWorksheetTemplates.some((t) => t.id === id)
       ? distinctWorksheet(id, lesson.id, edition)
       : combinatoricsTemplates.some((t) => t.id === id)
         ? combinatoricsWorksheet(id, lesson.id, edition)

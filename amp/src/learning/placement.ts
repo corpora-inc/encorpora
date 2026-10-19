@@ -20,6 +20,8 @@ export const scaffoldTemplateIds: ReadonlySet<string> = new Set([
   "improper-fractional-part",
   // "Trade ten ones for one ten. How many tens will there be?"
   "exchange-base-ten",
+  // "How many cubes are in the bottom layer of this prism?"
+  "cube-layer-count",
 ]);
 
 export const templateRole = (templateId: string): TemplateRole =>
@@ -42,20 +44,20 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // K (and younger): count, join, count, take away.
   [
     ["count-objects"],
-    ["join-within-10"],
+    ["join-within-10", "facts-to-five"],
     ["teen-frame-compose", "greater-numeral"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
   ],
   // Grade 1: counting, facts within 10, a missing addend, then tens.
   [
     ["count-objects", "teen-frame-compose"],
-    ["join-within-10", "add-within-20"],
+    ["join-within-10", "add-within-20", "count-on-back"],
     ["unknown-addend-story", "balanced-addition"],
     ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
   ],
   // Grade 2: facts within 20, place value and comparison, a missing addend.
   [
-    ["add-within-20"],
+    ["add-within-20", "make-ten-fact", "add-two-digit-regroup"],
     [
       "tens-ones-model",
       "continue-count-to-120",
@@ -63,18 +65,23 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-three-digit",
     ],
     ["unknown-addend-story", "balanced-addition"],
-    ["subtract-within-20"],
+    ["subtract-within-20", "related-subtraction", "subtract-two-digit-regroup"],
   ],
   // Grade 3: regrouping, three-digit place value, a story, a bar chart.
   [
-    ["add-with-regrouping"],
+    [
+      "add-with-regrouping",
+      "add-two-digit-regroup",
+      "add-three-digit",
+      "mental-ten-hundred",
+    ],
     ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
   // Grade 4: multiplication facts, fractions of a whole, area, division.
   [
-    ["multiply-facts"],
+    ["multiply-facts", "add-multidigit"],
     [
       "fraction-model",
       "fraction-unit-count",
@@ -84,10 +91,10 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["rectangle-area"],
     ["divide-facts"],
   ],
-  // Grade 5: multiplicative comparison, fractions, factors or place value,
-  // measurement.
+  // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
+  // place value, measurement.
   [
-    ["comparison-amount", "full-kits"],
+    ["compare-decimals-hundredths", "decimal-grid-read"],
     [
       "compare-fractions",
       "compare-unlike-fractions",
@@ -99,13 +106,22 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 6: decimals, the order of operations, fractions, the mean.
   [
-    ["decimal-addition", "decimal-multiplication"],
-    ["operation-order", "integer-power"],
+    [
+      "decimal-addition",
+      "decimal-multiplication",
+      "compare-decimals-thousandths",
+    ],
+    ["operation-order", "integer-power", "one-step-equation"],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
-    ["mean-data"],
+    ["mean-data", "mean-missing-value"],
   ],
   // Grade 7: powers, unit rates, the mean, distance on a number line.
-  [["integer-power"], ["unit-price"], ["mean-data"], ["number-line-distance"]],
+  [
+    ["integer-power", "two-step-equation"],
+    ["unit-price"],
+    ["mean-data", "mean-missing-value"],
+    ["number-line-distance"],
+  ],
   // Grade 8: signed numbers, unit rates, probability and circles.
   [
     ["integer-addition"],

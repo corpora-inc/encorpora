@@ -181,7 +181,7 @@ function compareWeights(r: Random): Draft {
     prompt: `Which is ${ask}?`,
     hint: "A balance goes down on the heavier side. Look at which pan is lower, not which object is bigger.",
     figure: {
-      kind: "balance",
+      kind: "mass-balance",
       tilt,
       left: { shape: nameA, size: sizeA!, label: "A" },
       right: { shape: nameB, size: sizeB!, label: "B" },
@@ -407,7 +407,7 @@ function balanceMass(r: Random): Draft {
     prompt: `The balance is level. What is the mass of the ${shape}, in grams?`,
     hint: "A level balance means both sides have the same mass. Add the masses on the other side.",
     figure: {
-      kind: "balance",
+      kind: "mass-balance",
       tilt: "level",
       left: { shape, size: r(1, 3) },
       right: { grams },

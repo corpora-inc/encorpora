@@ -75,6 +75,39 @@ export const dataIllustrations = {
     mark: "x",
     unit: "liters",
   },
+  "data-dot-plot-goals": {
+    kind: "line-plot",
+    denominator: 1,
+    start: 0,
+    end: 8,
+    values: [1, 2, 2, 3, 7],
+    mark: "dot",
+    unit: "goals",
+  },
+  "data-histogram-reading": {
+    kind: "histogram",
+    start: 0,
+    width: 10,
+    counts: [2, 5, 8, 6, 3],
+    unit: "minutes",
+  },
+  "data-box-plot-scores": {
+    kind: "box-plot",
+    start: 40,
+    end: 100,
+    step: 5,
+    summary: [50, 65, 75, 85, 95],
+    unit: "points",
+  },
+  "data-dot-plot-outlier": {
+    kind: "line-plot",
+    denominator: 1,
+    start: 0,
+    end: 12,
+    values: [1, 2, 2, 3, 3, 3, 4, 12],
+    mark: "dot",
+    unit: "books",
+  },
 } as const satisfies Record<string, DataDisplayFigure>;
 export type DataIllustration = keyof typeof dataIllustrations;
 export const isDataIllustration = (kind: string): kind is DataIllustration =>

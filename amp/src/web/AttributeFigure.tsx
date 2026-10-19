@@ -187,7 +187,7 @@ export function UnitMeasureFigure({ figure }: { figure: Units }) {
   );
 }
 
-type Balance = Extract<Data, { kind: "balance" }>;
+type Balance = Extract<Data, { kind: "mass-balance" }>;
 type Item = Extract<Balance["left"], { shape: string }>;
 function Thing({ item, cx, base }: { item: Item; cx: number; base: number }) {
   const s = 18 + item.size * 9;
@@ -495,7 +495,7 @@ export function AttributeFigure({ figure }: { figure: Data }) {
   if (figure.kind === "length-rods") return <RodsFigure figure={figure} />;
   if (figure.kind === "unit-measure")
     return <UnitMeasureFigure figure={figure} />;
-  if (figure.kind === "balance") {
+  if (figure.kind === "mass-balance") {
     const description = describeBalance(figure);
     return (
       <svg
