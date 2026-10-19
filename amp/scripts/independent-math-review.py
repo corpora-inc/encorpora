@@ -198,6 +198,19 @@ def solve(public):
         return figure['count']
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
+        # The scene: a 0–20 number line marked at the greater addend, with
+        # jumps from it that total the other addend; the sum stays unknown.
+        require(figure['kind'] == 'scene', 'Number-line scene required')
+        (line,) = figure['scene']['elements']
+        require(line['type'] == 'numberLine' and line['min'] == 0 and line['max'] == 20, 'A 0 to 20 number line')
+        require([m['at'] for m in line['marks']] == [max(numbers)], 'The greater addend is marked')
+        position = max(numbers)
+        for hop in line.get('hops', []):
+            require(hop['from'] == position, 'Jumps continue from the last landing')
+            position += hop['by']
+        require(position == sum(numbers), 'Jumps total the other addend')
+        hops = line.get('hops', [])
+        require(not hops or hops[-1].get('landing', 'derived') != 'shown', 'The sum stays unknown')
         return sum(numbers)
     if template == 'subtract-within-20':
         a, b = numbers

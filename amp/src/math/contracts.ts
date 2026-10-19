@@ -26,6 +26,7 @@ import {
   type GeometryFigure,
 } from "./geometry-figures.js";
 import { sceneSchema, type Scene } from "./scene/spec.js";
+import { stepsSchema, type Step } from "./scene/timeline.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
 export type FunctionDisplayFigure = {
@@ -179,9 +180,13 @@ export interface GeneratedProblem {
   /** One teaching step for this instance, written by the generator from its
    * own givens: it names the problem's quantities and the first move of the
    * authored method, and never states the answer. Gated by
-   * tests/instance-hints.test.ts. A figure cue (an element of this problem's
-   * figure to highlight) will travel beside it as its own optional field. */
+   * tests/instance-hints.test.ts. Its figure cue (elements of this problem's
+   * scene to highlight) travels beside it as `hintCue`. */
   hint: string;
+  /** The hint's figure cue: timeline steps over this problem's own scene
+   * (`public.figure.scene`), e.g. highlight `area.region.0.0`. Private, served
+   * with the hint; it targets elements, never states the answer. */
+  hintCue?: Step[];
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
 }
@@ -587,6 +592,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     answer: z.string().min(1).max(100),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
+    hintCue: stepsSchema.optional(),
     choiceFeedback: z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),

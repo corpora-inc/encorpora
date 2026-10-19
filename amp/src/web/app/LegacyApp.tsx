@@ -5,6 +5,7 @@ import {
   meOptions,
   meKey,
 } from "../lib/query";
+import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import {
   useFamilyCache,
@@ -311,6 +312,10 @@ function LegacyScreen() {
   const [response, setResponse] = useState(""),
     [outcome, setOutcome] = useState<Outcome | null>(null),
     [hint, setHint] = useState(""),
+    [hintCue, setHintCue] = useState<{
+      problemId: string;
+      steps: Step[];
+    } | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
     [progress, setProgress] = useState<
@@ -1405,6 +1410,7 @@ function LegacyScreen() {
             setResponse={setResponse}
             outcome={outcome}
             hint={hint}
+            hintCue={hintCue}
             busy={busy}
             pending={!!pending}
             submit={() => void action(submit)}
@@ -1419,11 +1425,14 @@ function LegacyScreen() {
             }
             requestHint={() =>
               void action(async () => {
-                const data = await api<{ hint: string }>(
+                const data = await api<{ hint: string; cue?: Step[] }>(
                   `/learners/${learner.id}/hints`,
                   { problemId: problem.id },
                 );
                 setHint(data.hint);
+                setHintCue(
+                  data.cue ? { problemId: problem.id, steps: data.cue } : null,
+                );
               })
             }
           />

@@ -115,6 +115,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
+import { makeTenHops } from "./scene/explanations";
 import { polish } from "./polish";
 import type {
   GeneratedProblem,
@@ -553,6 +554,8 @@ function generateRawProblem(
       answer = `${a + b}`;
       hint = addWithinTwentyHint(a, b);
       explanation = addWithinTwenty(a, b);
+      // Hint and lesson walk the learner's own jumps (docs/figures.md).
+      figure = { kind: "scene", scene: makeTenHops(a, b) };
       break;
     }
     case "subtract-within-20": {
