@@ -104,7 +104,9 @@ function Composite() {
       <text x={tall.x + 14} y={tall.y - 10} style={text}>
         3 × 2 × 5 = 30
       </text>
-      <text x={short.x - 30} y={short.y + 30} textAnchor="middle" style={text}>
+      {/* Baseline 8px inside the 250 view box: at +30 it sat on the bottom
+          edge, so the text's descent crossed it (caught on CI's fonts). */}
+      <text x={short.x - 30} y={short.y + 22} textAnchor="middle" style={text}>
         4 × 2 × 2 = 16
       </text>
     </svg>
