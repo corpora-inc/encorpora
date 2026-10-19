@@ -3,6 +3,7 @@ import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -33,6 +34,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "five-frame-facts"
+      | "count-on-hops"
+      | "make-ten-frames"
+      | "ten-hundred-digits"
       | "comparison-pairing"
       | "comparison-number-path"
       | "comparison-place-chart"
@@ -542,6 +547,7 @@ export const lessons: readonly Lesson[] = [
   ...earlyDataLessons,
   ...radicalLessons,
   ...comparisonLessons,
+  ...factsLessons,
   ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
