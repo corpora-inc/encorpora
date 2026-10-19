@@ -1,4 +1,5 @@
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
+import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
@@ -22,6 +23,7 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
+  ...linePlotPrinciples,
   ...radicalPrinciples,
   ...comparisonPrinciples,
   ...combinatoricsPrinciples,

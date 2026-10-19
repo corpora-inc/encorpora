@@ -85,7 +85,7 @@ async function fits(page: Page, label: string, focus?: string) {
   }
 }
 const signedIn = (page: Page) =>
-  page.locator(".account-menu summary").waitFor();
+  page.getByRole("button", { name: "Family menu" }).waitFor();
 
 try {
   const context = await browser.newContext({
@@ -122,8 +122,8 @@ try {
   await signedIn(page);
 
   // Sign out, then back in; a wrong password is reported in place.
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("menuitem", { name: "Sign out" }).click();
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByLabel("Email").fill(email);
@@ -136,8 +136,8 @@ try {
   await signedIn(page);
 
   // Forgotten password: the emailed link sets a new one.
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("menuitem", { name: "Sign out" }).click();
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Forgot password?" }).click();
@@ -260,9 +260,9 @@ try {
     .waitFor();
   await fits(page, "password-changed");
   assert.equal((await siblingRefresh).status(), 200);
-  await sibling.locator(".account-menu summary").click();
+  await sibling.getByRole("button", { name: "Family menu" }).click();
   await sibling
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await sibling
     .getByRole("button", { name: "Add learner", exact: false })
@@ -283,8 +283,8 @@ try {
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
   await page.getByText("Maya added.", { exact: true }).waitFor();
   await page.getByRole("button", { name: "Back", exact: true }).click();
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("menuitem", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);

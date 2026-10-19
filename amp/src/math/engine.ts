@@ -1,4 +1,8 @@
 import {
+  linePlotTemplates,
+  generateLinePlotProblem,
+} from "./line-plot-practice";
+import {
   earlyDataTemplates,
   generateEarlyDataProblem,
 } from "./early-data-practice";
@@ -202,6 +206,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 
 export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
+  ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
   ...descriptiveStatisticsTemplates,
@@ -335,6 +340,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...volumeCoordinateTemplates,
+    ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
     ...radicalTemplates,
@@ -370,6 +376,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (volumeCoordinateTemplates.some((t) => t.id === templateId))
     return generateVolumeCoordinateProblem(templateId, seed);
+  if (linePlotTemplates.some((t) => t.id === templateId))
+    return generateLinePlotProblem(templateId, seed);
   if (earlyDataTemplates.some((t) => t.id === templateId))
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))

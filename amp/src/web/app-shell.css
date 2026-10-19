@@ -248,8 +248,7 @@
 .app-shell .account {
   align-items: center;
 }
-.app-shell .account .premium-select,
-.app-shell .account-menu summary {
+.app-shell .account .premium-select {
   box-sizing: border-box;
   height: 44px;
   min-height: 44px;

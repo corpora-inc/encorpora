@@ -1,4 +1,5 @@
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
+import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
 import { radicalMethods } from "./radical-lessons";
@@ -25,6 +26,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...polynomialMethods,
   ...earlyDataMethods,
+  ...linePlotMethods,
   ...radicalMethods,
   ...comparisonMethods,
   ...combinatoricsMethods,

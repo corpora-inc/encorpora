@@ -4,18 +4,21 @@ import type { SemanticFigure } from "../../math/contracts";
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
-type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
-type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
+type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
+type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 export type AnimationModel =
+  | { kind: "prism-layers"; figure: CubePrism }
+  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
-  | { kind: "prism-layers"; figure: CubePrism }
-  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
-  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
+  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
+  | { kind: "line-plot-stack"; figure: LinePlot }
+  | { kind: "line-plot-share"; figure: LinePlot; share: number };
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -24,6 +27,22 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    (lesson.templateId === "unit-cube-volume" ||
+      lesson.templateId === "cube-layer-count") &&
+    f?.kind === "cube-prism" &&
+    integer(f.length, 1, 6) &&
+    integer(f.width, 1, 6) &&
+    integer(f.height, 2, 6)
+  )
+    return { kind: "prism-layers", figure: f };
+  if (
+    lesson.templateId === "first-quadrant-coordinates" &&
+    f?.kind === "quadrant-grid" &&
+    integer(f.size, 4, 10) &&
+    f.points.length === 1
+  )
+    return { kind: "quadrant-walk", figure: f };
   if (
     lesson.templateId === "compare-groups" &&
     f?.kind === "counter-rows" &&
@@ -45,22 +64,6 @@ export function animationModel(
   )
     return { kind: "fraction", figure: f };
   if (
-    (lesson.templateId === "unit-cube-volume" ||
-      lesson.templateId === "cube-layer-count") &&
-    f?.kind === "cube-prism" &&
-    integer(f.length, 1, 6) &&
-    integer(f.width, 1, 6) &&
-    integer(f.height, 2, 6)
-  )
-    return { kind: "prism-layers", figure: f };
-  if (
-    lesson.templateId === "first-quadrant-coordinates" &&
-    f?.kind === "quadrant-grid" &&
-    integer(f.size, 4, 10) &&
-    f.points.length === 1
-  )
-    return { kind: "quadrant-walk", figure: f };
-  if (
     lesson.templateId === "split-array-part" &&
     f?.kind === "unit-array" &&
     integer(f.rows, 2, 12) &&
@@ -69,6 +72,27 @@ export function animationModel(
     integer(f.splitAfterRow, 1, f.rows - 1)
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
+  if (
+    (lesson.templateId === "line-plot-whole" ||
+      lesson.templateId === "fraction-line-plot") &&
+    f?.kind === "line-plot" &&
+    validPlot(f)
+  )
+    return { kind: "line-plot-stack", figure: f };
+  if (
+    lesson.templateId === "fraction-plot-equal-share" &&
+    f?.kind === "line-plot" &&
+    validPlot(f)
+  ) {
+    const total = f.values.reduce((a, b) => a + b, 0);
+    // The shared amount must land on a tick, and all marks must fit one stack.
+    if (total % f.values.length === 0 && f.values.length <= 8)
+      return {
+        kind: "line-plot-share",
+        figure: f,
+        share: total / f.values.length,
+      };
+  }
   if (
     lesson.templateId === "exchange-base-ten" &&
     f?.kind === "base-ten" &&
@@ -83,6 +107,25 @@ export function animationModel(
   }
   return null;
 }
+function validPlot(f: LinePlot) {
+  return (
+    integer(f.start, 0, 400) &&
+    integer(f.end, f.start + 1, f.start + 12) &&
+    f.values.length >= 3 &&
+    f.values.length <= 24 &&
+    f.values.every((v) => integer(v, f.start, f.end))
+  );
+}
+const plotted = (v: number, d: number) => {
+  const whole = Math.floor(v / d),
+    rest = v % d;
+  if (!rest) return `${whole}`;
+  let a = rest,
+    b = d;
+  while (b) [a, b] = [b, a % b];
+  const frac = `\\tfrac{${rest / a}}{${d / a}}`;
+  return whole ? `${whole}${frac}` : frac;
+};
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 export function animationFrames(model: AnimationModel) {
@@ -124,6 +167,55 @@ export function animationFrames(model: AnimationModel) {
         title: "Then up",
         text: `Go ${y} up to reach the point: the second coordinate.`,
         math: `$(${x}, ${y})$`,
+      },
+    ];
+  }
+  if (model.kind === "line-plot-stack") {
+    const { values, denominator: d } = model.figure;
+    const half = Math.ceil(values.length / 2);
+    const counts = new Map<number, number>();
+    for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1);
+    const n = Math.max(...counts.values());
+    const tops = [...counts]
+      .filter(([, c]) => c === n)
+      .map(([v]) => v)
+      .sort((a, b) => a - b);
+    return [
+      {
+        title: "Draw the scale",
+        text: `Mark equal spaces of ${d === 1 ? "one unit" : `1/${d} unit`} along the number line, wide enough for every measurement.`,
+        math: `${values.length}\\text{ measurements}`,
+      },
+      {
+        title: "One mark per measurement",
+        text: `Place an × above each length. A repeated length stacks on top of the one below.`,
+        math: `${half}\\text{ of }${values.length}\\text{ placed}`,
+      },
+      {
+        title: "Read the stacks",
+        text: `Every measurement is shown once. The tallest ${tops.length > 1 ? "stacks show the most common lengths" : "stack is the most common length"}.`,
+        math: `${n}\\text{ at }${tops.map((v) => plotted(v, d)).join("\\text{ and }")}`,
+      },
+    ].map((f) => ({ ...f, math: `$${f.math}$` }));
+  }
+  if (model.kind === "line-plot-share") {
+    const { values, denominator: d } = model.figure;
+    const total = values.reduce((a, b) => a + b, 0);
+    return [
+      {
+        title: "Read every amount",
+        text: `${values.length} beakers, each × one beaker, measured in ${d === 2 ? "halves" : d === 4 ? "fourths" : "eighths"} of a liter.`,
+        math: `$${values.length}\\text{ beakers}$`,
+      },
+      {
+        title: "Pool the water",
+        text: "Pour every beaker into one jug. The total does not change.",
+        math: `$\\text{total} = \\dfrac{${total}}{${d}}$`,
+      },
+      {
+        title: "Share it equally",
+        text: "Pour the total back into the beakers so each holds the same amount. Every × moves to one value.",
+        math: `$\\dfrac{${total}}{${d}} \\div ${values.length} = ${[`\\dfrac{${model.share}}{${d}}`, plotted(model.share, d).replace("tfrac", "dfrac")].filter((v, i, all) => all.indexOf(v) === i).join(" = ")}$`,
       },
     ];
   }
