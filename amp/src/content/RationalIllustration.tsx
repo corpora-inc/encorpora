@@ -118,7 +118,7 @@ function Scaling() {
   const rows = [
     ["Before", "$\\frac{5}{12}$", "$\\frac{4}{3}$"],
     ["Multiply both", "$\\times\\frac{3}{4}$", "$\\times\\frac{3}{4}$"],
-    ["After", "$\\frac{5}{16}$", "$1$"],
+    ["After", "$\\frac{5}{16}$", "1"],
   ];
   return (
     <figure className="lesson-illustration" style={figureStyle}>

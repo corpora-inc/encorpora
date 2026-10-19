@@ -164,7 +164,7 @@ export const rationalLessons: Lesson[] = [
     templateIds: ["rational-power"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Interpret $x^{m/n}$ as the nth root of x raised to the power m, and a negative exponent as a reciprocal.",
+      "Interpret $x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$ as the nth root of x raised to the power m, and a negative exponent as a reciprocal.",
       "Evaluate fractional powers of positive fractions exactly.",
     ],
     sections: [
@@ -179,7 +179,7 @@ export const rationalLessons: Lesson[] = [
       {
         title: "Read a fractional exponent",
         paragraphs: [
-          "Raising a power to a power multiplies the exponents: $(x^a)^b = x^{ab}$. Keeping that rule for fractions forces $x^{1/n}$ to be the nth root, because $(x^{1/n})^n = x^1 = x$. Then $x^{m/n} = (x^{1/n})^m$: take the nth root, then the mth power. With a positive base, taking the power first gives the same value, but the root first keeps numbers small.",
+          "Raising a power to a power multiplies the exponents: $\\left(x^a\\right)^b = x^{ab}$. Keeping that rule for fractions forces $x^{1/n} = \\sqrt[n]{x}$, the nth root, because $\\left(x^{1/n}\\right)^n = x^1 = x$. Then $x^{m/n} = \\left(x^{1/n}\\right)^m$: take the nth root, then the mth power. With a positive base, taking the power first gives the same value, but the root first keeps numbers small.",
           "Each step of $\\frac{1}{3}$ in the exponent of $\\frac{8}{27}$ multiplies the value by the cube root, $\\frac{2}{3}$. Going down one step divides by $\\frac{2}{3}$. At exponent 0 the value is 1, and below 0 the values are reciprocals of those above it.",
         ],
         illustration: "rational-power-ladder",
