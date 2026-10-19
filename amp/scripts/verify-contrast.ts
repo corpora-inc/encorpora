@@ -298,7 +298,10 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     addEventListener("DOMContentLoaded", () => {
       const style = document.createElement("style");
       style.textContent =
-        "*,*::before,*::after{transition:none!important;animation-play-state:paused!important;caret-color:transparent!important}";
+        // Jump every animation to its end state. Pausing froze entrance
+        // animations on their first keyframe (the feedback sheet at opacity 0),
+        // so the measured screen was not the one learners read.
+        "*,*::before,*::after{transition:none!important;animation-duration:0s!important;animation-delay:0s!important;animation-iteration-count:1!important;caret-color:transparent!important}";
       document.head.append(style);
     });
   });
@@ -373,6 +376,39 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
       await page.goto(origin + route);
       await settle();
     });
+  // Pin every planned batch so each state sees the answer form it measures.
+  // The client plans the next problem as soon as an answer is recorded, so the
+  // pin in force at each Check decides what Next shows.
+  let pinned = "mean-data"; // typed numeric answer
+  await page.route("**/batches", async (route) => {
+    const request = route.request();
+    if (request.method() !== "POST") return route.fallback();
+    await route.continue({
+      postData: JSON.stringify({
+        ...request.postDataJSON(),
+        templateId: pinned,
+      }),
+    });
+  });
+  // The attempt verdict is overridden, so any answer exercises each state.
+  const verdict = async (correct: boolean, assisted: boolean) => {
+    await page.unroute("**/attempts");
+    await page.route("**/attempts", async (route) => {
+      const response = await route.fetch();
+      const body = await response.json();
+      await route.fulfill({ response, json: { ...body, correct, assisted } });
+    });
+  };
+  // The answered problem stays mounted until the next batch arrives, so wait
+  // for its feedback panel to leave before looking for the new answer form.
+  const next = async () => {
+    await page.getByRole("button", { name: "Next", exact: false }).click();
+    await page.locator(".solution-panel").waitFor({ state: "detached" });
+  };
+  const check = async (panel: string) => {
+    await page.getByRole("button", { name: "Check" }).click();
+    await page.locator(panel).waitFor();
+  };
   await step("practice-problem", async () => {
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
     await page
@@ -383,51 +419,37 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   });
   await step("feedback-incorrect", async () => {
     await page.locator("#answer").fill("999");
-    await page.getByRole("button", { name: "Check" }).click();
-    await page.locator(".solution-panel").waitFor();
+    await check(".solution-panel");
   });
-  // The adaptive planner chooses the next problem, which may be typed or
-  // multiple choice. The attempt response is overridden, so any answer works.
-  // The previous problem stays mounted until the next batch arrives, so wait
-  // for its feedback panel to leave before looking for the new answer form.
-  const answerNextProblem = async () => {
-    await page.locator(".solution-panel").waitFor({ state: "detached" });
-    const field = page.locator("#answer");
-    const choice = page.getByRole("radio").first();
-    await field.or(choice).first().waitFor();
-    if (await field.isVisible()) await field.fill("1");
-    else await choice.check();
-  };
   await step("feedback-correct", async () => {
-    await page.route("**/attempts", async (route) => {
-      const response = await route.fetch();
-      const body = await response.json();
-      await route.fulfill({
-        response,
-        json: { ...body, correct: true, assisted: false },
-      });
-    });
-    await page.getByRole("button", { name: "Next", exact: false }).click();
-    await answerNextProblem();
-    await page.getByRole("button", { name: "Check" }).click();
-    await page.locator(".solution-panel.correct").waitFor();
-    await page.unroute("**/attempts");
+    await verdict(true, false);
+    await next();
+    await page.locator("#answer").fill("1");
+    await check(".solution-panel.correct");
   });
   await step("feedback-assisted", async () => {
-    await page.getByRole("button", { name: "Next", exact: false }).click();
-    await answerNextProblem();
-    await page.route("**/attempts", async (route) => {
-      const response = await route.fetch();
-      const body = await response.json();
-      await route.fulfill({
-        response,
-        json: { ...body, correct: true, assisted: true },
-      });
-    });
-    await page.getByRole("button", { name: "Check" }).click();
-    await page.locator(".solution-panel.correct").waitFor();
-    await page.unroute("**/attempts");
+    await verdict(true, true);
+    await next();
+    await page.locator("#answer").fill("1");
+    pinned = "larger-share"; // multiple choice from here on
+    await check(".solution-panel.correct");
   });
+  await step("choice-problem", async () => {
+    await next();
+    await page.getByRole("radio").first().check();
+  });
+  await step("choice-feedback-incorrect", async () => {
+    await verdict(false, false);
+    await check(".solution-panel.incorrect");
+  });
+  await step("choice-feedback-correct", async () => {
+    await verdict(true, false);
+    await next();
+    await page.getByRole("radio").first().check();
+    await check(".solution-panel.correct");
+  });
+  await page.unroute("**/attempts");
+  await page.unroute("**/batches");
   for (const route of [
     "/start/plan",
     "/try",

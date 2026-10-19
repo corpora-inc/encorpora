@@ -98,10 +98,10 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["rectangle-area"],
     ["divide-facts", "divide-by-one-digit"],
   ],
-  // Grade 5: multiplicative comparison, fractions, factors or place value,
-  // multidigit multiplication or division.
+  // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
+  // place value, multidigit multiplication or division.
   [
-    ["comparison-amount", "full-kits"],
+    ["compare-decimals-hundredths", "decimal-grid-read"],
     [
       "compare-fractions",
       "compare-unlike-fractions",
@@ -111,16 +111,25 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
     ["multiply-by-one-digit", "multiply-multidigit", "divide-by-one-digit"],
   ],
-  // Grade 6: decimals, the order of operations, fractions, the mean.
+  // Grade 6: decimals, expressions and equations, fractions, the mean.
   [
-    ["decimal-addition", "decimal-multiplication"],
-    ["operation-order", "integer-power"],
+    [
+      "decimal-addition",
+      "decimal-multiplication",
+      "compare-decimals-thousandths",
+    ],
+    [
+      "operation-order",
+      "integer-power",
+      "one-step-equation",
+      "dependent-variable-value",
+    ],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
     ["mean-data", "mean-missing-value"],
   ],
-  // Grade 7: powers, unit rates, the mean, distance on a number line.
+  // Grade 7: powers and equations, unit rates, the mean, distance on a number line.
   [
-    ["integer-power"],
+    ["integer-power", "two-step-equation", "dependent-variable-value"],
     ["unit-price"],
     ["mean-data", "mean-missing-value"],
     ["number-line-distance"],

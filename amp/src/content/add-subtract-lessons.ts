@@ -191,9 +191,9 @@ export const addSubtractMethods: Record<string, ProblemMethod> = {
   "make-hundred": {
     goal: "Given a two-digit number, find what joins it to make 100.",
     method: [
-      "Count up to the next ten.",
-      "Count tens from there up to 100.",
-      "Add the two jumps.",
+      "Count up from the number to the next ten: 64 to 70 is 6.",
+      "Count by tens from there to 100: 70 to 100 is 30.",
+      "Add the two jumps: 6 + 30 = 36.",
     ],
     watch: "Check: the number plus your answer must be exactly 100.",
   },

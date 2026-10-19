@@ -2,9 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
 import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
+import {
+  BalanceFrame,
+  CUBE,
+  Cube,
+  XBlock,
+  cubeGrid,
+  leftLayout,
+  rightLayout,
+} from "../EquationFigure";
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
+import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
@@ -13,6 +24,14 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
     case "area-model":
       return <AreaModelAnimation model={model} step={step} />;
+    case "plot":
+      return <PlotModel model={model} step={step} />;
+    case "clock-sweep":
+      return <ClockSweepStage model={model} step={step} />;
+    case "decimal-fill":
+      return <DecimalFillStage model={model} step={step} />;
+    case "decimal-align":
+      return <DecimalAlignStage model={model} step={step} />;
     case "prism-layers":
       return <PrismLayersModel model={model} step={step} />;
     case "quadrant-walk":
@@ -41,6 +60,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <CompareStage model={model} step={step} />;
     case "area":
       return <AreaStage model={model} step={step} />;
+    case "balance":
+      return <EquationBalanceModel model={model} step={step} />;
     case "mean-balance":
       return <BalanceModel model={model} step={step} />;
     case "box-build":
@@ -330,6 +351,258 @@ function ExchangeModel({
           : `ten ${unit === 1 ? "ones" : "tens"}`}
       </text>
     </>
+  );
+}
+
+/** Table rows become points one at a time; then the rule's line appears. */
+function PlotModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "plot" }>;
+  step: number;
+}) {
+  const { rows, graph, rule } = model;
+  const rowHeight = Math.min(26, 150 / rows.length);
+  const tableTop = 30;
+  const gx = (v: number) => 162 + (v / graph.xMax) * 140,
+    gy = (v: number) => 168 - (v / graph.yMax) * 140;
+  // The rule's line, clipped to the grid: y = k·x + offset.
+  const xEnd = Math.min(graph.xMax, (graph.yMax - rule.offset) / rule.k);
+  return (
+    <>
+      <text x="34" y="20" textAnchor="middle" style={{ fontWeight: 700 }}>
+        {rule.x}
+      </text>
+      <text x="92" y="20" textAnchor="middle" style={{ fontWeight: 700 }}>
+        {rule.y}
+      </text>
+      <line
+        x1="63"
+        x2="63"
+        y1="6"
+        y2={tableTop + rowHeight * rows.length}
+        className="animation-outline"
+      />
+      {rows.map((r, i) => (
+        <g key={i} data-plot-row={`${r.x},${r.y}`}>
+          <rect
+            x="6"
+            y={tableTop + i * rowHeight}
+            width="114"
+            height={rowHeight}
+            className="animation-empty animation-fade"
+            style={{
+              opacity: step === 1 ? 1 : 0,
+              transitionDelay: step === 1 ? `${i * 300}ms` : "0ms",
+            }}
+          />
+          <text
+            x="34"
+            y={tableTop + i * rowHeight + rowHeight * 0.7}
+            textAnchor="middle"
+          >
+            {r.x}
+          </text>
+          <text
+            x="92"
+            y={tableTop + i * rowHeight + rowHeight * 0.7}
+            textAnchor="middle"
+          >
+            {r.y}
+          </text>
+        </g>
+      ))}
+      <line
+        x1={gx(0)}
+        x2={gx(graph.xMax)}
+        y1={gy(0)}
+        y2={gy(0)}
+        className="animation-outline"
+      />
+      <line
+        x1={gx(0)}
+        x2={gx(0)}
+        y1={gy(0)}
+        y2={gy(graph.yMax)}
+        className="animation-outline"
+      />
+      <text x={gx(0)} y="190" textAnchor="middle">
+        0
+      </text>
+      <text x={gx(graph.xMax)} y="190" textAnchor="middle">
+        {graph.xMax}
+      </text>
+      <text x={gx(0) - 6} y={gy(graph.yMax) + 5} textAnchor="end">
+        {graph.yMax}
+      </text>
+      <text x={gx(graph.xMax)} y={gy(0) - 8} textAnchor="end">
+        {rule.x}
+      </text>
+      <text
+        x={gx(0)}
+        y={gy(graph.yMax) - 10}
+        textAnchor="middle"
+        style={{ fontWeight: 700 }}
+      >
+        {rule.y}
+      </text>
+      <line
+        data-plot-line={`${rule.k},${rule.offset}`}
+        x1={gx(0)}
+        y1={gy(rule.offset)}
+        x2={gx(xEnd)}
+        y2={gy(rule.k * xEnd + rule.offset)}
+        className="animation-grid animation-fade"
+        strokeWidth="2.5"
+        strokeDasharray="7 5"
+        style={{ opacity: step === 2 ? 1 : 0 }}
+      />
+      {rows.map((r, i) => (
+        <circle
+          key={i}
+          data-plot-point={`${r.x},${r.y}`}
+          cx={gx(r.x)}
+          cy={gy(r.y)}
+          r="5.5"
+          className="animation-fill animation-fade"
+          style={{
+            opacity: step >= 1 ? 1 : 0,
+            transitionDelay: step === 1 ? `${i * 300}ms` : "0ms",
+          }}
+        />
+      ))}
+    </>
+  );
+}
+/** Positions of the right pan's cubes split into `groups` equal groups. */
+function groupedRight(count: number, groups: number) {
+  const per = count / groups,
+    columns = 2,
+    width = columns * CUBE.pitch,
+    gap = groups >= 5 ? 4 : 10,
+    span = groups * width + (groups - 1) * gap,
+    start = 300 - span / 2;
+  return {
+    cubes: Array.from({ length: groups }, (_, g) =>
+      cubeGrid(per, columns, start + g * (width + gap), 142).map((c) => ({
+        ...c,
+        group: g,
+      })),
+    ).flat(),
+    dividers: Array.from(
+      { length: groups - 1 },
+      (_, g) => start + (g + 1) * (width + gap) - gap / 2 - 1,
+    ),
+  };
+}
+function EquationBalanceModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "balance" }>;
+  step: number;
+}) {
+  const f = model.figure,
+    form = model.form;
+  const left = leftLayout(f);
+  const start = rightLayout(f.right);
+  const p = f.groups > 1 ? f.groups : f.blocks;
+  // Which right-pan cubes leave, and where the rest stand, at each step.
+  const removedRight = (j: number) =>
+    form === "add" || form === "remove-split"
+      ? step >= 1 && j >= f.right - f.units
+      : form === "split-remove"
+        ? step >= 2 && j % (f.right / p) >= f.right / p - f.units
+        : false;
+  const split =
+    (form === "times" && step >= 1) ||
+    (form === "remove-split" && step >= 2) ||
+    (form === "split-remove" && step >= 1);
+  const kept = form === "remove-split" ? f.right - f.units : f.right;
+  const grouped = groupedRight(kept, p);
+  // For split-remove, cube j belongs to group floor(j / per) in the grouped layout.
+  const target = (j: number) =>
+    split && j < kept ? grouped.cubes[j]! : start[j]!;
+  const dimmed = (group: number) => form === "times" && step === 2 && group > 0;
+  const leftRemoved = (i: number) =>
+    form === "split-remove" ? step >= 2 : form !== "times" && step >= 1;
+  // Dividers rise just above the tallest group on either pan.
+  const dividerTop = Math.min(...grouped.cubes.map((c) => c.y), 142 - 40) - 8;
+  const leftDividers =
+    f.groups > 1
+      ? []
+      : Array.from(
+          { length: f.blocks - 1 },
+          (_, i) => left.blocks[i + 1]!.x - 2,
+        );
+  return (
+    <g transform="translate(0 -8) scale(0.8)" data-balance-step={step}>
+      <BalanceFrame />
+      {left.bags.map((b, i) => (
+        <rect
+          key={`bag${i}`}
+          x={b.x}
+          y={b.y}
+          width={b.w}
+          height={b.h}
+          rx="8"
+          className="animation-bag"
+        />
+      ))}
+      {left.blocks.map((b, i) => (
+        <g
+          key={`block${i}`}
+          className="animation-lift"
+          style={{ opacity: dimmed(i) ? 0.25 : 1 }}
+        >
+          <XBlock x={b.x} y={b.y} />
+        </g>
+      ))}
+      {left.cubes.map((c, i) => (
+        <g
+          key={`left${i}`}
+          data-left-cube={i}
+          className="animation-lift"
+          style={{
+            transform: `translateY(${leftRemoved(i) ? -28 : 0}px)`,
+            opacity: leftRemoved(i) ? 0 : 1,
+          }}
+        >
+          <Cube x={c.x} y={c.y} />
+        </g>
+      ))}
+      {start.map((c, j) => {
+        const to = target(j),
+          gone = removedRight(j);
+        const group = split && j < kept ? grouped.cubes[j]!.group : 0;
+        return (
+          <g
+            key={`right${j}`}
+            data-right-cube={j}
+            className="animation-lift"
+            style={{
+              transform: `translate(${to.x - c.x}px, ${to.y - c.y - (gone ? 28 : 0)}px)`,
+              opacity: gone ? 0 : dimmed(group) ? 0.25 : 1,
+            }}
+          >
+            <Cube x={c.x} y={c.y} />
+          </g>
+        );
+      })}
+      <g className="animation-fade" style={{ opacity: split ? 1 : 0 }}>
+        {[...grouped.dividers, ...(split ? leftDividers : [])].map((x, i) => (
+          <line
+            key={i}
+            x1={x}
+            x2={x}
+            y1={dividerTop}
+            y2="140"
+            className="animation-divider"
+          />
+        ))}
+      </g>
+    </g>
   );
 }
 

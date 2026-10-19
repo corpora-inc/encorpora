@@ -1540,6 +1540,96 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "rule-patterns",
+    "number-rule-terms",
+    "Generate later terms of a whole-number pattern from its start and an add, subtract or multiply-by rule.",
+  ],
+  [
+    "rule-patterns",
+    "rule-features",
+    "Identify features every term of an add-rule pattern shares, such as parity, a common factor or a fixed ones digit.",
+  ],
+  [
+    "related-patterns",
+    "paired-terms",
+    "Relate matching terms of two patterns that start at 0 through a table of ordered pairs and their first-quadrant graph.",
+  ],
+  [
+    "dependent-variables",
+    "equation-from-table-graph",
+    "Choose the equation giving the dependent variable from a context table and graph.",
+  ],
+  [
+    "dependent-variables",
+    "use-equation",
+    "Use an equation between an independent and a dependent variable to find either value.",
+  ],
+  [
+    "compare-functions",
+    "rate-and-initial-value",
+    "Compare rates of change and initial values of two linear functions given in different representations.",
+  ],
+  [
+    "compare-functions",
+    "linear-or-nonlinear",
+    "Recognize linear functions written in several forms and distinguish them from nonlinear rules.",
+  ],
+  [
+    "one-step-equations",
+    "inverse-operation",
+    "Solve a one-operation equation with whole numbers, decimals or fractions by applying the inverse operation to both sides.",
+  ],
+  [
+    "one-step-equations",
+    "story-equation",
+    "Choose the one-step equation that represents a story together with its solution.",
+  ],
+  [
+    "one-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance by removing equal weights or splitting both pans equally.",
+  ],
+  [
+    "two-step-equations",
+    "symbolic-solve",
+    "Solve px + q = r and p(x + q) = r with signed integers or decimals by undoing operations in reverse order.",
+  ],
+  [
+    "two-step-equations",
+    "story-solve",
+    "Write and solve px + q = r or p(x + q) = r for a story.",
+  ],
+  [
+    "two-step-equations",
+    "story-equation",
+    "Choose the two-step equation that represents a story, distinguishing repeated from one-time amounts and px + q from p(x + q).",
+  ],
+  [
+    "two-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance showing px + q = r or p(x + q) = r.",
+  ],
+  [
+    "simple-inequalities",
+    "context-inequality",
+    "Write x > c, x < c, x ≥ c or x ≤ c for a condition stated in words.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-reading",
+    "Read the inequality shown by a graphed half-line on a number line.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-choice",
+    "Choose the number line that shows the solutions of a simple inequality.",
+  ],
+  [
+    "simple-inequalities",
+    "solution-recognition",
+    "Recognize which numbers solve a simple inequality and that it has infinitely many solutions.",
+  ],
+  [
     "compound-probability",
     "multiplication-principle",
     "Count outcomes of two to four independent choice stages, including codes with repeated symbols, by the multiplication principle.",
@@ -1588,6 +1678,66 @@ for (const [skillId, suffix, description] of [
     "rational-exponents",
     "rational-base-fractional-powers",
     "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Clock and money tasks read given analog clocks and generic coins and bills;
+// digital clocks and learner-set hands remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "clock-half-hours",
+    "hour-half-hour-reading",
+    "Read and match analog clocks on the hour and half hour, and name the hour when the hour hand is between numerals.",
+  ],
+  [
+    "clock-five-minutes",
+    "five-minute-reading",
+    "Read and match analog clocks in five-minute steps, count minutes by fives, and choose a.m. or p.m. from a daily activity.",
+  ],
+  [
+    "money-values",
+    "coin-bill-totals",
+    "Count quarters, dimes, nickels, pennies and one- and five-dollar bills, make a dollar, pay an exact price and find money left.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Decimal tasks assess reading, renaming, comparing, rounding and computing
+// with given decimals; written justification and models drawn by the learner
+// remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "decimal-fractions",
+    "tenths-hundredths-notation",
+    "Name shaded tenths and hundredths of one whole as decimals, rename tenths as hundredths, and read tenths and hundredths on a number line.",
+  ],
+  [
+    "compare-decimals",
+    "hundredths-comparison",
+    "Choose the greater or lesser of two decimals with one or two places, including pairs where the shorter decimal is greater.",
+  ],
+  [
+    "decimal-place-value",
+    "thousandths-read-compare-round",
+    "Name the value of a decimal digit, write a decimal from expanded form, compare decimals to thousandths and round to the nearest whole, tenth or hundredth.",
+  ],
+  [
+    "decimal-algorithms",
+    "multidigit-decimal-operations",
+    "Add, subtract, multiply and divide multidigit decimals with terminating results.",
   ],
 ])
   skills
