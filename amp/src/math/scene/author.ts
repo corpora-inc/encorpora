@@ -1,6 +1,8 @@
 import {
   sceneSchema,
+  type Angle,
   type AreaModel,
+  type Protractor,
   type Clock,
   type Element,
   type Fn,
@@ -372,3 +374,18 @@ export const fractionBar = (
 ) => new Simple<FractionBar>({ type: "fractionBar", bars });
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
+
+/** A protractor on a vertex: one ray on its baseline, the other crossing
+ * the scales. */
+export const protractor = (
+  rays: [number, number],
+  labels?: [string, string, string],
+) =>
+  new Simple<Protractor>({
+    type: "protractor",
+    rays,
+    ...(labels ? { labels } : {}),
+  });
+/** Rays from one vertex with angle marks between chosen pairs. */
+export const angle = (spec: Omit<Angle, "type">) =>
+  new Simple<Angle>({ type: "angle", ...spec });

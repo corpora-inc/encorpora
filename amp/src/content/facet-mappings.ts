@@ -6,6 +6,7 @@ import { timeMoneyFacetMappings } from "./time-money-coverage";
 import { attributeFacetMappings } from "./attribute-coverage";
 import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { shapeFacetMappings } from "./shape-coverage";
+import { angleFacetMappings } from "./angle-coverage";
 import { polygonFacetMappings } from "./polygon-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
@@ -37,6 +38,7 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 export const actualFacetMappings: readonly FacetMapping[] = [
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,
+  ...angleFacetMappings,
   ...polygonFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,

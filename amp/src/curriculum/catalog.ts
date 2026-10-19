@@ -1439,6 +1439,42 @@ for (const [skillId, facets] of [
     });
 }
 
+// Grade 4 angle measure, lines and symmetry, read from exact figures.
+for (const [skillId, facets] of [
+  [
+    "angle-measure",
+    [
+      ["turns", "Find an angle as a fraction of the 360° in a full turn."],
+      [
+        "protractor",
+        "Read whole-degree angles on a protractor, choosing the scale that starts at 0.",
+      ],
+      [
+        "additive",
+        "Find a whole angle or a missing part of angles that do not overlap.",
+      ],
+    ],
+  ],
+  [
+    "lines-symmetry",
+    [
+      [
+        "lines-angles",
+        "Name lines, rays and segments; classify angles and triangles by angle; tell parallel from perpendicular lines.",
+      ],
+      ["symmetry", "Identify and count lines of symmetry of polygons."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // K–1 shapes: named from exact drawn figures in any orientation and size.
 for (const [skillId, facets] of [
   [
