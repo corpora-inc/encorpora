@@ -24,6 +24,29 @@ import {
   geometryFigureSchemas,
   type GeometryFigure,
 } from "./geometry-figures.js";
+/** An input/output table, a first-quadrant graph, or both side by side.
+ * A graph line is exact: y × run = rise × x + b × run. */
+export type FunctionDisplayFigure = {
+  kind: "function-display";
+  table?: {
+    title?: string;
+    columns: [string, string];
+    rows: { x: number; y: number }[];
+  };
+  graph?: {
+    xLabel: string;
+    yLabel: string;
+    xMax: number;
+    yMax: number;
+    xStep: number;
+    yStep: number;
+    series: {
+      label?: string;
+      points: { x: number; y: number }[];
+      line?: { rise: number; run: number; b: number };
+    }[];
+  };
+};
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
@@ -32,6 +55,7 @@ export type SemanticFigure =
   | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
+  | FunctionDisplayFigure
   | GeometryFigure
   | {
       kind: "unit-array";
@@ -112,6 +136,7 @@ export type SemanticFigure =
 export const figureCapabilities = [
   "measurement-models-v1",
   "data-displays-v1",
+  "function-displays-v1",
   "volume-coordinate-figures-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
@@ -154,8 +179,83 @@ export interface GeneratedProblem {
   choiceFeedback?: Record<string, string>;
 }
 
+const displayInteger = z.number().int().min(-100000).max(100000);
+const displayPoint = z
+  .object({ x: displayInteger, y: displayInteger })
+  .strict();
+const displayLabel = z.string().trim().min(1).max(24);
+export const functionDisplaySchema = z
+  .object({
+    kind: z.literal("function-display"),
+    table: z
+      .object({
+        title: displayLabel.optional(),
+        columns: z.tuple([displayLabel, displayLabel]),
+        rows: z.array(displayPoint).min(2).max(6),
+      })
+      .strict()
+      .optional(),
+    graph: z
+      .object({
+        xLabel: displayLabel,
+        yLabel: displayLabel,
+        xMax: z.number().int().positive(),
+        yMax: z.number().int().positive(),
+        xStep: z.number().int().positive(),
+        yStep: z.number().int().positive(),
+        series: z
+          .array(
+            z
+              .object({
+                label: z.string().trim().min(1).max(12).optional(),
+                points: z.array(displayPoint).max(8),
+                line: z
+                  .object({
+                    rise: displayInteger,
+                    run: z.number().int().positive(),
+                    b: displayInteger,
+                  })
+                  .strict()
+                  .optional(),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(2),
+      })
+      .strict()
+      .refine(
+        (g) =>
+          g.xMax % g.xStep === 0 &&
+          g.yMax % g.yStep === 0 &&
+          g.xMax / g.xStep <= 12 &&
+          g.yMax / g.yStep <= 12 &&
+          g.series.every(
+            (s) =>
+              (s.points.length > 0 || s.line) &&
+              s.points.every(
+                (p) =>
+                  p.x >= 0 &&
+                  p.y >= 0 &&
+                  p.x <= g.xMax &&
+                  p.y <= g.yMax &&
+                  (!s.line ||
+                    p.y * s.line.run ===
+                      s.line.rise * p.x + s.line.b * s.line.run),
+              ),
+          ),
+        "Graph points must lie on the grid and on their stated line",
+      )
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (f) => f.table || f.graph,
+    "A function display needs a table or a graph",
+  );
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
+    functionDisplaySchema,
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
     ...attributeFigureSchemas,

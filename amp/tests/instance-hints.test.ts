@@ -41,19 +41,32 @@ test("no hint states the answer", () => {
   assert.deepEqual(offenders, [], "These hints state the answer");
 });
 
-test("no two problem types share a hint", () => {
-  const owner = new Map<string, Set<string>>();
+/** Hints carried by problems of two or more types that ask different questions. */
+function sharedHints() {
+  const owner = new Map<string, Map<string, Set<string>>>();
   for (const t of templates)
-    for (const p of sample(t.id))
-      owner.set(p.hint, (owner.get(p.hint) ?? new Set()).add(t.id));
-  const shared = [...owner]
-    .filter(([, ids]) => ids.size > 1)
-    .filter(([, ids]) => [...ids].some((id) => !sharedHintPending.has(id)))
-    .map(([hint, ids]) => `${[...ids].join(", ")}: ${hint}`);
+    for (const p of sample(t.id)) {
+      const ids = owner.get(p.hint) ?? new Map<string, Set<string>>();
+      ids.set(t.id, (ids.get(t.id) ?? new Set()).add(p.public.prompt));
+      owner.set(p.hint, ids);
+    }
+  return [...owner].filter(([, ids]) => {
+    if (ids.size < 2) return false;
+    const prompts = [...ids.values()].map((set) => [...set].sort().join("\n"));
+    return new Set(prompts).size > 1;
+  });
+}
+
+test("no two problem types share a hint unless they ask the same question", () => {
+  const shared = sharedHints()
+    .filter(([, ids]) =>
+      [...ids.keys()].some((id) => !sharedHintPending.has(id)),
+    )
+    .map(([hint, ids]) => `${[...ids.keys()].join(", ")}: ${hint}`);
   assert.deepEqual(
     shared,
     [],
-    "Each problem type needs its own hint: say what this question asks",
+    "Each question needs its own hint: say what this question asks",
   );
 });
 
@@ -88,6 +101,12 @@ test("pending hint and method lists only shrink", () => {
     [...fixedHintPending].filter((id) => !fixedHint(id) && !unnamedGivens(id)),
     [],
     "Remove these from fixedHintPending: their hints are instance hints",
+  );
+  const sharing = new Set(sharedHints().flatMap(([, ids]) => [...ids.keys()]));
+  assert.deepEqual(
+    [...sharedHintPending].filter((id) => !sharing.has(id)),
+    [],
+    "Remove these from sharedHintPending: their hints are their own",
   );
   assert.deepEqual(
     [...watchPending].filter((id) => methods[id]?.watch),

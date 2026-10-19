@@ -146,15 +146,19 @@ const single = (h: number, m: number): SemanticFigure => ({
   clocks: [{ hour: h, minute: m }],
 });
 
+/** The first move for reading this clock: where the long hand points. */
+function readHint(h: number, m: number): string {
+  if (m === 0)
+    return "The long hand points at 12, so the time is exactly on the hour. The short hand points at the hour.";
+  if (m === 30)
+    return "The long hand points at 6, halfway around: half past the hour. The hour is the numeral the short hand has passed.";
+  return `The long hand points at ${numeral(m)}: count by fives from 12 up to it for the minutes. The hour is the last numeral the short hand has passed.`;
+}
+
 function readClock(h: number, m: number, options: number): Draft {
   return {
     prompt: "What time does the clock show?",
-    hint:
-      options === 3
-        ? m === 0
-          ? "The long hand points at 12, so the time is on the hour. Which numeral does the short hand point at?"
-          : "The long hand points at 6, so it is half past. Which numeral has the short hand just passed?"
-        : `The long hand points at ${numeral(m)}: count by fives from 12 to ${numeral(m)}. Then name the last numeral the short hand has passed.`,
+    hint: readHint(h, m),
     figure: single(h, m),
     explanation: readClockSteps(h, m),
     choices: [
@@ -242,7 +246,7 @@ function amPm(r: Random): Draft {
   const wrongs = misreadings(h, m).slice(0, 2);
   return {
     prompt: `${name} ${activity} at the time on the clock. Which time is it?`,
-    hint: `Is the time when ${name} ${activity} before noon or after noon? Read the clock too: the long hand is at ${numeral(m)}.`,
+    hint: `Read the clock first. Then think about when ${name} ${activity}: a.m. runs from midnight to noon, and p.m. from noon to midnight.`,
     figure: single(h, m),
     explanation: [
       ...readClockSteps(h, m).slice(0, 2),
@@ -285,7 +289,6 @@ const total = (items: readonly MoneyItem[]) =>
 const named = (n: number, item: MoneyItem) =>
   `${n} ${COIN_NAMES[item][n === 1 ? 0 : 1]}`;
 const cents = (n: number) => `${n}¢`;
-const count = (n: number, one: string) => `${n} ${n === 1 ? one : `${one}s`}`;
 /** "2 quarters (50¢), 1 dime (10¢)" from largest to smallest. */
 function groups(items: readonly MoneyItem[]) {
   return ORDER.filter((item) => items.includes(item)).map((item) => {
@@ -305,6 +308,13 @@ function coinSteps(items: readonly MoneyItem[]) {
     `Start with the coins worth the most: ${g.map(({ item, n }) => (n === 1 ? `${named(n, item)} (${cents(CENTS[item])})` : `${named(n, item)} at ${cents(CENTS[item])} each`)).join(", ")}.`,
     `Count on: ${countOn(items).join(", ")}.`,
   ];
+}
+/** "Start with the 2 quarters: 25, 50." Counts the largest coins only. */
+function startCoins(items: readonly MoneyItem[]): string {
+  const { item, n } = groups(items)[0]!;
+  const steps = Array.from({ length: n }, (_, i) => (i + 1) * CENTS[item]);
+  const which = COIN_NAMES[item][n === 1 ? 0 : 1];
+  return `Start with the ${which}: ${steps.join(", ")}.`;
 }
 function randomCoins(r: Random, count: number, max: number): MoneyItem[] {
   for (;;) {
@@ -364,8 +374,8 @@ function payExact(r: Random): Draft {
   const labels = ["A", "B", "C"] as const;
   const right = labels[sets.findIndex((s) => s.items === correct)];
   return {
-    prompt: `A ${thing} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
-    hint: `Count each set on from its largest coin and look for a total of exactly ${cents(price)}.`,
+    prompt: `${/^[aeiou]/.test(thing) ? "An" : "A"} ${thing} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
+    hint: `Count each set from its largest coin down, and check whether it lands exactly on ${cents(price)}. Read each coin's value, not its size: a dime is 10¢ and a nickel 5¢.`,
     figure: {
       kind: "money-sets",
       sets: sets.map((s, i) => ({ items: s.items, label: labels[i] })),
@@ -411,8 +421,8 @@ function draft(templateId: string, r: Random): Draft {
             : "The clock shows half past an hour. Half past what hour?",
         hint:
           m === 0
-            ? "The long hand points straight up, so it is exactly on the hour. Read the numeral the short hand points at."
-            : "The long hand points straight down: half past. The short hand sits between two numerals; the hour is the one it has passed.",
+            ? "The long hand is on 12, so it is exactly on the hour. Read the numeral the short hand points at."
+            : "At half past, the short hand sits halfway between two numerals. The hour is the numeral it has already passed.",
         figure: single(h, m),
         explanation: [
           m === 0
@@ -431,7 +441,7 @@ function draft(templateId: string, r: Random): Draft {
         m = 5 * r(1, 11);
       return {
         prompt: "How many minutes past the hour does the clock show?",
-        hint: `The long hand points at ${numeral(m)}. Count by fives from 12, one five for each numeral up to ${numeral(m)}.`,
+        hint: `The long hand points at ${numeral(m)}. Count by fives from 12, one five for each numeral, up to ${numeral(m)}.`,
         figure: single(h, m),
         explanation: [
           `The long minute hand points at ${numeral(m)}.`,
@@ -446,7 +456,7 @@ function draft(templateId: string, r: Random): Draft {
       const items = randomCoins(r, r(3, 8), 99);
       return {
         prompt: "How many cents are these coins worth in all?",
-        hint: `Start with the ${COIN_NAMES[groups(items)[0]!.item][1]}, worth ${cents(CENTS[groups(items)[0]!.item])} each, and count on through the smaller coins.`,
+        hint: `${startCoins(items)} Then count on through the smaller coins.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
@@ -467,7 +477,11 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "How much money is shown? Enter the amount in dollars, such as 2.35.",
-        hint: `There ${bills.length === 1 ? "is 1 bill" : `are ${bills.length} bills`} and ${count(coins.length, "coin")}. Add the bills in dollars, count the coins in cents, then write the amount like 2.35.`,
+        hint: `The bills are whole dollars: ${groups(bills)
+          .map(({ item, n }) => named(n, item))
+          .join(
+            " and ",
+          )}. Then count the coins in cents, starting with the ${COIN_NAMES[groups(coins)[0]!.item][1]}. Write the dollars, a point, then the cents.`,
         figure: coinFigure(items),
         explanation: [
           `The bills: ${groups(bills)
@@ -488,7 +502,7 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "One dollar is 100 cents. How many more cents do these coins need to make one dollar?",
-        hint: `Count on from the ${COIN_NAMES[groups(items)[0]!.item][1]} to find the total, then count up from that total to 100.`,
+        hint: `${startCoins(items)} Count on through the other coins, then count up from that total to 100.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
@@ -507,7 +521,7 @@ function draft(templateId: string, r: Random): Draft {
         thing = pick(r, ITEMS);
       return {
         prompt: `${name} has these coins and buys a ${thing} for ${cents(price)}. How many cents does ${name} have left?`,
-        hint: `Count ${name}'s coins first, then take away the ${cents(price)} for the ${thing}.`,
+        hint: `First find what ${name} has: ${startCoins(items).replace(/^S/, "s")} Then take away the ${cents(price)} for the ${thing}.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
