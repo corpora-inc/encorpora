@@ -6,6 +6,7 @@
 import { angleSchema, protractorSchema } from "./angle";
 import { areaModelSchema } from "./area-model";
 import { arraySchema } from "./array";
+import { barChartSchema } from "./bar-chart";
 import { baseTenSchema } from "./base-ten";
 import { boxPlotSchema } from "./box-plot";
 import { clockSchema } from "./clock";
@@ -15,11 +16,13 @@ import { graphSchema } from "./graph";
 import { isoSolidSchema } from "./iso-solid";
 import { lineTableSchema } from "./line-table";
 import { numberLineSchema } from "./number-line";
+import { pictureGraphSchema } from "./picture-graph";
 import { polyAreaSchema } from "./poly-area";
 import { rowBarsSchema } from "./row-bars";
 import { shapePuzzleSchema } from "./shape-puzzle";
 import { shapesSchema } from "./shapes";
 import { solidSchema } from "./solid";
+import { shapeSortSchema } from "./shape-sort";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
 import { treeSchema } from "./tree";
@@ -29,6 +32,7 @@ export const componentSchemas = [
   angleSchema,
   areaModelSchema,
   arraySchema,
+  barChartSchema,
   baseTenSchema,
   boxPlotSchema,
   clockSchema,
@@ -38,12 +42,14 @@ export const componentSchemas = [
   isoSolidSchema,
   lineTableSchema,
   numberLineSchema,
+  pictureGraphSchema,
   polyAreaSchema,
   protractorSchema,
   rowBarsSchema,
   shapePuzzleSchema,
   shapesSchema,
   solidSchema,
+  shapeSortSchema,
   tableSchema,
   tenFrameSchema,
   treeSchema,
@@ -53,6 +59,7 @@ export const componentSchemas = [
 export * from "./angle";
 export * from "./area-model";
 export * from "./array";
+export * from "./bar-chart";
 export * from "./base-ten";
 export * from "./box-plot";
 export * from "./clock";
@@ -62,11 +69,13 @@ export * from "./graph";
 export * from "./iso-solid";
 export * from "./line-table";
 export * from "./number-line";
+export * from "./picture-graph";
 export * from "./poly-area";
 export * from "./row-bars";
 export * from "./shape-puzzle";
 export * from "./shapes";
 export * from "./solid";
+export * from "./shape-sort";
 export * from "./table";
 export * from "./ten-frame";
 export * from "./tree";

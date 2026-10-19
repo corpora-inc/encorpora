@@ -34,15 +34,8 @@ function hash(text: string): number {
     value = Math.imul(value ^ char.charCodeAt(0), 16777619);
   return (value >>> 0) / 0x100000000;
 }
-function randomSource(seed: number) {
-  let state = seed >>> 0;
-  return () => {
-    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-    return state / 0x100000000;
-  };
-}
 
-type Run = {
+export type Run = {
   /** |overall estimate − true level| after placement. */
   overallError: number;
   /** Mean |strand estimate − true level| over the strands placement visited. */
@@ -66,7 +59,6 @@ function place(options: {
   catalog: readonly TemplateMetadata[];
   guessOf: (templateId: string) => number;
 }): Run {
-  const random = randomSource(options.seed * 7919 + 17);
   const attempts: Outcome[] = [];
   const errors: number[] = [];
   let choices = 0;
@@ -104,7 +96,14 @@ function place(options: {
     }
     const difficulty = gradeOf(template.id) - 0.4 + (hash(template.id) - 0.5);
     const knows = normalCdf((options.level - difficulty) / 0.8);
-    const correct = random() < guess + (1 - guess - 0.03) * knows;
+    // Common random numbers: a learner's luck on an item depends only on who
+    // they are, the item and how often they have seen it, never on what was
+    // asked before. Two estimators that ask the same items see the same
+    // answers, so their per-learner difference measures the estimators, not
+    // sampling noise from diverging random streams.
+    const seen = attempts.filter((a) => a.templateId === template.id).length;
+    const luck = hash(`${key}:${template.id}:${seen}`);
+    const correct = luck < guess + (1 - guess - 0.03) * knows;
     attempts.push({
       id: `${key}:${i}`,
       problemId: `${key}:p${i}`,
@@ -176,6 +175,8 @@ export function simulatePlacement(options: {
     return Math.round((total / values.length) * 1000) / 1000;
   };
   return {
+    /** Per learner, in a fixed order, so two catalogs or estimators pair up. */
+    runs,
     learners: runs.length,
     overallError: mean((run) => run.overallError),
     strandError: mean((run) => run.strandError),

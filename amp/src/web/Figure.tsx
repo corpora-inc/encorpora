@@ -12,11 +12,11 @@ import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
 import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { CoordinateGeometry, SimilarTriangles } from "./TransformationFigure";
 import { SignedLineFigure } from "./SignedLineFigure";
 import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
-import { DataDisplayFigure } from "./DataDisplayFigure";
 import type { SemanticFigure } from "../math/contracts";
 import { isPorted, legacyScene } from "../math/scene/legacy";
 import { SceneFigure } from "./scene/SceneFigure";
@@ -59,11 +59,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "area-partition":
     case "fraction-bars":
       return <PartWholeFigure figure={figure} />;
-    case "sort-shapes":
-    case "picture-graph":
-    case "scaled-bar-graph":
-    case "histogram":
-      return <DataDisplayFigure figure={figure} />;
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
     case "rational-line":
@@ -90,6 +85,10 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <ComparisonFigure figure={figure} />;
     case "bar-chart":
       return <GraphicalFigure figure={figure} />;
+    case "coordinate-geometry":
+      return <CoordinateGeometry figure={figure} />;
+    case "similar-triangles":
+      return <SimilarTriangles figure={figure} />;
     case "signed-line":
       return <SignedLineFigure figure={figure} />;
     case "balance-scale":

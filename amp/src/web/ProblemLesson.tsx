@@ -3,7 +3,7 @@ import { AnimationBoundary } from "./lesson-animation/AnimationBoundary";
 import { animationModel } from "./lesson-animation/model";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { Figure } from "./Figure";
-import { MathText } from "./MathText";
+import { MathText, withSeparators } from "./MathText";
 import { ScenePlayer } from "./scene/ScenePlayer";
 
 const LessonAnimation = lazy(
@@ -99,7 +99,7 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <p className="lesson-example-answer">
           Answer:{" "}
           <strong>
-            <MathText text={displayAnswer(lesson.example.answer)} />
+            <MathText text={withSeparators(lesson.example.answer)} />
           </strong>
         </p>
       </section>
@@ -112,9 +112,3 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
     </article>
   );
 }
-
-/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
-export const displayAnswer = (answer: string) =>
-  /^\d{4,}$/.test(answer)
-    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    : answer;

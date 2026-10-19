@@ -12,6 +12,10 @@ export const portedKinds = [
   "double-dot-plot",
   "box-plot",
   "double-box-plot",
+  "histogram",
+  "scaled-bar-graph",
+  "picture-graph",
+  "sort-shapes",
   "base-ten",
   "unit-array",
   "plane-shapes",
@@ -28,6 +32,13 @@ export function isPorted(
 ): f is Extract<SemanticFigure, { kind: PortedKind }> {
   return (portedKinds as readonly string[]).includes(f.kind);
 }
+
+/** Dot and box plots size their stacks and boxes in pixels, so their height
+ * does not shrink with the scale. The fit grows the scale by the room left
+ * under the ceiling each pass; a high ceiling lets it reach the full width
+ * in a few passes instead of stopping squeezed (a tall double dot plot was
+ * left 117 px wide under the default). */
+const PLOT_CEILING = 720;
 
 export function legacyScene(
   f: Extract<SemanticFigure, { kind: PortedKind }>,
@@ -176,6 +187,7 @@ export function legacyScene(
     case "line-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "dotPlot",
@@ -192,6 +204,7 @@ export function legacyScene(
     case "double-dot-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "dotPlot",
@@ -208,6 +221,7 @@ export function legacyScene(
     case "double-box-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "boxPlot",
@@ -252,6 +266,57 @@ export function legacyScene(
               : {}),
           },
         ],
+      };
+    case "histogram": {
+      const peak = Math.max(...f.counts),
+        step = peak > 10 ? 2 : 1;
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bins: { start: f.start, width: f.width, counts: f.counts },
+            max: Math.ceil(peak / step) * step,
+            step,
+            unit: "count",
+            xUnit: f.unit,
+          },
+        ],
+      };
+    }
+    case "scaled-bar-graph":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bars: f.categories.map((c) => ({ label: c.label, value: c.value })),
+            max: f.max,
+            step: f.step,
+            unit: f.unit,
+          },
+        ],
+      };
+    case "picture-graph":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "pictureGraph",
+            id: "graph",
+            rows: f.categories.map((c) => ({ label: c.label, count: c.count })),
+            key: f.key,
+            unit: f.unit,
+          },
+        ],
+      };
+    case "sort-shapes":
+      return {
+        v: 1,
+        width: 340,
+        elements: [{ type: "shapeSort", id: "shapes", shapes: f.shapes }],
       };
   }
 }
