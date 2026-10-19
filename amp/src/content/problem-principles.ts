@@ -1,6 +1,9 @@
 import { transformationPrinciples } from "./transformation-lessons";
+import { linePlotPrinciples } from "./line-plot-lessons";
+import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
+import { comparisonPrinciples } from "./comparison-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
@@ -18,7 +21,10 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...polynomialPrinciples,
+  ...earlyDataPrinciples,
+  ...linePlotPrinciples,
   ...radicalPrinciples,
+  ...comparisonPrinciples,
   ...combinatoricsPrinciples,
   ...transformationPrinciples,
   ...rationalPrinciples,

@@ -5,7 +5,11 @@ import Fastify, { type FastifyInstance } from "fastify";
 import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
-import { generatedProblemSchema, type PublicProblem } from "../math/contracts";
+import {
+  figureCapabilities,
+  generatedProblemSchema,
+  type PublicProblem,
+} from "../math/contracts";
 import {
   generateProblem,
   gradeAnswer,
@@ -315,8 +319,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
           .max(1)
           .default([]),
         figureCapabilities: z
-          .array(z.enum(["measurement-models-v1", "geometry-figures-v1"]))
-          .max(2)
+          .array(z.enum(figureCapabilities))
+          .max(figureCapabilities.length)
           .default([]),
       })
       .strict()

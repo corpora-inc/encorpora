@@ -195,3 +195,26 @@ test("a figure whose image fits no single motion falls back to the static figure
     null,
   );
 });
+
+test("line-plot animations keep every measurement and share the exact mean", () => {
+  for (const id of ["line-plot-whole", "fraction-line-plot"])
+    for (let i = 0; i < 40; i++) {
+      const model = animationModel(problemLesson(id, `stack-${i}`));
+      assert(model?.kind === "line-plot-stack", id);
+      assert.equal(animationFrames(model).length, 3);
+    }
+  for (let i = 0; i < 60; i++) {
+    const lesson = problemLesson("fraction-plot-equal-share", `share-${i}`);
+    const model = animationModel(lesson);
+    assert(model?.kind === "line-plot-share");
+    const { values, denominator } = model.figure;
+    assert.equal(
+      model.share * values.length,
+      values.reduce((a, b) => a + b, 0),
+    );
+    const [n, d] = lesson.example.answer.split("/").map(Number);
+    assert.equal(model.share * (d ?? 1), n! * denominator);
+    assert.ok(model.share >= Math.min(...values));
+    assert.ok(model.share <= Math.max(...values));
+  }
+});

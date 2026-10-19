@@ -206,7 +206,7 @@ export function generateFractionPracticeProblem(
     case "like-fraction-missing-part": {
       const total = r(2, 2 * d),
         part = r(1, total - 1);
-      prompt = `${part}/${d} + ? = ${total}/${d}. What fraction is missing?`;
+      prompt = `${part}/${d} + □ = ${total}/${d}. What fraction is missing?`;
       answer = fraction(total - part, d);
       hint = "All pieces have the same size; find how many more are needed.";
       explanation = [

@@ -115,7 +115,7 @@ def solve_equal_groups(public):
         require(groups >= 2 and total > 0, 'Invalid marble sharing counts')
         return whole_division(total, groups)
     if template == 'unknown-dividend':
-        divisor, quotient = counts(r'\? ÷ ([0-9]+) = ([0-9]+)\. What number belongs in the blank\?', prompt)
+        divisor, quotient = counts(r'[?□] ÷ ([0-9]+) = ([0-9]+)\. What number belongs in the blank\?', prompt)
         require(divisor > 0 and quotient >= 0, 'Division by zero or negative count')
         return sum(divisor for _ in range(quotient))
     if template == 'split-array-part':

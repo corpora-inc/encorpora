@@ -161,7 +161,11 @@ export async function nextProblem(session: TrialSession) {
         body: {
           count: 1,
           responseCapabilities: ["single-choice-v1"],
-          figureCapabilities: ["measurement-models-v1", "geometry-figures-v1"],
+          figureCapabilities: [
+            "measurement-models-v1",
+            "data-displays-v1",
+            "geometry-figures-v1",
+          ],
         },
       },
     );

@@ -3,10 +3,22 @@ import {
   generateTransformationProblem,
 } from "./transformation-practice";
 import {
+  linePlotTemplates,
+  generateLinePlotProblem,
+} from "./line-plot-practice";
+import {
+  earlyDataTemplates,
+  generateEarlyDataProblem,
+} from "./early-data-practice";
+import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
+import {
+  comparisonTemplates,
+  generateComparisonProblem,
+} from "./comparison-practice";
 import {
   rationalTemplates,
   generateRationalProblem,
@@ -193,6 +205,8 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...linePlotTemplates,
+  ...earlyDataTemplates,
   ...integerExponentTemplates,
   ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
@@ -202,6 +216,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...comparisonTemplates,
   ...combinatoricsTemplates,
   ...transformationTemplates,
   ...rationalTemplates,
@@ -325,6 +340,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...transformationTemplates,
+    ...linePlotTemplates,
+    ...earlyDataTemplates,
     ...combinatoricsTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -359,10 +376,16 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (transformationTemplates.some((t) => t.id === templateId))
     return generateTransformationProblem(templateId, seed);
+  if (linePlotTemplates.some((t) => t.id === templateId))
+    return generateLinePlotProblem(templateId, seed);
+  if (earlyDataTemplates.some((t) => t.id === templateId))
+    return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (comparisonTemplates.some((t) => t.id === templateId))
+    return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))
     return generateRationalProblem(templateId, seed);
   if (circleMeasurementTemplates.some((t) => t.id === templateId))

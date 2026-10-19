@@ -1,0 +1,126 @@
+/* Menu button and its action list. Colors are role tokens only: the trigger is
+   a surface-raised role, the list a menu role, and every state uses the role's
+   derived layer with the role's own `on-` text. */
+.trigger {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  height: 44px;
+  min-height: 44px;
+  min-width: 44px;
+  margin: 0;
+  padding: 0 var(--space-3) 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.trigger:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.trigger[data-state="open"],
+.trigger[data-state="open"]:hover:not(:disabled),
+.trigger:active:not(:disabled) {
+  background: var(--color-surface-raised-active);
+  color: var(--color-on-surface-raised);
+}
+.trigger:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--motion-fast) ease;
+}
+.trigger[data-state="open"] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Absorbs the tap that closes the menu so it never presses what lies beneath. */
+.shield {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+.content {
+  z-index: 1000;
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: var(--radix-dropdown-menu-content-available-width);
+  max-height: var(--radix-dropdown-menu-content-available-height);
+  overflow-y: auto;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  animation: menu-in var(--motion-fast) ease-out;
+}
+.content:focus {
+  outline: none;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--target-size);
+  padding: 0 var(--space-3);
+  border-radius: calc(var(--radius-control) - var(--space-1));
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.item[data-highlighted] {
+  outline: none;
+  background: var(--color-menu-hover);
+  color: var(--color-on-menu);
+}
+.item[data-highlighted]:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+.item:active:not([data-disabled]) {
+  background: var(--color-menu-active);
+  color: var(--color-on-menu);
+}
+.item[data-disabled] {
+  background: var(--color-menu);
+  color: var(--color-on-disabled);
+  cursor: default;
+}
