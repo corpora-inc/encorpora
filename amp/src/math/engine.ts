@@ -3,6 +3,10 @@ import {
   generatePatternFunctionProblem,
 } from "./pattern-function-practice";
 import {
+  partWholeTemplates,
+  generatePartWholeProblem,
+} from "./part-whole-practice";
+import {
   linePlotTemplates,
   generateLinePlotProblem,
 } from "./line-plot-practice";
@@ -221,6 +225,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...patternFunctionTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
+  ...partWholeTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -340,6 +345,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...patternFunctionTemplates,
+    ...partWholeTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -376,6 +382,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
+  if (partWholeTemplates.some((t) => t.id === templateId))
+    return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))
     return generateLinePlotProblem(templateId, seed);
   if (earlyDataTemplates.some((t) => t.id === templateId))

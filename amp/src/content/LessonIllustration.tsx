@@ -1,4 +1,5 @@
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
+import { PartWholeIllustration } from "./PartWholeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
@@ -52,6 +53,13 @@ export function LessonIllustration({
     kind === "large-place-value-chart"
   )
     return <ComparisonIllustration kind={kind} />;
+  if (
+    kind === "equal-shares" ||
+    kind === "same-share-shapes" ||
+    kind === "equal-area-regions" ||
+    kind === "compare-same-whole"
+  )
+    return <PartWholeIllustration kind={kind} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||
