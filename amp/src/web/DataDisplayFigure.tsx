@@ -273,11 +273,11 @@ export function DataDisplayFigure({ figure }: { figure: Model }) {
         <svg
           className="figure data-figure"
           data-kind={figure.kind}
-          viewBox="0 0 360 206"
+          viewBox="0 0 360 212"
           role="img"
           aria-label={`Histogram of ${figure.unit}, intervals of ${figure.width}. ${l.bars.map((b) => `${b.from} to less than ${b.from + figure.width}: ${b.count}`).join("; ")}.`}
         >
-          <text x={l.left - 8} y={14} textAnchor="end" style={small}>
+          <text x={l.left - 8} y={16} textAnchor="end" style={small}>
             count
           </text>
           {l.gridlines.map((v) => (
