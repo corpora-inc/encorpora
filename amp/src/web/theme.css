@@ -538,6 +538,13 @@ header {
   margin: 0;
   color: var(--color-muted-text);
 }
+/* A long term would squeeze its meaning into a sliver: stack them instead. */
+@media (max-width: 520px) {
+  .lesson-terms div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
 .lesson-example {
   padding: 14px;
   border: 1px solid var(--color-border);

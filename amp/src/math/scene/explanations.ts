@@ -1,5 +1,5 @@
 import { act, areaModel, lessonStep, numberLine, step } from "./author";
-import { areaScale } from "./components/models";
+import { areaScale } from "./components/area-model";
 import type { Scene } from "./spec";
 import type { Step } from "./timeline";
 

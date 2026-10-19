@@ -14,6 +14,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { AngleTriangleIllustration } from "./AngleTriangleIllustration";
 import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
   NumberSystemIllustration,
@@ -44,7 +45,7 @@ import {
   dataIllustrations,
   isDataIllustration,
 } from "./data-display-illustrations";
-import { DataDisplayFigure } from "../web/DataDisplayFigure";
+import { Figure } from "../web/Figure";
 import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
 import { SceneFigure } from "../web/scene/SceneFigure";
 import { ScenePlayer } from "../web/scene/ScenePlayer";
@@ -80,7 +81,7 @@ export function LessonIllustration({
   if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
-    return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+    return <Figure figure={dataIllustrations[kind]} />;
   if (isSceneIllustration(kind)) {
     const scene: Scene = sceneIllustrations[kind];
     return scene.steps?.length && !print ? (
@@ -89,6 +90,15 @@ export function LessonIllustration({
       <SceneFigure scene={scene} reveal frame="end" />
     );
   }
+  if (
+    kind === "angle-pairs" ||
+    kind === "parallel-angle-pairs" ||
+    kind === "triangle-sum-line" ||
+    kind === "exterior-angle" ||
+    kind === "side-strips" ||
+    kind === "solid-slices"
+  )
+    return <AngleTriangleIllustration kind={kind} />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||

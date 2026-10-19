@@ -12,6 +12,8 @@ export const portedKinds = [
   "double-dot-plot",
   "box-plot",
   "double-box-plot",
+  "base-ten",
+  "unit-array",
 ] as const;
 export type PortedKind = (typeof portedKinds)[number];
 export function isPorted(
@@ -127,6 +129,36 @@ export function legacyScene(
                 ? [{ summary: f.summary }]
                 : f.groups.map((g) => ({ label: g.label, summary: g.summary })),
             unit: f.unit,
+          },
+        ],
+      };
+    case "base-ten":
+      return {
+        v: 1,
+        width: 340,
+        elements: [
+          {
+            type: "baseTen",
+            id: "blocks",
+            hundreds: f.hundreds,
+            tens: f.tens,
+            ones: f.ones,
+          },
+        ],
+      };
+    case "unit-array":
+      return {
+        v: 1,
+        width: 340,
+        elements: [
+          {
+            type: "array",
+            id: "array",
+            rows: f.rows,
+            columns: f.columns,
+            ...(f.splitAfterRow
+              ? { splitAfterRow: f.splitAfterRow, regionLabels: true }
+              : {}),
           },
         ],
       };

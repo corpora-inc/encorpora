@@ -1,6 +1,7 @@
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
+import { linearFunctionFacetMappings } from "./linear-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
 import { timeMoneyFacetMappings } from "./time-money-coverage";
@@ -17,6 +18,7 @@ import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
+import { angleTriangleFacetMappings } from "./angle-triangle-coverage";
 import { realNumberFacetMappings } from "./real-number-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
@@ -58,10 +60,12 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factsFacetMappings,
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
+  ...angleTriangleFacetMappings,
   ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
   ...ratioRateFacetMappings,
   ...patternFunctionFacetMappings,
+  ...linearFunctionFacetMappings,
   ...equationFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
