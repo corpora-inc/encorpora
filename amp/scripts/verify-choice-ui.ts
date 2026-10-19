@@ -98,6 +98,15 @@ try {
           .getByRole("button", { name: "Choose an answer", exact: true })
           .click();
       await page.getByRole("radio").first().waitFor();
+      for (const option of problem.response.options) {
+        assert.equal(
+          await page
+            .locator(`input[type="radio"][value="${option.id}"]`)
+            .getAttribute("aria-label"),
+          option.label,
+          "Typesetting must preserve each answer’s accessible source label",
+        );
+      }
       assert.equal(
         await page
           .getByRole("button", { name: "Keyboard", exact: true })
@@ -170,7 +179,7 @@ try {
         await page.getByRole("radio").nth(1).isChecked(),
         "Native radio arrow selection",
       );
-      await page.locator(`input[type="radio"][value="${wrong.id}"]`).check();
+      await page.getByRole("radio", { name: wrong.label, exact: true }).check();
       await page.screenshot({
         path: new URL(`${template.id}-${size.width}.png`, directory).pathname,
       });

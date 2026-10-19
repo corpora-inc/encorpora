@@ -309,6 +309,7 @@ export function PracticeWorkspace(props: Props) {
                     type="radio"
                     name={`answer-${problem.id}`}
                     value={option.id}
+                    aria-label={option.label}
                     checked={response === option.id}
                     onChange={() => setResponse(option.id)}
                   />
