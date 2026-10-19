@@ -240,7 +240,7 @@ try {
       0,
     );
     assert.equal(
-      await page.locator("#funding-learner").inputValue(),
+      await page.locator("#funding-learner").getAttribute("data-value"),
       "10720fef-40bf-4e75-8982-208b5e05f84a",
     );
     assert.deepEqual(errors, []);

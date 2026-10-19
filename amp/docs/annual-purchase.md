@@ -10,7 +10,7 @@ A parent selects an owned learner and the workspace checks `GET /api/v1/billing/
 
 Checkout returning successfully is not fulfillment. Completed checkout without a verified ledger grant displays payment processing and offers Check access. The signed-webhook worker verifies the selected subscription invoice and creates the grant. A later full refund revokes the grant. A previously bound subscription without current access shows no current paid access and links to billing before a replacement subscription can be started; the workspace does not infer cancellation or permit an overlapping replacement. Billing management remains available after consent withdrawal and when an offer cannot be loaded.
 
-The workspace directs card entry only to Stripe's hosted checkout and cancellation only to its hosted billing portal. It never collects card details. Cancellation stops future renewal according to the verified portal's end-of-period setting; it is not a refund request. Learning-data deletion does not cancel a subscription. Refunds and unresolved subscription bindings require the merchant's support and reconciliation process.
+The workspace directs payment entry only to Stripe's hosted checkout and cancellation only to its hosted billing portal. It never collects payment details. Cancellation stops future renewal according to the verified portal's end-of-period setting; it is not a refund request. Learning-data deletion does not cancel a subscription. Refunds and unresolved subscription bindings require the merchant's support and reconciliation process.
 
 ## Validation and release boundaries
 

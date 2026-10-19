@@ -1,6 +1,10 @@
+import styles from "./Auth.module.css";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import { queryClient, sessionOptions } from "../../lib/query";
+import { useLoggedError, requestMessage } from "../../feedback";
 import { useEffect, useState, type FormEvent } from "react";
-import { accountClient } from "./account-client";
-import { authConfig, signIn, notifyAccountSessionChanged } from "./auth";
+import { accountClient } from "../../account-client";
+import { authConfig, signIn, notifyAccountSessionChanged } from "../../auth";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -19,18 +23,52 @@ const titles: Record<Step, string> = {
   "two-factor": "Enter your code",
 };
 
-/** Parent sign-in for AMP's own accounts. Success reloads the app, which then
- * finds the session (and saves a trial placement if one is waiting). */
-export function AccountSignIn() {
-  const params = new URLSearchParams(location.search);
+/** Parent sign-in with URL-backed steps and account-scoped session refresh. */
+export function SignInScreen() {
+  const routeLocation = useLocation(),
+    navigate = useNavigate();
+  const params = new URLSearchParams(routeLocation.searchStr);
   const resetToken = params.get("token");
-  const [step, setStep] = useState<Step>(
-    params.has("reset-password") && resetToken
+  const invalidReset =
+    routeLocation.pathname === "/reset-password" &&
+    (!resetToken || params.has("error"));
+  useEffect(() => {
+    if (invalidReset)
+      void navigate({
+        to: "/sign-in/$step",
+        params: { step: "forgot" },
+        search: { error: "reset_link_invalid" },
+        replace: true,
+      });
+  }, [invalidReset]);
+  const step: Step = invalidReset
+    ? "forgot"
+    : (params.has("reset-password") && resetToken) ||
+        routeLocation.pathname === "/reset-password"
       ? "reset"
-      : params.get("sign-in") === "create"
+      : routeLocation.pathname === "/sign-up" ||
+          params.get("sign-in") === "create"
         ? "create"
-        : "sign-in",
-  );
+        : ["forgot", "check-email", "two-factor"].includes(
+              routeLocation.pathname.split("/")[2],
+            )
+          ? (routeLocation.pathname.split("/")[2] as Step)
+          : "sign-in";
+  const setStep = (next: Step) => {
+    const search =
+      params.get("return") === "security"
+        ? { return: "security" as const }
+        : {};
+    if (next === "create") void navigate({ to: "/sign-up", search });
+    else if (next === "sign-in") void navigate({ to: "/sign-in", search });
+    else if (next === "reset")
+      void navigate({
+        to: "/reset-password",
+        search: { ...search, token: resetToken ?? undefined },
+      });
+    else
+      void navigate({ to: "/sign-in/$step", params: { step: next }, search });
+  };
   const [providers, setProviders] = useState<string[]>([]);
   const [passwords, setPasswords] = useState(true);
   const [name, setName] = useState("");
@@ -40,12 +78,15 @@ export function AccountSignIn() {
   const [backup, setBackup] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(
-    params.get("error") === "link_failed"
-      ? "That login could not be linked. Sign in again, then try linking it from Security."
-      : params.get("error")
-        ? "That sign-in did not complete. Try again."
-        : "",
+    invalidReset || params.get("error") === "reset_link_invalid"
+      ? "That password reset link expired or is invalid. Request a new link."
+      : params.get("error") === "link_failed"
+        ? "That login could not be linked. Sign in again, then try linking it from Security."
+        : params.get("error")
+          ? "That sign-in did not complete. Try again."
+          : "",
   );
+  useLoggedError(error);
   const [notice, setNotice] = useState("");
   useEffect(() => {
     void authConfig().then((config) => {
@@ -63,10 +104,22 @@ export function AccountSignIn() {
     setError("");
     setNotice("");
   }
-  const returnTo = params.get("return") === "security" ? "/?security" : "/";
-  const done = () => {
+  const returnTo =
+    params.get("return") === "security" ? "/family/security" : "/";
+  const done = async () => {
     notifyAccountSessionChanged();
-    location.replace(returnTo);
+    await queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 });
+    if (returnTo === "/family/security")
+      await navigate({
+        to: "/$",
+        params: { _splat: "family/security" },
+        replace: true,
+      });
+    else
+      await navigate({
+        to: step === "create" ? "/start/name" : "/",
+        replace: true,
+      });
   };
   async function run(work: () => Promise<void>) {
     setBusy(true);
@@ -97,17 +150,17 @@ export function AccountSignIn() {
           result.data.twoFactorRedirect
         )
           return go("two-factor");
-        done();
+        await done();
       } else if (step === "create") {
         const result = await accountClient.signUp.email({
           name: name.trim(),
           email,
           password,
-          callbackURL: "/",
+          callbackURL: "/start/name",
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet.
-        if (result.data?.token) done();
+        if (result.data?.token) await done();
         else go("check-email");
       } else if (step === "forgot") {
         fail(
@@ -136,7 +189,7 @@ export function AccountSignIn() {
             ? await accountClient.twoFactor.verifyBackupCode({ code })
             : await accountClient.twoFactor.verifyTotp({ code }),
         );
-        done();
+        await done();
       }
     });
   }
@@ -155,7 +208,7 @@ export function AccountSignIn() {
     });
   const showProviders = step === "sign-in" || step === "create";
   return (
-    <section className="card welcome account-sign-in">
+    <section className={`card welcome account-sign-in ${styles.frame}`}>
       <h2>{titles[step]}</h2>
       {notice && (
         <p className="account-notice" role="status">
@@ -175,7 +228,7 @@ export function AccountSignIn() {
           onClick={() =>
             void run(async () => {
               fail(await accountClient.signIn.passkey());
-              done();
+              await done();
             })
           }
         >

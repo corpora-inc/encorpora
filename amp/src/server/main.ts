@@ -123,6 +123,7 @@ if (billingConfig) {
     pool: repository.pool,
     authenticate,
     config: billingConfig,
+    consentPolicy: consentConfig.policy,
   });
 } else await registerUnavailableBilling(app, authenticate);
 await registerOfflineRoutes(app, {

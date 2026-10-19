@@ -1,3 +1,4 @@
+import { useLoggedError, requestMessage } from "./feedback";
 import { useLayoutEffect, useRef, useState } from "react";
 import type { ConsentView } from "../parent-consent/contracts.js";
 import type { ConsentChallenge } from "./consent-link.js";
@@ -22,6 +23,7 @@ export function ParentConsentCenter({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [challenge, setChallenge] = useState(initialChallenge);
+  useLoggedError(error);
   const view = viewOwner === identity ? storedView : null;
   const epoch = useRef(0),
     tokenRef = useRef(token),

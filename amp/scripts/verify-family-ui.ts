@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -14,7 +15,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import {createRoot} from 'react-dom/client';import {FamilyCenter} from '../../src/web/FamilyCenter';import '../../src/web/style.css';const root=createRoot(document.getElementById('root')!);const harness={events:[] as string[],render(token:string,identity=token){root.render(<FamilyCenter token={token} identity={identity} onChanged={summary=>harness.events.push('changed:'+summary.learners.map(l=>l.name).join(','))} onClose={()=>{}} onLearningInvalidated={()=>harness.events.push('invalidated')}/>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
+  `import React from 'react';import {createRoot} from 'react-dom/client';import {FixtureRouter,FamilyFixture} from '../../scripts/family-fixture';import '../../src/web/style.css';import '../../src/web/theme.css';import '../../src/web/premium-controls.css';const root=createRoot(document.getElementById('root')!);const harness={events:[] as string[],render(token:string,identity=token){root.render(<FixtureRouter><FamilyFixture token={token} identity={identity} events={harness.events}/></FixtureRouter>);},unmount(){root.render(<p>Different account screen</p>)}};(window as any).familyHarness=harness;harness.render('ui-fixture');`,
 );
 let failExport = false,
   exportPosts = 0;
@@ -88,7 +89,7 @@ try {
   let held!: () => void, releaseSummary!: () => void;
   let summaryHeld = Promise.resolve(),
     summaryRelease = Promise.resolve();
-  await page.route("**/api/v1/family", async (route) => {
+  await page.route("**/api/v1/me", async (route) => {
     if (failNextSummary) {
       failNextSummary = false;
       return route.fulfill({
@@ -102,7 +103,7 @@ try {
       held();
       await summaryRelease;
     }
-    return route.fulfill({ json: snapshot });
+    return route.fulfill({ json: fixtureMe(snapshot) });
   });
   await page.route(
     "**/api/v1/family/learners/fixture/rename",
@@ -210,6 +211,39 @@ try {
     }
     await section("Learners");
   }
+  // Hover keeps every button readable: a light button never takes the
+  // primary fill while its text stays dark.
+  const luminance = (css: string) => {
+    const [r, g, b] = css
+      .match(/[\d.]+/g)!
+      .slice(0, 3)
+      .map((v) => {
+        const c = Number(v) / 255;
+        return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+      });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  for (const name of ["Learners", "Access", "Privacy"]) {
+    await section(name);
+    for (const button of await page.locator("main button:visible").all()) {
+      if (await button.isDisabled()) continue;
+      await button.hover();
+      const [label, text, fill, alpha] = await button.evaluate((el) => {
+        const style = getComputedStyle(el);
+        return [
+          el.textContent ?? "",
+          style.color,
+          style.backgroundColor,
+          style.backgroundColor.startsWith("rgba") ? style.backgroundColor : "",
+        ];
+      });
+      if (/,\s*0\)$/.test(alpha)) continue; // transparent: text sits on the page
+      const [hi, lo] = [luminance(text), luminance(fill)].sort((a, b) => b - a);
+      const ratio = (hi + 0.05) / (lo + 0.05);
+      assert.ok(ratio >= 4.5, `hovered "${label}" contrast ${ratio.toFixed(2)}`);
+    }
+  }
+  await section("Learners");
   family = {
     ...family,
     learners: family.learners.map((learner) => ({
@@ -359,7 +393,10 @@ try {
       { exact: true },
     )
     .waitFor();
-  assert.match(await page.getByRole("status").innerText(), /Consent withdrawn/);
+  assert.match(
+    await page.locator(".family-notice").innerText(),
+    /Consent withdrawn/,
+  );
   assert.ok(
     (
       await page.evaluate(

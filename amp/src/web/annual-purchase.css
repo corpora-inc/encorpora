@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: #183e3a;
+  color: var(--ink, #183e3a);
   box-sizing: border-box;
 }
 .annual-header {
@@ -69,8 +69,8 @@
   width: 100%;
   min-height: 46px;
   padding: 8px 12px;
-  color: #183e3a;
-  background: white;
+  color: var(--ink, #183e3a);
+  background: var(--surface, white);
   border: 1px solid #9eb4ab;
   border-radius: 10px;
   font: inherit;
@@ -81,7 +81,7 @@
   padding: 12px 14px;
   border: 1px solid #c8d8cf;
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface, #fff);
 }
 .annual-plan p {
   margin: 0;
@@ -89,7 +89,7 @@
   line-height: 1.45;
 }
 .annual-plan .annual-price {
-  color: #183e3a;
+  color: var(--ink, #183e3a);
   font-size: 30px;
   font-weight: 750;
   line-height: 1.2;

@@ -9,7 +9,8 @@ import {
 export interface CheckoutBinding {
   id: string;
   accountId: string;
-  learnerId: string;
+  learnerId: string | null;
+  assignedLearnerId?: string;
   customerId: string;
   subscriptionId?: string;
   sessionId?: string;
@@ -32,6 +33,9 @@ export interface AnnualPayment {
   paidAt: number;
   chargeId: string;
   fullRefundAt?: number;
+  paymentMethod?: string;
+  invoiceReason?: string;
+  disputed?: boolean;
 }
 export function annualEvents(
   config: StripeBillingConfig,
@@ -64,6 +68,10 @@ export function annualEvents(
     throw new BillingError(
       interval === "year" ? "invalid_annual_term" : "invalid_monthly_term",
     );
+  if (p.fullRefundAt !== undefined && p.fullRefundAt < p.paidAt)
+    throw new BillingError("invalid_refund_time");
+  // Validate the payment before projecting an account entitlement or learner grant.
+  if (binding.learnerId === null) return [];
   const instant = (seconds: number) => new Date(seconds * 1000).toISOString();
   const namespace = stripeNamespace(config);
   const orderId = `stripe:${namespace}:${p.invoiceId}`;

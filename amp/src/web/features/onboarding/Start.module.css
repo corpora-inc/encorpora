@@ -1,0 +1,53 @@
+.root {
+  width: 100%;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: var(--space-5) var(--space-4);
+  color: var(--ink);
+  background: var(--bg);
+}
+.root :global(.start-card) {
+  width: min(100%, var(--width-form));
+  margin: 0;
+}
+.root h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-size: clamp(var(--text-title-min), 6vw, var(--text-title-max));
+  line-height: 1.15;
+  margin: var(--space-5) 0 var(--space-4);
+}
+.root p {
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.root form {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.root label {
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.root :global(.setup-progress) {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: var(--text-label);
+}
+
+.verificationActions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.verificationActions button {
+  width: 100%;
+}

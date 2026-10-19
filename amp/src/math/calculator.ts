@@ -10,6 +10,10 @@ const COMPUTATION_STRANDS = new Set([
   "decimals",
 ]);
 const COMPUTATION_TEMPLATES = new Set([
+  "simplify-square-root",
+  "combine-square-roots",
+  "multiply-square-roots",
+  "rationalize-radical-denominator",
   "negative-integer-power",
   "product-of-powers-exponent",
   "quotient-of-powers-exponent",

@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -58,9 +59,10 @@ await mkdir(output, {
 try {
   const page = await browser.newPage({ hasTouch: true });
   await page.goto("http://127.0.0.1:4442");
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
   const rows = [];
   const fixtures: {
     name: string;

@@ -1,3 +1,8 @@
+import { registerEnrollmentRoutes } from "./enrollment-routes.js";
+import {
+  ConsentError,
+  type ConsentPolicy,
+} from "../../parent-consent/contracts.js";
 import { annualOffer, purchaseStatus } from "./purchase.js";
 import { createHash } from "node:crypto";
 import type { FastifyInstance } from "fastify";
@@ -13,6 +18,7 @@ export interface StripeRouteOptions {
   authenticate: Authenticator;
   config: StripeBillingConfig;
   gateway?: StripeGateway;
+  consentPolicy?: ConsentPolicy | null;
 }
 /** Authenticate identities here; do not pass a consent-gated authenticator (portal permits cancellation after withdrawal). */
 export async function registerStripeRoutes(
@@ -21,12 +27,12 @@ export async function registerStripeRoutes(
 ): Promise<StripeBilling> {
   const gateway = options.gateway ?? new StripeGateway(options.config);
   const billing = new StripeBilling(
-    new StripeRepository(options.pool, options.config),
+    new StripeRepository(options.pool, options.config, options.consentPolicy),
     gateway,
   );
   app.register(async (scope) => {
     scope.setErrorHandler((error, _request, reply) => {
-      if (error instanceof BillingError)
+      if (error instanceof BillingError || error instanceof ConsentError)
         return reply.code(error.statusCode).send({ error: error.code });
       const status =
         typeof error === "object" && error !== null && "statusCode" in error
@@ -36,6 +42,7 @@ export async function registerStripeRoutes(
         error: status === 401 ? "sign_in_required" : "billing_unavailable",
       });
     });
+    registerEnrollmentRoutes(scope, options, billing);
     scope.get("/api/v1/billing/offer", async (request, reply) => {
       await options.authenticate(request);
       reply.header("Cache-Control", "no-store");
@@ -57,7 +64,7 @@ export async function registerStripeRoutes(
         if (!z.uuid().safeParse(request.params.purchaseId).success)
           return reply.code(400).send({ error: "invalid_purchase" });
         const result = await options.pool.query(
-          "SELECT learner_id FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND id=$3",
+          "SELECT COALESCE(learner_id,to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id') AS learner_id FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND id=$3",
           [billing.repository.namespace, accountId, request.params.purchaseId],
         );
         if (!result.rowCount)

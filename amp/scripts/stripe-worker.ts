@@ -1,3 +1,4 @@
+import { loadConsentPolicy } from "../src/parent-consent/policy.js";
 import { createDatabasePool } from "../src/server/database.js";
 import { stripeConfig } from "../src/billing/stripe/config.js";
 import { StripeGateway } from "../src/billing/stripe/gateway.js";
@@ -11,7 +12,11 @@ const pool = createDatabasePool({
 });
 try {
   const billing = new StripeBilling(
-    new StripeRepository(pool, config),
+    new StripeRepository(
+      pool,
+      config,
+      await loadConsentPolicy(process.env.AMP_CONSENT_POLICY_FILE),
+    ),
     new StripeGateway(config),
   );
   const result = await billing.runBatch(

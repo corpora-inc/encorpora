@@ -1,3 +1,4 @@
+import { radicalPrinciples } from "./radical-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
 import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
@@ -16,6 +17,7 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...absoluteValuePrinciples,
   ...polynomialPrinciples,
+  ...radicalPrinciples,
   ...circleMeasurementPrinciples,
   ...percentChangePrinciples,
   ...inequalityPrinciples,
