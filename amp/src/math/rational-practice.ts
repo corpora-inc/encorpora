@@ -155,7 +155,7 @@ function sumCase(r: Random): Case {
       ? `Subtracting a number is adding its opposite: $${prompt} = ${tex(a)} + ${operand(addend)}$.`
       : `The expression is a sum: $${prompt}$. Each fraction keeps its own sign.`,
     `The least common denominator of ${a.d} and ${b.d} is ${l}, the smallest number that both denominators divide.`,
-    `Rename both fractions in ${l}ths, add the signed numerators and reduce: $${sumSteps(a, addend)}$.`,
+    `Rename both fractions with denominator ${l}, add the signed numerators and reduce: $${sumSteps(a, addend)}$.`,
     `Check: $${tex(value)} - ${operand(addend)} = ${tex(a)}$.`,
   ];
   return {

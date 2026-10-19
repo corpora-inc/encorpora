@@ -1505,7 +1505,7 @@ for (const [skillId, suffix, description] of [
   [
     "complex-fractions",
     "numeric-complex-fractions",
-    "Simplify a complex fraction whose numerator and denominator are a fraction or a sum or difference of a fraction and a fraction or whole number.",
+    "Simplify a complex fraction whose numerator and denominator are a fraction or a sum or difference of a fraction and a fraction or whole number, where a single numerator fraction or any sum or difference may be negative.",
   ],
   [
     "rational-exponents",

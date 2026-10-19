@@ -13,7 +13,7 @@ export const rationalFacetMappings: readonly FacetMapping[] = [
   [
     "complex-fraction",
     "complex-fractions.numeric-complex-fractions",
-    "Simplify a complex fraction whose numerator and denominator are each a positive fraction or a sum or difference of a fraction and a fraction or a whole number from 1 to 3.",
+    "Simplify a complex fraction whose numerator and denominator are each a fraction or a sum or difference of a fraction and a fraction or a whole number from 1 to 3; a single numerator fraction or any sum or difference may be negative.",
   ],
   [
     "rational-power",
