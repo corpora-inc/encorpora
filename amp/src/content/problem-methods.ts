@@ -1,3 +1,4 @@
+import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { rationalMethods } from "./rational-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
@@ -15,6 +16,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...volumeCoordinateMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,

@@ -18,6 +18,7 @@ import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
 import { LessonIllustration } from "./LessonIllustration";
 import { product } from "../product";
 import React from "react";
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Figure } from "../web/Figure";
 import { generateProblem } from "../math/engine";
@@ -25,6 +26,10 @@ import type { Lesson } from "./lessons";
 import { PrintMathText, printMathStyles } from "./PrintMathText";
 import { printMathCss } from "./print-fonts";
 export type PublicationKind = "lesson" | "workbook" | "solutions";
+/** Figures paint with color-role tokens; print uses the light theme's values. */
+const printTokens = /:root\s*\{[^}]*\}/.exec(
+  readFileSync(new URL("../web/ui/tokens.css", import.meta.url), "utf8"),
+)![0];
 export function publicationHtml(
   lesson: Lesson,
   kind: PublicationKind,
@@ -203,6 +208,7 @@ export function publicationHtml(
         <head>
           <meta charSet="utf-8" />
           <title>{title}</title>
+          <style>{printTokens}</style>
           <style>{printMathCss()}</style>
           <style>{`@page{margin:18mm}body{font-family:Arial,sans-serif;color:#18332f;line-height:1.55;font-size:10.5pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:1.3px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:27pt;line-height:1.2;margin:24px 0 8px}h2{font-size:12.5pt;line-height:1.5;break-after:avoid}p,li{orphans:3;widows:3}li{margin:3px 0}section{margin:20px 0}.publication-kind{font-size:10pt;letter-spacing:1px;margin:0 0 20px;color:#47635d}.example{padding:22px;border:1px solid #9ab;break-inside:avoid}.example>h2{margin-top:0}.example>ol>li,.exercise>ol:not(.print-choices)>li{margin:0;padding:5px 0;line-height:1.6}.worked-answer{border-top:1px solid #ccd;padding-top:14px;margin:16px 0 0}.representation{break-inside:avoid}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-top:1px;padding-bottom:15px}${printMathStyles}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}.figure text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-left:24px;line-height:1.8;row-gap:2px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{break-before:avoid;break-inside:avoid;font-size:8pt;margin-top:18px;color:#567;border-top:1px solid #ccd;padding-top:10px}`}</style>
         </head>

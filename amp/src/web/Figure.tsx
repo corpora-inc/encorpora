@@ -3,6 +3,7 @@ import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { GeometryFigure } from "./GeometryFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
@@ -10,6 +11,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "cube-prism":
+    case "box-prism":
+    case "composite-prism":
+    case "quadrant-grid":
+      return <GeometryFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;

@@ -1,3 +1,4 @@
+import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
@@ -12,6 +13,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...volumeCoordinatePrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,

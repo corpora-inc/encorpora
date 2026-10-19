@@ -3,9 +3,26 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import {
+  geometryFigureSchemas,
+  type GeometryFigure,
+} from "./geometry-figures.js";
+/** Figure vocabularies a client declares it can draw. A template that needs one
+ * is offered only to clients that declare it, so a stale client never receives
+ * a figure it cannot render. Add a new identifier for each new vocabulary. */
+export const figureCapabilityIds = [
+  "measurement-models-v1",
+  "volume-coordinate-figures-v1",
+] as const;
+export type FigureCapability = (typeof figureCapabilityIds)[number];
+export const figureCapabilitiesSchema = z
+  .array(z.enum(figureCapabilityIds))
+  .max(figureCapabilityIds.length)
+  .default([]);
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | GeometryFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -52,7 +69,7 @@ export type SemanticFigure =
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
   | { kind: "dataset"; values: number[] };
 export interface TemplateMetadata {
-  requiredFigureCapability?: "measurement-models-v1";
+  requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: "single-choice-v1";
   id: string;
@@ -88,6 +105,7 @@ export interface GeneratedProblem {
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
+    ...geometryFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),

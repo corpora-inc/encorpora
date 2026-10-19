@@ -23,6 +23,7 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from volume_coordinate_math_oracle import VOLUME_COORDINATE, VOLUME_COORDINATE_CHOICE, solve_volume_coordinate, review_volume_coordinate_fixtures, review_volume_coordinate_problem
 from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
 from print_math_oracle import review_print_math
@@ -46,7 +47,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = VOLUME_COORDINATE | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -58,6 +59,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in VOLUME_COORDINATE:
+        return solve_volume_coordinate(public)
     if template in RADICAL_TYPES:
         return solve_radical(public)
     if template in RATIONAL_TYPES:
@@ -272,6 +275,7 @@ def solve(public):
 
 
 def review(stream):
+    review_volume_coordinate_fixtures()
     review_radical_arithmetic()
     review_radical_fixtures()
     review_rational_fixtures()
@@ -344,7 +348,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in VOLUME_COORDINATE_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -352,6 +356,8 @@ def review(stream):
             expected = Fraction(solved)
             actual = Fraction(problem['answer'])
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
+        if template in VOLUME_COORDINATE:
+            review_volume_coordinate_problem(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)

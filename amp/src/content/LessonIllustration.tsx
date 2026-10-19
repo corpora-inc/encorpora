@@ -1,3 +1,4 @@
+import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -19,6 +20,12 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "volume-layers" ||
+    kind === "prism-composite" ||
+    kind === "ordered-pair-path"
+  )
+    return <VolumeCoordinateIllustration kind={kind} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||

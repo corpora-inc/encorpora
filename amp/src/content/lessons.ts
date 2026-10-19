@@ -1,4 +1,5 @@
 import { radicalLessons } from "./radical-lessons";
+import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -29,6 +30,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "volume-layers"
+      | "prism-composite"
+      | "ordered-pair-path"
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -528,6 +532,7 @@ export const lessons: readonly Lesson[] = [
   ...radicalLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
+  ...volumeCoordinateLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

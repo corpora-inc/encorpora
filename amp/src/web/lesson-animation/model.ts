@@ -4,8 +4,12 @@ import type { SemanticFigure } from "../../math/contracts";
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
+type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 export type AnimationModel =
   | { kind: "fraction"; figure: Fraction }
+  | { kind: "prism-layers"; figure: CubePrism }
+  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
 const integer = (n: number, min: number, max: number) =>
@@ -23,6 +27,22 @@ export function animationModel(
     integer(f.selected, 0, f.parts)
   )
     return { kind: "fraction", figure: f };
+  if (
+    (lesson.templateId === "unit-cube-volume" ||
+      lesson.templateId === "cube-layer-count") &&
+    f?.kind === "cube-prism" &&
+    integer(f.length, 1, 6) &&
+    integer(f.width, 1, 6) &&
+    integer(f.height, 2, 6)
+  )
+    return { kind: "prism-layers", figure: f };
+  if (
+    lesson.templateId === "first-quadrant-coordinates" &&
+    f?.kind === "quadrant-grid" &&
+    integer(f.size, 4, 10) &&
+    f.points.length === 1
+  )
+    return { kind: "quadrant-walk", figure: f };
   if (
     lesson.templateId === "split-array-part" &&
     f?.kind === "unit-array" &&
@@ -47,6 +67,47 @@ export function animationModel(
   return null;
 }
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "prism-layers") {
+    const { length: l, width: w, height: h } = model.figure,
+      layer = l * w;
+    return [
+      {
+        title: "One layer",
+        text: `The top shows ${l} by ${w} cubes. The bottom layer is the same.`,
+        math: `$${l} \\times ${w} = ${layer}$ cubes`,
+      },
+      {
+        title: "Stack the layers",
+        text: `${h} identical layers fill the prism, hidden cubes included.`,
+        math: `$${h}$ layers`,
+      },
+      {
+        title: "Multiply",
+        text: `Each of the ${h} layers holds ${layer} cubes.`,
+        math: `$V = ${layer} \\times ${h} = ${layer * h}$ cubic units`,
+      },
+    ];
+  }
+  if (model.kind === "quadrant-walk") {
+    const { x, y } = model.figure.points[0]!;
+    return [
+      {
+        title: "Start at the origin",
+        text: "Both coordinates are 0 where the axes meet.",
+        math: "$(0, 0)$",
+      },
+      {
+        title: "Across first",
+        text: `Go ${x} across along the x-axis: the first coordinate.`,
+        math: `$x = ${x}$`,
+      },
+      {
+        title: "Then up",
+        text: `Go ${y} up to reach the point: the second coordinate.`,
+        math: `$(${x}, ${y})$`,
+      },
+    ];
+  }
   if (model.kind === "fraction") {
     const { parts: d, selected: n } = model.figure;
     return [

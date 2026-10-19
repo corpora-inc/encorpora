@@ -43,7 +43,11 @@ import type { BookSummary } from "../../books/catalog";
 import type { FractionBook } from "../../../books/fraction-field-guide/schema";
 import { product } from "../../product";
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import type { PublicProblem, TemplateMetadata } from "../../math/contracts";
+import {
+  figureCapabilityIds,
+  type PublicProblem,
+  type TemplateMetadata,
+} from "../../math/contracts";
 import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
@@ -781,7 +785,7 @@ function LegacyScreen() {
       ...(templateId ? { templateId } : {}),
       count: 1,
       responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: ["measurement-models-v1"],
+      figureCapabilities: [...figureCapabilityIds],
     });
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
