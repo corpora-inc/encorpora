@@ -312,7 +312,7 @@ function relatedCase(r: Random): Case {
   const extend = r(0, 1) === 1;
   const later = r(6, 12) * a;
   const question = extend
-    ? `The patterns continue. Which term of pattern B is paired with ${later} in pattern A?`
+    ? `The patterns continue. Which term of pattern B matches ${later} in pattern A?`
     : "Each term of pattern B is how many times the matching term of pattern A?";
   const explanation = [
     `Each step adds ${a} to pattern A and ${b} to pattern B. Since ${b} = ${k} × ${a}, pattern B gains ${k} times as much as pattern A at every step.`,
@@ -324,7 +324,7 @@ function relatedCase(r: Random): Case {
       : `Each term of pattern B is ${k} times the matching term of pattern A. On the graph, every point (A, B) has a B-coordinate ${k} times its A-coordinate, so the points line up through (0, 0).`,
   );
   return {
-    prompt: `Pattern A starts at 0. Its rule is “add ${a}.” Pattern B starts at 0. Its rule is “add ${b}.” The table pairs matching terms, and the graph shows each pair as a point (A, B). ${question}`,
+    prompt: `Pattern A starts at 0 and adds ${a} each step. Pattern B starts at 0 and adds ${b} each step. ${question}`,
     answer: extend ? k * later : k,
     hint: extend
       ? `Each step adds ${a} to pattern A and ${b} to pattern B, so every B-term is the same multiple of its A-term. Find that multiple from a row of the table, then apply it to ${later}.`
@@ -352,6 +352,7 @@ type Context = {
   key: string;
   kind: "rate" | "offset";
   intro: (c: number) => string;
+  /** One sentence naming the variables; their units label the table. */
   shows: string;
   x: string;
   y: string;
@@ -375,7 +376,7 @@ export const equationContexts: Context[] = [
     key: "car",
     kind: "rate",
     intro: () => "A car travels at a constant speed.",
-    shows: "the distance d, in miles, that it has traveled after t hours",
+    shows: "After t hours it has gone d miles.",
     x: "t",
     y: "d",
     xUnit: "hours",
@@ -387,7 +388,7 @@ export const equationContexts: Context[] = [
     key: "pay",
     kind: "rate",
     intro: () => "Sam is paid the same amount for every hour of work.",
-    shows: "Sam's pay p, in dollars, for h hours of work",
+    shows: "For h hours, Sam earns p dollars.",
     x: "h",
     y: "p",
     xUnit: "hours",
@@ -399,7 +400,7 @@ export const equationContexts: Context[] = [
     key: "printer",
     kind: "rate",
     intro: () => "A printer prints pages at a constant rate.",
-    shows: "the number of pages p printed in m minutes",
+    shows: "In m minutes it prints p pages.",
     x: "m",
     y: "p",
     xUnit: "minutes",
@@ -411,7 +412,7 @@ export const equationContexts: Context[] = [
     key: "tickets",
     kind: "rate",
     intro: () => "Every ticket to a show costs the same amount.",
-    shows: "the cost c, in dollars, of n tickets",
+    shows: "n tickets cost c dollars.",
     x: "n",
     y: "c",
     xUnit: "tickets",
@@ -423,7 +424,7 @@ export const equationContexts: Context[] = [
     key: "ages",
     kind: "offset",
     intro: (c) => `Mia is always ${c} years older than her brother.`,
-    shows: "Mia's age m when her brother's age is b, both in years",
+    shows: "When her brother is b, Mia is m.",
     x: "b",
     y: "m",
     xUnit: "years",
@@ -438,10 +439,8 @@ export const equationContexts: Context[] = [
   {
     key: "greenhouse",
     kind: "offset",
-    intro: (c) =>
-      `A greenhouse is always ${c} degrees Fahrenheit warmer than the air outside.`,
-    shows:
-      "the greenhouse temperature g when the outside temperature is a, both in degrees Fahrenheit",
+    intro: (c) => `A greenhouse is always ${c} °F warmer than the air outside.`,
+    shows: "When it is a °F outside, the greenhouse is g °F.",
     x: "a",
     y: "g",
     xUnit: "°F",
@@ -510,7 +509,7 @@ function equationCase(r: Random): Case {
       : `So ${y} is always ${c} more than ${x}: ${correct}. On the graph, the points lie on a line that crosses the vertical axis at ${c} and rises 1 for each 1 to the right.`,
   ];
   return {
-    prompt: `${ctx.intro(c)} The table and graph show ${ctx.shows}. Which equation gives ${y} in terms of ${x}?`,
+    prompt: `${ctx.intro(c)} ${ctx.shows} Which equation gives ${y} in terms of ${x}?`,
     hint: rate
       ? `Take one row: when ${x} = ${row.x}, ${y} = ${row.y}. Is ${row.y} a fixed number times ${row.x}, or a fixed number more than ${row.x}? Test the same on a second row.`
       : `The story gives ${c}. Take one row: when ${x} = ${row.x}, ${y} = ${row.y}. Is ${row.y} equal to ${c} times ${row.x}, or ${c} more than ${row.x}?`,

@@ -321,7 +321,7 @@ function samplePlot(r: Random): Draft {
     };
   const p = thousands(population);
   return {
-    prompt: `Ten students each took a random sample of 20 of the ${p} students at their school and counted how many ${c.trait}. The dot plot shows the ten counts. Using the mean count, estimate how many of the ${p} students ${c.trait}.`,
+    prompt: `Ten students each took a random sample of 20 students at their school and counted how many ${c.trait}. Using the mean count, estimate how many of all ${p} students ${c.trait}.`,
     figure,
     answer: `${estimate}`,
     hint: `Find the mean of the ten counts: the typical number out of 20. Then take that same fraction of all ${p} students.`,

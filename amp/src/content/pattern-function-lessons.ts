@@ -141,7 +141,7 @@ export const patternFunctionLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Pattern A starts at 0. Its rule is “add 2.” Pattern B starts at 0. Its rule is “add 6.” Each term of pattern B is how many times the matching term of pattern A?",
+        "Pattern A starts at 0 and adds 2 each step. Pattern B starts at 0 and adds 6 each step. Each term of pattern B is how many times the matching term of pattern A?",
       steps: [
         "Pattern A is 0, 2, 4, 6, 8 and pattern B is 0, 6, 12, 18, 24. The pairs are (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24).",
         "B's step is 6 and A's step is 2, and 6 = 3 × 2, so B grows 3 times as fast.",

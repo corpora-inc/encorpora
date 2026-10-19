@@ -85,6 +85,8 @@ def solve_angle(public):
         require(found is not None and list(found.groups()) == p['labels'], 'The named angle is the drawn one')
         r0, r1 = p['rays']
         require(r0 in (0, 180) and 0 <= r1 <= 180, 'The first ray lies on the baseline')
+        for overlay in (e for e in el.values() if e['type'] == 'angle'):
+            require(sorted(overlay['rays']) == sorted(p['rays']), 'The sweep runs between the drawn rays')
         return abs(r1 - r0)
     if family == 'adjacent-angles':
         (g,) = [e for e in el.values() if e['type'] == 'angle']

@@ -1,3 +1,4 @@
+import { CompletingSquareIllustration } from "./CompletingSquareIllustration";
 import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
@@ -230,6 +231,12 @@ export function LessonIllustration({
     kind === "rational-power-ladder"
   )
     return <RationalIllustration kind={kind} />;
+  if (
+    kind === "complete-square-area" ||
+    kind === "complete-square-balance" ||
+    kind === "complete-square-scaled"
+  )
+    return <CompletingSquareIllustration kind={kind} />;
   if (
     kind === "circle-circumference" ||
     kind === "circle-area" ||
