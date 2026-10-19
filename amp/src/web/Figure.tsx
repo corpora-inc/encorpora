@@ -1,5 +1,6 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
+import { AttributeFigure } from "./AttributeFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
@@ -13,6 +14,12 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "length-rods":
+    case "unit-measure":
+    case "balance":
+    case "pour":
+    case "liquid-scale":
+      return <AttributeFigure figure={figure} />;
     case "partitioned-shapes":
     case "area-partition":
     case "fraction-bars":

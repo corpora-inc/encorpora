@@ -4,6 +4,10 @@ import {
   type MeasurementFigure,
 } from "./measurement-models.js";
 import {
+  attributeFigureSchemas,
+  type AttributeFigure,
+} from "./attribute-models.js";
+import {
   partWholeFigureSchemas,
   type PartWholeFigure,
 } from "./part-whole-models.js";
@@ -15,6 +19,7 @@ import {
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
+  | AttributeFigure
   | DataDisplayFigure
   | {
       kind: "unit-array";
@@ -113,6 +118,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
+    ...attributeFigureSchemas,
     ...dataDisplayFigureSchemas,
     z
       .object({
