@@ -17,6 +17,8 @@ import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import { comparisonLessons } from "./comparison-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
+import { factArrayLessons } from "./fact-arrays-lessons";
+import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -53,6 +55,7 @@ export interface Lesson {
       | "rate-through-one"
       | "fraction-rate-copies"
       | "story-tapes"
+      | FactArrayIllustrationKind
       | ShapeIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
@@ -252,47 +255,6 @@ export const baseLessons: Lesson[] = [
     ],
     parentGuide:
       "Give the learner fourteen small objects and ask them to show both taking away six and building six up to fourteen.",
-  },
-  {
-    id: "multiplication",
-    title: "Equal groups and arrays",
-    summary: "Multiplication counts equal groups efficiently.",
-    templateIds: ["multiply-facts"],
-    objectives: [
-      "Interpret a product as equal groups.",
-      "Use known facts to derive another product.",
-    ],
-    sections: [
-      {
-        title: "Every group must be equal",
-        paragraphs: [
-          "Four groups of six means 6 + 6 + 6 + 6. We write 4 × 6. The first factor can name the number of groups and the second the size of each group.",
-          "Draw four rows with six dots in each row. The array has twenty-four dots. Turning the array shows six rows of four without changing the total.",
-        ],
-      },
-      {
-        title: "Build from a known fact",
-        paragraphs: [
-          "Split a difficult fact into easier groups. For 7 × 6, five groups of six make thirty and two groups of six make twelve. Together they make forty-two.",
-          "This is the distributive property: (5 + 2) × 6 = 5 × 6 + 2 × 6. The same idea supports larger multiplication.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is 7 × 6?",
-      steps: [
-        "Split 7 groups into 5 groups and 2 groups.",
-        "5 × 6 = 30 and 2 × 6 = 12.",
-        "30 + 12 = 42.",
-      ],
-      answer: "42",
-    },
-    pitfalls: [
-      "Unequal group sizes cannot be represented by one multiplication fact without another step.",
-      "Adding the factors gives a different quantity from multiplying them.",
-    ],
-    parentGuide:
-      "Draw a seven-by-six array, divide it after five rows, and ask the learner to explain how both smaller arrays help.",
   },
   {
     id: "fractions",
@@ -606,6 +568,7 @@ export const lessons: readonly Lesson[] = [
   ...comparisonLessons,
   ...addSubtractLessons,
   ...factsLessons,
+  ...factArrayLessons,
   ...combinatoricsLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,

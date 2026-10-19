@@ -11,6 +11,7 @@ import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
+import { FactArrayIllustration } from "./FactArrayIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -88,6 +89,16 @@ export function LessonIllustration({
     kind === "ten-hundred-digits"
   )
     return <FactsIllustration kind={kind} />;
+  if (
+    kind === "array-rows-columns" ||
+    kind === "array-turn" ||
+    kind === "split-array" ||
+    kind === "fact-family-array" ||
+    kind === "share-measure" ||
+    kind === "missing-factor-skip" ||
+    kind === "table-patterns"
+  )
+    return <FactArrayIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||

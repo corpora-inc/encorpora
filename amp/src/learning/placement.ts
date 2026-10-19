@@ -89,7 +89,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-like-numerators",
     ],
     ["rectangle-area"],
-    ["divide-facts"],
+    ["divide-facts", "share-or-group"],
   ],
   // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
   // place value, measurement.
