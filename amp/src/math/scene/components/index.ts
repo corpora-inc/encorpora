@@ -10,6 +10,7 @@ import { baseTenSchema } from "./base-ten";
 import { clockSchema } from "./clock";
 import { fractionBarSchema } from "./fraction-bar";
 import { graphSchema } from "./graph";
+import { lineTableSchema } from "./line-table";
 import { numberLineSchema } from "./number-line";
 import { polyAreaSchema } from "./poly-area";
 import { rowBarsSchema } from "./row-bars";
@@ -24,6 +25,7 @@ export const componentSchemas = [
   clockSchema,
   fractionBarSchema,
   graphSchema,
+  lineTableSchema,
   numberLineSchema,
   polyAreaSchema,
   protractorSchema,
@@ -39,6 +41,7 @@ export * from "./base-ten";
 export * from "./clock";
 export * from "./fraction-bar";
 export * from "./graph";
+export * from "./line-table";
 export * from "./number-line";
 export * from "./poly-area";
 export * from "./row-bars";

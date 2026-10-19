@@ -1,6 +1,7 @@
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
+import { linearFunctionLessons } from "./linear-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
@@ -628,6 +629,7 @@ export const lessons: readonly Lesson[] = [
   ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
+  ...linearFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
