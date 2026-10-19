@@ -37,6 +37,7 @@ test("logs a specific safe error with request id, never response bodies", async 
     kind: "permission",
     message: "Continue setup to review parent consent.",
     requestId: "fixture-request",
+    code: "consent_required",
   });
   expect(JSON.stringify(log.mock.calls)).not.toContain("private");
 });
