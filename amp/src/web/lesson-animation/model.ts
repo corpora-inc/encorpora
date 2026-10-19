@@ -1,5 +1,10 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
-import type { SemanticFigure } from "../../math/contracts";
+import type {
+  CoordinateGeometryFigure,
+  PlaneMotion,
+  SemanticFigure,
+} from "../../math/contracts";
+import { applyMotion } from "../../math/plane-motion";
 import {
   geometryAnimationModel,
   geometryFrames,
@@ -139,7 +144,15 @@ export type AnimationModel =
   /** A point reflected across 0 onto its opposite. */
   | { kind: "opposite"; value: number; min: number; max: number }
   /** Signed changes added one jump at a time; values are exact halves. */
-  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number };
+  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number }
+  | {
+      kind: "motion";
+      /** The pre-image alone, in a window that also holds the image. */
+      figure: CoordinateGeometryFigure;
+      motion: PlaneMotion;
+      given: LabeledPoint[];
+      image: LabeledPoint[];
+    };
 const half = (n: number) => Number.isFinite(n) && Number.isInteger(n * 2);
 /** Running positions of a jump sequence, exact for halves. */
 export const jumpStops = (start: number, jumps: number[]) =>
@@ -176,6 +189,101 @@ export function tenPair(
   ] as const)
     if (addends[p[0]] + addends[p[1]] === 10) return [...p];
   return null;
+}
+type LabeledPoint = { x: number; y: number; label: string };
+const motionTemplates = new Set([
+  "transformation-image",
+  "identify-rigid-motion",
+  "dilation-image",
+  "dilation-scale-factor",
+]);
+const moved = applyMotion;
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
+/** The single motion carrying every given vertex onto its labeled image, if any. */
+function detectMotion(
+  given: LabeledPoint[],
+  image: LabeledPoint[],
+): PlaneMotion | null {
+  const first = given.find((p) => p.x !== 0);
+  const candidates: PlaneMotion[] = [
+    { kind: "reflect", axis: "x" },
+    { kind: "reflect", axis: "y" },
+    { kind: "rotate", degrees: 90 },
+    { kind: "rotate", degrees: 180 },
+    { kind: "rotate", degrees: 270 },
+    {
+      kind: "translate",
+      dx: image[0]!.x - given[0]!.x,
+      dy: image[0]!.y - given[0]!.y,
+    },
+  ];
+  if (first) {
+    const i = given.indexOf(first),
+      num = image[i]!.x,
+      den = first.x,
+      g = gcd(num, den) * Math.sign(den);
+    if (Number.isInteger(num) && num / den > 0)
+      candidates.push({
+        kind: "dilate",
+        numerator: num / g,
+        denominator: den / g,
+      });
+  }
+  const fits = candidates.filter((m) =>
+    given.every((p, i) => {
+      const q = moved(m, p);
+      return q.x === image[i]!.x && q.y === image[i]!.y;
+    }),
+  );
+  return fits.length === 1 ? fits[0]! : null;
+}
+function motionModel(
+  f: CoordinateGeometryFigure,
+): Extract<AnimationModel, { kind: "motion" }> | null {
+  const givenShapes = f.shapes.filter((s) => s.role === "given"),
+    imageShapes = f.shapes.filter((s) => s.role === "image");
+  if (givenShapes.length !== 1 || imageShapes.length > 1) return null;
+  const given = givenShapes[0]!.vertices;
+  if (given.length !== 3 || !givenShapes[0]!.closed) return null;
+  let motion = f.motion ?? null;
+  if (!motion) {
+    const image = imageShapes[0]?.vertices;
+    if (!image || image.length !== 3) return null;
+    if (!image.every((v, i) => v.label === `${given[i]!.label}′`)) return null;
+    motion = detectMotion(given, image);
+  }
+  if (!motion) return null;
+  if (
+    motion.kind === "dilate" &&
+    (motion.numerator <= 0 || motion.denominator <= 0)
+  )
+    return null;
+  const image = given.map((p) => ({
+    ...moved(motion, p),
+    label: `${p.label}′`,
+  }));
+  if (image.some((p) => !Number.isInteger(p.x) || !Number.isInteger(p.y)))
+    return null;
+  const all = [...given, ...image, { x: 0, y: 0 }];
+  const window = {
+    xMin: Math.min(...all.map((p) => p.x)) - 1,
+    xMax: Math.max(...all.map((p) => p.x)) + 1,
+    yMin: Math.min(...all.map((p) => p.y)) - 1,
+    yMax: Math.max(...all.map((p) => p.y)) + 1,
+  };
+  if (window.xMax - window.xMin > 24 || window.yMax - window.yMin > 24)
+    return null;
+  return {
+    kind: "motion",
+    figure: {
+      kind: "coordinate-geometry",
+      ...window,
+      shapes: [{ role: "given", closed: true, vertices: given }],
+    },
+    motion,
+    given,
+    image,
+  };
 }
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
@@ -619,6 +727,11 @@ export function animationModel(
       return { kind: "exchange", figure: f, unit: 10 };
   }
   if (
+    motionTemplates.has(lesson.templateId) &&
+    f?.kind === "coordinate-geometry"
+  )
+    return motionModel(f);
+  if (
     (lesson.templateId === "balance-one-step" ||
       lesson.templateId === "balance-two-step") &&
     f?.kind === "balance-scale"
@@ -768,6 +881,78 @@ const UNIT: Record<number, [string, string]> = {
   3: ["third", "thirds"],
   4: ["quarter", "quarters"],
 };
+const coordTex = (v: number) => String(v);
+const texPoints = (points: LabeledPoint[]) =>
+  // One formula per point, so a narrow panel wraps between points.
+  points
+    .map((p) => `$${p.label.replace("′", "'")}(${coordTex(p.x)}, ${coordTex(p.y)})$`)
+    .join(", ");
+const amount = (v: number, plus: string, minus: string) =>
+  `${Math.abs(v)} ${Math.abs(v) === 1 ? "unit" : "units"} ${v > 0 ? plus : minus}`;
+function motionFrames(model: Extract<AnimationModel, { kind: "motion" }>) {
+  const m = model.motion;
+  const k =
+    m.kind === "dilate"
+      ? m.denominator === 1
+        ? String(m.numerator)
+        : `${m.numerator}/${m.denominator}`
+      : "";
+  const kTex =
+    m.kind === "dilate"
+      ? m.denominator === 1
+        ? String(m.numerator)
+        : `\\tfrac{${m.numerator}}{${m.denominator}}`
+      : "";
+  const [guideTitle, guideText, rule, result] =
+    m.kind === "translate"
+      ? [
+          "Slide every point",
+          `Every vertex moves ${[...(m.dx ? [amount(m.dx, "right", "left")] : []), ...(m.dy ? [amount(m.dy, "up", "down")] : [])].join(" and ")}.`,
+          `$(x, y) \\to (x ${m.dx < 0 ? "-" : "+"} ${Math.abs(m.dx)},\\ y ${m.dy < 0 ? "-" : "+"} ${Math.abs(m.dy)})$`,
+          "Same size and shape, in a new place.",
+        ]
+      : m.kind === "reflect"
+        ? [
+            `Mirror line: the ${m.axis}-axis`,
+            `Each vertex moves straight across the ${m.axis}-axis, at a right angle to it, to the same distance on the other side.`,
+            m.axis === "x" ? "$(x, y) \\to (x, -y)$" : "$(x, y) \\to (-x, y)$",
+            `Same size and shape, flipped over the ${m.axis}-axis.`,
+          ]
+        : m.kind === "rotate"
+          ? [
+              m.degrees === 180
+                ? "Half turn about the origin"
+                : "Quarter turn about the origin",
+              `Each vertex turns ${m.degrees === 180 ? "180°" : `90° ${m.degrees === 90 ? "counterclockwise" : "clockwise"}`} around the origin and keeps its distance from it.`,
+              m.degrees === 90
+                ? "$(x, y) \\to (-y, x)$"
+                : m.degrees === 180
+                  ? "$(x, y) \\to (-x, -y)$"
+                  : "$(x, y) \\to (y, -x)$",
+              "Same size and shape, turned about the origin.",
+            ]
+          : [
+              "Rays from the center",
+              `Each vertex moves along its ray from the origin, and its distance from the origin is multiplied by ${k}.`,
+              `$(x, y) \\to (${kTex}x,\\ ${kTex}y)$`,
+              m.numerator > m.denominator
+                ? `Same shape; every length is ${k} times as long.`
+                : `Same shape; every length is ${k} as long.`,
+            ];
+  return [
+    {
+      title: "The pre-image",
+      text: `Triangle ${model.given.map((p) => p.label).join("")} before the ${m.kind === "dilate" ? "dilation" : "motion"}.`,
+      math: texPoints(model.given),
+    },
+    { title: guideTitle, text: guideText, math: rule },
+    {
+      title: `The image ${model.image.map((p) => p.label).join("")}`,
+      text: result,
+      math: texPoints(model.image),
+    },
+  ];
+}
 function validPlot(f: LinePlot) {
   return (
     integer(f.start, 0, 400) &&
@@ -856,6 +1041,7 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "motion") return motionFrames(model);
   if (
     model.kind === "triangle-sum" ||
     model.kind === "exterior-angle" ||
