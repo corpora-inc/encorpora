@@ -1,3 +1,4 @@
+import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
@@ -14,6 +15,7 @@ import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
 import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
+import { factArrayMethods } from "./fact-arrays-lessons";
 import { rationalMethods } from "./rational-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { integerExponentMethods } from "./integer-exponent-lessons";
@@ -47,7 +49,9 @@ export const methods: Record<string, ProblemMethod> = {
   ...comparisonMethods,
   ...addSubtractMethods,
   ...factsMethods,
+  ...factArrayMethods,
   ...combinatoricsMethods,
+  ...ratioRateMethods,
   ...patternFunctionMethods,
   ...equationMethods,
   ...rationalMethods,
@@ -345,33 +349,6 @@ export const methods: Record<string, ProblemMethod> = {
       "An even number leaves 0 unpaired; an odd number leaves 1.",
     ],
     watch: "A number is even when its ones digit is 0, 2, 4, 6 or 8.",
-  },
-  "multiply-facts": {
-    goal: "Given two factors, find their product.",
-    terms: [
-      ["factor", "A number being multiplied."],
-      ["product", "The result of multiplying."],
-    ],
-    method: [
-      "a × b means a groups of b.",
-      "Use a fact you know: double a 2s fact for 4s, add one group to a 5s fact for 6s.",
-      "Swapping the factors gives the same product.",
-    ],
-    watch: "7 × 8 = 7 × 4 doubled: 28 + 28 = 56.",
-  },
-  "divide-facts": {
-    goal: "Given a division, find the quotient.",
-    terms: [
-      ["dividend", "The number being divided."],
-      ["divisor", "The number you divide by."],
-      ["quotient", "The result of dividing."],
-    ],
-    method: [
-      "Read 56 ÷ 7 as: how many groups of 7 make 56?",
-      "Find the missing factor in 7 × ? = 56 from a fact you know.",
-      "The missing factor is the quotient.",
-    ],
-    watch: "Check by multiplying: quotient × divisor must give the dividend.",
   },
   "equal-tray-total": {
     goal: "Given a number of trays and how many are on each, find the total.",
