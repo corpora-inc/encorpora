@@ -22,6 +22,7 @@ export const routes = [
   "/amp/",
   "/esa/",
   "/parents/",
+  "/schools/",
   "/support/",
   "/try/",
   "/samples/",
@@ -36,6 +37,7 @@ const titles: Record<string, string> = {
   "/amp/": "AMP Mathematics · Practice that follows your understanding",
   "/esa/": "Pay with education funds · Corpora",
   "/parents/": "Parents’ questions · AMP Mathematics",
+  "/schools/": "Mathematics curriculum for schools and districts · Corpora",
   "/support/": "Support · Corpora",
   "/try/": "Try AMP Mathematics",
   "/samples/": "AMP · Printable practice sample",
@@ -545,6 +547,116 @@ function Parents({ config }: { config: SiteConfig }) {
     </>
   );
 }
+function Schools({ config }: { config: SiteConfig }) {
+  const subject = "AMP Mathematics school inquiry";
+  const body = [
+    "School or district:",
+    "Your role:",
+    "Grade range and mathematics topics:",
+    "Approximate number of learners:",
+    "Desired start date:",
+    "Curriculum review or purchasing requirements:",
+    "",
+    "Please do not include student names or records.",
+  ].join("\n");
+  return (
+    <>
+      <Intro
+        label="Schools · Districts · Private schools"
+        heading="Review AMP for your school."
+      >
+        <p className="lead">
+          A digital mathematics curriculum built around adaptive mixed practice,
+          with lessons and printable worksheets. Explore the materials, then
+          discuss the scope and licenses your learners need.
+        </p>
+        <div className="actions">
+          {config.supportEmail ? (
+            <a
+              className="button"
+              href={`mailto:${config.supportEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
+            >
+              Ask about school licenses <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <p>
+              School inquiries will open when contact details are published.
+            </p>
+          )}
+          <a className="text-link" href="/samples/">
+            View printable samples →
+          </a>
+        </div>
+      </Intro>
+      <section className="section">
+        <div className="section-heading">
+          <p className="eyebrow">Curriculum review</p>
+          <h2>Start with the mathematics.</h2>
+        </div>
+        <ol className="steps">
+          <li>
+            <span className="step-number">01</span>
+            <div>
+              <h3>Match your learning goals.</h3>
+              <p>
+                Check the <a href="/amp/#coverage">current topic coverage</a>{" "}
+                against your grade range and curriculum requirements. Share the
+                skills you want students to develop.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span className="step-number">02</span>
+            <div>
+              <h3>Examine the instruction.</h3>
+              <p>
+                Explore <a href="/amp/">worked problems and lesson examples</a>,
+                then print a{" "}
+                <a href="/samples/">worksheet with its solution key</a>. Review
+                how the explanations and practice fit your teaching.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span className="step-number">03</span>
+            <div>
+              <h3>Define the purchase.</h3>
+              <p>
+                Tell us your approximate learner count, desired start date and
+                purchasing process. Confirm license scope, pricing, access and
+                support in a written proposal before placing an order.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section className="section prose">
+        <h2>Bring your review requirements.</h2>
+        <p>
+          Share curriculum criteria, accessibility questions, data-agreement
+          requirements and vendor forms. Include any required account-management
+          or integration capabilities so their availability can be confirmed.
+        </p>
+        <p>
+          Read our <a href="/legal/privacy/">privacy notice</a>,{" "}
+          <a href="/legal/accessibility/">accessibility statement</a>,{" "}
+          <a href="/legal/terms/">terms</a> and{" "}
+          <a href="/legal/refund/">refund policy</a> as part of your review.
+          Your school or district determines its purchasing and funding
+          requirements.
+        </p>
+        <h2>Tell us about your school.</h2>
+        <p>
+          Include your school or district, your role, grade range, approximate
+          seat count and desired start date. Use your work contact details;
+          student names, records and login credentials are not needed for an
+          inquiry.
+        </p>
+        <Contact config={config} />
+      </section>
+    </>
+  );
+}
 function Printable() {
   return (
     <>
@@ -605,13 +717,16 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
   const structuredData = funding && fundingStructuredData(funding, config);
   const description =
     funding?.page?.summary ??
-    "Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage.";
+    (route === "/schools/"
+      ? "Review AMP Mathematics for your school or district: adaptive practice, lessons, printable samples and school-license inquiries."
+      : "Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage.");
   let content: ReactNode;
   if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
   else if (route === "/esa/") content = <Esa config={config} />;
   else if (funding) content = <FundingPage funding={funding} />;
   else if (route === "/parents/") content = <Parents config={config} />;
+  else if (route === "/schools/") content = <Schools config={config} />;
   else if (route === "/support/")
     content = (
       <>
@@ -748,6 +863,9 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
             <a className="nav-secondary" href="/parents/">
               Parents
             </a>
+            <a className="nav-secondary" href="/schools/">
+              Schools
+            </a>
             <Try config={config} />
           </nav>
         </header>
@@ -763,6 +881,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
             <a href="/amp/">AMP Mathematics</a>
             <a href="/esa/">Education funds</a>
             <a href="/parents/">Parents FAQ</a>
+            <a href="/schools/">Schools & districts</a>
             <a href="/support/">Support</a>
             {Object.entries(legalTitles).map(([slug, label]) => (
               <a key={slug} href={`/legal/${slug}/`}>

@@ -1,3 +1,4 @@
+import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
@@ -71,6 +72,7 @@ try {
     for (const template of [
       ...choiceTemplates,
       ...linearSystemTemplates,
+      ...absoluteValueTemplates,
       ...algebraTemplates.filter(
         (t) => t.requiredResponseCapability === "single-choice-v1",
       ),
@@ -202,11 +204,9 @@ try {
         });
       await page.getByRole("button", { name: "Check", exact: true }).click();
       if (lostAcknowledgment) {
-        await page
-          .getByRole("button", { name: "Retry", exact: true })
-          .waitFor();
+        await page.getByText("Check your connection").waitFor();
         assert.ok(await page.getByRole("radio").first().isDisabled());
-        await page.getByRole("button", { name: "Retry", exact: true }).click();
+        await page.getByRole("button", { name: "Check", exact: true }).click();
       }
       await page.locator(".feedback.incorrect").waitFor();
       if (lostAcknowledgment) {

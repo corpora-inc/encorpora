@@ -1,10 +1,38 @@
 import { transformationLessons } from "./transformation-lessons";
+import { factoringLessons } from "./factoring-lessons";
+import { ratioRateLessons } from "./ratio-rate-lessons";
+import { patternFunctionLessons } from "./pattern-function-lessons";
+import { equationLessons } from "./equation-lessons";
+import { distributionLessons } from "./distribution-lessons";
+import { inferenceLessons } from "./inference-lessons";
+import { bivariateLessons } from "./bivariate-lessons";
+import { partWholeLessons } from "./part-whole-lessons";
+import { decimalLessons } from "./decimal-lessons";
+import { timeMoneyLessons } from "./time-money-lessons";
+import { attributeLessons } from "./attribute-lessons";
+import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
+import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { realNumberLessons } from "./real-number-lessons";
+import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
+import { shapeLessons } from "./shape-lessons";
+import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { AngleIllustrationKind } from "./AngleIllustration";
+import { angleLessons } from "./angle-lessons";
+import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { multiplyDivideLessons } from "./multiply-divide-lessons";
+import { addSubtractLessons } from "./add-subtract-lessons";
+import { factsLessons } from "./facts-lessons";
+import { factArrayLessons } from "./fact-arrays-lessons";
+import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
+import type { EarlyOperationsIllustrationKind } from "./EarlyOperationsIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -16,6 +44,7 @@ import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
+import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
 import { choiceLessons } from "./choice-lessons.js";
@@ -41,11 +70,79 @@ export interface Lesson {
       | "dilation-rays"
       | "similar-triangles-marked"
       | "scale-drawing-plan"
+      | "factoring-gcf"
+      | "factoring-monic"
+      | "factoring-nonmonic"
+      | "repeating-decimal-shift"
+      | "root-zoom"
+      | "root-solutions"
+      | "decimal-point-shift"
+      | "scientific-regroup"
+      | "prime-factor-venn"
+      | "gcf-area"
+      | "multiple-jumps"
+      | "long-division"
+      | "elevation-line"
+      | "opposite-line"
+      | "story-jumps"
+      | AttributeIllustrationKind
+      | "multiply-tens-groups"
+      | "area-model-product"
+      | "standard-algorithm-product"
+      | "partial-quotients"
+      | "partial-quotients-two-digit"
+      | "rate-double-line"
+      | "unit-price-tapes"
+      | "ratio-table-scaling"
+      | "rate-through-one"
+      | "fraction-rate-copies"
+      | "story-tapes"
+      | FactArrayIllustrationKind
+      | EarlyOperationsIllustrationKind
+      | ShapeIllustrationKind
+      | AngleIllustrationKind
+      | PolygonIllustrationKind
+      | "pattern-rule-steps"
+      | "related-patterns-graph"
+      | "dependent-variable-graph"
+      | "compare-functions-graph"
+      | "linear-nonlinear-graph"
+      | "clock-hour-half"
+      | "clock-five-minutes"
+      | "coin-values"
+      | "coin-count-on"
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
+      | "decimal-tenths-hundredths"
+      | "decimal-compare-chart"
+      | "decimal-rounding-line"
+      | "decimal-aligned-sum"
+      | "column-addition"
+      | "base-ten-trade"
+      | "column-subtraction-zero"
+      | "column-multidigit"
+      | "volume-layers"
+      | "prism-composite"
+      | "ordered-pair-path"
+      | "five-frame-facts"
+      | "count-on-hops"
+      | "make-ten-frames"
+      | "ten-hundred-digits"
+      | "equal-shares"
+      | "same-share-shapes"
+      | "equal-area-regions"
+      | "compare-same-whole"
       | "comparison-pairing"
       | "comparison-number-path"
       | "comparison-place-chart"
       | "large-place-value-chart"
       | DataIllustration
+      | SceneIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -73,6 +170,8 @@ export interface Lesson {
       | "linear-system-intersection"
       | "linear-system-count"
       | "right-triangle-orientation"
+      | "absolute-value-distance"
+      | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
   workedExample: {
@@ -204,47 +303,6 @@ export const baseLessons: Lesson[] = [
     ],
     parentGuide:
       "Give the learner fourteen small objects and ask them to show both taking away six and building six up to fourteen.",
-  },
-  {
-    id: "multiplication",
-    title: "Equal groups and arrays",
-    summary: "Multiplication counts equal groups efficiently.",
-    templateIds: ["multiply-facts"],
-    objectives: [
-      "Interpret a product as equal groups.",
-      "Use known facts to derive another product.",
-    ],
-    sections: [
-      {
-        title: "Every group must be equal",
-        paragraphs: [
-          "Four groups of six means 6 + 6 + 6 + 6. We write 4 × 6. The first factor can name the number of groups and the second the size of each group.",
-          "Draw four rows with six dots in each row. The array has twenty-four dots. Turning the array shows six rows of four without changing the total.",
-        ],
-      },
-      {
-        title: "Build from a known fact",
-        paragraphs: [
-          "Split a difficult fact into easier groups. For 7 × 6, five groups of six make thirty and two groups of six make twelve. Together they make forty-two.",
-          "This is the distributive property: (5 + 2) × 6 = 5 × 6 + 2 × 6. The same idea supports larger multiplication.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is 7 × 6?",
-      steps: [
-        "Split 7 groups into 5 groups and 2 groups.",
-        "5 × 6 = 30 and 2 × 6 = 12.",
-        "30 + 12 = 42.",
-      ],
-      answer: "42",
-    },
-    pitfalls: [
-      "Unequal group sizes cannot be represented by one multiplication fact without another step.",
-      "Adding the factors gives a different quantity from multiplying them.",
-    ],
-    parentGuide:
-      "Draw a seven-by-six array, divide it after five rows, and ask the learner to explain how both smaller arrays help.",
   },
   {
     id: "fractions",
@@ -542,19 +600,41 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...factoringLessons,
   ...integerExponentLessons,
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
+  ...absoluteValueLessons,
   ...polynomialLessons,
   ...earlyDataLessons,
   ...linePlotLessons,
+  ...distributionLessons,
+  ...inferenceLessons,
+  ...bivariateLessons,
   ...radicalLessons,
+  ...partWholeLessons,
+  ...decimalLessons,
+  ...timeMoneyLessons,
+  ...attributeLessons,
   ...comparisonLessons,
+  ...multiplyDivideLessons,
+  ...addSubtractLessons,
+  ...factsLessons,
+  ...factArrayLessons,
   ...combinatoricsLessons,
   ...transformationLessons,
+  ...realNumberLessons,
+  ...numberSystemLessons,
+  ...ratioRateLessons,
+  ...patternFunctionLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
+  ...volumeCoordinateLessons,
+  ...shapeLessons,
+  ...angleLessons,
+  ...polygonLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

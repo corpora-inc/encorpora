@@ -14,7 +14,9 @@ import {
   stressPopulations,
 } from "./frontier/synthetic-learner";
 import { loadFrozenCatalog } from "./frontier/frozen-catalog";
-import type { estimateFrontier } from "../src/learning/frontier";
+// The baseline commit's production estimator predates the guessing term; its
+// options are the experimental shape without `itemOf`, which it ignores.
+import type { estimateExperimentalFrontier as estimateFrontier } from "../src/learning/experimental-frontier";
 import type { planMixedPractice } from "../src/server/mixed-practice";
 
 // Compare policy versions with an identical selected catalog, learners, and seeds.

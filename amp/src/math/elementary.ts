@@ -4,7 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { wasWere, hasHave } from "./agreement.js";
+import { wasWere, hasHave, isAre } from "./agreement.js";
 const definitions = [
   [
     "join-within-10",
@@ -21,13 +21,6 @@ const definitions = [
     "Find a remainder in a removal story within ten.",
   ],
   [
-    "number-bond-missing",
-    "Find the other part",
-    "number-bonds",
-    "K",
-    "Complete a two-part decomposition of a number through ten.",
-  ],
-  [
     "ten-frame-complement",
     "Fill a ten-frame",
     "make-ten",
@@ -42,32 +35,11 @@ const definitions = [
     "Compose eleven through nineteen from ten ones and extras.",
   ],
   [
-    "unknown-addend-story",
-    "Find what was added",
-    "missing-addend",
-    "1",
-    "Recover an unknown change from a start and total within twenty.",
-  ],
-  [
     "missing-start-story",
     "Find the starting amount",
     "addition-stories",
     "1",
     "Recover a starting amount from a removal and remaining amount.",
-  ],
-  [
-    "balanced-addition",
-    "Make both sides equal",
-    "equality",
-    "1",
-    "Find a missing number in an equation with arithmetic on both sides.",
-  ],
-  [
-    "three-addend-story",
-    "Combine three groups",
-    "three-addends",
-    "1",
-    "Add three quantities with a total at most twenty.",
   ],
   [
     "make-ten-remainder",
@@ -161,13 +133,6 @@ const definitions = [
     "Continue a count by fives tens or hundreds within one thousand.",
   ],
   [
-    "two-step-change",
-    "Follow two changes",
-    "two-step-stories",
-    "2",
-    "Solve a join-then-remove story within one hundred.",
-  ],
-  [
     "continue-count-to-120",
     "Continue counting",
     "tens-and-ones",
@@ -232,7 +197,7 @@ export function generateElementaryProblem(
       figure = { kind: "ten-frame", first: a, second: b, capacity: 10 };
       prompt = `There are ${a} round counters and ${b} square counters. How many counters altogether?`;
       answer = a + b;
-      hint = "Count both groups, touching each counter once.";
+      hint = `Say ${a} for the ${a} round counters. Then count on one number for each of the ${b} square counters.`;
       explanation = [
         `The two parts are ${a} and ${b}.`,
         `Join the parts: ${a} + ${b} = ${answer}.`,
@@ -245,25 +210,11 @@ export function generateElementaryProblem(
       figure = { kind: "ten-frame", first: a, second: 0, capacity: 10 };
       prompt = `There are ${a} counters. Take away ${b}. How many are left?`;
       answer = a - b;
-      hint =
-        "The picture shows the starting group. Cover the counters you take away.";
+      hint = `Start with all ${a} counters. Cover ${b} of them, then count the counters still showing.`;
       explanation = [
         `Start with ${a} counters.`,
         `Remove ${b}: ${a} − ${b} = ${answer}.`,
         `Check: ${answer} + ${b} = ${a}.`,
-      ];
-      break;
-    }
-    case "number-bond-missing": {
-      const total = r(2, 10),
-        part = r(0, total);
-      prompt = `${total} = ${part} + □. What number belongs in the box?`;
-      answer = total - part;
-      hint = "Find the part that joins the known part to make the whole.";
-      explanation = [
-        `The whole is ${total}; one part is ${part}.`,
-        `The other part is ${total} − ${part} = ${answer}.`,
-        `Together: ${part} + ${answer} = ${total}.`,
       ];
       break;
     }
@@ -272,7 +223,10 @@ export function generateElementaryProblem(
       figure = { kind: "ten-frame", first: n, second: 0, capacity: 10 };
       prompt = "How many more counters will fill this ten-frame?";
       answer = 10 - n;
-      hint = "Count the empty places. Each place holds one counter.";
+      hint =
+        n >= 5
+          ? "A ten-frame has 10 places, and the top row is full. Count the empty places in the bottom row."
+          : "A ten-frame has 10 places. The bottom row is all empty, so start at 5 and count on the empty places in the top row.";
       explanation = [
         `The frame has 10 places and ${n} counters.`,
         `There are 10 − ${n} = ${answer} empty places.`,
@@ -286,25 +240,14 @@ export function generateElementaryProblem(
       prompt =
         "One frame is full. How many counters are in both frames altogether?";
       answer = 10 + extra;
-      hint = "A full ten-frame holds ten. Count on for the extras.";
+      hint =
+        extra > 5
+          ? "The full frame is 10. In the other frame, the top row adds 5 more; then count on through its bottom row."
+          : "The full frame is 10. Say 10, then count on one number for each counter in the other frame.";
       explanation = [
         `The full frame has 10 counters.`,
         `The other frame has ${extra}.`,
         `10 + ${extra} = ${answer}.`,
-      ];
-      break;
-    }
-    case "unknown-addend-story": {
-      const start = r(1, 15),
-        added = r(1, 20 - start),
-        total = start + added;
-      prompt = `There were ${start} blocks. More blocks were added. There are ${total} now. How many were added?`;
-      answer = added;
-      hint = "Count from the starting amount up to the total.";
-      explanation = [
-        `The missing change makes ${start} + □ = ${total}.`,
-        `Find it by subtracting: ${total} − ${start} = ${added}.`,
-        `Check: ${start} + ${added} = ${total}.`,
       ];
       break;
     }
@@ -314,40 +257,11 @@ export function generateElementaryProblem(
         left = total - removed;
       prompt = `Some blocks were in a box. ${removed} ${wasWere(removed)} taken out and ${left} stayed. How many were in the box at first?`;
       answer = total;
-      hint = "Put the removed blocks and the remaining blocks back together.";
+      hint = `At first the box held both groups: the ${removed} taken out and the ${left} that stayed. Put them back together.`;
       explanation = [
         `The starting group was split into ${removed} removed and ${left} remaining.`,
         `The start was ${removed} + ${left} = ${total}.`,
         `Check: ${total} − ${removed} = ${left}.`,
-      ];
-      break;
-    }
-    case "balanced-addition": {
-      const a = r(1, 9),
-        b = r(1, 10),
-        c = r(0, a + b);
-      prompt = `${a} + ${b} = □ + ${c}. What number makes both sides equal?`;
-      answer = a + b - c;
-      hint =
-        "Find the total on the left. The right side must have that same total.";
-      explanation = [
-        `The left side is ${a} + ${b} = ${a + b}.`,
-        `The missing part is ${a + b} − ${c} = ${answer}.`,
-        `Both sides equal ${a + b}.`,
-      ];
-      break;
-    }
-    case "three-addend-story": {
-      const a = r(1, 8),
-        b = r(1, 8),
-        c = r(1, 20 - a - b);
-      prompt = `A box holds ${a} red blocks, ${b} blue blocks, and ${c} green blocks. How many blocks?`;
-      answer = a + b + c;
-      hint = "Combine two groups, then add the third group.";
-      explanation = [
-        `First combine ${a} + ${b} = ${a + b}.`,
-        `Then add ${c}: ${a + b} + ${c} = ${answer}.`,
-        `Changing the grouping does not change the total.`,
       ];
       break;
     }
@@ -358,7 +272,7 @@ export function generateElementaryProblem(
       figure = { kind: "ten-frame", first: a, second: b, capacity: 20 };
       prompt = `To add ${a} + ${b}, move ${needed} from ${b} to make ten. How much of ${b} is left?`;
       answer = b - needed;
-      hint = "Split the second addend into the part used and the part left.";
+      hint = `Split ${b} into two parts: the ${needed} that moves to the ${a}, and the part that stays.`;
       explanation = [
         `${a} needs ${needed} more to make 10.`,
         `Split ${b} into ${needed} and ${answer}.`,
@@ -372,7 +286,7 @@ export function generateElementaryProblem(
         b = r(first + 1, 9);
       prompt = `To find ${a} − ${b}, first take away ${first} to reach ten. How many more must you take away?`;
       answer = b - first;
-      hint = "The total amount to remove has two parts.";
+      hint = `You take away ${b} in all, in two parts: ${first} first, then the rest: ${first} + □ = ${b}.`;
       explanation = [
         `You must remove ${b} in all.`,
         `${first} ${hasHave(first)} been removed, leaving ${b} − ${first} = ${answer} more to remove.`,
@@ -386,7 +300,7 @@ export function generateElementaryProblem(
       figure = { kind: "base-ten", hundreds: 0, tens, ones };
       prompt = "What number do these tens and ones show?";
       answer = 10 * tens + ones;
-      hint = "Each long rod holds ten ones. Each small square is one.";
+      hint = `There ${isAre(tens)} ${tens} ${tens === 1 ? "rod" : "rods"} of ten. Count ${tens === 1 ? "it" : "them"} by tens, then count on one for each small square.`;
       explanation = [
         `${tens} tens have the value ${tens * 10}.`,
         `Add ${ones} ones: ${tens * 10} + ${ones} = ${answer}.`,
@@ -399,7 +313,7 @@ export function generateElementaryProblem(
       figure = blocks(n);
       prompt = `What is ten ${more ? "more" : "less"} than ${n}?`;
       answer = n + (more ? 10 : -10);
-      hint = `${more ? "Add" : "Remove"} one ten. Keep the ones unchanged.`;
+      hint = `${n} is ${Math.floor(n / 10)} tens and ${n % 10} ones. Ten ${more ? "more adds" : "less removes"} one ten; the ${n % 10} ones stay.`;
       explanation = [
         `${n} is ${Math.floor(n / 10)} tens and ${n % 10} ones.`,
         `${more ? "One more" : "One fewer"} ten gives ${Math.floor(answer / 10)} tens and ${answer % 10} ones: ${answer}.`,
@@ -414,7 +328,7 @@ export function generateElementaryProblem(
       figure = blocks(a);
       prompt = `The blocks show ${a}. Add ${b} ones. What is the new total?`;
       answer = a + b;
-      hint = "Combine the ones. Exchange ten ones for one new ten.";
+      hint = `The ones make ${ones} + ${b}, more than 9. Trade 10 of those ones for one new ten.`;
       explanation = [
         `The ones give ${ones} + ${b} = ${ones + b}.`,
         `Exchange 10 ones for a ten, leaving ${ones + b - 10} ones.`,
@@ -428,7 +342,7 @@ export function generateElementaryProblem(
       figure = blocks(a);
       prompt = `The model shows ${a}. Take away ${b}. What number is left?`;
       answer = a - b;
-      hint = "Subtract the number of tens, then name their value.";
+      hint = `${a} is ${a / 10} tens and ${b} is ${b / 10} tens. Take ${b / 10} tens from ${a / 10} tens.`;
       explanation = [
         `${a} is ${a / 10} tens; ${b} is ${b / 10} tens.`,
         `${a / 10} − ${b / 10} = ${answer / 10} tens.`,
@@ -443,7 +357,7 @@ export function generateElementaryProblem(
       figure = { kind: "base-ten", hundreds: h, tens: t, ones: o };
       prompt = "What number does this base-ten model show?";
       answer = h * 100 + t * 10 + o;
-      hint = "Add the value of the hundreds, the tens, and the ones.";
+      hint = `There ${isAre(h)} ${h} ${h === 1 ? "flat" : "flats"} of one hundred: that is the hundreds digit. Then count the rods for the tens digit and the small squares for the ones digit.`;
       explanation = [
         `${h} hundreds = ${100 * h}; ${t} tens = ${10 * t}; ${o} ones = ${o}.`,
         `${100 * h} + ${10 * t} + ${o} = ${answer}.`,
@@ -458,8 +372,9 @@ export function generateElementaryProblem(
         n = 100 * h + 10 * t + o;
       prompt = `${n} = ${100 * h} + □ + ${o}. What value belongs in the box?`;
       answer = 10 * t;
-      hint =
-        "The middle part gives the value of the tens, not just the tens digit.";
+      hint = t
+        ? `${n} has the digit ${t} in the tens place. The box needs the value of ${t} tens, not the digit.`
+        : `Read the tens digit of ${n}, its middle digit. The box needs that many tens, as a value.`;
       explanation = [
         `${n} has ${h} hundreds, ${t} tens, and ${o} ones.`,
         `${t} tens have value ${answer}.`,
@@ -475,7 +390,9 @@ export function generateElementaryProblem(
       figure = { kind: "base-ten", hundreds: h, tens: t, ones: o };
       prompt = `Trade ten ${tradeOnes ? "ones for one ten" : "tens for one hundred"}. How many ${tradeOnes ? "tens" : "hundreds"} will there be?`;
       answer = tradeOnes ? t + 1 : h + 1;
-      hint = "An exchange changes the groups, but not their total value.";
+      hint = tradeOnes
+        ? `Ten of the ${o} ones become one new ten, which joins the tens. Trading never changes the total.`
+        : `Ten of the ${t} tens become one new hundred, which joins the hundreds. Trading never changes the total.`;
       explanation = tradeOnes
         ? [
             `Exchange 10 of the ${o} ones for one ten.`,
@@ -495,8 +412,7 @@ export function generateElementaryProblem(
         ones = values.reduce((s, v) => s + (v % 10), 0);
       prompt = `Find the total: ${values.join(" + ")}.`;
       answer = values.reduce((s, v) => s + v, 0);
-      hint =
-        "Combine the tens and the ones separately, then exchange any group of ten ones.";
+      hint = `Add the tens, ${values.map((v) => v - (v % 10)).join(" + ")}, and the ones, ${values.map((v) => v % 10).join(" + ")}, separately. Then combine them.`;
       explanation = [
         `The tens contribute ${tens * 10}; the ones contribute ${ones}.`,
         `${tens * 10} + ${ones} = ${answer}.`,
@@ -512,8 +428,7 @@ export function generateElementaryProblem(
         h = Math.floor(a / 100) + Math.floor(b / 100);
       prompt = `Add: ${a} + ${b}.`;
       answer = a + b;
-      hint =
-        "Add ones first. Exchange ten ones for a ten, then check whether the tens make a hundred.";
+      hint = `Start with the ones: ${a % 10} + ${b % 10} is more than 9, so trade 10 of those ones for 1 ten.`;
       explanation = [
         `Ones: ${a % 10} + ${b % 10} = ${o}. Keep ${o - 10} ones and exchange 10 ones for 1 ten.`,
         `Tens including that exchange: ${t}. ${t >= 10 ? `Exchange 10 tens for 1 hundred and keep ${t - 10} tens.` : `Keep ${t} tens.`}`,
@@ -557,8 +472,9 @@ export function generateElementaryProblem(
         `Subtract tens: ${tt} − ${Math.floor(b / 10) % 10} = ${tt - (Math.floor(b / 10) % 10)}.`,
         `Subtract hundreds: ${hh} − ${Math.floor(b / 100)} = ${hh - Math.floor(b / 100)}. The difference is ${answer}.`,
       );
-      hint =
-        "Exchange a ten for ones. If there are no tens, first exchange a hundred for ten tens.";
+      hint = t
+        ? `The ones are ${o} − ${b % 10}: not enough ones. Trade 1 of the ${t} tens in ${a} for 10 ones.`
+        : `The ones are ${o} − ${b % 10}: not enough ones, and ${a} has no tens to trade. First trade 1 hundred for 10 tens.`;
       break;
     }
     case "skip-count-missing": {
@@ -566,24 +482,10 @@ export function generateElementaryProblem(
         start = r(0, Math.floor((1000 - 3 * step) / step)) * step;
       prompt = `Count by ${step}: ${start}, ${start + step}, ${start + 2 * step}, □. What comes next?`;
       answer = start + 3 * step;
-      hint = "Add the same step each time.";
+      hint = `Each number is ${step} more than the one before: ${start} + ${step} is ${start + step}. Go up ${step} more from ${start + 2 * step}.`;
       explanation = [
         `Each step adds ${step}.`,
         `${start + 2 * step} + ${step} = ${answer}.`,
-      ];
-      break;
-    }
-    case "two-step-change": {
-      const start = r(10, 60),
-        added = r(5, 100 - start),
-        removed = r(1, start + added);
-      prompt = `There are ${start} books. Add ${added} books, then take away ${removed}. How many books remain?`;
-      answer = start + added - removed;
-      hint =
-        "Follow the changes in order. Find the amount after adding before taking any away.";
-      explanation = [
-        `After adding: ${start} + ${added} = ${start + added}.`,
-        `After removing: ${start + added} − ${removed} = ${answer}.`,
       ];
       break;
     }
@@ -591,8 +493,11 @@ export function generateElementaryProblem(
       const start = r(0, 117);
       prompt = `Count on by ones: ${start}, ${start + 1}, ${start + 2}, □. What comes next?`;
       answer = start + 3;
+      const last = start + 2;
       hint =
-        "Each next number is one more, including when a new ten or hundred begins.";
+        last % 10 === 9
+          ? `${last} ends in 9, so one more starts a new ${(last + 1) % 100 ? "ten" : "hundred"}: the ones digit becomes 0.`
+          : `Each number is one more than the one before. Say the number after ${last}.`;
       explanation = [
         `The count increases by 1 each time.`,
         `${start + 2} + 1 = ${answer}.`,

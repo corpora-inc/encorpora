@@ -5,7 +5,7 @@ import {
   CoordinateGeometry,
   SimilarTriangles,
   coordinateLayout,
-} from "../web/GeometryFigure";
+} from "../web/TransformationFigure";
 
 export type TransformationIllustrationKind =
   | "coordinate-side-lengths"

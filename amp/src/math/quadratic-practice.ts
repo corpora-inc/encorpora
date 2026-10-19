@@ -135,8 +135,7 @@ export function generateQuadraticProblem(
     prompt = `How many distinct real solutions does ${polynomial(a, b, c)} = 0 have?`;
     answer = String(category);
     response = { kind: "number", label: "Number of distinct real solutions" };
-    hint =
-      "For ax² + bx + c = 0, calculate the discriminant b² − 4ac. Its sign tells whether there are two, one, or no distinct real solutions.";
+    hint = `Here a = ${a}, b = ${b} and c = ${c}. Work out the discriminant b² − 4ac and look at its sign: positive, zero or negative.`;
     explanation = [
       `The coefficients are a = ${a}, b = ${b}, and c = ${c}.`,
       `The discriminant is (${b})² − 4 × (${a}) × (${c}) = ${b * b} − (${4 * a * c}) = ${discriminant}.`,
@@ -166,8 +165,7 @@ export function generateQuadraticProblem(
       ra = c,
       rb = d;
     const factoring: string[] = [];
-    hint =
-      "A product equals zero exactly when at least one factor equals zero. Solve each linear equation and keep each distinct solution.";
+    hint = `(${left})(${right}) is zero exactly when one of its factors is zero. Solve ${left} = 0 and ${right} = 0, and keep each distinct solution once.`;
     if (templateId === "quadratic-expanded-solutions") {
       const A = a * c,
         B = a * d + b * c,
@@ -177,8 +175,7 @@ export function generateQuadraticProblem(
         lb = 0;
         ra = A;
         rb = B;
-        hint =
-          "Factor out x, then set each factor equal to zero. Keep the solution from the factor x.";
+        hint = `Every term of ${expanded} has a factor of x. Factor out x, then set each of the two factors equal to zero.`;
         factoring.push(
           `Factor out x: ${expanded} = x(${polynomial(0, A, B)}) = 0.`,
         );
@@ -197,7 +194,7 @@ export function generateQuadraticProblem(
         lb = n / ra;
         const reduced = polynomial(aa, bb, cc);
         const commonBinomial = polynomial(0, ra, rb);
-        hint = `${common === 1 ? "" : `Divide both sides by (${common}). `}Find two integers with product ${aa * cc} and sum ${bb}. Use them to ${bb === 0 ? "introduce opposite linear terms" : "split the linear term"}, then factor by grouping.`;
+        hint = `${common === 1 ? `In ${expanded} = 0, find` : `Divide both sides of ${expanded} = 0 by (${common}). Then find`} two integers with product ${aa * cc} and sum ${bb}. Use them to ${bb === 0 ? "introduce opposite linear terms" : "split the linear term"}, then factor by grouping.`;
         if (common !== 1)
           factoring.push(
             `Divide both sides by the nonzero common factor ${common}: ${reduced} = 0.`,

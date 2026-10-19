@@ -1,443 +1,458 @@
 import React from "react";
-import type {
-  CoordinateGeometryFigure,
-  SimilarTrianglesFigure,
-} from "../math/contracts.js";
+import {
+  isoFit,
+  isoPoint,
+  type GeometryFigure as Model,
+} from "../math/geometry-figures.js";
 
-/** Role tokens with print fallbacks: printed pages carry no theme variables. */
-const ink = "var(--color-figure-ink, #174a43)",
-  grid = "var(--color-figure-grid, #d6dfd6)",
-  paper = "var(--color-figure-paper, #fffdf7)",
-  accent = "var(--color-figure-accent, #20776d)",
-  accentFill = "var(--color-figure-accent-fill, #d4e9e1)",
-  warm = "var(--color-figure-warm, #9c4420)",
-  warmFill = "var(--color-figure-warm-fill, #f2d5c3)";
-const halo = {
-  paintOrder: "stroke" as const,
-  stroke: paper,
-  strokeWidth: 4,
-  strokeLinejoin: "round" as const,
-};
-/** Inline, so page-level text rules cannot enlarge the scale labels. */
-const tick = { fontSize: 12, fill: ink, fontStyle: "normal" } as const;
-const signed = (v: number) => (v < 0 ? `−${-v}` : String(v));
+const ink = "var(--color-figure-ink)",
+  accent = "var(--color-figure-accent)",
+  warm = "var(--color-figure-warm)",
+  paper = "var(--color-figure-paper)";
+type Point = { x: number; y: number };
+type Projector = (x: number, y: number, z: number) => Point;
+const path = (points: Point[]) =>
+  `M${points.map((p) => `${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(" L")} Z`;
+const segment = (a: Point, b: Point) =>
+  `M${a.x.toFixed(2)} ${a.y.toFixed(2)} L${b.x.toFixed(2)} ${b.y.toFixed(2)}`;
 
-/** Pixel layout of a coordinate window: one unit is the same length on both axes. */
-export function coordinateLayout(
-  f: Pick<CoordinateGeometryFigure, "xMin" | "xMax" | "yMin" | "yMax">,
-  box = { left: 28, top: 18, width: 276, height: 210 },
-) {
-  const unit = Math.min(
-    box.width / (f.xMax - f.xMin),
-    box.height / (f.yMax - f.yMin),
+/** The three faces of a box that face the viewer, optionally ruled into unit
+ * squares. Faces are painted back to front, so boxes nearer the viewer must
+ * be drawn after boxes behind them. */
+export function IsoBox({
+  at = [0, 0, 0],
+  size: [l, w, h],
+  project,
+  grid,
+  className,
+}: {
+  at?: [number, number, number];
+  size: [number, number, number];
+  project: Projector;
+  grid: boolean;
+  className?: string;
+}) {
+  const [x0, y0, z0] = at,
+    x1 = x0 + l,
+    y1 = y0 + w,
+    z1 = z0 + h;
+  const p = (x: number, y: number, z: number) => project(x, y, z);
+  const lines: string[] = [];
+  if (grid) {
+    for (let i = 1; i < l; i++) {
+      lines.push(segment(p(x0 + i, y0, z1), p(x0 + i, y1, z1)));
+      lines.push(segment(p(x0 + i, y1, z0), p(x0 + i, y1, z1)));
+    }
+    for (let j = 1; j < w; j++) {
+      lines.push(segment(p(x0, y0 + j, z1), p(x1, y0 + j, z1)));
+      lines.push(segment(p(x1, y0 + j, z0), p(x1, y0 + j, z1)));
+    }
+    for (let k = 1; k < h; k++) {
+      lines.push(segment(p(x0, y1, z0 + k), p(x1, y1, z0 + k)));
+      lines.push(segment(p(x1, y0, z0 + k), p(x1, y1, z0 + k)));
+    }
+  }
+  return (
+    <g className={className}>
+      <path
+        data-face="top"
+        d={path([p(x0, y0, z1), p(x1, y0, z1), p(x1, y1, z1), p(x0, y1, z1)])}
+        fill="var(--color-figure-accent-fill-strong)"
+      />
+      <path
+        data-face="front-left"
+        d={path([p(x0, y1, z0), p(x1, y1, z0), p(x1, y1, z1), p(x0, y1, z1)])}
+        fill="var(--color-figure-accent-fill)"
+      />
+      <path
+        data-face="front-right"
+        d={path([p(x1, y0, z0), p(x1, y1, z0), p(x1, y1, z1), p(x1, y0, z1)])}
+        fill="var(--color-figure-empty)"
+      />
+      {lines.length > 0 && (
+        <path
+          d={lines.join(" ")}
+          fill="none"
+          stroke={accent}
+          strokeWidth={1.25}
+          strokeLinecap="round"
+        />
+      )}
+      <path
+        d={[
+          path([p(x0, y0, z1), p(x1, y0, z1), p(x1, y1, z1), p(x0, y1, z1)]),
+          segment(p(x0, y1, z0), p(x1, y1, z0)),
+          segment(p(x1, y1, z0), p(x1, y0, z0)),
+          segment(p(x0, y1, z0), p(x0, y1, z1)),
+          segment(p(x1, y1, z0), p(x1, y1, z1)),
+          segment(p(x1, y0, z0), p(x1, y0, z1)),
+        ].join(" ")}
+        fill="none"
+        stroke={ink}
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+    </g>
   );
-  const ox = box.left + (box.width - unit * (f.xMax - f.xMin)) / 2,
-    oy = box.top + (box.height - unit * (f.yMax - f.yMin)) / 2;
+}
+
+/** A label beside an edge, on the side away from the solid's center. */
+function EdgeLabel({
+  a,
+  b,
+  center,
+  text,
+  edge,
+}: {
+  a: Point;
+  b: Point;
+  center: Point;
+  text: string;
+  edge: string;
+}) {
+  const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+  const length = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+  let nx = -(b.y - a.y) / length,
+    ny = (b.x - a.x) / length;
+  if (nx * (mid.x - center.x) + ny * (mid.y - center.y) < 0) {
+    nx = -nx;
+    ny = -ny;
+  }
+  const unknown = text === "?";
+  return (
+    <text
+      data-edge={edge}
+      x={mid.x + nx * 10}
+      y={mid.y + ny * 10}
+      textAnchor={nx < -0.3 ? "end" : nx > 0.3 ? "start" : "middle"}
+      dominantBaseline={ny > 0.3 ? "hanging" : ny < -0.3 ? "auto" : "central"}
+      style={{
+        fontSize: 21,
+        fontWeight: unknown ? 700 : 400,
+        fill: unknown ? warm : ink,
+        stroke: paper,
+        strokeWidth: 5,
+        paintOrder: "stroke",
+      }}
+    >
+      {text}
+    </text>
+  );
+}
+
+const frame = { width: 320, height: 250, pad: 14 };
+/** Horizontal room for an EdgeLabel beside a solid: its 10px offset plus a
+ * conservative 0.62em per character at 21px, so the label stays in the view
+ * box with any print font. */
+const labelRoom = (...texts: string[]) =>
+  14 + Math.max(...texts.map((t) => t.length)) * 21 * 0.62;
+export function GeometryFigure({ figure }: { figure: Model }) {
+  switch (figure.kind) {
+    case "cube-prism": {
+      const { length: l, width: w, height: h } = figure;
+      const { unit, origin } = isoFit(l, w, h, frame);
+      return (
+        <svg
+          className="figure geometry-figure"
+          data-kind={figure.kind}
+          viewBox={`0 0 ${frame.width} ${frame.height}`}
+          role="img"
+          aria-label={`A rectangular prism built from unit cubes: ${l} cubes long, ${w} cubes wide and ${h} cubes high. Some cubes are hidden behind the visible faces.`}
+        >
+          <IsoBox
+            size={[l, w, h]}
+            grid
+            project={(x, y, z) => isoPoint(x, y, z, unit, origin)}
+          />
+        </svg>
+      );
+    }
+    case "box-prism": {
+      const given = [figure.length, figure.width, figure.height];
+      const known = given.filter((e) => e !== null).map((e) => e!.value);
+      // A missing edge is drawn at a neutral length so the picture cannot
+      // reveal the answer; the label says the drawing is not to scale.
+      const neutral = Math.max(
+        2,
+        Math.min(10, Math.round(Math.sqrt(known[0]! * known[1]!))),
+      );
+      const [l, w, h] = given.map((e) => e?.value ?? neutral) as [
+        number,
+        number,
+        number,
+      ];
+      const text = (e: (typeof given)[number]) =>
+        e ? `${e.value} ${e.unit}` : "?";
+      // Height is labelled left of the solid, width right of it.
+      const { unit, origin } = isoFit(l, w, h, {
+        ...frame,
+        pad: 34,
+        padLeft: Math.max(34, labelRoom(text(figure.height))),
+        padRight: Math.max(34, labelRoom(text(figure.width))),
+      });
+      const p = (x: number, y: number, z: number) =>
+        isoPoint(x, y, z, unit, origin);
+      const center = p(l / 2, w / 2, h / 2);
+      const missing = given.some((e) => e === null);
+      return (
+        <svg
+          className="figure geometry-figure"
+          data-kind={figure.kind}
+          viewBox={`0 0 ${frame.width} ${frame.height}`}
+          role="img"
+          aria-label={`A rectangular prism. Length ${text(figure.length)}, width ${text(figure.width)}, height ${text(figure.height)}.${missing ? " The edge marked ? is unknown; the drawing is not to scale." : ""}`}
+        >
+          <IsoBox size={[l, w, h]} grid={false} project={p} />
+          <EdgeLabel
+            edge="length"
+            a={p(0, w, 0)}
+            b={p(l, w, 0)}
+            center={center}
+            text={text(figure.length)}
+          />
+          <EdgeLabel
+            edge="width"
+            a={p(l, 0, 0)}
+            b={p(l, w, 0)}
+            center={center}
+            text={text(figure.width)}
+          />
+          <EdgeLabel
+            edge="height"
+            a={p(0, w, 0)}
+            b={p(0, w, h)}
+            center={center}
+            text={text(figure.height)}
+          />
+        </svg>
+      );
+    }
+    case "composite-prism": {
+      const [a, b] = figure.parts as [
+        { length: number; height: number },
+        { length: number; height: number },
+      ];
+      const w = figure.width,
+        l = a.length + b.length,
+        h = Math.max(a.height, b.height);
+      const cm = (n: number) => `${n} cm`;
+      // One height is labelled left of the solid; the other and the width right.
+      const { unit, origin } = isoFit(l, w, h, {
+        ...frame,
+        pad: 34,
+        padLeft: Math.max(34, labelRoom(cm(a.height))),
+        padRight: Math.max(34, labelRoom(cm(b.height), cm(w))),
+      });
+      const p = (x: number, y: number, z: number) =>
+        isoPoint(x, y, z, unit, origin);
+      const center = p(l / 2, w / 2, h / 2);
+      return (
+        <svg
+          className="figure geometry-figure"
+          data-kind={figure.kind}
+          viewBox={`0 0 ${frame.width} ${frame.height}`}
+          role="img"
+          aria-label={`A solid made of two rectangular prisms side by side, both ${cm(w)} deep. Taller prism: ${cm(a.length)} long and ${cm(a.height)} high. Shorter prism: ${cm(b.length)} long and ${cm(b.height)} high.`}
+        >
+          <IsoBox size={[a.length, w, a.height]} grid={false} project={p} />
+          <IsoBox
+            at={[a.length, 0, 0]}
+            size={[b.length, w, b.height]}
+            grid={false}
+            project={p}
+          />
+          <EdgeLabel
+            edge="left-length"
+            a={p(0, 0, a.height)}
+            b={p(a.length, 0, a.height)}
+            center={center}
+            text={cm(a.length)}
+          />
+          <EdgeLabel
+            edge="right-length"
+            a={p(a.length, w, 0)}
+            b={p(l, w, 0)}
+            center={center}
+            text={cm(b.length)}
+          />
+          <EdgeLabel
+            edge="left-height"
+            a={p(0, w, 0)}
+            b={p(0, w, a.height)}
+            center={center}
+            text={cm(a.height)}
+          />
+          <EdgeLabel
+            edge="right-height"
+            a={p(l, 0, 0)}
+            b={p(l, 0, b.height)}
+            center={center}
+            text={cm(b.height)}
+          />
+          <EdgeLabel
+            edge="width"
+            a={p(l, 0, 0)}
+            b={p(l, w, 0)}
+            center={center}
+            text={cm(w)}
+          />
+        </svg>
+      );
+    }
+    case "quadrant-grid":
+      return <QuadrantGrid figure={figure} />;
+  }
+}
+
+type GridPoint = Extract<Model, { kind: "quadrant-grid" }>["points"][number];
+/** Each label takes the diagonal grid cell beside its point. Cells already
+ * holding a label are avoided first, then cells with another point on a
+ * corner, so a label never sits nearer a different point. */
+function placeLabels(points: readonly GridPoint[], size: number) {
+  const used = new Set<string>();
+  const directions = [
+    [1, 1],
+    [-1, 1],
+    [1, -1],
+    [-1, -1],
+  ] as const;
+  return points.map((p) => {
+    const cost = ([dx, dy]: readonly [number, number]) => {
+      const cell = `${p.x + (dx - 1) / 2},${p.y + (dy - 1) / 2}`;
+      const corners = [
+        [p.x + dx, p.y],
+        [p.x, p.y + dy],
+        [p.x + dx, p.y + dy],
+      ];
+      return (
+        (used.has(cell) ? 100 : 0) +
+        (p.x + dx < 0 || p.x + dx > size || p.y + dy > size ? 50 : 0) +
+        (p.y + dy < 0 ? 1 : 0) +
+        corners.filter(([cx, cy]) =>
+          points.some((q) => q.x === cx && q.y === cy),
+        ).length
+      );
+    };
+    const [dx, dy] = directions.reduce((best, d) =>
+      cost(d) < cost(best) ? d : best,
+    );
+    used.add(`${p.x + (dx - 1) / 2},${p.y + (dy - 1) / 2}`);
+    return { p, dx, dy };
+  });
+}
+
+/** Grid geometry shared by the figure and the coordinate lesson model. */
+export function quadrantLayout(size: number) {
+  const left = 48,
+    bottom = 246,
+    span = 214,
+    step = span / size;
   return {
-    unit,
-    x: (v: number) => ox + (v - f.xMin) * unit,
-    y: (v: number) => oy + (f.yMax - v) * unit,
+    step,
+    x: (n: number) => left + n * step,
+    y: (n: number) => bottom - n * step,
   };
 }
-const range = (min: number, max: number) =>
-  Array.from({ length: max - min + 1 }, (_, i) => min + i);
-
-export function describeCoordinateFigure(f: CoordinateGeometryFigure) {
-  const shapes = f.shapes.map((s) => {
-    const name = s.vertices.map((v) => v.label).join("");
-    const kind = !s.closed
-      ? s.vertices.length === 2
-        ? "Segment"
-        : "Points"
-      : s.vertices.length === 3
-        ? "Triangle"
-        : s.vertices.length === 4
-          ? "Quadrilateral"
-          : "Polygon";
-    return `${s.role === "image" ? `Image ${kind.toLowerCase()}` : kind} ${name}, ${s.role === "image" ? "dashed" : "solid"} outline: ${s.vertices.map((v) => `${v.label} at (${signed(v.x)}, ${signed(v.y)})`).join(", ")}.`;
-  });
-  return `Coordinate grid with equal unit squares on both axes. ${shapes.join(" ")}${f.rays ? " Rays from the origin pass through each vertex and its image." : ""}`;
-}
-
-/** Lattice shapes drawn to an exact, equal scale on both axes. */
-export function CoordinateGeometry({
-  figure: f,
-  className = "figure geometry-figure",
+export function QuadrantGrid({
+  figure,
   children,
-  description,
-  style,
+  hidePoints = false,
 }: {
-  figure: CoordinateGeometryFigure;
-  className?: string;
-  style?: React.CSSProperties;
-  /** Extra layers drawn above the grid in the same coordinates (animations). */
-  children?: (layout: ReturnType<typeof coordinateLayout>) => React.ReactNode;
-  description?: string;
+  figure: Extract<Model, { kind: "quadrant-grid" }>;
+  children?: React.ReactNode;
+  hidePoints?: boolean;
 }) {
-  const layout = coordinateLayout(f),
-    { unit, x, y } = layout;
-  const step = [1, 2, 5, 10].find((s) => s * unit >= 22) ?? 10;
-  const ticks = (min: number, max: number) =>
-    range(min, max).filter((v) => v % step === 0);
-  const given = f.shapes.filter((s) => s.role === "given");
-  const images = f.shapes.filter((s) => s.role === "image");
+  const { size } = figure;
+  const { x, y, step } = quadrantLayout(size);
+  const ticks = Array.from({ length: size + 1 }, (_, i) => i);
+  // The axes overshoot the grid by at most 10px, so on a small grid with wide
+  // steps the arrowheads and the y label stay inside the view box.
+  const end = size + Math.min(0.55, 10 / step);
   return (
     <svg
-      data-kind={f.kind}
-      data-unit={unit}
-      className={className}
-      style={style}
-      viewBox="0 0 320 250"
-      // An empty description marks a layer inside a figure that is already labeled.
-      role={description === "" ? "presentation" : "img"}
-      aria-label={
-        description === ""
-          ? undefined
-          : (description ?? describeCoordinateFigure(f))
-      }
+      className="figure geometry-figure"
+      data-kind={figure.kind}
+      viewBox="0 0 300 290"
+      role="img"
+      aria-label={`First-quadrant grid from 0 to ${size} on both axes, one unit per gridline. ${figure.points.map((p) => `Point ${p.label} at (${p.x}, ${p.y})`).join("; ")}.`}
     >
-      {range(f.xMin, f.xMax).map((v) => (
-        <line
-          key={`x${v}`}
-          x1={x(v)}
-          x2={x(v)}
-          y1={y(f.yMin)}
-          y2={y(f.yMax)}
-          stroke={v === 0 ? ink : grid}
-          strokeWidth={v === 0 ? 1.6 : 0.8}
+      {ticks.slice(1).map((n) => (
+        <path
+          key={n}
+          d={`${segment({ x: x(n), y: y(0) }, { x: x(n), y: y(size) })} ${segment({ x: x(0), y: y(n) }, { x: x(size), y: y(n) })}`}
+          stroke="var(--color-figure-grid)"
+          strokeWidth={1.25}
         />
       ))}
-      {range(f.yMin, f.yMax).map((v) => (
-        <line
-          key={`y${v}`}
-          x1={x(f.xMin)}
-          x2={x(f.xMax)}
-          y1={y(v)}
-          y2={y(v)}
-          stroke={v === 0 ? ink : grid}
-          strokeWidth={v === 0 ? 1.6 : 0.8}
-        />
+      <path
+        d={`${segment({ x: x(0), y: y(0) }, { x: x(end), y: y(0) })} ${segment({ x: x(0), y: y(0) }, { x: x(0), y: y(end) })}`}
+        stroke={ink}
+        strokeWidth={2.5}
+      />
+      <path
+        d={`M${x(end) + 8} ${y(0)} l-11 -6 v12 Z M${x(0)} ${y(end) - 8} l-6 11 h12 Z`}
+        fill={ink}
+      />
+      {ticks.map((n) => (
+        <g key={n} style={{ fontSize: step < 26 ? 17 : 19, fill: ink }}>
+          <text x={x(n)} y={y(0) + 24} textAnchor="middle">
+            {n}
+          </text>
+          {n > 0 && (
+            <text x={x(0) - 10} y={y(n) + 6} textAnchor="end">
+              {n}
+            </text>
+          )}
+        </g>
       ))}
-      {/* Scale labels sit along the window's edges, clear of the shapes. */}
-      <g style={{ fontSize: 12, fill: ink }}>
-        {ticks(f.xMin + 1, f.xMax).map((v) => (
-          <text
-            key={`tx${v}`}
-            x={x(v)}
-            y={y(f.yMin) + 14}
-            textAnchor="middle"
-            style={tick}
-          >
-            {signed(v)}
-          </text>
-        ))}
-        {ticks(f.yMin, f.yMax).map((v) => (
-          <text
-            key={`ty${v}`}
-            x={x(f.xMin) - 5}
-            y={y(v) + 4}
-            textAnchor="end"
-            style={tick}
-          >
-            {signed(v)}
-          </text>
-        ))}
-        <text
-          x={x(f.xMax) + 4}
-          y={y(0) + 4}
-          style={{ fontSize: 14, fontStyle: "italic", fill: ink }}
-        >
-          x
-        </text>
-        <text
-          x={x(0)}
-          y={y(f.yMax) - 5}
-          textAnchor="middle"
-          style={{ fontSize: 14, fontStyle: "italic", fill: ink }}
-        >
-          y
-        </text>
-      </g>
-      {f.rays &&
-        given.flatMap((s, si) =>
-          s.vertices.map((v, i) => {
-            const image = images[si]?.vertices[i];
-            const far =
-              image && Math.hypot(image.x, image.y) > Math.hypot(v.x, v.y)
-                ? image
-                : v;
-            const length = Math.hypot(far.x, far.y);
-            const reach = (length + 0.8) / length;
-            return (
-              <line
-                key={`ray${si}${i}`}
-                data-ray={v.label}
-                x1={x(0)}
-                y1={y(0)}
-                x2={x(far.x * reach)}
-                y2={y(far.y * reach)}
-                stroke={ink}
-                strokeWidth="1"
-                strokeDasharray="3 4"
-                opacity="0.75"
-              />
-            );
-          }),
-        )}
-      {(["outline", "marks"] as const).map((pass) =>
-        f.shapes.map((s, si) => {
-          const image = s.role === "image";
-          const stroke = image ? warm : accent;
-          const points = s.vertices.map((v) => `${x(v.x)},${y(v.y)}`).join(" ");
-          const cx =
-              s.vertices.reduce((a, v) => a + v.x, 0) / s.vertices.length,
-            cy = s.vertices.reduce((a, v) => a + v.y, 0) / s.vertices.length;
+      <text
+        x={x(end) + 4}
+        y={y(0) - 12}
+        textAnchor="middle"
+        style={{ fontSize: 19, fontStyle: "italic", fill: ink }}
+      >
+        x
+      </text>
+      <text
+        x={x(0) + 16}
+        y={y(end) - 2}
+        textAnchor="middle"
+        style={{ fontSize: 19, fontStyle: "italic", fill: ink }}
+      >
+        y
+      </text>
+      {children}
+      {!hidePoints &&
+        placeLabels(figure.points, size).map(({ p, dx, dy }) => {
           return (
-            <g
-              key={`${pass}${si}`}
-              data-shape={pass === "marks" ? s.role : undefined}
-            >
-              {pass === "outline" &&
-                (s.closed ? (
-                  <polygon
-                    points={points}
-                    fill={image ? warmFill : accentFill}
-                    fillOpacity="0.6"
-                    stroke={stroke}
-                    strokeWidth="2.5"
-                    strokeLinejoin="round"
-                    strokeDasharray={image ? "7 5" : undefined}
-                  />
-                ) : (
-                  <polyline
-                    points={points}
-                    fill="none"
-                    stroke={stroke}
-                    strokeWidth="2.5"
-                    strokeDasharray={image ? "7 5" : undefined}
-                  />
-                ))}
-              {pass === "marks" &&
-                s.vertices.map((v) => {
-                  // Labels sit outside the shape, away from its center.
-                  let dx = v.x - cx,
-                    dy = v.y - cy;
-                  if (!s.closed && s.vertices.length === 2) {
-                    const other = s.vertices.find((w) => w !== v)!;
-                    dx = v.x - other.x;
-                    dy = v.y - other.y;
-                  }
-                  const len = Math.hypot(dx, dy) || 1;
-                  return (
-                    <g key={v.label}>
-                      <circle
-                        data-vertex={v.label}
-                        data-x={v.x}
-                        data-y={v.y}
-                        cx={x(v.x)}
-                        cy={y(v.y)}
-                        r="3.5"
-                        fill={stroke}
-                      />
-                      <text
-                        x={x(v.x) + (dx / len) * 14}
-                        y={y(v.y) - (dy / len) * 14 + 5}
-                        textAnchor="middle"
-                        style={{
-                          ...halo,
-                          fontSize: 15,
-                          fontWeight: 700,
-                          fill: ink,
-                        }}
-                      >
-                        {v.label}
-                      </text>
-                    </g>
-                  );
-                })}
+            <g key={p.label} data-point={p.label}>
+              <circle
+                cx={x(p.x)}
+                cy={y(p.y)}
+                r={6}
+                fill={warm}
+                stroke={paper}
+                strokeWidth={1.5}
+              />
+              <text
+                x={x(p.x) + dx * 9}
+                y={y(p.y) - dy * 9}
+                textAnchor={dx > 0 ? "start" : "end"}
+                dominantBaseline={dy > 0 ? "auto" : "hanging"}
+                style={{
+                  fontSize: 21,
+                  fontWeight: 700,
+                  fill: warm,
+                  stroke: paper,
+                  strokeWidth: 5,
+                  paintOrder: "stroke",
+                }}
+              >
+                {p.label}
+              </text>
             </g>
           );
-        }),
-      )}
-      {children?.(layout)}
-    </svg>
-  );
-}
-
-/** Vertices of a triangle with sides [v0v1, v1v2, v2v0], v0 at the origin, v1 on the x-axis. */
-export function triangleFromSides([c, a, b]: readonly number[]) {
-  const cosA = (c! * c! + b! * b! - a! * a!) / (2 * c! * b!);
-  return [
-    { x: 0, y: 0 },
-    { x: c!, y: 0 },
-    { x: b! * cosA, y: b! * Math.sqrt(1 - cosA * cosA) },
-  ];
-}
-/** The ratio of the second triangle to the first, from the first pair of stated sides. */
-export function similarityRatio(f: SimilarTrianglesFigure) {
-  const [first, second] = f.triangles as [
-    SimilarTrianglesFigure["triangles"][number],
-    SimilarTrianglesFigure["triangles"][number],
-  ];
-  const i = second.sides.findIndex((s) => typeof s === "number");
-  return (second.sides[i] as number) / (first.sides[i] as number);
-}
-export function describeSimilarTriangles(f: SimilarTrianglesFigure) {
-  const [first, second] = f.triangles;
-  const sides = (t: (typeof f.triangles)[number]) =>
-    t.sides
-      .map((s, i) => {
-        const name = `${t.vertices[i]}${t.vertices[(i + 1) % 3]}`;
-        return s === null
-          ? null
-          : s === "?"
-            ? `${name} unknown`
-            : `${name} = ${s} ${f.unit}`;
-      })
-      .filter(Boolean)
-      .join(", ");
-  return `Similar triangles drawn to scale. Triangle ${first!.vertices.join("")}: ${sides(first!)}. Triangle ${second!.vertices.join("")}: ${sides(second!)}. Equal numbers of arcs mark corresponding angles: ${first!.vertices.map((v, i) => `${v} and ${second!.vertices[i]}`).join(", ")}.`;
-}
-
-/** Two similar triangles side by side, true shape and true relative size. */
-export function SimilarTriangles({
-  figure: f,
-  className = "figure geometry-figure",
-  style,
-}: {
-  figure: SimilarTrianglesFigure;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  const k = similarityRatio(f);
-  const base = triangleFromSides(f.triangles[0]!.sides as number[]);
-  const shapes = [base, base.map((p) => ({ x: p.x * k, y: p.y * k }))];
-  const extent = shapes.map((s) => ({
-    minX: Math.min(...s.map((p) => p.x)),
-    maxX: Math.max(...s.map((p) => p.x)),
-    maxY: Math.max(...s.map((p) => p.y)),
-  }));
-  const gap = 56,
-    width = 300 - gap,
-    height = 140;
-  const totalWidth = extent.reduce((a, e) => a + e.maxX - e.minX, 0);
-  const px = Math.min(
-    width / totalWidth,
-    height / Math.max(...extent.map((e) => e.maxY)),
-  );
-  const baseline = 176;
-  let left = 30;
-  const placed = shapes.map((s, t) => {
-    const e = extent[t]!;
-    const pts = s.map((p) => ({
-      x: left + (p.x - e.minX) * px,
-      y: baseline - p.y * px,
-    }));
-    left += (e.maxX - e.minX) * px + gap;
-    return pts;
-  });
-  return (
-    <svg
-      data-kind={f.kind}
-      className={className}
-      style={style}
-      viewBox="0 0 360 220"
-      role="img"
-      aria-label={describeSimilarTriangles(f)}
-    >
-      {placed.map((pts, t) => {
-        const tri = f.triangles[t]!;
-        const cx = (pts[0]!.x + pts[1]!.x + pts[2]!.x) / 3,
-          cy = (pts[0]!.y + pts[1]!.y + pts[2]!.y) / 3;
-        const stroke = t === 0 ? accent : warm;
-        return (
-          <g key={t} data-triangle={tri.vertices.join("")}>
-            <polygon
-              points={pts.map((p) => `${p.x},${p.y}`).join(" ")}
-              fill={t === 0 ? accentFill : warmFill}
-              fillOpacity="0.6"
-              stroke={stroke}
-              strokeWidth="2.5"
-              strokeLinejoin="round"
-            />
-            {pts.map((p, i) => {
-              const prev = pts[(i + 2) % 3]!,
-                next = pts[(i + 1) % 3]!;
-              const a1 = Math.atan2(next.y - p.y, next.x - p.x),
-                a2 = Math.atan2(prev.y - p.y, prev.x - p.x);
-              let sweep = a2 - a1;
-              while (sweep < 0) sweep += 2 * Math.PI;
-              const flag = sweep > Math.PI ? 0 : 1;
-              const shortest = Math.min(
-                Math.hypot(next.x - p.x, next.y - p.y),
-                Math.hypot(prev.x - p.x, prev.y - p.y),
-              );
-              const r0 = Math.max(6, Math.min(12, shortest * 0.22));
-              const arcs = Array.from({ length: i + 1 }, (_, j) => {
-                const r = r0 + j * 3.5;
-                const s = {
-                    x: p.x + r * Math.cos(a1),
-                    y: p.y + r * Math.sin(a1),
-                  },
-                  e = { x: p.x + r * Math.cos(a2), y: p.y + r * Math.sin(a2) };
-                return (
-                  <path
-                    key={j}
-                    d={`M${s.x} ${s.y} A${r} ${r} 0 0 ${flag} ${e.x} ${e.y}`}
-                    fill="none"
-                    stroke={ink}
-                    strokeWidth="1.2"
-                  />
-                );
-              });
-              const dx = p.x - cx,
-                dy = p.y - cy,
-                len = Math.hypot(dx, dy) || 1;
-              return (
-                <g key={i} data-angle={i + 1}>
-                  {arcs}
-                  <text
-                    x={p.x + (dx / len) * 15}
-                    y={p.y + (dy / len) * 15 + 5}
-                    textAnchor="middle"
-                    style={{
-                      ...halo,
-                      fontSize: 15,
-                      fontWeight: 700,
-                      fill: ink,
-                    }}
-                  >
-                    {tri.vertices[i]}
-                  </text>
-                </g>
-              );
-            })}
-            {tri.sides.map((side, i) => {
-              if (side === null) return null;
-              const a = pts[i]!,
-                b = pts[(i + 1) % 3]!;
-              const mx = (a.x + b.x) / 2,
-                my = (a.y + b.y) / 2;
-              const dx = mx - cx,
-                dy = my - cy,
-                len = Math.hypot(dx, dy) || 1;
-              return (
-                <text
-                  key={`s${i}`}
-                  data-side={`${tri.vertices[i]}${tri.vertices[(i + 1) % 3]}`}
-                  data-length={side}
-                  x={mx + (dx / len) * 16}
-                  y={my + (dy / len) * 16 + 5}
-                  textAnchor="middle"
-                  style={{ ...halo, fontSize: 14, fill: ink }}
-                >
-                  {side === "?" ? "?" : `${side} ${f.unit}`}
-                </text>
-              );
-            })}
-          </g>
-        );
-      })}
+        })}
     </svg>
   );
 }

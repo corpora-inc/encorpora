@@ -1,6 +1,10 @@
 import type { DataDisplayFigure as Model } from "../math/data-display-models.js";
 import {
   barGraphLayout,
+  boxPlotLayout,
+  doubleBoxLayout,
+  doubleDotLayout,
+  histogramLayout,
   linePlotLayout,
   mixedText,
   pictureGraphLayout,
@@ -172,8 +176,11 @@ export function TickLabel({
 /** Axis, ticks and labels of a line plot or dot plot, shared with lesson animations. */
 export function LinePlotAxis({
   layout,
+  labelGap = 6,
 }: {
   layout: ReturnType<typeof linePlotLayout>;
+  /** Space between the axis and its labels (room for a pivot in animations). */
+  labelGap?: number;
 }) {
   return (
     <g data-axis="line-plot">
@@ -195,15 +202,323 @@ export function LinePlotAxis({
             stroke={ink}
             strokeWidth={t.major ? 2 : 1.5}
           />
-          <TickLabel {...t} y={layout.axisY + 6} />
+          <TickLabel {...t} y={layout.axisY + labelGap} />
         </g>
       ))}
     </g>
   );
 }
 
+/** A box plot's marks, shared by practice figures and the lesson animation. */
+export function BoxMarks({
+  box,
+}: {
+  box: ReturnType<typeof boxPlotLayout>["box"];
+}) {
+  const mid = (box.top + box.bottom) / 2,
+    stroke = "var(--color-figure-accent)";
+  return (
+    <g data-box="plot">
+      <line
+        x1={box.min}
+        x2={box.q1}
+        y1={mid}
+        y2={mid}
+        stroke={stroke}
+        strokeWidth={2.5}
+      />
+      <line
+        x1={box.q3}
+        x2={box.max}
+        y1={mid}
+        y2={mid}
+        stroke={stroke}
+        strokeWidth={2.5}
+      />
+      {[box.min, box.max].map((x, i) => (
+        <line
+          key={i}
+          x1={x}
+          x2={x}
+          y1={mid - 14}
+          y2={mid + 14}
+          stroke={stroke}
+          strokeWidth={2.5}
+        />
+      ))}
+      <rect
+        x={box.q1}
+        y={box.top}
+        width={box.q3 - box.q1}
+        height={box.bottom - box.top}
+        fill="var(--color-figure-accent-fill)"
+        stroke={stroke}
+        strokeWidth={2.5}
+      />
+      <line
+        x1={box.median}
+        x2={box.median}
+        y1={box.top}
+        y2={box.bottom}
+        stroke="var(--color-figure-warm)"
+        strokeWidth={3.5}
+      />
+    </g>
+  );
+}
+
+/** A number line with every tick drawn and some labeled, shared by the
+ * single and double box plots and the double dot plot. */
+export function ScaleAxis({
+  left,
+  right,
+  axisY,
+  ticks,
+  labels = true,
+  labelDy = 26,
+}: {
+  left: number;
+  right: number;
+  axisY: number;
+  ticks: { value: number; x: number; labeled: boolean }[];
+  labels?: boolean;
+  /** Baseline of the tick labels below the axis. */
+  labelDy?: number;
+}) {
+  return (
+    <g data-axis="scale">
+      <line
+        x1={left - 10}
+        x2={right + 10}
+        y1={axisY}
+        y2={axisY}
+        stroke={ink}
+        strokeWidth={2}
+      />
+      {ticks.map((t) => (
+        <g key={t.value}>
+          <line
+            x1={t.x}
+            x2={t.x}
+            y1={axisY - (t.labeled ? 7 : 4)}
+            y2={axisY + (t.labeled ? 7 : 4)}
+            stroke={ink}
+            strokeWidth={t.labeled ? 2 : 1.5}
+          />
+          {labels && t.labeled && (
+            <text x={t.x} y={axisY + labelDy} textAnchor="middle" style={label}>
+              {t.value}
+            </text>
+          )}
+        </g>
+      ))}
+    </g>
+  );
+}
+const summaryText = (s: readonly number[]) =>
+  `minimum ${s[0]}, lower quartile ${s[1]}, median ${s[2]}, upper quartile ${s[3]}, maximum ${s[4]}`;
+
 export function DataDisplayFigure({ figure }: { figure: Model }) {
   switch (figure.kind) {
+    case "double-dot-plot": {
+      const l = doubleDotLayout(figure);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 300"
+          role="img"
+          aria-label={`Two dot plots of ${figure.unit} on the same scale. ${figure.groups
+            .map(
+              (g) =>
+                `${g.label}: ${[...g.values].sort((a, b) => a - b).join(", ")}`,
+            )
+            .join(". ")}.`}
+        >
+          {l.panels.map((p, i) => (
+            <g key={p.label} data-group={p.label}>
+              <text
+                x={8}
+                y={i ? 168 : 20}
+                style={{ ...label, fontWeight: 600 }}
+              >
+                {p.label}
+              </text>
+              <ScaleAxis
+                left={l.left}
+                right={l.right}
+                axisY={p.axisY}
+                ticks={l.ticks}
+              />
+              {p.marks.map((m, j) => (
+                <Mark key={j} kind="dot" cx={m.cx} cy={m.cy} />
+              ))}
+            </g>
+          ))}
+          <text x={352} y={20} textAnchor="end" style={small}>
+            {figure.unit}
+          </text>
+        </svg>
+      );
+    }
+    case "double-box-plot": {
+      const l = doubleBoxLayout(figure);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 254"
+          role="img"
+          aria-label={`Two box plots of ${figure.unit} on the same scale. ${figure.groups.map((g) => `${g.label}: ${summaryText(g.summary)}`).join(". ")}.`}
+        >
+          <text x={352} y={16} textAnchor="end" style={small}>
+            {figure.unit}
+          </text>
+          {l.boxes.map((b) => (
+            <g key={b.label} data-group={b.label}>
+              <text
+                x={8}
+                y={b.box.top - 10}
+                style={{ ...label, fontWeight: 600 }}
+              >
+                {b.label}
+              </text>
+              <BoxMarks box={b.box} />
+            </g>
+          ))}
+          <ScaleAxis
+            left={l.left}
+            right={l.right}
+            axisY={l.axisY}
+            ticks={l.ticks}
+          />
+        </svg>
+      );
+    }
+    case "histogram": {
+      const l = histogramLayout(figure);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 212"
+          role="img"
+          aria-label={`Histogram of ${figure.unit}, intervals of ${figure.width}. ${l.bars.map((b) => `${b.from} to less than ${b.from + figure.width}: ${b.count}`).join("; ")}.`}
+        >
+          <text x={l.left - 8} y={16} textAnchor="end" style={small}>
+            count
+          </text>
+          {l.gridlines.map((v) => (
+            <g key={v}>
+              <line
+                x1={l.left}
+                x2={l.right}
+                y1={l.y(v)}
+                y2={l.y(v)}
+                stroke={v ? grid : ink}
+                strokeWidth={v ? 1 : 2}
+              />
+              <text
+                x={l.left - 8}
+                y={l.y(v) + 5}
+                textAnchor="end"
+                style={small}
+              >
+                {v}
+              </text>
+            </g>
+          ))}
+          {l.bars.map((b) => (
+            <rect
+              key={b.from}
+              data-bin={b.from}
+              data-count={b.count}
+              x={b.x}
+              y={b.top}
+              width={b.width}
+              height={b.height}
+              fill="var(--color-figure-accent-fill-strong)"
+              stroke="var(--color-figure-accent)"
+              strokeWidth={2}
+            />
+          ))}
+          <line
+            x1={l.left}
+            x2={l.left}
+            y1={l.top}
+            y2={l.bottom}
+            stroke={ink}
+            strokeWidth={2}
+          />
+          {l.edges.map((e) => (
+            <g key={e.value}>
+              <line
+                x1={e.x}
+                x2={e.x}
+                y1={l.bottom}
+                y2={l.bottom + 6}
+                stroke={ink}
+                strokeWidth={2}
+              />
+              <text x={e.x} y={l.bottom + 22} textAnchor="middle" style={small}>
+                {e.value}
+              </text>
+            </g>
+          ))}
+          <text x={l.right} y={l.bottom + 38} textAnchor="end" style={small}>
+            {figure.unit}
+          </text>
+        </svg>
+      );
+    }
+    case "box-plot": {
+      const l = boxPlotLayout(figure);
+      const [min, q1, median, q3, max] = figure.summary;
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 190"
+          role="img"
+          aria-label={`Box plot of ${figure.unit}: minimum ${min}, lower quartile ${q1}, median ${median}, upper quartile ${q3}, maximum ${max}.`}
+        >
+          <text x={8} y={16} style={small}>
+            {figure.unit}
+          </text>
+          <BoxMarks box={l.box} />
+          <line
+            x1={l.left - 10}
+            x2={l.right + 10}
+            y1={l.axisY}
+            y2={l.axisY}
+            stroke={ink}
+            strokeWidth={2}
+          />
+          {l.ticks.map((t) => (
+            <g key={t.value}>
+              <line
+                x1={t.x}
+                x2={t.x}
+                y1={l.axisY - (t.labeled ? 7 : 4)}
+                y2={l.axisY + (t.labeled ? 7 : 4)}
+                stroke={ink}
+                strokeWidth={t.labeled ? 2 : 1.5}
+              />
+              {t.labeled && (
+                <text
+                  x={t.x}
+                  y={l.axisY + 26}
+                  textAnchor="middle"
+                  style={label}
+                >
+                  {t.value}
+                </text>
+              )}
+            </g>
+          ))}
+        </svg>
+      );
+    }
     case "line-plot": {
       const l = linePlotLayout(figure);
       const counts = new Map<number, number>();

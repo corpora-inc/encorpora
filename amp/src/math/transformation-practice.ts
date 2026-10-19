@@ -1291,11 +1291,36 @@ export function transformationPrintCase(
     },
     answer,
     explanation: c.explanation,
-    hint: hints[id]!,
+    hint: instanceHint(id, c, !c.options),
     ...(choiceFeedback ? { choiceFeedback } : {}),
   };
   // The prompt states every given, so equal prompts are the same case.
   return { problem, tags: c.tags, caseKey: c.prompt };
+}
+/** The first explanation step that works from this problem's stated numbers
+ * without stating the answer; a template's own first move otherwise. */
+function instanceHint(id: string, c: Case, numeric: boolean): string {
+  const values = (text: string): string[] =>
+    text.replaceAll("−", "-").match(/(?<![\w.\/])-?\d+(?:\.\d+)?(?:\/\d+)?/g) ?? [];
+  const given = new Set(values(c.prompt));
+  if (id === "transformation-image") {
+    const vertex = /coordinates of ([A-Z])′/.exec(c.prompt)![1]!;
+    const at = new RegExp(`${vertex}\\(([^)]*)\\)`).exec(c.prompt)![0];
+    return `${c.explanation[0]} Apply that to ${at}.`;
+  }
+  if (id === "dilation-scale-factor") {
+    const at = (v: string) => new RegExp(`${v}\\([^)]*\\)`).exec(c.prompt)![0];
+    return `${at("A")} maps to ${at("A′")} and ${at("B")} maps to ${at("B′")}. Divide an image coordinate by the matching original coordinate.`;
+  }
+  for (const step of c.explanation) {
+    const named = values(step);
+    if (
+      named.some((v) => given.has(v)) &&
+      !(numeric && named.includes(c.answer) && !given.has(c.answer))
+    )
+      return step;
+  }
+  return hints[id]!;
 }
 export const generateTransformationProblem = (
   id: string,

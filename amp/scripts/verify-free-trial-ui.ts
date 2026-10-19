@@ -542,7 +542,7 @@ try {
       await page.waitForURL("**/try/practice");
 
       // A recorded answer whose response is lost retries with the same
-      // request: the learner sees "Retry", never a guaranteed failure.
+      // request: the learner sees why, and Check resends the same answer.
       if (width === 1280 && theme === "light") {
         await page.locator(".problem-stage .question").waitFor();
         const ids: string[] = [];
@@ -563,7 +563,7 @@ try {
           await page.locator("#answer").press("Enter");
         }
         await page.getByText("Check your connection").waitFor();
-        const retry = page.getByRole("button", { name: "Retry", exact: true });
+        const retry = page.getByRole("button", { name: "Check", exact: true });
         await retry.click();
         await page.locator(".next-action").waitFor();
         assert.equal(ids.length, 2);

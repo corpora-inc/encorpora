@@ -5,6 +5,7 @@ import {
   meOptions,
   meKey,
 } from "../lib/query";
+import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import {
   useFamilyCache,
@@ -43,7 +44,11 @@ import type { BookSummary } from "../../books/catalog";
 import type { FractionBook } from "../../../books/fraction-field-guide/schema";
 import { product } from "../../product";
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import type { PublicProblem, TemplateMetadata } from "../../math/contracts";
+import {
+  figureCapabilities,
+  type PublicProblem,
+  type TemplateMetadata,
+} from "../../math/contracts";
 import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
@@ -57,6 +62,7 @@ import {
 } from "../auth";
 import "../style.css";
 import "../practice.css";
+import "../scene/scene-player.css";
 import "katex/dist/katex.min.css";
 import "../theme.css";
 import "../premium-controls.css";
@@ -307,6 +313,10 @@ function LegacyScreen() {
   const [response, setResponse] = useState(""),
     [outcome, setOutcome] = useState<Outcome | null>(null),
     [hint, setHint] = useState(""),
+    [hintCue, setHintCue] = useState<{
+      problemId: string;
+      steps: Step[];
+    } | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
     [progress, setProgress] = useState<
@@ -782,11 +792,7 @@ function LegacyScreen() {
       ...(templateId ? { templateId } : {}),
       count: 1,
       responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: [
-        "measurement-models-v1",
-        "data-displays-v1",
-        "geometry-figures-v1",
-      ],
+      figureCapabilities: [...figureCapabilities],
     });
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
@@ -1405,6 +1411,7 @@ function LegacyScreen() {
             setResponse={setResponse}
             outcome={outcome}
             hint={hint}
+            hintCue={hintCue}
             busy={busy}
             pending={!!pending}
             submit={() => void action(submit)}
@@ -1419,11 +1426,14 @@ function LegacyScreen() {
             }
             requestHint={() =>
               void action(async () => {
-                const data = await api<{ hint: string }>(
+                const data = await api<{ hint: string; cue?: Step[] }>(
                   `/learners/${learner.id}/hints`,
                   { problemId: problem.id },
                 );
                 setHint(data.hint);
+                setHintCue(
+                  data.cue ? { problemId: problem.id, steps: data.cue } : null,
+                );
               })
             }
           />

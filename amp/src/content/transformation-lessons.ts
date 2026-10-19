@@ -321,8 +321,9 @@ export const transformationMethods: Record<string, ProblemMethod> = {
       ["rigid motion", "A move that keeps every length and angle."],
     ],
     method: [
-      "Write the motion's coordinate rule.",
+      "Write the motion's coordinate rule: a translation adds, a reflection changes one sign, a rotation swaps or negates.",
       "Apply the rule to the vertex's coordinates.",
+      "Check the image on the grid: it should sit where the motion carries the point.",
     ],
     watch: "Over the x-axis, y changes sign; over the y-axis, x does.",
   },
@@ -343,7 +344,11 @@ export const transformationMethods: Record<string, ProblemMethod> = {
         "The number every distance from the center is multiplied by.",
       ],
     ],
-    method: ["Multiply both coordinates by the scale factor."],
+    method: [
+      "Find the scale factor and the vertex asked about.",
+      "Multiply both of its coordinates by the scale factor.",
+      "Check: the image lies on the ray from the origin through the point.",
+    ],
     watch: "Multiply by the scale factor; do not add it.",
   },
   "dilation-scale-factor": {
