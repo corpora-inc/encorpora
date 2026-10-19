@@ -577,6 +577,44 @@ export const areaModelSchema = z
       (!f.downLabels || f.downLabels.length === f.down.length),
   );
 
+/** A monomial c·xᵖ as [c, p]: [3, 1] is 3x, [−2, 0] is −2. */
+const termSchema = z.tuple([
+  z
+    .number()
+    .int()
+    .min(-144)
+    .max(144)
+    .refine((c) => c !== 0, "Nonzero"),
+  z.number().int().min(0).max(3),
+]);
+/** A product of polynomials as an area: each side lists its terms, and each
+ * region is one term product. Linear sides with small coefficients are drawn
+ * as algebra tiles (x² squares, x strips, unit squares); other sides are
+ * schematic. Negative products are shaded warm. */
+export const polyAreaSchema = z
+  .object({
+    ...base,
+    type: z.literal("polyArea"),
+    across: z.array(termSchema).min(1).max(4),
+    down: z.array(termSchema).min(1).max(4),
+    /** The side terms: the factors. */
+    sides: z.enum(["shown", "derived", "none"]).optional(),
+    /** Each region's term product: masked by default. */
+    products: z.enum(["shown", "derived", "none"]).optional(),
+    /** Regions [i, j] drawn as an empty dashed outline: the piece to add
+     * when completing a square. */
+    missing: z
+      .array(
+        z.tuple([
+          z.number().int().min(0).max(3),
+          z.number().int().min(0).max(3),
+        ]),
+      )
+      .max(4)
+      .optional(),
+  })
+  .strict();
+
 /** Rows × columns of unit squares or dots, optionally split into regions. */
 export const arraySchema = z
   .object({
@@ -795,10 +833,76 @@ export const rowBarsSchema = z
     "Each row has one count per part and a positive total",
   );
 
+const direction = num.min(-720).max(720);
+const pointName = z.string().regex(/^[A-Z]$/);
+/** A protractor centered on a vertex, unit radius. Outer numbers count from
+ * 0 on the left, inner numbers from 0 on the right. Rays are directions in
+ * degrees (counterclockwise from the right) within the half turn. */
+export const protractorSchema = z
+  .object({
+    ...base,
+    type: z.literal("protractor"),
+    rays: z.tuple([num.min(0).max(180), num.min(0).max(180)]),
+    /** End of the first ray, the vertex, end of the second ray. */
+    labels: z.tuple([pointName, pointName, pointName]).optional(),
+  })
+  .strict()
+  .refine((p) => p.rays[0] !== p.rays[1], "Two distinct rays");
+
+/** Rays from one vertex, drawn to their true directions, with angle marks
+ * between chosen pairs. A right angle is marked with a square. */
+export const angleSchema = z
+  .object({
+    ...base,
+    type: z.literal("angle"),
+    rays: z.array(direction).min(2).max(4),
+    /** Ray length in math units. */
+    length: num.positive().max(10).optional(),
+    /** Arrowheads at the ray ends: rays go on forever. */
+    arrows: z.boolean().optional(),
+    labels: z
+      .object({
+        vertex: pointName,
+        ends: z.array(pointName).min(2).max(4),
+      })
+      .strict()
+      .optional(),
+    /** Marks counterclockwise from ray `from` to ray `to`. */
+    marks: z
+      .array(
+        z
+          .object({
+            from: z.number().int().min(0).max(3),
+            to: z.number().int().min(0).max(3),
+            /** Write the measure in degrees beside the mark. */
+            measure: z.boolean().optional(),
+            /** The measure is the unknown: drawn as "?" unless revealed. */
+            derived: z.boolean().optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (a) =>
+      (!a.labels || a.labels.ends.length === a.rays.length) &&
+      (a.marks ?? []).every(
+        (m) =>
+          m.from < a.rays.length && m.to < a.rays.length && m.from !== m.to,
+      ),
+    "Labels and marks name existing rays",
+  );
+
 export const componentSchemas = [
+  protractorSchema,
+  angleSchema,
   numberLineSchema,
   graphSchema,
   areaModelSchema,
+  polyAreaSchema,
   arraySchema,
   tenFrameSchema,
   baseTenSchema,
@@ -811,6 +915,8 @@ export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
 export type Graph = z.infer<typeof graphSchema>;
 export type AreaModel = z.infer<typeof areaModelSchema>;
+export type PolyArea = z.infer<typeof polyAreaSchema>;
+export type Term = PolyArea["across"][number];
 export type ArrayModel = z.infer<typeof arraySchema>;
 export type TenFrame = z.infer<typeof tenFrameSchema>;
 export type BaseTen = z.infer<typeof baseTenSchema>;
@@ -818,6 +924,8 @@ export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
 export type Table = z.infer<typeof tableSchema>;
 export type RowBars = z.infer<typeof rowBarsSchema>;
+export type Protractor = z.infer<typeof protractorSchema>;
+export type Angle = z.infer<typeof angleSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([
