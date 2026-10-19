@@ -14,6 +14,7 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "sort-shapes":
     case "picture-graph":
     case "scaled-bar-graph":
+    case "line-plot":
       return <DataDisplayFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":

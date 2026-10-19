@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
 import "./animation.css";
+import { LinePlotAxis, Mark } from "../DataDisplayFigure";
+import { linePlotLayout } from "../../math/data-display-models";
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
   const panelRef = useRef<HTMLElement>(null);
@@ -61,6 +63,10 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
           <FractionModel model={model} step={current} />
         ) : model.kind === "array" ? (
           <ArrayModel model={model} step={current} />
+        ) : model.kind === "line-plot-stack" ? (
+          <StackModel model={model} step={current} />
+        ) : model.kind === "line-plot-share" ? (
+          <ShareModel model={model} step={current} />
         ) : (
           <ExchangeModel model={model} step={current} />
         )}
@@ -290,6 +296,103 @@ function ExchangeModel({
           ? `ten ${unit === 1 ? "ones → one ten" : "tens → one hundred"}`
           : `ten ${unit === 1 ? "ones" : "tens"}`}
       </text>
+    </>
+  );
+}
+
+const motion = (delay: number) => ({
+  transition:
+    "transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
+  transitionDelay: `${delay}ms`,
+});
+/** Each measurement drops onto its value; repeats land on the stack below. */
+function StackModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "line-plot-stack" }>;
+  step: number;
+}) {
+  const layout = linePlotLayout(model.figure, 320);
+  const half = Math.ceil(model.figure.values.length / 2);
+  return (
+    <>
+      <text x="6" y="16" style={{ fontSize: 14 }}>
+        {model.figure.unit}
+      </text>
+      <LinePlotAxis layout={layout} />
+      {layout.marks.map((m, i) => {
+        const shown = step === 2 || (step === 1 && i < half);
+        return (
+          <g
+            key={i}
+            data-stack-mark={i}
+            className="animation-move"
+            style={{
+              ...motion(step === 2 ? Math.max(0, i - half) * 70 : i * 70),
+              transform: `translateY(${shown ? 0 : -(m.cy + 24)}px)`,
+              opacity: shown ? 1 : 0,
+            }}
+          >
+            <Mark kind="x" cx={m.cx} cy={m.cy} />
+          </g>
+        );
+      })}
+    </>
+  );
+}
+/** Pool every amount, then give each beaker the same share: all marks move to the mean. */
+function ShareModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "line-plot-share" }>;
+  step: number;
+}) {
+  const layout = linePlotLayout(model.figure, 320);
+  const target = layout.x(model.share);
+  return (
+    <>
+      <text x="6" y="16" style={{ fontSize: 14 }}>
+        {model.figure.unit}
+      </text>
+      <LinePlotAxis layout={layout} />
+      <line
+        className="animation-fade"
+        x1={target}
+        x2={target}
+        y1={14}
+        y2={layout.axisY}
+        stroke="var(--color-figure-warm)"
+        strokeWidth={2}
+        strokeDasharray="5 4"
+        style={{ opacity: step === 2 ? 1 : 0 }}
+      />
+      {layout.marks.map((m, i) => {
+        // Step 1 pours every amount into one row; step 2 gives each the same share.
+        const n = layout.marks.length,
+          pooled = layout.left + ((i + 0.5) * (layout.right - layout.left)) / n;
+        const dx = step === 2 ? target - m.cx : step === 1 ? pooled - m.cx : 0,
+          dy =
+            step === 2
+              ? layout.axisY - 15 - i * 18 - m.cy
+              : step === 1
+                ? 34 - m.cy
+                : 0;
+        return (
+          <g
+            key={i}
+            data-share-mark={i}
+            className="animation-move"
+            style={{
+              ...motion(step === 2 ? i * 80 : 0),
+              transform: `translate(${dx}px, ${dy}px)`,
+            }}
+          >
+            <Mark kind="x" cx={m.cx} cy={m.cy} />
+          </g>
+        );
+      })}
     </>
   );
 }
