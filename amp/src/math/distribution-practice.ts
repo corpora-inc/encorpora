@@ -267,7 +267,7 @@ function statisticalQuestion(r: Random): Draft {
   return {
     prompt: "Which is a statistical question?",
     answer: "",
-    hint: "Ask: would answering this collect many values that differ, or give one single answer?",
+    hint: `“${no[0]}” has one answer. Look for the question whose answer collects many values that differ from one another.`,
     explanation: [
       "A statistical question anticipates variability: answering it collects many data values that differ from one another.",
       `“${yes}” collects one value from each member of a group, and those values vary.`,
@@ -294,7 +294,7 @@ function dotMean(r: Random): Draft {
     figure,
     answer: rational(sum, n),
     fraction: true,
-    hint: "Add the value of every dot, counting a stack of 3 dots as three values. Divide that total by the number of dots.",
+    hint: `Add the value of every dot; a stack of 3 dots counts its value three times. Then share that total among the ${n} dots.`,
     explanation: [
       `Add every dot: ${columns.map(([v, c]) => (c === 1 ? `${v}` : `${c} × ${v}`)).join(" + ")} = ${sum}.`,
       `There are ${n} dots: ${sum} ÷ ${n} = ${shown(sum, n)}.`,
@@ -479,7 +479,7 @@ function boxPlot(r: Random): Draft {
       prompt: `${intro} What is the median ${c.what}?`,
       figure,
       answer: `${median}`,
-      hint: "The line inside the box marks the median.",
+      hint: `The line inside the box marks the median. Read where it sits on the ${c.unit} scale.`,
       explanation: [five, `The line inside the box is at ${median}.`],
     };
   if (question === 1)
@@ -487,7 +487,7 @@ function boxPlot(r: Random): Draft {
       prompt: `${intro} What is the interquartile range of the ${c.things}?`,
       figure,
       answer: `${q3 - q1}`,
-      hint: "The box runs from the lower quartile to the upper quartile. Subtract its left end from its right end.",
+      hint: `The box runs from the lower quartile to the upper quartile. Read both ends of the box on the ${c.unit} scale and subtract.`,
       explanation: [five, `IQR = ${q3} − ${q1} = ${q3 - q1}.`],
     };
   if (question === 2)
@@ -495,7 +495,7 @@ function boxPlot(r: Random): Draft {
       prompt: `${intro} What is the range of the ${c.things}?`,
       figure,
       answer: `${max - min}`,
-      hint: "The whiskers end at the least and greatest values. Subtract the least from the greatest.",
+      hint: `The whiskers end at the least and greatest ${c.things}. Read both ends on the ${c.unit} scale and subtract.`,
       explanation: [five, `Range = ${max} − ${min} = ${max - min}.`],
     };
   const [phrase, percent, why] = [
@@ -519,7 +519,7 @@ function boxPlot(r: Random): Draft {
     prompt: `${intro} About what percent of the ${c.things} are ${phrase}?`,
     figure,
     answer: `${percent}`,
-    hint: "The minimum, quartiles, median and maximum split the ordered data into four parts, each about one quarter of the data.",
+    hint: `The five marks split the ${c.things} into four parts, each about one quarter of the data. How many quarters are ${phrase}?`,
     explanation: [
       five,
       why,
@@ -544,7 +544,7 @@ function dotMad(r: Random): Draft {
     figure,
     answer: rational(total, n),
     fraction: true,
-    hint: "First find the mean. Then find how far each dot is from the mean, and take the mean of those distances.",
+    hint: `First find the mean of the ${n} values. Then find how far each dot is from the mean, and average those ${n} distances.`,
     explanation: [
       `Mean: (${sorted.join(" + ")}) ÷ ${n} = ${mean * n} ÷ ${n} = ${mean}.`,
       `Distances from ${mean}: ${distances.join(", ")}.`,
@@ -576,7 +576,7 @@ function dotIqr(r: Random): Draft {
     figure,
     answer: rational(q3.n - q1.n, 2),
     fraction: true,
-    hint: "Read the dots in order from left to right. Split them into a lower and an upper half, find the median of each half, and subtract.",
+    hint: `List the ${n} values in order from left to right. ${n % 2 ? "Leave out the middle one, then split" : "Split"} them into a lower and an upper half of ${half} values each, and find the median of each half.`,
     explanation: [
       `In order: ${sorted.join(", ")}.`,
       n % 2
@@ -621,7 +621,7 @@ function typicalValue(r: Random): Draft {
     prompt: `${context.intro(n)} Which value best describes the typical ${context.typical}?`,
     figure,
     answer: "",
-    hint: "Look for a value far from the others. Which summary moves a lot when that one value changes, and which barely moves?",
+    hint: `One of the ${n} students read ${outlier} books, far from everyone else. Which summary would jump if that one value changed, and which would barely move?`,
     explanation: [
       `One student read ${outlier} books; every other student read ${Math.min(...cluster)} to ${Math.max(...cluster)}.`,
       `The mean, ${mean}, is pulled up by that one value: it is greater than every other student’s number.`,

@@ -88,7 +88,9 @@ export function integerExponentPrintCase(
     answer = fraction(d ** magnitude, n ** magnitude);
     prompt = `Evaluate ${power(base, -magnitude)}. Give an exact fraction or whole number.`;
     hint =
-      "A negative exponent means take a reciprocal: exchange the numerator and denominator, then use the positive exponent.";
+      magnitude === 1
+        ? `The exponent −1 means the reciprocal of ${base}: swap its numerator and denominator, keeping the sign.`
+        : `The exponent ${signed(-magnitude)} means the reciprocal raised to the power ${magnitude}. Flip ${base} to ${reciprocal} first.`;
     const positivePower = fraction(n ** magnitude, d ** magnitude).replace(
       "-",
       "−",
@@ -134,10 +136,10 @@ export function integerExponentPrintCase(
     answer = String(result);
     hint =
       operation === "product"
-        ? "The base stays x. Add the two exponents, retaining each sign."
+        ? `The base stays x, so add the exponents, signs included: ${signed(a)} + ${operand(b)}.`
         : operation === "quotient"
-          ? "The base stays x. Subtract the denominator's exponent from the numerator's exponent; subtracting a negative means adding."
-          : "Multiply the inner exponent by the outer exponent. Do not add them.";
+          ? `The base stays x, so subtract the bottom exponent from the top: ${signed(a)} − ${operand(b)}.${b < 0 ? " Subtracting a negative adds." : ""}`
+          : `A power of a power multiplies the exponents: ${signed(a)} × ${operand(b)}, not ${signed(a)} + ${operand(b)}.`;
     const calculation = `${signed(a)} ${operation === "product" ? "+" : operation === "quotient" ? "−" : "×"} ${operand(b)} = ${signed(result)}`;
     explanation = [
       "The letter x represents the same nonzero real number throughout. The letter k is the exponent to find.",
