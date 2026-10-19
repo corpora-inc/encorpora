@@ -15,6 +15,7 @@ import {
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
+import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import {
   addSubtractTemplates,
   generateAddSubtractProblem,
@@ -222,6 +223,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...factsTemplates,
   ...combinatoricsTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -391,6 +393,8 @@ function generateRawProblem(
     return generateRadicalProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))
     return generateAddSubtractProblem(templateId, seed);
+  if (factsTemplates.some((t) => t.id === templateId))
+    return generateFactsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

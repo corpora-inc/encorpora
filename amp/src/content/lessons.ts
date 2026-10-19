@@ -6,6 +6,7 @@ import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
+import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -40,6 +41,10 @@ export interface Lesson {
       | "base-ten-trade"
       | "column-subtraction-zero"
       | "column-multidigit"
+      | "five-frame-facts"
+      | "count-on-hops"
+      | "make-ten-frames"
+      | "ten-hundred-digits"
       | "equal-shares"
       | "same-share-shapes"
       | "equal-area-regions"
@@ -556,6 +561,7 @@ export const lessons: readonly Lesson[] = [
   ...partWholeLessons,
   ...comparisonLessons,
   ...addSubtractLessons,
+  ...factsLessons,
   ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

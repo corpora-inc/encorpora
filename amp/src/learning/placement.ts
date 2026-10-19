@@ -42,20 +42,20 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // K (and younger): count, join, count, take away.
   [
     ["count-objects"],
-    ["join-within-10"],
+    ["join-within-10", "facts-to-five"],
     ["teen-frame-compose", "greater-numeral"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
   ],
   // Grade 1: counting, facts within 10, a missing addend, then tens.
   [
     ["count-objects", "teen-frame-compose"],
-    ["join-within-10", "add-within-20"],
+    ["join-within-10", "add-within-20", "count-on-back"],
     ["unknown-addend-story", "balanced-addition"],
     ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
   ],
   // Grade 2: facts within 20, place value and comparison, a missing addend.
   [
-    ["add-within-20", "add-two-digit-regroup"],
+    ["add-within-20", "make-ten-fact", "add-two-digit-regroup"],
     [
       "tens-ones-model",
       "continue-count-to-120",
@@ -63,11 +63,16 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-three-digit",
     ],
     ["unknown-addend-story", "balanced-addition"],
-    ["subtract-within-20", "subtract-two-digit-regroup"],
+    ["subtract-within-20", "related-subtraction", "subtract-two-digit-regroup"],
   ],
   // Grade 3: regrouping, three-digit place value, a story, a bar chart.
   [
-    ["add-with-regrouping", "add-two-digit-regroup", "add-three-digit"],
+    [
+      "add-with-regrouping",
+      "add-two-digit-regroup",
+      "add-three-digit",
+      "mental-ten-hundred",
+    ],
     ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],

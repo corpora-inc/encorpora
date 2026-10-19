@@ -3,6 +3,7 @@ import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
+import { FactsIllustration } from "./FactsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -45,6 +46,13 @@ export function LessonIllustration({
     kind === "column-multidigit"
   )
     return <AddSubtractIllustration kind={kind} />;
+  if (
+    kind === "five-frame-facts" ||
+    kind === "count-on-hops" ||
+    kind === "make-ten-frames" ||
+    kind === "ten-hundred-digits"
+  )
+    return <FactsIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||
