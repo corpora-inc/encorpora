@@ -167,7 +167,6 @@ try {
     for (const size of [
       { width: 320, height: 568 },
       { width: 390, height: 844 },
-      { width: 1024, height: 768 },
       { width: 844, height: 390 },
     ]) {
       await page.setViewportSize(size);
