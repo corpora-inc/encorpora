@@ -1488,3 +1488,44 @@ for (const [suffix, description] of [
     description,
     status: "implemented",
   });
+
+// Bounded counting and discrete-probability tasks; each facet names its limits.
+for (const [skillId, suffix, description] of [
+  [
+    "compound-probability",
+    "multiplication-principle",
+    "Count outcomes of two to four independent choice stages, including codes with repeated symbols, by the multiplication principle.",
+  ],
+  [
+    "permutations-combinations",
+    "ordered-selections",
+    "Count arrangements without repetition, including factorials, as products of decreasing factors.",
+  ],
+  [
+    "permutations-combinations",
+    "unordered-selections",
+    "Count groups when order does not matter by dividing arrangements by the orders of one group.",
+  ],
+  [
+    "permutations-combinations",
+    "selection-probability",
+    "Find exact probabilities for random groups drawn from two kinds by counting favorable and total groups.",
+  ],
+  [
+    "independent-events",
+    "equally-likely-pairs",
+    "Find both, neither and at-least-one probabilities for two independent equally likely devices using products and complements.",
+  ],
+  [
+    "expected-value",
+    "equally-likely-payoffs",
+    "Find exact expected payouts and net gains after a fixed cost for equally likely spinner sections.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

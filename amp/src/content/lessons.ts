@@ -1,3 +1,4 @@
+import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -28,6 +29,11 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "counting-tree"
+      | "permutation-slots"
+      | "combination-orders"
+      | "independent-grid"
+      | "expected-spinner"
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -522,6 +528,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...polynomialLessons,
   ...radicalLessons,
+  ...combinatoricsLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,

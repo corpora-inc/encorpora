@@ -30,6 +30,7 @@ from print_pdf_oracle import review_print_pdfs
 from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
+from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
@@ -44,7 +45,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -56,6 +57,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in COMBINATORICS:
+        return solve_combinatorics(public)
     if template in RADICAL_TYPES:
         return solve_radical(public)
     if template in CIRCLE:
@@ -268,6 +271,8 @@ def solve(public):
 
 
 def review(stream):
+    review_combinatorics_fixtures()
+    review_combinatorics_mutations()
     review_radical_arithmetic()
     review_radical_fixtures()
     review_circle_fixtures()
@@ -332,6 +337,8 @@ def review(stream):
             review_linear_system_explanation(public, problem['explanation'], problem['choiceFeedback'])
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
+        if template in COMBINATORICS:
+            review_combinatorics_problem(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in RADICAL_TYPES:
             review_radical_problem(problem)
@@ -345,6 +352,7 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
