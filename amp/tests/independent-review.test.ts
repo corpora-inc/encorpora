@@ -14,7 +14,7 @@ function review(input: string) {
     cwd: root,
     encoding: "utf8",
     input,
-    maxBuffer: 32 * 1024 * 1024,
+    maxBuffer: 256 * 1024 * 1024,
   });
 }
 
@@ -22,7 +22,7 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   const exported = spawnSync(process.execPath, ["--import", "tsx", exporter], {
     cwd: root,
     encoding: "utf8",
-    maxBuffer: 32 * 1024 * 1024,
+    maxBuffer: 256 * 1024 * 1024,
   });
   assert.equal(exported.status, 0, exported.stderr || String(exported.error));
   const lines = exported.stdout.trimEnd().split("\n");

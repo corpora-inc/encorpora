@@ -1,7 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
+import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
 import "./animation.css";
+
+function Stage({ model, step }: { model: AnimationModel; step: number }) {
+  switch (model.kind) {
+    case "fraction":
+      return <FractionModel model={model} step={step} />;
+    case "array":
+      return <ArrayModel model={model} step={step} />;
+    case "exchange":
+      return <ExchangeModel model={model} step={step} />;
+    case "partition":
+      return <PartitionStage model={model} step={step} />;
+    case "compare":
+      return <CompareStage model={model} step={step} />;
+    case "area":
+      return <AreaStage model={model} step={step} />;
+  }
+}
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
   const panelRef = useRef<HTMLElement>(null);
@@ -57,13 +75,7 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         aria-label={`${frames[current].title}. ${frames[current].text}`}
       >
         <title>{frames[current].title}</title>
-        {model.kind === "fraction" ? (
-          <FractionModel model={model} step={current} />
-        ) : model.kind === "array" ? (
-          <ArrayModel model={model} step={current} />
-        ) : (
-          <ExchangeModel model={model} step={current} />
-        )}
+        <Stage model={model} step={current} />
       </svg>
       <div className="animation-copy" aria-live="polite" aria-atomic="true">
         {frames.map((frame, index) => (

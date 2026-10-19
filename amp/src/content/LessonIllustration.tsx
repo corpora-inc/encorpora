@@ -1,3 +1,4 @@
+import { PartWholeIllustration } from "./PartWholeIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -19,6 +20,13 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "equal-shares" ||
+    kind === "same-share-shapes" ||
+    kind === "equal-area-regions" ||
+    kind === "compare-same-whole"
+  )
+    return <PartWholeIllustration kind={kind} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||

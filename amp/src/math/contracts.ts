@@ -3,9 +3,14 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import {
+  partWholeFigureSchemas,
+  type PartWholeFigure,
+} from "./part-whole-models.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | PartWholeFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -88,6 +93,7 @@ export interface GeneratedProblem {
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
+    ...partWholeFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),

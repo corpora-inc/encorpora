@@ -1,3 +1,4 @@
+import { partWholeLessons } from "./part-whole-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -29,6 +30,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "equal-shares"
+      | "same-share-shapes"
+      | "equal-area-regions"
+      | "compare-same-whole"
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -526,6 +531,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...polynomialLessons,
   ...radicalLessons,
+  ...partWholeLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
