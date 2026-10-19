@@ -1,4 +1,5 @@
 import { MeasurementFigure } from "./MeasurementFigure";
+import { GeometryFigure } from "./GeometryFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
@@ -10,6 +11,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "angle-rays":
+    case "triangle-angles":
+    case "parallel-transversal":
+    case "solid-section":
+      return <GeometryFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;

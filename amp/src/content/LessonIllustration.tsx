@@ -1,4 +1,5 @@
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { AngleTriangleIllustration } from "./AngleTriangleIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -20,6 +21,15 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "angle-pairs" ||
+    kind === "parallel-angle-pairs" ||
+    kind === "triangle-sum-line" ||
+    kind === "exterior-angle" ||
+    kind === "side-strips" ||
+    kind === "solid-slices"
+  )
+    return <AngleTriangleIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

@@ -1,4 +1,8 @@
 import {
+  angleTriangleTemplates,
+  generateAngleTriangleProblem,
+} from "./angle-triangle-practice";
+import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
@@ -199,6 +203,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...radicalTemplates,
   ...combinatoricsTemplates,
+  ...angleTriangleTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
@@ -320,6 +325,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...combinatoricsTemplates,
+    ...angleTriangleTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
     ...circleMeasurementTemplates,
@@ -353,6 +359,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (angleTriangleTemplates.some((t) => t.id === templateId))
+    return generateAngleTriangleProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

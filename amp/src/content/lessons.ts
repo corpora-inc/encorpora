@@ -1,4 +1,5 @@
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { angleTriangleLessons } from "./angle-triangle-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -30,6 +31,12 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "angle-pairs"
+      | "parallel-angle-pairs"
+      | "triangle-sum-line"
+      | "exterior-angle"
+      | "side-strips"
+      | "solid-slices"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +540,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...angleTriangleLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,

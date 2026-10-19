@@ -1,4 +1,5 @@
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
+import { angleTrianglePrinciples } from "./angle-triangle-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
@@ -19,6 +20,7 @@ export const principles: Record<string, string> = {
   ...polynomialPrinciples,
   ...radicalPrinciples,
   ...combinatoricsPrinciples,
+  ...angleTrianglePrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
   ...percentChangePrinciples,

@@ -90,12 +90,17 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 7: powers, unit rates, the mean, distance on a number line.
   [["integer-power"], ["unit-price"], ["mean-data"], ["number-line-distance"]],
-  // Grade 8: signed numbers, unit rates, probability and circles.
+  // Grade 8: signed numbers, unit rates, probability, and circles or angles.
   [
     ["integer-addition"],
     ["unit-price"],
     ["simple-probability"],
-    ["circle-area-coefficient", "circle-circumference-coefficient"],
+    [
+      "circle-area-coefficient",
+      "circle-circumference-coefficient",
+      "triangle-angle-sum",
+      "angle-pair-measure",
+    ],
   ],
   // High school: an equation, the Pythagorean theorem, a unit rate, slope.
   [

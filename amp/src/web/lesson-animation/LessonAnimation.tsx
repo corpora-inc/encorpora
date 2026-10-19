@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
+import { GeometryModel } from "./GeometryAnimation";
 import "./animation.css";
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
@@ -61,8 +62,10 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
           <FractionModel model={model} step={current} />
         ) : model.kind === "array" ? (
           <ArrayModel model={model} step={current} />
-        ) : (
+        ) : model.kind === "exchange" ? (
           <ExchangeModel model={model} step={current} />
+        ) : (
+          <GeometryModel model={model} step={current} />
         )}
       </svg>
       <div className="animation-copy" aria-live="polite" aria-atomic="true">

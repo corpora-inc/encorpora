@@ -1,5 +1,10 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type { SemanticFigure } from "../../math/contracts";
+import {
+  geometryAnimationModel,
+  geometryFrames,
+  type GeometryAnimationModel,
+} from "./geometry";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -7,7 +12,8 @@ type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
 export type AnimationModel =
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
-  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
+  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
+  | GeometryAnimationModel;
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -16,6 +22,8 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  const geometry = geometryAnimationModel(lesson.templateId, f);
+  if (geometry) return geometry;
   if (
     lesson.templateId === "fraction-model" &&
     f?.kind === "fraction" &&
@@ -47,6 +55,13 @@ export function animationModel(
   return null;
 }
 export function animationFrames(model: AnimationModel) {
+  if (
+    model.kind === "triangle-sum" ||
+    model.kind === "exterior-angle" ||
+    model.kind === "transversal" ||
+    model.kind === "plane-sweep"
+  )
+    return geometryFrames(model);
   if (model.kind === "fraction") {
     const { parts: d, selected: n } = model.figure;
     return [
