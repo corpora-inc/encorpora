@@ -2,6 +2,8 @@ import type { DataDisplayFigure as Model } from "../math/data-display-models.js"
 import {
   barGraphLayout,
   boxPlotLayout,
+  doubleBoxLayout,
+  doubleDotLayout,
   histogramLayout,
   linePlotLayout,
   mixedText,
@@ -265,8 +267,134 @@ export function BoxMarks({
   );
 }
 
+/** A number line with every tick drawn and some labeled, shared by the
+ * single and double box plots and the double dot plot. */
+export function ScaleAxis({
+  left,
+  right,
+  axisY,
+  ticks,
+  labels = true,
+  labelDy = 26,
+}: {
+  left: number;
+  right: number;
+  axisY: number;
+  ticks: { value: number; x: number; labeled: boolean }[];
+  labels?: boolean;
+  /** Baseline of the tick labels below the axis. */
+  labelDy?: number;
+}) {
+  return (
+    <g data-axis="scale">
+      <line
+        x1={left - 10}
+        x2={right + 10}
+        y1={axisY}
+        y2={axisY}
+        stroke={ink}
+        strokeWidth={2}
+      />
+      {ticks.map((t) => (
+        <g key={t.value}>
+          <line
+            x1={t.x}
+            x2={t.x}
+            y1={axisY - (t.labeled ? 7 : 4)}
+            y2={axisY + (t.labeled ? 7 : 4)}
+            stroke={ink}
+            strokeWidth={t.labeled ? 2 : 1.5}
+          />
+          {labels && t.labeled && (
+            <text x={t.x} y={axisY + labelDy} textAnchor="middle" style={label}>
+              {t.value}
+            </text>
+          )}
+        </g>
+      ))}
+    </g>
+  );
+}
+const summaryText = (s: readonly number[]) =>
+  `minimum ${s[0]}, lower quartile ${s[1]}, median ${s[2]}, upper quartile ${s[3]}, maximum ${s[4]}`;
+
 export function DataDisplayFigure({ figure }: { figure: Model }) {
   switch (figure.kind) {
+    case "double-dot-plot": {
+      const l = doubleDotLayout(figure);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 300"
+          role="img"
+          aria-label={`Two dot plots of ${figure.unit} on the same scale. ${figure.groups
+            .map(
+              (g) =>
+                `${g.label}: ${[...g.values].sort((a, b) => a - b).join(", ")}`,
+            )
+            .join(". ")}.`}
+        >
+          {l.panels.map((p, i) => (
+            <g key={p.label} data-group={p.label}>
+              <text
+                x={8}
+                y={i ? 168 : 20}
+                style={{ ...label, fontWeight: 600 }}
+              >
+                {p.label}
+              </text>
+              <ScaleAxis
+                left={l.left}
+                right={l.right}
+                axisY={p.axisY}
+                ticks={l.ticks}
+              />
+              {p.marks.map((m, j) => (
+                <Mark key={j} kind="dot" cx={m.cx} cy={m.cy} />
+              ))}
+            </g>
+          ))}
+          <text x={352} y={20} textAnchor="end" style={small}>
+            {figure.unit}
+          </text>
+        </svg>
+      );
+    }
+    case "double-box-plot": {
+      const l = doubleBoxLayout(figure);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 254"
+          role="img"
+          aria-label={`Two box plots of ${figure.unit} on the same scale. ${figure.groups.map((g) => `${g.label}: ${summaryText(g.summary)}`).join(". ")}.`}
+        >
+          <text x={352} y={16} textAnchor="end" style={small}>
+            {figure.unit}
+          </text>
+          {l.boxes.map((b) => (
+            <g key={b.label} data-group={b.label}>
+              <text
+                x={8}
+                y={b.box.top - 10}
+                style={{ ...label, fontWeight: 600 }}
+              >
+                {b.label}
+              </text>
+              <BoxMarks box={b.box} />
+            </g>
+          ))}
+          <ScaleAxis
+            left={l.left}
+            right={l.right}
+            axisY={l.axisY}
+            ticks={l.ticks}
+          />
+        </svg>
+      );
+    }
     case "histogram": {
       const l = histogramLayout(figure);
       return (

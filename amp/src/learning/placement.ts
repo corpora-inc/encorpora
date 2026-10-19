@@ -127,11 +127,11 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
     ["mean-data", "mean-missing-value"],
   ],
-  // Grade 7: powers and equations, unit rates, the mean, distance on a number line.
+  // Grade 7: powers and equations, unit rates, the mean or a sample estimate, distance on a number line.
   [
     ["integer-power", "two-step-equation", "dependent-variable-value"],
     ["unit-price"],
-    ["mean-data", "mean-missing-value"],
+    ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
     ["number-line-distance"],
   ],
   // Grade 8: signed numbers, unit rates, probability and circles.

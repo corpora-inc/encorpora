@@ -1371,6 +1371,57 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// K–1 shapes: named from exact drawn figures in any orientation and size.
+for (const [skillId, facets] of [
+  [
+    "name-shapes",
+    [
+      [
+        "flat-names",
+        "Name circles, triangles, squares, rectangles and hexagons in any orientation or size, and pick one out among near misses.",
+      ],
+      [
+        "solid-names",
+        "Name cubes, cones, cylinders and spheres, and tell them from flat shapes.",
+      ],
+    ],
+  ],
+  [
+    "compose-shapes",
+    [
+      [
+        "compose-outline",
+        "Name the larger shape made by smaller shapes fitted edge to edge.",
+      ],
+      [
+        "fill-gap",
+        "Choose the piece, possibly turned, that completes a larger shape.",
+      ],
+    ],
+  ],
+  [
+    "shape-attributes",
+    [
+      [
+        "sides-corners",
+        "Count the sides or corners of a closed straight-sided shape.",
+      ],
+      [
+        "defining",
+        "Tell defining attributes from size, orientation and proportion.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // Figure-based K–5 geometry: each facet names exactly what its items assess.
 for (const [skillId, facets] of [
   [
@@ -1903,6 +1954,31 @@ for (const [skillId, suffix, description] of [
     "variability",
     "appropriate-center",
     "Choose the median as the typical value when an extreme value pulls the mean.",
+  ],
+  [
+    "sampling",
+    "representative-samples",
+    "Choose the random sampling method that represents a population.",
+  ],
+  [
+    "sampling",
+    "population-estimates",
+    "Scale a random sample's fraction up to a population count.",
+  ],
+  [
+    "sampling",
+    "sampling-variation",
+    "Combine the varying counts of many random samples into one estimate.",
+  ],
+  [
+    "compare-distributions",
+    "centers-in-mads",
+    "Express the difference between two means as a multiple of their shared MAD.",
+  ],
+  [
+    "compare-distributions",
+    "box-plot-comparison",
+    "Compare medians and interquartile ranges of two box plots on one scale.",
   ],
 ])
   skills

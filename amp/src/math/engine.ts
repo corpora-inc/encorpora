@@ -4,6 +4,10 @@ import {
   generateEquationProblem,
 } from "./equation-practice";
 import {
+  inferenceTemplates,
+  generateInferenceProblem,
+} from "./inference-practice";
+import {
   distributionTemplates,
   generateDistributionProblem,
 } from "./distribution-practice";
@@ -33,6 +37,7 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
+import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import {
   addSubtractTemplates,
   generateAddSubtractProblem,
@@ -236,6 +241,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 
 export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
+  ...shapeTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -269,6 +275,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...choiceTemplates,
   ...equalGroupsTemplates,
   ...distributionTemplates,
+  ...inferenceTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -427,10 +434,12 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...shapeTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
+    ...inferenceTemplates,
     ...partWholeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
@@ -468,6 +477,10 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (inferenceTemplates.some((t) => t.id === templateId))
+    return generateInferenceProblem(templateId, seed);
+  if (shapeTemplates.some((t) => t.id === templateId))
+    return generateShapeProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))

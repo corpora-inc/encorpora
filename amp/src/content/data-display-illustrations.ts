@@ -108,6 +108,36 @@ export const dataIllustrations = {
     mark: "dot",
     unit: "books",
   },
+  "data-sample-counts": {
+    kind: "line-plot",
+    denominator: 1,
+    start: 2,
+    end: 14,
+    values: [6, 7, 7, 8, 8, 8, 9, 9, 10, 8],
+    mark: "dot",
+    unit: "count in a sample",
+  },
+  "data-double-dot-mads": {
+    kind: "double-dot-plot",
+    start: 0,
+    end: 12,
+    groups: [
+      { label: "Morning", values: [3, 4, 5, 5, 6, 7] },
+      { label: "Afternoon", values: [6, 7, 8, 8, 9, 10] },
+    ],
+    unit: "push-ups",
+  },
+  "data-double-box-scores": {
+    kind: "double-box-plot",
+    start: 40,
+    end: 100,
+    step: 5,
+    groups: [
+      { label: "Class A", summary: [55, 65, 75, 85, 95] },
+      { label: "Class B", summary: [45, 60, 65, 70, 90] },
+    ],
+    unit: "points",
+  },
 } as const satisfies Record<string, DataDisplayFigure>;
 export type DataIllustration = keyof typeof dataIllustrations;
 export const isDataIllustration = (kind: string): kind is DataIllustration =>

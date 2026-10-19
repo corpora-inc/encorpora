@@ -1,6 +1,7 @@
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
+import { inferenceLessons } from "./inference-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
@@ -10,6 +11,8 @@ import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
+import { shapeLessons } from "./shape-lessons";
+import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
@@ -49,6 +52,7 @@ export interface Lesson {
       | "standard-algorithm-product"
       | "partial-quotients"
       | "partial-quotients-two-digit"
+      | ShapeIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -593,6 +597,7 @@ export const lessons: readonly Lesson[] = [
   ...earlyDataLessons,
   ...linePlotLessons,
   ...distributionLessons,
+  ...inferenceLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,
@@ -607,6 +612,7 @@ export const lessons: readonly Lesson[] = [
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
+  ...shapeLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

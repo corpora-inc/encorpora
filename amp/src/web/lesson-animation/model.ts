@@ -1,5 +1,10 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type { SemanticFigure } from "../../math/contracts";
+import {
+  shapeMorphFrames,
+  shapeMorphModel,
+  type ShapeMorphAnimation,
+} from "./shape-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -52,6 +57,7 @@ export type ClockSweepAnimation = {
 };
 export type AnimationModel =
   | { kind: "area-model"; figure: AreaModel }
+  | ShapeMorphAnimation
   | {
       kind: "plot";
       rows: { x: number; y: number }[];
@@ -77,7 +83,22 @@ export type AnimationModel =
   | { kind: "line-plot-stack"; figure: LinePlot }
   | { kind: "line-plot-share"; figure: LinePlot; share: number }
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
-  | { kind: "box-build"; figure: LinePlot };
+  | { kind: "box-build"; figure: LinePlot }
+  | MadGapAnimation;
+type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
+/** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
+export type MadGapAnimation = {
+  kind: "mad-gap";
+  figure: DoubleDot;
+  means: [number, number];
+  mad: number;
+};
+const meanOf = (v: readonly number[]) =>
+  v.reduce((a, b) => a + b, 0) / v.length;
+const madOf = (v: readonly number[]) => {
+  const m = meanOf(v);
+  return v.reduce((a, x) => a + Math.abs(x - m), 0) / v.length;
+};
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -116,6 +137,8 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  const morph = shapeMorphModel(lesson.templateId, f);
+  if (morph) return morph;
   if (
     lesson.templateId === "area-model-product" &&
     f?.kind === "area-model" &&
@@ -208,6 +231,22 @@ export function animationModel(
       mad: lesson.templateId === "dot-plot-mad",
       trial,
     };
+  }
+  if (lesson.templateId === "means-in-mads" && f?.kind === "double-dot-plot") {
+    const [a, b] = f.groups.map((g) => g.values);
+    const mad = madOf(a!),
+      gap = Math.abs(meanOf(a!) - meanOf(b!));
+    if (
+      integer(mad, 1, 5) &&
+      madOf(b!) === mad &&
+      integer((2 * gap) / mad, 1, 12)
+    )
+      return {
+        kind: "mad-gap",
+        figure: f,
+        means: [meanOf(a!), meanOf(b!)],
+        mad,
+      };
   }
   if (
     lesson.templateId === "dot-plot-iqr" &&
@@ -544,6 +583,7 @@ export function animationFrames(model: AnimationModel) {
       },
     ];
   }
+  if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
     const first = rows.find((r) => r.x !== 0) ?? rows[0]!;
@@ -736,6 +776,34 @@ export function animationFrames(model: AnimationModel) {
             text: `The beam balances at ${frac(sum, n).text}: the distances below it add up to the distances above it.`,
             math: `$${sum} \\div ${n} = ${frac(sum, n).tex}$`,
           },
+    ];
+  }
+  if (model.kind === "mad-gap") {
+    const [g1, g2] = model.figure.groups,
+      [m1, m2] = model.means,
+      gap = Math.abs(m1 - m2),
+      k = gap / model.mad;
+    return [
+      {
+        title: "Two groups, one scale",
+        text: `${g1.label} (top) and ${g2.label} (bottom) share one number line, so equal values line up. Both have a MAD of ${model.mad}.`,
+        math: `$\\text{MAD} = ${model.mad}$`,
+      },
+      {
+        title: "Find each mean",
+        text: [g1, g2]
+          .map(
+            (g, i) =>
+              `${g.label}: ${g.values.reduce((a, b) => a + b, 0)}\u00a0÷\u00a0${g.values.length}\u00a0=\u00a0${num(model.means[i]!)}.`,
+          )
+          .join(" "),
+        math: `$${num(Math.max(m1, m2))} - ${num(Math.min(m1, m2))} = ${num(gap)}$`,
+      },
+      {
+        title: "Lay MADs across the gap",
+        text: `The gap of ${num(gap)} holds ${num(k)} MADs of ${model.mad}. The more MADs between the means, the less the groups overlap.`,
+        math: `$${num(gap)} \\div ${model.mad} = ${num(k)}$`,
+      },
     ];
   }
   if (model.kind === "box-build") {
