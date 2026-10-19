@@ -440,6 +440,7 @@ rational-stories|7|modeling|Solve contextual problems using signed rational arit
 complex-fractions|7|fractions|Simplify complex fractions by dividing a simplified numerator by a simplified denominator|fraction-division,signed-multiplication|7.NS.A.3
 linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
+absolute-value-equations|algebra-1|algebra|Solve absolute-value equations and interpret complete real solution sets|absolute-value,two-step-equations,signed-multiplication|SAT.advanced-math
 linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
 scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proportional-relationships,triangle-area|7.G.A.1
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
@@ -1294,6 +1295,29 @@ export const expectedHighSchoolStandardIds = Object.entries(
 );
 
 // Narrow implemented tasks do not certify the broader planned inequality skill.
+const absoluteValueSkill = skills.find(
+  (s) => s.id === "absolute-value-equations",
+)!;
+for (const [id, description] of [
+  [
+    "direct-solution-set",
+    "Select complete real solution sets for absolute-value equations with bounded rational distances.",
+  ],
+  [
+    "affine-solution-set",
+    "Solve a single absolute value of an affine expression with bounded integer coefficients and rational targets.",
+  ],
+  [
+    "transformed-solution-set",
+    "Isolate a scaled, shifted absolute value and classify bounded exact solution sets, including true and false constant equations.",
+  ],
+])
+  absoluteValueSkill.facets.push({
+    id: `absolute-value-equations.${id}`,
+    description,
+    status: "implemented",
+  });
+
 const inequalitySkill = skills.find((s) => s.id === "linear-inequalities")!;
 inequalitySkill.alignments.push({
   standardId: "SAT.algebra",
@@ -1404,6 +1428,42 @@ for (const [skillId, facets] of [
         "inclusion",
         "Judge category statements and use that subcategories inherit properties.",
       ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
+// Grade 4 angle measure, lines and symmetry, read from exact figures.
+for (const [skillId, facets] of [
+  [
+    "angle-measure",
+    [
+      ["turns", "Find an angle as a fraction of the 360° in a full turn."],
+      [
+        "protractor",
+        "Read whole-degree angles on a protractor, choosing the scale that starts at 0.",
+      ],
+      [
+        "additive",
+        "Find a whole angle or a missing part of angles that do not overlap.",
+      ],
+    ],
+  ],
+  [
+    "lines-symmetry",
+    [
+      [
+        "lines-angles",
+        "Name lines, rays and segments; classify angles and triangles by angle; tell parallel from perpendicular lines.",
+      ],
+      ["symmetry", "Identify and count lines of symmetry of polygons."],
     ],
   ],
 ] as const) {
@@ -1732,8 +1792,104 @@ for (const [suffix, description] of [
     status: "implemented",
   });
 
+// Grade 8 real-number tasks; each facet is bounded by its coverage rationale.
+for (const [skillId, suffix, description] of [
+  [
+    "irrational-numbers",
+    "classify-forms",
+    "Identify the rational or irrational number among roots, integers, fractions, terminating and repeating decimals, multiples of π and a non-repeating patterned decimal.",
+  ],
+  [
+    "irrational-numbers",
+    "repeating-to-fraction",
+    "Write a repeating decimal as a fraction in simplest form.",
+  ],
+  [
+    "approximate-roots",
+    "integer-bounds",
+    "Locate a square or cube root of a whole number between consecutive whole numbers.",
+  ],
+  [
+    "approximate-roots",
+    "nearest-tenth",
+    "Approximate the square root of a whole number to the nearest tenth using squares of tenths and the halfway point.",
+  ],
+  [
+    "approximate-roots",
+    "compare-forms",
+    "Order square roots, cube roots, fractions and decimals by placing each between consecutive tenths.",
+  ],
+  [
+    "approximate-roots",
+    "root-equations",
+    "Find all real solutions of x² = p for positive rational p and x³ = p for integer p, with root symbols for irrational solutions.",
+  ],
+  [
+    "scientific-notation",
+    "standard-form",
+    "Convert positive numbers between scientific notation and standard form.",
+  ],
+  [
+    "scientific-notation",
+    "compare-magnitude",
+    "Find how many times as large one number in scientific notation is as another.",
+  ],
+  [
+    "scientific-notation",
+    "operations",
+    "Multiply, divide, add and subtract numbers in scientific notation, giving the result in scientific notation.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
+  [
+    "gcf-lcm",
+    "greatest-common-factor",
+    "Find the greatest common factor of two whole numbers up to 100, including equal-sets and square-tile contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "least-common-multiple",
+    "Find the least common multiple of two whole numbers from 2 to 12, including package and repeating-time contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "distributive-gcf",
+    "Express a sum of two whole numbers up to 100 as their greatest common factor times a sum with no common factor.",
+  ],
+  [
+    "integer-division",
+    "standard-algorithm",
+    "Divide multidigit whole numbers by two-digit divisors with the standard algorithm.",
+  ],
+  [
+    "integer-division",
+    "remainder-meaning",
+    "Interpret a whole-number remainder in context as one more group, a dropped part or the amount left over.",
+  ],
+  [
+    "signed-numbers",
+    "opposite-quantities",
+    "Represent quantities in opposite directions from a reference 0 with positive and negative numbers.",
+  ],
+  [
+    "signed-numbers",
+    "opposites-on-line",
+    "Read integers on a number line and find opposites, including the opposite of an opposite.",
+  ],
+  [
+    "rational-stories",
+    "signed-decimal-stories",
+    "Solve multistep temperature, elevation and account-balance problems with signed decimals exactly.",
+  ],
   [
     "unit-rates",
     "whole-quantity-unit-rates",
@@ -2185,6 +2341,26 @@ for (const [skillId, suffix, description] of [
     "compare-distributions",
     "box-plot-comparison",
     "Compare medians and interquartile ranges of two box plots on one scale.",
+  ],
+  [
+    "scatterplots",
+    "association-patterns",
+    "Classify a scatter plot's association as positive linear, negative linear, nonlinear or none.",
+  ],
+  [
+    "scatterplots",
+    "trend-line-models",
+    "Predict with a trend line and interpret its slope in context.",
+  ],
+  [
+    "two-way-tables",
+    "complete-tables",
+    "Find missing counts in a two-way table from its row and column totals.",
+  ],
+  [
+    "two-way-tables",
+    "relative-frequency-association",
+    "Compare relative frequencies within rows to judge association.",
   ],
 ])
   skills

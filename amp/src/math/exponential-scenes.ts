@@ -13,19 +13,38 @@ export function niceCeil(v: number) {
   return { max: Math.ceil((v * 1.08) / step) * step, step };
 }
 
+/** A function table: inputs down the side under `corner`, one column of
+ * outputs per name. Headings are mathematics. */
+export function valueTable(
+  corner: string,
+  columns: string[],
+  rows: number[][],
+  options: { words?: boolean } = {},
+) {
+  return table({
+    corner,
+    columns,
+    rows: rows.map(([x, ...cells]) => ({ label: tex(x!), cells })),
+    ...(options.words ? {} : { math: true }),
+  });
+}
+
 /** x | y with ×b (or +d) marked down the y column. */
 export function stepTable(
   xs: number[],
-  ys: string[],
+  ys: number[],
   step: string | false,
-  names: [string, string] = ["x", "y"],
 ): Scene {
-  return table(names, xs.map((x, i) => [x, ys[i]!]), { headerFont: "math" })
+  return valueTable(
+    "x",
+    ["y"],
+    xs.map((x, i) => [x, ys[i]!]),
+  )
     .steps(
-      1,
+      0,
       xs.slice(1).map(() => step),
     )
-    .scene({ title: `Table of ${names[1]} against ${names[0]}` });
+    .scene({ title: "Table of y against x" });
 }
 
 /** An exponential curve through marked, labeled points. */
@@ -125,13 +144,13 @@ export function raceBars(
 // ------------------------------------------------------------ lesson scenes
 export const exponentialLessonScenes = {
   /** Equal steps in x: the line adds 3, the exponential multiplies by 3. */
-  "ratio-difference-table": table(
-    ["x", "3x + 2", "2·3^x"],
+  "ratio-difference-table": valueTable(
+    "x",
+    ["3x + 2", "2·3^x"],
     [0, 1, 2, 3, 4].map((x) => [x, 3 * x + 2, 2 * 3 ** x]),
-    { headerFont: "math" },
   )
-    .steps(1, ["+3", "+3", "+3", "+3"])
-    .steps(2, ["×3", "×3", "×3", "×3"], "warm")
+    .steps(0, ["+3", "+3", "+3", "+3"])
+    .steps(1, ["×3", "×3", "×3", "×3"], "warm")
     .scene({ title: "Adding 3 each step against multiplying by 3" }),
   /** Doubling bars racing bars that add the same amount. */
   "doubling-race-bars": raceBars(
@@ -171,31 +190,33 @@ export const exponentialLessonScenes = {
     .point(8, 3, "(8, 3)")
     .scene({ title: "y = log base 2 of x through powers of 2" }),
   /** Multiplying outputs adds inputs: 4 × 8 = 32 and 2 + 3 = 5. */
-  "powers-product-table": table(
-    ["x", "2^x"],
+  "powers-product-table": valueTable(
+    "x",
+    ["2^x"],
     [1, 2, 3, 4, 5, 6].map((x) => [x, 2 ** x]),
-    { headerFont: "math" },
   )
-    .highlightRows([1, 2, 4], "gold")
+    .highlight({ rows: [1, 2, 4], color: "gold" })
     .scene({
       title: "Powers of 2: rows 2, 3 and 5 highlighted",
       note: "4 × 8 = 32 in the second column matches 2 + 3 = 5 in the first.",
     }),
   /** Ratio table of a geometric sequence. */
-  "geometric-ratio-table": table(
-    ["n", "a_n"],
+  "geometric-ratio-table": valueTable(
+    "n",
+    ["a_n"],
     [1, 2, 3, 4, 5].map((n) => [n, 3 * 2 ** (n - 1)]),
-    { headerFont: "math" },
   )
-    .steps(1, ["×2", "×2", "×2", "×2"])
+    .steps(0, ["×2", "×2", "×2", "×2"])
     .scene({ title: "The sequence 3, 6, 12, 24, 48" }),
   /** Running totals of 1, 2, 4, 8, 16: each total is one less than the next term. */
-  "series-running-total": table(
-    [{ text: "n", font: "math" }, "term", "total"],
+  "series-running-total": valueTable(
+    "n",
+    ["term", "total"],
     [1, 2, 3, 4, 5].map((n) => [n, 2 ** (n - 1), 2 ** n - 1]),
+    { words: true },
   )
-    .steps(1, ["×2", "×2", "×2", "×2"])
-    .highlightColumns([2], "gold")
+    .steps(0, ["×2", "×2", "×2", "×2"])
+    .highlight({ columns: [1], color: "gold" })
     .scene({ title: "Terms 1, 2, 4, 8, 16 and their running totals" }),
 } satisfies Record<string, Scene>;
 export type ExponentialIllustrationKind = keyof typeof exponentialLessonScenes;

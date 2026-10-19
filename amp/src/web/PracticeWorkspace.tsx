@@ -23,6 +23,8 @@ import type { PublicProblem, TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "../server/repository";
 import type { Lesson } from "../content/lessons";
 import { Figure } from "./Figure";
+import { ScenePlayer } from "./scene/ScenePlayer";
+import { visibleSteps, type Step } from "../math/scene/timeline";
 
 export function FocusDialog({
   title,
@@ -121,6 +123,8 @@ type Props = {
   setResponse: (value: string) => void;
   outcome: Outcome | null;
   hint: string;
+  /** The hint's figure cue for this problem's scene (see GeneratedProblem). */
+  hintCue?: { problemId: string; steps: Step[] } | null;
   pending: boolean;
   busy: boolean;
   submit: () => void;
@@ -168,6 +172,13 @@ export function PracticeWorkspace(props: Props) {
     };
   }, []);
   const choice = problem.response.kind === "choice";
+  // The learner's own scene, when its walkthrough (or a hint cue) can play.
+  const hintScene =
+    problem.figure?.kind === "scene" &&
+    (props.hintCue?.problemId === problem.id ||
+      visibleSteps(problem.figure.scene.steps ?? [], "hint").length)
+      ? problem.figure.scene
+      : null;
   const displayResponse = (value: string) =>
     problem.response.kind === "choice"
       ? (problem.response.options.find((option) => option.id === value)
@@ -404,7 +415,7 @@ export function PracticeWorkspace(props: Props) {
             >
               {/* One label always. A lost connection is explained beside the field,
                 and Check resends the same answer. */}
-            Check
+              Check
             </button>
           </div>
           <span id="answer-format" className="sr-only">
@@ -770,6 +781,17 @@ export function PracticeWorkspace(props: Props) {
                   "Your hint could not be loaded. Close this panel and try again."
                 )}
               </p>
+              {hintScene && (
+                <ScenePlayer
+                  scene={hintScene}
+                  mode="hint"
+                  cue={
+                    props.hintCue?.problemId === problem.id
+                      ? props.hintCue.steps
+                      : undefined
+                  }
+                />
+              )}
               <button onClick={() => setPanel(null)}>
                 Back to the problem
               </button>

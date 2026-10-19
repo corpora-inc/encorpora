@@ -12,6 +12,7 @@ import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
 import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { SignedLineFigure } from "./SignedLineFigure";
 import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
@@ -99,6 +100,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <ComparisonFigure figure={figure} />;
     case "bar-chart":
       return <GraphicalFigure figure={figure} />;
+    case "signed-line":
+      return <SignedLineFigure figure={figure} />;
     case "balance-scale":
     case "inequality-lines":
       return <EquationFigure figure={figure} />;

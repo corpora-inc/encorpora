@@ -1,3 +1,7 @@
+import { realNumberWorksheet } from "./real-number-worksheets";
+import { realNumberTemplates } from "../math/real-number-practice";
+import { numberSystemWorksheet } from "./number-system-worksheets";
+import { numberSystemTemplates } from "../math/number-system-practice";
 import { earlyOperationsTemplates } from "../math/early-operations-practice";
 import { ratioRateWorksheet } from "./ratio-rate-worksheets";
 import { ratioRateTemplates } from "../math/ratio-rate-practice";
@@ -32,6 +36,8 @@ import { linearSystemWorksheet } from "./linear-system-worksheets";
 import { linearSystemTemplates } from "../math/linear-system-practice";
 import { inequalityTemplates } from "../math/inequality-practice";
 import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
+import { absoluteValueWorksheet } from "./absolute-value-worksheets";
+import { absoluteValueTemplates } from "../math/absolute-value-practice";
 import { LessonIllustration } from "./LessonIllustration";
 import { product } from "../product";
 import React from "react";
@@ -67,7 +73,11 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    ratioRateTemplates.some((t) => t.id === id)
+    realNumberTemplates.some((t) => t.id === id)
+      ? realNumberWorksheet(id, lesson.id, edition)
+      : numberSystemTemplates.some((t) => t.id === id)
+      ? numberSystemWorksheet(id, lesson.id, edition)
+      : ratioRateTemplates.some((t) => t.id === id)
       ? ratioRateWorksheet(id, lesson.id, edition)
       : patternFunctionTemplates.some((t) => t.id === id)
         ? patternFunctionWorksheet(id, lesson.id, edition)
@@ -93,17 +103,19 @@ export function publicationHtml(
                             ? linearSystemWorksheet(id, lesson.id, edition)
                             : inequalityTemplates.some((t) => t.id === id)
                               ? inequalityWorksheet(id, lesson.id, edition)
-                              : (rightTriangleWorksheetProblems(
-                                  id,
-                                  lesson.id,
-                                  edition,
-                                ) ??
-                                Array.from({ length: 12 }, (_, i) =>
-                                  generateProblem(
+                              : absoluteValueTemplates.some((t) => t.id === id)
+                                ? absoluteValueWorksheet(id, lesson.id, edition)
+                                : (rightTriangleWorksheetProblems(
                                     id,
-                                    `print:${lesson.id}:${edition}:${i}`,
-                                  ),
-                                )),
+                                    lesson.id,
+                                    edition,
+                                  ) ??
+                                  Array.from({ length: 12 }, (_, i) =>
+                                    generateProblem(
+                                      id,
+                                      `print:${lesson.id}:${edition}:${i}`,
+                                    ),
+                                  )),
   );
   const kindLabel =
     kind === "lesson"

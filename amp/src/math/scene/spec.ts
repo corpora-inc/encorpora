@@ -20,33 +20,9 @@ export const elementId = z
   .string()
   .regex(/^[a-zA-Z][\w-]{0,31}$/, "Element ids are short words");
 
-/** Paint roles: each maps to a theme token (light, dark and print). */
-export const inkRoles = [
-  "ink",
-  "axis",
-  "grid",
-  "accent",
-  "warm",
-  "gold",
-  "muted",
-  "paper",
-] as const;
-export const fillRoles = [
-  "none",
-  "paper",
-  "empty",
-  "ink",
-  "accent",
-  "warm",
-  "gold",
-  "accent-fill",
-  "warm-fill",
-  "gold-fill",
-  "accent-strong",
-  "gold-strong",
-] as const;
-export type InkRole = (typeof inkRoles)[number];
-export type FillRole = (typeof fillRoles)[number];
+import { fillRoles, inkRoles, type FillRole, type InkRole } from "./roles";
+import { stepsSchema } from "./timeline";
+export { fillRoles, inkRoles, type FillRole, type InkRole };
 const ink = z.enum(inkRoles);
 const fill = z.enum(fillRoles);
 const dash = z.enum(["solid", "dash", "dot"]);
@@ -382,7 +358,8 @@ export const graphSchema = z
     type: z.literal("graph"),
     x: z.tuple([coord, coord]),
     y: z.tuple([coord, coord]),
-    /** Gridline spacing (false: no grid) and tick-label spacing. */
+    /** Gridline spacing (false: no grid) and tick-label spacing; a pair sets
+     * x and y separately, as data plots with unlike units need. */
     grid: z
       .union([
         num.positive(),
@@ -553,14 +530,20 @@ export const graphSchema = z
   .refine(
     (g) =>
       g.grid === false ||
-      ((g.x[1] - g.x[0]) /
-        (typeof g.grid === "object" ? g.grid[0] : (g.grid ?? 1)) <=
-        60 &&
-        (g.y[1] - g.y[0]) /
-          (typeof g.grid === "object" ? g.grid[1] : (g.grid ?? 1)) <=
-          60),
+      ((g.x[1] - g.x[0]) / axisStep(g.grid, 0, 1) <= 60 &&
+        (g.y[1] - g.y[0]) / axisStep(g.grid, 1, 1) <= 60),
     "At most 60 gridlines per axis",
   );
+/** One axis's spacing from a shared or per-axis setting. */
+export function axisStep<T>(
+  value: number | readonly [number, number] | undefined | T,
+  axis: 0 | 1,
+  fallback: number,
+): number {
+  if (typeof value === "number") return value;
+  if (Array.isArray(value)) return value[axis] as number;
+  return fallback;
+}
 
 /** A rectangle partitioned by place value or by terms: an area model. */
 export const areaModelSchema = z
@@ -677,30 +660,43 @@ export const clockSchema = z
   .strict();
 
 const tableCell = z.union([
-  label,
-  z
-    .object({
-      text: label,
-      font: z.enum(["math", "sans"]).optional(),
-      bold: z.boolean().optional(),
-      color: ink.optional(),
-    })
-    .strict(),
+  num.min(-1e6).max(1e6),
+  z.string().min(1).max(16),
+  z.null(),
 ]);
-const highlightColor = z.enum(["accent", "warm", "gold"]).optional();
-/** A value table, laid out at type size: columns fit their widest entry.
- * `steps` draw the change between consecutive rows of a column (+3, ×2) as
- * bowed arrows in a gutter to that column's right. */
+/** A table of short entries: header row, labeled rows and, with `sums`, a
+ * total column and a total row. A derived cell is the one to find: it is null
+ * in the data, drawn as "?", and when revealed computed from the sums. */
 export const tableSchema = z
   .object({
     ...base,
     type: z.literal("table"),
-    header: z.array(tableCell).min(1).max(6),
-    rows: z.array(z.array(tableCell).min(1).max(6)).min(1).max(8),
-    /** Header row text font; cells default to math, row headers to sans. */
-    headerFont: z.enum(["math", "sans"]).optional(),
-    /** The first column names the rows (a two-way table). */
-    rowHeaders: z.boolean().optional(),
+    /** A heading over the body columns ("Has a curfew"). */
+    title: label.max(32).optional(),
+    columns: z.array(z.string().min(1).max(16)).min(1).max(6),
+    rows: z
+      .array(
+        z
+          .object({
+            label: z.string().min(1).max(18),
+            cells: z.array(tableCell).min(1).max(6),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(8),
+    sums: z.boolean().optional(),
+    derived: z
+      .array(z.tuple([small.max(7), small.max(5)]))
+      .max(4)
+      .optional(),
+    /** A heading over the row labels ("x", "n"). */
+    corner: z.string().min(1).max(16).optional(),
+    /** Headings and row labels are mathematics (x, f(x), a_n, 2^x), set
+     * like the numbers rather than as bold words. */
+    math: z.boolean().optional(),
+    /** The change between consecutive rows of a body column (+3, ×2), drawn
+     * as bowed arrows in a gutter to that column's right. */
     steps: z
       .array(
         z
@@ -713,27 +709,148 @@ export const tableSchema = z
       )
       .max(3)
       .optional(),
+    /** Rows (a conditional distribution) or body columns to tint. */
     highlight: z
       .object({
         rows: z.array(small.max(7)).max(8).optional(),
         columns: z.array(small.max(5)).max(6).optional(),
-        color: highlightColor,
+        color: z.enum(["accent", "warm", "gold"]).optional(),
       })
       .strict()
       .optional(),
   })
   .strict()
   .refine(
-    (t) => t.rows.every((r) => r.length === t.header.length),
+    (t) => t.rows.every((r) => r.cells.length === t.columns.length),
     "Every row has one cell per column",
   )
   .refine(
     (t) =>
       (t.steps ?? []).every(
         (s) =>
-          s.column < t.header.length && s.labels.length === t.rows.length - 1,
+          s.column < t.columns.length && s.labels.length === t.rows.length - 1,
       ),
     "A step labels each gap between rows of a real column",
+  )
+  .refine(
+    (t) =>
+      (t.derived ?? []).every(
+        ([r, c]) => r < t.rows.length && t.rows[r]!.cells[c] === null,
+      ),
+    "A derived cell is an empty cell of the table",
+  )
+  .refine(
+    (t) => !t.derived?.length || (t.sums && completeTable(t) !== null),
+    "Derived cells follow from the sums",
+  )
+  .refine((t) => !t.sums || completeTable(t) !== null, "Totals add up");
+/** Fill a summed table's numeric blanks from its row and column totals; null
+ * when it is inconsistent or the blanks are not determined. */
+export function completeTable(t: {
+  rows: { cells: (number | string | null)[] }[];
+}): number[][] | null {
+  const g = t.rows.map((r) =>
+    r.cells.map((v) => (typeof v === "number" ? v : null)),
+  );
+  if (t.rows.some((r) => r.cells.some((v) => typeof v === "string")))
+    return null;
+  const n = g.length,
+    m = g[0]!.length;
+  const lines = [
+    ...g.map((_, i) => Array.from({ length: m }, (_, j) => [i, j] as const)),
+    ...Array.from({ length: m }, (_, j) =>
+      Array.from({ length: n }, (_, i) => [i, j] as const),
+    ),
+  ];
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const line of lines) {
+      const open = line.filter(([i, j]) => g[i]![j] === null);
+      if (open.length !== 1) continue;
+      const [oi, oj] = open[0]!;
+      const last = line.at(-1)!;
+      const parts = line
+        .slice(0, -1)
+        .filter(([i, j]) => !(i === oi && j === oj))
+        .reduce((a, [i, j]) => a + g[i]![j]!, 0);
+      g[oi]![oj] =
+        oi === last[0] && oj === last[1]
+          ? parts
+          : g[last[0]]![last[1]]! - parts;
+      changed = true;
+    }
+  }
+  if (g.some((row) => row.some((v) => v === null))) return null;
+  const full = g as number[][];
+  for (const line of lines) {
+    const values = line.map(([i, j]) => full[i]![j]!);
+    const total = values.pop()!;
+    if (Math.abs(values.reduce((a, b) => a + b, 0) - total) > 1e-9) return null;
+  }
+  return full;
+}
+
+const direction = num.min(-720).max(720);
+const pointName = z.string().regex(/^[A-Z]$/);
+/** A protractor centered on a vertex, unit radius. Outer numbers count from
+ * 0 on the left, inner numbers from 0 on the right. Rays are directions in
+ * degrees (counterclockwise from the right) within the half turn. */
+export const protractorSchema = z
+  .object({
+    ...base,
+    type: z.literal("protractor"),
+    rays: z.tuple([num.min(0).max(180), num.min(0).max(180)]),
+    /** End of the first ray, the vertex, end of the second ray. */
+    labels: z.tuple([pointName, pointName, pointName]).optional(),
+  })
+  .strict()
+  .refine((p) => p.rays[0] !== p.rays[1], "Two distinct rays");
+
+/** Rays from one vertex, drawn to their true directions, with angle marks
+ * between chosen pairs. A right angle is marked with a square. */
+export const angleSchema = z
+  .object({
+    ...base,
+    type: z.literal("angle"),
+    rays: z.array(direction).min(2).max(4),
+    /** Ray length in math units. */
+    length: num.positive().max(10).optional(),
+    /** Arrowheads at the ray ends: rays go on forever. */
+    arrows: z.boolean().optional(),
+    labels: z
+      .object({
+        vertex: pointName,
+        ends: z.array(pointName).min(2).max(4),
+      })
+      .strict()
+      .optional(),
+    /** Marks counterclockwise from ray `from` to ray `to`. */
+    marks: z
+      .array(
+        z
+          .object({
+            from: z.number().int().min(0).max(3),
+            to: z.number().int().min(0).max(3),
+            /** Write the measure in degrees beside the mark. */
+            measure: z.boolean().optional(),
+            /** The measure is the unknown: drawn as "?" unless revealed. */
+            derived: z.boolean().optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (a) =>
+      (!a.labels || a.labels.ends.length === a.rays.length) &&
+      (a.marks ?? []).every(
+        (m) =>
+          m.from < a.rays.length && m.to < a.rays.length && m.from !== m.to,
+      ),
+    "Labels and marks name existing rays",
   );
 
 /** Vertical bars over categories: one series, or two side by side. Heights
@@ -749,7 +866,7 @@ export const barsSchema = z
           .object({
             values: z.array(num.min(0).max(1e9)).min(1).max(12),
             label: label.optional(),
-            color: highlightColor,
+            color: z.enum(["accent", "warm", "gold"]).optional(),
           })
           .strict(),
       )
@@ -771,6 +888,8 @@ export const barsSchema = z
   );
 
 export const componentSchemas = [
+  protractorSchema,
+  angleSchema,
   numberLineSchema,
   graphSchema,
   areaModelSchema,
@@ -792,8 +911,9 @@ export type BaseTen = z.infer<typeof baseTenSchema>;
 export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
 export type Table = z.infer<typeof tableSchema>;
-export type TableCell = z.infer<typeof tableCell>;
 export type Bars = z.infer<typeof barsSchema>;
+export type Protractor = z.infer<typeof protractorSchema>;
+export type Angle = z.infer<typeof angleSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([
@@ -813,6 +933,9 @@ export const sceneSchema = z
     width: z.number().int().min(160).max(720).optional(),
     maxHeight: z.number().int().min(80).max(720).optional(),
     elements: z.array(elementSchema).min(1).max(64),
+    /** A walkthrough over the elements (docs/figures.md, "Timelines"). A
+     * problem figure shows the start frame; hints and lessons play it. */
+    steps: stepsSchema.optional(),
   })
   .strict()
   .refine((scene) => {

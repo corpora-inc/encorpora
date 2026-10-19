@@ -3,6 +3,7 @@ import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
+import { bivariateLessons } from "./bivariate-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
@@ -11,15 +12,19 @@ import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
+import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { realNumberLessons } from "./real-number-lessons";
+import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { AngleIllustrationKind } from "./AngleIllustration";
+import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { polygonLessons } from "./polygon-lessons";
 import { exponentialLessons } from "./exponential-lessons";
-import type { ExponentialIllustrationKind } from "../math/exponential-scenes";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
@@ -38,6 +43,7 @@ import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
+import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
 import { choiceLessons } from "./choice-lessons.js";
@@ -57,6 +63,18 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "repeating-decimal-shift"
+      | "root-zoom"
+      | "root-solutions"
+      | "decimal-point-shift"
+      | "scientific-regroup"
+      | "prime-factor-venn"
+      | "gcf-area"
+      | "multiple-jumps"
+      | "long-division"
+      | "elevation-line"
+      | "opposite-line"
+      | "story-jumps"
       | AttributeIllustrationKind
       | "multiply-tens-groups"
       | "area-model-product"
@@ -72,8 +90,8 @@ export interface Lesson {
       | FactArrayIllustrationKind
       | EarlyOperationsIllustrationKind
       | ShapeIllustrationKind
+      | AngleIllustrationKind
       | PolygonIllustrationKind
-      | ExponentialIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -114,6 +132,7 @@ export interface Lesson {
       | "comparison-place-chart"
       | "large-place-value-chart"
       | DataIllustration
+      | SceneIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -141,6 +160,8 @@ export interface Lesson {
       | "linear-system-intersection"
       | "linear-system-count"
       | "right-triangle-orientation"
+      | "absolute-value-distance"
+      | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
   workedExample: {
@@ -490,11 +511,13 @@ export const lessons: readonly Lesson[] = [
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
+  ...absoluteValueLessons,
   ...polynomialLessons,
   ...earlyDataLessons,
   ...linePlotLessons,
   ...distributionLessons,
   ...inferenceLessons,
+  ...bivariateLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,
@@ -506,6 +529,8 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...realNumberLessons,
+  ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
   ...equationLessons,
@@ -513,6 +538,7 @@ export const lessons: readonly Lesson[] = [
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
   ...shapeLessons,
+  ...angleLessons,
   ...polygonLessons,
   ...exponentialLessons,
   ...percentChangeLessons,

@@ -68,6 +68,13 @@ export type ClockSweepAnimation = {
 /** Full jar A poured into empty jar B: eighths of B filled (9 = spills). */
 export type PourAnimation = { kind: "pour"; eighths: number };
 export type AnimationModel =
+  | { kind: "root-zoom"; radicand: number; index: 2 | 3 }
+  | {
+      kind: "decimal-shift";
+      digits: string;
+      exponent: number;
+      toStandard: boolean;
+    }
   /** A balance loaded side by side until the closed box levels it. */
   | {
       kind: "balance-level";
@@ -122,7 +129,22 @@ export type AnimationModel =
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
   | { kind: "box-build"; figure: LinePlot }
   | RateModel
-  | MadGapAnimation;
+  | MadGapAnimation
+  /** A point reflected across 0 onto its opposite. */
+  | { kind: "opposite"; value: number; min: number; max: number }
+  /** Signed changes added one jump at a time; values are exact halves. */
+  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number };
+const half = (n: number) => Number.isFinite(n) && Number.isInteger(n * 2);
+/** Running positions of a jump sequence, exact for halves. */
+export const jumpStops = (start: number, jumps: number[]) =>
+  jumps.reduce(
+    (all, j) => [...all, Math.round((all.at(-1)! + j) * 2) / 2],
+    [start],
+  );
+/** TeX for a signed number; negatives in parentheses when they follow an operator. */
+/** Prose uses a typographic minus. */
+const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
+const signedTex = (n: number, wrap = false) => (n < 0 && wrap ? `(${n})` : `${n}`);
 type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
 /** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
 export type MadGapAnimation = {
@@ -186,6 +208,31 @@ function plotRule(f: Display): PlotRule | null {
 export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
+  const g = lesson.example.givens;
+  if (
+    (lesson.templateId === "root-between-integers" ||
+      lesson.templateId === "root-nearest-tenth") &&
+    g?.kind === "root" &&
+    (g.index === 2 || g.index === 3) &&
+    integer(g.radicand, 2, g.index === 2 ? 400 : 1000) &&
+    rootFloor(g.radicand, g.index) ** g.index !== g.radicand
+  )
+    return { kind: "root-zoom", radicand: g.radicand, index: g.index };
+  if (
+    (lesson.templateId === "scientific-to-standard" ||
+      lesson.templateId === "standard-to-scientific") &&
+    g?.kind === "power-of-ten" &&
+    /^[1-9](\d{0,2}[1-9])?$/.test(g.digits) &&
+    integer(g.exponent, -9, 12) &&
+    g.exponent !== 0 &&
+    g.toStandard === (lesson.templateId === "scientific-to-standard")
+  )
+    return {
+      kind: "decimal-shift",
+      digits: g.digits,
+      exponent: g.exponent,
+      toStandard: g.toStandard,
+    };
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
@@ -490,6 +537,42 @@ export function animationModel(
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
   if (
+    lesson.templateId === "opposite-on-line" &&
+    f?.kind === "signed-line" &&
+    f.jumps === undefined &&
+    f.points.length === 1 &&
+    integer(f.points[0]!.value, f.min, f.max) &&
+    f.points[0]!.value !== 0 &&
+    integer(-f.points[0]!.value, f.min, f.max)
+  )
+    return {
+      kind: "opposite",
+      value: f.points[0]!.value,
+      min: f.min,
+      max: f.max,
+    };
+  if (
+    lesson.templateId === "signed-jumps" &&
+    f?.kind === "signed-line" &&
+    f.start !== undefined &&
+    f.jumps !== undefined &&
+    f.jumps.length >= 1 &&
+    f.jumps.length <= 4 &&
+    Number.isInteger(f.min) &&
+    Number.isInteger(f.max) &&
+    f.max > f.min &&
+    half(f.start) &&
+    f.jumps.every((j) => half(j) && j !== 0) &&
+    jumpStops(f.start, f.jumps).every((v) => v >= f.min && v <= f.max)
+  )
+    return {
+      kind: "jumps",
+      start: f.start,
+      jumps: f.jumps,
+      min: f.min,
+      max: f.max,
+    };
+  if (
     lesson.templateId === "double-number-line-missing" &&
     f?.kind === "double-number-line"
   )
@@ -542,6 +625,46 @@ export function animationModel(
   }
   return null;
 }
+/** Greatest whole number whose square (or cube) is at most n. */
+export function rootFloor(n: number, index: 2 | 3) {
+  let k = Math.floor(Math.round(n ** (1 / index) * 1e6) / 1e6);
+  while ((k + 1) ** index <= n) k++;
+  while (k ** index > n) k--;
+  return k;
+}
+/** An integer m scaled by 10^-places, as exact decimal text. */
+export function scaled(m: number, places: number) {
+  const digits = String(m).padStart(places + 1, "0");
+  return places
+    ? `${digits.slice(0, -places)}.${digits.slice(-places)}`
+    : digits;
+}
+/** The tenth just below the root, and the nearest tenth, both in tenths. */
+export function rootZoom(n: number, index: 2 | 3) {
+  const k = rootFloor(n, index),
+    t = rootFloor(n * 10 ** index, index);
+  // Halfway point (2t + 1)/20 = (10t + 5)/100; compare its power with n exactly.
+  const half = (10 * t + 5) ** index,
+    up = n * 100 ** index > half;
+  return { k, t, up, nearest: up ? t + 1 : t, half };
+}
+const tenthText = (t: number) => scaled(t, 1);
+/** Standard form of digits × 10^(exponent − digits + 1), e.g. 307, −4 → 0.000307. */
+export function standardForm(digits: string, exponent: number) {
+  const point = exponent + 1;
+  if (point >= digits.length) return digits + "0".repeat(point - digits.length);
+  if (point > 0) return `${digits.slice(0, point)}.${digits.slice(point)}`;
+  return `0.${"0".repeat(-point)}${digits}`;
+}
+export const coefficientText = (digits: string) =>
+  digits.length > 1 ? `${digits[0]}.${digits.slice(1)}` : digits;
+const group = (text: string) => {
+  const [whole, part] = text.split(".");
+  const grouped =
+    whole!.length >= 5 ? whole!.replace(/\B(?=(\d{3})+$)/g, "{,}") : whole!;
+  return part === undefined ? grouped : `${grouped}.${part}`;
+};
+const placeCount = (n: number) => `${n} ${n === 1 ? "place" : "places"}`;
 function balanceForm(f: Balance): BalanceForm | null {
   if (
     !integer(f.groups, 1, 3) ||
@@ -725,6 +848,122 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "root-zoom") {
+    const { radicand: n, index: i } = model,
+      { k, t, up, nearest, half } = rootZoom(n, i);
+    const root = i === 2 ? `\\sqrt{${n}}` : `\\sqrt[3]{${n}}`,
+      power = (x: number, places: number) => scaled(x ** i, places * i);
+    return [
+      {
+        title: "Between whole numbers",
+        text: `${n} is between ${k ** i} and ${(k + 1) ** i}, so its ${i === 2 ? "square" : "cube"} root is between ${k} and ${k + 1}.`,
+        math: `$${k}^${i} = ${k ** i} < ${n} < ${(k + 1) ** i} = ${k + 1}^${i}$`,
+      },
+      {
+        title: "Zoom in to tenths",
+        text: `Between ${k} and ${k + 1}, ${n} falls between the ${i === 2 ? "squares" : "cubes"} of ${tenthText(t)} and ${tenthText(t + 1)}.`,
+        math: `$${tenthText(t)}^${i} = ${power(t, 1)} < ${n} < ${power(t + 1, 1)} = ${tenthText(t + 1)}^${i}$`,
+      },
+      {
+        title: "Compare with the halfway point",
+        text: `${scaled(10 * t + 5, 2)}${i === 2 ? "²" : "³"} = ${scaled(half, 2 * i)}. ${n} is ${up ? "greater" : "less"}, so the root is closer to ${tenthText(nearest)}.`,
+        math: `$${root} \\approx ${tenthText(nearest)}$`,
+      },
+    ];
+  }
+  if (model.kind === "decimal-shift") {
+    const { digits, exponent: e, toStandard } = model,
+      coefficient = coefficientText(digits),
+      standard = group(standardForm(digits, e)),
+      places = placeCount(Math.abs(e)),
+      direction = e > 0 ? "right" : "left";
+    const scientific = `${coefficient} \\times 10^{${e}}`;
+    return toStandard
+      ? [
+          {
+            title: "The digits stay fixed",
+            text: `The digits ${digits.split("").join(", ")} keep their order. Only the decimal point moves.`,
+            math: `$${scientific}$`,
+          },
+          {
+            title: `Move the point ${places} ${direction}`,
+            text: `Each factor of 10 moves the point one place. ${e > 0 ? "Multiplying" : "Dividing"} by 10 ${Math.abs(e) === 1 ? "once" : `${Math.abs(e)} times`} moves it ${places} ${direction}.`,
+            math: `$\\times 10^{${e}}$`,
+          },
+          {
+            title: "Fill the empty places with zeros",
+            text: "Zeros hold the places between the digits and the decimal point.",
+            math: `$${scientific} = ${standard}$`,
+          },
+        ]
+      : [
+          {
+            title: "Start from standard form",
+            text: `The digits ${digits.split("").join(", ")} keep their order. Only the decimal point moves.`,
+            math: `$${standard}$`,
+          },
+          {
+            title: "Move the point after the first nonzero digit",
+            text: `The point moves ${places} to the ${e > 0 ? "left" : "right"}, leaving ${coefficient}.`,
+            math: `$${coefficient}$`,
+          },
+          {
+            title: "The count becomes the exponent",
+            text:
+              e > 0
+                ? "The number is 10 or more, so the exponent is positive."
+                : "The number is less than 1, so the exponent is negative.",
+            math: `$${standard} = ${scientific}$`,
+          },
+        ];
+  }
+  if (model.kind === "opposite") {
+    const a = model.value,
+      d = Math.abs(a),
+      units = `${d} ${d === 1 ? "unit" : "units"}`;
+    return [
+      {
+        title: "Read the point",
+        text: `P is ${units} to the ${a < 0 ? "left" : "right"} of 0.`,
+        math: `$P = ${signedTex(a)}$`,
+      },
+      {
+        title: "Reflect across 0",
+        text: "Swing P over 0 to the other side. Its distance from 0 does not change.",
+        math: `$\\text{distance from } 0 = ${d}$`,
+      },
+      {
+        title: "Name the opposite",
+        text: `The opposite of ${shown(a)} is ${shown(-a)}: ${units} from 0 on the ${a < 0 ? "right" : "left"}.`,
+        math: `$-(${signedTex(a)}) = ${signedTex(-a)}$`,
+      },
+    ];
+  }
+  if (model.kind === "jumps") {
+    const stops = jumpStops(model.start, model.jumps),
+      end = stops.at(-1)!;
+    const sum = [
+      signedTex(model.start),
+      ...model.jumps.map((j) => signedTex(j, true)),
+    ].join(" + ");
+    return [
+      {
+        title: "Start",
+        text: `Begin at ${shown(model.start)}. Moving right adds a positive change; moving left adds a negative change.`,
+        math: `$${signedTex(model.start)}$`,
+      },
+      {
+        title: "Make each jump",
+        text: `Each arrow adds one change, in order: ${model.jumps.map((j) => (j > 0 ? `+${j}` : shown(j))).join(", then ")}.`,
+        math: `$${sum}$`,
+      },
+      {
+        title: "Land",
+        text: `The last arrow ends at ${shown(end)}, ${end < 0 ? "left" : "right"} of 0.`,
+        math: `$${sum} = ${signedTex(end)}$`,
+      },
+    ];
+  }
   if (model.kind === "pour") {
     const e = model.eighths;
     const result =

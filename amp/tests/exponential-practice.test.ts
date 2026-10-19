@@ -109,36 +109,57 @@ test("log equations reject the extraneous root", () => {
   }
 });
 
-test("table component sizes columns to their type and labels each step", () => {
-  const s = table(["x", "y"], [
-    [0, 3],
-    [1, 6],
-    [2, 12],
-  ])
-    .steps(1, ["×2", "×2"])
+test("table steps label each gap in a gutter, and highlights tint rows", () => {
+  const s = table({
+    corner: "x",
+    columns: ["y"],
+    rows: [
+      { label: "0", cells: [3] },
+      { label: "1", cells: [6] },
+      { label: "2", cells: [12] },
+    ],
+    math: true,
+  })
+    .steps(0, ["×2", "×2"])
+    .highlight({ rows: [1] })
     .scene();
   const l = layoutScene(s);
   assert.equal(l.scale, 1);
-  const cells = l.items.filter(
-    (d) => d.k === "text" && d.id.startsWith("e0.cell."),
-  );
-  assert.equal(cells.length, 6);
   const arrows = l.items.filter(
-    (d) => d.k === "path" && /^e0\.step\.1\.\d$/.test(d.id),
+    (d) => d.k === "path" && /^e0\.step\.0\.\d$/.test(d.id),
   );
   assert.equal(arrows.length, 2);
-  const steps = l.items.filter(
-    (d) => d.k === "text" && d.id.endsWith(".label") && d.id.includes("step"),
+  const labels = l.items.flatMap((d) =>
+    d.k === "text" && /^e0\.step\.0\.\d\.label$/.test(d.id) ? [d] : [],
   );
   assert.deepEqual(
-    steps.map((d) => (d.k === "text" ? d.plain : "")),
+    labels.map((d) => d.plain),
     ["×2", "×2"],
   );
+  // Each label sits right of the column, between its two rows.
+  const cell = (r: number) =>
+    l.items.find((d) => d.id === `e0.cell.${r}.0`) as Extract<
+      (typeof l.items)[number],
+      { k: "text" }
+    >;
+  for (const [i, d] of labels.entries()) {
+    assert.ok(d.box.x0 > cell(i).box.x1);
+    const mid = (d.box.y0 + d.box.y1) / 2;
+    assert.ok(mid > cell(i).box.y1 - 4 && mid < cell(i + 1).box.y0 + 4);
+  }
+  assert.ok(l.items.some((d) => d.id === "e0.highlight.row.1"));
   assert.match(describeScene(s), /each step is ×2, then ×2/);
   assert.throws(() =>
     sceneSchema.parse({
       v: 1,
-      elements: [{ type: "table", header: ["x", "y"], rows: [["1"]] }],
+      elements: [
+        {
+          type: "table",
+          columns: ["y"],
+          rows: [{ label: "0", cells: [1] }],
+          steps: [{ column: 0, labels: ["×2"] }],
+        },
+      ],
     }),
   );
 });

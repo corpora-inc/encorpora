@@ -1,6 +1,6 @@
 # RFC: one figure and animation framework
 
-Status: accepted, being built in three PRs. Code: `src/math/scene/` (spec, layout, components, author API) and `src/web/scene/` (renderer, player).
+Status: accepted; framework (#1177) and timelines landed, print pass and guide next. Code: `src/math/scene/` (spec, layout, components, author API) and `src/web/scene/` (renderer, player).
 
 ## Problem
 
@@ -50,13 +50,13 @@ Numbers and variables are set in KaTeX fonts, like lesson text: italic variables
 - Print pages embed the KaTeX fonts already. They set `--scene-sans` to Arial, which the metrics cover. Labels sit inside the view box by construction, so the print layout oracle's label check holds.
 - `data-*` hooks (`data-tick`, `data-mark`, `data-point`, `data-hand`, `data-slot`) keep geometric tests independent of the renderer.
 
-## Timeline (PR 2)
+## Timeline (`src/math/scene/timeline.ts`, `src/web/scene/ScenePlayer.tsx`)
 
-- `steps[]` on a scene. Each step has a caption (MathText, which can interpolate element values) and a set of actions that run together: `appear`, `disappear`, `move`, `fill`, `count`, `highlight` and `trace`, each targeting ids or id prefixes.
-- State is a pure function of `(scene, step, t)`. It is unit-testable, and the final frame is the static figure.
-- Durations and easings are tokens in `tokens.css` (`--motion-step`, `--motion-trace`, `--ease-standard`). Under `prefers-reduced-motion`, the player shows the final frame with all captions listed.
-- The player reserves its box (stage plus the tallest caption), with Play, Pause, Step and Replay controls of at least 44 px.
-- **Cues on the learner's own scene.** A hint or lesson step can target the current problem's scene by id ("highlight `nl.hop.0`", "shade `area.region.0.0`"). A dynamic hint arrives as text plus a cue: a short step list validated against the ids that scene actually has. The visual uses the learner's numbers, and the payload adds no answer.
+- `scene.steps[]`: each step has a caption (MathText; `{id}` inserts that element's label, `?` while masked) and actions that run together: `appear` (optionally staggered), `disappear`, `trace`, `highlight` (for its own step only), `fill`, `move` (in math units) and `count`. Each action targets an element id or a part of one (`nl.hop.0`). `audience: "lesson"` marks steps that reveal the result.
+- State is a pure function, `frameAt(layout, steps, step, progress)`. An element that a step brings in (`appear`, `trace`) is hidden before that step, so the **start frame is the problem figure** (the givens) and the final frame is the full model. Layout reserves room for every frame, moved parts included.
+- Durations and easing are tokens in `tokens.css`: `--motion-step`, `--motion-trace`, `--motion-hold` and `--ease-standard`. Reduced motion sets them to 0. The player then shows the final frame and lists every caption.
+- The player has Back, Play (Pause, Replay) and Next controls, all at least 44 px. The stage keeps its aspect box and the captions share one grid cell sized to the tallest, so stepping never moves the page. Captions are announced in a polite live region. On phones (≤ 419 px) scenes lay out at 300 px, so labels keep their size. The choice is made before the first paint and so never shifts the page.
+- **Hints on the learner's own scene.** In a hint, the player plays the problem's own scene, masked, and stops before lesson-only steps. A generator can also attach a private `hintCue: Step[]` to the problem. `/hints` returns it as `cue`, next to the hint text, and the player plays it on the same scene: "highlight `area.across.0`", "show `area.product.0.0` (still ?)". A cue that names an element the scene lacks is logged and ignored. Lessons play the example's scene revealed.
 
 ## Author API (`src/math/scene/author.ts`)
 

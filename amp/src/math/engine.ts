@@ -1,8 +1,16 @@
+import {
+  numberSystemTemplates,
+  generateNumberSystemProblem,
+} from "./number-system-practice";
 import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   equationTemplates,
   generateEquationProblem,
 } from "./equation-practice";
+import {
+  bivariateTemplates,
+  generateBivariateProblem,
+} from "./bivariate-practice";
 import {
   inferenceTemplates,
   generateInferenceProblem,
@@ -43,6 +51,10 @@ import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
+import {
+  realNumberTemplates,
+  generateRealNumberProblem,
+} from "./real-number-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import {
@@ -50,6 +62,7 @@ import {
   generateEarlyOperationsProblem,
 } from "./early-operations-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
   exponentialTemplates,
@@ -116,6 +129,10 @@ import {
   generateQuadraticProblem,
 } from "./quadratic-practice";
 import {
+  absoluteValueTemplates,
+  generateAbsoluteValueProblem,
+} from "./absolute-value-practice";
+import {
   measurementTemplates,
   generateMeasurementProblem,
 } from "./measurement-practice.js";
@@ -136,6 +153,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
+import { makeTenHops } from "./scene/explanations";
 import { polish } from "./polish";
 import type {
   GeneratedProblem,
@@ -257,6 +275,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...shapeTemplates,
   ...polygonTemplates,
   ...exponentialTemplates,
+  ...angleTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -275,6 +294,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...realNumberTemplates,
+  ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...equationTemplates,
@@ -287,6 +308,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
+  ...absoluteValueTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -295,6 +317,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...equalGroupsTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
+  ...bivariateTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -436,11 +459,13 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...shapeTemplates,
     ...polygonTemplates,
     ...exponentialTemplates,
+    ...angleTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
+    ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
     ...timeMoneyTemplates,
@@ -448,6 +473,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...realNumberTemplates,
+    ...numberSystemTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -457,6 +484,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
+    ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -480,6 +508,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (numberSystemTemplates.some((t) => t.id === templateId))
+    return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
@@ -492,6 +522,8 @@ function generateRawProblem(
     return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (angleTemplates.some((t) => t.id === templateId))
+    return generateAngleProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
@@ -504,6 +536,8 @@ function generateRawProblem(
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
+  if (bivariateTemplates.some((t) => t.id === templateId))
+    return generateBivariateProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))
@@ -512,6 +546,8 @@ function generateRawProblem(
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (realNumberTemplates.some((t) => t.id === templateId))
+    return generateRealNumberProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))
@@ -546,6 +582,8 @@ function generateRawProblem(
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
+  if (absoluteValueTemplates.some((t) => t.id === templateId))
+    return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
     return generateMeasurementProblem(templateId, seed);
   if (algebraTemplates.some((t) => t.id === templateId))
@@ -596,6 +634,8 @@ function generateRawProblem(
       answer = `${a + b}`;
       hint = addWithinTwentyHint(a, b);
       explanation = addWithinTwenty(a, b);
+      // Hint and lesson walk the learner's own jumps (docs/figures.md).
+      figure = { kind: "scene", scene: makeTenHops(a, b) };
       break;
     }
     case "subtract-within-20": {

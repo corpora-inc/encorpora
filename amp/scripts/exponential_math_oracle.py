@@ -214,14 +214,11 @@ def scene_elements(public):
     return figure['scene']['elements']
 
 
-def cell(c):
-    return clean(c if isinstance(c, str) else c['text'])
-
-
 def table_rows(public):
     tables = [e for e in scene_elements(public) if e['type'] == 'table']
     require(len(tables) == 1, 'One table')
-    return [[Fraction(cell(c)) for c in row] for row in tables[0]['rows']]
+    # Each row is its input label followed by its output cells.
+    return [[Fraction(clean(row['label']))] + [Fraction(c) for c in row['cells']] for row in tables[0]['rows']]
 
 
 def classify(values):

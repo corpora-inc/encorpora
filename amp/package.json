@@ -23,7 +23,7 @@
     "commerce:import": "tsx scripts/commerce-event.ts",
     "production:queue": "tsx scripts/production-queue.ts",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/**/*.ts\"",
-    "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
+    "review:math": "mkdir -p artifacts && tsx scripts/publications.ts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "report:funnel": "tsx scripts/report-funnel.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",

@@ -12,8 +12,9 @@ import {
   raceBars,
   raceGraph,
   stepTable,
+  valueTable,
 } from "./exponential-scenes.js";
-import { table } from "./scene/author.js";
+
 
 /** Exponential growth, geometric sequences and series, and logarithms
  * (Algebra 1 and 2). Every answer is exact; figures carry only givens. */
@@ -214,7 +215,7 @@ function modelValue(r: Rand): Draft {
       ys = xs.map((x) => a * b ** x);
     return {
       prompt: `The table shows an exponential function. If the pattern continues, what is $y$ when $x = ${k}$?`,
-      figure: scene(stepTable(xs, ys.map(String), `×${b}`)),
+      figure: scene(stepTable(xs, ys, `×${b}`)),
       answer: `${a * b ** k}`,
       hint: `Each row multiplies $y$ by ${b}. From $x = 3$, where $y = ${ys[3]}$, keep multiplying by ${b} until $x = ${k}$.`,
       explanation: [
@@ -305,9 +306,11 @@ function modelRule(r: Rand): Draft {
           : "The graph shows an exponential function through the marked points. Which equation is it?",
       figure: scene(
         frame === 0
-          ? table(["x", "y"], xs.map((x, i) => [x, ys[i]!]), {
-              headerFont: "math",
-            }).scene({ title: "Table of y against x" })
+          ? valueTable(
+              "x",
+              ["y"],
+              xs.map((x, i) => [x, ys[i]!]),
+            ).scene({ title: "Table of y against x" })
           : exponentialGraph(a, b, [0, 1, 2]),
       ),
       hint: `At $x = 0$ the equation must give ${a}. Then compare $y = ${ys[1]}$ at $x = 1$ with $y = ${ys[2]}$ at $x = 2$: is that an added amount or a factor?`,
@@ -439,9 +442,11 @@ function linearOrExponential(r: Rand): Draft {
     return {
       prompt: "Which kind of function does the table show?",
       figure: scene(
-        table(["x", "y"], xs.map((x, i) => [x, ys[i]!]), {
-          headerFont: "math",
-        }).scene({ title: "Table of y against x" }),
+        valueTable(
+          "x",
+          ["y"],
+          xs.map((x, i) => [x, ys[i]!]),
+        ).scene({ title: "Table of y against x" }),
       ),
       hint: `The $x$-values go up by ${dx} each row. Find how $y$ changes from ${ys[0]} to ${ys[1]} and from ${ys[1]} to ${ys[2]}: compare the differences, then the ratios.`,
       explanation: [
@@ -560,16 +565,13 @@ function overtakes(r: Rand): Draft {
     prompt:
       "The table shows $f(x)$, which adds the same amount each step, and $g(x)$, which multiplies by the same factor. If both patterns continue, what is the least whole number $x$ for which $g(x) > f(x)$?",
     figure: scene(
-      table(
-        [
-          { text: "x", font: "math" },
-          { text: "f(x)", font: "math" },
-          { text: "g(x)", font: "math" },
-        ],
+      valueTable(
+        "x",
+        ["f(x)", "g(x)"],
         xs.map((x) => [x, m * x + c, 2 ** x]),
       )
-        .steps(1, [`+${m}`, `+${m}`, `+${m}`])
-        .steps(2, ["×2", "×2", "×2"], "warm")
+        .steps(0, [`+${m}`, `+${m}`, `+${m}`])
+        .steps(1, ["×2", "×2", "×2"], "warm")
         .scene({ title: "Values of f and g" }),
     ),
     answer: `${X}`,
@@ -1296,11 +1298,9 @@ function sequenceRule(r: Rand): Draft {
       prompt:
         "The table shows the first four terms of a geometric sequence. What is its common ratio?",
       figure: scene(
-        table(
-          [
-            { text: "n", font: "math" },
-            { text: "a_n", font: "math" },
-          ],
+        valueTable(
+          "n",
+          ["a_n"],
           terms.map((t, i) => [i + 1, t]),
         ).scene({ title: "Terms of a geometric sequence" }),
       ),

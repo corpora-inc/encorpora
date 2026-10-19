@@ -1,7 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
-import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
+import {
+  animationFrames,
+  fiveNumbers,
+  jumpStops,
+  coefficientText,
+  rootZoom,
+  scaled,
+  standardForm,
+  type AnimationModel,
+} from "./model";
 import { MadGapStage } from "./ComparisonAnimation";
 import {
   BalanceFrame,
@@ -35,6 +44,14 @@ import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "root-zoom":
+      return <RootZoomModel model={model} step={step} />;
+    case "decimal-shift":
+      return <DecimalShiftModel model={model} step={step} />;
+    case "opposite":
+      return <OppositeModel model={model} step={step} />;
+    case "jumps":
+      return <JumpsModel model={model} step={step} />;
     case "pour":
       return (
         <g transform="translate(20 4) scale(0.86)">
@@ -1620,3 +1637,435 @@ function MakeTenModel({
     </>
   );
 }
+
+const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
+/** A number line across the stage: one-unit ticks, labels every 5, 0 emphasized. */
+function StageLine({
+  min,
+  max,
+  y,
+  x,
+}: {
+  min: number;
+  max: number;
+  y: number;
+  x: (n: number) => number;
+}) {
+  return (
+    <>
+      <line x1="12" x2="308" y1={y} y2={y} className="animation-outline" />
+      {Array.from({ length: max - min + 1 }, (_, i) => {
+        const n = min + i,
+          major = n % 5 === 0;
+        return (
+          <g key={n}>
+            <line
+              x1={x(n)}
+              x2={x(n)}
+              y1={y - (n === 0 ? 10 : major ? 7 : 4)}
+              y2={y + (n === 0 ? 10 : major ? 7 : 4)}
+              className="animation-outline"
+              strokeWidth={n === 0 ? 2.5 : 1}
+            />
+            {major && (
+              <text
+                x={x(n)}
+                y={y + 26}
+                textAnchor="middle"
+                style={{ fontWeight: n === 0 ? 700 : 400 }}
+              >
+                {shown(n)}
+              </text>
+            )}
+          </g>
+        );
+      })}
+    </>
+  );
+}
+function OppositeModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "opposite" }>;
+  step: number;
+}) {
+  const { value: a, min, max } = model,
+    y = 130;
+  const x = (n: number) => 24 + ((n - min) / (max - min)) * 272;
+  const radius = Math.abs(x(a) - x(0));
+  // Rotating about 0 by a half turn lands exactly on the opposite, passing above the line.
+  const turn = a < 0 ? 180 : -180;
+  const brace = (to: number, show: boolean) => (
+    <g className="animation-fade" style={{ opacity: show ? 1 : 0 }}>
+      <path
+        d={`M${x(to)} ${y + 34} v8 H${x(0)} v-8`}
+        className="animation-outline"
+      />
+      <text x={(x(to) + x(0)) / 2} y={y + 60} textAnchor="middle">
+        {Math.abs(a)}
+      </text>
+    </g>
+  );
+  return (
+    <>
+      <StageLine min={min} max={max} y={y} x={x} />
+      <path
+        d={`M${x(a)} ${y} A${radius} ${radius} 0 0 ${a < 0 ? 1 : 0} ${x(-a)} ${y}`}
+        className="animation-guide animation-fade"
+        style={{ opacity: step > 0 ? 1 : 0 }}
+      />
+      {brace(a, true)}
+      {brace(-a, step === 2)}
+      <circle cx={x(a)} cy={y} r="7" className="animation-warm-dot" />
+      <text x={x(a)} y={y - 16} textAnchor="middle" style={{ fontWeight: 700 }}>
+        P
+      </text>
+      <g
+        className="animation-move"
+        style={{
+          transformOrigin: `${x(0)}px ${y}px`,
+          transform: `rotate(${step > 0 ? turn : 0}deg)`,
+        }}
+      >
+        <circle
+          data-opposite-mark={step > 0 ? -a : a}
+          cx={x(a)}
+          cy={y}
+          r="7"
+          className="animation-accent-dot"
+        />
+      </g>
+      <text
+        x={x(-a)}
+        y={y - 16}
+        textAnchor="middle"
+        className="animation-fade"
+        style={{ opacity: step === 2 ? 1 : 0, fontWeight: 700 }}
+      >
+        {shown(-a)}
+      </text>
+    </>
+  );
+}
+function JumpsModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "jumps" }>;
+  step: number;
+}) {
+  const { start, jumps, min, max } = model,
+    y = 140;
+  const x = (n: number) => 24 + ((n - min) / (max - min)) * 272;
+  const stops = jumpStops(start, jumps),
+    end = stops.at(-1)!;
+  return (
+    <>
+      <StageLine min={min} max={max} y={y} x={x} />
+      {jumps.map((jump, i) => {
+        const from = x(stops[i]!),
+          to = x(stops[i + 1]!),
+          lift = 28 + i * 22,
+          control = y - 4 - lift * 1.6;
+        return (
+          <g key={i} data-jump={jump}>
+            <path
+              d={`M${from} ${y - 4} Q${(from + to) / 2} ${control} ${to} ${y - 4}`}
+              pathLength={1}
+              className={`animation-draw ${jump < 0 ? "animation-jump-negative" : "animation-jump-positive"}`}
+              style={{
+                strokeDashoffset: step > 0 ? 0 : 1,
+                transitionDelay: step > 0 ? `${i * 450}ms` : "0ms",
+              }}
+            />
+          </g>
+        );
+      })}
+      {jumps.map((jump, i) => {
+        const lift = 28 + i * 22;
+        return (
+          <text
+            key={i}
+            x={(x(stops[i]!) + x(stops[i + 1]!)) / 2}
+            y={y - 8 - lift}
+            textAnchor="middle"
+            className="animation-fade animation-halo"
+            style={{
+              opacity: step > 0 ? 1 : 0,
+              fontWeight: 700,
+              transitionDelay: step > 0 ? `${i * 450 + 300}ms` : "0ms",
+            }}
+          >
+            {jump > 0 ? `+${jump}` : shown(jump)}
+          </text>
+        );
+      })}
+      <circle cx={x(start)} cy={y} r="6" className="animation-accent-dot" />
+      <text x={x(start)} y={y + 48} textAnchor="middle">
+        {shown(start)}
+      </text>
+      <circle
+        data-end-mark={end}
+        cx={x(end)}
+        cy={y}
+        r="7"
+        className="animation-ring animation-fade"
+        style={{
+          opacity: step === 2 ? 1 : 0,
+        }}
+      />
+      <text
+        x={x(end)}
+        y={y + 48}
+        textAnchor="middle"
+        className="animation-fade"
+        style={{ opacity: step === 2 ? 1 : 0, fontWeight: 700 }}
+      >
+        {shown(end)}
+      </text>
+    </>
+  );
+}
+
+/** One number line whose window zooms: whole numbers, then tenths, then the
+ * tenth interval around the root. Every mark sits at its true value. */
+function RootZoomModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "root-zoom" }>;
+  step: number;
+}) {
+  const { radicand: n, index: i } = model,
+    { k, t } = rootZoom(n, i);
+  const windows: [number, number][] = [
+    [k - 1, k + 2],
+    [k, k + 1],
+    [t / 10, (t + 1) / 10],
+  ];
+  const [lo, hi] = windows[step]!,
+    x = (v: number) => 52 + ((v - lo) / (hi - lo)) * 216;
+  const root = i === 2 ? Math.sqrt(n) : Math.cbrt(n),
+    sign = i === 2 ? "√" : "∛";
+  const mark = (
+    key: string,
+    value: number,
+    size: number,
+    labelText: string | null,
+    below: string | null,
+    visible: boolean,
+    anchor: "start" | "middle" | "end" = "middle",
+  ) => (
+    <g
+      key={key}
+      className="animation-move"
+      data-mark={key}
+      style={{ transform: `translate(${x(value)}px, 0px)` }}
+    >
+      <g className="animation-fade" style={{ opacity: visible ? 1 : 0 }}>
+        <line
+          x1="0"
+          x2="0"
+          y1={110 - size}
+          y2={110 + size}
+          className="animation-grid"
+          strokeWidth={size > 6 ? 2 : 1}
+        />
+        {labelText && (
+          <text
+            x={anchor === "start" ? 3 : anchor === "end" ? -3 : 0}
+            y="90"
+            textAnchor={anchor}
+          >
+            {labelText}
+          </text>
+        )}
+        {below && (
+          <text x="0" y="140" textAnchor="middle" className="animation-small">
+            {below}
+          </text>
+        )}
+      </g>
+    </g>
+  );
+  const marks = [
+    ...[k - 1, k, k + 1, k + 2].map((v) =>
+      mark(`whole-${v}`, v, 9, String(v), String(v ** i), step === 0),
+    ),
+    ...Array.from({ length: 11 }, (_, j) => {
+      const tenth = 10 * k + j,
+        named = step === 1 && (tenth === t || tenth === t + 1),
+        // Ends are named only when clear of the two named neighbours.
+        end =
+          step === 1 &&
+          (j === 0 || j === 10) &&
+          Math.min(Math.abs(tenth - t), Math.abs(tenth - t - 1)) >= 3;
+      return mark(
+        `tenth-${tenth}`,
+        tenth / 10,
+        named ? 9 : 5,
+        named || end ? scaled(tenth, 1) : null,
+        null,
+        step >= 1,
+        // Adjacent named tenths lean apart so their labels never touch.
+        tenth === t ? "end" : tenth === t + 1 ? "start" : "middle",
+      );
+    }),
+    ...[t, t + 0.5, t + 1].map((v, j) =>
+      mark(
+        `zoom-${j}`,
+        v / 10,
+        9,
+        scaled(10 * v, 2).replace(/0$/, ""),
+        scaled((10 * v) ** i, 2 * i).replace(/\.?0+$/, ""),
+        step === 2,
+      ),
+    ),
+  ];
+  return (
+    <>
+      <defs>
+        <clipPath id="root-zoom-window">
+          <rect x="4" y="0" width="312" height="200" />
+        </clipPath>
+      </defs>
+      <line x1="16" x2="304" y1="110" y2="110" className="animation-outline" />
+      <g clipPath="url(#root-zoom-window)">
+        {marks}
+        <g
+          className="animation-move"
+          data-mark="root"
+          style={{ transform: `translate(${x(root)}px, 0px)` }}
+        >
+          {/* Broken at the tick-label band so the pointer never strikes a label. */}
+          <line x1="0" x2="0" y1="62" y2="74" className="animation-outline" />
+          <line x1="0" x2="0" y1="96" y2="104" className="animation-outline" />
+          <circle cx="0" cy="110" r="6" className="animation-root" />
+          <text x="0" y="56" textAnchor="middle" className="animation-strong">
+            {`${sign}${n}`}
+          </text>
+        </g>
+      </g>
+      <text x="160" y="186" textAnchor="middle" className="animation-small">
+        {step === 0
+          ? `${i === 2 ? "squares" : "cubes"} below the line`
+          : step === 1
+            ? `tenths from ${k} to ${k + 1}`
+            : `${i === 2 ? "squares" : "cubes"} below the line`}
+      </text>
+    </>
+  );
+}
+
+/** Digits sit in fixed place cells; only the decimal point travels. */
+function DecimalShiftModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "decimal-shift" }>;
+  step: number;
+}) {
+  const { digits, exponent: e, toStandard } = model,
+    length = digits.length;
+  // Point positions count digits to its left, measured from the first digit.
+  const scientificPoint = 1,
+    standardPoint = 1 + e;
+  const [from, to] = toStandard
+    ? [scientificPoint, standardPoint]
+    : [standardPoint, scientificPoint];
+  const point = step === 0 ? from : to;
+  // Columns: the leading 0 (ones place) of a small number through trailing zeros of a large one.
+  const lo = Math.min(0, standardPoint - 1),
+    hi = Math.max(length - 1, standardPoint - 1);
+  const count = hi - lo + 1,
+    width = Math.min(30, 272 / count),
+    left = 160 - (count * width) / 2;
+  const centre = (column: number) => left + (column - lo + 0.5) * width;
+  const boundary = (p: number) => left + (p - lo) * width;
+  // Zeros that standard form needs: leading (small numbers) or trailing (large numbers).
+  const zeros = Array.from({ length: count }, (_, j) => j + lo).filter(
+    (c) => c < 0 || c >= length,
+  );
+  const zerosVisible = toStandard ? step === 2 : step < 2;
+  const hops = Array.from({ length: Math.abs(e) }, (_, j) => {
+    const a = from + Math.sign(to - from) * j,
+      b = a + Math.sign(to - from);
+    return { a, b };
+  });
+  const fontSize = Math.min(26, width * 0.9);
+  return (
+    <>
+      {Array.from({ length: count }, (_, j) => (
+        <rect
+          key={j}
+          x={left + j * width}
+          y="70"
+          width={width}
+          height="56"
+          className="animation-empty"
+        />
+      ))}
+      {digits.split("").map((d, j) => (
+        <text
+          key={`d${j}`}
+          data-digit-column={j}
+          x={centre(j)}
+          y="108"
+          textAnchor="middle"
+          className="animation-strong"
+          style={{ fontSize }}
+        >
+          {d}
+        </text>
+      ))}
+      {zeros.map((c) => (
+        <text
+          key={`z${c}`}
+          data-zero-column={c}
+          x={centre(c)}
+          y="108"
+          textAnchor="middle"
+          className="animation-fade"
+          style={{ fontSize, opacity: zerosVisible ? 0.6 : 0 }}
+        >
+          0
+        </text>
+      ))}
+      <g className="animation-fade" style={{ opacity: step === 1 ? 1 : 0 }}>
+        {hops.map(({ a, b }, j) => (
+          <path
+            key={j}
+            d={`M${boundary(a)} 136 Q${(boundary(a) + boundary(b)) / 2} ${150} ${boundary(b)} 136`}
+            className="animation-outline"
+          />
+        ))}
+      </g>
+      <g
+        className="animation-move"
+        data-point={point}
+        style={{ transform: `translate(${boundary(point)}px, 0px)` }}
+      >
+        <circle cx="0" cy="106" r="3.5" className="animation-root" />
+      </g>
+      <text x="160" y="44" textAnchor="middle" className="animation-small">
+        {step === 1
+          ? `${Math.abs(e)} ${Math.abs(e) === 1 ? "place" : "places"} ${to > from ? "right" : "left"}`
+          : (step === 2) === toStandard
+            ? withCommas(standardForm(digits, e))
+            : `${coefficientText(digits)} × 10${superscript(e)}`}
+      </text>
+    </>
+  );
+}
+
+const superscript = (n: number) =>
+  String(n)
+    .replace("-", "⁻")
+    .replace(/\d/g, (d) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[Number(d)]!);
+const withCommas = (text: string) => {
+  const [whole, part] = text.split(".");
+  const grouped =
+    whole!.length >= 5 ? whole!.replace(/\B(?=(\d{3})+$)/g, ",") : whole!;
+  return part === undefined ? grouped : `${grouped}.${part}`;
+};
