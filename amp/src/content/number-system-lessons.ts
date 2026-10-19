@@ -160,9 +160,9 @@ export const numberSystemLessons: Lesson[] = [
     workedExample: {
       prompt: "What is 8736 ÷ 24?",
       steps: [
-        "87 is the first part of 8736 that is at least 24. 24 × 3 = 72 and 24 × 4 = 96 is more than 87. Write 3 in the quotient; 87 − 72 = 15.",
-        "Bring down 3, making 153. 24 × 6 = 144 and 24 × 7 = 168 is more than 153. Write 6 in the quotient; 153 − 144 = 9.",
-        "Bring down 6, making 96. 24 × 4 = 96 and 24 × 5 = 120 is more than 96. Write 4 in the quotient; 96 − 96 = 0.",
+        "87 is the first part of 8736 that is at least 24. Try 24 × 3 = 72 and 24 × 4 = 96 is more than 87. Write 3 in the quotient; 87 − 72 = 15.",
+        "Bring down 3, making 153. Try 24 × 6 = 144 and 24 × 7 = 168 is more than 153. Write 6 in the quotient; 153 − 144 = 9.",
+        "Bring down 6, making 96. Try 24 × 4 = 96 and 24 × 5 = 120 is more than 96. Write 4 in the quotient; 96 − 96 = 0.",
         "The remainder is 0, so the quotient is 364. Check: 364 × 24 = 8736.",
       ],
       answer: "364",
@@ -409,7 +409,8 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Start at the given number.",
-      "Add each change in order, one jump at a time.",
+      "Add each change in order: a positive change moves right, a negative change moves left, by its distance from 0.",
+      "The last arrow's end is the answer.",
     ],
     watch: "Adding a negative number moves left: 2.5 + (−8) = −5.5.",
   },

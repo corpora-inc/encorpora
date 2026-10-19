@@ -1,6 +1,25 @@
+import { ratioRateLessons } from "./ratio-rate-lessons";
+import { patternFunctionLessons } from "./pattern-function-lessons";
+import { equationLessons } from "./equation-lessons";
+import { distributionLessons } from "./distribution-lessons";
+import { inferenceLessons } from "./inference-lessons";
+import { partWholeLessons } from "./part-whole-lessons";
+import { decimalLessons } from "./decimal-lessons";
+import { timeMoneyLessons } from "./time-money-lessons";
+import { linePlotLessons } from "./line-plot-lessons";
+import { earlyDataLessons } from "./early-data-lessons";
+import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
+import { shapeLessons } from "./shape-lessons";
+import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import { comparisonLessons } from "./comparison-lessons";
+import { addSubtractLessons } from "./add-subtract-lessons";
+import { factsLessons } from "./facts-lessons";
+import { factArrayLessons } from "./fact-arrays-lessons";
+import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -38,6 +57,54 @@ export interface Lesson {
       | "elevation-line"
       | "opposite-line"
       | "story-jumps"
+      | "rate-double-line"
+      | "unit-price-tapes"
+      | "ratio-table-scaling"
+      | "rate-through-one"
+      | "fraction-rate-copies"
+      | "story-tapes"
+      | FactArrayIllustrationKind
+      | ShapeIllustrationKind
+      | "pattern-rule-steps"
+      | "related-patterns-graph"
+      | "dependent-variable-graph"
+      | "compare-functions-graph"
+      | "linear-nonlinear-graph"
+      | "clock-hour-half"
+      | "clock-five-minutes"
+      | "coin-values"
+      | "coin-count-on"
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
+      | "decimal-tenths-hundredths"
+      | "decimal-compare-chart"
+      | "decimal-rounding-line"
+      | "decimal-aligned-sum"
+      | "column-addition"
+      | "base-ten-trade"
+      | "column-subtraction-zero"
+      | "column-multidigit"
+      | "volume-layers"
+      | "prism-composite"
+      | "ordered-pair-path"
+      | "five-frame-facts"
+      | "count-on-hops"
+      | "make-ten-frames"
+      | "ten-hundred-digits"
+      | "equal-shares"
+      | "same-share-shapes"
+      | "equal-area-regions"
+      | "compare-same-whole"
+      | "comparison-pairing"
+      | "comparison-number-path"
+      | "comparison-place-chart"
+      | "large-place-value-chart"
+      | DataIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -196,47 +263,6 @@ export const baseLessons: Lesson[] = [
     ],
     parentGuide:
       "Give the learner fourteen small objects and ask them to show both taking away six and building six up to fourteen.",
-  },
-  {
-    id: "multiplication",
-    title: "Equal groups and arrays",
-    summary: "Multiplication counts equal groups efficiently.",
-    templateIds: ["multiply-facts"],
-    objectives: [
-      "Interpret a product as equal groups.",
-      "Use known facts to derive another product.",
-    ],
-    sections: [
-      {
-        title: "Every group must be equal",
-        paragraphs: [
-          "Four groups of six means 6 + 6 + 6 + 6. We write 4 × 6. The first factor can name the number of groups and the second the size of each group.",
-          "Draw four rows with six dots in each row. The array has twenty-four dots. Turning the array shows six rows of four without changing the total.",
-        ],
-      },
-      {
-        title: "Build from a known fact",
-        paragraphs: [
-          "Split a difficult fact into easier groups. For 7 × 6, five groups of six make thirty and two groups of six make twelve. Together they make forty-two.",
-          "This is the distributive property: (5 + 2) × 6 = 5 × 6 + 2 × 6. The same idea supports larger multiplication.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is 7 × 6?",
-      steps: [
-        "Split 7 groups into 5 groups and 2 groups.",
-        "5 × 6 = 30 and 2 × 6 = 12.",
-        "30 + 12 = 42.",
-      ],
-      answer: "42",
-    },
-    pitfalls: [
-      "Unequal group sizes cannot be represented by one multiplication fact without another step.",
-      "Adding the factors gives a different quantity from multiplying them.",
-    ],
-    parentGuide:
-      "Draw a seven-by-six array, divide it after five rows, and ask the learner to explain how both smaller arrays help.",
   },
   {
     id: "fractions",
@@ -539,11 +565,27 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...earlyDataLessons,
+  ...linePlotLessons,
+  ...distributionLessons,
+  ...inferenceLessons,
   ...radicalLessons,
+  ...partWholeLessons,
+  ...decimalLessons,
+  ...timeMoneyLessons,
+  ...comparisonLessons,
+  ...addSubtractLessons,
+  ...factsLessons,
+  ...factArrayLessons,
   ...combinatoricsLessons,
   ...numberSystemLessons,
+  ...ratioRateLessons,
+  ...patternFunctionLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
+  ...volumeCoordinateLessons,
+  ...shapeLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

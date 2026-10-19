@@ -62,7 +62,9 @@ export function Legal({
             parent account’s billing portal. Cancelling stops future renewal; a
             refund is a separate request under the{" "}
             <a href="/legal/refund/">refund policy</a>. Education-fund purchases
-            follow the approved program route and stated term.
+            follow the approved program route and stated term. Program-funded
+            renewals are not automatic unless the program expressly permits the
+            process and the renewal has been authorized.
           </p>
           <h2>Learning and availability</h2>
           <p>

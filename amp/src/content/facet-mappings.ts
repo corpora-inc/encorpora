@@ -1,6 +1,22 @@
 import { numberSystemFacetMappings } from "./number-system-coverage";
+import { patternFunctionFacetMappings } from "./pattern-function-coverage";
+import { equationFacetMappings } from "./equation-coverage";
+import { decimalFacetMappings } from "./decimal-coverage";
+import { timeMoneyFacetMappings } from "./time-money-coverage";
+import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
+import { shapeFacetMappings } from "./shape-coverage";
+import { distributionFacetMappings } from "./distribution-coverage";
+import { ratioRateFacetMappings } from "./ratio-rate-coverage";
+import { inferenceFacetMappings } from "./inference-coverage";
+import { partWholeFacetMappings } from "./part-whole-coverage";
+import { linePlotFacetMappings } from "./line-plot-coverage";
+import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
+import { comparisonFacetMappings } from "./comparison-coverage";
+import { addSubtractFacetMappings } from "./add-subtract-coverage";
+import { factsFacetMappings } from "./facts-coverage";
+import { factArrayFacetMappings } from "./fact-arrays-coverage";
 import { rationalFacetMappings } from "./rational-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
 import { integerExponentFacetMappings } from "./integer-exponent-coverage";
@@ -13,9 +29,25 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...volumeCoordinateFacetMappings,
+  ...shapeFacetMappings,
+  ...distributionFacetMappings,
+  ...inferenceFacetMappings,
+  ...linePlotFacetMappings,
+  ...earlyDataFacetMappings,
   ...radicalFacetMappings,
+  ...partWholeFacetMappings,
+  ...decimalFacetMappings,
+  ...timeMoneyFacetMappings,
+  ...comparisonFacetMappings,
+  ...addSubtractFacetMappings,
+  ...factsFacetMappings,
+  ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
   ...numberSystemFacetMappings,
+  ...ratioRateFacetMappings,
+  ...patternFunctionFacetMappings,
+  ...equationFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...integerExponentFacetMappings,

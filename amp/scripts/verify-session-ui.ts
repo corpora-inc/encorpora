@@ -262,9 +262,9 @@ try {
       await page
         .getByRole("button", { name: "Learner", exact: true })
         .waitFor();
-      await page.locator(".account-menu summary").click();
+      await page.getByRole("button", { name: "Family menu" }).click();
       await page
-        .getByRole("button", { name: "Manage family", exact: true })
+        .getByRole("menuitem", { name: "Manage family", exact: true })
         .click();
       await held;
       await page

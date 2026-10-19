@@ -19,78 +19,6 @@ nav button {
   white-space: nowrap;
   border: 0;
 }
-.account-menu {
-  position: relative;
-  flex: none;
-}
-/* The Family menu: a surface-raised trigger and a menu panel. Every state sets
-   its background from the role's state layer and keeps the role's `on-` text. */
-.account-menu summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 10px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-}
-.account-menu summary::-webkit-details-marker {
-  display: none;
-}
-.account-menu .account-menu-trigger {
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-}
-.account-menu .account-menu-trigger:hover {
-  background: var(--color-surface-raised-hover);
-  color: var(--color-on-surface-raised);
-}
-.account-menu[open] .account-menu-trigger,
-.account-menu .account-menu-trigger:active {
-  background: var(--color-surface-raised-active);
-  color: var(--color-on-surface-raised);
-}
-.account-menu-content {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  z-index: 20;
-  padding: 8px;
-  min-width: 180px;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background: var(--color-menu);
-  color: var(--color-on-menu);
-  box-shadow: 0 8px 30px var(--color-shadow);
-}
-.account-menu-content .account-menu-item {
-  display: block;
-  min-height: 44px;
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  text-align: left;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  background: var(--color-menu);
-  color: var(--color-on-menu);
-  filter: none;
-}
-.account-menu-content .account-menu-item:hover:not(:disabled) {
-  filter: none;
-  background: var(--color-menu-hover);
-  color: var(--color-on-menu);
-}
-.account-menu-content .account-menu-item:active:not(:disabled) {
-  background: var(--color-menu-active);
-  color: var(--color-on-menu);
-}
-.account-menu-content .account-menu-item:disabled {
-  opacity: 1;
-  background: var(--color-menu);
-  color: var(--color-on-disabled);
-}
 .practice-open {
   overflow: hidden;
 }
@@ -475,9 +403,6 @@ nav button {
     padding: 8px 26px 8px 6px;
     font-size: 13px;
   }
-  .account-menu summary {
-    padding: 10px;
-  }
   .practice-workspace {
     padding: 8px 0;
   }
@@ -667,7 +592,7 @@ nav button {
     font-size: 8px;
     letter-spacing: 1.4px;
   }
-  .app-shell .account-menu summary {
+  .app-shell .account-menu-trigger {
     font-size: 12px;
   }
   .app-shell > main:not(.practice-workspace):where(:not(.progress-workspace)) {
@@ -974,7 +899,8 @@ nav button {
 }
 
 /* A unit grid needs legible labels even when the answer dock is compact. */
-.problem-content .graphical-figure[data-kind="coordinate-plane"] {
+.problem-content .graphical-figure[data-kind="coordinate-plane"],
+.problem-content .geometry-figure[data-kind="quadrant-grid"] {
   min-height: 130px;
   flex-shrink: 0;
 }
@@ -991,4 +917,32 @@ nav button {
   .problem-content .measurement-figure {
     margin-top: 8px;
   }
+}
+
+/* A function display is an HTML table above a graph; it sizes to its content. */
+.problem-content .figure.function-display,
+.choice-model .figure.function-display {
+  font-size: 15px;
+}
+.problem-content .function-display svg {
+  max-height: min(30dvh, 240px);
+}
+.choice-model .function-display svg {
+  max-height: 150px;
+}
+/* A coordinate grid is read label by label: give it more of the screen. */
+.problem-content .geometry-figure[data-kind="quadrant-grid"] {
+  height: min(36dvh, 280px);
+  max-height: 280px;
+}
+.choice-model .geometry-figure[data-kind="quadrant-grid"] {
+  height: min(32dvh, 240px);
+}
+
+/* Lettered shapes and puzzle pieces are compared side by side at one scale:
+ * give them the room a coordinate grid gets. */
+.problem-content .shape-figure {
+  min-height: 130px;
+  height: min(38dvh, 300px);
+  max-height: 300px;
 }

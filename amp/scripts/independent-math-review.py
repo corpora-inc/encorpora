@@ -23,6 +23,8 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from shape_math_oracle import SHAPES, SHAPES_CHOICE, solve_shape, review_shape_fixtures, review_shape_problem
+from volume_coordinate_math_oracle import VOLUME_COORDINATE, VOLUME_COORDINATE_CHOICE, solve_volume_coordinate, review_volume_coordinate_fixtures, review_volume_coordinate_problem
 from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
 from print_math_oracle import review_print_math
@@ -31,16 +33,27 @@ from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures 
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
 from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve_number_system, review_number_system_fixtures, review_problem as review_number_system_problem, review_number_system_content, review_content_mutations as review_number_system_mutations
+from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
+from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
+from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
+from add_subtract_math_oracle import ADD_SUBTRACT, solve_add_subtract, review_add_subtract_fixtures, AddSubtractCorpus
+from facts_math_oracle import FACTS, solve_facts, review_facts_fixtures, FactsCorpus
+from fact_arrays_math_oracle import FACT_ARRAYS, solve_fact_arrays, review_fact_arrays_fixtures, FactArraysCorpus
+from part_whole_math_oracle import PART_WHOLE, solve_part_whole, review_part_whole_fixtures
+from decimal_math_oracle import DECIMAL, solve_decimal, review_decimal_fixtures, DecimalCorpus
+from time_money_math_oracle import TIME_MONEY, TIME_MONEY_CHOICE, solve_time_money, review_time_money_fixtures
+from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
+from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
-    'count-objects', 'add-within-20', 'subtract-within-20', 'multiply-facts',
+    'count-objects', 'add-within-20', 'subtract-within-20',
     'fraction-model', 'add-fractions', 'rectangle-area', 'linear-equation',
     'mean-data', 'right-triangle', 'quadratic-vertex', 'geometric-sequence',
-    'logarithm-integer', 'divide-facts', 'place-value-digit', 'decimal-addition',
+    'logarithm-integer', 'place-value-digit', 'decimal-addition',
     'compare-fractions', 'multiply-fractions', 'divide-fractions', 'ratio-missing',
     'percent-of', 'integer-addition', 'integer-power', 'line-slope',
     'linear-system-x', 'simple-probability', 'arithmetic-term',
@@ -48,7 +61,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = NUMBER_SYSTEM | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS
 
 
 def require(condition, message):
@@ -62,6 +75,32 @@ def solve(public):
     template = public['templateId']
     if template in NUMBER_SYSTEM:
         return solve_number_system(public)
+    if template in RATIO_RATE:
+        return solve_ratio_rate(public)
+    if template in SHAPES:
+        return solve_shape(public)
+    if template in PATTERN_FUNCTION:
+        return solve_pattern_function(public)
+    if template in EQUATIONS:
+        return solve_equations(public)
+    if template in ADD_SUBTRACT:
+        return solve_add_subtract(public)
+    if template in VOLUME_COORDINATE:
+        return solve_volume_coordinate(public)
+    if template in FACTS:
+        return solve_facts(public)
+    if template in FACT_ARRAYS:
+        return solve_fact_arrays(public)
+    if template in PART_WHOLE:
+        return solve_part_whole(public)
+    if template in DECIMAL:
+        return solve_decimal(public)
+    if template in TIME_MONEY:
+        return solve_time_money(public)
+    if template in COMPARISON:
+        return solve_comparison(public)
+    if template in DATA_DISPLAY:
+        return solve_data_display(public)
     if template in COMBINATORICS:
         return solve_combinatorics(public)
     if template in RADICAL_TYPES:
@@ -170,9 +209,6 @@ def solve(public):
         a, b = numbers
         require(0 <= b <= a <= 20, 'Subtraction bounds')
         return a - b
-    if template == 'multiply-facts':
-        a, b = numbers
-        return a * b
     if template == 'fraction-model':
         require(figure['kind'] == 'fraction' and 0 < figure['selected'] < figure['parts'], 'Invalid fraction representation')
         return f(figure['selected'], figure['parts'])
@@ -224,9 +260,6 @@ def solve(public):
             exponent += 1
         require(value == argument, 'Integer logarithm family produced a noninteger result')
         return exponent
-    if template == 'divide-facts':
-        dividend, divisor = numbers
-        return f(dividend, divisor)
     if template == 'place-value-digit':
         number, = numbers
         positions = [place for place in ('ones', 'tens', 'hundreds') if place in prompt]
@@ -280,6 +313,22 @@ def solve(public):
 def review(stream):
     review_number_system_fixtures()
     review_number_system_mutations()
+    review_ratio_rate_fixtures()
+    review_ratio_rate_mutations()
+    review_shape_fixtures()
+    review_pattern_function_fixtures()
+    review_pattern_function_mutations()
+    review_equation_fixtures()
+    review_equation_mutations()
+    review_add_subtract_fixtures()
+    review_volume_coordinate_fixtures()
+    review_facts_fixtures()
+    review_fact_arrays_fixtures()
+    review_part_whole_fixtures()
+    review_decimal_fixtures()
+    review_time_money_fixtures()
+    review_comparison_fixtures()
+    review_data_display_fixtures()
     review_combinatorics_fixtures()
     review_combinatorics_mutations()
     review_radical_arithmetic()
@@ -314,6 +363,11 @@ def review(stream):
     exponent_review = IntegerExponentReview()
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
+    comparison_corpus = ComparisonCorpus()
+    decimal_corpus = DecimalCorpus()
+    add_subtract_corpus = AddSubtractCorpus()
+    facts_corpus = FactsCorpus()
+    fact_arrays_corpus = FactArraysCorpus()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -348,17 +402,33 @@ def review(stream):
             review_linear_system_explanation(public, problem['explanation'], problem['choiceFeedback'])
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
+        if template in PATTERN_FUNCTION:
+            review_pattern_function_problem(problem)
+        if template in EQUATIONS:
+            review_equation_problem(problem)
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
         if template in NUMBER_SYSTEM:
             review_number_system_problem(problem)
+        if template in RATIO_RATE:
+            review_ratio_rate_problem(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in RADICAL_TYPES:
             review_radical_problem(problem)
+        if template in ADD_SUBTRACT:
+            add_subtract_corpus.record(public, solved)
+        if template in FACTS:
+            facts_corpus.record(public, solved)
+        if template in FACT_ARRAYS:
+            fact_arrays_corpus.record(public, solved)
+        if template in COMPARISON:
+            comparison_corpus.record(public, solved)
+        if template in DECIMAL:
+            decimal_corpus.record(public, solved)
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in NUMBER_SYSTEM_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in NUMBER_SYSTEM_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -366,9 +436,21 @@ def review(stream):
             expected = Fraction(solved)
             actual = Fraction(problem['answer'])
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
+        if template in VOLUME_COORDINATE:
+            review_volume_coordinate_problem(problem)
+        if template in SHAPES:
+            review_shape_problem(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent number-system content: ' + json.dumps(review_number_system_content()), file=sys.stderr)
+    print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
+    print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
+    print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
+    print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)
+    print('Independent facts coverage: ' + json.dumps(facts_corpus.finish()), file=sys.stderr)
+    print('Independent fact-array coverage: ' + json.dumps(fact_arrays_corpus.finish()), file=sys.stderr)
+    print('Independent comparison coverage: ' + json.dumps(comparison_corpus.finish()), file=sys.stderr)
+    print('Independent decimal comparison coverage: ' + json.dumps(decimal_corpus.finish()), file=sys.stderr)
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)

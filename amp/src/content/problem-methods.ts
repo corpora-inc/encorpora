@@ -1,6 +1,22 @@
 import { numberSystemMethods } from "./number-system-lessons";
+import { ratioRateMethods } from "./ratio-rate-lessons";
+import { patternFunctionMethods } from "./pattern-function-lessons";
+import { equationMethods } from "./equation-lessons";
+import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
+import { shapeMethods } from "./shape-lessons";
+import { distributionMethods } from "./distribution-lessons";
+import { inferenceMethods } from "./inference-lessons";
+import { partWholeMethods } from "./part-whole-lessons";
+import { decimalMethods } from "./decimal-lessons";
+import { timeMoneyMethods } from "./time-money-lessons";
+import { linePlotMethods } from "./line-plot-lessons";
+import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
 import { radicalMethods } from "./radical-lessons";
+import { comparisonMethods } from "./comparison-lessons";
+import { addSubtractMethods } from "./add-subtract-lessons";
+import { factsMethods } from "./facts-lessons";
+import { factArrayMethods } from "./fact-arrays-lessons";
 import { rationalMethods } from "./rational-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { integerExponentMethods } from "./integer-exponent-lessons";
@@ -17,13 +33,29 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...volumeCoordinateMethods,
+  ...shapeMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...polynomialMethods,
+  ...earlyDataMethods,
+  ...linePlotMethods,
+  ...distributionMethods,
+  ...inferenceMethods,
   ...radicalMethods,
+  ...partWholeMethods,
+  ...decimalMethods,
+  ...timeMoneyMethods,
+  ...comparisonMethods,
+  ...addSubtractMethods,
+  ...factsMethods,
+  ...factArrayMethods,
   ...combinatoricsMethods,
   ...numberSystemMethods,
+  ...ratioRateMethods,
+  ...patternFunctionMethods,
+  ...equationMethods,
   ...rationalMethods,
   ...circleMeasurementMethods,
   ...percentChangeMethods,
@@ -46,6 +78,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Keep counting through the second group without starting over.",
       "The last number is the total.",
     ],
+    watch:
+      "Keep counting from the first group's last number; do not start again at 1.",
   },
   "take-away-within-10": {
     goal: "Given a group and how many are taken away, find how many are left.",
@@ -64,12 +98,17 @@ export const methods: Record<string, ProblemMethod> = {
       "Count up to the whole.",
       "How many you counted is the missing part.",
     ],
+    watch: "Check: the part you found plus the known part must make the whole.",
   },
   "ten-frame-complement": {
     goal: "Given a ten-frame with some counters, find how many more fill it.",
     terms: [["ten-frame", "A grid of 10 places, 2 rows of 5."]],
-    method: ["Count the empty places.", "Each empty place needs one counter."],
-    watch: "Counters plus empty places always make 10.",
+    method: [
+      "A ten-frame has 10 places, in two rows of 5.",
+      "Count the empty places; each one needs one counter.",
+      "Check: counters plus empty places make 10.",
+    ],
+    watch: "Count the empty places, not the counters.",
   },
   "teen-frame-compose": {
     goal: "Given one full ten-frame and some extra counters, find the total.",
@@ -77,6 +116,7 @@ export const methods: Record<string, ProblemMethod> = {
       "A full ten-frame is 10. Do not count it one by one.",
       "Count on from 10 through the extra counters.",
     ],
+    watch: "A teen number is 10 and some ones: 10 and 4 is 14.",
   },
   "add-within-20": {
     goal: "Given two numbers, find their sum.",
@@ -174,6 +214,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the cubes. That is the ones digit.",
       "Write tens then ones: 3 rods and 8 cubes is 38.",
     ],
+    watch: "A rod is ten, not one: 3 rods and 8 cubes is 38, not 11.",
   },
   "ten-more-or-less": {
     goal: "Given a number, find ten more or ten less.",
@@ -181,6 +222,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Change only the tens digit: up one for ten more, down one for ten less.",
       "Keep the ones digit the same.",
     ],
+    watch:
+      "Change the tens digit, not the ones digit: ten more than 47 is 57, not 48.",
   },
   "add-ones-regroup": {
     goal: "Given a two-digit number and some ones to add, find the new total.",
@@ -189,6 +232,7 @@ export const methods: Record<string, ProblemMethod> = {
       "If there are 10 or more ones, trade 10 ones for 1 ten.",
       "Write the new tens and the ones left over.",
     ],
+    watch: "Add the new ten to the tens: 38 + 5 is 43, not 33.",
   },
   "subtract-whole-tens": {
     goal: "Given a number of tens and some tens to remove, find what is left.",
@@ -197,6 +241,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract the tens: 5 − 2 = 3 tens.",
       "Name the value: 3 tens is 30.",
     ],
+    watch:
+      "Write the value of the tens left, not their count: 3 tens is 30, not 3.",
   },
   "hundreds-model": {
     goal: "Given flats, rods and cubes, find the number shown.",
@@ -209,6 +255,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count flats for the hundreds digit, rods for the tens digit, cubes for the ones digit.",
       "If a kind is missing, its digit is 0.",
     ],
+    watch:
+      "Write 0 for a place with no blocks: 4 flats and 6 cubes is 406, not 46.",
   },
   "place-value-digit": {
     goal: "Given a number and a place, find the value of the digit in that place.",
@@ -232,7 +280,11 @@ export const methods: Record<string, ProblemMethod> = {
         "A number written as the sum of its place values: 916 = 900 + 10 + 6.",
       ],
     ],
-    method: ["Find the tens digit.", "Write its value: tens digit × 10."],
+    method: [
+      "Find the tens digit: the middle digit of a three-digit number.",
+      "Its value is the tens digit × 10.",
+      "Check: hundreds + tens + ones gives the number.",
+    ],
     watch: "The box needs the value (10), not the digit (1).",
   },
   "exchange-base-ten": {
@@ -250,16 +302,16 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the step: subtract one number from the next.",
       "Add the same step to the last number.",
     ],
+    watch: "Add the step to the last number shown, not to the first.",
   },
   "add-several-two-digit": {
     goal: "Given several two-digit numbers, find their total.",
     method: [
-      "Add all the tens.",
-      "Add all the ones.",
-      "Combine the two results.",
+      "Add all the tens: 47 + 11 + 44 has 40 + 10 + 40 = 90.",
+      "Add all the ones: 7 + 1 + 4 = 12.",
+      "Combine the two results: 90 + 12 = 102.",
     ],
-    watch:
-      "47 + 11 + 44: tens 40 + 10 + 40 = 90; ones 7 + 1 + 4 = 12; total 102.",
+    watch: "Add the tens as tens (40, not 4), then combine them with the ones.",
   },
   "add-with-regrouping": {
     goal: "Given two three-digit numbers, find their sum.",
@@ -268,6 +320,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Add the tens plus any carry. If 10 or more, write the tens digit and carry 1 hundred.",
       "Add the hundreds plus any carry.",
     ],
+    watch:
+      "Carry the new ten into the tens column; never write both digits of 13 under the ones.",
   },
   "subtract-with-regrouping": {
     goal: "Given two three-digit numbers, find their difference.",
@@ -285,68 +339,61 @@ export const methods: Record<string, ProblemMethod> = {
     terms: [["array", "Objects arranged in equal rows."]],
     method: [
       "Count the squares in one row.",
-      "Multiply by the number of rows.",
+      "Multiply by the number of rows; every row has the same number of squares.",
     ],
+    watch:
+      "Multiply rows by columns; adding them counts only the edge squares.",
   },
   "pairing-leftover": {
     goal: "Given a number of counters, find how many are left without a partner.",
     method: [
-      "Each pair uses 2 counters.",
-      "An even number leaves 0; an odd number leaves 1.",
+      "Each pair uses 2 counters, so pair them off two at a time.",
+      "An even number leaves 0 unpaired; an odd number leaves 1.",
     ],
     watch: "A number is even when its ones digit is 0, 2, 4, 6 or 8.",
   },
-  "multiply-facts": {
-    goal: "Given two factors, find their product.",
-    terms: [
-      ["factor", "A number being multiplied."],
-      ["product", "The result of multiplying."],
-    ],
-    method: [
-      "a × b means a groups of b.",
-      "Use a fact you know: double a 2s fact for 4s, add one group to a 5s fact for 6s.",
-      "Swapping the factors gives the same product.",
-    ],
-    watch: "7 × 8 = 7 × 4 doubled: 28 + 28 = 56.",
-  },
-  "divide-facts": {
-    goal: "Given a division, find the quotient.",
-    terms: [
-      ["dividend", "The number being divided."],
-      ["divisor", "The number you divide by."],
-      ["quotient", "The result of dividing."],
-    ],
-    method: [
-      "Ask: divisor × ? = dividend.",
-      "The missing factor is the quotient.",
-    ],
-  },
   "equal-tray-total": {
     goal: "Given a number of trays and how many are on each, find the total.",
-    method: ["Multiply the number of trays by the number on each tray."],
+    method: [
+      "Multiply the number of trays by the number on each tray.",
+      "Or skip-count by the amount on one tray, once for each tray.",
+    ],
+    watch: "Multiply, do not add: 4 trays of 6 is 24, not 10.",
   },
   "share-whole-items": {
     goal: "Given a total and a number of trays, find how many go on each tray.",
-    method: ["Divide the total by the number of trays."],
+    method: [
+      "Divide the total by the number of trays.",
+      "Or deal the items out one per tray until none are left.",
+    ],
     watch: "Check: trays × each = total.",
   },
   "measure-whole-pieces": {
     goal: "Given a length and the size of each piece, find how many pieces.",
-    method: ["Divide the full length by the length of one piece."],
+    method: [
+      "Divide the full length by the length of one piece.",
+      "Check: pieces × piece length = full length.",
+    ],
+    watch:
+      "Divide by the piece length; the answer counts pieces, not centimeters.",
   },
   "unknown-group-size": {
     goal: "Given the number of groups and the total, find the size of each group.",
     method: [
       "Write groups × ? = total.",
       "Divide the total by the number of groups.",
+      "Check: groups × answer = total.",
     ],
+    watch:
+      "Divide the total by the number of groups; multiplying them gives a bigger number than the total.",
   },
   "unknown-dividend": {
     goal: "Given ? ÷ a = b, find the number being divided.",
     method: [
-      "Division undoes multiplication.",
+      "? ÷ a = b means ? splits into a groups of b.",
       "Multiply: a × b gives the missing number.",
     ],
+    watch: "Multiply to undo division; dividing again gives a smaller number.",
   },
   "split-array-part": {
     goal: "Given an array split into regions, find the squares in one region.",
@@ -354,6 +401,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the rows in the named region.",
       "Multiply by the number of squares in each row.",
     ],
+    watch: "Count only the named region's rows, not the whole array.",
   },
   "nested-bag-total": {
     goal: "Given groups inside groups, find the total number of items.",
@@ -361,6 +409,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply the outer count by the middle count to get the number of bags.",
       "Multiply by the number in each bag.",
     ],
+    watch: "Multiply all three counts; adding any of them undercounts.",
   },
   "zero-one-groups": {
     goal: "Given a product with 0 or 1, find the total.",
@@ -368,21 +417,23 @@ export const methods: Record<string, ProblemMethod> = {
       "Any number × 0 is 0: no groups, or empty groups.",
       "Any number × 1 is that number: one group.",
     ],
+    watch: "0 groups of 7 is 0, not 7; 1 group of 7 is 7, not 1.",
   },
   "neighbor-product-change": {
     goal: "Given an array that gains one row, find how many squares were added.",
     method: [
-      "One new row is added.",
-      "The squares added equal the squares in one row.",
+      "Growing by one row adds one more group.",
+      "The squares added equal the squares in one row: 8 × 2 is 7 × 2 plus 2.",
     ],
-    watch: "8 × 2 is one more group of 2 than 7 × 2.",
+    watch: "The change is one row, not the whole new array.",
   },
   "factor-partner": {
     goal: "Given a product and one factor, find the other factor.",
     method: [
       "Divide the product by the known factor.",
-      "Check by multiplying.",
+      "Check by multiplying: factor × partner = product.",
     ],
+    watch: "The partner multiplies to the product; it does not add to it.",
   },
   "tens-contribution": {
     goal: "Given a product split by place value, find the tens partial product.",
@@ -395,12 +446,19 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "comparison-amount": {
     goal: "Given one amount and “n times as many,” find the other amount.",
-    method: ["“n times as many” means n copies.", "Multiply the amount by n."],
+    method: [
+      "“n times as many” means n copies of the amount.",
+      "Multiply the amount by n: 4 times as many as 9 is 4 × 9.",
+    ],
     watch: "Do not add n. 4 times as many as 9 is 36, not 13.",
   },
   "comparison-factor": {
     goal: "Given two amounts, find how many times as many one is as the other.",
-    method: ["Divide the larger amount by the smaller."],
+    method: [
+      "Ask how many copies of the smaller amount make the larger.",
+      "Divide the larger amount by the smaller.",
+    ],
+    watch: "Divide, do not subtract: 12 is 3 times 4, not 8 times.",
   },
   "full-kits": {
     goal: "Given a supply and the amount each kit needs, find how many complete kits.",
@@ -408,12 +466,13 @@ export const methods: Record<string, ProblemMethod> = {
       "Divide the supply by the amount per kit.",
       "Keep only the whole number; ignore the remainder.",
     ],
+    watch: "A kit with too few beads is not a kit: never round up.",
   },
   "seats-needed": {
     goal: "Given a number of people and seats per van, find the fewest vans.",
     method: [
       "Divide people by seats per van.",
-      "If there is any remainder, add one more van.",
+      "If there is any remainder, add one more van for the people left.",
     ],
     watch: "Everyone needs a seat, so round up.",
   },
@@ -429,19 +488,29 @@ export const methods: Record<string, ProblemMethod> = {
     goal: "Given a delivery of equal boxes and an amount used, find what remains.",
     method: [
       "Multiply boxes by items per box to get the delivery.",
-      "Subtract the amount used.",
+      "Subtract the amount used from that total.",
     ],
+    watch:
+      "Find the whole delivery before subtracting; do not subtract from one box.",
   },
   "purchase-change": {
     goal: "Given a number of items, their price, and the payment, find the change.",
     method: [
       "Multiply to find the cost: items × price.",
       "Subtract the cost from the payment.",
+      "Check: cost + change = payment.",
     ],
+    watch: "Subtract the total cost, not the price of one item.",
   },
   "two-step-change": {
     goal: "Given a starting amount, an amount added, and an amount removed, find what remains.",
-    method: ["Add first.", "Then subtract from that result."],
+    method: [
+      "Start with the first amount.",
+      "Add the amount that was added.",
+      "Take the amount removed away from that new total.",
+    ],
+    watch:
+      "Do the changes in the order they happen: add first, then subtract from the new total.",
   },
   // Measurement, perimeter, area
   "shifted-ruler-length": {
@@ -511,7 +580,13 @@ export const methods: Record<string, ProblemMethod> = {
   "rectangle-area": {
     goal: "Given a rectangle's width and height, find its area.",
     terms: [["area", "The number of unit squares that cover a shape."]],
-    method: ["Area = width × height.", "Write the unit as square units."],
+    method: [
+      "Unit squares fill the rectangle in rows: one row for each unit of height, one square in each row for each unit of width.",
+      "Area = width × height, the number of squares.",
+      "Write the answer in square units, such as square centimeters.",
+    ],
+    watch:
+      "Multiply the two side lengths. Adding them gives half the perimeter, not the area.",
   },
   "rectangle-missing-area-side": {
     goal: "Given a rectangle's area and one side, find the other side.",
@@ -568,21 +643,34 @@ export const methods: Record<string, ProblemMethod> = {
   // Data
   "bar-chart-total": {
     goal: "Given a bar chart, find the total of all categories.",
-    method: ["Read each bar's height on the scale.", "Add the values."],
+    method: [
+      "Read each bar's top across to the scale to get its value.",
+      "Write the three values down.",
+      "Add them.",
+    ],
+    watch: "Read values from the scale; a grid line may stand for more than 1.",
   },
   "bar-chart-difference": {
     goal: "Given a bar chart, find how many more one category has than another.",
     method: [
-      "Read the two named bars.",
-      "Subtract the smaller from the larger.",
+      "Read the two named bars against the scale.",
+      "Subtract the smaller value from the larger.",
+      "Ignore any bar the question does not name.",
     ],
+    watch: '"How many more" asks for a difference, not a total.',
   },
   "mean-data": {
     goal: "Given a list of numbers, find their mean.",
     terms: [
       ["mean", "The sum of the values divided by how many values there are."],
     ],
-    method: ["Add all the values.", "Divide by the number of values."],
+    method: [
+      "Add all the values to get the total.",
+      "Count the values.",
+      "Mean = total ÷ count: the size each value would be if the total were shared equally.",
+    ],
+    watch:
+      "Divide by how many values there are, counting repeated values each time.",
   },
   "simple-probability": {
     goal: "Given counts of each color in a bag, find the probability of drawing one color.",
@@ -593,9 +681,9 @@ export const methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Count the favorable items.",
-      "Count all items.",
-      "Probability = favorable ÷ total.",
+      "Count the favorable items: the color asked for.",
+      "Count all items in the bag.",
+      "Probability = favorable ÷ total, simplified.",
     ],
     watch: "Divide by the total, not by the other color.",
   },
@@ -610,8 +698,10 @@ export const methods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Count the equal pieces in the whole.",
-      "One piece is 1 over that number.",
+      "One piece is 1 over that number: a whole in 6 equal pieces has pieces of 1/6.",
     ],
+    watch:
+      "The bottom number counts all the pieces in the whole, not the pieces left over.",
   },
   "fraction-model": {
     goal: "Given a shaded shape, find the fraction shaded.",
@@ -630,7 +720,10 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "fraction-unit-count": {
     goal: "Given strips cut into equal pieces, find how many pieces are shaded.",
-    method: ["Count the shaded pieces across all the strips."],
+    method: [
+      "Each strip is one whole cut into the same number of pieces.",
+      "Count the shaded pieces across all the strips, without restarting at a new strip.",
+    ],
     watch: "Pieces past the first whole are the same size; keep counting.",
   },
   "fraction-line-position": {
@@ -640,13 +733,18 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the steps from 0 to the point.",
       "The number is steps over steps per whole.",
     ],
+    watch:
+      "Count the steps (spaces), not the tick marks, and start counting at 0.",
   },
   "fraction-whole-as-parts": {
     goal: "Given a number of wholes, write it as a fraction with a given denominator.",
     method: [
-      "Each whole has denominator-many pieces.",
-      "Numerator = wholes × denominator.",
+      "Each whole is cut into denominator-many equal pieces.",
+      "Count the pieces in all the wholes: numerator = wholes × denominator.",
+      "Keep the denominator: 3 wholes in fourths is 12/4.",
     ],
+    watch:
+      "Multiply the wholes by the denominator: 3 wholes are 12/4, not 3/4.",
   },
   "equivalent-numerator": {
     goal: "Given a fraction and a new denominator, find the matching numerator.",
@@ -655,6 +753,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Find what the denominator was multiplied by.",
       "Multiply the numerator by the same number.",
     ],
+    watch:
+      "Multiply the numerator by the same number as the denominator; adding the same number changes the amount.",
   },
   "equivalent-denominator": {
     goal: "Given a fraction and a new numerator, find the matching denominator.",
@@ -662,6 +762,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Find what the numerator was divided by.",
       "Divide the denominator by the same number.",
     ],
+    watch:
+      "Divide the denominator by the same number as the numerator; subtracting the same number changes the amount.",
   },
   "fraction-equivalence-choice": {
     goal: "Given a fraction, choose another fraction that names the same amount.",
@@ -686,10 +788,16 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract the numerators: total − known.",
       "Keep the denominator.",
     ],
+    watch:
+      "Keep the denominator; the missing part counts the same size of piece.",
   },
   "like-fraction-difference": {
     goal: "Given two fractions with the same denominator, find their difference.",
-    method: ["Subtract the numerators.", "Keep the denominator.", "Simplify."],
+    method: [
+      "Both fractions count the same size of piece.",
+      "Subtract the numerators and keep the denominator.",
+      "Simplify.",
+    ],
     watch: "Do not subtract the denominators: the piece size stays the same.",
   },
   "mixed-to-improper-numerator": {
@@ -699,16 +807,21 @@ export const methods: Record<string, ProblemMethod> = {
       ["improper fraction", "A fraction with numerator ≥ denominator: 7/3."],
     ],
     method: [
+      "Each whole holds denominator-many pieces: 2 wholes in fifths are 10 fifths.",
       "Multiply the whole number by the denominator.",
-      "Add the numerator.",
+      "Add the numerator: 2 3/5 = (10 + 3)/5 = 13/5.",
     ],
+    watch:
+      "Multiply the whole by the denominator before adding: 2 3/5 is 13/5, not 5/5.",
   },
   "improper-whole-part": {
     goal: "Given an improper fraction, find how many complete wholes it contains.",
     method: [
-      "Divide the numerator by the denominator.",
-      "The whole-number part is the answer.",
+      "The denominator says how many pieces make one whole.",
+      "Group the pieces into wholes: divide the numerator by the denominator.",
+      "The number of complete groups is the answer; leftover pieces do not make a whole.",
     ],
+    watch: "Count only complete wholes: 22/8 holds 2 wholes, not 3.",
   },
   "improper-fractional-part": {
     goal: "Given an improper fraction, find the fraction left after removing full wholes.",
@@ -717,6 +830,8 @@ export const methods: Record<string, ProblemMethod> = {
       "The remainder over the denominator is what is left.",
       "Simplify.",
     ],
+    watch:
+      "Give only the leftover pieces as a fraction of one whole, not the whole-number part.",
   },
   "mixed-fraction-difference": {
     goal: "Given two mixed numbers, find their difference.",
@@ -724,6 +839,8 @@ export const methods: Record<string, ProblemMethod> = {
       "If the first fraction part is smaller, rename one whole as a fraction: 3 1/3 = 2 4/3.",
       "Subtract the wholes and subtract the fractions.",
     ],
+    watch:
+      "Rename one whole of the first number before subtracting; never subtract the smaller fraction from the larger one.",
   },
   "add-fractions": {
     goal: "Given two fractions, find their sum.",
@@ -741,6 +858,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract the numerators. Keep the denominator.",
       "Simplify.",
     ],
+    watch: "Subtract only after the denominators match; 3/4 − 1/2 is not 2/2.",
   },
   "fraction-distance-gap": {
     goal: "Given two points on a fraction number line, find the distance between them.",
@@ -748,12 +866,14 @@ export const methods: Record<string, ProblemMethod> = {
       "Write both positions with the same denominator.",
       "Subtract the smaller from the larger.",
     ],
+    watch:
+      "Count the steps between the points, not from 0 to each point added together.",
   },
   "whole-times-fraction": {
     goal: "Given several groups of the same fraction, find the total.",
     method: [
-      "Multiply the number of groups by the numerator.",
-      "Keep the denominator.",
+      "n groups of a/b are n × a pieces of size 1/b.",
+      "Multiply the number of groups by the numerator and keep the denominator.",
       "Simplify.",
     ],
     watch: "3 × 2/5 = 6/5, not 6/15.",
@@ -761,9 +881,9 @@ export const methods: Record<string, ProblemMethod> = {
   "multiply-fractions": {
     goal: "Given two fractions, find their product.",
     method: [
-      "Multiply the numerators.",
-      "Multiply the denominators.",
-      "Simplify.",
+      "Multiply the numerators: that counts the pieces.",
+      "Multiply the denominators: that names the piece size.",
+      "Simplify; cancelling a common factor first keeps the numbers small.",
     ],
     watch: "No common denominator is needed to multiply.",
   },
@@ -773,30 +893,44 @@ export const methods: Record<string, ProblemMethod> = {
       "Divide the amount by the denominator to get one share.",
       "Multiply by the numerator.",
     ],
+    watch:
+      "Use the whole amount as the whole: 3/4 of 8 liters is 6 liters, not 3/4 liter.",
   },
   "whole-sharing-fraction": {
     goal: "Given whole amounts shared equally, find each share.",
     method: [
       "Each share = total ÷ number of people.",
-      "Write it as a fraction and simplify.",
+      "Write that division as a fraction: total over people.",
+      "Simplify.",
     ],
     watch: "2 shared by 6 is 2/6 = 1/3.",
   },
   "unit-fraction-share": {
     goal: "Given a unit fraction shared equally, find each share.",
-    method: ["Dividing 1/a among b people gives 1/(a × b)."],
+    method: [
+      "Cut the 1/a into b equal parts.",
+      "Each part is 1/b of 1/a, so dividing 1/a among b people gives 1/(a × b).",
+    ],
+    watch:
+      "Sharing makes each part smaller: multiply the denominator by the number of people.",
   },
   "fraction-share-amount": {
     goal: "Given a fraction shared equally, find each share.",
-    method: ["Dividing by a whole number b multiplies the denominator by b."],
+    method: [
+      "Dividing a/b among n people gives each a/(b × n).",
+      "If n divides the numerator, share the pieces instead: 6/8 among 3 is 2/8 each.",
+      "Simplify.",
+    ],
     watch: "5/6 ÷ 3 = 5/18.",
   },
   "whole-unit-groups": {
     goal: "Given a whole amount and a unit fraction, find how many units fit.",
     method: [
-      "Each whole holds denominator-many units.",
+      "Each whole holds denominator-many units: one liter fills 4 containers of 1/4 liter.",
       "Multiply wholes × denominator.",
     ],
+    watch:
+      "Multiply by the denominator; dividing the wholes by it gives a fraction, not a count.",
   },
   "fraction-group-count": {
     goal: "Given a total and a container size, both fractions, find how many containers.",
@@ -804,6 +938,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Write both with the same denominator.",
       "Divide the numerators: total pieces ÷ pieces per container.",
     ],
+    watch:
+      "The answer counts containers, not liters; a part container is a fraction of one container.",
   },
   "divide-fractions": {
     goal: "Given a fraction divided by a fraction, find the quotient.",
@@ -812,9 +948,10 @@ export const methods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Keep the first fraction.",
-      "Multiply by the reciprocal of the second.",
-      "Simplify.",
+      "Change ÷ to × and flip the second fraction to its reciprocal: 3/4 becomes 4/3.",
+      "Multiply, then simplify.",
     ],
+    watch: "Flip only the divisor, the second fraction, never the first.",
   },
   // Decimals, ratio, percent
   "decimal-addition": {
@@ -824,6 +961,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Add as whole numbers, carrying as usual.",
       "Put the decimal point straight below.",
     ],
+    watch:
+      "Line up the decimal points, not the last digits: 2.5 + 1.25 puts the 5 tenths over the 2 tenths.",
   },
   "decimal-multiplication": {
     goal: "Given two decimals, find their product.",
@@ -832,6 +971,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the digits after the point in both factors.",
       "Put that many digits after the point in the product.",
     ],
+    watch:
+      "Do not line up the decimal points to multiply; count the decimal places instead.",
   },
   "ratio-missing": {
     goal: "Given a ratio and one new amount, find the matching amount.",
@@ -845,22 +986,30 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the scale factor: new amount ÷ its ratio number.",
       "Multiply the other ratio number by the same factor.",
     ],
+    watch:
+      "Multiply both parts by the same factor; adding the same amount to both breaks the ratio.",
   },
   "unit-price": {
     goal: "Given the cost of several items, find the cost of a different number.",
     terms: [["unit price", "The cost of one item."]],
     method: [
       "Unit price = total cost ÷ number of items.",
-      "Multiply by the new number of items.",
+      "Multiply the unit price by the new number of items.",
+      "Check: more items must cost more.",
     ],
+    watch:
+      "Find the price of one item first; the given total is for a different number of items.",
   },
   "percent-of": {
     goal: "Given a percent and an amount, find that percent of the amount.",
     terms: [["percent", "Per hundred: 19% = 19/100."]],
     method: [
-      "Write the percent as a fraction over 100.",
-      "Multiply by the amount.",
+      "Write the percent as a fraction over 100: 35% = 35/100.",
+      "Multiply that fraction by the amount.",
+      "Shortcut: 10% is the amount ÷ 10, and 50% is half.",
     ],
+    watch:
+      "Find the percent of the stated amount; do not just write the percent as the answer.",
   },
   "proportional-rule-choice": {
     goal: "Given several rules, choose the proportional one.",
@@ -877,14 +1026,17 @@ export const methods: Record<string, ProblemMethod> = {
       "Same signs: add the sizes, keep the sign.",
       "Different signs: subtract the smaller size from the larger, keep the sign of the larger.",
     ],
+    watch:
+      "With different signs, the answer takes the sign of the number farther from 0: −8 + 3 = −5.",
   },
   "number-line-distance": {
     goal: "Given two points on a number line, find the distance between them.",
     method: [
-      "Subtract the smaller number from the larger.",
+      "Subtract the smaller number from the larger: from −7 to 6 is 6 − (−7).",
+      "When the points are on both sides of 0, add their distances from 0.",
       "Distance is never negative.",
     ],
-    watch: "From −7 to 6 is 6 − (−7) = 13.",
+    watch: "From −7 to 6 is 6 − (−7) = 13, not 6 − 7.",
   },
   "integer-power": {
     goal: "Given a base and an exponent, find the power.",
@@ -906,6 +1058,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Then multiplication and division, left to right.",
       "Then addition and subtraction, left to right.",
     ],
+    watch: "Multiply before adding: 2 + 3 × 4 is 14, not 20.",
   },
   "substitute-linear-expression": {
     goal: "Given an expression and a value of x, find the expression's value.",
@@ -934,8 +1087,13 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "linear-equation": {
     goal: "Given an equation like ax + b = c, find x.",
-    method: ["Subtract b from both sides.", "Divide both sides by a."],
-    watch: "Check by putting x back into the original equation.",
+    method: [
+      "Undo the addition first: subtract b from both sides, leaving ax = c − b.",
+      "Undo the multiplication: divide both sides by a.",
+      "Check by putting x back into ax + b.",
+    ],
+    watch:
+      "Subtract b from both sides before dividing. Dividing first means b must be divided too.",
   },
   "negative-coefficient-equation": {
     goal: "Given an equation where x is multiplied by a negative number, find x.",
@@ -987,6 +1145,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract one equation from the other to remove y.",
       "Solve for x.",
     ],
+    watch:
+      "Multiply every term of an equation, including the number on the right side.",
   },
   // Lines and functions
   "coordinate-point-reading": {
@@ -1001,6 +1161,7 @@ export const methods: Record<string, ProblemMethod> = {
       "For x, count across from the vertical axis.",
       "For y, count up or down from the horizontal axis.",
     ],
+    watch: "x is the across distance and comes first; do not swap it with y.",
   },
   "line-slope": {
     goal: "Given two points, find the slope of the line through them.",
@@ -1010,6 +1171,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract the x-values in the same order: x₂ − x₁.",
       "Divide.",
     ],
+    watch:
+      "Use the same point first in both subtractions; mixing the order flips the sign.",
   },
   "graphed-line-slope": {
     goal: "Given a line on a grid through two marked points, find its slope.",
@@ -1081,18 +1244,30 @@ export const methods: Record<string, ProblemMethod> = {
       "Replace every x with the input, in parentheses.",
       "Powers first, then multiplication, then addition.",
     ],
+    watch:
+      "Square the input before multiplying by its coefficient, and keep the parentheses: (−3)² = 9.",
   },
   "arithmetic-term": {
     goal: "Given the first term and common difference, find term n.",
     terms: [["arithmetic sequence", "Each term adds the same difference d."]],
-    method: ["Term n = first term + (n − 1) × d."],
+    method: [
+      "Each term adds the common difference d to the term before.",
+      "Term n is n − 1 steps after term 1.",
+      "Term n = first term + (n − 1) × d.",
+    ],
+    watch: "Use n − 1 steps, not n: term 1 has no steps added.",
   },
   "geometric-sequence": {
     goal: "Given the first term and common ratio, find term n.",
     terms: [
       ["geometric sequence", "Each term multiplies by the same ratio r."],
     ],
-    method: ["Term n = first term × r^(n − 1)."],
+    method: [
+      "Each term is the term before it times the ratio r.",
+      "From term 1 to term n there are n − 1 steps, so multiply by r that many times.",
+      "Term n = first term × r^(n − 1).",
+    ],
+    watch: "Use n − 1 factors of r, not n: term 1 has no factor of r.",
   },
   "quadratic-vertex": {
     goal: "Given f(x) = a(x − h)² + k with a > 0, find its minimum value.",
@@ -1100,14 +1275,19 @@ export const methods: Record<string, ProblemMethod> = {
       "A square is never negative and is 0 at x = h.",
       "With a > 0, the smallest value of f is k.",
     ],
+    watch:
+      "The minimum value is k, the value of f. The number h is where it happens, not the minimum.",
   },
   "logarithm-integer": {
     goal: "Given log base b of N, find its value.",
     terms: [["logarithm", "log_b N is the exponent p with b^p = N."]],
     method: [
-      "Ask: b to what power gives N?",
-      "Try powers of b until you reach N.",
+      "log_b N asks: b to what power is N?",
+      "Multiply b by itself, counting the factors: b, b², b³, …",
+      "The number of factors that reaches N is the logarithm.",
     ],
+    watch:
+      "The logarithm is the exponent, not N ÷ b: log base 2 of 8 is 3, not 4.",
   },
   ...rightTriangleMethods,
 };

@@ -202,11 +202,9 @@ try {
         });
       await page.getByRole("button", { name: "Check", exact: true }).click();
       if (lostAcknowledgment) {
-        await page
-          .getByRole("button", { name: "Retry", exact: true })
-          .waitFor();
+        await page.getByText("Check your connection").waitFor();
         assert.ok(await page.getByRole("radio").first().isDisabled());
-        await page.getByRole("button", { name: "Retry", exact: true }).click();
+        await page.getByRole("button", { name: "Check", exact: true }).click();
       }
       await page.locator(".feedback.incorrect").waitFor();
       if (lostAcknowledgment) {

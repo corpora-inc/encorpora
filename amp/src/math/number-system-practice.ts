@@ -92,26 +92,6 @@ export const numberSystemTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-const hints: Record<string, string> = {
-  "greatest-common-factor":
-    "List the factors of each number. The greatest number that appears in both lists is the greatest common factor.",
-  "least-common-multiple":
-    "List multiples of the larger number until you reach one that the smaller number also divides.",
-  "gcf-factor-sum":
-    "Find the greatest common factor, divide each number by it, and write the factor times the sum of the two quotients.",
-  "long-division-quotient":
-    "Work from the left: divide, multiply, subtract, then bring down the next digit. Each step writes one digit of the quotient.",
-  "division-remainder-story":
-    "Divide, then ask what the remainder means here: a group that still needs room, a part too small to use, or the amount left over.",
-  "signed-quantity":
-    "Decide which direction counts as positive. The opposite direction is negative, and the size of the number is the distance from 0.",
-  "opposite-on-line":
-    "Read the number at P from its distance to 0. The opposite is the same distance from 0 on the other side.",
-  "signed-story":
-    "Give each change a sign: up, rising and deposits are positive; down, falling and payments are negative. Multiply repeated changes, then add.",
-  "signed-jumps":
-    "An arrow to the right adds a positive change; an arrow to the left adds a negative change. Add the changes one at a time.",
-};
 
 type Random = (low: number, high: number) => number;
 type Choice = { label: string; correct?: true; feedback?: string };
@@ -122,6 +102,8 @@ type Case = {
   tags: string[];
   figure?: SemanticFigure;
   choices?: Choice[];
+  /** One teaching step from this problem's givens; defaults to the first explanation step. */
+  hint?: string;
 };
 
 function random(id: string, seed: string): Random {
@@ -229,6 +211,7 @@ function gcfCase(r: Random): Case {
     return {
       prompt: `${who} has ${a} ${many} and ${b} ${second[1]} to split into identical ${setMany} with none left over. What is the greatest number of ${setMany} that can be made?`,
       answer: String(g),
+      hint: `The number of ${setMany} must divide both ${a} and ${b} with none left over. List the factors of each number and find the greatest one they share.`,
       explanation: [
         `Every ${setOne} gets the same share of each item, so the number of ${setMany} must divide both ${a} and ${b}: it is a common factor.`,
         ...factorSteps,
@@ -241,6 +224,7 @@ function gcfCase(r: Random): Case {
     return {
       prompt: `A rectangular floor is ${a} feet by ${b} feet. What is the largest whole number of feet that can be the side of square tiles covering it with no tiles cut?`,
       answer: String(g),
+      hint: `A tile side that fits with no cuts divides both ${a} and ${b}. List the factors of each number and find the greatest one they share.`,
       explanation: [
         `Square tiles of side s fit exactly along both edges when s divides both ${a} and ${b}, so s must be a common factor.`,
         ...factorSteps,
@@ -251,6 +235,7 @@ function gcfCase(r: Random): Case {
   return {
     prompt: `What is the greatest common factor of ${a} and ${b}?`,
     answer: String(g),
+    hint: `List the factors of ${a} and the factors of ${b}, in pairs from 1 up. Find the greatest number on both lists.`,
     explanation: [
       ...factorSteps.slice(0, 2),
       common.length === 1
@@ -285,6 +270,7 @@ function lcmCase(r: Random): Case {
     mode,
     big % small === 0 ? "divides" : gcd(a, b) === 1 ? "coprime" : "shared",
   ];
+  const hint = `List multiples of the larger number, ${big}, in order. Stop at the first one that ${small} also divides.`;
   if (mode === "packs") {
     const [first, second] = pick(r, [
       [
@@ -303,6 +289,7 @@ function lcmCase(r: Random): Case {
     return {
       prompt: `${first[1][0]!.toUpperCase()}${first[1].slice(1)} come in packs of ${a} and ${second[1]} come in packs of ${b}. What is the least number of each you can buy to have equal numbers of ${first[1]} and ${second[1]}?`,
       answer: String(lcm),
+      hint,
       explanation: [
         `Whole packs give multiples of ${a} ${first[1]} and multiples of ${b} ${second[1]}. The amounts must be equal, so the number is a common multiple of ${a} and ${b}.`,
         ...listing,
@@ -323,6 +310,7 @@ function lcmCase(r: Random): Case {
           "rings",
         ),
       answer: String(lcm),
+      hint,
       explanation: [
         `The first ${verb}es at multiples of ${a} ${unit} and the second at multiples of ${b} ${unit}, so they ${verb} together at common multiples.`.replace(
           "ringes",
@@ -337,6 +325,7 @@ function lcmCase(r: Random): Case {
   return {
     prompt: `What is the least common multiple of ${a} and ${b}?`,
     answer: String(lcm),
+    hint,
     explanation: [
       ...listing,
       `The least common multiple of ${a} and ${b} is ${lcm}.`,
@@ -386,6 +375,7 @@ function factorSumCase(r: Random): Case {
   return {
     prompt: `Use the distributive property to write ${a} + ${b} as the greatest common factor of ${a} and ${b} times a sum. Which expression is it?`,
     answer: correct,
+    hint: `Find the greatest common factor of ${a} and ${b}, then divide each number by it. The quotients go inside the parentheses.`,
     explanation: [
       `${a} = ${g} × ${m} and ${b} = ${g} × ${n}. The quotients ${m} and ${n} share no factor greater than 1, so ${g} is the greatest common factor.`,
       `By the distributive property, ${g} × ${m} + ${g} × ${n} = ${g} × (${m} + ${n}).`,
@@ -423,7 +413,7 @@ function longDivisionCase(r: Random): Case {
       s.digit < 9
         ? ` and ${d} × ${s.digit + 1} = ${d * (s.digit + 1)} is more than ${s.partial}`
         : "";
-    return `${lead} ${d} × ${s.digit} = ${s.product}${next}. Write ${s.digit} in the quotient; ${s.partial} − ${s.product} = ${s.rest}.`;
+    return `${lead} Try ${d} × ${s.digit} = ${s.product}${next}. Write ${s.digit} in the quotient; ${s.partial} − ${s.product} = ${s.rest}.`;
   });
   explanation.push(
     `The remainder is 0, so the quotient is ${q}. Check: ${q} × ${d} = ${n}.${context ? ` Each box holds ${q} sheets.` : ""}`,
@@ -431,6 +421,7 @@ function longDivisionCase(r: Random): Case {
   return {
     prompt,
     answer: String(q),
+    hint: `Start with ${steps[0]!.partial}, the first part of ${n} that is at least ${d}. How many times does ${d} go into ${steps[0]!.partial}? Write that digit, multiply, subtract, then bring down the next digit.`,
     explanation,
     tags: [
       shape === "two" ? "two-digit-quotient" : "three-digit-quotient",
@@ -450,6 +441,7 @@ function remainderCase(r: Random): Case {
     n = d * q + rest;
   } while (n > 9999);
   const divide = `${n} ÷ ${d} is ${q} with remainder ${rest}, because ${d} × ${q} = ${d * q} and ${n} − ${d * q} = ${rest}.`;
+  const hint = `Divide ${n} by ${d}, keeping the remainder. Then decide what the story asks for: the quotient, one more than the quotient, or the remainder.`;
   if (mode === "up") {
     const [prompt, group, groups, item, items, verb] = pick(r, [
       [
@@ -472,6 +464,7 @@ function remainderCase(r: Random): Case {
     return {
       prompt,
       answer: String(q + 1),
+      hint,
       explanation: [
         divide,
         `${q} full ${groups} ${verb} ${d * q} ${items}, and ${plural(rest, item, items)} would be left out, so one more ${group} is needed: ${q} + 1 = ${q + 1}.`,
@@ -500,6 +493,7 @@ function remainderCase(r: Random): Case {
     return {
       prompt,
       answer: String(q),
+      hint,
       explanation: [
         divide,
         `The remaining ${plural(rest, item, items)} cannot fill another of the ${groupMany}, so the remainder is not counted.`,
@@ -510,6 +504,7 @@ function remainderCase(r: Random): Case {
   return {
     prompt: leftPrompt,
     answer: String(rest),
+    hint,
     explanation: [
       divide,
       `${q} full ${groupMany} use ${d * q} ${items}. The remainder is what is left: ${n} − ${d * q} = ${rest}.`,
@@ -611,6 +606,7 @@ function signedQuantityCase(r: Random): Case {
     return {
       prompt,
       answer: String(-value),
+      hint: `${signed(value)} names ${given}. The quantity asked about is the same size, ${v}, in the opposite direction: which sign does that direction get?`,
       explanation: [
         `${given[0]!.toUpperCase()}${given.slice(1)} and ${asked} are opposite quantities: the same size, ${v}, in opposite directions from 0.`,
         `Opposite quantities have opposite signs. The given quantity is ${signed(value)}, so the other is ${signed(-value)}.`,
@@ -624,6 +620,7 @@ function signedQuantityCase(r: Random): Case {
   return {
     prompt,
     answer: String(negative ? -v : v),
+    hint: `${c.rule} Is this quantity of ${v} in the positive direction or the opposite one?`,
     explanation: [
       `${c.rule} The opposite direction is negative.`,
       negative
@@ -667,6 +664,10 @@ function oppositeCase(r: Random): Case {
   return {
     prompt,
     answer: String(answer),
+    hint:
+      mode === "double"
+        ? `P is to the ${side} of 0. Read the number at P, take its opposite, then take the opposite of that.`
+        : `P is to the ${side} of 0. Count its ticks from 0; the opposite is the same number of ticks on the ${other} side.`,
     explanation,
     tags: [mode, a < 0 ? "negative-point" : "positive-point"],
     figure: {
@@ -759,6 +760,7 @@ function storyCase(r: Random): Case {
     return {
       prompt: `A bank account has a balance of ${decimal(start, 2)} dollars. The owner deposits ${decimal(deposit, 2)} dollars, then pays ${count} bills of ${decimal(price, 2)} dollars each from the account. What is the balance now, in dollars?`,
       answer: answerText(end),
+      hint: `Start at ${decimal(start, 2)}. A deposit adds; each payment subtracts. The ${count} bills together change the balance by ${count} × (−${decimal(price, 2)}).`,
       explanation: [
         `Deposits add to the balance and payments subtract from it. The balance starts at ${decimal(start, 2)}.`,
         `The ${count} bills change the balance by ${count} × ${operand(-price, 2)} = ${decimal(paid, 2)}.`,
@@ -781,6 +783,7 @@ function storyCase(r: Random): Case {
     return {
       prompt: `A diver is ${meters(depth)} below sea level. She rises ${meters(rise)}, then descends ${meters(rate)} per minute for ${minutes} minutes. What is her elevation now, in meters?`,
       answer: answerText(end),
+      hint: `Sea level is 0, so she starts at ${decimal(-depth)}. Rising adds ${decimal(rise)}; descending ${decimal(rate)} per minute for ${minutes} minutes adds ${minutes} × (−${decimal(rate)}).`,
       explanation: [
         `Use sea level as 0, with up positive and down negative. The diver starts at ${decimal(-depth)}.`,
         `Descending ${meters(rate)} per minute for ${minutes} minutes changes her elevation by ${minutes} × ${operand(-rate)} = ${decimal(fall)}.`,
@@ -802,6 +805,7 @@ function storyCase(r: Random): Case {
   return {
     prompt: `At 6 a.m. the temperature was ${decimal(start)}°C. By noon it had risen ${decimal(riseBy)}°C. Then it fell ${decimal(rate)}°C each hour for ${hours} hours. What was the temperature then, in °C?`,
     answer: answerText(end),
+    hint: `Start at ${decimal(start)}. The rise adds ${decimal(riseBy)}; falling ${decimal(rate)} each hour for ${hours} hours adds ${hours} × (−${decimal(rate)}).`,
     explanation: [
       `Rising is positive and falling is negative. The temperature starts at ${decimal(start)}.`,
       `Falling ${decimal(rate)}°C each hour for ${hours} hours is a change of ${hours} × ${operand(-rate)} = ${decimal(fall)}.`,
@@ -932,7 +936,7 @@ export function numberSystemPrintCase(
       },
       answer,
       explanation: c.explanation,
-      hint: hints[id]!,
+      hint: c.hint ?? c.explanation[0]!,
       choiceFeedback,
     };
   } else
@@ -949,7 +953,7 @@ export function numberSystemPrintCase(
       },
       answer: c.answer,
       explanation: c.explanation,
-      hint: hints[id]!,
+      hint: c.hint ?? c.explanation[0]!,
     };
   // Prompt and figure state every given, so together they identify a case.
   return {
