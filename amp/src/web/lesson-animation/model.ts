@@ -6,7 +6,9 @@ type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type HopLine = Extract<SemanticFigure, { kind: "hop-line" }>;
 export type AnimationModel =
+  | { kind: "hops"; figure: HopLine }
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
@@ -20,6 +22,17 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    lesson.templateId === "number-line-hops" &&
+    f?.kind === "hop-line" &&
+    f.hops.length === 2 &&
+    f.end === "hidden" &&
+    integer(f.min, 0, 100) &&
+    integer(f.max, f.min + 10, 100) &&
+    integer(f.start, f.min, f.max) &&
+    integer(f.start + f.hops[0]!.size + f.hops[1]!.size, f.min, f.max)
+  )
+    return { kind: "hops", figure: f };
   if (
     lesson.templateId === "compare-groups" &&
     f?.kind === "counter-rows" &&
@@ -66,6 +79,31 @@ export function animationModel(
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "hops") {
+    const { start, hops } = model.figure;
+    const [tens, ones] = [hops[0]!.size, hops[1]!.size];
+    const middle = start + tens,
+      end = middle + ones;
+    const op = (n: number) => (n > 0 ? "+" : "-");
+    const way = tens > 0 ? "forward" : "back";
+    return [
+      {
+        title: `Start at ${start}`,
+        text: "Each small tick is 1; each long tick is a ten.",
+        math: `$${start}$`,
+      },
+      {
+        title: "Hop the tens",
+        text: `Hop ${way} ${Math.abs(tens)}: ${plural(Math.abs(tens) / 10, "ten", "tens")} at once.`,
+        math: `$${start} ${op(tens)} ${Math.abs(tens)} = ${middle}$`,
+      },
+      {
+        title: "Hop the ones",
+        text: `Then ${way} ${Math.abs(ones)} by ones.`,
+        math: `$${middle} ${op(ones)} ${Math.abs(ones)} = ${end}$`,
+      },
+    ];
+  }
   if (model.kind === "pairing") {
     const { circles: c, squares: s, spread } = model.figure;
     const pairs = Math.min(c, s),

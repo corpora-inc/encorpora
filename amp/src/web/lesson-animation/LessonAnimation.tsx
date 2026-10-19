@@ -57,7 +57,9 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         aria-label={`${frames[current].title}. ${frames[current].text}`}
       >
         <title>{frames[current].title}</title>
-        {model.kind === "pairing" ? (
+        {model.kind === "hops" ? (
+          <HopsModel model={model} step={current} />
+        ) : model.kind === "pairing" ? (
           <PairingModel model={model} step={current} />
         ) : model.kind === "place-compare" ? (
           <PlaceCompareModel model={model} step={current} />
@@ -469,6 +471,125 @@ function PlaceCompareModel({
           </g>
         );
       })}
+    </>
+  );
+}
+
+/** The tens hop and the ones hop draw in turn while a marker travels along
+ * the line; unit ticks keep every step the same length. */
+function HopsModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "hops" }>;
+  step: number;
+}) {
+  const { min, max, start, hops } = model.figure;
+  const left = 20,
+    right = 300,
+    y = 128;
+  const x = (n: number) => left + ((n - min) * (right - left)) / (max - min);
+  const stops = [
+    start,
+    start + hops[0]!.size,
+    start + hops[0]!.size + hops[1]!.size,
+  ];
+  return (
+    <>
+      <line
+        x1={left}
+        x2={right}
+        y1={y}
+        y2={y}
+        className="animation-outline"
+        strokeWidth="2"
+      />
+      {Array.from({ length: max - min + 1 }, (_, i) => {
+        const n = min + i,
+          major = n % 10 === 0;
+        return (
+          <g key={n}>
+            <line
+              x1={x(n)}
+              x2={x(n)}
+              y1={y - (major ? 8 : 4)}
+              y2={y + (major ? 8 : 4)}
+              className="animation-outline"
+              strokeWidth={major ? 1.5 : 0.8}
+            />
+            {major && (
+              <text x={x(n)} y={y + 26} textAnchor="middle">
+                {n}
+              </text>
+            )}
+          </g>
+        );
+      })}
+      {hops.map((hop, i) => {
+        const from = x(stops[i]!),
+          to = x(stops[i + 1]!),
+          lift = Math.min(54, 12 + Math.abs(to - from) * 0.3),
+          shown = step > i;
+        return (
+          <g key={i} data-hop={i}>
+            <path
+              d={`M${from} ${y - 4} Q${(from + to) / 2} ${y - 4 - 2 * lift} ${to} ${y - 4}`}
+              pathLength={1}
+              className="animation-draw"
+              fill="none"
+              strokeWidth="3"
+              strokeDasharray="1"
+              style={{ strokeDashoffset: shown ? 0 : 1 }}
+            />
+            <text
+              x={(from + to) / 2}
+              y={y - 10 - lift}
+              textAnchor="middle"
+              className="animation-fade"
+              style={{ opacity: shown ? 1 : 0, fontWeight: 700 }}
+            >
+              {hop.size > 0 ? `+${hop.size}` : `−${-hop.size}`}
+            </text>
+          </g>
+        );
+      })}
+      <circle
+        cx={x(start)}
+        cy={y}
+        r={4}
+        className="animation-outline"
+        strokeWidth={2}
+      />
+      <text
+        x={x(start)}
+        y={y + 48}
+        textAnchor="middle"
+        className="animation-fade"
+        style={{ opacity: step ? 0.6 : 0, fontSize: 13 }}
+      >
+        {start}
+      </text>
+      <g
+        className="animation-move"
+        data-marker
+        style={{ transform: `translateX(${x(stops[step]!) - x(start)}px)` }}
+      >
+        <circle
+          cx={x(start)}
+          cy={y}
+          r={7}
+          className="animation-warm"
+          strokeWidth={3}
+        />
+      </g>
+      <text
+        x={x(stops[step]!)}
+        y={y + 48}
+        textAnchor="middle"
+        style={{ fontWeight: 700 }}
+      >
+        {stops[step]}
+      </text>
     </>
   );
 }

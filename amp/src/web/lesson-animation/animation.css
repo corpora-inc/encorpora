@@ -65,6 +65,10 @@
 .animation-fade {
   transition: opacity 400ms ease;
 }
+.animation-draw {
+  stroke: var(--color-success-accent);
+  transition: stroke-dashoffset 900ms cubic-bezier(0.22, 0.7, 0.18, 1);
+}
 .animation-copy {
   display: grid;
   min-width: 0;
@@ -130,7 +134,8 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
-  .animation-fade {
+  .animation-fade,
+  .animation-draw {
     transition: none;
   }
 }

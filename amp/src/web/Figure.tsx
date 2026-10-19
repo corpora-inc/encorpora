@@ -3,6 +3,7 @@ import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
+import { NumberSenseFigure } from "./NumberSenseFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import type { SemanticFigure } from "../math/contracts";
@@ -28,6 +29,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
+    case "hundred-chart":
+    case "hop-line":
+      return <NumberSenseFigure figure={figure} />;
     case "coordinate-plane":
     case "bar-chart":
     case "clock":

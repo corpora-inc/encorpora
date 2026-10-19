@@ -1,6 +1,7 @@
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { NumberSenseIllustration } from "./NumberSenseIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -36,6 +37,14 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "hundred-chart-moves" ||
+    kind === "teen-ten-frame" ||
+    kind === "number-line-hop-pair" ||
+    kind === "rounding-halfway" ||
+    kind === "power-of-ten-shift"
+  )
+    return <NumberSenseIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||

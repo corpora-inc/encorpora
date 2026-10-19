@@ -42,6 +42,21 @@ export type SemanticFigure =
     }
   | { kind: "base-ten-pair"; values: [number, number] }
   | {
+      kind: "hundred-chart";
+      first: number;
+      rows: number;
+      columns: number;
+      blank: [number, number];
+    }
+  | {
+      kind: "hop-line";
+      min: number;
+      max: number;
+      start: number;
+      hops: { size: number; label: "size" | "?" }[];
+      end: "shown" | "hidden";
+    }
+  | {
       kind: "coordinate-plane";
       xMin: number;
       xMax: number;
@@ -216,6 +231,61 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         ]),
       })
       .strict(),
+    z
+      .object({
+        kind: z.literal("hundred-chart"),
+        first: z.number().int().min(1).max(100),
+        rows: z.number().int().min(1).max(4),
+        columns: z.number().int().min(1).max(5),
+        blank: z.tuple([z.number().int().min(0), z.number().int().min(0)]),
+      })
+      .strict()
+      .refine(
+        (f) =>
+          ((f.first - 1) % 10) + f.columns <= 10 &&
+          f.first + 10 * (f.rows - 1) + f.columns - 1 <= 100 &&
+          f.blank[0] < f.rows &&
+          f.blank[1] < f.columns,
+        "The window must lie inside the hundred chart",
+      ),
+    z
+      .object({
+        kind: z.literal("hop-line"),
+        min: z.number().int().min(0),
+        max: z.number().int().max(100),
+        start: z.number().int(),
+        hops: z
+          .array(
+            z
+              .object({
+                size: z
+                  .number()
+                  .int()
+                  .refine((n) => n !== 0),
+                label: z.enum(["size", "?"]),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(3),
+        end: z.enum(["shown", "hidden"]),
+      })
+      .strict()
+      .refine((f) => {
+        if (
+          f.min % 10 ||
+          f.max % 10 ||
+          f.max - f.min < 20 ||
+          f.max - f.min > 60
+        )
+          return false;
+        let at = f.start;
+        for (const hop of f.hops) {
+          at += hop.size;
+          if (at < f.min || at > f.max) return false;
+        }
+        return f.start >= f.min && f.start <= f.max;
+      }, "Hops must stay on a line whose ends are tens 20 to 60 apart"),
     z
       .object({
         kind: z.literal("coordinate-plane"),

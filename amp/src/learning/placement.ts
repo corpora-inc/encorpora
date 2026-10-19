@@ -41,14 +41,14 @@ export const OPENER_COUNT = 4;
 export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // K (and younger): count, join, count, take away.
   [
-    ["count-objects"],
+    ["count-objects", "numeral-for-quantity"],
     ["join-within-10"],
-    ["teen-frame-compose", "greater-numeral"],
+    ["teen-frame-compose", "greater-numeral", "count-sequence-missing"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
   ],
   // Grade 1: counting, facts within 10, a missing addend, then tens.
   [
-    ["count-objects", "teen-frame-compose"],
+    ["count-objects", "teen-frame-compose", "hundred-chart-missing"],
     ["join-within-10", "add-within-20"],
     ["unknown-addend-story", "balanced-addition"],
     ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
@@ -61,6 +61,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "continue-count-to-120",
       "compare-two-digit",
       "compare-three-digit",
+      "number-line-hops",
     ],
     ["unknown-addend-story", "balanced-addition"],
     ["subtract-within-20"],
@@ -68,7 +69,13 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // Grade 3: regrouping, three-digit place value, a story, a bar chart.
   [
     ["add-with-regrouping"],
-    ["place-value-digit", "hundreds-model", "compare-three-digit"],
+    [
+      "place-value-digit",
+      "hundreds-model",
+      "compare-three-digit",
+      "round-to-ten",
+      "round-to-hundred",
+    ],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
@@ -84,7 +91,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   [
     ["comparison-amount", "full-kits"],
     ["compare-fractions", "equivalent-numerator", "whole-times-fraction"],
-    ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
+    [
+      "factor-partner",
+      "multidigit-digit-value",
+      "compare-multidigit",
+      "multiply-power-of-ten",
+    ],
     ["metric-length-rename"],
   ],
   // Grade 6: decimals, the order of operations, fractions, the mean.

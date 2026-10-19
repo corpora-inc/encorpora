@@ -2,6 +2,7 @@ import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
+import { numberSenseFacetMappings } from "./number-sense-coverage";
 import { rationalFacetMappings } from "./rational-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
 import { integerExponentFacetMappings } from "./integer-exponent-coverage";
@@ -17,6 +18,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
   ...comparisonFacetMappings,
+  ...numberSenseFacetMappings,
   ...combinatoricsFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,

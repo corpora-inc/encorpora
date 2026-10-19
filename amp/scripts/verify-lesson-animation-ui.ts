@@ -21,7 +21,7 @@ for (const unit of [10, 1]) {
   }
 }
 // Comparison models: a spread row that pairs down, and tens that decide.
-for (const id of ["compare-groups", "compare-two-digit"])
+for (const id of ["compare-groups", "compare-two-digit", "number-line-hops"])
   lessons.push(problemLesson(id, "animation-review"));
 const names = [
   "fraction-model",
@@ -30,6 +30,7 @@ const names = [
   "exchange-ones",
   "compare-groups",
   "compare-two-digit",
+  "number-line-hops",
 ];
 assert.equal(lessons.length, names.length);
 const entry = `
@@ -210,6 +211,18 @@ try {
             Math.abs(centers[0]![k]! - centers[1]![k]!) <= 1,
             "Pairs are not aligned",
           );
+      } else if (figure.kind === "hop-line") {
+        assert.equal(await panel.locator("[data-hop]").count(), 2);
+        // The marker ends on the landing tick: start plus both hops.
+        const end = figure.start + figure.hops[0]!.size + figure.hops[1]!.size;
+        assert.equal(Number(lessons[i]!.example.answer), end);
+        assert(
+          (await panel
+            .locator("text")
+            .filter({ hasText: new RegExp(`^${end}$`) })
+            .count()) >= 1,
+          "Landing number is not shown",
+        );
       } else if (figure.kind === "base-ten-pair") {
         const tens = figure.values.reduce((s, n) => s + Math.floor(n / 10), 0),
           ones = figure.values.reduce((s, n) => s + (n % 10), 0);
