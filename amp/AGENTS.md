@@ -8,7 +8,13 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Parent/learner authorization must be enforced on the server. Development authentication is loopback-only and forbidden in production.
 - Content authors and independent reviewers are separate workers. Do not certify a generator by calling its own answer function twice.
 - Public copy explains the current product without conversation history. Provider approval requires evidence from the specific program.
-- Run npm test, npm run tsc, npm run build, and applicable database/browser checks. CI reports through the existing ci-gate aggregate.
+- **Local gates (fast-building stage, fail forward):** before pushing, run `npm run tsc`, `npm test`, and only the database or browser scripts for what you changed. Don't run the whole `test:family-ui` chain locally; CI runs it.
+- **CI** runs three parallel jobs through the ci-gate aggregate:
+  - `amp` (unit, build, database) gates every PR and the merge queue;
+  - `amp-browser` and `amp-content` gate the PR and re-run on main, but the merge queue skips them.
+
+  A red main files an issue; fix it forward with a small PR, not a revert, unless prod is broken.
+- Money, consent and privacy paths (`src/billing`, `src/parent-consent`, `src/privacy`, `src/family`) always get database tests in the PR itself.
 
 ## Interface acceptance
 

@@ -1338,6 +1338,10 @@ jobs:
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
   # Skipped needs are fine; any failure or cancellation fails the gate.
+  # AMP CI runs as three parallel jobs. `amp` (unit, build, database: the
+  # money, consent and privacy paths) gates every PR and the merge queue.
+  # Browser and content suites gate the PR and re-run on main; the merge queue
+  # skips them, and a red main files an issue to fix forward (see ci-gate).
   amp:
     name: amp
     needs: changes
@@ -1369,13 +1373,43 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: amp/package-lock.json
-      - name: Install PDF inspection tools
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npm run audit
       - run: npm run test:db
+
+  amp-browser:
+    name: amp-browser
+    needs: changes
+    if: needs.changes.outputs.amp == 'true' && github.event_name != 'merge_group'
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: amp
+          POSTGRES_PASSWORD: amp
+          POSTGRES_DB: amp_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U amp"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    defaults:
+      run:
+        working-directory: amp
+    env:
+      AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:ui
       - run: npm run test:family-ui
@@ -1383,6 +1417,26 @@ jobs:
         if: needs.changes.outputs.amp_native == 'true'
       - run: npm run test:native-session
         if: needs.changes.outputs.amp_native == 'true'
+
+  amp-content:
+    name: amp-content
+    needs: changes
+    if: needs.changes.outputs.amp == 'true' && github.event_name != 'merge_group'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: amp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - name: Install PDF inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - run: npm ci
+      - run: npm run audit
       - run: npm run publications
       - run: npm run production:queue
       - run: npm run review:math
@@ -1464,6 +1518,8 @@ jobs:
       [
         changes,
         amp,
+        amp-browser,
+        amp-content,
         amp-native,
         aha-app,
         aha-native,
@@ -1484,6 +1540,9 @@ jobs:
         dynawalla-packs,
       ]
     if: ${{ always() }}
+    permissions:
+      contents: read
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Require all CI jobs to have passed or been skipped
@@ -1500,3 +1559,16 @@ jobs:
             fi
           done
           echo "All required CI jobs passed or were skipped."
+      # Fail forward: suites skipped by the merge queue re-run on main. A red
+      # main opens (or updates) one issue instead of blocking the queue.
+      - name: File an issue when main goes red
+        if: failure() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="main is red: CI failed after merge"
+          n=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          body="CI failed on main at ${GITHUB_SHA::12}: $RUN_URL. Fix forward with a small PR."
+          if [ -n "$n" ]; then gh issue comment "$n" -R "$GITHUB_REPOSITORY" --body "$body"
+          else gh issue create -R "$GITHUB_REPOSITORY" --title "$title" --body "$body"; fi
