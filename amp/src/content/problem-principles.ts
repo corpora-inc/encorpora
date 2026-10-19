@@ -1,3 +1,4 @@
+import { completingSquarePrinciples } from "./completing-square-lessons";
 import { factoringPrinciples } from "./factoring-lessons";
 import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
@@ -8,6 +9,7 @@ import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
 import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
+import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { bivariatePrinciples } from "./bivariate-lessons";
@@ -46,6 +48,7 @@ export const principles: Record<string, string> = {
   ...shapePrinciples,
   ...anglePrinciples,
   ...polygonPrinciples,
+  ...probabilityRulesPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -77,6 +80,7 @@ export const principles: Record<string, string> = {
   ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
+  ...completingSquarePrinciples,
   ...percentChangePrinciples,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,

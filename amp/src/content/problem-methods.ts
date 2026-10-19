@@ -1,3 +1,4 @@
+import { completingSquareMethods } from "./completing-square-lessons";
 import { factoringMethods } from "./factoring-lessons";
 import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
@@ -8,6 +9,7 @@ import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
 import { angleMethods } from "./angle-lessons";
 import { polygonMethods } from "./polygon-lessons";
+import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { bivariateMethods } from "./bivariate-lessons";
@@ -44,11 +46,13 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,
   ...shapeMethods,
   ...angleMethods,
   ...polygonMethods,
+  ...probabilityRulesMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
