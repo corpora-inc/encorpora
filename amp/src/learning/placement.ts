@@ -104,20 +104,25 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
     ["metric-length-rename"],
   ],
-  // Grade 6: decimals, the order of operations, fractions, the mean.
+  // Grade 6: decimals, expressions and equations, fractions, the mean.
   [
     [
       "decimal-addition",
       "decimal-multiplication",
       "compare-decimals-thousandths",
     ],
-    ["operation-order", "integer-power", "one-step-equation"],
+    [
+      "operation-order",
+      "integer-power",
+      "one-step-equation",
+      "dependent-variable-value",
+    ],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
     ["mean-data", "mean-missing-value"],
   ],
-  // Grade 7: powers, unit rates, the mean or a sample estimate, distance on a number line.
+  // Grade 7: powers and equations, unit rates, the mean or a sample estimate, distance on a number line.
   [
-    ["integer-power", "two-step-equation"],
+    ["integer-power", "two-step-equation", "dependent-variable-value"],
     ["unit-price"],
     ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
     ["number-line-distance"],

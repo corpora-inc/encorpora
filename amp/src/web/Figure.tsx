@@ -8,6 +8,7 @@ import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
 import { FactsFigure } from "./FactsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
@@ -52,6 +53,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "function-display":
+      return <FunctionDisplay figure={figure} />;
     case "ten-frame-pair":
       return <FactsFigure figure={figure} />;
     case "counter-rows":

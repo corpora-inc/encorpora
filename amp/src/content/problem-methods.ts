@@ -1,3 +1,4 @@
+import { patternFunctionMethods } from "./pattern-function-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { distributionMethods } from "./distribution-lessons";
@@ -45,6 +46,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...addSubtractMethods,
   ...factsMethods,
   ...combinatoricsMethods,
+  ...patternFunctionMethods,
   ...equationMethods,
   ...rationalMethods,
   ...circleMeasurementMethods,

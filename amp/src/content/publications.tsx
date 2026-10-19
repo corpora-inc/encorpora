@@ -1,3 +1,5 @@
+import { patternFunctionWorksheet } from "./pattern-function-worksheets";
+import { patternFunctionTemplates } from "../math/pattern-function-practice";
 import { equationWorksheet } from "./equation-worksheets";
 import { equationTemplates } from "../math/equation-practice";
 import { readFileSync } from "node:fs";
@@ -55,7 +57,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    equationTemplates.some((t) => t.id === id)
+    patternFunctionTemplates.some((t) => t.id === id)
+      ? patternFunctionWorksheet(id, lesson.id, edition)
+      : equationTemplates.some((t) => t.id === id)
       ? equationWorksheet(id, lesson.id, edition)
       : distinctWorksheetTemplates.some((t) => t.id === id)
       ? distinctWorksheet(id, lesson.id, edition)

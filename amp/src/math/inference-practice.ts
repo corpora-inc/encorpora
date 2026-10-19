@@ -579,7 +579,7 @@ function compareChoice(r: Random): Draft {
     prompt: `${c.intro} Which statement is true?`,
     figure,
     answer: "",
-    hint: `Compare ${p} with ${q} twice: once by the lines inside the boxes (medians), once by the box lengths (IQRs).`,
+    hint: `Compare ${p} with ${q} twice: first the median lines inside the boxes, then the box lengths, which are the IQRs.`,
     explanation: [
       reading,
       `${cap(medianHigh)} has the greater median: its ${c.things} are typically greater.`,
