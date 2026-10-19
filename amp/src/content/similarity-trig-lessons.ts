@@ -7,7 +7,7 @@ export const similarityTrigLessons: Lesson[] = [
     title: "Dilations and similar triangles",
     summary:
       "A dilation multiplies every length by its scale factor and keeps every angle. Triangles with two pairs of equal angles are similar, and their matching sides share one ratio.",
-    templateIds: ["dilation-image", "similar-triangle-side"],
+    templateIds: ["dilation-measure", "similar-triangle-side"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Use a dilation's center and scale factor to find image lengths and image points, and name what a dilation keeps.",
@@ -144,7 +144,7 @@ const terms = {
   ],
 } satisfies Record<string, [string, string][]>;
 export const similarityTrigMethods: Record<string, ProblemMethod> = {
-  "dilation-image": {
+  "dilation-measure": {
     goal: "Use a dilation's scale factor and center to find lengths, the factor, image points or what is kept.",
     terms: terms.dilation,
     method: [
@@ -200,7 +200,7 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
   },
 };
 export const similarityTrigPrinciples: Record<string, string> = {
-  "dilation-image":
+  "dilation-measure":
     "A dilation with scale factor k multiplies every distance by k and keeps every angle; a line that misses the center maps to a parallel line.",
   "similar-triangle-side":
     "Matching sides of similar triangles share one ratio, the scale factor; perimeters scale by it and areas by its square.",

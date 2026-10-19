@@ -22,7 +22,7 @@ type Case = {
 const scenes = { requiredFigureCapability: "scenes-v1" } as const;
 export const similarityTrigTemplates: readonly TemplateMetadata[] = [
   {
-    id: "dilation-image",
+    id: "dilation-measure",
     version: 1,
     title: "Dilations: lengths, centers and what is kept",
     skillId: "dilation-properties",
@@ -991,7 +991,7 @@ function complementaryCase(r: Random): Case {
 }
 
 const builders: Record<string, (r: Random) => Case> = {
-  "dilation-image": dilationCase,
+  "dilation-measure": dilationCase,
   "similar-triangle-side": similarCase,
   "special-right-triangle": specialCase,
   "trig-ratio": trigCase,

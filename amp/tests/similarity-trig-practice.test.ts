@@ -28,7 +28,7 @@ test("each probability problem type is deterministic, scene-gated and an assessm
 
 test("every skill is practiced in at least three prompt frames", () => {
   const frames: Record<string, string[]> = {
-    "dilation-image": [
+    "dilation-measure": [
       "image-length",
       "scale-factor",
       "center",

@@ -1,3 +1,4 @@
+import { CoordinateGeometry } from "../TransformationFigure";
 import { GeometryModel } from "./GeometryAnimation";
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
@@ -45,6 +46,8 @@ import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "motion":
+      return <MotionModel model={model} step={step} />;
     case "triangle-sum":
     case "exterior-angle":
     case "transversal":
@@ -2075,3 +2078,152 @@ const withCommas = (text: string) => {
     whole!.length >= 5 ? whole!.replace(/\B(?=(\d{3})+$)/g, ",") : whole!;
   return part === undefined ? grouped : `${grouped}.${part}`;
 };
+
+/** The pre-image moves by the motion itself: a slide, a flip through the
+ * mirror line, a turn about the origin or a scaling from it. */
+function MotionModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "motion" }>;
+  step: number;
+}) {
+  const m = model.motion;
+  return (
+    <svg x="0" y="0" width="320" height="200" viewBox="0 0 320 250">
+      <CoordinateGeometry
+        figure={model.figure}
+        className="animation-grid-figure"
+        description=""
+      >
+        {({ x, y, unit }) => {
+          const origin = `${x(0)}px ${y(0)}px`;
+          const transform =
+            m.kind === "translate"
+              ? `translate(${m.dx * unit}px, ${-m.dy * unit}px)`
+              : m.kind === "reflect"
+                ? m.axis === "x"
+                  ? "scale(1, -1)"
+                  : "scale(-1, 1)"
+                : m.kind === "rotate"
+                  ? `rotate(${m.degrees === 90 ? -90 : m.degrees === 270 ? 90 : -180}deg)`
+                  : `scale(${m.numerator / m.denominator})`;
+          const pts = (list: { x: number; y: number }[]) =>
+            list.map((p) => `${x(p.x)},${y(p.y)}`).join(" ");
+          const guides = model.given.map((p, i) => {
+            const q = model.image[i]!;
+            return m.kind === "dilate" ? (
+              <line
+                key={i}
+                x1={x(0)}
+                y1={y(0)}
+                x2={x(
+                  Math.abs(q.x) > Math.abs(p.x) || Math.abs(q.y) > Math.abs(p.y)
+                    ? q.x
+                    : p.x,
+                )}
+                y2={y(
+                  Math.abs(q.x) > Math.abs(p.x) || Math.abs(q.y) > Math.abs(p.y)
+                    ? q.y
+                    : p.y,
+                )}
+                className="animation-guide"
+              />
+            ) : m.kind === "rotate" ? (
+              <line
+                key={i}
+                x1={x(0)}
+                y1={y(0)}
+                x2={x(p.x)}
+                y2={y(p.y)}
+                className="animation-guide"
+              />
+            ) : (
+              <line
+                key={i}
+                x1={x(p.x)}
+                y1={y(p.y)}
+                x2={x(q.x)}
+                y2={y(q.y)}
+                className="animation-guide"
+              />
+            );
+          });
+          return (
+            <>
+              <g
+                className="animation-fade"
+                style={{ opacity: step >= 1 ? 1 : 0 }}
+              >
+                {m.kind === "reflect" &&
+                  (m.axis === "x" ? (
+                    <line
+                      x1={x(model.figure.xMin)}
+                      x2={x(model.figure.xMax)}
+                      y1={y(0)}
+                      y2={y(0)}
+                      className="animation-mirror"
+                    />
+                  ) : (
+                    <line
+                      x1={x(0)}
+                      x2={x(0)}
+                      y1={y(model.figure.yMin)}
+                      y2={y(model.figure.yMax)}
+                      className="animation-mirror"
+                    />
+                  ))}
+                {guides}
+                {(m.kind === "rotate" || m.kind === "dilate") && (
+                  <circle
+                    cx={x(0)}
+                    cy={y(0)}
+                    r="4"
+                    className="animation-center"
+                  />
+                )}
+              </g>
+              <g
+                className="animation-fade"
+                style={{ opacity: step === 2 ? 1 : 0 }}
+              >
+                <polygon
+                  points={pts(model.image)}
+                  className="animation-image"
+                />
+                {model.image.map((p, i) => {
+                  const cx = model.image.reduce((a, v) => a + v.x, 0) / 3,
+                    cy = model.image.reduce((a, v) => a + v.y, 0) / 3;
+                  const dx = p.x - cx,
+                    dy = p.y - cy,
+                    len = Math.hypot(dx, dy) || 1;
+                  return (
+                    <text
+                      key={i}
+                      x={x(p.x) + (dx / len) * 15}
+                      y={y(p.y) - (dy / len) * 15 + 5}
+                      textAnchor="middle"
+                      className="animation-image-label"
+                    >
+                      {p.label}
+                    </text>
+                  );
+                })}
+              </g>
+              <polygon
+                data-moving="true"
+                points={pts(model.given)}
+                className={`animation-move animation-moving${step === 2 ? " landed" : ""}`}
+                style={{
+                  transformBox: "view-box",
+                  transformOrigin: origin,
+                  transform: step === 2 ? transform : "none",
+                }}
+              />
+            </>
+          );
+        }}
+      </CoordinateGeometry>
+    </svg>
+  );
+}

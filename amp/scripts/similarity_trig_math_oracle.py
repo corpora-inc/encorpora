@@ -14,7 +14,7 @@ import re
 from fractions import Fraction
 
 SIMILARITY_TRIG = frozenset({
-    'dilation-image', 'similar-triangle-side', 'special-right-triangle', 'trig-ratio', 'complementary-trig',
+    'dilation-measure', 'similar-triangle-side', 'special-right-triangle', 'trig-ratio', 'complementary-trig',
 })
 NUM = r'(−?\d+(?:/\d+)?)'
 
@@ -262,7 +262,7 @@ def solve_similarity_trig(public):
     template = public['templateId']
     require(template in SIMILARITY_TRIG, f'Unknown template {template}')
     prompt = plain(public['prompt'])
-    if template == 'dilation-image':
+    if template == 'dilation-measure':
         return solve_dilation(prompt, public)
     if template == 'similar-triangle-side':
         return solve_similar(prompt, public)
@@ -286,7 +286,7 @@ def review_similarity_trig_fixtures():
         except (ValueError, KeyError, IndexError):
             return True
         return False
-    require(solve_similarity_trig(pub('dilation-image', 'A dilation with center C(1, 2) and scale factor 3 maps P(2, 0) to P′. What is the y-coordinate of P′?')) == -4, 'Center not at origin')
+    require(solve_similarity_trig(pub('dilation-measure', 'A dilation with center C(1, 2) and scale factor 3 maps P(2, 0) to P′. What is the y-coordinate of P′?')) == -4, 'Center not at origin')
     require(solve_similarity_trig(pub('special-right-triangle', 'In a 30°-60°-90° triangle, the hypotenuse has length 14. The longer leg is c√3. What is c?')) == 7, '30-60-90')
     require(solve_similarity_trig(pub('special-right-triangle', 'A 45°-45°-90° triangle has a hypotenuse of length 12. Each leg is c√2. What is c?')) == 6, '45-45-90')
     require(solve_similarity_trig(pub('trig-ratio', 'In right triangle ABC, the right angle is at C. CB = 24 and AB = 26. Find $\\sin B$ as a fraction.')) == Fraction(5, 13), 'sin B')

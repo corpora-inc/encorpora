@@ -1,6 +1,6 @@
 import type { FacetMapping } from "./coverage";
 export const similarityTrigFacetMappings: readonly FacetMapping[] = [
-  ["dilation-image", "dilation-properties.lengths-centers-invariants"],
+  ["dilation-measure", "dilation-properties.lengths-centers-invariants"],
   ["similar-triangle-side", "similarity-proofs.missing-side"],
   ["special-right-triangle", "special-right-triangles.side-ratios"],
   ["trig-ratio", "right-triangle-trigonometry.exact-ratios"],
