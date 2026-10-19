@@ -104,7 +104,9 @@ export async function accountSummary(
       !emailVerified && !families.development
         ? "verify-email"
         : !active
-          ? "choose-plan"
+          ? family.consent.status === "withdrawn"
+            ? "choose-plan"
+            : "try"
           : learners.some((l) => l.entitlement.active)
             ? "practice"
             : unassigned || !learners.length

@@ -121,12 +121,14 @@ export function Legal({
             deliver pages and protect the service. Links to the AMP app and
             external program websites take you to separate services.
           </p>
-          <h2>Free placement</h2>
+          <h2>Free practice</h2>
           <p>
-            Placement does not require a parent account or a learner’s name. The
-            app stores the supplied birth year, a derived starting-level
-            estimate, a random identifier stored in the browser, generated
-            problems, and answer history to estimate levels and resume the
+            Free practice, a short placement followed by adaptive practice up to
+            the free allowance, does not require a parent account or a learner’s
+            name. The app stores the supplied birth year, a derived
+            starting-level estimate, a random identifier stored in the browser,
+            generated problems, answer history, and whether a hint or lesson was
+            opened, to estimate levels, choose the next problem and resume the
             session. Random identifiers and activity records can be personal
             information even without a name. Unclaimed placement sessions expire
             after {TRIAL_DAYS} days and are removed by the retention process. A
@@ -150,8 +152,8 @@ export function Legal({
             AMP records its own trial milestones to understand how families move
             from starting practice to a purchase. Each record contains a random
             identifier, an event type, and a timestamp. The events are starting
-            a trial, completing placement, completing the teaching sequence,
-            opening the plan screen, and purchasing access. These are individual
+            a trial, completing placement, opening the plan screen, and
+            purchasing access. These are individual
             event records, not summarized totals.
           </p>
           <p>
