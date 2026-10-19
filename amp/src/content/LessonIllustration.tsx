@@ -3,6 +3,7 @@ import { PartWholeIllustration } from "./PartWholeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -39,6 +40,13 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "column-addition" ||
+    kind === "base-ten-trade" ||
+    kind === "column-subtraction-zero" ||
+    kind === "column-multidigit"
+  )
+    return <AddSubtractIllustration kind={kind} />;
   if (
     kind === "five-frame-facts" ||
     kind === "count-on-hops" ||

@@ -33,6 +33,7 @@ export type AnimationModel =
   | AreaAnimation
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
+  | { kind: "regroup-sum"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
@@ -174,6 +175,13 @@ export function animationModel(
     f.values.every((n) => integer(n, 10, 99))
   )
     return { kind: "place-compare", figure: f };
+  if (
+    lesson.templateId === "add-two-digit-regroup" &&
+    f?.kind === "base-ten-pair" &&
+    f.values.every((n) => integer(n, 10, 99)) &&
+    f.values[0] + f.values[1] <= 100
+  )
+    return { kind: "regroup-sum", figure: f };
   if (
     lesson.templateId === "fraction-model" &&
     f?.kind === "fraction" &&
@@ -545,6 +553,35 @@ export function animationFrames(model: AnimationModel) {
             : `${plural(pairs, "pair", "pairs")}; ${rest} without a partner.`,
         math: `$${c} ${c < s ? "<" : c > s ? ">" : "="} ${s}$`,
       },
+    ];
+  }
+  if (model.kind === "regroup-sum") {
+    const [a, b] = model.figure.values;
+    const tens = Math.floor(a / 10) + Math.floor(b / 10),
+      ones = (a % 10) + (b % 10),
+      trade = ones >= 10 ? 1 : 0;
+    return [
+      {
+        title: "Show both numbers",
+        text: `${a} is ${plural(Math.floor(a / 10), "ten", "tens")} and ${plural(a % 10, "one", "ones")}. ${b} is ${plural(Math.floor(b / 10), "ten", "tens")} and ${plural(b % 10, "one", "ones")}.`,
+        math: `$${a} + ${b}$`,
+      },
+      {
+        title: "Join like units",
+        text: `Tens join tens and ones join ones: ${plural(tens, "ten", "tens")} and ${plural(ones, "one", "ones")}.`,
+        math: `$${tens * 10} + ${ones}$`,
+      },
+      trade
+        ? {
+            title: "Trade ten ones for a ten",
+            text: `${ones} ones are 1 ten and ${plural(ones - 10, "one", "ones")}. The total does not change.`,
+            math: `$${(tens + 1) * 10} + ${ones - 10} = ${a + b}$`,
+          }
+        : {
+            title: "No trade needed",
+            text: `${plural(ones, "one", "ones")} is fewer than ten, so the ones stay as they are.`,
+            math: `$${tens * 10} + ${ones} = ${a + b}$`,
+          },
     ];
   }
   if (model.kind === "place-compare") {

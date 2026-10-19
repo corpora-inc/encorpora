@@ -1763,6 +1763,37 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Place-value addition and subtraction cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "addition-within-100",
+    "two-digit-sums",
+    "Add two two-digit numbers with sums to 100 and find the addend that makes 100.",
+  ],
+  [
+    "subtraction-within-100",
+    "two-digit-differences",
+    "Subtract a two-digit number from a number up to 100, regrouping a ten when needed.",
+  ],
+  [
+    "add-subtract-thousands",
+    "three-digit-algorithms",
+    "Add and subtract three-digit numbers within 1000, regrouping in any place and across zeros.",
+  ],
+  [
+    "whole-add-subtract",
+    "six-digit-algorithms",
+    "Add and subtract whole numbers of four to six digits with the standard algorithm.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Fact, counting and mental place-value tasks cover bounded parts of their skills.
 for (const [skillId, suffix, description] of [
   [

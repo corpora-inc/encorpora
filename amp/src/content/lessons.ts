@@ -7,6 +7,7 @@ import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -38,6 +39,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "column-addition"
+      | "base-ten-trade"
+      | "column-subtraction-zero"
+      | "column-multidigit"
       | "volume-layers"
       | "prism-composite"
       | "ordered-pair-path"
@@ -561,6 +566,7 @@ export const lessons: readonly Lesson[] = [
   ...radicalLessons,
   ...partWholeLessons,
   ...comparisonLessons,
+  ...addSubtractLessons,
   ...factsLessons,
   ...combinatoricsLessons,
   ...rationalLessons,
