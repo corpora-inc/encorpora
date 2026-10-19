@@ -1,3 +1,4 @@
+import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import {
   circleMeasurementTemplates,
   generateCircleMeasurementProblem,
@@ -188,6 +189,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...polynomialTemplates,
+  ...radicalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
@@ -307,6 +309,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...radicalTemplates,
     ...circleMeasurementTemplates,
     ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
@@ -336,6 +339,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (radicalTemplates.some((t) => t.id === templateId))
+    return generateRadicalProblem(templateId, seed);
   if (circleMeasurementTemplates.some((t) => t.id === templateId))
     return generateCircleMeasurementProblem(templateId, seed);
   if (integerExponentTemplates.some((t) => t.id === templateId))
