@@ -1,3 +1,4 @@
+import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
 import { timeMoneyFacetMappings } from "./time-money-coverage";
@@ -35,6 +36,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...addSubtractFacetMappings,
   ...factsFacetMappings,
   ...combinatoricsFacetMappings,
+  ...patternFunctionFacetMappings,
   ...equationFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,

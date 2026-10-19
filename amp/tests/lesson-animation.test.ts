@@ -157,6 +157,55 @@ test("array and exchange adapters reject ambiguous or unsupported metadata", () 
   }
 });
 
+test("plot animations turn every table row into a point on the stated rule", () => {
+  for (const id of [
+    "related-patterns-relationship",
+    "dependent-variable-equation",
+  ]) {
+    const rules = new Set<string>();
+    for (let i = 0; i < 100; i++) {
+      const lesson = problemLesson(id, `animation-${i}`);
+      const model = animationModel(lesson);
+      assert(model?.kind === "plot", `${id} has no plot model`);
+      const { rows, rule, graph } = model;
+      for (const r of rows) {
+        assert.equal(r.y, rule.k * r.x + rule.offset);
+        assert.ok(r.x <= graph.xMax && r.y <= graph.yMax);
+      }
+      const frames = animationFrames(model);
+      assert.equal(frames.length, 3);
+      const equation =
+        rule.offset === 0
+          ? `${rule.y} = ${rule.k}${rule.x}`
+          : `${rule.y} = ${rule.x} + ${rule.offset}`;
+      assert.equal(frames[2]!.math, `$${equation}$`);
+      if (id === "dependent-variable-equation")
+        assert.equal(lesson.example.answer, equation);
+      else if (!lesson.example.prompt.includes("paired with"))
+        assert.equal(Number(lesson.example.answer), rule.k);
+      rules.add(rule.offset ? "offset" : "proportional");
+    }
+    assert.ok(rules.has("proportional"), id);
+  }
+  const lesson = problemLesson("dependent-variable-equation", "animation");
+  const figure = lesson.example.figure!;
+  assert.equal(figure.kind, "function-display");
+  if (figure.kind !== "function-display") return;
+  const bent = {
+    ...figure,
+    table: {
+      ...figure.table!,
+      rows: figure.table!.rows.map((r, i) =>
+        i === 2 ? { ...r, y: r.y + 1 } : r,
+      ),
+    },
+  };
+  assert.equal(
+    animationModel({ ...lesson, example: { ...lesson.example, figure: bent } }),
+    null,
+  );
+});
+
 test("balance adapter rejects unlevel or undrawable balances", () => {
   for (const figure of [
     { kind: "balance-scale", groups: 1, blocks: 2, units: 3, right: 10 },
