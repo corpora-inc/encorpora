@@ -8,6 +8,10 @@ import {
   type RatioRateFigure,
 } from "./ratio-rate-models.js";
 import {
+  partWholeFigureSchemas,
+  type PartWholeFigure,
+} from "./part-whole-models.js";
+import {
   dataDisplayFigureSchemas,
   type DataDisplayFigure,
 } from "./data-display-models.js";
@@ -15,6 +19,7 @@ import {
 export type SemanticFigure =
   | MeasurementFigure
   | RatioRateFigure
+  | PartWholeFigure
   | DataDisplayFigure
   | {
       kind: "unit-array";
@@ -113,6 +118,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...ratioRateFigureSchemas,
+    ...partWholeFigureSchemas,
     ...dataDisplayFigureSchemas,
     z
       .object({

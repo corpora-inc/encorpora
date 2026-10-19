@@ -1586,6 +1586,43 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Early fraction tasks assess recognition, naming and comparison from given
+// models; learner-drawn partitions and written justification remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "halves-and-quarters",
+    "equal-share-recognition",
+    "Recognize halves and quarters of circles and rectangles, name shaded shares, and compare one half with one quarter of the same whole.",
+  ],
+  [
+    "thirds-and-partitions",
+    "equal-share-naming",
+    "Recognize and name halves, thirds and quarters, including a whole as all of its parts and equal shares with different shapes.",
+  ],
+  [
+    "partition-area",
+    "equal-area-unit-fraction",
+    "Name one of several equal-area grid regions as a unit fraction of a rectangle's area and find that part's area.",
+  ],
+  [
+    "compare-fractions",
+    "same-whole-comparison",
+    "Choose the greater or lesser of two fractions of one whole with a common numerator or a common denominator.",
+  ],
+  [
+    "fraction-comparison",
+    "unlike-fraction-comparison",
+    "Choose the greater or lesser of two proper fractions with different numerators and denominators.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Comparison and place-value tasks cover bounded parts of their number skills.
 for (const [skillId, suffix, description] of [
   [

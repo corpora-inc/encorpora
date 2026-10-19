@@ -1,4 +1,5 @@
 import { ratioRateLessons } from "./ratio-rate-lessons";
+import { partWholeLessons } from "./part-whole-lessons";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -41,6 +42,10 @@ export interface Lesson {
       | "rate-through-one"
       | "fraction-rate-copies"
       | "story-tapes"
+      | "equal-shares"
+      | "same-share-shapes"
+      | "equal-area-regions"
+      | "compare-same-whole"
       | "comparison-pairing"
       | "comparison-number-path"
       | "comparison-place-chart"
@@ -550,6 +555,7 @@ export const lessons: readonly Lesson[] = [
   ...earlyDataLessons,
   ...linePlotLessons,
   ...radicalLessons,
+  ...partWholeLessons,
   ...comparisonLessons,
   ...combinatoricsLessons,
   ...ratioRateLessons,

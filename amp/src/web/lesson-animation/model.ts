@@ -14,10 +14,27 @@ export type RateModel = {
   target: [number, number];
   findBottom: boolean;
 };
+type Shapes = Extract<SemanticFigure, { kind: "partitioned-shapes" }>;
+type Area = Extract<SemanticFigure, { kind: "area-partition" }>;
+/** One shape cut into n equal parts, k of them shaded. */
+export type PartitionAnimation = {
+  kind: "partition";
+  shape: Shapes["shapes"][number];
+};
+/** Two fractions of one whole, a/b and c/d, with unequal values. */
+export type CompareAnimation = {
+  kind: "compare";
+  bars: [{ n: number; d: number }, { n: number; d: number }];
+};
+/** Equal-area grid regions; one region is the highlighted part. */
+export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
 export type AnimationModel =
+  | PartitionAnimation
+  | CompareAnimation
+  | AreaAnimation
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
@@ -34,6 +51,65 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    (lesson.templateId === "name-equal-share" ||
+      lesson.templateId === "name-share") &&
+    f?.kind === "partitioned-shapes" &&
+    f.shapes.length === 1
+  ) {
+    const shape = f.shapes[0]!,
+      n = shape.sizes.length;
+    if (
+      integer(n, 2, 4) &&
+      shape.sizes.every((w) => w === shape.sizes[0]) &&
+      shape.shaded.length >= 1 &&
+      shape.shaded.every((i) => integer(i, 0, n - 1))
+    )
+      return { kind: "partition", shape };
+  }
+  if (
+    (lesson.templateId === "compare-like-denominators" ||
+      lesson.templateId === "compare-like-numerators" ||
+      lesson.templateId === "compare-unlike-fractions") &&
+    f?.kind === "fraction-bars" &&
+    f.bars.length === 2
+  ) {
+    const bars = f.bars.map((bar) => {
+      const m = /^(\d+)\/(\d+)$/.exec(bar.label);
+      return m && Number(m[2]) === bar.parts
+        ? { n: Number(m[1]), d: bar.parts }
+        : null;
+    });
+    const [a, b] = bars;
+    if (
+      a &&
+      b &&
+      integer(a.d, 1, 12) &&
+      integer(b.d, 1, 12) &&
+      integer(a.n, 0, a.d) &&
+      integer(b.n, 0, b.d) &&
+      a.n * b.d !== b.n * a.d
+    )
+      return { kind: "compare", bars: [a, b] };
+  }
+  if (
+    (lesson.templateId === "equal-area-fraction" ||
+      lesson.templateId === "equal-area-part-size") &&
+    f?.kind === "area-partition" &&
+    f.shaded.length === 1
+  ) {
+    const count = Math.max(...f.regions) + 1,
+      size = f.regions.filter((r) => r === 0).length;
+    if (
+      integer(count, 2, 12) &&
+      f.regions.length === f.columns * f.rows &&
+      Array.from(
+        { length: count },
+        (_, r) => f.regions.filter((x) => x === r).length,
+      ).every((c) => c === size)
+    )
+      return { kind: "area", figure: f };
+  }
   if (
     lesson.templateId === "compare-groups" &&
     f?.kind === "counter-rows" &&
@@ -103,6 +179,12 @@ export function animationModel(
   }
   return null;
 }
+const WORDS = ["zero", "one", "two", "three", "four"];
+const UNIT: Record<number, [string, string]> = {
+  2: ["half", "halves"],
+  3: ["third", "thirds"],
+  4: ["quarter", "quarters"],
+};
 function validPlot(f: LinePlot) {
   return (
     integer(f.start, 0, 400) &&
@@ -183,6 +265,75 @@ export function animationFrames(model: AnimationModel) {
         math: model.findBottom
           ? `$${tt} \\div ${rate} = ${tb}$`
           : `$${rate} \\times ${tb} = ${tt}$`,
+      },
+    ];
+  }
+  if (model.kind === "partition") {
+    const n = model.shape.sizes.length,
+      k = model.shape.shaded.length;
+    const name = `${WORDS[k]} ${UNIT[n]![k === 1 ? 0 : 1]}`;
+    return [
+      {
+        title: "Start with one whole",
+        text: `The whole ${model.shape.shape} is the thing being shared.`,
+        math: "$1$ whole",
+      },
+      {
+        title: "Cut it into equal parts",
+        text: `${WORDS[n]![0]!.toUpperCase()}${WORDS[n]!.slice(1)} equal parts make the whole, so each part is one ${UNIT[n]![0]}.`,
+        math: `$${n} \\times \\dfrac{1}{${n}} = 1$`,
+      },
+      {
+        title: "Count the shaded parts",
+        text: `${WORDS[k]![0]!.toUpperCase()}${WORDS[k]!.slice(1)} of the ${WORDS[n]} equal parts ${k === 1 ? "is" : "are"} shaded: ${name}.`,
+        math: `$\\dfrac{${k}}{${n}}$`,
+      },
+    ];
+  }
+  if (model.kind === "compare") {
+    const [a, b] = model.bars;
+    const sign = a.n * b.d > b.n * a.d ? ">" : "<";
+    const f = (x: { n: number; d: number }) => `\\dfrac{${x.n}}{${x.d}}`;
+    return [
+      {
+        title: "Use one whole",
+        text: "Both bars are the same length: each is one whole.",
+        math: "$1 = 1$",
+      },
+      {
+        title: "Cut each whole equally",
+        text:
+          a.d === b.d
+            ? `Both wholes are cut into ${a.d} equal pieces, so the pieces are the same size.`
+            : `Top: ${a.d} equal pieces. Bottom: ${b.d}. More pieces in the same whole means smaller pieces.`,
+        math: `$\\dfrac{1}{${a.d}}${a.d === b.d ? "=" : a.d < b.d ? ">" : "<"}\\dfrac{1}{${b.d}}$`,
+      },
+      {
+        title: "Shade and line up",
+        text: "The shaded lengths start at the same place. The longer one is the greater fraction.",
+        math: `$${f(a)} ${sign} ${f(b)}$`,
+      },
+    ];
+  }
+  if (model.kind === "area") {
+    const f = model.figure,
+      cells = f.columns * f.rows,
+      count = Math.max(...f.regions) + 1;
+    return [
+      {
+        title: "Measure the whole",
+        text: `The rectangle covers ${f.columns} × ${f.rows} unit squares.`,
+        math: `$${f.columns} \\times ${f.rows} = ${cells}$`,
+      },
+      {
+        title: "Split into equal areas",
+        text: `${count} parts of ${cells / count} squares each. Their shapes differ; their areas match.`,
+        math: `$${count} \\times ${cells / count} = ${cells}$`,
+      },
+      {
+        title: "Name one part",
+        text: `The shaded part is one of ${count} equal shares of the area.`,
+        math: `$\\dfrac{${cells / count}}{${cells}} = \\dfrac{1}{${count}}$`,
       },
     ];
   }

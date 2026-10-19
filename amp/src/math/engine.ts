@@ -3,6 +3,10 @@ import {
   generateRatioRateProblem,
 } from "./ratio-rate-practice";
 import {
+  partWholeTemplates,
+  generatePartWholeProblem,
+} from "./part-whole-practice";
+import {
   linePlotTemplates,
   generateLinePlotProblem,
 } from "./line-plot-practice";
@@ -221,6 +225,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...ratioRateTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
+  ...partWholeTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -339,6 +344,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...partWholeTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -376,6 +382,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
+  if (partWholeTemplates.some((t) => t.id === templateId))
+    return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))
     return generateLinePlotProblem(templateId, seed);
   if (earlyDataTemplates.some((t) => t.id === templateId))
