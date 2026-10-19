@@ -182,15 +182,22 @@ export async function recordVerifiedRefund(
   now = new Date(),
 ): Promise<boolean> {
   const props = parseFunnelProps("refund", { full });
+  // `upgrade` marks a second row for one refunded purchase, so the report
+  // counts refunded purchases once and full refunds once.
   const result = await db.query(
-    `WITH link AS (
+    `WITH prior AS (
+       SELECT refund_recorded FROM amp_funnel_checkouts WHERE checkout_id=$1
+     ), link AS (
        INSERT INTO amp_funnel_checkouts AS c(checkout_id,refund_recorded,full_refund_recorded) VALUES($1,true,$2)
        ON CONFLICT(checkout_id) DO UPDATE SET refund_recorded=true,full_refund_recorded=c.full_refund_recorded OR $2
        WHERE NOT c.refund_recorded OR ($2 AND NOT c.full_refund_recorded)
        RETURNING checkout_id
      )
      INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
-     SELECT NULL,'refund',$3::jsonb,$4 FROM link`,
+     SELECT NULL,'refund',
+       CASE WHEN COALESCE((SELECT refund_recorded FROM prior),false)
+         THEN $3::jsonb||'{"upgrade":true}' ELSE $3::jsonb END,$4
+     FROM link`,
     [checkoutId, full, JSON.stringify(props), funnelDay(now)],
   );
   return (result.rowCount ?? 0) > 0;

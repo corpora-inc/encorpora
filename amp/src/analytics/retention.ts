@@ -18,11 +18,7 @@ export async function purgeFunnelEvents(
   if (!Number.isFinite(at.getTime()))
     throw new Error("Invalid retention clock");
   const day = at.toISOString().slice(0, 10);
-  const params = [
-    at.toISOString(),
-    RETENTION.funnelEventDays,
-    RETENTION_BATCH.batchSize,
-  ];
+  const params = [day, RETENTION.funnelEventDays, RETENTION_BATCH.batchSize];
   const cutoff = "$1::date-$2::int";
   let expiredFunnelEvents = 0,
     expiredFunnelVisitors = 0,

@@ -189,7 +189,7 @@ export async function funnelReport(
     full: number;
   }>(
     `SELECT count(*) FILTER (WHERE event='purchase')::int AS purchases,
-       count(*) FILTER (WHERE event='refund')::int AS refunds,
+       count(*) FILTER (WHERE event='refund' AND props->>'upgrade' IS NULL)::int AS refunds,
        count(*) FILTER (WHERE event='refund' AND props->>'full'='true')::int AS full
      FROM amp_funnel_events WHERE occurred_on>=$1 AND occurred_on<$2`,
   );

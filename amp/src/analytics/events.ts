@@ -133,6 +133,8 @@ export const funnelPropsSchemas = {
   refund_requested: z.strictObject({ reason: z.enum(REFUND_REASONS) }),
   refund: z.strictObject({
     full: z.boolean(),
+    /** A partial refund of the same purchase that later became full. */
+    upgrade: z.literal(true).optional(),
     reason: z.enum(REFUND_REASONS).optional(),
   }),
 } as const satisfies Record<FunnelEvent, z.ZodType>;

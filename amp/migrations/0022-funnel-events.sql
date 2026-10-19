@@ -1,9 +1,10 @@
 -- First-party funnel analytics (#1134). Generalises amp_trial_events: rows are
 -- keyed by a random browser visitor ID that is never derived from, or stored
 -- with, an account, learner, trial, email or checkout. Times are whole UTC
--- days, so they cannot be matched against billing timestamps. Retention: 90
--- days (RETENTION.funnelEventDays); a converted visitor's events leave only
--- monthly aggregate counts.
+-- days, so a purchase matches only the day's set of billing records; on a day
+-- with a single purchase that set has one member, so 90-day retention
+-- (RETENTION.funnelEventDays) is the real limit. A converted visitor's events
+-- then leave only monthly aggregate counts.
 CREATE TABLE amp_funnel_visitors (
   visitor_id uuid PRIMARY KEY,
   first_seen date NOT NULL,

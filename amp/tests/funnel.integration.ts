@@ -455,7 +455,7 @@ test(
         { reason: "price", count: 1 },
       ]);
       assert.equal(report.refunds.purchases, 1);
-      assert.equal(report.refunds.refunds, 2);
+      assert.equal(report.refunds.refunds, 1, "one refunded purchase");
       assert.equal(report.refunds.fullRefunds, 1);
       const text = formatFunnelReport(report);
       assert.match(text, /purchase\s+1\s+/);
