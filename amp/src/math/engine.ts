@@ -8,6 +8,10 @@ import {
   generateDistributionProblem,
 } from "./distribution-practice";
 import {
+  patternFunctionTemplates,
+  generatePatternFunctionProblem,
+} from "./pattern-function-practice";
+import {
   timeMoneyTemplates,
   generateTimeMoneyProblem,
 } from "./time-money-practice";
@@ -245,6 +249,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...comparisonTemplates,
   ...factsTemplates,
   ...combinatoricsTemplates,
+  ...patternFunctionTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -420,6 +425,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...shapeTemplates,
+    ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
@@ -462,6 +468,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (patternFunctionTemplates.some((t) => t.id === templateId))
+    return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
     return generateTimeMoneyProblem(templateId, seed);
   if (equationTemplates.some((t) => t.id === templateId))

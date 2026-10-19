@@ -1,3 +1,4 @@
+import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
@@ -45,6 +46,11 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | ShapeIllustrationKind
+      | "pattern-rule-steps"
+      | "related-patterns-graph"
+      | "dependent-variable-graph"
+      | "compare-functions-graph"
+      | "linear-nonlinear-graph"
       | "clock-hour-half"
       | "clock-five-minutes"
       | "coin-values"
@@ -592,6 +598,7 @@ export const lessons: readonly Lesson[] = [
   ...addSubtractLessons,
   ...factsLessons,
   ...combinatoricsLessons,
+  ...patternFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

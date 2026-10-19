@@ -1591,6 +1591,41 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "rule-patterns",
+    "number-rule-terms",
+    "Generate later terms of a whole-number pattern from its start and an add, subtract or multiply-by rule.",
+  ],
+  [
+    "rule-patterns",
+    "rule-features",
+    "Identify features every term of an add-rule pattern shares, such as parity, a common factor or a fixed ones digit.",
+  ],
+  [
+    "related-patterns",
+    "paired-terms",
+    "Relate matching terms of two patterns that start at 0 through a table of ordered pairs and their first-quadrant graph.",
+  ],
+  [
+    "dependent-variables",
+    "equation-from-table-graph",
+    "Choose the equation giving the dependent variable from a context table and graph.",
+  ],
+  [
+    "dependent-variables",
+    "use-equation",
+    "Use an equation between an independent and a dependent variable to find either value.",
+  ],
+  [
+    "compare-functions",
+    "rate-and-initial-value",
+    "Compare rates of change and initial values of two linear functions given in different representations.",
+  ],
+  [
+    "compare-functions",
+    "linear-or-nonlinear",
+    "Recognize linear functions written in several forms and distinguish them from nonlinear rules.",
+  ],
+  [
     "one-step-equations",
     "inverse-operation",
     "Solve a one-operation equation with whole numbers, decimals or fractions by applying the inverse operation to both sides.",

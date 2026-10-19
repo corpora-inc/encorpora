@@ -1,3 +1,4 @@
+import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
@@ -37,6 +38,14 @@ export function LessonIllustration({
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "pattern-rule-steps" ||
+    kind === "related-patterns-graph" ||
+    kind === "dependent-variable-graph" ||
+    kind === "compare-functions-graph" ||
+    kind === "linear-nonlinear-graph"
+  )
+    return <PatternFunctionIllustration kind={kind} />;
   if (
     kind === "balance-remove" ||
     kind === "balance-split" ||

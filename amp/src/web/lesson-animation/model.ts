@@ -9,6 +9,14 @@ import {
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type Display = Extract<SemanticFigure, { kind: "function-display" }>;
+export type PlotRule = {
+  x: string;
+  y: string;
+  /** y = k × x (offset 0) or y = x + offset (k 1). */
+  k: number;
+  offset: number;
+};
 type Balance = Extract<SemanticFigure, { kind: "balance-scale" }>;
 /** add: x + a = b; times: px = b; remove-split: px + q = r; split-remove: p(x + q) = r. */
 export type BalanceForm = "add" | "times" | "remove-split" | "split-remove";
@@ -48,6 +56,12 @@ export type ClockSweepAnimation = {
 };
 export type AnimationModel =
   | ShapeMorphAnimation
+  | {
+      kind: "plot";
+      rows: { x: number; y: number }[];
+      graph: NonNullable<Display["graph"]>;
+      rule: PlotRule;
+    }
   | ClockSweepAnimation
   | { kind: "balance"; figure: Balance; form: BalanceForm; x: number }
   | DecimalFillAnimation
@@ -71,6 +85,36 @@ export type AnimationModel =
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
+/** The variable a column names: "d (miles)" → d, "Pattern B" → B. */
+const variable = (label: string) =>
+  /^([A-Za-z]) \(/.exec(label)?.[1] ?? label.split(" ").at(-1)!;
+/** A proportional or constant-difference rule that every row obeys, if any. */
+function plotRule(f: Display): PlotRule | null {
+  const t = f.table,
+    g = f.graph;
+  if (!t || !g || g.series.length !== 1) return null;
+  const rows = t.rows;
+  if (rows.length < 2 || rows.length > 6) return null;
+  const points = g.series[0]!.points;
+  if (
+    points.length !== rows.length ||
+    points.some((p, i) => p.x !== rows[i]!.x || p.y !== rows[i]!.y) ||
+    rows.some((r) => r.x < 0 || r.y < 0 || r.x > g.xMax || r.y > g.yMax)
+  )
+    return null;
+  const x = variable(t.columns[0]),
+    y = variable(t.columns[1]);
+  const base = rows.find((r) => r.x !== 0);
+  if (!base) return null;
+  const k = base.y / base.x;
+  if (Number.isInteger(k) && k > 1 && rows.every((r) => r.y === k * r.x))
+    return { x, y, k, offset: 0 };
+  const offset = rows[0]!.y - rows[0]!.x;
+  if (offset > 0 && rows.every((r) => r.y - r.x === offset))
+    return { x, y, k: 1, offset };
+  return null;
+}
+
 /** Only compatible semantic figures opt in. No prompt parsing or answer access. */
 export function animationModel(
   lesson: ProblemLessonView,
@@ -78,6 +122,16 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
+  if (
+    (lesson.templateId === "related-patterns-relationship" ||
+      lesson.templateId === "dependent-variable-equation") &&
+    f?.kind === "function-display"
+  ) {
+    const rule = plotRule(f);
+    return rule
+      ? { kind: "plot", rows: f.table!.rows, graph: f.graph!, rule }
+      : null;
+  }
   if (
     [
       "read-clock-hour-half",
@@ -465,6 +519,35 @@ const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
   if (model.kind === "shape-morph") return shapeMorphFrames(model);
+  if (model.kind === "plot") {
+    const { rows, rule } = model;
+    const first = rows.find((r) => r.x !== 0) ?? rows[0]!;
+    const pairs = rows.map((r) => `(${r.x}, ${r.y})`).join(",\\ ");
+    const equation =
+      rule.offset === 0
+        ? `${rule.y} = ${rule.k}${rule.x}`
+        : `${rule.y} = ${rule.x} + ${rule.offset}`;
+    return [
+      {
+        title: "Read the pairs",
+        text: `Each row of the table matches a value of ${rule.x} with the value of ${rule.y} that goes with it.`,
+        math: `$${pairs}$`,
+      },
+      {
+        title: "Plot each pair",
+        text: `Each pair becomes one point: across to the value of ${rule.x}, then up to the value of ${rule.y}. For (${first.x}, ${first.y}): ${first.x} across, ${first.y} up.`,
+        math: `$(${rule.x}, ${rule.y}) \\to$ point`,
+      },
+      {
+        title: "Read the rule",
+        text:
+          rule.offset === 0
+            ? `The points lie on one straight line through (0, 0): every ${rule.y} is ${rule.k} times its ${rule.x}, as in ${first.y} = ${rule.k} × ${first.x}.`
+            : `The points lie on one straight line: every ${rule.y} is ${rule.offset} more than its ${rule.x}, as in ${first.y} = ${first.x} + ${rule.offset}.`,
+        math: `$${equation}$`,
+      },
+    ];
+  }
   if (model.kind === "clock-sweep") {
     const { hour: h, minute: m } = model,
       n = m / 5,
