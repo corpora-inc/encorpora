@@ -1,4 +1,5 @@
 import { distributionFacetMappings } from "./distribution-coverage";
+import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
@@ -20,6 +21,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...linePlotFacetMappings,
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
+  ...partWholeFacetMappings,
   ...comparisonFacetMappings,
   ...combinatoricsFacetMappings,
   ...rationalFacetMappings,
