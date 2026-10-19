@@ -635,6 +635,14 @@ footer {
 .figure[data-kind="number-line"] {
   max-height: none;
 }
+.figure[data-kind="balance-scale"] {
+  max-width: 480px;
+  max-height: none;
+}
+.figure[data-kind="inequality-lines"] {
+  max-width: 520px;
+  max-height: none;
+}
 
 /* The native preview has no authenticated browser workspace. */
 .native-preview {

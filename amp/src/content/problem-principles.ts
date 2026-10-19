@@ -1,3 +1,4 @@
+import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
@@ -37,6 +38,7 @@ export const principles: Record<string, string> = {
   ...addSubtractPrinciples,
   ...factsPrinciples,
   ...combinatoricsPrinciples,
+  ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
   ...percentChangePrinciples,
