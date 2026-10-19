@@ -1371,6 +1371,53 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Figure-based K–5 geometry: each facet names exactly what its items assess.
+for (const [skillId, facets] of [
+  [
+    "volume-cubes",
+    [
+      [
+        "cube-prism-volume",
+        "Find the volume of a prism built from unit cubes by counting layers, including hidden cubes.",
+      ],
+    ],
+  ],
+  [
+    "prism-volume",
+    [
+      [
+        "edge-product",
+        "Calculate rectangular prism volume from three whole-centimeter edges.",
+      ],
+      [
+        "missing-edge",
+        "Find a missing whole-centimeter edge from a prism's volume and two edges.",
+      ],
+      [
+        "additive-volume",
+        "Add the volumes of two non-overlapping rectangular prisms of equal depth.",
+      ],
+    ],
+  ],
+  [
+    "coordinate-first-quadrant",
+    [
+      [
+        "ordered-pairs",
+        "Locate and name whole-number points in the first quadrant.",
+      ],
+      ["grid-moves", "Find the coordinates reached by moves right and up."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
 // Exact forward formulas are bounded facets of broader circle measurement.
 for (const [skillId, facets] of [
   [

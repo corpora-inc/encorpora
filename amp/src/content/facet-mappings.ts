@@ -1,3 +1,4 @@
+import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
@@ -19,6 +20,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...volumeCoordinateFacetMappings,
   ...distributionFacetMappings,
   ...linePlotFacetMappings,
   ...earlyDataFacetMappings,

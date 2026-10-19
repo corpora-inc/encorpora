@@ -20,6 +20,8 @@ export const scaffoldTemplateIds: ReadonlySet<string> = new Set([
   "improper-fractional-part",
   // "Trade ten ones for one ten. How many tens will there be?"
   "exchange-base-ten",
+  // "How many cubes are in the bottom layer of this prism?"
+  "cube-layer-count",
 ]);
 
 export const templateRole = (templateId: string): TemplateRole =>

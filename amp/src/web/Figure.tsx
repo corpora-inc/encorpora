@@ -7,6 +7,7 @@ import { ComparisonFigure } from "./ComparisonFigure";
 import { FactsFigure } from "./FactsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
+import { GeometryFigure } from "./GeometryFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
@@ -25,6 +26,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "histogram":
     case "box-plot":
       return <DataDisplayFigure figure={figure} />;
+    case "cube-prism":
+    case "box-prism":
+    case "composite-prism":
+    case "quadrant-grid":
+      return <GeometryFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
