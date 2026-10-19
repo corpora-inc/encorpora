@@ -10,6 +10,7 @@ import {
   doubleBoxLayout,
   doubleDotLayout,
   histogramLayout,
+  scatterLayout,
   dataDisplayKinds,
   linePlotLayout,
   pictureGraphLayout,
@@ -85,6 +86,40 @@ test("drawn geometry is exactly proportional to the displayed data", () => {
           [min, q1, med, q3, max].map(l.x),
         );
         assert.ok(l.box.min >= l.left && l.box.max <= l.right);
+      } else if (figure.kind === "scatter-plot") {
+        const l = scatterLayout(figure);
+        figure.points.forEach(([px, py], i) => {
+          // Each point sits exactly at its pair, inside the grid.
+          assert.ok(Math.abs(l.points[i]!.cx - l.x(px)) < 1e-9);
+          assert.ok(Math.abs(l.points[i]!.cy - l.y(py)) < 1e-9);
+          assert.ok(l.points[i]!.cx >= l.left && l.points[i]!.cx <= l.right);
+          assert.ok(l.points[i]!.cy >= l.top && l.points[i]!.cy <= l.bottom);
+        });
+        if (l.line) {
+          // The drawn segment passes through both marked lattice points.
+          const { x1, y1, x2, y2 } = l.line;
+          for (const m of l.line.marks) {
+            const cross = (x2 - x1) * (m.cy - y1) - (y2 - y1) * (m.cx - x1);
+            assert.ok(Math.abs(cross) < 1e-6);
+            assert.ok(m.cx >= x1 - 1e-9 && m.cx <= x2 + 1e-9);
+          }
+          assert.ok(y1 >= l.top - 1e-9 && y1 <= l.bottom + 1e-9);
+          assert.ok(y2 >= l.top - 1e-9 && y2 <= l.bottom + 1e-9);
+        }
+      } else if (figure.kind === "two-way-table") {
+        // Every known entry agrees with the row and column sums it is part of.
+        const g = [
+          [...figure.cells[0], figure.rowTotals[0]],
+          [...figure.cells[1], figure.rowTotals[1]],
+          [...figure.columnTotals, figure.total],
+        ];
+        const known = (v: unknown): v is number => typeof v === "number";
+        for (let i = 0; i < 3; i++)
+          if (g[i]!.every(known))
+            assert.equal((g[i]![0] as number) + (g[i]![1] as number), g[i]![2]);
+        for (let j = 0; j < 3; j++)
+          if ([0, 1, 2].every((i) => known(g[i]![j])))
+            assert.equal((g[0]![j] as number) + (g[1]![j] as number), g[2]![j]);
       } else if (figure.kind === "double-dot-plot") {
         const l = doubleDotLayout(figure);
         l.panels.forEach((p, i) => {
@@ -151,6 +186,10 @@ test("rendered charts draw one mark per datum and only role colors", () => {
           svg.match(/data-mark=/g)?.length,
           figure.groups[0].values.length + figure.groups[1].values.length,
         );
+      if (figure.kind === "scatter-plot")
+        assert.equal(svg.match(/data-point=/g)?.length, figure.points.length);
+      if (figure.kind === "two-way-table")
+        assert.equal(svg.match(/data-cell=/g)?.length, 9);
       if (figure.kind === "double-box-plot")
         assert.equal(svg.match(/data-box=/g)?.length, 2);
     }
@@ -193,4 +232,19 @@ test("unreadable charts are rejected", () => {
   ];
   for (const figure of bad)
     assert.equal(semanticFigureSchema.safeParse(figure).success, false);
+});
+
+test("a missing two-way count must come from its column: its row-mate is blank", () => {
+  for (let i = 0; i < 60; i++) {
+    const f = generateProblem("two-way-missing", `blank-${i}`).public.figure;
+    assert(f?.kind === "two-way-table");
+    const row = f.cells.findIndex((r) => r.includes("?"));
+    assert.ok(row >= 0);
+    assert.deepEqual(
+      [...f.cells[row]!].sort(),
+      ["?", null].sort(),
+      "the asked row has exactly two blanks",
+    );
+    assert.ok(f.cells[1 - row]!.every((v) => typeof v === "number"));
+  }
 });

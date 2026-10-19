@@ -82,7 +82,26 @@ export type AnimationModel =
   | { kind: "line-plot-share"; figure: LinePlot; share: number }
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
   | { kind: "box-build"; figure: LinePlot }
-  | MadGapAnimation;
+  | MadGapAnimation
+  | TrendFitAnimation
+  | RowPercentAnimation;
+type Scatter = Extract<SemanticFigure, { kind: "scatter-plot" }>;
+type TwoWay = Extract<SemanticFigure, { kind: "two-way-table" }>;
+/** A flat line at the typical y tilts onto the drawn trend line; the vertical
+ * gaps from the points to the line shrink from `gaps[0]` to `gaps[1]`. */
+export type TrendFitAnimation = {
+  kind: "trend-fit";
+  figure: Scatter & { line: [[number, number], [number, number]] };
+  level: number;
+  slope: number;
+  gaps: [number, number];
+};
+/** A complete two-way table's rows, drawn as bars and then stretched to 100%. */
+export type RowPercentAnimation = {
+  kind: "row-percent";
+  figure: TwoWay;
+  counts: [[number, number], [number, number]];
+};
 type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
 /** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
 export type MadGapAnimation = {
@@ -221,6 +240,55 @@ export function animationModel(
       mad: lesson.templateId === "dot-plot-mad",
       trial,
     };
+  }
+  if (
+    (lesson.templateId === "trend-line-predict" ||
+      lesson.templateId === "trend-slope-meaning") &&
+    f?.kind === "scatter-plot" &&
+    f.line
+  ) {
+    const [[x1, y1], [x2, y2]] = f.line;
+    const slope = (y2 - y1) / (x2 - x1),
+      at = (x: number) => y1 + slope * (x - x1);
+    const level = Math.round(meanOf(f.points.map((p) => p[1])));
+    const gaps: [number, number] = [
+      f.points.reduce((a, [, y]) => a + Math.abs(y - level), 0),
+      f.points.reduce((a, [x, y]) => a + Math.abs(y - at(x)), 0),
+    ];
+    if (
+      Number.isInteger(slope) &&
+      Number.isInteger(gaps[1]) &&
+      gaps[1] < gaps[0]
+    )
+      return {
+        kind: "trend-fit",
+        figure: { ...f, line: f.line },
+        level,
+        slope,
+        gaps,
+      };
+  }
+  if (
+    (lesson.templateId === "two-way-row-percent" ||
+      lesson.templateId === "two-way-association-choice") &&
+    f?.kind === "two-way-table"
+  ) {
+    const [[a, b], [c, d]] = f.cells;
+    if (
+      [a, b, c, d].every((v) => typeof v === "number" && v >= 0) &&
+      f.rowTotals[0] === (a as number) + (b as number) &&
+      f.rowTotals[1] === (c as number) + (d as number) &&
+      (a as number) + (b as number) > 0 &&
+      (c as number) + (d as number) > 0
+    )
+      return {
+        kind: "row-percent",
+        figure: f,
+        counts: [
+          [a as number, b as number],
+          [c as number, d as number],
+        ],
+      };
   }
   if (lesson.templateId === "means-in-mads" && f?.kind === "double-dot-plot") {
     const [a, b] = f.groups.map((g) => g.values);
@@ -546,6 +614,7 @@ export function fiveNumbers(values: readonly number[]) {
     max: xs[n - 1]!,
   };
 }
+const signedText = (v: number) => (v < 0 ? `−${-v}` : `${v}`);
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
@@ -742,6 +811,51 @@ export function animationFrames(model: AnimationModel) {
             text: `The beam balances at ${frac(sum, n).text}: the distances below it add up to the distances above it.`,
             math: `$${sum} \\div ${n} = ${frac(sum, n).tex}$`,
           },
+    ];
+  }
+  if (model.kind === "trend-fit") {
+    const { x, y } = model.figure,
+      n = model.figure.points.length;
+    const [[x1, y1], [x2, y2]] = model.figure.line;
+    return [
+      {
+        title: "The data",
+        text: `${n} pairs: ${x.label} across, ${y.label} up. As one increases, the other tends to ${model.slope > 0 ? "increase" : "decrease"}.`,
+        math: `$n = ${n}$`,
+      },
+      {
+        title: "A flat line misses",
+        text: `A flat line at ${model.level} ignores the trend. The vertical gaps from the points to it add up to ${model.gaps[0]}.`,
+        math: `$\\text{gaps} = ${model.gaps[0]}$`,
+      },
+      {
+        title: "Tilt it to follow the points",
+        text: `Through (${x1}, ${y1}) and (${x2}, ${y2}) the line has slope ${signedText(model.slope)} and follows the trend: the gaps shrink to ${num(model.gaps[1])}.`,
+        math: `$\\text{slope} = \\dfrac{${y2} - ${y1}}{${x2} - ${x1}} = ${model.slope < 0 ? "-" : ""}${Math.abs(model.slope)}$`,
+      },
+    ];
+  }
+  if (model.kind === "row-percent") {
+    const f = model.figure,
+      [[a], [c]] = model.counts,
+      [t0, t1] = f.rowTotals as [number, number];
+    const pct = (k: number, t: number) => Math.round((100 * k) / t);
+    return [
+      {
+        title: "Rows of different sizes",
+        text: `${f.rows[0]} has ${t0}; ${f.rows[1]} has ${t1}. Counts from groups of different sizes do not compare fairly.`,
+        math: `$${t0} \\ne ${t1}$`,
+      },
+      {
+        title: "The “Yes” part of each row",
+        text: `${f.rows[0]}: ${a} of ${t0}. ${f.rows[1]}: ${c} of ${t1}.`,
+        math: `$\\tfrac{${a}}{${t0}} \\text{ and } \\tfrac{${c}}{${t1}}$`,
+      },
+      {
+        title: "Stretch each row to 100%",
+        text: `As percents of their own rows: ${f.rows[0]} ${pct(a, t0)}%, ${f.rows[1]} ${pct(c, t1)}%. Now the groups compare fairly.`,
+        math: `$${pct(a, t0)}\\% \\text{ vs } ${pct(c, t1)}\\%$`,
+      },
     ];
   }
   if (model.kind === "mad-gap") {

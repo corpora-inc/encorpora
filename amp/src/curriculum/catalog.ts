@@ -1980,6 +1980,26 @@ for (const [skillId, suffix, description] of [
     "box-plot-comparison",
     "Compare medians and interquartile ranges of two box plots on one scale.",
   ],
+  [
+    "scatterplots",
+    "association-patterns",
+    "Classify a scatter plot's association as positive linear, negative linear, nonlinear or none.",
+  ],
+  [
+    "scatterplots",
+    "trend-line-models",
+    "Predict with a trend line and interpret its slope in context.",
+  ],
+  [
+    "two-way-tables",
+    "complete-tables",
+    "Find missing counts in a two-way table from its row and column totals.",
+  ],
+  [
+    "two-way-tables",
+    "relative-frequency-association",
+    "Compare relative frequencies within rows to judge association.",
+  ],
 ])
   skills
     .find((s) => s.id === skillId)!

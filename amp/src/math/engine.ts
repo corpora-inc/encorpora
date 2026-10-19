@@ -4,6 +4,10 @@ import {
   generateEquationProblem,
 } from "./equation-practice";
 import {
+  bivariateTemplates,
+  generateBivariateProblem,
+} from "./bivariate-practice";
+import {
   inferenceTemplates,
   generateInferenceProblem,
 } from "./inference-practice";
@@ -271,6 +275,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...equalGroupsTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
+  ...bivariateTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -435,6 +440,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
+    ...bivariateTemplates,
     ...partWholeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
@@ -488,6 +494,8 @@ function generateRawProblem(
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
+  if (bivariateTemplates.some((t) => t.id === templateId))
+    return generateBivariateProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))

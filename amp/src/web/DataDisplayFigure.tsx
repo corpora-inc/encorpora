@@ -5,6 +5,8 @@ import {
   doubleBoxLayout,
   doubleDotLayout,
   histogramLayout,
+  scatterLayout,
+  twoWayLayout,
   linePlotLayout,
   mixedText,
   pictureGraphLayout,
@@ -318,8 +320,248 @@ export function ScaleAxis({
 const summaryText = (s: readonly number[]) =>
   `minimum ${s[0]}, lower quartile ${s[1]}, median ${s[2]}, upper quartile ${s[3]}, maximum ${s[4]}`;
 
+/** The grid, axes and points of a scatter plot, shared with the lesson animation. */
+export function ScatterGrid({
+  layout: l,
+  figure,
+  compact = false,
+}: {
+  layout: ReturnType<typeof scatterLayout>;
+  figure: Extract<Model, { kind: "scatter-plot" }>;
+  compact?: boolean;
+}) {
+  const tick = compact ? { fontSize: 13, fill: ink } : small;
+  return (
+    <g data-scatter="grid">
+      {l.xTicks.map((v, i) => (
+        <g key={`x${v}`}>
+          <line
+            x1={l.x(v)}
+            x2={l.x(v)}
+            y1={l.top}
+            y2={l.bottom}
+            stroke={grid}
+            strokeWidth={1}
+          />
+          {l.xLabeled(i) && (
+            <text x={l.x(v)} y={l.bottom + 20} textAnchor="middle" style={tick}>
+              {v}
+            </text>
+          )}
+        </g>
+      ))}
+      {l.yTicks.map((v) => (
+        <g key={`y${v}`}>
+          <line
+            x1={l.left}
+            x2={l.right}
+            y1={l.y(v)}
+            y2={l.y(v)}
+            stroke={grid}
+            strokeWidth={1}
+          />
+          <text x={l.left - 7} y={l.y(v) + 5} textAnchor="end" style={tick}>
+            {v}
+          </text>
+        </g>
+      ))}
+      <line
+        x1={l.left}
+        x2={l.right}
+        y1={l.bottom}
+        y2={l.bottom}
+        stroke={ink}
+        strokeWidth={2}
+      />
+      <line
+        x1={l.left}
+        x2={l.left}
+        y1={l.top}
+        y2={l.bottom}
+        stroke={ink}
+        strokeWidth={2}
+      />
+      {!compact && (
+        <>
+          <text x={l.right} y={l.bottom + 42} textAnchor="end" style={small}>
+            {figure.x.label} →
+          </text>
+          <text x={8} y={l.top - 14} style={small}>
+            ↑ {figure.y.label}
+          </text>
+        </>
+      )}
+      {l.points.map((p, i) => (
+        <circle
+          key={i}
+          data-point={figure.points[i]!.join(",")}
+          cx={p.cx}
+          cy={p.cy}
+          r={compact ? 4.5 : 5.5}
+          fill="var(--color-figure-accent)"
+          stroke="var(--color-figure-paper)"
+          strokeWidth={1.5}
+        />
+      ))}
+    </g>
+  );
+}
+const cellText = (v: number | null | "?") =>
+  v === null ? "" : v === "?" ? "?" : `${v}`;
+
 export function DataDisplayFigure({ figure }: { figure: Model }) {
   switch (figure.kind) {
+    case "scatter-plot": {
+      const l = scatterLayout(figure);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 290"
+          role="img"
+          aria-label={`Scatter plot of ${figure.y.label} against ${figure.x.label}. Points: ${figure.points.map(([a, b]) => `(${a}, ${b})`).join(", ")}.${figure.line ? ` A trend line passes through (${figure.line[0].join(", ")}) and (${figure.line[1].join(", ")}).` : ""}`}
+        >
+          <ScatterGrid layout={l} figure={figure} />
+          {l.line && (
+            <g data-trend="line">
+              <line
+                x1={l.line.x1}
+                y1={l.line.y1}
+                x2={l.line.x2}
+                y2={l.line.y2}
+                stroke="var(--color-figure-warm)"
+                strokeWidth={3}
+                strokeLinecap="round"
+              />
+              {l.line.marks.map((m, i) => (
+                <circle
+                  key={i}
+                  cx={m.cx}
+                  cy={m.cy}
+                  r={6}
+                  fill="var(--color-figure-paper)"
+                  stroke="var(--color-figure-warm)"
+                  strokeWidth={3}
+                />
+              ))}
+            </g>
+          )}
+        </svg>
+      );
+    }
+    case "two-way-table": {
+      const t = twoWayLayout();
+      const rows: [string, (number | null | "?")[]][] = [
+        [figure.rows[0], [...figure.cells[0], figure.rowTotals[0]]],
+        [figure.rows[1], [...figure.cells[1], figure.rowTotals[1]]],
+        ["Total", [...figure.columnTotals, figure.total]],
+      ];
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox={`0 0 360 ${t.height}`}
+          role="img"
+          aria-label={`Two-way table. Columns: ${figure.columnTitle}: ${figure.columns.join(", ")}, total. ${rows.map(([name, v]) => `${name}: ${v.map((x) => (x === null ? "blank" : x === "?" ? "unknown" : x)).join(", ")}`).join(". ")}.`}
+        >
+          <text
+            x={t.cx(0.5)}
+            y={t.titleY}
+            textAnchor="middle"
+            style={{ ...small, fontWeight: 600 }}
+          >
+            {figure.columnTitle}
+          </text>
+          <line
+            x1={t.left + t.labelWidth + 6}
+            x2={t.left + t.labelWidth + 2 * t.column - 6}
+            y1={t.titleY + 6}
+            y2={t.titleY + 6}
+            stroke={axis}
+            strokeWidth={1.5}
+          />
+          {[...figure.columns, "Total"].map((c, i) => (
+            <text
+              key={c}
+              x={t.cx(i)}
+              y={t.top(0) + 25}
+              textAnchor="middle"
+              style={{ ...label, fontWeight: 600 }}
+            >
+              {c}
+            </text>
+          ))}
+          {rows.map(([name, values], r) => (
+            <g key={name} data-row={name}>
+              <rect
+                x={t.left}
+                y={t.top(r + 1)}
+                width={t.labelWidth + 3 * t.column}
+                height={t.rowHeight}
+                fill={
+                  r === 2
+                    ? "var(--color-figure-empty)"
+                    : "var(--color-figure-paper)"
+                }
+                stroke={grid}
+              />
+              <text
+                x={t.left + 8}
+                y={t.top(r + 1) + 25}
+                style={{ ...label, fontWeight: 600 }}
+              >
+                {name}
+              </text>
+              {values.map((v, c) => (
+                <g key={c} data-cell={`${r}-${c}`} data-value={cellText(v)}>
+                  {v === null || v === "?" ? (
+                    <rect
+                      x={t.cx(c) - 24}
+                      y={t.top(r + 1) + 6}
+                      width={48}
+                      height={t.rowHeight - 12}
+                      rx={5}
+                      fill="none"
+                      stroke={v === "?" ? "var(--color-figure-warm)" : axis}
+                      strokeWidth={v === "?" ? 2.5 : 1.5}
+                      strokeDasharray={v === "?" ? undefined : "4 3"}
+                    />
+                  ) : null}
+                  <text
+                    x={t.cx(c)}
+                    y={t.top(r + 1) + 25}
+                    textAnchor="middle"
+                    style={{
+                      ...label,
+                      fontWeight: c === 2 || r === 2 ? 600 : 400,
+                      fill: v === "?" ? "var(--color-figure-warm)" : ink,
+                    }}
+                  >
+                    {cellText(v)}
+                  </text>
+                </g>
+              ))}
+            </g>
+          ))}
+          <line
+            x1={t.left + t.labelWidth + 2 * t.column}
+            x2={t.left + t.labelWidth + 2 * t.column}
+            y1={t.top(1)}
+            y2={t.top(4)}
+            stroke={ink}
+            strokeWidth={1.5}
+          />
+          <line
+            x1={t.left}
+            x2={t.left + t.labelWidth + 3 * t.column}
+            y1={t.top(3)}
+            y2={t.top(3)}
+            stroke={ink}
+            strokeWidth={1.5}
+          />
+        </svg>
+      );
+    }
     case "double-dot-plot": {
       const l = doubleDotLayout(figure);
       return (

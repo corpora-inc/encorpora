@@ -289,3 +289,31 @@ test("the MAD-gap animation lays exactly the gap between the means in MADs", () 
     assert.equal(animationFrames(model).length, 3);
   }
 });
+
+test("the trend-fit animation shrinks the exact gaps, and row percents match the answer", () => {
+  for (const id of ["trend-line-predict", "trend-slope-meaning"])
+    for (let i = 0; i < 40; i++) {
+      const model = animationModel(problemLesson(id, `fit-${i}`));
+      assert(model?.kind === "trend-fit", id);
+      const [[x1, y1], [x2, y2]] = model.figure.line;
+      assert.equal(model.slope, (y2 - y1) / (x2 - x1));
+      const fit = model.figure.points.reduce(
+        (a, [x, y]) => a + Math.abs(y - (y1 + model.slope * (x - x1))),
+        0,
+      );
+      assert.equal(model.gaps[1], fit);
+      assert.ok(model.gaps[1] < model.gaps[0]);
+      assert.equal(animationFrames(model).length, 3);
+    }
+  for (let i = 0; i < 40; i++) {
+    const lesson = problemLesson("two-way-row-percent", `rows-${i}`);
+    const model = animationModel(lesson);
+    assert(model?.kind === "row-percent");
+    const percents = model.counts.map(([a, b]) => (100 * a) / (a + b));
+    assert.ok(percents.includes(Number(lesson.example.answer)));
+    assert.match(
+      animationFrames(model)[2].text,
+      new RegExp(`${lesson.example.answer}%`),
+    );
+  }
+});

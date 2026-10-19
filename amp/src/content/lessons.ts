@@ -2,6 +2,7 @@ import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
+import { bivariateLessons } from "./bivariate-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
@@ -592,6 +593,7 @@ export const lessons: readonly Lesson[] = [
   ...linePlotLessons,
   ...distributionLessons,
   ...inferenceLessons,
+  ...bivariateLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,

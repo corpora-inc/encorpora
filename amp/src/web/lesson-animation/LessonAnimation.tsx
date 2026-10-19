@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
 import { MadGapStage } from "./ComparisonAnimation";
+import { RowPercentStage, TrendFitStage } from "./BivariateAnimation";
 import {
   BalanceFrame,
   CUBE,
@@ -69,6 +70,10 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <BoxBuildModel model={model} step={step} />;
     case "mad-gap":
       return <MadGapStage model={model} step={step} />;
+    case "trend-fit":
+      return <TrendFitStage model={model} step={step} />;
+    case "row-percent":
+      return <RowPercentStage model={model} step={step} />;
   }
 }
 
