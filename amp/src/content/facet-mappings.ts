@@ -1,4 +1,5 @@
 import { radicalFacetMappings } from "./radical-coverage";
+import { comparisonFacetMappings } from "./comparison-coverage";
 import { rationalFacetMappings } from "./rational-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
 import { integerExponentFacetMappings } from "./integer-exponent-coverage";
@@ -12,6 +13,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   ...radicalFacetMappings,
+  ...comparisonFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...integerExponentFacetMappings,

@@ -1520,3 +1520,39 @@ for (const [skillId, suffix, description] of [
       description,
       status: "implemented",
     });
+
+// Comparison and place-value tasks cover bounded parts of their number skills.
+for (const [skillId, suffix, description] of [
+  [
+    "compare-small-groups",
+    "paired-rows",
+    "Decide whether a row of up to ten circles or squares has more, fewer or the same number, including rows whose spacing misleads.",
+  ],
+  [
+    "compare-numerals",
+    "numerals-to-ten",
+    "Choose the greater or lesser of two different numerals from 0 to 10.",
+  ],
+  [
+    "compare-two-digit",
+    "tens-then-ones",
+    "Compare two two-digit numbers by tens and then ones, and select the true <, = or > statement.",
+  ],
+  [
+    "compare-three-digit",
+    "highest-differing-place",
+    "Compare two three-digit numbers at the highest differing place, and select the true <, = or > statement.",
+  ],
+  [
+    "large-place-value",
+    "digit-value-and-comparison",
+    "Name the value of a digit and compare whole numbers from 1,000 to 999,999.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

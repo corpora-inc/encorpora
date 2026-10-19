@@ -1,4 +1,5 @@
 import { RadicalIllustration } from "./RadicalIllustration";
+import { ComparisonIllustration } from "./ComparisonIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -19,6 +20,13 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "comparison-pairing" ||
+    kind === "comparison-number-path" ||
+    kind === "comparison-place-chart" ||
+    kind === "large-place-value-chart"
+  )
+    return <ComparisonIllustration kind={kind} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||

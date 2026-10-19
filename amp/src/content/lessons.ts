@@ -1,4 +1,5 @@
 import { radicalLessons } from "./radical-lessons";
+import { comparisonLessons } from "./comparison-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -29,6 +30,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "comparison-pairing"
+      | "comparison-number-path"
+      | "comparison-place-chart"
+      | "large-place-value-chart"
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -526,6 +531,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...polynomialLessons,
   ...radicalLessons,
+  ...comparisonLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
