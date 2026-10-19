@@ -24,6 +24,7 @@ import {
   registerAccountRoutes,
 } from "./accounts";
 import { PostgresRepository } from "./repository";
+import { freeProblemsSetting } from "./trials";
 /** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
  * ingress address. Anything else is a configuration error. */
 function trustedProxies(value: string | undefined) {
@@ -54,6 +55,7 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   );
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   development,
+  freeProblems: freeProblemsSetting(process.env.AMP_FREE_PROBLEMS),
 });
 // AMP's own parent accounts (email, passkeys, Google, Apple, Microsoft,
 // GitHub), stored in AMP's database.

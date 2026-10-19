@@ -128,6 +128,10 @@ type Props = {
   exit: () => void;
   requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
+  /** A calm status in the toolbar, such as the free-practice meter. */
+  status?: ReactNode;
+  /** A skill this answer just mastered, shown once with the feedback. */
+  mastered?: string | null;
 };
 
 const keyboardKey = "amp.keyboard";
@@ -524,8 +528,11 @@ export function PracticeWorkspace(props: Props) {
             ✕
           </button>
           <span className="workspace-topic" data-strand={props.strand}>
-            {meta?.title ?? "Practice"}
+            <span className="workspace-topic-text">
+              {meta?.title ?? "Practice"}
+            </span>
           </span>
+          {props.status}
           {props.calculator ? (
             <button
               className="calculator-toggle"
@@ -542,7 +549,13 @@ export function PracticeWorkspace(props: Props) {
               </svg>
             </button>
           ) : (
-            <span className="no-calculator">No calculator</span>
+            <span className="no-calculator" title="No calculator">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="3" width="14" height="18" rx="2.5" />
+                <path d="M3 3l18 18" />
+              </svg>
+              <span className="no-calculator-label">No calculator</span>
+            </span>
           )}
         </div>
         <div
@@ -648,6 +661,17 @@ export function PracticeWorkspace(props: Props) {
             </div>
             {outcome.assisted && (
               <p className="feedback-note">Practiced with support.</p>
+            )}
+            {props.mastered && (
+              <p className="mastery-moment">
+                <span className="mastery-mark" aria-hidden="true">
+                  ★
+                </span>
+                <span>
+                  <strong>Skill mastered</strong>
+                  <span>{props.mastered}</span>
+                </span>
+              </p>
             )}
             {(!outcome.correct || showWhy) && (
               <ol className="feedback-steps">

@@ -1,22 +1,18 @@
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "@tanstack/react-router";
-import { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
 import type { AuthSession } from "../../auth";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
 import { useLearnerStore } from "../../learner-store";
-import { storedTrial } from "../../lib/pending-trial";
+import { AppError } from "../../lib/AppError";
+import { clearStoredTrial, storedTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { frameCard } from "../../ui/PageFrame";
-import { refreshMe } from "../../lib/query";
+import { queryClient, refreshMe } from "../../lib/query";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing";
-import { useCreateLearner, useSetBirthYear } from "./api";
+import { useAdoptTrial, useCreateLearner, useSetBirthYear } from "./api";
 import { Progress } from "./Progress";
 import { useDraft } from "./state";
 import styles from "./Start.module.css";
@@ -24,6 +20,8 @@ import styles from "./Start.module.css";
 /**
  * Learner name, then birth year. A paid, unassigned enrollment is claimed for
  * the new learner; a learner saved before a failed claim is never duplicated.
+ * Free practice on this device becomes that learner, with every answer and
+ * its birth year, so the learner continues where they left off.
  */
 export function LearnerSteps({
   session,
@@ -40,6 +38,14 @@ export function LearnerSteps({
   const create = useCreateLearner(session);
   const claim = useClaimEnrollment(session);
   const correct = useSetBirthYear(session);
+  const adopt = useAdoptTrial(session);
+  const [trial, setTrial] = useState(storedTrial);
+  const [ended, setEnded] = useState("");
+  const dropTrial = () => {
+    clearStoredTrial();
+    queryClient.removeQueries({ queryKey: ["trial"] });
+    setTrial(null);
+  };
   const firstRun = me.next !== "practice";
   const purchase = me.unassignedPurchase;
   const waiting = me.learners.filter((learner) => !learner.entitlement.active);
@@ -50,8 +56,8 @@ export function LearnerSteps({
     if (location.pathname === "/start/birth-year" && !name.trim())
       void navigate({ to: "/start/name", replace: true });
   }, [location.pathname, name]);
-  if (storedTrial()) return <Navigate to="/" replace />;
-  const busy = create.isPending || claim.isPending || correct.isPending;
+  const busy =
+    create.isPending || claim.isPending || correct.isPending || adopt.isPending;
   const practice = (learnerId: string) => {
     useLearnerStore.getState().select(learnerId);
     draft.clear();
@@ -70,12 +76,15 @@ export function LearnerSteps({
         create.error?.message ??
         claim.error?.message ??
         correct.error?.message ??
+        (ended || adopt.error?.message) ??
         ""
       }
       onDismiss={() => {
         create.reset();
         claim.reset();
         correct.reset();
+        adopt.reset();
+        setEnded("");
       }}
     />
   );
@@ -154,12 +163,13 @@ export function LearnerSteps({
           <span>1 / 2</span>
         </div>
       )}
-      <h1>Who’s learning?</h1>
+      <h1>{trial ? "Who’s been practicing?" : "Who’s learning?"}</h1>
       <p>
-        A first name or nickname helps you keep each learner’s practice
-        separate.
+        {trial
+          ? "Their free practice carries over: every answer, the map and the next problem."
+          : "A first name or nickname helps you keep each learner’s practice separate."}
       </p>
-      {purchase && waiting.length > 0 && (
+      {!trial && purchase && waiting.length > 0 && (
         <div className={styles.claim}>
           {waiting.map((learner) => (
             <Button
@@ -180,7 +190,35 @@ export function LearnerSteps({
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          if (name.trim()) void navigate({ to: "/start/birth-year" });
+          if (!name.trim()) return;
+          if (!trial) return void navigate({ to: "/start/birth-year" });
+          // Saved before a failed claim: claim again, never adopt twice.
+          if (mine && draft.learnerId) return assign(draft.learnerId);
+          claim.reset();
+          // Adoption is idempotent for this account: a retry after a lost
+          // response returns the learner already saved, never a second one.
+          adopt.mutate(
+            { token: trial, name: name.trim() },
+            {
+              onSuccess: (learner) => {
+                dropTrial();
+                draft.saved(
+                  session.accountId,
+                  learner.id,
+                  learner.birthYear ?? 0,
+                );
+                assign(learner.id);
+              },
+              onError: (error) => {
+                // Only an ended trial is forgotten; anything else can retry.
+                if (error instanceof AppError && error.code === "trial_ended") {
+                  dropTrial();
+                  setEnded(error.message);
+                  adopt.reset();
+                }
+              },
+            },
+          );
         }}
       >
         <TextField
@@ -194,6 +232,17 @@ export function LearnerSteps({
         <Button variant="primary" disabled={busy || !name.trim()}>
           Continue
         </Button>
+        {trial && (
+          // Keeps the free practice on this device for a later learner.
+          <Button
+            type="button"
+            variant="quiet"
+            disabled={busy}
+            onClick={() => setTrial(null)}
+          >
+            Add a different learner
+          </Button>
+        )}
         {!firstRun && (
           <Link
             className={`${buttonClass("quiet")} ${styles.textLink}`}

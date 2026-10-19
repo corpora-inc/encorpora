@@ -35,3 +35,19 @@ export function useSetBirthYear(session: AuthSession) {
     onSuccess: () => invalidateAccount(session.accountId),
   });
 }
+
+/** Moves this device's anonymous free practice, with every answer, into the
+ * family as a named learner. Only after consent; the server rechecks it. */
+export function useAdoptTrial(session: AuthSession) {
+  return useMutation({
+    mutationFn: (input: { token: string; name: string }) =>
+      request("/trials/adopt", learnerResponse, {
+        token: session.token,
+        body: {
+          token: input.token,
+          name: learnerInput.shape.name.parse(input.name),
+        },
+      }),
+    onSuccess: () => invalidateAccount(session.accountId),
+  });
+}

@@ -65,7 +65,15 @@ export const meSchema = z.discriminatedUnion("signedIn", [
         endsAt: z.string(),
       })
       .optional(),
-    next: z.enum(["verify-email", "add-learner", "choose-plan", "practice"]),
+    /** `try`: no purchase or consent yet, so the parent gets the anonymous
+     * free trial; the plan opens when they choose to buy or reach the limit. */
+    next: z.enum([
+      "verify-email",
+      "try",
+      "add-learner",
+      "choose-plan",
+      "practice",
+    ]),
   }),
 ]);
 export type Me = z.infer<typeof meSchema>;

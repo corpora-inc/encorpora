@@ -25,7 +25,7 @@
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "report:funnel": "tsx scripts/report-funnel.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
-    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui",
+    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
     "test:choice-ui": "tsx scripts/verify-choice-ui.ts",
     "test:funding-ui": "tsx scripts/verify-funding-ui.ts",

@@ -9,8 +9,13 @@
 .header {
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  /* Exactly the first-paint skeleton's bar: legacy header rules never apply. */
   height: calc(var(--target-size) + var(--space-4));
+  min-height: 0;
   padding: 0 var(--space-4);
+  gap: 0;
+  flex-wrap: nowrap;
   border-bottom: 1px solid var(--line);
 }
 .brand {
