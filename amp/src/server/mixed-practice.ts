@@ -94,16 +94,25 @@ export function planMixedPractice(options: {
     });
   // A strand estimated below its easiest material still offers that material
   // once the learner's overall level reaches it; otherwise one bad run would
-  // hide a whole strand for good.
+  // hide a whole strand for good. A strand estimated above its hardest material
+  // aims at that material, so it is still probed instead of losing every slot
+  // to strands whose material reaches the learner's level.
   const strandFloor = new Map<string, number>();
+  const strandCeiling = new Map<string, number>();
   for (const template of templates) {
     const strand = strandOf(template.skillId);
     const grade = gradeOfTemplate.get(template.id)!;
     strandFloor.set(strand, Math.min(strandFloor.get(strand) ?? grade, grade));
+    strandCeiling.set(
+      strand,
+      Math.max(strandCeiling.get(strand) ?? grade, grade),
+    );
   }
   const targetOf = (strand: string) => {
     const level = targetGrade(strandEstimate(frontier, strand));
     const floor = strandFloor.get(strand)!;
+    const ceiling = strandCeiling.get(strand)!;
+    if (level > ceiling) return ceiling;
     return level < floor && frontier.overall.level >= floor ? floor : level;
   };
   const stats = new Map(
