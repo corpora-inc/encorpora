@@ -1371,6 +1371,50 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Grades 2–5 polygons, solids' parts and the quadrilateral hierarchy.
+for (const [skillId, facets] of [
+  [
+    "polygon-properties",
+    [
+      [
+        "polygon-names",
+        "Name polygons with 3 to 8 sides, and find one with a given number of angles.",
+      ],
+      [
+        "solid-parts",
+        "Count the faces, edges and vertices of prisms and pyramids, hidden ones included.",
+      ],
+    ],
+  ],
+  [
+    "quadrilateral-categories",
+    [
+      [
+        "classify",
+        "Name squares, rectangles and rhombuses from marked angles and sides, and recognize quadrilaterals in none of them.",
+      ],
+    ],
+  ],
+  [
+    "shape-hierarchy",
+    [
+      ["every-name", "List every category a quadrilateral belongs to."],
+      [
+        "inclusion",
+        "Judge category statements and use that subcategories inherit properties.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // K–1 shapes: named from exact drawn figures in any orientation and size.
 for (const [skillId, facets] of [
   [
@@ -1764,6 +1808,33 @@ for (const [skillId, suffix, description] of [
     "rational-exponents",
     "rational-base-fractional-powers",
     "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Attribute tasks compare and measure from drawn strips, balances, jars and
+// scales; hands-on measuring and estimation remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "compare-attributes",
+    "length-weight-capacity-comparison",
+    "Compare two lengths aligned or not, read a balance for heavier, lighter or the same, and compare capacity by pouring.",
+  ],
+  [
+    "measure-equal-units",
+    "unit-iteration",
+    "Measure a length by counting equal units end to end, recognize gaps, overlaps and shifted starts, and order three lengths by transitivity.",
+  ],
+  [
+    "mass-volume",
+    "grams-liters-reading-and-stories",
+    "Find a mass in grams from balancing standard masses, read liters on scales with ticks of 1, 2 or 5, and solve one-step stories in grams, kilograms and liters.",
   ],
 ])
   skills

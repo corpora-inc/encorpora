@@ -153,7 +153,140 @@ function Item({ item, t }: { item: ShapeItem; t: Transform }) {
           fill={pieceFills[item.pieces.length === 1 ? 0 : i % 3]!}
         />
       ))}
+      {item.marks &&
+        item.pieces.map((p, i) =>
+          p.type === "polygon" ? (
+            <PolygonMarks
+              key={`m${i}`}
+              points={p.points}
+              t={t}
+              parallel={item.marks === "parallel"}
+            />
+          ) : null,
+        )}
     </g>
+  );
+}
+
+/** Standard marks measured from the vertices: a small square at each right
+ * angle, matching tick marks on sides of equal length, and matching arrows
+ * on parallel sides. */
+export function PolygonMarks({
+  points,
+  t,
+  parallel,
+}: {
+  points: readonly (readonly [number, number])[];
+  t: Transform;
+  parallel: boolean;
+}) {
+  const n = points.length;
+  const S = points.map((p) => screen(t, p));
+  const length = (i: number) => {
+    const a = points[i]!,
+      b = points[(i + 1) % n]!;
+    return Math.hypot(b[0] - a[0], b[1] - a[1]);
+  };
+  const dir = (i: number) => {
+    const a = S[i]!,
+      b = S[(i + 1) % n]!,
+      l = Math.hypot(b.x - a.x, b.y - a.y);
+    return { x: (b.x - a.x) / l, y: (b.y - a.y) / l };
+  };
+  const paths: string[] = [];
+  const line = (a: { x: number; y: number }, b: { x: number; y: number }) =>
+    paths.push(`M${f2(a.x)} ${f2(a.y)} L${f2(b.x)} ${f2(b.y)}`);
+  // Right angles.
+  for (let i = 0; i < n; i++) {
+    const v = S[i]!,
+      a = dir((i + n - 1) % n),
+      b = dir(i);
+    const back = { x: -a.x, y: -a.y };
+    if (Math.abs(back.x * b.x + back.y * b.y) > 1e-3) continue;
+    const m = 10;
+    paths.push(
+      `M${f2(v.x + back.x * m)} ${f2(v.y + back.y * m)} L${f2(v.x + (back.x + b.x) * m)} ${f2(v.y + (back.y + b.y) * m)} L${f2(v.x + b.x * m)} ${f2(v.y + b.y * m)}`,
+    );
+  }
+  // Equal sides: one tick for the first group, two for the second.
+  const group: number[] = Array(n).fill(0);
+  let groups = 0;
+  for (let i = 0; i < n; i++) {
+    if (group[i]) continue;
+    const same = [...Array(n).keys()].filter(
+      (j) => !group[j] && Math.abs(length(j) - length(i)) <= 1e-3 * length(i),
+    );
+    if (same.length < 2) continue;
+    groups++;
+    for (const j of same) group[j] = groups;
+  }
+  for (let i = 0; i < n; i++) {
+    if (!group[i]) continue;
+    const a = S[i]!,
+      b = S[(i + 1) % n]!,
+      d = dir(i),
+      normal = { x: -d.y, y: d.x };
+    const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    for (let k = 0; k < group[i]!; k++) {
+      const off = (k - (group[i]! - 1) / 2) * 5;
+      const c = { x: mid.x + d.x * off, y: mid.y + d.y * off };
+      line(
+        { x: c.x - normal.x * 6, y: c.y - normal.y * 6 },
+        { x: c.x + normal.x * 6, y: c.y + normal.y * 6 },
+      );
+    }
+  }
+  // Parallel sides: arrows that point the same way on both sides of a pair.
+  let pairs = 0;
+  for (let i = 0; i < (parallel ? n : 0); i++)
+    for (let j = i + 2; j < n; j++) {
+      if (i === 0 && j === n - 1) continue;
+      const u = dir(i),
+        v = dir(j);
+      if (Math.abs(u.x * v.y - u.y * v.x) > 1e-3) continue;
+      pairs++;
+      for (const side of [i, j]) {
+        const a = S[side]!,
+          b = S[(side + 1) % n]!,
+          d0 = dir(side),
+          d = d0.x * u.x + d0.y * u.y > 0 ? d0 : { x: -d0.x, y: -d0.y },
+          normal = { x: -d.y, y: d.x };
+        const at = {
+          x: (a.x + b.x) / 2 + d0.x * 17,
+          y: (a.y + b.y) / 2 + d0.y * 17,
+        };
+        for (let k = 0; k < pairs; k++) {
+          const tip = {
+            x: at.x + d.x * (3 + k * 5),
+            y: at.y + d.y * (3 + k * 5),
+          };
+          line(
+            {
+              x: tip.x - d.x * 6 + normal.x * 5,
+              y: tip.y - d.y * 6 + normal.y * 5,
+            },
+            tip,
+          );
+          line(
+            {
+              x: tip.x - d.x * 6 - normal.x * 5,
+              y: tip.y - d.y * 6 - normal.y * 5,
+            },
+            tip,
+          );
+        }
+      }
+    }
+  return (
+    <path
+      data-marks="sides-angles"
+      d={paths.join(" ")}
+      fill="none"
+      stroke={ink}
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   );
 }
 
@@ -286,12 +419,17 @@ export function SolidFigure({
   width = 320,
   height = 240,
   at,
+  overlay,
 }: {
   solid: Solid;
   width?: number;
   height?: number;
   /** Draw inside a larger drawing at this offset instead of as a figure. */
   at?: { x: number; y: number };
+  /** Annotations placed with the solid's own projection (world x, y, z). */
+  overlay?: (
+    point: (x: number, y: number, z: number) => { x: number; y: number },
+  ) => React.ReactNode;
 }) {
   const parts = solidParts(solid);
   const all = parts.extent;
@@ -307,7 +445,16 @@ export function SolidFigure({
     oy = height / 2 - ((minY + maxY) / 2) * unit;
   const s = (p: { x: number; y: number }) =>
     `${f2(ox + p.x * unit)} ${f2(oy + p.y * unit)}`;
-  const body = parts.draw({ s, unit, ox, oy });
+  const point = (x: number, y: number, z: number) => {
+    const p = solidProject(x, y, z);
+    return { x: ox + p.x * unit, y: oy + p.y * unit };
+  };
+  const body = (
+    <>
+      {parts.draw({ s, unit, ox, oy })}
+      {overlay?.(point)}
+    </>
+  );
   if (at) return <g transform={`translate(${at.x} ${at.y})`}>{body}</g>;
   return (
     <svg

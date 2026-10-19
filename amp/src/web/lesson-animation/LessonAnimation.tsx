@@ -24,6 +24,7 @@ import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
+import { Jars } from "../AttributeFigure";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
@@ -31,6 +32,12 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
     case "hops":
       return <HopsModel model={model} step={step} />;
+    case "pour":
+      return (
+        <g transform="translate(20 4) scale(0.86)">
+          <Jars eighths={model.eighths} poured={step > 0} />
+        </g>
+      );
     case "area-model":
       return <AreaModelAnimation model={model} step={step} />;
     case "shape-morph":

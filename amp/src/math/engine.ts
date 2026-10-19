@@ -20,6 +20,10 @@ import {
   generateTimeMoneyProblem,
 } from "./time-money-practice";
 import {
+  attributeTemplates,
+  generateAttributeProblem,
+} from "./attribute-practice";
+import {
   ratioRateTemplates,
   generateRatioRateProblem,
 } from "./ratio-rate-practice";
@@ -42,6 +46,7 @@ import {
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
   factArrayTemplates,
   generateFactArrayProblem,
@@ -246,6 +251,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
+  ...polygonTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -270,6 +276,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...attributeTemplates,
   ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
@@ -422,12 +429,14 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...shapeTemplates,
+    ...polygonTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
     ...partWholeTemplates,
+    ...attributeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
     ...linePlotTemplates,
@@ -465,12 +474,16 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (attributeTemplates.some((t) => t.id === templateId))
+    return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (polygonTemplates.some((t) => t.id === templateId))
+    return generatePolygonProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))

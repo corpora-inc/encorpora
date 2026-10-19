@@ -6,6 +6,8 @@ import { inferenceLessons } from "./inference-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
+import { attributeLessons } from "./attribute-lessons";
+import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -14,6 +16,8 @@ import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { numberSenseLessons } from "./number-sense-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
@@ -56,6 +60,7 @@ export interface Lesson {
       | "number-line-hop-pair"
       | "rounding-halfway"
       | "power-of-ten-shift"
+      | AttributeIllustrationKind
       | "multiply-tens-groups"
       | "area-model-product"
       | "standard-algorithm-product"
@@ -69,6 +74,7 @@ export interface Lesson {
       | "story-tapes"
       | FactArrayIllustrationKind
       | ShapeIllustrationKind
+      | PolygonIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -577,6 +583,7 @@ export const lessons: readonly Lesson[] = [
   ...partWholeLessons,
   ...decimalLessons,
   ...timeMoneyLessons,
+  ...attributeLessons,
   ...comparisonLessons,
   ...numberSenseLessons,
   ...multiplyDivideLessons,
@@ -591,6 +598,7 @@ export const lessons: readonly Lesson[] = [
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
   ...shapeLessons,
+  ...polygonLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

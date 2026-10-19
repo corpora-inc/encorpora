@@ -3,9 +3,14 @@ import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
+import {
+  PolygonIllustration,
+  isPolygonIllustration,
+} from "./PolygonIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
+import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
@@ -40,6 +45,7 @@ export function LessonIllustration({
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
+  if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
   if (
@@ -131,6 +137,15 @@ export function LessonIllustration({
     kind === "coin-count-on"
   )
     return <TimeMoneyIllustration kind={kind} />;
+  if (
+    kind === "line-up-ends" ||
+    kind === "balance-heavier" ||
+    kind === "unit-iteration" ||
+    kind === "ruler-units" ||
+    kind === "balance-grams" ||
+    kind === "liquid-scale-ticks"
+  )
+    return <AttributeIllustration kind={kind} />;
   if (
     kind === "decimal-tenths-hundredths" ||
     kind === "decimal-compare-chart" ||

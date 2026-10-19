@@ -128,8 +128,7 @@ export function generateVolumeCoordinateProblem(
           "Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?";
         answer = String(layer * h);
         label = "Volume in cubic units";
-        hint =
-          "Some cubes are hidden. Count the cubes in one layer, then multiply by the number of layers.";
+        hint = `Some cubes are hidden. The top layer is ${l} cubes by ${w} cubes, and every layer below matches it. Count the layers, then multiply.`;
         explanation = [
           `The top layer has ${l} cubes along one edge and ${w} along the other: $${l} \\times ${w} = ${layer}$ cubes.`,
           `Every layer below it is the same. Count the layers up the side: there are ${h}.`,
@@ -140,8 +139,7 @@ export function generateVolumeCoordinateProblem(
           "This prism is built from unit cubes. How many cubes are in its bottom layer?";
         answer = String(layer);
         label = "Cubes in one layer";
-        hint =
-          "The bottom layer has the same shape as the top. Count the cubes along two edges of the top and multiply.";
+        hint = `The bottom layer matches the top. Along one top edge there are ${l} cubes; count the cubes along the other top edge, then multiply.`;
         explanation = [
           `The top face shows ${l} cubes along one edge and ${w} along the other.`,
           `The bottom layer has the same ${l} by ${w} arrangement: $${l} \\times ${w} = ${layer}$ cubes.`,
@@ -168,8 +166,7 @@ export function generateVolumeCoordinateProblem(
         "What is the volume of this rectangular prism, in cubic centimeters?";
       answer = String(volume);
       label = "Volume in cubic cm";
-      hint =
-        "Find how many centimeter cubes cover the base, then multiply by the height: that many layers stack up.";
+      hint = `One layer of centimeter cubes covers the ${l} cm by ${w} cm base. How many such layers fill the ${h} cm height?`;
       explanation = [
         `The base is ${l} cm by ${w} cm, so one layer holds $${l} \\times ${w} = ${base}$ centimeter cubes.`,
         `The prism is ${h} cm high: ${h} layers.`,
@@ -201,8 +198,7 @@ export function generateVolumeCoordinateProblem(
       prompt = `This rectangular prism has a volume of ${volume} cubic centimeters. What is the length of the edge marked ?, in centimeters?`;
       answer = String(sides[missing]);
       label = "Edge length in cm";
-      hint =
-        "Volume is the product of all three edges. Multiply the two edges you know, then ask what times that product gives the volume.";
+      hint = `Volume is the product of the three edges: ${a} × ${b} × ? = ${volume}. Multiply the two known edges first.`;
       explanation = [
         `Volume is the product of the three edges: $${a} \\times ${b} \\times ? = ${volume}$.`,
         `Multiply the known edges: $${a} \\times ${b} = ${face}$.`,
@@ -225,8 +221,7 @@ export function generateVolumeCoordinateProblem(
         "This solid is made of two rectangular prisms of the same depth that do not overlap. What is its total volume, in cubic centimeters?";
       answer = String(volumes[0]! + volumes[1]!);
       label = "Volume in cubic cm";
-      hint =
-        "Find the volume of each prism separately, then add. Both prisms share the same depth.";
+      hint = `Split the solid into its two prisms. The taller one is ${parts[0]!.length} by ${width} by ${parts[0]!.height} cm. Find each volume, then add.`;
       explanation = [
         `Taller prism: $${parts[0]!.length} \\times ${width} \\times ${parts[0]!.height} = ${volumes[0]}$ cubic centimeters.`,
         `Shorter prism: $${parts[1]!.length} \\times ${width} \\times ${parts[1]!.height} = ${volumes[1]}$ cubic centimeters.`,
@@ -274,8 +269,7 @@ export function generateVolumeCoordinateProblem(
       const named = unique.map((p, i) => ({ ...p, label: names[i]! }));
       const right = named.find((p) => p.why === "target")!;
       prompt = `Which point is at ${pair(x, y)}?`;
-      hint =
-        "Start at 0. The first number tells how far to go across; the second tells how far to go up.";
+      hint = `For ${pair(x, y)}, start at 0. Go ${x} to the right first, then ${y} up.`;
       explanation = [
         `The first number, ${x}, means ${count(x, "unit")} across from 0.`,
         `The second number, ${y}, means ${count(y, "unit")} up.`,
@@ -312,8 +306,7 @@ export function generateVolumeCoordinateProblem(
         points: [{ x, y, label: "P" }],
       };
       prompt = "What are the coordinates of point P?";
-      hint =
-        "Go straight down from P to the horizontal axis for the first number. Go straight left to the vertical axis for the second.";
+      hint = `From P, go straight down to the horizontal axis for the first number, then straight left for the second. P is ${x > y ? "farther across than it is up" : "higher up than it is across"}, so check that its first number is the ${x > y ? "larger" : "smaller"} one.`;
       explanation = [
         `Straight below P, the horizontal axis reads ${x}. That is the first coordinate.`,
         `Straight left of P, the vertical axis reads ${y}. That is the second coordinate.`,
@@ -357,8 +350,7 @@ export function generateVolumeCoordinateProblem(
       };
       const end = pair(x + right, y + up);
       prompt = `Start at point A. Move ${count(right, "unit")} right and ${count(up, "unit")} up. What are the coordinates of the point where you stop?`;
-      hint =
-        "Read A's coordinates first. Moving right adds to the first coordinate; moving up adds to the second.";
+      hint = `Read A's coordinates first. Moving ${right} right adds ${right} to the first number; moving ${up} up adds ${up} to the second.`;
       explanation = [
         `A is at ${pair(x, y)}.`,
         `Moving right changes only the first coordinate: $${x} + ${right} = ${x + right}$.`,

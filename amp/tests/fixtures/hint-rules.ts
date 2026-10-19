@@ -94,7 +94,8 @@ export const fixedHint = (id: string) => {
   );
 };
 /** A prompt that states numbers has a hint that names at least one of them,
- * in either sign ("add 11" names the −11 in "−11 − 8n"). A number printed in
+ * in either sign ("add 11" names the −11 in "−11 − 8n"), and a written fraction
+ * names its numerator and denominator. A number printed in
  * every prompt (a format example such as "2.35") is template text, not a given. */
 export const unnamedGivens = (id: string) => {
   const size = (n: string) => n.replace(/^-/, "");
@@ -106,7 +107,7 @@ export const unnamedGivens = (id: string) => {
     .reduce((all, next) => new Set([...all].filter((n) => next.has(n))));
   return problems.some((p) => {
     const named = [...given(p)].filter((n) => !constant.has(n));
-    const hint = new Set(numbers(p.hint).map(size));
+    const hint = new Set([...stated(p.hint)].map(size));
     return named.length > 0 && !named.some((n) => hint.has(n));
   });
 };
