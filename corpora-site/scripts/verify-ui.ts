@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { fundingFixture } from "../tests/funding-fixture.js";
 import { resolve } from "node:path";
 import { buildSite } from "../src/build.js";
 import { configSchema } from "../src/config.js";
@@ -113,16 +114,7 @@ try {
         { interval: "year", amountMinor: 1234, currency: "USD", renews: false },
         { interval: "month", amountMinor: 234, currency: "USD", renews: true },
       ],
-      funding: [
-        {
-          state: "AZ",
-          program: "Synthetic test program",
-          kind: "reimbursement",
-          instructions: "Synthetic guidance for rendering only.",
-          sourceUrl: "https://program.example.invalid",
-          reviewedUntil: "2099-01-01",
-        },
-      ],
+      funding: [fundingFixture],
     }),
     "artifacts/production",
   );
@@ -131,7 +123,12 @@ try {
     viewport: { width: 320, height: 900 },
   });
   const fixturePage = await fixtureContext.newPage();
-  for (const path of ["/amp/", "/esa/", "/legal/privacy/"]) {
+  for (const path of [
+    "/amp/",
+    "/esa/",
+    "/esa/synthetic-program/",
+    "/legal/privacy/",
+  ]) {
     await fixturePage.goto(production.url + path);
     assert.ok(
       await fixturePage.evaluate(
@@ -158,8 +155,30 @@ try {
   await fixturePage.goto(production.url + "/esa/");
   assert.match(
     await fixturePage.locator("#state-AZ").innerText(),
-    /Synthetic test program/,
+    /Synthetic education funding program/,
   );
+  for (const width of [320, 390, 1280]) {
+    await fixturePage.setViewportSize({ width, height: 900 });
+    await fixturePage.goto(production.url + "/esa/synthetic-program/");
+    assert.equal(await fixturePage.locator("h1").count(), 1);
+    assert.ok(
+      await fixturePage.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    assert.equal(
+      (
+        await new AxeBuilder({ page: fixturePage })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+          .analyze()
+      ).violations.length,
+      0,
+    );
+    await fixturePage.screenshot({
+      path: `artifacts/program-${width}.png`,
+      fullPage: true,
+    });
+  }
   await fixtureContext.close();
   const chrome = await launch({
     chromePath: chromium.executablePath(),

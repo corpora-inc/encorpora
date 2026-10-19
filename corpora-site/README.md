@@ -41,7 +41,7 @@ The strict schema in `src/config.ts` rejects unknown keys. Its fields are:
 | `legalReviewed`     | Operator acknowledgement that these drafts were reviewed against actual practices; not a compliance certification                                 |
 | `privacy`           | Reviewed placement collection basis (`placementBasis`), concrete retention description, and provider list (`name`, `purpose`, `retention`)        |
 | `plans`             | At most one annual and one monthly entry, each with `interval` (`year`/`month`), `amountMinor`, two-decimal ISO `currency`, and explicit `renews` |
-| `funding`           | State guidance: `state`, `program`, `kind` (`marketplace`/`reimbursement`), `instructions`, official `sourceUrl`, and `reviewedUntil` (ISO date)  |
+| `funding`           | State guidance: `state`, `program`, `kind` (`marketplace`/`reimbursement`/`tax-benefit`/`school-purchase`/`information`), `instructions`, official `sourceUrl`, and `reviewedUntil` (ISO date)  |
 
 Production mode requires the two URLs, operator contacts, privacy details, and the legal acknowledgement. The configured prices are presentation data, not checkout authority: keep them synchronized with the merchant's active offer. AMP checkout is authoritative. Missing prices send visitors to AMP to review plans. Guidance with an expired review date fails the build. Schedule rebuilds before review expiry; static output does not update itself. An empty funding list states that guidance is unavailable and makes no eligibility claim.
 
@@ -65,3 +65,17 @@ The draft refund policy offers a full refund within 30 days of payment to the or
 Primary references used when drafting: [FTC COPPA compliance plan](https://www.ftc.gov/business-guidance/resources/childrens-online-privacy-protection-rule-six-step-compliance-plan-your-business), [FTC amended COPPA rule](https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/). AMP's implementation boundary is documented in `amp/docs/parent-consent.md`; account-free placement and consented enrollment are distinct flows.
 
 This package supplies a reviewable site and build artifact. It does not configure DNS, publish a public domain, create merchant products, enable child-data collection, or establish program approval.
+
+## Individual funding guides
+
+A funding entry may include a `page` object to publish `/esa/<slug>/`. Entries without a page appear only in the funding index. Each page requires:
+
+- `slug`: a unique lowercase path segment containing letters, numbers and single hyphens.
+- `summary`: a description of at most 240 characters, also used in search metadata.
+- `eligibility`, `ampStatus`: who can use the program and the verified status of AMP purchases. Program existence does not establish AMP eligibility.
+- `steps`, `receiptChecklist`: ordered purchase/submission steps and documents to retain.
+- `sources`: official references, each with `title` and HTTPS `url`.
+- `reviewedOn`: the date the sources were checked, no later than `reviewedUntil` or the build date.
+- Optional `restrictions` and `questions` (each with `question` and `answer`).
+
+Use program-specific facts and distinguish tax benefits from reimbursement or direct payment. Do not publish a purchase recommendation while eligibility is unresolved. Omit unsupported outcomes and approval claims. All text is rendered as plain text, not HTML. Program pages include canonical URLs, descriptive titles, WebPage and breadcrumb structured data, and sitemap entries. This makes the information accessible to readers and crawlers; it does not guarantee indexing or search placement.

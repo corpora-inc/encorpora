@@ -10,6 +10,13 @@ import {
 } from "./product.js";
 import { Contact, Legal, legalTitles, type LegalPage } from "./legal.js";
 import { formatPrice, type SiteConfig } from "./config.js";
+import {
+  FundingPage,
+  fundingForPath,
+  fundingLabels,
+  fundingPath,
+  fundingStructuredData,
+} from "./funding.js";
 export const routes = [
   "/",
   "/amp/",
@@ -20,6 +27,10 @@ export const routes = [
   "/samples/",
   ...Object.keys(legalTitles).map((p) => `/legal/${p}/`),
 ];
+export const routesFor = (config: SiteConfig) => [
+  ...routes,
+  ...config.funding.flatMap((r) => (r.page ? [fundingPath(r.page.slug)] : [])),
+];
 const titles: Record<string, string> = {
   "/": "Corpora · AMP Mathematics",
   "/amp/": "AMP Mathematics · Practice that follows your understanding",
@@ -29,8 +40,13 @@ const titles: Record<string, string> = {
   "/try/": "Try AMP Mathematics",
   "/samples/": "AMP · Printable practice sample",
 };
-export const title = (route: string) =>
-  titles[route] ?? `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`;
+export const title = (route: string, config?: SiteConfig) => {
+  const funding = config && fundingForPath(route, config);
+  return funding
+    ? `${funding.program} and AMP Mathematics · Corpora`
+    : (titles[route] ??
+        `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`);
+};
 export const tryUrl = (config: SiteConfig) => config.appUrl ?? "/try/";
 function Try({
   config,
@@ -380,6 +396,10 @@ function Esa({ config }: { config: SiteConfig }) {
           marketplace or reimburse an eligible purchase. Rules depend on the
           program and the student.
         </p>
+        <p>
+          Tax credits and school purchasing have different rules. Find your
+          program below to check the route, documents and AMP availability.
+        </p>
       </Intro>
       <section className="section two-column">
         <div>
@@ -421,12 +441,24 @@ function Esa({ config }: { config: SiteConfig }) {
                   .map((route, i) => (
                     <article key={i}>
                       <h4>
-                        {route.program} ·{" "}
-                        {route.kind === "marketplace"
-                          ? "Marketplace"
-                          : "Reimbursement"}
+                        {route.page ? (
+                          <a href={fundingPath(route.page.slug)}>
+                            {route.program}
+                          </a>
+                        ) : (
+                          route.program
+                        )}
+                        {" · "}
+                        {fundingLabels[route.kind]}
                       </h4>
                       <p>{route.instructions}</p>
+                      {route.page && (
+                        <p>
+                          <a href={fundingPath(route.page.slug)}>
+                            Purchase steps and receipt checklist ↗
+                          </a>
+                        </p>
+                      )}
                       <a href={route.sourceUrl}>
                         Official program requirements ↗
                       </a>
@@ -572,10 +604,16 @@ function Printable() {
   );
 }
 export function Page({ route, config }: { route: string; config: SiteConfig }) {
+  const funding = fundingForPath(route, config);
+  const structuredData = funding && fundingStructuredData(funding, config);
+  const description =
+    funding?.page?.summary ??
+    "Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage.";
   let content: ReactNode;
   if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
   else if (route === "/esa/") content = <Esa config={config} />;
+  else if (funding) content = <FundingPage funding={funding} />;
   else if (route === "/parents/") content = <Parents config={config} />;
   else if (route === "/support/")
     content = (
@@ -653,11 +691,8 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{title(route)}</title>
-        <meta
-          name="description"
-          content="Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage."
-        />
+        <title>{title(route, config)}</title>
+        <meta name="description" content={description} />
         <meta name="theme-color" content="#f7f6f0" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         {config.mode === "preview" && (
@@ -665,6 +700,30 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
         )}
         {config.siteUrl && (
           <link rel="canonical" href={new URL(route, config.siteUrl).href} />
+        )}
+        {funding && (
+          <>
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={title(route, config)} />
+            <meta property="og:description" content={description} />
+            {config.siteUrl && (
+              <meta
+                property="og:url"
+                content={new URL(route, config.siteUrl).href}
+              />
+            )}
+          </>
+        )}
+        {structuredData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData)
+                .replaceAll("<", "\\u003c")
+                .replaceAll("\u2028", "\\u2028")
+                .replaceAll("\u2029", "\\u2029"),
+            }}
+          />
         )}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/assets/site.css" />
