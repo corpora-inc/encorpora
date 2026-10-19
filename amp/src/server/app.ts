@@ -315,8 +315,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
           .max(1)
           .default([]),
         figureCapabilities: z
-          .array(z.literal("measurement-models-v1"))
-          .max(1)
+          .array(z.enum(["measurement-models-v1", "geometry-figures-v1"]))
+          .max(2)
           .default([]),
       })
       .strict()

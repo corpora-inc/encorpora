@@ -138,3 +138,60 @@
   fill: var(--color-success-accent);
   stroke: var(--color-border);
 }
+.lesson-animation[data-animation="motion"] .animation-move {
+  transition-duration: 1200ms;
+}
+.animation-grid-figure text {
+  font-size: 12px;
+}
+.animation-moving {
+  fill: var(--color-figure-accent-fill);
+  fill-opacity: 0.55;
+  stroke: var(--color-figure-accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition:
+    transform 1200ms cubic-bezier(0.22, 0.7, 0.18, 1),
+    fill 400ms ease 900ms,
+    stroke 400ms ease 900ms;
+}
+/* The copy takes the image's colors once it lands on the dashed outline. */
+.animation-moving.landed {
+  fill: var(--color-figure-warm-fill);
+  stroke: var(--color-figure-warm);
+}
+@media (prefers-reduced-motion: reduce) {
+  .animation-moving {
+    transition: none;
+  }
+}
+.animation-image {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 5;
+  stroke-linejoin: round;
+}
+.animation-stage .animation-image-label {
+  font:
+    700 15px system-ui,
+    sans-serif;
+  fill: var(--color-figure-ink);
+  paint-order: stroke;
+  stroke: var(--color-figure-paper);
+  stroke-width: 4px;
+}
+.animation-guide {
+  stroke: var(--color-figure-ink);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 4;
+}
+.animation-mirror {
+  stroke: var(--color-figure-warm);
+  stroke-width: 3;
+  stroke-dasharray: 10 5;
+}
+.animation-center {
+  fill: var(--color-figure-ink);
+}

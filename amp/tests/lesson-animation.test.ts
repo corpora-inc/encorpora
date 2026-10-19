@@ -5,6 +5,7 @@ import {
   animationModel,
   animationFrames,
 } from "../src/web/lesson-animation/model";
+import type { CoordinateGeometryFigure } from "../src/math/contracts";
 
 test("animation models conserve the quantities in real lesson examples", () => {
   const kinds = new Set<string>();
@@ -51,7 +52,7 @@ test("animation models conserve the quantities in real lesson examples", () => {
           `$${splitAfterRow * columns} + ${(rows - splitAfterRow) * columns} = ${rows * columns}$`,
         );
         kinds.add("array");
-      } else {
+      } else if (model.kind === "fraction") {
         const [n, d] = lesson.example.answer.split("/").map(Number);
         assert.equal(n * model.figure.parts, model.figure.selected * (d ?? 1));
         assert.equal(
@@ -99,4 +100,98 @@ test("array and exchange adapters reject ambiguous or unsupported metadata", () 
       null,
     );
   }
+});
+
+/** Coordinate rules restated here, independent of the generator and the model. */
+const rules: Record<string, (x: number, y: number) => [number, number]> = {
+  '{"kind":"reflect","axis":"x"}': (x, y) => [x, -y],
+  '{"kind":"reflect","axis":"y"}': (x, y) => [-x, y],
+  '{"kind":"rotate","degrees":90}': (x, y) => [-y, x],
+  '{"kind":"rotate","degrees":180}': (x, y) => [-x, -y],
+  '{"kind":"rotate","degrees":270}': (x, y) => [y, -x],
+};
+function expected(motion: object, x: number, y: number): [number, number] {
+  const m = motion as {
+    kind: string;
+    dx?: number;
+    dy?: number;
+    numerator?: number;
+    denominator?: number;
+  };
+  if (m.kind === "translate") return [x + m.dx!, y + m.dy!];
+  if (m.kind === "dilate")
+    return [
+      (x * m.numerator!) / m.denominator!,
+      (y * m.numerator!) / m.denominator!,
+    ];
+  return rules[JSON.stringify(motion)]!(x, y);
+}
+
+test("motion animations carry every vertex exactly onto its image", () => {
+  const seen = new Set<string>();
+  for (const id of [
+    "transformation-image",
+    "identify-rigid-motion",
+    "dilation-image",
+    "dilation-scale-factor",
+  ])
+    for (let i = 0; i < 80; i++) {
+      const lesson = problemLesson(id, `motion-${i}`);
+      const model = animationModel(lesson);
+      assert(model && model.kind === "motion", `${id} has no motion model`);
+      const figure = lesson.example.figure as CoordinateGeometryFigure;
+      const given = figure.shapes.find((s) => s.role === "given")!.vertices;
+      assert.deepEqual(
+        model.given.map((p) => [p.x, p.y]),
+        given.map((p) => [p.x, p.y]),
+      );
+      model.given.forEach((p, j) =>
+        assert.deepEqual(
+          [model.image[j]!.x, model.image[j]!.y],
+          expected(model.motion, p.x, p.y),
+        ),
+      );
+      // A stated image must be the one the animation lands on.
+      const image = figure.shapes.find((s) => s.role === "image");
+      if (image)
+        assert.deepEqual(
+          image.vertices.map((p) => [p.x, p.y]),
+          model.image.map((p) => [p.x, p.y]),
+        );
+      const frames = animationFrames(model);
+      assert.equal(frames.length, 3);
+      for (const p of model.image)
+        assert.ok(
+          frames[2]!.math.includes(`(${p.x}, ${p.y})`),
+          frames[2]!.math,
+        );
+      seen.add(
+        model.motion.kind === "rotate"
+          ? `rotate-${model.motion.degrees}`
+          : model.motion.kind === "reflect"
+            ? `reflect-${model.motion.axis}`
+            : model.motion.kind,
+      );
+    }
+  assert.deepEqual([...seen].sort(), [
+    "dilate",
+    "reflect-x",
+    "reflect-y",
+    "rotate-180",
+    "rotate-270",
+    "rotate-90",
+    "translate",
+  ]);
+});
+
+test("a figure whose image fits no single motion falls back to the static figure", () => {
+  const lesson = problemLesson("identify-rigid-motion", "motion-fallback");
+  const figure = structuredClone(
+    lesson.example.figure,
+  ) as CoordinateGeometryFigure;
+  figure.shapes[1]!.vertices[2]!.x += 1;
+  assert.equal(
+    animationModel({ ...lesson, example: { ...lesson.example, figure } }),
+    null,
+  );
 });
