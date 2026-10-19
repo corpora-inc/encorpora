@@ -1371,6 +1371,53 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Figure-based K–5 geometry: each facet names exactly what its items assess.
+for (const [skillId, facets] of [
+  [
+    "volume-cubes",
+    [
+      [
+        "cube-prism-volume",
+        "Find the volume of a prism built from unit cubes by counting layers, including hidden cubes.",
+      ],
+    ],
+  ],
+  [
+    "prism-volume",
+    [
+      [
+        "edge-product",
+        "Calculate rectangular prism volume from three whole-centimeter edges.",
+      ],
+      [
+        "missing-edge",
+        "Find a missing whole-centimeter edge from a prism's volume and two edges.",
+      ],
+      [
+        "additive-volume",
+        "Add the volumes of two non-overlapping rectangular prisms of equal depth.",
+      ],
+    ],
+  ],
+  [
+    "coordinate-first-quadrant",
+    [
+      [
+        "ordered-pairs",
+        "Locate and name whole-number points in the first quadrant.",
+      ],
+      ["grid-moves", "Find the coordinates reached by moves right and up."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
 // Exact forward formulas are bounded facets of broader circle measurement.
 for (const [skillId, facets] of [
   [
@@ -1551,6 +1598,39 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Decimal tasks assess reading, renaming, comparing, rounding and computing
+// with given decimals; written justification and models drawn by the learner
+// remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "decimal-fractions",
+    "tenths-hundredths-notation",
+    "Name shaded tenths and hundredths of one whole as decimals, rename tenths as hundredths, and read tenths and hundredths on a number line.",
+  ],
+  [
+    "compare-decimals",
+    "hundredths-comparison",
+    "Choose the greater or lesser of two decimals with one or two places, including pairs where the shorter decimal is greater.",
+  ],
+  [
+    "decimal-place-value",
+    "thousandths-read-compare-round",
+    "Name the value of a decimal digit, write a decimal from expanded form, compare decimals to thousandths and round to the nearest whole, tenth or hundredth.",
+  ],
+  [
+    "decimal-algorithms",
+    "multidigit-decimal-operations",
+    "Add, subtract, multiply and divide multidigit decimals with terminating results.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Early fraction tasks assess recognition, naming and comparison from given
 // models; learner-drawn partitions and written justification remain planned.
 for (const [skillId, suffix, description] of [
@@ -1670,6 +1750,104 @@ for (const [skillId, suffix, description] of [
     "fraction-plot-computation",
     "equal-share",
     "Find the equal share of fractional amounts pooled from a line plot.",
+  ],
+  [
+    "statistical-questions",
+    "recognize-variability",
+    "Recognize a question that anticipates variability in its answers.",
+  ],
+  [
+    "mean-median",
+    "dot-plot-mean",
+    "Calculate the exact mean of whole-number data shown in a dot plot.",
+  ],
+  [
+    "mean-median",
+    "mean-total-relation",
+    "Use mean × count = total to find a missing value.",
+  ],
+  ["distribution-plots", "histograms", "Count values in histogram intervals."],
+  [
+    "distribution-plots",
+    "box-plots",
+    "Read five-number summaries and quarters of data from box plots.",
+  ],
+  [
+    "variability",
+    "mean-absolute-deviation",
+    "Calculate the mean absolute deviation of dot-plot data.",
+  ],
+  [
+    "variability",
+    "dot-plot-iqr",
+    "Calculate the interquartile range of dot-plot data.",
+  ],
+  [
+    "variability",
+    "appropriate-center",
+    "Choose the median as the typical value when an extreme value pulls the mean.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Place-value addition and subtraction cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "addition-within-100",
+    "two-digit-sums",
+    "Add two two-digit numbers with sums to 100 and find the addend that makes 100.",
+  ],
+  [
+    "subtraction-within-100",
+    "two-digit-differences",
+    "Subtract a two-digit number from a number up to 100, regrouping a ten when needed.",
+  ],
+  [
+    "add-subtract-thousands",
+    "three-digit-algorithms",
+    "Add and subtract three-digit numbers within 1000, regrouping in any place and across zeros.",
+  ],
+  [
+    "whole-add-subtract",
+    "six-digit-algorithms",
+    "Add and subtract whole numbers of four to six digits with the standard algorithm.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Fact, counting and mental place-value tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "facts-within-5",
+    "sums-differences-to-five",
+    "Add or subtract with numbers and results from 0 to 5, including zero.",
+  ],
+  [
+    "counting-arithmetic",
+    "count-on-back-steps",
+    "Count on or back from a start within 0 to 20, and name the number added or subtracted by a count.",
+  ],
+  [
+    "addition-facts",
+    "facts-across-ten",
+    "Add one-digit numbers with sums 11 to 18 and subtract within 20, mostly across ten.",
+  ],
+  [
+    "mental-tens-hundreds",
+    "ten-hundred-more-less",
+    "Add or subtract 10 or 100 to or from a number from 100 to 900, including regrouping across a hundred.",
   ],
 ])
   skills
