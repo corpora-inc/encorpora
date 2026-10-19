@@ -268,8 +268,18 @@ try {
       continue;
     for (const kind of ["lesson", "workbook", "solutions"] as const) {
       await printPage.setContent(publicationHtml(lesson, kind));
+      // Coordinate planes, clocks and number lines now draw through the scene
+      // renderer (#1177); they are the same printed graphs (99 + 25 + 25 of
+      // the 199) and get the same clipping and overlap checks.
       const result = await printPage
-        .locator(".graphical-figure")
+        .locator(
+          [
+            ".graphical-figure",
+            ...["coordinate-plane", "clock", "number-line"].map(
+              (kind) => `.scene-figure[data-kind="${kind}"]`,
+            ),
+          ].join(", "),
+        )
         .evaluateAll((figures) => {
           const issues: string[] = [];
           figures.forEach((figure, index) => {

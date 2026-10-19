@@ -1,3 +1,4 @@
+import { transformationMethods } from "./transformation-lessons";
 import { completingSquareMethods } from "./completing-square-lessons";
 import { factoringMethods } from "./factoring-lessons";
 import { numberSystemMethods } from "./number-system-lessons";
@@ -75,6 +76,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...transformationMethods,
   ...angleTriangleMethods,
   ...realNumberMethods,
   ...numberSystemMethods,
