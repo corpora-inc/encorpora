@@ -415,6 +415,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
               frontier: await tx.frontier(),
               count,
               seed: randomUUID(),
+              learnerKey: learnerId,
             });
       const pendingTeaching = teaching
         ? (
