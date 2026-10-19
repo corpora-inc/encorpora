@@ -1,3 +1,4 @@
+import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
@@ -52,6 +53,12 @@ export function LessonIllustration({
     kind === "large-place-value-chart"
   )
     return <ComparisonIllustration kind={kind} />;
+  if (
+    kind === "volume-layers" ||
+    kind === "prism-composite" ||
+    kind === "ordered-pair-path"
+  )
+    return <VolumeCoordinateIllustration kind={kind} />;
   if (
     kind === "equal-shares" ||
     kind === "same-share-shapes" ||

@@ -899,7 +899,8 @@ nav button {
 }
 
 /* A unit grid needs legible labels even when the answer dock is compact. */
-.problem-content .graphical-figure[data-kind="coordinate-plane"] {
+.problem-content .graphical-figure[data-kind="coordinate-plane"],
+.problem-content .geometry-figure[data-kind="quadrant-grid"] {
   min-height: 130px;
   flex-shrink: 0;
 }
@@ -916,4 +917,13 @@ nav button {
   .problem-content .measurement-figure {
     margin-top: 8px;
   }
+}
+
+/* A coordinate grid is read label by label: give it more of the screen. */
+.problem-content .geometry-figure[data-kind="quadrant-grid"] {
+  height: min(36dvh, 280px);
+  max-height: 280px;
+}
+.choice-model .geometry-figure[data-kind="quadrant-grid"] {
+  height: min(32dvh, 240px);
 }

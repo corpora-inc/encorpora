@@ -21,8 +21,12 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
+type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 export type AnimationModel =
+  | { kind: "prism-layers"; figure: CubePrism }
+  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
@@ -44,6 +48,22 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    (lesson.templateId === "unit-cube-volume" ||
+      lesson.templateId === "cube-layer-count") &&
+    f?.kind === "cube-prism" &&
+    integer(f.length, 1, 6) &&
+    integer(f.width, 1, 6) &&
+    integer(f.height, 2, 6)
+  )
+    return { kind: "prism-layers", figure: f };
+  if (
+    lesson.templateId === "first-quadrant-coordinates" &&
+    f?.kind === "quadrant-grid" &&
+    integer(f.size, 4, 10) &&
+    f.points.length === 1
+  )
+    return { kind: "quadrant-walk", figure: f };
   if (
     (lesson.templateId === "dot-plot-mean" ||
       lesson.templateId === "dot-plot-mad") &&
@@ -251,6 +271,47 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "prism-layers") {
+    const { length: l, width: w, height: h } = model.figure,
+      layer = l * w;
+    return [
+      {
+        title: "One layer",
+        text: `The top shows ${l} by ${w} cubes. The bottom layer is the same.`,
+        math: `$${l} \\times ${w} = ${layer}$ cubes`,
+      },
+      {
+        title: "Stack the layers",
+        text: `${h} identical layers fill the prism, hidden cubes included.`,
+        math: `$${h}$ layers`,
+      },
+      {
+        title: "Multiply",
+        text: `Each of the ${h} layers holds ${layer} cubes.`,
+        math: `$V = ${layer} \\times ${h} = ${layer * h}$ cubic units`,
+      },
+    ];
+  }
+  if (model.kind === "quadrant-walk") {
+    const { x, y } = model.figure.points[0]!;
+    return [
+      {
+        title: "Start at the origin",
+        text: "Both coordinates are 0 where the axes meet.",
+        math: "$(0, 0)$",
+      },
+      {
+        title: "Across first",
+        text: `Go ${x} across along the x-axis: the first coordinate.`,
+        math: `$x = ${x}$`,
+      },
+      {
+        title: "Then up",
+        text: `Go ${y} up to reach the point: the second coordinate.`,
+        math: `$(${x}, ${y})$`,
+      },
+    ];
+  }
   if (model.kind === "mean-balance") {
     const { values } = model.figure,
       n = values.length,

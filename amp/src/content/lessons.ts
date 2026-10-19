@@ -5,6 +5,7 @@ import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -37,6 +38,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "volume-layers"
+      | "prism-composite"
+      | "ordered-pair-path"
       | "five-frame-facts"
       | "count-on-hops"
       | "make-ten-frames"
@@ -561,6 +565,7 @@ export const lessons: readonly Lesson[] = [
   ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
+  ...volumeCoordinateLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

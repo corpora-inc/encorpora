@@ -21,6 +21,10 @@ import {
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import {
+  volumeCoordinateTemplates,
+  generateVolumeCoordinateProblem,
+} from "./volume-coordinate-practice";
+import {
   comparisonTemplates,
   generateComparisonProblem,
 } from "./comparison-practice";
@@ -210,6 +214,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...volumeCoordinateTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -346,6 +351,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...partWholeTemplates,
     ...linePlotTemplates,
@@ -382,6 +388,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (volumeCoordinateTemplates.some((t) => t.id === templateId))
+    return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
