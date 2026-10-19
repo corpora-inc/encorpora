@@ -503,7 +503,7 @@ function oneStepStoryCase(r: Random): Case {
               : `${solution} ÷ ${p} = ${given}`
       }.`,
     ],
-    hint: "Decide whether the story adds, takes away, makes equal groups or shares equally. Write that operation on the unknown, then undo it to solve.",
+    hint: `In the story, ${meaning}. Write that operation on ${v}, then undo it to find ${v}.`,
     tags: [story.key, form],
   };
 }
@@ -707,6 +707,7 @@ function twoStepCase(r: Random): Case {
 
 // ---------------------------------------------------- two-step story models
 type Model = "plain" | "decreasing" | "grouped" | "grouped-minus";
+const capitalize = (text: string) => text[0]!.toUpperCase() + text.slice(1);
 type TwoStepStory = {
   key: string;
   model: Model;
@@ -1012,10 +1013,7 @@ function twoStepWordCase(r: Random): Case {
     label: s.label,
     answer: String(s.x),
     explanation: storyExplanation(s, equation),
-    hint:
-      s.model === "plain" || s.model === "decreasing"
-        ? "Name the unknown with a letter. Multiply it by the amount that repeats, include the one-time amount once, and set the result equal to the total. Then undo the operations in reverse order."
-        : "Name the unknown with a letter. Every group contains the unknown and the same extra amount, so write (unknown ± extra) times the number of groups equal to the total. Divide first, then undo the extra amount.",
+    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Write one equation in ${s.v} for the total ${show(s.r, s.mode)}, then undo its steps in reverse order.`,
     tags: [s.key, s.model, s.mode],
   };
 }
@@ -1051,7 +1049,7 @@ function twoStepModelCase(r: Random): Case {
     label: "Choose the equation",
     candidates,
     explanation: storyExplanation(s, right.text),
-    hint: "Ask which amount happens once and which repeats for every unit or every group. The repeated amount multiplies the unknown, or multiplies a group that contains the unknown.",
+    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Find the equation where the repeated amount multiplies ${s.model === "grouped" || s.model === "grouped-minus" ? `a group containing ${s.v}` : s.v} and the result is ${show(s.r, s.mode)}.`,
     tags: [s.key, s.model, s.mode],
   };
 }
@@ -1224,7 +1222,7 @@ function contextCase(r: Random): Case {
       `The condition “${cond.quote(c)}” describes values ${words[op]} ${int(c)}. On a number line they lie ${pointsRight(op) ? "to the right of" : "to the left of"} ${int(c)}, and ${int(c)} itself is ${inclusive(op) ? "allowed" : "not allowed"}.`,
       `So ${v} ${op} ${int(c)}.`,
     ],
-    hint: "Decide two things: whether the allowed values are greater or less than the boundary, and whether the boundary value itself is allowed.",
+    hint: `The condition is “${cond.quote(c)}”. Does it allow values greater or less than ${int(c)}, and does it allow ${int(c)} itself?`,
     tags: [cond.key, `operator:${op}`, c < 0 ? "negative" : "nonnegative"],
   };
 }
@@ -1275,7 +1273,7 @@ function numberLineReadCase(r: Random): Case {
       `The ray covers every number ${pointsRight(op) ? "greater" : "less"} than ${int(c)}. ${inclusive(op) ? `The filled circle means ${int(c)} is also a solution` : `The open circle means ${int(c)} is not a solution`}.`,
       `So the graph shows x ${op} ${int(c)}.`,
     ],
-    hint: "Read three things: the boundary number under the circle, whether the circle is open or filled, and which way the ray points.",
+    hint: `The circle sits at ${int(c)}, the boundary. Is the circle open or filled, and which way does the ray point from ${int(c)}?`,
     tags: [`operator:${op}`, c < 0 ? "negative" : "nonnegative"],
   };
 }
@@ -1333,7 +1331,7 @@ function numberLineChoiceCase(r: Random): Case {
       `${int(c)} ${inclusive(op) ? "is" : "is not"} a solution, so the circle at ${int(c)} is ${inclusive(op) ? "filled" : "open"}.`,
       `Number line ${answer.label} has ${lineDescription(op, c)}.`,
     ],
-    hint: "Decide which way the ray points from the boundary, then whether the boundary is included (filled circle) or excluded (open circle).",
+    hint: `For ${target}, first decide whether ${int(c)} itself is a solution: that sets a filled or an open circle. Then decide which way the ray points.`,
     tags: [
       `operator:${op}`,
       verbal ? "verbal" : "symbolic",
@@ -1402,7 +1400,7 @@ function solutionSetCase(r: Random): Case {
         `${c} ${op} ${c} is ${inclusive(op) ? "true" : "false"}, so ${c} ${inclusive(op) ? "is" : "is not"} a solution.`,
         `Between any two solutions there are more solutions, so there are infinitely many.`,
       ],
-      hint: "Test a number that is not whole, a number far from the boundary, and the boundary itself.",
+      hint: `Test three numbers in x ${op} ${c}: ${c} itself, a number that is not whole such as ${decimalExample}, and a number far from ${c}.`,
       tags: [`operator:${op}`, "statements"],
     };
   }
