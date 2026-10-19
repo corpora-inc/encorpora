@@ -55,7 +55,12 @@ export async function recordSubscriptionEvent(
         item.current_period_end,
       ],
     );
-    if (subscription.status === "canceled")
+    // Terminal states: a canceled term, or a first payment (for example a bank
+    // debit) that never settled. Either way the learner may purchase again.
+    if (
+      subscription.status === "canceled" ||
+      subscription.status === "incomplete_expired"
+    )
       await client.query(
         "UPDATE amp_stripe_checkouts SET closed=true WHERE id=$1",
         [binding.id],

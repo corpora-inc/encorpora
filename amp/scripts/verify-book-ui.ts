@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { exitPractice } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
@@ -71,9 +72,10 @@ try {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto("http://127.0.0.1:4340");
-    await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .selectOption(learner.id);
+    await choose(
+      page.getByRole("button", { name: "Learner", exact: true }),
+      learner.id,
+    );
     await page.getByRole("button", { name: "Lessons" }).click();
     await page.locator(`button[data-book-id="${book.id}"]`).click();
     await page.getByRole("main", { name: book.title }).waitFor();
@@ -364,7 +366,7 @@ try {
       () =>
         !(
           document.querySelector(
-            "select[aria-label='Learner']",
+            "button[aria-label='Learner']",
           ) as HTMLSelectElement
         )?.disabled,
     );

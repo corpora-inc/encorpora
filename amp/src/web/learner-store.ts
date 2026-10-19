@@ -41,6 +41,11 @@ export const useLearnerStore = create<LearnerState>()(
       learnerId: null,
       select: (learnerId) => set({ learnerId }),
     }),
-    { name: "amp.learner", storage, version: 1 },
+    {
+      name: "amp.learner",
+      storage,
+      version: 1,
+      partialize: (state) => ({ learnerId: state.learnerId }),
+    },
   ),
 );

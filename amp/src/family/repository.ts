@@ -68,7 +68,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT id,name,birth_year,deleted_at FROM amp_learners WHERE account_id=$1 ORDER BY created_at,id",
+          "SELECT l.id,l.name,l.birth_year,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -86,6 +86,21 @@ export class FamilyRepository {
             )
           ).rows.map((row) => row.learner_id as string)
         : [];
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_purchase_consents') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        const assigned = await client.query(
+          "SELECT assigned_learner_id FROM amp_stripe_checkouts WHERE account_id=$1 AND NOT closed AND assigned_learner_id IS NOT NULL",
+          [accountId],
+        );
+        linked.push(
+          ...assigned.rows.map((row) => row.assigned_learner_id as string),
+        );
+      }
       const effectiveConsent = await learningConsentActive(
         client,
         accountId,
@@ -112,6 +127,10 @@ export class FamilyRepository {
           birthYear: row.birth_year ?? null,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
+          canPractice:
+            !row.deleted_at &&
+            effectiveConsent &&
+            (this.development || row.has_access),
           access: grants
             .filter((g) => g.learner_id === row.id)
             .map((g) => ({
@@ -181,8 +200,21 @@ export class FamilyRepository {
           "SELECT to_regclass('amp_offline_packs') AS relation",
         )
       ).rows[0]?.relation;
+      const purchases = !!(
+        await client.query(
+          "SELECT to_regclass('amp_purchase_consents') AS relation",
+        )
+      ).rows[0]?.relation;
       let retained = 0,
-        linked = false,
+        linked =
+          !learnerId && stripe
+            ? !!(
+                await client.query(
+                  "SELECT 1 FROM amp_stripe_checkouts WHERE account_id=$1 AND NOT closed LIMIT 1",
+                  [accountId],
+                )
+              ).rowCount
+            : false,
         deleted = 0;
       for (const row of rows) {
         const subscription = stripe
@@ -196,7 +228,17 @@ export class FamilyRepository {
           UNION ALL SELECT 1 FROM amp_commerce_orders WHERE learner_id=$1 LIMIT 1`,
           [row.id],
         );
-        const preserve = !!subscription.rowCount || !!financial.rowCount;
+        const assigned = purchases
+          ? await client.query(
+              "SELECT closed FROM amp_stripe_checkouts WHERE assigned_learner_id=$1 AND account_id=$2",
+              [row.id, accountId],
+            )
+          : { rows: [] };
+        const preserve =
+          !!subscription.rowCount ||
+          !!financial.rowCount ||
+          assigned.rows.length > 0;
+        linked ||= assigned.rows.some((r) => !r.closed);
         if (stripe) {
           const open = await client.query(
             "SELECT 1 FROM amp_stripe_checkouts WHERE learner_id=$1 AND account_id=$2 AND NOT closed LIMIT 1",
@@ -377,6 +419,22 @@ export class FamilyRepository {
           "consent-enrollment",
           "SELECT jsonb_build_object('id',id,'phase',phase,'notice',notice,'noticeDigest',notice_digest,'createdAt',created_at,'initialAt',initial_at,'completedAt',completed_at,'withdrawnAt',withdrawn_at,'expiresAt',expires_at,'purgeAfter',purge_after) AS value FROM amp_consent_requests WHERE account_id=$1 ORDER BY created_at,id",
         ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_purchase_consents') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        datasets.push([
+          "purchase-consent",
+          "SELECT jsonb_build_object('purchaseId',checkout_id,'notice',notice,'noticeDigest',notice_digest,'acknowledgedAt',acknowledged_at,'consentAt',consent_at,'withdrawnAt',revoked_at,'expiresAt',expires_at,'purgeAfter',purge_after) AS value FROM amp_purchase_consents WHERE account_id=$1 ORDER BY acknowledged_at,checkout_id",
+        ]);
+        datasets.push([
+          "account-license",
+          "SELECT jsonb_build_object('purchaseId',c.id,'learnerId',c.assigned_learner_id,'invoiceId',e.invoice_id,'status',e.status,'endsAt',e.ends_at) AS value FROM amp_account_entitlements e JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=$1 ORDER BY c.created_at,e.invoice_id",
+        ]);
+      }
       if (await this.stripeTable(client)) {
         datasets.push([
           "stripe-purchase",

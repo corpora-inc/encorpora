@@ -29,8 +29,8 @@ button {
   font-weight: 600;
   cursor: pointer;
 }
-button:hover {
-  background: #10463e;
+button:hover:not(:disabled) {
+  filter: brightness(0.92);
 }
 button:disabled {
   opacity: 0.55;

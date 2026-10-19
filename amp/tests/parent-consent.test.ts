@@ -41,12 +41,16 @@ test("consent secrets bind challenge to account, address, stage and notice; reci
   assert.throws(() => new ConsentSecrets(Buffer.alloc(16)));
   assert.equal(digest({ b: 1, a: 2 }), digest({ a: 2, b: 1 }));
 });
-test("notice and eligibility contract reject disclosure, incomplete operational contact and inadequate delay", () => {
+test("notice contract separates method eligibility and rejects incomplete operational contact and inadequate delay", () => {
   assert(consentPolicySchema.safeParse(p).success);
   assert(
-    !consentPolicySchema.safeParse({
+    consentPolicySchema.safeParse({
       ...p,
-      review: { ...p.review, noDisclosureUnder312_2: false },
+      review: {
+        ...p.review,
+        noDisclosureUnder312_2: false,
+        paymentNotificationsReviewed: true,
+      },
     }).success,
   );
   assert(

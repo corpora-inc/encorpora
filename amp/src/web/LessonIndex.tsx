@@ -1,4 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useAppRoute } from "./app-routes";
+import { useLoggedError } from "./feedback";
 import type { TemplateMetadata } from "../math/contracts";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { gradeOrder, strandNames } from "./BirthYearPrompt";
@@ -14,9 +16,40 @@ type Props = {
 
 /** Every problem type, grouped by strand, each with its own short lesson. */
 export function LessonIndex(props: Props) {
-  const [strand, setStrand] = useState<string>("number");
+  const { location, navigate } = useAppRoute();
+  const params = new URLSearchParams(location.search);
+  const strand = params.get("strand") ?? "number";
+  const topic = params.get("topic");
+  const select = (key: "strand" | "topic", value: string | null) => {
+    const next = new URLSearchParams(location.search);
+    if (value) next.set(key, value);
+    else next.delete(key);
+    navigate({ pathname: "/lessons", search: next.toString() });
+  };
+  const load = useRef(props.loadLesson);
+  load.current = props.loadLesson;
   const [open, setOpen] = useState<ProblemLessonView | null>(null);
   const [error, setError] = useState("");
+  useLoggedError(error);
+  useEffect(() => {
+    let current = true;
+    setError("");
+    if (topic)
+      void load
+        .current(topic)
+        .then((lesson) => {
+          if (current) setOpen(lesson);
+        })
+        .catch(() => {
+          if (current)
+            setError(
+              "The lesson could not be opened. Return to all lessons and try again.",
+            );
+        });
+    return () => {
+      current = false;
+    };
+  }, [topic]);
   const groups = useMemo(() => {
     const skills = new Map(props.skills.map((skill) => [skill.id, skill]));
     const byStrand = new Map<
@@ -45,23 +78,37 @@ export function LessonIndex(props: Props) {
       }));
   }, [props.templates, props.skills]);
 
-  if (open)
+  if (topic)
     return (
-      <section className="lesson-sheet" aria-label={open.title}>
+      <section
+        className="lesson-sheet"
+        aria-label={open?.templateId === topic ? open.title : "Lesson"}
+      >
         <div className="lesson-sheet-bar">
-          <button className="text-button" onClick={() => setOpen(null)}>
+          <button className="text-button" onClick={() => select("topic", null)}>
             ← All lessons
           </button>
         </div>
-        <h2>{open.title}</h2>
-        <ProblemLesson lesson={open} />
-        <button
-          className="lesson-practice"
-          disabled={props.busy}
-          onClick={() => props.practice(open.templateId)}
-        >
-          Practice this
-        </button>
+        {error && (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        )}
+        {open?.templateId !== topic ? (
+          <p role="status">Opening lesson…</p>
+        ) : (
+          <>
+            <h2>{open.title}</h2>
+            <ProblemLesson lesson={open} />
+            <button
+              className="lesson-practice"
+              disabled={props.busy}
+              onClick={() => props.practice(open.templateId)}
+            >
+              Practice this
+            </button>
+          </>
+        )}
       </section>
     );
   return (
@@ -74,7 +121,7 @@ export function LessonIndex(props: Props) {
             aria-selected={group.key === strand}
             data-strand={group.key}
             className="strand-chip"
-            onClick={() => setStrand(group.key)}
+            onClick={() => select("strand", group.key)}
           >
             {strandNames[group.key]}
           </button>
@@ -92,15 +139,7 @@ export function LessonIndex(props: Props) {
             <li key={template.id}>
               <button
                 data-template={template.id}
-                onClick={async () => {
-                  setError("");
-                  try {
-                    setOpen(await props.loadLesson(template.id));
-                  } catch (failure) {
-                    console.error("Lesson failed to load", failure);
-                    setError("The lesson could not be opened. Try again.");
-                  }
-                }}
+                onClick={() => select("topic", template.id)}
               >
                 {template.title}
               </button>

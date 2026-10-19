@@ -162,7 +162,7 @@ export async function paymentPdf(
   );
   field(
     "References",
-    `Payment record: ${record.id}\nInvoice: ${b.invoiceId}\nLearner reference: ${record.learnerReference}`,
+    `Payment record: ${record.id}\nInvoice: ${b.invoiceId}\nLearner reference: ${record.learnerReference ?? "Not assigned at purchase"}`,
   );
   field(
     "Paid / purchased term",

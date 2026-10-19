@@ -24,6 +24,8 @@ export class StripeRepository {
   constructor(
     readonly pool: Pool,
     readonly config: StripeBillingConfig,
+    readonly consentPolicy:
+      import("../../parent-consent/contracts.js").ConsentPolicy | null = null,
   ) {
     this.namespace = stripeNamespace(config);
   }
@@ -37,7 +39,7 @@ export class StripeRepository {
       await client.query("SET LOCAL lock_timeout='5s'");
       await client.query("SET LOCAL statement_timeout='15s'");
       await client.query(
-        "SELECT pg_advisory_xact_lock_shared(hashtextextended($1,0))",
+        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
         [accountId],
       );
       const result = await action(client);
@@ -99,7 +101,7 @@ export class StripeRepository {
         return retry.rows[0].id as string;
       }
       const open = await client.query(
-        "SELECT id,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND NOT closed",
+        "SELECT id,billing_interval FROM amp_stripe_checkouts WHERE namespace=$1 AND (learner_id=$2 OR to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id'=$2) AND NOT closed",
         [this.namespace, learnerId],
       );
       if (open.rowCount) {
@@ -143,6 +145,7 @@ export class StripeRepository {
       id: r.id,
       accountId: r.account_id,
       learnerId: r.learner_id,
+      assignedLearnerId: r.assigned_learner_id ?? undefined,
       customerId: r.customer_id,
       subscriptionId: r.subscription_id ?? undefined,
       sessionId: r.session_id ?? undefined,

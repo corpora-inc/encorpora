@@ -3,8 +3,8 @@
   min-height: 0;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
-  background: #f7f5ef;
-  color: #173336;
+  background: var(--bg, #f7f5ef);
+  color: var(--ink, #173336);
   max-width: 52rem;
   width: 100%;
   margin: auto;
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #fff;
+  background: var(--surface, #fff);
   border-bottom: 1px solid #cbd7d3;
   position: static;
 }
@@ -67,7 +67,7 @@
   cursor: default;
 }
 .parent-consent-center header button {
-  background: white;
+  background: var(--surface, white);
   color: #174b47;
 }
 .parent-consent-center label {
@@ -78,8 +78,8 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 48px;
-  background: white;
-  color: #173336;
+  background: var(--surface, white);
+  color: var(--ink, #173336);
   border: 1px solid #6b8581;
   border-radius: 10px;
   padding: 10px;
@@ -90,7 +90,7 @@
   font-size: 0.95rem;
 }
 .parent-consent-center details {
-  background: white;
+  background: var(--surface, white);
   border: 1px solid #cbd7d3;
   border-radius: 12px;
   margin: 12px 0;
@@ -166,7 +166,7 @@
 }
 .parent-consent-center header button:hover {
   background: #e4efea;
-  color: #173336;
+  color: var(--ink, #173336);
 }
 .parent-consent-center .consent-attestation {
   min-height: 44px;

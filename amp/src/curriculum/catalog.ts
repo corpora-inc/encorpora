@@ -503,7 +503,7 @@ coordinate-proofs|geometry|geometry|Use slopes distances and midpoints to prove 
 geometric-modeling|geometry|modeling|Choose geometric models for design density and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM
 conditional-probability|geometry|probability|Calculate conditional probabilities from tables and sample spaces|compound-probability,two-way-tables|HSS,SAT.data
 independent-events|geometry|probability|Distinguish independence from mutually exclusive outcomes|conditional-probability|HSS,SAT.data
-rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots|HSN,SAT.advanced-math
+rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots,factors-multiples|HSN,SAT.advanced-math
 radical-equations|algebra-2|algebra|Solve radical equations and reject extraneous candidates|rational-exponents,quadratic-equations|HSA,SAT.advanced-math
 complex-numbers|algebra-2|number|Calculate with complex numbers and solve quadratics over them|quadratic-formula|HSN
 polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient and remainder|polynomial-arithmetic|HSA
@@ -1459,6 +1459,32 @@ for (const [id, description] of [
 ])
   signedDataSkill.facets.push({
     id: `signed-data-summaries.${id}`,
+    description,
+    status: "implemented",
+  });
+
+// Numeric square-root tasks cover bounded parts of rational-exponent work.
+const radicalSkill = skills.find((s) => s.id === "rational-exponents")!;
+for (const [suffix, description] of [
+  [
+    "numeric-square-root-simplification",
+    "Extract square factors from nonnegative integer radicands.",
+  ],
+  [
+    "numeric-radical-sums",
+    "Simplify and combine two signed numeric square-root terms, retaining unlike roots.",
+  ],
+  [
+    "numeric-radical-products",
+    "Multiply and simplify two signed numeric square-root terms.",
+  ],
+  [
+    "single-radical-denominator",
+    "Rationalize a nonzero numeric fraction with one square-root term in its denominator.",
+  ],
+])
+  radicalSkill.facets.push({
+    id: `rational-exponents.${suffix}`,
     description,
     status: "implemented",
   });

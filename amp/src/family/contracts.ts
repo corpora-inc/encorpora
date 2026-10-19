@@ -10,6 +10,8 @@ export interface FamilyLearner {
     endsAt: string;
   }[];
   stripeLinked: boolean;
+  /** Server-clock capability; absent on older/native providers. Authorization is still enforced on each request. */
+  canPractice?: boolean;
 }
 export interface FamilySummary {
   consent: {

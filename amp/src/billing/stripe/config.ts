@@ -45,8 +45,9 @@ export function stripeConfig(
     throw new Error(
       "Live Stripe billing requires explicit operational approval",
     );
+  // Standard (sk_) or restricted (rk_) keys; restricted keys are preferred.
   const secretKey = required("AMP_STRIPE_SECRET_KEY");
-  if (!secretKey.startsWith(mode === "live" ? "sk_live_" : "sk_test_"))
+  if (!new RegExp(`^[sr]k_${mode}_.`).test(secretKey))
     throw new Error("Stripe key mode mismatch");
   const appOrigin = required("AMP_STRIPE_APP_ORIGIN");
   const origin = new URL(appOrigin);

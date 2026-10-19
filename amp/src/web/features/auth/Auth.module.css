@@ -1,0 +1,6 @@
+.frame {
+  width: min(var(--width-form), calc(100% - var(--space-6)));
+  margin: var(--space-6) auto;
+  padding: var(--space-5);
+  box-sizing: border-box;
+}
