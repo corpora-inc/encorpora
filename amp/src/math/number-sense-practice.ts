@@ -198,9 +198,10 @@ export function generateNumberSenseProblem(
       const missing = values[gap]!;
       prompt = `Count by ${byTens ? "tens" : "ones"}: ${values.map((v, i) => (i === gap ? "□" : v)).join(", ")}. What number is missing?`;
       answer = String(missing);
+      const before = values[gap - 1]!;
       hint = byTens
-        ? "Counting by tens adds one ten each time: the tens digit goes up by 1."
-        : "Each count is one more. After a 9 in the ones place, the next ten begins.";
+        ? `Counting by tens adds one ten each time. Start from ${before} and count one ten more.`
+        : `Each count is one more. Start from ${before}${before % 10 === 9 ? ": after a 9 in the ones place, the next ten begins" : " and count one more"}.`;
       explanation = [
         `Each number is ${byTens ? "10" : "1"} more than the one before.`,
         `${values[gap - 1]} + ${byTens ? 10 : 1} = ${missing}.`,
@@ -225,10 +226,11 @@ export function generateNumberSenseProblem(
       prompt =
         "This is part of the hundred chart. What number belongs in the empty square?";
       answer = String(value);
-      hint =
-        "Moving right adds 1. Moving down a row adds 10, because each row holds ten numbers.";
       const left = blank[1] > 0,
         neighbor = left ? value - 1 : value - 10;
+      hint = left
+        ? `The square to its left is ${neighbor}. Moving right on the chart adds 1.`
+        : `The square above it is ${neighbor}. Moving down a row adds 10, because each row holds ten numbers.`;
       explanation = left
         ? [
             `The square to its left is ${neighbor}.`,
@@ -328,8 +330,7 @@ export function generateNumberSenseProblem(
         high = Math.max(a, b),
         nextTen = Math.ceil(low / 10) * 10,
         lastTen = Math.floor(high / 10) * 10;
-      hint =
-        "Count up from the smaller number: first to the next ten, then by tens, then the ones.";
+      hint = `Count up from ${low} to ${high}: first to the next ten, then by tens, then by ones. Add the jumps.`;
       const pieces = [
         [low, nextTen],
         [nextTen, lastTen],
@@ -363,8 +364,7 @@ export function generateNumberSenseProblem(
       else n = r(11, 999);
       prompt = `Round ${n} to the nearest ten.`;
       answer = String(roundTo(n, 10));
-      hint =
-        "Find the two tens it is between. Look at the ones digit: 5 or more rounds up.";
+      hint = `Look at the ones digit of ${n}, ${n % 10}: 5 or more rounds up to the next ten; less keeps the ten it is in.`;
       explanation = roundingSteps(n, 10, "ten");
       break;
     }
@@ -381,8 +381,7 @@ export function generateNumberSenseProblem(
       else n = r(101, 999);
       prompt = `Round ${n} to the nearest hundred.`;
       answer = String(roundTo(n, 100));
-      hint =
-        "Find the two hundreds it is between. Look only at the tens digit: 5 or more rounds up.";
+      hint = `Look only at the tens digit of ${n}, ${Math.floor(n / 10) % 10}: 5 or more rounds up to the next hundred; less keeps the hundred it is in.`;
       explanation = roundingSteps(n, 100, "hundred");
       break;
     }
@@ -411,7 +410,7 @@ export function generateNumberSenseProblem(
       const name = singularPlace[place]!;
       prompt = `Round ${formatWhole(n)} to the nearest ${name}.`;
       answer = String(roundTo(n, unit));
-      hint = `Look at the digit in the ${placeName[place - 1]} place: 5 or more rounds up; less rounds down.`;
+      hint = `In ${formatWhole(n)}, look at the ${placeName[place - 1]} digit, ${Math.floor(n / 10 ** (place - 1)) % 10}: 5 or more rounds up; less rounds down.`;
       explanation = roundingSteps(n, unit, name);
       break;
     }
@@ -429,7 +428,7 @@ export function generateNumberSenseProblem(
       prompt = `What is ${value} × ${exponent ? `10${superscript[k]}` : powerWord[k]}?`;
       const result = decimalText(units, places - k);
       answer = plain(result);
-      hint = `Multiplying by ${powerWord[k]} makes each digit worth ${powerWord[k]} times as much: every digit moves ${k} ${k === 1 ? "place" : "places"} left.`;
+      hint = `Multiplying ${value} by ${powerWord[k]} makes each digit worth ${powerWord[k]} times as much: every digit moves ${k} ${k === 1 ? "place" : "places"} left.`;
       explanation = [
         ...(exponent
           ? [
@@ -453,7 +452,7 @@ export function generateNumberSenseProblem(
       prompt = `What is ${value} ÷ ${exponent ? `10${superscript[k]}` : powerWord[k]}?`;
       const result = decimalText(units, k);
       answer = plain(result);
-      hint = `Dividing by ${powerWord[k]} makes each digit worth one ${powerWord[k] === "10" ? "tenth" : powerWord[k] === "100" ? "hundredth" : "thousandth"} as much: every digit moves ${k} ${k === 1 ? "place" : "places"} right.`;
+      hint = `Dividing ${value} by ${powerWord[k]} makes each digit worth one ${powerWord[k] === "10" ? "tenth" : powerWord[k] === "100" ? "hundredth" : "thousandth"} as much: every digit moves ${k} ${k === 1 ? "place" : "places"} right.`;
       explanation = [
         ...(exponent
           ? [
@@ -483,8 +482,7 @@ export function generateNumberSenseProblem(
       prompt = `In ${formatWhole(n)}, the first ${digit} is worth how many times as much as the second ${digit}?`;
       const ratio = 10 ** (high - low);
       answer = String(ratio);
-      hint =
-        "Name each digit's place. Each place is worth 10 times the place to its right.";
+      hint = `Name the place of each ${digit} in ${formatWhole(n)}. Each place is worth ten times the place to its right.`;
       explanation = [
         `The first ${digit} is in the ${placeName[high]} place: ${formatWhole(digit * 10 ** high)}. The second is in the ${placeName[low]} place: ${formatWhole(digit * 10 ** low)}.`,
         high - low === 1

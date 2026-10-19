@@ -98,8 +98,8 @@ function Line({
                 x={x(n)}
                 y={y + 24}
                 textAnchor="middle"
-                fontSize="13"
                 {...text}
+                style={{ fontSize: 13 }}
               >
                 {n}
               </text>
@@ -154,9 +154,8 @@ export function NumberSenseIllustration({
                   x={x(column) + w / 2}
                   y={y(row) + 25}
                   textAnchor="middle"
-                  fontSize="17"
-                  fontWeight={marked ? 700 : 400}
                   {...text}
+                  style={{ fontWeight: marked ? 700 : 400, fontSize: 17 }}
                 >
                   {n}
                 </text>
@@ -172,9 +171,8 @@ export function NumberSenseIllustration({
           x={x(1) + w + gapX / 2}
           y={y(1) + h / 2 - 8}
           textAnchor="middle"
-          fontSize="13"
-          fontWeight="700"
           {...text}
+          style={{ fontWeight: 700, fontSize: 13 }}
         >
           +1
         </text>
@@ -185,9 +183,8 @@ export function NumberSenseIllustration({
         <text
           x={x(1) + w / 2 + 10}
           y={y(1) + h + gapY / 2 + 5}
-          fontSize="13"
-          fontWeight="700"
           {...text}
+          style={{ fontWeight: 700, fontSize: 13 }}
         >
           +10
         </text>
@@ -227,9 +224,8 @@ export function NumberSenseIllustration({
           x={x0 + (5 * size) / 2}
           y={96}
           textAnchor="middle"
-          fontSize="16"
-          fontWeight="700"
           {...text}
+          style={{ fontWeight: 700, fontSize: 16 }}
         >
           {filled === 10 ? "10" : `${filled}`}
         </text>
@@ -262,9 +258,8 @@ export function NumberSenseIllustration({
           x={(x(from) + x(to)) / 2}
           y={y - 10 - lift}
           textAnchor="middle"
-          fontSize="13"
-          fontWeight="700"
           {...text}
+          style={{ fontWeight: 700, fontSize: 13 }}
         >
           {label}
         </text>
@@ -287,9 +282,8 @@ export function NumberSenseIllustration({
               x={x(n)}
               y={y + 40}
               textAnchor="middle"
-              fontSize="13"
-              fontWeight="700"
               {...text}
+              style={{ fontWeight: 700, fontSize: 13 }}
             >
               {n}
             </text>
@@ -320,7 +314,13 @@ export function NumberSenseIllustration({
           strokeWidth="1.5"
           strokeDasharray="3 3"
         />
-        <text x={x(345)} y={y - 28} textAnchor="middle" fontSize="12" {...text}>
+        <text
+          x={x(345)}
+          y={y - 28}
+          textAnchor="middle"
+          {...text}
+          style={{ fontSize: 12 }}
+        >
           halfway 345
         </text>
         <circle cx={x(347)} cy={y} r={6} fill="currentColor" />
@@ -328,9 +328,8 @@ export function NumberSenseIllustration({
           x={x(347)}
           y={y + 24}
           textAnchor="middle"
-          fontSize="14"
-          fontWeight="700"
           {...text}
+          style={{ fontWeight: 700, fontSize: 14 }}
         >
           347
         </text>
@@ -349,9 +348,8 @@ export function NumberSenseIllustration({
               x={(x(Number(a)) + x(Number(b))) / 2}
               y={y + 62}
               textAnchor="middle"
-              fontSize="13"
-              fontWeight={label === "3" ? 700 : 400}
               {...text}
+              style={{ fontWeight: label === "3" ? 700 : 400, fontSize: 13 }}
             >
               {label}
             </text>
@@ -382,9 +380,8 @@ export function NumberSenseIllustration({
           x={center(i)}
           y={16}
           textAnchor="middle"
-          fontSize="11.5"
-          fontWeight="600"
           {...text}
+          style={{ fontWeight: 600, fontSize: 11.5 }}
         >
           {name}
         </text>
@@ -412,8 +409,8 @@ export function NumberSenseIllustration({
             x={left - 8}
             y={60 + r * 44}
             textAnchor="end"
-            fontSize="12"
             {...text}
+            style={{ fontSize: 12 }}
           >
             {row.label}
           </text>
@@ -423,9 +420,8 @@ export function NumberSenseIllustration({
               x={center(i)}
               y={62 + r * 44}
               textAnchor="middle"
-              fontSize="26"
-              fontWeight={digit === "4" ? 700 : 400}
               {...text}
+              style={{ fontWeight: digit === "4" ? 700 : 400, fontSize: 26 }}
             >
               {digit}
             </text>

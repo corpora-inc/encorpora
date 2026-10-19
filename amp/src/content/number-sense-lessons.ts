@@ -223,8 +223,9 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "hundred-chart-missing": {
     goal: "Given part of the hundred chart with an empty square, find its number.",
     method: [
-      "From the square on its left, add 1.",
-      "Or from the square above it, add 10.",
+      "Find a filled square next to the empty one: to its left or above it.",
+      "From the square on its left, add 1; from the square above it, add 10.",
+      "Check with the other neighbor when there is one.",
     ],
     watch: "Down a row is 10 more, not 1 more.",
   },
@@ -240,8 +241,9 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "number-line-hops": {
     goal: "Given a start and a tens hop then an ones hop, find where they land.",
     method: [
-      "Hop the tens: add or subtract the tens.",
-      "Hop the ones from there.",
+      "Start at the first number; do not count it as a step.",
+      "Hop the tens: the tens digit goes up or down, the ones digit stays.",
+      "Hop the ones from there, one tick at a time.",
     ],
     watch: "Back means subtract; the tens hop changes only the tens digit.",
   },
