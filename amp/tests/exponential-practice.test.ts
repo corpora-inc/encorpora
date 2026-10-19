@@ -148,7 +148,7 @@ test("table changes label each gap in a gutter, and highlights tint rows", () =>
     const mid = (d.box.y0 + d.box.y1) / 2;
     assert.ok(mid > cell(i).box.y1 - 4 && mid < cell(i + 1).box.y0 + 4);
   }
-  assert.ok(l.items.some((d) => d.id === "e0.highlight.row.1"));
+  assert.ok(l.items.some((d) => d.id === "e0.band.row.1"));
   assert.match(describeScene(s), /each step is ×2, then ×2/);
   assert.throws(() =>
     sceneSchema.parse({
