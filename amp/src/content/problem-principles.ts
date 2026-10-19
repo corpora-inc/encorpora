@@ -1,4 +1,5 @@
 import { equationPrinciples } from "./equation-lessons";
+import { partWholePrinciples } from "./part-whole-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
@@ -24,6 +25,7 @@ export const principles: Record<string, string> = {
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
   ...radicalPrinciples,
+  ...partWholePrinciples,
   ...comparisonPrinciples,
   ...combinatoricsPrinciples,
   ...equationPrinciples,

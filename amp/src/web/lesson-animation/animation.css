@@ -144,10 +144,20 @@
   display: flex;
   align-items: center;
 }
+.animation-shade {
+  fill: var(--color-success-accent);
+  stroke: var(--color-border-strong);
+}
+.animation-paint {
+  transition:
+    fill 500ms ease,
+    stroke-opacity 400ms ease;
+}
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade,
-  .animation-lift {
+  .animation-lift,
+  .animation-paint {
     transition: none;
   }
 }
