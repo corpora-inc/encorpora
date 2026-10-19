@@ -21,7 +21,17 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type DecimalChart = Extract<SemanticFigure, { kind: "place-value-chart" }>;
+/** A hundredths grid: full columns are tenths, the rest hundredths. */
+export type DecimalFillAnimation = { kind: "decimal-fill"; shaded: number };
+/** Two decimals written in a place-value chart, unequal in value. */
+export type DecimalAlignAnimation = {
+  kind: "decimal-align";
+  figure: DecimalChart;
+};
 export type AnimationModel =
+  | DecimalFillAnimation
+  | DecimalAlignAnimation
   | PartitionAnimation
   | CompareAnimation
   | AreaAnimation
@@ -40,6 +50,26 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    lesson.templateId === "decimal-grid-read" &&
+    f?.kind === "decimal-grid" &&
+    f.unit === "hundredths" &&
+    integer(f.shaded, 1, 99)
+  )
+    return { kind: "decimal-fill", shaded: f.shaded };
+  if (
+    (lesson.templateId === "compare-decimals-hundredths" ||
+      lesson.templateId === "compare-decimals-thousandths") &&
+    f?.kind === "place-value-chart" &&
+    f.rows.every(
+      (row) =>
+        integer(row.ones, 0, 9) &&
+        /^\d+$/.test(row.decimals) &&
+        row.decimals.length <= f.places,
+    ) &&
+    chartValue(f.rows[0]!, f.places) !== chartValue(f.rows[1]!, f.places)
+  )
+    return { kind: "decimal-align", figure: f };
   if (
     (lesson.templateId === "name-equal-share" ||
       lesson.templateId === "name-share") &&
@@ -190,7 +220,78 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+/** A chart row as a whole number of the smallest place: 0.45 → 450 (3 places). */
+export const chartValue = (
+  row: { ones: number; decimals: string },
+  places: number,
+) => Number(`${row.ones}${row.decimals.padEnd(places, "0")}`);
+/** Index of the first differing column, ones = 0. */
+export const firstDifference = (figure: DecimalChart) => {
+  const [a, b] = figure.rows.map(
+    (row) => `${row.ones}${row.decimals.padEnd(figure.places, "0")}`,
+  );
+  let i = 0;
+  while (a![i] === b![i]) i++;
+  return i;
+};
+const written = (row: { ones: number; decimals: string }) =>
+  `${row.ones}.${row.decimals}`;
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "decimal-fill") {
+    const k = model.shaded,
+      t = Math.floor(k / 10),
+      h = k % 10;
+    const two = `0.${String(k).padStart(2, "0")}`;
+    return [
+      {
+        title: "One whole, 100 squares",
+        text: "Each small square is one hundredth. Each column of 10 squares is one tenth.",
+        math: "$1 = \\dfrac{10}{10} = \\dfrac{100}{100}$",
+      },
+      {
+        title: "Fill whole columns: tenths",
+        text: t
+          ? `${t} full ${t === 1 ? "column is" : "columns are"} ${t} ${t === 1 ? "tenth" : "tenths"}, the first digit after the point.`
+          : "No full column is shaded, so there are 0 tenths.",
+        math: `$\\dfrac{${t}}{10} = 0.${t}$`,
+      },
+      {
+        title: "Add single squares: hundredths",
+        text: `${h} more ${h === 1 ? "square is" : "squares are"} ${h} ${h === 1 ? "hundredth" : "hundredths"}, the second digit.`,
+        math: `$\\dfrac{${t}}{10} + \\dfrac{${h}}{100} = \\dfrac{${k}}{100} = ${two}$`,
+      },
+    ];
+  }
+  if (model.kind === "decimal-align") {
+    const f = model.figure,
+      [a, b] = f.rows;
+    const pad = (row: { ones: number; decimals: string }) =>
+      `${row.ones}.${row.decimals.padEnd(f.places, "0")}`;
+    const i = firstDifference(f);
+    const sign =
+      chartValue(a!, f.places) > chartValue(b!, f.places) ? ">" : "<";
+    const place = ["ones", "tenths", "hundredths", "thousandths"][i]!;
+    const pa = pad(a!),
+      pb = pad(b!);
+    const digit = (p: string) => p.replace(".", "")[i];
+    return [
+      {
+        title: "Line up the decimal points",
+        text: "Each column holds one place: ones, then tenths, hundredths and thousandths.",
+        math: `$${written(a!)}$ and $${written(b!)}$`,
+      },
+      {
+        title: "Fill empty places with zeros",
+        text: "A zero in an empty place on the right adds nothing, so the values stay the same.",
+        math: `$${pa}$ and $${pb}$`,
+      },
+      {
+        title: "Compare from the left",
+        text: `The first column that differs is the ${place}: ${digit(pa)} and ${digit(pb)}. Columns to its right cannot change the result.`,
+        math: `$${written(a!)} ${sign} ${written(b!)}$`,
+      },
+    ];
+  }
   if (model.kind === "partition") {
     const n = model.shape.sizes.length,
       k = model.shape.shaded.length;

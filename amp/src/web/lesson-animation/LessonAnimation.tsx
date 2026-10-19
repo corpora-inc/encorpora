@@ -2,12 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import "./animation.css";
 import { LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "decimal-fill":
+      return <DecimalFillStage model={model} step={step} />;
+    case "decimal-align":
+      return <DecimalAlignStage model={model} step={step} />;
     case "line-plot-stack":
       return <StackModel model={model} step={step} />;
     case "line-plot-share":

@@ -1,5 +1,6 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
+import { DecimalFigure } from "./DecimalFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
@@ -13,6 +14,10 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "decimal-grid":
+    case "decimal-line":
+    case "place-value-chart":
+      return <DecimalFigure figure={figure} />;
     case "partitioned-shapes":
     case "area-partition":
     case "fraction-bars":
