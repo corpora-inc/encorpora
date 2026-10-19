@@ -9,6 +9,7 @@ import {
   watchPending,
 } from "./fixtures/hint-pending";
 import {
+  figureEncodesAnswer,
   fixedHint,
   revealsAnswer,
   sample,
@@ -21,15 +22,23 @@ test("every hint is derived from its own problem's givens", () => {
     .map((t) => t.id)
     .filter((id) => !fixedHintPending.has(id))
     .filter((id) => fixedHint(id) || unnamedGivens(id));
-  assert.deepEqual(offenders, [], "Fixed or generic hints");
+  assert.deepEqual(
+    offenders,
+    [],
+    "These hints repeat on every seed or name none of the prompt's numbers. Write each hint from the problem's own givens (see GeneratedProblem.hint in src/math/contracts.ts)",
+  );
 });
 
 test("no hint states the answer", () => {
   const offenders: string[] = [];
-  for (const t of templates)
-    for (const p of sample(t.id))
-      if (revealsAnswer(p)) offenders.push(`${t.id} (${p.answer}): ${p.hint}`);
-  assert.deepEqual(offenders, []);
+  for (const t of templates) {
+    const problems = sample(t.id),
+      figureIsAnswer = figureEncodesAnswer(problems);
+    for (const p of problems)
+      if (revealsAnswer(p, figureIsAnswer))
+        offenders.push(`${t.id} (${p.answer}): ${p.hint}`);
+  }
+  assert.deepEqual(offenders, [], "These hints state the answer");
 });
 
 test("no two problem types share a hint", () => {
@@ -41,7 +50,11 @@ test("no two problem types share a hint", () => {
     .filter(([, ids]) => ids.size > 1)
     .filter(([, ids]) => [...ids].some((id) => !sharedHintPending.has(id)))
     .map(([hint, ids]) => `${[...ids].join(", ")}: ${hint}`);
-  assert.deepEqual(shared, []);
+  assert.deepEqual(
+    shared,
+    [],
+    "Each problem type needs its own hint: say what this question asks",
+  );
 });
 
 test("every method names the common error and is a complete short path", () => {

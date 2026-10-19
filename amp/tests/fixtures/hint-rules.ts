@@ -43,9 +43,25 @@ export const stated = (text: string) =>
 const words = (text: string) =>
   ` ${text.toLowerCase().replace(/[^\p{L}\p{N}/.−-]+/gu, " ")} `;
 
+const figureValues = (p: GeneratedProblem) =>
+  new Set(
+    (JSON.stringify(p.public.figure ?? null).match(/-?\d+(?:\.\d+)?/g) ?? [])
+      .map(exact)
+      .filter((value): value is string => value !== null),
+  );
+/** True when the figure always contains the answer, as a collection to count
+ * does. Its numbers are then the question, not givens a hint may repeat. */
+export const figureEncodesAnswer = (problems: GeneratedProblem[]) =>
+  problems.every((p) => figureValues(p).has(normalizeAnswer(p.answer) ?? ""));
+
 /** The hint states the answer when it contains the answer's value (or, for a
- * choice, singles out the correct option) and the statement does not. */
-export function revealsAnswer(p: GeneratedProblem): boolean {
+ * choice, singles out the correct option) and the statement does not show
+ * that value: not in the prompt, and not in the figure unless the figure
+ * encodes the answer itself. */
+export function revealsAnswer(
+  p: GeneratedProblem,
+  figureIsAnswer: boolean,
+): boolean {
   const r = p.public.response;
   if (r.kind === "choice") {
     const label = (id: string) =>
@@ -65,7 +81,8 @@ export function revealsAnswer(p: GeneratedProblem): boolean {
   return (
     answer !== null &&
     numbers(p.hint).includes(answer) &&
-    !stated(p.public.prompt).has(answer)
+    !stated(p.public.prompt).has(answer) &&
+    (figureIsAnswer || !figureValues(p).has(answer))
   );
 }
 
