@@ -15,6 +15,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { TransformationIllustration } from "./TransformationIllustration";
 import { AngleTriangleIllustration } from "./AngleTriangleIllustration";
 import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
@@ -84,6 +85,15 @@ export function LessonIllustration({
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <Figure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "coordinate-side-lengths" ||
+    kind === "distance-triangle" ||
+    kind === "rigid-motions-panels" ||
+    kind === "dilation-rays" ||
+    kind === "similar-triangles-marked" ||
+    kind === "scale-drawing-plan"
+  )
+    return <TransformationIllustration kind={kind} />;
   if (isSceneIllustration(kind)) {
     const scene: Scene = sceneIllustrations[kind];
     return scene.steps?.length && !print ? (

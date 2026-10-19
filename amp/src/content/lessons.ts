@@ -1,3 +1,4 @@
+import { transformationLessons } from "./transformation-lessons";
 import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
@@ -73,6 +74,12 @@ export interface Lesson {
       | "number-line-hop-pair"
       | "rounding-halfway"
       | "power-of-ten-shift"
+      | "coordinate-side-lengths"
+      | "distance-triangle"
+      | "rigid-motions-panels"
+      | "dilation-rays"
+      | "similar-triangles-marked"
+      | "scale-drawing-plan"
       | "complete-square-area"
       | "complete-square-balance"
       | "complete-square-scaled"
@@ -637,6 +644,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...transformationLessons,
   ...angleTriangleLessons,
   ...realNumberLessons,
   ...numberSystemLessons,

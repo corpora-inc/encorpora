@@ -185,6 +185,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     [
       "circle-area-coefficient",
       "circle-circumference-coefficient",
+      "coordinate-distance",
       "triangle-angle-sum",
       "angle-pair-measure",
     ],
