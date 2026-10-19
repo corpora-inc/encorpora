@@ -23,11 +23,13 @@ nav button {
   position: relative;
   flex: none;
 }
+/* The Family menu: a surface-raised trigger and a menu panel. Every state sets
+   its background from the role's state layer and keeps the role's `on-` text. */
 .account-menu summary {
   cursor: pointer;
   list-style: none;
   padding: 10px 12px;
-  border: 1px solid #cbd4ca;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
@@ -35,26 +37,59 @@ nav button {
 .account-menu summary::-webkit-details-marker {
   display: none;
 }
-.account-menu[open] summary {
-  background: #edf3e9;
+.account-menu .account-menu-trigger {
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.account-menu .account-menu-trigger:hover {
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.account-menu[open] .account-menu-trigger,
+.account-menu .account-menu-trigger:active {
+  background: var(--color-surface-raised-active);
+  color: var(--color-on-surface-raised);
 }
 .account-menu-content {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
   z-index: 20;
-  padding: 8px 16px;
-  min-width: 160px;
-  border: 1px solid #dbe2d5;
+  padding: 8px;
+  min-width: 180px;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: #fffefa;
-  box-shadow: 0 8px 30px #183e3a1a;
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
 }
-.account-menu-content button {
+.account-menu-content .account-menu-item {
   display: block;
   min-height: 44px;
   width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
   text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  filter: none;
+}
+.account-menu-content .account-menu-item:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-menu-hover);
+  color: var(--color-on-menu);
+}
+.account-menu-content .account-menu-item:active:not(:disabled) {
+  background: var(--color-menu-active);
+  color: var(--color-on-menu);
+}
+.account-menu-content .account-menu-item:disabled {
+  opacity: 1;
+  background: var(--color-menu);
+  color: var(--color-on-disabled);
 }
 .practice-open {
   overflow: hidden;

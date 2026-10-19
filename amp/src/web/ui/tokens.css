@@ -1,48 +1,227 @@
+/*
+ * AMP color system. This file is the only place a color literal may appear.
+ *
+ * Every color is a ROLE PAIR: a background role and the `on-` foreground that
+ * is guaranteed readable on it (tests/color-roles.test.ts proves WCAG contrast
+ * for every pair and state layer, in both themes). A component that sets a
+ * role's background sets the same role's `on-` color, and state changes
+ * (hover, active, selected, open) use the role's derived state layers, so a
+ * new background never meets an old foreground.
+ *
+ * Light values live in the first block; dark values in the two dark blocks
+ * (system preference, and an explicit `data-theme="dark"`), which the test
+ * requires to be identical. Derived layers are computed once, from the pairs.
+ */
 :root {
-  --bg: #f7f6f0;
-  --surface: #fffefa;
-  --surface-2: #f3f2ea;
-  --ink: #183e3a;
-  --ink-2: #4c625b;
-  --ink-3: #647269;
-  --line: #e2e5da;
-  --line-2: #cfd6c6;
-  --primary: #1f5f55;
-  --on-primary: #fffefa;
-  --primary-hover: #174b43;
-  --primary-soft: #e3eee8;
-  --good: #2f8a5b;
-  --good-soft: #eaf4ec;
-  --bad: #b4532a;
-  --bad-soft: #fbefe8;
-  --focus-ring: #1f5f5566;
+  color-scheme: light;
+  --color-surface: #f7f6f0;
+  --color-on-surface: #183e3a;
+  --color-surface-raised: #fffefa;
+  --color-on-surface-raised: #183e3a;
+  --color-surface-sunken: #efeee5;
+  --color-on-surface-sunken: #183e3a;
+  --color-menu: #fffefa;
+  --color-on-menu: #183e3a;
+  --color-primary: #1f5f55;
+  --color-on-primary: #fffefa;
+  --color-secondary: #e3eee8;
+  --color-on-secondary: #17493f;
+  --color-selected: #1f5f55;
+  --color-on-selected: #fffefa;
+  --color-success: #e6f3ea;
+  --color-on-success: #1b5636;
+  --color-success-accent: #2a7d52;
+  --color-danger: #fbefe8;
+  --color-on-danger: #7c3415;
+  --color-danger-accent: #a84b23;
+  --color-warning: #fbf2dd;
+  --color-on-warning: #644508;
+  --color-warning-accent: #8f6210;
+  --color-info: #e6eff7;
+  --color-on-info: #1d4a6e;
+  --color-info-accent: #2d6a9a;
+  --color-muted-text: #4c625b;
+  --color-subtle-text: #5d6b63;
+  --color-border: #e2e5da;
+  --color-border-strong: #78887f;
+  --color-focus-ring: #1f5f55;
+  --color-scrim: #0e1f1c99;
+  --color-shadow: #183e3a1f;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-surface: #122522;
+    --color-on-surface: #e9f0e8;
+    --color-surface-raised: #1a302c;
+    --color-on-surface-raised: #e9f0e8;
+    --color-surface-sunken: #233c36;
+    --color-on-surface-sunken: #e9f0e8;
+    --color-menu: #223a34;
+    --color-on-menu: #eef5ed;
+    --color-primary: #8bd1b5;
+    --color-on-primary: #102320;
+    --color-secondary: #244638;
+    --color-on-secondary: #dcf1e6;
+    --color-selected: #8bd1b5;
+    --color-on-selected: #102320;
+    --color-success: #1f4630;
+    --color-on-success: #d3f2dd;
+    --color-success-accent: #91d6ac;
+    --color-danger: #4f3028;
+    --color-on-danger: #ffdccc;
+    --color-danger-accent: #ffb18d;
+    --color-warning: #47391a;
+    --color-on-warning: #f8e3b4;
+    --color-warning-accent: #e8b85c;
+    --color-info: #1f3a4f;
+    --color-on-info: #d3e7f6;
+    --color-info-accent: #8cc1e6;
+    --color-muted-text: #b6c9bd;
+    --color-subtle-text: #a8bcb0;
+    --color-border: #365148;
+    --color-border-strong: #6f8c80;
+    --color-focus-ring: #a4e0c7;
+    --color-scrim: #000000a6;
+    --color-shadow: #00000059;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-surface: #122522;
+  --color-on-surface: #e9f0e8;
+  --color-surface-raised: #1a302c;
+  --color-on-surface-raised: #e9f0e8;
+  --color-surface-sunken: #233c36;
+  --color-on-surface-sunken: #e9f0e8;
+  --color-menu: #223a34;
+  --color-on-menu: #eef5ed;
+  --color-primary: #8bd1b5;
+  --color-on-primary: #102320;
+  --color-secondary: #244638;
+  --color-on-secondary: #dcf1e6;
+  --color-selected: #8bd1b5;
+  --color-on-selected: #102320;
+  --color-success: #1f4630;
+  --color-on-success: #d3f2dd;
+  --color-success-accent: #91d6ac;
+  --color-danger: #4f3028;
+  --color-on-danger: #ffdccc;
+  --color-danger-accent: #ffb18d;
+  --color-warning: #47391a;
+  --color-on-warning: #f8e3b4;
+  --color-warning-accent: #e8b85c;
+  --color-info: #1f3a4f;
+  --color-on-info: #d3e7f6;
+  --color-info-accent: #8cc1e6;
+  --color-muted-text: #b6c9bd;
+  --color-subtle-text: #a8bcb0;
+  --color-border: #365148;
+  --color-border-strong: #6f8c80;
+  --color-focus-ring: #a4e0c7;
+  --color-scrim: #000000a6;
+  --color-shadow: #00000059;
+}
+
+/*
+ * Derived state layers: the role's own `on-` color laid over the role at fixed
+ * opacities. Hover 8%, active/pressed/open 14%. Foreground never changes, so a
+ * state can never pair a new background with an unreadable label.
+ */
+:root {
+  --state-hover: 8%;
+  --state-active: 14%;
+  --color-surface-hover: color-mix(
+    in srgb,
+    var(--color-on-surface) var(--state-hover),
+    var(--color-surface)
+  );
+  --color-surface-active: color-mix(
+    in srgb,
+    var(--color-on-surface) var(--state-active),
+    var(--color-surface)
+  );
+  --color-surface-raised-hover: color-mix(
+    in srgb,
+    var(--color-on-surface-raised) var(--state-hover),
+    var(--color-surface-raised)
+  );
+  --color-surface-raised-active: color-mix(
+    in srgb,
+    var(--color-on-surface-raised) var(--state-active),
+    var(--color-surface-raised)
+  );
+  --color-menu-hover: color-mix(
+    in srgb,
+    var(--color-on-menu) var(--state-hover),
+    var(--color-menu)
+  );
+  --color-menu-active: color-mix(
+    in srgb,
+    var(--color-on-menu) var(--state-active),
+    var(--color-menu)
+  );
+  --color-primary-hover: color-mix(
+    in srgb,
+    var(--color-on-primary) var(--state-hover),
+    var(--color-primary)
+  );
+  --color-primary-active: color-mix(
+    in srgb,
+    var(--color-on-primary) var(--state-active),
+    var(--color-primary)
+  );
+  --color-secondary-hover: color-mix(
+    in srgb,
+    var(--color-on-secondary) var(--state-hover),
+    var(--color-secondary)
+  );
+  --color-secondary-active: color-mix(
+    in srgb,
+    var(--color-on-secondary) var(--state-active),
+    var(--color-secondary)
+  );
+  --color-selected-hover: color-mix(
+    in srgb,
+    var(--color-on-selected) var(--state-hover),
+    var(--color-selected)
+  );
+  /* Disabled is a role, not ad hoc opacity: still legible, visibly inert. */
+  --color-disabled: color-mix(
+    in srgb,
+    var(--color-on-surface) 10%,
+    var(--color-surface)
+  );
+  --color-on-disabled: color-mix(
+    in srgb,
+    var(--color-on-surface) 62%,
+    var(--color-surface)
+  );
+
+  /* Legacy names: aliases onto the roles until every stylesheet is migrated. */
+  --bg: var(--color-surface);
+  --surface: var(--color-surface-raised);
+  --surface-2: var(--color-surface-sunken);
+  --ink: var(--color-on-surface);
+  --ink-2: var(--color-muted-text);
+  --ink-3: var(--color-subtle-text);
+  --line: var(--color-border);
+  --line-2: var(--color-border-strong);
+  --primary: var(--color-primary);
+  --on-primary: var(--color-on-primary);
+  --primary-hover: var(--color-primary-hover);
+  --primary-soft: var(--color-secondary);
+  --good: var(--color-success-accent);
+  --good-soft: var(--color-success);
+  --bad: var(--color-danger-accent);
+  --bad-soft: var(--color-danger);
+  --focus-ring: var(--color-focus-ring);
+
   --space: 16px;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
-  color: var(--ink);
-  background: var(--bg);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --bg: #122522;
-    --surface: #1a302c;
-    --surface-2: #233c36;
-    --ink: #e9f0e8;
-    --ink-2: #b6c9bd;
-    --ink-3: #95aa9e;
-    --line: #365148;
-    --line-2: #4a665a;
-    --primary: #8bd1b5;
-    --on-primary: #122522;
-    --primary-hover: #a4e0c7;
-    --primary-soft: #284d40;
-    --good: #91d6ac;
-    --good-soft: #244633;
-    --bad: #ffb18d;
-    --bad-soft: #4f3028;
-    --focus-ring: #8bd1b588;
-  }
+  color: var(--color-on-surface);
+  background: var(--color-surface);
 }
 :root {
   --space-1: 4px;
@@ -62,7 +241,7 @@
   --width-form: 480px;
   --text-title-min: 28px;
   --text-title-max: 42px;
-  --shadow-overlay: 0 20px 80px #0004;
+  --shadow-overlay: 0 20px 80px var(--color-shadow);
 }
 @media (prefers-reduced-motion: reduce) {
   :root {
