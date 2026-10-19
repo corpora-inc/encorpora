@@ -102,7 +102,9 @@ function compareLengths(r: Random): Draft {
   const misleading = sa !== sb;
   return {
     prompt: `Which strip is ${ask}?`,
-    hint: "Compare from the same starting line: line up the left ends, then see which strip reaches further.",
+    hint: misleading
+      ? "Strip A and strip B start at different places. Compare them from one starting line, not by where they end."
+      : "Strip A and strip B start at the same line. Look at the right ends: which reaches further?",
     figure: {
       kind: "length-rods",
       rods: [
@@ -179,7 +181,7 @@ function compareWeights(r: Random): Draft {
       : `The beam goes down on the side of ${heavier}, so ${heavier} is heavier.`;
   return {
     prompt: `Which is ${ask}?`,
-    hint: "A balance goes down on the heavier side. Look at which pan is lower, not which object is bigger.",
+    hint: `The ${nameA} is on the left pan and the ${nameB} on the right. A balance drops on the heavier side, whatever the sizes.`,
     figure: {
       kind: "mass-balance",
       tilt,
@@ -202,33 +204,43 @@ function compareWeights(r: Random): Draft {
   };
 }
 
+/** A tall container poured into a wide one; names vary, the figure does not. */
+const CONTAINERS: [string, string][] = [
+  ["jar", "bowl"],
+  ["bottle", "jug"],
+  ["vase", "pot"],
+  ["glass", "mug"],
+  ["can", "pan"],
+];
 function compareCapacity(r: Random): Draft {
   const outcome = r(0, 2);
   const eighths = outcome === 0 ? r(3, 7) : outcome === 1 ? 8 : 9;
+  const [tall, wide] = pick(r, CONTAINERS);
+  const A = `the ${tall}`,
+    B = `the ${wide}`;
   const answer = eighths < 8 ? "B" : eighths > 8 ? "A" : null;
   const what =
     eighths < 8
-      ? "The water does not fill jar B; there is room left."
+      ? `The water does not fill ${B}; there is room left.`
       : eighths === 8
-        ? "The water fills jar B exactly to the top."
-        : "Jar B overflows: some water spills.";
+        ? `The water fills ${B} exactly to the top.`
+        : `${cap(B)} overflows: some water spills.`;
   return {
-    prompt:
-      "Jar A was full of water. All of it was poured into empty jar B. Which jar holds more?",
-    hint: "Look at jar B after pouring. Did the water leave room, fill it exactly, or spill over?",
+    prompt: `${cap(A)} (A) was full of water. All of it was poured into ${B} (B), which was empty. Which holds more?`,
+    hint: `Look at ${B} after pouring. Did the water leave room, fill it exactly, or spill over?`,
     figure: { kind: "pour", eighths },
     explanation: [
       what,
       answer === "B"
-        ? "Jar B can hold all of A's water and more, so jar B holds more."
+        ? `${cap(B)} can hold all of the water from ${A} and more, so ${B} holds more.`
         : answer === "A"
-          ? "Jar A's water is more than jar B can hold, so jar A holds more."
-          : "Jar B holds exactly what jar A held, so they hold the same amount.",
-      "A taller jar does not always hold more; pouring compares what the jars hold.",
+          ? `The water from ${A} is more than ${B} can hold, so ${A} holds more.`
+          : `${cap(B)} holds exactly what ${A} held, so they hold the same amount.`,
+      "A taller container does not always hold more; pouring compares what they hold.",
     ],
     choices: [
-      choice("Jar A", answer === "A", what),
-      choice("Jar B", answer === "B", what),
+      choice(`A, ${A}`, answer === "A", what),
+      choice(`B, ${B}`, answer === "B", what),
       choice("They hold the same amount.", answer === null, what),
     ],
     ordered: true,
@@ -292,7 +304,7 @@ function correctUnitMeasure(r: Random): Draft {
     `Picture ${labels[roles.indexOf(role as keyof typeof layouts)]}`;
   return {
     prompt: `Which picture shows how to measure the ${object} with ${unitName}s?`,
-    hint: "Measuring units must start at one end, touch each other, and not overlap.",
+    hint: `The ${unitName}s must start at the end of the ${object}, touch each other and never overlap. Check each picture for gaps, overlaps and its start.`,
     figure: {
       kind: "unit-measure",
       unit,
@@ -337,7 +349,7 @@ function orderLengths(r: Random): Draft {
   const [statement1, statement2] = r(0, 1) ? [first, second] : [second, first];
   return {
     prompt: `${statement1} ${statement2} Which ribbon is the ${ask}?`,
-    hint: "Find the ribbon that appears in both sentences. Then place the other two on either side of it.",
+    hint: `The ${middle} ribbon is in both sentences, so it goes in the middle. Place the other two on either side of it.`,
     explanation: [
       `The ${long} ribbon is longer than the ${middle} ribbon.`,
       `The ${middle} ribbon is longer than the ${short} ribbon.`,
@@ -375,7 +387,7 @@ function readLiquid(r: Random): Draft {
     ticks = (level - below) / step;
   return {
     prompt: "How many liters of water are in the container?",
-    hint: "Find how many liters one tick mark is worth: divide the jump between labels by the number of spaces.",
+    hint: `The labels are ${["", "one", "two", "three", "four", "five"][labelEvery]} ${labelEvery === 1 ? "space" : "spaces"} apart. Work out what one tick is worth, then count up from the label below the water.`,
     figure: {
       kind: "liquid-scale",
       unit: "L",
@@ -405,7 +417,7 @@ function balanceMass(r: Random): Draft {
   const shape = pick(r, ["box", "bag", "ball"] as const);
   return {
     prompt: `The balance is level. What is the mass of the ${shape}, in grams?`,
-    hint: "A level balance means both sides have the same mass. Add the masses on the other side.",
+    hint: `The beam is level, so the ${shape} matches the right pan. Add the ${grams.length} standard masses, starting with ${grams[0]} g.`,
     figure: {
       kind: "mass-balance",
       tilt: "level",
@@ -414,7 +426,7 @@ function balanceMass(r: Random): Draft {
     },
     explanation: [
       `The beam is level, so the ${shape} has the same mass as the standard masses.`,
-      `Add them: ${grams.map((g) => `${g} g`).join(" + ")} = ${total} g.`,
+      `Add them in grams: ${grams.join(" + ")} = ${total}.`,
       `The ${shape} has a mass of ${total} grams.`,
     ],
     answer: `${total}`,
@@ -433,7 +445,7 @@ function massVolumeStory(r: Random): Draft {
       : `A melon has a mass of ${a} grams and a bunch of grapes has a mass of ${b} grams. What is their total mass, in grams?`;
     return {
       prompt,
-      hint: "Together means join the two amounts: add.",
+      hint: `Together means join ${a} and ${b}: add the two amounts.`,
       explanation: [
         `Both amounts are in ${u}s, so add them.`,
         `${a} + ${b} = ${a + b}.`,
@@ -449,12 +461,12 @@ function massVolumeStory(r: Random): Draft {
     const u = volume ? "liter" : "gram";
     const prompt = volume
       ? `A tank holds ${a} liters of water. ${b} liters are used. How many liters are left?`
-      : `A pumpkin has a mass of ${a} grams and an apple has a mass of ${b} grams. How many grams heavier is the pumpkin than the apple?`;
+      : `A bag of potatoes has a mass of ${a} grams and a bag of onions has a mass of ${b} grams. How many grams heavier is the bag of potatoes?`;
     return {
       prompt,
       hint: volume
-        ? "Water is taken away, so subtract."
-        : "How many more means compare: subtract the smaller mass from the larger.",
+        ? `${b} liters are taken away from ${a}: subtract.`
+        : `How many more compares ${a} grams with ${b} grams: subtract the smaller from the larger.`,
       explanation: [
         `Both amounts are in ${u}s, so subtract.`,
         `${a} − ${b} = ${a - b}.`,
@@ -472,7 +484,7 @@ function massVolumeStory(r: Random): Draft {
       : `Each bag of rice has a mass of ${each} kilograms. What is the mass of ${groups} bags, in kilograms?`;
     return {
       prompt,
-      hint: "Equal amounts taken several times: multiply.",
+      hint: `${groups} equal amounts of ${each}: multiply.`,
       explanation: [
         `${groups} equal groups of ${count(each, u)}.`,
         `${groups} × ${each} = ${groups * each}.`,
@@ -487,7 +499,7 @@ function massVolumeStory(r: Random): Draft {
     : `${total} kilograms of flour are shared equally among ${groups} bags. What is the mass of each bag, in kilograms?`;
   return {
     prompt,
-    hint: "Sharing equally: divide the total by the number of containers.",
+    hint: `Share ${total} equally into ${groups} parts: divide.`,
     explanation: [
       `Share ${count(total, u)} equally among ${groups}.`,
       `${total} ÷ ${groups} = ${each}, because ${groups} × ${each} = ${total}.`,

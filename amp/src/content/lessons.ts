@@ -3,6 +3,8 @@ import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
+import { attributeLessons } from "./attribute-lessons";
+import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -42,6 +44,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | AttributeIllustrationKind
       | "clock-hour-half"
       | "clock-five-minutes"
       | "coin-values"
@@ -585,6 +588,7 @@ export const lessons: readonly Lesson[] = [
   ...partWholeLessons,
   ...decimalLessons,
   ...timeMoneyLessons,
+  ...attributeLessons,
   ...comparisonLessons,
   ...addSubtractLessons,
   ...factsLessons,

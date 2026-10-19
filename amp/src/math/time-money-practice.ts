@@ -129,8 +129,6 @@ function readClockSteps(h: number, m: number): string[] {
     `The time is ${clockTime(h, m)}${m === 0 ? `, ${h} o'clock` : m === 30 ? `, half past ${h}` : ""}.`,
   ];
 }
-const HOUR_HINT =
-  "The long hand shows minutes: count by fives from 12. The short hand shows the hour: use the last numeral it has passed.";
 
 type Choice = { label: string; correct?: true; feedback?: string };
 type Draft = {
@@ -151,7 +149,12 @@ const single = (h: number, m: number): SemanticFigure => ({
 function readClock(h: number, m: number, options: number): Draft {
   return {
     prompt: "What time does the clock show?",
-    hint: HOUR_HINT,
+    hint:
+      options === 3
+        ? m === 0
+          ? "The long hand points at 12, so the time is on the hour. Which numeral does the short hand point at?"
+          : "The long hand points at 6, so it is half past. Which numeral has the short hand just passed?"
+        : `The long hand points at ${numeral(m)}: count by fives from 12 to ${numeral(m)}. Then name the last numeral the short hand has passed.`,
     figure: single(h, m),
     explanation: readClockSteps(h, m),
     choices: [
@@ -239,7 +242,7 @@ function amPm(r: Random): Draft {
   const wrongs = misreadings(h, m).slice(0, 2);
   return {
     prompt: `${name} ${activity} at the time on the clock. Which time is it?`,
-    hint: "Read the clock first. Then decide: a.m. times run from midnight to noon, and p.m. times from noon to midnight.",
+    hint: `Is the time when ${name} ${activity} before noon or after noon? Read the clock too: the long hand is at ${numeral(m)}.`,
     figure: single(h, m),
     explanation: [
       ...readClockSteps(h, m).slice(0, 2),
@@ -282,6 +285,7 @@ const total = (items: readonly MoneyItem[]) =>
 const named = (n: number, item: MoneyItem) =>
   `${n} ${COIN_NAMES[item][n === 1 ? 0 : 1]}`;
 const cents = (n: number) => `${n}¢`;
+const count = (n: number, one: string) => `${n} ${n === 1 ? one : `${one}s`}`;
 /** "2 quarters (50¢), 1 dime (10¢)" from largest to smallest. */
 function groups(items: readonly MoneyItem[]) {
   return ORDER.filter((item) => items.includes(item)).map((item) => {
@@ -361,7 +365,7 @@ function payExact(r: Random): Draft {
   const right = labels[sets.findIndex((s) => s.items === correct)];
   return {
     prompt: `A ${thing} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
-    hint: "Count each set from its largest coin down. Quarters are 25¢, dimes 10¢, nickels 5¢, pennies 1¢.",
+    hint: `Count each set on from its largest coin and look for a total of exactly ${cents(price)}.`,
     figure: {
       kind: "money-sets",
       sets: sets.map((s, i) => ({ items: s.items, label: labels[i] })),
@@ -405,7 +409,10 @@ function draft(templateId: string, r: Random): Draft {
           m === 0
             ? "The clock shows a time on the hour. What hour is it?"
             : "The clock shows half past an hour. Half past what hour?",
-        hint: "Find the last numeral the short hour hand has reached or passed.",
+        hint:
+          m === 0
+            ? "The long hand points straight up, so it is exactly on the hour. Read the numeral the short hand points at."
+            : "The long hand points straight down: half past. The short hand sits between two numerals; the hour is the one it has passed.",
         figure: single(h, m),
         explanation: [
           m === 0
@@ -424,7 +431,7 @@ function draft(templateId: string, r: Random): Draft {
         m = 5 * r(1, 11);
       return {
         prompt: "How many minutes past the hour does the clock show?",
-        hint: "Count by fives from 12 to the numeral the long hand points at.",
+        hint: `The long hand points at ${numeral(m)}. Count by fives from 12, one five for each numeral up to ${numeral(m)}.`,
         figure: single(h, m),
         explanation: [
           `The long minute hand points at ${numeral(m)}.`,
@@ -439,7 +446,7 @@ function draft(templateId: string, r: Random): Draft {
       const items = randomCoins(r, r(3, 8), 99);
       return {
         prompt: "How many cents are these coins worth in all?",
-        hint: "Start with the coins worth the most and count on: quarters by 25, dimes by 10, nickels by 5, pennies by 1.",
+        hint: `Start with the ${COIN_NAMES[groups(items)[0]!.item][1]}, worth ${cents(CENTS[groups(items)[0]!.item])} each, and count on through the smaller coins.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
@@ -460,7 +467,7 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "How much money is shown? Enter the amount in dollars, such as 2.35.",
-        hint: "Count the bills in dollars, then the coins in cents. 100 cents make 1 dollar.",
+        hint: `There ${bills.length === 1 ? "is 1 bill" : `are ${bills.length} bills`} and ${count(coins.length, "coin")}. Add the bills in dollars, count the coins in cents, then write the amount like 2.35.`,
         figure: coinFigure(items),
         explanation: [
           `The bills: ${groups(bills)
@@ -481,7 +488,7 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "One dollar is 100 cents. How many more cents do these coins need to make one dollar?",
-        hint: "Count the coins, then count up from that amount to 100.",
+        hint: `Count on from the ${COIN_NAMES[groups(items)[0]!.item][1]} to find the total, then count up from that total to 100.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
@@ -500,7 +507,7 @@ function draft(templateId: string, r: Random): Draft {
         thing = pick(r, ITEMS);
       return {
         prompt: `${name} has these coins and buys a ${thing} for ${cents(price)}. How many cents does ${name} have left?`,
-        hint: "Count the coins first. Then take away the price.",
+        hint: `Count ${name}'s coins first, then take away the ${cents(price)} for the ${thing}.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),

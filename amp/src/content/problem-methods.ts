@@ -4,6 +4,7 @@ import { distributionMethods } from "./distribution-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
 import { timeMoneyMethods } from "./time-money-lessons";
+import { attributeMethods } from "./attribute-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
@@ -39,6 +40,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...partWholeMethods,
   ...decimalMethods,
   ...timeMoneyMethods,
+  ...attributeMethods,
   ...comparisonMethods,
   ...addSubtractMethods,
   ...factsMethods,

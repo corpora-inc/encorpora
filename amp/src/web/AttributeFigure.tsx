@@ -223,13 +223,13 @@ function Thing({ item, cx, base }: { item: Item; cx: number; base: number }) {
   return (
     <g>
       {body}
+      {/* Labels sit under the pan, clear of the hangers and the beam. */}
       {item.label && (
         <text
           x={cx}
-          y={base - s - 8}
+          y={base + 38}
           textAnchor="middle"
-          style={label(20)}
-          fill={ink}
+          style={{ ...label(22), fill: ink }}
         >
           {item.label}
         </text>
@@ -239,15 +239,17 @@ function Thing({ item, cx, base }: { item: Item; cx: number; base: number }) {
 }
 /** Beam geometry shared by the figure and the lesson animation. */
 export function beamEnds(tilt: Balance["tilt"]) {
-  const angle = tilt === "level" ? 0 : tilt === "left" ? -12 : 12;
+  const angle = tilt === "level" ? 0 : tilt === "left" ? -10 : 10;
   const rad = (angle * Math.PI) / 180,
     half = 120;
   return {
     angle,
-    left: { x: 180 - half * Math.cos(rad), y: 110 - half * Math.sin(rad) },
-    right: { x: 180 + half * Math.cos(rad), y: 110 + half * Math.sin(rad) },
+    left: { x: 180 - half * Math.cos(rad), y: 56 - half * Math.sin(rad) },
+    right: { x: 180 + half * Math.cos(rad), y: 56 + half * Math.sin(rad) },
   };
 }
+/** Pans hang 92 units below the beam ends; standard masses stack in rows of
+ * up to three so every mass and its label stays inside its pan. */
 export function BalanceScale({
   figure,
   tilt = figure.tilt,
@@ -257,10 +259,10 @@ export function BalanceScale({
 }) {
   const ends = beamEnds(tilt);
   const pan = (x: number, y: number) => {
-    const base = y + 46;
+    const base = y + 92;
     return {
       base,
-      d: `M${x - 44} ${base} Q${x} ${base + 14} ${x + 44} ${base} Z`,
+      d: `M${x - 58} ${base} Q${x} ${base + 16} ${x + 58} ${base} Z`,
     };
   };
   const leftPan = pan(ends.left.x, ends.left.y),
@@ -268,11 +270,47 @@ export function BalanceScale({
   return (
     <>
       <path
-        d="M180 112 L156 198 H204 Z"
+        d="M180 58 L162 232 H198 Z"
         fill={empty}
         stroke={ink}
         strokeWidth="2.5"
       />
+      <line
+        x1="140"
+        x2="220"
+        y1="233"
+        y2="233"
+        stroke={ink}
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      {[ends.left, ends.right].map((end, i) => {
+        const base = (i ? rightPan : leftPan).base;
+        return (
+          <g key={i}>
+            <line
+              x1={end.x}
+              y1={end.y}
+              x2={end.x - 58}
+              y2={base}
+              stroke={ink}
+            />
+            <line
+              x1={end.x}
+              y1={end.y}
+              x2={end.x + 58}
+              y2={base}
+              stroke={ink}
+            />
+            <path
+              d={(i ? rightPan : leftPan).d}
+              fill={empty}
+              stroke={ink}
+              strokeWidth="2.5"
+            />
+          </g>
+        );
+      })}
       <line
         className="balance-beam"
         x1={ends.left.x}
@@ -283,45 +321,25 @@ export function BalanceScale({
         strokeWidth="5"
         strokeLinecap="round"
       />
-      <circle cx="180" cy="110" r="6" fill={ink} />
-      {[ends.left, ends.right].map((end, i) => (
-        <g key={i}>
-          <line
-            x1={end.x}
-            y1={end.y}
-            x2={end.x - 40}
-            y2={end.y + 46}
-            stroke={ink}
-          />
-          <line
-            x1={end.x}
-            y1={end.y}
-            x2={end.x + 40}
-            y2={end.y + 46}
-            stroke={ink}
-          />
-          <path
-            d={(i ? rightPan : leftPan).d}
-            fill={empty}
-            stroke={ink}
-            strokeWidth="2.5"
-          />
-        </g>
-      ))}
+      <circle cx="180" cy="56" r="6" fill={ink} />
       <Thing item={figure.left} cx={ends.left.x} base={leftPan.base} />
       {"grams" in figure.right ? (
         <g>
           {figure.right.grams.map((g, i, all) => {
-            const w = 30,
+            const w = 37,
+              h = 24,
               gap = 2,
-              total = all.length * w + (all.length - 1) * gap;
-            const x = ends.right.x - total / 2 + i * (w + gap);
-            const h = 18 + Math.min(16, Math.log10(g) * 6);
+              row = Math.floor(i / 3),
+              inRow = Math.min(3, all.length - row * 3),
+              col = i % 3,
+              total = inRow * w + (inRow - 1) * gap;
+            const x = ends.right.x - total / 2 + col * (w + gap),
+              y = rightPan.base - (row + 1) * h - row * gap;
             return (
               <g key={i} data-grams={g}>
                 <rect
                   x={x}
-                  y={rightPan.base - h}
+                  y={y}
                   width={w}
                   height={h}
                   rx="3"
@@ -331,10 +349,9 @@ export function BalanceScale({
                 />
                 <text
                   x={x + w / 2}
-                  y={rightPan.base - h - 6}
+                  y={y + 16}
                   textAnchor="middle"
-                  style={label(11, 600)}
-                  fill={ink}
+                  style={{ ...label(10, 700), fill: ink }}
                 >
                   {g} g
                 </text>
@@ -355,7 +372,6 @@ function describeBalance(f: Balance) {
       : `${item.label ? `${item.label}, ` : ""}a ${["small", "medium", "large"][item.size - 1]} ${item.shape}`;
   return `A balance. Left pan: ${side(f.left)}. Right pan: ${side(f.right)}. The beam ${f.tilt === "level" ? "is level" : `is lower on the ${f.tilt}`}.`;
 }
-
 
 export function Jars({
   eighths,
@@ -501,7 +517,7 @@ export function AttributeFigure({ figure }: { figure: Data }) {
       <svg
         data-kind={figure.kind}
         className="figure attribute-figure"
-        viewBox="0 0 360 210"
+        viewBox="0 0 360 240"
         role="img"
         aria-label={description}
       >
@@ -511,7 +527,7 @@ export function AttributeFigure({ figure }: { figure: Data }) {
     );
   }
   if (figure.kind === "pour") {
-    const description = `Jar A is tall and narrow; jar B is short and wide. All the water from full jar A was poured into empty jar B. ${figure.eighths < 8 ? `Jar B is filled ${figure.eighths} eighths of the way up.` : figure.eighths === 8 ? "Jar B is filled exactly to the top." : "Jar B is full and water has spilled over."}`;
+    const description = `Container A is tall and narrow; container B is short and wide. All the water from full container A was poured into empty container B. ${figure.eighths < 8 ? `B is filled ${figure.eighths} eighths of the way up.` : figure.eighths === 8 ? "B is filled exactly to the top." : "B is full and water has spilled over."}`;
     return (
       <svg
         data-kind={figure.kind}
