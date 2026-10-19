@@ -10,6 +10,7 @@ import type {
 import type { FamilySummary } from "../family/contracts";
 import "./annual-purchase.css";
 import { PlanOptions } from "./PlanOptions";
+import { paymentUrl } from "./features/billing/payment-url";
 import { FocusDialog } from "./PracticeWorkspace";
 export interface AnnualPurchaseProps {
   token: string;
@@ -57,22 +58,6 @@ const messages: Record<string, string> = {
     "An existing checkout uses a different plan. Check access to load that plan; let the checkout expire before changing it.",
   sign_in_required: "Sign in again to view your family’s billing information.",
 };
-function paymentUrl(
-  value: string,
-  host: "checkout.stripe.com" | "billing.stripe.com",
-): string {
-  const url = new URL(value);
-  if (
-    url.protocol !== "https:" ||
-    url.hostname !== host ||
-    url.username ||
-    url.password
-  )
-    throw new Error(
-      "The payment destination could not be verified. Try again.",
-    );
-  return url.href;
-}
 function PurchasePanel({
   token,
   identity,

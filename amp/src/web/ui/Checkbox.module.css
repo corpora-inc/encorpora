@@ -1,0 +1,56 @@
+.row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--target-size);
+  padding: var(--space-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.row:hover:not(:disabled) {
+  filter: none;
+  background: var(--surface-2);
+}
+.row[aria-checked="true"] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.row:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.box {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--line-2);
+  border-radius: 7px;
+  background: var(--surface);
+}
+.box svg {
+  fill: none;
+  stroke: var(--on-primary);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  visibility: hidden;
+}
+.row[aria-checked="true"] .box {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+.row[aria-checked="true"] .box svg {
+  visibility: visible;
+}
+.text {
+  font-size: var(--text-label);
+  line-height: 1.45;
+}

@@ -80,6 +80,15 @@ try {
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
       if (path.endsWith("/consent")) return route.fulfill({ json: view });
+      if (path.endsWith("/billing/enrollment"))
+        return route.fulfill({
+          json: {
+            available: false,
+            notice: null,
+            noticeDigest: null,
+            purchase: null,
+          },
+        });
       if (path.endsWith("/acknowledge")) {
         const body = req.postDataJSON();
         assert.equal(body.requestId, requestId);
@@ -215,7 +224,8 @@ try {
         window as unknown as { consentApp: { emit(s: unknown): void } }
       ).consentApp.emit({ token: "other", accountId: "other" }),
     );
-    await page.waitForURL("**/start/name");
+    // The new account starts at the plan step; email-plus is offered there.
+    await page.waitForURL("**/start/plan");
     assert.equal(
       await page.getByRole("heading", { name: "Review and respond" }).count(),
       0,

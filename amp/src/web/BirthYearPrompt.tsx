@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 export const strandNames: Record<string, string> = {
   number: "Numbers",
   operations: "Operations",
@@ -36,15 +37,21 @@ type Props = {
   cancel?: () => void;
   /** Replaces "What year was {name} born?". */
   title?: string;
+  /** Inside a page that already has its main landmark, with this card class. */
+  embedded?: { className: string; header?: ReactNode };
 };
 
 /** The only question before practice: it sets where placement begins. */
 export function BirthYearPrompt(props: Props) {
   const thisYear = new Date().getFullYear();
   const years = Array.from({ length: 16 }, (_, i) => thisYear - 4 - i);
+  const Root = props.embedded ? "div" : "main";
   return (
-    <main className="practice-start">
-      <section className="start-card birth-year">
+    <Root className={props.embedded ? undefined : "practice-start"}>
+      <section
+        className={`start-card birth-year ${props.embedded?.className ?? ""}`}
+      >
+        {props.embedded?.header}
         <h1>{props.title ?? `What year was ${props.name} born?`}</h1>
         <p>
           The first problems check skills expected by that age. Practice then
@@ -75,6 +82,6 @@ export function BirthYearPrompt(props: Props) {
           </button>
         )}
       </section>
-    </main>
+    </Root>
   );
 }

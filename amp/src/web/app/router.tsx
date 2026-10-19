@@ -13,6 +13,10 @@ import { z } from "zod";
 import { nativeRuntime } from "../native-runtime";
 import { queryClient, sessionOptions, meOptions } from "../lib/query";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
+import {
+  startDestination,
+  startNavigation,
+} from "../features/onboarding/guard";
 const searchSchema = z
   .object({
     return: z.enum(["security"]).optional(),
@@ -25,6 +29,7 @@ const searchSchema = z
     page: z.coerce.number().int().nonnegative().optional(),
     state: z.string().max(200).optional(),
     purchase: z.string().max(200).optional(),
+    billing: z.string().max(40).optional(),
     "sign-in": z.string().optional(),
     "reset-password": z.string().optional(),
   })
@@ -47,30 +52,17 @@ const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
   "StartScreen",
 );
+/** Every /start step runs the one first-run guard against `/me`. */
 async function beforeStart({ location }: { location: { pathname: string } }) {
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session) throw redirect({ to: "/sign-in" });
-  if (!nativeRuntime) {
-    const me = await queryClient.ensureQueryData(meOptions(session));
-    if (!me.signedIn) throw redirect({ to: "/sign-in" });
-    if (
-      me.next === "verify-email" &&
-      location.pathname !== "/start/verify-email"
-    )
-      throw redirect({ to: "/start/verify-email", replace: true });
-    if (
-      me.next !== "verify-email" &&
-      me.consent.status !== "active" &&
-      location.pathname !== "/start/consent"
-    )
-      throw redirect({ to: "/start/consent", replace: true });
-    if (
-      me.next !== "verify-email" &&
-      me.consent.status === "active" &&
-      ["/start/consent", "/start/verify-email"].includes(location.pathname)
-    )
-      throw redirect({ to: "/start/name", replace: true });
-  }
+  if (nativeRuntime) return;
+  const me = await queryClient.ensureQueryData({
+    ...meOptions(session),
+    revalidateIfStale: true,
+  });
+  const target = startDestination(me, location.pathname);
+  if (target) throw redirect({ ...startNavigation(target), replace: true });
 }
 const home = createRoute({
   getParentRoute: () => root,
@@ -118,9 +110,21 @@ const reset = createRoute({
 const startIndex = createRoute({
   getParentRoute: () => root,
   path: "/start",
-  beforeLoad: () => {
-    throw redirect({ to: "/start/name" });
-  },
+  beforeLoad: beforeStart,
+  component: start,
+});
+const startPlan = createRoute({
+  getParentRoute: () => root,
+  path: "/start/plan",
+  beforeLoad: beforeStart,
+  component: start,
+});
+/** Stripe Checkout's success and cancel URL for parent enrollment. */
+const startPurchase = createRoute({
+  getParentRoute: () => root,
+  path: "/start/purchase",
+  beforeLoad: beforeStart,
+  component: start,
 });
 const startName = createRoute({
   getParentRoute: () => root,
@@ -159,6 +163,8 @@ export const router = createRouter({
     signInStep,
     reset,
     startIndex,
+    startPlan,
+    startPurchase,
     startName,
     startYear,
     startConsent,
