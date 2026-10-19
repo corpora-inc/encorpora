@@ -20,6 +20,7 @@ import {
   type TenFrame,
   type Venn,
   type Tree,
+  type Triangle,
 } from "./spec";
 import type { Action, Step } from "./timeline";
 import { treeWidth } from "./components/tree";
@@ -504,3 +505,49 @@ export const lineTable = (
   rows: LineTable["rows"],
   options: Partial<Omit<LineTable, "type" | "rows">> = {},
 ) => new Simple<LineTable>({ type: "lineTable", rows, ...options });
+
+const text = (v: Entry | undefined) => (v === undefined ? undefined : entry(v));
+class TriangleBuilder extends Builder<Triangle> {
+  names(a: string, b: string, c: string) {
+    this.spec.names = [a, b, c];
+    return this;
+  }
+  /** Side i runs from vertex i to vertex i + 1. */
+  side(
+    i: 0 | 1 | 2,
+    spec: { label?: Entry; ticks?: number; color?: "accent" | "warm" | "gold" },
+  ) {
+    const sides = this.spec.sides ?? [{}, {}, {}];
+    sides[i] = {
+      ...(spec.label !== undefined ? { label: text(spec.label) } : {}),
+      ...(spec.ticks ? { ticks: spec.ticks } : {}),
+      ...(spec.color ? { color: spec.color } : {}),
+    };
+    this.spec.sides = sides as Triangle["sides"];
+    return this;
+  }
+  angle(
+    i: 0 | 1 | 2,
+    spec: {
+      mark?: "arc" | "right";
+      arcs?: number;
+      label?: Entry;
+      color?: "accent" | "warm" | "gold";
+    },
+  ) {
+    const angles = this.spec.angles ?? [{}, {}, {}];
+    angles[i] = {
+      ...(spec.mark ? { mark: spec.mark } : {}),
+      ...(spec.arcs ? { arcs: spec.arcs } : {}),
+      ...(spec.label !== undefined ? { label: text(spec.label) } : {}),
+      ...(spec.color ? { color: spec.color } : {}),
+    };
+    this.spec.angles = angles as Triangle["angles"];
+    return this;
+  }
+}
+/** triangle([[0, 0], [4, 0], [0, 3]]).names("A", "B", "C").side(0, { label: 4 }).angle(0, { mark: "right" }) */
+export const triangle = (
+  points: [Point, Point, Point],
+  options: { fill?: Triangle["fill"]; dash?: boolean } = {},
+) => new TriangleBuilder({ type: "triangle", points, ...options });
