@@ -15,7 +15,12 @@ export function SceneFigure({
   kind?: string;
   medium?: Medium;
 }) {
-  const layout = useMemo(() => layoutScene(scene, { reveal }), [scene, reveal]);
-  const label = useMemo(() => describeScene(scene, reveal), [scene, reveal]);
+  // Callers often rebuild an equal scene each render (legacy adapters, typed
+  // answers re-rendering the workspace): key the layout on content.
+  const key = JSON.stringify(scene);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const layout = useMemo(() => layoutScene(scene, { reveal }), [key, reveal]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const label = useMemo(() => describeScene(scene, reveal), [key, reveal]);
   return <SceneSvg layout={layout} label={label} kind={kind} medium={medium} />;
 }
