@@ -4,8 +4,8 @@ export type GraphicalFigureData = Extract<
   SemanticFigure,
   { kind: "coordinate-plane" | "bar-chart" | "clock" | "number-line" }
 >;
-const ink = "#174a43",
-  accent = "#20776d";
+const ink = "var(--color-figure-ink)",
+  accent = "var(--color-figure-accent)";
 const range = (min: number, max: number) =>
   Array.from(
     { length: Math.floor(max) - Math.ceil(min) + 1 },
@@ -45,7 +45,7 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 y1="40"
                 x2={x(n)}
                 y2="220"
-                stroke={n === 0 ? ink : "#789586"}
+                stroke={n === 0 ? ink : "var(--color-figure-axis)"}
                 strokeWidth={n === 0 ? 2 : 1}
               />
               {labelTick(n, figure.xMin, figure.xMax, x) && (
@@ -67,7 +67,7 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 y1={y(n)}
                 x2="250"
                 y2={y(n)}
-                stroke={n === 0 ? ink : "#789586"}
+                stroke={n === 0 ? ink : "var(--color-figure-axis)"}
                 strokeWidth={n === 0 ? 2 : 1}
               />
               {labelTick(n, figure.yMin, figure.yMax, y) && (
@@ -127,8 +127,8 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 cx={x(p.x)}
                 cy={y(p.y)}
                 r="5"
-                fill="#9c4420"
-                stroke="white"
+                fill="var(--color-figure-warm)"
+                stroke="var(--color-figure-paper)"
                 strokeWidth="1"
               />
               <text
@@ -172,7 +172,7 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                 x2="288"
                 y1={178 - n * step * scale}
                 y2={178 - n * step * scale}
-                stroke="#cad8d2"
+                stroke="var(--color-figure-grid)"
               />
               <text
                 x="38"
@@ -234,7 +234,7 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
             cx="160"
             cy="145"
             r="120"
-            fill="#f6f2e8"
+            fill="var(--color-figure-empty)"
             stroke={ink}
             strokeWidth="3"
           />
@@ -329,14 +329,14 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                   y1={labelY + 5}
                   x2={x(n)}
                   y2="58"
-                  stroke="#9c4420"
+                  stroke="var(--color-figure-warm)"
                   strokeWidth="1.5"
                 />
                 <text
                   x={x(n)}
                   y={labelY}
                   textAnchor="middle"
-                  fill="#9c4420"
+                  fill="var(--color-figure-warm)"
                   style={{ fontSize: 18, fontWeight: 700 }}
                 >
                   {n}
@@ -346,8 +346,8 @@ export function GraphicalFigure({ figure }: { figure: GraphicalFigureData }) {
                   cx={x(n)}
                   cy="64"
                   r="5"
-                  fill="#9c4420"
-                  stroke="white"
+                  fill="var(--color-figure-warm)"
+                  stroke="var(--color-figure-paper)"
                   strokeWidth="1"
                 />
               </g>

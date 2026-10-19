@@ -1,7 +1,7 @@
 .lesson-animation {
-  color: #173e38;
-  background: #fffdf7;
-  border: 1px solid #c8d8cd;
+  color: var(--color-on-surface-raised);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 12px;
   margin: 12px 0;
@@ -23,7 +23,7 @@
 }
 .animation-heading span {
   font-variant-numeric: tabular-nums;
-  color: #50675e;
+  color: var(--color-muted-text);
 }
 .animation-stage {
   display: block;
@@ -35,28 +35,28 @@
   font:
     15px system-ui,
     sans-serif;
-  fill: #173e38;
+  fill: var(--color-on-surface);
 }
 .animation-fill {
-  fill: #c5e2d5;
-  stroke: #20776d;
+  fill: var(--color-subtle-text);
+  stroke: var(--color-success-accent);
   stroke-width: 1;
 }
 .animation-warm {
-  fill: #f2d5c3;
-  stroke: #824729;
+  fill: var(--color-subtle-text);
+  stroke: var(--color-danger-accent);
   stroke-width: 1;
 }
 .animation-empty {
-  fill: #f4f1e9;
-  stroke: #6b8075;
+  fill: var(--color-on-primary);
+  stroke: var(--color-border-strong);
 }
 .animation-grid {
-  stroke: #20776d;
+  stroke: var(--color-success-accent);
   stroke-width: 1;
 }
 .animation-outline {
-  stroke: #173e38;
+  stroke: var(--color-on-surface);
   fill: none;
 }
 .animation-move {
@@ -101,24 +101,24 @@
   min-height: 44px;
   padding: 6px;
   border-radius: 8px;
-  background: #fffdf7;
-  color: #173e38;
-  border: 1px solid #7b9486;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  border: 1px solid var(--color-border-strong);
   font:
     600 0.875rem system-ui,
     sans-serif;
   cursor: pointer;
 }
 .animation-controls button:first-child {
-  background: #173e38;
-  color: #fffdf7;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 .animation-controls button[aria-disabled="true"] {
   opacity: 0.45;
   cursor: default;
 }
 .animation-controls button:focus-visible {
-  outline: 3px solid #a74720;
+  outline: 3px solid var(--color-danger-accent);
   outline-offset: 3px;
 }
 .animation-static {
@@ -135,6 +135,6 @@
   }
 }
 .lesson-animation[data-animation="fraction"] .animation-fill {
-  fill: #20776d;
-  stroke: #fffdf7;
+  fill: var(--color-success-accent);
+  stroke: var(--color-border);
 }

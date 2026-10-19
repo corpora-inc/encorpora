@@ -1,5 +1,5 @@
 .reimbursement-guide {
-  border-top: 1px solid #d2d8ce;
+  border-top: 1px solid var(--color-border);
   margin-top: 20px;
   padding-top: 16px;
   overflow-wrap: anywhere;
@@ -18,7 +18,7 @@
   margin-block: 16px;
 }
 .reimbursement-guide a {
-  color: #175c4d;
+  color: var(--color-primary);
   text-underline-offset: 3px;
   display: inline-block;
   padding-block: 8px;
@@ -41,11 +41,11 @@
   width: 100%;
   min-width: 0;
   min-height: 44px;
-  border: 1px solid #aabfb5;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 10px;
-  background: #fff;
-  color: #173b34;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
   font: inherit;
 }
 .receipt-details p {
@@ -61,7 +61,7 @@
   text-underline-offset: 3px;
 }
 .reimbursement-guide summary:focus-visible {
-  outline: 3px solid #ba592b;
+  outline: 3px solid var(--color-danger-accent);
   outline-offset: 3px;
 }
 .reimbursement-guide ul,

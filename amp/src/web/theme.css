@@ -4,45 +4,45 @@
    it carries meaning (strand, correct, incorrect). */
 
 [data-strand="number"] {
-  --strand: #3f6fa8;
+  --strand: var(--color-strand-number);
 }
 [data-strand="operations"] {
-  --strand: #6a5aa0;
+  --strand: var(--color-strand-operations);
 }
 [data-strand="fractions"] {
-  --strand: #c46a2f;
+  --strand: var(--color-strand-fractions);
 }
 [data-strand="decimals"] {
-  --strand: #b08a1e;
+  --strand: var(--color-strand-decimals);
 }
 [data-strand="ratio"] {
-  --strand: #b0506f;
+  --strand: var(--color-strand-ratio);
 }
 [data-strand="algebra"] {
-  --strand: #1f5f55;
+  --strand: var(--color-strand-algebra);
 }
 [data-strand="functions"] {
-  --strand: #2f7f9f;
+  --strand: var(--color-strand-functions);
 }
 [data-strand="geometry"] {
-  --strand: #3d8a6e;
+  --strand: var(--color-strand-geometry);
 }
 [data-strand="measurement"] {
-  --strand: #6b8f2f;
+  --strand: var(--color-strand-measurement);
 }
 [data-strand="data"] {
-  --strand: #2f8a8a;
+  --strand: var(--color-strand-data);
 }
 [data-strand="probability"] {
-  --strand: #8a5aa0;
+  --strand: var(--color-strand-probability);
 }
 [data-strand="modeling"] {
-  --strand: #b4532a;
+  --strand: var(--color-strand-modeling);
 }
 
 body,
 .shell.app-shell {
-  background: var(--bg);
+  background: var(--color-surface);
 }
 /* The book reader keeps its own typography. */
 .shell:not(.reading-shell) :is(h2, h3) {
@@ -59,8 +59,8 @@ body,
   letter-spacing: -0.02em;
 }
 button {
-  background: var(--primary);
-  color: var(--on-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   border-radius: 12px;
   transition:
     background 0.12s ease,
@@ -82,20 +82,20 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #1f5f5555;
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 .text-button,
 .text-button:hover {
   background: transparent;
-  color: var(--primary);
+  color: var(--color-primary);
   font-weight: 600;
 }
 input,
 select {
-  border: 1px solid var(--line-2);
+  border: 1px solid var(--color-border-strong);
   border-radius: 12px;
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 
 /* Header and sections (outside immersive practice) */
@@ -108,12 +108,12 @@ header {
 .brand {
   flex-shrink: 0;
   white-space: nowrap;
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-weight: 800;
   letter-spacing: -0.03em;
 }
 .brand svg path {
-  stroke: var(--primary);
+  stroke: var(--color-primary);
 }
 .brand span {
   display: none;
@@ -121,13 +121,13 @@ header {
 .app-shell .account select,
 .account-menu summary {
   min-height: 44px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background-color: var(--surface);
+  background-color: var(--color-surface-raised);
   box-shadow: none;
   font-size: 14px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 .app-shell .account select {
   padding: 8px 30px 8px 12px;
@@ -141,7 +141,7 @@ header {
   padding: 3px;
   border: 0;
   border-radius: 12px;
-  background: #ebebe1;
+  background: var(--color-surface-sunken);
 }
 .app-shell > nav button {
   flex: 1;
@@ -150,7 +150,7 @@ header {
   border: 0;
   border-radius: 9px;
   background: transparent;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   font-size: 14px;
   font-weight: 600;
   box-shadow: none;
@@ -158,9 +158,9 @@ header {
 .app-shell > nav button[aria-current="page"],
 .app-shell > nav button[aria-selected="true"],
 .app-shell > nav button.active {
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: 0 1px 2px #183e3a20;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  box-shadow: 0 1px 2px var(--color-shadow);
 }
 
 /* Immersive practice: the problem owns the screen. */
@@ -179,7 +179,7 @@ header {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .workspace-exit svg {
   width: 22px;
@@ -190,16 +190,16 @@ header {
   stroke-linecap: round;
 }
 .workspace-exit:hover {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
 }
 
 /* Practice surface */
 .practice-surface {
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
-  box-shadow: 0 1px 2px #183e3a0d;
+  background: var(--color-surface-raised);
+  box-shadow: 0 1px 2px var(--color-shadow);
 }
 .workspace-toolbar {
   gap: 12px;
@@ -215,7 +215,7 @@ header {
   margin-right: auto;
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 /* The skill title stays on one line; a long one ends in an ellipsis and keeps
    its full text as the tooltip. */
@@ -231,12 +231,12 @@ header {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--strand, var(--primary));
+  background: var(--strand, var(--color-primary));
 }
 .problem-content .question {
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-variant-numeric: lining-nums tabular-nums;
 }
 .answer-dock {
@@ -244,18 +244,18 @@ header {
 }
 .answer-dock label,
 .choice-form legend {
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .workspace-answer-row input {
   height: 52px;
   font-size: 22px;
   font-weight: 600;
   border-radius: 12px;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .workspace-answer-row input:focus {
-  border-color: var(--primary);
-  background: var(--surface);
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised);
 }
 .answer-action,
 .choice-submit,
@@ -264,8 +264,8 @@ header {
 }
 .answer-action:disabled,
 .choice-submit:disabled {
-  background: var(--surface-2);
-  color: var(--ink-3);
+  background: var(--color-surface-sunken);
+  color: var(--color-subtle-text);
   opacity: 1;
 }
 .answer-action {
@@ -278,32 +278,32 @@ header {
 }
 .math-keypad button {
   height: 48px;
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid var(--line);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   box-shadow: none;
   font-size: 20px;
   font-weight: 500;
 }
 .math-keypad button:hover {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .math-keypad button:active {
-  background: var(--primary-soft);
+  background: var(--color-secondary);
 }
 .practice-tools button {
   font-size: 14px;
 }
 .compact-answer-action {
-  background: var(--surface-2);
-  color: var(--ink);
-  border: 1px dashed var(--line-2);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  border: 1px dashed var(--color-border-strong);
   border-radius: 12px;
   font-weight: 600;
 }
 .compact-answer-action:hover {
-  background: var(--primary-soft);
+  background: var(--color-secondary);
 }
 
 /* Feedback is a sheet over the bottom of the card: the problem never moves. */
@@ -325,11 +325,11 @@ header {
   max-height: max(min(72%, 440px), var(--dock-height, 0px));
   margin: 0 auto;
   padding: 16px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 18px;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 -8px 40px #183e3a24;
+  box-shadow: 0 -8px 40px var(--color-shadow);
   animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .feedback .practice-tools {
@@ -338,14 +338,22 @@ header {
 /* Feedback surfaces come from the status tokens, so both themes keep AA text
    contrast: ink on the soft fill, the accent only on the mark and border. */
 .feedback.correct {
-  background: color-mix(in srgb, var(--good-soft) 94%, transparent);
-  border-color: color-mix(in srgb, var(--good) 35%, var(--line));
-  color: var(--ink);
+  background: color-mix(in srgb, var(--color-success) 94%, transparent);
+  border-color: color-mix(
+    in srgb,
+    var(--color-success-accent) 35%,
+    var(--color-border)
+  );
+  color: var(--color-on-surface);
 }
 .feedback.incorrect {
-  background: color-mix(in srgb, var(--bad-soft) 94%, transparent);
-  border-color: color-mix(in srgb, var(--bad) 35%, var(--line));
-  color: var(--ink);
+  background: color-mix(in srgb, var(--color-danger) 94%, transparent);
+  border-color: color-mix(
+    in srgb,
+    var(--color-danger-accent) 35%,
+    var(--color-border)
+  );
+  color: var(--color-on-surface);
 }
 .feedback-head {
   display: flex;
@@ -359,14 +367,14 @@ header {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  color: var(--surface);
+  color: var(--color-surface-raised);
   font-size: 15px;
 }
 .feedback.correct .result-mark {
-  background: var(--good);
+  background: var(--color-success-accent);
 }
 .feedback.incorrect .result-mark {
-  background: var(--bad);
+  background: var(--color-danger-accent);
 }
 .feedback-title {
   display: flex;
@@ -378,12 +386,12 @@ header {
 .feedback-title small {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .feedback-note {
   margin: 0;
   font-size: 13px;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 /* A mastery moment: a missed skill is now review-ready. */
 .mastery-moment {
@@ -393,8 +401,8 @@ header {
   margin: 0;
   padding: 8px 12px;
   border-radius: 12px;
-  background: var(--good-soft);
-  color: var(--ink);
+  background: var(--color-success);
+  color: var(--color-on-surface);
   font-size: 14px;
   line-height: 1.3;
 }
@@ -402,7 +410,7 @@ header {
   display: grid;
 }
 .mastery-moment span span {
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .mastery-mark {
   display: grid;
@@ -411,8 +419,8 @@ header {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--good);
-  color: var(--surface);
+  background: var(--color-success-accent);
+  color: var(--color-surface-raised);
   font-size: 16px;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -456,37 +464,38 @@ header {
 .practice-celebration span {
   width: 72px;
   height: 72px;
-  background: var(--good);
-  color: var(--surface);
+  background: var(--color-success-accent);
+  color: var(--color-surface-raised);
   border: 0;
   font-size: 36px;
   font-weight: 700;
-  box-shadow: 0 0 0 10px color-mix(in srgb, var(--good) 14%, transparent);
+  box-shadow: 0 0 0 10px
+    color-mix(in srgb, var(--color-success-accent) 14%, transparent);
   animation-duration: 0.8s;
 }
 
 /* Dialogs and lessons share the practice surface treatment. */
 .practice-dialog {
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: 0 20px 60px #183e3a2e;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  box-shadow: 0 20px 60px var(--color-shadow);
 }
 .practice-dialog::backdrop {
-  background: #183e3a52;
+  background: var(--color-scrim);
 }
 .dialog-heading {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border);
 }
 .dialog-heading h2 {
   font-size: 20px;
   font-weight: 700;
 }
 .dialog-close {
-  background: var(--surface-2);
-  color: var(--ink);
-  border: 1px solid var(--line);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border);
   border-radius: 50%;
 }
 .problem-lesson {
@@ -502,7 +511,7 @@ header {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 .problem-lesson ol {
   margin: 0;
@@ -531,13 +540,13 @@ header {
 }
 .lesson-terms dd {
   margin: 0;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .lesson-example {
   padding: 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .lesson-example .figure {
   display: block;
@@ -555,9 +564,9 @@ header {
 .lesson-watch {
   margin: 0;
   padding: 10px 14px;
-  border-left: 3px solid var(--primary);
+  border-left: 3px solid var(--color-primary);
   border-radius: 0 10px 10px 0;
-  background: var(--primary-soft);
+  background: var(--color-secondary);
   font-size: 15px;
 }
 .lesson-return,
@@ -578,9 +587,9 @@ header {
 }
 .start-card {
   padding: 24px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
   text-align: center;
 }
 .start-card h1 {
@@ -591,7 +600,7 @@ header {
 .start-card p {
   margin: 0 auto 20px;
   max-width: 44ch;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .go-button {
   width: 100%;
@@ -613,18 +622,18 @@ header {
 .year-grid button {
   min-height: 48px;
   padding: 8px;
-  background: var(--surface-2);
-  color: var(--ink);
-  border: 1px solid var(--line);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border);
   font-size: 17px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 .year-grid button:hover,
 .year-grid button.selected {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
 /* Lessons tab */
@@ -633,9 +642,9 @@ header {
 .book-list {
   margin-bottom: 20px;
   padding: 20px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .lesson-sheet {
   max-width: 720px;
@@ -657,10 +666,10 @@ header {
   align-items: center;
   gap: 8px;
   padding: 7px 12px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink-2);
+  background: var(--color-surface-raised);
+  color: var(--color-muted-text);
   font-size: 14px;
   font-weight: 600;
 }
@@ -672,12 +681,12 @@ header {
   background: var(--strand);
 }
 .strand-chip:hover {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .strand-chip[aria-selected="true"] {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  background: var(--color-on-surface);
+  border-color: var(--color-on-surface);
+  color: var(--color-on-primary);
 }
 .topic-list {
   display: grid;
@@ -694,17 +703,17 @@ header {
   width: 100%;
   min-height: 44px;
   padding: 10px 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   font-size: 15px;
   font-weight: 500;
   text-align: left;
 }
 .topic-list button:hover {
   border-color: var(--strand);
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .book-list h2 {
   margin: 0 0 12px;
@@ -721,7 +730,7 @@ header {
   align-items: center;
   gap: 8px 16px;
   padding: 12px 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
 }
 .book-list li > span {
   flex: 1 1 200px;
@@ -730,7 +739,7 @@ header {
 .book-list small {
   display: block;
   font-weight: 400;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 
 /* Landing */
@@ -745,12 +754,12 @@ header {
 .intro p {
   max-width: 40ch;
   font-size: 17px;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .card {
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
   box-shadow: none;
 }
 @media (max-width: 650px) {
@@ -774,7 +783,7 @@ header {
 }
 .dialog-content,
 .problem-lesson {
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 @media (prefers-reduced-motion: reduce) {
   .feedback {
@@ -783,15 +792,15 @@ header {
 }
 /* Figure tokens: every diagram draws from these. */
 .figure {
-  --fig-ink: #183e3a;
-  --fig-line: #a9b5ab;
-  --fig-fill: #2f7d6f;
-  --fig-empty: #fffefa;
+  --fig-ink: var(--color-figure-ink);
+  --fig-line: var(--color-figure-axis);
+  --fig-fill: var(--color-figure-accent);
+  --fig-empty: var(--color-figure-paper);
   font-family: inherit;
 }
 .figure .fig-fill {
   fill: var(--fig-fill);
-  stroke: #ffffff;
+  stroke: var(--color-border);
   stroke-width: 1.5;
 }
 .figure .fig-empty {
@@ -810,7 +819,7 @@ header {
   font-weight: 600;
 }
 .figure .fig-scale {
-  fill: var(--fig-line);
+  fill: var(--color-muted-text);
   font-size: 13px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -832,9 +841,9 @@ header {
   display: grid;
   gap: 20px;
   padding: 28px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .home-hero h1 {
   margin: 0;
@@ -843,9 +852,9 @@ header {
 }
 .frontier-map {
   padding: 20px 24px 24px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .frontier-map ul {
   display: grid;
@@ -863,21 +872,21 @@ header {
 .frontier-name {
   font-size: 14px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .frontier-track {
   position: relative;
   height: 8px;
   border-radius: 999px;
-  background: var(--surface-2);
-  box-shadow: inset 0 0 0 1px var(--line);
+  background: var(--color-surface-sunken);
+  box-shadow: inset 0 0 0 1px var(--color-border);
 }
 .frontier-dot {
   position: absolute;
   top: 50%;
   width: 16px;
   height: 16px;
-  border: 3px solid var(--surface);
+  border: 3px solid var(--color-surface-raised);
   border-radius: 50%;
   background: var(--strand);
   box-shadow: 0 0 0 1px var(--strand);
@@ -885,7 +894,7 @@ header {
   transition: left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .frontier-track.estimated .frontier-track.estimated .frontier-dot {
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .home-birth-year {
   align-self: center;
@@ -902,12 +911,12 @@ header {
   }
 }
 .figure .base-block {
-  fill: #cfe3d8;
+  fill: var(--color-subtle-text);
   stroke: var(--fig-ink);
   stroke-width: 1.25;
 }
 .figure .base-cell {
-  stroke: #7fa596;
+  stroke: var(--color-border-strong);
   stroke-width: 0.6;
 }
 
@@ -940,13 +949,13 @@ header {
   height: 64px;
   min-height: 64px;
   padding-top: env(safe-area-inset-top, 0px);
-  background: var(--bg);
+  background: var(--color-surface);
 }
 .shell.app-shell.flow > nav {
   position: sticky;
   top: 64px;
   z-index: 20;
-  box-shadow: 0 0 0 6px var(--bg);
+  box-shadow: 0 0 0 6px var(--color-surface);
 }
 .shell.app-shell.flow > main {
   flex: none;
@@ -961,7 +970,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 button:focus:not(:focus-visible) {
@@ -991,11 +1000,11 @@ button:focus:not(:focus-visible) {
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--color-primary);
 }
 .lesson-example,
 .lesson-watch {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .frontier-heading {
   margin-bottom: 16px;
@@ -1007,7 +1016,7 @@ button:focus:not(:focus-visible) {
 .frontier-heading p {
   margin: 0;
   font-size: 14px;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 
 .shell .lesson-sheet h2 {
@@ -1120,7 +1129,7 @@ html:has(.shell.flow)::-webkit-scrollbar {
 .practice-tools .text-button:hover,
 .home-birth-year:hover,
 .lesson-sheet-bar .text-button:hover {
-  background: var(--primary-soft);
+  background: var(--color-secondary);
   text-decoration: none;
 }
 .home-birth-year,
@@ -1152,7 +1161,7 @@ html[data-input="pointer"] :focus-visible {
   margin: 0;
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .progress-detail-content footer button,
 .progress-detail footer button {
@@ -1164,7 +1173,7 @@ html[data-input="pointer"] :focus-visible {
   margin: 6px 0 0;
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .frontier-map li {
   display: block;
@@ -1188,14 +1197,14 @@ html[data-input="pointer"] :focus-visible {
 }
 .frontier-row:hover,
 .frontier-row[aria-expanded="true"] {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .frontier-map ul {
   gap: 2px;
 }
 .frontier-track {
   height: 10px;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .frontier-center {
   position: absolute;
@@ -1203,7 +1212,7 @@ html[data-input="pointer"] :focus-visible {
   bottom: -5px;
   left: 50%;
   width: 1.5px;
-  background: var(--line-2);
+  background: var(--color-border-strong);
 }
 .frontier-range {
   position: absolute;
@@ -1225,7 +1234,7 @@ html[data-input="pointer"] :focus-visible {
 .frontier-detail {
   margin: 4px 0 8px calc(min(132px, 34%) + 16px);
   font-size: 14px;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .frontier-axis {
   position: relative;
@@ -1233,7 +1242,7 @@ html[data-input="pointer"] :focus-visible {
   margin: 10px 0 0 calc(min(132px, 34%) + 16px);
   font-size: 12px;
   font-weight: 600;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 .frontier-axis span {
   position: absolute;
@@ -1271,7 +1280,7 @@ html[data-input="pointer"] :focus-visible {
   margin: 0;
   padding: 12px 14px;
   border-radius: 12px;
-  background: var(--primary-soft);
+  background: var(--color-secondary);
   font-size: 15px;
   line-height: 1.5;
 }
@@ -1281,7 +1290,7 @@ html[data-input="pointer"] :focus-visible {
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--color-primary);
 }
 /* The empty state adapts to the space the card area actually has. */
 .progress-card-stage {
@@ -1317,8 +1326,8 @@ html[data-input="pointer"] :focus-visible {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: var(--surface-2);
-  color: var(--ink-2);
+  background: var(--color-surface-sunken);
+  color: var(--color-muted-text);
 }
 .calculator-toggle svg {
   width: 22px;
@@ -1330,8 +1339,8 @@ html[data-input="pointer"] :focus-visible {
 }
 .calculator-toggle:hover,
 .calculator-toggle[aria-pressed="true"] {
-  background: var(--primary-soft);
-  color: var(--primary);
+  background: var(--color-secondary);
+  color: var(--color-primary);
 }
 /* A status, not an action: the same footprint as the calculator button, so
    the title never shifts between problems, but with no fill. */
@@ -1341,7 +1350,7 @@ html[data-input="pointer"] :focus-visible {
   place-items: center;
   width: 44px;
   height: 44px;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 .no-calculator svg {
   width: 22px;
@@ -1366,10 +1375,10 @@ html[data-input="pointer"] :focus-visible {
   width: min(calc(100% - 24px), 420px);
   margin: 0 auto;
   padding: 12px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 18px;
-  background: var(--surface);
-  box-shadow: 0 -8px 40px #183e3a24;
+  background: var(--color-surface-raised);
+  box-shadow: 0 -8px 40px var(--color-shadow);
   animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .calculator-head {
@@ -1378,7 +1387,7 @@ html[data-input="pointer"] :focus-visible {
   justify-content: space-between;
   font-size: 13px;
   font-weight: 700;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .calculator-head .dialog-close {
   width: 36px;
@@ -1390,9 +1399,9 @@ html[data-input="pointer"] :focus-visible {
   display: grid;
   gap: 2px;
   padding: 10px 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
   text-align: right;
 }
 .calculator-display input {
@@ -1409,11 +1418,11 @@ html[data-input="pointer"] :focus-visible {
 .calculator-display output {
   min-height: 20px;
   font-size: 15px;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
   font-variant-numeric: tabular-nums;
 }
 .calculator-display.error output {
-  color: var(--bad);
+  color: var(--color-danger-accent);
 }
 .calculator-keys {
   display: grid;
@@ -1424,21 +1433,21 @@ html[data-input="pointer"] :focus-visible {
   height: 44px;
   min-height: 44px;
   padding: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   font-size: 18px;
   font-weight: 500;
 }
 .calculator-keys button.operator {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .calculator-keys button.equals,
 .calculator-keys button.use {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: #fff;
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   font-weight: 700;
 }
 .calculator-keys button.use {
@@ -1472,9 +1481,9 @@ html[data-input="pointer"] :focus-visible {
   gap: 10px;
   margin: 0 0 16px;
   padding: 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .family-add-learner label {
   display: grid;
@@ -1484,7 +1493,7 @@ html[data-input="pointer"] :focus-visible {
 .family-add-learner label span {
   font-size: 12px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .family-add-learner input,
 .family-add-learner select,
@@ -1514,7 +1523,7 @@ html[data-input="pointer"] :focus-visible {
   column-gap: 8px;
   width: 100%;
   padding: 0 0 24px;
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 .shell .family-center > * {
   grid-column: 1 / -1;
@@ -1536,15 +1545,15 @@ html[data-input="pointer"] :focus-visible {
   height: 44px;
   min-height: 44px;
   padding: 0 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   font-size: 14px;
   font-weight: 600;
 }
 .shell .family-center .family-back:hover {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .shell .family-center > .family-tabs {
   grid-column: 2;
@@ -1552,7 +1561,7 @@ html[data-input="pointer"] :focus-visible {
   gap: 2px;
   padding: 3px;
   border-radius: 12px;
-  background: #ebebe1;
+  background: var(--color-surface-sunken);
 }
 .shell .family-tabs button {
   min-height: 38px;
@@ -1560,13 +1569,13 @@ html[data-input="pointer"] :focus-visible {
   border-radius: 9px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   white-space: nowrap;
 }
 .shell .family-tabs button[aria-current] {
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: 0 1px 2px #183e3a20;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  box-shadow: 0 1px 2px var(--color-shadow);
 }
 .shell .family-center > .family-body,
 .shell .family-center > section,
@@ -1595,13 +1604,13 @@ html[data-input="pointer"] :focus-visible {
   max-width: 100%;
   margin: 0 auto;
   padding: 8px 12px;
-  border: 1px solid #efd6c8;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: var(--bad-soft);
-  color: #8a3a1c;
+  background: var(--color-danger);
+  color: var(--color-danger-accent);
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 4px 16px #183e3a14;
+  box-shadow: 0 4px 16px var(--color-shadow);
   animation: feedback-in 0.16s ease-out;
 }
 /* Proportional figures in sentences: tabular digits leave gaps in "11". */
@@ -1620,9 +1629,9 @@ html[data-input="pointer"] :focus-visible {
   display: grid;
   gap: 12px;
   padding: 24px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .paywall h2 {
   margin: 0;
@@ -1633,13 +1642,13 @@ html[data-input="pointer"] :focus-visible {
 .paywall ul {
   margin: 0;
   padding-left: 20px;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   line-height: 1.6;
 }
 .paywall-note {
   margin: 0;
   font-size: 14px;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
   text-align: center;
 }
 .welcome .go-button,
@@ -1721,21 +1730,21 @@ html[data-input="pointer"] :focus-visible {
 .choose-pay-intro p {
   margin: 0;
   max-width: 52ch;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   line-height: 1.5;
 }
 .choose-pay-intro .pay-for {
   margin-bottom: 4px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 .pay-option {
   display: grid;
   gap: 12px;
   padding: 20px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .pay-option h2 {
   margin: 0;
@@ -1751,11 +1760,11 @@ html[data-input="pointer"] :focus-visible {
   width: 100%;
   min-height: 48px;
   padding: 0 12px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .pay-price {
   margin: 0;
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-size: 28px;
   font-weight: 700;
   font-variant-numeric: lining-nums tabular-nums;
@@ -1764,7 +1773,7 @@ html[data-input="pointer"] :focus-visible {
 .pay-muted {
   font-size: 15px;
   font-weight: 400;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 .pay-muted {
   margin: 0;
@@ -1825,7 +1834,7 @@ html[data-input="pointer"] :focus-visible {
 }
 .account-form small {
   font-weight: 400;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
 }
 .account-form .go-button {
   width: 100%;
@@ -1836,7 +1845,7 @@ html[data-input="pointer"] :focus-visible {
   align-items: center;
   gap: 12px;
   margin: 4px 0;
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
   font-size: 13px;
 }
 .account-divider::before,
@@ -1844,7 +1853,7 @@ html[data-input="pointer"] :focus-visible {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--line);
+  background: var(--color-border);
 }
 .account-links {
   display: flex;
@@ -1864,22 +1873,22 @@ html[data-input="pointer"] :focus-visible {
   font-size: 14px;
 }
 .account-notice {
-  background: var(--surface-2);
-  color: var(--ink-2);
+  background: var(--color-surface-sunken);
+  color: var(--color-muted-text);
 }
 .account-error {
-  background: var(--bad-soft);
-  color: var(--bad);
+  background: var(--color-danger);
+  color: var(--color-danger-accent);
 }
 
 .secondary {
-  color: var(--primary);
+  color: var(--color-primary);
   background: transparent;
-  border-color: var(--line-2);
+  border-color: var(--color-border-strong);
 }
 .secondary:hover {
-  color: var(--primary);
-  background: var(--primary-soft);
+  color: var(--color-primary);
+  background: var(--color-secondary);
 }
 
 /* ── Phones: practice is full-bleed ───────────────────────────────────────
@@ -1897,7 +1906,7 @@ html[data-input="pointer"] :focus-visible {
   .shell.immersive .practice-surface {
     border: 0;
     border-radius: 0;
-    background: var(--bg);
+    background: var(--color-surface);
     box-shadow: none;
     padding: 4px 16px 0;
   }

@@ -11,17 +11,17 @@
   flex-direction: column;
   gap: 4px;
   padding: 10px;
-  border: 1px solid #9eb4ab;
+  border: 1px solid var(--color-border-strong);
   border-radius: 10px;
-  background: white;
-  color: #183e3a;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
   text-align: left;
   font: inherit;
 }
 .plan-options-grid button[aria-pressed="true"] {
-  border: 2px solid #235a50;
+  border: 2px solid var(--color-primary);
   padding: 9px;
-  background: #eaf3ee;
+  background: var(--color-success);
 }
 .plan-options-grid span {
   font-size: 14px;

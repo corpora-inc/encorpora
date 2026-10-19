@@ -30,7 +30,7 @@
   --color-on-selected: #fffefa;
   --color-success: #e6f3ea;
   --color-on-success: #1b5636;
-  --color-success-accent: #2a7d52;
+  --color-success-accent: #24744b;
   --color-danger: #fbefe8;
   --color-on-danger: #7c3415;
   --color-danger-accent: #a84b23;
@@ -47,8 +47,33 @@
   --color-focus-ring: #1f5f55;
   --color-scrim: #0e1f1c99;
   --color-shadow: #183e3a1f;
+  --color-figure-paper: #fffdf7;
+  --color-figure-ink: #174a43;
+  --color-figure-grid: #d6dfd6;
+  --color-figure-axis: #6f8a7d;
+  --color-figure-accent: #20776d;
+  --color-figure-accent-fill: #d4e9e1;
+  --color-figure-warm: #9c4420;
+  --color-figure-warm-fill: #f2d5c3;
+  --color-figure-gold: #9a5c12;
+  --color-figure-gold-fill: #fae2b9;
+  --color-figure-gold-fill-strong: #f5dfc5;
+  --color-figure-accent-fill-strong: #c5ded6;
+  --color-figure-empty: #f6f2e8;
+  --color-strand-number: #3f6fa8;
+  --color-strand-operations: #6a5aa0;
+  --color-strand-fractions: #b8622a;
+  --color-strand-decimals: #9a7716;
+  --color-strand-ratio: #b0506f;
+  --color-strand-algebra: #1f5f55;
+  --color-strand-functions: #2f7f9f;
+  --color-strand-geometry: #3a8569;
+  --color-strand-measurement: #5f8228;
+  --color-strand-data: #2a8080;
+  --color-strand-probability: #8a5aa0;
+  --color-strand-modeling: #b4532a;
 }
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
     --color-surface: #122522;
@@ -84,6 +109,31 @@
     --color-focus-ring: #a4e0c7;
     --color-scrim: #000000a6;
     --color-shadow: #00000059;
+    --color-figure-paper: #1a302c;
+    --color-figure-ink: #dcebe3;
+    --color-figure-grid: #3a564d;
+    --color-figure-axis: #8eab9e;
+    --color-figure-accent: #6fc7b4;
+    --color-figure-accent-fill: #24493f;
+    --color-figure-warm: #f0a17c;
+    --color-figure-warm-fill: #5a3526;
+    --color-figure-gold: #e8b85c;
+    --color-figure-gold-fill: #4d3d1c;
+    --color-figure-gold-fill-strong: #5e4a22;
+    --color-figure-accent-fill-strong: #2f5d51;
+    --color-figure-empty: #223a34;
+    --color-strand-number: #86ade3;
+    --color-strand-operations: #ac9fe3;
+    --color-strand-fractions: #eb9e68;
+    --color-strand-decimals: #dbb94f;
+    --color-strand-ratio: #e590ab;
+    --color-strand-algebra: #8bd1b5;
+    --color-strand-functions: #72c3e3;
+    --color-strand-geometry: #83cdac;
+    --color-strand-measurement: #abcb6e;
+    --color-strand-data: #70cccc;
+    --color-strand-probability: #c7a0e3;
+    --color-strand-modeling: #ee9a75;
   }
 }
 :root[data-theme="dark"] {
@@ -121,6 +171,31 @@
   --color-focus-ring: #a4e0c7;
   --color-scrim: #000000a6;
   --color-shadow: #00000059;
+  --color-figure-paper: #1a302c;
+  --color-figure-ink: #dcebe3;
+  --color-figure-grid: #3a564d;
+  --color-figure-axis: #8eab9e;
+  --color-figure-accent: #6fc7b4;
+  --color-figure-accent-fill: #24493f;
+  --color-figure-warm: #f0a17c;
+  --color-figure-warm-fill: #5a3526;
+  --color-figure-gold: #e8b85c;
+  --color-figure-gold-fill: #4d3d1c;
+  --color-figure-gold-fill-strong: #5e4a22;
+  --color-figure-accent-fill-strong: #2f5d51;
+  --color-figure-empty: #223a34;
+  --color-strand-number: #86ade3;
+  --color-strand-operations: #ac9fe3;
+  --color-strand-fractions: #eb9e68;
+  --color-strand-decimals: #dbb94f;
+  --color-strand-ratio: #e590ab;
+  --color-strand-algebra: #8bd1b5;
+  --color-strand-functions: #72c3e3;
+  --color-strand-geometry: #83cdac;
+  --color-strand-measurement: #abcb6e;
+  --color-strand-data: #70cccc;
+  --color-strand-probability: #c7a0e3;
+  --color-strand-modeling: #ee9a75;
 }
 
 /*
@@ -198,25 +273,6 @@
     var(--color-surface)
   );
 
-  /* Legacy names: aliases onto the roles until every stylesheet is migrated. */
-  --bg: var(--color-surface);
-  --surface: var(--color-surface-raised);
-  --surface-2: var(--color-surface-sunken);
-  --ink: var(--color-on-surface);
-  --ink-2: var(--color-muted-text);
-  --ink-3: var(--color-subtle-text);
-  --line: var(--color-border);
-  --line-2: var(--color-border-strong);
-  --primary: var(--color-primary);
-  --on-primary: var(--color-on-primary);
-  --primary-hover: var(--color-primary-hover);
-  --primary-soft: var(--color-secondary);
-  --good: var(--color-success-accent);
-  --good-soft: var(--color-success);
-  --bad: var(--color-danger-accent);
-  --bad-soft: var(--color-danger);
-  --focus-ring: var(--color-focus-ring);
-
   --space: 16px;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
@@ -242,6 +298,12 @@
   --text-title-min: 28px;
   --text-title-max: 42px;
   --shadow-overlay: 0 20px 80px var(--color-shadow);
+}
+/* Print is always ink on paper, whatever the screen theme. */
+:root {
+  --color-print-paper: #ffffff;
+  --color-print-ink: #000000;
+  --color-print-rule: #aaaaaa;
 }
 @media (prefers-reduced-motion: reduce) {
   :root {

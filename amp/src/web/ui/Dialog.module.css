@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: #102d2966;
+  background: var(--color-scrim);
   backdrop-filter: blur(4px);
 }
 .content {
@@ -16,10 +16,10 @@
   width: min(560px, calc(100vw - 2 * var(--space-4)));
   max-height: calc(100dvh - 2 * var(--space-4));
   margin: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-panel);
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   box-shadow: var(--shadow-overlay);
 }
 .header {
@@ -28,7 +28,7 @@
   justify-content: space-between;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-3) var(--space-3) var(--space-5);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border);
 }
 .title {
   margin: 0;
@@ -40,24 +40,24 @@
   min-height: var(--target-size);
   border-radius: var(--radius-control);
   background: transparent;
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-size: 24px;
   line-height: 1;
 }
 .close:hover:not(:disabled) {
   filter: none;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .body {
   overflow: auto;
   padding: var(--space-4) var(--space-5) var(--space-5);
   font-size: var(--text-label);
   line-height: 1.55;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .body h3 {
   margin: var(--space-4) 0 var(--space-2);
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-size: var(--text-label);
 }
 .body p {

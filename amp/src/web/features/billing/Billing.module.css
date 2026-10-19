@@ -3,7 +3,7 @@
   gap: var(--space-2);
 }
 .amount {
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
@@ -12,17 +12,17 @@
   font-size: var(--text-price);
 }
 .single span:last-child {
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   font-size: var(--text-label);
 }
 .terms {
   margin: 0;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   font-size: var(--text-small);
   line-height: 1.45;
 }
 .sandbox {
-  color: var(--bad);
+  color: var(--color-danger-accent);
   font-weight: 650;
 }
 .notice {
@@ -30,19 +30,19 @@
   gap: var(--space-1);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-control);
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .notice h2 {
   margin: 0;
   font-family: inherit;
   letter-spacing: 0;
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-size: var(--text-label);
   font-weight: 700;
 }
 .notice p {
   margin: 0;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   font-size: var(--text-label);
   line-height: 1.5;
 }

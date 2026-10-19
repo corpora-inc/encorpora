@@ -41,7 +41,10 @@ function ruleBody(css: string, selector: RegExp) {
 
 export function tokenBlocks(css = readFileSync(tokensPath, "utf8")) {
   css = css.replace(/\/\*[\s\S]*?\*\//g, "");
-  const media = ruleBody(css, /@media \(prefers-color-scheme: dark\)/);
+  const media = ruleBody(
+    css,
+    /@media screen and \(prefers-color-scheme: dark\)/,
+  );
   return {
     light: declarations(ruleBody(css, /^:root\s*\{/m)),
     darkSystem: declarations(

@@ -4,8 +4,8 @@
  * effective background (axe color-contrast plus a direct measurement, with
  * hover/active/focus forced on every control through the DevTools protocol).
  *
- *   npm run test:contrast              report only (artifacts/contrast/)
- *   npm run test:contrast -- --strict  fail on any violation
+ *   npx tsx scripts/verify-contrast.ts  report only (artifacts/contrast/)
+ *   npm run test:contrast               fail on any violation
  */
 import AxeBuilder from "@axe-core/playwright";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -422,6 +422,10 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     await page.unroute("**/attempts");
   });
   for (const route of [
+    "/start/plan",
+    "/try",
+    "/try/map",
+    "/try/plans",
     "/family/learners",
     "/family/access",
     "/family/privacy",
@@ -475,7 +479,10 @@ try {
 
 const unique = new Map<string, Violation>();
 for (const v of violations)
-  unique.set(`${v.theme}|${v.state}|${v.source}|${v.target}|${v.text}`, v);
+  unique.set(
+    `${v.theme}|${v.width}|${v.state}|${v.source}|${v.target}|${v.fg}|${v.bg}`,
+    v,
+  );
 const list = [...unique.values()];
 await writeFile(
   `${out}report.json`,

@@ -103,7 +103,7 @@ nav button {
   display: flex;
   flex-direction: column;
   padding: env(safe-area-inset-top, 0px) 32px env(safe-area-inset-bottom, 0px);
-  background: #f7f6f0;
+  background: var(--color-surface);
 }
 .app-shell > header {
   flex: none;
@@ -156,11 +156,11 @@ nav button {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid #dfe5d8;
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: #fffefa;
+  background: var(--color-surface-raised);
   padding: 12px 28px 16px;
-  box-shadow: 0 5px 24px #173c2905;
+  box-shadow: 0 5px 24px var(--color-shadow);
 }
 .workspace-toolbar {
   display: flex;
@@ -181,7 +181,7 @@ nav button {
 }
 .workspace-topic {
   font-size: 13px;
-  color: #59706a;
+  color: var(--color-subtle-text);
 }
 .workspace-toolbar button {
   min-height: 44px;
@@ -232,7 +232,7 @@ nav button {
   width: min(100%, 620px);
   margin: 0 auto;
   padding-top: 8px;
-  border-top: 1px solid #e4e8dd;
+  border-top: 1px solid var(--color-border);
 }
 .answer-status {
   min-height: 36px;
@@ -241,7 +241,7 @@ nav button {
   justify-content: center;
   gap: 10px;
   font-size: 14px;
-  color: #486a5e;
+  color: var(--color-muted-text);
 }
 .answer-status small {
   display: inline;
@@ -251,15 +251,15 @@ nav button {
 .result-mark {
   font-size: 20px;
   font-weight: 700;
-  color: #9d6213;
+  color: var(--color-warning-accent);
 }
 .result-mark.correct {
-  color: #277b68;
+  color: var(--color-success-accent);
 }
 .answer-dock label {
   font-size: 12px;
   margin: 0 0 5px;
-  color: #486a5e;
+  color: var(--color-muted-text);
 }
 .workspace-answer-row {
   display: flex;
@@ -275,7 +275,7 @@ nav button {
   height: 52px;
 }
 .workspace-answer-row input[readonly] {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .answer-action {
   flex: none;
@@ -302,18 +302,18 @@ nav button {
   height: 44px;
   min-height: 44px;
   padding: 2px 8px;
-  background: #f0f2eb;
-  color: #183e3a;
-  border: 1px solid #dce3d5;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  border: 1px solid var(--color-border);
   border-radius: 9px;
   font-size: 19px;
   touch-action: manipulation;
 }
 .math-keypad button:hover {
-  background: #e0eadd;
+  background: var(--color-secondary);
 }
 .math-keypad button:active {
-  background: #cedfca;
+  background: var(--color-secondary);
   transform: translateY(1px);
 }
 .math-keypad button[disabled] {
@@ -336,11 +336,11 @@ nav button {
   width: 86px;
   height: 86px;
   border-radius: 50%;
-  background: #e2efdcf2;
-  color: #277b68;
-  border: 2px solid #b8d4af;
+  background: color-mix(in srgb, var(--color-surface-raised) 95%, transparent);
+  color: var(--color-success-accent);
+  border: 2px solid var(--color-border);
   font-size: 44px;
-  box-shadow: 0 0 0 12px #e2efdc66;
+  box-shadow: 0 0 0 12px var(--color-shadow);
   animation: answer-bloom 1.1s ease-out both;
 }
 @keyframes answer-bloom {
@@ -362,19 +362,19 @@ nav button {
   width: min(640px, calc(100% - 32px));
   max-height: min(85dvh, 820px);
   padding: 0;
-  color: #183e3a;
-  background: #fffefa;
-  border: 1px solid #dce3d5;
+  color: var(--color-on-surface-raised);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 24px 80px #183e3a33;
+  box-shadow: 0 24px 80px var(--color-shadow);
 }
 .practice-dialog[open] {
   display: flex;
   flex-direction: column;
 }
 .practice-dialog::backdrop {
-  background: #173e3a55;
+  background: var(--color-scrim);
   backdrop-filter: blur(3px);
 }
 .dialog-heading {
@@ -384,7 +384,7 @@ nav button {
   gap: 16px;
   padding: 24px 24px 16px;
   flex: none;
-  border-bottom: 1px solid #e4e8dd;
+  border-bottom: 1px solid var(--color-border);
 }
 .dialog-heading h2 {
   font-size: 28px;
@@ -399,12 +399,12 @@ nav button {
   width: 44px;
   height: 44px;
   padding: 0;
-  background: #edf3e9;
-  color: #18594f;
+  background: var(--color-success);
+  color: var(--color-on-success);
   font-size: 26px;
 }
 .dialog-close:hover {
-  color: white;
+  color: var(--color-on-primary);
 }
 .dialog-content {
   padding: 22px 28px 28px;
@@ -416,12 +416,12 @@ nav button {
   margin: 0 0 24px;
 }
 .solution-prompt {
-  color: var(--ink-2);
+  color: var(--color-muted-text);
   font-size: 15px;
 }
 .solution-answer {
   font-size: 22px;
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 .solution-panel ol {
   padding-left: 24px;
@@ -631,7 +631,7 @@ nav button {
   cursor: pointer;
   padding: 12px;
   font-size: 14px;
-  color: #486a5e;
+  color: var(--color-muted-text);
 }
 .focus-picker label {
   margin-top: 18px;
@@ -688,12 +688,12 @@ nav button {
 }
 .reader-downloads {
   margin: 12px 0 24px;
-  border-block: 1px solid #dfe5d8;
+  border-block: 1px solid var(--color-border);
 }
 .reader-downloads summary {
   cursor: pointer;
   padding: 14px 0;
-  color: #18594f;
+  color: var(--color-primary);
 }
 .reader-downloads .downloads {
   margin: 0 0 16px;
@@ -701,7 +701,7 @@ nav button {
 .workspace-error {
   position: absolute;
   bottom: 0;
-  background: #fffefa;
+  background: var(--color-surface-raised);
   padding: 12px;
 }
 @media (max-width: 650px) {
@@ -813,7 +813,7 @@ nav button {
 }
 .choice-form legend {
   font-size: 13px;
-  color: #486a5e;
+  color: var(--color-muted-text);
   margin-bottom: 8px;
 }
 .choice-options {
@@ -829,10 +829,10 @@ nav button {
   min-height: 54px;
   margin: 0;
   padding: 10px;
-  border: 1px solid var(--line-2);
+  border: 1px solid var(--color-border-strong);
   border-radius: 12px;
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   font-size: 16px;
   line-height: 1.3;
   cursor: pointer;
@@ -845,13 +845,13 @@ nav button {
   margin: 0;
 }
 .choice-option:has(input:focus-visible) {
-  outline: 3px solid var(--focus-ring);
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 .answer-dock .choice-option.selected {
-  border-color: var(--primary);
-  box-shadow: inset 0 0 0 1px var(--primary);
-  background: var(--primary-soft);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  background: var(--color-secondary);
 }
 .choice-letter {
   flex: none;
@@ -860,13 +860,13 @@ nav button {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
   font-size: 12px;
   font-weight: 700;
 }
 .choice-option.selected .choice-letter {
-  background: var(--primary);
-  color: var(--on-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 .choice-form fieldset:disabled .choice-option {
   cursor: default;
@@ -902,12 +902,12 @@ nav button {
   font:
     16px Arial,
     sans-serif;
-  fill: #174a43;
+  fill: var(--color-on-surface);
 }
 .choice-coordinate .choice-point-label {
   font-weight: 600;
   paint-order: stroke;
-  stroke: #fffefa;
+  stroke: var(--color-border);
   stroke-width: 4px;
   stroke-linejoin: round;
 }

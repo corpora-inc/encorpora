@@ -7,10 +7,10 @@
   min-width: 0;
   min-height: 48px;
   padding: 10px 14px;
-  border: 1px solid var(--line, #a5b9b1);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  color: var(--ink, #183e3a);
-  background: var(--surface, #fffefa);
+  color: var(--color-on-surface);
+  background: var(--color-surface-raised);
   text-align: left;
   font: inherit;
 }
@@ -20,21 +20,21 @@
   white-space: nowrap;
 }
 .premium-select:focus-visible {
-  outline: 3px solid var(--accent, #367c6b);
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
 .premium-options {
   width: min(420px, calc(100vw - 32px));
   max-height: calc(100dvh - 48px);
   padding: 16px;
-  border: 1px solid var(--line, #a5b9b1);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  color: var(--ink, #183e3a);
-  background: var(--surface, #fffefa);
-  box-shadow: 0 20px 80px #0004;
+  color: var(--color-on-surface);
+  background: var(--color-surface-raised);
+  box-shadow: 0 20px 80px var(--color-shadow);
 }
 .premium-options::backdrop {
-  background: #102d2966;
+  background: var(--color-scrim);
   backdrop-filter: blur(4px);
 }
 .premium-options-heading {
@@ -58,13 +58,13 @@
   min-height: 48px;
   text-align: left;
   border-radius: 10px;
-  background: var(--surface-2, #eef1e9);
+  background: var(--color-surface-sunken);
   color: inherit;
   padding: 10px 14px;
 }
 .premium-options [aria-selected="true"] {
-  background: var(--ink, #183e3a);
-  color: var(--surface, #fffefa);
+  background: var(--color-on-surface);
+  color: var(--color-surface-raised);
 }
 
 .premium-options:has([aria-label="Birth year"]) [role="listbox"] {
@@ -75,12 +75,12 @@
   padding: 10px 4px;
 }
 .premium-options-heading button {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
 }
 .premium-select:hover,
 .premium-options-heading button:hover,
 .premium-options [role="option"]:hover {
-  background: var(--primary-soft);
-  color: var(--ink);
+  background: var(--color-secondary);
+  color: var(--color-on-surface);
 }
