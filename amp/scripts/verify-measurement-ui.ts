@@ -142,7 +142,7 @@ try {
       await page.waitForFunction(
         () =>
           !!document.querySelector(".compact-answer-action") ===
-          matchMedia("(max-width:650px) and (max-height:780px)").matches,
+          matchMedia("(max-width: 650px) and (max-height: 640px)").matches,
       );
       await page.waitForFunction(
         () =>

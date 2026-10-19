@@ -148,7 +148,7 @@ try {
   await page.locator(".solution-panel").waitFor();
   assert.match(
     await page.locator(".solution-panel").innerText(),
-    /Practiced with support/,
+    /with (a hint|the lesson)/i,
   );
   await page.keyboard.press("Escape");
   assert.equal(
@@ -279,7 +279,7 @@ try {
       // Let the media-query subscription commit the appropriate answer surface.
       await page.waitForFunction(() => {
         const compact = matchMedia(
-          "(max-width:650px) and (max-height:780px)",
+          "(max-width: 650px) and (max-height: 640px)",
         ).matches;
         return !!document.querySelector(".compact-answer-action") === compact;
       });

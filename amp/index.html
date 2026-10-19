@@ -15,15 +15,18 @@
         font-family: system-ui, sans-serif;
       }
       .app-loading {
-        height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        min-height: 100dvh;
       }
-      .app-loading strong {
-        font-size: 28px;
-        letter-spacing: -1px;
+      .app-loading-bar {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 64px;
+        padding: 0 16px;
+        border-bottom: 1px solid #e2e5da;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
       }
       @media (prefers-color-scheme: dark) {
         html,
@@ -31,15 +34,16 @@
           background: #122522;
           color: #e9f0e8;
         }
+        .app-loading-bar {
+          border-bottom-color: #365148;
+        }
       }
     </style>
   </head>
   <body>
     <div id="root">
       <div class="app-loading" aria-busy="true">
-        <strong>AMP</strong>
-        <p>Opening your workspace…</p>
-        <button style="visibility:hidden;min-height:48px;min-width:120px;margin-top:12px" disabled>Try again</button>
+        <div class="app-loading-bar">AMP</div>
       </div>
     </div>
     <script type="module" src="/src/web/main.tsx"></script>

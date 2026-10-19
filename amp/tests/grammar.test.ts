@@ -5,10 +5,11 @@ import { templates, generateProblem } from "../src/math/engine";
 /** Generated text must read correctly for every count, including 1. */
 const rules: [RegExp, string][] = [
   [
-    /(?<![\d./−-])\b1 (?!is\b|has\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+s\b/,
+    /(?<![\d./−-])\b1 (?!is\b|was\b|has\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+s\b/,
     "plural noun after 1",
   ],
   [/\b[Tt]here (are|were) 1\b/, "plural verb before 1"],
+  [/(?<![\d./−+×÷=*-]\s?)\b1 (were|are|have)\b/, "plural verb directly after 1"],
   [/\([a-z]*s\)|[a-z]\(s\)/, "“(s)” plural placeholder"],
   [
     /(?:^|[=:] )(-?[\d/.]+) = \1(?=[.,;]?$|[.,;] |\s[a-z])/,

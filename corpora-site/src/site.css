@@ -968,3 +968,87 @@ footer > .fine {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+.breadcrumbs {
+  margin-top: 28px;
+  font-size: 0.85rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 0;
+  list-style: none;
+}
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 16px;
+  opacity: 0.5;
+}
+.funding-intro {
+  max-width: 900px;
+}
+.funding-intro h1 {
+  overflow-wrap: anywhere;
+}
+.funding-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.55fr);
+  gap: 64px;
+  align-items: start;
+}
+.funding-status {
+  grid-column: 2;
+  grid-row: 1;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+}
+.funding-status h2 {
+  font-size: 1.6rem;
+}
+.funding-product-links {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 24px;
+}
+.funding-article {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+.funding-article section {
+  padding: 0 0 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.funding-article h2 {
+  margin-top: 0;
+}
+.funding-article li {
+  padding-left: 6px;
+  margin-bottom: 12px;
+}
+.funding-article ul,
+.funding-article ol {
+  padding-left: 24px;
+}
+.funding-sources a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .funding-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .funding-status {
+    width: 100%;
+    padding: 22px;
+  }
+  .funding-article {
+    width: 100%;
+  }
+}

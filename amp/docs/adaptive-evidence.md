@@ -12,6 +12,8 @@ The frontier estimates a curriculum-grade coordinate: kindergarten is 0, grades 
 
 Production aims near `level − 0.5 + 0.3 × uncertainty`. Due reviews, errors and unmet implemented prerequisites can reserve support work. Repeated difficulty follows prerequisite links across unimplemented nodes to the nearest teachable ancestor; success never grants unobserved ancestor credit. Recent skills and repeated strands receive penalties. Batches have at most five problems. Offline pools retain a grade ceiling. Unused batches on another device are not cross-device reservations.
 
+**Placement.** A new learner's first four answers follow scripted openers in `src/learning/placement.ts`. These are short, familiar items from this year's or last year's core material for the grade expected at that age; high-school ages start on grade-8 items. Each slot has a small pool of items in one strand, and neighbouring slots differ. The learner id picks from each pool, so siblings start differently while one learner's sequence stays fixed. Adaptive selection then takes over from the frontier. The first 20 answers offer only **assessment** families. **Scaffold** families, which are method steps such as a partial product or a make-ten step, return to practice afterwards. Opener outcomes are ordinary evidence.
+
 Production selection reasons describe a prerequisite, revisit after an error or assistance, scheduled review, work in a skill with recorded evidence (`frontier`), or an unobserved skill (`explore`).
 
 ## Isolated experimental model

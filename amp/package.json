@@ -15,6 +15,8 @@
     "test:db": "tsx scripts/test-database-preflight.ts && tsx --test tests/*.integration.ts",
     "test:ui": "tsx scripts/verify-ui.ts && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui",
     "tsc": "tsc --noEmit",
+    "lint:colors": "tsx scripts/check-color-literals.ts --strict",
+    "test:contrast": "tsx scripts/verify-contrast.ts --strict",
     "build": "npm run tsc && vite build",
     "audit": "tsx scripts/audit.ts",
     "publications": "tsx scripts/publications.ts",
@@ -23,8 +25,9 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/**/*.ts\"",
     "review:math": "mkdir -p artifacts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
     "privacy:retention": "tsx scripts/privacy-retention.ts",
+    "report:funnel": "tsx scripts/report-funnel.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
-    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui",
+    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
     "test:choice-ui": "tsx scripts/verify-choice-ui.ts",
     "test:funding-ui": "tsx scripts/verify-funding-ui.ts",
@@ -42,7 +45,9 @@
     "consent:deliver": "tsx scripts/consent-delivery.ts",
     "test:lesson-animation-ui": "tsx scripts/verify-lesson-animation-ui.ts",
     "test:premium-ui": "tsx scripts/verify-premium-shell.ts",
-    "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__"
+    "test:onboarding-ui": "tsx scripts/verify-onboarding-ui.ts",
+    "test:funnel-ui": "tsx scripts/verify-funnel-ui.ts",
+    "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

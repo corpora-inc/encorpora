@@ -1,5 +1,6 @@
 import type { AnnualOffer } from "../billing/stripe/purchase-contracts";
 import "./plan-options.css";
+import { annualSaving } from "./features/billing/payment-url";
 
 export function PlanOptions({
   offers,
@@ -12,12 +13,7 @@ export function PlanOptions({
   onSelect?: (offer: AnnualOffer) => void;
   disabled?: boolean;
 }) {
-  const annual = offers.find((offer) => offer.interval === "year");
-  const monthly = offers.find((offer) => offer.interval === "month");
-  const saving =
-    annual && monthly && annual.currency === monthly.currency
-      ? monthly.amountMinor * 12 - annual.amountMinor
-      : 0;
+  const saving = annualSaving(offers);
   return (
     <div className="plan-options">
       <div

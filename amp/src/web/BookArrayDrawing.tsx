@@ -31,18 +31,25 @@ export function BookArrayDrawing({
               <rect
                 width={8}
                 height={8}
-                fill={["#e3efe9", "#fbefd8", "#c5ded6", "#f5dfc5"][region]}
+                fill={
+                  [
+                    "var(--color-figure-accent-fill)",
+                    "var(--color-figure-gold-fill)",
+                    "var(--color-figure-accent-fill-strong)",
+                    "var(--color-figure-gold-fill-strong)",
+                  ][region]
+                }
               />
               {(region & 1) !== 0 && (
                 <path
                   d="M-2,2 L2,-2 M0,8 L8,0 M6,10 L10,6"
                   fill="none"
-                  stroke="#64887d"
+                  stroke="var(--color-figure-axis)"
                   strokeWidth={0.8}
                 />
               )}
               {(region & 2) !== 0 && (
-                <circle cx={4} cy={4} r={0.8} fill="#18594f" />
+                <circle cx={4} cy={4} r={0.8} fill="var(--color-figure-ink)" />
               )}
             </pattern>
           ))}
@@ -67,7 +74,7 @@ export function BookArrayDrawing({
                 width={cell}
                 height={cell}
                 fill={`url(#${prefix}-${region})`}
-                stroke="#18594f"
+                stroke="var(--color-figure-ink)"
                 strokeWidth={0.8}
               />
             );
@@ -79,7 +86,7 @@ export function BookArrayDrawing({
             x2={x + d.splitAfterColumn * cell}
             y1={y - 5}
             y2={y + d.rows * cell + 5}
-            stroke="#18594f"
+            stroke="var(--color-figure-ink)"
             strokeWidth={2.5}
             strokeDasharray="5 3"
           />
@@ -90,7 +97,7 @@ export function BookArrayDrawing({
             x2={x + d.columns * cell + 5}
             y1={y + d.splitAfterRow * cell}
             y2={y + d.splitAfterRow * cell}
-            stroke="#18594f"
+            stroke="var(--color-figure-ink)"
             strokeWidth={2.5}
             strokeDasharray="5 3"
           />

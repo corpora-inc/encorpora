@@ -1,5 +1,6 @@
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
+import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
@@ -34,6 +35,12 @@ export function LessonIllustration({
     kind === "radical-rationalize"
   )
     return <RadicalIllustration kind={kind} />;
+  if (
+    kind === "signed-fraction-number-line" ||
+    kind === "complex-fraction-scaling" ||
+    kind === "rational-power-ladder"
+  )
+    return <RationalIllustration kind={kind} />;
   if (
     kind === "circle-circumference" ||
     kind === "circle-area" ||

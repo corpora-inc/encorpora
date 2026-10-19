@@ -1,5 +1,6 @@
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
@@ -38,6 +39,9 @@ export interface Lesson {
       | "radical-like-lengths"
       | "radical-product-grid"
       | "radical-rationalize"
+      | "signed-fraction-number-line"
+      | "complex-fraction-scaling"
+      | "rational-power-ladder"
       | "integer-exponent-ladder"
       | "descriptive-median"
       | "descriptive-range"
@@ -529,6 +533,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
