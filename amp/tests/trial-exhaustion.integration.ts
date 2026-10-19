@@ -115,6 +115,20 @@ test(
         assert.equal(progress.statusCode, 200, progress.body);
         assert.equal(progress.json().phase, "practice");
         assert.equal(progress.json().totals.answered, 20);
+        // The first answer is a lucky pick on a four-option fraction choice.
+        // The server estimator discounts it by its guess chance, so fractions
+        // no longer jump about two grades above the learner's level on it.
+        const frontier = await repository.transaction(
+          account,
+          trial.learnerId,
+          (tx) => tx.frontier(),
+        );
+        const fractions = frontier.strands.fractions;
+        assert.ok(fractions, JSON.stringify(frontier.strands));
+        assert.ok(
+          fractions.level - frontier.overall.level < 1.4,
+          `fractions ${fractions.level}, overall ${frontier.overall.level}`,
+        );
         const batch = await app.inject({
           method: "POST",
           url: `${base}/batches`,
@@ -129,8 +143,8 @@ test(
         const selected = templates.find(
           (t) => t.id === batch.json().problems[0].templateId,
         )!;
-        // Each strand aims at its own estimate, so a strand with a (guessed)
-        // success may sit above the overall level. Whatever strand is chosen,
+        // Each strand aims at its own estimate, so a strand with a (guessed,
+        // discounted) success may still sit above the overall level. Whatever strand is chosen,
         // the learner gets that strand's easiest material, never an advanced
         // fallback, and never more than a grade above the catalog's start.
         const strandOf = (t: (typeof templates)[number]) =>

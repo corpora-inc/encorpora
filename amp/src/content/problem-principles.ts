@@ -4,9 +4,11 @@ import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
+import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
+import { bivariatePrinciples } from "./bivariate-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { decimalPrinciples } from "./decimal-lessons";
 import { timeMoneyPrinciples } from "./time-money-lessons";
@@ -14,6 +16,7 @@ import { attributePrinciples } from "./attribute-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
+import { realNumberPrinciples } from "./real-number-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
 import { numberSensePrinciples } from "./number-sense-lessons";
@@ -31,20 +34,24 @@ import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
+import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
+  ...anglePrinciples,
   ...polygonPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
+  ...absoluteValuePrinciples,
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
   ...distributionPrinciples,
   ...inferencePrinciples,
+  ...bivariatePrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...decimalPrinciples,
@@ -57,6 +64,7 @@ export const principles: Record<string, string> = {
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...realNumberPrinciples,
   ...numberSystemPrinciples,
   ...ratioRatePrinciples,
   ...patternFunctionPrinciples,

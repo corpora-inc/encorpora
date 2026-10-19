@@ -10,6 +10,7 @@ import {
 import { projectSkillEvidence } from "../src/server/evidence.js";
 import { templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
+import { guessChanceOf } from "../src/math/guess-chance";
 import type { Outcome } from "../src/server/repository";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -41,6 +42,7 @@ function simulate(
       observations: attempts,
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
     });
     for (const choice of planMixedPractice({
       templates,
@@ -79,6 +81,7 @@ function simulate(
       observations: attempts,
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
     }),
   };
 }
@@ -182,6 +185,7 @@ test("the estimate narrows with evidence and discounts uninformative answers", (
       })),
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
     }).overall;
   const prior = run("linear-equation", true, false, 0);
   assert.equal(prior.level, 6);
@@ -209,6 +213,7 @@ test("offline packs never exceed a grade above the strand frontier", () => {
     observations: [],
     gradeOf,
     strandOf,
+    guessOf: guessChanceOf,
   });
   const choices = planMixedPractice({
     templates,
@@ -247,6 +252,7 @@ test("a learner who improves is followed: old misses fade and surprises re-widen
       observations,
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
       now: Date.parse(observations.at(-1)!.createdAt) - october + october,
     }).overall;
   const low = estimate(misses);

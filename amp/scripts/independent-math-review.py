@@ -16,6 +16,7 @@ from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
+from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures, review_absolute_value_content, review_absolute_value_content_mutations
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
@@ -24,6 +25,7 @@ from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, so
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
 from polygon_math_oracle import POLYGONS, POLYGONS_CHOICE, solve_polygon, review_polygon_fixtures, review_polygon_problem
+from angle_math_oracle import ANGLES, ANGLES_CHOICE, solve_angle, review_angle_fixtures, review_angle_problem
 from shape_math_oracle import SHAPES, SHAPES_CHOICE, solve_shape, review_shape_fixtures, review_shape_problem
 from volume_coordinate_math_oracle import VOLUME_COORDINATE, VOLUME_COORDINATE_CHOICE, solve_volume_coordinate, review_volume_coordinate_fixtures, review_volume_coordinate_problem
 from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
@@ -33,6 +35,7 @@ from print_pdf_oracle import review_print_pdfs
 from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
+from real_number_math_oracle import REAL_NUMBER, REAL_NUMBER_CHOICE, solve_real_number, review_real_number_fixtures, review_problem as review_real_number_problem, review_real_number_content, review_content_mutations as review_real_number_mutations
 from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve_number_system, review_number_system_fixtures, review_problem as review_number_system_problem, review_number_system_content, review_content_mutations as review_number_system_mutations
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
@@ -66,7 +69,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | NUMBER_SENSE
+SUPPORTED = REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | NUMBER_SENSE
 
 
 def require(condition, message):
@@ -75,11 +78,15 @@ def require(condition, message):
         raise ValueError(message)
 
 
+SUPPORTED |= ABSOLUTE_VALUE
+
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
     if template in NUMBER_SENSE:
         return solve_number_sense(public)
+    if template in REAL_NUMBER:
+        return solve_real_number(public)
     if template in NUMBER_SYSTEM:
         return solve_number_system(public)
     if template in MULTIPLY_DIVIDE:
@@ -88,6 +95,8 @@ def solve(public):
         return solve_ratio_rate(public)
     if template in SHAPES:
         return solve_shape(public)
+    if template in ANGLES:
+        return solve_angle(public)
     if template in POLYGONS:
         return solve_polygon(public)
     if template in PATTERN_FUNCTION:
@@ -140,6 +149,8 @@ def solve(public):
         return solve_polynomial(public)
     if template in QUADRATIC:
         return solve_quadratic(public)
+    if template in ABSOLUTE_VALUE:
+        return solve_absolute_value(public)
     if template in MEASUREMENT:
         return solve_measurement(public)
     if template in ALGEBRA:
@@ -339,12 +350,15 @@ def solve(public):
 
 
 def review(stream):
+    review_real_number_fixtures()
+    review_real_number_mutations()
     review_number_system_fixtures()
     review_number_system_mutations()
     review_multiply_divide_fixtures()
     review_ratio_rate_fixtures()
     review_ratio_rate_mutations()
     review_shape_fixtures()
+    review_angle_fixtures()
     review_polygon_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
@@ -374,6 +388,8 @@ def review(stream):
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
+    review_absolute_value_fixtures()
+    review_absolute_value_content_mutations()
     review_polynomial_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
@@ -444,6 +460,8 @@ def review(stream):
             review_equation_problem(problem)
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
+        if template in REAL_NUMBER:
+            review_real_number_problem(problem)
         if template in NUMBER_SYSTEM:
             review_number_system_problem(problem)
         if template in RATIO_RATE:
@@ -470,7 +488,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -482,11 +500,14 @@ def review(stream):
             review_volume_coordinate_problem(problem)
         if template in SHAPES:
             review_shape_problem(problem)
+        if template in ANGLES:
+            review_angle_problem(problem)
         if template in POLYGONS:
             review_polygon_problem(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent number-sense coverage: ' + json.dumps(number_sense_corpus.finish()), file=sys.stderr)
+    print('Independent real-number content: ' + json.dumps(review_real_number_content()), file=sys.stderr)
     print('Independent number-system content: ' + json.dumps(review_number_system_content()), file=sys.stderr)
     print('Independent multiply-divide coverage: ' + json.dumps(multiply_divide_corpus.finish()), file=sys.stderr)
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
@@ -513,20 +534,25 @@ def review(stream):
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
-    publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
+    # `npm run review:math` rebuilds artifacts/publications first, so the print
+    # review sees current output. Unit tests point this at an absent directory
+    # so their result never depends on whatever happens to be on disk.
+    amp_root = Path(__file__).resolve().parent.parent
+    publications = Path(os.environ.get('AMP_PUBLICATIONS_DIR') or amp_root / 'artifacts/publications')
     if publications.exists():
         reader = subprocess.run(
             ['node', '--import', 'tsx', 'scripts/verify-reader-typesetting.ts'],
-            cwd=publications.parent.parent,
-            env={**os.environ, 'READER_REVIEW_OUT': str(publications.parent / 'reader-typesetting-review')},
+            cwd=amp_root,
+            env={**os.environ, 'READER_REVIEW_OUT': str(amp_root / 'artifacts/reader-typesetting-review')},
             capture_output=True, text=True, timeout=120)
         require(reader.returncode == 0, f'Reader typesetting review failed: {reader.stderr}')
         print('Independent reader typesetting review: ' + reader.stdout.strip(), file=sys.stderr)
         print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
     else:
-        print('Reader typesetting and print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
+        print(f'Reader typesetting and print layout/PDF review not run: no publication export directory at {publications}; npm run review:math builds it.', file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 

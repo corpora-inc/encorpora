@@ -15,6 +15,7 @@ import {
   templateGrade,
   itemSuccess,
   itemInformation,
+  type EditorialCalibration,
 } from "../learning/item-calibration";
 export { templateGrade } from "../learning/item-calibration";
 import { projectSkillEvidence, type SkillEvidence } from "./evidence.js";
@@ -53,6 +54,9 @@ export function planExperimentalMixedPractice(options: {
   strictCeiling?: boolean;
   /** Internal scheduling configuration; never accepted from a learner payload. */
   targetBand?: readonly [number, number];
+  /** Editorial overrides describing these templates' generators; the live
+   * table by default. */
+  calibration?: EditorialCalibration;
 }): PracticeChoice[] {
   const { templates, skills, evidence, seed } = options;
   if (!templates.length) throw new Error("No active templates");
@@ -82,7 +86,7 @@ export function planExperimentalMixedPractice(options: {
   const items = new Map(
     templates.map((template) => [
       template.id,
-      templateCalibration(template, nodes),
+      templateCalibration(template, nodes, options.calibration),
     ]),
   );
   const frontier =
