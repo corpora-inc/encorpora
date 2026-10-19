@@ -98,7 +98,9 @@ const answerText = (v: Rational) => `${v.n}${v.d === 1 ? "" : `/${v.d}`}`;
 /** A ratio of two written lengths, then reduced when it reduces. */
 const ratio = (a: number, b: number) => {
   const v = q(a, b);
-  return v.d === b || (v.n === a && v.d === b) ? `${a}/${b}` : `${a}/${b} = ${frac(v)}`;
+  return v.d === b || (v.n === a && v.d === b)
+    ? `${a}/${b}`
+    : `${a}/${b} = ${frac(v)}`;
 };
 /** A trigonometric statement as TeX: $\sin A = \frac{3}{5}$. */
 const math = (plain: string) =>
@@ -109,7 +111,8 @@ const math = (plain: string) =>
     .replace(/÷/g, "\\div")
     .replace(/√(\d+)/g, "\\sqrt{$1}")
     .replace(/\b(sin|cos|tan)\b/g, "\\$1")
-    .replace(/°/g, "^\\circ")}$`;
+    .replace(/°/g, "^\\circ")
+    .replace(/θ/g, "\\theta")}$`;
 
 function random(id: string, seed: string): Random {
   let counter = 0;
@@ -130,7 +133,13 @@ const pick = <T>(r: Random, items: readonly T[]) =>
   items[r(0, items.length - 1)]!;
 
 /** A triangle with sides AB = c, BC = a, CA = b, drawn from A at the origin. */
-function placed(c: number, a: number, b: number, at: Point = [0, 0], s = 1): [Point, Point, Point] {
+function placed(
+  c: number,
+  a: number,
+  b: number,
+  at: Point = [0, 0],
+  s = 1,
+): [Point, Point, Point] {
   const cx = (b * b + c * c - a * a) / (2 * c);
   const cy = Math.sqrt(Math.max(0, b * b - cx * cx));
   return [
@@ -139,12 +148,22 @@ function placed(c: number, a: number, b: number, at: Point = [0, 0], s = 1): [Po
     [at[0] + cx * s, at[1] + cy * s],
   ];
 }
+/** (3, −2), with typographic minus signs. */
+const pt = ([x, y]: Point) =>
+  `(${String(x).replace("-", "−")}, ${String(y).replace("-", "−")})`;
 const light = (target: string, ink: "accent" | "warm" | "gold"): Action => ({
   do: "fill",
   target,
   ink,
 });
-const scales: readonly Rational[] = [q(3, 2), q(2), q(5, 2), q(3), q(4, 3), q(1, 2)];
+const scales: readonly Rational[] = [
+  q(3, 2),
+  q(2),
+  q(5, 2),
+  q(3),
+  q(4, 3),
+  q(1, 2),
+];
 
 // ------------------------------------------------------------- similarity
 function similarCase(r: Random): Case {
@@ -154,7 +173,9 @@ function similarCase(r: Random): Case {
     do {
       [a, b, c] = [r(3, 9), r(3, 9), r(4, 10)];
     } while (a + b <= c + 1 || a + c <= b + 1 || b + c <= a + 1);
+    // A scale factor that keeps every side a whole or half number.
     let k = pick(r, scales);
+    while ([a, b, c].some((x) => mul(q(x), k).d > 2)) k = pick(r, scales);
     const reverse = r(0, 1) === 1;
     // Ask for a side in the second triangle from the first, or the reverse.
     const sides = [c, a, b];
@@ -165,8 +186,6 @@ function similarCase(r: Random): Case {
       ["AB", "BC", "CA"],
       ["DE", "EF", "FD"],
     ] as const;
-    const big = sides.map((x) => mul(q(x), k));
-    if (big.some((x) => x.d > 2)) k = q(2);
     const second = sides.map((x) => mul(q(x), k));
     // The learner knows: all three sides of the triangle given in full, and
     // the matching side in the other.
@@ -185,7 +204,11 @@ function similarCase(r: Random): Case {
       );
     const draw = (t: number, at: Point, s: number) => {
       let tri = triangle(placed(c, a, b, at, s)).names(
-        ...((t === 0 ? ["A", "B", "C"] : ["D", "E", "F"]) as [string, string, string]),
+        ...((t === 0 ? ["A", "B", "C"] : ["D", "E", "F"]) as [
+          string,
+          string,
+          string,
+        ]),
       );
       for (const [i, spec] of figureSides(t).entries())
         tri = tri.side(i as 0 | 1 | 2, spec as { label?: string | null });
@@ -196,7 +219,7 @@ function similarCase(r: Random): Case {
     };
     const kv = value(k);
     const first = draw(0, [0, 0], 1),
-      other = draw(1, [c + 1.5, 0], kv);
+      other = draw(1, [c + 1.2 + 0.25 * Math.max(c, c * kv), 0], kv);
     const kText = reverse ? frac(q(k.d, k.n)) : frac(k);
     const prompt = `Triangle ABC is similar to triangle DEF, with A, B and C matching D, E and F. ${
       reverse
@@ -260,12 +283,48 @@ function similarCase(r: Random): Case {
       .id("t");
     const figure = scene(
       tri,
-      { type: "segment", id: "de", from: D, to: E, stroke: "accent", width: 2.5 },
+      {
+        type: "segment",
+        id: "de",
+        from: D,
+        to: E,
+        stroke: "accent",
+        width: 2.5,
+      },
       { type: "point", id: "d", at: D, r: 4 },
       { type: "point", id: "e", at: E, r: 4 },
-      { type: "text", id: "d.name", at: D, text: "D", font: "math", bold: true, align: [1, 0], offset: [-8, 0] },
-      { type: "text", id: "e.name", at: E, text: "E", font: "math", bold: true, align: [-1, 0], offset: [8, 0] },
-      { type: "text", id: "de.label", at: [(D[0] + E[0]) / 2, D[1]], text: askBC ? String(de) : "?", derived: !askBC, color: "accent", bold: true, align: [0, 1], offset: [0, -6], halo: true },
+      {
+        type: "text",
+        id: "dName",
+        at: D,
+        text: "D",
+        font: "math",
+        bold: true,
+        align: [1, 0],
+        offset: [-8, 0],
+      },
+      {
+        type: "text",
+        id: "eName",
+        at: E,
+        text: "E",
+        font: "math",
+        bold: true,
+        align: [-1, 0],
+        offset: [8, 0],
+      },
+      {
+        type: "text",
+        id: "deLabel",
+        at: [(D[0] + E[0]) / 2, D[1]],
+        text: askBC ? String(de) : "?",
+        derived: !askBC,
+        color: "accent",
+        bold: true,
+        align: [0, 1],
+        offset: [0, -6],
+        halo: true,
+      },
     ).build({
       title: "Triangle ABC with DE parallel to BC",
       steps: [
@@ -275,7 +334,7 @@ function similarCase(r: Random): Case {
           light("t.side.1", "accent"),
         ),
         step(
-          `AD = ${ad} matches AB = ${ad} + ${db} = ${ab}.`,
+          "AD matches the whole side AB = AD + DB, not the piece DB.",
           light("t.side.0", "warm"),
         ),
       ],
@@ -304,12 +363,14 @@ function similarCase(r: Random): Case {
       S = r(3, 12) * pick(r, [2, 3, 4]);
     const answer = q(h * S, s);
     const k = q(S, s);
-    const draw = (height: number, shadow: number, at: Point, id: string, labels: [string | null, string]) =>
-      triangle([
-        at,
-        [at[0] + shadow, at[1]],
-        [at[0], at[1] + height],
-      ])
+    const draw = (
+      height: number,
+      shadow: number,
+      at: Point,
+      id: string,
+      labels: [string | null, string],
+    ) =>
+      triangle([at, [at[0] + shadow, at[1]], [at[0], at[1] + height]])
         .side(0, { label: labels[1] })
         .side(2, { label: labels[0] })
         .angle(0, { mark: "right" })
@@ -329,12 +390,26 @@ function similarCase(r: Random): Case {
       tags: ["shadow"],
       figure: scene(
         draw(h / unit, s / unit, [0, 0], "p", [String(h), String(s)]),
-        draw(value(answer) * scaleTree, S * scaleTree, [s / unit + 1.5, 0], "tree", [null, String(S)]),
+        draw(
+          value(answer) * scaleTree,
+          S * scaleTree,
+          [s / unit + 1.5, 0],
+          "tree",
+          [null, String(S)],
+        ),
       ).build({
         title: "A person and a tree with their shadows",
         steps: [
-          step("Shadow matches shadow.", light("p.side.0", "accent"), light("tree.side.0", "accent")),
-          step("Height matches height.", light("p.side.2", "warm"), light("tree.side.2", "warm")),
+          step(
+            "Shadow matches shadow.",
+            light("p.side.0", "accent"),
+            light("tree.side.0", "accent"),
+          ),
+          step(
+            "Height matches height.",
+            light("p.side.2", "warm"),
+            light("tree.side.2", "warm"),
+          ),
         ],
       }),
       label: "Height in feet",
@@ -374,34 +449,40 @@ function dilationCase(r: Random): Case {
       [4, 3],
       [0, 5],
       [5, 0],
-      [6, 8],
       [0, 4],
       [3, 0],
     ] as const);
     const L = Math.hypot(vx, vy);
-    const A: Point = [r(1, 3), r(1, 3)];
+    const A: Point = [r(1, 2), r(1, 2)];
     const B: Point = [A[0] + vx, A[1] + vy];
     const image = mul(q(L), k);
     const kv = value(k);
-    const top = Math.ceil(Math.max(B[0], B[1]) * Math.max(1, kv)) + 1;
+    // Rays run to a fixed 2.2 times the distance, whatever k is: the drawing
+    // never encodes the scale factor.
+    const reach = 2.2;
+    const top = Math.ceil(Math.max(B[0], B[1]) * reach) + 1;
     const figure = graph({ x: [-1, top], y: [-1, top], tick: top > 12 ? 2 : 1 })
       .id("g")
       .point(0, 0, "O")
       .point(A[0], A[1], "A")
       .point(B[0], B[1], "B")
       .segment(A, B)
-      .segment([0, 0], [A[0] * Math.max(1, kv), A[1] * Math.max(1, kv)], { dash: "dash" })
-      .segment([0, 0], [B[0] * Math.max(1, kv), B[1] * Math.max(1, kv)], { dash: "dash" })
+      .segment([0, 0], [A[0] * reach, A[1] * reach], { dash: "dash" })
+      .segment([0, 0], [B[0] * reach, B[1] * reach], { dash: "dash" })
       .scene({
         title: "Segment AB and a center of dilation O",
         steps: [
           step(
-            `Each image point lies on the ray from O through its point, ${frac(k)} times as far from O.`,
+            mode === 0
+              ? `Each image point lies on the ray from O through its point, ${frac(k)} times as far from O.`
+              : "Each image point lies on the ray from O through its point; the scale factor says how many times as far.",
             act.trace("g.segment.1"),
             act.trace("g.segment.2"),
           ),
           step(
-            `So every length is multiplied by ${frac(k)}, AB included.`,
+            mode === 0
+              ? `So every length is multiplied by ${frac(k)}, AB included.`
+              : "So every length is multiplied by that same factor, AB included.",
             act.highlight("g.segment.0"),
           ),
         ],
@@ -426,8 +507,8 @@ function dilationCase(r: Random): Case {
         "The scale factor is the image length divided by the original length.",
         `${frac(image)} ÷ ${L} = ${frac(k)}.`,
         kv < 1
-          ? "It is less than 1, so the dilation shrinks the segment."
-          : "It is greater than 1, so the dilation enlarges the segment.",
+          ? `The scale factor ${frac(k)} is less than 1, so the dilation shrinks the segment.`
+          : `The scale factor ${frac(k)} is greater than 1, so the dilation enlarges the segment.`,
       ],
       hint: `Compare the image to the original: how many times ${L} is ${frac(image)}?`,
       tags: ["scale-factor", kv < 1 ? "reduction" : "enlargement"],
@@ -457,12 +538,12 @@ function dilationCase(r: Random): Case {
     const name = axis ? "y" : "x";
     const ext = Math.max(9, ...image.map((v) => Math.ceil(Math.abs(v)) + 1));
     return {
-      prompt: `A dilation with center C(${c === C[0] ? C[0] : C[0]}, ${C[1]}) and scale factor ${frac(k)} maps P(${P[0]}, ${P[1]}) to P′. What is the ${name}-coordinate of P′?`.replace(/\((-?\d+), (-?\d+)\)/g, (_, a, b) => `(${a.replace("-", "−")}, ${b.replace("-", "−")})`),
+      prompt: `A dilation with center C${pt(C)} and scale factor ${frac(k)} maps P${pt(P)} to P′. What is the ${name}-coordinate of P′?`,
       answer,
       explanation: [
-        `The step from C to P is (${P[0] - C[0]}, ${P[1] - C[1]}).`.replace(/-/g, "−"),
+        `The step from C to P is ${pt([P[0] - C[0], P[1] - C[1]])}.`,
         `The dilation multiplies that step by ${frac(k)}: (${frac(mul(k, q(P[0] - C[0])))}, ${frac(mul(k, q(P[1] - C[1])))}).`,
-        `Add it to C: the ${name}-coordinate is ${frac(q(c))} + ${frac(mul(k, q(p - c)))} = ${frac(answer)}.`.replace("+ −", "− "),
+        `Add it to C: the ${name}-coordinate is ${frac(q(c))} ${p - c < 0 ? "−" : "+"} ${frac(mul(k, q(Math.abs(p - c))))} = ${frac(answer)}.`,
       ],
       hint: `Measure the step from the center C to P, not from the origin. Multiply that step by ${frac(k)}, then add it to C.`,
       tags: ["center", `axis-${name}`],
@@ -474,7 +555,10 @@ function dilationCase(r: Random): Case {
         .scene({
           title: "Center C and point P",
           steps: [
-            step("The step from C to P is what the dilation scales.", act.trace("g.segment.0")),
+            step(
+              "The step from C to P is what the dilation scales.",
+              act.trace("g.segment.0"),
+            ),
           ],
         }),
       label: `${name}-coordinate`,
@@ -594,14 +678,20 @@ function specialCase(r: Random): Case {
             light(`t.side.${sides.short}`, "accent"),
             light(`t.side.${sides.hyp}`, "warm"),
           ),
-          step("The long leg is the short leg times √3.", light(`t.side.${sides.long}`, "gold")),
+          step(
+            "The long leg is the short leg times √3.",
+            light(`t.side.${sides.long}`, "gold"),
+          ),
         ],
       });
   const forms = [
     {
       prompt: `In a 30°-60°-90° triangle, the shorter leg has length ${a}. How long is the hypotenuse?`,
       answer: q(2 * a),
-      explanation: ["The hypotenuse is twice the shorter leg, the side opposite the 30° angle.", `${a} × 2 = ${2 * a}.`],
+      explanation: [
+        "The hypotenuse is twice the shorter leg, the side opposite the 30° angle.",
+        `${a} × 2 = ${2 * a}.`,
+      ],
       hint: `The shorter leg, ${a}, is opposite 30°. Halve an equilateral triangle to see why the hypotenuse is twice it.`,
       tags: ["30", "short-to-hypotenuse"],
       figure: draw("short", String(a), "hyp"),
@@ -610,7 +700,10 @@ function specialCase(r: Random): Case {
     {
       prompt: `In a 30°-60°-90° triangle, the hypotenuse has length ${2 * a}. The longer leg is c√3. What is c?`,
       answer: q(a),
-      explanation: [`The shorter leg is half the hypotenuse: ${2 * a} ÷ 2 = ${a}.`, `The longer leg is the shorter leg times √3: ${a}√3, so c = ${a}.`],
+      explanation: [
+        `The shorter leg is half the hypotenuse: ${2 * a} ÷ 2 = ${a}.`,
+        `The longer leg is the shorter leg times √3: ${a}√3, so c = ${a}.`,
+      ],
       hint: `Go through the shorter leg: it is half of ${2 * a}. The longer leg is that times √3.`,
       tags: ["30", "hypotenuse-to-long"],
       figure: draw("hyp", String(2 * a), "long"),
@@ -619,7 +712,10 @@ function specialCase(r: Random): Case {
     {
       prompt: `In a 30°-60°-90° triangle, the longer leg has length ${a}√3. How long is the hypotenuse?`,
       answer: q(2 * a),
-      explanation: [`The longer leg is the shorter leg times √3, so the shorter leg is ${a}.`, `The hypotenuse is twice the shorter leg: ${2 * a}.`],
+      explanation: [
+        `The longer leg is the shorter leg times √3, so the shorter leg is ${a}.`,
+        `The hypotenuse is twice the shorter leg: ${2 * a}.`,
+      ],
       hint: `Divide ${a}√3 by √3 for the shorter leg, then double it.`,
       tags: ["30", "long-to-hypotenuse"],
       figure: draw("long", `${a}√3`, "hyp"),
@@ -628,7 +724,10 @@ function specialCase(r: Random): Case {
     {
       prompt: `In a 30°-60°-90° triangle, the longer leg has length ${3 * a}. The shorter leg is c√3. What is c?`,
       answer: q(a),
-      explanation: [`The shorter leg is the longer leg divided by √3: ${3 * a}/√3.`, `Multiply by √3/√3: ${3 * a}√3/3 = ${a}√3, so c = ${a}.`],
+      explanation: [
+        `The shorter leg is the longer leg divided by √3: ${3 * a}/√3.`,
+        `Multiply by √3/√3: ${3 * a}√3/3 = ${a}√3, so c = ${a}.`,
+      ],
       hint: `The shorter leg is ${3 * a} ÷ √3. Rationalize the denominator.`,
       tags: ["30", "rationalize"],
       figure: draw("long", String(3 * a), "short"),
@@ -650,7 +749,9 @@ type Ratio = "sin" | "cos" | "tan";
 function trigCase(r: Random): Case {
   const [p, qq, h0] = pick(r, triples);
   const m = r(1, 3);
-  const [x, y, hyp] = r(0, 1) ? [p * m, qq * m, h0 * m] : [qq * m, p * m, h0 * m];
+  const [x, y, hyp] = r(0, 1)
+    ? [p * m, qq * m, h0 * m]
+    : [qq * m, p * m, h0 * m];
   // Right angle at C. A at the left end of the horizontal leg CA = x; the
   // vertical leg CB = y is opposite A.
   const P: [Point, Point, Point] = [
@@ -662,14 +763,19 @@ function trigCase(r: Random): Case {
   const at = r(0, 1) ? "A" : "B";
   // Opposite and adjacent for the chosen angle.
   const [opp, adj] = at === "A" ? [y, x] : [x, y];
-  const exact: Record<Ratio, Rational> = { sin: q(opp, hyp), cos: q(adj, hyp), tan: q(opp, adj) };
+  const exact: Record<Ratio, Rational> = {
+    sin: q(opp, hyp),
+    cos: q(adj, hyp),
+    tan: q(opp, adj),
+  };
   const parts: Record<Ratio, [string, string, number, number]> = {
     sin: ["opposite", "hypotenuse", opp, hyp],
     cos: ["adjacent", "hypotenuse", adj, hyp],
     tan: ["opposite", "adjacent", opp, adj],
   };
   // Sides: 0 = AC (x), 1 = CB (y), 2 = BA (hyp).
-  const sideOf = (len: number) => (len === hyp ? 2 : len === x && len !== y ? 0 : len === y ? 1 : 0);
+  const sideOf = (len: number) =>
+    len === hyp ? 2 : len === x && len !== y ? 0 : len === y ? 1 : 0;
   const mode = r(0, 3);
   const base = () =>
     triangle(P)
@@ -680,7 +786,10 @@ function trigCase(r: Random): Case {
   const steps = (f: Ratio) => [
     step(
       `The ${parts[f][0]} side for angle ${at}.`,
-      light(`t.side.${f === "cos" ? (at === "A" ? 0 : 1) : at === "A" ? 1 : 0}`, "accent"),
+      light(
+        `t.side.${f === "cos" ? (at === "A" ? 0 : 1) : at === "A" ? 1 : 0}`,
+        "accent",
+      ),
     ),
     step(
       `The ${parts[f][1]}.`,
@@ -692,7 +801,9 @@ function trigCase(r: Random): Case {
     const missing = mode === 1 ? pick(r, [0, 1, 2] as const) : -1;
     let tri = base();
     for (const [i, len] of [x, y, hyp].entries())
-      tri = tri.side(i as 0 | 1 | 2, { label: i === missing ? undefined : String(len) });
+      tri = tri.side(i as 0 | 1 | 2, {
+        label: i === missing ? undefined : String(len),
+      });
     const [num, den] = [parts[fn][2], parts[fn][3]];
     const third =
       missing === 2
@@ -703,21 +814,27 @@ function trigCase(r: Random): Case {
     return {
       prompt: `In right triangle ABC, the right angle is at C. ${
         missing >= 0
-          ? `${["AC", "CB", "AB"].filter((_, i) => i !== missing).map((s, i) => `${s} = ${[x, y, hyp].filter((_, j) => j !== missing)[i]}`).join(" and ")}.`
+          ? `${["AC", "CB", "AB"]
+              .filter((_, i) => i !== missing)
+              .map(
+                (s, i) =>
+                  `${s} = ${[x, y, hyp].filter((_, j) => j !== missing)[i]}`,
+              )
+              .join(" and ")}.`
           : `AC = ${x}, CB = ${y} and AB = ${hyp}.`
-      } What is ${math(`${fn} ${at}`)}, as a fraction?`.replace(" as a fraction?", " Give it as a fraction."),
+      } Find ${math(`${fn} ${at}`)} as a fraction.`,
       answer: exact[fn],
       explanation: [
         ...(third ? [third] : []),
         `For angle ${at}, the ${parts[fn][0]} side is ${num} and the ${parts[fn][1]} is ${den}.`,
-        `${math(`${fn} ${at} = ${parts[fn][0] === "opposite" ? "opposite" : "adjacent"}/${parts[fn][1]}`).replace(/\\frac\{(\w+)\}\{(\w+)\}/, "\\frac{\\text{$1}}{\\text{$2}}")} = ${ratio(num, den)}.`,
+        `$\\${fn} ${at} = \\frac{\\text{${parts[fn][0]}}}{\\text{${parts[fn][1]}}}$ = ${ratio(num, den)}.`,
       ],
       hint:
         missing >= 0
-          ? `Two sides are given; the Pythagorean theorem gives the third. Then, standing at angle ${at}, name the ${parts[fn][0]} side and the ${parts[fn][1]}.`
+          ? `Two sides are given, ${[x, y, hyp].filter((_, j) => j !== missing).join(" and ")}; the Pythagorean theorem gives the third. Then, standing at angle ${at}, name the ${parts[fn][0]} side and the ${parts[fn][1]}.`
           : `Stand at angle ${at}: the side across from it is opposite, the leg touching it is adjacent, and ${hyp} is the hypotenuse. ${fn} uses the ${parts[fn][0]} and the ${parts[fn][1]}.`,
       tags: [missing >= 0 ? "two-sides" : "three-sides", fn],
-      figure: tri.scene({ title: "Right triangle ABC", steps: steps(fn) }).valueOf() as Scene,
+      figure: tri.scene({ title: "Right triangle ABC", steps: steps(fn) }),
       label: `${fn} ${at}`,
     };
   }
@@ -828,14 +945,14 @@ function complementaryCase(r: Random): Case {
     const flip = r(0, 1) === 1;
     const [given, asked] = flip ? ["cos B", "sin A"] : ["sin A", "cos B"];
     return {
-      prompt: `In right triangle ABC, the right angle is at C, and ${math(`${given} = ${frac(v)}`)}. What is ${math(asked)}?`,
+      prompt: `In right triangle ABC, the right angle is at C, and ${math(`${given} = ${frac(v)}`)}. Find ${math(asked)}.`,
       answer: v,
       explanation: [
         "A and B are the two acute angles of a right triangle, so A + B = 90°.",
         "The side opposite A is the side adjacent to B, and both ratios divide it by the hypotenuse: sin A = cos B.",
         `${math(`${asked} = ${frac(v)}`)}.`,
       ],
-      hint: `Draw it: the side opposite A is the side next to B. ${given} and ${asked} divide the same side by the same hypotenuse.`,
+      hint: `${math(`${given} = ${frac(v)}`)} compares one leg with the hypotenuse. Find that leg: it is opposite one acute angle and next to the other.`,
       tags: ["triangle", flip ? "from-cos" : "from-sin"],
       figure: triangle(P)
         .names("A", "C", "B")
@@ -846,23 +963,28 @@ function complementaryCase(r: Random): Case {
         .scene({
           title: "Right triangle ABC",
           steps: [
-            step("Opposite A and next to B: the same side.", light("t.side.1", "accent")),
-            step("Both ratios divide it by the hypotenuse.", light("t.side.2", "warm")),
+            step(
+              "Opposite A and next to B: the same side.",
+              light("t.side.1", "accent"),
+            ),
+            step(
+              "Both ratios divide it by the hypotenuse.",
+              light("t.side.2", "warm"),
+            ),
           ],
         }),
       label: asked,
     };
   }
-  const angle = r(10, 80);
   const v2 = q(r(1, 9), 10);
   return {
-    prompt: `For an acute angle A, ${math(`sin A = ${frac(v2)}`)}. What is ${math("cos(90° − A)")}?`.replace(/(\d+)\/10\b/, (s) => s),
+    prompt: `For an acute angle A, ${math(`sin A = ${frac(v2)}`)}. Find ${math("cos(90° − A)")}.`,
     answer: v2,
     explanation: [
       "90° − A is the complement of A: the other acute angle in a right triangle with angle A.",
       `The cosine of the complement is the sine of the angle, so ${math(`cos(90° − A) = sin A = ${frac(v2)}`)}.`,
     ],
-    hint: `90° − A and A are the two acute angles of one right triangle (for example, A could be ${angle}° and 90° − A ${90 - angle}°). Cosine of one is sine of the other.`,
+    hint: `A and 90° − A are the two acute angles of one right triangle. The side opposite A, which gives ${math(`sin A = ${frac(v2)}`)}, is adjacent to the other angle.`,
     tags: ["cofunction"],
     label: "cos(90° − A)",
   };
@@ -887,7 +1009,9 @@ export function similarityTrigCase(
   const c = builders[id]!(random(id, seed));
   const problem: GeneratedProblem = {
     public: {
-      id: createHash("sha256").update(JSON.stringify([id, 1, seed])).digest("hex"),
+      id: createHash("sha256")
+        .update(JSON.stringify([id, 1, seed]))
+        .digest("hex"),
       templateId: id,
       templateVersion: 1,
       seed,
@@ -897,13 +1021,21 @@ export function similarityTrigCase(
         kind: c.answer.d === 1 ? "number" : "fraction",
         label: c.label,
       },
-      ...(c.figure ? { figure: { kind: "scene" as const, scene: c.figure } } : {}),
+      ...(c.figure
+        ? { figure: { kind: "scene" as const, scene: c.figure } }
+        : {}),
     },
     answer: answerText(c.answer),
     explanation: c.explanation,
     hint: c.hint,
   };
-  return { problem, tags: c.tags, caseKey: `${c.prompt}${JSON.stringify(c.figure ?? null)}` };
+  return {
+    problem,
+    tags: c.tags,
+    caseKey: `${c.prompt}${JSON.stringify(c.figure ?? null)}`,
+  };
 }
-export const generateSimilarityTrigProblem = (id: string, seed: string): GeneratedProblem =>
-  similarityTrigCase(id, seed).problem;
+export const generateSimilarityTrigProblem = (
+  id: string,
+  seed: string,
+): GeneratedProblem => similarityTrigCase(id, seed).problem;

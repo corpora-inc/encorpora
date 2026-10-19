@@ -1,6 +1,7 @@
 import type { SemanticFigure } from "../contracts";
 import {
   angle,
+  scene,
   protractor,
   areaModel,
   array,
@@ -17,10 +18,10 @@ import {
   tenFrame,
   tree,
   triangle,
-  scene,
   venn,
 } from "./author";
 import type { Scene } from "./spec";
+import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 
 /** Reference scenes for every component: the gallery renders them at four
  * widths in both themes, and the unit tests lay every one of them out. */
@@ -260,6 +261,20 @@ export const galleryCases: GalleryCase[] = [
     ).scene(),
   },
   {
+    name: "Square: x² + 8x as tiles missing the corner (problem)",
+    scene: completeSquareTiles(8, false),
+  },
+  {
+    name: "Square: x² − 6x completed, revealed",
+    reveal: true,
+    scene: completeSquareTiles(-6),
+  },
+  {
+    name: "Square: parabola 2x² − 4x − 6 with vertex and axis, revealed",
+    reveal: true,
+    scene: vertexGraph(2, -4, -6, "2x^2 - 4x - 6", "2(x - 1)^2 - 8"),
+  },
+  {
     name: "Array: 7 × 6 split after 4 rows",
     scene: array(7, 6, { splitAfterRow: 4 }).scene(),
   },
@@ -373,6 +388,53 @@ export const galleryCases: GalleryCase[] = [
   {
     name: "Protractor: 0 on the right, ray at 75",
     scene: protractor([0, 75], ["P", "Q", "R"]).scene({ width: 340 }),
+  },
+  {
+    name: "Protractor sweep: 0 on the left, along the outer scale (lesson)",
+    reveal: true,
+    scene: scene(
+      protractor([180, 130], ["A", "B", "C"]).id("p").element(),
+      angle({
+        rays: [180, 130],
+        length: 1.25,
+        marksOnly: true,
+        marks: [
+          {
+            from: 0,
+            to: 1,
+            measure: true,
+            derived: true,
+            color: "warm",
+            clockwise: true,
+          },
+        ],
+      })
+        .id("sweep")
+        .element(),
+    ).build({
+      width: 340,
+      steps: [
+        {
+          caption: "Ray BA lies on 0 of the outer scale.",
+          actions: [
+            { do: "highlight", target: "p.ray.0" },
+            { do: "highlight", target: "p.outer.0" },
+          ],
+        },
+        {
+          caption: "Follow the outer scale from 0 to ray BC.",
+          actions: [
+            { do: "trace", target: "sweep.mark.0" },
+            { do: "highlight", target: "p.ray.1" },
+          ],
+        },
+        {
+          caption: "Angle ABC measures {sweep.measure.0}.",
+          actions: [{ do: "appear", target: "sweep.measure.0" }],
+          audience: "lesson",
+        },
+      ],
+    }),
   },
   {
     name: "Angle: parts with the unknown masked",

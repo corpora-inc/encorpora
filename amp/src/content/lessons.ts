@@ -1,3 +1,4 @@
+import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
@@ -27,6 +28,7 @@ import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
+import { similarityTrigLessons } from "./similarity-trig-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
@@ -66,6 +68,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "complete-square-area"
+      | "complete-square-balance"
+      | "complete-square-scaled"
       | "angle-pairs"
       | "parallel-angle-pairs"
       | "triangle-sum-line"
@@ -602,6 +607,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,
   ...descriptiveStatisticsLessons,
@@ -639,6 +645,7 @@ export const lessons: readonly Lesson[] = [
   ...angleLessons,
   ...polygonLessons,
   ...probabilityRulesLessons,
+  ...similarityTrigLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

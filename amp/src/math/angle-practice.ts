@@ -487,10 +487,60 @@ export function generateAngleProblem(
       const m = 5 * r(2, 34);
       const right = r(0, 1) === 1;
       const [a, b, c] = pick(r, letters);
-      figure = sceneFigure(
-        protractor(right ? [0, m] : [180, 180 - m], [a, b, c]).element(),
-      );
       const scale = right ? "inner" : "outer";
+      // The sweep runs along the scale from 0 to the second ray; its measure
+      // is computed from the rays and stays "?" until a lesson reveals it.
+      figure = {
+        kind: "scene",
+        scene: scene(
+          protractor(right ? [0, m] : [180, 180 - m], [a, b, c])
+            .id("p")
+            .element(),
+          angle({
+            rays: right ? [0, m] : [180, 180 - m],
+            // Marks sit at a fraction of the length: this puts the sweep
+            // inside the inner scale.
+            length: 1.25,
+            marksOnly: true,
+            marks: [
+              {
+                from: 0,
+                to: 1,
+                measure: true,
+                derived: true,
+                color: "warm",
+                ...(right ? {} : { clockwise: true }),
+              },
+            ],
+          })
+            .id("sweep")
+            .element(),
+        ).build({
+          width: 340,
+          maxHeight: 280,
+          steps: [
+            {
+              caption: `Ray ${b}${a} lies on 0 of the ${scale} scale.`,
+              actions: [
+                { do: "highlight", target: "p.ray.0" },
+                { do: "highlight", target: `p.${scale}.0` },
+              ],
+            },
+            {
+              caption: `Follow the ${scale} scale from 0 to ray ${b}${c}.`,
+              actions: [
+                { do: "trace", target: "sweep.mark.0" },
+                { do: "highlight", target: "p.ray.1" },
+              ],
+            },
+            {
+              caption: `Angle ${a}${b}${c} measures {sweep.measure.0}.`,
+              actions: [{ do: "appear", target: "sweep.measure.0" }],
+              audience: "lesson",
+            },
+          ],
+        }),
+      };
       prompt = `What is the measure of angle ${a}${b}${c}, in degrees?`;
       label = "Degrees";
       answer = String(m);

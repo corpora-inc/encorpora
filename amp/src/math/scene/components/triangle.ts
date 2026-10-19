@@ -149,6 +149,8 @@ registerComponent("triangle", {
           id: `side.${i}.label`,
           at: mid,
           text: side.label ?? "?",
+          // Words ("hypotenuse") in the UI sans; lengths as math.
+          font: /^[A-Za-z]{3,}/.test(side.label ?? "") ? "sans" : "math",
           derived: side.label === null,
           bold: side.label === null || !!side.color,
           color: side.color ?? "ink",
@@ -203,7 +205,18 @@ registerComponent("triangle", {
         const w = typeset(spec.label ?? "?", "math", "sm").width;
         const outer =
           spec.mark === "right" ? 13 : 20 + 5 * ((spec.arcs ?? 1) - 1);
-        const r = px(Math.max(outer + 16, (w / 2 + 9) / Math.sin(half)));
+        const want = Math.max(outer + 16, (w / 2 + 9) / Math.sin(half));
+        // The shorter side at this vertex bounds how far in a label can sit;
+        // a narrow angle on a small drawing labels from outside instead.
+        const room =
+          Math.min(
+            len(sub(pts[(i + 1) % 3]!, p)),
+            len(sub(pts[(i + 2) % 3]!, p)),
+          ) *
+          s *
+          0.8;
+        const inside = want <= room;
+        const r = inside ? px(want) : -px(w / 2 + 14);
         prims.push({
           type: "text",
           id: `angle.${i}.label`,

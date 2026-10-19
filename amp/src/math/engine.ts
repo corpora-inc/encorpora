@@ -1,4 +1,8 @@
 import {
+  completingSquareTemplates,
+  generateCompletingSquareProblem,
+} from "./completing-square-practice";
+import {
   angleTriangleTemplates,
   generateAngleTriangleProblem,
 } from "./angle-triangle-practice";
@@ -72,6 +76,10 @@ import {
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
+import {
+  similarityTrigTemplates,
+  generateSimilarityTrigProblem,
+} from "./similarity-trig-practice";
 import {
   probabilityRulesTemplates,
   generateProbabilityRulesProblem,
@@ -309,6 +317,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...probabilityRulesTemplates,
+  ...similarityTrigTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
@@ -329,6 +338,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...completingSquareTemplates,
   ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
@@ -471,6 +481,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...completingSquareTemplates,
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
@@ -493,6 +504,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...probabilityRulesTemplates,
+    ...similarityTrigTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -526,6 +538,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (completingSquareTemplates.some((t) => t.id === templateId))
+    return generateCompletingSquareProblem(templateId, seed);
   if (factoringTemplates.some((t) => t.id === templateId))
     return generateFactoringProblem(templateId, seed);
   if (numberSystemTemplates.some((t) => t.id === templateId))
@@ -572,6 +586,8 @@ function generateRawProblem(
     return generateRealNumberProblem(templateId, seed);
   if (probabilityRulesTemplates.some((t) => t.id === templateId))
     return generateProbabilityRulesProblem(templateId, seed);
+  if (similarityTrigTemplates.some((t) => t.id === templateId))
+    return generateSimilarityTrigProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))

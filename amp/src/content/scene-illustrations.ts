@@ -13,10 +13,12 @@ import type { Graph, Point } from "../math/scene/spec";
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
 import { lessonScenes } from "./lesson-scenes";
+import { similarityTrigScenes } from "./similarity-trig-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
   ...lessonScenes,
+  ...similarityTrigScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],

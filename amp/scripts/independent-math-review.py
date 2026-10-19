@@ -25,6 +25,7 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from similarity_trig_math_oracle import SIMILARITY_TRIG, solve_similarity_trig, review_similarity_trig_fixtures, review_similarity_trig_problem
 from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
 from polygon_math_oracle import POLYGONS, POLYGONS_CHOICE, solve_polygon, review_polygon_fixtures, review_polygon_problem
 from angle_math_oracle import ANGLES, ANGLES_CHOICE, solve_angle, review_angle_fixtures, review_angle_problem
@@ -32,6 +33,8 @@ from shape_math_oracle import SHAPES, SHAPES_CHOICE, solve_shape, review_shape_f
 from volume_coordinate_math_oracle import VOLUME_COORDINATE, VOLUME_COORDINATE_CHOICE, solve_volume_coordinate, review_volume_coordinate_fixtures, review_volume_coordinate_problem
 from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
+from completing_square_math_oracle import IDS as COMPLETING_SQUARE, solve_complete_square, self_test as review_completing_square_fixtures
+from completing_square_content_oracle import CompletingSquareReview, self_test as review_completing_square_content_fixtures, review_completing_square_content
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
@@ -72,8 +75,9 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | PROBABILITY_RULES
+SUPPORTED = ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | PROBABILITY_RULES | SIMILARITY_TRIG
 SUPPORTED |= FACTORING
+SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
 
 
@@ -88,6 +92,8 @@ SUPPORTED |= ABSOLUTE_VALUE
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in COMPLETING_SQUARE:
+        return solve_complete_square(public)
     if template in LINEAR_FUNCTION:
         return solve_linear_function(public)
     if template in ANGLE_TRIANGLE:
@@ -108,6 +114,8 @@ def solve(public):
         return solve_polygon(public)
     if template in PROBABILITY_RULES:
         return solve_probability_rules(public)
+    if template in SIMILARITY_TRIG:
+        return solve_similarity_trig(public)
     if template in PATTERN_FUNCTION:
         return solve_pattern_function(public)
     if template in EQUATIONS:
@@ -361,6 +369,8 @@ def solve(public):
 
 
 def review(stream):
+    review_completing_square_fixtures()
+    review_completing_square_content_fixtures()
     review_linear_function_fixtures()
     review_linear_function_mutations()
     review_angle_triangle_fixtures()
@@ -375,6 +385,7 @@ def review(stream):
     review_angle_fixtures()
     review_polygon_fixtures()
     review_probability_rules_fixtures()
+    review_similarity_trig_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
     review_equation_fixtures()
@@ -426,6 +437,7 @@ def review(stream):
     inequality_review = InequalityReview()
     system_review = LinearSystemReview()
     exponent_review = IntegerExponentReview()
+    completing_square_review = CompletingSquareReview()
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
     comparison_corpus = ComparisonCorpus()
@@ -451,6 +463,8 @@ def review(stream):
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
         solved = solve(public)
+        if template in COMPLETING_SQUARE:
+            completing_square_review.record(problem)
         if template in INTEGER_EXPONENT:
             exponent_review.record(public, solved)
             review_integer_exponent_explanation(public, problem["explanation"])
@@ -506,7 +520,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -524,8 +538,12 @@ def review(stream):
             review_polygon_problem(problem)
         if template in PROBABILITY_RULES:
             review_probability_rules_problem(problem, solved)
+        if template in SIMILARITY_TRIG:
+            review_similarity_trig_problem(problem, solved)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent completing-square coverage: ' + json.dumps(completing_square_review.finish(count)), file=sys.stderr)
+    print('Independent completing-square content: ' + json.dumps(review_completing_square_content()), file=sys.stderr)
     print('Independent real-number content: ' + json.dumps(review_real_number_content()), file=sys.stderr)
     print('Independent number-system content: ' + json.dumps(review_number_system_content()), file=sys.stderr)
     print('Independent multiply-divide coverage: ' + json.dumps(multiply_divide_corpus.finish()), file=sys.stderr)
