@@ -9,6 +9,16 @@ import {
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type RateLines = Extract<SemanticFigure, { kind: "double-number-line" }>;
+/** A double number line scaled through 1: pairs are [bottom, top]. */
+export type RateModel = {
+  kind: "rate";
+  top: string;
+  bottom: string;
+  given: [number, number];
+  target: [number, number];
+  findBottom: boolean;
+};
 type Display = Extract<SemanticFigure, { kind: "function-display" }>;
 export type PlotRule = {
   x: string;
@@ -55,6 +65,18 @@ export type ClockSweepAnimation = {
   minute: number;
 };
 export type AnimationModel =
+  /** a rows of b dots, built one row at a time. */
+  | { kind: "array-build"; rows: number; columns: number }
+  /** rows × columns turned a quarter turn: the fact family. */
+  | { kind: "array-turn"; rows: number; columns: number }
+  /** total counters dealt into `groups` shares, then refilled as groups of
+   * `groups` (or the reverse when `first` is "measure"). */
+  | {
+      kind: "deal";
+      total: number;
+      count: number;
+      first: "share" | "measure";
+    }
   | ShapeMorphAnimation
   | {
       kind: "plot";
@@ -82,6 +104,7 @@ export type AnimationModel =
   | { kind: "line-plot-share"; figure: LinePlot; share: number }
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
   | { kind: "box-build"; figure: LinePlot }
+  | RateModel
   | MadGapAnimation;
 type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
 /** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
@@ -248,6 +271,39 @@ export function animationModel(
   )
     return { kind: "box-build", figure: f };
   if (
+    lesson.templateId === "multiply-facts" &&
+    f?.kind === "dot-array" &&
+    f.show === "edges" &&
+    integer(f.rows!, 2, 10) &&
+    integer(f.columns!, 2, 10)
+  )
+    return { kind: "array-build", rows: f.rows!, columns: f.columns! };
+  if (
+    lesson.templateId === "divide-facts" &&
+    f?.kind === "dot-array" &&
+    (f.show === "first-column" || f.show === "first-row")
+  ) {
+    const known = (f.show === "first-column" ? f.rows : f.columns) ?? 0,
+      other = (f.total ?? 0) / known;
+    if (integer(known, 2, 10) && integer(other, 2, 10))
+      return f.show === "first-column"
+        ? { kind: "array-turn", rows: known, columns: other }
+        : { kind: "array-turn", rows: other, columns: known };
+  }
+  if (
+    lesson.templateId === "share-or-group" &&
+    f?.kind === "share-model" &&
+    integer(f.count, 2, 9) &&
+    integer(f.total / f.count, 2, 10) &&
+    f.total <= 60
+  )
+    return {
+      kind: "deal",
+      total: f.total,
+      count: f.count,
+      first: f.mode,
+    };
+  if (
     lesson.templateId === "make-ten-fact" &&
     f?.kind === "ten-frame-pair" &&
     integer(f.first, 1, 9) &&
@@ -350,6 +406,11 @@ export function animationModel(
     integer(f.splitAfterRow, 1, f.rows - 1)
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
+  if (
+    lesson.templateId === "double-number-line-missing" &&
+    f?.kind === "double-number-line"
+  )
+    return rateModel(f);
   if (
     (lesson.templateId === "line-plot-whole" ||
       lesson.templateId === "fraction-line-plot") &&
@@ -514,6 +575,37 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+/** Whole-number lines with 0, one known pair and one pair with an unknown. */
+function rateModel(f: RateLines): RateModel | null {
+  const { top, bottom } = f;
+  if (top.denominator !== 1 || bottom.denominator !== 1) return null;
+  if (top.numerators.length !== 3 || bottom.numerators.length !== 3)
+    return null;
+  if (top.numerators[0] !== 0 || bottom.numerators[0] !== 0) return null;
+  const columns = [1, 2].map((i) => [
+    bottom.numerators[i] ?? null,
+    top.numerators[i] ?? null,
+  ]);
+  const known = columns.find(([b, t]) => b !== null && t !== null),
+    asked = columns.find(([b, t]) => (b === null) !== (t === null));
+  if (!known || !asked) return null;
+  const [b, t] = known as [number, number];
+  if (!integer(b, 1, 1000) || !integer(t, 1, 100000) || t % b) return null;
+  const rate = t / b,
+    findBottom = asked[0] === null;
+  const target: [number, number] = findBottom
+    ? [asked[1]! / rate, asked[1]!]
+    : [asked[0]!, asked[0]! * rate];
+  if (!integer(target[0], 2, 1000) || target[0] === b) return null;
+  return {
+    kind: "rate",
+    top: top.label,
+    bottom: bottom.label,
+    given: [b, t],
+    target,
+    findBottom,
+  };
+}
 /** A chart row as a whole number of the smallest place: 0.45 → 450 (3 places). */
 export const chartValue = (
   row: { ones: number; decimals: string },
@@ -549,6 +641,36 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "rate") {
+    const [b, t] = model.given,
+      [tb, tt] = model.target,
+      rate = t / b;
+    const bottom = model.bottom.toLowerCase(),
+      top = model.top.toLowerCase();
+    return [
+      {
+        title: "Start from a known pair",
+        text: `Aligned marks pair ${t} on the ${top} line with ${b} on the ${bottom} line.`,
+        math: `$${t}$ and $${b}$`,
+      },
+      {
+        title: "Shrink both lines to 1",
+        text: `Divide both values by ${b}. The pair keeps its ratio and lands on 1.`,
+        math: `$${t} \\div ${b} = ${rate}$ and $${b} \\div ${b} = 1$`,
+      },
+      {
+        title: model.findBottom
+          ? "Stretch to the known value"
+          : "Stretch to the target",
+        text: model.findBottom
+          ? `Multiply both values by ${tb}, because ${tb} groups of ${rate} make ${tt}.`
+          : `Multiply both values by ${tb}. The marks stay aligned.`,
+        math: model.findBottom
+          ? `$${tt} \\div ${rate} = ${tb}$`
+          : `$${rate} \\times ${tb} = ${tt}$`,
+      },
+    ];
+  }
   if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
@@ -789,6 +911,73 @@ export function animationFrames(model: AnimationModel) {
         title: "Draw the box",
         text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
         math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
+      },
+    ];
+  }
+  if (model.kind === "array-build") {
+    const { rows: a, columns: b } = model;
+    return [
+      {
+        title: "One row",
+        text: `One row holds ${b} dots.`,
+        math: `$${b}$`,
+      },
+      {
+        title: "Equal rows",
+        text: `Add rows of the same length until there are ${a} rows of ${b}.`,
+        math: `$${a} \\times ${b}$`,
+      },
+      {
+        title: "Count by rows",
+        text: `Each row adds ${b}: ${Array.from({ length: a }, (_, i) => b * (i + 1)).join(", ")}.`,
+        math: `$${a} \\times ${b} = ${a * b}$`,
+      },
+    ];
+  }
+  if (model.kind === "array-turn") {
+    const { rows: d, columns: q } = model,
+      n = d * q;
+    return [
+      {
+        title: "Rows of the array",
+        text: `${n} dots in ${d} equal rows of ${q}.`,
+        math: `$${d} \\times ${q} = ${n}$`,
+      },
+      {
+        title: "A quarter turn",
+        text: `Rows become columns: ${q} rows of ${d}. No dot moves in or out.`,
+        math: `$${q} \\times ${d} = ${n}$`,
+      },
+      {
+        title: "Two divisions",
+        text: `${n} in ${d} rows puts ${q} in each row; ${n} in rows of ${q} makes ${d} rows.`,
+        math: `$${n} \\div ${d} = ${q},\\quad ${n} \\div ${q} = ${d}$`,
+      },
+    ];
+  }
+  if (model.kind === "deal") {
+    const { total: n, count: k, first } = model,
+      q = n / k;
+    const share = {
+        title: `Share among ${k}`,
+        text: `Deal one counter to each of ${k} groups per round. ${q} rounds empty the pile, so each group gets ${q}.`,
+        math: `$${n} \\div ${k} = ${q}$ in each group`,
+      },
+      measure = {
+        title: `Groups of ${k}`,
+        text: `Fill one group of ${k} at a time until the pile is empty: ${q} groups.`,
+        math: `$${n} \\div ${k} = ${q}$ groups`,
+      };
+    return [
+      {
+        title: "The counters",
+        text: `${n} counters to divide ${first === "share" ? `among ${k} groups` : `into groups of ${k}`}.`,
+        math: `$${n} \\div ${k}$`,
+      },
+      first === "share" ? share : measure,
+      {
+        ...(first === "share" ? measure : share),
+        text: `${first === "share" ? `Now fill groups of ${k} instead: the same ${n} counters make ${q} groups.` : `Now deal the same ${n} counters among ${k} groups instead: ${q} in each.`} Both are ${k} × ${q} = ${n}.`,
       },
     ];
   }

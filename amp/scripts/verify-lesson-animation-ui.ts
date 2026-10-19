@@ -35,6 +35,9 @@ for (let i = 0; ; i++) {
     break;
   }
 }
+// Fact arrays: rows build, the array turns, counters are dealt and regrouped.
+for (const id of ["multiply-facts", "divide-facts", "share-or-group"])
+  lessons.push(problemLesson(id, "animation-review"));
 const names = [
   "fraction-model",
   "split-array-part",
@@ -44,6 +47,9 @@ const names = [
   "compare-two-digit",
   "add-two-digit-regroup",
   "make-ten-fact",
+  "multiply-facts",
+  "divide-facts",
+  "share-or-group",
 ];
 assert.equal(lessons.length, names.length);
 const entry = `
@@ -197,6 +203,30 @@ try {
           await cells.first().getAttribute("width"),
           await cells.first().getAttribute("height"),
         );
+      } else if (figure.kind === "dot-array") {
+        const total =
+          figure.total ?? (figure.rows ?? 0) * (figure.columns ?? 0);
+        assert.equal(await panel.locator("circle[data-dot]").count(), total);
+      } else if (figure.kind === "share-model") {
+        assert.equal(
+          await panel.locator("[data-counter]").count(),
+          figure.total,
+        );
+        // Every regrouped counter ends inside a tray of the visible set.
+        const placed = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-counter]")].every((g) => {
+            const b = g.getBoundingClientRect();
+            const cx = b.x + b.width / 2,
+              cy = b.y + b.height / 2;
+            return [...el.querySelectorAll('[data-trays="1"] rect')].some(
+              (n) => {
+                const r = n.getBoundingClientRect();
+                return cx > r.x && cx < r.right && cy > r.y && cy < r.bottom;
+              },
+            );
+          }),
+        );
+        assert(placed, "Regrouped counters do not land in their groups");
       } else if (figure.kind === "ten-frame-pair") {
         assert.equal(
           await panel.locator('[data-counter="first"]').count(),
@@ -374,7 +404,7 @@ try {
       assert.equal(await panel.getByRole("button").count(), 0);
       assert.equal(
         await panel
-          .locator(".animation-move, .animation-fade")
+          .locator(".animation-move, .animation-fade, .animation-step")
           .first()
           .evaluate((el) => getComputedStyle(el).transitionDuration),
         "0s",

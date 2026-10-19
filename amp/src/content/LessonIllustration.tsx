@@ -1,3 +1,4 @@
+import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
@@ -14,6 +15,7 @@ import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
+import { FactArrayIllustration } from "./FactArrayIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -43,6 +45,15 @@ export function LessonIllustration({
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "rate-double-line" ||
+    kind === "unit-price-tapes" ||
+    kind === "ratio-table-scaling" ||
+    kind === "rate-through-one" ||
+    kind === "fraction-rate-copies" ||
+    kind === "story-tapes"
+  )
+    return <RatioRateIllustration kind={kind} />;
   if (
     kind === "pattern-rule-steps" ||
     kind === "related-patterns-graph" ||
@@ -83,6 +94,16 @@ export function LessonIllustration({
     kind === "ten-hundred-digits"
   )
     return <FactsIllustration kind={kind} />;
+  if (
+    kind === "array-rows-columns" ||
+    kind === "array-turn" ||
+    kind === "split-array" ||
+    kind === "fact-family-array" ||
+    kind === "share-measure" ||
+    kind === "missing-factor-skip" ||
+    kind === "table-patterns"
+  )
+    return <FactArrayIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||
