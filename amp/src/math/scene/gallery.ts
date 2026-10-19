@@ -18,6 +18,7 @@ import {
   tenFrame,
 } from "./author";
 import type { Scene } from "./spec";
+import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 
 /** Reference scenes for every component: the gallery renders them at four
  * widths in both themes, and the unit tests lay every one of them out. */
@@ -255,6 +256,20 @@ export const galleryCases: GalleryCase[] = [
       ],
       [[6, 1]],
     ).scene(),
+  },
+  {
+    name: "Square: x² + 8x as tiles missing the corner (problem)",
+    scene: completeSquareTiles(8, false),
+  },
+  {
+    name: "Square: x² − 6x completed, revealed",
+    reveal: true,
+    scene: completeSquareTiles(-6),
+  },
+  {
+    name: "Square: parabola 2x² − 4x − 6 with vertex and axis, revealed",
+    reveal: true,
+    scene: vertexGraph(2, -4, -6, "2x^2 - 4x - 6", "2(x - 1)^2 - 8"),
   },
   {
     name: "Array: 7 × 6 split after 4 rows",

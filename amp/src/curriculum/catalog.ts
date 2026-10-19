@@ -1666,6 +1666,26 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+const completingSquareSkill = skills.find((s) => s.id === "complete-square")!;
+for (const [id, description] of [
+  [
+    "missing-square-constant",
+    "Find the exact constant completing a monic quadratic with a bounded integer linear coefficient to a square.",
+  ],
+  [
+    "monic-square-rewrite",
+    "Recognize an exact completed-square identity for a monic quadratic with bounded integer coefficients.",
+  ],
+  [
+    "nonmonic-square-rewrite",
+    "Recognize an exact completed-square identity for a quadratic with bounded signed integer coefficients and leading coefficient other than one.",
+  ],
+])
+  completingSquareSkill.facets.push({
+    id: `complete-square.${id}`,
+    description,
+    status: "implemented",
+  });
 // Narrow integer-factor tasks do not assess every polynomial factorization method.
 const factoringSkill = skills.find((s) => s.id === "factor-quadratics")!;
 for (const [id, description] of [

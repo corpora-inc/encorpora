@@ -1,3 +1,4 @@
+import { completingSquarePrinciples } from "./completing-square-lessons";
 import { factoringPrinciples } from "./factoring-lessons";
 import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
@@ -75,6 +76,7 @@ export const principles: Record<string, string> = {
   ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
+  ...completingSquarePrinciples,
   ...percentChangePrinciples,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,

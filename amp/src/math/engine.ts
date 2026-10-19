@@ -1,4 +1,8 @@
 import {
+  completingSquareTemplates,
+  generateCompletingSquareProblem,
+} from "./completing-square-practice";
+import {
   angleTriangleTemplates,
   generateAngleTriangleProblem,
 } from "./angle-triangle-practice";
@@ -324,6 +328,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...completingSquareTemplates,
   ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
@@ -466,6 +471,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...completingSquareTemplates,
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
@@ -520,6 +526,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (completingSquareTemplates.some((t) => t.id === templateId))
+    return generateCompletingSquareProblem(templateId, seed);
   if (factoringTemplates.some((t) => t.id === templateId))
     return generateFactoringProblem(templateId, seed);
   if (numberSystemTemplates.some((t) => t.id === templateId))
