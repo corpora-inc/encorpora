@@ -5,6 +5,7 @@ import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
+import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
@@ -40,6 +41,7 @@ export const principles: Record<string, string> = {
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
+  ...anglePrinciples,
   ...polygonPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,

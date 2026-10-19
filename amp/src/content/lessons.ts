@@ -21,6 +21,8 @@ import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { AngleIllustrationKind } from "./AngleIllustration";
+import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
@@ -91,6 +93,7 @@ export interface Lesson {
       | FactArrayIllustrationKind
       | EarlyOperationsIllustrationKind
       | ShapeIllustrationKind
+      | AngleIllustrationKind
       | PolygonIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
@@ -622,6 +625,7 @@ export const lessons: readonly Lesson[] = [
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
   ...shapeLessons,
+  ...angleLessons,
   ...polygonLessons,
   ...percentChangeLessons,
   ...inequalityLessons,

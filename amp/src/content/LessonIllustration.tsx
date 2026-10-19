@@ -4,6 +4,7 @@ import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
+import { AngleIllustration, isAngleIllustration } from "./AngleIllustration";
 import {
   PolygonIllustration,
   isPolygonIllustration,
@@ -71,6 +72,7 @@ export function LessonIllustration({
       <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
     );
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
+  if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
