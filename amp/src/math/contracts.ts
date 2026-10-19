@@ -111,6 +111,11 @@ export interface GeneratedProblem {
   public: PublicProblem;
   answer: string;
   explanation: string[];
+  /** One teaching step for this instance, written by the generator from its
+   * own givens: it names the problem's quantities and the first move of the
+   * authored method, and never states the answer. Gated by
+   * tests/instance-hints.test.ts. A figure cue (an element of this problem's
+   * figure to highlight) will travel beside it as its own optional field. */
   hint: string;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;

@@ -1,0 +1,88 @@
+import {
+  generateProblem,
+  normalizeAnswer,
+  type GeneratedProblem,
+} from "../../src/math/engine";
+import { methods } from "../../src/content/problem-methods";
+
+/** A hint is one teaching step for this problem: it names the problem's own
+ * quantities and the first move, and it never states the answer. */
+export const SEEDS = 20;
+export const sample = (id: string) =>
+  Array.from({ length: SEEDS }, (_, i) => generateProblem(id, `hint-${i}`));
+
+/** What the learner is shown before answering. */
+function givens(p: GeneratedProblem) {
+  const r = p.public.response;
+  return [
+    p.public.prompt,
+    JSON.stringify(p.public.figure ?? null),
+    r.kind === "choice" ? r.options.map((o) => o.label).join("\n") : "",
+  ].join("\n");
+}
+const tokens = (text: string) =>
+  text
+    .replaceAll("−", "-")
+    .replace(/(\d),(?=\d{3}\b)/g, "$1")
+    .match(/(?<![\w.])-?\d+(?:\.\d+)?(?:\/\d+)?(?![\w.]*\d)/g) ?? [];
+const exact = (token: string) => normalizeAnswer(token);
+/** Values written in the text, as exact rationals. */
+export const numbers = (text: string) =>
+  tokens(text)
+    .map(exact)
+    .filter((value): value is string => value !== null);
+/** Values the statement gives, including each written numerator and
+ * denominator and each digit of a written number (a hint may name a digit). */
+export const stated = (text: string) =>
+  new Set(
+    tokens(text)
+      .flatMap((token) => [token, ...token.split("/"), ...token.match(/\d/g)!])
+      .map(exact)
+      .filter((value): value is string => value !== null),
+  );
+const words = (text: string) =>
+  ` ${text.toLowerCase().replace(/[^\p{L}\p{N}/.−-]+/gu, " ")} `;
+
+/** The hint states the answer when it contains the answer's value (or, for a
+ * choice, singles out the correct option) and the statement does not. */
+export function revealsAnswer(p: GeneratedProblem): boolean {
+  const r = p.public.response;
+  if (r.kind === "choice") {
+    const label = (id: string) =>
+      words(r.options.find((o) => o.id === id)!.label).trim();
+    const hint = words(p.hint);
+    const correct = label(p.answer);
+    return (
+      correct.length > 1 &&
+      hint.includes(` ${correct} `) &&
+      !words(p.public.prompt).includes(` ${correct} `) &&
+      !r.options.some(
+        (o) => o.id !== p.answer && hint.includes(` ${label(o.id)} `),
+      )
+    );
+  }
+  const answer = normalizeAnswer(p.answer);
+  return (
+    answer !== null &&
+    numbers(p.hint).includes(answer) &&
+    !stated(p.public.prompt).has(answer)
+  );
+}
+
+export const fixedHint = (id: string) => {
+  const problems = sample(id);
+  return (
+    new Set(problems.map(givens)).size > 1 &&
+    new Set(problems.map((p) => p.hint)).size === 1
+  );
+};
+/** A prompt that states numbers has a hint that names at least one of them. */
+export const unnamedGivens = (id: string) =>
+  sample(id).some((p) => {
+    const given = stated(p.public.prompt);
+    return given.size > 0 && !numbers(p.hint).some((n) => given.has(n));
+  });
+export const thin = (id: string) => {
+  const m = methods[id]!;
+  return m.method.length < 2 || m.method.join(" ").length < 80;
+};
