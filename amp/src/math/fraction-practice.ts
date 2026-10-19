@@ -4,6 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { isAre } from "./agreement.js";
 
 // ID | title | skill | instructional grade | book page | bounded numeric objective
 const rows = `
@@ -209,7 +210,7 @@ export function generateFractionPracticeProblem(
       answer = fraction(total - part, d);
       hint = "All pieces have the same size; find how many more are needed.";
       explanation = [
-        `The total needs ${total} pieces and ${part} are present.`,
+        `The total needs ${total} pieces and ${part} ${isAre(part)} present.`,
         `${total} − ${part} = ${total - part}, so the missing amount is ${total - part}/${d} = ${answer}.`,
       ];
       break;
