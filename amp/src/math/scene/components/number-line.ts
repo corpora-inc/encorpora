@@ -188,12 +188,12 @@ registerComponent("numberLine", {
     }
     return prims;
   },
-  describe(c, reveal) {
+  describe(c, reveal, hidden) {
     const step = c.denominator ? 1 / c.denominator : (c.step ?? 1);
     const out = [
       `Number line from ${spoken(c.min)} to ${spoken(c.max)}, with a tick every ${c.denominator ? `1/${c.denominator}` : spoken(step)}.`,
     ];
-    const marks = c.marks ?? [];
+    const marks = (c.marks ?? []).filter((_, i) => !hidden(`mark.${i}`));
     if (marks.length)
       out.push(
         `${marks.length === 1 ? "A point marks" : "Points mark"} ${marks
@@ -202,14 +202,15 @@ registerComponent("numberLine", {
           )
           .join(", ")}.`,
       );
-    for (const hop of c.hops ?? [])
-      out.push(
-        `A jump of ${spoken(Math.abs(hop.by))} to the ${hop.by > 0 ? "right" : "left"} from ${spoken(hop.from)} lands on ${
-          (hop.landing ?? "derived") === "derived" && !reveal
-            ? "the number to find"
-            : spoken(clean(hop.from + hop.by))
-        }.`,
-      );
+    for (const [i, hop] of (c.hops ?? []).entries())
+      if (!hidden(`hop.${i}`))
+        out.push(
+          `A jump of ${spoken(Math.abs(hop.by))} to the ${hop.by > 0 ? "right" : "left"} from ${spoken(hop.from)} lands on ${
+            (hop.landing ?? "derived") === "derived" && !reveal
+              ? "the number to find"
+              : spoken(clean(hop.from + hop.by))
+          }.`,
+        );
     for (const iv of c.intervals ?? [])
       out.push(
         iv.from === null && iv.to === null

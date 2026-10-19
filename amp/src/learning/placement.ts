@@ -143,7 +143,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["integer-power", "two-step-equation", "dependent-variable-value"],
     ["unit-price", "fraction-unit-rate", "unit-rate"],
     ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
-    ["number-line-distance"],
+    ["number-line-distance", "opposite-on-line", "greatest-common-factor"],
   ],
   // Grade 8: signed numbers, unit rates, probability and circles.
   [

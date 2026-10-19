@@ -5,6 +5,7 @@ import type { SemanticFigure } from "../src/math/contracts";
 import {
   animationModel,
   animationFrames,
+  jumpStops,
   fiveNumbers,
 } from "../src/web/lesson-animation/model";
 
@@ -192,6 +193,90 @@ test("array and exchange adapters reject ambiguous or unsupported metadata", () 
       null,
     );
   }
+});
+
+test("signed-number animations reflect exactly across 0 and land where the jumps sum", () => {
+  const kinds = new Set<string>();
+  for (let i = 0; i < 100; i++) {
+    const opposite = problemLesson("opposite-on-line", `animation-${i}`);
+    const model = animationModel(opposite);
+    assert(model?.kind === "opposite", "opposite-on-line has no model");
+    const frames = animationFrames(model);
+    assert.equal(frames.length, 3);
+    // The final frame names the opposite: same distance, other side of 0.
+    assert.equal(
+      frames[2]!.math,
+      `$-(${model.value}) = ${-model.value}$`,
+    );
+    const shown = Number(opposite.example.answer.replace("−", "-"));
+    assert.ok(shown === -model.value || shown === model.value);
+    kinds.add(model.value < 0 ? "negative" : "positive");
+
+    const jumps = problemLesson("signed-jumps", `animation-${i}`);
+    const jumpModel = animationModel(jumps);
+    assert(jumpModel?.kind === "jumps", "signed-jumps has no model");
+    const stops = jumpStops(jumpModel.start, jumpModel.jumps);
+    const exact =
+      jumpModel.jumps.reduce((sum, j) => sum + j * 2, jumpModel.start * 2) / 2;
+    assert.equal(stops.at(-1), exact);
+    assert.equal(Number(jumps.example.answer.replace("−", "-")), exact);
+    assert.ok(stops.every((v) => v >= jumpModel.min && v <= jumpModel.max));
+    assert.ok(animationFrames(jumpModel)[2]!.math.endsWith(` = ${exact}$`));
+    kinds.add(`jumps-${jumpModel.jumps.length}`);
+  }
+  assert.deepEqual([...kinds].sort(), [
+    "jumps-2",
+    "jumps-3",
+    "negative",
+    "positive",
+  ]);
+  const lesson = problemLesson("opposite-on-line", "animation");
+  for (const figure of [
+    {
+      kind: "signed-line" as const,
+      min: -10,
+      max: 10,
+      labelEvery: 5,
+      points: [],
+    },
+    {
+      kind: "signed-line" as const,
+      min: -10,
+      max: 10,
+      labelEvery: 5,
+      points: [{ value: 0, label: "P" }],
+    },
+    {
+      kind: "signed-line" as const,
+      min: -10,
+      max: 4,
+      labelEvery: 5,
+      points: [{ value: -7, label: "P" }],
+    },
+  ])
+    assert.equal(
+      animationModel({ ...lesson, example: { ...lesson.example, figure } }),
+      null,
+    );
+  const jumpLesson = problemLesson("signed-jumps", "animation");
+  assert.equal(
+    animationModel({
+      ...jumpLesson,
+      example: {
+        ...jumpLesson.example,
+        figure: {
+          kind: "signed-line",
+          min: -5,
+          max: 5,
+          labelEvery: 5,
+          points: [],
+          start: 4,
+          jumps: [3],
+        },
+      },
+    }),
+    null,
+  );
 });
 
 test("plot animations turn every table row into a point on the stated rule", () => {

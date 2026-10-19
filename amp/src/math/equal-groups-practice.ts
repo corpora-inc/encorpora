@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { partialProducts, partialProductsHint } from "./scene/explanations.js";
+import type { Step } from "./scene/timeline.js";
 import { equalGroupsDefinitions } from "../content/equal-groups-definitions.js";
 import type {
   GeneratedProblem,
@@ -44,7 +46,8 @@ export function generateEqualGroupsProblem(
     label = "Number",
     hint = "",
     explanation: string[] = [],
-    figure: SemanticFigure | undefined;
+    figure: SemanticFigure | undefined,
+    hintCue: Step[] | undefined;
   const grouped = (
     total: number,
     groupSize: number,
@@ -326,6 +329,8 @@ export function generateEqualGroupsProblem(
       prompt = `To find ${number} × ${factor}, split ${number} into ${tens * 10} + ${ones}. What is the tens partial product?`;
       answer = tens * 10 * factor;
       label = "Tens partial product";
+      figure = { kind: "scene", scene: partialProducts(number, factor) };
+      hintCue = partialProductsHint(number, factor);
       hint = `The tens part is ${tens * 10}, not ${tens}. Multiply ${tens * 10} × ${factor}, which is ${tens} × ${factor} tens; leave the ${ones} for later.`;
       explanation = [
         `The tens amount is ${tens * 10}, not ${tens}.`,
@@ -370,6 +375,7 @@ export function generateEqualGroupsProblem(
     },
     answer: String(answer),
     hint,
+    ...(hintCue ? { hintCue } : {}),
     explanation,
   };
 }

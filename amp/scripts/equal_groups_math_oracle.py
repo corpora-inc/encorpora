@@ -45,6 +45,17 @@ def array(figure):
     return rows, columns, split
 
 
+def scene_area_model(figure, across, down):
+    # A scene figure: one area model whose sides are the stated parts, with
+    # every region product left for the learner (masked, not printed).
+    require(figure is not None and figure.get('kind') == 'scene', 'Area-model scene required')
+    elements = figure['scene']['elements']
+    require(len(elements) == 1 and elements[0]['type'] == 'areaModel', 'One area model expected')
+    model = elements[0]
+    require(model['across'] == across and model['down'] == down, 'Area model sides must match the stated parts')
+    require(model.get('products', 'derived') != 'shown', 'Region products must stay unknown')
+
+
 def whole_division(total, divisor):
     require(total >= 0 and divisor > 0, 'Invalid whole-item division domain')
     result = Fraction(total, divisor)
@@ -61,7 +72,8 @@ def solve_equal_groups(public):
     diagram_families = {'full-kits', 'seats-needed', 'kit-leftovers', 'small-array-total',
                         'pairing-leftover', 'equal-tray-total', 'split-array-part',
                         'comparison-factor', 'neighbor-product-change'}
-    require(template in diagram_families or figure is None, 'Unexpected diagram for a text-only story')
+    require(template in diagram_families or template == 'tens-contribution' or figure is None,
+            'Unexpected diagram for a text-only story')
     if template in {'full-kits', 'kit-leftovers'}:
         question = (r'How many full kits can you make\?' if template == 'full-kits' else
                     r'After making as many full kits as possible, how many beads are left\?')
@@ -160,6 +172,7 @@ def solve_equal_groups(public):
         require(number == repeated_number and 10 <= number <= 99 and 1 <= multiplier <= 9 and
                 tens == number // 10 * 10 and ones == number % 10,
                 'Expanded form must preserve the original two-digit number and place values')
+        scene_area_model(figure, [tens, ones], [multiplier])
         return sum(tens for _ in range(multiplier))
     if template == 'neighbor-product-change':
         before, after, columns = counts(r'An array grows from ([0-9]+) rows to ([0-9]+) rows, with ([0-9]+) squares per row\. How many squares were added\?', prompt)
