@@ -14,10 +14,10 @@
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-4);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   box-shadow: var(--shadow-overlay);
 }
 .toast button {

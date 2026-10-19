@@ -16,10 +16,10 @@
 }
 .security-fresh {
   font-size: 0.875rem;
-  color: #486357;
+  color: var(--color-muted-text);
 }
 .security-fresh a {
-  color: #14574a;
+  color: var(--color-primary);
   text-underline-offset: 3px;
 }
 .security-panels {
@@ -28,9 +28,9 @@
   margin-top: 20px;
 }
 .security-panel {
-  border: 1px solid #cdd8cb;
+  border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: #fffefa;
+  background: var(--color-surface-raised);
   overflow: hidden;
 }
 .security-panel h3 {
@@ -44,7 +44,7 @@
   gap: 12px;
   text-align: left;
   background: transparent;
-  color: #173e3a;
+  color: var(--color-on-surface);
   padding: 16px;
   border-radius: 0;
   font-size: 1.05rem;
@@ -54,7 +54,7 @@
   font-size: 0.8rem;
   font-weight: 400;
   margin-top: 4px;
-  color: #486357;
+  color: var(--color-muted-text);
 }
 .security-panel-body {
   padding: 0 16px 16px;
@@ -82,11 +82,11 @@
   min-width: 0;
   box-sizing: border-box;
   padding: 11px;
-  border: 1px solid #aebbaf;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font: inherit;
-  background: white;
-  color: #173e3a;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
 }
 .security-actions {
   display: flex;
@@ -102,7 +102,7 @@
   display: grid;
   gap: 10px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #dce3d7;
+  border-bottom: 1px solid var(--color-border);
   overflow-wrap: anywhere;
 }
 .security-qr {
@@ -116,7 +116,7 @@
 .security-backup {
   display: grid;
   gap: 12px;
-  background: #eef2e8;
+  background: var(--color-surface-sunken);
   padding: 12px;
   border-radius: 10px;
 }
@@ -135,12 +135,12 @@
   font-size: 0.85rem;
 }
 .security-confirm {
-  border: 1px solid #aebbaf;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: #fffefa;
+  background: var(--color-surface-raised);
   padding: 12px;
   margin-top: 16px;
-  box-shadow: 0 -4px 20px #173e3a14;
+  box-shadow: 0 -4px 20px var(--color-shadow);
 }
 .family-tabs:has([data-security-tab]) {
   grid-template-columns: repeat(4, 1fr);

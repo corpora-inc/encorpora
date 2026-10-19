@@ -11,11 +11,11 @@
   font-family: Arial, sans-serif;
 }
 .book-reader[data-presentation="early-number"] .reader-heading h2 {
-  color: #184e57;
+  color: var(--color-primary);
 }
 .book-reader[data-presentation="early-number"] .reading-equation {
   font-size: 30px;
-  color: #184e57;
+  color: var(--color-primary);
 }
 .book-reader[data-presentation="early-number"] .reading-callout {
   border-radius: 0 20px 20px 0;

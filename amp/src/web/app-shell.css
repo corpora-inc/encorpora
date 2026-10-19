@@ -30,9 +30,9 @@
 }
 .family-first-step {
   padding: 24px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: var(--surface);
+  background: var(--color-surface-raised);
 }
 .family-first-step h3 {
   font-size: 25px;
@@ -76,23 +76,23 @@
 }
 .shell .family-tabs,
 .shell > nav {
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 .family-learner,
 .family-dialog,
 .privacy-choices > button {
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  border-color: var(--color-border);
 }
 .family-secondary,
 .family-access,
 .privacy-choices span {
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .premium-select {
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
 }
 /* Transient feedback overlays the workspace; it never adds a layout row. */
 .shell .error,
@@ -114,20 +114,20 @@
   overflow: auto;
   margin: 0;
   padding: 14px 18px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: 0 8px 32px #0003;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  box-shadow: 0 8px 32px var(--color-shadow);
   line-height: 1.5;
 }
 .shell input:not([type="checkbox"]):not([type="radio"]) {
   min-height: 48px;
   min-width: 0;
-  border: 1px solid var(--line-2);
+  border: 1px solid var(--color-border-strong);
   border-radius: 12px;
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   padding: 10px 14px;
   font-size: 16px;
 }
@@ -143,8 +143,8 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   min-height: 100dvh;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
 }
 .app-loading-bar {
   display: flex;
@@ -152,7 +152,7 @@
   box-sizing: border-box;
   height: 64px;
   padding: 0 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-border);
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -201,7 +201,7 @@
 .shell.family-shell .family-center > .family-tabs {
   grid-column: 1;
   grid-row: 2;
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .shell.family-shell .family-center:has([data-security-tab]) > .family-tabs {
@@ -212,22 +212,21 @@
   grid-row: 3;
 }
 .shell.family-shell .family-center p {
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .shell .family-tabs button,
 .shell .family-center .family-back {
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
-@media (prefers-color-scheme: dark) {
-  .shell .go-button,
-  .shell .family-add-learner > button,
-  .family-first-step > button {
-    color: var(--bg);
-  }
+.shell .go-button,
+.shell .family-add-learner > button,
+.family-first-step > button {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 .shell .family-tabs button:hover {
-  background: var(--primary-soft);
-  color: var(--ink);
+  background: var(--color-secondary);
+  color: var(--color-on-surface);
 }
 
 .loading-retry {
@@ -243,4 +242,23 @@
 }
 .shell.start-shell > .parent-consent-center {
   height: 100%;
+}
+
+/* Header controls (learner picker, Family menu) share one height, type and shape. */
+.app-shell .account {
+  align-items: center;
+}
+.app-shell .account .premium-select,
+.app-shell .account-menu summary {
+  box-sizing: border-box;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+.app-shell .account .premium-select {
+  width: auto;
 }

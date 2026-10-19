@@ -26,7 +26,7 @@ These are failures of structure, not of individual screens. Every rule below enf
 | Client state | **zustand**, only for state that belongs to no server resource: the current learner selection, input modality and practice-session UI. |
 | API client | A single typed client (`web/lib/api`). It validates responses with the server's zod contracts and maps every non-2xx response to a typed `AppError` (`kind`, user message, retry, `log()`). |
 | Accessible primitives | **Radix UI** primitives (Dialog, Popover, Select, Tabs, Toast, Tooltip), wrapped by AMP's own components. They are never used raw in features. |
-| Styling | CSS Modules plus design tokens (CSS custom properties for color, space, type, radius, motion, elevation) in `web/ui/tokens.css`, with light and dark themes. No ad-hoc colors or pixel values in features. |
+| Styling | CSS Modules plus design tokens (CSS custom properties for color, space, type, radius, motion, elevation) in `web/ui/tokens.css`, with light and dark themes. Colors are role pairs (`surface`/`on-surface`, `menu`/`on-menu`, `primary`/`on-primary`, …) with derived hover/active layers; a rule that sets a role background sets its `on-` color. `tests/color-roles.test.ts` proves every pair in both themes, `npm run lint:colors` rejects any color literal outside `tokens.css`, and `npm run test:contrast` sweeps every route and state. No ad-hoc colors or pixel values in features. |
 | Motion | CSS transitions from tokens. Layout-affecting animation only through reserved space. `prefers-reduced-motion` is respected. |
 | Math | KaTeX (`MathText`) and the exact-geometry figure components, moved as they are into `web/math/`. |
 | Forms | Small zod-validated form hooks. Errors appear inline at the field, with no layout shift. |

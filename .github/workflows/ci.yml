@@ -1378,6 +1378,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
       - run: npm test
+      # No color literal outside src/web/ui/tokens.css.
+      - run: npm run lint:colors
       - run: npm run build
       - run: npm run test:db
 
@@ -1416,6 +1418,16 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:ui
       - run: npm run test:family-ui
+      # Zero contrast violations: every route and state, light and dark, 390 and 1280.
+      - run: npm run test:contrast
+      - name: Preserve the contrast sweep report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-contrast-${{ github.run_attempt }}
+          path: amp/artifacts/contrast/
+          if-no-files-found: ignore
+          retention-days: 7
       - uses: dtolnay/rust-toolchain@1.93.0
         if: needs.changes.outputs.amp_native == 'true'
       - run: npm run test:native-session
