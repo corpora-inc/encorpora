@@ -5,7 +5,7 @@ const plane: Lesson["sections"][number] = {
   title: "Points on the coordinate plane",
   paragraphs: [
     "The coordinate plane has a horizontal number line, the x-axis, and a vertical number line, the y-axis. They cross at 0 on each, a point called the origin. The ordered pair (x, y) names a point: x tells how far right (positive) or left (negative) of the y-axis it is, and y tells how far above (positive) or below (negative) the x-axis it is. The point (−4, 3) is 4 units left of the y-axis and 3 units above the x-axis.",
-    "Both axes use the same unit, so one step right is the same length as one step up. A polygon is a closed figure made of straight sides; its corners are its vertices. A label such as A(−4, 3) names vertex A and gives its coordinates.",
+    "Both axes use the same unit, so one step right is the same length as one step up. A polygon is a closed figure made of straight sides; its corners are its vertices. A label such as $A(−4, 3)$ names vertex A and gives its coordinates.",
   ],
 };
 const motionTerms: Lesson["sections"][number] = {
@@ -33,7 +33,7 @@ export const transformationLessons: Lesson[] = [
       {
         title: "Horizontal and vertical sides",
         paragraphs: [
-          "Points with the same y-coordinate are the same distance above or below the x-axis, so they lie on one horizontal line. A side joining A(−4, 3) and B(5, 3) is horizontal. Its length is the distance between the x-coordinates −4 and 5. Points with the same x-coordinate lie on one vertical line, and the length is the distance between their y-coordinates.",
+          "Points with the same y-coordinate are the same distance above or below the x-axis, so they lie on one horizontal line. A side joining $A(−4, 3)$ and $B(5, 3)$ is horizontal. Its length is the distance between the x-coordinates −4 and 5. Points with the same x-coordinate lie on one vertical line, and the length is the distance between their y-coordinates.",
           "The distance between two numbers is how far apart they are on the number line. When both are on the same side of 0, subtract their distances from 0: from 2 to 7 is 7 − 2 = 5. When they are on opposite sides, the gap passes through 0, so add their distances from 0: from −4 to 5 is 4 + 5 = 9. Both cases equal the larger number minus the smaller: 5 − (−4) = 9.",
         ],
         illustration: "coordinate-side-lengths",
@@ -48,7 +48,7 @@ export const transformationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Rectangle ABCD has vertices A(−4, 3), B(5, 3), C(5, −2) and D(−4, −2). What is its perimeter, in units?",
+        "Rectangle ABCD has vertices $A(−4, 3)$, $B(5, 3)$, $C(5, −2)$ and $D(−4, −2)$. What is its perimeter, in units?",
       steps: [
         "AB joins two points with y-coordinate 3, so it is horizontal. −4 and 5 are on opposite sides of the y-axis: 4 + 5 = 9.",
         "BC joins two points with x-coordinate 5, so it is vertical. 3 and −2 are on opposite sides of the x-axis: 3 + 2 = 5.",
@@ -82,7 +82,7 @@ export const transformationLessons: Lesson[] = [
         title: "A right triangle under every segment",
         paragraphs: [
           "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
-          "From A(−3, −1), move horizontally to (5, −1), then vertically to B(5, 5). These moves are the legs of a right triangle whose hypotenuse is AB. The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6. So AB² = 8² + 6² = 64 + 36 = 100, and AB = 10, because 10 × 10 = 100.",
+          "From $A(−3, −1)$, move horizontally to (5, −1), then vertically to $B(5, 5)$. These moves are the legs of a right triangle whose hypotenuse is AB. The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6. So AB² = 8² + 6² = 64 + 36 = 100, and AB = 10, because 10 × 10 = 100.",
         ],
         illustration: "distance-triangle",
       },
@@ -145,10 +145,10 @@ export const transformationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Triangle ABC has vertices A(1, 1), B(4, 1) and C(1, 3). It is rotated 90° counterclockwise about the origin to form triangle A′B′C′. What are the coordinates of B′?",
+        "Triangle ABC has vertices $A(1, 1)$, $B(4, 1)$ and $C(1, 3)$. It is rotated 90° counterclockwise about the origin to form triangle A′B′C′. What are the coordinates of B′?",
       steps: [
         "A quarter turn counterclockwise about the origin follows the rule (x, y) → (−y, x).",
-        "For B(4, 1): the new x-coordinate is −1 and the new y-coordinate is 4.",
+        "For $B(4, 1)$: the new x-coordinate is −1 and the new y-coordinate is 4.",
         "B′ is at (−1, 4), the same distance from the origin as B, one quarter turn around.",
       ],
       answer: "(−1, 4)",
@@ -182,8 +182,8 @@ export const transformationLessons: Lesson[] = [
         title: "Dilations change size, not shape",
         paragraphs: [
           "A dilation with center O and scale factor k moves every point P along the ray from O through P, to the point P′ whose distance from O is k times the distance OP. With the center at the origin, both coordinates are multiplied by k: (x, y) → (kx, ky).",
-          "In the figure, triangle ABC with A(2, 1), B(4, 1) and C(2, 3) is dilated by 2. The images are A′(4, 2), B′(8, 2) and C′(4, 6), each on the ray from the origin through its point. Every side of the image is 2 times as long, and every angle is unchanged. A scale factor greater than 1 enlarges; one between 0 and 1 reduces.",
-          "To find the scale factor, divide a coordinate of an image point by the matching coordinate of its point. For A(2, 1) and A′(4, 2), k = 4 ÷ 2 = 2.",
+          "In the figure, triangle ABC with $A(2, 1)$, $B(4, 1)$ and $C(2, 3)$ is dilated by 2. The images are $A'(4, 2)$, $B'(8, 2)$ and $C'(4, 6)$, each on the ray from the origin through its point. Every side of the image is 2 times as long, and every angle is unchanged. A scale factor greater than 1 enlarges; one between 0 and 1 reduces.",
+          "To find the scale factor, divide a coordinate of an image point by the matching coordinate of its point. For $A(2, 1)$ and $A'(4, 2)$, k = 4 ÷ 2 = 2.",
         ],
         illustration: "dilation-rays",
       },

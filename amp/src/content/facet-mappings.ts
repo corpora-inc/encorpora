@@ -18,6 +18,7 @@ import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
+import { angleTriangleFacetMappings } from "./angle-triangle-coverage";
 import { realNumberFacetMappings } from "./real-number-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
@@ -60,6 +61,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
   ...transformationFacetMappings,
+  ...angleTriangleFacetMappings,
   ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
   ...ratioRateFacetMappings,

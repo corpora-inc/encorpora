@@ -164,7 +164,9 @@ const gcd = (a: number, b: number): number => {
 /** A signed integer with a typographic minus. */
 const n = (v: number) => (v < 0 ? `−${-v}` : String(v));
 const pt = (p: Point) => `(${n(p.x)}, ${n(p.y)})`;
-const named = (label: string, p: Point) => `${label}${pt(p)}`;
+/** A labeled point is one TeX unit: it typesets like every other point and never breaks inside. */
+const named = (label: string, p: Point) =>
+  `$${label.replace("′", "'")}${pt(p)}$`;
 const list = (items: string[]) =>
   items.length < 3
     ? items.join(" and ")
@@ -1306,10 +1308,11 @@ function instanceHint(id: string, c: Case, numeric: boolean): string {
   if (id === "transformation-image") {
     const vertex = /coordinates of ([A-Z])′/.exec(c.prompt)![1]!;
     const at = new RegExp(`${vertex}\\(([^)]*)\\)`).exec(c.prompt)![0];
-    return `${c.explanation[0]} Apply that to ${at}.`;
+    return `${c.explanation[0]} Apply that to $${at}$.`;
   }
   if (id === "dilation-scale-factor") {
-    const at = (v: string) => new RegExp(`${v}\\([^)]*\\)`).exec(c.prompt)![0];
+    const at = (v: string) =>
+      `$${new RegExp(`${v.replace("′", "'")}\\([^)]*\\)`).exec(c.prompt)![0]}$`;
     return `${at("A")} maps to ${at("A′")} and ${at("B")} maps to ${at("B′")}. Divide an image coordinate by the matching original coordinate.`;
   }
   for (const step of c.explanation) {

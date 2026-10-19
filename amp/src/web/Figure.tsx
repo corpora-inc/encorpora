@@ -1,4 +1,5 @@
 import { MeasurementFigure } from "./MeasurementFigure";
+import { AngleTriangleFigure } from "./AngleTriangleFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
 import { AttributeFigure } from "./AttributeFigure";
 import { TimeMoneyFigure } from "./TimeMoneyFigure";
@@ -34,6 +35,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "angle-rays":
+    case "triangle-angles":
+    case "parallel-transversal":
+    case "solid-section":
+      return <AngleTriangleFigure figure={figure} />;
     case "length-rods":
     case "unit-measure":
     case "mass-balance":

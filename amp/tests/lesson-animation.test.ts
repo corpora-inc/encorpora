@@ -438,6 +438,44 @@ test("a figure whose image fits no single motion falls back to the static figure
   );
 });
 
+test("geometry animations come from exact figures and state true measures", () => {
+  const seen = new Set<string>();
+  for (const id of [
+    "triangle-angle-sum",
+    "triangle-exterior-angle",
+    "parallel-lines-angle",
+    "cross-section-shape",
+    "cross-section-area",
+  ])
+    for (let i = 0; i < 40; i++) {
+      const lesson = problemLesson(id, `geometry-animation-${i}`);
+      const model = animationModel(lesson);
+      assert(model, `${id} has no compatible model`);
+      seen.add(model.kind);
+      const frames = animationFrames(model);
+      assert.equal(frames.length, 3);
+      if (model.kind === "triangle-sum") {
+        const [a, b, c] = model.figure.angles;
+        assert.equal(a + b + c, 180);
+        assert.equal(
+          frames[2]!.math,
+          `$${a}^\\circ + ${b}^\\circ + ${c}^\\circ = 180^\\circ$`,
+        );
+      }
+      if (model.kind === "exterior-angle") {
+        const [a, b, c] = model.figure.angles;
+        assert.equal(180 - b, a + c);
+        assert.match(frames[2]!.math, new RegExp(`= ${a + c}\\^`));
+      }
+    }
+  assert.deepEqual([...seen].sort(), [
+    "exterior-angle",
+    "plane-sweep",
+    "transversal",
+    "triangle-sum",
+  ]);
+});
+
 test("line-plot animations keep every measurement and share the exact mean", () => {
   for (const id of ["line-plot-whole", "fraction-line-plot"])
     for (let i = 0; i < 40; i++) {

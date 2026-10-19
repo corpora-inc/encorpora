@@ -3,6 +3,10 @@ import {
   generateTransformationProblem,
 } from "./transformation-practice";
 import {
+  angleTriangleTemplates,
+  generateAngleTriangleProblem,
+} from "./angle-triangle-practice";
+import {
   numberSystemTemplates,
   generateNumberSystemProblem,
 } from "./number-system-practice";
@@ -298,6 +302,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
   ...transformationTemplates,
+  ...angleTriangleTemplates,
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...ratioRateTemplates,
@@ -479,6 +484,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...angleTriangleTemplates,
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...ratioRateTemplates,
@@ -554,6 +560,8 @@ function generateRawProblem(
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (angleTriangleTemplates.some((t) => t.id === templateId))
+    return generateAngleTriangleProblem(templateId, seed);
   if (realNumberTemplates.some((t) => t.id === templateId))
     return generateRealNumberProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))

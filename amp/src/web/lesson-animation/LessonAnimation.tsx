@@ -1,4 +1,5 @@
 import { CoordinateGeometry } from "../TransformationFigure";
+import { GeometryModel } from "./GeometryAnimation";
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
@@ -47,6 +48,11 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
     case "motion":
       return <MotionModel model={model} step={step} />;
+    case "triangle-sum":
+    case "exterior-angle":
+    case "transversal":
+    case "plane-sweep":
+      return <GeometryModel model={model} step={step} />;
     case "root-zoom":
       return <RootZoomModel model={model} step={step} />;
     case "decimal-shift":
