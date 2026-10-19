@@ -4,6 +4,7 @@ import { problemLesson } from "../src/content/problem-lessons";
 import {
   animationModel,
   animationFrames,
+  fiveNumbers,
 } from "../src/web/lesson-animation/model";
 
 test("animation models conserve the quantities in real lesson examples", () => {
@@ -156,5 +157,37 @@ test("line-plot animations keep every measurement and share the exact mean", () 
     assert.equal(model.share * (d ?? 1), n! * denominator);
     assert.ok(model.share >= Math.min(...values));
     assert.ok(model.share <= Math.max(...values));
+  }
+});
+
+test("statistics animations balance at the exact mean and box the exact quartiles", () => {
+  for (const id of ["dot-plot-mean", "dot-plot-mad"])
+    for (let i = 0; i < 60; i++) {
+      const model = animationModel(problemLesson(id, `balance-${i}`));
+      assert(model?.kind === "mean-balance", id);
+      const { values } = model.figure;
+      const mean = values.reduce((a, b) => a + b, 0) / values.length;
+      assert.notEqual(model.trial, mean);
+      // Signed distances about the mean cancel: it is the balance point.
+      assert.ok(Math.abs(values.reduce((a, v) => a + (v - mean), 0)) < 1e-9);
+      assert.equal(animationFrames(model).length, 3);
+    }
+  for (let i = 0; i < 60; i++) {
+    const lesson = problemLesson("dot-plot-iqr", `box-${i}`);
+    const model = animationModel(lesson);
+    assert(model?.kind === "box-build");
+    const q = fiveNumbers(model.figure.values);
+    const [n, d] = lesson.example.answer.split("/").map(Number);
+    assert.equal(
+      q.q3 - q.q1,
+      Number(
+        lesson.example.answer.includes(".")
+          ? lesson.example.answer
+          : n! / (d ?? 1),
+      ),
+    );
+    assert.ok(
+      q.min <= q.q1 && q.q1 <= q.median && q.median <= q.q3 && q.q3 <= q.max,
+    );
   }
 });

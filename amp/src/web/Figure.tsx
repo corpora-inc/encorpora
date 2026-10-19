@@ -23,6 +23,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "picture-graph":
     case "scaled-bar-graph":
     case "line-plot":
+    case "histogram":
+    case "box-plot":
       return <DataDisplayFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":

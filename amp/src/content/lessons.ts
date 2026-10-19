@@ -1,4 +1,5 @@
 import { equationLessons } from "./equation-lessons";
+import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
@@ -560,6 +561,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...earlyDataLessons,
   ...linePlotLessons,
+  ...distributionLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...comparisonLessons,

@@ -1726,6 +1726,42 @@ for (const [skillId, suffix, description] of [
     "equal-share",
     "Find the equal share of fractional amounts pooled from a line plot.",
   ],
+  [
+    "statistical-questions",
+    "recognize-variability",
+    "Recognize a question that anticipates variability in its answers.",
+  ],
+  [
+    "mean-median",
+    "dot-plot-mean",
+    "Calculate the exact mean of whole-number data shown in a dot plot.",
+  ],
+  [
+    "mean-median",
+    "mean-total-relation",
+    "Use mean × count = total to find a missing value.",
+  ],
+  ["distribution-plots", "histograms", "Count values in histogram intervals."],
+  [
+    "distribution-plots",
+    "box-plots",
+    "Read five-number summaries and quarters of data from box plots.",
+  ],
+  [
+    "variability",
+    "mean-absolute-deviation",
+    "Calculate the mean absolute deviation of dot-plot data.",
+  ],
+  [
+    "variability",
+    "dot-plot-iqr",
+    "Calculate the interquartile range of dot-plot data.",
+  ],
+  [
+    "variability",
+    "appropriate-center",
+    "Choose the median as the typical value when an extreme value pulls the mean.",
+  ],
 ])
   skills
     .find((s) => s.id === skillId)!

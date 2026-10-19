@@ -1,4 +1,5 @@
 import { equationMethods } from "./equation-lessons";
+import { distributionMethods } from "./distribution-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
@@ -28,6 +29,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...polynomialMethods,
   ...earlyDataMethods,
   ...linePlotMethods,
+  ...distributionMethods,
   ...radicalMethods,
   ...partWholeMethods,
   ...comparisonMethods,

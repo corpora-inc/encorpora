@@ -37,7 +37,9 @@ export type AnimationModel =
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
   | { kind: "line-plot-stack"; figure: LinePlot }
-  | { kind: "line-plot-share"; figure: LinePlot; share: number };
+  | { kind: "line-plot-share"; figure: LinePlot; share: number }
+  | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
+  | { kind: "box-build"; figure: LinePlot };
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -46,6 +48,36 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    (lesson.templateId === "dot-plot-mean" ||
+      lesson.templateId === "dot-plot-mad") &&
+    f?.kind === "line-plot" &&
+    f.mark === "dot" &&
+    f.denominator === 1 &&
+    validPlot(f)
+  ) {
+    const mean = f.values.reduce((a, b) => a + b, 0) / f.values.length;
+    const lo = Math.min(...f.values),
+      hi = Math.max(...f.values);
+    // A trial pivot that is not the mean: the middle of the range, or beside it.
+    const mid = (lo + hi) / 2;
+    const trial = mid !== mean ? mid : mean + (hi - mean > 1 ? 1 : -1);
+    return {
+      kind: "mean-balance",
+      figure: f,
+      mad: lesson.templateId === "dot-plot-mad",
+      trial,
+    };
+  }
+  if (
+    lesson.templateId === "dot-plot-iqr" &&
+    f?.kind === "line-plot" &&
+    f.mark === "dot" &&
+    f.denominator === 1 &&
+    validPlot(f) &&
+    f.values.length >= 4
+  )
+    return { kind: "box-build", figure: f };
   if (
     lesson.templateId === "make-ten-fact" &&
     f?.kind === "ten-frame-pair" &&
@@ -306,8 +338,89 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+/** Quartiles by the median-of-halves convention (overall median left out for odd counts). */
+export function fiveNumbers(values: readonly number[]) {
+  const xs = [...values].sort((a, b) => a - b),
+    n = xs.length;
+  const median = (v: number[]) => {
+    const k = Math.floor(v.length / 2);
+    return v.length % 2 ? v[k]! : (v[k - 1]! + v[k]!) / 2;
+  };
+  return {
+    min: xs[0]!,
+    q1: median(xs.slice(0, Math.floor(n / 2))),
+    median: median(xs),
+    q3: median(xs.slice(Math.ceil(n / 2))),
+    max: xs[n - 1]!,
+  };
+}
+const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
+
 export function animationFrames(model: AnimationModel) {
   if (model.kind === "balance") return balanceFrames(model);
+  if (model.kind === "mean-balance") {
+    const { values } = model.figure,
+      n = values.length,
+      sum = values.reduce((a, b) => a + b, 0),
+      mean = sum / n;
+    const below = values
+      .filter((v) => v < mean)
+      .reduce((a, v) => a + (mean - v), 0);
+    const g = (a: number, b: number): number => (b ? g(b, a % b) : a);
+    const frac = (p: number, q: number) => {
+      const k = g(Math.abs(p), q);
+      return q / k === 1
+        ? { tex: `${p / k}`, text: `${p / k}` }
+        : {
+            tex: `\\tfrac{${p / k}}{${q / k}}`,
+            text: `${p / k}/${q / k}`,
+          };
+    };
+    const belowText = frac(Math.round(below * n), n);
+    return [
+      {
+        title: "Put the dots on a beam",
+        text: `${n} values sit on the number line like equal weights.`,
+        math: `$\\text{sum} = ${sum}$`,
+      },
+      {
+        title: "Try a pivot",
+        text: `With the pivot at ${num(model.trial)}, the beam tips: one side carries more total distance.`,
+        math: `$\\text{pivot} = ${num(model.trial)}$`,
+      },
+      model.mad
+        ? {
+            title: "Balance, then measure the spread",
+            text: `The beam balances at the mean. The distances below it equal the distances above it, ${belowText.text} each side. The MAD is the mean of all the distances.`,
+            math: `$\\text{MAD} = \\dfrac{2 \\times ${belowText.tex}}{${n}}$`,
+          }
+        : {
+            title: "Balance at the mean",
+            text: `The beam balances at ${frac(sum, n).text}: the distances below it add up to the distances above it.`,
+            math: `$${sum} \\div ${n} = ${frac(sum, n).tex}$`,
+          },
+    ];
+  }
+  if (model.kind === "box-build") {
+    const q = fiveNumbers(model.figure.values);
+    return [
+      {
+        title: "The ordered data",
+        text: "A dot plot already lists the values in order, left to right.",
+        math: `$${model.figure.values.length}\\text{ values}$`,
+      },
+      {
+        title: "Split at the median, then split each half",
+        text: "The median cuts the data into halves; each half’s median is a quartile.",
+        math: `$Q_1 = ${num(q.q1)},\\; \\text{median} = ${num(q.median)},\\; Q_3 = ${num(q.q3)}$`,
+      },
+      {
+        title: "Draw the box",
+        text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
+        math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
+      },
+    ];
+  }
   if (model.kind === "make-ten") {
     const { first: a, second: b } = model.figure;
     const need = 10 - a,
