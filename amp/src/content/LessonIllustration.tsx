@@ -1,3 +1,4 @@
+import { AreaVolumeIllustration } from "./AreaVolumeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
@@ -20,6 +21,12 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind.startsWith("av-"))
+    return (
+      <AreaVolumeIllustration
+        kind={kind as Parameters<typeof AreaVolumeIllustration>[0]["kind"]}
+      />
+    );
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

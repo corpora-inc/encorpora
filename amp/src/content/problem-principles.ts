@@ -1,3 +1,4 @@
+import { areaVolumePrinciples } from "./area-volume-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { rationalPrinciples } from "./rational-lessons";
@@ -19,6 +20,7 @@ export const principles: Record<string, string> = {
   ...polynomialPrinciples,
   ...radicalPrinciples,
   ...combinatoricsPrinciples,
+  ...areaVolumePrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
   ...percentChangePrinciples,

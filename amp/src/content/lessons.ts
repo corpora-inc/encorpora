@@ -1,3 +1,4 @@
+import { areaVolumeLessons } from "./area-volume-lessons";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -30,6 +31,15 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "av-triangle-half"
+      | "av-polygon-split"
+      | "av-prism-net"
+      | "av-cube-packing"
+      | "av-composite-split"
+      | "av-prism-layers"
+      | "av-prism-unrolled"
+      | "av-cylinder-stack"
+      | "av-cone-sphere-cylinder"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +543,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...areaVolumeLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,

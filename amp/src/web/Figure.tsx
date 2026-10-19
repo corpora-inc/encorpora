@@ -1,4 +1,5 @@
 import { MeasurementFigure } from "./MeasurementFigure";
+import { AreaVolumeFigure } from "./AreaVolumeFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
@@ -10,6 +11,14 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "measured-polygon":
+    case "rectangular-prism-net":
+    case "triangular-prism-net":
+    case "square-pyramid-net":
+    case "box-prism":
+    case "extruded-polygon":
+    case "curved-solid":
+      return <AreaVolumeFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;

@@ -1,5 +1,10 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type { SemanticFigure } from "../../math/contracts";
+import {
+  areaVolumeAnimationModel,
+  areaVolumeFrames,
+  type AreaVolumeAnimation,
+} from "./area-volume-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -7,7 +12,8 @@ type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
 export type AnimationModel =
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
-  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
+  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
+  | AreaVolumeAnimation;
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -15,6 +21,8 @@ const integer = (n: number, min: number, max: number) =>
 export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
+  const areaVolume = areaVolumeAnimationModel(lesson);
+  if (areaVolume) return areaVolume;
   const f = lesson.example.figure;
   if (
     lesson.templateId === "fraction-model" &&
@@ -47,6 +55,12 @@ export function animationModel(
   return null;
 }
 export function animationFrames(model: AnimationModel) {
+  if (
+    model.kind === "triangle-double" ||
+    model.kind === "net-fold" ||
+    model.kind === "cylinder-stack"
+  )
+    return areaVolumeFrames(model);
   if (model.kind === "fraction") {
     const { parts: d, selected: n } = model.figure;
     return [

@@ -31,6 +31,7 @@ from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures 
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
+from area_volume_math_oracle import AREA_VOLUME, solve_area_volume, review_area_volume_fixtures, review_problem as review_area_volume_problem, review_area_volume_content, review_content_mutations as review_area_volume_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
 
@@ -47,7 +48,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = AREA_VOLUME | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -59,6 +60,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in AREA_VOLUME:
+        return solve_area_volume(public)
     if template in COMBINATORICS:
         return solve_combinatorics(public)
     if template in RADICAL_TYPES:
@@ -275,6 +278,8 @@ def solve(public):
 
 
 def review(stream):
+    area_volume_fixtures = review_area_volume_fixtures()
+    area_volume_mutants = review_area_volume_mutations()
     review_combinatorics_fixtures()
     review_combinatorics_mutations()
     review_radical_arithmetic()
@@ -303,6 +308,7 @@ def review(stream):
     start, count = manifest['seedStart'], manifest['seedCount']
     require(type(start) is int and type(count) is int and start >= 0 and count >= 256, 'Require at least 256 seeds per family')
     seen, counts = set(), Counter()
+    area_volume_equalities = 0
     polynomial_shortcuts = PolynomialShortcutReview()
     inequality_review = InequalityReview()
     system_review = LinearSystemReview()
@@ -345,6 +351,8 @@ def review(stream):
             review_statistics_explanation(problem)
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
+        if template in AREA_VOLUME:
+            area_volume_equalities += review_area_volume_problem(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in RADICAL_TYPES:
             review_radical_problem(problem)
@@ -361,6 +369,8 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)
+    print('Independent area/volume content: ' + json.dumps({**review_area_volume_content(), 'rejectedContentMutations': area_volume_mutants}), file=sys.stderr)
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)

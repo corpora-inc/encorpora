@@ -81,21 +81,25 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["factor-partner"],
     ["metric-length-rename"],
   ],
-  // Grade 6: decimals, the order of operations, fractions, the mean.
+  // Grade 6: decimals, the order of operations, fractions, triangle area.
   [
     ["decimal-addition", "decimal-multiplication"],
     ["operation-order", "integer-power"],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
-    ["mean-data"],
+    ["triangle-area-base-height"],
   ],
   // Grade 7: powers, unit rates, the mean, distance on a number line.
   [["integer-power"], ["unit-price"], ["mean-data"], ["number-line-distance"]],
-  // Grade 8: signed numbers, unit rates, probability and circles.
+  // Grade 8: signed numbers, unit rates, probability, circles and cylinders.
   [
     ["integer-addition"],
     ["unit-price"],
     ["simple-probability"],
-    ["circle-area-coefficient", "circle-circumference-coefficient"],
+    [
+      "circle-area-coefficient",
+      "circle-circumference-coefficient",
+      "cylinder-volume",
+    ],
   ],
   // High school: an equation, the Pythagorean theorem, a unit rate, slope.
   [

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
+import { AreaVolumeModel } from "./AreaVolumeModels";
 import "./animation.css";
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
@@ -57,7 +58,11 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         aria-label={`${frames[current].title}. ${frames[current].text}`}
       >
         <title>{frames[current].title}</title>
-        {model.kind === "fraction" ? (
+        {model.kind === "triangle-double" ||
+        model.kind === "net-fold" ||
+        model.kind === "cylinder-stack" ? (
+          <AreaVolumeModel model={model} step={current} />
+        ) : model.kind === "fraction" ? (
           <FractionModel model={model} step={current} />
         ) : model.kind === "array" ? (
           <ArrayModel model={model} step={current} />
