@@ -1395,6 +1395,37 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// High-school probability rules (S-CP): sets, addition, conditioning, products.
+for (const [skillId, suffix, description] of [
+  [
+    "event-sets",
+    "set-operations",
+    "Count or find the probability of a union, intersection or complement of two events from a Venn diagram, given totals or a list of whole-number outcomes.",
+  ],
+  [
+    "probability-addition",
+    "overlap-correction",
+    "Find P(A or B) from counts, probabilities or a standard deck by subtracting the overlap once, and solve the rule for P(A and B).",
+  ],
+  [
+    "conditional-probability",
+    "restricted-sample-space",
+    "Find P(A | B) from a two-way table, a Venn diagram, a list of outcomes or P(A and B) and P(B).",
+  ],
+  [
+    "probability-multiplication",
+    "sequential-products",
+    "Find joint probabilities of two-stage events, including draws without replacement, and add the paths of a probability tree.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Grades 2–5 polygons, solids' parts and the quadrilateral hierarchy.
 for (const [skillId, facets] of [
   [

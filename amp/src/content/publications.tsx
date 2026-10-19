@@ -144,7 +144,7 @@ export function publicationHtml(
                 </p>
               ))}
               {section.illustration && (
-                <LessonIllustration kind={section.illustration} />
+                <LessonIllustration kind={section.illustration} print />
               )}
             </section>
           ))}

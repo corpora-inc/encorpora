@@ -8,7 +8,10 @@ import {
   fractionBar,
   graph,
   numberLine,
+  table,
   tenFrame,
+  tree,
+  venn,
 } from "./author";
 import type { Scene } from "./spec";
 
@@ -197,6 +200,91 @@ export const galleryCases: GalleryCase[] = [
     scene: fractionBar({ shaded: 5, parts: 4, wholes: 2 }).scene(),
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
+  {
+    name: "Venn: counts in every region",
+    scene: venn("Art", "Music", { universe: "40 students" })
+      .regions({ a: 12, ab: 6, b: 9, none: 13 })
+      .scene(),
+  },
+  {
+    name: "Venn: totals given, the union shaded (problem)",
+    scene: venn("Soccer", "Band", { universe: "60 students" })
+      .totals(25, 18)
+      .regions({ a: null, ab: 7, b: null })
+      .shade("a", "ab", "b")
+      .scene(),
+  },
+  {
+    name: "Venn: probabilities, neither shaded",
+    scene: venn("A", "B", { universe: "S" })
+      .regions({ a: "0.35", ab: "0.15", b: "0.2", none: null })
+      .shade("none")
+      .scene(),
+  },
+  {
+    name: "Two-way table with totals",
+    scene: table(["Online", "In person", "Total"], {
+      corner: "Grade",
+      totalColumn: true,
+    })
+      .row("Grade 9", [18, 12, 30])
+      .row("Grade 10", [14, 26, 40])
+      .row("Total", [32, 38, 70], { total: true })
+      .scene(),
+  },
+  {
+    name: "Two-way table: conditioning on one row",
+    scene: table(["Online", "In person", "Total"], { totalColumn: true })
+      .row("Grade 9", [18, 12, 30])
+      .row("Grade 10", [14, 26, 40])
+      .row("Total", [32, 38, 70], { total: true })
+      .highlight({ rows: [1], cells: [[1, 0]] })
+      .scene(),
+  },
+  {
+    name: "Tree: two draws without replacement",
+    scene: tree([
+      {
+        label: "R",
+        p: "3/5",
+        children: [
+          { label: "R", p: "2/4", leaf: "6/20" },
+          { label: "B", p: "2/4", leaf: "6/20" },
+        ],
+      },
+      {
+        label: "B",
+        p: "2/5",
+        children: [
+          { label: "R", p: "3/4", leaf: "6/20" },
+          { label: "B", p: "1/4", leaf: "2/20" },
+        ],
+      },
+    ])
+      .highlight("0", "0.1")
+      .scene(),
+  },
+  {
+    name: "Tree: rain and a late bus (problem)",
+    scene: tree([
+      {
+        label: "Rain",
+        p: "0.3",
+        children: [
+          { label: "Late", p: "0.4", leaf: null },
+          { label: "On time", p: null },
+        ],
+      },
+      {
+        label: "No rain",
+        p: "0.7",
+        children: [
+          { label: "Late", p: "0.1" },
+          { label: "On time", p: "0.9" },
+        ],
+      },
+    ]).scene(),
+  },
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */

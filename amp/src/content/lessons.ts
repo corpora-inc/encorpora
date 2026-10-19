@@ -19,6 +19,8 @@ import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import type { LessonSceneKind } from "./lesson-scenes";
+import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
@@ -70,6 +72,7 @@ export interface Lesson {
       | "elevation-line"
       | "opposite-line"
       | "story-jumps"
+      | LessonSceneKind
       | AttributeIllustrationKind
       | "multiply-tens-groups"
       | "area-model-product"
@@ -614,6 +617,7 @@ export const lessons: readonly Lesson[] = [
   ...volumeCoordinateLessons,
   ...shapeLessons,
   ...polygonLessons,
+  ...probabilityRulesLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

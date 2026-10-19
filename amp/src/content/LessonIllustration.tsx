@@ -1,4 +1,7 @@
 import { RatioRateIllustration } from "./RatioRateIllustration";
+import { isLessonScene, lessonScenes } from "./lesson-scenes";
+import { SceneFigure } from "../web/scene/SceneFigure";
+import { ScenePlayer } from "../web/scene/ScenePlayer";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
@@ -48,8 +51,11 @@ import React from "react";
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
 export function LessonIllustration({
   kind,
+  print = false,
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
+  /** Print shows a walkthrough's final frame, without controls. */
+  print?: boolean;
 }) {
   if (
     kind === "repeating-decimal-shift" ||
@@ -63,6 +69,16 @@ export function LessonIllustration({
     return (
       <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
     );
+  if (isLessonScene(kind)) {
+    const scene = lessonScenes[kind];
+    if (print)
+      return <SceneFigure scene={scene} reveal frame="end" medium="print" />;
+    return scene.steps?.length ? (
+      <ScenePlayer scene={scene} mode="lesson" />
+    ) : (
+      <SceneFigure scene={scene} reveal />
+    );
+  }
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))

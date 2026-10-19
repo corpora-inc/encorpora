@@ -640,6 +640,114 @@ export const clockSchema = z
   })
   .strict();
 
+/** A value written in a figure (a count, a probability); null is the unknown,
+ * drawn as "?". Unknowns carry no value, so a problem payload never holds one. */
+const entry = z.union([label, z.null()]);
+export const vennRegions = ["a", "ab", "b", "none"] as const;
+/** Two events in a sample space: counts or probabilities by region. */
+export const vennSchema = z
+  .object({
+    ...base,
+    type: z.literal("venn"),
+    sets: z.tuple([label, label]),
+    /** Names the sample space inside its rectangle's corner. */
+    universe: label.optional(),
+    /** a: first only; ab: both; b: second only; none: neither. */
+    regions: z
+      .object({ a: entry, ab: entry, b: entry, none: entry })
+      .partial()
+      .strict()
+      .optional(),
+    /** Each whole set's total, beside its name. */
+    totals: z.tuple([entry, entry]).optional(),
+    shade: z.array(z.enum(vennRegions)).max(4).optional(),
+  })
+  .strict();
+/** A two-way (or one-way) table of counts with header row and column. */
+export const tableSchema = z
+  .object({
+    ...base,
+    type: z.literal("table"),
+    corner: label.optional(),
+    columns: z.array(label).min(1).max(6),
+    rows: z
+      .array(
+        z
+          .object({
+            label,
+            cells: z.array(entry).min(1).max(6),
+            /** A totals row, set off by a rule. */
+            total: z.boolean().optional(),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(8),
+    /** The last column holds row totals, set off by a rule. */
+    totalColumn: z.boolean().optional(),
+    highlight: z
+      .object({
+        rows: z.array(small.max(7)).max(8).optional(),
+        columns: z.array(small.max(5)).max(6).optional(),
+        cells: z
+          .array(z.tuple([small.max(7), small.max(5)]))
+          .max(12)
+          .optional(),
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+  .refine((t) => t.rows.every((r) => r.cells.length === t.columns.length), {
+    message: "Every row has one cell per column",
+  })
+  .refine(
+    (t) =>
+      (t.highlight?.rows ?? []).every((r) => r < t.rows.length) &&
+      (t.highlight?.columns ?? []).every((c) => c < t.columns.length) &&
+      (t.highlight?.cells ?? []).every(
+        ([r, c]) => r < t.rows.length && c < t.columns.length,
+      ),
+    "Highlights name existing rows, columns and cells",
+  );
+const treeOutcome = z
+  .object({
+    label,
+    /** The branch probability. */
+    p: entry,
+    /** The learner finds this probability: drawn as "?" unless revealed. */
+    derived: z.boolean().optional(),
+    /** Text at the end of a complete path, such as its product. */
+    leaf: entry.optional(),
+  })
+  .strict();
+/** A probability tree of one or two stages, drawn left to right. */
+export const treeSchema = z
+  .object({
+    ...base,
+    type: z.literal("tree"),
+    branches: z
+      .array(
+        treeOutcome
+          .extend({ children: z.array(treeOutcome).min(2).max(4).optional() })
+          .strict(),
+      )
+      .min(2)
+      .max(4),
+    /** Each complete path's product in the leaf column, computed from its
+     * branches: masked as the learner's work, or shown. */
+    products: z.enum(["shown", "derived"]).optional(),
+    /** Paths to emphasize: "1" is the second first-stage branch, "1.0" its first child. */
+    highlight: z
+      .array(z.string().regex(/^\d(\.\d)?$/))
+      .max(8)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.branches.reduce((n, b) => n + (b.children?.length ?? 1), 0) <= 10,
+    "At most 10 complete paths",
+  );
 export const componentSchemas = [
   numberLineSchema,
   graphSchema,
@@ -649,6 +757,9 @@ export const componentSchemas = [
   baseTenSchema,
   fractionBarSchema,
   clockSchema,
+  vennSchema,
+  tableSchema,
+  treeSchema,
 ] as const;
 export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
@@ -659,6 +770,9 @@ export type TenFrame = z.infer<typeof tenFrameSchema>;
 export type BaseTen = z.infer<typeof baseTenSchema>;
 export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
+export type Venn = z.infer<typeof vennSchema>;
+export type Table = z.infer<typeof tableSchema>;
+export type Tree = z.infer<typeof treeSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([

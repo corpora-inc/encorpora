@@ -5,6 +5,7 @@ import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
+import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
@@ -38,6 +39,7 @@ export const principles: Record<string, string> = {
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
   ...polygonPrinciples,
+  ...probabilityRulesPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
