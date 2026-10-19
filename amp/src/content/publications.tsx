@@ -13,6 +13,8 @@ import { ratioRateWorksheet } from "./ratio-rate-worksheets";
 import { ratioRateTemplates } from "../math/ratio-rate-practice";
 import { factArrayTemplates } from "../math/fact-arrays-practice";
 import { patternFunctionWorksheet } from "./pattern-function-worksheets";
+import { linearFunctionWorksheet } from "./linear-function-worksheets";
+import { linearFunctionTemplates } from "../math/linear-function-practice";
 import { patternFunctionTemplates } from "../math/pattern-function-practice";
 import { equationWorksheet } from "./equation-worksheets";
 import { equationTemplates } from "../math/equation-practice";
@@ -89,6 +91,8 @@ export function publicationHtml(
           ? numberSystemWorksheet(id, lesson.id, edition)
           : ratioRateTemplates.some((t) => t.id === id)
             ? ratioRateWorksheet(id, lesson.id, edition)
+          : linearFunctionTemplates.some((t) => t.id === id)
+            ? linearFunctionWorksheet(id, lesson.id, edition)
             : patternFunctionTemplates.some((t) => t.id === id)
               ? patternFunctionWorksheet(id, lesson.id, edition)
               : equationTemplates.some((t) => t.id === id)

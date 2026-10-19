@@ -317,7 +317,8 @@ export function SimilarTriangles({
     maxX: Math.max(...s.map((p) => p.x)),
     maxY: Math.max(...s.map((p) => p.y)),
   }));
-  const gap = 56,
+  // The gap keeps the facing vertex labels of the two triangles well apart.
+  const gap = 80,
     width = 300 - gap,
     height = 140;
   const totalWidth = extent.reduce((a, e) => a + e.maxX - e.minX, 0);
@@ -336,12 +337,15 @@ export function SimilarTriangles({
     left += (e.maxX - e.minX) * px + gap;
     return pts;
   });
+  // Fit the frame to the drawing: flat triangles get no empty band above them.
+  const top = Math.min(...placed.flat().map((p) => p.y)) - 34,
+    bottom = baseline + 34;
   return (
     <svg
       data-kind={f.kind}
       className={className}
       style={style}
-      viewBox="0 0 360 220"
+      viewBox={`0 ${top} 360 ${bottom - top}`}
       role="img"
       aria-label={describeSimilarTriangles(f)}
     >

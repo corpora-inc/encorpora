@@ -35,8 +35,8 @@ export const OPENER_COUNT = 4;
 
 /** Clean anchor items for the grade a learner of that age is working in
  * (frontier `expected`: K = 0 … 8, and 9 for every high-school age). Each
- * opener is this year's or last year's core material (grade 8 for high
- * school), so the first answers build confidence: short, familiar and whole.
+ * opener is this year's or last year's core material (grade 8 and
+ * Algebra 1 for high school), so the first answers build confidence: short, familiar and whole.
  * Choice items may open: the estimator discounts a correct pick by its guess
  * chance (learning/frontier.ts), so they are used where they bring a strand
  * the typed items cannot (comparing, clocks, coins) rather than as stand-ins
@@ -173,12 +173,18 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "angle-pair-measure",
     ],
   ],
-  // High school: an equation, the Pythagorean theorem, a unit rate, slope.
+  // High school: an equation or formula, the Pythagorean theorem, a linear
+  // model, then a function's value or average rate of change (Algebra 1).
   [
-    ["linear-equation", "both-sides-linear-equation"],
+    [
+      "linear-equation",
+      "both-sides-linear-equation",
+      "formula-value",
+      "line-slope",
+    ],
     ["right-triangle"],
-    ["unit-price"],
-    ["line-slope", "graphed-line-slope"],
+    ["linear-model-value"],
+    ["average-rate-formula", "function-evaluation"],
   ],
 ];
 

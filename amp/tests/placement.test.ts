@@ -86,8 +86,9 @@ test("every role and opener names a real, whole item every client can draw", () 
       );
     if (band > 0)
       assert.equal(new Set(strands.slice(0, 3)).size, 3, `band ${band}`);
-    // This year's or last year's material; high school opens on grade 8.
-    const top = Math.min(band, 8);
+    // This year's or last year's material; high school opens on grade 8
+    // and Algebra 1.
+    const top = Math.min(band, 9);
     for (const pool of slots)
       for (const id of pool) {
         const template = byId.get(id);
