@@ -47,9 +47,8 @@ function Card({
           x={x + width / 2}
           y={y + height / 2 + 9}
           textAnchor="middle"
-          fontSize="26"
-          fontWeight="600"
           fill={cardEdge}
+          style={{ fontWeight: 600, fontSize: 26 }}
         >
           ?
         </text>
@@ -175,7 +174,7 @@ function DotArray({
 
 function Total({ x, y, total }: { x: number; y: number; total: number }) {
   return (
-    <text x={x} y={y} textAnchor="middle" fontSize="18" fill={ink}>
+    <text x={x} y={y} textAnchor="middle" fill={ink} style={{ fontSize: 18 }}>
       {total} in all
     </text>
   );
@@ -240,8 +239,8 @@ function ShareModel({
               x={left + pitch * (g + 0.5)}
               y={top + radius + 7}
               textAnchor="middle"
-              fontSize="18"
               fill={axis}
+              style={{ fontSize: 18 }}
             >
               ?
             </text>
@@ -290,8 +289,8 @@ function ShareModel({
       <text
         x={left + boxWidth + 12}
         y={top + boxHeight / 2 + 7}
-        fontSize="20"
         fill={ink}
+        style={{ fontSize: 20 }}
       >
         × ?
       </text>
@@ -333,9 +332,8 @@ function TimesTable({
         x={x + w / 2}
         y={y + h / 2 + 7}
         textAnchor="middle"
-        fontSize="19"
         fill={ink}
-        fontWeight={fill === head ? "600" : "400"}
+        style={{ fontWeight: fill === head ? "600" : "400", fontSize: 19 }}
       >
         {text}
       </text>

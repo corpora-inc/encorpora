@@ -5,6 +5,7 @@ import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { linearFunctionMethods } from "./linear-function-lessons";
+import { twoVariableMethods } from "./two-variable-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
@@ -25,6 +26,7 @@ import { angleTriangleMethods } from "./angle-triangle-lessons";
 import { realNumberMethods } from "./real-number-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
+import { numberSenseMethods } from "./number-sense-lessons";
 import { multiplyDivideMethods } from "./multiply-divide-lessons";
 import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
@@ -69,6 +71,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...timeMoneyMethods,
   ...attributeMethods,
   ...comparisonMethods,
+  ...numberSenseMethods,
   ...multiplyDivideMethods,
   ...addSubtractMethods,
   ...factsMethods,
@@ -81,6 +84,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...ratioRateMethods,
   ...patternFunctionMethods,
   ...linearFunctionMethods,
+  ...twoVariableMethods,
   ...equationMethods,
   ...rationalMethods,
   ...circleMeasurementMethods,

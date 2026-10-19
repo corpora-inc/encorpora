@@ -26,6 +26,13 @@ export function isPorted(
   return (portedKinds as readonly string[]).includes(f.kind);
 }
 
+/** Dot and box plots size their stacks and boxes in pixels, so their height
+ * does not shrink with the scale. The fit grows the scale by the room left
+ * under the ceiling each pass; a high ceiling lets it reach the full width
+ * in a few passes instead of stopping squeezed (a tall double dot plot was
+ * left 117 px wide under the default). */
+const PLOT_CEILING = 720;
+
 export function legacyScene(
   f: Extract<SemanticFigure, { kind: PortedKind }>,
 ): Scene {
@@ -89,6 +96,7 @@ export function legacyScene(
     case "line-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "dotPlot",
@@ -105,6 +113,7 @@ export function legacyScene(
     case "double-dot-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "dotPlot",
@@ -121,6 +130,7 @@ export function legacyScene(
     case "double-box-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "boxPlot",
