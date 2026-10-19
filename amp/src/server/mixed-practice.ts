@@ -11,6 +11,7 @@ import {
   type Frontier,
 } from "../learning/frontier";
 import { projectSkillEvidence, type SkillEvidence } from "./evidence.js";
+import { guessChance } from "../math/guess-chance";
 import {
   PLACEMENT_ATTEMPTS,
   openerCandidates,
@@ -99,6 +100,10 @@ export function planMixedPractice(options: {
       gradeOf: (id) => gradeOfTemplate.get(id),
       strandOf: (id) =>
         strandOf(templates.find((t) => t.id === id)?.skillId ?? id),
+      guessOf: (id) => {
+        const template = templates.find((t) => t.id === id);
+        return template ? guessChance(template) : 0;
+      },
     });
   // A strand estimated below its easiest material still offers that material
   // once the learner's overall level reaches it; otherwise one bad run would

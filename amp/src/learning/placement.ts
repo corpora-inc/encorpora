@@ -36,28 +36,48 @@ export const OPENER_COUNT = 4;
 /** Clean anchor items for the grade a learner of that age is working in
  * (frontier `expected`: K = 0 … 8, and 9 for every high-school age). Each
  * opener is this year's or last year's core material (grade 8 for high
- * school), so the first answers build confidence: short, familiar and whole. Each slot is a small pool of equivalent items so
+ * school), so the first answers build confidence: short, familiar and whole.
+ * Choice items may open: the estimator discounts a correct pick by its guess
+ * chance (learning/frontier.ts), so they are used where they bring a strand
+ * the typed items cannot (comparing, clocks, coins) rather than as stand-ins
+ * for typed items. Each slot is a small pool of equivalent items so
  * siblings do not see identical starts, while every choice stays a good first
  * impression. Each slot keeps to one strand and neighbouring slots differ, so
  * the opening batch is interleaved like the rest of practice. */
 export const openerSlots: readonly (readonly (readonly string[])[])[] = [
-  // K (and younger): count, join, count, take away.
+  // K (and younger): count or compare numerals, join, compare lengths,
+  // weights or capacity, take away.
   [
-    ["count-objects"],
+    ["count-objects", "teen-frame-compose", "greater-numeral"],
     ["join-within-10", "facts-to-five"],
-    ["teen-frame-compose", "greater-numeral"],
+    ["compare-lengths", "compare-weights", "compare-capacity"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
   ],
-  // Grade 1: counting, facts within 10, a missing addend, then tens.
+  // Grade 1: counting, facts within 10, a missing addend, then a clock or a
+  // length.
   [
     ["count-objects", "teen-frame-compose"],
     ["join-within-10", "add-within-20", "count-on-back"],
     ["unknown-addend-story", "balanced-addition"],
-    ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
+    [
+      "clock-hour-read",
+      "read-clock-hour-half",
+      "match-clock-half-hour",
+      "measure-with-units",
+      "compare-lengths",
+    ],
   ],
-  // Grade 2: facts within 20, place value and comparison, a missing addend.
+  // Grade 2: facts within 20 or two-digit sums and differences, place value
+  // and comparison, a missing addend, then coins or a clock.
   [
-    ["add-within-20", "make-ten-fact", "add-two-digit-regroup"],
+    [
+      "add-within-20",
+      "make-ten-fact",
+      "add-two-digit-regroup",
+      "subtract-within-20",
+      "related-subtraction",
+      "subtract-two-digit-regroup",
+    ],
     [
       "tens-ones-model",
       "continue-count-to-120",
@@ -65,7 +85,13 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-three-digit",
     ],
     ["unknown-addend-story", "balanced-addition"],
-    ["subtract-within-20", "related-subtraction", "subtract-two-digit-regroup"],
+    [
+      "coin-total",
+      "pay-exact-coins",
+      "minutes-past-hour",
+      "read-clock-five-minutes",
+      "match-clock-five-minutes",
+    ],
   ],
   // Grade 3: regrouping or tens products, three-digit place value, a story,
   // a bar chart.
