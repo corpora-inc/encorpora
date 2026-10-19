@@ -25,6 +25,7 @@ import { angleTriangleMethods } from "./angle-triangle-lessons";
 import { realNumberMethods } from "./real-number-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
+import { numberSenseMethods } from "./number-sense-lessons";
 import { multiplyDivideMethods } from "./multiply-divide-lessons";
 import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
@@ -69,6 +70,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...timeMoneyMethods,
   ...attributeMethods,
   ...comparisonMethods,
+  ...numberSenseMethods,
   ...multiplyDivideMethods,
   ...addSubtractMethods,
   ...factsMethods,

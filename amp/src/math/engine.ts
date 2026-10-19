@@ -101,6 +101,10 @@ import {
   generateMultiplyDivideProblem,
 } from "./multiply-divide-practice";
 import {
+  numberSenseTemplates,
+  generateNumberSenseProblem,
+} from "./number-sense-practice";
+import {
   comparisonTemplates,
   generateComparisonProblem,
 } from "./comparison-practice";
@@ -308,6 +312,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...numberSenseTemplates,
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
@@ -590,6 +595,8 @@ function generateRawProblem(
     return generateProbabilityRulesProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (numberSenseTemplates.some((t) => t.id === templateId))
+    return generateNumberSenseProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))
     return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))

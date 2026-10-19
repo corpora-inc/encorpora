@@ -2627,3 +2627,44 @@ for (const [skillId, suffix, description] of [
       description,
       status: "implemented",
     });
+
+// Counting, number-line, rounding and powers-of-ten tasks cover bounded facets.
+for (const [skillId, suffix, description] of [
+  [
+    "count-to-100",
+    "counts-and-chart",
+    "Find a missing number in a count by ones or tens within 100, or in a window of the hundred chart.",
+  ],
+  [
+    "write-numerals",
+    "frames-to-twenty",
+    "Write the numeral for 0 to 20 counters shown in ten-frames.",
+  ],
+  [
+    "number-line-arithmetic",
+    "tens-and-ones-hops",
+    "Add or subtract within 100 as a tens hop and an ones hop, and find a hop's length between two numbers.",
+  ],
+  [
+    "round-whole-numbers",
+    "nearest-ten-hundred",
+    "Round whole numbers below 1,000 to the nearest ten or hundred, including halfway values and carries.",
+  ],
+  [
+    "large-place-value",
+    "rounding-large",
+    "Round five- and six-digit whole numbers to the nearest hundred, thousand or ten thousand.",
+  ],
+  [
+    "powers-of-ten",
+    "shift-by-powers",
+    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten, and compare one digit's values in two places.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

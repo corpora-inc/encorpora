@@ -25,6 +25,7 @@ import { angleTriangleFacetMappings } from "./angle-triangle-coverage";
 import { realNumberFacetMappings } from "./real-number-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
+import { numberSenseFacetMappings } from "./number-sense-coverage";
 import { multiplyDivideFacetMappings } from "./multiply-divide-coverage";
 import { addSubtractFacetMappings } from "./add-subtract-coverage";
 import { factsFacetMappings } from "./facts-coverage";
@@ -59,6 +60,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...timeMoneyFacetMappings,
   ...attributeFacetMappings,
   ...comparisonFacetMappings,
+  ...numberSenseFacetMappings,
   ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
   ...factsFacetMappings,

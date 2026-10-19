@@ -49,6 +49,7 @@ from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOI
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
+from number_sense_math_oracle import NUMBER_SENSE, solve_number_sense, review_number_sense_fixtures, NumberSenseCorpus
 from multiply_divide_math_oracle import MULTIPLY_DIVIDE, solve_multiply_divide, review_multiply_divide_fixtures, MultiplyDivideCorpus
 from add_subtract_math_oracle import ADD_SUBTRACT, solve_add_subtract, review_add_subtract_fixtures, AddSubtractCorpus
 from facts_math_oracle import FACTS, solve_facts, review_facts_fixtures, FactsCorpus
@@ -75,7 +76,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = TRANSFORMATION | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | ANGLE_TRIANGLE | PROBABILITY_RULES
+SUPPORTED = TRANSFORMATION | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | ANGLE_TRIANGLE | PROBABILITY_RULES | NUMBER_SENSE
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
@@ -92,6 +93,8 @@ SUPPORTED |= ABSOLUTE_VALUE
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in NUMBER_SENSE:
+        return solve_number_sense(public)
     if template in TRANSFORMATION:
         return solve_transformation(public)
     if template in COMPLETING_SQUARE:
@@ -401,6 +404,7 @@ def review(stream):
     review_time_money_fixtures()
     review_attribute_fixtures()
     review_comparison_fixtures()
+    review_number_sense_fixtures()
     review_data_display_fixtures()
     review_combinatorics_fixtures()
     review_combinatorics_mutations()
@@ -442,6 +446,7 @@ def review(stream):
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
     comparison_corpus = ComparisonCorpus()
+    number_sense_corpus = NumberSenseCorpus()
     multiply_divide_corpus = MultiplyDivideCorpus()
     decimal_corpus = DecimalCorpus()
     add_subtract_corpus = AddSubtractCorpus()
@@ -516,6 +521,8 @@ def review(stream):
             early_operations_corpus.record(public, solved)
         if template in COMPARISON:
             comparison_corpus.record(public, solved)
+        if template in NUMBER_SENSE:
+            number_sense_corpus.record(public, solved)
         if template in MULTIPLY_DIVIDE:
             multiply_divide_corpus.record(public, solved)
         if template in DECIMAL:
@@ -543,6 +550,7 @@ def review(stream):
             review_probability_rules_problem(problem, solved)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent number-sense coverage: ' + json.dumps(number_sense_corpus.finish()), file=sys.stderr)
     print('Independent coordinate-geometry content: ' + json.dumps(review_transformation_content()), file=sys.stderr)
     print('Independent completing-square coverage: ' + json.dumps(completing_square_review.finish(count)), file=sys.stderr)
     print('Independent completing-square content: ' + json.dumps(review_completing_square_content()), file=sys.stderr)
