@@ -44,6 +44,8 @@ import {
   isDataIllustration,
 } from "./data-display-illustrations";
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
+import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
+import { SceneFigure } from "../web/scene/SceneFigure";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
@@ -69,6 +71,8 @@ export function LessonIllustration({
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (isSceneIllustration(kind))
+    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||

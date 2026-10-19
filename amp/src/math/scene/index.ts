@@ -3,6 +3,7 @@ import "./components/number-line";
 import "./components/graph";
 import "./components/models";
 import "./components/angle";
+import "./components/table";
 export * from "./spec";
 export {
   layoutScene,

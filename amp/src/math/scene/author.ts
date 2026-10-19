@@ -12,6 +12,7 @@ import {
   type NumberLine,
   type Point,
   type Scene,
+  type Table,
   type TenFrame,
 } from "./spec";
 import type { Action, Step } from "./timeline";
@@ -302,6 +303,12 @@ class GraphBuilder extends Builder<Graph> {
 }
 export const graph = (spec: Omit<Graph, "type">) =>
   new GraphBuilder({ type: "graph", ...spec } as Graph);
+
+class TableBuilder extends Builder<Table> {}
+/** A table; with `sums`, the last column and row are totals, and derived
+ * cells (null in `rows`) are found from them. */
+export const table = (spec: Omit<Table, "type">) =>
+  new TableBuilder({ type: "table", ...spec } as Table);
 
 /** Place-value parts of a whole number: 345 → [300, 40, 5]. */
 export function placeValueParts(n: number) {

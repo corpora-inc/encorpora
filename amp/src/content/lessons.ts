@@ -3,6 +3,7 @@ import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
+import { bivariateLessons } from "./bivariate-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
@@ -11,6 +12,7 @@ import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
+import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { realNumberLessons } from "./real-number-lessons";
 import { numberSystemLessons } from "./number-system-lessons";
@@ -129,6 +131,7 @@ export interface Lesson {
       | "comparison-place-chart"
       | "large-place-value-chart"
       | DataIllustration
+      | SceneIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -596,6 +599,7 @@ export const lessons: readonly Lesson[] = [
   ...linePlotLessons,
   ...distributionLessons,
   ...inferenceLessons,
+  ...bivariateLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,

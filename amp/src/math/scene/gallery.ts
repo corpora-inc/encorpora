@@ -10,6 +10,7 @@ import {
   fractionBar,
   graph,
   numberLine,
+  table,
   tenFrame,
 } from "./author";
 import type { Scene } from "./spec";
@@ -225,6 +226,63 @@ export const galleryCases: GalleryCase[] = [
       arrows: true,
       marks: [{ from: 0, to: 1 }],
     }).scene({ width: 300 }),
+  },
+  {
+    name: "Scatter plot: unlike axis units, trend line through two marked points",
+    scene: graph({
+      x: [0, 10],
+      y: [30, 100],
+      grid: [1, 10],
+      aspect: (0.72 * 10) / 70,
+      axisNames: ["hours studied", "test score"],
+    })
+      .scatter(
+        [
+          [1, 50],
+          [2, 55],
+          [3, 58],
+          [4, 66],
+          [5, 70],
+          [6, 72],
+          [7, 82],
+          [8, 84],
+          [9, 88],
+          [10, 96],
+        ],
+        { m: 5, b: 45 },
+      )
+      .point(2, 55, undefined, { open: true })
+      .point(8, 85, undefined, { open: true })
+      .scene(),
+  },
+  {
+    name: "Two-way table: the cell to find (problem)",
+    scene: table({
+      title: "Has a curfew",
+      columns: ["Yes", "No", "Total"],
+      rows: [
+        { label: "Grade 7", cells: [18, 2, 20] },
+        { label: "Grade 8", cells: [null, null, 60] },
+        { label: "Total", cells: [42, 38, 80] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    }).scene(),
+  },
+  {
+    name: "Two-way table: revealed (lesson)",
+    reveal: true,
+    scene: table({
+      title: "Has a curfew",
+      columns: ["Yes", "No", "Total"],
+      rows: [
+        { label: "Grade 7", cells: [18, 2, 20] },
+        { label: "Grade 8", cells: [null, 36, 60] },
+        { label: "Total", cells: [42, 38, 80] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    }).scene(),
   },
 ];
 
