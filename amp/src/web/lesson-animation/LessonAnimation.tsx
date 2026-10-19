@@ -14,6 +14,7 @@ import {
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
@@ -22,6 +23,8 @@ import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "shape-morph":
+      return <ShapeMorphStage model={model} step={step} />;
     case "plot":
       return <PlotModel model={model} step={step} />;
     case "clock-sweep":

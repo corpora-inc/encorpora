@@ -1,5 +1,10 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type { SemanticFigure } from "../../math/contracts";
+import {
+  shapeMorphFrames,
+  shapeMorphModel,
+  type ShapeMorphAnimation,
+} from "./shape-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -50,6 +55,7 @@ export type ClockSweepAnimation = {
   minute: number;
 };
 export type AnimationModel =
+  | ShapeMorphAnimation
   | {
       kind: "plot";
       rows: { x: number; y: number }[];
@@ -129,6 +135,8 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  const morph = shapeMorphModel(lesson.templateId, f);
+  if (morph) return morph;
   if (
     (lesson.templateId === "related-patterns-relationship" ||
       lesson.templateId === "dependent-variable-equation") &&
@@ -541,6 +549,7 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
     const first = rows.find((r) => r.x !== 0) ?? rows[0]!;
