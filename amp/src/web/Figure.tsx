@@ -16,8 +16,15 @@ import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
 import { ShapeFigure } from "./ShapeFigure";
 import type { SemanticFigure } from "../math/contracts";
+import { isPorted, legacyScene } from "../math/scene/legacy";
+import { SceneFigure } from "./scene/SceneFigure";
 export function Figure({ figure }: { figure: SemanticFigure }) {
+  // Kinds ported to the scene framework draw through it (docs/figures-rfc.md).
+  if (isPorted(figure))
+    return <SceneFigure scene={legacyScene(figure)} kind={figure.kind} />;
   switch (figure.kind) {
+    case "scene":
+      return <SceneFigure scene={figure.scene} />;
     case "length-interval":
     case "measure-rectangle":
     case "rectangle-comparison":
@@ -60,7 +67,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "rational-line":
     case "fraction-strips":
       return <FractionPracticeFigure figure={figure} />;
-    case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
     case "function-display":
@@ -74,10 +80,7 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
-    case "coordinate-plane":
     case "bar-chart":
-    case "clock":
-    case "number-line":
       return <GraphicalFigure figure={figure} />;
     case "balance-scale":
     case "inequality-lines":

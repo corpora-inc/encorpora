@@ -29,6 +29,7 @@ import {
   geometryFigureSchemas,
   type GeometryFigure,
 } from "./geometry-figures.js";
+import { sceneSchema, type Scene } from "./scene/spec.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
 export type FunctionDisplayFigure = {
@@ -64,6 +65,8 @@ export type SemanticFigure =
   | FunctionDisplayFigure
   | GeometryFigure
   | ShapeFigure
+  /** Any figure built with the scene framework (docs/figures.md). */
+  | { kind: "scene"; scene: Scene }
   | {
       kind: "unit-array";
       rows: number;
@@ -146,6 +149,7 @@ export const figureCapabilities = [
   "function-displays-v1",
   "volume-coordinate-figures-v1",
   "shape-figures-v1",
+  "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
@@ -273,6 +277,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     ...shapeFigureSchemas,
+    z.object({ kind: z.literal("scene"), scene: sceneSchema }).strict(),
     z
       .object({
         kind: z.literal("unit-array"),
