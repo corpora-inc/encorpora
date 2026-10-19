@@ -516,7 +516,7 @@ export function DataDisplayFigure({ figure }: { figure: Model }) {
           role="img"
           aria-label={`Bar graph of ${figure.unit}. The scale counts by ${figure.step}s from 0 to ${figure.max}. ${figure.categories.map((c) => `${c.label}: ${c.value}`).join("; ")}.`}
         >
-          <text x={l.left - 8} y={12} textAnchor="end" style={small}>
+          <text x={l.left - 8} y={16} textAnchor="end" style={small}>
             {figure.unit}
           </text>
           {l.gridlines.map((v) => (
