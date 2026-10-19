@@ -244,3 +244,22 @@
 .shell.start-shell > .parent-consent-center {
   height: 100%;
 }
+
+/* Header controls (learner picker, Family menu) share one height, type and shape. */
+.app-shell .account {
+  align-items: center;
+}
+.app-shell .account .premium-select,
+.app-shell .account-menu summary {
+  box-sizing: border-box;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+.app-shell .account .premium-select {
+  width: auto;
+}
