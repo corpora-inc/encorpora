@@ -211,6 +211,39 @@ try {
     }
     await section("Learners");
   }
+  // Hover keeps every button readable: a light button never takes the
+  // primary fill while its text stays dark.
+  const luminance = (css: string) => {
+    const [r, g, b] = css
+      .match(/[\d.]+/g)!
+      .slice(0, 3)
+      .map((v) => {
+        const c = Number(v) / 255;
+        return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+      });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  for (const name of ["Learners", "Access", "Privacy"]) {
+    await section(name);
+    for (const button of await page.locator("main button:visible").all()) {
+      if (await button.isDisabled()) continue;
+      await button.hover();
+      const [label, text, fill, alpha] = await button.evaluate((el) => {
+        const style = getComputedStyle(el);
+        return [
+          el.textContent ?? "",
+          style.color,
+          style.backgroundColor,
+          style.backgroundColor.startsWith("rgba") ? style.backgroundColor : "",
+        ];
+      });
+      if (/,\s*0\)$/.test(alpha)) continue; // transparent: text sits on the page
+      const [hi, lo] = [luminance(text), luminance(fill)].sort((a, b) => b - a);
+      const ratio = (hi + 0.05) / (lo + 0.05);
+      assert.ok(ratio >= 4.5, `hovered "${label}" contrast ${ratio.toFixed(2)}`);
+    }
+  }
+  await section("Learners");
   family = {
     ...family,
     learners: family.learners.map((learner) => ({

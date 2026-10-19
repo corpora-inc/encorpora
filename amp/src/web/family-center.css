@@ -557,6 +557,12 @@
   flex: 1;
   min-width: 0;
 }
+.family-profile-actions .family-get-access {
+  margin: 0;
+  min-height: 46px;
+  padding: 9px;
+  font-size: 15px;
+}
 .family-profile-actions .family-billing {
   margin: 0;
   border: 0;
@@ -572,9 +578,20 @@
   font-size: 14px;
 }
 @media (min-width: 601px) and (max-height: 500px) {
+  /* The narrow landscape column wraps whole buttons; a label never breaks
+     inside its button. The plan choice, when offered, leads on its own row. */
   .family-profile-actions {
     grid-column: 1;
     grid-row: 4;
+    flex-wrap: wrap;
+  }
+  .family-profile-actions > * {
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+  .family-profile-actions .family-get-access {
+    flex-basis: 100%;
+    order: -1;
   }
 }
 

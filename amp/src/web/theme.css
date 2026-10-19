@@ -64,10 +64,13 @@ button {
   border-radius: 12px;
   transition:
     background 0.12s ease,
+    filter 0.12s ease,
     transform 0.06s ease;
 }
-button:hover {
-  background: var(--primary-hover);
+/* Hover darkens whatever fill a button has; it never swaps in the primary
+   fill, which would leave dark text on a dark surface. */
+button:hover:not(:disabled) {
+  filter: brightness(0.92);
 }
 button:active:not(:disabled) {
   transform: scale(0.98);
