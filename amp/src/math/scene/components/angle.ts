@@ -30,6 +30,8 @@ export const angleSchema = z
     length: zNum.positive().max(10).optional(),
     /** Arrowheads at the ray ends: rays go on forever. */
     arrows: z.boolean().optional(),
+    /** Draw only the marks, over rays another element draws. */
+    marksOnly: z.boolean().optional(),
     labels: z
       .object({
         vertex: pointName,
@@ -48,6 +50,8 @@ export const angleSchema = z
             measure: z.boolean().optional(),
             /** The measure is the unknown: drawn as "?" unless revealed. */
             derived: z.boolean().optional(),
+            /** Sweep clockwise from `from` to `to` instead. */
+            clockwise: z.boolean().optional(),
             color,
           })
           .strict(),
@@ -207,40 +211,45 @@ registerComponent("protractor", {
 });
 
 registerComponent("angle", {
-  maxScale: (c) => 140 / (c.length ?? 1),
+  // Marks drawn over another element take that element's scale.
+  maxScale: (c) => (c.marksOnly ? 1e6 : 140 / (c.length ?? 1)),
   compile(c) {
     const L = c.length ?? 1;
     const prims: Prim[] = [];
-    c.rays.forEach((d, i) => {
-      prims.push({
-        type: "segment",
-        id: `ray.${i}`,
-        from: [0, 0],
-        to: at(d, L),
-        stroke: "ink",
-        width: 3,
-        arrow: c.arrows ? "end" : undefined,
-        data: { ray: d },
-      });
-      if (!c.arrows)
+    if (!c.marksOnly)
+      c.rays.forEach((d, i) => {
         prims.push({
-          type: "point",
-          id: `end.${i}`,
-          at: at(d, L),
-          r: 3.5,
-          color: "ink",
+          type: "segment",
+          id: `ray.${i}`,
+          from: [0, 0],
+          to: at(d, L),
+          stroke: "ink",
+          width: 3,
+          arrow: c.arrows ? "end" : undefined,
+          data: { ray: d },
         });
-    });
-    prims.push({
-      type: "point",
-      id: "vertex",
-      at: [0, 0],
-      r: 3.5,
-      color: "ink",
-    });
+        if (!c.arrows)
+          prims.push({
+            type: "point",
+            id: `end.${i}`,
+            at: at(d, L),
+            r: 3.5,
+            color: "ink",
+          });
+      });
+    if (!c.marksOnly)
+      prims.push({
+        type: "point",
+        id: "vertex",
+        at: [0, 0],
+        r: 3.5,
+        color: "ink",
+      });
     (c.marks ?? []).forEach((m, i) => {
       const a = c.rays[m.from]!,
-        span = turn(a, c.rays[m.to]!);
+        span = m.clockwise ? turn(c.rays[m.to]!, a) : turn(a, c.rays[m.to]!);
+      // Signed: a clockwise mark runs from `from` toward smaller directions.
+      const sweep = m.clockwise ? -span : span;
       const r = L * (0.24 + 0.1 * i);
       if (Math.abs(span - 90) < 1e-9)
         prims.push({
@@ -248,8 +257,8 @@ registerComponent("angle", {
           id: `mark.${i}`,
           points: [
             at(a, 0.16 * L),
-            [...add(at(a, 0.16 * L), at(a + 90, 0.16 * L))] as Point,
-            at(a + 90, 0.16 * L),
+            [...add(at(a, 0.16 * L), at(a + sweep, 0.16 * L))] as Point,
+            at(a + sweep, 0.16 * L),
           ],
           stroke: "ink",
           width: 2,
@@ -262,24 +271,39 @@ registerComponent("angle", {
           center: [0, 0],
           r,
           from: a,
-          to: a + span,
+          to: a + sweep,
           stroke: m.color ?? "accent",
           width: 2.5,
           data: { mark: "arc" },
         });
       if (m.measure) {
         // Small angles push their label out so it clears both rays.
-        const out = Math.min(
-          0.95 * L,
-          Math.max(
-            r + 0.2 * L,
-            (0.22 * L) / Math.sin(((span / 2) * Math.PI) / 180),
-          ),
-        );
+        // Over another figure (a protractor's scales), the label stays
+        // just outside its arc, clear of the scale numbers.
+        const out = c.marksOnly
+          ? r + 0.14 * L
+          : Math.min(
+              0.95 * L,
+              Math.max(
+                r + 0.2 * L,
+                (0.22 * L) / Math.sin(((span / 2) * Math.PI) / 180),
+              ),
+            );
+        // Over another figure, try spots along the bisector, from just
+        // outside the arc inward, and keep the first one clear of its labels.
+        const mid = ((a + sweep / 2) * Math.PI) / 180;
+        const u = [Math.cos(mid), -Math.sin(mid)] as const;
         prims.push({
           type: "text",
           id: `measure.${i}`,
-          at: at(a + span / 2, out),
+          at: at(a + sweep / 2, c.marksOnly ? r : out),
+          ...(c.marksOnly
+            ? {
+                place: [16, 30, -14, 44, -26].map(
+                  (d) => [u[0] * d, u[1] * d, 0, 0] as [number, number, 0, 0],
+                ),
+              }
+            : {}),
           text: degrees(span),
           font: "sans",
           bold: true,
@@ -329,7 +353,9 @@ registerComponent("angle", {
         ? `angle ${names.ends[m.from]}${names.vertex}${names.ends[m.to]}`
         : "the angle";
     const marks = (c.marks ?? []).map((m) => {
-      const span = turn(c.rays[m.from]!, c.rays[m.to]!);
+      const span = m.clockwise
+        ? turn(c.rays[m.to]!, c.rays[m.from]!)
+        : turn(c.rays[m.from]!, c.rays[m.to]!);
       if (Math.abs(span - 90) < 1e-9)
         return `${name(m)} is marked as a right angle`;
       if (!m.measure) return "";
