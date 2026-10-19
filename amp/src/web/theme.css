@@ -175,16 +175,19 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  min-height: 36px;
+  margin-left: -10px;
   padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--surface);
+  border: 0;
+  background: transparent;
   color: var(--ink-2);
-  font-size: 18px;
-  line-height: 1;
+}
+.workspace-exit svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 .workspace-exit:hover {
   background: var(--surface-2);
@@ -207,10 +210,20 @@ header {
   min-width: 0;
   align-items: center;
   gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
   margin-right: auto;
   font-size: 13px;
   font-weight: 600;
   color: var(--ink-2);
+}
+/* The skill title stays on one line; a long one ends in an ellipsis and keeps
+   its full text as the tooltip. */
+.workspace-topic > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .workspace-topic::before {
   content: "";
@@ -251,7 +264,7 @@ header {
 }
 .answer-action:disabled,
 .choice-submit:disabled {
-  background: #e6e8df;
+  background: var(--surface-2);
   color: var(--ink-3);
   opacity: 1;
 }
@@ -308,7 +321,8 @@ header {
   flex-direction: column;
   gap: 10px;
   width: min(calc(100% - 24px), 620px);
-  max-height: min(72%, 440px);
+  min-height: min(calc(var(--dock-height, 12px) - 12px), 72%);
+  max-height: max(min(72%, 440px), var(--dock-height, 0px));
   margin: 0 auto;
   padding: 16px;
   border: 1px solid var(--line);
@@ -321,13 +335,17 @@ header {
 .feedback .practice-tools {
   margin-top: -4px;
 }
+/* Feedback surfaces come from the status tokens, so both themes keep AA text
+   contrast: ink on the soft fill, the accent only on the mark and border. */
 .feedback.correct {
-  background: #eaf4eceb;
-  border-color: #cfe3d3;
+  background: color-mix(in srgb, var(--good-soft) 94%, transparent);
+  border-color: color-mix(in srgb, var(--good) 35%, var(--line));
+  color: var(--ink);
 }
 .feedback.incorrect {
-  background: #fbefe8eb;
-  border-color: #efd6c8;
+  background: color-mix(in srgb, var(--bad-soft) 94%, transparent);
+  border-color: color-mix(in srgb, var(--bad) 35%, var(--line));
+  color: var(--ink);
 }
 .feedback-head {
   display: flex;
@@ -341,7 +359,7 @@ header {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  color: #fff;
+  color: var(--surface);
   font-size: 15px;
 }
 .feedback.correct .result-mark {
@@ -422,6 +440,8 @@ header {
 }
 .next-action {
   flex: none;
+  /* Next stays in the thumb zone at the bottom of the answer area. */
+  margin-top: auto;
   width: 100%;
   height: 52px;
   border-radius: 12px;
@@ -437,11 +457,11 @@ header {
   width: 72px;
   height: 72px;
   background: var(--good);
-  color: #fff;
+  color: var(--surface);
   border: 0;
   font-size: 36px;
   font-weight: 700;
-  box-shadow: 0 0 0 10px #2f8a5b1f;
+  box-shadow: 0 0 0 10px color-mix(in srgb, var(--good) 14%, transparent);
   animation-duration: 0.8s;
 }
 
@@ -1295,9 +1315,9 @@ html[data-input="pointer"] :focus-visible {
   height: 44px;
   min-height: 44px;
   padding: 0;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--surface-2);
   color: var(--ink-2);
 }
 .calculator-toggle svg {
@@ -1313,49 +1333,26 @@ html[data-input="pointer"] :focus-visible {
   background: var(--primary-soft);
   color: var(--primary);
 }
-.workspace-topic-text {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.no-calculator svg {
-  display: none;
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-}
-@media (max-width: 420px) {
-  .no-calculator {
-    display: inline-grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    padding: 0 !important;
-  }
-  .no-calculator svg {
-    display: block;
-  }
-  .no-calculator-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-}
+/* A status, not an action: the same footprint as the calculator button, so
+   the title never shifts between problems, but with no fill. */
 .no-calculator {
   flex: none;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--surface-2);
-  color: var(--ink-2);
-  font-size: 12px;
-  font-weight: 600;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--ink-3);
+}
+.no-calculator svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.no-calculator .strike {
+  stroke-width: 2;
 }
 .calculator {
   position: absolute;
@@ -1883,4 +1880,97 @@ html[data-input="pointer"] :focus-visible {
 .secondary:hover {
   color: var(--primary);
   background: var(--primary-soft);
+}
+
+/* ── Phones: practice is full-bleed ───────────────────────────────────────
+   The paper card needs room around it; on a phone it only wastes the edges.
+   The problem runs edge to edge inside the safe area, and feedback rises as
+   a bottom sheet from the screen edge. Tablets and desktops keep the card. */
+@media (max-width: 650px) {
+  .shell.app-shell.immersive {
+    padding-inline: env(safe-area-inset-left, 0px)
+      env(safe-area-inset-right, 0px);
+  }
+  .shell.immersive .practice-workspace {
+    padding: 0;
+  }
+  .shell.immersive .practice-surface {
+    border: 0;
+    border-radius: 0;
+    background: var(--bg);
+    box-shadow: none;
+    padding: 4px 16px 0;
+  }
+  .shell.immersive .workspace-toolbar {
+    gap: 8px;
+  }
+  .shell.immersive .workspace-topic {
+    font-size: 14px;
+  }
+  .shell.immersive .feedback {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: var(--dock-height, 0px);
+    max-height: max(78%, var(--dock-height, 0px));
+    padding: 16px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-width: 1px 0 0;
+    border-radius: 20px 20px 0 0;
+  }
+  /* Three quiet actions share the row evenly instead of overflowing 320 px. */
+  .shell.immersive .practice-tools button,
+  .shell.immersive .feedback .practice-tools button {
+    flex: 0 1 112px;
+    min-width: 0;
+    padding-inline: 8px;
+  }
+  .shell.immersive .calculator {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-width: 1px 0 0;
+    border-radius: 20px 20px 0 0;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+}
+/* Short landscape screens answer in a side column; feedback takes that
+   column's place instead of covering the problem. */
+@media (max-height: 500px) and (min-width: 651px) {
+  .feedback {
+    top: 8px;
+    right: 8px;
+    bottom: 8px;
+    left: auto;
+    width: max(296px, calc(38% + 4px));
+    min-height: 0;
+    max-height: none;
+    margin: 0;
+    overflow: auto;
+  }
+}
+/* A correct answer with nothing more to read centres its result in the
+   answer area it replaced; Next stays at the bottom. */
+.feedback.correct:not(:has(.feedback-steps)) .feedback-head {
+  flex-direction: column;
+  gap: 10px;
+  margin-block: auto;
+  text-align: center;
+}
+.feedback.correct:not(:has(.feedback-steps)) .result-mark {
+  width: 52px;
+  min-width: 52px;
+  height: 52px;
+  font-size: 26px;
+}
+.feedback.correct:not(:has(.feedback-steps)) .feedback-title {
+  align-items: center;
+  font-size: 22px;
+}
+.feedback.correct:not(:has(.feedback-steps)) .feedback-title small {
+  font-size: 14px;
+}
+.feedback.correct:not(:has(.feedback-steps)) .next-action {
+  margin-top: 0;
 }
