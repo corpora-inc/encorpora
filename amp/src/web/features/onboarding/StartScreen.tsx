@@ -6,6 +6,7 @@ import { nativeRuntime } from "../../native-runtime";
 import { ParentConsentCenter } from "../../ParentConsentCenter";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { PageFrame } from "../../ui/PageFrame";
+import { chosenPlan } from "../../lib/pending-trial";
 import { startDestination, startNavigation } from "./guard";
 import { LearnerSteps } from "./LearnerSteps";
 import { PlanStep } from "./PlanStep";
@@ -35,7 +36,9 @@ function SignedInStart({ session }: { session: AuthSession }) {
   // the destination; this screen must not redirect again.
   const leaving = !/^\/start(\/|$)/.test(location.pathname);
   const target =
-    nativeRuntime || leaving ? null : startDestination(me, location.pathname);
+    nativeRuntime || leaving
+      ? null
+      : startDestination(me, location.pathname, !!chosenPlan());
   if (target) return <Navigate {...startNavigation(target)} replace />;
   if (!me.signedIn) return <Navigate to="/sign-in" />;
   if (leaving) return <LoadingScreen />;
@@ -56,7 +59,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
       {step === "/start/verify-email" ? (
         <VerifyEmailStep session={session} me={me} />
       ) : step === "/start/plan" ? (
-        <PlanStep session={session} />
+        <PlanStep session={session} trial={me.next === "try"} />
       ) : step === "/start/purchase" ? (
         <PurchaseStep session={session} />
       ) : (
