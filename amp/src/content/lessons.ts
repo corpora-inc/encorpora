@@ -1,3 +1,4 @@
+import { ratioRateLessons } from "./ratio-rate-lessons";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -30,6 +31,12 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "rate-double-line"
+      | "unit-price-tapes"
+      | "ratio-table-scaling"
+      | "rate-through-one"
+      | "fraction-rate-copies"
+      | "story-tapes"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +540,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...ratioRateLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,

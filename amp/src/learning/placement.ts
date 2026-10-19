@@ -81,19 +81,25 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["factor-partner"],
     ["metric-length-rename"],
   ],
-  // Grade 6: decimals, the order of operations, fractions, the mean.
+  // Grade 6: a unit rate or ratio table (prices carry the decimals), the
+  // order of operations, fractions, the mean.
   [
-    ["decimal-addition", "decimal-multiplication"],
+    ["unit-rate", "ratio-table-missing"],
     ["operation-order", "integer-power"],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
     ["mean-data"],
   ],
   // Grade 7: powers, unit rates, the mean, distance on a number line.
-  [["integer-power"], ["unit-price"], ["mean-data"], ["number-line-distance"]],
+  [
+    ["integer-power"],
+    ["unit-price", "fraction-unit-rate", "unit-rate"],
+    ["mean-data"],
+    ["number-line-distance"],
+  ],
   // Grade 8: signed numbers, unit rates, probability and circles.
   [
     ["integer-addition"],
-    ["unit-price"],
+    ["unit-price", "fraction-unit-rate"],
     ["simple-probability"],
     ["circle-area-coefficient", "circle-circumference-coefficient"],
   ],

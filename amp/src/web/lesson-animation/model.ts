@@ -4,10 +4,21 @@ import type { SemanticFigure } from "../../math/contracts";
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type RateLines = Extract<SemanticFigure, { kind: "double-number-line" }>;
+/** A double number line scaled through 1: pairs are [bottom, top]. */
+export type RateModel = {
+  kind: "rate";
+  top: string;
+  bottom: string;
+  given: [number, number];
+  target: [number, number];
+  findBottom: boolean;
+};
 export type AnimationModel =
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
-  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
+  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
+  | RateModel;
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -33,6 +44,11 @@ export function animationModel(
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
   if (
+    lesson.templateId === "double-number-line-missing" &&
+    f?.kind === "double-number-line"
+  )
+    return rateModel(f);
+  if (
     lesson.templateId === "exchange-base-ten" &&
     f?.kind === "base-ten" &&
     integer(f.hundreds, 0, 9) &&
@@ -46,7 +62,68 @@ export function animationModel(
   }
   return null;
 }
+/** Whole-number lines with 0, one known pair and one pair with an unknown. */
+function rateModel(f: RateLines): RateModel | null {
+  const { top, bottom } = f;
+  if (top.denominator !== 1 || bottom.denominator !== 1) return null;
+  if (top.numerators.length !== 3 || bottom.numerators.length !== 3)
+    return null;
+  if (top.numerators[0] !== 0 || bottom.numerators[0] !== 0) return null;
+  const columns = [1, 2].map((i) => [
+    bottom.numerators[i] ?? null,
+    top.numerators[i] ?? null,
+  ]);
+  const known = columns.find(([b, t]) => b !== null && t !== null),
+    asked = columns.find(([b, t]) => (b === null) !== (t === null));
+  if (!known || !asked) return null;
+  const [b, t] = known as [number, number];
+  if (!integer(b, 1, 1000) || !integer(t, 1, 100000) || t % b) return null;
+  const rate = t / b,
+    findBottom = asked[0] === null;
+  const target: [number, number] = findBottom
+    ? [asked[1]! / rate, asked[1]!]
+    : [asked[0]!, asked[0]! * rate];
+  if (!integer(target[0], 2, 1000) || target[0] === b) return null;
+  return {
+    kind: "rate",
+    top: top.label,
+    bottom: bottom.label,
+    given: [b, t],
+    target,
+    findBottom,
+  };
+}
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "rate") {
+    const [b, t] = model.given,
+      [tb, tt] = model.target,
+      rate = t / b;
+    const bottom = model.bottom.toLowerCase(),
+      top = model.top.toLowerCase();
+    return [
+      {
+        title: "Start from a known pair",
+        text: `Aligned marks pair ${t} on the ${top} line with ${b} on the ${bottom} line.`,
+        math: `$${t}$ and $${b}$`,
+      },
+      {
+        title: "Shrink both lines to 1",
+        text: `Divide both values by ${b}. The pair keeps its ratio and lands on 1.`,
+        math: `$${t} \\div ${b} = ${rate}$ and $${b} \\div ${b} = 1$`,
+      },
+      {
+        title: model.findBottom
+          ? "Stretch to the known value"
+          : "Stretch to the target",
+        text: model.findBottom
+          ? `Multiply both values by ${tb}, because ${tb} groups of ${rate} make ${tt}.`
+          : `Multiply both values by ${tb}. The marks stay aligned.`,
+        math: model.findBottom
+          ? `$${tt} \\div ${rate} = ${tb}$`
+          : `$${rate} \\times ${tb} = ${tt}$`,
+      },
+    ];
+  }
   if (model.kind === "fraction") {
     const { parts: d, selected: n } = model.figure;
     return [

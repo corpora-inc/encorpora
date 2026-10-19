@@ -3,9 +3,14 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import {
+  ratioRateFigureSchemas,
+  type RatioRateFigure,
+} from "./ratio-rate-models.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | RatioRateFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -88,6 +93,7 @@ export interface GeneratedProblem {
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
+    ...ratioRateFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),

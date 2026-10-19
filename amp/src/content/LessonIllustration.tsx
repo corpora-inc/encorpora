@@ -1,3 +1,4 @@
+import { RatioRateIllustration } from "./RatioRateIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
@@ -20,6 +21,15 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "rate-double-line" ||
+    kind === "unit-price-tapes" ||
+    kind === "ratio-table-scaling" ||
+    kind === "rate-through-one" ||
+    kind === "fraction-rate-copies" ||
+    kind === "story-tapes"
+  )
+    return <RatioRateIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

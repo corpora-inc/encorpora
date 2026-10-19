@@ -1,4 +1,8 @@
 import {
+  ratioRateTemplates,
+  generateRatioRateProblem,
+} from "./ratio-rate-practice";
+import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
@@ -199,6 +203,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...radicalTemplates,
   ...combinatoricsTemplates,
+  ...ratioRateTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
@@ -320,6 +325,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...combinatoricsTemplates,
+    ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
     ...circleMeasurementTemplates,
@@ -351,6 +357,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (ratioRateTemplates.some((t) => t.id === templateId))
+    return generateRatioRateProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))

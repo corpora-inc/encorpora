@@ -1493,6 +1493,41 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "unit-rates",
+    "whole-quantity-unit-rates",
+    "Find a unit rate from two whole-number or money quantities in the direction the question asks, with whole, decimal or fraction results.",
+  ],
+  [
+    "unit-rates",
+    "unit-price-comparison",
+    "Compare two package prices by their unit prices and choose the better buy or recognize equal unit prices.",
+  ],
+  [
+    "ratio-tables",
+    "missing-table-value",
+    "Find a missing whole-number value in a table of equivalent ratios by scaling the simplest ratio.",
+  ],
+  [
+    "ratio-tables",
+    "double-number-line-value",
+    "Find a missing whole-number value on a double number line through the unit rate.",
+  ],
+  [
+    "rational-unit-rates",
+    "fraction-quotient-rates",
+    "Find a unit rate from a fractional amount per fractional or whole quantity by dividing fractions.",
+  ],
+  [
+    "multiplicative-stories",
+    "operation-model",
+    "Choose the multiplication or division equation that models an equal-groups, array or measurement story with an unknown product, group size or number of groups.",
+  ],
+  [
+    "multiplicative-stories",
+    "story-solution",
+    "Solve an equal-groups, array or measurement story within 100 by multiplication or division.",
+  ],
+  [
     "compound-probability",
     "multiplication-principle",
     "Count outcomes of two to four independent choice stages, including codes with repeated symbols, by the multiplication principle.",
