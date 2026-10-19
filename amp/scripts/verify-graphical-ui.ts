@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium, webkit } from "playwright";
@@ -57,9 +58,10 @@ await mkdir(output, {
 try {
   const page = await browser.newPage({ hasTouch: true });
   await page.goto("http://127.0.0.1:4434");
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
   const rows = [];
   const fixtures: {
     name: string;

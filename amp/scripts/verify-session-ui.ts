@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { chromium, webkit, type Page } from "playwright";
@@ -13,6 +14,7 @@ const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const fixtureSource = `
 let resolve, reject;
 const pending = new Promise((yes,no)=>{resolve=yes;reject=no;});
+pending.catch(()=>{});
 const subscribers = new Set();
 window.sessionReview = {
   get ready(){return subscribers.size > 0;},
@@ -75,10 +77,10 @@ async function fixturePage(family: (token: string) => FamilySummary) {
       return route.fulfill({
         json: { templates: [], lessons: [], skills: [], mode: "fixture" },
       });
-    if (path === "/api/v1/family") {
+    if (path === "/api/v1/me") {
       const token = route.request().headers().authorization ?? "";
       familyTokens.push(token);
-      return route.fulfill({ json: family(token) });
+      return route.fulfill({ json: fixtureMe(family(token)) });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
@@ -119,10 +121,13 @@ try {
         }),
       );
       await page
-        .getByRole("option", { name: "Current learner", exact: true })
+        .getByRole("button", { name: "Learner", exact: true })
+        .filter({ hasText: "Current learner" })
         .waitFor({ state: "attached" });
       assert.equal(
-        await page.getByLabel("Learner", { exact: true }).inputValue(),
+        await page
+          .getByLabel("Learner", { exact: true })
+          .getAttribute("data-value"),
         "current-child",
       );
       await page.evaluate((result) => {
@@ -136,12 +141,15 @@ try {
       }, outcome);
       await settledRender(page);
       assert.equal(
-        await page.getByLabel("Learner", { exact: true }).inputValue(),
+        await page
+          .getByLabel("Learner", { exact: true })
+          .getAttribute("data-value"),
         "current-child",
       );
       assert.equal(
         await page
-          .getByRole("option", { name: "Current learner", exact: true })
+          .getByRole("button", { name: "Learner", exact: true })
+          .filter({ hasText: "Current learner" })
           .count(),
         1,
       );
@@ -164,7 +172,7 @@ try {
       await page.evaluate(() => (window as any).sessionReview.reject());
       await page
         .getByRole("alert")
-        .filter({ hasText: "obsolete bootstrap error" })
+        .filter({ hasText: "Sign-in could not be checked" })
         .waitFor();
       assert.deepEqual(errors, []);
     } finally {
@@ -184,19 +192,46 @@ try {
       sawHeld = resolve;
     });
     let requests = 0;
-    await page.route("**/api/v1/family", async (route) => {
+    let networkDone!: Promise<"finished" | "failed">;
+    let finishHandler!: () => void;
+    const handlerDone = new Promise<void>((resolve) => {
+      finishHandler = resolve;
+    });
+    await page.route("**/api/v1/me", async (route) => {
       const snapshot = structuredClone(family);
       requests++;
-      if (requests === 1) {
-        sawHeld();
-        await released;
-        if (outcome === "error")
-          return route.fulfill({
-            status: 503,
-            json: { error: "obsolete_family_error" },
-          });
+      const isHeld = requests === 2;
+      try {
+        if (isHeld) {
+          const request = route.request();
+          // Mutation refresh cancels this exact query. Chromium may report an
+          // aborted request instead of a response; an unrelated /me is not proof.
+          networkDone = Promise.race([
+            page
+              .waitForEvent("requestfinished", {
+                predicate: (value) => value === request,
+              })
+              .then(() => "finished" as const),
+            page
+              .waitForEvent("requestfailed", {
+                predicate: (value) => value === request,
+              })
+              .then(() => "failed" as const),
+          ]);
+          sawHeld();
+          await released;
+          if (outcome === "error") {
+            await route.fulfill({
+              status: 503,
+              json: { error: "obsolete_family_error" },
+            });
+            return;
+          }
+        }
+        await route.fulfill({ json: fixtureMe(snapshot) });
+      } finally {
+        if (isHeld) finishHandler();
       }
-      await route.fulfill({ json: snapshot });
     });
     await page.route(
       "**/api/v1/family/learners/current-child/rename",
@@ -221,10 +256,14 @@ try {
           accountId: "current-parent",
         }),
       );
-      await held;
+      await page
+        .getByRole("button", { name: "Learner", exact: true })
+        .waitFor();
+      await page.locator(".account-menu summary").click();
       await page
         .getByRole("button", { name: "Manage family", exact: true })
         .click();
+      await held;
       await page
         .getByRole("heading", { name: "Before rename", exact: true })
         .waitFor();
@@ -241,15 +280,14 @@ try {
         .waitFor();
       await page.getByRole("button", { name: "Back", exact: true }).click();
       await page
-        .getByRole("option", { name: "After rename", exact: true })
+        .getByRole("button", { name: "Learner", exact: true })
+        .filter({ hasText: "After rename" })
         .waitFor({ state: "attached" });
-      const oldResponse = page.waitForResponse(
-        (response) => new URL(response.url()).pathname === "/api/v1/family",
-      );
       release();
-      await (await oldResponse).finished();
+      await handlerDone;
+      console.log(`Held ${outcome} request: ${await networkDone}`);
       await settledRender(page);
-      assert.equal(requests, 3);
+      assert.ok(requests >= 4);
       assert.equal(
         await page
           .getByRole("alert")
@@ -259,13 +297,15 @@ try {
       );
       assert.equal(
         await page
-          .getByRole("option", { name: "After rename", exact: true })
+          .getByRole("button", { name: "Learner", exact: true })
+          .filter({ hasText: "After rename" })
           .count(),
         1,
       );
       assert.equal(
         await page
-          .getByRole("option", { name: "Before rename", exact: true })
+          .getByRole("button", { name: "Learner", exact: true })
+          .filter({ hasText: "Before rename" })
           .count(),
         0,
       );
@@ -311,7 +351,8 @@ try {
         }),
       );
       await page
-        .getByRole("option", { name: "Current learner", exact: true })
+        .getByRole("button", { name: "Learner", exact: true })
+        .filter({ hasText: "Current learner" })
         .waitFor({ state: "attached" });
       const oldResponse = page.waitForResponse((response) =>
         response.url().endsWith("/birth-year"),

@@ -96,7 +96,7 @@ jobs:
           # to the workflow that invokes it).
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           # The static site imports AMP figures, content, audit and theme at build time.
-          set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/theme\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
+          set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
           set_output amp '^(amp/|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
