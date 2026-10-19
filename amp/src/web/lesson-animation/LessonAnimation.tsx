@@ -21,6 +21,7 @@ import {
   DealStage,
 } from "./FactArrayAnimation";
 import { ShapeMorphStage } from "./ShapeAnimation";
+import { ProtractorSweepStage } from "./AngleAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
@@ -40,6 +41,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <AreaModelAnimation model={model} step={step} />;
     case "shape-morph":
       return <ShapeMorphStage model={model} step={step} />;
+    case "protractor-sweep":
+      return <ProtractorSweepStage model={model} step={step} />;
     case "plot":
       return <PlotModel model={model} step={step} />;
     case "clock-sweep":

@@ -5,6 +5,11 @@ import {
   shapeMorphModel,
   type ShapeMorphAnimation,
 } from "./shape-model";
+import {
+  protractorSweepFrames,
+  protractorSweepModel,
+  type ProtractorSweepAnimation,
+} from "./angle-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -83,6 +88,7 @@ export type AnimationModel =
       first: "share" | "measure";
     }
   | ShapeMorphAnimation
+  | ProtractorSweepAnimation
   | {
       kind: "plot";
       rows: { x: number; y: number }[];
@@ -165,6 +171,8 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
+  const sweep = protractorSweepModel(lesson.templateId, f);
+  if (sweep) return sweep;
   if (
     lesson.templateId === "compare-capacity" &&
     f?.kind === "pour" &&
@@ -749,6 +757,7 @@ export function animationFrames(model: AnimationModel) {
     ];
   }
   if (model.kind === "shape-morph") return shapeMorphFrames(model);
+  if (model.kind === "protractor-sweep") return protractorSweepFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
     const first = rows.find((r) => r.x !== 0) ?? rows[0]!;

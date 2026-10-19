@@ -29,6 +29,7 @@ import {
   type DataDisplayFigure,
 } from "./data-display-models.js";
 import { shapeFigureSchemas, type ShapeFigure } from "./shape-figures.js";
+import { angleFigureSchemas, type AngleFigure } from "./angle-figures.js";
 import {
   geometryFigureSchemas,
   type GeometryFigure,
@@ -70,6 +71,7 @@ export type SemanticFigure =
   | FunctionDisplayFigure
   | GeometryFigure
   | ShapeFigure
+  | AngleFigure
   /** Any figure built with the scene framework (docs/figures.md). */
   | { kind: "scene"; scene: Scene }
   | {
@@ -155,6 +157,7 @@ export const figureCapabilities = [
   "function-displays-v1",
   "volume-coordinate-figures-v1",
   "shape-figures-v1",
+  "angle-figures-v1",
   "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
@@ -284,6 +287,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     ...shapeFigureSchemas,
+    ...angleFigureSchemas,
     z.object({ kind: z.literal("scene"), scene: sceneSchema }).strict(),
     z
       .object({

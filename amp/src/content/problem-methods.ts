@@ -3,6 +3,7 @@ import { patternFunctionMethods } from "./pattern-function-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
+import { angleMethods } from "./angle-lessons";
 import { polygonMethods } from "./polygon-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
@@ -37,6 +38,7 @@ import type { ProblemMethod } from "./problem-lessons";
 export const methods: Record<string, ProblemMethod> = {
   ...volumeCoordinateMethods,
   ...shapeMethods,
+  ...angleMethods,
   ...polygonMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,

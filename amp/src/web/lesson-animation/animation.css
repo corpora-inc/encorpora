@@ -183,6 +183,20 @@
     fill 500ms ease,
     stroke-opacity 400ms ease;
 }
+.animation-ray {
+  stroke: var(--color-figure-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: opacity 400ms ease;
+}
+.animation-ray-base {
+  stroke: var(--color-figure-warm);
+}
+.animation-ring {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 2.5;
+}
 .animation-morph-shape {
   fill: var(--color-figure-accent-fill);
   stroke: var(--color-figure-ink);
@@ -195,6 +209,7 @@
   .animation-step,
   .animation-lift,
   .animation-trace,
+  .animation-ray,
   .animation-paint {
     transition: none;
   }
