@@ -54,7 +54,7 @@ export const principles: Record<string, string> = {
   "continue-count-to-120":
     "Base-ten counting: after 9 ones, the ones reset to 0 and the tens increase by 1.",
   "tens-ones-model":
-    "Place value in base ten: a two-digit number ab has value 10a + b.",
+    "Place value in base ten: a two-digit number with tens digit a and ones digit b has value 10a + b.",
   "ten-more-or-less":
     "Place value: adding or subtracting 10 changes only the tens digit when no regrouping occurs.",
   "add-ones-regroup":
