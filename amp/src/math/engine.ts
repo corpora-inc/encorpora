@@ -8,6 +8,10 @@ import {
   generateDistributionProblem,
 } from "./distribution-practice";
 import {
+  timeMoneyTemplates,
+  generateTimeMoneyProblem,
+} from "./time-money-practice";
+import {
   partWholeTemplates,
   generatePartWholeProblem,
 } from "./part-whole-practice";
@@ -243,6 +247,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
@@ -416,6 +421,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...partWholeTemplates,
+    ...timeMoneyTemplates,
     ...decimalTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
@@ -451,6 +457,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (timeMoneyTemplates.some((t) => t.id === templateId))
+    return generateTimeMoneyProblem(templateId, seed);
   if (equationTemplates.some((t) => t.id === templateId))
     return generateEquationProblem(templateId, seed);
   if (decimalTemplates.some((t) => t.id === templateId))
