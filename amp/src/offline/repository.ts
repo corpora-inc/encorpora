@@ -189,6 +189,7 @@ export class OfflineRepository {
           seed: packId,
           now: now.getTime(),
           strictCeiling: true,
+          learnerKey: learner,
         }),
       );
       if (!choices.length)

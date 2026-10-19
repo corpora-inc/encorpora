@@ -93,7 +93,7 @@ h3 {
   font-weight: 600;
 }
 p {
-  color: #59706a;
+  color: var(--ink-2);
 }
 li {
   margin-bottom: 8px;
@@ -326,10 +326,11 @@ nav button:hover {
   color: #81907f;
 }
 .hint {
-  background: #f0f4e8;
+  background: var(--surface-2);
+  color: var(--ink);
   padding: 14px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .feedback {
   background: #f9efdf;
@@ -446,9 +447,9 @@ nav button:hover {
 footer {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.3px;
-  color: #91a08e;
+  color: var(--ink-2, #4c625b);
   margin: 42px 0 25px;
   padding-top: 20px;
   border-top: 1px solid #dfe5d8;

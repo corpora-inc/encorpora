@@ -4,6 +4,7 @@ import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.j
 import { createDatabasePool } from "../src/server/database.js";
 import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 import { purgeExpiredTrials } from "../src/server/trials.js";
+import { purgeFunnelEvents } from "../src/analytics/retention.js";
 import {
   purgeFinancialRecords,
   purgeInactiveLearners,
@@ -23,6 +24,7 @@ try {
       expiredFundingRequests: await purgeExpiredFundingRequests(pool),
       expiredTrials: await purgeExpiredTrials(pool),
       ...(await purgeTrialRecords(pool)),
+      ...(await purgeFunnelEvents(pool)),
       ...(await purgeInactiveLearners(pool)),
       ...(await purgeFinancialRecords(pool)),
     }),

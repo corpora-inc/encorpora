@@ -180,6 +180,9 @@ async function setup(
       });
     if (path.endsWith("/funding/requests"))
       return route.fulfill({ json: { requests: [] } });
+    // First-party funnel beacons (verified in verify-funnel-ui).
+    if (path.endsWith("/events"))
+      return route.fulfill({ status: 202, json: { accepted: 1 } });
     faults.push(`Unexpected ${route.request().method()} ${path}`);
     return route.fulfill({
       status: 404,

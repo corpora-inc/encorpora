@@ -113,6 +113,9 @@ try {
         if (!held) view = snapshot;
         return route.fulfill({ json: snapshot }).catch(() => {});
       }
+      // First-party funnel beacons (verified in verify-funnel-ui).
+      if (path.endsWith("/events"))
+        return route.fulfill({ status: 202, json: { accepted: 1 } });
       faults.push(path);
       return route.fulfill({
         status: 404,
