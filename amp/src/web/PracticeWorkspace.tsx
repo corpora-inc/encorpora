@@ -223,7 +223,10 @@ export function PracticeWorkspace(props: Props) {
     // Returning from a book remounts this workspace with an existing result.
     // Only a newly received result should open feedback or replay celebration.
     previousOutcome.current = outcome?.id ?? null;
-    if (small || choice) prompt.current?.focus({ preventScroll: true });
+    // Typed answers start in the answer field. On touch it suppresses the
+    // system keyboard (inputMode none), so AMP's keypad stays in charge; the
+    // field announces the question through aria-describedby.
+    if (choice) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
@@ -378,7 +381,7 @@ export function PracticeWorkspace(props: Props) {
               value={response}
               onChange={(event) => setResponse(event.target.value)}
               readOnly={locked}
-              aria-describedby="answer-format"
+              aria-describedby="problem-prompt answer-format"
               placeholder={
                 problem.response.kind === "fraction"
                   ? "For example, 3/4"
@@ -583,6 +586,7 @@ export function PracticeWorkspace(props: Props) {
         >
           <div className="problem-content">
             <h2
+              id="problem-prompt"
               ref={prompt}
               tabIndex={-1}
               className="question"
