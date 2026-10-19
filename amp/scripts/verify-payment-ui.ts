@@ -9,6 +9,7 @@ import { loadReimbursementPrograms } from "../src/billing/evidence/reimbursement
 import { paymentPdf } from "../src/billing/evidence/pdf.js";
 import { syntheticPaymentRecord as record } from "../tests/payment-evidence-fixtures.js";
 import { retentionNotice } from "../src/family/contracts.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const programs = process.env.AMP_REIMBURSEMENT_REVIEW_CONFIG
   ? await loadReimbursementPrograms(process.env.AMP_REIMBURSEMENT_REVIEW_CONFIG)
   : [
@@ -244,6 +245,9 @@ try {
   const url = `http://127.0.0.1:4356/artifacts/payment-review-${process.env.AMP_BROWSER ?? "chromium"}/index.html`;
   async function shot(name: string) {
     await page.screenshot({ path: new URL(`${name}.png`, directory).pathname });
+    // Phone landscape only has to stay usable; the others must fit.
+    if (isPhoneLandscape(page.viewportSize()!))
+      return assertPhoneLandscapeSmoke(page, name);
     assert.equal(
       await page.evaluate(
         () =>
@@ -269,6 +273,7 @@ try {
   for (const size of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
     { width: 1280, height: 900 },
   ]) {

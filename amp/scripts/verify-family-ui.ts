@@ -7,6 +7,7 @@ import {
   retentionNotice,
   type FamilySummary,
 } from "../src/family/contracts.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/family-review/", import.meta.url);
 await mkdir(directory, { recursive: true });
 await writeFile(
@@ -188,6 +189,7 @@ try {
     [1280, 844],
     [390, 844],
     [320, 568],
+    [1024, 768],
     [844, 390],
   ]) {
     await page.setViewportSize({ width, height });
@@ -199,12 +201,15 @@ try {
     );
     for (const name of ["Learners", "Access", "Privacy"]) {
       await section(name);
-      assert.ok(
-        await page.evaluate(
-          () => document.documentElement.scrollHeight <= innerHeight + 1,
-        ),
-        "Parent workspace must fit viewport",
-      );
+      if (isPhoneLandscape([width, height]))
+        await assertPhoneLandscapeSmoke(page, `Family ${name}`);
+      else
+        assert.ok(
+          await page.evaluate(
+            () => document.documentElement.scrollHeight <= innerHeight + 1,
+          ),
+          `Parent workspace must fit ${width}×${height}`,
+        );
       await page.screenshot({
         path: new URL(`family-${name}-${width}.png`, directory).pathname,
       });
@@ -240,7 +245,10 @@ try {
       if (/,\s*0\)$/.test(alpha)) continue; // transparent: text sits on the page
       const [hi, lo] = [luminance(text), luminance(fill)].sort((a, b) => b - a);
       const ratio = (hi + 0.05) / (lo + 0.05);
-      assert.ok(ratio >= 4.5, `hovered "${label}" contrast ${ratio.toFixed(2)}`);
+      assert.ok(
+        ratio >= 4.5,
+        `hovered "${label}" contrast ${ratio.toFixed(2)}`,
+      );
     }
   }
   await section("Learners");

@@ -12,11 +12,14 @@ import type { Graph, Point } from "../math/scene/spec";
 
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
+import { exponentialLessonScenes } from "../math/exponential-scenes";
 import { lessonScenes } from "./lesson-scenes";
+import { similarityTrigScenes } from "./similarity-trig-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
   ...lessonScenes,
+  ...similarityTrigScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],
@@ -219,6 +222,7 @@ export const sceneIllustrations = {
     .line({ x: 3 }, { label: "4x = 12", color: "gold", dash: "dash" })
     .point(3, 2, "(3, 2)")
     .scene({ title: "Three lines through the one solution (3, 2)" }),
+  ...exponentialLessonScenes,
 } as const satisfies Record<string, Scene>;
 export type SceneIllustration = keyof typeof sceneIllustrations;
 export const isSceneIllustration = (kind: string): kind is SceneIllustration =>

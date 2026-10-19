@@ -85,6 +85,14 @@ import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
+  exponentialTemplates,
+  generateExponentialProblem,
+} from "./exponential-practice";
+import {
+  similarityTrigTemplates,
+  generateSimilarityTrigProblem,
+} from "./similarity-trig-practice";
+import {
   probabilityRulesTemplates,
   generateProbabilityRulesProblem,
 } from "./probability-rules-practice";
@@ -302,6 +310,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
   ...polygonTemplates,
+  ...exponentialTemplates,
   ...angleTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
@@ -327,6 +336,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...probabilityRulesTemplates,
+  ...similarityTrigTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
@@ -496,6 +506,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    ...exponentialTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
@@ -516,6 +527,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...probabilityRulesTemplates,
+    ...similarityTrigTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -565,6 +577,8 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (exponentialTemplates.some((t) => t.id === templateId))
+    return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
   if (twoVariableTemplates.some((t) => t.id === templateId))
@@ -601,6 +615,8 @@ function generateRawProblem(
     return generateRealNumberProblem(templateId, seed);
   if (probabilityRulesTemplates.some((t) => t.id === templateId))
     return generateProbabilityRulesProblem(templateId, seed);
+  if (similarityTrigTemplates.some((t) => t.id === templateId))
+    return generateSimilarityTrigProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (numberSenseTemplates.some((t) => t.id === templateId))

@@ -41,13 +41,3 @@
     font-size: 27px;
   }
 }
-@media (max-height: 500px) and (min-width: 651px) {
-  .book-reader[data-presentation="early-number"]:not([data-page-kind="guide"])
-    .reading-content {
-    font-size: 21px;
-    line-height: 1.3;
-  }
-  .book-reader[data-presentation="early-number"] .reading-equation {
-    font-size: 26px;
-  }
-}

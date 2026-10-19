@@ -49,7 +49,6 @@ export type CompareAnimation = {
 };
 /** Equal-area grid regions; one region is the highlighted part. */
 export type AreaAnimation = { kind: "area"; figure: Area };
-type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
 type AreaModel = Extract<SemanticFigure, { kind: "area-model" }>;
@@ -125,12 +124,7 @@ export type AnimationModel =
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
   | GeometryAnimationModel
-  | { kind: "line-plot-stack"; figure: LinePlot }
-  | { kind: "line-plot-share"; figure: LinePlot; share: number }
-  | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
-  | { kind: "box-build"; figure: LinePlot }
   | RateModel
-  | MadGapAnimation
   /** A point reflected across 0 onto its opposite. */
   | { kind: "opposite"; value: number; min: number; max: number }
   /** Signed changes added one jump at a time; values are exact halves. */
@@ -153,21 +147,8 @@ export const jumpStops = (start: number, jumps: number[]) =>
 /** TeX for a signed number; negatives in parentheses when they follow an operator. */
 /** Prose uses a typographic minus. */
 const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
-const signedTex = (n: number, wrap = false) => (n < 0 && wrap ? `(${n})` : `${n}`);
-type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
-/** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
-export type MadGapAnimation = {
-  kind: "mad-gap";
-  figure: DoubleDot;
-  means: [number, number];
-  mad: number;
-};
-const meanOf = (v: readonly number[]) =>
-  v.reduce((a, b) => a + b, 0) / v.length;
-const madOf = (v: readonly number[]) => {
-  const m = meanOf(v);
-  return v.reduce((a, x) => a + Math.abs(x - m), 0) / v.length;
-};
+const signedTex = (n: number, wrap = false) =>
+  n < 0 && wrap ? `(${n})` : `${n}`;
 /** Indexes of the first two addends that make ten, then the third. */
 export function tenPair(
   addends: readonly [number, number, number],
@@ -403,52 +384,6 @@ export function animationModel(
   )
     return { kind: "decimal-align", figure: f };
   if (
-    (lesson.templateId === "dot-plot-mean" ||
-      lesson.templateId === "dot-plot-mad") &&
-    f?.kind === "line-plot" &&
-    f.mark === "dot" &&
-    f.denominator === 1 &&
-    validPlot(f)
-  ) {
-    const mean = f.values.reduce((a, b) => a + b, 0) / f.values.length;
-    const lo = Math.min(...f.values),
-      hi = Math.max(...f.values);
-    // A trial pivot that is not the mean: the middle of the range, or beside it.
-    const mid = (lo + hi) / 2;
-    const trial = mid !== mean ? mid : mean + (hi - mean > 1 ? 1 : -1);
-    return {
-      kind: "mean-balance",
-      figure: f,
-      mad: lesson.templateId === "dot-plot-mad",
-      trial,
-    };
-  }
-  if (lesson.templateId === "means-in-mads" && f?.kind === "double-dot-plot") {
-    const [a, b] = f.groups.map((g) => g.values);
-    const mad = madOf(a!),
-      gap = Math.abs(meanOf(a!) - meanOf(b!));
-    if (
-      integer(mad, 1, 5) &&
-      madOf(b!) === mad &&
-      integer((2 * gap) / mad, 1, 12)
-    )
-      return {
-        kind: "mad-gap",
-        figure: f,
-        means: [meanOf(a!), meanOf(b!)],
-        mad,
-      };
-  }
-  if (
-    lesson.templateId === "dot-plot-iqr" &&
-    f?.kind === "line-plot" &&
-    f.mark === "dot" &&
-    f.denominator === 1 &&
-    validPlot(f) &&
-    f.values.length >= 4
-  )
-    return { kind: "box-build", figure: f };
-  if (
     lesson.templateId === "balanced-addition" &&
     f?.kind === "equal-balance"
   ) {
@@ -666,27 +601,6 @@ export function animationModel(
   )
     return rateModel(f);
   if (
-    (lesson.templateId === "line-plot-whole" ||
-      lesson.templateId === "fraction-line-plot") &&
-    f?.kind === "line-plot" &&
-    validPlot(f)
-  )
-    return { kind: "line-plot-stack", figure: f };
-  if (
-    lesson.templateId === "fraction-plot-equal-share" &&
-    f?.kind === "line-plot" &&
-    validPlot(f)
-  ) {
-    const total = f.values.reduce((a, b) => a + b, 0);
-    // The shared amount must land on a tick, and all marks must fit one stack.
-    if (total % f.values.length === 0 && f.values.length <= 8)
-      return {
-        kind: "line-plot-share",
-        figure: f,
-        share: total / f.values.length,
-      };
-  }
-  if (
     lesson.templateId === "exchange-base-ten" &&
     f?.kind === "base-ten" &&
     integer(f.hundreds, 0, 9) &&
@@ -857,7 +771,10 @@ const coordTex = (v: number) => String(v);
 const texPoints = (points: LabeledPoint[]) =>
   // One formula per point, so a narrow panel wraps between points.
   points
-    .map((p) => `$${p.label.replace("′", "'")}(${coordTex(p.x)}, ${coordTex(p.y)})$`)
+    .map(
+      (p) =>
+        `$${p.label.replace("′", "'")}(${coordTex(p.x)}, ${coordTex(p.y)})$`,
+    )
     .join(", ");
 const amount = (v: number, plus: string, minus: string) =>
   `${Math.abs(v)} ${Math.abs(v) === 1 ? "unit" : "units"} ${v > 0 ? plus : minus}`;
@@ -925,25 +842,6 @@ function motionFrames(model: Extract<AnimationModel, { kind: "motion" }>) {
     },
   ];
 }
-function validPlot(f: LinePlot) {
-  return (
-    integer(f.start, 0, 400) &&
-    integer(f.end, f.start + 1, f.start + 12) &&
-    f.values.length >= 3 &&
-    f.values.length <= 24 &&
-    f.values.every((v) => integer(v, f.start, f.end))
-  );
-}
-const plotted = (v: number, d: number) => {
-  const whole = Math.floor(v / d),
-    rest = v % d;
-  if (!rest) return `${whole}`;
-  let a = rest,
-    b = d;
-  while (b) [a, b] = [b, a % b];
-  const frac = `\\tfrac{${rest / a}}{${d / a}}`;
-  return whole ? `${whole}${frac}` : frac;
-};
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 const tex = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
@@ -994,22 +892,6 @@ export const firstDifference = (figure: DecimalChart) => {
 };
 const written = (row: { ones: number; decimals: string }) =>
   `${row.ones}.${row.decimals}`;
-/** Quartiles by the median-of-halves convention (overall median left out for odd counts). */
-export function fiveNumbers(values: readonly number[]) {
-  const xs = [...values].sort((a, b) => a - b),
-    n = xs.length;
-  const median = (v: number[]) => {
-    const k = Math.floor(v.length / 2);
-    return v.length % 2 ? v[k]! : (v[k - 1]! + v[k]!) / 2;
-  };
-  return {
-    min: xs[0]!,
-    q1: median(xs.slice(0, Math.floor(n / 2))),
-    median: median(xs),
-    q3: median(xs.slice(Math.ceil(n / 2))),
-    max: xs[n - 1]!,
-  };
-}
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
@@ -1334,97 +1216,6 @@ export function animationFrames(model: AnimationModel) {
       },
     ];
   }
-  if (model.kind === "mean-balance") {
-    const { values } = model.figure,
-      n = values.length,
-      sum = values.reduce((a, b) => a + b, 0),
-      mean = sum / n;
-    const below = values
-      .filter((v) => v < mean)
-      .reduce((a, v) => a + (mean - v), 0);
-    const g = (a: number, b: number): number => (b ? g(b, a % b) : a);
-    const frac = (p: number, q: number) => {
-      const k = g(Math.abs(p), q);
-      return q / k === 1
-        ? { tex: `${p / k}`, text: `${p / k}` }
-        : {
-            tex: `\\tfrac{${p / k}}{${q / k}}`,
-            text: `${p / k}/${q / k}`,
-          };
-    };
-    const belowText = frac(Math.round(below * n), n);
-    return [
-      {
-        title: "Put the dots on a beam",
-        text: `${n} values sit on the number line like equal weights.`,
-        math: `$\\text{sum} = ${sum}$`,
-      },
-      {
-        title: "Try a pivot",
-        text: `With the pivot at ${num(model.trial)}, the beam tips: one side carries more total distance.`,
-        math: `$\\text{pivot} = ${num(model.trial)}$`,
-      },
-      model.mad
-        ? {
-            title: "Balance, then measure the spread",
-            text: `The beam balances at the mean. The distances below it equal the distances above it, ${belowText.text} each side. The MAD is the mean of all the distances.`,
-            math: `$\\text{MAD} = \\dfrac{2 \\times ${belowText.tex}}{${n}}$`,
-          }
-        : {
-            title: "Balance at the mean",
-            text: `The beam balances at ${frac(sum, n).text}: the distances below it add up to the distances above it.`,
-            math: `$${sum} \\div ${n} = ${frac(sum, n).tex}$`,
-          },
-    ];
-  }
-  if (model.kind === "mad-gap") {
-    const [g1, g2] = model.figure.groups,
-      [m1, m2] = model.means,
-      gap = Math.abs(m1 - m2),
-      k = gap / model.mad;
-    return [
-      {
-        title: "Two groups, one scale",
-        text: `${g1.label} (top) and ${g2.label} (bottom) share one number line, so equal values line up. Both have a MAD of ${model.mad}.`,
-        math: `$\\text{MAD} = ${model.mad}$`,
-      },
-      {
-        title: "Find each mean",
-        text: [g1, g2]
-          .map(
-            (g, i) =>
-              `${g.label}: ${g.values.reduce((a, b) => a + b, 0)}\u00a0÷\u00a0${g.values.length}\u00a0=\u00a0${num(model.means[i]!)}.`,
-          )
-          .join(" "),
-        math: `$${num(Math.max(m1, m2))} - ${num(Math.min(m1, m2))} = ${num(gap)}$`,
-      },
-      {
-        title: "Lay MADs across the gap",
-        text: `The gap of ${num(gap)} holds ${num(k)} MADs of ${model.mad}. The more MADs between the means, the less the groups overlap.`,
-        math: `$${num(gap)} \\div ${model.mad} = ${num(k)}$`,
-      },
-    ];
-  }
-  if (model.kind === "box-build") {
-    const q = fiveNumbers(model.figure.values);
-    return [
-      {
-        title: "The ordered data",
-        text: "A dot plot already lists the values in order, left to right.",
-        math: `$${model.figure.values.length}\\text{ values}$`,
-      },
-      {
-        title: "Split at the median, then split each half",
-        text: "The median cuts the data into halves; each half’s median is a quartile.",
-        math: `$Q_1 = ${num(q.q1)},\\; \\text{median} = ${num(q.median)},\\; Q_3 = ${num(q.q3)}$`,
-      },
-      {
-        title: "Draw the box",
-        text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
-        math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
-      },
-    ];
-  }
   if (model.kind === "balance-level") {
     const { full, partial } = model,
       total = full.reduce((a, b) => a + b, 0),
@@ -1671,55 +1462,6 @@ export function animationFrames(model: AnimationModel) {
         title: "Name one part",
         text: `The shaded part is one of ${count} equal shares of the area.`,
         math: `$\\dfrac{${cells / count}}{${cells}} = \\dfrac{1}{${count}}$`,
-      },
-    ];
-  }
-  if (model.kind === "line-plot-stack") {
-    const { values, denominator: d } = model.figure;
-    const half = Math.ceil(values.length / 2);
-    const counts = new Map<number, number>();
-    for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1);
-    const n = Math.max(...counts.values());
-    const tops = [...counts]
-      .filter(([, c]) => c === n)
-      .map(([v]) => v)
-      .sort((a, b) => a - b);
-    return [
-      {
-        title: "Draw the scale",
-        text: `Mark equal spaces of ${d === 1 ? "one unit" : `1/${d} unit`} along the number line, wide enough for every measurement.`,
-        math: `${values.length}\\text{ measurements}`,
-      },
-      {
-        title: "One mark per measurement",
-        text: `Place an × above each length. A repeated length stacks on top of the one below.`,
-        math: `${half}\\text{ of }${values.length}\\text{ placed}`,
-      },
-      {
-        title: "Read the stacks",
-        text: `Every measurement is shown once. The tallest ${tops.length > 1 ? "stacks show the most common lengths" : "stack is the most common length"}.`,
-        math: `${n}\\text{ at }${tops.map((v) => plotted(v, d)).join("\\text{ and }")}`,
-      },
-    ].map((f) => ({ ...f, math: `$${f.math}$` }));
-  }
-  if (model.kind === "line-plot-share") {
-    const { values, denominator: d } = model.figure;
-    const total = values.reduce((a, b) => a + b, 0);
-    return [
-      {
-        title: "Read every amount",
-        text: `${values.length} beakers, each × one beaker, measured in ${d === 2 ? "halves" : d === 4 ? "fourths" : "eighths"} of a liter.`,
-        math: `$${values.length}\\text{ beakers}$`,
-      },
-      {
-        title: "Pool the water",
-        text: "Pour every beaker into one jug. The total does not change.",
-        math: `$\\text{total} = \\dfrac{${total}}{${d}}$`,
-      },
-      {
-        title: "Share it equally",
-        text: "Pour the total back into the beakers so each holds the same amount. Every × moves to one value.",
-        math: `$\\dfrac{${total}}{${d}} \\div ${values.length} = ${[`\\dfrac{${model.share}}{${d}}`, plotted(model.share, d).replace("tfrac", "dfrac")].filter((v, i, all) => all.indexOf(v) === i).join(" = ")}$`,
       },
     ];
   }

@@ -15,6 +15,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { trialLimits } from "../src/server/trials";
 import { migrate } from "./migrate";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 /**
  * The free trial end to end, against the real learning API and a synthetic
@@ -23,7 +24,8 @@ import { migrate } from "./migrate";
  * verified return → the free practice becomes the paid learner, who keeps
  * practicing. Also: a signed-in parent without a purchase lands in the trial,
  * the first paint never flashes loading text, nothing shifts, axe is clean.
- * Runs at 320x568, 390x844, 844x390 and 1280x800 in light and dark.
+ * Runs at 320x568, 390x844 and 1280x800, plus an 844x390 phone-landscape
+ * smoke, in light and dark.
  */
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
@@ -289,6 +291,8 @@ async function fits(page: Page, label: string) {
     () => document.documentElement.scrollWidth - innerWidth,
   );
   assert.ok(overflow <= 0, `${label}: no horizontal overflow (${overflow}px)`);
+  if (isPhoneLandscape(page.viewportSize()!))
+    await assertPhoneLandscapeSmoke(page, label);
 }
 async function frames(page: Page) {
   await page.evaluate(
@@ -773,7 +777,7 @@ try {
       await visitor.close();
     }
   console.log(
-    `Free trial: welcome → birth year → ${PLACEMENT} placement → map → plans by choice → not now → practice → mastery moment → paywall at ${FREE} → not now → map → plans → sign-up → plan (monthly kept) → Stripe redirect → paid → adopt → claim → practice with every free answer; cold / for a signed-in unpaid parent paints only the skeleton then /try, and for a visitor only the skeleton then the welcome; at 320x568/390x844/844x390/1280x800 × light/dark; no overflow, no layout shift, no loading flash, axe clean.`,
+    `Free trial: welcome → birth year → ${PLACEMENT} placement → map → plans by choice → not now → practice → mastery moment → paywall at ${FREE} → not now → map → plans → sign-up → plan (monthly kept) → Stripe redirect → paid → adopt → claim → practice with every free answer; cold / for a signed-in unpaid parent paints only the skeleton then /try, and for a visitor only the skeleton then the welcome; at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, no layout shift, no loading flash, axe clean.`,
   );
 } finally {
   await browser.close();

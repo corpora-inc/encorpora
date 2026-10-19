@@ -7,6 +7,7 @@ import { angleSchema, protractorSchema } from "./angle";
 import { areaModelSchema } from "./area-model";
 import { arraySchema } from "./array";
 import { barChartSchema } from "./bar-chart";
+import { barsSchema } from "./bars";
 import { baseTenSchema } from "./base-ten";
 import { boxPlotSchema } from "./box-plot";
 import { clockSchema } from "./clock";
@@ -26,6 +27,7 @@ import { shapeSortSchema } from "./shape-sort";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
 import { treeSchema } from "./tree";
+import { triangleSchema } from "./triangle";
 import { vennSchema } from "./venn";
 
 export const componentSchemas = [
@@ -33,6 +35,7 @@ export const componentSchemas = [
   areaModelSchema,
   arraySchema,
   barChartSchema,
+  barsSchema,
   baseTenSchema,
   boxPlotSchema,
   clockSchema,
@@ -53,6 +56,7 @@ export const componentSchemas = [
   tableSchema,
   tenFrameSchema,
   treeSchema,
+  triangleSchema,
   vennSchema,
 ] as const;
 
@@ -60,6 +64,7 @@ export * from "./angle";
 export * from "./area-model";
 export * from "./array";
 export * from "./bar-chart";
+export * from "./bars";
 export * from "./base-ten";
 export * from "./box-plot";
 export * from "./clock";
@@ -79,4 +84,5 @@ export * from "./shape-sort";
 export * from "./table";
 export * from "./ten-frame";
 export * from "./tree";
+export * from "./triangle";
 export * from "./venn";

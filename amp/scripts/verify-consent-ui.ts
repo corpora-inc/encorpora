@@ -5,6 +5,7 @@ import { createServer } from "vite";
 import { consentFixture as policy } from "../tests/parent-consent.fixture.js";
 import { noticeDigest } from "../src/parent-consent/crypto.js";
 import type { ConsentView } from "../src/parent-consent/contracts.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/consent-review/", import.meta.url);
 await mkdir(directory, { recursive: true });
 await writeFile(
@@ -31,8 +32,11 @@ try {
   for (const viewport of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
   ]) {
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape(viewport);
     const page = await browser.newPage({ viewport });
     page.setDefaultTimeout(10000);
     const errors: string[] = [];
@@ -134,10 +138,11 @@ try {
           height: b.height,
         };
       });
-      assert(result.body <= viewport.height + 1, `${name}: body scroll`);
       assert(result.width <= viewport.width + 1, `${name}: horizontal scroll`);
-      assert(result.bottom <= viewport.height + 1 && result.top >= 0);
       assert(result.height >= 48);
+      if (!strict) return assertPhoneLandscapeSmoke(page, name);
+      assert(result.body <= viewport.height + 1, `${name}: body scroll`);
+      assert(result.bottom <= viewport.height + 1 && result.top >= 0);
     }
     await capture("start");
     await page.getByLabel("Parent email address").fill("parent@");

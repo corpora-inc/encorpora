@@ -667,15 +667,3 @@ footer {
 .native-preview button {
   min-height: 44px;
 }
-@media (max-height: 450px) and (orientation: landscape) {
-  .native-preview {
-    padding: 12px;
-  }
-  .native-preview .welcome {
-    max-width: 760px;
-    padding: 16px;
-  }
-  .native-preview p {
-    margin: 8px 0;
-  }
-}
