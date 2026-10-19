@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { chromium, type Locator, type Page, type Route } from "playwright";
 import { createServer } from "vite";
@@ -86,6 +86,7 @@ const shots =
   process.env.TRIAL_SCREENS ??
   new URL("../artifacts/free-trial/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
+const shots_dir = shots;
 
 const policy = {
   ...consentFixture,
@@ -337,9 +338,75 @@ const watch = `(() => {
       if (text.includes(phrase) && !window.__flash.includes(phrase))
         window.__flash.push(phrase);
   }).observe(document, { subtree: true, childList: true, characterData: true });
+  // Every painted frame's visible text, from the first frame on.
+  window.__frames = [];
+  const record = () => {
+    const text = document.body ? document.body.innerText.trim().replace(/\\s+/g, " ") : "";
+    const last = window.__frames[window.__frames.length - 1];
+    if (!last || last.text !== text) window.__frames.push({ path: location.pathname, text });
+    if (window.__frames.length < 400) requestAnimationFrame(record);
+  };
+  requestAnimationFrame(record);
 })();`;
 const shift = (page: Page) =>
   page.evaluate(() => (window as unknown as { __shift: number }).__shift);
+type Frame = { path: string; text: string };
+const painted = (page: Page) =>
+  page.evaluate(() => (window as unknown as { __frames: Frame[] }).__frames);
+/** A cold load (new context, empty cache): every painted frame is either the
+ * brand skeleton or the destination screen, never anything in between. The
+ * first frame is saved from the compositor's screencast. */
+async function coldLoad(
+  context: import("playwright").BrowserContext,
+  path: string,
+  destination: string,
+  label: string,
+  state: State,
+) {
+  const page = await context.newPage();
+  page.setDefaultTimeout(15000);
+  const faults: string[] = [];
+  page.on("pageerror", (error) => faults.push(error.message));
+  await serve(page, state, faults);
+  const cdp = await context.newCDPSession(page);
+  await cdp.send("Network.clearBrowserCache");
+  const shots: Buffer[] = [];
+  cdp.on("Page.screencastFrame", (frame) => {
+    shots.push(Buffer.from(frame.data, "base64"));
+    void cdp
+      .send("Page.screencastFrameAck", { sessionId: frame.sessionId })
+      .catch(() => undefined);
+  });
+  await cdp.send("Page.startScreencast", { format: "png", everyNthFrame: 1 });
+  await page.goto(`${origin}${path}`);
+  await page.getByText(destination, { exact: false }).first().waitFor();
+  await frames(page);
+  await cdp.send("Page.stopScreencast");
+  const seen = await painted(page);
+  const strays = seen.filter(
+    // "" is the page background before the HTML skeleton is parsed.
+    (frame) =>
+      !["", "AMP"].includes(frame.text) && !frame.text.includes(destination),
+  );
+  assert.deepEqual(
+    strays,
+    [],
+    `${label}: only the skeleton or the destination is ever painted`,
+  );
+  assert.ok(shots.length > 0, `${label}: frames were captured`);
+  if (destination.startsWith("What year"))
+    assert.equal(
+      (await page.locator("header").first().boundingBox())?.height,
+      64,
+      `${label}: the destination's bar is exactly the skeleton's bar`,
+    );
+  await writeFile(`${shots_dir}/first-frame-${label}.png`, shots[0]!);
+  assert.deepEqual(await flashes(page), []);
+  assert.equal(await shift(page), 0, `${label}: nothing shifts`);
+  assert.deepEqual(faults, []);
+  await page.close();
+  return seen;
+}
 const flashes = (page: Page) =>
   page.evaluate(() => (window as unknown as { __flash: string[] }).__flash);
 
@@ -406,7 +473,7 @@ try {
       await page.goto(`${origin}/`);
       const tryFree = page.getByRole("button", { name: "Try free" });
       await tryFree.waitFor();
-      await page.getByText("Start with 100 free problems.").waitFor();
+      await page.getByText(`Start with ${FREE} free problems.`).waitFor();
       await fits(page, `${tag} welcome`);
       if (audit) await axe(page, "welcome");
       await shoot(page, "welcome", tag);
@@ -474,9 +541,41 @@ try {
         .click();
       await page.waitForURL("**/try/practice");
 
+      // A recorded answer whose response is lost retries with the same
+      // request: the learner sees "Retry", never a guaranteed failure.
+      if (width === 1280 && theme === "light") {
+        await page.locator(".problem-stage .question").waitFor();
+        const ids: string[] = [];
+        let lose = true;
+        await page.route("**/attempts", async (route) => {
+          ids.push(route.request().postDataJSON().requestId);
+          if (!lose) return route.fallback();
+          lose = false;
+          await route.fetch();
+          return route.abort("connectionreset");
+        });
+        const choice = page.locator(".choice-option");
+        if (await choice.count()) {
+          await choice.first().click();
+          await page.locator(".choice-submit").click();
+        } else {
+          await page.locator("#answer").fill("1");
+          await page.locator("#answer").press("Enter");
+        }
+        await page.getByText("Check your connection").waitFor();
+        const retry = page.getByRole("button", { name: "Retry", exact: true });
+        await retry.click();
+        await page.locator(".next-action").waitFor();
+        assert.equal(ids.length, 2);
+        assert.equal(ids[0], ids[1], "the retry reuses the request id");
+        await page.unroute("**/attempts");
+        await next(page);
+      }
       // Adaptive practice to the limit; one answer is a mastery moment.
       let masteryShown = false;
-      for (let i = PLACEMENT; i < FREE; i++) {
+      const start =
+        width === 1280 && theme === "light" ? PLACEMENT + 1 : PLACEMENT;
+      for (let i = start; i < FREE; i++) {
         if (i === PLACEMENT + 1) {
           await page.route(
             "**/attempts",
@@ -634,7 +733,9 @@ try {
       );
       await context.close();
 
-      // A signed-in parent without a purchase lands in the free trial.
+      // Cold loads of `/` (new context, empty cache). A signed-in, verified
+      // parent with no purchase sees the free assessment as the first
+      // screen; a visitor sees the welcome. Nothing else is ever painted.
       const parent = await browser.newContext({
         viewport: { width, height },
         colorScheme: theme,
@@ -643,33 +744,36 @@ try {
       await parent.addInitScript(() =>
         localStorage.setItem("fixture.parent", "1"),
       );
-      const second = await parent.newPage();
-      second.setDefaultTimeout(15000);
-      const parentFaults: string[] = [];
-      second.on("pageerror", (error) => parentFaults.push(error.message));
-      await serve(second, fresh(), parentFaults);
-      await second.goto(`${origin}/`);
-      await second.waitForURL("**/try");
-      await second.getByRole("group", { name: "Birth year" }).waitFor();
-      await second.goto(`${origin}/start`);
-      await second.waitForURL("**/try");
-      await second.getByRole("group", { name: "Birth year" }).waitFor();
-      assert.deepEqual(
-        await flashes(second),
-        [],
-        `${tag}: parent sees no setup card or loading text`,
+      const seen = await coldLoad(
+        parent,
+        "/",
+        "What year was the learner born?",
+        `parent-${tag}`,
+        fresh(),
       );
-      assert.equal(
-        await shift(second),
-        0,
-        `${tag}: parent first paint does not shift`,
+      assert.equal(seen.at(-1)!.path, "/try");
+      assert.ok(
+        seen.every((frame) => !frame.path.startsWith("/start/plan")),
+        `${tag}: the plan never opens on its own`,
       );
-      await fits(second, `${tag} parent trial`);
-      assert.deepEqual(parentFaults, []);
+      await coldLoad(
+        parent,
+        "/start",
+        "What year was the learner born?",
+        `parent-start-${tag}`,
+        fresh(),
+      );
       await parent.close();
+      const visitor = await browser.newContext({
+        viewport: { width, height },
+        colorScheme: theme,
+      });
+      await visitor.addInitScript({ content: watch });
+      await coldLoad(visitor, "/", "Try free", `visitor-${tag}`, fresh());
+      await visitor.close();
     }
   console.log(
-    `Free trial: welcome → birth year → ${PLACEMENT} placement → map → plans by choice → not now → practice → mastery moment → paywall at ${FREE} → not now → map → plans → sign-up → plan (monthly kept) → Stripe redirect → paid → adopt → claim → practice with every free answer; signed-in unpaid parent → /try; at 320x568/390x844/844x390/1280x800 × light/dark; no overflow, no layout shift, no loading flash, axe clean.`,
+    `Free trial: welcome → birth year → ${PLACEMENT} placement → map → plans by choice → not now → practice → mastery moment → paywall at ${FREE} → not now → map → plans → sign-up → plan (monthly kept) → Stripe redirect → paid → adopt → claim → practice with every free answer; cold / for a signed-in unpaid parent paints only the skeleton then /try, and for a visitor only the skeleton then the welcome; at 320x568/390x844/844x390/1280x800 × light/dark; no overflow, no layout shift, no loading flash, axe clean.`,
   );
 } finally {
   await browser.close();

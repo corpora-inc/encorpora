@@ -32,6 +32,8 @@ test(
       repository,
       development: true,
       authenticate: async (request) => {
+        if (request.headers.authorization === "Bearer other")
+          return "other-parent";
         if (request.headers.authorization !== "Bearer parent")
           throw Object.assign(new Error("Sign in to continue"), {
             statusCode: 401,
@@ -350,17 +352,28 @@ test(
         ).statusCode,
         401,
       );
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: "/api/v1/trials/adopt",
-            headers: { authorization: "Bearer parent" },
-            payload: { token, name: "Maya" },
-          })
-        ).statusCode,
-        404,
-      );
+      // A retry after a lost response returns the same learner; the token
+      // is spent for every other account.
+      const again = await app.inject({
+        method: "POST",
+        url: "/api/v1/trials/adopt",
+        headers: { authorization: "Bearer parent" },
+        payload: { token, name: "Different" },
+      });
+      assert.equal(again.statusCode, 200, again.body);
+      assert.deepEqual(again.json(), {
+        id: learnerId,
+        name: "Maya",
+        birthYear: 2016,
+      });
+      const other = await app.inject({
+        method: "POST",
+        url: "/api/v1/trials/adopt",
+        headers: { authorization: "Bearer other" },
+        payload: { token, name: "Maya" },
+      });
+      assert.equal(other.statusCode, 404);
+      assert.equal(other.json().error, "trial_ended");
 
       // Unadopted trials are deleted with their answers on expiry.
       const stale = await repository.createTrial(2014);

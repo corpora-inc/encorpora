@@ -143,8 +143,10 @@ test("a signed-in parent without a purchase gets the free trial; plan steps open
     "/start/name": "/try",
     "/start/birth-year": "/try",
   });
-  // Chose a plan on the paywall before signing up: continue to it.
-  expect(startDestination(me({ next: "try" }), "/start", true)).toBe(
-    "/start/plan",
-  );
+  // Chose a plan on the paywall before signing up: continue to it from
+  // any step, including after email verification.
+  for (const step of ["/start", "/start/verify-email", "/start/name"])
+    expect(startDestination(me({ next: "try" }), step, true)).toBe(
+      "/start/plan",
+    );
 });

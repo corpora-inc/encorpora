@@ -39,7 +39,7 @@ export function startDestination(
       // The plan opens when the parent chooses to buy; otherwise practice free.
       return stay(
         ["/start/plan", "/start/purchase", "/start/consent"],
-        buying && pathname === "/start" ? "/start/plan" : "/try",
+        buying ? "/start/plan" : "/try",
       );
     case "choose-plan":
       // With consent already recorded (for example through email-plus), the

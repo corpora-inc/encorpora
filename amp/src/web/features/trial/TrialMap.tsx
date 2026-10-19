@@ -13,7 +13,7 @@ import {
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
-import { TrialFailure, TrialSkeleton } from "./TrialFrame";
+import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
 import styles from "./Trial.module.css";
 
 /** `/try/map`: the estimated level in every area after placement, the free
@@ -36,9 +36,14 @@ function MapView({ session }: { session: TrialSession }) {
     trackSessionStart();
     track("map_view");
   }, []);
-  if (progress.error)
+  if (isEnded(progress.error)) return <TrialEnded />;
+  if (progress.error && !progress.data)
     return (
       <TrialFailure error={progress.error} retry={() => progress.refetch()} />
+    );
+  if (catalog.error)
+    return (
+      <TrialFailure error={catalog.error} retry={() => catalog.refetch()} />
     );
   if (!progress.data || !catalog.data) return <TrialSkeleton wide />;
   const p = progress.data;

@@ -20,7 +20,7 @@ import {
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
-import { TrialFailure, TrialSkeleton } from "./TrialFrame";
+import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
 import type { TrialCatalog } from "./types";
 import styles from "./Trial.module.css";
 
@@ -45,7 +45,12 @@ export function Paywall() {
   const prices = useQuery(pricesOptions);
   const parent = useQuery(sessionOptions);
   const search = useSearch({ from: "/try/plans" });
-  const failed = trial.error ?? progress.error ?? prices.error;
+  if (isEnded(progress.error)) return <TrialEnded />;
+  const failed =
+    trial.error ??
+    (progress.data ? null : progress.error) ??
+    prices.error ??
+    catalog.error;
   if (failed)
     return (
       <TrialFailure
@@ -53,6 +58,7 @@ export function Paywall() {
         retry={() => {
           void trial.refetch();
           void prices.refetch();
+          void catalog.refetch();
           if (trial.data) void progress.refetch();
         }}
       />

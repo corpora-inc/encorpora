@@ -38,6 +38,8 @@ const messages: Record<string, string> = {
   billing_unavailable:
     "Billing is temporarily unavailable. Try again in a moment; you won’t be charged twice.",
   "trial-complete": "All free problems are used. Choose a plan to continue.",
+  trial_ended:
+    "That free practice has ended on this device. Continue to add the learner and choose a starting point.",
   "Too Many Requests":
     "Too many requests from this network. Wait a few minutes, then try again.",
 };

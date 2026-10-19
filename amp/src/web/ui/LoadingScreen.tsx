@@ -23,11 +23,7 @@ export function LoadingScreen({
           <>
             <p role="alert">{error}</p>
             {retry && (
-              <button
-                className="loading-retry"
-                disabled={busy}
-                onClick={retry}
-              >
+              <button className="loading-retry" disabled={busy} onClick={retry}>
                 Try again
               </button>
             )}

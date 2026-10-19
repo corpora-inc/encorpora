@@ -89,6 +89,9 @@ export const trialSessionOptions = queryOptions({
     }
   },
   staleTime: Infinity,
+  // Without a stored token there is nothing to look up: the start screen
+  // paints on the first frame instead of a skeleton.
+  initialData: () => (storedTrial() ? undefined : null),
 });
 export const progressOptions = (session: TrialSession) =>
   queryOptions({

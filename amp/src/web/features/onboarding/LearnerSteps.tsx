@@ -195,7 +195,8 @@ export function LearnerSteps({
           // Saved before a failed claim: claim again, never adopt twice.
           if (mine && draft.learnerId) return assign(draft.learnerId);
           claim.reset();
-          const known = new Set(me.learners.map((learner) => learner.id));
+          // Adoption is idempotent for this account: a retry after a lost
+          // response returns the learner already saved, never a second one.
           adopt.mutate(
             { token: trial, name: name.trim() },
             {
@@ -209,36 +210,12 @@ export function LearnerSteps({
                 assign(learner.id);
               },
               onError: (error) => {
-                if (!(error instanceof AppError) || error.kind !== "validation")
-                  return;
-                // Already saved (a lost response) or ended: find it, or
-                // continue as a new learner.
-                adopt.reset();
-                void refreshMe(session)
-                  .then((fresh) => {
-                    const saved =
-                      fresh.signedIn &&
-                      fresh.learners.find(
-                        (learner) =>
-                          !known.has(learner.id) &&
-                          learner.name === name.trim(),
-                      );
-                    dropTrial();
-                    if (saved) {
-                      draft.saved(
-                        session.accountId,
-                        saved.id,
-                        saved.birthYear ?? 0,
-                      );
-                      assign(saved.id);
-                    } else
-                      setEnded(
-                        "That free practice has ended on this device. Continue to add the learner and choose a starting point.",
-                      );
-                  })
-                  .catch((cause) =>
-                    console.error("Learner check after trial save", cause),
-                  );
+                // Only an ended trial is forgotten; anything else can retry.
+                if (error instanceof AppError && error.code === "trial_ended") {
+                  dropTrial();
+                  setEnded(error.message);
+                  adopt.reset();
+                }
               },
             },
           );

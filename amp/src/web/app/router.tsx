@@ -107,28 +107,6 @@ const home = createRoute({
         search: { token: search.token, error: search.error },
       });
   },
-  // A parent without a purchase starts in the free trial, never on a setup
-  // card; the cached session and `/me` decide before anything paints.
-  loader: async () => {
-    if (nativeRuntime) return;
-    let trial = false;
-    try {
-      const session = await queryClient.ensureQueryData(sessionOptions);
-      const me = session
-        ? await queryClient.ensureQueryData(meOptions(session))
-        : null;
-      trial = !!me?.signedIn && me.next === "try";
-    } catch (error) {
-      // The home screen reports and retries its own account errors.
-      console.error("Home routing could not read the account", error);
-    }
-    if (trial)
-      throw redirect(
-        chosenPlan()
-          ? { to: "/start/plan", replace: true }
-          : { to: "/try", replace: true },
-      );
-  },
 });
 const signIn = createRoute({
   getParentRoute: () => root,

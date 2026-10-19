@@ -1,4 +1,7 @@
+import { Navigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { AppError } from "../../lib/AppError";
+import { forgetTrial } from "./api";
 import { Button } from "../../ui/Button";
 import { frameCard, PageFrame } from "../../ui/PageFrame";
 import styles from "./Trial.module.css";
@@ -54,4 +57,14 @@ export function TrialFailure({
       </section>
     </PageFrame>
   );
+}
+
+/** The trial ended on the server (expired, or saved into a family): forget
+ * it on this device and start again at `/try`. */
+export function isEnded(error: unknown) {
+  return error instanceof AppError && error.kind === "authentication";
+}
+export function TrialEnded() {
+  useEffect(() => forgetTrial(), []);
+  return <Navigate to="/try" replace />;
 }

@@ -22,7 +22,7 @@ import {
 } from "./repository";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
-import { isTrialAccount } from "./trials";
+import { isTrialAccount, trialLimits } from "./trials";
 import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
@@ -181,6 +181,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
     skills,
     coverage: auditCurriculum(),
     mode: options.development ? "development" : "hosted",
+    // The free practice a visitor gets before the paywall.
+    trial: options.repository.limits ?? trialLimits(),
   }));
   app.get("/api/v1/learners", async (request) => ({
     learners: await options.repository.list(await parent(request)),

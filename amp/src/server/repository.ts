@@ -95,6 +95,8 @@ export interface LearnerTransaction {
   trialPaywall(): Promise<void>;
 }
 export interface Repository {
+  /** The anonymous free-trial allowance and its placement length. */
+  readonly limits?: TrialLimits;
   hasConsent(accountId: string): Promise<boolean>;
   list(accountId: string): Promise<Learner[]>;
   create(
@@ -285,11 +287,25 @@ export class PostgresRepository implements Repository {
           "Parent consent is required before collecting learning data",
         );
       const trial = await client.query(
-        "SELECT id,learner_id FROM amp_trials WHERE token_hash=$1 AND adopted_at IS NULL AND expires_at>now() FOR UPDATE",
-        [trialTokenHash(token)],
+        `SELECT id,learner_id,adopted_by FROM amp_trials WHERE token_hash=$1
+         AND ((adopted_at IS NULL AND expires_at>now()) OR adopted_by=$2) FOR UPDATE`,
+        [trialTokenHash(token), accountId],
       );
-      if (!trial.rowCount)
-        throw new ApiError(404, "This trial has ended or was already saved");
+      if (!trial.rowCount) throw new ApiError(404, "trial_ended");
+      // A retry after a lost response returns the learner it already saved.
+      if (trial.rows[0].adopted_by === accountId) {
+        const saved = await client.query(
+          "SELECT id,name,birth_year FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL",
+          [trial.rows[0].learner_id, accountId],
+        );
+        if (!saved.rowCount) throw new ApiError(404, "trial_ended");
+        await client.query("COMMIT");
+        return {
+          id: saved.rows[0].id,
+          name: saved.rows[0].name,
+          birthYear: saved.rows[0].birth_year,
+        };
+      }
       const { id, learner_id: learnerId } = trial.rows[0];
       const moved = await client.query(
         "UPDATE amp_learners SET account_id=$1,name=$2 WHERE id=$3 AND account_id=$4 AND deleted_at IS NULL RETURNING birth_year",

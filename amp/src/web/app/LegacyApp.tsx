@@ -63,7 +63,8 @@ import "../premium-controls.css";
 import "../app-shell.css";
 import { BirthYearPrompt } from "../BirthYearPrompt";
 import { ChooseHowToPay } from "../ChooseHowToPay";
-import { storedTrial } from "../lib/pending-trial";
+import { chosenPlan, storedTrial } from "../lib/pending-trial";
+import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
@@ -86,6 +87,8 @@ type Catalog = {
   lessons: Lesson[];
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
+  /** The free practice before the paywall (`AMP_FREE_PROBLEMS`). */
+  trial?: { free: number; placement: number };
 };
 // Copying typeset math gives its plain text, not KaTeX's internal markup.
 addEventListener("copy", (event) => {
@@ -619,16 +622,37 @@ function LegacyScreen() {
       navigate("/", { replace: true });
   }, [token, route.signingIn]);
   const starting = false;
+  // A parent without a learner or consent continues in the first run (the
+  // free trial, until they buy). Home paints the frame only, never a setup
+  // card, while the account loads and while that redirect happens.
+  const firstRunHome =
+    !nativeRuntime &&
+    !!token &&
+    route.location.pathname === "/" &&
+    (!familySummary
+      ? !error
+      : !learners.length ||
+        (!learningAllowed && familySummary.consent.status !== "withdrawn"));
+  // Once leaving, this screen stays the skeleton until the destination
+  // mounts: the old route keeps rendering while the next one loads.
+  const leavingHome = useRef(false);
+  if (firstRunHome || route.location.pathname === "/")
+    leavingHome.current = firstRunHome && !!familySummary;
   useEffect(() => {
-    if (
-      !nativeRuntime &&
-      token &&
-      familySummary &&
-      route.location.pathname === "/" &&
-      (!learners.length ||
-        (!learningAllowed && familySummary.consent.status !== "withdrawn"))
-    )
-      navigate("/start/name", { replace: true });
+    if (!firstRunHome || !familySummary) return;
+    // Straight to the free trial when `/me` says so; the first-run guard
+    // routes every other case from /start/name.
+    const me = accountId
+      ? queryClient.getQueryData<Me>(meKey(accountId))
+      : null;
+    navigate(
+      me?.signedIn && me.next === "try"
+        ? chosenPlan()
+          ? "/start/plan"
+          : "/try"
+        : "/start/name",
+      { replace: true },
+    );
   }, [accountId, familySummary, route.location.pathname]);
   useEffect(() => {
     if (
@@ -988,7 +1012,14 @@ function LegacyScreen() {
       (tab === "practice" || tab === "library"));
   usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
-  if (!sessionReady || (starting && token && !familySummary))
+  if (
+    !sessionReady ||
+    firstRunHome ||
+    leavingHome.current ||
+    // The welcome states the configured free allowance: paint it once.
+    (!token && !nativeRuntime && !catalog && !error) ||
+    (starting && token && !familySummary)
+  )
     return (
       <LoadingScreen
         error={error}
@@ -1233,12 +1264,12 @@ function LegacyScreen() {
           <h2>
             {nativeRuntime
               ? "Sign in to continue."
-              : "Start with 100 free problems."}
+              : `Start with ${catalog?.trial?.free ?? 100} free problems.`}
           </h2>
           <p>
             {nativeRuntime
               ? "Sign in as a parent to choose a learner."
-              : "No account needed. The first 20 find the level in every area; the rest practice right at it, with a lesson and a hint on every problem."}
+              : `No account needed. The first ${catalog?.trial?.placement ?? 20} find the level in every area; the rest practice right at it, with a lesson and a hint on every problem.`}
           </p>
           {hasPendingConsent && (
             <p>

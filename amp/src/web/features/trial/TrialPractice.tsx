@@ -56,6 +56,14 @@ function Practice({ session }: { session: TrialSession }) {
   const [error, setError] = useState("");
   const [answered, setAnswered] = useState<number | null>(null);
   const upcoming = useRef<Promise<Next> | null>(null);
+  // An answer whose response was lost retries with the same request id, so
+  // the server returns the recorded result instead of "already answered".
+  const unsent = useRef<{
+    problemId: string;
+    requestId: string;
+    response: string;
+  } | null>(null);
+  const [pending, setPending] = useState(false);
   usePracticeViewport(true);
   useEffect(() => trackSessionStart(), []);
 
@@ -110,11 +118,17 @@ function Practice({ session }: { session: TrialSession }) {
     setHint("");
   }
   // The first problem: from the planner, or the paywall if none are left.
+  // Only once the count is known, so an exhausted trial navigates once.
   const first = () => void run(async () => show(await nextProblem(session)));
+  const counted = answered !== null;
   useEffect(() => {
-    if (limits && !problem && !done) first();
-  }, [!!limits]);
-  if (progress.error)
+    if (limits && counted && !problem && !done) first();
+  }, [counted]);
+  useEffect(() => {
+    if (progress.error) ended(progress.error);
+  }, [progress.error]);
+  // A failed background refresh never replaces the open problem.
+  if (progress.error && !limits)
     return (
       <TrialFailure error={progress.error} retry={() => progress.refetch()} />
     );
@@ -144,7 +158,7 @@ function Practice({ session }: { session: TrialSession }) {
         outcome={outcome}
         hint={hintText}
         busy={busy}
-        pending={false}
+        pending={pending}
         error={error}
         clearError={() => setError("")}
         status={
@@ -154,11 +168,33 @@ function Practice({ session }: { session: TrialSession }) {
         exit={() => void run(() => leave("/try/map"))}
         submit={() =>
           void run(async () => {
-            const result = await answer(session, {
-              problemId: problem.id,
-              requestId: crypto.randomUUID(),
-              response,
-            });
+            const attempt =
+              unsent.current?.problemId === problem.id &&
+              unsent.current.response === response
+                ? unsent.current
+                : {
+                    problemId: problem.id,
+                    requestId: crypto.randomUUID(),
+                    response,
+                  };
+            unsent.current = attempt;
+            setPending(true);
+            let result: TrialOutcome;
+            try {
+              result = await answer(session, attempt);
+            } catch (failure) {
+              // Only a lost or failed delivery keeps the same request to retry.
+              if (
+                !(failure instanceof AppError) ||
+                !["network", "unavailable"].includes(failure.kind)
+              ) {
+                unsent.current = null;
+                setPending(false);
+              }
+              throw failure;
+            }
+            unsent.current = null;
+            setPending(false);
             const count = answered + 1;
             setOutcome(result);
             setAnswered(count);

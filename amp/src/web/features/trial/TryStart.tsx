@@ -38,7 +38,7 @@ function BirthYear() {
         embedded={{
           className: `${frameCard} ${styles.start}`,
           header: (
-            <p className={styles.eyebrow}>100 free problems · No account</p>
+            <p className={styles.eyebrow}>Free practice · No account needed</p>
           ),
         }}
         name="the learner"
