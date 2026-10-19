@@ -96,7 +96,6 @@ export const patternFunctionTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-
 function random(id: string, seed: string): Random {
   let counter = 0;
   return (low, high) => {

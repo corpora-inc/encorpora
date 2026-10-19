@@ -208,6 +208,17 @@ export const circleMeasurementLessons: Lesson[] = [
   },
 ];
 
+/** The most common error for each circle measure, stated as what to do. */
+const circleWatch: Record<string, string> = {
+  "circle-circumference-coefficient":
+    "Use the diameter, not the radius: a circle of radius 5 cm has circumference 10π cm, not 5π cm.",
+  "circle-area-coefficient":
+    "Square the radius, not the diameter, and do not double it: radius 3 cm gives area 9π, not 6π or 36π.",
+  "arc-length-coefficient":
+    "Take the angle's fraction of the circumference, 2πr, not of the area.",
+  "sector-area-coefficient":
+    "Take the angle's fraction of the area, πr², not of the circumference.",
+};
 export const circleMeasurementMethods: Record<string, ProblemMethod> =
   Object.fromEntries(
     circleMeasurementLessons.map((lesson) => [
@@ -242,6 +253,7 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
                     : "Multiply that fraction by the square of the radius.",
                   "Enter this exact coefficient a; retain pi and units in the complete measure.",
                 ],
+        watch: circleWatch[lesson.id]!,
       },
     ]),
   );

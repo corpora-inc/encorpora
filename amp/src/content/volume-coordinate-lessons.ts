@@ -182,6 +182,8 @@ export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
       "Count the cubes along the other edge.",
       "Multiply: every layer matches the top.",
     ],
+    watch:
+      "Multiply the two edge counts; counting only the cubes you can see misses the hidden ones.",
   },
   "prism-volume-edges": {
     goal: "Given the three edge lengths of a rectangular prism, find its volume.",
@@ -201,6 +203,8 @@ export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
       "Divide the volume by that product.",
       "Check that the three edges multiply to the volume.",
     ],
+    watch:
+      "Divide the volume by the product of both known edges, not by one edge.",
   },
   "composite-prism-volume": {
     goal: "Given a solid made of two rectangular prisms, find its total volume.",
@@ -231,6 +235,8 @@ export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
       "Go straight left to the y-axis: that number comes second.",
       "Write (first, second).",
     ],
+    watch:
+      "Write the across number first; (3, 5) and (5, 3) are different points.",
   },
   "coordinate-move": {
     goal: "Given a starting point and a move right and up, find where you stop.",
@@ -240,6 +246,8 @@ export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
       "Add the move right to the first coordinate.",
       "Add the move up to the second coordinate.",
     ],
+    watch:
+      "A move right changes only the first number; a move up changes only the second.",
   },
 };
 export const volumeCoordinatePrinciples: Record<string, string> = {

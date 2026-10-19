@@ -85,8 +85,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
           x={160}
           y={92}
           textAnchor="middle"
-          fontSize="18"
           fill="currentColor"
+          style={{ fontSize: 18 }}
         >
           3 + 2 = 5
         </text>
@@ -94,8 +94,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
           x={160}
           y={118}
           textAnchor="middle"
-          fontSize="18"
           fill="currentColor"
+          style={{ fontSize: 18 }}
         >
           5 − 2 = 3
         </text>
@@ -119,9 +119,11 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
               x={x(n)}
               y={108}
               textAnchor="middle"
-              fontSize="14"
-              fontWeight={n === 8 || n === 11 ? 700 : 400}
               fill="currentColor"
+              style={{
+                fontWeight: n === 8 || n === 11 ? 700 : 400,
+                fontSize: 14,
+              }}
             >
               {n}
             </text>
@@ -145,8 +147,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
               x={(x(n) + x(n + 1)) / 2}
               y={44}
               textAnchor="middle"
-              fontSize="13"
               fill="currentColor"
+              style={{ fontSize: 13 }}
             >
               {i + 1}
             </text>
@@ -239,8 +241,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
           x={(right + left + 5 * s) / 2}
           y={top - 12}
           textAnchor="middle"
-          fontSize="12"
           fill="currentColor"
+          style={{ fontSize: 12 }}
         >
           move 2
         </text>
@@ -248,8 +250,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
           x={left + 65}
           y={top - 12}
           textAnchor="middle"
-          fontSize="13"
           fill="currentColor"
+          style={{ fontSize: 13 }}
         >
           8 → 10
         </text>
@@ -257,8 +259,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
           x={right + 65}
           y={top - 12}
           textAnchor="middle"
-          fontSize="13"
           fill="currentColor"
+          style={{ fontSize: 13 }}
         >
           5 → 3
         </text>
@@ -284,9 +286,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
           x={digitX(i)}
           y={16}
           textAnchor="middle"
-          fontSize="12"
-          fontWeight="600"
           fill="currentColor"
+          style={{ fontWeight: 600, fontSize: 12 }}
         >
           {h}
         </text>
@@ -299,8 +300,8 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
               x={176}
               y={y}
               textAnchor="end"
-              fontSize="20"
               fill="currentColor"
+              style={{ fontSize: 20 }}
             >
               {row.left} =
             </text>
@@ -320,9 +321,11 @@ export function FactsIllustration({ kind }: { kind: FactsIllustrationKind }) {
                   x={digitX(i)}
                   y={y}
                   textAnchor="middle"
-                  fontSize="20"
-                  fontWeight={row.changed.includes(i) ? 700 : 400}
                   fill="currentColor"
+                  style={{
+                    fontWeight: row.changed.includes(i) ? 700 : 400,
+                    fontSize: 20,
+                  }}
                 >
                   {d}
                 </text>

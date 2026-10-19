@@ -65,6 +65,12 @@
 .animation-fade {
   transition: opacity 400ms ease;
 }
+/* Moves and fades together; elements stagger with an inline delay. */
+.animation-step {
+  transition:
+    transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1),
+    opacity 400ms ease;
+}
 .animation-lift {
   transition:
     transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1),
@@ -186,6 +192,7 @@
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade,
+  .animation-step,
   .animation-lift,
   .animation-trace,
   .animation-paint {
@@ -195,6 +202,65 @@
 .lesson-animation[data-animation="fraction"] .animation-fill {
   fill: var(--color-success-accent);
   stroke: var(--color-border);
+}
+.lesson-animation[data-animation="area-model"] .animation-fill {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-ink);
+}
+.lesson-animation[data-animation="area-model"] .animation-warm {
+  fill: var(--color-figure-gold-fill);
+  stroke: var(--color-figure-ink);
+}
+/* Ten-frame counters keep the practice figure's colors: first addend accent
+   circles, second addend warm squares, wherever they move. */
+.lesson-animation[data-animation="make-ten"] .animation-fill {
+  fill: var(--color-figure-accent);
+  stroke: none;
+}
+.lesson-animation[data-animation="make-ten"] .animation-warm {
+  fill: var(--color-figure-warm);
+  stroke: none;
+}
+/* Base-ten blocks keep the practice figure's accent; ones that are still
+   being counted are warm until ten of them become a ten. */
+.lesson-animation:is(
+    [data-animation="regroup-sum"],
+    [data-animation="place-compare"]
+  )
+  .animation-fill {
+  fill: var(--color-figure-accent);
+  stroke: var(--color-figure-paper);
+}
+.lesson-animation:is(
+    [data-animation="regroup-sum"],
+    [data-animation="place-compare"]
+  )
+  .animation-warm {
+  fill: var(--color-figure-warm);
+  stroke: var(--color-figure-paper);
+}
+/* Counters keep the practice figure's colors; a dashed ring marks the
+   unpaired ones. */
+.lesson-animation[data-animation="pairing"]
+  [data-counter="circle"]
+  :is(.animation-fill, .animation-warm) {
+  fill: var(--color-figure-accent);
+  stroke: var(--color-figure-paper);
+}
+.lesson-animation[data-animation="pairing"]
+  [data-counter="square"]
+  :is(.animation-fill, .animation-warm) {
+  fill: var(--color-figure-warm);
+  stroke: var(--color-figure-paper);
+}
+.lesson-animation[data-animation="rate"] .rate-bar {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-accent);
+  stroke-width: 1;
+}
+.lesson-animation[data-animation="rate"] .rate-unit {
+  fill: var(--color-figure-accent);
+  font-weight: 700;
 }
 .lesson-animation[data-animation="plot"] .animation-fill {
   fill: var(--color-success-accent);

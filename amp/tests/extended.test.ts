@@ -17,9 +17,6 @@ test("extended families solve independently from their displayed givens across 1
       const n = q.match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
       let expected: number;
       switch (t.id) {
-        case "divide-facts":
-          expected = n[0]! / n[1]!;
-          break;
         case "place-value-digit": {
           const place = q.includes("hundreds")
             ? 100
@@ -109,8 +106,10 @@ test("extended families solve independently from their displayed givens across 1
 });
 test("extended inputs are bounded and do not accept unknown templates", () => {
   assert.throws(() => generateExtendedProblem("unknown", "a"));
-  assert.throws(() => generateExtendedProblem("divide-facts", ""));
-  assert.throws(() => generateExtendedProblem("divide-facts", "x".repeat(129)));
+  assert.throws(() => generateExtendedProblem("place-value-digit", ""));
+  assert.throws(() =>
+    generateExtendedProblem("place-value-digit", "x".repeat(129)),
+  );
 });
 
 import { extendedLessons } from "../src/content/extended-lessons.js";

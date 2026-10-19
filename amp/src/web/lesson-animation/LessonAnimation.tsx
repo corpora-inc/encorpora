@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
+import { areaModelLayout } from "../AreaModelFigure";
 import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
 import { MadGapStage } from "./ComparisonAnimation";
-import { RowPercentStage, TrendFitStage } from "./BivariateAnimation";
 import {
   BalanceFrame,
   CUBE,
@@ -15,15 +15,34 @@ import {
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import {
+  ArrayBuildStage,
+  ArrayTurnStage,
+  DealStage,
+} from "./FactArrayAnimation";
+import {
+  BalanceLevelStage,
+  MakeTenThreeStage,
+  TapeJoinStage,
+} from "./EarlyOperationsAnimation";
 import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
+import { Jars } from "../AttributeFigure";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "pour":
+      return (
+        <g transform="translate(20 4) scale(0.86)">
+          <Jars eighths={model.eighths} poured={step > 0} />
+        </g>
+      );
+    case "area-model":
+      return <AreaModelAnimation model={model} step={step} />;
     case "shape-morph":
       return <ShapeMorphStage model={model} step={step} />;
     case "plot":
@@ -44,6 +63,18 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <ShareModel model={model} step={step} />;
     case "make-ten":
       return <MakeTenModel model={model} step={step} />;
+    case "array-build":
+      return <ArrayBuildStage model={model} step={step} />;
+    case "array-turn":
+      return <ArrayTurnStage model={model} step={step} />;
+    case "deal":
+      return <DealStage model={model} step={step} />;
+    case "balance-level":
+      return <BalanceLevelStage model={model} step={step} />;
+    case "tape-join":
+      return <TapeJoinStage model={model} step={step} />;
+    case "make-ten-three":
+      return <MakeTenThreeStage model={model} step={step} />;
     case "pairing":
       return <PairingModel model={model} step={step} />;
     case "place-compare":
@@ -56,6 +87,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <ArrayModel model={model} step={step} />;
     case "exchange":
       return <ExchangeModel model={model} step={step} />;
+    case "rate":
+      return <RateLinesModel model={model} step={step} />;
     case "partition":
       return <PartitionStage model={model} step={step} />;
     case "compare":
@@ -70,10 +103,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <BoxBuildModel model={model} step={step} />;
     case "mad-gap":
       return <MadGapStage model={model} step={step} />;
-    case "trend-fit":
-      return <TrendFitStage model={model} step={step} />;
-    case "row-percent":
-      return <RowPercentStage model={model} step={step} />;
   }
 }
 
@@ -191,6 +220,125 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
   );
 }
 
+/** Both lines share one scale; the highlighted pair shrinks to 1 and then
+ * stretches to the target, always by the same factor on both lines. */
+function RateLinesModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "rate" }>;
+  step: number;
+}) {
+  const [b, t] = model.given,
+    [tb, tt] = model.target,
+    rate = t / b;
+  const x0 = 104,
+    x1 = 292,
+    yTop = 72,
+    yBottom = 140,
+    max = Math.max(b, tb),
+    x = (v: number) => x0 + (v / max) * (x1 - x0);
+  const reach = [b, 1, tb][step]! / max;
+  const tick = (v: number, key: string, show = true) => (
+    <g
+      key={key}
+      className="animation-fade"
+      style={{ opacity: show ? 1 : 0 }}
+      data-rate-tick={key}
+    >
+      {[yTop, yBottom].map((y) => (
+        <line
+          key={y}
+          x1={x(v)}
+          x2={x(v)}
+          y1={y - 7}
+          y2={y + 7}
+          className="animation-outline"
+          strokeWidth="2"
+        />
+      ))}
+    </g>
+  );
+  return (
+    <>
+      <text x="8" y={yTop + 5}>
+        {model.top}
+      </text>
+      <text x="8" y={yBottom + 5}>
+        {model.bottom}
+      </text>
+      {[yTop, yBottom].map((y) => (
+        <g key={y}>
+          <rect
+            x={x0}
+            y={y - 6}
+            width={x1 - x0}
+            height="12"
+            rx="3"
+            className="animation-move rate-bar"
+            data-rate-bar={y === yTop ? "top" : "bottom"}
+            style={{
+              transformOrigin: `${x0}px ${y}px`,
+              transform: `scaleX(${reach})`,
+            }}
+          />
+          <line
+            x1={x0}
+            x2={x1 + 10}
+            y1={y}
+            y2={y}
+            className="animation-outline"
+            strokeWidth="2"
+          />
+        </g>
+      ))}
+      {tick(0, "zero")}
+      <text x={x(0)} y={yTop - 14} textAnchor="middle">
+        0
+      </text>
+      <text x={x(0)} y={yBottom + 26} textAnchor="middle">
+        0
+      </text>
+      {tick(b, "given")}
+      <text x={x(b)} y={yTop - 14} textAnchor="middle">
+        {t}
+      </text>
+      <text x={x(b)} y={yBottom + 26} textAnchor="middle">
+        {b}
+      </text>
+      {tick(1, "unit", step >= 1)}
+      <g
+        className="animation-fade"
+        style={{ opacity: step >= 1 ? 1 : 0 }}
+        data-rate-unit={`${rate}`}
+      >
+        <text x={x(1)} y={yTop + 24} textAnchor="middle" className="rate-unit">
+          {rate}
+        </text>
+        <text
+          x={x(1)}
+          y={yBottom - 13}
+          textAnchor="middle"
+          className="rate-unit"
+        >
+          1
+        </text>
+      </g>
+      {tick(tb, "target")}
+      <text x={x(tb)} y={yTop - 14} textAnchor="middle" data-rate-target-top>
+        {!model.findBottom && step < 2 ? "?" : tt}
+      </text>
+      <text
+        x={x(tb)}
+        y={yBottom + 26}
+        textAnchor="middle"
+        data-rate-target-bottom
+      >
+        {model.findBottom && step < 2 ? "?" : tb}
+      </text>
+    </>
+  );
+}
 function FractionModel({
   model,
   step,
@@ -723,7 +871,7 @@ function PlaceCompareModel({
   const [a, b] = model.figure.values;
   const tensMatch = Math.floor(a / 10) === Math.floor(b / 10);
   const focus = step === 0 ? "both" : step === 2 && tensMatch ? "ones" : "tens";
-  const u = 7,
+  const u = 9,
     rodStep = 11,
     tensX = 64,
     onesX = tensX + 9 * rodStep + 18;
@@ -789,6 +937,123 @@ function PlaceCompareModel({
   );
 }
 
+/** The whole rectangle splits at its place-value parts; each region shows its
+ * partial product, then the regions separate to be added. Drawn to scale. */
+function AreaModelAnimation({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "area-model" }>;
+  step: number;
+}) {
+  const gap = 6;
+  const layout = areaModelLayout(model.figure, {
+    x: 50,
+    y: 24,
+    // Room right of and below the rectangle for labels of slender regions.
+    width: 214 - gap,
+    height: 144 - gap,
+  });
+  const a = layout.columns.reduce((s, c) => s + c.n, 0),
+    b = layout.rows.reduce((s, r) => s + r.n, 0);
+  return (
+    <>
+      {layout.rows.flatMap((row, j) =>
+        layout.columns.map((column, i) => (
+          <g
+            key={`${i}-${j}`}
+            data-region={`${column.n}x${row.n}`}
+            className="animation-move"
+            style={{
+              transform: `translate(${step === 2 ? i * gap : 0}px, ${step === 2 ? j * gap : 0}px)`,
+            }}
+          >
+            <rect
+              x={column.x}
+              y={row.y}
+              width={column.w}
+              height={row.h}
+              className={
+                step && (i + j) % 2 ? "animation-warm" : "animation-fill"
+              }
+              style={{ strokeWidth: step ? 1 : 0 }}
+            />
+            {(() => {
+              // A region too slender for its label is labelled beside it.
+              const narrow = column.w < 28,
+                thin = row.h < 16;
+              return (
+                <text
+                  x={narrow ? column.x + column.w + 4 : column.x + column.w / 2}
+                  y={thin ? row.y + row.h + 14 : row.y + row.h / 2 + 5}
+                  textAnchor={narrow ? "start" : "middle"}
+                  className="animation-fade"
+                  style={{
+                    opacity: step ? 1 : 0,
+                    fontSize: narrow || thin || row.h < 22 ? 12 : 15,
+                  }}
+                >
+                  {String(column.n * row.n).replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ",",
+                  )}
+                </text>
+              );
+            })()}
+          </g>
+        )),
+      )}
+      <rect
+        x={layout.x0}
+        y={layout.y0}
+        width={layout.width}
+        height={layout.height}
+        className="animation-outline animation-fade"
+        style={{ opacity: step === 2 ? 0 : 1 }}
+        strokeWidth="2"
+      />
+      <g className="animation-fade" style={{ opacity: step ? 0 : 1 }}>
+        <text
+          x={layout.x0 + layout.width / 2}
+          y={layout.y0 - 8}
+          textAnchor="middle"
+        >
+          {a}
+        </text>
+        <text
+          x={layout.x0 - 8}
+          y={layout.y0 + layout.height / 2 + 5}
+          textAnchor="end"
+        >
+          {b}
+        </text>
+      </g>
+      <g className="animation-fade" style={{ opacity: step ? 1 : 0 }}>
+        {layout.columns.map((column, i) => (
+          <text
+            key={`c${i}`}
+            x={column.x + column.w / 2 + (step === 2 ? i * gap : 0)}
+            y={layout.y0 - 8}
+            textAnchor="middle"
+          >
+            {column.n}
+          </text>
+        ))}
+        {layout.rows.map((row, j) => (
+          <text
+            key={`r${j}`}
+            x={layout.x0 - 8}
+            y={row.y + row.h / 2 + 5 + (step === 2 ? j * gap : 0)}
+            textAnchor="end"
+          >
+            {row.n}
+          </text>
+        ))}
+      </g>
+    </>
+  );
+}
+
 /** Both numbers' rods and cubes slide into one row of tens and a column of
  * ones; ten ones then stack beside the tens as one new ten. */
 function RegroupSumModel({
@@ -799,7 +1064,7 @@ function RegroupSumModel({
   step: number;
 }) {
   const [a, b] = model.figure.values;
-  const u = 7,
+  const u = 9,
     rodStep = 11,
     tensX = 64,
     onesX = tensX + 9 * rodStep + 18,

@@ -3,12 +3,6 @@ import assert from "node:assert/strict";
 import { templates } from "../src/math/engine";
 import { methods } from "../src/content/problem-methods";
 import {
-  fixedHintPending,
-  sharedHintPending,
-  thinMethodPending,
-  watchPending,
-} from "./fixtures/hint-pending";
-import {
   figureEncodesAnswer,
   fixedHint,
   revealsAnswer,
@@ -20,7 +14,6 @@ import {
 test("every hint is derived from its own problem's givens", () => {
   const offenders = templates
     .map((t) => t.id)
-    .filter((id) => !fixedHintPending.has(id))
     .filter((id) => fixedHint(id) || unnamedGivens(id));
   assert.deepEqual(
     offenders,
@@ -58,11 +51,9 @@ function sharedHints() {
 }
 
 test("no two problem types share a hint unless they ask the same question", () => {
-  const shared = sharedHints()
-    .filter(([, ids]) =>
-      [...ids.keys()].some((id) => !sharedHintPending.has(id)),
-    )
-    .map(([hint, ids]) => `${[...ids.keys()].join(", ")}: ${hint}`);
+  const shared = sharedHints().map(
+    ([hint, ids]) => `${[...ids.keys()].join(", ")}: ${hint}`,
+  );
   assert.deepEqual(
     shared,
     [],
@@ -73,49 +64,13 @@ test("no two problem types share a hint unless they ask the same question", () =
 test("every method names the common error and is a complete short path", () => {
   const ids = templates.map((t) => t.id);
   assert.deepEqual(
-    ids.filter((id) => !watchPending.has(id) && !methods[id]?.watch),
+    ids.filter((id) => !methods[id]?.watch),
     [],
     "Methods without a watch line",
   );
   assert.deepEqual(
-    ids.filter((id) => !thinMethodPending.has(id) && thin(id)),
+    ids.filter(thin),
     [],
     "Methods of one step or under 80 characters",
-  );
-});
-
-test("pending hint and method lists only shrink", () => {
-  const ids = new Set(templates.map((t) => t.id));
-  for (const list of [
-    fixedHintPending,
-    sharedHintPending,
-    thinMethodPending,
-    watchPending,
-  ])
-    assert.deepEqual(
-      [...list].filter((id) => !ids.has(id)),
-      [],
-      "Pending entries name removed templates",
-    );
-  assert.deepEqual(
-    [...fixedHintPending].filter((id) => !fixedHint(id) && !unnamedGivens(id)),
-    [],
-    "Remove these from fixedHintPending: their hints are instance hints",
-  );
-  const sharing = new Set(sharedHints().flatMap(([, ids]) => [...ids.keys()]));
-  assert.deepEqual(
-    [...sharedHintPending].filter((id) => !sharing.has(id)),
-    [],
-    "Remove these from sharedHintPending: their hints are their own",
-  );
-  assert.deepEqual(
-    [...watchPending].filter((id) => methods[id]?.watch),
-    [],
-    "Remove these from watchPending",
-  );
-  assert.deepEqual(
-    [...thinMethodPending].filter((id) => !thin(id)),
-    [],
-    "Remove these from thinMethodPending",
   );
 });

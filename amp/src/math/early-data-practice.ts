@@ -211,7 +211,7 @@ function sortMost(r: Random): Draft {
     prompt: `Sort the shapes by kind. Which kind has the ${word} shapes?`,
     figure: { kind: "sort-shapes", shapes },
     answer: winner,
-    hint: "Make a group for each kind and count each group. Then compare the three counts.",
+    hint: `Sort the shapes into ${kinds.map((_, i) => name(i)).join(", ")}, counting each group. Then find the ${most ? "largest" : "smallest"} count.`,
     explanation: [
       `Count each group: ${kinds.map((k, i) => plural(counts[i]!, ...shapeNames[k])).join(", ")}.`,
       `${extreme} is the ${most ? "greatest" : "least"} of ${counts.join(", ")}.`,

@@ -98,10 +98,19 @@ export function isoFit(
   l: number,
   w: number,
   h: number,
-  frame: { width: number; height: number; pad: number },
+  frame: {
+    width: number;
+    height: number;
+    pad: number;
+    /** Extra horizontal room for labels beside the solid (defaults to pad). */
+    padLeft?: number;
+    padRight?: number;
+  },
 ) {
+  const left = frame.padLeft ?? frame.pad,
+    right = frame.padRight ?? frame.pad;
   const unit = Math.min(
-    (frame.width - 2 * frame.pad) / ((l + w) * ISO.cos),
+    (frame.width - left - right) / ((l + w) * ISO.cos),
     (frame.height - 2 * frame.pad) / ((l + w) * ISO.sin + h),
   );
   const spanX = (l + w) * ISO.cos * unit,
@@ -109,7 +118,7 @@ export function isoFit(
   return {
     unit,
     origin: {
-      x: (frame.width - spanX) / 2 + w * ISO.cos * unit,
+      x: left + (frame.width - left - right - spanX) / 2 + w * ISO.cos * unit,
       y: (frame.height - spanY) / 2 + h * unit,
     },
   };

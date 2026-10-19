@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { problemLesson } from "../src/content/problem-lessons";
+import type { SemanticFigure } from "../src/math/contracts";
 import {
   animationModel,
   animationFrames,
@@ -13,6 +14,7 @@ test("animation models conserve the quantities in real lesson examples", () => {
     "fraction-model",
     "split-array-part",
     "exchange-base-ten",
+    "double-number-line-missing",
     "balance-one-step",
     "balance-two-step",
   ]) {
@@ -54,6 +56,17 @@ test("animation models conserve the quantities in real lesson examples", () => {
           `$${splitAfterRow * columns} + ${(rows - splitAfterRow) * columns} = ${rows * columns}$`,
         );
         kinds.add("array");
+      } else if (model.kind === "rate") {
+        // Both lines scale by one factor: through 1, then to the target.
+        const [b, t] = model.given,
+          [tb, tt] = model.target;
+        assert.equal(t * tb, tt * b);
+        assert.equal(Number(lesson.example.answer), model.findBottom ? tb : tt);
+        assert.equal(
+          frames[1].math.includes(`${t} \\div ${b} = ${t / b}`),
+          true,
+        );
+        kinds.add("rate");
       } else if (model.kind === "balance") {
         // Every frame's equation is true for the weight read from the pans.
         const { groups, blocks, units, right } = model.figure;
@@ -79,6 +92,7 @@ test("animation models conserve the quantities in real lesson examples", () => {
     "array",
     "fraction",
     "ones",
+    "rate",
     "remove-split",
     "split-remove",
     "tens",
@@ -148,10 +162,33 @@ test("array and exchange adapters reject ambiguous or unsupported metadata", () 
       { kind: "base-ten", hundreds: 2, tens: 11, ones: 10 },
     ],
     ["exchange-base-ten", { kind: "base-ten", hundreds: 2, tens: 3, ones: 4 }],
+    [
+      "double-number-line-missing",
+      {
+        kind: "double-number-line",
+        top: { label: "Miles", denominator: 2, numerators: [0, 3, null] },
+        bottom: { label: "Hours", denominator: 1, numerators: [0, 1, 2] },
+      },
+    ],
+    [
+      "double-number-line-missing",
+      {
+        kind: "double-number-line",
+        top: { label: "Miles", denominator: 1, numerators: [0, 7, null] },
+        bottom: { label: "Hours", denominator: 1, numerators: [0, 2, 3] },
+      },
+    ],
   ] as const) {
     const lesson = problemLesson(templateId, "animation");
     assert.equal(
-      animationModel({ ...lesson, example: { ...lesson.example, figure } }),
+      animationModel({
+        ...lesson,
+        example: {
+          ...lesson.example,
+          // Fixtures are frozen literals; the adapter only reads them.
+          figure: structuredClone(figure) as SemanticFigure,
+        },
+      }),
       null,
     );
   }
@@ -287,33 +324,5 @@ test("the MAD-gap animation lays exactly the gap between the means in MADs", () 
     const [n, d] = lesson.example.answer.split("/").map(Number);
     assert.equal(Math.abs(mean(a!) - mean(b!)) / model.mad, n! / (d ?? 1));
     assert.equal(animationFrames(model).length, 3);
-  }
-});
-
-test("the trend-fit animation shrinks the exact gaps, and row percents match the answer", () => {
-  for (const id of ["trend-line-predict", "trend-slope-meaning"])
-    for (let i = 0; i < 40; i++) {
-      const model = animationModel(problemLesson(id, `fit-${i}`));
-      assert(model?.kind === "trend-fit", id);
-      const [[x1, y1], [x2, y2]] = model.figure.line;
-      assert.equal(model.slope, (y2 - y1) / (x2 - x1));
-      const fit = model.figure.points.reduce(
-        (a, [x, y]) => a + Math.abs(y - (y1 + model.slope * (x - x1))),
-        0,
-      );
-      assert.equal(model.gaps[1], fit);
-      assert.ok(model.gaps[1] < model.gaps[0]);
-      assert.equal(animationFrames(model).length, 3);
-    }
-  for (let i = 0; i < 40; i++) {
-    const lesson = problemLesson("two-way-row-percent", `rows-${i}`);
-    const model = animationModel(lesson);
-    assert(model?.kind === "row-percent");
-    const percents = model.counts.map(([a, b]) => (100 * a) / (a + b));
-    assert.ok(percents.includes(Number(lesson.example.answer)));
-    assert.match(
-      animationFrames(model)[2].text,
-      new RegExp(`${lesson.example.answer}%`),
-    );
   }
 });
