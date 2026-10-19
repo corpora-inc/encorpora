@@ -5,7 +5,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { formatWhole } from "./comparison-practice";
-import { numberLine, scene } from "./scene/author";
+import { act, lessonStep, numberLine, scene, step } from "./scene/author";
 import type { Element, Scene } from "./scene/spec";
 
 /** A window of the hundred chart as a scene: numbered squares, one left
@@ -354,7 +354,27 @@ export function generateNumberSenseProblem(
           .mark(start, { color: "warm" })
           .hop(start, sign * tens, { landing: "none" })
           .then(sign * ones, { landing: "derived" })
-          .scene(),
+          .scene({
+            title: `Hops from ${start} on a number line`,
+            steps: [
+              step(
+                `Start at ${start}. Each small tick is one; each long tick is a ten.`,
+                act.highlight("line.mark.0"),
+              ),
+              step(
+                `Hop ${add ? "forward" : "back"} ${tens}: ${["one ten", "two tens", "three tens"][tens / 10 - 1]} at once, to ${middle}.`,
+                act.trace("line.hop.0"),
+              ),
+              step(
+                `Then ${add ? "forward" : "back"} ${ones} by ones.`,
+                act.trace("line.hop.1"),
+              ),
+              lessonStep(
+                `${start} ${add ? "+" : "−"} ${jump} = {line.hop.1.landing}`,
+                act.highlight("line.hop.1.landing"),
+              ),
+            ],
+          }),
       };
       prompt = `Start at ${start}. Hop ${add ? "forward" : "back"} ${tens}, then ${add ? "forward" : "back"} ${ones}. Where do you land?`;
       answer = String(end);
@@ -385,7 +405,19 @@ export function generateNumberSenseProblem(
           .mark(a, { color: "warm" })
           .mark(b, { color: "warm" })
           .hop(a, b - a, { label: "?", landing: "none" })
-          .scene(),
+          .scene({
+            title: `A hop from ${a} to ${b} on a number line`,
+            steps: [
+              step(
+                `The hop joins ${a} and ${b}. Its length is the distance between them.`,
+                act.highlight("line.hop.0"),
+              ),
+              step(
+                `Count up from the smaller end, ${Math.min(a, b)}: first to the next ten, then by tens, then by ones.`,
+                act.highlight(a < b ? "line.mark.0" : "line.mark.1"),
+              ),
+            ],
+          }),
       };
       prompt = `A hop goes from ${a} to ${b}. How long is the hop?`;
       answer = String(length);
