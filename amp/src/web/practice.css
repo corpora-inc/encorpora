@@ -938,3 +938,11 @@ nav button {
 .choice-model .geometry-figure[data-kind="quadrant-grid"] {
   height: min(32dvh, 240px);
 }
+
+/* Lettered shapes and puzzle pieces are compared side by side at one scale:
+ * give them the room a coordinate grid gets. */
+.problem-content .shape-figure {
+  min-height: 130px;
+  height: min(38dvh, 300px);
+  max-height: 300px;
+}

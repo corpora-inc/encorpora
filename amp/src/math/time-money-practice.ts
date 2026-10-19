@@ -129,8 +129,6 @@ function readClockSteps(h: number, m: number): string[] {
     `The time is ${clockTime(h, m)}${m === 0 ? `, ${h} o'clock` : m === 30 ? `, half past ${h}` : ""}.`,
   ];
 }
-const HOUR_HINT =
-  "The long hand shows minutes: count by fives from 12. The short hand shows the hour: use the last numeral it has passed.";
 
 type Choice = { label: string; correct?: true; feedback?: string };
 type Draft = {
@@ -148,10 +146,19 @@ const single = (h: number, m: number): SemanticFigure => ({
   clocks: [{ hour: h, minute: m }],
 });
 
+/** The first move for reading this clock: where the long hand points. */
+function readHint(h: number, m: number): string {
+  if (m === 0)
+    return "The long hand points at 12, so the time is exactly on the hour. The short hand points at the hour.";
+  if (m === 30)
+    return "The long hand points at 6, halfway around: half past the hour. The hour is the numeral the short hand has passed.";
+  return `The long hand points at ${numeral(m)}: count by fives from 12 up to it for the minutes. The hour is the last numeral the short hand has passed.`;
+}
+
 function readClock(h: number, m: number, options: number): Draft {
   return {
     prompt: "What time does the clock show?",
-    hint: HOUR_HINT,
+    hint: readHint(h, m),
     figure: single(h, m),
     explanation: readClockSteps(h, m),
     choices: [
@@ -239,7 +246,7 @@ function amPm(r: Random): Draft {
   const wrongs = misreadings(h, m).slice(0, 2);
   return {
     prompt: `${name} ${activity} at the time on the clock. Which time is it?`,
-    hint: "Read the clock first. Then decide: a.m. times run from midnight to noon, and p.m. times from noon to midnight.",
+    hint: `Read the clock first. Then think about when ${name} ${activity}: a.m. runs from midnight to noon, and p.m. from noon to midnight.`,
     figure: single(h, m),
     explanation: [
       ...readClockSteps(h, m).slice(0, 2),
@@ -302,6 +309,13 @@ function coinSteps(items: readonly MoneyItem[]) {
     `Count on: ${countOn(items).join(", ")}.`,
   ];
 }
+/** "Start with the 2 quarters: 25, 50." Counts the largest coins only. */
+function startCoins(items: readonly MoneyItem[]): string {
+  const { item, n } = groups(items)[0]!;
+  const steps = Array.from({ length: n }, (_, i) => (i + 1) * CENTS[item]);
+  const which = COIN_NAMES[item][n === 1 ? 0 : 1];
+  return `Start with the ${which}: ${steps.join(", ")}.`;
+}
 function randomCoins(r: Random, count: number, max: number): MoneyItem[] {
   for (;;) {
     const items = Array.from({ length: count }, () => pick(r, COINS));
@@ -360,8 +374,8 @@ function payExact(r: Random): Draft {
   const labels = ["A", "B", "C"] as const;
   const right = labels[sets.findIndex((s) => s.items === correct)];
   return {
-    prompt: `A ${thing} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
-    hint: "Count each set from its largest coin down. Quarters are 25¢, dimes 10¢, nickels 5¢, pennies 1¢.",
+    prompt: `${/^[aeiou]/.test(thing) ? "An" : "A"} ${thing} costs ${cents(price)}. Which set of coins is worth exactly ${cents(price)}?`,
+    hint: `Count each set from its largest coin down, and check whether it lands exactly on ${cents(price)}. Read each coin's value, not its size: a dime is 10¢ and a nickel 5¢.`,
     figure: {
       kind: "money-sets",
       sets: sets.map((s, i) => ({ items: s.items, label: labels[i] })),
@@ -405,7 +419,10 @@ function draft(templateId: string, r: Random): Draft {
           m === 0
             ? "The clock shows a time on the hour. What hour is it?"
             : "The clock shows half past an hour. Half past what hour?",
-        hint: "Find the last numeral the short hour hand has reached or passed.",
+        hint:
+          m === 0
+            ? "The long hand is on 12, so it is exactly on the hour. Read the numeral the short hand points at."
+            : "At half past, the short hand sits halfway between two numerals. The hour is the numeral it has already passed.",
         figure: single(h, m),
         explanation: [
           m === 0
@@ -424,7 +441,7 @@ function draft(templateId: string, r: Random): Draft {
         m = 5 * r(1, 11);
       return {
         prompt: "How many minutes past the hour does the clock show?",
-        hint: "Count by fives from 12 to the numeral the long hand points at.",
+        hint: `The long hand points at ${numeral(m)}. Count by fives from 12, one five for each numeral, up to ${numeral(m)}.`,
         figure: single(h, m),
         explanation: [
           `The long minute hand points at ${numeral(m)}.`,
@@ -439,7 +456,7 @@ function draft(templateId: string, r: Random): Draft {
       const items = randomCoins(r, r(3, 8), 99);
       return {
         prompt: "How many cents are these coins worth in all?",
-        hint: "Start with the coins worth the most and count on: quarters by 25, dimes by 10, nickels by 5, pennies by 1.",
+        hint: `${startCoins(items)} Then count on through the smaller coins.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
@@ -460,7 +477,11 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "How much money is shown? Enter the amount in dollars, such as 2.35.",
-        hint: "Count the bills in dollars, then the coins in cents. 100 cents make 1 dollar.",
+        hint: `The bills are whole dollars: ${groups(bills)
+          .map(({ item, n }) => named(n, item))
+          .join(
+            " and ",
+          )}. Then count the coins in cents, starting with the ${COIN_NAMES[groups(coins)[0]!.item][1]}. Write the dollars, a point, then the cents.`,
         figure: coinFigure(items),
         explanation: [
           `The bills: ${groups(bills)
@@ -481,7 +502,7 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "One dollar is 100 cents. How many more cents do these coins need to make one dollar?",
-        hint: "Count the coins, then count up from that amount to 100.",
+        hint: `${startCoins(items)} Count on through the other coins, then count up from that total to 100.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
@@ -500,7 +521,7 @@ function draft(templateId: string, r: Random): Draft {
         thing = pick(r, ITEMS);
       return {
         prompt: `${name} has these coins and buys a ${thing} for ${cents(price)}. How many cents does ${name} have left?`,
-        hint: "Count the coins first. Then take away the price.",
+        hint: `First find what ${name} has: ${startCoins(items).replace(/^S/, "s")} Then take away the ${cents(price)} for the ${thing}.`,
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),

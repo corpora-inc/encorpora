@@ -218,7 +218,8 @@ export const timeMoneyMethods: Record<string, ProblemMethod> = {
     terms: handTerms,
     method: [
       "Find the numeral the long hand points at.",
-      "Count by fives from 12 up to it.",
+      "Count by fives from 12 up to it: one five for each numeral.",
+      "That count is the minutes past the hour: pointing at 7 is 35 minutes.",
     ],
     watch: "Each numeral is 5 minutes, so multiply by 5, not 1.",
   },
@@ -269,7 +270,11 @@ export const timeMoneyMethods: Record<string, ProblemMethod> = {
   "make-a-dollar": {
     goal: "Find how many more cents make one dollar.",
     terms: coinTerms,
-    method: ["Count the coins.", "Count up from that amount to 100."],
+    method: [
+      "Count the coins from the largest value down: 25, 35, 40, 41.",
+      "Count up from that total to 100: 41 to 50 is 9, then 50 more to 100.",
+      "Add the jumps: 9 + 50 = 59.",
+    ],
     watch: "Find the amount still needed, not the amount already there.",
   },
   "pay-exact-coins": {
@@ -285,8 +290,9 @@ export const timeMoneyMethods: Record<string, ProblemMethod> = {
     goal: "Count coins, then subtract a price.",
     terms: coinTerms,
     method: [
-      "Count the coins on from the largest.",
-      "Subtract the price from the total.",
+      "Count the coins on from the largest: 25, 50, 60, 61 is 61¢.",
+      "Subtract the price from that total: 61 − 35 = 26.",
+      "Check: what is left plus the price makes the total.",
     ],
     watch: "Count all the coins before taking the price away.",
   },
