@@ -20,6 +20,10 @@ import {
   generateTimeMoneyProblem,
 } from "./time-money-practice";
 import {
+  attributeTemplates,
+  generateAttributeProblem,
+} from "./attribute-practice";
+import {
   ratioRateTemplates,
   generateRatioRateProblem,
 } from "./ratio-rate-practice";
@@ -54,6 +58,10 @@ import {
   volumeCoordinateTemplates,
   generateVolumeCoordinateProblem,
 } from "./volume-coordinate-practice";
+import {
+  multiplyDivideTemplates,
+  generateMultiplyDivideProblem,
+} from "./multiply-divide-practice";
 import {
   comparisonTemplates,
   generateComparisonProblem,
@@ -251,6 +259,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
   ...combinatoricsTemplates,
@@ -260,6 +269,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...attributeTemplates,
   ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
@@ -418,6 +428,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...distributionTemplates,
     ...inferenceTemplates,
     ...partWholeTemplates,
+    ...attributeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
     ...linePlotTemplates,
@@ -455,6 +466,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (attributeTemplates.some((t) => t.id === templateId))
+    return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
@@ -483,6 +496,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (multiplyDivideTemplates.some((t) => t.id === templateId))
+    return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))
     return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))

@@ -2,6 +2,7 @@ import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
 import { timeMoneyFacetMappings } from "./time-money-coverage";
+import { attributeFacetMappings } from "./attribute-coverage";
 import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { shapeFacetMappings } from "./shape-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
@@ -13,6 +14,7 @@ import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
+import { multiplyDivideFacetMappings } from "./multiply-divide-coverage";
 import { addSubtractFacetMappings } from "./add-subtract-coverage";
 import { factsFacetMappings } from "./facts-coverage";
 import { factArrayFacetMappings } from "./fact-arrays-coverage";
@@ -38,7 +40,9 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...partWholeFacetMappings,
   ...decimalFacetMappings,
   ...timeMoneyFacetMappings,
+  ...attributeFacetMappings,
   ...comparisonFacetMappings,
+  ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
   ...factsFacetMappings,
   ...factArrayFacetMappings,

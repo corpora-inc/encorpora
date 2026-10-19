@@ -1774,6 +1774,33 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Attribute tasks compare and measure from drawn strips, balances, jars and
+// scales; hands-on measuring and estimation remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "compare-attributes",
+    "length-weight-capacity-comparison",
+    "Compare two lengths aligned or not, read a balance for heavier, lighter or the same, and compare capacity by pouring.",
+  ],
+  [
+    "measure-equal-units",
+    "unit-iteration",
+    "Measure a length by counting equal units end to end, recognize gaps, overlaps and shifted starts, and order three lengths by transitivity.",
+  ],
+  [
+    "mass-volume",
+    "grams-liters-reading-and-stories",
+    "Find a mass in grams from balancing standard masses, read liters on scales with ticks of 1, 2 or 5, and solve one-step stories in grams, kilograms and liters.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Clock and money tasks read given analog clocks and generic coins and bills;
 // digital clocks and learner-set hands remain planned.
 for (const [skillId, suffix, description] of [
@@ -2076,6 +2103,47 @@ for (const [skillId, suffix, description] of [
     "mental-tens-hundreds",
     "ten-hundred-more-less",
     "Add or subtract 10 or 100 to or from a number from 100 to 900, including regrouping across a hundred.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Multiplication and division tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "multiply-tens",
+    "one-digit-times-tens",
+    "Multiply a one-digit number by a multiple of ten from 10 to 90.",
+  ],
+  [
+    "whole-multiplication",
+    "one-digit-factor",
+    "Multiply a two- to four-digit number by a one-digit number.",
+  ],
+  [
+    "whole-multiplication",
+    "two-digit-area-model",
+    "Find a two-digit by two-digit product from an area model split by place value.",
+  ],
+  [
+    "multidigit-products",
+    "two-digit-multiplier",
+    "Multiply a two- or three-digit number by a two-digit number.",
+  ],
+  [
+    "whole-division",
+    "one-digit-divisor",
+    "Find whole-number quotients and remainders for dividends up to 9,999 and one-digit divisors.",
+  ],
+  [
+    "multidigit-quotients",
+    "two-digit-divisor",
+    "Find exact whole-number quotients for dividends up to 9,999 and two-digit divisors.",
   ],
 ])
   skills
