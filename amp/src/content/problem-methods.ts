@@ -1,3 +1,4 @@
+import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
@@ -42,6 +43,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...addSubtractMethods,
   ...factsMethods,
   ...combinatoricsMethods,
+  ...equationMethods,
   ...rationalMethods,
   ...circleMeasurementMethods,
   ...percentChangeMethods,

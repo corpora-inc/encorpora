@@ -1,3 +1,4 @@
+import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
 import { timeMoneyFacetMappings } from "./time-money-coverage";
 import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
@@ -34,6 +35,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...addSubtractFacetMappings,
   ...factsFacetMappings,
   ...combinatoricsFacetMappings,
+  ...equationFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...integerExponentFacetMappings,

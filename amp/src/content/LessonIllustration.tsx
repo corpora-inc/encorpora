@@ -1,3 +1,4 @@
+import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { DecimalIllustration } from "./DecimalIllustration";
@@ -34,6 +35,16 @@ export function LessonIllustration({
 }) {
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "balance-remove" ||
+    kind === "balance-split" ||
+    kind === "balance-bags" ||
+    kind === "undo-chain" ||
+    kind === "equation-tape" ||
+    kind === "two-step-tape" ||
+    kind === "inequality-many-solutions"
+  )
+    return <EquationIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

@@ -8,6 +8,7 @@ import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
 import { FactsFigure } from "./FactsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
 import type { SemanticFigure } from "../math/contracts";
@@ -59,6 +60,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "clock":
     case "number-line":
       return <GraphicalFigure figure={figure} />;
+    case "balance-scale":
+    case "inequality-lines":
+      return <EquationFigure figure={figure} />;
     case "collection":
       return (
         <svg

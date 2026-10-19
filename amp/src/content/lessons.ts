@@ -1,3 +1,4 @@
+import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
@@ -45,6 +46,13 @@ export interface Lesson {
       | "clock-five-minutes"
       | "coin-values"
       | "coin-count-on"
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
       | "decimal-tenths-hundredths"
       | "decimal-compare-chart"
       | "decimal-rounding-line"
@@ -581,6 +589,7 @@ export const lessons: readonly Lesson[] = [
   ...addSubtractLessons,
   ...factsLessons,
   ...combinatoricsLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
