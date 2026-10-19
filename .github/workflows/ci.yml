@@ -1378,7 +1378,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
       - run: npm test
-      # Color literals outside src/web/ui/tokens.css (report-only until migrated).
+      # No color literal outside src/web/ui/tokens.css.
       - run: npm run lint:colors
       - run: npm run build
       - run: npm run test:db
@@ -1418,7 +1418,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:ui
       - run: npm run test:family-ui
-      # Every route and state, light and dark, 390 and 1280 (report-only until migrated).
+      # Zero contrast violations: every route and state, light and dark, 390 and 1280.
       - run: npm run test:contrast
       - name: Preserve the contrast sweep report
         if: always()

@@ -66,6 +66,35 @@ function check(theme: Theme) {
   need("primary", "surface", UI);
   need("selected", "surface-sunken", UI);
   need("on-disabled", "disabled", UI);
+  // Status accents also label things ("Correct", error text) on neutral surfaces.
+  for (const tone of ["success", "danger", "warning", "info"])
+    for (const bg of ["surface", "surface-raised", tone])
+      need(`${tone}-accent`, bg, TEXT);
+  // Figures: labels read as text, marks and lines as UI, on paper and fills.
+  need("figure-ink", "figure-paper", TEXT);
+  for (const fill of ["accent-fill", "warm-fill", "gold-fill", "empty"])
+    need("figure-ink", `figure-${fill}`, TEXT);
+  for (const mark of ["accent", "warm", "gold", "axis"])
+    need(`figure-${mark}`, "figure-paper", UI);
+  need("figure-accent", "figure-accent-fill", UI);
+  need("figure-warm", "figure-warm-fill", UI);
+  // Strand colors are marks (dots, bars) on every neutral surface.
+  for (const strand of [
+    "number",
+    "operations",
+    "fractions",
+    "decimals",
+    "ratio",
+    "algebra",
+    "functions",
+    "geometry",
+    "measurement",
+    "data",
+    "probability",
+    "modeling",
+  ])
+    for (const bg of ["surface", "surface-raised", "surface-sunken"])
+      need(`strand-${strand}`, bg, UI);
   return failures;
 }
 
@@ -83,10 +112,10 @@ test("dark values are defined once: system and explicit dark blocks agree", () =
   );
 });
 
-test("every legacy alias resolves onto a role in both themes", () => {
+test("every stylesheet uses role names; no legacy aliases remain", () => {
   for (const theme of ["light", "dark"] as const) {
-    const { color } = resolveTheme(theme);
-    for (const alias of ["--bg", "--surface", "--ink", "--ink-2", "--ink-3"])
-      assert.equal(color(alias).length, 4, `${theme} ${alias}`);
+    const { names } = resolveTheme(theme);
+    for (const legacy of ["--bg", "--surface", "--ink", "--ink-2", "--line"])
+      assert.ok(!names.includes(legacy), `${theme} still defines ${legacy}`);
   }
 });

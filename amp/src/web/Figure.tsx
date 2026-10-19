@@ -40,7 +40,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
               cx={40 + (i % 5) * 68}
               cy={50 + Math.floor(i / 5) * 75}
               r={22}
-              fill={i % 2 ? "#e7a146" : "#20776d"}
+              fill={
+                i % 2
+                  ? "var(--color-figure-gold)"
+                  : "var(--color-figure-accent)"
+              }
             />
           ))}
         </svg>
@@ -60,8 +64,12 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
               y="30"
               width={376 / figure.parts}
               height="65"
-              fill={i < figure.selected ? "#20776d" : "#f6f2e8"}
-              stroke="#123b38"
+              fill={
+                i < figure.selected
+                  ? "var(--color-figure-accent)"
+                  : "var(--color-figure-empty)"
+              }
+              stroke="var(--color-figure-ink)"
               strokeWidth="2"
             />
           ))}
@@ -83,8 +91,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
             y="25"
             width={w}
             height={h}
-            fill="#d4e9e1"
-            stroke="#20776d"
+            fill="var(--color-figure-accent-fill)"
+            stroke="var(--color-figure-accent)"
             strokeWidth="3"
           />
           <text x={60 + w / 2} y={h + 55} textAnchor="middle">
@@ -109,11 +117,15 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
         >
           <path
             d={`M60 25 L60 ${25 + h} L${60 + w} ${25 + h} Z`}
-            fill="#d4e9e1"
-            stroke="#20776d"
+            fill="var(--color-figure-accent-fill)"
+            stroke="var(--color-figure-accent)"
             strokeWidth="3"
           />
-          <path d={`M60 ${13 + h} h12 v12`} fill="none" stroke="#20776d" />
+          <path
+            d={`M60 ${13 + h} h12 v12`}
+            fill="none"
+            stroke="var(--color-figure-accent)"
+          />
           <text x={60 + w / 2} y={55 + h} textAnchor="middle">
             {figure.a} cm
           </text>

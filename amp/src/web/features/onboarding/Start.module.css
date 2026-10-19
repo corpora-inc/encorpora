@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--space-4);
   text-align: left;
-  color: var(--ink);
+  color: var(--color-on-surface);
 }
 .step h1 {
   margin: 0;
@@ -17,7 +17,7 @@
   margin: 0;
   font-size: var(--text-body);
   line-height: 1.55;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .step form {
   display: grid;
@@ -32,8 +32,8 @@
   justify-content: space-between;
   gap: var(--space-3);
   padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-2);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted-text);
   font-size: var(--text-label);
   font-weight: 600;
   white-space: nowrap;
@@ -51,10 +51,10 @@
 .step .fine {
   font-size: var(--text-small);
   line-height: 1.45;
-  color: var(--ink-2);
+  color: var(--color-muted-text);
 }
 .address {
-  color: var(--ink);
+  color: var(--color-on-surface);
   font-weight: 650;
   overflow-wrap: anywhere;
 }
@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  color: var(--ink-3);
+  color: var(--color-subtle-text);
   font-size: var(--text-small);
 }
 .divider::before,
@@ -73,7 +73,7 @@
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--line);
+  background: var(--color-border);
 }
 /* Skeleton blocks reserve the space of the content they precede. */
 .skeleton {
@@ -83,7 +83,7 @@
 .skeleton > span {
   display: block;
   border-radius: var(--radius-control);
-  background: var(--surface-2);
+  background: var(--color-surface-sunken);
 }
 /* Phase layers share one grid cell: the card is always the size of its
    largest phase, so a phase change never moves or resizes anything. */
@@ -105,8 +105,8 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
 }
 .icon svg {
   width: 24px;
@@ -118,18 +118,18 @@
   stroke-linejoin: round;
 }
 .icon[data-tone="good"] {
-  background: var(--good-soft);
-  color: var(--good);
+  background: var(--color-success);
+  color: var(--color-success-accent);
 }
 .icon[data-tone="attention"] {
-  background: var(--bad-soft);
-  color: var(--bad);
+  background: var(--color-danger);
+  color: var(--color-danger-accent);
 }
 .spinner {
   width: 22px;
   height: 22px;
-  border: 3px solid var(--line-2);
-  border-top-color: var(--primary);
+  border: 3px solid var(--color-border-strong);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 900ms linear infinite;
 }

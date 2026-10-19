@@ -13,9 +13,9 @@ import type {
 } from "../../books/fraction-field-guide/schema.js";
 const value = ([n, d]: Rational) => n / d;
 const label = ([n, d]: Rational) => (d === 1 ? String(n) : `${n}/${d}`);
-const ink = "#18594f",
-  green = "#8abbb0",
-  gold = "#e2b662";
+const ink = "var(--color-figure-ink)",
+  green = "var(--color-figure-accent)",
+  gold = "var(--color-figure-gold)";
 /** Screen diagrams keep captions and unit labels in HTML so they do not shrink
  * with an SVG viewBox. Mathematical coordinates remain derived from quantities. */
 export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
@@ -35,10 +35,10 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
   const defs = (id = pattern) => (
     <defs>
       <pattern id={id} width="7" height="7" patternUnits="userSpaceOnUse">
-        <rect width="7" height="7" fill="#e3f0e9" />
+        <rect width="7" height="7" fill="var(--color-figure-accent-fill)" />
         <path
           d="M-2,2 L2,-2 M0,7 L7,0 M5,9 L9,5"
-          stroke="#398777"
+          stroke="var(--color-figure-accent)"
           strokeWidth="1"
         />
       </pattern>
@@ -64,7 +64,11 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
                   y="4"
                   width={300 / max / row.parts}
                   height="32"
-                  fill={j < row.shaded ? `url(#${pattern}-${index})` : "#fff"}
+                  fill={
+                    j < row.shaded
+                      ? `url(#${pattern}-${index})`
+                      : "var(--color-figure-paper)"
+                  }
                   stroke={ink}
                   strokeWidth=".8"
                 />
@@ -137,7 +141,12 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
           {positioned.map((mark, i) => (
             <g key={i}>
               {mark.point && (
-                <circle cx={x(mark.at)} cy="54" r="4" fill="#ac671a" />
+                <circle
+                  cx={x(mark.at)}
+                  cy="54"
+                  r="4"
+                  fill="var(--color-figure-gold)"
+                />
               )}
               <text x={x(mark.at)} y={79 + mark.row * 20} textAnchor="middle">
                 {mark.text}
@@ -182,7 +191,13 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
                   y={10 + (r * 160) / d.rows}
                   width={280 / d.columns}
                   height={160 / d.rows}
-                  fill={a ? `url(#${pattern})` : b ? "#fae2b9" : "white"}
+                  fill={
+                    a
+                      ? `url(#${pattern})`
+                      : b
+                        ? "var(--color-figure-gold-fill)"
+                        : "var(--color-figure-paper)"
+                  }
                   stroke={ink}
                 />
                 {a && b && (
@@ -190,7 +205,7 @@ export function BookScreenFigure({ diagram: d }: { diagram: Diagram }) {
                     cx={20 + ((c + 0.5) * 280) / d.columns}
                     cy={10 + ((r + 0.5) * 160) / d.rows}
                     r="5"
-                    fill="#a86818"
+                    fill="var(--color-figure-gold)"
                   />
                 )}
               </g>

@@ -2,7 +2,7 @@
   width: min(100%, 900px);
   margin: 0 auto;
   padding: 24px 20px 48px;
-  color: var(--ink, #183e3a);
+  color: var(--color-on-surface);
 }
 .family-heading {
   display: flex;
@@ -27,7 +27,7 @@
 }
 .family-section {
   padding: 28px 0;
-  border-bottom: 1px solid var(--line, #d6dfd2);
+  border-bottom: 1px solid var(--color-border);
 }
 .family-section h2 {
   font-size: 24px;
@@ -43,8 +43,8 @@
   gap: 18px;
 }
 .family-learner {
-  background: var(--surface, #fffefa);
-  border: 1px solid var(--line, #d6dfd2);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 22px;
   min-width: 0;
@@ -68,7 +68,7 @@
 }
 .family-center button:focus-visible,
 .family-center input:focus-visible {
-  outline: 3px solid #367c6b;
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
 .family-center button:disabled {
@@ -85,20 +85,20 @@
   margin: 12px 0 6px;
 }
 .family-danger {
-  background: #923f35;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 .family-danger:hover {
-  background: #733027;
+  background: var(--color-primary);
 }
 .family-danger-link {
-  color: #7d382f;
-  background: #f9ebe6;
+  color: var(--color-on-danger);
+  background: var(--color-danger);
 }
 .family-secondary,
 .family-access {
   font-size: 13px;
-  color: var(--ink-2, #4c625b);
+  color: var(--color-muted-text);
   line-height: 1.5;
 }
 .family-access {
@@ -106,7 +106,7 @@
 }
 .family-billing {
   margin-top: 20px;
-  border-top: 1px solid var(--line, #d6dfd2);
+  border-top: 1px solid var(--color-border);
   padding-top: 4px;
 }
 .family-billing p {
@@ -119,13 +119,13 @@
   line-height: 1.5;
 }
 .family-notice {
-  background: #e8f1e3;
-  border: 1px solid #bdcfb5;
+  background: var(--color-success);
+  border: 1px solid var(--color-border);
 }
 .family-error {
-  background: #fff0e7;
-  border: 1px solid #d6ae95;
-  color: #73372b;
+  background: var(--color-danger);
+  border: 1px solid var(--color-border);
+  color: var(--color-on-danger);
 }
 .family-consent-status {
   font-weight: 650;
@@ -137,15 +137,15 @@
   width: min(560px, calc(100vw - 32px));
   max-height: calc(100dvh - 40px);
   overflow: auto;
-  border: 1px solid var(--line, #d6dfd2);
+  border: 1px solid var(--color-border);
   border-radius: 18px;
   padding: 28px;
-  color: var(--ink, #183e3a);
-  background: var(--surface, #fffefa);
-  box-shadow: 0 20px 80px #173e3a33;
+  color: var(--color-on-surface);
+  background: var(--color-surface-raised);
+  box-shadow: 0 20px 80px var(--color-shadow);
 }
 .family-dialog::backdrop {
-  background: #173e3a66;
+  background: var(--color-scrim);
 }
 .family-dialog h2 {
   font-size: 27px;
@@ -216,21 +216,21 @@
   border: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: var(--surface-2, #e9eee4);
+  background: var(--color-surface-sunken);
   padding: 4px;
   border-radius: 14px;
   gap: 4px;
 }
 .family-tabs button {
   background: transparent;
-  color: #36564d;
+  color: var(--color-primary);
   border-radius: 10px;
   padding: 10px 4px;
 }
 .family-tabs button[aria-current] {
-  background: var(--surface, #fffefa);
-  color: #14574a;
-  box-shadow: 0 2px 8px #173e3a12;
+  background: var(--color-surface-raised);
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 .family-body {
   min-height: 0;
@@ -259,9 +259,9 @@
   grid-template-columns: 1fr auto;
   text-align: left;
   gap: 4px 12px;
-  background: var(--surface, #fffefa);
-  color: var(--ink, #183e3a);
-  border: 1px solid var(--line, #d6dfd2);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
   padding: 12px 16px;
   margin-bottom: 8px;
@@ -272,7 +272,7 @@
 .privacy-choices span {
   font-size: 14px;
   line-height: 1.4;
-  color: var(--ink-2, #4c625b);
+  color: var(--color-muted-text);
 }
 .privacy-choices b {
   grid-column: 2;
@@ -361,7 +361,7 @@
 
 .family-purchase-options {
   padding: 12px 0 18px;
-  border-bottom: 1px solid var(--line, #d6dfd2);
+  border-bottom: 1px solid var(--color-border);
 }
 .family-purchase-options h2 {
   margin: 0 0 6px;
@@ -465,10 +465,10 @@
   min-width: 0;
   min-height: 46px;
   padding: 8px 10px;
-  border: 1px solid #9eb4ab;
+  border: 1px solid var(--color-border-strong);
   border-radius: 10px;
-  color: var(--ink, #183e3a);
-  background: var(--surface, #fffefa);
+  color: var(--color-on-surface);
+  background: var(--color-surface-raised);
   font: inherit;
   font-size: 17px;
   appearance: none;

@@ -35,7 +35,9 @@ export function ChoiceFigure({ figure }: { figure: SemanticFigure }) {
           x2={x(n)}
           y1={top}
           y2={bottom}
-          stroke={n === 0 ? "#174a43" : "#dce4dc"}
+          stroke={
+            n === 0 ? "var(--color-figure-ink)" : "var(--color-figure-grid)"
+          }
           strokeWidth={n === 0 ? 1.5 : 0.75}
         />
       ))}
@@ -46,7 +48,9 @@ export function ChoiceFigure({ figure }: { figure: SemanticFigure }) {
           x2={right}
           y1={y(n)}
           y2={y(n)}
-          stroke={n === 0 ? "#174a43" : "#dce4dc"}
+          stroke={
+            n === 0 ? "var(--color-figure-ink)" : "var(--color-figure-grid)"
+          }
           strokeWidth={n === 0 ? 1.5 : 0.75}
         />
       ))}
@@ -83,14 +87,20 @@ export function ChoiceFigure({ figure }: { figure: SemanticFigure }) {
             y1={y(line.m * a + line.b)}
             x2={x(b)}
             y2={y(line.m * b + line.b)}
-            stroke="#20776d"
+            stroke="var(--color-figure-accent)"
             strokeWidth={2.5}
           />
         ) : null;
       })}
       {figure.points.map((p) => (
         <g key={p.label}>
-          <circle cx={x(p.x)} cy={y(p.y)} r={4} fill="#9c4420" stroke="white" />
+          <circle
+            cx={x(p.x)}
+            cy={y(p.y)}
+            r={4}
+            fill="var(--color-figure-warm)"
+            stroke="var(--color-figure-paper)"
+          />
           <text
             x={x(p.x) + (x(p.x) > 195 ? -9 : 9)}
             y={y(p.y) + 19}

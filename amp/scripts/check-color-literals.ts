@@ -1,7 +1,7 @@
 /**
  * Color literals are banned outside `src/web/ui/tokens.css`: every color is a
  * role token (see that file). Lists each hex, rgb()/hsl() or named color in a
- * stylesheet or component. Report-only by default; `--strict` fails on any.
+ * stylesheet or component. `--strict` (the npm script) fails on any.
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
