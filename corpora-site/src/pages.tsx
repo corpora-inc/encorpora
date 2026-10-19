@@ -389,7 +389,7 @@ function Esa({ config }: { config: SiteConfig }) {
     <>
       <Intro
         label="Education funds"
-        heading="Choose the route your program allows."
+        heading="Explore education funding by state."
       >
         <p className="lead">
           An education savings account (ESA) or scholarship may pay through a
@@ -401,24 +401,6 @@ function Esa({ config }: { config: SiteConfig }) {
           program below to check the route, documents and AMP availability.
         </p>
       </Intro>
-      <section className="section two-column">
-        <div>
-          <h2>Marketplace purchase</h2>
-          <p>
-            Your program pays the provider through an approved route. Check that
-            the exact AMP product and term are available in your program before
-            placing an order.
-          </p>
-        </div>
-        <div>
-          <h2>Pay, then claim reimbursement</h2>
-          <p>
-            You pay by card and submit the receipt and required documents to the
-            program. Confirm eligibility before paying. A receipt does not
-            guarantee reimbursement.
-          </p>
-        </div>
-      </section>
       <section className="section">
         <h2>Guidance by state</h2>
         {states.length ? (
@@ -433,13 +415,20 @@ function Esa({ config }: { config: SiteConfig }) {
                 </a>
               ))}
             </nav>
+            <p className="directory-count">
+              <strong>{config.funding.filter((r) => r.page).length} parent guides</strong>
+              {" · "}{states.length} {states.length === 1 ? "state" : "states"}
+              <span>Guides explain purchase routes; inclusion does not mean vendor approval.</span>
+            </p>
             {states.map((state) => (
               <section className="state" id={`state-${state}`} key={state}>
                 <h3>{state}</h3>
+                <div className="program-grid">
                 {config.funding
                   .filter((r) => r.state === state)
                   .map((route, i) => (
-                    <article key={i}>
+                    <article className="program-card" key={i}>
+                      <p className="eyebrow">{fundingLabels[route.kind]}</p>
                       <h4>
                         {route.page ? (
                           <a href={fundingPath(route.page.slug)}>
@@ -448,10 +437,9 @@ function Esa({ config }: { config: SiteConfig }) {
                         ) : (
                           route.program
                         )}
-                        {" · "}
-                        {fundingLabels[route.kind]}
                       </h4>
-                      <p>{route.instructions}</p>
+                      <p>{route.page?.summary ?? route.instructions}</p>
+                      {route.page && <div className="program-card-status"><strong>AMP purchase status</strong><p>{route.page.ampStatus}</p></div>}
                       {route.page && (
                         <p>
                           <a href={fundingPath(route.page.slug)}>
@@ -468,6 +456,7 @@ function Esa({ config }: { config: SiteConfig }) {
                       </p>
                     </article>
                   ))}
+                </div>
               </section>
             ))}
           </>
