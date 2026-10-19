@@ -5,6 +5,10 @@ import {
 } from "./measurement-models.js";
 import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
 import {
+  timeMoneyFigureSchemas,
+  type TimeMoneyFigure,
+} from "./time-money-models.js";
+import {
   partWholeFigureSchemas,
   type PartWholeFigure,
 } from "./part-whole-models.js";
@@ -21,6 +25,7 @@ import {
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
+  | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
   | GeometryFigure
@@ -151,6 +156,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
+    ...timeMoneyFigureSchemas,
     ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,

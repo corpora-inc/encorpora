@@ -3,6 +3,7 @@ import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { DecimalIllustration } from "./DecimalIllustration";
+import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
@@ -75,6 +76,13 @@ export function LessonIllustration({
     kind === "large-place-value-chart"
   )
     return <ComparisonIllustration kind={kind} />;
+  if (
+    kind === "clock-hour-half" ||
+    kind === "clock-five-minutes" ||
+    kind === "coin-values" ||
+    kind === "coin-count-on"
+  )
+    return <TimeMoneyIllustration kind={kind} />;
   if (
     kind === "decimal-tenths-hundredths" ||
     kind === "decimal-compare-chart" ||
