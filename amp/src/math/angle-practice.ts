@@ -5,6 +5,8 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { centroid, place, type Pt } from "./shape-figures.js";
+import { angle, protractor, scene } from "./scene/author.js";
+import type { Element } from "./scene/spec.js";
 import { pick, random, shuffle, type Rand } from "./shape-practice.js";
 
 const definitions: [string, string, string, string, boolean][] = [
@@ -80,7 +82,7 @@ export const angleTemplates: readonly TemplateMetadata[] = definitions.map(
     description,
     version: 1,
     gradeBand: "3–5",
-    requiredFigureCapability: "angle-figures-v1",
+    requiredFigureCapability: "scenes-v1",
     ...(choice
       ? { requiredResponseCapability: "single-choice-v1" as const }
       : {}),
@@ -360,6 +362,109 @@ function mirrors(points: Pt[], c: Pt, t: number) {
   });
 }
 
+/** For each dashed line, the end its letter goes past: the upper end (the
+ * right end of a level line), so parallel lines' letters sit side by side,
+ * unless another letter is already close there. Returns the end and the
+ * outward unit direction. */
+function labelEnds(lines: { a: Pt; b: Pt }[]) {
+  const chosen: Pt[] = [];
+  return lines.map(({ a, b }) => {
+    const upper =
+      b[1] - a[1] > 1e-6 || (Math.abs(b[1] - a[1]) <= 1e-6 && b[0] > a[0]);
+    let [end, from] = upper ? [b, a] : [a, b];
+    const crowded = (p: Pt) =>
+      chosen.some((q) => Math.hypot(p[0] - q[0], p[1] - q[1]) < 0.35);
+    if (crowded(end)) [end, from] = [from, end];
+    chosen.push(end);
+    const len = Math.hypot(end[0] - from[0], end[1] - from[1]);
+    return [
+      end,
+      [(end[0] - from[0]) / len, (end[1] - from[1]) / len] as Pt,
+    ] as const;
+  });
+}
+
+/** A problem figure built with the scene framework. */
+const sceneFigure = (...elements: Element[]): SemanticFigure => ({
+  kind: "scene",
+  scene: scene(...elements).build({ width: 340, maxHeight: 280 }),
+});
+const toward = (d: number, r: number): Pt => [
+  r * Math.cos(d * deg),
+  r * Math.sin(d * deg),
+];
+/** A dot grid with two lines through lattice dots, extended to its edges. */
+function linePair(columns: number, rows: number, pair: [[Pt, Pt], [Pt, Pt]]) {
+  const elements: Element[] = [];
+  for (let x = 0; x < columns; x++)
+    for (let y = 0; y < rows; y++)
+      elements.push({
+        type: "point",
+        id: `d${x}-${y}`,
+        at: [x, y],
+        r: 2.5,
+        color: "grid",
+      });
+  const lo = -0.45,
+    hx = columns - 1 + 0.45,
+    hy = rows - 1 + 0.45;
+  pair.forEach(([p, q], i) => {
+    const dx = q[0] - p[0],
+      dy = q[1] - p[1];
+    const ts = [
+      ...(dx ? [(lo - p[0]) / dx, (hx - p[0]) / dx] : []),
+      ...(dy ? [(lo - p[1]) / dy, (hy - p[1]) / dy] : []),
+    ]
+      .map((t) => [p[0] + t * dx, p[1] + t * dy] as Pt)
+      .filter(
+        ([x, y]) =>
+          x >= lo - 1e-9 && x <= hx + 1e-9 && y >= lo - 1e-9 && y <= hy + 1e-9,
+      )
+      .sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const color = i === 0 ? ("ink" as const) : ("warm" as const);
+    elements.push({
+      type: "segment",
+      id: `line${i}`,
+      from: ts[0]!,
+      to: ts[ts.length - 1]!,
+      stroke: color,
+      width: 3,
+      arrow: "both",
+    });
+    elements.push({ type: "point", id: `on${i}a`, at: p, r: 4.5, color });
+    elements.push({ type: "point", id: `on${i}b`, at: q, r: 4.5, color });
+  });
+  return elements;
+}
+/** A small square in each right angle of a polygon. */
+function rightMarks(points: Pt[]): Element[] {
+  const size = 0.28;
+  return points.flatMap((v, i) => {
+    const u = points[(i + points.length - 1) % points.length]!,
+      w = points[(i + 1) % points.length]!;
+    const a: Pt = [u[0] - v[0], u[1] - v[1]],
+      b: Pt = [w[0] - v[0], w[1] - v[1]];
+    const la = Math.hypot(...a),
+      lb = Math.hypot(...b);
+    if (Math.abs(a[0] * b[0] + a[1] * b[1]) > 1e-3 * la * lb) return [];
+    const ua: Pt = [(a[0] / la) * size, (a[1] / la) * size],
+      ub: Pt = [(b[0] / lb) * size, (b[1] / lb) * size];
+    return [
+      {
+        type: "polyline" as const,
+        id: `right${i}`,
+        points: [
+          [v[0] + ua[0], v[1] + ua[1]],
+          [v[0] + ua[0] + ub[0], v[1] + ua[1] + ub[1]],
+          [v[0] + ub[0], v[1] + ub[1]],
+        ] as Pt[],
+        stroke: "ink" as const,
+        width: 2,
+      },
+    ];
+  });
+}
+
 export function generateAngleProblem(
   templateId: string,
   seed: string,
@@ -382,11 +487,9 @@ export function generateAngleProblem(
       const m = 5 * r(2, 34);
       const right = r(0, 1) === 1;
       const [a, b, c] = pick(r, letters);
-      figure = {
-        kind: "protractor",
-        rays: right ? [0, m] : [180, 180 - m],
-        labels: [a, b, c],
-      };
+      figure = sceneFigure(
+        protractor(right ? [0, m] : [180, 180 - m], [a, b, c]).element(),
+      );
       const scale = right ? "inner" : "outer";
       prompt = `What is the measure of angle ${a}${b}${c}, in degrees?`;
       label = "Degrees";
@@ -409,7 +512,9 @@ export function generateAngleProblem(
       if (special === 0 && unknown !== "whole") {
         // A right angle or a straight angle split in two.
         const whole = pick(r, [90, 180]);
-        p = 5 * r(2, whole / 5 - 2);
+        // Unequal parts, so the known part never shows the answer.
+        do p = 5 * r(2, whole / 5 - 2);
+        while (2 * p === whole);
         q = whole - p;
       } else
         do {
@@ -419,16 +524,18 @@ export function generateAngleProblem(
       const W = p + q;
       const [A, B, C, D] = pick(r, letters);
       const d0 = 5 * r(0, 71);
-      figure = {
-        kind: "angle-parts",
-        rays: [d0, norm(d0 + p), norm(d0 + W)],
-        labels: [A, B, C, D],
-        parts: [
-          unknown === "first" ? null : p,
-          unknown === "second" ? null : q,
-        ],
-        whole: unknown === "whole" ? null : W,
-      };
+      // The whole angle's measure is in the prompt; the drawing marks the
+      // two parts, and the unknown part reads "?".
+      figure = sceneFigure(
+        angle({
+          rays: [d0, d0 + p, d0 + W],
+          labels: { vertex: B, ends: [A, C, D] },
+          marks: [
+            { from: 0, to: 1, measure: true, derived: unknown === "first" },
+            { from: 1, to: 2, measure: true, derived: unknown === "second" },
+          ],
+        }).element(),
+      );
       label = "Degrees";
       if (unknown === "whole") {
         prompt = `Angle ${A}${B}${C} measures ${p}° and angle ${C}${B}${D} measures ${q}°. They do not overlap. What is the measure of angle ${A}${B}${D}?`;
@@ -466,12 +573,46 @@ export function generateAngleProblem(
       const k = r(1, n - 1);
       const each = 360 / n,
         total = k * each;
-      figure = {
-        kind: "turn-circle",
-        parts: n,
-        shaded: k,
-        start: 5 * r(0, 71),
-      };
+      const start = 5 * r(0, 71);
+      figure = sceneFigure(
+        {
+          type: "arc",
+          id: "shaded",
+          center: [0, 0],
+          r: 1,
+          from: start,
+          to: start + total,
+          fill: "accent-strong",
+          stroke: "ink",
+          width: 3,
+        },
+        {
+          type: "circle",
+          id: "turn",
+          center: [0, 0],
+          r: 1,
+          stroke: "ink",
+          width: 2,
+        },
+        ...Array.from({ length: n }, (_, i) => ({
+          type: "segment" as const,
+          id: `spoke${i}`,
+          from: [0, 0] as Pt,
+          to: toward(start + i * each, 1),
+          stroke: "ink" as const,
+          width: n > 12 ? 1 : 1.5,
+        })),
+        {
+          type: "arc",
+          id: "mark",
+          center: [0, 0],
+          r: 0.24,
+          from: start,
+          to: start + total,
+          stroke: "warm",
+          width: 3,
+        },
+      );
       prompt = `The circle is cut into ${n} equal angles that meet at its center. How many degrees is the shaded angle?`;
       label = "Degrees";
       answer = String(total);
@@ -494,7 +635,13 @@ export function generateAngleProblem(
               ? 5 * r(22, 32)
               : 180;
       const d0 = 5 * r(0, 71);
-      figure = { kind: "angle-figure", rays: [d0, norm(d0 + m)] };
+      figure = sceneFigure(
+        angle({
+          rays: [d0, d0 + m],
+          arrows: true,
+          marks: [{ from: 0, to: 1, color: "warm" }],
+        }).element(),
+      );
       prompt = "What kind of angle is this?";
       hint = `One ray points ${heading(d0)}. Put the corner of a page on the vertex along that ray, and compare the other ray with the page's square corner.`;
       const describe = {
@@ -529,17 +676,56 @@ export function generateAngleProblem(
         ],
         t,
       ) as [Pt, Pt];
-      figure = {
-        kind: "linear-object",
-        points: [p, q],
-        labels: [A, B],
-        ends:
-          kind === "line"
-            ? ["arrow", "arrow"]
-            : kind === "ray"
-              ? ["point", "arrow"]
-              : ["point", "point"],
-      };
+      // An arrow end continues past its point; a point end stops there.
+      const ends =
+        kind === "line"
+          ? [true, true]
+          : kind === "ray"
+            ? [false, true]
+            : [false, false];
+      const past = (from: Pt, to: Pt): Pt => [
+        to[0] + (to[0] - from[0]) * 0.45,
+        to[1] + (to[1] - from[1]) * 0.45,
+      ];
+      figure = sceneFigure(
+        {
+          type: "segment",
+          id: "figure",
+          from: ends[0] ? past(q, p) : p,
+          to: ends[1] ? past(p, q) : q,
+          stroke: "ink",
+          width: 3,
+          ...(ends[0] && ends[1]
+            ? { arrow: "both" as const }
+            : ends[1]
+              ? { arrow: "end" as const }
+              : {}),
+        },
+        { type: "point", id: "point0", at: p, r: 5, color: "ink" },
+        { type: "point", id: "point1", at: q, r: 5, color: "ink" },
+        {
+          type: "text",
+          id: "name0",
+          at: p,
+          text: A,
+          bold: true,
+          place: [
+            [0, -12, 0, 1],
+            [0, 12, 0, -1],
+          ],
+        },
+        {
+          type: "text",
+          id: "name1",
+          at: q,
+          text: B,
+          bold: true,
+          place: [
+            [0, -12, 0, 1],
+            [0, 12, 0, -1],
+          ],
+        },
+      );
       prompt = "Which name matches this figure?";
       hint = `Look at the end past ${A} and the end past ${B}: does each stop at its point, or keep going with an arrow?`;
       const right =
@@ -657,7 +843,7 @@ export function generateAngleProblem(
           break;
         }
       }
-      figure = { kind: "line-pair", columns, rows, lines: pair };
+      figure = sceneFigure(...linePair(columns, rows, pair));
       const step = ([p, q]: [Pt, Pt]) => {
         const g = (a: number, b: number): number => (b ? g(b, a % b) : a);
         const k = g(Math.abs(q[0] - p[0]), Math.abs(q[1] - p[1]));
@@ -665,10 +851,10 @@ export function generateAngleProblem(
           dy = (q[1] - p[1]) / k;
         if (dy === 0) return "straight across";
         if (dx === 0) return "straight up and down";
-        return `${Math.abs(dx)} across for every ${Math.abs(dy)} ${dx * dy > 0 ? "up" : "down"}`;
+        return `across ${Math.abs(dx)} and ${dx * dy > 0 ? "up" : "down"} ${Math.abs(dy)} each step`;
       };
       prompt = "How are these two lines related?";
-      hint = `Step along the dots. One line goes ${step(pair[0])}; the other goes ${step(pair[1])}. Same steps mean parallel; a quarter turn of the steps means perpendicular.`;
+      hint = `Step along the dots. One line goes ${step(pair[0])}; the other goes ${step(pair[1])}. Lines with the same steps never meet; steps turned a quarter turn cross at a right angle.`;
       const describe = {
         parallel: "parallel: they go the same direction and never meet",
         perpendicular: "perpendicular: they cross at a right angle",
@@ -718,12 +904,17 @@ export function generateAngleProblem(
         raw.map(([x, y]) => [x - c[0], y - c[1]] as Pt),
         5 * r(0, 71),
       );
-      figure = {
-        kind: "plane-shapes",
-        items: [
-          { pieces: [{ type: "polygon", points }], marks: "sides-angles" },
-        ],
-      };
+      figure = sceneFigure(
+        {
+          type: "polygon",
+          id: "triangle",
+          points,
+          fill: "accent-fill",
+          stroke: "ink",
+          width: 2.5,
+        },
+        ...rightMarks(points),
+      );
       let longest = 0;
       points.forEach((p, i) => {
         const q = points[(i + 1) % 3]!,
@@ -773,10 +964,14 @@ export function generateAngleProblem(
     case "symmetry-line-count": {
       const shape = symmetric(r);
       const points = place(shape.points, pick(r, [0, 0, 15, 30, 45, 90]));
-      figure = {
-        kind: "plane-shapes",
-        items: [{ pieces: [{ type: "polygon", points }] }],
-      };
+      figure = sceneFigure({
+        type: "polygon",
+        id: "shape",
+        points,
+        fill: "accent-fill",
+        stroke: "ink",
+        width: 2.5,
+      });
       const n = points.length;
       prompt = "How many lines of symmetry does this shape have?";
       label = "Lines of symmetry";
@@ -826,24 +1021,32 @@ export function generateAngleProblem(
       // A diagonal of a rectangle or rhombus is the classic false fold.
       const corner = points[0]!;
       const diagonal = Math.atan2(corner[1] - c[1], corner[0] - c[0]) / deg;
+      const apart = (x: number, y: number) => {
+        const d = Math.abs(norm(x) - norm(y)) % 180;
+        return Math.min(d, 180 - d) > 8;
+      };
+      const useDiagonal =
+        !mirrors(points, c, diagonal) && apart(diagonal, axis);
+      const others = wrong.filter(
+        (t) => apart(t, axis) && (!useDiagonal || apart(t, diagonal)),
+      );
       const candidates = [
         { ...line(axis), ok: true, why: "" },
-        ...(mirrors(points, c, diagonal) ||
-        wrong.some((t) => Math.abs(norm(t) - norm(diagonal)) < 1)
-          ? []
-          : [
+        ...(useDiagonal
+          ? [
               {
                 ...line(diagonal),
                 ok: false,
-                why: "corner to corner, but the two halves are not mirror images",
+                why: "through a corner and the middle, but the two halves are not mirror images",
               },
-            ]),
+            ]
+          : []),
         {
-          ...line(axis, 0.45),
+          ...line(axis, 0.6),
           ok: false,
           why: "in the right direction but off center: one side is bigger",
         },
-        ...wrong.map((t) => ({
+        ...others.map((t) => ({
           ...line(t),
           ok: false,
           why: "through the middle, but the halves do not match when folded",
@@ -851,11 +1054,47 @@ export function generateAngleProblem(
       ].slice(0, 4);
       const order = shuffle(r, candidates);
       const labels = ["A", "B", "C", "D"] as const;
-      figure = {
-        kind: "symmetry-lines",
-        shape: points,
-        lines: order.map((l, i) => ({ label: labels[i]!, a: l.a, b: l.b })),
-      };
+      figure = sceneFigure(
+        {
+          type: "polygon",
+          id: "shape",
+          points,
+          fill: "accent-fill",
+          stroke: "ink",
+          width: 2.5,
+        },
+        ...order.flatMap((l, i) => [
+          {
+            type: "segment" as const,
+            id: `line${labels[i]}`,
+            from: l.a,
+            to: l.b,
+            stroke: "warm" as const,
+            width: 2.5,
+            dash: "dash" as const,
+          },
+        ]),
+        ...labelEnds(order).map(([end, out], i) => ({
+          type: "text" as const,
+          id: `name${labels[i]}`,
+          at: end,
+          text: labels[i]!,
+          bold: true,
+          color: "warm" as const,
+          halo: true,
+          // Beyond the end of the line, then to either side of it.
+          place: [
+            [
+              out[0] * 14,
+              -out[1] * 14,
+              -Math.sign(Math.round(out[0] * 2)) as -1 | 0 | 1,
+              Math.sign(Math.round(out[1] * 2)) as -1 | 0 | 1,
+            ],
+            [out[1] * 14, out[0] * 14, 0, 0],
+            [-out[1] * 14, -out[0] * 14, 0, 0],
+          ] as [number, number, -1 | 0 | 1, -1 | 0 | 1][],
+        })),
+      );
       const right = labels[order.findIndex((l) => l.ok)]!;
       prompt = "Which dashed line is a line of symmetry?";
       hint = `This shape has ${points.length} corners. Folded along a line of symmetry, each corner lands exactly on a corner, or on the fold itself.`;

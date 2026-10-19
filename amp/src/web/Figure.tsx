@@ -10,14 +10,15 @@ import { ComparisonFigure } from "./ComparisonFigure";
 import { AreaModelFigure } from "./AreaModelFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
+import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { SignedLineFigure } from "./SignedLineFigure";
 import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
 import { ShapeFigure } from "./ShapeFigure";
-import { AngleFigure } from "./AngleFigure";
 import type { SemanticFigure } from "../math/contracts";
 import { isPorted, legacyScene } from "../math/scene/legacy";
 import { SceneFigure } from "./scene/SceneFigure";
@@ -70,14 +71,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "shape-puzzle":
     case "solid-shape":
       return <ShapeFigure figure={figure} />;
-    case "protractor":
-    case "angle-figure":
-    case "angle-parts":
-    case "turn-circle":
-    case "line-pair":
-    case "linear-object":
-    case "symmetry-lines":
-      return <AngleFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
@@ -96,11 +89,19 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "share-model":
     case "times-table":
       return <FactArrayFigure figure={figure} />;
+    case "number-bond":
+    case "bar-model":
+    case "equal-balance":
+    case "addend-groups":
+    case "change-chain":
+      return <EarlyOperationsFigure figure={figure} />;
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
     case "bar-chart":
       return <GraphicalFigure figure={figure} />;
+    case "signed-line":
+      return <SignedLineFigure figure={figure} />;
     case "balance-scale":
     case "inequality-lines":
       return <EquationFigure figure={figure} />;

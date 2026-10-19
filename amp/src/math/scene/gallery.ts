@@ -1,5 +1,7 @@
 import type { SemanticFigure } from "../contracts";
 import {
+  angle,
+  protractor,
   areaModel,
   array,
   baseTen,
@@ -197,6 +199,33 @@ export const galleryCases: GalleryCase[] = [
     scene: fractionBar({ shaded: 5, parts: 4, wholes: 2 }).scene(),
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
+  {
+    name: "Protractor: 0 on the left, ray at 130",
+    scene: protractor([180, 130], ["A", "B", "C"]).scene({ width: 340 }),
+  },
+  {
+    name: "Protractor: 0 on the right, ray at 75",
+    scene: protractor([0, 75], ["P", "Q", "R"]).scene({ width: 340 }),
+  },
+  {
+    name: "Angle: parts with the unknown masked",
+    scene: angle({
+      rays: [20, 65, 140],
+      labels: { vertex: "B", ends: ["A", "C", "D"] },
+      marks: [
+        { from: 0, to: 1, measure: true },
+        { from: 1, to: 2, measure: true, derived: true },
+      ],
+    }).scene({ width: 340 }),
+  },
+  {
+    name: "Angle: a right angle with arrows",
+    scene: angle({
+      rays: [30, 120],
+      arrows: true,
+      marks: [{ from: 0, to: 1 }],
+    }).scene({ width: 300 }),
+  },
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */

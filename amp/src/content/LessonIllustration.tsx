@@ -13,12 +13,18 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import {
+  NumberSystemIllustration,
+  numberSystemIllustrationKinds,
+  type NumberSystemIllustrationKind,
+} from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
 import { FactArrayIllustration } from "./FactArrayIllustration";
+import { EarlyOperationsIllustration } from "./EarlyOperationsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -44,6 +50,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
+    return (
+      <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
+    );
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
@@ -116,6 +126,14 @@ export function LessonIllustration({
     kind === "table-patterns"
   )
     return <FactArrayIllustration kind={kind} />;
+  if (
+    kind === "number-bond-split" ||
+    kind === "tape-missing-part" ||
+    kind === "balance-level" ||
+    kind === "three-addends-ten" ||
+    kind === "change-chain-steps"
+  )
+    return <EarlyOperationsIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||

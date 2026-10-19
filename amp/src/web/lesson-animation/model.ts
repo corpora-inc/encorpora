@@ -5,11 +5,6 @@ import {
   shapeMorphModel,
   type ShapeMorphAnimation,
 } from "./shape-model";
-import {
-  protractorSweepFrames,
-  protractorSweepModel,
-  type ProtractorSweepAnimation,
-} from "./angle-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -73,6 +68,18 @@ export type ClockSweepAnimation = {
 /** Full jar A poured into empty jar B: eighths of B filled (9 = spills). */
 export type PourAnimation = { kind: "pour"; eighths: number };
 export type AnimationModel =
+  /** A balance loaded side by side until the closed box levels it. */
+  | {
+      kind: "balance-level";
+      /** Counter groups on the complete side, and on the box's side. */
+      full: number[];
+      partial: number[];
+      boxLeft: boolean;
+    }
+  /** A missing part slides in to fill the bar to the whole. */
+  | { kind: "tape-join"; whole: number; part: number; partFirst: boolean }
+  /** Two of three groups fill a ten-frame; the third continues. */
+  | { kind: "make-ten-three"; addends: [number, number, number] }
   | PourAnimation
   | { kind: "area-model"; figure: AreaModel }
   /** a rows of b dots, built one row at a time. */
@@ -88,7 +95,6 @@ export type AnimationModel =
       first: "share" | "measure";
     }
   | ShapeMorphAnimation
-  | ProtractorSweepAnimation
   | {
       kind: "plot";
       rows: { x: number; y: number }[];
@@ -116,7 +122,22 @@ export type AnimationModel =
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
   | { kind: "box-build"; figure: LinePlot }
   | RateModel
-  | MadGapAnimation;
+  | MadGapAnimation
+  /** A point reflected across 0 onto its opposite. */
+  | { kind: "opposite"; value: number; min: number; max: number }
+  /** Signed changes added one jump at a time; values are exact halves. */
+  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number };
+const half = (n: number) => Number.isFinite(n) && Number.isInteger(n * 2);
+/** Running positions of a jump sequence, exact for halves. */
+export const jumpStops = (start: number, jumps: number[]) =>
+  jumps.reduce(
+    (all, j) => [...all, Math.round((all.at(-1)! + j) * 2) / 2],
+    [start],
+  );
+/** TeX for a signed number; negatives in parentheses when they follow an operator. */
+/** Prose uses a typographic minus. */
+const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
+const signedTex = (n: number, wrap = false) => (n < 0 && wrap ? `(${n})` : `${n}`);
 type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
 /** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
 export type MadGapAnimation = {
@@ -131,6 +152,18 @@ const madOf = (v: readonly number[]) => {
   const m = meanOf(v);
   return v.reduce((a, x) => a + Math.abs(x - m), 0) / v.length;
 };
+/** Indexes of the first two addends that make ten, then the third. */
+export function tenPair(
+  addends: readonly [number, number, number],
+): [number, number, number] | null {
+  for (const p of [
+    [0, 1, 2],
+    [1, 2, 0],
+    [0, 2, 1],
+  ] as const)
+    if (addends[p[0]] + addends[p[1]] === 10) return [...p];
+  return null;
+}
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -171,8 +204,6 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
-  const sweep = protractorSweepModel(lesson.templateId, f);
-  if (sweep) return sweep;
   if (
     lesson.templateId === "compare-capacity" &&
     f?.kind === "pour" &&
@@ -297,6 +328,46 @@ export function animationModel(
     f.values.length >= 4
   )
     return { kind: "box-build", figure: f };
+  if (
+    lesson.templateId === "balanced-addition" &&
+    f?.kind === "equal-balance"
+  ) {
+    const boxLeft = f.left.includes(null),
+      full = (boxLeft ? f.right : f.left) as number[],
+      partial = (boxLeft ? f.left : f.right).filter(
+        (v): v is number => v !== null,
+      );
+    const sum = (v: number[]) => v.reduce((a, b) => a + b, 0);
+    if (
+      full.every((v) => integer(v, 0, 20)) &&
+      sum(full) <= 20 &&
+      sum(partial) < sum(full)
+    )
+      return { kind: "balance-level", full, partial, boxLeft };
+  }
+  if (
+    lesson.templateId === "unknown-addend-story" &&
+    f?.kind === "bar-model" &&
+    f.whole !== null &&
+    f.parts.length === 2 &&
+    integer(f.whole, 2, 20)
+  ) {
+    const part = f.parts.find((p) => p !== null);
+    if (part !== undefined && part !== null && integer(part, 1, f.whole - 1))
+      return {
+        kind: "tape-join",
+        whole: f.whole,
+        part,
+        partFirst: f.parts[0] !== null,
+      };
+  }
+  if (
+    lesson.templateId === "three-addend-story" &&
+    f?.kind === "addend-groups" &&
+    f.addends.every((v) => integer(v, 1, 9)) &&
+    f.addends[0] + f.addends[1] + f.addends[2] <= 20
+  )
+    return { kind: "make-ten-three", addends: f.addends };
   if (
     lesson.templateId === "multiply-facts" &&
     f?.kind === "dot-array" &&
@@ -433,6 +504,42 @@ export function animationModel(
     integer(f.splitAfterRow, 1, f.rows - 1)
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
+  if (
+    lesson.templateId === "opposite-on-line" &&
+    f?.kind === "signed-line" &&
+    f.jumps === undefined &&
+    f.points.length === 1 &&
+    integer(f.points[0]!.value, f.min, f.max) &&
+    f.points[0]!.value !== 0 &&
+    integer(-f.points[0]!.value, f.min, f.max)
+  )
+    return {
+      kind: "opposite",
+      value: f.points[0]!.value,
+      min: f.min,
+      max: f.max,
+    };
+  if (
+    lesson.templateId === "signed-jumps" &&
+    f?.kind === "signed-line" &&
+    f.start !== undefined &&
+    f.jumps !== undefined &&
+    f.jumps.length >= 1 &&
+    f.jumps.length <= 4 &&
+    Number.isInteger(f.min) &&
+    Number.isInteger(f.max) &&
+    f.max > f.min &&
+    half(f.start) &&
+    f.jumps.every((j) => half(j) && j !== 0) &&
+    jumpStops(f.start, f.jumps).every((v) => v >= f.min && v <= f.max)
+  )
+    return {
+      kind: "jumps",
+      start: f.start,
+      jumps: f.jumps,
+      min: f.min,
+      max: f.max,
+    };
   if (
     lesson.templateId === "double-number-line-missing" &&
     f?.kind === "double-number-line"
@@ -669,6 +776,53 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "opposite") {
+    const a = model.value,
+      d = Math.abs(a),
+      units = `${d} ${d === 1 ? "unit" : "units"}`;
+    return [
+      {
+        title: "Read the point",
+        text: `P is ${units} to the ${a < 0 ? "left" : "right"} of 0.`,
+        math: `$P = ${signedTex(a)}$`,
+      },
+      {
+        title: "Reflect across 0",
+        text: "Swing P over 0 to the other side. Its distance from 0 does not change.",
+        math: `$\\text{distance from } 0 = ${d}$`,
+      },
+      {
+        title: "Name the opposite",
+        text: `The opposite of ${shown(a)} is ${shown(-a)}: ${units} from 0 on the ${a < 0 ? "right" : "left"}.`,
+        math: `$-(${signedTex(a)}) = ${signedTex(-a)}$`,
+      },
+    ];
+  }
+  if (model.kind === "jumps") {
+    const stops = jumpStops(model.start, model.jumps),
+      end = stops.at(-1)!;
+    const sum = [
+      signedTex(model.start),
+      ...model.jumps.map((j) => signedTex(j, true)),
+    ].join(" + ");
+    return [
+      {
+        title: "Start",
+        text: `Begin at ${shown(model.start)}. Moving right adds a positive change; moving left adds a negative change.`,
+        math: `$${signedTex(model.start)}$`,
+      },
+      {
+        title: "Make each jump",
+        text: `Each arrow adds one change, in order: ${model.jumps.map((j) => (j > 0 ? `+${j}` : shown(j))).join(", then ")}.`,
+        math: `$${sum}$`,
+      },
+      {
+        title: "Land",
+        text: `The last arrow ends at ${shown(end)}, ${end < 0 ? "left" : "right"} of 0.`,
+        math: `$${sum} = ${signedTex(end)}$`,
+      },
+    ];
+  }
   if (model.kind === "pour") {
     const e = model.eighths;
     const result =
@@ -757,7 +911,6 @@ export function animationFrames(model: AnimationModel) {
     ];
   }
   if (model.kind === "shape-morph") return shapeMorphFrames(model);
-  if (model.kind === "protractor-sweep") return protractorSweepFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
     const first = rows.find((r) => r.x !== 0) ?? rows[0]!;
@@ -997,6 +1150,97 @@ export function animationFrames(model: AnimationModel) {
         title: "Draw the box",
         text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
         math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
+      },
+    ];
+  }
+  if (model.kind === "balance-level") {
+    const { full, partial } = model,
+      total = full.reduce((a, b) => a + b, 0),
+      known = partial.reduce((a, b) => a + b, 0),
+      missing = total - known;
+    const fullText = full.join(" + ");
+    return [
+      {
+        title: "Load one side",
+        text: `One pan holds ${fullText}${full.length > 1 ? ` = ${total}` : ""} counters. The empty pan rises.`,
+        math: `$${fullText}${full.length > 1 ? ` = ${total}` : ""}$`,
+      },
+      {
+        title: "Not level yet",
+        text: known
+          ? `The other pan holds ${known} and the closed box. ${known} is less than ${total}, so that pan is still high.`
+          : `The other pan holds only the closed box. It must weigh as much as ${total} counters.`,
+        math: known ? `$${known} < ${total}$` : `$\\square = ${total}$`,
+      },
+      {
+        title: "Level",
+        text: `The box holds ${missing}. Now both pans hold ${total}, and the beam is level.`,
+        math: known
+          ? `$${known} + ${missing} = ${fullText}$`
+          : `$${missing} = ${fullText}$`,
+      },
+    ];
+  }
+  if (model.kind === "tape-join") {
+    const { whole, part } = model,
+      missing = whole - part;
+    return [
+      {
+        title: "The whole and one part",
+        text: `The top bar is the whole, ${whole}. The bar below shows one part, ${part}.`,
+        math: `$${part} + \\square = ${whole}$`,
+      },
+      {
+        title: "Join the missing part",
+        text: `The missing part fills the rest of the bar, from ${part} up to ${whole}.`,
+        math: `$\\square = ${whole} - ${part}$`,
+      },
+      {
+        title: "Name the part",
+        text: `Counting up from ${part} to ${whole} takes ${missing}.`,
+        math: `$${part} + ${missing} = ${whole}$`,
+      },
+    ];
+  }
+  if (model.kind === "make-ten-three") {
+    const [a, b, c] = model.addends,
+      total = a + b + c,
+      pair = tenPair(model.addends);
+    if (pair) {
+      const [x, y, z] = pair.map((i) => model.addends[i]!);
+      return [
+        {
+          title: "Three groups",
+          text: `${a}, ${b} and ${c}. Look for two that make ten.`,
+          math: `$${a} + ${b} + ${c}$`,
+        },
+        {
+          title: "Make a ten",
+          text: `${x} and ${y} fill the ten-frame exactly.`,
+          math: `$${x} + ${y} = 10$`,
+        },
+        {
+          title: "Add the rest",
+          text: `One full ten and ${z} more. Changing the order did not change the total.`,
+          math: `$10 + ${z} = ${total}$`,
+        },
+      ];
+    }
+    return [
+      {
+        title: "Three groups",
+        text: `${a}, ${b} and ${c}. No two make ten, so join two first.`,
+        math: `$${a} + ${b} + ${c}$`,
+      },
+      {
+        title: "Join two groups",
+        text: `${a} and ${b} go into the frames${a + b > 10 ? ", filling a ten" : ""}.`,
+        math: `$${a} + ${b} = ${a + b}$`,
+      },
+      {
+        title: "Add the third",
+        text: `${c} more counters follow.`,
+        math: `$${a + b} + ${c} = ${total}$`,
       },
     ];
   }

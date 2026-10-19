@@ -70,60 +70,83 @@ def triangle_angles(points):
     return out
 
 
+def scene_elements(figure):
+    require(figure['kind'] == 'scene', 'A scene figure')
+    return {e.get('id', f'e{i}'): e for i, e in enumerate(figure['scene']['elements'])}
+
+
 def solve_angle(public):
-    family, prompt, figure = public['templateId'], public['prompt'], public['figure']
+    family, prompt = public['templateId'], public['prompt']
+    el = scene_elements(public['figure'])
     require(family in ANGLES, 'Unsupported family')
     if family == 'protractor-reading':
         found = re.fullmatch(r'What is the measure of angle ([A-Z])([A-Z])([A-Z]), in degrees\?', prompt)
-        require(found is not None and figure['kind'] == 'protractor', 'Protractor wording')
-        require(list(found.groups()) == figure['labels'], 'The named angle is the drawn one')
-        r0, r1 = figure['rays']
-        require(r0 in (0, 180), 'The first ray lies on the baseline')
-        require(0 <= r1 <= 180, 'The second ray crosses the scale')
+        (p,) = [e for e in el.values() if e['type'] == 'protractor']
+        require(found is not None and list(found.groups()) == p['labels'], 'The named angle is the drawn one')
+        r0, r1 = p['rays']
+        require(r0 in (0, 180) and 0 <= r1 <= 180, 'The first ray lies on the baseline')
         return abs(r1 - r0)
     if family == 'adjacent-angles':
-        require(figure['kind'] == 'angle-parts', 'Angle parts')
-        a, b, c, d = figure['labels']
-        d0, d1, d2 = figure['rays']
+        (g,) = [e for e in el.values() if e['type'] == 'angle']
+        d0, d1, d2 = g['rays']
+        a, c, d = g['labels']['ends']
+        b = g['labels']['vertex']
         drawn = (span(d0, d1), span(d1, d2), span(d0, d2))
         require(abs(drawn[0] + drawn[1] - drawn[2]) < TOL and drawn[2] <= 180, 'The middle ray lies inside the whole angle')
-        p, q = figure['parts']
-        w = figure['whole']
-        for given, true in ((p, drawn[0]), (q, drawn[1]), (w, drawn[2])):
-            if given is not None:
-                require(abs(given - true) < TOL, 'Written measures match the drawing')
-        stated = {m[0]: int(m[1]) for m in re.findall(r'Angle ([A-Z]{3}) measures (\d+)°', prompt.replace('and angle', '. Angle'))}
-        names = {f'{a}{b}{c}': p, f'{c}{b}{d}': q, f'{a}{b}{d}': w}
+        names = {f'{a}{b}{c}': drawn[0], f'{c}{b}{d}': drawn[1], f'{a}{b}{d}': drawn[2]}
+        stated = {m[0]: int(m[1]) for m in re.findall(r'[Aa]ngle ([A-Z]{3}) measures (\d+)°', prompt)}
         for name, value in stated.items():
-            require(names.get(name) == value, f'Prompt states {name} as drawn')
+            require(abs(names[name] - value) < TOL, f'Prompt states {name} as drawn')
         asked = re.search(r'What is the measure of angle ([A-Z]{3})\?$', prompt)
-        require(asked is not None and names.get(asked[1], 0) is None, 'The question asks for the unknown')
-        if w is None:
-            return p + q
-        return w - (q if p is None else p)
+        require(asked is not None and asked[1] not in stated, 'The question asks for an angle the prompt does not give')
+        derived = [m for m in g['marks'] if m.get('derived')]
+        if asked[1] != f'{a}{b}{d}':
+            require(len(derived) == 1 and names[asked[1]] == drawn[derived[0]['from']], 'The unknown part is the one drawn as ?')
+        # Solve from the stated measures only.
+        if asked[1] == f'{a}{b}{d}':
+            return sum(stated.values())
+        return stated[f'{a}{b}{d}'] - next(v for k, v in stated.items() if k != f'{a}{b}{d}')
     if family == 'turn-degrees':
         found = re.fullmatch(r'The circle is cut into (\d+) equal angles that meet at its center\. How many degrees is the shaded angle\?', prompt)
-        require(found is not None and figure['kind'] == 'turn-circle' and int(found[1]) == figure['parts'], 'Turn wording')
-        total = 360 * figure['shaded']
-        require(total % figure['parts'] == 0, 'Whole degrees')
-        return total // figure['parts']
+        spokes = [e for k, e in el.items() if k.startswith('spoke')]
+        require(found is not None and int(found[1]) == len(spokes), 'The prompt counts the drawn angles')
+        dirs = sorted(math.degrees(math.atan2(e['to'][1], e['to'][0])) % 360 for e in spokes)
+        gaps = [(dirs[(i + 1) % len(dirs)] - dirs[i]) % 360 for i in range(len(dirs))]
+        require(max(gaps) - min(gaps) < 1e-6, 'Equal angles')
+        shaded = el['shaded']
+        swept = shaded['to'] - shaded['from']
+        parts = swept / gaps[0]
+        require(abs(parts - round(parts)) < 1e-6 and 0 < round(parts) < len(spokes), 'The shading covers whole angles')
+        # Count the shaded parts, then use 360 degrees in a full turn.
+        return round(round(parts) * 360 / len(spokes))
     if family == 'angle-classify':
-        require(prompt == 'What kind of angle is this?' and figure['kind'] == 'angle-figure', 'Classify wording')
-        m = between(*figure['rays'])
+        require(prompt == 'What kind of angle is this?', 'Classify wording')
+        (g,) = [e for e in el.values() if e['type'] == 'angle']
+        m = span(*g['rays'])
         kind = 'right' if abs(m - 90) < TOL else 'straight' if abs(m - 180) < TOL else 'acute' if m < 90 else 'obtuse'
         require(kind in ('right', 'straight') or abs(m - 90) >= 15, 'An acute or obtuse angle is plainly so')
         return only(public, lambda label: label == kind)
     if family == 'line-ray-segment':
-        require(prompt == 'Which name matches this figure?' and figure['kind'] == 'linear-object', 'Figure wording')
-        a, b = figure['labels']
-        ends = tuple(figure['ends'])
-        name = {('arrow', 'arrow'): f'line {a}{b}', ('point', 'point'): f'line segment {a}{b}',
-                ('point', 'arrow'): f'ray {a}{b}', ('arrow', 'point'): f'ray {b}{a}'}[ends]
-        same = {f'line {a}{b}', f'line {b}{a}'} if ends == ('arrow', 'arrow') else {f'line segment {a}{b}', f'line segment {b}{a}'} if ends == ('point', 'point') else {name}
+        require(prompt == 'Which name matches this figure?', 'Figure wording')
+        seg = el['figure']
+        p0, p1 = el['point0']['at'], el['point1']['at']
+        n0, n1 = el['name0']['text'], el['name1']['text']
+        arrow = seg.get('arrow')
+        near = lambda q, r: math.hypot(q[0] - r[0], q[1] - r[1]) < TOL
+        if arrow == 'both':
+            same = {f'line {n0}{n1}', f'line {n1}{n0}'}
+        elif arrow is None:
+            require(near(seg['from'], p0) and near(seg['to'], p1), 'A segment stops at its points')
+            same = {f'line segment {n0}{n1}', f'line segment {n1}{n0}'}
+        else:
+            require(arrow == 'end', 'One arrow, at the end')
+            start = n0 if near(seg['from'], p0) else n1 if near(seg['from'], p1) else None
+            require(start is not None, 'A ray starts at one of its points')
+            same = {f'ray {start}{n1 if start == n0 else n0}'}
         return only(public, lambda label: label in same)
     if family == 'line-relationship':
-        require(prompt == 'How are these two lines related?' and figure['kind'] == 'line-pair', 'Lines wording')
-        (p1, q1), (p2, q2) = figure['lines']
+        require(prompt == 'How are these two lines related?', 'Lines wording')
+        p1, q1, p2, q2 = (el[k]['at'] for k in ('on0a', 'on0b', 'on1a', 'on1b'))
         u = (q1[0] - p1[0], q1[1] - p1[1])
         v = (q2[0] - p2[0], q2[1] - p2[1])
         cross = u[0] * v[1] - u[1] * v[0]
@@ -139,24 +162,33 @@ def solve_angle(public):
             kind = 'neither'
         return only(public, lambda label: label == kind)
     if family == 'classify-triangle-angles':
-        require(prompt == 'Classify this triangle by its angles.' and figure['kind'] == 'plane-shapes', 'Triangle wording')
-        (item,) = figure['items']
-        require(item.get('marks') == 'sides-angles', 'Right angles are marked')
-        points = simplify(item['pieces'][0]['points'])
+        require(prompt == 'Classify this triangle by its angles.', 'Triangle wording')
+        points = simplify(el['triangle']['points'])
         require(len(points) == 3, 'A triangle')
-        top = max(triangle_angles(points))
+        angles = triangle_angles(points)
+        top = max(angles)
         kind = 'right' if abs(top - 90) < 0.05 else 'obtuse' if top > 90 else 'acute'
+        marked = [k for k in el if k.startswith('right')]
+        require(len(marked) == (1 if kind == 'right' else 0), 'Exactly the right angle is marked')
         require(kind == 'right' or abs(top - 90) >= 15, 'The largest angle is plainly acute or obtuse')
         return only(public, lambda label: label == f'{kind} triangle')
     if family == 'symmetry-line-count':
-        require(prompt == 'How many lines of symmetry does this shape have?' and figure['kind'] == 'plane-shapes', 'Count wording')
-        (item,) = figure['items']
-        return symmetry_axes([tuple(p) for p in item['pieces'][0]['points']])
+        require(prompt == 'How many lines of symmetry does this shape have?', 'Count wording')
+        return symmetry_axes([tuple(p) for p in el['shape']['points']])
     if family == 'symmetry-line-check':
-        require(prompt == 'Which dashed line is a line of symmetry?' and figure['kind'] == 'symmetry-lines', 'Check wording')
-        points = [tuple(p) for p in figure['shape']]
-        lines = {l['label']: (l['a'], l['b']) for l in figure['lines']}
+        require(prompt == 'Which dashed line is a line of symmetry?', 'Check wording')
+        points = [tuple(p) for p in el['shape']['points']]
+        lines = {k[4:]: (e['from'], e['to']) for k, e in el.items() if k.startswith('line')}
         require(set(lines) == {o['label'] for o in public['response']['options']}, 'Options name the drawn lines')
+        keys = sorted(lines)
+        for i, x in enumerate(keys):
+            for y in keys[i + 1:]:
+                (a, b), (c, d) = lines[x], lines[y]
+                t1 = math.degrees(math.atan2(b[1] - a[1], b[0] - a[0])) % 180
+                t2 = math.degrees(math.atan2(d[1] - c[1], d[0] - c[0])) % 180
+                if min(abs(t1 - t2), 180 - abs(t1 - t2)) < 8:
+                    ux, uy = math.cos(math.radians(t1)), math.sin(math.radians(t1))
+                    require(abs((c[0] - a[0]) * uy - (c[1] - a[1]) * ux) >= 0.3, f'Lines {x} and {y} must be told apart')
         return only(public, lambda label: mirrors(points, *lines[label]))
     raise ValueError('Missing solver')
 
@@ -171,13 +203,17 @@ def review_angle_fixtures():
 
     def opts(*labels):
         return {'kind': 'choice', 'options': [{'id': f'option-{"abcd"[i]}', 'label': s} for i, s in enumerate(labels)]}
+
+    def scene(*elements):
+        return {'kind': 'scene', 'scene': {'v': 1, 'elements': list(elements)}}
     protractor = {'templateId': 'protractor-reading', 'prompt': 'What is the measure of angle ABC, in degrees?',
-                  'figure': {'kind': 'protractor', 'rays': [180, 130], 'labels': ['A', 'B', 'C']}}
+                  'figure': scene({'type': 'protractor', 'rays': [180, 130], 'labels': ['A', 'B', 'C']})}
     require(solve_angle(protractor) == 50, 'From 0 on the left, a ray at 130 reads 50')
     parts = {'templateId': 'adjacent-angles', 'prompt': 'Angle ABD measures 120°. Angle ABC measures 45°. What is the measure of angle CBD?',
-             'figure': {'kind': 'angle-parts', 'rays': [10, 55, 130], 'labels': ['A', 'B', 'C', 'D'], 'parts': [45, None], 'whole': 120}}
+             'figure': scene({'type': 'angle', 'rays': [10, 55, 130], 'labels': {'vertex': 'B', 'ends': ['A', 'C', 'D']},
+                              'marks': [{'from': 0, 'to': 1, 'measure': True}, {'from': 1, 'to': 2, 'measure': True, 'derived': True}]})}
     require(solve_angle(parts) == 75, '120 - 45')
-    parts['figure']['rays'] = [10, 60, 130]
+    parts['figure']['scene']['elements'][0]['rays'] = [10, 60, 130]
     require(rejects(parts), 'A drawing that disagrees with its numbers is rejected')
     require(symmetry_axes([(-1, -1), (1, -1), (1, 1), (-1, 1)]) == 4, 'A square has 4 lines of symmetry')
     require(symmetry_axes([(-1.6, -0.8), (1.6, -0.8), (1.6, 0.8), (-1.6, 0.8)]) == 2, 'A rectangle has 2')
@@ -185,11 +221,12 @@ def review_angle_fixtures():
     hexagon = [(math.cos(math.radians(60 * i)), math.sin(math.radians(60 * i))) for i in range(6)]
     require(symmetry_axes(hexagon) == 6, 'A regular hexagon has 6')
     check = {'templateId': 'symmetry-line-check', 'prompt': 'Which dashed line is a line of symmetry?', 'response': opts('A', 'B'),
-             'figure': {'kind': 'symmetry-lines', 'shape': [[-1.6, -0.8], [1.6, -0.8], [1.6, 0.8], [-1.6, 0.8]],
-                        'lines': [{'label': 'A', 'a': [-2, -1], 'b': [2, 1]}, {'label': 'B', 'a': [0, -1.2], 'b': [0, 1.2]}]}}
+             'figure': scene({'type': 'polygon', 'id': 'shape', 'points': [[-1.6, -0.8], [1.6, -0.8], [1.6, 0.8], [-1.6, 0.8]]},
+                             {'type': 'segment', 'id': 'lineA', 'from': [-2, -1], 'to': [2, 1]},
+                             {'type': 'segment', 'id': 'lineB', 'from': [0, -1.2], 'to': [0, 1.2]})}
     require(solve_angle(check) == 'option-b', 'A rectangle\'s diagonal is not a line of symmetry')
     lines = {'templateId': 'line-relationship', 'prompt': 'How are these two lines related?', 'response': opts('parallel', 'perpendicular', 'neither'),
-             'figure': {'kind': 'line-pair', 'columns': 7, 'rows': 6, 'lines': [[[1, 1], [3, 2]], [[3, 1], [2, 3]]]}}
+             'figure': scene(*[{'type': 'point', 'id': k, 'at': at} for k, at in (('on0a', [1, 1]), ('on0b', [3, 2]), ('on1a', [3, 1]), ('on1b', [2, 3]))])}
     require(solve_angle(lines) == 'option-b', '(2, 1) and (-1, 2) are perpendicular')
     return 9
 

@@ -1671,6 +1671,46 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "gcf-lcm",
+    "greatest-common-factor",
+    "Find the greatest common factor of two whole numbers up to 100, including equal-sets and square-tile contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "least-common-multiple",
+    "Find the least common multiple of two whole numbers from 2 to 12, including package and repeating-time contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "distributive-gcf",
+    "Express a sum of two whole numbers up to 100 as their greatest common factor times a sum with no common factor.",
+  ],
+  [
+    "integer-division",
+    "standard-algorithm",
+    "Divide multidigit whole numbers by two-digit divisors with the standard algorithm.",
+  ],
+  [
+    "integer-division",
+    "remainder-meaning",
+    "Interpret a whole-number remainder in context as one more group, a dropped part or the amount left over.",
+  ],
+  [
+    "signed-numbers",
+    "opposite-quantities",
+    "Represent quantities in opposite directions from a reference 0 with positive and negative numbers.",
+  ],
+  [
+    "signed-numbers",
+    "opposites-on-line",
+    "Read integers on a number line and find opposites, including the opposite of an opposite.",
+  ],
+  [
+    "rational-stories",
+    "signed-decimal-stories",
+    "Solve multistep temperature, elevation and account-balance problems with signed decimals exactly.",
+  ],
+  [
     "unit-rates",
     "whole-quantity-unit-rates",
     "Find a unit rate from two whole-number or money quantities in the direction the question asks, with whole, decimal or fraction results.",

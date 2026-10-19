@@ -12,6 +12,7 @@ import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
@@ -26,6 +27,7 @@ import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { factArrayLessons } from "./fact-arrays-lessons";
 import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
+import type { EarlyOperationsIllustrationKind } from "./EarlyOperationsIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -56,6 +58,13 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "prime-factor-venn"
+      | "gcf-area"
+      | "multiple-jumps"
+      | "long-division"
+      | "elevation-line"
+      | "opposite-line"
+      | "story-jumps"
       | AttributeIllustrationKind
       | "multiply-tens-groups"
       | "area-model-product"
@@ -69,6 +78,7 @@ export interface Lesson {
       | "fraction-rate-copies"
       | "story-tapes"
       | FactArrayIllustrationKind
+      | EarlyOperationsIllustrationKind
       | ShapeIllustrationKind
       | AngleIllustrationKind
       | PolygonIllustrationKind
@@ -587,6 +597,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
   ...equationLessons,

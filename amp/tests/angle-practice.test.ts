@@ -4,20 +4,17 @@ import { generateProblem } from "../src/math/engine";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { angleTemplates } from "../src/math/angle-practice";
 import { templateRole } from "../src/learning/placement";
-import { problemLesson } from "../src/content/problem-lessons";
-import {
-  animationFrames,
-  animationModel,
-} from "../src/web/lesson-animation/model";
+import { layoutScene } from "../src/math/scene";
 
-test("angle problems are deterministic, valid and balanced", () => {
+test("angle problems are deterministic, valid, balanced scenes", () => {
   for (const t of angleTemplates) {
-    assert.equal(t.requiredFigureCapability, "angle-figures-v1");
+    assert.equal(t.requiredFigureCapability, "scenes-v1");
     const answers = new Map<string, number>();
     for (let i = 0; i < 200; i++) {
       const p = generateProblem(t.id, `angle-${i}`);
       assert.deepEqual(p, generateProblem(t.id, `angle-${i}`));
       generatedProblemSchema.parse(p);
+      assert.equal(p.public.figure?.kind, "scene");
       answers.set(p.answer, (answers.get(p.answer) ?? 0) + 1);
     }
     for (const [answer, n] of answers)
@@ -29,20 +26,23 @@ test("a protractor angle is read from the scale at 0 on its first ray", () => {
   for (let i = 0; i < 100; i++) {
     const p = generateProblem("protractor-reading", `scale-${i}`);
     const f = p.public.figure!;
-    assert(f.kind === "protractor");
-    assert.equal(Number(p.answer), Math.abs(f.rays[1] - f.rays[0]));
+    assert(f.kind === "scene");
+    const tool = f.scene.elements.find((e) => e.type === "protractor")!;
+    assert(tool.type === "protractor");
+    assert.equal(Number(p.answer), Math.abs(tool.rays[1] - tool.rays[0]));
   }
 });
 
-test("the protractor lesson sweeps its own example", () => {
-  for (let i = 0; i < 40; i++) {
-    const lesson = problemLesson("protractor-reading", `animation-${i}`);
-    const model = animationModel(lesson);
-    assert(model?.kind === "protractor-sweep");
-    assert.equal(String(model.measure), lesson.example.answer);
-    const frames = animationFrames(model);
-    assert.equal(frames.length, 3);
-    assert.ok(frames[2]!.math.includes(`${model.measure}^\\circ`));
+test("an unknown part is drawn as ? and never written in the payload", () => {
+  for (let i = 0; i < 100; i++) {
+    const p = generateProblem("adjacent-angles", `parts-${i}`);
+    const f = p.public.figure!;
+    assert(f.kind === "scene");
+    const plain = layoutScene(f.scene).items.flatMap((d) =>
+      d.k === "text" ? [d.plain] : [],
+    );
+    assert.ok(!plain.includes(`${p.answer}°`), p.public.prompt);
+    assert.ok(!JSON.stringify(f).includes(`${p.answer}°`));
   }
 });
 

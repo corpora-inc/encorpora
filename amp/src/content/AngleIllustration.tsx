@@ -1,5 +1,7 @@
 import React from "react";
-import { Protractor } from "../web/AngleFigure";
+import { SceneFigure } from "../web/scene/SceneFigure";
+import { protractor, scene } from "../math/scene/author";
+import type { Element, Point, Scene } from "../math/scene/spec";
 
 const kinds = [
   "degree-turns",
@@ -13,54 +15,20 @@ export const isAngleIllustration = (
   kind: string,
 ): kind is AngleIllustrationKind => (kinds as readonly string[]).includes(kind);
 
-const ink = "var(--color-figure-ink)",
-  warm = "var(--color-figure-warm)",
-  fill = "var(--color-figure-accent-fill)",
-  strong = "var(--color-figure-accent-fill-strong)";
-const rad = Math.PI / 180;
-type P = { x: number; y: number };
-const polar = (c: P, r: number, d: number): P => ({
-  x: c.x + r * Math.cos(d * rad),
-  y: c.y - r * Math.sin(d * rad),
+const toward = (c: Point, d: number, r: number): Point => [
+  c[0] + r * Math.cos((d * Math.PI) / 180),
+  c[1] + r * Math.sin((d * Math.PI) / 180),
+];
+const label = (id: string, at: Point, text: string): Element => ({
+  type: "text",
+  id,
+  at,
+  text,
+  font: "sans",
+  align: [0, -1],
 });
-const f2 = (n: number) => n.toFixed(2);
-const name = { fontSize: 16, fill: ink, textAnchor: "middle" as const };
-const svgStyle = {
-  width: "100%",
-  maxWidth: 440,
-  display: "block",
-  margin: "0 auto",
-} as const;
-/** A filled wedge from direction a counterclockwise to b. */
-function wedge(c: P, r: number, a: number, b: number) {
-  const s = polar(c, r, a),
-    e = polar(c, r, b);
-  return `M${c.x} ${c.y} L${f2(s.x)} ${f2(s.y)} A${r} ${r} 0 ${b - a > 180 ? 1 : 0} 0 ${f2(e.x)} ${f2(e.y)} Z`;
-}
-function Ray({ c, d, r }: { c: P; d: number; r: number }) {
-  const e = polar(c, r, d);
-  return (
-    <path
-      d={`M${c.x} ${c.y} L${f2(e.x)} ${f2(e.y)}`}
-      stroke={ink}
-      strokeWidth={2.5}
-      strokeLinecap="round"
-    />
-  );
-}
-function Arrowhead({ at, d }: { at: P; d: number }) {
-  const back = (s: number) => polar(at, 12, d + 180 + s * 28);
-  const l = back(1),
-    r = back(-1);
-  return (
-    <path
-      d={`M${f2(at.x)} ${f2(at.y)} L${f2(l.x)} ${f2(l.y)} L${f2(r.x)} ${f2(r.y)} Z`}
-      fill={ink}
-    />
-  );
-}
 
-/** Exact models: every angle is drawn at its true measure. */
+/** Lesson models built with the scene framework, drawn revealed. */
 export function AngleIllustration({ kind }: { kind: AngleIllustrationKind }) {
   const caption = {
     "degree-turns":
@@ -77,19 +45,10 @@ export function AngleIllustration({ kind }: { kind: AngleIllustrationKind }) {
   return (
     <figure
       className="lesson-illustration"
+      data-lesson-illustration={kind}
       style={{ margin: "24px 0", breakInside: "avoid" }}
     >
-      {kind === "degree-turns" ? (
-        <Turns />
-      ) : kind === "protractor-scales" ? (
-        <Scales />
-      ) : kind === "line-ray-segment" ? (
-        <Linear />
-      ) : kind === "angle-kinds" ? (
-        <Kinds />
-      ) : (
-        <Folds />
-      )}
+      <SceneFigure scene={scenes[kind]()} reveal kind={kind} />
       <figcaption style={{ fontSize: "0.875rem", marginTop: 8 }}>
         {caption}
       </figcaption>
@@ -97,281 +56,306 @@ export function AngleIllustration({ kind }: { kind: AngleIllustrationKind }) {
   );
 }
 
-function Turns() {
-  const items: [string, number][] = [
-    ["90°", 90],
-    ["180°", 180],
-    ["30°", 30],
-  ];
-  return (
-    <svg
-      viewBox="0 0 420 170"
-      role="img"
-      aria-label="Three circles: a quarter turn of 90 degrees, a half turn of 180 degrees, and one of twelve equal angles, 30 degrees"
-      data-lesson-illustration="degree-turns"
-      style={svgStyle}
-    >
-      {items.map(([label, m], i) => {
-        const c = { x: 70 + i * 140, y: 75 };
-        return (
-          <g key={label}>
-            <circle
-              cx={c.x}
-              cy={c.y}
-              r={55}
-              fill="none"
-              stroke={ink}
-              strokeWidth={2}
-            />
-            {i === 2 &&
-              Array.from({ length: 12 }, (_, k) => (
-                <Ray key={k} c={c} d={k * 30} r={55} />
-              ))}
-            <path
-              d={wedge(c, 55, 0, m)}
-              fill={strong}
-              stroke={ink}
-              strokeWidth={2.5}
-            />
-            <text x={c.x} y={158} style={{ ...name, fontWeight: 700 }}>
-              {label}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-function Scales() {
-  const c = { x: 210, y: 190 };
-  const ray = polar(c, 156, 130),
-    base = polar(c, 156, 180);
-  const tick = polar(c, 150 - 6, 130),
-    value = polar(c, 150 - 98, 116);
-  return (
-    <svg
-      viewBox="0 0 420 222"
-      role="img"
-      aria-label="A protractor with ray BA on 0 at the left and ray BC crossing the outer scale at 50"
-      data-lesson-illustration="protractor-scales"
-      style={svgStyle}
-    >
-      <Protractor c={c} radius={150}>
-        <path
-          d={`M${c.x} ${c.y} L${f2(base.x)} ${f2(base.y)}`}
-          stroke={warm}
-          strokeWidth={3}
-        />
-        <path
-          d={`M${c.x} ${c.y} L${f2(ray.x)} ${f2(ray.y)}`}
-          stroke={ink}
-          strokeWidth={3}
-        />
-      </Protractor>
-      <circle
-        cx={tick.x}
-        cy={tick.y}
-        r={9}
-        fill="none"
-        stroke={warm}
-        strokeWidth={2.5}
-      />
-      <text
-        x={value.x}
-        y={value.y + 6}
-        textAnchor="middle"
-        style={{ fontSize: 18, fontWeight: 700, fill: warm }}
-      >
-        50°
-      </text>
-      <g style={{ fontSize: 18, fontWeight: 700, fill: ink }}>
-        <text x={base.x - 6} y={base.y + 6} textAnchor="end">
-          A
-        </text>
-        <text x={c.x} y={c.y + 24} textAnchor="middle">
-          B
-        </text>
-        <text
-          x={polar(c, 172, 130).x}
-          y={polar(c, 172, 130).y + 6}
-          textAnchor="middle"
-        >
-          C
-        </text>
-      </g>
-    </svg>
-  );
-}
-
-function Linear() {
-  const rows: [string, boolean, boolean][] = [
-    ["line AB", true, true],
-    ["ray AB", false, true],
-    ["line segment AB", false, false],
-  ];
-  return (
-    <svg
-      viewBox="0 0 420 200"
-      role="img"
-      aria-label="Line AB with two arrows, ray AB starting at A, and line segment AB with two endpoints"
-      data-lesson-illustration="line-ray-segment"
-      style={svgStyle}
-    >
-      {rows.map(([label, left, right], i) => {
-        const y = 36 + i * 62,
-          a = { x: 70, y },
-          b = { x: 200, y };
-        return (
-          <g key={label}>
-            <path
-              d={`M${left ? 24 : a.x} ${y} L${right ? 246 : b.x} ${y}`}
-              stroke={ink}
-              strokeWidth={2.5}
-            />
-            {left && <Arrowhead at={{ x: 20, y }} d={180} />}
-            {right && <Arrowhead at={{ x: 250, y }} d={0} />}
-            {[a, b].map((p, k) => (
-              <g key={k}>
-                <circle cx={p.x} cy={p.y} r={5} fill={ink} />
-                <text x={p.x} y={p.y - 11} style={{ ...name, fontWeight: 700 }}>
-                  {k === 0 ? "A" : "B"}
-                </text>
-              </g>
-            ))}
-            <text x={272} y={y + 6} style={{ ...name, textAnchor: "start" }}>
-              {label}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-function Kinds() {
-  const angles: [string, number, number][] = [
-    ["acute", 50, 25],
-    ["right", 90, 130],
-    ["obtuse", 130, 255],
-    ["straight", 180, 362],
-  ];
-  return (
-    <svg
-      viewBox="0 0 420 260"
-      role="img"
-      aria-label="An acute, a right, an obtuse and a straight angle; then a pair of parallel lines and a pair of perpendicular lines"
-      data-lesson-illustration="angle-kinds"
-      style={svgStyle}
-    >
-      {angles.map(([label, m, x]) => {
-        const c = { x, y: 95 };
-        return (
-          <g key={label}>
-            {m === 90 ? (
-              <path
-                d={`M${c.x + 14} ${c.y} L${c.x + 14} ${c.y - 14} L${c.x} ${c.y - 14}`}
-                fill="none"
-                stroke={ink}
-                strokeWidth={2}
-              />
-            ) : (
-              <path
-                d={wedge(c, 20, 0, m)}
-                fill={fill}
-                stroke={warm}
-                strokeWidth={2}
-              />
-            )}
-            <Ray c={c} d={0} r={48} />
-            <Ray c={c} d={m} r={48} />
-            <text x={m === 180 ? c.x : c.x + 22} y={130} style={name}>
-              {label}
-            </text>
-          </g>
-        );
-      })}
-      <path
-        d="M30 170 L180 190 M30 210 L180 230"
-        stroke={ink}
-        strokeWidth={2.5}
-      />
-      <text x={105} y={252} style={name}>
-        parallel
-      </text>
-      <path
-        d="M250 200 L390 200 M320 160 L320 240"
-        stroke={ink}
-        strokeWidth={2.5}
-      />
-      <path
-        d="M320 200 L334 200 L334 186 L320 186"
-        fill="none"
-        stroke={ink}
-        strokeWidth={2}
-      />
-      <text x={320} y={256} style={name}>
-        perpendicular
-      </text>
-    </svg>
-  );
-}
-
-function Folds() {
-  const top = 60;
-  const rect = (x: number) => `M${x} ${top} h150 v80 h-150 Z`;
-  // The lower-right half of the second rectangle, folded across its
-  // diagonal, drawn exactly by reflecting its corner.
-  const a = { x: 240, y: top + 80 },
-    b = { x: 390, y: top },
-    p = { x: 390, y: top + 80 };
-  const len = Math.hypot(b.x - a.x, b.y - a.y),
-    ux = (b.x - a.x) / len,
-    uy = (b.y - a.y) / len;
-  const along = (p.x - a.x) * ux + (p.y - a.y) * uy;
-  const q = {
-    x: a.x + 2 * along * ux - (p.x - a.x),
-    y: a.y + 2 * along * uy - (p.y - a.y),
-  };
-  return (
-    <svg
-      viewBox="0 0 420 200"
-      role="img"
-      aria-label="A rectangle with its two lines of symmetry, and a rectangle folded along a diagonal whose corners do not match"
-      data-lesson-illustration="symmetry-folds"
-      style={svgStyle}
-    >
-      <path d={rect(20)} fill={fill} stroke={ink} strokeWidth={2.5} />
-      <path
-        d={`M95 ${top - 12} V${top + 92} M8 ${top + 40} H182`}
-        stroke={warm}
-        strokeWidth={2.5}
-        strokeDasharray="8 6"
-      />
-      <text x={95} y={188} style={name}>
-        2 lines of symmetry
-      </text>
-      <path
-        d={`M240 ${top} L${b.x} ${b.y} L${a.x} ${a.y} Z`}
-        fill={fill}
-        stroke={ink}
-        strokeWidth={2.5}
-      />
-      <path
-        d={`M${a.x} ${a.y} L${f2(q.x)} ${f2(q.y)} L${b.x} ${b.y} Z`}
-        fill={strong}
-        stroke={warm}
-        strokeWidth={2}
-      />
-      <path
-        d={`M${a.x} ${a.y} L${b.x} ${b.y}`}
-        stroke={ink}
-        strokeWidth={2}
-        strokeDasharray="8 6"
-      />
-      <text x={315} y={188} style={name}>
-        a diagonal is not
-      </text>
-    </svg>
-  );
-}
+const scenes: Record<AngleIllustrationKind, () => Scene> = {
+  "degree-turns": () =>
+    scene(
+      ...[90, 180, 30].flatMap((m, i): Element[] => {
+        const c: Point = [i * 2.7, 0];
+        return [
+          {
+            type: "arc",
+            id: `turn${i}`,
+            center: c,
+            r: 1,
+            from: 0,
+            to: m,
+            fill: "accent-strong",
+            stroke: "ink",
+            width: 2.5,
+          },
+          {
+            type: "circle",
+            id: `face${i}`,
+            center: c,
+            r: 1,
+            stroke: "ink",
+            width: 2,
+          },
+          ...(i === 2
+            ? Array.from({ length: 12 }, (_, k): Element => ({
+                type: "segment",
+                id: `spoke${k}`,
+                from: c,
+                to: toward(c, k * 30, 1),
+                stroke: "ink",
+                width: 1.25,
+              }))
+            : []),
+          {
+            type: "text",
+            id: `name${i}`,
+            at: [c[0], -1.2],
+            text: `${m}°`,
+            font: "sans",
+            bold: true,
+            align: [0, -1],
+          },
+        ];
+      }),
+    ).build({
+      width: 420,
+      title: "Quarter turn, half turn and one twelfth of a turn",
+    }),
+  "protractor-scales": () =>
+    scene(
+      protractor([180, 130], ["A", "B", "C"]).id("p").element(),
+      {
+        type: "circle",
+        id: "reading",
+        center: toward([0, 0], 130, 0.955),
+        r: 0.07,
+        stroke: "warm",
+        width: 2.5,
+      },
+      {
+        type: "text",
+        id: "value",
+        at: toward([0, 0], 117, 0.42),
+        text: "50°",
+        font: "sans",
+        bold: true,
+        color: "warm",
+        halo: true,
+      },
+    ).build({
+      width: 420,
+      title: "Reading the outer scale from 0 on the left",
+    }),
+  "line-ray-segment": () =>
+    scene(
+      ...(
+        [
+          ["line", "both"],
+          ["ray", "end"],
+          ["segment", undefined],
+        ] as const
+      ).flatMap(([name, arrow], i): Element[] => {
+        const y = -i * 1.1;
+        const left = arrow === "both" ? -0.8 : 0;
+        const right = arrow ? 3.8 : 3;
+        return [
+          {
+            type: "segment",
+            id: `${name}`,
+            from: [left, y],
+            to: [right, y],
+            stroke: "ink",
+            width: 3,
+            ...(arrow ? { arrow } : {}),
+          },
+          { type: "point", id: `${name}A`, at: [0, y], r: 5, color: "ink" },
+          { type: "point", id: `${name}B`, at: [3, y], r: 5, color: "ink" },
+          {
+            type: "text",
+            id: `${name}Aname`,
+            at: [0, y],
+            text: "A",
+            bold: true,
+            offset: [0, -14],
+          },
+          {
+            type: "text",
+            id: `${name}Bname`,
+            at: [3, y],
+            text: "B",
+            bold: true,
+            offset: [0, -14],
+          },
+          {
+            type: "text",
+            id: `${name}Label`,
+            at: [4.4, y],
+            text: name === "segment" ? "line segment AB" : `${name} AB`,
+            font: "sans",
+            align: [-1, 0],
+          },
+        ];
+      }),
+    ).build({ width: 420, title: "A line, a ray and a line segment" }),
+  "angle-kinds": () =>
+    scene(
+      ...(
+        [
+          ["acute", 50, 0],
+          ["right", 90, 1.6],
+          ["obtuse", 130, 3.6],
+          ["straight", 180, 5.6],
+        ] as const
+      ).flatMap(([name, m, x]): Element[] => {
+        const c: Point = [x, 0];
+        return [
+          {
+            type: "segment",
+            id: `${name}0`,
+            from: c,
+            to: toward(c, 0, 1),
+            stroke: "ink",
+            width: 3,
+          },
+          {
+            type: "segment",
+            id: `${name}1`,
+            from: c,
+            to: toward(c, m, 1),
+            stroke: "ink",
+            width: 3,
+          },
+          m === 90
+            ? {
+                type: "polyline",
+                id: `${name}Mark`,
+                points: [
+                  toward(c, 0, 0.22),
+                  [c[0] + 0.22, c[1] + 0.22],
+                  toward(c, 90, 0.22),
+                ],
+                stroke: "ink",
+                width: 2,
+              }
+            : {
+                type: "arc",
+                id: `${name}Mark`,
+                center: c,
+                r: 0.3,
+                from: 0,
+                to: m,
+                stroke: "warm",
+                width: 2.5,
+              },
+          label(`${name}Name`, [c[0] + (m === 180 ? 0 : 0.5), -0.25], name),
+        ];
+      }),
+      {
+        type: "segment",
+        id: "par0",
+        from: [0, -1.6],
+        to: [2.6, -1.9],
+        stroke: "ink",
+        width: 3,
+      },
+      {
+        type: "segment",
+        id: "par1",
+        from: [0, -2.3],
+        to: [2.6, -2.6],
+        stroke: "ink",
+        width: 3,
+      },
+      label("parName", [1.3, -2.85], "parallel"),
+      {
+        type: "segment",
+        id: "perp0",
+        from: [3.9, -2.1],
+        to: [6.3, -2.1],
+        stroke: "ink",
+        width: 3,
+      },
+      {
+        type: "segment",
+        id: "perp1",
+        from: [5.1, -1.3],
+        to: [5.1, -2.8],
+        stroke: "ink",
+        width: 3,
+      },
+      {
+        type: "polyline",
+        id: "perpMark",
+        points: [
+          [5.32, -2.1],
+          [5.32, -1.88],
+          [5.1, -1.88],
+        ],
+        stroke: "ink",
+        width: 2,
+      },
+      label("perpName", [5.1, -2.95], "perpendicular"),
+    ).build({
+      width: 420,
+      title: "Kinds of angles, and parallel and perpendicular lines",
+    }),
+  "symmetry-folds": () => {
+    // The lower-right half of the second rectangle, folded across its
+    // diagonal: its corner reflected exactly.
+    const a: Point = [3.4, 0],
+      b: Point = [6.4, 1.6],
+      p: Point = [6.4, 0];
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    const u: Point = [(b[0] - a[0]) / len, (b[1] - a[1]) / len];
+    const along = (p[0] - a[0]) * u[0] + (p[1] - a[1]) * u[1];
+    const q: Point = [
+      a[0] + 2 * along * u[0] - (p[0] - a[0]),
+      a[1] + 2 * along * u[1] - (p[1] - a[1]),
+    ];
+    return scene(
+      {
+        type: "polygon",
+        id: "whole",
+        points: [
+          [0, 0],
+          [3, 0],
+          [3, 1.6],
+          [0, 1.6],
+        ],
+        fill: "accent-fill",
+        stroke: "ink",
+        width: 2.5,
+      },
+      {
+        type: "segment",
+        id: "axis0",
+        from: [1.5, -0.25],
+        to: [1.5, 1.85],
+        stroke: "warm",
+        width: 2.5,
+        dash: "dash",
+      },
+      {
+        type: "segment",
+        id: "axis1",
+        from: [-0.25, 0.8],
+        to: [3.25, 0.8],
+        stroke: "warm",
+        width: 2.5,
+        dash: "dash",
+      },
+      label("wholeName", [1.5, -0.45], "2 lines of symmetry"),
+      {
+        type: "polygon",
+        id: "half",
+        points: [[3.4, 1.6], b, a],
+        fill: "accent-fill",
+        stroke: "ink",
+        width: 2.5,
+      },
+      {
+        type: "polygon",
+        id: "folded",
+        points: [a, q, b],
+        fill: "accent-strong",
+        stroke: "warm",
+        width: 2,
+      },
+      {
+        type: "segment",
+        id: "diagonal",
+        from: a,
+        to: b,
+        stroke: "ink",
+        width: 2,
+        dash: "dash",
+      },
+      label("foldName", [4.9, -0.45], "a diagonal is not"),
+    ).build({ width: 420, title: "Lines of symmetry of a rectangle" });
+  },
+};

@@ -77,8 +77,7 @@ export function generateChoiceProblem(
         rows: [{ selected: n, label: `${n}/${d}` }],
         unit: "one whole",
       };
-      hint =
-        "Imagine cutting every piece into the same number of smaller pieces. Does the shaded amount change?";
+      hint = `Cut each of the ${d} pieces of ${n}/${d} into the same number of smaller pieces. The shaded amount stays the same, so the shaded count and the whole count grow by the same factor.`;
       explanation = [
         `The whole has ${d} equal pieces, and ${n} of them are shaded.`,
         `Cut each piece into ${k} equal pieces. The whole has ${d} × ${k} = ${d * k} pieces; the shaded part has ${n} × ${k} = ${n * k}.`,
@@ -109,8 +108,7 @@ export function generateChoiceProblem(
       const c = category === 0 ? a + r(1, 4) : a;
       const d = category === 2 ? b : b + r(1, 6);
       prompt = `How many real-number solutions does ${a}x + ${b} = ${c}x + ${d} have?`;
-      hint =
-        "Subtract the x-term on the left from both sides. Then subtract the constant on the left. Is the result a value for x, a contradiction, or an identity?";
+      hint = `Subtract ${a}x and ${b} from both sides of ${a}x + ${b} = ${c}x + ${d}. Is what is left a value for x, a false statement, or true for every x?`;
       explanation = [
         `Subtract ${a}x and then ${b} from both sides: 0 = ${c - a}x + ${d - b}.`,
         category === 0
@@ -155,8 +153,7 @@ export function generateChoiceProblem(
         ],
         lines: [{ m, b }],
       };
-      hint =
-        "Find y when x is zero. Then compare the vertical change from A to B with the horizontal change.";
+      hint = `A sits on the y-axis at ${b}, so the line crosses the y-axis there. From A to B, x goes up by 2: how much does y go up?`;
       explanation = [
         `A is (0, ${b}), so the y-intercept is ${b}. The rule must give y = ${b} when x = 0.`,
         `From A to B, x increases by 2 and y increases by ${2 * m}. The slope is ${2 * m}/2 = ${m}.`,

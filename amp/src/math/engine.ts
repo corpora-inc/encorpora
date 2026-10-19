@@ -1,3 +1,7 @@
+import {
+  numberSystemTemplates,
+  generateNumberSystemProblem,
+} from "./number-system-practice";
 import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   equationTemplates,
@@ -45,6 +49,10 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
+import {
+  earlyOperationsTemplates,
+  generateEarlyOperationsProblem,
+} from "./early-operations-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
@@ -266,7 +274,9 @@ export const templates: readonly TemplateMetadata[] = [
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
+  ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...equationTemplates,
@@ -440,6 +450,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...numberSystemTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -472,6 +483,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (numberSystemTemplates.some((t) => t.id === templateId))
+    return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
@@ -514,6 +527,8 @@ function generateRawProblem(
     return generateFactsProblem(templateId, seed);
   if (factArrayTemplates.some((t) => t.id === templateId))
     return generateFactArrayProblem(templateId, seed);
+  if (earlyOperationsTemplates.some((t) => t.id === templateId))
+    return generateEarlyOperationsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

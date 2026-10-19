@@ -183,25 +183,48 @@
     fill 500ms ease,
     stroke-opacity 400ms ease;
 }
-.animation-ray {
-  stroke: var(--color-figure-ink);
-  stroke-width: 3;
-  stroke-linecap: round;
-  transition: opacity 400ms ease;
-}
-.animation-ray-base {
-  stroke: var(--color-figure-warm);
-}
-.animation-ring {
-  fill: none;
-  stroke: var(--color-figure-warm);
-  stroke-width: 2.5;
-}
 .animation-morph-shape {
   fill: var(--color-figure-accent-fill);
   stroke: var(--color-figure-ink);
   stroke-width: 2.5;
   stroke-linejoin: round;
+}
+.animation-draw {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  transition: stroke-dashoffset 600ms ease;
+}
+.animation-jump-positive {
+  stroke: var(--color-success-accent);
+}
+.animation-jump-negative {
+  stroke: var(--color-danger-accent);
+}
+.animation-stage text.animation-halo {
+  stroke: var(--color-surface-raised);
+  stroke-width: 4px;
+  paint-order: stroke;
+}
+.animation-guide {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-dasharray: 4 5;
+}
+.animation-accent-dot {
+  fill: var(--color-success-accent);
+  stroke: var(--color-surface-raised);
+  stroke-width: 1.5;
+}
+.animation-warm-dot {
+  fill: var(--color-danger-accent);
+  stroke: var(--color-surface-raised);
+  stroke-width: 1.5;
+}
+.animation-ring {
+  fill: var(--color-surface-raised);
+  stroke: var(--color-danger-accent);
+  stroke-width: 2.5;
 }
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
@@ -209,8 +232,8 @@
   .animation-step,
   .animation-lift,
   .animation-trace,
-  .animation-ray,
-  .animation-paint {
+  .animation-paint,
+  .animation-draw {
     transition: none;
   }
 }

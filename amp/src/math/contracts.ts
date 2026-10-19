@@ -21,6 +21,10 @@ import {
   type PartWholeFigure,
 } from "./part-whole-models.js";
 import {
+  earlyOperationsFigureSchemas,
+  type EarlyOperationsFigure,
+} from "./early-operations-models.js";
+import {
   factArrayFigureSchemas,
   type FactArrayFigure,
 } from "./fact-array-models.js";
@@ -29,7 +33,6 @@ import {
   type DataDisplayFigure,
 } from "./data-display-models.js";
 import { shapeFigureSchemas, type ShapeFigure } from "./shape-figures.js";
-import { angleFigureSchemas, type AngleFigure } from "./angle-figures.js";
 import {
   geometryFigureSchemas,
   type GeometryFigure,
@@ -65,13 +68,13 @@ export type SemanticFigure =
   | PartWholeFigure
   | AttributeFigure
   | FactArrayFigure
+  | EarlyOperationsFigure
   | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
   | FunctionDisplayFigure
   | GeometryFigure
   | ShapeFigure
-  | AngleFigure
   /** Any figure built with the scene framework (docs/figures.md). */
   | { kind: "scene"; scene: Scene }
   | {
@@ -123,6 +126,16 @@ export type SemanticFigure =
     }
   | { kind: "clock"; hour: number; minute: number }
   | { kind: "number-line"; min: number; max: number; points: number[] }
+  | {
+      /** One-unit ticks with 0 emphasized; jumps are signed changes drawn from `start`. */
+      kind: "signed-line";
+      min: number;
+      max: number;
+      labelEvery: number;
+      points: { value: number; label: string }[];
+      start?: number;
+      jumps?: number[];
+    }
   | { kind: "collection"; count: number }
   | { kind: "fraction"; selected: number; parts: number }
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
@@ -157,7 +170,6 @@ export const figureCapabilities = [
   "function-displays-v1",
   "volume-coordinate-figures-v1",
   "shape-figures-v1",
-  "angle-figures-v1",
   "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
@@ -282,12 +294,12 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...partWholeFigureSchemas,
     ...attributeFigureSchemas,
     ...factArrayFigureSchemas,
+    ...earlyOperationsFigureSchemas,
     ...timeMoneyFigureSchemas,
     ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     ...shapeFigureSchemas,
-    ...angleFigureSchemas,
     z.object({ kind: z.literal("scene"), scene: sceneSchema }).strict(),
     z
       .object({
@@ -475,6 +487,41 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
       .refine(
         (v) => v.max > v.min && v.points.every((p) => p >= v.min && p <= v.max),
       ),
+    z
+      .object({
+        kind: z.literal("signed-line"),
+        min: z.number().int().max(0),
+        max: z.number().int().min(0),
+        labelEvery: z.number().int().min(1).max(10),
+        points: z
+          .array(
+            z
+              .object({
+                value: z.number().finite(),
+                label: z.string().regex(/^[A-Z]$/),
+              })
+              .strict(),
+          )
+          .max(2),
+        start: z.number().finite().optional(),
+        jumps: z.array(z.number().finite()).min(1).max(4).optional(),
+      })
+      .strict()
+      .refine((v) => {
+        const inside = (n: number) =>
+          n >= v.min && n <= v.max && Number.isInteger(n * 2);
+        if (v.max - v.min < 4 || v.max - v.min > 30) return false;
+        if (!v.points.every((p) => inside(p.value))) return false;
+        if ((v.start === undefined) !== (v.jumps === undefined)) return false;
+        if (v.start === undefined) return v.points.length > 0;
+        let at = v.start;
+        if (!inside(at)) return false;
+        for (const jump of v.jumps!) {
+          at += jump;
+          if (jump === 0 || !inside(at)) return false;
+        }
+        return true;
+      }),
     z
       .object({
         kind: z.literal("collection"),
