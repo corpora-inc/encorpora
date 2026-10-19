@@ -7,7 +7,9 @@ import { angleSchema, protractorSchema } from "./angle";
 import { areaModelSchema } from "./area-model";
 import { arraySchema } from "./array";
 import { baseTenSchema } from "./base-ten";
+import { boxPlotSchema } from "./box-plot";
 import { clockSchema } from "./clock";
+import { dotPlotSchema } from "./dot-plot";
 import { fractionBarSchema } from "./fraction-bar";
 import { graphSchema } from "./graph";
 import { lineTableSchema } from "./line-table";
@@ -25,7 +27,9 @@ export const componentSchemas = [
   areaModelSchema,
   arraySchema,
   baseTenSchema,
+  boxPlotSchema,
   clockSchema,
+  dotPlotSchema,
   fractionBarSchema,
   graphSchema,
   lineTableSchema,
@@ -44,7 +48,9 @@ export * from "./angle";
 export * from "./area-model";
 export * from "./array";
 export * from "./base-ten";
+export * from "./box-plot";
 export * from "./clock";
+export * from "./dot-plot";
 export * from "./fraction-bar";
 export * from "./graph";
 export * from "./line-table";
