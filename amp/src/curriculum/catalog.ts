@@ -1598,6 +1598,39 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Decimal tasks assess reading, renaming, comparing, rounding and computing
+// with given decimals; written justification and models drawn by the learner
+// remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "decimal-fractions",
+    "tenths-hundredths-notation",
+    "Name shaded tenths and hundredths of one whole as decimals, rename tenths as hundredths, and read tenths and hundredths on a number line.",
+  ],
+  [
+    "compare-decimals",
+    "hundredths-comparison",
+    "Choose the greater or lesser of two decimals with one or two places, including pairs where the shorter decimal is greater.",
+  ],
+  [
+    "decimal-place-value",
+    "thousandths-read-compare-round",
+    "Name the value of a decimal digit, write a decimal from expanded form, compare decimals to thousandths and round to the nearest whole, tenth or hundredth.",
+  ],
+  [
+    "decimal-algorithms",
+    "multidigit-decimal-operations",
+    "Add, subtract, multiply and divide multidigit decimals with terminating results.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Early fraction tasks assess recognition, naming and comparison from given
 // models; learner-drawn partitions and written justification remain planned.
 for (const [skillId, suffix, description] of [

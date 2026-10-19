@@ -91,10 +91,10 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["rectangle-area"],
     ["divide-facts"],
   ],
-  // Grade 5: multiplicative comparison, fractions, factors or place value,
-  // measurement.
+  // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
+  // place value, measurement.
   [
-    ["comparison-amount", "full-kits"],
+    ["compare-decimals-hundredths", "decimal-grid-read"],
     [
       "compare-fractions",
       "compare-unlike-fractions",
@@ -106,7 +106,11 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 6: decimals, the order of operations, fractions, the mean.
   [
-    ["decimal-addition", "decimal-multiplication"],
+    [
+      "decimal-addition",
+      "decimal-multiplication",
+      "compare-decimals-thousandths",
+    ],
     ["operation-order", "integer-power"],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
     ["mean-data", "mean-missing-value"],

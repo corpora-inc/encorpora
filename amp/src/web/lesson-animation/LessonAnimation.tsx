@@ -4,12 +4,17 @@ import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import "./animation.css";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "decimal-fill":
+      return <DecimalFillStage model={model} step={step} />;
+    case "decimal-align":
+      return <DecimalAlignStage model={model} step={step} />;
     case "prism-layers":
       return <PrismLayersModel model={model} step={step} />;
     case "quadrant-walk":

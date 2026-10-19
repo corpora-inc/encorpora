@@ -3,6 +3,7 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
 import {
   partWholeFigureSchemas,
   type PartWholeFigure,
@@ -19,6 +20,7 @@ import {
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
+  | DecimalFigure
   | DataDisplayFigure
   | GeometryFigure
   | {
@@ -120,6 +122,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
+    ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     z

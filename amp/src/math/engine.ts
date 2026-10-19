@@ -1,3 +1,4 @@
+import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   distributionTemplates,
   generateDistributionProblem,
@@ -237,6 +238,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...decimalTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -359,6 +361,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...partWholeTemplates,
+    ...decimalTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -393,6 +396,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (decimalTemplates.some((t) => t.id === templateId))
+    return generateDecimalProblem(templateId, seed);
   if (volumeCoordinateTemplates.some((t) => t.id === templateId))
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
