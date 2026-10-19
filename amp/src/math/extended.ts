@@ -139,6 +139,8 @@ function fraction(n: number, d = 1): string {
   d = Math.abs(d) / a;
   return d === 1 ? `${n}` : `${n}/${d}`;
 }
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+const lcm = (a: number, b: number) => (a * b) / gcd(a, b);
 function decimal(n: number, places: number): string {
   return `${Math.floor(n / 10 ** places)}.${String(n % 10 ** places).padStart(places, "0")}`;
 }
@@ -179,7 +181,7 @@ export function generateExtendedProblem(
       const n = 100 * h + 10 * t + o;
       prompt = `In ${n}, what value does the digit in the ${names[place]} place represent?`;
       answer = `${digits[place]! * 10 ** place}`;
-      hint = "A digit’s value is the digit multiplied by its place value.";
+      hint = `Find the ${names[place]} digit of ${n}: the ${["last", "middle", "first"][place]} digit. Its value is that many ${names[place]}.`;
       explanation = [
         `The ${names[place]} digit is ${digits[place]}.`,
         `${digits[place]} × ${10 ** place} = ${answer}.`,
@@ -191,7 +193,7 @@ export function generateExtendedProblem(
         b = r(1, 999);
       prompt = `What is ${decimal(a, 2)} + ${decimal(b, 2)}?`;
       answer = decimal(a + b, 2);
-      hint = "Align decimal points so you add equal place values.";
+      hint = `Line up the decimal points of ${decimal(a, 2)} and ${decimal(b, 2)} so hundredths sit under hundredths. Add from the hundredths, regrouping as with whole numbers.`;
       explanation = [
         `The numbers are ${a} hundredths and ${b} hundredths.`,
         `${a} + ${b} = ${a + b} hundredths, or ${decimal(a + b, 2)}.`,
@@ -207,10 +209,20 @@ export function generateExtendedProblem(
       prompt = `Which fraction is larger: ${a}/${b} or ${c}/${d}? Enter that fraction.`;
       kind = "fraction";
       answer = a * d > c * b ? fraction(a, b) : fraction(c, d);
-      hint = "Rename both fractions using the same positive denominator.";
+      const common = lcm(b, d),
+        left = (a * common) / b,
+        right = (c * common) / d;
+      hint =
+        b === d
+          ? `${a}/${b} and ${c}/${d} count pieces of the same size. Compare the numerators.`
+          : a === c
+            ? `${a}/${b} and ${c}/${d} have the same number of pieces. Which denominator makes larger pieces?`
+            : `Rename ${a}/${b} and ${c}/${d} with the common denominator ${common}. Then compare the numerators.`;
       explanation = [
-        `With denominator ${b * d}, the fractions are ${a * d}/${b * d} and ${c * b}/${b * d}.`,
-        `${Math.max(a * d, c * b)} is larger than ${Math.min(a * d, c * b)}, so the larger fraction is ${answer}.`,
+        b === d
+          ? `Both fractions count pieces of size 1/${b}: ${a} pieces and ${c} pieces.`
+          : `With denominator ${common}, the fractions are ${left}/${common} and ${right}/${common}.`,
+        `${Math.max(left, right)} is larger than ${Math.min(left, right)}, so the larger fraction is ${answer}.`,
       ];
       break;
     }
@@ -222,7 +234,8 @@ export function generateExtendedProblem(
       prompt = `What is ${a}/${b} × ${c}/${d}?`;
       kind = "fraction";
       answer = fraction(a * c, b * d);
-      hint = "Multiply numerators, multiply denominators, then simplify.";
+      const g = Math.max(gcd(a, d), gcd(c, b));
+      hint = `Multiply the numerators, ${a} × ${c}, and the denominators, ${b} × ${d}.${g > 1 ? ` Cancel first to keep the numbers small: ${gcd(a, d) > 1 ? `${a} and ${d}` : `${c} and ${b}`} share a factor of ${g}.` : " Then simplify."}`;
       explanation = [
         `The numerator product is ${a} × ${c} = ${a * c}.`,
         `The denominator product is ${b} × ${d} = ${b * d}.`,
@@ -238,7 +251,7 @@ export function generateExtendedProblem(
       prompt = `What is ${a}/${b} ÷ ${c}/${d}?`;
       kind = "fraction";
       answer = fraction(a * d, b * c);
-      hint = "Multiply by the reciprocal of the nonzero divisor.";
+      hint = `Dividing by ${c}/${d} is the same as multiplying by its reciprocal, ${d}/${c}. Rewrite it as ${a}/${b} × ${d}/${c}.`;
       explanation = [
         `The reciprocal of ${c}/${d} is ${d}/${c}.`,
         `${a}/${b} × ${d}/${c} = ${a * d}/${b * c} = ${answer}.`,
@@ -251,8 +264,7 @@ export function generateExtendedProblem(
         scale = r(2, 8);
       prompt = `A paint mix uses ${a} cups of blue for every ${b} cups of white. How many cups of blue are needed for ${b * scale} cups of white at the same ratio?`;
       answer = `${a * scale}`;
-      hint =
-        "Find the scale factor for white paint and apply it to blue paint.";
+      hint = `${b * scale} cups of white is how many times ${b} cups? Scale the ${a} cups of blue by that same factor.`;
       explanation = [
         `${b * scale} ÷ ${b} = ${scale}, so the mix is scaled by ${scale}.`,
         `${a} × ${scale} = ${answer} cups of blue.`,
@@ -266,7 +278,13 @@ export function generateExtendedProblem(
       kind = "fraction";
       answer = fraction(p * whole, 100);
       hint =
-        "Percent means per hundred. Multiply by the fraction with denominator 100.";
+        p === 50
+          ? `50% is one half. Find half of ${whole}.`
+          : p === 25
+            ? `25% is one quarter. Split ${whole} into 4 equal parts.`
+            : p % 10 === 0
+              ? `10% of ${whole} is ${whole} ÷ 10. ${p}% is ${p / 10} times that.`
+              : `${p}% means ${p} per hundred, so find ${p}/100 × ${whole}.`;
       explanation = [
         `${p}% = ${p}/100.`,
         `${p}/100 × ${whole} = ${p * whole}/100 = ${answer}.`,
@@ -278,8 +296,9 @@ export function generateExtendedProblem(
         b = r(-20, 20);
       prompt = `What is (${a}) + (${b})?`;
       answer = `${a + b}`;
-      hint =
-        "On a number line, adding a positive number moves right and adding a negative number moves left.";
+      hint = b
+        ? `Start at ${a} on the number line. Adding ${b} moves ${Math.abs(b)} ${b > 0 ? "right" : "left"}.`
+        : `Adding 0 does not move you on the number line from ${a}.`;
       explanation = [
         `Start at ${a}. Adding ${b} changes the value by ${b}.`,
         `${a} + (${b}) = ${answer}.`,
@@ -292,7 +311,11 @@ export function generateExtendedProblem(
       prompt = `What is ${base} raised to the power ${exponent}?`;
       answer = `${base ** exponent}`;
       hint =
-        "For a positive exponent, multiply that many copies of the base. A nonzero base to power zero is one.";
+        exponent === 0
+          ? `Follow the pattern: ${base}² = ${base * base} and ${base}¹ = ${base}. Each step down in the exponent divides by ${base}. What is ${base}⁰?`
+          : exponent === 1
+            ? `The power 1 is a single factor of ${base}.`
+            : `${base} to the power ${exponent} means ${exponent} factors of ${base}: ${Array(exponent).fill(base).join(" × ")}.`;
       explanation =
         exponent === 0
           ? [`Any nonzero base raised to power zero is 1.`, `${base}^0 = 1.`]
@@ -310,7 +333,7 @@ export function generateExtendedProblem(
       prompt = `What is the slope of the line through (${x1}, ${y1}) and (${x1 + dx}, ${y1 + dy})?`;
       kind = "fraction";
       answer = fraction(dy, dx);
-      hint = "Divide the change in y by the corresponding change in x.";
+      hint = `Slope is the change in y over the change in x. Subtract in the same order for both: (${y1 + dy} − ${y1 < 0 ? `(${y1})` : y1}) ÷ (${x1 + dx} − ${x1 < 0 ? `(${x1})` : x1}).`;
       explanation = [
         `Change in y: ${y1 + dy} − (${y1}) = ${dy}.`,
         `Change in x: ${x1 + dx} − (${x1}) = ${dx}.`,
@@ -331,7 +354,9 @@ export function generateExtendedProblem(
       prompt = `Solve for x in the system: ${a}x + ${b}y = ${e}; ${c}x + ${d}y = ${f}.`;
       answer = `${x}`;
       hint =
-        "Multiply equations so the y coefficients agree, then subtract to eliminate y.";
+        b === d
+          ? `Both equations have ${b}y. Subtract one equation from the other to remove y.`
+          : `To remove y, make its coefficients match: multiply the first equation by ${d} and the second by ${b}, then subtract.`;
       explanation = [
         `Multiply the first equation by ${d} and the second by ${b}.`,
         `Subtract: (${a * d} − ${b * c})x = ${e * d} − (${b * f}).`,
@@ -345,8 +370,7 @@ export function generateExtendedProblem(
       prompt = `A bag contains ${red} red counters and ${blue} blue counters. Each counter is equally likely to be drawn. What is the probability of drawing a red counter in one draw?`;
       kind = "fraction";
       answer = fraction(red, red + blue);
-      hint =
-        "Divide the number of favorable counters by the total number of counters.";
+      hint = `${red} of the counters ${isAre(red)} red, out of ${red} + ${blue} in all. Probability = red counters ÷ all counters.`;
       explanation = [
         `There are ${red + blue} counters in total.`,
         `${red} ${isAre(red)} red, so the probability is ${red}/${red + blue} = ${answer}.`,
@@ -359,7 +383,7 @@ export function generateExtendedProblem(
         n = r(3, 12);
       prompt = `An arithmetic sequence has first term ${a} and common difference ${d}. What is term ${n}, with the first term labeled 1?`;
       answer = `${a + (n - 1) * d}`;
-      hint = "There are n − 1 equal steps from term 1 to term n.";
+      hint = `From term 1 to term ${n}, count the steps: one fewer than ${n}. Start at ${a} and ${d < 0 ? `subtract ${-d}` : `add ${d}`} for each step.`;
       explanation = [
         `There are ${n - 1} steps, each adding ${d}.`,
         `${a} + ${n - 1} × (${d}) = ${answer}.`,
@@ -373,8 +397,7 @@ export function generateExtendedProblem(
         x = r(-5, 5);
       prompt = `If f(x) = ${a}x² + ${b}x + ${c}, what is f(${x})?`;
       answer = `${a * x * x + b * x + c}`;
-      hint =
-        "Substitute the input everywhere x appears. Square it before multiplying by the coefficient.";
+      hint = `Replace every x with (${x}): f(${x}) = ${a}(${x})² + ${b}(${x}) + ${c}. Square first${x < 0 ? `; (${x})² is positive` : ""}.`;
       explanation = [
         `f(${x}) = ${a} × (${x})² + ${b} × (${x}) + ${c}.`,
         `${a * x * x} + (${b * x}) + ${c} = ${answer}.`,
@@ -387,8 +410,7 @@ export function generateExtendedProblem(
         target = r(2, 12);
       prompt = `${count} identical notebooks cost ${count * price} dollars. At the same unit price, how many dollars do ${target} notebooks cost?`;
       answer = `${target * price}`;
-      hint =
-        "Find the cost of one notebook before scaling to the requested number.";
+      hint = `First find the cost of one notebook: ${count * price} dollars shared among ${count} notebooks. Then scale to ${target}.`;
       explanation = [
         `One notebook costs ${count * price} ÷ ${count} = ${price} dollars.`,
         `${target} notebooks cost ${target} × ${price} = ${answer} dollars.`,
@@ -401,7 +423,7 @@ export function generateExtendedProblem(
       prompt = `What is ${decimal(a, 1)} × ${decimal(b, 1)}?`;
       kind = "fraction";
       answer = decimal(a * b, 2);
-      hint = "Tenths multiplied by tenths produce hundredths.";
+      hint = `For ${decimal(a, 1)} × ${decimal(b, 1)}, multiply ${a} × ${b} as whole numbers. Tenths times tenths make hundredths, so the product has two decimal places.`;
       explanation = [
         `${decimal(a, 1)} = ${a}/10 and ${decimal(b, 1)} = ${b}/10.`,
         `${a * b}/100 = ${decimal(a * b, 2)}.`,
@@ -415,7 +437,7 @@ export function generateExtendedProblem(
         d = r(2, 8);
       prompt = `Evaluate ${a} + (${b} + ${c}) × ${d}.`;
       answer = `${a + (b + c) * d}`;
-      hint = "Evaluate parentheses first, then multiplication, then addition.";
+      hint = `Work inside the parentheses first: ${b} + ${c}. Then multiply by ${d} before adding ${a}.`;
       explanation = [
         `Inside parentheses: ${b} + ${c} = ${b + c}.`,
         `Multiply: ${b + c} × ${d} = ${(b + c) * d}.`,

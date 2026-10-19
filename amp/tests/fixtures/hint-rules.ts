@@ -93,12 +93,21 @@ export const fixedHint = (id: string) => {
     new Set(problems.map((p) => p.hint)).size === 1
   );
 };
-/** A prompt that states numbers has a hint that names at least one of them. */
-export const unnamedGivens = (id: string) =>
-  sample(id).some((p) => {
-    const given = stated(p.public.prompt);
+/** A prompt that states numbers has a hint that names at least one of them.
+ * A number printed in every prompt (a format example such as "2.35") is
+ * template text, not a given. */
+export const unnamedGivens = (id: string) => {
+  const problems = sample(id);
+  const constant = problems
+    .map((p) => stated(p.public.prompt))
+    .reduce((all, next) => new Set([...all].filter((n) => next.has(n))));
+  return problems.some((p) => {
+    const given = new Set(
+      [...stated(p.public.prompt)].filter((n) => !constant.has(n)),
+    );
     return given.size > 0 && !numbers(p.hint).some((n) => given.has(n));
   });
+};
 export const thin = (id: string) => {
   const m = methods[id]!;
   return m.method.length < 2 || m.method.join(" ").length < 80;
