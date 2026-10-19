@@ -198,6 +198,37 @@ function subtractionSteps(a: number, b: number): string[] {
   return steps;
 }
 
+/** The first move of column addition for these two numbers. */
+function additionHint(a: number, b: number): string {
+  const x = digits(a),
+    y = digits(b),
+    first = carries(a, b)[0];
+  const start = `Line up ${formatWhole(a)} and ${formatWhole(b)} by place and start with the ones: ${x[0]} + ${y[0]}`;
+  if (first === undefined)
+    return `${start}. No column reaches 10, so nothing regroups.`;
+  if (first === 0)
+    return `${start} is 10 or more, so regroup 10 ones as 1 ten.`;
+  return `${start} is less than 10. The ${places[first]} are the first column to reach 10; regroup there.`;
+}
+/** The first move of column subtraction, naming the first place that regroups. */
+function subtractionHint(a: number, b: number): string {
+  const top = digits(a),
+    bottom = digits(b),
+    p = borrows(a, b).at[0];
+  const start = `Line up ${formatWhole(a)} − ${formatWhole(b)} by place and start with the ones: ${top[0]} − ${bottom[0]}`;
+  if (p === undefined)
+    return `${start}. Each top digit is at least the digit below it, so nothing regroups.`;
+  let q = p + 1;
+  while (top[q] === 0) q++;
+  const short =
+    p === 0
+      ? `${start}. ${top[0]} is less than ${bottom[0]}`
+      : `${start} needs no regrouping. In the ${places[p]}, ${top[p]} is less than ${bottom[p]}`;
+  return q === p + 1
+    ? `${short}, so regroup 1 ${one(q)} as 10 ${places[p]}.`
+    : `${short}, and the ${places[p + 1]} digit is 0. Regroup from the ${places[q]} first; each 0 passed becomes 9.`;
+}
+
 /** Pick a target case, then draw candidates until one has it. */
 function draw<T>(
   r: Random,
@@ -245,7 +276,7 @@ export function generateAddSubtractProblem(
       figure = { kind: "base-ten-pair", values: [a, b] };
       prompt = `What is ${a} + ${b}?`;
       answer = a + b;
-      hint = "Add the ones, then the tens. Ten or more ones make another ten.";
+      hint = additionHint(a, b);
       explanation = additionSteps(a, b);
       break;
     }
@@ -256,8 +287,11 @@ export function generateAddSubtractProblem(
       if (!round && start % 10 === 0) start += 1;
       prompt = `${start} + □ = 100. What number goes in the box?`;
       answer = 100 - start;
-      hint = "Count up to the next ten, then count tens up to 100.";
       const next = Math.ceil(start / 10) * 10;
+      hint =
+        start % 10 === 0
+          ? `${start} is ${start / 10} tens, and 100 is ten tens. How many more tens make 100?`
+          : `Count up from ${start} to the next ten, ${next}. Then count by tens from ${next} to 100.`;
       explanation =
         start % 10 === 0
           ? [
@@ -295,8 +329,7 @@ export function generateAddSubtractProblem(
       );
       prompt = `What is ${a} − ${b}?`;
       answer = a - b;
-      hint =
-        "Subtract the ones first. If there are too few ones, regroup 1 ten as 10 ones.";
+      hint = subtractionHint(a, b);
       explanation = subtractionSteps(a, b);
       break;
     }
@@ -323,8 +356,7 @@ export function generateAddSubtractProblem(
       );
       prompt = `What is ${formatWhole(a)} + ${formatWhole(b)}?`;
       answer = a + b;
-      hint =
-        "Line up ones, tens and hundreds. Add each place from the ones, regrouping 10 of a place as 1 of the next.";
+      hint = additionHint(a, b);
       explanation = additionSteps(a, b);
       break;
     }
@@ -355,8 +387,7 @@ export function generateAddSubtractProblem(
       );
       prompt = `What is ${formatWhole(a)} − ${formatWhole(b)}?`;
       answer = a - b;
-      hint =
-        "Subtract from the ones. When a place is too small, regroup 1 from the next place; if that place is 0, regroup from the place after it first.";
+      hint = subtractionHint(a, b);
       explanation = subtractionSteps(a, b);
       break;
     }
@@ -384,8 +415,7 @@ export function generateAddSubtractProblem(
       );
       prompt = `What is ${formatWhole(a)} + ${formatWhole(b)}?`;
       answer = a + b;
-      hint =
-        "Line up the places from the ones. Add each column, regrouping 10 of a place as 1 of the next place to the left.";
+      hint = additionHint(a, b);
       explanation = additionSteps(a, b);
       break;
     }
@@ -420,8 +450,7 @@ export function generateAddSubtractProblem(
       );
       prompt = `What is ${formatWhole(a)} − ${formatWhole(b)}?`;
       answer = a - b;
-      hint =
-        "Subtract from the ones. To regroup across zeros, take 1 from the nearest nonzero place; each zero between becomes 9.";
+      hint = subtractionHint(a, b);
       explanation = subtractionSteps(a, b);
       break;
     }
