@@ -1,5 +1,7 @@
 import type { SemanticFigure } from "../contracts";
 import {
+  angle,
+  protractor,
   areaModel,
   array,
   baseTen,
@@ -8,6 +10,7 @@ import {
   fractionBar,
   graph,
   numberLine,
+  polyArea,
   table,
   tenFrame,
   tree,
@@ -183,6 +186,76 @@ export const galleryCases: GalleryCase[] = [
     }).scene(),
   },
   {
+    name: "Tiles: (x + 3)(x + 2), terms to find",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [2, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (x − 2)(x + 4), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 1],
+        [-2, 0],
+      ],
+      [
+        [1, 1],
+        [4, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (2x + 1)(x + 3), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [2, 1],
+        [1, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: x² + 6x missing its corner",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      {
+        products: "shown",
+        missing: [[1, 1]],
+      },
+    ).scene(),
+  },
+  {
+    name: "Tiles: 6x(x³ − 2x + 5), not to scale, revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 3],
+        [-2, 1],
+        [5, 0],
+      ],
+      [[6, 1]],
+    ).scene(),
+  },
+  {
     name: "Array: 7 × 6 split after 4 rows",
     scene: array(7, 6, { splitAfterRow: 4 }).scene(),
   },
@@ -222,24 +295,28 @@ export const galleryCases: GalleryCase[] = [
       .scene(),
   },
   {
-    name: "Two-way table with totals",
-    scene: table(["Online", "In person", "Total"], {
-      corner: "Grade",
-      totalColumn: true,
-    })
-      .row("Grade 9", [18, 12, 30])
-      .row("Grade 10", [14, 26, 40])
-      .row("Total", [32, 38, 70], { total: true })
-      .scene(),
+    name: "Two-way table: conditioning on one row",
+    scene: table({
+      columns: ["Online", "In person", "Total"],
+      rows: [
+        { label: "Grade 9", cells: [18, 12, 30] },
+        { label: "Grade 10", cells: [14, 26, 40] },
+        { label: "Total", cells: [32, 38, 70] },
+      ],
+      sums: true,
+      highlight: { rows: [1], cells: [[1, 0]] },
+    }).scene({ width: 400 }),
   },
   {
-    name: "Two-way table: conditioning on one row",
-    scene: table(["Online", "In person", "Total"], { totalColumn: true })
-      .row("Grade 9", [18, 12, 30])
-      .row("Grade 10", [14, 26, 40])
-      .row("Total", [32, 38, 70], { total: true })
-      .highlight({ rows: [1], cells: [[1, 0]] })
-      .scene(),
+    name: "Two-way table: conditioning on one column",
+    scene: table({
+      columns: ["Museum", "Zoo", "Park"],
+      rows: [
+        { label: "Adult", cells: [5, 20, 16] },
+        { label: "Child", cells: [22, 26, 4] },
+      ],
+      highlight: { columns: [2], cells: [[1, 2]] },
+    }).scene(),
   },
   {
     name: "Tree: two draws without replacement",
@@ -284,6 +361,90 @@ export const galleryCases: GalleryCase[] = [
         ],
       },
     ]).scene(),
+  },
+  {
+    name: "Protractor: 0 on the left, ray at 130",
+    scene: protractor([180, 130], ["A", "B", "C"]).scene({ width: 340 }),
+  },
+  {
+    name: "Protractor: 0 on the right, ray at 75",
+    scene: protractor([0, 75], ["P", "Q", "R"]).scene({ width: 340 }),
+  },
+  {
+    name: "Angle: parts with the unknown masked",
+    scene: angle({
+      rays: [20, 65, 140],
+      labels: { vertex: "B", ends: ["A", "C", "D"] },
+      marks: [
+        { from: 0, to: 1, measure: true },
+        { from: 1, to: 2, measure: true, derived: true },
+      ],
+    }).scene({ width: 340 }),
+  },
+  {
+    name: "Angle: a right angle with arrows",
+    scene: angle({
+      rays: [30, 120],
+      arrows: true,
+      marks: [{ from: 0, to: 1 }],
+    }).scene({ width: 300 }),
+  },
+  {
+    name: "Scatter plot: unlike axis units, trend line through two marked points",
+    scene: graph({
+      x: [0, 10],
+      y: [30, 100],
+      grid: [1, 10],
+      aspect: (0.72 * 10) / 70,
+      axisNames: ["hours studied", "test score"],
+    })
+      .scatter(
+        [
+          [1, 50],
+          [2, 55],
+          [3, 58],
+          [4, 66],
+          [5, 70],
+          [6, 72],
+          [7, 82],
+          [8, 84],
+          [9, 88],
+          [10, 96],
+        ],
+        { m: 5, b: 45 },
+      )
+      .point(2, 55, undefined, { open: true })
+      .point(8, 85, undefined, { open: true })
+      .scene(),
+  },
+  {
+    name: "Two-way table: the cell to find (problem)",
+    scene: table({
+      title: "Has a curfew",
+      columns: ["Yes", "No", "Total"],
+      rows: [
+        { label: "Grade 7", cells: [18, 2, 20] },
+        { label: "Grade 8", cells: [null, null, 60] },
+        { label: "Total", cells: [42, 38, 80] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    }).scene(),
+  },
+  {
+    name: "Two-way table: revealed (lesson)",
+    reveal: true,
+    scene: table({
+      title: "Has a curfew",
+      columns: ["Yes", "No", "Total"],
+      rows: [
+        { label: "Grade 7", cells: [18, 2, 20] },
+        { label: "Grade 8", cells: [null, 36, 60] },
+        { label: "Total", cells: [42, 38, 80] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    }).scene(),
   },
 ];
 

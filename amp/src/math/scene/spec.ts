@@ -358,9 +358,18 @@ export const graphSchema = z
     type: z.literal("graph"),
     x: z.tuple([coord, coord]),
     y: z.tuple([coord, coord]),
-    /** Gridline spacing (false: no grid) and tick-label spacing. */
-    grid: z.union([num.positive(), z.literal(false)]).optional(),
-    tick: num.positive().optional(),
+    /** Gridline spacing (false: no grid) and tick-label spacing; a pair sets
+     * x and y separately, as data plots with unlike units need. */
+    grid: z
+      .union([
+        num.positive(),
+        z.tuple([num.positive(), num.positive()]),
+        z.literal(false),
+      ])
+      .optional(),
+    tick: z
+      .union([num.positive(), z.tuple([num.positive(), num.positive()])])
+      .optional(),
     /** Ratio of a y unit to an x unit on screen; 1 keeps circles round. */
     aspect: num.min(0.05).max(20).optional(),
     labels: z.enum(["auto", "all", "ends", "none"]).optional(),
@@ -521,10 +530,20 @@ export const graphSchema = z
   .refine(
     (g) =>
       g.grid === false ||
-      ((g.x[1] - g.x[0]) / (g.grid ?? 1) <= 60 &&
-        (g.y[1] - g.y[0]) / (g.grid ?? 1) <= 60),
+      ((g.x[1] - g.x[0]) / axisStep(g.grid, 0, 1) <= 60 &&
+        (g.y[1] - g.y[0]) / axisStep(g.grid, 1, 1) <= 60),
     "At most 60 gridlines per axis",
   );
+/** One axis's spacing from a shared or per-axis setting. */
+export function axisStep<T>(
+  value: number | readonly [number, number] | undefined | T,
+  axis: 0 | 1,
+  fallback: number,
+): number {
+  if (typeof value === "number") return value;
+  if (Array.isArray(value)) return value[axis] as number;
+  return fallback;
+}
 
 /** A rectangle partitioned by place value or by terms: an area model. */
 export const areaModelSchema = z
@@ -547,6 +566,44 @@ export const areaModelSchema = z
       (!f.acrossLabels || f.acrossLabels.length === f.across.length) &&
       (!f.downLabels || f.downLabels.length === f.down.length),
   );
+
+/** A monomial c·xᵖ as [c, p]: [3, 1] is 3x, [−2, 0] is −2. */
+const termSchema = z.tuple([
+  z
+    .number()
+    .int()
+    .min(-144)
+    .max(144)
+    .refine((c) => c !== 0, "Nonzero"),
+  z.number().int().min(0).max(3),
+]);
+/** A product of polynomials as an area: each side lists its terms, and each
+ * region is one term product. Linear sides with small coefficients are drawn
+ * as algebra tiles (x² squares, x strips, unit squares); other sides are
+ * schematic. Negative products are shaded warm. */
+export const polyAreaSchema = z
+  .object({
+    ...base,
+    type: z.literal("polyArea"),
+    across: z.array(termSchema).min(1).max(4),
+    down: z.array(termSchema).min(1).max(4),
+    /** The side terms: the factors. */
+    sides: z.enum(["shown", "derived", "none"]).optional(),
+    /** Each region's term product: masked by default. */
+    products: z.enum(["shown", "derived", "none"]).optional(),
+    /** Regions [i, j] drawn as an empty dashed outline: the piece to add
+     * when completing a square. */
+    missing: z
+      .array(
+        z.tuple([
+          z.number().int().min(0).max(3),
+          z.number().int().min(0).max(3),
+        ]),
+      )
+      .max(4)
+      .optional(),
+  })
+  .strict();
 
 /** Rows × columns of unit squares or dots, optionally split into regions. */
 export const arraySchema = z
@@ -640,6 +697,186 @@ export const clockSchema = z
   })
   .strict();
 
+const tableCell = z.union([
+  num.min(-1e6).max(1e6),
+  z.string().min(1).max(16),
+  z.null(),
+]);
+/** A table of short entries: header row, labeled rows and, with `sums`, a
+ * total column and a total row. A derived cell is the one to find: it is null
+ * in the data, drawn as "?", and when revealed computed from the sums. */
+export const tableSchema = z
+  .object({
+    ...base,
+    type: z.literal("table"),
+    /** A heading over the body columns ("Has a curfew"). */
+    title: label.max(32).optional(),
+    columns: z.array(z.string().min(1).max(16)).min(1).max(6),
+    rows: z
+      .array(
+        z
+          .object({
+            label: z.string().min(1).max(18),
+            cells: z.array(tableCell).min(1).max(6),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(8),
+    sums: z.boolean().optional(),
+    derived: z
+      .array(z.tuple([small.max(7), small.max(5)]))
+      .max(4)
+      .optional(),
+    /** Bands behind rows or columns and a ring around cells: conditioning
+     * on a row or column, and the cell inside it. Timelines bring them in. */
+    highlight: z
+      .object({
+        rows: z.array(small.max(7)).max(8).optional(),
+        columns: z.array(small.max(5)).max(6).optional(),
+        cells: z
+          .array(z.tuple([small.max(7), small.max(5)]))
+          .max(12)
+          .optional(),
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.rows.every((r) => r.cells.length === t.columns.length),
+    "Every row has one cell per column",
+  )
+  .refine(
+    (t) =>
+      (t.highlight?.rows ?? []).every((r) => r < t.rows.length) &&
+      (t.highlight?.columns ?? []).every((c) => c < t.columns.length) &&
+      (t.highlight?.cells ?? []).every(
+        ([r, c]) => r < t.rows.length && c < t.columns.length,
+      ),
+    "Highlights name existing rows, columns and cells",
+  )
+  .refine(
+    (t) =>
+      (t.derived ?? []).every(
+        ([r, c]) => r < t.rows.length && t.rows[r]!.cells[c] === null,
+      ),
+    "A derived cell is an empty cell of the table",
+  )
+  .refine(
+    (t) => !t.derived?.length || (t.sums && completeTable(t) !== null),
+    "Derived cells follow from the sums",
+  )
+  .refine((t) => !t.sums || completeTable(t) !== null, "Totals add up");
+/** Fill a summed table's numeric blanks from its row and column totals; null
+ * when it is inconsistent or the blanks are not determined. */
+export function completeTable(t: {
+  rows: { cells: (number | string | null)[] }[];
+}): number[][] | null {
+  const g = t.rows.map((r) =>
+    r.cells.map((v) => (typeof v === "number" ? v : null)),
+  );
+  if (t.rows.some((r) => r.cells.some((v) => typeof v === "string")))
+    return null;
+  const n = g.length,
+    m = g[0]!.length;
+  const lines = [
+    ...g.map((_, i) => Array.from({ length: m }, (_, j) => [i, j] as const)),
+    ...Array.from({ length: m }, (_, j) =>
+      Array.from({ length: n }, (_, i) => [i, j] as const),
+    ),
+  ];
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const line of lines) {
+      const open = line.filter(([i, j]) => g[i]![j] === null);
+      if (open.length !== 1) continue;
+      const [oi, oj] = open[0]!;
+      const last = line.at(-1)!;
+      const parts = line
+        .slice(0, -1)
+        .filter(([i, j]) => !(i === oi && j === oj))
+        .reduce((a, [i, j]) => a + g[i]![j]!, 0);
+      g[oi]![oj] =
+        oi === last[0] && oj === last[1]
+          ? parts
+          : g[last[0]]![last[1]]! - parts;
+      changed = true;
+    }
+  }
+  if (g.some((row) => row.some((v) => v === null))) return null;
+  const full = g as number[][];
+  for (const line of lines) {
+    const values = line.map(([i, j]) => full[i]![j]!);
+    const total = values.pop()!;
+    if (Math.abs(values.reduce((a, b) => a + b, 0) - total) > 1e-9) return null;
+  }
+  return full;
+}
+
+const direction = num.min(-720).max(720);
+const pointName = z.string().regex(/^[A-Z]$/);
+/** A protractor centered on a vertex, unit radius. Outer numbers count from
+ * 0 on the left, inner numbers from 0 on the right. Rays are directions in
+ * degrees (counterclockwise from the right) within the half turn. */
+export const protractorSchema = z
+  .object({
+    ...base,
+    type: z.literal("protractor"),
+    rays: z.tuple([num.min(0).max(180), num.min(0).max(180)]),
+    /** End of the first ray, the vertex, end of the second ray. */
+    labels: z.tuple([pointName, pointName, pointName]).optional(),
+  })
+  .strict()
+  .refine((p) => p.rays[0] !== p.rays[1], "Two distinct rays");
+
+/** Rays from one vertex, drawn to their true directions, with angle marks
+ * between chosen pairs. A right angle is marked with a square. */
+export const angleSchema = z
+  .object({
+    ...base,
+    type: z.literal("angle"),
+    rays: z.array(direction).min(2).max(4),
+    /** Ray length in math units. */
+    length: num.positive().max(10).optional(),
+    /** Arrowheads at the ray ends: rays go on forever. */
+    arrows: z.boolean().optional(),
+    labels: z
+      .object({
+        vertex: pointName,
+        ends: z.array(pointName).min(2).max(4),
+      })
+      .strict()
+      .optional(),
+    /** Marks counterclockwise from ray `from` to ray `to`. */
+    marks: z
+      .array(
+        z
+          .object({
+            from: z.number().int().min(0).max(3),
+            to: z.number().int().min(0).max(3),
+            /** Write the measure in degrees beside the mark. */
+            measure: z.boolean().optional(),
+            /** The measure is the unknown: drawn as "?" unless revealed. */
+            derived: z.boolean().optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (a) =>
+      (!a.labels || a.labels.ends.length === a.rays.length) &&
+      (a.marks ?? []).every(
+        (m) =>
+          m.from < a.rays.length && m.to < a.rays.length && m.from !== m.to,
+      ),
+    "Labels and marks name existing rays",
+  );
+
 /** A value written in a figure (a count, a probability); null is the unknown,
  * drawn as "?". Unknowns carry no value, so a problem payload never holds one. */
 const entry = z.union([label, z.null()]);
@@ -663,53 +900,6 @@ export const vennSchema = z
     shade: z.array(z.enum(vennRegions)).max(4).optional(),
   })
   .strict();
-/** A two-way (or one-way) table of counts with header row and column. */
-export const tableSchema = z
-  .object({
-    ...base,
-    type: z.literal("table"),
-    corner: label.optional(),
-    columns: z.array(label).min(1).max(6),
-    rows: z
-      .array(
-        z
-          .object({
-            label,
-            cells: z.array(entry).min(1).max(6),
-            /** A totals row, set off by a rule. */
-            total: z.boolean().optional(),
-          })
-          .strict(),
-      )
-      .min(1)
-      .max(8),
-    /** The last column holds row totals, set off by a rule. */
-    totalColumn: z.boolean().optional(),
-    highlight: z
-      .object({
-        rows: z.array(small.max(7)).max(8).optional(),
-        columns: z.array(small.max(5)).max(6).optional(),
-        cells: z
-          .array(z.tuple([small.max(7), small.max(5)]))
-          .max(12)
-          .optional(),
-      })
-      .strict()
-      .optional(),
-  })
-  .strict()
-  .refine((t) => t.rows.every((r) => r.cells.length === t.columns.length), {
-    message: "Every row has one cell per column",
-  })
-  .refine(
-    (t) =>
-      (t.highlight?.rows ?? []).every((r) => r < t.rows.length) &&
-      (t.highlight?.columns ?? []).every((c) => c < t.columns.length) &&
-      (t.highlight?.cells ?? []).every(
-        ([r, c]) => r < t.rows.length && c < t.columns.length,
-      ),
-    "Highlights name existing rows, columns and cells",
-  );
 const treeOutcome = z
   .object({
     label,
@@ -749,30 +939,37 @@ export const treeSchema = z
     "At most 10 complete paths",
   );
 export const componentSchemas = [
+  protractorSchema,
+  angleSchema,
   numberLineSchema,
   graphSchema,
   areaModelSchema,
+  polyAreaSchema,
   arraySchema,
   tenFrameSchema,
   baseTenSchema,
   fractionBarSchema,
   clockSchema,
-  vennSchema,
   tableSchema,
+  vennSchema,
   treeSchema,
 ] as const;
 export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
 export type Graph = z.infer<typeof graphSchema>;
 export type AreaModel = z.infer<typeof areaModelSchema>;
+export type PolyArea = z.infer<typeof polyAreaSchema>;
+export type Term = PolyArea["across"][number];
 export type ArrayModel = z.infer<typeof arraySchema>;
 export type TenFrame = z.infer<typeof tenFrameSchema>;
 export type BaseTen = z.infer<typeof baseTenSchema>;
 export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
 export type Venn = z.infer<typeof vennSchema>;
-export type Table = z.infer<typeof tableSchema>;
 export type Tree = z.infer<typeof treeSchema>;
+export type Table = z.infer<typeof tableSchema>;
+export type Protractor = z.infer<typeof protractorSchema>;
+export type Angle = z.infer<typeof angleSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([

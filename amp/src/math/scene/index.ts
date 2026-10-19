@@ -3,6 +3,8 @@ import "./components/number-line";
 import "./components/graph";
 import "./components/models";
 import "./components/venn";
+import "./components/poly-area";
+import "./components/angle";
 import "./components/table";
 import "./components/tree";
 export * from "./spec";

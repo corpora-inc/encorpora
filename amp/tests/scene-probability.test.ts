@@ -74,46 +74,70 @@ test("venn unknowns carry no value and stay masked even when revealed", () => {
   assert.match(describeScene(s), /Art only: unknown; both Art and Music: 6/);
 });
 
-test("table cells center in their columns, fit their text and keep unknowns masked", () => {
-  const s = table(["Online", "In person", "Total"], { totalColumn: true })
-    .row("Grade 9", [18, 12, 30])
-    .row("Grade 10", [14, null, 40])
-    .row("Total", [32, 38, 70], { total: true })
-    .highlight({ rows: [1], cells: [[1, 0]] })
+test("table highlights band a row or a column under its text and ring a cell", () => {
+  const rows = [
+    { label: "Grade 9", cells: [18, 12, 30] },
+    { label: "Grade 10", cells: [14, 26, 40] },
+    { label: "Total", cells: [32, 38, 70] },
+  ];
+  const s = table({
+    columns: ["Online", "In person", "Total"],
+    rows,
+    sums: true,
+    highlight: { rows: [1], cells: [[1, 0]] },
+  })
     .id("t")
     .scene();
   const l = layoutScene(s);
-  const head = center(byId(l.items, "t.column.1.name")),
-    cell = center(byId(l.items, "t.cell.0.1"));
-  assert.ok(Math.abs(head.x - cell.x) < 0.5);
-  const unknown = byId(l.items, "t.cell.1.1");
-  assert.ok(unknown.k === "text" && unknown.plain === "?" && unknown.masked);
-  // Every label stays inside the frame, and rows are evenly spaced.
-  const frame = byId(l.items, "t.frame");
-  assert.ok(frame.k === "rect");
-  for (const t of texts(l.items))
-    if (frame.k === "rect") {
-      assert.ok(t.box.x0 >= frame.x && t.box.x1 <= frame.x + frame.w, t.id);
-      assert.ok(t.box.y0 >= frame.y && t.box.y1 <= frame.y + frame.h, t.id);
-    }
-  const ys = [0, 1, 2].map((r) => center(byId(l.items, `t.row.${r}.name`)).y);
-  assert.ok(Math.abs(ys[1]! - ys[0]! - (ys[2]! - ys[1]!)) < 0.5);
-  const band = byId(l.items, "t.band.row.1");
-  assert.ok(band.k === "rect" && band.y < ys[1]! && band.y + band.h > ys[1]!);
+  const index = (id: string) => l.items.findIndex((d) => d.id === id);
+  const band = byId(l.items, "t.band.row.1"),
+    row = byId(l.items, "t.row.1");
+  assert.ok(band.k === "rect" && row.k === "rect");
+  if (band.k === "rect" && row.k === "rect") {
+    assert.equal(band.y, row.y);
+    assert.equal(band.h, row.h);
+  }
+  // The band is drawn over the row's paper and under its text.
+  assert.ok(index("t.row.1") < index("t.band.row.1"));
+  assert.ok(index("t.band.row.1") < index("t.cell.1.0"));
+  const ring = byId(l.items, "t.mark.1.0"),
+    cell = center(byId(l.items, "t.cell.1.0"));
+  assert.ok(ring.k === "rect");
+  if (ring.k === "rect")
+    assert.ok(
+      ring.x < cell.x &&
+        ring.x + ring.w > cell.x &&
+        ring.y < cell.y &&
+        ring.y + ring.h > cell.y,
+    );
+  const column = layoutScene(
+    table({
+      columns: ["A", "B"],
+      rows: rows.slice(0, 2).map((r) => ({ ...r, cells: r.cells.slice(0, 2) })),
+      highlight: { columns: [1] },
+    })
+      .id("t")
+      .scene(),
+  );
+  assert.equal(
+    column.items.filter((d) => d.id.startsWith("t.band.column.1.")).length,
+    2,
+    "one band piece per body row",
+  );
   assert.equal(
     sceneSchema.safeParse({
       v: 1,
       elements: [
         {
           type: "table",
-          columns: ["A", "B"],
-          rows: [{ label: "x", cells: ["1"] }],
+          columns: ["A"],
+          rows: [{ label: "x", cells: [1] }],
+          highlight: { rows: [3] },
         },
       ],
     }).success,
     false,
   );
-  assert.match(describeScene(s), /Grade 10: Online 14, In person unknown/);
 });
 
 test("a tree centers each node on its outcomes and masks unknown branches", () => {

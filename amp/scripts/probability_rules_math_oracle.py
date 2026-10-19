@@ -292,13 +292,18 @@ def solve_conditional(public):
         t = scene_element(public, 'table')
         given, asked = SURVEY[m[3]], SURVEY[m[4]]
         require(given[0] != asked[0], 'One row and one column')
-        columns = [c for c in t['columns'] if c != 'Total']
-        rows = [r for r in t['rows'] if not r.get('total')]
-        cells = {(r['label'], c): int(r['cells'][j]) for r in rows for j, c in enumerate(columns)}
+        # With sums, the last column and the last row are totals; recount them.
+        body_rows = t['rows'][:-1] if t.get('sums') else t['rows']
+        columns = t['columns'][:-1] if t.get('sums') else t['columns']
+        if t.get('sums'):
+            require(t['columns'][-1] == 'Total' and t['rows'][-1]['label'] == 'Total', 'Totals are labeled')
+        cells = {(r['label'], c): int(r['cells'][j]) for r in body_rows for j, c in enumerate(columns)}
         people = [key for key, n in cells.items() for _ in range(n)]
-        if t.get('totalColumn'):
-            for r in rows:
+        if t.get('sums'):
+            for r in body_rows:
                 require(int(r['cells'][-1]) == sum(cells[(r['label'], c)] for c in columns), 'Row totals')
+            for j, c in enumerate(columns):
+                require(int(t['rows'][-1]['cells'][j]) == sum(cells[(r['label'], c)] for r in body_rows), 'Column totals')
         pick = {'row': 0, 'column': 1}
         restricted = [p for p in people if p[pick[given[0]]] == given[1]]
         require(restricted, 'The given event is possible')
@@ -456,14 +461,14 @@ def review_probability_rules_fixtures():
             'For two events A and B, P(A or B) = 0.7, P(A) = 0.5 and P(B) = 0.4. Find P(A and B).')) == Fraction(1, 5), 'Overlap')
     require(rejects(public('addition-rule-probability',
             'For two events A and B, P(A) = 0.5, P(B) = 0.4 and P(A and B) = 0.6. Find P(A or B).')), 'Overlap larger than an event')
-    table = {'type': 'table', 'columns': ['Online', 'In person', 'Total'], 'totalColumn': True,
-             'rows': [{'label': 'Grade 9', 'cells': ['18', '12', '30']}, {'label': 'Grade 10', 'cells': ['14', '26', '40']},
-                      {'label': 'Total', 'cells': ['32', '38', '70'], 'total': True}]}
+    table = {'type': 'table', 'columns': ['Online', 'In person', 'Total'], 'sums': True,
+             'rows': [{'label': 'Grade 9', 'cells': [18, 12, 30]}, {'label': 'Grade 10', 'cells': [14, 26, 40]},
+                      {'label': 'Total', 'cells': [32, 38, 70]}]}
     ask = ('The table shows survey results for a group of students. One of these students is chosen at random. '
            'Given that the student {}, what is the probability that the student {}?')
     require(solve_probability_rules(public('conditional-probability-value', ask.format('is in grade 10', 'prefers online classes'), table)) == Fraction(14, 40), 'Row')
     require(solve_probability_rules(public('conditional-probability-value', ask.format('prefers online classes', 'is in grade 10'), table)) == Fraction(14, 32), 'Column')
-    bad = dict(table, rows=[dict(table['rows'][0], cells=['18', '12', '31'])] + table['rows'][1:])
+    bad = dict(table, rows=[dict(table['rows'][0], cells=[18, 12, 31])] + table['rows'][1:])
     require(rejects(public('conditional-probability-value', ask.format('is in grade 10', 'prefers online classes'), bad)), 'Wrong row total')
     require(solve_probability_rules(public('multiplication-rule-probability',
             'A bag holds 3 red and 2 blue marbles. Two marbles are drawn at random, one after the other, without replacement. '

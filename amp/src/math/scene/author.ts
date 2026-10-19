@@ -1,6 +1,8 @@
 import {
   sceneSchema,
+  type Angle,
   type AreaModel,
+  type Protractor,
   type Clock,
   type Element,
   type Fn,
@@ -8,11 +10,13 @@ import {
   type Graph,
   type LineSpec,
   type NumberLine,
+  type PolyArea,
+  type Term,
   type Point,
   type Scene,
+  type Table,
   type TenFrame,
   type Venn,
-  type Table,
   type Tree,
 } from "./spec";
 import type { Action, Step } from "./timeline";
@@ -305,6 +309,18 @@ class GraphBuilder extends Builder<Graph> {
 export const graph = (spec: Omit<Graph, "type">) =>
   new GraphBuilder({ type: "graph", ...spec } as Graph);
 
+class TableBuilder extends Builder<Table> {
+  /** Bands behind rows or columns and rings around cells (conditioning). */
+  highlight(h: NonNullable<Table["highlight"]>) {
+    this.spec.highlight = h;
+    return this;
+  }
+}
+/** A table; with `sums`, the last column and row are totals, and derived
+ * cells (null in `rows`) are found from them. */
+export const table = (spec: Omit<Table, "type">) =>
+  new TableBuilder({ type: "table", ...spec } as Table);
+
 /** Place-value parts of a whole number: 345 → [300, 40, 5]. */
 export function placeValueParts(n: number) {
   const digits = String(Math.trunc(Math.abs(n))).split("");
@@ -335,6 +351,14 @@ export const areaModel = (
     down: Array.isArray(down) ? down : placeValueParts(down),
     ...options,
   } as AreaModel);
+
+/** polyArea([[1, 1], [3, 0]], [[1, 1], [2, 0]]) is (x + 3)(x + 2) as tiles;
+ * the region terms stay masked unless a lesson reveals them. */
+export const polyArea = (
+  across: Term[],
+  down: Term[],
+  options: Partial<Omit<PolyArea, "type" | "across" | "down">> = {},
+) => new Simple<PolyArea>({ type: "polyArea", across, down, ...options });
 
 class Simple<T extends Element> extends Builder<T> {}
 export const array = (
@@ -398,26 +422,6 @@ export const venn = (
   options: { universe?: string } = {},
 ) => new VennBuilder({ type: "venn", sets: [a, b], ...options });
 
-class TableBuilder extends Builder<Table> {
-  row(label: string, cells: Entry[], options: { total?: boolean } = {}) {
-    this.spec.rows = [
-      ...this.spec.rows,
-      { label, cells: cells.map(entry), ...options },
-    ];
-    return this;
-  }
-  highlight(h: NonNullable<Table["highlight"]>) {
-    this.spec.highlight = h;
-    return this;
-  }
-}
-/** table(["Yes", "No", "Total"], { totalColumn: true }).row("Grade 9", [12, 18, 30]) */
-export const table = (
-  columns: string[],
-  options: { corner?: string; totalColumn?: boolean } = {},
-) =>
-  new TableBuilder({ type: "table", columns, rows: [], ...options } as Table);
-
 type TreeOutcome = {
   label: string;
   p: Entry;
@@ -462,3 +466,17 @@ export const tree = (
     })),
   });
 };
+/** A protractor on a vertex: one ray on its baseline, the other crossing
+ * the scales. */
+export const protractor = (
+  rays: [number, number],
+  labels?: [string, string, string],
+) =>
+  new Simple<Protractor>({
+    type: "protractor",
+    rays,
+    ...(labels ? { labels } : {}),
+  });
+/** Rays from one vertex with angle marks between chosen pairs. */
+export const angle = (spec: Omit<Angle, "type">) =>
+  new Simple<Angle>({ type: "angle", ...spec });

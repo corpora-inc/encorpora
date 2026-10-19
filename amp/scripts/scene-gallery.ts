@@ -3,6 +3,8 @@
  * its old renderer, at 320, 390, 768 and 1280 px in light and dark.
  *
  *   npx tsx scripts/scene-gallery.ts      screenshots in artifacts/scene-gallery/
+ *   npx tsx scripts/scene-gallery.ts Tiles   only cases whose name contains
+ *                                            "Tiles", each card at every width
  *
  * Fails on horizontal overflow, a label outside its view box, two labels that
  * overlap, or a label wider than the layout's estimate (fonts must never
@@ -30,15 +32,17 @@ document.documentElement.dataset.theme = theme || 'light';
 const h = React.createElement;
 const legacy = (f) => f.kind === 'ten-frame' ? h(ElementaryFigure,{figure:f}) : h(GraphicalFigure,{figure:f});
 window.__layouts = {};
-galleryCases.forEach((c, i) => { window.__layouts['case-'+i] = layoutScene(c.scene, {reveal: !!c.reveal}); });
-parityFigures.forEach((f, i) => { window.__layouts['parity-'+i] = layoutScene(legacyScene(f)); });
+const only = new URLSearchParams(location.search).get('only');
+const shown = (c) => !only || c.name.includes(only);
+galleryCases.forEach((c, i) => { if (shown(c)) window.__layouts['case-'+i] = layoutScene(c.scene, {reveal: !!c.reveal}); });
+if (!only) parityFigures.forEach((f, i) => { window.__layouts['parity-'+i] = layoutScene(legacyScene(f)); });
 const card = (id, title, body) => h('section',{id, key:id, className:'gallery-card', style:{background:'var(--color-surface-raised)', color:'var(--color-on-surface-raised)', border:'1px solid var(--color-border)', borderRadius:16, padding:12, margin:'12px 0'}}, h('h2',{style:{fontSize:15, margin:'0 0 8px'}}, title), body);
 function App(){
   return h('main',{style:{maxWidth:720, margin:'0 auto', padding:'8px 16px 40px', background:'var(--color-surface)'}},
     h('h1',{key:'t1',style:{fontSize:20}},'Scene gallery'),
-    h(React.Fragment,{key:'c'},galleryCases.map((c,i)=>card('case-'+i, c.name, h(SceneFigure,{scene:c.scene, reveal:!!c.reveal})))),
+    h(React.Fragment,{key:'c'},galleryCases.map((c,i)=>shown(c) && card('case-'+i, c.name, h(SceneFigure,{scene:c.scene, reveal:!!c.reveal})))),
     h('h1',{key:'t2',style:{fontSize:20}},'Legacy parity'),
-    h(React.Fragment,{key:'p'},parityFigures.map((f,i)=>card('parity-'+i, f.kind + ': legacy, then scene', h('div',{style:{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:12, alignItems:'center'}}, h('div',{className:'legacy'}, legacy(f)), h('div',{className:'ported'}, h(Figure,{figure:f})))))),
+    h(React.Fragment,{key:'p'},(only ? [] : parityFigures).map((f,i)=>card('parity-'+i, f.kind + ': legacy, then scene', h('div',{style:{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:12, alignItems:'center'}}, h('div',{className:'legacy'}, legacy(f)), h('div',{className:'ported'}, h(Figure,{figure:f})))))),
   );
 }
 createRoot(document.getElementById('root')).render(h(App));
@@ -78,6 +82,7 @@ const address = server.address();
 assert(address && typeof address !== "string");
 const out = new URL("../artifacts/scene-gallery/", import.meta.url);
 await mkdir(out, { recursive: true });
+const only = process.argv[2];
 const browser = await chromium.launch();
 const failures: string[] = [];
 const report: unknown[] = [];
@@ -96,7 +101,7 @@ try {
           failures.push(`${theme} ${width}: ${m.text()}`),
       );
       await page.goto(
-        `http://127.0.0.1:${address.port}/scene-gallery?theme=${theme}`,
+        `http://127.0.0.1:${address.port}/scene-gallery?theme=${theme}${only ? `&only=${encodeURIComponent(only)}` : ""}`,
       );
       await page.locator(".gallery-card").first().waitFor();
       await page.evaluate(async () => {
@@ -192,11 +197,11 @@ try {
         path: new URL(`gallery-${theme}-${width}.png`, out).pathname,
         fullPage: true,
       });
-      if (width === 390)
+      if (width === 390 || only)
         for (const card of await page.locator(".gallery-card").all()) {
           const id = await card.getAttribute("id");
           await card.screenshot({
-            path: new URL(`${id}-${theme}-390.png`, out).pathname,
+            path: new URL(`${id}-${theme}-${width}.png`, out).pathname,
           });
         }
       report.push({ theme, width, issues: issues.length });

@@ -1,3 +1,4 @@
+import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
 import { isLessonScene, lessonScenes } from "./lesson-scenes";
 import { SceneFigure } from "../web/scene/SceneFigure";
@@ -6,6 +7,7 @@ import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
+import { AngleIllustration, isAngleIllustration } from "./AngleIllustration";
 import {
   PolygonIllustration,
   isPolygonIllustration,
@@ -46,6 +48,7 @@ import {
   isDataIllustration,
 } from "./data-display-illustrations";
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
+import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
@@ -57,6 +60,10 @@ export function LessonIllustration({
   /** Print shows a walkthrough's final frame, without controls. */
   print?: boolean;
 }) {
+  if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
+  if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
+  if (kind === "factoring-nonmonic")
+    return <FactoringIllustration kind="nonmonic" />;
   if (
     kind === "repeating-decimal-shift" ||
     kind === "root-zoom" ||
@@ -80,9 +87,12 @@ export function LessonIllustration({
     );
   }
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
+  if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (isSceneIllustration(kind))
+    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||

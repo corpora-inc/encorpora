@@ -8,6 +8,10 @@ import {
   generateEquationProblem,
 } from "./equation-practice";
 import {
+  bivariateTemplates,
+  generateBivariateProblem,
+} from "./bivariate-practice";
+import {
   inferenceTemplates,
   generateInferenceProblem,
 } from "./inference-practice";
@@ -58,6 +62,7 @@ import {
   generateEarlyOperationsProblem,
 } from "./early-operations-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
   probabilityRulesTemplates,
@@ -87,6 +92,10 @@ import {
   rationalTemplates,
   generateRationalProblem,
 } from "./rational-practice";
+import {
+  factoringTemplates,
+  generateFactoringProblem,
+} from "./factoring-practice";
 import {
   circleMeasurementTemplates,
   generateCircleMeasurementProblem,
@@ -269,6 +278,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
   ...polygonTemplates,
+  ...angleTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -309,8 +319,10 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
+  ...bivariateTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -449,13 +461,16 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    ...angleTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
+    ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
     ...timeMoneyTemplates,
@@ -499,6 +514,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (factoringTemplates.some((t) => t.id === templateId))
+    return generateFactoringProblem(templateId, seed);
   if (numberSystemTemplates.some((t) => t.id === templateId))
     return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))
@@ -511,6 +528,8 @@ function generateRawProblem(
     return generateShapeProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (angleTemplates.some((t) => t.id === templateId))
+    return generateAngleProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
@@ -523,6 +542,8 @@ function generateRawProblem(
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
+  if (bivariateTemplates.some((t) => t.id === templateId))
+    return generateBivariateProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))

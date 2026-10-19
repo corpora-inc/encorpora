@@ -5,18 +5,22 @@ import type { Action } from "../math/scene/timeline";
 /** Lesson illustrations built with the scene framework. Lessons render them
  * revealed; one with steps plays as a walkthrough on screen and prints its
  * final frame. */
-const fill = (target: string, f: Parameters<typeof act.fill>[1]) =>
-  act.fill(target, f);
+const fill = act.fill;
 const ink = (target: string): Action => ({ do: "fill", target, ink: "accent" });
-const survey = () =>
-  table(["Online", "In person", "Total"], {
-    corner: "Grade",
-    totalColumn: true,
+const survey = (
+  highlight: Parameters<ReturnType<typeof table>["highlight"]>[0],
+) =>
+  table({
+    columns: ["Online", "In person", "Total"],
+    rows: [
+      { label: "Grade 9", cells: [18, 12, 30] },
+      { label: "Grade 10", cells: [14, 26, 40] },
+      { label: "Total", cells: [32, 38, 70] },
+    ],
+    sums: true,
   })
     .id("t")
-    .row("Grade 9", [18, 12, 30])
-    .row("Grade 10", [14, 26, 40])
-    .row("Total", [32, 38, 70], { total: true });
+    .highlight(highlight);
 
 export const lessonScenes = {
   "probability-venn-regions": venn("Art (A)", "Music (M)", {
@@ -67,41 +71,34 @@ export const lessonScenes = {
       ],
     }),
   // Conditioning shrinks the sample space to one row.
-  "probability-table-given": survey()
-    .highlight({ rows: [1], cells: [[1, 0]] })
-    .scene({
-      title: "Given grade 10: one row is the sample space",
-      steps: [
-        step(
-          "Given grade 10: only that row, 40 students, is possible.",
-          act.appear("t.band.row.1"),
-          act.highlight("t.cell.1.2"),
-        ),
-        step(
-          "Of those 40, 14 prefer online classes.",
-          act.appear("t.mark.1.0"),
-        ),
-        step(
-          "$P(\\text{online} \\mid \\text{grade 10}) = \\frac{14}{40} = \\frac{7}{20}$.",
-        ),
-      ],
-    }),
-  "probability-table-reverse": survey()
-    .highlight({ columns: [0], cells: [[1, 0]] })
-    .scene({
-      title: "Given online: one column is the sample space",
-      steps: [
-        step(
-          "Given online: only that column, 32 students, is possible.",
-          act.appear("t.band.column.0"),
-          act.highlight("t.cell.2.0"),
-        ),
-        step("Of those 32, 14 are in grade 10.", act.appear("t.mark.1.0")),
-        step(
-          "$P(\\text{grade 10} \\mid \\text{online}) = \\frac{14}{32} = \\frac{7}{16}$.",
-        ),
-      ],
-    }),
+  "probability-table-given": survey({ rows: [1], cells: [[1, 0]] }).scene({
+    title: "Given grade 10: one row is the sample space",
+    steps: [
+      step(
+        "Given grade 10: only that row, 40 students, is possible.",
+        act.appear("t.band.row.1"),
+        act.highlight("t.cell.1.2"),
+      ),
+      step("Of those 40, 14 prefer online classes.", act.appear("t.mark.1.0")),
+      step(
+        "$P(\\text{online} \\mid \\text{grade 10}) = \\frac{14}{40} = \\frac{7}{20}$.",
+      ),
+    ],
+  }),
+  "probability-table-reverse": survey({ columns: [0], cells: [[1, 0]] }).scene({
+    title: "Given online: one column is the sample space",
+    steps: [
+      step(
+        "Given online: only that column, 32 students, is possible.",
+        act.appear("t.band.column.0"),
+        act.highlight("t.cell.2.0"),
+      ),
+      step("Of those 32, 14 are in grade 10.", act.appear("t.mark.1.0")),
+      step(
+        "$P(\\text{grade 10} \\mid \\text{online}) = \\frac{14}{32} = \\frac{7}{16}$.",
+      ),
+    ],
+  }),
   // The tree grows one stage at a time, each path's product at its end.
   "probability-tree-draws": tree([
     {

@@ -1,3 +1,4 @@
+import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
@@ -6,11 +7,13 @@ import { timeMoneyFacetMappings } from "./time-money-coverage";
 import { attributeFacetMappings } from "./attribute-coverage";
 import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { shapeFacetMappings } from "./shape-coverage";
+import { angleFacetMappings } from "./angle-coverage";
 import { polygonFacetMappings } from "./polygon-coverage";
 import { probabilityRulesFacetMappings } from "./probability-rules-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
+import { bivariateFacetMappings } from "./bivariate-coverage";
 import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
@@ -35,12 +38,15 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...factoringFacetMappings,
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,
+  ...angleFacetMappings,
   ...polygonFacetMappings,
   ...probabilityRulesFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
+  ...bivariateFacetMappings,
   ...linePlotFacetMappings,
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,

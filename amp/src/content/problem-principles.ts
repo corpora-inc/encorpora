@@ -1,13 +1,16 @@
+import { factoringPrinciples } from "./factoring-lessons";
 import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
+import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
 import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
+import { bivariatePrinciples } from "./bivariate-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { decimalPrinciples } from "./decimal-lessons";
 import { timeMoneyPrinciples } from "./time-money-lessons";
@@ -36,8 +39,10 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
+  ...anglePrinciples,
   ...polygonPrinciples,
   ...probabilityRulesPrinciples,
   ...integerExponentPrinciples,
@@ -49,6 +54,7 @@ export const principles: Record<string, string> = {
   ...linePlotPrinciples,
   ...distributionPrinciples,
   ...inferencePrinciples,
+  ...bivariatePrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...decimalPrinciples,

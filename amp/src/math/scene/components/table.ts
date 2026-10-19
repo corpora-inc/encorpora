@@ -1,187 +1,241 @@
 import { registerComponent, type Prim } from "../layout";
-import type { Table } from "../spec";
+import { completeTable, type Table } from "../spec";
 import { typeset } from "../type";
+import { num } from "./format";
 
-/** Numbers, fractions and decimals are set as math; words in the UI sans. */
-const isMath = (text: string) => /^[−-]?[\d.,/ ]+%?$/.test(text);
-const ROW = 40,
-  PAD = 12,
-  MIN = 44;
-/** Words are set a step smaller than numbers so a four-column table fits a phone. */
-const sizeOf = (text: string) => (isMath(text) ? "md" : "sm");
+/** Table geometry in figure pixels; compile divides by the scale. */
+const PAD = 12,
+  ROW = 36,
+  HEADER = 34,
+  TITLE = 30,
+  MIN_COLUMN = 56;
+const isNumber = (v: unknown): v is number => typeof v === "number";
 
-/** Column widths and row heights in figure pixels. A table's size is set by
- * its type, not by the fit, so its math units are pixels divided by the scale. */
-export function tableGrid(c: Table) {
-  const width = (text: string, bold = false) =>
-    typeset(text, isMath(text) ? "math" : "sans", sizeOf(text), bold).width;
-  const head = Math.max(
-    MIN,
-    ...c.rows.map((r) => width(r.label, true)),
-    c.corner ? width(c.corner) : 0,
-  );
-  const cols = c.columns.map((name, j) =>
+/** Column widths and row positions, in figure pixels from the top left. */
+export function tableGeometry(t: Table) {
+  const labelWidth =
+    Math.max(...t.rows.map((r) => typeset(r.label, "sans", "md", true).width)) +
+    2 * PAD;
+  const widths = t.columns.map((c, j) =>
     Math.max(
-      MIN,
-      width(name, true),
-      ...c.rows.map((r) => width(r.cells[j] ?? "?", !!r.total)),
+      MIN_COLUMN,
+      typeset(c, "sans", "md", true).width + 2 * PAD,
+      ...t.rows.map((r) => {
+        const v = r.cells[j];
+        return v === null || v === undefined
+          ? 0
+          : typeset(
+              isNumber(v) ? num(v) : v,
+              isNumber(v) ? "math" : "sans",
+              "md",
+            ).width +
+              2 * PAD;
+      }),
     ),
   );
-  return { widths: [head, ...cols].map((w) => w + 2 * PAD), row: ROW };
+  const lefts = widths.map(
+    (_, j) => labelWidth + widths.slice(0, j).reduce((a, b) => a + b, 0),
+  );
+  const top = t.title ? TITLE : 0;
+  return {
+    labelWidth,
+    widths,
+    lefts,
+    width: labelWidth + widths.reduce((a, b) => a + b, 0),
+    titleTop: 0,
+    headerTop: top,
+    rowTop: (r: number) => top + HEADER + r * ROW,
+    rowHeight: ROW,
+    height: top + HEADER + t.rows.length * ROW,
+  };
 }
 
 registerComponent("table", {
-  compile(c, { s }) {
-    const { widths, row } = tableGrid(c);
-    const u = (px: number) => px / s;
-    const xs = widths.reduce<number[]>((a, w) => [...a, a.at(-1)! + u(w)], [0]);
-    const n = c.rows.length + 1,
-      H = u(row) * n;
-    const top = (i: number) => H - u(row) * i;
+  // One math unit is one figure pixel at full size.
+  maxScale: () => 1,
+  compile(t, { s }) {
+    const g = tableGeometry(t);
+    // Pixels, y down from the top left, to math units, y up.
+    const P = (x: number, y: number): [number, number] => [x / s, -y / s];
+    const size = (w: number, h: number): [number, number] => [w / s, h / s];
+    const filled = t.sums ? completeTable(t) : null;
+    const derived = new Set((t.derived ?? []).map(([r, c]) => `${r},${c}`));
+    const lastRow = t.rows.length - 1,
+      lastColumn = t.columns.length - 1;
     const prims: Prim[] = [];
-    const lit = new Set(
-      (c.highlight?.cells ?? []).map(([r, k]) => `${r}.${k}`),
-    );
-    const rows = new Set(c.highlight?.rows ?? []),
-      columns = new Set(c.highlight?.columns ?? []);
-    // Header band, then highlight bands under the rules and text.
-    prims.push({
-      type: "rect",
-      id: "head",
-      at: [0, top(1)],
-      size: [xs.at(-1)!, u(row)],
-      fill: "empty",
-      noStroke: true,
-    });
-    for (const r of rows)
+    const rows = new Set(t.highlight?.rows ?? []),
+      columns = new Set(t.highlight?.columns ?? []);
+    if (t.title) {
+      const span = t.sums ? lastColumn : t.columns.length;
+      const x0 = g.lefts[0]!,
+        x1 = g.lefts[span - 1]! + g.widths[span - 1]!;
+      prims.push(
+        {
+          type: "text",
+          id: "title",
+          at: P((x0 + x1) / 2, TITLE / 2 - 2),
+          text: t.title,
+          font: "sans",
+          bold: true,
+          align: [0, 0],
+        },
+        {
+          type: "segment",
+          id: "title.rule",
+          from: P(x0 + 6, TITLE - 4),
+          to: P(x1 - 6, TITLE - 4),
+          stroke: "axis",
+          width: 1.5,
+        },
+      );
+    }
+    for (const [j, c] of t.columns.entries())
       prims.push({
-        type: "rect",
-        id: `band.row.${r}`,
-        at: [0, top(r + 2)],
-        size: [xs.at(-1)!, u(row)],
-        fill: "accent-fill",
-        noStroke: true,
+        type: "text",
+        id: `column.${j}`,
+        at: P(g.lefts[j]! + g.widths[j]! / 2, g.headerTop + HEADER / 2 + 2),
+        text: c,
+        font: "sans",
+        bold: true,
+        align: [0, 0],
       });
-    for (const k of columns)
+    for (const [i, row] of t.rows.entries()) {
+      const top = g.rowTop(i),
+        total = t.sums && i === lastRow;
       prims.push({
         type: "rect",
-        id: `band.column.${k}`,
-        at: [xs[k + 1]!, 0],
-        size: [u(widths[k + 1]!), H],
-        fill: "warm-fill",
-        noStroke: true,
-        opacity: rows.size ? 0.7 : 1,
+        id: `row.${i}`,
+        at: P(0, top + ROW),
+        size: size(g.width, ROW),
+        fill: total ? "empty" : "paper",
+        stroke: "grid",
+        width: 1,
       });
-    for (const key of lit) {
-      const [r, k] = key.split(".").map(Number) as [number, number];
+      // Highlight bands sit on the row, under its text.
+      if (rows.has(i))
+        prims.push({
+          type: "rect",
+          id: `band.row.${i}`,
+          at: P(0, top + ROW),
+          size: size(g.width, ROW),
+          fill: "accent-fill",
+          noStroke: true,
+        });
+      for (const j of columns)
+        prims.push({
+          type: "rect",
+          id: `band.column.${j}.${i}`,
+          at: P(g.lefts[j]!, top + ROW),
+          size: size(g.widths[j]!, ROW),
+          fill: rows.has(i) ? "accent-strong" : "warm-fill",
+          noStroke: true,
+        });
+      prims.push({
+        type: "text",
+        id: `row.${i}.label`,
+        at: P(PAD, top + ROW / 2),
+        text: row.label,
+        font: "sans",
+        bold: true,
+        align: [-1, 0],
+      });
+      for (const [j, v] of row.cells.entries()) {
+        const cx = g.lefts[j]! + g.widths[j]! / 2,
+          cy = top + ROW / 2;
+        const bold = t.sums && (i === lastRow || j === lastColumn);
+        const find = derived.has(`${i},${j}`);
+        if (v === null) {
+          const box = Math.min(52, g.widths[j]! - 12);
+          prims.push({
+            type: "rect",
+            id: `cell.${i}.${j}.box`,
+            at: P(cx - box / 2, cy + ROW / 2 - 6),
+            size: size(box, ROW - 12),
+            radius: 5,
+            fill: "none",
+            stroke: find ? "warm" : "axis",
+            width: find ? 2.25 : 1.25,
+            dash: find ? undefined : "dash",
+          });
+          if (find)
+            prims.push({
+              type: "text",
+              id: `cell.${i}.${j}`,
+              at: P(cx, cy),
+              text: num(filled?.[i]?.[j] ?? 0),
+              font: "math",
+              color: "warm",
+              bold: true,
+              derived: true,
+              align: [0, 0],
+              data: { cell: `${i}-${j}` },
+            });
+          continue;
+        }
+        prims.push({
+          type: "text",
+          id: `cell.${i}.${j}`,
+          at: P(cx, cy),
+          text: isNumber(v) ? num(v) : v,
+          font: isNumber(v) ? "math" : "sans",
+          bold,
+          align: [0, 0],
+          data: { cell: `${i}-${j}` },
+        });
+      }
+    }
+    for (const [i, j] of t.highlight?.cells ?? [])
       prims.push({
         type: "rect",
-        id: `mark.${r}.${k}`,
-        at: [xs[k + 1]! + u(3), top(r + 2) + u(3)],
-        size: [u(widths[k + 1]! - 6), u(row - 6)],
+        id: `mark.${i}.${j}`,
+        at: P(g.lefts[j]! + 4, g.rowTop(i) + ROW - 4),
+        size: size(g.widths[j]! - 8, ROW - 8),
+        radius: 6,
         fill: "none",
         stroke: "gold",
         width: 3,
-        radius: 6,
       });
-    }
-    // Rules: an outer frame, a heavier rule under the header and beside the
-    // row labels, and one before a totals row or column.
-    prims.push({
-      type: "rect",
-      id: "frame",
-      at: [0, 0],
-      size: [xs.at(-1)!, H],
-      fill: "none",
-      stroke: "ink",
-      width: 1.5,
-    });
-    for (let i = 2; i < n; i++)
-      prims.push({
-        type: "segment",
-        id: `rule.row.${i}`,
-        from: [0, top(i)],
-        to: [xs.at(-1)!, top(i)],
-        stroke: c.rows[i - 1]!.total ? "ink" : "grid",
-        width: c.rows[i - 1]!.total ? 1.5 : 1,
-      });
-    prims.push({
-      type: "segment",
-      id: "rule.head",
-      from: [0, top(1)],
-      to: [xs.at(-1)!, top(1)],
-      stroke: "ink",
-      width: 2,
-    });
-    for (let k = 1; k < xs.length - 1; k++) {
-      const strong = k === 1 || (c.totalColumn && k === xs.length - 2);
-      prims.push({
-        type: "segment",
-        id: `rule.column.${k}`,
-        from: [xs[k]!, 0],
-        to: [xs[k]!, H],
-        stroke: strong ? "ink" : "grid",
-        width: k === 1 ? 2 : strong ? 1.5 : 1,
-      });
-    }
-    const text = (
-      id: string,
-      x: number,
-      i: number,
-      value: string | null,
-      options: { bold?: boolean; left?: boolean; muted?: boolean } = {},
-    ): Prim => ({
-      type: "text",
-      id,
-      at: [x, top(i) - u(row) / 2],
-      text: value ?? "?",
-      derived: value === null,
-      font: value !== null && isMath(value) ? "math" : "sans",
-      size: value === null ? "md" : sizeOf(value),
-      bold: options.bold,
-      color: options.muted ? "muted" : "ink",
-      align: [options.left ? -1 : 0, 0],
-      offset: [options.left ? PAD : 0, 0],
-    });
-    if (c.corner)
-      prims.push(text("corner", 0, 0, c.corner, { left: true, muted: true }));
-    for (const [k, name] of c.columns.entries())
+    if (t.sums) {
+      const x = g.lefts[lastColumn]!;
       prims.push(
-        text(`column.${k}.name`, (xs[k + 1]! + xs[k + 2]!) / 2, 0, name, {
-          bold: true,
-        }),
+        {
+          type: "segment",
+          id: "sums.column",
+          from: P(x, g.rowTop(0)),
+          to: P(x, g.height),
+          stroke: "ink",
+          width: 1.5,
+        },
+        {
+          type: "segment",
+          id: "sums.row",
+          from: P(0, g.rowTop(lastRow)),
+          to: P(g.width, g.rowTop(lastRow)),
+          stroke: "ink",
+          width: 1.5,
+        },
       );
-    for (const [r, line] of c.rows.entries()) {
-      prims.push(
-        text(`row.${r}.name`, 0, r + 1, line.label, { bold: true, left: true }),
-      );
-      for (const [k, v] of line.cells.entries())
-        prims.push({
-          ...text(`cell.${r}.${k}`, (xs[k + 1]! + xs[k + 2]!) / 2, r + 1, v, {
-            bold:
-              !!line.total || (!!c.totalColumn && k === c.columns.length - 1),
-          }),
-          data: { cell: `${r}.${k}` },
-        });
     }
     return prims;
   },
-  describe(c) {
-    const v = (x: string | null) => (x === null ? "unknown" : x);
-    const lines = c.rows.map(
-      (r) =>
-        `${r.label}: ${r.cells.map((x, k) => `${c.columns[k]} ${v(x)}`).join(", ")}`,
-    );
-    const lit = [
-      ...(c.highlight?.rows ?? []).map((r) => `the ${c.rows[r]!.label} row`),
-      ...(c.highlight?.columns ?? []).map((k) => `the ${c.columns[k]!} column`),
-    ];
-    return [
-      `A table with columns ${c.columns.join(", ")} and rows ${c.rows.map((r) => r.label).join(", ")}.`,
-      `${lines.join(". ")}.`,
-      lit.length ? `Highlighted: ${lit.join(" and ")}.` : "",
-    ]
-      .filter(Boolean)
-      .join(" ");
+  describe(t, reveal) {
+    const filled = t.sums ? completeTable(t) : null;
+    const derived = new Set((t.derived ?? []).map(([r, c]) => `${r},${c}`));
+    const cell = (v: number | string | null, i: number, j: number) =>
+      v !== null
+        ? isNumber(v)
+          ? num(v)
+          : v
+        : derived.has(`${i},${j}`)
+          ? reveal && filled
+            ? num(filled[i]![j]!)
+            : "the number to find"
+          : "blank";
+    return `Table${t.title ? ` headed “${t.title}”` : ""} with columns ${t.columns.join(", ")}. ${t.rows
+      .map(
+        (r, i) =>
+          `${r.label}: ${r.cells.map((v, j) => cell(v, i, j)).join(", ")}.`,
+      )
+      .join(" ")}`;
   },
 });

@@ -854,13 +854,17 @@ function conditionalCase(r: Random): Case {
       cj = r(0, k - 1);
     const byRow = r(0, 1) === 1;
     const totals = r(0, 1) === 1;
-    let t = table(totals ? [...s.columns, "Total"] : s.columns, {
-      corner: s.corner,
-      totalColumn: totals,
+    const t = table({
+      columns: totals ? [...s.columns, "Total"] : s.columns,
+      rows: [
+        ...[0, 1].map((i) => ({
+          label: s.rows[i]!,
+          cells: totals ? [...cells[i]!, rowTotals[i]!] : cells[i]!,
+        })),
+        ...(totals ? [{ label: "Total", cells: [...colTotals, n] }] : []),
+      ],
+      sums: totals,
     });
-    for (const i of [0, 1])
-      t = t.row(s.rows[i]!, totals ? [...cells[i]!, rowTotals[i]!] : cells[i]!);
-    if (totals) t = t.row("Total", [...colTotals, n], { total: true });
     const given = byRow ? s.rowIs[ri]! : s.colIs[cj]!,
       asked = byRow ? s.colIs[cj]! : s.rowIs[ri]!,
       askedMany = byRow ? s.colAre[cj]! : s.rowAre[ri]!;
