@@ -1,3 +1,11 @@
+import {
+  earlyDataTemplates,
+  generateEarlyDataProblem,
+} from "./early-data-practice";
+import {
+  combinatoricsTemplates,
+  generateCombinatoricsProblem,
+} from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import {
   comparisonTemplates,
@@ -189,6 +197,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...earlyDataTemplates,
   ...integerExponentTemplates,
   ...descriptiveStatisticsTemplates,
   ...rightTriangleTemplates,
@@ -199,6 +208,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...radicalTemplates,
   ...comparisonTemplates,
+  ...combinatoricsTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
@@ -319,6 +329,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...earlyDataTemplates,
+    ...combinatoricsTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
     ...circleMeasurementTemplates,
@@ -350,6 +362,10 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (earlyDataTemplates.some((t) => t.id === templateId))
+    return generateEarlyDataProblem(templateId, seed);
+  if (combinatoricsTemplates.some((t) => t.id === templateId))
+    return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))

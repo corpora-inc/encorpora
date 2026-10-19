@@ -3,9 +3,14 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import {
+  dataDisplayFigureSchemas,
+  type DataDisplayFigure,
+} from "./data-display-models.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | DataDisplayFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -58,8 +63,15 @@ export type SemanticFigure =
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
   | { kind: "dataset"; values: number[] };
+/** A client lists the figure families it can draw; a template that needs
+ * another family is never sent to it. */
+export const figureCapabilities = [
+  "measurement-models-v1",
+  "data-displays-v1",
+] as const;
+export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
-  requiredFigureCapability?: "measurement-models-v1";
+  requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: "single-choice-v1";
   id: string;
@@ -95,6 +107,7 @@ export interface GeneratedProblem {
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
+    ...dataDisplayFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),
