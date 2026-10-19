@@ -10,6 +10,8 @@ import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
+import { shapeLessons } from "./shape-lessons";
+import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import { comparisonLessons } from "./comparison-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
@@ -43,6 +45,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | ShapeIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -600,6 +603,7 @@ export const lessons: readonly Lesson[] = [
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
+  ...shapeLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
