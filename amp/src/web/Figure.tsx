@@ -13,6 +13,7 @@ import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
+import { ShapeFigure } from "./ShapeFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
@@ -37,12 +38,18 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "line-plot":
     case "histogram":
     case "box-plot":
+    case "double-dot-plot":
+    case "double-box-plot":
       return <DataDisplayFigure figure={figure} />;
     case "cube-prism":
     case "box-prism":
     case "composite-prism":
     case "quadrant-grid":
       return <GeometryFigure figure={figure} />;
+    case "plane-shapes":
+    case "shape-puzzle":
+    case "solid-shape":
+      return <ShapeFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
