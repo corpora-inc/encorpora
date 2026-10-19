@@ -177,7 +177,7 @@ function findEqualShares(r: Random, targets: number[], counts: number[]) {
     `Shape ${labels[roles.findIndex((x) => x.role === role)]}`;
   const draft: Draft = {
     prompt: `Which shape is cut into ${units(n)}?`,
-    hint: `${capital(units(n))} are ${parts(n)} of one whole. Check that the parts are the same size, then count them.`,
+    hint: `${capital(units(n))} are ${parts(n)} of one whole. Check each shape two ways: are there exactly ${WORDS[n]} parts, and are they all the same size?`,
     figure: { kind: "partitioned-shapes", shapes },
     explanation: [
       `${capital(units(n))} means the whole is cut into ${parts(n)}.`,
@@ -225,7 +225,7 @@ function nameShare(r: Random, k: number, n: number, pool: [number, number][]) {
   }
   const draft: Draft = {
     prompt: `The ${noun} is cut into equal parts. How much of the ${noun} is shaded?`,
-    hint: "Count all the equal parts to name their size. Then count the shaded parts.",
+    hint: `The ${noun} has ${WORDS[n]} equal parts, so the parts are ${units(n)}. Count how many of them are shaded.`,
     figure: { kind: "partitioned-shapes", shapes: [shape] },
     explanation: [
       `The ${noun} is cut into ${parts(n)}, so each part is one ${unit(n)}.`,
@@ -274,7 +274,7 @@ function sameShare(r: Random, equal: boolean): Draft {
     `${label} is cut into ${parts(n)}, so its shaded part is one ${unit(n)}.`;
   return {
     prompt: `${capital(shape)}s A and B are the same size. Which is true about their shaded parts?`,
-    hint: "Name each shaded part by counting the equal parts in its whole. The shape of a part does not decide its size.",
+    hint: `${capital(shape)}s A and B are the same size. Count the equal parts in each: the ${shape} cut into more parts has smaller parts, whatever their shape.`,
     figure: { kind: "partitioned-shapes", shapes: [a, b] },
     explanation: [
       describe("A", n1),
@@ -367,6 +367,7 @@ function compareDraft(
   r: Random,
   [a, b]: [number, number],
   [c, d]: [number, number],
+  hint: string,
   explain: (greater: string, lesser: string) => string[],
 ): Draft {
   const ask = r(0, 1) ? "greater" : "less";
@@ -375,7 +376,7 @@ function compareDraft(
   const [greater, lesser] = a * d > c * b ? [first, second] : [second, first];
   return {
     prompt: `Which is ${ask}: ${first} or ${second} of the same whole? Enter that fraction.`,
-    hint: "Picture both fractions on one whole. Ask how big each piece is and how many pieces there are.",
+    hint,
     figure: {
       kind: "fraction-bars",
       bars: [
@@ -451,7 +452,7 @@ function draft(templateId: string, r: Random): Draft {
       const [h, q] = halvesFirst ? ["A", "B"] : ["B", "A"];
       return {
         prompt: `Shapes A and B are the same size. Which shaded piece is ${ask}: one half or one quarter?`,
-        hint: "Both wholes are the same size. Which whole is cut into more equal pieces?",
+        hint: `Shape ${h} is cut into 2 equal pieces and shape ${q} into 4. The wholes are the same size, so which cut makes bigger pieces?`,
         figure: {
           kind: "partitioned-shapes",
           shapes: [
@@ -501,7 +502,7 @@ function draft(templateId: string, r: Random): Draft {
       return {
         prompt:
           "The rectangle is split into parts with equal area. What fraction of the rectangle's area is the shaded part?",
-        hint: "Count the parts. Parts with equal area are equal shares of the whole, even when their shapes differ.",
+        hint: `The rectangle covers ${cells} unit squares. Count the squares in the shaded part: what fraction of all ${cells} is it?`,
         figure,
         explanation: [
           `The rectangle covers ${cells} unit squares, and each part covers ${size} of them.`,
@@ -515,7 +516,7 @@ function draft(templateId: string, r: Random): Draft {
       const { figure, n, cells } = areaPartition(r, false);
       return {
         prompt: `The rectangle's area is ${cells} square units. It is split into parts with equal area. What is the area of the shaded part, in square units?`,
-        hint: "Count the equal parts. The shaded part is one of them, so it gets that fraction of the whole area.",
+        hint: `Count the equal parts, the shaded one included. They share the ${cells} square units equally.`,
         figure,
         explanation: [
           `The rectangle is split into ${n} parts with equal area, so the shaded part is 1/${n} of the area.`,
@@ -530,7 +531,8 @@ function draft(templateId: string, r: Random): Draft {
       const a = r(1, d);
       let b = r(1, d - 1);
       if (b >= a) b++;
-      return compareDraft(r, [a, d], [b, d], (greater, lesser) => [
+      const sameSize = `${a}/${d} and ${b}/${d} both count pieces of size 1/${d}. Which has more of those pieces?`;
+      return compareDraft(r, [a, d], [b, d], sameSize, (greater, lesser) => [
         `Both fractions use the same piece: 1/${d} of the whole.`,
         `${greater} is ${pieces(Number(greater.split("/")[0]))}; ${lesser} is ${pieces(Number(lesser.split("/")[0]))}. More pieces of the same size make more of the whole.`,
       ]);
@@ -542,7 +544,8 @@ function draft(templateId: string, r: Random): Draft {
       ];
       const a = r(1, Math.min(b, d) - 1);
       const [few, many] = b < d ? [b, d] : [d, b];
-      return compareDraft(r, [a, b], [a, d], () => [
+      const sameCount = `${a}/${b} and ${a}/${d} both have ${pieces(a)}. Is a whole cut into ${b} pieces or into ${d} pieces made of larger pieces?`;
+      return compareDraft(r, [a, b], [a, d], sameCount, () => [
         `Both fractions have ${pieces(a)}, so compare the size of one piece.`,
         `A whole cut into ${few} equal pieces has larger pieces than the same whole cut into ${many}: 1/${few} > 1/${many}.`,
         `${pieces(a)} of size 1/${few} ${a === 1 ? "is" : "make"} more than ${pieces(a)} of size 1/${many}.`,
@@ -559,7 +562,13 @@ function draft(templateId: string, r: Random): Draft {
         c = r(1, d - 1);
       } while (a === c || a * d === c * b);
       const l = (b * d) / gcd(b, d);
-      return compareDraft(r, [a, b], [c, d], () => {
+      const unlike =
+        (2 * a - b) * (2 * c - d) < 0
+          ? `Use one half as a benchmark: is ${a} more or less than half of ${b}? Is ${c} more or less than half of ${d}?`
+          : a === b - 1 && c === d - 1
+            ? `${a}/${b} and ${c}/${d} are each one piece short of a whole. Which missing piece is smaller?`
+            : `Rename ${a}/${b} and ${c}/${d} with the common denominator ${l}, then compare the numerators.`;
+      return compareDraft(r, [a, b], [c, d], unlike, () => {
         const steps: string[] = [];
         // One-half benchmark: one fraction is below a half, the other above.
         if ((2 * a - b) * (2 * c - d) < 0) {
