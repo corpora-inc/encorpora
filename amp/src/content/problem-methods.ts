@@ -1,3 +1,4 @@
+import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
@@ -50,6 +51,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...ratioRateMethods,
   ...patternFunctionMethods,
   ...equationMethods,
   ...rationalMethods,

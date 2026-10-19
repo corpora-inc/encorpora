@@ -1,3 +1,4 @@
+import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
@@ -39,6 +40,15 @@ export function LessonIllustration({
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "rate-double-line" ||
+    kind === "unit-price-tapes" ||
+    kind === "ratio-table-scaling" ||
+    kind === "rate-through-one" ||
+    kind === "fraction-rate-copies" ||
+    kind === "story-tapes"
+  )
+    return <RatioRateIllustration kind={kind} />;
   if (
     kind === "pattern-rule-steps" ||
     kind === "related-patterns-graph" ||

@@ -203,6 +203,15 @@
   fill: var(--color-success-accent);
   stroke: var(--color-border);
 }
+.lesson-animation[data-animation="rate"] .rate-bar {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-accent);
+  stroke-width: 1;
+}
+.lesson-animation[data-animation="rate"] .rate-unit {
+  fill: var(--color-figure-accent);
+  font-weight: 700;
+}
 .lesson-animation[data-animation="plot"] .animation-fill {
   fill: var(--color-success-accent);
   stroke: var(--color-surface-raised);

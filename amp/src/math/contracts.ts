@@ -9,6 +9,10 @@ import {
   type TimeMoneyFigure,
 } from "./time-money-models.js";
 import {
+  ratioRateFigureSchemas,
+  type RatioRateFigure,
+} from "./ratio-rate-models.js";
+import {
   partWholeFigureSchemas,
   type PartWholeFigure,
 } from "./part-whole-models.js";
@@ -52,6 +56,7 @@ export type FunctionDisplayFigure = {
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | RatioRateFigure
   | PartWholeFigure
   | FactArrayFigure
   | TimeMoneyFigure
@@ -264,6 +269,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     functionDisplaySchema,
     ...measurementFigureSchemas,
+    ...ratioRateFigureSchemas,
     ...partWholeFigureSchemas,
     ...factArrayFigureSchemas,
     ...timeMoneyFigureSchemas,
