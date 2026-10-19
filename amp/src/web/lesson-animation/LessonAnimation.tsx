@@ -5,7 +5,6 @@ import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
 import {
   animationFrames,
-  fiveNumbers,
   jumpStops,
   coefficientText,
   rootZoom,
@@ -13,7 +12,6 @@ import {
   standardForm,
   type AnimationModel,
 } from "./model";
-import { MadGapStage } from "./ComparisonAnimation";
 import {
   BalanceFrame,
   CUBE,
@@ -41,8 +39,6 @@ import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
 import { Jars } from "../AttributeFigure";
-import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
-import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
@@ -83,10 +79,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <PrismLayersModel model={model} step={step} />;
     case "quadrant-walk":
       return <QuadrantWalkModel model={model} step={step} />;
-    case "line-plot-stack":
-      return <StackModel model={model} step={step} />;
-    case "line-plot-share":
-      return <ShareModel model={model} step={step} />;
     case "make-ten":
       return <MakeTenModel model={model} step={step} />;
     case "array-build":
@@ -123,12 +115,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <AreaStage model={model} step={step} />;
     case "balance":
       return <EquationBalanceModel model={model} step={step} />;
-    case "mean-balance":
-      return <BalanceModel model={model} step={step} />;
-    case "box-build":
-      return <BoxBuildModel model={model} step={step} />;
-    case "mad-gap":
-      return <MadGapStage model={model} step={step} />;
   }
 }
 
@@ -1198,97 +1184,6 @@ const motion = (delay: number) => ({
     "transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
   transitionDelay: `${delay}ms`,
 });
-/** Each measurement drops onto its value; repeats land on the stack below. */
-function StackModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "line-plot-stack" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const half = Math.ceil(model.figure.values.length / 2);
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <LinePlotAxis layout={layout} />
-      {layout.marks.map((m, i) => {
-        const shown = step === 2 || (step === 1 && i < half);
-        return (
-          <g
-            key={i}
-            data-stack-mark={i}
-            className="animation-move"
-            style={{
-              ...motion(step === 2 ? Math.max(0, i - half) * 70 : i * 70),
-              transform: `translateY(${shown ? 0 : -(m.cy + 24)}px)`,
-              opacity: shown ? 1 : 0,
-            }}
-          >
-            <Mark kind="x" cx={m.cx} cy={m.cy} />
-          </g>
-        );
-      })}
-    </>
-  );
-}
-/** Pool every amount, then give each beaker the same share: all marks move to the mean. */
-function ShareModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "line-plot-share" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const target = layout.x(model.share);
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <LinePlotAxis layout={layout} />
-      <line
-        className="animation-fade"
-        x1={target}
-        x2={target}
-        y1={14}
-        y2={layout.axisY}
-        stroke="var(--color-figure-warm)"
-        strokeWidth={2}
-        strokeDasharray="5 4"
-        style={{ opacity: step === 2 ? 1 : 0 }}
-      />
-      {layout.marks.map((m, i) => {
-        // Step 1 pours every amount into one row; step 2 gives each the same share.
-        const n = layout.marks.length,
-          pooled = layout.left + ((i + 0.5) * (layout.right - layout.left)) / n;
-        const dx = step === 2 ? target - m.cx : step === 1 ? pooled - m.cx : 0,
-          dy =
-            step === 2
-              ? layout.axisY - 15 - i * 18 - m.cy
-              : step === 1
-                ? 34 - m.cy
-                : 0;
-        return (
-          <g
-            key={i}
-            data-share-mark={i}
-            className="animation-move"
-            style={{
-              ...motion(step === 2 ? i * 80 : 0),
-              transform: `translate(${dx}px, ${dy}px)`,
-            }}
-          >
-            <Mark kind="x" cx={m.cx} cy={m.cy} />
-          </g>
-        );
-      })}
-    </>
-  );
-}
 
 /** Unit cubes fill the prism one layer at a time; every layer is identical. */
 function PrismLayersModel({
@@ -1426,124 +1321,6 @@ function QuadrantWalkModel({
   );
 }
 
-/** The mean as a balance point: the data sit on a beam; off the mean it tips. */
-function BalanceModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "mean-balance" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const { values } = model.figure;
-  const mean = values.reduce((a, b) => a + b, 0) / values.length;
-  const torque = values.reduce((a, v) => a + (v - model.trial), 0);
-  const tilt =
-    step === 1
-      ? Math.sign(torque) *
-        Math.min(9, 3 + (6 * Math.abs(torque)) / values.length)
-      : 0;
-  const pivot = step === 2 ? mean : model.trial;
-  const origin = `${layout.x(model.trial)}px ${layout.axisY}px`;
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <g
-        className="animation-move"
-        style={{
-          transform: `rotate(${tilt}deg)`,
-          transformBox: "view-box",
-          transformOrigin: origin,
-        }}
-      >
-        <LinePlotAxis layout={layout} labelGap={20} />
-        {layout.marks.map((m, i) => (
-          <Mark key={i} kind="dot" cx={m.cx} cy={m.cy} />
-        ))}
-      </g>
-      <g
-        data-pivot={pivot}
-        className="animation-move animation-fade"
-        style={{
-          transform: `translateX(${layout.x(pivot) - layout.x(model.trial)}px)`,
-          opacity: step ? 1 : 0,
-          transition:
-            "transform 900ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
-        }}
-      >
-        <path
-          d={`M${layout.x(model.trial)} ${layout.axisY + 2} l7 13 h-14 Z`}
-          fill="var(--color-figure-warm)"
-          stroke="var(--color-figure-paper)"
-          strokeWidth={1.5}
-        />
-      </g>
-    </>
-  );
-}
-/** Quartile lines split the ordered dots; the box rises over the middle half. */
-function BoxBuildModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "box-build" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const q = fiveNumbers(model.figure.values);
-  const box = {
-    top: 34,
-    bottom: layout.axisY - 6,
-    min: layout.x(q.min),
-    q1: layout.x(q.q1),
-    median: layout.x(q.median),
-    q3: layout.x(q.q3),
-    max: layout.x(q.max),
-  };
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <g className="animation-fade" style={{ opacity: step === 2 ? 0.85 : 0 }}>
-        <BoxMarks box={box} />
-      </g>
-      <LinePlotAxis layout={layout} />
-      {layout.marks.map((m, i) => (
-        <Mark key={i} kind="dot" cx={m.cx} cy={m.cy} />
-      ))}
-      <g className="animation-fade" style={{ opacity: step === 1 ? 1 : 0 }}>
-        {[
-          [q.q1, "Q1"],
-          [q.median, "M"],
-          [q.q3, "Q3"],
-        ].map(([v, name]) => (
-          <g key={name} data-quartile={name}>
-            <line
-              x1={layout.x(v as number)}
-              x2={layout.x(v as number)}
-              y1={28}
-              y2={layout.axisY}
-              stroke="var(--color-figure-warm)"
-              strokeWidth={2}
-              strokeDasharray="5 4"
-            />
-            <text
-              x={layout.x(v as number)}
-              y={22}
-              textAnchor="middle"
-              style={{ fontSize: 13 }}
-            >
-              {name}
-            </text>
-          </g>
-        ))}
-      </g>
-    </>
-  );
-}
 /** Two ten-frames side by side; step 1 slides the needed squares from the
  * second frame into the first frame's empty places. */
 function MakeTenModel({

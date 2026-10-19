@@ -34,6 +34,73 @@ export type GalleryCase = {
 
 export const galleryCases: GalleryCase[] = [
   {
+    name: "Dot plot: a trial pivot and the mean, with distances (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 8,
+      mark: "dot",
+      groups: [{ values: [1, 2, 2, 3, 7] }],
+      unit: "goals",
+      references: [
+        { at: 4, distances: true, label: "pivot" },
+        { at: 3, distances: true, label: "mean" },
+      ],
+    }).build(),
+  },
+  {
+    name: "Dot plot: quartiles and the box over the data (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 10,
+      mark: "dot",
+      groups: [{ values: [1, 2, 2, 3, 4, 5, 5, 6, 8, 9] }],
+      quartiles: true,
+      box: true,
+    }).build(),
+  },
+  {
+    name: "Line plot: amounts shared equally (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 2,
+      denominator: 4,
+      mark: "x",
+      groups: [{ values: [0.25, 0.75, 1, 1, 1.5, 1.5] }],
+      share: 1,
+      unit: "liters",
+    }).build(),
+  },
+  {
+    name: "Two dot plots: MADs laid across the gap between means (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 12,
+      mark: "dot",
+      groups: [
+        { label: "Morning", values: [3, 4, 5, 5, 6, 7] },
+        { label: "Afternoon", values: [6, 7, 8, 8, 9, 10] },
+      ],
+      unit: "push-ups",
+      references: [
+        { at: 5, group: 0, label: "mean" },
+        { at: 8, group: 1, label: "mean" },
+      ],
+      bricks: { from: 5, to: 8, size: 1 },
+    }).build(),
+  },
+  {
     name: "Number line: make ten, then add the rest (hint)",
     scene: numberLine({ id: "nl", min: 0, max: 20 })
       .mark(8)
