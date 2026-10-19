@@ -1,4 +1,8 @@
 import {
+  linePlotTemplates,
+  generateLinePlotProblem,
+} from "./line-plot-practice";
+import {
   earlyDataTemplates,
   generateEarlyDataProblem,
 } from "./early-data-practice";
@@ -201,6 +205,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
   ...descriptiveStatisticsTemplates,
@@ -334,6 +339,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
     ...radicalTemplates,
@@ -367,6 +373,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (linePlotTemplates.some((t) => t.id === templateId))
+    return generateLinePlotProblem(templateId, seed);
   if (earlyDataTemplates.some((t) => t.id === templateId))
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
