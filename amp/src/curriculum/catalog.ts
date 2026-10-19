@@ -437,6 +437,7 @@ percent-change|7|ratio|Solve percent increase decrease markup and interest probl
 signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1
 signed-multiplication|7|number|Multiply and divide signed rational numbers|signed-addition,fraction-division|7.NS.A.2
 rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
+complex-fractions|7|fractions|Simplify complex fractions by dividing a simplified numerator by a simplified denominator|fraction-division,signed-multiplication|7.NS.A.3
 linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
 linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
@@ -1488,3 +1489,34 @@ for (const [suffix, description] of [
     description,
     status: "implemented",
   });
+
+// Exact signed-fraction tasks cover bounded parts of their broader skills.
+for (const [skillId, suffix, description] of [
+  [
+    "signed-addition",
+    "signed-fraction-sums",
+    "Add or subtract two signed fractions with different denominators and reduce the result.",
+  ],
+  [
+    "signed-multiplication",
+    "signed-fraction-products",
+    "Multiply or divide two signed fractions and reduce the result.",
+  ],
+  [
+    "complex-fractions",
+    "numeric-complex-fractions",
+    "Simplify a complex fraction whose numerator and denominator are a fraction or a sum or difference of a fraction and a fraction or whole number.",
+  ],
+  [
+    "rational-exponents",
+    "rational-base-fractional-powers",
+    "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

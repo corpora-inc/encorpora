@@ -1,5 +1,9 @@
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import {
+  rationalTemplates,
+  generateRationalProblem,
+} from "./rational-practice";
+import {
   circleMeasurementTemplates,
   generateCircleMeasurementProblem,
 } from "./circle-measurement-practice";
@@ -190,6 +194,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
@@ -310,6 +315,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...radicalTemplates,
+    ...rationalTemplates,
     ...circleMeasurementTemplates,
     ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
@@ -341,6 +347,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (rationalTemplates.some((t) => t.id === templateId))
+    return generateRationalProblem(templateId, seed);
   if (circleMeasurementTemplates.some((t) => t.id === templateId))
     return generateCircleMeasurementProblem(templateId, seed);
   if (integerExponentTemplates.some((t) => t.id === templateId))
