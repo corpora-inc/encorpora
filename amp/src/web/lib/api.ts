@@ -7,6 +7,28 @@ const messages: Record<string, string> = {
   sign_in_required: "Your session ended. Sign in again to continue.",
   invalid_family_request: "Check the learner details and try again.",
   family_service_unavailable: "Family details could not be loaded. Try again.",
+  notice_changed:
+    "The parent notice was just updated. Review it and confirm again to continue.",
+  offer_changed:
+    "The price was just updated. Review the current plan, then continue.",
+  checkout_plan_conflict:
+    "A checkout for the other plan is still open. Continue that checkout, or wait for it to expire.",
+  checkout_request_conflict:
+    "That checkout closed. Choose your plan again to open a new one.",
+  purchase_consent_unavailable:
+    "Online enrollment just became unavailable. No payment was taken. Contact support for help.",
+  paid_license_unavailable:
+    "This payment is no longer active, so it can't be given to a learner. Open billing to review it.",
+  paid_license_requires_reconciliation:
+    "This payment needs a billing review before access starts. Contact support; you won't be charged again.",
+  license_already_assigned:
+    "This plan already belongs to another learner. Open practice to continue.",
+  learner_already_licensed:
+    "This learner already has access. Open practice to continue.",
+  billing_account_not_found:
+    "No billing account exists yet. Complete a checkout first.",
+  billing_unavailable:
+    "Billing is temporarily unavailable. Try again in a moment; you won’t be charged twice.",
 };
 export async function request<T>(
   path: string,

@@ -21,6 +21,8 @@ import { StripeBilling } from "../src/billing/stripe/service.js";
 import { claimEnrollment } from "../src/billing/stripe/enrollment.js";
 import { registerStripeRoutes } from "../src/billing/stripe/routes.js";
 import { annualOffer } from "../src/billing/stripe/purchase.js";
+import { accountSummary } from "../src/account/repository.js";
+import { enrollmentViewSchema } from "../src/billing/stripe/enrollment-contracts.js";
 import type { AnnualPayment } from "../src/billing/stripe/model.js";
 
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
@@ -456,6 +458,8 @@ test(
         });
         const view = await app.inject({ url: "/api/v1/billing/enrollment" });
         assert.equal(view.json().available, true);
+        // The browser validates this response with the same contract.
+        assert.equal(enrollmentViewSchema.parse(view.json()).purchase, null);
         assert.equal(view.json().noticeDigest, f.acknowledge.noticeDigest);
         const body = {
           requestId: randomUUID(),
@@ -492,11 +496,11 @@ test(
           ).statusCode,
           200,
         );
-        assert.equal(
-          (await app.inject({ url: "/api/v1/billing/enrollment" })).json()
-            .purchase.phase,
-          "checkout-open",
+        const open = enrollmentViewSchema.parse(
+          (await app.inject({ url: "/api/v1/billing/enrollment" })).json(),
         );
+        assert.equal(open.purchase?.phase, "checkout-open");
+        assert.match(open.purchase?.url ?? "", /^https:\/\/checkout\.stripe/);
         assert.equal(
           (
             await f.pool.query(
@@ -1053,6 +1057,41 @@ test(
             [row.id],
           )
         ).rows[0].completed_at,
+      );
+    }),
+);
+
+test(
+  "account next step follows purchase-first enrollment: plan, then learner after verified payment, then claim",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      const next = async () => accountSummary(f.pool, f.family, "parent");
+      assert.equal((await next()).next, "choose-plan");
+      const row = await f.checkout();
+      assert.equal((await next()).next, "choose-plan");
+      assert.equal((await next()).unassignedPurchase, undefined);
+      assert.deepEqual(await f.deliver(f.settle(row)), {
+        processed: 1,
+        failed: 0,
+      });
+      const paid = await next();
+      assert.equal(paid.next, "add-learner");
+      assert.equal(paid.unassignedPurchase?.id, row.id);
+      assert.equal(paid.unassignedPurchase?.interval, "year");
+      // A learner created before the claim completes still resumes the claim.
+      await f.learner();
+      const unclaimed = await next();
+      assert.equal(unclaimed.next, "add-learner");
+      assert.equal(unclaimed.unassignedPurchase?.id, row.id);
+      await claimEnrollment(f.billing, "parent", row.id, "child");
+      const assigned = await next();
+      assert.equal(assigned.next, "practice");
+      assert.equal(assigned.unassignedPurchase, undefined);
+      // Another account never sees this purchase.
+      assert.equal(
+        (await accountSummary(f.pool, f.family, "other")).unassignedPurchase,
+        undefined,
       );
     }),
 );

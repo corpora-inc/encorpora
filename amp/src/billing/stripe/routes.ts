@@ -167,4 +167,14 @@ export async function registerUnavailableBilling(
     reply.header("Cache-Control", "no-store");
     return { available: false };
   });
+  app.get("/api/v1/billing/enrollment", async (request, reply) => {
+    await authenticate(request);
+    reply.header("Cache-Control", "no-store");
+    return {
+      available: false,
+      notice: null,
+      noticeDigest: null,
+      purchase: null,
+    };
+  });
 }

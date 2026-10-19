@@ -1238,6 +1238,9 @@ function LegacyScreen() {
         <FamilyCenter
           accountsEnabled={authMode === "accounts"}
           onConsentEnrollment={() => openConsent()}
+          onContinueSetup={
+            nativeRuntime ? undefined : () => navigate("/start/plan")
+          }
           returnToConsent={consentReturn}
           selectedLearnerId={familyLearnerId || learnerId || ""}
           onSelectLearner={(id) => {
@@ -1331,9 +1334,15 @@ function LegacyScreen() {
           <p>
             {nativeRuntime
               ? "Learning consent must be completed in the configured web application before this learner can practice."
-              : "Review how AMP uses learning data before adding a learner. Consent is the first step; your learner’s name and starting level come next."}
+              : "Choose a plan and review the parent notice. Your learner’s name and starting level come next."}
           </p>
-          <button onClick={() => openConsent()}>Continue setup</button>
+          <button
+            onClick={() =>
+              nativeRuntime ? openConsent() : navigate("/start/plan")
+            }
+          >
+            Continue setup
+          </button>
           <button className="secondary" onClick={openFamily}>
             Manage family
           </button>

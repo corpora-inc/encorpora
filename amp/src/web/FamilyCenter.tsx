@@ -25,6 +25,8 @@ interface Props {
   onLearningInvalidated: () => void;
   initialSection?: "learners" | "access" | "privacy" | "security";
   onConsentEnrollment?: () => void;
+  /** First-run setup (plan, payment, learner); defaults to consent review. */
+  onContinueSetup?: () => void;
   returnToConsent?: boolean;
   selectedLearnerId?: string;
   onSelectLearner?: (id: string) => void;
@@ -58,6 +60,7 @@ export function FamilyCenter({
   onLearningInvalidated,
   initialSection = "learners",
   onConsentEnrollment,
+  onContinueSetup,
   returnToConsent = false,
   selectedLearnerId,
   onSelectLearner,
@@ -542,12 +545,12 @@ export function FamilyCenter({
                 {!["active", "development"].includes(family.consent.status) &&
                   section === "learners" && (
                     <div className="family-first-step">
-                      <h3>Start with parent consent</h3>
+                      <h3>Finish setting up</h3>
                       <p>
-                        Review how AMP uses learning data before adding a
-                        learner. Then choose a name and starting level.
+                        Choose a plan and review the parent notice. Then add
+                        your learner’s name and starting level.
                       </p>
-                      <button onClick={onConsentEnrollment}>
+                      <button onClick={onContinueSetup ?? onConsentEnrollment}>
                         Continue setup
                       </button>
                     </div>
