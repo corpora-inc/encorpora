@@ -234,6 +234,12 @@ async function serve(page: Page, state: State, faults: string[]) {
         },
       });
     }
+    const year = /^\/learners\/([^/]+)\/birth-year$/.exec(path);
+    if (year && req.method() === "POST") {
+      const learner = state.learners.find((l) => l.id === year[1])!;
+      learner.birthYear = req.postDataJSON().birthYear;
+      return route.fulfill({ json: { birthYear: learner.birthYear } });
+    }
     if (path === "/billing/enrollment/claim") {
       const body = req.postDataJSON();
       state.claims.push(body);
@@ -631,6 +637,52 @@ try {
     await page.getByRole("link", { name: "Start again" }).click();
     await page.waitForURL("**/start/plan");
     await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
+    // Stripe expired the old session: the server asks for a new request id and
+    // the client retries once. Then Stripe fails after the reservation: the
+    // plan stays retryable with that same id, never a disabled dead end.
+    const attempts: string[] = [];
+    const script = ["expired", "unavailable"];
+    await page.route("**/api/v1/billing/enrollment/checkout", (route) => {
+      attempts.push(route.request().postDataJSON().requestId);
+      const step = script.shift();
+      if (step === "expired")
+        return route.fulfill({
+          status: 409,
+          json: { error: "checkout_expired_retry_with_new_request" },
+        });
+      if (step === "unavailable") {
+        state.enrollment = {
+          ...state.enrollment,
+          purchase: purchase("checkout-open", null),
+        };
+        return route.fulfill({
+          status: 503,
+          json: { error: "billing_unavailable" },
+        });
+      }
+      return route.fallback();
+    });
+    await page.getByRole("checkbox").click();
+    const retry = page.getByRole("button", {
+      name: "Continue to secure checkout",
+    });
+    await retry.click();
+    await page
+      .getByRole("alert")
+      .filter({ hasText: "Billing is temporarily unavailable" })
+      .waitFor();
+    assert.equal(attempts.length, 2);
+    assert.notEqual(attempts[0], attempts[1], "expired session gets a new id");
+    await page
+      .getByRole("radio", { name: /Monthly/ })
+      .and(page.locator(":disabled"))
+      .waitFor();
+    assert.equal(await retry.isDisabled(), false, "retry stays available");
+    await page.getByRole("button", { name: "Dismiss message" }).click();
+    await retry.click();
+    await page.waitForURL("https://checkout.stripe.com/**");
+    assert.equal(attempts[2], attempts[1], "ambiguous failure retries same id");
+    await page.unroute("**/api/v1/billing/enrollment/checkout");
     // Payment verified, learner saved, claim fails once: retry claims, never re-creates.
     Object.assign(state, {
       consent: true,
@@ -666,14 +718,54 @@ try {
       "failed claim does not move the step",
     );
     await page.getByRole("button", { name: "Dismiss message" }).click();
-    await page.getByRole("button", { name: "2015", exact: true }).click();
+    await page.getByRole("button", { name: "2014", exact: true }).click();
     await page.waitForURL("**/practice");
     assert.equal(
       state.learners.length,
       1,
       "claim retry reuses the saved learner",
     );
+    assert.equal(
+      state.learners[0]!.birthYear,
+      2014,
+      "a different year on retry corrects the saved learner",
+    );
     assert.deepEqual(state.claims, [{ purchaseId, learnerId: "learner-1" }]);
+    // The learner is saved but the response is lost: the next tap claims that
+    // learner instead of creating a duplicate.
+    Object.assign(state, {
+      consent: true,
+      next: "add-learner",
+      unassigned: true,
+      learners: [],
+      claims: [],
+    });
+    await page.goto(`${origin}/start/name`);
+    await page.getByLabel("Learner name").fill("Riley");
+    await page.getByRole("button", { name: "Continue", exact: true }).click();
+    let lose = true;
+    await page.route("**/api/v1/learners", (route) => {
+      if (!lose || route.request().method() !== "POST") return route.fallback();
+      lose = false;
+      const body = route.request().postDataJSON();
+      state.learners.push({
+        id: "learner-lost",
+        name: body.name,
+        birthYear: body.birthYear,
+        paid: false,
+      });
+      return route.abort("connectionreset");
+    });
+    await page.getByRole("button", { name: "2013", exact: true }).click();
+    await page
+      .getByRole("alert")
+      .filter({ hasText: "Check your connection" })
+      .waitFor();
+    await page.getByRole("button", { name: "Dismiss message" }).click();
+    await page.getByRole("button", { name: "2013", exact: true }).click();
+    await page.waitForURL("**/practice");
+    assert.equal(state.learners.length, 1, "lost response never duplicates");
+    assert.deepEqual(state.claims, [{ purchaseId, learnerId: "learner-lost" }]);
     assert.deepEqual(faults, []);
     await context.close();
   }
@@ -711,7 +803,7 @@ try {
       await page
         .getByText("contact the support team", { exact: false })
         .waitFor();
-      await page.getByRole("link", { name: "Back to home" }).waitFor();
+      await page.getByRole("button", { name: "Sign out" }).waitFor();
       await fits(page, `${tag} unavailable`);
       if (width === 320 && theme === "light") await axe(page, "unavailable");
       await page.screenshot({ path: `${shots}/unavailable-${tag}.png` });

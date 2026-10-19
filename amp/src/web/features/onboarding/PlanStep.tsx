@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import type { AuthSession } from "../../auth";
+import { signOut, type AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
@@ -20,6 +20,8 @@ import {
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 
+const exitFailed =
+  "Sign-out didn’t finish. Check your connection and try again.";
 const names = { year: "annual", month: "monthly" } as const;
 
 /**
@@ -38,6 +40,10 @@ export function PlanStep({ session }: { session: AuthSession }) {
     enabled: available === false,
   });
   const checkout = useEnrollmentCheckout(session);
+  const exit = useMutation({
+    mutationFn: signOut,
+    onError: () => new AppError("unavailable", exitFailed, true).log(),
+  });
   const [interval, chooseInterval] = useState<"year" | "month">("year");
   const [acknowledged, setAcknowledged] = useState<string | null>(null);
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
@@ -104,6 +110,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
       </section>
     ) : (
       <section className={`${frameCard} ${styles.step}`} key="unavailable">
+        <Toast message={exit.error ? exitFailed : ""} onDismiss={exit.reset} />
         <h1>Enrollment isn’t open yet</h1>
         <p>
           This AMP service isn’t taking new enrollments right now. No payment
@@ -114,9 +121,13 @@ export function PlanStep({ session }: { session: AuthSession }) {
           with.
         </p>
         <div className={styles.actions}>
-          <Link to="/" className={buttonClass("secondary")}>
-            Back to home
-          </Link>
+          <Button
+            variant="secondary"
+            disabled={exit.isPending}
+            onClick={() => exit.mutate()}
+          >
+            Sign out
+          </Button>
         </div>
       </section>
     );
@@ -141,8 +152,12 @@ export function PlanStep({ session }: { session: AuthSession }) {
         </div>
       </section>
     );
-  const open = phase === "checkout-open" ? purchase : null;
-  const chosen = open?.interval ?? interval;
+  // An open checkout fixes the plan. With a verified Stripe link it resumes;
+  // without one (Stripe failed after the reservation) the same plan retries.
+  const pending = phase === "checkout-open" ? purchase : null;
+  const resume = pending?.url ? safeCheckout(pending.url) : null;
+  const open = resume ? pending : null;
+  const chosen = pending?.interval ?? interval;
   const offer = plans.find((entry) => entry.interval === chosen) ?? plans[0]!;
   const agreed = acknowledged === digest;
   return (
@@ -157,7 +172,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
       <PlanChoice
         offers={plans}
         interval={offer.interval}
-        disabled={!!open || checkout.isPending}
+        disabled={!!pending || checkout.isPending}
         onChange={(next) => {
           chooseInterval(next);
           checkout.reset();
@@ -171,18 +186,9 @@ export function PlanStep({ session }: { session: AuthSession }) {
             finish; nothing is charged until you pay.
           </p>
           <div className={styles.actions}>
-            {open.url ? (
-              <a
-                className={buttonClass("primary")}
-                href={safeCheckout(open.url)}
-              >
-                Continue secure checkout
-              </a>
-            ) : (
-              <Button variant="primary" disabled>
-                Checking your checkout…
-              </Button>
-            )}
+            <a className={buttonClass("primary")} href={resume ?? undefined}>
+              Continue secure checkout
+            </a>
           </div>
         </>
       ) : (
@@ -203,7 +209,13 @@ export function PlanStep({ session }: { session: AuthSession }) {
                 const requestId = (requests.current[offer.interval] ??=
                   crypto.randomUUID());
                 checkout.mutate(
-                  { requestId, offer, noticeDigest: digest },
+                  {
+                    requestId,
+                    offer,
+                    noticeDigest: digest,
+                    renewRequestId: () =>
+                      (requests.current[offer.interval] = crypto.randomUUID()),
+                  },
                   {
                     onError: (error) => {
                       // A refused request is closed; an ambiguous one may retry.
@@ -232,7 +244,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
     </section>
   );
 }
-function safeCheckout(url: string) {
+function safeCheckout(url: string): string | null {
   try {
     return paymentUrl(url, "checkout.stripe.com");
   } catch {
@@ -241,6 +253,6 @@ function safeCheckout(url: string) {
       "The checkout link could not be verified.",
       false,
     ).log();
-    return "/start/plan";
+    return null;
   }
 }

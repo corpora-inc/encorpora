@@ -90,14 +90,14 @@ export function useEnrollmentCheckout(session: AuthSession) {
       requestId: string;
       offer: AnnualOffer;
       noticeDigest: string;
+      /** Issues and remembers a replacement id for later retries. */
+      renewRequestId: () => string;
     }) => {
-      const result = await request(
-        "/billing/enrollment/checkout",
-        z.object({ url: z.string() }),
-        {
+      const send = (requestId: string) =>
+        request("/billing/enrollment/checkout", z.object({ url: z.string() }), {
           token: session.token,
           body: {
-            requestId: input.requestId,
+            requestId,
             offerId: input.offer.id,
             interval: input.offer.interval,
             acknowledgement: {
@@ -105,8 +105,20 @@ export function useEnrollmentCheckout(session: AuthSession) {
               parentAttestation: true,
             },
           },
-        },
-      );
+        });
+      let result: { url: string };
+      try {
+        result = await send(input.requestId);
+      } catch (error) {
+        // Stripe expired the previous session; the server has now closed it
+        // and asks for a new request. That retry is safe and expected.
+        if (
+          !(error instanceof AppError) ||
+          error.code !== "checkout_expired_retry_with_new_request"
+        )
+          throw error;
+        result = await send(input.renewRequestId());
+      }
       go(result.url, "checkout.stripe.com");
       return result;
     },

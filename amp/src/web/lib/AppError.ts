@@ -11,6 +11,8 @@ export class AppError extends Error {
     message: string,
     readonly retry: boolean,
     readonly requestId: string | null = null,
+    /** The server's machine-readable error code, when it sent one. */
+    readonly code: string | null = null,
   ) {
     super(message);
     this.name = "AppError";
@@ -20,6 +22,7 @@ export class AppError extends Error {
       kind: this.kind,
       message: this.message,
       requestId: this.requestId,
+      code: this.code,
     });
   }
 }

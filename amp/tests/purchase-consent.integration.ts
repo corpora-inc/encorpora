@@ -1066,7 +1066,8 @@ test(
   enabled,
   async () =>
     fixture(async (f) => {
-      const next = async () => accountSummary(f.pool, f.family, "parent");
+      const next = async () =>
+        accountSummary(f.pool, f.family, "parent", f.repository.namespace);
       assert.equal((await next()).next, "choose-plan");
       const row = await f.checkout();
       assert.equal((await next()).next, "choose-plan");
@@ -1079,6 +1080,12 @@ test(
       assert.equal(paid.next, "add-learner");
       assert.equal(paid.unassignedPurchase?.id, row.id);
       assert.equal(paid.unassignedPurchase?.interval, "year");
+      for (const namespace of [null, "acct_other:live"])
+        assert.equal(
+          (await accountSummary(f.pool, f.family, "parent", namespace))
+            .unassignedPurchase,
+          undefined,
+        );
       // A learner created before the claim completes still resumes the claim.
       await f.learner();
       const unclaimed = await next();
@@ -1088,9 +1095,16 @@ test(
       const assigned = await next();
       assert.equal(assigned.next, "practice");
       assert.equal(assigned.unassignedPurchase, undefined);
-      // Another account never sees this purchase.
+      // Another account, or another Stripe namespace, never sees this purchase.
       assert.equal(
-        (await accountSummary(f.pool, f.family, "other")).unassignedPurchase,
+        (
+          await accountSummary(
+            f.pool,
+            f.family,
+            "other",
+            f.repository.namespace,
+          )
+        ).unassignedPurchase,
         undefined,
       );
     }),

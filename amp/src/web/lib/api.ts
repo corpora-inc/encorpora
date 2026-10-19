@@ -25,6 +25,14 @@ const messages: Record<string, string> = {
     "This plan already belongs to another learner. Open practice to continue.",
   learner_already_licensed:
     "This learner already has access. Open practice to continue.",
+  checkout_requires_reconciliation:
+    "Your checkout needs a billing review before a new one can start. Contact support; you won’t be charged twice.",
+  subscription_already_started:
+    "Your payment already went through. Check your enrollment status instead of paying again.",
+  license_ready_for_assignment:
+    "Your payment is confirmed. Continue to add your learner.",
+  purchase_not_found:
+    "That purchase isn’t available to this account. Choose your plan again.",
   billing_account_not_found:
     "No billing account exists yet. Complete a checkout first.",
   billing_unavailable:
@@ -92,6 +100,7 @@ export async function request<T>(
           : "This request could not be completed. Check the details and try again."),
       response.status >= 500,
       requestId,
+      code || null,
     );
     error.log();
     throw error;

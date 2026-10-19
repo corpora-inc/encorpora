@@ -9,7 +9,7 @@ import { registerConsentRoutes } from "../parent-consent/routes.js";
 import { registerFundingPurchaseRoutes } from "../funding-purchase/routes.js";
 import { loadFundingOffers } from "../funding-purchase/config.js";
 import { registerFamilyRoutes } from "../family/routes.js";
-import { stripeConfig } from "../billing/stripe/config.js";
+import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
   registerStripeRoutes,
   registerUnavailableBilling,
@@ -86,10 +86,12 @@ else
   app.get("/api/v1/auth-config", async () => ({
     mode: development ? "development" : "oidc",
   }));
+const billingConfig = stripeConfig(process.env);
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
   development,
+  billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
 });
 await registerFundingPurchaseRoutes(app, {
   pool: repository.pool,
@@ -113,7 +115,6 @@ await registerPaymentEvidenceRoutes(app, {
     process.env.AMP_REIMBURSEMENT_PROGRAMS_FILE,
   ),
 });
-const billingConfig = stripeConfig(process.env);
 if (billingConfig) {
   if (development && billingConfig.livemode)
     throw new Error(

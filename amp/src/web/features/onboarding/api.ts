@@ -22,3 +22,16 @@ export function useCreateLearner(session: AuthSession) {
     onSuccess: () => invalidateAccount(session.accountId),
   });
 }
+
+/** Corrects the starting point of a learner saved before a failed claim. */
+export function useSetBirthYear(session: AuthSession) {
+  return useMutation({
+    mutationFn: (input: { learnerId: string; birthYear: number }) =>
+      request(
+        `/learners/${encodeURIComponent(input.learnerId)}/birth-year`,
+        z.object({ birthYear: z.number() }),
+        { token: session.token, body: { birthYear: input.birthYear } },
+      ),
+    onSuccess: () => invalidateAccount(session.accountId),
+  });
+}

@@ -12,10 +12,11 @@ import { useLearnerStore } from "../../learner-store";
 import { storedTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { frameCard } from "../../ui/PageFrame";
+import { refreshMe } from "../../lib/query";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useClaimEnrollment } from "../billing";
-import { useCreateLearner } from "./api";
+import { useCreateLearner, useSetBirthYear } from "./api";
 import { Progress } from "./Progress";
 import { useDraft } from "./state";
 import styles from "./Start.module.css";
@@ -38,6 +39,7 @@ export function LearnerSteps({
   const name = mine ? draft.name : "";
   const create = useCreateLearner(session);
   const claim = useClaimEnrollment(session);
+  const correct = useSetBirthYear(session);
   const firstRun = me.next !== "practice";
   const purchase = me.unassignedPurchase;
   const waiting = me.learners.filter((learner) => !learner.entitlement.active);
@@ -49,7 +51,7 @@ export function LearnerSteps({
       void navigate({ to: "/start/name", replace: true });
   }, [location.pathname, name]);
   if (storedTrial()) return <Navigate to="/" replace />;
-  const busy = create.isPending || claim.isPending;
+  const busy = create.isPending || claim.isPending || correct.isPending;
   const practice = (learnerId: string) => {
     useLearnerStore.getState().select(learnerId);
     draft.clear();
@@ -64,10 +66,16 @@ export function LearnerSteps({
       : practice(learnerId);
   const toast = (
     <Toast
-      message={create.error?.message ?? claim.error?.message ?? ""}
+      message={
+        create.error?.message ??
+        claim.error?.message ??
+        correct.error?.message ??
+        ""
+      }
       onDismiss={() => {
         create.reset();
         claim.reset();
+        correct.reset();
       }}
     />
   );
@@ -81,20 +89,54 @@ export function LearnerSteps({
             header: firstRun ? <Progress step={4} /> : undefined,
           }}
           name={name.trim()}
-          birthYear={null}
+          birthYear={mine ? draft.year : null}
           busy={busy}
           cancel={() => void navigate({ to: "/start/name" })}
           saveBirthYear={(year) => {
             claim.reset();
-            // The learner already exists if only the claim failed: retry that.
-            if (mine && draft.learnerId) return assign(draft.learnerId);
+            create.reset();
+            correct.reset();
+            const saved = mine ? draft.learnerId : null;
+            // The learner already exists if only the claim failed: retry that,
+            // after correcting the year if the parent picked a different one.
+            if (saved)
+              return draft.year === year
+                ? assign(saved)
+                : correct.mutate(
+                    { learnerId: saved, birthYear: year },
+                    {
+                      onSuccess: () => {
+                        draft.saved(session.accountId, saved, year);
+                        assign(saved);
+                      },
+                    },
+                  );
+            const known = new Set(me.learners.map((learner) => learner.id));
             create.mutate(
               { name: name.trim(), birthYear: year },
               {
                 onSuccess: (learner) => {
-                  draft.saved(session.accountId, learner.id);
+                  draft.saved(session.accountId, learner.id, year);
                   assign(learner.id);
                 },
+                // A lost response may hide a saved learner: find it so the
+                // next tap claims it instead of creating a duplicate.
+                onError: () =>
+                  void refreshMe(session)
+                    .then((fresh) => {
+                      const created =
+                        fresh.signedIn &&
+                        fresh.learners.find(
+                          (learner) =>
+                            !known.has(learner.id) &&
+                            learner.name === name.trim(),
+                        );
+                      if (created)
+                        draft.saved(session.accountId, created.id, year);
+                    })
+                    .catch((cause) =>
+                      console.error("Learner check after failed save", cause),
+                    ),
               },
             );
           }}
