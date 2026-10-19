@@ -508,17 +508,27 @@ button:hover {
   color: var(--ink-2);
 }
 .state-links {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 14px;
-  flex-wrap: wrap;
 }
 .state-links a {
-  min-width: 44px;
-  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 88px;
   border: 1px solid var(--line-2);
-  padding: 8px;
-  text-align: center;
+  border-radius: 16px;
+  padding: 16px;
+  text-decoration: none;
+  background: var(--surface-2);
+  font-weight: 650;
 }
+.state-links a:hover { border-color: currentColor; }
+.state-links small { display: block; font-weight: 400; color: var(--ink-2); }
+.state-badge { position: relative; width: 40px; height: 48px; flex: 0 0 40px; }
+.state-badge svg { width: 40px; height: 48px; opacity: 0.12; }
+.state-badge > span { position: absolute; inset: 8px 0 auto; text-align: center; font-size: 14px; }
 .state {
   padding: 30px 0;
   border-bottom: 1px solid var(--line);
