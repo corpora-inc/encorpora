@@ -73,6 +73,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <ArrayModel model={model} step={step} />;
     case "exchange":
       return <ExchangeModel model={model} step={step} />;
+    case "rate":
+      return <RateLinesModel model={model} step={step} />;
     case "partition":
       return <PartitionStage model={model} step={step} />;
     case "compare":
@@ -204,6 +206,125 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
   );
 }
 
+/** Both lines share one scale; the highlighted pair shrinks to 1 and then
+ * stretches to the target, always by the same factor on both lines. */
+function RateLinesModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "rate" }>;
+  step: number;
+}) {
+  const [b, t] = model.given,
+    [tb, tt] = model.target,
+    rate = t / b;
+  const x0 = 104,
+    x1 = 292,
+    yTop = 72,
+    yBottom = 140,
+    max = Math.max(b, tb),
+    x = (v: number) => x0 + (v / max) * (x1 - x0);
+  const reach = [b, 1, tb][step]! / max;
+  const tick = (v: number, key: string, show = true) => (
+    <g
+      key={key}
+      className="animation-fade"
+      style={{ opacity: show ? 1 : 0 }}
+      data-rate-tick={key}
+    >
+      {[yTop, yBottom].map((y) => (
+        <line
+          key={y}
+          x1={x(v)}
+          x2={x(v)}
+          y1={y - 7}
+          y2={y + 7}
+          className="animation-outline"
+          strokeWidth="2"
+        />
+      ))}
+    </g>
+  );
+  return (
+    <>
+      <text x="8" y={yTop + 5}>
+        {model.top}
+      </text>
+      <text x="8" y={yBottom + 5}>
+        {model.bottom}
+      </text>
+      {[yTop, yBottom].map((y) => (
+        <g key={y}>
+          <rect
+            x={x0}
+            y={y - 6}
+            width={x1 - x0}
+            height="12"
+            rx="3"
+            className="animation-move rate-bar"
+            data-rate-bar={y === yTop ? "top" : "bottom"}
+            style={{
+              transformOrigin: `${x0}px ${y}px`,
+              transform: `scaleX(${reach})`,
+            }}
+          />
+          <line
+            x1={x0}
+            x2={x1 + 10}
+            y1={y}
+            y2={y}
+            className="animation-outline"
+            strokeWidth="2"
+          />
+        </g>
+      ))}
+      {tick(0, "zero")}
+      <text x={x(0)} y={yTop - 14} textAnchor="middle">
+        0
+      </text>
+      <text x={x(0)} y={yBottom + 26} textAnchor="middle">
+        0
+      </text>
+      {tick(b, "given")}
+      <text x={x(b)} y={yTop - 14} textAnchor="middle">
+        {t}
+      </text>
+      <text x={x(b)} y={yBottom + 26} textAnchor="middle">
+        {b}
+      </text>
+      {tick(1, "unit", step >= 1)}
+      <g
+        className="animation-fade"
+        style={{ opacity: step >= 1 ? 1 : 0 }}
+        data-rate-unit={`${rate}`}
+      >
+        <text x={x(1)} y={yTop + 24} textAnchor="middle" className="rate-unit">
+          {rate}
+        </text>
+        <text
+          x={x(1)}
+          y={yBottom - 13}
+          textAnchor="middle"
+          className="rate-unit"
+        >
+          1
+        </text>
+      </g>
+      {tick(tb, "target")}
+      <text x={x(tb)} y={yTop - 14} textAnchor="middle" data-rate-target-top>
+        {!model.findBottom && step < 2 ? "?" : tt}
+      </text>
+      <text
+        x={x(tb)}
+        y={yBottom + 26}
+        textAnchor="middle"
+        data-rate-target-bottom
+      >
+        {model.findBottom && step < 2 ? "?" : tb}
+      </text>
+    </>
+  );
+}
 function FractionModel({
   model,
   step,

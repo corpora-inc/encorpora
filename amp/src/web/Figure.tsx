@@ -10,6 +10,7 @@ import { ComparisonFigure } from "./ComparisonFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
@@ -35,6 +36,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "pour":
     case "liquid-scale":
       return <AttributeFigure figure={figure} />;
+    case "ratio-table":
+    case "double-number-line":
+      return <RatioRateFigure figure={figure} />;
     case "analog-clocks":
     case "money-sets":
       return <TimeMoneyFigure figure={figure} />;

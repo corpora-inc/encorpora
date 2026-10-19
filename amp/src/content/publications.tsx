@@ -1,3 +1,5 @@
+import { ratioRateWorksheet } from "./ratio-rate-worksheets";
+import { ratioRateTemplates } from "../math/ratio-rate-practice";
 import { factArrayTemplates } from "../math/fact-arrays-practice";
 import { patternFunctionWorksheet } from "./pattern-function-worksheets";
 import { patternFunctionTemplates } from "../math/pattern-function-practice";
@@ -61,7 +63,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    patternFunctionTemplates.some((t) => t.id === id)
+    ratioRateTemplates.some((t) => t.id === id)
+      ? ratioRateWorksheet(id, lesson.id, edition)
+      : patternFunctionTemplates.some((t) => t.id === id)
       ? patternFunctionWorksheet(id, lesson.id, edition)
       : equationTemplates.some((t) => t.id === id)
         ? equationWorksheet(id, lesson.id, edition)

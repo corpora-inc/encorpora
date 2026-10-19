@@ -1,3 +1,4 @@
+import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
@@ -49,6 +50,7 @@ export const principles: Record<string, string> = {
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...ratioRatePrinciples,
   ...patternFunctionPrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,

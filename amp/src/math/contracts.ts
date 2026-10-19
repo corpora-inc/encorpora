@@ -13,6 +13,10 @@ import {
   type AttributeFigure,
 } from "./attribute-models.js";
 import {
+  ratioRateFigureSchemas,
+  type RatioRateFigure,
+} from "./ratio-rate-models.js";
+import {
   partWholeFigureSchemas,
   type PartWholeFigure,
 } from "./part-whole-models.js";
@@ -56,6 +60,7 @@ export type FunctionDisplayFigure = {
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | RatioRateFigure
   | PartWholeFigure
   | AttributeFigure
   | FactArrayFigure
@@ -269,6 +274,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     functionDisplaySchema,
     ...measurementFigureSchemas,
+    ...ratioRateFigureSchemas,
     ...partWholeFigureSchemas,
     ...attributeFigureSchemas,
     ...factArrayFigureSchemas,

@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { problemLesson } from "../src/content/problem-lessons";
+import type { SemanticFigure } from "../src/math/contracts";
 import {
   animationModel,
   animationFrames,
@@ -13,6 +14,7 @@ test("animation models conserve the quantities in real lesson examples", () => {
     "fraction-model",
     "split-array-part",
     "exchange-base-ten",
+    "double-number-line-missing",
     "balance-one-step",
     "balance-two-step",
   ]) {
@@ -54,6 +56,17 @@ test("animation models conserve the quantities in real lesson examples", () => {
           `$${splitAfterRow * columns} + ${(rows - splitAfterRow) * columns} = ${rows * columns}$`,
         );
         kinds.add("array");
+      } else if (model.kind === "rate") {
+        // Both lines scale by one factor: through 1, then to the target.
+        const [b, t] = model.given,
+          [tb, tt] = model.target;
+        assert.equal(t * tb, tt * b);
+        assert.equal(Number(lesson.example.answer), model.findBottom ? tb : tt);
+        assert.equal(
+          frames[1].math.includes(`${t} \\div ${b} = ${t / b}`),
+          true,
+        );
+        kinds.add("rate");
       } else if (model.kind === "balance") {
         // Every frame's equation is true for the weight read from the pans.
         const { groups, blocks, units, right } = model.figure;
@@ -79,6 +92,7 @@ test("animation models conserve the quantities in real lesson examples", () => {
     "array",
     "fraction",
     "ones",
+    "rate",
     "remove-split",
     "split-remove",
     "tens",
@@ -148,10 +162,33 @@ test("array and exchange adapters reject ambiguous or unsupported metadata", () 
       { kind: "base-ten", hundreds: 2, tens: 11, ones: 10 },
     ],
     ["exchange-base-ten", { kind: "base-ten", hundreds: 2, tens: 3, ones: 4 }],
+    [
+      "double-number-line-missing",
+      {
+        kind: "double-number-line",
+        top: { label: "Miles", denominator: 2, numerators: [0, 3, null] },
+        bottom: { label: "Hours", denominator: 1, numerators: [0, 1, 2] },
+      },
+    ],
+    [
+      "double-number-line-missing",
+      {
+        kind: "double-number-line",
+        top: { label: "Miles", denominator: 1, numerators: [0, 7, null] },
+        bottom: { label: "Hours", denominator: 1, numerators: [0, 2, 3] },
+      },
+    ],
   ] as const) {
     const lesson = problemLesson(templateId, "animation");
     assert.equal(
-      animationModel({ ...lesson, example: { ...lesson.example, figure } }),
+      animationModel({
+        ...lesson,
+        example: {
+          ...lesson.example,
+          // Fixtures are frozen literals; the adapter only reads them.
+          figure: structuredClone(figure) as SemanticFigure,
+        },
+      }),
       null,
     );
   }
