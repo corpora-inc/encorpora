@@ -1,3 +1,4 @@
+import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -19,6 +20,14 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "counting-tree" ||
+    kind === "permutation-slots" ||
+    kind === "combination-orders" ||
+    kind === "independent-grid" ||
+    kind === "expected-spinner"
+  )
+    return <CombinatoricsIllustration kind={kind} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||
