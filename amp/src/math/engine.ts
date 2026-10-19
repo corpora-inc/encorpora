@@ -1,3 +1,8 @@
+import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
+import {
+  equationTemplates,
+  generateEquationProblem,
+} from "./equation-practice";
 import {
   distributionTemplates,
   generateDistributionProblem,
@@ -234,9 +239,11 @@ export const templates: readonly TemplateMetadata[] = [
   ...comparisonTemplates,
   ...factsTemplates,
   ...combinatoricsTemplates,
+  ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...decimalTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -405,9 +412,11 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...partWholeTemplates,
+    ...decimalTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -442,6 +451,10 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (equationTemplates.some((t) => t.id === templateId))
+    return generateEquationProblem(templateId, seed);
+  if (decimalTemplates.some((t) => t.id === templateId))
+    return generateDecimalProblem(templateId, seed);
   if (volumeCoordinateTemplates.some((t) => t.id === templateId))
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))

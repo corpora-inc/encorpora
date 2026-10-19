@@ -1,5 +1,7 @@
+import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
+import { decimalLessons } from "./decimal-lessons";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -39,6 +41,17 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
+      | "decimal-tenths-hundredths"
+      | "decimal-compare-chart"
+      | "decimal-rounding-line"
+      | "decimal-aligned-sum"
       | "column-addition"
       | "base-ten-trade"
       | "column-subtraction-zero"
@@ -565,10 +578,12 @@ export const lessons: readonly Lesson[] = [
   ...distributionLessons,
   ...radicalLessons,
   ...partWholeLessons,
+  ...decimalLessons,
   ...comparisonLessons,
   ...addSubtractLessons,
   ...factsLessons,
   ...combinatoricsLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
