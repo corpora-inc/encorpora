@@ -16,6 +16,7 @@ from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
+from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures, review_absolute_value_content, review_absolute_value_content_mutations
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
@@ -73,6 +74,8 @@ def require(condition, message):
     if not condition:
         raise ValueError(message)
 
+
+SUPPORTED |= ABSOLUTE_VALUE
 
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
@@ -137,6 +140,8 @@ def solve(public):
         return solve_polynomial(public)
     if template in QUADRATIC:
         return solve_quadratic(public)
+    if template in ABSOLUTE_VALUE:
+        return solve_absolute_value(public)
     if template in MEASUREMENT:
         return solve_measurement(public)
     if template in ALGEBRA:
@@ -370,6 +375,8 @@ def review(stream):
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
+    review_absolute_value_fixtures()
+    review_absolute_value_content_mutations()
     review_polynomial_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
@@ -463,7 +470,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in ABSOLUTE_VALUE | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -505,6 +512,7 @@ def review(stream):
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
     publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'

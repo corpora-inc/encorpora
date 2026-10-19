@@ -30,6 +30,7 @@ import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
+import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 /** Authored methods, keyed by template id. Keep each one short and complete:
@@ -42,6 +43,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
+  ...absoluteValueMethods,
   ...polynomialMethods,
   ...earlyDataMethods,
   ...linePlotMethods,

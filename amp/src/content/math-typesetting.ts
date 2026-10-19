@@ -75,7 +75,7 @@ function tokens(source: string): Token[] | null {
       /^[A-Za-z]+/.exec(rest)?.[0] ??
       /^[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺]+/.exec(rest)?.[0] ??
       /^[₀₁₂₃₄₅₆₇₈₉ₙ]+/.exec(rest)?.[0] ??
-      /^[()+−\-±×*·÷/^_=<>≤≥≠√%]/.exec(rest)?.[0];
+      /^[|()+−\-±×*·÷/^_=<>≤≥≠√%]/.exec(rest)?.[0];
     if (!value || (/^[A-Za-z]/.test(value) && !isIdentifier(value)))
       return null;
     // Adjacent letters are separate variables, never a word or a function name.
@@ -107,7 +107,8 @@ export function expressionToTex(source: string): string | null {
   const input = tokens(source) ?? [];
   if (!input.length || input.length > 256) return null;
   let index = 0,
-    depth = 0;
+    depth = 0,
+    absoluteDepth = 0;
   const peek = () => input[index]?.value;
   const take = () => {
     const token = input[index++];
@@ -124,7 +125,10 @@ export function expressionToTex(source: string): string | null {
     value.kind === "group" ? value.inner!.tex : value.tex;
   const startsAtom = (value: string | undefined) =>
     value !== undefined &&
-    (/^[0-9A-Za-z]/.test(value) || value === "(" || value === "√");
+    (/^[0-9A-Za-z]/.test(value) ||
+      value === "(" ||
+      value === "√" ||
+      (value === "|" && absoluteDepth === 0));
   const relationOperators: Record<string, string> = {
     "=": "=",
     "<": "<",
@@ -143,6 +147,14 @@ export function expressionToTex(source: string): string | null {
       const close = take();
       if (close.value !== ")") throw new Error("Unclosed group");
       value = node(`(${inner.tex})`, "group", close.end, inner);
+    } else if (token.value === "|") {
+      if (absoluteDepth) throw new Error("Nested bars need explicit grouping");
+      absoluteDepth++;
+      const inner = sum();
+      const close = take();
+      absoluteDepth--;
+      if (close.value !== "|") throw new Error("Unclosed absolute value");
+      value = node(`\\left|${inner.tex}\\right|`, "absolute", close.end);
     } else if (/^[0-9]/.test(token.value)) {
       value = node(token.value.replaceAll(",", "{,}"), "number", token.end);
     } else if (/^[A-Za-z]$/.test(token.value)) {
@@ -356,7 +368,7 @@ export function segmentPrintText(text: string): PrintSegment[] {
         : expressionToTex(candidate);
       // Single prose letters (notably the articles A/a) are not formula delimiters.
       const mathematical =
-        /[=+−\-±×*·÷/^_<>≤≥≠√%⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ₀-₉ₙ]/.test(candidate) ||
+        /[|=+−\-±×*·÷/^_<>≤≥≠√%⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ₀-₉ₙ]/.test(candidate) ||
         /^[xyz]$/.test(candidate) ||
         /[0-9][A-Za-z]|\)\(/.test(candidate);
       if (tex !== null && mathematical) {
@@ -389,7 +401,7 @@ export function segmentPrintText(text: string): PrintSegment[] {
         /^\s+$/.test(piece) ||
         /^[0-9]/.test(piece) ||
         (/^[A-Za-z]+$/.test(piece) && isIdentifier(piece)) ||
-        /^[()+−\-±×*·÷/^_=<>≤≥≠√%⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺₀₁₂₃₄₅₆₇₈₉ₙ]+$/.test(piece);
+        /^[|()+−\-±×*·÷/^_=<>≤≥≠√%⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ⁻⁺₀₁₂₃₄₅₆₇₈₉ₙ]+$/.test(piece);
       if (eligible) run += piece;
       else {
         flush();

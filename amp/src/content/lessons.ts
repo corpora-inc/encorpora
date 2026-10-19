@@ -37,6 +37,7 @@ import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
+import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
 import { choiceLessons } from "./choice-lessons.js";
@@ -146,6 +147,8 @@ export interface Lesson {
       | "linear-system-intersection"
       | "linear-system-count"
       | "right-triangle-orientation"
+      | "absolute-value-distance"
+      | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
   workedExample: {
@@ -578,6 +581,7 @@ export const lessons: readonly Lesson[] = [
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
+  ...absoluteValueLessons,
   ...polynomialLessons,
   ...earlyDataLessons,
   ...linePlotLessons,
