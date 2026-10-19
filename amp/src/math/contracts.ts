@@ -15,12 +15,15 @@ import {
   geometryFigureSchemas,
   type GeometryFigure,
 } from "./geometry-figures.js";
+import { sceneSchema, type Scene } from "./scene/spec.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
   | DataDisplayFigure
   | GeometryFigure
+  /** Any figure built with the scene framework (docs/figures.md). */
+  | { kind: "scene"; scene: Scene }
   | {
       kind: "unit-array";
       rows: number;
@@ -80,6 +83,7 @@ export const figureCapabilities = [
   "measurement-models-v1",
   "data-displays-v1",
   "volume-coordinate-figures-v1",
+  "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
@@ -122,6 +126,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...partWholeFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
+    z.object({ kind: z.literal("scene"), scene: sceneSchema }).strict(),
     z
       .object({
         kind: z.literal("unit-array"),
