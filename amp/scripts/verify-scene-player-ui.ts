@@ -6,6 +6,7 @@
  *   npx tsx scripts/verify-scene-player-ui.ts   screenshots in artifacts/scene-player/
  *   npx tsx scripts/verify-scene-player-ui.ts complete-square-solutions ...
  *       the lessons of the named problem types instead, every width and theme
+ *       ("complete-square-term@seed" picks the lesson's example seed)
  *
  * Fails on horizontal overflow, a panel that changes size between steps,
  * controls under 44 px, playback that does not finish, or a reduced-motion
@@ -21,7 +22,11 @@ import { generateProblem } from "../src/math/engine";
 
 const only = process.argv.slice(2);
 const lessons = only.length
-  ? only.map((id) => problemLesson(id, "scene-player"))
+  ? only.map((spec) => {
+      // "id@seed" picks the lesson's example seed.
+      const [id, seed = "scene-player"] = spec.split("@");
+      return problemLesson(id!, seed);
+    })
   : [
       problemLesson("add-within-20", "scene-player"),
       problemLesson("tens-contribution", "scene-player"),
@@ -101,7 +106,7 @@ await mkdir(out, { recursive: true });
 const browser = await chromium.launch();
 const failures: string[] = [];
 const views: (readonly ["lesson" | "hint", number, string])[] = only.length
-  ? only.map((id, i) => ["lesson", i, `lesson-${id}`] as const)
+  ? only.map((id, i) => ["lesson", i, `lesson-${id.split("@")[0]}`] as const)
   : [
       ["lesson", 0, "lesson-add"],
       ["lesson", 1, "lesson-area"],

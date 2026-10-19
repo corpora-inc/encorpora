@@ -13,9 +13,11 @@ import type { Graph, Point } from "../math/scene/spec";
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
 import { exponentialLessonScenes } from "../math/exponential-scenes";
+import { lessonScenes } from "./lesson-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  ...lessonScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],

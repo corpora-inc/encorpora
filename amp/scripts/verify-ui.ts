@@ -79,6 +79,28 @@ try {
     .click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
+  // CI measures with a device font (scripts/ci-fonts.conf); prove the prompt
+  // renders in it, so a silent fallback cannot make every fit check wrong.
+  if (process.env.AMP_EXPECT_UI_FONT) {
+    await page.locator(".question > span").first().waitFor();
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send("DOM.enable");
+    await cdp.send("CSS.enable");
+    const { root } = await cdp.send("DOM.getDocument", { depth: -1 });
+    const { nodeId } = await cdp.send("DOM.querySelector", {
+      nodeId: root.nodeId,
+      selector: ".question > span",
+    });
+    const { fonts } = await cdp.send("CSS.getPlatformFontsForNode", {
+      nodeId,
+    });
+    assert.equal(
+      fonts[0]?.familyName,
+      process.env.AMP_EXPECT_UI_FONT,
+      `Practice prompt renders in ${JSON.stringify(fonts)}`,
+    );
+    await cdp.detach();
+  }
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },

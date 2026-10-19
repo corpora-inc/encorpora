@@ -10,6 +10,9 @@ const COMPUTATION_STRANDS = new Set([
   "decimals",
 ]);
 const COMPUTATION_TEMPLATES = new Set([
+  "complete-square-term",
+  "complete-square-monic",
+  "complete-square-nonmonic",
   "dot-plot-mean",
   "mean-missing-value",
   "dot-plot-mad",

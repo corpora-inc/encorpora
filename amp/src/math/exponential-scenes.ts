@@ -356,7 +356,7 @@ export const exponentialLessonScenes = {
     ["2^x"],
     [1, 2, 3, 4, 5, 6].map((x) => [x, 2 ** x]),
   )
-    .highlight({ rows: [1, 2, 4], color: "gold" })
+    .highlight({ rows: [1, 2, 4] })
     .scene({
       title: "Powers of 2: rows 2, 3 and 5 highlighted",
       note: "4 × 8 = 32 in the second column matches 2 + 3 = 5 in the first.",
@@ -399,7 +399,7 @@ export const exponentialLessonScenes = {
     { words: true },
   )
     .changes(0, ["×2", "×2", "×2", "×2"])
-    .highlight({ columns: [1], color: "gold" })
+    .highlight({ columns: [1] })
     .scene({
       title: "Terms 1, 2, 4, 8, 16 and their running totals",
       steps: [

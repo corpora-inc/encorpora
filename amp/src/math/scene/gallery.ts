@@ -1,6 +1,7 @@
 import type { SemanticFigure } from "../contracts";
 import {
   angle,
+  scene,
   protractor,
   areaModel,
   array,
@@ -15,6 +16,8 @@ import {
   table,
   lineTable,
   tenFrame,
+  tree,
+  venn,
 } from "./author";
 import type { Scene } from "./spec";
 import {
@@ -25,6 +28,7 @@ import {
   raceGraph,
   stepTable,
 } from "../exponential-scenes";
+import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 
 /** Reference scenes for every component: the gallery renders them at four
  * widths in both themes, and the unit tests lay every one of them out. */
@@ -264,6 +268,20 @@ export const galleryCases: GalleryCase[] = [
     ).scene(),
   },
   {
+    name: "Square: x² + 8x as tiles missing the corner (problem)",
+    scene: completeSquareTiles(8, false),
+  },
+  {
+    name: "Square: x² − 6x completed, revealed",
+    reveal: true,
+    scene: completeSquareTiles(-6),
+  },
+  {
+    name: "Square: parabola 2x² − 4x − 6 with vertex and axis, revealed",
+    reveal: true,
+    scene: vertexGraph(2, -4, -6, "2x^2 - 4x - 6", "2(x - 1)^2 - 8"),
+  },
+  {
     name: "Array: 7 × 6 split after 4 rows",
     scene: array(7, 6, { splitAfterRow: 4 }).scene(),
   },
@@ -308,12 +326,148 @@ export const galleryCases: GalleryCase[] = [
     ),
   },
   {
+    name: "Venn: counts in every region",
+    scene: venn("Art", "Music", { universe: "40 students" })
+      .regions({ a: 12, ab: 6, b: 9, none: 13 })
+      .scene(),
+  },
+  {
+    name: "Venn: totals given, the union shaded (problem)",
+    scene: venn("Soccer", "Band", { universe: "60 students" })
+      .totals(25, 18)
+      .regions({ a: null, ab: 7, b: null })
+      .shade("a", "ab", "b")
+      .scene(),
+  },
+  {
+    name: "Venn: probabilities, neither shaded",
+    scene: venn("A", "B", { universe: "S" })
+      .regions({ a: "0.35", ab: "0.15", b: "0.2", none: null })
+      .shade("none")
+      .scene(),
+  },
+  {
+    name: "Two-way table: conditioning on one row",
+    scene: table({
+      columns: ["Online", "In person", "Total"],
+      rows: [
+        { label: "Grade 9", cells: [18, 12, 30] },
+        { label: "Grade 10", cells: [14, 26, 40] },
+        { label: "Total", cells: [32, 38, 70] },
+      ],
+      sums: true,
+      highlight: { rows: [1], cells: [[1, 0]] },
+    }).scene({ width: 400 }),
+  },
+  {
+    name: "Two-way table: conditioning on one column",
+    scene: table({
+      columns: ["Museum", "Zoo", "Park"],
+      rows: [
+        { label: "Adult", cells: [5, 20, 16] },
+        { label: "Child", cells: [22, 26, 4] },
+      ],
+      highlight: { columns: [2], cells: [[1, 2]] },
+    }).scene(),
+  },
+  {
+    name: "Tree: two draws without replacement",
+    scene: tree([
+      {
+        label: "R",
+        p: "3/5",
+        children: [
+          { label: "R", p: "2/4", leaf: "6/20" },
+          { label: "B", p: "2/4", leaf: "6/20" },
+        ],
+      },
+      {
+        label: "B",
+        p: "2/5",
+        children: [
+          { label: "R", p: "3/4", leaf: "6/20" },
+          { label: "B", p: "1/4", leaf: "2/20" },
+        ],
+      },
+    ])
+      .highlight("0", "0.1")
+      .scene(),
+  },
+  {
+    name: "Tree: rain and a late bus (problem)",
+    scene: tree([
+      {
+        label: "Rain",
+        p: "0.3",
+        children: [
+          { label: "Late", p: "0.4", leaf: null },
+          { label: "On time", p: null },
+        ],
+      },
+      {
+        label: "No rain",
+        p: "0.7",
+        children: [
+          { label: "Late", p: "0.1" },
+          { label: "On time", p: "0.9" },
+        ],
+      },
+    ]).scene(),
+  },
+  {
     name: "Protractor: 0 on the left, ray at 130",
     scene: protractor([180, 130], ["A", "B", "C"]).scene({ width: 340 }),
   },
   {
     name: "Protractor: 0 on the right, ray at 75",
     scene: protractor([0, 75], ["P", "Q", "R"]).scene({ width: 340 }),
+  },
+  {
+    name: "Protractor sweep: 0 on the left, along the outer scale (lesson)",
+    reveal: true,
+    scene: scene(
+      protractor([180, 130], ["A", "B", "C"]).id("p").element(),
+      angle({
+        rays: [180, 130],
+        length: 1.25,
+        marksOnly: true,
+        marks: [
+          {
+            from: 0,
+            to: 1,
+            measure: true,
+            derived: true,
+            color: "warm",
+            clockwise: true,
+          },
+        ],
+      })
+        .id("sweep")
+        .element(),
+    ).build({
+      width: 340,
+      steps: [
+        {
+          caption: "Ray BA lies on 0 of the outer scale.",
+          actions: [
+            { do: "highlight", target: "p.ray.0" },
+            { do: "highlight", target: "p.outer.0" },
+          ],
+        },
+        {
+          caption: "Follow the outer scale from 0 to ray BC.",
+          actions: [
+            { do: "trace", target: "sweep.mark.0" },
+            { do: "highlight", target: "p.ray.1" },
+          ],
+        },
+        {
+          caption: "Angle ABC measures {sweep.measure.0}.",
+          actions: [{ do: "appear", target: "sweep.measure.0" }],
+          audience: "lesson",
+        },
+      ],
+    }),
   },
   {
     name: "Angle: parts with the unknown masked",
@@ -502,6 +656,53 @@ export const parityFigures: SemanticFigure[] = [
   },
   { kind: "ten-frame", first: 7, second: 2, capacity: 10 },
   { kind: "ten-frame", first: 9, second: 6, capacity: 20 },
+  {
+    kind: "line-plot",
+    denominator: 4,
+    start: 4,
+    end: 12,
+    values: [5, 5, 6, 8, 8, 8, 9, 11, 12],
+    mark: "x",
+    unit: "inches",
+  },
+  {
+    kind: "line-plot",
+    denominator: 1,
+    start: 0,
+    end: 8,
+    values: [1, 2, 2, 3, 7],
+    mark: "dot",
+    unit: "goals",
+  },
+  {
+    kind: "double-dot-plot",
+    start: 0,
+    end: 12,
+    groups: [
+      { label: "Morning", values: [3, 4, 5, 5, 6, 7] },
+      { label: "Afternoon", values: [6, 7, 8, 8, 9, 10] },
+    ],
+    unit: "push-ups",
+  },
+  {
+    kind: "box-plot",
+    start: 40,
+    end: 100,
+    step: 5,
+    summary: [50, 65, 75, 85, 95],
+    unit: "points",
+  },
+  {
+    kind: "double-box-plot",
+    start: 40,
+    end: 100,
+    step: 5,
+    groups: [
+      { label: "Class A", summary: [55, 65, 75, 85, 95] },
+      { label: "Class B", summary: [45, 60, 65, 70, 90] },
+    ],
+    unit: "points",
+  },
   { kind: "base-ten", hundreds: 2, tens: 4, ones: 7 },
   { kind: "base-ten", hundreds: 0, tens: 13, ones: 6 },
   { kind: "unit-array", rows: 7, columns: 6, splitAfterRow: 4 },

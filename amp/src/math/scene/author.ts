@@ -20,8 +20,11 @@ import {
   type InkRole,
   type LineTable,
   type TenFrame,
+  type Venn,
+  type Tree,
 } from "./spec";
 import type { Action, Step } from "./timeline";
+import { treeWidth } from "./components/tree";
 
 /**
  * Author API: chainable builders that produce plain scene data.
@@ -334,9 +337,9 @@ class TableBuilder extends Builder<Table> {
     ];
     return this;
   }
-  /** Tint rows (a conditional distribution) or body columns. */
-  highlight(highlight: NonNullable<Table["highlight"]>) {
-    this.spec.highlight = highlight;
+  /** Bands behind rows or columns and rings around cells (conditioning). */
+  highlight(h: NonNullable<Table["highlight"]>) {
+    this.spec.highlight = h;
     return this;
   }
 }
@@ -418,6 +421,78 @@ export const fractionBar = (
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
 
+type Entry = string | number | null;
+const entry = (v: Entry) =>
+  v === null ? null : typeof v === "number" ? String(v).replace("-", "−") : v;
+
+class VennBuilder extends Builder<Venn> {
+  /** Values by region: a (first only), ab (both), b (second only), none. */
+  regions(values: Partial<Record<"a" | "ab" | "b" | "none", Entry>>) {
+    this.spec.regions = Object.fromEntries(
+      Object.entries(values).map(([k, v]) => [k, entry(v as Entry)]),
+    );
+    return this;
+  }
+  totals(a: Entry, b: Entry) {
+    this.spec.totals = [entry(a), entry(b)];
+    return this;
+  }
+  shade(...regions: NonNullable<Venn["shade"]>) {
+    this.spec.shade = regions;
+    return this;
+  }
+}
+/** venn("Art", "Music", { universe: "40 students" }).regions({ a: 12, ab: 6, b: 9, none: 13 }) */
+export const venn = (
+  a: string,
+  b: string,
+  options: { universe?: string } = {},
+) => new VennBuilder({ type: "venn", sets: [a, b], ...options });
+
+type TreeOutcome = {
+  label: string;
+  p: Entry;
+  /** The learner finds this branch: "?" unless revealed. */
+  derived?: boolean;
+  leaf?: Entry;
+};
+class TreeBuilder extends Builder<Tree> {
+  highlight(...paths: string[]) {
+    this.spec.highlight = paths;
+    return this;
+  }
+  /** Write each path's product in the leaf column (masked unless "shown"). */
+  products(mode: "shown" | "derived" = "derived") {
+    this.spec.products = mode;
+    return this;
+  }
+  /** A tree is as wide as its labels: the scene widens to hold it. */
+  override scene(options: SceneOptions = {}): Scene {
+    const natural = Math.ceil(treeWidth(this.spec) + 16);
+    return super.scene({
+      width: Math.min(720, Math.max(360, natural)),
+      ...options,
+    });
+  }
+}
+/** tree([{ label: "R", p: "3/5", children: [{ label: "R", p: "2/4" }, …] }, …]) */
+export const tree = (
+  branches: (TreeOutcome & { children?: TreeOutcome[] })[],
+) => {
+  const outcome = (o: TreeOutcome) => ({
+    label: o.label,
+    p: entry(o.p),
+    ...(o.derived ? { derived: true } : {}),
+    ...(o.leaf !== undefined ? { leaf: entry(o.leaf) } : {}),
+  });
+  return new TreeBuilder({
+    type: "tree",
+    branches: branches.map((b) => ({
+      ...outcome(b),
+      ...(b.children ? { children: b.children.map(outcome) } : {}),
+    })),
+  });
+};
 /** A protractor on a vertex: one ray on its baseline, the other crossing
  * the scales. */
 export const protractor = (
