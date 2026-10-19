@@ -3,6 +3,11 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
+import {
+  timeMoneyFigureSchemas,
+  type TimeMoneyFigure,
+} from "./time-money-models.js";
 import {
   partWholeFigureSchemas,
   type PartWholeFigure,
@@ -24,6 +29,8 @@ export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
   | FactArrayFigure
+  | TimeMoneyFigure
+  | DecimalFigure
   | DataDisplayFigure
   | GeometryFigure
   | {
@@ -78,7 +85,28 @@ export type SemanticFigure =
   | { kind: "fraction"; selected: number; parts: number }
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
-  | { kind: "dataset"; values: number[] };
+  | { kind: "dataset"; values: number[] }
+  | {
+      /** Left pan: `groups` identical bags of `blocks` x blocks and `units`
+       * one-unit cubes (a single group needs no bag). Right pan: `right` cubes. */
+      kind: "balance-scale";
+      groups: number;
+      blocks: number;
+      units: number;
+      right: number;
+    }
+  | {
+      /** One-unit ticks from min to max; each line graphs a half-line solution set. */
+      kind: "inequality-lines";
+      min: number;
+      max: number;
+      lines: {
+        label?: "A" | "B" | "C" | "D";
+        boundary: number;
+        direction: "left" | "right";
+        included: boolean;
+      }[];
+    };
 /** A client lists the figure families it can draw; a template that needs
  * another family is never sent to it. */
 export const figureCapabilities = [
@@ -116,6 +144,11 @@ export interface GeneratedProblem {
   public: PublicProblem;
   answer: string;
   explanation: string[];
+  /** One teaching step for this instance, written by the generator from its
+   * own givens: it names the problem's quantities and the first move of the
+   * authored method, and never states the answer. Gated by
+   * tests/instance-hints.test.ts. A figure cue (an element of this problem's
+   * figure to highlight) will travel beside it as its own optional field. */
   hint: string;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
@@ -126,6 +159,8 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
     ...factArrayFigureSchemas,
+    ...timeMoneyFigureSchemas,
+    ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     z
@@ -343,6 +378,53 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         values: z.array(z.number().finite()).min(1).max(100),
       })
       .strict(),
+    z
+      .object({
+        kind: z.literal("balance-scale"),
+        groups: z.number().int().min(1).max(3),
+        blocks: z.number().int().min(1).max(5),
+        units: z.number().int().min(0).max(12),
+        right: z.number().int().min(1).max(30),
+      })
+      .strict()
+      .refine(
+        (f) =>
+          (f.groups === 1 || f.blocks === 1) &&
+          f.groups * (f.blocks + f.units) <= 18 &&
+          f.right > f.groups * f.units &&
+          (f.right - f.groups * f.units) % (f.groups * f.blocks) === 0,
+        "A level balance needs a positive whole block weight and drawable counts",
+      ),
+    z
+      .object({
+        kind: z.literal("inequality-lines"),
+        min: z.number().int().min(-100).max(100),
+        max: z.number().int().min(-100).max(110),
+        lines: z
+          .array(
+            z
+              .object({
+                label: z.enum(["A", "B", "C", "D"]).optional(),
+                boundary: z.number().int(),
+                direction: z.enum(["left", "right"]),
+                included: z.boolean(),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(4),
+      })
+      .strict()
+      .refine(
+        (f) =>
+          f.max - f.min >= 6 &&
+          f.max - f.min <= 12 &&
+          f.lines.every((l) => l.boundary > f.min && l.boundary < f.max) &&
+          (f.lines.length === 1
+            ? f.lines[0]!.label === undefined
+            : f.lines.every((l, i) => l.label === "ABCD"[i])),
+        "Inequality lines need an interior boundary and labels A–D in order",
+      ),
   ]);
 const choiceIdSchema = z.string().regex(/^option-[a-d]$/);
 export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([

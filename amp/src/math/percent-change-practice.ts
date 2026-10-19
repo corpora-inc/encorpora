@@ -158,8 +158,10 @@ export function percentChangePrintCase(
     }
     prompt += instruction;
     answer = p;
-    hint =
-      "Use the original quantity as the base. Divide the amount of change by that original quantity, then multiply by 100 to express the ratio as a percent.";
+    const pct = context === "share" ? "%" : "";
+    hint = sign
+      ? `The original ${B}${pct} is the base. Find the change, ${sign < 0 ? B : F} − ${sign < 0 ? F : B}, then write it as a fraction of ${B}.`
+      : `It starts at ${B}${pct} and ends at ${B}${pct}. How much did it change, as a fraction of ${B}${pct}?`;
     explanation.push(
       `The original ${context === "share" ? "share" : "quantity"}, ${B}${context === "share" ? "%" : ""}, is the base for this change.`,
       `Amount of change: ${sign < 0 ? B : F} − ${sign < 0 ? F : B} = ${decimal(delta)}${context === "share" ? (delta.n === delta.d ? " percentage point" : " percentage points") : ""}.`,
@@ -186,8 +188,12 @@ export function percentChangePrintCase(
       : `${noun} of ${before} ${change}. What is the final ${context === "price" ? "price" : "quantity"}, in ${unit}?`;
     answer = reverse ? b : f;
     hint = reverse
-      ? "The percentage is based on the original quantity. Find the fraction that remains or results after the change, then divide the final quantity by that nonzero fraction."
-      : "Find the stated percentage of the original quantity. Add that amount for an increase or subtract it for a decrease; the question asks for the final quantity.";
+      ? sign
+        ? `${P} is a percent of the unknown original, not of ${F}. After the change, ${F} is ${num(multiplier)} of the original: solve ${num(multiplier)} × original = ${F}.`
+        : `A 0% change leaves the original unchanged. Which original gives ${F} after no change?`
+      : sign
+        ? `${P} of ${B} is ${num(factor)} × ${B}. Find that amount, then ${sign > 0 ? "add it to" : "subtract it from"} ${B}.`
+        : `A 0% change adds nothing to ${B}.`;
     explanation.push(
       `Write the percentage as a fraction: ${num(p)} ÷ 100 = ${num(factor)}.`,
       sign

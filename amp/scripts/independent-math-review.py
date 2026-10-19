@@ -31,12 +31,15 @@ from print_pdf_oracle import review_print_pdfs
 from radical_public_oracle import RADICAL_TYPES, solve_radical, review_fixtures as review_radical_fixtures
 from radical_math_oracle import review_arithmetic_fixtures as review_radical_arithmetic
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
+from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
 from add_subtract_math_oracle import ADD_SUBTRACT, solve_add_subtract, review_add_subtract_fixtures, AddSubtractCorpus
 from facts_math_oracle import FACTS, solve_facts, review_facts_fixtures, FactsCorpus
 from fact_arrays_math_oracle import FACT_ARRAYS, solve_fact_arrays, review_fact_arrays_fixtures, FactArraysCorpus
 from part_whole_math_oracle import PART_WHOLE, solve_part_whole, review_part_whole_fixtures
+from decimal_math_oracle import DECIMAL, solve_decimal, review_decimal_fixtures, DecimalCorpus
+from time_money_math_oracle import TIME_MONEY, TIME_MONEY_CHOICE, solve_time_money, review_time_money_fixtures
 from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
 from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
@@ -54,7 +57,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = VOLUME_COORDINATE | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | FACTS | FACT_ARRAYS | ADD_SUBTRACT
+SUPPORTED = EQUATIONS | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | FACTS | FACT_ARRAYS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY
 
 
 def require(condition, message):
@@ -66,6 +69,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in EQUATIONS:
+        return solve_equations(public)
     if template in ADD_SUBTRACT:
         return solve_add_subtract(public)
     if template in VOLUME_COORDINATE:
@@ -76,6 +81,10 @@ def solve(public):
         return solve_fact_arrays(public)
     if template in PART_WHOLE:
         return solve_part_whole(public)
+    if template in DECIMAL:
+        return solve_decimal(public)
+    if template in TIME_MONEY:
+        return solve_time_money(public)
     if template in COMPARISON:
         return solve_comparison(public)
     if template in DATA_DISPLAY:
@@ -290,11 +299,15 @@ def solve(public):
 
 
 def review(stream):
+    review_equation_fixtures()
+    review_equation_mutations()
     review_add_subtract_fixtures()
     review_volume_coordinate_fixtures()
     review_facts_fixtures()
     review_fact_arrays_fixtures()
     review_part_whole_fixtures()
+    review_decimal_fixtures()
+    review_time_money_fixtures()
     review_comparison_fixtures()
     review_data_display_fixtures()
     review_combinatorics_fixtures()
@@ -332,6 +345,7 @@ def review(stream):
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
     comparison_corpus = ComparisonCorpus()
+    decimal_corpus = DecimalCorpus()
     add_subtract_corpus = AddSubtractCorpus()
     facts_corpus = FactsCorpus()
     fact_arrays_corpus = FactArraysCorpus()
@@ -369,6 +383,8 @@ def review(stream):
             review_linear_system_explanation(public, problem['explanation'], problem['choiceFeedback'])
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
+        if template in EQUATIONS:
+            review_equation_problem(problem)
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
@@ -382,10 +398,12 @@ def review(stream):
             fact_arrays_corpus.record(public, solved)
         if template in COMPARISON:
             comparison_corpus.record(public, solved)
+        if template in DECIMAL:
+            decimal_corpus.record(public, solved)
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in EQUATIONS_CHOICE or template in VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -397,10 +415,12 @@ def review(stream):
             review_volume_coordinate_problem(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)
     print('Independent facts coverage: ' + json.dumps(facts_corpus.finish()), file=sys.stderr)
     print('Independent fact-array coverage: ' + json.dumps(fact_arrays_corpus.finish()), file=sys.stderr)
     print('Independent comparison coverage: ' + json.dumps(comparison_corpus.finish()), file=sys.stderr)
+    print('Independent decimal comparison coverage: ' + json.dumps(decimal_corpus.finish()), file=sys.stderr)
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)

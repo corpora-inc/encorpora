@@ -46,9 +46,14 @@ try {
         [],
         `${path} ${width} accessibility`,
       );
-      if (path === "/" || path === "/amp/" || path === "/legal/privacy/")
+      if (
+        path === "/" ||
+        path === "/amp/" ||
+        path === "/schools/" ||
+        path === "/legal/privacy/"
+      )
         await page.screenshot({
-          path: `artifacts/${path === "/" ? "home" : path === "/amp/" ? "amp" : "privacy"}-${width}.png`,
+          path: `artifacts/${path === "/" ? "home" : path === "/amp/" ? "amp" : path === "/schools/" ? "schools" : "privacy"}-${width}.png`,
           fullPage: true,
         });
       const links = await page
@@ -127,6 +132,7 @@ try {
     "/amp/",
     "/esa/",
     "/esa/synthetic-program/",
+    "/schools/",
     "/legal/privacy/",
   ]) {
     await fixturePage.goto(production.url + path);
@@ -145,6 +151,27 @@ try {
       `Configured accessibility ${path}`,
     );
   }
+  await fixturePage.goto(production.url + "/schools/");
+  const inquiry = new URL(
+    (await fixturePage
+      .getByRole("link", { name: "Ask about school licenses" })
+      .getAttribute("href"))!,
+  );
+  assert.equal(inquiry.protocol, "mailto:");
+  assert.equal(
+    inquiry.searchParams.get("subject"),
+    "AMP Mathematics school inquiry",
+  );
+  assert.ok(
+    inquiry.searchParams
+      .get("body")
+      ?.includes("Approximate number of learners:"),
+  );
+  assert.ok(
+    inquiry.searchParams
+      .get("body")
+      ?.includes("Please do not include student names or records."),
+  );
   await fixturePage.goto(production.url + "/amp/");
   assert.equal(await fixturePage.locator(".plan").count(), 2);
   assert.match(await fixturePage.locator("#plans").innerText(), /\$12.34/);

@@ -176,7 +176,7 @@ function DotArray({
 function Total({ x, y, total }: { x: number; y: number; total: number }) {
   return (
     <text x={x} y={y} textAnchor="middle" fontSize="18" fill={ink}>
-      {total} dots in all
+      {total} in all
     </text>
   );
 }

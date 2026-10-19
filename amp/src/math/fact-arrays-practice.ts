@@ -411,7 +411,7 @@ export function generateFactArrayProblem(
           .filter(([, k]) => k !== j);
         answer = (a + b) * C;
         prompt = `Each product in the row for ${a + b} is the sum of the two products above it. What product belongs in the cell with the question mark?`;
-        hint = `Add the two products above the question mark: ${a} × ${C} and ${b} × ${C}.`;
+        hint = `The row for ${a + b} is the row for ${a} plus the row for ${b}: add ${a} × ${C} and ${b} × ${C}.`;
         explanation = [
           `${a + b} groups of ${C} are ${a} groups of ${C} and ${b} more groups of ${C}.`,
           `${a} × ${C} = ${a * C} and ${b} × ${C} = ${b * C}; ${a * C} + ${b * C} = ${answer}.`,

@@ -4,6 +4,9 @@ import type { SemanticFigure } from "../../math/contracts";
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type Balance = Extract<SemanticFigure, { kind: "balance-scale" }>;
+/** add: x + a = b; times: px = b; remove-split: px + q = r; split-remove: p(x + q) = r. */
+export type BalanceForm = "add" | "times" | "remove-split" | "split-remove";
 type Shapes = Extract<SemanticFigure, { kind: "partitioned-shapes" }>;
 type Area = Extract<SemanticFigure, { kind: "area-partition" }>;
 /** One shape cut into n equal parts, k of them shaded. */
@@ -21,9 +24,23 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type DecimalChart = Extract<SemanticFigure, { kind: "place-value-chart" }>;
+/** A hundredths grid: full columns are tenths, the rest hundredths. */
+export type DecimalFillAnimation = { kind: "decimal-fill"; shaded: number };
+/** Two decimals written in a place-value chart, unequal in value. */
+export type DecimalAlignAnimation = {
+  kind: "decimal-align";
+  figure: DecimalChart;
+};
 type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
 type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
+/** One analog clock: both hands start on the hour, then sweep to the time. */
+export type ClockSweepAnimation = {
+  kind: "clock-sweep";
+  hour: number;
+  minute: number;
+};
 export type AnimationModel =
   /** a rows of b dots, built one row at a time. */
   | { kind: "array-build"; rows: number; columns: number }
@@ -37,6 +54,10 @@ export type AnimationModel =
       count: number;
       first: "share" | "measure";
     }
+  | ClockSweepAnimation
+  | { kind: "balance"; figure: Balance; form: BalanceForm; x: number }
+  | DecimalFillAnimation
+  | DecimalAlignAnimation
   | { kind: "prism-layers"; figure: CubePrism }
   | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "make-ten"; figure: TenFramePair }
@@ -61,6 +82,44 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    [
+      "read-clock-hour-half",
+      "clock-hour-read",
+      "read-clock-five-minutes",
+      "minutes-past-hour",
+    ].includes(lesson.templateId) &&
+    f?.kind === "analog-clocks" &&
+    f.clocks.length === 1 &&
+    integer(f.clocks[0]!.hour, 1, 12) &&
+    integer(f.clocks[0]!.minute, 5, 55) &&
+    f.clocks[0]!.minute % 5 === 0
+  )
+    return {
+      kind: "clock-sweep",
+      hour: f.clocks[0]!.hour,
+      minute: f.clocks[0]!.minute,
+    };
+  if (
+    lesson.templateId === "decimal-grid-read" &&
+    f?.kind === "decimal-grid" &&
+    f.unit === "hundredths" &&
+    integer(f.shaded, 1, 99)
+  )
+    return { kind: "decimal-fill", shaded: f.shaded };
+  if (
+    (lesson.templateId === "compare-decimals-hundredths" ||
+      lesson.templateId === "compare-decimals-thousandths") &&
+    f?.kind === "place-value-chart" &&
+    f.rows.every(
+      (row) =>
+        integer(row.ones, 0, 9) &&
+        /^\d+$/.test(row.decimals) &&
+        row.decimals.length <= f.places,
+    ) &&
+    chartValue(f.rows[0]!, f.places) !== chartValue(f.rows[1]!, f.places)
+  )
+    return { kind: "decimal-align", figure: f };
   if (
     (lesson.templateId === "unit-cube-volume" ||
       lesson.templateId === "cube-layer-count") &&
@@ -276,7 +335,109 @@ export function animationModel(
     if (f.tens >= 10 && f.ones < 10)
       return { kind: "exchange", figure: f, unit: 10 };
   }
+  if (
+    (lesson.templateId === "balance-one-step" ||
+      lesson.templateId === "balance-two-step") &&
+    f?.kind === "balance-scale"
+  ) {
+    const form = balanceForm(f);
+    if (!form) return null;
+    // The weight follows from the figure's counts; the lesson answer is not read.
+    const x = (f.right - f.groups * f.units) / (f.groups * f.blocks);
+    return Number.isInteger(x) && x >= 1
+      ? { kind: "balance", figure: f, form, x }
+      : null;
+  }
   return null;
+}
+function balanceForm(f: Balance): BalanceForm | null {
+  if (
+    !integer(f.groups, 1, 3) ||
+    !integer(f.blocks, 1, 5) ||
+    !integer(f.units, 0, 12) ||
+    !integer(f.right, 1, 30)
+  )
+    return null;
+  if (f.groups > 1)
+    return f.blocks === 1 && f.units >= 1 ? "split-remove" : null;
+  if (f.blocks === 1) return f.units >= 1 ? "add" : null;
+  return f.units === 0 ? "times" : "remove-split";
+}
+function balanceFrames(model: Extract<AnimationModel, { kind: "balance" }>) {
+  const { groups: g, blocks: p, units: q, right: r } = model.figure;
+  const x = model.x;
+  const cubes = (n: number) => `${n} ${n === 1 ? "cube" : "cubes"}`;
+  if (model.form === "add")
+    return [
+      {
+        title: "Read the balance",
+        text: `Level pans hold equal weights: one x block and ${cubes(q)} balance ${cubes(r)}.`,
+        math: `$x + ${q} = ${r}$`,
+      },
+      {
+        title: "Remove the same weight from both pans",
+        text: `Take ${cubes(q)} off each pan. Both pans lose ${q} grams, so the balance stays level.`,
+        math: `$x + ${q} - ${q} = ${r} - ${q}$`,
+      },
+      {
+        title: "The block is alone",
+        text: `One x block balances ${cubes(x)}.`,
+        math: `$x = ${x}$`,
+      },
+    ];
+  if (model.form === "times")
+    return [
+      {
+        title: "Read the balance",
+        text: `Level pans hold equal weights: ${p} x blocks balance ${cubes(r)}.`,
+        math: `$${p}x = ${r}$`,
+      },
+      {
+        title: `Split both pans into ${p} equal groups`,
+        text: `Each group on the left is one x block. Each group on the right has ${cubes(x)}.`,
+        math: `$${p}x \\div ${p} = ${r} \\div ${p}$`,
+      },
+      {
+        title: "Keep one group from each pan",
+        text: `One x block balances one group of ${cubes(x)}.`,
+        math: `$x = ${x}$`,
+      },
+    ];
+  if (model.form === "remove-split")
+    return [
+      {
+        title: "Read the balance",
+        text: `Level pans hold equal weights: ${p} x blocks and ${cubes(q)} balance ${cubes(r)}.`,
+        math: `$${p}x + ${q} = ${r}$`,
+      },
+      {
+        title: "Remove the loose cubes from both pans",
+        text: `Take ${cubes(q)} off each pan. The balance stays level.`,
+        math: `$${p}x = ${r} - ${q} = ${r - q}$`,
+      },
+      {
+        title: `Split both pans into ${p} equal groups`,
+        text: `Each x block balances one group of ${cubes(x)}.`,
+        math: `$x = ${r - q} \\div ${p} = ${x}$`,
+      },
+    ];
+  return [
+    {
+      title: "Read the balance",
+      text: `Level pans hold equal weights: ${g} bags, each holding one x block and ${cubes(q)}, balance ${cubes(r)}.`,
+      math: `$${g}(x + ${q}) = ${r}$`,
+    },
+    {
+      title: `Split both pans into ${g} equal groups`,
+      text: `One bag balances one group of ${cubes(r / g)}.`,
+      math: `$x + ${q} = ${r} \\div ${g} = ${r / g}$`,
+    },
+    {
+      title: "Remove the same weight from every group",
+      text: `Take the ${cubes(q)} out of each bag and ${cubes(q)} from each group on the right.`,
+      math: `$x = ${r / g} - ${q} = ${x}$`,
+    },
+  ];
 }
 const WORDS = ["zero", "one", "two", "three", "four"];
 const UNIT: Record<number, [string, string]> = {
@@ -305,6 +466,22 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+/** A chart row as a whole number of the smallest place: 0.45 → 450 (3 places). */
+export const chartValue = (
+  row: { ones: number; decimals: string },
+  places: number,
+) => Number(`${row.ones}${row.decimals.padEnd(places, "0")}`);
+/** Index of the first differing column, ones = 0. */
+export const firstDifference = (figure: DecimalChart) => {
+  const [a, b] = figure.rows.map(
+    (row) => `${row.ones}${row.decimals.padEnd(figure.places, "0")}`,
+  );
+  let i = 0;
+  while (a![i] === b![i]) i++;
+  return i;
+};
+const written = (row: { ones: number; decimals: string }) =>
+  `${row.ones}.${row.decimals}`;
 /** Quartiles by the median-of-halves convention (overall median left out for odd counts). */
 export function fiveNumbers(values: readonly number[]) {
   const xs = [...values].sort((a, b) => a - b),
@@ -324,6 +501,87 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "clock-sweep") {
+    const { hour: h, minute: m } = model,
+      n = m / 5,
+      next = (h % 12) + 1;
+    const fives = Array.from({ length: n }, (_, i) => 5 * (i + 1));
+    return [
+      {
+        title: `Start at ${h} o'clock`,
+        text: `On the hour the long hand points at 12 and the short hand points at ${h}.`,
+        math: `$${h}{:}00$`,
+      },
+      {
+        title: "The long hand counts minutes",
+        text: `The long hand turns to ${n}. Each numeral is 5 minutes: ${fives.join(", ")}.`,
+        math: `$${n} \\times 5 = ${m}$ minutes`,
+      },
+      {
+        title: "The short hand moves too",
+        text: `In ${m} minutes the short hand moves ${m}/60 of the way from ${h} to ${next}. It has not reached ${next}, so the hour is still ${h}.`,
+        math: `$${h}{:}${String(m).padStart(2, "0")}$`,
+      },
+    ];
+  }
+  if (model.kind === "balance") return balanceFrames(model);
+  if (model.kind === "decimal-fill") {
+    const k = model.shaded,
+      t = Math.floor(k / 10),
+      h = k % 10;
+    const two = `0.${String(k).padStart(2, "0")}`;
+    return [
+      {
+        title: "One whole, 100 squares",
+        text: "Each small square is one hundredth. Each column of 10 squares is one tenth.",
+        math: "$1 = \\dfrac{10}{10} = \\dfrac{100}{100}$",
+      },
+      {
+        title: "Fill whole columns: tenths",
+        text: t
+          ? `${t} full ${t === 1 ? "column is" : "columns are"} ${t} ${t === 1 ? "tenth" : "tenths"}, the first digit after the point.`
+          : "No full column is shaded, so there are 0 tenths.",
+        math: `$\\dfrac{${t}}{10} = 0.${t}$`,
+      },
+      {
+        title: "Add single squares: hundredths",
+        text: h
+          ? `${h} more ${h === 1 ? "square is" : "squares are"} ${h} ${h === 1 ? "hundredth" : "hundredths"}, the second digit.`
+          : "No single squares are left over, so the hundredths digit is 0.",
+        math: `$\\dfrac{${t}}{10} + \\dfrac{${h}}{100} = \\dfrac{${k}}{100} = ${two}$`,
+      },
+    ];
+  }
+  if (model.kind === "decimal-align") {
+    const f = model.figure,
+      [a, b] = f.rows;
+    const pad = (row: { ones: number; decimals: string }) =>
+      `${row.ones}.${row.decimals.padEnd(f.places, "0")}`;
+    const i = firstDifference(f);
+    const sign =
+      chartValue(a!, f.places) > chartValue(b!, f.places) ? ">" : "<";
+    const place = ["ones", "tenths", "hundredths", "thousandths"][i]!;
+    const pa = pad(a!),
+      pb = pad(b!);
+    const digit = (p: string) => p.replace(".", "")[i];
+    return [
+      {
+        title: "Line up the decimal points",
+        text: "Each column holds one place: ones, then tenths, hundredths and thousandths.",
+        math: `$${written(a!)}$ and $${written(b!)}$`,
+      },
+      {
+        title: "Fill empty places with zeros",
+        text: "A zero in an empty place on the right adds nothing, so the values stay the same.",
+        math: `$${pa}$ and $${pb}$`,
+      },
+      {
+        title: "Compare from the left",
+        text: `The first column that differs is the ${place}: ${digit(pa)} and ${digit(pb)}. Columns to its right cannot change the result.`,
+        math: `$${written(a!)} ${sign} ${written(b!)}$`,
+      },
+    ];
+  }
   if (model.kind === "prism-layers") {
     const { length: l, width: w, height: h } = model.figure,
       layer = l * w;

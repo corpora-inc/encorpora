@@ -1,5 +1,8 @@
+import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
+import { DecimalIllustration } from "./DecimalIllustration";
+import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
@@ -33,6 +36,16 @@ export function LessonIllustration({
 }) {
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "balance-remove" ||
+    kind === "balance-split" ||
+    kind === "balance-bags" ||
+    kind === "undo-chain" ||
+    kind === "equation-tape" ||
+    kind === "two-step-tape" ||
+    kind === "inequality-many-solutions"
+  )
+    return <EquationIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||
@@ -72,6 +85,20 @@ export function LessonIllustration({
     kind === "large-place-value-chart"
   )
     return <ComparisonIllustration kind={kind} />;
+  if (
+    kind === "clock-hour-half" ||
+    kind === "clock-five-minutes" ||
+    kind === "coin-values" ||
+    kind === "coin-count-on"
+  )
+    return <TimeMoneyIllustration kind={kind} />;
+  if (
+    kind === "decimal-tenths-hundredths" ||
+    kind === "decimal-compare-chart" ||
+    kind === "decimal-rounding-line" ||
+    kind === "decimal-aligned-sum"
+  )
+    return <DecimalIllustration kind={kind} />;
   if (
     kind === "volume-layers" ||
     kind === "prism-composite" ||
