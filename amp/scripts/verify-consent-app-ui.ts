@@ -1,3 +1,4 @@
+import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -61,10 +62,10 @@ try {
         return route.fulfill({
           json: { templates: [], lessons: [], skills: [], mode: "fixture" },
         });
-      if (path.endsWith("/family")) {
+      if (path.endsWith("/me")) {
         familyReads++;
         return route.fulfill({
-          json: {
+          json: fixtureMe({
             consent: {
               status: view.consentActive ? "active" : "not-recorded",
               policyVersion: null,
@@ -73,12 +74,21 @@ try {
             },
             learners: [],
             retained: retentionNotice,
-          },
+          }),
         });
       }
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
       if (path.endsWith("/consent")) return route.fulfill({ json: view });
+      if (path.endsWith("/billing/enrollment"))
+        return route.fulfill({
+          json: {
+            available: false,
+            notice: null,
+            noticeDigest: null,
+            purchase: null,
+          },
+        });
       if (path.endsWith("/acknowledge")) {
         const body = req.postDataJSON();
         assert.equal(body.requestId, requestId);
@@ -103,16 +113,16 @@ try {
         if (!held) view = snapshot;
         return route.fulfill({ json: snapshot }).catch(() => {});
       }
+      // First-party funnel beacons (verified in verify-funnel-ui).
+      if (path.endsWith("/events"))
+        return route.fulfill({ status: 202, json: { accepted: 1 } });
       faults.push(path);
       return route.fulfill({
         status: 404,
         json: { error: "unexpected_fixture" },
       });
     });
-    await page.goto("http://127.0.0.1:4387");
-    await page
-      .getByRole("button", { name: "Manage family", exact: true })
-      .click();
+    await page.goto("http://127.0.0.1:4387/family/learners");
     await page.getByRole("button", { name: "Privacy", exact: true }).click();
     await page.screenshot({
       path: `artifacts/consent-app/privacy-${width}.png`,
@@ -217,11 +227,10 @@ try {
         window as unknown as { consentApp: { emit(s: unknown): void } }
       ).consentApp.emit({ token: "other", accountId: "other" }),
     );
-    await page
-      .getByRole("heading", { name: "Parent consent is needed." })
-      .waitFor();
+    // The new account starts at the plan step; email-plus is offered there.
+    await page.waitForURL("**/start/plan");
     assert.equal(
-      await page.locator(".parent-consent-center").count(),
+      await page.getByRole("heading", { name: "Review and respond" }).count(),
       0,
       "account switch closes old challenge",
     );

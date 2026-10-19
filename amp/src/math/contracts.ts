@@ -3,9 +3,81 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
+import {
+  timeMoneyFigureSchemas,
+  type TimeMoneyFigure,
+} from "./time-money-models.js";
+import {
+  attributeFigureSchemas,
+  type AttributeFigure,
+} from "./attribute-models.js";
+import {
+  ratioRateFigureSchemas,
+  type RatioRateFigure,
+} from "./ratio-rate-models.js";
+import {
+  partWholeFigureSchemas,
+  type PartWholeFigure,
+} from "./part-whole-models.js";
+import {
+  earlyOperationsFigureSchemas,
+  type EarlyOperationsFigure,
+} from "./early-operations-models.js";
+import {
+  factArrayFigureSchemas,
+  type FactArrayFigure,
+} from "./fact-array-models.js";
+import {
+  dataDisplayFigureSchemas,
+  type DataDisplayFigure,
+} from "./data-display-models.js";
+import { shapeFigureSchemas, type ShapeFigure } from "./shape-figures.js";
+import {
+  geometryFigureSchemas,
+  type GeometryFigure,
+} from "./geometry-figures.js";
+import { sceneSchema, type Scene } from "./scene/spec.js";
+import { stepsSchema, type Step } from "./scene/timeline.js";
+/** An input/output table, a first-quadrant graph, or both side by side.
+ * A graph line is exact: y × run = rise × x + b × run. */
+export type FunctionDisplayFigure = {
+  kind: "function-display";
+  table?: {
+    title?: string;
+    columns: [string, string];
+    rows: { x: number; y: number }[];
+  };
+  graph?: {
+    xLabel: string;
+    yLabel: string;
+    xMax: number;
+    yMax: number;
+    xStep: number;
+    yStep: number;
+    series: {
+      label?: string;
+      points: { x: number; y: number }[];
+      line?: { rise: number; run: number; b: number };
+    }[];
+  };
+};
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | RatioRateFigure
+  | PartWholeFigure
+  | AttributeFigure
+  | FactArrayFigure
+  | EarlyOperationsFigure
+  | TimeMoneyFigure
+  | DecimalFigure
+  | DataDisplayFigure
+  | FunctionDisplayFigure
+  | GeometryFigure
+  | ShapeFigure
+  /** Any figure built with the scene framework (docs/figures.md). */
+  | { kind: "scene"; scene: Scene }
   | {
       kind: "unit-array";
       rows: number;
@@ -30,6 +102,15 @@ export type SemanticFigure =
   | { kind: "ten-frame"; first: number; second: number; capacity: 10 | 20 }
   | { kind: "base-ten"; hundreds: number; tens: number; ones: number }
   | {
+      kind: "counter-rows";
+      circles: number;
+      squares: number;
+      spread: "circles" | "squares" | "none";
+    }
+  | { kind: "base-ten-pair"; values: [number, number] }
+  | { kind: "area-model"; columns: number[]; rows: number[] }
+  | { kind: "ten-frame-pair"; first: number; second: number }
+  | {
       kind: "coordinate-plane";
       xMin: number;
       xMax: number;
@@ -46,13 +127,55 @@ export type SemanticFigure =
     }
   | { kind: "clock"; hour: number; minute: number }
   | { kind: "number-line"; min: number; max: number; points: number[] }
+  | {
+      /** One-unit ticks with 0 emphasized; jumps are signed changes drawn from `start`. */
+      kind: "signed-line";
+      min: number;
+      max: number;
+      labelEvery: number;
+      points: { value: number; label: string }[];
+      start?: number;
+      jumps?: number[];
+    }
   | { kind: "collection"; count: number }
   | { kind: "fraction"; selected: number; parts: number }
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
-  | { kind: "dataset"; values: number[] };
+  | { kind: "dataset"; values: number[] }
+  | {
+      /** Left pan: `groups` identical bags of `blocks` x blocks and `units`
+       * one-unit cubes (a single group needs no bag). Right pan: `right` cubes. */
+      kind: "balance-scale";
+      groups: number;
+      blocks: number;
+      units: number;
+      right: number;
+    }
+  | {
+      /** One-unit ticks from min to max; each line graphs a half-line solution set. */
+      kind: "inequality-lines";
+      min: number;
+      max: number;
+      lines: {
+        label?: "A" | "B" | "C" | "D";
+        boundary: number;
+        direction: "left" | "right";
+        included: boolean;
+      }[];
+    };
+/** A client lists the figure families it can draw; a template that needs
+ * another family is never sent to it. */
+export const figureCapabilities = [
+  "measurement-models-v1",
+  "data-displays-v1",
+  "function-displays-v1",
+  "volume-coordinate-figures-v1",
+  "shape-figures-v1",
+  "scenes-v1",
+] as const;
+export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
-  requiredFigureCapability?: "measurement-models-v1";
+  requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: "single-choice-v1";
   id: string;
@@ -80,14 +203,113 @@ export interface GeneratedProblem {
   public: PublicProblem;
   answer: string;
   explanation: string[];
+  /** One teaching step for this instance, written by the generator from its
+   * own givens: it names the problem's quantities and the first move of the
+   * authored method, and never states the answer. Gated by
+   * tests/instance-hints.test.ts. Its figure cue (elements of this problem's
+   * scene to highlight) travels beside it as `hintCue`. */
   hint: string;
+  /** The hint's figure cue: timeline steps over this problem's own scene
+   * (`public.figure.scene`), e.g. highlight `area.region.0.0`. Private, served
+   * with the hint; it targets elements, never states the answer. */
+  hintCue?: Step[];
+  /** A worked model of this instance for its lesson: a scene with steps that
+   * may show the answer (the factors of a tile rectangle, say). Used only
+   * when this instance is a lesson's example; never sent with a problem. */
+  walkthrough?: Scene;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
 }
 
+const displayInteger = z.number().int().min(-100000).max(100000);
+const displayPoint = z
+  .object({ x: displayInteger, y: displayInteger })
+  .strict();
+const displayLabel = z.string().trim().min(1).max(24);
+export const functionDisplaySchema = z
+  .object({
+    kind: z.literal("function-display"),
+    table: z
+      .object({
+        title: displayLabel.optional(),
+        columns: z.tuple([displayLabel, displayLabel]),
+        rows: z.array(displayPoint).min(2).max(6),
+      })
+      .strict()
+      .optional(),
+    graph: z
+      .object({
+        xLabel: displayLabel,
+        yLabel: displayLabel,
+        xMax: z.number().int().positive(),
+        yMax: z.number().int().positive(),
+        xStep: z.number().int().positive(),
+        yStep: z.number().int().positive(),
+        series: z
+          .array(
+            z
+              .object({
+                label: z.string().trim().min(1).max(12).optional(),
+                points: z.array(displayPoint).max(8),
+                line: z
+                  .object({
+                    rise: displayInteger,
+                    run: z.number().int().positive(),
+                    b: displayInteger,
+                  })
+                  .strict()
+                  .optional(),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(2),
+      })
+      .strict()
+      .refine(
+        (g) =>
+          g.xMax % g.xStep === 0 &&
+          g.yMax % g.yStep === 0 &&
+          g.xMax / g.xStep <= 12 &&
+          g.yMax / g.yStep <= 12 &&
+          g.series.every(
+            (s) =>
+              (s.points.length > 0 || s.line) &&
+              s.points.every(
+                (p) =>
+                  p.x >= 0 &&
+                  p.y >= 0 &&
+                  p.x <= g.xMax &&
+                  p.y <= g.yMax &&
+                  (!s.line ||
+                    p.y * s.line.run ===
+                      s.line.rise * p.x + s.line.b * s.line.run),
+              ),
+          ),
+        "Graph points must lie on the grid and on their stated line",
+      )
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (f) => f.table || f.graph,
+    "A function display needs a table or a graph",
+  );
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
+    functionDisplaySchema,
     ...measurementFigureSchemas,
+    ...ratioRateFigureSchemas,
+    ...partWholeFigureSchemas,
+    ...attributeFigureSchemas,
+    ...factArrayFigureSchemas,
+    ...earlyOperationsFigureSchemas,
+    ...timeMoneyFigureSchemas,
+    ...decimalFigureSchemas,
+    ...dataDisplayFigureSchemas,
+    ...geometryFigureSchemas,
+    ...shapeFigureSchemas,
+    z.object({ kind: z.literal("scene"), scene: sceneSchema }).strict(),
     z
       .object({
         kind: z.literal("unit-array"),
@@ -177,6 +399,41 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
       ),
     z
       .object({
+        kind: z.literal("counter-rows"),
+        circles: z.number().int().min(1).max(10),
+        squares: z.number().int().min(1).max(10),
+        spread: z.enum(["circles", "squares", "none"]),
+      })
+      .strict()
+      .refine(
+        (f) => f.spread === "none" || f[f.spread] >= 2,
+        "A spread row needs at least two counters",
+      ),
+    z
+      .object({
+        kind: z.literal("area-model"),
+        columns: z.array(z.number().int().min(1).max(9000)).min(1).max(4),
+        rows: z.array(z.number().int().min(1).max(9000)).min(1).max(4),
+      })
+      .strict(),
+    z
+      .object({
+        kind: z.literal("ten-frame-pair"),
+        first: z.number().int().min(1).max(10),
+        second: z.number().int().min(1).max(10),
+      })
+      .strict(),
+    z
+      .object({
+        kind: z.literal("base-ten-pair"),
+        values: z.tuple([
+          z.number().int().min(10).max(99),
+          z.number().int().min(10).max(99),
+        ]),
+      })
+      .strict(),
+    z
+      .object({
         kind: z.literal("coordinate-plane"),
         xMin: z.number().finite(),
         xMax: z.number().finite(),
@@ -241,6 +498,41 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
       ),
     z
       .object({
+        kind: z.literal("signed-line"),
+        min: z.number().int().max(0),
+        max: z.number().int().min(0),
+        labelEvery: z.number().int().min(1).max(10),
+        points: z
+          .array(
+            z
+              .object({
+                value: z.number().finite(),
+                label: z.string().regex(/^[A-Z]$/),
+              })
+              .strict(),
+          )
+          .max(2),
+        start: z.number().finite().optional(),
+        jumps: z.array(z.number().finite()).min(1).max(4).optional(),
+      })
+      .strict()
+      .refine((v) => {
+        const inside = (n: number) =>
+          n >= v.min && n <= v.max && Number.isInteger(n * 2);
+        if (v.max - v.min < 4 || v.max - v.min > 30) return false;
+        if (!v.points.every((p) => inside(p.value))) return false;
+        if ((v.start === undefined) !== (v.jumps === undefined)) return false;
+        if (v.start === undefined) return v.points.length > 0;
+        let at = v.start;
+        if (!inside(at)) return false;
+        for (const jump of v.jumps!) {
+          at += jump;
+          if (jump === 0 || !inside(at)) return false;
+        }
+        return true;
+      }),
+    z
+      .object({
         kind: z.literal("collection"),
         count: z.number().int().min(1).max(20),
       })
@@ -275,6 +567,53 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         values: z.array(z.number().finite()).min(1).max(100),
       })
       .strict(),
+    z
+      .object({
+        kind: z.literal("balance-scale"),
+        groups: z.number().int().min(1).max(3),
+        blocks: z.number().int().min(1).max(5),
+        units: z.number().int().min(0).max(12),
+        right: z.number().int().min(1).max(30),
+      })
+      .strict()
+      .refine(
+        (f) =>
+          (f.groups === 1 || f.blocks === 1) &&
+          f.groups * (f.blocks + f.units) <= 18 &&
+          f.right > f.groups * f.units &&
+          (f.right - f.groups * f.units) % (f.groups * f.blocks) === 0,
+        "A level balance needs a positive whole block weight and drawable counts",
+      ),
+    z
+      .object({
+        kind: z.literal("inequality-lines"),
+        min: z.number().int().min(-100).max(100),
+        max: z.number().int().min(-100).max(110),
+        lines: z
+          .array(
+            z
+              .object({
+                label: z.enum(["A", "B", "C", "D"]).optional(),
+                boundary: z.number().int(),
+                direction: z.enum(["left", "right"]),
+                included: z.boolean(),
+              })
+              .strict(),
+          )
+          .min(1)
+          .max(4),
+      })
+      .strict()
+      .refine(
+        (f) =>
+          f.max - f.min >= 6 &&
+          f.max - f.min <= 12 &&
+          f.lines.every((l) => l.boundary > f.min && l.boundary < f.max) &&
+          (f.lines.length === 1
+            ? f.lines[0]!.label === undefined
+            : f.lines.every((l, i) => l.label === "ABCD"[i])),
+        "Inequality lines need an interior boundary and labels A–D in order",
+      ),
   ]);
 const choiceIdSchema = z.string().regex(/^option-[a-d]$/);
 export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
@@ -328,6 +667,8 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     answer: z.string().min(1).max(100),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
+    hintCue: stepsSchema.optional(),
+    walkthrough: sceneSchema.optional(),
     choiceFeedback: z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),

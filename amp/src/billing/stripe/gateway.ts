@@ -95,23 +95,39 @@ export class StripeGateway {
     checkoutId: string,
     customerId: string,
     interval: BillingInterval = "year",
+    enrollment = false,
+    expiresAt?: number,
   ): Promise<{ id: string; url: string }> {
     const session = await this.client.checkout.sessions.create(
       {
         mode: "subscription",
+        ...(enrollment && expiresAt ? { expires_at: expiresAt } : {}),
         customer: customerId,
         client_reference_id: checkoutId,
         metadata: { amp_checkout_id: checkoutId },
-        subscription_data: { metadata: { amp_checkout_id: checkoutId } },
+        subscription_data: {
+          metadata: { amp_checkout_id: checkoutId },
+          billing_mode: { type: "flexible" },
+        },
         line_items: [
           { price: planConfig(this.config, interval).priceId, quantity: 1 },
         ],
         allow_promotion_codes: false,
-        allowed_payment_method_types: ["card"],
+        // Payment methods come from the Dashboard (dynamic payment methods).
+        // Access still follows only a settled invoice, never Checkout completion.
+        // Purchase-backed consent accepts only card (with its wallets) and Link,
+        // so that checkout never offers a method whose payment would be rejected.
+        ...(enrollment
+          ? { allowed_payment_method_types: ["card" as const, "link" as const] }
+          : {}),
         automatic_tax: { enabled: this.config.automaticTax },
+        // Prices are tax-exclusive: tax needs the full address, saved to the customer.
+        ...(this.config.automaticTax
+          ? { billing_address_collection: "required" as const }
+          : {}),
         customer_update: { address: "auto" },
-        success_url: `${this.config.appOrigin}/?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
-        cancel_url: `${this.config.appOrigin}/?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
+        success_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
+        cancel_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
       },
       { idempotencyKey: `amp:checkout:${checkoutId}` },
     );
@@ -280,7 +296,8 @@ export class StripeGateway {
       id(intent.latest_charge)!,
     );
     requireEvidence(
-      charge.paid &&
+      charge.status === "succeeded" &&
+        charge.paid &&
         charge.captured &&
         charge.amount === invoice.total &&
         charge.currency === invoice.currency &&
@@ -304,6 +321,9 @@ export class StripeGateway {
     const paidAt = invoice.status_transitions.paid_at;
     requireEvidence(paidAt, "invoice_paid_time_missing");
     return {
+      paymentMethod: charge.payment_method_details?.type,
+      invoiceReason: invoice.billing_reason ?? undefined,
+      disputed: charge.disputed,
       financial: normalizeFinancialEvidence(
         invoice,
         charge.id,

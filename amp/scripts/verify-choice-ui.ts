@@ -1,3 +1,5 @@
+import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
+import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
 import { linearSystemTemplates } from "../src/math/linear-system-practice.js";
@@ -56,9 +58,10 @@ try {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4390");
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },
@@ -69,6 +72,7 @@ try {
     for (const template of [
       ...choiceTemplates,
       ...linearSystemTemplates,
+      ...absoluteValueTemplates,
       ...algebraTemplates.filter(
         (t) => t.requiredResponseCapability === "single-choice-v1",
       ),
@@ -98,6 +102,15 @@ try {
           .getByRole("button", { name: "Choose an answer", exact: true })
           .click();
       await page.getByRole("radio").first().waitFor();
+      for (const option of problem.response.options) {
+        assert.equal(
+          await page
+            .locator(`input[type="radio"][value="${option.id}"]`)
+            .getAttribute("aria-label"),
+          option.label,
+          "Typesetting must preserve each answer’s accessible source label",
+        );
+      }
       assert.equal(
         await page
           .getByRole("button", { name: "Keyboard", exact: true })
@@ -191,11 +204,9 @@ try {
         });
       await page.getByRole("button", { name: "Check", exact: true }).click();
       if (lostAcknowledgment) {
-        await page
-          .getByRole("button", { name: "Retry", exact: true })
-          .waitFor();
+        await page.getByText("Check your connection").waitFor();
         assert.ok(await page.getByRole("radio").first().isDisabled());
-        await page.getByRole("button", { name: "Retry", exact: true }).click();
+        await page.getByRole("button", { name: "Check", exact: true }).click();
       }
       await page.locator(".feedback.incorrect").waitFor();
       if (lostAcknowledgment) {

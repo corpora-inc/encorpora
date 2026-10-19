@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { fundingFixture } from "../tests/funding-fixture.js";
 import { resolve } from "node:path";
 import { buildSite } from "../src/build.js";
 import { configSchema } from "../src/config.js";
@@ -45,9 +46,14 @@ try {
         [],
         `${path} ${width} accessibility`,
       );
-      if (path === "/" || path === "/amp/" || path === "/legal/privacy/")
+      if (
+        path === "/" ||
+        path === "/amp/" ||
+        path === "/schools/" ||
+        path === "/legal/privacy/"
+      )
         await page.screenshot({
-          path: `artifacts/${path === "/" ? "home" : path === "/amp/" ? "amp" : "privacy"}-${width}.png`,
+          path: `artifacts/${path === "/" ? "home" : path === "/amp/" ? "amp" : path === "/schools/" ? "schools" : "privacy"}-${width}.png`,
           fullPage: true,
         });
       const links = await page
@@ -113,16 +119,7 @@ try {
         { interval: "year", amountMinor: 1234, currency: "USD", renews: false },
         { interval: "month", amountMinor: 234, currency: "USD", renews: true },
       ],
-      funding: [
-        {
-          state: "AZ",
-          program: "Synthetic test program",
-          kind: "reimbursement",
-          instructions: "Synthetic guidance for rendering only.",
-          sourceUrl: "https://program.example.invalid",
-          reviewedUntil: "2099-01-01",
-        },
-      ],
+      funding: [fundingFixture],
     }),
     "artifacts/production",
   );
@@ -131,7 +128,13 @@ try {
     viewport: { width: 320, height: 900 },
   });
   const fixturePage = await fixtureContext.newPage();
-  for (const path of ["/amp/", "/esa/", "/legal/privacy/"]) {
+  for (const path of [
+    "/amp/",
+    "/esa/",
+    "/esa/synthetic-program/",
+    "/schools/",
+    "/legal/privacy/",
+  ]) {
     await fixturePage.goto(production.url + path);
     assert.ok(
       await fixturePage.evaluate(
@@ -148,6 +151,27 @@ try {
       `Configured accessibility ${path}`,
     );
   }
+  await fixturePage.goto(production.url + "/schools/");
+  const inquiry = new URL(
+    (await fixturePage
+      .getByRole("link", { name: "Ask about school licenses" })
+      .getAttribute("href"))!,
+  );
+  assert.equal(inquiry.protocol, "mailto:");
+  assert.equal(
+    inquiry.searchParams.get("subject"),
+    "AMP Mathematics school inquiry",
+  );
+  assert.ok(
+    inquiry.searchParams
+      .get("body")
+      ?.includes("Approximate number of learners:"),
+  );
+  assert.ok(
+    inquiry.searchParams
+      .get("body")
+      ?.includes("Please do not include student names or records."),
+  );
   await fixturePage.goto(production.url + "/amp/");
   assert.equal(await fixturePage.locator(".plan").count(), 2);
   assert.match(await fixturePage.locator("#plans").innerText(), /\$12.34/);
@@ -158,8 +182,30 @@ try {
   await fixturePage.goto(production.url + "/esa/");
   assert.match(
     await fixturePage.locator("#state-AZ").innerText(),
-    /Synthetic test program/,
+    /Synthetic education funding program/,
   );
+  for (const width of [320, 390, 1280]) {
+    await fixturePage.setViewportSize({ width, height: 900 });
+    await fixturePage.goto(production.url + "/esa/synthetic-program/");
+    assert.equal(await fixturePage.locator("h1").count(), 1);
+    assert.ok(
+      await fixturePage.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    assert.equal(
+      (
+        await new AxeBuilder({ page: fixturePage })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+          .analyze()
+      ).violations.length,
+      0,
+    );
+    await fixturePage.screenshot({
+      path: `artifacts/program-${width}.png`,
+      fullPage: true,
+    });
+  }
   await fixtureContext.close();
   const chrome = await launch({
     chromePath: chromium.executablePath(),

@@ -1,3 +1,4 @@
+import { accountSummary } from "../src/account/repository.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { randomUUID } from "node:crypto";
@@ -65,6 +66,40 @@ test(
         (await family.summary("parent")).learners[0]!.name,
         "New display name",
       );
+      assert.equal(
+        (await accountSummary(pool, family, "parent")).next,
+        "choose-plan",
+      );
+      assert.equal(
+        (await family.summary("parent")).learners[0]!.canPractice,
+        false,
+      );
+      await pool.query(
+        "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('capability',$1,'stripe','capability','active',now()-interval '1 day',now()+interval '1 day')",
+        [child.id],
+      );
+      assert.equal(
+        (await family.summary("parent")).learners[0]!.canPractice,
+        true,
+      );
+      assert.equal(
+        (await accountSummary(pool, family, "parent")).next,
+        "practice",
+      );
+      for (const update of [
+        "starts_at=now()+interval '1 hour'",
+        "starts_at=now()-interval '2 days',ends_at=now()-interval '1 day'",
+        "ends_at=now()+interval '1 day',status='revoked'",
+      ]) {
+        await pool.query(
+          `UPDATE amp_grants SET ${update} WHERE id='capability'`,
+        );
+        assert.equal(
+          (await family.summary("parent")).learners[0]!.canPractice,
+          false,
+        );
+      }
+      await pool.query("DELETE FROM amp_grants WHERE id='capability'");
       for (let i = 0; i < 205; i++)
         await pool.query(
           "INSERT INTO amp_instances(id,learner_id,content) VALUES($1,$2,$3)",
@@ -173,15 +208,24 @@ test(
         "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES('paid',$1,'stripe','invoice','active',now(),now()+interval '1 year')",
         [child.id],
       );
+      assert.equal(
+        (await family.summary("parent")).learners[0]!.canPractice,
+        false,
+        "withdrawn consent blocks an active grant",
+      );
+      await pool.query("UPDATE amp_learners SET birth_year=2016 WHERE id=$1", [
+        child.id,
+      ]);
       const receipt = await family.deleteLearning("parent", child.id);
       assert.deepEqual(
         (
           await pool.query(
-            "SELECT starting_band,starting_policy,starting_excluded_strands FROM amp_learners WHERE id=$1",
+            "SELECT birth_year,starting_band,starting_policy,starting_excluded_strands FROM amp_learners WHERE id=$1",
             [child.id],
           )
         ).rows[0],
         {
+          birth_year: null,
           starting_band: null,
           starting_policy: null,
           starting_excluded_strands: null,
@@ -192,6 +236,7 @@ test(
       const tombstone = (await family.summary("parent")).learners[0]!;
       assert.equal(tombstone.name, "Deleted learner");
       assert.ok(tombstone.deletedAt);
+      assert.equal(tombstone.birthYear, null);
       assert.equal(tombstone.stripeLinked, true);
       assert.equal(
         (

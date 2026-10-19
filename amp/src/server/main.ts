@@ -1,6 +1,7 @@
 import { isIP } from "node:net";
 import { offlineSigningConfiguration } from "../offline/signing.js";
 import { registerOfflineRoutes } from "../offline/routes.js";
+import { registerAnalyticsRoutes } from "../analytics/routes.js";
 import { loadReimbursementPrograms } from "../billing/evidence/reimbursement-config.js";
 import { registerPaymentEvidenceRoutes } from "../billing/evidence/routes.js";
 import { consentConfiguration } from "../parent-consent/config.js";
@@ -9,7 +10,7 @@ import { registerConsentRoutes } from "../parent-consent/routes.js";
 import { registerFundingPurchaseRoutes } from "../funding-purchase/routes.js";
 import { loadFundingOffers } from "../funding-purchase/config.js";
 import { registerFamilyRoutes } from "../family/routes.js";
-import { stripeConfig } from "../billing/stripe/config.js";
+import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
   registerStripeRoutes,
   registerUnavailableBilling,
@@ -23,6 +24,7 @@ import {
   registerAccountRoutes,
 } from "./accounts";
 import { PostgresRepository } from "./repository";
+import { freeProblemsSetting } from "./trials";
 /** Comma-separated CIDRs, e.g. Google's load-balancer ranges plus the
  * ingress address. Anything else is a configuration error. */
 function trustedProxies(value: string | undefined) {
@@ -53,6 +55,7 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
   );
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
   development,
+  freeProblems: freeProblemsSetting(process.env.AMP_FREE_PROBLEMS),
 });
 // AMP's own parent accounts (email, passkeys, Google, Apple, Microsoft,
 // GitHub), stored in AMP's database.
@@ -86,10 +89,12 @@ else
   app.get("/api/v1/auth-config", async () => ({
     mode: development ? "development" : "oidc",
   }));
+const billingConfig = stripeConfig(process.env);
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
   development,
+  billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
 });
 await registerFundingPurchaseRoutes(app, {
   pool: repository.pool,
@@ -113,7 +118,6 @@ await registerPaymentEvidenceRoutes(app, {
     process.env.AMP_REIMBURSEMENT_PROGRAMS_FILE,
   ),
 });
-const billingConfig = stripeConfig(process.env);
 if (billingConfig) {
   if (development && billingConfig.livemode)
     throw new Error(
@@ -123,6 +127,7 @@ if (billingConfig) {
     pool: repository.pool,
     authenticate,
     config: billingConfig,
+    consentPolicy: consentConfig.policy,
   });
 } else await registerUnavailableBilling(app, authenticate);
 await registerOfflineRoutes(app, {
@@ -130,6 +135,7 @@ await registerOfflineRoutes(app, {
   authenticate,
   signer: await offlineSigningConfiguration(process.env),
 });
+await registerAnalyticsRoutes(app, { pool: repository.pool });
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {

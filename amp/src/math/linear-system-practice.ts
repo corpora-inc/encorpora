@@ -371,8 +371,9 @@ function generateCase(
       if (Math.abs(m) > 1 && Math.abs(n) > 1) tags.push("scale-both");
     }
     explanation = uniqueSteps(rows, data.solution);
-    hint =
-      "An ordered pair lists x first and y second. The same pair must make both equations true. Isolate a variable, or multiply whole equations to make one pair of coefficients opposites and add the equations.";
+    hint = isPair
+      ? `A solution makes both ${equation(rows[0])} and ${equation(rows[1])} true. Test each pair in the first equation, then check the ones that pass in the second; x comes first in a pair.`
+      : `Combine ${equation(rows[0])} and ${equation(rows[1])} so one variable cancels. Does a single value remain, a false statement, or 0 = 0?`;
     candidates = isPair
       ? data.points.map((point, i) => ({
           label: pair(point),
@@ -420,8 +421,7 @@ function generateCase(
         ? `Zero does not equal ${num(remaining)}. This contradiction means no pair can satisfy both original equations. Their lines are parallel and distinct.`
         : `The equality 0 = 0 is true. The second equation is a nonzero multiple of the first, so both describe the same line, ${equation(first)}. Every pair on that line satisfies both equations. There are infinitely many such pairs; pairs off that line are not solutions.`,
     ];
-    hint =
-      "Scale whole equations so one pair of variable coefficients are opposites, then add. A false numerical equality means no shared pairs. If both variable terms cancel to a true equality, retain an original equation: its line contains the solutions.";
+    hint = `Multiply ${equation(first)} by ${num(q(s))} and ${equation(second)} by ${num(q(t))}, then add them. Is what is left a value, a false statement, or 0 = 0?`;
     candidates = countLabels.map((label, i) => ({
       label,
       correct: i === outcome,

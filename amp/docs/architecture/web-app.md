@@ -13,7 +13,7 @@ The failures that follow from this, as seen on stage:
 - Generic banners that shift the layout.
 - Raw native inputs, and overlapping or squashed layouts.
 
-These are failures of structure, not of individual screens. Every rule below enforces the **Premium UI standard** in `/Users/skyl/Code/corpora/AGENTS.md`.
+These are failures of structure, not of individual screens. Every rule below enforces the **Premium UI standard** in `amp/AGENTS.md`.
 
 ## Decisions
 
@@ -26,7 +26,7 @@ These are failures of structure, not of individual screens. Every rule below enf
 | Client state | **zustand**, only for state that belongs to no server resource: the current learner selection, input modality and practice-session UI. |
 | API client | A single typed client (`web/lib/api`). It validates responses with the server's zod contracts and maps every non-2xx response to a typed `AppError` (`kind`, user message, retry, `log()`). |
 | Accessible primitives | **Radix UI** primitives (Dialog, Popover, Select, Tabs, Toast, Tooltip), wrapped by AMP's own components. They are never used raw in features. |
-| Styling | CSS Modules plus design tokens (CSS custom properties for color, space, type, radius, motion, elevation) in `web/ui/tokens.css`, with light and dark themes. No ad-hoc colors or pixel values in features. |
+| Styling | CSS Modules plus design tokens (CSS custom properties for color, space, type, radius, motion, elevation) in `web/ui/tokens.css`, with light and dark themes. Colors are role pairs (`surface`/`on-surface`, `menu`/`on-menu`, `primary`/`on-primary`, …) with derived hover/active layers; a rule that sets a role background sets its `on-` color. `tests/color-roles.test.ts` proves every pair in both themes, `npm run lint:colors` rejects any color literal outside `tokens.css`, and `npm run test:contrast` sweeps every route and state. No ad-hoc colors or pixel values in features. |
 | Motion | CSS transitions from tokens. Layout-affecting animation only through reserved space. `prefers-reduced-motion` is respected. |
 | Math | KaTeX (`MathText`) and the exact-geometry figure components, moved as they are into `web/math/`. |
 | Forms | Small zod-validated form hooks. Errors appear inline at the field, with no layout shift. |
@@ -74,7 +74,9 @@ Add `GET /api/v1/me`. Every guard and every first-run decision reads it:
 
 ## First run (`/start`)
 
-**Flow:** sign up (or arrive from a saved trial) → verify email (in place, nothing shifts) → **add your learner** (name and the premium `YearPicker`; the trial placement carries over) → **choose a plan** (annual or monthly). The consent notice sits inside this step, and payment is the verified parental consent (#1087). → Stripe Checkout → return → **practice**.
+**Flow:** sign up (or arrive from a saved trial) → verify email (in place, nothing shifts) → **choose a plan** (`/start/plan`: annual or monthly from the server offer, the direct notice and an explicit parent acknowledgement; payment is the verified parental consent, #1087) → Stripe Checkout → **return** (`/start/purchase` polls the verified enrollment phase) → **add your learner** (`/start/name`, then the birth-year picker; no learner profile exists before consent) → the paid enrollment is claimed for that learner → **practice**.
+
+One guard (`features/onboarding/guard.ts`) maps `me.next` to the allowed steps for both route `beforeLoad` and the mounted screen. A paid, unassigned purchase makes `next` = `add-learner` until it is claimed.
 
 **Rules:**
 - One task per screen, with progress shown, Back working at every step, and everything resumable by URL.

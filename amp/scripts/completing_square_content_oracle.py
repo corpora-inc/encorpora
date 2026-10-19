@@ -109,8 +109,8 @@ def evaluate(source, bindings):
 
 def coefficients(public):
     if public['templateId'] == 'complete-square-term':
-        return read_polynomial(re.search(r'so that \$(.+) \+ c =', public['prompt'])[1])
-    return read_polynomial(re.search(r'Rewrite \$(.+)\$', public['prompt'])[1])
+        return read_polynomial(re.search(r'\$(x\^2[^$]*?)(?: \+ c(?: =[^$]*)?)?\$', public['prompt'])[1])
+    return read_polynomial(re.search(r'\$([^$]+)\$', public['prompt'])[1])
 
 
 def review_explanation(problem):

@@ -1,3 +1,5 @@
+import { fixtureMe } from "./me-fixture";
+import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
@@ -114,7 +116,8 @@ try {
         return route.fulfill({
           json: { templates: [], lessons: [], skills: [], mode: "fixture" },
         });
-      if (path.endsWith("/family")) return route.fulfill({ json: family });
+      if (path.endsWith("/me"))
+        return route.fulfill({ json: fixtureMe(family) });
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
       if (path.endsWith("/frontier"))
@@ -150,6 +153,9 @@ try {
           },
         });
       }
+      // First-party funnel beacons (verified in verify-funnel-ui).
+      if (path.endsWith("/events"))
+        return route.fulfill({ status: 202, json: { accepted: 1 } });
       faults.push(path);
       return route.fulfill({
         status: 404,
@@ -157,9 +163,9 @@ try {
       });
     });
     await page.goto("http://127.0.0.1:4384");
-    await page.locator(".account-menu summary").click();
+    await page.getByRole("button", { name: "Family menu" }).click();
     await page
-      .getByRole("button", { name: "Manage family", exact: true })
+      .getByRole("menuitem", { name: "Manage family", exact: true })
       .click();
     await page.getByLabel("Family learner", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-learner").count(), 1);
@@ -196,9 +202,7 @@ try {
       await page.evaluate(() => document.activeElement?.textContent),
       "License history and dates",
     );
-    await page
-      .getByLabel("Family learner", { exact: true })
-      .selectOption("jordan");
+    await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
     await page.getByText("License scheduled", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-billing").count(), 0);
     await page.getByRole("button", { name: "Learners", exact: true }).click();
@@ -219,7 +223,9 @@ try {
       path: `artifacts/family-focus/no-license-${width}.png`,
     });
     assert.equal(
-      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      await page
+        .getByLabel("Family learner", { exact: true })
+        .getAttribute("data-value"),
       "jordan",
     );
     await page.evaluate(() => {
@@ -228,21 +234,22 @@ try {
       ).familyFocus.emit({ accountId: "parent", token: "renewed-fixture" });
     });
     assert.equal(
-      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      await page
+        .getByLabel("Family learner", { exact: true })
+        .getAttribute("data-value"),
       "jordan",
       "same-parent token renewal preserves family selection",
     );
-    await page
-      .getByLabel("Family learner", { exact: true })
-      .selectOption("reference");
+    await choose(
+      page.getByLabel("Family learner", { exact: true }),
+      "reference",
+    );
     await page.getByRole("button", { name: "Access", exact: true }).click();
     await fits(page, ".family-billing button");
     await page.screenshot({
       path: `artifacts/family-focus/reference-${width}.png`,
     });
-    await page
-      .getByLabel("Family learner", { exact: true })
-      .selectOption("jordan");
+    await choose(page.getByLabel("Family learner", { exact: true }), "jordan");
     await page.getByRole("button", { name: "Learners", exact: true }).click();
     await page
       .getByRole("button", { name: "Delete learning data", exact: true })
@@ -253,15 +260,14 @@ try {
       .click();
     await page.getByRole("heading", { name: "Avery", exact: true }).waitFor();
     assert.equal(
-      await page.getByLabel("Family learner", { exact: true }).inputValue(),
+      await page
+        .getByLabel("Family learner", { exact: true })
+        .getAttribute("data-value"),
       "avery",
     );
     family.consent.status = "withdrawn";
     family.consent.withdrawnAt = date(0);
     await page.reload();
-    await page
-      .getByRole("button", { name: "Manage family", exact: true })
-      .click();
     await page.getByRole("button", { name: "Access", exact: true }).click();
     await page
       .getByText("Learning paused: consent needed.", {

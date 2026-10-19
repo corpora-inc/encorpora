@@ -9,12 +9,20 @@ const exporter = fileURLToPath(
 const oracle = fileURLToPath(
   new URL("../scripts/independent-math-review.py", import.meta.url),
 );
+// The full inventory export exceeds 32 MiB; the cap only bounds child output.
+const maxBuffer = 256 * 1024 * 1024;
 function review(input: string) {
   return spawnSync("python3", [oracle], {
     cwd: root,
     encoding: "utf8",
     input,
-    maxBuffer: 32 * 1024 * 1024,
+    maxBuffer,
+    // Hermetic: review:math rebuilds and reviews the print publications; here
+    // stale files on disk must neither fail nor pass this inventory test.
+    env: {
+      ...process.env,
+      AMP_PUBLICATIONS_DIR: "/nonexistent/amp-publications",
+    },
   });
 }
 
@@ -22,7 +30,7 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   const exported = spawnSync(process.execPath, ["--import", "tsx", exporter], {
     cwd: root,
     encoding: "utf8",
-    maxBuffer: 32 * 1024 * 1024,
+    maxBuffer,
   });
   assert.equal(exported.status, 0, exported.stderr || String(exported.error));
   const lines = exported.stdout.trimEnd().split("\n");

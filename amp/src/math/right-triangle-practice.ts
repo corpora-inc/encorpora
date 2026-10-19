@@ -79,8 +79,7 @@ export function generateRightTriangleProblem(
     prompt = `A right triangle has a hypotenuse of ${c} cm and one leg of ${known} cm. What is the length of the other leg, in centimeters?`;
     answer = String(missing);
     response = { kind: "number", label: "Missing leg length in centimeters" };
-    hint =
-      "The hypotenuse is opposite the right angle. Its squared length equals the sum of the two squared leg lengths. Subtract the known leg's square, then take the positive square root.";
+    hint = `The ${c} cm side is the hypotenuse, opposite the right angle. Write x² + ${known}² = ${c}², then subtract ${known}² from ${c}².`;
     explanation = [
       `Let x be the missing leg length in centimeters. The Pythagorean theorem gives x² + ${known}² = ${c}².`,
       `Square the known lengths: ${known}² = ${known} × ${known} = ${known * known} and ${c}² = ${c} × ${c} = ${c * c}.`,
@@ -109,8 +108,7 @@ export function generateRightTriangleProblem(
     }));
     answer = options.find((option) => option.label === correct)!.id;
     response = { kind: "choice", label: "Choose one classification", options };
-    hint =
-      "Find the longest side. Square its length, then compare that result with the sum of the squares of the other two lengths. The triangle is right exactly when the results are equal.";
+    hint = `The longest side is ${c} cm. Compare ${c}² with ${a}² + ${b}²: the triangle is right exactly when they are equal.`;
     explanation = [
       `The longest side is ${c} cm. If the triangle were right, this side would be its hypotenuse.`,
       `Square the other two lengths and add: ${a}² + ${b}² = ${a * a} + ${b * b} = ${a * a + b * b}.`,

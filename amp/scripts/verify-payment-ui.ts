@@ -1,3 +1,5 @@
+import { fixtureMe } from "./me-fixture";
+import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
@@ -127,7 +129,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import{createRoot}from'react-dom/client';import{FamilyCenter}from'../../src/web/FamilyCenter';import{ChooseHowToPay}from'../../src/web/ChooseHowToPay';import'../../src/web/theme.css';import{PaymentHistoryCenter}from'../../src/web/PaymentHistoryCenter';import'../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={pay(){root.render(<div className="shell purchase-shell"><ChooseHowToPay token="parent" learnerName={null} onCard={()=>harness.render()} onFunds={()=>{}} onClose={()=>{}}/></div>);},render(identity='parent',token=identity){root.render(<React.StrictMode><PaymentHistoryCenter token={token} identity={identity} onClose={()=>root.render(<h1>Family screen</h1>)}/></React.StrictMode>);},family(){root.render(<FamilyCenter token="parent" identity="parent" initialSection="access" onChanged={()=>{}} onLearningInvalidated={()=>{}} onClose={()=>{}}/>);},unmount(){root.render(<h1>Other screen</h1>)}};(window as any).paymentHarness=harness;harness.render();`,
+  `import React,{useEffect} from 'react';import{FixtureRouter,FamilyFixture}from'../../scripts/family-fixture';import{createRoot}from'react-dom/client';import{FamilyCenter}from'../../src/web/FamilyCenter';import{ChooseHowToPay}from'../../src/web/ChooseHowToPay';import'../../src/web/theme.css';import{PaymentHistoryCenter}from'../../src/web/PaymentHistoryCenter';import'../../src/web/style.css';const root=createRoot(document.getElementById('root'));const harness={pay(){root.render(<div className="shell purchase-shell"><ChooseHowToPay token="parent" learnerName={null} onCard={()=>harness.render()} onFunds={()=>{}} onClose={()=>{}}/></div>);},render(identity='parent',token=identity){root.render(<React.StrictMode><PaymentHistoryCenter token={token} identity={identity} onClose={()=>root.render(<h1>Family screen</h1>)}/></React.StrictMode>);},family(){root.render(<FixtureRouter path="/family/access"><FamilyFixture token="parent" identity="parent"/></FixtureRouter>);},unmount(){root.render(<h1>Other screen</h1>)}};(window as any).paymentHarness=harness;harness.render();`,
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -225,9 +227,9 @@ try {
       stripeLinked: false,
     },
   ];
-  await page.route("**/api/v1/family", (route) =>
+  await page.route("**/api/v1/me", (route) =>
     route.fulfill({
-      json: {
+      json: fixtureMe({
         consent: {
           status: "withdrawn",
           policyVersion: "fixture",
@@ -236,7 +238,7 @@ try {
         },
         learners: familyLearners,
         retained: retentionNotice,
-      },
+      }),
     }),
   );
   const url = `http://127.0.0.1:4356/artifacts/payment-review-${process.env.AMP_BROWSER ?? "chromium"}/index.html`;
@@ -289,9 +291,10 @@ try {
     await page.setViewportSize(size);
     await page.goto(url);
     await page.evaluate(() => (window as any).paymentHarness.pay());
-    await page
-      .getByRole("combobox", { name: "Reimbursement state" })
-      .selectOption("AZ");
+    await choose(
+      page.getByRole("button", { name: "Reimbursement state" }),
+      "AZ",
+    );
     const link = page.getByRole("link", {
       name: /Official .* reimbursement instructions/,
     });
@@ -310,9 +313,10 @@ try {
       .getByRole("button", { name: "Continue to card payment" })
       .click();
     await page.getByRole("button", { name: /AMP annual/ }).click();
-    await page
-      .getByRole("combobox", { name: "Reimbursement program (optional)" })
-      .selectOption(programs[0]!.id);
+    await choose(
+      page.getByRole("button", { name: "Reimbursement program (optional)" }),
+      programs[0]!.id,
+    );
     await page.getByRole("button", { name: "Download payment PDF" }).click();
     await page
       .getByRole("alert")

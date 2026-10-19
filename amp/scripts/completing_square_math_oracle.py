@@ -76,25 +76,50 @@ def check_domain(template, coefficients):
         raise ValueError('Unexpected quadratic template')
 
 
+TERM_FRAMES = (
+    r'Find \$c\$ so that \$(.+) \+ c = \(x \+ h\)\^2\$ for some real constant \$h\$ and every real \$x\$\.',
+    r'What constant \$c\$ makes \$(.+) \+ c\$ a perfect square \$\(x \+ h\)\^2\$ for some real \$h\$\?',
+    r'The tiles show \$(.+)\$ as a square missing its corner\. What constant \$c\$ completes the square, so that \$\1 \+ c = \(x \+ h\)\^2\$\?',
+)
+REWRITE_FRAMES = (
+    r'Rewrite \$(.+)\$ in completed-square form\.',
+    r'Which completed-square form equals \$(.+)\$ for every real \$x\$\?',
+    r'Complete the square in \$(.+)\$\.',
+)
+
+
 def solve_complete_square(public):
     template = public.get('templateId')
     require(template in IDS, 'Unsupported completing-square template')
     prompt = public.get('prompt', '')
     response = public.get('response', {})
     if template == 'complete-square-term':
-        match = re.fullmatch(
-            r'Find \$c\$ so that \$(.+) \+ c = \(x \+ h\)\^2\$ '
-            r'for some real constant \$h\$ and every real \$x\$\.', prompt)
-        require(match is not None, 'Malformed missing-constant prompt')
-        c, b, a = read_polynomial(match[1])
+        frames = [re.fullmatch(f, prompt) for f in TERM_FRAMES]
+        found = [m for m in frames if m]
+        require(len(found) == 1, 'Malformed missing-constant prompt')
+        c, b, a = read_polynomial(found[0][1])
+        # The tile frame draws x² + bx as a square missing its corner: the
+        # sides must be x + b/2 both ways, the corner empty, and only that frame
+        # carries a figure.
+        figure = public.get('figure')
+        if frames[2]:
+            require(b % 2 == 0 and b != 0 and figure is not None and figure.get('kind') == 'scene',
+                    'Tile frame needs its tile figure')
+            tiles = [e for e in figure['scene']['elements'] if e.get('type') == 'polyArea']
+            require(len(tiles) == 1, 'Tile frame needs one polyArea')
+            side = [[1, 1], [b // 2, 0]]
+            require(tiles[0]['across'] == side and tiles[0]['down'] == side
+                    and tiles[0].get('missing') == [[1, 1]], 'Tile figure differs from the polynomial')
+        else:
+            require(figure is None, 'Unexpected missing-constant figure')
         require(a == 1 and c == 0 and abs(b) <= 18, 'Missing-constant domain violated')
         require(response.get('kind') == 'fraction', 'Missing constant requires exact fraction response')
         # Coefficient identity 2h=b and c=h², for a single constant h and every x.
         h = b / 2
         return h*h
-    match = re.fullmatch(r'Rewrite \$(.+)\$ in completed-square form\.', prompt)
-    require(match is not None, 'Malformed completed-square prompt')
-    target = read_polynomial(match[1])
+    found = [m for m in (re.fullmatch(f, prompt) for f in REWRITE_FRAMES) if m]
+    require(len(found) == 1, 'Malformed completed-square prompt')
+    target = read_polynomial(found[0][1])
     check_domain(template, target)
     require(response.get('kind') == 'choice', 'Rewrite requires a choice response')
     options = response.get('options')

@@ -1,5 +1,11 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { act, step } from "./scene/author";
+import {
+  completeSquareTiles,
+  parabolaFits,
+  vertexGraph,
+} from "./quadratic-scenes";
 export const completingSquareTemplates: readonly TemplateMetadata[] = [
   [
     "complete-square-term",
@@ -24,7 +30,7 @@ export const completingSquareTemplates: readonly TemplateMetadata[] = [
   skillId: "complete-square",
   gradeBand: "9–12",
   ...(id === "complete-square-term"
-    ? {}
+    ? { requiredFigureCapability: "scenes-v1" as const }
     : { requiredResponseCapability: "single-choice-v1" as const }),
 }));
 type Rational = { n: number; d: number };
@@ -115,11 +121,21 @@ export function completingSquarePrintCase(
     b = r(-18, 18);
     const h = q(b, 2),
       square = mul(h, h);
-    prompt = `Find $c$ so that $${expanded(1, b, 0)} + c = (x + h)^2$ for some real constant $h$ and every real $x$.`;
+    // The tile frame needs whole x strips on each side: an even b.
+    const tiles = b !== 0 && b % 2 === 0,
+      frame = r(0, tiles ? 2 : 1),
+      given = expanded(1, b, 0);
+    prompt = [
+      `Find $c$ so that $${given} + c = (x + h)^2$ for some real constant $h$ and every real $x$.`,
+      `What constant $c$ makes $${given} + c$ a perfect square $(x + h)^2$ for some real $h$?`,
+      `The tiles show $${given}$ as a square missing its corner. What constant $c$ completes the square, so that $${given} + c = (x + h)^2$?`,
+    ][frame]!;
     response = { kind: "fraction", label: "Constant c" };
     answer = square.d === 1 ? String(square.n) : `${square.n}/${square.d}`;
     hint =
-      "Expand the square: (x + h)(x + h) has two copies of hx. Match their combined coefficient to the given coefficient of x, then square h to find c.";
+      frame === 2
+        ? `The ${Math.abs(b)} x strips of $${given}$ are split evenly between the two sides of the $x^2$ square. The missing corner is a square whose side is one of those halves: find its area.`
+        : `$(x + h)^2$ expands to $x^2 + 2hx + h^2$. Match $2h$ to $${b}$, the coefficient of $x$ in $${given}$, then square $h$.`;
     explanation = [
       "Multiplying the two identical factors gives $(x + h)^2 = x^2 + 2hx + h^2$.",
       `The coefficients of $x$ must agree: $2h = ${b}$. Divide by 2: $h = \\frac{${b}}{2} = ${tex(h)}$.`,
@@ -137,10 +153,36 @@ export function completingSquarePrintCase(
         prompt,
         skillId: "complete-square",
         response,
+        ...(frame === 2
+          ? {
+              figure: {
+                kind: "scene" as const,
+                scene: completeSquareTiles(b, false),
+              },
+            }
+          : {}),
       },
       answer,
       hint,
       explanation,
+      ...(frame === 2
+        ? {
+            hintCue: [
+              step(
+                `Half of the ${Math.abs(b)} strips run along each side.`,
+                act.highlight("t.region.1.0"),
+                act.highlight("t.region.0.1"),
+              ),
+              step(
+                "The corner left empty is the square to add.",
+                act.highlight("t.region.1.1"),
+              ),
+            ],
+          }
+        : {}),
+      ...(tiles && Math.abs(b) <= 24
+        ? { walkthrough: completeSquareTiles(b) }
+        : {}),
     };
     return {
       problem,
@@ -188,11 +230,16 @@ export function completingSquarePrintCase(
     label: "Completed-square form",
     options: options.map(({ id, label }) => ({ id, label })),
   };
-  prompt = `Rewrite $${expanded(a, b, c)}$ in completed-square form.`;
+  const given = expanded(a, b, c);
+  prompt = [
+    `Rewrite $${given}$ in completed-square form.`,
+    `Which completed-square form equals $${given}$ for every real $x$?`,
+    `Complete the square in $${given}$.`,
+  ][r(0, 2)]!;
   hint =
     a === 1
-      ? "In (x + h)², the coefficient of x is 2h. Halve the given coefficient of x, add and subtract its square, then group the perfect square."
-      : "Factor the leading coefficient out of the x² and x terms first. Halve the coefficient of x inside the parentheses. Adding a square inside changes the whole expression by the outside coefficient times that square; subtract the same amount outside.";
+      ? `In $(x + h)^2$ the coefficient of $x$ is $2h$, so $h$ is half of $${b}$. Add and subtract $h^2$ in $${given}$, then group the perfect square.`
+      : `Take $${a}$ out of the $x^2$ and $x$ terms of $${given}$ first. Halve the new coefficient of $x$; the square you add inside is multiplied by $${a}$, so subtract $${a}$ times it outside.`;
   explanation = [];
   if (a !== 1)
     explanation.push(
@@ -238,6 +285,10 @@ export function completingSquarePrintCase(
       hint,
       explanation,
       choiceFeedback,
+      // The lesson connects the form to the graph: the vertex is (−h, k).
+      ...(parabolaFits(a, b, c)
+        ? { walkthrough: vertexGraph(a, b, c, given, completed(a, h, k)) }
+        : {}),
     },
     tags: tags(a, b, c, h, k),
   };

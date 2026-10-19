@@ -1,0 +1,4 @@
+/* PageFrame places and sizes the card; the auth form keeps its own rhythm. */
+.frame {
+  text-align: left;
+}

@@ -26,6 +26,14 @@ export async function learningConsentActive(
   if (!result.rowCount) return development;
   const consent = result.rows[0];
   if (consent.withdrawn_at !== null) return false;
+  if (consent.verification_method === "monetary-transaction") {
+    const effective = await client.query(
+      `SELECT 1 FROM amp_purchase_consents c JOIN amp_consent_policy p ON p.singleton AND p.digest=c.policy_digest AND p.generation=c.policy_generation
+       WHERE c.checkout_id::text=$1 AND c.account_id=$2 AND c.consent_at IS NOT NULL AND c.revoked_at IS NULL AND p.enabled AND p.reviewed_until>clock_timestamp() FOR SHARE OF p`,
+      [consent.evidence_reference, accountId],
+    );
+    return !!effective.rowCount;
+  }
   if (consent.verification_method !== "internal-email-plus-v1") return true;
   const effective = await client.query(
     `SELECT 1 FROM amp_consent_requests r JOIN amp_consent_policy p ON p.singleton AND p.digest=r.policy_digest AND p.generation=r.policy_generation

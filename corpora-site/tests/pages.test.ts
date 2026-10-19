@@ -61,7 +61,7 @@ test("worksheet markup separates questions from the solution key", () => {
   assert.ok(!questions.includes("Answer:"));
 });
 
-test("privacy distinguishes expiring trial records from retained linked milestone events", () => {
+test("privacy distinguishes placement expiry from trial and event retention", () => {
   const html = renderToStaticMarkup(
     createElement(Page, {
       route: "/legal/privacy/",
@@ -70,15 +70,9 @@ test("privacy distinguishes expiring trial records from retained linked mileston
   );
   assert.ok(html.includes("Trial milestones"));
   assert.ok(html.includes("random identifier, an event type, and a timestamp"));
-  assert.ok(
-    html.includes(
-      "A trial saved into a family account keeps this link until the learner is deleted.",
-    ),
-  );
-  assert.ok(
-    html.includes("Removing an expired, unclaimed trial during cleanup"),
-  );
-  assert.ok(html.includes("trial cleanup does not delete them"));
-  assert.ok(html.includes("does not automatically expire them"));
-  assert.ok(html.includes("purpose-limited deletion"));
+  assert.ok(html.includes("90 days after creation"));
+  assert.ok(html.includes("including trials saved into a family account"));
+  assert.ok(html.includes("14-day cleanup"));
+  assert.ok(!html.includes("does not automatically expire"));
+  assert.ok(!html.includes("keeps this link until the learner is deleted"));
 });

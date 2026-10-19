@@ -437,8 +437,10 @@ percent-change|7|ratio|Solve percent increase decrease markup and interest probl
 signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1
 signed-multiplication|7|number|Multiply and divide signed rational numbers|signed-addition,fraction-division|7.NS.A.2
 rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
+complex-fractions|7|fractions|Simplify complex fractions by dividing a simplified numerator by a simplified denominator|fraction-division,signed-multiplication|7.NS.A.3
 linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
+absolute-value-equations|algebra-1|algebra|Solve absolute-value equations and interpret complete real solution sets|absolute-value,two-step-equations,signed-multiplication|SAT.advanced-math
 linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
 scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proportional-relationships,triangle-area|7.G.A.1
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
@@ -481,7 +483,7 @@ piecewise-functions|algebra-1|functions|Interpret piecewise and absolute-value f
 arithmetic-sequences|algebra-1|functions|Translate arithmetic sequences between recursive and explicit rules|related-patterns,linear-models|HSF
 geometric-sequences|algebra-1|functions|Translate geometric sequences between recursive and explicit rules|exponent-laws|HSF
 polynomial-arithmetic|algebra-1|algebra|Add subtract and multiply polynomials|expression-properties,exponent-laws|HSA,SAT.advanced-math
-factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic|HSA,SAT.advanced-math
+factor-quadratics|algebra-1|algebra|Factor quadratic expressions using structure and products|polynomial-arithmetic,gcf-lcm|HSA,SAT.advanced-math
 quadratic-equations|algebra-1|algebra|Solve quadratic equations and check their real solutions|factor-quadratics,approximate-roots|HSA,SAT.advanced-math
 complete-square|algebra-1|algebra|Rewrite quadratics by completing the square|quadratic-equations|HSA,SAT.advanced-math
 quadratic-formula|algebra-1|algebra|Use the quadratic formula and interpret the discriminant|complete-square|HSA,SAT.advanced-math
@@ -503,7 +505,7 @@ coordinate-proofs|geometry|geometry|Use slopes distances and midpoints to prove 
 geometric-modeling|geometry|modeling|Choose geometric models for design density and measurement problems|composite-measurement,curved-solid-volume|HSG,HSM
 conditional-probability|geometry|probability|Calculate conditional probabilities from tables and sample spaces|compound-probability,two-way-tables|HSS,SAT.data
 independent-events|geometry|probability|Distinguish independence from mutually exclusive outcomes|conditional-probability|HSS,SAT.data
-rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots|HSN,SAT.advanced-math
+rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots,factors-multiples|HSN,SAT.advanced-math
 radical-equations|algebra-2|algebra|Solve radical equations and reject extraneous candidates|rational-exponents,quadratic-equations|HSA,SAT.advanced-math
 complex-numbers|algebra-2|number|Calculate with complex numbers and solve quadratics over them|quadratic-formula|HSN
 polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient and remainder|polynomial-arithmetic|HSA
@@ -1292,6 +1294,29 @@ export const expectedHighSchoolStandardIds = Object.entries(
 );
 
 // Narrow implemented tasks do not certify the broader planned inequality skill.
+const absoluteValueSkill = skills.find(
+  (s) => s.id === "absolute-value-equations",
+)!;
+for (const [id, description] of [
+  [
+    "direct-solution-set",
+    "Select complete real solution sets for absolute-value equations with bounded rational distances.",
+  ],
+  [
+    "affine-solution-set",
+    "Solve a single absolute value of an affine expression with bounded integer coefficients and rational targets.",
+  ],
+  [
+    "transformed-solution-set",
+    "Isolate a scaled, shifted absolute value and classify bounded exact solution sets, including true and false constant equations.",
+  ],
+])
+  absoluteValueSkill.facets.push({
+    id: `absolute-value-equations.${id}`,
+    description,
+    status: "implemented",
+  });
+
 const inequalitySkill = skills.find((s) => s.id === "linear-inequalities")!;
 inequalitySkill.alignments.push({
   standardId: "SAT.algebra",
@@ -1370,6 +1395,184 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Grades 2–5 polygons, solids' parts and the quadrilateral hierarchy.
+for (const [skillId, facets] of [
+  [
+    "polygon-properties",
+    [
+      [
+        "polygon-names",
+        "Name polygons with 3 to 8 sides, and find one with a given number of angles.",
+      ],
+      [
+        "solid-parts",
+        "Count the faces, edges and vertices of prisms and pyramids, hidden ones included.",
+      ],
+    ],
+  ],
+  [
+    "quadrilateral-categories",
+    [
+      [
+        "classify",
+        "Name squares, rectangles and rhombuses from marked angles and sides, and recognize quadrilaterals in none of them.",
+      ],
+    ],
+  ],
+  [
+    "shape-hierarchy",
+    [
+      ["every-name", "List every category a quadrilateral belongs to."],
+      [
+        "inclusion",
+        "Judge category statements and use that subcategories inherit properties.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
+// Grade 4 angle measure, lines and symmetry, read from exact figures.
+for (const [skillId, facets] of [
+  [
+    "angle-measure",
+    [
+      ["turns", "Find an angle as a fraction of the 360° in a full turn."],
+      [
+        "protractor",
+        "Read whole-degree angles on a protractor, choosing the scale that starts at 0.",
+      ],
+      [
+        "additive",
+        "Find a whole angle or a missing part of angles that do not overlap.",
+      ],
+    ],
+  ],
+  [
+    "lines-symmetry",
+    [
+      [
+        "lines-angles",
+        "Name lines, rays and segments; classify angles and triangles by angle; tell parallel from perpendicular lines.",
+      ],
+      ["symmetry", "Identify and count lines of symmetry of polygons."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
+// K–1 shapes: named from exact drawn figures in any orientation and size.
+for (const [skillId, facets] of [
+  [
+    "name-shapes",
+    [
+      [
+        "flat-names",
+        "Name circles, triangles, squares, rectangles and hexagons in any orientation or size, and pick one out among near misses.",
+      ],
+      [
+        "solid-names",
+        "Name cubes, cones, cylinders and spheres, and tell them from flat shapes.",
+      ],
+    ],
+  ],
+  [
+    "compose-shapes",
+    [
+      [
+        "compose-outline",
+        "Name the larger shape made by smaller shapes fitted edge to edge.",
+      ],
+      [
+        "fill-gap",
+        "Choose the piece, possibly turned, that completes a larger shape.",
+      ],
+    ],
+  ],
+  [
+    "shape-attributes",
+    [
+      [
+        "sides-corners",
+        "Count the sides or corners of a closed straight-sided shape.",
+      ],
+      [
+        "defining",
+        "Tell defining attributes from size, orientation and proportion.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
+// Figure-based K–5 geometry: each facet names exactly what its items assess.
+for (const [skillId, facets] of [
+  [
+    "volume-cubes",
+    [
+      [
+        "cube-prism-volume",
+        "Find the volume of a prism built from unit cubes by counting layers, including hidden cubes.",
+      ],
+    ],
+  ],
+  [
+    "prism-volume",
+    [
+      [
+        "edge-product",
+        "Calculate rectangular prism volume from three whole-centimeter edges.",
+      ],
+      [
+        "missing-edge",
+        "Find a missing whole-centimeter edge from a prism's volume and two edges.",
+      ],
+      [
+        "additive-volume",
+        "Add the volumes of two non-overlapping rectangular prisms of equal depth.",
+      ],
+    ],
+  ],
+  [
+    "coordinate-first-quadrant",
+    [
+      [
+        "ordered-pairs",
+        "Locate and name whole-number points in the first quadrant.",
+      ],
+      ["grid-moves", "Find the coordinates reached by moves right and up."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
 // Exact forward formulas are bounded facets of broader circle measurement.
 for (const [skillId, facets] of [
   [
@@ -1483,3 +1686,768 @@ for (const [id, description] of [
     description,
     status: "implemented",
   });
+// Narrow integer-factor tasks do not assess every polynomial factorization method.
+const factoringSkill = skills.find((s) => s.id === "factor-quadratics")!;
+for (const [id, description] of [
+  [
+    "monomial-gcf",
+    "Extract the positive greatest common monomial factor from a bounded integer polynomial of degree one through three.",
+  ],
+  [
+    "monic-integer-factors",
+    "Factor bounded monic quadratics with nonzero constant terms into integer linear factors.",
+  ],
+  [
+    "nonmonic-integer-factors",
+    "Factor bounded nonmonic quadratics into primitive integer linear factors while retaining signed numerical content.",
+  ],
+])
+  factoringSkill.facets.push({
+    id: `factor-quadratics.${id}`,
+    description,
+    status: "implemented",
+  });
+
+// Numeric square-root tasks cover bounded parts of rational-exponent work.
+const radicalSkill = skills.find((s) => s.id === "rational-exponents")!;
+for (const [suffix, description] of [
+  [
+    "numeric-square-root-simplification",
+    "Extract square factors from nonnegative integer radicands.",
+  ],
+  [
+    "numeric-radical-sums",
+    "Simplify and combine two signed numeric square-root terms, retaining unlike roots.",
+  ],
+  [
+    "numeric-radical-products",
+    "Multiply and simplify two signed numeric square-root terms.",
+  ],
+  [
+    "single-radical-denominator",
+    "Rationalize a nonzero numeric fraction with one square-root term in its denominator.",
+  ],
+])
+  radicalSkill.facets.push({
+    id: `rational-exponents.${suffix}`,
+    description,
+    status: "implemented",
+  });
+
+// Grade 8 real-number tasks; each facet is bounded by its coverage rationale.
+for (const [skillId, suffix, description] of [
+  [
+    "irrational-numbers",
+    "classify-forms",
+    "Identify the rational or irrational number among roots, integers, fractions, terminating and repeating decimals, multiples of π and a non-repeating patterned decimal.",
+  ],
+  [
+    "irrational-numbers",
+    "repeating-to-fraction",
+    "Write a repeating decimal as a fraction in simplest form.",
+  ],
+  [
+    "approximate-roots",
+    "integer-bounds",
+    "Locate a square or cube root of a whole number between consecutive whole numbers.",
+  ],
+  [
+    "approximate-roots",
+    "nearest-tenth",
+    "Approximate the square root of a whole number to the nearest tenth using squares of tenths and the halfway point.",
+  ],
+  [
+    "approximate-roots",
+    "compare-forms",
+    "Order square roots, cube roots, fractions and decimals by placing each between consecutive tenths.",
+  ],
+  [
+    "approximate-roots",
+    "root-equations",
+    "Find all real solutions of x² = p for positive rational p and x³ = p for integer p, with root symbols for irrational solutions.",
+  ],
+  [
+    "scientific-notation",
+    "standard-form",
+    "Convert positive numbers between scientific notation and standard form.",
+  ],
+  [
+    "scientific-notation",
+    "compare-magnitude",
+    "Find how many times as large one number in scientific notation is as another.",
+  ],
+  [
+    "scientific-notation",
+    "operations",
+    "Multiply, divide, add and subtract numbers in scientific notation, giving the result in scientific notation.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Bounded counting and discrete-probability tasks; each facet names its limits.
+for (const [skillId, suffix, description] of [
+  [
+    "gcf-lcm",
+    "greatest-common-factor",
+    "Find the greatest common factor of two whole numbers up to 100, including equal-sets and square-tile contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "least-common-multiple",
+    "Find the least common multiple of two whole numbers from 2 to 12, including package and repeating-time contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "distributive-gcf",
+    "Express a sum of two whole numbers up to 100 as their greatest common factor times a sum with no common factor.",
+  ],
+  [
+    "integer-division",
+    "standard-algorithm",
+    "Divide multidigit whole numbers by two-digit divisors with the standard algorithm.",
+  ],
+  [
+    "integer-division",
+    "remainder-meaning",
+    "Interpret a whole-number remainder in context as one more group, a dropped part or the amount left over.",
+  ],
+  [
+    "signed-numbers",
+    "opposite-quantities",
+    "Represent quantities in opposite directions from a reference 0 with positive and negative numbers.",
+  ],
+  [
+    "signed-numbers",
+    "opposites-on-line",
+    "Read integers on a number line and find opposites, including the opposite of an opposite.",
+  ],
+  [
+    "rational-stories",
+    "signed-decimal-stories",
+    "Solve multistep temperature, elevation and account-balance problems with signed decimals exactly.",
+  ],
+  [
+    "unit-rates",
+    "whole-quantity-unit-rates",
+    "Find a unit rate from two whole-number or money quantities in the direction the question asks, with whole, decimal or fraction results.",
+  ],
+  [
+    "unit-rates",
+    "unit-price-comparison",
+    "Compare two package prices by their unit prices and choose the better buy or recognize equal unit prices.",
+  ],
+  [
+    "ratio-tables",
+    "missing-table-value",
+    "Find a missing whole-number value in a table of equivalent ratios by scaling the simplest ratio.",
+  ],
+  [
+    "ratio-tables",
+    "double-number-line-value",
+    "Find a missing whole-number value on a double number line through the unit rate.",
+  ],
+  [
+    "rational-unit-rates",
+    "fraction-quotient-rates",
+    "Find a unit rate from a fractional amount per fractional or whole quantity by dividing fractions.",
+  ],
+  [
+    "multiplicative-stories",
+    "operation-model",
+    "Choose the multiplication or division equation that models an equal-groups, array or measurement story with an unknown product, group size or number of groups.",
+  ],
+  [
+    "multiplicative-stories",
+    "story-solution",
+    "Solve an equal-groups, array or measurement story within 100 by multiplication or division.",
+  ],
+  [
+    "rule-patterns",
+    "number-rule-terms",
+    "Generate later terms of a whole-number pattern from its start and an add, subtract or multiply-by rule.",
+  ],
+  [
+    "rule-patterns",
+    "rule-features",
+    "Identify features every term of an add-rule pattern shares, such as parity, a common factor or a fixed ones digit.",
+  ],
+  [
+    "related-patterns",
+    "paired-terms",
+    "Relate matching terms of two patterns that start at 0 through a table of ordered pairs and their first-quadrant graph.",
+  ],
+  [
+    "dependent-variables",
+    "equation-from-table-graph",
+    "Choose the equation giving the dependent variable from a context table and graph.",
+  ],
+  [
+    "dependent-variables",
+    "use-equation",
+    "Use an equation between an independent and a dependent variable to find either value.",
+  ],
+  [
+    "compare-functions",
+    "rate-and-initial-value",
+    "Compare rates of change and initial values of two linear functions given in different representations.",
+  ],
+  [
+    "compare-functions",
+    "linear-or-nonlinear",
+    "Recognize linear functions written in several forms and distinguish them from nonlinear rules.",
+  ],
+  [
+    "one-step-equations",
+    "inverse-operation",
+    "Solve a one-operation equation with whole numbers, decimals or fractions by applying the inverse operation to both sides.",
+  ],
+  [
+    "one-step-equations",
+    "story-equation",
+    "Choose the one-step equation that represents a story together with its solution.",
+  ],
+  [
+    "one-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance by removing equal weights or splitting both pans equally.",
+  ],
+  [
+    "two-step-equations",
+    "symbolic-solve",
+    "Solve px + q = r and p(x + q) = r with signed integers or decimals by undoing operations in reverse order.",
+  ],
+  [
+    "two-step-equations",
+    "story-solve",
+    "Write and solve px + q = r or p(x + q) = r for a story.",
+  ],
+  [
+    "two-step-equations",
+    "story-equation",
+    "Choose the two-step equation that represents a story, distinguishing repeated from one-time amounts and px + q from p(x + q).",
+  ],
+  [
+    "two-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance showing px + q = r or p(x + q) = r.",
+  ],
+  [
+    "simple-inequalities",
+    "context-inequality",
+    "Write x > c, x < c, x ≥ c or x ≤ c for a condition stated in words.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-reading",
+    "Read the inequality shown by a graphed half-line on a number line.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-choice",
+    "Choose the number line that shows the solutions of a simple inequality.",
+  ],
+  [
+    "simple-inequalities",
+    "solution-recognition",
+    "Recognize which numbers solve a simple inequality and that it has infinitely many solutions.",
+  ],
+  [
+    "compound-probability",
+    "multiplication-principle",
+    "Count outcomes of two to four independent choice stages, including codes with repeated symbols, by the multiplication principle.",
+  ],
+  [
+    "permutations-combinations",
+    "ordered-selections",
+    "Count arrangements without repetition, including factorials, as products of decreasing factors.",
+  ],
+  [
+    "permutations-combinations",
+    "unordered-selections",
+    "Count groups when order does not matter by dividing arrangements by the orders of one group.",
+  ],
+  [
+    "permutations-combinations",
+    "selection-probability",
+    "Find exact probabilities for random groups drawn from two kinds by counting favorable and total groups.",
+  ],
+  [
+    "independent-events",
+    "equally-likely-pairs",
+    "Find both, neither and at-least-one probabilities for two independent equally likely devices using products and complements.",
+  ],
+  [
+    "expected-value",
+    "equally-likely-payoffs",
+    "Find exact expected payouts and net gains after a fixed cost for equally likely spinner sections.",
+  ],
+  [
+    "signed-addition",
+    "signed-fraction-sums",
+    "Add or subtract two signed fractions with different denominators and reduce the result.",
+  ],
+  [
+    "signed-multiplication",
+    "signed-fraction-products",
+    "Multiply or divide two signed fractions and reduce the result.",
+  ],
+  [
+    "complex-fractions",
+    "numeric-complex-fractions",
+    "Simplify a complex fraction whose numerator and denominator are a fraction or a sum or difference of a fraction and a fraction or whole number, where a single numerator fraction or any sum or difference may be negative.",
+  ],
+  [
+    "rational-exponents",
+    "rational-base-fractional-powers",
+    "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Attribute tasks compare and measure from drawn strips, balances, jars and
+// scales; hands-on measuring and estimation remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "compare-attributes",
+    "length-weight-capacity-comparison",
+    "Compare two lengths aligned or not, read a balance for heavier, lighter or the same, and compare capacity by pouring.",
+  ],
+  [
+    "measure-equal-units",
+    "unit-iteration",
+    "Measure a length by counting equal units end to end, recognize gaps, overlaps and shifted starts, and order three lengths by transitivity.",
+  ],
+  [
+    "mass-volume",
+    "grams-liters-reading-and-stories",
+    "Find a mass in grams from balancing standard masses, read liters on scales with ticks of 1, 2 or 5, and solve one-step stories in grams, kilograms and liters.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Clock and money tasks read given analog clocks and generic coins and bills;
+// digital clocks and learner-set hands remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "clock-half-hours",
+    "hour-half-hour-reading",
+    "Read and match analog clocks on the hour and half hour, and name the hour when the hour hand is between numerals.",
+  ],
+  [
+    "clock-five-minutes",
+    "five-minute-reading",
+    "Read and match analog clocks in five-minute steps, count minutes by fives, and choose a.m. or p.m. from a daily activity.",
+  ],
+  [
+    "money-values",
+    "coin-bill-totals",
+    "Count quarters, dimes, nickels, pennies and one- and five-dollar bills, make a dollar, pay an exact price and find money left.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Decimal tasks assess reading, renaming, comparing, rounding and computing
+// with given decimals; written justification and models drawn by the learner
+// remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "decimal-fractions",
+    "tenths-hundredths-notation",
+    "Name shaded tenths and hundredths of one whole as decimals, rename tenths as hundredths, and read tenths and hundredths on a number line.",
+  ],
+  [
+    "compare-decimals",
+    "hundredths-comparison",
+    "Choose the greater or lesser of two decimals with one or two places, including pairs where the shorter decimal is greater.",
+  ],
+  [
+    "decimal-place-value",
+    "thousandths-read-compare-round",
+    "Name the value of a decimal digit, write a decimal from expanded form, compare decimals to thousandths and round to the nearest whole, tenth or hundredth.",
+  ],
+  [
+    "decimal-algorithms",
+    "multidigit-decimal-operations",
+    "Add, subtract, multiply and divide multidigit decimals with terminating results.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Early fraction tasks assess recognition, naming and comparison from given
+// models; learner-drawn partitions and written justification remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "halves-and-quarters",
+    "equal-share-recognition",
+    "Recognize halves and quarters of circles and rectangles, name shaded shares, and compare one half with one quarter of the same whole.",
+  ],
+  [
+    "thirds-and-partitions",
+    "equal-share-naming",
+    "Recognize and name halves, thirds and quarters, including a whole as all of its parts and equal shares with different shapes.",
+  ],
+  [
+    "partition-area",
+    "equal-area-unit-fraction",
+    "Name one of several equal-area grid regions as a unit fraction of a rectangle's area and find that part's area.",
+  ],
+  [
+    "compare-fractions",
+    "same-whole-comparison",
+    "Choose the greater or lesser of two fractions of one whole with a common numerator or a common denominator.",
+  ],
+  [
+    "fraction-comparison",
+    "unlike-fraction-comparison",
+    "Choose the greater or lesser of two proper fractions with different numerators and denominators.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Comparison and place-value tasks cover bounded parts of their number skills.
+for (const [skillId, suffix, description] of [
+  [
+    "compare-small-groups",
+    "paired-rows",
+    "Decide whether a row of up to ten circles or squares has more, fewer or the same number, including rows whose spacing misleads.",
+  ],
+  [
+    "compare-numerals",
+    "numerals-to-ten",
+    "Choose the greater or lesser of two different numerals from 0 to 10.",
+  ],
+  [
+    "compare-two-digit",
+    "tens-then-ones",
+    "Compare two two-digit numbers by tens and then ones, and select the true <, = or > statement.",
+  ],
+  [
+    "compare-three-digit",
+    "highest-differing-place",
+    "Compare two three-digit numbers at the highest differing place, and select the true <, = or > statement.",
+  ],
+  [
+    "large-place-value",
+    "digit-value-and-comparison",
+    "Name the value of a digit and compare whole numbers from 1,000 to 999,999.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Early data displays: sorting, picture graphs and scaled bar graphs (K–3).
+for (const [skillId, suffix, description] of [
+  [
+    "sort-and-count",
+    "shape-groups",
+    "Sort shapes by kind and count the objects in one group.",
+  ],
+  [
+    "sort-and-count",
+    "compare-groups",
+    "Sort shapes by kind and identify the group with the most or fewest.",
+  ],
+  [
+    "categorical-data",
+    "three-category-questions",
+    "Answer total and comparison questions from a three-category picture graph.",
+  ],
+  [
+    "scaled-graphs",
+    "scaled-picture-graphs",
+    "Read picture graphs with a key of 2, 5 or 10, including half symbols.",
+  ],
+  [
+    "scaled-graphs",
+    "scaled-bar-graphs",
+    "Read scaled bar graphs and solve one- and two-step how-many-more problems.",
+  ],
+  [
+    "line-plots",
+    "read-whole-unit-plots",
+    "Read counts and length differences from a whole-unit line plot.",
+  ],
+  [
+    "fraction-line-plots",
+    "read-half-quarter-plots",
+    "Count measurements at or beyond half- and quarter-unit lengths on a line plot.",
+  ],
+  [
+    "fraction-plot-arithmetic",
+    "like-fraction-plot-operations",
+    "Add and subtract like-fraction lengths read from a line plot.",
+  ],
+  [
+    "fraction-plot-computation",
+    "equal-share",
+    "Find the equal share of fractional amounts pooled from a line plot.",
+  ],
+  [
+    "statistical-questions",
+    "recognize-variability",
+    "Recognize a question that anticipates variability in its answers.",
+  ],
+  [
+    "mean-median",
+    "dot-plot-mean",
+    "Calculate the exact mean of whole-number data shown in a dot plot.",
+  ],
+  [
+    "mean-median",
+    "mean-total-relation",
+    "Use mean × count = total to find a missing value.",
+  ],
+  ["distribution-plots", "histograms", "Count values in histogram intervals."],
+  [
+    "distribution-plots",
+    "box-plots",
+    "Read five-number summaries and quarters of data from box plots.",
+  ],
+  [
+    "variability",
+    "mean-absolute-deviation",
+    "Calculate the mean absolute deviation of dot-plot data.",
+  ],
+  [
+    "variability",
+    "dot-plot-iqr",
+    "Calculate the interquartile range of dot-plot data.",
+  ],
+  [
+    "variability",
+    "appropriate-center",
+    "Choose the median as the typical value when an extreme value pulls the mean.",
+  ],
+  [
+    "sampling",
+    "representative-samples",
+    "Choose the random sampling method that represents a population.",
+  ],
+  [
+    "sampling",
+    "population-estimates",
+    "Scale a random sample's fraction up to a population count.",
+  ],
+  [
+    "sampling",
+    "sampling-variation",
+    "Combine the varying counts of many random samples into one estimate.",
+  ],
+  [
+    "compare-distributions",
+    "centers-in-mads",
+    "Express the difference between two means as a multiple of their shared MAD.",
+  ],
+  [
+    "compare-distributions",
+    "box-plot-comparison",
+    "Compare medians and interquartile ranges of two box plots on one scale.",
+  ],
+  [
+    "scatterplots",
+    "association-patterns",
+    "Classify a scatter plot's association as positive linear, negative linear, nonlinear or none.",
+  ],
+  [
+    "scatterplots",
+    "trend-line-models",
+    "Predict with a trend line and interpret its slope in context.",
+  ],
+  [
+    "two-way-tables",
+    "complete-tables",
+    "Find missing counts in a two-way table from its row and column totals.",
+  ],
+  [
+    "two-way-tables",
+    "relative-frequency-association",
+    "Compare relative frequencies within rows to judge association.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Place-value addition and subtraction cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "addition-within-100",
+    "two-digit-sums",
+    "Add two two-digit numbers with sums to 100 and find the addend that makes 100.",
+  ],
+  [
+    "subtraction-within-100",
+    "two-digit-differences",
+    "Subtract a two-digit number from a number up to 100, regrouping a ten when needed.",
+  ],
+  [
+    "add-subtract-thousands",
+    "three-digit-algorithms",
+    "Add and subtract three-digit numbers within 1000, regrouping in any place and across zeros.",
+  ],
+  [
+    "whole-add-subtract",
+    "six-digit-algorithms",
+    "Add and subtract whole numbers of four to six digits with the standard algorithm.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Fact, counting and mental place-value tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "facts-within-5",
+    "sums-differences-to-five",
+    "Add or subtract with numbers and results from 0 to 5, including zero.",
+  ],
+  [
+    "counting-arithmetic",
+    "count-on-back-steps",
+    "Count on or back from a start within 0 to 20, and name the number added or subtracted by a count.",
+  ],
+  [
+    "addition-facts",
+    "facts-across-ten",
+    "Add one-digit numbers with sums 11 to 18 and subtract within 20, mostly across ten.",
+  ],
+  [
+    "mental-tens-hundreds",
+    "ten-hundred-more-less",
+    "Add or subtract 10 or 100 to or from a number from 100 to 900, including regrouping across a hundred.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Multiplication and division tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "multiply-tens",
+    "one-digit-times-tens",
+    "Multiply a one-digit number by a multiple of ten from 10 to 90.",
+  ],
+  [
+    "whole-multiplication",
+    "one-digit-factor",
+    "Multiply a two- to four-digit number by a one-digit number.",
+  ],
+  [
+    "whole-multiplication",
+    "two-digit-area-model",
+    "Find a two-digit by two-digit product from an area model split by place value.",
+  ],
+  [
+    "multidigit-products",
+    "two-digit-multiplier",
+    "Multiply a two- or three-digit number by a two-digit number.",
+  ],
+  [
+    "whole-division",
+    "one-digit-divisor",
+    "Find whole-number quotients and remainders for dividends up to 9,999 and one-digit divisors.",
+  ],
+  [
+    "multidigit-quotients",
+    "two-digit-divisor",
+    "Find exact whole-number quotients for dividends up to 9,999 and two-digit divisors.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// One-digit multiplication and division with arrays cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "multiplication-facts",
+    "array-facts",
+    "Find products of factors 2 to 10 from an equation, a covered dot array, a story of equal rows, or the turned array.",
+  ],
+  [
+    "division-facts",
+    "related-facts",
+    "Find quotients within 100 from the related multiplication fact, a covered array, or rows of chairs.",
+  ],
+  [
+    "missing-factor",
+    "unknown-factor-divisor",
+    "Find an unknown factor or divisor in a one-digit multiplication or division equation within 100.",
+  ],
+  [
+    "division-meaning",
+    "share-measure",
+    "Find the size of each share or the number of groups when counters or objects divide exactly.",
+  ],
+  [
+    "arithmetic-patterns",
+    "table-patterns",
+    "Find a product in a multiplication-table window from the row step, doubling, or the sum of two rows.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

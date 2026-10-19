@@ -1,3 +1,4 @@
+import { exitPractice } from "./ui-practice";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
 import assert from "node:assert/strict";
@@ -84,7 +85,7 @@ async function fits(page: Page, label: string, focus?: string) {
   }
 }
 const signedIn = (page: Page) =>
-  page.locator(".account-menu summary").waitFor();
+  page.getByRole("button", { name: "Family menu" }).waitFor();
 
 try {
   const context = await browser.newContext({
@@ -113,11 +114,16 @@ try {
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByLabel("Learner name").fill("Sample learner");
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByRole("button", { name: "2016", exact: true }).click();
+  await page.locator(".problem-stage").waitFor();
+  await exitPractice(page);
   await signedIn(page);
 
   // Sign out, then back in; a wrong password is reported in place.
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("menuitem", { name: "Sign out" }).click();
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByLabel("Email").fill(email);
@@ -130,8 +136,8 @@ try {
   await signedIn(page);
 
   // Forgotten password: the emailed link sets a new one.
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("menuitem", { name: "Sign out" }).click();
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Forgot password?" }).click();
@@ -172,11 +178,7 @@ try {
     },
   );
   async function openSecurity() {
-    await page.locator(".account-menu summary").click();
-    await page
-      .getByRole("button", { name: "Manage family", exact: true })
-      .click();
-    await page.getByRole("button", { name: "Security", exact: true }).click();
+    await page.goto(`${origin}/family/security`);
     await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
     await page.getByLabel("Name for this passkey").waitFor();
   }
@@ -218,6 +220,20 @@ try {
   await page.getByRole("button", { name: "Replace backup codes" }).click();
   await page.getByText("New backup codes created.", { exact: false }).waitFor();
   await page.getByRole("button", { name: "I saved these codes" }).click();
+  // Let the real per-address authentication rate window expire.
+  await delay(11_000);
+  // Recent authentication must retain the return route through the TOTP step.
+  await page.getByRole("link", { name: "Sign in again", exact: true }).click();
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("Password", { exact: true }).fill(changed);
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await page.waitForURL("**/sign-in/two-factor?return=security");
+  await page
+    .getByLabel("Code from your authenticator app")
+    .fill(await createOTP(rawSecret).totp());
+  await page.getByRole("button", { name: "Verify", exact: true }).click();
+  await page.waitForURL(origin + "/family/security");
+  await page.getByRole("button", { name: "Authenticator On" }).click();
   await page.getByLabel("Current password").fill(changed);
   await page.getByRole("button", { name: "Disable authenticator" }).click();
   await page
@@ -244,9 +260,9 @@ try {
     .waitFor();
   await fits(page, "password-changed");
   assert.equal((await siblingRefresh).status(), 200);
-  await sibling.locator(".account-menu summary").click();
+  await sibling.getByRole("button", { name: "Family menu" }).click();
   await sibling
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await sibling
     .getByRole("button", { name: "Add learner", exact: false })
@@ -267,8 +283,8 @@ try {
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
   await page.getByText("Maya added.", { exact: true }).waitFor();
   await page.getByRole("button", { name: "Back", exact: true }).click();
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("menuitem", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
@@ -282,7 +298,7 @@ try {
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByRole("heading", { name: "Sign in", exact: true }).waitFor();
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
-  await page.waitForURL(origin + "/");
+  await page.waitForURL(origin + "/family/security");
   await page.getByRole("heading", { name: "Sign-in & security" }).waitFor();
   await page.getByRole("button", { name: "Remove", exact: true }).click();
   await page.getByRole("button", { name: "Confirm removal" }).click();

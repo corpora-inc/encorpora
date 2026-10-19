@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { templates } from "../src/math/engine";
+import { createHash } from "node:crypto";
+import { generateProblem, templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
 import type { TemplateMetadata } from "../src/math/contracts";
 import {
@@ -32,14 +33,47 @@ import {
 import { fitSyntheticItem } from "../scripts/frontier/calibration-fit";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
-test("calibration covers every active template and future IDs without modifying the registry", () => {
-  for (const key of Object.keys(editorialCalibration))
-    assert.ok(
-      templates.some(
-        (template) => `${template.id}@${template.version}` === key,
+/** The output each editorial entry was reviewed against. Generators can be
+ * rewritten without a version bump, so the key alone cannot catch a stale
+ * entry. When a generator changes, re-review its entry: update this pin if
+ * the assumption still holds, otherwise drop or revise the entry. */
+const reviewedGenerators: Record<string, string> = {
+  "count-objects@1": "7e5de62b8040118a",
+  "linear-equation@1": "3860bebbad196715",
+  "divide-fractions@1": "8dc12761cc00635b",
+};
+const generatorOutput = (id: string) =>
+  createHash("sha256")
+    .update(
+      JSON.stringify(
+        Array.from({ length: 8 }, (_, i) => {
+          const problem = generateProblem(id, `calibration:${i}`);
+          return [
+            problem.public.prompt,
+            problem.public.response,
+            problem.answer,
+          ];
+        }),
       ),
-      key,
+    )
+    .digest("hex")
+    .slice(0, 16);
+test("calibration covers every active template and future IDs without modifying the registry", () => {
+  assert.deepEqual(
+    Object.keys(editorialCalibration).sort(),
+    Object.keys(reviewedGenerators).sort(),
+  );
+  for (const key of Object.keys(editorialCalibration)) {
+    const template = templates.find(
+      (template) => `${template.id}@${template.version}` === key,
     );
+    assert.ok(template, key);
+    assert.equal(
+      generatorOutput(template.id),
+      reviewedGenerators[key],
+      `${key}: the generator changed since its editorial calibration was reviewed`,
+    );
+  }
   for (const template of templates) {
     const item = templateCalibration(template, nodes);
     assert.ok(Number.isFinite(item.difficulty));

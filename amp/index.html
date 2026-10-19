@@ -1,1 +1,51 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#154d49"/><title>AMP · Mathematics, your way forward</title></head><body><div id="root"></div><script type="module" src="/src/web/main.tsx"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#154d49" />
+    <title>AMP · Mathematics, your way forward</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #f7f6f0;
+        color: #183e3a;
+        font-family: system-ui, sans-serif;
+      }
+      .app-loading {
+        min-height: 100dvh;
+      }
+      .app-loading-bar {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 64px;
+        padding: 0 16px;
+        border-bottom: 1px solid #e2e5da;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+      @media (prefers-color-scheme: dark) {
+        html,
+        body {
+          background: #122522;
+          color: #e9f0e8;
+        }
+        .app-loading-bar {
+          border-bottom-color: #365148;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-loading" aria-busy="true">
+        <div class="app-loading-bar">AMP</div>
+      </div>
+    </div>
+    <script type="module" src="/src/web/main.tsx"></script>
+  </body>
+</html>

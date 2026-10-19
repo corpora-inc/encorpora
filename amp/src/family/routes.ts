@@ -1,3 +1,4 @@
+import { accountSummary } from "../account/repository.js";
 import { Readable } from "node:stream";
 import type { FastifyInstance, FastifyReply } from "fastify";
 import type { Pool } from "pg";
@@ -9,6 +10,8 @@ export interface FamilyRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
   development?: boolean;
+  /** Stripe namespace of the configured billing, for paid-purchase routing. */
+  billingNamespace?: string | null;
 }
 export async function registerFamilyRoutes(
   app: FastifyInstance,
@@ -34,9 +37,31 @@ export async function registerFamilyRoutes(
           status === 401 ? "sign_in_required" : "family_service_unavailable",
       });
     });
-    scope.addHook("onRequest", async (_request, reply) => {
+    scope.addHook("onRequest", async (request, reply) => {
+      reply.header("X-Request-Id", request.id);
       reply.header("Cache-Control", "no-store");
       reply.header("X-Content-Type-Options", "nosniff");
+    });
+    scope.get("/api/v1/me", async (request) => {
+      let account: string;
+      try {
+        account = await options.authenticate(request);
+      } catch (failure) {
+        if (
+          failure &&
+          typeof failure === "object" &&
+          "statusCode" in failure &&
+          failure.statusCode === 401
+        )
+          return { signedIn: false, next: "sign-in" };
+        throw failure;
+      }
+      return accountSummary(
+        options.pool,
+        repository,
+        account,
+        options.billingNamespace ?? null,
+      );
     });
     scope.get("/api/v1/family", async (request) =>
       repository.summary(await options.authenticate(request)),

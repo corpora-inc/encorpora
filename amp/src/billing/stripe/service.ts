@@ -1,5 +1,18 @@
 import {
+  queueRejectedEnrollment,
+  stopRejectedEnrollmentRenewals,
+} from "./enrollment-cancellation.js";
+import {
+  reserveEnrollment,
+  prepareEnrollmentCheckout,
+  ensureEnrollmentCustomer,
+  assertEnrollmentIntent,
+  settleEnrollment,
+  type PurchaseAcknowledgement,
+} from "./enrollment.js";
+import {
   recordFinancialEvidence,
+  assertFinancialIdentity,
   holdFinancialRecord,
 } from "../evidence/repository.js";
 import type { Pool } from "pg";
@@ -9,6 +22,11 @@ import { annualEvents } from "./model.js";
 import { BillingError, planConfig, type BillingInterval } from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository, type InboxEvent } from "./repository.js";
+import {
+  linkCheckoutVisitor,
+  recordVerifiedPurchase,
+  recordVerifiedRefund,
+} from "../../analytics/repository.js";
 export class StripeBilling {
   private static runningPools = new WeakSet<Pool>();
   constructor(
@@ -17,18 +35,28 @@ export class StripeBilling {
   ) {}
   async checkout(
     accountId: string,
-    learnerId: string,
+    learnerId: string | null,
     requestId: string,
     interval: BillingInterval = "year",
+    acknowledgement?: PurchaseAcknowledgement,
+    /** The browser's random funnel visitor ID, for purchase attribution. */
+    visitorId?: string,
   ): Promise<{ url: string }> {
+    const reserve = () =>
+      learnerId === null
+        ? acknowledgement
+          ? reserveEnrollment(
+              this.repository,
+              accountId,
+              requestId,
+              interval,
+              acknowledgement,
+            )
+          : Promise.reject(new BillingError("parent_acknowledgement_required"))
+        : this.repository.reserve(accountId, learnerId, requestId, interval);
     let checkoutId: string;
     try {
-      checkoutId = await this.repository.reserve(
-        accountId,
-        learnerId,
-        requestId,
-        interval,
-      );
+      checkoutId = await reserve();
     } catch (error) {
       if (
         !(error instanceof BillingError) ||
@@ -37,13 +65,14 @@ export class StripeBilling {
         throw error;
       // Only provider-confirmed expiry permits replacing another plan's checkout.
       await this.repository.transaction(accountId, async (client) => {
-        await this.repository.assertPurchaseAllowed(
-          client,
-          accountId,
-          learnerId,
-        );
+        if (learnerId !== null)
+          await this.repository.assertPurchaseAllowed(
+            client,
+            accountId,
+            learnerId,
+          );
         const open = await client.query(
-          "SELECT id,session_id FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id=$2 AND account_id=$3 AND NOT closed FOR UPDATE",
+          "SELECT id,session_id FROM amp_stripe_checkouts WHERE namespace=$1 AND learner_id IS NOT DISTINCT FROM $2 AND account_id=$3 AND NOT closed FOR UPDATE",
           [this.repository.namespace, learnerId, accountId],
         );
         const row = open.rows[0];
@@ -60,18 +89,49 @@ export class StripeBilling {
           );
         }
       });
-      checkoutId = await this.repository.reserve(
-        accountId,
-        learnerId,
-        requestId,
-        interval,
-      );
+      checkoutId = await reserve();
     }
+    // Attribution is best effort and never blocks a checkout.
+    await linkCheckoutVisitor(
+      this.repository.pool,
+      checkoutId,
+      visitorId,
+    ).catch((error: unknown) =>
+      console.warn(
+        "Funnel checkout link not recorded",
+        error instanceof Error ? error.name : "unknown",
+      ),
+    );
     await this.gateway.verifyCatalog();
+    let enrollmentExpiresAt: number | undefined;
+    if (learnerId === null) {
+      const deadline = await prepareEnrollmentCheckout(
+        this.repository,
+        accountId,
+        checkoutId,
+        false,
+      );
+      if (deadline === null)
+        throw new BillingError("checkout_expired_retry_with_new_request");
+      await ensureEnrollmentCustomer(this, accountId);
+      const prepared = await prepareEnrollmentCheckout(
+        this.repository,
+        accountId,
+        checkoutId,
+      );
+      if (prepared === null)
+        throw new BillingError("checkout_expired_retry_with_new_request");
+      enrollmentExpiresAt = prepared;
+    }
     const result = await this.repository.transaction<
       { url: string } | { expired: true }
     >(accountId, async (client) => {
-      await this.repository.assertPurchaseAllowed(client, accountId, learnerId);
+      if (learnerId !== null)
+        await this.repository.assertPurchaseAllowed(
+          client,
+          accountId,
+          learnerId,
+        );
       const grants = await client.query(
         "SELECT 1 FROM amp_grants WHERE learner_id=$1 AND status='active' AND ends_at>now() LIMIT 1",
         [learnerId],
@@ -85,8 +145,16 @@ export class StripeBilling {
       if (!row || row.closed) throw new BillingError("checkout_unavailable");
       if (row.session_id) {
         const session = await this.gateway.checkoutStatus(row.session_id);
-        if (session.status === "open" && session.url)
+        if (session.status === "open" && session.url) {
+          if (learnerId === null)
+            await assertEnrollmentIntent(
+              this.repository,
+              client,
+              accountId,
+              checkoutId,
+            );
           return { url: session.url };
+        }
         if (session.status === "complete")
           throw new BillingError("subscription_already_started");
         if (session.status === "expired") {
@@ -98,6 +166,13 @@ export class StripeBilling {
         }
         throw new BillingError("checkout_requires_reconciliation");
       }
+      if (learnerId === null)
+        await assertEnrollmentIntent(
+          this.repository,
+          client,
+          accountId,
+          checkoutId,
+        );
       if (Date.now() - row.created_at.getTime() > 23 * 3600_000)
         throw new BillingError("checkout_requires_reconciliation");
       const customers = await client.query(
@@ -122,6 +197,8 @@ export class StripeBilling {
         checkoutId,
         customerId,
         row.billing_interval,
+        learnerId === null,
+        enrollmentExpiresAt,
       );
       await client.query(
         "UPDATE amp_stripe_checkouts SET customer_id=$2,session_id=$3,session_url=$4 WHERE id=$1",
@@ -155,7 +232,14 @@ export class StripeBilling {
     }
     let invoiceId: string;
     if (event.type === "invoice.paid") invoiceId = event.objectId;
-    else if (event.type === "charge.refunded")
+    else if (event.type.startsWith("charge.dispute.")) {
+      const dispute = await this.gateway.client.disputes.retrieve(
+        event.objectId,
+      );
+      const chargeId =
+        typeof dispute.charge === "string" ? dispute.charge : dispute.charge.id;
+      invoiceId = await this.gateway.invoiceFromCharge(chargeId);
+    } else if (event.type === "charge.refunded")
       invoiceId = await this.gateway.invoiceFromCharge(event.objectId);
     else if (
       ["refund.created", "refund.updated", "refund.failed"].includes(event.type)
@@ -240,12 +324,51 @@ export class StripeBilling {
         this.repository.namespace,
         binding,
         payment,
-        payment.financial,
+        payment.disputed
+          ? { kind: "review", reason: "provider_dispute_requires_review" }
+          : payment.financial,
         event.eventId,
         planConfig(this.gateway.config, binding.interval).documentProfile,
       );
+      // Funnel events follow verified provider state; a failure here is
+      // logged and never affects billing.
+      const recordFunnel = async () => {
+        await client.query("SAVEPOINT funnel_event");
+        try {
+          // Never hold the webhook behind a retention batch.
+          await client.query("SET LOCAL lock_timeout='1s'");
+          if (event.type === "invoice.paid")
+            await recordVerifiedPurchase(
+              client,
+              binding.id,
+              binding.interval ?? "year",
+            );
+          if (payment.refunded || payment.partialRefund)
+            await recordVerifiedRefund(client, binding.id, payment.refunded);
+          await client.query("RELEASE SAVEPOINT funnel_event");
+        } catch (error) {
+          await client.query("ROLLBACK TO SAVEPOINT funnel_event");
+          console.warn(
+            "Funnel billing event not recorded",
+            error instanceof Error ? error.name : "unknown",
+          );
+        }
+      };
+      let projected = false;
       await client.query("SAVEPOINT access_projection");
       try {
+        if (binding.learnerId === null) {
+          await settleEnrollment(
+            this.repository,
+            client,
+            binding,
+            payment,
+            event.type,
+          );
+          await client.query("RELEASE SAVEPOINT access_projection");
+          projected = true;
+          return;
+        }
         for (const commerceEvent of annualEvents(
           this.gateway.config,
           binding,
@@ -256,16 +379,12 @@ export class StripeBilling {
               "SELECT 1 FROM amp_commerce_events WHERE channel='stripe' AND channel_reference=$1 AND event_id=$2",
               [this.repository.namespace, commerceEvent.id],
             );
-            if (!replay.rowCount) {
-              const collision = await client.query(
-                "SELECT 1 FROM amp_payment_records r JOIN amp_payment_observations o ON o.record_id=r.id WHERE r.namespace=$1 AND r.invoice_id=$2 AND o.observation->>'kind'='review' AND o.observation->>'reason' IN ('financial_charge_collision','financial_baseline_collision','financial_refund_history_collision') LIMIT 1",
-                [this.repository.namespace, payment.invoiceId],
+            if (!replay.rowCount)
+              await assertFinancialIdentity(
+                client,
+                this.repository.namespace,
+                payment.invoiceId,
               );
-              if (collision.rowCount)
-                throw new BillingError(
-                  "payment_identity_requires_reconciliation",
-                );
-            }
             if (!replay.rowCount)
               await this.repository.assertPurchaseAllowed(
                 client,
@@ -276,9 +395,15 @@ export class StripeBilling {
           await applyCommerceEventInTransaction(client, commerceEvent);
         }
         await client.query("RELEASE SAVEPOINT access_projection");
+        projected = true;
       } catch (error) {
         await client.query("ROLLBACK TO SAVEPOINT access_projection");
+        await queueRejectedEnrollment(client, binding, payment, error);
         projectionError = error;
+      } finally {
+        // Outside the projection's error handling: a funnel failure can never
+        // be mistaken for a rejected enrollment.
+        if (projected) await recordFunnel();
       }
     });
     if (projectionError) throw projectionError;
@@ -310,6 +435,10 @@ export class StripeBilling {
           failed++;
         }
       }
+      failed += await stopRejectedEnrollmentRenewals(
+        this.repository,
+        this.gateway,
+      );
       return { processed, failed };
     } finally {
       StripeBilling.runningPools.delete(this.repository.pool);

@@ -1,3 +1,7 @@
+import { useFamilyCache } from "./lib/family-cache";
+import { queryClient, meOptions } from "./lib/query";
+import { useLoggedError, requestMessage } from "./feedback";
+import { Select } from "./PremiumControls";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   AnnualOffer,
@@ -6,7 +10,9 @@ import type {
 import type { FamilySummary } from "../family/contracts";
 import "./annual-purchase.css";
 import { PlanOptions } from "./PlanOptions";
+import { paymentUrl } from "./features/billing/payment-url";
 import { FocusDialog } from "./PracticeWorkspace";
+import { visitorId } from "./lib/analytics";
 export interface AnnualPurchaseProps {
   token: string;
   preferredInterval?: "year" | "month";
@@ -48,29 +54,14 @@ const messages: Record<string, string> = {
   offer_changed:
     "The offer changed. Reload this screen to review the current price.",
   offer_currency_unsupported:
-    "Card checkout requires a configured US-dollar offer.",
+    "Online checkout requires a configured US-dollar offer.",
   checkout_plan_conflict:
     "An existing checkout uses a different plan. Check access to load that plan; let the checkout expire before changing it.",
   sign_in_required: "Sign in again to view your family’s billing information.",
 };
-function paymentUrl(
-  value: string,
-  host: "checkout.stripe.com" | "billing.stripe.com",
-): string {
-  const url = new URL(value);
-  if (
-    url.protocol !== "https:" ||
-    url.hostname !== host ||
-    url.username ||
-    url.password
-  )
-    throw new Error(
-      "The payment destination could not be verified. Try again.",
-    );
-  return url.href;
-}
 function PurchasePanel({
   token,
+  identity,
   onClose,
   onAccessChanged,
   returnState,
@@ -89,13 +80,14 @@ function PurchasePanel({
   const termsTrigger = useRef<HTMLElement | null>(null);
   const [offer, setOffer] = useState<AnnualOffer>();
   const [offers, setOffers] = useState<AnnualOffer[]>([]);
-  const [family, setFamily] = useState<FamilySummary>();
+  const family = useFamilyCache(identity);
   const [available, setAvailable] = useState<boolean>();
   const [learnerId, setLearnerId] = useState("");
   const [status, setStatus] = useState<PurchaseStatus>();
   const [busy, setBusy] = useState(false),
     [checking, setChecking] = useState(false);
   const [error, setError] = useState("");
+  useLoggedError(error);
   const [notice, setNotice] = useState(
     returnState === "processing"
       ? "Checking verified access. Returning from checkout does not confirm payment."
@@ -109,6 +101,7 @@ function PurchasePanel({
       method: body === undefined ? "GET" : "POST",
       headers: {
         Authorization: `Bearer ${tokenRef.current}`,
+        "X-AMP-Visitor": visitorId(),
         ...(body === undefined ? {} : { "Content-Type": "application/json" }),
       },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
@@ -137,7 +130,14 @@ function PurchasePanel({
       api<{ available: boolean; offer?: AnnualOffer; offers?: AnnualOffer[] }>(
         "/billing/offer",
       ),
-      api<FamilySummary>("/family"),
+      queryClient
+        .ensureQueryData(
+          meOptions({ accountId: identity, token: tokenRef.current }),
+        )
+        .then((me) => {
+          if (!me.signedIn) throw new Error("Sign in to view family details.");
+          return me.family;
+        }),
       purchaseId
         ? api<{ learnerId: string }>(
             `/billing/purchase/${encodeURIComponent(purchaseId)}`,
@@ -163,7 +163,6 @@ function PurchasePanel({
               : "The annual offer could not be loaded.",
           );
         if (summary.status === "fulfilled") {
-          setFamily(summary.value);
           if (purchaseId) {
             const selected =
               purchase.status === "fulfilled"
@@ -385,15 +384,15 @@ function PurchasePanel({
         {choices.length > 0 && (
           <label className="annual-learner">
             Learner
-            <select
+            <Select
               aria-label="Learner"
               value={learnerId}
               disabled={busy}
-              onChange={(event) => {
+              onValueChange={(event) => {
                 revision.current++;
                 setStatus(undefined);
                 setNotice("");
-                setLearnerId(event.target.value);
+                setLearnerId(event);
               }}
             >
               {!learnerId && <option value="">Choose a learner</option>}
@@ -402,7 +401,7 @@ function PurchasePanel({
                   {learner.name}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
         )}
         {offer && (
@@ -451,7 +450,7 @@ function PurchasePanel({
           ) : available === false ? (
             <>
               <h2>Purchases are not available here</h2>
-              <p>No card checkout is configured. No payment can be taken.</p>
+              <p>No online checkout is configured. No payment can be taken.</p>
             </>
           ) : !choices.length && family ? (
             <>
@@ -574,7 +573,7 @@ function PurchasePanel({
             payment.{" "}
             {offer?.mode === "test"
               ? "This is sandbox checkout. Use test details only; it does not activate a live subscription."
-              : "Card details are entered on Stripe’s secure hosted checkout."}
+              : "Payment details are entered on Stripe’s secure hosted checkout."}
           </p>
           <p>
             Manage cancellation in billing. Cancellation stops future renewal at

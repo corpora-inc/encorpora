@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
@@ -6,7 +7,7 @@ import { chromium } from "playwright";
 import { createServer } from "vite";
 import { mkdir } from "node:fs/promises";
 import assert from "node:assert/strict";
-import { buildApp } from "../src/server/app";
+import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
@@ -48,12 +49,34 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
 try {
   const page = await browser.newPage({ hasTouch: true });
   const errors: string[] = [];
+  let windowStart = Date.now(),
+    requestsInWindow = 0;
+  page.on("request", (request) => {
+    if (!request.url().includes("/api/")) return;
+    if (Date.now() - windowStart >= 60_000) {
+      windowStart = Date.now();
+      requestsInWindow = 0;
+    }
+    requestsInWindow++;
+  });
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4350");
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learner.id,
+  );
+  await page.goto("http://127.0.0.1:4350/lessons?strand=data&topic=mean-data");
   await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learner.id);
-  await startTopic(page, "mean-data");
+    .getByRole("button", { name: "Practice this", exact: true })
+    .waitFor();
+  await page.reload();
+  await page
+    .getByRole("button", { name: "Practice this", exact: true })
+    .waitFor();
+  assert.ok(page.url().includes("topic=mean-data"));
+  await page
+    .getByRole("button", { name: "Practice this", exact: true })
+    .click();
   // Navigation intentionally cancels pending batches; establish practice first.
   await page.locator(".problem-stage").waitFor();
   for (const viewport of [
@@ -125,16 +148,26 @@ try {
   await page.locator(".solution-panel").waitFor();
   assert.match(
     await page.locator(".solution-panel").innerText(),
-    /Practiced with support/,
+    /with (a hint|the lesson)/i,
   );
   await page.keyboard.press("Escape");
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
     "Next →",
   );
+  const practiceHistoryLength = await page.evaluate(() => history.length);
   await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.locator("#answer").waitFor();
+  // The adaptive planner may serve a typed or a multiple-choice problem. The
+  // answered problem stays mounted until the next one arrives, so wait for its
+  // feedback to leave before accepting either answer form.
+  await page.locator(".solution-panel").waitFor({ state: "detached" });
+  await page.locator("#answer, .choice-form").first().waitFor();
+  assert.equal(
+    await page.evaluate(() => history.length),
+    practiceHistoryLength,
+    "next problem does not add a screen history entry",
+  );
   // Mixed scheduling may choose a book-backed family; select the legacy lesson
   // explicitly before testing the lifecycle of its lesson-support request.
   await startTopic(page, "mean-data");
@@ -213,14 +246,27 @@ try {
     () =>
       !(
         document.querySelector(
-          "select[aria-label='Learner']",
+          "button[aria-label='Learner']",
         ) as HTMLSelectElement
       )?.disabled,
   );
   await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
   for (const template of templates) {
-    await startTopic(page, template.id);
+    // Respect the real server rate limit during this accelerated catalog sweep.
+    if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75)
+      await page.waitForTimeout(
+        Math.max(0, 60_100 - (Date.now() - windowStart)),
+      );
+    await startTopic(page, template.id).catch(async (failure) => {
+      console.error(
+        "Lesson navigation failed",
+        template.id,
+        new URL(page.url()).pathname,
+        await page.locator("body").innerText(),
+      );
+      throw failure;
+    });
     await page.locator("#answer, .choice-form").first().waitFor();
     assert.ok(
       await page.evaluate(
@@ -237,7 +283,7 @@ try {
       // Let the media-query subscription commit the appropriate answer surface.
       await page.waitForFunction(() => {
         const compact = matchMedia(
-          "(max-width:650px) and (max-height:780px)",
+          "(max-width: 650px) and (max-height: 640px)",
         ).matches;
         return !!document.querySelector(".compact-answer-action") === compact;
       });
@@ -333,8 +379,101 @@ try {
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
-  await page.locator(".account-menu summary").click();
-  await page.getByRole("button", { name: "Add learner", exact: true }).click();
+  // The Family menu: a tap outside, Escape and the trigger each close it;
+  // nothing in the header moves, the panel fits a phone inside its safe gutter,
+  // and focus comes back to the trigger.
+  // While open the menu is modal, so the page behind it, trigger included,
+  // leaves the accessibility tree.
+  const familyMenu = page.getByRole("button", {
+    name: "Family menu",
+    includeHidden: true,
+  });
+  const familyList = page.getByRole("menu", { name: "Family menu" });
+  const headerBoxes = () =>
+    page.evaluate(() =>
+      [
+        ...document.querySelectorAll(
+          ".app-shell > header a, .app-shell > header button",
+        ),
+      ]
+        .map((element) => {
+          const box = element.getBoundingClientRect();
+          return [box.x, box.y, box.width, box.height].join(",");
+        })
+        .join(" "),
+    );
+  for (const size of [
+    { width: 384, height: 800 },
+    { width: 320, height: 568 },
+    { width: 1280, height: 800 },
+  ]) {
+    await page.setViewportSize(size);
+    await page.waitForTimeout(100);
+    const closed = await headerBoxes();
+    await familyMenu.tap();
+    await familyList.waitFor();
+    assert.equal(await familyMenu.getAttribute("aria-expanded"), "true");
+    assert.equal(
+      await headerBoxes(),
+      closed,
+      `Opening the Family menu moves nothing at ${size.width}px`,
+    );
+    const panel = (await familyList.boundingBox())!;
+    assert.ok(
+      panel.x >= 16 &&
+        panel.x + panel.width <= size.width - 16 &&
+        panel.y + panel.height <= size.height - 16,
+      `Family menu fits ${size.width}px: ${JSON.stringify(panel)}`,
+    );
+    for (const item of await page.getByRole("menuitem").all())
+      assert.ok((await item.boundingBox())!.height >= 44);
+    await page.touchscreen.tap(
+      panel.x + panel.width / 2,
+      Math.min(size.height - 8, panel.y + panel.height + 40),
+    );
+    await familyList.waitFor({ state: "hidden" });
+    // The tap only closed the menu; it pressed nothing beneath it.
+    await page.waitForTimeout(800);
+    assert.equal(await page.getByRole("dialog").count(), 0);
+    assert.equal(await familyMenu.getAttribute("aria-expanded"), "false");
+    assert.equal(await headerBoxes(), closed);
+    // The trigger toggles it closed too.
+    await familyMenu.tap();
+    await familyList.waitFor();
+    const trigger = (await familyMenu.boundingBox())!;
+    await page.touchscreen.tap(
+      trigger.x + trigger.width / 2,
+      trigger.y + trigger.height / 2,
+    );
+    await familyList.waitFor({ state: "hidden" });
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await familyMenu.focus();
+  await page.keyboard.press("Enter");
+  await familyList.waitFor();
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent),
+    "Manage family",
+  );
+  await page.keyboard.press("End");
+  await page.keyboard.press("Home");
+  await page.keyboard.press("Escape");
+  await familyList.waitFor({ state: "hidden" });
+  assert.ok(
+    await page.evaluate(() => {
+      const active = document.activeElement as HTMLElement | null;
+      return (
+        active?.getAttribute("aria-label") === "Family menu" &&
+        active.matches(":focus-visible") &&
+        getComputedStyle(active).outlineStyle !== "none"
+      );
+    }),
+    "Escape returns a visible focus ring to the Family trigger",
+  );
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page
+    .getByRole("menuitem", { name: "Add learner", exact: true })
+    .click();
   await page
     .getByLabel("Learner name", { exact: true })
     .fill("LongNickname".repeat(5));
@@ -343,42 +482,47 @@ try {
       response.url().endsWith("/learners") &&
       response.request().method() === "POST",
   );
-  await page
-    .getByRole("button", { name: "Create learner", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.getByRole("button", { name: "2016", exact: true }).click();
   learnerIds.push((await (await creation).json()).id);
+  await page.locator(".problem-stage").waitFor();
+  await exitPractice(page);
   // A reload keeps the learner chosen on this device.
   await page.reload();
-  await page.getByRole("combobox", { name: "Learner", exact: true }).waitFor();
+  await page.getByRole("button", { name: "Learner", exact: true }).waitFor();
   assert.equal(
     await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .inputValue(),
+      .getByRole("button", { name: "Learner", exact: true })
+      .getAttribute("data-value"),
     learnerIds.at(-1),
   );
   // Family opens on the current learner, and choosing one there makes them
   // the current learner on every screen.
-  await page.locator(".account-menu summary").click();
+  await page.getByRole("button", { name: "Family menu" }).click();
   await page
-    .locator(".account-menu")
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   assert.equal(
-    await page.getByLabel("Family learner").inputValue(),
+    await page.getByLabel("Family learner").getAttribute("data-value"),
     learnerIds.at(-1),
   );
-  await page.getByLabel("Family learner").selectOption(learnerIds[0]!);
+  await choose(page.getByLabel("Family learner"), learnerIds[0]!);
   await page.getByRole("button", { name: "Back", exact: true }).click();
   assert.equal(
     await page
-      .getByRole("combobox", { name: "Learner", exact: true })
-      .inputValue(),
+      .getByRole("button", { name: "Learner", exact: true })
+      .getAttribute("data-value"),
     learnerIds[0],
   );
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learnerIds.at(-1)!);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learnerIds.at(-1)!,
+  );
   await page.getByRole("button", { name: "Practice", exact: true }).click();
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page
+    .getByRole("menuitem", { name: "Change birth year", exact: true })
+    .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
     await page.evaluate(
@@ -387,10 +531,9 @@ try {
     "A maximum-length learner nickname must fit a phone viewport",
   );
   // The real application mounts parent controls independently of learning consent.
-  await page.locator(".account-menu summary").click();
+  await page.getByRole("button", { name: "Family menu" }).click();
   await page
-    .locator(".account-menu")
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await page.locator(".family-center").waitFor();
   for (const size of [
@@ -433,9 +576,16 @@ try {
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Back", exact: true }).click();
-  await page.waitForFunction(() =>
-    document.activeElement?.matches(".account-menu summary"),
+  await page.waitForFunction(
+    () => document.activeElement?.getAttribute("aria-label") === "Family menu",
   );
+  // Family exits to the workspace; open the profile route before editing again.
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.getByRole("button", { name: "Family menu" }).click();
+  await page
+    .getByRole("menuitem", { name: "Change birth year", exact: true })
+    .click();
+  await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
   const familyBatchRelease = new Promise<void>((resolve) => {
     releaseFamilyBatch = resolve;
@@ -452,10 +602,9 @@ try {
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).click();
   await familyBatchWaiting;
-  await page.locator(".account-menu summary").click();
+  await page.getByRole("button", { name: "Family menu" }).click();
   await page
-    .locator(".account-menu")
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
   await page
@@ -469,7 +618,7 @@ try {
   await page.route("**/family/consent/withdraw", (route) =>
     route.fulfill({ json: { withdrawn: true } }),
   );
-  await page.route("**/api/v1/family", (route) =>
+  await page.route("**/api/v1/me", (route) =>
     route.fulfill({
       status: 503,
       json: { error: "family_service_unavailable" },
@@ -504,10 +653,9 @@ try {
     await page.getByRole("navigation", { name: "Learning sections" }).count(),
     0,
   );
-  await page.locator(".account-menu summary").click();
+  await page.getByRole("button", { name: "Family menu" }).click();
   await page
-    .locator(".account-menu")
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
   assert.deepEqual(errors, []);

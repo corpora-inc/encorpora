@@ -1,3 +1,4 @@
+import { choose } from "./ui-controls";
 import { exitPractice, startTopic } from "./ui-practice";
 /** Controlled system-browser/OS-callback adapter around the production Rust session core. */
 import assert from "node:assert/strict";
@@ -713,9 +714,10 @@ try {
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Parent sign in" }).click();
-  await page
-    .getByRole("combobox", { name: "Learner", exact: true })
-    .selectOption(learnerA.id);
+  await choose(
+    page.getByRole("button", { name: "Learner", exact: true }),
+    learnerA.id,
+  );
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).waitFor();
   assert.equal(

@@ -1,13 +1,14 @@
-import { teachingMaterial } from "./trial-material";
 import {
-  readTrialProgress,
+  isLiveTrial,
+  masteredSkills,
   recordTrialEvent,
   recordTrialMilestones,
-  TEACHING_ATTEMPTS,
+  trialProgress,
   type TrialProgress,
 } from "./trial-progress";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
+import { guessChanceOf } from "../math/guess-chance";
 import {
   estimateFrontier,
   initialLevel,
@@ -24,10 +25,11 @@ import { randomUUID } from "node:crypto";
 import {
   isTrialAccount,
   newTrialToken,
-  TRIAL_ATTEMPTS,
   TRIAL_DAYS,
   TRIAL_PREFIX,
+  trialLimits,
   trialTokenHash,
+  type TrialLimits,
 } from "./trials";
 import type { Pool, PoolClient } from "pg";
 import { createDatabasePool } from "./database.js";
@@ -59,7 +61,6 @@ export type Outcome = {
 export type SavedProblem = GeneratedProblem & {
   hintViewed?: boolean;
   lessonViewed?: boolean;
-  trialTeaching?: boolean;
 };
 export class ApiError extends Error {
   constructor(
@@ -86,13 +87,17 @@ export interface LearnerTransaction {
   hasAccess(): Promise<boolean>;
   /** Answers left in an anonymous trial, or null for a parent's learner. */
   trialRemaining(): Promise<number | null>;
+  /** The free run's phase and totals, or null for a parent's learner. */
   trialProgress(): Promise<TrialProgress | null>;
-  beginTrialTeaching(): Promise<void>;
+  /** Skills missed earlier in this learner's history and now review-ready. */
+  masteredSkills(): Promise<string[]>;
+  /** The frontier as estimated from only the first `answers` answers. */
+  frontierAfter(answers: number): Promise<Frontier>;
   trialPaywall(): Promise<void>;
-  trialPlacementProblems(): Promise<SavedProblem[]>;
-  trialMaterial(): Promise<ReturnType<typeof teachingMaterial>>;
 }
 export interface Repository {
+  /** The anonymous free-trial allowance and its placement length. */
+  readonly limits?: TrialLimits;
   hasConsent(accountId: string): Promise<boolean>;
   list(accountId: string): Promise<Learner[]>;
   create(
@@ -119,10 +124,16 @@ export class PostgresRepository implements Repository {
   readonly pool: Pool;
   constructor(
     connectionString: string,
-    private readonly options: { development?: boolean } = {},
+    private readonly options: {
+      development?: boolean;
+      /** Free problems per anonymous trial (`AMP_FREE_PROBLEMS`). */
+      freeProblems?: number;
+    } = {},
   ) {
     this.pool = createDatabasePool({ connectionString });
+    this.limits = trialLimits(options.freeProblems);
   }
+  readonly limits: TrialLimits;
   async hasConsent(accountId: string) {
     const client = await this.pool.connect();
     try {
@@ -210,7 +221,9 @@ export class PostgresRepository implements Repository {
         if (!live.rowCount)
           throw new ApiError(401, "This free trial has ended");
       }
-      const result = await run(new PgTransaction(client, learnerId));
+      const result = await run(
+        new PgTransaction(client, learnerId, this.limits),
+      );
       await client.query("COMMIT");
       return result;
     } catch (error) {
@@ -275,11 +288,25 @@ export class PostgresRepository implements Repository {
           "Parent consent is required before collecting learning data",
         );
       const trial = await client.query(
-        "SELECT id,learner_id FROM amp_trials WHERE token_hash=$1 AND adopted_at IS NULL AND expires_at>now() FOR UPDATE",
-        [trialTokenHash(token)],
+        `SELECT id,learner_id,adopted_by FROM amp_trials WHERE token_hash=$1
+         AND ((adopted_at IS NULL AND expires_at>now()) OR adopted_by=$2) FOR UPDATE`,
+        [trialTokenHash(token), accountId],
       );
-      if (!trial.rowCount)
-        throw new ApiError(404, "This trial has ended or was already saved");
+      if (!trial.rowCount) throw new ApiError(404, "trial_ended");
+      // A retry after a lost response returns the learner it already saved.
+      if (trial.rows[0].adopted_by === accountId) {
+        const saved = await client.query(
+          "SELECT id,name,birth_year FROM amp_learners WHERE id=$1 AND account_id=$2 AND deleted_at IS NULL",
+          [trial.rows[0].learner_id, accountId],
+        );
+        if (!saved.rowCount) throw new ApiError(404, "trial_ended");
+        await client.query("COMMIT");
+        return {
+          id: saved.rows[0].id,
+          name: saved.rows[0].name,
+          birthYear: saved.rows[0].birth_year,
+        };
+      }
       const { id, learner_id: learnerId } = trial.rows[0];
       const moved = await client.query(
         "UPDATE amp_learners SET account_id=$1,name=$2 WHERE id=$3 AND account_id=$4 AND deleted_at IS NULL RETURNING birth_year",
@@ -304,6 +331,7 @@ export class PgTransaction implements LearnerTransaction {
   constructor(
     private db: PoolClient,
     private learnerId: string,
+    private limits: TrialLimits = trialLimits(),
   ) {}
   async startingPoint(): Promise<PracticeStartingPoint> {
     const result = await this.db.query(
@@ -334,7 +362,10 @@ export class PgTransaction implements LearnerTransaction {
       birthYear,
     ]);
   }
-  async frontier(now = Date.now()): Promise<Frontier> {
+  async frontier(
+    now = Date.now(),
+    answers: number | null = null,
+  ): Promise<Frontier> {
     const learner = await this.db.query(
       "SELECT birth_year,starting_band FROM amp_learners WHERE id=$1",
       [this.learnerId],
@@ -342,8 +373,8 @@ export class PgTransaction implements LearnerTransaction {
     const history = await this.db.query(
       `SELECT outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
         (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt" FROM amp_attempts
-        WHERE learner_id=$1 ORDER BY evidence_sequence`,
-      [this.learnerId],
+        WHERE learner_id=$1 ORDER BY evidence_sequence LIMIT $2`,
+      [this.learnerId, answers],
     );
     return estimateFrontier({
       start: initialLevel({
@@ -359,6 +390,7 @@ export class PgTransaction implements LearnerTransaction {
       },
       strandOf: (id) =>
         skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
+      guessOf: guessChanceOf,
     });
   }
   async recentAttempts() {
@@ -443,67 +475,29 @@ export class PgTransaction implements LearnerTransaction {
         JSON.stringify(outcome),
       ],
     );
-    await recordTrialMilestones(this.db, this.learnerId);
-  }
-  async trialPlacementProblems() {
-    const result = await this.db.query(
-      "SELECT content FROM amp_instances WHERE learner_id=$1 AND NOT COALESCE((content->>'trialTeaching')::boolean,false)",
-      [this.learnerId],
-    );
-    return result.rows.map((row) => row.content as SavedProblem);
+    await recordTrialMilestones(this.db, this.learnerId, this.limits);
   }
   async trialProgress() {
-    return readTrialProgress(this.db, this.learnerId, () => this.frontier());
-  }
-  async trialMaterial() {
-    const stored = await this.db.query(
-      "SELECT teaching_material FROM amp_trials WHERE learner_id=$1 AND adopted_at IS NULL",
+    if (!(await isLiveTrial(this.db, this.learnerId))) return null;
+    const attempts = await this.db.query(
+      "SELECT (outcome->>'correct')::boolean AS correct,(outcome->>'assisted')::boolean AS assisted FROM amp_attempts WHERE learner_id=$1",
       [this.learnerId],
     );
-    if (stored.rows[0]?.teaching_material)
-      return stored.rows[0].teaching_material as NonNullable<
-        ReturnType<typeof teachingMaterial>
-      >;
-    const progress = await this.trialProgress();
-    return progress?.templateId && progress.phase !== "placement"
-      ? teachingMaterial(
-          progress.templateId,
-          this.learnerId,
-          (await this.trialPlacementProblems()).map((p) => p.public),
-        )
-      : null;
+    return trialProgress(attempts.rows, this.limits);
   }
-  async beginTrialTeaching() {
-    const progress = await this.trialProgress();
-    if (!progress || progress.phase === "placement")
-      throw new ApiError(409, "Finish placement first");
-    if (progress.phase === "unavailable")
-      throw new ApiError(
-        409,
-        "No fresh teaching sequence is available at this level",
-      );
-    if (progress.phase !== "lesson") return;
-    const material = await this.trialMaterial();
-    if (!material) throw new ApiError(409, "This lesson is unavailable");
-    await this.db.query(
-      "UPDATE amp_trials SET teaching_template_id=$2,teaching_started_at=now(),teaching_material=$3 WHERE learner_id=$1 AND adopted_at IS NULL",
-      [this.learnerId, progress.templateId, JSON.stringify(material)],
-    );
+  async masteredSkills() {
+    return masteredSkills(await this.skillEvidence());
+  }
+  async frontierAfter(answers: number) {
+    return this.frontier(Date.now(), answers);
   }
   async trialPaywall() {
-    const progress = await this.trialProgress();
-    if (!progress || progress.phase !== "complete")
-      throw new ApiError(409, "Finish the teaching sequence first");
+    if (!(await isLiveTrial(this.db, this.learnerId)))
+      throw new ApiError(404, "Trial not found");
     await recordTrialEvent(this.db, this.learnerId, "paywall");
   }
   async trialRemaining() {
-    const progress = await this.trialProgress();
-    if (!progress) return null;
-    if (progress.phase === "placement")
-      return TRIAL_ATTEMPTS - progress.placementAnswered;
-    if (progress.phase === "teaching")
-      return TEACHING_ATTEMPTS - progress.after.answered;
-    return 0;
+    return (await this.trialProgress())?.remaining ?? null;
   }
   async hasAccess() {
     const result = await this.db.query(

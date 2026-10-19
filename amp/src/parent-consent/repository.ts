@@ -51,7 +51,10 @@ export class ConsentRepository {
   async available(client: PoolClient): Promise<ConsentPolicy> {
     if (!this.secrets || !this.transportEnabled)
       throw new ConsentError("consent_enrollment_unavailable", 503);
-    return currentPolicy(client, this.policy);
+    const policy = await currentPolicy(client, this.policy);
+    if (!policy.review.noDisclosureUnder312_2)
+      throw new ConsentError("consent_enrollment_unavailable", 503);
+    return policy;
   }
   async view(account: string): Promise<ConsentView> {
     return this.transaction(account, async (client) => {

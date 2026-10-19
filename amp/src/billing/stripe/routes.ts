@@ -1,3 +1,8 @@
+import { registerEnrollmentRoutes } from "./enrollment-routes.js";
+import {
+  ConsentError,
+  type ConsentPolicy,
+} from "../../parent-consent/contracts.js";
 import { annualOffer, purchaseStatus } from "./purchase.js";
 import { createHash } from "node:crypto";
 import type { FastifyInstance } from "fastify";
@@ -8,11 +13,13 @@ import { BillingError, type StripeBillingConfig } from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository } from "./repository.js";
 import { StripeBilling } from "./service.js";
+import { funnelVisitor } from "../../analytics/visitor-header.js";
 export interface StripeRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
   config: StripeBillingConfig;
   gateway?: StripeGateway;
+  consentPolicy?: ConsentPolicy | null;
 }
 /** Authenticate identities here; do not pass a consent-gated authenticator (portal permits cancellation after withdrawal). */
 export async function registerStripeRoutes(
@@ -21,12 +28,12 @@ export async function registerStripeRoutes(
 ): Promise<StripeBilling> {
   const gateway = options.gateway ?? new StripeGateway(options.config);
   const billing = new StripeBilling(
-    new StripeRepository(options.pool, options.config),
+    new StripeRepository(options.pool, options.config, options.consentPolicy),
     gateway,
   );
   app.register(async (scope) => {
     scope.setErrorHandler((error, _request, reply) => {
-      if (error instanceof BillingError)
+      if (error instanceof BillingError || error instanceof ConsentError)
         return reply.code(error.statusCode).send({ error: error.code });
       const status =
         typeof error === "object" && error !== null && "statusCode" in error
@@ -35,6 +42,18 @@ export async function registerStripeRoutes(
       return reply.code(status >= 400 && status <= 499 ? status : 503).send({
         error: status === 401 ? "sign_in_required" : "billing_unavailable",
       });
+    });
+    registerEnrollmentRoutes(scope, options, billing);
+    // The configured prices, for the free-trial paywall before any account
+    // exists. No Stripe request is made; checkout re-verifies the catalog.
+    scope.get("/api/v1/billing/prices", async (_request, reply) => {
+      reply.header("Cache-Control", "public, max-age=300");
+      return {
+        available: true,
+        offers: options.config.monthlyPriceId
+          ? [annualOffer(options.config), annualOffer(options.config, "month")]
+          : [annualOffer(options.config)],
+      };
     });
     scope.get("/api/v1/billing/offer", async (request, reply) => {
       await options.authenticate(request);
@@ -57,7 +76,7 @@ export async function registerStripeRoutes(
         if (!z.uuid().safeParse(request.params.purchaseId).success)
           return reply.code(400).send({ error: "invalid_purchase" });
         const result = await options.pool.query(
-          "SELECT learner_id FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND id=$3",
+          "SELECT COALESCE(learner_id,to_jsonb(amp_stripe_checkouts)->>'assigned_learner_id') AS learner_id FROM amp_stripe_checkouts WHERE namespace=$1 AND account_id=$2 AND id=$3",
           [billing.repository.namespace, accountId, request.params.purchaseId],
         );
         if (!result.rowCount)
@@ -98,6 +117,8 @@ export async function registerStripeRoutes(
         body.data.learnerId,
         body.data.requestId,
         body.data.interval,
+        undefined,
+        funnelVisitor(request.headers),
       );
     });
     scope.post("/api/v1/billing/portal", async (request, reply) => {
@@ -155,9 +176,23 @@ export async function registerUnavailableBilling(
   app: FastifyInstance,
   authenticate: Authenticator,
 ): Promise<void> {
+  app.get("/api/v1/billing/prices", async (_request, reply) => {
+    reply.header("Cache-Control", "no-store");
+    return { available: false, offers: [] };
+  });
   app.get("/api/v1/billing/offer", async (request, reply) => {
     await authenticate(request);
     reply.header("Cache-Control", "no-store");
     return { available: false };
+  });
+  app.get("/api/v1/billing/enrollment", async (request, reply) => {
+    await authenticate(request);
+    reply.header("Cache-Control", "no-store");
+    return {
+      available: false,
+      notice: null,
+      noticeDigest: null,
+      purchase: null,
+    };
   });
 }
