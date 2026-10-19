@@ -1,3 +1,5 @@
+import { earlyDataLessons } from "./early-data-lessons";
+import type { DataIllustration } from "./data-display-illustrations";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -29,6 +31,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | DataIllustration
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -525,6 +528,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...earlyDataLessons,
   ...radicalLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

@@ -1520,3 +1520,39 @@ for (const [skillId, suffix, description] of [
       description,
       status: "implemented",
     });
+
+// Early data displays: sorting, picture graphs and scaled bar graphs (K–3).
+for (const [skillId, suffix, description] of [
+  [
+    "sort-and-count",
+    "shape-groups",
+    "Sort shapes by kind and count the objects in one group.",
+  ],
+  [
+    "sort-and-count",
+    "compare-groups",
+    "Sort shapes by kind and identify the group with the most or fewest.",
+  ],
+  [
+    "categorical-data",
+    "three-category-questions",
+    "Answer total and comparison questions from a three-category picture graph.",
+  ],
+  [
+    "scaled-graphs",
+    "scaled-picture-graphs",
+    "Read picture graphs with a key of 2, 5 or 10, including half symbols.",
+  ],
+  [
+    "scaled-graphs",
+    "scaled-bar-graphs",
+    "Read scaled bar graphs and solve one- and two-step how-many-more problems.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

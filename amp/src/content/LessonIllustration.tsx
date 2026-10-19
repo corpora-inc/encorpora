@@ -11,6 +11,11 @@ import {
   PythagoreanRearrangement,
 } from "./RightTriangleIllustration";
 import type { Lesson } from "./lessons";
+import {
+  dataIllustrations,
+  isDataIllustration,
+} from "./data-display-illustrations";
+import { DataDisplayFigure } from "../web/DataDisplayFigure";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
@@ -19,6 +24,8 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (isDataIllustration(kind))
+    return <DataDisplayFigure figure={dataIllustrations[kind]} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||
