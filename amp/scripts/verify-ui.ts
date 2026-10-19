@@ -158,7 +158,11 @@ try {
   const practiceHistoryLength = await page.evaluate(() => history.length);
   await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.locator("#answer").waitFor();
+  // The adaptive planner may serve a typed or a multiple-choice problem. The
+  // answered problem stays mounted until the next one arrives, so wait for its
+  // feedback to leave before accepting either answer form.
+  await page.locator(".solution-panel").waitFor({ state: "detached" });
+  await page.locator("#answer, .choice-form").first().waitFor();
   assert.equal(
     await page.evaluate(() => history.length),
     practiceHistoryLength,

@@ -1715,3 +1715,34 @@ for (const [skillId, suffix, description] of [
       description,
       status: "implemented",
     });
+
+// Fact, counting and mental place-value tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "facts-within-5",
+    "sums-differences-to-five",
+    "Add or subtract with numbers and results from 0 to 5, including zero.",
+  ],
+  [
+    "counting-arithmetic",
+    "count-on-back-steps",
+    "Count on or back from a start within 0 to 20, and name the number added or subtracted by a count.",
+  ],
+  [
+    "addition-facts",
+    "facts-across-ten",
+    "Add one-digit numbers with sums 11 to 18 and subtract within 20, mostly across ten.",
+  ],
+  [
+    "mental-tens-hundreds",
+    "ten-hundred-more-less",
+    "Add or subtract 10 or 100 to or from a number from 100 to 900, including regrouping across a hundred.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
