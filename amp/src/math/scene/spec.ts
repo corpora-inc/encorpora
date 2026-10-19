@@ -781,6 +781,8 @@ export const angleSchema = z
     length: num.positive().max(10).optional(),
     /** Arrowheads at the ray ends: rays go on forever. */
     arrows: z.boolean().optional(),
+    /** Draw only the marks, over rays another element draws. */
+    marksOnly: z.boolean().optional(),
     labels: z
       .object({
         vertex: pointName,
@@ -799,6 +801,8 @@ export const angleSchema = z
             measure: z.boolean().optional(),
             /** The measure is the unknown: drawn as "?" unless revealed. */
             derived: z.boolean().optional(),
+            /** Sweep clockwise from `from` to `to` instead. */
+            clockwise: z.boolean().optional(),
             color,
           })
           .strict(),
