@@ -1,3 +1,4 @@
+import { transformationLessons } from "./transformation-lessons";
 import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
@@ -28,8 +29,10 @@ import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { numberSenseLessons } from "./number-sense-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
@@ -67,6 +70,17 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "hundred-chart-moves"
+      | "teen-ten-frame"
+      | "number-line-hop-pair"
+      | "rounding-halfway"
+      | "power-of-ten-shift"
+      | "coordinate-side-lengths"
+      | "distance-triangle"
+      | "rigid-motions-panels"
+      | "dilation-rays"
+      | "similar-triangles-marked"
+      | "scale-drawing-plan"
       | "complete-square-area"
       | "complete-square-balance"
       | "complete-square-scaled"
@@ -625,11 +639,13 @@ export const lessons: readonly Lesson[] = [
   ...timeMoneyLessons,
   ...attributeLessons,
   ...comparisonLessons,
+  ...numberSenseLessons,
   ...multiplyDivideLessons,
   ...addSubtractLessons,
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...transformationLessons,
   ...angleTriangleLessons,
   ...realNumberLessons,
   ...numberSystemLessons,
@@ -644,6 +660,7 @@ export const lessons: readonly Lesson[] = [
   ...shapeLessons,
   ...angleLessons,
   ...polygonLessons,
+  ...probabilityRulesLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

@@ -1,3 +1,4 @@
+import { transformationMethods } from "./transformation-lessons";
 import { completingSquareMethods } from "./completing-square-lessons";
 import { factoringMethods } from "./factoring-lessons";
 import { numberSystemMethods } from "./number-system-lessons";
@@ -10,6 +11,7 @@ import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
 import { angleMethods } from "./angle-lessons";
 import { polygonMethods } from "./polygon-lessons";
+import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { bivariateMethods } from "./bivariate-lessons";
@@ -24,6 +26,7 @@ import { angleTriangleMethods } from "./angle-triangle-lessons";
 import { realNumberMethods } from "./real-number-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
+import { numberSenseMethods } from "./number-sense-lessons";
 import { multiplyDivideMethods } from "./multiply-divide-lessons";
 import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
@@ -51,6 +54,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...shapeMethods,
   ...angleMethods,
   ...polygonMethods,
+  ...probabilityRulesMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
@@ -67,11 +71,13 @@ export const methods: Record<string, ProblemMethod> = {
   ...timeMoneyMethods,
   ...attributeMethods,
   ...comparisonMethods,
+  ...numberSenseMethods,
   ...multiplyDivideMethods,
   ...addSubtractMethods,
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...transformationMethods,
   ...angleTriangleMethods,
   ...realNumberMethods,
   ...numberSystemMethods,

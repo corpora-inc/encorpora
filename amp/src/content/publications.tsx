@@ -1,3 +1,5 @@
+import { transformationWorksheet } from "./transformation-worksheets";
+import { transformationTemplates } from "../math/transformation-practice";
 import { completingSquareTemplates } from "../math/completing-square-practice";
 import { completingSquareWorksheet } from "./completing-square-worksheets";
 import { angleTriangleWorksheet } from "./angle-triangle-worksheets";
@@ -81,7 +83,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    completingSquareTemplates.some((t) => t.id === id)
+    transformationTemplates.some((t) => t.id === id)
+      ? transformationWorksheet(id, lesson.id, edition)
+      : completingSquareTemplates.some((t) => t.id === id)
       ? completingSquareWorksheet(id, lesson.id, edition)
       : angleTriangleTemplates.some((t) => t.id === id)
         ? angleTriangleWorksheet(id, lesson.id, edition)

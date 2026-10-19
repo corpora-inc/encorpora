@@ -1395,6 +1395,37 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// High-school probability rules (S-CP): sets, addition, conditioning, products.
+for (const [skillId, suffix, description] of [
+  [
+    "event-sets",
+    "set-operations",
+    "Count or find the probability of a union, intersection or complement of two events from a Venn diagram, given totals or a list of whole-number outcomes.",
+  ],
+  [
+    "probability-addition",
+    "overlap-correction",
+    "Find P(A or B) from counts, probabilities or a standard deck by subtracting the overlap once, and solve the rule for P(A and B).",
+  ],
+  [
+    "conditional-probability",
+    "restricted-sample-space",
+    "Find P(A | B) from a two-way table, a Venn diagram, a list of outcomes or P(A and B) and P(B).",
+  ],
+  [
+    "probability-multiplication",
+    "sequential-products",
+    "Find joint probabilities of two-stage events, including draws without replacement, and add the paths of a probability tree.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Grades 2–5 polygons, solids' parts and the quadrilateral hierarchy.
 for (const [skillId, facets] of [
   [
@@ -1831,6 +1862,46 @@ for (const [skillId, suffix, description] of [
     "elimination-proof",
     "sum-keeps-solutions",
     "Add equations of a system and recognize the equivalent system and why it keeps every solution.",
+  ],
+  [
+    "coordinate-polygons",
+    "aligned-side-lengths",
+    "Find the length of a horizontal or vertical side of a polygon from the coordinates of its endpoints, including sides that cross an axis.",
+  ],
+  [
+    "coordinate-polygons",
+    "rectangle-perimeter-area",
+    "Find the perimeter or area of a rectangle with horizontal and vertical sides from the coordinates of its vertices.",
+  ],
+  [
+    "coordinate-distance",
+    "pythagorean-distance",
+    "Find the distance between two points as a whole number or a simplified square root using the Pythagorean theorem.",
+  ],
+  [
+    "rigid-motions",
+    "coordinate-images",
+    "Find image coordinates under a translation, a reflection over an axis or a rotation of 90° or 180° about the origin.",
+  ],
+  [
+    "rigid-motions",
+    "identify-motion",
+    "Identify the single translation, axis reflection or rotation about the origin that maps one triangle onto another.",
+  ],
+  [
+    "dilations-similarity",
+    "origin-dilations",
+    "Find image coordinates and scale factors of dilations centered at the origin.",
+  ],
+  [
+    "dilations-similarity",
+    "similar-triangle-sides",
+    "Find a missing side of similar triangles from corresponding sides and the scale factor.",
+  ],
+  [
+    "scale-drawings",
+    "lengths-and-areas",
+    "Find actual lengths, drawing lengths and actual areas from a scale drawing, with areas scaled by the square of the scale.",
   ],
   [
     "function-domain-range",
@@ -2587,6 +2658,47 @@ for (const [skillId, suffix, description] of [
     "arithmetic-patterns",
     "table-patterns",
     "Find a product in a multiplication-table window from the row step, doubling, or the sum of two rows.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Counting, number-line, rounding and powers-of-ten tasks cover bounded facets.
+for (const [skillId, suffix, description] of [
+  [
+    "count-to-100",
+    "counts-and-chart",
+    "Find a missing number in a count by ones or tens within 100, or in a window of the hundred chart.",
+  ],
+  [
+    "write-numerals",
+    "frames-to-twenty",
+    "Write the numeral for 0 to 20 counters shown in ten-frames.",
+  ],
+  [
+    "number-line-arithmetic",
+    "tens-and-ones-hops",
+    "Add or subtract within 100 as a tens hop and an ones hop, and find a hop's length between two numbers.",
+  ],
+  [
+    "round-whole-numbers",
+    "nearest-ten-hundred",
+    "Round whole numbers below 1,000 to the nearest ten or hundred, including halfway values and carries.",
+  ],
+  [
+    "large-place-value",
+    "rounding-large",
+    "Round five- and six-digit whole numbers to the nearest hundred, thousand or ten thousand.",
+  ],
+  [
+    "powers-of-ten",
+    "shift-by-powers",
+    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten, and compare one digit's values in two places.",
   ],
 ])
   skills

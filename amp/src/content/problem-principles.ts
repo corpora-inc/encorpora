@@ -1,3 +1,4 @@
+import { transformationPrinciples } from "./transformation-lessons";
 import { completingSquarePrinciples } from "./completing-square-lessons";
 import { factoringPrinciples } from "./factoring-lessons";
 import { numberSystemPrinciples } from "./number-system-lessons";
@@ -10,6 +11,7 @@ import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
 import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
+import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { bivariatePrinciples } from "./bivariate-lessons";
@@ -24,6 +26,7 @@ import { angleTrianglePrinciples } from "./angle-triangle-lessons";
 import { realNumberPrinciples } from "./real-number-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
+import { numberSensePrinciples } from "./number-sense-lessons";
 import { multiplyDividePrinciples } from "./multiply-divide-lessons";
 import { addSubtractPrinciples } from "./add-subtract-lessons";
 import { factsPrinciples } from "./facts-lessons";
@@ -47,6 +50,7 @@ export const principles: Record<string, string> = {
   ...shapePrinciples,
   ...anglePrinciples,
   ...polygonPrinciples,
+  ...probabilityRulesPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -63,11 +67,13 @@ export const principles: Record<string, string> = {
   ...timeMoneyPrinciples,
   ...attributePrinciples,
   ...comparisonPrinciples,
+  ...numberSensePrinciples,
   ...multiplyDividePrinciples,
   ...addSubtractPrinciples,
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...transformationPrinciples,
   ...angleTrianglePrinciples,
   ...realNumberPrinciples,
   ...numberSystemPrinciples,

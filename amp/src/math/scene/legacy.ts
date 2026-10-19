@@ -8,6 +8,14 @@ export const portedKinds = [
   "clock",
   "coordinate-plane",
   "ten-frame",
+  "line-plot",
+  "double-dot-plot",
+  "box-plot",
+  "double-box-plot",
+  "histogram",
+  "scaled-bar-graph",
+  "picture-graph",
+  "sort-shapes",
   "base-ten",
   "unit-array",
 ] as const;
@@ -78,6 +86,56 @@ export function legacyScene(
           },
         ],
       };
+    case "line-plot":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "dotPlot",
+            id: "plot",
+            min: f.start / f.denominator,
+            max: f.end / f.denominator,
+            ...(f.denominator > 1 ? { denominator: f.denominator } : {}),
+            mark: f.mark,
+            groups: [{ values: f.values.map((v) => v / f.denominator) }],
+            unit: f.unit,
+          },
+        ],
+      };
+    case "double-dot-plot":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "dotPlot",
+            id: "plot",
+            min: f.start,
+            max: f.end,
+            mark: "dot",
+            groups: f.groups.map((g) => ({ label: g.label, values: g.values })),
+            unit: f.unit,
+          },
+        ],
+      };
+    case "box-plot":
+    case "double-box-plot":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "boxPlot",
+            id: "box",
+            min: f.start,
+            max: f.end,
+            step: f.step,
+            groups:
+              f.kind === "box-plot"
+                ? [{ summary: f.summary }]
+                : f.groups.map((g) => ({ label: g.label, summary: g.summary })),
+            unit: f.unit,
+          },
+        ],
+      };
     case "base-ten":
       return {
         v: 1,
@@ -107,6 +165,57 @@ export function legacyScene(
               : {}),
           },
         ],
+      };
+    case "histogram": {
+      const peak = Math.max(...f.counts),
+        step = peak > 10 ? 2 : 1;
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bins: { start: f.start, width: f.width, counts: f.counts },
+            max: Math.ceil(peak / step) * step,
+            step,
+            unit: "count",
+            xUnit: f.unit,
+          },
+        ],
+      };
+    }
+    case "scaled-bar-graph":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bars: f.categories.map((c) => ({ label: c.label, value: c.value })),
+            max: f.max,
+            step: f.step,
+            unit: f.unit,
+          },
+        ],
+      };
+    case "picture-graph":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "pictureGraph",
+            id: "graph",
+            rows: f.categories.map((c) => ({ label: c.label, count: c.count })),
+            key: f.key,
+            unit: f.unit,
+          },
+        ],
+      };
+    case "sort-shapes":
+      return {
+        v: 1,
+        width: 340,
+        elements: [{ type: "shapeSort", id: "shapes", shapes: f.shapes }],
       };
   }
 }
