@@ -1,5 +1,11 @@
 import { registerComponent, type Prim } from "../layout";
-import type { Fn, Graph, LineSpec, Point } from "../spec";
+import {
+  axisStep,
+  type Fn,
+  type Graph,
+  type LineSpec,
+  type Point,
+} from "../spec";
 import { typeset } from "../type";
 import {
   clipHalfPlane,
@@ -122,6 +128,14 @@ const around = (d: number): [number, number, -1 | 0 | 1, -1 | 0 | 1][] => [
   [-d - 2, 0, 1, 0],
 ];
 
+function gridWords(g: Graph) {
+  const shared = nice(Math.max(g.x[1] - g.x[0], g.y[1] - g.y[0]), 20);
+  const gx = axisStep(g.grid, 0, shared),
+    gy = axisStep(g.grid, 1, shared);
+  return gx === gy
+    ? `, gridlines every ${spoken(gx)}`
+    : `, gridlines every ${spoken(gx)} across and every ${spoken(gy)} up`;
+}
 registerComponent("graph", {
   maxScale: (g) => 48 / Math.min(1, graphAspect(g)),
   compile(g, { s }) {
@@ -132,13 +146,16 @@ registerComponent("graph", {
     const prims: Prim[] = [];
     const xr = x1 - x0,
       yr = y1 - y0;
-    const grid =
-      g.grid === false ? null : (g.grid ?? nice(Math.max(xr, yr), 20));
+    const shared = nice(Math.max(xr, yr), 20);
+    const grid: [number, number] | null =
+      g.grid === false
+        ? null
+        : [axisStep(g.grid, 0, shared), axisStep(g.grid, 1, shared)];
     // Axes cross at the origin when it is in view, else along the window edge.
     const ax = y0 <= 0 && y1 >= 0 ? 0 : y0,
       ay = x0 <= 0 && x1 >= 0 ? 0 : x0;
     if (grid) {
-      for (const v of ticks(x0, x1, grid))
+      for (const v of ticks(x0, x1, grid[0]))
         if (v !== ay)
           prims.push({
             type: "segment",
@@ -148,7 +165,7 @@ registerComponent("graph", {
             stroke: "grid",
             width: 1,
           });
-      for (const v of ticks(y0, y1, grid))
+      for (const v of ticks(y0, y1, grid[1]))
         if (v !== ax)
           prims.push({
             type: "segment",
@@ -291,10 +308,18 @@ registerComponent("graph", {
     // Tick labels: a stride that fits, from the grid or a nice step.
     const mode = g.labels ?? "auto";
     if (mode !== "none") {
-      const base = g.tick ?? grid ?? nice(Math.max(xr, yr), 10);
+      const fallback = nice(Math.max(xr, yr), 10);
+      const bases = ([0, 1] as const).map((a) =>
+        g.tick !== undefined
+          ? axisStep(g.tick, a, fallback)
+          : grid
+            ? grid[a]
+            : fallback,
+      ) as [number, number];
       const widest = (vals: number[]) =>
         Math.max(0, ...vals.map((v) => typeset(num(v), "math", "sm").width));
       const pick = (
+        base: number,
         vals: (step: number) => number[],
         gap: (step: number) => number,
         need: (step: number) => number,
@@ -304,16 +329,18 @@ registerComponent("graph", {
           .find((st) => gap(st) >= need(st)) ?? base * 50;
       const xStep =
         mode === "all" || g.tick
-          ? base
+          ? bases[0]
           : pick(
+              bases[0],
               (st) => ticks(x0, x1, st),
               (st) => st * s,
               (st) => widest(ticks(x0, x1, st)) + 10,
             );
       const yStep =
         mode === "all" || g.tick
-          ? base
+          ? bases[1]
           : pick(
+              bases[1],
               (st) => ticks(y0, y1, st),
               (st) => st * k * s,
               () => 20,
@@ -771,7 +798,7 @@ registerComponent("graph", {
   },
   describe(g, reveal) {
     const out = [
-      `Coordinate plane with x from ${spoken(g.x[0])} to ${spoken(g.x[1])} and y from ${spoken(g.y[0])} to ${spoken(g.y[1])}${g.grid === false ? "" : `, gridlines every ${spoken(g.grid ?? nice(Math.max(g.x[1] - g.x[0], g.y[1] - g.y[0]), 20))}`}.`,
+      `Coordinate plane with x from ${spoken(g.x[0])} to ${spoken(g.x[1])} and y from ${spoken(g.y[0])} to ${spoken(g.y[1])}${g.grid === false ? "" : gridWords(g)}.`,
     ];
     for (const r of g.regions ?? [])
       out.push(

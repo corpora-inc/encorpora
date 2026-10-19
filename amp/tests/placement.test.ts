@@ -12,6 +12,7 @@ import {
 import { projectSkillEvidence } from "../src/server/evidence.js";
 import { generateProblem, templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
+import { guessChance, guessChanceOf } from "../src/math/guess-chance";
 import type { Outcome } from "../src/server/repository";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -22,13 +23,18 @@ const october = Date.parse("2026-10-17T12:00:00Z");
 
 /** A new learner's first `count` problems, one request per answer, as the app
  * asks for them. Answers alternate so both outcomes are exercised. */
-function firstProblems(birthYear: number, learnerKey: string, count: number) {
+function firstProblems(
+  birthYear: number,
+  learnerKey: string,
+  count: number,
+  catalog = templates,
+) {
   const attempts: Outcome[] = [];
   const start = initialLevel({ birthYear, now: october });
   for (let i = 0; i < count; i++) {
     const at = october + i * 60000;
     const [choice] = planMixedPractice({
-      templates,
+      templates: catalog,
       skills,
       attempts,
       evidence: projectSkillEvidence(attempts),
@@ -37,6 +43,7 @@ function firstProblems(birthYear: number, learnerKey: string, count: number) {
         observations: attempts,
         gradeOf,
         strandOf,
+        guessOf: guessChanceOf,
         now: at,
       }),
       count: 1,
@@ -62,7 +69,7 @@ function firstProblems(birthYear: number, learnerKey: string, count: number) {
   return { start, ids: attempts.map((attempt) => attempt.templateId) };
 }
 
-test("every role and opener names a real, whole, universally renderable item", () => {
+test("every role and opener names a real, whole item every client can draw", () => {
   for (const id of scaffoldTemplateIds) assert.ok(byId.has(id), id);
   for (const [band, slots] of openerSlots.entries()) {
     assert.equal(slots.length, OPENER_COUNT, `band ${band}`);
@@ -87,7 +94,9 @@ test("every role and opener names a real, whole, universally renderable item", (
         const template = byId.get(id);
         assert.ok(template, id);
         assert.equal(templateRole(id), "assessment", id);
-        assert.equal(template.requiredResponseCapability, undefined, id);
+        // A choice opener needs at least three options: a correct pick on a
+        // two-way choice is mostly luck and says little about the learner.
+        assert.ok(guessChance(template) <= 1 / 3, id);
         assert.equal(template.requiredFigureCapability, undefined, id);
         const grade = gradeOf(id);
         assert.ok(
@@ -121,6 +130,36 @@ test("every birth year from 2010 to 2022 opens on its curated, confidence-buildi
       // The sequence is fixed for a learner, across every request.
       assert.deepEqual(firstProblems(birthYear, learnerKey, 8).ids, ids);
     }
+});
+
+test("choice openers bring measurement into K–2 placement; typed-only clients still get typed openers", () => {
+  for (const birthYear of [2019, 2020, 2021]) {
+    const { start, ids } = firstProblems(
+      birthYear,
+      `${birthYear}`,
+      OPENER_COUNT,
+    );
+    assert.ok(start <= 2, String(start));
+    assert.ok(
+      ids.some((id) => strandOf(id) === "measurement"),
+      `${ids}`,
+    );
+  }
+  // A client without single-choice support never receives a choice item; a
+  // slot it cannot draw falls through to adaptive selection.
+  const typed = templates.filter((template) => guessChance(template) === 0);
+  for (let birthYear = 2010; birthYear <= 2022; birthYear++) {
+    const { start, ids } = firstProblems(birthYear, "typed", 8, typed);
+    assert.ok(
+      ids.every((id) => guessChance(byId.get(id)!) === 0),
+      `${ids}`,
+    );
+    const slots = openerSlots[Math.min(start, openerSlots.length - 1)]!;
+    ids.slice(0, OPENER_COUNT).forEach((id, position) => {
+      if (slots[position]!.some((own) => guessChance(byId.get(own)!) === 0))
+        assert.ok(slots[position]!.includes(id), `${birthYear}: ${id}`);
+    });
+  }
 });
 
 test("siblings of the same age do not all start identically", () => {
@@ -175,6 +214,7 @@ test("scaffolds return to practice once the learner is placed", () => {
         observations: history,
         gradeOf,
         strandOf,
+        guessOf: guessChanceOf,
         now: october,
       }),
       count: 1,

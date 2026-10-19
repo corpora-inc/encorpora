@@ -1,5 +1,7 @@
 import type { SemanticFigure } from "../contracts";
 import {
+  angle,
+  protractor,
   areaModel,
   array,
   baseTen,
@@ -8,7 +10,9 @@ import {
   fractionBar,
   graph,
   numberLine,
+  polyArea,
   table,
+  lineTable,
   tenFrame,
 } from "./author";
 import type { Scene } from "./spec";
@@ -181,6 +185,76 @@ export const galleryCases: GalleryCase[] = [
     }).scene(),
   },
   {
+    name: "Tiles: (x + 3)(x + 2), terms to find",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [2, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (x − 2)(x + 4), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 1],
+        [-2, 0],
+      ],
+      [
+        [1, 1],
+        [4, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (2x + 1)(x + 3), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [2, 1],
+        [1, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: x² + 6x missing its corner",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      {
+        products: "shown",
+        missing: [[1, 1]],
+      },
+    ).scene(),
+  },
+  {
+    name: "Tiles: 6x(x³ − 2x + 5), not to scale, revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 3],
+        [-2, 1],
+        [5, 0],
+      ],
+      [[6, 1]],
+    ).scene(),
+  },
+  {
     name: "Array: 7 × 6 split after 4 rows",
     scene: array(7, 6, { splitAfterRow: 4 }).scene(),
   },
@@ -199,8 +273,92 @@ export const galleryCases: GalleryCase[] = [
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
   {
-    name: "Table: a function's values, one to find",
-    scene: table(
+    name: "Protractor: 0 on the left, ray at 130",
+    scene: protractor([180, 130], ["A", "B", "C"]).scene({ width: 340 }),
+  },
+  {
+    name: "Protractor: 0 on the right, ray at 75",
+    scene: protractor([0, 75], ["P", "Q", "R"]).scene({ width: 340 }),
+  },
+  {
+    name: "Angle: parts with the unknown masked",
+    scene: angle({
+      rays: [20, 65, 140],
+      labels: { vertex: "B", ends: ["A", "C", "D"] },
+      marks: [
+        { from: 0, to: 1, measure: true },
+        { from: 1, to: 2, measure: true, derived: true },
+      ],
+    }).scene({ width: 340 }),
+  },
+  {
+    name: "Angle: a right angle with arrows",
+    scene: angle({
+      rays: [30, 120],
+      arrows: true,
+      marks: [{ from: 0, to: 1 }],
+    }).scene({ width: 300 }),
+  },
+  {
+    name: "Scatter plot: unlike axis units, trend line through two marked points",
+    scene: graph({
+      x: [0, 10],
+      y: [30, 100],
+      grid: [1, 10],
+      aspect: (0.72 * 10) / 70,
+      axisNames: ["hours studied", "test score"],
+    })
+      .scatter(
+        [
+          [1, 50],
+          [2, 55],
+          [3, 58],
+          [4, 66],
+          [5, 70],
+          [6, 72],
+          [7, 82],
+          [8, 84],
+          [9, 88],
+          [10, 96],
+        ],
+        { m: 5, b: 45 },
+      )
+      .point(2, 55, undefined, { open: true })
+      .point(8, 85, undefined, { open: true })
+      .scene(),
+  },
+  {
+    name: "Two-way table: the cell to find (problem)",
+    scene: table({
+      title: "Has a curfew",
+      columns: ["Yes", "No", "Total"],
+      rows: [
+        { label: "Grade 7", cells: [18, 2, 20] },
+        { label: "Grade 8", cells: [null, null, 60] },
+        { label: "Total", cells: [42, 38, 80] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    }).scene(),
+  },
+  {
+    name: "Two-way table: revealed (lesson)",
+    reveal: true,
+    scene: table({
+      title: "Has a curfew",
+      columns: ["Yes", "No", "Total"],
+      rows: [
+        { label: "Grade 7", cells: [18, 2, 20] },
+        { label: "Grade 8", cells: [null, 36, 60] },
+        { label: "Total", cells: [42, 38, 80] },
+      ],
+      sums: true,
+      derived: [[1, 0]],
+    }).scene(),
+  },
+  {
+    name: "Line table: a function's values, one to find",
+    scene: lineTable(
       [
         ["x", "0", "1", "2", "3", "4"],
         ["f(x)", "5", "8", "11", { text: "14", derived: true }, "17"],
@@ -209,8 +367,8 @@ export const galleryCases: GalleryCase[] = [
     ).scene({ title: "Values of f" }),
   },
   {
-    name: "Table: equation steps with their reasons",
-    scene: table(
+    name: "Line table: equation steps with their reasons",
+    scene: lineTable(
       [
         ["3(x − 4) = 18", "Given"],
         ["3x − 12 = 18", "Distributive property"],
@@ -221,9 +379,9 @@ export const galleryCases: GalleryCase[] = [
     ).scene({ title: "Solving 3(x − 4) = 18" }),
   },
   {
-    name: "Table: two equations stacked and added (lesson)",
+    name: "Line table: two equations stacked and added (lesson)",
     reveal: true,
-    scene: table(
+    scene: lineTable(
       [
         ["", "2x", "+ 3y", "=", "12"],
         ["+", "x", "− 3y", "=", "3"],

@@ -11,6 +11,7 @@ import {
   templateGrade,
   itemSuccess,
   gradeCalibration,
+  type EditorialCalibration,
 } from "../../src/learning/item-calibration";
 import { planExperimentalMixedPractice as planMixedPractice } from "../../src/server/experimental-mixed-practice";
 import { projectSkillEvidence } from "../../src/server/evidence";
@@ -25,6 +26,9 @@ export type SimulationDataset = {
     Parameters<typeof planMixedPractice>[0]["skills"][number],
     "id" | "prerequisites" | "strand" | "gradeBand"
   >[];
+  /** Editorial overrides that describe these templates' generators; the live
+   * table when absent. A historical catalog carries its own. */
+  calibration?: EditorialCalibration;
 };
 const currentDataset: SimulationDataset = { templates, skills };
 /** Identify the actual supplied planning metadata; generators and lessons are
@@ -76,7 +80,10 @@ function runSimulation(
   const nodes = new Map(skills.map((skill) => [skill.id, skill]));
   const byId = new Map(templates.map((template) => [template.id, template]));
   const items = new Map(
-    templates.map((t) => [t.id, templateCalibration(t, nodes)]),
+    templates.map((t) => [
+      t.id,
+      templateCalibration(t, nodes, dataset.calibration),
+    ]),
   );
   const gradeOf = (id: string) => templateGrade(byId.get(id)!, nodes);
   const strandOf = (id: string) => nodes.get(byId.get(id)!.skillId)!.strand;
@@ -157,6 +164,7 @@ function runSimulation(
       seed: `${seed}:${batch}`,
       now,
       targetBand: defaultTargetBand,
+      calibration: dataset.calibration,
     });
     if (choices.length !== Math.min(3, total - n))
       throw new Error(

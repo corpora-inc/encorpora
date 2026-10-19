@@ -12,8 +12,16 @@ const worksheets = lessons.flatMap((lesson) =>
     })),
   ),
 );
-const figures = Object.entries(sceneIllustrations).map(([kind, scene]) => ({
+const kinds = [
+  "domain-range-axes",
+  "relation-repeated-input",
+  "average-rate-secant",
+  "linear-model-graph",
+  "formula-isolate-steps",
+  "solution-set-line",
+] as const;
+const figures = kinds.map((kind) => ({
   kind,
-  scene,
+  scene: sceneIllustrations[kind],
 }));
 console.log(JSON.stringify({ lessons, worksheets, figures }));

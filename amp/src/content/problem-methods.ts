@@ -1,12 +1,16 @@
+import { factoringMethods } from "./factoring-lessons";
+import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { linearFunctionMethods } from "./linear-function-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
+import { angleMethods } from "./angle-lessons";
 import { polygonMethods } from "./polygon-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
+import { bivariateMethods } from "./bivariate-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
 import { timeMoneyMethods } from "./time-money-lessons";
@@ -14,6 +18,7 @@ import { attributeMethods } from "./attribute-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
+import { realNumberMethods } from "./real-number-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
 import { multiplyDivideMethods } from "./multiply-divide-lessons";
@@ -30,23 +35,28 @@ import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
+import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 /** Authored methods, keyed by template id. Keep each one short and complete:
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...factoringMethods,
   ...volumeCoordinateMethods,
   ...shapeMethods,
+  ...angleMethods,
   ...polygonMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
+  ...absoluteValueMethods,
   ...polynomialMethods,
   ...earlyDataMethods,
   ...linePlotMethods,
   ...distributionMethods,
   ...inferenceMethods,
+  ...bivariateMethods,
   ...radicalMethods,
   ...partWholeMethods,
   ...decimalMethods,
@@ -58,6 +68,8 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...realNumberMethods,
+  ...numberSystemMethods,
   ...ratioRateMethods,
   ...patternFunctionMethods,
   ...linearFunctionMethods,

@@ -216,7 +216,8 @@ function Parts() {
                 strokeWidth={2}
               />
               <circle cx={v.x} cy={v.y} r={6} fill={warm} />
-              <text x={v.x - 34} y={v.y + 38} textAnchor="end" style={label}>
+              {/* Baseline at the leader's end: +38 crossed the 240 view box. */}
+              <text x={v.x - 34} y={v.y + 34} textAnchor="end" style={label}>
                 vertex
               </text>
               <text x={e.x + 22} y={e.y + 42} textAnchor="middle" style={label}>

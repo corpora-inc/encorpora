@@ -1,6 +1,8 @@
 import {
   sceneSchema,
+  type Angle,
   type AreaModel,
+  type Protractor,
   type Clock,
   type Element,
   type Fn,
@@ -8,11 +10,15 @@ import {
   type Graph,
   type LineSpec,
   type NumberLine,
+  type PolyArea,
+  type Term,
   type Point,
   type Scene,
   type Table,
+  type LineTable,
   type TenFrame,
 } from "./spec";
+import type { Action, Step } from "./timeline";
 
 /**
  * Author API: chainable builders that produce plain scene data.
@@ -30,9 +36,10 @@ type SceneOptions = {
   note?: string;
   width?: number;
   maxHeight?: number;
+  steps?: Step[];
 };
 
-/** Several elements in one scene. */
+/** Several elements in one scene, sharing one coordinate system. */
 export function scene(...parts: (Element | Built)[]) {
   const elements = parts.map((p) =>
     "element" in p && typeof p.element === "function"
@@ -45,6 +52,44 @@ export function scene(...parts: (Element | Built)[]) {
     },
   };
 }
+
+/**
+ * Timeline actions. A target is an element id and, optionally, a part:
+ * `"nl.hop.0"` is the first hop of the number line with id `nl` (its arc,
+ * arrowhead and labels). Hints and lessons address the learner's own scene
+ * the same way.
+ */
+export const act = {
+  appear: (target: string, stagger = false): Action => ({
+    do: "appear",
+    target,
+    ...(stagger ? { stagger } : {}),
+  }),
+  disappear: (target: string): Action => ({ do: "disappear", target }),
+  trace: (target: string): Action => ({ do: "trace", target }),
+  highlight: (target: string): Action => ({ do: "highlight", target }),
+  fill: (
+    target: string,
+    fill: Extract<Action, { do: "fill" }>["fill"],
+  ): Action => ({ do: "fill", target, fill }),
+  move: (target: string, by: [number, number]): Action => ({
+    do: "move",
+    target,
+    by,
+  }),
+  count: (target: string, from = 0): Action => ({ do: "count", target, from }),
+};
+/** One step: a caption (MathText; `{id}` inserts that label) and its actions. */
+export const step = (caption: string, ...actions: Action[]): Step => ({
+  caption,
+  actions,
+});
+/** A step only lessons play: it reveals the result, so hints stop before it. */
+export const lessonStep = (caption: string, ...actions: Action[]): Step => ({
+  caption,
+  actions,
+  audience: "lesson",
+});
 
 abstract class Builder<T extends Element> implements Built {
   constructor(protected spec: T) {}
@@ -262,6 +307,12 @@ class GraphBuilder extends Builder<Graph> {
 export const graph = (spec: Omit<Graph, "type">) =>
   new GraphBuilder({ type: "graph", ...spec } as Graph);
 
+class TableBuilder extends Builder<Table> {}
+/** A table; with `sums`, the last column and row are totals, and derived
+ * cells (null in `rows`) are found from them. */
+export const table = (spec: Omit<Table, "type">) =>
+  new TableBuilder({ type: "table", ...spec } as Table);
+
 /** Place-value parts of a whole number: 345 → [300, 40, 5]. */
 export function placeValueParts(n: number) {
   const digits = String(Math.trunc(Math.abs(n))).split("");
@@ -292,6 +343,14 @@ export const areaModel = (
     down: Array.isArray(down) ? down : placeValueParts(down),
     ...options,
   } as AreaModel);
+
+/** polyArea([[1, 1], [3, 0]], [[1, 1], [2, 0]]) is (x + 3)(x + 2) as tiles;
+ * the region terms stay masked unless a lesson reveals them. */
+export const polyArea = (
+  across: Term[],
+  down: Term[],
+  options: Partial<Omit<PolyArea, "type" | "across" | "down">> = {},
+) => new Simple<PolyArea>({ type: "polyArea", across, down, ...options });
 
 class Simple<T extends Element> extends Builder<T> {}
 export const array = (
@@ -327,9 +386,24 @@ export const fractionBar = (
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
 
-/** table([["x", "0", "1"], ["y", "3", { text: "5", derived: true }]]):
+/** A protractor on a vertex: one ray on its baseline, the other crossing
+ * the scales. */
+export const protractor = (
+  rays: [number, number],
+  labels?: [string, string, string],
+) =>
+  new Simple<Protractor>({
+    type: "protractor",
+    rays,
+    ...(labels ? { labels } : {}),
+  });
+/** Rays from one vertex with angle marks between chosen pairs. */
+export const angle = (spec: Omit<Angle, "type">) =>
+  new Simple<Angle>({ type: "angle", ...spec });
+
+/** lineTable([["x", "0", "1"], ["y", "3", { text: "5", derived: true }]]):
  * headings down the first column unless `header` says otherwise. */
-export const table = (
-  rows: Table["rows"],
-  options: Partial<Omit<Table, "type" | "rows">> = {},
-) => new Simple<Table>({ type: "table", rows, ...options });
+export const lineTable = (
+  rows: LineTable["rows"],
+  options: Partial<Omit<LineTable, "type" | "rows">> = {},
+) => new Simple<LineTable>({ type: "lineTable", rows, ...options });

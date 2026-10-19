@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { describeScene, layoutScene, sceneSchema } from "../src/math/scene";
-import { table } from "../src/math/scene/author";
+import { lineTable as table } from "../src/math/scene/author";
 import type { Drawn } from "../src/math/scene";
 
 const rects = (items: Drawn[]) =>

@@ -1,5 +1,5 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
-import { f, graph, table } from "./scene/author";
+import { f, graph, lineTable as table } from "./scene/author";
 import type { Fn } from "./scene/spec";
 import {
   assemble,

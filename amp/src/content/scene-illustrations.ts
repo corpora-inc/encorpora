@@ -1,11 +1,100 @@
-import { f, graph, scene, table } from "../math/scene/author";
-import type { Graph, Scene } from "../math/scene/spec";
+import { f, graph, lineTable, scene, table } from "../math/scene/author";
+import type { Graph } from "../math/scene/spec";
 
-/** Lesson models drawn with the scene framework and shown revealed: exact
- * data, one renderer for screen and print, no bespoke illustration code. */
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
+import type { Scene } from "../math/scene/spec";
 
+/** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  "scene-scatter-study": graph({
+    x: [0, 10],
+    y: [30, 100],
+    grid: [1, 10],
+    tick: [1, 10],
+    aspect: 0.1029,
+    axisNames: ["hours studied", "test score"],
+  })
+    .scatter([
+      [1, 50],
+      [2, 55],
+      [2, 62],
+      [3, 58],
+      [4, 66],
+      [5, 70],
+      [5, 74],
+      [6, 72],
+      [7, 82],
+      [8, 84],
+      [9, 88],
+      [10, 96],
+    ])
+    .scene(),
+  "scene-scatter-curve": graph({
+    x: [6, 20],
+    y: [40, 90],
+    grid: [2, 10],
+    tick: [2, 10],
+    aspect: 0.2016,
+    axisNames: ["hour of the day", "temperature (°F)"],
+  })
+    .scatter([
+      [6, 44],
+      [8, 58],
+      [10, 70],
+      [12, 80],
+      [14, 84],
+      [16, 80],
+      [18, 70],
+      [20, 56],
+    ])
+    .scene(),
+  "scene-scatter-trend": graph({
+    x: [0, 10],
+    y: [0, 30],
+    grid: [1, 5],
+    tick: [1, 5],
+    aspect: 0.24,
+    axisNames: ["age (years)", "value (thousand $)"],
+  })
+    .scatter(
+      [
+        [1, 26],
+        [2, 23],
+        [3, 21],
+        [4, 19],
+        [5, 18],
+        [6, 13],
+        [7, 12],
+        [8, 9],
+        [9, 5],
+        [10, 6],
+      ],
+      { m: -2, b: 26 },
+    )
+    .point(2, 22, undefined, { open: true })
+    .point(8, 10, undefined, { open: true })
+    .scene(),
+  "scene-two-way-blank": table({
+    title: "Has a curfew",
+    columns: ["Yes", "No", "Total"],
+    rows: [
+      { label: "Grade 7", cells: [18, 2, 20] },
+      { label: "Grade 8", cells: [null, null, 60] },
+      { label: "Total", cells: [42, 38, 80] },
+    ],
+    sums: true,
+    derived: [[1, 0]],
+  }).scene(),
+  "scene-two-way-curfew": table({
+    title: "Has a curfew",
+    columns: ["Yes", "No", "Total"],
+    rows: [
+      { label: "Grade 7", cells: [18, 2, 20] },
+      { label: "Grade 8", cells: [24, 36, 60] },
+      { label: "Total", cells: [42, 38, 80] },
+    ],
+    sums: true,
+  }).scene(),
   // f on −3 ≤ x < 4: the domain marked on the x-axis, the range on the y-axis.
   "domain-range-axes": scene(
     g({
@@ -35,7 +124,7 @@ export const sceneIllustrations = {
     title: "Domain −3 ≤ x < 4 on the x-axis and range −2 ≤ y ≤ 6 on the y-axis",
   }),
   // A repeated input with two outputs breaks a function.
-  "relation-repeated-input": table(
+  "relation-repeated-input": lineTable(
     [
       ["x", "1", "2", "2", "5"],
       ["y", "4", "3", "7", "4"],
@@ -66,7 +155,7 @@ export const sceneIllustrations = {
     .point(0, 3, "(0, 3)")
     .scene({ title: "F = 2d + 3: starts at 3 and rises 2 per mile" }),
   // Isolating h in A = bh/2: each step undoes one operation on both sides.
-  "formula-isolate-steps": table(
+  "formula-isolate-steps": lineTable(
     [
       ["A = bh/2", "Given"],
       ["2A = bh", "Multiply both sides by 2"],
@@ -84,8 +173,7 @@ export const sceneIllustrations = {
     .scene({
       title: "Solutions of 2x + 3y = 12 lie on its line; (4, 4) does not",
     }),
-} satisfies Record<string, Scene>;
-export type SceneIllustrationKind = keyof typeof sceneIllustrations;
-export const isSceneIllustration = (
-  kind: string,
-): kind is SceneIllustrationKind => kind in sceneIllustrations;
+} as const satisfies Record<string, Scene>;
+export type SceneIllustration = keyof typeof sceneIllustrations;
+export const isSceneIllustration = (kind: string): kind is SceneIllustration =>
+  kind in sceneIllustrations;

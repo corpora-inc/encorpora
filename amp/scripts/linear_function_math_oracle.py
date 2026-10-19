@@ -51,7 +51,7 @@ def graph_of(public):
 def table_of(public):
     figure = public.get('figure')
     require(figure and figure['kind'] == 'scene', 'Expected a scene figure')
-    tables = [e for e in figure['scene']['elements'] if e['type'] == 'table']
+    tables = [e for e in figure['scene']['elements'] if e['type'] == 'lineTable']
     require(len(tables) == 1, 'Expected one table')
     cell = lambda c: c if isinstance(c, str) else c['text']
     return [[cell(c) for c in row] for row in tables[0]['rows']], tables[0]
@@ -477,7 +477,7 @@ def review_linear_function_fixtures():
     line = scene({'type': 'graph', 'x': [-7, 7], 'y': [-7, 7], 'curves': [{'fn': {'f': 'poly', 'c': [1, -1]}, 'domain': [-3, 4], 'ends': ['closed', 'open']}]})
     secant = scene({'type': 'graph', 'x': [-6, 6], 'y': [-8, 8], 'curves': [{'fn': {'f': 'poly', 'c': [-1, -2, 1]}}], 'secants': [{'curve': 0, 'x': [1, 4]}],
                     'points': [{'x': 1, 'y': -2, 'label': 'A'}, {'x': 4, 'y': 7, 'label': 'B'}]})
-    taxi = scene({'type': 'table', 'rows': [['d', '1', '2', '3', '4'], ['F', '5', '7', '9', '11']]})
+    taxi = scene({'type': 'lineTable', 'rows': [['d', '1', '2', '3', '4'], ['F', '5', '7', '9', '11']]})
     fixtures = [
         (case('graph-domain-range', 'The graph shows the whole function f. What is the range of f?', choice('−2 ≤ y ≤ 7', '−1 ≤ y ≤ 7', '−2 ≤ x ≤ 4', '−2 < y < 7'), parabola), 'option-a'),
         (case('graph-domain-range', 'The graph shows the whole function f. What is the range of f?', choice('−3 < y ≤ 4', '−3 ≤ y < 4', '−3 ≤ y ≤ 4', '−4 < y ≤ 3'), line), 'option-a'),

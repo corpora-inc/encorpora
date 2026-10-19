@@ -1,8 +1,10 @@
+import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
+import { AngleIllustration, isAngleIllustration } from "./AngleIllustration";
 import {
   PolygonIllustration,
   isPolygonIllustration,
@@ -12,6 +14,12 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { RealNumberIllustration } from "./RealNumberIllustration";
+import {
+  NumberSystemIllustration,
+  numberSystemIllustrationKinds,
+  type NumberSystemIllustrationKind,
+} from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
@@ -30,15 +38,16 @@ import {
   RightTriangleOrientation,
   PythagoreanRearrangement,
 } from "./RightTriangleIllustration";
+import { AbsoluteValueIllustration } from "./AbsoluteValueIllustration";
 import type { Lesson } from "./lessons";
 import {
   dataIllustrations,
   isDataIllustration,
 } from "./data-display-illustrations";
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
-import React from "react";
 import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
 import { SceneFigure } from "../web/scene/SceneFigure";
+import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
 export function LessonIllustration({
@@ -46,12 +55,29 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
-  if (isSceneIllustration(kind))
-    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
+  if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
+  if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
+  if (kind === "factoring-nonmonic")
+    return <FactoringIllustration kind="nonmonic" />;
+  if (
+    kind === "repeating-decimal-shift" ||
+    kind === "root-zoom" ||
+    kind === "root-solutions" ||
+    kind === "decimal-point-shift" ||
+    kind === "scientific-regroup"
+  )
+    return <RealNumberIllustration kind={kind} />;
+  if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
+    return (
+      <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
+    );
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
+  if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (isSceneIllustration(kind))
+    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||
@@ -205,6 +231,9 @@ export function LessonIllustration({
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
+  if (kind === "absolute-value-distance") return <AbsoluteValueIllustration />;
+  if (kind === "absolute-value-shifted")
+    return <AbsoluteValueIllustration shifted />;
   if (kind === "inequality-half-lines") return <InequalityHalfLines />;
   if (kind === "linear-system-intersection")
     return <LinearSystemIllustration kind="intersection" />;
