@@ -92,7 +92,8 @@ export const distributionTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-function random(id: string, seed: string) {
+/** Seeded, deterministic integers in [lo, hi], shared by the statistics families. */
+export function random(id: string, seed: string) {
   let counter = 0;
   return (lo: number, hi: number) => {
     const span = hi - lo + 1,
@@ -107,15 +108,15 @@ function random(id: string, seed: string) {
     return lo + (n % span);
   };
 }
-type Random = ReturnType<typeof random>;
+export type Random = ReturnType<typeof random>;
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 /** Exact rational text, reduced: "7/2", "4". */
-function rational(n: number, d: number) {
+export function rational(n: number, d: number) {
   const g = gcd(Math.abs(n), d) || 1;
   return d / g === 1 ? `${n / g}` : `${n / g}/${d / g}`;
 }
 /** Exact decimal when the value terminates, else the fraction: 3.5, 2.25, 7/3. */
-function shown(n: number, d: number) {
+export function shown(n: number, d: number) {
   const g = gcd(Math.abs(n), d) || 1,
     den = d / g;
   let rest = den;
@@ -127,7 +128,7 @@ const list = (values: number[]) =>
   values.length < 2
     ? values.join("")
     : `${values.slice(0, -1).join(", ")} and ${values.at(-1)}`;
-function shuffle<T>(r: Random, items: T[]) {
+export function shuffle<T>(r: Random, items: T[]) {
   for (let i = items.length - 1; i > 0; i--) {
     const j = r(0, i);
     [items[i], items[j]] = [items[j]!, items[i]!];
@@ -171,7 +172,7 @@ const dotContexts = [
   },
 ] as const;
 
-type Draft = {
+export type Draft = {
   prompt: string;
   figure?: SemanticFigure;
   answer: string;
@@ -665,7 +666,17 @@ export function generateDistributionProblem(
     "dot-plot-iqr": dotIqr,
     "typical-value-choice": typicalValue,
   };
-  const draft = build[templateId]!(r);
+  return assemble(meta, seed, r, build[templateId]!(r));
+}
+
+/** A draft becomes a public problem: number or fraction entry, or shuffled choices. */
+export function assemble(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+  draft: Draft,
+): GeneratedProblem {
+  const templateId = meta.id;
   const base = {
     id: createHash("sha256")
       .update(JSON.stringify([templateId, 1, seed]))
