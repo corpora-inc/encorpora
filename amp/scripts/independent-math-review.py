@@ -32,6 +32,7 @@ from radical_math_oracle import review_arithmetic_fixtures as review_radical_ari
 from radical_content_oracle import check_problem as review_radical_problem, review_radical_content
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
+from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
 
 # Add an independently derived solver here before adding a generated family.
@@ -47,7 +48,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
 
 
 def require(condition, message):
@@ -59,6 +60,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in DATA_DISPLAY:
+        return solve_data_display(public)
     if template in COMBINATORICS:
         return solve_combinatorics(public)
     if template in RADICAL_TYPES:
@@ -275,6 +278,7 @@ def solve(public):
 
 
 def review(stream):
+    review_data_display_fixtures()
     review_combinatorics_fixtures()
     review_combinatorics_mutations()
     review_radical_arithmetic()
@@ -351,7 +355,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')

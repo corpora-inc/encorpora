@@ -1,3 +1,4 @@
+import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { rationalPrinciples } from "./rational-lessons";
@@ -17,6 +18,7 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...polynomialPrinciples,
+  ...earlyDataPrinciples,
   ...radicalPrinciples,
   ...combinatoricsPrinciples,
   ...rationalPrinciples,

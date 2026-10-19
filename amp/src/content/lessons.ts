@@ -1,3 +1,5 @@
+import { earlyDataLessons } from "./early-data-lessons";
+import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -30,6 +32,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | DataIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -531,6 +534,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...earlyDataLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
   ...rationalLessons,
