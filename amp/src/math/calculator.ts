@@ -14,6 +14,7 @@ const COMPUTATION_TEMPLATES = new Set([
   "combine-square-roots",
   "multiply-square-roots",
   "rationalize-radical-denominator",
+  "rational-power",
   "negative-integer-power",
   "product-of-powers-exponent",
   "quotient-of-powers-exponent",
