@@ -1,5 +1,5 @@
 import type { SemanticFigure } from "../../math/contracts";
-import { geometryFigureSchema } from "../../math/geometry-models";
+import { angleFigureSchema } from "../../math/geometry-models";
 
 type Triangle = Extract<SemanticFigure, { kind: "triangle-angles" }>;
 type Parallel = Extract<SemanticFigure, { kind: "parallel-transversal" }>;
@@ -16,7 +16,7 @@ export function geometryAnimationModel(
   templateId: string,
   figure: SemanticFigure | undefined,
 ): GeometryAnimationModel | null {
-  if (!figure || !geometryFigureSchema.safeParse(figure).success) return null;
+  if (!figure || !angleFigureSchema.safeParse(figure).success) return null;
   if (templateId === "triangle-angle-sum" && figure.kind === "triangle-angles")
     return figure.exterior ? null : { kind: "triangle-sum", figure };
   if (
@@ -49,6 +49,11 @@ const expr = (label: string) =>
     .replace(/°/g, "")
     .replace(/^\((.*)\)$/, "$1")
     .replaceAll("−", "-");
+/** A sum's addend: parenthesized only when it is itself a sum or difference. */
+const term = (label: string) => {
+  const e = expr(label);
+  return /[+-]/.test(e.slice(1)) ? `(${e})` : e;
+};
 const shapeOf = (f: Solid) =>
   f.plane === "corner" || f.plane === "through-apex"
     ? "triangle"
@@ -108,7 +113,7 @@ export function geometryFrames(model: GeometryAnimationModel): Frame[] {
     const sameCrossing = g.crossing === u.crossing;
     const equation = equal
       ? `$${expr(g.label)} = ${expr(u.label)}$`
-      : `$(${expr(g.label)}) + (${expr(u.label)}) = 180$`;
+      : `$${term(g.label)} + ${term(u.label)} = 180$`;
     return [
       {
         title: "Two parallel lines, one transversal",

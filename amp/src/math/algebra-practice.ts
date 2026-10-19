@@ -78,8 +78,8 @@ export function generateAlgebraProblem(
       prompt = `Find the value of ${linear(a, b)} when x = ${x}.`;
       answer = fraction(a * n + 2 * b, 2);
       label = "Expression value";
-      hint =
-        "Replace x with the entire given value, including its sign. Multiply before adding.";
+      const times = a === 1 ? "" : a === -1 ? "−" : `${a} × `;
+      hint = `Replace x with ${paren(x)}: ${times}${paren(x)} ${signed(b)}. Multiply first, keeping the signs.`;
       explanation = [
         `Substitute: ${a} × ${paren(x)} ${signed(b)}.`,
         `Multiply first: ${fraction(a * n, 2)} ${signed(b)} = ${answer}.`,
@@ -92,8 +92,7 @@ export function generateAlgebraProblem(
         b = nz(6);
       prompt = `Which expression equals ${aa}(x ${signed(b)}) for every real x?`;
       answer = "";
-      hint =
-        "Every term inside the brackets is multiplied by the outside number.";
+      hint = `Multiply ${aa} by both terms inside the brackets: ${aa} × x and ${aa} × ${paren(String(b))}.`;
       choices = [
         { label: linear(aa, aa * b), correct: true },
         {
@@ -119,8 +118,7 @@ export function generateAlgebraProblem(
       prompt = `Combine like terms in ${term(a)} ${b < 0 ? "−" : "+"} ${term(Math.abs(b))} ${signed(c)}. What is the coefficient of x?`;
       answer = String(a + b);
       label = "Coefficient of x";
-      hint =
-        "Combine the signed numbers multiplying x. The constant is a different kind of term.";
+      hint = `The x terms are ${term(a)} and ${term(b)}. Add their signed coefficients, ${a} + ${paren(String(b))}; ${c ? `the ${c} is not an x term` : "the constant is not an x term"}.`;
       explanation = [
         `${a} copies of x plus ${b} copies of x gives ${a + b} copies of x.`,
         `The coefficient is ${answer}. The constant ${c} does not contribute to it.`,
@@ -139,8 +137,7 @@ export function generateAlgebraProblem(
       prompt = `Solve ${a}(x ${signed(b)}) = ${c}.`;
       answer = fraction(c - a * b, a);
       label = "x";
-      hint =
-        "Divide both sides by the nonzero outside multiplier. Then undo the addition inside.";
+      hint = `Undo the multiplication by ${a} first: divide both sides of ${a}(x ${signed(b)}) = ${c} by ${a}.`;
       explanation = [
         `Divide both sides by ${a}: x ${signed(b)} = ${fraction(c, a)}.`,
         `Subtract ${paren(String(b))}: x = ${answer}.`,
@@ -155,7 +152,9 @@ export function generateAlgebraProblem(
       prompt = `Solve ${linear(a, b)} = ${c}.`;
       answer = fraction(c - b, a);
       label = "x";
-      hint = "Undo the constant first, then divide by the signed coefficient.";
+      hint = b
+        ? `Undo the ${signed(b)} first on both sides, then divide both sides by ${a}, sign included.`
+        : `Divide both sides by ${a}, sign included: ${c} ÷ ${paren(String(a))}.`;
       explanation = [
         `Subtract ${paren(String(b))} from both sides: ${term(a)} = ${c - b}.`,
         `Divide by ${a}: x = ${answer}.`,
@@ -172,8 +171,9 @@ export function generateAlgebraProblem(
       prompt = `Solve (${coefficient})x ${signed(b)} = ${c}.`;
       answer = fraction((c - b) * q, p);
       label = "x";
-      hint =
-        "Remove the added constant, then multiply both sides by the reciprocal of the nonzero coefficient.";
+      hint = b
+        ? `Undo the ${signed(b)} first on both sides. Then multiply both sides by the reciprocal of ${coefficient}.`
+        : `Multiply both sides by the reciprocal of ${coefficient}, so the x stands alone.`;
       explanation = [
         `Subtract ${paren(String(b))}: (${coefficient})x = ${c - b}.`,
         `Multiply by ${fraction(q, p)}: x = ${answer}.`,
@@ -190,8 +190,7 @@ export function generateAlgebraProblem(
       prompt = `Solve ${linear(a, b)} = ${linear(c, d)}.`;
       answer = fraction(d - b, a - c);
       label = "x";
-      hint =
-        "Subtract the same x term from both sides, then the same constant. Keep the signs.";
+      hint = `Collect the x terms on one side: subtract ${term(c)} from both sides of ${linear(a, b)} = ${linear(c, d)}.`;
       explanation = [
         `Subtract ${term(c)} and ${paren(String(b))} from both sides: ${term(a - c)} = ${d - b}.`,
         `The coefficient ${a - c} is nonzero, so divide: x = ${answer}.`,
@@ -222,8 +221,7 @@ export function generateAlgebraProblem(
             "The right side is the original constant; substitution does not change it.",
         },
       ];
-      hint =
-        "Evaluate the original left and right sides separately at the proposed value.";
+      hint = `Put x = ${x} into the left side, ${a} × ${paren(String(x))} ${signed(b)}, and work it out. Then compare it with the right side, ${c}.`;
       explanation = [
         `Left: ${a} × ${paren(String(x))} ${signed(b)} = ${lhs}. Right: ${c}.`,
         ok
@@ -244,8 +242,7 @@ export function generateAlgebraProblem(
       prompt = `A linear rule gives (${x}, ${y(x)}), (${x + h}, ${y(x + h)}), and (${x + h + k}, ${y(x + h + k)}). What is its output change per input unit?`;
       answer = fraction(p, q);
       label = "Rate of change";
-      hint =
-        "Divide output change by input change. The input steps are not the same size.";
+      hint = `The inputs ${x}, ${x + h} and ${x + h + k} are not equally spaced. Divide the output change from (${x}, ${y(x)}) to (${x + h}, ${y(x + h)}) by the input change between them, not by 1.`;
       explanation = [
         `The first input step is ${h}; its output change is ${fraction(p * h, q)}.`,
         `Rate = ${fraction(p * h, q)} ÷ ${h} = ${answer}.`,
@@ -262,8 +259,7 @@ export function generateAlgebraProblem(
       prompt = `A linear rule has rate ${fraction(p, q)} and passes through (${x}, ${y}). What is its output when the input is 0?`;
       answer = String(b);
       label = "Output at zero";
-      hint =
-        "The known output contains the initial value plus rate × input. Remove that change.";
+      hint = `Going back from input ${x} to input 0 takes away ${x} steps of ${fraction(p, q)}. Subtract ${x} × ${paren(fraction(p, q))} from ${y}.`;
       explanation = [
         `Use y = mx + b: ${y} = (${fraction(p, q)}) × ${x} + b.`,
         `Subtract the accumulated change ${fraction(p * x, q)}: b = ${answer}.`,
@@ -282,8 +278,7 @@ export function generateAlgebraProblem(
       prompt = `Assume a linear rule through (${x1}, ${y(x1)}) and (${x2}, ${y(x2)}). What is the output at input ${x3}?`;
       answer = y(x3);
       label = "Predicted output";
-      hint =
-        "Find output change per input unit. Extend from either known point.";
+      hint = `Find the rate from (${x1}, ${y(x1)}) to (${x2}, ${y(x2)}): output change ÷ input change. Then extend it from input ${x2} to input ${x3}.`;
       explanation = [
         `Rate = (${y(x2)} − ${paren(y(x1))}) ÷ (${x2} − ${x1}) = ${fraction(p, q)}.`,
         `From input ${x2} to ${x3}, the output changes by ${fraction(p * (x3 - x2), q)}.`,
@@ -332,8 +327,7 @@ export function generateAlgebraProblem(
         },
       ];
       prompt = "Which list of (input, output) pairs represents a function?";
-      hint =
-        "Look for an input assigned two different outputs. A repeated identical pair is harmless; different inputs may share an output.";
+      hint = `In each list, check the inputs ${x} and ${x + 1}: is either one paired with two different outputs? Repeating the very same pair is allowed.`;
       explanation = [
         duplicate
           ? "The repeated identical pair records the same assignment twice. It does not introduce a second output."
@@ -346,8 +340,7 @@ export function generateAlgebraProblem(
       const k = nz(6),
         b = nz(8);
       prompt = "Which rule is proportional for all real inputs x?";
-      hint =
-        "A proportional rule has one constant multiplier and gives zero when the input is zero.";
+      hint = `Put x = 0 into each rule. A proportional rule must give 0, so it cannot add ${b} or ${-b}.`;
       choices = [
         { label: `y = ${term(k)}`, correct: true },
         {
@@ -379,8 +372,8 @@ export function generateAlgebraProblem(
       answer = whole ? String(Math.floor(fee / delta) + 1) : cross;
       label = whole ? "First whole input" : "Shared input";
       hint = whole
-        ? "First find the tie point. Strictly cheaper requires moving beyond it, even when the tie is a whole number."
-        : "Set the two costs equal. The fixed fee must be balanced by the difference in rates.";
+        ? `First find the tie: ${fee} + ${low}x = ${high}x. A is strictly cheaper only for inputs after the tie.`
+        : `Set the costs equal, ${fee} + ${low}x = ${high}x, then collect the x terms on one side.`;
       explanation = [
         `Equal costs mean ${fee} + ${low}x = ${high}x, so ${fee} = ${delta}x.`,
         `The tie is at x = ${cross}. Each additional input saves ${delta} dollars under A.`,
@@ -437,8 +430,7 @@ export function generateAlgebraProblem(
             : "A level segment has the same vertical coordinate throughout.",
         },
       ];
-      hint =
-        "Follow the graph from left to right. Describe distance from home, rather than guessing the exact route.";
+      hint = `At A the graph is at ${start} meters from home. Read the height at B, then compare: y is distance from home, not the route.`;
       explanation = [
         `At 0 minutes the distance is ${start} meters; at 4 minutes it is ${end} meters.`,
         drop

@@ -188,7 +188,7 @@ function countQuestion(
       figure,
       answer: `${values.length}`,
       fraction: false,
-      hint: "Every mark (×) is one measured object. Count the marks in each column, then add the columns.",
+      hint: `Every × is one measured ${context.item}. Count the marks in each of the ${columns.length} columns, starting above ${mixedText(columns[0]![0], d)}, then add the columns.`,
       explanation: [
         `Columns: ${columns.map(([x, c]) => `${c} at ${mixedText(x, d)}`).join(", ")}.`,
         `${columns.map(([, c]) => c).join(" + ")} = ${values.length}.`,
@@ -202,7 +202,7 @@ function countQuestion(
     figure,
     answer: `${longest - shortest}`,
     fraction: false,
-    hint: "Find the rightmost mark and the leftmost mark. Subtract the shorter length from the longer one.",
+    hint: `The longest ${context.item} is the rightmost mark and the shortest is the leftmost. Read both lengths and subtract, in ${unit.many}.`,
     explanation: [
       `The longest is ${name(longest)}; the shortest is ${name(shortest)}.`,
       `${longest} − ${shortest} = ${longest - shortest}.`,

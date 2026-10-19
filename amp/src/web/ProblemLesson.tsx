@@ -4,6 +4,7 @@ import { animationModel } from "./lesson-animation/model";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { Figure } from "./Figure";
 import { MathText } from "./MathText";
+import { ScenePlayer } from "./scene/ScenePlayer";
 
 const LessonAnimation = lazy(
   () => import("./lesson-animation/LessonAnimation"),
@@ -11,7 +12,13 @@ const LessonAnimation = lazy(
 
 /** The lesson for one problem type: goal, terms, method, worked example. */
 export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
-  const animation = animationModel(lesson);
+  const figure = lesson.example.figure;
+  // A scene with a walkthrough plays it, revealed, on the example's numbers.
+  const walkthrough =
+    figure?.kind === "scene" && figure.scene.steps?.length
+      ? figure.scene
+      : null;
+  const animation = walkthrough ? null : animationModel(lesson);
   return (
     <article className="problem-lesson">
       <p className="lesson-goal">
@@ -53,12 +60,14 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         {animation?.kind === "exchange" && lesson.example.figure && (
           <Figure figure={lesson.example.figure} />
         )}
-        {animation ? (
+        {walkthrough ? (
+          <ScenePlayer scene={walkthrough} mode="lesson" />
+        ) : animation ? (
           <AnimationBoundary
             key={JSON.stringify(animation)}
             fallback={
-              animation.kind === "exchange" ? null : (
-                <Figure figure={lesson.example.figure!} />
+              animation.kind === "exchange" || !lesson.example.figure ? null : (
+                <Figure figure={lesson.example.figure} />
               )
             }
           >
@@ -90,7 +99,7 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <p className="lesson-example-answer">
           Answer:{" "}
           <strong>
-            <MathText text={lesson.example.answer} />
+            <MathText text={displayAnswer(lesson.example.answer)} />
           </strong>
         </p>
       </section>
@@ -103,3 +112,9 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
     </article>
   );
 }
+
+/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
+export const displayAnswer = (answer: string) =>
+  /^\d{4,}$/.test(answer)
+    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : answer;

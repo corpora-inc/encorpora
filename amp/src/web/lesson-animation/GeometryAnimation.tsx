@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { Text, geometryInk } from "../GeometryFigure";
+import { Text, geometryInk } from "../AngleTriangleFigure";
 import {
   arcPath,
   dir,

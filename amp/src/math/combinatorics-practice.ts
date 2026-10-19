@@ -7,6 +7,8 @@ type Case = {
   prompt: string;
   answer: Rational;
   explanation: string[];
+  /** One step for this instance: its own counts and the first move. */
+  hint: string;
   tags: string[];
 };
 
@@ -66,21 +68,6 @@ export const combinatoricsTemplates: readonly TemplateMetadata[] = [
       "Weight each payoff by its probability and add, subtracting a fixed cost for an expected net gain.",
   },
 ];
-
-const hints: Record<string, string> = {
-  "counting-principle":
-    "Every choice at one stage can be combined with every choice at each other stage. Multiply the numbers of options at the stages.",
-  "permutation-count":
-    "Fill the positions in order. The first has every option; each later position has one fewer, because nothing is used twice. Multiply.",
-  "combination-count":
-    "Count ordered selections first. Each group was counted once for every order of its members, so divide by that number of orders.",
-  "combination-probability":
-    "Every group of the stated size is equally likely. Count all groups, count the groups that meet the condition, and divide. Reduce the fraction.",
-  "independent-events-probability":
-    "Find each event's probability by counting its equally likely outcomes. For independent results, multiply. For at least one, subtract the probability of neither from 1.",
-  "expected-value":
-    "Multiply each payoff by its probability and add the products. For a net gain, subtract the cost of playing once.",
-};
 
 const gcd = (a: number, b: number): number => {
   a = Math.abs(a);
@@ -201,6 +188,7 @@ function countingCase(r: Random): Case {
         `Every option for one position can follow every arrangement of the earlier positions, so multiply ${k} factors of ${n}: ${times(Array(k).fill(n))} = ${total}.`,
         `There are ${total} different codes.`,
       ],
+      hint: `Each of the ${k} positions can be any of the ${n} ${digits ? "digits" : "letters"}, and repeats are allowed, so no position loses an option. Multiply ${k} factors of ${n}.`,
       tags: [`stages-${k}`, "repetition", digits ? "digits" : "letters"],
     };
   }
@@ -208,12 +196,13 @@ function countingCase(r: Random): Case {
     counts = Array.from({ length: k }, () => r(2, 8));
   const total = product(counts);
   const explanation: string[] = [];
-  let prompt: string, unit: string, key: string;
+  let prompt: string, unit: string, key: string, hint: string;
   if (mode === 3) {
     const path = towns.slice(0, k + 1);
     prompt = `A trip goes from ${path[0]} to ${path[k]}, passing through ${list(path.slice(1, k))}${k > 2 ? " in that order" : ""}. ${list(counts.map((c, i) => `${i ? "" : "There are "}${c} roads from ${path[i]} to ${path[i + 1]}`))}. How many different routes are possible?`;
     unit = "routes";
     key = "route";
+    hint = `Each of the ${counts[0]} roads from ${path[0]} to ${path[1]} can be followed by any road on the next leg. Multiply the road counts of all ${k} legs.`;
     explanation.push(
       `A route chooses one road for each of the ${k} legs of the trip. Any road on one leg can be followed by any road on the next.`,
     );
@@ -230,6 +219,7 @@ function countingCase(r: Random): Case {
     prompt = `${menu.intro} ${list(stages.map(([one]) => `one ${one}`))}. There are ${list(counts.map((c, i) => `${c} ${stages[i]![1]}`))} to choose from. How many different ${menu.whole} are possible?`;
     unit = menu.whole;
     key = menu.key;
+    hint = `Any of the ${counts[0]} ${stages[0]![1]} can go with any of the ${counts[1]} ${stages[1]![1]}${k > 2 ? ", and so on through every stage" : ""}. Multiply the counts: ${times(counts)}.`;
     explanation.push(
       `Every ${menu.one} combines one choice from each of ${k} stages, and every choice at one stage can be combined with every choice at the others.`,
     );
@@ -248,6 +238,7 @@ function countingCase(r: Random): Case {
     prompt,
     answer: q(total),
     explanation,
+    hint,
     tags: [`stages-${k}`, "distinct-stages", key],
   };
 }
@@ -256,7 +247,12 @@ const offices = ["president", "vice president", "secretary", "treasurer"];
 const places = ["first", "second", "third"];
 function permutationCase(r: Random): Case {
   const mode = r(0, 3);
-  let n: number, k: number, prompt: string, reason: string, positions: string;
+  let n: number,
+    k: number,
+    prompt: string,
+    reason: string,
+    positions: string,
+    hint: string;
   if (mode === 0) {
     n = r(5, 12);
     k = r(2, 4);
@@ -264,6 +260,7 @@ function permutationCase(r: Random): Case {
     prompt = `A club with ${n} members will choose ${list(slots.map((s) => `a ${s}`))}. No member can hold more than one office. In how many different ways can the offices be filled?`;
     reason =
       "Order matters: swapping two members between offices gives a different result.";
+    hint = `Order matters here. The ${slots[0]} can be any of the ${n} members; then how many members are left for the ${slots[1]}?`;
     positions = `The ${slots[0]} can be any of the ${n} members. After that, ${n - 1} members remain for the ${slots[1]}${slots
       .slice(2)
       .map((s, i) => `, then ${n - 2 - i} for the ${s}`)
@@ -274,6 +271,7 @@ function permutationCase(r: Random): Case {
     prompt = `${cap(count(n))} runners finish a race with no ties. In how many different ways can ${list(places.slice(0, k))} places be awarded?`;
     reason =
       "Order matters: the same runners in different places give a different result.";
+    hint = `Order matters here. First place can go to any of the ${n} runners; then how many runners are left for second place?`;
     positions = `First place can go to any of the ${n} runners. After that, ${n - 1} runners remain for second place${k > 2 ? `, then ${n - 2} for third place` : ""}.`;
   } else if (mode === 2) {
     n = r(3, 8);
@@ -281,6 +279,7 @@ function permutationCase(r: Random): Case {
     prompt = `In how many different orders can ${n} different books be arranged in a row on a shelf?`;
     reason =
       "Order matters: the same books in a different left-to-right order form a different arrangement.";
+    hint = `The leftmost spot can hold any of the ${n} books, and each later spot has one book fewer. Multiply down to 1.`;
     positions = `The leftmost position can hold any of the ${n} books. Each later position has one fewer book left, down to 1 book for the last position.`;
   } else {
     n = r(4, 9);
@@ -288,6 +287,7 @@ function permutationCase(r: Random): Case {
     prompt = `${cap(count(k))} of ${n} different photos will be hung in a row of ${k} frames, from left to right. How many different arrangements are possible?`;
     reason =
       "Order matters: the same photos in different frames give a different arrangement, and no photo can fill two frames.";
+    hint = `The first frame can hold any of the ${n} photos, and each of the other frames has one photo fewer. Multiply ${k} decreasing factors.`;
     positions = `The first frame can hold any of the ${n} photos. Each later frame has one fewer photo left, so the ${k} frames have ${list(falling(n, k).map(String))} options.`;
   }
   const factors = falling(n, k),
@@ -303,6 +303,7 @@ function permutationCase(r: Random): Case {
         ? `This product of every whole number from ${n} down to 1 is written ${n}! and read “${n} factorial”. There are ${total} orders.`
         : `This is the product of ${k} decreasing factors starting at ${n}. There are ${total} ways.`,
     ],
+    hint,
     tags: [
       ["offices", "race", "shelf", "frames"][mode]!,
       k === n ? "full-arrangement" : "partial-arrangement",
@@ -349,6 +350,7 @@ function combinationCase(r: Random): Case {
       `Each ${group} appears once for every order of its ${k} ${mode === 3 ? "people" : item}: ${times(orders)} = ${bottom} times.`,
       `Divide to count each ${group} once: ${top} ÷ ${bottom} = ${total}.`,
     ],
+    hint: `Order does not matter. Count ordered picks of ${k} from ${n} first, ${times(ordered)}; each ${group} is counted once for every order of its ${k} ${mode === 3 ? "people" : item}.`,
     tags: [
       ["committee", "toppings", "books", "handshakes"][mode]!,
       `size-${k}`,
@@ -414,6 +416,7 @@ function selectionCase(r: Random): Case {
     prompt,
     answer,
     explanation,
+    hint: `Every group of ${size} is equally likely. Count all groups of ${size} from the ${a + b} ${thing}, then count the groups where ${condition}.`,
     tags: [
       club ? "club" : "marbles",
       k === size ? "all" : k === 0 ? "none" : "mixed",
@@ -562,10 +565,18 @@ function independentCase(r: Random): Case {
     }
   }
   explanation.push(`The probability is ${shown(answer)}.`);
+  const counts = `The ${one.name} has ${m} equally likely results and the ${two.name} has ${n}.`;
+  const hint =
+    question === 0
+      ? `${counts} Find the probability that ${A.text}, and that ${B.text}; independent results multiply.`
+      : question === 1
+        ? `${counts} Find the probability that ${A.not}, and that ${B.not}; independent results multiply.`
+        : `${counts} “At least one” is everything except “neither”: find the probability that neither happens, then subtract it from 1.`;
   return {
     prompt,
     answer,
     explanation,
+    hint,
     tags: [
       ["both", "neither", "at-least-one"][question]!,
       ["cube-spinner", "cube-coin", "spinner-coin"][pair]!,
@@ -635,6 +646,7 @@ function expectedCase(r: Random): Case {
     prompt,
     answer,
     explanation,
+    hint: `Each of the ${n} equal sections has probability 1/${n}. Multiply each payoff by its probability and add${net ? `, then subtract the cost of ${amount(cost)} once` : ""}.`,
     tags: [
       net ? "net" : "payout",
       ...(net
@@ -695,7 +707,7 @@ export function combinatoricsPrintCase(
     },
     answer: answerText(c.answer),
     explanation: c.explanation,
-    hint: hints[id]!,
+    hint: c.hint,
   };
   // The prompt states every given, so equal prompts are the same case.
   return { problem, tags: c.tags, caseKey: c.prompt };

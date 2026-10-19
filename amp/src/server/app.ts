@@ -453,7 +453,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
       if (!problem) throw new ApiError(404, "Problem not found");
       problem.hintViewed = true;
       await tx.saveProblem(problem);
-      return { hint: problem.hint };
+      return {
+        hint: problem.hint,
+        ...(problem.hintCue ? { cue: problem.hintCue } : {}),
+      };
     });
   });
   app.post("/api/v1/learners/:learnerId/lesson-support", async (request) => {

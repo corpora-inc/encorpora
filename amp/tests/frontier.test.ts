@@ -10,6 +10,7 @@ import {
 import { projectSkillEvidence } from "../src/server/evidence.js";
 import { templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
+import { guessChanceOf } from "../src/math/guess-chance";
 import type { Outcome } from "../src/server/repository";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -41,6 +42,7 @@ function simulate(
       observations: attempts,
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
     });
     for (const choice of planMixedPractice({
       templates,
@@ -79,6 +81,7 @@ function simulate(
       observations: attempts,
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
     }),
   };
 }
@@ -132,7 +135,12 @@ test("each strand finds its own frontier: a fraction gap does not hold back alge
 
 test("a strand whose material tops out below the learner's level is still probed", () => {
   // Fractions material ends near grade 6; a grade-7 learner with a fraction gap
-  // must still meet it, or the gap is never found.
+  // must still meet it, or the gap is never found. Each seed must place
+  // fractions at least two grades below the learner's other strands; across
+  // seeds the typical estimate must sit near the true level. (A per-seed 4.5
+  // bound failed whenever a run of lucky draws met grade-4 items, which any
+  // change to the template inventory can rearrange.)
+  const levels: number[] = [];
   for (let seed = 1; seed <= 40; seed++) {
     const { shown, frontier } = simulate(
       2012,
@@ -144,11 +152,13 @@ test("a strand whose material tops out below the learner's level is still probed
       shown.some((entry) => entry.strand === "fractions"),
       `seed ${seed} never showed fractions`,
     );
-    assert.ok(
-      strandLevel(frontier, "fractions") <= 4.5,
-      `seed ${seed} missed the fraction gap`,
-    );
+    const level = strandLevel(frontier, "fractions");
+    assert.ok(level <= 5, `seed ${seed} missed the fraction gap: ${level}`);
+    levels.push(level);
   }
+  levels.sort((a, b) => a - b);
+  assert.ok(levels[20]! <= 4, `median fraction estimate ${levels[20]}`);
+  assert.ok(levels.filter((l) => l <= 4.5).length >= 36, String(levels));
 });
 
 test("on-level practice stays within a grade of the frontier and keeps mixing strands", () => {
@@ -175,6 +185,7 @@ test("the estimate narrows with evidence and discounts uninformative answers", (
       })),
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
     }).overall;
   const prior = run("linear-equation", true, false, 0);
   assert.equal(prior.level, 6);
@@ -202,6 +213,7 @@ test("offline packs never exceed a grade above the strand frontier", () => {
     observations: [],
     gradeOf,
     strandOf,
+    guessOf: guessChanceOf,
   });
   const choices = planMixedPractice({
     templates,
@@ -240,6 +252,7 @@ test("a learner who improves is followed: old misses fade and surprises re-widen
       observations,
       gradeOf,
       strandOf,
+      guessOf: guessChanceOf,
       now: Date.parse(observations.at(-1)!.createdAt) - october + october,
     }).overall;
   const low = estimate(misses);

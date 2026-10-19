@@ -11,7 +11,7 @@ const lineName = z.string().regex(/^[a-z]$/);
 export const sweep = (from: number, to: number) =>
   (((to - from) % 360) + 360) % 360;
 
-export const geometryFigureSchemas = [
+export const angleFigureSchemas = [
   z
     .object({
       kind: z.literal("angle-rays"),
@@ -124,8 +124,8 @@ export const geometryFigureSchemas = [
         : ["parallel-base", "through-apex", "off-apex"].includes(f.plane),
     ),
 ] as const;
-export const geometryFigureSchema = z.discriminatedUnion(
+export const angleFigureSchema = z.discriminatedUnion(
   "kind",
-  geometryFigureSchemas,
+  angleFigureSchemas,
 );
-export type GeometryFigure = z.infer<typeof geometryFigureSchema>;
+export type AngleFigure = z.infer<typeof angleFigureSchema>;

@@ -1,5 +1,5 @@
 import React from "react";
-import { GeometryFigure, Text, geometryInk } from "../web/GeometryFigure";
+import { AngleTriangleFigure, Text, geometryInk } from "../web/AngleTriangleFigure";
 import {
   angleLabel,
   arcPath,
@@ -59,7 +59,7 @@ function AnglePairs() {
     >
       <div style={panels}>
         <div style={panel}>
-          <GeometryFigure
+          <AngleTriangleFigure
             figure={{
               kind: "angle-rays",
               rays: [0, 62, 180],
@@ -74,7 +74,7 @@ function AnglePairs() {
           <p style={caption}>Linear pair: 62° + 118° = 180°</p>
         </div>
         <div style={panel}>
-          <GeometryFigure
+          <AngleTriangleFigure
             figure={{
               kind: "angle-rays",
               rays: [0, 35, 90],
@@ -90,7 +90,7 @@ function AnglePairs() {
           <p style={caption}>Complementary: 35° + 55° = 90°</p>
         </div>
         <div style={panel}>
-          <GeometryFigure
+          <AngleTriangleFigure
             figure={{
               kind: "angle-rays",
               rays: [0, 50, 180, 230],

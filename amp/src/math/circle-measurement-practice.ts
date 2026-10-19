@@ -117,8 +117,12 @@ export function circleMeasurementPrintCase(
         : `Check the defining ratio: $${pi(full)} \\div ${tex(diameter)} = \\pi$. The circumference divided by the diameter is $\\pi$.`,
     ];
     hint = isArea
-      ? "The coefficient a is the number multiplying pi. Find the radius in centimeters, then square that number. Halve a given diameter first."
-      : "The coefficient a is the number multiplying pi. Circumference equals pi times the diameter. Use the diameter in centimeters, doubling a given radius first.";
+      ? isRadius
+        ? `Area = π × r × r, and the radius is ${plain(given)} cm. The coefficient a is the number multiplying π: square the radius.`
+        : `Area = π × r × r, and r is half the diameter. Halve ${plain(given)} cm first, then square it.`
+      : isRadius
+        ? `Circumference = π × diameter. The radius is ${plain(given)} cm, so first find the diameter, twice the radius.`
+        : `Circumference = π × diameter, and the diameter is ${plain(given)} cm. The coefficient a is the number multiplying π.`;
   } else {
     const comparison = angle < 180 ? "<" : angle === 180 ? "=" : ">";
     const half = divide(full, q(2));
@@ -130,7 +134,7 @@ export function circleMeasurementPrintCase(
       `The coefficient is the number multiplying $\\pi$, so $a = ${tex(coefficient)}$.`,
       `Check against half the circle: $${angle} ${comparison} 180$ and $${tex(coefficient)} ${comparison} ${tex(half)}$. Both comparisons agree because the measure scales with the central angle.`,
     ];
-    hint = `Find the radius first. Divide the central angle by 360 to find the fraction of a full circle, then multiply that fraction by the ${isArc ? "circumference" : "circle's area"}. The coefficient a is the number multiplying pi.`;
+    hint = `Find what fraction of a full turn ${angle} degrees is. Then take that fraction of the full ${isArc ? "circumference" : "area"}, found from the ${dimension} of ${plain(given)} cm as a multiple of π.`;
   }
   const tags = [
     dimension,

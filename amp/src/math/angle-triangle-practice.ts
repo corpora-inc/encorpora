@@ -1325,6 +1325,42 @@ const builders: Record<string, (r: Random) => Case> = {
   "cross-section-area": sectionAreaCase,
 };
 
+/** The first explanation step that works from this problem's stated numbers
+ * without stating the answer; otherwise the template's teaching step with the givens. */
+function instanceHint(id: string, c: Case): string {
+  const values = (text: string): string[] =>
+    text.replaceAll("−", "-").match(/(?<![\w.])-?\d+(?:\.\d+)?/g) ?? [];
+  const given = new Set(values(c.prompt));
+  const list = (v: string[]) =>
+    v.length > 1 ? `${v.slice(0, -1).join(", ")} and ${v.at(-1)}` : v[0]!;
+  switch (id) {
+    case "parallel-lines-angle":
+      return `Name the marked pair first: corresponding, alternate interior, or same-side interior angles? Equal pairs share the ${list([...given].filter((v) => !/^[a-z]$/.test(v)))}° measure; same-side interior angles add to 180°.`;
+    case "triangle-conditions":
+      return `Test the given parts, ${list([...given])}: do two angles leave room for a third, and are the two shorter sides together longer than the longest? If a triangle exists, ask whether these parts fix its size and shape.`;
+    case "triangle-side-test": {
+      const longest = /longest length is (\d+)/.exec(c.explanation[0]!)![1]!;
+      return `Every set has the same longest length, ${longest}. In each set, add the two shorter lengths and compare the sum with ${longest}.`;
+    }
+    case "cross-section-shape":
+      return `Each face the plane crosses adds one straight side to the cross-section. Decide which faces it crosses, then read each side's length from the dimensions ${list([...given])}.`;
+  }
+  const answer: string | null =
+    c.response.kind === "choice" ? null : c.answer;
+  for (const step of c.explanation) {
+    const named = values(step);
+    if (
+      named.some((v) => given.has(v)) &&
+      !(answer !== null && named.includes(answer) && !given.has(answer))
+    )
+      return step;
+  }
+  const stated = [...given].filter((v) => !c.explanation[0]!.includes(v));
+  return stated.length
+    ? `${c.explanation[0]} Use the given ${stated.length === 1 ? "value" : "values"} ${stated.join(" and ")}.`
+    : hints[id]!;
+}
+
 export function angleTrianglePrintCase(
   id: string,
   seed: string,
@@ -1349,7 +1385,7 @@ export function angleTrianglePrintCase(
     },
     answer: c.answer,
     explanation: c.explanation,
-    hint: hints[id]!,
+    hint: instanceHint(id, c),
     ...(c.choiceFeedback ? { choiceFeedback: c.choiceFeedback } : {}),
   };
   return {
