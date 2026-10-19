@@ -8,6 +8,7 @@ import {
   funnelPropsSchemas,
 } from "../../analytics/events";
 import { storedTrial } from "./pending-trial";
+import { nativeRuntime } from "../native-runtime";
 
 /**
  * First-party funnel analytics. `track` only appends to an in-memory buffer;
@@ -57,6 +58,9 @@ export function track<E extends ClientEvent>(
     ? [props?: FunnelProps<E>]
     : [props: FunnelProps<E>]
 ): void {
+  // The native shell talks to AMP only through its own session; the web
+  // funnel is measured on the web.
+  if (nativeRuntime) return;
   try {
     const parsed = funnelPropsSchemas[event].safeParse(props ?? {});
     if (!parsed.success) {
