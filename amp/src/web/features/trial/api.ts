@@ -1,7 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 import { z } from "zod";
 import {
-  figureCapabilityIds,
+  figureCapabilities,
   publicProblemSchema,
 } from "../../../math/contracts";
 import { annualOfferSchema } from "../../../billing/stripe/enrollment-contracts";
@@ -164,7 +164,7 @@ export async function nextProblem(session: TrialSession) {
         body: {
           count: 1,
           responseCapabilities: ["single-choice-v1"],
-          figureCapabilities: [...figureCapabilityIds],
+          figureCapabilities: [...figureCapabilities],
         },
       },
     );

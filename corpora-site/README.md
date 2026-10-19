@@ -79,3 +79,5 @@ A funding entry may include a `page` object to publish `/esa/<slug>/`. Entries w
 - Optional `restrictions` and `questions` (each with `question` and `answer`).
 
 Use program-specific facts and distinguish tax benefits from reimbursement or direct payment. Do not publish a purchase recommendation while eligibility is unresolved. Omit unsupported outcomes and approval claims. All text is rendered as plain text, not HTML. Program pages include canonical URLs, descriptive titles, WebPage and breadcrumb structured data, and sitemap entries. This makes the information accessible to readers and crawlers; it does not guarantee indexing or search placement.
+
+The funding directory groups program cards by state and displays the number of published parent guides separately from AMP purchase-status text. Inclusion in the directory does not imply vendor approval. Each card repeats its guide’s purchase status so readers see unresolved eligibility before following a purchase route. State navigation and program links work without JavaScript.

@@ -1,5 +1,9 @@
+import { earlyDataLessons } from "./early-data-lessons";
+import type { DataIllustration } from "./data-display-illustrations";
+import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
+import { comparisonLessons } from "./comparison-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -33,6 +37,16 @@ export interface Lesson {
       | "volume-layers"
       | "prism-composite"
       | "ordered-pair-path"
+      | "comparison-pairing"
+      | "comparison-number-path"
+      | "comparison-place-chart"
+      | "large-place-value-chart"
+      | DataIllustration
+      | "counting-tree"
+      | "permutation-slots"
+      | "combination-orders"
+      | "independent-grid"
+      | "expected-spinner"
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -529,7 +543,10 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...earlyDataLessons,
   ...radicalLessons,
+  ...comparisonLessons,
+  ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,

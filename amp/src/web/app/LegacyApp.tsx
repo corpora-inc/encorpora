@@ -44,7 +44,7 @@ import type { FractionBook } from "../../../books/fraction-field-guide/schema";
 import { product } from "../../product";
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import {
-  figureCapabilityIds,
+  figureCapabilities,
   type PublicProblem,
   type TemplateMetadata,
 } from "../../math/contracts";
@@ -785,7 +785,7 @@ function LegacyScreen() {
       ...(templateId ? { templateId } : {}),
       count: 1,
       responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: [...figureCapabilityIds],
+      figureCapabilities: [...figureCapabilities],
     });
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts

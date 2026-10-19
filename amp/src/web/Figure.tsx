@@ -2,7 +2,9 @@ import { MeasurementFigure } from "./MeasurementFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
+import { ComparisonFigure } from "./ComparisonFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
@@ -11,6 +13,10 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "sort-shapes":
+    case "picture-graph":
+    case "scaled-bar-graph":
+      return <DataDisplayFigure figure={figure} />;
     case "cube-prism":
     case "box-prism":
     case "composite-prism":
@@ -25,6 +31,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "counter-rows":
+    case "base-ten-pair":
+      return <ComparisonFigure figure={figure} />;
     case "coordinate-plane":
     case "bar-chart":
     case "clock":

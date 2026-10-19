@@ -6,7 +6,7 @@ import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
 import {
-  figureCapabilitiesSchema,
+  figureCapabilities,
   generatedProblemSchema,
   type PublicProblem,
 } from "../math/contracts";
@@ -318,7 +318,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
           .array(z.literal("single-choice-v1"))
           .max(1)
           .default([]),
-        figureCapabilities: figureCapabilitiesSchema,
+        figureCapabilities: z
+          .array(z.enum(figureCapabilities))
+          .max(figureCapabilities.length)
+          .default([]),
       })
       .strict()
       .parse(request.body ?? {});

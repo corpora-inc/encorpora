@@ -138,7 +138,7 @@ export function generateMeasurementProblem(
         hint =
           "Area equals one side multiplied by the perpendicular side. Find the missing factor.";
         explanation = [
-          `${width} × ? = ${area}.`,
+          `${width} × □ = ${area}.`,
           `${area} ÷ ${width} = ${height}, so the missing side is ${height} cm.`,
           `Check: ${width} cm × ${height} cm covers ${area} square cm.`,
         ];

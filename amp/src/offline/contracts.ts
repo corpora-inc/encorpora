@@ -1,14 +1,14 @@
 import { z } from "zod";
-import {
-  figureCapabilitiesSchema,
-  publicProblemSchema,
-} from "../math/contracts.js";
+import { figureCapabilities, publicProblemSchema } from "../math/contracts.js";
 export const capabilitySchema = z.strictObject({
   responseCapabilities: z
     .array(z.literal("single-choice-v1"))
     .max(1)
     .default([]),
-  figureCapabilities: figureCapabilitiesSchema,
+  figureCapabilities: z
+    .array(z.enum(figureCapabilities))
+    .max(figureCapabilities.length)
+    .default([]),
 });
 export const issueSchema = capabilitySchema.extend({
   requestId: z.string().uuid(),

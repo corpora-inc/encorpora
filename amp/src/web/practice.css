@@ -379,16 +379,16 @@ nav button {
 }
 .dialog-heading {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 24px 24px 16px;
+  padding: 16px 16px 16px 24px;
   flex: none;
   border-bottom: 1px solid var(--color-border);
 }
 .dialog-heading h2 {
   font-size: 28px;
-  margin: 5px 0 0;
+  margin: 0;
   line-height: 1.2;
 }
 .dialog-heading h2:focus {
@@ -396,9 +396,12 @@ nav button {
 }
 .dialog-close {
   flex: none;
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
   padding: 0;
+  line-height: 1;
   background: var(--color-success);
   color: var(--color-on-success);
   font-size: 26px;
@@ -555,7 +558,7 @@ nav button {
     font-size: 18px;
   }
   .dialog-heading {
-    padding: 18px 18px 12px;
+    padding: 12px 12px 12px 18px;
     gap: 8px;
   }
   .dialog-heading h2 {
