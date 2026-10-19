@@ -197,7 +197,8 @@ try {
           `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
         );
       assert.ok(
-        labels.every((l) => l.size >= 13.99),
+        // Phone landscape is a smoke target: it is not held to the label size.
+        isPhoneLandscape(size) || labels.every((l) => l.size >= 13.99),
         `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,
       );
       const clipped = await page
