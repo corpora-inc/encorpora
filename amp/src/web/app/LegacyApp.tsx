@@ -1068,14 +1068,19 @@ function LegacyScreen() {
             )}
           {token && !familyOpen && (
             <details className="account-menu">
-              <summary aria-label="Family menu">Family</summary>
+              <summary
+                className="account-menu-trigger"
+                aria-label="Family menu"
+              >
+                Family
+              </summary>
               <div className="account-menu-content">
-                <button className="text-button" onClick={openFamily}>
+                <button className="account-menu-item" onClick={openFamily}>
                   Manage family
                 </button>
                 {learner && learner.birthYear != null && (
                   <button
-                    className="text-button"
+                    className="account-menu-item"
                     disabled={busy}
                     onClick={(event) => {
                       event.currentTarget
@@ -1094,7 +1099,7 @@ function LegacyScreen() {
                 )}
                 {learningAllowed && !nativeRuntime && (
                   <button
-                    className="text-button"
+                    className="account-menu-item"
                     disabled={busy}
                     onClick={(event) => {
                       event.currentTarget
@@ -1109,7 +1114,7 @@ function LegacyScreen() {
                 )}
                 {token && authMode && authMode !== "development" && (
                   <button
-                    className="text-button"
+                    className="account-menu-item"
                     onClick={() => {
                       clearPurchaseReturn();
                       pendingPurchaseReturn.current = null;
