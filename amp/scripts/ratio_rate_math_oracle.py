@@ -52,11 +52,11 @@ def proper(text):
 UNIT_RATE = [
     (r'A printer prints (\d+) pages in (\d+) minutes\. At this rate, how many pages does it print per minute\?', 'Pages per minute', lambda m: number(m[1]) / number(m[2])),
     (r'A car travels (\d+) miles on (\d+) gallons of gas\. How many miles does the car travel per gallon\?', 'Miles per gallon', lambda m: number(m[1]) / number(m[2])),
-    (NAME + r' earns \$' + MONEY + r' for (\d+) hours of babysitting\. How many dollars does \1 earn per hour\?', 'Dollars per hour', lambda m: number(m[2]) / number(m[3])),
-    (r'A (\d+)-pound bag of apples costs \$' + MONEY + r'\. What is the price per pound, in dollars\?', 'Dollars per pound', lambda m: number(m[2]) / number(m[1])),
+    (NAME + r' earns ' + MONEY + r' dollars? for (\d+) hours of babysitting\. How many dollars does \1 earn per hour\?', 'Dollars per hour', lambda m: number(m[2]) / number(m[3])),
+    (r'A (\d+)-pound bag of apples costs ' + MONEY + r' dollars?\. What is the price per pound, in dollars\?', 'Dollars per pound', lambda m: number(m[2]) / number(m[1])),
     (r'A baker uses (\d+) cups of flour to make (\d+) loaves of bread\. How many cups of flour does each loaf use\?', 'Cups of flour per loaf', lambda m: number(m[1]) / number(m[2])),
     (r'A runner runs (\d+) miles in (\d+) minutes at a steady pace\. How many minutes does it take the runner to run 1 mile\?', 'Minutes per mile', lambda m: number(m[2]) / number(m[1])),
-    (r'At a school store, (\d+) pencils cost \$(\d+)\. At this price, how many pencils can be bought for \$1\?', 'Pencils per dollar', lambda m: number(m[1]) / number(m[2])),
+    (r'At a school store, (\d+) pencils cost (\d+) dollars?\. At this price, how many pencils can be bought for 1 dollar\?', 'Pencils per dollar', lambda m: number(m[1]) / number(m[2])),
 ]
 
 
@@ -67,7 +67,7 @@ def solve_unit_rate(public):
             require(public['response']['label'] == label, 'Response label does not name the rate')
             require(all(int(x) >= 2 for x in re.findall(r'(?<![\d.$])\d+(?![\d.])', public['prompt']) if x != '1'), 'Quantities below 2 units')
             answer = solve(m)
-            if '$' in public['prompt'] and label.startswith('Dollars'):
+            if 'dollar' in public['prompt'] and label.startswith('Dollars'):
                 require((answer * 100).denominator == 1, 'Money rate is not whole cents')
             return answer
     raise ValueError('Unrecognized unit-rate prompt: ' + public['prompt'])
@@ -101,7 +101,7 @@ def solve_fraction_rate(public):
         check_line(fig, 'Sugar (cups)', 'Flour (cups)', a, c)
         require(public['response']['label'] == 'Cups of sugar per cup of flour', 'Label')
         return a / c
-    m = re.fullmatch(NAME + r' buys ' + FRACTION + r' pound of cheese for \$(\d+)\. What is the price of 1 pound of cheese, in dollars\?', p)
+    m = re.fullmatch(NAME + r' buys ' + FRACTION + r' pound of cheese for (\d+) dollars?\. What is the price of 1 pound of cheese, in dollars\?', p)
     if m:
         c, a = proper(m[2]), number(m[3])
         check_line(fig, 'Cost ($)', 'Pounds', a, c)
@@ -137,7 +137,7 @@ def parse_pack(text, item):
 
 
 def solve_better_buy(public):
-    m = re.fullmatch(r'Store A sells (.+?) for \$' + MONEY + r'\. Store B sells (.+?) for \$' + MONEY + r'\. Which is the better buy, with the lower price per (granola bar|juice box|pencil|ounce)\?', public['prompt'])
+    m = re.fullmatch(r'Store A sells (.+?) for ' + MONEY + r' dollars\. Store B sells (.+?) for ' + MONEY + r' dollars\. Which is the better buy, with the lower price per (granola bar|juice box|pencil|ounce)\?', public['prompt'])
     require(m is not None, 'Unrecognized better-buy prompt')
     item = m[5]
     na, nb = parse_pack(m[1], item), parse_pack(m[3], item)
@@ -200,7 +200,7 @@ def solve_ratio_table(public):
 
 LINES = {
     'A train travels at a constant speed. The double number line shows its distance and time.': ('Miles', 'Hours', r'How many miles does the train travel in (\d+) (hour|hours)\?', r'How many hours does it take the train to travel (\d+) miles\?', 'Miles', 'Hours'),
-    'Grapes cost the same amount for every pound. The double number line shows cost and weight.': ('Cost ($)', 'Pounds', r'How many dollars (do|does) (\d+) (pound|pounds) of grapes cost\?', r'How many pounds of grapes cost \$(\d+)\?', 'Dollars', 'Pounds'),
+    'Grapes cost the same amount for every pound. The double number line shows cost and weight.': ('Cost ($)', 'Pounds', r'How many dollars (do|does) (\d+) (pound|pounds) of grapes cost\?', r'How many pounds of grapes cost (\d+) dollars?\?', 'Dollars', 'Pounds'),
     'Jo reads at a steady pace. The double number line shows pages read and minutes.': ('Pages', 'Minutes', r'How many pages does Jo read in (\d+) (minute|minutes)\?', r'How many minutes does it take Jo to read (\d+) pages\?', 'Pages', 'Minutes'),
     'A rice recipe uses the same ratio of water to rice in every batch. The double number line shows cups of each.': ('Water (cups)', 'Rice (cups)', r'How many cups of water go with (\d+) (cup|cups) of rice\?', r'How many cups of rice go with (\d+) cups of water\?', 'Cups of water', 'Cups of rice'),
 }
@@ -408,7 +408,7 @@ def review_problem(problem):
     prompt = public['prompt']
     if template == 'unit-rate':
         nums = [number(x) for x in re.findall(r'\d+(?:\.\d\d)?', prompt) if x != '1']
-        m = re.search(r': \$?([\d.]+) ÷ (\d+) = ', joined)
+        m = re.search(r': ([\d.]+)(?: dollars?)? ÷ (\d+) = ', joined)
         require(m is not None and number(m[1]) / number(m[2]) == solved and {number(m[1]), number(m[2])} <= set(nums), 'Division must use the given quantities in the asked order')
     elif template == 'fraction-unit-rate':
         m = re.search(r': ' + FRACTION + r' ÷ ' + FRACTION + r'\.', steps[0])
@@ -454,7 +454,7 @@ def story_breadth(prompts):
 
 
 WORKSHEET_BREADTH = {
-    'unit-rate': lambda answers, prompts: all(any(k in p for p in prompts) for k in ('runner', 'pencils', 'baker', 'printer', 'car', 'babysitting', 'apples')) and any('$' in p and a.denominator > 1 for a, p in zip(answers, prompts)) and any('baker' in p and a.denominator > 1 for a, p in zip(answers, prompts)),
+    'unit-rate': lambda answers, prompts: all(any(k in p for p in prompts) for k in ('runner', 'pencils', 'baker', 'printer', 'car', 'babysitting', 'apples')) and any('dollar' in p and a.denominator > 1 for a, p in zip(answers, prompts)) and any('baker' in p and a.denominator > 1 for a, p in zip(answers, prompts)),
     'better-buy': lambda answers, prompts: len({a for a in answers}) == 3 and any('cereal' in p for p in prompts),
     'ratio-table-missing': lambda answers, prompts: len({p for p in prompts}) == 5,
     'double-number-line-missing': lambda answers, prompts: any('How many hours' in p or 'How many pounds' in p or 'How many minutes' in p or 'cups of rice go' in p for p in prompts) and len({p.split('.')[0] for p in prompts}) == 4,
@@ -594,11 +594,11 @@ def review_ratio_rate_fixtures():
     walk = {'kind': 'double-number-line', 'top': {'label': 'Miles', 'denominator': 2, 'numerators': [0, 1, None]}, 'bottom': {'label': 'Hours', 'denominator': 4, 'numerators': [0, 1, 4]}}
     good = [
         (case('unit-rate', 'A printer prints 132 pages in 6 minutes. At this rate, how many pages does it print per minute?', label='Pages per minute'), Fraction(22)),
-        (case('unit-rate', 'Ana earns $67.50 for 5 hours of babysitting. How many dollars does Ana earn per hour?', label='Dollars per hour'), Fraction(27, 2)),
+        (case('unit-rate', 'Ana earns 67.50 dollars for 5 hours of babysitting. How many dollars does Ana earn per hour?', label='Dollars per hour'), Fraction(27, 2)),
         (case('unit-rate', 'A runner runs 4 miles in 36 minutes at a steady pace. How many minutes does it take the runner to run 1 mile?', label='Minutes per mile'), Fraction(9)),
         (case('unit-rate', 'A baker uses 9 cups of flour to make 4 loaves of bread. How many cups of flour does each loaf use?', label='Cups of flour per loaf'), Fraction(9, 4)),
-        (case('better-buy', 'Store A sells a pack of 6 granola bars for $4.50. Store B sells a pack of 8 granola bars for $5.60. Which is the better buy, with the lower price per granola bar?', options=['Store A', 'Store B', 'The same price per granola bar']), 'option-b'),
-        (case('better-buy', 'Store A sells an 8-ounce box of cereal for $2.00. Store B sells a 12-ounce box of cereal for $3.00. Which is the better buy, with the lower price per ounce?', options=['Store A', 'Store B', 'The same price per ounce']), 'option-c'),
+        (case('better-buy', 'Store A sells a pack of 6 granola bars for 4.50 dollars. Store B sells a pack of 8 granola bars for 5.60 dollars. Which is the better buy, with the lower price per granola bar?', options=['Store A', 'Store B', 'The same price per granola bar']), 'option-b'),
+        (case('better-buy', 'Store A sells an 8-ounce box of cereal for 2.00 dollars. Store B sells a 12-ounce box of cereal for 3.00 dollars. Which is the better buy, with the lower price per ounce?', options=['Store A', 'Store B', 'The same price per ounce']), 'option-c'),
         (case('ratio-table-missing', 'The table shows equivalent ratios of flour to sugar, in cups. What number belongs in the cell with the question mark?', table, 'Missing number'), Fraction(21)),
         (case('double-number-line-missing', 'A train travels at a constant speed. The double number line shows its distance and time. How many miles does the train travel in 5 hours?', line, 'Miles'), Fraction(75)),
         (case('fraction-unit-rate', 'Ana walks 1/2 mile in 1/4 hour. At this rate, how many miles does Ana walk in 1 hour?', walk, 'Miles per hour'), Fraction(2)),
@@ -612,8 +612,8 @@ def review_ratio_rate_fixtures():
     bad = [
         case('unit-rate', 'A printer prints 132 pages in 6 minutes. At this rate, how many minutes does it take per page?', label='Pages per minute'),
         case('unit-rate', 'A baker uses 9 cups of flour to make 4 loaves of bread. How many cups of flour does each loaf use?', label='Pages per minute'),
-        case('better-buy', 'Store A sells a 8-ounce box of cereal for $2.00. Store B sells a 12-ounce box of cereal for $3.00. Which is the better buy, with the lower price per ounce?', options=['Store A', 'Store B', 'The same price per ounce']),
-        case('better-buy', 'Store A sells a pack of 6 granola bars for $4.50. Store B sells a pack of 6 granola bars for $5.60. Which is the better buy, with the lower price per granola bar?', options=['Store A', 'Store B', 'The same price per granola bar']),
+        case('better-buy', 'Store A sells a 8-ounce box of cereal for 2.00 dollars. Store B sells a 12-ounce box of cereal for 3.00 dollars. Which is the better buy, with the lower price per ounce?', options=['Store A', 'Store B', 'The same price per ounce']),
+        case('better-buy', 'Store A sells a pack of 6 granola bars for 4.50 dollars. Store B sells a pack of 6 granola bars for 5.60 dollars. Which is the better buy, with the lower price per granola bar?', options=['Store A', 'Store B', 'The same price per granola bar']),
         case('ratio-table-missing', 'The table shows equivalent ratios of flour to sugar, in cups. What number belongs in the cell with the question mark?', bad_table, 'Missing number'),
         case('double-number-line-missing', 'A train travels at a constant speed. The double number line shows its distance and time. How many miles does the train travel in 5 hours?', bad_line, 'Miles'),
         case('fraction-unit-rate', 'Ana walks 2/4 mile in 1/4 hour. At this rate, how many miles does Ana walk in 1 hour?', walk, 'Miles per hour'),

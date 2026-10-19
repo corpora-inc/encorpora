@@ -1,8 +1,15 @@
 import { RatioRateIllustration } from "./RatioRateIllustration";
+import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
+import { EquationIllustration } from "./EquationIllustration";
+import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
+import { DecimalIllustration } from "./DecimalIllustration";
+import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { AddSubtractIllustration } from "./AddSubtractIllustration";
+import { FactsIllustration } from "./FactsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -40,6 +47,24 @@ export function LessonIllustration({
   )
     return <RatioRateIllustration kind={kind} />;
   if (
+    kind === "pattern-rule-steps" ||
+    kind === "related-patterns-graph" ||
+    kind === "dependent-variable-graph" ||
+    kind === "compare-functions-graph" ||
+    kind === "linear-nonlinear-graph"
+  )
+    return <PatternFunctionIllustration kind={kind} />;
+  if (
+    kind === "balance-remove" ||
+    kind === "balance-split" ||
+    kind === "balance-bags" ||
+    kind === "undo-chain" ||
+    kind === "equation-tape" ||
+    kind === "two-step-tape" ||
+    kind === "inequality-many-solutions"
+  )
+    return <EquationIllustration kind={kind} />;
+  if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||
     kind === "combination-orders" ||
@@ -48,12 +73,46 @@ export function LessonIllustration({
   )
     return <CombinatoricsIllustration kind={kind} />;
   if (
+    kind === "column-addition" ||
+    kind === "base-ten-trade" ||
+    kind === "column-subtraction-zero" ||
+    kind === "column-multidigit"
+  )
+    return <AddSubtractIllustration kind={kind} />;
+  if (
+    kind === "five-frame-facts" ||
+    kind === "count-on-hops" ||
+    kind === "make-ten-frames" ||
+    kind === "ten-hundred-digits"
+  )
+    return <FactsIllustration kind={kind} />;
+  if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||
     kind === "comparison-place-chart" ||
     kind === "large-place-value-chart"
   )
     return <ComparisonIllustration kind={kind} />;
+  if (
+    kind === "clock-hour-half" ||
+    kind === "clock-five-minutes" ||
+    kind === "coin-values" ||
+    kind === "coin-count-on"
+  )
+    return <TimeMoneyIllustration kind={kind} />;
+  if (
+    kind === "decimal-tenths-hundredths" ||
+    kind === "decimal-compare-chart" ||
+    kind === "decimal-rounding-line" ||
+    kind === "decimal-aligned-sum"
+  )
+    return <DecimalIllustration kind={kind} />;
+  if (
+    kind === "volume-layers" ||
+    kind === "prism-composite" ||
+    kind === "ordered-pair-path"
+  )
+    return <VolumeCoordinateIllustration kind={kind} />;
   if (
     kind === "equal-shares" ||
     kind === "same-share-shapes" ||

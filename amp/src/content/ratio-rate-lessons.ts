@@ -94,7 +94,7 @@ export const ratioRateLessons: Lesson[] = [
       {
         title: "Seeing the comparison",
         paragraphs: [
-          "Each bar in the figure is a total price drawn to scale and split into one equal part per granola bar. The 6-pack costs $4.50, so each of its 6 parts is $4.50 ÷ 6 = $0.75. The 8-pack costs $5.60, so each of its 8 parts is $5.60 ÷ 8 = $0.70.",
+          "Each bar in the figure is a total price drawn to scale and split into one equal part per granola bar. The 6-pack costs 4.50 dollars, so each of its 6 parts is 4.50 ÷ 6 = 0.75 dollars. The 8-pack costs 5.60 dollars, so each of its 8 parts is 5.60 ÷ 8 = 0.70 dollars.",
           "The 8-pack's bar is longer, but its parts are shorter: each granola bar costs less. When the unit prices are equal, neither pack is a better buy per item; the larger pack costs more in all only because it holds more.",
         ],
         illustration: "unit-price-tapes",
@@ -102,11 +102,11 @@ export const ratioRateLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Store A sells a 12-ounce box of cereal for $3.00. Store B sells a 20-ounce box of cereal for $4.40. Which is the better buy, with the lower price per ounce?",
+        "Store A sells a 12-ounce box of cereal for 3.00 dollars. Store B sells a 20-ounce box of cereal for 4.40 dollars. Which is the better buy, with the lower price per ounce?",
       steps: [
-        "Store A: $3.00 ÷ 12 = $0.25 per ounce.",
-        "Store B: $4.40 ÷ 20 = $0.22 per ounce.",
-        "$0.22 is less than $0.25, so Store B has the better buy, even though its box costs more in all.",
+        "Store A: 3.00 ÷ 12 = 0.25 dollars per ounce.",
+        "Store B: 4.40 ÷ 20 = 0.22 dollars per ounce.",
+        "0.22 dollars is less than 0.25 dollars, so Store B has the better buy, even though its box costs more in all.",
       ],
       answer: "Store B",
     },

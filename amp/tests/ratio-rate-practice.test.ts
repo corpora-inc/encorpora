@@ -57,7 +57,7 @@ test("choice answers are not given away by position or by a shortcut", () => {
       label.startsWith("The same") ? "same" : label,
       (winners.get(label.startsWith("The same") ? "same" : label) ?? 0) + 1,
     );
-    const totals = [...p.public.prompt.matchAll(/\$(\d+\.\d\d)/g)].map((m) =>
+    const totals = [...p.public.prompt.matchAll(/(\d+\.\d\d) dollars/g)].map((m) =>
       Number(m[1]),
     );
     if (label === "Store A" || label === "Store B") {

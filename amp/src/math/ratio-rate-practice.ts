@@ -13,6 +13,8 @@ type Case = {
   label: string;
   answer: string;
   explanation: string[];
+  /** One teaching step written from this problem's own givens. */
+  hint: string;
   tags: string[];
   figure?: SemanticFigure;
   /** Choice items keep a fixed, meaningful option order unless `shuffle`. */
@@ -88,22 +90,6 @@ export const ratioRateTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-const hints: Record<string, string> = {
-  "unit-rate":
-    "Find which quantity the question puts at 1. Divide the other quantity by it.",
-  "better-buy":
-    "Find each unit price: divide each total price by its number of items. The lower price for 1 item is the better buy.",
-  "ratio-table-missing":
-    "Divide a complete column by a common factor to find the simplest ratio. Every column is that ratio multiplied by one number.",
-  "double-number-line-missing":
-    "Aligned marks show equivalent pairs. Find the amount for 1 unit, then multiply by the number of units asked for.",
-  "fraction-unit-rate":
-    "Divide the amount by the number of units, even when both are fractions. To divide by a fraction, multiply by its reciprocal.",
-  "story-operation-choice":
-    "Ask what the story gives: the number of equal groups, the size of each group, or the total. An unknown total means multiply; a known total means divide.",
-  "multiplication-division-story":
-    "Ask what the story gives: the number of equal groups, the size of each group, or the total. An unknown total means multiply; a known total means divide.",
-};
 
 const gcd = (a: number, b: number): number => {
   a = Math.abs(a);
@@ -118,14 +104,19 @@ function q(n: number, d = 1): Rational {
   return { n: n / g, d: d / g };
 }
 const frac = (v: Rational) => `${v.n}${v.d === 1 ? "" : `/${v.d}`}`;
-/** Whole cents as a dollar amount: 845 → $8.45, 600 → $6. */
+/** Whole cents as a dollar amount in words: 845 → 8.45 dollars, 100 → 1 dollar.
+ * Money is never written with "$": two dollar signs would open a math span. */
 const dollars = (cents: number) =>
-  cents % 100 === 0
-    ? `$${cents / 100}`
-    : `$${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")}`;
-/** Always two decimal places, for comparing unit prices: 70 → $0.70. */
-const price = (cents: number) =>
-  `$${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")}`;
+  cents === 100
+    ? "1 dollar"
+    : cents % 100 === 0
+      ? `${cents / 100} dollars`
+      : `${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")} dollars`;
+/** Always two decimal places, for comparing unit prices: 70 → 0.70 dollars. */
+const price = (cents: number) => `${twoPlaces(cents)} dollars`;
+/** A money amount as a bare number with two decimal places: 70 → 0.70. */
+const twoPlaces = (cents: number) =>
+  `${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")}`;
 const centsAnswer = (cents: number) =>
   cents % 100 === 0
     ? String(cents / 100)
@@ -189,7 +180,7 @@ function unitRateCase(r: Random): Case {
       `${name} earns ${dollars(rate * b)} for ${b} hours of babysitting. How many dollars does ${name} earn per hour?`,
       "Dollars per hour",
       "1 hour",
-      `Divide the pay by the hours: ${dollars(rate * b)} ÷ ${b} = ${dollars(rate)}.`,
+      `Divide the pay by the hours: ${centsAnswer(rate * b)} ÷ ${b} = ${centsAnswer(rate)} dollars.`,
       `${name} earns ${dollars(rate)} per hour.`,
       centsAnswer(rate),
       "wage",
@@ -203,7 +194,7 @@ function unitRateCase(r: Random): Case {
       `A ${b}-pound bag of apples costs ${dollars(cents * b)}. What is the price per pound, in dollars?`,
       "Dollars per pound",
       "1 pound",
-      `Divide the cost by the pounds: ${dollars(cents * b)} ÷ ${b} = ${dollars(cents)}.`,
+      `Divide the cost by the pounds: ${centsAnswer(cents * b)} ÷ ${b} = ${centsAnswer(cents)} dollars.`,
       `The apples cost ${dollars(cents)} per pound.`,
       centsAnswer(cents),
       "price",
@@ -233,6 +224,7 @@ function unitRateCase(r: Random): Case {
       prompt: `A runner runs ${miles} miles in ${miles * pace} minutes at a steady pace. How many minutes does it take the runner to run 1 mile?`,
       label: "Minutes per mile",
       answer: String(pace),
+      hint: `The question puts 1 mile at the unit: share the ${miles * pace} minutes equally among the ${miles} miles.`,
       explanation: [
         "A unit rate is the amount of one quantity for 1 unit of the other. The question puts 1 mile at the unit, so the minutes are divided among the miles.",
         `Divide the minutes by the miles: ${miles * pace} ÷ ${miles} = ${pace}.`,
@@ -244,13 +236,14 @@ function unitRateCase(r: Random): Case {
   const cost = r(2, 6),
     each = r(2, 8);
   return {
-    prompt: `At a school store, ${cost * each} pencils cost $${cost}. At this price, how many pencils can be bought for $1?`,
+    prompt: `At a school store, ${cost * each} pencils cost ${dollars(cost * 100)}. At this price, how many pencils can be bought for 1 dollar?`,
     label: "Pencils per dollar",
     answer: String(each),
+    hint: `The question puts 1 dollar at the unit: share the ${cost * each} pencils equally among the ${cost} dollars.`,
     explanation: [
-      "A unit rate is the amount of one quantity for 1 unit of the other. The question puts $1 at the unit, so the pencils are divided among the dollars.",
+      "A unit rate is the amount of one quantity for 1 unit of the other. The question puts 1 dollar at the unit, so the pencils are divided among the dollars.",
       `Divide the pencils by the dollars: ${cost * each} ÷ ${cost} = ${each}.`,
-      `${each} pencils can be bought for $1.`,
+      `${each} pencils can be bought for 1 dollar.`,
     ],
     tags: ["pencils", "reverse-order", "whole-rate"],
   };
@@ -269,6 +262,7 @@ function forwardRate(
     prompt,
     label,
     answer,
+    hint: `The question asks for the amount for ${unit}. ${divide.split(" = ")[0]}.`,
     explanation: [
       `A unit rate is the amount of one quantity for 1 unit of the other. Here the unit is ${unit}.`,
       divide,
@@ -339,7 +333,7 @@ function betterBuyCase(r: Random): Case {
       : `a pack of ${n} ${good.many}`;
   const prompt = `Store A sells ${pack(stores[0]!.n)} for ${price(stores[0]!.n * stores[0]!.p)}. Store B sells ${pack(stores[1]!.n)} for ${price(stores[1]!.n * stores[1]!.p)}. Which is the better buy, with the lower price per ${good.one}?`;
   const unitLine = (s: (typeof stores)[number], name: string) =>
-    `${name}: ${price(s.n * s.p)} ÷ ${s.n} = ${price(s.p)} per ${good.one}.`;
+    `${name}: ${twoPlaces(s.n * s.p)} ÷ ${s.n} = ${price(s.p)} per ${good.one}.`;
   const [a, b] = stores as [(typeof stores)[0], (typeof stores)[0]];
   const both = `Find the price of 1 ${good.one}: ${price(a.p)} at Store A and ${price(b.p)} at Store B.`;
   const winner = a.p < b.p ? "A" : a.p > b.p ? "B" : "same";
@@ -378,6 +372,7 @@ function betterBuyCase(r: Random): Case {
     prompt,
     label: "Choose one answer",
     answer: "",
+    hint: `Find the price of 1 ${good.one} at each store, in dollars: ${twoPlaces(a.n * a.p)} ÷ ${a.n} at Store A and ${twoPlaces(b.n * b.p)} ÷ ${b.n} at Store B. Compare those, not the package prices.`,
     explanation,
     tags: [
       good.key,
@@ -441,6 +436,10 @@ function ratioTableCase(r: Random): Case {
     prompt: `The table shows equivalent ratios of ${context[2]}. What number belongs in the cell with the question mark?`,
     label: "Missing number",
     answer: String(answer),
+    hint:
+      witness.m === 1
+        ? `The column ${top[witness.i]} and ${bottom[witness.i]} is the simplest ratio. In the column with the question mark, find what multiplies it to give the entry you know.`
+        : `Divide the column ${top[witness.i]} and ${bottom[witness.i]} by its common factor to find the simplest ratio. Then find what multiplies that ratio to give the known entry in the column with the question mark.`,
     explanation,
     tags: [
       ["flour", "beads", "laps", "tickets", "paint"][tables.indexOf(context)]!,
@@ -485,7 +484,7 @@ const lines = [
     rateStep: 1,
     askTop: (t: number) =>
       `How many dollars ${t === 1 ? "does" : "do"} ${t} ${t === 1 ? "pound" : "pounds"} of grapes cost?`,
-    askBottom: (v: number) => `How many pounds of grapes cost $${v}?`,
+    askBottom: (v: number) => `How many pounds of grapes cost ${dollars(v * 100)}?`,
     perOne: "dollars for 1 pound",
     labels: ["Dollars", "Pounds"],
     topWord: "dollars",
@@ -559,6 +558,7 @@ function doubleLineCase(r: Random): Case {
     prompt: `${context.lead} ${findBottom ? context.askBottom(rate * target) : context.askTop(target)}`,
     label: context.labels[findBottom ? 1 : 0],
     answer: String(answer),
+    hint: `Aligned marks pair ${rate * given} ${context.topWord} with ${unit(given)}. Find the ${context.perOne} first: ${rate * given} ÷ ${given}. Then ${findBottom ? `find how many ${many} give ${rate * target} ${context.topWord}` : `scale it to ${unit(target)}`}.`,
     explanation,
     tags: [
       context.key,
@@ -605,7 +605,7 @@ function fractionRateCase(r: Random): Case {
     const rate = q(a.n * c.d, c.n);
     const name = names[r(0, names.length - 1)]!;
     return fractionCase({
-      prompt: `${name} buys ${frac(c)} pound of cheese for $${a.n}. What is the price of 1 pound of cheese, in dollars?`,
+      prompt: `${name} buys ${frac(c)} pound of cheese for ${dollars(a.n * 100)}. What is the price of 1 pound of cheese, in dollars?`,
       label: "Dollars per pound",
       a,
       c,
@@ -614,7 +614,7 @@ function fractionRateCase(r: Random): Case {
       bottom: "Pounds",
       divide: "Divide the cost by the pounds",
       unitName: ["pound", "pounds"],
-      final: `The cheese costs $${frac(rate)} per pound.`,
+      final: `The cheese costs ${frac(rate)} dollars per pound.`,
       tags: ["cheese", "whole-amount"],
     });
   }
@@ -691,6 +691,7 @@ function fractionCase(input: {
     prompt: input.prompt,
     label: input.label,
     answer: frac(rate),
+    hint: `${input.divide}: ${frac(a)} ÷ ${frac(c)}. To divide by ${frac(c)}, multiply by its reciprocal, ${frac(flip)}.`,
     explanation: [
       `A unit rate is the amount for 1 ${input.unitName[0]}. ${input.divide}: ${frac(a)} ÷ ${frac(c)}.`,
       `Dividing by ${frac(c)} is the same as multiplying by its reciprocal, ${frac(flip)}: ${frac(a)} × ${frac(flip)} = ${product}${frac(rate) === product ? "" : ` = ${frac(rate)}`}.`,
@@ -911,6 +912,12 @@ function storyCase(r: Random): Case {
             ? "Liters"
             : `Number of ${s.itemWord}`,
     answer: String(answer),
+    hint:
+      s.unknown === "product"
+        ? `There are ${s.groups} equal ${s.groupWord[1]} with ${s.size} ${s.itemWord} in each, and the total is unknown. Put the equal groups together.`
+        : s.unknown === "size"
+          ? `${s.total} ${s.itemWord} are split into ${s.groups} equal ${s.groupWord[1]}. The total is known; find the size of one group.`
+          : `${s.total} ${s.itemWord} are split into ${s.groupWord[1]} of ${s.size}. The total is known; find how many groups of ${s.size} make ${s.total}.`,
     explanation: storyExplanation(s),
     tags: [s.context, s.unknown],
   };
@@ -952,6 +959,7 @@ function storyChoiceCase(r: Random): Case {
     prompt: `${s.statement} Which equation can be used to find ${s.find}?`,
     label: "Choose one answer",
     answer: "",
+    hint: `The story gives ${x} and ${y}. Is one of them the total of the equal groups, or is the total what the question asks for?`,
     explanation: [
       ...storyExplanation(s).slice(0, 2),
       `${options.find(([op]) => op === correctOp)![1]} models the story.`,
@@ -1022,7 +1030,7 @@ export function ratioRatePrintCase(
     },
     answer,
     explanation: c.explanation,
-    hint: hints[id]!,
+    hint: c.hint,
     ...(choiceFeedback ? { choiceFeedback } : {}),
   };
   // The prompt and figure state every given, so they identify the case.

@@ -65,6 +65,22 @@
 .animation-fade {
   transition: opacity 400ms ease;
 }
+.animation-lift {
+  transition:
+    transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1),
+    opacity 500ms ease;
+}
+.animation-divider {
+  stroke: var(--color-figure-warm);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+.animation-bag {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
 .animation-copy {
   display: grid;
   min-width: 0;
@@ -128,6 +144,30 @@
   display: flex;
   align-items: center;
 }
+.animation-gridline {
+  stroke: var(--color-figure-grid);
+  stroke-width: 1;
+}
+.animation-trace {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  transition: stroke-dashoffset 900ms cubic-bezier(0.45, 0, 0.25, 1);
+}
+.animation-origin {
+  fill: var(--color-figure-ink);
+}
+.animation-point {
+  fill: var(--color-figure-warm);
+  stroke: var(--color-figure-paper);
+  stroke-width: 1.5;
+}
+.animation-stage .animation-point-label {
+  fill: var(--color-figure-warm);
+  font-weight: 700;
+}
 .animation-shade {
   fill: var(--color-success-accent);
   stroke: var(--color-border-strong);
@@ -140,6 +180,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade,
+  .animation-lift,
+  .animation-trace,
   .animation-paint {
     transition: none;
   }
@@ -156,4 +198,13 @@
 .lesson-animation[data-animation="rate"] .rate-unit {
   fill: var(--color-figure-accent);
   font-weight: 700;
+}
+.lesson-animation[data-animation="plot"] .animation-fill {
+  fill: var(--color-success-accent);
+  stroke: var(--color-surface-raised);
+  stroke-width: 1.5;
+}
+.lesson-animation[data-animation="plot"] .animation-empty {
+  fill: var(--color-surface);
+  stroke: none;
 }
