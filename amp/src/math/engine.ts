@@ -43,6 +43,10 @@ import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import {
+  factArrayTemplates,
+  generateFactArrayProblem,
+} from "./fact-arrays-practice";
+import {
   addSubtractTemplates,
   generateAddSubtractProblem,
 } from "./add-subtract-practice";
@@ -155,14 +159,6 @@ export const baseTemplates: readonly TemplateMetadata[] = [
     description: "Subtract without a negative result.",
   },
   {
-    id: "multiply-facts",
-    version: 1,
-    title: "Multiplication facts",
-    skillId: "multiplication-facts",
-    gradeBand: "3–5",
-    description: "Multiply whole numbers from two through twelve.",
-  },
-  {
     id: "fraction-model",
     version: 1,
     title: "Read a fraction",
@@ -256,6 +252,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...addSubtractTemplates,
   ...comparisonTemplates,
   ...factsTemplates,
+  ...factArrayTemplates,
   ...combinatoricsTemplates,
   ...patternFunctionTemplates,
   ...equationTemplates,
@@ -403,26 +400,6 @@ function subtractWithinTwentyHint(a: number, b: number): string {
     ? `First take away ${ones} to reach 10. Then take away the rest of the ${b}.`
     : `${a} is 10 and ${ones}. Take ${b} from the ${ones} ones; the ten stays.`;
 }
-/** A known fact to build from, using the friendlier factor as the multiplier. */
-function multiplicationFactHint(a: number, b: number): string {
-  const ease = [2, 10, 5, 4, 3, 11, 9, 12, 6, 7, 8];
-  const [f, n] = ease.indexOf(a) <= ease.indexOf(b) ? [a, b] : [b, a];
-  const way: Record<number, string> = {
-    2: `${n} doubled`,
-    3: `${n} doubled, plus one more ${n}`,
-    4: `${n} doubled, then doubled again`,
-    5: `half of 10 × ${n}`,
-    6: `5 × ${n}, plus one more ${n}`,
-    7: `5 × ${n}, plus 2 × ${n}`,
-    8: `4 × ${n}, doubled`,
-    9: `10 × ${n}, minus one ${n}`,
-    10: `${n} tens`,
-    11: `10 × ${n}, plus one more ${n}`,
-    12: `10 × ${n}, plus 2 × ${n}`,
-  };
-  const turned = f === a ? "" : ` is the same as ${f} × ${n}, which`;
-  return `${a} × ${b}${turned} is ${way[f]}.`;
-}
 export function generateProblem(
   templateId: string,
   seed: string,
@@ -510,6 +487,8 @@ function generateRawProblem(
     return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))
     return generateFactsProblem(templateId, seed);
+  if (factArrayTemplates.some((t) => t.id === templateId))
+    return generateFactArrayProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))
@@ -593,18 +572,6 @@ function generateRawProblem(
       explanation = [
         `Start with ${a}. Remove ${b}.`,
         `${a} − ${b} = ${answer}.`,
-      ];
-      break;
-    }
-    case "multiply-facts": {
-      const a = r(2, 12),
-        b = r(2, 12);
-      prompt = `What is ${a} × ${b}?`;
-      answer = `${a * b}`;
-      hint = multiplicationFactHint(a, b);
-      explanation = [
-        `There are ${a} groups of ${b}.`,
-        `${Array(a).fill(b).join(" + ")} = ${answer}.`,
       ];
       break;
     }
