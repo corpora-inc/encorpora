@@ -273,59 +273,32 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return { birthYear };
     });
   });
+  /** The free run: phase, totals, skills mastered and the map before and
+   * after practice. Only an anonymous trial has one. */
   app.get("/api/v1/learners/:learnerId/trial-progress", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
       const progress = await tx.trialProgress();
       if (!progress) throw new ApiError(404, "Trial not found");
+      const placed = progress.totals.answered >= progress.placement;
       return {
         ...progress,
-        recommendations: planMixedPractice({
-          templates,
-          skills,
-          attempts: await tx.recentAttempts(),
-          evidence: await tx.skillEvidence(),
-          frontier: await tx.frontier(),
-          count: 3,
-          seed: "trial-next-steps",
-          strictCeiling: true,
-        }).map((choice) => ({
-          templateId: choice.template.id,
-          title: choice.template.title,
-          strand: choice.strand,
-          reason: choice.reason,
-        })),
-        lesson: (await tx.trialMaterial())?.lesson ?? null,
+        mastered: await tx.masteredSkills(),
+        frontier: {
+          placement: placed ? await tx.frontierAfter(progress.placement) : null,
+          current: await tx.frontier(),
+        },
       };
     });
   });
-  app.post("/api/v1/learners/:learnerId/trial-teaching", async (request) => {
-    const account = await parent(request);
-    const { learnerId } = paramsSchema.parse(request.params);
-    return options.repository.transaction(account, learnerId, async (tx) => {
-      await tx.beginTrialTeaching();
-      return { started: true };
-    });
-  });
+  /** Records that the paywall was shown, at the limit or by choice. */
   app.post("/api/v1/learners/:learnerId/trial-paywall", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
       await tx.trialPaywall();
       return { recorded: true };
-    });
-  });
-  app.get("/api/v1/learners/:learnerId/trial-printable", async (request) => {
-    const account = await parent(request);
-    const { learnerId } = paramsSchema.parse(request.params);
-    return options.repository.transaction(account, learnerId, async (tx) => {
-      const progress = await tx.trialProgress();
-      if (!progress?.templateId || progress.phase === "placement")
-        throw new ApiError(409, "Finish placement first");
-      const material = await tx.trialMaterial();
-      if (!material) throw new ApiError(409, "This lesson is unavailable");
-      return { examples: material.examples };
     });
   });
   app.post("/api/v1/learners/:learnerId/batches", async (request) => {
@@ -353,18 +326,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
         if (trialRemaining <= 0) throw new ApiError(402, "trial-complete");
       } else if (!options.development && !(await tx.hasAccess()))
         throw new ApiError(403, "An active student license is required");
-      const trialProgress = await tx.trialProgress();
-      const focusedId =
-        trialProgress?.phase === "teaching"
-          ? trialProgress.templateId
-          : input.templateId;
-      const focused = focusedId
-        ? templates.find((t) => t.id === focusedId)
+      const focused = input.templateId
+        ? templates.find((t) => t.id === input.templateId)
         : undefined;
-      const teaching =
-        trialProgress?.phase === "teaching" ? await tx.trialMaterial() : null;
-      if (trialProgress?.phase === "teaching" && !teaching)
-        throw new ApiError(409, "This lesson is unavailable");
       if (input.templateId && !focused)
         throw new ApiError(400, "Unknown problem family");
       const supported = templates.filter(
@@ -387,56 +351,29 @@ function routes(app: FastifyInstance, options: AppOptions) {
         trialRemaining === null
           ? input.count
           : Math.min(input.count, trialRemaining);
-      const selected = teaching
+      const selected = focused
         ? Array.from({ length: count }, () => ({
-            template: {
-              id: trialProgress!.templateId!,
-              skillId: teaching.problems[0].public.skillId,
-            },
+            template: focused,
             reason: "focus",
             strand:
-              skills.find(
-                (skill) => skill.id === teaching.problems[0].public.skillId,
-              )?.strand ?? "math",
+              skills.find((skill) => skill.id === focused.skillId)?.strand ??
+              "math",
           }))
-        : focused
-          ? Array.from({ length: count }, () => ({
-              template: focused,
-              reason: "focus",
-              strand:
-                skills.find((skill) => skill.id === focused.skillId)?.strand ??
-                "math",
-            }))
-          : planMixedPractice({
-              templates: supported,
-              skills,
-              attempts: await tx.recentAttempts(),
-              evidence: await tx.skillEvidence(),
-              frontier: await tx.frontier(),
-              count,
-              seed: randomUUID(),
-            });
-      const pendingTeaching = teaching
-        ? (
-            await Promise.all(
-              teaching.problems.map(async (problem) =>
-                (await tx.attemptByProblem(problem.public.id)) ? null : problem,
-              ),
-            )
-          ).filter((problem) => problem !== null)
-        : [];
+        : planMixedPractice({
+            templates: supported,
+            skills,
+            attempts: await tx.recentAttempts(),
+            evidence: await tx.skillEvidence(),
+            frontier: await tx.frontier(),
+            count,
+            seed: randomUUID(),
+          });
       const problems: PublicProblem[] = [];
-      for (const [index, choice] of selected.entries()) {
-        const generated = teaching
-          ? pendingTeaching[index]
-          : generateProblem(choice.template.id, randomUUID());
-        const existing = teaching
-          ? await tx.problem(generated.public.id)
-          : undefined;
-        const problem: SavedProblem =
-          existing ?? generatedProblemSchema.parse(generated);
-        if (trialProgress?.phase === "teaching") problem.trialTeaching = true;
-        if (!existing) await tx.saveProblem(problem);
+      for (const choice of selected) {
+        const problem: SavedProblem = generatedProblemSchema.parse(
+          generateProblem(choice.template.id, randomUUID()),
+        );
+        await tx.saveProblem(problem);
         problems.push(problem.public);
       }
       return {
@@ -522,28 +459,20 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return options.repository.transaction(account, learnerId, async (tx) => {
       const problem = await tx.problem(problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
-      if (
-        !hasProblemLesson(problem.public.templateId) &&
-        !problem.trialTeaching
-      )
+      if (!hasProblemLesson(problem.public.templateId))
         throw new ApiError(404, "Lesson not found");
       // Reading the lesson before answering counts as assistance.
       if (!(await tx.attemptByProblem(problemId))) {
         problem.lessonViewed = true;
         await tx.saveProblem(problem);
       }
-      // Teaching support reuses the same worked example excluded from all
-      // four immutable questions, so it cannot reveal a later answer.
-      const material = problem.trialTeaching ? await tx.trialMaterial() : null;
       return {
         recorded: true,
-        lesson:
-          material?.lesson ??
-          problemLesson(
-            problem.public.templateId,
-            problem.public.seed,
-            problem.public.prompt,
-          ),
+        lesson: problemLesson(
+          problem.public.templateId,
+          problem.public.seed,
+          problem.public.prompt,
+        ),
       };
     });
   });
@@ -576,13 +505,6 @@ function routes(app: FastifyInstance, options: AppOptions) {
         throw new ApiError(403, "An active student license is required");
       const problem = await tx.problem(input.problemId);
       if (!problem) throw new ApiError(404, "Problem not found");
-      const trialProgress = await tx.trialProgress();
-      if (
-        trialProgress?.phase === "teaching" &&
-        (!problem.trialTeaching ||
-          problem.public.templateId !== trialProgress.templateId)
-      )
-        throw new ApiError(409, "Use a problem from this teaching sequence");
       if (!isValidResponse(problem.public, input.response))
         throw new ApiError(
           400,
@@ -608,8 +530,24 @@ function routes(app: FastifyInstance, options: AppOptions) {
         answer: problem.answer,
         createdAt: new Date().toISOString(),
       };
+      const before = await tx.masteredSkills();
       await tx.saveAttempt(outcome);
-      return outcome;
+      // A mastery moment: this answer made a previously missed skill
+      // review-ready. Shown once, with the answer; never stored.
+      const mastered =
+        !before.includes(outcome.skillId) &&
+        (await tx.masteredSkills()).includes(outcome.skillId);
+      return mastered
+        ? {
+            ...outcome,
+            mastered: {
+              skillId: outcome.skillId,
+              title:
+                skills.find((skill) => skill.id === outcome.skillId)?.title ??
+                outcome.skillId,
+            },
+          }
+        : outcome;
     });
   });
   registerBookRoutes(app, {

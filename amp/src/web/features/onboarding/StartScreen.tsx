@@ -56,7 +56,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
       {step === "/start/verify-email" ? (
         <VerifyEmailStep session={session} me={me} />
       ) : step === "/start/plan" ? (
-        <PlanStep session={session} />
+        <PlanStep session={session} trial={me.next === "try"} />
       ) : step === "/start/purchase" ? (
         <PurchaseStep session={session} />
       ) : (

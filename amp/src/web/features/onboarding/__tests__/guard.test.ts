@@ -132,3 +132,19 @@ test("a practicing family may add another learner; everything else opens practic
     "/start/birth-year": null,
   });
 });
+
+test("a signed-in parent without a purchase gets the free trial; plan steps open only when they choose to buy", () => {
+  expect(table(me({ next: "try" }))).toEqual({
+    "/start": "/try",
+    "/start/verify-email": "/try",
+    "/start/plan": null,
+    "/start/purchase": null,
+    "/start/consent": null,
+    "/start/name": "/try",
+    "/start/birth-year": "/try",
+  });
+  // Chose a plan on the paywall before signing up: continue to it.
+  expect(startDestination(me({ next: "try" }), "/start", true)).toBe(
+    "/start/plan",
+  );
+});

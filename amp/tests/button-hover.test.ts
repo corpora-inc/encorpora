@@ -9,7 +9,9 @@ test("global button hover never replaces a button's background", () => {
   const dir = new URL("../src/web/", import.meta.url);
   for (const file of readdirSync(dir).filter((name) => name.endsWith(".css"))) {
     const css = readFileSync(new URL(file, dir), "utf8");
-    for (const [, body] of css.matchAll(/(?:^|\})\s*button:hover[^{,]*\{([^}]*)\}/g)) {
+    for (const [, body] of css.matchAll(
+      /(?:^|\})\s*button:hover[^{,]*\{([^}]*)\}/g,
+    )) {
       assert.doesNotMatch(body, /background/, `${file}: global button:hover`);
     }
   }

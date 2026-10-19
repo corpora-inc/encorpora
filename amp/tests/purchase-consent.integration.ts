@@ -1062,15 +1062,16 @@ test(
 );
 
 test(
-  "account next step follows purchase-first enrollment: plan, then learner after verified payment, then claim",
+  "account next step follows purchase-first enrollment: free trial, then learner after verified payment, then claim",
   enabled,
   async () =>
     fixture(async (f) => {
       const next = async () =>
         accountSummary(f.pool, f.family, "parent", f.repository.namespace);
-      assert.equal((await next()).next, "choose-plan");
+      // Without a purchase or consent, the parent gets the free trial.
+      assert.equal((await next()).next, "try");
       const row = await f.checkout();
-      assert.equal((await next()).next, "choose-plan");
+      assert.equal((await next()).next, "try");
       assert.equal((await next()).unassignedPurchase, undefined);
       assert.deepEqual(await f.deliver(f.settle(row)), {
         processed: 1,

@@ -17,6 +17,7 @@ import {
   startDestination,
   startNavigation,
 } from "../features/onboarding/guard";
+import { chosenPlan } from "../lib/pending-trial";
 const searchSchema = z
   .object({
     return: z.enum(["security"]).optional(),
@@ -30,6 +31,8 @@ const searchSchema = z
     state: z.string().max(200).optional(),
     purchase: z.string().max(200).optional(),
     billing: z.string().max(40).optional(),
+    interval: z.enum(["year", "month"]).optional().catch(undefined),
+    reason: z.enum(["limit", "choice"]).optional().catch(undefined),
     "sign-in": z.string().optional(),
     "reset-password": z.string().optional(),
   })
@@ -61,9 +64,32 @@ async function beforeStart({ location }: { location: { pathname: string } }) {
     ...meOptions(session),
     revalidateIfStale: true,
   });
-  const target = startDestination(me, location.pathname);
+  const target = startDestination(me, location.pathname, !!chosenPlan());
   if (target) throw redirect({ ...startNavigation(target), replace: true });
 }
+const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
+  lazyRouteComponent(() => import("../features/trial"), name);
+/** The free trial: anonymous, resumable on this device, every step a URL. */
+const tryStart = createRoute({
+  getParentRoute: () => root,
+  path: "/try",
+  component: trial("TryStart"),
+});
+const tryPractice = createRoute({
+  getParentRoute: () => root,
+  path: "/try/practice",
+  component: trial("TrialPractice"),
+});
+const tryMap = createRoute({
+  getParentRoute: () => root,
+  path: "/try/map",
+  component: trial("TrialMap"),
+});
+const tryPlans = createRoute({
+  getParentRoute: () => root,
+  path: "/try/plans",
+  component: trial("Paywall"),
+});
 const home = createRoute({
   getParentRoute: () => root,
   path: "/",
@@ -80,6 +106,28 @@ const home = createRoute({
         to: "/reset-password",
         search: { token: search.token, error: search.error },
       });
+  },
+  // A parent without a purchase starts in the free trial, never on a setup
+  // card; the cached session and `/me` decide before anything paints.
+  loader: async () => {
+    if (nativeRuntime) return;
+    let trial = false;
+    try {
+      const session = await queryClient.ensureQueryData(sessionOptions);
+      const me = session
+        ? await queryClient.ensureQueryData(meOptions(session))
+        : null;
+      trial = !!me?.signedIn && me.next === "try";
+    } catch (error) {
+      // The home screen reports and retries its own account errors.
+      console.error("Home routing could not read the account", error);
+    }
+    if (trial)
+      throw redirect(
+        chosenPlan()
+          ? { to: "/start/plan", replace: true }
+          : { to: "/try", replace: true },
+      );
   },
 });
 const signIn = createRoute({
@@ -169,6 +217,10 @@ export const router = createRouter({
     startYear,
     startConsent,
     startVerify,
+    tryStart,
+    tryPractice,
+    tryMap,
+    tryPlans,
     fallback,
   ]),
   history: nativeRuntime
