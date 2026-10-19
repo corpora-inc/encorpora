@@ -14,7 +14,9 @@ import {
   type Term,
   type Point,
   type Scene,
+  type RowBars,
   type Table,
+  type LineTable,
   type TenFrame,
   type Venn,
   type Tree,
@@ -305,9 +307,24 @@ class GraphBuilder extends Builder<Graph> {
     this.spec.scatter = { points, fit, residuals };
     return this;
   }
+  /** A trial line (with residuals when the scatter has them) to compare with the fit. */
+  trial(m: number, b: number) {
+    this.spec.scatter = { ...this.spec.scatter!, trial: { m, b } };
+    return this;
+  }
+  /** The fit's prediction at x: a point whose y label is derived. */
+  predict(x: number) {
+    this.spec.scatter = { ...this.spec.scatter!, predict: x };
+    return this;
+  }
 }
 export const graph = (spec: Omit<Graph, "type">) =>
   new GraphBuilder({ type: "graph", ...spec } as Graph);
+
+class RowBarsBuilder extends Builder<RowBars> {}
+/** Rows as bars, first on one count scale, then each stretched to 100%. */
+export const rowBars = (spec: Omit<RowBars, "type">) =>
+  new RowBarsBuilder({ type: "rowBars", ...spec } as RowBars);
 
 class TableBuilder extends Builder<Table> {
   /** Bands behind rows or columns and rings around cells (conditioning). */
@@ -480,3 +497,10 @@ export const protractor = (
 /** Rays from one vertex with angle marks between chosen pairs. */
 export const angle = (spec: Omit<Angle, "type">) =>
   new Simple<Angle>({ type: "angle", ...spec });
+
+/** lineTable([["x", "0", "1"], ["y", "3", { text: "5", derived: true }]]):
+ * headings down the first column unless `header` says otherwise. */
+export const lineTable = (
+  rows: LineTable["rows"],
+  options: Partial<Omit<LineTable, "type" | "rows">> = {},
+) => new Simple<LineTable>({ type: "lineTable", rows, ...options });

@@ -1,8 +1,22 @@
-import { graph, table } from "../math/scene/author";
+import {
+  act,
+  f,
+  graph,
+  lineTable,
+  rowBars,
+  scene,
+  step,
+  table,
+} from "../math/scene/author";
+import type { Graph, Point } from "../math/scene/spec";
+
+const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
+import { lessonScenes } from "./lesson-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  ...lessonScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],
@@ -45,32 +59,7 @@ export const sceneIllustrations = {
       [20, 56],
     ])
     .scene(),
-  "scene-scatter-trend": graph({
-    x: [0, 10],
-    y: [0, 30],
-    grid: [1, 5],
-    tick: [1, 5],
-    aspect: 0.24,
-    axisNames: ["age (years)", "value (thousand $)"],
-  })
-    .scatter(
-      [
-        [1, 26],
-        [2, 23],
-        [3, 21],
-        [4, 19],
-        [5, 18],
-        [6, 13],
-        [7, 12],
-        [8, 9],
-        [9, 5],
-        [10, 6],
-      ],
-      { m: -2, b: 26 },
-    )
-    .point(2, 22, undefined, { open: true })
-    .point(8, 10, undefined, { open: true })
-    .scene(),
+  "scene-scatter-trend": carTrend(),
   "scene-two-way-blank": table({
     title: "Has a curfew",
     columns: ["Yes", "No", "Total"],
@@ -82,17 +71,155 @@ export const sceneIllustrations = {
     sums: true,
     derived: [[1, 0]],
   }).scene(),
-  "scene-two-way-curfew": table({
-    title: "Has a curfew",
-    columns: ["Yes", "No", "Total"],
+  "scene-two-way-bars": rowBars({
+    id: "bars",
+    parts: ["Yes", "No"],
     rows: [
-      { label: "Grade 7", cells: [18, 2, 20] },
-      { label: "Grade 8", cells: [24, 36, 60] },
-      { label: "Total", cells: [42, 38, 80] },
+      { label: "Grade 7", counts: [18, 2] },
+      { label: "Grade 8", counts: [24, 36] },
     ],
-    sums: true,
-  }).scene(),
+  }).scene({
+    steps: [
+      step(
+        "On one count scale, more eighth graders say yes: 24 against 18. But there are 60 eighth graders and only 20 seventh graders.",
+        act.appear("bars.legend"),
+        act.appear("bars.count"),
+      ),
+      step(
+        "Stretch each row to the same length, 100%: now the yes parts compare as fractions of their own row, 90% against 40%.",
+        act.appear("bars.percent", true),
+      ),
+    ],
+  }),
+  // f on −3 ≤ x < 4: the domain marked on the x-axis, the range on the y-axis.
+  "domain-range-axes": scene(
+    g({
+      id: "g",
+      x: [-5, 6],
+      y: [-4, 6],
+      grid: 1,
+      curves: [
+        {
+          fn: f.poly(0.5, -1, -1.5),
+          domain: [-3, 4],
+          ends: ["closed", "open"],
+        },
+      ],
+      segments: [
+        { from: [-3, 0], to: [4, 0], color: "gold" },
+        { from: [0, -2], to: [0, 6], color: "warm" },
+      ],
+      points: [
+        { x: -3, y: 0, color: "gold", label: "−3" },
+        { x: 4, y: 0, open: true, color: "gold", label: "4" },
+        { x: 0, y: -2, color: "warm", label: "−2" },
+        { x: 0, y: 6, color: "warm", label: "6" },
+      ],
+    }),
+  ).build({
+    title: "Domain −3 ≤ x < 4 on the x-axis and range −2 ≤ y ≤ 6 on the y-axis",
+  }),
+  // A repeated input with two outputs breaks a function.
+  "relation-repeated-input": lineTable(
+    [
+      ["x", "1", "2", "2", "5"],
+      ["y", "4", "3", "7", "4"],
+    ],
+    { highlight: [2, 3] },
+  ).scene({ title: "The input 2 has two outputs, 3 and 7" }),
+  // f(x) = x² − 2x − 1 from A (1, −2) to B (4, 7): the secant's slope is 9/3.
+  "average-rate-secant": graph({ id: "g", x: [-3, 5], y: [-3, 9], grid: 1 })
+    .curve(f.poly(1, -2, -1))
+    .secant(0, 1, 4)
+    .slope([1, -2], [4, 7], "shown")
+    .point(1, -2, "A")
+    .point(4, 7, "B")
+    .scene({
+      title: "Secant AB on y = x² − 2x − 1: rise 9 over run 3",
+    }),
+  // F = 2d + 3: the starting amount on the F-axis, the rate as a slope step.
+  "linear-model-graph": graph({
+    id: "g",
+    x: [0, 7],
+    y: [0, 17],
+    grid: 1,
+    tick: 2,
+    axisNames: ["d", "F"],
+  })
+    .curve(f.poly(2, 3), { domain: [0, 6], ends: ["none", "none"] })
+    .slope([2, 7], [3, 9], "shown")
+    .point(0, 3, "(0, 3)")
+    .scene({ title: "F = 2d + 3: starts at 3 and rises 2 per mile" }),
+  // Isolating h in A = bh/2: each step undoes one operation on both sides.
+  "formula-isolate-steps": lineTable(
+    [
+      ["A = bh/2", "Given"],
+      ["2A = bh", "Multiply both sides by 2"],
+      ["2A/b = h", "Divide both sides by b"],
+    ],
+    { header: "none", rules: "rows", align: ["left", "left"] },
+  ).scene({ title: "Solving A = bh/2 for h" }),
+  // The graph of 2x + 3y = 12 is exactly its solutions.
+  "solution-set-line": graph({ id: "g", x: [-2, 8], y: [-2, 6], grid: 1 })
+    .line({ a: 2, b: 3, c: 12 }, { label: "2x + 3y = 12" })
+    .point(0, 4, "(0, 4)")
+    .point(3, 2, "(3, 2)")
+    .point(6, 0, "(6, 0)")
+    .point(4, 4, "(4, 4)", { open: true })
+    .scene({
+      title: "Solutions of 2x + 3y = 12 lie on its line; (4, 4) does not",
+    }),
 } as const satisfies Record<string, Scene>;
 export type SceneIllustration = keyof typeof sceneIllustrations;
 export const isSceneIllustration = (kind: string): kind is SceneIllustration =>
   kind in sceneIllustrations;
+
+/** Used cars: a flat line at the typical value, then the trend line, with
+ * the vertical gaps from the points to each. */
+function carTrend() {
+  const points: Point[] = [
+    [1, 26],
+    [2, 23],
+    [3, 21],
+    [4, 19],
+    [5, 18],
+    [6, 13],
+    [7, 12],
+    [8, 9],
+    [9, 5],
+    [10, 6],
+  ];
+  const fit = (x: number) => 26 - 2 * x;
+  const level = Math.round(
+    points.reduce((a, [, y]) => a + y, 0) / points.length,
+  );
+  const gaps = (line: (x: number) => number) =>
+    points.reduce((a, [x, y]) => a + Math.abs(y - line(x)), 0);
+  return graph({
+    id: "g",
+    x: [0, 10],
+    y: [0, 30],
+    grid: [1, 5],
+    tick: [1, 5],
+    aspect: 0.24,
+    axisNames: ["age (years)", "value (thousand $)"],
+  })
+    .scatter(points, { m: -2, b: 26 }, true)
+    .trial(0, level)
+    .point(2, 22, undefined, { open: true })
+    .point(8, 10, undefined, { open: true })
+    .scene({
+      steps: [
+        step(
+          `A flat line at ${level} ignores the trend: the gaps from the points to it add up to ${gaps(() => level)}.`,
+          act.appear("g.trial"),
+        ),
+        step(
+          `Tilt it to follow the points: the trend line’s gaps add up to only ${gaps(fit)}.`,
+          act.disappear("g.trial"),
+          act.highlight("g.fit"),
+          act.appear("g.residual"),
+        ),
+      ],
+    });
+}

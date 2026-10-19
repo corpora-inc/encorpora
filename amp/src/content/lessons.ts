@@ -1,6 +1,7 @@
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
+import { linearFunctionLessons } from "./linear-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
@@ -15,6 +16,7 @@ import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { angleTriangleLessons } from "./angle-triangle-lessons";
 import { realNumberLessons } from "./real-number-lessons";
 import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
@@ -24,7 +26,6 @@ import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
-import type { LessonSceneKind } from "./lesson-scenes";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
@@ -65,6 +66,12 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "angle-pairs"
+      | "parallel-angle-pairs"
+      | "triangle-sum-line"
+      | "exterior-angle"
+      | "side-strips"
+      | "solid-slices"
       | "factoring-gcf"
       | "factoring-monic"
       | "factoring-nonmonic"
@@ -80,7 +87,6 @@ export interface Lesson {
       | "elevation-line"
       | "opposite-line"
       | "story-jumps"
-      | LessonSceneKind
       | AttributeIllustrationKind
       | "multiply-tens-groups"
       | "area-model-product"
@@ -619,10 +625,12 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...angleTriangleLessons,
   ...realNumberLessons,
   ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
+  ...linearFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

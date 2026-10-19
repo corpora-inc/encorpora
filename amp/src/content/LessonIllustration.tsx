@@ -1,8 +1,5 @@
 import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
-import { isLessonScene, lessonScenes } from "./lesson-scenes";
-import { SceneFigure } from "../web/scene/SceneFigure";
-import { ScenePlayer } from "../web/scene/ScenePlayer";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
@@ -17,6 +14,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { AngleTriangleIllustration } from "./AngleTriangleIllustration";
 import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
   NumberSystemIllustration,
@@ -49,6 +47,9 @@ import {
 } from "./data-display-illustrations";
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
 import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
+import { SceneFigure } from "../web/scene/SceneFigure";
+import { ScenePlayer } from "../web/scene/ScenePlayer";
+import type { Scene } from "../math/scene/spec";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
@@ -57,7 +58,7 @@ export function LessonIllustration({
   print = false,
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
-  /** Print shows a walkthrough's final frame, without controls. */
+  /** Printed pages show a walkthrough's final frame. */
   print?: boolean;
 }) {
   if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
@@ -76,23 +77,28 @@ export function LessonIllustration({
     return (
       <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
     );
-  if (isLessonScene(kind)) {
-    const scene = lessonScenes[kind];
-    if (print)
-      return <SceneFigure scene={scene} reveal frame="end" medium="print" />;
-    return scene.steps?.length ? (
-      <ScenePlayer scene={scene} mode="lesson" />
-    ) : (
-      <SceneFigure scene={scene} reveal />
-    );
-  }
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
-  if (isSceneIllustration(kind))
-    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
+  if (isSceneIllustration(kind)) {
+    const scene: Scene = sceneIllustrations[kind];
+    return scene.steps?.length && !print ? (
+      <ScenePlayer scene={scene} mode="lesson" label="Explore the model" />
+    ) : (
+      <SceneFigure scene={scene} reveal frame="end" />
+    );
+  }
+  if (
+    kind === "angle-pairs" ||
+    kind === "parallel-angle-pairs" ||
+    kind === "triangle-sum-line" ||
+    kind === "exterior-angle" ||
+    kind === "side-strips" ||
+    kind === "solid-slices"
+  )
+    return <AngleTriangleIllustration kind={kind} />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||

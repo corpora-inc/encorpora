@@ -2,9 +2,7 @@ import { act, step, table, tree, venn } from "../math/scene/author";
 import type { Scene } from "../math/scene/spec";
 import type { Action } from "../math/scene/timeline";
 
-/** Lesson illustrations built with the scene framework. Lessons render them
- * revealed; one with steps plays as a walkthrough on screen and prints its
- * final frame. */
+/** Probability lesson models, registered in `sceneIllustrations`. */
 const fill = act.fill;
 const ink = (target: string): Action => ({ do: "fill", target, ink: "accent" });
 const survey = (
@@ -151,6 +149,3 @@ export const lessonScenes = {
       ],
     }),
 } satisfies Record<string, Scene>;
-export type LessonSceneKind = keyof typeof lessonScenes;
-export const isLessonScene = (kind: string): kind is LessonSceneKind =>
-  kind in lessonScenes;

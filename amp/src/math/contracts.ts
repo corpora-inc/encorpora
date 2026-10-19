@@ -3,6 +3,7 @@ import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
+import { angleFigureSchemas, type AngleFigure } from "./geometry-models.js";
 import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
 import {
   timeMoneyFigureSchemas,
@@ -73,8 +74,9 @@ export type SemanticFigure =
   | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
-  | FunctionDisplayFigure
   | GeometryFigure
+  | FunctionDisplayFigure
+  | AngleFigure
   | ShapeFigure
   /** Any figure built with the scene framework (docs/figures.md). */
   | { kind: "scene"; scene: Scene }
@@ -299,6 +301,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     functionDisplaySchema,
     ...measurementFigureSchemas,
+    ...angleFigureSchemas,
     ...ratioRateFigureSchemas,
     ...partWholeFigureSchemas,
     ...attributeFigureSchemas,

@@ -145,8 +145,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       "Find the regions it covers: A only, both, B only or neither; for a list, sort each outcome into its region.",
       "Add the counts of those regions; for a probability, divide by the size of the sample space.",
     ],
-    watch:
-      "A′ includes the outcomes outside both events, not only those in B.",
+    watch: "A′ includes the outcomes outside both events, not only those in B.",
   },
   "addition-rule-probability": {
     goal: "Find $P(A \\text{ or } B)$, or the overlap $P(A \\text{ and } B)$, with the addition rule.",

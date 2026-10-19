@@ -2,8 +2,14 @@ import type { FacetMapping } from "./coverage";
 export const probabilityRulesFacetMappings: readonly FacetMapping[] = [
   ["event-set-count", "event-sets.set-operations"],
   ["addition-rule-probability", "probability-addition.overlap-correction"],
-  ["conditional-probability-value", "conditional-probability.restricted-sample-space"],
-  ["multiplication-rule-probability", "probability-multiplication.sequential-products"],
+  [
+    "conditional-probability-value",
+    "conditional-probability.restricted-sample-space",
+  ],
+  [
+    "multiplication-rule-probability",
+    "probability-multiplication.sequential-products",
+  ],
 ].map(([templateId, facetId]) => ({
   templateId: templateId!,
   facetId: facetId!,

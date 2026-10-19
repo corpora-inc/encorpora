@@ -1,6 +1,48 @@
 import { registerComponent, type Prim } from "../layout";
-import type { Point, Tree } from "../spec";
+import { z } from "zod";
+import { base, label, type Point } from "../base";
+import { entry } from "./venn";
 import { typeset } from "../type";
+
+const treeOutcome = z
+  .object({
+    label,
+    /** The branch probability. */
+    p: entry,
+    /** The learner finds this probability: drawn as "?" unless revealed. */
+    derived: z.boolean().optional(),
+    /** Text at the end of a complete path, such as its product. */
+    leaf: entry.optional(),
+  })
+  .strict();
+/** A probability tree of one or two stages, drawn left to right. */
+export const treeSchema = z
+  .object({
+    ...base,
+    type: z.literal("tree"),
+    branches: z
+      .array(
+        treeOutcome
+          .extend({ children: z.array(treeOutcome).min(2).max(4).optional() })
+          .strict(),
+      )
+      .min(2)
+      .max(4),
+    /** Each complete path's product in the leaf column, computed from its
+     * branches: masked as the learner's work, or shown. */
+    products: z.enum(["shown", "derived"]).optional(),
+    /** Paths to emphasize: "1" is the second first-stage branch, "1.0" its first child. */
+    highlight: z
+      .array(z.string().regex(/^\d(\.\d)?$/))
+      .max(8)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.branches.reduce((n, b) => n + (b.children?.length ?? 1), 0) <= 10,
+    "At most 10 complete paths",
+  );
+export type Tree = z.infer<typeof treeSchema>;
 
 /** Layout in figure pixels (y down); a tree's size is set by its labels, so
  * math units are pixels divided by the scale. */

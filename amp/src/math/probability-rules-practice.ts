@@ -412,7 +412,6 @@ function eventSetCase(r: Random): Case {
     const nA = counts.a + counts.ab,
       nB = counts.b + counts.ab;
     const words = regionWords(g)[ask];
-    const inCircles = nA + nB - counts.ab;
     const figure = vennOf(g, n)
       .totals(nA, nB)
       .regions({ a: null, ab: counts.ab, b: null, none: null })
@@ -421,14 +420,12 @@ function eventSetCase(r: Random): Case {
         steps:
           ask === "none"
             ? [
-                ...doubleCount(
-                  String(nA),
-                  String(nB),
-                  String(counts.ab),
-                  `${nA} + ${nB} − ${counts.ab} = ${inCircles}`,
-                ).slice(0, 3),
-                lessonStep(
-                  `The rest are outside both circles: ${n} − ${inCircles} = ${counts.none}.`,
+                ...doubleCount(String(nA), String(nB), String(counts.ab)).slice(
+                  0,
+                  3,
+                ),
+                step(
+                  `The rest are outside both circles: take the circles' count from ${n}.`,
                   ...shade(["none"]),
                 ),
               ]
@@ -445,8 +442,8 @@ function eventSetCase(r: Random): Case {
                   ...shade(["ab"], "empty"),
                   act.highlight("v.count.ab"),
                 ),
-                lessonStep(
-                  `${cap(ask === "a" ? g.a.name : g.b.name)} only: ${ask === "a" ? nA : nB} − ${counts.ab} = ${counts[ask]}.`,
+                step(
+                  `What is left is ${ask === "a" ? g.a.name : g.b.name} only: ${ask === "a" ? nA : nB} − ${counts.ab}.`,
                   ...shade([ask]),
                 ),
               ],
@@ -488,8 +485,10 @@ function eventSetCase(r: Random): Case {
           `${expr.symbol(A, B)} ${meaning(expr.key, A, B)}.`,
           ...shade(expr.regions),
         ),
-        lessonStep(
-          `${expr.regions.length > 1 ? `${expr.regions.map((x) => counts[x]).join(" + ")} = ` : ""}${inside}${mode === 1 ? ` of the ${n} ${g.many}` : ""}.`,
+        step(
+          expr.regions.length > 1
+            ? `Add the shaded counts${mode === 1 ? `, then divide by all ${n}` : ""}.`
+            : `Read the shaded count${mode === 1 ? `, then divide by all ${n}` : ""}.`,
           ...expr.regions.map((x) => act.highlight(`v.count.${x}`)),
         ),
       ],
@@ -573,7 +572,7 @@ const shade = (
 /** The addition-rule walkthrough on a Venn diagram with set totals: the first
  * circle, then the second, so the overlap is shaded twice, then the overlap
  * taken away once. */
-function doubleCount(a: string, b: string, ab: string, result: string): Step[] {
+function doubleCount(a: string, b: string, ab: string): Step[] {
   return [
     step(
       `Count the first circle: ${a}.`,
@@ -591,9 +590,7 @@ function doubleCount(a: string, b: string, ab: string, result: string): Step[] {
       ...shade(["a", "ab", "b"], "gold-fill"),
       act.highlight("v.count.ab"),
     ),
-    lessonStep(
-      `Each outcome in the shaded region is now counted once: ${result}.`,
-    ),
+    step("Every outcome in the shaded region now counts once."),
   ];
 }
 
@@ -682,12 +679,7 @@ function additionCase(r: Random): Case {
         .regions({ a: null, ab: c.ab, b: null })
         .scene({
           title: `Venn diagram of ${n} ${g.many}`,
-          steps: doubleCount(
-            String(nA),
-            String(nB),
-            String(c.ab),
-            `${union} of the ${n} ${g.many}, so the probability is ${ratio(union, n)}`,
-          ),
+          steps: doubleCount(String(nA), String(nB), String(c.ab)),
         }),
     };
   }
@@ -722,12 +714,7 @@ function additionCase(r: Random): Case {
     .regions({ a: null, ab: show(p.ab), b: null })
     .scene({
       title: "Venn diagram of two events",
-      steps: doubleCount(
-        show(p.a),
-        show(p.b),
-        show(p.ab),
-        `the probability is ${show(unionP)}`,
-      ),
+      steps: doubleCount(show(p.a), show(p.b), show(p.ab)),
     });
   if (mode === 1)
     return {
@@ -768,8 +755,8 @@ function additionCase(r: Random): Case {
             `${math(`P(A or B) = ${show(unionP)}`)} covers it once.`,
             ...shade(["a", "ab", "b"], "gold-fill"),
           ),
-          lessonStep(
-            `The difference is the overlap: ${math(`${show(add(p.a, p.b))} − ${show(unionP)} = ${show(p.ab)}`)}.`,
+          step(
+            `The difference is the overlap: ${math(`${show(add(p.a, p.b))} − ${show(unionP)}`)}.`,
             act.highlight("v.count.ab"),
           ),
         ],
@@ -891,8 +878,8 @@ function conditionalCase(r: Random): Case {
             `Within it, find the ${s.many} who ${also(askedMany)}.`,
             act.appear(`t.mark.${ri}.${cj}`),
           ),
-          lessonStep(
-            `${part} of the ${whole} in the ${line}: ${ratio(part, whole)}.`,
+          step(
+            `Divide the ringed count by the total of the ${line}.`,
             act.highlight(`t.cell.${ri}.${cj}`),
           ),
         ],
@@ -946,9 +933,7 @@ function conditionalCase(r: Random): Case {
               ...shade(["ab"], "gold-fill"),
               act.highlight("v.count.ab"),
             ),
-            lessonStep(
-              `${c.ab} of the ${whole} in the ${G.name} circle: ${ratio(c.ab, whole)}.`,
-            ),
+            step(`Divide the overlap's count by the whole ${G.name} circle.`),
           ],
         }),
     };

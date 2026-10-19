@@ -27,10 +27,11 @@ import {SceneFigure} from '/src/web/scene/SceneFigure.tsx';
 import {Figure} from '/src/web/Figure.tsx';
 import {GraphicalFigure} from '/src/web/GraphicalFigure.tsx';
 import {ElementaryFigure} from '/src/web/ElementaryFigure.tsx';
+import {EqualGroupsFigure} from '/src/web/EqualGroupsFigure.tsx';
 const theme = new URLSearchParams(location.search).get('theme');
 document.documentElement.dataset.theme = theme || 'light';
 const h = React.createElement;
-const legacy = (f) => f.kind === 'ten-frame' ? h(ElementaryFigure,{figure:f}) : h(GraphicalFigure,{figure:f});
+const legacy = (f) => f.kind === 'ten-frame' || f.kind === 'base-ten' ? h(ElementaryFigure,{figure:f}) : f.kind === 'unit-array' ? h(EqualGroupsFigure,{figure:f}) : h(GraphicalFigure,{figure:f});
 window.__layouts = {};
 const only = new URLSearchParams(location.search).get('only');
 const shown = (c) => !only || c.name.includes(only);
@@ -154,8 +155,36 @@ try {
             ]),
           );
           const boxes: { id: string; b: DOMRect }[] = [];
+          // Glyph boxes: the text (and fraction bars), not a label's backing.
+          const glyphs = (g: SVGGElement) => {
+            const parts = [
+              ...g.querySelectorAll<SVGGraphicsElement>("text, line"),
+            ].map((e) => e.getBBox());
+            const x0 = Math.min(...parts.map((p) => p.x)),
+              y0 = Math.min(...parts.map((p) => p.y)),
+              x1 = Math.max(...parts.map((p) => p.x + p.width)),
+              y1 = Math.max(...parts.map((p) => p.y + p.height));
+            return new DOMRect(x0, y0, x1 - x0, y1 - y0);
+          };
           for (const g of svg.querySelectorAll<SVGGElement>("g[data-label]")) {
-            const b = g.getBBox();
+            const b = glyphs(g);
+            // Math runs sit at TeX spacing: no gap wider than a thick space.
+            const spans = [...g.querySelectorAll<SVGTSpanElement>("tspan")];
+            for (let i = 0; i + 1 < spans.length; i++) {
+              const a = spans[i]!,
+                c = spans[i + 1]!;
+              const size = parseFloat(getComputedStyle(a).fontSize);
+              const gap =
+                c.getStartPositionOfChar(0).x -
+                a.getEndPositionOfChar(a.getNumberOfChars() - 1).x;
+              if (
+                Math.abs(a.y.baseVal[0]!.value - c.y.baseVal[0]!.value) < 0.5 &&
+                (gap > 0.3 * size + 1 || gap < -1)
+              )
+                found.push(
+                  `${card.id}: label ${g.getAttribute("data-id")} "${g.textContent}" has a ${gap.toFixed(1)} px gap before "${c.textContent}"`,
+                );
+            }
             const id = g.getAttribute("data-id")!;
             if (
               b.x < v.x - 1 ||
@@ -172,6 +201,51 @@ try {
                 `${card.id}: label ${id} "${g.textContent}" measures ${b.width.toFixed(1)} > estimate ${est.toFixed(1)}`,
               );
             boxes.push({ id, b });
+          }
+          // No stroke (axis, arrowhead, line, curve, boundary) crosses a label.
+          const strokes = [
+            ...svg.querySelectorAll<SVGGeometryElement>("line, path"),
+          ].filter(
+            (e) =>
+              !e.closest("g[data-label]") &&
+              !/\.grid\.|region/.test(e.getAttribute("data-id") ?? "") &&
+              (e.getAttribute("stroke") ?? "none") !== "none",
+          );
+          const samples: [number, number][] = [];
+          for (const e of strokes) {
+            const len = e.getTotalLength();
+            if (!(len > 0)) continue;
+            const n = Math.max(1, Math.min(800, Math.ceil(len / 1.5)));
+            for (let i = 0; i <= n; i++) {
+              const p = e.getPointAtLength((len * i) / n);
+              samples.push([p.x, p.y]);
+            }
+          }
+          for (const g of svg.querySelectorAll<SVGGElement>("g[data-label]")) {
+            // A label on a paper backing hides the stroke beneath it.
+            if (g.querySelector("rect")) continue;
+            const t = g.querySelector("text")!.getBBox();
+            const x0 = t.x + 1,
+              x1 = t.x + t.width - 1,
+              y0 = t.y + t.height * 0.22,
+              y1 = t.y + t.height * 0.86;
+            if (samples.some(([x, y]) => x > x0 && x < x1 && y > y0 && y < y1))
+              found.push(
+                `${card.id}: a stroke crosses label ${g.getAttribute("data-id")} "${g.textContent}"`,
+              );
+          }
+          // A coordinate plane fills most of its figure: labels do not starve it.
+          const xAxis = svg.querySelector<SVGLineElement>(
+            'line[data-id$=".axis.x"]',
+          );
+          if (xAxis && card.id.startsWith("case-")) {
+            const span = Math.abs(
+              xAxis.x2.baseVal.value - xAxis.x1.baseVal.value,
+            );
+            if (span < 0.55 * v.width)
+              found.push(
+                `${card.id}: plot spans ${((span / v.width) * 100).toFixed(0)}% of the figure width`,
+              );
           }
           // Ink boxes: getBBox includes the font's internal leading, so trim it.
           const ink = (b: DOMRect) => ({

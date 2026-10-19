@@ -1,6 +1,33 @@
 import { registerComponent, type Prim } from "../layout";
-import type { Point, Venn } from "../spec";
+import { z } from "zod";
+import { base, label } from "../base";
+import type { Point } from "../base";
 import { typeset } from "../type";
+
+/** A value written in a figure (a count, a probability); null is the unknown,
+ * drawn as "?". Unknowns carry no value, so a problem payload never holds one. */
+export const entry = z.union([label, z.null()]);
+export const vennRegions = ["a", "ab", "b", "none"] as const;
+/** Two events in a sample space: counts or probabilities by region. */
+export const vennSchema = z
+  .object({
+    ...base,
+    type: z.literal("venn"),
+    sets: z.tuple([label, label]),
+    /** Names the sample space inside its rectangle's corner. */
+    universe: label.optional(),
+    /** a: first only; ab: both; b: second only; none: neither. */
+    regions: z
+      .object({ a: entry, ab: entry, b: entry, none: entry })
+      .partial()
+      .strict()
+      .optional(),
+    /** Each whole set's total, beside its name. */
+    totals: z.tuple([entry, entry]).optional(),
+    shade: z.array(z.enum(vennRegions)).max(4).optional(),
+  })
+  .strict();
+export type Venn = z.infer<typeof vennSchema>;
 
 /** Fixed geometry in math units: a 10 × 7 sample-space rectangle holding two
  * equal circles that overlap in a lens. */

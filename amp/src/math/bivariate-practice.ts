@@ -11,7 +11,14 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice.js";
-import { graph, table as tableScene } from "./scene/author.js";
+import {
+  act,
+  graph,
+  lessonStep,
+  step,
+  table as tableScene,
+} from "./scene/author.js";
+import type { Step } from "./scene/timeline.js";
 
 type Axis = { label: string; start: number; end: number; step: number };
 /** A scatter plot scene: the data on a grid with unlike x and y steps. */
@@ -33,6 +40,68 @@ function scatterScene(
   for (const [px, py] of line?.marks ?? [])
     g = g.point(px, py, undefined, { open: true });
   return { kind: "scene", scene: g.scene() };
+}
+
+/** The trend-line scene and its walkthrough. Lesson steps compare a flat line
+ * at the typical y with the trend line, gap by gap, and (for a prediction)
+ * reveal the predicted value; the slope triangle is the step a hint shows. */
+function trendScene(
+  c: { x: Axis; y: Axis; names: readonly [string, string] },
+  points: Point[],
+  m: number,
+  b: number,
+  marks: [Point, Point],
+  predict?: number,
+): SemanticFigure {
+  const level = Math.round(
+    points.reduce((a, [, y]) => a + y, 0) / points.length,
+  );
+  const gaps = (line: (x: number) => number) =>
+    points.reduce((a, [x, y]) => a + Math.abs(y - line(x)), 0);
+  const [[x1, y1], [x2, y2]] = marks;
+  let g = graph({
+    id: "g",
+    x: [c.x.start, c.x.end],
+    y: [c.y.start, c.y.end],
+    grid: [c.x.step, c.y.step],
+    tick: [c.x.step, c.y.step],
+    axisNames: [c.x.label, c.y.label],
+    aspect: (0.72 * (c.x.end - c.x.start)) / (c.y.end - c.y.start),
+  });
+  g = g
+    .scatter(points, { m, b }, true)
+    .trial(0, level)
+    .slope(marks[0], marks[1], "shown");
+  if (predict !== undefined) g = g.predict(predict);
+  for (const [px, py] of marks) g = g.point(px, py, undefined, { open: true });
+  const steps = [
+    lessonStep(
+      `A flat line at ${level} ignores the trend: the gaps from the points to it add up to ${gaps(() => level)}.`,
+      act.appear("g.trial"),
+    ),
+    lessonStep(
+      `The trend line follows the points: its gaps add up to only ${gaps((x) => b + m * x)}.`,
+      act.disappear("g.trial"),
+      act.highlight("g.fit"),
+      act.appear("g.residual"),
+    ),
+    step(
+      `Between the marked points, ${c.names[0]} changes by {g.slope.0.run.label} and ${c.names[1]} by {g.slope.0.rise.label}: slope = rise ÷ run.`,
+      act.appear("g.slope.0"),
+      act.highlight("g.point"),
+    ),
+    predict === undefined
+      ? lessonStep(
+          `Slope = ${signed(y2 - y1)} ÷ ${x2 - x1} = ${signed(m)}: the change in ${c.names[1]} for each 1 more of ${c.names[0]}.`,
+          act.highlight("g.fit"),
+        )
+      : lessonStep(
+          `Follow the line to ${c.names[0]} = ${predict}: it predicts {g.predict.label}.`,
+
+          act.appear("g.predict"),
+        ),
+  ];
+  return { kind: "scene", scene: g.scene({ steps }) };
 }
 
 /** Grade 8 statistics: patterns in scatter plots, trend lines as models, and
@@ -385,14 +454,12 @@ function trendData(r: Random) {
     const points: Point[] = shuffle(r, usable)
       .slice(0, n)
       .map((x) => [x, Math.round(f(x) + r(-c.noise, c.noise))]);
-    const figure = scatterScene(c.x, c.y, points, {
-      m,
-      b,
-      marks: [
-        [x1, f(x1)],
-        [x2, f(x2)],
-      ],
-    });
+    const marks: [Point, Point] = [
+      [x1, f(x1)],
+      [x2, f(x2)],
+    ];
+    const figure = (predict?: number) =>
+      trendScene(c, points, m, b, marks, predict);
     return { c, m, b, f, x1, x2, n, figure, inY };
   }
 }
@@ -405,7 +472,7 @@ function trendPredict(r: Random): Draft {
   const [y1, y2] = [f(x1), f(x2)];
   return {
     prompt: `The scatter plot shows ${c.describe(n)}, with a trend line through (${x1}, ${y1}) and (${x2}, ${y2}). ${c.ask(X)}`,
-    figure,
+    figure: figure(X),
     answer: `${f(X)}`,
     hint: `Slope = change in ${c.names[1]} ÷ change in ${c.names[0]} between the marked points. Then move from (${x1}, ${y1}) to ${X}.`,
     explanation: [
@@ -423,7 +490,7 @@ function slopeMeaning(r: Random): Draft {
   const correct = c.rate(size, m > 0);
   return {
     prompt: `The scatter plot shows ${c.describe(n)}, with a trend line through (${x1}, ${f(x1)}) and (${x2}, ${f(x2)}). What does the slope of the trend line mean?`,
-    figure,
+    figure: figure(),
     answer: "",
     hint: `Find the slope: change in ${c.names[1]} ÷ change in ${c.names[0]}, from (${x1}, ${f(x1)}) to (${x2}, ${f(x2)}). The slope is the change in ${c.names[1]} for each 1 more of ${c.names[0]}.`,
     explanation: [
@@ -492,6 +559,7 @@ function table(
   c: (typeof tableContexts)[number],
   counts: [[number, number], [number, number]],
   hide: (r: number, col: number) => Cell | undefined = () => undefined,
+  steps?: Step[],
 ): SemanticFigure {
   const rowTotals = counts.map((row) => row[0] + row[1]),
     columnTotals = [0, 1].map((j) => counts[0][j]! + counts[1][j]!);
@@ -502,6 +570,7 @@ function table(
     return hidden === undefined ? counts[i]![j]! : null;
   };
   const scene = tableScene({
+    id: "t",
     title: c.columnTitle,
     columns: ["Yes", "No", "Total"],
     rows: [
@@ -518,7 +587,7 @@ function table(
     ],
     sums: true,
     ...(derived.length ? { derived } : {}),
-  }).scene();
+  }).scene(steps ? { steps } : {});
   return { kind: "scene", scene };
 }
 
@@ -530,8 +599,28 @@ function twoWayMissing(r: Random): Draft {
   ];
   const [i, j] = [r(0, 1), r(0, 1)];
   // The target's row-mate is blank too, so the target comes from its column.
-  const figure = table(c, counts, (a, b) =>
-    a === i && b === j ? "?" : a === i ? null : undefined,
+  const figure = table(
+    c,
+    counts,
+    (a, b) => (a === i && b === j ? "?" : a === i ? null : undefined),
+    [
+      step(
+        `The ${c.rows[i]} row has two blanks, so use the “${j === 0 ? "Yes" : "No"}” column.`,
+        act.highlight(`t.column.${j}`),
+        act.highlight(`t.cell.0.${j}`),
+        act.highlight(`t.cell.1.${j}`),
+        act.highlight(`t.cell.2.${j}`),
+      ),
+      step(
+        `Its total minus the ${c.rows[1 - i]} count: {t.cell.2.${j}} − {t.cell.${1 - i}.${j}}.`,
+        act.highlight(`t.cell.2.${j}`),
+        act.highlight(`t.cell.${1 - i}.${j}`),
+      ),
+      lessonStep(
+        `${c.nouns[i][0]!.toUpperCase()}${c.nouns[i].slice(1)} who ${j === 0 ? c.trait : c.not}: {t.cell.${i}.${j}}.`,
+        act.highlight(`t.cell.${i}.${j}`),
+      ),
+    ],
   );
   const colTotal = counts[0][j]! + counts[1][j]!,
     other = counts[1 - i]![j]!,
@@ -579,7 +668,14 @@ function twoWayPercent(r: Random): Draft {
   const i = r(0, 1);
   return {
     prompt: `${c.intro} What percent of the ${c.nouns[i]} ${c.trait}?`,
-    figure: table(c, counts),
+    figure: table(c, counts, undefined, [
+      step(
+        `Only the ${c.rows[i]} row: ${counts[i]![0]} “Yes” out of a row total of ${totals[i]}.`,
+        act.highlight(`t.row.${i}`),
+        act.highlight(`t.cell.${i}.0`),
+        act.highlight(`t.cell.${i}.2`),
+      ),
+    ]),
     answer: `${ps[i]}`,
     hint: `Stay in the ${c.rows[i]} row: divide its “Yes” count by its row total, ${totals[i]}, not by the table total.`,
     explanation: [
@@ -618,7 +714,19 @@ function twoWayAssociation(r: Random): Draft {
   const countFeedback = `The groups have different sizes (${totals[0]} and ${totals[1]}), so counts mislead. Compare percents within each row: ${percents}.`;
   return {
     prompt: `${c.intro} Is there an association between the group and whether they ${c.trait}?`,
-    figure: table(c, counts as [[number, number], [number, number]]),
+    figure: table(
+      c,
+      counts as [[number, number], [number, number]],
+      undefined,
+      [0, 1].map((k) =>
+        step(
+          `${c.rows[k]}: ${counts[k]![0]} “Yes” out of ${totals[k]}.`,
+          act.highlight(`t.row.${k}`),
+          act.highlight(`t.cell.${k}.0`),
+          act.highlight(`t.cell.${k}.2`),
+        ),
+      ),
+    ),
     answer: "",
     hint: `The rows have different totals, ${totals[0]} and ${totals[1]}. Turn each row’s “Yes” count into a percent of its own row before comparing.`,
     explanation: [

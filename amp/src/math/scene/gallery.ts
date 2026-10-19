@@ -10,8 +10,10 @@ import {
   fractionBar,
   graph,
   numberLine,
+  rowBars,
   polyArea,
   table,
+  lineTable,
   tenFrame,
   tree,
   venn,
@@ -418,6 +420,42 @@ export const galleryCases: GalleryCase[] = [
       .scene(),
   },
   {
+    name: "Scatter plot: a flat trial line, the trend line and a prediction (lesson)",
+    reveal: true,
+    scene: graph({
+      id: "g",
+      x: [0, 10],
+      y: [0, 30],
+      grid: [1, 5],
+      aspect: 0.24,
+      axisNames: ["age (years)", "value (thousand $)"],
+    })
+      .scatter(
+        [
+          [1, 26],
+          [3, 21],
+          [5, 18],
+          [7, 12],
+          [9, 5],
+        ],
+        { m: -2, b: 26 },
+        true,
+      )
+      .trial(0, 16)
+      .predict(6)
+      .scene(),
+  },
+  {
+    name: "Row bars: counts on one scale, then each row as 100%",
+    scene: rowBars({
+      parts: ["Yes", "No"],
+      rows: [
+        { label: "Grade 7", counts: [18, 2] },
+        { label: "Grade 8", counts: [24, 36] },
+      ],
+    }).scene(),
+  },
+  {
     name: "Two-way table: the cell to find (problem)",
     scene: table({
       title: "Has a curfew",
@@ -445,6 +483,51 @@ export const galleryCases: GalleryCase[] = [
       sums: true,
       derived: [[1, 0]],
     }).scene(),
+  },
+  {
+    name: "Line table: a function's values, one to find",
+    scene: lineTable(
+      [
+        ["x", "0", "1", "2", "3", "4"],
+        ["f(x)", "5", "8", "11", { text: "14", derived: true }, "17"],
+      ],
+      { highlight: [1, 4] },
+    ).scene({ title: "Values of f" }),
+  },
+  {
+    name: "Line table: equation steps with their reasons",
+    scene: lineTable(
+      [
+        ["3(x − 4) = 18", "Given"],
+        ["3x − 12 = 18", "Distributive property"],
+        ["3x = 30", { text: "Addition property of equality", derived: true }],
+        ["x = 10", "Division property of equality"],
+      ],
+      { header: "none", rules: "rows", align: ["left", "left"] },
+    ).scene({ title: "Solving 3(x − 4) = 18" }),
+  },
+  {
+    name: "Line table: two equations stacked and added (lesson)",
+    reveal: true,
+    scene: lineTable(
+      [
+        ["", "2x", "+ 3y", "=", "12"],
+        ["+", "x", "− 3y", "=", "3"],
+        [
+          "",
+          { text: "3x", derived: true },
+          "",
+          "=",
+          { text: "15", derived: true },
+        ],
+      ],
+      {
+        header: "none",
+        rules: "rows",
+        total: 2,
+        align: ["center", "right", "left", "center", "right"],
+      },
+    ).scene({ title: "Adding the equations" }),
   },
 ];
 
@@ -476,4 +559,8 @@ export const parityFigures: SemanticFigure[] = [
   },
   { kind: "ten-frame", first: 7, second: 2, capacity: 10 },
   { kind: "ten-frame", first: 9, second: 6, capacity: 20 },
+  { kind: "base-ten", hundreds: 2, tens: 4, ones: 7 },
+  { kind: "base-ten", hundreds: 0, tens: 13, ones: 6 },
+  { kind: "unit-array", rows: 7, columns: 6, splitAfterRow: 4 },
+  { kind: "unit-array", rows: 3, columns: 9 },
 ];

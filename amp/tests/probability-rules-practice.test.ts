@@ -8,11 +8,7 @@ import { generateProblem, gradeAnswer } from "../src/math/engine.js";
 import { semanticFigureSchema } from "../src/math/contracts.js";
 import { templateRole } from "../src/learning/placement.js";
 import { layoutScene } from "../src/math/scene/index.js";
-import {
-  captionText,
-  missingTargets,
-  visibleSteps,
-} from "../src/math/scene/timeline.js";
+import { captionText, missingTargets } from "../src/math/scene/timeline.js";
 import { lessonScenes } from "../src/content/lesson-scenes.js";
 
 const SEEDS = 200;
@@ -118,8 +114,10 @@ test("walkthroughs name real elements, and hint captions never state the answer"
         const layout = layoutScene(f.scene, { reveal });
         assert.deepEqual(missingTargets(layout, f.scene.steps), [], t.id);
       }
+      // No caption, in a hint or a lesson, states the answer unless the
+      // prompt does; every masked label reads "?".
       const masked = layoutScene(f.scene);
-      for (const s of visibleSteps(f.scene.steps, "hint")) {
+      for (const s of f.scene.steps) {
         const caption = captionText(masked, s.caption);
         for (const a of plainAnswer(problem.answer))
           assert.ok(
@@ -129,6 +127,8 @@ test("walkthroughs name real elements, and hint captions never state the answer"
             `${t.id}: "${caption}" states ${a}`,
           );
       }
+      for (const d of masked.items)
+        if (d.k === "text" && d.masked) assert.equal(d.plain, "?");
     }
   assert.ok(walkthroughs > 400);
 });
