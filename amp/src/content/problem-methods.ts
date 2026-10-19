@@ -169,7 +169,7 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "16 − 9: remove 6 to reach 10, then 3 more. 10 − 3 = 7.",
   },
   "unknown-addend-story": {
-    goal: "Given a starting amount and the amount after more were added, find how many were added.",
+    goal: "Given a starting amount and a total, find the missing addend.",
     method: [
       "Write it as start + ? = total.",
       "Count up from the start to the total, or subtract: total − start.",
@@ -507,14 +507,14 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Subtract the total cost, not the price of one item.",
   },
   "two-step-change": {
-    goal: "Given a starting amount, an amount added, and an amount removed, find what remains.",
+    goal: "Given a story with two changes, find the result, the missing change, or the start.",
     method: [
-      "Start with the first amount.",
-      "Add the amount that was added.",
-      "Take the amount removed away from that new total.",
+      "Write the changes in order: start, first change, second change, end.",
+      "To find the end, apply the first change, then apply the second to that new amount.",
+      "To find a missing change or start, work from what you know: undo a change by doing the opposite.",
     ],
     watch:
-      "Do the changes in the order they happen: add first, then subtract from the new total.",
+      "Apply each change to the amount the last change made, never to the original start.",
   },
   // Measurement, perimeter, area
   "shifted-ruler-length": {

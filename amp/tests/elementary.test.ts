@@ -1,3 +1,4 @@
+import { earlyOperationsTemplates } from "../src/math/early-operations-practice";
 import assert from "node:assert/strict";
 import test from "node:test";
 import React from "react";
@@ -22,10 +23,10 @@ import { skills, standards } from "../src/curriculum/catalog.js";
 import { Figure } from "../src/web/Figure.js";
 import { publicationHtml } from "../src/content/publications.js";
 
-test("24 elementary families have grade-specific catalog, lesson and public engine bindings", () => {
-  assert.equal(elementaryTemplates.length, 24);
+test("19 elementary families have grade-specific catalog, lesson and public engine bindings", () => {
+  assert.equal(elementaryTemplates.length, 19);
   assert.equal(elementaryLessons.length, 12);
-  assert.equal(new Set(elementaryTemplates.map((t) => t.id)).size, 24);
+  assert.equal(new Set(elementaryTemplates.map((t) => t.id)).size, 19);
   for (const template of elementaryTemplates) {
     assert.ok(skills.some((skill) => skill.id === template.skillId));
     assert.ok(templates.some((t) => t.id === template.id));
@@ -42,7 +43,7 @@ test("24 elementary families have grade-specific catalog, lesson and public engi
   }
 });
 
-test("bounded public models validate across 12288 variants, with important edge cases observed", () => {
+test("bounded public models validate across 9728 variants, with important edge cases observed", () => {
   const seen = new Set<string>();
   for (const template of elementaryTemplates)
     for (let seed = 0; seed < 512; seed++) {
@@ -194,7 +195,12 @@ test("source matrix covers all33 numbered standards plus5 components and retains
       ),
     );
     for (const id of requirement.templateIds)
-      assert.ok(elementaryTemplates.some((t) => t.id === id));
+      assert.ok(
+        [...elementaryTemplates, ...earlyOperationsTemplates].some(
+          (t) => t.id === id,
+        ),
+        id,
+      );
   }
 });
 
