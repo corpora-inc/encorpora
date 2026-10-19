@@ -14,6 +14,8 @@ import { ratioRateTemplates } from "../math/ratio-rate-practice";
 import { factArrayTemplates } from "../math/fact-arrays-practice";
 import { patternFunctionWorksheet } from "./pattern-function-worksheets";
 import { linearFunctionWorksheet } from "./linear-function-worksheets";
+import { quadraticStructureWorksheet } from "./quadratic-structure-worksheets";
+import { quadraticStructureTemplates } from "../math/quadratic-structure-practice";
 import { linearFunctionTemplates } from "../math/linear-function-practice";
 import { patternFunctionTemplates } from "../math/pattern-function-practice";
 import { equationWorksheet } from "./equation-worksheets";
@@ -93,54 +95,48 @@ export function publicationHtml(
                 ? ratioRateWorksheet(id, lesson.id, edition)
                 : linearFunctionTemplates.some((t) => t.id === id)
                   ? linearFunctionWorksheet(id, lesson.id, edition)
-                  : patternFunctionTemplates.some((t) => t.id === id)
-                    ? patternFunctionWorksheet(id, lesson.id, edition)
-                    : equationTemplates.some((t) => t.id === id)
-                      ? equationWorksheet(id, lesson.id, edition)
-                      : distinctWorksheetTemplates.some((t) => t.id === id)
-                        ? distinctWorksheet(id, lesson.id, edition)
-                        : combinatoricsTemplates.some((t) => t.id === id)
-                          ? combinatoricsWorksheet(id, lesson.id, edition)
-                          : radicalTemplates.some((t) => t.id === id)
-                            ? radicalWorksheet(id, lesson.id, edition)
-                            : rationalTemplates.some((t) => t.id === id)
-                              ? rationalWorksheet(id, lesson.id, edition)
-                              : circleMeasurementTemplates.some(
-                                    (t) => t.id === id,
-                                  )
-                                ? circleMeasurementWorksheet(
-                                    id,
-                                    lesson.id,
-                                    edition,
-                                  )
-                                : integerExponentTemplates.some(
+                  : quadraticStructureTemplates.some((t) => t.id === id)
+                    ? quadraticStructureWorksheet(id, lesson.id, edition)
+                    : patternFunctionTemplates.some((t) => t.id === id)
+                      ? patternFunctionWorksheet(id, lesson.id, edition)
+                      : equationTemplates.some((t) => t.id === id)
+                        ? equationWorksheet(id, lesson.id, edition)
+                        : distinctWorksheetTemplates.some((t) => t.id === id)
+                          ? distinctWorksheet(id, lesson.id, edition)
+                          : combinatoricsTemplates.some((t) => t.id === id)
+                            ? combinatoricsWorksheet(id, lesson.id, edition)
+                            : radicalTemplates.some((t) => t.id === id)
+                              ? radicalWorksheet(id, lesson.id, edition)
+                              : rationalTemplates.some((t) => t.id === id)
+                                ? rationalWorksheet(id, lesson.id, edition)
+                                : circleMeasurementTemplates.some(
                                       (t) => t.id === id,
                                     )
-                                  ? integerExponentWorksheet(
+                                  ? circleMeasurementWorksheet(
                                       id,
                                       lesson.id,
                                       edition,
                                     )
-                                  : descriptiveStatisticsTemplates.some(
+                                  : integerExponentTemplates.some(
                                         (t) => t.id === id,
                                       )
-                                    ? descriptiveStatisticsWorksheet(
+                                    ? integerExponentWorksheet(
                                         id,
                                         lesson.id,
                                         edition,
                                       )
-                                    : percentChangeTemplates.some(
+                                    : descriptiveStatisticsTemplates.some(
                                           (t) => t.id === id,
                                         )
-                                      ? percentChangeWorksheet(
+                                      ? descriptiveStatisticsWorksheet(
                                           id,
                                           lesson.id,
                                           edition,
                                         )
-                                      : linearSystemTemplates.some(
+                                      : percentChangeTemplates.some(
                                             (t) => t.id === id,
                                           )
-                                        ? linearSystemWorksheet(
+                                        ? percentChangeWorksheet(
                                             id,
                                             lesson.id,
                                             edition,
@@ -153,35 +149,43 @@ export function publicationHtml(
                                               lesson.id,
                                               edition,
                                             )
-                                          : inequalityTemplates.some(
+                                          : linearSystemTemplates.some(
                                                 (t) => t.id === id,
                                               )
-                                            ? inequalityWorksheet(
+                                            ? linearSystemWorksheet(
                                                 id,
                                                 lesson.id,
                                                 edition,
                                               )
-                                            : absoluteValueTemplates.some(
+                                            : inequalityTemplates.some(
                                                   (t) => t.id === id,
                                                 )
-                                              ? absoluteValueWorksheet(
+                                              ? inequalityWorksheet(
                                                   id,
                                                   lesson.id,
                                                   edition,
                                                 )
-                                              : (rightTriangleWorksheetProblems(
-                                                  id,
-                                                  lesson.id,
-                                                  edition,
-                                                ) ??
-                                                Array.from(
-                                                  { length: 12 },
-                                                  (_, i) =>
-                                                    generateProblem(
-                                                      id,
-                                                      `print:${lesson.id}:${edition}:${i}`,
-                                                    ),
-                                                )),
+                                              : absoluteValueTemplates.some(
+                                                    (t) => t.id === id,
+                                                  )
+                                                ? absoluteValueWorksheet(
+                                                    id,
+                                                    lesson.id,
+                                                    edition,
+                                                  )
+                                                : (rightTriangleWorksheetProblems(
+                                                    id,
+                                                    lesson.id,
+                                                    edition,
+                                                  ) ??
+                                                  Array.from(
+                                                    { length: 12 },
+                                                    (_, i) =>
+                                                      generateProblem(
+                                                        id,
+                                                        `print:${lesson.id}:${edition}:${i}`,
+                                                      ),
+                                                  )),
   );
   const kindLabel =
     kind === "lesson"

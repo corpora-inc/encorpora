@@ -12,6 +12,7 @@ import type { Graph, Point } from "../math/scene/spec";
 
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
+import { quadraticStructureIllustrations } from "./quadratic-structure-illustrations";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
@@ -167,6 +168,7 @@ export const sceneIllustrations = {
     .scene({
       title: "Solutions of 2x + 3y = 12 lie on its line; (4, 4) does not",
     }),
+  ...quadraticStructureIllustrations,
 } as const satisfies Record<string, Scene>;
 export type SceneIllustration = keyof typeof sceneIllustrations;
 export const isSceneIllustration = (kind: string): kind is SceneIllustration =>

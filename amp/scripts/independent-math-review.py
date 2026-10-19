@@ -43,6 +43,7 @@ from real_number_math_oracle import REAL_NUMBER, REAL_NUMBER_CHOICE, solve_real_
 from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve_number_system, review_number_system_fixtures, review_problem as review_number_system_problem, review_number_system_content, review_content_mutations as review_number_system_mutations
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
 from linear_function_math_oracle import LINEAR_FUNCTION, LINEAR_FUNCTION_CHOICE, solve_linear_function, review_linear_function_fixtures, review_problem as review_linear_function_problem, review_linear_function_content, review_content_mutations as review_linear_function_mutations
+from quadratic_structure_math_oracle import QUADRATIC_STRUCTURE, QUADRATIC_STRUCTURE_CHOICE, solve_quadratic_structure, review_quadratic_structure_fixtures, review_problem as review_quadratic_structure_problem, review_quadratic_structure_content, review_content_mutations as review_quadratic_structure_mutations
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
@@ -77,6 +78,7 @@ SUPPORTED = ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTIC
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
+SUPPORTED |= QUADRATIC_STRUCTURE
 
 
 def require(condition, message):
@@ -94,6 +96,8 @@ def solve(public):
         return solve_complete_square(public)
     if template in LINEAR_FUNCTION:
         return solve_linear_function(public)
+    if template in QUADRATIC_STRUCTURE:
+        return solve_quadratic_structure(public)
     if template in ANGLE_TRIANGLE:
         return solve_angle_triangle(public)
     if template in REAL_NUMBER:
@@ -367,6 +371,8 @@ def review(stream):
     review_completing_square_content_fixtures()
     review_linear_function_fixtures()
     review_linear_function_mutations()
+    review_quadratic_structure_fixtures()
+    review_quadratic_structure_mutations()
     review_angle_triangle_fixtures()
     review_real_number_fixtures()
     review_real_number_mutations()
@@ -482,6 +488,8 @@ def review(stream):
             review_pattern_function_problem(problem)
         if template in LINEAR_FUNCTION:
             review_linear_function_problem(problem)
+        if template in QUADRATIC_STRUCTURE:
+            review_quadratic_structure_problem(problem)
         if template in EQUATIONS:
             review_equation_problem(problem)
         if template in COMBINATORICS:
@@ -512,7 +520,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in QUADRATIC_STRUCTURE_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -537,6 +545,7 @@ def review(stream):
     print('Independent multiply-divide coverage: ' + json.dumps(multiply_divide_corpus.finish()), file=sys.stderr)
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
     print('Independent Algebra 1 function content: ' + json.dumps(review_linear_function_content()), file=sys.stderr)
+    print('Independent quadratic-structure content: ' + json.dumps(review_quadratic_structure_content()), file=sys.stderr)
     print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)

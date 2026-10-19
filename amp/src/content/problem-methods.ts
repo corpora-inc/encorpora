@@ -4,6 +4,7 @@ import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { linearFunctionMethods } from "./linear-function-lessons";
+import { quadraticStructureMethods } from "./quadratic-structure-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
@@ -77,6 +78,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...ratioRateMethods,
   ...patternFunctionMethods,
   ...linearFunctionMethods,
+  ...quadraticStructureMethods,
   ...equationMethods,
   ...rationalMethods,
   ...circleMeasurementMethods,
