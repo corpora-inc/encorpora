@@ -25,6 +25,7 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
 from polygon_math_oracle import POLYGONS, POLYGONS_CHOICE, solve_polygon, review_polygon_fixtures, review_polygon_problem
 from angle_math_oracle import ANGLES, ANGLES_CHOICE, solve_angle, review_angle_fixtures, review_angle_problem
 from shape_math_oracle import SHAPES, SHAPES_CHOICE, solve_shape, review_shape_fixtures, review_shape_problem
@@ -73,7 +74,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES
+SUPPORTED = ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | PROBABILITY_RULES
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
@@ -110,6 +111,8 @@ def solve(public):
         return solve_angle(public)
     if template in POLYGONS:
         return solve_polygon(public)
+    if template in PROBABILITY_RULES:
+        return solve_probability_rules(public)
     if template in PATTERN_FUNCTION:
         return solve_pattern_function(public)
     if template in EQUATIONS:
@@ -378,6 +381,7 @@ def review(stream):
     review_shape_fixtures()
     review_angle_fixtures()
     review_polygon_fixtures()
+    review_probability_rules_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
     review_equation_fixtures()
@@ -528,6 +532,8 @@ def review(stream):
             review_angle_problem(problem)
         if template in POLYGONS:
             review_polygon_problem(problem)
+        if template in PROBABILITY_RULES:
+            review_probability_rules_problem(problem, solved)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent completing-square coverage: ' + json.dumps(completing_square_review.finish(count)), file=sys.stderr)
