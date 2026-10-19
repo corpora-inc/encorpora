@@ -66,6 +66,7 @@ import { ChooseHowToPay } from "../ChooseHowToPay";
 import { chosenPlan, storedTrial } from "../lib/pending-trial";
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
+import { LandingView } from "../lib/LandingView";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
@@ -1261,6 +1262,7 @@ function LegacyScreen() {
         />
       ) : !token ? (
         <section className="card welcome">
+          {!nativeRuntime && <LandingView />}
           <h2>
             {nativeRuntime
               ? "Sign in to continue."

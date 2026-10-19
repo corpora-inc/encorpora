@@ -24,6 +24,7 @@ import { annualOffer } from "../src/billing/stripe/purchase.js";
 import { accountSummary } from "../src/account/repository.js";
 import { enrollmentViewSchema } from "../src/billing/stripe/enrollment-contracts.js";
 import type { AnnualPayment } from "../src/billing/stripe/model.js";
+import { recordEventBatch } from "../src/analytics/repository.js";
 
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 async function fixture(
@@ -1108,5 +1109,117 @@ test(
         ).unassignedPurchase,
         undefined,
       );
+    }),
+);
+
+test(
+  "funnel: the verified webhook writes one attributed purchase and one refund; the checkout link is erased",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      const visitorId = randomUUID();
+      await recordEventBatch(f.pool, {
+        visitorId,
+        events: [
+          {
+            event: "landing_view",
+            props: { referrer: "search", device: "phone", utmSource: "fall" },
+            at: 1,
+          },
+        ],
+      });
+      const app = Fastify();
+      try {
+        await registerStripeRoutes(app, {
+          pool: f.pool,
+          config: f.config,
+          consentPolicy: f.policy,
+          gateway: f.gateway,
+          authenticate: async () => "parent",
+        });
+        const started = await app.inject({
+          method: "POST",
+          url: "/api/v1/billing/enrollment/checkout",
+          headers: { "x-amp-visitor": visitorId },
+          payload: {
+            requestId: randomUUID(),
+            offerId: annualOffer(f.config).id,
+            interval: "year",
+            acknowledgement: f.acknowledge,
+          },
+        });
+        assert.equal(started.statusCode, 200);
+      } finally {
+        await app.close();
+      }
+      const row = (await f.pool.query("SELECT * FROM amp_stripe_checkouts"))
+        .rows[0];
+      assert.equal(
+        (
+          await f.pool.query(
+            "SELECT visitor_id FROM amp_funnel_checkouts WHERE checkout_id=$1",
+            [row.id],
+          )
+        ).rows[0].visitor_id,
+        visitorId,
+      );
+      const funnel = async () =>
+        (
+          await f.pool.query(
+            "SELECT event,visitor_id,props FROM amp_funnel_events WHERE event IN ('purchase','refund') ORDER BY id",
+          )
+        ).rows;
+      // A browser cannot claim a purchase: only the verified webhook writes it.
+      assert.deepEqual(await funnel(), []);
+      const p = f.settle(row);
+      assert.deepEqual(await f.deliver(p), { processed: 1, failed: 0 });
+      assert.deepEqual(await f.deliver(p), { processed: 1, failed: 0 });
+      assert.deepEqual(await funnel(), [
+        {
+          event: "purchase",
+          visitor_id: visitorId,
+          props: { interval: "year" },
+        },
+      ]);
+      const link = (
+        await f.pool.query(
+          "SELECT visitor_id,purchase_recorded FROM amp_funnel_checkouts",
+        )
+      ).rows[0];
+      assert.equal(link.visitor_id, null);
+      assert.equal(link.purchase_recorded, true);
+      assert.ok(
+        (
+          await f.pool.query(
+            "SELECT converted_on FROM amp_funnel_visitors WHERE visitor_id=$1",
+            [visitorId],
+          )
+        ).rows[0].converted_on,
+      );
+      p.fullRefundAt = p.paidAt;
+      f.gateway.invoiceFromCharge = async () => p.invoiceId;
+      await f.deliver(p, "charge.refunded");
+      await f.deliver(p, "charge.refunded");
+      assert.deepEqual(await funnel(), [
+        {
+          event: "purchase",
+          visitor_id: visitorId,
+          props: { interval: "year" },
+        },
+        { event: "refund", visitor_id: null, props: { full: true } },
+      ]);
+      // No funnel row carries an account, checkout, invoice or learner.
+      const columns = (
+        await f.pool.query(
+          "SELECT column_name FROM information_schema.columns WHERE table_name='amp_funnel_events' AND table_schema=current_schema()",
+        )
+      ).rows.map((r) => r.column_name);
+      assert.deepEqual(columns.sort(), [
+        "event",
+        "id",
+        "occurred_on",
+        "props",
+        "visitor_id",
+      ]);
     }),
 );

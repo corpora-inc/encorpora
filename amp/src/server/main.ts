@@ -1,6 +1,7 @@
 import { isIP } from "node:net";
 import { offlineSigningConfiguration } from "../offline/signing.js";
 import { registerOfflineRoutes } from "../offline/routes.js";
+import { registerAnalyticsRoutes } from "../analytics/routes.js";
 import { loadReimbursementPrograms } from "../billing/evidence/reimbursement-config.js";
 import { registerPaymentEvidenceRoutes } from "../billing/evidence/routes.js";
 import { consentConfiguration } from "../parent-consent/config.js";
@@ -134,6 +135,7 @@ await registerOfflineRoutes(app, {
   authenticate,
   signer: await offlineSigningConfiguration(process.env),
 });
+await registerAnalyticsRoutes(app, { pool: repository.pool });
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {
