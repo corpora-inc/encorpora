@@ -9,7 +9,7 @@ const survey = (
   highlight: Parameters<ReturnType<typeof table>["highlight"]>[0],
 ) =>
   table({
-    columns: ["Online", "In person", "Total"],
+    columns: ["Online", "In class", "Total"],
     rows: [
       { label: "Grade 9", cells: [18, 12, 30] },
       { label: "Grade 10", cells: [14, 26, 40] },
