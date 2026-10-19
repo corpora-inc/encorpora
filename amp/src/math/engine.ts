@@ -8,6 +8,10 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import {
+  multiplyDivideTemplates,
+  generateMultiplyDivideProblem,
+} from "./multiply-divide-practice";
+import {
   comparisonTemplates,
   generateComparisonProblem,
 } from "./comparison-practice";
@@ -208,6 +212,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...radicalTemplates,
   ...comparisonTemplates,
+  ...multiplyDivideTemplates,
   ...combinatoricsTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -368,6 +373,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (multiplyDivideTemplates.some((t) => t.id === templateId))
+    return generateMultiplyDivideProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

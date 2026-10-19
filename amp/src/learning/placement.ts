@@ -65,27 +65,28 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["unknown-addend-story", "balanced-addition"],
     ["subtract-within-20"],
   ],
-  // Grade 3: regrouping, three-digit place value, a story, a bar chart.
+  // Grade 3: regrouping or tens products, three-digit place value, a story,
+  // a bar chart.
   [
-    ["add-with-regrouping"],
+    ["add-with-regrouping", "multiply-by-tens"],
     ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
   // Grade 4: multiplication facts, fractions of a whole, area, division.
   [
-    ["multiply-facts"],
+    ["multiply-facts", "multiply-by-tens", "multiply-by-one-digit"],
     ["fraction-model", "fraction-unit-count"],
     ["rectangle-area"],
-    ["divide-facts"],
+    ["divide-facts", "divide-by-one-digit"],
   ],
   // Grade 5: multiplicative comparison, fractions, factors or place value,
-  // measurement.
+  // multidigit multiplication or division.
   [
     ["comparison-amount", "full-kits"],
     ["compare-fractions", "equivalent-numerator", "whole-times-fraction"],
     ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
-    ["metric-length-rename"],
+    ["multiply-by-one-digit", "multiply-multidigit", "divide-by-one-digit"],
   ],
   // Grade 6: decimals, the order of operations, fractions, the mean.
   [

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
+import { areaModelLayout } from "../AreaModelFigure";
 import "./animation.css";
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
@@ -57,7 +58,9 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         aria-label={`${frames[current].title}. ${frames[current].text}`}
       >
         <title>{frames[current].title}</title>
-        {model.kind === "pairing" ? (
+        {model.kind === "area-model" ? (
+          <AreaModelAnimation model={model} step={current} />
+        ) : model.kind === "pairing" ? (
           <PairingModel model={model} step={current} />
         ) : model.kind === "place-compare" ? (
           <PlaceCompareModel model={model} step={current} />
@@ -469,6 +472,114 @@ function PlaceCompareModel({
           </g>
         );
       })}
+    </>
+  );
+}
+
+/** The whole rectangle splits at its place-value parts; each region shows its
+ * partial product, then the regions separate to be added. Drawn to scale. */
+function AreaModelAnimation({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "area-model" }>;
+  step: number;
+}) {
+  const gap = 6;
+  const layout = areaModelLayout(model.figure, {
+    x: 50,
+    y: 24,
+    width: 250 - gap,
+    height: 150 - gap,
+  });
+  const a = layout.columns.reduce((s, c) => s + c.n, 0),
+    b = layout.rows.reduce((s, r) => s + r.n, 0);
+  return (
+    <>
+      {layout.rows.flatMap((row, j) =>
+        layout.columns.map((column, i) => (
+          <g
+            key={`${i}-${j}`}
+            data-region={`${column.n}x${row.n}`}
+            className="animation-move"
+            style={{
+              transform: `translate(${step === 2 ? i * gap : 0}px, ${step === 2 ? j * gap : 0}px)`,
+            }}
+          >
+            <rect
+              x={column.x}
+              y={row.y}
+              width={column.w}
+              height={row.h}
+              className={
+                step && (i + j) % 2 ? "animation-warm" : "animation-fill"
+              }
+              style={{ strokeWidth: step ? 1 : 0 }}
+            />
+            {column.w >= 28 && row.h >= 16 && (
+              <text
+                x={column.x + column.w / 2}
+                y={row.y + row.h / 2 + 5}
+                textAnchor="middle"
+                className="animation-fade"
+                style={{
+                  opacity: step ? 1 : 0,
+                  fontSize: row.h < 22 ? 12 : 15,
+                }}
+              >
+                {String(column.n * row.n).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </text>
+            )}
+          </g>
+        )),
+      )}
+      <rect
+        x={layout.x0}
+        y={layout.y0}
+        width={layout.width}
+        height={layout.height}
+        className="animation-outline animation-fade"
+        style={{ opacity: step === 2 ? 0 : 1 }}
+        strokeWidth="2"
+      />
+      <g className="animation-fade" style={{ opacity: step ? 0 : 1 }}>
+        <text
+          x={layout.x0 + layout.width / 2}
+          y={layout.y0 - 8}
+          textAnchor="middle"
+        >
+          {a}
+        </text>
+        <text
+          x={layout.x0 - 8}
+          y={layout.y0 + layout.height / 2 + 5}
+          textAnchor="end"
+        >
+          {b}
+        </text>
+      </g>
+      <g className="animation-fade" style={{ opacity: step ? 1 : 0 }}>
+        {layout.columns.map((column, i) => (
+          <text
+            key={`c${i}`}
+            x={column.x + column.w / 2 + (step === 2 ? i * gap : 0)}
+            y={layout.y0 - 8}
+            textAnchor="middle"
+          >
+            {column.n}
+          </text>
+        ))}
+        {layout.rows.map((row, j) => (
+          <text
+            key={`r${j}`}
+            x={layout.x0 - 8}
+            y={row.y + row.h / 2 + 5 + (step === 2 ? j * gap : 0)}
+            textAnchor="end"
+          >
+            {row.n}
+          </text>
+        ))}
+      </g>
     </>
   );
 }

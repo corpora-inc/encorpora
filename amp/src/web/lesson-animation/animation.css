@@ -138,3 +138,11 @@
   fill: var(--color-success-accent);
   stroke: var(--color-border);
 }
+.lesson-animation[data-animation="area-model"] .animation-fill {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-ink);
+}
+.lesson-animation[data-animation="area-model"] .animation-warm {
+  fill: var(--color-figure-gold-fill);
+  stroke: var(--color-figure-ink);
+}

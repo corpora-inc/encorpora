@@ -1,6 +1,7 @@
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -36,6 +37,14 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "multiply-tens-groups" ||
+    kind === "area-model-product" ||
+    kind === "standard-algorithm-product" ||
+    kind === "partial-quotients" ||
+    kind === "partial-quotients-two-digit"
+  )
+    return <MultiplyDivideIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||

@@ -21,7 +21,7 @@ for (const unit of [10, 1]) {
   }
 }
 // Comparison models: a spread row that pairs down, and tens that decide.
-for (const id of ["compare-groups", "compare-two-digit"])
+for (const id of ["compare-groups", "compare-two-digit", "area-model-product"])
   lessons.push(problemLesson(id, "animation-review"));
 const names = [
   "fraction-model",
@@ -30,6 +30,7 @@ const names = [
   "exchange-ones",
   "compare-groups",
   "compare-two-digit",
+  "area-model-product",
 ];
 assert.equal(lessons.length, names.length);
 const entry = `
@@ -210,6 +211,22 @@ try {
             Math.abs(centers[0]![k]! - centers[1]![k]!) <= 1,
             "Pairs are not aligned",
           );
+      } else if (figure.kind === "area-model") {
+        const regions = panel.locator("[data-region]");
+        assert.equal(
+          await regions.count(),
+          figure.columns.length * figure.rows.length,
+        );
+        // To scale: widths and heights keep the ratio of their parts.
+        const [w0, w1] = await Promise.all(
+          [0, 1].map(async (i) =>
+            Number(await regions.nth(i).locator("rect").getAttribute("width")),
+          ),
+        );
+        assert(
+          Math.abs(w0! / w1! - figure.columns[0]! / figure.columns[1]!) < 1e-6,
+          "Area model is not to scale",
+        );
       } else if (figure.kind === "base-ten-pair") {
         const tens = figure.values.reduce((s, n) => s + Math.floor(n / 10), 0),
           ones = figure.values.reduce((s, n) => s + (n % 10), 0);

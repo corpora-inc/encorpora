@@ -6,7 +6,9 @@ type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type AreaModel = Extract<SemanticFigure, { kind: "area-model" }>;
 export type AnimationModel =
+  | { kind: "area-model"; figure: AreaModel }
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
@@ -20,6 +22,14 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    lesson.templateId === "area-model-product" &&
+    f?.kind === "area-model" &&
+    f.columns.length === 2 &&
+    f.rows.length === 2 &&
+    [...f.columns, ...f.rows].every((n) => integer(n, 1, 90))
+  )
+    return { kind: "area-model", figure: f };
   if (
     lesson.templateId === "compare-groups" &&
     f?.kind === "counter-rows" &&
@@ -65,7 +75,31 @@ export function animationModel(
 }
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+const tex = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "area-model") {
+    const { columns, rows } = model.figure;
+    const a = columns[0]! + columns[1]!,
+      b = rows[0]! + rows[1]!;
+    const parts = rows.flatMap((y) => columns.map((x) => x * y));
+    return [
+      {
+        title: "One rectangle",
+        text: `A rectangle ${a} wide and ${b} tall has area ${a} × ${b}.`,
+        math: `$${a} \\times ${b}$`,
+      },
+      {
+        title: "Split by place value",
+        text: `${a} = ${columns.join(" + ")} and ${b} = ${rows.join(" + ")}. Each region is a partial product.`,
+        math: `$(${columns.join(" + ")}) \\times (${rows.join(" + ")})$`,
+      },
+      {
+        title: "Add the regions",
+        text: "The four regions fill the rectangle exactly, so their areas add to the whole.",
+        math: `$${parts.map(tex).join(" + ")} = ${tex(a * b)}$`,
+      },
+    ];
+  }
   if (model.kind === "pairing") {
     const { circles: c, squares: s, spread } = model.figure;
     const pairs = Math.min(c, s),

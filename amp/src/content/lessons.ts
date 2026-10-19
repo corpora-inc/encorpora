@@ -3,6 +3,7 @@ import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -33,6 +34,11 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "multiply-tens-groups"
+      | "area-model-product"
+      | "standard-algorithm-product"
+      | "partial-quotients"
+      | "partial-quotients-two-digit"
       | "comparison-pairing"
       | "comparison-number-path"
       | "comparison-place-chart"
@@ -542,6 +548,7 @@ export const lessons: readonly Lesson[] = [
   ...earlyDataLessons,
   ...radicalLessons,
   ...comparisonLessons,
+  ...multiplyDivideLessons,
   ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
