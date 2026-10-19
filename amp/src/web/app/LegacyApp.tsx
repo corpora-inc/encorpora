@@ -62,6 +62,7 @@ import {
 } from "../auth";
 import "../style.css";
 import "../practice.css";
+import "../scene/scene-player.css";
 import "katex/dist/katex.min.css";
 import "../theme.css";
 import "../premium-controls.css";
