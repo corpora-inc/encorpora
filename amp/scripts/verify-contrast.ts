@@ -46,6 +46,7 @@ const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   logLevel: "error",
   server: {
+    fs: { strict: false },
     host: "127.0.0.1",
     port: 4392,
     strictPort: true,
@@ -305,6 +306,16 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   await cdp.send("DOM.enable");
   await cdp.send("CSS.enable");
   const meta = { theme, width };
+  /** A screen has painted its heading and finished its first data load. */
+  const settle = async () => {
+    await page.locator("h1, h2").first().waitFor();
+    await page
+      .locator(".app-loading, [aria-busy=true]")
+      .first()
+      .waitFor({ state: "detached", timeout: 5000 })
+      .catch(() => undefined);
+    await page.waitForTimeout(400);
+  };
   const at = (state: string) => record(page, cdp, meta, state);
   const step = async (state: string, run: () => Promise<unknown>) => {
     try {
@@ -363,8 +374,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   for (const route of ["/lessons", "/progress"])
     await step(route, async () => {
       await page.goto(origin + route);
-      await page.locator("main").first().waitFor();
-      await page.waitForLoadState("networkidle");
+      await settle();
     });
   await step("practice-problem", async () => {
     await page.goto(`${origin}/lessons?strand=data&topic=mean-data`);
@@ -421,8 +431,7 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   ])
     await step(route, async () => {
       await page.goto(origin + route);
-      await page.locator("main, .family-center, [role=main]").first().waitFor();
-      await page.waitForLoadState("networkidle");
+      await settle();
     });
   await step("dialog-birth-year", async () => {
     await page.goto(`${origin}/family/learners`);
