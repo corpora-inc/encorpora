@@ -40,7 +40,7 @@ const hints = ["add-within-20", "tens-contribution"].map((id, i) => {
 const entry = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import '/src/web/style.css';import '/src/web/theme.css';import '/node_modules/katex/dist/katex.min.css';
+import '/src/web/style.css';import '/src/web/theme.css';import '/node_modules/katex/dist/katex.min.css';import '/src/web/scene/scene-player.css';
 import {ProblemLesson} from '/src/web/ProblemLesson.tsx';
 import {ScenePlayer} from '/src/web/scene/ScenePlayer.tsx';
 const q = new URLSearchParams(location.search);
