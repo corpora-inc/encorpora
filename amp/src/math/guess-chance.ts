@@ -2,7 +2,7 @@ import type { TemplateMetadata } from "./contracts";
 import { generateProblem, templates } from "./engine";
 
 /** Instances sampled to read a choice family's option count from its answer
- * schema. tests/guess-chance.test.ts checks far more seeds against it. */
+ * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
