@@ -3,7 +3,9 @@ import { GeometryFigure } from "./GeometryFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
+import { ComparisonFigure } from "./ComparisonFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { DataDisplayFigure } from "./DataDisplayFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
@@ -16,6 +18,11 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "parallel-transversal":
     case "solid-section":
       return <GeometryFigure figure={figure} />;
+    case "sort-shapes":
+    case "picture-graph":
+    case "scaled-bar-graph":
+    case "line-plot":
+      return <DataDisplayFigure figure={figure} />;
     case "unit-array":
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
@@ -25,6 +32,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "counter-rows":
+    case "base-ten-pair":
+      return <ComparisonFigure figure={figure} />;
     case "coordinate-plane":
     case "bar-chart":
     case "clock":

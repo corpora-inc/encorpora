@@ -37,16 +37,16 @@ test("angle figures are drawn at the measures their labels state", () => {
   }
 });
 
-test("each reference lesson prints a twelve-item worksheet covering its cases", () => {
+test("each problem type prints twelve distinct worksheet exercises", () => {
   for (const lesson of angleTriangleLessons)
     for (const edition of ["1", "2", "3"]) {
       const problems = lesson.templateIds.flatMap((id) =>
         angleTriangleWorksheet(id, lesson.id, edition),
       );
-      assert.equal(problems.length, 12, lesson.id);
+      assert.equal(problems.length, 12 * lesson.templateIds.length, lesson.id);
       assert.equal(
         new Set(problems.map((p) => JSON.stringify(p.public))).size,
-        12,
+        problems.length,
       );
     }
 });

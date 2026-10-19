@@ -1,6 +1,5 @@
 import { createHash } from "node:crypto";
 import { angleTrianglePrintCase } from "../math/angle-triangle-practice";
-import { angleTriangleLessons } from "./angle-triangle-lessons";
 
 /** Each template's share of a worksheet covers these conditions first. */
 const required: Record<string, string[]> = {
@@ -34,7 +33,7 @@ const required: Record<string, string[]> = {
   ],
 };
 
-/** A lesson's printed worksheet has 12 items, shared evenly among its problem types. */
+/** Twelve printed exercises per problem type, covering every required case first. */
 export function angleTriangleWorksheet(
   templateId: string,
   lessonId: string,
@@ -42,9 +41,7 @@ export function angleTriangleWorksheet(
 ) {
   const tags = required[templateId];
   if (!tags) throw new Error(`No worksheet plan for ${templateId}`);
-  const lesson = angleTriangleLessons.find((l) => l.id === lessonId);
-  const share = 12 / (lesson?.templateIds.length ?? 1);
-  if (!Number.isInteger(share)) throw new Error("Uneven worksheet share");
+  const share = 12;
   const pool = Array.from({ length: 512 }, (_, i) =>
     angleTrianglePrintCase(templateId, `${lessonId}:${edition}:geometry:${i}`),
   );
