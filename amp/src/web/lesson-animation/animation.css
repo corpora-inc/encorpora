@@ -252,6 +252,7 @@
   :is(.animation-fill, .animation-warm) {
   fill: var(--color-figure-warm);
   stroke: var(--color-figure-paper);
+}
 .lesson-animation[data-animation="rate"] .rate-bar {
   fill: var(--color-figure-accent-fill);
   stroke: var(--color-figure-accent);
