@@ -44,6 +44,9 @@ export function AreaModelFigure({ figure }: { figure: AreaModel }) {
       className="figure area-model-figure"
       data-kind="area-model"
       viewBox={`0 0 320 ${Math.ceil(layout.height) + 40}`}
+      // One unit scale for every model: a flat rectangle is not enlarged to
+      // fill the height cap that a tall one meets.
+      style={{ maxWidth: 352, maxHeight: "none" }}
       role="img"
       aria-label={`A rectangle ${a} units wide and ${b} units tall, drawn to scale. The width is split into ${figure.columns.join(" and ")}; the height is split into ${figure.rows.join(" and ")}.`}
     >

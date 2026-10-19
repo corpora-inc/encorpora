@@ -906,13 +906,15 @@ header {
     gap: 12px;
   }
 }
+/* Base-ten blocks share the counters' accent role in every figure and lesson
+   animation. */
 .figure .base-block {
-  fill: var(--color-subtle-text);
+  fill: var(--color-figure-accent);
   stroke: var(--fig-ink);
   stroke-width: 1.25;
 }
 .figure .base-cell {
-  stroke: var(--color-border-strong);
+  stroke: var(--color-figure-paper);
   stroke-width: 0.6;
 }
 

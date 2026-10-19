@@ -442,7 +442,7 @@ function PlaceCompareModel({
   const [a, b] = model.figure.values;
   const tensMatch = Math.floor(a / 10) === Math.floor(b / 10);
   const focus = step === 0 ? "both" : step === 2 && tensMatch ? "ones" : "tens";
-  const u = 7,
+  const u = 9,
     rodStep = 11,
     tensX = 64,
     onesX = tensX + 9 * rodStep + 18;
@@ -521,8 +521,9 @@ function AreaModelAnimation({
   const layout = areaModelLayout(model.figure, {
     x: 50,
     y: 24,
-    width: 250 - gap,
-    height: 150 - gap,
+    // Room right of and below the rectangle for labels of slender regions.
+    width: 214 - gap,
+    height: 144 - gap,
   });
   const a = layout.columns.reduce((s, c) => s + c.n, 0),
     b = layout.rows.reduce((s, r) => s + r.n, 0);
@@ -548,20 +549,28 @@ function AreaModelAnimation({
               }
               style={{ strokeWidth: step ? 1 : 0 }}
             />
-            {column.w >= 28 && row.h >= 16 && (
-              <text
-                x={column.x + column.w / 2}
-                y={row.y + row.h / 2 + 5}
-                textAnchor="middle"
-                className="animation-fade"
-                style={{
-                  opacity: step ? 1 : 0,
-                  fontSize: row.h < 22 ? 12 : 15,
-                }}
-              >
-                {String(column.n * row.n).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </text>
-            )}
+            {(() => {
+              // A region too slender for its label is labelled beside it.
+              const narrow = column.w < 28,
+                thin = row.h < 16;
+              return (
+                <text
+                  x={narrow ? column.x + column.w + 4 : column.x + column.w / 2}
+                  y={thin ? row.y + row.h + 14 : row.y + row.h / 2 + 5}
+                  textAnchor={narrow ? "start" : "middle"}
+                  className="animation-fade"
+                  style={{
+                    opacity: step ? 1 : 0,
+                    fontSize: narrow || thin || row.h < 22 ? 12 : 15,
+                  }}
+                >
+                  {String(column.n * row.n).replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ",",
+                  )}
+                </text>
+              );
+            })()}
           </g>
         )),
       )}
@@ -626,7 +635,7 @@ function RegroupSumModel({
   step: number;
 }) {
   const [a, b] = model.figure.values;
-  const u = 7,
+  const u = 9,
     rodStep = 11,
     tensX = 64,
     onesX = tensX + 9 * rodStep + 18,

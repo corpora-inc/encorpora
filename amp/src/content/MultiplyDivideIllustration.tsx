@@ -12,10 +12,9 @@ const captionStyle = { marginTop: 10, lineHeight: 1.6 };
 const svgStyle = { display: "block", width: "100%", maxWidth: 480 };
 const tint = { fill: "currentColor", fillOpacity: 0.1 };
 const strong = { fill: "currentColor", fillOpacity: 0.22 };
-const mono = {
-  fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-  fontVariantNumeric: "tabular-nums" as const,
-};
+// Inline, since the global `svg text` font rule outranks SVG attributes.
+const digits = { fontVariantNumeric: "tabular-nums" as const, fontSize: 18 };
+const algorithm = { ...digits, fontSize: 20 };
 const comma = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 function Frame({
@@ -80,8 +79,8 @@ function Ladder({
       label={`${comma(n)} divided by ${d} by partial quotients: ${rows.map((r) => `subtract ${comma(r.take)}, which is ${comma(r.part)} groups of ${d}`).join("; ")}. The partial quotients add to ${comma(q)}.`}
       caption={`${rows.map((r) => comma(r.part)).join(" + ")} = ${comma(q)}, so ${comma(n)} ÷ ${d} = ${comma(q)}.`}
     >
-      <g fill="currentColor" style={mono} fontSize="18">
-        <text x={right - 74} y={top} textAnchor="end">
+      <g fill="currentColor">
+        <text x={right - 74} y={top} textAnchor="end" style={digits}>
           {d}
         </text>
         <path
@@ -90,14 +89,14 @@ function Ladder({
           stroke="currentColor"
           strokeWidth="1.5"
         />
-        <text x={right} y={top} textAnchor="end">
+        <text x={right} y={top} textAnchor="end" style={digits}>
           {comma(n)}
         </text>
         {rows.map((row, i) => {
           const y = top + (2 * i + 1) * line;
           return (
             <g key={i}>
-              <text x={right} y={y} textAnchor="end">
+              <text x={right} y={y} textAnchor="end" style={digits}>
                 − {comma(row.take)}
               </text>
               <line
@@ -107,7 +106,7 @@ function Ladder({
                 y2={y + 7}
                 stroke="currentColor"
               />
-              <text x={right} y={y + line} textAnchor="end">
+              <text x={right} y={y + line} textAnchor="end" style={digits}>
                 {comma(row.left)}
               </text>
               <rect
@@ -118,22 +117,21 @@ function Ladder({
                 rx={6}
                 {...tint}
               />
-              <text x={right + 34} y={y} fontSize="15">
+              <text x={right + 34} y={y} style={{ fontSize: 15 }}>
                 {comma(row.part)} × {d}
               </text>
             </g>
           );
         })}
-        <text
-          x={right + 34}
-          y={height - 10}
-          fontSize="16"
-          fontWeight="700"
-          style={{ fontFamily: "inherit" }}
-        >
-          quotient {comma(q)}
-        </text>
       </g>
+      <text
+        x={right + 34}
+        y={height - 10}
+        fill="currentColor"
+        style={{ fontWeight: 700, fontSize: 16 }}
+      >
+        quotient {comma(q)}
+      </text>
     </Frame>
   );
 }
@@ -154,12 +152,12 @@ export function MultiplyDivideIllustration({
     return (
       <Frame
         kind={kind}
-        viewBox="0 0 320 196"
+        viewBox="0 0 350 196"
         label="Six groups, each of seven ten-rods: 42 tens in all."
         caption="6 groups of 7 tens are 42 tens: 6 × 70 = 420."
       >
         {Array.from({ length: 6 }, (_, g) => {
-          const x = 22 + (g % 2) * 150,
+          const x = 16 + (g % 2) * 172,
             y = 10 + Math.floor(g / 2) * 62;
           return (
             <g key={g} data-group={g}>
@@ -188,8 +186,8 @@ export function MultiplyDivideIllustration({
               <text
                 x={x + 7 * (rod.w + rod.gap) + 10}
                 y={y + 26}
-                fontSize="13"
                 fill="currentColor"
+                style={{ fontSize: 15 }}
               >
                 7 tens
               </text>
@@ -200,8 +198,8 @@ export function MultiplyDivideIllustration({
     );
   }
   if (kind === "area-model-product") {
-    const s = 5,
-      x0 = 50,
+    const s = 6,
+      x0 = 36,
       y0 = 28;
     const columns = [40, 6],
       rows = [20, 3];
@@ -210,7 +208,7 @@ export function MultiplyDivideIllustration({
     return (
       <Frame
         kind={kind}
-        viewBox="0 0 320 168"
+        viewBox="0 0 320 176"
         label="A 46 by 23 rectangle drawn to scale, split into 40 and 6 across and 20 and 3 down. Regions: 800, 120, 120 and 18."
         caption="(40 + 6) × (20 + 3) = 800 + 120 + 120 + 18 = 1,058."
       >
@@ -230,8 +228,8 @@ export function MultiplyDivideIllustration({
                 x={xs[i]! + (w * s) / 2}
                 y={ys[j]! + (h * s) / 2 + 5}
                 textAnchor="middle"
-                fontSize={h * s < 20 || w * s < 40 ? 12 : 15}
                 fill="currentColor"
+                style={{ fontSize: h * s < 24 || w * s < 40 ? 12 : 15 }}
               >
                 {w * h}
               </text>
@@ -244,9 +242,8 @@ export function MultiplyDivideIllustration({
             x={xs[i]! + (w * s) / 2}
             y={y0 - 9}
             textAnchor="middle"
-            fontSize="14"
-            fontWeight="600"
             fill="currentColor"
+            style={{ fontWeight: 600, fontSize: 14 }}
           >
             {w}
           </text>
@@ -257,9 +254,8 @@ export function MultiplyDivideIllustration({
             x={x0 - 8}
             y={ys[j]! + (h * s) / 2 + 5}
             textAnchor="end"
-            fontSize="14"
-            fontWeight="600"
             fill="currentColor"
+            style={{ fontWeight: 600, fontSize: 14 }}
           >
             {h}
           </text>
@@ -283,7 +279,7 @@ export function MultiplyDivideIllustration({
       label="346 times 27 written vertically. The first partial product, 346 times 7, is 2,422. The second, 346 times 20, is 6,920. Their sum is 9,342."
       caption="346 × 27 = 346 × 7 + 346 × 20 = 2,422 + 6,920 = 9,342."
     >
-      <g fill="currentColor" fontSize="20" style={mono}>
+      <g fill="currentColor">
         {rows.map(([value, note, rule], i) => {
           const y = 30 + i * line;
           return (
@@ -302,7 +298,7 @@ export function MultiplyDivideIllustration({
                 x={right}
                 y={y}
                 textAnchor="end"
-                fontWeight={i === 4 ? 700 : 400}
+                style={{ ...algorithm, fontWeight: i === 4 ? 700 : 400 }}
               >
                 {value}
               </text>
@@ -316,7 +312,7 @@ export function MultiplyDivideIllustration({
                     rx={6}
                     {...tint}
                   />
-                  <text x={right + 34} y={y} fontSize="15">
+                  <text x={right + 34} y={y} style={{ fontSize: 15 }}>
                     {note}
                   </text>
                 </>

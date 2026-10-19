@@ -240,7 +240,7 @@ export function generateMultiplyDivideProblem(
       hint = `Ask how many ${d}s fit in ${f(n)}, place by place, starting with the greatest place.`;
       explanation = [
         ...longDivisionSteps(n, d),
-        `Add the partial quotients: ${parts.map(f).join(" + ")} = ${f(q)}. Check: ${f(q)} × ${d} = ${f(n)}.`,
+        `${parts.length > 1 ? `Add the partial quotients: ${parts.map(f).join(" + ")} = ${f(q)}.` : `The quotient is ${f(q)}.`} Check: ${f(q)} × ${d} = ${f(n)}.`,
       ];
       break;
     }
@@ -255,7 +255,7 @@ export function generateMultiplyDivideProblem(
       hint = `Find the largest multiple of ${d} that fits in ${f(n)}. The remainder is what is left, and it is less than ${d}.`;
       explanation = [
         ...longDivisionSteps(n, d),
-        `The quotient is ${parts.map(f).join(" + ")} = ${f(q)}, and ${rem} ${rem === 1 ? "is" : "are"} left over.`,
+        `The quotient is ${parts.length > 1 ? `${parts.map(f).join(" + ")} = ` : ""}${f(q)}, and ${rem} ${rem === 1 ? "is" : "are"} left over.`,
         `${f(n)} = ${f(q)} × ${d} + ${rem}, and ${rem} < ${d}. The remainder is ${rem}.`,
       ];
       break;
@@ -272,7 +272,7 @@ export function generateMultiplyDivideProblem(
       hint = `Estimate with a rounded divisor: about ${Math.round(d / 10) * 10}. Subtract a multiple of ${d} for each place.`;
       explanation = [
         ...longDivisionSteps(n, d),
-        `Add the partial quotients: ${parts.map(f).join(" + ")} = ${f(q)}. Check: ${f(q)} × ${d} = ${f(n)}.`,
+        `${parts.length > 1 ? `Add the partial quotients: ${parts.map(f).join(" + ")} = ${f(q)}.` : `The quotient is ${f(q)}.`} Check: ${f(q)} × ${d} = ${f(n)}.`,
       ];
       break;
     }

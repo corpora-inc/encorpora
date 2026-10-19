@@ -309,7 +309,7 @@ export const multiplyDividePrinciples: Record<string, string> = {
   "divide-by-one-digit":
     "Division undoes multiplication: the partial quotients add to the number of groups of the divisor in the dividend.",
   "division-remainder":
-    "For whole numbers n and d, n = q × d + r with exactly one remainder r from 0 to d − 1.",
+    "For whole numbers $n$ and $d > 0$, there is exactly one way to write $n = q \\times d + r$ with $0 \\le r < d$.",
   "divide-by-two-digit":
     "Division undoes multiplication: partial quotients add to the quotient whatever the divisor's size.",
 };
