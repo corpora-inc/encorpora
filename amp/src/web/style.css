@@ -629,6 +629,9 @@ footer {
 .figure[data-kind="quadrant-grid"] {
   max-height: 360px;
 }
+.figure[data-kind="coordinate-geometry"] {
+  max-height: 360px;
+}
 .figure[data-kind="clock"] {
   max-height: 300px;
 }
