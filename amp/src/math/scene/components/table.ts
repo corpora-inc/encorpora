@@ -10,7 +10,7 @@ const PAD = 12,
   TITLE = 30,
   MIN_COLUMN = 56;
 const isNumber = (v: unknown): v is number => typeof v === "number";
-/** Step gutters: arrow bow, gap and label. */
+/** Change gutters: arrow bow, gap and label. */
 const BEND = 7,
   GUTTER_PAD = 6;
 /** Headings and row labels: bold words, or mathematics set like the cells. */
@@ -46,7 +46,7 @@ export function tableGeometry(t: Table) {
   );
   // A column with steps is followed by a gutter for its arrows and labels.
   const gutters = t.columns.map((_, j) => {
-    const step = t.steps?.find((st) => st.column === j);
+    const step = t.changes?.find((st) => st.column === j);
     if (!step) return 0;
     const widest = Math.max(
       0,
@@ -250,14 +250,14 @@ registerComponent("table", {
         });
       }
     }
-    for (const step of t.steps ?? []) {
+    for (const step of t.changes ?? []) {
       const x = g.lefts[step.column]! + g.widths[step.column]! + 4;
       for (const [i, l] of step.labels.entries()) {
         const from = g.rowTop(i) + ROW / 2 + 5,
           to = g.rowTop(i + 1) + ROW / 2 - 5;
         prims.push({
           type: "arrow",
-          id: `step.${step.column}.${i}`,
+          id: `change.${step.column}.${i}`,
           from: P(x, from),
           to: P(x, to),
           bend: BEND,
@@ -268,7 +268,7 @@ registerComponent("table", {
         if (l !== false)
           prims.push({
             type: "text",
-            id: `step.${step.column}.${i}.label`,
+            id: `change.${step.column}.${i}.label`,
             at: P(x + BEND + GUTTER_PAD, (from + to) / 2),
             text: l,
             size: "sm",
@@ -313,7 +313,7 @@ registerComponent("table", {
             ? num(filled[i]![j]!)
             : "the number to find"
           : "blank";
-    const steps = (t.steps ?? []).map(
+    const steps = (t.changes ?? []).map(
       (st) =>
         ` Down the ${t.columns[st.column]} column, each step is ${st.labels
           .map((l) => (l === false ? "unmarked" : l))

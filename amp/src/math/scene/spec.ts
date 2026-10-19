@@ -697,7 +697,7 @@ export const tableSchema = z
     math: z.boolean().optional(),
     /** The change between consecutive rows of a body column (+3, ×2), drawn
      * as bowed arrows in a gutter to that column's right. */
-    steps: z
+    changes: z
       .array(
         z
           .object({
@@ -726,11 +726,11 @@ export const tableSchema = z
   )
   .refine(
     (t) =>
-      (t.steps ?? []).every(
+      (t.changes ?? []).every(
         (s) =>
           s.column < t.columns.length && s.labels.length === t.rows.length - 1,
       ),
-    "A step labels each gap between rows of a real column",
+    "A change labels each gap between rows of a real column",
   )
   .refine(
     (t) =>

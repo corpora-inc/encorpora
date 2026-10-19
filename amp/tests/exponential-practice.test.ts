@@ -4,6 +4,7 @@ import { generateProblem, normalizeAnswer } from "../src/math/engine";
 import { exponentialTemplates } from "../src/math/exponential-practice";
 import { semanticFigureSchema } from "../src/math/contracts";
 import { layoutScene, describeScene, sceneSchema } from "../src/math/scene";
+import { missingTargets } from "../src/math/scene/timeline";
 import { bars, table } from "../src/math/scene/author";
 import { exponentialLessonScenes } from "../src/math/exponential-scenes";
 import { skills } from "../src/curriculum/catalog";
@@ -109,7 +110,7 @@ test("log equations reject the extraneous root", () => {
   }
 });
 
-test("table steps label each gap in a gutter, and highlights tint rows", () => {
+test("table changes label each gap in a gutter, and highlights tint rows", () => {
   const s = table({
     corner: "x",
     columns: ["y"],
@@ -120,17 +121,17 @@ test("table steps label each gap in a gutter, and highlights tint rows", () => {
     ],
     math: true,
   })
-    .steps(0, ["×2", "×2"])
+    .changes(0, ["×2", "×2"])
     .highlight({ rows: [1] })
     .scene();
   const l = layoutScene(s);
   assert.equal(l.scale, 1);
   const arrows = l.items.filter(
-    (d) => d.k === "path" && /^e0\.step\.0\.\d$/.test(d.id),
+    (d) => d.k === "path" && /^e0\.change\.0\.\d$/.test(d.id),
   );
   assert.equal(arrows.length, 2);
   const labels = l.items.flatMap((d) =>
-    d.k === "text" && /^e0\.step\.0\.\d\.label$/.test(d.id) ? [d] : [],
+    d.k === "text" && /^e0\.change\.0\.\d\.label$/.test(d.id) ? [d] : [],
   );
   assert.deepEqual(
     labels.map((d) => d.plain),
@@ -157,7 +158,7 @@ test("table steps label each gap in a gutter, and highlights tint rows", () => {
           type: "table",
           columns: ["y"],
           rows: [{ label: "0", cells: [1] }],
-          steps: [{ column: 0, labels: ["×2"] }],
+          changes: [{ column: 0, labels: ["×2"] }],
         },
       ],
     }),
@@ -203,4 +204,23 @@ test("logarithm properties is a catalog skill with its prerequisites", () => {
       "implemented",
       id,
     );
+});
+
+test("every walkthrough step targets elements its scene has", () => {
+  for (const [name, scene] of Object.entries(exponentialLessonScenes)) {
+    assert.ok(scene.steps?.length, `${name} plays`);
+    assert.deepEqual(
+      missingTargets(layoutScene(scene, { reveal: true }), scene.steps!),
+      [],
+      name,
+    );
+  }
+  for (const t of exponentialTemplates)
+    for (const p of sample(t.id, 40)) {
+      const f = p.public.figure;
+      if (f?.kind !== "scene" || !f.scene.steps) continue;
+      assert.deepEqual(missingTargets(layoutScene(f.scene), f.scene.steps), []);
+      // Hint steps work from the givens: none is lesson-only.
+      assert.ok(f.scene.steps.every((s) => s.audience !== "lesson"), t.id);
+    }
 });

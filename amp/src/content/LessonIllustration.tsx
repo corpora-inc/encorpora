@@ -46,13 +46,18 @@ import {
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
 import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
 import { SceneFigure } from "../web/scene/SceneFigure";
+import { ScenePlayer } from "../web/scene/ScenePlayer";
+import type { Scene } from "../math/scene/spec";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
 export function LessonIllustration({
   kind,
+  medium = "screen",
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
+  /** Print draws a scene's final frame; the screen plays its steps. */
+  medium?: "screen" | "print";
 }) {
   if (
     kind === "repeating-decimal-shift" ||
@@ -71,8 +76,14 @@ export function LessonIllustration({
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
-  if (isSceneIllustration(kind))
-    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
+  if (isSceneIllustration(kind)) {
+    const scene: Scene = sceneIllustrations[kind];
+    return scene.steps?.length && medium === "screen" ? (
+      <ScenePlayer scene={scene} mode="lesson" label="Play the model" />
+    ) : (
+      <SceneFigure scene={scene} reveal />
+    );
+  }
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||

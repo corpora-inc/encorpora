@@ -308,9 +308,9 @@ export const graph = (spec: Omit<Graph, "type">) =>
 
 class TableBuilder extends Builder<Table> {
   /** Label the change between consecutive rows of a body column: +3, ×2. */
-  steps(column: number, labels: (string | false)[], color?: InkRole) {
-    this.spec.steps = [
-      ...(this.spec.steps ?? []),
+  changes(column: number, labels: (string | false)[], color?: InkRole) {
+    this.spec.changes = [
+      ...(this.spec.changes ?? []),
       { column, labels, ...(color ? { color } : {}) },
     ];
     return this;

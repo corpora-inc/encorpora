@@ -14,6 +14,7 @@ import {
   stepTable,
   valueTable,
 } from "./exponential-scenes.js";
+import { act, step } from "./scene/author.js";
 
 
 /** Exponential growth, geometric sequences and series, and logarithms
@@ -535,7 +536,7 @@ function overtakes(r: Rand): Draft {
   if (frame === 0)
     return {
       prompt: `The graph shows $f(x) = ${m}x + ${c}$ and $g(x) = ${b}^{x}$. What is the least whole number $x$ for which $g(x) > f(x)$?`,
-      figure: scene(raceGraph(m, c, b, X + 1)),
+      figure: scene(raceGraph(m, c, b, b === 2 ? 10 : 7)),
       answer: `${X}`,
       hint: `At $x = 0$, $f(0) = ${c}$ and $g(0) = 1$. Step $x$ up by 1 and compare $${m}x + ${c}$ with $${b}^{x}$ each time.`,
       explanation: steps,
@@ -550,6 +551,16 @@ function overtakes(r: Rand): Draft {
           { label: "Offer A", values: days.map((d) => c + m * d) },
           { label: "Offer B", values: days.map((d) => 2 ** d) },
           "Day",
+          [
+            step(
+              `Offer A adds ${m} coins each day.`,
+              act.highlight("race.series.0"),
+            ),
+            step(
+              "Offer B doubles each day: its gains are 1, 2, 4, and keep doubling.",
+              act.highlight("race.series.1"),
+            ),
+          ],
         ),
       ),
       answer: `${X}`,
@@ -570,8 +581,8 @@ function overtakes(r: Rand): Draft {
         ["f(x)", "g(x)"],
         xs.map((x) => [x, m * x + c, 2 ** x]),
       )
-        .steps(0, [`+${m}`, `+${m}`, `+${m}`])
-        .steps(1, ["×2", "×2", "×2"], "warm")
+        .changes(0, [`+${m}`, `+${m}`, `+${m}`])
+        .changes(1, ["×2", "×2", "×2"], "warm")
         .scene({ title: "Values of f and g" }),
     ),
     answer: `${X}`,
