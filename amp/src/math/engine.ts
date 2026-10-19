@@ -4,6 +4,10 @@ import {
   generateEquationProblem,
 } from "./equation-practice";
 import {
+  inferenceTemplates,
+  generateInferenceProblem,
+} from "./inference-practice";
+import {
   distributionTemplates,
   generateDistributionProblem,
 } from "./distribution-practice";
@@ -266,6 +270,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...choiceTemplates,
   ...equalGroupsTemplates,
   ...distributionTemplates,
+  ...inferenceTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -429,6 +434,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
+    ...inferenceTemplates,
     ...partWholeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
@@ -466,6 +472,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (inferenceTemplates.some((t) => t.id === templateId))
+    return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))

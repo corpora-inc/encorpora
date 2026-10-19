@@ -1,6 +1,7 @@
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
+import { inferenceLessons } from "./inference-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
@@ -590,6 +591,7 @@ export const lessons: readonly Lesson[] = [
   ...earlyDataLessons,
   ...linePlotLessons,
   ...distributionLessons,
+  ...inferenceLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,

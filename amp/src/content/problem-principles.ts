@@ -3,6 +3,7 @@ import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
+import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { decimalPrinciples } from "./decimal-lessons";
 import { timeMoneyPrinciples } from "./time-money-lessons";
@@ -35,6 +36,7 @@ export const principles: Record<string, string> = {
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
   ...distributionPrinciples,
+  ...inferencePrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...decimalPrinciples,

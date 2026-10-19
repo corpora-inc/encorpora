@@ -37,6 +37,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "line-plot":
     case "histogram":
     case "box-plot":
+    case "double-dot-plot":
+    case "double-box-plot":
       return <DataDisplayFigure figure={figure} />;
     case "cube-prism":
     case "box-prism":

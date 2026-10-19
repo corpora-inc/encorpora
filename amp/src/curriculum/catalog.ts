@@ -1955,6 +1955,31 @@ for (const [skillId, suffix, description] of [
     "appropriate-center",
     "Choose the median as the typical value when an extreme value pulls the mean.",
   ],
+  [
+    "sampling",
+    "representative-samples",
+    "Choose the random sampling method that represents a population.",
+  ],
+  [
+    "sampling",
+    "population-estimates",
+    "Scale a random sample's fraction up to a population count.",
+  ],
+  [
+    "sampling",
+    "sampling-variation",
+    "Combine the varying counts of many random samples into one estimate.",
+  ],
+  [
+    "compare-distributions",
+    "centers-in-mads",
+    "Express the difference between two means as a multiple of their shared MAD.",
+  ],
+  [
+    "compare-distributions",
+    "box-plot-comparison",
+    "Compare medians and interquartile ranges of two box plots on one scale.",
+  ],
 ])
   skills
     .find((s) => s.id === skillId)!

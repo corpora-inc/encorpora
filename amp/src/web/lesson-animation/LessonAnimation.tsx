@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
+import { MadGapStage } from "./ComparisonAnimation";
 import {
   BalanceFrame,
   CUBE,
@@ -66,6 +67,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <BalanceModel model={model} step={step} />;
     case "box-build":
       return <BoxBuildModel model={model} step={step} />;
+    case "mad-gap":
+      return <MadGapStage model={model} step={step} />;
   }
 }
 
