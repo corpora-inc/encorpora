@@ -50,3 +50,25 @@ test("every angle item is a whole assessment item", () => {
   for (const t of angleTemplates)
     assert.equal(templateRole(t.id), "assessment");
 });
+
+test("the protractor sweep names only real parts and keeps the answer masked", async () => {
+  const { missingTargets, visibleSteps } =
+    await import("../src/math/scene/timeline");
+  for (let i = 0; i < 60; i++) {
+    const p = generateProblem("protractor-reading", `sweep-${i}`);
+    const f = p.public.figure!;
+    assert(f.kind === "scene");
+    const steps = f.scene.steps!;
+    assert.deepEqual(missingTargets(layoutScene(f.scene), steps), []);
+    // A hint plays the first two steps; the reading is lesson-only.
+    assert.equal(visibleSteps(steps, "hint").length, 2);
+    const hidden = layoutScene(f.scene).items.flatMap((d) =>
+      d.k === "text" ? [d.plain] : [],
+    );
+    assert.ok(hidden.includes("?"));
+    const shown = layoutScene(f.scene, { reveal: true }).items.flatMap((d) =>
+      d.k === "text" ? [d.plain] : [],
+    );
+    assert.ok(shown.includes(`${p.answer}°`));
+  }
+});

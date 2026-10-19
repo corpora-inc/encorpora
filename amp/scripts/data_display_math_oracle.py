@@ -86,12 +86,12 @@ def solve_inference(public):
         raise ValueError(f'Unrecognized sampling prompt {prompt}')
     f = public['figure']
     if template == 'sample-estimates-plot':
-        m = re.fullmatch(rf'Ten students each took a random sample of 20 of the {NUM} students at their school and counted how many ([a-z ]+)\. The dot plot shows the ten counts\. Using the mean count, estimate how many of the \1 students \2\.', prompt)
+        m = re.fullmatch(rf'Ten students each took a random sample of 20 students at their school and counted how many ([a-z ]+)\. Using the mean count, estimate how many of all {NUM} students \1\.', prompt)
         require(m is not None, 'Unexpected sample-plot prompt')
         require(f['kind'] == 'line-plot' and f['mark'] == 'dot' and f['denominator'] == 1, 'Dot plot required')
         counts = f['values']
         require(len(counts) == 10 and all(0 <= c <= 20 and f['start'] <= c <= f['end'] for c in counts), 'Ten counts out of 20 required')
-        estimate = Fraction(sum(counts), 10) / 20 * int(m[1].replace(',', ''))
+        estimate = Fraction(sum(counts), 10) / 20 * int(m[2].replace(',', ''))
         require(estimate.denominator == 1, 'Estimate must be whole')
         return str(estimate.numerator)
     if template == 'means-in-mads':

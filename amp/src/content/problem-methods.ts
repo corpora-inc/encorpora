@@ -1,3 +1,4 @@
+import { completingSquareMethods } from "./completing-square-lessons";
 import { factoringMethods } from "./factoring-lessons";
 import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
@@ -44,6 +45,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,
   ...shapeMethods,
