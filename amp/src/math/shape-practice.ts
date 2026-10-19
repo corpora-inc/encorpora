@@ -81,7 +81,7 @@ export const shapeTemplates: readonly TemplateMetadata[] = definitions.map(
   }),
 );
 
-function random(id: string, seed: string) {
+export function random(id: string, seed: string) {
   let counter = 0;
   return (lo: number, hi: number) => {
     const span = hi - lo + 1,
@@ -96,9 +96,10 @@ function random(id: string, seed: string) {
     return lo + (value % span);
   };
 }
-type Rand = ReturnType<typeof random>;
-const pick = <T>(r: Rand, list: readonly T[]) => list[r(0, list.length - 1)]!;
-function shuffle<T>(r: Rand, list: T[]) {
+export type Rand = ReturnType<typeof random>;
+export const pick = <T>(r: Rand, list: readonly T[]) =>
+  list[r(0, list.length - 1)]!;
+export function shuffle<T>(r: Rand, list: T[]) {
   for (let i = list.length - 1; i > 0; i--) {
     const j = r(0, i);
     [list[i], list[j]] = [list[j]!, list[i]!];
@@ -112,7 +113,7 @@ const regular = (n: number, radius: number, start = 0): Pt[] =>
     return [radius * Math.cos(t), radius * Math.sin(t)] as Pt;
   });
 /** Center a polygon on its vertex centroid, rotate and scale it. */
-function posed(points: Pt[], degrees: number, scale = 1): FlatShape {
+export function posed(points: Pt[], degrees: number, scale = 1): FlatShape {
   const [cx, cy] = centroid(points);
   return {
     type: "polygon",
@@ -516,6 +517,41 @@ function holds(attribute: Attribute, points: Pt[]) {
   }
 }
 
+/** A star-shaped polygon with n visible corners, sometimes with corners
+ * pointing inward, at a random turn: no side is too short to see and no
+ * corner is nearly straight. */
+export function irregularPolygon(r: Rand, n: number, size = 1.6): Pt[] {
+  let points: Pt[];
+  for (;;) {
+    const concave = n >= 5 && r(0, 2) === 0;
+    const raw = Array.from({ length: n }, (_, i) => {
+      const t =
+        ((360 * i) / n + r(-12, 12) * (n <= 4 ? 1 : 0.6)) * (Math.PI / 180);
+      const radius =
+        concave && i % 2 === 1 ? r(45, 58) / 100 : r(80, 100) / 100;
+      return [size * radius * Math.cos(t), size * radius * Math.sin(t)] as Pt;
+    });
+    points = place(raw, r(0, 359));
+    // Every corner must turn visibly and every side must be visible.
+    const ok = points.every((v, i) => {
+      const u = points[(i + n - 1) % n]!,
+        w = points[(i + 1) % n]!;
+      const a = [v[0] - u[0], v[1] - u[1]],
+        b = [w[0] - v[0], w[1] - v[1]];
+      const la = Math.hypot(a[0]!, a[1]!),
+        lb = Math.hypot(b[0]!, b[1]!);
+      const sin = Math.abs(a[0]! * b[1]! - a[1]! * b[0]!) / (la * lb);
+      const cos = (a[0]! * b[0]! + a[1]! * b[1]!) / (la * lb);
+      return (
+        lb > (0.55 / 1.6) * size &&
+        (sin > Math.sin((24 * Math.PI) / 180) || cos < 0)
+      );
+    });
+    if (ok) break;
+  }
+  return points;
+}
+
 export function generateShapeProblem(
   templateId: string,
   seed: string,
@@ -877,31 +913,7 @@ export function generateShapeProblem(
     }
     case "count-sides-corners": {
       const n = r(3, 8);
-      let points: Pt[];
-      for (;;) {
-        const concave = n >= 5 && r(0, 2) === 0;
-        const raw = Array.from({ length: n }, (_, i) => {
-          const t =
-            ((360 * i) / n + r(-12, 12) * (n <= 4 ? 1 : 0.6)) * (Math.PI / 180);
-          const radius =
-            concave && i % 2 === 1 ? r(45, 58) / 100 : r(80, 100) / 100;
-          return [1.6 * radius * Math.cos(t), 1.6 * radius * Math.sin(t)] as Pt;
-        });
-        points = place(raw, r(0, 359));
-        // Every corner must turn visibly and every side must be visible.
-        const ok = points.every((v, i) => {
-          const u = points[(i + n - 1) % n]!,
-            w = points[(i + 1) % n]!;
-          const a = [v[0] - u[0], v[1] - u[1]],
-            b = [w[0] - v[0], w[1] - v[1]];
-          const la = Math.hypot(a[0]!, a[1]!),
-            lb = Math.hypot(b[0]!, b[1]!);
-          const sin = Math.abs(a[0]! * b[1]! - a[1]! * b[0]!) / (la * lb);
-          const cos = (a[0]! * b[0]! + a[1]! * b[1]!) / (la * lb);
-          return lb > 0.55 && (sin > Math.sin((24 * Math.PI) / 180) || cos < 0);
-        });
-        if (ok) break;
-      }
+      const points = irregularPolygon(r, n);
       figure = {
         kind: "plane-shapes",
         items: [{ pieces: [polygonShape(points)] }],

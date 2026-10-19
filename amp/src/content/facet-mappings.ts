@@ -4,6 +4,7 @@ import { decimalFacetMappings } from "./decimal-coverage";
 import { timeMoneyFacetMappings } from "./time-money-coverage";
 import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { shapeFacetMappings } from "./shape-coverage";
+import { polygonFacetMappings } from "./polygon-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
 import { partWholeFacetMappings } from "./part-whole-coverage";
@@ -28,6 +29,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 export const actualFacetMappings: readonly FacetMapping[] = [
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,
+  ...polygonFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
   ...linePlotFacetMappings,

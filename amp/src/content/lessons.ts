@@ -13,6 +13,8 @@ import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
@@ -47,6 +49,7 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | ShapeIllustrationKind
+      | PolygonIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -606,6 +609,7 @@ export const lessons: readonly Lesson[] = [
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
   ...shapeLessons,
+  ...polygonLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
