@@ -386,6 +386,18 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
     await page.getByRole("button", { name: "Check" }).click();
     await page.locator(".solution-panel").waitFor();
   });
+  // The adaptive planner chooses the next problem, which may be typed or
+  // multiple choice. The attempt response is overridden, so any answer works.
+  // The previous problem stays mounted until the next batch arrives, so wait
+  // for its feedback panel to leave before looking for the new answer form.
+  const answerNextProblem = async () => {
+    await page.locator(".solution-panel").waitFor({ state: "detached" });
+    const field = page.locator("#answer");
+    const choice = page.getByRole("radio").first();
+    await field.or(choice).first().waitFor();
+    if (await field.isVisible()) await field.fill("1");
+    else await choice.check();
+  };
   await step("feedback-correct", async () => {
     await page.route("**/attempts", async (route) => {
       const response = await route.fetch();
@@ -396,15 +408,14 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
       });
     });
     await page.getByRole("button", { name: "Next", exact: false }).click();
-    await page.locator("#answer").waitFor();
-    await page.locator("#answer").fill("1");
+    await answerNextProblem();
     await page.getByRole("button", { name: "Check" }).click();
     await page.locator(".solution-panel.correct").waitFor();
     await page.unroute("**/attempts");
   });
   await step("feedback-assisted", async () => {
     await page.getByRole("button", { name: "Next", exact: false }).click();
-    await page.locator("#answer").waitFor();
+    await answerNextProblem();
     await page.route("**/attempts", async (route) => {
       const response = await route.fetch();
       const body = await response.json();
@@ -413,7 +424,6 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
         json: { ...body, correct: true, assisted: true },
       });
     });
-    await page.locator("#answer").fill("1");
     await page.getByRole("button", { name: "Check" }).click();
     await page.locator(".solution-panel.correct").waitFor();
     await page.unroute("**/attempts");
