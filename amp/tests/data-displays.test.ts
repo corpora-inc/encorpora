@@ -6,6 +6,8 @@ import { generateProblem, templates } from "../src/math/engine";
 import { semanticFigureSchema } from "../src/math/contracts";
 import {
   barGraphLayout,
+  boxPlotLayout,
+  histogramLayout,
   dataDisplayKinds,
   linePlotLayout,
   pictureGraphLayout,
@@ -61,6 +63,26 @@ test("drawn geometry is exactly proportional to the displayed data", () => {
           assert.ok(row.symbols.filter((s) => s.half).length <= 1);
           assert.ok((row.symbols.at(-1)?.cx ?? 0) + l.radius <= 352);
         });
+      } else if (figure.kind === "histogram") {
+        const l = histogramLayout(figure);
+        const unit = (l.bottom - l.top) / l.max;
+        l.bars.forEach((b, i) => {
+          assert.ok(Math.abs(b.height - b.count * unit) < 1e-9);
+          // Bars touch: each starts where the last ended.
+          if (i)
+            assert.ok(
+              Math.abs(b.x - (l.bars[i - 1]!.x + l.bars[i - 1]!.width)) < 1e-9,
+            );
+        });
+        assert.ok(l.max >= Math.max(...figure.counts));
+      } else if (figure.kind === "box-plot") {
+        const l = boxPlotLayout(figure);
+        const [min, q1, med, q3, max] = figure.summary;
+        assert.deepEqual(
+          [l.box.min, l.box.q1, l.box.median, l.box.q3, l.box.max],
+          [min, q1, med, q3, max].map(l.x),
+        );
+        assert.ok(l.box.min >= l.left && l.box.max <= l.right);
       } else if (figure.kind === "line-plot") {
         const l = linePlotLayout(figure);
         const step = l.ticks[1]!.x - l.ticks[0]!.x;

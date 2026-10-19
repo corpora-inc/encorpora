@@ -29,19 +29,28 @@ export type DecimalAlignAnimation = {
   kind: "decimal-align";
   figure: DecimalChart;
 };
+type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
+type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
+type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 export type AnimationModel =
   | DecimalFillAnimation
   | DecimalAlignAnimation
+  | { kind: "prism-layers"; figure: CubePrism }
+  | { kind: "quadrant-walk"; figure: Grid }
+  | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
   | AreaAnimation
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
+  | { kind: "regroup-sum"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
   | { kind: "line-plot-stack"; figure: LinePlot }
-  | { kind: "line-plot-share"; figure: LinePlot; share: number };
+  | { kind: "line-plot-share"; figure: LinePlot; share: number }
+  | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
+  | { kind: "box-build"; figure: LinePlot };
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -70,6 +79,60 @@ export function animationModel(
     chartValue(f.rows[0]!, f.places) !== chartValue(f.rows[1]!, f.places)
   )
     return { kind: "decimal-align", figure: f };
+  if (
+    (lesson.templateId === "unit-cube-volume" ||
+      lesson.templateId === "cube-layer-count") &&
+    f?.kind === "cube-prism" &&
+    integer(f.length, 1, 6) &&
+    integer(f.width, 1, 6) &&
+    integer(f.height, 2, 6)
+  )
+    return { kind: "prism-layers", figure: f };
+  if (
+    lesson.templateId === "first-quadrant-coordinates" &&
+    f?.kind === "quadrant-grid" &&
+    integer(f.size, 4, 10) &&
+    f.points.length === 1
+  )
+    return { kind: "quadrant-walk", figure: f };
+  if (
+    (lesson.templateId === "dot-plot-mean" ||
+      lesson.templateId === "dot-plot-mad") &&
+    f?.kind === "line-plot" &&
+    f.mark === "dot" &&
+    f.denominator === 1 &&
+    validPlot(f)
+  ) {
+    const mean = f.values.reduce((a, b) => a + b, 0) / f.values.length;
+    const lo = Math.min(...f.values),
+      hi = Math.max(...f.values);
+    // A trial pivot that is not the mean: the middle of the range, or beside it.
+    const mid = (lo + hi) / 2;
+    const trial = mid !== mean ? mid : mean + (hi - mean > 1 ? 1 : -1);
+    return {
+      kind: "mean-balance",
+      figure: f,
+      mad: lesson.templateId === "dot-plot-mad",
+      trial,
+    };
+  }
+  if (
+    lesson.templateId === "dot-plot-iqr" &&
+    f?.kind === "line-plot" &&
+    f.mark === "dot" &&
+    f.denominator === 1 &&
+    validPlot(f) &&
+    f.values.length >= 4
+  )
+    return { kind: "box-build", figure: f };
+  if (
+    lesson.templateId === "make-ten-fact" &&
+    f?.kind === "ten-frame-pair" &&
+    integer(f.first, 1, 9) &&
+    integer(f.second, 1, 9) &&
+    f.first + f.second > 10
+  )
+    return { kind: "make-ten", figure: f };
   if (
     (lesson.templateId === "name-equal-share" ||
       lesson.templateId === "name-share") &&
@@ -142,6 +205,13 @@ export function animationModel(
     f.values.every((n) => integer(n, 10, 99))
   )
     return { kind: "place-compare", figure: f };
+  if (
+    lesson.templateId === "add-two-digit-regroup" &&
+    f?.kind === "base-ten-pair" &&
+    f.values.every((n) => integer(n, 10, 99)) &&
+    f.values[0] + f.values[1] <= 100
+  )
+    return { kind: "regroup-sum", figure: f };
   if (
     lesson.templateId === "fraction-model" &&
     f?.kind === "fraction" &&
@@ -236,6 +306,24 @@ export const firstDifference = (figure: DecimalChart) => {
 };
 const written = (row: { ones: number; decimals: string }) =>
   `${row.ones}.${row.decimals}`;
+/** Quartiles by the median-of-halves convention (overall median left out for odd counts). */
+export function fiveNumbers(values: readonly number[]) {
+  const xs = [...values].sort((a, b) => a - b),
+    n = xs.length;
+  const median = (v: number[]) => {
+    const k = Math.floor(v.length / 2);
+    return v.length % 2 ? v[k]! : (v[k - 1]! + v[k]!) / 2;
+  };
+  return {
+    min: xs[0]!,
+    q1: median(xs.slice(0, Math.floor(n / 2))),
+    median: median(xs),
+    q3: median(xs.slice(Math.ceil(n / 2))),
+    max: xs[n - 1]!,
+  };
+}
+const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
+
 export function animationFrames(model: AnimationModel) {
   if (model.kind === "decimal-fill") {
     const k = model.shaded,
@@ -291,6 +379,132 @@ export function animationFrames(model: AnimationModel) {
         title: "Compare from the left",
         text: `The first column that differs is the ${place}: ${digit(pa)} and ${digit(pb)}. Columns to its right cannot change the result.`,
         math: `$${written(a!)} ${sign} ${written(b!)}$`,
+      },
+    ];
+  }
+  if (model.kind === "prism-layers") {
+    const { length: l, width: w, height: h } = model.figure,
+      layer = l * w;
+    return [
+      {
+        title: "One layer",
+        text: `The top shows ${l} by ${w} cubes. The bottom layer is the same.`,
+        math: `$${l} \\times ${w} = ${layer}$ cubes`,
+      },
+      {
+        title: "Stack the layers",
+        text: `${h} identical layers fill the prism, hidden cubes included.`,
+        math: `$${h}$ layers`,
+      },
+      {
+        title: "Multiply",
+        text: `Each of the ${h} layers holds ${layer} cubes.`,
+        math: `$V = ${layer} \\times ${h} = ${layer * h}$ cubic units`,
+      },
+    ];
+  }
+  if (model.kind === "quadrant-walk") {
+    const { x, y } = model.figure.points[0]!;
+    return [
+      {
+        title: "Start at the origin",
+        text: "Both coordinates are 0 where the axes meet.",
+        math: "$(0, 0)$",
+      },
+      {
+        title: "Across first",
+        text: `Go ${x} across along the x-axis: the first coordinate.`,
+        math: `$x = ${x}$`,
+      },
+      {
+        title: "Then up",
+        text: `Go ${y} up to reach the point: the second coordinate.`,
+        math: `$(${x}, ${y})$`,
+      },
+    ];
+  }
+  if (model.kind === "mean-balance") {
+    const { values } = model.figure,
+      n = values.length,
+      sum = values.reduce((a, b) => a + b, 0),
+      mean = sum / n;
+    const below = values
+      .filter((v) => v < mean)
+      .reduce((a, v) => a + (mean - v), 0);
+    const g = (a: number, b: number): number => (b ? g(b, a % b) : a);
+    const frac = (p: number, q: number) => {
+      const k = g(Math.abs(p), q);
+      return q / k === 1
+        ? { tex: `${p / k}`, text: `${p / k}` }
+        : {
+            tex: `\\tfrac{${p / k}}{${q / k}}`,
+            text: `${p / k}/${q / k}`,
+          };
+    };
+    const belowText = frac(Math.round(below * n), n);
+    return [
+      {
+        title: "Put the dots on a beam",
+        text: `${n} values sit on the number line like equal weights.`,
+        math: `$\\text{sum} = ${sum}$`,
+      },
+      {
+        title: "Try a pivot",
+        text: `With the pivot at ${num(model.trial)}, the beam tips: one side carries more total distance.`,
+        math: `$\\text{pivot} = ${num(model.trial)}$`,
+      },
+      model.mad
+        ? {
+            title: "Balance, then measure the spread",
+            text: `The beam balances at the mean. The distances below it equal the distances above it, ${belowText.text} each side. The MAD is the mean of all the distances.`,
+            math: `$\\text{MAD} = \\dfrac{2 \\times ${belowText.tex}}{${n}}$`,
+          }
+        : {
+            title: "Balance at the mean",
+            text: `The beam balances at ${frac(sum, n).text}: the distances below it add up to the distances above it.`,
+            math: `$${sum} \\div ${n} = ${frac(sum, n).tex}$`,
+          },
+    ];
+  }
+  if (model.kind === "box-build") {
+    const q = fiveNumbers(model.figure.values);
+    return [
+      {
+        title: "The ordered data",
+        text: "A dot plot already lists the values in order, left to right.",
+        math: `$${model.figure.values.length}\\text{ values}$`,
+      },
+      {
+        title: "Split at the median, then split each half",
+        text: "The median cuts the data into halves; each half’s median is a quartile.",
+        math: `$Q_1 = ${num(q.q1)},\\; \\text{median} = ${num(q.median)},\\; Q_3 = ${num(q.q3)}$`,
+      },
+      {
+        title: "Draw the box",
+        text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
+        math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
+      },
+    ];
+  }
+  if (model.kind === "make-ten") {
+    const { first: a, second: b } = model.figure;
+    const need = 10 - a,
+      rest = b - need;
+    return [
+      {
+        title: "Two frames",
+        text: `${a} in the first frame, ${b} in the second.`,
+        math: `$${a} + ${b}$`,
+      },
+      {
+        title: "Fill the first ten",
+        text: `${a} needs ${need} more to make 10. Move ${need} from the second frame.`,
+        math: `$${b} = ${need} + ${rest}$`,
+      },
+      {
+        title: "Ten and the rest",
+        text: `One full ten and ${rest} more. No counter was added or lost.`,
+        math: `$${a} + ${b} = 10 + ${rest} = ${a + b}$`,
       },
     ];
   }
@@ -442,6 +656,35 @@ export function animationFrames(model: AnimationModel) {
             : `${plural(pairs, "pair", "pairs")}; ${rest} without a partner.`,
         math: `$${c} ${c < s ? "<" : c > s ? ">" : "="} ${s}$`,
       },
+    ];
+  }
+  if (model.kind === "regroup-sum") {
+    const [a, b] = model.figure.values;
+    const tens = Math.floor(a / 10) + Math.floor(b / 10),
+      ones = (a % 10) + (b % 10),
+      trade = ones >= 10 ? 1 : 0;
+    return [
+      {
+        title: "Show both numbers",
+        text: `${a} is ${plural(Math.floor(a / 10), "ten", "tens")} and ${plural(a % 10, "one", "ones")}. ${b} is ${plural(Math.floor(b / 10), "ten", "tens")} and ${plural(b % 10, "one", "ones")}.`,
+        math: `$${a} + ${b}$`,
+      },
+      {
+        title: "Join like units",
+        text: `Tens join tens and ones join ones: ${plural(tens, "ten", "tens")} and ${plural(ones, "one", "ones")}.`,
+        math: `$${tens * 10} + ${ones}$`,
+      },
+      trade
+        ? {
+            title: "Trade ten ones for a ten",
+            text: `${ones} ones are 1 ten and ${plural(ones - 10, "one", "ones")}. The total does not change.`,
+            math: `$${(tens + 1) * 10} + ${ones - 10} = ${a + b}$`,
+          }
+        : {
+            title: "No trade needed",
+            text: `${plural(ones, "one", "ones")} is fewer than ten, so the ones stay as they are.`,
+            math: `$${tens * 10} + ${ones} = ${a + b}$`,
+          },
     ];
   }
   if (model.kind === "place-compare") {

@@ -12,12 +12,17 @@ import {
   dataDisplayFigureSchemas,
   type DataDisplayFigure,
 } from "./data-display-models.js";
+import {
+  geometryFigureSchemas,
+  type GeometryFigure,
+} from "./geometry-figures.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
   | DecimalFigure
   | DataDisplayFigure
+  | GeometryFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -48,6 +53,7 @@ export type SemanticFigure =
       spread: "circles" | "squares" | "none";
     }
   | { kind: "base-ten-pair"; values: [number, number] }
+  | { kind: "ten-frame-pair"; first: number; second: number }
   | {
       kind: "coordinate-plane";
       xMin: number;
@@ -75,6 +81,7 @@ export type SemanticFigure =
 export const figureCapabilities = [
   "measurement-models-v1",
   "data-displays-v1",
+  "volume-coordinate-figures-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
@@ -117,6 +124,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...partWholeFigureSchemas,
     ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,
+    ...geometryFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),
@@ -216,6 +224,13 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         (f) => f.spread === "none" || f[f.spread] >= 2,
         "A spread row needs at least two counters",
       ),
+    z
+      .object({
+        kind: z.literal("ten-frame-pair"),
+        first: z.number().int().min(1).max(10),
+        second: z.number().int().min(1).max(10),
+      })
+      .strict(),
     z
       .object({
         kind: z.literal("base-ten-pair"),

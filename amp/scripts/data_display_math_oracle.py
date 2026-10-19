@@ -11,8 +11,148 @@ LINE_PLOTS = frozenset({
     'line-plot-whole', 'fraction-line-plot', 'fraction-plot-difference',
     'fraction-plot-equal-share',
 })
-DATA_DISPLAY = EARLY_DATA | LINE_PLOTS
-DATA_DISPLAY_CHOICE = frozenset({'sort-shapes-most'})
+DISTRIBUTIONS = frozenset({
+    'statistical-question-choice', 'dot-plot-mean', 'mean-missing-value',
+    'histogram-read', 'box-plot-read', 'dot-plot-mad', 'dot-plot-iqr',
+    'typical-value-choice',
+})
+DATA_DISPLAY = EARLY_DATA | LINE_PLOTS | DISTRIBUTIONS
+DATA_DISPLAY_CHOICE = frozenset({'sort-shapes-most', 'statistical-question-choice', 'typical-value-choice'})
+
+# The reviewer's own classification: each of these asks for many values from a group.
+STATISTICAL = {
+    'How many hours of sleep do the students in my class get on a school night?',
+    'How long are the songs on my favorite album?',
+    'How much do the dogs at the animal shelter weigh?',
+    'How many pages are in the books on this shelf?',
+    'How many minutes do students at our school spend getting to school?',
+    'How tall are the sunflowers in our garden?',
+    'How many goals did each player on the team score this season?',
+    'What were the high temperatures in our town each day last month?',
+}
+# Each has exactly one answer.
+SINGLE_ANSWER = {
+    'How many hours did I sleep last night?', 'How many students are in my class?',
+    'What time does my school day begin?', 'How long is the first song on my favorite album?',
+    'How many songs are on my favorite album?', 'What is the title of my favorite album?',
+    'How much does my dog weigh?', 'How many dogs are at the animal shelter today?',
+    'What time does the animal shelter open?', 'How many pages are in this book?',
+    'How many books are on this shelf?', 'Which book on this shelf did I read first?',
+    'How many minutes did it take me to get to school today?', 'How far is our school from the library?',
+    'How many buses does our school have?', 'How tall is the sunflower by the gate?',
+    'How many sunflowers are in our garden?', 'When did we plant the sunflowers?',
+    'How many goals did Maya score this season?', 'How many players are on the team?',
+    'What color are the team’s shirts?', 'What was the high temperature in our town yesterday?',
+    'How many days were in last month?', 'What is the name of our town?',
+}
+
+
+def _frac(value):
+    return str(value.numerator) if value.denominator == 1 else f'{value.numerator}/{value.denominator}'
+
+
+def _median(xs):
+    k = len(xs) // 2
+    return Fraction(xs[k]) if len(xs) % 2 else Fraction(xs[k - 1] + xs[k], 2)
+
+
+def _dot_values(public):
+    figure = public['figure']
+    require(figure['kind'] == 'line-plot' and figure['mark'] == 'dot' and figure['denominator'] == 1, 'Dot plot required')
+    values = figure['values']
+    require(all(figure['start'] <= v <= figure['end'] for v in values), 'Dot off the axis')
+    require(max(values.count(v) for v in values) <= 7, 'Stack leaves the plot')
+    m = re.search(r'in each of its (\d+) games|each of (\d+) students', public['prompt'])
+    require(m is not None and int(m[1] or m[2]) == len(values), 'Stated count contradicts the dots')
+    return sorted(values)
+
+
+def solve_distribution(public):
+    template, prompt = public['templateId'], public['prompt']
+    if template == 'statistical-question-choice':
+        require(prompt == 'Which is a statistical question?' and 'figure' not in public, 'Unexpected statistical prompt')
+        options = public['response']['options']
+        require(len(options) == 4 and all(o['label'] in STATISTICAL | SINGLE_ANSWER for o in options), 'Unreviewed question')
+        valid = [o['id'] for o in options if o['label'] in STATISTICAL]
+        require(len(valid) == 1, 'Exactly one statistical question required')
+        return valid[0]
+    if template == 'mean-missing-value':
+        m = re.fullmatch(r'The mean of (\d+) quiz scores is (\d+)\. (Three|Four|Five) of the scores are ([\d, ]+) and (\d+)\. What is the other score\?', prompt)
+        require(m is not None, 'Unexpected mean prompt')
+        n, mean = int(m[1]), int(m[2])
+        known = [int(x) for x in m[4].split(', ')] + [int(m[5])]
+        require(len(known) == n - 1 and {'Three': 3, 'Four': 4, 'Five': 5}[m[3]] == n - 1, 'Count mismatch')
+        missing = n * mean - sum(known)
+        require(0 <= missing <= 100, 'Impossible quiz score')
+        return str(missing)
+    if template == 'histogram-read':
+        f = public['figure']
+        require(f['kind'] == 'histogram', 'Histogram required')
+        edges = [f['start'] + i * f['width'] for i in range(len(f['counts']) + 1)]
+        question = prompt.split('. ')[-1]
+        if 'shown in the histogram' in question:
+            return str(sum(f['counts']))
+        if (m := re.search(r'from (\d+) to (\d+) ', question)):
+            a, b = int(m[1]), int(m[2])
+            require(a in edges[:-1] and b == a + f['width'] - 1, 'Interval is not one bin')
+            return str(f['counts'][edges.index(a)])
+        if (m := re.search(r'at least (\d+) ', question)):
+            e = int(m[1]); require(e in edges[1:-1], 'Not a bin edge')
+            return str(sum(f['counts'][edges.index(e):]))
+        if (m := re.search(r'(?:fewer|less) than (\d+) ', question)):
+            e = int(m[1]); require(e in edges[1:-1], 'Not a bin edge')
+            return str(sum(f['counts'][:edges.index(e)]))
+        raise ValueError(f'Unrecognized histogram question {prompt}')
+    if template == 'box-plot-read':
+        f = public['figure']
+        require(f['kind'] == 'box-plot' and list(f['summary']) == sorted(f['summary']), 'Box plot required')
+        lo, q1, med, q3, hi = f['summary']
+        question = prompt.split('. ')[-1]
+        if question.startswith('What is the median'):
+            return str(med)
+        if question.startswith('What is the interquartile range'):
+            return str(q3 - q1)
+        if question.startswith('What is the range'):
+            return str(hi - lo)
+        m = re.fullmatch(r'About what percent of the [a-z ]+ are (greater than|between|less than) (\d+)(?: and (\d+))?\?', question)
+        require(m is not None, f'Unrecognized box question {prompt}')
+        a = int(m[2])
+        if m[1] == 'between':
+            require((a, int(m[3])) == (q1, q3), 'Between must name the quartiles')
+            return '50'
+        cuts = {q1: 25, med: 50, q3: 75}
+        require(a in cuts, 'Comparison must name a quartile')
+        return str(cuts[a] if m[1] == 'less than' else 100 - cuts[a])
+    xs = _dot_values(public)
+    n = len(xs)
+    if template == 'dot-plot-mean':
+        require(prompt.endswith('What is the mean number of goals per game?') or re.search(r'What is the mean number of \w+ per student\?$', prompt), 'Unexpected mean question')
+        return _frac(Fraction(sum(xs), n))
+    if template == 'dot-plot-mad':
+        mean = Fraction(sum(xs), n)
+        return _frac(sum(abs(x - mean) for x in xs) / n)
+    if template == 'dot-plot-iqr':
+        require('leaving out the overall median when the count is odd' in prompt, 'Quartile convention must be stated')
+        lower, upper = xs[:n // 2], xs[(n + 1) // 2:]
+        return _frac(_median(upper) - _median(lower))
+    if template == 'typical-value-choice':
+        mean, med = Fraction(sum(xs), n), _median(xs)
+        require(sum(1 for x in xs if x > mean) == 1, 'A single value far from the rest is required')
+        options = public['response']['options']
+        def number(text):
+            return Fraction(text)
+        valid = []
+        for o in options:
+            m = re.fullmatch(r'The (median|mean|maximum|range), ([\d.]+|\d+/\d+)', o['label'])
+            require(m is not None, 'Choice must name a summary and its value')
+            truth = {'median': med, 'mean': mean, 'maximum': Fraction(xs[-1]), 'range': Fraction(xs[-1] - xs[0])}[m[1]]
+            require(number(m[2]) == truth, f'Choice states a wrong value: {o["label"]}')
+            if m[1] == 'median':
+                valid.append(o['id'])
+        require(len(valid) == 1, 'One median choice required')
+        return valid[0]
+    raise ValueError(f'No distribution solver for {template}')
+
 
 SHAPES = {'circles': 'circle', 'squares': 'square', 'triangles': 'triangle'}
 
@@ -105,6 +245,8 @@ def solve_line_plot(public):
 
 def solve_data_display(public):
     template = public['templateId']
+    if template in DISTRIBUTIONS:
+        return solve_distribution(public)
     figure = public['figure']
     prompt = public['prompt']
     if template in LINE_PLOTS:
@@ -152,6 +294,17 @@ def solve_data_display(public):
 
 
 def review_data_display_fixtures():
+    dots = {'kind': 'line-plot', 'denominator': 1, 'start': 0, 'end': 8, 'mark': 'dot', 'unit': 'goals',
+            'values': [1, 2, 2, 3, 7]}
+    dp = lambda t, q: solve_distribution({'templateId': t, 'figure': dots,
+        'prompt': 'The dot plot shows how many goals a soccer team scored in each of its 5 games. ' + q})
+    require(dp('dot-plot-mean', 'What is the mean number of goals per game?') == '3', 'mean fixture')
+    require(dp('dot-plot-mad', 'What is the mean absolute deviation of the data?') == '8/5', 'MAD fixture')
+    require(dp('dot-plot-iqr', 'What is the interquartile range? Use the median of each half, leaving out the overall median when the count is odd.') == '7/2', 'IQR fixture')
+    box = {'kind': 'box-plot', 'start': 0, 'end': 60, 'step': 5, 'summary': [5, 10, 35, 40, 55], 'unit': 'minutes'}
+    bp = lambda q: solve_distribution({'templateId': 'box-plot-read', 'figure': box, 'prompt': 'The box plot summarizes times. ' + q})
+    require(bp('About what percent of the travel times are greater than 40?') == '25', 'box percent fixture')
+    require(bp('About what percent of the travel times are less than 10?') == '25', 'box lower fixture')
     plot = {'kind': 'line-plot', 'denominator': 4, 'start': 4, 'end': 12, 'mark': 'x', 'unit': 'inches',
             'values': [5, 5, 9, 11, 12]}
     lp = lambda prompt: solve_data_display({'templateId': 'fraction-plot-difference', 'figure': plot, 'prompt': prompt})
