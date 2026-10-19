@@ -32,6 +32,10 @@ import {
   generateDistributionProblem,
 } from "./distribution-practice";
 import {
+  twoVariableTemplates,
+  generateTwoVariableProblem,
+} from "./two-variable-practice";
+import {
   linearFunctionTemplates,
   generateLinearFunctionProblem,
 } from "./linear-function-practice";
@@ -104,6 +108,10 @@ import {
   multiplyDivideTemplates,
   generateMultiplyDivideProblem,
 } from "./multiply-divide-practice";
+import {
+  numberSenseTemplates,
+  generateNumberSenseProblem,
+} from "./number-sense-practice";
 import {
   comparisonTemplates,
   generateComparisonProblem,
@@ -313,6 +321,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...numberSenseTemplates,
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
@@ -326,6 +335,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
+  ...twoVariableTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -495,6 +505,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...angleTemplates,
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
+    ...twoVariableTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
@@ -564,6 +575,8 @@ function generateRawProblem(
     return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (twoVariableTemplates.some((t) => t.id === templateId))
+    return generateTwoVariableProblem(templateId, seed);
   if (linearFunctionTemplates.some((t) => t.id === templateId))
     return generateLinearFunctionProblem(templateId, seed);
   if (angleTemplates.some((t) => t.id === templateId))
@@ -598,6 +611,8 @@ function generateRawProblem(
     return generateProbabilityRulesProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (numberSenseTemplates.some((t) => t.id === templateId))
+    return generateNumberSenseProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))
     return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))

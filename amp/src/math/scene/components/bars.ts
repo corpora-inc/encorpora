@@ -3,8 +3,9 @@ import { base, label, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import { num } from "./format";
 
-/** Vertical bars over categories: one series, or two side by side. Heights
- * share one linear scale, so growth reads directly. */
+/** Labeled bars over categories: one series, or two racing side by side
+ * (adding against doubling). Each bar carries its value, so growth reads
+ * directly; `barChart` is the data display read against a count scale. */
 export const barsSchema = z
   .object({
     ...base,
