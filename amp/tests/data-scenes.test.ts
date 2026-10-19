@@ -7,6 +7,7 @@ import {
   type Drawn,
 } from "../src/math/scene/index.js";
 import { isPorted, legacyScene } from "../src/math/scene/legacy.js";
+import { componentDef } from "../src/math/scene/layout.js";
 import type { SemanticFigure } from "../src/math/contracts.js";
 
 const near = (a: number, b: number, eps = 1e-6) =>
@@ -162,6 +163,33 @@ test("picture graphs draw the count in symbols; shape sorts draw every shape", (
       assert.deepEqual(
         shapes.map((d) => d.data!.shape),
         f.shapes,
+      );
+    }
+});
+
+test("every data figure keeps its full width: no scale is squeezed to fit", () => {
+  for (const id of [
+    "means-in-mads",
+    "sample-estimates-plot",
+    "dot-plot-mean",
+    "line-plot-whole",
+    "fraction-line-plot",
+    "double-box-compare",
+    "histogram-read",
+    "scaled-picture-graph",
+    "scaled-bar-graph",
+    "sort-shapes-count",
+  ])
+    for (const f of figures(id, 256)) {
+      if (!isPorted(f)) continue;
+      const scene = legacyScene(f);
+      const l = layoutScene(scene);
+      const e = scene.elements[0]!;
+      const cap = componentDef(e.type)!.maxScale?.(e as never) ?? Infinity;
+      // Full width, or the component's own largest scale (a few shapes).
+      assert.ok(
+        l.width >= 260 || l.scale >= cap - 1e-6,
+        `${id}: ${f.kind} is ${l.width.toFixed(0)} px wide at scale ${l.scale}`,
       );
     }
 });
