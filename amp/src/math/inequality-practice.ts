@@ -168,8 +168,7 @@ function generateInequalityCase(
     tags.push(equality ? "equal" : "unequal", truth ? "true" : "false");
     left = `${number(q(factor))}(${linear(q(a), q(b))})${constant(q(d))}`;
     right = linear(q(coefficient), q(rhs));
-    hint =
-      "Distribute first, then subtract the matching variable terms from both sides. Decide whether the remaining numerical comparison is true or false; it no longer depends on x.";
+    hint = `Distribute ${number(q(factor))} across (${linear(q(a), q(b))}) first: the x terms on the two sides then match. Remove ${term(q(coefficient))} from both sides and check whether the numbers left make a true comparison.`;
     explanation.push(
       `Distribute ${number(q(factor))} across the parentheses: ${linear(q(coefficient), q(factor * b))}${constant(q(d))} ${op} ${right}.`,
       ...(d === 0
@@ -276,11 +275,11 @@ function generateInequalityCase(
             : `Check both the boundary and the direction. Dividing ${number(remaining)} by ${number(coefficient)} gives ${number(target)}; ${coefficient.n < 0 ? "the negative divisor reverses" : "the positive divisor preserves"} the comparison, giving x ${solvedOp} ${number(target)}.`,
       })),
     );
+    const divide = `When you divide by the x coefficient, ${number(coefficient)}, ask whether it is negative.`;
     hint =
-      "Isolate the variable term using the same addition or subtraction on both sides. When dividing by its coefficient, reverse the comparison sign if that coefficient is negative. Keep track of whether equality is included.";
-    if (templateId === "grouped-linear-inequality")
-      hint =
-        "Distribute the outside factor to every term in the parentheses. Collect variable terms on one side and constants on the other, then divide; a negative divisor reverses the comparison sign.";
+      templateId === "grouped-linear-inequality"
+        ? `Distribute ${left.slice(0, left.indexOf("("))} to every term in the parentheses, then collect the x terms on one side. Before dividing by the x coefficient, check its sign: a negative divisor reverses the comparison.`
+        : `${lhsConstant.n ? `Remove the ${number(lhsConstant)} from both sides of ${left} ${op} ${right} first.` : `The x term in ${left} ${op} ${right} is already alone.`} ${divide}`;
     feedback =
       "Both the boundary and the direction must be correct. Isolate x with exact arithmetic, and reverse the comparison when dividing by a negative number.";
   }

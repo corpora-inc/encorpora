@@ -7,9 +7,21 @@ type Case = {
   prompt: string;
   value: Q;
   explanation: string[];
+  /** One step for this instance: its own numbers and the first move. */
+  hint: string;
   tags: string[];
   key: string;
 };
+/** Plain text for a fraction or a TeX fragment: 3/4, −5/6, (3/4 + 2). */
+const plain = (x: Q | string) =>
+  (typeof x === "string"
+    ? x
+        .replace(/\\d?frac\{([^}]*)\}\{([^}]*)\}/g, "$1/$2")
+        .replace(/\\left\(|\\right\)/g, (m) => (m.includes("left") ? "(" : ")"))
+    : x.d === 1
+      ? `${x.n}`
+      : `${x.n}/${x.d}`
+  ).replace(/-/g, "−");
 const gcd = (a: number, b: number): number => {
   a = Math.abs(a);
   b = Math.abs(b);
@@ -106,16 +118,6 @@ export const rationalTemplates: readonly TemplateMetadata[] = descriptions.map(
     version: 1,
   }),
 );
-const hints: Record<string, string> = {
-  "signed-fraction-sum":
-    "Subtracting a number is adding its opposite. Rename both fractions with a common denominator, add the signed numerators, then reduce.",
-  "signed-fraction-product":
-    "Dividing by a fraction is multiplying by its reciprocal. Same signs give a positive result, opposite signs a negative one. Multiply numerators and denominators, then reduce.",
-  "complex-fraction":
-    "The main fraction bar means division. Simplify the numerator and the denominator to single fractions, then multiply the numerator by the reciprocal of the denominator.",
-  "rational-power":
-    "In an exponent m/n, the denominator n names the root and the numerator m names the power. Take the root first, then the power. A negative exponent takes the reciprocal.",
-};
 const suffix = " Give an exact fraction or integer.";
 
 /** Rename a + b over the least common denominator, add numerators, reduce. */
@@ -162,6 +164,7 @@ function sumCase(r: Random): Case {
     prompt: `Calculate $${prompt}$.${suffix}`,
     value,
     explanation,
+    hint: `${subtract ? `Subtracting ${plain(b)} is adding its opposite, ${plain(addend)}. ` : ""}The least common denominator of ${a.d} and ${b.d} is ${l}: rename both fractions with it, then add the signed numerators.`,
     tags: [
       subtract ? "subtraction" : "addition",
       value.n < 0 ? "negative-result" : "positive-result",
@@ -204,6 +207,7 @@ function productCase(r: Random): Case {
     prompt: `Calculate $${prompt}$.${suffix}`,
     value,
     explanation,
+    hint: `${divide ? `Dividing by ${plain(b)} is multiplying by its reciprocal, ${plain(factor)}. ` : ""}The signs ${a.n < 0 === b.n < 0 ? "match, so the result is positive" : "differ, so the result is negative"}. Multiply ${plain(q(Math.abs(a.n), a.d))} by ${plain(q(Math.abs(factor.n), factor.d))}, cancelling common factors first.`,
     tags: [
       divide ? "division" : "multiplication",
       value.n < 0 ? "negative-result" : "positive-result",
@@ -258,6 +262,9 @@ function complexCase(r: Random): Case {
     return complexExplanation(mode, top, bottom, value);
   }
 }
+/** A part in parentheses only when it is a sum or negative. */
+const group = (p: Part) =>
+  p.step || p.value.n < 0 ? `(${plain(p.text)})` : plain(p.text);
 function complexExplanation(
   mode: number,
   top: Part,
@@ -284,6 +291,7 @@ function complexExplanation(
     prompt: `Simplify $${source}$.${suffix}`,
     value,
     explanation,
+    hint: `The main fraction bar means divide: ${group(top)} ÷ ${group(bottom)}. ${top.step || bottom.step ? `Simplify the ${top.step && bottom.step ? "numerator and the denominator" : top.step ? "numerator" : "denominator"} to a single fraction first, then` : "So"} multiply by the reciprocal of the denominator.`,
     tags: [
       [
         "single-over-single",
@@ -342,6 +350,7 @@ function powerCase(r: Random): Case {
     prompt: `Evaluate $${source}$.${suffix}`,
     value,
     explanation,
+    hint: `In the exponent ${m < 0 ? "−" : ""}${Math.abs(m)}/${n}, the ${n} calls for the ${rootName} first${Math.abs(m) > 1 ? `, then the power ${Math.abs(m)}` : ""}${m < 0 ? "; the negative sign calls for a reciprocal" : ""}. What is the ${rootName} of ${plain(base)}?`,
     tags: [
       n === 2 ? "square-root" : "higher-root",
       m < 0 ? "negative-exponent" : "positive-exponent",
@@ -383,7 +392,7 @@ export function rationalPrintCase(
       response: { kind: "fraction", label: "Exact value" },
     },
     answer: answer(c.value),
-    hint: hints[id]!,
+    hint: c.hint,
     explanation: c.explanation,
   };
   return { problem, tags: c.tags, caseKey: c.key };

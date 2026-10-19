@@ -82,7 +82,8 @@ export function problemLesson(
       term,
       meaning,
     })),
-    method: authored?.method ?? [example.hint],
+    // A hint names its own instance's numbers, so it is never a general method.
+    method: authored?.method ?? [template.description],
     watch: authored?.watch ?? reference?.pitfalls[0] ?? null,
     example: {
       prompt: example.public.prompt,

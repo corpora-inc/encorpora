@@ -373,7 +373,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   "scientific-times-larger": {
     goal: "Find how many times as large one number in scientific notation is as another.",
     method: [
-      "Divide the first number by the second.",
+      "Divide the number asked about by the number it is compared with.",
       "Divide the coefficients and subtract the exponents.",
       "Write the result in standard form.",
     ],

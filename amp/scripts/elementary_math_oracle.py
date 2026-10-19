@@ -2,14 +2,14 @@
 import re
 
 ELEMENTARY = frozenset({
-    'join-within-10', 'take-away-within-10', 'number-bond-missing',
-    'ten-frame-complement', 'teen-frame-compose', 'unknown-addend-story',
-    'missing-start-story', 'balanced-addition', 'three-addend-story',
+    'join-within-10', 'take-away-within-10',
+    'ten-frame-complement', 'teen-frame-compose',
+    'missing-start-story',
     'make-ten-remainder', 'subtract-through-ten', 'tens-ones-model',
     'ten-more-or-less', 'add-ones-regroup', 'subtract-whole-tens',
     'hundreds-model', 'expanded-form-missing', 'exchange-base-ten',
     'add-several-two-digit', 'add-with-regrouping', 'subtract-with-regrouping',
-    'skip-count-missing', 'two-step-change', 'continue-count-to-120',
+    'skip-count-missing', 'continue-count-to-120',
 })
 
 
@@ -48,10 +48,6 @@ def solve_elementary(public):
         frame(a, 0, 10)
         require(0 <= b <= a <= 10, 'Invalid small subtraction')
         return a - b
-    if name == 'number-bond-missing':
-        whole, part = numbers
-        require(0 <= part <= whole <= 10, 'Invalid number bond')
-        return whole - part
     if name == 'ten-frame-complement':
         frame(figure['first'], 0, 10)
         return sum(1 for index in range(10) if index >= figure['first'])
@@ -59,22 +55,10 @@ def solve_elementary(public):
         frame(10, figure['second'], 20)
         require(1 <= figure['second'] <= 9, 'Not a teen composition')
         return 10 + figure['second']
-    if name == 'unknown-addend-story':
-        start, total = numbers
-        require(0 <= start <= total <= 20, 'Story exceeds twenty')
-        return total - start
     if name == 'missing-start-story':
         removed, remaining = numbers
         require(removed + remaining <= 20, 'Story exceeds twenty')
         return removed + remaining
-    if name == 'balanced-addition':
-        a, b, right_part = numbers
-        missing = a + b - right_part
-        require(0 <= missing <= 20 and missing + right_part == a + b, 'Unbalanced equation')
-        return missing
-    if name == 'three-addend-story':
-        require(len(numbers) == 3 and sum(numbers) <= 20, 'Three-addend bounds')
-        return sum(numbers)
     if name == 'make-ten-remainder':
         first, second, moved, source, repeated = numbers
         frame(first, second, 20)
@@ -129,10 +113,6 @@ def solve_elementary(public):
         require(step in (5, 10, 100) and second - first == third - second == step, 'Inconsistent skip-count')
         require(third + step <= 1000, 'Count exceeds1000')
         return third + step
-    if name == 'two-step-change':
-        first, arrived, removed = numbers
-        require(first + arrived <= 100 and removed <= first + arrived, 'Story outside bounded domain')
-        return first + arrived - removed
     if name == 'continue-count-to-120':
         first, second, third = numbers
         require(second == first + 1 and third == second + 1 and third < 120, 'Inconsistent consecutive count')

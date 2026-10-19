@@ -1,6 +1,26 @@
+import { numberSystemPrinciples } from "./number-system-lessons";
+import { ratioRatePrinciples } from "./ratio-rate-lessons";
+import { patternFunctionPrinciples } from "./pattern-function-lessons";
+import { equationPrinciples } from "./equation-lessons";
+import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
+import { shapePrinciples } from "./shape-lessons";
+import { polygonPrinciples } from "./polygon-lessons";
+import { distributionPrinciples } from "./distribution-lessons";
+import { inferencePrinciples } from "./inference-lessons";
+import { partWholePrinciples } from "./part-whole-lessons";
+import { decimalPrinciples } from "./decimal-lessons";
+import { timeMoneyPrinciples } from "./time-money-lessons";
+import { attributePrinciples } from "./attribute-lessons";
+import { linePlotPrinciples } from "./line-plot-lessons";
+import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { realNumberPrinciples } from "./real-number-lessons";
 import { radicalPrinciples } from "./radical-lessons";
+import { comparisonPrinciples } from "./comparison-lessons";
+import { multiplyDividePrinciples } from "./multiply-divide-lessons";
+import { addSubtractPrinciples } from "./add-subtract-lessons";
+import { factsPrinciples } from "./facts-lessons";
+import { factArrayPrinciples } from "./fact-arrays-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
@@ -14,13 +34,33 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...volumeCoordinatePrinciples,
+  ...shapePrinciples,
+  ...polygonPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...polynomialPrinciples,
+  ...earlyDataPrinciples,
+  ...linePlotPrinciples,
+  ...distributionPrinciples,
+  ...inferencePrinciples,
   ...radicalPrinciples,
+  ...partWholePrinciples,
+  ...decimalPrinciples,
+  ...timeMoneyPrinciples,
+  ...attributePrinciples,
+  ...comparisonPrinciples,
+  ...multiplyDividePrinciples,
+  ...addSubtractPrinciples,
+  ...factsPrinciples,
+  ...factArrayPrinciples,
   ...combinatoricsPrinciples,
   ...realNumberPrinciples,
+  ...numberSystemPrinciples,
+  ...ratioRatePrinciples,
+  ...patternFunctionPrinciples,
+  ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
   ...percentChangePrinciples,
@@ -82,16 +122,12 @@ export const principles: Record<string, string> = {
   "subtract-with-regrouping":
     "The standard subtraction algorithm subtracts by place value, decomposing 1 of a higher place into 10 of the next lower place when needed.",
   "two-step-change":
-    "Operations on a quantity are applied in order: (start + added) − removed.",
+    "Changes apply in order, (start + a) − b, and each change is undone by its inverse: start = (end + b) − a.",
   // Multiplication and division
   "small-array-total":
     "Multiplication as an array: r rows of c objects contain r × c objects.",
   "pairing-leftover":
     "Parity: an integer is even when it is divisible by 2 (remainder 0) and odd when the remainder is 1.",
-  "multiply-facts":
-    "Multiplication is repeated addition of equal groups; it is commutative (a × b = b × a) and distributes over addition (a × (b + c) = a × b + a × c).",
-  "divide-facts":
-    "Division is the inverse of multiplication: a ÷ b = c exactly when b × c = a (b ≠ 0).",
   "equal-tray-total":
     "Multiplication counts equal groups: g groups of s items contain g × s items.",
   "share-whole-items":

@@ -981,7 +981,7 @@ function timesCase(r: Random): Case {
       prompt: `How many times as large as $${B}$ is $${A}$?`,
       answer: plain(answer),
       explanation: [
-        `Divide the first number by the second: $\\frac{${A}}{${B}} = \\frac{${plain(a)}}{${plain(b)}} \\times \\frac{10^{${m}}}{10^{${n}}}$.`,
+        `Divide $${A}$ by $${B}$: $\\frac{${A}}{${B}} = \\frac{${plain(a)}}{${plain(b)}} \\times \\frac{10^{${m}}}{10^{${n}}}$.`,
         `$\\frac{${plain(a)}}{${plain(b)}} = ${plain(ratio)}$ and $\\frac{10^{${m}}}{10^{${n}}} = 10^{${m} - ${paren(n)}} = 10^{${k}}$.`,
         `$${plain(ratio)} \\times 10^{${k}} = ${standardTex(answer)}$, so $${A}$ is ${standardTex(answer).replaceAll("{,}", ",")} times as large as $${B}$.`,
       ],
@@ -1169,6 +1169,36 @@ function operationCase(r: Random): Case {
   }
 }
 
+/** One teaching step written from this problem's own givens; never the answer. */
+function hintFor(id: string, c: Case): string {
+  const first = c.explanation[0]!;
+  const options = typeof c.answer === "string" ? [] : c.answer;
+  switch (id) {
+    case "classify-real-number":
+      return `Test ${options[1]!.label}: can it be written as a quotient of two integers, or as a decimal that ends or repeats? Test each option the same way.`;
+    case "repeating-decimal-to-fraction":
+      return `${first} Multiply x by the power of 10 that shifts one whole block, then subtract x so the repeating tails cancel.`;
+    case "root-between-integers":
+      return `${first.split(":")[0]}. The root lies between their roots.`;
+    case "root-nearest-tenth": {
+      const n = /\\sqrt\{(\d+)\}/.exec(c.prompt)![1]!;
+      return `Which two perfect squares is ${n} between? Their roots bound the answer. Then square the tenths between those roots, and compare ${n} with the square of the halfway point.`;
+    }
+    case "standard-to-scientific": {
+      const written = /^Write (.+) in scientific notation\.$/.exec(c.prompt)![1]!;
+      return `Move the decimal point in ${written} until exactly one nonzero digit is to its left. The number of places moved, and the direction, give the power of 10.`;
+    }
+    case "scientific-to-standard": {
+      const coefficient = /^Write \$([\d.]+) \\times/.exec(c.prompt)![1]!;
+      return `${first} Start from ${coefficient}, and write zeros in any empty places.`;
+    }
+    case "scientific-times-larger":
+      return `${first.split(":")[0]}. Divide the decimal parts and the powers of 10 separately.`;
+    default:
+      return first;
+  }
+}
+
 const builders: Record<string, (r: Random) => Case> = {
   "classify-real-number": classifyCase,
   "repeating-decimal-to-fraction": repeatingCase,
@@ -1221,7 +1251,7 @@ export function realNumberPrintCase(
         public: { ...base, response: { kind, label: labels[id]! } },
         answer: c.answer,
         explanation: c.explanation,
-        hint: hints[id]!,
+        hint: hintFor(id, c),
       },
       tags: c.tags,
       caseKey: c.prompt,
@@ -1244,7 +1274,7 @@ export function realNumberPrintCase(
       },
       answer,
       explanation: c.explanation,
-      hint: hints[id]!,
+      hint: hintFor(id, c),
       choiceFeedback: Object.fromEntries(
         order
           .map((o, i) => [options[i]!.id, o.feedback] as const)

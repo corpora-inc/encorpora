@@ -20,6 +20,8 @@ export const scaffoldTemplateIds: ReadonlySet<string> = new Set([
   "improper-fractional-part",
   // "Trade ten ones for one ten. How many tens will there be?"
   "exchange-base-ten",
+  // "How many cubes are in the bottom layer of this prism?"
+  "cube-layer-count",
 ]);
 
 export const templateRole = (templateId: string): TemplateRole =>
@@ -42,58 +44,100 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // K (and younger): count, join, count, take away.
   [
     ["count-objects"],
-    ["join-within-10"],
-    ["teen-frame-compose"],
+    ["join-within-10", "facts-to-five"],
+    ["teen-frame-compose", "greater-numeral"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
   ],
   // Grade 1: counting, facts within 10, a missing addend, then tens.
   [
     ["count-objects", "teen-frame-compose"],
-    ["join-within-10", "add-within-20"],
+    ["join-within-10", "add-within-20", "count-on-back"],
     ["unknown-addend-story", "balanced-addition"],
-    ["tens-ones-model", "continue-count-to-120"],
+    ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
   ],
-  // Grade 2: facts within 20, two-digit place value, a missing addend.
+  // Grade 2: facts within 20, place value and comparison, a missing addend.
   [
-    ["add-within-20"],
-    ["tens-ones-model", "continue-count-to-120"],
+    ["add-within-20", "make-ten-fact", "add-two-digit-regroup"],
+    [
+      "tens-ones-model",
+      "continue-count-to-120",
+      "compare-two-digit",
+      "compare-three-digit",
+    ],
     ["unknown-addend-story", "balanced-addition"],
-    ["subtract-within-20"],
+    ["subtract-within-20", "related-subtraction", "subtract-two-digit-regroup"],
   ],
-  // Grade 3: regrouping, three-digit place value, a story, a bar chart.
+  // Grade 3: regrouping or tens products, three-digit place value, a story,
+  // a bar chart.
   [
-    ["add-with-regrouping"],
-    ["place-value-digit", "hundreds-model"],
+    [
+      "add-with-regrouping",
+      "add-two-digit-regroup",
+      "add-three-digit",
+      "mental-ten-hundred",
+      "multiply-by-tens",
+    ],
+    ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
   // Grade 4: multiplication facts, fractions of a whole, area, division.
   [
-    ["multiply-facts"],
-    ["fraction-model", "fraction-unit-count"],
+    [
+      "multiply-facts",
+      "add-multidigit",
+      "multiply-by-tens",
+      "multiply-by-one-digit",
+    ],
+    [
+      "fraction-model",
+      "fraction-unit-count",
+      "compare-like-denominators",
+      "compare-like-numerators",
+    ],
     ["rectangle-area"],
-    ["divide-facts"],
+    ["divide-facts", "share-or-group", "divide-by-one-digit"],
   ],
-  // Grade 5: multiplicative comparison, fractions, factors, measurement.
+  // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
+  // place value, multidigit multiplication or division.
   [
-    ["comparison-amount", "full-kits"],
-    ["compare-fractions", "equivalent-numerator", "whole-times-fraction"],
-    ["factor-partner"],
-    ["metric-length-rename"],
+    ["compare-decimals-hundredths", "decimal-grid-read"],
+    [
+      "compare-fractions",
+      "compare-unlike-fractions",
+      "equivalent-numerator",
+      "whole-times-fraction",
+    ],
+    ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
+    ["multiply-by-one-digit", "multiply-multidigit", "divide-by-one-digit"],
   ],
-  // Grade 6: decimals, the order of operations, fractions, the mean.
+  // Grade 6: decimals, expressions and equations, fractions, the mean.
   [
-    ["decimal-addition", "decimal-multiplication"],
-    ["operation-order", "integer-power"],
+    [
+      "decimal-addition",
+      "decimal-multiplication",
+      "compare-decimals-thousandths",
+    ],
+    [
+      "operation-order",
+      "integer-power",
+      "one-step-equation",
+      "dependent-variable-value",
+    ],
     ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
-    ["mean-data"],
+    ["mean-data", "mean-missing-value"],
   ],
-  // Grade 7: powers, unit rates, the mean, distance on a number line.
-  [["integer-power"], ["unit-price"], ["mean-data"], ["number-line-distance"]],
+  // Grade 7: powers and equations, unit rates, the mean or a sample estimate, distance on a number line.
+  [
+    ["integer-power", "two-step-equation", "dependent-variable-value"],
+    ["unit-price", "fraction-unit-rate", "unit-rate"],
+    ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
+    ["number-line-distance", "opposite-on-line", "greatest-common-factor"],
+  ],
   // Grade 8: signed and real numbers, unit rates, probability and circles.
   [
     ["integer-addition", "root-between-integers", "scientific-to-standard"],
-    ["unit-price"],
+    ["unit-price", "fraction-unit-rate"],
     ["simple-probability"],
     ["circle-area-coefficient", "circle-circumference-coefficient"],
   ],
