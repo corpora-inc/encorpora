@@ -16,6 +16,7 @@ import {
   type Scene,
   type RowBars,
   type Table,
+  type LineTable,
   type TenFrame,
 } from "./spec";
 import type { Action, Step } from "./timeline";
@@ -415,3 +416,10 @@ export const protractor = (
 /** Rays from one vertex with angle marks between chosen pairs. */
 export const angle = (spec: Omit<Angle, "type">) =>
   new Simple<Angle>({ type: "angle", ...spec });
+
+/** lineTable([["x", "0", "1"], ["y", "3", { text: "5", derived: true }]]):
+ * headings down the first column unless `header` says otherwise. */
+export const lineTable = (
+  rows: LineTable["rows"],
+  options: Partial<Omit<LineTable, "type" | "rows">> = {},
+) => new Simple<LineTable>({ type: "lineTable", rows, ...options });

@@ -14,6 +14,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { AngleTriangleIllustration } from "./AngleTriangleIllustration";
 import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
   NumberSystemIllustration,
@@ -90,6 +91,15 @@ export function LessonIllustration({
       <SceneFigure scene={scene} reveal frame="end" />
     );
   }
+  if (
+    kind === "angle-pairs" ||
+    kind === "parallel-angle-pairs" ||
+    kind === "triangle-sum-line" ||
+    kind === "exterior-angle" ||
+    kind === "side-strips" ||
+    kind === "solid-slices"
+  )
+    return <AngleTriangleIllustration kind={kind} />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||
