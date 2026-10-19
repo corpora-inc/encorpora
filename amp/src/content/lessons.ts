@@ -1,5 +1,6 @@
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
+import { linearFunctionLessons } from "./linear-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
@@ -11,6 +12,7 @@ import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
+import type { SceneIllustrationKind } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
@@ -111,6 +113,7 @@ export interface Lesson {
       | "comparison-place-chart"
       | "large-place-value-chart"
       | DataIllustration
+      | SceneIllustrationKind
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -588,6 +591,7 @@ export const lessons: readonly Lesson[] = [
   ...combinatoricsLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
+  ...linearFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

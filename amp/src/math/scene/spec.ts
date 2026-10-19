@@ -664,6 +664,44 @@ export const clockSchema = z
   })
   .strict();
 
+/** A table of values or of steps. Cells are labels; a derived cell is a
+ * value the learner finds, drawn as "?" until revealed. */
+const tableCell = z.union([
+  z.string().max(60),
+  z
+    .object({
+      text: label,
+      derived: z.boolean().optional(),
+      color: z.enum(["accent", "warm", "gold"]).optional(),
+    })
+    .strict(),
+]);
+export const tableSchema = z
+  .object({
+    ...base,
+    type: z.literal("table"),
+    rows: z.array(z.array(tableCell).min(1).max(10)).min(1).max(10),
+    /** Which edge holds the headings: the first column (a function table
+     * read across), the first row, or neither. */
+    header: z.enum(["column", "row", "none"]).optional(),
+    /** Ruling: every cell boxed, or rules between rows only (steps). */
+    rules: z.enum(["grid", "rows"]).optional(),
+    /** Columns to shade, as in the two ends of an interval. */
+    highlight: z.array(small.max(9)).max(10).optional(),
+    /** A heavy rule above this row: the sum line of stacked equations. */
+    total: small.max(9).optional(),
+    /** Horizontal alignment per column. */
+    align: z
+      .array(z.enum(["left", "center", "right"]))
+      .max(10)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.rows.every((r) => r.length === t.rows[0]!.length),
+    "Every row has the same number of cells",
+  );
+
 export const componentSchemas = [
   numberLineSchema,
   graphSchema,
@@ -673,6 +711,7 @@ export const componentSchemas = [
   baseTenSchema,
   fractionBarSchema,
   clockSchema,
+  tableSchema,
 ] as const;
 export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
@@ -683,6 +722,7 @@ export type TenFrame = z.infer<typeof tenFrameSchema>;
 export type BaseTen = z.infer<typeof baseTenSchema>;
 export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
+export type Table = z.infer<typeof tableSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([

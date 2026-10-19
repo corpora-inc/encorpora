@@ -37,6 +37,8 @@ import {
 } from "./data-display-illustrations";
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
 import React from "react";
+import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
+import { SceneFigure } from "../web/scene/SceneFigure";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
 export function LessonIllustration({
@@ -44,6 +46,8 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (isSceneIllustration(kind))
+    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))

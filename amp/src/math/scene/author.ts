@@ -10,6 +10,7 @@ import {
   type NumberLine,
   type Point,
   type Scene,
+  type Table,
   type TenFrame,
 } from "./spec";
 
@@ -325,3 +326,10 @@ export const fractionBar = (
 ) => new Simple<FractionBar>({ type: "fractionBar", bars });
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
+
+/** table([["x", "0", "1"], ["y", "3", { text: "5", derived: true }]]):
+ * headings down the first column unless `header` says otherwise. */
+export const table = (
+  rows: Table["rows"],
+  options: Partial<Omit<Table, "type" | "rows">> = {},
+) => new Simple<Table>({ type: "table", rows, ...options });

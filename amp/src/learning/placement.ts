@@ -35,8 +35,8 @@ export const OPENER_COUNT = 4;
 
 /** Clean anchor items for the grade a learner of that age is working in
  * (frontier `expected`: K = 0 … 8, and 9 for every high-school age). Each
- * opener is this year's or last year's core material (grade 8 for high
- * school), so the first answers build confidence: short, familiar and whole. Each slot is a small pool of equivalent items so
+ * opener is this year's or last year's core material (grade 8 and
+ * Algebra 1 for high school), so the first answers build confidence: short, familiar and whole. Each slot is a small pool of equivalent items so
  * siblings do not see identical starts, while every choice stays a good first
  * impression. Each slot keeps to one strand and neighbouring slots differ, so
  * the opening batch is interleaved like the rest of practice. */
@@ -141,12 +141,18 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["simple-probability"],
     ["circle-area-coefficient", "circle-circumference-coefficient"],
   ],
-  // High school: an equation, the Pythagorean theorem, a unit rate, slope.
+  // High school: an equation or formula, the Pythagorean theorem, a linear
+  // model, then a function's value or average rate of change (Algebra 1).
   [
-    ["linear-equation", "both-sides-linear-equation"],
+    [
+      "linear-equation",
+      "both-sides-linear-equation",
+      "formula-value",
+      "line-slope",
+    ],
     ["right-triangle"],
-    ["unit-price"],
-    ["line-slope", "graphed-line-slope"],
+    ["linear-model-value"],
+    ["average-rate-formula", "function-evaluation"],
   ],
 ];
 

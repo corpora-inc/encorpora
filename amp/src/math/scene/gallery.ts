@@ -8,6 +8,7 @@ import {
   fractionBar,
   graph,
   numberLine,
+  table,
   tenFrame,
 } from "./author";
 import type { Scene } from "./spec";
@@ -197,6 +198,51 @@ export const galleryCases: GalleryCase[] = [
     scene: fractionBar({ shaded: 5, parts: 4, wholes: 2 }).scene(),
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
+  {
+    name: "Table: a function's values, one to find",
+    scene: table(
+      [
+        ["x", "0", "1", "2", "3", "4"],
+        ["f(x)", "5", "8", "11", { text: "14", derived: true }, "17"],
+      ],
+      { highlight: [1, 4] },
+    ).scene({ title: "Values of f" }),
+  },
+  {
+    name: "Table: equation steps with their reasons",
+    scene: table(
+      [
+        ["3(x − 4) = 18", "Given"],
+        ["3x − 12 = 18", "Distributive property"],
+        ["3x = 30", { text: "Addition property of equality", derived: true }],
+        ["x = 10", "Division property of equality"],
+      ],
+      { header: "none", rules: "rows", align: ["left", "left"] },
+    ).scene({ title: "Solving 3(x − 4) = 18" }),
+  },
+  {
+    name: "Table: two equations stacked and added (lesson)",
+    reveal: true,
+    scene: table(
+      [
+        ["", "2x", "+ 3y", "=", "12"],
+        ["+", "x", "− 3y", "=", "3"],
+        [
+          "",
+          { text: "3x", derived: true },
+          "",
+          "=",
+          { text: "15", derived: true },
+        ],
+      ],
+      {
+        header: "none",
+        rules: "rows",
+        total: 2,
+        align: ["center", "right", "left", "center", "right"],
+      },
+    ).scene({ title: "Adding the equations" }),
+  },
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */
