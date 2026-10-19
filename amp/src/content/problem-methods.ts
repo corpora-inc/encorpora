@@ -14,6 +14,7 @@ import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
+import { multiplyDivideMethods } from "./multiply-divide-lessons";
 import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
 import { factArrayMethods } from "./fact-arrays-lessons";
@@ -49,6 +50,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...timeMoneyMethods,
   ...attributeMethods,
   ...comparisonMethods,
+  ...multiplyDivideMethods,
   ...addSubtractMethods,
   ...factsMethods,
   ...factArrayMethods,

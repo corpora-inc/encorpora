@@ -37,6 +37,7 @@ from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOI
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
+from multiply_divide_math_oracle import MULTIPLY_DIVIDE, solve_multiply_divide, review_multiply_divide_fixtures, MultiplyDivideCorpus
 from add_subtract_math_oracle import ADD_SUBTRACT, solve_add_subtract, review_add_subtract_fixtures, AddSubtractCorpus
 from facts_math_oracle import FACTS, solve_facts, review_facts_fixtures, FactsCorpus
 from fact_arrays_math_oracle import FACT_ARRAYS, solve_fact_arrays, review_fact_arrays_fixtures, FactArraysCorpus
@@ -61,7 +62,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | ATTRIBUTE
+SUPPORTED = RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE
 
 
 def require(condition, message):
@@ -73,6 +74,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in MULTIPLY_DIVIDE:
+        return solve_multiply_divide(public)
     if template in RATIO_RATE:
         return solve_ratio_rate(public)
     if template in SHAPES:
@@ -311,6 +314,7 @@ def solve(public):
 
 
 def review(stream):
+    review_multiply_divide_fixtures()
     review_ratio_rate_fixtures()
     review_ratio_rate_mutations()
     review_shape_fixtures()
@@ -363,6 +367,7 @@ def review(stream):
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
     comparison_corpus = ComparisonCorpus()
+    multiply_divide_corpus = MultiplyDivideCorpus()
     decimal_corpus = DecimalCorpus()
     add_subtract_corpus = AddSubtractCorpus()
     facts_corpus = FactsCorpus()
@@ -420,6 +425,8 @@ def review(stream):
             fact_arrays_corpus.record(public, solved)
         if template in COMPARISON:
             comparison_corpus.record(public, solved)
+        if template in MULTIPLY_DIVIDE:
+            multiply_divide_corpus.record(public, solved)
         if template in DECIMAL:
             decimal_corpus.record(public, solved)
         if template in RATIONAL_TYPES:
@@ -439,6 +446,7 @@ def review(stream):
             review_shape_problem(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent multiply-divide coverage: ' + json.dumps(multiply_divide_corpus.finish()), file=sys.stderr)
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
     print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)

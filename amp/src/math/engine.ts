@@ -59,6 +59,10 @@ import {
   generateVolumeCoordinateProblem,
 } from "./volume-coordinate-practice";
 import {
+  multiplyDivideTemplates,
+  generateMultiplyDivideProblem,
+} from "./multiply-divide-practice";
+import {
   comparisonTemplates,
   generateComparisonProblem,
 } from "./comparison-practice";
@@ -255,6 +259,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
   ...combinatoricsTemplates,
@@ -491,6 +496,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (multiplyDivideTemplates.some((t) => t.id === templateId))
+    return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))
     return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))

@@ -14,6 +14,7 @@ import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
+import { multiplyDividePrinciples } from "./multiply-divide-lessons";
 import { addSubtractPrinciples } from "./add-subtract-lessons";
 import { factsPrinciples } from "./facts-lessons";
 import { factArrayPrinciples } from "./fact-arrays-lessons";
@@ -46,6 +47,7 @@ export const principles: Record<string, string> = {
   ...timeMoneyPrinciples,
   ...attributePrinciples,
   ...comparisonPrinciples,
+  ...multiplyDividePrinciples,
   ...addSubtractPrinciples,
   ...factsPrinciples,
   ...factArrayPrinciples,

@@ -261,5 +261,5 @@ export const addSubtractPrinciples: Record<string, string> = {
   "add-multidigit":
     "Each place is worth ten of the place to its right, so one column step works at every place.",
   "subtract-multidigit":
-    "1 of a place equals 10 of the next lower place, so 1 ten thousand passed through zeros leaves 9 in each.",
+    "One of a place is 10 of the next lower place, so regrouping across zeros leaves 9 in each zero place: $1{,}000 = 900 + 90 + 10$.",
 };

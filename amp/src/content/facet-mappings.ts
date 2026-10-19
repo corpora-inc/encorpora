@@ -14,6 +14,7 @@ import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
+import { multiplyDivideFacetMappings } from "./multiply-divide-coverage";
 import { addSubtractFacetMappings } from "./add-subtract-coverage";
 import { factsFacetMappings } from "./facts-coverage";
 import { factArrayFacetMappings } from "./fact-arrays-coverage";
@@ -41,6 +42,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...timeMoneyFacetMappings,
   ...attributeFacetMappings,
   ...comparisonFacetMappings,
+  ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
   ...factsFacetMappings,
   ...factArrayFacetMappings,
