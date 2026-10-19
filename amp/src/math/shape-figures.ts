@@ -26,6 +26,9 @@ const shapeItem = z
     label: itemLabel.optional(),
     /** Pieces drawn edge to edge; a single piece is an ordinary shape. */
     pieces: z.array(flatShapeSchema).min(1).max(8),
+    /** Marks measured from the vertices themselves: equal sides and right
+     * angles, and with "parallel" also arrows on parallel sides. */
+    marks: z.enum(["sides-angles", "parallel"]).optional(),
   })
   .strict();
 export type ShapeItem = z.infer<typeof shapeItem>;

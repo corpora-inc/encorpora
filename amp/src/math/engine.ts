@@ -49,7 +49,12 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
+import {
+  earlyOperationsTemplates,
+  generateEarlyOperationsProblem,
+} from "./early-operations-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
   factArrayTemplates,
   generateFactArrayProblem,
@@ -250,6 +255,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
+  ...polygonTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -266,6 +272,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
+  ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
   ...numberSystemTemplates,
   ...ratioRateTemplates,
@@ -427,6 +434,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...shapeTemplates,
+    ...polygonTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
@@ -482,6 +490,8 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (polygonTemplates.some((t) => t.id === templateId))
+    return generatePolygonProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
@@ -512,6 +522,8 @@ function generateRawProblem(
     return generateFactsProblem(templateId, seed);
   if (factArrayTemplates.some((t) => t.id === templateId))
     return generateFactArrayProblem(templateId, seed);
+  if (earlyOperationsTemplates.some((t) => t.id === templateId))
+    return generateEarlyOperationsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

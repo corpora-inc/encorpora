@@ -57,7 +57,9 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "Make a group of eight counters. Slide three to one side. Five stay on the other side. The whole is still eight: 8 = 3 + 5.",
           "Try another split. Eight can be four and four, or six and two. A number can have many different pairs of parts. A box in an equation stands for the part you need to find.",
+          "A number bond draws this: the whole sits on top, joined to its two parts below. When one circle shows ?, find the number that joins the other part to make the whole.",
         ],
+        illustration: "number-bond-split",
       },
       {
         title: "Fill ten places",
@@ -139,7 +141,9 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "There were five blocks. More arrived, and then there were nine. The start is five and the whole after joining is nine. The missing part is the number that arrived.",
           "Write 5 + □ = 9. Four were added because five and four make nine. You can find the same answer with 9 − 5.",
+          "A bar model shows it on one scale: the whole bar is 9, and below it the part 5 and the missing part fill the same length.",
         ],
+        illustration: "tape-missing-part",
       },
       {
         title: "Find an unknown start",
@@ -180,8 +184,10 @@ export const elementaryLessons: Lesson[] = [
         title: "Read the equal sign",
         paragraphs: [
           "The sign = means “has the same value as.” It does not just mean “write an answer next.” Both 3 + 4 = 7 and 7 = 3 + 4 say that the amounts match.",
-          "In 3 + 4 = 2 + 5, both sides have value seven. They can look different and still be equal.",
+          "In 3 + 4 = 2 + 5, both sides have value seven. They can look different and still be equal. A balance shows this: equal amounts on both pans keep the beam level.",
+          "So □ = 6 + 3 asks for the number with the same value as 6 + 3: the box is 9, even though it comes first.",
         ],
+        illustration: "balance-level",
       },
       {
         title: "Find the missing amount",
@@ -223,6 +229,7 @@ export const elementaryLessons: Lesson[] = [
           "Suppose there are two red blocks, six blue blocks, and four green blocks. You can join two and six first, then add four. You can also join six and four to make ten, then add two.",
           "The total is twelve either way. Regrouping the parts does not lose or add any blocks. Look for two parts that make ten when that helps.",
         ],
+        illustration: "three-addends-ten",
       },
       {
         title: "Later, use tens and ones",
@@ -474,7 +481,7 @@ export const elementaryLessons: Lesson[] = [
     summary: "Find an amount after one change, then use it for the next.",
     templateIds: ["two-step-change"],
     objectives: [
-      "Represent a join-then-remove story with two calculations.",
+      "Represent a two-step joining and separating story with two calculations.",
       "Check an intermediate amount and a final amount.",
     ],
     sections: [
@@ -484,12 +491,14 @@ export const elementaryLessons: Lesson[] = [
           "There are twenty-three books. Fifteen more arrive, so there are thirty-eight. Nine are then taken away. Start the subtraction from thirty-eight, not from the original twenty-three.",
           "A quick drawing or two written equations can keep the events in order. The result of the first calculation becomes the starting amount for the second.",
         ],
+        illustration: "change-chain-steps",
       },
       {
         title: "Check what the answer describes",
         paragraphs: [
           "The final question asks how many remain after both changes. An intermediate total answers only part of the story.",
           "Check by reversing the changes: add back the amount removed, then remove the amount that arrived. You should return to the original count.",
+          "Reversing also finds a missing start. If 13 marbles were put in a bag, 23 were taken out and 11 are left, put the 23 back (34) and take the 13 out (21): the bag held 21 at first.",
         ],
       },
     ],
@@ -507,6 +516,6 @@ export const elementaryLessons: Lesson[] = [
       "Do not apply the second change to the original amount.",
     ],
     parentGuide:
-      "Act out both events and ask the child to retell the story. This lesson covers one order of changes; comparison stories and other unknown positions need additional work.",
+      "Act out both events and ask the child to retell the story, then ask what would change if the second event came first. Comparison stories need additional work.",
   },
 ];

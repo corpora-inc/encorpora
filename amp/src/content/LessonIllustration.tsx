@@ -3,6 +3,10 @@ import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
+import {
+  PolygonIllustration,
+  isPolygonIllustration,
+} from "./PolygonIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
@@ -19,6 +23,7 @@ import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
 import { FactArrayIllustration } from "./FactArrayIllustration";
+import { EarlyOperationsIllustration } from "./EarlyOperationsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -49,6 +54,7 @@ export function LessonIllustration({
       <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
     );
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
+  if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
   if (
@@ -118,6 +124,14 @@ export function LessonIllustration({
     kind === "table-patterns"
   )
     return <FactArrayIllustration kind={kind} />;
+  if (
+    kind === "number-bond-split" ||
+    kind === "tape-missing-part" ||
+    kind === "balance-level" ||
+    kind === "three-addends-ten" ||
+    kind === "change-chain-steps"
+  )
+    return <EarlyOperationsIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||

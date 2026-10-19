@@ -25,6 +25,11 @@ import {
   ArrayTurnStage,
   DealStage,
 } from "./FactArrayAnimation";
+import {
+  BalanceLevelStage,
+  MakeTenThreeStage,
+  TapeJoinStage,
+} from "./EarlyOperationsAnimation";
 import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
@@ -73,6 +78,12 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <ArrayTurnStage model={model} step={step} />;
     case "deal":
       return <DealStage model={model} step={step} />;
+    case "balance-level":
+      return <BalanceLevelStage model={model} step={step} />;
+    case "tape-join":
+      return <TapeJoinStage model={model} step={step} />;
+    case "make-ten-three":
+      return <MakeTenThreeStage model={model} step={step} />;
     case "pairing":
       return <PairingModel model={model} step={step} />;
     case "place-compare":

@@ -4,6 +4,7 @@ import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
+import { polygonPrinciples } from "./polygon-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
@@ -34,6 +35,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 export const principles: Record<string, string> = {
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
+  ...polygonPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -118,7 +120,7 @@ export const principles: Record<string, string> = {
   "subtract-with-regrouping":
     "The standard subtraction algorithm subtracts by place value, decomposing 1 of a higher place into 10 of the next lower place when needed.",
   "two-step-change":
-    "Operations on a quantity are applied in order: (start + added) − removed.",
+    "Changes apply in order, (start + a) − b, and each change is undone by its inverse: start = (end + b) − a.",
   // Multiplication and division
   "small-array-total":
     "Multiplication as an array: r rows of c objects contain r × c objects.",

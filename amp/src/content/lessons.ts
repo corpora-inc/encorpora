@@ -17,12 +17,15 @@ import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { factArrayLessons } from "./fact-arrays-lessons";
 import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
+import type { EarlyOperationsIllustrationKind } from "./EarlyOperationsIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -73,7 +76,9 @@ export interface Lesson {
       | "fraction-rate-copies"
       | "story-tapes"
       | FactArrayIllustrationKind
+      | EarlyOperationsIllustrationKind
       | ShapeIllustrationKind
+      | PolygonIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -597,6 +602,7 @@ export const lessons: readonly Lesson[] = [
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
   ...shapeLessons,
+  ...polygonLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

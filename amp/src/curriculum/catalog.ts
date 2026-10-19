@@ -1371,6 +1371,50 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Grades 2–5 polygons, solids' parts and the quadrilateral hierarchy.
+for (const [skillId, facets] of [
+  [
+    "polygon-properties",
+    [
+      [
+        "polygon-names",
+        "Name polygons with 3 to 8 sides, and find one with a given number of angles.",
+      ],
+      [
+        "solid-parts",
+        "Count the faces, edges and vertices of prisms and pyramids, hidden ones included.",
+      ],
+    ],
+  ],
+  [
+    "quadrilateral-categories",
+    [
+      [
+        "classify",
+        "Name squares, rectangles and rhombuses from marked angles and sides, and recognize quadrilaterals in none of them.",
+      ],
+    ],
+  ],
+  [
+    "shape-hierarchy",
+    [
+      ["every-name", "List every category a quadrilateral belongs to."],
+      [
+        "inclusion",
+        "Judge category statements and use that subcategories inherit properties.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // K–1 shapes: named from exact drawn figures in any orientation and size.
 for (const [skillId, facets] of [
   [
