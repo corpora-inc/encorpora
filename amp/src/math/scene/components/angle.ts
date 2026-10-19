@@ -115,7 +115,7 @@ registerComponent("protractor", {
       prims.push({
         type: "text",
         id: `outer.${180 - d}`,
-        at: at(d + lift, 0.82),
+        at: at(d + lift, 0.845),
         text: String(180 - d),
         font: "sans",
         size: "sm",
@@ -125,16 +125,13 @@ registerComponent("protractor", {
       prims.push({
         type: "text",
         id: `inner.${d}`,
-        at: at(d + lift * 1.4, 0.66),
+        at: at(d + lift * 1.4, 0.625),
         text: String(d),
         font: "sans",
         size: "sm",
         bold: true,
         color: "accent",
         halo: true,
-        // Where the two scales crowd (the ends, on a small figure), the
-        // inner numeral yields rather than overlap.
-        optional: true,
         data: { scale: "inner", value: d },
       });
     }
