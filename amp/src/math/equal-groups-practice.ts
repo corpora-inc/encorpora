@@ -171,7 +171,7 @@ export function generateEqualGroupsProblem(
       label = "Marbles per bag";
       hint = "Which number multiplied by the bag count gives the total?";
       explanation = [
-        `${groups} × ? = ${total}.`,
+        `${groups} × □ = ${total}.`,
         `${groups} × ${each} = ${total}, so each bag holds ${each} marbles.`,
       ];
       break;
@@ -179,7 +179,7 @@ export function generateEqualGroupsProblem(
     case "unknown-dividend": {
       const divisor = r(2, 9),
         quotient = r(0, 9);
-      prompt = `? ÷ ${divisor} = ${quotient}. What number belongs in the blank?`;
+      prompt = `□ ÷ ${divisor} = ${quotient}. What number belongs in the blank?`;
       answer = divisor * quotient;
       label = "Starting total";
       hint =

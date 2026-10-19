@@ -33,6 +33,8 @@ from radical_content_oracle import check_problem as review_radical_problem, revi
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
+from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
+from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
 
 # Add an independently derived solver here before adding a generated family.
@@ -48,7 +50,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = RATIO_RATE | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT
+SUPPORTED = RATIO_RATE | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON
 
 
 def require(condition, message):
@@ -62,6 +64,10 @@ def solve(public):
     template = public['templateId']
     if template in RATIO_RATE:
         return solve_ratio_rate(public)
+    if template in COMPARISON:
+        return solve_comparison(public)
+    if template in DATA_DISPLAY:
+        return solve_data_display(public)
     if template in COMBINATORICS:
         return solve_combinatorics(public)
     if template in RADICAL_TYPES:
@@ -280,6 +286,8 @@ def solve(public):
 def review(stream):
     review_ratio_rate_fixtures()
     review_ratio_rate_mutations()
+    review_comparison_fixtures()
+    review_data_display_fixtures()
     review_combinatorics_fixtures()
     review_combinatorics_mutations()
     review_radical_arithmetic()
@@ -314,6 +322,7 @@ def review(stream):
     exponent_review = IntegerExponentReview()
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
+    comparison_corpus = ComparisonCorpus()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -355,10 +364,12 @@ def review(stream):
         # Generated answer is used only as the value under test, never as an oracle input.
         if template in RADICAL_TYPES:
             review_radical_problem(problem)
+        if template in COMPARISON:
+            comparison_corpus.record(public, solved)
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in RATIO_RATE_CHOICE or template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in RATIO_RATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -369,6 +380,7 @@ def review(stream):
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
+    print('Independent comparison coverage: ' + json.dumps(comparison_corpus.finish()), file=sys.stderr)
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)

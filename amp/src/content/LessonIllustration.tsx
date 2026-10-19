@@ -1,6 +1,7 @@
 import { RatioRateIllustration } from "./RatioRateIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
+import { ComparisonIllustration } from "./ComparisonIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -13,6 +14,11 @@ import {
   PythagoreanRearrangement,
 } from "./RightTriangleIllustration";
 import type { Lesson } from "./lessons";
+import {
+  dataIllustrations,
+  isDataIllustration,
+} from "./data-display-illustrations";
+import { DataDisplayFigure } from "../web/DataDisplayFigure";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
@@ -21,6 +27,8 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (isDataIllustration(kind))
+    return <DataDisplayFigure figure={dataIllustrations[kind]} />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||
@@ -38,6 +46,13 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "comparison-pairing" ||
+    kind === "comparison-number-path" ||
+    kind === "comparison-place-chart" ||
+    kind === "large-place-value-chart"
+  )
+    return <ComparisonIllustration kind={kind} />;
   if (
     kind === "radical-square-grid" ||
     kind === "radical-like-lengths" ||

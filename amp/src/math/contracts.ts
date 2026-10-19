@@ -7,10 +7,15 @@ import {
   ratioRateFigureSchemas,
   type RatioRateFigure,
 } from "./ratio-rate-models.js";
+import {
+  dataDisplayFigureSchemas,
+  type DataDisplayFigure,
+} from "./data-display-models.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
   | RatioRateFigure
+  | DataDisplayFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -35,6 +40,13 @@ export type SemanticFigure =
   | { kind: "ten-frame"; first: number; second: number; capacity: 10 | 20 }
   | { kind: "base-ten"; hundreds: number; tens: number; ones: number }
   | {
+      kind: "counter-rows";
+      circles: number;
+      squares: number;
+      spread: "circles" | "squares" | "none";
+    }
+  | { kind: "base-ten-pair"; values: [number, number] }
+  | {
       kind: "coordinate-plane";
       xMin: number;
       xMax: number;
@@ -56,8 +68,15 @@ export type SemanticFigure =
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
   | { kind: "dataset"; values: number[] };
+/** A client lists the figure families it can draw; a template that needs
+ * another family is never sent to it. */
+export const figureCapabilities = [
+  "measurement-models-v1",
+  "data-displays-v1",
+] as const;
+export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
-  requiredFigureCapability?: "measurement-models-v1";
+  requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: "single-choice-v1";
   id: string;
@@ -94,6 +113,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...ratioRateFigureSchemas,
+    ...dataDisplayFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),
@@ -181,6 +201,27 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         (f) => 100 * f.hundreds + 10 * f.tens + f.ones <= 999,
         "Base-ten total must be at most999",
       ),
+    z
+      .object({
+        kind: z.literal("counter-rows"),
+        circles: z.number().int().min(1).max(10),
+        squares: z.number().int().min(1).max(10),
+        spread: z.enum(["circles", "squares", "none"]),
+      })
+      .strict()
+      .refine(
+        (f) => f.spread === "none" || f[f.spread] >= 2,
+        "A spread row needs at least two counters",
+      ),
+    z
+      .object({
+        kind: z.literal("base-ten-pair"),
+        values: z.tuple([
+          z.number().int().min(10).max(99),
+          z.number().int().min(10).max(99),
+        ]),
+      })
+      .strict(),
     z
       .object({
         kind: z.literal("coordinate-plane"),
