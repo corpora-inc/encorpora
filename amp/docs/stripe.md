@@ -30,7 +30,7 @@ Review unresolved events by namespace and event ID using the Stripe Dashboard an
 
 Customer and checkout reservations are durable before remote calls. Remote creation uses stable Stripe idempotency keys. Unresolved creation older than 23 hours fails closed because Stripe may prune older idempotency keys. Reconcile the remote object before repairing its local mapping. An expired Checkout session is closed locally and returns `checkout_expired_retry_with_new_request`; the next explicit purchase needs a fresh request UUID. A completed subscription prevents duplicate purchase. Starting a replacement subscription after cancellation requires support reconciliation of the old binding; automatic replacement is not implemented.
 
-Checkout holds a shared account advisory lock and checks current consent and learner ownership inside the transaction. Privacy withdrawal/deletion must acquire the matching exclusive `pg_advisory_xact_lock(hashtextextended(accountId,0))` before learner locks. Financial bindings intentionally do not cascade with learning-data deletion. The parent lifecycle service retains an opaque billing tombstone and cancellation access while removing the learner’s name and learning records.
+Checkout and payment settlement hold an exclusive account advisory lock and checks current consent and learner ownership inside the transaction. Privacy withdrawal/deletion must acquire the matching exclusive `pg_advisory_xact_lock(hashtextextended(accountId,0))` before learner locks. Financial bindings intentionally do not cascade with learning-data deletion. The parent lifecycle service retains an opaque billing tombstone and cancellation access while removing the learner’s name and learning records.
 
 ## Verification
 
@@ -53,3 +53,13 @@ Parents can request a refund through support within 30 days of payment. Authoriz
 Checkout persists the selected interval. Retries cannot silently switch plans. An open checkout must expire before choosing a different plan. Paid invoice reconciliation verifies the selected price, amount, customer, subscription, quantity and term before granting access.
 
 Access follows settled invoices without an unpaid grace period. While a renewal awaits finalization or payment, the parent sees “No current paid access” and can check access or billing. A late-settled invoice retains its original service dates and receipt; it never shifts the license period forward. Keep both configured price mappings while subscriptions or refund obligations exist. Disabling a sales route is not a migration for historical billing evidence.
+
+
+## Purchase before learner enrollment
+
+The [purchase consent workflow](parent-consent.md#purchase-backed-transaction-notification-method) accepts a parent acknowledgement and creates an adult-only checkout. Its receipt has no learner reference. Verified initial settlement creates consent and an account entitlement together; the learner is created afterward and the paid entitlement is assigned once. Existing learner purchases keep their consent and ownership checks. Account entitlements use the same annual/monthly price and term validation as learner grants.
+
+Subscribe to `charge.dispute.created`, `charge.dispute.updated` and `charge.dispute.closed` for purchase-backed entitlements, in addition to invoice, refund and subscription events. A provider-confirmed dispute holds this entitlement for reconciliation and revokes assigned access without withdrawing consent. Closing a dispute does not automatically restore a held license. Payment and cancellation management stays available while an entitlement is unassigned.
+
+
+Definitively rejected first enrollment payments queue renewal cancellation without proration or an additional invoice. The worker verifies the stored account, checkout, customer and subscription binding before cancellation. Each action has a stable idempotency key; ambiguous success is reconciled by retrieving the subscription. A failed action backs off independently and cannot starve later accounts. Cancellation never invents a refund or erases the original payment evidence. An already consented parent's withdrawal keeps the existing explicit billing-management semantics.

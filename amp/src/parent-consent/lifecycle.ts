@@ -4,6 +4,17 @@ export async function cancelPendingConsent(
   account: string,
 ): Promise<void> {
   if (
+    (
+      await client.query(
+        "SELECT to_regclass('amp_purchase_consents') AS relation",
+      )
+    ).rows[0]?.relation
+  )
+    await client.query(
+      "UPDATE amp_purchase_consents SET revoked_at=COALESCE(revoked_at,now()),purge_after=COALESCE(purge_after,CASE WHEN consent_at IS NULL THEN expires_at ELSE now()+((notice->>'withdrawnEvidenceDays')::int * interval '1 day') END) WHERE account_id=$1",
+      [account],
+    );
+  if (
     !(
       await client.query(
         "SELECT to_regclass('amp_consent_requests') AS relation",
@@ -23,6 +34,50 @@ export async function cancelPendingConsent(
   );
 }
 export async function purgeConsentRecords(pool: Pool): Promise<number> {
+  let purchaseRemoved = 0;
+  if (
+    (
+      await pool.query(
+        "SELECT to_regclass('amp_purchase_consents') AS relation",
+      )
+    ).rows[0]?.relation
+  ) {
+    const candidates = (
+      await pool.query(`SELECT DISTINCT c.account_id FROM amp_purchase_consents c LEFT JOIN amp_consent_policy p ON p.singleton AND p.digest=c.policy_digest AND p.generation=c.policy_generation
+      WHERE (c.consent_at IS NULL AND c.expires_at+((c.notice->>'pendingContactDays')::int * interval '1 day')<=now()) OR c.purge_after<=now() OR (c.revoked_at IS NULL AND (p.digest IS NULL OR NOT p.enabled OR p.reviewed_until<=now())) LIMIT 100`)
+    ).rows;
+    for (const { account_id: account } of candidates) {
+      const client = await pool.connect();
+      try {
+        await client.query("BEGIN");
+        await client.query(
+          "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+          [account],
+        );
+        await client.query(
+          `UPDATE amp_purchase_consents c SET revoked_at=now(),purge_after=CASE WHEN consent_at IS NULL THEN expires_at ELSE now()+((notice->>'withdrawnEvidenceDays')::int * interval '1 day') END
+          WHERE account_id=$1 AND revoked_at IS NULL AND NOT EXISTS(SELECT 1 FROM amp_consent_policy p WHERE p.singleton AND p.digest=c.policy_digest AND p.generation=c.policy_generation AND p.enabled AND p.reviewed_until>now())`,
+          [account],
+        );
+        const removed = await client.query(
+          "DELETE FROM amp_purchase_consents WHERE account_id=$1 AND ((consent_at IS NULL AND expires_at+((notice->>'pendingContactDays')::int * interval '1 day')<=now()) OR purge_after<=now()) RETURNING checkout_id",
+          [account],
+        );
+        if (removed.rowCount)
+          await client.query(
+            `UPDATE amp_parent_consents SET policy_version='consent-evidence-deleted',verification_method='parent-withdrawal',evidence_reference='preference-only',recorded_at=now(),withdrawn_at=COALESCE(withdrawn_at,now()) WHERE account_id=$1 AND verification_method='monetary-transaction' AND evidence_reference=ANY($2::text[])`,
+            [account, removed.rows.map((row) => String(row.checkout_id))],
+          );
+        purchaseRemoved += removed.rowCount ?? 0;
+        await client.query("COMMIT");
+      } catch (error) {
+        await client.query("ROLLBACK");
+        throw error;
+      } finally {
+        client.release();
+      }
+    }
+  }
   // Serialized with start/ack/withdraw for each account; bounded batches avoid a
   // global lock or holding one account lock while waiting for another.
   // Close completed records whose reviewed policy was withdrawn or expired.
@@ -57,7 +112,7 @@ export async function purgeConsentRecords(pool: Pool): Promise<number> {
     await pool.query(`SELECT DISTINCT account_id FROM amp_consent_requests WHERE
     (completed_at IS NULL AND expires_at<=now()) OR purge_after<=now() LIMIT 100`)
   ).rows;
-  let removed = 0;
+  let removed = purchaseRemoved;
   for (const { account_id: account } of candidates) {
     const client = await pool.connect();
     try {

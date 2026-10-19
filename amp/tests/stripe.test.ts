@@ -258,9 +258,20 @@ test("hosted Checkout fixes product, quantity, customer, metadata and redirects 
   });
 });
 
-test("worker refuses insufficient pools and concurrent passes sharing a pool", async () => {
+test("worker refuses insufficient pools and concurrent passes sharing a pool", async (t) => {
   const small = new Pool({ max: 1 });
   const pool = new Pool({ max: 4 });
+  let cancellationReads = 0;
+  t.mock.method(pool, "query", async (sql: string) => {
+    if (sql === "SELECT to_regclass('amp_enrollment_cancellations') AS relation")
+      return { rows: [{ relation: "amp_enrollment_cancellations" }] };
+    assert.match(
+      sql,
+      /^SELECT c\.checkout_id,b\.account_id FROM amp_enrollment_cancellations/,
+    );
+    cancellationReads++;
+    return { rows: [] };
+  });
   try {
     await assert.rejects(
       new StripeBilling(
@@ -292,6 +303,7 @@ test("worker refuses insufficient pools and concurrent passes sharing a pool", a
       await new StripeBilling(repository, new StripeGateway(config)).runBatch(),
       { processed: 0, failed: 0 },
     );
+    assert.equal(cancellationReads, 2);
   } finally {
     await small.end();
     await pool.end();

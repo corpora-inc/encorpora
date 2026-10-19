@@ -81,7 +81,7 @@ export interface PaymentBaseline {
 export interface PaymentHistoryItem {
   id: string;
   createdAt: string;
-  learnerReference: string;
+  learnerReference: string | null;
   status: "verified" | "review";
   baseline: PaymentBaseline | null;
   observedAt: string;

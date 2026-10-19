@@ -95,10 +95,13 @@ export class StripeGateway {
     checkoutId: string,
     customerId: string,
     interval: BillingInterval = "year",
+    enrollment = false,
+    expiresAt?: number,
   ): Promise<{ id: string; url: string }> {
     const session = await this.client.checkout.sessions.create(
       {
         mode: "subscription",
+        ...(enrollment && expiresAt ? { expires_at: expiresAt } : {}),
         customer: customerId,
         client_reference_id: checkoutId,
         metadata: { amp_checkout_id: checkoutId },
@@ -110,8 +113,8 @@ export class StripeGateway {
         allowed_payment_method_types: ["card"],
         automatic_tax: { enabled: this.config.automaticTax },
         customer_update: { address: "auto" },
-        success_url: `${this.config.appOrigin}/?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
-        cancel_url: `${this.config.appOrigin}/?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
+        success_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
+        cancel_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
       },
       { idempotencyKey: `amp:checkout:${checkoutId}` },
     );
@@ -304,6 +307,9 @@ export class StripeGateway {
     const paidAt = invoice.status_transitions.paid_at;
     requireEvidence(paidAt, "invoice_paid_time_missing");
     return {
+      paymentMethod: charge.payment_method_details?.type,
+      invoiceReason: invoice.billing_reason ?? undefined,
+      disputed: charge.disputed,
       financial: normalizeFinancialEvidence(
         invoice,
         charge.id,
