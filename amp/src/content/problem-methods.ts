@@ -3,6 +3,7 @@ import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
+import { timeMoneyMethods } from "./time-money-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
@@ -37,6 +38,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...radicalMethods,
   ...partWholeMethods,
   ...decimalMethods,
+  ...timeMoneyMethods,
   ...comparisonMethods,
   ...addSubtractMethods,
   ...factsMethods,
