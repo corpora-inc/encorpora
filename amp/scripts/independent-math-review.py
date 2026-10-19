@@ -38,6 +38,7 @@ from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
 from add_subtract_math_oracle import ADD_SUBTRACT, solve_add_subtract, review_add_subtract_fixtures, AddSubtractCorpus
 from facts_math_oracle import FACTS, solve_facts, review_facts_fixtures, FactsCorpus
+from fact_arrays_math_oracle import FACT_ARRAYS, solve_fact_arrays, review_fact_arrays_fixtures, FactArraysCorpus
 from part_whole_math_oracle import PART_WHOLE, solve_part_whole, review_part_whole_fixtures
 from decimal_math_oracle import DECIMAL, solve_decimal, review_decimal_fixtures, DecimalCorpus
 from time_money_math_oracle import TIME_MONEY, TIME_MONEY_CHOICE, solve_time_money, review_time_money_fixtures
@@ -47,10 +48,10 @@ from rational_content_oracle import check_problem as review_rational_problem, re
 
 # Add an independently derived solver here before adding a generated family.
 SUPPORTED = frozenset({
-    'count-objects', 'add-within-20', 'subtract-within-20', 'multiply-facts',
+    'count-objects', 'add-within-20', 'subtract-within-20',
     'fraction-model', 'add-fractions', 'rectangle-area', 'linear-equation',
     'mean-data', 'right-triangle', 'quadratic-vertex', 'geometric-sequence',
-    'logarithm-integer', 'divide-facts', 'place-value-digit', 'decimal-addition',
+    'logarithm-integer', 'place-value-digit', 'decimal-addition',
     'compare-fractions', 'multiply-fractions', 'divide-fractions', 'ratio-missing',
     'percent-of', 'integer-addition', 'integer-power', 'line-slope',
     'linear-system-x', 'simple-probability', 'arithmetic-term',
@@ -58,7 +59,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES
+SUPPORTED = PATTERN_FUNCTION | DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | FACT_ARRAYS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES
 
 
 def require(condition, message):
@@ -82,6 +83,8 @@ def solve(public):
         return solve_volume_coordinate(public)
     if template in FACTS:
         return solve_facts(public)
+    if template in FACT_ARRAYS:
+        return solve_fact_arrays(public)
     if template in PART_WHOLE:
         return solve_part_whole(public)
     if template in DECIMAL:
@@ -200,9 +203,6 @@ def solve(public):
         a, b = numbers
         require(0 <= b <= a <= 20, 'Subtraction bounds')
         return a - b
-    if template == 'multiply-facts':
-        a, b = numbers
-        return a * b
     if template == 'fraction-model':
         require(figure['kind'] == 'fraction' and 0 < figure['selected'] < figure['parts'], 'Invalid fraction representation')
         return f(figure['selected'], figure['parts'])
@@ -254,9 +254,6 @@ def solve(public):
             exponent += 1
         require(value == argument, 'Integer logarithm family produced a noninteger result')
         return exponent
-    if template == 'divide-facts':
-        dividend, divisor = numbers
-        return f(dividend, divisor)
     if template == 'place-value-digit':
         number, = numbers
         positions = [place for place in ('ones', 'tens', 'hundreds') if place in prompt]
@@ -316,6 +313,7 @@ def review(stream):
     review_add_subtract_fixtures()
     review_volume_coordinate_fixtures()
     review_facts_fixtures()
+    review_fact_arrays_fixtures()
     review_part_whole_fixtures()
     review_decimal_fixtures()
     review_time_money_fixtures()
@@ -359,6 +357,7 @@ def review(stream):
     decimal_corpus = DecimalCorpus()
     add_subtract_corpus = AddSubtractCorpus()
     facts_corpus = FactsCorpus()
+    fact_arrays_corpus = FactArraysCorpus()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -406,6 +405,8 @@ def review(stream):
             add_subtract_corpus.record(public, solved)
         if template in FACTS:
             facts_corpus.record(public, solved)
+        if template in FACT_ARRAYS:
+            fact_arrays_corpus.record(public, solved)
         if template in COMPARISON:
             comparison_corpus.record(public, solved)
         if template in DECIMAL:
@@ -431,6 +432,7 @@ def review(stream):
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)
     print('Independent facts coverage: ' + json.dumps(facts_corpus.finish()), file=sys.stderr)
+    print('Independent fact-array coverage: ' + json.dumps(fact_arrays_corpus.finish()), file=sys.stderr)
     print('Independent comparison coverage: ' + json.dumps(comparison_corpus.finish()), file=sys.stderr)
     print('Independent decimal comparison coverage: ' + json.dumps(decimal_corpus.finish()), file=sys.stderr)
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
