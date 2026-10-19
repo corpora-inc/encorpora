@@ -1,6 +1,7 @@
 import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
+import { timeMoneyLessons } from "./time-money-lessons";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -40,6 +41,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "clock-hour-half"
+      | "clock-five-minutes"
+      | "coin-values"
+      | "coin-count-on"
       | "decimal-tenths-hundredths"
       | "decimal-compare-chart"
       | "decimal-rounding-line"
@@ -571,6 +576,7 @@ export const lessons: readonly Lesson[] = [
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,
+  ...timeMoneyLessons,
   ...comparisonLessons,
   ...addSubtractLessons,
   ...factsLessons,

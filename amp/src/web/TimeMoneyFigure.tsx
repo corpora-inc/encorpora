@@ -39,18 +39,22 @@ export function ClockFace({
   hourAngle,
   minuteAngle,
   handStyle,
+  handClassName,
 }: {
   cx: number;
   cy: number;
   hourAngle: number;
   minuteAngle: number;
   handStyle?: CSSProperties;
+  /** Animation class for the hands (its transition respects reduced motion). */
+  handClassName?: string;
 }) {
   // Static figures rotate with the SVG attribute; animations rotate with CSS
   // so the hands can sweep.
   const turn = (angle: number) =>
     handStyle
       ? {
+          className: handClassName,
           style: {
             ...handStyle,
             transform: `rotate(${angle}deg)`,
@@ -83,21 +87,6 @@ export function ClockFace({
           />
         );
       })}
-      {Array.from({ length: 12 }, (_, i) => {
-        const p = at(cx, cy, (i + 1) * 30, 78);
-        return (
-          <text
-            key={i}
-            x={p.x}
-            y={p.y + 9}
-            textAnchor="middle"
-            fill={ink}
-            style={{ fontSize: 25, fontWeight: 600 }}
-          >
-            {i + 1}
-          </text>
-        );
-      })}
       <line
         data-hand="hour"
         x1={cx}
@@ -114,12 +103,35 @@ export function ClockFace({
         x1={cx}
         y1={cy}
         x2={cx}
-        y2={cy - 86}
+        y2={cy - 92}
         stroke="var(--color-figure-accent)"
         strokeWidth="4.5"
         strokeLinecap="round"
         {...turn(minuteAngle)}
       />
+      {Array.from({ length: 12 }, (_, i) => {
+        const p = at(cx, cy, (i + 1) * 30, 78);
+        return (
+          <text
+            key={i}
+            x={p.x}
+            y={p.y + 9}
+            textAnchor="middle"
+            // A paper halo keeps each numeral whole where a hand passes under it.
+            style={{
+              fill: ink,
+              stroke: "var(--color-figure-paper)",
+              strokeWidth: 6,
+              paintOrder: "stroke",
+              strokeLinejoin: "round",
+              fontSize: 25,
+              fontWeight: 600,
+            }}
+          >
+            {i + 1}
+          </text>
+        );
+      })}
       <circle cx={cx} cy={cy} r="7" fill={ink} />
     </g>
   );
@@ -179,8 +191,7 @@ export function MoneyPiece({
           x={cx}
           y={cy + 8}
           textAnchor="middle"
-          fill={ink}
-          style={{ fontSize: 22, fontWeight: 700 }}
+          style={{ fill: ink, fontSize: 22, fontWeight: 700 }}
         >
           {item === "dollar" ? "$1" : "$5"}
         </text>
@@ -210,8 +221,12 @@ export function MoneyPiece({
         x={cx}
         y={cy + r * 0.27}
         textAnchor="middle"
-        fill={ink}
-        style={{ fontSize: Math.round(r * 0.78), fontWeight: 700 }}
+        style={{
+          fill: ink,
+          // Two-digit labels fit inside the inner ring of the smallest coin.
+          fontSize: Math.round(r * (s.text.length > 2 ? 0.64 : 0.78)),
+          fontWeight: 700,
+        }}
       >
         {s.text}
       </text>

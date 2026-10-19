@@ -298,7 +298,7 @@ export function countOn(items: readonly MoneyItem[]): number[] {
 function coinSteps(items: readonly MoneyItem[]) {
   const g = groups(items);
   return [
-    `Start with the coins worth the most: ${g.map(({ item, n }) => `${named(n, item)} at ${cents(CENTS[item])} each`).join(", ")}.`,
+    `Start with the coins worth the most: ${g.map(({ item, n }) => (n === 1 ? `${named(n, item)} (${cents(CENTS[item])})` : `${named(n, item)} at ${cents(CENTS[item])} each`)).join(", ")}.`,
     `Count on: ${countOn(items).join(", ")}.`,
   ];
 }

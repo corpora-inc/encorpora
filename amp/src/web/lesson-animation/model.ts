@@ -32,7 +32,14 @@ export type DecimalAlignAnimation = {
 type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
 type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
+/** One analog clock: both hands start on the hour, then sweep to the time. */
+export type ClockSweepAnimation = {
+  kind: "clock-sweep";
+  hour: number;
+  minute: number;
+};
 export type AnimationModel =
+  | ClockSweepAnimation
   | DecimalFillAnimation
   | DecimalAlignAnimation
   | { kind: "prism-layers"; figure: CubePrism }
@@ -59,6 +66,24 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    [
+      "read-clock-hour-half",
+      "clock-hour-read",
+      "read-clock-five-minutes",
+      "minutes-past-hour",
+    ].includes(lesson.templateId) &&
+    f?.kind === "analog-clocks" &&
+    f.clocks.length === 1 &&
+    integer(f.clocks[0]!.hour, 1, 12) &&
+    integer(f.clocks[0]!.minute, 5, 55) &&
+    f.clocks[0]!.minute % 5 === 0
+  )
+    return {
+      kind: "clock-sweep",
+      hour: f.clocks[0]!.hour,
+      minute: f.clocks[0]!.minute,
+    };
   if (
     lesson.templateId === "decimal-grid-read" &&
     f?.kind === "decimal-grid" &&
@@ -325,6 +350,29 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "clock-sweep") {
+    const { hour: h, minute: m } = model,
+      n = m / 5,
+      next = (h % 12) + 1;
+    const fives = Array.from({ length: n }, (_, i) => 5 * (i + 1));
+    return [
+      {
+        title: `Start at ${h} o'clock`,
+        text: `On the hour the long hand points at 12 and the short hand points at ${h}.`,
+        math: `$${h}{:}00$`,
+      },
+      {
+        title: "The long hand counts minutes",
+        text: `The long hand turns to ${n}. Each numeral is 5 minutes: ${fives.join(", ")}.`,
+        math: `$${n} \\times 5 = ${m}$ minutes`,
+      },
+      {
+        title: "The short hand moves too",
+        text: `In ${m} minutes the short hand moves ${m}/60 of the way from ${h} to ${next}. It has not reached ${next}, so the hour is still ${h}.`,
+        math: `$${h}{:}${String(m).padStart(2, "0")}$`,
+      },
+    ];
+  }
   if (model.kind === "decimal-fill") {
     const k = model.shaded,
       t = Math.floor(k / 10),

@@ -76,8 +76,8 @@ export const moneySize = (item: MoneyItem) =>
   item === "dollar" || item === "five"
     ? { w: 92, h: 44 }
     : {
-        w: 2 * { quarter: 24, nickel: 21, penny: 19, dime: 17 }[item],
-        h: 2 * { quarter: 24, nickel: 21, penny: 19, dime: 17 }[item],
+        w: 2 * { quarter: 24, nickel: 21, penny: 19.5, dime: 18 }[item],
+        h: 2 * { quarter: 24, nickel: 21, penny: 19.5, dime: 18 }[item],
       };
 /** Left-to-right rows that wrap within `width`; each item is centred in its box. */
 export function moneyLayout(

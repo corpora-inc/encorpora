@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { distinctWorksheet } from "./distinct-worksheet";
 import { partWholeTemplates } from "../math/part-whole-practice";
 import { decimalTemplates } from "../math/decimal-practice";
+import { timeMoneyTemplates } from "../math/time-money-practice";
 import { combinatoricsWorksheet } from "./combinatorics-worksheets";
 import { combinatoricsTemplates } from "../math/combinatorics-practice";
 import { radicalWorksheet } from "./radical-worksheets";
@@ -32,7 +33,11 @@ import { PrintMathText, printMathStyles } from "./PrintMathText";
 import { printMathCss } from "./print-fonts";
 export type PublicationKind = "lesson" | "workbook" | "solutions";
 /** Families whose printed sheets are twelve distinct ordinary problems. */
-const distinctWorksheetTemplates = [...partWholeTemplates, ...decimalTemplates];
+const distinctWorksheetTemplates = [
+  ...partWholeTemplates,
+  ...decimalTemplates,
+  ...timeMoneyTemplates,
+];
 /** Print pages use the light color roles: figures paint with role tokens. */
 let tokens: string | undefined;
 function printTokens() {
