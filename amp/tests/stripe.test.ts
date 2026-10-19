@@ -69,6 +69,86 @@ test("annual terms and server mappings reject tampering", () => {
     annualEvents(config, { ...binding, subscriptionId: "sub_other" }, payment),
   );
 });
+function billingEnv(overrides: Record<string, string> = {}) {
+  return {
+    AMP_STRIPE_ENABLED: "true",
+    AMP_STRIPE_MODE: "test",
+    AMP_STRIPE_SECRET_KEY: config.secretKey,
+    AMP_STRIPE_WEBHOOK_SECRET: config.webhookSecret,
+    AMP_STRIPE_ACCOUNT_ID: config.accountId,
+    AMP_STRIPE_PRODUCT_ID: config.productId,
+    AMP_STRIPE_PRICE_ID: config.priceId,
+    AMP_STRIPE_CURRENCY: config.currency,
+    AMP_STRIPE_AMOUNT_MINOR: String(config.amountMinor),
+    AMP_STRIPE_SKU: config.sku,
+    AMP_STRIPE_APP_ORIGIN: config.appOrigin,
+    AMP_STRIPE_PORTAL_CONFIGURATION_ID: config.portalConfigurationId,
+    AMP_STRIPE_AUTOMATIC_TAX: "false",
+    AMP_STRIPE_CONSENT_POLICY_VERSION: config.consentPolicyVersion,
+    ...overrides,
+  };
+}
+
+test("standard and restricted keys are accepted only for their own mode", () => {
+  // Synthetic placeholders: shaped like keys, never valid credentials.
+  const fake = "fixture_not_a_credential";
+  for (const prefix of ["sk_test_", "rk_test_"])
+    assert.equal(
+      stripeConfig(billingEnv({ AMP_STRIPE_SECRET_KEY: prefix + fake }))
+        ?.livemode,
+      false,
+    );
+  const live = {
+    AMP_STRIPE_MODE: "live",
+    AMP_STRIPE_LIVE_APPROVED: "true",
+  };
+  for (const prefix of ["sk_live_", "rk_live_"])
+    assert.equal(
+      stripeConfig(
+        billingEnv({ ...live, AMP_STRIPE_SECRET_KEY: prefix + fake }),
+      )?.livemode,
+      true,
+    );
+  for (const prefix of ["sk_live_", "rk_live_"])
+    assert.throws(
+      () => stripeConfig(billingEnv({ AMP_STRIPE_SECRET_KEY: prefix + fake })),
+      /Stripe key mode mismatch/,
+    );
+  for (const prefix of ["sk_test_", "rk_test_"])
+    assert.throws(
+      () =>
+        stripeConfig(
+          billingEnv({ ...live, AMP_STRIPE_SECRET_KEY: prefix + fake }),
+        ),
+      /Stripe key mode mismatch/,
+    );
+  for (const key of [
+    "pk_test_" + fake,
+    "pk_live_" + fake,
+    "rk_" + fake,
+    "sk_" + fake,
+    "rk_test_",
+    "sk_test_",
+    "whsec_" + fake,
+    "xrk_test_" + fake,
+  ])
+    assert.throws(
+      () => stripeConfig(billingEnv({ AMP_STRIPE_SECRET_KEY: key })),
+      /Stripe key mode mismatch/,
+    );
+  // A live key without operational approval still fails closed.
+  assert.throws(
+    () =>
+      stripeConfig(
+        billingEnv({
+          AMP_STRIPE_MODE: "live",
+          AMP_STRIPE_SECRET_KEY: "rk_live_" + fake,
+        }),
+      ),
+    /operational approval/,
+  );
+});
+
 test("disabled billing has no defaults and live billing fails closed", () => {
   assert.equal(stripeConfig({}), undefined);
   assert.throws(() => stripeConfig({ AMP_STRIPE_ENABLED: "true" }));
@@ -244,10 +324,12 @@ test("hosted Checkout fixes product, quantity, customer, metadata and redirects 
     customer: binding.customerId,
     client_reference_id: binding.id,
     metadata: { amp_checkout_id: binding.id },
-    subscription_data: { metadata: { amp_checkout_id: binding.id } },
+    subscription_data: {
+      metadata: { amp_checkout_id: binding.id },
+      billing_mode: { type: "flexible" },
+    },
     line_items: [{ price: config.priceId, quantity: 1 }],
     allow_promotion_codes: false,
-    allowed_payment_method_types: ["card"],
     automatic_tax: { enabled: false },
     customer_update: { address: "auto" },
     success_url: `https://example.test/?billing=processing&purchase=${binding.id}`,
@@ -258,12 +340,164 @@ test("hosted Checkout fixes product, quantity, customer, metadata and redirects 
   });
 });
 
+function checkoutCapture(gatewayConfig = config) {
+  const calls: Record<string, unknown>[] = [];
+  const client = {
+    checkout: {
+      sessions: {
+        create: async (params: Record<string, unknown>) => {
+          calls.push(params);
+          return {
+            id: "cs_fixture",
+            url: "https://checkout.stripe.test/fixture",
+            livemode: gatewayConfig.livemode,
+          };
+        },
+      },
+    },
+  } as unknown as Stripe;
+  return { calls, gateway: new StripeGateway(gatewayConfig, client) };
+}
+
+test("Checkout leaves payment methods to the Dashboard and uses flexible billing", async () => {
+  for (const interval of ["year", "month"] as const) {
+    const { calls, gateway } = checkoutCapture({
+      ...config,
+      monthlyPriceId: "price_monthly",
+      monthlyAmountMinor: 1400,
+    });
+    await gateway.createCheckout(binding.id, binding.customerId, interval);
+    const params = calls[0]!;
+    assert.equal("payment_method_types" in params, false);
+    assert.equal("allowed_payment_method_types" in params, false);
+    assert.equal("payment_method_configuration" in params, false);
+    assert.deepEqual(
+      (params.subscription_data as Record<string, unknown>).billing_mode,
+      { type: "flexible" },
+    );
+    assert.deepEqual(params.line_items, [
+      {
+        price: interval === "year" ? config.priceId : "price_monthly",
+        quantity: 1,
+      },
+    ]);
+  }
+});
+
+test("purchase-backed consent Checkout offers only reviewed card and Link methods", async () => {
+  // Consent by purchase accepts only card (including Apple Pay and Google Pay)
+  // and Link; any other method would settle and then be rejected.
+  const { calls, gateway } = checkoutCapture();
+  const expiresAt = 1_900_000_000;
+  await gateway.createCheckout(
+    binding.id,
+    binding.customerId,
+    "year",
+    true,
+    expiresAt,
+  );
+  assert.deepEqual(calls[0]!.allowed_payment_method_types, ["card", "link"]);
+  assert.equal(calls[0]!.expires_at, expiresAt);
+  assert.deepEqual(
+    (calls[0]!.subscription_data as Record<string, unknown>).billing_mode,
+    { type: "flexible" },
+  );
+  assert.equal(
+    calls[0]!.success_url,
+    `https://example.test/start/purchase?billing=processing&purchase=${binding.id}`,
+  );
+  await gateway.createCheckout(binding.id, binding.customerId, "year", false);
+  assert.equal("allowed_payment_method_types" in calls[1]!, false);
+});
+
+test("automatic tax collects the full billing address and saves it to the customer", async () => {
+  const taxed = checkoutCapture({ ...config, automaticTax: true });
+  await taxed.gateway.createCheckout(binding.id, binding.customerId);
+  assert.deepEqual(taxed.calls[0]!.automatic_tax, { enabled: true });
+  assert.equal(taxed.calls[0]!.billing_address_collection, "required");
+  assert.deepEqual(taxed.calls[0]!.customer_update, { address: "auto" });
+  const untaxed = checkoutCapture({ ...config, automaticTax: false });
+  await untaxed.gateway.createCheckout(binding.id, binding.customerId);
+  assert.deepEqual(untaxed.calls[0]!.automatic_tax, { enabled: false });
+  assert.equal("billing_address_collection" in untaxed.calls[0]!, false);
+});
+
+test("pinned API version supports flexible billing mode", () => {
+  const gateway = new StripeGateway(config);
+  assert.equal(
+    (
+      gateway.client as unknown as { getApiField(key: string): unknown }
+    ).getApiField("version"),
+    "2026-09-30.endive",
+  );
+});
+
+test("delayed-settlement methods never grant access before the charge succeeds", async () => {
+  // Bank debits and similar methods: Checkout completes, the PaymentIntent is
+  // processing and the charge is pending until the bank settles.
+  const mutations: ((f: ReturnType<typeof remoteFixtures>) => void)[] = [
+    (f) => {
+      f.invoice.status = "open";
+      f.invoice.amount_paid = 0;
+      f.invoice.amount_remaining = 12000;
+      f.intent.status = "processing";
+      f.charge.status = "pending";
+      f.charge.paid = false;
+    },
+    (f) => {
+      f.intent.status = "processing";
+    },
+    (f) => {
+      f.charge.status = "pending";
+    },
+    (f) => {
+      f.charge.status = "failed";
+    },
+  ];
+  for (const mutate of mutations) {
+    const f = remoteFixtures();
+    mutate(f);
+    await assert.rejects(mockedGateway(f).annualPayment(payment.invoiceId));
+  }
+});
+
+test("non-card payment methods settle and are recorded by their Stripe type", async () => {
+  for (const type of ["card", "link", "us_bank_account", "amazon_pay"]) {
+    const f = remoteFixtures();
+    Object.assign(f.invoice, {
+      billing_reason: "subscription_create",
+      amount_overpaid: 0,
+      amount_shipping: 0,
+      starting_balance: 0,
+      ending_balance: 0,
+      pre_payment_credit_notes_amount: 0,
+      post_payment_credit_notes_amount: 0,
+      latest_revision: null,
+      from_invoice: null,
+      total_excluding_tax: 12000,
+      subtotal_excluding_tax: 12000,
+      total_taxes: [],
+    });
+    (f.charge as Record<string, unknown>).payment_method_details = { type };
+    const result = await mockedGateway(f).annualPayment(payment.invoiceId);
+    assert.equal(result.paid, 12000);
+    assert.equal(result.financial?.kind, "verified");
+    assert.equal(
+      result.financial?.kind === "verified" &&
+        result.financial.observation.paymentMethod,
+      type,
+    );
+  }
+});
+
 test("worker refuses insufficient pools and concurrent passes sharing a pool", async (t) => {
   const small = new Pool({ max: 1 });
   const pool = new Pool({ max: 4 });
   let cancellationReads = 0;
   t.mock.method(pool, "query", async (sql: string) => {
-    if (sql === "SELECT to_regclass('amp_enrollment_cancellations') AS relation")
+    if (
+      sql === "SELECT to_regclass('amp_enrollment_cancellations') AS relation"
+    )
       return { rows: [{ relation: "amp_enrollment_cancellations" }] };
     assert.match(
       sql,

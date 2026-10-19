@@ -262,7 +262,7 @@ try {
     await f.page.locator('[data-purchase-entry="annual"]').click();
     await f.page.getByRole("heading", { name: "Annual access" }).waitFor();
     await f.page
-      .getByText("No card checkout is configured. No payment can be taken.")
+      .getByText("No online checkout is configured. No payment can be taken.")
       .waitFor();
     await f.page.getByRole("button", { name: "Back to family" }).click();
     await f.page.waitForFunction(

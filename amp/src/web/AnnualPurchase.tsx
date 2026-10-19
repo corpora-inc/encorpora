@@ -52,7 +52,7 @@ const messages: Record<string, string> = {
   offer_changed:
     "The offer changed. Reload this screen to review the current price.",
   offer_currency_unsupported:
-    "Card checkout requires a configured US-dollar offer.",
+    "Online checkout requires a configured US-dollar offer.",
   checkout_plan_conflict:
     "An existing checkout uses a different plan. Check access to load that plan; let the checkout expire before changing it.",
   sign_in_required: "Sign in again to view your family’s billing information.",
@@ -463,7 +463,7 @@ function PurchasePanel({
           ) : available === false ? (
             <>
               <h2>Purchases are not available here</h2>
-              <p>No card checkout is configured. No payment can be taken.</p>
+              <p>No online checkout is configured. No payment can be taken.</p>
             </>
           ) : !choices.length && family ? (
             <>
@@ -586,7 +586,7 @@ function PurchasePanel({
             payment.{" "}
             {offer?.mode === "test"
               ? "This is sandbox checkout. Use test details only; it does not activate a live subscription."
-              : "Card details are entered on Stripe’s secure hosted checkout."}
+              : "Payment details are entered on Stripe’s secure hosted checkout."}
           </p>
           <p>
             Manage cancellation in billing. Cancellation stops future renewal at

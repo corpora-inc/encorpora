@@ -105,13 +105,26 @@ export class StripeGateway {
         customer: customerId,
         client_reference_id: checkoutId,
         metadata: { amp_checkout_id: checkoutId },
-        subscription_data: { metadata: { amp_checkout_id: checkoutId } },
+        subscription_data: {
+          metadata: { amp_checkout_id: checkoutId },
+          billing_mode: { type: "flexible" },
+        },
         line_items: [
           { price: planConfig(this.config, interval).priceId, quantity: 1 },
         ],
         allow_promotion_codes: false,
-        allowed_payment_method_types: ["card"],
+        // Payment methods come from the Dashboard (dynamic payment methods).
+        // Access still follows only a settled invoice, never Checkout completion.
+        // Purchase-backed consent accepts only card (with its wallets) and Link,
+        // so that checkout never offers a method whose payment would be rejected.
+        ...(enrollment
+          ? { allowed_payment_method_types: ["card" as const, "link" as const] }
+          : {}),
         automatic_tax: { enabled: this.config.automaticTax },
+        // Prices are tax-exclusive: tax needs the full address, saved to the customer.
+        ...(this.config.automaticTax
+          ? { billing_address_collection: "required" as const }
+          : {}),
         customer_update: { address: "auto" },
         success_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
         cancel_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
@@ -283,7 +296,8 @@ export class StripeGateway {
       id(intent.latest_charge)!,
     );
     requireEvidence(
-      charge.paid &&
+      charge.status === "succeeded" &&
+        charge.paid &&
         charge.captured &&
         charge.amount === invoice.total &&
         charge.currency === invoice.currency &&
