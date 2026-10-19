@@ -992,3 +992,15 @@ nav button {
     margin-top: 8px;
   }
 }
+
+/* A function display is an HTML table above a graph; it sizes to its content. */
+.problem-content .figure.function-display,
+.choice-model .figure.function-display {
+  font-size: 15px;
+}
+.problem-content .function-display svg {
+  max-height: min(30dvh, 240px);
+}
+.choice-model .function-display svg {
+  max-height: 150px;
+}

@@ -161,7 +161,7 @@ export async function nextProblem(session: TrialSession) {
         body: {
           count: 1,
           responseCapabilities: ["single-choice-v1"],
-          figureCapabilities: ["measurement-models-v1"],
+          figureCapabilities: ["measurement-models-v1", "function-displays-v1"],
         },
       },
     );

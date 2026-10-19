@@ -1,3 +1,4 @@
+import { patternFunctionLessons } from "./pattern-function-lessons";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -30,6 +31,11 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "pattern-rule-steps"
+      | "related-patterns-graph"
+      | "dependent-variable-graph"
+      | "compare-functions-graph"
+      | "linear-nonlinear-graph"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +539,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...patternFunctionLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,

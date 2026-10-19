@@ -1,3 +1,4 @@
+import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
@@ -20,6 +21,14 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "pattern-rule-steps" ||
+    kind === "related-patterns-graph" ||
+    kind === "dependent-variable-graph" ||
+    kind === "compare-functions-graph" ||
+    kind === "linear-nonlinear-graph"
+  )
+    return <PatternFunctionIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

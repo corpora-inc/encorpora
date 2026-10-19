@@ -6,8 +6,8 @@ export const capabilitySchema = z.strictObject({
     .max(1)
     .default([]),
   figureCapabilities: z
-    .array(z.literal("measurement-models-v1"))
-    .max(1)
+    .array(z.enum(["measurement-models-v1", "function-displays-v1"]))
+    .max(2)
     .default([]),
 });
 export const issueSchema = capabilitySchema.extend({

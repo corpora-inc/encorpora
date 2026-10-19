@@ -781,7 +781,7 @@ function LegacyScreen() {
       ...(templateId ? { templateId } : {}),
       count: 1,
       responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: ["measurement-models-v1"],
+      figureCapabilities: ["measurement-models-v1", "function-displays-v1"],
     });
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts

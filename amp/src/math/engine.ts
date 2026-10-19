@@ -1,4 +1,8 @@
 import {
+  patternFunctionTemplates,
+  generatePatternFunctionProblem,
+} from "./pattern-function-practice";
+import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
@@ -199,6 +203,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...polynomialTemplates,
   ...radicalTemplates,
   ...combinatoricsTemplates,
+  ...patternFunctionTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
@@ -319,6 +324,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...patternFunctionTemplates,
     ...combinatoricsTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -351,6 +357,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (patternFunctionTemplates.some((t) => t.id === templateId))
+    return generatePatternFunctionProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
