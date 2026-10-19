@@ -357,9 +357,11 @@ export const methods: Record<string, ProblemMethod> = {
       ["quotient", "The result of dividing."],
     ],
     method: [
-      "Ask: divisor × ? = dividend.",
+      "Read 56 ÷ 7 as: how many groups of 7 make 56?",
+      "Find the missing factor in 7 × ? = 56 from a fact you know.",
       "The missing factor is the quotient.",
     ],
+    watch: "Check by multiplying: quotient × divisor must give the dividend.",
   },
   "equal-tray-total": {
     goal: "Given a number of trays and how many are on each, find the total.",
@@ -620,14 +622,21 @@ export const methods: Record<string, ProblemMethod> = {
   // Data
   "bar-chart-total": {
     goal: "Given a bar chart, find the total of all categories.",
-    method: ["Read each bar's height on the scale.", "Add the values."],
+    method: [
+      "Read each bar's top across to the scale to get its value.",
+      "Write the three values down.",
+      "Add them.",
+    ],
+    watch: "Read values from the scale; a grid line may stand for more than 1.",
   },
   "bar-chart-difference": {
     goal: "Given a bar chart, find how many more one category has than another.",
     method: [
-      "Read the two named bars.",
-      "Subtract the smaller from the larger.",
+      "Read the two named bars against the scale.",
+      "Subtract the smaller value from the larger.",
+      "Ignore any bar the question does not name.",
     ],
+    watch: '"How many more" asks for a difference, not a total.',
   },
   "mean-data": {
     goal: "Given a list of numbers, find their mean.",
@@ -651,9 +660,9 @@ export const methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Count the favorable items.",
-      "Count all items.",
-      "Probability = favorable ÷ total.",
+      "Count the favorable items: the color asked for.",
+      "Count all items in the bag.",
+      "Probability = favorable ÷ total, simplified.",
     ],
     watch: "Divide by the total, not by the other color.",
   },
@@ -826,9 +835,9 @@ export const methods: Record<string, ProblemMethod> = {
   "multiply-fractions": {
     goal: "Given two fractions, find their product.",
     method: [
-      "Multiply the numerators.",
-      "Multiply the denominators.",
-      "Simplify.",
+      "Multiply the numerators: that counts the pieces.",
+      "Multiply the denominators: that names the piece size.",
+      "Simplify; cancelling a common factor first keeps the numbers small.",
     ],
     watch: "No common denominator is needed to multiply.",
   },
@@ -877,9 +886,10 @@ export const methods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Keep the first fraction.",
-      "Multiply by the reciprocal of the second.",
-      "Simplify.",
+      "Change ÷ to × and flip the second fraction to its reciprocal: 3/4 becomes 4/3.",
+      "Multiply, then simplify.",
     ],
+    watch: "Flip only the divisor, the second fraction, never the first.",
   },
   // Decimals, ratio, percent
   "decimal-addition": {
@@ -889,6 +899,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Add as whole numbers, carrying as usual.",
       "Put the decimal point straight below.",
     ],
+    watch:
+      "Line up the decimal points, not the last digits: 2.5 + 1.25 puts the 5 tenths over the 2 tenths.",
   },
   "decimal-multiplication": {
     goal: "Given two decimals, find their product.",
@@ -897,6 +909,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the digits after the point in both factors.",
       "Put that many digits after the point in the product.",
     ],
+    watch:
+      "Do not line up the decimal points to multiply; count the decimal places instead.",
   },
   "ratio-missing": {
     goal: "Given a ratio and one new amount, find the matching amount.",
@@ -910,22 +924,30 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the scale factor: new amount ÷ its ratio number.",
       "Multiply the other ratio number by the same factor.",
     ],
+    watch:
+      "Multiply both parts by the same factor; adding the same amount to both breaks the ratio.",
   },
   "unit-price": {
     goal: "Given the cost of several items, find the cost of a different number.",
     terms: [["unit price", "The cost of one item."]],
     method: [
       "Unit price = total cost ÷ number of items.",
-      "Multiply by the new number of items.",
+      "Multiply the unit price by the new number of items.",
+      "Check: more items must cost more.",
     ],
+    watch:
+      "Find the price of one item first; the given total is for a different number of items.",
   },
   "percent-of": {
     goal: "Given a percent and an amount, find that percent of the amount.",
     terms: [["percent", "Per hundred: 19% = 19/100."]],
     method: [
-      "Write the percent as a fraction over 100.",
-      "Multiply by the amount.",
+      "Write the percent as a fraction over 100: 35% = 35/100.",
+      "Multiply that fraction by the amount.",
+      "Shortcut: 10% is the amount ÷ 10, and 50% is half.",
     ],
+    watch:
+      "Find the percent of the stated amount; do not just write the percent as the answer.",
   },
   "proportional-rule-choice": {
     goal: "Given several rules, choose the proportional one.",
@@ -942,14 +964,17 @@ export const methods: Record<string, ProblemMethod> = {
       "Same signs: add the sizes, keep the sign.",
       "Different signs: subtract the smaller size from the larger, keep the sign of the larger.",
     ],
+    watch:
+      "With different signs, the answer takes the sign of the number farther from 0: −8 + 3 = −5.",
   },
   "number-line-distance": {
     goal: "Given two points on a number line, find the distance between them.",
     method: [
-      "Subtract the smaller number from the larger.",
+      "Subtract the smaller number from the larger: from −7 to 6 is 6 − (−7).",
+      "When the points are on both sides of 0, add their distances from 0.",
       "Distance is never negative.",
     ],
-    watch: "From −7 to 6 is 6 − (−7) = 13.",
+    watch: "From −7 to 6 is 6 − (−7) = 13, not 6 − 7.",
   },
   "integer-power": {
     goal: "Given a base and an exponent, find the power.",
@@ -971,6 +996,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Then multiplication and division, left to right.",
       "Then addition and subtraction, left to right.",
     ],
+    watch: "Multiply before adding: 2 + 3 × 4 is 14, not 20.",
   },
   "substitute-linear-expression": {
     goal: "Given an expression and a value of x, find the expression's value.",
@@ -1057,6 +1083,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract one equation from the other to remove y.",
       "Solve for x.",
     ],
+    watch:
+      "Multiply every term of an equation, including the number on the right side.",
   },
   // Lines and functions
   "coordinate-point-reading": {
@@ -1071,6 +1099,7 @@ export const methods: Record<string, ProblemMethod> = {
       "For x, count across from the vertical axis.",
       "For y, count up or down from the horizontal axis.",
     ],
+    watch: "x is the across distance and comes first; do not swap it with y.",
   },
   "line-slope": {
     goal: "Given two points, find the slope of the line through them.",
@@ -1080,6 +1109,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract the x-values in the same order: x₂ − x₁.",
       "Divide.",
     ],
+    watch:
+      "Use the same point first in both subtractions; mixing the order flips the sign.",
   },
   "graphed-line-slope": {
     goal: "Given a line on a grid through two marked points, find its slope.",
@@ -1151,11 +1182,18 @@ export const methods: Record<string, ProblemMethod> = {
       "Replace every x with the input, in parentheses.",
       "Powers first, then multiplication, then addition.",
     ],
+    watch:
+      "Square the input before multiplying by its coefficient, and keep the parentheses: (−3)² = 9.",
   },
   "arithmetic-term": {
     goal: "Given the first term and common difference, find term n.",
     terms: [["arithmetic sequence", "Each term adds the same difference d."]],
-    method: ["Term n = first term + (n − 1) × d."],
+    method: [
+      "Each term adds the common difference d to the term before.",
+      "Term n is n − 1 steps after term 1.",
+      "Term n = first term + (n − 1) × d.",
+    ],
+    watch: "Use n − 1 steps, not n: term 1 has no steps added.",
   },
   "geometric-sequence": {
     goal: "Given the first term and common ratio, find term n.",

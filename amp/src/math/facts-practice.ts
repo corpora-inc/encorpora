@@ -104,7 +104,11 @@ export function generateFactsProblem(
           b = r(0, 5 - a);
         prompt = `What is ${a} + ${b}?`;
         answer = a + b;
-        hint = "Start at the greater number and count on the other.";
+        const big = Math.max(a, b),
+          small = Math.min(a, b);
+        hint = small
+          ? `Hold ${big} in your head and count on ${small}, one finger for each count.`
+          : `Nothing is added to ${big} when you add 0.`;
         explanation =
           b === 0 || a === 0
             ? [
@@ -147,7 +151,7 @@ export function generateFactsProblem(
       answer = start + (on ? steps : -steps);
       figure = { kind: "number-line", min: 0, max: 20, points: [start] };
       prompt = `Start at ${start}. Count ${on ? "on" : "back"} ${steps}. What number do you land on?`;
-      hint = `Each count moves one step ${on ? "right and adds" : "left and subtracts"} 1. Do not count the starting number.`;
+      hint = `Start at ${start} and jump ${steps === 1 ? "once" : `${steps} times`} to the ${on ? "right" : "left"}, one step each time. Do not count ${start} itself.${cross ? " You will cross ten." : ""}`;
       explanation = [
         `Count ${on ? "on" : "back"} ${steps} from ${start}: ${counts(start, steps, on ? 1 : -1).join(", ")}.`,
         `${steps === 1 ? "That 1 count" : `Those ${steps} counts`} ${on ? "add" : "subtract"}${steps === 1 ? "s" : ""} ${steps}: ${start} ${on ? "+" : "−"} ${steps} = ${answer}.`,
@@ -163,8 +167,7 @@ export function generateFactsProblem(
         ? `Count on from ${start}: ${said.join(", ")}. How many were added to ${start}?`
         : `Count back from ${start}: ${said.join(", ")}. How many were subtracted from ${start}?`;
       answer = steps;
-      hint =
-        "Count the numbers said after the start. The start itself is not a step.";
+      hint = `${start} is the starting point, not a step. Count only the numbers said after it.`;
       explanation = [
         `The counts after ${start} are ${said.join(", ")}: ${steps} numbers.`,
         `Each count is one more${on ? "" : " taken away"}, so ${start} ${on ? "+" : "−"} ${steps} = ${said.at(-1)}.`,
@@ -227,10 +230,15 @@ export function generateFactsProblem(
       prompt = `What is ${n} ${sign} ${step}?`;
       const crossed =
         Math.floor(answer / 100) !== Math.floor(n / 100) && step === 10;
+      const tens = Math.floor(n / 10) % 10;
       hint =
-        step === 10
-          ? `${up ? "Add" : "Take away"} one ten. Only the tens digit changes, unless the tens pass a hundred.`
-          : `${up ? "Add" : "Take away"} one hundred. Only the hundreds digit changes.`;
+        step === 100
+          ? `${n} has ${Math.floor(n / 100)} hundreds. ${up ? "Adding" : "Taking away"} 100 changes only the hundreds digit.`
+          : up && tens === 9
+            ? `${n} has 9 tens. One more ten makes ten tens, which is one more hundred.`
+            : !up && tens === 0
+              ? `${n} has no tens to take, so trade 1 hundred for 10 tens first.`
+              : `${n} has ${tens} tens. ${up ? "Adding" : "Taking away"} 10 changes only the tens digit.`;
       explanation = [
         `${n} is ${places(n)}.`,
         crossed
