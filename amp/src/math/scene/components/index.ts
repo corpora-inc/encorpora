@@ -12,6 +12,7 @@ import { fractionBarSchema } from "./fraction-bar";
 import { graphSchema } from "./graph";
 import { numberLineSchema } from "./number-line";
 import { polyAreaSchema } from "./poly-area";
+import { rowBarsSchema } from "./row-bars";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
 
@@ -26,6 +27,7 @@ export const componentSchemas = [
   numberLineSchema,
   polyAreaSchema,
   protractorSchema,
+  rowBarsSchema,
   tableSchema,
   tenFrameSchema,
 ] as const;
@@ -39,5 +41,6 @@ export * from "./fraction-bar";
 export * from "./graph";
 export * from "./number-line";
 export * from "./poly-area";
+export * from "./row-bars";
 export * from "./table";
 export * from "./ten-frame";

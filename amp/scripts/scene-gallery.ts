@@ -213,7 +213,8 @@ try {
           const samples: [number, number][] = [];
           for (const e of strokes) {
             const len = e.getTotalLength();
-            const n = Math.min(800, Math.ceil(len / 1.5));
+            if (!(len > 0)) continue;
+            const n = Math.max(1, Math.min(800, Math.ceil(len / 1.5)));
             for (let i = 0; i <= n; i++) {
               const p = e.getPointAtLength((len * i) / n);
               samples.push([p.x, p.y]);
