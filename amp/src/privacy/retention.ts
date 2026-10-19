@@ -4,8 +4,9 @@ import { RETENTION, RETENTION_BATCH } from "./retention-periods.js";
 
 /*
  * Time-based retention limits. Every purge takes an explicit clock, works in
- * bounded batches, re-checks eligibility under the account lock before it
- * deletes, and returns counts only. A repeated run deletes nothing new.
+ * bounded batches and returns counts only; a repeated run deletes nothing new.
+ * Learner, order, checkout and tombstone deletions re-check eligibility under
+ * the account lock. Trial and unreferenced financial rows are deleted by age.
  */
 
 const validClock = (at: Date): string => {
@@ -14,7 +15,8 @@ const validClock = (at: Date): string => {
   return at.toISOString();
 };
 
-/** Latest practice activity or licence end for the learner and family `l`. */
+/** Latest practice by learner `l`, or purchase activity or licence end for
+ * their family. A family that is buying again keeps its learners. */
 const LEARNER_LAST_ACTIVE = `greatest(l.created_at,
   (SELECT max(i.created_at) FROM amp_instances i WHERE i.learner_id=l.id),
   (SELECT max(a.created_at) FROM amp_attempts a WHERE a.learner_id=l.id),
@@ -26,7 +28,12 @@ const LEARNER_LAST_ACTIVE = `greatest(l.created_at,
   (SELECT max(e.ends_at) FROM amp_account_entitlements e
    JOIN amp_stripe_checkouts c ON c.id=e.checkout_id WHERE c.account_id=l.account_id),
   (SELECT max(s.period_end) FROM amp_stripe_subscription_events s
-   JOIN amp_stripe_checkouts c ON c.id=s.checkout_id WHERE c.account_id=l.account_id))`;
+   JOIN amp_stripe_checkouts c ON c.id=s.checkout_id WHERE c.account_id=l.account_id),
+  (SELECT max(greatest(o.updated_at,(o.order_state->'license'->>'endsAt')::timestamptz))
+   FROM amp_commerce_orders o WHERE o.account_id=l.account_id),
+  (SELECT max(f.created_at) FROM amp_funding_requests f WHERE f.account_id=l.account_id),
+  (SELECT max(c.created_at) FROM amp_stripe_checkouts c WHERE c.account_id=l.account_id),
+  (SELECT max(r.created_at) FROM amp_payment_records r WHERE r.account_id=l.account_id))`;
 const LEARNER_EXPIRED = `l.deleted_at IS NULL AND l.account_id NOT LIKE 'trial:%'
   AND ${LEARNER_LAST_ACTIVE} <= $1::timestamptz - make_interval(months=>$2)`;
 
@@ -57,6 +64,30 @@ async function inAccount<T>(
   }
 }
 
+/** Candidate scans run with a bounded statement time. */
+async function scan<T>(
+  pool: Pool,
+  sql: string,
+  values: unknown[],
+): Promise<T[]> {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN READ ONLY");
+    await client.query("SET LOCAL statement_timeout='120s'");
+    const rows = (await client.query(sql, values)).rows as T[];
+    await client.query("COMMIT");
+    return rows;
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
+/** A busy account or a write racing the purge skips that unit until the next run. */
+const RETRY_NEXT_RUN = new Set(["55P03", "40P01", "40001", "23503"]);
+
 /** Keyset batches over candidates; returns how many units were removed. */
 async function eachBatch(
   select: (
@@ -69,7 +100,14 @@ async function eachBatch(
     removed = 0;
   for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
     const rows = await select(after, RETENTION_BATCH.batchSize);
-    for (const row of rows) if (await remove(row)) removed++;
+    for (const row of rows)
+      try {
+        if (await remove(row)) removed++;
+      } catch (error) {
+        const code = (error as { code?: string }).code;
+        if (!code || !RETRY_NEXT_RUN.has(code)) throw error;
+        console.error(JSON.stringify({ retentionUnitSkipped: code }));
+      }
     if (rows.length < RETENTION_BATCH.batchSize) break;
     after = rows[rows.length - 1]!.key;
   }
@@ -91,13 +129,12 @@ export async function purgeInactiveLearners(
   const family = new FamilyRepository(pool);
   const expiredLearners = await eachBatch(
     async (after, limit) =>
-      (
-        await pool.query(
-          `SELECT l.id AS key,l.account_id AS account FROM amp_learners l
-          WHERE ${LEARNER_EXPIRED} AND l.id>$3 ORDER BY l.id LIMIT $4`,
-          [clock, months, after, limit],
-        )
-      ).rows,
+      scan(
+        pool,
+        `SELECT l.id AS key,l.account_id AS account FROM amp_learners l
+        WHERE ${LEARNER_EXPIRED} AND l.id>$3 ORDER BY l.id LIMIT $4`,
+        [clock, months, after, limit],
+      ),
     ({ key, account }) =>
       inAccount(pool, account, async (client) => {
         await client.query(
@@ -180,6 +217,11 @@ const CHECKOUT_LAST = `greatest(c.created_at,
   (SELECT max(greatest(s.observed_at,s.period_end)) FROM amp_stripe_subscription_events s WHERE s.checkout_id=c.id),
   (SELECT max(greatest(x.requested_at,x.completed_at)) FROM amp_enrollment_cancellations x WHERE x.checkout_id=c.id))`;
 const CUTOFF = "$1::timestamptz-make_interval(years=>$2)";
+const UNREFERENCED_TOMBSTONE = `l.deleted_at IS NOT NULL
+  AND NOT EXISTS(SELECT 1 FROM amp_commerce_orders o WHERE o.learner_id=l.id)
+  AND NOT EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id)
+  AND NOT EXISTS(SELECT 1 FROM amp_stripe_checkouts c WHERE c.learner_id=l.id OR c.assigned_learner_id=l.id)
+  AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.learner_id=l.id)`;
 
 /**
  * Deletes orders, payments, refunds, licences, entitlements and the opaque
@@ -200,13 +242,12 @@ export async function purgeFinancialRecords(
   const years = RETENTION.financialRecordYears;
   const expiredOrders = await eachBatch(
     async (after, limit) =>
-      (
-        await pool.query(
-          `SELECT o.id AS key,o.account_id AS account FROM amp_commerce_orders o
-          WHERE ${ORDER_LAST}<=${CUTOFF} AND o.id>$3 ORDER BY o.id LIMIT $4`,
-          [clock, years, after, limit],
-        )
-      ).rows,
+      scan(
+        pool,
+        `SELECT o.id AS key,o.account_id AS account FROM amp_commerce_orders o
+        WHERE ${ORDER_LAST}<=${CUTOFF} AND o.id>$3 ORDER BY o.id LIMIT $4`,
+        [clock, years, after, limit],
+      ),
     ({ key, account }) =>
       inAccount(
         pool,
@@ -240,15 +281,14 @@ export async function purgeFinancialRecords(
   );
   const expiredCheckouts = await eachBatch(
     async (after, limit) =>
-      (
-        await pool.query(
-          `SELECT c.id::text AS key,c.account_id AS account FROM amp_stripe_checkouts c
-          WHERE ${CHECKOUT_LAST}<=${CUTOFF} AND c.id::text>$3
-          AND NOT EXISTS(SELECT 1 FROM amp_purchase_consents pc WHERE pc.checkout_id=c.id)
-          ORDER BY c.id::text LIMIT $4`,
-          [clock, years, after, limit],
-        )
-      ).rows,
+      scan(
+        pool,
+        `SELECT c.id::text AS key,c.account_id AS account FROM amp_stripe_checkouts c
+        WHERE ${CHECKOUT_LAST}<=${CUTOFF} AND c.id::text>$3
+        AND NOT EXISTS(SELECT 1 FROM amp_purchase_consents pc WHERE pc.checkout_id=c.id)
+        ORDER BY c.id::text LIMIT $4`,
+        [clock, years, after, limit],
+      ),
     ({ key, account }) =>
       inAccount(
         pool,
@@ -301,12 +341,15 @@ export async function purgeFinancialRecords(
     const limit = RETENTION_BATCH.batchSize * RETENTION_BATCH.maxBatches;
     for (const sql of [
       `DELETE FROM amp_payment_holds h WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_payment_holds h WHERE h.observed_at<=${CUTOFF}
-        AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.namespace=h.namespace AND r.invoice_id=h.invoice_id) LIMIT $3))`,
+        AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.namespace=h.namespace AND r.invoice_id=h.invoice_id)
+        AND NOT EXISTS(SELECT 1 FROM amp_account_entitlements e WHERE e.namespace=h.namespace AND e.invoice_id=h.invoice_id) LIMIT $3))`,
       `DELETE FROM amp_stripe_invoice_evidence v WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_stripe_invoice_evidence v WHERE v.recorded_at<=${CUTOFF}
-        AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.namespace=v.namespace AND r.invoice_id=v.invoice_id) LIMIT $3))`,
+        AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.namespace=v.namespace AND r.invoice_id=v.invoice_id)
+        AND NOT EXISTS(SELECT 1 FROM amp_account_entitlements e WHERE e.namespace=v.namespace AND e.invoice_id=v.invoice_id) LIMIT $3))`,
       `DELETE FROM amp_stripe_inbox WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_stripe_inbox WHERE received_at<=${CUTOFF} LIMIT $3))`,
       `DELETE FROM amp_stripe_customers s WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_stripe_customers s WHERE s.created_at<=${CUTOFF}
-        AND NOT EXISTS(SELECT 1 FROM amp_stripe_checkouts c WHERE c.namespace=s.namespace AND c.account_id=s.account_id) LIMIT $3))`,
+        AND NOT EXISTS(SELECT 1 FROM amp_stripe_checkouts c WHERE c.namespace=s.namespace AND c.account_id=s.account_id)
+        LIMIT $3 FOR UPDATE SKIP LOCKED))`,
       `DELETE FROM amp_grants g WHERE ctid=ANY(ARRAY(SELECT ctid FROM amp_grants g WHERE g.ends_at<=${CUTOFF}
         AND NOT EXISTS(SELECT 1 FROM amp_commerce_orders o WHERE g.id='commerce:'||(o.grant_state->>'id')) LIMIT $3))`,
     ])
@@ -322,21 +365,16 @@ export async function purgeFinancialRecords(
   // A "Deleted learner" tombstone exists only for financial references.
   const expiredLearnerReferences = await eachBatch(
     async (after, limit) =>
-      (
-        await pool.query(
-          `SELECT l.id AS key,l.account_id AS account FROM amp_learners l
-          WHERE l.deleted_at IS NOT NULL AND l.id>$1 ORDER BY l.id LIMIT $2`,
-          [after, limit],
-        )
-      ).rows,
+      scan(
+        pool,
+        `SELECT l.id AS key,l.account_id AS account FROM amp_learners l
+        WHERE ${UNREFERENCED_TOMBSTONE} AND l.id>$1 ORDER BY l.id LIMIT $2`,
+        [after, limit],
+      ),
     ({ key, account }) =>
       inAccount(pool, account, async (client) => {
         const removed = await client.query(
-          `DELETE FROM amp_learners l WHERE l.id=$1 AND l.deleted_at IS NOT NULL
-          AND NOT EXISTS(SELECT 1 FROM amp_commerce_orders o WHERE o.learner_id=l.id)
-          AND NOT EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id)
-          AND NOT EXISTS(SELECT 1 FROM amp_stripe_checkouts c WHERE c.learner_id=l.id OR c.assigned_learner_id=l.id)
-          AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.learner_id=l.id)`,
+          `DELETE FROM amp_learners l WHERE l.id=$1 AND ${UNREFERENCED_TOMBSTONE}`,
           [key],
         );
         return !!removed.rowCount;

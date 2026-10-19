@@ -19,3 +19,9 @@ ALTER TABLE amp_privacy_events DROP CONSTRAINT amp_privacy_events_action_check;
 ALTER TABLE amp_privacy_events ADD CONSTRAINT amp_privacy_events_action_check CHECK(action IN ('learner.renamed','learner.learning-deleted','account.learning-deleted','consent.withdrawn','export.started','export.completed','learner.retention-deleted'));
 CREATE INDEX amp_trial_events_time_idx ON amp_trial_events(occurred_at);
 CREATE INDEX amp_trials_created_idx ON amp_trials(created_at);
+-- Retention scans join these foreign keys.
+CREATE INDEX amp_grants_learner_idx ON amp_grants(learner_id);
+CREATE INDEX amp_stripe_checkouts_account_idx ON amp_stripe_checkouts(account_id);
+CREATE INDEX amp_payment_records_checkout_idx ON amp_payment_records(checkout_id);
+CREATE INDEX amp_account_entitlements_checkout_idx ON amp_account_entitlements(checkout_id);
+CREATE INDEX amp_subscription_events_checkout_idx ON amp_stripe_subscription_events(checkout_id);

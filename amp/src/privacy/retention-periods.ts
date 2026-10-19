@@ -6,9 +6,9 @@
  * part of the reviewed deployment policy and are enforced from that policy.
  */
 export const RETENTION = {
-  /** Learner profile and learning records: months after the later of the
-   * learner's last practice activity and the scheduled end of the family's
-   * latest licence or entitlement. */
+  /** Learner profile and learning records: months after the latest of the
+   * learner's last practice, the family's last purchase activity and the
+   * scheduled end of the family's latest licence or entitlement. */
   learnerInactivityMonths: 24,
   /** Unsaved anonymous trials, from their start. */
   unsavedTrialDays: 14,

@@ -151,9 +151,23 @@ test(
       for (const e of order("order-b", "family-b", "paid", licenceEnd))
         await applyCommerceEvent(pool, e);
 
+      // Idle 30 months, but the parent started a new purchase today.
+      await learner(pool, "returning", "family-c", old);
+      await practice(pool, "returning", old);
+      await pool.query(
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id) VALUES($1,'test','family-c',$2)",
+        [randomUUID(), randomUUID()],
+      );
       assert.deepEqual(await purgeInactiveLearners(pool, now), {
         expiredLearners: 1,
       });
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*) n FROM amp_learners WHERE id='returning' AND deleted_at IS NULL",
+        ),
+        1,
+      );
       assert.equal(
         await count(
           pool,
@@ -200,7 +214,8 @@ test(
           .expiredLearners,
         1,
       );
-      // The licensed learner is kept until 24 months after the licence ends.
+      // The licensed learner is kept until 24 months after the licence ends;
+      // by then the returning family's purchase activity has also aged out.
       assert.equal(
         (
           await purgeInactiveLearners(
@@ -208,7 +223,14 @@ test(
             new Date(months(licenceEnd, 24).getTime() - DAY),
           )
         ).expiredLearners,
-        0,
+        1,
+      );
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*) n FROM amp_learners WHERE id='paid' AND deleted_at IS NULL",
+        ),
+        1,
       );
       assert.equal(
         (await purgeInactiveLearners(pool, months(licenceEnd, 24)))
