@@ -1,5 +1,6 @@
 import { createHash, randomBytes } from "node:crypto";
 import { RETENTION } from "../privacy/retention-periods.js";
+import { PLACEMENT_ATTEMPTS } from "../learning/placement";
 
 /** Anonymous practice before an account exists. A trial learner belongs to
  * the synthetic account `trial:<id>`; real parent accounts are `issuer|sub`,
@@ -8,7 +9,7 @@ export const TRIAL_PREFIX = "trial:";
 /** Free problems a trial may answer before the paywall (`AMP_FREE_PROBLEMS`). */
 export const DEFAULT_FREE_PROBLEMS = 100;
 /** Placement answers that open the free run; the rest is adaptive practice. */
-export const PLACEMENT_PROBLEMS = 20;
+export const PLACEMENT_PROBLEMS = PLACEMENT_ATTEMPTS;
 /** Unadopted trials and their answers are deleted after this. */
 export const TRIAL_DAYS = RETENTION.unsavedTrialDays;
 

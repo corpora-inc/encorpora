@@ -369,6 +369,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
             frontier: await tx.frontier(),
             count,
             seed: randomUUID(),
+            learnerKey: learnerId,
           });
       const problems: PublicProblem[] = [];
       for (const choice of selected) {
