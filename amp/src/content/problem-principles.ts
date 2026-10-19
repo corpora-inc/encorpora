@@ -1,3 +1,5 @@
+import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
+import { distributionPrinciples } from "./distribution-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
@@ -5,6 +7,8 @@ import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
 import { multiplyDividePrinciples } from "./multiply-divide-lessons";
+import { addSubtractPrinciples } from "./add-subtract-lessons";
+import { factsPrinciples } from "./facts-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
@@ -18,16 +22,20 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...volumeCoordinatePrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
+  ...distributionPrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...comparisonPrinciples,
   ...multiplyDividePrinciples,
+  ...addSubtractPrinciples,
+  ...factsPrinciples,
   ...combinatoricsPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,

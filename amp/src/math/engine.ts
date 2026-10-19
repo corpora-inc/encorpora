@@ -1,4 +1,8 @@
 import {
+  distributionTemplates,
+  generateDistributionProblem,
+} from "./distribution-practice";
+import {
   partWholeTemplates,
   generatePartWholeProblem,
 } from "./part-whole-practice";
@@ -15,6 +19,15 @@ import {
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
+import { factsTemplates, generateFactsProblem } from "./facts-practice";
+import {
+  addSubtractTemplates,
+  generateAddSubtractProblem,
+} from "./add-subtract-practice";
+import {
+  volumeCoordinateTemplates,
+  generateVolumeCoordinateProblem,
+} from "./volume-coordinate-practice";
 import {
   multiplyDivideTemplates,
   generateMultiplyDivideProblem,
@@ -209,6 +222,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...volumeCoordinateTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -220,8 +234,10 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...addSubtractTemplates,
   ...comparisonTemplates,
   ...multiplyDivideTemplates,
+  ...factsTemplates,
   ...combinatoricsTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -235,6 +251,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...distributionTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -344,6 +361,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...volumeCoordinateTemplates,
+    ...distributionTemplates,
     ...partWholeTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
@@ -379,6 +398,10 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (volumeCoordinateTemplates.some((t) => t.id === templateId))
+    return generateVolumeCoordinateProblem(templateId, seed);
+  if (distributionTemplates.some((t) => t.id === templateId))
+    return generateDistributionProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))
@@ -391,6 +414,10 @@ function generateRawProblem(
     return generateRadicalProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))
     return generateMultiplyDivideProblem(templateId, seed);
+  if (addSubtractTemplates.some((t) => t.id === templateId))
+    return generateAddSubtractProblem(templateId, seed);
+  if (factsTemplates.some((t) => t.id === templateId))
+    return generateFactsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

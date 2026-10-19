@@ -1,8 +1,11 @@
+import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
+import { AddSubtractIllustration } from "./AddSubtractIllustration";
+import { FactsIllustration } from "./FactsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -47,12 +50,32 @@ export function LessonIllustration({
   )
     return <MultiplyDivideIllustration kind={kind} />;
   if (
+    kind === "column-addition" ||
+    kind === "base-ten-trade" ||
+    kind === "column-subtraction-zero" ||
+    kind === "column-multidigit"
+  )
+    return <AddSubtractIllustration kind={kind} />;
+  if (
+    kind === "five-frame-facts" ||
+    kind === "count-on-hops" ||
+    kind === "make-ten-frames" ||
+    kind === "ten-hundred-digits"
+  )
+    return <FactsIllustration kind={kind} />;
+  if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||
     kind === "comparison-place-chart" ||
     kind === "large-place-value-chart"
   )
     return <ComparisonIllustration kind={kind} />;
+  if (
+    kind === "volume-layers" ||
+    kind === "prism-composite" ||
+    kind === "ordered-pair-path"
+  )
+    return <VolumeCoordinateIllustration kind={kind} />;
   if (
     kind === "equal-shares" ||
     kind === "same-share-shapes" ||

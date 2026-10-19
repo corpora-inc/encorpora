@@ -11,11 +11,16 @@ import {
   dataDisplayFigureSchemas,
   type DataDisplayFigure,
 } from "./data-display-models.js";
+import {
+  geometryFigureSchemas,
+  type GeometryFigure,
+} from "./geometry-figures.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
   | DataDisplayFigure
+  | GeometryFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -47,6 +52,7 @@ export type SemanticFigure =
     }
   | { kind: "base-ten-pair"; values: [number, number] }
   | { kind: "area-model"; columns: number[]; rows: number[] }
+  | { kind: "ten-frame-pair"; first: number; second: number }
   | {
       kind: "coordinate-plane";
       xMin: number;
@@ -74,6 +80,7 @@ export type SemanticFigure =
 export const figureCapabilities = [
   "measurement-models-v1",
   "data-displays-v1",
+  "volume-coordinate-figures-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
@@ -115,6 +122,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
     ...dataDisplayFigureSchemas,
+    ...geometryFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),
@@ -219,6 +227,13 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         kind: z.literal("area-model"),
         columns: z.array(z.number().int().min(1).max(9000)).min(1).max(4),
         rows: z.array(z.number().int().min(1).max(9000)).min(1).max(4),
+      })
+      .strict(),
+    z
+      .object({
+        kind: z.literal("ten-frame-pair"),
+        first: z.number().int().min(1).max(10),
+        second: z.number().int().min(1).max(10),
       })
       .strict(),
     z
