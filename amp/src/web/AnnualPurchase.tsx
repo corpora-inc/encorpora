@@ -12,6 +12,7 @@ import "./annual-purchase.css";
 import { PlanOptions } from "./PlanOptions";
 import { paymentUrl } from "./features/billing/payment-url";
 import { FocusDialog } from "./PracticeWorkspace";
+import { visitorId } from "./lib/analytics";
 export interface AnnualPurchaseProps {
   token: string;
   preferredInterval?: "year" | "month";
@@ -100,6 +101,7 @@ function PurchasePanel({
       method: body === undefined ? "GET" : "POST",
       headers: {
         Authorization: `Bearer ${tokenRef.current}`,
+        "X-AMP-Visitor": visitorId(),
         ...(body === undefined ? {} : { "Content-Type": "application/json" }),
       },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),

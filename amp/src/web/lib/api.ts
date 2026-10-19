@@ -37,15 +37,23 @@ const messages: Record<string, string> = {
     "No billing account exists yet. Complete a checkout first.",
   billing_unavailable:
     "Billing is temporarily unavailable. Try again in a moment; you won’t be charged twice.",
+  "trial-complete": "All free problems are used. Choose a plan to continue.",
+  trial_ended:
+    "That free practice has ended on this device. Continue to add the learner and choose a starting point.",
+  "Too Many Requests":
+    "Too many requests from this network. Wait a few minutes, then try again.",
 };
 export async function request<T>(
   path: string,
   schema: z.ZodType<T>,
   options: {
     token?: string | null;
+    /** An anonymous free-trial token, sent instead of a parent token. */
+    trial?: string | null;
     body?: unknown;
     signal?: AbortSignal;
     method?: string;
+    headers?: Record<string, string>;
   } = {},
 ): Promise<T> {
   let response: Response;
@@ -54,7 +62,12 @@ export async function request<T>(
       signal: options.signal,
       method: options.method ?? (options.body === undefined ? "GET" : "POST"),
       headers: {
-        ...(options.token ? { Authorization: `Bearer ${options.token}` } : {}),
+        ...options.headers,
+        ...(options.trial
+          ? { Authorization: `Trial ${options.trial}` }
+          : options.token
+            ? { Authorization: `Bearer ${options.token}` }
+            : {}),
         ...(options.body === undefined
           ? {}
           : { "Content-Type": "application/json" }),

@@ -63,7 +63,10 @@ import "../premium-controls.css";
 import "../app-shell.css";
 import { BirthYearPrompt } from "../BirthYearPrompt";
 import { ChooseHowToPay } from "../ChooseHowToPay";
-import { TrialApp, storedTrial, clearStoredTrial } from "../TrialApp";
+import { chosenPlan, storedTrial } from "../lib/pending-trial";
+import type { Me } from "../../account/contracts";
+import { LoadingScreen } from "../ui/LoadingScreen";
+import { LandingView } from "../lib/LandingView";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
@@ -85,6 +88,8 @@ type Catalog = {
   lessons: Lesson[];
   skills: { id: string; title: string; gradeBand: string; strand: string }[];
   mode: string;
+  /** The free practice before the paywall (`AMP_FREE_PROBLEMS`). */
+  trial?: { free: number; placement: number };
 };
 // Copying typeset math gives its plain text, not KaTeX's internal markup.
 addEventListener("copy", (event) => {
@@ -200,15 +205,9 @@ function LegacyScreen() {
   const changingBirthYear = route.location.pathname === "/profile/birth-year";
   const setChangingBirthYear = (open: boolean) =>
     navigate(open ? "/profile/birth-year" : "/");
-  // "Try free": anonymous placement before any account (see TrialApp).
-  const [trialMode, setTrialMode] = useState(() => !!storedTrial());
-  const [trialImmersive, setTrialImmersive] = useState(false);
-  const [trialToSave, setTrialToSave] = useState(storedTrial);
-  const [trialName, setTrialName] = useState("");
-  const [adoptedTrial, setAdoptedTrial] = useState<{
-    identity: string;
-    id: string;
-  } | null>(null);
+  // "Try free" lives at /try (features/trial); a stored trial is adopted
+  // in the first-run learner step after purchase.
+  const [hasTrial] = useState(() => !!storedTrial());
   // Outside immersive practice: home, lessons, progress and family are visible.
 
   const nativeFamilyReturn = useRef(false);
@@ -336,8 +335,6 @@ function LegacyScreen() {
 
     setConsentReturn(false);
     if (accountRef.current !== null) {
-      setAdoptedTrial(null);
-      setTrialToSave(storedTrial());
       clearPurchaseReturn();
       pendingPurchaseReturn.current = null;
     }
@@ -626,17 +623,37 @@ function LegacyScreen() {
       navigate("/", { replace: true });
   }, [token, route.signingIn]);
   const starting = false;
+  // A parent without a learner or consent continues in the first run (the
+  // free trial, until they buy). Home paints the frame only, never a setup
+  // card, while the account loads and while that redirect happens.
+  const firstRunHome =
+    !nativeRuntime &&
+    !!token &&
+    route.location.pathname === "/" &&
+    (!familySummary
+      ? !error
+      : !learners.length ||
+        (!learningAllowed && familySummary.consent.status !== "withdrawn"));
+  // Once leaving, this screen stays the skeleton until the destination
+  // mounts: the old route keeps rendering while the next one loads.
+  const leavingHome = useRef(false);
+  if (firstRunHome || route.location.pathname === "/")
+    leavingHome.current = firstRunHome && !!familySummary;
   useEffect(() => {
-    if (
-      !nativeRuntime &&
-      token &&
-      familySummary &&
-      route.location.pathname === "/" &&
-      !trialToSave &&
-      (!learners.length ||
-        (!learningAllowed && familySummary.consent.status !== "withdrawn"))
-    )
-      navigate("/start/name", { replace: true });
+    if (!firstRunHome || !familySummary) return;
+    // Straight to the free trial when `/me` says so; the first-run guard
+    // routes every other case from /start/name.
+    const me = accountId
+      ? queryClient.getQueryData<Me>(meKey(accountId))
+      : null;
+    navigate(
+      me?.signedIn && me.next === "try"
+        ? chosenPlan()
+          ? "/start/plan"
+          : "/try"
+        : "/start/name",
+      { replace: true },
+    );
   }, [accountId, familySummary, route.location.pathname]);
   useEffect(() => {
     if (
@@ -981,24 +998,14 @@ function LegacyScreen() {
     route.signingIn &&
     (!token ||
       new URLSearchParams(route.location.search).get("return") === "security");
-  const trialActive =
-    (trialMode || route.parts[0] === "try") &&
-    !token &&
-    !nativeRuntime &&
-    !signingIn;
   const immersive =
-    (!!learner &&
-      tab === "practice" &&
-      !!problem &&
-      !exploring &&
-      !familyOpen) ||
-    (trialActive && trialImmersive);
+    !!learner && tab === "practice" && !!problem && !exploring && !familyOpen;
   // Home and Lessons are ordinary pages that scroll with the window; practice,
   // reading, progress and family settings own a fixed device-sized screen.
   // Signed out, the welcome and the trial share the app's header and column.
   const signedOut = !token && !nativeRuntime;
   const flowPage =
-    (signedOut && !(trialActive && trialImmersive)) ||
+    signedOut ||
     (!!learner &&
       !familyOpen &&
       !readingBook &&
@@ -1006,25 +1013,20 @@ function LegacyScreen() {
       (tab === "practice" || tab === "library"));
   usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
-  if (!sessionReady || (starting && token && !familySummary))
+  if (
+    !sessionReady ||
+    firstRunHome ||
+    leavingHome.current ||
+    // The welcome states the configured free allowance: paint it once.
+    (!token && !nativeRuntime && !catalog && !error) ||
+    (starting && token && !familySummary)
+  )
     return (
-      <div className="app-loading" aria-busy={!error}>
-        <strong>AMP</strong>
-        <p>Opening your workspace…</p>
-        <button
-          className="loading-retry"
-          style={{ visibility: error ? "visible" : "hidden" }}
-          disabled={!error || busy}
-          onClick={() => void action(loadFamily)}
-        >
-          Try again
-        </button>
-        {error && (
-          <p className="account-error" role="alert">
-            {error}
-          </p>
-        )}
-      </div>
+      <LoadingScreen
+        error={error}
+        busy={busy}
+        retry={() => void action(loadFamily)}
+      />
     );
   return (
     <div
@@ -1047,25 +1049,21 @@ function LegacyScreen() {
           <span>MATHEMATICS</span>
         </a>
         <div className="account">
-          {token &&
-            !familyOpen &&
-            !trialToSave &&
-            learningAllowed &&
-            learners.length > 0 && (
-              <Select
-                aria-label="Learner"
-                value={learner?.id ?? ""}
-                disabled={busy}
-                onValueChange={(e) => selectLearner(e || null)}
-              >
-                {!learner && <option value="">Select a learner</option>}
-                {learners.map((l) => (
-                  <option key={l.id} value={l.id}>
-                    {l.name}
-                  </option>
-                ))}
-              </Select>
-            )}
+          {token && !familyOpen && learningAllowed && learners.length > 0 && (
+            <Select
+              aria-label="Learner"
+              value={learner?.id ?? ""}
+              disabled={busy}
+              onValueChange={(e) => selectLearner(e || null)}
+            >
+              {!learner && <option value="">Select a learner</option>}
+              {learners.map((l) => (
+                <option key={l.id} value={l.id}>
+                  {l.name}
+                </option>
+              ))}
+            </Select>
+          )}
           {token && !familyOpen && (
             <details className="account-menu">
               <summary
@@ -1133,22 +1131,18 @@ function LegacyScreen() {
           )}
         </div>
       </header>
-      {!learner &&
-        !familyOpen &&
-        !nativeRuntime &&
-        !trialActive &&
-        !(signingIn && !token) && (
-          <div className="intro">
-            <div>
-              <h1>Math at exactly the right level.</h1>
-              <p>
-                One problem at a time, from counting through precalculus. Every
-                answer adjusts what comes next.
-              </p>
-            </div>
+      {!learner && !familyOpen && !nativeRuntime && !(signingIn && !token) && (
+        <div className="intro">
+          <div>
+            <h1>Math at exactly the right level.</h1>
+            <p>
+              One problem at a time, from counting through precalculus. Every
+              answer adjusts what comes next.
+            </p>
           </div>
-        )}
-      {!familyOpen && learner && !trialToSave && (
+        </div>
+      )}
+      {!familyOpen && learner && (
         <nav aria-label="Learning sections">
           {(["practice", "library", "progress"] as const).map((t) => (
             <button
@@ -1271,26 +1265,18 @@ function LegacyScreen() {
             setFamilyOpen(false);
           }}
         />
-      ) : !token && trialActive ? (
-        <TrialApp
-          catalog={catalog}
-          onImmersive={setTrialImmersive}
-          signIn={() => {
-            setTrialToSave(storedTrial());
-            void action(() => signIn("create"));
-          }}
-        />
       ) : !token ? (
         <section className="card welcome">
+          {!nativeRuntime && <LandingView />}
           <h2>
             {nativeRuntime
               ? "Sign in to continue."
-              : "Find the level in 20 problems."}
+              : `Start with ${catalog?.trial?.free ?? 100} free problems.`}
           </h2>
           <p>
             {nativeRuntime
               ? "Sign in as a parent to choose a learner."
-              : "Free, with no account. Each answer sets the next problem; the result is an estimated grade level in every area."}
+              : `No account needed. The first ${catalog?.trial?.placement ?? 20} find the level in every area; the rest practice right at it, with a lesson and a hint on every problem.`}
           </p>
           {hasPendingConsent && (
             <p>
@@ -1301,13 +1287,10 @@ function LegacyScreen() {
           {!nativeRuntime && (
             <button
               className="go-button"
-              onClick={() => {
-                setTrialMode(true);
-                navigate("/try");
-              }}
+              onClick={() => navigate("/try")}
               disabled={busy}
             >
-              Try free
+              {hasTrial ? "Continue free practice" : "Try free"}
             </button>
           )}
           <button
@@ -1365,63 +1348,6 @@ function LegacyScreen() {
           <button className="secondary" onClick={openFamily}>
             Family settings
           </button>
-        </section>
-      ) : trialToSave && !nativeRuntime ? (
-        <section className="card welcome trial-save">
-          <h2>Save this placement</h2>
-          <p>Name the learner to keep every answer and estimate.</p>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              void action(async () => {
-                const identity = accountRef.current!;
-                const adopted =
-                  adoptedTrial?.identity === identity
-                    ? adoptedTrial
-                    : await api<{ id: string }>("/trials/adopt", {
-                        token: trialToSave,
-                        name: trialName.trim(),
-                      });
-                setAdoptedTrial({ identity, id: adopted.id });
-                clearStoredTrial();
-                // Keep this view mounted until the saved learner is observable.
-                // A failed refresh retries the read, never the consumed adoption.
-                await loadFamily();
-                if (identity !== accountRef.current) return;
-                selectLearner(adopted.id);
-                setTrialToSave(null);
-                setTrialMode(false);
-                setAdoptedTrial(null);
-                openPurchase("choose");
-              });
-            }}
-          >
-            <label>
-              Learner name
-              <input
-                required
-                maxLength={60}
-                value={trialName}
-                disabled={busy || !!adoptedTrial}
-                onChange={(event) => setTrialName(event.target.value)}
-              />
-            </label>
-            <button disabled={busy || !trialName.trim()}>
-              {adoptedTrial ? "Continue to plans" : "Save and continue"}
-            </button>
-            <button
-              type="button"
-              className="secondary"
-              disabled={busy || !!adoptedTrial}
-              onClick={() => {
-                clearStoredTrial();
-                setTrialToSave(null);
-                setTrialMode(false);
-              }}
-            >
-              Discard placement
-            </button>
-          </form>
         </section>
       ) : !learner ? (
         <Navigate to="/start/name" replace />
@@ -1752,7 +1678,7 @@ function LegacyScreen() {
           }
         />
       )}
-      {!learner && !familyOpen && !nativeRuntime && !trialActive && (
+      {!learner && !familyOpen && !nativeRuntime && (
         <footer>
           <span>
             {product.name} · A {product.company} learning studio

@@ -238,11 +238,11 @@ try {
   await page.getByRole("button", { name: "Check", exact: true }).click();
   await page
     .locator(".feedback")
-    .filter({ hasText: "Practiced with support" })
+    .filter({ hasText: /with (a hint|the lesson)/i })
     .waitFor();
   assert.match(
     await page.locator(".feedback").innerText(),
-    /Practiced with support/,
+    /with (a hint|the lesson)/i,
   );
   await page.keyboard.press("Escape");
   await page.getByRole("button", { name: /^Next/ }).click();
