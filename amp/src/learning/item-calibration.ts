@@ -34,13 +34,18 @@ export function templateGrade(
   return band ? gradeNumber[band] : coarse[template.gradeBand];
 }
 
-/** Editorial starting assumptions. No learner-data fit or efficacy claim.
- * Version keys prevent silently applying an override to a revised generator. */
-export const editorialCalibration: Readonly<
+export type EditorialCalibration = Readonly<
   Record<string, { offset: number; discrimination: number }>
-> = {
+>;
+/** Editorial starting assumptions. No learner-data fit or efficacy claim.
+ * Each entry describes its generator as reviewed. Version keys alone do not
+ * catch a rewrite that keeps version 1, so tests/frontier-calibration.test.ts
+ * pins each reviewed generator's output: a rewrite fails until its entry is
+ * reviewed again. (multiply-facts@1 was dropped when #1173 turned plain fact
+ * retrieval into arrays and stories; the frozen regression catalog keeps the
+ * old entry with the old generator, in scripts/frontier/frozen-catalog.ts.) */
+export const editorialCalibration: EditorialCalibration = {
   "count-objects@1": { offset: -0.1, discrimination: 1.8 },
-  "multiply-facts@1": { offset: -0.1, discrimination: 1.8 },
   "linear-equation@1": { offset: 0.1, discrimination: 1.6 },
   "divide-fractions@1": { offset: 0.1, discrimination: 1.6 },
 };
@@ -57,9 +62,10 @@ export function gradeCalibration(grade: number): ItemCalibration {
 export function templateCalibration(
   template: TemplateMetadata,
   nodes: ReadonlyMap<string, Node>,
+  overrides: EditorialCalibration = editorialCalibration,
 ): ItemCalibration {
   const base = gradeCalibration(templateGrade(template, nodes));
-  const entry = editorialCalibration[`${template.id}@${template.version}`];
+  const entry = overrides[`${template.id}@${template.version}`];
   const depth = Math.min(
     4,
     nodes.get(template.skillId)?.prerequisites?.length ?? 0,
