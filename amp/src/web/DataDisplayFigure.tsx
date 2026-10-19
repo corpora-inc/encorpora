@@ -1,6 +1,8 @@
 import type { DataDisplayFigure as Model } from "../math/data-display-models.js";
 import {
   barGraphLayout,
+  linePlotLayout,
+  mixedText,
   pictureGraphLayout,
   sortShapesLayout,
   type ShapeKind,
@@ -89,8 +91,146 @@ function Token({
   );
 }
 
+/** One plotted observation: an × for line plots, a dot for dot plots. */
+export function Mark({
+  kind,
+  cx,
+  cy,
+}: {
+  kind: "x" | "dot";
+  cx: number;
+  cy: number;
+}) {
+  const color = "var(--color-figure-accent)";
+  return kind === "dot" ? (
+    <circle data-mark="dot" cx={cx} cy={cy} r={6.5} fill={color} />
+  ) : (
+    <path
+      data-mark="x"
+      d={`M${cx - 6} ${cy - 6} L${cx + 6} ${cy + 6} M${cx + 6} ${cy - 6} L${cx - 6} ${cy + 6}`}
+      stroke={color}
+      strokeWidth={3}
+      strokeLinecap="round"
+    />
+  );
+}
+/** A number-line label typeset as a mixed number with a stacked fraction. */
+export function TickLabel({
+  x,
+  y,
+  whole,
+  n,
+  d,
+}: {
+  x: number;
+  y: number;
+  whole: number;
+  n: number;
+  d: number;
+}) {
+  if (!n)
+    return (
+      <text x={x} y={y + 18} textAnchor="middle" style={label}>
+        {whole}
+      </text>
+    );
+  const fx = whole ? x + 5 : x;
+  return (
+    <g data-tick-label={`${whole} ${n}/${d}`}>
+      {whole > 0 && (
+        <text x={x - 1} y={y + 19} textAnchor="end" style={label}>
+          {whole}
+        </text>
+      )}
+      <text
+        x={fx}
+        y={y + 10}
+        textAnchor="middle"
+        style={{ fontSize: 13, fill: ink }}
+      >
+        {n}
+      </text>
+      <line
+        x1={fx - 5}
+        x2={fx + 5}
+        y1={y + 13}
+        y2={y + 13}
+        stroke={ink}
+        strokeWidth={1.2}
+      />
+      <text
+        x={fx}
+        y={y + 25}
+        textAnchor="middle"
+        style={{ fontSize: 13, fill: ink }}
+      >
+        {d}
+      </text>
+    </g>
+  );
+}
+/** Axis, ticks and labels of a line plot or dot plot, shared with lesson animations. */
+export function LinePlotAxis({
+  layout,
+}: {
+  layout: ReturnType<typeof linePlotLayout>;
+}) {
+  return (
+    <g data-axis="line-plot">
+      <line
+        x1={layout.left - 10}
+        x2={layout.right + 10}
+        y1={layout.axisY}
+        y2={layout.axisY}
+        stroke={ink}
+        strokeWidth={2}
+      />
+      {layout.ticks.map((t) => (
+        <g key={t.value}>
+          <line
+            x1={t.x}
+            x2={t.x}
+            y1={layout.axisY - (t.major ? 7 : 5)}
+            y2={layout.axisY + (t.major ? 7 : 5)}
+            stroke={ink}
+            strokeWidth={t.major ? 2 : 1.5}
+          />
+          <TickLabel {...t} y={layout.axisY + 6} />
+        </g>
+      ))}
+    </g>
+  );
+}
+
 export function DataDisplayFigure({ figure }: { figure: Model }) {
   switch (figure.kind) {
+    case "line-plot": {
+      const l = linePlotLayout(figure);
+      const counts = new Map<number, number>();
+      for (const v of figure.values) counts.set(v, (counts.get(v) ?? 0) + 1);
+      return (
+        <svg
+          className="figure data-figure"
+          data-kind={figure.kind}
+          viewBox="0 0 360 200"
+          role="img"
+          aria-label={`${figure.mark === "x" ? "Line plot" : "Dot plot"} of ${figure.values.length} measurements in ${figure.unit}. ${[
+            ...counts,
+          ]
+            .sort((a, b) => a[0] - b[0])
+            .map(([v, c]) => `${mixedText(v, figure.denominator)}: ${c}`)
+            .join("; ")}.`}
+        >
+          <text x={8} y={16} style={small}>
+            {figure.unit}
+          </text>
+          <LinePlotAxis layout={l} />
+          {l.marks.map((m, i) => (
+            <Mark key={i} kind={figure.mark} cx={m.cx} cy={m.cy} />
+          ))}
+        </svg>
+      );
+    }
     case "sort-shapes": {
       const placed = sortShapesLayout(figure.shapes);
       const count = (k: ShapeKind) =>
@@ -189,7 +329,7 @@ export function DataDisplayFigure({ figure }: { figure: Model }) {
           role="img"
           aria-label={`Bar graph of ${figure.unit}. The scale counts by ${figure.step}s from 0 to ${figure.max}. ${figure.categories.map((c) => `${c.label}: ${c.value}`).join("; ")}.`}
         >
-          <text x={l.left - 8} y={12} textAnchor="end" style={small}>
+          <text x={l.left - 8} y={16} textAnchor="end" style={small}>
             {figure.unit}
           </text>
           {l.gridlines.map((v) => (

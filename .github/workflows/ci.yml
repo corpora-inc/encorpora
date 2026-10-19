@@ -1419,6 +1419,9 @@ jobs:
           cache-dependency-path: amp/package-lock.json
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      # test:payment-ui and the print suites inspect PDFs with pdfinfo.
+      - name: Install PDF inspection tools
+        run: sudo apt-get install -y poppler-utils
       - run: npm run test:ui
       - run: npm run test:family-ui
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.

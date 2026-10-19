@@ -1,12 +1,17 @@
 """Independent oracle for data-display families: reads only the public prompt,
 the displayed chart data and the option labels, never the generated answer."""
 import re
+from fractions import Fraction
 
 EARLY_DATA = frozenset({
     'sort-shapes-count', 'sort-shapes-most', 'picture-graph-questions',
     'scaled-picture-graph', 'scaled-bar-graph',
 })
-DATA_DISPLAY = EARLY_DATA
+LINE_PLOTS = frozenset({
+    'line-plot-whole', 'fraction-line-plot', 'fraction-plot-difference',
+    'fraction-plot-equal-share',
+})
+DATA_DISPLAY = EARLY_DATA | LINE_PLOTS
 DATA_DISPLAY_CHOICE = frozenset({'sort-shapes-most'})
 
 SHAPES = {'circles': 'circle', 'squares': 'square', 'triangles': 'triangle'}
@@ -49,10 +54,62 @@ def _mentioned(question, labels):
     return [label for _, label in found]
 
 
+NEAREST = {'centimeter': 1, 'inch': 1, 'half inch': 2, 'quarter inch': 4, 'eighth inch': 8}
+
+
+def _amount(text):
+    """A written length: '3', '3/4' or '2 1/4'."""
+    m = re.fullmatch(r'(?:(\d+) )?(\d+)/(\d+)|(\d+)', text)
+    require(m is not None, f'Unreadable amount {text!r}')
+    if m[4] is not None:
+        return Fraction(int(m[4]))
+    return Fraction(int(m[1] or 0)) + Fraction(int(m[2]), int(m[3]))
+
+
+def solve_line_plot(public):
+    figure, prompt = public['figure'], public['prompt']
+    require(figure['kind'] == 'line-plot' and figure['mark'] == 'x', 'Line plot required')
+    d = figure['denominator']
+    require(figure['start'] < figure['end'] and figure['end'] - figure['start'] <= 12, 'Unreadable axis')
+    require(figure['start'] % d == 0 and figure['end'] % d == 0, 'Axis must start and end on whole units')
+    data = [Fraction(v, d) for v in figure['values']]
+    require(all(Fraction(figure['start'], d) <= x <= Fraction(figure['end'], d) for x in data), 'Mark off the axis')
+    require(max(data.count(x) for x in data) <= 7, 'Stack leaves the plot')
+    amount = r'(\d+ \d+/\d+|\d+/\d+|\d+)'
+    m = re.search(r'measured to the nearest (centimeter|inch|half inch|quarter inch|eighth inch)\.', prompt)
+    if m:
+        require(NEAREST[m[1]] == d, 'Stated precision contradicts the plot')
+    if 'shared equally' in prompt:
+        m = re.fullmatch(r'The line plot shows the amount of water in (\d+) identical beakers\. If all the water were shared equally among the beakers, how many liters would each beaker hold\?', prompt)
+        require(m is not None and int(m[1]) == len(data), 'Beaker count contradicts the plot')
+        return sum(data) / len(data)
+    question = prompt.split('. ')[-1]
+    if (m := re.fullmatch(r'How many \w+ are ' + amount + r' (?:inch|inches|centimeter|centimeters) long\?', question)):
+        return Fraction(data.count(_amount(m[1])))
+    if (m := re.fullmatch(r'How many \w+ are longer than ' + amount + r' (?:inch|inches|centimeter|centimeters)\?', question)):
+        return Fraction(sum(1 for x in data if x > _amount(m[1])))
+    if re.fullmatch(r'How many \w+ were measured\?', question):
+        return Fraction(len(data))
+    if re.fullmatch(r'How many (?:inches|centimeters) longer is the longest \w+ than the shortest\?', question):
+        return max(data) - min(data)
+    if re.fullmatch(r'What is the difference in length between the longest and shortest \w+, in inches\?', question):
+        return max(data) - min(data)
+    if re.fullmatch(r'What is the combined length of the longest and shortest \w+, in inches\?', question):
+        return max(data) + min(data)
+    if (m := re.fullmatch(r'What is the total length of all the \w+ that are ' + amount + r' (?:inch|inches) long, in inches\?', question)):
+        v = _amount(m[1])
+        require(v in data, 'Asked length is not plotted')
+        return v * data.count(v)
+    raise ValueError(f'Unrecognized line-plot question: {prompt}')
+
+
 def solve_data_display(public):
     template = public['templateId']
     figure = public['figure']
     prompt = public['prompt']
+    if template in LINE_PLOTS:
+        value = solve_line_plot(public)
+        return str(value.numerator) if value.denominator == 1 else f'{value.numerator}/{value.denominator}'
     if template in ('sort-shapes-count', 'sort-shapes-most'):
         require(figure['kind'] == 'sort-shapes', 'Sorting needs shapes')
         counts = {k: figure['shapes'].count(k) for k in ('circle', 'square', 'triangle')}
@@ -95,6 +152,18 @@ def solve_data_display(public):
 
 
 def review_data_display_fixtures():
+    plot = {'kind': 'line-plot', 'denominator': 4, 'start': 4, 'end': 12, 'mark': 'x', 'unit': 'inches',
+            'values': [5, 5, 9, 11, 12]}
+    lp = lambda prompt: solve_data_display({'templateId': 'fraction-plot-difference', 'figure': plot, 'prompt': prompt})
+    require(lp('Some ribbons, measured to the nearest quarter inch. What is the difference in length between the longest and shortest ribbon, in inches?') == '7/4', 'line-plot difference fixture')
+    require(lp('Ribbons. What is the total length of all the ribbons that are 1 1/4 inches long, in inches?') == '5/2', 'line-plot total fixture')
+    try:
+        lp('Ribbons, measured to the nearest eighth inch. How many ribbons were measured?')
+        raise RuntimeError
+    except ValueError:
+        pass
+    except RuntimeError:
+        raise ValueError('Contradictory precision was accepted')
     bars = {'kind': 'scaled-bar-graph', 'step': 10, 'max': 60, 'unit': 'cans',
             'categories': [{'label': 'Mon', 'value': 30}, {'label': 'Tue', 'value': 45},
                            {'label': 'Wed', 'value': 15}, {'label': 'Thu', 'value': 50}]}

@@ -1,3 +1,4 @@
+import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
@@ -546,6 +547,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...polynomialLessons,
   ...earlyDataLessons,
+  ...linePlotLessons,
   ...radicalLessons,
   ...comparisonLessons,
   ...numberSenseLessons,
