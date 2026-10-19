@@ -7,6 +7,7 @@ import { semanticFigureSchema } from "../src/math/contracts";
 import {
   barGraphLayout,
   dataDisplayKinds,
+  linePlotLayout,
   pictureGraphLayout,
   sortShapesLayout,
   type DataDisplayFigure,
@@ -60,6 +61,19 @@ test("drawn geometry is exactly proportional to the displayed data", () => {
           assert.ok(row.symbols.filter((s) => s.half).length <= 1);
           assert.ok((row.symbols.at(-1)?.cx ?? 0) + l.radius <= 352);
         });
+      } else if (figure.kind === "line-plot") {
+        const l = linePlotLayout(figure);
+        const step = l.ticks[1]!.x - l.ticks[0]!.x;
+        l.ticks.forEach((t, i) =>
+          assert.ok(Math.abs(t.x - (l.left + i * step)) < 1e-9),
+        );
+        for (const m of l.marks) {
+          // Each mark sits exactly above its value, one level per repeat.
+          assert.ok(Math.abs(m.cx - l.x(m.value)) < 1e-9);
+          assert.ok(m.cy - 7 > 0 && m.cy + 7 < l.axisY);
+        }
+        assert.equal(l.marks.length, figure.values.length);
+        assert.ok(figure.end - figure.start <= 12);
       } else if (figure.kind === "sort-shapes") {
         const placed = sortShapesLayout(figure.shapes);
         for (const p of placed)
@@ -80,6 +94,8 @@ test("rendered charts draw one mark per datum and only role colors", () => {
       assert.match(svg, /role="img" aria-label="[^"]{20,}"/);
       if (figure.kind === "sort-shapes")
         assert.equal(svg.match(/data-shape=/g)?.length, figure.shapes.length);
+      if (figure.kind === "line-plot")
+        assert.equal(svg.match(/data-mark=/g)?.length, figure.values.length);
       if (figure.kind === "scaled-bar-graph")
         assert.equal(svg.match(/data-bar=/g)?.length, figure.categories.length);
     }
