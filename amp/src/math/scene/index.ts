@@ -1,7 +1,6 @@
 /** The scene framework: spec, components, layout and the author API. */
-import "./components/number-line";
-import "./components/graph";
-import "./components/models";
+// Registers every component (one file each, listed in components/index.ts).
+import "./components";
 export * from "./spec";
 export {
   layoutScene,

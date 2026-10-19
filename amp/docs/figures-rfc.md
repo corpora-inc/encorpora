@@ -36,7 +36,7 @@ flowchart LR
 
 1. Compile components to primitives. Components receive the current scale, so density choices (tick-label stride) use real pixel spacing.
 2. Fit: the math extent and the measured pixel overhang (labels, arrowheads) fit the target width and height ceiling. Components cap their scale (a ten-frame cell never exceeds 50 px). The fit repeats until stable.
-3. Place labels. Fixed labels go first. Optional labels (ticks) are dropped rather than drawn over another label or mark. Labels with candidate positions take the first clear one that avoids placed labels, marks, axes, lines and curves.
+3. Place labels. Fixed labels go first, then optional ones (tick values), then labels with candidate positions. Every label keeps clear of other labels, marks, arrowheads and every stroke except the grid and shading: axes, lines, curves, boundaries and circles. An optional label that cannot is dropped. A label with candidates takes the clear candidate that grows the figure's binding dimension least, so a long equation label goes above the plot when the width is what limits the scale. Labels over a grid get a paper backing. Math labels are typeset like TeX: spaces are ignored, and operators carry the spacing.
 4. The view box is the union of all ink plus a 4 px pad. Nothing can clip.
 
 Type metrics are exact and need no DOM: KaTeX widths come from KaTeX's own tables, and the sans widths are the widest of Arial, Helvetica and system-ui, measured at the sizes used (`scripts/scene-font-metrics.ts` regenerates them). The gallery fails if any rendered label is wider than its estimate.
@@ -79,6 +79,7 @@ D3 (scales and shapes), JSXGraph and Mafs (interactive plots), and Motion (anima
 
 ## Migration
 
+- Adding a component: one file in `src/math/scene/components/` exports its schema, its type and its `registerComponent` definition, and `components/index.ts` gets one import line and one array entry, kept in alphabetical order. Shared zod building blocks are in `base.ts`.
 - Coexistence: `Figure.tsx` routes ported kinds through `legacyScene()` (`src/math/scene/legacy.ts`). Every other kind keeps its component until it is ported.
 - Ported in PR 1, with side-by-side gallery parity: `number-line`, `clock`, `coordinate-plane`, `ten-frame`.
 - Next, in small PRs, one family at a time, each with a gallery parity card and its existing tests: `base-ten`, `unit-array`, `fraction-strips`/`fraction`, `rational-line`, `bar-chart`, `rectangle`, `right-triangle`, the data displays (`picture-graph`, `scaled-bar-graph`, `line-plot`, `histogram`, `box-plot`), the part-whole and measurement models, the geometry prisms and `quadrant-grid`, and then the lesson illustrations.

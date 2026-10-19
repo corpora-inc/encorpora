@@ -24,12 +24,13 @@ const chars = [
   ...Array.from({ length: 95 }, (_, i) => String.fromCharCode(32 + i)),
   ..."−×÷·°′″≤≥≠≈√π…–—½¼¾",
 ];
-// Width plus italic correction: a slanted glyph's ink overhangs its advance.
+// Advance widths; italic corrections are separate (the ink overhang of a
+// slanted glyph, added after a label's last italic character).
 const katexWidths = (font: string) =>
   Object.fromEntries(
     chars.flatMap((c) => {
       const m = data[font]?.[String(c.codePointAt(0))];
-      return m ? [[c, Number((m[4]! + m[2]!).toFixed(4))]] : [];
+      return m ? [[c, Number(m[4]!.toFixed(4))]] : [];
     }),
   );
 
@@ -127,6 +128,12 @@ export const fontMetrics = ${JSON.stringify(
     italic: katexWidths("Math-Italic"),
     mainBold: katexWidths("Main-Bold"),
     italicBold: katexWidths("Math-BoldItalic"),
+    italicCorrection: Object.fromEntries(
+      chars.flatMap((c) => {
+        const m = data["Math-BoldItalic"]?.[String(c.codePointAt(0))];
+        return m ? [[c, Number(m[2]!.toFixed(4))]] : [];
+      }),
+    ),
     sans: measured.widths["400"],
     sansBold: measured.widths["700"],
     extent: {
