@@ -2,6 +2,7 @@ import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
+import { comparisonFacetMappings } from "./comparison-coverage";
 import { rationalFacetMappings } from "./rational-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
 import { integerExponentFacetMappings } from "./integer-exponent-coverage";
@@ -17,6 +18,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...linePlotFacetMappings,
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
+  ...comparisonFacetMappings,
   ...combinatoricsFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,

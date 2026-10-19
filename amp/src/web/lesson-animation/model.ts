@@ -5,7 +5,11 @@ type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
+type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
+type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
 export type AnimationModel =
+  | { kind: "pairing"; figure: CounterRows }
+  | { kind: "place-compare"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
@@ -19,6 +23,19 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    lesson.templateId === "compare-groups" &&
+    f?.kind === "counter-rows" &&
+    integer(f.circles, 1, 10) &&
+    integer(f.squares, 1, 10)
+  )
+    return { kind: "pairing", figure: f };
+  if (
+    lesson.templateId === "compare-two-digit" &&
+    f?.kind === "base-ten-pair" &&
+    f.values.every((n) => integer(n, 10, 99))
+  )
+    return { kind: "place-compare", figure: f };
   if (
     lesson.templateId === "fraction-model" &&
     f?.kind === "fraction" &&
@@ -89,6 +106,8 @@ const plotted = (v: number, d: number) => {
   const frac = `\\tfrac{${rest / a}}{${d / a}}`;
   return whole ? `${whole}${frac}` : frac;
 };
+const plural = (n: number, one: string, many: string) =>
+  `${n} ${n === 1 ? one : many}`;
 export function animationFrames(model: AnimationModel) {
   if (model.kind === "line-plot-stack") {
     const { values, denominator: d } = model.figure;
@@ -137,6 +156,70 @@ export function animationFrames(model: AnimationModel) {
         text: "Pour the total back into the beakers so each holds the same amount. Every × moves to one value.",
         math: `$\\dfrac{${total}}{${d}} \\div ${values.length} = ${[`\\dfrac{${model.share}}{${d}}`, plotted(model.share, d).replace("tfrac", "dfrac")].filter((v, i, all) => all.indexOf(v) === i).join(" = ")}$`,
       },
+    ];
+  }
+  if (model.kind === "pairing") {
+    const { circles: c, squares: s, spread } = model.figure;
+    const pairs = Math.min(c, s),
+      extra = Math.abs(c - s),
+      rest =
+        c > s
+          ? plural(extra, "circle", "circles")
+          : plural(extra, "square", "squares");
+    return [
+      {
+        title: "Two rows",
+        text:
+          spread === "none"
+            ? "Circles above, squares below, with the same spacing."
+            : `The ${spread} are spread out, so their row looks longer.`,
+        math: `$${c}$ circles, $${s}$ squares`,
+      },
+      {
+        title: "Line them up",
+        text: "Move each square under a circle. Spacing changes; the number of each does not.",
+        math: `$${c}$ circles, $${s}$ squares`,
+      },
+      {
+        title: "Pair them",
+        text:
+          extra === 0
+            ? `${plural(pairs, "pair", "pairs")}, none left over: the same number.`
+            : `${plural(pairs, "pair", "pairs")}; ${rest} without a partner.`,
+        math: `$${c} ${c < s ? "<" : c > s ? ">" : "="} ${s}$`,
+      },
+    ];
+  }
+  if (model.kind === "place-compare") {
+    const [a, b] = model.figure.values;
+    const [ta, tb] = [Math.floor(a / 10), Math.floor(b / 10)],
+      [oa, ob] = [a % 10, b % 10];
+    const sign = a < b ? "<" : a > b ? ">" : "=";
+    return [
+      {
+        title: "Build both numbers",
+        text: `${a} is ${plural(ta, "ten", "tens")} and ${plural(oa, "one", "ones")}. ${b} is ${plural(tb, "ten", "tens")} and ${plural(ob, "one", "ones")}.`,
+        math: `$${a}$ and $${b}$`,
+      },
+      {
+        title: "Compare the tens",
+        text:
+          ta === tb
+            ? `Both have ${plural(ta, "ten", "tens")}. The tens cannot decide.`
+            : `${plural(ta, "ten", "tens")} and ${plural(tb, "ten", "tens")}. Even 9 ones are less than 1 ten.`,
+        math: `$${ta * 10} ${ta < tb ? "<" : ta > tb ? ">" : "="} ${tb * 10}$`,
+      },
+      ta === tb
+        ? {
+            title: "The ones decide",
+            text: `${plural(oa, "one", "ones")} and ${plural(ob, "one", "ones")}.`,
+            math: `$${a} ${sign} ${b}$`,
+          }
+        : {
+            title: "The tens decide",
+            text: "The ones cannot make up a whole ten, so they do not change the answer.",
+            math: `$${a} ${sign} ${b}$`,
+          },
     ];
   }
   if (model.kind === "fraction") {
