@@ -25,6 +25,8 @@ from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponen
 from right_triangle_figure_oracle import review_right_triangle_figures
 from circle_measurement_math_oracle import CIRCLE, solve_circle, review_circle_fixtures, review_circle_content
 from descriptive_statistics_math_oracle import DESCRIPTIVE_STATISTICS, solve_descriptive_statistics, review_descriptive_statistics_fixtures, review_explanation as review_statistics_explanation, review_descriptive_statistics_content, review_content_mutations as review_statistics_content_mutations
+from completing_square_math_oracle import IDS as COMPLETING_SQUARE, solve_complete_square, self_test as review_completing_square_fixtures
+from completing_square_content_oracle import CompletingSquareReview, self_test as review_completing_square_content_fixtures, review_completing_square_content
 from print_math_oracle import review_print_math
 from print_pdf_oracle import review_print_pdfs
 
@@ -41,7 +43,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | INTEGER_EXPONENT
+SUPPORTED = DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | INTEGER_EXPONENT | COMPLETING_SQUARE
 
 
 def require(condition, message):
@@ -53,6 +55,8 @@ def require(condition, message):
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in COMPLETING_SQUARE:
+        return solve_complete_square(public)
     if template in CIRCLE:
         return solve_circle(public)
     if template in INTEGER_EXPONENT:
@@ -263,6 +267,8 @@ def solve(public):
 
 
 def review(stream):
+    review_completing_square_fixtures()
+    review_completing_square_content_fixtures()
     review_circle_fixtures()
     review_integer_exponent_fixtures()
     review_descriptive_statistics_fixtures()
@@ -290,6 +296,7 @@ def review(stream):
     inequality_review = InequalityReview()
     system_review = LinearSystemReview()
     exponent_review = IntegerExponentReview()
+    completing_square_review = CompletingSquareReview()
     right_triangles = RightTriangleCorpusReview()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
@@ -307,6 +314,8 @@ def review(stream):
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
         solved = solve(public)
+        if template in COMPLETING_SQUARE:
+            completing_square_review.record(problem)
         if template in INTEGER_EXPONENT:
             exponent_review.record(public, solved)
             review_integer_exponent_explanation(public, problem["explanation"])
@@ -326,7 +335,7 @@ def review(stream):
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
         # Generated answer is used only as the value under test, never as an oracle input.
-        if template in CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
+        if template in (COMPLETING_SQUARE - {'complete-square-term'}) | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM or (template in MEASUREMENT and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -336,6 +345,8 @@ def review(stream):
         require(actual == expected, f'Mismatch {template}/{seed}: {public["prompt"]!r}; got {actual}, expected {expected}')
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent completing-square coverage: ' + json.dumps(completing_square_review.finish(count)), file=sys.stderr)
+    print('Independent completing-square content: ' + json.dumps(review_completing_square_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent integer-exponent coverage: ' + json.dumps(exponent_review.finish(count)), file=sys.stderr)
     print('Independent integer-exponent content: ' + json.dumps(review_integer_exponent_content()), file=sys.stderr)
