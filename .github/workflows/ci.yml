@@ -1340,8 +1340,8 @@ jobs:
   # Skipped needs are fine; any failure or cancellation fails the gate.
   # AMP CI runs as three parallel jobs. `amp` (unit, build, database: the
   # money, consent and privacy paths) gates every PR and the merge queue.
-  # Browser and content suites gate the PR and re-run on main; the merge queue
-  # skips them, and a red main files an issue to fix forward (see ci-gate).
+  # Browser and content suites run only after merge, on main. A red main
+  # files one issue, and failures are fixed forward in batches (see ci-gate).
   amp:
     name: amp
     needs: changes
@@ -1381,7 +1381,7 @@ jobs:
   amp-browser:
     name: amp-browser
     needs: changes
-    if: needs.changes.outputs.amp == 'true' && github.event_name != 'merge_group'
+    if: needs.changes.outputs.amp == 'true' && github.event_name == 'push'
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -1421,7 +1421,7 @@ jobs:
   amp-content:
     name: amp-content
     needs: changes
-    if: needs.changes.outputs.amp == 'true' && github.event_name != 'merge_group'
+    if: needs.changes.outputs.amp == 'true' && github.event_name == 'push'
     runs-on: ubuntu-latest
     defaults:
       run:

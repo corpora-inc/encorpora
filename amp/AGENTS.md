@@ -11,9 +11,9 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - **Local gates (fast-building stage, fail forward):** before pushing, run `npm run tsc`, `npm test`, and only the database or browser scripts for what you changed. Don't run the whole `test:family-ui` chain locally; CI runs it.
 - **CI** runs three parallel jobs through the ci-gate aggregate:
   - `amp` (unit, build, database) gates every PR and the merge queue;
-  - `amp-browser` and `amp-content` gate the PR and re-run on main, but the merge queue skips them.
+  - `amp-browser` and `amp-content` run only after merge, on main.
 
-  A red main files an issue; fix it forward with a small PR, not a revert, unless prod is broken.
+  A red main files or updates one issue. Fix those failures forward in batches with a small PR, not a revert, unless prod is broken. Before a launch or release, everything must be green.
 - Money, consent and privacy paths (`src/billing`, `src/parent-consent`, `src/privacy`, `src/family`) always get database tests in the PR itself.
 
 ## Interface acceptance
