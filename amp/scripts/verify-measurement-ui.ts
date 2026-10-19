@@ -269,7 +269,7 @@ try {
       const wrong = publicProblem.response.options.find(
         (o) => o.id !== generated.answer,
       )!;
-      await page.getByRole("radio", { name: wrong.label, exact: true }).check();
+      await page.locator(`input[type="radio"][value="${wrong.id}"]`).check();
     } else
       await page
         .getByLabel(publicProblem.response.label, { exact: true })

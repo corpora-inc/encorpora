@@ -315,7 +315,9 @@ export function PracticeWorkspace(props: Props) {
                   <span className="choice-letter" aria-hidden="true">
                     {"ABCD"[index]}
                   </span>
-                  <span><MathText text={option.label} /></span>
+                  <span>
+                    <MathText text={option.label} />
+                  </span>
                 </label>
               ))}
             </div>
@@ -679,7 +681,9 @@ export function PracticeWorkspace(props: Props) {
           title="Your answer"
           close={() => setEntering(false)}
         >
-          <p className="answer-prompt-summary"><MathText text={problem.prompt} /></p>
+          <p className="answer-prompt-summary">
+            <MathText text={problem.prompt} />
+          </p>
           {choice && problem.figure && (
             <div className="choice-model">
               <ChoiceFigure figure={problem.figure} />

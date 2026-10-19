@@ -170,7 +170,7 @@ try {
         await page.getByRole("radio").nth(1).isChecked(),
         "Native radio arrow selection",
       );
-      await page.getByRole("radio", { name: wrong.label, exact: true }).check();
+      await page.locator(`input[type="radio"][value="${wrong.id}"]`).check();
       await page.screenshot({
         path: new URL(`${template.id}-${size.width}.png`, directory).pathname,
       });
