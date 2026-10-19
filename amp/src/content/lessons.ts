@@ -1,3 +1,4 @@
+import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
@@ -54,6 +55,12 @@ export interface Lesson {
       | "standard-algorithm-product"
       | "partial-quotients"
       | "partial-quotients-two-digit"
+      | "rate-double-line"
+      | "unit-price-tapes"
+      | "ratio-table-scaling"
+      | "rate-through-one"
+      | "fraction-rate-copies"
+      | "story-tapes"
       | FactArrayIllustrationKind
       | ShapeIllustrationKind
       | "pattern-rule-steps"
@@ -570,6 +577,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...ratioRateLessons,
   ...patternFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
