@@ -66,6 +66,7 @@ import { ChooseHowToPay } from "../ChooseHowToPay";
 import { chosenPlan, storedTrial } from "../lib/pending-trial";
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
+import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
@@ -132,8 +133,10 @@ export function LegacyApp() {
 function LegacyScreen() {
   const route = useAppRoute();
   const { navigate } = route;
+  const [familyMenuOpen, setFamilyMenuOpen] = useState(false);
+  const familyMenuTrigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    document.querySelector(".account-menu")?.removeAttribute("open");
+    setFamilyMenuOpen(false);
   }, [route.location.pathname]);
   const familyOpen = route.familyOpen;
   const setFamilyOpen = (open: boolean) =>
@@ -214,9 +217,7 @@ function LegacyScreen() {
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
       nativeFamilyReturn.current = false;
-      document
-        .querySelector<HTMLElement>(".account-menu summary")
-        ?.focus({ preventScroll: true });
+      familyMenuTrigger.current?.focus({ preventScroll: true });
     }
   }, [familyOpen]);
 
@@ -706,7 +707,7 @@ function LegacyScreen() {
     navigate("/family/learners");
 
     setPurchaseFocus(undefined);
-    document.querySelector(".account-menu")?.removeAttribute("open");
+    setFamilyMenuOpen(false);
   }
   async function refreshProgress() {
     if (!learner) return;
@@ -1065,69 +1066,57 @@ function LegacyScreen() {
             </Select>
           )}
           {token && !familyOpen && (
-            <details className="account-menu">
-              <summary
-                className="account-menu-trigger"
-                aria-label="Family menu"
-              >
-                Family
-              </summary>
-              <div className="account-menu-content">
-                <button className="account-menu-item" onClick={openFamily}>
-                  Manage family
-                </button>
-                {learner && learner.birthYear != null && (
-                  <button
-                    className="account-menu-item"
-                    disabled={busy}
-                    onClick={(event) => {
-                      event.currentTarget
-                        .closest("details")
-                        ?.removeAttribute("open");
-                      navigationEpoch.current++;
-                      setProblem(null);
-                      setQueue([]);
-                      setOutcome(null);
-                      setPending(null);
-                      setChangingBirthYear(true);
-                    }}
-                  >
-                    Change birth year
-                  </button>
-                )}
-                {learningAllowed && !nativeRuntime && (
-                  <button
-                    className="account-menu-item"
-                    disabled={busy}
-                    onClick={(event) => {
-                      event.currentTarget
-                        .closest("details")
-                        ?.removeAttribute("open");
-                      setName("");
-                      navigate("/start/name");
-                    }}
-                  >
-                    Add learner
-                  </button>
-                )}
-                {token && authMode && authMode !== "development" && (
-                  <button
-                    className="account-menu-item"
-                    onClick={() => {
-                      clearPurchaseReturn();
-                      pendingPurchaseReturn.current = null;
-                      pendingConsent.current = null;
-                      setHasPendingConsent(false);
-                      setConsentChallenge(null);
-                      consentEpoch.current++;
-                      void action(signOut);
-                    }}
-                  >
-                    Sign out
-                  </button>
-                )}
-              </div>
-            </details>
+            <Menu
+              label="Family"
+              aria-label="Family menu"
+              open={familyMenuOpen}
+              onOpenChange={setFamilyMenuOpen}
+              triggerRef={familyMenuTrigger}
+              triggerClassName="account-menu-trigger"
+            >
+              <MenuItem onSelect={openFamily}>Manage family</MenuItem>
+              {learner && learner.birthYear != null && (
+                <MenuItem
+                  disabled={busy}
+                  onSelect={() => {
+                    navigationEpoch.current++;
+                    setProblem(null);
+                    setQueue([]);
+                    setOutcome(null);
+                    setPending(null);
+                    setChangingBirthYear(true);
+                  }}
+                >
+                  Change birth year
+                </MenuItem>
+              )}
+              {learningAllowed && !nativeRuntime && (
+                <MenuItem
+                  disabled={busy}
+                  onSelect={() => {
+                    setName("");
+                    navigate("/start/name");
+                  }}
+                >
+                  Add learner
+                </MenuItem>
+              )}
+              {token && authMode && authMode !== "development" && (
+                <MenuItem
+                  onSelect={() => {
+                    clearPurchaseReturn();
+                    pendingPurchaseReturn.current = null;
+                    pendingConsent.current = null;
+                    setHasPendingConsent(false);
+                    setConsentChallenge(null);
+                    consentEpoch.current++;
+                    void action(signOut);
+                  }}
+                >
+                  Sign out
+                </MenuItem>
+              )}
+            </Menu>
           )}
         </div>
       </header>
