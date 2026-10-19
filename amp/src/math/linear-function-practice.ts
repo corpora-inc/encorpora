@@ -1,5 +1,12 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
-import { f, graph, lineTable as table } from "./scene/author";
+import {
+  act,
+  f,
+  graph,
+  lessonStep,
+  lineTable as table,
+  step,
+} from "./scene/author";
 import type { Fn } from "./scene/spec";
 import {
   assemble,
@@ -295,9 +302,41 @@ function graphDomainRange(r: Random): Case {
     },
   );
   const wrong = distinct(correct, candidates);
-  const scene = graph({ id: "g", x: [-7, 7], y: [-7, 7], grid: 1 })
+  // The walkthrough drops the graph onto its axis: the domain's (or range's)
+  // shadow, with each end filled or open as the graph's own end.
+  const onX = ask === "domain";
+  const shadow = graph({ id: "g", x: [-7, 7], y: [-7, 7], grid: 1 })
     .curve(fn!, { domain: [a!, b!], ends: ends! })
-    .scene({ title: "Graph of f on its domain" });
+    .segment(onX ? [a!, 0] : [0, yMin], onX ? [b!, 0] : [0, yMax], {
+      color: "gold",
+    })
+    .point(onX ? a! : 0, onX ? 0 : yMin, undefined, {
+      open: onX ? !il : !incl(yMin),
+      color: "gold",
+    })
+    .point(onX ? b! : 0, onX ? 0 : yMax, undefined, {
+      open: onX ? !ih : !incl(yMax),
+      color: "gold",
+    });
+  const scene = shadow.scene({
+    title: "Graph of f on its domain",
+    steps: [
+      step(
+        onX
+          ? `Read the graph from left to right: its ends are at x = ${n(a!)} and x = ${n(b!)}.`
+          : `Read the graph from bottom to top: find its lowest and highest points.`,
+        act.highlight("g.curve.0"),
+      ),
+      lessonStep(
+        onX
+          ? `Drop every point of the graph straight onto the x-axis: the shadow is the domain. Filled ends are included, open ends are not.`
+          : `Slide every point of the graph across onto the y-axis: the shadow is the range. Filled ends are included, open ends are not.`,
+        act.appear("g.segment.0"),
+        act.appear("g.point.0"),
+        act.appear("g.point.1"),
+      ),
+    ],
+  });
   const steps =
     ask === "domain"
       ? [
@@ -693,9 +732,9 @@ function averageRateDisplay(r: Random): Case {
       const a = pick(r, [1, -1, 0.5, -0.5]);
       const h = r(-2, 2);
       const k = a > 0 ? r(-6, 0) : r(0, 6);
-      const step = Math.abs(a) === 0.5 ? 2 : 1;
+      const spacing = Math.abs(a) === 0.5 ? 2 : 1;
       const offs = [-4, -3, -2, -1, 0, 1, 2, 3, 4].filter(
-        (d) => d % step === 0,
+        (d) => d % spacing === 0,
       );
       const [d1, d2] = shuffle(r, offs)
         .slice(0, 2)
@@ -710,7 +749,29 @@ function averageRateDisplay(r: Random): Case {
         .secant(0, p0, q0)
         .point(p0, fp, "A")
         .point(q0, fq, "B")
-        .scene({ title: "Graph of f with a secant through A and B" });
+        .slope([p0, fp], [q0, fq], "derived")
+        .scene({
+          title: "Graph of f with a secant through A and B",
+          steps: [
+            step(
+              `A is the point of the curve at x = ${n(p0)}; B is the point at x = ${n(q0)}.`,
+              act.highlight("g.point.0"),
+              act.highlight("g.point.1"),
+            ),
+            step(
+              `The secant line joins A and B. Its slope is the average rate of change.`,
+              act.highlight("g.secant.0"),
+            ),
+            step(
+              `Run: x goes from ${n(p0)} to ${n(q0)}, {g.slope.0.run.label}. Rise: from A to B the output changes by {g.slope.0.rise.label}.`,
+              act.appear("g.slope.0"),
+            ),
+            lessonStep(
+              `Average rate of change = rise ÷ run = {g.slope.0.rise.label} ÷ {g.slope.0.run.label}.`,
+              act.highlight("g.slope.0"),
+            ),
+          ],
+        });
       return {
         prompt: `The graph of y = f(x) passes through A at x = ${n(p0)} and B at x = ${n(q0)}. What is the average rate of change of f from x = ${n(p0)} to x = ${n(q0)}?`,
         answer: ans,
@@ -745,7 +806,23 @@ function averageRateDisplay(r: Random): Case {
         ["f(x)", ...xs.map((x) => n(at(x)))],
       ],
       { highlight: [i + 1, j + 1] },
-    ).scene({ title: "Values of f" });
+    )
+      .id("t")
+      .scene({
+        title: "Values of f",
+        steps: [
+          step(
+            `The interval's ends are the shaded columns: x = ${n(p0)} and x = ${n(q0)}.`,
+            act.highlight(`t.cell.0.${i + 1}`),
+            act.highlight(`t.cell.0.${j + 1}`),
+          ),
+          step(
+            `Take f(x) at each end, then divide the change in f(x) by the change in x, ${n(q0)} − ${p(p0)}.`,
+            act.highlight(`t.cell.1.${i + 1}`),
+            act.highlight(`t.cell.1.${j + 1}`),
+          ),
+        ],
+      });
     return {
       prompt: `The table gives values of a function f. What is the average rate of change of f from x = ${n(p0)} to x = ${n(q0)}?`,
       answer: ans,
@@ -798,7 +875,23 @@ function averageRateDisplay(r: Random): Case {
       [ctx.heads[1]!, ...values.map(n)],
     ],
     { highlight: [i + 1, j + 1] },
-  ).scene({ title: "Table of values" });
+  )
+    .id("t")
+    .scene({
+      title: "Table of values",
+      steps: [
+        step(
+          `The interval's ends are the shaded columns: ${ctx.heads[0]} = ${n(p0)} and ${ctx.heads[0]} = ${n(q0)}.`,
+          act.highlight(`t.cell.0.${i + 1}`),
+          act.highlight(`t.cell.0.${j + 1}`),
+        ),
+        step(
+          `Take ${ctx.heads[1]} at each end, then divide the change in ${ctx.heads[1]} by the change in ${ctx.heads[0]}, ${n(q0)} − ${p(p0)}.`,
+          act.highlight(`t.cell.1.${i + 1}`),
+          act.highlight(`t.cell.1.${j + 1}`),
+        ),
+      ],
+    });
   return {
     prompt: ctx.prompt(p0, q0),
     answer: ans,
@@ -1056,7 +1149,25 @@ function linearModelEquation(r: Random): Case {
       axisNames: [x, y],
     })
       .curve(f.poly(s * m, b), { domain: [0, X], ends: ["none", "none"] })
-      .scene({ title: `Graph of ${ctx.yName} against ${ctx.xName}` });
+      .point(0, b)
+      .slope([0, b], [1, b + s * m], "derived")
+      .scene({
+        title: `Graph of ${ctx.yName} against ${ctx.xName}`,
+        steps: [
+          step(
+            `Start where the line meets the ${y}-axis, at ${x} = 0: that value is the starting amount.`,
+            act.appear("g.point.0"),
+          ),
+          step(
+            `Walk 1 to the right, then ${ctx.kind === "fall" ? "down" : "up"} to the line: the change, {g.slope.0.rise.label}, is the rate.`,
+            act.appear("g.slope.0"),
+          ),
+          lessonStep(
+            `${y} = rate × ${x} + starting amount, with the rate {g.slope.0.rise.label} per 1 ${x}.`,
+            act.highlight("g.slope.0"),
+          ),
+        ],
+      });
     const sayIt = ctx.say(b, m).split(". ")[1]!;
     prompt = `The graph shows a linear relationship. ${sayIt} Which equation gives ${y} in terms of ${x}?`;
     first = `The graph starts at (0, ${b}), so ${y} = ${b} when ${x} = 0. From (0, ${b}) to (1, ${b + s * m}) it ${ctx.kind === "fall" ? "falls" : "rises"} ${m}, so ${y} ${rateWords}.`;

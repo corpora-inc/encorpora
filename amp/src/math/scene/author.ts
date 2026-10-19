@@ -255,7 +255,11 @@ class GraphBuilder extends Builder<Graph> {
     x: number,
     y: number,
     label?: string,
-    options: { open?: boolean; derived?: boolean } = {},
+    options: {
+      open?: boolean;
+      derived?: boolean;
+      color?: "accent" | "warm" | "gold" | "ink";
+    } = {},
   ) {
     return this.push("points", { x, y, label, ...options });
   }
@@ -293,7 +297,11 @@ class GraphBuilder extends Builder<Graph> {
   segment(
     from: Point,
     to: Point,
-    options: { dash?: "solid" | "dash" | "dot"; arrow?: boolean } = {},
+    options: {
+      dash?: "solid" | "dash" | "dot";
+      arrow?: boolean;
+      color?: "accent" | "warm" | "gold" | "ink";
+    } = {},
   ) {
     return this.push("segments", { from, to, ...options });
   }
