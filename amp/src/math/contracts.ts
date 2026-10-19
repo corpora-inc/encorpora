@@ -8,6 +8,10 @@ import {
   type PartWholeFigure,
 } from "./part-whole-models.js";
 import {
+  factArrayFigureSchemas,
+  type FactArrayFigure,
+} from "./fact-array-models.js";
+import {
   dataDisplayFigureSchemas,
   type DataDisplayFigure,
 } from "./data-display-models.js";
@@ -19,6 +23,7 @@ import {
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
+  | FactArrayFigure
   | DataDisplayFigure
   | GeometryFigure
   | {
@@ -120,6 +125,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
+    ...factArrayFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     z

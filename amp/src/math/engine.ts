@@ -21,6 +21,10 @@ import {
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import {
+  factArrayTemplates,
+  generateFactArrayProblem,
+} from "./fact-arrays-practice";
+import {
   addSubtractTemplates,
   generateAddSubtractProblem,
 } from "./add-subtract-practice";
@@ -133,14 +137,6 @@ export const baseTemplates: readonly TemplateMetadata[] = [
     description: "Subtract without a negative result.",
   },
   {
-    id: "multiply-facts",
-    version: 1,
-    title: "Multiplication facts",
-    skillId: "multiplication-facts",
-    gradeBand: "3–5",
-    description: "Multiply whole numbers from two through twelve.",
-  },
-  {
     id: "fraction-model",
     version: 1,
     title: "Read a fraction",
@@ -233,6 +229,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...addSubtractTemplates,
   ...comparisonTemplates,
   ...factsTemplates,
+  ...factArrayTemplates,
   ...combinatoricsTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -411,6 +408,8 @@ function generateRawProblem(
     return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))
     return generateFactsProblem(templateId, seed);
+  if (factArrayTemplates.some((t) => t.id === templateId))
+    return generateFactArrayProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))
@@ -491,18 +490,6 @@ function generateRawProblem(
       explanation = [
         `Start with ${a}. Remove ${b}.`,
         `${a} − ${b} = ${answer}.`,
-      ];
-      break;
-    }
-    case "multiply-facts": {
-      const a = r(2, 12),
-        b = r(2, 12);
-      prompt = `What is ${a} × ${b}?`;
-      answer = `${a * b}`;
-      hint = "Think of equal groups.";
-      explanation = [
-        `There are ${a} groups of ${b}.`,
-        `${Array(a).fill(b).join(" + ")} = ${answer}.`,
       ];
       break;
     }

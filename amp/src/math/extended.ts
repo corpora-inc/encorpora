@@ -4,13 +4,6 @@ import { isAre } from "./agreement.js";
 export const generatorVersion = 1 as const;
 export const extendedTemplates: readonly TemplateMetadata[] = [
   [
-    "divide-facts",
-    "Division facts",
-    "division-facts",
-    "3–5",
-    "Divide whole numbers into equal groups.",
-  ],
-  [
     "place-value-digit",
     "Value of a digit",
     "hundreds-place-value",
@@ -176,19 +169,6 @@ export function generateExtendedProblem(
   let explanation: string[] = [];
   let kind: "number" | "fraction" = "number";
   switch (templateId) {
-    case "divide-facts": {
-      const d = r(2, 12),
-        q = r(2, 12),
-        n = d * q;
-      prompt = `What is ${n} ÷ ${d}?`;
-      answer = `${q}`;
-      hint = "Ask which number multiplied by the divisor gives the dividend.";
-      explanation = [
-        `Find the number of groups of ${d} in ${n}.`,
-        `${d} × ${q} = ${n}, so ${n} ÷ ${d} = ${q}.`,
-      ];
-      break;
-    }
     case "place-value-digit": {
       const h = r(1, 9),
         t = r(1, 9),

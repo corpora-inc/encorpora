@@ -5,6 +5,7 @@ import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
 import { FactsFigure } from "./FactsFigure";
+import { FactArrayFigure } from "./FactArrayFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
@@ -42,6 +43,10 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <ElementaryFigure figure={figure} />;
     case "ten-frame-pair":
       return <FactsFigure figure={figure} />;
+    case "dot-array":
+    case "share-model":
+    case "times-table":
+      return <FactArrayFigure figure={figure} />;
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;

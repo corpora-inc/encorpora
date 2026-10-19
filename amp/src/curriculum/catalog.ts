@@ -1824,3 +1824,39 @@ for (const [skillId, suffix, description] of [
       description,
       status: "implemented",
     });
+
+// One-digit multiplication and division with arrays cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "multiplication-facts",
+    "array-facts",
+    "Find products of factors 2 to 10 from an equation, a covered dot array, a story of equal rows, or the turned array.",
+  ],
+  [
+    "division-facts",
+    "related-facts",
+    "Find quotients within 100 from the related multiplication fact, a covered array, or rows of chairs.",
+  ],
+  [
+    "missing-factor",
+    "unknown-factor-divisor",
+    "Find an unknown factor or divisor in a one-digit multiplication or division equation within 100.",
+  ],
+  [
+    "division-meaning",
+    "share-measure",
+    "Find the size of each share or the number of groups when counters or objects divide exactly.",
+  ],
+  [
+    "arithmetic-patterns",
+    "table-patterns",
+    "Find a product in a multiplication-table window from the row step, doubling, or the sum of two rows.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });

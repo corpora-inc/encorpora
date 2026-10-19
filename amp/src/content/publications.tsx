@@ -1,3 +1,4 @@
+import { factArrayTemplates } from "../math/fact-arrays-practice";
 import { readFileSync } from "node:fs";
 import { distinctWorksheet } from "./distinct-worksheet";
 import { partWholeTemplates } from "../math/part-whole-practice";
@@ -31,7 +32,10 @@ import { PrintMathText, printMathStyles } from "./PrintMathText";
 import { printMathCss } from "./print-fonts";
 export type PublicationKind = "lesson" | "workbook" | "solutions";
 /** Families whose printed sheets are twelve distinct ordinary problems. */
-const distinctWorksheetTemplates = [...partWholeTemplates];
+const distinctWorksheetTemplates = [
+  ...partWholeTemplates,
+  ...factArrayTemplates,
+];
 /** Print pages use the light color roles: figures paint with role tokens. */
 let tokens: string | undefined;
 function printTokens() {

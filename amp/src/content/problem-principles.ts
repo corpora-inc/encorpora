@@ -8,6 +8,7 @@ import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
 import { addSubtractPrinciples } from "./add-subtract-lessons";
 import { factsPrinciples } from "./facts-lessons";
+import { factArrayPrinciples } from "./fact-arrays-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
@@ -34,6 +35,7 @@ export const principles: Record<string, string> = {
   ...comparisonPrinciples,
   ...addSubtractPrinciples,
   ...factsPrinciples,
+  ...factArrayPrinciples,
   ...combinatoricsPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,
@@ -102,10 +104,6 @@ export const principles: Record<string, string> = {
     "Multiplication as an array: r rows of c objects contain r × c objects.",
   "pairing-leftover":
     "Parity: an integer is even when it is divisible by 2 (remainder 0) and odd when the remainder is 1.",
-  "multiply-facts":
-    "Multiplication is repeated addition of equal groups; it is commutative (a × b = b × a) and distributes over addition (a × (b + c) = a × b + a × c).",
-  "divide-facts":
-    "Division is the inverse of multiplication: a ÷ b = c exactly when b × c = a (b ≠ 0).",
   "equal-tray-total":
     "Multiplication counts equal groups: g groups of s items contain g × s items.",
   "share-whole-items":
