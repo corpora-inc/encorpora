@@ -1395,6 +1395,42 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// High-school similarity and right-triangle trigonometry (G-SRT).
+for (const [skillId, suffix, description] of [
+  [
+    "dilation-properties",
+    "lengths-centers-invariants",
+    "Find image lengths, scale factors and image points of dilations, including centers other than the origin, and use that dilations keep angles and slopes.",
+  ],
+  [
+    "similarity-proofs",
+    "missing-side",
+    "Find missing sides of similar triangles from matching sides, a segment parallel to a side and shadows, and scale perimeters and areas.",
+  ],
+  [
+    "special-right-triangles",
+    "side-ratios",
+    "Find any side of a 45°-45°-90° or 30°-60°-90° triangle from another, in exact radical form.",
+  ],
+  [
+    "right-triangle-trigonometry",
+    "exact-ratios",
+    "Write sine, cosine and tangent of an acute angle as exact side ratios, and find a side from a given ratio.",
+  ],
+  [
+    "complementary-trigonometry",
+    "cofunctions",
+    "Use sin A = cos(90° − A) to find angles, solve for a variable and convert between the ratios of the two acute angles.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // High-school probability rules (S-CP): sets, addition, conditioning, products.
 for (const [skillId, suffix, description] of [
   [

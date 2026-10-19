@@ -95,7 +95,8 @@ function inline(text: string, size: number, bold: boolean): Typeset {
     else runs.push({ text: t, dx: x, dy, font, size: s });
     x += advance(t, font, s, bold);
   };
-  const chars = [...text.replace(/-/g, "−")];
+  // A prime is a superscript, as TeX sets it: A′ reads A^′.
+  const chars = [...text.replace(/-/g, "−").replace(/\^?′/g, "^′")];
   for (let i = 0; i < chars.length; i++) {
     const c = chars[i]!;
     if (c === "^") {

@@ -85,6 +85,10 @@ import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
+  similarityTrigTemplates,
+  generateSimilarityTrigProblem,
+} from "./similarity-trig-practice";
+import {
   probabilityRulesTemplates,
   generateProbabilityRulesProblem,
 } from "./probability-rules-practice";
@@ -327,6 +331,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...probabilityRulesTemplates,
+  ...similarityTrigTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
@@ -516,6 +521,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...probabilityRulesTemplates,
+    ...similarityTrigTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -601,6 +607,8 @@ function generateRawProblem(
     return generateRealNumberProblem(templateId, seed);
   if (probabilityRulesTemplates.some((t) => t.id === templateId))
     return generateProbabilityRulesProblem(templateId, seed);
+  if (similarityTrigTemplates.some((t) => t.id === templateId))
+    return generateSimilarityTrigProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (numberSenseTemplates.some((t) => t.id === templateId))

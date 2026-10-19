@@ -12,6 +12,7 @@ import { shapeMethods } from "./shape-lessons";
 import { angleMethods } from "./angle-lessons";
 import { polygonMethods } from "./polygon-lessons";
 import { probabilityRulesMethods } from "./probability-rules-lessons";
+import { similarityTrigMethods } from "./similarity-trig-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { bivariateMethods } from "./bivariate-lessons";
@@ -55,6 +56,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...angleMethods,
   ...polygonMethods,
   ...probabilityRulesMethods,
+  ...similarityTrigMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,

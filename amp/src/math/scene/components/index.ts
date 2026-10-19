@@ -22,6 +22,7 @@ import { shapeSortSchema } from "./shape-sort";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
 import { treeSchema } from "./tree";
+import { triangleSchema } from "./triangle";
 import { vennSchema } from "./venn";
 
 export const componentSchemas = [
@@ -45,6 +46,7 @@ export const componentSchemas = [
   tableSchema,
   tenFrameSchema,
   treeSchema,
+  triangleSchema,
   vennSchema,
 ] as const;
 
@@ -67,4 +69,5 @@ export * from "./shape-sort";
 export * from "./table";
 export * from "./ten-frame";
 export * from "./tree";
+export * from "./triangle";
 export * from "./venn";
