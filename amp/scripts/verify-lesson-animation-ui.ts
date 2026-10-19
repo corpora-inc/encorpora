@@ -21,8 +21,30 @@ for (const unit of [10, 1]) {
   }
 }
 // Comparison models: a spread row that pairs down, and tens that decide.
-for (const id of ["compare-groups", "compare-two-digit", "number-line-hops"])
+for (const id of [
+  "compare-groups",
+  "compare-two-digit",
+  "make-ten-fact",
+  "area-model-product",
+])
   lessons.push(problemLesson(id, "animation-review"));
+// A sum whose ones make a new ten.
+for (let i = 0; ; i++) {
+  const lesson = problemLesson("add-two-digit-regroup", `animation-${i}`);
+  const f = lesson.example.figure;
+  if (
+    f?.kind === "base-ten-pair" &&
+    (f.values[0] % 10) + (f.values[1] % 10) >= 10
+  ) {
+    lessons.push(lesson);
+    break;
+  }
+}
+// Fact arrays: rows build, the array turns, counters are dealt and regrouped.
+for (const id of ["multiply-facts", "divide-facts", "share-or-group"])
+  lessons.push(problemLesson(id, "animation-review"));
+// A tens hop, then a ones hop, along a unit number line.
+lessons.push(problemLesson("number-line-hops", "animation-review"));
 const names = [
   "fraction-model",
   "split-array-part",
@@ -30,6 +52,12 @@ const names = [
   "exchange-ones",
   "compare-groups",
   "compare-two-digit",
+  "make-ten-fact",
+  "area-model-product",
+  "add-two-digit-regroup",
+  "multiply-facts",
+  "divide-facts",
+  "share-or-group",
   "number-line-hops",
 ];
 assert.equal(lessons.length, names.length);
@@ -184,6 +212,56 @@ try {
           await cells.first().getAttribute("width"),
           await cells.first().getAttribute("height"),
         );
+      } else if (figure.kind === "dot-array") {
+        const total =
+          figure.total ?? (figure.rows ?? 0) * (figure.columns ?? 0);
+        assert.equal(await panel.locator("circle[data-dot]").count(), total);
+      } else if (figure.kind === "share-model") {
+        assert.equal(
+          await panel.locator("[data-counter]").count(),
+          figure.total,
+        );
+        // Every regrouped counter ends inside a tray of the visible set.
+        const placed = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-counter]")].every((g) => {
+            const b = g.getBoundingClientRect();
+            const cx = b.x + b.width / 2,
+              cy = b.y + b.height / 2;
+            return [...el.querySelectorAll('[data-trays="1"] rect')].some(
+              (n) => {
+                const r = n.getBoundingClientRect();
+                return cx > r.x && cx < r.right && cy > r.y && cy < r.bottom;
+              },
+            );
+          }),
+        );
+        assert(placed, "Regrouped counters do not land in their groups");
+      } else if (figure.kind === "ten-frame-pair") {
+        assert.equal(
+          await panel.locator('[data-counter="first"]').count(),
+          figure.first,
+        );
+        assert.equal(
+          await panel.locator('[data-counter="second"]').count(),
+          figure.second,
+        );
+        assert.equal(
+          await panel.locator("[data-moves]").count(),
+          10 - figure.first,
+        );
+        // Every moved square ends inside an empty place of the first frame.
+        const placed = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-moves]")].every((g) => {
+            const b = g.getBoundingClientRect();
+            const cx = b.x + b.width / 2,
+              cy = b.y + b.height / 2;
+            return [...el.querySelectorAll('[data-slot^="0-"]')].some((n) => {
+              const r = n.getBoundingClientRect();
+              return cx > r.x && cx < r.right && cy > r.y && cy < r.bottom;
+            });
+          }),
+        );
+        assert(placed, "Moved counters do not land in the first frame");
       } else if (figure.kind === "counter-rows") {
         assert.equal(
           await panel.locator('[data-counter="circle"]').count(),
@@ -211,6 +289,22 @@ try {
             Math.abs(centers[0]![k]! - centers[1]![k]!) <= 1,
             "Pairs are not aligned",
           );
+      } else if (figure.kind === "area-model") {
+        const regions = panel.locator("[data-region]");
+        assert.equal(
+          await regions.count(),
+          figure.columns.length * figure.rows.length,
+        );
+        // To scale: widths and heights keep the ratio of their parts.
+        const [w0, w1] = await Promise.all(
+          [0, 1].map(async (i) =>
+            Number(await regions.nth(i).locator("rect").getAttribute("width")),
+          ),
+        );
+        assert(
+          Math.abs(w0! / w1! - figure.columns[0]! / figure.columns[1]!) < 1e-6,
+          "Area model is not to scale",
+        );
       } else if (figure.kind === "hop-line") {
         assert.equal(await panel.locator("[data-hop]").count(), 2);
         // The marker ends on the landing tick: start plus both hops.
@@ -347,7 +441,7 @@ try {
       assert.equal(await panel.getByRole("button").count(), 0);
       assert.equal(
         await panel
-          .locator(".animation-move, .animation-fade")
+          .locator(".animation-move, .animation-fade, .animation-step")
           .first()
           .evaluate((el) => getComputedStyle(el).transitionDuration),
         "0s",

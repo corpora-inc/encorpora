@@ -1,0 +1,442 @@
+import { createHash } from "node:crypto";
+import type {
+  GeneratedProblem,
+  SemanticFigure,
+  TemplateMetadata,
+} from "./contracts.js";
+
+const definitions: [string, string, string, string, boolean][] = [
+  [
+    "unit-cube-volume",
+    "Volume from unit cubes",
+    "volume-cubes",
+    "Find the volume of a prism built from unit cubes, including hidden cubes.",
+    false,
+  ],
+  [
+    "cube-layer-count",
+    "One layer of cubes",
+    "volume-cubes",
+    "Count the unit cubes in the bottom layer of a prism.",
+    false,
+  ],
+  [
+    "prism-volume-edges",
+    "Volume from edge lengths",
+    "prism-volume",
+    "Find the volume of a rectangular prism from its labeled edges.",
+    false,
+  ],
+  [
+    "prism-missing-edge",
+    "Missing edge from volume",
+    "prism-volume",
+    "Find a missing edge of a rectangular prism from its volume and two edges.",
+    false,
+  ],
+  [
+    "composite-prism-volume",
+    "Volume of a joined solid",
+    "prism-volume",
+    "Add the volumes of two non-overlapping rectangular prisms.",
+    false,
+  ],
+  [
+    "first-quadrant-locate",
+    "Find the point at a pair",
+    "coordinate-first-quadrant",
+    "Choose the plotted point named by an ordered pair.",
+    true,
+  ],
+  [
+    "first-quadrant-coordinates",
+    "Name a point's coordinates",
+    "coordinate-first-quadrant",
+    "Choose the ordered pair of a plotted point.",
+    true,
+  ],
+  [
+    "coordinate-move",
+    "Move on the grid",
+    "coordinate-first-quadrant",
+    "Find the coordinates reached by moving right and up from a point.",
+    true,
+  ],
+];
+export const volumeCoordinateTemplates: readonly TemplateMetadata[] =
+  definitions.map(([id, title, skillId, description, choice]) => ({
+    id,
+    title,
+    skillId,
+    description,
+    version: 1,
+    gradeBand: "3–5",
+    requiredFigureCapability: "volume-coordinate-figures-v1",
+    ...(choice
+      ? { requiredResponseCapability: "single-choice-v1" as const }
+      : {}),
+  }));
+
+function random(id: string, seed: string) {
+  let counter = 0;
+  return (lo: number, hi: number) => {
+    const span = hi - lo + 1,
+      limit = Math.floor(0x100000000 / span) * span;
+    let value: number;
+    do
+      value = createHash("sha256")
+        .update(JSON.stringify([id, 1, seed, counter++]))
+        .digest()
+        .readUInt32BE(0);
+    while (value >= limit);
+    return lo + (value % span);
+  };
+}
+const count = (n: number, noun: string) =>
+  `${n} ${n === 1 ? noun : `${noun}s`}`;
+const pair = (x: number, y: number) => `(${x}, ${y})`;
+type Choice = { label: string; correct?: true; feedback?: string };
+
+export function generateVolumeCoordinateProblem(
+  templateId: string,
+  seed: string,
+): GeneratedProblem {
+  const meta = volumeCoordinateTemplates.find((t) => t.id === templateId);
+  if (!meta)
+    throw new Error(`Unknown volume or coordinate template ${templateId}`);
+  if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
+    throw new Error("Seed must contain 1–128 characters");
+  const r = random(templateId, seed);
+  let prompt = "",
+    answer = "",
+    hint = "",
+    label = "Answer",
+    explanation: string[] = [],
+    figure: SemanticFigure,
+    choices: Choice[] | undefined,
+    keepOrder = false;
+  switch (templateId) {
+    case "unit-cube-volume":
+    case "cube-layer-count": {
+      const l = r(2, 5),
+        w = r(2, 4),
+        h = r(2, 4),
+        layer = l * w;
+      figure = { kind: "cube-prism", length: l, width: w, height: h };
+      if (templateId === "unit-cube-volume") {
+        prompt =
+          "Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?";
+        answer = String(layer * h);
+        label = "Volume in cubic units";
+        hint =
+          "Some cubes are hidden. Count the cubes in one layer, then multiply by the number of layers.";
+        explanation = [
+          `The top layer has ${l} cubes along one edge and ${w} along the other: $${l} \\times ${w} = ${layer}$ cubes.`,
+          `Every layer below it is the same. Count the layers up the side: there are ${h}.`,
+          `$${layer} \\times ${h} = ${layer * h}$, so the volume is ${layer * h} cubic units.`,
+        ];
+      } else {
+        prompt =
+          "This prism is built from unit cubes. How many cubes are in its bottom layer?";
+        answer = String(layer);
+        label = "Cubes in one layer";
+        hint =
+          "The bottom layer has the same shape as the top. Count the cubes along two edges of the top and multiply.";
+        explanation = [
+          `The top face shows ${l} cubes along one edge and ${w} along the other.`,
+          `The bottom layer has the same ${l} by ${w} arrangement: $${l} \\times ${w} = ${layer}$ cubes.`,
+        ];
+      }
+      break;
+    }
+    case "prism-volume-edges": {
+      let l: number, w: number, h: number;
+      do {
+        l = r(2, 12);
+        w = r(2, 9);
+        h = r(2, 10);
+      } while (l * w * h > 600);
+      const base = l * w,
+        volume = base * h;
+      figure = {
+        kind: "box-prism",
+        length: { value: l, unit: "cm" },
+        width: { value: w, unit: "cm" },
+        height: { value: h, unit: "cm" },
+      };
+      prompt =
+        "What is the volume of this rectangular prism, in cubic centimeters?";
+      answer = String(volume);
+      label = "Volume in cubic cm";
+      hint =
+        "Find how many centimeter cubes cover the base, then multiply by the height: that many layers stack up.";
+      explanation = [
+        `The base is ${l} cm by ${w} cm, so one layer holds $${l} \\times ${w} = ${base}$ centimeter cubes.`,
+        `The prism is ${h} cm high: ${h} layers.`,
+        `$V = ${base} \\times ${h} = ${volume}$ cubic centimeters.`,
+      ];
+      break;
+    }
+    case "prism-missing-edge": {
+      let l: number, w: number, h: number;
+      do {
+        l = r(2, 10);
+        w = r(2, 8);
+        h = r(2, 9);
+      } while (l * w * h > 480);
+      const volume = l * w * h,
+        missing = (["length", "width", "height"] as const)[r(0, 2)]!;
+      const sides = { length: l, width: w, height: h };
+      const known = (["length", "width", "height"] as const).filter(
+        (side) => side !== missing,
+      );
+      const [a, b] = known.map((side) => sides[side]) as [number, number];
+      const face = a * b;
+      figure = {
+        kind: "box-prism",
+        length: missing === "length" ? null : { value: l, unit: "cm" },
+        width: missing === "width" ? null : { value: w, unit: "cm" },
+        height: missing === "height" ? null : { value: h, unit: "cm" },
+      };
+      prompt = `This rectangular prism has a volume of ${volume} cubic centimeters. What is the length of the edge marked ?, in centimeters?`;
+      answer = String(sides[missing]);
+      label = "Edge length in cm";
+      hint =
+        "Volume is the product of all three edges. Multiply the two edges you know, then ask what times that product gives the volume.";
+      explanation = [
+        `Volume is the product of the three edges: $${a} \\times ${b} \\times ? = ${volume}$.`,
+        `Multiply the known edges: $${a} \\times ${b} = ${face}$.`,
+        `$${volume} \\div ${face} = ${answer}$, so the missing edge is ${answer} cm.`,
+        `Check: $${a} \\times ${b} \\times ${answer} = ${volume}$.`,
+      ];
+      break;
+    }
+    case "composite-prism-volume": {
+      // The taller prism stands behind the shorter one, so both tops show.
+      const width = r(2, 5),
+        tall = r(4, 8),
+        parts = [
+          { length: r(2, 6), height: tall },
+          { length: r(2, 6), height: r(2, tall - 1) },
+        ];
+      figure = { kind: "composite-prism", width, parts, unit: "cm" };
+      const volumes = parts.map((p) => p.length * width * p.height);
+      prompt =
+        "This solid is made of two rectangular prisms of the same depth that do not overlap. What is its total volume, in cubic centimeters?";
+      answer = String(volumes[0]! + volumes[1]!);
+      label = "Volume in cubic cm";
+      hint =
+        "Find the volume of each prism separately, then add. Both prisms share the same depth.";
+      explanation = [
+        `Taller prism: $${parts[0]!.length} \\times ${width} \\times ${parts[0]!.height} = ${volumes[0]}$ cubic centimeters.`,
+        `Shorter prism: $${parts[1]!.length} \\times ${width} \\times ${parts[1]!.height} = ${volumes[1]}$ cubic centimeters.`,
+        `The prisms do not overlap, so their volumes add: $${volumes[0]} + ${volumes[1]} = ${answer}$ cubic centimeters.`,
+      ];
+      break;
+    }
+    case "first-quadrant-locate": {
+      const size = r(6, 8);
+      let x: number, y: number;
+      do {
+        x = r(1, size - 1);
+        y = r(1, size - 1);
+      } while (x === y);
+      const target = { x, y };
+      // The reversed pair and one off-by-one neighbor are the telling errors;
+      // the fourth point stands apart so every label reads clearly.
+      const offByOne = r(0, 1)
+        ? { x, y: y + (y < size - 1 && r(0, 1) ? 1 : -1), why: "up" }
+        : { x: x + (x < size - 1 && r(0, 1) ? 1 : -1), y, why: "across" };
+      const unique = [
+        { ...target, why: "target" },
+        { x: y, y: x, why: "swapped" },
+        ...(offByOne.x >= 1 && offByOne.y >= 1 ? [offByOne] : []),
+      ];
+      while (unique.length < 4) {
+        const p = { x: r(1, size - 1), y: r(1, size - 1), why: "other" };
+        if (
+          unique.every(
+            (q) => Math.max(Math.abs(q.x - p.x), Math.abs(q.y - p.y)) >= 2,
+          )
+        )
+          unique.push(p);
+      }
+      for (let i = unique.length - 1; i > 0; i--) {
+        const j = r(0, i);
+        [unique[i], unique[j]] = [unique[j]!, unique[i]!];
+      }
+      const names = ["P", "Q", "R", "S"] as const;
+      figure = {
+        kind: "quadrant-grid",
+        size,
+        points: unique.map((p, i) => ({ x: p.x, y: p.y, label: names[i]! })),
+      };
+      const named = unique.map((p, i) => ({ ...p, label: names[i]! }));
+      const right = named.find((p) => p.why === "target")!;
+      prompt = `Which point is at ${pair(x, y)}?`;
+      hint =
+        "Start at 0. The first number tells how far to go across; the second tells how far to go up.";
+      explanation = [
+        `The first number, ${x}, means ${count(x, "unit")} across from 0.`,
+        `The second number, ${y}, means ${count(y, "unit")} up.`,
+        `Point ${right.label} is ${x} right and ${y} up, so it is at ${pair(x, y)}.`,
+      ];
+      keepOrder = true;
+      choices = named.map((p) =>
+        p.why === "target"
+          ? { label: p.label, correct: true }
+          : {
+              label: p.label,
+              feedback:
+                p.why === "swapped"
+                  ? `${p.label} is at ${pair(p.x, p.y)}: ${p.x} right and ${p.y} up. That reverses the pair. Go across first, then up.`
+                  : p.why === "up"
+                    ? `${p.label} is ${x} right but ${p.y} up, not ${y}. Count up from 0 along the vertical axis.`
+                    : p.why === "across"
+                      ? `${p.label} is ${y} up but ${p.x} right, not ${x}. Count across from 0 along the horizontal axis.`
+                      : `${p.label} is at ${pair(p.x, p.y)}, not ${pair(x, y)}. Go ${x} right from 0, then ${y} up.`,
+            },
+      );
+      break;
+    }
+    case "first-quadrant-coordinates": {
+      const size = r(6, 8);
+      let x: number, y: number;
+      do {
+        x = r(1, size - 2);
+        y = r(1, size - 2);
+      } while (x === y || Math.abs(x - y) === 1);
+      figure = {
+        kind: "quadrant-grid",
+        size,
+        points: [{ x, y, label: "P" }],
+      };
+      prompt = "What are the coordinates of point P?";
+      hint =
+        "Go straight down from P to the horizontal axis for the first number. Go straight left to the vertical axis for the second.";
+      explanation = [
+        `Straight below P, the horizontal axis reads ${x}. That is the first coordinate.`,
+        `Straight left of P, the vertical axis reads ${y}. That is the second coordinate.`,
+        `P is at ${pair(x, y)}: across first, then up.`,
+      ];
+      choices = [
+        { label: pair(x, y), correct: true },
+        {
+          label: pair(y, x),
+          feedback: `${pair(y, x)} is ${y} right and ${x} up, which is a different point. Write the across distance first.`,
+        },
+        {
+          label: pair(x + 1, y + 1),
+          feedback: `${pair(x + 1, y + 1)} counts one extra on each axis. The corner where the axes meet is 0, so count gridlines from 0.`,
+        },
+        {
+          label: pair(y + 1, x + 1),
+          feedback: `${pair(y + 1, x + 1)} reverses the order and counts from 1. Go across first, and start counting at 0.`,
+        },
+      ];
+      break;
+    }
+    case "coordinate-move": {
+      const size = 10;
+      let x: number, y: number, right: number, up: number;
+      do {
+        x = r(0, 6);
+        y = r(0, 6);
+        right = r(1, 4);
+        up = r(1, 4);
+      } while (
+        right === up ||
+        x + right > size ||
+        y + up > size ||
+        (x === 0 && y === 0)
+      );
+      figure = {
+        kind: "quadrant-grid",
+        size,
+        points: [{ x, y, label: "A" }],
+      };
+      const end = pair(x + right, y + up);
+      prompt = `Start at point A. Move ${count(right, "unit")} right and ${count(up, "unit")} up. What are the coordinates of the point where you stop?`;
+      hint =
+        "Read A's coordinates first. Moving right adds to the first coordinate; moving up adds to the second.";
+      explanation = [
+        `A is at ${pair(x, y)}.`,
+        `Moving right changes only the first coordinate: $${x} + ${right} = ${x + right}$.`,
+        `Moving up changes only the second coordinate: $${y} + ${up} = ${y + up}$.`,
+        `You stop at ${end}.`,
+      ];
+      const options: Choice[] = [
+        { label: end, correct: true },
+        {
+          label: pair(x + up, y + right),
+          feedback: `${pair(x + up, y + right)} adds the moves to the wrong coordinates. Right changes the first number; up changes the second.`,
+        },
+        {
+          label: pair(y + up, x + right),
+          feedback: `${pair(y + up, x + right)} has the right numbers in the wrong order. Write the across coordinate first.`,
+        },
+        {
+          label: pair(right, up),
+          feedback: `${pair(right, up)} describes the move, not where it ends. Add the move to A's coordinates.`,
+        },
+      ];
+      choices = options.filter(
+        (c, i) => options.findIndex((d) => d.label === c.label) === i,
+      );
+      if (choices.length < 3)
+        choices.push({
+          label: pair(x + right, y),
+          feedback: `${pair(x + right, y)} moves right but not up. Add the upward move to the second coordinate.`,
+        });
+      break;
+    }
+    default:
+      throw new Error(`Missing volume or coordinate generator: ${templateId}`);
+  }
+  let response: GeneratedProblem["public"]["response"] = {
+    kind: "number",
+    label,
+  };
+  let choiceFeedback: Record<string, string> | undefined;
+  if (choices) {
+    if (
+      choices.filter((c) => c.correct).length !== 1 ||
+      new Set(choices.map((c) => c.label)).size !== choices.length
+    )
+      throw new Error("Ambiguous choices");
+    if (!keepOrder)
+      for (let i = choices.length - 1; i > 0; i--) {
+        const j = r(0, i);
+        [choices[i], choices[j]] = [choices[j]!, choices[i]!];
+      }
+    choiceFeedback = {};
+    response = {
+      kind: "choice",
+      label: "Choose one answer",
+      options: choices.map((c, i) => {
+        const id = `option-${"abcd"[i]}`;
+        if (c.correct) answer = id;
+        else choiceFeedback![id] = c.feedback!;
+        return { id, label: c.label };
+      }),
+    };
+  }
+  return {
+    public: {
+      id: createHash("sha256")
+        .update(JSON.stringify([templateId, 1, seed]))
+        .digest("hex"),
+      templateId,
+      templateVersion: 1,
+      seed,
+      prompt,
+      skillId: meta.skillId,
+      response,
+      figure,
+    },
+    answer,
+    hint,
+    explanation,
+    ...(choiceFeedback ? { choiceFeedback } : {}),
+  };
+}

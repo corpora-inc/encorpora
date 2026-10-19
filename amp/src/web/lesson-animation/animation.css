@@ -69,6 +69,28 @@
   stroke: var(--color-success-accent);
   transition: stroke-dashoffset 900ms cubic-bezier(0.22, 0.7, 0.18, 1);
 }
+/* Moves and fades together; elements stagger with an inline delay. */
+.animation-step {
+  transition:
+    transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1),
+    opacity 400ms ease;
+}
+.animation-lift {
+  transition:
+    transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1),
+    opacity 500ms ease;
+}
+.animation-divider {
+  stroke: var(--color-figure-warm);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+.animation-bag {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
 .animation-copy {
   display: grid;
   min-width: 0;
@@ -132,9 +154,52 @@
   display: flex;
   align-items: center;
 }
+.animation-gridline {
+  stroke: var(--color-figure-grid);
+  stroke-width: 1;
+}
+.animation-trace {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  transition: stroke-dashoffset 900ms cubic-bezier(0.45, 0, 0.25, 1);
+}
+.animation-origin {
+  fill: var(--color-figure-ink);
+}
+.animation-point {
+  fill: var(--color-figure-warm);
+  stroke: var(--color-figure-paper);
+  stroke-width: 1.5;
+}
+.animation-stage .animation-point-label {
+  fill: var(--color-figure-warm);
+  font-weight: 700;
+}
+.animation-shade {
+  fill: var(--color-success-accent);
+  stroke: var(--color-border-strong);
+}
+.animation-paint {
+  transition:
+    fill 500ms ease,
+    stroke-opacity 400ms ease;
+}
+.animation-morph-shape {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-ink);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade,
+  .animation-step,
+  .animation-lift,
+  .animation-trace,
+  .animation-paint,
   .animation-draw {
     transition: none;
   }
@@ -142,4 +207,72 @@
 .lesson-animation[data-animation="fraction"] .animation-fill {
   fill: var(--color-success-accent);
   stroke: var(--color-border);
+}
+.lesson-animation[data-animation="area-model"] .animation-fill {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-ink);
+}
+.lesson-animation[data-animation="area-model"] .animation-warm {
+  fill: var(--color-figure-gold-fill);
+  stroke: var(--color-figure-ink);
+}
+/* Ten-frame counters keep the practice figure's colors: first addend accent
+   circles, second addend warm squares, wherever they move. */
+.lesson-animation[data-animation="make-ten"] .animation-fill {
+  fill: var(--color-figure-accent);
+  stroke: none;
+}
+.lesson-animation[data-animation="make-ten"] .animation-warm {
+  fill: var(--color-figure-warm);
+  stroke: none;
+}
+/* Base-ten blocks keep the practice figure's accent; ones that are still
+   being counted are warm until ten of them become a ten. */
+.lesson-animation:is(
+    [data-animation="regroup-sum"],
+    [data-animation="place-compare"]
+  )
+  .animation-fill {
+  fill: var(--color-figure-accent);
+  stroke: var(--color-figure-paper);
+}
+.lesson-animation:is(
+    [data-animation="regroup-sum"],
+    [data-animation="place-compare"]
+  )
+  .animation-warm {
+  fill: var(--color-figure-warm);
+  stroke: var(--color-figure-paper);
+}
+/* Counters keep the practice figure's colors; a dashed ring marks the
+   unpaired ones. */
+.lesson-animation[data-animation="pairing"]
+  [data-counter="circle"]
+  :is(.animation-fill, .animation-warm) {
+  fill: var(--color-figure-accent);
+  stroke: var(--color-figure-paper);
+}
+.lesson-animation[data-animation="pairing"]
+  [data-counter="square"]
+  :is(.animation-fill, .animation-warm) {
+  fill: var(--color-figure-warm);
+  stroke: var(--color-figure-paper);
+}
+.lesson-animation[data-animation="rate"] .rate-bar {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-accent);
+  stroke-width: 1;
+}
+.lesson-animation[data-animation="rate"] .rate-unit {
+  fill: var(--color-figure-accent);
+  font-weight: 700;
+}
+.lesson-animation[data-animation="plot"] .animation-fill {
+  fill: var(--color-success-accent);
+  stroke: var(--color-surface-raised);
+  stroke-width: 1.5;
+}
+.lesson-animation[data-animation="plot"] .animation-empty {
+  fill: var(--color-surface);
+  stroke: none;
 }

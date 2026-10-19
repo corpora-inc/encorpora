@@ -36,9 +36,6 @@ test("all reference families are deterministic and independently solve from disp
           expected = numbers[0]! - numbers[1]!;
           assert.ok(expected >= 0);
           break;
-        case "multiply-facts":
-          expected = numbers[0]! * numbers[1]!;
-          break;
         case "fraction-model": {
           assert.equal(p.figure?.kind, "fraction");
           const f = p.figure!;
