@@ -1,4 +1,8 @@
 import {
+  distributionTemplates,
+  generateDistributionProblem,
+} from "./distribution-practice";
+import {
   partWholeTemplates,
   generatePartWholeProblem,
 } from "./part-whole-practice";
@@ -232,6 +236,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...distributionTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -341,6 +346,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...distributionTemplates,
     ...partWholeTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
@@ -376,6 +382,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (distributionTemplates.some((t) => t.id === templateId))
+    return generateDistributionProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))
