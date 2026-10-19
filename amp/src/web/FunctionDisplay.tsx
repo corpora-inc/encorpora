@@ -135,7 +135,7 @@ export function FunctionGraph({
   return (
     <svg
       className="function-graph"
-      viewBox="0 0 320 236"
+      viewBox="0 0 320 248"
       role="img"
       aria-label={`Graph: ${graph.xLabel} across, from 0 to ${graph.xMax} in steps of ${graph.xStep}; ${graph.yLabel} up, from 0 to ${graph.yMax} in steps of ${graph.yStep}. ${described}.`}
       style={{

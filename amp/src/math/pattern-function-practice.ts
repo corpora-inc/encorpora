@@ -106,9 +106,9 @@ const hints: Record<string, string> = {
   "dependent-variable-value":
     "Substitute the value you know for its variable in the equation. If the unknown is multiplied, divide to undo the multiplication; if a number is added to it, subtract.",
   "compare-function-rates":
-    "For each function, find the rate of change (change in y ÷ change in x) and the initial value (y when x = 0). Then compare the two rates and the two initial values separately.",
+    "For each function, find the rate of change (the change in y divided by the change in x) and the initial value (y when x = 0). Then compare the two rates and the two initial values separately.",
   "linear-function-choice":
-    "A linear function can be rewritten as y = mx + b. Test each rule at x = 1, 2 and 3: a linear rule changes y by the same amount each time.",
+    "A linear function can be rewritten as $y = mx + b$. Test each rule at x = 1, 2 and 3: a linear rule changes y by the same amount each time.",
 };
 
 function random(id: string, seed: string): Random {
@@ -689,7 +689,7 @@ function compareCase(r: Random): Case {
     }
     if (rep === "equation")
       return [
-        `Function ${name} is ${equationText(f)}. In y = mx + b form, the rate of change is the coefficient of x, ${rateText(f)}, and the initial value is the constant, ${n(f.b)}.`,
+        `Function ${name} is ${equationText(f)}. In $y = mx + b$ form, the rate of change is the coefficient of x, ${rateText(f)}, and the initial value is the constant, ${n(f.b)}.`,
       ];
     return [
       `Function ${name} has the output ${n(f.b)} at x = 0, its initial value. Its output ${f.rise > 0 ? "increases" : "decreases"} by ${Math.abs(f.rise)} for each increase of 1 in x, so its rate of change is ${rateText(f)}.`,
@@ -782,7 +782,7 @@ function linearRule(r: Random, kind: string): Rule {
       text: `y = ${n(m)}x ${s(b)}`,
       linear: true,
       kind,
-      note: `y = ${n(m)}x ${s(b)} is already in y = mx + b form, with rate of change ${n(m)}`,
+      note: `y = ${n(m)}x ${s(b)} is already in $y = mx + b$ form, with rate of change ${n(m)}`,
     };
   }
   if (kind === "constant") {
@@ -877,7 +877,7 @@ function linearCase(r: Random): Case {
   if (new Set(rules.map((rule) => rule.text)).size !== 4) return linearCase(r);
   const [answer, ...others] = rules;
   const explanation = [
-    "A function is linear when its rule can be written y = mx + b. Then y changes by the same amount, m, for each increase of 1 in x, and its graph is a straight line.",
+    "A function is linear when its rule can be written $y = mx + b$. Then y changes by the same amount, m, for each increase of 1 in x, and its graph is a straight line.",
     `The rule ${answer!.note}, so it ${wantLinear ? "is" : "is not"} linear.`,
     `The other rules ${wantLinear ? "are not linear" : "are linear"}: ${others.map((o) => o.note).join("; ")}.`,
   ];

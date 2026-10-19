@@ -19,7 +19,7 @@ const functionWords: Lesson["sections"][number] = {
   title: "Rate of change and initial value",
   paragraphs: [
     "This lesson uses signed numbers, fractions and the coordinate grid. A function is a rule that gives exactly one output y for each input x. The rate of change of a function is how much y changes for each increase of 1 in x. Between two points it is the change in y divided by the change in x: from (2, 5) to (4, 9), the rate is (9 − 5) ÷ (4 − 2) = 2.",
-    "The initial value is the output when x = 0, where the graph crosses the vertical axis. A function is linear when its rate of change is the same between every pair of points; then its graph is a straight line and its rule can be written y = mx + b, where m is the rate of change and b is the initial value. In y = 2x + 1, the rate of change is 2 and the initial value is 1.",
+    "The initial value is the output when x = 0, where the graph crosses the vertical axis. A function is linear when its rate of change is the same between every pair of points; then its graph is a straight line and its rule can be written $y = mx + b$, where m is the rate of change and b is the initial value. In y = 2x + 1, the rate of change is 2 and the initial value is 1.",
   ],
 };
 
@@ -253,7 +253,7 @@ export const patternFunctionLessons: Lesson[] = [
       {
         title: "One question, four representations",
         paragraphs: [
-          "From an equation y = mx + b, read m and b. From a table, divide the change in y by the change in x between two rows; if x = 0 is not listed, work back from a row: the initial value is y minus x times the rate. From a graph, read the initial value where the line crosses the vertical axis and find the rate from two marked points. From a description, the starting amount is the initial value and the change for each 1 of x is the rate.",
+          "From an equation $y = mx + b$, read m and b. From a table, divide the change in y by the change in x between two rows; if x = 0 is not listed, work back from a row: the initial value is y minus x times the rate. From a graph, read the initial value where the line crosses the vertical axis and find the rate from two marked points. From a description, the starting amount is the initial value and the change for each 1 of x is the rate.",
           "In the figure, function A is given by the table x = 0, 3, 6, 9 and y = 1, 7, 13, 19. Its rate is (7 − 1) ÷ (3 − 0) = 2 and its initial value is 1. Function B's line passes through (0, 6) and (4, 8): its initial value is 6 and its rate is (8 − 6) ÷ (4 − 0) = 1/2. A has the greater rate of change, and B has the greater initial value. Line A is steeper, but it starts lower.",
         ],
         illustration: "compare-functions-graph",
@@ -289,11 +289,11 @@ export const patternFunctionLessons: Lesson[] = [
     id: "linear-function-choice",
     title: "Linear or not linear",
     summary:
-      "A function is linear exactly when its rule can be rewritten as y = mx + b; then its graph is a straight line.",
+      "A function is linear exactly when its rule can be rewritten as $y = mx + b$; then its graph is a straight line.",
     templateIds: ["linear-function-choice"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Recognize linear functions written in forms other than y = mx + b, including y = c and y = k(x + h).",
+      "Recognize linear functions written in forms other than $y = mx + b$, including y = c and y = k(x + h).",
       "Show that a function is not linear by finding unequal changes in y over equal steps in x.",
     ],
     sections: [
@@ -325,7 +325,7 @@ export const patternFunctionLessons: Lesson[] = [
     },
     pitfalls: [
       "y = 7 is linear: a rate of change of 0 is still constant.",
-      "Multiply out before judging: y = 4(x + 1) is linear even though it does not look like y = mx + b.",
+      "Multiply out before judging: y = 4(x + 1) is linear even though it does not look like $y = mx + b$.",
       "A function that always increases is not necessarily linear; check that the increases are equal.",
     ],
     parentGuide:
@@ -416,10 +416,10 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   },
   "linear-function-choice": {
     goal: "Decide which rules define linear functions.",
-    terms: [["linear function", "A rule that can be written y = mx + b."]],
+    terms: [["linear function", "A rule that can be written $y = mx + b$."]],
     method: [
       "Rewrite each rule: multiply out parentheses and reorder terms.",
-      "A rule in the form y = mx + b, including y = c, is linear.",
+      "A rule in the form $y = mx + b$, including y = c, is linear.",
       "Confirm a nonlinear rule by finding unequal changes in y at x = 1, 2, 3.",
     ],
     watch: "y = 7 is linear, with rate of change 0.",
@@ -438,7 +438,7 @@ export const patternFunctionPrinciples: Record<string, string> = {
   "dependent-variable-value":
     "Substituting a known value turns the equation into a statement about one unknown, which inverse operations solve.",
   "compare-function-rates":
-    "A linear function y = mx + b has rate of change m and initial value b in every representation, so two functions are compared by comparing their m values and their b values.",
+    "A linear function $y = mx + b$ has rate of change m and initial value b in every representation, so two functions are compared by comparing their m values and their b values.",
   "linear-function-choice":
-    "A function is linear exactly when its rate of change is constant, that is, when its rule can be written y = mx + b.",
+    "A function is linear exactly when its rate of change is constant, that is, when its rule can be written $y = mx + b$.",
 };

@@ -269,14 +269,14 @@ export const measurementLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Need 10 m of ribbon; pieces join without loss. A sells whole 6 m packs for $5 each. B sells any length for $1 per meter. No other charges. Which costs less?",
+        "Need 10 m of ribbon; pieces join without loss. A sells whole 6 m packs for 5 dollars each. B sells any length for 1 dollar per meter. No other charges. Which costs less?",
       steps: [
-        "One A pack supplies only 6 m, so buy two: 12 m for 2 × $5 = $10.",
+        "One A pack supplies only 6 m, so buy two: 12 m for 2 × 5 = 10 dollars.",
         "A leaves 2 m unused, but both packs must be paid for.",
-        "B supplies exactly 10 m for 10 × $1 = $10.",
+        "B supplies exactly 10 m for 10 × 1 = 10 dollars.",
         "The bills tie; the leftover ribbon does not change the price.",
       ],
-      answer: "Same cost: $10 each",
+      answer: "Same cost: 10 dollars each",
     },
     pitfalls: [
       "Rounding the pack count down can leave too little material.",
