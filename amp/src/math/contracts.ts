@@ -13,6 +13,10 @@ import {
   type PartWholeFigure,
 } from "./part-whole-models.js";
 import {
+  earlyOperationsFigureSchemas,
+  type EarlyOperationsFigure,
+} from "./early-operations-models.js";
+import {
   factArrayFigureSchemas,
   type FactArrayFigure,
 } from "./fact-array-models.js";
@@ -53,6 +57,7 @@ export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
   | FactArrayFigure
+  | EarlyOperationsFigure
   | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
@@ -262,6 +267,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
     ...factArrayFigureSchemas,
+    ...earlyOperationsFigureSchemas,
     ...timeMoneyFigureSchemas,
     ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,

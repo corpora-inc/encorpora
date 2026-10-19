@@ -1,3 +1,4 @@
+import { earlyOperationsTemplates } from "../math/early-operations-practice";
 import { factArrayTemplates } from "../math/fact-arrays-practice";
 import { patternFunctionWorksheet } from "./pattern-function-worksheets";
 import { patternFunctionTemplates } from "../math/pattern-function-practice";
@@ -41,6 +42,7 @@ export type PublicationKind = "lesson" | "workbook" | "solutions";
 const distinctWorksheetTemplates = [
   ...partWholeTemplates,
   ...factArrayTemplates,
+  ...earlyOperationsTemplates,
   ...decimalTemplates,
   ...timeMoneyTemplates,
 ];

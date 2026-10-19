@@ -11,6 +11,7 @@ import { ComparisonIllustration } from "./ComparisonIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
 import { FactArrayIllustration } from "./FactArrayIllustration";
+import { EarlyOperationsIllustration } from "./EarlyOperationsIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
@@ -89,6 +90,14 @@ export function LessonIllustration({
     kind === "table-patterns"
   )
     return <FactArrayIllustration kind={kind} />;
+  if (
+    kind === "number-bond-split" ||
+    kind === "tape-missing-part" ||
+    kind === "balance-level" ||
+    kind === "three-addends-ten" ||
+    kind === "change-chain-steps"
+  )
+    return <EarlyOperationsIllustration kind={kind} />;
   if (
     kind === "comparison-pairing" ||
     kind === "comparison-number-path" ||

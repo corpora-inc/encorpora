@@ -8,6 +8,7 @@ import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
+import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
@@ -67,6 +68,12 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "share-model":
     case "times-table":
       return <FactArrayFigure figure={figure} />;
+    case "number-bond":
+    case "bar-model":
+    case "equal-balance":
+    case "addend-groups":
+    case "change-chain":
+      return <EarlyOperationsFigure figure={figure} />;
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;

@@ -18,6 +18,7 @@ import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { factArrayLessons } from "./fact-arrays-lessons";
 import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
+import type { EarlyOperationsIllustrationKind } from "./EarlyOperationsIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -49,6 +50,7 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | FactArrayIllustrationKind
+      | EarlyOperationsIllustrationKind
       | ShapeIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
