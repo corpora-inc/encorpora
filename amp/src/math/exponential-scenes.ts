@@ -212,7 +212,7 @@ export const exponentialLessonScenes = {
   /** Equal steps in x: the line adds 3, the exponential multiplies by 3. */
   "ratio-difference-table": valueTable(
     "x",
-    ["3x + 2", "2·3^x"],
+    ["3x + 2", "2(3^x)"],
     [0, 1, 2, 3, 4].map((x) => [x, 3 * x + 2, 2 * 3 ** x]),
   )
     .changes(0, ["+3", "+3", "+3", "+3"])
@@ -225,7 +225,7 @@ export const exponentialLessonScenes = {
           act.appear("t.change.0", true),
         ),
         step(
-          "$2 \\cdot 3^x$ multiplies by 3 at every step: a constant ratio.",
+          "$2(3^x)$ multiplies by 3 at every step: a constant ratio.",
           act.appear("t.change.1", true),
         ),
         step(
@@ -266,8 +266,8 @@ export const exponentialLessonScenes = {
     tick: [1, 40],
     labels: "auto",
   })
-    .line({ m: 10, b: 10 }, { label: "y = 10x + 10" })
-    .curve(f.exp(1, 2), { label: "y = 2^x", color: "warm" })
+    .line({ m: 10, b: 10 }, { label: "10x + 10" })
+    .curve(f.exp(1, 2), { label: "2^x", color: "warm" })
     .point(6, 64, "(6, 64)")
     .point(7, 128, "(7, 128)")
     .scene({
@@ -314,7 +314,7 @@ export const exponentialLessonScenes = {
         ),
         step(
           "Swapping every point's coordinates reflects the curve in the line $y = x$.",
-          act.trace("g.line.0"),
+          act.appear("g.line.0"),
         ),
         step(
           "The reflection is $y = \\log_2 x$, through $(8, 3)$: it undoes $2^x$.",

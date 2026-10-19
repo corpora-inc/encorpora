@@ -282,9 +282,10 @@ export const galleryCases: GalleryCase[] = [
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
   // Exponential growth and logarithms: tables, bars and curves.
+  // The full model: the players step through these in lessons.
   ...Object.entries(exponentialLessonScenes).map(([name, scene]) => ({
     name: `Exponential lesson: ${name}`,
-    scene,
+    scene: { ...scene, steps: undefined },
     reveal: true,
   })),
   {

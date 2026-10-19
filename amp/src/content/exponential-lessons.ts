@@ -33,7 +33,7 @@ export const exponentialLessons: Lesson[] = [
       {
         title: "Adding against multiplying",
         paragraphs: [
-          "Over equal steps in $x$, a linear function adds the same amount and an exponential function multiplies by the same factor. In the table, $3x + 2$ adds 3 each step; $2 \\cdot 3^x$ multiplies by 3.",
+          "Over equal steps in $x$, a linear function adds the same amount and an exponential function multiplies by the same factor. In the table, $3x + 2$ adds 3 each step; $2(3^x)$ multiplies by 3.",
           "In $y = a \\cdot b^x$, $a$ is the value at $x = 0$ and $b$ is the factor for each step. Read $a$ from the row where $x = 0$, and $b$ by dividing any value by the one before it.",
         ],
         illustration: "ratio-difference-table",
