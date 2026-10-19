@@ -88,7 +88,7 @@ export const bivariateLessons: Lesson[] = [
           "More eighth graders than seventh graders have a curfew, 24 against 18. But the groups differ in size: 20 seventh graders and 60 eighth graders.",
           "Within each row: 18 ÷ 20 = 90% of seventh graders, but 24 ÷ 60 = 40% of eighth graders. The percents differ a lot, so grade and having a curfew are associated: in this table, seventh graders are far more likely to have one.",
         ],
-        illustration: "scene-two-way-curfew",
+        illustration: "scene-two-way-bars",
       },
     ],
     workedExample: {

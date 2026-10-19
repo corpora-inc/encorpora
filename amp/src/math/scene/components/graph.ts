@@ -287,15 +287,29 @@ registerComponent("graph", {
     const [nx, ny] = g.axisNames ?? ["x", "y"];
     // A one-letter name is a variable; a word is a label.
     const nameFont = (n: string) => (/^[a-zA-Z]$/.test(n) ? "math" : "sans");
-    prims.push({
-      type: "text",
-      id: "axis.x.name",
-      at: P(x1 + ext, ax),
-      text: nx,
-      font: nameFont(nx),
-      offset: [6, 0],
-      align: [-1, 0],
-    });
+    // A variable sits past the arrow; a word sits under the axis's end,
+    // below the tick labels, so long names never narrow the plot.
+    prims.push(
+      nameFont(nx) === "math"
+        ? {
+            type: "text",
+            id: "axis.x.name",
+            at: P(x1 + ext, ax),
+            text: nx,
+            font: "math",
+            offset: [6, 0],
+            align: [-1, 0],
+          }
+        : {
+            type: "text",
+            id: "axis.x.name",
+            at: P(x1, ax),
+            text: nx,
+            font: "sans",
+            offset: [0, 30],
+            align: [1, -1],
+          },
+    );
     prims.push({
       type: "text",
       id: "axis.y.name",
@@ -761,6 +775,75 @@ registerComponent("graph", {
               data: { residual: clean(y - (fit.m * x + fit.b)) },
             });
       }
+      const trial = g.scatter.trial;
+      if (trial) {
+        const seg = lineInWindow(trial, g.x, g.y);
+        if (seg)
+          prims.push({
+            type: "segment",
+            id: "trial",
+            from: P(...seg[0]),
+            to: P(...seg[1]),
+            stroke: "axis",
+            width: 2.5,
+            dash: "dash",
+          });
+        if (g.scatter.residuals)
+          for (const [j, [x, y]] of g.scatter.points.entries())
+            prims.push({
+              type: "segment",
+              id: `trial.residual.${j}`,
+              from: P(x, y),
+              to: P(x, trial.m * x + trial.b),
+              stroke: "gold",
+              width: 1.75,
+              data: { residual: clean(y - (trial.m * x + trial.b)) },
+            });
+      }
+      if (fit && g.scatter.predict !== undefined) {
+        const x = g.scatter.predict,
+          y = fit.m * x + fit.b;
+        prims.push(
+          {
+            type: "segment",
+            id: "predict.guide.up",
+            from: P(x, ax),
+            to: P(x, y),
+            stroke: "warm",
+            width: 1.75,
+            dash: "dash",
+          },
+          {
+            type: "segment",
+            id: "predict.guide.across",
+            from: P(x, y),
+            to: P(ay, y),
+            stroke: "warm",
+            width: 1.75,
+            dash: "dash",
+          },
+          {
+            type: "point",
+            id: "predict",
+            at: P(x, y),
+            r: 5.5,
+            color: "warm",
+            data: { point: "predict" },
+          },
+          {
+            type: "text",
+            id: "predict.label",
+            at: P(ay, y),
+            text: num(y),
+            bold: true,
+            color: "warm",
+            derived: true,
+            halo: true,
+            offset: [-8, 0],
+            align: [1, 0],
+          },
+        );
+      }
       for (const [j, q] of g.scatter.points.entries())
         prims.push({
           type: "point",
@@ -869,6 +952,12 @@ registerComponent("graph", {
     if (g.scatter)
       out.push(
         `A scatter plot of ${g.scatter.points.length} points${g.scatter.fit ? `, with the line ${lineText(g.scatter.fit)}${g.scatter.residuals ? " and a residual segment from each point to the line" : ""}` : ""}.`,
+      );
+    if (g.scatter?.trial)
+      out.push(`A trial line ${lineText(g.scatter.trial)} for comparison.`);
+    if (g.scatter?.fit && g.scatter.predict !== undefined)
+      out.push(
+        `At x = ${spoken(g.scatter.predict)} the line predicts ${reveal ? spoken(g.scatter.fit.m * g.scatter.predict + g.scatter.fit.b) : "the number to find"}.`,
       );
     for (const p of g.points ?? [])
       out.push(
