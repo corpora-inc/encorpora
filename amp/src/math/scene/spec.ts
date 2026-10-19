@@ -896,6 +896,81 @@ export const angleSchema = z
     "Labels and marks name existing rays",
   );
 
+const groupLabel = z.string().min(1).max(16);
+/** A line plot or dot plot: one mark per value, stacked over a number line;
+ * two groups share one scale, one panel above the other. */
+export const dotPlotSchema = z
+  .object({
+    ...base,
+    type: z.literal("dotPlot"),
+    min: coord,
+    max: coord,
+    /** Ticks every 1/denominator, labeled as mixed numbers. */
+    denominator: z.number().int().min(1).max(16).optional(),
+    mark: z.enum(["x", "dot"]).optional(),
+    groups: z
+      .array(
+        z
+          .object({
+            label: groupLabel.optional(),
+            values: z.array(coord).min(1).max(40),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(2),
+    unit: z.string().min(1).max(24).optional(),
+  })
+  .strict()
+  .refine((p) => {
+    const d = p.denominator ?? 1;
+    const on = (v: number) => Math.abs(v * d - Math.round(v * d)) < 1e-9;
+    return (
+      p.max > p.min &&
+      on(p.min) &&
+      on(p.max) &&
+      (p.max - p.min) * d <= 24 &&
+      p.groups.every((g) =>
+        g.values.every((v) => on(v) && v >= p.min && v <= p.max),
+      )
+    );
+  }, "Values sit on ticks inside the scale");
+
+/** Box plots (minimum, quartiles, median, maximum) over one shared scale. */
+export const boxPlotSchema = z
+  .object({
+    ...base,
+    type: z.literal("boxPlot"),
+    min: coord,
+    max: coord,
+    step: num.positive(),
+    groups: z
+      .array(
+        z
+          .object({
+            label: groupLabel.optional(),
+            summary: z.tuple([coord, coord, coord, coord, coord]),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(3),
+    unit: z.string().min(1).max(24).optional(),
+  })
+  .strict()
+  .refine(
+    (b) =>
+      b.max > b.min &&
+      (b.max - b.min) / b.step <= 40 &&
+      b.groups.every((g) =>
+        g.summary.every(
+          (v, i) =>
+            v >= b.min && v <= b.max && (i === 0 || v >= g.summary[i - 1]!),
+        ),
+      ),
+    "Five ordered numbers inside the scale",
+  );
+
 export const componentSchemas = [
   protractorSchema,
   angleSchema,
@@ -910,6 +985,8 @@ export const componentSchemas = [
   clockSchema,
   tableSchema,
   rowBarsSchema,
+  dotPlotSchema,
+  boxPlotSchema,
 ] as const;
 export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
@@ -924,6 +1001,8 @@ export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
 export type Table = z.infer<typeof tableSchema>;
 export type RowBars = z.infer<typeof rowBarsSchema>;
+export type DotPlot = z.infer<typeof dotPlotSchema>;
+export type BoxPlot = z.infer<typeof boxPlotSchema>;
 export type Protractor = z.infer<typeof protractorSchema>;
 export type Angle = z.infer<typeof angleSchema>;
 

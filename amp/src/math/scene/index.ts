@@ -6,6 +6,7 @@ import "./components/poly-area";
 import "./components/angle";
 import "./components/table";
 import "./components/row-bars";
+import "./components/data-plots";
 export * from "./spec";
 export {
   layoutScene,
