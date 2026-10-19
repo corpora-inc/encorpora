@@ -2,7 +2,9 @@ import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
+import { shapePrinciples } from "./shape-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
+import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { decimalPrinciples } from "./decimal-lessons";
 import { timeMoneyPrinciples } from "./time-money-lessons";
@@ -27,6 +29,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
   ...volumeCoordinatePrinciples,
+  ...shapePrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -34,6 +37,7 @@ export const principles: Record<string, string> = {
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
   ...distributionPrinciples,
+  ...inferencePrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...decimalPrinciples,

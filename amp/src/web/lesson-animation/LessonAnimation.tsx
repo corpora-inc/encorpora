@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
+import { MadGapStage } from "./ComparisonAnimation";
 import {
   BalanceFrame,
   CUBE,
@@ -13,6 +14,7 @@ import {
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
@@ -21,6 +23,8 @@ import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "shape-morph":
+      return <ShapeMorphStage model={model} step={step} />;
     case "plot":
       return <PlotModel model={model} step={step} />;
     case "clock-sweep":
@@ -65,6 +69,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <BalanceModel model={model} step={step} />;
     case "box-build":
       return <BoxBuildModel model={model} step={step} />;
+    case "mad-gap":
+      return <MadGapStage model={model} step={step} />;
   }
 }
 

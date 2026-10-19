@@ -312,3 +312,17 @@ test("statistics animations balance at the exact mean and box the exact quartile
     );
   }
 });
+
+test("the MAD-gap animation lays exactly the gap between the means in MADs", () => {
+  for (let i = 0; i < 60; i++) {
+    const lesson = problemLesson("means-in-mads", `gap-${i}`);
+    const model = animationModel(lesson);
+    assert(model?.kind === "mad-gap");
+    const [a, b] = model.figure.groups.map((g) => g.values);
+    const mean = (v: number[]) => v.reduce((s, x) => s + x, 0) / v.length;
+    assert.deepEqual(model.means, [mean(a!), mean(b!)]);
+    const [n, d] = lesson.example.answer.split("/").map(Number);
+    assert.equal(Math.abs(mean(a!) - mean(b!)) / model.mad, n! / (d ?? 1));
+    assert.equal(animationFrames(model).length, 3);
+  }
+});
