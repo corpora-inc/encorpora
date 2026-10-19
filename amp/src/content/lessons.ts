@@ -27,6 +27,7 @@ import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
@@ -642,6 +643,7 @@ export const lessons: readonly Lesson[] = [
   ...shapeLessons,
   ...angleLessons,
   ...polygonLessons,
+  ...probabilityRulesLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

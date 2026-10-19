@@ -8,6 +8,10 @@ export const portedKinds = [
   "clock",
   "coordinate-plane",
   "ten-frame",
+  "line-plot",
+  "double-dot-plot",
+  "box-plot",
+  "double-box-plot",
   "base-ten",
   "unit-array",
   "plane-shapes",
@@ -163,6 +167,56 @@ export function legacyScene(
               { count: f.first, shape: "dot", color: "accent" },
               { count: f.second, shape: "square", color: "warm" },
             ],
+          },
+        ],
+      };
+    case "line-plot":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "dotPlot",
+            id: "plot",
+            min: f.start / f.denominator,
+            max: f.end / f.denominator,
+            ...(f.denominator > 1 ? { denominator: f.denominator } : {}),
+            mark: f.mark,
+            groups: [{ values: f.values.map((v) => v / f.denominator) }],
+            unit: f.unit,
+          },
+        ],
+      };
+    case "double-dot-plot":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "dotPlot",
+            id: "plot",
+            min: f.start,
+            max: f.end,
+            mark: "dot",
+            groups: f.groups.map((g) => ({ label: g.label, values: g.values })),
+            unit: f.unit,
+          },
+        ],
+      };
+    case "box-plot":
+    case "double-box-plot":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "boxPlot",
+            id: "box",
+            min: f.start,
+            max: f.end,
+            step: f.step,
+            groups:
+              f.kind === "box-plot"
+                ? [{ summary: f.summary }]
+                : f.groups.map((g) => ({ label: g.label, summary: g.summary })),
+            unit: f.unit,
           },
         ],
       };
