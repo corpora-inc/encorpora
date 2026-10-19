@@ -1371,6 +1371,53 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Figure-based K–5 geometry: each facet names exactly what its items assess.
+for (const [skillId, facets] of [
+  [
+    "volume-cubes",
+    [
+      [
+        "cube-prism-volume",
+        "Find the volume of a prism built from unit cubes by counting layers, including hidden cubes.",
+      ],
+    ],
+  ],
+  [
+    "prism-volume",
+    [
+      [
+        "edge-product",
+        "Calculate rectangular prism volume from three whole-centimeter edges.",
+      ],
+      [
+        "missing-edge",
+        "Find a missing whole-centimeter edge from a prism's volume and two edges.",
+      ],
+      [
+        "additive-volume",
+        "Add the volumes of two non-overlapping rectangular prisms of equal depth.",
+      ],
+    ],
+  ],
+  [
+    "coordinate-first-quadrant",
+    [
+      [
+        "ordered-pairs",
+        "Locate and name whole-number points in the first quadrant.",
+      ],
+      ["grid-moves", "Find the coordinates reached by moves right and up."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
 // Exact forward formulas are bounded facets of broader circle measurement.
 for (const [skillId, facets] of [
   [
@@ -1493,6 +1540,61 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "one-step-equations",
+    "inverse-operation",
+    "Solve a one-operation equation with whole numbers, decimals or fractions by applying the inverse operation to both sides.",
+  ],
+  [
+    "one-step-equations",
+    "story-equation",
+    "Choose the one-step equation that represents a story together with its solution.",
+  ],
+  [
+    "one-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance by removing equal weights or splitting both pans equally.",
+  ],
+  [
+    "two-step-equations",
+    "symbolic-solve",
+    "Solve px + q = r and p(x + q) = r with signed integers or decimals by undoing operations in reverse order.",
+  ],
+  [
+    "two-step-equations",
+    "story-solve",
+    "Write and solve px + q = r or p(x + q) = r for a story.",
+  ],
+  [
+    "two-step-equations",
+    "story-equation",
+    "Choose the two-step equation that represents a story, distinguishing repeated from one-time amounts and px + q from p(x + q).",
+  ],
+  [
+    "two-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance showing px + q = r or p(x + q) = r.",
+  ],
+  [
+    "simple-inequalities",
+    "context-inequality",
+    "Write x > c, x < c, x ≥ c or x ≤ c for a condition stated in words.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-reading",
+    "Read the inequality shown by a graphed half-line on a number line.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-choice",
+    "Choose the number line that shows the solutions of a simple inequality.",
+  ],
+  [
+    "simple-inequalities",
+    "solution-recognition",
+    "Recognize which numbers solve a simple inequality and that it has infinitely many solutions.",
+  ],
+  [
     "compound-probability",
     "multiplication-principle",
     "Count outcomes of two to four independent choice stages, including codes with repeated symbols, by the multiplication principle.",
@@ -1541,6 +1643,39 @@ for (const [skillId, suffix, description] of [
     "rational-exponents",
     "rational-base-fractional-powers",
     "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Decimal tasks assess reading, renaming, comparing, rounding and computing
+// with given decimals; written justification and models drawn by the learner
+// remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "decimal-fractions",
+    "tenths-hundredths-notation",
+    "Name shaded tenths and hundredths of one whole as decimals, rename tenths as hundredths, and read tenths and hundredths on a number line.",
+  ],
+  [
+    "compare-decimals",
+    "hundredths-comparison",
+    "Choose the greater or lesser of two decimals with one or two places, including pairs where the shorter decimal is greater.",
+  ],
+  [
+    "decimal-place-value",
+    "thousandths-read-compare-round",
+    "Name the value of a decimal digit, write a decimal from expanded form, compare decimals to thousandths and round to the nearest whole, tenth or hundredth.",
+  ],
+  [
+    "decimal-algorithms",
+    "multidigit-decimal-operations",
+    "Add, subtract, multiply and divide multidigit decimals with terminating results.",
   ],
 ])
   skills
@@ -1731,6 +1866,37 @@ for (const [skillId, suffix, description] of [
     "compare-distributions",
     "box-plot-comparison",
     "Compare medians and interquartile ranges of two box plots on one scale.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Place-value addition and subtraction cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "addition-within-100",
+    "two-digit-sums",
+    "Add two two-digit numbers with sums to 100 and find the addend that makes 100.",
+  ],
+  [
+    "subtraction-within-100",
+    "two-digit-differences",
+    "Subtract a two-digit number from a number up to 100, regrouping a ten when needed.",
+  ],
+  [
+    "add-subtract-thousands",
+    "three-digit-algorithms",
+    "Add and subtract three-digit numbers within 1000, regrouping in any place and across zeros.",
+  ],
+  [
+    "whole-add-subtract",
+    "six-digit-algorithms",
+    "Add and subtract whole numbers of four to six digits with the standard algorithm.",
   ],
 ])
   skills

@@ -2,13 +2,33 @@ import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
 import { MadGapStage } from "./ComparisonAnimation";
+import {
+  BalanceFrame,
+  CUBE,
+  Cube,
+  XBlock,
+  cubeGrid,
+  leftLayout,
+  rightLayout,
+} from "../EquationFigure";
+import { IsoBox } from "../GeometryFigure";
+import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import "./animation.css";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "decimal-fill":
+      return <DecimalFillStage model={model} step={step} />;
+    case "decimal-align":
+      return <DecimalAlignStage model={model} step={step} />;
+    case "prism-layers":
+      return <PrismLayersModel model={model} step={step} />;
+    case "quadrant-walk":
+      return <QuadrantWalkModel model={model} step={step} />;
     case "line-plot-stack":
       return <StackModel model={model} step={step} />;
     case "line-plot-share":
@@ -19,6 +39,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <PairingModel model={model} step={step} />;
     case "place-compare":
       return <PlaceCompareModel model={model} step={step} />;
+    case "regroup-sum":
+      return <RegroupSumModel model={model} step={step} />;
     case "fraction":
       return <FractionModel model={model} step={step} />;
     case "array":
@@ -31,6 +53,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <CompareStage model={model} step={step} />;
     case "area":
       return <AreaStage model={model} step={step} />;
+    case "balance":
+      return <EquationBalanceModel model={model} step={step} />;
     case "mean-balance":
       return <BalanceModel model={model} step={step} />;
     case "box-build":
@@ -325,6 +349,137 @@ function ExchangeModel({
   );
 }
 
+/** Positions of the right pan's cubes split into `groups` equal groups. */
+function groupedRight(count: number, groups: number) {
+  const per = count / groups,
+    columns = 2,
+    width = columns * CUBE.pitch,
+    gap = groups >= 5 ? 4 : 10,
+    span = groups * width + (groups - 1) * gap,
+    start = 300 - span / 2;
+  return {
+    cubes: Array.from({ length: groups }, (_, g) =>
+      cubeGrid(per, columns, start + g * (width + gap), 142).map((c) => ({
+        ...c,
+        group: g,
+      })),
+    ).flat(),
+    dividers: Array.from(
+      { length: groups - 1 },
+      (_, g) => start + (g + 1) * (width + gap) - gap / 2 - 1,
+    ),
+  };
+}
+function EquationBalanceModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "balance" }>;
+  step: number;
+}) {
+  const f = model.figure,
+    form = model.form;
+  const left = leftLayout(f);
+  const start = rightLayout(f.right);
+  const p = f.groups > 1 ? f.groups : f.blocks;
+  // Which right-pan cubes leave, and where the rest stand, at each step.
+  const removedRight = (j: number) =>
+    form === "add" || form === "remove-split"
+      ? step >= 1 && j >= f.right - f.units
+      : form === "split-remove"
+        ? step >= 2 && j % (f.right / p) >= f.right / p - f.units
+        : false;
+  const split =
+    (form === "times" && step >= 1) ||
+    (form === "remove-split" && step >= 2) ||
+    (form === "split-remove" && step >= 1);
+  const kept = form === "remove-split" ? f.right - f.units : f.right;
+  const grouped = groupedRight(kept, p);
+  // For split-remove, cube j belongs to group floor(j / per) in the grouped layout.
+  const target = (j: number) =>
+    split && j < kept ? grouped.cubes[j]! : start[j]!;
+  const dimmed = (group: number) => form === "times" && step === 2 && group > 0;
+  const leftRemoved = (i: number) =>
+    form === "split-remove" ? step >= 2 : form !== "times" && step >= 1;
+  // Dividers rise just above the tallest group on either pan.
+  const dividerTop = Math.min(...grouped.cubes.map((c) => c.y), 142 - 40) - 8;
+  const leftDividers =
+    f.groups > 1
+      ? []
+      : Array.from(
+          { length: f.blocks - 1 },
+          (_, i) => left.blocks[i + 1]!.x - 2,
+        );
+  return (
+    <g transform="translate(0 -8) scale(0.8)" data-balance-step={step}>
+      <BalanceFrame />
+      {left.bags.map((b, i) => (
+        <rect
+          key={`bag${i}`}
+          x={b.x}
+          y={b.y}
+          width={b.w}
+          height={b.h}
+          rx="8"
+          className="animation-bag"
+        />
+      ))}
+      {left.blocks.map((b, i) => (
+        <g
+          key={`block${i}`}
+          className="animation-lift"
+          style={{ opacity: dimmed(i) ? 0.25 : 1 }}
+        >
+          <XBlock x={b.x} y={b.y} />
+        </g>
+      ))}
+      {left.cubes.map((c, i) => (
+        <g
+          key={`left${i}`}
+          data-left-cube={i}
+          className="animation-lift"
+          style={{
+            transform: `translateY(${leftRemoved(i) ? -28 : 0}px)`,
+            opacity: leftRemoved(i) ? 0 : 1,
+          }}
+        >
+          <Cube x={c.x} y={c.y} />
+        </g>
+      ))}
+      {start.map((c, j) => {
+        const to = target(j),
+          gone = removedRight(j);
+        const group = split && j < kept ? grouped.cubes[j]!.group : 0;
+        return (
+          <g
+            key={`right${j}`}
+            data-right-cube={j}
+            className="animation-lift"
+            style={{
+              transform: `translate(${to.x - c.x}px, ${to.y - c.y - (gone ? 28 : 0)}px)`,
+              opacity: gone ? 0 : dimmed(group) ? 0.25 : 1,
+            }}
+          >
+            <Cube x={c.x} y={c.y} />
+          </g>
+        );
+      })}
+      <g className="animation-fade" style={{ opacity: split ? 1 : 0 }}>
+        {[...grouped.dividers, ...(split ? leftDividers : [])].map((x, i) => (
+          <line
+            key={i}
+            x1={x}
+            x2={x}
+            y1={dividerTop}
+            y2="140"
+            className="animation-divider"
+          />
+        ))}
+      </g>
+    </g>
+  );
+}
+
 /** Rows start like the problem figure; step 1 slides every counter to a common
  * spacing, step 2 draws the pairs and marks the counters left over. */
 function PairingModel({
@@ -500,6 +655,119 @@ function PlaceCompareModel({
   );
 }
 
+/** Both numbers' rods and cubes slide into one row of tens and a column of
+ * ones; ten ones then stack beside the tens as one new ten. */
+function RegroupSumModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "regroup-sum" }>;
+  step: number;
+}) {
+  const [a, b] = model.figure.values;
+  const u = 7,
+    rodStep = 11,
+    tensX = 64,
+    onesX = tensX + 9 * rodStep + 18,
+    joinedY = 52;
+  const tens = Math.floor(a / 10) + Math.floor(b / 10),
+    ones = (a % 10) + (b % 10),
+    trade = step === 2 && ones >= 10;
+  const joinedTensX = 34;
+  const joinedOnesX = joinedTensX + tens * rodStep + 18;
+  const pieces: {
+    unit: "ten" | "one";
+    x0: number;
+    y0: number;
+    x1: number;
+    y1: number;
+    traded?: boolean;
+  }[] = [];
+  let ten = 0,
+    one = 0;
+  [a, b].forEach((n, row) => {
+    const y = 12 + row * 92;
+    for (let i = 0; i < Math.floor(n / 10); i++, ten++)
+      pieces.push({
+        unit: "ten",
+        x0: tensX + i * rodStep,
+        y0: y,
+        x1: joinedTensX + ten * rodStep,
+        y1: joinedY,
+      });
+    for (let i = 0; i < n % 10; i++, one++) {
+      // Joined ones stack in columns of ten, the height of one rod.
+      const traded = trade && one < 10;
+      const column = Math.floor(one / 10) - (trade ? 1 : 0);
+      pieces.push({
+        unit: "one",
+        x0: onesX + (i % 5) * rodStep,
+        y0: y + 10 * u - (Math.floor(i / 5) + 1) * rodStep + 4,
+        x1: traded
+          ? joinedTensX + tens * rodStep
+          : joinedOnesX + (trade ? rodStep : 0) + column * (u + 4),
+        y1: joinedY + 10 * u - ((one % 10) + 1) * u,
+        traded,
+      });
+    }
+  });
+  return (
+    <>
+      <g className="animation-fade" style={{ opacity: step === 0 ? 1 : 0 }}>
+        {[a, b].map((n, row) => (
+          <text
+            key={row}
+            x={50}
+            y={12 + row * 92 + 40}
+            textAnchor="end"
+            style={{ fontSize: 20 }}
+          >
+            {n}
+          </text>
+        ))}
+      </g>
+      {pieces.map((piece, i) => (
+        <g
+          key={i}
+          className="animation-move"
+          style={{
+            transform: `translate(${step ? piece.x1 - piece.x0 : 0}px, ${step ? piece.y1 - piece.y0 : 0}px)`,
+          }}
+        >
+          <rect
+            data-unit={piece.unit}
+            x={piece.x0}
+            y={piece.y0}
+            width={piece.unit === "ten" ? u : u - 1}
+            height={piece.unit === "ten" ? 10 * u : u - 1}
+            className={
+              piece.unit === "ten" || piece.traded
+                ? "animation-fill"
+                : "animation-warm"
+            }
+          />
+        </g>
+      ))}
+      <rect
+        x={joinedTensX + tens * rodStep - 2}
+        y={joinedY - 2}
+        width={u + 4}
+        height={10 * u + 4}
+        className="animation-outline animation-fade"
+        strokeWidth="2"
+        style={{ opacity: trade ? 1 : 0 }}
+      />
+      <text x="160" y="185" textAnchor="middle">
+        {step === 0
+          ? `${a} + ${b}`
+          : trade
+            ? `${tens + 1} ${tens + 1 === 1 ? "ten" : "tens"} and ${ones - 10} ${ones - 10 === 1 ? "one" : "ones"}`
+            : `${tens} ${tens === 1 ? "ten" : "tens"} and ${ones} ${ones === 1 ? "one" : "ones"}`}
+      </text>
+    </>
+  );
+}
+
 const motion = (delay: number) => ({
   transition:
     "transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
@@ -593,6 +861,142 @@ function ShareModel({
           </g>
         );
       })}
+    </>
+  );
+}
+
+/** Unit cubes fill the prism one layer at a time; every layer is identical. */
+function PrismLayersModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "prism-layers" }>;
+  step: number;
+}) {
+  const { length: l, width: w, height: h } = model.figure;
+  const { unit, origin } = isoFit(l, w, h, {
+    width: 250,
+    height: 196,
+    pad: 8,
+  });
+  const project = (x: number, y: number, z: number) =>
+    isoPoint(x, y, z, unit, origin);
+  return (
+    <>
+      {Array.from({ length: h }, (_, k) => {
+        const shown = k === 0 || step > 0;
+        const label = project(l, 0, k + 0.5);
+        return (
+          <g key={k} data-layer={k}>
+            <g
+              className="animation-move animation-fade"
+              style={{
+                opacity: shown ? 1 : 0,
+                transform: `translateY(${shown ? 0 : -36}px)`,
+                transitionDelay: step === 1 ? `${(k - 1) * 160}ms` : "0ms",
+              }}
+            >
+              <IsoBox at={[0, 0, k]} size={[l, w, 1]} grid project={project} />
+            </g>
+            <text
+              x={label.x + 12}
+              y={label.y + 5}
+              className="animation-fade"
+              style={{ opacity: step === 2 ? 1 : 0 }}
+            >
+              {k + 1}
+            </text>
+          </g>
+        );
+      })}
+    </>
+  );
+}
+
+/** A path traced from the origin: across by the first coordinate, then up. */
+function QuadrantWalkModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "quadrant-walk" }>;
+  step: number;
+}) {
+  const { size } = model.figure,
+    { x: px, y: py } = model.figure.points[0]!;
+  const cell = Math.min(26, 166 / size),
+    left = 160 - (cell * size) / 2,
+    bottom = 184;
+  const x = (n: number) => left + n * cell,
+    y = (n: number) => bottom - n * cell;
+  const ticks = Array.from({ length: size + 1 }, (_, i) => i);
+  return (
+    <>
+      {ticks.map((n) => (
+        <g key={n}>
+          <line
+            x1={x(n)}
+            x2={x(n)}
+            y1={y(0)}
+            y2={y(size)}
+            className="animation-gridline"
+          />
+          <line
+            x1={x(0)}
+            x2={x(size)}
+            y1={y(n)}
+            y2={y(n)}
+            className="animation-gridline"
+          />
+        </g>
+      ))}
+      <path
+        d={`M${x(0)} ${y(0)} H${x(size)} M${x(0)} ${y(0)} V${y(size)}`}
+        className="animation-outline"
+        strokeWidth="2"
+      />
+      <text x={x(0) - 8} y={y(0) + 14} textAnchor="end">
+        0
+      </text>
+      <text x={x(size) + 6} y={y(0) + 5}>
+        x
+      </text>
+      <text x={x(0)} y={y(size) - 6} textAnchor="middle">
+        y
+      </text>
+      <path
+        d={`M${x(0)} ${y(0)} H${x(px)}`}
+        pathLength={1}
+        className="animation-trace"
+        style={{ strokeDashoffset: step > 0 ? 0 : 1 }}
+      />
+      <path
+        d={`M${x(px)} ${y(0)} V${y(py)}`}
+        pathLength={1}
+        className="animation-trace"
+        style={{ strokeDashoffset: step > 1 ? 0 : 1 }}
+      />
+      <text
+        x={(x(0) + x(px)) / 2}
+        y={y(0) + 16}
+        textAnchor="middle"
+        className="animation-fade"
+        style={{ opacity: step > 0 ? 1 : 0 }}
+      >
+        {px}
+      </text>
+      <text
+        x={x(px) + 8}
+        y={(y(0) + y(py)) / 2 + 5}
+        className="animation-fade"
+        style={{ opacity: step > 1 ? 1 : 0 }}
+      >
+        {py}
+      </text>
+      <circle cx={x(0)} cy={y(0)} r="5" className="animation-origin" />
+      <circle cx={x(px)} cy={y(py)} r="6" className="animation-point" />
+      <text x={x(px) + 9} y={y(py) - 8} className="animation-point-label">
+        {step > 1 ? `P (${px}, ${py})` : "P"}
+      </text>
     </>
   );
 }

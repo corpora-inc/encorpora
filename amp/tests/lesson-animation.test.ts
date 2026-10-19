@@ -13,6 +13,8 @@ test("animation models conserve the quantities in real lesson examples", () => {
     "fraction-model",
     "split-array-part",
     "exchange-base-ten",
+    "balance-one-step",
+    "balance-two-step",
   ]) {
     for (let i = 0; i < 100; i++) {
       const lesson = problemLesson(id, `animation-${i}`);
@@ -52,6 +54,15 @@ test("animation models conserve the quantities in real lesson examples", () => {
           `$${splitAfterRow * columns} + ${(rows - splitAfterRow) * columns} = ${rows * columns}$`,
         );
         kinds.add("array");
+      } else if (model.kind === "balance") {
+        // Every frame's equation is true for the weight read from the pans.
+        const { groups, blocks, units, right } = model.figure;
+        assert.equal(groups * (blocks * model.x + units), right);
+        assert.equal(Number(lesson.example.answer), model.x);
+        assert.equal(frames[2].math.endsWith(`= ${model.x}$`), true);
+        const tex = frames.map((frame) => frame.math).join(" ");
+        assert.doesNotMatch(tex, /NaN|undefined|\.\d/);
+        kinds.add(model.form);
       } else if (model.kind === "fraction") {
         const [n, d] = lesson.example.answer.split("/").map(Number);
         assert.equal(n * model.figure.parts, model.figure.selected * (d ?? 1));
@@ -63,7 +74,51 @@ test("animation models conserve the quantities in real lesson examples", () => {
       }
     }
   }
-  assert.deepEqual([...kinds].sort(), ["array", "fraction", "ones", "tens"]);
+  assert.deepEqual([...kinds].sort(), [
+    "add",
+    "array",
+    "fraction",
+    "ones",
+    "remove-split",
+    "split-remove",
+    "tens",
+    "times",
+  ]);
+});
+
+test("geometry models follow the lesson example's own figure", () => {
+  for (let i = 0; i < 60; i++) {
+    for (const id of ["unit-cube-volume", "cube-layer-count"]) {
+      const lesson = problemLesson(id, `animation-${i}`);
+      const model = animationModel(lesson);
+      assert(model?.kind === "prism-layers", id);
+      const { length: l, width: w, height: h } = model.figure;
+      const frames = animationFrames(model);
+      assert.equal(frames.length, 3);
+      assert.equal(
+        Number(lesson.example.answer),
+        id === "unit-cube-volume" ? l * w * h : l * w,
+      );
+      assert.equal(
+        frames[2]!.math,
+        `$V = ${l * w} \\times ${h} = ${l * w * h}$ cubic units`,
+      );
+    }
+    const lesson = problemLesson(
+      "first-quadrant-coordinates",
+      `animation-${i}`,
+    );
+    const model = animationModel(lesson);
+    assert(model?.kind === "quadrant-walk");
+    const { x, y } = model.figure.points[0]!;
+    assert.equal(lesson.example.answer, `(${x}, ${y})`);
+    assert.equal(animationFrames(model)[2]!.math, `$(${x}, ${y})$`);
+  }
+  // Locating among several points has no single path to trace.
+  assert.equal(
+    animationModel(problemLesson("first-quadrant-locate", "animation")),
+    null,
+  );
 });
 
 test("incompatible or invalid figures fall back to the ordinary lesson figure", () => {
@@ -95,6 +150,21 @@ test("array and exchange adapters reject ambiguous or unsupported metadata", () 
     ["exchange-base-ten", { kind: "base-ten", hundreds: 2, tens: 3, ones: 4 }],
   ] as const) {
     const lesson = problemLesson(templateId, "animation");
+    assert.equal(
+      animationModel({ ...lesson, example: { ...lesson.example, figure } }),
+      null,
+    );
+  }
+});
+
+test("balance adapter rejects unlevel or undrawable balances", () => {
+  for (const figure of [
+    { kind: "balance-scale", groups: 1, blocks: 2, units: 3, right: 10 },
+    { kind: "balance-scale", groups: 2, blocks: 2, units: 1, right: 10 },
+    { kind: "balance-scale", groups: 1, blocks: 1, units: 0, right: 5 },
+    { kind: "balance-scale", groups: 1, blocks: 1, units: 4, right: 4 },
+  ] as const) {
+    const lesson = problemLesson("balance-two-step", "animation");
     assert.equal(
       animationModel({ ...lesson, example: { ...lesson.example, figure } }),
       null,
