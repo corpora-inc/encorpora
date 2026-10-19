@@ -33,6 +33,7 @@ from radical_content_oracle import check_problem as review_radical_problem, revi
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
 from part_whole_math_oracle import PART_WHOLE, solve_part_whole, review_part_whole_fixtures
+from decimal_math_oracle import DECIMAL, solve_decimal, review_decimal_fixtures, DecimalCorpus
 from comparison_math_oracle import COMPARISON, COMPARISON_CHOICE, solve_comparison, review_comparison_fixtures, ComparisonCorpus
 from data_display_math_oracle import DATA_DISPLAY, DATA_DISPLAY_CHOICE, solve_data_display, review_data_display_fixtures
 from rational_content_oracle import check_problem as review_rational_problem, review_rational_content
@@ -50,7 +51,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE
+SUPPORTED = DATA_DISPLAY | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | COMPARISON | PART_WHOLE | DECIMAL
 
 
 def require(condition, message):
@@ -64,6 +65,8 @@ def solve(public):
     template = public['templateId']
     if template in PART_WHOLE:
         return solve_part_whole(public)
+    if template in DECIMAL:
+        return solve_decimal(public)
     if template in COMPARISON:
         return solve_comparison(public)
     if template in DATA_DISPLAY:
@@ -285,6 +288,7 @@ def solve(public):
 
 def review(stream):
     review_part_whole_fixtures()
+    review_decimal_fixtures()
     review_comparison_fixtures()
     review_data_display_fixtures()
     review_combinatorics_fixtures()
@@ -322,6 +326,7 @@ def review(stream):
     right_triangles = RightTriangleCorpusReview()
     rational_corpus = RationalCorpus()
     comparison_corpus = ComparisonCorpus()
+    decimal_corpus = DecimalCorpus()
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -363,6 +368,8 @@ def review(stream):
             review_radical_problem(problem)
         if template in COMPARISON:
             comparison_corpus.record(public, solved)
+        if template in DECIMAL:
+            decimal_corpus.record(public, solved)
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
@@ -377,6 +384,7 @@ def review(stream):
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent comparison coverage: ' + json.dumps(comparison_corpus.finish()), file=sys.stderr)
+    print('Independent decimal comparison coverage: ' + json.dumps(decimal_corpus.finish()), file=sys.stderr)
     print('Independent combinatorics content: ' + json.dumps(review_combinatorics_content()), file=sys.stderr)
     print('Independent circle review: ' + json.dumps(review_circle_content()), file=sys.stderr)
     print('Independent radical content: ' + json.dumps(review_radical_content()), file=sys.stderr)

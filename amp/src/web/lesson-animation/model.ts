@@ -257,7 +257,9 @@ export function animationFrames(model: AnimationModel) {
       },
       {
         title: "Add single squares: hundredths",
-        text: `${h} more ${h === 1 ? "square is" : "squares are"} ${h} ${h === 1 ? "hundredth" : "hundredths"}, the second digit.`,
+        text: h
+          ? `${h} more ${h === 1 ? "square is" : "squares are"} ${h} ${h === 1 ? "hundredth" : "hundredths"}, the second digit.`
+          : "No single squares are left over, so the hundredths digit is 0.",
         math: `$\\dfrac{${t}}{10} + \\dfrac{${h}}{100} = \\dfrac{${k}}{100} = ${two}$`,
       },
     ];

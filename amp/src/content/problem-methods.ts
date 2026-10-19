@@ -1,4 +1,5 @@
 import { partWholeMethods } from "./part-whole-lessons";
+import { decimalMethods } from "./decimal-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
@@ -28,6 +29,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...linePlotMethods,
   ...radicalMethods,
   ...partWholeMethods,
+  ...decimalMethods,
   ...comparisonMethods,
   ...combinatoricsMethods,
   ...rationalMethods,

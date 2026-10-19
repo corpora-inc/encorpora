@@ -142,35 +142,22 @@ function Line({ figure }: { figure: Extract<Data, { kind: "decimal-line" }> }) {
 }
 
 const UNITS = ["1", "0.1", "0.01", "0.001"];
-/** Digits as written, one per place; an unwritten place stays blank. */
+/** Equal columns, one per place; the decimal point sits on the line between
+ * the ones and the tenths. An unwritten place stays blank. */
 export function chartColumns(places: number) {
   const width = places === 2 ? 300 : 340;
-  const point = 22,
-    column = (width - point) / (places + 1);
+  const column = width / (places + 1);
   const left = (360 - width) / 2;
-  const xs = [
-    left + column / 2,
-    ...Array.from(
-      { length: places },
-      (_, i) => left + column + point + column * i + column / 2,
-    ),
-  ];
-  const dividers = [
-    left + column,
-    ...Array.from(
-      { length: places - 1 },
-      (_, i) => left + column + point + column * (i + 1),
-    ),
-  ];
+  const xs = Array.from(
+    { length: places + 1 },
+    (_, i) => left + column * (i + 0.5),
+  );
+  const dividers = Array.from(
+    { length: places },
+    (_, i) => left + column * (i + 1),
+  );
   const bounds = xs.map((x) => ({ x: x - column / 2, width: column }));
-  return {
-    xs,
-    pointX: left + column + point / 2,
-    left,
-    width,
-    dividers,
-    bounds,
-  };
+  return { xs, pointX: left + column, left, width, dividers, bounds };
 }
 function Chart({
   figure,
@@ -221,6 +208,17 @@ function Chart({
           {UNITS[i]}
         </text>
       ))}
+      {dividers.map((x, i) => (
+        <line
+          key={i}
+          x1={x}
+          x2={x}
+          y1="6"
+          y2="154"
+          stroke={grid}
+          strokeWidth="1.5"
+        />
+      ))}
       {figure.rows.map((row, r) => {
         const y = 84 + r * 52;
         const digits = [String(row.ones), ...row.decimals.split("")];
@@ -237,21 +235,10 @@ function Chart({
                 {d}
               </text>
             ))}
-            <circle cx={pointX} cy={y - 2} r="3.5" fill={ink} />
+            <circle cx={pointX} cy={y - 3} r="4.5" fill={ink} />
           </g>
         );
       })}
-      {dividers.map((x, i) => (
-        <line
-          key={i}
-          x1={x}
-          x2={x}
-          y1="6"
-          y2="154"
-          stroke={grid}
-          strokeWidth="1.5"
-        />
-      ))}
     </svg>
   );
 }

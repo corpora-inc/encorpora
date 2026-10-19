@@ -158,8 +158,8 @@ function compareDraft(r: Random, max: 2 | 3): Draft {
     );
   steps.push(
     place === "ones"
-      ? `Compare from the left. The ones differ: ${pb[i]} > ${ps[i]}.`
-      : `Compare from the left. The places before the ${place} match; in the ${place}, ${pb[i]} > ${ps[i]}.`,
+      ? `Compare from the left. The ones differ: ${pb[i]} is greater than ${ps[i]}.`
+      : `Compare from the left. The places before the ${place} match; in the ${place}, ${pb[i]} is greater than ${ps[i]}.`,
     `So ${big.text} > ${small.text}, and the ${ask === "greater" ? "greater" : "lesser"} decimal is ${ask === "greater" ? big.text : small.text}.`,
   );
   const split = (s: string) => {
@@ -388,6 +388,8 @@ function draft(templateId: string, r: Random): Draft {
       const p = Math.max(pa, pb);
       const A = a * 10 ** (p - pa),
         B = b * 10 ** (p - pb);
+      // Equal values would make a difference of 0; draw again.
+      if (A === B) return draft(templateId, r);
       const subtract = r(0, 1) === 1;
       const [x, y, X, Y, px, py] =
         subtract && A < B ? [b, a, B, A, pb, pa] : [a, b, A, B, pa, pb];
@@ -419,7 +421,7 @@ function draft(templateId: string, r: Random): Draft {
     case "multidigit-decimal-product": {
       const pa = r(1, 2),
         pb = r(1, 2);
-      let a = r(11, pa === 1 ? 999 : 999),
+      let a = r(11, 999),
         b = r(11, pb === 1 ? 99 : 999);
       if (a % 10 === 0) a += 1;
       if (b % 10 === 0) b += 1;

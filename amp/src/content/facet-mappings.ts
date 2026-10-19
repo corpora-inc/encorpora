@@ -1,3 +1,4 @@
+import { decimalFacetMappings } from "./decimal-coverage";
 import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
@@ -20,6 +21,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
   ...partWholeFacetMappings,
+  ...decimalFacetMappings,
   ...comparisonFacetMappings,
   ...combinatoricsFacetMappings,
   ...rationalFacetMappings,

@@ -136,8 +136,8 @@ export function DecimalAlignStage({
             })}
             <circle
               cx={pointX}
-              cy={y - 2}
-              r="3.5"
+              cy={y - 3}
+              r="4.5"
               className="animation-shade"
             />
           </g>
