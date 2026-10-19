@@ -368,7 +368,7 @@ export const exponentialLessonScenes = {
           act.highlight("t.cell.4.0"),
         ),
         step(
-          "Their inputs add: $2 + 3 = 5$. A logarithm is the input, so $\\log_2(4 \\cdot 8) = \\log_2 4 + \\log_2 8$.",
+          "Their inputs add: $2 + 3 = 5$. Logarithms are inputs, so $\\log_2 32 = \\log_2 4 + \\log_2 8$.",
           act.highlight("t.row.1.label"),
           act.highlight("t.row.2.label"),
           act.highlight("t.row.4.label"),
