@@ -521,8 +521,18 @@ export const graphSchema = z
         points: z.array(pointSchema).min(1).max(200),
         fit: z.object({ m: coord, b: coord }).strict().optional(),
         residuals: z.boolean().optional(),
+        /** A trial line (a flat guess, say) with its own residuals, so a
+         * walkthrough can compare it with the fit. */
+        trial: z.object({ m: coord, b: coord }).strict().optional(),
+        /** An x at which the fit predicts: a point on the line whose y label
+         * is derived (the number to find). */
+        predict: coord.optional(),
       })
       .strict()
+      .refine(
+        (sc) => sc.predict === undefined || sc.fit,
+        "Predicting needs a fit",
+      )
       .optional(),
   })
   .strict()
@@ -754,6 +764,37 @@ export function completeTable(t: {
   return full;
 }
 
+/** Rows of a two-way table as bars: first on one count scale, then each
+ * stretched to 100%, so the parts compare as fractions of their own row. */
+export const rowBarsSchema = z
+  .object({
+    ...base,
+    type: z.literal("rowBars"),
+    /** Part names, in bar order: ["Yes", "No"]. */
+    parts: z.array(z.string().min(1).max(12)).min(2).max(4),
+    rows: z
+      .array(
+        z
+          .object({
+            label: z.string().min(1).max(18),
+            counts: z.array(small.max(100000)).min(2).max(4),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(4),
+  })
+  .strict()
+  .refine(
+    (b) =>
+      b.rows.every(
+        (r) =>
+          r.counts.length === b.parts.length &&
+          r.counts.reduce((a, c) => a + c, 0) > 0,
+      ),
+    "Each row has one count per part and a positive total",
+  );
+
 export const componentSchemas = [
   numberLineSchema,
   graphSchema,
@@ -764,6 +805,7 @@ export const componentSchemas = [
   fractionBarSchema,
   clockSchema,
   tableSchema,
+  rowBarsSchema,
 ] as const;
 export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
@@ -775,6 +817,7 @@ export type BaseTen = z.infer<typeof baseTenSchema>;
 export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
 export type Table = z.infer<typeof tableSchema>;
+export type RowBars = z.infer<typeof rowBarsSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([

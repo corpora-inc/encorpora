@@ -8,6 +8,7 @@ import {
   fractionBar,
   graph,
   numberLine,
+  rowBars,
   table,
   tenFrame,
 } from "./author";
@@ -225,6 +226,42 @@ export const galleryCases: GalleryCase[] = [
       .point(2, 55, undefined, { open: true })
       .point(8, 85, undefined, { open: true })
       .scene(),
+  },
+  {
+    name: "Scatter plot: a flat trial line, the trend line and a prediction (lesson)",
+    reveal: true,
+    scene: graph({
+      id: "g",
+      x: [0, 10],
+      y: [0, 30],
+      grid: [1, 5],
+      aspect: 0.24,
+      axisNames: ["age (years)", "value (thousand $)"],
+    })
+      .scatter(
+        [
+          [1, 26],
+          [3, 21],
+          [5, 18],
+          [7, 12],
+          [9, 5],
+        ],
+        { m: -2, b: 26 },
+        true,
+      )
+      .trial(0, 16)
+      .predict(6)
+      .scene(),
+  },
+  {
+    name: "Row bars: counts on one scale, then each row as 100%",
+    scene: rowBars({
+      parts: ["Yes", "No"],
+      rows: [
+        { label: "Grade 7", counts: [18, 2] },
+        { label: "Grade 8", counts: [24, 36] },
+      ],
+    }).scene(),
   },
   {
     name: "Two-way table: the cell to find (problem)",
