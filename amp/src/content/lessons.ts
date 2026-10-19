@@ -4,6 +4,7 @@ import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { linearFunctionLessons } from "./linear-function-lessons";
+import { twoVariableLessons } from "./two-variable-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
@@ -31,6 +32,7 @@ import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { numberSenseLessons } from "./number-sense-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
@@ -68,6 +70,11 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "hundred-chart-moves"
+      | "teen-ten-frame"
+      | "number-line-hop-pair"
+      | "rounding-halfway"
+      | "power-of-ten-shift"
       | "coordinate-side-lengths"
       | "distance-triangle"
       | "rigid-motions-panels"
@@ -632,6 +639,7 @@ export const lessons: readonly Lesson[] = [
   ...timeMoneyLessons,
   ...attributeLessons,
   ...comparisonLessons,
+  ...numberSenseLessons,
   ...multiplyDivideLessons,
   ...addSubtractLessons,
   ...factsLessons,
@@ -644,6 +652,7 @@ export const lessons: readonly Lesson[] = [
   ...ratioRateLessons,
   ...patternFunctionLessons,
   ...linearFunctionLessons,
+  ...twoVariableLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

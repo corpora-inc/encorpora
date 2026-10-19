@@ -119,7 +119,12 @@ test("easing follows the CSS curve", () => {
 });
 
 const numbers = (text: string): string[] => text.match(/\d+/g) ?? [];
-for (const id of ["add-within-20", "tens-contribution"]) {
+for (const id of [
+  "add-within-20",
+  "tens-contribution",
+  "number-line-hops",
+  "number-line-missing-hop",
+]) {
   test(`${id}: the learner's scene walks its own numbers and never shows the answer`, () => {
     for (let i = 0; i < 300; i++) {
       const p = generateProblem(id, `scene-${i}`);

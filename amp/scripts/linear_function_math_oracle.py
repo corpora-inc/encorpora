@@ -154,9 +154,9 @@ def solve_context_domain_range(public):
     ask = re.search(r'Which describes the (domain|range) of ([A-Z]) in this situation\?$', p)
     require(ask is not None, 'Unrecognized context prompt')
     counts = [
-        r'A van carries at most (\d+) passengers, and each pays \$(\d+)\. The function F\(p\) = (\d+)p gives',
-        r'A bakery bakes (\d+) loaves a day and sells them for \$(\d+) each\. The function R\(n\) = (\d+)n gives',
-        r'A ferry takes at most (\d+) cars, and each car pays \$(\d+)\. The function T\(c\) = (\d+)c gives',
+        r'A van carries at most (\d+) passengers, and each pays (\d+) dollars?\. The function F\(p\) = (\d+)p gives',
+        r'A bakery bakes (\d+) loaves a day and sells them for (\d+) dollars? each\. The function R\(n\) = (\d+)n gives',
+        r'A ferry takes at most (\d+) cars, and each car pays (\d+) dollars?\. The function T\(c\) = (\d+)c gives',
     ]
     for pattern in counts:
         m = re.match(pattern, p)
@@ -268,9 +268,9 @@ def solve_average_rate_display(public):
 # ------------------------------------------------------------ linear models
 def solve_linear_model_value(public):
     p = public['prompt']
-    money = [int(v) for v in re.findall(r'\$(\d+)', p)]
+    money = [int(v) for v in re.findall(r'(\d+) dollars?', p)]
     if 'cost the same' in p:
-        m = re.fullmatch(r'.+ \$(\d+) plus \$(\d+) per (\w+)\. .+ \$(\d+) plus \$(\d+) per \3\. After how many \w+ do they cost the same\?', p)
+        m = re.fullmatch(r'.+ (\d+) dollars? plus (\d+) dollars? per (\w+)\. .+ (\d+) dollars? plus (\d+) dollars? per \3\. After how many \w+ do they cost the same\?', p)
         require(m is not None, 'Unrecognized two-plan prompt')
         a1, b1, a2, b2 = int(m[1]), int(m[2]), int(m[4]), int(m[5])
         return Fraction(a1 - a2, b2 - b1)
@@ -318,7 +318,7 @@ def solve_linear_model_equation(public):
         slope, b = line_from_table(rows)
     else:
         story = [
-            (r'A taxi charges \$(\d+) plus \$(\d+) per mile\.', 1),
+            (r'A taxi charges (\d+) dollars? plus (\d+) dollars? per mile\.', 1),
             (r'A plant is (\d+) cm tall when planted and grows (\d+) cm each week\.', 1),
             (r'A candle is (\d+) cm long and burns (\d+) cm each hour\.', -1),
         ]
@@ -482,7 +482,7 @@ def review_linear_function_fixtures():
         (case('graph-domain-range', 'The graph shows the whole function f. What is the range of f?', choice('−2 ≤ y ≤ 7', '−1 ≤ y ≤ 7', '−2 ≤ x ≤ 4', '−2 < y < 7'), parabola), 'option-a'),
         (case('graph-domain-range', 'The graph shows the whole function f. What is the range of f?', choice('−3 < y ≤ 4', '−3 ≤ y < 4', '−3 ≤ y ≤ 4', '−4 < y ≤ 3'), line), 'option-a'),
         (case('graph-domain-range', 'The graph shows the whole function f. What is the domain of f?', choice('−3 < x ≤ 4', '−3 ≤ x < 4', '−3 ≤ x ≤ 4', '−3 < y ≤ 4'), line), 'option-b'),
-        (case('context-domain-range', 'A van carries at most 12 passengers, and each pays $5. The function F(p) = 5p gives the fares collected from p passengers. Which describes the range of F in this situation?',
+        (case('context-domain-range', 'A van carries at most 12 passengers, and each pays 5 dollars. The function F(p) = 5p gives the fares collected from p passengers. Which describes the range of F in this situation?',
               choice('Whole numbers from 0 to 60', 'Multiples of 5 from 0 to 60', 'All real numbers from 0 to 60', 'Whole numbers from 0 to 12')), 'option-b'),
         (case('context-domain-range', 'An 800-liter tank drains at 25 liters per minute. The function W(t) = 800 − 25t gives the water left after t minutes, until the tank is empty. Which describes the domain of W in this situation?',
               choice('0 ≤ t ≤ 800', '0 ≤ t ≤ 32', 't ≥ 0', 'Whole numbers from 0 to 32')), 'option-b'),
@@ -493,10 +493,10 @@ def review_linear_function_fixtures():
         (case('average-rate-formula', 'For f(x) = 3 · 2^x, what is the average rate of change of f from x = 1 to x = 4?'), Fraction(14)),
         (case('average-rate-formula', "A ball's height, in feet, t seconds after it is thrown up is h(t) = −16t² + 64t + 5. Find its average rate of change, in feet per second, from t = 1 to t = 3."), Fraction(0)),
         (case('average-rate-display', 'The graph of y = f(x) passes through A at x = 1 and B at x = 4. What is the average rate of change of f from x = 1 to x = 4?', figure=secant), Fraction(3)),
-        (case('linear-model-value', 'A gym charges a $40 joining fee plus $25 per month. Maya has paid $315 in all. For how many months has she been a member?'), Fraction(11)),
-        (case('linear-model-value', 'Phone plan A costs $30 plus $12 per month. Plan B costs $6 plus $18 per month. After how many months do they cost the same?'), Fraction(4)),
+        (case('linear-model-value', 'A gym charges a joining fee of 40 dollars plus 25 dollars per month. Maya has paid 315 dollars in all. For how many months has she been a member?'), Fraction(11)),
+        (case('linear-model-value', 'Phone plan A costs 30 dollars plus 12 dollars per month. Plan B costs 6 dollars plus 18 dollars per month. After how many months do they cost the same?'), Fraction(4)),
         (case('linear-model-value', "A rectangle's length is 3 cm more than twice its width. Its perimeter is 54 cm. What is its width, in centimeters?"), Fraction(8)),
-        (case('linear-model-value', 'A fair charges $7 to enter and $4 per ride. Ana has $60. What is the greatest number of rides she can take?'), Fraction(13)),
+        (case('linear-model-value', 'A fair charges 7 dollars to enter and 4 dollars per ride. Ana has 60 dollars. What is the greatest number of rides she can take?'), Fraction(13)),
         (case('linear-model-equation', 'The table shows a linear relationship. F is the fare, in dollars, for a ride of d miles. Which equation gives F in terms of d?',
               choice('F = 3d + 2', 'F = 2d + 3', 'F = 5d', 'F = 2d − 3'), taxi), 'option-b'),
         (case('formula-isolate', 'The formula A = ½bh gives the area A of a triangle with base b and height h. Which formula gives h in terms of A and b?',
@@ -514,11 +514,11 @@ def review_linear_function_fixtures():
         case('graph-domain-range', 'The graph shows the whole function f. What is the range of f?', choice('−1 ≤ y ≤ 7', '−2 ≤ x ≤ 4', '−2 < y < 7', '−3 ≤ y ≤ 7'), parabola),
         case('context-domain-range', 'A 800-liter tank drains at 25 liters per minute. The function W(t) = 800 − 25t gives the water left after t minutes, until the tank is empty. Which describes the domain of W in this situation?',
              choice('0 ≤ t ≤ 800', '0 ≤ t ≤ 32', 't ≥ 0', 'Whole numbers from 0 to 32')),
-        case('context-domain-range', 'A van carries at most 12 passengers, and each pays $5. The function F(p) = 6p gives the fares collected from p passengers. Which describes the domain of F in this situation?',
+        case('context-domain-range', 'A van carries at most 12 passengers, and each pays 5 dollars. The function F(p) = 6p gives the fares collected from p passengers. Which describes the domain of F in this situation?',
              choice('Whole numbers from 0 to 12', 'All real numbers from 0 to 12', 'Whole numbers from 0 to 60', 'All whole numbers')),
         case('function-relation-test', 'Which equation does not define y as a function of x?', choice('x = y² − 4', 'x = |y| + 1', 'y = |x − 2|', 'y = 3x + 1')),
         case('average-rate-display', 'The graph of y = f(x) passes through A at x = 1 and B at x = 3. What is the average rate of change of f from x = 1 to x = 4?', figure=secant),
-        case('linear-model-value', 'A gym charges a $40 joining fee plus $25 per month. Maya has paid $316 in all. For how many months has she been a member?'),
+        case('linear-model-value', 'A gym charges a joining fee of 40 dollars plus 25 dollars per month. Maya has paid 316 dollars in all. For how many months has she been a member?'),
         case('linear-model-equation', 'The table shows a linear relationship. F is the fare, in dollars, for a ride of d miles. Which equation gives F in terms of d?',
              choice('F = 3d + 2', 'F = 2d + 4', 'F = 5d', 'F = 2d − 3'), taxi),
         case('formula-isolate', 'The formula A = ½bh gives the area A of a triangle with base b and height h. Which formula gives h in terms of A and b?',

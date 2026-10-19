@@ -224,3 +224,9 @@ export function toTex(formula: string): string {
       .replace(/√/g, "\\sqrt ")
   );
 }
+
+/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
+export const withSeparators = (answer: string) =>
+  /^\d{4,}$/.test(answer)
+    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : answer;

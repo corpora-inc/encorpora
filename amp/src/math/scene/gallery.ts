@@ -673,4 +673,47 @@ export const parityFigures: SemanticFigure[] = [
   { kind: "base-ten", hundreds: 0, tens: 13, ones: 6 },
   { kind: "unit-array", rows: 7, columns: 6, splitAfterRow: 4 },
   { kind: "unit-array", rows: 3, columns: 9 },
+  {
+    kind: "histogram",
+    start: 0,
+    width: 10,
+    counts: [2, 5, 8, 6, 3],
+    unit: "minutes",
+  },
+  {
+    kind: "scaled-bar-graph",
+    categories: [
+      { label: "Mon", value: 30 },
+      { label: "Tue", value: 45 },
+      { label: "Wed", value: 15 },
+      { label: "Thu", value: 50 },
+    ],
+    step: 10,
+    max: 60,
+    unit: "cans",
+  },
+  {
+    kind: "picture-graph",
+    categories: [
+      { label: "Soccer", count: 25 },
+      { label: "Swim", count: 10 },
+      { label: "Tennis", count: 15 },
+    ],
+    key: 10,
+    unit: "students",
+  },
+  {
+    kind: "sort-shapes",
+    shapes: [
+      "circle",
+      "square",
+      "triangle",
+      "square",
+      "circle",
+      "triangle",
+      "circle",
+      "square",
+      "circle",
+    ],
+  },
 ];
