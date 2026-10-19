@@ -219,6 +219,8 @@ function edgeLabel(id: string, a: V3, b: V3, center: V3, text: string): Prim {
     at: mid,
     text,
     font: "sans",
+    // Large: a box figure often shrinks to fit above the answer dock.
+    size: "lg",
     bold: unknown,
     color: unknown ? "warm" : "ink",
     halo: true,

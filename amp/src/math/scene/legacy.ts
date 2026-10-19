@@ -82,6 +82,8 @@ export function legacyScene(
       return {
         v: 1,
         width: 320,
+        // Labels stay at least 12 px when the figure shrinks to 150 px.
+        maxHeight: 230,
         elements: [
           {
             type: "isoSolid",
@@ -99,6 +101,7 @@ export function legacyScene(
       return {
         v: 1,
         width: 320,
+        maxHeight: 230,
         elements: [
           {
             type: "isoSolid",
@@ -262,8 +265,9 @@ export function quadrantScene(
 ): Scene {
   return {
     v: 1,
-    width: 320,
-    maxHeight: 320,
+    width: 300,
+    // As tall as the grid it replaces (280 px), so the answer dock fits.
+    maxHeight: 280,
     elements: [
       {
         type: "graph",

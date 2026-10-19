@@ -350,7 +350,7 @@ export function generateVolumeCoordinateProblem(
                     {
                       from: [0, 0] as [number, number],
                       to: [x, y] as [number, number],
-                      labels: "derived" as const,
+                      labels: "none" as const,
                       color: "warm" as const,
                     },
                   ],
@@ -361,12 +361,12 @@ export function generateVolumeCoordinateProblem(
         steps: [
           {
             caption:
-              "Go across along the horizontal axis until you are straight below P: {grid.slope.0.run.label}.",
+              "Go across along the horizontal axis until you are straight below P. That distance is the first coordinate.",
             actions: [{ do: "trace", target: "grid.slope.0.run" }],
           },
           {
             caption:
-              "Then go straight up to P: {grid.slope.0.rise.label}. Across first, then up.",
+              "Then go straight up to P. That distance is the second coordinate: across first, then up.",
             actions: [{ do: "trace", target: "grid.slope.0.rise" }],
             audience: "lesson",
           },

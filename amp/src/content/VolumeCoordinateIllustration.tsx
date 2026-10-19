@@ -125,8 +125,8 @@ const scenes: Record<VolumeCoordinateIllustrationKind, () => Scene> = {
           "axis",
           "dash",
         ),
-        label("across", [1, 0], "2", [0, 1]),
-        label("up", [2, 2.5], "5", [-1, 0]),
+        { ...label("across", [1, 0], "2", [0, 1]), offset: [0, -8] } as Element,
+        { ...label("up", [2, 2.5], "5", [-1, 0]), offset: [10, 0] } as Element,
       ],
       title: "Across 2, then up 5",
     };

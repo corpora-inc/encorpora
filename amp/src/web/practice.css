@@ -902,7 +902,7 @@ nav button {
    Coordinate planes draw through the scene renderer since #1177. */
 .problem-content .graphical-figure[data-kind="coordinate-plane"],
 .problem-content .scene-figure[data-kind="coordinate-plane"],
-.problem-content .geometry-figure[data-kind="quadrant-grid"] {
+.problem-content .scene-figure[data-kind="quadrant-grid"] {
   min-height: 130px;
   flex-shrink: 0;
 }
@@ -967,19 +967,11 @@ nav button {
 .choice-model .function-display svg {
   max-height: 150px;
 }
-/* A coordinate grid is read label by label: give it more of the screen. */
-.problem-content .geometry-figure[data-kind="quadrant-grid"] {
-  height: min(36dvh, 280px);
-  max-height: 280px;
-}
-.choice-model .geometry-figure[data-kind="quadrant-grid"] {
-  height: min(32dvh, 240px);
-}
 
 /* Lettered shapes and puzzle pieces are compared side by side at one scale:
- * give them the room a coordinate grid gets. */
-.problem-content .shape-figure {
+ * keep them at least as tall as a coordinate grid. */
+.problem-content .scene-figure[data-kind="plane-shapes"],
+.problem-content .scene-figure[data-kind="shape-puzzle"] {
   min-height: 130px;
-  height: min(38dvh, 300px);
-  max-height: 300px;
+  flex-shrink: 0;
 }
