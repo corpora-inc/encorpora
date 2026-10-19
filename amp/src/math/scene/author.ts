@@ -1,6 +1,8 @@
 import {
   sceneSchema,
+  type Angle,
   type AreaModel,
+  type Protractor,
   type Clock,
   type Element,
   type Fn,
@@ -8,6 +10,8 @@ import {
   type Graph,
   type LineSpec,
   type NumberLine,
+  type PolyArea,
+  type Term,
   type Point,
   type Scene,
   type Table,
@@ -339,6 +343,14 @@ export const areaModel = (
     ...options,
   } as AreaModel);
 
+/** polyArea([[1, 1], [3, 0]], [[1, 1], [2, 0]]) is (x + 3)(x + 2) as tiles;
+ * the region terms stay masked unless a lesson reveals them. */
+export const polyArea = (
+  across: Term[],
+  down: Term[],
+  options: Partial<Omit<PolyArea, "type" | "across" | "down">> = {},
+) => new Simple<PolyArea>({ type: "polyArea", across, down, ...options });
+
 class Simple<T extends Element> extends Builder<T> {}
 export const array = (
   rows: number,
@@ -372,3 +384,18 @@ export const fractionBar = (
 ) => new Simple<FractionBar>({ type: "fractionBar", bars });
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
+
+/** A protractor on a vertex: one ray on its baseline, the other crossing
+ * the scales. */
+export const protractor = (
+  rays: [number, number],
+  labels?: [string, string, string],
+) =>
+  new Simple<Protractor>({
+    type: "protractor",
+    rays,
+    ...(labels ? { labels } : {}),
+  });
+/** Rays from one vertex with angle marks between chosen pairs. */
+export const angle = (spec: Omit<Angle, "type">) =>
+  new Simple<Angle>({ type: "angle", ...spec });
