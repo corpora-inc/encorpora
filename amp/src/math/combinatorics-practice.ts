@@ -264,14 +264,17 @@ function permutationCase(r: Random): Case {
     prompt = `A club with ${n} members will choose ${list(slots.map((s) => `a ${s}`))}. No member can hold more than one office. In how many different ways can the offices be filled?`;
     reason =
       "Order matters: swapping two members between offices gives a different result.";
-    positions = `The ${slots[0]} can be any of the ${n} members. Once that office is filled, ${list(slots.slice(1).map((s, i) => `${n - 1 - i} members remain for the ${s}`))}.`;
+    positions = `The ${slots[0]} can be any of the ${n} members. After that, ${n - 1} members remain for the ${slots[1]}${slots
+      .slice(2)
+      .map((s, i) => `, then ${n - 2 - i} for the ${s}`)
+      .join("")}.`;
   } else if (mode === 1) {
     n = r(4, 10);
     k = r(2, 3);
     prompt = `${cap(count(n))} runners finish a race with no ties. In how many different ways can ${list(places.slice(0, k))} places be awarded?`;
     reason =
       "Order matters: the same runners in different places give a different result.";
-    positions = `First place can go to any of the ${n} runners. Then ${list(places.slice(1, k).map((p, i) => `${n - 1 - i} runners remain for ${p} place`))}.`;
+    positions = `First place can go to any of the ${n} runners. After that, ${n - 1} runners remain for second place${k > 2 ? `, then ${n - 2} for third place` : ""}.`;
   } else if (mode === 2) {
     n = r(3, 8);
     k = n;
@@ -361,7 +364,7 @@ function groups(n: number, k: number, what: string) {
     bottom = product(falling(k, k)),
     value = top / bottom;
   if (k === n)
-    return `There is exactly 1 way to choose all ${n} of the ${n} ${what}.`;
+    return `There is exactly 1 way to choose ${n === 2 ? "both" : `all ${n}`} ${what}.`;
   return k === 1
     ? `There are ${n} ways to choose 1 of the ${n} ${what}.`
     : `Choose ${k} of the ${n} ${what}: (${times(falling(n, k))}) ÷ (${times(falling(k, k))}) = ${top} ÷ ${bottom} = ${value} ways.`;
@@ -380,7 +383,7 @@ function selectionCase(r: Random): Case {
   const quality = club ? "juniors" : "red";
   const condition =
     k === size
-      ? `all ${size} are ${quality}`
+      ? `${size === 2 ? "both" : `all ${size}`} are ${quality}`
       : k === 0
         ? `none of them ${club ? "is a junior" : "is red"}`
         : `exactly ${k} ${club ? (k === 1 ? "is a junior" : "are juniors") : k === 1 ? "is red" : "are red"}`;

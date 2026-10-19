@@ -51,7 +51,7 @@ export const combinatoricsLessons: Lesson[] = [
         title: "Repeated symbols and when not to multiply",
         paragraphs: [
           "A code is a sequence of positions, each filled with a symbol. When symbols may repeat, every position has the full set of options. A 3-position code using the digits 0 through 9 has 10 × 10 × 10 = 1000 possibilities, from 000 to 999. Use one factor for each position.",
-          "Multiply only when one choice is made at every stage. If you choose one item from a single combined list, such as one sandwich or one soup, there is one stage: add the lists, giving 4 + 3 = 7 options. If an earlier choice removes options from a later stage, multiply the numbers actually available; that case is called an arrangement without repetition.",
+          "Multiply only when one choice is made at every stage. If you choose one item from a single combined list, such as one sandwich or one soup from 4 sandwiches and 3 soups, there is one stage: add the lists, giving 4 + 3 = 7 options. If an earlier choice removes options from a later stage, multiply the numbers actually available; that case is called an arrangement without repetition.",
         ],
       },
     ],

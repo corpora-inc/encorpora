@@ -154,14 +154,14 @@ def parse_selection(prompt):
     if m:
         a, b, k, quality, condition = int(m[1]), int(m[2]), int(m[3]), 'junior', m[5]
         require(int(m[4]) == k, 'Group size mismatch')
-        conditions = {f'all {k} are juniors': lambda x: x == k, 'none of them is a junior': lambda x: x == 0}
+        conditions = {('both' if k == 2 else f'all {k}') + ' are juniors': lambda x: x == k, 'none of them is a junior': lambda x: x == 0}
         exact = re.fullmatch(r'exactly (\d) (is a junior|are juniors)', condition)
     else:
         m = re.fullmatch(r'A bag holds (\d) red marbles and (\d) blue marbles\. ([A-Z][a-z]+) marbles are drawn at random at the same time, so every set of (\d) marbles is equally likely\. What is the probability that (.+)\?', prompt)
         require(m is not None, 'Unrecognized selection prompt')
         a, b, k, condition = int(m[1]), int(m[2]), int(m[4]), m[5]
         require(NUMBER_WORDS.get(m[3].lower()) == k, 'Draw count mismatch')
-        conditions = {f'all {k} are red': lambda x: x == k, 'none of them is red': lambda x: x == 0}
+        conditions = {('both' if k == 2 else f'all {k}') + ' are red': lambda x: x == k, 'none of them is red': lambda x: x == 0}
         exact = re.fullmatch(r'exactly (\d) (is red|are red)', condition)
     require(2 <= a <= 8 and 2 <= b <= 8 and 2 <= k <= min(4, a + b - 1), 'Selection outside scope')
     if exact:
@@ -449,6 +449,7 @@ def review_explanation(problem):
 def review_independent_outcomes(problem):
     """Listed favorable outcomes must be exactly the outcomes the stated event selects."""
     public = problem['public']
+    counts = []
     for step in problem['explanation'][:2]:
         m = re.fullmatch(r'The (cube|spinner|coin) (.+?) for (\d+) of the (\d+) equally likely outcomes: ([a-z0-9, ]+)\. Its probability is (.+)\.', step)
         require(m is not None, 'Missing event probability step')
@@ -459,6 +460,11 @@ def review_independent_outcomes(problem):
         favorable = [str(x) for x in outcomes[m[1]] if test(x)]
         require(series(m[5]) == favorable and int(m[3]) == len(favorable) and int(m[4]) == len(outcomes[m[1]]), 'Favorable outcomes misstated')
         require(value(m[6].split(' = ')[-1]) == Fraction(len(favorable), len(outcomes[m[1]])), 'Event probability misstated')
+        counts.append((len(favorable), len(outcomes[m[1]])))
+    check = [s for s in problem['explanation'] if s.startswith('Check by counting pairs: ')]
+    if check:
+        m = re.fullmatch(r'Check by counting pairs: there are (\d+) × (\d+) = \d+ equally likely pairs of results, and (\d+) × (\d+) = \d+ of them (?:is|are) favorable, giving .+\.', check[0])
+        require(m is not None and [(int(m[3]), int(m[1])), (int(m[4]), int(m[2]))] == counts, 'Pair check uses the wrong counts')
 
 
 def review_problem(problem):
@@ -468,18 +474,25 @@ def review_problem(problem):
     return chains
 
 
+_EXPORT = None
+
+
 def content(data=None):
+    """Authored content, exported once per process; callers receive a private copy."""
+    global _EXPORT
     if data is not None:
         return data
-    app = Path(__file__).resolve().parent.parent
-    return json.loads(subprocess.check_output(['node', '--import', 'tsx', 'scripts/combinatorics-content-oracle.ts'], cwd=app, text=True))
+    if _EXPORT is None:
+        app = Path(__file__).resolve().parent.parent
+        _EXPORT = subprocess.check_output(['node', '--import', 'tsx', 'scripts/combinatorics-content-oracle.ts'], cwd=app, text=True)
+    return json.loads(_EXPORT)
 
 
 WORKSHEET_BREADTH = {
     'counting-principle': lambda answers, prompts: {'code', 'trip', 'menu'} <= {('code' if p.startswith('A code') else 'trip' if p.startswith('A trip') else 'menu') for p in prompts},
     'permutation-count': lambda answers, prompts: any('on a shelf' in p for p in prompts) and any('frames' in p for p in prompts) and any('club' in p for p in prompts),
     'combination-count': lambda answers, prompts: any('handshakes' in p for p in prompts) and any('committee' in p for p in prompts),
-    'combination-probability': lambda answers, prompts: any('none of them' in p for p in prompts) and any('exactly' in p for p in prompts) and any(re.search(r'that all \d', p) for p in prompts),
+    'combination-probability': lambda answers, prompts: any('none of them' in p for p in prompts) and any('exactly' in p for p in prompts) and any(re.search(r'that (?:all \d|both) are', p) for p in prompts),
     'independent-events-probability': lambda answers, prompts: any('at least one' in p for p in prompts) and any('does not' in p for p in prompts) and any('coin' in p for p in prompts),
     'expected-value': lambda answers, prompts: any(a < 0 for a in answers) and any('net gain' not in p for p in prompts) and any(a.denominator > 1 for a in answers),
 }
@@ -505,6 +518,10 @@ def review_combinatorics_content(data=None):
         require(Fraction(worked['answer'].replace('−', '-')) == expected, 'Worked example answer: ' + template)
         for step in worked['steps']:
             chains += equalities(step)
+        # Lesson prose claims are checked too; n! is expanded by direct multiplication.
+        for section in lesson['sections']:
+            for paragraph in section['paragraphs']:
+                chains += equalities(re.sub(r'(\d+)!', lambda f: str(size(itertools.permutations(range(int(f[1]))))), paragraph))
     chains += review_figures(data['figures'])
     return {'worksheets': len(data['worksheets']), 'checkedEqualities': chains, 'lessons': len(lessons), 'figures': len(data['figures'])}
 
@@ -558,6 +575,7 @@ def review_content_mutations():
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][1] = bad['worksheets'][0]['problems'][0]; mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][0]['explanation'].append('A false check: 4 × 3 = 13.'); mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][-1]['problems'][0]['answer'] = '999'; mutants.append(bad)
+    bad = copy.deepcopy(data); bad['lessons'][1]['sections'][2]['paragraphs'][0] = bad['lessons'][1]['sections'][2]['paragraphs'][0].replace('= 120', '= 121'); mutants.append(bad)
     for index, kind in enumerate(f['kind'] for f in data['figures']):
         bad = copy.deepcopy(data)
         html = bad['figures'][index]['html']
