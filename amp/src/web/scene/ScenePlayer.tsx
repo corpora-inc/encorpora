@@ -11,7 +11,6 @@ import {
 import { MathText } from "../MathText";
 import { SceneSvg } from "./SceneSvg";
 import { COMPACT_WIDTH, useCompact } from "./useCompact";
-import "./scene-player.css";
 
 const reducedQuery = "(prefers-reduced-motion: reduce)";
 /** Motion tokens from tokens.css (durations and easing). */

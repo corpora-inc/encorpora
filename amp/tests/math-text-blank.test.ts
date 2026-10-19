@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { segments, toTex } from "../src/web/MathText";
-import { displayAnswer } from "../src/web/display-answer";
+import { displayAnswer } from "../src/web/ProblemLesson";
 
 // A missing number is part of its equation: one formula, typeset spacing.
 test("a blank and its equation typeset as one formula", () => {

@@ -1,5 +1,7 @@
 import { factoringWorksheet } from "./factoring-worksheets";
 import { factoringTemplates } from "../math/factoring-practice";
+import { realNumberWorksheet } from "./real-number-worksheets";
+import { realNumberTemplates } from "../math/real-number-practice";
 import { numberSystemWorksheet } from "./number-system-worksheets";
 import { numberSystemTemplates } from "../math/number-system-practice";
 import { earlyOperationsTemplates } from "../math/early-operations-practice";
@@ -73,59 +75,69 @@ export function publicationHtml(
   const problems = lesson.templateIds.flatMap((id) =>
     factoringTemplates.some((t) => t.id === id)
       ? factoringWorksheet(id, lesson.id, edition)
-      : numberSystemTemplates.some((t) => t.id === id)
-        ? numberSystemWorksheet(id, lesson.id, edition)
-        : ratioRateTemplates.some((t) => t.id === id)
-          ? ratioRateWorksheet(id, lesson.id, edition)
-          : patternFunctionTemplates.some((t) => t.id === id)
-            ? patternFunctionWorksheet(id, lesson.id, edition)
-            : equationTemplates.some((t) => t.id === id)
-              ? equationWorksheet(id, lesson.id, edition)
-              : distinctWorksheetTemplates.some((t) => t.id === id)
-                ? distinctWorksheet(id, lesson.id, edition)
-                : combinatoricsTemplates.some((t) => t.id === id)
-                  ? combinatoricsWorksheet(id, lesson.id, edition)
-                  : radicalTemplates.some((t) => t.id === id)
-                    ? radicalWorksheet(id, lesson.id, edition)
-                    : rationalTemplates.some((t) => t.id === id)
-                      ? rationalWorksheet(id, lesson.id, edition)
-                      : circleMeasurementTemplates.some((t) => t.id === id)
-                        ? circleMeasurementWorksheet(id, lesson.id, edition)
-                        : integerExponentTemplates.some((t) => t.id === id)
-                          ? integerExponentWorksheet(id, lesson.id, edition)
-                          : descriptiveStatisticsTemplates.some(
-                                (t) => t.id === id,
-                              )
-                            ? descriptiveStatisticsWorksheet(
-                                id,
-                                lesson.id,
-                                edition,
-                              )
-                            : percentChangeTemplates.some((t) => t.id === id)
-                              ? percentChangeWorksheet(id, lesson.id, edition)
-                              : linearSystemTemplates.some((t) => t.id === id)
-                                ? linearSystemWorksheet(id, lesson.id, edition)
-                                : inequalityTemplates.some((t) => t.id === id)
-                                  ? inequalityWorksheet(id, lesson.id, edition)
-                                  : absoluteValueTemplates.some(
-                                        (t) => t.id === id,
-                                      )
-                                    ? absoluteValueWorksheet(
+      : realNumberTemplates.some((t) => t.id === id)
+        ? realNumberWorksheet(id, lesson.id, edition)
+        : numberSystemTemplates.some((t) => t.id === id)
+          ? numberSystemWorksheet(id, lesson.id, edition)
+          : ratioRateTemplates.some((t) => t.id === id)
+            ? ratioRateWorksheet(id, lesson.id, edition)
+            : patternFunctionTemplates.some((t) => t.id === id)
+              ? patternFunctionWorksheet(id, lesson.id, edition)
+              : equationTemplates.some((t) => t.id === id)
+                ? equationWorksheet(id, lesson.id, edition)
+                : distinctWorksheetTemplates.some((t) => t.id === id)
+                  ? distinctWorksheet(id, lesson.id, edition)
+                  : combinatoricsTemplates.some((t) => t.id === id)
+                    ? combinatoricsWorksheet(id, lesson.id, edition)
+                    : radicalTemplates.some((t) => t.id === id)
+                      ? radicalWorksheet(id, lesson.id, edition)
+                      : rationalTemplates.some((t) => t.id === id)
+                        ? rationalWorksheet(id, lesson.id, edition)
+                        : circleMeasurementTemplates.some((t) => t.id === id)
+                          ? circleMeasurementWorksheet(id, lesson.id, edition)
+                          : integerExponentTemplates.some((t) => t.id === id)
+                            ? integerExponentWorksheet(id, lesson.id, edition)
+                            : descriptiveStatisticsTemplates.some(
+                                  (t) => t.id === id,
+                                )
+                              ? descriptiveStatisticsWorksheet(
+                                  id,
+                                  lesson.id,
+                                  edition,
+                                )
+                              : percentChangeTemplates.some((t) => t.id === id)
+                                ? percentChangeWorksheet(id, lesson.id, edition)
+                                : linearSystemTemplates.some((t) => t.id === id)
+                                  ? linearSystemWorksheet(
+                                      id,
+                                      lesson.id,
+                                      edition,
+                                    )
+                                  : inequalityTemplates.some((t) => t.id === id)
+                                    ? inequalityWorksheet(
                                         id,
                                         lesson.id,
                                         edition,
                                       )
-                                    : (rightTriangleWorksheetProblems(
-                                        id,
-                                        lesson.id,
-                                        edition,
-                                      ) ??
-                                      Array.from({ length: 12 }, (_, i) =>
-                                        generateProblem(
+                                    : absoluteValueTemplates.some(
+                                          (t) => t.id === id,
+                                        )
+                                      ? absoluteValueWorksheet(
                                           id,
-                                          `print:${lesson.id}:${edition}:${i}`,
-                                        ),
-                                      )),
+                                          lesson.id,
+                                          edition,
+                                        )
+                                      : (rightTriangleWorksheetProblems(
+                                          id,
+                                          lesson.id,
+                                          edition,
+                                        ) ??
+                                        Array.from({ length: 12 }, (_, i) =>
+                                          generateProblem(
+                                            id,
+                                            `print:${lesson.id}:${edition}:${i}`,
+                                          ),
+                                        )),
   );
   const kindLabel =
     kind === "lesson"

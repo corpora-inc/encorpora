@@ -4,6 +4,7 @@ import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
+import { bivariateLessons } from "./bivariate-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
@@ -12,7 +13,9 @@ import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
+import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { realNumberLessons } from "./real-number-lessons";
 import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
@@ -61,6 +64,11 @@ export interface Lesson {
       | "factoring-gcf"
       | "factoring-monic"
       | "factoring-nonmonic"
+      | "repeating-decimal-shift"
+      | "root-zoom"
+      | "root-solutions"
+      | "decimal-point-shift"
+      | "scientific-regroup"
       | "prime-factor-venn"
       | "gcf-area"
       | "multiple-jumps"
@@ -124,6 +132,7 @@ export interface Lesson {
       | "comparison-place-chart"
       | "large-place-value-chart"
       | DataIllustration
+      | SceneIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -592,6 +601,7 @@ export const lessons: readonly Lesson[] = [
   ...linePlotLessons,
   ...distributionLessons,
   ...inferenceLessons,
+  ...bivariateLessons,
   ...radicalLessons,
   ...partWholeLessons,
   ...decimalLessons,
@@ -603,6 +613,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...realNumberLessons,
   ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,

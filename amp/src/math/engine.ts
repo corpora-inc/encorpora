@@ -8,6 +8,10 @@ import {
   generateEquationProblem,
 } from "./equation-practice";
 import {
+  bivariateTemplates,
+  generateBivariateProblem,
+} from "./bivariate-practice";
+import {
   inferenceTemplates,
   generateInferenceProblem,
 } from "./inference-practice";
@@ -47,6 +51,10 @@ import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
+import {
+  realNumberTemplates,
+  generateRealNumberProblem,
+} from "./real-number-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import {
@@ -283,6 +291,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...realNumberTemplates,
   ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
@@ -306,6 +315,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
+  ...bivariateTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -452,6 +462,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
+    ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
     ...timeMoneyTemplates,
@@ -459,6 +470,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...realNumberTemplates,
     ...numberSystemTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
@@ -519,6 +531,8 @@ function generateRawProblem(
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
+  if (bivariateTemplates.some((t) => t.id === templateId))
+    return generateBivariateProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))
@@ -527,6 +541,8 @@ function generateRawProblem(
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (realNumberTemplates.some((t) => t.id === templateId))
+    return generateRealNumberProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))

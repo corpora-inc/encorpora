@@ -5,9 +5,6 @@ import type { ProblemLessonView } from "../content/problem-lessons";
 import { Figure } from "./Figure";
 import { MathText } from "./MathText";
 import { ScenePlayer } from "./scene/ScenePlayer";
-import { displayAnswer } from "./display-answer";
-
-export { displayAnswer };
 
 const LessonAnimation = lazy(
   () => import("./lesson-animation/LessonAnimation"),
@@ -69,8 +66,8 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           <AnimationBoundary
             key={JSON.stringify(animation)}
             fallback={
-              animation.kind === "exchange" ? null : (
-                <Figure figure={lesson.example.figure!} />
+              animation.kind === "exchange" || !lesson.example.figure ? null : (
+                <Figure figure={lesson.example.figure} />
               )
             }
           >
@@ -115,3 +112,9 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
     </article>
   );
 }
+
+/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
+export const displayAnswer = (answer: string) =>
+  /^\d{4,}$/.test(answer)
+    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : answer;

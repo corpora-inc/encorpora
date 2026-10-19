@@ -3,6 +3,7 @@ import "./components/number-line";
 import "./components/graph";
 import "./components/models";
 import "./components/poly-area";
+import "./components/table";
 export * from "./spec";
 export {
   layoutScene,

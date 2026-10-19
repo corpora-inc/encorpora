@@ -13,6 +13,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
   NumberSystemIllustration,
   numberSystemIllustrationKinds,
@@ -43,6 +44,8 @@ import {
   isDataIllustration,
 } from "./data-display-illustrations";
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
+import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
+import { SceneFigure } from "../web/scene/SceneFigure";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
@@ -55,6 +58,14 @@ export function LessonIllustration({
   if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
   if (kind === "factoring-nonmonic")
     return <FactoringIllustration kind="nonmonic" />;
+  if (
+    kind === "repeating-decimal-shift" ||
+    kind === "root-zoom" ||
+    kind === "root-solutions" ||
+    kind === "decimal-point-shift" ||
+    kind === "scientific-regroup"
+  )
+    return <RealNumberIllustration kind={kind} />;
   if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
     return (
       <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
@@ -63,6 +74,8 @@ export function LessonIllustration({
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (isSceneIllustration(kind))
+    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||

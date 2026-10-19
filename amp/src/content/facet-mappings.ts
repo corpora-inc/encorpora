@@ -11,10 +11,12 @@ import { polygonFacetMappings } from "./polygon-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
+import { bivariateFacetMappings } from "./bivariate-coverage";
 import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
 import { combinatoricsFacetMappings } from "./combinatorics-coverage";
+import { realNumberFacetMappings } from "./real-number-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
 import { multiplyDivideFacetMappings } from "./multiply-divide-coverage";
@@ -40,6 +42,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...polygonFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
+  ...bivariateFacetMappings,
   ...linePlotFacetMappings,
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
@@ -53,6 +56,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factsFacetMappings,
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
+  ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
   ...ratioRateFacetMappings,
   ...patternFunctionFacetMappings,
