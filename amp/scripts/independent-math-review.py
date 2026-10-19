@@ -523,18 +523,22 @@ def review(stream):
     print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
-    publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
+    # `npm run review:math` rebuilds artifacts/publications first, so the print
+    # review sees current output. Unit tests point this at an absent directory
+    # so their result never depends on whatever happens to be on disk.
+    amp_root = Path(__file__).resolve().parent.parent
+    publications = Path(os.environ.get('AMP_PUBLICATIONS_DIR') or amp_root / 'artifacts/publications')
     if publications.exists():
         reader = subprocess.run(
             ['node', '--import', 'tsx', 'scripts/verify-reader-typesetting.ts'],
-            cwd=publications.parent.parent,
-            env={**os.environ, 'READER_REVIEW_OUT': str(publications.parent / 'reader-typesetting-review')},
+            cwd=amp_root,
+            env={**os.environ, 'READER_REVIEW_OUT': str(amp_root / 'artifacts/reader-typesetting-review')},
             capture_output=True, text=True, timeout=120)
         require(reader.returncode == 0, f'Reader typesetting review failed: {reader.stderr}')
         print('Independent reader typesetting review: ' + reader.stdout.strip(), file=sys.stderr)
         print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
     else:
-        print('Reader typesetting and print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
+        print(f'Reader typesetting and print layout/PDF review not run: no publication export directory at {publications}; npm run review:math builds it.', file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 
