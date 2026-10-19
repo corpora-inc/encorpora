@@ -9,6 +9,7 @@ import type {
   Scene,
 } from "./spec";
 import { typeset, type Typeset } from "./type";
+import { frameAt } from "./timeline";
 
 /** A primitive as components emit it: test hooks and collision hints added. */
 export type Prim = Primitive & {
@@ -27,7 +28,8 @@ export type CompileContext = {
 };
 export type ComponentDef<C> = {
   compile(c: C, ctx: CompileContext): Prim[];
-  describe(c: C, reveal: boolean): string;
+  /** `hidden(part)` is true for parts not yet shown (a timeline's start frame). */
+  describe(c: C, reveal: boolean, hidden: (part: string) => boolean): string;
   /** Largest useful pixels per math unit (a ten-frame cell, a clock radius). */
   maxScale?(c: C): number;
 };
@@ -778,6 +780,22 @@ export function layoutScene(
     const all = [...items, ...placed.texts];
     const box = empty();
     for (const d of all) itemBox(d, box);
+    // Reserve room for every frame of the walkthrough: moved parts included.
+    const steps = scene.steps ?? [];
+    if (steps.some((st) => st.actions.some((a) => a.do === "move")))
+      for (let k = 0; k < steps.length; k++) {
+        const states = frameAt(
+          { width: 0, height: 0, scale, items: all, dropped: [] },
+          steps,
+          k,
+          1,
+        );
+        for (const d of all) {
+          const st = states[d.id];
+          if (!st?.dx && !st?.dy) continue;
+          itemBox(translate(d, st.dx ?? 0, st.dy ?? 0), box);
+        }
+      }
     return {
       all,
       box,
@@ -872,10 +890,20 @@ function shiftPath(d: string, dx: number, dy: number) {
 }
 
 /** A component's own description, or nothing for a bare primitive. */
-export function describeScene(scene: Scene, reveal = false) {
-  const parts = scene.elements.flatMap((e) =>
-    isComponent(e) ? [componentDef(e.type)!.describe(e, reveal)] : [],
-  );
+export function describeScene(
+  scene: Scene,
+  reveal = false,
+  hidden: (id: string) => boolean = () => false,
+) {
+  const parts = scene.elements.flatMap((e, index) => {
+    const id = elementId(e, index);
+    if (!isComponent(e) || hidden(id)) return [];
+    return [
+      componentDef(e.type)!.describe(e, reveal, (part) =>
+        hidden(`${id}.${part}`),
+      ),
+    ];
+  });
   return [
     scene.title ? `${scene.title.replace(/\.$/, "")}.` : "",
     ...parts,

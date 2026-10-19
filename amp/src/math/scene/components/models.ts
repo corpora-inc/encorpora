@@ -145,7 +145,7 @@ registerComponent("areaModel", {
     }
     return prims;
   },
-  describe(c, reveal) {
+  describe(c, reveal, hidden) {
     const A = c.acrossLabels?.join(" + ") ?? c.across.map(num).join(" + "),
       D = c.downLabels?.join(" + ") ?? c.down.map(num).join(" + ");
     const out = [

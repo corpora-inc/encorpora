@@ -117,6 +117,10 @@ import {
   generateQuadraticProblem,
 } from "./quadratic-practice";
 import {
+  absoluteValueTemplates,
+  generateAbsoluteValueProblem,
+} from "./absolute-value-practice";
+import {
   measurementTemplates,
   generateMeasurementProblem,
 } from "./measurement-practice.js";
@@ -137,6 +141,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
+import { makeTenHops } from "./scene/explanations";
 import { polish } from "./polish";
 import type {
   GeneratedProblem,
@@ -289,6 +294,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
+  ...absoluteValueTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
@@ -460,6 +466,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
+    ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -551,6 +558,8 @@ function generateRawProblem(
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
+  if (absoluteValueTemplates.some((t) => t.id === templateId))
+    return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
     return generateMeasurementProblem(templateId, seed);
   if (algebraTemplates.some((t) => t.id === templateId))
@@ -601,6 +610,8 @@ function generateRawProblem(
       answer = `${a + b}`;
       hint = addWithinTwentyHint(a, b);
       explanation = addWithinTwenty(a, b);
+      // Hint and lesson walk the learner's own jumps (docs/figures.md).
+      figure = { kind: "scene", scene: makeTenHops(a, b) };
       break;
     }
     case "subtract-within-20": {

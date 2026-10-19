@@ -2,6 +2,7 @@ import React from "react";
 import type { Drawn, Layout } from "../../math/scene/layout";
 import type { FillRole, InkRole } from "../../math/scene/spec";
 import type { RunFont } from "../../math/scene/type";
+import type { ItemState } from "../../math/scene/timeline";
 
 /** Every paint is a theme role; print pages carry the light roles. */
 const ink: Record<InkRole, string> = {
@@ -47,20 +48,7 @@ const dataAttrs = (d: Drawn) =>
     Object.entries(d.data ?? {}).map(([k, v]) => [`data-${k}`, v]),
   );
 
-/** Per-element animation state, applied by the timeline player. */
-export type ItemState = {
-  opacity?: number;
-  /** Pixel translation. */
-  dx?: number;
-  dy?: number;
-  /** Fraction of a stroke drawn, for trace. */
-  drawn?: number;
-  /** Text shown in place of the label (count up). */
-  text?: string;
-  fill?: FillRole;
-  stroke?: InkRole;
-  highlight?: boolean;
-};
+export type { ItemState };
 
 function Item({
   d,

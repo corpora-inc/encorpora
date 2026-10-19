@@ -1,3 +1,4 @@
+import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
@@ -71,6 +72,7 @@ try {
     for (const template of [
       ...choiceTemplates,
       ...linearSystemTemplates,
+      ...absoluteValueTemplates,
       ...algebraTemplates.filter(
         (t) => t.requiredResponseCapability === "single-choice-v1",
       ),

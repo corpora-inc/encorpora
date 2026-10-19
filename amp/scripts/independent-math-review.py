@@ -16,6 +16,7 @@ from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
 from quadratic_math_oracle import QUADRATIC, QUADRATIC_CHOICE, solve_quadratic, review_quadratic_fixtures
+from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, review_absolute_value_fixtures, review_absolute_value_content, review_absolute_value_content_mutations
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
@@ -74,6 +75,8 @@ def require(condition, message):
     if not condition:
         raise ValueError(message)
 
+
+SUPPORTED |= ABSOLUTE_VALUE
 
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
@@ -140,6 +143,8 @@ def solve(public):
         return solve_polynomial(public)
     if template in QUADRATIC:
         return solve_quadratic(public)
+    if template in ABSOLUTE_VALUE:
+        return solve_absolute_value(public)
     if template in MEASUREMENT:
         return solve_measurement(public)
     if template in ALGEBRA:
@@ -219,6 +224,19 @@ def solve(public):
         return figure['count']
     if template == 'add-within-20':
         require(len(numbers) == 2 and min(numbers) >= 0 and sum(numbers) <= 20, 'Addition bounds')
+        # The scene: a 0–20 number line marked at the greater addend, with
+        # jumps from it that total the other addend; the sum stays unknown.
+        require(figure['kind'] == 'scene', 'Number-line scene required')
+        (line,) = figure['scene']['elements']
+        require(line['type'] == 'numberLine' and line['min'] == 0 and line['max'] == 20, 'A 0 to 20 number line')
+        require([m['at'] for m in line['marks']] == [max(numbers)], 'The greater addend is marked')
+        position = max(numbers)
+        for hop in line.get('hops', []):
+            require(hop['from'] == position, 'Jumps continue from the last landing')
+            position += hop['by']
+        require(position == sum(numbers), 'Jumps total the other addend')
+        hops = line.get('hops', [])
+        require(not hops or hops[-1].get('landing', 'derived') != 'shown', 'The sum stays unknown')
         return sum(numbers)
     if template == 'subtract-within-20':
         a, b = numbers
@@ -361,6 +379,8 @@ def review(stream):
     review_algebra_fixtures()
     review_measurement_fixtures()
     review_quadratic_fixtures()
+    review_absolute_value_fixtures()
+    review_absolute_value_content_mutations()
     review_polynomial_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
@@ -454,7 +474,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in ANGLES_CHOICE | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in ANGLES_CHOICE | ABSOLUTE_VALUE | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -498,20 +518,25 @@ def review(stream):
     print('Independent linear-system worksheet/figure review: ' + json.dumps(review_linear_system_content()), file=sys.stderr)
     print('Independent right-triangle coverage: ' + json.dumps(right_triangles.finish(count)), file=sys.stderr)
     print('Known polynomial choice shortcuts: ' + json.dumps(polynomial_shortcuts.finish(count)), file=sys.stderr)
+    print('Independent absolute-value content: '+json.dumps(review_absolute_value_content()),file=sys.stderr)
     print('Independent right-triangle teaching geometry: ' + json.dumps(review_right_triangle_figures()), file=sys.stderr)
     print('Independent print notation review: ' + json.dumps(review_print_math()), file=sys.stderr)
-    publications = Path(__file__).resolve().parent.parent / 'artifacts/publications'
+    # `npm run review:math` rebuilds artifacts/publications first, so the print
+    # review sees current output. Unit tests point this at an absent directory
+    # so their result never depends on whatever happens to be on disk.
+    amp_root = Path(__file__).resolve().parent.parent
+    publications = Path(os.environ.get('AMP_PUBLICATIONS_DIR') or amp_root / 'artifacts/publications')
     if publications.exists():
         reader = subprocess.run(
             ['node', '--import', 'tsx', 'scripts/verify-reader-typesetting.ts'],
-            cwd=publications.parent.parent,
-            env={**os.environ, 'READER_REVIEW_OUT': str(publications.parent / 'reader-typesetting-review')},
+            cwd=amp_root,
+            env={**os.environ, 'READER_REVIEW_OUT': str(amp_root / 'artifacts/reader-typesetting-review')},
             capture_output=True, text=True, timeout=120)
         require(reader.returncode == 0, f'Reader typesetting review failed: {reader.stderr}')
         print('Independent reader typesetting review: ' + reader.stdout.strip(), file=sys.stderr)
         print('Independent PDF bounds review: ' + json.dumps(review_print_pdfs(publications)), file=sys.stderr)
     else:
-        print('Reader typesetting and print layout/PDF review not run: no publication export directory; run npm run publications first.', file=sys.stderr)
+        print(f'Reader typesetting and print layout/PDF review not run: no publication export directory at {publications}; npm run review:math builds it.', file=sys.stderr)
     return {'cases': sum(counts.values()), 'families': len(counts), 'seedsPerFamily': count,
             'seedStart': start, 'mismatches': 0}
 
