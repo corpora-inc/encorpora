@@ -179,8 +179,7 @@ export function generateMultiplyDivideProblem(
       prompt = `What is ${f(n)} × ${d}?`;
       answer = n * d;
       const parts = placeParts(n);
-      hint =
-        "Multiply each place by the one-digit factor, then add the partial products.";
+      hint = `Split ${f(n)} into ${parts.map(f).join(" + ")}. Multiply each part by ${d}, then add the partial products.`;
       explanation = [
         `Split ${f(n)} by place: ${parts.map(f).join(" + ")}.`,
         `Multiply each part by ${d}: ${parts.map((p) => `${f(p)} × ${d} = ${f(p * d)}`).join("; ")}.`,
@@ -198,8 +197,7 @@ export function generateMultiplyDivideProblem(
       prompt = `The area model splits ${a} × ${b} by place value. What is ${a} × ${b}?`;
       answer = a * b;
       const products = rows.flatMap((y) => columns.map((x) => x * y));
-      hint =
-        "Each region is a partial product: its width times its height. Add all four regions.";
+      hint = `The edges split ${a} into ${columns.join(" + ")} and ${b} into ${rows.join(" + ")}. Multiply width by height in each region, then add the four.`;
       explanation = [
         `${a} = ${columns.join(" + ")} and ${b} = ${rows.join(" + ")}.`,
         `The regions: ${rows.flatMap((y) => columns.map((x) => `${x} × ${y} = ${f(x * y)}`)).join("; ")}.`,

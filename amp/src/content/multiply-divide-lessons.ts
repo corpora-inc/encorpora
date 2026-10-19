@@ -252,8 +252,9 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
     goal: "Given an area model split by place value, find the full product.",
     terms: [placeTerm],
     method: [
-      "Multiply width by height in each region.",
-      "Add all the regions.",
+      "Read each region's width and height from the place-value parts on its edges.",
+      "Multiply width by height in each region: four partial products.",
+      "Add the four partial products for the whole product.",
     ],
     watch: "Every region counts, including the two mixed ones such as 6 × 20.",
   },
