@@ -1,4 +1,9 @@
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import {
+  NumberSystemIllustration,
+  numberSystemIllustrationKinds,
+  type NumberSystemIllustrationKind,
+} from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -20,6 +25,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
+    return (
+      <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
+    );
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

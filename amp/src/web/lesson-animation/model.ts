@@ -7,7 +7,22 @@ type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
 export type AnimationModel =
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
-  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
+  | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
+  /** A point reflected across 0 onto its opposite. */
+  | { kind: "opposite"; value: number; min: number; max: number }
+  /** Signed changes added one jump at a time; values are exact halves. */
+  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number };
+const half = (n: number) => Number.isFinite(n) && Number.isInteger(n * 2);
+/** Running positions of a jump sequence, exact for halves. */
+export const jumpStops = (start: number, jumps: number[]) =>
+  jumps.reduce(
+    (all, j) => [...all, Math.round((all.at(-1)! + j) * 2) / 2],
+    [start],
+  );
+/** TeX for a signed number; negatives in parentheses when they follow an operator. */
+/** Prose uses a typographic minus. */
+const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
+const tex = (n: number, wrap = false) => (n < 0 && wrap ? `(${n})` : `${n}`);
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -33,6 +48,42 @@ export function animationModel(
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
   if (
+    lesson.templateId === "opposite-on-line" &&
+    f?.kind === "signed-line" &&
+    f.jumps === undefined &&
+    f.points.length === 1 &&
+    integer(f.points[0]!.value, f.min, f.max) &&
+    f.points[0]!.value !== 0 &&
+    integer(-f.points[0]!.value, f.min, f.max)
+  )
+    return {
+      kind: "opposite",
+      value: f.points[0]!.value,
+      min: f.min,
+      max: f.max,
+    };
+  if (
+    lesson.templateId === "signed-jumps" &&
+    f?.kind === "signed-line" &&
+    f.start !== undefined &&
+    f.jumps !== undefined &&
+    f.jumps.length >= 1 &&
+    f.jumps.length <= 4 &&
+    Number.isInteger(f.min) &&
+    Number.isInteger(f.max) &&
+    f.max > f.min &&
+    half(f.start) &&
+    f.jumps.every((j) => half(j) && j !== 0) &&
+    jumpStops(f.start, f.jumps).every((v) => v >= f.min && v <= f.max)
+  )
+    return {
+      kind: "jumps",
+      start: f.start,
+      jumps: f.jumps,
+      min: f.min,
+      max: f.max,
+    };
+  if (
     lesson.templateId === "exchange-base-ten" &&
     f?.kind === "base-ten" &&
     integer(f.hundreds, 0, 9) &&
@@ -47,6 +98,53 @@ export function animationModel(
   return null;
 }
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "opposite") {
+    const a = model.value,
+      d = Math.abs(a),
+      units = `${d} ${d === 1 ? "unit" : "units"}`;
+    return [
+      {
+        title: "Read the point",
+        text: `P is ${units} to the ${a < 0 ? "left" : "right"} of 0.`,
+        math: `$P = ${tex(a)}$`,
+      },
+      {
+        title: "Reflect across 0",
+        text: "Swing P over 0 to the other side. Its distance from 0 does not change.",
+        math: `$\\text{distance from } 0 = ${d}$`,
+      },
+      {
+        title: "Name the opposite",
+        text: `The opposite of ${shown(a)} is ${shown(-a)}: ${units} from 0 on the ${a < 0 ? "right" : "left"}.`,
+        math: `$-${tex(a, true)} = ${tex(-a)}$`,
+      },
+    ];
+  }
+  if (model.kind === "jumps") {
+    const stops = jumpStops(model.start, model.jumps),
+      end = stops.at(-1)!;
+    const sum = [
+      tex(model.start),
+      ...model.jumps.map((j) => tex(j, true)),
+    ].join(" + ");
+    return [
+      {
+        title: "Start",
+        text: `Begin at ${shown(model.start)}. Moving right adds a positive change; moving left adds a negative change.`,
+        math: `$${tex(model.start)}$`,
+      },
+      {
+        title: "Make each jump",
+        text: `Each arrow adds one change, in order: ${model.jumps.map((j) => (j > 0 ? `+${j}` : shown(j))).join(", then ")}.`,
+        math: `$${sum}$`,
+      },
+      {
+        title: "Land",
+        text: `The last arrow ends at ${shown(end)}, ${end < 0 ? "left" : "right"} of 0.`,
+        math: `$${sum} = ${tex(end)}$`,
+      },
+    ];
+  }
   if (model.kind === "fraction") {
     const { parts: d, selected: n } = model.figure;
     return [

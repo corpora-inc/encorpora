@@ -46,6 +46,16 @@ export type SemanticFigure =
     }
   | { kind: "clock"; hour: number; minute: number }
   | { kind: "number-line"; min: number; max: number; points: number[] }
+  | {
+      /** One-unit ticks with 0 emphasized; jumps are signed changes drawn from `start`. */
+      kind: "signed-line";
+      min: number;
+      max: number;
+      labelEvery: number;
+      points: { value: number; label: string }[];
+      start?: number;
+      jumps?: number[];
+    }
   | { kind: "collection"; count: number }
   | { kind: "fraction"; selected: number; parts: number }
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
@@ -239,6 +249,41 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
       .refine(
         (v) => v.max > v.min && v.points.every((p) => p >= v.min && p <= v.max),
       ),
+    z
+      .object({
+        kind: z.literal("signed-line"),
+        min: z.number().int().max(0),
+        max: z.number().int().min(0),
+        labelEvery: z.number().int().min(1).max(10),
+        points: z
+          .array(
+            z
+              .object({
+                value: z.number().finite(),
+                label: z.string().regex(/^[A-Z]$/),
+              })
+              .strict(),
+          )
+          .max(2),
+        start: z.number().finite().optional(),
+        jumps: z.array(z.number().finite()).min(1).max(4).optional(),
+      })
+      .strict()
+      .refine((v) => {
+        const inside = (n: number) =>
+          n >= v.min && n <= v.max && Number.isInteger(n * 2);
+        if (v.max - v.min < 4 || v.max - v.min > 30) return false;
+        if (!v.points.every((p) => inside(p.value))) return false;
+        if ((v.start === undefined) !== (v.jumps === undefined)) return false;
+        if (v.start === undefined) return v.points.length > 0;
+        let at = v.start;
+        if (!inside(at)) return false;
+        for (const jump of v.jumps!) {
+          at += jump;
+          if (jump === 0 || !inside(at)) return false;
+        }
+        return true;
+      }),
     z
       .object({
         kind: z.literal("collection"),

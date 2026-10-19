@@ -1,4 +1,5 @@
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -30,6 +31,13 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "prime-factor-venn"
+      | "gcf-area"
+      | "multiple-jumps"
+      | "long-division"
+      | "elevation-line"
+      | "opposite-line"
+      | "story-jumps"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +541,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...numberSystemLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
