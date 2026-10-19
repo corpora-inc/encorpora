@@ -1,3 +1,4 @@
+import { CompletingSquareIllustration } from "./CompletingSquareIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
 import { IntegerExponentIllustration } from "./IntegerExponentIllustration";
 import { DescriptiveStatisticsIllustration } from "./DescriptiveStatisticsIllustration";
@@ -17,6 +18,12 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "complete-square-area" ||
+    kind === "complete-square-balance" ||
+    kind === "complete-square-scaled"
+  )
+    return <CompletingSquareIllustration kind={kind} />;
   if (
     kind === "circle-circumference" ||
     kind === "circle-area" ||

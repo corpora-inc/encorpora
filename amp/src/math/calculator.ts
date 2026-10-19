@@ -10,6 +10,9 @@ const COMPUTATION_STRANDS = new Set([
   "decimals",
 ]);
 const COMPUTATION_TEMPLATES = new Set([
+  "complete-square-term",
+  "complete-square-monic",
+  "complete-square-nonmonic",
   "negative-integer-power",
   "product-of-powers-exponent",
   "quotient-of-powers-exponent",

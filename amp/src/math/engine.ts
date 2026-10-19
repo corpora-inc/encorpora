@@ -1,4 +1,8 @@
 import {
+  completingSquareTemplates,
+  generateCompletingSquareProblem,
+} from "./completing-square-practice";
+import {
   circleMeasurementTemplates,
   generateCircleMeasurementProblem,
 } from "./circle-measurement-practice";
@@ -198,6 +202,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...completingSquareTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -307,6 +312,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...completingSquareTemplates,
     ...circleMeasurementTemplates,
     ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
@@ -336,6 +342,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (completingSquareTemplates.some((t) => t.id === templateId))
+    return generateCompletingSquareProblem(templateId, seed);
   if (circleMeasurementTemplates.some((t) => t.id === templateId))
     return generateCircleMeasurementProblem(templateId, seed);
   if (integerExponentTemplates.some((t) => t.id === templateId))

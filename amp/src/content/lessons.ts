@@ -1,3 +1,4 @@
+import { completingSquareLessons } from "./completing-square-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
@@ -27,6 +28,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "complete-square-area"
+      | "complete-square-balance"
+      | "complete-square-scaled"
       | "integer-exponent-ladder"
       | "descriptive-median"
       | "descriptive-range"
@@ -511,6 +515,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...completingSquareLessons,
   ...integerExponentLessons,
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
