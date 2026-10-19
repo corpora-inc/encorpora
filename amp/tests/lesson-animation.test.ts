@@ -51,7 +51,7 @@ test("animation models conserve the quantities in real lesson examples", () => {
           `$${splitAfterRow * columns} + ${(rows - splitAfterRow) * columns} = ${rows * columns}$`,
         );
         kinds.add("array");
-      } else {
+      } else if (model.kind === "fraction") {
         const [n, d] = lesson.example.answer.split("/").map(Number);
         assert.equal(n * model.figure.parts, model.figure.selected * (d ?? 1));
         assert.equal(

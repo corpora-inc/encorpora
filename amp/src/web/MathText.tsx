@@ -40,7 +40,7 @@ const escape = (s: string) =>
   );
 
 type Segment = { text: string; math: boolean; plain?: string };
-const MATHY = /^[\d.,()[\]+−×÷=<>≤≥≠/^_²³ⁿᵖ⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉|√·a-zA-Z-]+$/;
+const MATHY = /^[\d.,()[\]+−×÷=<>≤≥≠/^_²³ⁿᵖ⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉|√·□a-zA-Z-]+$/;
 const OPERATION = /[=+−×÷<>≤≥≠/^_²³ⁿᵖ₀-₉√]|\b[a-z]\(|\d-|-\d|\b\d+[a-z]\b/;
 
 function mathyWord(word: string) {
@@ -50,7 +50,7 @@ function mathyWord(word: string) {
   return words.every((w) => w === "log");
 }
 
-function segments(text: string): Segment[] {
+export function segments(text: string): Segment[] {
   const out: Segment[] = [];
   const push = (value: string, math: boolean) => {
     if (!value) return;
@@ -103,6 +103,12 @@ function segments(text: string): Segment[] {
       if (/^\s+$/.test(piece)) {
         if (run.length) run.push(piece);
         else push(piece, false);
+        continue;
+      }
+      // A missing number ("?" or "□" standing alone) is part of the formula,
+      // typeset as a blank box with the formula's own operator spacing.
+      if (piece === "?" || piece === "□") {
+        run.push("□");
         continue;
       }
       const bare = piece.replace(/[.,;:?!]+$/, "");
@@ -170,6 +176,7 @@ export function toTex(formula: string): string {
     .replace(/\(([^()]+)\)\/\(([^()]+)\)/g, "\\frac{$1}{$2}")
     .replace(/(\d+|[a-zA-Z])\/(\d+|[a-zA-Z])/g, "\\tfrac{$1}{$2}")
     .replace(/−/g, "-")
+    .replace(/□/g, "\\boxed{\\phantom{0}}")
     .replace(/×/g, "\\times ")
     .replace(/÷/g, "\\div ")
     .replace(/≤/g, "\\le ")
