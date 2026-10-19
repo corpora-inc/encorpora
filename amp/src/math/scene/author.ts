@@ -10,6 +10,8 @@ import {
   type Graph,
   type LineSpec,
   type NumberLine,
+  type PolyArea,
+  type Term,
   type Point,
   type Scene,
   type Table,
@@ -340,6 +342,14 @@ export const areaModel = (
     down: Array.isArray(down) ? down : placeValueParts(down),
     ...options,
   } as AreaModel);
+
+/** polyArea([[1, 1], [3, 0]], [[1, 1], [2, 0]]) is (x + 3)(x + 2) as tiles;
+ * the region terms stay masked unless a lesson reveals them. */
+export const polyArea = (
+  across: Term[],
+  down: Term[],
+  options: Partial<Omit<PolyArea, "type" | "across" | "down">> = {},
+) => new Simple<PolyArea>({ type: "polyArea", across, down, ...options });
 
 class Simple<T extends Element> extends Builder<T> {}
 export const array = (

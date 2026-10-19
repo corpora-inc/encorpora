@@ -1,3 +1,4 @@
+import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { equationFacetMappings } from "./equation-coverage";
@@ -36,6 +37,7 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...factoringFacetMappings,
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,
   ...angleFacetMappings,

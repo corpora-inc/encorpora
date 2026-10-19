@@ -10,6 +10,7 @@ import {
   fractionBar,
   graph,
   numberLine,
+  polyArea,
   table,
   tenFrame,
 } from "./author";
@@ -181,6 +182,76 @@ export const galleryCases: GalleryCase[] = [
       products: "none",
       scale: "schematic",
     }).scene(),
+  },
+  {
+    name: "Tiles: (x + 3)(x + 2), terms to find",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [2, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (x − 2)(x + 4), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 1],
+        [-2, 0],
+      ],
+      [
+        [1, 1],
+        [4, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: (2x + 1)(x + 3), revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [2, 1],
+        [1, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+    ).scene(),
+  },
+  {
+    name: "Tiles: x² + 6x missing its corner",
+    scene: polyArea(
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      [
+        [1, 1],
+        [3, 0],
+      ],
+      {
+        products: "shown",
+        missing: [[1, 1]],
+      },
+    ).scene(),
+  },
+  {
+    name: "Tiles: 6x(x³ − 2x + 5), not to scale, revealed",
+    reveal: true,
+    scene: polyArea(
+      [
+        [1, 3],
+        [-2, 1],
+        [5, 0],
+      ],
+      [[6, 1]],
+    ).scene(),
   },
   {
     name: "Array: 7 × 6 split after 4 rows",

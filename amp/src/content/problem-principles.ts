@@ -1,3 +1,4 @@
+import { factoringPrinciples } from "./factoring-lessons";
 import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
@@ -37,6 +38,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
   ...anglePrinciples,

@@ -567,6 +567,44 @@ export const areaModelSchema = z
       (!f.downLabels || f.downLabels.length === f.down.length),
   );
 
+/** A monomial c·xᵖ as [c, p]: [3, 1] is 3x, [−2, 0] is −2. */
+const termSchema = z.tuple([
+  z
+    .number()
+    .int()
+    .min(-144)
+    .max(144)
+    .refine((c) => c !== 0, "Nonzero"),
+  z.number().int().min(0).max(3),
+]);
+/** A product of polynomials as an area: each side lists its terms, and each
+ * region is one term product. Linear sides with small coefficients are drawn
+ * as algebra tiles (x² squares, x strips, unit squares); other sides are
+ * schematic. Negative products are shaded warm. */
+export const polyAreaSchema = z
+  .object({
+    ...base,
+    type: z.literal("polyArea"),
+    across: z.array(termSchema).min(1).max(4),
+    down: z.array(termSchema).min(1).max(4),
+    /** The side terms: the factors. */
+    sides: z.enum(["shown", "derived", "none"]).optional(),
+    /** Each region's term product: masked by default. */
+    products: z.enum(["shown", "derived", "none"]).optional(),
+    /** Regions [i, j] drawn as an empty dashed outline: the piece to add
+     * when completing a square. */
+    missing: z
+      .array(
+        z.tuple([
+          z.number().int().min(0).max(3),
+          z.number().int().min(0).max(3),
+        ]),
+      )
+      .max(4)
+      .optional(),
+  })
+  .strict();
+
 /** Rows × columns of unit squares or dots, optionally split into regions. */
 export const arraySchema = z
   .object({
@@ -823,6 +861,7 @@ export const componentSchemas = [
   numberLineSchema,
   graphSchema,
   areaModelSchema,
+  polyAreaSchema,
   arraySchema,
   tenFrameSchema,
   baseTenSchema,
@@ -834,6 +873,8 @@ export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
 export type Graph = z.infer<typeof graphSchema>;
 export type AreaModel = z.infer<typeof areaModelSchema>;
+export type PolyArea = z.infer<typeof polyAreaSchema>;
+export type Term = PolyArea["across"][number];
 export type ArrayModel = z.infer<typeof arraySchema>;
 export type TenFrame = z.infer<typeof tenFrameSchema>;
 export type BaseTen = z.infer<typeof baseTenSchema>;

@@ -1,3 +1,4 @@
+import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
@@ -62,6 +63,9 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "factoring-gcf"
+      | "factoring-monic"
+      | "factoring-nonmonic"
       | "repeating-decimal-shift"
       | "root-zoom"
       | "root-solutions"
@@ -589,6 +593,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...factoringLessons,
   ...integerExponentLessons,
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,

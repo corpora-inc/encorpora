@@ -1,3 +1,4 @@
+import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
@@ -54,6 +55,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
+  if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
+  if (kind === "factoring-nonmonic")
+    return <FactoringIllustration kind="nonmonic" />;
   if (
     kind === "repeating-decimal-shift" ||
     kind === "root-zoom" ||
