@@ -10,27 +10,45 @@ import {
 } from "./product.js";
 import { Contact, Legal, legalTitles, type LegalPage } from "./legal.js";
 import { formatPrice, type SiteConfig } from "./config.js";
+import {
+  FundingPage,
+  fundingForPath,
+  fundingLabels,
+  fundingPath,
+  fundingStructuredData,
+} from "./funding.js";
 export const routes = [
   "/",
   "/amp/",
   "/esa/",
   "/parents/",
+  "/schools/",
   "/support/",
   "/try/",
   "/samples/",
   ...Object.keys(legalTitles).map((p) => `/legal/${p}/`),
+];
+export const routesFor = (config: SiteConfig) => [
+  ...routes,
+  ...config.funding.flatMap((r) => (r.page ? [fundingPath(r.page.slug)] : [])),
 ];
 const titles: Record<string, string> = {
   "/": "Corpora · AMP Mathematics",
   "/amp/": "AMP Mathematics · Practice that follows your understanding",
   "/esa/": "Pay with education funds · Corpora",
   "/parents/": "Parents’ questions · AMP Mathematics",
+  "/schools/": "Mathematics curriculum for schools and districts · Corpora",
   "/support/": "Support · Corpora",
   "/try/": "Try AMP Mathematics",
   "/samples/": "AMP · Printable practice sample",
 };
-export const title = (route: string) =>
-  titles[route] ?? `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`;
+export const title = (route: string, config?: SiteConfig) => {
+  const funding = config && fundingForPath(route, config);
+  return funding
+    ? `${funding.program} and AMP Mathematics · Corpora`
+    : (titles[route] ??
+        `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`);
+};
 export const tryUrl = (config: SiteConfig) => config.appUrl ?? "/try/";
 function Try({
   config,
@@ -367,38 +385,28 @@ function Amp({ config }: { config: SiteConfig }) {
     </>
   );
 }
+const stateNames: Record<string, string> = Object.fromEntries(
+  "AL:Alabama|AK:Alaska|AZ:Arizona|AR:Arkansas|CA:California|CO:Colorado|CT:Connecticut|DE:Delaware|DC:District of Columbia|FL:Florida|GA:Georgia|HI:Hawaii|ID:Idaho|IL:Illinois|IN:Indiana|IA:Iowa|KS:Kansas|KY:Kentucky|LA:Louisiana|ME:Maine|MD:Maryland|MA:Massachusetts|MI:Michigan|MN:Minnesota|MS:Mississippi|MO:Missouri|MT:Montana|NE:Nebraska|NV:Nevada|NH:New Hampshire|NJ:New Jersey|NM:New Mexico|NY:New York|NC:North Carolina|ND:North Dakota|OH:Ohio|OK:Oklahoma|OR:Oregon|PA:Pennsylvania|RI:Rhode Island|SC:South Carolina|SD:South Dakota|TN:Tennessee|TX:Texas|UT:Utah|VT:Vermont|VA:Virginia|WA:Washington|WV:West Virginia|WI:Wisconsin|WY:Wyoming"
+    .split("|").map((entry) => entry.split(":")),
+);
 function Esa({ config }: { config: SiteConfig }) {
   const states = [...new Set(config.funding.map((r) => r.state))].sort();
   return (
     <>
       <Intro
         label="Education funds"
-        heading="Choose the route your program allows."
+        heading="Explore education funding by state."
       >
         <p className="lead">
           An education savings account (ESA) or scholarship may pay through a
           marketplace or reimburse an eligible purchase. Rules depend on the
           program and the student.
         </p>
+        <p>
+          Tax credits and school purchasing have different rules. Find your
+          program below to check the route, documents and AMP availability.
+        </p>
       </Intro>
-      <section className="section two-column">
-        <div>
-          <h2>Marketplace purchase</h2>
-          <p>
-            Your program pays the provider through an approved route. Check that
-            the exact AMP product and term are available in your program before
-            placing an order.
-          </p>
-        </div>
-        <div>
-          <h2>Pay, then claim reimbursement</h2>
-          <p>
-            You pay by card and submit the receipt and required documents to the
-            program. Confirm eligibility before paying. A receipt does not
-            guarantee reimbursement.
-          </p>
-        </div>
-      </section>
       <section className="section">
         <h2>Guidance by state</h2>
         {states.length ? (
@@ -409,24 +417,46 @@ function Esa({ config }: { config: SiteConfig }) {
             >
               {states.map((s) => (
                 <a href={`#state-${s}`} key={s}>
-                  {s}
+                  <span className="state-badge" aria-hidden="true">
+                    <svg viewBox="0 0 40 48" fill="none"><path d="M20 46S3 29 3 20a17 17 0 1 1 34 0c0 9-17 26-17 26Z" fill="currentColor" /></svg>
+                    <span>{s}</span>
+                  </span>
+                  <span>{stateNames[s] ?? s}<small>{config.funding.filter((r) => r.state === s).length} {config.funding.filter((r) => r.state === s).length === 1 ? "program" : "programs"}</small></span>
                 </a>
               ))}
             </nav>
+            <p className="directory-count">
+              <strong>{config.funding.filter((r) => r.page).length} parent guides</strong>
+              {" · "}{states.length} {states.length === 1 ? "state" : "states"}
+              <span>Guides explain purchase routes; inclusion does not mean vendor approval.</span>
+            </p>
             {states.map((state) => (
               <section className="state" id={`state-${state}`} key={state}>
-                <h3>{state}</h3>
+                <h3>{stateNames[state] ?? state}</h3>
+                <div className="program-grid">
                 {config.funding
                   .filter((r) => r.state === state)
                   .map((route, i) => (
-                    <article key={i}>
+                    <article className="program-card" key={i}>
+                      <p className="eyebrow">{fundingLabels[route.kind]}</p>
                       <h4>
-                        {route.program} ·{" "}
-                        {route.kind === "marketplace"
-                          ? "Marketplace"
-                          : "Reimbursement"}
+                        {route.page ? (
+                          <a href={fundingPath(route.page.slug)}>
+                            {route.program}
+                          </a>
+                        ) : (
+                          route.program
+                        )}
                       </h4>
-                      <p>{route.instructions}</p>
+                      <p>{route.page?.summary ?? route.instructions}</p>
+                      {route.page && <div className="program-card-status"><strong>AMP purchase status</strong><p>{route.page.ampStatus}</p></div>}
+                      {route.page && (
+                        <p>
+                          <a href={fundingPath(route.page.slug)}>
+                            Purchase steps and receipt checklist ↗
+                          </a>
+                        </p>
+                      )}
                       <a href={route.sourceUrl}>
                         Official program requirements ↗
                       </a>
@@ -436,6 +466,7 @@ function Esa({ config }: { config: SiteConfig }) {
                       </p>
                     </article>
                   ))}
+                </div>
               </section>
             ))}
           </>
@@ -516,6 +547,116 @@ function Parents({ config }: { config: SiteConfig }) {
     </>
   );
 }
+function Schools({ config }: { config: SiteConfig }) {
+  const subject = "AMP Mathematics school inquiry";
+  const body = [
+    "School or district:",
+    "Your role:",
+    "Grade range and mathematics topics:",
+    "Approximate number of learners:",
+    "Desired start date:",
+    "Curriculum review or purchasing requirements:",
+    "",
+    "Please do not include student names or records.",
+  ].join("\n");
+  return (
+    <>
+      <Intro
+        label="Schools · Districts · Private schools"
+        heading="Review AMP for your school."
+      >
+        <p className="lead">
+          A digital mathematics curriculum built around adaptive mixed practice,
+          with lessons and printable worksheets. Explore the materials, then
+          discuss the scope and licenses your learners need.
+        </p>
+        <div className="actions">
+          {config.supportEmail ? (
+            <a
+              className="button"
+              href={`mailto:${config.supportEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
+            >
+              Ask about school licenses <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <p>
+              School inquiries will open when contact details are published.
+            </p>
+          )}
+          <a className="text-link" href="/samples/">
+            View printable samples →
+          </a>
+        </div>
+      </Intro>
+      <section className="section">
+        <div className="section-heading">
+          <p className="eyebrow">Curriculum review</p>
+          <h2>Start with the mathematics.</h2>
+        </div>
+        <ol className="steps">
+          <li>
+            <span className="step-number">01</span>
+            <div>
+              <h3>Match your learning goals.</h3>
+              <p>
+                Check the <a href="/amp/#coverage">current topic coverage</a>{" "}
+                against your grade range and curriculum requirements. Share the
+                skills you want students to develop.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span className="step-number">02</span>
+            <div>
+              <h3>Examine the instruction.</h3>
+              <p>
+                Explore <a href="/amp/">worked problems and lesson examples</a>,
+                then print a{" "}
+                <a href="/samples/">worksheet with its solution key</a>. Review
+                how the explanations and practice fit your teaching.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span className="step-number">03</span>
+            <div>
+              <h3>Define the purchase.</h3>
+              <p>
+                Tell us your approximate learner count, desired start date and
+                purchasing process. Confirm license scope, pricing, access and
+                support in a written proposal before placing an order.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section className="section prose">
+        <h2>Bring your review requirements.</h2>
+        <p>
+          Share curriculum criteria, accessibility questions, data-agreement
+          requirements and vendor forms. Include any required account-management
+          or integration capabilities so their availability can be confirmed.
+        </p>
+        <p>
+          Read our <a href="/legal/privacy/">privacy notice</a>,{" "}
+          <a href="/legal/accessibility/">accessibility statement</a>,{" "}
+          <a href="/legal/terms/">terms</a> and{" "}
+          <a href="/legal/refund/">refund policy</a> as part of your review.
+          Your school or district determines its purchasing and funding
+          requirements.
+        </p>
+        <h2>Tell us about your school.</h2>
+        <p>
+          Include your school or district, your role, grade range, approximate
+          seat count and desired start date. Use your work contact details;
+          student names, records and login credentials are not needed for an
+          inquiry.
+        </p>
+        <Contact config={config} />
+      </section>
+    </>
+  );
+}
 function Printable() {
   return (
     <>
@@ -572,11 +713,20 @@ function Printable() {
   );
 }
 export function Page({ route, config }: { route: string; config: SiteConfig }) {
+  const funding = fundingForPath(route, config);
+  const structuredData = funding && fundingStructuredData(funding, config);
+  const description =
+    funding?.page?.summary ??
+    (route === "/schools/"
+      ? "Review AMP Mathematics for your school or district: adaptive practice, lessons, printable samples and school-license inquiries."
+      : "Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage.");
   let content: ReactNode;
   if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
   else if (route === "/esa/") content = <Esa config={config} />;
+  else if (funding) content = <FundingPage funding={funding} />;
   else if (route === "/parents/") content = <Parents config={config} />;
+  else if (route === "/schools/") content = <Schools config={config} />;
   else if (route === "/support/")
     content = (
       <>
@@ -653,11 +803,8 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{title(route)}</title>
-        <meta
-          name="description"
-          content="Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage."
-        />
+        <title>{title(route, config)}</title>
+        <meta name="description" content={description} />
         <meta name="theme-color" content="#f7f6f0" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         {config.mode === "preview" && (
@@ -665,6 +812,30 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
         )}
         {config.siteUrl && (
           <link rel="canonical" href={new URL(route, config.siteUrl).href} />
+        )}
+        {funding && (
+          <>
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={title(route, config)} />
+            <meta property="og:description" content={description} />
+            {config.siteUrl && (
+              <meta
+                property="og:url"
+                content={new URL(route, config.siteUrl).href}
+              />
+            )}
+          </>
+        )}
+        {structuredData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData)
+                .replaceAll("<", "\\u003c")
+                .replaceAll("\u2028", "\\u2028")
+                .replaceAll("\u2029", "\\u2029"),
+            }}
+          />
         )}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/assets/site.css" />
@@ -692,6 +863,9 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
             <a className="nav-secondary" href="/parents/">
               Parents
             </a>
+            <a className="nav-secondary" href="/schools/">
+              Schools
+            </a>
             <Try config={config} />
           </nav>
         </header>
@@ -707,6 +881,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
             <a href="/amp/">AMP Mathematics</a>
             <a href="/esa/">Education funds</a>
             <a href="/parents/">Parents FAQ</a>
+            <a href="/schools/">Schools & districts</a>
             <a href="/support/">Support</a>
             {Object.entries(legalTitles).map(([slug, label]) => (
               <a key={slug} href={`/legal/${slug}/`}>

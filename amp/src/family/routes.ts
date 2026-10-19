@@ -10,6 +10,8 @@ export interface FamilyRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
   development?: boolean;
+  /** Stripe namespace of the configured billing, for paid-purchase routing. */
+  billingNamespace?: string | null;
 }
 export async function registerFamilyRoutes(
   app: FastifyInstance,
@@ -54,7 +56,12 @@ export async function registerFamilyRoutes(
           return { signedIn: false, next: "sign-in" };
         throw failure;
       }
-      return accountSummary(options.pool, repository, account);
+      return accountSummary(
+        options.pool,
+        repository,
+        account,
+        options.billingNamespace ?? null,
+      );
     });
     scope.get("/api/v1/family", async (request) =>
       repository.summary(await options.authenticate(request)),

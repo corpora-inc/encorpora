@@ -63,8 +63,7 @@ export function generateEqualGroupsProblem(
         answer = complete + (left > 0 ? 1 : 0);
         label = "Vans needed";
         figure = grouped(total, size, "visitors");
-        hint =
-          "Everyone needs a seat. Check whether the full vans leave anyone waiting.";
+        hint = `How many groups of ${size} fit in ${total}? If anyone is left over, they still need a van.`;
         explanation = [
           `${complete} full vans seat ${size * complete} visitors.`,
           left
@@ -78,8 +77,8 @@ export function generateEqualGroupsProblem(
         figure = grouped(total, size, "beads");
         hint =
           templateId === "full-kits"
-            ? "Count only groups that contain the full required number of beads."
-            : "Remove all complete groups. Count the beads that cannot fill another kit.";
+            ? `How many groups of exactly ${size} beads can you make from ${total}? A partly filled kit does not count.`
+            : `Make as many groups of ${size} from the ${total} beads as you can. The beads that cannot fill another group are left.`;
         explanation = [
           `${complete} kits use ${complete} × ${size} = ${complete * size} beads.`,
           `${total} − ${complete * size} = ${left} beads remain; this is fewer than ${size}.`,
@@ -97,7 +96,7 @@ export function generateEqualGroupsProblem(
       prompt = `Share ${total} counters equally among ${trays} trays. How many counters belong on each tray?`;
       answer = each;
       label = "Counters per tray";
-      hint = "The number of trays is known. Find the size of each equal share.";
+      hint = `Deal the ${total} counters onto the ${trays} trays one at a time, or solve ${trays} × □ = ${total}.`;
       explanation = [
         `${trays} trays × ? counters per tray = ${total} counters.`,
         `${total} ÷ ${trays} = ${each}, so each tray receives ${each} counters.`,
@@ -111,7 +110,7 @@ export function generateEqualGroupsProblem(
       prompt = `A ribbon is ${total} cm long. Cut it into pieces exactly ${size} cm long. How many pieces will you have?`;
       answer = pieces;
       label = "Pieces";
-      hint = "Count how many piece-lengths fit in the full ribbon.";
+      hint = `How many ${size} cm lengths fit in ${total} cm? Think ${size} × □ = ${total}.`;
       explanation = [
         `Each piece uses ${size} cm.`,
         `${total} ÷ ${size} = ${pieces}, so there are ${pieces} pieces, with no ribbon left.`,
@@ -125,7 +124,10 @@ export function generateEqualGroupsProblem(
       prompt = "How many unit squares are in the whole array?";
       answer = rows * columns;
       label = "Unit squares";
-      hint = "Count one row, then count the equal rows.";
+      hint =
+        rows === 1
+          ? "The array is a single row. Count its squares one at a time."
+          : `There are ${rows} rows. Count the squares in one row; every row has the same number.`;
       explanation = [
         `There are ${rows} rows with ${columns} squares in each row.`,
         `${rows} × ${columns} = ${answer} unit squares.`,
@@ -139,8 +141,7 @@ export function generateEqualGroupsProblem(
       prompt = `Put ${total} counters into pairs. How many counters will be left without a partner?`;
       answer = total % 2;
       label = "Unpaired counters";
-      hint =
-        "Each pair uses two counters. A counter without a partner is left over.";
+      hint = `Make pairs from the ${total} counters, two at a time. Does every counter get a partner?`;
       explanation = [
         `${Math.floor(total / 2)} pairs use ${2 * Math.floor(total / 2)} counters.`,
         `${total} − ${2 * Math.floor(total / 2)} = ${answer} counter(s) without a partner.`,
@@ -154,8 +155,7 @@ export function generateEqualGroupsProblem(
       prompt = `There are ${trays} trays with ${each} counters on each tray. How many counters are there altogether?`;
       answer = trays * each;
       label = "Counters altogether";
-      hint =
-        "Add the equal group sizes, or multiply the number of groups by their size.";
+      hint = `${trays} trays of ${each} is ${trays} × ${each}. Skip-count by ${each} once for each tray.`;
       explanation = [
         `${trays} equal groups each contain ${each} counters.`,
         `${trays} × ${each} = ${answer} counters altogether.`,
@@ -169,9 +169,9 @@ export function generateEqualGroupsProblem(
       prompt = `${groups} equal bags hold ${total} marbles altogether. How many marbles are in each bag?`;
       answer = each;
       label = "Marbles per bag";
-      hint = "Which number multiplied by the bag count gives the total?";
+      hint = `Share the ${total} marbles equally into ${groups} bags: ${groups} × □ = ${total}.`;
       explanation = [
-        `${groups} × ? = ${total}.`,
+        `${groups} × □ = ${total}.`,
         `${groups} × ${each} = ${total}, so each bag holds ${each} marbles.`,
       ];
       break;
@@ -179,11 +179,10 @@ export function generateEqualGroupsProblem(
     case "unknown-dividend": {
       const divisor = r(2, 9),
         quotient = r(0, 9);
-      prompt = `? ÷ ${divisor} = ${quotient}. What number belongs in the blank?`;
+      prompt = `□ ÷ ${divisor} = ${quotient}. What number belongs in the blank?`;
       answer = divisor * quotient;
       label = "Starting total";
-      hint =
-        "Rebuild the starting total from the number and size of equal shares.";
+      hint = `□ ÷ ${divisor} = ${quotient} means □ splits into ${divisor} equal groups of ${quotient}. Put the groups back together.`;
       explanation = [
         `Division and multiplication undo each other.`,
         `${quotient} × ${divisor} = ${answer}; check ${answer} ÷ ${divisor} = ${quotient}.`,
@@ -199,8 +198,7 @@ export function generateEqualGroupsProblem(
       prompt = `The array is split into regions A and B. How many unit squares are in region ${top ? "A" : "B"}?`;
       answer = (top ? split : rows - split) * columns;
       label = "Squares in the region";
-      hint =
-        "Count only the rows in the named region; every row has the same length.";
+      hint = `Region ${top ? "A" : "B"} has only some of the rows. Count its rows, then multiply by the squares in one row.`;
       explanation = [
         `Region ${top ? "A" : "B"} has ${top ? split : rows - split} rows, each with ${columns} squares.`,
         `${top ? split : rows - split} × ${columns} = ${answer}. The other region is not part of this partial product.`,
@@ -214,8 +212,7 @@ export function generateEqualGroupsProblem(
       prompt = `There are ${crates} crates. Each crate has ${bags} bags, and each bag holds ${each} balls. How many balls are there?`;
       answer = crates * bags * each;
       label = "Balls altogether";
-      hint =
-        "First find how many bags there are, then count the balls in those bags.";
+      hint = `First find the number of bags: ${crates} crates with ${bags} bags each. Then each bag holds ${each} balls.`;
       explanation = [
         `${crates} × ${bags} = ${crates * bags} bags.`,
         `${crates * bags} × ${each} = ${answer} balls. Grouping the multiplications another way gives the same total.`,
@@ -232,7 +229,13 @@ export function generateEqualGroupsProblem(
       answer = groups * each;
       label = "Counters altogether";
       hint =
-        "Zero groups or zero items in every group gives no items. One group keeps its group size.";
+        groups === 0
+          ? `0 trays means no groups at all. How many counters can 0 trays hold?`
+          : each === 0
+            ? `Each of the ${groups} trays is empty. Add 0 once for each tray.`
+            : groups === 1
+              ? `There is just one tray of ${each}. How many counters are on that one tray?`
+              : `Each of the ${groups} trays holds one counter. Count one for each tray.`;
       explanation = [
         `${groups} × ${each} = ${answer}.`,
         special === 0
@@ -250,13 +253,12 @@ export function generateEqualGroupsProblem(
         prompt = `Mia has ${small} tokens. Sam has ${factor} times as many tokens as Mia. How many tokens does Sam have?`;
         answer = large;
         label = "Sam's tokens";
-        hint =
-          "Times as many means equal copies of Mia's amount, not adding the factor.";
+        hint = `${factor} times as many as ${small} means ${factor} copies of ${small}, not ${small} + ${factor}.`;
       } else {
         prompt = `Mia has ${small} tokens. Sam has ${large} tokens. Sam has how many times as many tokens as Mia?`;
         answer = factor;
         label = "Times as many";
-        hint = "How many copies of Mia's amount fit into Sam's amount?";
+        hint = `How many groups of Mia's ${small} make Sam's ${large}? Think ${small} × □ = ${large}.`;
         figure = {
           kind: "bar-chart",
           categories: ["Mia", "Sam"],
@@ -280,7 +282,7 @@ export function generateEqualGroupsProblem(
       prompt = `A class gets ${boxes} boxes with ${each} pencils in each. It uses ${used} pencils. How many pencils remain?`;
       answer = total - used;
       label = "Pencils remaining";
-      hint = "Find the full delivery first. Then account for the pencils used.";
+      hint = `First find all the pencils: ${boxes} boxes of ${each}. Then take away the ${used} used.`;
       explanation = [
         `${boxes} × ${each} = ${total} pencils arrive.`,
         `${total} − ${used} = ${answer} pencils remain.`,
@@ -295,8 +297,7 @@ export function generateEqualGroupsProblem(
       prompt = `Buy ${items} notebooks at ${price} dollars each. Pay ${payment} dollars. How many dollars of change should you receive?`;
       answer = payment - cost;
       label = "Dollars of change";
-      hint =
-        "Work out the cost of all notebooks before comparing it with the payment.";
+      hint = `First find the cost of ${items} notebooks at ${price} dollars each. Then subtract that cost from the ${payment} dollars paid.`;
       explanation = [
         `${items} × ${price} = ${cost} dollars spent.`,
         `${payment} − ${cost} = ${answer} dollars of change.`,
@@ -310,7 +311,7 @@ export function generateEqualGroupsProblem(
       prompt = `One factor of ${total} is ${factor}. What is its partner in a factor pair with product ${total}?`;
       answer = partner;
       label = "Partner factor";
-      hint = "Divide the product by the known factor; check by multiplying.";
+      hint = `Solve ${factor} × □ = ${total}: divide ${total} by ${factor}, then check by multiplying.`;
       explanation = [
         `${total} ÷ ${factor} = ${partner}.`,
         `${factor} × ${partner} = ${total}, so (${factor}, ${partner}) is a factor pair. This is one pair, not necessarily the only pair.`,
@@ -325,8 +326,7 @@ export function generateEqualGroupsProblem(
       prompt = `To find ${number} × ${factor}, split ${number} into ${tens * 10} + ${ones}. What is the tens partial product?`;
       answer = tens * 10 * factor;
       label = "Tens partial product";
-      hint =
-        "Multiply only the tens amount by the factor; leave the ones part for later.";
+      hint = `The tens part is ${tens * 10}, not ${tens}. Multiply ${tens * 10} × ${factor}, which is ${tens} × ${factor} tens; leave the ${ones} for later.`;
       explanation = [
         `The tens amount is ${tens * 10}, not ${tens}.`,
         `${tens * 10} × ${factor} = ${answer}. The complete product also includes ${ones} × ${factor}.`,
@@ -345,7 +345,7 @@ export function generateEqualGroupsProblem(
       prompt = `An array grows from ${rows} rows to ${rows + 1} rows, with ${columns} squares per row. How many squares were added?`;
       answer = columns;
       label = "Squares added";
-      hint = "Only one new row is added. Count the squares in that row.";
+      hint = `Going from ${rows} rows to ${rows + 1} rows adds one row. How many squares are in one row?`;
       explanation = [
         `The array grows from ${rows * columns} to ${(rows + 1) * columns} squares.`,
         `${(rows + 1) * columns} − ${rows * columns} = ${columns}. Neighboring products differ by one group of ${columns}.`,

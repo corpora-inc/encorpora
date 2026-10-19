@@ -112,13 +112,25 @@ def read_solution(label):
     return frozenset(values)
 
 
+# The three prompt frames a learner can see; each states one equation.
+FRAMES = (
+    r'Solve (.+)\. Choose the complete set of real solutions\.',
+    r'Which values of x make (.+) true\? Choose the complete set\.',
+    r'Find every real number x for which (.+)\. Choose the complete set\.',
+)
+
+
+def equation_of(prompt):
+    found = [m[1] for m in (re.fullmatch(f, prompt) for f in FRAMES) if m]
+    require(len(found) == 1, 'Ambiguous absolute-value task')
+    return found[0]
+
+
 def solve_absolute_value(public):
     template = public['templateId']
     require(template in ABSOLUTE_VALUE, 'Unknown absolute-value template')
     require(public.get('figure') is None, 'Unexpected practice diagram')
-    found = re.fullmatch(r'Solve (.+)\. Choose the complete set of real solutions\.', public['prompt'])
-    require(found is not None, 'Ambiguous absolute-value task')
-    a, b, c, d, e = parse_equation(found[1])
+    a, b, c, d, e = parse_equation(equation_of(public['prompt']))
     if template.endswith('direct-equation'):
         require((a,b,c,d) == (1,0,1,0), 'Direct equation form changed')
         require(abs(e.numerator) <= 12, 'Direct target outside scope')
@@ -159,6 +171,10 @@ def review_absolute_value_fixtures():
         (case(transformed,'0|3x + 2| + 5 = 6',['No real solutions','All real numbers']),'0'),
         (case(transformed,'0|3x + 2| + 5 = 5',['No real solutions','All real numbers']),'1'),
     ]
+    reframed = copy.deepcopy(fixtures[3][0]); reframed['prompt'] = 'Which values of x make |−3x + 1| = 2 true? Choose the complete set.'
+    fixtures.append((reframed,'0'))
+    reframed = copy.deepcopy(fixtures[0][0]); reframed['prompt'] = 'Find every real number x for which |x| = 3. Choose the complete set.'
+    fixtures.append((reframed,'0'))
     for public,expected in fixtures:
         require(solve_absolute_value(public) == expected, 'Handwritten public fixture failed')
     bad = []
@@ -167,6 +183,7 @@ def review_absolute_value_fixtures():
     for labels in (['x = 3','No real solutions'], ['x = 3 or x = −3','No real solutions'],
                    ['x = −3 or x = 3','x = −3 or x = 3'], ['x = 3 or x = 3','No real solutions']):
         bad.append(case(direct,'|x| = 3',labels))
+    unframed = copy.deepcopy(fixtures[0][0]); unframed['prompt'] = 'Solve |x| = 3.'; bad.append(unframed)
     mutant = copy.deepcopy(fixtures[0][0]); mutant['response']['options'][1]['id'] = '0'; bad.append(mutant)
     for public in bad:
         try: solve_absolute_value(public)
@@ -189,7 +206,7 @@ def review_absolute_value_content(data=None):
         for p in problems:
             public=p['public']; require(solve_absolute_value(public)==p['answer'],'Worksheet answer mismatch')
             require(2<=len(public['response']['options'])<=4,'Published four-choice protocol exceeded')
-            equation=public['prompt'][6:].removesuffix('. Choose the complete set of real solutions.')
+            equation=equation_of(public['prompt'])
             a,b,c,d,e=parse_equation(equation)
             if not a or not c:
                 feature='constant-interior' if not a else 'zero-factor'

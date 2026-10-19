@@ -21,7 +21,10 @@ import { StripeBilling } from "../src/billing/stripe/service.js";
 import { claimEnrollment } from "../src/billing/stripe/enrollment.js";
 import { registerStripeRoutes } from "../src/billing/stripe/routes.js";
 import { annualOffer } from "../src/billing/stripe/purchase.js";
+import { accountSummary } from "../src/account/repository.js";
+import { enrollmentViewSchema } from "../src/billing/stripe/enrollment-contracts.js";
 import type { AnnualPayment } from "../src/billing/stripe/model.js";
+import { recordEventBatch } from "../src/analytics/repository.js";
 
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
 async function fixture(
@@ -456,6 +459,8 @@ test(
         });
         const view = await app.inject({ url: "/api/v1/billing/enrollment" });
         assert.equal(view.json().available, true);
+        // The browser validates this response with the same contract.
+        assert.equal(enrollmentViewSchema.parse(view.json()).purchase, null);
         assert.equal(view.json().noticeDigest, f.acknowledge.noticeDigest);
         const body = {
           requestId: randomUUID(),
@@ -492,11 +497,11 @@ test(
           ).statusCode,
           200,
         );
-        assert.equal(
-          (await app.inject({ url: "/api/v1/billing/enrollment" })).json()
-            .purchase.phase,
-          "checkout-open",
+        const open = enrollmentViewSchema.parse(
+          (await app.inject({ url: "/api/v1/billing/enrollment" })).json(),
         );
+        assert.equal(open.purchase?.phase, "checkout-open");
+        assert.match(open.purchase?.url ?? "", /^https:\/\/checkout\.stripe/);
         assert.equal(
           (
             await f.pool.query(
@@ -1054,5 +1059,167 @@ test(
           )
         ).rows[0].completed_at,
       );
+    }),
+);
+
+test(
+  "account next step follows purchase-first enrollment: free trial, then learner after verified payment, then claim",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      const next = async () =>
+        accountSummary(f.pool, f.family, "parent", f.repository.namespace);
+      // Without a purchase or consent, the parent gets the free trial.
+      assert.equal((await next()).next, "try");
+      const row = await f.checkout();
+      assert.equal((await next()).next, "try");
+      assert.equal((await next()).unassignedPurchase, undefined);
+      assert.deepEqual(await f.deliver(f.settle(row)), {
+        processed: 1,
+        failed: 0,
+      });
+      const paid = await next();
+      assert.equal(paid.next, "add-learner");
+      assert.equal(paid.unassignedPurchase?.id, row.id);
+      assert.equal(paid.unassignedPurchase?.interval, "year");
+      for (const namespace of [null, "acct_other:live"])
+        assert.equal(
+          (await accountSummary(f.pool, f.family, "parent", namespace))
+            .unassignedPurchase,
+          undefined,
+        );
+      // A learner created before the claim completes still resumes the claim.
+      await f.learner();
+      const unclaimed = await next();
+      assert.equal(unclaimed.next, "add-learner");
+      assert.equal(unclaimed.unassignedPurchase?.id, row.id);
+      await claimEnrollment(f.billing, "parent", row.id, "child");
+      const assigned = await next();
+      assert.equal(assigned.next, "practice");
+      assert.equal(assigned.unassignedPurchase, undefined);
+      // Another account, or another Stripe namespace, never sees this purchase.
+      assert.equal(
+        (
+          await accountSummary(
+            f.pool,
+            f.family,
+            "other",
+            f.repository.namespace,
+          )
+        ).unassignedPurchase,
+        undefined,
+      );
+    }),
+);
+
+test(
+  "funnel: the verified webhook writes one attributed purchase and one refund; the checkout link is erased",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      const visitorId = randomUUID();
+      await recordEventBatch(f.pool, {
+        visitorId,
+        events: [
+          {
+            event: "landing_view",
+            props: { referrer: "search", device: "phone", utmSource: "fall" },
+            at: 1,
+          },
+        ],
+      });
+      const app = Fastify();
+      try {
+        await registerStripeRoutes(app, {
+          pool: f.pool,
+          config: f.config,
+          consentPolicy: f.policy,
+          gateway: f.gateway,
+          authenticate: async () => "parent",
+        });
+        const started = await app.inject({
+          method: "POST",
+          url: "/api/v1/billing/enrollment/checkout",
+          headers: { "x-amp-visitor": visitorId },
+          payload: {
+            requestId: randomUUID(),
+            offerId: annualOffer(f.config).id,
+            interval: "year",
+            acknowledgement: f.acknowledge,
+          },
+        });
+        assert.equal(started.statusCode, 200);
+      } finally {
+        await app.close();
+      }
+      const row = (await f.pool.query("SELECT * FROM amp_stripe_checkouts"))
+        .rows[0];
+      assert.equal(
+        (
+          await f.pool.query(
+            "SELECT visitor_id FROM amp_funnel_checkouts WHERE checkout_id=$1",
+            [row.id],
+          )
+        ).rows[0].visitor_id,
+        visitorId,
+      );
+      const funnel = async () =>
+        (
+          await f.pool.query(
+            "SELECT event,visitor_id,props FROM amp_funnel_events WHERE event IN ('purchase','refund') ORDER BY id",
+          )
+        ).rows;
+      // A browser cannot claim a purchase: only the verified webhook writes it.
+      assert.deepEqual(await funnel(), []);
+      const p = f.settle(row);
+      assert.deepEqual(await f.deliver(p), { processed: 1, failed: 0 });
+      assert.deepEqual(await f.deliver(p), { processed: 1, failed: 0 });
+      assert.deepEqual(await funnel(), [
+        {
+          event: "purchase",
+          visitor_id: visitorId,
+          props: { interval: "year" },
+        },
+      ]);
+      const link = (
+        await f.pool.query(
+          "SELECT visitor_id,purchase_recorded FROM amp_funnel_checkouts",
+        )
+      ).rows[0];
+      assert.equal(link.visitor_id, null);
+      assert.equal(link.purchase_recorded, true);
+      assert.ok(
+        (
+          await f.pool.query(
+            "SELECT converted_on FROM amp_funnel_visitors WHERE visitor_id=$1",
+            [visitorId],
+          )
+        ).rows[0].converted_on,
+      );
+      p.fullRefundAt = p.paidAt;
+      f.gateway.invoiceFromCharge = async () => p.invoiceId;
+      await f.deliver(p, "charge.refunded");
+      await f.deliver(p, "charge.refunded");
+      assert.deepEqual(await funnel(), [
+        {
+          event: "purchase",
+          visitor_id: visitorId,
+          props: { interval: "year" },
+        },
+        { event: "refund", visitor_id: null, props: { full: true } },
+      ]);
+      // No funnel row carries an account, checkout, invoice or learner.
+      const columns = (
+        await f.pool.query(
+          "SELECT column_name FROM information_schema.columns WHERE table_name='amp_funnel_events' AND table_schema=current_schema()",
+        )
+      ).rows.map((r) => r.column_name);
+      assert.deepEqual(columns.sort(), [
+        "event",
+        "id",
+        "occurred_on",
+        "props",
+        "visitor_id",
+      ]);
     }),
 );

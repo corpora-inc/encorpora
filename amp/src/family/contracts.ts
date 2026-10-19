@@ -1,3 +1,4 @@
+import { RETENTION } from "../privacy/retention-periods.js";
 export interface FamilyLearner {
   id: string;
   name: string;
@@ -50,5 +51,5 @@ export const retentionNotice: FamilySummary["retained"] = {
     "Order, payment, license and refund references are retained separately for billing reconciliation. A deleted learner’s name and learning history are removed; an opaque billing reference may remain. Deleting learning data does not cancel renewal.",
   backups:
     "This action removes learning records from the live application database. Backup deletion follows the deployment’s documented retention schedule; contact support for that schedule and any external copies.",
-  privacyAuditDays: 90,
+  privacyAuditDays: RETENTION.privacyAuditDays,
 };

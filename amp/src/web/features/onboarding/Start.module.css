@@ -1,53 +1,149 @@
-.root {
-  width: 100%;
-  min-height: 100dvh;
+.step {
   display: grid;
-  place-items: center;
-  overflow: auto;
-  padding: var(--space-5) var(--space-4);
-  color: var(--ink);
-  background: var(--bg);
+  gap: var(--space-4);
+  text-align: left;
+  color: var(--color-on-surface);
 }
-.root :global(.start-card) {
-  width: min(100%, var(--width-form));
+.step h1 {
   margin: 0;
-}
-.root h1 {
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
   letter-spacing: -0.02em;
-  font-size: clamp(var(--text-title-min), 6vw, var(--text-title-max));
+  font-size: clamp(var(--text-title-min), 6vw, 36px);
   line-height: 1.15;
-  margin: var(--space-5) 0 var(--space-4);
+  overflow-wrap: normal;
 }
-.root p {
+.step p {
+  margin: 0;
   font-size: var(--text-body);
-  line-height: 1.6;
-  color: var(--ink-2);
+  line-height: 1.55;
+  color: var(--color-muted-text);
 }
-.root form {
+.step form {
   display: grid;
   gap: var(--space-3);
-  margin-top: var(--space-5);
 }
-.root label {
+.step label {
   font-size: var(--text-label);
   font-weight: 600;
 }
-.root :global(.setup-progress) {
+.progress {
   display: flex;
   justify-content: space-between;
+  gap: var(--space-3);
   padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-2);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted-text);
   font-size: var(--text-label);
+  font-weight: 600;
+  white-space: nowrap;
 }
-
-.verificationActions {
+.progress span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+.actions {
   display: grid;
   gap: var(--space-3);
-  margin-top: var(--space-5);
 }
-.verificationActions button {
+.actions > * {
   width: 100%;
+}
+.step .fine {
+  font-size: var(--text-small);
+  line-height: 1.45;
+  color: var(--color-muted-text);
+}
+.address {
+  color: var(--color-on-surface);
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+.textLink {
+  justify-self: center;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-subtle-text);
+  font-size: var(--text-small);
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+/* Skeleton blocks reserve the space of the content they precede. */
+.skeleton {
+  display: grid;
+  gap: var(--space-4);
+}
+.skeleton > span {
+  display: block;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+}
+/* Phase layers share one grid cell: the card is always the size of its
+   largest phase, so a phase change never moves or resizes anything. */
+.stack {
+  display: grid;
+}
+.stack > * {
+  grid-area: 1 / 1;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+}
+.stack > [data-active="false"] {
+  visibility: hidden;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+}
+.icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon[data-tone="good"] {
+  background: var(--color-success);
+  color: var(--color-success-accent);
+}
+.icon[data-tone="attention"] {
+  background: var(--color-danger);
+  color: var(--color-danger-accent);
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--color-border-strong);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2400ms;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.claim {
+  display: grid;
+  gap: var(--space-2);
 }

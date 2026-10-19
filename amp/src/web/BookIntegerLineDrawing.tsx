@@ -65,7 +65,7 @@ export function BookIntegerLineDrawing({
             markerHeight="5"
             orient="auto"
           >
-            <path d="M0,0 L8,4 L0,8" fill="#18594f" />
+            <path d="M0,0 L8,4 L0,8" fill="var(--color-figure-ink)" />
           </marker>
         </defs>
         <line
@@ -73,7 +73,7 @@ export function BookIntegerLineDrawing({
           x2="296"
           y1={axis}
           y2={axis}
-          stroke="#18594f"
+          stroke="var(--color-figure-ink)"
           strokeWidth="2"
         />
         {Array.from({ length: ticks + 1 }, (_, i) => (
@@ -84,12 +84,19 @@ export function BookIntegerLineDrawing({
             x2={x(min + i / d.divisionsPerUnit)}
             y1={axis - 5}
             y2={axis + 7}
-            stroke="#18594f"
+            stroke="var(--color-figure-ink)"
           />
         ))}
         {marks.map((m, i) => (
           <g key={i}>
-            {m.point && <circle cx={x(m.at)} cy={axis} r="4" fill="#ac671a" />}
+            {m.point && (
+              <circle
+                cx={x(m.at)}
+                cy={axis}
+                r="4"
+                fill="var(--color-figure-gold)"
+              />
+            )}
             <text
               data-line-label={m.at}
               x={m.center}
@@ -107,7 +114,7 @@ export function BookIntegerLineDrawing({
               data-jump-to={j.to}
               d={`M${x(j.from)},${axis - 9} Q${(x(j.from) + x(j.to)) / 2},${axis - 43 - jumpLanes[i]! * 23} ${x(j.to)},${axis - 9}`}
               fill="none"
-              stroke="#18594f"
+              stroke="var(--color-figure-ink)"
               strokeWidth="2"
               markerEnd={`url(#${arrow})`}
             />

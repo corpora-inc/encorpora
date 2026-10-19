@@ -225,6 +225,23 @@ function generateCase(
   }
   tags.push(kind);
   const equation = `${transformed ? factor(k) : ""}|${inner(a, b)}|${transformed ? constant(d) : ""} = ${fmt(e)}`;
+  const frame = r(0, 2),
+    prompt = [
+      `Solve ${equation}. Choose the complete set of real solutions.`,
+      `Which values of x make ${equation} true? Choose the complete set.`,
+      `Find every real number x for which ${equation}. Choose the complete set.`,
+    ][frame]!;
+  const inside = inner(a, b),
+    shift = `${d < 0 ? "add" : "subtract"} ${Math.abs(d)} ${d < 0 ? "to" : "from"} both sides of ${equation}`,
+    hint = !transformed
+      ? direct
+        ? `The bars measure distance from 0, so this asks for every point ${fmt(e)} ${e.d === 1 && Math.abs(e.n) === 1 ? "unit" : "units"} from 0. Decide whether a distance of ${fmt(e)} is possible, and how many points have it.`
+        : `Call the whole inside t = ${inside}, so |t| = ${fmt(e)}. Decide which values t can take, then solve ${inside} = t for each one.`
+      : k === 0
+        ? `In ${equation} the bars are multiplied by 0, so the left side is ${fmt(q(d))} for every x. Compare that constant with ${fmt(e)}.`
+        : a === 0
+          ? `In ${equation} the inside, ${inside}, is ${fmt(q(b))} for every x. Evaluate the left side as one number and compare it with ${fmt(e)}.`
+          : `Isolate the bars before splitting: ${shift}${k === 1 ? "" : `, then divide both sides by ${fmt(q(k))}`}. The sign of the isolated value tells you how many branches there are.`;
   const options = shuffle(candidates, r).map((text, i) => ({
     id: `option-${"abcd"[i]}`,
     label: text,
@@ -245,7 +262,7 @@ function generateCase(
         templateVersion: 1,
         seed,
         skillId: metadata.skillId,
-        prompt: `Solve ${equation}. Choose the complete set of real solutions.`,
+        prompt,
         response: {
           kind: "choice",
           label: "Choose the complete solution set",
@@ -253,9 +270,7 @@ function generateCase(
         },
       },
       answer: options.find((v) => v.label === correct)!.id,
-      hint: transformed
-        ? "Isolate the absolute value before deciding whether its target is positive, zero, or negative. Check for a zero coefficient before dividing. A positive target gives two equations for the expression inside the bars."
-        : "Absolute value is distance from zero. A positive distance has two possible signs; distance zero has one value, and a negative distance is impossible. Solve every resulting equation.",
+      hint,
       explanation,
       choiceFeedback: Object.fromEntries(
         options

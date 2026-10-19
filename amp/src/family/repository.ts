@@ -180,115 +180,122 @@ export class FamilyRepository {
     accountId: string,
     learnerId?: string,
   ): Promise<DeletionReceipt> {
-    return this.transaction(accountId, async (client) => {
-      const rows = (
-        await client.query(
-          "SELECT id,deleted_at FROM amp_learners WHERE account_id=$1 AND ($2::text IS NULL OR id=$2) ORDER BY id FOR UPDATE",
-          [accountId, learnerId ?? null],
-        )
-      ).rows;
-      if (learnerId && !rows.length)
-        throw new FamilyError(404, "learner_not_found");
-      const stripe = await this.stripeTable(client);
-      const funding = !!(
-        await client.query(
-          "SELECT to_regclass('amp_funding_requests') AS relation",
-        )
-      ).rows[0]?.relation;
-      const offline = !!(
-        await client.query(
-          "SELECT to_regclass('amp_offline_packs') AS relation",
-        )
-      ).rows[0]?.relation;
-      const purchases = !!(
-        await client.query(
-          "SELECT to_regclass('amp_purchase_consents') AS relation",
-        )
-      ).rows[0]?.relation;
-      let retained = 0,
-        linked =
-          !learnerId && stripe
-            ? !!(
-                await client.query(
-                  "SELECT 1 FROM amp_stripe_checkouts WHERE account_id=$1 AND NOT closed LIMIT 1",
-                  [accountId],
-                )
-              ).rowCount
-            : false,
-        deleted = 0;
-      for (const row of rows) {
-        const subscription = stripe
-          ? await client.query(
-              "SELECT 1 FROM amp_stripe_checkouts WHERE learner_id=$1 AND account_id=$2 LIMIT 1",
-              [row.id, accountId],
-            )
-          : { rowCount: 0 };
-        const financial = await client.query(
-          `SELECT 1 FROM amp_grants WHERE learner_id=$1 AND channel<>'pilot'
+    return this.transaction(accountId, (client) =>
+      this.deleteLearningInside(client, accountId, learnerId),
+    );
+  }
+  /** Caller holds the account transaction lock. Retention uses the same path. */
+  async deleteLearningInside(
+    client: PoolClient,
+    accountId: string,
+    learnerId?: string,
+    action?: "learner.retention-deleted",
+  ): Promise<DeletionReceipt> {
+    const rows = (
+      await client.query(
+        "SELECT id,deleted_at FROM amp_learners WHERE account_id=$1 AND ($2::text IS NULL OR id=$2) ORDER BY id FOR UPDATE",
+        [accountId, learnerId ?? null],
+      )
+    ).rows;
+    if (learnerId && !rows.length)
+      throw new FamilyError(404, "learner_not_found");
+    const stripe = await this.stripeTable(client);
+    const funding = !!(
+      await client.query(
+        "SELECT to_regclass('amp_funding_requests') AS relation",
+      )
+    ).rows[0]?.relation;
+    const offline = !!(
+      await client.query("SELECT to_regclass('amp_offline_packs') AS relation")
+    ).rows[0]?.relation;
+    const purchases = !!(
+      await client.query(
+        "SELECT to_regclass('amp_purchase_consents') AS relation",
+      )
+    ).rows[0]?.relation;
+    let retained = 0,
+      linked =
+        !learnerId && stripe
+          ? !!(
+              await client.query(
+                "SELECT 1 FROM amp_stripe_checkouts WHERE account_id=$1 AND NOT closed LIMIT 1",
+                [accountId],
+              )
+            ).rowCount
+          : false,
+      deleted = 0;
+    for (const row of rows) {
+      const subscription = stripe
+        ? await client.query(
+            "SELECT 1 FROM amp_stripe_checkouts WHERE learner_id=$1 AND account_id=$2 LIMIT 1",
+            [row.id, accountId],
+          )
+        : { rowCount: 0 };
+      const financial = await client.query(
+        `SELECT 1 FROM amp_grants WHERE learner_id=$1 AND channel<>'pilot'
           UNION ALL SELECT 1 FROM amp_commerce_orders WHERE learner_id=$1 LIMIT 1`,
-          [row.id],
-        );
-        const assigned = purchases
-          ? await client.query(
-              "SELECT closed FROM amp_stripe_checkouts WHERE assigned_learner_id=$1 AND account_id=$2",
-              [row.id, accountId],
-            )
-          : { rows: [] };
-        const preserve =
-          !!subscription.rowCount ||
-          !!financial.rowCount ||
-          assigned.rows.length > 0;
-        linked ||= assigned.rows.some((r) => !r.closed);
-        if (stripe) {
-          const open = await client.query(
-            "SELECT 1 FROM amp_stripe_checkouts WHERE learner_id=$1 AND account_id=$2 AND NOT closed LIMIT 1",
-            [row.id, accountId],
-          );
-          linked ||= !!open.rowCount;
-        }
-        if (funding)
-          await client.query(
-            "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL",
-            [row.id, accountId],
-          );
-        if (offline)
-          await client.query(
-            "DELETE FROM amp_offline_packs WHERE learner_id=$1",
-            [row.id],
-          );
-        if (!row.deleted_at) deleted++;
-        await client.query(
-          "DELETE FROM amp_skill_evidence WHERE learner_id=$1",
-          [row.id],
-        );
-        await client.query("DELETE FROM amp_instances WHERE learner_id=$1", [
-          row.id,
-        ]);
-        if (preserve) {
-          await client.query(
-            "UPDATE amp_learners SET name='Deleted learner',starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
-            [row.id],
-          );
-          retained++;
-        } else
-          await client.query("DELETE FROM amp_learners WHERE id=$1", [row.id]);
-      }
-      if (!learnerId) await this.withdrawInside(client, accountId);
-      const requestId = await this.audit(
-        client,
-        accountId,
-        learnerId ? "learner.learning-deleted" : "account.learning-deleted",
-        learnerId ?? null,
-        deleted,
+        [row.id],
       );
-      return {
-        requestId,
-        deletedLearners: deleted,
-        retainedBillingReferences: retained,
-        billingManagementRequired: linked,
-        consentWithdrawn: !learnerId,
-      };
-    });
+      const assigned = purchases
+        ? await client.query(
+            "SELECT closed FROM amp_stripe_checkouts WHERE assigned_learner_id=$1 AND account_id=$2",
+            [row.id, accountId],
+          )
+        : { rows: [] };
+      const preserve =
+        !!subscription.rowCount ||
+        !!financial.rowCount ||
+        assigned.rows.length > 0;
+      linked ||= assigned.rows.some((r) => !r.closed);
+      if (stripe) {
+        const open = await client.query(
+          "SELECT 1 FROM amp_stripe_checkouts WHERE learner_id=$1 AND account_id=$2 AND NOT closed LIMIT 1",
+          [row.id, accountId],
+        );
+        linked ||= !!open.rowCount;
+      }
+      if (funding)
+        await client.query(
+          "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL",
+          [row.id, accountId],
+        );
+      if (offline)
+        await client.query(
+          "DELETE FROM amp_offline_packs WHERE learner_id=$1",
+          [row.id],
+        );
+      if (!row.deleted_at) deleted++;
+      await client.query("DELETE FROM amp_skill_evidence WHERE learner_id=$1", [
+        row.id,
+      ]);
+      await client.query("DELETE FROM amp_instances WHERE learner_id=$1", [
+        row.id,
+      ]);
+      if (preserve) {
+        await client.query(
+          "UPDATE amp_learners SET name='Deleted learner',birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
+          [row.id],
+        );
+        retained++;
+      } else
+        await client.query("DELETE FROM amp_learners WHERE id=$1", [row.id]);
+    }
+    if (!learnerId) await this.withdrawInside(client, accountId);
+    const requestId = await this.audit(
+      client,
+      accountId,
+      action ??
+        (learnerId ? "learner.learning-deleted" : "account.learning-deleted"),
+      learnerId ?? null,
+      deleted,
+    );
+    return {
+      requestId,
+      deletedLearners: deleted,
+      retainedBillingReferences: retained,
+      billingManagementRequired: linked,
+      consentWithdrawn: !learnerId,
+    };
   }
   async issueExportTicket(accountId: string): Promise<string> {
     const ticket = randomBytes(32).toString("base64url");

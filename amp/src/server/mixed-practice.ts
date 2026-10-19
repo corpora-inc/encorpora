@@ -11,6 +11,11 @@ import {
   type Frontier,
 } from "../learning/frontier";
 import { projectSkillEvidence, type SkillEvidence } from "./evidence.js";
+import {
+  PLACEMENT_ATTEMPTS,
+  openerCandidates,
+  templateRole,
+} from "../learning/placement";
 
 export type PracticeReason =
   "review" | "revisit" | "prerequisite" | "frontier" | "explore";
@@ -67,6 +72,9 @@ export function planMixedPractice(options: {
   now?: number;
   /** Finite offline pools shrink instead of filling with above-frontier work. */
   strictCeiling?: boolean;
+  /** Stable per learner, so siblings start differently but a learner's own
+   * scripted openers never change between requests. */
+  learnerKey?: string;
 }): PracticeChoice[] {
   const { templates, skills, evidence, seed } = options;
   if (!templates.length) throw new Error("No active templates");
@@ -115,6 +123,16 @@ export function planMixedPractice(options: {
     if (level > ceiling) return ceiling;
     return level < floor && frontier.overall.level >= floor ? floor : level;
   };
+  // Placement asks whole skill items only; method-step scaffolds return once
+  // the learner is placed. The first answers follow the scripted openers.
+  const answered = frontier.overall.answered;
+  const pool =
+    answered < PLACEMENT_ATTEMPTS
+      ? templates.filter(
+          (template) => templateRole(template.id) === "assessment",
+        )
+      : templates;
+  const attemptedTemplates = new Set(attempts.map((a) => a.templateId));
   const stats = new Map(
     projectSkillEvidence(attempts).map((entry) => [entry.skillId, entry]),
   );
@@ -146,11 +164,31 @@ export function planMixedPractice(options: {
     if (misses >= 2) collectPrerequisites(entry.skillId);
   }
   for (let slot = 0; slot < options.count; slot++) {
+    const opener = openerCandidates({
+      expectedGrade: frontier.expected,
+      position: answered + slot,
+      learnerKey: options.learnerKey ?? seed,
+    })
+      .map((id) => pool.find((template) => template.id === id))
+      .find(
+        (template) =>
+          !!template &&
+          !attemptedTemplates.has(template.id) &&
+          !chosen.some((entry) => entry.template.id === template.id),
+      );
+    if (opener) {
+      chosen.push({
+        template: opener,
+        reason: "explore",
+        strand: strandOf(opener.skillId),
+      });
+      continue;
+    }
     const lastChoice = chosen.at(-1);
     const lastSkill = lastChoice?.template.skillId ?? latest?.skillId;
     const lastStrand =
       lastChoice?.strand ?? (latest ? strandOf(latest.skillId) : null);
-    const candidates = templates.map((template) => {
+    const candidates = pool.map((template) => {
       const strand = strandOf(template.skillId);
       const state = stats.get(template.skillId);
       const last = state?.recentOutcomes.at(-1);

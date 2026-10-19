@@ -153,6 +153,9 @@ try {
           },
         });
       }
+      // First-party funnel beacons (verified in verify-funnel-ui).
+      if (path.endsWith("/events"))
+        return route.fulfill({ status: 202, json: { accepted: 1 } });
       faults.push(path);
       return route.fulfill({
         status: 404,
@@ -160,9 +163,9 @@ try {
       });
     });
     await page.goto("http://127.0.0.1:4384");
-    await page.locator(".account-menu summary").click();
+    await page.getByRole("button", { name: "Family menu" }).click();
     await page
-      .getByRole("button", { name: "Manage family", exact: true })
+      .getByRole("menuitem", { name: "Manage family", exact: true })
       .click();
     await page.getByLabel("Family learner", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-learner").count(), 1);

@@ -93,6 +93,9 @@ async function fixturePage(family: (token: string) => FamilySummary) {
           strands: {},
         },
       });
+    // First-party funnel beacons (verified in verify-funnel-ui).
+    if (path === "/api/v1/events")
+      return route.fulfill({ status: 202, json: { accepted: 1 } });
     errors.push(`Unexpected API request ${route.request().method()} ${path}`);
     return route.fulfill({
       status: 404,
@@ -259,9 +262,9 @@ try {
       await page
         .getByRole("button", { name: "Learner", exact: true })
         .waitFor();
-      await page.locator(".account-menu summary").click();
+      await page.getByRole("button", { name: "Family menu" }).click();
       await page
-        .getByRole("button", { name: "Manage family", exact: true })
+        .getByRole("menuitem", { name: "Manage family", exact: true })
         .click();
       await held;
       await page

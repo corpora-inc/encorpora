@@ -5,23 +5,55 @@ import katex from "katex";
  * operation (=, +, −, ×, ÷, /, ^, …) are converted to TeX. Prose is untouched,
  * and anything KaTeX cannot parse falls back to the original text. */
 export function MathText({ text }: { text: string }) {
+  const parts = segments(text);
   return (
     <>
-      {segments(text).map((segment, i) =>
-        segment.math ? (
+      {parts.map((segment, i) => {
+        if (!segment.math) {
+          // Punctuation that closes a formula is set with it (below).
+          const prev = parts[i - 1];
+          const text =
+            prev?.math && !BARE_SYMBOL.test(prev.text)
+              ? segment.text.replace(CLOSING, "")
+              : segment.text;
+          return text ? <span key={i}>{text}</span> : null;
+        }
+        const next = parts[i + 1];
+        // Closing punctuation is set with its formula so a line never starts
+        // with it.
+        const closing =
+          next && !next.math && !BARE_SYMBOL.test(segment.text)
+            ? CLOSING.exec(next.text)?.[0]
+            : "";
+        return (
           <span
             key={i}
             className="math"
             data-plain={segment.plain}
-            dangerouslySetInnerHTML={{ __html: render(segment.text) }}
+            // A short formula never breaks; a long one breaks at KaTeX's
+            // operator and relation points.
+            style={
+              (segment.plain ?? segment.text).length <= SHORT
+                ? { whiteSpace: "nowrap" }
+                : undefined
+            }
+            dangerouslySetInnerHTML={{
+              __html: render(
+                segment.text + (closing ? `\\text{${closing}}` : ""),
+              ),
+            }}
           />
-        ) : (
-          <span key={i}>{segment.text}</span>
-        ),
-      )}
+        );
+      })}
     </>
   );
 }
+const CLOSING = /^[.,;:?!)]+/;
+const SHORT = 20;
+// A formula that ends in a relation or operator (a symbol named in prose,
+// such as "<,") keeps its punctuation as prose: TeX would space it as an
+// operand.
+const BARE_SYMBOL = /(?:[<>=+\-]|\\(?:le|ge|neq|times|div|cdot))\s*$/;
 
 function render(tex: string) {
   try {
@@ -40,7 +72,7 @@ const escape = (s: string) =>
   );
 
 type Segment = { text: string; math: boolean; plain?: string };
-const MATHY = /^[\d.,()[\]+−×÷=<>≤≥≠/^_²³ⁿᵖ⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉|√·a-zA-Z-]+$/;
+const MATHY = /^[\d.,()[\]+−×÷=<>≤≥≠/^_²³ⁿᵖ⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉|√·□a-zA-Z-]+$/;
 const OPERATION = /[=+−×÷<>≤≥≠/^_²³ⁿᵖ₀-₉√]|\b[a-z]\(|\d-|-\d|\b\d+[a-z]\b/;
 
 function mathyWord(word: string) {
@@ -50,7 +82,7 @@ function mathyWord(word: string) {
   return words.every((w) => w === "log");
 }
 
-function segments(text: string): Segment[] {
+export function segments(text: string): Segment[] {
   const out: Segment[] = [];
   const push = (value: string, math: boolean) => {
     if (!value) return;
@@ -87,12 +119,13 @@ function segments(text: string): Segment[] {
       const lead = run.join("").match(/^\s*/)![0];
       if (formula && OPERATION.test(formula)) {
         push(lead, false);
-        // Commas outside parentheses separate prose from formulas.
+        // Commas, colons and semicolons outside parentheses separate
+        // formulas, so each clause typesets (and wraps) on its own.
         const parts = formula.includes("(")
           ? [formula]
-          : formula.split(/([,:]\s+)/);
+          : formula.split(/([,:;]\s+)/);
         for (const part of parts)
-          if (/^[,:]\s+$/.test(part) || !OPERATION.test(part))
+          if (/^[,:;]\s+$/.test(part) || !OPERATION.test(part))
             push(part, false);
           else out.push({ text: toTex(part), math: true, plain: part });
       } else push(run.join(""), false);
@@ -103,6 +136,12 @@ function segments(text: string): Segment[] {
       if (/^\s+$/.test(piece)) {
         if (run.length) run.push(piece);
         else push(piece, false);
+        continue;
+      }
+      // A missing number ("?" or "□" standing alone) is part of the formula,
+      // typeset as a blank box with the formula's own operator spacing.
+      if (piece === "?" || piece === "□") {
+        run.push("□");
         continue;
       }
       const bare = piece.replace(/[.,;:?!]+$/, "");
@@ -154,27 +193,34 @@ const SUBSCRIPT: Record<string, string> = {
 };
 
 export function toTex(formula: string): string {
-  return formula
-    .replace(/log_(\w+)/g, "\\log_{$1}")
-    .replace(/\blog\b/g, "\\log")
-    .replace(
-      /([⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ]+)/g,
-      (m) => `^{${[...m].map((c) => SUPERSCRIPT[c]).join("")}}`,
-    )
-    .replace(
-      /([₀-₉]+)/g,
-      (m) => `_{${[...m].map((c) => SUBSCRIPT[c]).join("")}}`,
-    )
-    .replace(/\^\(([^()]+)\)/g, "^{$1}")
-    .replace(/\^([\w.−-]+)/g, "^{$1}")
-    .replace(/\(([^()]+)\)\/\(([^()]+)\)/g, "\\frac{$1}{$2}")
-    .replace(/(\d+|[a-zA-Z])\/(\d+|[a-zA-Z])/g, "\\tfrac{$1}{$2}")
-    .replace(/−/g, "-")
-    .replace(/×/g, "\\times ")
-    .replace(/÷/g, "\\div ")
-    .replace(/≤/g, "\\le ")
-    .replace(/≥/g, "\\ge ")
-    .replace(/≠/g, "\\neq ")
-    .replace(/·/g, "\\cdot ")
-    .replace(/√/g, "\\sqrt ");
+  return (
+    formula
+      // A thousands separator is part of its numeral, not punctuation.
+      .replace(/(?<![\d.,])\d{1,3}(?:,\d{3})+(?![\d,])/g, (n) =>
+        n.replaceAll(",", "{,}"),
+      )
+      .replace(/log_(\w+)/g, "\\log_{$1}")
+      .replace(/\blog\b/g, "\\log")
+      .replace(
+        /([⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵖ]+)/g,
+        (m) => `^{${[...m].map((c) => SUPERSCRIPT[c]).join("")}}`,
+      )
+      .replace(
+        /([₀-₉]+)/g,
+        (m) => `_{${[...m].map((c) => SUBSCRIPT[c]).join("")}}`,
+      )
+      .replace(/\^\(([^()]+)\)/g, "^{$1}")
+      .replace(/\^([\w.−-]+)/g, "^{$1}")
+      .replace(/\(([^()]+)\)\/\(([^()]+)\)/g, "\\frac{$1}{$2}")
+      .replace(/(\d+|[a-zA-Z])\/(\d+|[a-zA-Z])/g, "\\tfrac{$1}{$2}")
+      .replace(/−/g, "-")
+      .replace(/□/g, "\\boxed{\\phantom{0}}")
+      .replace(/×/g, "\\times ")
+      .replace(/÷/g, "\\div ")
+      .replace(/≤/g, "\\le ")
+      .replace(/≥/g, "\\ge ")
+      .replace(/≠/g, "\\neq ")
+      .replace(/·/g, "\\cdot ")
+      .replace(/√/g, "\\sqrt ")
+  );
 }

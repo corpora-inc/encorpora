@@ -4,6 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { isAre } from "./agreement.js";
 
 // ID | title | skill | instructional grade | book page | bounded numeric objective
 const rows = `
@@ -69,6 +70,7 @@ function random(id: string, seed: string) {
     return low + (value % range);
   };
 }
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 function fraction(n: number, d: number) {
   let a = Math.abs(n),
     b = d;
@@ -111,7 +113,7 @@ export function generateFractionPracticeProblem(
       prompt = `One whole strip is divided into ${d} equal pieces. What fraction of the whole is one piece?`;
       figure = strips(d, 1, "one whole", 1);
       answer = `1/${d}`;
-      hint = "The denominator counts the equal pieces in one whole.";
+      hint = `${d} equal pieces fill the whole. How much of the whole is one of them? The bottom number counts the pieces in the whole.`;
       explanation = [
         `${d} equal pieces make the whole.`,
         `One piece is 1/${d} of that whole.`,
@@ -125,8 +127,7 @@ export function generateFractionPracticeProblem(
       label = "Number of pieces";
       prompt = `Each whole is cut into ${d} equal pieces. How many pieces are shaded?`;
       answer = `${n}`;
-      hint =
-        "Count shaded pieces; crossing a whole boundary does not change their size.";
+      hint = `Each strip is one whole of ${d} pieces. Count every shaded piece across all the strips; crossing into the next whole does not change a piece.`;
       explanation = [
         `Each small piece represents 1/${d} of a whole.`,
         `There are ${n} shaded pieces, so the shaded amount is ${n}/${d}.`,
@@ -144,7 +145,7 @@ export function generateFractionPracticeProblem(
       };
       prompt = `What number is at P? Each whole interval has ${d} equal steps.`;
       answer = fraction(n, d);
-      hint = "Count equal intervals from zero, including those beyond one.";
+      hint = `Each whole is split into ${d} equal steps. Count the steps from 0 to P${n > d ? ", past 1 if needed," : ""} and write that count over ${d}.`;
       explanation = [
         `P lies ${n} steps from zero; each step is 1/${d}.`,
         `Its position is ${n}/${d} = ${answer}.`,
@@ -180,7 +181,7 @@ export function generateFractionPracticeProblem(
         unit: "one whole",
         rows: [{ selected: a * k, label: "same amount" }],
       };
-      hint = "Find how many new pieces replace each old piece.";
+      hint = `How many times ${b} is ${b * k}? Each 1/${b} piece splits into that many smaller pieces, so multiply ${a} by the same number.`;
       explanation = [
         `Each 1/${b} piece is split into ${k} smaller pieces.`,
         `Both counts multiply by ${k}: ${a}/${b} = ${a * k}/${b * k}.`,
@@ -195,7 +196,7 @@ export function generateFractionPracticeProblem(
       label = "Missing denominator";
       prompt = `Rename ${a * k}/${b * k} as ${a}/?. What is the missing denominator?`;
       answer = `${b}`;
-      hint = "The same grouping factor must change both counts.";
+      hint = `What was ${a * k} divided by to make ${a}? Divide ${b * k} by that same number.`;
       explanation = [
         `The numerator changes from ${a * k} to ${a} by division by ${k}.`,
         `Divide the denominator by ${k} too: ${b * k} ÷ ${k} = ${b}.`,
@@ -205,11 +206,11 @@ export function generateFractionPracticeProblem(
     case "like-fraction-missing-part": {
       const total = r(2, 2 * d),
         part = r(1, total - 1);
-      prompt = `${part}/${d} + ? = ${total}/${d}. What fraction is missing?`;
+      prompt = `${part}/${d} + □ = ${total}/${d}. What fraction is missing?`;
       answer = fraction(total - part, d);
-      hint = "All pieces have the same size; find how many more are needed.";
+      hint = `${part}/${d} and ${total}/${d} count the same size of piece. You have ${part} of them and need ${total}: how many more?`;
       explanation = [
-        `The total needs ${total} pieces and ${part} are present.`,
+        `The total needs ${total} pieces and ${part} ${isAre(part)} present.`,
         `${total} − ${part} = ${total - part}, so the missing amount is ${total - part}/${d} = ${answer}.`,
       ];
       break;
@@ -220,7 +221,7 @@ export function generateFractionPracticeProblem(
       prompt = `A cord is ${a}/${d} meter long. You remove ${b}/${d} meter. How many meters remain?`;
       label = "Meters remaining";
       answer = fraction(a - b, d);
-      hint = "Subtract the counts of equal meter-parts.";
+      hint = `${a}/${d} and ${b}/${d} meter count the same size of piece. Take ${b} pieces away from ${a} pieces.`;
       explanation = [
         `Both lengths use pieces of size 1/${d} meter.`,
         `${a}/${d} − ${b}/${d} = ${a - b}/${d} = ${answer} meter(s).`,
@@ -235,8 +236,7 @@ export function generateFractionPracticeProblem(
       label = "Missing numerator";
       answer = `${w * d + n}`;
       figure = strips(d, w * d + n, "one whole");
-      hint =
-        "Count the fractional units inside the wholes, then include the extra pieces.";
+      hint = `Each whole is ${d} pieces, so ${w} ${w === 1 ? "whole holds" : "wholes hold"} ${w} × ${d} pieces. Then add the ${n} extra pieces.`;
       explanation = [
         `${w} wholes contain ${w * d} pieces of size 1/${d}.`,
         `Add ${n} more pieces: ${w * d}+${n}=${w * d + n}. Thus ${w} ${n}/${d} = ${w * d + n}/${d}.`,
@@ -258,7 +258,10 @@ export function generateFractionPracticeProblem(
         prompt = `Remove all complete wholes from ${total}/${d}. What fraction of one whole remains?`;
         answer = fraction(n, d);
       }
-      hint = `Group ${d} equal pieces into each whole.`;
+      hint =
+        templateId === "improper-whole-part"
+          ? `Every ${d} pieces make one whole. How many full groups of ${d} fit in ${total} pieces?`
+          : `Take full groups of ${d} out of the ${total} pieces; each group is one whole. How many pieces are left, out of ${d}?`;
       explanation = [
         `${total} pieces form ${w} complete groups of ${d}, with ${n} pieces left.`,
         `${total}/${d} = ${w} + ${n}/${d}. The requested answer is ${answer}.`,
@@ -273,8 +276,7 @@ export function generateFractionPracticeProblem(
         b = r(a + 1, d - 1);
       prompt = `Find ${whole} ${a}/${d} − ${other} ${b}/${d}. Give a fraction or whole number.`;
       answer = fraction((whole - other) * d + a - b, d);
-      hint =
-        "Rename one whole as fractional units before subtracting the fractional parts.";
+      hint = `${a}/${d} is less than ${b}/${d}, so first rename one whole of ${whole} ${a}/${d} as ${d}/${d}: it becomes ${whole - 1} ${d + a}/${d}.`;
       explanation = [
         `${whole} ${a}/${d} = ${whole - 1} + ${d + a}/${d}.`,
         `${whole - 1} + ${d + a}/${d} − (${other} + ${b}/${d}) = ${whole - 1 - other} + ${d + a - b}/${d} = ${answer}.`,
@@ -293,10 +295,11 @@ export function generateFractionPracticeProblem(
         left[0]! * right[1]! - right[0]! * left[1]!,
         left[1]! * right[1]!,
       );
-      hint = "Rename both fractions in equal-sized units before subtracting.";
+      const common = (left[1]! * right[1]!) / gcd(left[1]!, right[1]!);
+      hint = `Rename ${left[0]}/${left[1]} and ${right[0]}/${right[1]} with the common denominator ${common}, so both count the same size of piece. Then subtract the numerators.`;
       explanation = [
-        `A shared denominator is ${left[1]! * right[1]!}.`,
-        `The difference is (${left[0]! * right[1]!} − ${right[0]! * left[1]!})/${left[1]! * right[1]!} = ${answer}.`,
+        `A shared denominator is ${common}.`,
+        `The difference is (${(left[0]! * common) / left[1]!} − ${(right[0]! * common) / right[1]!})/${common} = ${answer}.`,
       ];
       break;
     }
@@ -316,8 +319,7 @@ export function generateFractionPracticeProblem(
       prompt = `How many meters separate A and B? Each meter has ${d} equal steps.`;
       label = "Distance in meters";
       answer = fraction(b - a, d);
-      hint =
-        "Count the intervals between the markers, not their distances added together.";
+      hint = `Count the steps between A and B on the line, not from 0. Each meter has ${d} steps, so write that count over ${d}.`;
       explanation = [
         `A is at ${a}/${d} meter(s); B is at ${b}/${d} meter(s).`,
         `Their distance is (${b} − ${a})/${d} = ${answer} meter(s).`,
@@ -337,7 +339,7 @@ export function generateFractionPracticeProblem(
         unit: "one liter",
         rows: [{ selected: n, label: "one container" }],
       };
-      hint = "Count the same fractional-liter amount once for each container.";
+      hint = `${groups} containers of ${n}/${d} liter is ${groups} groups of ${n} pieces, each piece 1/${d} liter. Count all the pieces.`;
       explanation = [
         `There are ${groups} groups of ${n} pieces of size 1/${d} liter.`,
         `${groups} × ${n}/${d} = ${groups * n}/${d} = ${answer} liter(s).`,
@@ -350,8 +352,7 @@ export function generateFractionPracticeProblem(
       prompt = `Share ${total} liters equally among ${people} people. How many liters does each person receive?`;
       label = "Liters per person";
       answer = fraction(total, people);
-      hint =
-        "Divide each liter equally among the people, then combine one person’s shares.";
+      hint = `Split each of the ${total} liters into ${people} equal parts. Each person gets one part from every liter.`;
       explanation = [
         `Each person receives 1/${people} liter from each of the ${total} liters.`,
         `Each share is ${total}/${people} = ${answer} liter(s). Multiplying by ${people} recovers ${total} liters.`,
@@ -367,7 +368,11 @@ export function generateFractionPracticeProblem(
       answer = fraction(n, d * people);
       figure = strips(d, n, "one liter", 1);
       hint =
-        "Sharing among people makes each person’s amount smaller than the total.";
+        n === 1
+          ? `Cut the 1/${d} liter into ${people} equal parts. How big is one part, compared with a whole liter?`
+          : n % people === 0
+            ? `${n}/${d} liter is ${n} equal pieces. Share the ${n} pieces among ${people} people, then name one person's part.`
+            : `${n}/${d} liter is ${n} pieces of 1/${d} liter, which do not share evenly among ${people}. Cut every piece into ${people} parts first.`;
       explanation = [
         `Divide the total amount by the ${people} equal shares.`,
         `${n}/${d} ÷ ${people} = ${n}/${d * people} = ${answer} liter(s) per person.`,
@@ -381,8 +386,7 @@ export function generateFractionPracticeProblem(
       label = "Number of containers";
       answer = `${total * d}`;
       figure = strips(d, total * d, "one liter", total);
-      hint =
-        "Each liter fills several small containers; count the fractional-liter units.";
+      hint = `One liter fills ${d} containers of 1/${d} liter. How many do ${total} liters fill?`;
       explanation = [
         `One liter contains ${d} units of size 1/${d} liter.`,
         `${total} liters contains ${total * d} such units, so ${total * d} containers can be filled.`,
@@ -405,8 +409,7 @@ export function generateFractionPracticeProblem(
           { selected: divisor, label: "one container" },
         ],
       };
-      hint =
-        "Both amounts use the same small unit. Compare the total unit-count with the count in one container.";
+      hint = `Both amounts count pieces of 1/${d} liter: the water is ${total} pieces and one container holds ${divisor}. How many groups of ${divisor} are in ${total}, counting a part group as a fraction?`;
       explanation = [
         `The total has ${total} pieces of size 1/${d} liter; one container holds ${divisor} such pieces.`,
         `${total} ÷ ${divisor} = ${answer} containerful(s). This answer counts containers, not liters.`,
@@ -419,8 +422,7 @@ export function generateFractionPracticeProblem(
       prompt = `A jug holds ${total} liters. You use ${n}/${d} of its water. How many liters do you use?`;
       label = "Liters used";
       answer = fraction(n * total, d);
-      hint =
-        "Split the entire water amount into denominator-many shares, then take numerator-many shares.";
+      hint = `Split the ${total} liters into ${d} equal shares, then take ${n} of those shares.`;
       explanation = [
         `One of ${d} equal shares is ${total}/${d} liter(s).`,
         `${n} shares contain ${n} × ${total}/${d} = ${n * total}/${d} = ${answer} liter(s).`,

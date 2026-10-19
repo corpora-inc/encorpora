@@ -1,9 +1,9 @@
 import type { MeasurementFigure as Model } from "../math/measurement-models.js";
 import { rectangleComparisonLayout } from "../math/measurement-models.js";
 
-const ink = "#174a43",
-  teal = "#20776d",
-  coral = "#b3533b";
+const ink = "var(--color-figure-ink)",
+  teal = "var(--color-figure-accent)",
+  coral = "var(--color-figure-warm)";
 const text = { fontFamily: "Arial, sans-serif", fontSize: 24, fill: ink };
 const measure = (m: { value: number; unit: string } | null) =>
   m ? `${m.value} ${m.unit}` : "?";
@@ -32,7 +32,7 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
           width={b - a}
           height={18}
           rx={4}
-          fill="#f7d8b2"
+          fill="var(--color-figure-gold-fill)"
           stroke={coral}
           strokeWidth={2}
         />
@@ -112,7 +112,7 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
           width={w}
           height={h}
           rx={3}
-          fill="#e3eee8"
+          fill="var(--color-figure-accent-fill)"
           stroke={teal}
           strokeWidth={2.5}
         />
@@ -160,7 +160,11 @@ export function MeasurementFigure({ figure }: { figure: Model }) {
               y={l.y}
               width={l.width}
               height={l.height}
-              fill={i === 0 ? "#e3eee4" : "#fae5cd"}
+              fill={
+                i === 0
+                  ? "var(--color-figure-accent-fill)"
+                  : "var(--color-figure-gold-fill)"
+              }
               stroke={i === 0 ? teal : coral}
               strokeWidth={2}
             />

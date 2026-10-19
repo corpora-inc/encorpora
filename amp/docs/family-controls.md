@@ -47,7 +47,7 @@ Financial export uses indexed account-owned order rows and their immutable event
 
 ## Retention and deletion boundaries
 
-Privacy audit rows record account ID, action, opaque learner ID where applicable, count and time. They do not copy names, answers or verification documents. They expire after 90 days. Export ticket digests expire after 60 seconds. Schedule `npm run privacy:retention` daily to remove expired audit rows and tickets, and monitor successful completion. The command does not delete financial evidence or modify learning histories.
+Privacy audit rows record account ID, action, opaque learner ID where applicable, count and time. They do not copy names, answers or verification documents. They expire after 90 days. Export ticket digests expire after 60 seconds. Schedule `npm run privacy:retention` daily and monitor successful completion. It applies the [retention schedule](parent-consent.md#retention), including automatic deletion of inactive learners' learning data through the same deletion path as these controls.
 
 Learning deletion removes live database rows. A deployment must separately define and publish its backup retention, external processor deletion, financial retention and identity-provider erasure procedures. Do not represent this API as immediate erasure from backups or payment processors. On backup restoration, reapply deletion/withdrawal records before serving learning traffic; a restored backup must not resurrect deleted profiles. A documented restoration/reconciliation process and operator ownership are public-launch requirements, not capabilities implemented by this API.
 

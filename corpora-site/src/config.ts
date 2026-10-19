@@ -13,10 +13,39 @@ const https = z.url().refine((v) => {
 const route = z.strictObject({
   state: z.string().regex(/^[A-Z]{2}$/),
   program: text,
-  kind: z.enum(["marketplace", "reimbursement"]),
+  kind: z.enum([
+    "marketplace",
+    "reimbursement",
+    "tax-benefit",
+    "school-purchase",
+    "information",
+  ]),
   instructions: text,
   sourceUrl: https,
   reviewedUntil: z.iso.date(),
+  page: z
+    .strictObject({
+      slug: z
+        .string()
+        .regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/)
+        .max(80),
+      summary: text.max(240),
+      eligibility: text,
+      ampStatus: text,
+      steps: z.array(text).min(1).max(8),
+      receiptChecklist: z.array(text).min(1).max(12),
+      restrictions: z.array(text).max(8).default([]),
+      questions: z
+        .array(z.strictObject({ question: text, answer: text }))
+        .max(8)
+        .default([]),
+      sources: z
+        .array(z.strictObject({ title: text, url: https }))
+        .min(1)
+        .max(8),
+      reviewedOn: z.iso.date(),
+    })
+    .optional(),
 });
 export const configSchema = z
   .strictObject({
@@ -58,6 +87,16 @@ export const configSchema = z
     funding: z.array(route).max(100).default([]),
   })
   .superRefine((value, ctx) => {
+    const slugs = value.funding.flatMap((r) => (r.page ? [r.page.slug] : []));
+    if (new Set(slugs).size !== slugs.length)
+      ctx.addIssue({ code: "custom", message: "Duplicate funding page slug" });
+    for (const [i, r] of value.funding.entries())
+      if (r.page && r.page.reviewedOn > r.reviewedUntil)
+        ctx.addIssue({
+          code: "custom",
+          path: ["funding", i],
+          message: "Funding review date is after expiry",
+        });
     if (new Set(value.plans.map((p) => p.interval)).size !== value.plans.length)
       ctx.addIssue({ code: "custom", message: "Duplicate plan interval" });
     if (
@@ -85,6 +124,8 @@ export async function loadConfig(
   const today = new Date().toISOString().slice(0, 10);
   if (config.funding.some((r) => r.reviewedUntil < today))
     throw new Error("Funding guidance review has expired");
+  if (config.funding.some((r) => r.page && r.page.reviewedOn > today))
+    throw new Error("Funding guidance review is in the future");
   return config;
 }
 export function formatPrice(plan: SiteConfig["plans"][number]) {

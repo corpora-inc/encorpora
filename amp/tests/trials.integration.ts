@@ -6,17 +6,16 @@ import { Pool } from "pg";
 import { migrate } from "../scripts/migrate.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
-import {
-  teachingMaterial,
-  teachingSurface,
-} from "../src/server/trial-material.js";
-import { TEACHING_ATTEMPTS } from "../src/server/trial-progress.js";
 import { applyCommerceEvent } from "../src/commerce/postgres.js";
 import { generateProblem, templates } from "../src/math/engine.js";
-import { purgeExpiredTrials, TRIAL_ATTEMPTS } from "../src/server/trials.js";
+import { purgeExpiredTrials, trialLimits } from "../src/server/trials.js";
+
+/** A small allowance keeps the run short; production defaults to 100. */
+const FREE = 10;
+const { placement: PLACEMENT } = trialLimits(FREE);
 
 test(
-  "an anonymous trial practices, hits its paywall, and is adopted with its progress",
+  "an anonymous trial places, practices adaptively to its allowance, hits its paywall, and is adopted with its progress",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -26,12 +25,15 @@ test(
     scoped.searchParams.set("options", `-c search_path=${schema}`);
     const repository = new PostgresRepository(scoped.href, {
       development: true,
+      freeProblems: FREE,
     });
     // The parent authenticator: only bearer tokens identify a parent.
     const app = buildApp({
       repository,
       development: true,
       authenticate: async (request) => {
+        if (request.headers.authorization === "Bearer other")
+          return "other-parent";
         if (request.headers.authorization !== "Bearer parent")
           throw Object.assign(new Error("Sign in to continue"), {
             statusCode: 401,
@@ -86,9 +88,23 @@ test(
         401,
       );
 
-      // Practice until the allowance is used, then the paywall. A problem
-      // fetched in advance cannot be answered past the allowance.
+      // Placement, then adaptive practice until the allowance is used, then
+      // the paywall. A problem fetched in advance cannot pass the allowance.
       const base = `/api/v1/learners/${learnerId}`;
+      const progress = async () => {
+        const response = await app.inject({
+          method: "GET",
+          url: `${base}/trial-progress`,
+          headers: trial,
+        });
+        assert.equal(response.statusCode, 200, response.body);
+        return response.json();
+      };
+      const fresh = await progress();
+      assert.equal(fresh.phase, "placement");
+      assert.equal(fresh.free, FREE);
+      assert.equal(fresh.remaining, FREE);
+      assert.equal(fresh.frontier.placement, null);
       const stockpiled = (
         await app.inject({
           method: "POST",
@@ -97,20 +113,42 @@ test(
           payload: { count: 1 },
         })
       ).json().problems[0];
-      const seenSurfaces = new Set<string>();
-      let answered = 0;
-      while (answered < TRIAL_ATTEMPTS) {
+      // One numeric family, focused, makes a mastery moment deterministic:
+      // a miss, then four independent correct answers.
+      const numeric = templates.find(
+        (t) =>
+          !t.requiredResponseCapability &&
+          !t.requiredFigureCapability &&
+          generateProblem(t.id, "probe").public.response.kind !== "choice",
+      )!;
+      const answer = async (
+        payload: object,
+        correct: boolean,
+        hint = false,
+      ) => {
         const batch: LightMyRequestResponse = await app.inject({
           method: "POST",
           url: `${base}/batches`,
           headers: trial,
-          payload: { count: 1 },
+          payload: { count: 1, ...payload },
         });
         assert.equal(batch.statusCode, 200, batch.body);
-        assert.equal(batch.json().trialRemaining, TRIAL_ATTEMPTS - answered);
+        assert.equal(batch.json().trialRemaining, FREE - answered);
         const problem = batch.json().problems[0];
-        seenSurfaces.add(teachingSurface(problem));
-        const answer = generateProblem(problem.templateId, problem.seed).answer;
+        assert.equal(problem.answer, undefined, "no answer in the payload");
+        if (hint)
+          assert.equal(
+            (
+              await app.inject({
+                method: "POST",
+                url: `${base}/hints`,
+                headers: trial,
+                payload: { problemId: problem.id },
+              })
+            ).statusCode,
+            200,
+          );
+        const solution = generateProblem(problem.templateId, problem.seed);
         const attempt = await app.inject({
           method: "POST",
           url: `${base}/attempts`,
@@ -118,12 +156,41 @@ test(
           payload: {
             problemId: problem.id,
             requestId: randomUUID(),
-            response: answer,
+            response: correct
+              ? solution.answer
+              : problem.response.kind === "choice"
+                ? problem.response.options.find(
+                    (o: { id: string }) => o.id !== solution.answer,
+                  ).id
+                : "999999",
           },
         });
         assert.equal(attempt.statusCode, 200, attempt.body);
         answered++;
-      }
+        return attempt.json();
+      };
+      let answered = 0;
+      // Placement: the first answer used a hint.
+      while (answered < PLACEMENT) await answer({}, true, answered === 0);
+      const placed = await progress();
+      assert.equal(placed.phase, "practice");
+      assert.equal(placed.placement, PLACEMENT);
+      assert.ok(placed.frontier.placement, "the placement map is kept");
+      assert.equal(placed.frontier.current.overall.answered, PLACEMENT);
+      // Adaptive practice continues past placement with the same planner.
+      const focus = { templateId: numeric.id };
+      const missed = await answer(focus, false);
+      assert.equal(missed.correct, false);
+      assert.equal(missed.mastered, undefined);
+      const streak = [];
+      for (let i = 0; i < 4; i++) streak.push(await answer(focus, true));
+      assert.deepEqual(
+        streak.map((outcome) => outcome.mastered?.skillId ?? null),
+        [null, null, null, numeric.skillId],
+        "the answer that makes a missed skill review-ready is a mastery moment",
+      );
+      assert.ok(streak[3].mastered.title.length > 0);
+      while (answered < FREE) await answer({}, true);
       const paywall = await app.inject({
         method: "POST",
         url: `${base}/batches`,
@@ -144,171 +211,17 @@ test(
         },
       });
       assert.equal(late.statusCode, 402);
-
-      const progress = (
-        await app.inject({
-          method: "GET",
-          url: `${base}/trial-progress`,
-          headers: trial,
-        })
-      ).json();
-      assert.equal(progress.phase, "lesson");
-      assert.equal(progress.placementAnswered, TRIAL_ATTEMPTS);
-      assert.ok(progress.lesson.example.steps.length > 0);
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: `${base}/trial-paywall`,
-            headers: trial,
-            payload: {},
-          })
-        ).statusCode,
-        409,
-      );
-      const printable = await app.inject({
-        method: "GET",
-        url: `${base}/trial-printable`,
-        headers: trial,
-      });
-      assert.equal(printable.statusCode, 200);
-      assert.equal(printable.json().examples.length, 3);
-      for (const example of [
-        progress.lesson.example,
-        ...printable.json().examples,
-      ])
-        seenSurfaces.add(teachingSurface(example));
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: `${base}/trial-teaching`,
-            headers: trial,
-            payload: {},
-          })
-        ).statusCode,
-        200,
-      );
-      // Stockpiled placement instances cannot consume the teaching allowance.
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: `${base}/attempts`,
-            headers: trial,
-            payload: {
-              problemId: stockpiled.id,
-              requestId: randomUUID(),
-              response: "1",
-            },
-          })
-        ).statusCode,
-        409,
-      );
-      for (let i = 0; i < TEACHING_ATTEMPTS; i++) {
-        const batch: LightMyRequestResponse = await app.inject({
-          method: "POST",
-          url: `${base}/batches`,
-          headers: trial,
-          payload: {
-            count: 1,
-            responseCapabilities: ["single-choice-v1"],
-            figureCapabilities: ["measurement-models-v1"],
-          },
-        });
-        assert.equal(batch.statusCode, 200, batch.body);
-        const problem = batch.json().problems[0];
-        assert.equal(problem.templateId, progress.templateId);
-        assert.equal(
-          seenSurfaces.has(teachingSurface(problem)),
-          false,
-          "teaching is separate from revealed answers",
-        );
-        seenSurfaces.add(teachingSurface(problem));
-        assert.equal(problem.answer, undefined);
-        if (i === 0) {
-          const support = await app.inject({
-            method: "POST",
-            url: `${base}/lesson-support`,
-            headers: trial,
-            payload: { problemId: problem.id },
-          });
-          assert.deepEqual(
-            support.json().lesson,
-            progress.lesson,
-            "support reuses the safe worked example",
-          );
-          await app.inject({
-            method: "POST",
-            url: `${base}/hints`,
-            headers: trial,
-            payload: { problemId: problem.id },
-          });
-          const repeated = await app.inject({
-            method: "POST",
-            url: `${base}/batches`,
-            headers: trial,
-            payload: {
-              count: 1,
-              responseCapabilities: ["single-choice-v1"],
-              figureCapabilities: ["measurement-models-v1"],
-            },
-          });
-          assert.equal(
-            repeated.json().problems[0].id,
-            problem.id,
-            "refresh serves the immutable next question",
-          );
-        }
-        const payload = {
-          problemId: problem.id,
-          requestId: randomUUID(),
-          response: generateProblem(problem.templateId, problem.seed).answer,
-        };
-        const outcome = await app.inject({
-          method: "POST",
-          url: `${base}/attempts`,
-          headers: trial,
-          payload,
-        });
-        assert.equal(outcome.statusCode, 200, outcome.body);
-        assert.equal(
-          (
-            await app.inject({
-              method: "POST",
-              url: `${base}/attempts`,
-              headers: trial,
-              payload,
-            })
-          ).statusCode,
-          200,
-        );
-      }
-      const completed = (
-        await app.inject({
-          method: "GET",
-          url: `${base}/trial-progress`,
-          headers: trial,
-        })
-      ).json();
-      assert.equal(completed.phase, "complete");
-      assert.deepEqual(completed.after, {
-        correct: 4,
-        answered: 4,
+      const complete = await progress();
+      assert.equal(complete.phase, "complete");
+      assert.equal(complete.remaining, 0);
+      assert.deepEqual(complete.totals, {
+        answered: FREE,
+        correct: FREE - 1,
         assisted: 1,
-        independentCorrect: 3,
       });
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: `${base}/batches`,
-            headers: trial,
-            payload: { count: 1 },
-          })
-        ).statusCode,
-        402,
-      );
+      assert.ok(complete.mastered.includes(numeric.skillId));
+      assert.equal(complete.frontier.current.overall.answered, FREE);
+      assert.equal(complete.frontier.placement.overall.answered, PLACEMENT);
       for (let i = 0; i < 2; i++)
         assert.equal(
           (
@@ -336,7 +249,7 @@ test(
             [analytics.analytics_id],
           )
         ).rows.map((r) => r.event),
-        ["paywall", "placement_done", "teaching_done", "trial_started"],
+        ["paywall", "placement_done", "trial_started"],
       );
 
       // Adoption needs a parent, moves the learner with every answer, and
@@ -369,10 +282,7 @@ test(
         url: `${base}/frontier`,
         headers: { authorization: "Bearer parent" },
       });
-      assert.equal(
-        frontier.json().overall.answered,
-        TRIAL_ATTEMPTS + TEACHING_ATTEMPTS,
-      );
+      assert.equal(frontier.json().overall.answered, FREE);
       // A confirmed settlement records one conversion; repeats and renewals do not duplicate it.
       const orderId = randomUUID();
       const occurredAt = new Date(Date.now() - 1000).toISOString();
@@ -442,129 +352,28 @@ test(
         ).statusCode,
         401,
       );
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: "/api/v1/trials/adopt",
-            headers: { authorization: "Bearer parent" },
-            payload: { token, name: "Maya" },
-          })
-        ).statusCode,
-        404,
-      );
-
-      // A finite family without four unseen questions falls back to a reachable
-      // existing family, and does not borrow the original family's baseline.
-      const finite = templates.find(
-        (t) => !teachingMaterial(t.id, "finite-check"),
-      );
-      assert.ok(finite);
-      const second = await repository.createTrial(2016);
-      const secondHeaders = { authorization: `Trial ${second.token}` };
-      const secondBase = `/api/v1/learners/${second.learnerId}`;
-      for (let i = 0; i < TRIAL_ATTEMPTS; i++) {
-        const batch: LightMyRequestResponse = await app.inject({
-          method: "POST",
-          url: `${secondBase}/batches`,
-          headers: secondHeaders,
-          payload: {
-            templateId: finite.id,
-            count: 1,
-            responseCapabilities: ["single-choice-v1"],
-            figureCapabilities: ["measurement-models-v1"],
-          },
-        });
-        assert.equal(batch.statusCode, 200, batch.body);
-        const problem = batch.json().problems[0];
-        assert.equal(
-          (
-            await app.inject({
-              method: "POST",
-              url: `${secondBase}/attempts`,
-              headers: secondHeaders,
-              payload: {
-                problemId: problem.id,
-                requestId: randomUUID(),
-                response: generateProblem(problem.templateId, problem.seed)
-                  .answer,
-              },
-            })
-          ).statusCode,
-          200,
-        );
-      }
-      const fallback = (
-        await app.inject({
-          method: "GET",
-          url: `${secondBase}/trial-progress`,
-          headers: secondHeaders,
-        })
-      ).json();
-      assert.notEqual(fallback.templateId, finite.id);
-      assert.deepEqual(fallback.before, { correct: 0, answered: 0 });
-      assert.equal(
-        (
-          await app.inject({
-            method: "POST",
-            url: `${secondBase}/trial-teaching`,
-            headers: secondHeaders,
-            payload: {},
-          })
-        ).statusCode,
-        200,
-      );
-
-      const pack = await app.inject({
+      // A retry after a lost response returns the same learner; the token
+      // is spent for every other account.
+      const again = await app.inject({
         method: "POST",
-        url: `${secondBase}/batches`,
-        headers: secondHeaders,
-        payload: {
-          count: 4,
-          responseCapabilities: ["single-choice-v1"],
-          figureCapabilities: ["measurement-models-v1"],
-        },
+        url: "/api/v1/trials/adopt",
+        headers: { authorization: "Bearer parent" },
+        payload: { token, name: "Different" },
       });
-      const packProblems = pack.json().problems;
-      assert.equal(packProblems.length, 4);
-      for (const problem of [...packProblems].reverse()) {
-        assert.equal(
-          (
-            await app.inject({
-              method: "POST",
-              url: `${secondBase}/attempts`,
-              headers: secondHeaders,
-              payload: {
-                problemId: problem.id,
-                requestId: randomUUID(),
-                response: generateProblem(problem.templateId, problem.seed)
-                  .answer,
-              },
-            })
-          ).statusCode,
-          200,
-        );
-        const next = await app.inject({
-          method: "POST",
-          url: `${secondBase}/batches`,
-          headers: secondHeaders,
-          payload: {
-            count: 1,
-            responseCapabilities: ["single-choice-v1"],
-            figureCapabilities: ["measurement-models-v1"],
-          },
-        });
-        if (problem.id === packProblems[0].id)
-          assert.equal(next.statusCode, 402);
-        else {
-          assert.equal(next.statusCode, 200);
-          assert.equal(
-            next.json().problems[0].id,
-            packProblems[0].id,
-            "out-of-order answers leave the first unanswered problem available",
-          );
-        }
-      }
+      assert.equal(again.statusCode, 200, again.body);
+      assert.deepEqual(again.json(), {
+        id: learnerId,
+        name: "Maya",
+        birthYear: 2016,
+      });
+      const other = await app.inject({
+        method: "POST",
+        url: "/api/v1/trials/adopt",
+        headers: { authorization: "Bearer other" },
+        payload: { token, name: "Maya" },
+      });
+      assert.equal(other.statusCode, 404);
+      assert.equal(other.json().error, "trial_ended");
 
       // Unadopted trials are deleted with their answers on expiry.
       const stale = await repository.createTrial(2014);
@@ -613,7 +422,7 @@ test(
             [analytics.analytics_id],
           )
         ).rowCount,
-        5,
+        4,
         "aggregate anonymous events survive without an identity mapping",
       );
     } finally {

@@ -1,0 +1,63 @@
+.frame {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.header {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  /* Exactly the first-paint skeleton's bar: legacy header rules never apply. */
+  height: calc(var(--target-size) + var(--space-4));
+  min-height: 0;
+  padding: 0 var(--space-4);
+  gap: 0;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid var(--color-border);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  padding: 0 var(--space-2);
+  margin-left: calc(-1 * var(--space-2));
+  border-radius: var(--radius-control);
+  color: var(--color-on-surface);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+.brand:hover {
+  background: var(--color-surface-sunken);
+}
+.brand:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: clamp(var(--space-4), 5vh, 56px) var(--space-4) var(--space-6);
+}
+.main .card {
+  box-sizing: border-box;
+  width: min(100%, var(--width-form));
+  max-width: none;
+  margin: 0;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  box-shadow: none;
+}
+@media (max-width: 400px) {
+  .main .card {
+    padding: var(--space-4);
+  }
+}

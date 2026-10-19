@@ -26,7 +26,7 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
           x2="336"
           y1="90"
           y2="90"
-          stroke="#183f3b"
+          stroke="var(--color-figure-ink)"
           strokeWidth="2"
         />
         {Array.from({ length: steps + 1 }, (_, n) => (
@@ -37,7 +37,7 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
               x2={x(n)}
               y1={n % figure.denominator === 0 ? 80 : 85}
               y2="98"
-              stroke="#183f3b"
+              stroke="var(--color-figure-ink)"
               strokeWidth={n % figure.denominator === 0 ? 2 : 1}
             />
             {n % figure.denominator === 0 && (
@@ -54,7 +54,7 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
               x2={x(point.numerator)}
               y1={index === 0 ? 44 : 68}
               y2="83"
-              stroke="#9b461f"
+              stroke="var(--color-figure-warm)"
               strokeWidth="1.5"
             />
             <text
@@ -71,7 +71,7 @@ export function FractionPracticeFigure({ figure }: { figure: FractionFigure }) {
               cx={x(point.numerator)}
               cy="90"
               r="4"
-              fill="#9b461f"
+              fill="var(--color-figure-warm)"
             />
           </g>
         ))}

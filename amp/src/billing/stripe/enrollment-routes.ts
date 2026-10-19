@@ -9,6 +9,7 @@ import { BillingError } from "./config.js";
 import { annualOffer } from "./purchase.js";
 import type { StripeBilling } from "./service.js";
 import type { StripeRouteOptions } from "./routes.js";
+import { funnelVisitor } from "../../analytics/visitor-header.js";
 
 export function registerEnrollmentRoutes(
   app: FastifyInstance,
@@ -124,6 +125,7 @@ export function registerEnrollmentRoutes(
       body.requestId,
       body.interval,
       body.acknowledgement,
+      funnelVisitor(request.headers),
     );
   });
   app.post("/api/v1/billing/enrollment/claim", async (request, reply) => {
