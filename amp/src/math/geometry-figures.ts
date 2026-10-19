@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+/* Legacy figure kinds (cube-prism, box-prism, composite-prism and quadrant-grid). Generators now emit scenes; these schemas
+ * stay so stored and offline problems still validate, and they draw through
+ * src/math/scene/legacy.ts with the same scene components. */
+
 const edge = z.number().int().min(1).max(12);
 const label = z.enum(["A", "B", "P", "Q", "R", "S"]);
 const length = z
@@ -75,51 +79,3 @@ export const geometryFigureSchema = z.discriminatedUnion(
   geometryFigureSchemas,
 );
 export type GeometryFigure = z.infer<typeof geometryFigureSchema>;
-
-/** Isometric projection shared by figures and lesson models: x runs right and
- * down, y (depth) runs left and down, z runs straight up. Faces visible from
- * the viewer are the top (z = h), the left front (y = w) and the right front
- * (x = l). */
-export const ISO = { cos: Math.sqrt(3) / 2, sin: 1 / 2 } as const;
-export function isoPoint(
-  x: number,
-  y: number,
-  z: number,
-  unit: number,
-  origin: { x: number; y: number },
-) {
-  return {
-    x: origin.x + (x - y) * ISO.cos * unit,
-    y: origin.y + (x + y) * ISO.sin * unit - z * unit,
-  };
-}
-/** The unit and origin that center an l × w × h box inside a frame. */
-export function isoFit(
-  l: number,
-  w: number,
-  h: number,
-  frame: {
-    width: number;
-    height: number;
-    pad: number;
-    /** Extra horizontal room for labels beside the solid (defaults to pad). */
-    padLeft?: number;
-    padRight?: number;
-  },
-) {
-  const left = frame.padLeft ?? frame.pad,
-    right = frame.padRight ?? frame.pad;
-  const unit = Math.min(
-    (frame.width - left - right) / ((l + w) * ISO.cos),
-    (frame.height - 2 * frame.pad) / ((l + w) * ISO.sin + h),
-  );
-  const spanX = (l + w) * ISO.cos * unit,
-    spanY = ((l + w) * ISO.sin + h) * unit;
-  return {
-    unit,
-    origin: {
-      x: left + (frame.width - left - right - spanX) / 2 + w * ISO.cos * unit,
-      y: (frame.height - spanY) / 2 + h * unit,
-    },
-  };
-}

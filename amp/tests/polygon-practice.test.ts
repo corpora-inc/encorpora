@@ -7,7 +7,7 @@ import { templateRole } from "../src/learning/placement";
 
 test("polygon problems are deterministic, valid and balanced", () => {
   for (const t of polygonTemplates) {
-    assert.equal(t.requiredFigureCapability, "shape-figures-v1");
+    assert.equal(t.requiredFigureCapability, "scenes-v1");
     const answers = new Map<string, number>();
     for (let i = 0; i < 200; i++) {
       const p = generateProblem(t.id, `polygon-${i}`);
@@ -21,16 +21,21 @@ test("polygon problems are deterministic, valid and balanced", () => {
 });
 
 test("grade 3 items mark sides and angles; the hierarchy marks parallel sides too", () => {
+  const shapes = (id: string, seed: string) => {
+    const f = generateProblem(id, seed).public.figure!;
+    assert(f.kind === "scene");
+    const e = f.scene.elements.find((x) => x.type === "shapes")!;
+    assert(e.type === "shapes");
+    return e;
+  };
   for (let i = 0; i < 50; i++) {
-    for (const id of ["classify-quadrilateral", "find-quadrilateral"]) {
-      const f = generateProblem(id, `marks-${i}`).public.figure!;
-      assert(f.kind === "plane-shapes");
-      for (const item of f.items) assert.equal(item.marks, "sides-angles");
-    }
-    const f = generateProblem("quadrilateral-names", `marks-${i}`).public
-      .figure!;
-    assert(f.kind === "plane-shapes");
-    assert.equal(f.items[0]!.marks, "parallel");
+    for (const id of ["classify-quadrilateral", "find-quadrilateral"])
+      for (const item of shapes(id, `marks-${i}`).items)
+        assert.equal(item.marks, "sides-angles");
+    assert.equal(
+      shapes("quadrilateral-names", `marks-${i}`).items[0]!.marks,
+      "parallel",
+    );
   }
 });
 

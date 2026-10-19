@@ -1,5 +1,9 @@
 import React from "react";
-import { AngleTriangleFigure, Text, geometryInk } from "../web/AngleTriangleFigure";
+import {
+  AngleTriangleFigure,
+  Text,
+  geometryInk,
+} from "../web/AngleTriangleFigure";
 import {
   angleLabel,
   arcPath,

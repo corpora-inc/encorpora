@@ -695,6 +695,251 @@ export const galleryCases: GalleryCase[] = [
     ).scene({ title: "Adding the equations" }),
   },
   {
+    name: "Shapes: four lettered quadrilaterals with marks",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "shapes",
+          id: "shapes",
+          items: [
+            {
+              label: "A",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [2, 0],
+                    [2, 1],
+                    [0, 1],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "B",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1.4, 0],
+                    [2.1, 1.2],
+                    [0.7, 1.2],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "C",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1.3, 0],
+                    [1.3, 1.3],
+                    [0, 1.3],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "D",
+              marks: "parallel",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [2.2, 0],
+                    [2.7, 0.9],
+                    [0.5, 0.9],
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Shape puzzle: which piece completes the square",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "shapePuzzle",
+          id: "puzzle",
+          outline: [
+            [0, 0],
+            [2, 0],
+            [2, 2],
+            [0, 2],
+          ],
+          placed: [
+            {
+              type: "polygon",
+              points: [
+                [0, 0],
+                [2, 0],
+                [2, 2],
+              ],
+            },
+          ],
+          candidates: [
+            {
+              label: "A",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1, 0],
+                    [1, 1],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "B",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [0, -2],
+                    [2, 0],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "C",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [3, 0],
+                    [0, 2],
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Solids: a cube and a cone, hidden edges dashed",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "solid",
+          id: "cube",
+          solid: {
+            type: "prism",
+            height: 2,
+            base: {
+              type: "polygon",
+              points: [
+                [-1.2, -0.3],
+                [0.3, -1.2],
+                [1.2, 0.3],
+                [-0.3, 1.2],
+              ],
+            },
+          },
+        },
+        {
+          type: "solid",
+          id: "cone",
+          at: [3.4, 0],
+          solid: {
+            type: "pyramid",
+            height: 2.4,
+            base: { type: "ellipse", center: [0, 0], radii: [1, 1], angle: 0 },
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: "Unit cubes: layer by layer, running totals masked (hint)",
+    scene: {
+      v: 1,
+      width: 320,
+      elements: [
+        {
+          type: "isoSolid",
+          id: "prism",
+          solid: {
+            form: "cubes",
+            length: 4,
+            width: 3,
+            height: 3,
+            counts: true,
+          },
+        },
+      ],
+      steps: [0, 1, 2].map((k) => ({
+        caption: `Layer ${k + 1}: {prism.count.${k}} cubes so far.`,
+        actions: [
+          {
+            do: "fill" as const,
+            target: `prism.layer.${k}`,
+            fill: "warm-fill" as const,
+          },
+          { do: "appear" as const, target: `prism.count.${k}` },
+        ],
+      })),
+    },
+  },
+  {
+    name: "Box with a missing edge, and a stepped solid",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "isoSolid",
+          id: "box",
+          solid: {
+            form: "box",
+            length: { value: 6, unit: "cm" },
+            width: null,
+            height: { value: 3, unit: "cm" },
+          },
+        },
+        {
+          type: "isoSolid",
+          id: "steps",
+          at: [9, 0],
+          solid: {
+            form: "composite",
+            width: 2,
+            unit: "cm",
+            parts: [
+              { length: 3, height: 5 },
+              { length: 4, height: 2 },
+            ],
+          },
+        },
+      ],
+    },
+  },
+  {
     name: "Triangle: right angle, sides and the reference angle",
     scene: triangle([
       [0, 0],

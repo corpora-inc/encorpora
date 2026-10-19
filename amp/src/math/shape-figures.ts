@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+/* Legacy figure kinds (plane-shapes, shape-puzzle and solid-shape). Generators now emit scenes; these schemas
+ * stay so stored and offline problems still validate, and they draw through
+ * src/math/scene/legacy.ts with the same scene components. */
+
 /** Plane coordinates in shape units, y up. Rotated shapes carry rounded
  * coordinates; the figure is the only geometric truth a learner sees, and an
  * independent reviewer classifies shapes from these numbers alone. */
@@ -130,17 +134,4 @@ export function bounds(shapes: readonly FlatShape[]) {
       add([s.center[0] + ex, s.center[1] + ey]);
     }
   return { minX, minY, maxX, maxY };
-}
-
-/** Orthographic view from in front and above, shared by the figure and the
- * lesson models. Screen y runs down. */
-export const SOLID_VIEW = { elevation: (22 * Math.PI) / 180 } as const;
-export function solidProject(x: number, y: number, z: number) {
-  const e = SOLID_VIEW.elevation;
-  return { x, y: -(y * Math.sin(e) + z * Math.cos(e)) };
-}
-/** True when a face with outward normal n faces the viewer. */
-export function facesViewer(n: [number, number, number]) {
-  const e = SOLID_VIEW.elevation;
-  return -n[1] * Math.cos(e) + n[2] * Math.sin(e) > 1e-9;
 }

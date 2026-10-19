@@ -14,11 +14,15 @@ import { clockSchema } from "./clock";
 import { dotPlotSchema } from "./dot-plot";
 import { fractionBarSchema } from "./fraction-bar";
 import { graphSchema } from "./graph";
+import { isoSolidSchema } from "./iso-solid";
 import { lineTableSchema } from "./line-table";
 import { numberLineSchema } from "./number-line";
 import { pictureGraphSchema } from "./picture-graph";
 import { polyAreaSchema } from "./poly-area";
 import { rowBarsSchema } from "./row-bars";
+import { shapePuzzleSchema } from "./shape-puzzle";
+import { shapesSchema } from "./shapes";
+import { solidSchema } from "./solid";
 import { shapeSortSchema } from "./shape-sort";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
@@ -38,12 +42,16 @@ export const componentSchemas = [
   dotPlotSchema,
   fractionBarSchema,
   graphSchema,
+  isoSolidSchema,
   lineTableSchema,
   numberLineSchema,
   pictureGraphSchema,
   polyAreaSchema,
   protractorSchema,
   rowBarsSchema,
+  shapePuzzleSchema,
+  shapesSchema,
+  solidSchema,
   shapeSortSchema,
   tableSchema,
   tenFrameSchema,
@@ -63,11 +71,15 @@ export * from "./clock";
 export * from "./dot-plot";
 export * from "./fraction-bar";
 export * from "./graph";
+export * from "./iso-solid";
 export * from "./line-table";
 export * from "./number-line";
 export * from "./picture-graph";
 export * from "./poly-area";
 export * from "./row-bars";
+export * from "./shape-puzzle";
+export * from "./shapes";
+export * from "./solid";
 export * from "./shape-sort";
 export * from "./table";
 export * from "./ten-frame";
