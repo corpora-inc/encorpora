@@ -118,8 +118,7 @@ header {
 .brand span {
   display: none;
 }
-.app-shell .account select,
-.account-menu summary {
+.app-shell .account select {
   min-height: 44px;
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -131,9 +130,6 @@ header {
 }
 .app-shell .account select {
   padding: 8px 30px 8px 12px;
-}
-.account-menu summary {
-  padding: 8px 12px;
 }
 .app-shell > nav {
   display: flex;
@@ -1023,12 +1019,6 @@ button:focus:not(:focus-visible) {
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
   font-size: 28px;
-}
-.account-menu summary {
-  display: inline-flex;
-  align-items: center;
-  height: 44px;
-  line-height: 1;
 }
 .app-shell .account select {
   height: 44px;

@@ -1,6 +1,10 @@
 import { equationLessons } from "./equation-lessons";
+import { linePlotLessons } from "./line-plot-lessons";
+import { earlyDataLessons } from "./early-data-lessons";
+import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { comparisonLessons } from "./comparison-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -38,6 +42,11 @@ export interface Lesson {
       | "equation-tape"
       | "two-step-tape"
       | "inequality-many-solutions"
+      | "comparison-pairing"
+      | "comparison-number-path"
+      | "comparison-place-chart"
+      | "large-place-value-chart"
+      | DataIllustration
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -539,7 +548,10 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...polynomialLessons,
+  ...earlyDataLessons,
+  ...linePlotLessons,
   ...radicalLessons,
+  ...comparisonLessons,
   ...combinatoricsLessons,
   ...equationLessons,
   ...rationalLessons,
