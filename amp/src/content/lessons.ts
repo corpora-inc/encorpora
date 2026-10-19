@@ -30,6 +30,7 @@ import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
+import { similarityTrigLessons } from "./similarity-trig-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { numberSenseLessons } from "./number-sense-lessons";
@@ -661,6 +662,7 @@ export const lessons: readonly Lesson[] = [
   ...angleLessons,
   ...polygonLessons,
   ...probabilityRulesLessons,
+  ...similarityTrigLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
