@@ -307,8 +307,8 @@ try {
   await settled(21 + 5);
 
   const report = await funnelReport(pool, {
-    from: new Date(Date.now() - 3_600_000),
-    to: new Date(Date.now() + 60_000),
+    from: new Date(Date.now() - 86_400_000),
+    to: new Date(Date.now() + 86_400_000),
   });
   for (const step of FUNNEL_STEPS)
     assert.ok(

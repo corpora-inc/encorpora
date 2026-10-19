@@ -141,7 +141,8 @@ export type FunnelProps<E extends FunnelEvent> = z.input<
   (typeof funnelPropsSchemas)[E]
 >;
 
-export const visitorIdSchema = z.uuid();
+/** `crypto.randomUUID()` output: a random version-4 UUID. */
+export const visitorIdSchema = z.uuidv4();
 
 /** One event inside a batch; `at` is the client's epoch-milliseconds clock. */
 export const clientEventSchema = z

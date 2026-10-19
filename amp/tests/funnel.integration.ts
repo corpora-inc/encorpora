@@ -14,6 +14,7 @@ import { funnelReport, formatFunnelReport } from "../src/analytics/report.js";
 import {
   recordEventBatch,
   recordVerifiedPurchase,
+  recordVerifiedRefund,
 } from "../src/analytics/repository.js";
 import { RETENTION } from "../src/privacy/retention-periods.js";
 
@@ -93,17 +94,28 @@ test(
       });
       assert.equal(sent.statusCode, 202);
       assert.deepEqual(sent.json(), { accepted: 3 });
-      const visitor = (
-        await pool.query(
-          "SELECT v.*,t.analytics_id FROM amp_funnel_visitors v LEFT JOIN amp_trials t ON t.analytics_id=v.trial_id",
-        )
-      ).rows[0];
+      const visitor = (await pool.query("SELECT * FROM amp_funnel_visitors"))
+        .rows[0];
       assert.equal(visitor.visitor_id, visitorId);
       assert.equal(visitor.utm_source, "newsletter");
       assert.equal(visitor.device, "tablet");
       assert.equal(visitor.grade_band, "3");
       assert.equal(visitor.age_band, "6-8");
-      assert.ok(visitor.analytics_id, "linked to the trial's random ID");
+      // The trial only lends its age band: no trial, account or learner key
+      // is stored, so adopting the trial later joins nothing to this visitor.
+      assert.deepEqual(Object.keys(visitor).sort(), [
+        "age_band",
+        "converted_on",
+        "device",
+        "first_seen",
+        "grade_band",
+        "last_seen",
+        "referrer",
+        "utm_campaign",
+        "utm_medium",
+        "utm_source",
+        "visitor_id",
+      ]);
       // A later visit from another campaign keeps the first touch.
       await post(app, {
         visitorId,
@@ -130,9 +142,7 @@ test(
       assert.equal(dump.includes(token), false);
       assert.equal(
         (
-          await pool.query(
-            "SELECT event FROM amp_funnel_events ORDER BY occurred_at,id",
-          )
+          await pool.query("SELECT event FROM amp_funnel_events ORDER BY id")
         ).rows
           .map((r) => r.event)
           .join(","),
@@ -185,7 +195,9 @@ test(
       );
       // The database is a second guard against any other writer.
       await assert.rejects(
-        pool.query("INSERT INTO amp_funnel_events(event) VALUES('page_view')"),
+        pool.query(
+          "INSERT INTO amp_funnel_events(event,occurred_on) VALUES('page_view',current_date)",
+        ),
         /check constraint/,
       );
     }),
@@ -256,12 +268,12 @@ test(
       );
       const checkout = randomUUID();
       await pool.query(
-        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id) VALUES($1,'test',$2,$3)",
-        [checkout, randomUUID(), randomUUID()],
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id,created_at) VALUES($1,'test',$2,$3,$4)",
+        [checkout, randomUUID(), randomUUID(), old],
       );
       await pool.query(
-        "INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id,created_at) VALUES($1,$2,$3)",
-        [checkout, converted, old],
+        "INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id) VALUES($1,$2)",
+        [checkout, converted],
       );
       await recordVerifiedPurchase(pool, checkout, "year", old);
       const result = await purgeFunnelEvents(pool, now);
@@ -293,12 +305,12 @@ test(
       // A stale checkout link loses its visitor.
       const stale = randomUUID();
       await pool.query(
-        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id) VALUES($1,'test',$2,$3)",
-        [stale, randomUUID(), randomUUID()],
+        "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id,created_at) VALUES($1,'test',$2,$3,$4)",
+        [stale, randomUUID(), randomUUID(), old],
       );
       await pool.query(
-        "INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id,created_at) VALUES($1,$2,$3)",
-        [stale, randomUUID(), old],
+        "INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id) VALUES($1,$2)",
+        [stale, randomUUID()],
       );
       assert.equal((await purgeFunnelEvents(pool, now)).expiredFunnelLinks, 1);
       assert.deepEqual(await purgeFunnelEvents(pool, now), {
@@ -378,6 +390,33 @@ test(
         "year",
         new Date(start.getTime() + 3 * DAY + 7_200_000),
       );
+      // Funnel times are whole days: nothing matches a billing timestamp.
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT DISTINCT data_type FROM information_schema.columns WHERE table_schema=current_schema() AND table_name LIKE 'amp_funnel_%' AND data_type LIKE 'timestamp%'",
+          )
+        ).rows,
+        [],
+      );
+      // A partial refund that later becomes full is counted as full once.
+      const refundDay = new Date(start.getTime() + 5 * DAY);
+      assert.equal(
+        await recordVerifiedRefund(pool, checkout, false, refundDay),
+        true,
+      );
+      assert.equal(
+        await recordVerifiedRefund(pool, checkout, false, refundDay),
+        false,
+      );
+      assert.equal(
+        await recordVerifiedRefund(pool, checkout, true, refundDay),
+        true,
+      );
+      assert.equal(
+        await recordVerifiedRefund(pool, checkout, true, refundDay),
+        false,
+      );
       const report = await funnelReport(pool, {
         from: start,
         to: new Date(start.getTime() + 30 * DAY),
@@ -416,7 +455,8 @@ test(
         { reason: "price", count: 1 },
       ]);
       assert.equal(report.refunds.purchases, 1);
-      assert.equal(report.refunds.rate, 0);
+      assert.equal(report.refunds.refunds, 2);
+      assert.equal(report.refunds.fullRefunds, 1);
       const text = formatFunnelReport(report);
       assert.match(text, /purchase\s+1\s+/);
       assert.equal(text.includes(buyer), false, "aggregates only");

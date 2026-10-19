@@ -335,6 +335,8 @@ export class StripeBilling {
       const recordFunnel = async () => {
         await client.query("SAVEPOINT funnel_event");
         try {
+          // Never hold the webhook behind a retention batch.
+          await client.query("SET LOCAL lock_timeout='1s'");
           if (event.type === "invoice.paid")
             await recordVerifiedPurchase(
               client,
@@ -352,6 +354,7 @@ export class StripeBilling {
           );
         }
       };
+      let projected = false;
       await client.query("SAVEPOINT access_projection");
       try {
         if (binding.learnerId === null) {
@@ -363,7 +366,7 @@ export class StripeBilling {
             event.type,
           );
           await client.query("RELEASE SAVEPOINT access_projection");
-          await recordFunnel();
+          projected = true;
           return;
         }
         for (const commerceEvent of annualEvents(
@@ -392,11 +395,15 @@ export class StripeBilling {
           await applyCommerceEventInTransaction(client, commerceEvent);
         }
         await client.query("RELEASE SAVEPOINT access_projection");
-        await recordFunnel();
+        projected = true;
       } catch (error) {
         await client.query("ROLLBACK TO SAVEPOINT access_projection");
         await queueRejectedEnrollment(client, binding, payment, error);
         projectionError = error;
+      } finally {
+        // Outside the projection's error handling: a funnel failure can never
+        // be mistaken for a rejected enrollment.
+        if (projected) await recordFunnel();
       }
     });
     if (projectionError) throw projectionError;

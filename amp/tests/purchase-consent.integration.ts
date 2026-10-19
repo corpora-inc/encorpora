@@ -1182,18 +1182,18 @@ test(
       ]);
       const link = (
         await f.pool.query(
-          "SELECT visitor_id,purchase_recorded_at FROM amp_funnel_checkouts",
+          "SELECT visitor_id,purchase_recorded FROM amp_funnel_checkouts",
         )
       ).rows[0];
       assert.equal(link.visitor_id, null);
-      assert.ok(link.purchase_recorded_at);
+      assert.equal(link.purchase_recorded, true);
       assert.ok(
         (
           await f.pool.query(
-            "SELECT converted_at FROM amp_funnel_visitors WHERE visitor_id=$1",
+            "SELECT converted_on FROM amp_funnel_visitors WHERE visitor_id=$1",
             [visitorId],
           )
-        ).rows[0].converted_at,
+        ).rows[0].converted_on,
       );
       p.fullRefundAt = p.paidAt;
       f.gateway.invoiceFromCharge = async () => p.invoiceId;
@@ -1216,7 +1216,7 @@ test(
       assert.deepEqual(columns.sort(), [
         "event",
         "id",
-        "occurred_at",
+        "occurred_on",
         "props",
         "visitor_id",
       ]);

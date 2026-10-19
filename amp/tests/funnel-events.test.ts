@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
+import Fastify from "fastify";
+import {
+  EVENT_MAX_IN_FLIGHT,
+  registerAnalyticsRoutes,
+} from "../src/analytics/routes";
 import {
   FUNNEL_EVENTS,
   SERVER_ONLY_EVENTS,
@@ -97,4 +102,30 @@ test("the database guard lists exactly the same vocabulary", () => {
     list.split(",").map((name) => name.trim().replaceAll("'", "")),
     [...FUNNEL_EVENTS],
   );
+});
+
+test("the endpoint holds at most a few database connections", async () => {
+  let release!: () => void;
+  const held = new Promise<void>((resolve) => (release = resolve));
+  const client = {
+    query: async () => ({ rows: [], rowCount: 0 }),
+    release: () => {},
+  };
+  const pool = { connect: () => held.then(() => client) };
+  const app = Fastify();
+  await registerAnalyticsRoutes(app, { pool: pool as never });
+  const send = () =>
+    app.inject({
+      method: "POST",
+      url: "/api/v1/events",
+      payload: { visitorId, events: [{ event: "map_view", at: 1 }] },
+    });
+  const waiting = Array.from({ length: EVENT_MAX_IN_FLIGHT }, send);
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  assert.equal((await send()).statusCode, 503);
+  release();
+  for (const response of await Promise.all(waiting))
+    assert.equal(response.statusCode, 202);
+  assert.equal((await send()).statusCode, 202);
+  await app.close();
 });

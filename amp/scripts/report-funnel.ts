@@ -13,7 +13,8 @@ const pool = createDatabasePool({
   connectionString: process.env.AMP_DATABASE_URL,
 });
 try {
-  const to = new Date(Date.now() + 60_000);
+  // Whole UTC days, up to and including today.
+  const to = new Date(Date.now() + 86_400_000);
   const from = new Date(to.getTime() - days * 86_400_000);
   const report = await funnelReport(pool, { from, to });
   console.log(

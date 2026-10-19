@@ -9,8 +9,9 @@ import {
 
 type Queryable = Pick<PoolClient, "query">;
 
-/** Client clocks only order a batch's events; the server's clock dates them. */
-const MAX_CLIENT_SKEW_MS = 10 * 60_000;
+/** Funnel rows are dated by whole UTC day: a finer time could be matched
+ * against checkout or payment timestamps and re-identify a visitor. */
+export const funnelDay = (at: Date) => at.toISOString().slice(0, 10);
 
 /** A coarse band from a trial's birth year; the year itself is never copied. */
 export function ageBandFromBirthYear(
@@ -27,8 +28,10 @@ export function ageBandFromBirthYear(
 
 /**
  * Stores one validated batch. The visitor row carries first-touch attribution
- * (UTM, referrer category, device) and the latest placed grade band; event
- * rows carry only the closed props. Returns the number of events stored.
+ * (UTM, referrer category, device), the latest placed grade band and a coarse
+ * age band; event rows carry only the closed props, in batch order. A trial
+ * token is used only to read the trial's age band; no trial identifier is
+ * stored, so a later trial adoption cannot join a visitor to an account.
  */
 export async function recordEventBatch(
   pool: Pool,
@@ -75,13 +78,13 @@ export async function recordEventBatch(
       placed?.ageBand ??
       added?.ageBand ??
       (trial?.birth_year ? ageBandFromBirthYear(trial.birth_year, now) : null);
+    const day = funnelDay(now);
     await client.query(
-      `INSERT INTO amp_funnel_visitors AS v(visitor_id,first_seen,last_seen,trial_id,
+      `INSERT INTO amp_funnel_visitors AS v(visitor_id,first_seen,last_seen,
          utm_source,utm_medium,utm_campaign,referrer,device,grade_band,age_band)
-       VALUES($1,$2,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+       VALUES($1,$2,$2,$3,$4,$5,$6,$7,$8,$9)
        ON CONFLICT(visitor_id) DO UPDATE SET
          last_seen=greatest(v.last_seen,EXCLUDED.last_seen),
-         trial_id=COALESCE(EXCLUDED.trial_id,v.trial_id),
          -- First touch wins: a later internal page view keeps the campaign.
          utm_source=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_source ELSE v.utm_source END,
          utm_medium=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_medium ELSE v.utm_medium END,
@@ -92,8 +95,7 @@ export async function recordEventBatch(
          age_band=COALESCE(v.age_band,EXCLUDED.age_band)`,
       [
         batch.visitorId,
-        now,
-        trial?.analytics_id ?? null,
+        day,
         landing?.utmSource ?? null,
         landing?.utmMedium ?? null,
         landing?.utmCampaign ?? null,
@@ -103,22 +105,15 @@ export async function recordEventBatch(
         ageBand,
       ],
     );
-    const latest = Math.max(...batch.events.map((e) => e.at));
-    const times = batch.events.map(
-      (e) =>
-        new Date(
-          now.getTime() -
-            Math.min(MAX_CLIENT_SKEW_MS, Math.max(0, latest - e.at)),
-        ),
-    );
     await client.query(
-      `INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_at)
-       SELECT $1,e,p,t FROM unnest($2::text[],$3::jsonb[],$4::timestamptz[]) AS x(e,p,t)`,
+      `INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
+       SELECT $1,e,p,$4 FROM unnest($2::text[],$3::jsonb[]) WITH ORDINALITY AS x(e,p,n)
+       ORDER BY n`,
       [
         batch.visitorId,
         batch.events.map((e) => e.event),
         batch.events.map((e) => JSON.stringify(e.props)),
-        times,
+        day,
       ],
     );
     await client.query("COMMIT");
@@ -143,15 +138,16 @@ export async function linkCheckoutVisitor(
   await db.query(
     `INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id) VALUES($1,$2)
      ON CONFLICT(checkout_id) DO UPDATE SET visitor_id=EXCLUDED.visitor_id
-     WHERE amp_funnel_checkouts.purchase_recorded_at IS NULL`,
+     WHERE NOT amp_funnel_checkouts.purchase_recorded`,
     [checkoutId, parsed.data],
   );
 }
 
 /**
  * Writes `purchase` once per checkout, from the verified webhook only. The
- * row carries the plan interval and, if known, the visitor; the checkout link
- * is erased in the same statement, so nothing joins the visitor to billing.
+ * row carries the plan interval, the day and, if known, the visitor; the
+ * checkout link is erased in the same statement and keeps only a flag, so
+ * nothing joins the visitor to billing.
  */
 export async function recordVerifiedPurchase(
   db: Queryable,
@@ -162,22 +158,23 @@ export async function recordVerifiedPurchase(
   const props = parseFunnelProps("purchase", { interval });
   const result = await db.query(
     `WITH link AS (
-       INSERT INTO amp_funnel_checkouts AS c(checkout_id,purchase_recorded_at) VALUES($1,$2)
-       ON CONFLICT(checkout_id) DO UPDATE SET purchase_recorded_at=$2,visitor_id=NULL
-       WHERE c.purchase_recorded_at IS NULL
+       INSERT INTO amp_funnel_checkouts AS c(checkout_id,purchase_recorded) VALUES($1,true)
+       ON CONFLICT(checkout_id) DO UPDATE SET purchase_recorded=true,visitor_id=NULL
+       WHERE NOT c.purchase_recorded
        RETURNING (SELECT visitor_id FROM amp_funnel_checkouts WHERE checkout_id=$1) AS visitor_id
      ), visitor AS (
-       UPDATE amp_funnel_visitors v SET converted_at=COALESCE(v.converted_at,$2),last_seen=greatest(v.last_seen,$2)
+       UPDATE amp_funnel_visitors v SET converted_on=COALESCE(v.converted_on,$2),last_seen=greatest(v.last_seen,$2)
        FROM link WHERE v.visitor_id=link.visitor_id RETURNING v.visitor_id
      )
-     INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_at)
+     INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
      SELECT (SELECT visitor_id FROM visitor),'purchase',$3::jsonb,$2 FROM link`,
-    [checkoutId, now, JSON.stringify(props)],
+    [checkoutId, funnelDay(now), JSON.stringify(props)],
   );
   return (result.rowCount ?? 0) > 0;
 }
 
-/** Writes `refund` once per checkout, from verified provider refund state. */
+/** Writes `refund` once per checkout from verified provider refund state, and
+ * once more if a partial refund later becomes full. */
 export async function recordVerifiedRefund(
   db: Queryable,
   checkoutId: string,
@@ -187,14 +184,14 @@ export async function recordVerifiedRefund(
   const props = parseFunnelProps("refund", { full });
   const result = await db.query(
     `WITH link AS (
-       INSERT INTO amp_funnel_checkouts AS c(checkout_id,refund_recorded_at) VALUES($1,$2)
-       ON CONFLICT(checkout_id) DO UPDATE SET refund_recorded_at=$2
-       WHERE c.refund_recorded_at IS NULL
+       INSERT INTO amp_funnel_checkouts AS c(checkout_id,refund_recorded,full_refund_recorded) VALUES($1,true,$2)
+       ON CONFLICT(checkout_id) DO UPDATE SET refund_recorded=true,full_refund_recorded=c.full_refund_recorded OR $2
+       WHERE NOT c.refund_recorded OR ($2 AND NOT c.full_refund_recorded)
        RETURNING checkout_id
      )
-     INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_at)
-     SELECT NULL,'refund',$3::jsonb,$2 FROM link`,
-    [checkoutId, now, JSON.stringify(props)],
+     INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
+     SELECT NULL,'refund',$3::jsonb,$4 FROM link`,
+    [checkoutId, full, JSON.stringify(props), funnelDay(now)],
   );
   return (result.rowCount ?? 0) > 0;
 }

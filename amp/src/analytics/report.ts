@@ -1,5 +1,6 @@
 import type { Pool } from "pg";
 import type { FunnelEvent } from "./events.js";
+import { funnelDay } from "./repository.js";
 
 /** The ordered path from first visit to paid practice. */
 export const FUNNEL_STEPS = [
@@ -67,13 +68,13 @@ const ratio = (a: number, b: number) => (b > 0 ? a / b : null);
 
 /**
  * Aggregates only: every figure is a count or rate over visitors whose first
- * visit is in [from, to). Billing events in that window are counted too.
+ * visit is in the UTC days [from, to). Billing events on those days count too.
  */
 export async function funnelReport(
   pool: Pool,
   window: { from: Date; to: Date },
 ): Promise<FunnelReport> {
-  const range = [window.from.toISOString(), window.to.toISOString()];
+  const range = [funnelDay(window.from), funnelDay(window.to)];
   const cohort = `v.first_seen>=$1 AND v.first_seen<$2`;
   const q = async <T extends Record<string, unknown>>(
     sql: string,
@@ -116,7 +117,7 @@ export async function funnelReport(
   });
   const [{ unattributed }] = await q<{ unattributed: number }>(
     `SELECT count(*)::int AS unattributed FROM amp_funnel_events
-     WHERE event='purchase' AND visitor_id IS NULL AND occurred_at>=$1 AND occurred_at<$2`,
+     WHERE event='purchase' AND visitor_id IS NULL AND occurred_on>=$1 AND occurred_on<$2`,
   );
   const breakdown = async (column: string) =>
     (
@@ -129,7 +130,7 @@ export async function funnelReport(
         `SELECT COALESCE(${column},'unknown') AS key,count(*)::int AS visitors,
            count(*) FILTER (WHERE EXISTS(SELECT 1 FROM amp_funnel_events e
              WHERE e.visitor_id=v.visitor_id AND e.event='try_click'))::int AS tried,
-           count(*) FILTER (WHERE v.converted_at IS NOT NULL)::int AS purchased
+           count(*) FILTER (WHERE v.converted_on IS NOT NULL)::int AS purchased
          FROM amp_funnel_visitors v WHERE ${cohort}
          GROUP BY 1 ORDER BY visitors DESC,key`,
       )
@@ -142,8 +143,8 @@ export async function funnelReport(
   };
   const days = (
     await q<{ days: number }>(
-      `SELECT floor(extract(epoch FROM v.converted_at-v.first_seen)/86400)::int AS days
-       FROM amp_funnel_visitors v WHERE ${cohort} AND v.converted_at IS NOT NULL ORDER BY 1`,
+      `SELECT (v.converted_on-v.first_seen)::int AS days
+       FROM amp_funnel_visitors v WHERE ${cohort} AND v.converted_on IS NOT NULL ORDER BY 1`,
     )
   ).map((r) => r.days);
   const pct = (p: number) =>
@@ -179,7 +180,7 @@ export async function funnelReport(
   const reasons = (event: string) =>
     q<{ reason: string; count: number }>(
       `SELECT e.props->>'reason' AS reason,count(*)::int AS count
-       FROM amp_funnel_events e WHERE e.event='${event}' AND e.occurred_at>=$1 AND e.occurred_at<$2
+       FROM amp_funnel_events e WHERE e.event='${event}' AND e.occurred_on>=$1 AND e.occurred_on<$2
        GROUP BY 1 ORDER BY 2 DESC,1`,
     );
   const [billing] = await q<{
@@ -190,11 +191,11 @@ export async function funnelReport(
     `SELECT count(*) FILTER (WHERE event='purchase')::int AS purchases,
        count(*) FILTER (WHERE event='refund')::int AS refunds,
        count(*) FILTER (WHERE event='refund' AND props->>'full'='true')::int AS full
-     FROM amp_funnel_events WHERE occurred_at>=$1 AND occurred_at<$2`,
+     FROM amp_funnel_events WHERE occurred_on>=$1 AND occurred_on<$2`,
   );
   const archived = await q<{ event: string; count: number }>(
     `SELECT event,sum(count)::int AS count FROM amp_funnel_aggregates
-     WHERE month>=date_trunc('month',$1::timestamptz) AND month<$2 GROUP BY 1 ORDER BY 1`,
+     WHERE month>=date_trunc('month',$1::date) AND month<$2::date GROUP BY 1 ORDER BY 1`,
   );
   return {
     from: range[0],
@@ -250,7 +251,7 @@ function table(headers: string[], rows: (string | number)[][]): string {
 
 export function formatFunnelReport(report: FunnelReport): string {
   const out: string[] = [
-    `AMP funnel, visitors first seen ${report.from.slice(0, 10)} to ${report.to.slice(0, 10)}: ${report.visitors} visitors`,
+    `AMP funnel, visitors first seen ${report.from} up to ${report.to}: ${report.visitors} visitors`,
     "",
     table(
       ["Step", "Visitors", "From previous", "From landing", "Lost"],
