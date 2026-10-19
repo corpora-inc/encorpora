@@ -1,5 +1,6 @@
 import React from "./react.js";
 import { TRIAL_DAYS } from "../../amp/src/server/trials.js";
+import { RETENTION } from "../../amp/src/privacy/retention-periods.js";
 import type { SiteConfig } from "./config.js";
 export const legalTitles = {
   terms: "Terms of use",
@@ -156,19 +157,19 @@ export function Legal({
             event records, not summarized totals.
           </p>
           <p>
-            The trial record links that identifier to a learner while the trial
-            record exists. A trial saved into a family account keeps this link
-            until the learner is deleted. Removing an expired, unclaimed trial
-            during cleanup, or deleting its learner, removes that link. The
-            event records themselves remain. The {TRIAL_DAYS}-day trial cleanup
-            does not delete them, and the service does not automatically expire
-            them.
+            The trial record links that identifier to a learner while the record
+            exists. Trial records and milestone events are scheduled for
+            deletion {RETENTION.trialRecordDays} days after creation, including
+            trials saved into a family account. Deleting a learner also removes
+            its trial link. The shorter {TRIAL_DAYS}-day cleanup for unsaved
+            placements does not itself delete milestone events; they follow the
+            separate {RETENTION.trialRecordDays}-day schedule. Saved learning
+            records follow the learning-data retention policy below.
           </p>
-          <p className="notice">
-            The retention review must establish a purpose-limited deletion
-            schedule for these event records and confirm the legal basis for
-            collecting them, including during placement by children under 13.
-            Removing a learner link is not the same as deleting the records.
+          <p>
+            Removing a learner link is not the same as deleting an event record.
+            Random identifiers and event histories are included in the privacy
+            review even when they do not contain a learner’s name.
           </p>
           <h2>Parent accounts and learning records</h2>
           <p>
