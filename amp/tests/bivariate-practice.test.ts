@@ -11,6 +11,11 @@ import {
   type Table,
 } from "../src/math/scene/index.js";
 import { graph, table } from "../src/math/scene/author.js";
+import {
+  frameAt,
+  missingTargets,
+  visibleSteps,
+} from "../src/math/scene/timeline.js";
 import { sceneIllustrations } from "../src/content/scene-illustrations.js";
 
 const texts = (items: Drawn[]) =>
@@ -152,4 +157,60 @@ test("trend lines pass through their marked points; points stay on the grid", ()
   }
   for (const s of Object.values(sceneIllustrations))
     assert.ok(sceneSchema.safeParse(s).success);
+});
+
+test("walkthroughs name only parts their scenes draw, and hide only what they add", () => {
+  const ids = [
+    "trend-line-predict",
+    "trend-slope-meaning",
+    "two-way-missing",
+    "two-way-row-percent",
+    "two-way-association-choice",
+  ];
+  for (const id of ids)
+    for (let i = 0; i < 20; i++) {
+      const f = generateProblem(id, `walk-${i}`).public.figure;
+      assert(f?.kind === "scene" && f.scene.steps?.length, id);
+      const layout = layoutScene(f.scene);
+      assert.deepEqual(missingTargets(layout, f.scene.steps), [], id);
+      // The start frame is the problem: its givens stay visible.
+      const start = frameAt(layout, f.scene.steps, -1, 0);
+      const hidden = (prefix: string) =>
+        layout.items
+          .filter((d) => d.id.startsWith(prefix))
+          .every((d) => start[d.id]?.opacity === 0);
+      if (id.startsWith("trend")) {
+        assert.ok(hidden("g.trial") && hidden("g.residual"));
+        assert.equal(start["g.fit"]?.opacity, undefined);
+        for (const d of layout.items.filter((d) =>
+          d.id.startsWith("g.scatter"),
+        ))
+          assert.equal(start[d.id]?.opacity, undefined);
+      } else
+        assert.ok(
+          layout.items.every((d) => start[d.id]?.opacity !== 0),
+          "tables only highlight",
+        );
+      // A hint plays only the steps that do not reveal the result.
+      assert.ok(visibleSteps(f.scene.steps, "hint").length >= 1);
+    }
+  for (const s of Object.values(sceneIllustrations))
+    if (s.steps)
+      assert.deepEqual(
+        missingTargets(layoutScene(s, { reveal: true }), s.steps),
+        [],
+      );
+});
+
+test("a prediction's value is masked in problems and revealed in lessons", () => {
+  const p = generateProblem("trend-line-predict", "mask-1");
+  const f = p.public.figure;
+  assert(f?.kind === "scene");
+  const label = (reveal: boolean) =>
+    texts(layoutScene(f.scene, { reveal }).items).find(
+      (d) => d.id === "g.predict.label",
+    )!.plain;
+  assert.equal(label(false), "?");
+  assert.equal(label(true), p.answer);
+  assert.ok(!JSON.stringify(f).includes(`"${p.answer}"`));
 });

@@ -1,3 +1,4 @@
+import { GeometryModel } from "./GeometryAnimation";
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
@@ -44,6 +45,11 @@ import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "triangle-sum":
+    case "exterior-angle":
+    case "transversal":
+    case "plane-sweep":
+      return <GeometryModel model={model} step={step} />;
     case "root-zoom":
       return <RootZoomModel model={model} step={step} />;
     case "decimal-shift":

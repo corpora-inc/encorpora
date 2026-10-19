@@ -1,7 +1,140 @@
+import { z } from "zod";
+import { base, color, label, num as zNum, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import { completeTable, type Table } from "../spec";
 import { typeset } from "../type";
 import { num } from "./format";
+
+const tableCell = z.union([
+  zNum.min(-1e6).max(1e6),
+  z.string().min(1).max(16),
+  z.null(),
+]);
+/** A table of short entries: header row, labeled rows and, with `sums`, a
+ * total column and a total row. A derived cell is the one to find: it is null
+ * in the data, drawn as "?", and when revealed computed from the sums. */
+export const tableSchema = z
+  .object({
+    ...base,
+    type: z.literal("table"),
+    /** A heading over the body columns ("Has a curfew"). */
+    title: label.max(32).optional(),
+    columns: z.array(z.string().min(1).max(16)).min(1).max(6),
+    rows: z
+      .array(
+        z
+          .object({
+            label: z.string().min(1).max(18),
+            cells: z.array(tableCell).min(1).max(6),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(8),
+    sums: z.boolean().optional(),
+    derived: z
+      .array(z.tuple([small.max(7), small.max(5)]))
+      .max(4)
+      .optional(),
+    /** A heading over the row labels ("x", "n"). */
+    corner: z.string().min(1).max(16).optional(),
+    /** Headings and row labels are mathematics (x, f(x), a_n, 2^x), set
+     * like the numbers rather than as bold words. */
+    math: z.boolean().optional(),
+    /** The change between consecutive rows of a body column (+3, ×2), drawn
+     * as bowed arrows in a gutter to that column's right. */
+    changes: z
+      .array(
+        z
+          .object({
+            column: small.max(5),
+            labels: z.array(z.union([label, z.literal(false)])).max(7),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+    /** Rows (a conditional distribution) or body columns to tint. */
+    highlight: z
+      .object({
+        rows: z.array(small.max(7)).max(8).optional(),
+        columns: z.array(small.max(5)).max(6).optional(),
+        color: z.enum(["accent", "warm", "gold"]).optional(),
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.rows.every((r) => r.cells.length === t.columns.length),
+    "Every row has one cell per column",
+  )
+  .refine(
+    (t) =>
+      (t.changes ?? []).every(
+        (c) =>
+          c.column < t.columns.length && c.labels.length === t.rows.length - 1,
+      ),
+    "A change labels each gap between rows of a real column",
+  )
+  .refine(
+    (t) =>
+      (t.derived ?? []).every(
+        ([r, c]) => r < t.rows.length && t.rows[r]!.cells[c] === null,
+      ),
+    "A derived cell is an empty cell of the table",
+  )
+  .refine(
+    (t) => !t.derived?.length || (t.sums && completeTable(t) !== null),
+    "Derived cells follow from the sums",
+  )
+  .refine((t) => !t.sums || completeTable(t) !== null, "Totals add up");
+/** Fill a summed table's numeric blanks from its row and column totals; null
+ * when it is inconsistent or the blanks are not determined. */
+export function completeTable(t: {
+  rows: { cells: (number | string | null)[] }[];
+}): number[][] | null {
+  const g = t.rows.map((r) =>
+    r.cells.map((v) => (typeof v === "number" ? v : null)),
+  );
+  if (t.rows.some((r) => r.cells.some((v) => typeof v === "string")))
+    return null;
+  const n = g.length,
+    m = g[0]!.length;
+  const lines = [
+    ...g.map((_, i) => Array.from({ length: m }, (_, j) => [i, j] as const)),
+    ...Array.from({ length: m }, (_, j) =>
+      Array.from({ length: n }, (_, i) => [i, j] as const),
+    ),
+  ];
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const line of lines) {
+      const open = line.filter(([i, j]) => g[i]![j] === null);
+      if (open.length !== 1) continue;
+      const [oi, oj] = open[0]!;
+      const last = line.at(-1)!;
+      const parts = line
+        .slice(0, -1)
+        .filter(([i, j]) => !(i === oi && j === oj))
+        .reduce((a, [i, j]) => a + g[i]![j]!, 0);
+      g[oi]![oj] =
+        oi === last[0] && oj === last[1]
+          ? parts
+          : g[last[0]]![last[1]]! - parts;
+      changed = true;
+    }
+  }
+  if (g.some((row) => row.some((v) => v === null))) return null;
+  const full = g as number[][];
+  for (const line of lines) {
+    const values = line.map(([i, j]) => full[i]![j]!);
+    const total = values.pop()!;
+    if (Math.abs(values.reduce((a, b) => a + b, 0) - total) > 1e-9) return null;
+  }
+  return full;
+}
+export type Table = z.infer<typeof tableSchema>;
 
 /** Table geometry in figure pixels; compile divides by the scale. */
 const PAD = 12,

@@ -1,6 +1,8 @@
+import { factoringPrinciples } from "./factoring-lessons";
 import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
+import { linearFunctionPrinciples } from "./linear-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
@@ -17,6 +19,7 @@ import { attributePrinciples } from "./attribute-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
+import { angleTrianglePrinciples } from "./angle-triangle-lessons";
 import { realNumberPrinciples } from "./real-number-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
@@ -38,6 +41,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
   ...anglePrinciples,
@@ -64,10 +68,12 @@ export const principles: Record<string, string> = {
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...angleTrianglePrinciples,
   ...realNumberPrinciples,
   ...numberSystemPrinciples,
   ...ratioRatePrinciples,
   ...patternFunctionPrinciples,
+  ...linearFunctionPrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,

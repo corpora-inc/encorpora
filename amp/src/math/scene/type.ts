@@ -96,6 +96,7 @@ function inline(text: string, size: number, bold: boolean): Typeset {
     x += advance(t, font, s, bold);
   };
   const chars = [...text.replace(/-/g, "−")];
+  let operatorGap = false;
   for (let i = 0; i < chars.length; i++) {
     const c = chars[i]!;
     if (c === "^" || c === "_") {
@@ -123,12 +124,16 @@ function inline(text: string, size: number, bold: boolean): Typeset {
     if (name && !/[a-zA-Z]/.test(previous)) {
       push(name, "main", size, 0);
       i += name.length - 1;
+      // TeX's thin space before the argument, after any subscript.
+      operatorGap = true;
       previous = "x";
       continue;
     }
-    if (c === " ") {
-      x += 0.25 * size;
-      continue;
+    // TeX ignores spaces in math; spacing comes from the operators.
+    if (c === " ") continue;
+    if (operatorGap) {
+      x += 0.1667 * size;
+      operatorGap = false;
     }
     // Spacing as TeX sets it: thick around relations, medium around binary
     // operators that follow an operand, none for a leading sign.
@@ -142,6 +147,12 @@ function inline(text: string, size: number, bold: boolean): Typeset {
     if (c === ",") x += 0.1667 * size;
     previous = c;
   }
+  // A final slanted letter overhangs its advance: reserve its correction.
+  const lastRun = runs.at(-1);
+  if (lastRun?.font === "italic")
+    x +=
+      (fontMetrics.italicCorrection[lastRun.text.at(-1)! as "x"] ?? 0.1) *
+      lastRun.size;
   return {
     width: x,
     ascent: ext.math.ascent * size,

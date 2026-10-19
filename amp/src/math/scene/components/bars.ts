@@ -1,6 +1,42 @@
+import { z } from "zod";
+import { base, label, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import type { Bars } from "../spec";
 import { num } from "./format";
+
+/** Vertical bars over categories: one series, or two side by side. Heights
+ * share one linear scale, so growth reads directly. */
+export const barsSchema = z
+  .object({
+    ...base,
+    type: z.literal("bars"),
+    categories: z.array(label).min(1).max(12),
+    series: z
+      .array(
+        z
+          .object({
+            values: z.array(zNum.min(0).max(1e9)).min(1).max(12),
+            label: label.optional(),
+            color: z.enum(["accent", "warm", "gold"]).optional(),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(2),
+    /** Value labels on top of the bars (default true). */
+    valueLabels: z.boolean().optional(),
+    /** Caption under the category labels. */
+    axisName: label.optional(),
+  })
+  .strict()
+  .refine(
+    (b) => b.series.every((s) => s.values.length === b.categories.length),
+    "One value per category",
+  )
+  .refine(
+    (b) => b.series.some((s) => s.values.some((v) => v > 0)),
+    "Some bar has height",
+  );
+export type Bars = z.infer<typeof barsSchema>;
 
 /** One math unit is one category slot; heights share one linear scale. */
 const plotHeight = (b: Bars) => Math.max(2.4, b.categories.length * 0.42);
