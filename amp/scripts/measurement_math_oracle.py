@@ -131,7 +131,7 @@ def solve(public):
             return pair in feasible
         return selected(public, valid)
     if family == 'whole-pack-ribbon-choice':
-        need, length, pack_price, rate = map(int, match(r'Need (\d+) m of ribbon; pieces join without loss\. A: whole (\d+) m packs at \$(\d+) each\. B: any length at \$(\d+)/m\. No other charges\. Which costs less\?', prompt))
+        need, length, pack_price, rate = map(int, match(r'Need (\d+) m of ribbon; pieces join without loss\. A: whole (\d+) m packs at (\d+) dollars? each\. B: any length at (\d+) dollars? per meter\. No other charges\. Which costs less\?', prompt))
         for n in (need,length,pack_price,rate): positive(n)
         cost_a = ((need+length-1)//length)*pack_price
         cost_b = need*rate
@@ -154,7 +154,7 @@ def self_test():
     try: solve(p)
     except ValueError: pass
     else: raise AssertionError('No-such must not mean absent displayed candidate')
-    p=choices('whole-pack-ribbon-choice','Need 7 m of ribbon; pieces join without loss. A: whole 6 m packs at $6 each. B: any length at $1/m. No other charges. Which costs less?', ['A','B','Same cost'])
+    p=choices('whole-pack-ribbon-choice','Need 7 m of ribbon; pieces join without loss. A: whole 6 m packs at 6 dollars each. B: any length at 1 dollar per meter. No other charges. Which costs less?', ['A','B','Same cost'])
     require(solve(p)=='1','Whole-pack ceiling, not divisible pack pricing')
     p['prompt']=p['prompt'].replace('7 m','6 m');require(solve(p)=='2','Exact pack boundary tie')
     p={'templateId':'metric-length-reverse','prompt':'Write 1 cm in m.','response':{'kind':'fraction'}}

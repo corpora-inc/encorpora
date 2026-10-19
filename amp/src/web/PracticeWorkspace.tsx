@@ -1,6 +1,13 @@
 import { ProblemLesson } from "./ProblemLesson";
 import { MathText } from "./MathText";
-import { Calculator } from "./Calculator";
+import { Calculator, type CalculatorDismissal } from "./Calculator";
+import {
+  clearField,
+  deleteBackward,
+  insertText,
+  toggleLeadingMinus,
+  useKeypadCaret,
+} from "./lib/keypadEdit";
 import { acceptedAnswer } from "../math/answer-format";
 import { displayAnswer } from "../math/polish";
 import type { ProblemLessonView } from "../content/problem-lessons";
@@ -274,32 +281,29 @@ export function PracticeWorkspace(props: Props) {
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
   const keypad = !choice;
+  const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
-    const start = input.current?.selectionStart ?? response.length;
-    const end = input.current?.selectionEnd ?? start;
-    let next = response;
-    let caret = start;
-    if (value === "clear") {
-      next = "";
-      caret = 0;
-    } else if (value === "sign") {
-      next = response.startsWith("-") ? response.slice(1) : `-${response}`;
-      caret = Math.max(0, start + (response.startsWith("-") ? -1 : 1));
-    } else if (value === "backspace") {
-      const from = start === end ? Math.max(0, start - 1) : start;
-      next = response.slice(0, from) + response.slice(end);
-      caret = from;
-    } else {
-      next = response.slice(0, start) + value + response.slice(end);
-      caret = start + value.length;
-    }
-    if (next.length > 100) return;
-    setResponse(next);
-    requestAnimationFrame(() => {
-      input.current?.focus({ preventScroll: true });
-      input.current?.setSelectionRange(caret, caret);
-    });
+    const field = caret.read(response);
+    const edit =
+      value === "clear"
+        ? clearField()
+        : value === "sign"
+          ? toggleLeadingMinus(field)
+          : value === "backspace"
+            ? deleteBackward(field)
+            : insertText(field, value);
+    if (edit.value.length > 100) return;
+    caret.commit(edit, setResponse);
+  }
+  const calculatorToggle = useRef<HTMLButtonElement>(null);
+  function closeCalculator(via: CalculatorDismissal) {
+    setCalculatorOpen(false);
+    // A tap outside leaves no keyboard focus ring on the toggle.
+    calculatorToggle.current?.focus({
+      preventScroll: true,
+      focusVisible: via === "keyboard",
+    } as FocusOptions);
   }
   function answerControls() {
     if (problem.response.kind === "choice")
@@ -434,7 +438,7 @@ export function PracticeWorkspace(props: Props) {
                 className={value === "0" ? "zero-key" : ""}
                 aria-label={
                   value === "backspace"
-                    ? "Delete last character"
+                    ? "Delete"
                     : value === "clear"
                       ? "Clear answer"
                       : value === "sign"
@@ -556,6 +560,7 @@ export function PracticeWorkspace(props: Props) {
           {props.status}
           {props.calculator ? (
             <button
+              ref={calculatorToggle}
               className="calculator-toggle"
               aria-label="Calculator"
               title="Calculator"
@@ -648,10 +653,10 @@ export function PracticeWorkspace(props: Props) {
         </div>
         {calculatorOpen && !outcome && (
           <Calculator
-            close={() => setCalculatorOpen(false)}
+            close={closeCalculator}
             use={(value) => {
-              setResponse(value);
               setCalculatorOpen(false);
+              caret.commit({ value, caret: value.length }, setResponse);
             }}
           />
         )}

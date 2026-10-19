@@ -182,6 +182,27 @@ function placeSteps(a: number, b: number): string[] {
   ];
 }
 
+/** Where to look first when comparing two whole numbers. */
+function placeCompareHint(a: number, b: number): string {
+  const A = formatWhole(a),
+    B = formatWhole(b),
+    la = String(a).length,
+    lb = String(b).length;
+  if (la !== lb)
+    return `Count the digits first: ${A} has ${la} and ${B} has ${lb}. A number with more digits is greater, whatever its first digit.`;
+  if (a === b)
+    return `Compare ${A} and ${B} one place at a time, starting from the left.`;
+  const top = la - 1,
+    d = decidingPlace(a, b);
+  const same =
+    [...String(a)].sort().join() === [...String(b)].sort().join()
+      ? `${A} and ${B} use the same digits in a different order. `
+      : "";
+  if (d === top)
+    return `${same}Start at the left: compare the ${placeNames[top]} digits of ${A} and ${B}. That place is worth the most, so it decides.`;
+  return `${same}${A} and ${B} match from the left until the ${placeNames[d]} place. Compare those two digits.`;
+}
+
 function symbolResponse(a: number, b: number) {
   const symbols = ["<", "=", ">"] as const;
   const options = symbols.map((symbol, index) => ({
@@ -322,7 +343,9 @@ export function generateComparisonProblem(
             : `Pair each circle with one square. ${extra} ${circles > squares ? "circles" : "squares"} ${hasHave(extra)} no partner.${spreadNote}`;
       });
       hint =
-        "Match each circle with one square. Counters left without a partner belong to the group with more.";
+        spread === "none"
+          ? "Pair each circle with one square, one pair at a time. Look at which shapes are left without a partner."
+          : `The ${spread} are spread out, so their row looks longer. Pair each circle with one square instead of comparing row lengths.`;
       explanation = [
         `Count or pair them: ${circles} circles and ${squares} squares.`,
         circles === squares
@@ -343,8 +366,7 @@ export function generateComparisonProblem(
       const greater = r(0, 1) === 1;
       const pick = pickExtreme(a, b, greater),
         other = pick === a ? b : a;
-      hint =
-        "Count up from 0. The number you say later is greater; the one you say first is less.";
+      hint = `Count up from zero and listen for ${a} and ${b}. The number you say later is greater.`;
       explanation = [
         `Counting up: ${Array.from({ length: Math.max(a, b) + 1 }, (_, i) => i).join(", ")}.`,
         `In the count, ${Math.min(a, b)} is before ${Math.max(a, b)}, so ${Math.min(a, b)} is less and ${Math.max(a, b)} is greater.`,
@@ -358,8 +380,7 @@ export function generateComparisonProblem(
       const greater = r(0, 1) === 1;
       const pick = pickExtreme(a, b, greater),
         other = pick === a ? b : a;
-      hint =
-        "Compare the tens first. Only when the tens match do the ones decide.";
+      hint = placeCompareHint(a, b);
       explanation = [
         ...placeSteps(a, b),
         `So ${pick} is ${greater ? "greater" : "less"}: ${pick} ${greater ? ">" : "<"} ${other}.`,
@@ -371,8 +392,7 @@ export function generateComparisonProblem(
       const greater = r(0, 1) === 1;
       const pick = pickExtreme(a, b, greater),
         other = pick === a ? b : a;
-      hint =
-        "Compare the hundreds first, then the tens, then the ones. The first place that differs decides.";
+      hint = placeCompareHint(a, b);
       explanation = [
         ...placeSteps(a, b),
         `So ${pick} is ${greater ? "greater" : "less"}: ${pick} ${greater ? ">" : "<"} ${other}.`,
@@ -390,8 +410,7 @@ export function generateComparisonProblem(
       response = choice.response;
       answer = choice.answer;
       choiceFeedback = choice.feedback;
-      hint =
-        "The symbol opens toward the greater number: 9 > 2 and 2 < 9. Compare from the greatest place.";
+      hint = `The symbol opens toward the greater number. ${placeCompareHint(a, b)}`;
       explanation =
         a === b
           ? [
@@ -421,8 +440,7 @@ export function generateComparisonProblem(
       prompt = `What is the value of the digit ${digit} in ${formatWhole(n)}?`;
       const value = digit * placeValues[place]!;
       answer = String(value);
-      hint =
-        "Find the digit's place. Its value is the digit times that place's value.";
+      hint = `Read the places of ${formatWhole(n)} from the right (ones, tens, hundreds, …) until you reach the ${digit}. Its value is ${digit} of that place.`;
       explanation = [
         `Read the places from the right: ones, tens, hundreds, thousands${length > 4 ? ", ten thousands" : ""}${length > 5 ? ", hundred thousands" : ""}.`,
         `The ${digit} is in the ${placeNames[place]} place.`,
@@ -464,8 +482,7 @@ export function generateComparisonProblem(
       explanation.push(
         `So ${formatWhole(pick)} is ${greater ? "greater" : "less"}: ${formatWhole(pick)} ${greater ? ">" : "<"} ${formatWhole(other)}.`,
       );
-      hint =
-        "Count the digits first. If they match, compare from the left until a place differs.";
+      hint = placeCompareHint(a, b);
       break;
     }
   }
