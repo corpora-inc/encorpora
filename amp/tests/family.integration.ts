@@ -213,15 +213,19 @@ test(
         false,
         "withdrawn consent blocks an active grant",
       );
+      await pool.query("UPDATE amp_learners SET birth_year=2016 WHERE id=$1", [
+        child.id,
+      ]);
       const receipt = await family.deleteLearning("parent", child.id);
       assert.deepEqual(
         (
           await pool.query(
-            "SELECT starting_band,starting_policy,starting_excluded_strands FROM amp_learners WHERE id=$1",
+            "SELECT birth_year,starting_band,starting_policy,starting_excluded_strands FROM amp_learners WHERE id=$1",
             [child.id],
           )
         ).rows[0],
         {
+          birth_year: null,
           starting_band: null,
           starting_policy: null,
           starting_excluded_strands: null,
@@ -232,6 +236,7 @@ test(
       const tombstone = (await family.summary("parent")).learners[0]!;
       assert.equal(tombstone.name, "Deleted learner");
       assert.ok(tombstone.deletedAt);
+      assert.equal(tombstone.birthYear, null);
       assert.equal(tombstone.stripeLinked, true);
       assert.equal(
         (
