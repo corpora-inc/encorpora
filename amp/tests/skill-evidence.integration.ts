@@ -54,6 +54,7 @@ async function fixture(
       "0003-parent-consent.sql",
       "0004-parent-lifecycle.sql",
       "0006-commerce-orders.sql",
+      "0014-birth-year.sql",
     ])
       await pool.query(await sql(file));
     await pool.query(
