@@ -383,13 +383,17 @@ function Amp({ config }: { config: SiteConfig }) {
     </>
   );
 }
+const stateNames: Record<string, string> = Object.fromEntries(
+  "AL:Alabama|AK:Alaska|AZ:Arizona|AR:Arkansas|CA:California|CO:Colorado|CT:Connecticut|DE:Delaware|DC:District of Columbia|FL:Florida|GA:Georgia|HI:Hawaii|ID:Idaho|IL:Illinois|IN:Indiana|IA:Iowa|KS:Kansas|KY:Kentucky|LA:Louisiana|ME:Maine|MD:Maryland|MA:Massachusetts|MI:Michigan|MN:Minnesota|MS:Mississippi|MO:Missouri|MT:Montana|NE:Nebraska|NV:Nevada|NH:New Hampshire|NJ:New Jersey|NM:New Mexico|NY:New York|NC:North Carolina|ND:North Dakota|OH:Ohio|OK:Oklahoma|OR:Oregon|PA:Pennsylvania|RI:Rhode Island|SC:South Carolina|SD:South Dakota|TN:Tennessee|TX:Texas|UT:Utah|VT:Vermont|VA:Virginia|WA:Washington|WV:West Virginia|WI:Wisconsin|WY:Wyoming"
+    .split("|").map((entry) => entry.split(":")),
+);
 function Esa({ config }: { config: SiteConfig }) {
   const states = [...new Set(config.funding.map((r) => r.state))].sort();
   return (
     <>
       <Intro
         label="Education funds"
-        heading="Choose the route your program allows."
+        heading="Explore education funding by state."
       >
         <p className="lead">
           An education savings account (ESA) or scholarship may pay through a
@@ -401,24 +405,6 @@ function Esa({ config }: { config: SiteConfig }) {
           program below to check the route, documents and AMP availability.
         </p>
       </Intro>
-      <section className="section two-column">
-        <div>
-          <h2>Marketplace purchase</h2>
-          <p>
-            Your program pays the provider through an approved route. Check that
-            the exact AMP product and term are available in your program before
-            placing an order.
-          </p>
-        </div>
-        <div>
-          <h2>Pay, then claim reimbursement</h2>
-          <p>
-            You pay by card and submit the receipt and required documents to the
-            program. Confirm eligibility before paying. A receipt does not
-            guarantee reimbursement.
-          </p>
-        </div>
-      </section>
       <section className="section">
         <h2>Guidance by state</h2>
         {states.length ? (
@@ -429,17 +415,28 @@ function Esa({ config }: { config: SiteConfig }) {
             >
               {states.map((s) => (
                 <a href={`#state-${s}`} key={s}>
-                  {s}
+                  <span className="state-badge" aria-hidden="true">
+                    <svg viewBox="0 0 40 48" fill="none"><path d="M20 46S3 29 3 20a17 17 0 1 1 34 0c0 9-17 26-17 26Z" fill="currentColor" /></svg>
+                    <span>{s}</span>
+                  </span>
+                  <span>{stateNames[s] ?? s}<small>{config.funding.filter((r) => r.state === s).length} {config.funding.filter((r) => r.state === s).length === 1 ? "program" : "programs"}</small></span>
                 </a>
               ))}
             </nav>
+            <p className="directory-count">
+              <strong>{config.funding.filter((r) => r.page).length} parent guides</strong>
+              {" · "}{states.length} {states.length === 1 ? "state" : "states"}
+              <span>Guides explain purchase routes; inclusion does not mean vendor approval.</span>
+            </p>
             {states.map((state) => (
               <section className="state" id={`state-${state}`} key={state}>
-                <h3>{state}</h3>
+                <h3>{stateNames[state] ?? state}</h3>
+                <div className="program-grid">
                 {config.funding
                   .filter((r) => r.state === state)
                   .map((route, i) => (
-                    <article key={i}>
+                    <article className="program-card" key={i}>
+                      <p className="eyebrow">{fundingLabels[route.kind]}</p>
                       <h4>
                         {route.page ? (
                           <a href={fundingPath(route.page.slug)}>
@@ -448,10 +445,9 @@ function Esa({ config }: { config: SiteConfig }) {
                         ) : (
                           route.program
                         )}
-                        {" · "}
-                        {fundingLabels[route.kind]}
                       </h4>
-                      <p>{route.instructions}</p>
+                      <p>{route.page?.summary ?? route.instructions}</p>
+                      {route.page && <div className="program-card-status"><strong>AMP purchase status</strong><p>{route.page.ampStatus}</p></div>}
                       {route.page && (
                         <p>
                           <a href={fundingPath(route.page.slug)}>
@@ -468,6 +464,7 @@ function Esa({ config }: { config: SiteConfig }) {
                       </p>
                     </article>
                   ))}
+                </div>
               </section>
             ))}
           </>
