@@ -1,4 +1,5 @@
 import styles from "./Auth.module.css";
+import { frameCard, PageFrame } from "../../ui/PageFrame";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import { queryClient, sessionOptions } from "../../lib/query";
 import { useLoggedError, requestMessage } from "../../feedback";
@@ -117,7 +118,7 @@ export function SignInScreen() {
       });
     else
       await navigate({
-        to: step === "create" ? "/start/name" : "/",
+        to: step === "create" ? "/start" : "/",
         replace: true,
       });
   };
@@ -156,7 +157,7 @@ export function SignInScreen() {
           name: name.trim(),
           email,
           password,
-          callbackURL: "/start/name",
+          callbackURL: "/start",
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet.
@@ -208,161 +209,167 @@ export function SignInScreen() {
     });
   const showProviders = step === "sign-in" || step === "create";
   return (
-    <section className={`card welcome account-sign-in ${styles.frame}`}>
-      <h2>{titles[step]}</h2>
-      {notice && (
-        <p className="account-notice" role="status">
-          {notice}
-        </p>
-      )}
-      {error && (
-        <p className="account-error" role="alert">
-          {error}
-        </p>
-      )}
-      {step === "sign-in" && (
-        <button
-          type="button"
-          className="secondary"
-          disabled={busy}
-          onClick={() =>
-            void run(async () => {
-              fail(await accountClient.signIn.passkey());
-              await done();
-            })
-          }
-        >
-          Sign in with a passkey
-        </button>
-      )}
-      {showProviders && providers.length > 0 && (
-        <div className="account-providers">
-          {providers.map((provider) => (
-            <button
-              key={provider}
-              type="button"
-              className="secondary"
-              disabled={busy}
-              onClick={() => social(provider)}
-            >
-              Continue with {providerNames[provider] ?? provider}
-            </button>
-          ))}
-        </div>
-      )}
-      {showProviders && providers.length > 0 && passwords && (
-        <p className="account-divider" aria-hidden="true">
-          <span>or</span>
-        </p>
-      )}
-      {step === "check-email" ? (
-        <p>
-          We sent a link to {email}. Open it to confirm the address and finish
-          creating the account.
-        </p>
-      ) : (
-        (passwords || !showProviders) && (
-          <form className="account-form" onSubmit={submit}>
-            {step === "create" && (
-              <label>
-                Your name
-                <input
-                  required
-                  autoComplete="name"
-                  maxLength={80}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-            )}
-            {step !== "reset" && step !== "two-factor" && (
-              <label>
-                Email
-                <input
-                  required
-                  type="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </label>
-            )}
-            {(step === "sign-in" || step === "create" || step === "reset") && (
-              <label>
-                {step === "reset" ? "New password" : "Password"}
-                <input
-                  required
-                  type="password"
-                  minLength={step === "sign-in" ? 1 : 10}
-                  autoComplete={
-                    step === "sign-in" ? "current-password" : "new-password"
-                  }
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {step !== "sign-in" && <small>At least 10 characters.</small>}
-              </label>
-            )}
-            {step === "two-factor" && (
-              <label>
-                {backup ? "Backup code" : "Code from your authenticator app"}
-                <input
-                  required
-                  autoComplete="one-time-code"
-                  inputMode={backup ? "text" : "numeric"}
-                  value={code}
-                  onChange={(e) => setCode(e.target.value.trim())}
-                />
-              </label>
-            )}
-            <button className="go-button" disabled={busy}>
-              {
-                {
-                  "sign-in": "Sign in",
-                  create: "Create account",
-                  forgot: "Send reset link",
-                  reset: "Change password",
-                  "two-factor": "Verify",
-                  "check-email": "",
-                }[step]
-              }
-            </button>
-          </form>
-        )
-      )}
-      <div className="account-links">
-        {step === "sign-in" && passwords && (
-          <>
-            <button className="text-button" onClick={() => go("forgot")}>
-              Forgot password?
-            </button>
-            <button className="text-button" onClick={() => go("create")}>
-              Create an account
-            </button>
-          </>
+    <PageFrame>
+      <section
+        className={`card welcome account-sign-in ${frameCard} ${styles.frame}`}
+      >
+        <h2>{titles[step]}</h2>
+        {notice && (
+          <p className="account-notice" role="status">
+            {notice}
+          </p>
         )}
-        {step === "create" && (
-          <button className="text-button" onClick={() => go("sign-in")}>
-            I already have an account
-          </button>
+        {error && (
+          <p className="account-error" role="alert">
+            {error}
+          </p>
         )}
-        {step === "two-factor" && (
+        {step === "sign-in" && (
           <button
-            className="text-button"
-            onClick={() => {
-              setBackup(!backup);
-              setCode("");
-            }}
+            type="button"
+            className="secondary"
+            disabled={busy}
+            onClick={() =>
+              void run(async () => {
+                fail(await accountClient.signIn.passkey());
+                await done();
+              })
+            }
           >
-            {backup ? "Use the authenticator app" : "Use a backup code"}
+            Sign in with a passkey
           </button>
         )}
-        {(step === "forgot" || step === "check-email") && (
-          <button className="text-button" onClick={() => go("sign-in")}>
-            Back to sign in
-          </button>
+        {showProviders && providers.length > 0 && (
+          <div className="account-providers">
+            {providers.map((provider) => (
+              <button
+                key={provider}
+                type="button"
+                className="secondary"
+                disabled={busy}
+                onClick={() => social(provider)}
+              >
+                Continue with {providerNames[provider] ?? provider}
+              </button>
+            ))}
+          </div>
         )}
-      </div>
-    </section>
+        {showProviders && providers.length > 0 && passwords && (
+          <p className="account-divider" aria-hidden="true">
+            <span>or</span>
+          </p>
+        )}
+        {step === "check-email" ? (
+          <p>
+            We sent a link to {email}. Open it to confirm the address and finish
+            creating the account.
+          </p>
+        ) : (
+          (passwords || !showProviders) && (
+            <form className="account-form" onSubmit={submit}>
+              {step === "create" && (
+                <label>
+                  Your name
+                  <input
+                    required
+                    autoComplete="name"
+                    maxLength={80}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+              )}
+              {step !== "reset" && step !== "two-factor" && (
+                <label>
+                  Email
+                  <input
+                    required
+                    type="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </label>
+              )}
+              {(step === "sign-in" ||
+                step === "create" ||
+                step === "reset") && (
+                <label>
+                  {step === "reset" ? "New password" : "Password"}
+                  <input
+                    required
+                    type="password"
+                    minLength={step === "sign-in" ? 1 : 10}
+                    autoComplete={
+                      step === "sign-in" ? "current-password" : "new-password"
+                    }
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {step !== "sign-in" && <small>At least 10 characters.</small>}
+                </label>
+              )}
+              {step === "two-factor" && (
+                <label>
+                  {backup ? "Backup code" : "Code from your authenticator app"}
+                  <input
+                    required
+                    autoComplete="one-time-code"
+                    inputMode={backup ? "text" : "numeric"}
+                    value={code}
+                    onChange={(e) => setCode(e.target.value.trim())}
+                  />
+                </label>
+              )}
+              <button className="go-button" disabled={busy}>
+                {
+                  {
+                    "sign-in": "Sign in",
+                    create: "Create account",
+                    forgot: "Send reset link",
+                    reset: "Change password",
+                    "two-factor": "Verify",
+                    "check-email": "",
+                  }[step]
+                }
+              </button>
+            </form>
+          )
+        )}
+        <div className="account-links">
+          {step === "sign-in" && passwords && (
+            <>
+              <button className="text-button" onClick={() => go("forgot")}>
+                Forgot password?
+              </button>
+              <button className="text-button" onClick={() => go("create")}>
+                Create an account
+              </button>
+            </>
+          )}
+          {step === "create" && (
+            <button className="text-button" onClick={() => go("sign-in")}>
+              I already have an account
+            </button>
+          )}
+          {step === "two-factor" && (
+            <button
+              className="text-button"
+              onClick={() => {
+                setBackup(!backup);
+                setCode("");
+              }}
+            >
+              {backup ? "Use the authenticator app" : "Use a backup code"}
+            </button>
+          )}
+          {(step === "forgot" || step === "check-email") && (
+            <button className="text-button" onClick={() => go("sign-in")}>
+              Back to sign in
+            </button>
+          )}
+        </div>
+      </section>
+    </PageFrame>
   );
 }

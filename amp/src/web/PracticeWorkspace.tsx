@@ -1,6 +1,13 @@
 import { ProblemLesson } from "./ProblemLesson";
 import { MathText } from "./MathText";
-import { Calculator } from "./Calculator";
+import { Calculator, type CalculatorDismissal } from "./Calculator";
+import {
+  clearField,
+  deleteBackward,
+  insertText,
+  toggleLeadingMinus,
+  useKeypadCaret,
+} from "./lib/keypadEdit";
 import { acceptedAnswer } from "../math/answer-format";
 import { displayAnswer } from "../math/polish";
 import type { ProblemLessonView } from "../content/problem-lessons";
@@ -16,6 +23,8 @@ import type { PublicProblem, TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "../server/repository";
 import type { Lesson } from "../content/lessons";
 import { Figure } from "./Figure";
+import { ScenePlayer } from "./scene/ScenePlayer";
+import { visibleSteps, type Step } from "../math/scene/timeline";
 
 export function FocusDialog({
   title,
@@ -114,6 +123,8 @@ type Props = {
   setResponse: (value: string) => void;
   outcome: Outcome | null;
   hint: string;
+  /** The hint's figure cue for this problem's scene (see GeneratedProblem). */
+  hintCue?: { problemId: string; steps: Step[] } | null;
   pending: boolean;
   busy: boolean;
   submit: () => void;
@@ -128,24 +139,15 @@ type Props = {
   exit: () => void;
   requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
+  /** A calm status in the toolbar, such as the free-practice meter. */
+  status?: ReactNode;
+  /** A skill this answer just mastered, shown once with the feedback. */
+  mastered?: string | null;
 };
 
-const keyboardKey = "amp.keyboard";
-/** A per-device convenience; practice works the same without storage. */
-function prefersDeviceKeyboard() {
-  try {
-    return localStorage.getItem(keyboardKey) === "device";
-  } catch {
-    return false;
-  }
-}
-function rememberKeyboard(device: boolean) {
-  try {
-    localStorage.setItem(keyboardKey, device ? "device" : "keypad");
-  } catch (error) {
-    console.warn("Keyboard preference not saved", error);
-  }
-}
+/** Phones too short to keep the keypad docked under the problem. Taller
+ * phones, tablets and desktops answer inline with no extra tap. */
+export const compactAnswerQuery = "(max-width: 650px) and (max-height: 640px)";
 
 export function PracticeWorkspace(props: Props) {
   const {
@@ -170,6 +172,13 @@ export function PracticeWorkspace(props: Props) {
     };
   }, []);
   const choice = problem.response.kind === "choice";
+  // The learner's own scene, when its walkthrough (or a hint cue) can play.
+  const hintScene =
+    problem.figure?.kind === "scene" &&
+    (props.hintCue?.problemId === problem.id ||
+      visibleSteps(problem.figure.scene.steps ?? [], "hint").length)
+      ? problem.figure.scene
+      : null;
   const displayResponse = (value: string) =>
     problem.response.kind === "choice"
       ? (problem.response.options.find((option) => option.id === value)
@@ -192,15 +201,14 @@ export function PracticeWorkspace(props: Props) {
   }
   const [lessonError, setLessonError] = useState("");
   const [compact, setCompact] = useState(
-    () => matchMedia("(max-width: 650px) and (max-height: 780px)").matches,
+    () => matchMedia(compactAnswerQuery).matches,
   );
   useEffect(() => {
-    const media = matchMedia("(max-width: 650px) and (max-height: 780px)");
+    const media = matchMedia(compactAnswerQuery);
     const changed = () => setCompact(media.matches);
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const [nativeKeyboard, setNativeKeyboard] = useState(prefersDeviceKeyboard);
   const [problemLessonView, setProblemLessonView] =
     useState<ProblemLessonView | null>(null);
   const [small, setSmall] = useState(
@@ -209,6 +217,8 @@ export function PracticeWorkspace(props: Props) {
   const previousOutcome = useRef<string | null>(outcome?.id ?? null);
   const [celebrate, setCelebrate] = useState(false);
   const [showWhy, setShowWhy] = useState(false);
+  // A lesson opened before answering counts as support for this attempt.
+  const [lessonBeforeAnswer, setLessonBeforeAnswer] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [answerError, setAnswerError] = useState("");
   // Typing clears a message about the previous answer.
@@ -231,7 +241,10 @@ export function PracticeWorkspace(props: Props) {
     // Returning from a book remounts this workspace with an existing result.
     // Only a newly received result should open feedback or replay celebration.
     previousOutcome.current = outcome?.id ?? null;
-    if (small || choice) prompt.current?.focus({ preventScroll: true });
+    // Typed answers start in the answer field. On touch it suppresses the
+    // system keyboard (inputMode none), so AMP's keypad stays in charge; the
+    // field announces the question through aria-describedby.
+    if (choice) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
@@ -256,34 +269,52 @@ export function PracticeWorkspace(props: Props) {
     focusNext.current = false;
     continueButton.current?.focus({ preventScroll: true });
   }, [outcome?.id, entering]);
+  // Feedback takes the answer area's place at (at least) its size, so the
+  // problem above never moves and the sheet's top edge never jumps.
+  const surface = useRef<HTMLElement>(null);
+  const dock = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const area = dock.current;
+    const host = surface.current;
+    if (!area || !host || typeof ResizeObserver === "undefined") return;
+    const measure = () =>
+      host.style.setProperty(
+        "--dock-height",
+        `${Math.ceil(host.getBoundingClientRect().bottom - area.getBoundingClientRect().top)}px`,
+      );
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(area);
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, []);
   const locked = busy || pending || !!outcome;
-  const keypad = small && !nativeKeyboard && !choice;
+  // AMP's keypad is always present for typed answers; touch devices never
+  // raise the system keyboard, and a physical keyboard still types.
+  const keypad = !choice;
+  const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
-    const start = input.current?.selectionStart ?? response.length;
-    const end = input.current?.selectionEnd ?? start;
-    let next = response;
-    let caret = start;
-    if (value === "clear") {
-      next = "";
-      caret = 0;
-    } else if (value === "sign") {
-      next = response.startsWith("-") ? response.slice(1) : `-${response}`;
-      caret = Math.max(0, start + (response.startsWith("-") ? -1 : 1));
-    } else if (value === "backspace") {
-      const from = start === end ? Math.max(0, start - 1) : start;
-      next = response.slice(0, from) + response.slice(end);
-      caret = from;
-    } else {
-      next = response.slice(0, start) + value + response.slice(end);
-      caret = start + value.length;
-    }
-    if (next.length > 100) return;
-    setResponse(next);
-    requestAnimationFrame(() => {
-      input.current?.focus({ preventScroll: true });
-      input.current?.setSelectionRange(caret, caret);
-    });
+    const field = caret.read(response);
+    const edit =
+      value === "clear"
+        ? clearField()
+        : value === "sign"
+          ? toggleLeadingMinus(field)
+          : value === "backspace"
+            ? deleteBackward(field)
+            : insertText(field, value);
+    if (edit.value.length > 100) return;
+    caret.commit(edit, setResponse);
+  }
+  const calculatorToggle = useRef<HTMLButtonElement>(null);
+  function closeCalculator(via: CalculatorDismissal) {
+    setCalculatorOpen(false);
+    // A tap outside leaves no keyboard focus ring on the toggle.
+    calculatorToggle.current?.focus({
+      preventScroll: true,
+      focusVisible: via === "keyboard",
+    } as FocusOptions);
   }
   function answerControls() {
     if (problem.response.kind === "choice")
@@ -327,8 +358,11 @@ export function PracticeWorkspace(props: Props) {
             className="choice-submit"
             type="submit"
             disabled={busy || (!outcome && !response)}
+            aria-busy={busy}
           >
-            {pending ? "Retry" : "Check"}
+            {/* One label always. A lost connection is explained beside the field,
+                and Check resends the same answer. */}
+            Check
           </button>
         </form>
       );
@@ -356,7 +390,7 @@ export function PracticeWorkspace(props: Props) {
               autoCapitalize="none"
               spellCheck={false}
               inputMode={
-                keypad
+                small
                   ? "none"
                   : problem.response.kind === "fraction"
                     ? "text"
@@ -365,7 +399,7 @@ export function PracticeWorkspace(props: Props) {
               value={response}
               onChange={(event) => setResponse(event.target.value)}
               readOnly={locked}
-              aria-describedby="answer-format"
+              aria-describedby="problem-prompt answer-format"
               placeholder={
                 problem.response.kind === "fraction"
                   ? "For example, 3/4"
@@ -377,8 +411,11 @@ export function PracticeWorkspace(props: Props) {
               className="answer-action"
               type="submit"
               disabled={busy || (!outcome && !response.trim())}
+              aria-busy={busy}
             >
-              {pending ? "Retry" : "Check"}
+              {/* One label always. A lost connection is explained beside the field,
+                and Check resends the same answer. */}
+              Check
             </button>
           </div>
           <span id="answer-format" className="sr-only">
@@ -412,7 +449,7 @@ export function PracticeWorkspace(props: Props) {
                 className={value === "0" ? "zero-key" : ""}
                 aria-label={
                   value === "backspace"
-                    ? "Delete last character"
+                    ? "Delete"
                     : value === "clear"
                       ? "Clear answer"
                       : value === "sign"
@@ -480,6 +517,7 @@ export function PracticeWorkspace(props: Props) {
               if (current()) {
                 setProblemLessonView(view);
                 setPanel("lesson");
+                if (!outcome) setLessonBeforeAnswer(true);
               }
             } catch {
               if (current())
@@ -493,27 +531,23 @@ export function PracticeWorkspace(props: Props) {
         >
           {lessonLoading ? "Opening…" : "Lesson"}
         </button>
-        {small && !choice && !outcome && (
-          <button
-            className="text-button keyboard-choice"
-            onClick={() => {
-              setNativeKeyboard(!nativeKeyboard);
-              rememberKeyboard(!nativeKeyboard);
-              input.current?.blur();
-              requestAnimationFrame(() =>
-                input.current?.focus({ preventScroll: true }),
-              );
-            }}
-          >
-            {nativeKeyboard ? "Keypad" : "Keyboard"}
-          </button>
-        )}
       </div>
     );
   }
+  // Name only the support this attempt actually used. A support flag the
+  // workspace did not see (a lesson opened from Progress) stays general.
+  const support = !outcome?.assisted
+    ? ""
+    : hint && lessonBeforeAnswer
+      ? "with a hint and the lesson"
+      : hint
+        ? "with a hint"
+        : lessonBeforeAnswer
+          ? "with the lesson"
+          : "with a hint or lesson";
   return (
     <main className="practice-workspace" aria-label="Math practice">
-      <section className="practice-surface">
+      <section className="practice-surface" ref={surface}>
         <div className="workspace-toolbar">
           <button
             className="workspace-exit"
@@ -521,13 +555,23 @@ export function PracticeWorkspace(props: Props) {
             title="Exit practice"
             onClick={props.exit}
           >
-            ✕
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
           </button>
-          <span className="workspace-topic" data-strand={props.strand}>
-            {meta?.title ?? "Practice"}
+          <span
+            className="workspace-topic"
+            data-strand={props.strand}
+            title={meta?.title ?? "Practice"}
+          >
+            <span className="workspace-topic-text">
+              {meta?.title ?? "Practice"}
+            </span>
           </span>
+          {props.status}
           {props.calculator ? (
             <button
+              ref={calculatorToggle}
               className="calculator-toggle"
               aria-label="Calculator"
               title="Calculator"
@@ -542,7 +586,19 @@ export function PracticeWorkspace(props: Props) {
               </svg>
             </button>
           ) : (
-            <span className="no-calculator">No calculator</span>
+            <span
+              className="no-calculator"
+              role="img"
+              aria-label="No calculator"
+              title="No calculator"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="3" width="14" height="18" rx="2.5" />
+                <rect x="8" y="6" width="8" height="3.5" rx="0.8" />
+                <path d="M8.5 13h1M12 13h1M15 13h.5M8.5 16.5h1M12 16.5h1M15 16.5h.5" />
+                <path className="strike" d="M4 21L20 3" />
+              </svg>
+            </span>
           )}
         </div>
         <div
@@ -552,6 +608,7 @@ export function PracticeWorkspace(props: Props) {
         >
           <div className="problem-content">
             <h2
+              id="problem-prompt"
               ref={prompt}
               tabIndex={-1}
               className="question"
@@ -572,7 +629,7 @@ export function PracticeWorkspace(props: Props) {
             </div>
           )}
         </div>
-        <div className="answer-dock">
+        <div className="answer-dock" ref={dock}>
           {inputError && !outcome && (
             <p className="answer-error" role="alert">
               {inputError}
@@ -607,10 +664,10 @@ export function PracticeWorkspace(props: Props) {
         </div>
         {calculatorOpen && !outcome && (
           <Calculator
-            close={() => setCalculatorOpen(false)}
+            close={closeCalculator}
             use={(value) => {
-              setResponse(value);
               setCalculatorOpen(false);
+              caret.commit({ value, caret: value.length }, setResponse);
             }}
           />
         )}
@@ -627,7 +684,10 @@ export function PracticeWorkspace(props: Props) {
               </span>
               <span className="feedback-title">
                 {outcome.correct ? (
-                  "Correct"
+                  <>
+                    Correct
+                    {support && <small>{capitalize(support)}</small>}
+                  </>
                 ) : (
                   <>
                     <span
@@ -641,13 +701,22 @@ export function PracticeWorkspace(props: Props) {
                     </span>
                     <small>
                       You entered {displayResponse(outcome.response)}
+                      {support && `, ${support}`}
                     </small>
                   </>
                 )}
               </span>
             </div>
-            {outcome.assisted && (
-              <p className="feedback-note">Practiced with support.</p>
+            {props.mastered && (
+              <p className="mastery-moment">
+                <span className="mastery-mark" aria-hidden="true">
+                  ★
+                </span>
+                <span>
+                  <strong>Skill mastered</strong>
+                  <span>{props.mastered}</span>
+                </span>
+              </p>
             )}
             {(!outcome.correct || showWhy) && (
               <ol className="feedback-steps">
@@ -712,6 +781,17 @@ export function PracticeWorkspace(props: Props) {
                   "Your hint could not be loaded. Close this panel and try again."
                 )}
               </p>
+              {hintScene && (
+                <ScenePlayer
+                  scene={hintScene}
+                  mode="hint"
+                  cue={
+                    props.hintCue?.problemId === problem.id
+                      ? props.hintCue.steps
+                      : undefined
+                  }
+                />
+              )}
               <button onClick={() => setPanel(null)}>
                 Back to the problem
               </button>
@@ -729,4 +809,7 @@ export function PracticeWorkspace(props: Props) {
       )}
     </main>
   );
+}
+function capitalize(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }

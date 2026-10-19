@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: #102d2966;
+  background: var(--color-scrim);
   backdrop-filter: blur(4px);
 }
 .content {
@@ -19,13 +19,64 @@
   border-radius: var(--radius-control);
   font: inherit;
 }
+.primary,
+.secondary,
+.quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  cursor: pointer;
+}
+.primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border-strong);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--color-secondary);
+  filter: none;
+}
+.quiet {
+  background: transparent;
+  color: var(--color-primary);
+}
+.quiet:hover:not(:disabled) {
+  background: var(--color-secondary);
+  filter: none;
+}
+.primary:disabled,
+.secondary:disabled,
+.quiet:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.primary:focus-visible,
+.secondary:focus-visible,
+.quiet:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
 .input {
   min-height: var(--target-size);
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
   font: inherit;
 }
 .field {
@@ -35,5 +86,5 @@
 .fieldError {
   min-height: 1.4em;
   font-size: var(--text-label);
-  color: var(--danger-text);
+  color: var(--color-danger-accent);
 }

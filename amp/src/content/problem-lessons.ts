@@ -75,11 +75,18 @@ export function problemLesson(
       term,
       meaning,
     })),
-    method: authored?.method ?? [example.hint],
+    // A hint names its own instance's numbers, so it is never a general method.
+    method: authored?.method ?? [template.description],
     watch: authored?.watch ?? reference?.pitfalls[0] ?? null,
     example: {
       prompt: example.public.prompt,
-      ...(example.public.figure ? { figure: example.public.figure } : {}),
+      // A private walkthrough of the example, when it has one, replaces its
+      // problem figure: the lesson plays it revealed.
+      ...(example.walkthrough
+        ? { figure: { kind: "scene" as const, scene: example.walkthrough } }
+        : example.public.figure
+          ? { figure: example.public.figure }
+          : {}),
       steps: example.explanation,
       answer,
     },

@@ -33,7 +33,7 @@ K.NBT.A.1|Ten and extras|teen-frame-compose|Learner-created composition and deco
 1.NBT.C.4|Add using unit groups|add-ones-regroup|Two-digit plus multiples-of-ten cases, learner-written methods and explanation of exchanges.
 1.NBT.C.5|Change one ten|ten-more-or-less|Explain mentally without counting; extend bounded20–79 start values to all intended two-digit cases.
 1.NBT.C.6|Subtract whole tens|subtract-whole-tens|Learner-created models and written explanations of the method.
-2.OA.A.1|Two-step stories|two-step-change|Comparison structures, other operation orders, unknowns in all positions and learner modeling.
+2.OA.A.1|Two-step stories|two-step-change|Comparison structures, an unknown first change, and learner modeling.
 2.OA.B.2|Recall small facts||Repeated independent fluency and memory evidence; this slice does not certify recall.
 2.OA.C.3|Pairing and parity||Pair groups through20, determine parity and write equal-addend equations.
 2.OA.C.4|Arrays and repeated sums||Create and interpret arrays up to5 by5 and record repeated-addition equations.

@@ -4,9 +4,9 @@ export type ElementaryFigureData = Extract<
   SemanticFigure,
   { kind: "ten-frame" | "base-ten" }
 >;
-const ink = "#16483f",
-  first = "#20776d",
-  second = "#a74720";
+const ink = "var(--color-figure-ink)",
+  first = "var(--color-figure-accent)",
+  second = "var(--color-figure-warm)";
 export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
   if (figure.kind === "ten-frame") {
     const frames = figure.capacity / 10;
@@ -30,7 +30,7 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
                 y={y}
                 width="50"
                 height="46"
-                fill="#fffdf7"
+                fill="var(--color-figure-paper)"
                 stroke={ink}
                 strokeWidth="1.5"
               />

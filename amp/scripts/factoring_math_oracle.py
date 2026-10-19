@@ -157,15 +157,33 @@ def read_factorization(template, label):
     return result
 
 
+# Each template's prompt frames; each states one polynomial.
+FRAMES = {
+    'greatest-monomial-factor': (
+        r'Factor out the greatest common monomial factor with positive coefficient: (.+)\.',
+        r'Which expression shows (.+) with its greatest common monomial factor \(positive coefficient\) taken out\?',
+        r'Rewrite (.+) as its greatest common monomial factor, with positive coefficient, times a polynomial\.',
+    ),
+    'quadratic': (
+        r'Factor completely over the integers: (.+)\.',
+        r'Which product equals (.+)\? Choose the complete factorization over the integers\.',
+        r'Write (.+), factored completely, as a product of integer-coefficient factors\.',
+    ),
+}
+
+
+def polynomial_of(template, prompt):
+    frames = FRAMES['greatest-monomial-factor' if template == 'greatest-monomial-factor' else 'quadratic']
+    found = [m[1] for m in (re.fullmatch(f, prompt) for f in frames) if m]
+    require(len(found) == 1, 'Unsupported factoring prompt')
+    return found[0]
+
+
 def solve_factoring(public):
     template = public['templateId']
     require(template in FACTORING, 'Unknown factoring template')
     require(public.get('figure') is None, 'Unexpected runtime factoring figure')
-    prefix = ('Factor out the greatest common monomial factor with positive coefficient: '
-              if template == 'greatest-monomial-factor' else 'Factor completely over the integers: ')
-    prompt = public['prompt']
-    require(prompt.startswith(prefix) and prompt.endswith('.'), 'Unsupported factoring prompt')
-    target = read_polynomial(prompt[len(prefix):-1])
+    target = read_polynomial(polynomial_of(template, public['prompt']))
     response = public['response']
     require(response.get('kind') == 'choice', 'Factoring requires a choice response')
     options = response.get('options')
@@ -205,7 +223,7 @@ def review_explanation(problem):
     public = problem['public']
     key = solve_factoring(public)
     require(problem['answer'] == key, 'Mismatch: incorrect factoring answer')
-    target = read_polynomial(public['prompt'].split(': ', 1)[1][:-1])
+    target = read_polynomial(polynomial_of(public['templateId'], public['prompt']))
     steps = problem['explanation']
     require(isinstance(steps, list) and len(steps) >= 3
             and all(isinstance(step, str) and step for step in steps), 'Missing worked factoring steps')
@@ -402,7 +420,7 @@ def check_worksheet(record):
     problems = record['problems']
     require(len(problems) == 12 and record['replayed'] == problems, 'Worksheet cases do not replay')
     require(all(problem['public']['templateId'] == record['templateId'] for problem in problems), 'Wrong worksheet template')
-    targets = [read_polynomial(problem['public']['prompt'].split(': ',1)[1][:-1]) for problem in problems]
+    targets = [read_polynomial(polynomial_of(record['templateId'], problem['public']['prompt'])) for problem in problems]
     require(len(set(targets)) == 12, 'Duplicate worksheet polynomials')
     if record['templateId'] == 'greatest-monomial-factor':
         factors = [greatest_monomial(target) for target in targets]
@@ -440,7 +458,7 @@ def check_lesson(record):
     lesson = record['lesson']; template = record['templateId']
     require(lesson['id'] == template and lesson['templateIds'] == [template], 'Wrong lesson binding')
     example = lesson['workedExample']
-    target = read_polynomial(example['prompt'].split(': ',1)[1][:-1])
+    target = read_polynomial(polynomial_of(template, example['prompt']))
     require(expand(example['answer']) == target, 'Incorrect standalone worked answer')
     if template == 'greatest-monomial-factor':
         read_factorization(template, example['answer'])
@@ -580,6 +598,10 @@ def review_factoring_fixtures():
         (given('nonmonic-quadratic-factorization', '2x² − 10x + 12', ['2(x − 3)(x − 2)', '2(x − 6)(x − 1)']), 'option-0'),
         (given('nonmonic-quadratic-factorization', '−6x² − 22x + 8', ['−2(x − 4)(3x + 1)', '−2(x + 4)(3x − 1)']), 'option-1'),
     ]
+    reframed = copy.deepcopy(cases[4][0]); reframed['prompt'] = 'Which product equals x² + 5x + 6? Choose the complete factorization over the integers.'
+    cases.append((reframed, 'option-0'))
+    reframed = copy.deepcopy(cases[0][0]); reframed['prompt'] = 'Rewrite 6x² + 9x as its greatest common monomial factor, with positive coefficient, times a polynomial.'
+    cases.append((reframed, 'option-0'))
     # Both choices must be completely factored primitive linear products.
     cases[7][0]['response']['options'][0]['label'] = '(2x − 3)(3x − 1)'
     for public, answer in cases:

@@ -502,6 +502,18 @@ try {
           },
         }),
       );
+      // Without purchase or email-plus configuration, setup ends in a designed
+      // state with a next step, never a refresh-only dead end.
+      await page.route("**/api/v1/billing/enrollment", (route) =>
+        route.fulfill({
+          json: {
+            available: false,
+            notice: null,
+            noticeDigest: null,
+            purchase: null,
+          },
+        }),
+      );
       await page.reload();
       await page.getByRole("button", { name: "Continue setup" }).waitFor();
       assert.equal(
@@ -511,9 +523,14 @@ try {
         0,
       );
       await page.getByRole("button", { name: "Continue setup" }).click();
+      await page.waitForURL("**/start/plan");
       await page
-        .getByRole("heading", { name: "Enrollment is unavailable" })
+        .getByRole("heading", { name: "Enrollment isn’t open yet" })
         .waitFor();
+      assert.equal(
+        await page.getByRole("button", { name: "Refresh status" }).count(),
+        0,
+      );
       await fits(page);
       await page.screenshot({
         path: `${shots}/consent-unavailable-${width}-${theme}.png`,

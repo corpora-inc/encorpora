@@ -135,6 +135,18 @@ const hints: Record<string, string> = {
   "rationalize-radical-denominator":
     "Simplify the denominator's square root first. Multiply the numerator and denominator by its remaining square root. Their quotient stays unchanged because the multiplying fraction equals 1.",
 };
+/** The first move for these givens (the case key holds them). */
+function instanceHint(id: string, key: number | number[]): string {
+  const g = typeof key === "number" ? [key] : key;
+  const show = (n: number) => (n < 0 ? `(−${-n})` : `${n}`);
+  if (id === "simplify-square-root")
+    return `Find the largest perfect square that divides ${g[0]}: try 4, 9, 16, 25 and so on. Its square root comes outside the radical sign.`;
+  if (id === "combine-square-roots")
+    return `Simplify √${g[1]} and √${g[3]} first, taking out every square factor. Then add or subtract only the terms left with the same root.`;
+  if (id === "multiply-square-roots")
+    return `Multiply the coefficients, ${show(g[0]!)} × ${show(g[2]!)}, and the numbers under the roots, ${g[1]} × ${g[3]}. Then take every square factor out of the new root.`;
+  return `Simplify √${g[2]} in the denominator first. Then multiply the top and the bottom by the square root that is left.`;
+}
 function simplifyCase(r: Random, zero = false, given?: number): Case {
   const n = given ?? (zero ? 0 : r(0, 400)),
     [a, b] = root(n),
@@ -425,7 +437,7 @@ export function radicalPrintCase(
       },
     },
     answer,
-    hint: hints[id]!,
+    hint: instanceHint(id, JSON.parse(target.key) as number | number[]),
     explanation: target.explanation,
     choiceFeedback: Object.fromEntries(
       choices

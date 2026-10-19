@@ -86,10 +86,10 @@ async function sample() {
           : `<p class="response">Answer box: ${p.public.response.label}</p>`;
       await page.setContent(
         `<!doctype html><html><head><style>${css}
-        body{margin:0;padding:20px;background:var(--surface)}
+        body{margin:0;padding:20px;background:var(--color-surface-raised)}
         .card .question{font-size:22px;font-weight:600;text-align:center;margin:0 0 16px}
         .card .figure{display:block;width:100%;max-height:260px}
-        .choices,.response{font-size:16px;color:var(--ink-2)}</style></head>
+        .choices,.response{font-size:16px;color:var(--color-muted-text)}</style></head>
         <body><div class="card"><h2 class="question">${p.public.prompt}</h2>${figure}${choices}</div></body></html>`,
       );
       const image = `${root}cards/${template.id}--${n}.png`;

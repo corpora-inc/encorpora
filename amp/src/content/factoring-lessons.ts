@@ -232,6 +232,8 @@ export const factoringMethods: Record<string, ProblemMethod> = {
       "Find each remaining term by multiplication with the common factor.",
       "Expand the proposed product to check every original term.",
     ],
+    watch:
+      "A term equal to the common factor leaves 1 inside the parentheses, not 0; the inside must keep as many terms as the original.",
   },
   "monic-quadratic-factorization": {
     goal: "Rewrite the monic quadratic as a product of integer linear factors.",
@@ -245,6 +247,8 @@ export const factoringMethods: Record<string, ProblemMethod> = {
       "Write (x + p)(x + q); equal factors may be written as a square.",
       "Expand both factors and compare all coefficients.",
     ],
+    watch:
+      "Match signs before sizes: a positive constant needs two numbers of the same sign as b; a negative constant needs opposite signs.",
   },
   "nonmonic-quadratic-factorization": {
     goal: "Factor the quadratic completely while retaining any outside signed integer.",
@@ -264,6 +268,8 @@ export const factoringMethods: Record<string, ProblemMethod> = {
       "Split the middle term and factor the two groups, then factor their shared binomial.",
       "Retain the outside integer and check the complete product by expansion.",
     ],
+    watch:
+      "Take out the common factor before splitting the middle term, and keep it in the answer: 2(x − 3)(x − 2), not (x − 3)(x − 2).",
   },
 };
 export const factoringPrinciples: Record<string, string> = {

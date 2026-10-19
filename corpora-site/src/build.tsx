@@ -1,12 +1,10 @@
 import { mkdir, readFile, writeFile, cp, rm } from "node:fs/promises";
 import React, { renderToStaticMarkup } from "./react.js";
 import type { SiteConfig } from "./config.js";
-import { Page, routes } from "./pages.js";
+import { Page, routesFor } from "./pages.js";
 import { product } from "./product.js";
-export async function buildSite(
-  config: SiteConfig,
-  output: "dist" | "artifacts/production" = "dist",
-) {
+export async function buildSite(config: SiteConfig, output: string = "dist") {
+  const routes = routesFor(config);
   await rm(output, { recursive: true, force: true });
   await mkdir(`${output}/assets`, { recursive: true });
   // Extract the existing token block; loading the entire app stylesheet would

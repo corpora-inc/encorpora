@@ -180,6 +180,9 @@ async function setup(
       });
     if (path.endsWith("/funding/requests"))
       return route.fulfill({ json: { requests: [] } });
+    // First-party funnel beacons (verified in verify-funnel-ui).
+    if (path.endsWith("/events"))
+      return route.fulfill({ status: 202, json: { accepted: 1 } });
     faults.push(`Unexpected ${route.request().method()} ${path}`);
     return route.fulfill({
       status: 404,
@@ -199,9 +202,9 @@ async function setup(
   };
 }
 async function openAccess(page: Page) {
-  await page.locator(".account-menu summary").click();
+  await page.getByRole("button", { name: "Family menu" }).click();
   await page
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await page.getByRole("button", { name: "Access", exact: true }).click();
   await page
@@ -457,9 +460,9 @@ try {
       ),
     purchaseId,
   );
-  await returned.page.locator(".account-menu summary").click();
+  await returned.page.getByRole("button", { name: "Family menu" }).click();
   await returned.page
-    .getByRole("button", { name: "Sign out", exact: true })
+    .getByRole("menuitem", { name: "Sign out", exact: true })
     .click();
   await returned.page
     .getByRole("button", { name: "Parent sign in", exact: true })

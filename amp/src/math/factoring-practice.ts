@@ -1,5 +1,7 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import type { Term } from "./scene/spec";
+import { commonFactorArea, factorTiles } from "./tile-walkthroughs";
 
 export const factoringTemplates: readonly TemplateMetadata[] = [
   {
@@ -322,6 +324,42 @@ export function factoringPrintCase(id: string, seed: string) {
           : "Each linear factor has integer coefficients with greatest common factor 1, so the expression is completely factored over the integers.",
     );
   }
+  const frame = r(0, 2);
+  const prompt = extraction
+    ? [
+        `Factor out the greatest common monomial factor with positive coefficient: ${shown}.`,
+        `Which expression shows ${shown} with its greatest common monomial factor (positive coefficient) taken out?`,
+        `Rewrite ${shown} as its greatest common monomial factor, with positive coefficient, times a polynomial.`,
+      ][frame]!
+    : [
+        `Factor completely over the integers: ${shown}.`,
+        `Which product equals ${shown}? Choose the complete factorization over the integers.`,
+        `Write ${shown}, factored completely, as a product of integer-coefficient factors.`,
+      ][frame]!;
+  const magnitudes = p
+    .filter((c) => c !== 0)
+    .map(Math.abs)
+    .reverse()
+    .join(", ");
+  const hint = extraction
+    ? `The coefficients of ${shown} have sizes ${magnitudes}. Find the largest whole number dividing all of them, then the lowest power of x that appears in every term.`
+    : id === "monic-quadratic-factorization"
+      ? `For ${shown}, find two integers whose product is ${signed(p[0]!)} and whose sum is ${signed(p[1]!)}. Each one completes a factor x + __.`
+      : `Start with ${shown}: take out the greatest common factor of ${magnitudes}${p[2]! < 0 ? ", with a minus sign so the x² term inside is positive" : ""}. Then split the middle term of what remains using the product of its first and last coefficients.`;
+  const walkthrough = extraction
+    ? commonFactorArea(
+        [selected.gcf![0], selected.gcf![1]],
+        selected.right
+          .map((c, j) => [c, j] as Term)
+          .filter(([c]) => c !== 0)
+          .reverse(),
+      )
+    : factorTiles(
+        selected.left as [number, number],
+        selected.right as [number, number],
+        selected.scalar,
+        shown,
+      );
   let answer = "";
   const choiceFeedback: Record<string, string> = {};
   const options = shuffle([...group], r).map((item, i) => {
@@ -341,9 +379,7 @@ export function factoringPrintCase(id: string, seed: string) {
       templateVersion: 1,
       seed,
       skillId: meta.skillId,
-      prompt: extraction
-        ? `Factor out the greatest common monomial factor with positive coefficient: ${shown}.`
-        : `Factor completely over the integers: ${shown}.`,
+      prompt,
       response: {
         kind: "choice",
         label: "Choose the factored expression",
@@ -353,11 +389,8 @@ export function factoringPrintCase(id: string, seed: string) {
     answer,
     explanation,
     choiceFeedback,
-    hint: extraction
-      ? "Find the positive greatest common factor of the coefficients and the smallest variable exponent present. Choose a product that reproduces every original term."
-      : id === "monic-quadratic-factorization"
-        ? "Find two integers whose product is the constant term and whose sum is the coefficient of x. Use them in two factors beginning with x."
-        : "Extract a numerical common factor, choosing its sign to leave a positive leading coefficient. Split the middle term using the product of the leading and constant coefficients, then factor by grouping.",
+    hint,
+    walkthrough,
   };
   return { problem, tags: selected.tags, caseKey: p.join(",") };
 }

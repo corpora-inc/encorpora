@@ -71,7 +71,7 @@ def solve_fraction_practice(public):
         n, d, target = match(r'Rename (\d+)/(\d+) as (\d+)/\?\. What is the missing denominator\?', prompt)
         return Fraction(target*d, n)
     if name == 'like-fraction-missing-part':
-        n, d, total, target_d = match(r'(\d+)/(\d+) \+ \? = (\d+)/(\d+)\. What fraction is missing\?', prompt)
+        n, d, total, target_d = match(r'(\d+)/(\d+) \+ [?□] = (\d+)/(\d+)\. What fraction is missing\?', prompt)
         require(d == target_d, 'Unlike units in like-unit task')
         return Fraction(total, d)-Fraction(n, d)
     if name == 'like-fraction-difference':

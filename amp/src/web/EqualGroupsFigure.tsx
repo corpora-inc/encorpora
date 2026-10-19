@@ -4,9 +4,9 @@ export type EqualGroupsFigureData = Extract<
   SemanticFigure,
   { kind: "unit-array" | "grouped-counters" }
 >;
-const ink = "#16483f",
-  teal = "#20776d",
-  coral = "#b35a35";
+const ink = "var(--color-figure-ink)",
+  teal = "var(--color-figure-accent)",
+  coral = "var(--color-figure-warm)";
 /** A single square scale preserves array geometry; boxes show fixed group capacity. */
 export function EqualGroupsFigure({
   figure,
@@ -40,8 +40,8 @@ export function EqualGroupsFigure({
               fill={
                 figure.splitAfterRow !== undefined &&
                 row >= figure.splitAfterRow
-                  ? "#f2d5c3"
-                  : "#cde8df"
+                  ? "var(--color-figure-warm-fill)"
+                  : "var(--color-figure-accent-fill)"
               }
               stroke={ink}
               strokeWidth="1.2"
@@ -113,7 +113,7 @@ export function EqualGroupsFigure({
               width={boxWidth}
               height={boxHeight}
               rx="9"
-              fill="#fffaf0"
+              fill="var(--color-figure-paper)"
               stroke={ink}
               strokeWidth="1.5"
             />
@@ -128,7 +128,7 @@ export function EqualGroupsFigure({
                   cy={y + 23 + Math.floor(slot / 4) * 25}
                   r="6"
                   fill={filled ? teal : "none"}
-                  stroke={filled ? ink : "#799089"}
+                  stroke={filled ? ink : "var(--color-figure-axis)"}
                   strokeWidth="1.2"
                   strokeDasharray={filled ? undefined : "2 2"}
                 />
