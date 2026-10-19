@@ -348,6 +348,7 @@ def review_radical_content():
     records = [json.loads(line) for line in result.stdout.splitlines()]
     report = review_content_records(records)
     report['rejectedContentMutations'] = review_content_mutations(records)
+    report['handwrittenContent'] = review_handwritten_content()
     return report
 
 
