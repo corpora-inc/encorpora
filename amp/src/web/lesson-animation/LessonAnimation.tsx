@@ -57,7 +57,11 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         aria-label={`${frames[current].title}. ${frames[current].text}`}
       >
         <title>{frames[current].title}</title>
-        {model.kind === "fraction" ? (
+        {model.kind === "pairing" ? (
+          <PairingModel model={model} step={current} />
+        ) : model.kind === "place-compare" ? (
+          <PlaceCompareModel model={model} step={current} />
+        ) : model.kind === "fraction" ? (
           <FractionModel model={model} step={current} />
         ) : model.kind === "array" ? (
           <ArrayModel model={model} step={current} />
@@ -290,6 +294,181 @@ function ExchangeModel({
           ? `ten ${unit === 1 ? "ones → one ten" : "tens → one hundred"}`
           : `ten ${unit === 1 ? "ones" : "tens"}`}
       </text>
+    </>
+  );
+}
+
+/** Rows start like the problem figure; step 1 slides every counter to a common
+ * spacing, step 2 draws the pairs and marks the counters left over. */
+function PairingModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "pairing" }>;
+  step: number;
+}) {
+  const { circles, squares, spread } = model.figure;
+  const left = 26,
+    right = 294,
+    gap = 30;
+  const start = (i: number, count: number, spreadRow: boolean) =>
+    spreadRow ? left + (i * (right - left)) / (count - 1) : left + i * gap;
+  const pairs = Math.min(circles, squares);
+  const row = (count: number, shape: "circle" | "square", y: number) =>
+    Array.from({ length: count }, (_, i) => {
+      const x0 = start(
+        i,
+        count,
+        spread === (shape === "circle" ? "circles" : "squares"),
+      );
+      const x1 = left + i * gap;
+      const unpaired = step === 2 && i >= pairs;
+      return (
+        <g
+          key={`${shape}${i}`}
+          data-counter={shape}
+          className="animation-move"
+          style={{ transform: `translateX(${step ? x1 - x0 : 0}px)` }}
+        >
+          {unpaired && (
+            <circle
+              cx={x0}
+              cy={y}
+              r={17}
+              className="animation-outline"
+              strokeDasharray="3 3"
+              strokeWidth={1.5}
+            />
+          )}
+          {shape === "circle" ? (
+            <circle
+              cx={x0}
+              cy={y}
+              r={11}
+              className={unpaired ? "animation-warm" : "animation-fill"}
+              strokeWidth={unpaired ? 3 : 1}
+            />
+          ) : (
+            <rect
+              x={x0 - 10}
+              y={y - 10}
+              width={20}
+              height={20}
+              rx={2}
+              className={unpaired ? "animation-warm" : "animation-fill"}
+              strokeWidth={unpaired ? 3 : 1}
+            />
+          )}
+        </g>
+      );
+    });
+  return (
+    <>
+      <g className="animation-fade" style={{ opacity: step === 2 ? 1 : 0 }}>
+        {Array.from({ length: pairs }, (_, i) => (
+          <line
+            key={i}
+            data-pair={i}
+            x1={left + i * gap}
+            x2={left + i * gap}
+            y1={68}
+            y2={120}
+            className="animation-grid"
+            strokeDasharray="4 3"
+          />
+        ))}
+      </g>
+      {row(circles, "circle", 56)}
+      {row(squares, "square", 132)}
+      <text x="160" y="185" textAnchor="middle">
+        {step === 2
+          ? circles === squares
+            ? "every counter has a partner"
+            : `${Math.abs(circles - squares)} left over`
+          : step === 1
+            ? "same spacing"
+            : spread === "none"
+              ? "same spacing"
+              : `${spread} spread out`}
+      </text>
+    </>
+  );
+}
+
+/** Rods and cubes for two numbers; the place being compared stays solid while
+ * the other place fades. */
+function PlaceCompareModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "place-compare" }>;
+  step: number;
+}) {
+  const [a, b] = model.figure.values;
+  const tensMatch = Math.floor(a / 10) === Math.floor(b / 10);
+  const focus = step === 0 ? "both" : step === 2 && tensMatch ? "ones" : "tens";
+  const u = 7,
+    rodStep = 11,
+    tensX = 64,
+    onesX = tensX + 9 * rodStep + 18;
+  return (
+    <>
+      {[a, b].map((n, row) => {
+        const y = 12 + row * 92,
+          tens = Math.floor(n / 10),
+          ones = n % 10;
+        return (
+          <g key={row} data-value={n}>
+            <text x={50} y={y + 40} textAnchor="end" style={{ fontSize: 20 }}>
+              {n}
+            </text>
+            <g
+              className="animation-fade"
+              data-place="tens"
+              style={{ opacity: focus === "ones" ? 0.25 : 1 }}
+            >
+              {Array.from({ length: tens }, (_, i) => (
+                <rect
+                  key={i}
+                  data-unit="ten"
+                  x={tensX + i * rodStep}
+                  y={y}
+                  width={u}
+                  height={10 * u}
+                  className="animation-fill"
+                />
+              ))}
+            </g>
+            <g
+              className="animation-fade"
+              data-place="ones"
+              style={{ opacity: focus === "tens" ? 0.25 : 1 }}
+            >
+              {Array.from({ length: ones }, (_, i) => (
+                <rect
+                  key={i}
+                  data-unit="one"
+                  x={onesX + (i % 5) * rodStep}
+                  y={y + 10 * u - (Math.floor(i / 5) + 1) * rodStep + 4}
+                  width={u}
+                  height={u}
+                  className="animation-warm"
+                />
+              ))}
+            </g>
+            <text
+              x={onesX + 5 * rodStep + 12}
+              y={y + 40}
+              className="animation-fade"
+              style={{ opacity: focus === "both" ? 0 : 1 }}
+            >
+              {focus === "ones"
+                ? `${ones} ${ones === 1 ? "one" : "ones"}`
+                : `${tens} ${tens === 1 ? "ten" : "tens"}`}
+            </text>
+          </g>
+        );
+      })}
     </>
   );
 }

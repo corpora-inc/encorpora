@@ -2,6 +2,7 @@ import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
+import { comparisonLessons } from "./comparison-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -32,6 +33,10 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "comparison-pairing"
+      | "comparison-number-path"
+      | "comparison-place-chart"
+      | "large-place-value-chart"
       | DataIllustration
       | "counting-tree"
       | "permutation-slots"
@@ -536,6 +541,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...earlyDataLessons,
   ...radicalLessons,
+  ...comparisonLessons,
   ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
