@@ -65,7 +65,10 @@ export type ClockSweepAnimation = {
   hour: number;
   minute: number;
 };
+/** Full jar A poured into empty jar B: eighths of B filled (9 = spills). */
+export type PourAnimation = { kind: "pour"; eighths: number };
 export type AnimationModel =
+  | PourAnimation
   | { kind: "area-model"; figure: AreaModel }
   /** a rows of b dots, built one row at a time. */
   | { kind: "array-build"; rows: number; columns: number }
@@ -162,6 +165,12 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
+  if (
+    lesson.templateId === "compare-capacity" &&
+    f?.kind === "pour" &&
+    integer(f.eighths, 1, 9)
+  )
+    return { kind: "pour", eighths: f.eighths };
   if (
     lesson.templateId === "area-model-product" &&
     f?.kind === "area-model" &&
@@ -652,6 +661,40 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "pour") {
+    const e = model.eighths;
+    const result =
+      e < 8
+        ? {
+            title: "Room left in B",
+            text: "All of A's water fits in B with room to spare, so B holds more.",
+            math: "B holds more",
+          }
+        : e === 8
+          ? {
+              title: "B is exactly full",
+              text: "A's water fills B exactly to the top, so the jars hold the same amount.",
+              math: "A and B hold the same",
+            }
+          : {
+              title: "B overflows",
+              text: "A's water is more than B can hold; some spills. A holds more.",
+              math: "A holds more",
+            };
+    return [
+      {
+        title: "Fill A",
+        text: "A is full. B is empty. Their shapes differ, so looking is not enough.",
+        math: "A full, B empty",
+      },
+      {
+        title: "Pour all of A into B",
+        text: "Every drop of A's water goes into B.",
+        math: "A → B",
+      },
+      result,
+    ];
+  }
   if (model.kind === "area-model") {
     const { columns, rows } = model.figure;
     const a = columns[0]! + columns[1]!,

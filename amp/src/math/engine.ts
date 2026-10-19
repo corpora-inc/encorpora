@@ -20,6 +20,10 @@ import {
   generateTimeMoneyProblem,
 } from "./time-money-practice";
 import {
+  attributeTemplates,
+  generateAttributeProblem,
+} from "./attribute-practice";
+import {
   ratioRateTemplates,
   generateRatioRateProblem,
 } from "./ratio-rate-practice";
@@ -265,6 +269,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...attributeTemplates,
   ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
@@ -423,6 +428,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...distributionTemplates,
     ...inferenceTemplates,
     ...partWholeTemplates,
+    ...attributeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
     ...linePlotTemplates,
@@ -460,6 +466,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (attributeTemplates.some((t) => t.id === templateId))
+    return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))

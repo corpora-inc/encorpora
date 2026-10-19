@@ -1,5 +1,6 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
+import { AttributeFigure } from "./AttributeFigure";
 import { TimeMoneyFigure } from "./TimeMoneyFigure";
 import { DecimalFigure } from "./DecimalFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
@@ -30,6 +31,12 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "length-rods":
+    case "unit-measure":
+    case "mass-balance":
+    case "pour":
+    case "liquid-scale":
+      return <AttributeFigure figure={figure} />;
     case "ratio-table":
     case "double-number-line":
       return <RatioRateFigure figure={figure} />;

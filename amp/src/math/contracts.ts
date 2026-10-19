@@ -9,6 +9,10 @@ import {
   type TimeMoneyFigure,
 } from "./time-money-models.js";
 import {
+  attributeFigureSchemas,
+  type AttributeFigure,
+} from "./attribute-models.js";
+import {
   ratioRateFigureSchemas,
   type RatioRateFigure,
 } from "./ratio-rate-models.js";
@@ -58,6 +62,7 @@ export type SemanticFigure =
   | MeasurementFigure
   | RatioRateFigure
   | PartWholeFigure
+  | AttributeFigure
   | FactArrayFigure
   | TimeMoneyFigure
   | DecimalFigure
@@ -272,6 +277,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...measurementFigureSchemas,
     ...ratioRateFigureSchemas,
     ...partWholeFigureSchemas,
+    ...attributeFigureSchemas,
     ...factArrayFigureSchemas,
     ...timeMoneyFigureSchemas,
     ...decimalFigureSchemas,
