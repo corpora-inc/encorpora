@@ -16,6 +16,8 @@ import { polyAreaSchema } from "./poly-area";
 import { rowBarsSchema } from "./row-bars";
 import { tableSchema } from "./table";
 import { tenFrameSchema } from "./ten-frame";
+import { treeSchema } from "./tree";
+import { vennSchema } from "./venn";
 
 export const componentSchemas = [
   angleSchema,
@@ -32,6 +34,8 @@ export const componentSchemas = [
   rowBarsSchema,
   tableSchema,
   tenFrameSchema,
+  treeSchema,
+  vennSchema,
 ] as const;
 
 export * from "./angle";
@@ -47,3 +51,5 @@ export * from "./poly-area";
 export * from "./row-bars";
 export * from "./table";
 export * from "./ten-frame";
+export * from "./tree";
+export * from "./venn";

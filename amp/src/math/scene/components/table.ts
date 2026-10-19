@@ -35,8 +35,30 @@ export const tableSchema = z
       .array(z.tuple([small.max(7), small.max(5)]))
       .max(4)
       .optional(),
+    /** Bands behind rows or columns and a ring around cells: conditioning
+     * on a row or column, and the cell inside it. Timelines bring them in. */
+    highlight: z
+      .object({
+        rows: z.array(small.max(7)).max(8).optional(),
+        columns: z.array(small.max(5)).max(6).optional(),
+        cells: z
+          .array(z.tuple([small.max(7), small.max(5)]))
+          .max(12)
+          .optional(),
+      })
+      .strict()
+      .optional(),
   })
   .strict()
+  .refine(
+    (t) =>
+      (t.highlight?.rows ?? []).every((r) => r < t.rows.length) &&
+      (t.highlight?.columns ?? []).every((c) => c < t.columns.length) &&
+      (t.highlight?.cells ?? []).every(
+        ([r, c]) => r < t.rows.length && c < t.columns.length,
+      ),
+    "Highlights name existing rows, columns and cells",
+  )
   .refine(
     (t) => t.rows.every((r) => r.cells.length === t.columns.length),
     "Every row has one cell per column",
@@ -160,6 +182,8 @@ registerComponent("table", {
     const lastRow = t.rows.length - 1,
       lastColumn = t.columns.length - 1;
     const prims: Prim[] = [];
+    const rows = new Set(t.highlight?.rows ?? []),
+      columns = new Set(t.highlight?.columns ?? []);
     if (t.title) {
       const span = t.sums ? lastColumn : t.columns.length;
       const x0 = g.lefts[0]!,
@@ -197,26 +221,43 @@ registerComponent("table", {
     for (const [i, row] of t.rows.entries()) {
       const top = g.rowTop(i),
         total = t.sums && i === lastRow;
-      prims.push(
-        {
+      prims.push({
+        type: "rect",
+        id: `row.${i}`,
+        at: P(0, top + ROW),
+        size: size(g.width, ROW),
+        fill: total ? "empty" : "paper",
+        stroke: "grid",
+        width: 1,
+      });
+      // Highlight bands sit on the row, under its text.
+      if (rows.has(i))
+        prims.push({
           type: "rect",
-          id: `row.${i}`,
+          id: `band.row.${i}`,
           at: P(0, top + ROW),
           size: size(g.width, ROW),
-          fill: total ? "empty" : "paper",
-          stroke: "grid",
-          width: 1,
-        },
-        {
-          type: "text",
-          id: `row.${i}.label`,
-          at: P(PAD, top + ROW / 2),
-          text: row.label,
-          font: "sans",
-          bold: true,
-          align: [-1, 0],
-        },
-      );
+          fill: "accent-fill",
+          noStroke: true,
+        });
+      for (const j of columns)
+        prims.push({
+          type: "rect",
+          id: `band.column.${j}.${i}`,
+          at: P(g.lefts[j]!, top + ROW),
+          size: size(g.widths[j]!, ROW),
+          fill: rows.has(i) ? "accent-strong" : "warm-fill",
+          noStroke: true,
+        });
+      prims.push({
+        type: "text",
+        id: `row.${i}.label`,
+        at: P(PAD, top + ROW / 2),
+        text: row.label,
+        font: "sans",
+        bold: true,
+        align: [-1, 0],
+      });
       for (const [j, v] of row.cells.entries()) {
         const cx = g.lefts[j]! + g.widths[j]! / 2,
           cy = top + ROW / 2;
@@ -262,6 +303,17 @@ registerComponent("table", {
         });
       }
     }
+    for (const [i, j] of t.highlight?.cells ?? [])
+      prims.push({
+        type: "rect",
+        id: `mark.${i}.${j}`,
+        at: P(g.lefts[j]! + 4, g.rowTop(i) + ROW - 4),
+        size: size(g.widths[j]! - 8, ROW - 8),
+        radius: 6,
+        fill: "none",
+        stroke: "gold",
+        width: 3,
+      });
     if (t.sums) {
       const x = g.lefts[lastColumn]!;
       prims.push(

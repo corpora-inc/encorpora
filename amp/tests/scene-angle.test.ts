@@ -55,3 +55,16 @@ test("a right angle gets a square mark, not an arc", () => {
   const mark = l.items.find((d) => d.id.endsWith(".mark.0"))!;
   assert.equal(mark.data?.mark, "right");
 });
+
+test("a clockwise mark measures the turn the other way", () => {
+  const l = layoutScene(
+    angle({
+      rays: [180, 130],
+      marksOnly: true,
+      marks: [{ from: 0, to: 1, measure: true, clockwise: true }],
+    }).scene(),
+    { reveal: true },
+  );
+  assert.ok(texts(l).some((t) => t.plain === "50°"));
+  assert.ok(!l.items.some((d) => /\.ray\./.test(d.id)));
+});
