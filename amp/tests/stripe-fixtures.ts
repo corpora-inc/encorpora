@@ -133,6 +133,7 @@ export function remoteFixtures() {
     charge: {
       id: "ch_fixture",
       livemode: false,
+      status: "succeeded",
       paid: true,
       captured: true,
       amount: 12000,
