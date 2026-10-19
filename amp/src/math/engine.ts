@@ -45,6 +45,10 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
+import {
+  earlyOperationsTemplates,
+  generateEarlyOperationsProblem,
+} from "./early-operations-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
@@ -264,6 +268,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
+  ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
@@ -509,6 +514,8 @@ function generateRawProblem(
     return generateFactsProblem(templateId, seed);
   if (factArrayTemplates.some((t) => t.id === templateId))
     return generateFactArrayProblem(templateId, seed);
+  if (earlyOperationsTemplates.some((t) => t.id === templateId))
+    return generateEarlyOperationsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

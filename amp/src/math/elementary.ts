@@ -21,13 +21,6 @@ const definitions = [
     "Find a remainder in a removal story within ten.",
   ],
   [
-    "number-bond-missing",
-    "Find the other part",
-    "number-bonds",
-    "K",
-    "Complete a two-part decomposition of a number through ten.",
-  ],
-  [
     "ten-frame-complement",
     "Fill a ten-frame",
     "make-ten",
@@ -42,32 +35,11 @@ const definitions = [
     "Compose eleven through nineteen from ten ones and extras.",
   ],
   [
-    "unknown-addend-story",
-    "Find what was added",
-    "missing-addend",
-    "1",
-    "Recover an unknown change from a start and total within twenty.",
-  ],
-  [
     "missing-start-story",
     "Find the starting amount",
     "addition-stories",
     "1",
     "Recover a starting amount from a removal and remaining amount.",
-  ],
-  [
-    "balanced-addition",
-    "Make both sides equal",
-    "equality",
-    "1",
-    "Find a missing number in an equation with arithmetic on both sides.",
-  ],
-  [
-    "three-addend-story",
-    "Combine three groups",
-    "three-addends",
-    "1",
-    "Add three quantities with a total at most twenty.",
   ],
   [
     "make-ten-remainder",
@@ -161,13 +133,6 @@ const definitions = [
     "Continue a count by fives tens or hundreds within one thousand.",
   ],
   [
-    "two-step-change",
-    "Follow two changes",
-    "two-step-stories",
-    "2",
-    "Solve a join-then-remove story within one hundred.",
-  ],
-  [
     "continue-count-to-120",
     "Continue counting",
     "tens-and-ones",
@@ -253,21 +218,6 @@ export function generateElementaryProblem(
       ];
       break;
     }
-    case "number-bond-missing": {
-      const total = r(2, 10),
-        part = r(0, total);
-      prompt = `${total} = ${part} + □. What number belongs in the box?`;
-      answer = total - part;
-      hint = part
-        ? `Start at ${part} and count up to ${total}. How many numbers did you say?`
-        : `${total} = 0 + □: one part is empty, so the other part is the whole.`;
-      explanation = [
-        `The whole is ${total}; one part is ${part}.`,
-        `The other part is ${total} − ${part} = ${answer}.`,
-        `Together: ${part} + ${answer} = ${total}.`,
-      ];
-      break;
-    }
     case "ten-frame-complement": {
       const n = r(1, 9);
       figure = { kind: "ten-frame", first: n, second: 0, capacity: 10 };
@@ -301,20 +251,6 @@ export function generateElementaryProblem(
       ];
       break;
     }
-    case "unknown-addend-story": {
-      const start = r(1, 15),
-        added = r(1, 20 - start),
-        total = start + added;
-      prompt = `There were ${start} blocks. More blocks were added. There are ${total} now. How many were added?`;
-      answer = added;
-      hint = `Write it as ${start} + □ = ${total}. Count up from ${start} to ${total} and keep track of how many you count.`;
-      explanation = [
-        `The missing change makes ${start} + □ = ${total}.`,
-        `Find it by subtracting: ${total} − ${start} = ${added}.`,
-        `Check: ${start} + ${added} = ${total}.`,
-      ];
-      break;
-    }
     case "missing-start-story": {
       const total = r(3, 20),
         removed = r(1, total - 1),
@@ -326,43 +262,6 @@ export function generateElementaryProblem(
         `The starting group was split into ${removed} removed and ${left} remaining.`,
         `The start was ${removed} + ${left} = ${total}.`,
         `Check: ${total} − ${removed} = ${left}.`,
-      ];
-      break;
-    }
-    case "balanced-addition": {
-      const a = r(1, 9),
-        b = r(1, 10),
-        c = r(0, a + b);
-      prompt = `${a} + ${b} = □ + ${c}. What number makes both sides equal?`;
-      answer = a + b - c;
-      hint = `First find the left side, ${a} + ${b}. The right side, □ + ${c}, must make the same total.`;
-      explanation = [
-        `The left side is ${a} + ${b} = ${a + b}.`,
-        `The missing part is ${a + b} − ${c} = ${answer}.`,
-        `Both sides equal ${a + b}.`,
-      ];
-      break;
-    }
-    case "three-addend-story": {
-      const a = r(1, 8),
-        b = r(1, 8),
-        c = r(1, 20 - a - b);
-      prompt = `A box holds ${a} red blocks, ${b} blue blocks, and ${c} green blocks. How many blocks?`;
-      answer = a + b + c;
-      const ten = (
-        [
-          [a, b, c],
-          [b, c, a],
-          [a, c, b],
-        ] as const
-      ).find(([x, y]) => x + y === 10);
-      hint = ten
-        ? `Look for a ten first: ${ten[0]} + ${ten[1]} = 10. Then add the other ${ten[2]}.`
-        : `Add two colors first, ${a} red + ${b} blue. Then add the ${c} green.`;
-      explanation = [
-        `First combine ${a} + ${b} = ${a + b}.`,
-        `Then add ${c}: ${a + b} + ${c} = ${answer}.`,
-        `Changing the grouping does not change the total.`,
       ];
       break;
     }
@@ -587,19 +486,6 @@ export function generateElementaryProblem(
       explanation = [
         `Each step adds ${step}.`,
         `${start + 2 * step} + ${step} = ${answer}.`,
-      ];
-      break;
-    }
-    case "two-step-change": {
-      const start = r(10, 60),
-        added = r(5, 100 - start),
-        removed = r(1, start + added);
-      prompt = `There are ${start} books. Add ${added} books, then take away ${removed}. How many books remain?`;
-      answer = start + added - removed;
-      hint = `Do the changes in order. First find ${start} + ${added}, the books there are before any are taken away.`;
-      explanation = [
-        `After adding: ${start} + ${added} = ${start + added}.`,
-        `After removing: ${start + added} − ${removed} = ${answer}.`,
       ];
       break;
     }
