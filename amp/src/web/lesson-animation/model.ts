@@ -1,6 +1,11 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type { SemanticFigure } from "../../math/contracts";
 import {
+  geometryAnimationModel,
+  geometryFrames,
+  type GeometryAnimationModel,
+} from "./geometry";
+import {
   shapeMorphFrames,
   shapeMorphModel,
   type ShapeMorphAnimation,
@@ -124,6 +129,7 @@ export type AnimationModel =
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
+  | GeometryAnimationModel
   | { kind: "line-plot-stack"; figure: LinePlot }
   | { kind: "line-plot-share"; figure: LinePlot; share: number }
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
@@ -234,6 +240,8 @@ export function animationModel(
       toStandard: g.toStandard,
     };
   const f = lesson.example.figure;
+  const geometry = geometryAnimationModel(lesson.templateId, f);
+  if (geometry) return geometry;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
   if (
@@ -848,6 +856,13 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (
+    model.kind === "triangle-sum" ||
+    model.kind === "exterior-angle" ||
+    model.kind === "transversal" ||
+    model.kind === "plane-sweep"
+  )
+    return geometryFrames(model);
   if (model.kind === "root-zoom") {
     const { radicand: n, index: i } = model,
       { k, t, up, nearest, half } = rootZoom(n, i);

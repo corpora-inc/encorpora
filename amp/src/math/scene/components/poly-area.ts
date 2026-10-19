@@ -1,5 +1,47 @@
+import { z } from "zod";
+import { base, color, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import type { FillRole, PolyArea, Term } from "../spec";
+import type { FillRole } from "../spec";
+
+/** A monomial c·xᵖ as [c, p]: [3, 1] is 3x, [−2, 0] is −2. */
+const termSchema = z.tuple([
+  z
+    .number()
+    .int()
+    .min(-144)
+    .max(144)
+    .refine((c) => c !== 0, "Nonzero"),
+  z.number().int().min(0).max(3),
+]);
+/** A product of polynomials as an area: each side lists its terms, and each
+ * region is one term product. Linear sides with small coefficients are drawn
+ * as algebra tiles (x² squares, x strips, unit squares); other sides are
+ * schematic. Negative products are shaded warm. */
+export const polyAreaSchema = z
+  .object({
+    ...base,
+    type: z.literal("polyArea"),
+    across: z.array(termSchema).min(1).max(4),
+    down: z.array(termSchema).min(1).max(4),
+    /** The side terms: the factors. */
+    sides: z.enum(["shown", "derived", "none"]).optional(),
+    /** Each region's term product: masked by default. */
+    products: z.enum(["shown", "derived", "none"]).optional(),
+    /** Regions [i, j] drawn as an empty dashed outline: the piece to add
+     * when completing a square. */
+    missing: z
+      .array(
+        z.tuple([
+          z.number().int().min(0).max(3),
+          z.number().int().min(0).max(3),
+        ]),
+      )
+      .max(4)
+      .optional(),
+  })
+  .strict();
+export type PolyArea = z.infer<typeof polyAreaSchema>;
+export type Term = PolyArea["across"][number];
 
 /**
  * A polynomial product as an area. Each side is a list of terms; region

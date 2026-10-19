@@ -1828,6 +1828,56 @@ for (const [skillId, suffix, description] of [
     "Find the exact missing coordinate of a point on the graph of a line or parabola.",
   ],
   [
+    "angle-relationships",
+    "known-angle-pairs",
+    "Find an unknown angle from supplementary, complementary, vertical, adjacent or full-turn relationships shown in an exact figure.",
+  ],
+  [
+    "angle-relationships",
+    "angle-equations",
+    "Write and solve a linear equation for an unknown angle from supplementary, complementary, adjacent or vertical angles.",
+  ],
+  [
+    "triangle-angle-theorems",
+    "triangle-sum",
+    "Find unknown triangle angles, or x, from the 180° angle sum.",
+  ],
+  [
+    "triangle-angle-theorems",
+    "exterior-angle",
+    "Use an exterior angle as the sum of the two remote interior angles.",
+  ],
+  [
+    "triangle-angle-theorems",
+    "parallel-transversal",
+    "Find angles where a transversal crosses parallel lines using equal and supplementary pairs.",
+  ],
+  [
+    "triangle-construction",
+    "side-lengths",
+    "Decide which side-length triples form a triangle by the triangle inequality.",
+  ],
+  [
+    "triangle-construction",
+    "third-side-range",
+    "Find the possible whole-number lengths of a triangle's third side.",
+  ],
+  [
+    "triangle-construction",
+    "determining-conditions",
+    "Decide whether given side and angle conditions determine exactly one triangle, more than one, or none.",
+  ],
+  [
+    "solid-cross-sections",
+    "prism-pyramid-sections",
+    "Name the plane sections of right rectangular prisms and pyramids.",
+  ],
+  [
+    "solid-cross-sections",
+    "section-areas",
+    "Find the areas of plane sections of right rectangular prisms and pyramids.",
+  ],
+  [
     "gcf-lcm",
     "greatest-common-factor",
     "Find the greatest common factor of two whole numbers up to 100, including equal-sets and square-tile contexts.",

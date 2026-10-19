@@ -1,6 +1,47 @@
+import { z } from "zod";
+import { base, label, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import type { LineTable as Table } from "../spec";
 import { typeset } from "../type";
+
+/** A table of values or of steps. Cells are labels; a derived cell is a
+ * value the learner finds, drawn as "?" until revealed. */
+const lineTableCell = z.union([
+  z.string().max(60),
+  z
+    .object({
+      text: label,
+      derived: z.boolean().optional(),
+      color: z.enum(["accent", "warm", "gold"]).optional(),
+    })
+    .strict(),
+]);
+export const lineTableSchema = z
+  .object({
+    ...base,
+    type: z.literal("lineTable"),
+    rows: z.array(z.array(lineTableCell).min(1).max(10)).min(1).max(10),
+    /** Which edge holds the headings: the first column (a function table
+     * read across), the first row, or neither. */
+    header: z.enum(["column", "row", "none"]).optional(),
+    /** Ruling: every cell boxed, or rules between rows only (steps). */
+    rules: z.enum(["grid", "rows"]).optional(),
+    /** Columns to shade, as in the two ends of an interval. */
+    highlight: z.array(small.max(9)).max(10).optional(),
+    /** A heavy rule above this row: the sum line of stacked equations. */
+    total: small.max(9).optional(),
+    /** Horizontal alignment per column. */
+    align: z
+      .array(z.enum(["left", "center", "right"]))
+      .max(10)
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.rows.every((r) => r.length === t.rows[0]!.length),
+    "Every row has the same number of cells",
+  );
+
+export type LineTable = z.infer<typeof lineTableSchema>;
 
 /** A table read along its lines: a function's values across, or an
  * equation's steps down with their reasons. (The `table` component is the
@@ -15,6 +56,7 @@ const PAD = 10,
   LINE = 19,
   /** Words wider than this wrap at the space nearest their middle. */
   WRAP = 150;
+type Table = LineTable;
 type Cell = Table["rows"][number][number];
 const text = (c: Cell) => (typeof c === "string" ? c : c.text);
 const derived = (c: Cell) => typeof c !== "string" && !!c.derived;
