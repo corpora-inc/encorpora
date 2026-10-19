@@ -231,9 +231,11 @@ export function generatePolynomialProblem(
     prompt = `Expand and simplify (${format(a)})(${format(b)}).`;
     const singleTermProduct =
       a.filter(Boolean).length === 1 && b.filter(Boolean).length === 1;
+    const termsA = a.filter(Boolean).length,
+      termsB = b.filter(Boolean).length;
     hint = singleTermProduct
-      ? "Multiply the signed coefficients. For powers with the same base, add the exponents."
-      : "Multiply each term of the first factor by every term of the second. Multiply coefficients, add exponents on powers of x, then combine like terms.";
+      ? `Multiply the signed coefficients of ${format(a)} and ${format(b)}, and add their exponents of x.`
+      : `Multiply ${termsA === 1 ? format(a) : `each of the ${termsA} terms of ${format(a)}`} by ${termsB === 1 ? format(b) : `each of the ${termsB} terms of ${format(b)}`}: ${termsA * termsB} products. Then combine like terms.`;
     const partials: Polynomial[] = [];
     explanation = [
       singleTermProduct
@@ -283,8 +285,8 @@ export function generatePolynomialProblem(
   } else {
     prompt = `Simplify (${format(a)}) ${subtract ? "−" : "+"} (${format(b)}).`;
     hint = subtract
-      ? "Subtracting a polynomial means adding its opposite: change every sign in the second polynomial. Then combine like terms, which have the same power of x."
-      : "Like terms have the same power of x. Add their coefficients, keep the power unchanged, and treat a missing term as having coefficient zero.";
+      ? `Subtracting (${format(b)}) means adding its opposite: change the sign of every one of its terms. Then combine terms with the same power of x.`
+      : `Match the terms of ${format(a)} and ${format(b)} by their power of x and add the coefficients; a missing power has coefficient 0.`;
     const signedB = b.map((c) => (subtract ? -c : c));
     explanation = [
       subtract
