@@ -67,8 +67,8 @@ function Columns({
             x={x(p)}
             y={y}
             textAnchor="middle"
-            fontSize="28"
             fill="currentColor"
+            style={{ fontSize: 28 }}
           >
             {d}
           </text>
@@ -101,9 +101,8 @@ function Columns({
             x={x(p)}
             y={30}
             textAnchor="middle"
-            fontSize="16"
-            fontWeight="700"
             fill="currentColor"
+            style={{ fontWeight: 700, fontSize: 16 }}
           >
             {m}
           </text>
@@ -115,8 +114,8 @@ function Columns({
         x={x(n - 1) - col}
         y={104}
         textAnchor="middle"
-        fontSize="28"
         fill="currentColor"
+        style={{ fontSize: 28 }}
       >
         {op}
       </text>
@@ -243,7 +242,7 @@ export function AddSubtractIllustration({
       <Frame
         kind={kind}
         label="45,072 plus 18,396 in columns with carries above the hundreds and the ten thousands. The sum is 63,468."
-        caption="The same column steps work for any number of places: 7 + 9 tens = 16 tens and 5 + 8 thousands = 13 thousands each carry one. 45,072 + 18,396 = 63,468."
+        caption="The same column steps work for any number of places. Two places carry here: 7 + 9 = 16 tens and 5 + 8 = 13 thousands. 45,072 + 18,396 = 63,468."
       >
         <Columns a={45072} b={18396} op="+" focus={1} />
       </Frame>
@@ -253,9 +252,9 @@ export function AddSubtractIllustration({
       kind={kind}
       viewBox="0 0 320 172"
       label="Base-ten blocks for 82. One ten rod is traded for 10 ones, making 7 tens and 12 ones. Then 4 tens and 7 ones are taken away, leaving 3 tens and 5 ones."
-      caption="82 has only 2 ones, so trade 1 ten for 10 ones: 7 tens and 12 ones. Take away 4 tens and 7 ones (faded). 3 tens and 5 ones are left: 82 − 47 = 35."
+      caption="82 has only 2 ones, so trade 1 ten for 10 ones: 7 tens and 12 ones. Take away 4 tens and 7 ones, drawn in outline; 3 tens and 5 ones are left: 82 − 47 = 35."
     >
-      <text x={6} y={16} fontSize="13" fill="currentColor">
+      <text x={6} y={16} fill="currentColor" style={{ fontSize: 13 }}>
         82
       </text>
       <Blocks tens={8} ones={2} x={6} y={24} />
@@ -265,14 +264,19 @@ export function AddSubtractIllustration({
         stroke="currentColor"
         strokeWidth="1.5"
       />
-      <text x={166} y={16} fontSize="13" fill="currentColor">
+      <text x={166} y={16} fill="currentColor" style={{ fontSize: 13 }}>
         7 tens, 12 ones
       </text>
       <Blocks tens={7} ones={12} x={166} y={24} taken={[4, 7]} />
-      <text x={166} y={140} fontSize="13" fill="currentColor">
-        take away 47 (faded)
+      <text x={166} y={140} fill="currentColor" style={{ fontSize: 13 }}>
+        take away 47
       </text>
-      <text x={166} y={162} fontSize="15" fontWeight="700" fill="currentColor">
+      <text
+        x={166}
+        y={162}
+        fill="currentColor"
+        style={{ fontWeight: 700, fontSize: 15 }}
+      >
         35 left
       </text>
     </Frame>

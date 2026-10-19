@@ -6,6 +6,7 @@ import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
+import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import {
   NumberSystemIllustration,
@@ -14,6 +15,7 @@ import {
 } from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
 import { FactArrayIllustration } from "./FactArrayIllustration";
@@ -85,6 +87,14 @@ export function LessonIllustration({
   )
     return <CombinatoricsIllustration kind={kind} />;
   if (
+    kind === "multiply-tens-groups" ||
+    kind === "area-model-product" ||
+    kind === "standard-algorithm-product" ||
+    kind === "partial-quotients" ||
+    kind === "partial-quotients-two-digit"
+  )
+    return <MultiplyDivideIllustration kind={kind} />;
+  if (
     kind === "column-addition" ||
     kind === "base-ten-trade" ||
     kind === "column-subtraction-zero" ||
@@ -122,6 +132,15 @@ export function LessonIllustration({
     kind === "coin-count-on"
   )
     return <TimeMoneyIllustration kind={kind} />;
+  if (
+    kind === "line-up-ends" ||
+    kind === "balance-heavier" ||
+    kind === "unit-iteration" ||
+    kind === "ruler-units" ||
+    kind === "balance-grams" ||
+    kind === "liquid-scale-ticks"
+  )
+    return <AttributeIllustration kind={kind} />;
   if (
     kind === "decimal-tenths-hundredths" ||
     kind === "decimal-compare-chart" ||

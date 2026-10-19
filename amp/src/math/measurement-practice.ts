@@ -95,8 +95,9 @@ export function generateMeasurementProblem(
       prompt = "The strip runs from A to B. What is its length in cm?";
       answer = rational(end - start, denominator);
       label = "Length in cm";
-      hint =
-        "Length counts the spaces between the two ends. Subtract the starting position from the ending position.";
+      hint = whole
+        ? `A starts at the ${start} cm mark, not at 0. Read B's mark and subtract ${start}.`
+        : `Each centimeter is cut into ${denominator} small spaces. Count the small spaces from A to B, then write that count over ${denominator}.`;
       explanation = [
         `A is at ${rational(start, denominator)} cm; B is at ${rational(end, denominator)} cm.`,
         `${rational(end, denominator)} − ${rational(start, denominator)} = ${answer} cm.`,
@@ -124,8 +125,7 @@ export function generateMeasurementProblem(
         prompt = "How many cm of ribbon go once around this rectangle?";
         answer = String(perimeter);
         label = "Perimeter in cm";
-        hint =
-          "Walk every outside edge. A rectangle has two sides of each displayed length.";
+        hint = `Ribbon goes along all four sides: two sides of ${width} cm and two sides of ${height} cm.`;
         explanation = [
           `The four sides are ${width}, ${height}, ${width}, and ${height} cm.`,
           `${width} + ${height} + ${width} + ${height} = ${perimeter} cm.`,
@@ -135,8 +135,7 @@ export function generateMeasurementProblem(
         prompt = `This rectangle covers ${area} square cm. Find its missing side in cm.`;
         answer = String(height);
         label = "Missing side in cm";
-        hint =
-          "Area equals one side multiplied by the perpendicular side. Find the missing factor.";
+        hint = `Area is side × side, so ${width} × □ = ${area}. Which length times ${width} covers ${area} square cm?`;
         explanation = [
           `${width} × □ = ${area}.`,
           `${area} ÷ ${width} = ${height}, so the missing side is ${height} cm.`,
@@ -146,8 +145,7 @@ export function generateMeasurementProblem(
         prompt = `This rectangle has perimeter ${perimeter} cm. Find its missing side in cm.`;
         answer = String(height);
         label = "Missing side in cm";
-        hint =
-          "Half the perimeter is the sum of two adjacent sides. Remove the known side from that sum.";
+        hint = `Half of the ${perimeter} cm border is one width plus one height. Take ${width} away from that half.`;
         explanation = [
           `Half the border is ${perimeter} ÷ 2 = ${width + height} cm.`,
           `The missing side is ${width + height} − ${width} = ${height} cm.`,
@@ -175,8 +173,9 @@ export function generateMeasurementProblem(
                     : "Square centimeters measure area, not the length around an edge.",
             }),
       }));
-      hint =
-        "Decide whether you are measuring along a path or covering a surface. The shape of the unit matters.";
+      hint = cover
+        ? "Paper covers a flat surface, so count the unit squares that would cover it."
+        : "Ribbon runs along a path around the edge, so measure how long that path is.";
       explanation = cover
         ? [
             "A unit square has a side of 1 cm and covers 1 square cm.",
@@ -233,8 +232,8 @@ export function generateMeasurementProblem(
             }),
       }));
       hint = sameArea
-        ? "Equal covering does not guarantee equal borders. Add all four sides for each rectangle."
-        : "The same ribbon length can surround different areas. Multiply each pair of perpendicular sides.";
+        ? `Equal area does not mean equal border. Add all four sides of A (${a[0]} by ${a[1]}) and of B (${b[0]} by ${b[1]}).`
+        : `An equal border does not mean equal area. Multiply the sides of A (${a[0]} by ${a[1]}) and of B (${b[0]} by ${b[1]}).`;
       explanation = [
         sameArea
           ? `A: 2 × (${a[0]} + ${a[1]}) = ${valueA} cm. B: 2 × (${b[0]} + ${b[1]}) = ${valueB} cm.`
@@ -257,8 +256,10 @@ export function generateMeasurementProblem(
       answer = reverse ? rational(n, factor) : String(n * factor);
       label = `Length in ${to}`;
       hint = reverse
-        ? "A larger unit holds many smaller units. Divide the smaller-unit count by the number in one larger unit."
-        : "Changing to a smaller unit increases the count. Use the number of smaller units in one larger unit.";
+        ? `Every ${factor} ${small} make 1 ${large}. How many groups of ${factor} are in ${n}?`
+        : n === 1
+          ? `How many ${small} make 1 ${large}? A ${small} is much shorter, so the count is large.`
+          : `Each ${large} is ${factor} ${small}, and you have ${n} of them: ${n} groups of ${factor}.`;
       explanation = [
         `1 ${large} = ${factor} ${small}.`,
         `${n} ${reverse ? "÷" : "×"} ${factor} = ${answer}, so ${n} ${from} = ${answer} ${to}.`,
@@ -272,8 +273,7 @@ export function generateMeasurementProblem(
       prompt = `A strip is ${meters} m long, and another is ${cm} cm long. What is their total length in cm?`;
       answer = String(meters * 100 + cm);
       label = "Total length in cm";
-      hint =
-        "Rename the meters in centimeters before adding. Add quantities measured in the same unit.";
+      hint = `Rename ${meters} m in centimeters first (1 m = 100 cm). Then add the ${cm} cm.`;
       explanation = [
         `${meters} m = ${meters} × 100 cm = ${meters * 100} cm.`,
         `${meters * 100} + ${cm} = ${answer} cm.`,
@@ -293,8 +293,7 @@ export function generateMeasurementProblem(
         "Ribbon goes once around this rectangle. What is its full perimeter in cm?";
       answer = String(2 * (meters * 100 + cm));
       label = "Perimeter in cm";
-      hint =
-        "Use one unit for both dimensions, then count two sides of each length.";
+      hint = `Write ${meters} m in cm first, so both sides use one unit. Then add all four sides.`;
       explanation = [
         `${meters} m = ${meters * 100} cm.`,
         `2 × (${meters * 100} + ${cm}) = ${answer} cm.`,
@@ -348,8 +347,9 @@ export function generateMeasurementProblem(
                   "At least one positive whole-number factor pair meets both conditions.",
               }),
         });
-      hint =
-        "List every positive whole-number factor pair of the area. Check the full perimeter of each; turning a rectangle does not create a new pair.";
+      hint = existence
+        ? `List the whole-number side pairs with area ${area}: 1 by ${area}, 2 by ${area / 2}, and so on. Does any pair have a perimeter of exactly ${target} cm?`
+        : `List the whole-number side pairs with area ${area}: 1 by ${area}, 2 by ${area / 2}, and so on. Find each perimeter and keep those at most ${target} cm.`;
       explanation = [
         `All possible side pairs are ${pairs.map(([w, h]) => `${w} cm by ${h} cm`).join(", ")}.`,
         `Their perimeters are ${pairs.map(([w, h]) => 2 * (w + h)).join(", ")} cm, respectively.`,
@@ -378,8 +378,7 @@ export function generateMeasurementProblem(
                 "Use enough complete packs for A. B can supply exactly the needed length; compare total bills.",
             }),
       }));
-      hint =
-        "A cannot sell part of a pack. Round the number of packs up to cover the required length before comparing costs.";
+      hint = `A sells only whole ${size} m packs: how many packs cover ${need} m? Compare that bill with B's ${need} × ${rate} dollars.`;
       explanation = [
         `A needs ${packs} complete ${packs === 1 ? "pack" : "packs"}: ${packs} × ${size} = ${packs * size} m, costing ${a} dollars.`,
         `B supplies exactly ${need} m for ${need} × ${rate} = ${b} dollars.`,

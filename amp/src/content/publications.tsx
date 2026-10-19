@@ -12,6 +12,7 @@ import { distinctWorksheet } from "./distinct-worksheet";
 import { partWholeTemplates } from "../math/part-whole-practice";
 import { decimalTemplates } from "../math/decimal-practice";
 import { timeMoneyTemplates } from "../math/time-money-practice";
+import { attributeTemplates } from "../math/attribute-practice";
 import { combinatoricsWorksheet } from "./combinatorics-worksheets";
 import { combinatoricsTemplates } from "../math/combinatorics-practice";
 import { radicalWorksheet } from "./radical-worksheets";
@@ -47,6 +48,7 @@ const distinctWorksheetTemplates = [
   ...factArrayTemplates,
   ...decimalTemplates,
   ...timeMoneyTemplates,
+  ...attributeTemplates,
 ];
 /** Print pages use the light color roles: figures paint with role tokens. */
 let tokens: string | undefined;

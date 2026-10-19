@@ -6,6 +6,8 @@ import { inferenceLessons } from "./inference-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
+import { attributeLessons } from "./attribute-lessons";
+import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -16,6 +18,7 @@ import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import { comparisonLessons } from "./comparison-lessons";
+import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { factArrayLessons } from "./fact-arrays-lessons";
@@ -57,6 +60,12 @@ export interface Lesson {
       | "elevation-line"
       | "opposite-line"
       | "story-jumps"
+      | AttributeIllustrationKind
+      | "multiply-tens-groups"
+      | "area-model-product"
+      | "standard-algorithm-product"
+      | "partial-quotients"
+      | "partial-quotients-two-digit"
       | "rate-double-line"
       | "unit-price-tapes"
       | "ratio-table-scaling"
@@ -573,7 +582,9 @@ export const lessons: readonly Lesson[] = [
   ...partWholeLessons,
   ...decimalLessons,
   ...timeMoneyLessons,
+  ...attributeLessons,
   ...comparisonLessons,
+  ...multiplyDivideLessons,
   ...addSubtractLessons,
   ...factsLessons,
   ...factArrayLessons,

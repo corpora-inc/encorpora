@@ -9,11 +9,13 @@ import { inferenceMethods } from "./inference-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
 import { timeMoneyMethods } from "./time-money-lessons";
+import { attributeMethods } from "./attribute-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
+import { multiplyDivideMethods } from "./multiply-divide-lessons";
 import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
 import { factArrayMethods } from "./fact-arrays-lessons";
@@ -47,7 +49,9 @@ export const methods: Record<string, ProblemMethod> = {
   ...partWholeMethods,
   ...decimalMethods,
   ...timeMoneyMethods,
+  ...attributeMethods,
   ...comparisonMethods,
+  ...multiplyDivideMethods,
   ...addSubtractMethods,
   ...factsMethods,
   ...factArrayMethods,
@@ -515,7 +519,10 @@ export const methods: Record<string, ProblemMethod> = {
   // Measurement, perimeter, area
   "shifted-ruler-length": {
     goal: "Given an object on a ruler that does not start at 0, find its length.",
-    method: ["Read the mark at each end.", "Subtract: end mark − start mark."],
+    method: [
+      "Read the mark at each end.",
+      "Subtract: end mark − start mark. A strip from 3 to 8 is 5 cm long.",
+    ],
     watch: "Count the spaces between marks, not the marks.",
   },
   "fractional-ruler-length": {
@@ -525,6 +532,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the spaces from one end to the other.",
       "Length = spaces × size of one space.",
     ],
+    watch:
+      "Count spaces, not tick marks, and start from the strip's end, not from 0.",
   },
   "clock-elapsed-minutes": {
     goal: "Given a start time and an end time, find the minutes between them.",
@@ -539,43 +548,55 @@ export const methods: Record<string, ProblemMethod> = {
     goal: "Given a length in a larger unit, write it in a smaller unit.",
     terms: [["metric lengths", "1 km = 1000 m; 1 m = 100 cm; 1 cm = 10 mm."]],
     method: [
-      "Find how many small units make one large unit.",
+      "Find how many small units make one large unit: 1 m = 100 cm, 1 km = 1000 m.",
       "Multiply. A smaller unit needs a larger count.",
     ],
+    watch:
+      "Multiply when changing to a smaller unit: 3 m is 300 cm, not 3/100 cm.",
   },
   "metric-length-reverse": {
     goal: "Given a length in a smaller unit, write it in a larger unit.",
     method: [
-      "Find how many small units make one large unit.",
+      "Find how many small units make one large unit: 1 m = 100 cm, 1 km = 1000 m.",
       "Divide. A larger unit needs a smaller count.",
     ],
+    watch:
+      "Divide when changing to a larger unit: 250 cm is 2.5 m, not 25,000 m.",
   },
   "mixed-length-total": {
     goal: "Given lengths in two units, find the total in the smaller unit.",
-    method: ["Convert the larger-unit length to the smaller unit.", "Add."],
+    method: [
+      "Convert the larger-unit length to the smaller unit: 3 m = 300 cm.",
+      "Add the lengths, now in the same unit.",
+    ],
     watch: "3 m + 31 cm is 331 cm, not 34.",
   },
   "mixed-unit-border": {
     goal: "Given a rectangle with sides in two units, find its perimeter in one unit.",
     method: [
-      "Convert both sides to the same unit.",
+      "Convert both sides to the same unit: 2 m = 200 cm.",
       "Perimeter = 2 × (length + width).",
     ],
+    watch: "Convert before adding; 2 m + 50 cm is 250 cm, not 52.",
   },
   "rectangle-border-length": {
     goal: "Given a rectangle's side lengths, find its perimeter.",
     terms: [["perimeter", "The total length around a shape."]],
     method: [
       "A rectangle has two sides of each length.",
-      "Perimeter = 2 × (length + width).",
+      "Perimeter = 2 × (length + width): a 5 by 3 rectangle has 2 × 8 = 16.",
     ],
+    watch:
+      "Add all four sides; adding only the two labeled sides gives half the perimeter.",
   },
   "rectangle-missing-border-side": {
     goal: "Given a rectangle's perimeter and one side, find the other side.",
     method: [
-      "Half the perimeter is length + width.",
-      "Subtract the known side from that half.",
+      "Half the perimeter is length + width: half of 20 is 10.",
+      "Subtract the known side from that half: 10 − 6 = 4.",
     ],
+    watch:
+      "Halve the perimeter first; subtracting the known side from the whole perimeter leaves three sides.",
   },
   "rectangle-area": {
     goal: "Given a rectangle's width and height, find its area.",
@@ -590,7 +611,12 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "rectangle-missing-area-side": {
     goal: "Given a rectangle's area and one side, find the other side.",
-    method: ["Area = side × side.", "Divide the area by the known side."],
+    method: [
+      "Area = side × side, so known side × ? = area.",
+      "Divide the area by the known side: 24 ÷ 6 = 4.",
+    ],
+    watch:
+      "Divide the area by the side; subtracting it does not undo multiplication.",
   },
   "border-or-cover-unit": {
     goal: "Given a situation, choose the unit that measures it.",
@@ -599,19 +625,24 @@ export const methods: Record<string, ProblemMethod> = {
       "Covering a surface: an area unit (square cm).",
       "Filling a space: a volume unit (cubic cm).",
     ],
+    watch:
+      "Choose the unit by what is measured: a border is a length, even around a flat card.",
   },
   "same-area-border-choice": {
     goal: "Given rectangles with equal area, find which has the shorter perimeter.",
     method: [
       "Find each perimeter: 2 × (length + width).",
-      "Compare the perimeters.",
+      "Compare the perimeters; the shorter border needs less ribbon.",
     ],
     watch:
       "Equal area does not mean equal perimeter. Long, thin rectangles have longer borders.",
   },
   "same-border-area-choice": {
     goal: "Given rectangles with equal perimeter, find which covers more area.",
-    method: ["Find each area: length × width.", "Compare the areas."],
+    method: [
+      "Find each area: length × width.",
+      "Compare the areas; the larger product covers more.",
+    ],
     watch:
       "Equal perimeter does not mean equal area. Squarer shapes cover more.",
   },
@@ -622,6 +653,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the perimeter of each pair.",
       "Pick the pair that meets the perimeter condition.",
     ],
+    watch:
+      "Check both conditions for each pair; a pair with the right area can still have too long a border.",
   },
   "rectangle-existence-choice": {
     goal: "Given an area and a perimeter, decide which rectangle has both, if any.",
@@ -630,6 +663,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the perimeter of each pair.",
       "A pair with the given perimeter works; if none does, no such rectangle exists.",
     ],
+    watch:
+      "Check every factor pair before deciding no rectangle exists; 3 by 4 and 4 by 3 are the same pair.",
   },
   "whole-pack-ribbon-choice": {
     goal: "Given a length needed and two ways to buy it, find which costs less.",
@@ -1015,9 +1050,11 @@ export const methods: Record<string, ProblemMethod> = {
     goal: "Given several rules, choose the proportional one.",
     terms: [["proportional", "y = kx for a constant k: doubling x doubles y."]],
     method: [
-      "A proportional rule has no added constant.",
-      "It gives y = 0 when x = 0.",
+      "A proportional rule is y = kx: one multiplier, no added constant.",
+      "Check: it gives y = 0 when x = 0.",
     ],
+    watch:
+      "A rule with an added constant, such as y = 3x + 2, is linear but not proportional.",
   },
   // Integers, expressions, equations
   "integer-addition": {
@@ -1063,9 +1100,10 @@ export const methods: Record<string, ProblemMethod> = {
   "substitute-linear-expression": {
     goal: "Given an expression and a value of x, find the expression's value.",
     method: [
-      "Replace x with the value in parentheses, sign included.",
+      "Replace x with the value in parentheses, sign included: 3x − 4 at x = −2 is 3 × (−2) − 4.",
       "Multiply before adding.",
     ],
+    watch: "Keep the sign of the value: 3 × (−2) is −6, not 6.",
   },
   "distributive-expression-choice": {
     goal: "Given a number times a sum in parentheses, choose the equal expression.",
@@ -1073,6 +1111,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply the outside number by every term inside.",
       "Keep each sign: −2(x + 4) = −2x − 8.",
     ],
+    watch: "Multiply the constant too: 3(x + 5) is 3x + 15, not 3x + 5.",
   },
   "combine-like-coefficient": {
     goal: "Given an expression, find the coefficient of x after combining like terms.",
@@ -1081,9 +1120,11 @@ export const methods: Record<string, ProblemMethod> = {
       ["like terms", "Terms with the same variable part, like −2x and −6x."],
     ],
     method: [
-      "Add the coefficients of the x terms, with their signs.",
+      "Find the x terms; each coefficient keeps its sign: 5x − 2x has 5 and −2.",
+      "Add those coefficients: 5 + (−2) = 3.",
       "Ignore the constants.",
     ],
+    watch: "The constant is not an x term; never add it to the coefficient.",
   },
   "linear-equation": {
     goal: "Given an equation like ax + b = c, find x.",
@@ -1101,6 +1142,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Undo the added or subtracted constant on both sides.",
       "Divide both sides by the coefficient, sign included.",
     ],
+    watch:
+      "Divide by the negative coefficient, sign and all: −3x = 12 gives x = −4.",
   },
   "rational-coefficient-equation": {
     goal: "Given an equation where x is multiplied by a fraction, find x.",
@@ -1108,10 +1151,16 @@ export const methods: Record<string, ProblemMethod> = {
       "Undo the added constant on both sides.",
       "Multiply both sides by the reciprocal of the fraction.",
     ],
+    watch:
+      "Multiply by the reciprocal, not by the fraction itself: (2/3)x = 4 gives x = 6.",
   },
   "grouped-linear-equation": {
     goal: "Given an equation like a(x + b) = c, find x.",
-    method: ["Divide both sides by a.", "Undo the + b inside."],
+    method: [
+      "Divide both sides by a: 3(x + 2) = 15 becomes x + 2 = 5.",
+      "Undo the + b inside: x = 5 − 2 = 3.",
+    ],
+    watch: "Divide the whole right side by a before undoing b.",
   },
   "both-sides-linear-equation": {
     goal: "Given an equation with x on both sides, find x.",
@@ -1120,6 +1169,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Move the constants to the other side.",
       "Divide by the coefficient.",
     ],
+    watch: "Do the same step to both whole sides, and keep each term's sign.",
   },
   "check-equation-candidate": {
     goal: "Given an equation and a proposed value, decide whether it is a solution.",
@@ -1128,6 +1178,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Evaluate the right side.",
       "It is a solution only if the two sides are equal.",
     ],
+    watch:
+      "Evaluate the whole left side with the value in place; do not solve the equation instead.",
   },
   "equation-solution-count": {
     goal: "Given a linear equation, decide whether it has one, no, or infinitely many solutions.",
@@ -1184,14 +1236,22 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "unequal-step-rate": {
     goal: "Given points from a linear rule, find the rate of change.",
-    method: ["Pick two points.", "Rate = output change ÷ input change."],
+    method: [
+      "Pick two points.",
+      "Rate = output change ÷ input change: from (1, 4) to (4, 10) is 6 ÷ 3 = 2.",
+    ],
     watch:
       "The input steps may differ in size; always divide by the input change.",
   },
   "recover-linear-intercept": {
     goal: "Given the rate of a linear rule and one point, find the output at input 0.",
     terms: [["intercept b", "The output when the input is 0 in y = mx + b."]],
-    method: ["Substitute the point into y = mx + b.", "Solve for b."],
+    method: [
+      "Substitute the point into y = mx + b.",
+      "Solve for b: subtract m × x from y.",
+      "b is the output when the input is 0.",
+    ],
+    watch: "Subtract the rate times the input, not the rate alone.",
   },
   "predict-linear-output": {
     goal: "Given two points on a line, find the output at a new input.",
@@ -1199,6 +1259,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Rate = output change ÷ input change.",
       "From a known point, add rate × input change to reach the new input.",
     ],
+    watch:
+      "Multiply the rate by the input change; adding the rate once moves only one input step.",
   },
   "graph-equation-choice": {
     goal: "Given a line on a grid, choose its equation.",
@@ -1226,10 +1288,16 @@ export const methods: Record<string, ProblemMethod> = {
       "Falling: distance decreases.",
       "Level: distance stays the same.",
     ],
+    watch:
+      "The graph shows distance from home, not the path walked; a level part can still be moving.",
   },
   "shared-plan-input": {
     goal: "Given two cost rules, find the input where they cost the same.",
-    method: ["Set the two expressions equal.", "Solve for x."],
+    method: [
+      "Set the two cost expressions equal: 20 + 3x = 5x.",
+      "Collect the x terms on one side and solve: 20 = 2x, so x = 10.",
+    ],
+    watch: "Set the costs equal; do not compare the rates or the fees alone.",
   },
   "first-cheaper-whole-input": {
     goal: "Given two cost rules, find the first whole input where one is strictly cheaper.",
@@ -1237,6 +1305,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Set the costs equal and solve for the tie.",
       "Strictly cheaper starts after the tie: the next whole number above it.",
     ],
+    watch:
+      "At the tie the costs are equal, not cheaper; take the next whole number even when the tie is whole.",
   },
   "function-evaluation": {
     goal: "Given f(x) and an input, find the output.",
