@@ -55,6 +55,18 @@ export type ClockSweepAnimation = {
   minute: number;
 };
 export type AnimationModel =
+  /** a rows of b dots, built one row at a time. */
+  | { kind: "array-build"; rows: number; columns: number }
+  /** rows × columns turned a quarter turn: the fact family. */
+  | { kind: "array-turn"; rows: number; columns: number }
+  /** total counters dealt into `groups` shares, then refilled as groups of
+   * `groups` (or the reverse when `first` is "measure"). */
+  | {
+      kind: "deal";
+      total: number;
+      count: number;
+      first: "share" | "measure";
+    }
   | ShapeMorphAnimation
   | {
       kind: "plot";
@@ -247,6 +259,39 @@ export function animationModel(
     f.values.length >= 4
   )
     return { kind: "box-build", figure: f };
+  if (
+    lesson.templateId === "multiply-facts" &&
+    f?.kind === "dot-array" &&
+    f.show === "edges" &&
+    integer(f.rows!, 2, 10) &&
+    integer(f.columns!, 2, 10)
+  )
+    return { kind: "array-build", rows: f.rows!, columns: f.columns! };
+  if (
+    lesson.templateId === "divide-facts" &&
+    f?.kind === "dot-array" &&
+    (f.show === "first-column" || f.show === "first-row")
+  ) {
+    const known = (f.show === "first-column" ? f.rows : f.columns) ?? 0,
+      other = (f.total ?? 0) / known;
+    if (integer(known, 2, 10) && integer(other, 2, 10))
+      return f.show === "first-column"
+        ? { kind: "array-turn", rows: known, columns: other }
+        : { kind: "array-turn", rows: other, columns: known };
+  }
+  if (
+    lesson.templateId === "share-or-group" &&
+    f?.kind === "share-model" &&
+    integer(f.count, 2, 9) &&
+    integer(f.total / f.count, 2, 10) &&
+    f.total <= 60
+  )
+    return {
+      kind: "deal",
+      total: f.total,
+      count: f.count,
+      first: f.mode,
+    };
   if (
     lesson.templateId === "make-ten-fact" &&
     f?.kind === "ten-frame-pair" &&
@@ -789,6 +834,73 @@ export function animationFrames(model: AnimationModel) {
         title: "Draw the box",
         text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
         math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
+      },
+    ];
+  }
+  if (model.kind === "array-build") {
+    const { rows: a, columns: b } = model;
+    return [
+      {
+        title: "One row",
+        text: `One row holds ${b} dots.`,
+        math: `$${b}$`,
+      },
+      {
+        title: "Equal rows",
+        text: `Add rows of the same length until there are ${a} rows of ${b}.`,
+        math: `$${a} \\times ${b}$`,
+      },
+      {
+        title: "Count by rows",
+        text: `Each row adds ${b}: ${Array.from({ length: a }, (_, i) => b * (i + 1)).join(", ")}.`,
+        math: `$${a} \\times ${b} = ${a * b}$`,
+      },
+    ];
+  }
+  if (model.kind === "array-turn") {
+    const { rows: d, columns: q } = model,
+      n = d * q;
+    return [
+      {
+        title: "Rows of the array",
+        text: `${n} dots in ${d} equal rows of ${q}.`,
+        math: `$${d} \\times ${q} = ${n}$`,
+      },
+      {
+        title: "A quarter turn",
+        text: `Rows become columns: ${q} rows of ${d}. No dot moves in or out.`,
+        math: `$${q} \\times ${d} = ${n}$`,
+      },
+      {
+        title: "Two divisions",
+        text: `${n} in ${d} rows puts ${q} in each row; ${n} in rows of ${q} makes ${d} rows.`,
+        math: `$${n} \\div ${d} = ${q},\\quad ${n} \\div ${q} = ${d}$`,
+      },
+    ];
+  }
+  if (model.kind === "deal") {
+    const { total: n, count: k, first } = model,
+      q = n / k;
+    const share = {
+        title: `Share among ${k}`,
+        text: `Deal one counter to each of ${k} groups per round. ${q} rounds empty the pile, so each group gets ${q}.`,
+        math: `$${n} \\div ${k} = ${q}$ in each group`,
+      },
+      measure = {
+        title: `Groups of ${k}`,
+        text: `Fill one group of ${k} at a time until the pile is empty: ${q} groups.`,
+        math: `$${n} \\div ${k} = ${q}$ groups`,
+      };
+    return [
+      {
+        title: "The counters",
+        text: `${n} counters to divide ${first === "share" ? `among ${k} groups` : `into groups of ${k}`}.`,
+        math: `$${n} \\div ${k}$`,
+      },
+      first === "share" ? share : measure,
+      {
+        ...(first === "share" ? measure : share),
+        text: `${first === "share" ? `Now fill groups of ${k} instead: the same ${n} counters make ${q} groups.` : `Now deal the same ${n} counters among ${k} groups instead: ${q} in each.`} Both are ${k} × ${q} = ${n}.`,
       },
     ];
   }

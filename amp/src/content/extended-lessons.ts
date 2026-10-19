@@ -2,46 +2,6 @@ import type { Lesson } from "./lessons.js";
 /** Original introductory lessons for specific implemented facets, not whole-standard coverage. */
 export const extendedLessons: Lesson[] = [
   {
-    id: "division",
-    title: "Share equally and count groups",
-    summary: "Division reverses multiplication by finding a missing factor.",
-    templateIds: ["divide-facts"],
-    objectives: [
-      "Interpret equal sharing and equal grouping.",
-      "Check a quotient with multiplication.",
-    ],
-    sections: [
-      {
-        title: "Two meanings",
-        paragraphs: [
-          "Sharing twenty-four counters equally among six people asks how many each person receives. Making groups of six from twenty-four counters asks how many groups you can make. Both calculations are 24 ÷ 6.",
-          "Equal sharing requires equal group sizes. Distribute one counter at a time or arrange an array to keep track.",
-        ],
-      },
-      {
-        title: "Use the inverse",
-        paragraphs: [
-          "Because 6 × 4 = 24, dividing twenty-four by six gives four. Multiplication checks that every object is accounted for.",
-          "The practice here uses exact whole-number quotients. Other division situations can produce remainders or fractional answers.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is 24 ÷ 6?",
-      steps: [
-        "Find the missing factor in 6 × ? = 24.",
-        "6 × 4 = 24, so the quotient is 4.",
-      ],
-      answer: "4",
-    },
-    pitfalls: [
-      "Dividing by six is not the same as subtracting six once.",
-      "Keep the number of groups distinct from the size of each group.",
-    ],
-    parentGuide:
-      "Arrange twenty-four counters into six equal rows, then describe both the number of rows and the number in each row.",
-  },
-  {
     id: "digit-value",
     title: "A digit gets its value from its place",
     summary:
