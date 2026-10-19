@@ -46,6 +46,7 @@ export type SemanticFigure =
       spread: "circles" | "squares" | "none";
     }
   | { kind: "base-ten-pair"; values: [number, number] }
+  | { kind: "ten-frame-pair"; first: number; second: number }
   | {
       kind: "coordinate-plane";
       xMin: number;
@@ -213,6 +214,13 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         (f) => f.spread === "none" || f[f.spread] >= 2,
         "A spread row needs at least two counters",
       ),
+    z
+      .object({
+        kind: z.literal("ten-frame-pair"),
+        first: z.number().int().min(1).max(10),
+        second: z.number().int().min(1).max(10),
+      })
+      .strict(),
     z
       .object({
         kind: z.literal("base-ten-pair"),

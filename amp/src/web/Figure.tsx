@@ -4,6 +4,7 @@ import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
+import { FactsFigure } from "./FactsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
 import type { SemanticFigure } from "../math/contracts";
@@ -31,6 +32,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "ten-frame":
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "ten-frame-pair":
+      return <FactsFigure figure={figure} />;
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
