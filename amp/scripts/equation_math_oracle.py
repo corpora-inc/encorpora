@@ -197,7 +197,7 @@ ONE_STEP_STORIES = [
     (r'Rain raised the water in a barrel by (\d+) centimeters\. The water is now (\d+) centimeters deep\. Let (d) be the depth before the rain, in centimeters\.', 'add'),
     (r'A bakery sold (\d+) muffins in the morning and had (\d+) muffins left\. Let (m) be the number of muffins the bakery had at the start\.', 'subtract'),
     (r'A (\d+)-centimeter piece was cut from a ribbon, leaving (\d+) centimeters\. Let (r) be the ribbon\'s original length, in centimeters\.', 'subtract'),
-    (r'Museum tickets cost \$(\d+) each\. A class paid \$(\d+) for tickets\. Let (t) be the number of tickets the class bought\.', 'groups'),
+    (r'Museum tickets cost (\d+) dollars each\. A class paid (\d+) dollars for tickets\. Let (t) be the number of tickets the class bought\.', 'groups'),
     (r'A hall has (\d+) chairs set out in rows of (\d+)\. Let (r) be the number of rows\.', 'rows'),
     (r'A box of pencils is shared equally among (\d+) students, and each student gets (\d+) pencils\. Let (n) be the number of pencils in the box\.', 'share'),
     (r'A rope is cut into (\d+) pieces of equal length\. Each piece is (\d+) meters long\. Let (L) be the length of the rope, in meters\.', 'share'),
@@ -232,13 +232,13 @@ def dollars(text):
 
 
 TWO_STEP_STORIES = {
-    'gym': r'A gym charges a \$(\d+) sign-up fee plus \$(\d+) per month\. Ravi has paid \$(\d+) in all\.',
-    'savings': r'Mia has \$(\d+) saved and adds \$(\d+) each week\. She wants to have \$(\d+)\.',
-    'taxi': r'A taxi ride costs \$(\d+(?:\.\d\d)?) to start plus \$(\d+(?:\.\d\d)?) for each mile\. Ana\'s ride cost \$(\d+(?:\.\d\d)?)\.',
+    'gym': r'A gym charges a (\d+)-dollar sign-up fee plus (\d+) dollars per month\. Ravi has paid (\d+) dollars in all\.',
+    'savings': r'Mia has (\d+) dollars saved and adds (\d+) dollars each week\. She wants to have (\d+) dollars\.',
+    'taxi': r'A taxi ride costs (\d+(?:\.\d\d)?) dollars to start plus (\d+(?:\.\d\d)?) dollars for each mile\. Ana\'s ride cost (\d+(?:\.\d\d)?) dollars\.',
     'tank': r'A tank holds (\d+) liters of water\. It drains (\d+) liters each minute until it holds (\d+) liters\.',
-    'tickets': r'Each of (\d+) friends buys one movie ticket and one \$(\d+) snack\. Together they spend \$(\d+)\.',
+    'tickets': r'Each of (\d+) friends buys one movie ticket and one (\d+)-dollar snack\. Together they spend (\d+) dollars\.',
     'perimeter': r'A rectangle has a perimeter of (\d+) centimeters\. Its length is (\d+) centimeters\.',
-    'sale': r'In a sale, every shirt is \$(\d+) off its regular price\. Jo buys (\d+) shirts at the sale price and pays \$(\d+)\.',
+    'sale': r'In a sale, every shirt is (\d+) dollars off its regular price\. Jo buys (\d+) shirts at the sale price and pays (\d+) dollars\.',
 }
 TWO_STEP_QUESTIONS = {
     'gym': ('m', 'Let m be the number of months Ravi has paid for.', 'For how many months has Ravi paid?'),
@@ -275,7 +275,7 @@ def two_step_story(prompt):
 # --------------------------------------------------------------- inequalities
 CONDITIONS = [
     (r'A ride admits only riders taller than (\d+) inches\. Let (h) be the height of a rider the ride admits, in inches\.', '>'),
-    (r'An order ships free only when its total is more than \$(\d+)\. Let (t) be the total of an order that ships free, in dollars\.', '>'),
+    (r'An order ships free only when its total is more than (\d+) dollars\. Let (t) be the total of an order that ships free, in dollars\.', '>'),
     (r'All afternoon the temperature stayed above ([−-]?\d+) °C\. Let (t) be an afternoon temperature, in degrees Celsius\.', '>'),
     (r'A bridge allows only trucks that weigh less than (\d+) tons\. Let (w) be the weight of a truck the bridge allows, in tons\.', '<'),
     (r'A freezer must stay colder than ([−-]?\d+) °C\. Let (t) be an allowed freezer temperature, in degrees Celsius\.', '<'),
@@ -464,7 +464,7 @@ def solve_two_step_story(public):
     key, form, (v, define, question), unknown, rest = two_step_story(public['prompt'])
     if public['templateId'] == 'two-step-word-problem':
         if question is None:
-            question = {'savings': r'After how many weeks will Mia have exactly \$\d+\?',
+            question = {'savings': r'After how many weeks will Mia have exactly \d+ dollars\?',
                         'tank': r'After how many minutes does the tank hold \d+ liters\?'}[key]
             require(re.fullmatch(question, rest) is not None, 'Unexpected question')
         else:
@@ -535,8 +535,8 @@ def review_equation_fixtures():
                                   figure={'kind': 'balance-scale', 'groups': 3, 'blocks': 1, 'units': 3, 'right': 15})) == 2
     story = 'A box of pencils is shared equally among 6 students, and each student gets 24 pencils. Let n be the number of pencils in the box. Which equation represents the situation, and what is its solution?'
     assert solve_equations(public('one-step-equation-story', story, choices('6n = 24; n = 4', 'n ÷ 6 = 24; n = 4', 'n ÷ 6 = 24; n = 144', '6n = 24; n = 144'))) == 'option-c'
-    assert solve_equations(public('two-step-word-problem', 'A taxi ride costs $3.50 to start plus $1.75 for each mile. Ana\'s ride cost $22.75. How many miles did Ana ride?')) == 11
-    model = 'Each of 5 friends buys one movie ticket and one $8 snack. Together they spend $95. Let c be the cost of one ticket, in dollars. Which equation can be used to find c?'
+    assert solve_equations(public('two-step-word-problem', 'A taxi ride costs 3.50 dollars to start plus 1.75 dollars for each mile. Ana\'s ride cost 22.75 dollars. How many miles did Ana ride?')) == 11
+    model = 'Each of 5 friends buys one movie ticket and one 8-dollar snack. Together they spend 95 dollars. Let c be the cost of one ticket, in dollars. Which equation can be used to find c?'
     assert solve_equations(public('two-step-equation-model', model, choices('5c + 8 = 95', '5(c − 8) = 95', '5(c + 8) = 95', '8(c + 5) = 95'))) == 'option-c'
     ctx = 'An elevator may carry at most 11 people. Let n be the number of people on the elevator during a trip. Which inequality describes all possible values of n?'
     assert solve_equations(public('inequality-from-context', ctx, choices('n ≥ 11', 'n > 11', 'n ≤ 11', 'n < 11'))) == 'option-c'

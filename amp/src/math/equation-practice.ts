@@ -196,7 +196,7 @@ const cents = (c: number) =>
   c % 100 === 0
     ? String(c / 100)
     : `${Math.floor(c / 100)}.${String(c % 100).padStart(2, "0")}`;
-const dollars = (c: number) => `$${cents(c)}`;
+const dollars = (c: number) => `${cents(c)} dollars`;
 
 function random(id: string, seed: string): Random {
   let counter = 0;
@@ -398,7 +398,7 @@ const oneStepStories: Story[] = [
     form: "mul",
     v: "t",
     text: (p, total) =>
-      `Museum tickets cost $${p} each. A class paid $${total} for tickets. Let t be the number of tickets the class bought.`,
+      `Museum tickets cost ${p} dollars each. A class paid ${total} dollars for tickets. Let t be the number of tickets the class bought.`,
   },
   {
     key: "chairs",
@@ -739,7 +739,7 @@ function twoStepStory(r: Random): TwoStepStory {
       key: "gym",
       model: "plain",
       v: "m",
-      story: `A gym charges a $${fee} sign-up fee plus $${rate} per month. Ravi has paid $${rate * x + fee} in all.`,
+      story: `A gym charges a ${fee}-dollar sign-up fee plus ${rate} dollars per month. Ravi has paid ${rate * x + fee} dollars in all.`,
       define: "Let m be the number of months Ravi has paid for.",
       question: "For how many months has Ravi paid?",
       label: "Number of months",
@@ -748,10 +748,10 @@ function twoStepStory(r: Random): TwoStepStory {
       c: q(fee),
       r: q(rate * x + fee),
       x,
-      relation: `The total paid is $${rate} for each of m months plus the $${fee} fee`,
+      relation: `The total paid is ${rate} dollars for each of m months plus the ${fee}-dollar fee`,
       mode: "whole",
-      pMeaning: `$${rate} is paid once for each month`,
-      cMeaning: `the $${fee} fee is paid once`,
+      pMeaning: `${rate} dollars is paid once for each month`,
+      cMeaning: `the ${fee}-dollar fee is paid once`,
     };
   }
   if (kind === 1) {
@@ -762,19 +762,19 @@ function twoStepStory(r: Random): TwoStepStory {
       key: "savings",
       model: "plain",
       v: "w",
-      story: `Mia has $${saved} saved and adds $${rate} each week. She wants to have $${saved + rate * x}.`,
+      story: `Mia has ${saved} dollars saved and adds ${rate} dollars each week. She wants to have ${saved + rate * x} dollars.`,
       define: "Let w be the number of weeks until Mia has that amount.",
-      question: `After how many weeks will Mia have exactly $${saved + rate * x}?`,
+      question: `After how many weeks will Mia have exactly ${saved + rate * x} dollars?`,
       label: "Number of weeks",
       unit: "weeks",
       p: q(rate),
       c: q(saved),
       r: q(saved + rate * x),
       x,
-      relation: `The amount saved is $${rate} for each of w weeks plus the $${saved} already saved`,
+      relation: `The amount saved is ${rate} dollars for each of w weeks plus the ${saved} dollars already saved`,
       mode: "whole",
-      pMeaning: `$${rate} is added once for each week`,
-      cMeaning: `the $${saved} is already saved at the start`,
+      pMeaning: `${rate} dollars is added once for each week`,
+      cMeaning: `the ${saved} dollars are already saved at the start`,
     };
   }
   if (kind === 2) {
@@ -795,10 +795,10 @@ function twoStepStory(r: Random): TwoStepStory {
       c: q(start, 100),
       r: q(total, 100),
       x,
-      relation: `The cost is ${dollars(rate)} for each of d miles plus the ${dollars(start)} starting charge`,
+      relation: `The cost is ${dollars(rate)} for each of d miles plus the starting charge of ${dollars(start)}`,
       mode: "decimal",
       pMeaning: `${dollars(rate)} is charged once for each mile`,
-      cMeaning: `the ${dollars(start)} starting charge is paid once`,
+      cMeaning: `the starting charge of ${dollars(start)} is paid once`,
     };
   }
   if (kind === 3) {
@@ -833,7 +833,7 @@ function twoStepStory(r: Random): TwoStepStory {
       key: "tickets",
       model: "grouped",
       v: "c",
-      story: `Each of ${friends} friends buys one movie ticket and one $${snack} snack. Together they spend $${friends * (x + snack)}.`,
+      story: `Each of ${friends} friends buys one movie ticket and one ${snack}-dollar snack. Together they spend ${friends * (x + snack)} dollars.`,
       define: "Let c be the cost of one ticket, in dollars.",
       question: "What does one ticket cost, in dollars?",
       label: "Cost of one ticket, in dollars",
@@ -845,7 +845,7 @@ function twoStepStory(r: Random): TwoStepStory {
       relation: `Each friend spends c + ${snack} dollars, and ${friends} friends spend ${friends} times that amount`,
       mode: "whole",
       pMeaning: `each of the ${friends} friends pays for a ticket and a snack`,
-      cMeaning: `each friend's snack costs $${snack}`,
+      cMeaning: `each friend's snack costs ${snack} dollars`,
     };
   }
   if (kind === 5) {
@@ -880,7 +880,7 @@ function twoStepStory(r: Random): TwoStepStory {
     key: "sale",
     model: "grouped-minus",
     v: "s",
-    story: `In a sale, every shirt is $${off} off its regular price. Jo buys ${shirts} shirts at the sale price and pays $${shirts * (x - off)}.`,
+    story: `In a sale, every shirt is ${off} dollars off its regular price. Jo buys ${shirts} shirts at the sale price and pays ${shirts * (x - off)} dollars.`,
     define: "Let s be the regular price of one shirt, in dollars.",
     question: "What is the regular price of one shirt, in dollars?",
     label: "Regular price, in dollars",
@@ -892,7 +892,7 @@ function twoStepStory(r: Random): TwoStepStory {
     relation: `Each shirt costs s − ${off} dollars at the sale price, and ${shirts} shirts cost ${shirts} times that amount`,
     mode: "whole",
     pMeaning: `Jo pays the sale price once for each of ${shirts} shirts`,
-    cMeaning: `each shirt's price is reduced by $${off}`,
+    cMeaning: `each shirt's price is reduced by ${off} dollars`,
   };
 }
 
@@ -1104,13 +1104,13 @@ const conditions: Condition[] = [
   },
   {
     key: "shipping",
-    quote: (c) => `more than $${c}`,
+    quote: (c) => `more than ${c} dollars`,
     op: ">",
     v: "t",
     low: 20,
     high: 60,
     text: (c) =>
-      `An order ships free only when its total is more than $${c}. Let t be the total of an order that ships free, in dollars.`,
+      `An order ships free only when its total is more than ${c} dollars. Let t be the total of an order that ships free, in dollars.`,
   },
   {
     key: "warm",

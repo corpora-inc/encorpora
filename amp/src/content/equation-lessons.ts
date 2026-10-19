@@ -110,11 +110,11 @@ export const equationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Museum tickets cost $9 each. A class paid $117 for tickets. Let t be the number of tickets the class bought. Which equation represents the situation, and what is its solution?",
+        "Museum tickets cost 9 dollars each. A class paid 117 dollars for tickets. Let t be the number of tickets the class bought. Which equation represents the situation, and what is its solution?",
       steps: [
-        "Each ticket costs $9, so t tickets cost 9 × t dollars: 9t = 117.",
+        "Each ticket costs 9 dollars, so t tickets cost 9 × t dollars: 9t = 117.",
         "Division undoes multiplication, so divide both sides by 9: t = 117 ÷ 9 = 13.",
-        "Check in the story: 13 tickets at $9 each cost 13 × 9 = 117 dollars.",
+        "Check in the story: 13 tickets at 9 dollars each cost 13 × 9 = 117 dollars.",
       ],
       answer: "9t = 117; t = 13",
     },
@@ -183,7 +183,7 @@ export const equationLessons: Lesson[] = [
     templateIds: ["two-step-equation"],
     objectives: [
       "Explain why a two-step equation is solved by undoing its operations in reverse order.",
-      "Solve px + q = r and p(x + q) = r with positive and negative integers and decimals, and check the solution.",
+      "Solve $px + q = r$ and p(x + q) = r with positive and negative integers and decimals, and check the solution.",
     ],
     sections: [
       {
@@ -230,10 +230,10 @@ export const equationLessons: Lesson[] = [
     id: "two-step-word-problem",
     title: "Solve two-step stories with an equation",
     summary:
-      "Name the unknown, write px + q = r or p(x + q) = r, and solve by undoing operations in reverse order.",
+      "Name the unknown, write $px + q = r$ or p(x + q) = r, and solve by undoing operations in reverse order.",
     templateIds: ["two-step-word-problem"],
     objectives: [
-      "Write px + q = r for a story with a repeated amount and a one-time amount, and p(x + q) = r for equal groups that each contain the unknown.",
+      "Write $px + q = r$ for a story with a repeated amount and a one-time amount, and p(x + q) = r for equal groups that each contain the unknown.",
       "Solve the equation and check the answer in the story.",
     ],
     sections: [
@@ -241,7 +241,7 @@ export const equationLessons: Lesson[] = [
         title: "Two shapes of story",
         paragraphs: [
           "This lesson uses arithmetic with whole numbers and decimals. A variable is a letter for the unknown quantity; define it by saying what it counts and in what unit. An equation states that two expressions are equal, and 12m means 12 × m.",
-          "In px + q = r, an amount p repeats once for every unit of x, and an amount q happens once. A $25 sign-up fee plus $12 per month for m months costs 12m + 25 dollars. In p(x + q) = r there are p equal groups, and each group contains x and q. Four friends who each buy a ticket costing c dollars and a $3 snack spend 4(c + 3) dollars.",
+          "In $px + q = r$, an amount p repeats once for every unit of x, and an amount q happens once. A 25-dollar sign-up fee plus 12 dollars per month for m months costs 12m + 25 dollars. In p(x + q) = r there are p equal groups, and each group contains x and q. Four friends who each buy a ticket costing c dollars and a 3-dollar snack spend 4(c + 3) dollars.",
           "The tape diagrams show the difference. 3x + 6 = 21 has three copies of x and one 6. 3(c + 2) = 21 has three copies of the whole group c + 2.",
         ],
         illustration: "two-step-tape",
@@ -250,15 +250,15 @@ export const equationLessons: Lesson[] = [
         title: "Solve and check",
         paragraphs: [
           "Undo the last operation first, doing the same thing to both sides. For 12m + 25 = 121, subtract the one-time 25: 12m = 121 − 25 = 96, so m = 96 ÷ 12 = 8. For 4(c + 3) = 52, divide by the 4 groups: c + 3 = 52 ÷ 4 = 13, so c = 13 − 3 = 10.",
-          "Check the answer in the story's own words: 8 months at $12 cost 12 × 8 = 96 dollars, and with the $25 fee that is 96 + 25 = 121 dollars. The answer should also make sense; a number of months is a whole number.",
+          "Check the answer in the story's own words: 8 months at 12 dollars cost 12 × 8 = 96 dollars, and with the 25-dollar fee that is 96 + 25 = 121 dollars. The answer should also make sense; a number of months is a whole number.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A gym charges a $30 sign-up fee plus $14 per month. Ravi has paid $142 in all. For how many months has Ravi paid?",
+        "A gym charges a 30-dollar sign-up fee plus 14 dollars per month. Ravi has paid 142 dollars in all. For how many months has Ravi paid?",
       steps: [
-        "Let m be the number of months Ravi has paid for. The total paid is $14 for each of m months plus the $30 fee: 14m + 30 = 142.",
+        "Let m be the number of months Ravi has paid for. The total paid is 14 dollars for each of m months plus the 30-dollar fee: 14m + 30 = 142.",
         "Subtract 30 from both sides: 14m = 142 − 30 = 112.",
         "Divide both sides by 14: m = 112 ÷ 14 = 8.",
         "Check: 14 × 8 + 30 = 112 + 30 = 142.",
@@ -282,21 +282,21 @@ export const equationLessons: Lesson[] = [
     templateIds: ["two-step-equation-model"],
     objectives: [
       "Distinguish a repeated amount, which multiplies the unknown, from a one-time amount, which is added or subtracted once.",
-      "Distinguish px + q = r from p(x + q) = r, and test a candidate equation against the story.",
+      "Distinguish $px + q = r$ from p(x + q) = r, and test a candidate equation against the story.",
     ],
     sections: [
       {
         title: "Which amount repeats?",
         paragraphs: [
           "This lesson uses whole numbers and decimals. A variable such as d stands for the unknown quantity the story asks about, and 2.25d means 2.25 × d. An equation represents a story when its two sides are equal for the story's true quantity and every part of the story appears in it exactly once.",
-          "Ask what happens once for each unit of the unknown. A taxi that charges $2.25 for each mile charges 2.25d dollars for d miles. The $3.50 starting charge happens once, so it is added once: for a $32.75 ride, 2.25d + 3.5 = 32.75. Swapping the amounts, 3.5d + 2.25, would charge $3.50 a mile.",
+          "Ask what happens once for each unit of the unknown. A taxi that charges 2.25 dollars for each mile charges 2.25d dollars for d miles. The starting charge of 3.50 dollars happens once, so it is added once: for a ride that costs 32.75 dollars, 2.25d + 3.5 = 32.75. Swapping the amounts, 3.5d + 2.25, would charge 3.50 dollars a mile.",
           "Ask whether an amount is added or taken away. A tank that starts with 80 liters and drains 6 liters each minute holds 80 − 6t liters after t minutes.",
         ],
       },
       {
         title: "Groups that contain the unknown",
         paragraphs: [
-          "When each of p equal groups contains the unknown and an extra amount, the whole group is multiplied. Five friends who each buy a ticket costing c dollars and an $8 snack spend 5(c + 8) dollars; 5c + 8 would count only one snack.",
+          "When each of p equal groups contains the unknown and an extra amount, the whole group is multiplied. Five friends who each buy a ticket costing c dollars and an 8-dollar snack spend 5(c + 8) dollars; 5c + 8 would count only one snack.",
           "A rectangle's perimeter uses the length and the width twice each, so with length 16 and width w the perimeter is 2(w + 16). In the tape diagrams, 3x + 6 shows one 6 and 3(c + 2) shows a 2 in every group.",
         ],
         illustration: "two-step-tape",
@@ -304,11 +304,11 @@ export const equationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Each of 5 friends buys one movie ticket and one $8 snack. Together they spend $95. Let c be the cost of one ticket, in dollars. Which equation can be used to find c?",
+        "Each of 5 friends buys one movie ticket and one 8-dollar snack. Together they spend 95 dollars. Let c be the cost of one ticket, in dollars. Which equation can be used to find c?",
       steps: [
         "Each friend spends c + 8 dollars: one ticket and one snack.",
         "There are 5 friends, so the total is 5 times that amount: 5(c + 8) = 95.",
-        "Check in the story: 95 ÷ 5 = 19 and 19 − 8 = 11. Five tickets at $11 and five snacks at $8 cost 55 + 40 = 95 dollars.",
+        "Check in the story: 95 ÷ 5 = 19 and 19 − 8 = 11. Five tickets at 11 dollars and five snacks at 8 dollars cost 55 + 40 = 95 dollars.",
       ],
       answer: "5(c + 8) = 95",
     },
@@ -328,7 +328,7 @@ export const equationLessons: Lesson[] = [
     templateIds: ["balance-two-step"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Write px + q = r or p(x + q) = r for a level balance.",
+      "Write $px + q = r$ or p(x + q) = r for a level balance.",
       "Solve it by changing both pans in the same way, choosing the order that keeps every step exact.",
     ],
     sections: [
@@ -588,7 +588,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
     watch: "Change both pans in the same way, never one pan alone.",
   },
   "two-step-equation": {
-    goal: "Solve px + q = r or p(x + q) = r for x.",
+    goal: "Solve $px + q = r$ or p(x + q) = r for x.",
     terms: [
       [
         "coefficient",
@@ -600,7 +600,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
       "Undo the remaining operation on both sides.",
       "Check by substituting into the original equation.",
     ],
-    watch: "For px + q, undo the + q first; for p(x + q), divide by p first.",
+    watch: "For $px + q$, undo the + q first; for p(x + q), divide by p first.",
   },
   "two-step-word-problem": {
     goal: "Write and solve a two-step equation for a story.",
@@ -612,7 +612,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Name the unknown with a letter and its unit.",
-      "Write px + q = r, or p(x + q) = r when every group contains the unknown and the extra amount.",
+      "Write $px + q = r$, or p(x + q) = r when every group contains the unknown and the extra amount.",
       "Undo the operations in reverse order and check the answer in the story.",
     ],
     watch:
@@ -628,7 +628,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
       "Decide whether the extra amount occurs once or once in every group.",
       "Choose the equation that uses every part of the story exactly once.",
     ],
-    watch: "p(x + q) counts q in every group; px + q counts it once.",
+    watch: "p(x + q) counts q in every group; $px + q$ counts it once.",
   },
   "balance-two-step": {
     goal: "Find the weight of one x block on a level balance with two steps.",
@@ -639,7 +639,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write px + q = r, or p(x + q) = r when the blocks are in bags.",
+      "Write $px + q = r$, or p(x + q) = r when the blocks are in bags.",
       "Without bags, remove the loose cubes from both pans, then split into equal groups.",
       "With bags, split into one group per bag, then remove the bag's cubes.",
     ],
@@ -707,7 +707,7 @@ export const equationPrinciples: Record<string, string> = {
   "two-step-equation":
     "Operations applied to x are undone in reverse order, and each step done to both sides keeps the equation's solution unchanged.",
   "two-step-word-problem":
-    "A repeated amount multiplies the unknown and a one-time amount is added once: px + q = r. Equal groups that each contain the unknown give p(x + q) = r.",
+    "A repeated amount multiplies the unknown and a one-time amount is added once: $px + q = r$. Equal groups that each contain the unknown give p(x + q) = r.",
   "two-step-equation-model":
     "An equation represents a story when each quantity appears with the role it has in the story: repeated amounts multiply, one-time amounts add or subtract once.",
   "balance-two-step":
