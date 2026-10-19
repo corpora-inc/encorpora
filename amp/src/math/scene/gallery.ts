@@ -17,6 +17,7 @@ import {
   lineTable,
   tenFrame,
   tree,
+  triangle,
   venn,
 } from "./author";
 import type { Scene } from "./spec";
@@ -625,6 +626,63 @@ export const galleryCases: GalleryCase[] = [
         align: ["center", "right", "left", "center", "right"],
       },
     ).scene({ title: "Adding the equations" }),
+  },
+  {
+    name: "Triangle: right angle, sides and the reference angle",
+    scene: triangle([
+      [0, 0],
+      [4, 0],
+      [4, 3],
+    ])
+      .names("A", "C", "B")
+      .side(0, { label: 4 })
+      .side(1, { label: 3 })
+      .side(2, { label: null })
+      .angle(0, { mark: "arc", label: "θ" })
+      .angle(1, { mark: "right" })
+      .scene({ title: "Right triangle ABC" }),
+  },
+  {
+    name: "Triangle: similar pair with matching marks",
+    scene: scene(
+      triangle([
+        [0, 0],
+        [3, 0],
+        [1, 2],
+      ])
+        .names("A", "B", "C")
+        .side(0, { label: 6 })
+        .side(1, { label: 5 })
+        .angle(0, { mark: "arc" })
+        .angle(1, { mark: "arc", arcs: 2 })
+        .id("t1"),
+      triangle([
+        [5, 0],
+        [9.5, 0],
+        [6.5, 3],
+      ])
+        .names("D", "E", "F")
+        .side(0, { label: 9 })
+        .side(1, { label: null })
+        .angle(0, { mark: "arc" })
+        .angle(1, { mark: "arc", arcs: 2 })
+        .id("t2"),
+    ).build({ title: "Triangles ABC and DEF" }),
+  },
+  {
+    name: "Triangle: 30-60-90 with congruent ticks",
+    scene: triangle([
+      [0, 0],
+      [Math.sqrt(3) * 2, 0],
+      [0, 2],
+    ])
+      .side(0, { label: "2√3" })
+      .side(1, { label: 4 })
+      .side(2, { label: 2, ticks: 1 })
+      .angle(0, { mark: "right" })
+      .angle(1, { mark: "arc", label: "30°" })
+      .angle(2, { mark: "arc", arcs: 2, label: "60°" })
+      .scene(),
   },
 ];
 
