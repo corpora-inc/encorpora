@@ -496,7 +496,7 @@ export const areaVolumeLessons: Lesson[] = [
       answer: "288",
     },
     pitfalls: [
-      "Do not forget the 1/3 for a cone: πr²h is the cylinder.",
+      "Do not forget the one third for a cone: πr²h is the whole cylinder.",
       "A sphere uses r³, not r²; halve a diameter before cubing.",
       "A hemisphere is half a sphere: 2/3 πr³.",
     ],

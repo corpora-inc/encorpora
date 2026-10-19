@@ -318,15 +318,15 @@ function obliqueBox(
   const side = [P(L, 0, 0), P(L, 0, D), P(L, H, D), P(L, H, 0)];
   const lines: React.ReactNode[] = [];
   if (e)
-    for (const [count, at] of [
-      [L / e, (t: number) => [P(t, 0, 0), P(t, H, 0), P(t, H, D)]],
-      [H / e, (t: number) => [P(0, t, 0), P(L, t, 0), P(L, t, D)]],
-      [D / e, (t: number) => [P(0, H, t), P(L, H, t), P(L, 0, t)]],
+    for (const [axis, count, at] of [
+      ["x", L / e, (t: number) => [P(t, 0, 0), P(t, H, 0), P(t, H, D)]],
+      ["y", H / e, (t: number) => [P(0, t, 0), P(L, t, 0), P(L, t, D)]],
+      ["z", D / e, (t: number) => [P(0, H, t), P(L, H, t), P(L, 0, t)]],
     ] as const)
       for (let i = 1; i < Math.round(count); i++)
         lines.push(
           <path
-            key={`${key}${count}-${i}`}
+            key={`${key}${axis}${i}`}
             d={d(at(i * e) as Pt[], false)}
             fill="none"
             stroke={avColor.line}
@@ -588,7 +588,7 @@ function PrismUnrolled() {
   return (
     <Frame
       kind="av-prism-unrolled"
-      viewBox="0 0 420 220"
+      viewBox="0 0 420 236"
       title="The side faces unroll into one rectangle"
       description="The six side faces of an L-shaped prism 4 units deep, laid end to end: widths 8, 2, 5, 4, 3 and 6, one for each edge of the L. Together they form a rectangle 28 long, the perimeter, and 4 wide, area 112."
       caption="One side face for each edge of the L: 8 + 2 + 5 + 4 + 3 + 6 = 28, the perimeter. Laid end to end they make a rectangle 28 × 4 = 112. Add the front and back faces, 2 × 28 = 56, for a surface area of 168."

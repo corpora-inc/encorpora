@@ -205,16 +205,26 @@ function triangleCase(r: Random): Case {
   let sides: (number | null)[];
   if (shape === "acute") {
     if (showSides) {
-      h = pick(r, tripleHeights);
+      // Heights with a leg shorter than themselves admit an acute apex.
+      h = pick(
+        r,
+        tripleHeights.filter((t) => legsFor(t).some((l) => l < t)),
+      );
       const legs = legsFor(h).filter((l) => l <= 16);
-      const l1 = pick(r, legs),
-        l2 = pick(r, legs);
+      // Every angle acute: the apex angle is acute exactly when l1 × l2 < h².
+      let l1: number, l2: number;
+      do [l1, l2] = [pick(r, legs), pick(r, legs)];
+      while (l1 * l2 >= h * h);
       [b, x] = [l1 + l2, l1];
       sides = [b, hypotenuse(l2, h), hypotenuse(l1, h)];
     } else {
-      b = r(4, 18);
-      h = r(3, 14);
-      x = r(1, b - 1);
+      // Every angle acute: the foot of the height splits the base into x and
+      // b − x with x(b − x) < h², so the apex angle is acute too.
+      do {
+        b = r(4, 18);
+        h = r(3, 14);
+        x = r(1, b - 1);
+      } while (x * (b - x) >= h * h);
       sides = [b, null, null];
     }
   } else if (shape === "right") {

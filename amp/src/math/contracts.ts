@@ -149,6 +149,8 @@ export type SemanticFigure =
   | { kind: "rectangle"; width: number; height: number; unit: "cm" }
   | { kind: "right-triangle"; a: number; b: number; unit: "cm" }
   | { kind: "dataset"; values: number[] }
+  | CoordinateGeometryFigure
+  | SimilarTrianglesFigure
   | {
       /** Left pan: `groups` identical bags of `blocks` x blocks and `units`
        * one-unit cubes (a single group needs no bag). Right pan: `right` cubes. */
@@ -170,11 +172,48 @@ export type SemanticFigure =
         included: boolean;
       }[];
     };
+/** A motion of the plane, stated in the prompt; every center is the origin. */
+export type PlaneMotion =
+  | { kind: "translate"; dx: number; dy: number }
+  | { kind: "reflect"; axis: "x" | "y" }
+  | { kind: "rotate"; degrees: 90 | 180 | 270 }
+  | { kind: "dilate"; numerator: number; denominator: number };
+/** Lattice shapes on a grid with equal unit scales on both axes. A "given"
+ * shape is the pre-image; an "image" shape is drawn dashed. */
+export interface CoordinateGeometryFigure {
+  kind: "coordinate-geometry";
+  xMin: number;
+  xMax: number;
+  yMin: number;
+  yMax: number;
+  shapes: {
+    role: "given" | "image";
+    closed: boolean;
+    vertices: { x: number; y: number; label: string }[];
+  }[];
+  /** A given of the prompt (never the asked-for motion). */
+  motion?: PlaneMotion;
+  /** Draw rays from the origin through corresponding vertices. */
+  rays?: boolean;
+}
+/** Two similar triangles drawn to their true shape and relative size. Each
+ * side list is [first–second, second–third, third–first] by vertex order;
+ * null hides a side and "?" marks the asked-for side. Corresponding angles
+ * carry the same number of arcs. */
+export interface SimilarTrianglesFigure {
+  kind: "similar-triangles";
+  unit: "cm" | "m" | "in" | "ft";
+  triangles: {
+    vertices: [string, string, string];
+    sides: [number | "?" | null, number | "?" | null, number | "?" | null];
+  }[];
+}
 /** A client lists the figure families it can draw; a template that needs
  * another family is never sent to it. */
 export const figureCapabilities = [
   "measurement-models-v1",
   "data-displays-v1",
+  "geometry-figures-v1",
   "function-displays-v1",
   "volume-coordinate-figures-v1",
   "shape-figures-v1",
@@ -302,6 +341,116 @@ export const functionDisplaySchema = z
     (f) => f.table || f.graph,
     "A function display needs a table or a graph",
   );
+const gridInteger = z.number().int().min(-20).max(20);
+const vertexLabel = z.string().regex(/^[A-Z]′?$/);
+const coordinateGeometrySchema = z
+  .object({
+    kind: z.literal("coordinate-geometry"),
+    xMin: gridInteger,
+    xMax: gridInteger,
+    yMin: gridInteger,
+    yMax: gridInteger,
+    shapes: z
+      .array(
+        z
+          .object({
+            role: z.enum(["given", "image"]),
+            closed: z.boolean(),
+            vertices: z
+              .array(
+                z
+                  .object({
+                    x: gridInteger,
+                    y: gridInteger,
+                    label: vertexLabel,
+                  })
+                  .strict(),
+              )
+              .min(1)
+              .max(6),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(3),
+    motion: z
+      .discriminatedUnion("kind", [
+        z
+          .object({
+            kind: z.literal("translate"),
+            dx: z.number().int().min(-20).max(20),
+            dy: z.number().int().min(-20).max(20),
+          })
+          .strict(),
+        z
+          .object({ kind: z.literal("reflect"), axis: z.enum(["x", "y"]) })
+          .strict(),
+        z
+          .object({
+            kind: z.literal("rotate"),
+            degrees: z.union([z.literal(90), z.literal(180), z.literal(270)]),
+          })
+          .strict(),
+        z
+          .object({
+            kind: z.literal("dilate"),
+            numerator: z.number().int().min(1).max(12),
+            denominator: z.number().int().min(1).max(12),
+          })
+          .strict(),
+      ])
+      .optional(),
+    rays: z.boolean().optional(),
+  })
+  .strict()
+  .refine(
+    (f) =>
+      f.xMax > f.xMin &&
+      f.yMax > f.yMin &&
+      f.xMax - f.xMin <= 24 &&
+      f.yMax - f.yMin <= 24 &&
+      f.shapes.every((s) =>
+        s.vertices.every(
+          (p) =>
+            p.x >= f.xMin && p.x <= f.xMax && p.y >= f.yMin && p.y <= f.yMax,
+        ),
+      ),
+    "Every vertex lies inside the grid window",
+  );
+const triangleSide = z.union([
+  z.number().positive().finite().max(1000),
+  z.literal("?"),
+  z.null(),
+]);
+const similarTrianglesSchema = z
+  .object({
+    kind: z.literal("similar-triangles"),
+    unit: z.enum(["cm", "m", "in", "ft"]),
+    triangles: z
+      .array(
+        z
+          .object({
+            vertices: z.tuple([vertexLabel, vertexLabel, vertexLabel]),
+            sides: z.tuple([triangleSide, triangleSide, triangleSide]),
+          })
+          .strict(),
+      )
+      .length(2),
+  })
+  .strict()
+  .refine((f) => {
+    const first = f.triangles[0]!,
+      second = f.triangles[1]!;
+    const s = first.sides;
+    if (!s.every((v) => typeof v === "number")) return false;
+    const [a, b, c] = s as number[];
+    return (
+      a! + b! > c! &&
+      b! + c! > a! &&
+      c! + a! > b! &&
+      second.sides.some((v) => typeof v === "number")
+    );
+  }, "The first triangle states three valid sides; the second states one");
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     functionDisplaySchema,
@@ -576,6 +725,8 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         values: z.array(z.number().finite()).min(1).max(100),
       })
       .strict(),
+    coordinateGeometrySchema,
+    similarTrianglesSchema,
     z
       .object({
         kind: z.literal("balance-scale"),

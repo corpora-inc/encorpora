@@ -525,7 +525,7 @@ function Box({ figure: f }: { figure: Extract<Model, { kind: "fraction-box-prism
     H = value(f.height) ?? fallback;
   const spanX = L + D * DEPTH * Math.cos(ANGLE),
     spanY = H + D * DEPTH * Math.sin(ANGLE);
-  const s = Math.min((W - 150) / spanX, 190 / spanY);
+  const s = Math.min((W - 200) / spanX  /* room for edge labels such as "1½ cm" on both sides */, 190 / spanY);
   const ox = (W - spanX * s) / 2 - 10,
     oy = 26 + spanY * s;
   const P = oblique(s, ox, oy);

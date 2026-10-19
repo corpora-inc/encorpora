@@ -3,6 +3,14 @@ import {
   generateAreaVolumeProblem,
 } from "./area-volume-practice";
 import {
+  transformationTemplates,
+  generateTransformationProblem,
+} from "./transformation-practice";
+import {
+  completingSquareTemplates,
+  generateCompletingSquareProblem,
+} from "./completing-square-practice";
+import {
   angleTriangleTemplates,
   generateAngleTriangleProblem,
 } from "./angle-triangle-practice";
@@ -76,6 +84,10 @@ import {
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
+import {
+  probabilityRulesTemplates,
+  generateProbabilityRulesProblem,
+} from "./probability-rules-practice";
 import {
   factArrayTemplates,
   generateFactArrayProblem,
@@ -306,9 +318,11 @@ export const templates: readonly TemplateMetadata[] = [
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
   ...areaVolumeTemplates,
+  ...transformationTemplates,
   ...angleTriangleTemplates,
   ...realNumberTemplates,
   ...numberSystemTemplates,
+  ...probabilityRulesTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
@@ -329,6 +343,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...completingSquareTemplates,
   ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
@@ -472,6 +487,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...areaVolumeTemplates,
+    ...transformationTemplates,
+    ...completingSquareTemplates,
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
@@ -493,6 +510,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...angleTriangleTemplates,
     ...realNumberTemplates,
     ...numberSystemTemplates,
+    ...probabilityRulesTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -528,6 +546,10 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (areaVolumeTemplates.some((t) => t.id === templateId))
     return generateAreaVolumeProblem(templateId, seed);
+  if (transformationTemplates.some((t) => t.id === templateId))
+    return generateTransformationProblem(templateId, seed);
+  if (completingSquareTemplates.some((t) => t.id === templateId))
+    return generateCompletingSquareProblem(templateId, seed);
   if (factoringTemplates.some((t) => t.id === templateId))
     return generateFactoringProblem(templateId, seed);
   if (numberSystemTemplates.some((t) => t.id === templateId))
@@ -572,6 +594,8 @@ function generateRawProblem(
     return generateAngleTriangleProblem(templateId, seed);
   if (realNumberTemplates.some((t) => t.id === templateId))
     return generateRealNumberProblem(templateId, seed);
+  if (probabilityRulesTemplates.some((t) => t.id === templateId))
+    return generateProbabilityRulesProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))

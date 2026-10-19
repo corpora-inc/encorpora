@@ -1,4 +1,6 @@
 import { areaVolumeFacetMappings } from "./area-volume-coverage";
+import { transformationFacetMappings } from "./transformation-coverage";
+import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
@@ -11,6 +13,7 @@ import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { shapeFacetMappings } from "./shape-coverage";
 import { angleFacetMappings } from "./angle-coverage";
 import { polygonFacetMappings } from "./polygon-coverage";
+import { probabilityRulesFacetMappings } from "./probability-rules-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
@@ -45,6 +48,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...shapeFacetMappings,
   ...angleFacetMappings,
   ...polygonFacetMappings,
+  ...probabilityRulesFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
   ...bivariateFacetMappings,
@@ -62,6 +66,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
   ...areaVolumeFacetMappings,
+  ...transformationFacetMappings,
   ...angleTriangleFacetMappings,
   ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
@@ -71,6 +76,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...equationFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
+  ...completingSquareFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
   ...percentChangeFacetMappings,

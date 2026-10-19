@@ -1,4 +1,6 @@
 import { areaVolumeLessons } from "./area-volume-lessons";
+import { transformationLessons } from "./transformation-lessons";
+import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
@@ -27,6 +29,7 @@ import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
@@ -75,6 +78,15 @@ export interface Lesson {
       | "av-prism-unrolled"
       | "av-cylinder-stack"
       | "av-cone-sphere-cylinder"
+      | "coordinate-side-lengths"
+      | "distance-triangle"
+      | "rigid-motions-panels"
+      | "dilation-rays"
+      | "similar-triangles-marked"
+      | "scale-drawing-plan"
+      | "complete-square-area"
+      | "complete-square-balance"
+      | "complete-square-scaled"
       | "angle-pairs"
       | "parallel-angle-pairs"
       | "triangle-sum-line"
@@ -611,6 +623,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,
   ...descriptiveStatisticsLessons,
@@ -635,6 +648,7 @@ export const lessons: readonly Lesson[] = [
   ...factArrayLessons,
   ...combinatoricsLessons,
   ...areaVolumeLessons,
+  ...transformationLessons,
   ...angleTriangleLessons,
   ...realNumberLessons,
   ...numberSystemLessons,
@@ -648,6 +662,7 @@ export const lessons: readonly Lesson[] = [
   ...shapeLessons,
   ...angleLessons,
   ...polygonLessons,
+  ...probabilityRulesLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
