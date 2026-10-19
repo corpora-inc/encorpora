@@ -9,7 +9,7 @@ const rules: [RegExp, string][] = [
     "plural noun after 1",
   ],
   [/\b[Tt]here (are|were) 1\b/, "plural verb before 1"],
-  [/(?<![\d./−-])\b1 (were|are|have)\b/, "plural verb directly after 1"],
+  [/(?<![\d./−+×÷=*-]\s?)\b1 (were|are|have)\b/, "plural verb directly after 1"],
   [/\([a-z]*s\)|[a-z]\(s\)/, "“(s)” plural placeholder"],
   [
     /(?:^|[=:] )(-?[\d/.]+) = \1(?=[.,;]?$|[.,;] |\s[a-z])/,
