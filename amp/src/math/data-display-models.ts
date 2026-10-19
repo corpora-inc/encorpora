@@ -91,6 +91,52 @@ export const dataDisplayFigureSchemas = [
         f.values.every((v) => v >= f.start && v <= f.end) &&
         Math.max(...stackHeights(f.values).values()) <= MAX_STACK,
     ),
+  z
+    .object({
+      kind: z.literal("histogram"),
+      /** Bins [start + i·width, start + (i+1)·width) of whole-number data. */
+      start: z.number().int().min(0).max(1000),
+      width: z.union([
+        z.literal(2),
+        z.literal(5),
+        z.literal(10),
+        z.literal(20),
+      ]),
+      counts: z.array(z.number().int().min(0).max(20)).min(3).max(8),
+      unit,
+    })
+    .strict()
+    .refine((f) => f.counts.some((c) => c > 0)),
+  z
+    .object({
+      kind: z.literal("box-plot"),
+      start: z.number().int().min(0).max(1000),
+      end: z.number().int().min(1).max(1000),
+      /** Every tick is a step; every second tick is labeled. */
+      step: z.union([z.literal(1), z.literal(2), z.literal(5), z.literal(10)]),
+      summary: z.tuple([
+        z.number().int(),
+        z.number().int(),
+        z.number().int(),
+        z.number().int(),
+        z.number().int(),
+      ]),
+      unit,
+    })
+    .strict()
+    .refine(
+      (f) =>
+        f.end > f.start &&
+        (f.end - f.start) % (2 * f.step) === 0 &&
+        (f.end - f.start) / f.step <= 20 &&
+        f.summary.every(
+          (v, i) =>
+            v >= f.start &&
+            v <= f.end &&
+            (v - f.start) % f.step === 0 &&
+            (i === 0 || v >= f.summary[i - 1]!),
+        ),
+    ),
 ] as const;
 export const dataDisplayFigureSchema = z.discriminatedUnion(
   "kind",
@@ -237,5 +283,79 @@ export function linePlotLayout(
       major: (figure.start + i) % figure.denominator === 0,
       ...mixedParts(figure.start + i, figure.denominator),
     })),
+  };
+}
+
+/** A histogram: touching bars, equal bin widths, heights exactly proportional to counts. */
+export function histogramLayout(
+  figure: Extract<DataDisplayFigure, { kind: "histogram" }>,
+) {
+  const left = 52,
+    right = 344,
+    top = 30,
+    bottom = 168;
+  const peak = Math.max(...figure.counts);
+  const step = peak > 10 ? 2 : 1,
+    max = Math.ceil(peak / step) * step;
+  const y = (v: number) => bottom - ((bottom - top) * v) / max;
+  const bin = (right - left) / figure.counts.length;
+  return {
+    left,
+    right,
+    top,
+    bottom,
+    max,
+    y,
+    gridlines: Array.from({ length: max / step + 1 }, (_, i) => i * step),
+    edges: figure.counts
+      .map((_, i) => ({
+        x: left + i * bin,
+        value: figure.start + i * figure.width,
+      }))
+      .concat({
+        x: right,
+        value: figure.start + figure.counts.length * figure.width,
+      }),
+    bars: figure.counts.map((count, i) => ({
+      count,
+      from: figure.start + i * figure.width,
+      x: left + i * bin,
+      width: bin,
+      top: y(count),
+      height: bottom - y(count),
+    })),
+  };
+}
+
+/** A box plot on a number line: box from Q1 to Q3, a line at the median, whiskers to the extremes. */
+export function boxPlotLayout(
+  figure: Extract<DataDisplayFigure, { kind: "box-plot" }>,
+  width = 360,
+) {
+  const left = 26,
+    right = width - 26,
+    axisY = 150;
+  const x = (v: number) =>
+    left + ((v - figure.start) * (right - left)) / (figure.end - figure.start);
+  const [min, q1, median, q3, max] = figure.summary.map(x) as [
+    number,
+    number,
+    number,
+    number,
+    number,
+  ];
+  return {
+    left,
+    right,
+    axisY,
+    x,
+    box: { top: 64, bottom: 116, min, q1, median, q3, max },
+    ticks: Array.from(
+      { length: (figure.end - figure.start) / figure.step + 1 },
+      (_, i) => {
+        const value = figure.start + i * figure.step;
+        return { value, x: x(value), labeled: i % 2 === 0 };
+      },
+    ),
   };
 }
