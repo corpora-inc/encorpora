@@ -5,6 +5,10 @@ import {
 } from "./measurement-models.js";
 import { decimalFigureSchemas, type DecimalFigure } from "./decimal-models.js";
 import {
+  timeMoneyFigureSchemas,
+  type TimeMoneyFigure,
+} from "./time-money-models.js";
+import {
   partWholeFigureSchemas,
   type PartWholeFigure,
 } from "./part-whole-models.js";
@@ -20,6 +24,7 @@ import {
 export type SemanticFigure =
   | MeasurementFigure
   | PartWholeFigure
+  | TimeMoneyFigure
   | DecimalFigure
   | DataDisplayFigure
   | GeometryFigure
@@ -134,6 +139,11 @@ export interface GeneratedProblem {
   public: PublicProblem;
   answer: string;
   explanation: string[];
+  /** One teaching step for this instance, written by the generator from its
+   * own givens: it names the problem's quantities and the first move of the
+   * authored method, and never states the answer. Gated by
+   * tests/instance-hints.test.ts. A figure cue (an element of this problem's
+   * figure to highlight) will travel beside it as its own optional field. */
   hint: string;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
@@ -143,6 +153,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
     ...partWholeFigureSchemas,
+    ...timeMoneyFigureSchemas,
     ...decimalFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,

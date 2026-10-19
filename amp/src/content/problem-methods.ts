@@ -4,6 +4,7 @@ import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
+import { timeMoneyMethods } from "./time-money-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
@@ -39,6 +40,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...radicalMethods,
   ...partWholeMethods,
   ...decimalMethods,
+  ...timeMoneyMethods,
   ...comparisonMethods,
   ...addSubtractMethods,
   ...factsMethods,
@@ -66,6 +68,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Keep counting through the second group without starting over.",
       "The last number is the total.",
     ],
+    watch:
+      "Keep counting from the first group's last number; do not start again at 1.",
   },
   "take-away-within-10": {
     goal: "Given a group and how many are taken away, find how many are left.",
@@ -84,12 +88,17 @@ export const methods: Record<string, ProblemMethod> = {
       "Count up to the whole.",
       "How many you counted is the missing part.",
     ],
+    watch: "Check: the part you found plus the known part must make the whole.",
   },
   "ten-frame-complement": {
     goal: "Given a ten-frame with some counters, find how many more fill it.",
     terms: [["ten-frame", "A grid of 10 places, 2 rows of 5."]],
-    method: ["Count the empty places.", "Each empty place needs one counter."],
-    watch: "Counters plus empty places always make 10.",
+    method: [
+      "A ten-frame has 10 places, in two rows of 5.",
+      "Count the empty places; each one needs one counter.",
+      "Check: counters plus empty places make 10.",
+    ],
+    watch: "Count the empty places, not the counters.",
   },
   "teen-frame-compose": {
     goal: "Given one full ten-frame and some extra counters, find the total.",
@@ -97,6 +106,7 @@ export const methods: Record<string, ProblemMethod> = {
       "A full ten-frame is 10. Do not count it one by one.",
       "Count on from 10 through the extra counters.",
     ],
+    watch: "A teen number is 10 and some ones: 10 and 4 is 14.",
   },
   "add-within-20": {
     goal: "Given two numbers, find their sum.",
@@ -194,6 +204,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the cubes. That is the ones digit.",
       "Write tens then ones: 3 rods and 8 cubes is 38.",
     ],
+    watch: "A rod is ten, not one: 3 rods and 8 cubes is 38, not 11.",
   },
   "ten-more-or-less": {
     goal: "Given a number, find ten more or ten less.",
@@ -201,6 +212,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Change only the tens digit: up one for ten more, down one for ten less.",
       "Keep the ones digit the same.",
     ],
+    watch:
+      "Change the tens digit, not the ones digit: ten more than 47 is 57, not 48.",
   },
   "add-ones-regroup": {
     goal: "Given a two-digit number and some ones to add, find the new total.",
@@ -209,6 +222,7 @@ export const methods: Record<string, ProblemMethod> = {
       "If there are 10 or more ones, trade 10 ones for 1 ten.",
       "Write the new tens and the ones left over.",
     ],
+    watch: "Add the new ten to the tens: 38 + 5 is 43, not 33.",
   },
   "subtract-whole-tens": {
     goal: "Given a number of tens and some tens to remove, find what is left.",
@@ -217,6 +231,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Subtract the tens: 5 − 2 = 3 tens.",
       "Name the value: 3 tens is 30.",
     ],
+    watch:
+      "Write the value of the tens left, not their count: 3 tens is 30, not 3.",
   },
   "hundreds-model": {
     goal: "Given flats, rods and cubes, find the number shown.",
@@ -229,6 +245,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count flats for the hundreds digit, rods for the tens digit, cubes for the ones digit.",
       "If a kind is missing, its digit is 0.",
     ],
+    watch:
+      "Write 0 for a place with no blocks: 4 flats and 6 cubes is 406, not 46.",
   },
   "place-value-digit": {
     goal: "Given a number and a place, find the value of the digit in that place.",
@@ -252,7 +270,11 @@ export const methods: Record<string, ProblemMethod> = {
         "A number written as the sum of its place values: 916 = 900 + 10 + 6.",
       ],
     ],
-    method: ["Find the tens digit.", "Write its value: tens digit × 10."],
+    method: [
+      "Find the tens digit: the middle digit of a three-digit number.",
+      "Its value is the tens digit × 10.",
+      "Check: hundreds + tens + ones gives the number.",
+    ],
     watch: "The box needs the value (10), not the digit (1).",
   },
   "exchange-base-ten": {
@@ -270,16 +292,16 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the step: subtract one number from the next.",
       "Add the same step to the last number.",
     ],
+    watch: "Add the step to the last number shown, not to the first.",
   },
   "add-several-two-digit": {
     goal: "Given several two-digit numbers, find their total.",
     method: [
-      "Add all the tens.",
-      "Add all the ones.",
-      "Combine the two results.",
+      "Add all the tens: 47 + 11 + 44 has 40 + 10 + 40 = 90.",
+      "Add all the ones: 7 + 1 + 4 = 12.",
+      "Combine the two results: 90 + 12 = 102.",
     ],
-    watch:
-      "47 + 11 + 44: tens 40 + 10 + 40 = 90; ones 7 + 1 + 4 = 12; total 102.",
+    watch: "Add the tens as tens (40, not 4), then combine them with the ones.",
   },
   "add-with-regrouping": {
     goal: "Given two three-digit numbers, find their sum.",
@@ -288,6 +310,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Add the tens plus any carry. If 10 or more, write the tens digit and carry 1 hundred.",
       "Add the hundreds plus any carry.",
     ],
+    watch:
+      "Carry the new ten into the tens column; never write both digits of 13 under the ones.",
   },
   "subtract-with-regrouping": {
     goal: "Given two three-digit numbers, find their difference.",
@@ -461,7 +485,13 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "two-step-change": {
     goal: "Given a starting amount, an amount added, and an amount removed, find what remains.",
-    method: ["Add first.", "Then subtract from that result."],
+    method: [
+      "Start with the first amount.",
+      "Add the amount that was added.",
+      "Take the amount removed away from that new total.",
+    ],
+    watch:
+      "Do the changes in the order they happen: add first, then subtract from the new total.",
   },
   // Measurement, perimeter, area
   "shifted-ruler-length": {
@@ -531,7 +561,13 @@ export const methods: Record<string, ProblemMethod> = {
   "rectangle-area": {
     goal: "Given a rectangle's width and height, find its area.",
     terms: [["area", "The number of unit squares that cover a shape."]],
-    method: ["Area = width × height.", "Write the unit as square units."],
+    method: [
+      "Unit squares fill the rectangle in rows: one row for each unit of height, one square in each row for each unit of width.",
+      "Area = width × height, the number of squares.",
+      "Write the answer in square units, such as square centimeters.",
+    ],
+    watch:
+      "Multiply the two side lengths. Adding them gives half the perimeter, not the area.",
   },
   "rectangle-missing-area-side": {
     goal: "Given a rectangle's area and one side, find the other side.",
@@ -602,7 +638,13 @@ export const methods: Record<string, ProblemMethod> = {
     terms: [
       ["mean", "The sum of the values divided by how many values there are."],
     ],
-    method: ["Add all the values.", "Divide by the number of values."],
+    method: [
+      "Add all the values to get the total.",
+      "Count the values.",
+      "Mean = total ÷ count: the size each value would be if the total were shared equally.",
+    ],
+    watch:
+      "Divide by how many values there are, counting repeated values each time.",
   },
   "simple-probability": {
     goal: "Given counts of each color in a bag, find the probability of drawing one color.",
@@ -664,9 +706,12 @@ export const methods: Record<string, ProblemMethod> = {
   "fraction-whole-as-parts": {
     goal: "Given a number of wholes, write it as a fraction with a given denominator.",
     method: [
-      "Each whole has denominator-many pieces.",
-      "Numerator = wholes × denominator.",
+      "Each whole is cut into denominator-many equal pieces.",
+      "Count the pieces in all the wholes: numerator = wholes × denominator.",
+      "Keep the denominator: 3 wholes in fourths is 12/4.",
     ],
+    watch:
+      "Multiply the wholes by the denominator: 3 wholes are 12/4, not 3/4.",
   },
   "equivalent-numerator": {
     goal: "Given a fraction and a new denominator, find the matching numerator.",
@@ -726,9 +771,11 @@ export const methods: Record<string, ProblemMethod> = {
   "improper-whole-part": {
     goal: "Given an improper fraction, find how many complete wholes it contains.",
     method: [
-      "Divide the numerator by the denominator.",
-      "The whole-number part is the answer.",
+      "The denominator says how many pieces make one whole.",
+      "Group the pieces into wholes: divide the numerator by the denominator.",
+      "The number of complete groups is the answer; leftover pieces do not make a whole.",
     ],
+    watch: "Count only complete wholes: 22/8 holds 2 wholes, not 3.",
   },
   "improper-fractional-part": {
     goal: "Given an improper fraction, find the fraction left after removing full wholes.",
@@ -737,6 +784,8 @@ export const methods: Record<string, ProblemMethod> = {
       "The remainder over the denominator is what is left.",
       "Simplify.",
     ],
+    watch:
+      "Give only the leftover pieces as a fraction of one whole, not the whole-number part.",
   },
   "mixed-fraction-difference": {
     goal: "Given two mixed numbers, find their difference.",
@@ -954,8 +1003,13 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "linear-equation": {
     goal: "Given an equation like ax + b = c, find x.",
-    method: ["Subtract b from both sides.", "Divide both sides by a."],
-    watch: "Check by putting x back into the original equation.",
+    method: [
+      "Undo the addition first: subtract b from both sides, leaving ax = c − b.",
+      "Undo the multiplication: divide both sides by a.",
+      "Check by putting x back into ax + b.",
+    ],
+    watch:
+      "Subtract b from both sides before dividing. Dividing first means b must be divided too.",
   },
   "negative-coefficient-equation": {
     goal: "Given an equation where x is multiplied by a negative number, find x.",
@@ -1112,7 +1166,12 @@ export const methods: Record<string, ProblemMethod> = {
     terms: [
       ["geometric sequence", "Each term multiplies by the same ratio r."],
     ],
-    method: ["Term n = first term × r^(n − 1)."],
+    method: [
+      "Each term is the term before it times the ratio r.",
+      "From term 1 to term n there are n − 1 steps, so multiply by r that many times.",
+      "Term n = first term × r^(n − 1).",
+    ],
+    watch: "Use n − 1 factors of r, not n: term 1 has no factor of r.",
   },
   "quadratic-vertex": {
     goal: "Given f(x) = a(x − h)² + k with a > 0, find its minimum value.",
@@ -1120,14 +1179,19 @@ export const methods: Record<string, ProblemMethod> = {
       "A square is never negative and is 0 at x = h.",
       "With a > 0, the smallest value of f is k.",
     ],
+    watch:
+      "The minimum value is k, the value of f. The number h is where it happens, not the minimum.",
   },
   "logarithm-integer": {
     goal: "Given log base b of N, find its value.",
     terms: [["logarithm", "log_b N is the exponent p with b^p = N."]],
     method: [
-      "Ask: b to what power gives N?",
-      "Try powers of b until you reach N.",
+      "log_b N asks: b to what power is N?",
+      "Multiply b by itself, counting the factors: b, b², b³, …",
+      "The number of factors that reaches N is the logarithm.",
     ],
+    watch:
+      "The logarithm is the exponent, not N ÷ b: log base 2 of 8 is 3, not 4.",
   },
   ...rightTriangleMethods,
 };

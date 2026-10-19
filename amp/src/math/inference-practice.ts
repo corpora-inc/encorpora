@@ -87,8 +87,8 @@ const units = (n: number, unit: string) =>
   `${n} ${n === 1 ? unit.replace(/s$/, "") : unit}`;
 const sum = (values: readonly number[]) => values.reduce((a, b) => a + b, 0);
 
-/** [situation, representative method, [biased method, why it is biased] × 3] */
-const sampleBank: [string, string, [string, string][]][] = [
+/** [situation, representative method, [biased method, why it is biased] × 3, the population] */
+const sampleBank: [string, string, [string, string][], string][] = [
   [
     "A principal wants to know how all 900 students at her school feel about a longer lunch period.",
     "Choose 60 students at random from a list of all 900 students.",
@@ -106,6 +106,7 @@ const sampleBank: [string, string, [string, string][]][] = [
         "Only sixth graders could be chosen, so other grades are not represented.",
       ],
     ],
+    "each of the 900 students",
   ],
   [
     "A city wants to estimate the share of its residents who ride the bus to work.",
@@ -124,6 +125,7 @@ const sampleBank: [string, string, [string, string][]][] = [
         "People who choose to reply are not chosen by chance and may differ from everyone else.",
       ],
     ],
+    "every resident of the city",
   ],
   [
     "A farmer wants to estimate the mean weight of the apples in her orchard.",
@@ -142,6 +144,7 @@ const sampleBank: [string, string, [string, string][]][] = [
         "Apples that fall first may be riper or damaged, unlike the rest.",
       ],
     ],
+    "every apple in the orchard",
   ],
   [
     "A librarian wants to know how many books the students at her school read each month.",
@@ -160,6 +163,7 @@ const sampleBank: [string, string, [string, string][]][] = [
         "Only one grade could be chosen, so other grades are not represented.",
       ],
     ],
+    "every student at the school",
   ],
   [
     "A factory wants to estimate the share of the light bulbs it made today that are defective.",
@@ -178,6 +182,7 @@ const sampleBank: [string, string, [string, string][]][] = [
         "Returned bulbs are more likely to be defective, so the share would come out too high.",
       ],
     ],
+    "every bulb made today",
   ],
   [
     "A group of students wants to know the favorite sport of seventh graders in their state.",
@@ -196,15 +201,17 @@ const sampleBank: [string, string, [string, string][]][] = [
         "Visitors to a basketball website are more likely to choose basketball.",
       ],
     ],
+    "every seventh grader in the state",
   ],
 ];
 
 function representativeSample(r: Random): Draft {
-  const [situation, fair, biased] = sampleBank[r(0, sampleBank.length - 1)]!;
+  const [situation, fair, biased, population] =
+    sampleBank[r(0, sampleBank.length - 1)]!;
   return {
     prompt: `${situation} Which method is most likely to give a representative sample?`,
     answer: "",
-    hint: "A sample represents the population when every member of the population has the same chance of being chosen.",
+    hint: `A sample represents a population when it gives ${population} the same chance of being chosen. Which method does that?`,
     explanation: [
       "A representative sample resembles the population. Choosing at random from the whole population gives every member the same chance, so no group is favored.",
       `“${fair}” chooses at random from everyone the question is about.`,
@@ -317,7 +324,7 @@ function samplePlot(r: Random): Draft {
     prompt: `Ten students each took a random sample of 20 of the ${p} students at their school and counted how many ${c.trait}. The dot plot shows the ten counts. Using the mean count, estimate how many of the ${p} students ${c.trait}.`,
     figure,
     answer: `${estimate}`,
-    hint: "Find the mean of the ten counts: that is the typical number out of 20. Then scale that fraction of 20 up to the whole school.",
+    hint: `Find the mean of the ten counts: the typical number out of 20. Then take that same fraction of all ${p} students.`,
     explanation: [
       `The counts add to ${total}, so the mean count is ${total} ÷ 10 = ${shown(total, 10)} out of 20.`,
       `${shown(total, 10)} out of 20 is ${rational(total, 200)} of a sample. The same fraction of ${p} is ${rational(total, 200)} × ${p} = ${thousands(estimate)}.`,
@@ -408,7 +415,7 @@ function meansInMads(r: Random): Draft {
     figure,
     answer: k,
     fraction: true,
-    hint: "Find each group’s mean. Then divide the distance between the two means by the MAD.",
+    hint: `Find each group’s mean. Then divide the distance between the two means by the MAD, ${mad}.`,
     explanation: [
       `${c.labels[0]}: ${sum(first)} ÷ ${first.length} = ${m1}. ${c.labels[1]}: ${sum(second)} ÷ ${second.length} = ${m2}.`,
       `The means are ${Math.max(m1, m2)} − ${Math.min(m1, m2)} = ${units(gap, c.unit)} apart.`,
@@ -572,7 +579,7 @@ function compareChoice(r: Random): Draft {
     prompt: `${c.intro} Which statement is true?`,
     figure,
     answer: "",
-    hint: "The median is the line inside each box. The interquartile range is the length of the box. Compare each separately.",
+    hint: `Compare ${p} with ${q} twice: once by the lines inside the boxes (medians), once by the box lengths (IQRs).`,
     explanation: [
       reading,
       `${cap(medianHigh)} has the greater median: its ${c.things} are typically greater.`,

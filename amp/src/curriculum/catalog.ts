@@ -1653,6 +1653,33 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// Clock and money tasks read given analog clocks and generic coins and bills;
+// digital clocks and learner-set hands remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "clock-half-hours",
+    "hour-half-hour-reading",
+    "Read and match analog clocks on the hour and half hour, and name the hour when the hour hand is between numerals.",
+  ],
+  [
+    "clock-five-minutes",
+    "five-minute-reading",
+    "Read and match analog clocks in five-minute steps, count minutes by fives, and choose a.m. or p.m. from a daily activity.",
+  ],
+  [
+    "money-values",
+    "coin-bill-totals",
+    "Count quarters, dimes, nickels, pennies and one- and five-dollar bills, make a dollar, pay an exact price and find money left.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Decimal tasks assess reading, renaming, comparing, rounding and computing
 // with given decimals; written justification and models drawn by the learner
 // remain planned.
