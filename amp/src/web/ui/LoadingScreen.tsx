@@ -1,17 +1,36 @@
 import { AppError } from "../lib/AppError";
-export function LoadingScreen() {
+
+/**
+ * The first paint and every route-level wait: the brand bar in its final
+ * place over an empty page, the same frame index.html paints before any
+ * script runs. No loading text flashes; an error appears in the body with
+ * its recovery action, and nothing moves when the screen arrives.
+ */
+export function LoadingScreen({
+  error = "",
+  retry,
+  busy = false,
+}: {
+  error?: string;
+  retry?: () => void;
+  busy?: boolean;
+}) {
   return (
-    <main className="app-loading" aria-busy="true">
-      <strong>AMP</strong>
-      <p>Opening your workspace…</p>
-      <button
-        className="loading-retry"
-        style={{ visibility: "hidden" }}
-        tabIndex={-1}
-      >
-        Try again
-      </button>
-    </main>
+    <div className="app-loading" aria-busy={!error}>
+      <div className="app-loading-bar">AMP</div>
+      <main className="app-loading-body">
+        {error && (
+          <>
+            <p role="alert">{error}</p>
+            {retry && (
+              <button className="loading-retry" disabled={busy} onClick={retry}>
+                Try again
+              </button>
+            )}
+          </>
+        )}
+      </main>
+    </div>
   );
 }
 export function RouteError({
@@ -21,15 +40,14 @@ export function RouteError({
   error: unknown;
   reset: () => void;
 }) {
-  const message =
-    error instanceof AppError
-      ? error.message
-      : "This screen could not be loaded. Try again.";
   return (
-    <main className="app-loading">
-      <strong>AMP</strong>
-      <p role="alert">{message}</p>
-      <button onClick={reset}>Try again</button>
-    </main>
+    <LoadingScreen
+      error={
+        error instanceof AppError
+          ? error.message
+          : "This screen could not be loaded. Try again."
+      }
+      retry={reset}
+    />
   );
 }

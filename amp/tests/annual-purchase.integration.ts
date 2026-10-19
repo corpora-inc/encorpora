@@ -108,8 +108,14 @@ test(
         (await app.inject({ url: "/api/v1/billing/offer" })).statusCode,
         401,
       );
+      // The paywall reads configured prices without an account or a Stripe call.
+      const prices = await app.inject({ url: "/api/v1/billing/prices" });
+      assert.equal(prices.statusCode, 200);
+      assert.equal(prices.json().available, true);
+      assert.equal(prices.json().offers[0].formattedAmount, "$120.00");
       const offer = (await get("/api/v1/billing/offer")).json().offer;
       assert.equal(offer.formattedAmount, "$120.00");
+      assert.equal(offer.id, prices.json().offers[0].id);
       assert.equal(catalogCalls, 1);
       assert.equal(
         (await get("/api/v1/billing/status/foreign")).statusCode,

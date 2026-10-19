@@ -447,9 +447,9 @@ nav button:hover {
 footer {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.3px;
-  color: #91a08e;
+  color: var(--ink-2, #4c625b);
   margin: 42px 0 25px;
   padding-top: 20px;
   border-top: 1px solid #dfe5d8;

@@ -47,6 +47,11 @@ test("disabled billing is an authenticated explicit state with no advertised pri
     });
     assert.deepEqual(response.json(), { available: false });
     assert.equal(response.headers["cache-control"], "no-store");
+    // The free-trial paywall can ask without an account; nothing is priced.
+    assert.deepEqual(
+      (await app.inject({ url: "/api/v1/billing/prices" })).json(),
+      { available: false, offers: [] },
+    );
     // First-run enrollment reports a designed unavailable state, not a 404.
     assert.equal(
       (await app.inject({ url: "/api/v1/billing/enrollment" })).statusCode,

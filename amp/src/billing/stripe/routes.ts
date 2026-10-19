@@ -43,6 +43,17 @@ export async function registerStripeRoutes(
       });
     });
     registerEnrollmentRoutes(scope, options, billing);
+    // The configured prices, for the free-trial paywall before any account
+    // exists. No Stripe request is made; checkout re-verifies the catalog.
+    scope.get("/api/v1/billing/prices", async (_request, reply) => {
+      reply.header("Cache-Control", "public, max-age=300");
+      return {
+        available: true,
+        offers: options.config.monthlyPriceId
+          ? [annualOffer(options.config), annualOffer(options.config, "month")]
+          : [annualOffer(options.config)],
+      };
+    });
     scope.get("/api/v1/billing/offer", async (request, reply) => {
       await options.authenticate(request);
       reply.header("Cache-Control", "no-store");
@@ -162,6 +173,10 @@ export async function registerUnavailableBilling(
   app: FastifyInstance,
   authenticate: Authenticator,
 ): Promise<void> {
+  app.get("/api/v1/billing/prices", async (_request, reply) => {
+    reply.header("Cache-Control", "no-store");
+    return { available: false, offers: [] };
+  });
   app.get("/api/v1/billing/offer", async (request, reply) => {
     await authenticate(request);
     reply.header("Cache-Control", "no-store");

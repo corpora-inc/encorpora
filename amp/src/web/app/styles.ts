@@ -14,7 +14,6 @@ import "../payment-history.css";
 import "../reimbursement.css";
 import "../book-reader.css";
 import "../early-number-reader.css";
-import "../trial-teaching.css";
 import "katex/dist/katex.min.css";
 import "../theme.css";
 import "../premium-controls.css";

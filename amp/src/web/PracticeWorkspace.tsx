@@ -128,6 +128,10 @@ type Props = {
   exit: () => void;
   requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
+  /** A calm status in the toolbar, such as the free-practice meter. */
+  status?: ReactNode;
+  /** A skill this answer just mastered, shown once with the feedback. */
+  mastered?: string | null;
 };
 
 /** Phones too short to keep the keypad docked under the problem. Taller
@@ -536,8 +540,11 @@ export function PracticeWorkspace(props: Props) {
             data-strand={props.strand}
             title={meta?.title ?? "Practice"}
           >
-            <span>{meta?.title ?? "Practice"}</span>
+            <span className="workspace-topic-text">
+              {meta?.title ?? "Practice"}
+            </span>
           </span>
+          {props.status}
           {props.calculator ? (
             <button
               className="calculator-toggle"
@@ -674,6 +681,17 @@ export function PracticeWorkspace(props: Props) {
                 )}
               </span>
             </div>
+            {props.mastered && (
+              <p className="mastery-moment">
+                <span className="mastery-mark" aria-hidden="true">
+                  ★
+                </span>
+                <span>
+                  <strong>Skill mastered</strong>
+                  <span>{props.mastered}</span>
+                </span>
+              </p>
+            )}
             {(!outcome.correct || showWhy) && (
               <ol className="feedback-steps">
                 {outcome.explanation.map((step, index) => (
