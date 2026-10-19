@@ -4,6 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { wasWere, hasHave } from "./agreement.js";
 const definitions = [
   [
     "join-within-10",
@@ -311,7 +312,7 @@ export function generateElementaryProblem(
       const total = r(3, 20),
         removed = r(1, total - 1),
         left = total - removed;
-      prompt = `Some blocks were in a box. ${removed} were taken out and ${left} stayed. How many were in the box at first?`;
+      prompt = `Some blocks were in a box. ${removed} ${wasWere(removed)} taken out and ${left} stayed. How many were in the box at first?`;
       answer = total;
       hint = "Put the removed blocks and the remaining blocks back together.";
       explanation = [
@@ -374,7 +375,7 @@ export function generateElementaryProblem(
       hint = "The total amount to remove has two parts.";
       explanation = [
         `You must remove ${b} in all.`,
-        `${first} have been removed, leaving ${b} − ${first} = ${answer} more to remove.`,
+        `${first} ${hasHave(first)} been removed, leaving ${b} − ${first} = ${answer} more to remove.`,
         `The final amount is 10 − ${answer} = ${a - b}.`,
       ];
       break;

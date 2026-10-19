@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts.js";
+import { isAre } from "./agreement.js";
 export const generatorVersion = 1 as const;
 export const extendedTemplates: readonly TemplateMetadata[] = [
   [
@@ -368,7 +369,7 @@ export function generateExtendedProblem(
         "Divide the number of favorable counters by the total number of counters.";
       explanation = [
         `There are ${red + blue} counters in total.`,
-        `${red} are red, so the probability is ${red}/${red + blue} = ${answer}.`,
+        `${red} ${isAre(red)} red, so the probability is ${red}/${red + blue} = ${answer}.`,
       ];
       break;
     }
