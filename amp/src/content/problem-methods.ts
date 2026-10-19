@@ -7,6 +7,7 @@ import { shapeMethods } from "./shape-lessons";
 import { polygonMethods } from "./polygon-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
+import { bivariateMethods } from "./bivariate-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { decimalMethods } from "./decimal-lessons";
 import { timeMoneyMethods } from "./time-money-lessons";
@@ -50,6 +51,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...linePlotMethods,
   ...distributionMethods,
   ...inferenceMethods,
+  ...bivariateMethods,
   ...radicalMethods,
   ...partWholeMethods,
   ...decimalMethods,

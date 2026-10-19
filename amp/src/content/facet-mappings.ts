@@ -10,6 +10,7 @@ import { polygonFacetMappings } from "./polygon-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
+import { bivariateFacetMappings } from "./bivariate-coverage";
 import { partWholeFacetMappings } from "./part-whole-coverage";
 import { linePlotFacetMappings } from "./line-plot-coverage";
 import { earlyDataFacetMappings } from "./early-data-coverage";
@@ -39,6 +40,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...polygonFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
+  ...bivariateFacetMappings,
   ...linePlotFacetMappings,
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
