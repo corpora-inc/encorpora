@@ -1,3 +1,5 @@
+import { angleTriangleWorksheet } from "./angle-triangle-worksheets";
+import { angleTriangleTemplates } from "../math/angle-triangle-practice";
 import { factoringWorksheet } from "./factoring-worksheets";
 import { factoringTemplates } from "../math/factoring-practice";
 import { realNumberWorksheet } from "./real-number-worksheets";
@@ -73,7 +75,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    factoringTemplates.some((t) => t.id === id)
+    angleTriangleTemplates.some((t) => t.id === id)
+      ? angleTriangleWorksheet(id, lesson.id, edition)
+      : factoringTemplates.some((t) => t.id === id)
       ? factoringWorksheet(id, lesson.id, edition)
       : realNumberTemplates.some((t) => t.id === id)
         ? realNumberWorksheet(id, lesson.id, edition)

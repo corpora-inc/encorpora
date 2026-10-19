@@ -17,6 +17,7 @@ import { attributeMethods } from "./attribute-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
+import { angleTriangleMethods } from "./angle-triangle-lessons";
 import { realNumberMethods } from "./real-number-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
@@ -67,6 +68,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...angleTriangleMethods,
   ...realNumberMethods,
   ...numberSystemMethods,
   ...ratioRateMethods,
