@@ -1,4 +1,5 @@
 import { createHash, randomBytes } from "node:crypto";
+import { RETENTION } from "../privacy/retention-periods.js";
 
 /** Anonymous placement before an account exists. A trial learner belongs to
  * the synthetic account `trial:<id>`; real parent accounts are `issuer|sub`,
@@ -7,7 +8,7 @@ export const TRIAL_PREFIX = "trial:";
 /** Independent answers a trial may record before the paywall. */
 export const TRIAL_ATTEMPTS = 20;
 /** Unadopted trials and their answers are deleted after this. */
-export const TRIAL_DAYS = 14;
+export const TRIAL_DAYS = RETENTION.unsavedTrialDays;
 
 export const isTrialAccount = (accountId: string) =>
   accountId.startsWith(TRIAL_PREFIX);

@@ -4,6 +4,11 @@ import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.j
 import { createDatabasePool } from "../src/server/database.js";
 import { purgeExpiredPrivacyRecords } from "../src/family/retention.js";
 import { purgeExpiredTrials } from "../src/server/trials.js";
+import {
+  purgeFinancialRecords,
+  purgeInactiveLearners,
+  purgeTrialRecords,
+} from "../src/privacy/retention.js";
 if (!process.env.AMP_DATABASE_URL)
   throw new Error("AMP_DATABASE_URL is required");
 const pool = createDatabasePool({
@@ -17,6 +22,9 @@ try {
       expiredConsentRecords: await purgeConsentRecords(pool),
       expiredFundingRequests: await purgeExpiredFundingRequests(pool),
       expiredTrials: await purgeExpiredTrials(pool),
+      ...(await purgeTrialRecords(pool)),
+      ...(await purgeInactiveLearners(pool)),
+      ...(await purgeFinancialRecords(pool)),
     }),
   );
 } finally {

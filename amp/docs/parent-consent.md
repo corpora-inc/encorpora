@@ -64,6 +64,20 @@ Withdrawal and account-wide learning deletion cancel pending enrollment within t
 
 ## Retention
 
+`npm run privacy:retention` enforces these periods daily. The values are the named constants in `src/privacy/retention-periods.ts`; the deployment notice must state the same periods.
+
+| Records | Deleted |
+|---|---|
+| Learner name, birth year, starting level, generated problems, answers, skill estimates, offline packs | 24 months after the latest of the learner's last practice activity, the family's last purchase activity (order, checkout, payment or funding request) and the scheduled end of the family's latest licence or entitlement. Uses the parent deletion path: a financially linked learner keeps only an opaque "Deleted learner" reference. |
+| Unsaved anonymous trial and its answers | 14 days after it starts |
+| Trial milestone events and trial records, saved or not | 90 days after creation; a saved trial's learner follows learner retention |
+| Orders, payments, refunds, licences, entitlements, webhook receipts and the opaque learner references in them | 7 years after the later of the last transaction and the end of the licence period bought. A checkout that is still the evidence of a purchase consent first follows the consent-evidence period below. |
+| Offline packs and offline answers | 30 days after the pack expires |
+| Privacy activity log | 90 days |
+| Consent contact and evidence | Uncompleted requests: the policy's `pendingContactDays` (2–14; 7 in the reviewed policy). Completed evidence: `withdrawnEvidenceDays` (1–730; 180) after withdrawal or policy replacement, then a do-not-collect flag. |
+
+Each category is deleted in bounded batches and logged as counts only. Learner, order, checkout and tombstone deletions re-check eligibility under the account lock; trial records and unreferenced financial rows are deleted by age. A unit blocked by a busy account is skipped until the next run. Learner deletions appear in the privacy log as `learner.retention-deleted`. Commerce events, payment observations and refund holds reject updates and deletes unless the transaction sets `amp.retention_purge='financial'`. This guards against accidental deletion; it is not a privilege boundary, because the API and the job share a database role.
+
 The configured pending period is bounded to 2–14 days and must exceed the confirmation delay with room to respond. Recipient ciphertext is erased on completion, replacement or withdrawal. Expired uncompleted requests and their outbox records are deleted by `privacy:retention`. Completed evidence is kept while consent is active; withdrawal or policy invalidation starts its explicitly configured 1–730-day evidence period. After evidence deletion, the matching email-plus record becomes a minimal account-level do-not-collect preference: it retains no request pointer, consent notice version or verification proof. That preference lasts while the parent account exists so cleanup cannot accidentally restore collection. Existing manual evidence is not rewritten. These bounds are product limits, not legally mandated periods. The policy must state the concrete purpose and selected duration; schedule the cleanup job and review provider/back-up deletion too.
 
 Policy invalidation is recognized by the retention job, which closes ineffective completed requests and starts their evidence period. The job processes bounded batches; operators must run it frequently enough to clear the backlog. A linked hash is not anonymous merely because it omits the address. The rule requires purpose-limited, documented retention, not indefinite storage. [16 CFR 312.10](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.10)
