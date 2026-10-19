@@ -5,6 +5,7 @@ import { chromium } from "playwright";
 import { PDFDocument } from "pdf-lib";
 import { ratioModels } from "../tests/fixtures/ratio-models.js";
 import { renderBook } from "../src/publishing/book.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import type { MathBook } from "../src/publishing/schema.js";
 const book: MathBook = {
   id: "ratio-model-model-proof",
@@ -57,6 +58,7 @@ try {
   for (const [width, height] of [
     [320, 568],
     [390, 844],
+    [1024, 768],
     [844, 390],
   ] as const) {
     const page = await browser.newPage({ viewport: { width, height } });
@@ -85,7 +87,10 @@ try {
           body: document.documentElement.scrollHeight - innerHeight,
         };
       });
-      if (result.scroll > 1 || result.overflow || result.body > 1)
+      // Phone landscape only has to stay usable: the reader scrolls there.
+      if (isPhoneLandscape([width, height]))
+        await assertPhoneLandscapeSmoke(page, `Reader ${ratioModels[i]!.id}`);
+      else if (result.scroll > 1 || result.overflow || result.body > 1)
         throw new Error(
           `Reader ${ratioModels[i]!.id} ${width}x${height}: ${JSON.stringify(result)}`,
         );

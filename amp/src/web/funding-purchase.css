@@ -191,22 +191,6 @@
     width: 100%;
   }
 }
-@media (max-height: 500px) and (min-width: 601px) {
-  .funding-center {
-    padding: 10px 20px;
-    gap: 8px;
-  }
-  .funding-heading h1 {
-    font-size: 28px;
-  }
-  .funding-footer {
-    padding-top: 8px;
-  }
-  .funding-center button,
-  .funding-primary {
-    padding: 10px 14px;
-  }
-}
 
 .funding-footer-status {
   grid-column: 1 / -1;

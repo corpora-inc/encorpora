@@ -8,6 +8,7 @@ import { consentFixture as policy } from "../tests/parent-consent.fixture.js";
 import { noticeDigest } from "../src/parent-consent/crypto.js";
 import type { ConsentView } from "../src/parent-consent/contracts.js";
 import { retentionNotice } from "../src/family/contracts.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const auth = `const listeners=new Set();window.authFragment=location.hash;window.consentApp={emit(s){for(const f of listeners)f(s)}};export async function accessSession(){return {token:'fixture',accountId:'parent'}};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
 const vite = await createServer({
@@ -36,8 +37,11 @@ try {
   for (const [width, height] of [
     [320, 568],
     [390, 844],
+    [1024, 768],
     [844, 390],
   ]) {
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape([width, height]);
     const page = await browser.newPage({ viewport: { width, height } });
     page.setDefaultTimeout(10000);
     const faults: string[] = [];
@@ -134,16 +138,18 @@ try {
     await page
       .getByRole("heading", { name: "Enrollment is unavailable" })
       .waitFor();
-    for (const selector of [
-      ".parent-consent-center header button",
-      ".parent-consent-center footer button",
-    ]) {
-      const box = await page.locator(selector).first().boundingBox();
-      assert.ok(
-        box && box.y >= 0 && box.y + box.height <= height + 1,
-        `${selector} fits ${width}`,
-      );
-    }
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Consent unavailable");
+    else
+      for (const selector of [
+        ".parent-consent-center header button",
+        ".parent-consent-center footer button",
+      ]) {
+        const box = await page.locator(selector).first().boundingBox();
+        assert.ok(
+          box && box.y >= 0 && box.y + box.height <= height + 1,
+          `${selector} fits ${width}`,
+        );
+      }
     await page.screenshot({
       path: `artifacts/consent-app/unavailable-${width}.png`,
     });

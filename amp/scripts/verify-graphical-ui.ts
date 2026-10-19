@@ -13,6 +13,7 @@ import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -166,6 +167,7 @@ try {
     for (const size of [
       { width: 320, height: 568 },
       { width: 390, height: 844 },
+      { width: 1024, height: 768 },
       { width: 844, height: 390 },
     ]) {
       await page.setViewportSize(size);
@@ -201,10 +203,13 @@ try {
           height: stage.clientHeight,
           scroll: stage.scrollHeight,
         }));
-      assert.ok(
-        geometry.scroll <= geometry.height + 2,
-        `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
-      );
+      // Phone landscape only has to stay usable; the others must fit.
+      if (isPhoneLandscape(size)) await assertPhoneLandscapeSmoke(page, id);
+      else
+        assert.ok(
+          geometry.scroll <= geometry.height + 2,
+          `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
+        );
       assert.ok(
         labels.every((l) => l.size >= 11.99),
         `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,

@@ -186,30 +186,6 @@
     padding: 6px;
   }
 }
-@media (max-height: 480px) and (min-width: 600px) {
-  .annual-purchase {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    column-gap: 22px;
-    max-width: 900px;
-  }
-  .annual-header,
-  .annual-sandbox {
-    grid-column: 1 / -1;
-  }
-  .annual-body {
-    grid-column: 1;
-  }
-  .annual-dock {
-    grid-column: 2;
-    grid-row: 3;
-    align-self: center;
-  }
-  .annual-status {
-    justify-content: flex-start;
-  }
-}
 .annual-header {
   height: auto;
   border: 0;
@@ -232,31 +208,4 @@
 .annual-primary {
   font-size: 16px;
   line-height: 1.3;
-}
-@media (max-height: 480px) and (min-width: 600px) {
-  .annual-purchase {
-    grid-template-rows: auto auto auto minmax(0, 1fr);
-  }
-  .annual-body {
-    display: contents;
-  }
-  .annual-learner {
-    grid-column: 1;
-    grid-row: 3;
-  }
-  .annual-plan {
-    grid-column: 1;
-    grid-row: 4;
-    align-self: start;
-  }
-  .annual-status {
-    grid-column: 2;
-    grid-row: 3;
-    padding: 0;
-  }
-  .annual-dock {
-    grid-column: 2;
-    grid-row: 4;
-    align-self: end;
-  }
 }
