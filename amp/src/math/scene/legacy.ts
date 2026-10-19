@@ -8,6 +8,8 @@ export const portedKinds = [
   "clock",
   "coordinate-plane",
   "ten-frame",
+  "base-ten",
+  "unit-array",
 ] as const;
 export type PortedKind = (typeof portedKinds)[number];
 export function isPorted(
@@ -73,6 +75,36 @@ export function legacyScene(
               { count: f.first, shape: "dot", color: "accent" },
               { count: f.second, shape: "square", color: "warm" },
             ],
+          },
+        ],
+      };
+    case "base-ten":
+      return {
+        v: 1,
+        width: 340,
+        elements: [
+          {
+            type: "baseTen",
+            id: "blocks",
+            hundreds: f.hundreds,
+            tens: f.tens,
+            ones: f.ones,
+          },
+        ],
+      };
+    case "unit-array":
+      return {
+        v: 1,
+        width: 340,
+        elements: [
+          {
+            type: "array",
+            id: "array",
+            rows: f.rows,
+            columns: f.columns,
+            ...(f.splitAfterRow
+              ? { splitAfterRow: f.splitAfterRow, regionLabels: true }
+              : {}),
           },
         ],
       };

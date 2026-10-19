@@ -1,6 +1,6 @@
 # RFC: one figure and animation framework
 
-Status: accepted; framework (#1177) and timelines landed, print pass and guide next. Code: `src/math/scene/` (spec, layout, components, author API) and `src/web/scene/` (renderer, player).
+Status: built. Framework #1177, timelines #1186, finish #1191; print review and guide (`figures.md`) follow. Migration of legacy kinds continues. Code: `src/math/scene/` (spec, layout, components, author API) and `src/web/scene/` (renderer, player).
 
 ## Problem
 
@@ -81,8 +81,8 @@ D3 (scales and shapes), JSXGraph and Mafs (interactive plots), and Motion (anima
 
 - Adding a component: one file in `src/math/scene/components/` exports its schema, its type and its `registerComponent` definition, and `components/index.ts` gets one import line and one array entry, kept in alphabetical order. Shared zod building blocks are in `base.ts`.
 - Coexistence: `Figure.tsx` routes ported kinds through `legacyScene()` (`src/math/scene/legacy.ts`). Every other kind keeps its component until it is ported.
-- Ported in PR 1, with side-by-side gallery parity: `number-line`, `clock`, `coordinate-plane`, `ten-frame`.
-- Next, in small PRs, one family at a time, each with a gallery parity card and its existing tests: `base-ten`, `unit-array`, `fraction-strips`/`fraction`, `rational-line`, `bar-chart`, `rectangle`, `right-triangle`, the data displays (`picture-graph`, `scaled-bar-graph`, `line-plot`, `histogram`, `box-plot`), the part-whole and measurement models, the geometry prisms and `quadrant-grid`, and then the lesson illustrations.
+- Ported, each with a side-by-side gallery parity card: `number-line`, `clock`, `coordinate-plane` and `ten-frame` (#1177), then `base-ten` and `unit-array`.
+- Next, in small PRs, one family at a time, each with a gallery parity card and its existing tests, most-used first: `fraction-strips` (13 templates, keeping its `data-piece`/`data-whole` hooks), `line-plot` (9), `partitioned-shapes`, `grouped-counters`, `fraction`, `rational-line`, `bar-chart`, `rectangle`, `right-triangle`, the data displays (`picture-graph`, `scaled-bar-graph`, `line-plot`, `histogram`, `box-plot`), the part-whole and measurement models, the geometry prisms and `quadrant-grid`, and then the lesson illustrations.
 - When a kind's last consumer is ported, its legacy component, its case in `Figure.tsx` and its bespoke animation model are deleted.
 - New families do not add kinds: they emit `{ kind: "scene" }`.
 
@@ -91,6 +91,8 @@ D3 (scales and shapes), JSXGraph and Mafs (interactive plots), and Motion (anima
 The figure-per-kind components, the bespoke lesson-animation stages, per-figure print CSS, and hand-placed label coordinates.
 
 ## Verification
+
+- `npx tsx scripts/scene-print.ts`: every reference scene, plus the walkthroughs' start and final frames, on Letter and A4 pages through the print layout oracle.
 
 - `tests/scene.test.ts`: schema bounds, geometry (equal tick spacing, hop endpoints, proportional regions), exact features, sampling error, half-plane clipping, masking, descriptions, legacy hooks.
 - `npx tsx scripts/scene-gallery.ts`: every reference scene, and every ported kind beside its legacy renderer, at 320, 390, 768 and 1280 px in light and dark (`artifacts/scene-gallery/`). It fails on horizontal overflow, a label outside the view box, overlapping labels, or a label wider than its metric estimate.
