@@ -12,6 +12,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
   NumberSystemIllustration,
   numberSystemIllustrationKinds,
@@ -52,6 +53,14 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "repeating-decimal-shift" ||
+    kind === "root-zoom" ||
+    kind === "root-solutions" ||
+    kind === "decimal-point-shift" ||
+    kind === "scientific-regroup"
+  )
+    return <RealNumberIllustration kind={kind} />;
   if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
     return (
       <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />

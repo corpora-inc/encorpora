@@ -14,6 +14,7 @@ import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { realNumberLessons } from "./real-number-lessons";
 import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
@@ -59,6 +60,11 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "repeating-decimal-shift"
+      | "root-zoom"
+      | "root-solutions"
+      | "decimal-point-shift"
+      | "scientific-regroup"
       | "prime-factor-venn"
       | "gcf-area"
       | "multiple-jumps"
@@ -602,6 +608,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...realNumberLessons,
   ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
