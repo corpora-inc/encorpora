@@ -165,7 +165,11 @@ test(
     });
     try {
       await repository.transaction(account, learner.id, async (tx) => {
-        for (const [index, correct] of [true, false].entries()) {
+        // A correct pick among three options is discounted as a possible
+        // guess (one pick and a miss now place this strand near grade 6.5),
+        // so three correct picks before the miss keep grade-8 work in reach.
+        const outcomes = [true, true, true, false];
+        for (const [index, correct] of outcomes.entries()) {
           const p = generateProblem("relation-function-choice", randomUUID());
           await tx.saveProblem(p);
           await tx.saveAttempt({
@@ -180,7 +184,7 @@ test(
             answer: p.answer,
             explanation: p.explanation,
             createdAt: new Date(
-              Date.now() - (2 - index) * 86400000,
+              Date.now() - (outcomes.length - index) * 86400000,
             ).toISOString(),
           });
         }

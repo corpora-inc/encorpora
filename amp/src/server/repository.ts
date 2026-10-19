@@ -8,6 +8,7 @@ import {
 } from "./trial-progress";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
+import { guessChanceOf } from "../math/guess-chance";
 import {
   estimateFrontier,
   initialLevel,
@@ -389,6 +390,7 @@ export class PgTransaction implements LearnerTransaction {
       },
       strandOf: (id) =>
         skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
+      guessOf: guessChanceOf,
     });
   }
   async recentAttempts() {
