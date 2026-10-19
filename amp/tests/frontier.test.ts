@@ -127,6 +127,26 @@ test("each strand finds its own frontier: a fraction gap does not hold back alge
   );
 });
 
+test("a strand whose material tops out below the learner's level is still probed", () => {
+  // Fractions material ends near grade 6; a grade-7 learner with a fraction gap
+  // must still meet it, or the gap is never found.
+  let found = 0;
+  for (let seed = 1; seed <= 40; seed++) {
+    const { shown, frontier } = simulate(
+      2012,
+      (strand) => (strand === "fractions" ? 3 : 7),
+      30,
+      seed,
+    );
+    assert.ok(
+      shown.some((entry) => entry.strand === "fractions"),
+      `seed ${seed} never showed fractions`,
+    );
+    if (strandLevel(frontier, "fractions") <= 4.5) found++;
+  }
+  assert.ok(found >= 36, `fraction gap found for ${found}/40 learners`);
+});
+
 test("on-level practice stays within a grade of the frontier and keeps mixing strands", () => {
   const { shown } = simulate(2016, () => 3, 30, 11);
   const near = shown.filter((entry) => Math.abs(entry.grade - 3) <= 1).length;
