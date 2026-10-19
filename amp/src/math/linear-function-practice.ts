@@ -29,6 +29,8 @@ import {
 /** Algebra 1: functions, domain and range, average rate of change, linear
  * models, formulas and graphs as solution sets (HSF.IF.A–B, HSA.CED.A,
  * HSA.REI.D.10). Every figure is a scene. */
+/** Money in words: "$" would open a math span in MathText. */
+const usd = (v: number) => (v === 1 ? "1 dollar" : `${v} dollars`);
 const choice = { requiredResponseCapability: "single-choice-v1" as const };
 const scenes = { requiredFigureCapability: "scenes-v1" as const };
 const hs = { version: 1 as const, gradeBand: "9–12" as const };
@@ -331,21 +333,21 @@ function contextDomainRange(r: Random): Case {
     const ctx = pick(r, [
       {
         setup: (cap: number, price: number) =>
-          `A van carries at most ${cap} passengers, and each pays $${price}. The function F(p) = ${price}p gives the fares collected from p passengers.`,
+          `A van carries at most ${cap} passengers, and each pays ${usd(price)}. The function F(p) = ${price}p gives the fares collected from p passengers.`,
         f: "F",
         v: "p",
         unit: "passengers",
       },
       {
         setup: (cap: number, price: number) =>
-          `A bakery bakes ${cap} loaves a day and sells them for $${price} each. The function R(n) = ${price}n gives the money taken for n loaves sold.`,
+          `A bakery bakes ${cap} loaves a day and sells them for ${usd(price)} each. The function R(n) = ${price}n gives the money taken for n loaves sold.`,
         f: "R",
         v: "n",
         unit: "loaves",
       },
       {
         setup: (cap: number, price: number) =>
-          `A ferry takes at most ${cap} cars, and each car pays $${price}. The function T(c) = ${price}c gives the tolls collected for c cars.`,
+          `A ferry takes at most ${cap} cars, and each car pays ${usd(price)}. The function T(c) = ${price}c gives the tolls collected for c cars.`,
         f: "T",
         v: "c",
         unit: "cars",
@@ -378,7 +380,7 @@ function contextDomainRange(r: Random): Case {
             },
             {
               label: `Whole numbers from 0 to ${top}`,
-              feedback: `Each of the ${ctx.unit} adds $${price}, so an amount such as $${price + 1} can never be collected.`,
+              feedback: `Each of the ${ctx.unit} adds ${usd(price)}, so an amount such as ${usd(price + 1)} can never be collected.`,
             },
             {
               label: `All real numbers from 0 to ${top}`,
@@ -823,8 +825,8 @@ function linearModelValue(r: Random): Case {
     const ctx = pick(r, [
       {
         who: "Maya",
-        what: "A gym charges a $F joining fee plus $R per month",
-        did: "Maya has paid $T in all",
+        what: "A gym charges a joining fee of F dollars plus R dollars per month",
+        did: "Maya has paid T dollars in all",
         ask: "For how many months has she been a member?",
         v: "m",
         unit: "months",
@@ -833,8 +835,8 @@ function linearModelValue(r: Random): Case {
       },
       {
         who: "Leo",
-        what: "A plumber charges $F for a visit plus $R per hour",
-        did: "Leo's bill is $T",
+        what: "A plumber charges F dollars for a visit plus R dollars per hour",
+        did: "Leo's bill is T dollars",
         ask: "How many hours did the plumber work?",
         v: "h",
         unit: "hours",
@@ -843,8 +845,8 @@ function linearModelValue(r: Random): Case {
       },
       {
         who: "Ana",
-        what: "A bike rental costs $F plus $R per hour",
-        did: "Ana paid $T",
+        what: "A bike rental costs F dollars plus R dollars per hour",
+        did: "Ana paid T dollars",
         ask: "For how many hours did she rent the bike?",
         v: "h",
         unit: "hours",
@@ -856,18 +858,20 @@ function linearModelValue(r: Random): Case {
       rate = r(ctx.rate[0]!, ctx.rate[1]!),
       k = r(3, ctx.v === "m" ? 14 : 8);
     const total = fee + rate * k;
-    const opening = ctx.what.replace("$F", `$${fee}`).replace("$R", `$${rate}`);
-    const did = ctx.did.replace("$T", `$${total}`);
+    const opening = ctx.what
+      .replace("F dollars", `${usd(fee)}`)
+      .replace("R dollars", `${usd(rate)}`);
+    const did = ctx.did.replace("T dollars", `${usd(total)}`);
     return {
       prompt: `${opening}. ${did}. ${ctx.ask}`,
       answer: rat(k),
       explanation: [
-        `Let ${ctx.v} be the number of ${ctx.unit}. The fixed $${fee} plus $${rate} for each of the ${ctx.v} ${ctx.unit} is the total: ${fee} + ${rate}${ctx.v} = ${total}.`,
+        `Let ${ctx.v} be the number of ${ctx.unit}. The fixed ${usd(fee)} plus ${usd(rate)} for each of the ${ctx.v} ${ctx.unit} is the total: ${fee} + ${rate}${ctx.v} = ${total}.`,
         `Subtract ${fee} from both sides: ${rate}${ctx.v} = ${total - fee}.`,
         `Divide both sides by ${rate}: ${ctx.v} = ${k}.`,
         `Check: ${fee} + ${rate} × ${k} = ${total}.`,
       ],
-      hint: `Call the number of ${ctx.unit} ${ctx.v}: the $${fee} is paid once and the $${rate} is paid ${ctx.v} times, so ${fee} + ${rate}${ctx.v} = ${total}. Undo the one-time $${fee} first.`,
+      hint: `Call the number of ${ctx.unit} ${ctx.v}: the ${usd(fee)} is paid once and the ${usd(rate)} is paid ${ctx.v} times, so ${fee} + ${rate}${ctx.v} = ${total}. Undo the one-time ${usd(fee)} first.`,
       tags: [frame],
     };
   }
@@ -883,7 +887,7 @@ function linearModelValue(r: Random): Case {
       ["Car rental A charges", "Rental B charges", "per day", "days", "d"],
     ] as const);
     return {
-      prompt: `${ctx[0]} $${a1} plus $${b1} ${ctx[2]}. ${ctx[1]} $${a2} plus $${b2} ${ctx[2]}. After how many ${ctx[3]} do they cost the same?`,
+      prompt: `${ctx[0]} ${usd(a1)} plus ${usd(b1)} ${ctx[2]}. ${ctx[1]} ${usd(a2)} plus ${usd(b2)} ${ctx[2]}. After how many ${ctx[3]} do they cost the same?`,
       answer: rat(k),
       explanation: [
         `Let ${ctx[4]} be the number of ${ctx[3]}. The costs are ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}; set them equal: ${a1} + ${b1}${ctx[4]} = ${a2} + ${b2}${ctx[4]}.`,
@@ -920,22 +924,22 @@ function linearModelValue(r: Random): Case {
   }
   const ctx = pick(r, [
     [
-      "A fair charges $E to enter and $R per ride",
-      "Ana has $B",
+      "A fair charges E dollars to enter and R dollars per ride",
+      "Ana has B dollars",
       "What is the greatest number of rides she can take?",
       "rides",
       "r",
     ],
     [
-      "A taxi charges $E plus $R per mile",
-      "Sam has $B",
+      "A taxi charges E dollars plus R dollars per mile",
+      "Sam has B dollars",
       "What is the greatest whole number of miles he can ride?",
       "miles",
       "m",
     ],
     [
-      "A print shop charges $E to set up plus $R per poster",
-      "The club has $B",
+      "A print shop charges E dollars to set up plus R dollars per poster",
+      "The club has B dollars",
       "What is the greatest number of posters it can order?",
       "posters",
       "p",
@@ -946,7 +950,7 @@ function linearModelValue(r: Random): Case {
     k = r(4, 15);
   const B = e + rate * k + r(0, rate - 1);
   return {
-    prompt: `${ctx[0].replace("$E", `$${e}`).replace("$R", `$${rate}`)}. ${ctx[1].replace("$B", `$${B}`)}. ${ctx[2]}`,
+    prompt: `${ctx[0].replace("E dollars", usd(e)).replace("R dollars", usd(rate))}. ${ctx[1].replace("B dollars", usd(B))}. ${ctx[2]}`,
     answer: rat(k),
     explanation: [
       `Let ${ctx[4]} be the number of ${ctx[3]}. The cost may not exceed the money available: ${e} + ${rate}${ctx[4]} ≤ ${B}.`,
@@ -967,7 +971,7 @@ function linearModelEquation(r: Random): Case {
       y: "F",
       x: "d",
       say: (b: number, m: number) =>
-        `A taxi charges $${b} plus $${m} per mile. F is the fare, in dollars, for a ride of d miles.`,
+        `A taxi charges ${usd(b)} plus ${usd(m)} per mile. F is the fare, in dollars, for a ride of d miles.`,
       yName: "fare F, in dollars",
       xName: "miles d",
     },

@@ -40,6 +40,7 @@ from angle_triangle_math_oracle import ANGLE_TRIANGLE, CHOICE_TYPES as ANGLE_TRI
 from real_number_math_oracle import REAL_NUMBER, REAL_NUMBER_CHOICE, solve_real_number, review_real_number_fixtures, review_problem as review_real_number_problem, review_real_number_content, review_content_mutations as review_real_number_mutations
 from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve_number_system, review_number_system_fixtures, review_problem as review_number_system_problem, review_number_system_content, review_content_mutations as review_number_system_mutations
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
+from two_variable_math_oracle import TWO_VARIABLE, TWO_VARIABLE_CHOICE, solve_two_variable, review_two_variable_fixtures, review_problem as review_two_variable_problem, review_two_variable_content, review_content_mutations as review_two_variable_mutations
 from linear_function_math_oracle import LINEAR_FUNCTION, LINEAR_FUNCTION_CHOICE, solve_linear_function, review_linear_function_fixtures, review_problem as review_linear_function_problem, review_linear_function_content, review_content_mutations as review_linear_function_mutations
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
@@ -74,6 +75,7 @@ SUPPORTED = frozenset({
 SUPPORTED = ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES
 SUPPORTED |= FACTORING
 SUPPORTED |= LINEAR_FUNCTION
+SUPPORTED |= TWO_VARIABLE
 
 
 def require(condition, message):
@@ -87,6 +89,8 @@ SUPPORTED |= ABSOLUTE_VALUE
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in TWO_VARIABLE:
+        return solve_two_variable(public)
     if template in LINEAR_FUNCTION:
         return solve_linear_function(public)
     if template in ANGLE_TRIANGLE:
@@ -358,6 +362,8 @@ def solve(public):
 
 
 def review(stream):
+    review_two_variable_fixtures()
+    review_two_variable_mutations()
     review_linear_function_fixtures()
     review_linear_function_mutations()
     review_angle_triangle_fixtures()
@@ -470,6 +476,8 @@ def review(stream):
             review_statistics_explanation(problem)
         if template in PATTERN_FUNCTION:
             review_pattern_function_problem(problem)
+        if template in TWO_VARIABLE:
+            review_two_variable_problem(problem)
         if template in LINEAR_FUNCTION:
             review_linear_function_problem(problem)
         if template in EQUATIONS:
@@ -502,7 +510,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -524,6 +532,7 @@ def review(stream):
     print('Independent number-system content: ' + json.dumps(review_number_system_content()), file=sys.stderr)
     print('Independent multiply-divide coverage: ' + json.dumps(multiply_divide_corpus.finish()), file=sys.stderr)
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
+    print('Independent Algebra 1 two-variable content: ' + json.dumps(review_two_variable_content()), file=sys.stderr)
     print('Independent Algebra 1 function content: ' + json.dumps(review_linear_function_content()), file=sys.stderr)
     print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)

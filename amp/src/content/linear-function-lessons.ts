@@ -40,7 +40,7 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Domain and range in a situation",
         paragraphs: [
-          "A formula may accept every real number while the situation does not. If a van carries at most 12 passengers who pay $5 each, the fares are F(p) = 5p for p = 0, 1, 2, …, 12: the domain is the whole numbers from 0 to 12, and the range is the multiples of 5 from 0 to 60.",
+          "A formula may accept every real number while the situation does not. If a van carries at most 12 passengers who pay 5 dollars each, the fares are F(p) = 5p for p = 0, 1, 2, …, 12: the domain is the whole numbers from 0 to 12, and the range is the multiples of 5 from 0 to 60.",
           "A quantity that changes continuously, such as time or volume, takes every value in between. A 600-liter tank that drains at 25 liters per minute has W(t) = 600 − 25t, which reaches 0 when t = 600 ÷ 25 = 24. Its domain is 0 ≤ t ≤ 24 and its range is 0 ≤ W ≤ 600.",
         ],
       },
@@ -122,7 +122,7 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Starting amount and rate",
         paragraphs: [
-          "A taxi charges $3 plus $2 per mile. The $3 is paid once, whatever the distance: it is the starting amount, the fare when d = 0. The $2 is paid once for each mile: it is the rate, and it multiplies d. So F = 2d + 3.",
+          "A taxi charges 3 dollars plus 2 dollars per mile. The 3 dollars is paid once, whatever the distance: it is the starting amount, the fare when d = 0. The 2 dollars is paid once for each mile: it is the rate, and it multiplies d. So F = 2d + 3.",
           "On the graph, the starting amount is where the line meets the F-axis, (0, 3), and the rate is the rise for each step of 1 to the right: 2. In a table, the rate is the change from one column to the next when d goes up by 1, and the starting amount is found by working back to d = 0.",
         ],
         illustration: "linear-model-graph",
@@ -130,14 +130,14 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Solve the model",
         paragraphs: [
-          "To answer a question, write the equation the question states. If the fare was $19: 2d + 3 = 19, so 2d = 16 and d = 8 miles. If two plans cost 30 + 12m and 6 + 18m dollars, they cost the same when 30 + 12m = 6 + 18m: 24 = 6m, so m = 4 months.",
-          "Words such as “at most” and “no more than” give an inequality. With $25 for the taxi: 2d + 3 ≤ 25, so d ≤ 11. When the variable counts whole things, the answer is the greatest whole number that fits.",
+          "To answer a question, write the equation the question states. If the fare was 19 dollars: 2d + 3 = 19, so 2d = 16 and d = 8 miles. If two plans cost 30 + 12m and 6 + 18m dollars, they cost the same when 30 + 12m = 6 + 18m: 24 = 6m, so m = 4 months.",
+          "Words such as “at most” and “no more than” give an inequality. With 25 dollars for the taxi: 2d + 3 ≤ 25, so d ≤ 11. When the variable counts whole things, the answer is the greatest whole number that fits.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A gym charges a $40 joining fee plus $25 per month. Maya has paid $315 in all. For how many months has she been a member?",
+        "A gym charges a joining fee of 40 dollars plus 25 dollars per month. Maya has paid 315 dollars in all. For how many months has she been a member?",
       steps: [
         "Let m be the number of months: 40 + 25m = 315.",
         "Subtract 40: 25m = 275. Divide by 25: m = 11.",
@@ -147,7 +147,7 @@ export const linearFunctionLessons: Lesson[] = [
     },
     pitfalls: [
       "Do not multiply the one-time amount by the variable: the fee is paid once, the rate is paid for each unit.",
-      "Do not add the fee and the rate into one rate: $3 plus $2 per mile is not $5 per mile.",
+      "Do not add the fee and the rate into one rate: 3 dollars plus 2 dollars per mile is not 5 dollars per mile.",
       "For “at most”, round down to a whole number that still fits; check it and the next one.",
     ],
     parentGuide:
