@@ -1,3 +1,4 @@
+import { distributionPrinciples } from "./distribution-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
@@ -22,6 +23,7 @@ export const principles: Record<string, string> = {
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
+  ...distributionPrinciples,
   ...radicalPrinciples,
   ...comparisonPrinciples,
   ...combinatoricsPrinciples,

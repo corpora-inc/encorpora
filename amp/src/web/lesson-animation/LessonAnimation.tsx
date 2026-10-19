@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
-import { animationFrames, type AnimationModel } from "./model";
+import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
 import "./animation.css";
-import { LinePlotAxis, Mark } from "../DataDisplayFigure";
+import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
@@ -69,6 +69,10 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
           <ArrayModel model={model} step={current} />
         ) : model.kind === "line-plot-stack" ? (
           <StackModel model={model} step={current} />
+        ) : model.kind === "mean-balance" ? (
+          <BalanceModel model={model} step={current} />
+        ) : model.kind === "box-build" ? (
+          <BoxBuildModel model={model} step={current} />
         ) : model.kind === "line-plot-share" ? (
           <ShareModel model={model} step={current} />
         ) : (
@@ -572,6 +576,125 @@ function ShareModel({
           </g>
         );
       })}
+    </>
+  );
+}
+
+/** The mean as a balance point: the data sit on a beam; off the mean it tips. */
+function BalanceModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "mean-balance" }>;
+  step: number;
+}) {
+  const layout = linePlotLayout(model.figure, 320);
+  const { values } = model.figure;
+  const mean = values.reduce((a, b) => a + b, 0) / values.length;
+  const torque = values.reduce((a, v) => a + (v - model.trial), 0);
+  const tilt =
+    step === 1
+      ? Math.sign(torque) *
+        Math.min(9, 3 + (6 * Math.abs(torque)) / values.length)
+      : 0;
+  const pivot = step === 2 ? mean : model.trial;
+  const origin = `${layout.x(model.trial)}px ${layout.axisY}px`;
+  return (
+    <>
+      <text x="6" y="16" style={{ fontSize: 14 }}>
+        {model.figure.unit}
+      </text>
+      <g
+        className="animation-move"
+        style={{
+          transform: `rotate(${tilt}deg)`,
+          transformBox: "view-box",
+          transformOrigin: origin,
+        }}
+      >
+        <LinePlotAxis layout={layout} labelGap={20} />
+        {layout.marks.map((m, i) => (
+          <Mark key={i} kind="dot" cx={m.cx} cy={m.cy} />
+        ))}
+      </g>
+      <g
+        data-pivot={pivot}
+        className="animation-move animation-fade"
+        style={{
+          transform: `translateX(${layout.x(pivot) - layout.x(model.trial)}px)`,
+          opacity: step ? 1 : 0,
+          transition:
+            "transform 900ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
+        }}
+      >
+        <path
+          d={`M${layout.x(model.trial)} ${layout.axisY + 2} l7 13 h-14 Z`}
+          fill="var(--color-figure-warm)"
+          stroke="var(--color-figure-paper)"
+          strokeWidth={1.5}
+        />
+      </g>
+    </>
+  );
+}
+/** Quartile lines split the ordered dots; the box rises over the middle half. */
+function BoxBuildModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "box-build" }>;
+  step: number;
+}) {
+  const layout = linePlotLayout(model.figure, 320);
+  const q = fiveNumbers(model.figure.values);
+  const box = {
+    top: 34,
+    bottom: layout.axisY - 6,
+    min: layout.x(q.min),
+    q1: layout.x(q.q1),
+    median: layout.x(q.median),
+    q3: layout.x(q.q3),
+    max: layout.x(q.max),
+  };
+  return (
+    <>
+      <text x="6" y="16" style={{ fontSize: 14 }}>
+        {model.figure.unit}
+      </text>
+      <g className="animation-fade" style={{ opacity: step === 2 ? 0.85 : 0 }}>
+        <BoxMarks box={box} />
+      </g>
+      <LinePlotAxis layout={layout} />
+      {layout.marks.map((m, i) => (
+        <Mark key={i} kind="dot" cx={m.cx} cy={m.cy} />
+      ))}
+      <g className="animation-fade" style={{ opacity: step === 1 ? 1 : 0 }}>
+        {[
+          [q.q1, "Q1"],
+          [q.median, "M"],
+          [q.q3, "Q3"],
+        ].map(([v, name]) => (
+          <g key={name} data-quartile={name}>
+            <line
+              x1={layout.x(v as number)}
+              x2={layout.x(v as number)}
+              y1={28}
+              y2={layout.axisY}
+              stroke="var(--color-figure-warm)"
+              strokeWidth={2}
+              strokeDasharray="5 4"
+            />
+            <text
+              x={layout.x(v as number)}
+              y={22}
+              textAnchor="middle"
+              style={{ fontSize: 13 }}
+            >
+              {name}
+            </text>
+          </g>
+        ))}
+      </g>
     </>
   );
 }

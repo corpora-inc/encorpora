@@ -1,3 +1,4 @@
+import { distributionMethods } from "./distribution-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
@@ -25,6 +26,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...polynomialMethods,
   ...earlyDataMethods,
   ...linePlotMethods,
+  ...distributionMethods,
   ...radicalMethods,
   ...comparisonMethods,
   ...combinatoricsMethods,
