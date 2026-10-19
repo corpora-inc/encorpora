@@ -101,41 +101,6 @@ test("animation models conserve the quantities in real lesson examples", () => {
   ]);
 });
 
-test("geometry models follow the lesson example's own figure", () => {
-  for (let i = 0; i < 60; i++) {
-    for (const id of ["unit-cube-volume", "cube-layer-count"]) {
-      const lesson = problemLesson(id, `animation-${i}`);
-      const model = animationModel(lesson);
-      assert(model?.kind === "prism-layers", id);
-      const { length: l, width: w, height: h } = model.figure;
-      const frames = animationFrames(model);
-      assert.equal(frames.length, 3);
-      assert.equal(
-        Number(lesson.example.answer),
-        id === "unit-cube-volume" ? l * w * h : l * w,
-      );
-      assert.equal(
-        frames[2]!.math,
-        `$V = ${l * w} \\times ${h} = ${l * w * h}$ cubic units`,
-      );
-    }
-    const lesson = problemLesson(
-      "first-quadrant-coordinates",
-      `animation-${i}`,
-    );
-    const model = animationModel(lesson);
-    assert(model?.kind === "quadrant-walk");
-    const { x, y } = model.figure.points[0]!;
-    assert.equal(lesson.example.answer, `(${x}, ${y})`);
-    assert.equal(animationFrames(model)[2]!.math, `$(${x}, ${y})$`);
-  }
-  // Locating among several points has no single path to trace.
-  assert.equal(
-    animationModel(problemLesson("first-quadrant-locate", "animation")),
-    null,
-  );
-});
-
 test("incompatible or invalid figures fall back to the ordinary lesson figure", () => {
   const lesson = problemLesson("fraction-model", "animation");
   assert.equal(animationModel({ ...lesson, templateId: "other" }), null);

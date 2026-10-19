@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { geometryScene } from "./geometry-scenes.js";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -80,7 +81,7 @@ export const polygonTemplates: readonly TemplateMetadata[] = definitions.map(
     description,
     version: 1,
     gradeBand: skillId === "polygon-properties" ? "K–2" : "3–5",
-    requiredFigureCapability: "shape-figures-v1",
+    requiredFigureCapability: "scenes-v1",
     ...(choice
       ? { requiredResponseCapability: "single-choice-v1" as const }
       : {}),
@@ -798,7 +799,7 @@ export function generatePolygonProblem(
       prompt,
       skillId: meta.skillId,
       response,
-      ...(figure ? { figure } : {}),
+      ...(figure ? { figure: geometryScene(figure) } : {}),
     },
     answer,
     hint,

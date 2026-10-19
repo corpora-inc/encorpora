@@ -22,8 +22,6 @@ import {
   leftLayout,
   rightLayout,
 } from "../EquationFigure";
-import { IsoBox } from "../GeometryFigure";
-import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
 import {
   ArrayBuildStage,
@@ -35,7 +33,6 @@ import {
   MakeTenThreeStage,
   TapeJoinStage,
 } from "./EarlyOperationsAnimation";
-import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
@@ -66,8 +63,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       );
     case "area-model":
       return <AreaModelAnimation model={model} step={step} />;
-    case "shape-morph":
-      return <ShapeMorphStage model={model} step={step} />;
     case "plot":
       return <PlotModel model={model} step={step} />;
     case "clock-sweep":
@@ -76,10 +71,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <DecimalFillStage model={model} step={step} />;
     case "decimal-align":
       return <DecimalAlignStage model={model} step={step} />;
-    case "prism-layers":
-      return <PrismLayersModel model={model} step={step} />;
-    case "quadrant-walk":
-      return <QuadrantWalkModel model={model} step={step} />;
     case "line-plot-stack":
       return <StackModel model={model} step={step} />;
     case "line-plot-share":
@@ -1283,142 +1274,6 @@ function ShareModel({
           </g>
         );
       })}
-    </>
-  );
-}
-
-/** Unit cubes fill the prism one layer at a time; every layer is identical. */
-function PrismLayersModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "prism-layers" }>;
-  step: number;
-}) {
-  const { length: l, width: w, height: h } = model.figure;
-  const { unit, origin } = isoFit(l, w, h, {
-    width: 250,
-    height: 196,
-    pad: 8,
-  });
-  const project = (x: number, y: number, z: number) =>
-    isoPoint(x, y, z, unit, origin);
-  return (
-    <>
-      {Array.from({ length: h }, (_, k) => {
-        const shown = k === 0 || step > 0;
-        const label = project(l, 0, k + 0.5);
-        return (
-          <g key={k} data-layer={k}>
-            <g
-              className="animation-move animation-fade"
-              style={{
-                opacity: shown ? 1 : 0,
-                transform: `translateY(${shown ? 0 : -36}px)`,
-                transitionDelay: step === 1 ? `${(k - 1) * 160}ms` : "0ms",
-              }}
-            >
-              <IsoBox at={[0, 0, k]} size={[l, w, 1]} grid project={project} />
-            </g>
-            <text
-              x={label.x + 12}
-              y={label.y + 5}
-              className="animation-fade"
-              style={{ opacity: step === 2 ? 1 : 0 }}
-            >
-              {k + 1}
-            </text>
-          </g>
-        );
-      })}
-    </>
-  );
-}
-
-/** A path traced from the origin: across by the first coordinate, then up. */
-function QuadrantWalkModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "quadrant-walk" }>;
-  step: number;
-}) {
-  const { size } = model.figure,
-    { x: px, y: py } = model.figure.points[0]!;
-  const cell = Math.min(26, 166 / size),
-    left = 160 - (cell * size) / 2,
-    bottom = 184;
-  const x = (n: number) => left + n * cell,
-    y = (n: number) => bottom - n * cell;
-  const ticks = Array.from({ length: size + 1 }, (_, i) => i);
-  return (
-    <>
-      {ticks.map((n) => (
-        <g key={n}>
-          <line
-            x1={x(n)}
-            x2={x(n)}
-            y1={y(0)}
-            y2={y(size)}
-            className="animation-gridline"
-          />
-          <line
-            x1={x(0)}
-            x2={x(size)}
-            y1={y(n)}
-            y2={y(n)}
-            className="animation-gridline"
-          />
-        </g>
-      ))}
-      <path
-        d={`M${x(0)} ${y(0)} H${x(size)} M${x(0)} ${y(0)} V${y(size)}`}
-        className="animation-outline"
-        strokeWidth="2"
-      />
-      <text x={x(0) - 8} y={y(0) + 14} textAnchor="end">
-        0
-      </text>
-      <text x={x(size) + 6} y={y(0) + 5}>
-        x
-      </text>
-      <text x={x(0)} y={y(size) - 6} textAnchor="middle">
-        y
-      </text>
-      <path
-        d={`M${x(0)} ${y(0)} H${x(px)}`}
-        pathLength={1}
-        className="animation-trace"
-        style={{ strokeDashoffset: step > 0 ? 0 : 1 }}
-      />
-      <path
-        d={`M${x(px)} ${y(0)} V${y(py)}`}
-        pathLength={1}
-        className="animation-trace"
-        style={{ strokeDashoffset: step > 1 ? 0 : 1 }}
-      />
-      <text
-        x={(x(0) + x(px)) / 2}
-        y={y(0) + 16}
-        textAnchor="middle"
-        className="animation-fade"
-        style={{ opacity: step > 0 ? 1 : 0 }}
-      >
-        {px}
-      </text>
-      <text
-        x={x(px) + 8}
-        y={(y(0) + y(py)) / 2 + 5}
-        className="animation-fade"
-        style={{ opacity: step > 1 ? 1 : 0 }}
-      >
-        {py}
-      </text>
-      <circle cx={x(0)} cy={y(0)} r="5" className="animation-origin" />
-      <circle cx={x(px)} cy={y(py)} r="6" className="animation-point" />
-      <text x={x(px) + 9} y={y(py) - 8} className="animation-point-label">
-        {step > 1 ? `P (${px}, ${py})` : "P"}
-      </text>
     </>
   );
 }

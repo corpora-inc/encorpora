@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { geometryScene } from "./geometry-scenes.js";
+import type { Scene } from "./scene/spec.js";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -71,7 +73,7 @@ export const volumeCoordinateTemplates: readonly TemplateMetadata[] =
     description,
     version: 1,
     gradeBand: "3–5",
-    requiredFigureCapability: "volume-coordinate-figures-v1",
+    requiredFigureCapability: "scenes-v1",
     ...(choice
       ? { requiredResponseCapability: "single-choice-v1" as const }
       : {}),
@@ -114,7 +116,8 @@ export function generateVolumeCoordinateProblem(
     explanation: string[] = [],
     figure: SemanticFigure,
     choices: Choice[] | undefined,
-    keepOrder = false;
+    keepOrder = false,
+    edit: ((scene: Scene) => Scene) | undefined;
   switch (templateId) {
     case "unit-cube-volume":
     case "cube-layer-count": {
@@ -123,6 +126,35 @@ export function generateVolumeCoordinateProblem(
         h = r(2, 4),
         layer = l * w;
       figure = { kind: "cube-prism", length: l, width: w, height: h };
+      // Cubes fill the prism layer by layer: each layer turns warm and its
+      // running total appears beside it (masked in hints).
+      edit = (scene) => ({
+        ...scene,
+        elements: scene.elements.map((e) =>
+          e.type === "isoSolid" && e.solid.form === "cubes"
+            ? { ...e, solid: { ...e.solid, counts: true } }
+            : e,
+        ),
+        steps: Array.from({ length: h }, (_, k) => ({
+          caption:
+            k === 0
+              ? "The bottom layer: count along the length and the width, then multiply. {prism.count.0} cubes."
+              : k === h - 1
+                ? `Layer ${k + 1} is the same. With every layer: {prism.count.${k}} cubes.`
+                : `Layer ${k + 1} is the same: {prism.count.${k}} cubes so far.`,
+          actions: [
+            {
+              do: "fill" as const,
+              target: `prism.layer.${k}`,
+              fill: "warm-fill" as const,
+            },
+            { do: "appear" as const, target: `prism.count.${k}` },
+          ],
+          ...(templateId === "cube-layer-count" && k > 0
+            ? { audience: "lesson" as const }
+            : {}),
+        })),
+      });
       if (templateId === "unit-cube-volume") {
         prompt =
           "Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?";
@@ -305,6 +337,41 @@ export function generateVolumeCoordinateProblem(
         size,
         points: [{ x, y, label: "P" }],
       };
+      // Walk from the origin: across, then up. The distances are derived
+      // from the walk itself, so a hint shows "?" for each.
+      edit = (scene) => ({
+        ...scene,
+        elements: [
+          ...scene.elements.map((e) =>
+            e.type === "graph"
+              ? {
+                  ...e,
+                  slopeTriangles: [
+                    {
+                      from: [0, 0] as [number, number],
+                      to: [x, y] as [number, number],
+                      labels: "derived" as const,
+                      color: "warm" as const,
+                    },
+                  ],
+                }
+              : e,
+          ),
+        ],
+        steps: [
+          {
+            caption:
+              "Go across along the horizontal axis until you are straight below P: {grid.slope.0.run.label}.",
+            actions: [{ do: "trace", target: "grid.slope.0.run" }],
+          },
+          {
+            caption:
+              "Then go straight up to P: {grid.slope.0.rise.label}. Across first, then up.",
+            actions: [{ do: "trace", target: "grid.slope.0.rise" }],
+            audience: "lesson",
+          },
+        ],
+      });
       prompt = "What are the coordinates of point P?";
       hint = `From P, go straight down to the horizontal axis for the first number, then straight left for the second. P is ${x > y ? "farther across than it is up" : "higher up than it is across"}, so check that its first number is the ${x > y ? "larger" : "smaller"} one.`;
       explanation = [
@@ -424,7 +491,7 @@ export function generateVolumeCoordinateProblem(
       prompt,
       skillId: meta.skillId,
       response,
-      figure,
+      figure: geometryScene(figure, edit),
     },
     answer,
     hint,

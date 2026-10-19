@@ -10,6 +10,13 @@ export const portedKinds = [
   "ten-frame",
   "base-ten",
   "unit-array",
+  "plane-shapes",
+  "shape-puzzle",
+  "solid-shape",
+  "cube-prism",
+  "box-prism",
+  "composite-prism",
+  "quadrant-grid",
 ] as const;
 export type PortedKind = (typeof portedKinds)[number];
 export function isPorted(
@@ -22,6 +29,87 @@ export function legacyScene(
   f: Extract<SemanticFigure, { kind: PortedKind }>,
 ): Scene {
   switch (f.kind) {
+    // Geometry figures from before the scene port: the same data, one
+    // component each (stored and offline problems still carry them).
+    case "plane-shapes":
+      return {
+        v: 1,
+        width: f.items.length === 1 ? 320 : 340,
+        elements: [{ type: "shapes", id: "shapes", items: f.items }],
+      };
+    case "shape-puzzle":
+      return {
+        v: 1,
+        width: 340,
+        elements: [
+          {
+            type: "shapePuzzle",
+            id: "puzzle",
+            outline: f.outline,
+            placed: f.placed,
+            candidates: f.candidates,
+          },
+        ],
+      };
+    case "solid-shape":
+      return {
+        v: 1,
+        width: 320,
+        elements: [{ type: "solid", id: "solid", solid: f.solid }],
+      };
+    case "cube-prism":
+      return {
+        v: 1,
+        width: 320,
+        elements: [
+          {
+            type: "isoSolid",
+            id: "prism",
+            solid: {
+              form: "cubes",
+              length: f.length,
+              width: f.width,
+              height: f.height,
+            },
+          },
+        ],
+      };
+    case "box-prism":
+      return {
+        v: 1,
+        width: 320,
+        elements: [
+          {
+            type: "isoSolid",
+            id: "prism",
+            solid: {
+              form: "box",
+              length: f.length,
+              width: f.width,
+              height: f.height,
+            },
+          },
+        ],
+      };
+    case "composite-prism":
+      return {
+        v: 1,
+        width: 320,
+        elements: [
+          {
+            type: "isoSolid",
+            id: "prism",
+            solid: {
+              form: "composite",
+              width: f.width,
+              parts: f.parts,
+              unit: f.unit,
+            },
+          },
+        ],
+      };
+    case "quadrant-grid":
+      return quadrantScene(f.size, f.points);
     case "number-line":
       return {
         v: 1,
@@ -109,4 +197,32 @@ export function legacyScene(
         ],
       };
   }
+}
+
+/** The first quadrant with every whole-number gridline labeled. */
+export function quadrantScene(
+  size: number,
+  points: { x: number; y: number; label: string }[],
+  extra: Scene["elements"] = [],
+  steps?: Scene["steps"],
+): Scene {
+  return {
+    v: 1,
+    width: 320,
+    maxHeight: 320,
+    elements: [
+      {
+        type: "graph",
+        id: "grid",
+        x: [0, size],
+        y: [0, size],
+        aspect: 1,
+        grid: 1,
+        labels: "all",
+        points: points.map((p) => ({ x: p.x, y: p.y, label: p.label })),
+      },
+      ...extra,
+    ],
+    ...(steps ? { steps } : {}),
+  };
 }
