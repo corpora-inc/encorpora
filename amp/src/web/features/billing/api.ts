@@ -11,6 +11,7 @@ import {
 } from "../../../billing/stripe/enrollment-contracts";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { paymentUrl } from "./payment-url";
+import { flush, visitorId } from "../../lib/analytics";
 
 const billingKey = (identity: string) =>
   ["account", identity, "billing"] as const;
@@ -80,6 +81,8 @@ function go(url: string, host: "checkout.stripe.com" | "billing.stripe.com") {
     error.log();
     throw error;
   }
+  // Send buffered funnel events before the page unloads.
+  flush();
   window.location.assign(destination);
 }
 
@@ -96,6 +99,8 @@ export function useEnrollmentCheckout(session: AuthSession) {
       const send = (requestId: string) =>
         request("/billing/enrollment/checkout", z.object({ url: z.string() }), {
           token: session.token,
+          // Attributes a verified purchase to this browser's funnel visit.
+          headers: { "X-AMP-Visitor": visitorId() },
           body: {
             requestId,
             offerId: input.offer.id,

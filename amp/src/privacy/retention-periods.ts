@@ -19,6 +19,10 @@ export const RETENTION = {
   financialRecordYears: 7,
   /** Offline packs and their offline answers, after the pack expires. */
   offlinePackDaysAfterExpiry: 30,
+  /** Funnel analytics events, from when they occurred, and visitor records,
+   * from their last event. A converted visitor's events leave only monthly
+   * aggregate counts with no visitor ID. */
+  funnelEventDays: 90,
   /** Privacy activity log. */
   privacyAuditDays: 90,
 } as const;

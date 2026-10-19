@@ -252,6 +252,9 @@ async function serve(page: Page, state: State, faults: string[]) {
       };
       return route.fulfill({ json: { assigned: true } });
     }
+    // First-party funnel beacons (verified in verify-funnel-ui).
+    if (path === "/events")
+      return route.fulfill({ status: 202, json: { accepted: 1 } });
     // The practice screen loads after the flow ends; it is not under test here.
     if (["/catalog", "/books"].includes(path) || path.startsWith("/learners/"))
       return route.fulfill({ status: 503, json: { error: "fixture_end" } });

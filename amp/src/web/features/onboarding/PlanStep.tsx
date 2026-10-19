@@ -1,8 +1,9 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Link, Navigate } from "@tanstack/react-router";
+import { Link, Navigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { signOut, type AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
+import { chosenPlan, forgetPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
 import { frameCard } from "../../ui/PageFrame";
@@ -19,6 +20,7 @@ import {
 } from "../billing";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
+import { track } from "../../lib/analytics";
 
 const exitFailed =
   "Sign-out didn’t finish. Check your connection and try again.";
@@ -28,7 +30,15 @@ const names = { year: "annual", month: "monthly" } as const;
  * Plan choice with the direct notice and an explicit parent acknowledgement.
  * Paying is the verified parental consent; no learner details are asked for.
  */
-export function PlanStep({ session }: { session: AuthSession }) {
+export function PlanStep({
+  session,
+  trial = false,
+}: {
+  session: AuthSession;
+  /** The parent has no purchase yet and can return to free practice. */
+  trial?: boolean;
+}) {
+  const search = useSearch({ from: "/start/plan" });
   const enrollment = useQuery(enrollmentOptions(session));
   const available = enrollment.data?.available;
   const offers = useQuery({
@@ -44,9 +54,13 @@ export function PlanStep({ session }: { session: AuthSession }) {
     mutationFn: signOut,
     onError: () => new AppError("unavailable", exitFailed, true).log(),
   });
-  const [interval, chooseInterval] = useState<"year" | "month">("year");
+  // The plan chosen on the free-trial paywall, if any, stays selected.
+  const [interval, chooseInterval] = useState<"year" | "month">(
+    () => search.interval ?? chosenPlan() ?? "year",
+  );
   const [acknowledged, setAcknowledged] = useState<string | null>(null);
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
+  useEffect(() => track("plan_view"), []);
   // Back from Stripe restores this page from the browser cache: re-read the
   // enrollment and drop the finished "opening checkout" state.
   useEffect(() => {
@@ -174,6 +188,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
         interval={offer.interval}
         disabled={!!pending || checkout.isPending}
         onChange={(next) => {
+          track("plan_select", { interval: next });
           chooseInterval(next);
           checkout.reset();
         }}
@@ -206,6 +221,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
               variant="primary"
               disabled={!agreed || checkout.isPending}
               onClick={() => {
+                track("checkout_start", { interval: offer.interval });
                 const requestId = (requests.current[offer.interval] ??=
                   crypto.randomUUID());
                 checkout.mutate(
@@ -217,6 +233,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
                       (requests.current[offer.interval] = crypto.randomUUID()),
                   },
                   {
+                    onSuccess: forgetPlanChoice,
                     onError: (error) => {
                       // A refused request is closed; an ambiguous one may retry.
                       if (
@@ -239,6 +256,15 @@ export function PlanStep({ session }: { session: AuthSession }) {
           <p className={styles.fine}>
             Stripe handles payment. You’ll add your learner right after.
           </p>
+          {trial && (
+            <Link
+              to="/try/map"
+              className={`${buttonClass("quiet")} ${styles.textLink}`}
+              onClick={forgetPlanChoice}
+            >
+              Back to free practice
+            </Link>
+          )}
         </>
       )}
     </section>

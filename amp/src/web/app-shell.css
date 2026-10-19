@@ -140,18 +140,36 @@
 }
 
 .app-loading {
-  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+}
+.app-loading-bar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 64px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.app-loading-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  color: var(--ink);
-  font: 16px system-ui;
+  gap: 12px;
+  padding: 16px;
+  text-align: center;
 }
-.app-loading strong {
-  font-size: 28px;
-  letter-spacing: -1px;
+.app-loading-body p {
+  margin: 0;
+  max-width: 32ch;
+  line-height: 1.5;
 }
 .shell.family-shell .family-center {
   grid-template-columns: minmax(0, 1fr);

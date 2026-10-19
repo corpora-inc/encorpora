@@ -240,7 +240,7 @@ nav button {
   height: 52px;
 }
 .workspace-answer-row input[readonly] {
-  background: #f4f5ef;
+  background: var(--surface-2);
 }
 .answer-action {
   flex: none;
@@ -381,12 +381,12 @@ nav button {
   margin: 0 0 24px;
 }
 .solution-prompt {
-  color: #486a5e;
+  color: var(--ink-2);
   font-size: 15px;
 }
 .solution-answer {
   font-size: 22px;
-  color: #183e3a;
+  color: var(--ink);
 }
 .solution-panel ol {
   padding-left: 24px;
@@ -794,10 +794,10 @@ nav button {
   min-height: 54px;
   margin: 0;
   padding: 10px;
-  border: 1px solid #c9d5ca;
+  border: 1px solid var(--line-2);
   border-radius: 12px;
-  background: #fffefa;
-  color: #183e3a;
+  background: var(--surface);
+  color: var(--ink);
   font-size: 16px;
   line-height: 1.3;
   cursor: pointer;
@@ -810,13 +810,13 @@ nav button {
   margin: 0;
 }
 .choice-option:has(input:focus-visible) {
-  outline: 3px solid #ab6c17;
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 .answer-dock .choice-option.selected {
-  border-color: #18594f;
-  box-shadow: inset 0 0 0 1px #18594f;
-  background: #eaf1e5;
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+  background: var(--primary-soft);
 }
 .choice-letter {
   flex: none;
@@ -825,13 +825,13 @@ nav button {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #edf0e8;
+  background: var(--surface-2);
   font-size: 12px;
   font-weight: 700;
 }
 .choice-option.selected .choice-letter {
-  background: #18594f;
-  color: white;
+  background: var(--primary);
+  color: var(--on-primary);
 }
 .choice-form fieldset:disabled .choice-option {
   cursor: default;
