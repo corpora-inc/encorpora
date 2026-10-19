@@ -17,6 +17,8 @@ import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 
 type Shown = EnrollmentPhase | "checking" | "unreachable";
+// Action labels stay short enough for one line at 320px with any system
+// font: every phase shares the card's size, so a wrap would resize it.
 const order: Shown[] = [
   "checking",
   "processing",
@@ -94,7 +96,7 @@ export function PurchaseStep({ session }: { session: AuthSession }) {
         : "Payment isn’t complete yet. Continue checkout to finish.",
       action: resume ? (
         <a className={buttonClass("primary")} href={resume}>
-          Continue secure checkout
+          Resume checkout
         </a>
       ) : (
         <Link to="/start/plan" className={buttonClass("primary")}>

@@ -187,7 +187,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
           </p>
           <div className={styles.actions}>
             <a className={buttonClass("primary")} href={resume ?? undefined}>
-              Continue secure checkout
+              Resume checkout
             </a>
           </div>
         </>

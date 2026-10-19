@@ -614,6 +614,17 @@ try {
       );
       await page.getByRole("heading", { name: heading }).waitFor();
       await frames(page);
+      // Every phase's action (shown or reserved) is one line, so phase data
+      // such as a resume link never changes the shared card size.
+      assert.deepEqual(
+        await card.evaluate((node) =>
+          [...node.querySelectorAll("a, button")]
+            .filter((control) => control.getBoundingClientRect().height > 56)
+            .map((control) => control.textContent),
+        ),
+        [],
+        `${phase}: one-line actions`,
+      );
       const current = await box(card);
       if (reference)
         assert.deepEqual(
