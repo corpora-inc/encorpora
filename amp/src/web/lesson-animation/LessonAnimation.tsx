@@ -18,6 +18,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <StackModel model={model} step={step} />;
     case "line-plot-share":
       return <ShareModel model={model} step={step} />;
+    case "make-ten":
+      return <MakeTenModel model={model} step={step} />;
     case "pairing":
       return <PairingModel model={model} step={step} />;
     case "place-compare":
@@ -726,6 +728,109 @@ function QuadrantWalkModel({
       <text x={x(px) + 9} y={y(py) - 8} className="animation-point-label">
         {step > 1 ? `P (${px}, ${py})` : "P"}
       </text>
+    </>
+  );
+}
+
+/** Two ten-frames side by side; step 1 slides the needed squares from the
+ * second frame into the first frame's empty places. */
+function MakeTenModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "make-ten" }>;
+  step: number;
+}) {
+  const { first: a, second: b } = model.figure;
+  const need = 10 - a,
+    size = 29,
+    top = 52,
+    frames = [7, 168];
+  const slot = (frame: number, i: number) => ({
+    x: frames[frame]! + (i % 5) * size,
+    y: top + Math.floor(i / 5) * size,
+  });
+  return (
+    <>
+      {[0, 1].map((frame) => (
+        <g key={frame}>
+          {Array.from({ length: 10 }, (_, i) => {
+            const { x, y } = slot(frame, i);
+            return (
+              <rect
+                key={i}
+                data-slot={`${frame}-${i}`}
+                x={x}
+                y={y}
+                width={size}
+                height={size}
+                className="animation-empty"
+              />
+            );
+          })}
+        </g>
+      ))}
+      {Array.from({ length: a }, (_, i) => {
+        const { x, y } = slot(0, i);
+        return (
+          <circle
+            key={i}
+            data-counter="first"
+            cx={x + size / 2}
+            cy={y + size / 2}
+            r={10}
+            className="animation-fill"
+          />
+        );
+      })}
+      {Array.from({ length: b }, (_, j) => {
+        const from = slot(1, j);
+        const moves = j >= b - need;
+        const to = moves ? slot(0, a + j - (b - need)) : from;
+        return (
+          <g
+            key={j}
+            data-counter="second"
+            data-moves={moves || undefined}
+            className="animation-move"
+            style={{
+              transform: `translate(${step ? to.x - from.x : 0}px, ${step ? to.y - from.y : 0}px)`,
+            }}
+          >
+            <rect
+              x={from.x + 5}
+              y={from.y + 5}
+              width={size - 10}
+              height={size - 10}
+              rx={2}
+              className="animation-warm"
+              strokeWidth={moves && step ? 2.5 : 1}
+            />
+          </g>
+        );
+      })}
+      <rect
+        x={frames[0]! - 3}
+        y={top - 3}
+        width={5 * size + 6}
+        height={2 * size + 6}
+        rx={4}
+        className="animation-outline animation-fade"
+        strokeWidth="3"
+        style={{ opacity: step === 2 ? 1 : 0 }}
+      />
+      {[0, 1].map((frame) => (
+        <text
+          key={frame}
+          x={frames[frame]! + 2.5 * size}
+          y={top + 2 * size + 34}
+          textAnchor="middle"
+          className="animation-fade"
+          style={{ opacity: step === 2 ? 1 : 0 }}
+        >
+          {frame === 0 ? "10" : `${b - need}`}
+        </text>
+      ))}
     </>
   );
 }

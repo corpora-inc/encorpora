@@ -5,6 +5,7 @@ import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
+import { factsPrinciples } from "./facts-lessons";
 import { rationalPrinciples } from "./rational-lessons";
 import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
@@ -28,6 +29,7 @@ export const principles: Record<string, string> = {
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...comparisonPrinciples,
+  ...factsPrinciples,
   ...combinatoricsPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,

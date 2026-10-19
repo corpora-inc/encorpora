@@ -23,9 +23,11 @@ type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
 type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
 type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
+type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 export type AnimationModel =
   | { kind: "prism-layers"; figure: CubePrism }
   | { kind: "quadrant-walk"; figure: Grid }
+  | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
   | AreaAnimation
@@ -60,6 +62,14 @@ export function animationModel(
     f.points.length === 1
   )
     return { kind: "quadrant-walk", figure: f };
+  if (
+    lesson.templateId === "make-ten-fact" &&
+    f?.kind === "ten-frame-pair" &&
+    integer(f.first, 1, 9) &&
+    integer(f.second, 1, 9) &&
+    f.first + f.second > 10
+  )
+    return { kind: "make-ten", figure: f };
   if (
     (lesson.templateId === "name-equal-share" ||
       lesson.templateId === "name-share") &&
@@ -249,6 +259,28 @@ export function animationFrames(model: AnimationModel) {
         title: "Then up",
         text: `Go ${y} up to reach the point: the second coordinate.`,
         math: `$(${x}, ${y})$`,
+      },
+    ];
+  }
+  if (model.kind === "make-ten") {
+    const { first: a, second: b } = model.figure;
+    const need = 10 - a,
+      rest = b - need;
+    return [
+      {
+        title: "Two frames",
+        text: `${a} in the first frame, ${b} in the second.`,
+        math: `$${a} + ${b}$`,
+      },
+      {
+        title: "Fill the first ten",
+        text: `${a} needs ${need} more to make 10. Move ${need} from the second frame.`,
+        math: `$${b} = ${need} + ${rest}$`,
+      },
+      {
+        title: "Ten and the rest",
+        text: `One full ten and ${rest} more. No counter was added or lost.`,
+        math: `$${a} + ${b} = 10 + ${rest} = ${a + b}$`,
       },
     ];
   }
