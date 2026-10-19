@@ -343,8 +343,11 @@ export function PracticeWorkspace(props: Props) {
             className="choice-submit"
             type="submit"
             disabled={busy || (!outcome && !response)}
+            aria-busy={busy}
           >
-            {pending ? "Retry" : "Check"}
+            {/* One label always. A lost connection is explained beside the field,
+                and Check resends the same answer. */}
+            Check
           </button>
         </form>
       );
@@ -393,8 +396,11 @@ export function PracticeWorkspace(props: Props) {
               className="answer-action"
               type="submit"
               disabled={busy || (!outcome && !response.trim())}
+              aria-busy={busy}
             >
-              {pending ? "Retry" : "Check"}
+              {/* One label always. A lost connection is explained beside the field,
+                and Check resends the same answer. */}
+            Check
             </button>
           </div>
           <span id="answer-format" className="sr-only">
