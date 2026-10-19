@@ -65,6 +65,32 @@ export const dataDisplayFigureSchemas = [
           (c) => c.value <= f.max && c.value % halfStep(f.step) === 0,
         ),
     ),
+  z
+    .object({
+      kind: z.literal("line-plot"),
+      /** Values and axis ends count units of 1/denominator. */
+      denominator: z.union([
+        z.literal(1),
+        z.literal(2),
+        z.literal(4),
+        z.literal(8),
+      ]),
+      start: z.number().int().min(0).max(400),
+      end: z.number().int().min(1).max(400),
+      values: z.array(z.number().int().min(0).max(400)).min(3).max(24),
+      mark: z.enum(["x", "dot"]),
+      unit,
+    })
+    .strict()
+    .refine(
+      (f) =>
+        f.end > f.start &&
+        f.end - f.start <= 12 &&
+        f.start % f.denominator === 0 &&
+        f.end % f.denominator === 0 &&
+        f.values.every((v) => v >= f.start && v <= f.end) &&
+        Math.max(...stackHeights(f.values).values()) <= MAX_STACK,
+    ),
 ] as const;
 export const dataDisplayFigureSchema = z.discriminatedUnion(
   "kind",
@@ -155,6 +181,61 @@ export function barGraphLayout(
       top: y(c.value),
       height: bottom - y(c.value),
       center: left + slot * i + slot / 2,
+    })),
+  };
+}
+
+/** A stack taller than this would leave the plot. */
+export const MAX_STACK = 7;
+export function stackHeights(values: readonly number[]) {
+  const heights = new Map<number, number>();
+  for (const v of values) heights.set(v, (heights.get(v) ?? 0) + 1);
+  return heights;
+}
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+/** A tick label as a mixed number: whole part and a reduced proper fraction. */
+export function mixedParts(numerator: number, denominator: number) {
+  const whole = Math.floor(numerator / denominator),
+    rest = numerator % denominator,
+    g = gcd(rest, denominator) || 1;
+  return { whole, n: rest / g, d: denominator / g };
+}
+/** "2 1/4", "3/4" or "2": how prompts and explanations name a plotted value. */
+export function mixedText(numerator: number, denominator: number) {
+  const { whole, n, d } = mixedParts(numerator, denominator);
+  if (!n) return `${whole}`;
+  return whole ? `${whole} ${n}/${d}` : `${n}/${d}`;
+}
+
+/** A line plot: equal tick spacing per 1/denominator; one mark per value,
+ * stacked upward from the axis in equal steps. */
+export function linePlotLayout(
+  figure: Extract<DataDisplayFigure, { kind: "line-plot" }>,
+  width = 360,
+) {
+  const left = 26,
+    right = width - 26,
+    axisY = 148,
+    gap = 18;
+  const x = (v: number) =>
+    left + ((v - figure.start) * (right - left)) / (figure.end - figure.start);
+  const seen = new Map<number, number>();
+  const marks = figure.values.map((value) => {
+    const level = seen.get(value) ?? 0;
+    seen.set(value, level + 1);
+    return { value, level, cx: x(value), cy: axisY - 15 - level * gap };
+  });
+  return {
+    left,
+    right,
+    axisY,
+    x,
+    marks,
+    ticks: Array.from({ length: figure.end - figure.start + 1 }, (_, i) => ({
+      value: figure.start + i,
+      x: x(figure.start + i),
+      major: (figure.start + i) % figure.denominator === 0,
+      ...mixedParts(figure.start + i, figure.denominator),
     })),
   };
 }
