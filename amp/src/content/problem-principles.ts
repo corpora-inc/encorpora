@@ -3,6 +3,7 @@ import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
+import { polygonPrinciples } from "./polygon-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
@@ -33,6 +34,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 export const principles: Record<string, string> = {
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
+  ...polygonPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,

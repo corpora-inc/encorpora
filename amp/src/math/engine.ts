@@ -46,6 +46,7 @@ import {
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
   factArrayTemplates,
   generateFactArrayProblem,
@@ -246,6 +247,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
+  ...polygonTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -422,6 +424,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...shapeTemplates,
+    ...polygonTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
@@ -474,6 +477,8 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (polygonTemplates.some((t) => t.id === templateId))
+    return generatePolygonProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
