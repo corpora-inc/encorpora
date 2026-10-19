@@ -1,5 +1,6 @@
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
+import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -32,6 +33,11 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | DataIllustration
+      | "counting-tree"
+      | "permutation-slots"
+      | "combination-orders"
+      | "independent-grid"
+      | "expected-spinner"
       | "radical-square-grid"
       | "radical-like-lengths"
       | "radical-product-grid"
@@ -530,6 +536,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...earlyDataLessons,
   ...radicalLessons,
+  ...combinatoricsLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,

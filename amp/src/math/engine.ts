@@ -2,6 +2,10 @@ import {
   earlyDataTemplates,
   generateEarlyDataProblem,
 } from "./early-data-practice";
+import {
+  combinatoricsTemplates,
+  generateCombinatoricsProblem,
+} from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import {
   rationalTemplates,
@@ -199,6 +203,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...combinatoricsTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...percentChangeTemplates,
@@ -320,6 +325,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...earlyDataTemplates,
+    ...combinatoricsTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
     ...circleMeasurementTemplates,
@@ -353,6 +359,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (earlyDataTemplates.some((t) => t.id === templateId))
     return generateEarlyDataProblem(templateId, seed);
+  if (combinatoricsTemplates.some((t) => t.id === templateId))
+    return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

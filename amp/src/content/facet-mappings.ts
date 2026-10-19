@@ -1,4 +1,5 @@
 import { earlyDataFacetMappings } from "./early-data-coverage";
+import { combinatoricsFacetMappings } from "./combinatorics-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { rationalFacetMappings } from "./rational-coverage";
 import { circleMeasurementFacetMappings } from "./circle-measurement-coverage";
@@ -14,6 +15,7 @@ import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 export const actualFacetMappings: readonly FacetMapping[] = [
   ...earlyDataFacetMappings,
   ...radicalFacetMappings,
+  ...combinatoricsFacetMappings,
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...integerExponentFacetMappings,
