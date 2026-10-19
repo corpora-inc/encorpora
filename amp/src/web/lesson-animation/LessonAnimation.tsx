@@ -14,6 +14,7 @@ import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
+import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
@@ -22,6 +23,8 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
     case "plot":
       return <PlotModel model={model} step={step} />;
+    case "clock-sweep":
+      return <ClockSweepStage model={model} step={step} />;
     case "decimal-fill":
       return <DecimalFillStage model={model} step={step} />;
     case "decimal-align":

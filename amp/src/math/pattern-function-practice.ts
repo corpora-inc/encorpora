@@ -16,6 +16,8 @@ type Case = {
   explanation: string[];
   figure?: FunctionDisplayFigure;
   tags: string[];
+  /** One teaching step written from this problem's own givens. */
+  hint: string;
 };
 
 const choice = { requiredResponseCapability: "single-choice-v1" as const };
@@ -94,22 +96,6 @@ export const patternFunctionTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-const hints: Record<string, string> = {
-  "rule-pattern-term":
-    "The start is the 1st number. Apply the rule to it to get the 2nd number, apply the rule again to get the 3rd, and keep going until you reach the number asked for.",
-  "rule-pattern-feature":
-    "Write the first five or six numbers, then ask why the feature you see must continue: what does the rule do to odd and even numbers, or to multiples?",
-  "related-patterns-relationship":
-    "Compare the two rules. How many times as large is pattern B's step as pattern A's step? Check your answer on a row of the table.",
-  "dependent-variable-equation":
-    "Decide which variable depends on the other. Then compare the numbers in each row: is the dependent value always a fixed number times the other, or a fixed number more than it?",
-  "dependent-variable-value":
-    "Substitute the value you know for its variable in the equation. If the unknown is multiplied, divide to undo the multiplication; if a number is added to it, subtract.",
-  "compare-function-rates":
-    "For each function, find the rate of change (the change in y divided by the change in x) and the initial value (y when x = 0). Then compare the two rates and the two initial values separately.",
-  "linear-function-choice":
-    "A linear function can be rewritten as $y = mx + b$. Test each rule at x = 1, 2 and 3: a linear rule changes y by the same amount each time.",
-};
 
 function random(id: string, seed: string): Random {
   let counter = 0;
@@ -190,6 +176,7 @@ function ruleTermCase(r: Random): Case {
   return {
     prompt: `A number pattern starts at ${start}. Its rule is “${rule}.” What is the ${ordinal(k)} number in the pattern?`,
     answer,
+    hint: `Write the next number: ${start} ${sign} ${step} = ${terms[1]}. Keep applying “${rule}” to each new number until you reach the ${ordinal(k)} number.`,
     explanation: [
       `The start is the 1st number, ${start}. Each later number comes from applying “${rule}” to the number before it.`,
       `Apply the rule again and again: ${terms.join(", ")}.`,
@@ -301,6 +288,7 @@ function featureCase(r: Random): Case {
   );
   return {
     prompt: `A number pattern starts at ${start}. Its rule is “add ${step}.” Which statement about the pattern is true?`,
+    hint: `List the first numbers: ${terms.slice(0, 4).join(", ")}, … Then ask what adding ${step} does to every number: to odd and even, to multiples, or to the ones digit.`,
     choices,
     explanation,
     tags: [
@@ -339,6 +327,9 @@ function relatedCase(r: Random): Case {
   return {
     prompt: `Pattern A starts at 0. Its rule is “add ${a}.” Pattern B starts at 0. Its rule is “add ${b}.” The table pairs matching terms, and the graph shows each pair as a point (A, B). ${question}`,
     answer: extend ? k * later : k,
+    hint: extend
+      ? `Each step adds ${a} to pattern A and ${b} to pattern B, so every B-term is the same multiple of its A-term. Find that multiple from a row of the table, then apply it to ${later}.`
+      : `Each step adds ${a} to pattern A and ${b} to pattern B. How many times ${a} is ${b}? Check that multiple on a row of the table.`,
     explanation,
     figure: {
       kind: "function-display",
@@ -521,6 +512,9 @@ function equationCase(r: Random): Case {
   ];
   return {
     prompt: `${ctx.intro(c)} The table and graph show ${ctx.shows}. Which equation gives ${y} in terms of ${x}?`,
+    hint: rate
+      ? `Take one row: when ${x} = ${row.x}, ${y} = ${row.y}. Is ${row.y} a fixed number times ${row.x}, or a fixed number more than ${row.x}? Test the same on a second row.`
+      : `The story gives ${c}. Take one row: when ${x} = ${row.x}, ${y} = ${row.y}. Is ${row.y} equal to ${c} times ${row.x}, or ${c} more than ${row.x}?`,
     choices,
     explanation,
     figure: {
@@ -565,6 +559,7 @@ function valueCase(r: Random): Case {
     return {
       prompt: `Mia is always ${c} years older than her brother, so m = b + ${c}, where m is Mia's age and b is her brother's. How old is her brother when Mia is ${mia}?`,
       answer: brother,
+      hint: `Substitute Mia's age for m: ${mia} = b + ${c}. Undo the + ${c}.`,
       explanation: [
         `In m = b + ${c}, Mia's age m depends on her brother's age b. Substitute m = ${mia}: ${mia} = b + ${c}.`,
         `Subtract ${c} from both sides: b = ${mia} − ${c} = ${brother}.`,
@@ -610,6 +605,9 @@ function valueCase(r: Random): Case {
   return {
     prompt,
     answer: forward ? output : input,
+    hint: forward
+      ? `Substitute ${x} = ${input} into ${y} = ${c}${x}, then multiply.`
+      : `Substitute ${y} = ${output} into ${y} = ${c}${x}: ${output} = ${c}${x}. Undo the multiplication by ${c}.`,
     explanation,
     tags: [mode, forward ? "evaluate" : "solve"],
   };
@@ -728,6 +726,18 @@ function compareCase(r: Random): Case {
         : rep === "equation"
           ? `the equation ${equationText(f)}`
           : `a description: its output is ${n(f.b)} when x = 0 and ${f.rise > 0 ? "increases" : "decreases"} by ${Math.abs(f.rise)} for each increase of 1 in x`;
+  const step = (name: "A" | "B", rep: Rep, f: Linear) => {
+    if (rep === "table") {
+      const [u, v] = figure.table!.rows;
+      return `in the table, divide the change in y by the change in x from x = ${u!.x} to x = ${v!.x}, and find y at x = 0`;
+    }
+    if (rep === "graph")
+      return `on graph ${name}, read where the line crosses the vertical axis and how far it rises from x = 0 to x = 4`;
+    if (rep === "equation")
+      return `in ${equationText(f)}, read the coefficient of x and the constant`;
+    return `the description gives the output ${n(f.b)} at x = 0 and the change for each increase of 1 in x`;
+  };
+  const hint = `For A, ${step("A", repA, A)}. For B, ${step("B", repB, B)}. Compare the two rates, then the two initial values, as signed numbers.`;
   const prompt = `Function A is given by ${words("A", repA, A)}. Function B is given by ${words("B", repB, B)}. Which statement compares their rates of change and initial values correctly?`;
   const feedback = (rate: "A" | "B", start: "A" | "B") =>
     [
@@ -754,6 +764,7 @@ function compareCase(r: Random): Case {
   );
   return {
     prompt,
+    hint,
     choices,
     explanation,
     figure,
@@ -882,6 +893,7 @@ function linearCase(r: Random): Case {
     `The other rules ${wantLinear ? "are not linear" : "are linear"}: ${others.map((o) => o.note).join("; ")}.`,
   ];
   return {
+    hint: `Test one rule at x = 1, 2 and 3. For ${others[0]!.text}, find the three values of y: a linear rule changes y by the same amount each time. Then rewrite each other rule in the form $y = mx + b$ if you can.`,
     prompt: wantLinear
       ? "Which equation defines a linear function?"
       : "Which equation defines a function that is not linear?",
@@ -963,7 +975,7 @@ export function patternFunctionPrintCase(
     },
     answer,
     explanation: c.explanation,
-    hint: hints[id]!,
+    hint: c.hint,
     ...(choiceFeedback ? { choiceFeedback } : {}),
   };
   return {

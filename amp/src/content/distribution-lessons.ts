@@ -207,7 +207,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Find the missing value from a mean, the count and the other values.",
     method: [
       "Total of all values = mean × count.",
-      "Subtract the known values from the total.",
+      "Add the values you know.",
+      "The missing value is the total minus that sum.",
     ],
     watch: "Multiply the mean by the full count, including the missing value.",
   },

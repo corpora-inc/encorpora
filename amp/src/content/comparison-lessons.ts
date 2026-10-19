@@ -199,8 +199,8 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
   "greater-numeral": {
     goal: "Given two numbers from 0 to 10, name the greater or the lesser.",
     method: [
-      "Count up from 0.",
-      "The number said later is greater; the one said first is less.",
+      "Count up from 0: 0, 1, 2, 3, …",
+      "The number you say later is greater; the one you say first is less.",
     ],
     watch: "Check whether the question asks for greater or less.",
   },
@@ -208,8 +208,9 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
     goal: "Given two two-digit numbers, name the greater or the lesser.",
     terms: placeTerms,
     method: [
-      "Compare the tens. More tens means greater.",
-      "If the tens match, compare the ones.",
+      "Compare the tens digits. More tens means greater, whatever the ones.",
+      "If the tens match, compare the ones digits.",
+      "Answer the question asked: greater or less.",
     ],
     watch: "More ones never beats more tens: 39 < 41.",
   },
