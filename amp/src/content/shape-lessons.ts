@@ -204,6 +204,8 @@ export const shapeMethods: Record<string, ProblemMethod> = {
       "Find the piece with the same sides and corners, turned if needed.",
       "Check it is the same size as the gap.",
     ],
+    watch:
+      "A piece of the right kind that is bigger, smaller or stretched does not fit.",
   },
   "count-sides-corners": {
     goal: "Given a closed straight-sided shape, count its sides or corners.",

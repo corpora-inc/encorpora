@@ -546,8 +546,18 @@ export function generateShapeProblem(
       const shape = flat(r, target, pick(r, turns), 3);
       figure = { kind: "plane-shapes", items: [{ pieces: [shape] }] };
       prompt = "What is the name of this shape?";
-      hint =
-        "Count the straight sides and the corners. Turning a shape does not change its name.";
+      hint = {
+        circle:
+          "Run your eye along the edge. Is any part of it straight, or is there a corner?",
+        triangle:
+          "Count the corners. Turning the shape does not change how many there are.",
+        square:
+          "Compare the 4 sides: are they all the same length? Then check that every corner is like the corner of a page.",
+        rectangle:
+          "Compare the 4 sides: are two of them longer than the other two? Then check that every corner is like the corner of a page.",
+        hexagon:
+          "Count the straight sides once around. Turning the shape does not change the count.",
+      }[target as "circle" | "triangle" | "square" | "rectangle" | "hexagon"];
       explanation = [
         `The shape has ${sides[target]}.`,
         `A shape with ${sides[target]} is ${article(target)} ${target}, whichever way it is turned.`,
@@ -678,8 +688,14 @@ export function generateShapeProblem(
         sphere: "one curved surface and no flat faces or corners",
       };
       prompt = "What is the name of this solid shape?";
-      hint =
-        "A solid shape is not flat. Look at its faces: are they flat or curved, and is there a point?";
+      hint = {
+        cube: "This shape is solid, not flat. Look at its flat faces: what shape is each one, and are they all the same size?",
+        cone: "This shape is solid, not flat. Look at the top: does it come to a point? What flat face is at the bottom?",
+        cylinder:
+          "This shape is solid, not flat. Look at both ends: what flat face is at each end, and is the side flat or curved?",
+        sphere:
+          "This shape is solid, not flat. Look for a flat face or an edge anywhere on it.",
+      }[target];
       explanation = [
         `This shape is solid, not flat. It has ${describe[target]}.`,
         `A solid with ${describe[target]} is ${article(target)} ${target}.`,
@@ -722,8 +738,7 @@ export function generateShapeProblem(
       const partWord = same && known ? `${n} ${each}s` : `${n} pieces`;
       const result = design.result;
       prompt = `These ${partWord} are put together with no gaps or overlaps. What shape do they make?`;
-      hint =
-        "Trace only the outside edge of the whole picture. Count its straight sides and corners.";
+      hint = `Trace only the outside edge of all ${n} pieces together, skipping the seams inside. Count its straight sides and corners.`;
       const outside = sides[result];
       explanation = [
         `Ignore the lines inside. Around the outside there are ${outside}.`,
@@ -847,8 +862,7 @@ export function generateShapeProblem(
       };
       const right = labels[pieces.findIndex((p) => p.ok)]!;
       prompt = `Which piece fills the empty space to complete the ${design.result}? A piece may be turned.`;
-      hint =
-        "Look at the edges of the empty space. The right piece has the same number of sides, the same lengths and the same corners.";
+      hint = `The empty space has ${local.length} sides. Find the piece with ${local.length} sides of the same lengths, then check it is not bigger, smaller or stretched.`;
       explanation = [
         `The empty space is ${article(gapName)} ${gapName}.`,
         `Piece ${right} is the same ${gapName}, turned. It fits the gap exactly and completes the ${design.result}.`,
@@ -898,8 +912,15 @@ export function generateShapeProblem(
         : "How many sides does this shape have?";
       label = corners ? "Number of corners" : "Number of sides";
       answer = String(n);
-      hint =
-        "Put a finger on one corner. Count as you go around the shape, and stop when you are back where you started.";
+      // A shape with a corner pointing inward gets a hint about that corner.
+      const inward = points.some((v, i) => {
+        const u = points[(i + n - 1) % n]!,
+          w = points[(i + 1) % n]!;
+        return (
+          (v[0] - u[0]) * (w[1] - v[1]) - (v[1] - u[1]) * (w[0] - v[0]) < 0
+        );
+      });
+      hint = `Start at the highest corner and ${corners ? "touch each corner" : "trace each side"} once as you go around; stop when you are back at the start.${inward ? " Corners that point inward count too." : ""}`;
       explanation = [
         `Going around the shape once, there are ${n} straight sides.`,
         `Each side ends at a corner, so a closed shape has as many corners as sides: ${n}.`,

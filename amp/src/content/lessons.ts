@@ -1,5 +1,7 @@
+import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
+import { decimalLessons } from "./decimal-lessons";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -9,6 +11,7 @@ import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import { comparisonLessons } from "./comparison-lessons";
+import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -41,6 +44,21 @@ export interface Lesson {
     paragraphs: string[];
     illustration?:
       | ShapeIllustrationKind
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
+      | "decimal-tenths-hundredths"
+      | "decimal-compare-chart"
+      | "decimal-rounding-line"
+      | "decimal-aligned-sum"
+      | "column-addition"
+      | "base-ten-trade"
+      | "column-subtraction-zero"
+      | "column-multidigit"
       | "volume-layers"
       | "prism-composite"
       | "ordered-pair-path"
@@ -563,9 +581,12 @@ export const lessons: readonly Lesson[] = [
   ...distributionLessons,
   ...radicalLessons,
   ...partWholeLessons,
+  ...decimalLessons,
   ...comparisonLessons,
+  ...addSubtractLessons,
   ...factsLessons,
   ...combinatoricsLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,

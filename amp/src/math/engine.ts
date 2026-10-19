@@ -1,3 +1,8 @@
+import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
+import {
+  equationTemplates,
+  generateEquationProblem,
+} from "./equation-practice";
 import {
   distributionTemplates,
   generateDistributionProblem,
@@ -21,6 +26,10 @@ import {
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import {
+  addSubtractTemplates,
+  generateAddSubtractProblem,
+} from "./add-subtract-practice";
 import {
   volumeCoordinateTemplates,
   generateVolumeCoordinateProblem,
@@ -228,12 +237,15 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...addSubtractTemplates,
   ...comparisonTemplates,
   ...factsTemplates,
   ...combinatoricsTemplates,
+  ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...decimalTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -342,6 +354,55 @@ function addWithinTwenty(a: number, b: number): string[] {
     `10 + ${ones + small} = ${sum}.`,
   ];
 }
+function addWithinTwentyHint(a: number, b: number): string {
+  const big = Math.max(a, b),
+    small = Math.min(a, b);
+  if (small === 0) return `Adding 0 to ${big} adds nothing.`;
+  if (a + b <= 10)
+    return a === b
+      ? `Start at ${a} and count on ${b} more.`
+      : `Start at the greater number, ${big}, and count on ${small} more.`;
+  if (big < 10) {
+    const need = 10 - big;
+    return `${big} needs ${need} more to make 10. Split ${small} into ${need} and ${small - need}.`;
+  }
+  return `${big} is 10 and ${big - 10}. Add the ones first: ${big - 10} + ${small}.`;
+}
+function subtractWithinTwentyHint(a: number, b: number): string {
+  if (b === 0) return `Taking away 0 removes nothing from ${a}.`;
+  if (b === a) return `You take away all ${a}. How many are left?`;
+  if (b === 10 && a > 10)
+    return `Taking 10 from ${a} removes the ten and leaves only the ones.`;
+  if (a <= 10)
+    return b <= 3
+      ? `Start at ${a} and count back ${b}.`
+      : `Think of addition: ${b} + □ = ${a}.`;
+  const ones = a - 10;
+  if (b > 10) return `${b} is close to ${a}. Count up from ${b} to ${a}.`;
+  return b > ones
+    ? `First take away ${ones} to reach 10. Then take away the rest of the ${b}.`
+    : `${a} is 10 and ${ones}. Take ${b} from the ${ones} ones; the ten stays.`;
+}
+/** A known fact to build from, using the friendlier factor as the multiplier. */
+function multiplicationFactHint(a: number, b: number): string {
+  const ease = [2, 10, 5, 4, 3, 11, 9, 12, 6, 7, 8];
+  const [f, n] = ease.indexOf(a) <= ease.indexOf(b) ? [a, b] : [b, a];
+  const way: Record<number, string> = {
+    2: `${n} doubled`,
+    3: `${n} doubled, plus one more ${n}`,
+    4: `${n} doubled, then doubled again`,
+    5: `half of 10 × ${n}`,
+    6: `5 × ${n}, plus one more ${n}`,
+    7: `5 × ${n}, plus 2 × ${n}`,
+    8: `4 × ${n}, doubled`,
+    9: `10 × ${n}, minus one ${n}`,
+    10: `${n} tens`,
+    11: `10 × ${n}, plus one more ${n}`,
+    12: `10 × ${n}, plus 2 × ${n}`,
+  };
+  const turned = f === a ? "" : ` is the same as ${f} × ${n}, which`;
+  return `${a} × ${b}${turned} is ${way[f]}.`;
+}
 export function generateProblem(
   templateId: string,
   seed: string,
@@ -354,9 +415,11 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...shapeTemplates,
+    ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...partWholeTemplates,
+    ...decimalTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -393,6 +456,10 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (equationTemplates.some((t) => t.id === templateId))
+    return generateEquationProblem(templateId, seed);
+  if (decimalTemplates.some((t) => t.id === templateId))
+    return generateDecimalProblem(templateId, seed);
   if (volumeCoordinateTemplates.some((t) => t.id === templateId))
     return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
@@ -407,6 +474,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (addSubtractTemplates.some((t) => t.id === templateId))
+    return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))
     return generateFactsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
@@ -464,7 +533,10 @@ function generateRawProblem(
       figure = { kind: "collection", count: n };
       prompt = "How many dots are shown?";
       answer = `${n}`;
-      hint = "Touch each dot once as you count.";
+      hint =
+        n > 5
+          ? "The top row has 5 dots. Count them, then keep counting along the bottom row without starting again."
+          : "Start at the left dot and say one number for each dot as you touch it.";
       explanation = [
         `Count each dot once: ${Array.from({ length: n }, (_, i) => i + 1).join(", ")}.`,
         `There are ${n} dots.`,
@@ -476,7 +548,7 @@ function generateRawProblem(
         b = r(0, 20 - a);
       prompt = `What is ${a} + ${b}?`;
       answer = `${a + b}`;
-      hint = "Make a ten first, then add what is left.";
+      hint = addWithinTwentyHint(a, b);
       explanation = addWithinTwenty(a, b);
       break;
     }
@@ -485,7 +557,7 @@ function generateRawProblem(
         b = r(0, a);
       prompt = `What is ${a} − ${b}?`;
       answer = `${a - b}`;
-      hint = "Take the second number away from the first.";
+      hint = subtractWithinTwentyHint(a, b);
       explanation = [
         `Start with ${a}. Remove ${b}.`,
         `${a} − ${b} = ${answer}.`,
@@ -497,7 +569,7 @@ function generateRawProblem(
         b = r(2, 12);
       prompt = `What is ${a} × ${b}?`;
       answer = `${a * b}`;
-      hint = "Think of equal groups.";
+      hint = multiplicationFactHint(a, b);
       explanation = [
         `There are ${a} groups of ${b}.`,
         `${Array(a).fill(b).join(" + ")} = ${answer}.`,
@@ -511,8 +583,7 @@ function generateRawProblem(
       kind = "fraction";
       prompt = "What fraction of the whole is shaded?";
       answer = rational(BigInt(selected), BigInt(parts));
-      hint =
-        "The denominator counts all equal parts. The numerator counts shaded parts.";
+      hint = `The whole is cut into ${parts} equal parts, so the denominator is ${parts}. The numerator counts the shaded parts.`;
       explanation = [
         `${selected} of ${parts} equal parts are shaded.`,
         `The fraction is ${selected}/${parts}, equivalent to ${answer}.`,
@@ -527,12 +598,23 @@ function generateRawProblem(
       prompt = `What is ${a}/${b} + ${c}/${d}?`;
       kind = "fraction";
       answer = rational(BigInt(a * d + c * b), BigInt(b * d));
-      hint = "Express both fractions with a common denominator before adding.";
-      explanation = [
-        `A common denominator is ${b * d}.`,
-        `${a}/${b} = ${a * d}/${b * d} and ${c}/${d} = ${c * b}/${b * d}.`,
-        `Add the numerators: ${a * d + c * b}/${b * d} = ${answer}.`,
-      ];
+      const common = (b * d) / Number(gcd(BigInt(b), BigInt(d)));
+      hint =
+        b === d
+          ? `${a}/${b} and ${c}/${d} count the same size of piece. Add the numerators, ${a} + ${c}, and keep the denominator ${b}.`
+          : `${b} and ${d} are different piece sizes. Rename ${a}/${b} and ${c}/${d} as fractions with denominator ${common}, a multiple of both.`;
+      const sum = (a * common) / b + (c * common) / d;
+      explanation =
+        b === d
+          ? [
+              `Both fractions count pieces of size 1/${b}.`,
+              `Add the numerators: ${a} + ${c} = ${a + c}, so the sum is ${a + c}/${b} = ${answer}.`,
+            ]
+          : [
+              `A common denominator is ${common}, a multiple of ${b} and ${d}.`,
+              `${a}/${b} = ${(a * common) / b}/${common} and ${c}/${d} = ${(c * common) / d}/${common}.`,
+              `Add the numerators: ${sum}/${common} = ${answer}.`,
+            ];
       break;
     }
     case "rectangle-area": {
@@ -541,7 +623,7 @@ function generateRawProblem(
       figure = { kind: "rectangle", width, height, unit: "cm" };
       prompt = `A rectangle is ${width} cm wide and ${height} cm high. What is its area in square centimeters?`;
       answer = `${width * height}`;
-      hint = "Area is width multiplied by height.";
+      hint = `Picture square centimeters filling the rectangle: ${height} rows, each ${width} squares long.`;
       explanation = [
         "Each row contains one square centimeter per centimeter of width.",
         `${width} × ${height} = ${answer} square centimeters.`,
@@ -555,8 +637,7 @@ function generateRawProblem(
         c = a * x + b;
       prompt = `Solve for x: ${a}x + ${b} = ${c}.`;
       answer = `${x}`;
-      hint =
-        "Subtract the constant from both sides, then divide by the coefficient of x.";
+      hint = `Undo the + ${b} first: subtract ${b} from both sides of ${a}x + ${b} = ${c}.`;
       explanation = [
         `Subtract ${b}: ${a}x = ${c - b}.`,
         `Divide by ${a}: x = ${answer}.`,
@@ -570,7 +651,7 @@ function generateRawProblem(
       prompt = `What is the mean of ${values.join(", ")}?`;
       answer = rational(BigInt(sum), 5n);
       kind = "fraction";
-      hint = "Add all observations, then divide by the number of observations.";
+      hint = `Add the values, ${values.join(" + ")}, then share that total equally among the five values.`;
       const mean = sum % 5 === 0 ? `${sum / 5}` : `${sum / 5} = ${answer}`;
       explanation = [
         "The mean is the sum of the values divided by the number of values.",
@@ -588,7 +669,7 @@ function generateRawProblem(
       figure = { kind: "right-triangle", a, b, unit: "cm" };
       prompt = `A right triangle has perpendicular legs ${a} cm and ${b} cm. What is the hypotenuse length in centimeters?`;
       answer = `${c}`;
-      hint = "For a right triangle, a² + b² = c², where c is the hypotenuse.";
+      hint = `The hypotenuse c is the side opposite the right angle. Write c² = ${a}² + ${b}² and work out the right side.`;
       explanation = [
         `c² = ${a}² + ${b}² = ${a * a + b * b}.`,
         `Take the positive square root: c = ${c} cm.`,
@@ -601,7 +682,7 @@ function generateRawProblem(
         k = r(1, 20);
       prompt = `For real x, what is the minimum value of f(x) = ${a}(x − ${h})² + ${k}?`;
       answer = `${k}`;
-      hint = "A square is nonnegative and becomes zero at its vertex.";
+      hint = `(x − ${h})² is never negative, and it is 0 when x = ${h}. What is f(${h})?`;
       explanation = [
         `${a}(x − ${h})² is at least zero because ${a} is positive.`,
         `At x = ${h}, it equals zero, so the minimum is ${k}.`,
@@ -614,8 +695,7 @@ function generateRawProblem(
         n = r(3, 7);
       prompt = `A geometric sequence has first term ${a} and common ratio ${ratio}. What is term ${n} (the first term is term 1)?`;
       answer = `${BigInt(a) * BigInt(ratio) ** BigInt(n - 1)}`;
-      hint =
-        "Multiply the first term by the common ratio once for each step after term 1.";
+      hint = `From term 1 to term ${n} is ${n - 1} steps. Start at ${a} and multiply by ${ratio} once per step.`;
       explanation = [
         `Term n = first term × ratio^(n − 1).`,
         `Term ${n} = ${a} × ${ratio}^${n - 1} = ${answer}.`,
@@ -628,8 +708,7 @@ function generateRawProblem(
         argument = base ** power;
       prompt = `What is log base ${base} of ${argument}?`;
       answer = `${power}`;
-      hint =
-        "A logarithm asks which exponent produces the argument from the base.";
+      hint = `log base ${base} of ${argument} asks: ${base} to what power is ${argument}? Multiply ${base} by itself until you reach ${argument}, counting the factors.`;
       explanation = [
         `Find p such that ${base}^p = ${argument}.`,
         `${base}^${power} = ${argument}, so the logarithm is ${power}.`,
