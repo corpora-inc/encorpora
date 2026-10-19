@@ -3,8 +3,6 @@
 export const fixedHintPending: ReadonlySet<string> = new Set([
   "affine-linear-inequality",
   "arc-length-coefficient",
-  "balance-one-step",
-  "balance-two-step",
   "border-or-cover-unit",
   "both-sides-linear-equation",
   "box-plot-read",
