@@ -128,6 +128,16 @@
   display: flex;
   align-items: center;
 }
+.animation-stage .animation-small {
+  font-size: 13px;
+  fill: var(--color-muted-text);
+}
+.animation-stage .animation-strong {
+  font-weight: 700;
+}
+.animation-root {
+  fill: var(--color-danger-accent);
+}
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade {

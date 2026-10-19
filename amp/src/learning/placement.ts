@@ -90,9 +90,9 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 7: powers, unit rates, the mean, distance on a number line.
   [["integer-power"], ["unit-price"], ["mean-data"], ["number-line-distance"]],
-  // Grade 8: signed numbers, unit rates, probability and circles.
+  // Grade 8: signed and real numbers, unit rates, probability and circles.
   [
-    ["integer-addition"],
+    ["integer-addition", "root-between-integers", "scientific-to-standard"],
     ["unit-price"],
     ["simple-probability"],
     ["circle-area-coefficient", "circle-circumference-coefficient"],

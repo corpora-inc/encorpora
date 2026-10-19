@@ -57,8 +57,8 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           <AnimationBoundary
             key={JSON.stringify(animation)}
             fallback={
-              animation.kind === "exchange" ? null : (
-                <Figure figure={lesson.example.figure!} />
+              animation.kind === "exchange" || !lesson.example.figure ? null : (
+                <Figure figure={lesson.example.figure} />
               )
             }
           >

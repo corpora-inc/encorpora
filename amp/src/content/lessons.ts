@@ -1,4 +1,5 @@
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { realNumberLessons } from "./real-number-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
@@ -30,6 +31,11 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "repeating-decimal-shift"
+      | "root-zoom"
+      | "root-solutions"
+      | "decimal-point-shift"
+      | "scientific-regroup"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +539,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...realNumberLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,

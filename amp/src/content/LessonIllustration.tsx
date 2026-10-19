@@ -1,4 +1,5 @@
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { RealNumberIllustration } from "./RealNumberIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
 import { CircleMeasurementIllustration } from "./CircleMeasurementIllustration";
@@ -20,6 +21,14 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "repeating-decimal-shift" ||
+    kind === "root-zoom" ||
+    kind === "root-solutions" ||
+    kind === "decimal-point-shift" ||
+    kind === "scientific-regroup"
+  )
+    return <RealNumberIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||
