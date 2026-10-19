@@ -5,7 +5,11 @@ import Fastify, { type FastifyInstance } from "fastify";
 import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
-import { generatedProblemSchema, type PublicProblem } from "../math/contracts";
+import {
+  figureCapabilities,
+  generatedProblemSchema,
+  type PublicProblem,
+} from "../math/contracts";
 import {
   generateProblem,
   gradeAnswer,
@@ -315,8 +319,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
           .max(1)
           .default([]),
         figureCapabilities: z
-          .array(z.literal("measurement-models-v1"))
-          .max(1)
+          .array(z.enum(figureCapabilities))
+          .max(figureCapabilities.length)
           .default([]),
       })
       .strict()
@@ -449,7 +453,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
       if (!problem) throw new ApiError(404, "Problem not found");
       problem.hintViewed = true;
       await tx.saveProblem(problem);
-      return { hint: problem.hint };
+      return {
+        hint: problem.hint,
+        ...(problem.hintCue ? { cue: problem.hintCue } : {}),
+      };
     });
   });
   app.post("/api/v1/learners/:learnerId/lesson-support", async (request) => {

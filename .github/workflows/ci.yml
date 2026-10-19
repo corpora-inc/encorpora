@@ -1410,6 +1410,10 @@ jobs:
         working-directory: amp
     env:
       AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
+      # Measure layout in the font Android learners get, not DejaVu Sans:
+      # see amp/scripts/ci-fonts.conf. verify-ui asserts the prompt uses it.
+      FONTCONFIG_FILE: ${{ github.workspace }}/amp/scripts/ci-fonts.conf
+      AMP_EXPECT_UI_FONT: Roboto
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -1419,6 +1423,9 @@ jobs:
           cache-dependency-path: amp/package-lock.json
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      # test:payment-ui and the print suites inspect PDFs with pdfinfo.
+      - name: Install PDF inspection tools and the Android UI font
+        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
       - run: npm run test:ui
       - run: npm run test:family-ui
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.

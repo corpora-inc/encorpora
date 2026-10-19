@@ -17,6 +17,12 @@ function review(input: string) {
     encoding: "utf8",
     input,
     maxBuffer,
+    // Hermetic: review:math rebuilds and reviews the print publications; here
+    // stale files on disk must neither fail nor pass this inventory test.
+    env: {
+      ...process.env,
+      AMP_PUBLICATIONS_DIR: "/nonexistent/amp-publications",
+    },
   });
 }
 

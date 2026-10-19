@@ -292,7 +292,9 @@ function triangleCase(r: Random): Case {
     prompt: `The figure shows a triangle with lengths in ${unitWords[u][1]}. What is the area of the triangle, in ${square(u)}?`,
     answer: area,
     explanation,
-    hint: "A triangle is half of a parallelogram with the same base and height: area = 1/2 × base × height. The height must be perpendicular to the base; a slanted side is not the height.",
+    hint: isRight
+      ? `Two sides meet at a right angle: use them as the base and the height. A triangle is half of the rectangle they make: area = 1/2 × base × height.`
+      : `The base is the bottom side, ${len(b, u)}. The height is the dashed segment perpendicular to it, not a slanted side. A triangle is half of a parallelogram with the same base and height.`,
     figure,
     tags: [
       shape,
@@ -621,9 +623,9 @@ function packingCase(r: Random): Case {
     explanation,
     hint: asksVolume
       ? `Count the cubes along each edge and multiply to find how many fill the prism. Then multiply by the volume of one cube, 1/${e.d} × 1/${e.d} × 1/${e.d} = 1/${e.d ** 3}.`
-      : "Divide each edge length by the cube's edge to count the cubes along it, then multiply the three counts.",
+      : `Divide each edge length by the cube's edge, ${len(e, u, true)}, to count the cubes along it, then multiply the three counts.`,
     figure: {
-      kind: "box-prism",
+      kind: "fraction-box-prism",
       unit: u,
       length: asFigure(edges[0]!),
       width: asFigure(edges[1]!),
@@ -678,9 +680,9 @@ function fractionVolumeCase(r: Random): Case {
         `Volume = length × width × height. Multiply the numerators and the denominators: $${product} = \\tfrac{${raw}}{${rawD}}${raw === volume.n && rawD === volume.d ? "" : ` = ${frac(volume)}`}$.`,
         `The volume is ${cubicText(volume, u)}.`,
       ],
-      hint: "Volume = length × width × height. Write mixed numbers as fractions, multiply the numerators and the denominators, then simplify.",
+      hint: `Volume = length × width × height = ${edges.map((x) => len(x, u, true)).join(" × ")}. Write mixed numbers as fractions, multiply the numerators and the denominators, then simplify.`,
       figure: {
-        kind: "box-prism",
+        kind: "fraction-box-prism",
         unit: u,
         length: asFigure(edges[0]!),
         width: asFigure(edges[1]!),
@@ -706,9 +708,9 @@ function fractionVolumeCase(r: Random): Case {
       `Divide by multiplying by the reciprocal: $${frac(volume)} \\div ${frac(base)} = ${frac(volume)} \\times ${frac(q(base.d, base.n))} = ${frac(answer)}$.`,
       `Check: $${product} = ${frac(volume)}$. The ${askName} is ${len(answer, u, true)}.`,
     ],
-    hint: "Volume = length × width × height. Multiply the two known edges, then divide the volume by that product.",
+    hint: `Volume = length × width × height. Multiply the two known edges, ${known.map((i) => len(edges[i]!, u, true)).join(" and ")}, then divide the volume, ${cubicText(volume, u)}, by that product.`,
     figure: {
-      kind: "box-prism",
+      kind: "fraction-box-prism",
       unit: u,
       length: missing === 0 ? null : asFigure(edges[0]!),
       width: missing === 1 ? null : asFigure(edges[1]!),
@@ -1014,7 +1016,7 @@ function compositePrismCase(r: Random, surface: boolean): Case {
         `Each layer 1 ${unitWords[u][0]} deep holds ${face} unit cubes, and there are ${depth} layers: ${face} × ${depth} = ${face * depth}.`,
         `The volume is ${face * depth} ${cubic(u)}.`,
       ],
-      hint: "Volume of a right prism = area of the front face × depth. Split the face into rectangles to find its area.",
+      hint: `Volume of a right prism = area of the front face × depth, ${len(depth, u)}. Split the face into rectangles to find its area.`,
       figure: {
         kind: "extruded-polygon",
         unit: u,
@@ -1037,7 +1039,7 @@ function compositePrismCase(r: Random, surface: boolean): Case {
       `Every other face is a rectangle ${depth} deep, one for each edge of the front face. Their widths add up to the perimeter, ${edges.join(" + ")} = ${around}, so together they cover ${around} × ${depth} = ${around * depth}.`,
       `Add all the faces: ${2 * face} + ${around * depth} = ${total}. The surface area is ${total} ${square(u)}.`,
     ],
-    hint: "Surface area = 2 × (front face area) + perimeter of the front face × depth. The side faces unroll into one rectangle as long as the perimeter.",
+    hint: `Surface area = 2 × (front face area) + perimeter of the front face × depth, ${len(depth, u)}. The side faces unroll into one rectangle as long as the perimeter.`,
     figure: {
       kind: "extruded-polygon",
       unit: u,
@@ -1100,7 +1102,7 @@ function cylinderCase(r: Random): Case {
         `Volume = base area × height, so the height is the volume divided by the base area: $${pi(volumeC)} \\div ${pi(baseC)} = ${h}$.`,
         `Check: $${pi(baseC)} \\times ${h} = ${pi(volumeC)}$. The height is ${len(h, u)}.`,
       ],
-      hint: "Volume = base area × height, and the base area is pi × radius². Divide the volume by the base area; the pi cancels.",
+      hint: `Volume = base area × height. The cylinder has ${sizeText(d, u)}: find the base area, pi × radius², then divide $${pi(volumeC)}$ by it; the pi cancels.`,
       figure,
       tags: ["missing-height", d.byDiameter ? "diameter" : "radius"],
       kind: "fraction",
@@ -1118,7 +1120,7 @@ function cylinderCase(r: Random): Case {
         stack,
         `Replace $\\pi$ with 3.14: $${pi(volumeC)} \\approx 3.14 \\times ${plain(volumeC)} = ${plain(value)}$. The volume is about ${plain(value)} ${C}.`,
       ],
-      hint: "Volume = pi × radius² × height. Find the radius first, multiply radius × radius × height, then multiply by 3.14.",
+      hint: `Volume = pi × radius² × height. The cylinder has ${sizeText(d, u)} and is ${len(h, u)} tall: multiply radius × radius × height, then multiply by 3.14.`,
       figure,
       tags: ["approximate", d.byDiameter ? "diameter" : "radius"],
       kind: "number",
@@ -1134,7 +1136,7 @@ function cylinderCase(r: Random): Case {
       stack,
       `The number multiplying $\\pi$ is a, so $a = ${frac(volumeC)}$.`,
     ],
-    hint: "Volume = base area × height = pi × radius² × height. Halve a diameter to get the radius. The answer a is the number multiplying pi.",
+    hint: `Volume = pi × radius² × height. The cylinder has ${sizeText(d, u)} and is ${len(h, u)} tall: multiply radius × radius × height; that product is the number multiplying pi.`,
     figure,
     tags: [
       "exact",
@@ -1215,7 +1217,7 @@ function coneSphereCase(r: Random): Case {
       prompt: `${given} Use 3.14 for $\\pi$. What is its volume, in ${C}?`,
       answer: v,
       explanation: steps,
-      hint: hints[solid]!,
+      hint: `${hints[solid]!} ${given}`,
       figure,
       tags: [solid, "approximate", d.byDiameter ? "diameter" : "radius"],
       kind: "number",
@@ -1229,7 +1231,7 @@ function coneSphereCase(r: Random): Case {
     prompt: `${given} Its volume is $a\\pi$ ${C}. What is a?`,
     answer: coefficient,
     explanation: steps,
-    hint: hints[solid]!,
+    hint: `${hints[solid]!} ${given}`,
     figure,
     tags: [
       solid,
@@ -1242,10 +1244,10 @@ function coneSphereCase(r: Random): Case {
   };
 }
 const hints: Record<string, string> = {
-  cone: "A cone holds one third of the cylinder with the same base and height: volume = 1/3 × pi × radius² × height.",
-  sphere: "Volume of a sphere = 4/3 × pi × radius³. Halve a diameter first.",
+  cone: "A cone holds one third of the cylinder with the same base and height: volume = one third × pi × radius² × height.",
+  sphere: "Volume of a sphere = four thirds × pi × radius³. Halve a diameter first.",
   hemisphere:
-    "A hemisphere is half a sphere: volume = 1/2 × 4/3 × pi × radius³ = 2/3 × pi × radius³.",
+    "A hemisphere is half a sphere: volume = one half × four thirds × pi × radius³ = two thirds × pi × radius³.",
 };
 
 const builders: Record<string, (r: Random) => Case> = {

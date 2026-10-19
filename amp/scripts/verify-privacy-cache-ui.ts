@@ -66,10 +66,9 @@ try {
     await page.getByRole("button", { name: "2016", exact: true }).click();
     await page.getByRole("button", { name: "Go", exact: true }).click();
     await familyBatchWaiting;
-    await page.locator(".account-menu summary").click();
+    await page.getByRole("button", { name: "Family menu" }).click();
     await page
-      .locator(".account-menu")
-      .getByRole("button", { name: "Manage family", exact: true })
+      .getByRole("menuitem", { name: "Manage family", exact: true })
       .click();
     await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
     await page
@@ -144,10 +143,9 @@ try {
       await page.getByRole("navigation", { name: "Learning sections" }).count(),
       0,
     );
-    await page.locator(".account-menu summary").click();
+    await page.getByRole("button", { name: "Family menu" }).click();
     await page
-      .locator(".account-menu")
-      .getByRole("button", { name: "Manage family", exact: true })
+      .getByRole("menuitem", { name: "Manage family", exact: true })
       .click();
     await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
     assert.deepEqual(errors, []);

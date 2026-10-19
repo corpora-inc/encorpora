@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import type { Step } from "../../../math/scene/timeline";
 import { Navigate, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import type { GradeBand } from "../../../curriculum/types";
@@ -52,6 +53,10 @@ function Practice({ session }: { session: TrialSession }) {
   const [response, setResponse] = useState("");
   const [outcome, setOutcome] = useState<TrialOutcome | null>(null);
   const [hintText, setHint] = useState("");
+  const [hintCue, setHintCue] = useState<{
+    problemId: string;
+    steps: Step[];
+  } | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [answered, setAnswered] = useState<number | null>(null);
@@ -157,6 +162,7 @@ function Practice({ session }: { session: TrialSession }) {
         setResponse={setResponse}
         outcome={outcome}
         hint={hintText}
+        hintCue={hintCue}
         busy={busy}
         pending={pending}
         error={error}
@@ -233,7 +239,11 @@ function Practice({ session }: { session: TrialSession }) {
         }
         requestHint={() =>
           void run(async () => {
-            setHint((await hint(session, problem.id)).hint);
+            const data = await hint(session, problem.id);
+            setHint(data.hint);
+            setHintCue(
+              data.cue ? { problemId: problem.id, steps: data.cue } : null,
+            );
             track("hint_use");
           })
         }

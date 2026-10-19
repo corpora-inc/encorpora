@@ -10,6 +10,12 @@ const COMPUTATION_STRANDS = new Set([
   "decimals",
 ]);
 const COMPUTATION_TEMPLATES = new Set([
+  "dot-plot-mean",
+  "mean-missing-value",
+  "dot-plot-mad",
+  "dot-plot-iqr",
+  "fraction-plot-difference",
+  "fraction-plot-equal-share",
   "simplify-square-root",
   "combine-square-roots",
   "multiply-square-roots",
@@ -21,6 +27,9 @@ const COMPUTATION_TEMPLATES = new Set([
   "power-of-power-exponent",
   "integer-power",
   "operation-order",
+  "greatest-monomial-factor",
+  "monic-quadratic-factorization",
+  "nonmonic-quadratic-factorization",
   "median-data",
   "range-data",
   "interquartile-range-data",

@@ -111,7 +111,9 @@ export function generateGraphicalProblem(
       prompt = `What is the ${coordinate}-coordinate of point P? Each grid step is one unit.`;
       answer = `${coordinate === "x" ? x : y}`;
       hint =
-        "The x-coordinate gives horizontal position; the y-coordinate gives vertical position.";
+        coordinate === "x"
+          ? "For the x-coordinate, count grid steps from the vertical axis straight across to P: right is positive, left is negative. Ignore how high P is."
+          : "For the y-coordinate, count grid steps from the horizontal axis straight up or down to P: up is positive, down is negative. Ignore how far across P is.";
       explanation = [
         `Point P is at (${x}, ${y}).`,
         `Its ${coordinate}-coordinate is ${answer}.`,
@@ -142,8 +144,9 @@ export function generateGraphicalProblem(
         "What is the slope of the line through A and B? Each grid step is one unit.";
       answer = fraction(rise, run);
       responseKind = "fraction";
-      hint =
-        "Use the change in y divided by the change in x, keeping the same point order.";
+      hint = rise
+        ? `Count from A to B: steps right for the run, then steps ${rise < 0 ? "down for the rise, which is negative because the line falls" : "up for the rise"}. Slope = rise ÷ run.`
+        : "A and B are at the same height. Count the rise from A to B, then divide it by the run.";
       explanation = [
         `A = (${x1}, ${y1}) and B = (${x2}, ${y2}).`,
         `The vertical change is ${y2} − (${y1}) = ${rise}; the horizontal change is ${x2} − (${x1}) = ${run}.`,
@@ -162,7 +165,7 @@ export function generateGraphicalProblem(
         prompt =
           "How many trees are shown altogether across the three categories?";
         answer = `${values.reduce((sum, value) => sum + value, 0)}`;
-        hint = "Read each category count, then add the three counts.";
+        hint = `Read each bar's top against the Trees scale: Oak is ${values[0]}. Read Pine and Maple the same way, then add all three.`;
         explanation = [
           `Oak: ${values[0]}, Pine: ${values[1]}, Maple: ${values[2]}.`,
           `${values.join(" + ")} = ${answer} trees.`,
@@ -172,8 +175,7 @@ export function generateGraphicalProblem(
           smaller = 1 - larger;
         prompt = `How many more ${categories[larger]} trees than ${categories[smaller]} trees are shown?`;
         answer = `${values[larger]! - values[smaller]!}`;
-        hint =
-          "Subtract the smaller of the two named category counts from the larger.";
+        hint = `Read the ${categories[larger]} bar and the ${categories[smaller]} bar on the scale. Subtract the ${categories[smaller]} count from the ${categories[larger]} count; ignore Maple.`;
         explanation = [
           `There are ${values[larger]} ${categories[larger]} trees and ${values[smaller]} ${categories[smaller]} trees.`,
           `${values[larger]} − ${values[smaller]} = ${answer} trees.`,
@@ -189,8 +191,12 @@ export function generateGraphicalProblem(
       figure = { kind: "clock", hour, minute };
       prompt = `A lesson starts at the time shown on the clock and ends at ${time(start + duration)} later that same morning. How many minutes does it last?`;
       answer = `${duration}`;
+      const end = start + duration,
+        nextHour = (hour + 1) * 60;
       hint =
-        "Count forward from the starting time, crossing the hour if needed.";
+        end > nextHour
+          ? `Read the start time on the clock. Count on to ${time(nextHour)} first, then on to ${time(end)}.`
+          : `Read the start time on the clock. Count on by fives from there to ${time(end)}.`;
       explanation = [
         `The clock shows ${time(start)} in the morning.`,
         `The ending time is ${time(start + duration)} that morning.`,
@@ -211,7 +217,9 @@ export function generateGraphicalProblem(
         "What is the distance between the two marked points? Each tick is one unit.";
       answer = `${right - left}`;
       hint =
-        "Count unit intervals between the points. Distance cannot be negative.";
+        left < 0 && right > 0
+          ? `The points are on both sides of 0. Count the steps from ${left} to 0, then from 0 to ${right}, and add.`
+          : `Count the unit steps from ${left} to ${right}. A distance is never negative.`;
       explanation = [
         `The points are at ${left} and ${right}.`,
         `Distance = |${right} − (${left})| = ${answer} units.`,

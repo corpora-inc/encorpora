@@ -1,12 +1,35 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { AreaVolumeFigure } from "./AreaVolumeFigure";
+import { AngleTriangleFigure } from "./AngleTriangleFigure";
+import { PartWholeFigure } from "./PartWholeFigure";
+import { AttributeFigure } from "./AttributeFigure";
+import { TimeMoneyFigure } from "./TimeMoneyFigure";
+import { DecimalFigure } from "./DecimalFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
-import { ElementaryFigure } from "./ElementaryFigure";
+import { ComparisonFigure } from "./ComparisonFigure";
+import { AreaModelFigure } from "./AreaModelFigure";
+import { FactsFigure } from "./FactsFigure";
+import { FactArrayFigure } from "./FactArrayFigure";
+import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { SignedLineFigure } from "./SignedLineFigure";
+import { RatioRateFigure } from "./RatioRateFigure";
+import { FunctionDisplay } from "./FunctionDisplay";
+import { EquationFigure } from "./EquationFigure";
+import { DataDisplayFigure } from "./DataDisplayFigure";
+import { GeometryFigure } from "./GeometryFigure";
+import { ShapeFigure } from "./ShapeFigure";
 import type { SemanticFigure } from "../math/contracts";
+import { isPorted, legacyScene } from "../math/scene/legacy";
+import { SceneFigure } from "./scene/SceneFigure";
 export function Figure({ figure }: { figure: SemanticFigure }) {
+  // Kinds ported to the scene framework draw through it (docs/figures-rfc.md).
+  if (isPorted(figure))
+    return <SceneFigure scene={legacyScene(figure)} kind={figure.kind} />;
   switch (figure.kind) {
+    case "scene":
+      return <SceneFigure scene={figure.scene} />;
     case "length-interval":
     case "measure-rectangle":
     case "rectangle-comparison":
@@ -15,24 +38,84 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "rectangular-prism-net":
     case "triangular-prism-net":
     case "square-pyramid-net":
-    case "box-prism":
+    case "fraction-box-prism":
     case "extruded-polygon":
     case "curved-solid":
       return <AreaVolumeFigure figure={figure} />;
-    case "unit-array":
+    case "angle-rays":
+    case "triangle-angles":
+    case "parallel-transversal":
+    case "solid-section":
+      return <AngleTriangleFigure figure={figure} />;
+    case "length-rods":
+    case "unit-measure":
+    case "mass-balance":
+    case "pour":
+    case "liquid-scale":
+      return <AttributeFigure figure={figure} />;
+    case "ratio-table":
+    case "double-number-line":
+      return <RatioRateFigure figure={figure} />;
+    case "analog-clocks":
+    case "money-sets":
+      return <TimeMoneyFigure figure={figure} />;
+    case "decimal-grid":
+    case "decimal-line":
+    case "place-value-chart":
+      return <DecimalFigure figure={figure} />;
+    case "partitioned-shapes":
+    case "area-partition":
+    case "fraction-bars":
+      return <PartWholeFigure figure={figure} />;
+    case "sort-shapes":
+    case "picture-graph":
+    case "scaled-bar-graph":
+    case "line-plot":
+    case "histogram":
+    case "box-plot":
+    case "double-dot-plot":
+    case "double-box-plot":
+      return <DataDisplayFigure figure={figure} />;
+    case "cube-prism":
+    case "box-prism":
+    case "composite-prism":
+    case "quadrant-grid":
+      return <GeometryFigure figure={figure} />;
+    case "plane-shapes":
+    case "shape-puzzle":
+    case "solid-shape":
+      return <ShapeFigure figure={figure} />;
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
     case "rational-line":
     case "fraction-strips":
       return <FractionPracticeFigure figure={figure} />;
-    case "ten-frame":
-    case "base-ten":
-      return <ElementaryFigure figure={figure} />;
-    case "coordinate-plane":
+    case "area-model":
+      return <AreaModelFigure figure={figure} />;
+    case "function-display":
+      return <FunctionDisplay figure={figure} />;
+    case "ten-frame-pair":
+      return <FactsFigure figure={figure} />;
+    case "dot-array":
+    case "share-model":
+    case "times-table":
+      return <FactArrayFigure figure={figure} />;
+    case "number-bond":
+    case "bar-model":
+    case "equal-balance":
+    case "addend-groups":
+    case "change-chain":
+      return <EarlyOperationsFigure figure={figure} />;
+    case "counter-rows":
+    case "base-ten-pair":
+      return <ComparisonFigure figure={figure} />;
     case "bar-chart":
-    case "clock":
-    case "number-line":
       return <GraphicalFigure figure={figure} />;
+    case "signed-line":
+      return <SignedLineFigure figure={figure} />;
+    case "balance-scale":
+    case "inequality-lines":
+      return <EquationFigure figure={figure} />;
     case "collection":
       return (
         <svg

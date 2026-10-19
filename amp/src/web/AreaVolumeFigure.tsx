@@ -43,7 +43,7 @@ export function AreaVolumeFigure({ figure }: { figure: Model }) {
     case "triangular-prism-net":
     case "square-pyramid-net":
       return <Net figure={figure} />;
-    case "box-prism":
+    case "fraction-box-prism":
       return <Box figure={figure} />;
     case "extruded-polygon":
       return <Extruded figure={figure} />;
@@ -513,7 +513,7 @@ function oblique(s: number, ox: number, oy: number) {
   ];
 }
 const value = (f: FigureFraction | null) => (f ? f.n / f.d : null);
-function Box({ figure: f }: { figure: Extract<Model, { kind: "box-prism" }> }) {
+function Box({ figure: f }: { figure: Extract<Model, { kind: "fraction-box-prism" }> }) {
   // A missing edge is drawn at the length its volume implies only in the
   // problem's own numbers; here it is drawn at a neutral size and labeled "?".
   const known = [value(f.length), value(f.width), value(f.height)].filter(

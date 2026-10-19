@@ -93,12 +93,27 @@ async function inspect(html: string, format: "Letter" | "A4") {
       )) {
         const v = svg.viewBox.baseVal;
         for (const label of svg.querySelectorAll("text")) {
-          const b = label.getBBox();
+          // getBBox() is in the label's own (pre-transform) space; map its
+          // corners into the view box so rotated axis titles are measured
+          // where they are actually drawn.
+          const local = label.getBBox();
+          const toSvg = svg
+            .getCTM()!
+            .inverse()
+            .multiply(label.getCTM()!);
+          const corners = [
+            [local.x, local.y],
+            [local.x + local.width, local.y],
+            [local.x, local.y + local.height],
+            [local.x + local.width, local.y + local.height],
+          ].map(([x, y]) => new DOMPoint(x, y).matrixTransform(toSvg));
+          const xs = corners.map((p) => p.x),
+            ys = corners.map((p) => p.y);
           if (
-            b.x < v.x - 1 ||
-            b.y < v.y - 1 ||
-            b.x + b.width > v.x + v.width + 1 ||
-            b.y + b.height > v.y + v.height + 1
+            Math.min(...xs) < v.x - 1 ||
+            Math.min(...ys) < v.y - 1 ||
+            Math.max(...xs) > v.x + v.width + 1 ||
+            Math.max(...ys) > v.y + v.height + 1
           )
             issues.push(`Figure label crosses view box: ${label.textContent}`);
         }
@@ -121,6 +136,7 @@ try {
     `<p style="position:relative;left:-800px">Missing left-hand text</p>`,
     `<figure class="lesson-illustration" style="height:2000px;break-inside:avoid">Oversized lesson illustration</figure>`,
     `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="95" y="20">Clipped label</text></svg>`,
+    `<svg data-lesson-illustration="test" viewBox="0 0 100 100"><text x="10" y="50" text-anchor="middle" transform="rotate(-90 10 50)">A rotated label far too long to fit</text></svg>`,
   ];
   for (const mutation of mutations)
     if (

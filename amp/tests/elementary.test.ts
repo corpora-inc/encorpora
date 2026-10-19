@@ -1,3 +1,4 @@
+import { earlyOperationsTemplates } from "../src/math/early-operations-practice";
 import assert from "node:assert/strict";
 import test from "node:test";
 import React from "react";
@@ -22,10 +23,10 @@ import { skills, standards } from "../src/curriculum/catalog.js";
 import { Figure } from "../src/web/Figure.js";
 import { publicationHtml } from "../src/content/publications.js";
 
-test("24 elementary families have grade-specific catalog, lesson and public engine bindings", () => {
-  assert.equal(elementaryTemplates.length, 24);
+test("19 elementary families have grade-specific catalog, lesson and public engine bindings", () => {
+  assert.equal(elementaryTemplates.length, 19);
   assert.equal(elementaryLessons.length, 12);
-  assert.equal(new Set(elementaryTemplates.map((t) => t.id)).size, 24);
+  assert.equal(new Set(elementaryTemplates.map((t) => t.id)).size, 19);
   for (const template of elementaryTemplates) {
     assert.ok(skills.some((skill) => skill.id === template.skillId));
     assert.ok(templates.some((t) => t.id === template.id));
@@ -42,7 +43,7 @@ test("24 elementary families have grade-specific catalog, lesson and public engi
   }
 });
 
-test("bounded public models validate across 12288 variants, with important edge cases observed", () => {
+test("bounded public models validate across 9728 variants, with important edge cases observed", () => {
   const seen = new Set<string>();
   for (const template of elementaryTemplates)
     for (let seed = 0; seed < 512; seed++) {
@@ -159,14 +160,19 @@ test("rendered units preserve counts, frame capacity and hundred-ten-one area ra
       figure: { kind: "base-ten", hundreds: 1, tens: 1, ones: 1 },
     }),
   );
-  const h = html.match(
-      /data-unit="hundred"><rect[^>]*width="(\d+)" height="(\d+)"/,
-    )!,
-    t = html.match(/data-unit="ten"><rect[^>]*width="(\d+)" height="(\d+)"/)!,
-    o = html.match(/data-unit="one"[^>]*width="(\d+)" height="(\d+)"/)!;
+  // The block drawn for each unit: a rect carrying data-unit.
+  const block = (unit: string) =>
+    html.match(
+      new RegExp(
+        `<rect[^>]*data-unit="${unit}"[^>]*width="([\\d.]+)" height="([\\d.]+)"`,
+      ),
+    )!;
+  const h = block("hundred"),
+    t = block("ten"),
+    o = block("one");
   const area = (m: RegExpMatchArray) => Number(m[1]) * Number(m[2]);
-  assert.equal(area(h) / area(o), 100);
-  assert.equal(area(t) / area(o), 10);
+  assert.ok(Math.abs(area(h) / area(o) - 100) < 1e-9);
+  assert.ok(Math.abs(area(t) / area(o) - 10) < 1e-9);
 });
 
 test("source matrix covers all33 numbered standards plus5 components and retains limitations", () => {
@@ -194,7 +200,12 @@ test("source matrix covers all33 numbered standards plus5 components and retains
       ),
     );
     for (const id of requirement.templateIds)
-      assert.ok(elementaryTemplates.some((t) => t.id === id));
+      assert.ok(
+        [...elementaryTemplates, ...earlyOperationsTemplates].some(
+          (t) => t.id === id,
+        ),
+        id,
+      );
   }
 });
 

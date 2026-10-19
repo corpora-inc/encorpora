@@ -1,6 +1,10 @@
 import { queryOptions } from "@tanstack/react-query";
+import { stepsSchema } from "../../../math/scene/timeline";
 import { z } from "zod";
-import { publicProblemSchema } from "../../../math/contracts";
+import {
+  figureCapabilities,
+  publicProblemSchema,
+} from "../../../math/contracts";
 import { annualOfferSchema } from "../../../billing/stripe/enrollment-contracts";
 import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
@@ -161,7 +165,7 @@ export async function nextProblem(session: TrialSession) {
         body: {
           count: 1,
           responseCapabilities: ["single-choice-v1"],
-          figureCapabilities: ["measurement-models-v1"],
+          figureCapabilities: [...figureCapabilities],
         },
       },
     );
@@ -184,7 +188,7 @@ export function answer(
 export function hint(session: TrialSession, problemId: string) {
   return request(
     `/learners/${encodeURIComponent(session.learnerId)}/hints`,
-    z.object({ hint: z.string() }),
+    z.object({ hint: z.string(), cue: stepsSchema.optional() }),
     { trial: session.token, body: { problemId } },
   );
 }

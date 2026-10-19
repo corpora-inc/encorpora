@@ -5,6 +5,7 @@ import {
   meOptions,
   meKey,
 } from "../lib/query";
+import type { Step } from "../../math/scene/timeline";
 import { useQuery } from "@tanstack/react-query";
 import {
   useFamilyCache,
@@ -43,7 +44,11 @@ import type { BookSummary } from "../../books/catalog";
 import type { FractionBook } from "../../../books/fraction-field-guide/schema";
 import { product } from "../../product";
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
-import type { PublicProblem, TemplateMetadata } from "../../math/contracts";
+import {
+  figureCapabilities,
+  type PublicProblem,
+  type TemplateMetadata,
+} from "../../math/contracts";
 import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
@@ -57,6 +62,7 @@ import {
 } from "../auth";
 import "../style.css";
 import "../practice.css";
+import "../scene/scene-player.css";
 import "katex/dist/katex.min.css";
 import "../theme.css";
 import "../premium-controls.css";
@@ -66,6 +72,7 @@ import { ChooseHowToPay } from "../ChooseHowToPay";
 import { chosenPlan, storedTrial } from "../lib/pending-trial";
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
+import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
@@ -132,8 +139,10 @@ export function LegacyApp() {
 function LegacyScreen() {
   const route = useAppRoute();
   const { navigate } = route;
+  const [familyMenuOpen, setFamilyMenuOpen] = useState(false);
+  const familyMenuTrigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    document.querySelector(".account-menu")?.removeAttribute("open");
+    setFamilyMenuOpen(false);
   }, [route.location.pathname]);
   const familyOpen = route.familyOpen;
   const setFamilyOpen = (open: boolean) =>
@@ -214,9 +223,7 @@ function LegacyScreen() {
   useLayoutEffect(() => {
     if (!familyOpen && nativeFamilyReturn.current) {
       nativeFamilyReturn.current = false;
-      document
-        .querySelector<HTMLElement>(".account-menu summary")
-        ?.focus({ preventScroll: true });
+      familyMenuTrigger.current?.focus({ preventScroll: true });
     }
   }, [familyOpen]);
 
@@ -306,6 +313,10 @@ function LegacyScreen() {
   const [response, setResponse] = useState(""),
     [outcome, setOutcome] = useState<Outcome | null>(null),
     [hint, setHint] = useState(""),
+    [hintCue, setHintCue] = useState<{
+      problemId: string;
+      steps: Step[];
+    } | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
     [progress, setProgress] = useState<
@@ -706,7 +717,7 @@ function LegacyScreen() {
     navigate("/family/learners");
 
     setPurchaseFocus(undefined);
-    document.querySelector(".account-menu")?.removeAttribute("open");
+    setFamilyMenuOpen(false);
   }
   async function refreshProgress() {
     if (!learner) return;
@@ -781,7 +792,7 @@ function LegacyScreen() {
       ...(templateId ? { templateId } : {}),
       count: 1,
       responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: ["measurement-models-v1"],
+      figureCapabilities: [...figureCapabilities],
     });
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
@@ -1065,69 +1076,57 @@ function LegacyScreen() {
             </Select>
           )}
           {token && !familyOpen && (
-            <details className="account-menu">
-              <summary
-                className="account-menu-trigger"
-                aria-label="Family menu"
-              >
-                Family
-              </summary>
-              <div className="account-menu-content">
-                <button className="account-menu-item" onClick={openFamily}>
-                  Manage family
-                </button>
-                {learner && learner.birthYear != null && (
-                  <button
-                    className="account-menu-item"
-                    disabled={busy}
-                    onClick={(event) => {
-                      event.currentTarget
-                        .closest("details")
-                        ?.removeAttribute("open");
-                      navigationEpoch.current++;
-                      setProblem(null);
-                      setQueue([]);
-                      setOutcome(null);
-                      setPending(null);
-                      setChangingBirthYear(true);
-                    }}
-                  >
-                    Change birth year
-                  </button>
-                )}
-                {learningAllowed && !nativeRuntime && (
-                  <button
-                    className="account-menu-item"
-                    disabled={busy}
-                    onClick={(event) => {
-                      event.currentTarget
-                        .closest("details")
-                        ?.removeAttribute("open");
-                      setName("");
-                      navigate("/start/name");
-                    }}
-                  >
-                    Add learner
-                  </button>
-                )}
-                {token && authMode && authMode !== "development" && (
-                  <button
-                    className="account-menu-item"
-                    onClick={() => {
-                      clearPurchaseReturn();
-                      pendingPurchaseReturn.current = null;
-                      pendingConsent.current = null;
-                      setHasPendingConsent(false);
-                      setConsentChallenge(null);
-                      consentEpoch.current++;
-                      void action(signOut);
-                    }}
-                  >
-                    Sign out
-                  </button>
-                )}
-              </div>
-            </details>
+            <Menu
+              label="Family"
+              aria-label="Family menu"
+              open={familyMenuOpen}
+              onOpenChange={setFamilyMenuOpen}
+              triggerRef={familyMenuTrigger}
+              triggerClassName="account-menu-trigger"
+            >
+              <MenuItem onSelect={openFamily}>Manage family</MenuItem>
+              {learner && learner.birthYear != null && (
+                <MenuItem
+                  disabled={busy}
+                  onSelect={() => {
+                    navigationEpoch.current++;
+                    setProblem(null);
+                    setQueue([]);
+                    setOutcome(null);
+                    setPending(null);
+                    setChangingBirthYear(true);
+                  }}
+                >
+                  Change birth year
+                </MenuItem>
+              )}
+              {learningAllowed && !nativeRuntime && (
+                <MenuItem
+                  disabled={busy}
+                  onSelect={() => {
+                    setName("");
+                    navigate("/start/name");
+                  }}
+                >
+                  Add learner
+                </MenuItem>
+              )}
+              {token && authMode && authMode !== "development" && (
+                <MenuItem
+                  onSelect={() => {
+                    clearPurchaseReturn();
+                    pendingPurchaseReturn.current = null;
+                    pendingConsent.current = null;
+                    setHasPendingConsent(false);
+                    setConsentChallenge(null);
+                    consentEpoch.current++;
+                    void action(signOut);
+                  }}
+                >
+                  Sign out
+                </MenuItem>
+              )}
+            </Menu>
           )}
         </div>
       </header>
@@ -1412,6 +1411,7 @@ function LegacyScreen() {
             setResponse={setResponse}
             outcome={outcome}
             hint={hint}
+            hintCue={hintCue}
             busy={busy}
             pending={!!pending}
             submit={() => void action(submit)}
@@ -1426,11 +1426,14 @@ function LegacyScreen() {
             }
             requestHint={() =>
               void action(async () => {
-                const data = await api<{ hint: string }>(
+                const data = await api<{ hint: string; cue?: Step[] }>(
                   `/learners/${learner.id}/hints`,
                   { problemId: problem.id },
                 );
                 setHint(data.hint);
+                setHintCue(
+                  data.cue ? { problemId: problem.id, steps: data.cue } : null,
+                );
               })
             }
           />

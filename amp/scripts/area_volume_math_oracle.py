@@ -520,7 +520,7 @@ def solve_packing(public):
                      r'It is packed with cubes that have edges of ' + EDGE + r', as shown\. '
                      r'(How many of these cubes fill the prism\?|What is the volume of the prism, in cubic (\w+)\?)', prompt)
     require(m is not None, 'Unrecognized packing prompt')
-    require(figure.get('kind') == 'box-prism' and figure['unit'] in UNITS, 'Expected a box')
+    require(figure.get('kind') == 'fraction-box-prism' and figure['unit'] in UNITS, 'Expected a box')
     unit = figure['unit']
     edges = [tex_number(m[i]) for i in (2, 4, 6)]
     cube = tex_number(m[8])
@@ -548,7 +548,7 @@ def solve_packing(public):
 
 def solve_fraction_edge(public):
     prompt, figure = public['prompt'], public['figure']
-    require(figure.get('kind') == 'box-prism' and figure['unit'] in UNITS and figure['cubeEdge'] is None, 'Expected a plain box')
+    require(figure.get('kind') == 'fraction-box-prism' and figure['unit'] in UNITS and figure['cubeEdge'] is None, 'Expected a plain box')
     unit = figure['unit']
     keys = {'long': 'length', 'wide': 'width', 'tall': 'height'}
     m = re.fullmatch(r'An? ([a-z ]+?) is ' + EDGE + ' long, ' + EDGE + ' wide and ' + EDGE + r' tall\. What is its volume, in cubic (\w+)\?', prompt)
@@ -964,7 +964,7 @@ def _fixtures():
     lshape = _poly_fig('m', L_FACE, [6, 2, None, 3, 3, None])
     cut = _poly_fig('cm', [(0, 0), (11, 0), (11, 6), (3, 8), (0, 8)], [11, 6, None, 3, 8], guides=[((3, 8), (11, 8)), ((11, 8), (11, 6))], right=[0, 1, 4])
     face = {'kind': 'extruded-polygon', 'unit': 'm', 'face': [list(p) for p in L_FACE], 'sides': [6, 2, None, 3, 3, None], 'depth': 4}
-    box = lambda l, w, h, c=None: {'kind': 'box-prism', 'unit': 'in', 'length': l, 'width': w, 'height': h, 'cubeEdge': c}
+    box = lambda l, w, h, c=None: {'kind': 'fraction-box-prism', 'unit': 'in', 'length': l, 'width': w, 'height': h, 'cubeEdge': c}
     fr = lambda n, d: {'n': n, 'd': d}
     curved = lambda solid, r=None, d=None, h=None, unit='cm': {'kind': 'curved-solid', 'unit': unit, 'solid': solid, 'radius': r, 'diameter': d, 'height': h}
     cases = [

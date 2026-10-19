@@ -103,7 +103,7 @@ export const areaVolumeFigureSchemas = [
     .refine((f) => f.slant > f.side / 2, "The faces must meet at an apex"),
   z
     .object({
-      kind: z.literal("box-prism"),
+      kind: z.literal("fraction-box-prism"),
       unit,
       length: fraction.nullable(),
       width: fraction.nullable(),

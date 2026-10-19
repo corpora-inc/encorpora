@@ -118,8 +118,7 @@ header {
 .brand span {
   display: none;
 }
-.app-shell .account select,
-.account-menu summary {
+.app-shell .account select {
   min-height: 44px;
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -131,9 +130,6 @@ header {
 }
 .app-shell .account select {
   padding: 8px 30px 8px 12px;
-}
-.account-menu summary {
-  padding: 8px 12px;
 }
 .app-shell > nav {
   display: flex;
@@ -542,6 +538,13 @@ header {
   margin: 0;
   color: var(--color-muted-text);
 }
+/* A long term would squeeze its meaning into a sliver: stack them instead. */
+@media (max-width: 520px) {
+  .lesson-terms div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
 .lesson-example {
   padding: 14px;
   border: 1px solid var(--color-border);
@@ -910,13 +913,15 @@ header {
     gap: 12px;
   }
 }
+/* Base-ten blocks share the counters' accent role in every figure and lesson
+   animation. */
 .figure .base-block {
-  fill: var(--color-subtle-text);
+  fill: var(--color-figure-accent);
   stroke: var(--fig-ink);
   stroke-width: 1.25;
 }
 .figure .base-cell {
-  stroke: var(--color-border-strong);
+  stroke: var(--color-figure-paper);
   stroke-width: 0.6;
 }
 
@@ -1023,12 +1028,6 @@ button:focus:not(:focus-visible) {
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
   font-size: 28px;
-}
-.account-menu summary {
-  display: inline-flex;
-  align-items: center;
-  height: 44px;
-  line-height: 1;
 }
 .app-shell .account select {
   height: 44px;
@@ -1381,22 +1380,29 @@ html[data-input="pointer"] :focus-visible {
   box-shadow: 0 -8px 40px var(--color-shadow);
   animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.calculator-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-muted-text);
+/* Hidden until a keyboard reaches it; then it overlays the display. */
+.calculator-close {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font-size: 16px;
+  clip-path: inset(50%);
 }
-.calculator-head .dialog-close {
-  width: 36px;
-  min-width: 36px;
-  height: 36px;
-  min-height: 36px;
+.calculator-close:focus-visible {
+  clip-path: none;
 }
+/* Fixed lines: typing, results and errors never resize the panel. */
 .calculator-display {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2px;
   padding: 10px 14px;
   border: 1px solid var(--color-border);
@@ -1404,11 +1410,21 @@ html[data-input="pointer"] :focus-visible {
   background: var(--color-surface-sunken);
   text-align: right;
 }
-.calculator-display input {
+/* Outranks the shell's boxed field style: the sunken display is the field. */
+.calculator
+  .calculator-display
+  input:not([type="checkbox"]):not([type="radio"]) {
+  display: block;
   width: 100%;
+  min-width: 0;
+  height: 32px;
+  min-height: 0;
+  line-height: 32px;
   border: 0;
+  border-radius: 0;
   padding: 0;
   background: transparent;
+  caret-color: var(--color-primary);
   font-size: 22px;
   font-weight: 600;
   text-align: right;
@@ -1416,12 +1432,17 @@ html[data-input="pointer"] :focus-visible {
   outline: none;
 }
 .calculator-display output {
-  min-height: 20px;
+  display: block;
+  height: 20px;
+  overflow: hidden;
   font-size: 15px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: var(--color-subtle-text);
   font-variant-numeric: tabular-nums;
 }
-.calculator-display.error output {
+.calculator-display[data-error] output {
   color: var(--color-danger-accent);
 }
 .calculator-keys {
@@ -1439,6 +1460,14 @@ html[data-input="pointer"] :focus-visible {
   color: var(--color-on-surface);
   font-size: 18px;
   font-weight: 500;
+}
+/* Keys show their own press state, not the browser's square tap flash. */
+.calculator-keys button,
+.math-keypad button {
+  -webkit-tap-highlight-color: transparent;
+}
+.calculator-keys button:active:not(:disabled) {
+  filter: brightness(0.86);
 }
 .calculator-keys button.operator {
   background: var(--color-surface-sunken);
@@ -1896,9 +1925,13 @@ html[data-input="pointer"] :focus-visible {
    The problem runs edge to edge inside the safe area, and feedback rises as
    a bottom sheet from the screen edge. Tablets and desktops keep the card. */
 @media (max-width: 650px) {
+  /* The practice surface, not the shell, reserves the home indicator's
+     inset, so docked sheets (calculator, feedback) reach the screen's edge
+     and pad their own controls above it: no band below them. */
   .shell.app-shell.immersive {
     padding-inline: env(safe-area-inset-left, 0px)
       env(safe-area-inset-right, 0px);
+    padding-bottom: 0;
   }
   .shell.immersive .practice-workspace {
     padding: 0;
@@ -1908,7 +1941,7 @@ html[data-input="pointer"] :focus-visible {
     border-radius: 0;
     background: var(--color-surface);
     box-shadow: none;
-    padding: 4px 16px 0;
+    padding: 4px 16px env(safe-area-inset-bottom, 0px);
   }
   .shell.immersive .workspace-toolbar {
     gap: 8px;

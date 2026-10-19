@@ -89,6 +89,22 @@ function unordered(values: number[]): boolean {
     values.some((v, i) => i > 0 && v > values[i - 1]!)
   );
 }
+const ordinals = ["first", "second", "third", "fourth", "fifth", "sixth"];
+/** The first move for these values: they are listed out of order. */
+function statisticsHint(id: string, values: number[], middleIndex: number) {
+  const n = values.length,
+    odd = n % 2 === 1,
+    start = decimal(values[0]!),
+    end = decimal(values.at(-1)!);
+  const middle = odd
+    ? `the ${ordinals[middleIndex]} value`
+    : `halfway between the ${ordinals[middleIndex - 1]} and ${ordinals[middleIndex]} values`;
+  if (id === "median-data")
+    return `Order the ${n} values from least to greatest, repeats included; the list starts at ${start} but is not in order. The median is ${middle}.`;
+  if (id === "range-data")
+    return `The ${n} values are not in order, so ${start === end ? `the ${start} at each end need not be the least or the greatest` : `${start} and ${end} need not be the least and greatest`}. Find those, then subtract the least from the greatest${values.some((v) => v < 0) ? "; subtracting a negative adds" : ""}.`;
+  return `Order the ${n} values (the list starts at ${start} but is not in order), then split them into a lower and an upper half${odd ? `, leaving out the ${ordinals[middleIndex]} value` : ""}. Find the median of each half.`;
+}
 export function descriptiveStatisticsPrintCase(id: string, seed: string) {
   const metadata = descriptiveStatisticsTemplates.find((t) => t.id === id);
   if (!metadata) throw new Error(`Unknown statistics template ${id}`);
@@ -182,12 +198,7 @@ export function descriptiveStatisticsPrintCase(id: string, seed: string) {
     },
     answer: exact(answer),
     explanation,
-    hint:
-      id === "median-data"
-        ? "Order all values, including repetitions. For an odd count use the middle value; for an even count add the two middle values and divide by 2."
-        : id === "range-data"
-          ? "Find the greatest and least values. Subtract the least from the greatest; when the least is negative, subtracting it adds its positive opposite."
-          : "Order the values and split them into equal halves, excluding the overall middle value for an odd count. Find each half's median, then subtract the lower quartile from the upper.",
+    hint: statisticsHint(id, values, middleIndex),
   };
   const tags = [
     `length-${length}`,

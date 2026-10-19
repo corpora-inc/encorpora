@@ -72,10 +72,17 @@ const PRIOR_SD = 2.5;
 const STRAND_SD = 1.75;
 /** P(independent success) for a learner at `theta` on a grade-`grade` problem:
  * about 70% when the problem is at the learner's level, with a small floor
- * and ceiling for lucky guesses and slips. */
-function success(theta: number, grade: number) {
+ * and ceiling for lucky guesses and slips on a typed answer.
+ *
+ * A choice item adds the 3PL guessing term: a learner who cannot solve it
+ * still picks the key with chance `guess` (1/k for k options), so
+ * P = guess + (1 − guess)·P_typed. A correct choice is weaker evidence than a
+ * correct typed answer. A wrong choice is not: 1 − P = (1 − guess)(1 − P_typed)
+ * is the typed likelihood times a constant, so it moves the estimate exactly
+ * as a typed miss does. */
+function success(theta: number, grade: number, guess: number) {
   const p = 1 / (1 + Math.exp(-1.7 * (theta - grade + 0.5)));
-  return 0.04 + 0.92 * p;
+  return guess + (1 - guess) * (0.04 + 0.92 * p);
 }
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
@@ -123,7 +130,14 @@ function blur(log: number[], variance: number) {
   });
 }
 
-type Evidence = { grade: number; strand: string; success: boolean; at: number };
+type Evidence = {
+  grade: number;
+  /** Chance a guess is graded correct: 0 for typed answers, 1/k for k options. */
+  guess: number;
+  strand: string;
+  success: boolean;
+  at: number;
+};
 function fold(
   start: number[],
   items: readonly Evidence[],
@@ -149,13 +163,13 @@ function fold(
     const total = weights.reduce((sum, w) => sum + w, 0);
     const expected =
       weights.reduce(
-        (sum, w, i) => sum + w * success(GRID[i]!, item.grade),
+        (sum, w, i) => sum + w * success(GRID[i]!, item.grade, item.guess),
         0,
       ) / total;
     surprise =
       (item.success ? 1 - expected : expected) > 0.75 ? SURPRISE_DRIFT : 0;
     for (let i = 0; i < GRID.length; i++) {
-      const p = success(GRID[i]!, item.grade);
+      const p = success(GRID[i]!, item.grade, item.guess);
       log[i] = log[i]! + Math.log(item.success ? p : 1 - p);
     }
   }
@@ -179,6 +193,10 @@ export function estimateFrontier(options: {
   observations: readonly FrontierObservation[];
   gradeOf: (templateId: string) => number | undefined;
   strandOf: (templateId: string) => string;
+  /** Chance that guessing answers the item correctly (`guessChance` in
+   * math/guess-chance.ts). Required, so no caller silently scores a 1-in-3
+   * pick as a typed answer. */
+  guessOf: (templateId: string) => number;
   now?: number;
 }): Frontier {
   const evidence: Evidence[] = [];
@@ -187,6 +205,10 @@ export function estimateFrontier(options: {
     if (grade === undefined) return;
     evidence.push({
       grade,
+      guess: Math.min(
+        0.5,
+        Math.max(0, options.guessOf(observation.templateId)),
+      ),
       strand: options.strandOf(observation.templateId),
       success: observation.correct && !observation.assisted,
       at: observation.createdAt
