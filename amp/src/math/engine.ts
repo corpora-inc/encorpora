@@ -3,6 +3,10 @@ import {
   generateCompletingSquareProblem,
 } from "./completing-square-practice";
 import {
+  angleTriangleTemplates,
+  generateAngleTriangleProblem,
+} from "./angle-triangle-practice";
+import {
   numberSystemTemplates,
   generateNumberSystemProblem,
 } from "./number-system-practice";
@@ -23,6 +27,10 @@ import {
   distributionTemplates,
   generateDistributionProblem,
 } from "./distribution-practice";
+import {
+  linearFunctionTemplates,
+  generateLinearFunctionProblem,
+} from "./linear-function-practice";
 import {
   patternFunctionTemplates,
   generatePatternFunctionProblem,
@@ -297,10 +305,12 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...angleTriangleTemplates,
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
+  ...linearFunctionTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -467,6 +477,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...polygonTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
+    ...linearFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
@@ -479,6 +490,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...angleTriangleTemplates,
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...ratioRateTemplates,
@@ -530,6 +542,8 @@ function generateRawProblem(
     return generateShapeProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (linearFunctionTemplates.some((t) => t.id === templateId))
+    return generateLinearFunctionProblem(templateId, seed);
   if (angleTemplates.some((t) => t.id === templateId))
     return generateAngleProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
@@ -554,6 +568,8 @@ function generateRawProblem(
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (angleTriangleTemplates.some((t) => t.id === templateId))
+    return generateAngleTriangleProblem(templateId, seed);
   if (realNumberTemplates.some((t) => t.id === templateId))
     return generateRealNumberProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))

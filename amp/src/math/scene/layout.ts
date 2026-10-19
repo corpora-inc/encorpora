@@ -456,6 +456,18 @@ function draw(
       }
       case "circle": {
         const [cx, cy] = P(p.center);
+        if (p.obstacle)
+          for (let i = 0; i < 48; i++) {
+            const a = (i / 48) * 2 * Math.PI,
+              b = ((i + 1) / 48) * 2 * Math.PI,
+              r = p.r * s;
+            segments.push([
+              cx + r * Math.cos(a),
+              cy + r * Math.sin(a),
+              cx + r * Math.cos(b),
+              cy + r * Math.sin(b),
+            ]);
+          }
         items.push({
           k: "circle",
           id,
@@ -598,6 +610,13 @@ function draw(
       }
     }
   }
+  // Arrowheads are marks too: labels keep clear of them.
+  for (const d of items)
+    if (d.id.endsWith(".head")) {
+      const b = empty();
+      itemBox(d, b);
+      obstacles.push(b);
+    }
   return { items, texts, obstacles, segments };
 }
 
@@ -638,16 +657,36 @@ function placeTexts(
   texts: PendingText[],
   obstacles: Box[],
   segments: [number, number, number, number][],
+  /** The drawing so far and the target size: a label's cost is how much it
+   * grows the binding dimension, which is what shrinks the figure. */
+  drawing: Box,
+  target: { W: number; H: number },
 ) {
   const placed: Box[] = [];
+  const extent = { ...drawing };
+  const ratio = (b: Box) =>
+    Math.max((b.x1 - b.x0) / target.W, (b.y1 - b.y0) / target.H);
   const out: Drawn[] = [];
   const dropped: string[] = [];
+  // Every label keeps clear of other labels, marks, arrowheads and strokes
+  // (axes, lines, curves, boundaries), with a little air.
+  const grown = (b: Box, g: number) => ({
+    x0: b.x0 - g,
+    y0: b.y0 - g,
+    x1: b.x1 + g,
+    y1: b.y1 + g,
+  });
   const clear = (b: Box) =>
-    !placed.some((o) => overlaps(o, b, 2)) &&
-    !obstacles.some((o) => overlaps(o, b, 1)) &&
-    !segments.some((s) => segmentHitsBox(...s, b));
+    !placed.some((o) => overlaps(o, b, 3)) &&
+    !obstacles.some((o) => overlaps(o, b, 2)) &&
+    !segments.some((s) => segmentHitsBox(...s, grown(b, 2)));
   const emit = (t: PendingText, x: number, y: number) => {
     placed.push(inkBox(x, y, t.t));
+    const e = emBox(x, y, t.t);
+    extent.x0 = Math.min(extent.x0, e.x0);
+    extent.y0 = Math.min(extent.y0, e.y0);
+    extent.x1 = Math.max(extent.x1, e.x1);
+    extent.y1 = Math.max(extent.y1, e.y1);
     out.push({
       k: "text",
       id: t.id,
@@ -671,14 +710,31 @@ function placeTexts(
       const h = t.t.ascent + t.t.descent;
       const anchorX = t.x + ((ax + 1) / 2) * t.t.width,
         anchorY = t.y - t.t.ascent + ((ay + 1) / 2) * h;
+      // Of the clear candidates, take the one that grows the figure least;
+      // among equals, the author's order.
       let chosen: [number, number] | undefined;
+      let cost = Infinity;
+      const base = ratio(extent);
       for (const [dx, dy, cx, cy] of t.p.place) {
         const x = anchorX + dx - ((cx + 1) / 2) * t.t.width,
           y = anchorY + dy - ((cy + 1) / 2) * h + t.t.ascent;
-        if (clear(inkBox(x, y, t.t))) {
+        if (!clear(inkBox(x, y, t.t))) continue;
+        const e = emBox(x, y, t.t);
+        const grownBy =
+          ratio({
+            x0: Math.min(extent.x0, e.x0),
+            y0: Math.min(extent.y0, e.y0),
+            x1: Math.max(extent.x1, e.x1),
+            y1: Math.max(extent.y1, e.y1),
+          }) - base;
+        if (grownBy < cost - 1e-6) {
+          cost = grownBy;
           chosen = [x, y];
-          break;
         }
+      }
+      if (!chosen && t.p.optional) {
+        dropped.push(t.id);
+        continue;
       }
       if (!chosen) {
         const [dx, dy, cx, cy] = t.p.place[0]!;
@@ -688,14 +744,9 @@ function placeTexts(
         ];
       }
       emit(t, ...chosen);
-    } else if (
-      t.p.optional &&
-      [...placed, ...obstacles].some((o) =>
-        overlaps(o, inkBox(t.x, t.y, t.t), 1),
-      )
-    )
-      // Optional labels (ticks) yield to labels and marks; a halo keeps
-      // them legible where a line or curve crosses.
+    } else if (t.p.optional && !clear(inkBox(t.x, t.y, t.t)))
+      // An optional label (a tick value) is dropped rather than drawn into
+      // another label, a mark, or a stroke.
       dropped.push(t.id);
     else emit(t, t.x, t.y);
   }
@@ -762,7 +813,7 @@ export function layoutScene(
   );
   const cap = Math.min(Infinity, ...caps);
   let s = 1;
-  let result: ReturnType<typeof pass> | undefined;
+  let result: ReturnType<typeof pass>;
   function pass(scale: number) {
     const prims = compileScene(scene, { s: scale, reveal });
     const mb = empty();
@@ -776,7 +827,9 @@ export function layoutScene(
       scale,
       reveal,
     );
-    const placed = placeTexts(texts, obstacles, segments);
+    const drawing = empty();
+    for (const d of items) itemBox(d, drawing);
+    const placed = placeTexts(texts, obstacles, segments, drawing, { W, H });
     const all = [...items, ...placed.texts];
     const box = empty();
     for (const d of all) itemBox(d, box);
@@ -808,19 +861,37 @@ export function layoutScene(
       },
     };
   }
-  // The first pass measures the math extent; later passes fit the overhang.
-  result = pass(1);
-  for (let i = 0; i < 4; i++) {
-    const fitW = result.mw > 1e-9 ? (W - result.over.x) / result.mw : Infinity;
-    const fitH = result.mh > 1e-9 ? (H - result.over.y) / result.mh : Infinity;
-    let next = Math.min(fitW, fitH, cap);
-    if (!Number.isFinite(next)) next = Math.min(cap, 40);
-    next = Math.max(next, 0.01);
-    const converged = i > 0 && Math.abs(next - s) / s < 0.005;
-    s = next;
-    result = pass(s);
-    if (converged) break;
+  // Measure the math extent, start from the scale that fills the target
+  // ignoring labels, then refit around the labels actually placed at that
+  // scale. Placement depends on scale (a label moves inside the plot once it
+  // fits), so keep the largest scale whose drawing fits.
+  // (Some math extent is itself sized in pixels, such as axis arrows, so
+  // each pass reports its own.)
+  const probe = pass(1);
+  const fit = (r: ReturnType<typeof pass>) =>
+    Math.min(
+      r.mw > 1e-9 ? (W - r.over.x) / r.mw : Infinity,
+      r.mh > 1e-9 ? (H - r.over.y) / r.mh : Infinity,
+      cap,
+    );
+  const fits = (r: ReturnType<typeof pass>) =>
+    r.box.x1 - r.box.x0 <= W + 0.5 && r.box.y1 - r.box.y0 <= H + 0.5;
+  s = fit(probe);
+  if (!Number.isFinite(s)) s = Math.min(cap, 40);
+  s = Math.max(s, 0.01);
+  let best: { s: number; r: ReturnType<typeof pass> } | undefined;
+  for (let i = 0; i < 10; i++) {
+    const r = pass(s);
+    if (fits(r) && (!best || s > best.s)) best = { s, r };
+    const next = Math.max(0.01, fit(r));
+    if (Math.abs(next - s) / s < 0.003) break;
+    // Grow toward a fit that has room; shrink at least 3% when over.
+    s = fits(r) ? next : Math.min(next, s * 0.97);
   }
+  if (best) {
+    s = best.s;
+    result = best.r;
+  } else result = pass(s);
   const { all, box } = result;
   const dx = PAD - box.x0,
     dy = PAD - box.y0;

@@ -2,6 +2,7 @@ import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
+import { linearFunctionLessons } from "./linear-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
@@ -16,6 +17,7 @@ import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { angleTriangleLessons } from "./angle-triangle-lessons";
 import { realNumberLessons } from "./real-number-lessons";
 import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
@@ -67,6 +69,12 @@ export interface Lesson {
       | "complete-square-area"
       | "complete-square-balance"
       | "complete-square-scaled"
+      | "angle-pairs"
+      | "parallel-angle-pairs"
+      | "triangle-sum-line"
+      | "exterior-angle"
+      | "side-strips"
+      | "solid-slices"
       | "factoring-gcf"
       | "factoring-monic"
       | "factoring-nonmonic"
@@ -621,10 +629,12 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...angleTriangleLessons,
   ...realNumberLessons,
   ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
+  ...linearFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,

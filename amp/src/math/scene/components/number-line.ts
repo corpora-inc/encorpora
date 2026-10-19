@@ -1,7 +1,75 @@
+import { z } from "zod";
+import { base, coord, color, label, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
-import type { NumberLine } from "../spec";
 import { typeset } from "../type";
 import { clean, num, signed, spoken } from "./format";
+
+/** A number line with ticks, marks, intervals and hops. */
+export const numberLineSchema = z
+  .object({
+    ...base,
+    type: z.literal("numberLine"),
+    min: coord,
+    max: coord,
+    /** Tick spacing. A denominator ticks every 1/d and labels fractions. */
+    step: zNum.positive().optional(),
+    denominator: z.number().int().min(2).max(16).optional(),
+    labels: z
+      .union([z.enum(["auto", "ends", "none"]), z.array(coord).max(40)])
+      .optional(),
+    marks: z
+      .array(
+        z
+          .object({
+            at: coord,
+            label: z.union([z.boolean(), label]).optional(),
+            open: z.boolean().optional(),
+            color,
+            derived: z.boolean().optional(),
+          })
+          .strict(),
+      )
+      .max(12)
+      .optional(),
+    hops: z
+      .array(
+        z
+          .object({
+            from: coord,
+            by: coord.refine((n) => n !== 0, "A hop moves"),
+            /** Text above the hop; defaults to the signed change. */
+            label: z.union([label, z.literal(false)]).optional(),
+            /** The landing value: shown, masked as the unknown, or omitted. */
+            landing: z.enum(["shown", "derived", "none"]).optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(12)
+      .optional(),
+    intervals: z
+      .array(
+        z
+          .object({
+            from: coord.nullable(),
+            to: coord.nullable(),
+            open: z.tuple([z.boolean(), z.boolean()]).optional(),
+            color,
+          })
+          .strict(),
+      )
+      .max(4)
+      .optional(),
+  })
+  .strict()
+  .refine((f) => f.max > f.min, "max exceeds min")
+  .refine(
+    (f) =>
+      (f.max - f.min) / (f.denominator ? 1 / f.denominator : (f.step ?? 1)) <=
+      200,
+    "At most 200 ticks",
+  );
+export type NumberLine = z.infer<typeof numberLineSchema>;
 
 const fraction = (v: number, d: number) =>
   Number.isInteger(v) ? num(v) : `${clean(v * d)}/${d}`;

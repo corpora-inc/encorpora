@@ -172,6 +172,19 @@ function Label({
   const single = runs.length === 1 || plain !== null;
   return (
     <g {...common} data-label={d.plain}>
+      {d.halo && (
+        // A paper backing keeps the label legible over gridlines and curves,
+        // on screen in both themes and in print.
+        <rect
+          x={d.x - 2.5}
+          y={d.y - d.t.ascent * 0.84 - 1.5}
+          width={d.t.width + 5}
+          height={d.t.ascent * 0.84 + d.t.descent * 0.62 + 3}
+          rx={3}
+          fill={ink.paper}
+          fillOpacity={0.9}
+        />
+      )}
       {single ? (
         <text
           x={d.x + d.t.width / 2}
