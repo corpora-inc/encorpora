@@ -1,4 +1,5 @@
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
+import { distributionPrinciples } from "./distribution-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
@@ -26,6 +27,7 @@ export const principles: Record<string, string> = {
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
+  ...distributionPrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...comparisonPrinciples,
