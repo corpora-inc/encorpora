@@ -1,3 +1,7 @@
+import {
+  numberSystemTemplates,
+  generateNumberSystemProblem,
+} from "./number-system-practice";
 import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   equationTemplates,
@@ -132,6 +136,7 @@ import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
+import { makeTenHops } from "./scene/explanations";
 import { polish } from "./polish";
 import type {
   GeneratedProblem,
@@ -270,6 +275,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...equationTemplates,
@@ -442,6 +448,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...numberSystemTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -474,6 +481,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (numberSystemTemplates.some((t) => t.id === templateId))
+    return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
@@ -588,6 +597,8 @@ function generateRawProblem(
       answer = `${a + b}`;
       hint = addWithinTwentyHint(a, b);
       explanation = addWithinTwenty(a, b);
+      // Hint and lesson walk the learner's own jumps (docs/figures.md).
+      figure = { kind: "scene", scene: makeTenHops(a, b) };
       break;
     }
     case "subtract-within-20": {

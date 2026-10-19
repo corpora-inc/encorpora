@@ -12,6 +12,7 @@ import {
   type Scene,
   type TenFrame,
 } from "./spec";
+import type { Action, Step } from "./timeline";
 
 /**
  * Author API: chainable builders that produce plain scene data.
@@ -29,9 +30,10 @@ type SceneOptions = {
   note?: string;
   width?: number;
   maxHeight?: number;
+  steps?: Step[];
 };
 
-/** Several elements in one scene. */
+/** Several elements in one scene, sharing one coordinate system. */
 export function scene(...parts: (Element | Built)[]) {
   const elements = parts.map((p) =>
     "element" in p && typeof p.element === "function"
@@ -44,6 +46,44 @@ export function scene(...parts: (Element | Built)[]) {
     },
   };
 }
+
+/**
+ * Timeline actions. A target is an element id and, optionally, a part:
+ * `"nl.hop.0"` is the first hop of the number line with id `nl` (its arc,
+ * arrowhead and labels). Hints and lessons address the learner's own scene
+ * the same way.
+ */
+export const act = {
+  appear: (target: string, stagger = false): Action => ({
+    do: "appear",
+    target,
+    ...(stagger ? { stagger } : {}),
+  }),
+  disappear: (target: string): Action => ({ do: "disappear", target }),
+  trace: (target: string): Action => ({ do: "trace", target }),
+  highlight: (target: string): Action => ({ do: "highlight", target }),
+  fill: (
+    target: string,
+    fill: Extract<Action, { do: "fill" }>["fill"],
+  ): Action => ({ do: "fill", target, fill }),
+  move: (target: string, by: [number, number]): Action => ({
+    do: "move",
+    target,
+    by,
+  }),
+  count: (target: string, from = 0): Action => ({ do: "count", target, from }),
+};
+/** One step: a caption (MathText; `{id}` inserts that label) and its actions. */
+export const step = (caption: string, ...actions: Action[]): Step => ({
+  caption,
+  actions,
+});
+/** A step only lessons play: it reveals the result, so hints stop before it. */
+export const lessonStep = (caption: string, ...actions: Action[]): Step => ({
+  caption,
+  actions,
+  audience: "lesson",
+});
 
 abstract class Builder<T extends Element> implements Built {
   constructor(protected spec: T) {}

@@ -1,3 +1,4 @@
+import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { equationMethods } from "./equation-lessons";
@@ -57,6 +58,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...numberSystemMethods,
   ...ratioRateMethods,
   ...patternFunctionMethods,
   ...equationMethods,
@@ -1189,6 +1191,8 @@ export const methods: Record<string, ProblemMethod> = {
       "x cancels and the statement is false (0 = 5): no solution.",
       "x cancels and the statement is true (0 = 0): every number is a solution.",
     ],
+    watch:
+      "When the x terms cancel, check the numbers left; 0 = 0 means every number works, not that x = 0.",
   },
   "linear-system-x": {
     goal: "Given two equations in x and y, find x.",
@@ -1269,6 +1273,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the slope m from two points.",
       "The equation is y = mx + b.",
     ],
+    watch:
+      "Do not swap the slope and the intercept: the crossing height is b, the number added.",
   },
   "relation-function-choice": {
     goal: "Given lists of input-output pairs, choose the one that is a function.",
