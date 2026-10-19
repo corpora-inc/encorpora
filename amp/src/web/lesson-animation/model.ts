@@ -47,6 +47,7 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type AreaModel = Extract<SemanticFigure, { kind: "area-model" }>;
 type DecimalChart = Extract<SemanticFigure, { kind: "place-value-chart" }>;
 /** A hundredths grid: full columns are tenths, the rest hundredths. */
 export type DecimalFillAnimation = { kind: "decimal-fill"; shaded: number };
@@ -64,7 +65,11 @@ export type ClockSweepAnimation = {
   hour: number;
   minute: number;
 };
+/** Full jar A poured into empty jar B: eighths of B filled (9 = spills). */
+export type PourAnimation = { kind: "pour"; eighths: number };
 export type AnimationModel =
+  | PourAnimation
+  | { kind: "area-model"; figure: AreaModel }
   /** a rows of b dots, built one row at a time. */
   | { kind: "array-build"; rows: number; columns: number }
   /** rows × columns turned a quarter turn: the fact family. */
@@ -160,6 +165,20 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
+  if (
+    lesson.templateId === "compare-capacity" &&
+    f?.kind === "pour" &&
+    integer(f.eighths, 1, 9)
+  )
+    return { kind: "pour", eighths: f.eighths };
+  if (
+    lesson.templateId === "area-model-product" &&
+    f?.kind === "area-model" &&
+    f.columns.length === 2 &&
+    f.rows.length === 2 &&
+    [...f.columns, ...f.rows].every((n) => integer(n, 1, 90))
+  )
+    return { kind: "area-model", figure: f };
   if (
     (lesson.templateId === "related-patterns-relationship" ||
       lesson.templateId === "dependent-variable-equation") &&
@@ -575,6 +594,7 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+const tex = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
 /** Whole-number lines with 0, one known pair and one pair with an unknown. */
 function rateModel(f: RateLines): RateModel | null {
   const { top, bottom } = f;
@@ -641,6 +661,63 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "pour") {
+    const e = model.eighths;
+    const result =
+      e < 8
+        ? {
+            title: "Room left in B",
+            text: "All of A's water fits in B with room to spare, so B holds more.",
+            math: "B holds more",
+          }
+        : e === 8
+          ? {
+              title: "B is exactly full",
+              text: "A's water fills B exactly to the top, so the jars hold the same amount.",
+              math: "A and B hold the same",
+            }
+          : {
+              title: "B overflows",
+              text: "A's water is more than B can hold; some spills. A holds more.",
+              math: "A holds more",
+            };
+    return [
+      {
+        title: "Fill A",
+        text: "A is full. B is empty. Their shapes differ, so looking is not enough.",
+        math: "A full, B empty",
+      },
+      {
+        title: "Pour all of A into B",
+        text: "Every drop of A's water goes into B.",
+        math: "A → B",
+      },
+      result,
+    ];
+  }
+  if (model.kind === "area-model") {
+    const { columns, rows } = model.figure;
+    const a = columns[0]! + columns[1]!,
+      b = rows[0]! + rows[1]!;
+    const parts = rows.flatMap((y) => columns.map((x) => x * y));
+    return [
+      {
+        title: "One rectangle",
+        text: `A rectangle ${a} wide and ${b} tall has area ${a} × ${b}.`,
+        math: `$${a} \\times ${b}$`,
+      },
+      {
+        title: "Split by place value",
+        text: `${a} = ${columns.join(" + ")} and ${b} = ${rows.join(" + ")}. Each region is a partial product.`,
+        math: `$(${columns.join(" + ")}) \\times (${rows.join(" + ")})$`,
+      },
+      {
+        title: "Add the regions",
+        text: "The four regions fill the rectangle exactly, so their areas add to the whole.",
+        math: `$${parts.map(tex).join(" + ")} = ${tex(a * b)}$`,
+      },
+    ];
+  }
   if (model.kind === "rate") {
     const [b, t] = model.given,
       [tb, tt] = model.target,
