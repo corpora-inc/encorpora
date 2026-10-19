@@ -93,7 +93,7 @@ h3 {
   font-weight: 600;
 }
 p {
-  color: #59706a;
+  color: var(--ink-2);
 }
 li {
   margin-bottom: 8px;
@@ -326,10 +326,11 @@ nav button:hover {
   color: #81907f;
 }
 .hint {
-  background: #f0f4e8;
+  background: var(--surface-2);
+  color: var(--ink);
   padding: 14px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .feedback {
   background: #f9efdf;
