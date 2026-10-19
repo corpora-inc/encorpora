@@ -6,6 +6,8 @@ import type { DataIllustration } from "./data-display-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
+import { shapeLessons } from "./shape-lessons";
+import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import { comparisonLessons } from "./comparison-lessons";
 import { factsLessons } from "./facts-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -38,6 +40,7 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | ShapeIllustrationKind
       | "volume-layers"
       | "prism-composite"
       | "ordered-pair-path"
@@ -566,6 +569,7 @@ export const lessons: readonly Lesson[] = [
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
+  ...shapeLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

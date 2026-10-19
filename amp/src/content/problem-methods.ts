@@ -1,4 +1,5 @@
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
+import { shapeMethods } from "./shape-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
@@ -24,6 +25,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
   ...volumeCoordinateMethods,
+  ...shapeMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,

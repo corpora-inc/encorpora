@@ -4,12 +4,15 @@ import { animationFrames, fiveNumbers, type AnimationModel } from "./model";
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import { ShapeMorphStage } from "./ShapeAnimation";
 import "./animation.css";
 import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "shape-morph":
+      return <ShapeMorphStage model={model} step={step} />;
     case "prism-layers":
       return <PrismLayersModel model={model} step={step} />;
     case "quadrant-walk":

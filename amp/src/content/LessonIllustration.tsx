@@ -1,4 +1,5 @@
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
+import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
@@ -29,6 +30,7 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
   if (

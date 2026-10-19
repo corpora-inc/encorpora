@@ -161,6 +161,12 @@
     fill 500ms ease,
     stroke-opacity 400ms ease;
 }
+.animation-morph-shape {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-ink);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade,

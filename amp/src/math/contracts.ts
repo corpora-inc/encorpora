@@ -11,6 +11,7 @@ import {
   dataDisplayFigureSchemas,
   type DataDisplayFigure,
 } from "./data-display-models.js";
+import { shapeFigureSchemas, type ShapeFigure } from "./shape-figures.js";
 import {
   geometryFigureSchemas,
   type GeometryFigure,
@@ -21,6 +22,7 @@ export type SemanticFigure =
   | PartWholeFigure
   | DataDisplayFigure
   | GeometryFigure
+  | ShapeFigure
   | {
       kind: "unit-array";
       rows: number;
@@ -80,6 +82,7 @@ export const figureCapabilities = [
   "measurement-models-v1",
   "data-displays-v1",
   "volume-coordinate-figures-v1",
+  "shape-figures-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
@@ -122,6 +125,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...partWholeFigureSchemas,
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
+    ...shapeFigureSchemas,
     z
       .object({
         kind: z.literal("unit-array"),

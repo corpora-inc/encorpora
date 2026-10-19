@@ -1,5 +1,10 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type { SemanticFigure } from "../../math/contracts";
+import {
+  shapeMorphFrames,
+  shapeMorphModel,
+  type ShapeMorphAnimation,
+} from "./shape-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -25,6 +30,7 @@ type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
 type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 export type AnimationModel =
+  | ShapeMorphAnimation
   | { kind: "prism-layers"; figure: CubePrism }
   | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "make-ten"; figure: TenFramePair }
@@ -48,6 +54,8 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  const morph = shapeMorphModel(lesson.templateId, f);
+  if (morph) return morph;
   if (
     (lesson.templateId === "unit-cube-volume" ||
       lesson.templateId === "cube-layer-count") &&
@@ -271,6 +279,7 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "prism-layers") {
     const { length: l, width: w, height: h } = model.figure,
       layer = l * w;
