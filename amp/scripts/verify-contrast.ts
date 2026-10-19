@@ -364,13 +364,10 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   });
   await page.keyboard.press("Escape");
   await step("family-menu-open", async () => {
-    await page.locator(".account-menu summary").click();
-    await page.locator(".account-menu-content").waitFor();
+    await page.getByRole("button", { name: "Family menu" }).click();
+    await page.getByRole("menu", { name: "Family menu" }).waitFor();
   });
-  await page
-    .locator(".account-menu summary")
-    .click()
-    .catch(() => undefined);
+  await page.keyboard.press("Escape");
   for (const route of ["/lessons", "/progress"])
     await step(route, async () => {
       await page.goto(origin + route);

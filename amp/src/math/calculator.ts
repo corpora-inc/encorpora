@@ -10,6 +10,8 @@ const COMPUTATION_STRANDS = new Set([
   "decimals",
 ]);
 const COMPUTATION_TEMPLATES = new Set([
+  "fraction-plot-difference",
+  "fraction-plot-equal-share",
   "simplify-square-root",
   "combine-square-roots",
   "multiply-square-roots",

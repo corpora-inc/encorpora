@@ -1651,6 +1651,26 @@ for (const [skillId, suffix, description] of [
     "scaled-bar-graphs",
     "Read scaled bar graphs and solve one- and two-step how-many-more problems.",
   ],
+  [
+    "line-plots",
+    "read-whole-unit-plots",
+    "Read counts and length differences from a whole-unit line plot.",
+  ],
+  [
+    "fraction-line-plots",
+    "read-half-quarter-plots",
+    "Count measurements at or beyond half- and quarter-unit lengths on a line plot.",
+  ],
+  [
+    "fraction-plot-arithmetic",
+    "like-fraction-plot-operations",
+    "Add and subtract like-fraction lengths read from a line plot.",
+  ],
+  [
+    "fraction-plot-computation",
+    "equal-share",
+    "Find the equal share of fractional amounts pooled from a line plot.",
+  ],
 ])
   skills
     .find((s) => s.id === skillId)!

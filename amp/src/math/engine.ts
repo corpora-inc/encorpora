@@ -3,6 +3,10 @@ import {
   generatePartWholeProblem,
 } from "./part-whole-practice";
 import {
+  linePlotTemplates,
+  generateLinePlotProblem,
+} from "./line-plot-practice";
+import {
   earlyDataTemplates,
   generateEarlyDataProblem,
 } from "./early-data-practice";
@@ -201,6 +205,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
   ...descriptiveStatisticsTemplates,
@@ -335,6 +340,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...partWholeTemplates,
+    ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
     ...radicalTemplates,
@@ -370,6 +376,8 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
+  if (linePlotTemplates.some((t) => t.id === templateId))
+    return generateLinePlotProblem(templateId, seed);
   if (earlyDataTemplates.some((t) => t.id === templateId))
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
