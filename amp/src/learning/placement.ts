@@ -43,7 +43,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   [
     ["count-objects"],
     ["join-within-10"],
-    ["teen-frame-compose"],
+    ["teen-frame-compose", "greater-numeral"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
   ],
   // Grade 1: counting, facts within 10, a missing addend, then tens.
@@ -51,19 +51,24 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["count-objects", "teen-frame-compose"],
     ["join-within-10", "add-within-20"],
     ["unknown-addend-story", "balanced-addition"],
-    ["tens-ones-model", "continue-count-to-120"],
+    ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
   ],
-  // Grade 2: facts within 20, two-digit place value, a missing addend.
+  // Grade 2: facts within 20, place value and comparison, a missing addend.
   [
     ["add-within-20"],
-    ["tens-ones-model", "continue-count-to-120"],
+    [
+      "tens-ones-model",
+      "continue-count-to-120",
+      "compare-two-digit",
+      "compare-three-digit",
+    ],
     ["unknown-addend-story", "balanced-addition"],
     ["subtract-within-20"],
   ],
   // Grade 3: regrouping, three-digit place value, a story, a bar chart.
   [
     ["add-with-regrouping"],
-    ["place-value-digit", "hundreds-model"],
+    ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
@@ -74,11 +79,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["rectangle-area"],
     ["divide-facts"],
   ],
-  // Grade 5: multiplicative comparison, fractions, factors, measurement.
+  // Grade 5: multiplicative comparison, fractions, factors or place value,
+  // measurement.
   [
     ["comparison-amount", "full-kits"],
     ["compare-fractions", "equivalent-numerator", "whole-times-fraction"],
-    ["factor-partner"],
+    ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
     ["metric-length-rename"],
   ],
   // Grade 6: decimals, expressions and equations, fractions, the mean.

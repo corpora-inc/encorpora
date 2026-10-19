@@ -20,7 +20,18 @@ for (const unit of [10, 1]) {
     }
   }
 }
-assert.equal(lessons.length, 4);
+// Comparison models: a spread row that pairs down, and tens that decide.
+for (const id of ["compare-groups", "compare-two-digit"])
+  lessons.push(problemLesson(id, "animation-review"));
+const names = [
+  "fraction-model",
+  "split-array-part",
+  "exchange-base-ten",
+  "exchange-ones",
+  "compare-groups",
+  "compare-two-digit",
+];
+assert.equal(lessons.length, names.length);
 const entry = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
@@ -103,8 +114,7 @@ try {
         .press("Enter");
       await page.waitForTimeout(750);
       await panel.screenshot({
-        path: new URL(`${ids[i] ?? "exchange-ones"}-${width}-step.png`, output)
-          .pathname,
+        path: new URL(`${names[i]}-${width}-step.png`, output).pathname,
       });
       await panel.getByRole("button", { name: "Step", exact: true }).focus();
       await panel
@@ -173,6 +183,38 @@ try {
           await cells.first().getAttribute("width"),
           await cells.first().getAttribute("height"),
         );
+      } else if (figure.kind === "counter-rows") {
+        assert.equal(
+          await panel.locator('[data-counter="circle"]').count(),
+          figure.circles,
+        );
+        assert.equal(
+          await panel.locator('[data-counter="square"]').count(),
+          figure.squares,
+        );
+        assert.equal(
+          await panel.locator("[data-pair]").count(),
+          Math.min(figure.circles, figure.squares),
+        );
+        // After lining up, each pair shares one x position.
+        const centers = await panel.evaluate((el) =>
+          ["circle", "square"].map((shape) =>
+            [...el.querySelectorAll(`[data-counter="${shape}"]`)].map((g) => {
+              const box = g.getBoundingClientRect();
+              return Math.round(box.x + box.width / 2);
+            }),
+          ),
+        );
+        for (let k = 0; k < Math.min(figure.circles, figure.squares); k++)
+          assert(
+            Math.abs(centers[0]![k]! - centers[1]![k]!) <= 1,
+            "Pairs are not aligned",
+          );
+      } else if (figure.kind === "base-ten-pair") {
+        const tens = figure.values.reduce((s, n) => s + Math.floor(n / 10), 0),
+          ones = figure.values.reduce((s, n) => s + (n % 10), 0);
+        assert.equal(await panel.locator('[data-unit="ten"]').count(), tens);
+        assert.equal(await panel.locator('[data-unit="one"]').count(), ones);
       } else if (figure.kind === "base-ten") {
         assert.equal(
           await page.locator('[data-unit="hundred"]').count(),
@@ -204,8 +246,7 @@ try {
         "Horizontal overflow",
       );
       await panel.screenshot({
-        path: new URL(`${ids[i] ?? "exchange-ones"}-${width}-final.png`, output)
-          .pathname,
+        path: new URL(`${names[i]}-${width}-final.png`, output).pathname,
       });
       await panel.getByRole("button", { name: "Replay", exact: true }).click();
       assert.equal(await panel.getAttribute("data-step"), "0");
@@ -293,7 +334,7 @@ try {
       assert.equal(await panel.getByRole("button").count(), 0);
       assert.equal(
         await panel
-          .locator(".animation-move")
+          .locator(".animation-move, .animation-fade")
           .first()
           .evaluate((el) => getComputedStyle(el).transitionDuration),
         "0s",
