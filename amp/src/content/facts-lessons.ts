@@ -207,7 +207,7 @@ export const factsMethods: Record<string, ProblemMethod> = {
   "related-subtraction": {
     goal: "Given a subtraction within twenty, find the difference.",
     method: [
-      "Rewrite it as addition: the subtracted number + □ = the whole.",
+      "Rewrite it as addition: what added to the number taken away makes the whole?",
       "Count up to 10, then up to the whole.",
       "Add the two jumps: that is the difference.",
     ],
@@ -228,11 +228,11 @@ export const factsPrinciples: Record<string, string> = {
   "facts-to-five":
     "Addition and subtraction are inverses: if a + b = c, then c − b = a.",
   "count-on-back":
-    "Counting on n steps adds n and counting back n steps subtracts n, because each step is one.",
+    "Counting on $n$ steps adds $n$ and counting back $n$ steps subtracts $n$, because each step is one.",
   "counted-steps":
     "The number added or subtracted equals the number of counts said after the start.",
   "make-ten-fact":
-    "Associativity lets an addend be split: a + b = (a + (10 − a)) + (b − (10 − a)) = 10 + the rest.",
+    "Associativity lets an addend be split to make a ten: $8 + 5 = 8 + (2 + 3) = (8 + 2) + 3 = 13$.",
   "related-subtraction": "c − b is the missing addend in b + □ = c.",
   "mental-ten-hundred":
     "Place value: adding 10 or 100 adds one unit to the tens or hundreds place, regrouping ten of a place into one of the next.",

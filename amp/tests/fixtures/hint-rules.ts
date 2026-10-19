@@ -93,19 +93,22 @@ export const fixedHint = (id: string) => {
     new Set(problems.map((p) => p.hint)).size === 1
   );
 };
-/** A prompt that states numbers has a hint that names at least one of them.
- * A number printed in every prompt (a format example such as "2.35") is
- * template text, not a given. */
+/** A prompt that states numbers has a hint that names at least one of them,
+ * in either sign ("add 11" names the −11 in "−11 − 8n"), and a written fraction
+ * names its numerator and denominator. A number printed in
+ * every prompt (a format example such as "2.35") is template text, not a given. */
 export const unnamedGivens = (id: string) => {
+  const size = (n: string) => n.replace(/^-/, "");
   const problems = sample(id);
+  const given = (p: GeneratedProblem) =>
+    new Set([...stated(p.public.prompt)].map(size));
   const constant = problems
-    .map((p) => stated(p.public.prompt))
+    .map(given)
     .reduce((all, next) => new Set([...all].filter((n) => next.has(n))));
   return problems.some((p) => {
-    const given = new Set(
-      [...stated(p.public.prompt)].filter((n) => !constant.has(n)),
-    );
-    return given.size > 0 && !numbers(p.hint).some((n) => given.has(n));
+    const named = [...given(p)].filter((n) => !constant.has(n));
+    const hint = new Set([...stated(p.hint)].map(size));
+    return named.length > 0 && !named.some((n) => hint.has(n));
   });
 };
 export const thin = (id: string) => {

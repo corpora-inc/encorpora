@@ -1,17 +1,21 @@
+import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
+import { polygonPrinciples } from "./polygon-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { decimalPrinciples } from "./decimal-lessons";
 import { timeMoneyPrinciples } from "./time-money-lessons";
+import { attributePrinciples } from "./attribute-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
+import { multiplyDividePrinciples } from "./multiply-divide-lessons";
 import { addSubtractPrinciples } from "./add-subtract-lessons";
 import { factsPrinciples } from "./facts-lessons";
 import { factArrayPrinciples } from "./fact-arrays-lessons";
@@ -30,6 +34,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 export const principles: Record<string, string> = {
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
+  ...polygonPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -42,11 +47,14 @@ export const principles: Record<string, string> = {
   ...partWholePrinciples,
   ...decimalPrinciples,
   ...timeMoneyPrinciples,
+  ...attributePrinciples,
   ...comparisonPrinciples,
+  ...multiplyDividePrinciples,
   ...addSubtractPrinciples,
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...ratioRatePrinciples,
   ...patternFunctionPrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,

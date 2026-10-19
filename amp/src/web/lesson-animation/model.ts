@@ -9,6 +9,16 @@ import {
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type RateLines = Extract<SemanticFigure, { kind: "double-number-line" }>;
+/** A double number line scaled through 1: pairs are [bottom, top]. */
+export type RateModel = {
+  kind: "rate";
+  top: string;
+  bottom: string;
+  given: [number, number];
+  target: [number, number];
+  findBottom: boolean;
+};
 type Display = Extract<SemanticFigure, { kind: "function-display" }>;
 export type PlotRule = {
   x: string;
@@ -37,6 +47,7 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type AreaModel = Extract<SemanticFigure, { kind: "area-model" }>;
 type DecimalChart = Extract<SemanticFigure, { kind: "place-value-chart" }>;
 /** A hundredths grid: full columns are tenths, the rest hundredths. */
 export type DecimalFillAnimation = { kind: "decimal-fill"; shaded: number };
@@ -54,6 +65,8 @@ export type ClockSweepAnimation = {
   hour: number;
   minute: number;
 };
+/** Full jar A poured into empty jar B: eighths of B filled (9 = spills). */
+export type PourAnimation = { kind: "pour"; eighths: number };
 export type AnimationModel =
   /** A balance loaded side by side until the closed box levels it. */
   | {
@@ -67,6 +80,8 @@ export type AnimationModel =
   | { kind: "tape-join"; whole: number; part: number; partFirst: boolean }
   /** Two of three groups fill a ten-frame; the third continues. */
   | { kind: "make-ten-three"; addends: [number, number, number] }
+  | PourAnimation
+  | { kind: "area-model"; figure: AreaModel }
   /** a rows of b dots, built one row at a time. */
   | { kind: "array-build"; rows: number; columns: number }
   /** rows × columns turned a quarter turn: the fact family. */
@@ -106,6 +121,7 @@ export type AnimationModel =
   | { kind: "line-plot-share"; figure: LinePlot; share: number }
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
   | { kind: "box-build"; figure: LinePlot }
+  | RateModel
   | MadGapAnimation;
 type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
 /** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
@@ -173,6 +189,20 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
+  if (
+    lesson.templateId === "compare-capacity" &&
+    f?.kind === "pour" &&
+    integer(f.eighths, 1, 9)
+  )
+    return { kind: "pour", eighths: f.eighths };
+  if (
+    lesson.templateId === "area-model-product" &&
+    f?.kind === "area-model" &&
+    f.columns.length === 2 &&
+    f.rows.length === 2 &&
+    [...f.columns, ...f.rows].every((n) => integer(n, 1, 90))
+  )
+    return { kind: "area-model", figure: f };
   if (
     (lesson.templateId === "related-patterns-relationship" ||
       lesson.templateId === "dependent-variable-equation") &&
@@ -460,6 +490,11 @@ export function animationModel(
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
   if (
+    lesson.templateId === "double-number-line-missing" &&
+    f?.kind === "double-number-line"
+  )
+    return rateModel(f);
+  if (
     (lesson.templateId === "line-plot-whole" ||
       lesson.templateId === "fraction-line-plot") &&
     f?.kind === "line-plot" &&
@@ -623,6 +658,38 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+const tex = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
+/** Whole-number lines with 0, one known pair and one pair with an unknown. */
+function rateModel(f: RateLines): RateModel | null {
+  const { top, bottom } = f;
+  if (top.denominator !== 1 || bottom.denominator !== 1) return null;
+  if (top.numerators.length !== 3 || bottom.numerators.length !== 3)
+    return null;
+  if (top.numerators[0] !== 0 || bottom.numerators[0] !== 0) return null;
+  const columns = [1, 2].map((i) => [
+    bottom.numerators[i] ?? null,
+    top.numerators[i] ?? null,
+  ]);
+  const known = columns.find(([b, t]) => b !== null && t !== null),
+    asked = columns.find(([b, t]) => (b === null) !== (t === null));
+  if (!known || !asked) return null;
+  const [b, t] = known as [number, number];
+  if (!integer(b, 1, 1000) || !integer(t, 1, 100000) || t % b) return null;
+  const rate = t / b,
+    findBottom = asked[0] === null;
+  const target: [number, number] = findBottom
+    ? [asked[1]! / rate, asked[1]!]
+    : [asked[0]!, asked[0]! * rate];
+  if (!integer(target[0], 2, 1000) || target[0] === b) return null;
+  return {
+    kind: "rate",
+    top: top.label,
+    bottom: bottom.label,
+    given: [b, t],
+    target,
+    findBottom,
+  };
+}
 /** A chart row as a whole number of the smallest place: 0.45 → 450 (3 places). */
 export const chartValue = (
   row: { ones: number; decimals: string },
@@ -658,6 +725,93 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "pour") {
+    const e = model.eighths;
+    const result =
+      e < 8
+        ? {
+            title: "Room left in B",
+            text: "All of A's water fits in B with room to spare, so B holds more.",
+            math: "B holds more",
+          }
+        : e === 8
+          ? {
+              title: "B is exactly full",
+              text: "A's water fills B exactly to the top, so the jars hold the same amount.",
+              math: "A and B hold the same",
+            }
+          : {
+              title: "B overflows",
+              text: "A's water is more than B can hold; some spills. A holds more.",
+              math: "A holds more",
+            };
+    return [
+      {
+        title: "Fill A",
+        text: "A is full. B is empty. Their shapes differ, so looking is not enough.",
+        math: "A full, B empty",
+      },
+      {
+        title: "Pour all of A into B",
+        text: "Every drop of A's water goes into B.",
+        math: "A → B",
+      },
+      result,
+    ];
+  }
+  if (model.kind === "area-model") {
+    const { columns, rows } = model.figure;
+    const a = columns[0]! + columns[1]!,
+      b = rows[0]! + rows[1]!;
+    const parts = rows.flatMap((y) => columns.map((x) => x * y));
+    return [
+      {
+        title: "One rectangle",
+        text: `A rectangle ${a} wide and ${b} tall has area ${a} × ${b}.`,
+        math: `$${a} \\times ${b}$`,
+      },
+      {
+        title: "Split by place value",
+        text: `${a} = ${columns.join(" + ")} and ${b} = ${rows.join(" + ")}. Each region is a partial product.`,
+        math: `$(${columns.join(" + ")}) \\times (${rows.join(" + ")})$`,
+      },
+      {
+        title: "Add the regions",
+        text: "The four regions fill the rectangle exactly, so their areas add to the whole.",
+        math: `$${parts.map(tex).join(" + ")} = ${tex(a * b)}$`,
+      },
+    ];
+  }
+  if (model.kind === "rate") {
+    const [b, t] = model.given,
+      [tb, tt] = model.target,
+      rate = t / b;
+    const bottom = model.bottom.toLowerCase(),
+      top = model.top.toLowerCase();
+    return [
+      {
+        title: "Start from a known pair",
+        text: `Aligned marks pair ${t} on the ${top} line with ${b} on the ${bottom} line.`,
+        math: `$${t}$ and $${b}$`,
+      },
+      {
+        title: "Shrink both lines to 1",
+        text: `Divide both values by ${b}. The pair keeps its ratio and lands on 1.`,
+        math: `$${t} \\div ${b} = ${rate}$ and $${b} \\div ${b} = 1$`,
+      },
+      {
+        title: model.findBottom
+          ? "Stretch to the known value"
+          : "Stretch to the target",
+        text: model.findBottom
+          ? `Multiply both values by ${tb}, because ${tb} groups of ${rate} make ${tt}.`
+          : `Multiply both values by ${tb}. The marks stay aligned.`,
+        math: model.findBottom
+          ? `$${tt} \\div ${rate} = ${tb}$`
+          : `$${rate} \\times ${tb} = ${tt}$`,
+      },
+    ];
+  }
   if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;

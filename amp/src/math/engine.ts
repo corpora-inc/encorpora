@@ -20,6 +20,14 @@ import {
   generateTimeMoneyProblem,
 } from "./time-money-practice";
 import {
+  attributeTemplates,
+  generateAttributeProblem,
+} from "./attribute-practice";
+import {
+  ratioRateTemplates,
+  generateRatioRateProblem,
+} from "./ratio-rate-practice";
+import {
   partWholeTemplates,
   generatePartWholeProblem,
 } from "./part-whole-practice";
@@ -42,6 +50,7 @@ import {
   generateEarlyOperationsProblem,
 } from "./early-operations-practice";
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
+import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
   factArrayTemplates,
   generateFactArrayProblem,
@@ -54,6 +63,10 @@ import {
   volumeCoordinateTemplates,
   generateVolumeCoordinateProblem,
 } from "./volume-coordinate-practice";
+import {
+  multiplyDivideTemplates,
+  generateMultiplyDivideProblem,
+} from "./multiply-divide-practice";
 import {
   comparisonTemplates,
   generateComparisonProblem,
@@ -238,6 +251,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
+  ...polygonTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -251,15 +265,18 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...attributeTemplates,
   ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
@@ -412,17 +429,20 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...shapeTemplates,
+    ...polygonTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
     ...partWholeTemplates,
+    ...attributeTemplates,
     ...timeMoneyTemplates,
     ...decimalTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
     ...circleMeasurementTemplates,
@@ -454,10 +474,16 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (attributeTemplates.some((t) => t.id === templateId))
+    return generateAttributeProblem(templateId, seed);
+  if (ratioRateTemplates.some((t) => t.id === templateId))
+    return generateRatioRateProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (polygonTemplates.some((t) => t.id === templateId))
+    return generatePolygonProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
@@ -480,6 +506,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (multiplyDivideTemplates.some((t) => t.id === templateId))
+    return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))
     return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))

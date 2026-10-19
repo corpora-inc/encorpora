@@ -9,6 +9,14 @@ import {
   type TimeMoneyFigure,
 } from "./time-money-models.js";
 import {
+  attributeFigureSchemas,
+  type AttributeFigure,
+} from "./attribute-models.js";
+import {
+  ratioRateFigureSchemas,
+  type RatioRateFigure,
+} from "./ratio-rate-models.js";
+import {
   partWholeFigureSchemas,
   type PartWholeFigure,
 } from "./part-whole-models.js";
@@ -29,6 +37,7 @@ import {
   geometryFigureSchemas,
   type GeometryFigure,
 } from "./geometry-figures.js";
+import { sceneSchema, type Scene } from "./scene/spec.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
 export type FunctionDisplayFigure = {
@@ -55,7 +64,9 @@ export type FunctionDisplayFigure = {
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | RatioRateFigure
   | PartWholeFigure
+  | AttributeFigure
   | FactArrayFigure
   | EarlyOperationsFigure
   | TimeMoneyFigure
@@ -64,6 +75,8 @@ export type SemanticFigure =
   | FunctionDisplayFigure
   | GeometryFigure
   | ShapeFigure
+  /** Any figure built with the scene framework (docs/figures.md). */
+  | { kind: "scene"; scene: Scene }
   | {
       kind: "unit-array";
       rows: number;
@@ -94,6 +107,7 @@ export type SemanticFigure =
       spread: "circles" | "squares" | "none";
     }
   | { kind: "base-ten-pair"; values: [number, number] }
+  | { kind: "area-model"; columns: number[]; rows: number[] }
   | { kind: "ten-frame-pair"; first: number; second: number }
   | {
       kind: "coordinate-plane";
@@ -146,6 +160,7 @@ export const figureCapabilities = [
   "function-displays-v1",
   "volume-coordinate-figures-v1",
   "shape-figures-v1",
+  "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 export interface TemplateMetadata {
@@ -265,7 +280,9 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     functionDisplaySchema,
     ...measurementFigureSchemas,
+    ...ratioRateFigureSchemas,
     ...partWholeFigureSchemas,
+    ...attributeFigureSchemas,
     ...factArrayFigureSchemas,
     ...earlyOperationsFigureSchemas,
     ...timeMoneyFigureSchemas,
@@ -273,6 +290,7 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
     ...dataDisplayFigureSchemas,
     ...geometryFigureSchemas,
     ...shapeFigureSchemas,
+    z.object({ kind: z.literal("scene"), scene: sceneSchema }).strict(),
     z
       .object({
         kind: z.literal("unit-array"),
@@ -372,6 +390,13 @@ export const semanticFigureSchema: z.ZodType<SemanticFigure> =
         (f) => f.spread === "none" || f[f.spread] >= 2,
         "A spread row needs at least two counters",
       ),
+    z
+      .object({
+        kind: z.literal("area-model"),
+        columns: z.array(z.number().int().min(1).max(9000)).min(1).max(4),
+        rows: z.array(z.number().int().min(1).max(9000)).min(1).max(4),
+      })
+      .strict(),
     z
       .object({
         kind: z.literal("ten-frame-pair"),

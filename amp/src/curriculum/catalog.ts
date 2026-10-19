@@ -1371,6 +1371,50 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Grades 2–5 polygons, solids' parts and the quadrilateral hierarchy.
+for (const [skillId, facets] of [
+  [
+    "polygon-properties",
+    [
+      [
+        "polygon-names",
+        "Name polygons with 3 to 8 sides, and find one with a given number of angles.",
+      ],
+      [
+        "solid-parts",
+        "Count the faces, edges and vertices of prisms and pyramids, hidden ones included.",
+      ],
+    ],
+  ],
+  [
+    "quadrilateral-categories",
+    [
+      [
+        "classify",
+        "Name squares, rectangles and rhombuses from marked angles and sides, and recognize quadrilaterals in none of them.",
+      ],
+    ],
+  ],
+  [
+    "shape-hierarchy",
+    [
+      ["every-name", "List every category a quadrilateral belongs to."],
+      [
+        "inclusion",
+        "Judge category statements and use that subcategories inherit properties.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // K–1 shapes: named from exact drawn figures in any orientation and size.
 for (const [skillId, facets] of [
   [
@@ -1591,6 +1635,41 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "unit-rates",
+    "whole-quantity-unit-rates",
+    "Find a unit rate from two whole-number or money quantities in the direction the question asks, with whole, decimal or fraction results.",
+  ],
+  [
+    "unit-rates",
+    "unit-price-comparison",
+    "Compare two package prices by their unit prices and choose the better buy or recognize equal unit prices.",
+  ],
+  [
+    "ratio-tables",
+    "missing-table-value",
+    "Find a missing whole-number value in a table of equivalent ratios by scaling the simplest ratio.",
+  ],
+  [
+    "ratio-tables",
+    "double-number-line-value",
+    "Find a missing whole-number value on a double number line through the unit rate.",
+  ],
+  [
+    "rational-unit-rates",
+    "fraction-quotient-rates",
+    "Find a unit rate from a fractional amount per fractional or whole quantity by dividing fractions.",
+  ],
+  [
+    "multiplicative-stories",
+    "operation-model",
+    "Choose the multiplication or division equation that models an equal-groups, array or measurement story with an unknown product, group size or number of groups.",
+  ],
+  [
+    "multiplicative-stories",
+    "story-solution",
+    "Solve an equal-groups, array or measurement story within 100 by multiplication or division.",
+  ],
+  [
     "rule-patterns",
     "number-rule-terms",
     "Generate later terms of a whole-number pattern from its start and an add, subtract or multiply-by rule.",
@@ -1729,6 +1808,33 @@ for (const [skillId, suffix, description] of [
     "rational-exponents",
     "rational-base-fractional-powers",
     "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Attribute tasks compare and measure from drawn strips, balances, jars and
+// scales; hands-on measuring and estimation remain planned.
+for (const [skillId, suffix, description] of [
+  [
+    "compare-attributes",
+    "length-weight-capacity-comparison",
+    "Compare two lengths aligned or not, read a balance for heavier, lighter or the same, and compare capacity by pouring.",
+  ],
+  [
+    "measure-equal-units",
+    "unit-iteration",
+    "Measure a length by counting equal units end to end, recognize gaps, overlaps and shifted starts, and order three lengths by transitivity.",
+  ],
+  [
+    "mass-volume",
+    "grams-liters-reading-and-stories",
+    "Find a mass in grams from balancing standard masses, read liters on scales with ticks of 1, 2 or 5, and solve one-step stories in grams, kilograms and liters.",
   ],
 ])
   skills
@@ -2041,6 +2147,47 @@ for (const [skillId, suffix, description] of [
     "mental-tens-hundreds",
     "ten-hundred-more-less",
     "Add or subtract 10 or 100 to or from a number from 100 to 900, including regrouping across a hundred.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Multiplication and division tasks cover bounded parts of their skills.
+for (const [skillId, suffix, description] of [
+  [
+    "multiply-tens",
+    "one-digit-times-tens",
+    "Multiply a one-digit number by a multiple of ten from 10 to 90.",
+  ],
+  [
+    "whole-multiplication",
+    "one-digit-factor",
+    "Multiply a two- to four-digit number by a one-digit number.",
+  ],
+  [
+    "whole-multiplication",
+    "two-digit-area-model",
+    "Find a two-digit by two-digit product from an area model split by place value.",
+  ],
+  [
+    "multidigit-products",
+    "two-digit-multiplier",
+    "Multiply a two- or three-digit number by a two-digit number.",
+  ],
+  [
+    "whole-division",
+    "one-digit-divisor",
+    "Find whole-number quotients and remainders for dividends up to 9,999 and one-digit divisors.",
+  ],
+  [
+    "multidigit-quotients",
+    "two-digit-divisor",
+    "Find exact whole-number quotients for dividends up to 9,999 and two-digit divisors.",
   ],
 ])
   skills

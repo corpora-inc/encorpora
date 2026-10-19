@@ -1,13 +1,20 @@
+import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
 import { VolumeCoordinateIllustration } from "./VolumeCoordinateIllustration";
 import { ShapeIllustration, isShapeIllustration } from "./ShapeIllustration";
+import {
+  PolygonIllustration,
+  isPolygonIllustration,
+} from "./PolygonIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
 import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
+import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
 import { FactArrayIllustration } from "./FactArrayIllustration";
@@ -38,8 +45,18 @@ export function LessonIllustration({
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
+  if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "rate-double-line" ||
+    kind === "unit-price-tapes" ||
+    kind === "ratio-table-scaling" ||
+    kind === "rate-through-one" ||
+    kind === "fraction-rate-copies" ||
+    kind === "story-tapes"
+  )
+    return <RatioRateIllustration kind={kind} />;
   if (
     kind === "pattern-rule-steps" ||
     kind === "related-patterns-graph" ||
@@ -66,6 +83,14 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "multiply-tens-groups" ||
+    kind === "area-model-product" ||
+    kind === "standard-algorithm-product" ||
+    kind === "partial-quotients" ||
+    kind === "partial-quotients-two-digit"
+  )
+    return <MultiplyDivideIllustration kind={kind} />;
   if (
     kind === "column-addition" ||
     kind === "base-ten-trade" ||
@@ -112,6 +137,15 @@ export function LessonIllustration({
     kind === "coin-count-on"
   )
     return <TimeMoneyIllustration kind={kind} />;
+  if (
+    kind === "line-up-ends" ||
+    kind === "balance-heavier" ||
+    kind === "unit-iteration" ||
+    kind === "ruler-units" ||
+    kind === "balance-grams" ||
+    kind === "liquid-scale-ticks"
+  )
+    return <AttributeIllustration kind={kind} />;
   if (
     kind === "decimal-tenths-hundredths" ||
     kind === "decimal-compare-chart" ||
