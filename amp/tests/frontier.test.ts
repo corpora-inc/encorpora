@@ -28,6 +28,9 @@ function simulate(
 ) {
   let state = seed;
   const random = () => (state = (state * 16807) % 2147483647) / 2147483647;
+  // Park–Miller's first outputs are proportional to a small seed (seed 1 draws
+  // 0.0000078), which would make every early answer "correct"; discard them.
+  for (let i = 0; i < 4; i++) random();
   const attempts: Outcome[] = [];
   const shown: { grade: number; strand: string; correct: boolean }[] = [];
   const start = initialLevel({ birthYear, now: october });
@@ -130,7 +133,6 @@ test("each strand finds its own frontier: a fraction gap does not hold back alge
 test("a strand whose material tops out below the learner's level is still probed", () => {
   // Fractions material ends near grade 6; a grade-7 learner with a fraction gap
   // must still meet it, or the gap is never found.
-  let found = 0;
   for (let seed = 1; seed <= 40; seed++) {
     const { shown, frontier } = simulate(
       2012,
@@ -142,9 +144,11 @@ test("a strand whose material tops out below the learner's level is still probed
       shown.some((entry) => entry.strand === "fractions"),
       `seed ${seed} never showed fractions`,
     );
-    if (strandLevel(frontier, "fractions") <= 4.5) found++;
+    assert.ok(
+      strandLevel(frontier, "fractions") <= 4.5,
+      `seed ${seed} missed the fraction gap`,
+    );
   }
-  assert.ok(found >= 36, `fraction gap found for ${found}/40 learners`);
 });
 
 test("on-level practice stays within a grade of the frontier and keeps mixing strands", () => {
