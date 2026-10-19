@@ -43,7 +43,8 @@ function plot(
   };
 }
 const build = (element: DotPlot, steps: Step[]): Scene =>
-  sceneSchema.parse({ v: 1, elements: [element], steps });
+  // Pixel-tall stacks: a high ceiling lets the fit reach full width.
+  sceneSchema.parse({ v: 1, maxHeight: 720, elements: [element], steps });
 /** Mark ids of the values that make the tallest stacks (at most 12). */
 function tallestMarks(values: readonly number[]) {
   const counts = new Map<number, number>();

@@ -5,6 +5,7 @@ import { dataWalkthrough } from "../src/math/scene/data-walkthroughs.js";
 import { fiveNumbers } from "../src/math/scene/components/dot-plot.js";
 import { layoutScene, type Drawn } from "../src/math/scene/index.js";
 import { frameAt, missingTargets } from "../src/math/scene/timeline.js";
+import { componentDef } from "../src/math/scene/layout.js";
 
 const ids = [
   "line-plot-whole",
@@ -36,6 +37,12 @@ test("every data lesson has a walkthrough whose steps name real parts", () => {
       assert.ok(scene.steps!.length === 3, id);
       const l = layoutScene(scene, { reveal: true });
       assert.deepEqual(missingTargets(l, scene.steps!), [], id);
+      const e = scene.elements[0]!;
+      const cap = componentDef(e.type)!.maxScale?.(e as never) ?? Infinity;
+      assert.ok(
+        l.width >= 260 || l.scale >= cap - 1e-6,
+        `${id}: ${l.width} px wide`,
+      );
       // The final frame shows every part.
       const end = frameAt(l, scene.steps!, 2, 1);
       for (const d of l.items)

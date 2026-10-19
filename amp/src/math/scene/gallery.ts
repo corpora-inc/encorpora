@@ -48,7 +48,7 @@ export const galleryCases: GalleryCase[] = [
         { at: 4, distances: true, label: "pivot" },
         { at: 3, distances: true, label: "mean" },
       ],
-    }).build(),
+    }).build({ maxHeight: 720 }),
   },
   {
     name: "Dot plot: quartiles and the box over the data (lesson)",
@@ -62,7 +62,7 @@ export const galleryCases: GalleryCase[] = [
       groups: [{ values: [1, 2, 2, 3, 4, 5, 5, 6, 8, 9] }],
       quartiles: true,
       box: true,
-    }).build(),
+    }).build({ maxHeight: 720 }),
   },
   {
     name: "Line plot: amounts shared equally (lesson)",
@@ -77,7 +77,7 @@ export const galleryCases: GalleryCase[] = [
       groups: [{ values: [0.25, 0.75, 1, 1, 1.5, 1.5] }],
       share: 1,
       unit: "liters",
-    }).build(),
+    }).build({ maxHeight: 720 }),
   },
   {
     name: "Two dot plots: MADs laid across the gap between means (lesson)",
@@ -98,7 +98,7 @@ export const galleryCases: GalleryCase[] = [
         { at: 8, group: 1, label: "mean" },
       ],
       bricks: { from: 5, to: 8, size: 1 },
-    }).build(),
+    }).build({ maxHeight: 720 }),
   },
   {
     name: "Number line: make ten, then add the rest (hint)",
