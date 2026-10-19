@@ -1,4 +1,5 @@
 import { distributionPrinciples } from "./distribution-lessons";
+import { inferencePrinciples } from "./inference-lessons";
 import { partWholePrinciples } from "./part-whole-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
@@ -26,6 +27,7 @@ export const principles: Record<string, string> = {
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
   ...distributionPrinciples,
+  ...inferencePrinciples,
   ...radicalPrinciples,
   ...partWholePrinciples,
   ...comparisonPrinciples,

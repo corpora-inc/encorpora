@@ -1,4 +1,8 @@
 import {
+  inferenceTemplates,
+  generateInferenceProblem,
+} from "./inference-practice";
+import {
   distributionTemplates,
   generateDistributionProblem,
 } from "./distribution-practice";
@@ -237,6 +241,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...choiceTemplates,
   ...equalGroupsTemplates,
   ...distributionTemplates,
+  ...inferenceTemplates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -347,6 +352,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...distributionTemplates,
+    ...inferenceTemplates,
     ...partWholeTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
@@ -382,6 +388,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (inferenceTemplates.some((t) => t.id === templateId))
+    return generateInferenceProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
