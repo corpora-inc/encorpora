@@ -4,7 +4,11 @@ import type { SemanticFigure } from "../../math/contracts";
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type Balance = Extract<SemanticFigure, { kind: "balance-scale" }>;
+/** add: x + a = b; times: px = b; remove-split: px + q = r; split-remove: p(x + q) = r. */
+export type BalanceForm = "add" | "times" | "remove-split" | "split-remove";
 export type AnimationModel =
+  | { kind: "balance"; figure: Balance; form: BalanceForm; x: number }
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 };
@@ -44,9 +48,112 @@ export function animationModel(
     if (f.tens >= 10 && f.ones < 10)
       return { kind: "exchange", figure: f, unit: 10 };
   }
+  if (
+    (lesson.templateId === "balance-one-step" ||
+      lesson.templateId === "balance-two-step") &&
+    f?.kind === "balance-scale"
+  ) {
+    const form = balanceForm(f);
+    if (!form) return null;
+    // The weight follows from the figure's counts; the lesson answer is not read.
+    const x = (f.right - f.groups * f.units) / (f.groups * f.blocks);
+    return Number.isInteger(x) && x >= 1
+      ? { kind: "balance", figure: f, form, x }
+      : null;
+  }
   return null;
 }
+function balanceForm(f: Balance): BalanceForm | null {
+  if (
+    !integer(f.groups, 1, 3) ||
+    !integer(f.blocks, 1, 5) ||
+    !integer(f.units, 0, 12) ||
+    !integer(f.right, 1, 30)
+  )
+    return null;
+  if (f.groups > 1)
+    return f.blocks === 1 && f.units >= 1 ? "split-remove" : null;
+  if (f.blocks === 1) return f.units >= 1 ? "add" : null;
+  return f.units === 0 ? "times" : "remove-split";
+}
+function balanceFrames(model: Extract<AnimationModel, { kind: "balance" }>) {
+  const { groups: g, blocks: p, units: q, right: r } = model.figure;
+  const x = model.x;
+  const cubes = (n: number) => `${n} ${n === 1 ? "cube" : "cubes"}`;
+  if (model.form === "add")
+    return [
+      {
+        title: "Read the balance",
+        text: `Level pans hold equal weights: one x block and ${cubes(q)} balance ${cubes(r)}.`,
+        math: `$x + ${q} = ${r}$`,
+      },
+      {
+        title: "Remove the same weight from both pans",
+        text: `Take ${cubes(q)} off each pan. Both pans lose ${q} grams, so the balance stays level.`,
+        math: `$x + ${q} - ${q} = ${r} - ${q}$`,
+      },
+      {
+        title: "The block is alone",
+        text: `One x block balances ${cubes(x)}.`,
+        math: `$x = ${x}$`,
+      },
+    ];
+  if (model.form === "times")
+    return [
+      {
+        title: "Read the balance",
+        text: `Level pans hold equal weights: ${p} x blocks balance ${cubes(r)}.`,
+        math: `$${p}x = ${r}$`,
+      },
+      {
+        title: `Split both pans into ${p} equal groups`,
+        text: `Each group on the left is one x block. Each group on the right has ${cubes(x)}.`,
+        math: `$${p}x \\div ${p} = ${r} \\div ${p}$`,
+      },
+      {
+        title: "Keep one group from each pan",
+        text: `One x block balances one group of ${cubes(x)}.`,
+        math: `$x = ${x}$`,
+      },
+    ];
+  if (model.form === "remove-split")
+    return [
+      {
+        title: "Read the balance",
+        text: `Level pans hold equal weights: ${p} x blocks and ${cubes(q)} balance ${cubes(r)}.`,
+        math: `$${p}x + ${q} = ${r}$`,
+      },
+      {
+        title: "Remove the loose cubes from both pans",
+        text: `Take ${cubes(q)} off each pan. The balance stays level.`,
+        math: `$${p}x = ${r} - ${q} = ${r - q}$`,
+      },
+      {
+        title: `Split both pans into ${p} equal groups`,
+        text: `Each x block balances one group of ${cubes(x)}.`,
+        math: `$x = ${r - q} \\div ${p} = ${x}$`,
+      },
+    ];
+  return [
+    {
+      title: "Read the balance",
+      text: `Level pans hold equal weights: ${g} bags, each holding one x block and ${cubes(q)}, balance ${cubes(r)}.`,
+      math: `$${g}(x + ${q}) = ${r}$`,
+    },
+    {
+      title: `Split both pans into ${g} equal groups`,
+      text: `One bag balances one group of ${cubes(r / g)}.`,
+      math: `$x + ${q} = ${r} \\div ${g} = ${r / g}$`,
+    },
+    {
+      title: "Remove the same weight from every group",
+      text: `Take the ${cubes(q)} out of each bag and ${cubes(q)} from each group on the right.`,
+      math: `$x = ${r / g} - ${q} = ${x}$`,
+    },
+  ];
+}
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "balance") return balanceFrames(model);
   if (model.kind === "fraction") {
     const { parts: d, selected: n } = model.figure;
     return [

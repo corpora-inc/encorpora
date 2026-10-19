@@ -1,3 +1,4 @@
+import { EquationIllustration } from "./EquationIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { RationalIllustration } from "./RationalIllustration";
@@ -20,6 +21,16 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if (
+    kind === "balance-remove" ||
+    kind === "balance-split" ||
+    kind === "balance-bags" ||
+    kind === "undo-chain" ||
+    kind === "equation-tape" ||
+    kind === "two-step-tape" ||
+    kind === "inequality-many-solutions"
+  )
+    return <EquationIllustration kind={kind} />;
   if (
     kind === "counting-tree" ||
     kind === "permutation-slots" ||

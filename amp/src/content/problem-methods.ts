@@ -1,3 +1,4 @@
+import { equationMethods } from "./equation-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { rationalMethods } from "./rational-lessons";
@@ -22,6 +23,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...polynomialMethods,
   ...radicalMethods,
   ...combinatoricsMethods,
+  ...equationMethods,
   ...rationalMethods,
   ...circleMeasurementMethods,
   ...percentChangeMethods,

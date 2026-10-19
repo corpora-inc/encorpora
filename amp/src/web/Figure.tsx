@@ -3,6 +3,7 @@ import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { EquationFigure } from "./EquationFigure";
 import type { SemanticFigure } from "../math/contracts";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   switch (figure.kind) {
@@ -24,6 +25,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "clock":
     case "number-line":
       return <GraphicalFigure figure={figure} />;
+    case "balance-scale":
+    case "inequality-lines":
+      return <EquationFigure figure={figure} />;
     case "collection":
       return (
         <svg

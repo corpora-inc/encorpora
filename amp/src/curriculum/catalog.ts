@@ -1493,6 +1493,61 @@ for (const [suffix, description] of [
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
   [
+    "one-step-equations",
+    "inverse-operation",
+    "Solve a one-operation equation with whole numbers, decimals or fractions by applying the inverse operation to both sides.",
+  ],
+  [
+    "one-step-equations",
+    "story-equation",
+    "Choose the one-step equation that represents a story together with its solution.",
+  ],
+  [
+    "one-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance by removing equal weights or splitting both pans equally.",
+  ],
+  [
+    "two-step-equations",
+    "symbolic-solve",
+    "Solve px + q = r and p(x + q) = r with signed integers or decimals by undoing operations in reverse order.",
+  ],
+  [
+    "two-step-equations",
+    "story-solve",
+    "Write and solve px + q = r or p(x + q) = r for a story.",
+  ],
+  [
+    "two-step-equations",
+    "story-equation",
+    "Choose the two-step equation that represents a story, distinguishing repeated from one-time amounts and px + q from p(x + q).",
+  ],
+  [
+    "two-step-equations",
+    "balance-model",
+    "Find an unknown weight on a level balance showing px + q = r or p(x + q) = r.",
+  ],
+  [
+    "simple-inequalities",
+    "context-inequality",
+    "Write x > c, x < c, x ≥ c or x ≤ c for a condition stated in words.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-reading",
+    "Read the inequality shown by a graphed half-line on a number line.",
+  ],
+  [
+    "simple-inequalities",
+    "graph-choice",
+    "Choose the number line that shows the solutions of a simple inequality.",
+  ],
+  [
+    "simple-inequalities",
+    "solution-recognition",
+    "Recognize which numbers solve a simple inequality and that it has infinitely many solutions.",
+  ],
+  [
     "compound-probability",
     "multiplication-principle",
     "Count outcomes of two to four independent choice stages, including codes with repeated symbols, by the multiplication principle.",

@@ -1,3 +1,4 @@
+import { equationLessons } from "./equation-lessons";
 import { combinatoricsLessons } from "./combinatorics-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { rationalLessons } from "./rational-lessons";
@@ -30,6 +31,13 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "balance-remove"
+      | "balance-split"
+      | "balance-bags"
+      | "undo-chain"
+      | "equation-tape"
+      | "two-step-tape"
+      | "inequality-many-solutions"
       | "counting-tree"
       | "permutation-slots"
       | "combination-orders"
@@ -533,6 +541,7 @@ export const lessons: readonly Lesson[] = [
   ...polynomialLessons,
   ...radicalLessons,
   ...combinatoricsLessons,
+  ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...percentChangeLessons,
