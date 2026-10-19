@@ -87,7 +87,13 @@ export function problemLesson(
     watch: authored?.watch ?? reference?.pitfalls[0] ?? null,
     example: {
       prompt: example.public.prompt,
-      ...(example.public.figure ? { figure: example.public.figure } : {}),
+      // A private walkthrough of the example, when it has one, replaces its
+      // problem figure: the lesson plays it revealed.
+      ...(example.walkthrough
+        ? { figure: { kind: "scene" as const, scene: example.walkthrough } }
+        : example.public.figure
+          ? { figure: example.public.figure }
+          : {}),
       ...(givens ? { givens } : {}),
       steps: example.explanation,
       answer,

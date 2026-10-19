@@ -93,6 +93,10 @@ import {
   generateRationalProblem,
 } from "./rational-practice";
 import {
+  factoringTemplates,
+  generateFactoringProblem,
+} from "./factoring-practice";
+import {
   circleMeasurementTemplates,
   generateCircleMeasurementProblem,
 } from "./circle-measurement-practice";
@@ -315,6 +319,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
+  ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
   ...bivariateTemplates,
@@ -456,6 +461,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
     ...angleTemplates,
@@ -507,6 +513,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (factoringTemplates.some((t) => t.id === templateId))
+    return generateFactoringProblem(templateId, seed);
   if (numberSystemTemplates.some((t) => t.id === templateId))
     return generateNumberSystemProblem(templateId, seed);
   if (attributeTemplates.some((t) => t.id === templateId))

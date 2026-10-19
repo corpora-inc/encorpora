@@ -1,3 +1,4 @@
+import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
 import { PatternFunctionIllustration } from "./PatternFunctionIllustration";
 import { EquationIllustration } from "./EquationIllustration";
@@ -47,14 +48,23 @@ import {
 import { DataDisplayFigure } from "../web/DataDisplayFigure";
 import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
 import { SceneFigure } from "../web/scene/SceneFigure";
+import { ScenePlayer } from "../web/scene/ScenePlayer";
+import type { Scene } from "../math/scene/spec";
 import React from "react";
 
 /** Fixed instructional model: the same whole, subdivided without changing its length. */
 export function LessonIllustration({
   kind,
+  print = false,
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
+  /** Printed pages show a walkthrough's final frame. */
+  print?: boolean;
 }) {
+  if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
+  if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
+  if (kind === "factoring-nonmonic")
+    return <FactoringIllustration kind="nonmonic" />;
   if (
     kind === "repeating-decimal-shift" ||
     kind === "root-zoom" ||
@@ -72,8 +82,14 @@ export function LessonIllustration({
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
-  if (isSceneIllustration(kind))
-    return <SceneFigure scene={sceneIllustrations[kind]} reveal />;
+  if (isSceneIllustration(kind)) {
+    const scene: Scene = sceneIllustrations[kind];
+    return scene.steps?.length && !print ? (
+      <ScenePlayer scene={scene} mode="lesson" label="Explore the model" />
+    ) : (
+      <SceneFigure scene={scene} reveal frame="end" />
+    );
+  }
   if (
     kind === "rate-double-line" ||
     kind === "unit-price-tapes" ||
