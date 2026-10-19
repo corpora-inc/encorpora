@@ -15,6 +15,7 @@ import { attributePrinciples } from "./attribute-lessons";
 import { linePlotPrinciples } from "./line-plot-lessons";
 import { earlyDataPrinciples } from "./early-data-lessons";
 import { combinatoricsPrinciples } from "./combinatorics-lessons";
+import { realNumberPrinciples } from "./real-number-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
 import { multiplyDividePrinciples } from "./multiply-divide-lessons";
@@ -59,6 +60,7 @@ export const principles: Record<string, string> = {
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...realNumberPrinciples,
   ...numberSystemPrinciples,
   ...ratioRatePrinciples,
   ...patternFunctionPrinciples,

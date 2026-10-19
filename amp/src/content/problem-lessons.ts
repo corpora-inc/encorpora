@@ -1,5 +1,9 @@
 import { generateProblem, templates } from "../math/engine";
 import type { SemanticFigure } from "../math/contracts";
+import {
+  realNumberGivens,
+  type RealNumberGivens,
+} from "../math/real-number-practice";
 import { lessons } from "./lessons";
 import { skills } from "../curriculum/catalog";
 import { displayAnswer } from "../math/polish";
@@ -20,6 +24,8 @@ export type ProblemLessonView = {
   example: {
     prompt: string;
     figure?: SemanticFigure;
+    /** Structured givens of the worked example (never the learner's own problem), for its animation. */
+    givens?: RealNumberGivens;
     steps: string[];
     answer: string;
   };
@@ -63,6 +69,7 @@ export function problemLesson(
         ? example.answer
         : displayAnswer(example.answer);
   const authored = methods[templateId];
+  const givens = realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
     lesson.templateIds.includes(templateId),
   );
@@ -81,6 +88,7 @@ export function problemLesson(
     example: {
       prompt: example.public.prompt,
       ...(example.public.figure ? { figure: example.public.figure } : {}),
+      ...(givens ? { givens } : {}),
       steps: example.explanation,
       answer,
     },

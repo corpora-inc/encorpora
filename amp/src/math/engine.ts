@@ -47,6 +47,10 @@ import {
   combinatoricsTemplates,
   generateCombinatoricsProblem,
 } from "./combinatorics-practice";
+import {
+  realNumberTemplates,
+  generateRealNumberProblem,
+} from "./real-number-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
 import {
@@ -281,6 +285,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...realNumberTemplates,
   ...numberSystemTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
@@ -456,6 +461,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
+    ...realNumberTemplates,
     ...numberSystemTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
@@ -524,6 +530,8 @@ function generateRawProblem(
     return generateEarlyDataProblem(templateId, seed);
   if (combinatoricsTemplates.some((t) => t.id === templateId))
     return generateCombinatoricsProblem(templateId, seed);
+  if (realNumberTemplates.some((t) => t.id === templateId))
+    return generateRealNumberProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))

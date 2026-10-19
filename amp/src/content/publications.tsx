@@ -1,3 +1,5 @@
+import { realNumberWorksheet } from "./real-number-worksheets";
+import { realNumberTemplates } from "../math/real-number-practice";
 import { numberSystemWorksheet } from "./number-system-worksheets";
 import { numberSystemTemplates } from "../math/number-system-practice";
 import { earlyOperationsTemplates } from "../math/early-operations-practice";
@@ -69,7 +71,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    numberSystemTemplates.some((t) => t.id === id)
+    realNumberTemplates.some((t) => t.id === id)
+      ? realNumberWorksheet(id, lesson.id, edition)
+      : numberSystemTemplates.some((t) => t.id === id)
       ? numberSystemWorksheet(id, lesson.id, edition)
       : ratioRateTemplates.some((t) => t.id === id)
       ? ratioRateWorksheet(id, lesson.id, edition)

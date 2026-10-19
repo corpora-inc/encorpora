@@ -160,9 +160,9 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
     ["number-line-distance", "opposite-on-line", "greatest-common-factor"],
   ],
-  // Grade 8: signed numbers, unit rates, probability and circles.
+  // Grade 8: signed and real numbers, unit rates, probability and circles.
   [
-    ["integer-addition"],
+    ["integer-addition", "root-between-integers", "scientific-to-standard"],
     ["unit-price", "fraction-unit-rate"],
     ["simple-probability"],
     ["circle-area-coefficient", "circle-circumference-coefficient"],

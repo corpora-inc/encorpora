@@ -417,7 +417,8 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const source = match[0],
       tex = match[1] ?? match[2]!;
     const converted = expressionToTex(tex);
-    const isTex = match[1] !== undefined || /\\[A-Za-z]+/.test(tex);
+    // A command or a braced script is TeX; a currency amount has neither.
+    const isTex = match[1] !== undefined || /\\[A-Za-z]+|[\^_]\{/.test(tex);
     const explicit =
       isTex || (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
     if (!explicit) {
