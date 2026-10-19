@@ -1,3 +1,4 @@
+import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
@@ -40,6 +41,7 @@ export const principles: Record<string, string> = {
   ...addSubtractPrinciples,
   ...factsPrinciples,
   ...combinatoricsPrinciples,
+  ...patternFunctionPrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,

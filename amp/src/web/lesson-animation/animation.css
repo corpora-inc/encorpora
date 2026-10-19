@@ -190,3 +190,12 @@
   fill: var(--color-success-accent);
   stroke: var(--color-border);
 }
+.lesson-animation[data-animation="plot"] .animation-fill {
+  fill: var(--color-success-accent);
+  stroke: var(--color-surface-raised);
+  stroke-width: 1.5;
+}
+.lesson-animation[data-animation="plot"] .animation-empty {
+  fill: var(--color-surface);
+  stroke: none;
+}
