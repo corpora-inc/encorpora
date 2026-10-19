@@ -152,10 +152,20 @@
   fill: var(--color-figure-warm);
   font-weight: 700;
 }
+.animation-shade {
+  fill: var(--color-success-accent);
+  stroke: var(--color-border-strong);
+}
+.animation-paint {
+  transition:
+    fill 500ms ease,
+    stroke-opacity 400ms ease;
+}
 @media (prefers-reduced-motion: reduce) {
   .animation-move,
   .animation-fade,
-  .animation-trace {
+  .animation-trace,
+  .animation-paint {
     transition: none;
   }
 }

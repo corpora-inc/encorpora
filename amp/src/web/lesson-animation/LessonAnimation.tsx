@@ -3,9 +3,39 @@ import { MathText } from "../MathText";
 import { animationFrames, type AnimationModel } from "./model";
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
+import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
 import "./animation.css";
 import { LinePlotAxis, Mark } from "../DataDisplayFigure";
 import { linePlotLayout } from "../../math/data-display-models";
+
+function Stage({ model, step }: { model: AnimationModel; step: number }) {
+  switch (model.kind) {
+    case "prism-layers":
+      return <PrismLayersModel model={model} step={step} />;
+    case "quadrant-walk":
+      return <QuadrantWalkModel model={model} step={step} />;
+    case "line-plot-stack":
+      return <StackModel model={model} step={step} />;
+    case "line-plot-share":
+      return <ShareModel model={model} step={step} />;
+    case "pairing":
+      return <PairingModel model={model} step={step} />;
+    case "place-compare":
+      return <PlaceCompareModel model={model} step={step} />;
+    case "fraction":
+      return <FractionModel model={model} step={step} />;
+    case "array":
+      return <ArrayModel model={model} step={step} />;
+    case "exchange":
+      return <ExchangeModel model={model} step={step} />;
+    case "partition":
+      return <PartitionStage model={model} step={step} />;
+    case "compare":
+      return <CompareStage model={model} step={step} />;
+    case "area":
+      return <AreaStage model={model} step={step} />;
+  }
+}
 
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
   const panelRef = useRef<HTMLElement>(null);
@@ -61,25 +91,7 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         aria-label={`${frames[current].title}. ${frames[current].text}`}
       >
         <title>{frames[current].title}</title>
-        {model.kind === "prism-layers" ? (
-          <PrismLayersModel model={model} step={current} />
-        ) : model.kind === "quadrant-walk" ? (
-          <QuadrantWalkModel model={model} step={current} />
-        ) : model.kind === "pairing" ? (
-          <PairingModel model={model} step={current} />
-        ) : model.kind === "place-compare" ? (
-          <PlaceCompareModel model={model} step={current} />
-        ) : model.kind === "fraction" ? (
-          <FractionModel model={model} step={current} />
-        ) : model.kind === "array" ? (
-          <ArrayModel model={model} step={current} />
-        ) : model.kind === "line-plot-stack" ? (
-          <StackModel model={model} step={current} />
-        ) : model.kind === "line-plot-share" ? (
-          <ShareModel model={model} step={current} />
-        ) : (
-          <ExchangeModel model={model} step={current} />
-        )}
+        <Stage model={model} step={current} />
       </svg>
       <div className="animation-copy" aria-live="polite" aria-atomic="true">
         {frames.map((frame, index) => (
