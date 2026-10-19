@@ -4,12 +4,17 @@ import {
   type MeasurementFigure,
 } from "./measurement-models.js";
 import {
+  partWholeFigureSchemas,
+  type PartWholeFigure,
+} from "./part-whole-models.js";
+import {
   dataDisplayFigureSchemas,
   type DataDisplayFigure,
 } from "./data-display-models.js";
 /** Reference templates demonstrate selected skills; they are not a complete curriculum. */
 export type SemanticFigure =
   | MeasurementFigure
+  | PartWholeFigure
   | DataDisplayFigure
   | {
       kind: "unit-array";
@@ -107,6 +112,7 @@ export interface GeneratedProblem {
 export const semanticFigureSchema: z.ZodType<SemanticFigure> =
   z.discriminatedUnion("kind", [
     ...measurementFigureSchemas,
+    ...partWholeFigureSchemas,
     ...dataDisplayFigureSchemas,
     z
       .object({
