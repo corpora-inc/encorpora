@@ -1,4 +1,8 @@
 import {
+  timeMoneyTemplates,
+  generateTimeMoneyProblem,
+} from "./time-money-practice";
+import {
   partWholeTemplates,
   generatePartWholeProblem,
 } from "./part-whole-practice";
@@ -221,6 +225,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...timeMoneyTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -340,6 +345,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...partWholeTemplates,
+    ...timeMoneyTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -374,6 +380,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (timeMoneyTemplates.some((t) => t.id === templateId))
+    return generateTimeMoneyProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
     return generatePartWholeProblem(templateId, seed);
   if (linePlotTemplates.some((t) => t.id === templateId))

@@ -1,5 +1,6 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
+import { TimeMoneyFigure } from "./TimeMoneyFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
@@ -13,6 +14,9 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "analog-clocks":
+    case "money-sets":
+      return <TimeMoneyFigure figure={figure} />;
     case "partitioned-shapes":
     case "area-partition":
     case "fraction-bars":
