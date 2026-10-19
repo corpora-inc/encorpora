@@ -440,6 +440,7 @@ rational-stories|7|modeling|Solve contextual problems using signed rational arit
 complex-fractions|7|fractions|Simplify complex fractions by dividing a simplified numerator by a simplified denominator|fraction-division,signed-multiplication|7.NS.A.3
 linear-expressions|7|algebra|Expand and factor linear expressions with rational coefficients|expression-properties,signed-multiplication|7.EE.A.1,7.EE.A.2
 two-step-equations|7|algebra|Construct and solve two-step equations|one-step-equations,signed-addition|7.EE.B.4
+absolute-value-equations|algebra-1|algebra|Solve absolute-value equations and interpret complete real solution sets|absolute-value,two-step-equations,signed-multiplication|SAT.advanced-math
 linear-inequalities|7|algebra|Solve inequalities and interpret direction changes|simple-inequalities,signed-multiplication,linear-expressions,two-step-equations|7.EE.B.4
 scale-drawings|7|geometry|Use scale factors to recover lengths and areas|proportional-relationships,triangle-area|7.G.A.1
 triangle-construction|7|geometry|Determine whether side and angle conditions define a triangle|angle-measure|7.G.A.2
@@ -1293,6 +1294,29 @@ export const expectedHighSchoolStandardIds = Object.entries(
 );
 
 // Narrow implemented tasks do not certify the broader planned inequality skill.
+const absoluteValueSkill = skills.find(
+  (s) => s.id === "absolute-value-equations",
+)!;
+for (const [id, description] of [
+  [
+    "direct-solution-set",
+    "Select complete real solution sets for absolute-value equations with bounded rational distances.",
+  ],
+  [
+    "affine-solution-set",
+    "Solve a single absolute value of an affine expression with bounded integer coefficients and rational targets.",
+  ],
+  [
+    "transformed-solution-set",
+    "Isolate a scaled, shifted absolute value and classify bounded exact solution sets, including true and false constant equations.",
+  ],
+])
+  absoluteValueSkill.facets.push({
+    id: `absolute-value-equations.${id}`,
+    description,
+    status: "implemented",
+  });
+
 const inequalitySkill = skills.find((s) => s.id === "linear-inequalities")!;
 inequalitySkill.alignments.push({
   standardId: "SAT.algebra",
@@ -1634,6 +1658,46 @@ for (const [suffix, description] of [
 
 // Bounded counting and discrete-probability tasks; each facet names its limits.
 for (const [skillId, suffix, description] of [
+  [
+    "gcf-lcm",
+    "greatest-common-factor",
+    "Find the greatest common factor of two whole numbers up to 100, including equal-sets and square-tile contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "least-common-multiple",
+    "Find the least common multiple of two whole numbers from 2 to 12, including package and repeating-time contexts.",
+  ],
+  [
+    "gcf-lcm",
+    "distributive-gcf",
+    "Express a sum of two whole numbers up to 100 as their greatest common factor times a sum with no common factor.",
+  ],
+  [
+    "integer-division",
+    "standard-algorithm",
+    "Divide multidigit whole numbers by two-digit divisors with the standard algorithm.",
+  ],
+  [
+    "integer-division",
+    "remainder-meaning",
+    "Interpret a whole-number remainder in context as one more group, a dropped part or the amount left over.",
+  ],
+  [
+    "signed-numbers",
+    "opposite-quantities",
+    "Represent quantities in opposite directions from a reference 0 with positive and negative numbers.",
+  ],
+  [
+    "signed-numbers",
+    "opposites-on-line",
+    "Read integers on a number line and find opposites, including the opposite of an opposite.",
+  ],
+  [
+    "rational-stories",
+    "signed-decimal-stories",
+    "Solve multistep temperature, elevation and account-balance problems with signed decimals exactly.",
+  ],
   [
     "unit-rates",
     "whole-quantity-unit-rates",

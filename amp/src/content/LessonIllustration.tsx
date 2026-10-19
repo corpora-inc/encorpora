@@ -12,6 +12,11 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import {
+  NumberSystemIllustration,
+  numberSystemIllustrationKinds,
+  type NumberSystemIllustrationKind,
+} from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
@@ -30,6 +35,7 @@ import {
   RightTriangleOrientation,
   PythagoreanRearrangement,
 } from "./RightTriangleIllustration";
+import { AbsoluteValueIllustration } from "./AbsoluteValueIllustration";
 import type { Lesson } from "./lessons";
 import {
   dataIllustrations,
@@ -46,6 +52,10 @@ export function LessonIllustration({
 }: {
   kind: NonNullable<Lesson["sections"][number]["illustration"]>;
 }) {
+  if ((numberSystemIllustrationKinds as readonly string[]).includes(kind))
+    return (
+      <NumberSystemIllustration kind={kind as NumberSystemIllustrationKind} />
+    );
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
@@ -205,6 +215,9 @@ export function LessonIllustration({
   if (kind === "right-triangle-orientation")
     return <RightTriangleOrientation />;
   if (kind === "pythagorean-rearrangement") return <PythagoreanRearrangement />;
+  if (kind === "absolute-value-distance") return <AbsoluteValueIllustration />;
+  if (kind === "absolute-value-shifted")
+    return <AbsoluteValueIllustration shifted />;
   if (kind === "inequality-half-lines") return <InequalityHalfLines />;
   if (kind === "linear-system-intersection")
     return <LinearSystemIllustration kind="intersection" />;

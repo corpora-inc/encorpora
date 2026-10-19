@@ -14,6 +14,7 @@ import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
 import type { SceneIllustration } from "./scene-illustrations";
 import { combinatoricsLessons } from "./combinatorics-lessons";
+import { numberSystemLessons } from "./number-system-lessons";
 import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
@@ -38,6 +39,7 @@ import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
+import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
 import { choiceLessons } from "./choice-lessons.js";
@@ -57,6 +59,13 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "prime-factor-venn"
+      | "gcf-area"
+      | "multiple-jumps"
+      | "long-division"
+      | "elevation-line"
+      | "opposite-line"
+      | "story-jumps"
       | AttributeIllustrationKind
       | "multiply-tens-groups"
       | "area-model-product"
@@ -141,6 +150,8 @@ export interface Lesson {
       | "linear-system-intersection"
       | "linear-system-count"
       | "right-triangle-orientation"
+      | "absolute-value-distance"
+      | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
   workedExample: {
@@ -573,6 +584,7 @@ export const lessons: readonly Lesson[] = [
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
+  ...absoluteValueLessons,
   ...polynomialLessons,
   ...earlyDataLessons,
   ...linePlotLessons,
@@ -590,6 +602,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...numberSystemLessons,
   ...ratioRateLessons,
   ...patternFunctionLessons,
   ...equationLessons,

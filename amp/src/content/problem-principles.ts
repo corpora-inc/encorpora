@@ -1,3 +1,4 @@
+import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { equationPrinciples } from "./equation-lessons";
@@ -30,6 +31,7 @@ import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
+import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
@@ -39,6 +41,7 @@ export const principles: Record<string, string> = {
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
+  ...absoluteValuePrinciples,
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
   ...linePlotPrinciples,
@@ -56,6 +59,7 @@ export const principles: Record<string, string> = {
   ...factsPrinciples,
   ...factArrayPrinciples,
   ...combinatoricsPrinciples,
+  ...numberSystemPrinciples,
   ...ratioRatePrinciples,
   ...patternFunctionPrinciples,
   ...equationPrinciples,
