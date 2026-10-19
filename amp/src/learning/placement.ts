@@ -67,13 +67,15 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
     ["unknown-addend-story", "balanced-addition"],
     ["subtract-within-20", "related-subtraction", "subtract-two-digit-regroup"],
   ],
-  // Grade 3: regrouping, three-digit place value, a story, a bar chart.
+  // Grade 3: regrouping or tens products, three-digit place value, a story,
+  // a bar chart.
   [
     [
       "add-with-regrouping",
       "add-two-digit-regroup",
       "add-three-digit",
       "mental-ten-hundred",
+      "multiply-by-tens",
     ],
     ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
@@ -81,7 +83,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 4: multiplication facts, fractions of a whole, area, division.
   [
-    ["multiply-facts", "add-multidigit"],
+    [
+      "multiply-facts",
+      "add-multidigit",
+      "multiply-by-tens",
+      "multiply-by-one-digit",
+    ],
     [
       "fraction-model",
       "fraction-unit-count",
@@ -89,10 +96,10 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-like-numerators",
     ],
     ["rectangle-area"],
-    ["divide-facts", "share-or-group"],
+    ["divide-facts", "share-or-group", "divide-by-one-digit"],
   ],
   // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
-  // place value, measurement.
+  // place value, multidigit multiplication or division.
   [
     ["compare-decimals-hundredths", "decimal-grid-read"],
     [
@@ -102,7 +109,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "whole-times-fraction",
     ],
     ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
-    ["metric-length-rename"],
+    ["multiply-by-one-digit", "multiply-multidigit", "divide-by-one-digit"],
   ],
   // Grade 6: decimals, expressions and equations, fractions, the mean.
   [
@@ -123,14 +130,14 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // Grade 7: powers and equations, unit rates, the mean or a sample estimate, distance on a number line.
   [
     ["integer-power", "two-step-equation", "dependent-variable-value"],
-    ["unit-price"],
+    ["unit-price", "fraction-unit-rate", "unit-rate"],
     ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
     ["number-line-distance"],
   ],
   // Grade 8: signed numbers, unit rates, probability and circles.
   [
     ["integer-addition"],
-    ["unit-price"],
+    ["unit-price", "fraction-unit-rate"],
     ["simple-probability"],
     ["circle-area-coefficient", "circle-circumference-coefficient"],
   ],

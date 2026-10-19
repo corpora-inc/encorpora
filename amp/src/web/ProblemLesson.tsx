@@ -99,7 +99,7 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <p className="lesson-example-answer">
           Answer:{" "}
           <strong>
-            <MathText text={lesson.example.answer} />
+            <MathText text={displayAnswer(lesson.example.answer)} />
           </strong>
         </p>
       </section>
@@ -112,3 +112,9 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
     </article>
   );
 }
+
+/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
+export const displayAnswer = (answer: string) =>
+  /^\d{4,}$/.test(answer)
+    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : answer;

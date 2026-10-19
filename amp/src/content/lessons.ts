@@ -1,3 +1,4 @@
+import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
@@ -5,6 +6,8 @@ import { inferenceLessons } from "./inference-lessons";
 import { partWholeLessons } from "./part-whole-lessons";
 import { decimalLessons } from "./decimal-lessons";
 import { timeMoneyLessons } from "./time-money-lessons";
+import { attributeLessons } from "./attribute-lessons";
+import type { AttributeIllustrationKind } from "./AttributeIllustration";
 import { linePlotLessons } from "./line-plot-lessons";
 import { earlyDataLessons } from "./early-data-lessons";
 import type { DataIllustration } from "./data-display-illustrations";
@@ -13,11 +16,15 @@ import { radicalLessons } from "./radical-lessons";
 import { volumeCoordinateLessons } from "./volume-coordinate-lessons";
 import { shapeLessons } from "./shape-lessons";
 import type { ShapeIllustrationKind } from "./ShapeIllustration";
+import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { polygonLessons } from "./polygon-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
 import { factArrayLessons } from "./fact-arrays-lessons";
 import type { FactArrayIllustrationKind } from "./FactArrayIllustration";
+import type { EarlyOperationsIllustrationKind } from "./EarlyOperationsIllustration";
 import { rationalLessons } from "./rational-lessons";
 import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
@@ -48,8 +55,22 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | AttributeIllustrationKind
+      | "multiply-tens-groups"
+      | "area-model-product"
+      | "standard-algorithm-product"
+      | "partial-quotients"
+      | "partial-quotients-two-digit"
+      | "rate-double-line"
+      | "unit-price-tapes"
+      | "ratio-table-scaling"
+      | "rate-through-one"
+      | "fraction-rate-copies"
+      | "story-tapes"
       | FactArrayIllustrationKind
+      | EarlyOperationsIllustrationKind
       | ShapeIllustrationKind
+      | PolygonIllustrationKind
       | "pattern-rule-steps"
       | "related-patterns-graph"
       | "dependent-variable-graph"
@@ -558,17 +579,21 @@ export const lessons: readonly Lesson[] = [
   ...partWholeLessons,
   ...decimalLessons,
   ...timeMoneyLessons,
+  ...attributeLessons,
   ...comparisonLessons,
+  ...multiplyDivideLessons,
   ...addSubtractLessons,
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...ratioRateLessons,
   ...patternFunctionLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
   ...volumeCoordinateLessons,
   ...shapeLessons,
+  ...polygonLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

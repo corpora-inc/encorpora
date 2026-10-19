@@ -83,7 +83,7 @@ export function ComparisonIllustration({
           strokeWidth="1.5"
           strokeDasharray="3 3"
         />
-        <text x={224} y={41} fontSize="14" fill="currentColor">
+        <text x={224} y={41} fill="currentColor" style={{ fontSize: 14 }}>
           no partner
         </text>
         {squares.map((x) => (
@@ -128,9 +128,11 @@ export function ComparisonIllustration({
               x={x(n) + box / 2}
               y={33}
               textAnchor="middle"
-              fontSize="14"
-              fontWeight={n === 4 || n === 7 ? 700 : 400}
               fill="currentColor"
+              style={{
+                fontWeight: n === 4 || n === 7 ? 700 : 400,
+                fontSize: 14,
+              }}
             >
               {n}
             </text>
@@ -152,8 +154,8 @@ export function ComparisonIllustration({
           x={(x(4) + x(7)) / 2 + box / 2}
           y={94}
           textAnchor="middle"
-          fontSize="13"
           fill="currentColor"
+          style={{ fontSize: 13 }}
         >
           later in the count: greater
         </text>
@@ -189,9 +191,8 @@ export function ComparisonIllustration({
               x={center(i)}
               y={24}
               textAnchor="middle"
-              fontSize="14"
-              fontWeight="600"
               fill="currentColor"
+              style={{ fontWeight: 600, fontSize: 14 }}
             >
               {title}
             </text>
@@ -201,9 +202,8 @@ export function ComparisonIllustration({
                 x={center(i)}
                 y={80 + r * 48}
                 textAnchor="middle"
-                fontSize="30"
-                fontWeight={i === 1 ? 700 : 400}
                 fill="currentColor"
+                style={{ fontWeight: i === 1 ? 700 : 400, fontSize: 30 }}
               >
                 {row[i]}
               </text>
@@ -212,8 +212,8 @@ export function ComparisonIllustration({
               x={center(i)}
               y={166}
               textAnchor="middle"
-              fontSize="13"
               fill="currentColor"
+              style={{ fontSize: 13 }}
             >
               {status}
             </text>
@@ -262,9 +262,8 @@ export function ComparisonIllustration({
             x={left + width * (3 * p + 1.5)}
             y={13}
             textAnchor="middle"
-            fontSize="12"
-            fontWeight="600"
             fill="currentColor"
+            style={{ fontWeight: 600, fontSize: 12 }}
           >
             {period}
           </text>
@@ -284,8 +283,8 @@ export function ComparisonIllustration({
             x={center(i)}
             y={33}
             textAnchor="middle"
-            fontSize="10.5"
             fill="currentColor"
+            style={{ fontSize: 10.5 }}
           >
             {name}
           </text>
@@ -293,9 +292,8 @@ export function ComparisonIllustration({
             x={center(i)}
             y={76}
             textAnchor="middle"
-            fontSize="28"
-            fontWeight={i === 1 ? 700 : 400}
             fill="currentColor"
+            style={{ fontWeight: i === 1 ? 700 : 400, fontSize: 28 }}
           >
             {digit}
           </text>
@@ -303,9 +301,8 @@ export function ComparisonIllustration({
             x={center(i)}
             y={110}
             textAnchor="middle"
-            fontSize="11"
-            fontWeight={i === 1 ? 700 : 400}
             fill="currentColor"
+            style={{ fontWeight: i === 1 ? 700 : 400, fontSize: 11 }}
           >
             {value}
           </text>
@@ -340,8 +337,8 @@ export function ComparisonIllustration({
               x={(from + to) / 2}
               y={168}
               textAnchor="middle"
-              fontSize="10.5"
               fill="currentColor"
+              style={{ fontSize: 10.5 }}
             >
               ×10
             </text>

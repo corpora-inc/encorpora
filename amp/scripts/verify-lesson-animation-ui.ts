@@ -21,7 +21,12 @@ for (const unit of [10, 1]) {
   }
 }
 // Comparison models: a spread row that pairs down, and tens that decide.
-for (const id of ["compare-groups", "compare-two-digit", "make-ten-fact"])
+for (const id of [
+  "compare-groups",
+  "compare-two-digit",
+  "make-ten-fact",
+  "area-model-product",
+])
   lessons.push(problemLesson(id, "animation-review"));
 // A sum whose ones make a new ten.
 for (let i = 0; ; i++) {
@@ -36,7 +41,14 @@ for (let i = 0; ; i++) {
   }
 }
 // Fact arrays: rows build, the array turns, counters are dealt and regrouped.
-for (const id of ["multiply-facts", "divide-facts", "share-or-group"])
+for (const id of [
+  "multiply-facts",
+  "divide-facts",
+  "share-or-group",
+  "balanced-addition",
+  "unknown-addend-story",
+  "three-addend-story",
+])
   lessons.push(problemLesson(id, "animation-review"));
 const names = [
   "fraction-model",
@@ -45,11 +57,15 @@ const names = [
   "exchange-ones",
   "compare-groups",
   "compare-two-digit",
-  "add-two-digit-regroup",
   "make-ten-fact",
+  "area-model-product",
+  "add-two-digit-regroup",
   "multiply-facts",
   "divide-facts",
   "share-or-group",
+  "balanced-addition",
+  "unknown-addend-story",
+  "three-addend-story",
 ];
 assert.equal(lessons.length, names.length);
 const entry = `
@@ -207,6 +223,30 @@ try {
         const total =
           figure.total ?? (figure.rows ?? 0) * (figure.columns ?? 0);
         assert.equal(await panel.locator("circle[data-dot]").count(), total);
+      } else if (figure.kind === "equal-balance") {
+        // Level at the last step: both pans hang at the same height.
+        const pans = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-pan] path")].map(
+            (n) => n.getBoundingClientRect().y,
+          ),
+        );
+        assert.equal(pans.length, 2);
+        assert(Math.abs(pans[0]! - pans[1]!) < 0.5, "Balance is not level");
+      } else if (figure.kind === "addend-groups") {
+        const total = figure.addends.reduce((a, b) => a + b, 0);
+        const placed = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-counter]")].every((g) => {
+            const b = g.getBoundingClientRect();
+            const cx = b.x + b.width / 2,
+              cy = b.y + b.height / 2;
+            return [...el.querySelectorAll("[data-slot]")].some((n) => {
+              const r = n.getBoundingClientRect();
+              return cx > r.x && cx < r.right && cy > r.y && cy < r.bottom;
+            });
+          }),
+        );
+        assert.equal(await panel.locator("[data-counter]").count(), total);
+        assert(placed, "Three-addend counters do not land in the frames");
       } else if (figure.kind === "share-model") {
         assert.equal(
           await panel.locator("[data-counter]").count(),
@@ -280,6 +320,22 @@ try {
             Math.abs(centers[0]![k]! - centers[1]![k]!) <= 1,
             "Pairs are not aligned",
           );
+      } else if (figure.kind === "area-model") {
+        const regions = panel.locator("[data-region]");
+        assert.equal(
+          await regions.count(),
+          figure.columns.length * figure.rows.length,
+        );
+        // To scale: widths and heights keep the ratio of their parts.
+        const [w0, w1] = await Promise.all(
+          [0, 1].map(async (i) =>
+            Number(await regions.nth(i).locator("rect").getAttribute("width")),
+          ),
+        );
+        assert(
+          Math.abs(w0! / w1! - figure.columns[0]! / figure.columns[1]!) < 1e-6,
+          "Area model is not to scale",
+        );
       } else if (figure.kind === "base-ten-pair") {
         const tens = figure.values.reduce((s, n) => s + Math.floor(n / 10), 0),
           ones = figure.values.reduce((s, n) => s + (n % 10), 0);

@@ -9,6 +9,16 @@ import {
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
 type Exchange = Extract<SemanticFigure, { kind: "base-ten" }>;
+type RateLines = Extract<SemanticFigure, { kind: "double-number-line" }>;
+/** A double number line scaled through 1: pairs are [bottom, top]. */
+export type RateModel = {
+  kind: "rate";
+  top: string;
+  bottom: string;
+  given: [number, number];
+  target: [number, number];
+  findBottom: boolean;
+};
 type Display = Extract<SemanticFigure, { kind: "function-display" }>;
 export type PlotRule = {
   x: string;
@@ -37,6 +47,7 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type AreaModel = Extract<SemanticFigure, { kind: "area-model" }>;
 type DecimalChart = Extract<SemanticFigure, { kind: "place-value-chart" }>;
 /** A hundredths grid: full columns are tenths, the rest hundredths. */
 export type DecimalFillAnimation = { kind: "decimal-fill"; shaded: number };
@@ -54,7 +65,23 @@ export type ClockSweepAnimation = {
   hour: number;
   minute: number;
 };
+/** Full jar A poured into empty jar B: eighths of B filled (9 = spills). */
+export type PourAnimation = { kind: "pour"; eighths: number };
 export type AnimationModel =
+  /** A balance loaded side by side until the closed box levels it. */
+  | {
+      kind: "balance-level";
+      /** Counter groups on the complete side, and on the box's side. */
+      full: number[];
+      partial: number[];
+      boxLeft: boolean;
+    }
+  /** A missing part slides in to fill the bar to the whole. */
+  | { kind: "tape-join"; whole: number; part: number; partFirst: boolean }
+  /** Two of three groups fill a ten-frame; the third continues. */
+  | { kind: "make-ten-three"; addends: [number, number, number] }
+  | PourAnimation
+  | { kind: "area-model"; figure: AreaModel }
   /** a rows of b dots, built one row at a time. */
   | { kind: "array-build"; rows: number; columns: number }
   /** rows × columns turned a quarter turn: the fact family. */
@@ -94,6 +121,7 @@ export type AnimationModel =
   | { kind: "line-plot-share"; figure: LinePlot; share: number }
   | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
   | { kind: "box-build"; figure: LinePlot }
+  | RateModel
   | MadGapAnimation;
 type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
 /** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
@@ -109,6 +137,18 @@ const madOf = (v: readonly number[]) => {
   const m = meanOf(v);
   return v.reduce((a, x) => a + Math.abs(x - m), 0) / v.length;
 };
+/** Indexes of the first two addends that make ten, then the third. */
+export function tenPair(
+  addends: readonly [number, number, number],
+): [number, number, number] | null {
+  for (const p of [
+    [0, 1, 2],
+    [1, 2, 0],
+    [0, 2, 1],
+  ] as const)
+    if (addends[p[0]] + addends[p[1]] === 10) return [...p];
+  return null;
+}
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
 
@@ -149,6 +189,20 @@ export function animationModel(
   const f = lesson.example.figure;
   const morph = shapeMorphModel(lesson.templateId, f);
   if (morph) return morph;
+  if (
+    lesson.templateId === "compare-capacity" &&
+    f?.kind === "pour" &&
+    integer(f.eighths, 1, 9)
+  )
+    return { kind: "pour", eighths: f.eighths };
+  if (
+    lesson.templateId === "area-model-product" &&
+    f?.kind === "area-model" &&
+    f.columns.length === 2 &&
+    f.rows.length === 2 &&
+    [...f.columns, ...f.rows].every((n) => integer(n, 1, 90))
+  )
+    return { kind: "area-model", figure: f };
   if (
     (lesson.templateId === "related-patterns-relationship" ||
       lesson.templateId === "dependent-variable-equation") &&
@@ -259,6 +313,46 @@ export function animationModel(
     f.values.length >= 4
   )
     return { kind: "box-build", figure: f };
+  if (
+    lesson.templateId === "balanced-addition" &&
+    f?.kind === "equal-balance"
+  ) {
+    const boxLeft = f.left.includes(null),
+      full = (boxLeft ? f.right : f.left) as number[],
+      partial = (boxLeft ? f.left : f.right).filter(
+        (v): v is number => v !== null,
+      );
+    const sum = (v: number[]) => v.reduce((a, b) => a + b, 0);
+    if (
+      full.every((v) => integer(v, 0, 20)) &&
+      sum(full) <= 20 &&
+      sum(partial) < sum(full)
+    )
+      return { kind: "balance-level", full, partial, boxLeft };
+  }
+  if (
+    lesson.templateId === "unknown-addend-story" &&
+    f?.kind === "bar-model" &&
+    f.whole !== null &&
+    f.parts.length === 2 &&
+    integer(f.whole, 2, 20)
+  ) {
+    const part = f.parts.find((p) => p !== null);
+    if (part !== undefined && part !== null && integer(part, 1, f.whole - 1))
+      return {
+        kind: "tape-join",
+        whole: f.whole,
+        part,
+        partFirst: f.parts[0] !== null,
+      };
+  }
+  if (
+    lesson.templateId === "three-addend-story" &&
+    f?.kind === "addend-groups" &&
+    f.addends.every((v) => integer(v, 1, 9)) &&
+    f.addends[0] + f.addends[1] + f.addends[2] <= 20
+  )
+    return { kind: "make-ten-three", addends: f.addends };
   if (
     lesson.templateId === "multiply-facts" &&
     f?.kind === "dot-array" &&
@@ -395,6 +489,11 @@ export function animationModel(
     integer(f.splitAfterRow, 1, f.rows - 1)
   )
     return { kind: "array", figure: { ...f, splitAfterRow: f.splitAfterRow } };
+  if (
+    lesson.templateId === "double-number-line-missing" &&
+    f?.kind === "double-number-line"
+  )
+    return rateModel(f);
   if (
     (lesson.templateId === "line-plot-whole" ||
       lesson.templateId === "fraction-line-plot") &&
@@ -559,6 +658,38 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+const tex = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
+/** Whole-number lines with 0, one known pair and one pair with an unknown. */
+function rateModel(f: RateLines): RateModel | null {
+  const { top, bottom } = f;
+  if (top.denominator !== 1 || bottom.denominator !== 1) return null;
+  if (top.numerators.length !== 3 || bottom.numerators.length !== 3)
+    return null;
+  if (top.numerators[0] !== 0 || bottom.numerators[0] !== 0) return null;
+  const columns = [1, 2].map((i) => [
+    bottom.numerators[i] ?? null,
+    top.numerators[i] ?? null,
+  ]);
+  const known = columns.find(([b, t]) => b !== null && t !== null),
+    asked = columns.find(([b, t]) => (b === null) !== (t === null));
+  if (!known || !asked) return null;
+  const [b, t] = known as [number, number];
+  if (!integer(b, 1, 1000) || !integer(t, 1, 100000) || t % b) return null;
+  const rate = t / b,
+    findBottom = asked[0] === null;
+  const target: [number, number] = findBottom
+    ? [asked[1]! / rate, asked[1]!]
+    : [asked[0]!, asked[0]! * rate];
+  if (!integer(target[0], 2, 1000) || target[0] === b) return null;
+  return {
+    kind: "rate",
+    top: top.label,
+    bottom: bottom.label,
+    given: [b, t],
+    target,
+    findBottom,
+  };
+}
 /** A chart row as a whole number of the smallest place: 0.45 → 450 (3 places). */
 export const chartValue = (
   row: { ones: number; decimals: string },
@@ -594,6 +725,93 @@ export function fiveNumbers(values: readonly number[]) {
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "pour") {
+    const e = model.eighths;
+    const result =
+      e < 8
+        ? {
+            title: "Room left in B",
+            text: "All of A's water fits in B with room to spare, so B holds more.",
+            math: "B holds more",
+          }
+        : e === 8
+          ? {
+              title: "B is exactly full",
+              text: "A's water fills B exactly to the top, so the jars hold the same amount.",
+              math: "A and B hold the same",
+            }
+          : {
+              title: "B overflows",
+              text: "A's water is more than B can hold; some spills. A holds more.",
+              math: "A holds more",
+            };
+    return [
+      {
+        title: "Fill A",
+        text: "A is full. B is empty. Their shapes differ, so looking is not enough.",
+        math: "A full, B empty",
+      },
+      {
+        title: "Pour all of A into B",
+        text: "Every drop of A's water goes into B.",
+        math: "A → B",
+      },
+      result,
+    ];
+  }
+  if (model.kind === "area-model") {
+    const { columns, rows } = model.figure;
+    const a = columns[0]! + columns[1]!,
+      b = rows[0]! + rows[1]!;
+    const parts = rows.flatMap((y) => columns.map((x) => x * y));
+    return [
+      {
+        title: "One rectangle",
+        text: `A rectangle ${a} wide and ${b} tall has area ${a} × ${b}.`,
+        math: `$${a} \\times ${b}$`,
+      },
+      {
+        title: "Split by place value",
+        text: `${a} = ${columns.join(" + ")} and ${b} = ${rows.join(" + ")}. Each region is a partial product.`,
+        math: `$(${columns.join(" + ")}) \\times (${rows.join(" + ")})$`,
+      },
+      {
+        title: "Add the regions",
+        text: "The four regions fill the rectangle exactly, so their areas add to the whole.",
+        math: `$${parts.map(tex).join(" + ")} = ${tex(a * b)}$`,
+      },
+    ];
+  }
+  if (model.kind === "rate") {
+    const [b, t] = model.given,
+      [tb, tt] = model.target,
+      rate = t / b;
+    const bottom = model.bottom.toLowerCase(),
+      top = model.top.toLowerCase();
+    return [
+      {
+        title: "Start from a known pair",
+        text: `Aligned marks pair ${t} on the ${top} line with ${b} on the ${bottom} line.`,
+        math: `$${t}$ and $${b}$`,
+      },
+      {
+        title: "Shrink both lines to 1",
+        text: `Divide both values by ${b}. The pair keeps its ratio and lands on 1.`,
+        math: `$${t} \\div ${b} = ${rate}$ and $${b} \\div ${b} = 1$`,
+      },
+      {
+        title: model.findBottom
+          ? "Stretch to the known value"
+          : "Stretch to the target",
+        text: model.findBottom
+          ? `Multiply both values by ${tb}, because ${tb} groups of ${rate} make ${tt}.`
+          : `Multiply both values by ${tb}. The marks stay aligned.`,
+        math: model.findBottom
+          ? `$${tt} \\div ${rate} = ${tb}$`
+          : `$${rate} \\times ${tb} = ${tt}$`,
+      },
+    ];
+  }
   if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
@@ -834,6 +1052,97 @@ export function animationFrames(model: AnimationModel) {
         title: "Draw the box",
         text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
         math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
+      },
+    ];
+  }
+  if (model.kind === "balance-level") {
+    const { full, partial } = model,
+      total = full.reduce((a, b) => a + b, 0),
+      known = partial.reduce((a, b) => a + b, 0),
+      missing = total - known;
+    const fullText = full.join(" + ");
+    return [
+      {
+        title: "Load one side",
+        text: `One pan holds ${fullText}${full.length > 1 ? ` = ${total}` : ""} counters. The empty pan rises.`,
+        math: `$${fullText}${full.length > 1 ? ` = ${total}` : ""}$`,
+      },
+      {
+        title: "Not level yet",
+        text: known
+          ? `The other pan holds ${known} and the closed box. ${known} is less than ${total}, so that pan is still high.`
+          : `The other pan holds only the closed box. It must weigh as much as ${total} counters.`,
+        math: known ? `$${known} < ${total}$` : `$\\square = ${total}$`,
+      },
+      {
+        title: "Level",
+        text: `The box holds ${missing}. Now both pans hold ${total}, and the beam is level.`,
+        math: known
+          ? `$${known} + ${missing} = ${fullText}$`
+          : `$${missing} = ${fullText}$`,
+      },
+    ];
+  }
+  if (model.kind === "tape-join") {
+    const { whole, part } = model,
+      missing = whole - part;
+    return [
+      {
+        title: "The whole and one part",
+        text: `The top bar is the whole, ${whole}. The bar below shows one part, ${part}.`,
+        math: `$${part} + \\square = ${whole}$`,
+      },
+      {
+        title: "Join the missing part",
+        text: `The missing part fills the rest of the bar, from ${part} up to ${whole}.`,
+        math: `$\\square = ${whole} - ${part}$`,
+      },
+      {
+        title: "Name the part",
+        text: `Counting up from ${part} to ${whole} takes ${missing}.`,
+        math: `$${part} + ${missing} = ${whole}$`,
+      },
+    ];
+  }
+  if (model.kind === "make-ten-three") {
+    const [a, b, c] = model.addends,
+      total = a + b + c,
+      pair = tenPair(model.addends);
+    if (pair) {
+      const [x, y, z] = pair.map((i) => model.addends[i]!);
+      return [
+        {
+          title: "Three groups",
+          text: `${a}, ${b} and ${c}. Look for two that make ten.`,
+          math: `$${a} + ${b} + ${c}$`,
+        },
+        {
+          title: "Make a ten",
+          text: `${x} and ${y} fill the ten-frame exactly.`,
+          math: `$${x} + ${y} = 10$`,
+        },
+        {
+          title: "Add the rest",
+          text: `One full ten and ${z} more. Changing the order did not change the total.`,
+          math: `$10 + ${z} = ${total}$`,
+        },
+      ];
+    }
+    return [
+      {
+        title: "Three groups",
+        text: `${a}, ${b} and ${c}. No two make ten, so join two first.`,
+        math: `$${a} + ${b} + ${c}$`,
+      },
+      {
+        title: "Join two groups",
+        text: `${a} and ${b} go into the frames${a + b > 10 ? ", filling a ten" : ""}.`,
+        math: `$${a} + ${b} = ${a + b}$`,
+      },
+      {
+        title: "Add the third",
+        text: `${c} more counters follow.`,
+        math: `$${a + b} + ${c} = ${total}$`,
       },
     ];
   }

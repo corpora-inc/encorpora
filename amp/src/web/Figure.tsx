@@ -1,14 +1,18 @@
 import { MeasurementFigure } from "./MeasurementFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
+import { AttributeFigure } from "./AttributeFigure";
 import { TimeMoneyFigure } from "./TimeMoneyFigure";
 import { DecimalFigure } from "./DecimalFigure";
 import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
+import { AreaModelFigure } from "./AreaModelFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
+import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
 import { DataDisplayFigure } from "./DataDisplayFigure";
@@ -28,6 +32,15 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "length-rods":
+    case "unit-measure":
+    case "mass-balance":
+    case "pour":
+    case "liquid-scale":
+      return <AttributeFigure figure={figure} />;
+    case "ratio-table":
+    case "double-number-line":
+      return <RatioRateFigure figure={figure} />;
     case "analog-clocks":
     case "money-sets":
       return <TimeMoneyFigure figure={figure} />;
@@ -65,6 +78,8 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <FractionPracticeFigure figure={figure} />;
     case "base-ten":
       return <ElementaryFigure figure={figure} />;
+    case "area-model":
+      return <AreaModelFigure figure={figure} />;
     case "function-display":
       return <FunctionDisplay figure={figure} />;
     case "ten-frame-pair":
@@ -73,6 +88,12 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "share-model":
     case "times-table":
       return <FactArrayFigure figure={figure} />;
+    case "number-bond":
+    case "bar-model":
+    case "equal-balance":
+    case "addend-groups":
+    case "change-chain":
+      return <EarlyOperationsFigure figure={figure} />;
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
