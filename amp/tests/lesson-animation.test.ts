@@ -204,10 +204,7 @@ test("signed-number animations reflect exactly across 0 and land where the jumps
     const frames = animationFrames(model);
     assert.equal(frames.length, 3);
     // The final frame names the opposite: same distance, other side of 0.
-    assert.equal(
-      frames[2]!.math,
-      `$-(${model.value}) = ${-model.value}$`,
-    );
+    assert.equal(frames[2]!.math, `$-(${model.value}) = ${-model.value}$`);
     const shown = Number(opposite.example.answer.replace("−", "-"));
     assert.ok(shown === -model.value || shown === model.value);
     kinds.add(model.value < 0 ? "negative" : "positive");
@@ -303,7 +300,7 @@ test("plot animations turn every table row into a point on the stated rule", () 
       assert.equal(frames[2]!.math, `$${equation}$`);
       if (id === "dependent-variable-equation")
         assert.equal(lesson.example.answer, equation);
-      else if (!lesson.example.prompt.includes("paired with"))
+      else if (!lesson.example.prompt.includes("The patterns continue"))
         assert.equal(Number(lesson.example.answer), rule.k);
       rules.add(rule.offset ? "offset" : "proportional");
     }

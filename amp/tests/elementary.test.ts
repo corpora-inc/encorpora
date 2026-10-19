@@ -160,14 +160,19 @@ test("rendered units preserve counts, frame capacity and hundred-ten-one area ra
       figure: { kind: "base-ten", hundreds: 1, tens: 1, ones: 1 },
     }),
   );
-  const h = html.match(
-      /data-unit="hundred"><rect[^>]*width="(\d+)" height="(\d+)"/,
-    )!,
-    t = html.match(/data-unit="ten"><rect[^>]*width="(\d+)" height="(\d+)"/)!,
-    o = html.match(/data-unit="one"[^>]*width="(\d+)" height="(\d+)"/)!;
+  // The block drawn for each unit: a rect carrying data-unit.
+  const block = (unit: string) =>
+    html.match(
+      new RegExp(
+        `<rect[^>]*data-unit="${unit}"[^>]*width="([\\d.]+)" height="([\\d.]+)"`,
+      ),
+    )!;
+  const h = block("hundred"),
+    t = block("ten"),
+    o = block("one");
   const area = (m: RegExpMatchArray) => Number(m[1]) * Number(m[2]);
-  assert.equal(area(h) / area(o), 100);
-  assert.equal(area(t) / area(o), 10);
+  assert.ok(Math.abs(area(h) / area(o) - 100) < 1e-9);
+  assert.ok(Math.abs(area(t) / area(o) - 10) < 1e-9);
 });
 
 test("source matrix covers all33 numbered standards plus5 components and retains limitations", () => {

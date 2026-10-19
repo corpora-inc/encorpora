@@ -110,7 +110,7 @@ def pairs(points):
 
 # ------------------------------------------------------------------ related patterns
 def solve_related(public):
-    m = re.fullmatch(r'Pattern A starts at 0\. Its rule is “add (\d+)\.” Pattern B starts at 0\. Its rule is “add (\d+)\.” The table pairs matching terms, and the graph shows each pair as a point \(A, B\)\. (.+)', public['prompt'])
+    m = re.fullmatch(r'Pattern A starts at 0 and adds (\d+) each step\. Pattern B starts at 0 and adds (\d+) each step\. (.+)', public['prompt'])
     require(m is not None, 'Unrecognized related-patterns prompt')
     a, b, question = int(m[1]), int(m[2]), m[3]
     A, B = pattern_terms(0, 'add', a, 40), pattern_terms(0, 'add', b, 40)
@@ -123,7 +123,7 @@ def solve_related(public):
         ratios = {Fraction(y, x) for x, y in zip(A, B) if x}
         require(len(ratios) == 1, 'No single multiplier')
         return ratios.pop()
-    m = re.fullmatch(r'The patterns continue\. Which term of pattern B is paired with (\d+) in pattern A\?', question)
+    m = re.fullmatch(r'The patterns continue\. Which term of pattern B matches (\d+) in pattern A\?', question)
     require(m is not None, 'Unrecognized related-patterns question')
     target = int(m[1])
     require(target in A, 'The A-term must occur in pattern A')
@@ -151,9 +151,11 @@ def equation_holds(label, y, x, rows):
 
 
 def solve_equation_choice(public):
-    m = re.fullmatch(r'.+ The table and graph show .+\. Which equation gives ([a-z]) in terms of ([a-z])\?', public['prompt'])
+    # A context sentence, then one sentence naming both variables.
+    m = re.fullmatch(r'.+\. ([^.]+\.) Which equation gives ([a-z]) in terms of ([a-z])\?', public['prompt'])
     require(m is not None, 'Unrecognized equation prompt')
-    y, x = m[1], m[2]
+    y, x = m[2], m[3]
+    require(all(re.search(rf'\b{v}\b', m[1]) for v in (x, y)), 'The prompt must name both variables')
     figure = display(public)
     columns = figure['table']['columns']
     require(columns[0].startswith(x + ' (') and columns[1].startswith(y + ' ('), 'Columns must name the variables')
@@ -408,11 +410,11 @@ def table_graph(rows, xs, ys, columns=('Pattern A', 'Pattern B'), labels=('A', '
 
 
 def review_pattern_function_fixtures():
-    related = 'Pattern A starts at 0. Its rule is “add 2.” Pattern B starts at 0. Its rule is “add 6.” The table pairs matching terms, and the graph shows each pair as a point (A, B). '
+    related = 'Pattern A starts at 0 and adds 2 each step. Pattern B starts at 0 and adds 6 each step. '
     pairs6 = [(2 * i, 6 * i) for i in range(5)]
     car = [(t, 65 * t) for t in (2, 3, 4, 5)]
     car_figure = table_graph(car, (6, 1), (350, 50), ('t (hours)', 'd (miles)'), ('t (hours)', 'd (miles)'), {'rise': 65, 'run': 1, 'b': 0})
-    car_prompt = 'A car travels at a constant speed. The table and graph show the distance d, in miles, that it has traveled after t hours. Which equation gives d in terms of t?'
+    car_prompt = 'A car travels at a constant speed. After t hours it has gone d miles. Which equation gives d in terms of t?'
     fixtures = [
         (case('rule-pattern-term', 'A number pattern starts at 5. Its rule is “add 6.” What is the 8th number in the pattern?'), Fraction(47)),
         (case('rule-pattern-term', 'A number pattern starts at 50. Its rule is “subtract 7.” What is the 6th number in the pattern?'), Fraction(15)),
@@ -424,7 +426,7 @@ def review_pattern_function_fixtures():
         (case('rule-pattern-feature', 'A number pattern starts at 37. Its rule is “add 40.” Which statement about the pattern is true?',
               choice('Every number in the pattern ends in the digit 0.', 'Every number in the pattern ends in the digit 7.', 'Every number in the pattern is even.', 'The numbers in the pattern alternate between odd and even.')), 'option-b'),
         (case('related-patterns-relationship', related + 'Each term of pattern B is how many times the matching term of pattern A?', figure=table_graph(pairs6, (10, 2), (30, 5))), Fraction(3)),
-        (case('related-patterns-relationship', related + 'The patterns continue. Which term of pattern B is paired with 20 in pattern A?', figure=table_graph(pairs6, (10, 2), (30, 5))), Fraction(60)),
+        (case('related-patterns-relationship', related + 'The patterns continue. Which term of pattern B matches 20 in pattern A?', figure=table_graph(pairs6, (10, 2), (30, 5))), Fraction(60)),
         (case('dependent-variable-equation', car_prompt, choice('d = t + 65', 't = 65d', 'd = 130d', 'd = 65t'), car_figure), 'option-d'),
         (case('dependent-variable-value', 'A car travels at a constant speed, so d = 55t for d miles in t hours. How many hours does it take to travel 330 miles?'), Fraction(6)),
         (case('dependent-variable-value', "Mia is always 4 years older than her brother, so m = b + 4, where m is Mia's age and b is her brother's. How old is her brother when Mia is 13?"), Fraction(9)),
@@ -443,9 +445,10 @@ def review_pattern_function_fixtures():
         case('rule-pattern-feature', 'A number pattern starts at 3. Its rule is “add 4.” Which statement about the pattern is true?',
              choice('Every number in the pattern is odd.', 'Every number in the pattern is a multiple of 1.', 'Every number in the pattern is even.', 'Every number in the pattern is a multiple of 4.')),
         case('related-patterns-relationship', related + 'Each term of pattern B is how many times the matching term of pattern A?', figure=table_graph([(0, 0), (2, 6), (4, 13)], (10, 2), (30, 5))),
-        case('related-patterns-relationship', related + 'The patterns continue. Which term of pattern B is paired with 21 in pattern A?', figure=table_graph(pairs6, (10, 2), (30, 5))),
+        case('related-patterns-relationship', related + 'The patterns continue. Which term of pattern B matches 21 in pattern A?', figure=table_graph(pairs6, (10, 2), (30, 5))),
         case('dependent-variable-equation', car_prompt, choice('d = t + 65', 't = 65d', 'd = 130t', 'd = 65t'),
              table_graph([(2, 130), (3, 195), (4, 261), (5, 325)], (6, 1), (350, 50), ('t (hours)', 'd (miles)'), ('t (hours)', 'd (miles)'))),
+        case('dependent-variable-equation', 'A car travels at a constant speed. It keeps going for a while. Which equation gives d in terms of t?', choice('d = t + 65', 't = 65d', 'd = 130t', 'd = 65t'), car_figure),
         case('dependent-variable-value', 'A car travels at a constant speed, so d = 55t for d miles in t hours. How many hours does it take to travel 331 miles?'),
         case('dependent-variable-value', 'A printer prints 20 pages per minute, so p = 25m for p pages in m minutes. How many pages does it print in 4 minutes?'),
         case('compare-function-rates', 'Function A is given by the table. Function B is given by the equation y = 2x + 1. Which statement compares their rates of change and initial values correctly?',
@@ -484,7 +487,7 @@ def has(prompts, text):
 WORKSHEET_BREADTH = {
     'rule-pattern-term': lambda ps: all(has(ps, f'“{op}') for op in ('add', 'subtract', 'multiply by')),
     'rule-pattern-feature': lambda ps: True,
-    'related-patterns-relationship': lambda ps: has(ps, 'how many times') and has(ps, 'paired with'),
+    'related-patterns-relationship': lambda ps: has(ps, 'how many times') and has(ps, 'The patterns continue'),
     'dependent-variable-equation': lambda ps: has(ps, 'always') and has(ps, 'car') and has(ps, 'printer'),
     'dependent-variable-value': lambda ps: has(ps, 'How many hours') and has(ps, 'How old') and has(ps, 'How many pages'),
     'compare-function-rates': lambda ps: all(has(ps, t) for t in ('the table', 'the graph', 'the equation', 'a description')),
@@ -507,7 +510,7 @@ def worked_answer(lesson):
             return 'Every number is even.'
         return 'The numbers alternate between odd and even.'
     if template == 'related-patterns-relationship':
-        m = re.fullmatch(r'Pattern A starts at 0\. Its rule is “add (\d+)\.” Pattern B starts at 0\. Its rule is “add (\d+)\.” Each term of pattern B is how many times the matching term of pattern A\?', prompt)
+        m = re.fullmatch(r'Pattern A starts at 0 and adds (\d+) each step\. Pattern B starts at 0 and adds (\d+) each step\. Each term of pattern B is how many times the matching term of pattern A\?', prompt)
         A, B = pattern_terms(0, 'add', int(m[1]), 10), pattern_terms(0, 'add', int(m[2]), 10)
         ratios = {Fraction(y, x) for x, y in zip(A, B) if x}
         require(len(ratios) == 1, 'Worked example multiplier')
