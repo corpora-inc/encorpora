@@ -9,6 +9,7 @@ import {
 } from "../src/funding-purchase/contracts.js";
 import { testFundingOffer as offer } from "../tests/funding-purchase.fixture.js";
 import { renderFundingQuotePdf } from "../src/funding-purchase/quote-pdf.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/funding-review/", import.meta.url);
 await mkdir(directory, { recursive: true });
 await writeFile(
@@ -31,8 +32,11 @@ try {
   for (const viewport of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
   ]) {
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape(viewport);
     const page = await browser.newPage({ viewport });
     await page
       .context()
@@ -130,9 +134,13 @@ try {
     assert.equal(nextActions.length, 2);
     assert.ok(
       nextActions.every(
-        (r) => r.top >= 0 && r.bottom <= viewport.height && r.width >= 44,
+        (r) =>
+          r.top >= 0 &&
+          (!strict || r.bottom <= viewport.height) &&
+          r.width >= 44,
       ),
     );
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Funding prepared");
     await page.evaluate(() =>
       (window as any).fundingRender("parent-a", "renewed-token"),
     );
@@ -170,8 +178,14 @@ try {
       geometry.width <= geometry.viewport + 1,
       JSON.stringify(geometry),
     );
-    assert.ok(geometry.footer <= geometry.height + 1, JSON.stringify(geometry));
-    assert.ok(geometry.body >= 100, JSON.stringify(geometry));
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Funding request");
+    else {
+      assert.ok(
+        geometry.footer <= geometry.height + 1,
+        JSON.stringify(geometry),
+      );
+      assert.ok(geometry.body >= 100, JSON.stringify(geometry));
+    }
     await page.screenshot({
       path: new URL(`request-${viewport.width}.png`, directory).pathname,
     });

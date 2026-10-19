@@ -1,5 +1,6 @@
 import { choose } from "./ui-controls";
 import { exitPractice } from "./ui-practice";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
 import { createServer } from "vite";
@@ -94,6 +95,7 @@ try {
       for (const size of [
         { width: 390, height: 844, textScale: 1 },
         { width: 320, height: 568, textScale: 1 },
+        { width: 1024, height: 768, textScale: 1 },
         { width: 844, height: 390, textScale: 1 },
         ...(book.presentation === "early-number" ||
         (frames[index]!.block.kind === "worked" &&
@@ -238,6 +240,11 @@ try {
           await page.screenshot({
             path: `${output}/worked-context-${index}-125.png`,
           });
+        if (isPhoneLandscape(size)) {
+          // Phone landscape only has to stay usable: the reader scrolls.
+          await assertPhoneLandscapeSmoke(page, `${book.id} frame ${index}`);
+          continue;
+        }
         if (bounds.scroll > bounds.height + 2) {
           await page.screenshot({
             path: `${output}/overflow-${index}-${size.width}-${size.textScale}.png`,

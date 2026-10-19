@@ -302,10 +302,13 @@ header {
   background: var(--color-secondary);
 }
 
-/* Feedback is a sheet over the bottom of the card: the problem never moves. */
+/* Feedback is a sheet over the bottom of the card: the problem never moves.
+   A screen too short for the question and the answer dock together (a phone
+   turned sideways) scrolls the card instead of squeezing the question. */
 .practice-surface {
   position: relative;
-  overflow: hidden;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
 }
 .feedback {
   position: absolute;
@@ -330,6 +333,15 @@ header {
 }
 .feedback .practice-tools {
   margin-top: -4px;
+}
+/* On that short screen the sheet docks to the screen, so scrolling the card
+   never carries it out of sight. */
+@media (max-height: 500px) {
+  .feedback {
+    position: fixed;
+    max-height: calc(100dvh - 24px);
+    overflow: auto;
+  }
 }
 /* Feedback surfaces come from the status tokens, so both themes keep AA text
    contrast: ink on the soft fill, the accent only on the mark and border. */
@@ -1975,21 +1987,6 @@ html[data-input="pointer"] :focus-visible {
     border-width: 1px 0 0;
     border-radius: 20px 20px 0 0;
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-  }
-}
-/* Short landscape screens answer in a side column; feedback takes that
-   column's place instead of covering the problem. */
-@media (max-height: 500px) and (min-width: 651px) {
-  .feedback {
-    top: 8px;
-    right: 8px;
-    bottom: 8px;
-    left: auto;
-    width: max(296px, calc(38% + 4px));
-    min-height: 0;
-    max-height: none;
-    margin: 0;
-    overflow: auto;
   }
 }
 /* A correct answer with nothing more to read centres its result in the

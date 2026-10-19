@@ -15,6 +15,7 @@ import { migrate } from "./migrate.js";
 import { generateProblem } from "../src/math/engine.js";
 import { choiceTemplates } from "../src/math/choice.js";
 import type { PublicProblem } from "../src/math/contracts.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
 await migrate(url);
@@ -65,6 +66,7 @@ try {
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
     { width: 1280, height: 900 },
   ]) {
@@ -121,31 +123,37 @@ try {
       await page.screenshot({
         path: new URL(`${template.id}-${size.width}.png`, directory).pathname,
       });
-      assert.ok(
-        await page.evaluate(() => {
-          const box = document
-            .querySelector(".choice-submit")!
-            .getBoundingClientRect();
-          const options = [...document.querySelectorAll(".choice-option")];
-          const dialog = document.querySelector("dialog[open] .dialog-content");
-          return (
-            box.bottom <= innerHeight &&
-            box.top >= 0 &&
-            document.documentElement.scrollWidth <= innerWidth &&
-            options.every((option) => {
-              const b = option.getBoundingClientRect();
-              return (
-                b.top >= 0 &&
-                b.bottom <= innerHeight &&
-                b.width >= 44 &&
-                b.height >= 44
-              );
-            }) &&
-            (!dialog || dialog.scrollHeight <= dialog.clientHeight + 2)
-          );
-        }),
-        `${template.id} choices and action must fit ${size.width}x${size.height}`,
-      );
+      // Phone landscape only has to stay usable; the others must fit.
+      if (isPhoneLandscape(size))
+        await assertPhoneLandscapeSmoke(page, template.id);
+      else
+        assert.ok(
+          await page.evaluate(() => {
+            const box = document
+              .querySelector(".choice-submit")!
+              .getBoundingClientRect();
+            const options = [...document.querySelectorAll(".choice-option")];
+            const dialog = document.querySelector(
+              "dialog[open] .dialog-content",
+            );
+            return (
+              box.bottom <= innerHeight &&
+              box.top >= 0 &&
+              document.documentElement.scrollWidth <= innerWidth &&
+              options.every((option) => {
+                const b = option.getBoundingClientRect();
+                return (
+                  b.top >= 0 &&
+                  b.bottom <= innerHeight &&
+                  b.width >= 44 &&
+                  b.height >= 44
+                );
+              }) &&
+              (!dialog || dialog.scrollHeight <= dialog.clientHeight + 2)
+            );
+          }),
+          `${template.id} choices and action must fit ${size.width}x${size.height}`,
+        );
       for (const graph of await page.locator(".choice-coordinate").all()) {
         const issues = await graph.evaluate((svg) =>
           [...svg.querySelectorAll("text")].flatMap((text) => {
