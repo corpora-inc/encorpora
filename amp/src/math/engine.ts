@@ -1,3 +1,4 @@
+import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   equationTemplates,
   generateEquationProblem,
@@ -24,6 +25,14 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import { factsTemplates, generateFactsProblem } from "./facts-practice";
+import {
+  addSubtractTemplates,
+  generateAddSubtractProblem,
+} from "./add-subtract-practice";
+import {
+  volumeCoordinateTemplates,
+  generateVolumeCoordinateProblem,
+} from "./volume-coordinate-practice";
 import {
   comparisonTemplates,
   generateComparisonProblem,
@@ -214,6 +223,7 @@ export const baseTemplates: readonly TemplateMetadata[] = [
 ];
 
 export const templates: readonly TemplateMetadata[] = [
+  ...volumeCoordinateTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -225,6 +235,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...addSubtractTemplates,
   ...comparisonTemplates,
   ...factsTemplates,
   ...combinatoricsTemplates,
@@ -232,6 +243,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalTemplates,
   ...circleMeasurementTemplates,
   ...partWholeTemplates,
+  ...decimalTemplates,
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
@@ -352,8 +364,10 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
     ...equationTemplates,
+    ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...partWholeTemplates,
+    ...decimalTemplates,
     ...linePlotTemplates,
     ...earlyDataTemplates,
     ...combinatoricsTemplates,
@@ -390,6 +404,10 @@ function generateRawProblem(
 ): GeneratedProblem {
   if (equationTemplates.some((t) => t.id === templateId))
     return generateEquationProblem(templateId, seed);
+  if (decimalTemplates.some((t) => t.id === templateId))
+    return generateDecimalProblem(templateId, seed);
+  if (volumeCoordinateTemplates.some((t) => t.id === templateId))
+    return generateVolumeCoordinateProblem(templateId, seed);
   if (distributionTemplates.some((t) => t.id === templateId))
     return generateDistributionProblem(templateId, seed);
   if (partWholeTemplates.some((t) => t.id === templateId))
@@ -402,6 +420,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (addSubtractTemplates.some((t) => t.id === templateId))
+    return generateAddSubtractProblem(templateId, seed);
   if (factsTemplates.some((t) => t.id === templateId))
     return generateFactsProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))

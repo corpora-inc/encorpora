@@ -24,15 +24,30 @@ export type AreaAnimation = { kind: "area"; figure: Area };
 type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
+type DecimalChart = Extract<SemanticFigure, { kind: "place-value-chart" }>;
+/** A hundredths grid: full columns are tenths, the rest hundredths. */
+export type DecimalFillAnimation = { kind: "decimal-fill"; shaded: number };
+/** Two decimals written in a place-value chart, unequal in value. */
+export type DecimalAlignAnimation = {
+  kind: "decimal-align";
+  figure: DecimalChart;
+};
+type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
+type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 export type AnimationModel =
   | { kind: "balance"; figure: Balance; form: BalanceForm; x: number }
+  | DecimalFillAnimation
+  | DecimalAlignAnimation
+  | { kind: "prism-layers"; figure: CubePrism }
+  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
   | AreaAnimation
   | { kind: "pairing"; figure: CounterRows }
   | { kind: "place-compare"; figure: BaseTenPair }
+  | { kind: "regroup-sum"; figure: BaseTenPair }
   | { kind: "fraction"; figure: Fraction }
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
@@ -48,6 +63,42 @@ export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
   const f = lesson.example.figure;
+  if (
+    lesson.templateId === "decimal-grid-read" &&
+    f?.kind === "decimal-grid" &&
+    f.unit === "hundredths" &&
+    integer(f.shaded, 1, 99)
+  )
+    return { kind: "decimal-fill", shaded: f.shaded };
+  if (
+    (lesson.templateId === "compare-decimals-hundredths" ||
+      lesson.templateId === "compare-decimals-thousandths") &&
+    f?.kind === "place-value-chart" &&
+    f.rows.every(
+      (row) =>
+        integer(row.ones, 0, 9) &&
+        /^\d+$/.test(row.decimals) &&
+        row.decimals.length <= f.places,
+    ) &&
+    chartValue(f.rows[0]!, f.places) !== chartValue(f.rows[1]!, f.places)
+  )
+    return { kind: "decimal-align", figure: f };
+  if (
+    (lesson.templateId === "unit-cube-volume" ||
+      lesson.templateId === "cube-layer-count") &&
+    f?.kind === "cube-prism" &&
+    integer(f.length, 1, 6) &&
+    integer(f.width, 1, 6) &&
+    integer(f.height, 2, 6)
+  )
+    return { kind: "prism-layers", figure: f };
+  if (
+    lesson.templateId === "first-quadrant-coordinates" &&
+    f?.kind === "quadrant-grid" &&
+    integer(f.size, 4, 10) &&
+    f.points.length === 1
+  )
+    return { kind: "quadrant-walk", figure: f };
   if (
     (lesson.templateId === "dot-plot-mean" ||
       lesson.templateId === "dot-plot-mad") &&
@@ -158,6 +209,13 @@ export function animationModel(
     f.values.every((n) => integer(n, 10, 99))
   )
     return { kind: "place-compare", figure: f };
+  if (
+    lesson.templateId === "add-two-digit-regroup" &&
+    f?.kind === "base-ten-pair" &&
+    f.values.every((n) => integer(n, 10, 99)) &&
+    f.values[0] + f.values[1] <= 100
+  )
+    return { kind: "regroup-sum", figure: f };
   if (
     lesson.templateId === "fraction-model" &&
     f?.kind === "fraction" &&
@@ -338,6 +396,22 @@ const plotted = (v: number, d: number) => {
 };
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
+/** A chart row as a whole number of the smallest place: 0.45 → 450 (3 places). */
+export const chartValue = (
+  row: { ones: number; decimals: string },
+  places: number,
+) => Number(`${row.ones}${row.decimals.padEnd(places, "0")}`);
+/** Index of the first differing column, ones = 0. */
+export const firstDifference = (figure: DecimalChart) => {
+  const [a, b] = figure.rows.map(
+    (row) => `${row.ones}${row.decimals.padEnd(figure.places, "0")}`,
+  );
+  let i = 0;
+  while (a![i] === b![i]) i++;
+  return i;
+};
+const written = (row: { ones: number; decimals: string }) =>
+  `${row.ones}.${row.decimals}`;
 /** Quartiles by the median-of-halves convention (overall median left out for odd counts). */
 export function fiveNumbers(values: readonly number[]) {
   const xs = [...values].sort((a, b) => a - b),
@@ -358,6 +432,104 @@ const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
   if (model.kind === "balance") return balanceFrames(model);
+  if (model.kind === "decimal-fill") {
+    const k = model.shaded,
+      t = Math.floor(k / 10),
+      h = k % 10;
+    const two = `0.${String(k).padStart(2, "0")}`;
+    return [
+      {
+        title: "One whole, 100 squares",
+        text: "Each small square is one hundredth. Each column of 10 squares is one tenth.",
+        math: "$1 = \\dfrac{10}{10} = \\dfrac{100}{100}$",
+      },
+      {
+        title: "Fill whole columns: tenths",
+        text: t
+          ? `${t} full ${t === 1 ? "column is" : "columns are"} ${t} ${t === 1 ? "tenth" : "tenths"}, the first digit after the point.`
+          : "No full column is shaded, so there are 0 tenths.",
+        math: `$\\dfrac{${t}}{10} = 0.${t}$`,
+      },
+      {
+        title: "Add single squares: hundredths",
+        text: h
+          ? `${h} more ${h === 1 ? "square is" : "squares are"} ${h} ${h === 1 ? "hundredth" : "hundredths"}, the second digit.`
+          : "No single squares are left over, so the hundredths digit is 0.",
+        math: `$\\dfrac{${t}}{10} + \\dfrac{${h}}{100} = \\dfrac{${k}}{100} = ${two}$`,
+      },
+    ];
+  }
+  if (model.kind === "decimal-align") {
+    const f = model.figure,
+      [a, b] = f.rows;
+    const pad = (row: { ones: number; decimals: string }) =>
+      `${row.ones}.${row.decimals.padEnd(f.places, "0")}`;
+    const i = firstDifference(f);
+    const sign =
+      chartValue(a!, f.places) > chartValue(b!, f.places) ? ">" : "<";
+    const place = ["ones", "tenths", "hundredths", "thousandths"][i]!;
+    const pa = pad(a!),
+      pb = pad(b!);
+    const digit = (p: string) => p.replace(".", "")[i];
+    return [
+      {
+        title: "Line up the decimal points",
+        text: "Each column holds one place: ones, then tenths, hundredths and thousandths.",
+        math: `$${written(a!)}$ and $${written(b!)}$`,
+      },
+      {
+        title: "Fill empty places with zeros",
+        text: "A zero in an empty place on the right adds nothing, so the values stay the same.",
+        math: `$${pa}$ and $${pb}$`,
+      },
+      {
+        title: "Compare from the left",
+        text: `The first column that differs is the ${place}: ${digit(pa)} and ${digit(pb)}. Columns to its right cannot change the result.`,
+        math: `$${written(a!)} ${sign} ${written(b!)}$`,
+      },
+    ];
+  }
+  if (model.kind === "prism-layers") {
+    const { length: l, width: w, height: h } = model.figure,
+      layer = l * w;
+    return [
+      {
+        title: "One layer",
+        text: `The top shows ${l} by ${w} cubes. The bottom layer is the same.`,
+        math: `$${l} \\times ${w} = ${layer}$ cubes`,
+      },
+      {
+        title: "Stack the layers",
+        text: `${h} identical layers fill the prism, hidden cubes included.`,
+        math: `$${h}$ layers`,
+      },
+      {
+        title: "Multiply",
+        text: `Each of the ${h} layers holds ${layer} cubes.`,
+        math: `$V = ${layer} \\times ${h} = ${layer * h}$ cubic units`,
+      },
+    ];
+  }
+  if (model.kind === "quadrant-walk") {
+    const { x, y } = model.figure.points[0]!;
+    return [
+      {
+        title: "Start at the origin",
+        text: "Both coordinates are 0 where the axes meet.",
+        math: "$(0, 0)$",
+      },
+      {
+        title: "Across first",
+        text: `Go ${x} across along the x-axis: the first coordinate.`,
+        math: `$x = ${x}$`,
+      },
+      {
+        title: "Then up",
+        text: `Go ${y} up to reach the point: the second coordinate.`,
+        math: `$(${x}, ${y})$`,
+      },
+    ];
+  }
   if (model.kind === "mean-balance") {
     const { values } = model.figure,
       n = values.length,
@@ -591,6 +763,35 @@ export function animationFrames(model: AnimationModel) {
             : `${plural(pairs, "pair", "pairs")}; ${rest} without a partner.`,
         math: `$${c} ${c < s ? "<" : c > s ? ">" : "="} ${s}$`,
       },
+    ];
+  }
+  if (model.kind === "regroup-sum") {
+    const [a, b] = model.figure.values;
+    const tens = Math.floor(a / 10) + Math.floor(b / 10),
+      ones = (a % 10) + (b % 10),
+      trade = ones >= 10 ? 1 : 0;
+    return [
+      {
+        title: "Show both numbers",
+        text: `${a} is ${plural(Math.floor(a / 10), "ten", "tens")} and ${plural(a % 10, "one", "ones")}. ${b} is ${plural(Math.floor(b / 10), "ten", "tens")} and ${plural(b % 10, "one", "ones")}.`,
+        math: `$${a} + ${b}$`,
+      },
+      {
+        title: "Join like units",
+        text: `Tens join tens and ones join ones: ${plural(tens, "ten", "tens")} and ${plural(ones, "one", "ones")}.`,
+        math: `$${tens * 10} + ${ones}$`,
+      },
+      trade
+        ? {
+            title: "Trade ten ones for a ten",
+            text: `${ones} ones are 1 ten and ${plural(ones - 10, "one", "ones")}. The total does not change.`,
+            math: `$${(tens + 1) * 10} + ${ones - 10} = ${a + b}$`,
+          }
+        : {
+            title: "No trade needed",
+            text: `${plural(ones, "one", "ones")} is fewer than ten, so the ones stay as they are.`,
+            math: `$${tens * 10} + ${ones} = ${a + b}$`,
+          },
     ];
   }
   if (model.kind === "place-compare") {

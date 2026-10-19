@@ -625,7 +625,8 @@ footer {
   }
 }
 
-.figure[data-kind="coordinate-plane"] {
+.figure[data-kind="coordinate-plane"],
+.figure[data-kind="quadrant-grid"] {
   max-height: 360px;
 }
 .figure[data-kind="clock"] {

@@ -1,11 +1,14 @@
 import { equationMethods } from "./equation-lessons";
+import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
+import { decimalMethods } from "./decimal-lessons";
 import { linePlotMethods } from "./line-plot-lessons";
 import { earlyDataMethods } from "./early-data-lessons";
 import { combinatoricsMethods } from "./combinatorics-lessons";
 import { radicalMethods } from "./radical-lessons";
 import { comparisonMethods } from "./comparison-lessons";
+import { addSubtractMethods } from "./add-subtract-lessons";
 import { factsMethods } from "./facts-lessons";
 import { rationalMethods } from "./rational-lessons";
 import { circleMeasurementMethods } from "./circle-measurement-lessons";
@@ -23,6 +26,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...volumeCoordinateMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
@@ -32,7 +36,9 @@ export const methods: Record<string, ProblemMethod> = {
   ...distributionMethods,
   ...radicalMethods,
   ...partWholeMethods,
+  ...decimalMethods,
   ...comparisonMethods,
+  ...addSubtractMethods,
   ...factsMethods,
   ...combinatoricsMethods,
   ...equationMethods,
