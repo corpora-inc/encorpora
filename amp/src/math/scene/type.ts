@@ -116,10 +116,8 @@ function inline(text: string, size: number, bold: boolean): Typeset {
       previous = "x";
       continue;
     }
-    if (c === " ") {
-      x += 0.25 * size;
-      continue;
-    }
+    // TeX ignores spaces in math; spacing comes from the operators.
+    if (c === " ") continue;
     // Spacing as TeX sets it: thick around relations, medium around binary
     // operators that follow an operand, none for a leading sign.
     const operand = /[\w)\]π.]/.test(previous);
@@ -132,6 +130,12 @@ function inline(text: string, size: number, bold: boolean): Typeset {
     if (c === ",") x += 0.1667 * size;
     previous = c;
   }
+  // A final slanted letter overhangs its advance: reserve its correction.
+  const lastRun = runs.at(-1);
+  if (lastRun?.font === "italic")
+    x +=
+      (fontMetrics.italicCorrection[lastRun.text.at(-1)! as "x"] ?? 0.1) *
+      lastRun.size;
   return {
     width: x,
     ascent: ext.math.ascent * size,

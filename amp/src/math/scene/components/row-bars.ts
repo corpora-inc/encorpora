@@ -1,7 +1,40 @@
+import { z } from "zod";
+import { base, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { FillRole, InkRole } from "../roles";
-import type { RowBars } from "../spec";
 import { typeset } from "../type";
+
+/** Rows of a two-way table as bars: first on one count scale, then each
+ * stretched to 100%, so the parts compare as fractions of their own row. */
+export const rowBarsSchema = z
+  .object({
+    ...base,
+    type: z.literal("rowBars"),
+    /** Part names, in bar order: ["Yes", "No"]. */
+    parts: z.array(z.string().min(1).max(12)).min(2).max(4),
+    rows: z
+      .array(
+        z
+          .object({
+            label: z.string().min(1).max(18),
+            counts: z.array(small.max(100000)).min(2).max(4),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(4),
+  })
+  .strict()
+  .refine(
+    (b) =>
+      b.rows.every(
+        (r) =>
+          r.counts.length === b.parts.length &&
+          r.counts.reduce((a, c) => a + c, 0) > 0,
+      ),
+    "Each row has one count per part and a positive total",
+  );
+export type RowBars = z.infer<typeof rowBarsSchema>;
 
 /** Geometry in figure pixels; compile divides by the scale. */
 const BAR = 300,
