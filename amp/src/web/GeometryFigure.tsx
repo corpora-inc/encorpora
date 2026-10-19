@@ -141,6 +141,11 @@ function EdgeLabel({
 }
 
 const frame = { width: 320, height: 250, pad: 14 };
+/** Horizontal room for an EdgeLabel beside a solid: its 10px offset plus a
+ * conservative 0.62em per character at 21px, so the label stays in the view
+ * box with any print font. */
+const labelRoom = (...texts: string[]) =>
+  14 + Math.max(...texts.map((t) => t.length)) * 21 * 0.62;
 export function GeometryFigure({ figure }: { figure: Model }) {
   switch (figure.kind) {
     case "cube-prism": {
@@ -176,12 +181,18 @@ export function GeometryFigure({ figure }: { figure: Model }) {
         number,
         number,
       ];
-      const { unit, origin } = isoFit(l, w, h, { ...frame, pad: 34 });
+      const text = (e: (typeof given)[number]) =>
+        e ? `${e.value} ${e.unit}` : "?";
+      // Height is labelled left of the solid, width right of it.
+      const { unit, origin } = isoFit(l, w, h, {
+        ...frame,
+        pad: 34,
+        padLeft: Math.max(34, labelRoom(text(figure.height))),
+        padRight: Math.max(34, labelRoom(text(figure.width))),
+      });
       const p = (x: number, y: number, z: number) =>
         isoPoint(x, y, z, unit, origin);
       const center = p(l / 2, w / 2, h / 2);
-      const text = (e: (typeof given)[number]) =>
-        e ? `${e.value} ${e.unit}` : "?";
       const missing = given.some((e) => e === null);
       return (
         <svg
@@ -224,11 +235,17 @@ export function GeometryFigure({ figure }: { figure: Model }) {
       const w = figure.width,
         l = a.length + b.length,
         h = Math.max(a.height, b.height);
-      const { unit, origin } = isoFit(l, w, h, { ...frame, pad: 34 });
+      const cm = (n: number) => `${n} cm`;
+      // One height is labelled left of the solid; the other and the width right.
+      const { unit, origin } = isoFit(l, w, h, {
+        ...frame,
+        pad: 34,
+        padLeft: Math.max(34, labelRoom(cm(a.height))),
+        padRight: Math.max(34, labelRoom(cm(b.height), cm(w))),
+      });
       const p = (x: number, y: number, z: number) =>
         isoPoint(x, y, z, unit, origin);
       const center = p(l / 2, w / 2, h / 2);
-      const cm = (n: number) => `${n} cm`;
       return (
         <svg
           className="figure geometry-figure"
@@ -348,7 +365,9 @@ export function QuadrantGrid({
   const { size } = figure;
   const { x, y, step } = quadrantLayout(size);
   const ticks = Array.from({ length: size + 1 }, (_, i) => i);
-  const end = size + 0.55;
+  // The axes overshoot the grid by at most 10px, so on a small grid with wide
+  // steps the arrowheads and the y label stay inside the view box.
+  const end = size + Math.min(0.55, 10 / step);
   return (
     <svg
       className="figure geometry-figure"
