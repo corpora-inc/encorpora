@@ -101,3 +101,67 @@ test("box plots: whisker ends, box edges and median sit on their values", () => 
       });
     }
 });
+
+test("bar charts and histograms: heights exactly proportional to values", () => {
+  for (const id of ["scaled-bar-graph", "histogram-read"])
+    for (const f of figures(id)) {
+      assert.ok(f.kind === "scaled-bar-graph" || f.kind === "histogram", id);
+      const l = layoutScene(legacyScene(f));
+      const values =
+        f.kind === "histogram" ? f.counts : f.categories.map((c) => c.value);
+      const zero = l.items.find((d) => d.id === "chart.grid.0");
+      assert.ok(zero && zero.k === "line");
+      const bars = values.map((_, i) =>
+        l.items.find((d) => d.id === `chart.bar.${i}`),
+      );
+      const unit = bars
+        .map((b, i) => (b && b.k === "rect" ? b.h / values[i]! : NaN))
+        .filter(Number.isFinite);
+      bars.forEach((b, i) => {
+        if (!values[i]) return assert.equal(b, undefined);
+        assert.ok(b && b.k === "rect");
+        near(b.h, values[i]! * unit[0]!, 1e-6);
+        near(b.y + b.h, zero.y1, 1e-6);
+        if (f.kind === "histogram" && i) {
+          const prev = bars[i - 1];
+          if (prev && prev.k === "rect") near(b.x, prev.x + prev.w, 1e-6);
+        }
+      });
+    }
+});
+
+test("picture graphs draw the count in symbols; shape sorts draw every shape", () => {
+  for (const id of ["picture-graph-questions", "scaled-picture-graph"])
+    for (const f of figures(id)) {
+      assert.ok(f.kind === "picture-graph", id);
+      const l = layoutScene(legacyScene(f));
+      f.categories.forEach((c, i) => {
+        // A half symbol draws as a filled sector and its outline: one symbol.
+        const symbols = [
+          ...new Map(
+            l.items
+              .filter(
+                (d) =>
+                  d.id.startsWith(`graph.row.${i}.symbol.`) && d.data?.symbol,
+              )
+              .map((d) => [d.id.replace(/\.sector$/, ""), d]),
+          ).values(),
+        ];
+        const drawn = symbols.reduce(
+          (a, d) => a + (d.data!.symbol === "half" ? f.key / 2 : f.key),
+          0,
+        );
+        assert.equal(drawn, c.count, id);
+      });
+    }
+  for (const id of ["sort-shapes-count", "sort-shapes-most"])
+    for (const f of figures(id)) {
+      assert.ok(f.kind === "sort-shapes", id);
+      const l = layoutScene(legacyScene(f));
+      const shapes = l.items.filter((d) => d.data?.shape);
+      assert.deepEqual(
+        shapes.map((d) => d.data!.shape),
+        f.shapes,
+      );
+    }
+});

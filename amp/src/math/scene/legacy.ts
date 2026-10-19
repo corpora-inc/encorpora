@@ -12,6 +12,10 @@ export const portedKinds = [
   "double-dot-plot",
   "box-plot",
   "double-box-plot",
+  "histogram",
+  "scaled-bar-graph",
+  "picture-graph",
+  "sort-shapes",
   "base-ten",
   "unit-array",
 ] as const;
@@ -161,6 +165,57 @@ export function legacyScene(
               : {}),
           },
         ],
+      };
+    case "histogram": {
+      const peak = Math.max(...f.counts),
+        step = peak > 10 ? 2 : 1;
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bins: { start: f.start, width: f.width, counts: f.counts },
+            max: Math.ceil(peak / step) * step,
+            step,
+            unit: "count",
+            xUnit: f.unit,
+          },
+        ],
+      };
+    }
+    case "scaled-bar-graph":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bars: f.categories.map((c) => ({ label: c.label, value: c.value })),
+            max: f.max,
+            step: f.step,
+            unit: f.unit,
+          },
+        ],
+      };
+    case "picture-graph":
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "pictureGraph",
+            id: "graph",
+            rows: f.categories.map((c) => ({ label: c.label, count: c.count })),
+            key: f.key,
+            unit: f.unit,
+          },
+        ],
+      };
+    case "sort-shapes":
+      return {
+        v: 1,
+        width: 340,
+        elements: [{ type: "shapeSort", id: "shapes", shapes: f.shapes }],
       };
   }
 }
