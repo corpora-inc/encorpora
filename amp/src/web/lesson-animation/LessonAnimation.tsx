@@ -15,6 +15,11 @@ import {
 import { IsoBox } from "../GeometryFigure";
 import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
+import {
+  ArrayBuildStage,
+  ArrayTurnStage,
+  DealStage,
+} from "./FactArrayAnimation";
 import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
@@ -46,6 +51,12 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <ShareModel model={model} step={step} />;
     case "make-ten":
       return <MakeTenModel model={model} step={step} />;
+    case "array-build":
+      return <ArrayBuildStage model={model} step={step} />;
+    case "array-turn":
+      return <ArrayTurnStage model={model} step={step} />;
+    case "deal":
+      return <DealStage model={model} step={step} />;
     case "pairing":
       return <PairingModel model={model} step={step} />;
     case "place-compare":

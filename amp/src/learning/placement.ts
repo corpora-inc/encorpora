@@ -96,7 +96,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-like-numerators",
     ],
     ["rectangle-area"],
-    ["divide-facts", "divide-by-one-digit"],
+    ["divide-facts", "share-or-group", "divide-by-one-digit"],
   ],
   // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
   // place value, multidigit multiplication or division.
