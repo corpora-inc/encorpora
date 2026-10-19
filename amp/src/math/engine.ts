@@ -8,6 +8,10 @@ import {
 } from "./combinatorics-practice";
 import { radicalTemplates, generateRadicalProblem } from "./radical-practice";
 import {
+  addSubtractTemplates,
+  generateAddSubtractProblem,
+} from "./add-subtract-practice";
+import {
   comparisonTemplates,
   generateComparisonProblem,
 } from "./comparison-practice";
@@ -207,6 +211,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
+  ...addSubtractTemplates,
   ...comparisonTemplates,
   ...combinatoricsTemplates,
   ...rationalTemplates,
@@ -368,6 +373,8 @@ function generateRawProblem(
     return generateCombinatoricsProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (addSubtractTemplates.some((t) => t.id === templateId))
+    return generateAddSubtractProblem(templateId, seed);
   if (comparisonTemplates.some((t) => t.id === templateId))
     return generateComparisonProblem(templateId, seed);
   if (rationalTemplates.some((t) => t.id === templateId))

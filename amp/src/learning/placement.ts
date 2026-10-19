@@ -55,7 +55,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 2: facts within 20, place value and comparison, a missing addend.
   [
-    ["add-within-20"],
+    ["add-within-20", "add-two-digit-regroup"],
     [
       "tens-ones-model",
       "continue-count-to-120",
@@ -63,18 +63,18 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-three-digit",
     ],
     ["unknown-addend-story", "balanced-addition"],
-    ["subtract-within-20"],
+    ["subtract-within-20", "subtract-two-digit-regroup"],
   ],
   // Grade 3: regrouping, three-digit place value, a story, a bar chart.
   [
-    ["add-with-regrouping"],
+    ["add-with-regrouping", "add-two-digit-regroup", "add-three-digit"],
     ["place-value-digit", "hundreds-model", "compare-three-digit"],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
   // Grade 4: multiplication facts, fractions of a whole, area, division.
   [
-    ["multiply-facts"],
+    ["multiply-facts", "add-multidigit"],
     ["fraction-model", "fraction-unit-count"],
     ["rectangle-area"],
     ["divide-facts"],

@@ -23,6 +23,18 @@ for (const unit of [10, 1]) {
 // Comparison models: a spread row that pairs down, and tens that decide.
 for (const id of ["compare-groups", "compare-two-digit"])
   lessons.push(problemLesson(id, "animation-review"));
+// A sum whose ones make a new ten.
+for (let i = 0; ; i++) {
+  const lesson = problemLesson("add-two-digit-regroup", `animation-${i}`);
+  const f = lesson.example.figure;
+  if (
+    f?.kind === "base-ten-pair" &&
+    (f.values[0] % 10) + (f.values[1] % 10) >= 10
+  ) {
+    lessons.push(lesson);
+    break;
+  }
+}
 const names = [
   "fraction-model",
   "split-array-part",
@@ -30,6 +42,7 @@ const names = [
   "exchange-ones",
   "compare-groups",
   "compare-two-digit",
+  "add-two-digit-regroup",
 ];
 assert.equal(lessons.length, names.length);
 const entry = `

@@ -59,6 +59,8 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         <title>{frames[current].title}</title>
         {model.kind === "pairing" ? (
           <PairingModel model={model} step={current} />
+        ) : model.kind === "regroup-sum" ? (
+          <RegroupSumModel model={model} step={current} />
         ) : model.kind === "place-compare" ? (
           <PlaceCompareModel model={model} step={current} />
         ) : model.kind === "fraction" ? (
@@ -469,6 +471,119 @@ function PlaceCompareModel({
           </g>
         );
       })}
+    </>
+  );
+}
+
+/** Both numbers' rods and cubes slide into one row of tens and a column of
+ * ones; ten ones then stack beside the tens as one new ten. */
+function RegroupSumModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "regroup-sum" }>;
+  step: number;
+}) {
+  const [a, b] = model.figure.values;
+  const u = 7,
+    rodStep = 11,
+    tensX = 64,
+    onesX = tensX + 9 * rodStep + 18,
+    joinedY = 52;
+  const tens = Math.floor(a / 10) + Math.floor(b / 10),
+    ones = (a % 10) + (b % 10),
+    trade = step === 2 && ones >= 10;
+  const joinedTensX = 34;
+  const joinedOnesX = joinedTensX + tens * rodStep + 18;
+  const pieces: {
+    unit: "ten" | "one";
+    x0: number;
+    y0: number;
+    x1: number;
+    y1: number;
+    traded?: boolean;
+  }[] = [];
+  let ten = 0,
+    one = 0;
+  [a, b].forEach((n, row) => {
+    const y = 12 + row * 92;
+    for (let i = 0; i < Math.floor(n / 10); i++, ten++)
+      pieces.push({
+        unit: "ten",
+        x0: tensX + i * rodStep,
+        y0: y,
+        x1: joinedTensX + ten * rodStep,
+        y1: joinedY,
+      });
+    for (let i = 0; i < n % 10; i++, one++) {
+      // Joined ones stack in columns of ten, the height of one rod.
+      const traded = trade && one < 10;
+      const column = Math.floor(one / 10) - (trade ? 1 : 0);
+      pieces.push({
+        unit: "one",
+        x0: onesX + (i % 5) * rodStep,
+        y0: y + 10 * u - (Math.floor(i / 5) + 1) * rodStep + 4,
+        x1: traded
+          ? joinedTensX + tens * rodStep
+          : joinedOnesX + (trade ? rodStep : 0) + column * (u + 4),
+        y1: joinedY + 10 * u - ((one % 10) + 1) * u,
+        traded,
+      });
+    }
+  });
+  return (
+    <>
+      <g className="animation-fade" style={{ opacity: step === 0 ? 1 : 0 }}>
+        {[a, b].map((n, row) => (
+          <text
+            key={row}
+            x={50}
+            y={12 + row * 92 + 40}
+            textAnchor="end"
+            style={{ fontSize: 20 }}
+          >
+            {n}
+          </text>
+        ))}
+      </g>
+      {pieces.map((piece, i) => (
+        <g
+          key={i}
+          className="animation-move"
+          style={{
+            transform: `translate(${step ? piece.x1 - piece.x0 : 0}px, ${step ? piece.y1 - piece.y0 : 0}px)`,
+          }}
+        >
+          <rect
+            data-unit={piece.unit}
+            x={piece.x0}
+            y={piece.y0}
+            width={piece.unit === "ten" ? u : u - 1}
+            height={piece.unit === "ten" ? 10 * u : u - 1}
+            className={
+              piece.unit === "ten" || piece.traded
+                ? "animation-fill"
+                : "animation-warm"
+            }
+          />
+        </g>
+      ))}
+      <rect
+        x={joinedTensX + tens * rodStep - 2}
+        y={joinedY - 2}
+        width={u + 4}
+        height={10 * u + 4}
+        className="animation-outline animation-fade"
+        strokeWidth="2"
+        style={{ opacity: trade ? 1 : 0 }}
+      />
+      <text x="160" y="185" textAnchor="middle">
+        {step === 0
+          ? `${a} + ${b}`
+          : trade
+            ? `${tens + 1} ${tens + 1 === 1 ? "ten" : "tens"} and ${ones - 10} ${ones - 10 === 1 ? "one" : "ones"}`
+            : `${tens} ${tens === 1 ? "ten" : "tens"} and ${ones} ${ones === 1 ? "one" : "ones"}`}
+      </text>
     </>
   );
 }
