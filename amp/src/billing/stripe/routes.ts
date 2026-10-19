@@ -13,6 +13,7 @@ import { BillingError, type StripeBillingConfig } from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository } from "./repository.js";
 import { StripeBilling } from "./service.js";
+import { funnelVisitor } from "../../analytics/visitor-header.js";
 export interface StripeRouteOptions {
   pool: Pool;
   authenticate: Authenticator;
@@ -105,6 +106,8 @@ export async function registerStripeRoutes(
         body.data.learnerId,
         body.data.requestId,
         body.data.interval,
+        undefined,
+        funnelVisitor(request.headers),
       );
     });
     scope.post("/api/v1/billing/portal", async (request, reply) => {

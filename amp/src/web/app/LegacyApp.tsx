@@ -64,6 +64,8 @@ import "../app-shell.css";
 import { BirthYearPrompt } from "../BirthYearPrompt";
 import { ChooseHowToPay } from "../ChooseHowToPay";
 import { TrialApp, storedTrial, clearStoredTrial } from "../TrialApp";
+import { track } from "../lib/analytics";
+import { LandingView } from "../lib/LandingView";
 import { useLearnerStore } from "../learner-store";
 import { calculatorAllowed } from "../../math/calculator";
 import { gradeNumber } from "../../learning/frontier";
@@ -1277,6 +1279,7 @@ function LegacyScreen() {
         />
       ) : !token ? (
         <section className="card welcome">
+          {!nativeRuntime && <LandingView />}
           <h2>
             {nativeRuntime
               ? "Sign in to continue."
@@ -1297,6 +1300,7 @@ function LegacyScreen() {
             <button
               className="go-button"
               onClick={() => {
+                track("try_click");
                 setTrialMode(true);
                 navigate("/try");
               }}

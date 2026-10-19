@@ -73,6 +73,23 @@ export function track<E extends ClientEvent>(
   }
 }
 
+/** Record an event at most once per tab session for `key` (e.g. a return
+ * from checkout that a refresh would otherwise count again). */
+export function trackOnce<E extends ClientEvent>(
+  key: string,
+  event: E,
+  props: FunnelProps<E>,
+): void {
+  const slot = `amp.analytics.once.${key}`;
+  try {
+    if (sessionStorage.getItem(slot)) return;
+    sessionStorage.setItem(slot, "1");
+  } catch {
+    // Without session storage the event may count twice; never block on it.
+  }
+  (track as (event: E, props: FunnelProps<E>) => void)(event, props);
+}
+
 /** Send everything buffered now. Safe to call at any time. */
 export function flush(): void {
   if (timer) clearTimeout(timer);

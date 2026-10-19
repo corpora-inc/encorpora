@@ -19,6 +19,7 @@ import {
 } from "../billing";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
+import { track } from "../../lib/analytics";
 
 const exitFailed =
   "Sign-out didn’t finish. Check your connection and try again.";
@@ -47,6 +48,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
   const [interval, chooseInterval] = useState<"year" | "month">("year");
   const [acknowledged, setAcknowledged] = useState<string | null>(null);
   const requests = useRef<Partial<Record<"year" | "month", string>>>({});
+  useEffect(() => track("plan_view"), []);
   // Back from Stripe restores this page from the browser cache: re-read the
   // enrollment and drop the finished "opening checkout" state.
   useEffect(() => {
@@ -174,6 +176,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
         interval={offer.interval}
         disabled={!!pending || checkout.isPending}
         onChange={(next) => {
+          track("plan_select", { interval: next });
           chooseInterval(next);
           checkout.reset();
         }}
@@ -206,6 +209,7 @@ export function PlanStep({ session }: { session: AuthSession }) {
               variant="primary"
               disabled={!agreed || checkout.isPending}
               onClick={() => {
+                track("checkout_start", { interval: offer.interval });
                 const requestId = (requests.current[offer.interval] ??=
                   crypto.randomUUID());
                 checkout.mutate(

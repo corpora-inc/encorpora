@@ -15,6 +15,7 @@ import {
 } from "../billing";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
+import { trackOnce } from "../../lib/analytics";
 
 type Shown = EnrollmentPhase | "checking" | "unreachable";
 // Action labels stay short enough for one line at 320px with any system
@@ -50,6 +51,18 @@ const tone: Record<Shown, "busy" | "good" | "attention" | "info"> = {
 export function PurchaseStep({ session }: { session: AuthSession }) {
   const params = new URLSearchParams(useLocation().searchStr);
   const left = params.get("billing") === "canceled";
+  const returned = params.get("billing");
+  const returnedFrom = params.get("purchase");
+  useEffect(() => {
+    if (returnedFrom && (returned === "processing" || returned === "canceled"))
+      trackOnce(
+        `checkout_return.${returnedFrom}.${returned}`,
+        "checkout_return",
+        {
+          outcome: returned === "processing" ? "success" : "cancel",
+        },
+      );
+  }, [returned, returnedFrom]);
   const enrollment = useQuery(enrollmentOptions(session, !left));
   const portal = useBillingPortal(session);
   const view = enrollment.data;

@@ -22,6 +22,11 @@ import { annualEvents } from "./model.js";
 import { BillingError, planConfig, type BillingInterval } from "./config.js";
 import { StripeGateway } from "./gateway.js";
 import { StripeRepository, type InboxEvent } from "./repository.js";
+import {
+  linkCheckoutVisitor,
+  recordVerifiedPurchase,
+  recordVerifiedRefund,
+} from "../../analytics/repository.js";
 export class StripeBilling {
   private static runningPools = new WeakSet<Pool>();
   constructor(
@@ -34,6 +39,8 @@ export class StripeBilling {
     requestId: string,
     interval: BillingInterval = "year",
     acknowledgement?: PurchaseAcknowledgement,
+    /** The browser's random funnel visitor ID, for purchase attribution. */
+    visitorId?: string,
   ): Promise<{ url: string }> {
     const reserve = () =>
       learnerId === null
@@ -84,6 +91,17 @@ export class StripeBilling {
       });
       checkoutId = await reserve();
     }
+    // Attribution is best effort and never blocks a checkout.
+    await linkCheckoutVisitor(
+      this.repository.pool,
+      checkoutId,
+      visitorId,
+    ).catch((error: unknown) =>
+      console.warn(
+        "Funnel checkout link not recorded",
+        error instanceof Error ? error.name : "unknown",
+      ),
+    );
     await this.gateway.verifyCatalog();
     let enrollmentExpiresAt: number | undefined;
     if (learnerId === null) {
@@ -312,6 +330,28 @@ export class StripeBilling {
         event.eventId,
         planConfig(this.gateway.config, binding.interval).documentProfile,
       );
+      // Funnel events follow verified provider state; a failure here is
+      // logged and never affects billing.
+      const recordFunnel = async () => {
+        await client.query("SAVEPOINT funnel_event");
+        try {
+          if (event.type === "invoice.paid")
+            await recordVerifiedPurchase(
+              client,
+              binding.id,
+              binding.interval ?? "year",
+            );
+          if (payment.refunded || payment.partialRefund)
+            await recordVerifiedRefund(client, binding.id, payment.refunded);
+          await client.query("RELEASE SAVEPOINT funnel_event");
+        } catch (error) {
+          await client.query("ROLLBACK TO SAVEPOINT funnel_event");
+          console.warn(
+            "Funnel billing event not recorded",
+            error instanceof Error ? error.name : "unknown",
+          );
+        }
+      };
       await client.query("SAVEPOINT access_projection");
       try {
         if (binding.learnerId === null) {
@@ -323,6 +363,7 @@ export class StripeBilling {
             event.type,
           );
           await client.query("RELEASE SAVEPOINT access_projection");
+          await recordFunnel();
           return;
         }
         for (const commerceEvent of annualEvents(
@@ -351,6 +392,7 @@ export class StripeBilling {
           await applyCommerceEventInTransaction(client, commerceEvent);
         }
         await client.query("RELEASE SAVEPOINT access_projection");
+        await recordFunnel();
       } catch (error) {
         await client.query("ROLLBACK TO SAVEPOINT access_projection");
         await queueRejectedEnrollment(client, binding, payment, error);

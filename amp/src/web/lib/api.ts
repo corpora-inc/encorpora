@@ -46,6 +46,7 @@ export async function request<T>(
     body?: unknown;
     signal?: AbortSignal;
     method?: string;
+    headers?: Record<string, string>;
   } = {},
 ): Promise<T> {
   let response: Response;
@@ -54,6 +55,7 @@ export async function request<T>(
       signal: options.signal,
       method: options.method ?? (options.body === undefined ? "GET" : "POST"),
       headers: {
+        ...options.headers,
         ...(options.token ? { Authorization: `Bearer ${options.token}` } : {}),
         ...(options.body === undefined
           ? {}

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import {
   FUNNEL_EVENTS,
   SERVER_ONLY_EVENTS,
@@ -80,5 +81,20 @@ test("bounds the batch and the visitor ID", () => {
       events: [{ event: "try_click", at: 1 }],
     }).success,
     false,
+  );
+});
+
+test("the database guard lists exactly the same vocabulary", () => {
+  const sql = readFileSync(
+    new URL("../migrations/0022-funnel-events.sql", import.meta.url),
+    "utf8",
+  );
+  const list = /event text NOT NULL CHECK \(event IN \(([^)]*)\)\)/.exec(
+    sql,
+  )?.[1];
+  assert.ok(list);
+  assert.deepEqual(
+    list.split(",").map((name) => name.trim().replaceAll("'", "")),
+    [...FUNNEL_EVENTS],
   );
 });
