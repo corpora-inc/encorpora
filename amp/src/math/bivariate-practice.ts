@@ -11,10 +11,33 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice.js";
+import { graph, table as tableScene } from "./scene/author.js";
+
+type Axis = { label: string; start: number; end: number; step: number };
+/** A scatter plot scene: the data on a grid with unlike x and y steps. */
+function scatterScene(
+  x: Axis,
+  y: Axis,
+  points: Point[],
+  line?: { m: number; b: number; marks: [Point, Point] },
+): SemanticFigure {
+  let g = graph({
+    x: [x.start, x.end],
+    y: [y.start, y.end],
+    grid: [x.step, y.step],
+    tick: [x.step, y.step],
+    axisNames: [x.label, y.label],
+    // Landscape, as data plots are drawn: the plot is 0.72 as tall as wide.
+    aspect: (0.72 * (x.end - x.start)) / (y.end - y.start),
+  }).scatter(points, line && { m: line.m, b: line.b });
+  for (const [px, py] of line?.marks ?? [])
+    g = g.point(px, py, undefined, { open: true });
+  return { kind: "scene", scene: g.scene() };
+}
 
 /** Grade 8 statistics: patterns in scatter plots, trend lines as models, and
  * association in two-way tables. */
-const charts = { requiredFigureCapability: "data-displays-v1" } as const;
+const charts = { requiredFigureCapability: "scenes-v1" } as const;
 const choice = { requiredResponseCapability: "single-choice-v1" } as const;
 export const bivariateTemplates: readonly TemplateMetadata[] = [
   {
@@ -250,17 +273,13 @@ function associationChoice(r: Random): Draft {
       const y = Math.round(
         Math.min(c.y.end, Math.max(c.y.start, c.shape(r, x))),
       );
-      if (!Number.isInteger(x) || seen.has(`${x},${y}`)) continue;
+      if (!Number.isInteger(x) || x === c.x.start || seen.has(`${x},${y}`))
+        continue;
       seen.add(`${x},${y}`);
       points.push([x, y]);
     }
   } while (!clearly(kind, points));
-  const figure: SemanticFigure = {
-    kind: "scatter-plot",
-    x: c.x,
-    y: c.y,
-    points,
-  };
+  const figure = scatterScene(c.x, c.y, points);
   return {
     prompt: `The scatter plot shows ${c.describe(n)}. Which describes the association?`,
     figure,
@@ -358,24 +377,22 @@ function trendData(r: Random) {
     if (!inY(f(x1)) || !inY(f(x2)) || x2 - x1 < span / 2) continue;
     // Only x-values whose noisy points always stay on the grid.
     const usable = Array.from(
-      { length: span + 1 },
-      (_, i) => c.x.start + i,
+      { length: span },
+      (_, i) => c.x.start + 1 + i,
     ).filter((x) => inY(f(x) - c.noise) && inY(f(x) + c.noise));
     if (usable.length < 9) continue;
     const n = r(9, Math.min(14, usable.length));
     const points: Point[] = shuffle(r, usable)
       .slice(0, n)
       .map((x) => [x, Math.round(f(x) + r(-c.noise, c.noise))]);
-    const figure: SemanticFigure = {
-      kind: "scatter-plot",
-      x: c.x,
-      y: c.y,
-      points,
-      line: [
+    const figure = scatterScene(c.x, c.y, points, {
+      m,
+      b,
+      marks: [
         [x1, f(x1)],
         [x2, f(x2)],
       ],
-    };
+    });
     return { c, m, b, f, x1, x2, n, figure, inY };
   }
 }
@@ -470,6 +487,7 @@ const tableContexts = [
 ] as const;
 type Cell = number | null | "?";
 
+/** A two-way table scene with totals; "?" is the cell to find, null a blank. */
 function table(
   c: (typeof tableContexts)[number],
   counts: [[number, number], [number, number]],
@@ -477,23 +495,31 @@ function table(
 ): SemanticFigure {
   const rowTotals = counts.map((row) => row[0] + row[1]),
     columnTotals = [0, 1].map((j) => counts[0][j]! + counts[1][j]!);
-  const cell = (i: number, j: number): Cell => {
+  const derived: [number, number][] = [];
+  const cell = (i: number, j: number) => {
     const hidden = hide(i, j);
-    return hidden === undefined ? counts[i]![j]! : hidden;
+    if (hidden === "?") derived.push([i, j]);
+    return hidden === undefined ? counts[i]![j]! : null;
   };
-  return {
-    kind: "two-way-table",
-    columnTitle: c.columnTitle,
-    rows: [c.rows[0], c.rows[1]],
-    columns: ["Yes", "No"],
-    cells: [
-      [cell(0, 0), cell(0, 1)],
-      [cell(1, 0), cell(1, 1)],
+  const scene = tableScene({
+    title: c.columnTitle,
+    columns: ["Yes", "No", "Total"],
+    rows: [
+      { label: c.rows[0], cells: [cell(0, 0), cell(0, 1), rowTotals[0]!] },
+      { label: c.rows[1], cells: [cell(1, 0), cell(1, 1), rowTotals[1]!] },
+      {
+        label: "Total",
+        cells: [
+          columnTotals[0]!,
+          columnTotals[1]!,
+          rowTotals[0]! + rowTotals[1]!,
+        ],
+      },
     ],
-    rowTotals: [rowTotals[0]!, rowTotals[1]!],
-    columnTotals: [columnTotals[0]!, columnTotals[1]!],
-    total: rowTotals[0]! + rowTotals[1]!,
-  };
+    sums: true,
+    ...(derived.length ? { derived } : {}),
+  }).scene();
+  return { kind: "scene", scene };
 }
 
 function twoWayMissing(r: Random): Draft {

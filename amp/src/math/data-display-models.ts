@@ -16,20 +16,6 @@ const group = z
   .object({ label, values: z.array(z.number().int().min(0)).min(3).max(16) })
   .strict();
 const boxGroup = z.object({ label, summary: fiveNumber }).strict();
-const scale = z
-  .object({
-    label: z.string().min(1).max(24),
-    start: z.number().int().min(0).max(10000),
-    end: z.number().int().min(1).max(10000),
-    step: z.number().int().positive().max(1000),
-  })
-  .strict();
-const tableEntry = z.union([
-  z.number().int().min(0).max(10000),
-  z.null(),
-  z.literal("?"),
-]);
-const tableRow = z.tuple([tableEntry, tableEntry]);
 /** The tallest stack a double dot plot draws in each half. */
 export const PAIR_STACK = 5;
 export const shapeKinds = ["circle", "square", "triangle"] as const;
@@ -210,63 +196,6 @@ export const dataDisplayFigureSchemas = [
               (i === 0 || v >= g.summary[i - 1]!),
           ),
         ),
-    ),
-  z
-    .object({
-      kind: z.literal("scatter-plot"),
-      x: scale,
-      y: scale,
-      /** Paired whole-number data, one point per pair. */
-      points: z
-        .array(z.tuple([z.number().int(), z.number().int()]))
-        .min(5)
-        .max(24),
-      /** A drawn trend line, given by two marked lattice points on it. */
-      line: z
-        .tuple([
-          z.tuple([z.number().int(), z.number().int()]),
-          z.tuple([z.number().int(), z.number().int()]),
-        ])
-        .optional(),
-    })
-    .strict()
-    .refine(
-      (f) =>
-        [f.x, f.y].every(
-          (a) =>
-            a.end > a.start &&
-            (a.end - a.start) % a.step === 0 &&
-            (a.end - a.start) / a.step <= 10,
-        ) &&
-        [...f.points, ...(f.line ?? [])].every(
-          ([px, py]) =>
-            px >= f.x.start &&
-            px <= f.x.end &&
-            py >= f.y.start &&
-            py <= f.y.end,
-        ) &&
-        (!f.line || f.line[0][0] < f.line[1][0]),
-    ),
-  z
-    .object({
-      kind: z.literal("two-way-table"),
-      /** What the columns record, written above them: "Has a curfew". */
-      columnTitle: z.string().min(1).max(28),
-      rows: z.tuple([label, label]),
-      columns: z.tuple([label, label]),
-      /** Counts by row then column; null is a blank to find, and "?" marks
-       * the one the question asks for. */
-      cells: z.tuple([tableRow, tableRow]),
-      rowTotals: z.tuple([tableEntry, tableEntry]),
-      columnTotals: z.tuple([tableEntry, tableEntry]),
-      total: tableEntry,
-    })
-    .strict()
-    .refine(
-      (f) =>
-        [...f.cells.flat(), ...f.rowTotals, ...f.columnTotals, f.total].filter(
-          (v) => v === "?",
-        ).length <= 1,
     ),
 ] as const;
 export const dataDisplayFigureSchema = z.discriminatedUnion(
@@ -572,87 +501,5 @@ export function doubleBoxLayout(
         return { value, x: x(value), labeled: i % 2 === 0 };
       },
     ),
-  };
-}
-
-/** A scatter plot on a labeled grid: each point sits exactly at its pair. */
-export function scatterLayout(
-  figure: Extract<DataDisplayFigure, { kind: "scatter-plot" }>,
-  box = { left: 56, right: 344, top: 34, bottom: 236 },
-) {
-  const { x: xs, y: ys } = figure;
-  const x = (v: number) =>
-    box.left + ((v - xs.start) * (box.right - box.left)) / (xs.end - xs.start);
-  const y = (v: number) =>
-    box.bottom -
-    ((v - ys.start) * (box.bottom - box.top)) / (ys.end - ys.start);
-  const ticks = (a: typeof xs) =>
-    Array.from(
-      { length: (a.end - a.start) / a.step + 1 },
-      (_, i) => a.start + i * a.step,
-    );
-  // Label every other x tick when the labels would crowd one another.
-  const xCount = (xs.end - xs.start) / xs.step,
-    digits = String(xs.end).length;
-  const xLabelEvery =
-    (digits * 10 * (box.right - box.left)) / 288 >
-    (box.right - box.left) / xCount
-      ? 2
-      : 1;
-  return {
-    ...box,
-    x,
-    y,
-    xTicks: ticks(xs),
-    /** Whether the x tick at index i carries a label. */
-    xLabeled: (i: number) => i % xLabelEvery === 0,
-    yTicks: ticks(ys),
-    points: figure.points.map(([px, py]) => ({ cx: x(px), cy: y(py) })),
-    /** The trend line extended across the plot, clipped to the grid. */
-    line: figure.line && trendSegment(figure, x, y),
-  };
-}
-function trendSegment(
-  figure: Extract<DataDisplayFigure, { kind: "scatter-plot" }>,
-  x: (v: number) => number,
-  y: (v: number) => number,
-) {
-  const [[x1, y1], [x2, y2]] = figure.line!;
-  const m = (y2 - y1) / (x2 - x1);
-  const at = (vx: number) => y1 + m * (vx - x1);
-  // Clip to the grid: the x-range where the line's y stays on the scale.
-  let lo = figure.x.start,
-    hi = figure.x.end;
-  if (m !== 0) {
-    const a = x1 + (figure.y.start - y1) / m,
-      b = x1 + (figure.y.end - y1) / m;
-    lo = Math.max(lo, Math.min(a, b));
-    hi = Math.min(hi, Math.max(a, b));
-  }
-  return {
-    x1: x(lo),
-    y1: y(at(lo)),
-    x2: x(hi),
-    y2: y(at(hi)),
-    marks: figure.line!.map(([px, py]) => ({ cx: x(px), cy: y(py) })),
-  };
-}
-
-/** A two-way table: a row-label column, two category columns and a total. */
-export function twoWayLayout(width = 360) {
-  const labelWidth = 116,
-    column = (width - 12 - labelWidth) / 3;
-  return {
-    left: 6,
-    labelWidth,
-    column,
-    titleY: 22,
-    headerTop: 32,
-    rowHeight: 38,
-    /** Center x of column c (0, 1, or 2 for the total). */
-    cx: (c: number) => 6 + labelWidth + column * c + column / 2,
-    /** Top y of row r (0 is the header, 1–2 the categories, 3 the total). */
-    top: (r: number) => 32 + 38 * r,
-    height: 32 + 38 * 4 + 6,
   };
 }

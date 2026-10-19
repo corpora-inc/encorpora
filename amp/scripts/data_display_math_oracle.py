@@ -466,21 +466,24 @@ def review_data_display_fixtures():
         'prompt': 'Beans. How much greater is the interquartile range of the sunny bed than that of the shady bed?'}) == '10', 'box IQR fixture')
     require(solve_inference({'templateId': 'sample-proportion-estimate', 'prompt':
         'A random sample of 40 of the 1,200 fish in a lake includes 6 trout. About how many of all 1,200 fish are trout?'}) == '180', 'proportion fixture')
-    t = {'kind': 'two-way-table', 'columnTitle': 'Has a curfew', 'rows': ['Grade 7', 'Grade 8'], 'columns': ['Yes', 'No'],
-         'cells': [['?', None], [30, 20]], 'rowTotals': [40, 50], 'columnTotals': [42, 48], 'total': 90}
-    require(solve_bivariate({'templateId': 'two-way-missing', 'figure': t,
+    scene = lambda e: {'kind': 'scene', 'scene': {'v': 1, 'elements': [e]}}
+    t = {'type': 'table', 'title': 'Has a curfew', 'columns': ['Yes', 'No', 'Total'], 'sums': True, 'derived': [[0, 0]],
+         'rows': [{'label': 'Grade 7', 'cells': [None, None, 40]}, {'label': 'Grade 8', 'cells': [30, 20, 50]},
+                  {'label': 'Total', 'cells': [42, 48, 90]}]}
+    require(solve_bivariate({'templateId': 'two-way-missing', 'figure': scene(t),
         'prompt': 'Curfews. How many seventh graders have a curfew?'}) == '12', 'two-way fixture')
+    bad = dict(t, rows=t['rows'][:2] + [{'label': 'Total', 'cells': [42, 48, 91]}])
     try:
-        solve_bivariate({'templateId': 'two-way-missing', 'figure': dict(t, total=91), 'prompt': 'Curfews. How many seventh graders have a curfew?'})
+        solve_bivariate({'templateId': 'two-way-missing', 'figure': scene(bad), 'prompt': 'Curfews. How many seventh graders have a curfew?'})
         raise RuntimeError
     except ValueError:
         pass
     except RuntimeError:
         raise ValueError('An inconsistent table was accepted')
-    line = {'kind': 'scatter-plot', 'x': {'label': 'age (years)', 'start': 0, 'end': 10, 'step': 1},
-            'y': {'label': 'value (thousand $)', 'start': 0, 'end': 30, 'step': 5}, 'points': [[1, 26], [3, 21], [5, 18], [7, 12], [9, 5]],
-            'line': [[2, 22], [8, 10]]}
-    require(solve_bivariate({'templateId': 'trend-line-predict', 'figure': line,
+    line = {'type': 'graph', 'x': [0, 10], 'y': [0, 30], 'axisNames': ['age (years)', 'value (thousand $)'],
+            'scatter': {'points': [[1, 26], [3, 21], [5, 18], [7, 12], [9, 5]], 'fit': {'m': -2, 'b': 26}},
+            'points': [{'x': 2, 'y': 22, 'open': True}, {'x': 8, 'y': 10, 'open': True}]}
+    require(solve_bivariate({'templateId': 'trend-line-predict', 'figure': scene(line),
         'prompt': 'Cars, with a trend line through (2, 22) and (8, 10). Predict the value of a car that is 6 years old.'}) == '14', 'trend fixture')
     require(_classify([[x, 2 * x + (x % 3) - 1] for x in range(10)]) == 'Positive linear association', 'linear fixture')
     require(_classify([[x, (x - 5) ** 2] for x in range(11)]) == 'Nonlinear association', 'curve fixture')
@@ -550,43 +553,51 @@ TRAITS = {'Has a curfew': ('have a curfew', 'do not have a curfew'),
           'Walks daily': ('walk daily', 'do not walk daily')}
 
 
-def _complete_table(f):
-    """Fill every blank from row and column sums; returns the full 3x3 grid."""
-    g = [list(f['cells'][0]) + [f['rowTotals'][0]], list(f['cells'][1]) + [f['rowTotals'][1]],
-         list(f['columnTotals']) + [f['total']]]
+def _complete_table(t):
+    """Fill every blank of a summed table from its row and column totals."""
+    g = [list(r['cells']) for r in t['rows']]
     known = lambda v: isinstance(v, int)
-    for _ in range(9):
-        for i in range(3):
-            line = g[i]
-            if sum(not known(v) for v in line) == 1:
-                k = next(j for j in range(3) if not known(line[j]))
-                line[k] = line[2] - sum(line[j] for j in range(2) if j != k) if k < 2 else line[0] + line[1]
-        for j in range(3):
-            col = [g[i][j] for i in range(3)]
+    n, m = len(g), len(g[0])
+    for _ in range(n * m):
+        for i in range(n):
+            if sum(not known(v) for v in g[i]) == 1:
+                k = next(j for j in range(m) if not known(g[i][j]))
+                g[i][k] = g[i][-1] - sum(g[i][j] for j in range(m - 1) if j != k) if k < m - 1 else sum(g[i][:-1])
+        for j in range(m):
+            col = [g[i][j] for i in range(n)]
             if sum(not known(v) for v in col) == 1:
-                k = next(i for i in range(3) if not known(col[i]))
-                g[k][j] = col[2] - sum(col[i] for i in range(2) if i != k) if k < 2 else col[0] + col[1]
+                k = next(i for i in range(n) if not known(col[i]))
+                g[k][j] = col[-1] - sum(col[i] for i in range(n - 1) if i != k) if k < n - 1 else sum(col[:-1])
     require(all(known(v) and v >= 0 for row in g for v in row), 'Table cannot be completed')
-    for i in range(3):
-        require(g[i][0] + g[i][1] == g[i][2], 'Row does not add up')
-    for j in range(3):
-        require(g[0][j] + g[1][j] == g[2][j], 'Column does not add up')
+    for i in range(n):
+        require(sum(g[i][:-1]) == g[i][-1], 'Row does not add up')
+    for j in range(m):
+        require(sum(g[i][j] for i in range(n - 1)) == g[-1][j], 'Column does not add up')
     return g
 
 
+def _element(public, kind):
+    f = public['figure']
+    require(f['kind'] == 'scene' and len(f['scene']['elements']) == 1, 'One-element scene required')
+    e = f['scene']['elements'][0]
+    require(e['type'] == kind, f'{kind} required')
+    return e
+
+
 def solve_bivariate(public):
-    template, prompt, f = public['templateId'], public['prompt'], public['figure']
+    template, prompt = public['templateId'], public['prompt']
     if template.startswith('two-way'):
-        require(f['kind'] == 'two-way-table' and list(f['columns']) == ['Yes', 'No'], 'Two-way table required')
-        trait, negation = TRAITS[f['columnTitle']]
-        nouns = [ROWS[r] for r in f['rows']]
-        g = _complete_table(f)
+        t = _element(public, 'table')
+        require(t['columns'] == ['Yes', 'No', 'Total'] and t.get('sums') and t['rows'][-1]['label'] == 'Total', 'Two-way table with totals required')
+        trait, negation = TRAITS[t['title']]
+        nouns = [ROWS[r['label']] for r in t['rows'][:-1]]
+        g = _complete_table(t)
         question = prompt.split('. ')[-1]
         if template == 'two-way-missing':
             m = re.fullmatch(r'How many (.+?) (' + re.escape(negation) + '|' + re.escape(trait) + r')\?', question)
             require(m is not None and m[1] in nouns, f'Unexpected table question {prompt}')
             i, j = nouns.index(m[1]), 0 if m[2] == trait else 1
-            require(f['cells'][i][j] == '?', 'The asked cell must be the marked one')
+            require(t.get('derived') == [[i, j]], 'The asked cell must be the marked one')
             return str(g[i][j])
         if template == 'two-way-row-percent':
             m = re.fullmatch(r'What percent of the (.+?) ' + re.escape(trait) + r'\?', question)
@@ -615,16 +626,21 @@ def solve_bivariate(public):
                 valid.append(o['id'])
         require(len(valid) == 1, 'Exactly one supported conclusion required')
         return valid[0]
-    require(f['kind'] == 'scatter-plot', 'Scatter plot required')
-    for px, py in f['points'] + f.get('line', []):
-        require(f['x']['start'] <= px <= f['x']['end'] and f['y']['start'] <= py <= f['y']['end'], 'Point off the grid')
+    g = _element(public, 'graph')
+    points = g['scatter']['points']
+    marks = [[p['x'], p['y']] for p in g.get('points', [])]
+    for px, py in points + marks:
+        require(g['x'][0] <= px <= g['x'][1] and g['y'][0] <= py <= g['y'][1], 'Point off the grid')
     if template == 'scatter-association-choice':
-        require(prompt.endswith('Which describes the association?') and 'line' not in f, 'Unexpected association prompt')
-        truth = _classify(f['points'])
+        require(prompt.endswith('Which describes the association?') and 'fit' not in g['scatter'] and not marks, 'Unexpected association prompt')
+        truth = _classify(points)
         valid = [o['id'] for o in public['response']['options'] if o['label'] == truth]
         require(len(valid) == 1, 'One matching description required')
         return valid[0]
-    (x1, y1), (x2, y2) = f['line']
+    require(len(marks) == 2 and 'fit' in g['scatter'], 'A trend line with two marked points required')
+    (x1, y1), (x2, y2) = marks
+    fit = g['scatter']['fit']
+    require(all(fit['m'] * x + fit['b'] == y for x, y in marks), 'Marked points must lie on the drawn line')
     m = re.search(r'with a trend line through \((\d+), (\d+)\) and \((\d+), (\d+)\)\.', prompt)
     require(m is not None and [int(v) for v in m.groups()] == [x1, y1, x2, y2], 'Stated line contradicts the drawn line')
     slope = Fraction(y2 - y1, x2 - x1)
@@ -636,7 +652,7 @@ def solve_bivariate(public):
         require(value.denominator == 1, 'Prediction must be whole')
         return str(value.numerator)
     require(template == 'trend-slope-meaning' and prompt.endswith('What does the slope of the trend line mean?'), 'Unexpected slope prompt')
-    unit = X_UNITS[f['x']['label']]
+    unit = X_UNITS[g['axisNames'][0]]
     valid = []
     for o in public['response']['options']:
         label = o['label']

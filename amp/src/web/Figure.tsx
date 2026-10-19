@@ -60,8 +60,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "box-plot":
     case "double-dot-plot":
     case "double-box-plot":
-    case "scatter-plot":
-    case "two-way-table":
       return <DataDisplayFigure figure={figure} />;
     case "cube-prism":
     case "box-prism":

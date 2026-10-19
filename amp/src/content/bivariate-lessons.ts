@@ -23,7 +23,7 @@ export const bivariateLessons: Lesson[] = [
           "Each point is one student: across for hours studied, up for test score. Read left to right: as hours increase, scores tend to increase, and the points hug a straight line. That is a positive linear association.",
           "If the points fall from left to right along a line, the association is negative linear: older cars, for example, tend to be worth less.",
         ],
-        illustration: "data-scatter-study",
+        illustration: "scene-scatter-study",
       },
       {
         title: "Curves are patterns too",
@@ -31,7 +31,7 @@ export const bivariateLessons: Lesson[] = [
           "Temperatures rise through the morning, peak at 2 p.m. and fall. The pattern is clear, but no straight line follows it: a nonlinear association.",
           "A cloud with no direction, such as shoe size against quiz score, shows no association: one quantity does not help predict the other.",
         ],
-        illustration: "data-scatter-curve",
+        illustration: "scene-scatter-curve",
       },
       {
         title: "Use the trend line",
@@ -39,7 +39,7 @@ export const bivariateLessons: Lesson[] = [
           "The trend line passes through (2, 22) and (8, 10). Its slope is (10 − 22) ÷ (8 − 2) = −12 ÷ 6 = −2: each additional year of age goes with a value about 2 thousand dollars lower.",
           "To predict a 6-year-old car, move 4 years from (2, 22): 22 − 2 × 4 = 14 thousand dollars. The line gives a typical value; real cars scatter around it.",
         ],
-        illustration: "data-scatter-trend",
+        illustration: "scene-scatter-trend",
       },
     ],
     workedExample: {
@@ -80,7 +80,7 @@ export const bivariateLessons: Lesson[] = [
           "Every row adds across to its total, and every column adds down to its total. The Grade 8 row has two blanks, so its total alone cannot help.",
           "The “Yes” column can: 42 students have a curfew, and 18 are seventh graders, so 42 − 18 = 24 eighth graders do. Then 60 − 24 = 36 do not.",
         ],
-        illustration: "data-two-way-blank",
+        illustration: "scene-two-way-blank",
       },
       {
         title: "Compare percents, not counts",
@@ -88,7 +88,7 @@ export const bivariateLessons: Lesson[] = [
           "More eighth graders than seventh graders have a curfew, 24 against 18. But the groups differ in size: 20 seventh graders and 60 eighth graders.",
           "Within each row: 18 ÷ 20 = 90% of seventh graders, but 24 ÷ 60 = 40% of eighth graders. The percents differ a lot, so grade and having a curfew are associated: in this table, seventh graders are far more likely to have one.",
         ],
-        illustration: "data-two-way-curfew",
+        illustration: "scene-two-way-curfew",
       },
     ],
     workedExample: {
