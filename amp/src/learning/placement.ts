@@ -75,7 +75,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // Grade 4: multiplication facts, fractions of a whole, area, division.
   [
     ["multiply-facts", "add-multidigit"],
-    ["fraction-model", "fraction-unit-count"],
+    [
+      "fraction-model",
+      "fraction-unit-count",
+      "compare-like-denominators",
+      "compare-like-numerators",
+    ],
     ["rectangle-area"],
     ["divide-facts"],
   ],
@@ -83,7 +88,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // measurement.
   [
     ["comparison-amount", "full-kits"],
-    ["compare-fractions", "equivalent-numerator", "whole-times-fraction"],
+    [
+      "compare-fractions",
+      "compare-unlike-fractions",
+      "equivalent-numerator",
+      "whole-times-fraction",
+    ],
     ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
     ["metric-length-rename"],
   ],
