@@ -16,10 +16,13 @@ import {
   type Scene,
   type RowBars,
   type Table,
+  type Bars,
+  type InkRole,
   type LineTable,
   type TenFrame,
   type Venn,
   type Tree,
+  type Triangle,
 } from "./spec";
 import type { Action, Step } from "./timeline";
 import { treeWidth } from "./components/tree";
@@ -331,6 +334,14 @@ export const rowBars = (spec: Omit<RowBars, "type">) =>
   new RowBarsBuilder({ type: "rowBars", ...spec } as RowBars);
 
 class TableBuilder extends Builder<Table> {
+  /** Label the change between consecutive rows of a body column: +3, ×2. */
+  changes(column: number, labels: (string | false)[], color?: InkRole) {
+    this.spec.changes = [
+      ...(this.spec.changes ?? []),
+      { column, labels, ...(color ? { color } : {}) },
+    ];
+    return this;
+  }
   /** Bands behind rows or columns and rings around cells (conditioning). */
   highlight(h: NonNullable<Table["highlight"]>) {
     this.spec.highlight = h;
@@ -508,3 +519,59 @@ export const lineTable = (
   rows: LineTable["rows"],
   options: Partial<Omit<LineTable, "type" | "rows">> = {},
 ) => new Simple<LineTable>({ type: "lineTable", rows, ...options });
+
+/** bars(["0", "1", "2"], { values: [1, 2, 4] }), or two series side by side. */
+export const bars = (
+  categories: (string | number)[],
+  ...series: Bars["series"]
+) =>
+  new Simple<Bars>({
+    type: "bars",
+    categories: categories.map(String),
+    series,
+  });
+const text = (v: Entry | undefined) => (v === undefined ? undefined : entry(v));
+class TriangleBuilder extends Builder<Triangle> {
+  names(a: string, b: string, c: string) {
+    this.spec.names = [a, b, c];
+    return this;
+  }
+  /** Side i runs from vertex i to vertex i + 1. */
+  side(
+    i: 0 | 1 | 2,
+    spec: { label?: Entry; ticks?: number; color?: "accent" | "warm" | "gold" },
+  ) {
+    const sides = this.spec.sides ?? [{}, {}, {}];
+    sides[i] = {
+      ...(spec.label !== undefined ? { label: text(spec.label) } : {}),
+      ...(spec.ticks ? { ticks: spec.ticks } : {}),
+      ...(spec.color ? { color: spec.color } : {}),
+    };
+    this.spec.sides = sides as Triangle["sides"];
+    return this;
+  }
+  angle(
+    i: 0 | 1 | 2,
+    spec: {
+      mark?: "arc" | "right";
+      arcs?: number;
+      label?: Entry;
+      color?: "accent" | "warm" | "gold";
+    },
+  ) {
+    const angles = this.spec.angles ?? [{}, {}, {}];
+    angles[i] = {
+      ...(spec.mark ? { mark: spec.mark } : {}),
+      ...(spec.arcs ? { arcs: spec.arcs } : {}),
+      ...(spec.label !== undefined ? { label: text(spec.label) } : {}),
+      ...(spec.color ? { color: spec.color } : {}),
+    };
+    this.spec.angles = angles as Triangle["angles"];
+    return this;
+  }
+}
+/** triangle([[0, 0], [4, 0], [0, 3]]).names("A", "B", "C").side(0, { label: 4 }).angle(0, { mark: "right" }) */
+export const triangle = (
+  points: [Point, Point, Point],
+  options: { fill?: Triangle["fill"]; dash?: boolean } = {},
+) => new TriangleBuilder({ type: "triangle", points, ...options });

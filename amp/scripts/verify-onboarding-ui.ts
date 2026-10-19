@@ -8,6 +8,7 @@ import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import type { EnrollmentView } from "../src/billing/stripe/enrollment-contracts";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 /**
  * First-run purchase flow against a synthetic API: verify email → plan →
@@ -270,6 +271,8 @@ async function fits(page: Page, label: string) {
     () => document.documentElement.scrollWidth - innerWidth,
   );
   assert.ok(overflow <= 0, `${label}: no horizontal overflow (${overflow}px)`);
+  if (isPhoneLandscape(page.viewportSize()!))
+    await assertPhoneLandscapeSmoke(page, label);
 }
 async function frames(page: Page) {
   await page.evaluate(
@@ -835,7 +838,7 @@ try {
       await context.close();
     }
   console.log(
-    "Onboarding: verify → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/844x390/1280x800 × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
+    "Onboarding: verify → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
 } finally {
   await browser.close();

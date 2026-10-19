@@ -158,18 +158,3 @@
 .payment-history .payment-summary p:last-child {
   margin-bottom: 0;
 }
-@media (max-height: 450px) {
-  .payment-history {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-  .payment-history header {
-    padding-bottom: 7px;
-  }
-  .payment-history footer {
-    padding-top: 7px;
-  }
-  .payment-summary {
-    padding: 12px;
-  }
-}

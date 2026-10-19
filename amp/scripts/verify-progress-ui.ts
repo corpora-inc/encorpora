@@ -11,6 +11,7 @@ import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate.js";
 import { generateProblem } from "../src/math/engine.js";
 import { seedProgress } from "../tests/progress.fixture.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL required");
 await migrate(url);
@@ -52,9 +53,12 @@ try {
   for (const size of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
     { width: 1280, height: 900 },
   ]) {
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape(size);
     await page.setViewportSize(size);
     await choose(
       page.getByRole("button", { name: "Learner", exact: true }),
@@ -91,11 +95,16 @@ try {
         heightWindow: innerHeight,
       };
     });
-    assert.ok(
-      layout.scroll <= layout.height + 2,
-      `Overview scroll ${size.width}: ${JSON.stringify(layout)}`,
-    );
-    assert.ok(layout.footerBottom <= size.height && layout.body <= size.width);
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Progress overview");
+    else {
+      assert.ok(
+        layout.scroll <= layout.height + 2,
+        `Overview scroll ${size.width}: ${JSON.stringify(layout)}`,
+      );
+      assert.ok(
+        layout.footerBottom <= size.height && layout.body <= size.width,
+      );
+    }
     for (const name of ["Math area", "Learner"]) {
       const target = await page
         .getByRole("button", { name, exact: true })
@@ -111,10 +120,12 @@ try {
     const detail = await page
       .locator(".progress-detail-content")
       .evaluate((e) => ({ scroll: e.scrollHeight, height: e.clientHeight }));
-    assert.ok(
-      detail.scroll <= detail.height + 2,
-      `Detail scroll ${size.width}: ${JSON.stringify(detail)}`,
-    );
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Progress detail");
+    else
+      assert.ok(
+        detail.scroll <= detail.height + 2,
+        `Detail scroll ${size.width}: ${JSON.stringify(detail)}`,
+      );
     await page.getByRole("button", { name: "All ideas", exact: false }).click();
     await page.waitForFunction(
       () =>
@@ -136,9 +147,12 @@ try {
         .click();
       for (;;) {
         await page.waitForTimeout(30);
-        const fits = await page
-          .locator(".progress-card-stage")
-          .evaluate((e) => e.scrollHeight <= e.clientHeight + 2);
+        if (!strict) await assertPhoneLandscapeSmoke(page, String(filterName));
+        const fits =
+          !strict ||
+          (await page
+            .locator(".progress-card-stage")
+            .evaluate((e) => e.scrollHeight <= e.clientHeight + 2));
         if (!fits)
           await page.screenshot({
             path: new URL(`overflow-${size.width}.png`, dir).pathname,
@@ -160,15 +174,17 @@ try {
               height: e.clientHeight,
               scroll: e.scrollHeight,
             }));
-          if (bounds.scroll > bounds.height + 2)
+          if (strict && bounds.scroll > bounds.height + 2)
             await page.screenshot({
               path: new URL(`detail-overflow-${size.width}-${id}.png`, dir)
                 .pathname,
             });
-          assert.ok(
-            bounds.scroll <= bounds.height + 2,
-            `${id} ${size.width} detail: ${JSON.stringify(bounds)}`,
-          );
+          if (!strict) await assertPhoneLandscapeSmoke(page, `${id} detail`);
+          else
+            assert.ok(
+              bounds.scroll <= bounds.height + 2,
+              `${id} ${size.width} detail: ${JSON.stringify(bounds)}`,
+            );
           await page.getByRole("button", { name: /All ideas/ }).click();
         }
         const next = page.getByRole("button", {

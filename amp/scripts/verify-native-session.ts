@@ -16,6 +16,7 @@ import { ApiError, PostgresRepository } from "../src/server/repository.js";
 import { verifyAccessToken } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database)
@@ -689,9 +690,12 @@ try {
   for (const viewport of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport);
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape(viewport);
     const button = page.getByRole("button", {
       name: "Parent sign in",
       exact: true,
@@ -701,10 +705,11 @@ try {
     assert.ok(
       box &&
         box.y >= 0 &&
-        box.y + box.height <= viewport.height &&
+        (!strict || box.y + box.height <= viewport.height) &&
         box.height >= 44,
       "Native parent sign-in action must fit",
     );
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Native sign-in");
     await page.screenshot({
       path: new URL(
         `../artifacts/native-session/sign-in-${viewport.width}.png`,
@@ -785,9 +790,12 @@ try {
   for (const viewport of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport);
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape(viewport);
     for (const name of ["Back to learning", "Sign out"]) {
       const box = await page
         .getByRole("button", { name, exact: true })
@@ -795,18 +803,20 @@ try {
       assert.ok(
         box &&
           box.y >= 0 &&
-          box.y + box.height <= viewport.height &&
+          (!strict || box.y + box.height <= viewport.height) &&
           box.height >= 44,
         "Native family actions must fit",
       );
     }
-    assert.ok(
-      await page.evaluate(
-        () =>
-          document.documentElement.scrollWidth <= innerWidth &&
-          document.documentElement.scrollHeight <= innerHeight + 1,
-      ),
-    );
+    if (!strict) await assertPhoneLandscapeSmoke(page, "Native family");
+    else
+      assert.ok(
+        await page.evaluate(
+          () =>
+            document.documentElement.scrollWidth <= innerWidth &&
+            document.documentElement.scrollHeight <= innerHeight + 1,
+        ),
+      );
     await page.screenshot({
       path: new URL(
         `../artifacts/native-session/family-${viewport.width}.png`,

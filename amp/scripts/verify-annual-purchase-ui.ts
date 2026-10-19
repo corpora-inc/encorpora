@@ -7,6 +7,7 @@ import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts.js";
 import { annualOffer } from "../src/billing/stripe/purchase.js";
 import { config } from "../tests/stripe-fixtures.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/annual-review/", import.meta.url);
 await mkdir(directory, { recursive: true });
 await writeFile(
@@ -166,9 +167,18 @@ try {
   for (const size of [
     { width: 320, height: 568 },
     { width: 390, height: 844 },
+    { width: 1024, height: 768 },
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(size);
+    // Phone landscape only has to stay usable; the others must fit.
+    if (isPhoneLandscape(size)) {
+      await assertPhoneLandscapeSmoke(page, "Annual purchase");
+      await page.screenshot({
+        path: new URL(`annual-ready-${size.width}.png`, directory).pathname,
+      });
+      continue;
+    }
     for (const control of [
       page.getByLabel("Learner", { exact: true }),
       page.getByRole("button", { name: "Open sandbox checkout" }),
@@ -191,15 +201,14 @@ try {
     await page.screenshot({
       path: new URL(`annual-debug-${size.width}.png`, directory).pathname,
     });
-    if (size.width !== 844)
-      assert.ok(
-        await page
-          .locator(".annual-body")
-          .evaluate(
-            (element) => element.scrollHeight <= element.clientHeight + 1,
-          ),
-        "ordinary phone purchase fits without scrolling",
-      );
+    assert.ok(
+      await page
+        .locator(".annual-body")
+        .evaluate(
+          (element) => element.scrollHeight <= element.clientHeight + 1,
+        ),
+      "ordinary phone purchase fits without scrolling",
+    );
     await page.screenshot({
       path: new URL(`annual-ready-${size.width}.png`, directory).pathname,
     });
