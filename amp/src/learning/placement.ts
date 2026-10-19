@@ -50,7 +50,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   ],
   // Grade 1: counting, facts within 10, a missing addend, then tens.
   [
-    ["count-objects", "teen-frame-compose", "hundred-chart-missing"],
+    ["count-objects", "teen-frame-compose"],
     ["join-within-10", "add-within-20", "count-on-back"],
     ["unknown-addend-story", "balanced-addition"],
     ["tens-ones-model", "continue-count-to-120", "compare-two-digit"],
@@ -63,7 +63,6 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "continue-count-to-120",
       "compare-two-digit",
       "compare-three-digit",
-      "number-line-hops",
     ],
     ["unknown-addend-story", "balanced-addition"],
     ["subtract-within-20", "related-subtraction", "subtract-two-digit-regroup"],

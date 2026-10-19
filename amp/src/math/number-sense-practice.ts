@@ -5,6 +5,57 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { formatWhole } from "./comparison-practice";
+import { numberLine, scene } from "./scene/author";
+import type { Element, Scene } from "./scene/spec";
+
+/** A window of the hundred chart as a scene: numbered squares, one left
+ * empty and shaded. The empty square carries no value. */
+export function hundredChartScene(
+  first: number,
+  rows: number,
+  columns: number,
+  blank: [number, number],
+): Scene {
+  const elements: Element[] = [];
+  for (let r = 0; r < rows; r++)
+    for (let c = 0; c < columns; c++) {
+      const empty = r === blank[0] && c === blank[1];
+      const at: [number, number] = [c, rows - 1 - r];
+      elements.push({
+        type: "rect",
+        id: empty ? "blank" : `cell-${r}-${c}`,
+        at,
+        size: [1, 1],
+        fill: empty ? "gold-fill" : "paper",
+        stroke: empty ? "warm" : "ink",
+        width: empty ? 2.5 : 1.25,
+      });
+      if (!empty)
+        elements.push({
+          type: "text",
+          id: `n-${r}-${c}`,
+          at: [c + 0.5, rows - 1 - r + 0.5],
+          text: String(first + 10 * r + c),
+          font: "sans",
+          size: "lg",
+          bold: true,
+          align: [0, 0],
+        });
+    }
+  return scene(...elements).build({
+    title: `Part of the hundred chart: ${rows} rows of ${columns} squares from ${first}, one square empty`,
+    width: 64 * columns,
+  });
+}
+/** Only the tens are labeled, so no tick label names a landing. */
+const tenLabels = (min: number, max: number) =>
+  Array.from({ length: (max - min) / 10 + 1 }, (_, i) => min + 10 * i);
+/** Templates whose figures are scenes: sent only to clients that draw them. */
+const sceneTemplates = new Set([
+  "hundred-chart-missing",
+  "number-line-hops",
+  "number-line-missing-hop",
+]);
 
 type Random = (low: number, high: number) => number;
 const definitions = [
@@ -94,6 +145,9 @@ export const numberSenseTemplates: readonly TemplateMetadata[] =
     gradeBand,
     description,
     version: 1,
+    ...(sceneTemplates.has(id)
+      ? { requiredFigureCapability: "scenes-v1" as const }
+      : {}),
   }));
 
 function random(id: string, seed: string): Random {
@@ -221,7 +275,10 @@ export function generateNumberSenseProblem(
       // Avoid the top-left square, which has no square above or to its left
       // in some windows; any other blank has a neighbor to reason from.
       if (blank[0] === 0 && blank[1] === 0) blank[1] = 1;
-      figure = { kind: "hundred-chart", first, rows, columns, blank };
+      figure = {
+        kind: "scene",
+        scene: hundredChartScene(first, rows, columns, blank),
+      };
       const value = first + blank[0] * 10 + blank[1];
       prompt =
         "This is part of the hundred chart. What number belongs in the empty square?";
@@ -291,15 +348,13 @@ export function generateNumberSenseProblem(
       if (min === low && min > 0) min -= 10;
       const sign = add ? 1 : -1;
       figure = {
-        kind: "hop-line",
-        min,
-        max,
-        start,
-        hops: [
-          { size: sign * tens, label: "size" },
-          { size: sign * ones, label: "size" },
-        ],
-        end: "hidden",
+        kind: "scene",
+        scene: numberLine({ min, max, labels: tenLabels(min, max) })
+          .id("line")
+          .mark(start, { color: "warm" })
+          .hop(start, sign * tens, { landing: "none" })
+          .then(sign * ones, { landing: "derived" })
+          .scene(),
       };
       prompt = `Start at ${start}. Hop ${add ? "forward" : "back"} ${tens}, then ${add ? "forward" : "back"} ${ones}. Where do you land?`;
       answer = String(end);
@@ -317,12 +372,20 @@ export function generateNumberSenseProblem(
         forward = r(0, 1) === 1;
       const [a, b] = forward ? [from, from + length] : [from + length, from];
       figure = {
-        kind: "hop-line",
-        min: Math.floor(Math.min(a, b) / 10) * 10,
-        max: Math.ceil((Math.max(a, b) + 1) / 10) * 10,
-        start: a,
-        hops: [{ size: b - a, label: "?" }],
-        end: "shown",
+        kind: "scene",
+        scene: numberLine({
+          min: Math.floor(Math.min(a, b) / 10) * 10,
+          max: Math.ceil((Math.max(a, b) + 1) / 10) * 10,
+          labels: tenLabels(
+            Math.floor(Math.min(a, b) / 10) * 10,
+            Math.ceil((Math.max(a, b) + 1) / 10) * 10,
+          ),
+        })
+          .id("line")
+          .mark(a, { color: "warm" })
+          .mark(b, { color: "warm" })
+          .hop(a, b - a, { label: "?", landing: "none" })
+          .scene(),
       };
       prompt = `A hop goes from ${a} to ${b}. How long is the hop?`;
       answer = String(length);

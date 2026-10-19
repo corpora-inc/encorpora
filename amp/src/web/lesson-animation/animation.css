@@ -65,10 +65,6 @@
 .animation-fade {
   transition: opacity 400ms ease;
 }
-.animation-draw {
-  stroke: var(--color-success-accent);
-  transition: stroke-dashoffset 900ms cubic-bezier(0.22, 0.7, 0.18, 1);
-}
 /* Moves and fades together; elements stagger with an inline delay. */
 .animation-step {
   transition:
@@ -199,8 +195,7 @@
   .animation-step,
   .animation-lift,
   .animation-trace,
-  .animation-paint,
-  .animation-draw {
+  .animation-paint {
     transition: none;
   }
 }

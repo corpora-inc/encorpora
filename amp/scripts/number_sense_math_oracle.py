@@ -36,6 +36,13 @@ def round_half_up(n, unit):
     return below + unit if 2 * (n % unit) >= unit else below
 
 
+def number_line(figure):
+    require(figure and figure['kind'] == 'scene', 'Missing number line')
+    lines = [e for e in figure['scene']['elements'] if e['type'] == 'numberLine']
+    require(len(lines) == 1, 'One number line')
+    return lines[0]
+
+
 def solve_number_sense(public):
     name, prompt, figure = public['templateId'], public['prompt'], public.get('figure')
     require(public['response']['kind'] == 'number', 'Numeric response expected')
@@ -53,15 +60,25 @@ def solve_number_sense(public):
             require(first % 10 == 0, 'Counting by tens starts at a ten')
         return sequence[items.index('□')]
     if name == 'hundred-chart-missing':
-        require(figure and figure['kind'] == 'hundred-chart', 'Missing chart')
-        first, rows, columns = figure['first'], figure['rows'], figure['columns']
-        row, column = figure['blank']
-        # Rebuild the chart: row r holds 10r + 1 … 10r + 10.
-        chart = [[10 * r + c + 1 for c in range(10)] for r in range(10)]
-        top, left = divmod(first - 1, 10)
-        require(left + columns <= 10 and top + rows <= 10, 'Window leaves the chart')
-        require((row, column) != (0, 0), 'Blank needs a visible neighbor')
-        return chart[top + row][left + column]
+        require(figure and figure['kind'] == 'scene', 'Missing chart')
+        elements = figure['scene']['elements']
+        squares = [e for e in elements if e['type'] == 'rect']
+        numbers = {(e['at'][0] - 0.5, e['at'][1] - 0.5): int(e['text']) for e in elements if e['type'] == 'text'}
+        blanks = [e for e in squares if e.get('id') == 'blank']
+        require(len(blanks) == 1 and len(numbers) == len(squares) - 1, 'One empty square, every other numbered')
+        require(all(tuple(e['size']) == (1, 1) for e in squares), 'Unit squares')
+        # The visible numbers must be a window of the hundred chart: right is +1, down (y − 1) is +10.
+        (x0, y0), v0 = next(iter(numbers.items()))
+        def chart(x, y):
+            return v0 + int(x - x0) - 10 * int(y - y0)
+        require(all(v == chart(x, y) for (x, y), v in numbers.items()), 'Not a hundred-chart window')
+        require(all(1 <= v <= 100 for v in numbers.values()), 'Inside 1 to 100')
+        xs = [x for x, _ in numbers] + [blanks[0]['at'][0]]
+        decade = lambda v: (v - 1) // 10
+        require(all(decade(chart(min(xs), y)) == decade(chart(max(xs), y)) for _, y in numbers), 'A row stays in one decade')
+        bx, by = blanks[0]['at']
+        require((bx - 1, by) in numbers or (bx, by + 1) in numbers, 'Blank needs a visible neighbor')
+        return chart(bx, by)
     if name == 'numeral-for-quantity':
         require(figure and figure['kind'] == 'ten-frame' and figure['second'] == 0, 'Missing frames')
         require(prompt == 'How many counters are in the frames? Write the number.', 'Unexpected prompt')
@@ -73,18 +90,21 @@ def solve_number_sense(public):
         start, tens, ones = int(m[1]), int(m[3]), int(m[5])
         require(tens % 10 == 0 and 1 <= ones <= 9, 'A tens hop then an ones hop')
         sign = 1 if m[2] == 'forward' else -1
-        require(figure == {'kind': 'hop-line', 'min': figure['min'], 'max': figure['max'], 'start': start,
-                           'hops': [{'size': sign * tens, 'label': 'size'}, {'size': sign * ones, 'label': 'size'}],
-                           'end': 'hidden'}, 'Figure disagrees with the hops')
+        line = number_line(figure)
+        hops = [(h['from'], h['by'], h.get('landing')) for h in line['hops']]
+        require(hops == [(start, sign * tens, 'none'), (start + sign * tens, sign * ones, 'derived')], 'Figure disagrees with the hops')
         end = start + sign * (tens + ones)
-        require(figure['min'] <= min(start, end) and max(start, end) <= figure['max'] <= 100 and figure['min'] >= 0, 'Off the line')
+        require(all(m['at'] != end for m in line.get('marks', [])), 'The landing is not marked')
+        require(all(v % 10 == 0 for v in line['labels']), 'Only tens are labeled')
+        require(line['min'] <= min(start, end) and max(start, end) <= line['max'] <= 100 and line['min'] >= 0, 'Off the line')
         return end
     if name == 'number-line-missing-hop':
         m = re.fullmatch(r'A hop goes from (\d+) to (\d+)\. How long is the hop\?', prompt)
         require(m is not None, f'Unexpected missing-hop prompt {prompt!r}')
         a, b = int(m[1]), int(m[2])
-        require(figure['kind'] == 'hop-line' and figure['start'] == a and figure['end'] == 'shown'
-                and figure['hops'] == [{'size': b - a, 'label': '?'}], 'Figure disagrees with the hop')
+        line = number_line(figure)
+        require([(h['from'], h['by'], h.get('label')) for h in line['hops']] == [(a, b - a, '?')], 'Figure disagrees with the hop')
+        require(sorted(m['at'] for m in line['marks']) == sorted([a, b]), 'Both ends are marked')
         return abs(b - a)
     if name in ('round-to-ten', 'round-to-hundred', 'round-large'):
         m = re.fullmatch(r'Round ([\d,]+) to the nearest (ten thousand|ten|hundred|thousand)\.', prompt)
@@ -126,9 +146,24 @@ def review_number_sense_fixtures():
         except ValueError:
             continue
         raise ValueError(f'Accepted {bad!r}')
+    # 8 9 10 / [ ] 19 20 / 28 29 30: the blank is 18.
+    cells = [(c, 2 - r, 8 + 10 * r + c) for r in range(3) for c in range(3)]
+    elements = [{'type': 'rect', 'id': 'blank' if (x, y) == (0, 1) else 'c', 'at': [x, y], 'size': [1, 1]} for x, y, _ in cells]
+    elements += [{'type': 'text', 'at': [x + 0.5, y + 0.5], 'text': str(v)} for x, y, v in cells if (x, y) != (0, 1)]
     chart = {'templateId': 'hundred-chart-missing', 'prompt': '', 'response': {'kind': 'number'},
-             'figure': {'kind': 'hundred-chart', 'first': 8, 'rows': 3, 'columns': 3, 'blank': [1, 0]}}
+             'figure': {'kind': 'scene', 'scene': {'v': 1, 'elements': elements}}}
     require(solve_number_sense(chart) == 18, 'Chart fixture')
+    # A window that wraps a decade (9 10 / 11 12 drawn side by side) is not the chart.
+    wrapped = [dict(e) for e in elements]
+    for e in wrapped:
+        if e['type'] == 'text' and e['text'] == '10':
+            e['text'] = '11'
+    try:
+        solve_number_sense({**chart, 'figure': {'kind': 'scene', 'scene': {'v': 1, 'elements': wrapped}}})
+    except ValueError:
+        pass
+    else:
+        raise ValueError('Accepted a window that is not the hundred chart')
 
 
 class NumberSenseCorpus:
@@ -166,8 +201,8 @@ class NumberSenseCorpus:
             n = public['figure']['first']
             tags.add('zero' if n == 0 else 'teen' if n > 10 else 'small')
         elif name in ('number-line-hops', 'number-line-missing-hop'):
-            hops = public['figure']['hops']
-            tags.add('forward' if hops[0]['size'] > 0 else 'back')
+            hops = number_line(public['figure'])['hops']
+            tags.add('forward' if hops[0]['by'] > 0 else 'back')
         else:
             tags.add('seen')
 

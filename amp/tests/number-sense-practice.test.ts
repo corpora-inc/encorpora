@@ -8,10 +8,8 @@ import {
 import { generatedProblemSchema } from "../src/math/contracts";
 import { openerSlots, templateRole } from "../src/learning/placement";
 import { problemLesson } from "../src/content/problem-lessons";
-import {
-  animationFrames,
-  animationModel,
-} from "../src/web/lesson-animation/model";
+import { describeScene, layoutScene } from "../src/math/scene";
+import type { NumberLine, Scene } from "../src/math/scene";
 import { lessons } from "../src/content/lessons";
 
 const ids = numberSenseTemplates.map((t) => t.id);
@@ -94,34 +92,94 @@ test("powers of ten move digits exactly, in decimal text", () => {
     }
 });
 
-test("number-line hops agree with their figures and stay on the line", () => {
+const sceneOf = (p: ReturnType<typeof generateProblem>): Scene => {
+  const f = p.public.figure!;
+  if (f.kind !== "scene") assert.fail(`${p.public.templateId}: not a scene`);
+  return f.scene;
+};
+const lineOf = (scene: Scene) => {
+  const line = scene.elements.find((e) => e.type === "numberLine");
+  assert.ok(line);
+  return line as NumberLine;
+};
+
+test("number-line hops agree with their scenes and stay on the line", () => {
   for (const p of sample("number-line-hops")) {
-    const f = p.public.figure!;
-    assert.equal(f.kind, "hop-line");
-    if (f.kind !== "hop-line") continue;
+    const scene = sceneOf(p),
+      line = lineOf(scene);
     const [start, tens, ones] = numbersIn(p.public.prompt);
     const sign = p.public.prompt.includes("forward") ? 1 : -1;
     assert.deepEqual(
-      f.hops.map((h) => h.size),
-      [sign * tens!, sign * ones!],
+      line.hops!.map((h) => [h.from, h.by]),
+      [
+        [start, sign * tens!],
+        [start! + sign * tens!, sign * ones!],
+      ],
     );
-    assert.equal(f.start, start);
+    // The landing is the unknown: masked in the problem, never in the payload.
+    assert.equal(line.hops![1]!.landing, "derived");
+    assert.ok(!line.marks!.some((m) => m.at === Number(p.answer)));
     assert.equal(Number(p.answer), start! + sign * (tens! + ones!));
-    assert.ok(Number(p.answer) >= f.min && Number(p.answer) <= f.max);
+    assert.ok(Number(p.answer) >= line.min && Number(p.answer) <= line.max);
+    assert.match(describeScene(scene), /number to find|\?/);
+    const labels = layoutScene(scene).items.flatMap((d) =>
+      d.k === "text" ? [d.plain] : [],
+    );
+    assert.ok(labels.includes("?"), "The landing is drawn as ?");
+    // Only a tick label (a ten) may show the landing's value.
+    if (Number(p.answer) % 10)
+      assert.ok(!labels.includes(p.answer), "The landing is masked");
   }
   for (const p of sample("number-line-missing-hop")) {
+    const line = lineOf(sceneOf(p));
     const [a, b] = numbersIn(p.public.prompt);
+    assert.deepEqual(
+      line.hops!.map((h) => [h.from, h.by, h.label]),
+      [[a, b! - a!, "?"]],
+    );
     assert.equal(Number(p.answer), Math.abs(b! - a!));
   }
 });
 
-test("hundred-chart blanks have a visible neighbor and the chart's value", () => {
+test("hundred-chart windows read as the chart, with one empty square", () => {
   for (const p of sample("hundred-chart-missing")) {
-    const f = p.public.figure!;
-    if (f.kind !== "hundred-chart") assert.fail("figure");
-    assert.notDeepEqual(f.blank, [0, 0]);
-    assert.equal(Number(p.answer), f.first + 10 * f.blank[0] + f.blank[1]);
+    const scene = sceneOf(p);
+    const cells = scene.elements.flatMap((e) => (e.type === "rect" ? [e] : []));
+    const texts = scene.elements.flatMap((e) => (e.type === "text" ? [e] : []));
+    const blank = cells.find((c) => c.id === "blank");
+    assert.ok(blank);
+    assert.equal(texts.length, cells.length - 1);
+    // Every number sits in its own square; right is +1 and down is +10.
+    const at = new Map(
+      texts.map((t) => [`${t.at[0] - 0.5},${t.at[1] - 0.5}`, Number(t.text)]),
+    );
+    for (const [key, value] of at) {
+      const [x, y] = key.split(",").map(Number);
+      const right = at.get(`${x! + 1},${y}`),
+        below = at.get(`${x},${y! - 1}`);
+      if (right !== undefined) assert.equal(right, value + 1);
+      if (below !== undefined) assert.equal(below, value + 10);
+    }
+    const [bx, by] = blank.at;
+    const left = at.get(`${bx - 1},${by}`),
+      above = at.get(`${bx},${by + 1}`);
+    assert.ok(left !== undefined || above !== undefined, "A visible neighbor");
+    assert.equal(Number(p.answer), left !== undefined ? left + 1 : above! + 10);
+    assert.ok(!texts.some((t) => t.text === p.answer));
   }
+});
+
+test("scene templates are sent only to clients that draw scenes", () => {
+  for (const t of numberSenseTemplates)
+    assert.equal(
+      t.requiredFigureCapability === "scenes-v1",
+      [
+        "hundred-chart-missing",
+        "number-line-hops",
+        "number-line-missing-hop",
+      ].includes(t.id),
+      t.id,
+    );
 });
 
 test("number-sense openers are numeric, short and placed", () => {
@@ -129,29 +187,11 @@ test("number-sense openers are numeric, short and placed", () => {
   for (const id of [
     "numeral-for-quantity",
     "count-sequence-missing",
-    "hundred-chart-missing",
-    "number-line-hops",
     "round-to-ten",
     "round-to-hundred",
     "multiply-power-of-ten",
   ])
     assert.ok(openers.has(id), id);
-});
-
-test("the hop animation lands on the example's answer", () => {
-  for (let i = 0; i < 60; i++) {
-    const lesson = problemLesson("number-line-hops", `animation-${i}`);
-    const model = animationModel(lesson);
-    assert.ok(model && model.kind === "hops");
-    const frames = animationFrames(model);
-    assert.equal(frames.length, 3);
-    const end =
-      model.figure.start +
-      model.figure.hops[0]!.size +
-      model.figure.hops[1]!.size;
-    assert.equal(Number(lesson.example.answer), end);
-    assert.match(frames[2]!.math, new RegExp(`= ${end}\\$$`));
-  }
 });
 
 test("every number-sense family has one illustrated reference lesson", () => {

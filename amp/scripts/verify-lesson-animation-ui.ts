@@ -50,8 +50,6 @@ for (const id of [
   "three-addend-story",
 ])
   lessons.push(problemLesson(id, "animation-review"));
-// A tens hop, then a ones hop, along a unit number line.
-lessons.push(problemLesson("number-line-hops", "animation-review"));
 const names = [
   "fraction-model",
   "split-array-part",
@@ -68,7 +66,6 @@ const names = [
   "balanced-addition",
   "unknown-addend-story",
   "three-addend-story",
-  "number-line-hops",
 ];
 assert.equal(lessons.length, names.length);
 const entry = `
@@ -338,18 +335,6 @@ try {
         assert(
           Math.abs(w0! / w1! - figure.columns[0]! / figure.columns[1]!) < 1e-6,
           "Area model is not to scale",
-        );
-      } else if (figure.kind === "hop-line") {
-        assert.equal(await panel.locator("[data-hop]").count(), 2);
-        // The marker ends on the landing tick: start plus both hops.
-        const end = figure.start + figure.hops[0]!.size + figure.hops[1]!.size;
-        assert.equal(Number(lessons[i]!.example.answer), end);
-        assert(
-          (await panel
-            .locator("text")
-            .filter({ hasText: new RegExp(`^${end}$`) })
-            .count()) >= 1,
-          "Landing number is not shown",
         );
       } else if (figure.kind === "base-ten-pair") {
         const tens = figure.values.reduce((s, n) => s + Math.floor(n / 10), 0),

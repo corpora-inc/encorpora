@@ -7,7 +7,6 @@ import { EqualGroupsFigure } from "./EqualGroupsFigure";
 import { FractionPracticeFigure } from "./FractionPracticeFigure";
 import { ElementaryFigure } from "./ElementaryFigure";
 import { ComparisonFigure } from "./ComparisonFigure";
-import { NumberSenseFigure } from "./NumberSenseFigure";
 import { AreaModelFigure } from "./AreaModelFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
@@ -98,9 +97,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
-    case "hundred-chart":
-    case "hop-line":
-      return <NumberSenseFigure figure={figure} />;
     case "bar-chart":
       return <GraphicalFigure figure={figure} />;
     case "balance-scale":
