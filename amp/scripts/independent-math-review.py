@@ -25,6 +25,7 @@ from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
+from exponential_math_oracle import EXPONENTIAL, EXPONENTIAL_CHOICE, solve_exponential, review_exponential_fixtures
 from similarity_trig_math_oracle import SIMILARITY_TRIG, solve_similarity_trig, review_similarity_trig_fixtures, review_similarity_trig_problem
 from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
 from polygon_math_oracle import POLYGONS, POLYGONS_CHOICE, solve_polygon, review_polygon_fixtures, review_polygon_problem
@@ -82,6 +83,7 @@ SUPPORTED = TRANSFORMATION | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTIC
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
+SUPPORTED |= EXPONENTIAL
 SUPPORTED |= TWO_VARIABLE
 
 
@@ -122,6 +124,8 @@ def solve(public):
         return solve_angle(public)
     if template in POLYGONS:
         return solve_polygon(public)
+    if template in EXPONENTIAL:
+        return solve_exponential(public)
     if template in PROBABILITY_RULES:
         return solve_probability_rules(public)
     if template in SIMILARITY_TRIG:
@@ -398,6 +402,7 @@ def review(stream):
     review_shape_fixtures()
     review_angle_fixtures()
     review_polygon_fixtures()
+    review_exponential_fixtures()
     review_probability_rules_fixtures()
     review_similarity_trig_fixtures()
     review_pattern_function_fixtures()
@@ -542,7 +547,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')

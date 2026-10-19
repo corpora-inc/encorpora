@@ -517,7 +517,8 @@ function-transformations|algebra-2|functions|Describe shifts scales reflections 
 function-composition|algebra-2|functions|Compose functions and determine valid inputs|function-domain-range,function-evaluation|HSF
 inverse-functions|algebra-2|functions|Find inverses and restrict domains where needed|function-composition|HSF
 logarithms|algebra-2|functions|Use logarithms as inverses of exponential functions|exponential-models,inverse-functions|HSF
-exponential-equations|algebra-2|algebra|Solve exponential and logarithmic equations with domain checks|logarithms|HSF
+logarithm-properties|algebra-2|functions|Rewrite and evaluate logarithms with the product quotient and power rules and change of base|logarithms|
+exponential-equations|algebra-2|algebra|Solve exponential and logarithmic equations with domain checks|logarithms,logarithm-properties|HSF
 sequence-sums|algebra-2|functions|Calculate finite geometric sums and interpret them in context|geometric-sequences|HSA
 radians-unit-circle|algebra-2|trigonometry|Connect radians arc length and unit-circle coordinates|arc-sector-measure,special-right-triangles|HSF,SAT.geometry
 trigonometric-graphs|algebra-2|trigonometry|Interpret period amplitude phase and midline|radians-unit-circle,function-transformations|HSF
@@ -1530,6 +1531,105 @@ for (const [skillId, facets] of [
         "Name lines, rays and segments; classify angles and triangles by angle; tell parallel from perpendicular lines.",
       ],
       ["symmetry", "Identify and count lines of symmetry of polygons."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
+// Exponential growth, geometric sequences and series, and logarithms.
+for (const [skillId, facets] of [
+  [
+    "exponential-models",
+    [
+      [
+        "evaluate",
+        "Evaluate an exponential model at a later time from a table, a percent growth rate, a half-life or a formula with a whole or fractional base.",
+      ],
+      [
+        "construct",
+        "Choose y = a·bˣ from a table, a graph through marked points, or a growth or percent-decay story.",
+      ],
+    ],
+  ],
+  [
+    "growth-comparison",
+    [
+      [
+        "classify",
+        "Classify a table with equal input steps, or a story, as linear, exponential or neither.",
+      ],
+      [
+        "eventual",
+        "Find the first whole input at which 2ˣ or 3ˣ exceeds a given linear function, from a graph, a table or a story.",
+      ],
+    ],
+  ],
+  [
+    "exponential-equations",
+    [
+      [
+        "common-base",
+        "Solve exponential equations whose sides are powers of 2, 3 or 5, including reciprocals and powers on both sides.",
+      ],
+      [
+        "log-solution",
+        "Choose the exact logarithmic solution of a·bˣ = c, b^(x + h) = k, e^(rt) = k or a doubling-time equation.",
+      ],
+      [
+        "log-domain",
+        "Solve log equations of one logarithm, or of a sum or difference of two, rejecting candidates outside the domain.",
+      ],
+    ],
+  ],
+  [
+    "sequence-sums",
+    [
+      [
+        "finite-geometric",
+        "Sum finitely many terms of a geometric sequence given as a list, by first term and ratio, in sigma notation or in a story.",
+      ],
+    ],
+  ],
+  [
+    "logarithm-properties",
+    [
+      [
+        "rules",
+        "Evaluate and rewrite logarithms with the product, quotient and power rules.",
+      ],
+      [
+        "change-of-base",
+        "Evaluate logarithms by changing base, including quotients and products of logarithms.",
+      ],
+    ],
+  ],
+  [
+    "logarithms",
+    [
+      [
+        "exact-values",
+        "Evaluate logarithms of reciprocals, roots and powers of 10, and read a logarithm from its graph.",
+      ],
+      [
+        "forms",
+        "Translate between logarithmic and exponential form, and place a logarithm between consecutive whole numbers.",
+      ],
+    ],
+  ],
+  [
+    "geometric-sequences",
+    [
+      [
+        "ratio-terms",
+        "Find a common ratio, including negative and fractional ratios, a missing middle term, or a term from a recursive rule or two given terms.",
+      ],
     ],
   ],
 ] as const) {

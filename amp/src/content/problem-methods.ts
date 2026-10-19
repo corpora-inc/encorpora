@@ -11,6 +11,7 @@ import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
 import { angleMethods } from "./angle-lessons";
 import { polygonMethods } from "./polygon-lessons";
+import { exponentialMethods } from "./exponential-lessons";
 import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { similarityTrigMethods } from "./similarity-trig-lessons";
 import { distributionMethods } from "./distribution-lessons";
@@ -55,6 +56,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...shapeMethods,
   ...angleMethods,
   ...polygonMethods,
+  ...exponentialMethods,
   ...probabilityRulesMethods,
   ...similarityTrigMethods,
   ...integerExponentMethods,

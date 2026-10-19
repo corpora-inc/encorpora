@@ -16,6 +16,8 @@ import {
   type Scene,
   type RowBars,
   type Table,
+  type Bars,
+  type InkRole,
   type LineTable,
   type TenFrame,
   type Venn,
@@ -332,6 +334,14 @@ export const rowBars = (spec: Omit<RowBars, "type">) =>
   new RowBarsBuilder({ type: "rowBars", ...spec } as RowBars);
 
 class TableBuilder extends Builder<Table> {
+  /** Label the change between consecutive rows of a body column: +3, ×2. */
+  changes(column: number, labels: (string | false)[], color?: InkRole) {
+    this.spec.changes = [
+      ...(this.spec.changes ?? []),
+      { column, labels, ...(color ? { color } : {}) },
+    ];
+    return this;
+  }
   /** Bands behind rows or columns and rings around cells (conditioning). */
   highlight(h: NonNullable<Table["highlight"]>) {
     this.spec.highlight = h;
@@ -510,6 +520,16 @@ export const lineTable = (
   options: Partial<Omit<LineTable, "type" | "rows">> = {},
 ) => new Simple<LineTable>({ type: "lineTable", rows, ...options });
 
+/** bars(["0", "1", "2"], { values: [1, 2, 4] }), or two series side by side. */
+export const bars = (
+  categories: (string | number)[],
+  ...series: Bars["series"]
+) =>
+  new Simple<Bars>({
+    type: "bars",
+    categories: categories.map(String),
+    series,
+  });
 const text = (v: Entry | undefined) => (v === undefined ? undefined : entry(v));
 class TriangleBuilder extends Builder<Triangle> {
   names(a: string, b: string, c: string) {

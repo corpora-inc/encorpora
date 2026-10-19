@@ -85,6 +85,10 @@ import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
+  exponentialTemplates,
+  generateExponentialProblem,
+} from "./exponential-practice";
+import {
   similarityTrigTemplates,
   generateSimilarityTrigProblem,
 } from "./similarity-trig-practice";
@@ -306,6 +310,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
   ...polygonTemplates,
+  ...exponentialTemplates,
   ...angleTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
@@ -501,6 +506,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    ...exponentialTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
@@ -571,6 +577,8 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (exponentialTemplates.some((t) => t.id === templateId))
+    return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
   if (twoVariableTemplates.some((t) => t.id === templateId))
