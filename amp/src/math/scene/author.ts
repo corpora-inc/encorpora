@@ -1,15 +1,19 @@
 import {
   sceneSchema,
   type AreaModel,
+  type Bars,
   type Clock,
   type Element,
   type Fn,
   type FractionBar,
   type Graph,
+  type InkRole,
   type LineSpec,
   type NumberLine,
   type Point,
   type Scene,
+  type Table,
+  type TableCell,
   type TenFrame,
 } from "./spec";
 
@@ -325,3 +329,54 @@ export const fractionBar = (
 ) => new Simple<FractionBar>({ type: "fractionBar", bars });
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
+
+class TableBuilder extends Builder<Table> {
+  /** Label the change between consecutive rows of a column: +3, ×2. */
+  steps(column: number, labels: (string | false)[], color?: InkRole) {
+    this.spec.steps = [
+      ...(this.spec.steps ?? []),
+      { column, labels, ...(color ? { color } : {}) },
+    ];
+    return this;
+  }
+  highlightRows(rows: number[], color?: "accent" | "warm" | "gold") {
+    this.spec.highlight = {
+      ...this.spec.highlight,
+      rows,
+      ...(color ? { color } : {}),
+    };
+    return this;
+  }
+  highlightColumns(columns: number[], color?: "accent" | "warm" | "gold") {
+    this.spec.highlight = {
+      ...this.spec.highlight,
+      columns,
+      ...(color ? { color } : {}),
+    };
+    return this;
+  }
+}
+/** table(["x", "y"], [[0, 3], [1, 6]]): numbers become math cells. */
+export const table = (
+  header: TableCell[],
+  rows: (TableCell | number)[][],
+  options: Partial<Omit<Table, "type" | "header" | "rows">> = {},
+) =>
+  new TableBuilder({
+    type: "table",
+    header,
+    rows: rows.map((r) =>
+      r.map((c) => (typeof c === "number" ? String(c).replace("-", "−") : c)),
+    ),
+    ...options,
+  } as Table);
+/** bars(["0", "1", "2"], [1, 2, 4]) or two series side by side. */
+export const bars = (
+  categories: (string | number)[],
+  ...series: Bars["series"]
+) =>
+  new Simple<Bars>({
+    type: "bars",
+    categories: categories.map(String),
+    series,
+  });

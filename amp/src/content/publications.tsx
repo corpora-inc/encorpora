@@ -8,6 +8,7 @@ import { equationWorksheet } from "./equation-worksheets";
 import { equationTemplates } from "../math/equation-practice";
 import { readFileSync } from "node:fs";
 import { distinctWorksheet } from "./distinct-worksheet";
+import { exponentialTemplates } from "../math/exponential-practice";
 import { partWholeTemplates } from "../math/part-whole-practice";
 import { decimalTemplates } from "../math/decimal-practice";
 import { timeMoneyTemplates } from "../math/time-money-practice";
@@ -43,6 +44,7 @@ import { printMathCss } from "./print-fonts";
 export type PublicationKind = "lesson" | "workbook" | "solutions";
 /** Families whose printed sheets are twelve distinct ordinary problems. */
 const distinctWorksheetTemplates = [
+  ...exponentialTemplates,
   ...partWholeTemplates,
   ...factArrayTemplates,
   ...earlyOperationsTemplates,

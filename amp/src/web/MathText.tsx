@@ -100,6 +100,12 @@ export function segments(text: string): Segment[] {
       });
       return;
     }
+    // A question mark right after explicit TeX ends the sentence; it is
+    // not a blank ("What is $\log_2 8$?").
+    if (part.startsWith("?") && out.at(-1)?.math) {
+      push("?", false);
+      part = part.slice(1);
+    }
     const words = part.split(/(\s+)/);
     let run: string[] = [];
     const flush = () => {

@@ -25,6 +25,12 @@ test("a sentence-ending question mark is still prose", () => {
   assert.equal(s.filter((x) => x.math).length, 1);
 });
 
+test("a question mark after explicit TeX is prose, not a blank", () => {
+  const s = segments("What is $\\log_2 8$?");
+  assert.deepEqual(s.at(-1), { text: "?", math: false });
+  assert.equal(s.filter((x) => x.math).length, 1);
+});
+
 test("a thousands separator stays inside its numeral", () => {
   const math = segments("Multiply: 2,000 × 3 = 6,000; 70 × 50 = 3,500.")
     .filter((s) => s.math)

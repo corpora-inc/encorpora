@@ -6,6 +6,7 @@ import { attributeFacetMappings } from "./attribute-coverage";
 import { volumeCoordinateFacetMappings } from "./volume-coordinate-coverage";
 import { shapeFacetMappings } from "./shape-coverage";
 import { polygonFacetMappings } from "./polygon-coverage";
+import { exponentialFacetMappings } from "./exponential-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
@@ -34,6 +35,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,
   ...polygonFacetMappings,
+  ...exponentialFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
   ...linePlotFacetMappings,

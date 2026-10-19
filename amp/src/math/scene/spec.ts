@@ -383,8 +383,16 @@ export const graphSchema = z
     x: z.tuple([coord, coord]),
     y: z.tuple([coord, coord]),
     /** Gridline spacing (false: no grid) and tick-label spacing. */
-    grid: z.union([num.positive(), z.literal(false)]).optional(),
-    tick: num.positive().optional(),
+    grid: z
+      .union([
+        num.positive(),
+        z.tuple([num.positive(), num.positive()]),
+        z.literal(false),
+      ])
+      .optional(),
+    tick: z
+      .union([num.positive(), z.tuple([num.positive(), num.positive()])])
+      .optional(),
     /** Ratio of a y unit to an x unit on screen; 1 keeps circles round. */
     aspect: num.min(0.05).max(20).optional(),
     labels: z.enum(["auto", "all", "ends", "none"]).optional(),
@@ -545,8 +553,12 @@ export const graphSchema = z
   .refine(
     (g) =>
       g.grid === false ||
-      ((g.x[1] - g.x[0]) / (g.grid ?? 1) <= 60 &&
-        (g.y[1] - g.y[0]) / (g.grid ?? 1) <= 60),
+      ((g.x[1] - g.x[0]) /
+        (typeof g.grid === "object" ? g.grid[0] : (g.grid ?? 1)) <=
+        60 &&
+        (g.y[1] - g.y[0]) /
+          (typeof g.grid === "object" ? g.grid[1] : (g.grid ?? 1)) <=
+          60),
     "At most 60 gridlines per axis",
   );
 
@@ -664,6 +676,100 @@ export const clockSchema = z
   })
   .strict();
 
+const tableCell = z.union([
+  label,
+  z
+    .object({
+      text: label,
+      font: z.enum(["math", "sans"]).optional(),
+      bold: z.boolean().optional(),
+      color: ink.optional(),
+    })
+    .strict(),
+]);
+const highlightColor = z.enum(["accent", "warm", "gold"]).optional();
+/** A value table, laid out at type size: columns fit their widest entry.
+ * `steps` draw the change between consecutive rows of a column (+3, ×2) as
+ * bowed arrows in a gutter to that column's right. */
+export const tableSchema = z
+  .object({
+    ...base,
+    type: z.literal("table"),
+    header: z.array(tableCell).min(1).max(6),
+    rows: z.array(z.array(tableCell).min(1).max(6)).min(1).max(8),
+    /** Header row text font; cells default to math, row headers to sans. */
+    headerFont: z.enum(["math", "sans"]).optional(),
+    /** The first column names the rows (a two-way table). */
+    rowHeaders: z.boolean().optional(),
+    steps: z
+      .array(
+        z
+          .object({
+            column: small.max(5),
+            labels: z.array(z.union([label, z.literal(false)])).max(7),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+    highlight: z
+      .object({
+        rows: z.array(small.max(7)).max(8).optional(),
+        columns: z.array(small.max(5)).max(6).optional(),
+        color: highlightColor,
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+  .refine(
+    (t) => t.rows.every((r) => r.length === t.header.length),
+    "Every row has one cell per column",
+  )
+  .refine(
+    (t) =>
+      (t.steps ?? []).every(
+        (s) =>
+          s.column < t.header.length && s.labels.length === t.rows.length - 1,
+      ),
+    "A step labels each gap between rows of a real column",
+  );
+
+/** Vertical bars over categories: one series, or two side by side. Heights
+ * share one linear scale, so growth reads directly. */
+export const barsSchema = z
+  .object({
+    ...base,
+    type: z.literal("bars"),
+    categories: z.array(label).min(1).max(12),
+    series: z
+      .array(
+        z
+          .object({
+            values: z.array(num.min(0).max(1e9)).min(1).max(12),
+            label: label.optional(),
+            color: highlightColor,
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(2),
+    /** Value labels on top of the bars (default true). */
+    valueLabels: z.boolean().optional(),
+    /** Caption under the category labels. */
+    axisName: label.optional(),
+  })
+  .strict()
+  .refine(
+    (b) => b.series.every((s) => s.values.length === b.categories.length),
+    "One value per category",
+  )
+  .refine(
+    (b) => b.series.some((s) => s.values.some((v) => v > 0)),
+    "Some bar has height",
+  );
+
 export const componentSchemas = [
   numberLineSchema,
   graphSchema,
@@ -673,6 +779,8 @@ export const componentSchemas = [
   baseTenSchema,
   fractionBarSchema,
   clockSchema,
+  tableSchema,
+  barsSchema,
 ] as const;
 export type Component = z.infer<(typeof componentSchemas)[number]>;
 export type NumberLine = z.infer<typeof numberLineSchema>;
@@ -683,6 +791,9 @@ export type TenFrame = z.infer<typeof tenFrameSchema>;
 export type BaseTen = z.infer<typeof baseTenSchema>;
 export type FractionBar = z.infer<typeof fractionBarSchema>;
 export type Clock = z.infer<typeof clockSchema>;
+export type Table = z.infer<typeof tableSchema>;
+export type TableCell = z.infer<typeof tableCell>;
+export type Bars = z.infer<typeof barsSchema>;
 
 /** A component or primitive, placed by an optional math-unit offset. */
 export const elementSchema = z.union([

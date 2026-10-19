@@ -98,8 +98,8 @@ function inline(text: string, size: number, bold: boolean): Typeset {
   const chars = [...text.replace(/-/g, "−")];
   for (let i = 0; i < chars.length; i++) {
     const c = chars[i]!;
-    if (c === "^") {
-      // A braced group or one character, raised and reduced.
+    if (c === "^" || c === "_") {
+      // A braced group or one character, raised (or lowered) and reduced.
       let group = "";
       if (chars[i + 1] === "{") {
         const close = chars.indexOf("}", i + 2);
@@ -111,8 +111,18 @@ function inline(text: string, size: number, bold: boolean): Typeset {
           g,
           /[a-zA-Z]/.test(g) ? "italic" : "main",
           size * 0.7,
-          -0.42 * size,
+          c === "^" ? -0.42 * size : 0.22 * size,
         );
+      previous = "x";
+      continue;
+    }
+    // Function names are upright, as TeX sets \log and \sin.
+    const name = /^(log|ln|sin|cos|tan)(?![a-zA-Z])/.exec(
+      chars.slice(i, i + 4).join(""),
+    )?.[1];
+    if (name && !/[a-zA-Z]/.test(previous)) {
+      push(name, "main", size, 0);
+      i += name.length - 1;
       previous = "x";
       continue;
     }

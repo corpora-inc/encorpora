@@ -4,6 +4,7 @@ import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
 import { shapeMethods } from "./shape-lessons";
 import { polygonMethods } from "./polygon-lessons";
+import { exponentialMethods } from "./exponential-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { partWholeMethods } from "./part-whole-lessons";
@@ -38,6 +39,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...volumeCoordinateMethods,
   ...shapeMethods,
   ...polygonMethods,
+  ...exponentialMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,

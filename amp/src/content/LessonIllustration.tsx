@@ -8,6 +8,11 @@ import {
   isPolygonIllustration,
 } from "./PolygonIllustration";
 import { PartWholeIllustration } from "./PartWholeIllustration";
+import {
+  exponentialLessonScenes,
+  type ExponentialIllustrationKind,
+} from "../math/exponential-scenes";
+import { SceneFigure } from "../web/scene/SceneFigure";
 import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
@@ -46,6 +51,13 @@ export function LessonIllustration({
 }) {
   if (isShapeIllustration(kind)) return <ShapeIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
+  if (kind in exponentialLessonScenes)
+    return (
+      <SceneFigure
+        scene={exponentialLessonScenes[kind as ExponentialIllustrationKind]}
+        reveal
+      />
+    );
   if (isDataIllustration(kind))
     return <DataDisplayFigure figure={dataIllustrations[kind]} />;
   if (

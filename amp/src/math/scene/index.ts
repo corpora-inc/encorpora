@@ -2,6 +2,8 @@
 import "./components/number-line";
 import "./components/graph";
 import "./components/models";
+import "./components/table";
+import "./components/bars";
 export * from "./spec";
 export {
   layoutScene,

@@ -52,6 +52,10 @@ import {
 import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
+  exponentialTemplates,
+  generateExponentialProblem,
+} from "./exponential-practice";
+import {
   factArrayTemplates,
   generateFactArrayProblem,
 } from "./fact-arrays-practice";
@@ -252,6 +256,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
   ...polygonTemplates,
+  ...exponentialTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
   ...integerExponentTemplates,
@@ -430,6 +435,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   const preserveAlgebra = [
     ...shapeTemplates,
     ...polygonTemplates,
+    ...exponentialTemplates,
     ...patternFunctionTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
@@ -482,6 +488,8 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (exponentialTemplates.some((t) => t.id === templateId))
+    return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))

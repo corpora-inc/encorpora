@@ -132,13 +132,18 @@ registerComponent("graph", {
     const prims: Prim[] = [];
     const xr = x1 - x0,
       yr = y1 - y0;
-    const grid =
-      g.grid === false ? null : (g.grid ?? nice(Math.max(xr, yr), 20));
+    // A step pair [x, y] suits windows far from square (exponential growth).
+    const pair = (v: number | [number, number]) =>
+      typeof v === "number" ? ([v, v] as const) : v;
+    const [gridX, gridY] =
+      g.grid === false
+        ? [null, null]
+        : pair(g.grid ?? nice(Math.max(xr, yr), 20));
     // Axes cross at the origin when it is in view, else along the window edge.
     const ax = y0 <= 0 && y1 >= 0 ? 0 : y0,
       ay = x0 <= 0 && x1 >= 0 ? 0 : x0;
-    if (grid) {
-      for (const v of ticks(x0, x1, grid))
+    if (gridX && gridY) {
+      for (const v of ticks(x0, x1, gridX))
         if (v !== ay)
           prims.push({
             type: "segment",
@@ -148,7 +153,7 @@ registerComponent("graph", {
             stroke: "grid",
             width: 1,
           });
-      for (const v of ticks(y0, y1, grid))
+      for (const v of ticks(y0, y1, gridY))
         if (v !== ax)
           prims.push({
             type: "segment",
@@ -291,10 +296,13 @@ registerComponent("graph", {
     // Tick labels: a stride that fits, from the grid or a nice step.
     const mode = g.labels ?? "auto";
     if (mode !== "none") {
-      const base = g.tick ?? grid ?? nice(Math.max(xr, yr), 10);
+      const [baseX, baseY] = pair(
+        g.tick ?? (gridX && gridY ? [gridX, gridY] : nice(Math.max(xr, yr), 10)),
+      );
       const widest = (vals: number[]) =>
         Math.max(0, ...vals.map((v) => typeset(num(v), "math", "sm").width));
       const pick = (
+        base: number,
         vals: (step: number) => number[],
         gap: (step: number) => number,
         need: (step: number) => number,
@@ -304,16 +312,18 @@ registerComponent("graph", {
           .find((st) => gap(st) >= need(st)) ?? base * 50;
       const xStep =
         mode === "all" || g.tick
-          ? base
+          ? baseX
           : pick(
+              baseX,
               (st) => ticks(x0, x1, st),
               (st) => st * s,
               (st) => widest(ticks(x0, x1, st)) + 10,
             );
       const yStep =
         mode === "all" || g.tick
-          ? base
+          ? baseY
           : pick(
+              baseY,
               (st) => ticks(y0, y1, st),
               (st) => st * k * s,
               () => 20,
@@ -771,7 +781,7 @@ registerComponent("graph", {
   },
   describe(g, reveal) {
     const out = [
-      `Coordinate plane with x from ${spoken(g.x[0])} to ${spoken(g.x[1])} and y from ${spoken(g.y[0])} to ${spoken(g.y[1])}${g.grid === false ? "" : `, gridlines every ${spoken(g.grid ?? nice(Math.max(g.x[1] - g.x[0], g.y[1] - g.y[0]), 20))}`}.`,
+      `Coordinate plane with x from ${spoken(g.x[0])} to ${spoken(g.x[1])} and y from ${spoken(g.y[0])} to ${spoken(g.y[1])}${g.grid === false ? "" : typeof g.grid === "object" ? `, gridlines every ${spoken(g.grid[0])} across and ${spoken(g.grid[1])} up` : `, gridlines every ${spoken(g.grid ?? nice(Math.max(g.x[1] - g.x[0], g.y[1] - g.y[0]), 20))}`}.`,
     ];
     for (const r of g.regions ?? [])
       out.push(
