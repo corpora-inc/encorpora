@@ -41,7 +41,14 @@ for (let i = 0; ; i++) {
   }
 }
 // Fact arrays: rows build, the array turns, counters are dealt and regrouped.
-for (const id of ["multiply-facts", "divide-facts", "share-or-group"])
+for (const id of [
+  "multiply-facts",
+  "divide-facts",
+  "share-or-group",
+  "balanced-addition",
+  "unknown-addend-story",
+  "three-addend-story",
+])
   lessons.push(problemLesson(id, "animation-review"));
 // A tens hop, then a ones hop, along a unit number line.
 lessons.push(problemLesson("number-line-hops", "animation-review"));
@@ -58,6 +65,9 @@ const names = [
   "multiply-facts",
   "divide-facts",
   "share-or-group",
+  "balanced-addition",
+  "unknown-addend-story",
+  "three-addend-story",
   "number-line-hops",
 ];
 assert.equal(lessons.length, names.length);
@@ -216,6 +226,30 @@ try {
         const total =
           figure.total ?? (figure.rows ?? 0) * (figure.columns ?? 0);
         assert.equal(await panel.locator("circle[data-dot]").count(), total);
+      } else if (figure.kind === "equal-balance") {
+        // Level at the last step: both pans hang at the same height.
+        const pans = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-pan] path")].map(
+            (n) => n.getBoundingClientRect().y,
+          ),
+        );
+        assert.equal(pans.length, 2);
+        assert(Math.abs(pans[0]! - pans[1]!) < 0.5, "Balance is not level");
+      } else if (figure.kind === "addend-groups") {
+        const total = figure.addends.reduce((a, b) => a + b, 0);
+        const placed = await panel.evaluate((el) =>
+          [...el.querySelectorAll("[data-counter]")].every((g) => {
+            const b = g.getBoundingClientRect();
+            const cx = b.x + b.width / 2,
+              cy = b.y + b.height / 2;
+            return [...el.querySelectorAll("[data-slot]")].some((n) => {
+              const r = n.getBoundingClientRect();
+              return cx > r.x && cx < r.right && cy > r.y && cy < r.bottom;
+            });
+          }),
+        );
+        assert.equal(await panel.locator("[data-counter]").count(), total);
+        assert(placed, "Three-addend counters do not land in the frames");
       } else if (figure.kind === "share-model") {
         assert.equal(
           await panel.locator("[data-counter]").count(),
