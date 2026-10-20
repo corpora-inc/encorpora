@@ -14,6 +14,7 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
   - `amp-browser` and `amp-content` run only after merge, on main.
 
   A red main files or updates one issue. Fix those failures forward in batches with a small PR, not a revert, unless prod is broken. Before a launch or release, everything must be green.
+- **Green ships.** Production runs the newest `main` commit touching `amp/` whose `amp`, `amp-browser` and `amp-content` checks all passed; a red `main` holds production. `scripts/release-status.sh` shows what is live and why ([Releases](docs/deployment.md#releases)).
 - Money, consent and privacy paths (`src/billing`, `src/parent-consent`, `src/privacy`, `src/family`) always get database tests in the PR itself.
 
 ## Interface acceptance
