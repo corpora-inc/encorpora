@@ -221,10 +221,10 @@ function similarCase(r: Random): Case {
     const first = draw(0, [0, 0], 1),
       other = draw(1, [c + 1.2 + 0.25 * Math.max(c, c * kv), 0], kv);
     const kText = reverse ? frac(q(k.d, k.n)) : frac(k);
-    const prompt = `Triangle ABC is similar to triangle DEF, with $A$, $B$ and $C$ matching $D$, $E$ and $F$. ${
+    const prompt = `Triangle $ABC$ is similar to triangle $DEF$, with $A$, $B$ and $C$ matching $D$, $E$ and $F$. ${
       reverse
-        ? `DE = ${frac(second[0]!)}, EF = ${frac(second[1]!)}, FD = ${frac(second[2]!)} and ${names[0][known]} = ${frac(q(sides[known]!))}. What is ${names[0][asked]}?`
-        : `AB = ${c}, BC = ${a}, CA = ${b} and ${names[1][known]} = ${frac(second[known]!)}. What is ${names[1][asked]}?`
+        ? `$DE = ${frac(second[0]!)}$, $EF = ${frac(second[1]!)}$, $FD = ${frac(second[2]!)}$ and $${names[0][known]}$ = ${frac(q(sides[known]!))}. What is $${names[0][asked]}$?`
+        : `$AB = ${c}$, $BC = ${a}$, $CA = ${b}$ and $${names[1][known]}$ = ${frac(second[known]!)}. What is $${names[1][asked]}$?`
     }`;
     const [kn, kd] = reverse
       ? [frac(q(sides[known]!)), frac(second[known]!)]
@@ -233,22 +233,22 @@ function similarCase(r: Random): Case {
       prompt,
       answer,
       explanation: [
-        `${names[0][known]} matches ${names[1][known]}, so the scale factor from triangle ${reverse ? "DEF to ABC" : "ABC to DEF"} is ${kn} ÷ ${kd} = ${kText}.`,
-        `${names[reverse ? 0 : 1][asked]} matches ${names[reverse ? 1 : 0][asked]}, which is ${frac(len(full, asked))}.`,
-        `${names[reverse ? 0 : 1][asked]} = ${frac(len(full, asked))} × ${kText} = ${frac(answer)}.`,
+        `$${names[0][known]}$ matches $${names[1][known]}$, so the scale factor from triangle ${reverse ? "$DEF$ to $ABC$" : "$ABC$ to $DEF$"} is ${kn} ÷ ${kd} = ${kText}.`,
+        `$${names[reverse ? 0 : 1][asked]}$ matches $${names[reverse ? 1 : 0][asked]}$, which is ${frac(len(full, asked))}.`,
+        `$${names[reverse ? 0 : 1][asked]}$ = ${frac(len(full, asked))} × ${kText} = ${frac(answer)}.`,
       ],
-      hint: `${names[0][known]} and ${names[1][known]} are matching sides: divide ${kn} by ${kd} for the scale factor, then apply it to the side that matches ${names[reverse ? 0 : 1][asked]}.`,
+      hint: `$${names[0][known]}$ and $${names[1][known]}$ are matching sides: divide ${kn} by ${kd} for the scale factor, then apply it to the side that matches $${names[reverse ? 0 : 1][asked]}$.`,
       tags: ["pair", reverse ? "to-smaller" : "to-larger"],
       figure: scene(first, other).build({
         title: "Similar triangles ABC and DEF",
         steps: [
           step(
-            `${names[0][known]} and ${names[1][known]} match: their ratio is the scale factor.`,
+            `$${names[0][known]}$ and $${names[1][known]}$ match: their ratio is the scale factor.`,
             light(`t1.side.${known}`, "accent"),
             light(`t2.side.${known}`, "accent"),
           ),
           step(
-            `${names[reverse ? 0 : 1][asked]} matches ${names[reverse ? 1 : 0][asked]}: multiply it by the same factor.`,
+            `$${names[reverse ? 0 : 1][asked]}$ matches $${names[reverse ? 1 : 0][asked]}$: multiply it by the same factor.`,
             light(`t1.side.${asked}`, "warm"),
             light(`t2.side.${asked}`, "warm"),
           ),
@@ -329,29 +329,31 @@ function similarCase(r: Random): Case {
       title: "Triangle ABC with DE parallel to BC",
       steps: [
         step(
-          "DE ∥ BC, so triangle ADE has the same angles as triangle ABC: they are similar.",
+          "$DE$ ∥ $BC$, so triangle $ADE$ has the same angles as triangle $ABC$: they are similar.",
           act.highlight("de"),
           light("t.side.1", "accent"),
         ),
         step(
-          "AD matches the whole side AB = AD + DB, not the piece DB.",
+          "$AD$ matches the whole side $AB = AD + DB$, not the piece $DB$.",
           light("t.side.0", "warm"),
         ),
       ],
     });
     return {
-      prompt: `In triangle ABC, $D$ is on AB and $E$ is on AC, with DE parallel to BC. AD = ${ad} and DB = ${db}. ${
-        askBC ? `DE = ${de}. What is BC?` : `BC = ${frac(bc)}. What is DE?`
+      prompt: `In triangle $ABC$, $D$ is on $AB$ and $E$ is on $AC$, with $DE$ parallel to $BC$. $AD = ${ad}$ and $DB = ${db}$. ${
+        askBC
+          ? `$DE = ${de}$. What is $BC$?`
+          : `$BC = ${frac(bc)}$. What is $DE$?`
       }`,
       answer,
       explanation: [
-        "DE ∥ BC makes the corresponding angles at $D$ and $B$ equal, and at $E$ and $C$. With the shared angle $A$, triangle ADE ~ triangle ABC.",
-        `Matching sides AD and AB give the scale factor from ABC to ADE: ${ad} ÷ ${ab} = ${frac(q(ad, ab))}. Note AB = AD + DB = ${ad} + ${db} = ${ab}, not ${db}.`,
+        "$DE$ ∥ $BC$ makes the corresponding angles at $D$ and $B$ equal, and at $E$ and $C$. With the shared angle $A$, triangle $ADE$ ~ triangle $ABC$.",
+        `Matching sides $AD$ and $AB$ give the scale factor from $ABC$ to $ADE$: ${ad} ÷ ${ab} = ${frac(q(ad, ab))}. Note $AB = AD + DB = ${ad} + ${db} = ${ab}$, not ${db}.`,
         askBC
-          ? `DE = BC × ${frac(q(ad, ab))}, so BC = ${de} ÷ ${frac(q(ad, ab))} = ${frac(answer)}.`
-          : `DE = ${frac(bc)} × ${frac(q(ad, ab))} = ${frac(answer)}.`,
+          ? `$DE = BC × ${frac(q(ad, ab))}$, so $BC = ${de} ÷ ${frac(q(ad, ab))} = ${frac(answer)}$.`
+          : `$DE = ${frac(bc)} × ${frac(q(ad, ab))} = ${frac(answer)}$.`,
       ],
-      hint: `Triangle ADE is the small copy of ABC. Its side AD = ${ad} matches the whole side AB = ${ad} + ${db}, not DB.`,
+      hint: `Triangle $ADE$ is the small copy of $ABC$. Its side $AD = ${ad}$ matches the whole side $AB = ${ad} + ${db}$, not $DB$.`,
       tags: ["splitter", askBC ? "ask-base" : "ask-part"],
       figure,
       label: "Length",
@@ -481,27 +483,27 @@ function dilationCase(r: Random): Case {
           ),
           step(
             mode === 0
-              ? `So every length is multiplied by ${frac(k)}, AB included.`
-              : "So every length is multiplied by that same factor, AB included.",
+              ? `So every length is multiplied by ${frac(k)}, $AB$ included.`
+              : "So every length is multiplied by that same factor, $AB$ included.",
             act.highlight("g.segment.0"),
           ),
         ],
       });
     if (mode === 0)
       return {
-        prompt: `A dilation with center $O$ and scale factor ${frac(k)} maps $A$ to $A'$ and $B$ to $B'$. AB = ${L}. What is $A'B'$?`,
+        prompt: `A dilation with center $O$ and scale factor ${frac(k)} maps $A$ to $A'$ and $B$ to $B'$. $AB = ${L}$. What is $A'B'$?`,
         answer: image,
         explanation: [
           `A dilation multiplies the distance between any two points by the scale factor, ${frac(k)}.`,
           `$A'B' = ${L} × ${frac(k)} = ${frac(image)}$.`,
         ],
-        hint: `Every length in the image is ${frac(k)} times the matching length, whatever the center. Apply that to AB = ${L}.`,
+        hint: `Every length in the image is ${frac(k)} times the matching length, whatever the center. Apply that to $AB = ${L}$.`,
         tags: ["image-length", kv < 1 ? "reduction" : "enlargement"],
         figure,
         label: "Length",
       };
     return {
-      prompt: `A dilation with center $O$ maps segment AB, of length ${L}, to segment $A'B'$, of length ${frac(image)}. What is the scale factor?`,
+      prompt: `A dilation with center $O$ maps segment $AB$, of length ${L}, to segment $A'B'$, of length ${frac(image)}. What is the scale factor?`,
       answer: k,
       explanation: [
         "The scale factor is the image length divided by the original length.",
@@ -812,16 +814,16 @@ function trigCase(r: Random): Case {
           ? `First the missing leg: √(${hyp}² − ${[x, y][1 - missing]}²) = √${hyp * hyp - [x, y][1 - missing]! ** 2} = ${[x, y][missing]}.`
           : null;
     return {
-      prompt: `In right triangle ABC, the right angle is at $C$. ${
+      prompt: `In right triangle $ABC$, the right angle is at $C$. ${
         missing >= 0
           ? `${["AC", "CB", "AB"]
               .filter((_, i) => i !== missing)
               .map(
                 (s, i) =>
-                  `${s} = ${[x, y, hyp].filter((_, j) => j !== missing)[i]}`,
+                  `$${s} = ${[x, y, hyp].filter((_, j) => j !== missing)[i]}$`,
               )
               .join(" and ")}.`
-          : `AC = ${x}, CB = ${y} and AB = ${hyp}.`
+          : `$AC = ${x}$, $CB = ${y}$ and $AB = ${hyp}$.`
       } Find ${math(`${fn} ${at}`)} as a fraction.`,
       answer: exact[fn],
       explanation: [
@@ -848,7 +850,7 @@ function trigCase(r: Random): Case {
     const askedSide = sideOf(num);
     tri = tri.side(askedSide as 0 | 1, { label: null });
     return {
-      prompt: `In right triangle ABC, the right angle is at $C$ and AB = ${hyp}. ${math(`${f} ${at} = ${frac(ratioV)}`)}. How long is the side ${f === "sin" ? "opposite" : "adjacent to"} angle $${at}$?`,
+      prompt: `In right triangle $ABC$, the right angle is at $C$ and $AB = ${hyp}$. ${math(`${f} ${at} = ${frac(ratioV)}`)}. How long is the side ${f === "sin" ? "opposite" : "adjacent to"} angle $${at}$?`,
       answer,
       explanation: [
         `${math(`${f} ${at}`)} = ${parts[f][0]} ÷ hypotenuse, so ${parts[f][0]} = hypotenuse × ${math(`${f} ${at}`)}.`,
@@ -945,7 +947,7 @@ function complementaryCase(r: Random): Case {
     const flip = r(0, 1) === 1;
     const [given, asked] = flip ? ["cos B", "sin A"] : ["sin A", "cos B"];
     return {
-      prompt: `In right triangle ABC, the right angle is at $C$, and ${math(`${given} = ${frac(v)}`)}. Find ${math(asked)}.`,
+      prompt: `In right triangle $ABC$, the right angle is at $C$, and ${math(`${given} = ${frac(v)}`)}. Find ${math(asked)}.`,
       answer: v,
       explanation: [
         "$A$ and $B$ are the two acute angles of a right triangle, so A + B = 90°.",

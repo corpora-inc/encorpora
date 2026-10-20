@@ -779,7 +779,7 @@ function averageRateDisplay(r: Random): Case {
         scene,
         explanation: [
           `Read the coordinates from the grid: $A = (${n(p0)}, ${n(fp)})$ and $B = (${n(q0)}, ${n(fq)})$.`,
-          `The average rate of change is the slope of the secant line AB: (${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}.`,
+          `The average rate of change is the slope of the secant line $AB$: (${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}.`,
           `So it is ${fraction(ans)}. A curve does not change at one constant rate, but from $A$ to $B$, $f$ changes by ${fraction(ans)} for each 1 that $x$ increases on average.`,
         ],
         hint: `Read the $y$-values of $A$ (at $x = ${n(p0)}$) and $B$ (at $x = ${n(q0)}$) from the grid. The average rate is the rise from $A$ to $B$ divided by the run, ${n(q0)} − ${p(p0)}.`,

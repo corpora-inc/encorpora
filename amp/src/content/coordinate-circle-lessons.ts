@@ -37,7 +37,7 @@ export const coordinateCircleLessons: Lesson[] = [
       {
         title: "Partitioning a segment",
         paragraphs: [
-          "The point $P$ with AP : PB = m : $n$ is m/(m + n) of the way from $A$ to $B$. Take that fraction of the run and of the rise, and add each to A's coordinates.",
+          "The point $P$ with $AP : PB = m : n$ is $\\frac{m}{m + n}$ of the way from $A$ to $B$. Take that fraction of the run and of the rise, and add each to the coordinates of $A$.",
           "From A(−3, −2) to $B(6, 4)$, the run is 9 and the rise is 6. For 1 : 2, $P$ is 1/3 of the way: $(-3 + 3, -2 + 2) = (0, 0)$.",
         ],
         illustration: "segment-partition",
@@ -64,7 +64,7 @@ export const coordinateCircleLessons: Lesson[] = [
     pitfalls: [
       "The right side of the standard form is r²: take its square root for the radius.",
       "The center's coordinates have the opposite signs of the numbers inside the parentheses.",
-      "For AP : PB = m : $n$, $P$ is m/(m + n) of the way, not m/n.",
+      "For $AP : PB = m : n$, $P$ is $\\frac{m}{m + n}$ of the way, not $\\frac{m}{n}$.",
     ],
     parentGuide:
       "Tie a string to a pin on graph paper and trace a circle. Mark the center and a point on the circle, count the squares across and up between them, and check that across² + up² is the string length squared.",
@@ -85,24 +85,24 @@ export const coordinateCircleLessons: Lesson[] = [
         title: "Inscribed angles are half the central angle",
         paragraphs: [
           "A central angle has its vertex at the center; an inscribed angle has its vertex on the circle. On the same arc, the inscribed angle is half the central angle: 70° at the center gives 35° at $C$.",
-          "The vertex $C$ can be anywhere on the circle on the other side of chord AB: every such angle is half of the same central angle, so all of them are equal.",
+          "The vertex $C$ can be anywhere on the circle on the other side of chord $AB$: every such angle is half of the same central angle, so all of them are equal.",
         ],
         illustration: "circle-inscribed-slide",
       },
       {
         title: "Semicircles and tangents",
         paragraphs: [
-          "A diameter's arc is 180°, so an angle inscribed in a semicircle is 180° ÷ 2 = 90°. Triangle ABC with AB a diameter is always right-angled at $C$.",
-          "A tangent touches the circle at one point $T$, and it is perpendicular to the radius OT there. So $O$, $T$ and an outside point $P$ on the tangent make a right triangle with hypotenuse OP: with radius 5 and OP = 13, PT = √(13² − 5²) = 12.",
+          "A diameter's arc is 180°, so an angle inscribed in a semicircle is 180° ÷ 2 = 90°. Triangle $ABC$ with $AB$ a diameter is always right-angled at $C$.",
+          "A tangent touches the circle at one point $T$, and it is perpendicular to the radius $OT$ there. So $O$, $T$ and an outside point $P$ on the tangent make a right triangle with hypotenuse $OP$: with radius 5 and $OP = 13$, $PT = \\sqrt{13^2 - 5^2} = 12$.",
         ],
         illustration: "circle-tangent-radius",
       },
     ],
     workedExample: {
       prompt:
-        "In circle $O$, central angle AOB measures 110°, and $C$ is on the circle, on the other side of chord AB. What is the measure of inscribed angle ACB?",
+        "In circle $O$, central angle $AOB$ measures 110°, and $C$ is on the circle, on the other side of chord $AB$. What is the measure of inscribed angle $ACB$?",
       steps: [
-        "ACB and AOB are on the same arc AB.",
+        "$ACB$ and $AOB$ are on the same arc $AB$.",
         "The inscribed angle is half the central angle: 110° ÷ 2 = 55°.",
       ],
       answer: "55",
@@ -110,7 +110,7 @@ export const coordinateCircleLessons: Lesson[] = [
     pitfalls: [
       "Halve the central angle for the inscribed angle; do not double it.",
       "The right angle in a semicircle is at the point on the circle, not at the ends of the diameter.",
-      "In a tangent triangle the hypotenuse is OP, from the center to the outside point.",
+      "In a tangent triangle the hypotenuse is $OP$, from the center to the outside point.",
     ],
     parentGuide:
       "Draw a circle with a plate, then a diameter. Pick any point on the circle and join it to both ends of the diameter. Check the corner with the corner of a sheet of paper: it is always square.",
@@ -130,7 +130,10 @@ const terms = {
     ["enclosing rectangle", "The grid rectangle just around a polygon."],
   ],
   partition: [
-    ["AP : PB = m : $n$", "$P$ is m/(m + n) of the way from $A$ to $B$."],
+    [
+      "$AP : PB = m : n$",
+      "$P$ is $\\frac{m}{m + n}$ of the way from $A$ to $B$.",
+    ],
     ["run and rise", "The changes in $x$ and $y$ from $A$ to $B$."],
   ],
   slope: [
@@ -202,7 +205,7 @@ export const coordinateCirclePrinciples: Record<string, string> = {
   "coordinate-polygon":
     "Lengths on the plane come from the distance formula, and areas from an enclosing rectangle or the shoelace sum.",
   "segment-partition":
-    "The point dividing AB in the ratio $m$ : $n$ is $A$ plus m/(m + n) of the change from $A$ to $B$, in each coordinate.",
+    "The point dividing $AB$ in the ratio $m$ : $n$ is $A$ plus m/(m + n) of the change from $A$ to $B$, in each coordinate.",
   "perpendicular-slopes":
     "Parallel lines have equal slopes; perpendicular lines have slopes whose product is −1.",
   "circle-angles":

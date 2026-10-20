@@ -311,7 +311,7 @@ function anglePairCase(r: Random): Case {
             `${name(target)} = ${known}°.`,
           ]
         : [
-            `${name(start)} and ${name(target)} are adjacent, and together they fill one side of line ${[P + R, Q + S][target === (start + 1) % 4 ? start % 2 : (start + 1) % 2]}: a straight angle.`,
+            `${name(start)} and ${name(target)} are adjacent, and together they fill one side of line $${[P + R, Q + S][target === (start + 1) % 4 ? start % 2 : (start + 1) % 2]}$: a straight angle.`,
             `They are supplementary: ${known}° + ${name(target)} = 180°.`,
             `${name(target)} = 180° − ${known}° = ${unknown}°.`,
           ],

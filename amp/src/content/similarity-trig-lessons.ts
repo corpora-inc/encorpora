@@ -26,31 +26,31 @@ export const similarityTrigLessons: Lesson[] = [
         title: "Similar triangles share one ratio",
         paragraphs: [
           "Two triangles are similar when one is a dilation of the other, perhaps moved, turned or flipped. For triangles, two pairs of equal angles are enough: the third pair must match as well, because the angles of a triangle add to 180°.",
-          "The order of the names fixes the matching: in triangle ABC ~ triangle DEF, AB matches DE, BC matches EF and CA matches FD. Here DE ÷ AB = 9 ÷ 6 = 3/2, and every other pair has the same ratio, 3/2.",
+          "The order of the names fixes the matching: in triangle $ABC$ ~ triangle $DEF$, $AB$ matches $DE$, $BC$ matches $EF$ and $CA$ matches $FD$. Here $DE ÷ AB = 9 ÷ 6 = 3/2$, and every other pair has the same ratio, 3/2.",
         ],
         illustration: "similarity-pair",
       },
       {
         title: "Parallel lines, shadows, perimeter and area",
         paragraphs: [
-          "A segment DE parallel to side BC, with $D$ on AB and $E$ on AC, cuts off a small triangle ADE similar to ABC: the angles at $D$ and $B$ are equal, and so are those at $E$ and $C$. Its side AD matches all of AB, not DB.",
+          "A segment $DE$ parallel to side $BC$, with $D$ on $AB$ and $E$ on $AC$, cuts off a small triangle $ADE$ similar to $ABC$: the angles at $D$ and $B$ are equal, and so are those at $E$ and $C$. Its side $AD$ matches all of $AB$, not $DB$.",
           "Shadows cast at the same moment make similar right triangles: height matches height and shadow matches shadow. When lengths scale by $k$, a perimeter scales by $k$ and an area scales by k × k.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "In triangle ABC, $D$ is on AB and $E$ is on AC, with DE parallel to BC. AD = 4 and DB = 2. DE = 6. What is BC?",
+        "In triangle $ABC$, $D$ is on $AB$ and $E$ is on $AC$, with $DE$ parallel to $BC$. $AD = 4$ and $DB = 2$. $DE = 6$. What is $BC$?",
       steps: [
-        "DE ∥ BC, so triangle ADE ~ triangle ABC.",
-        "AD matches AB = 4 + 2 = 6, so ABC is 6 ÷ 4 = 3/2 times as large as ADE.",
-        "BC = 6 × 3/2 = 9.",
+        "$DE$ ∥ $BC$, so triangle $ADE$ ~ triangle $ABC$.",
+        "$AD$ matches $AB = 4 + 2 = 6$, so $ABC$ is 6 ÷ 4 = 3/2 times as large as $ADE$.",
+        "$BC = 6 × 3/2 = 9$.",
       ],
       answer: "9",
     },
     pitfalls: [
       "Match sides by the order of the vertex names, not by where they appear on the page.",
-      "In a triangle cut by a parallel segment, the small side AD matches the whole side AB, not the piece DB.",
+      "In a triangle cut by a parallel segment, the small side $AD$ matches the whole side $AB$, not the piece $DB$.",
       "Area scales by the square of the scale factor, not by the factor itself.",
     ],
     parentGuide:

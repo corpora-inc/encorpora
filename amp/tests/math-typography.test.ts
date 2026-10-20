@@ -51,6 +51,8 @@ test("the gate accepts ordinary prose", () => {
     "A rectangle 8 m wide has an L-shaped notch; an L- or T-shaped face.",
     "The ratio $\\pi$ (pi) compares circumference to diameter.",
     "Divide by 2: $r = 12 \\div 2 = 6$ cm, so $a = 10$, e.g. a radius.",
+    "What is the $x$-coordinate of point $P$? Segment $AB$ has length 4.",
+    "Find the LCM of 4 and 6, then the GCF.",
     // Both typesetters set a plain formula with an operation as math.
     "Divide by 2: r = 12 ÷ 2 = 6 cm.",
   ])
@@ -65,6 +67,13 @@ test("the gate flags each kind of bare mathematics", () => {
     ["Point P is 3 right.", "bare uppercase letter"],
     ["the x-axis", "bare lowercase letter"],
     ["Find k.", "bare lowercase letter"],
+    // coordinate-point-reading on main (#1229): "x" and "P" were upright.
+    ["What is the x-coordinate of point P?", "bare lowercase letter"],
+    ["What is the x-coordinate of point P?", "bare uppercase letter"],
+    ["The line crosses at its y-intercept.", "bare lowercase letter"],
+    ["Find the length of segment AB.", "bare point name"],
+    ["In triangle ABC, AB = 4.", "bare point name"],
+    ["∠ABC measures 40°.", "∠ outside math"],
     ["What is $a\\pi$? Find a", "bare lowercase letter"],
   ];
   for (const [text, rule] of cases)

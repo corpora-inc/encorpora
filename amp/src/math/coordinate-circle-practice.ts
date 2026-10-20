@@ -460,13 +460,13 @@ function partitionCase(r: Random): Case {
   const w = windowFor([A, B], 1);
   return {
     prompt: asRatio
-      ? `Point $P$ is on segment AB, with $A${pt(A)}$ and $B${pt(B)}$, and divides it so that AP : PB = ${m} : ${k}. What is the $${name}$-coordinate of $P$?`
+      ? `Point $P$ is on segment $AB$, with $A${pt(A)}$ and $B${pt(B)}$, and divides it so that $AP$ : $PB = ${m}$ : ${k}. What is the $${name}$-coordinate of $P$?`
       : `Point $P$ is ${frac(t)} of the way from $A${pt(A)}$ to $B${pt(B)}$. What is the $${name}$-coordinate of $P$?`,
     answer,
     explanation: [
       asRatio
-        ? `With AP : PB = ${m} : ${k}, AB has ${total} equal parts, and $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$: ${frac(t)} of the way.`
-        : `$P$ is ${frac(t)} of the way along AB.`,
+        ? `With $AP$ : $PB = ${m}$ : ${k}, $AB$ has ${total} equal parts, and $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$: ${frac(t)} of the way.`
+        : `$P$ is ${frac(t)} of the way along $AB$.`,
       `The $${name}$-coordinate changes by ${n(run)} from $A$ to $B$; ${frac(t)} of that is ${frac(q(run * m, total))}.`,
       `${n(A[axis]!)} + ${frac(q(run * m, total))} = ${frac(answer)}.`.replace(
         "+ −",
@@ -526,7 +526,7 @@ function slopeCase(r: Random): Case {
         title: "Line AB and its slope triangle",
         steps: [
           step(
-            "Rise over run along AB gives the slope of $ℓ$.",
+            "Rise over run along $AB$ gives the slope of $ℓ$.",
             act.highlight("g.slope.0"),
           ),
           step(
@@ -610,18 +610,18 @@ function circleAngleCase(r: Random): Case {
     const inscribed = central / 2;
     return {
       prompt: fromCentral
-        ? `In circle $O$, central angle AOB measures ${central}°, and $C$ is on the circle but not on arc AB, the arc inside angle AOB. What is the measure of inscribed angle ACB, in degrees?`
-        : `In circle $O$, inscribed angle ACB measures ${inscribed}°. What is the measure of central angle AOB, in degrees, on the same arc AB?`,
+        ? `In circle $O$, central angle $AOB$ measures ${central}°, and $C$ is on the circle but not on arc $AB$, the arc inside angle $AOB$. What is the measure of inscribed angle $ACB$, in degrees?`
+        : `In circle $O$, inscribed angle $ACB$ measures ${inscribed}°. What is the measure of central angle $AOB$, in degrees, on the same arc $AB$?`,
       answer: q(fromCentral ? inscribed : central),
       explanation: [
         "An inscribed angle and a central angle on the same arc: the inscribed angle is half the central angle.",
         fromCentral
-          ? `∠ACB = ${central}° ÷ 2 = ${inscribed}°.`
-          : `∠AOB = 2 × ${inscribed}° = ${central}°.`,
+          ? `$\\angle ACB$ = ${central}° ÷ 2 = ${inscribed}°.`
+          : `$\\angle AOB$ = 2 × ${inscribed}° = ${central}°.`,
       ],
       hint: fromCentral
-        ? `Angle AOB, ${central}°, and angle ACB stand on the same arc AB. Which is larger, and by what factor?`
-        : `Angle ACB, ${inscribed}°, is an inscribed angle; the central angle on the same arc is the larger one.`,
+        ? `Angle $AOB$, ${central}°, and angle $ACB$ stand on the same arc $AB$. Which is larger, and by what factor?`
+        : `Angle $ACB$, ${inscribed}°, is an inscribed angle; the central angle on the same arc is the larger one.`,
       tags: ["inscribed", fromCentral ? "from-central" : "from-inscribed"],
       figure: circleDiagram({
         points: [
@@ -658,7 +658,7 @@ function circleAngleCase(r: Random): Case {
           title: "Inscribed angle ACB and central angle AOB",
           steps: [
             step(
-              "Both angles open onto the same arc AB.",
+              "Both angles open onto the same arc $AB$.",
               act.highlight("c.arc.0"),
             ),
             step(
@@ -677,13 +677,13 @@ function circleAngleCase(r: Random): Case {
     // ∠CAB is half of arc CB: C sits at 2x° when B is at 0° and A at 180°.
     const c0 = 2 * x;
     return {
-      prompt: `AB is a diameter of circle $O$, and $C$ is another point on the circle. ∠CAB = ${x}°. What is the measure of ∠CBA, in degrees?`,
+      prompt: `$AB$ is a diameter of circle $O$, and $C$ is another point on the circle. $\\angle CAB$ = ${x}°. What is the measure of $\\angle CBA$, in degrees?`,
       answer: q(90 - x),
       explanation: [
-        "An angle inscribed in a semicircle is a right angle: ∠ACB stands on the 180° arc, so it measures 180° ÷ 2 = 90°.",
-        `The angles of triangle ABC add to 180°: ∠CBA = 180° − 90° − ${x}° = ${90 - x}°.`,
+        "An angle inscribed in a semicircle is a right angle: $\\angle ACB$ stands on the 180° arc, so it measures 180° ÷ 2 = 90°.",
+        `The angles of triangle $ABC$ add to 180°: $\\angle CBA$ = 180° − 90° − ${x}° = ${90 - x}°.`,
       ],
-      hint: `AB is a diameter, so the angle at $C$ is special. Then use the triangle's angle sum with ${x}°.`,
+      hint: `$AB$ is a diameter, so the angle at $C$ is special. Then use the triangle's angle sum with ${x}°.`,
       tags: ["semicircle"],
       figure: circleDiagram({
         points: [
@@ -732,16 +732,16 @@ function circleAngleCase(r: Random): Case {
     const pAngle = tAngle - (Math.acos(radius / c) * 180) / Math.PI;
     return {
       prompt: askTangent
-        ? `PT is tangent to circle $O$ at $T$. The radius is ${a} and OP = ${c}. How long is PT?`
-        : `PT is tangent to circle $O$ at $T$. PT = ${b} and OP = ${c}. What is the radius of the circle?`,
+        ? `$PT$ is tangent to circle $O$ at $T$. The radius is ${a} and $OP = ${c}$. How long is $PT$?`
+        : `$PT$ is tangent to circle $O$ at $T$. $PT = ${b}$ and $OP = ${c}$. What is the radius of the circle?`,
       answer: q(askTangent ? b : a),
       explanation: [
-        "A tangent is perpendicular to the radius at the point of tangency, so triangle OTP has a right angle at $T$, with hypotenuse OP.",
+        "A tangent is perpendicular to the radius at the point of tangency, so triangle $OTP$ has a right angle at $T$, with hypotenuse $OP$.",
         askTangent
-          ? `PT = √(${c}² − ${a}²) = √${c * c - a * a} = ${b}.`
-          : `OT = √(${c}² − ${b}²) = √${c * c - b * b} = ${a}.`,
+          ? `$PT = \\sqrt{${c}^2 - ${a}^2} = \\sqrt{${c * c - a * a}} = ${b}$.`
+          : `$OT = \\sqrt{${c}^2 - ${b}^2} = \\sqrt{${c * c - b * b}} = ${a}$.`,
       ],
-      hint: `The radius OT and the tangent PT meet at a right angle, so OP = ${c} is the hypotenuse of a right triangle.`,
+      hint: `The radius $OT$ and the tangent $PT$ meet at a right angle, so $OP = ${c}$ is the hypotenuse of a right triangle.`,
       tags: ["tangent", askTangent ? "ask-tangent" : "ask-radius"],
       figure: circleDiagram({
         points: [{ name: "T", at: tAngle }],
@@ -768,7 +768,7 @@ function circleAngleCase(r: Random): Case {
               act.highlight("c.angle.0"),
             ),
             step(
-              "So OP is the hypotenuse of right triangle OTP.",
+              "So $OP$ is the hypotenuse of right triangle $OTP$.",
               light("c.segment.2", "warm"),
             ),
           ],
@@ -784,13 +784,13 @@ function circleAngleCase(r: Random): Case {
   const c0 = (b0 + rest * 0.3) % 360,
     d0 = (b0 + rest * 0.7) % 360;
   return {
-    prompt: `Points $A$, $B$, $C$ and $D$ are on a circle, with $C$ and $D$ on the same side of chord AB. ∠ACB = ${x}°. What is the measure of ∠ADB, in degrees?`,
+    prompt: `Points $A$, $B$, $C$ and $D$ are on a circle, with $C$ and $D$ on the same side of chord $AB$. $\\angle ACB$ = ${x}°. What is the measure of $\\angle ADB$, in degrees?`,
     answer: q(x),
     explanation: [
-      "Both angles are inscribed angles on the same arc AB.",
-      `Each is half the central angle on that arc, so they are equal: ∠ADB = ${x}°.`,
+      "Both angles are inscribed angles on the same arc $AB$.",
+      `Each is half the central angle on that arc, so they are equal: $\\angle ADB$ = ${x}°.`,
     ],
-    hint: `∠ACB = ${x}° and ∠ADB both open onto arc AB. What does each equal in terms of the central angle?`,
+    hint: `$\\angle ACB = ${x}$° and $\\angle ADB$ both open onto arc $AB$. What does each equal in terms of the central angle?`,
     tags: ["same-arc"],
     figure: circleDiagram({
       points: [
@@ -815,7 +815,7 @@ function circleAngleCase(r: Random): Case {
       .scene({
         title: "Two inscribed angles on arc AB",
         steps: [
-          step("Both angles open onto arc AB.", act.highlight("c.arc.0")),
+          step("Both angles open onto arc $AB$.", act.highlight("c.arc.0")),
         ],
       }),
     label: "Degrees",

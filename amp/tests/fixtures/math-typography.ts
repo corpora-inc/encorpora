@@ -62,7 +62,7 @@ const EQUATION: [string, RegExp][] = [
   // triangle ABC) is math, like a single point ($P$).
   [
     "bare point name",
-    /\b(?:segments?|sides?|lines?|rays?|chords?|arcs?|triangles?|angles?|quadrilaterals?|polygons?|pentagons?|hexagons?|parallelograms?|trapezoids?|squares?|rectangles?|vertices|diagonals?)\s+[A-Z]{2,4}′?(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])[A-Z]{2,3}′?\s*[=<>≤≥≠:²]/u,
+    /\b(?:[Ss]egments?|[Ss]ides?|[Ll]ines?|[Rr]ays?|[Cc]hords?|[Aa]rcs?|[Tt]riangles?|[Aa]ngles?|[Qq]uadrilaterals?|[Pp]olygons?|[Pp]entagons?|[Hh]exagons?|[Pp]arallelograms?|[Tt]rapezoids?|[Ss]quares?|[Rr]ectangles?|[Vv]ertices|[Dd]iagonals?|[Pp]oints?|[Dd]iameters?|[Rr]adius|[Rr]adii|[Tt]angents?|[Ss]ecants?|[Cc]ircles?)\s+[A-Z]{2,4}′?(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])[A-Z]{2,3}′?(?:\s*[=<>≤≥≠²]|\s+:)/u,
   ],
 ];
 

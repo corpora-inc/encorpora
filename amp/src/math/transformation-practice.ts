@@ -365,12 +365,12 @@ function sideCase(r: Random): Case {
   const shared = vertical ? a.x : a.y;
   const gap = vertical ? axisGap(a.y, b.y, "y") : axisGap(a.x, b.x, "x");
   return {
-    prompt: `${p.name} ${p.labels} has vertices ${vertexList(p)}. What is the length of side ${la}${lb}, in units?`,
+    prompt: `${p.name} $${p.labels}$ has vertices ${vertexList(p)}. What is the length of side $${la}${lb}$, in units?`,
     answer: String(gap.gap),
     explanation: [
       `${named(la, a)} and ${named(lb, b)} have the same $${vertical ? "x" : "y"}$-coordinate, ${n(shared)}, so side $${la}${lb}$ is ${vertical ? "vertical" : "horizontal"}. Its length is the distance between the $${vertical ? "y" : "x"}$-coordinates ${n(vertical ? a.y : a.x)} and ${n(vertical ? b.y : b.x)}.`,
       gap.text,
-      `Side ${la}${lb} is ${units(gap.gap)} long.`,
+      `Side $${la}${lb}$ is ${units(gap.gap)} long.`,
     ],
     tags: [p.name.toLowerCase(), vertical ? "vertical" : "horizontal", gap.tag],
     figure: coordinateFigure([
@@ -393,11 +393,11 @@ function rectangleCase(r: Random): Case {
   const area = r(0, 1) === 1;
   const value = area ? w.gap * h.gap : 2 * (w.gap + h.gap);
   return {
-    prompt: `Rectangle ABCD has vertices ${vertexList(rect)}. What is its ${area ? "area, in square units" : "perimeter, in units"}?`,
+    prompt: `Rectangle $ABCD$ has vertices ${vertexList(rect)}. What is its ${area ? "area, in square units" : "perimeter, in units"}?`,
     answer: String(value),
     explanation: [
-      `Side AB joins ${named("A", pts[0]!)} and ${named("B", pts[1]!)}, which share the $y$-coordinate ${n(y1)}, so it is horizontal. Its length is the distance between ${n(x1)} and ${n(x2)}. ${w.text}`,
-      `Side BC joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between ${n(y1)} and ${n(y2)}. ${h.text}`,
+      `Side $AB$ joins ${named("A", pts[0]!)} and ${named("B", pts[1]!)}, which share the $y$-coordinate ${n(y1)}, so it is horizontal. Its length is the distance between ${n(x1)} and ${n(x2)}. ${w.text}`,
+      `Side $BC$ joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between ${n(y1)} and ${n(y2)}. ${h.text}`,
       area
         ? `The rectangle is ${w.gap} units wide and ${h.gap} units tall. Area = width × height = ${w.gap} × ${h.gap} = ${value} square units.`
         : `Opposite sides of a rectangle are equal, so the perimeter is ${w.gap} + ${h.gap} + ${w.gap} + ${h.gap} = 2 × (${w.gap} + ${h.gap}) = ${value} units.`,
@@ -541,8 +541,8 @@ function exactDistanceCase(r: Random): Case {
     options: [correct, ...distractors.map((d) => d[0])],
     feedback: Object.fromEntries(distractors),
     explanation: [
-      `Draw a right triangle with AB as its hypotenuse and legs along the grid. ${l.text}`,
-      `By the Pythagorean theorem, AB² = ${dx}² + ${dy}² = ${dx * dx} + ${dy * dy} = ${c2}, so AB = $\\sqrt{${c2}}$.`,
+      `Draw a right triangle with $AB$ as its hypotenuse and legs along the grid. ${l.text}`,
+      `By the Pythagorean theorem, $AB^2 = ${dx}^2 + ${dy}^2 = ${dx * dx} + ${dy * dy} = ${c2}$, so $AB$ = $\\sqrt{${c2}}$.`,
       simplify,
       `The exact distance is ${correct} units.`,
     ],
@@ -759,7 +759,7 @@ function imageCase(r: Random): Case {
         distractors.push([label, why]);
     }
     if (distractors.length < 3) continue;
-    const prompt = `Triangle ABC has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle $A'B'C'$. What are the coordinates of ${primed(label)}?`;
+    const prompt = `Triangle $ABC$ has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle $A'B'C'$. What are the coordinates of ${primed(label)}?`;
     return {
       prompt,
       answer: correct,
@@ -857,7 +857,7 @@ function identifyCase(r: Random): Case {
     const before = list(pts.map((v, i) => named("ABC"[i]!, v))),
       after = list(images.map((v, i) => named(prime("ABC"[i]!), v)));
     return {
-      prompt: `Triangle ABC has vertices ${before}. Triangle $A'B'C'$ has vertices ${after}. Which single transformation maps triangle ABC onto triangle $A'B'C'$?`,
+      prompt: `Triangle $ABC$ has vertices ${before}. Triangle $A'B'C'$ has vertices ${after}. Which single transformation maps triangle $ABC$ onto triangle $A'B'C'$?`,
       answer: correct,
       options: [correct, ...distractors.map((d) => d[0])],
       feedback: Object.fromEntries(distractors),
@@ -957,7 +957,7 @@ function dilationImageCase(r: Random): Case {
     }
     if (distractors.length < 3) continue;
     return {
-      prompt: `Triangle ABC has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle $A'B'C'$. What are the coordinates of ${primed(label)}?`,
+      prompt: `Triangle $ABC$ has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle $A'B'C'$. What are the coordinates of ${primed(label)}?`,
       answer: correct,
       options: [correct, ...distractors.map((d) => d[0])],
       feedback: Object.fromEntries(distractors),
@@ -991,7 +991,7 @@ function scaleFactorCase(r: Random): Case {
     q2 = images[j]!,
     L2 = "ABC"[j]!;
   return {
-    prompt: `A dilation with center at the origin maps triangle ABC onto triangle $A'B'C'$. Triangle ABC has vertices ${list(pts.map((v, idx) => named("ABC"[idx]!, v)))}, and triangle $A'B'C'$ has vertices ${list(images.map((v, idx) => named(prime("ABC"[idx]!), v)))}. What is the scale factor?`,
+    prompt: `A dilation with center at the origin maps triangle $ABC$ onto triangle $A'B'C'$. Triangle $ABC$ has vertices ${list(pts.map((v, idx) => named("ABC"[idx]!, v)))}, and triangle $A'B'C'$ has vertices ${list(images.map((v, idx) => named(prime("ABC"[idx]!), v)))}. What is the scale factor?`,
     answer: answerFraction(num, den),
     explanation: [
       "A dilation centered at the origin multiplies both coordinates of every point by the same scale factor $k$.",
@@ -1088,8 +1088,8 @@ function similarCase(r: Random): Case {
       answer: askedValue,
       explanation: [
         `Corresponding sides join corresponding vertices: ${correspond}.`,
-        `The known pair ${sideName(first, known)} and ${sideName(second, known)} gives the scale factor from ${first} to ${second}: ${knownImage} ÷ ${sides[known]} = ${k}.`,
-        `Every side of ${second} is ${k} times its corresponding side of ${first}, so ${sideName(second, asked)} = ${sideName(first, asked)} × ${k} = ${sides[asked]} × ${k} = ${askedValue}.`,
+        `The known pair ${sideName(first, known)} and ${sideName(second, known)} gives the scale factor from ${first} to $${second}$: ${knownImage} ÷ ${sides[known]} = ${k}.`,
+        `Every side of $${second}$ is ${k} times its corresponding side of $${first}$, so $${sideName(second, asked)} = ${sideName(first, asked)} × ${k} = ${sides[asked]} × ${k} = ${askedValue}$.`,
         `${sideName(second, asked)} is ${askedValue} ${unitWords[unit][0]}.`,
       ],
       tags: [

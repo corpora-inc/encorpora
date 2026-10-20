@@ -250,5 +250,5 @@ export const descriptiveStatisticsPrinciples: Record<string, string> = {
   "range-data":
     "The range is the nonnegative distance between the greatest and least observations: maximum minus minimum.",
   "interquartile-range-data":
-    "Under the median-of-halves convention, Q1 and Q3 are the medians of the lower and upper halves, excluding the overall middle observation when the count is odd. IQR = Q3 − Q1.",
+    "Under the median-of-halves convention, $Q_1$ and $Q_3$ are the medians of the lower and upper halves, excluding the overall middle observation when the count is odd. $\\text{IQR} = Q_3 - Q_1$.",
 };

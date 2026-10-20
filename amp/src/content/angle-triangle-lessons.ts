@@ -4,7 +4,7 @@ import type { ProblemMethod } from "./problem-lessons";
 const angleWords: Lesson["sections"][number] = {
   title: "Rays, angles and degrees",
   paragraphs: [
-    "A ray starts at a point and goes on forever in one direction. Two rays that start at the same point, the vertex, form an angle. ∠AOB names the angle whose vertex is $O$ and whose rays pass through $A$ and $B$; the vertex letter is always in the middle. $m$∠AOB, or just ∠AOB in a sentence about size, means its measure in degrees.",
+    "A ray starts at a point and goes on forever in one direction. Two rays that start at the same point, the vertex, form an angle. $\\angle AOB$ names the angle whose vertex is $O$ and whose rays pass through $A$ and $B$; the vertex letter is always in the middle. $m\\angle AOB$, or just $\\angle AOB$ in a sentence about size, means its measure in degrees.",
     "A full turn around a point is 360°. Half a turn, a straight angle, is 180°: its two rays point in opposite directions and form a straight line. A quarter turn, a right angle, is 90° and is marked with a small square.",
   ],
 };
@@ -34,7 +34,7 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "Vertical angles are equal",
         paragraphs: [
-          "When two lines cross, they form two pairs of vertical angles: angles opposite each other at the crossing. Number the four angles 1, 2, 3 and 4 in order around the crossing, so ∠1 and ∠3 are vertical. Each of them forms a straight line with ∠2, so ∠1 + ∠2 = 180° and ∠3 + ∠2 = 180°. Both equal 180° − ∠2, so ∠1 = ∠3. In the same way, ∠2 = ∠4.",
+          "When two lines cross, they form two pairs of vertical angles: angles opposite each other at the crossing. Number the four angles 1, 2, 3 and 4 in order around the crossing, so $\\angle 1$ and $\\angle 3$ are vertical. Each of them forms a straight line with $\\angle 2$, so $\\angle 1$ + $\\angle 2$ = 180° and $\\angle 3$ + $\\angle 2$ = 180°. Both equal 180° − $\\angle 2$, so $\\angle 1$ = $\\angle 3$. In the same way, $\\angle 2$ = $\\angle 4$.",
           "So two crossing lines make only two different measures: an angle and its supplement. If one angle at the crossing is 70°, the angle opposite it is 70° and each of its neighbors is 180° − 70° = 110°.",
         ],
       },
@@ -48,9 +48,9 @@ export const angleTriangleLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Points $A$, $O$ and $B$ lie on a straight line, and ray OC is drawn from $O$. ∠AOC measures (3x + 12)° and ∠COB measures (2x − 7)°. What is the value of $x$?",
+        "Points $A$, $O$ and $B$ lie on a straight line, and ray $OC$ is drawn from $O$. $\\angle AOC$ measures (3x + 12)° and $\\angle COB$ measures (2x − 7)°. What is the value of $x$?",
       steps: [
-        "∠AOC and ∠COB are a linear pair, so they add to 180°: (3x + 12) + (2x − 7) = 180.",
+        "$\\angle AOC$ and $\\angle COB$ are a linear pair, so they add to 180°: (3x + 12) + (2x − 7) = 180.",
         "Combine like terms: 5x + 5 = 180.",
         "Subtract 5 from both sides: 5x = 175. Divide by 5: x = 35.",
         "Check: 3(35) + 12 = 117 and 2(35) − 7 = 63; 117 + 63 = 180.",
@@ -60,7 +60,7 @@ export const angleTriangleLessons: Lesson[] = [
     pitfalls: [
       "$x$ is not an angle: after solving, substitute it to find a measure if the question asks for one.",
       "Vertical angles are equal; angles side by side along a line add to 180°. Check which pair you have before writing the equation.",
-      "Read the middle letter of ∠AOC as the vertex.",
+      "Read the middle letter of $\\angle AOC$ as the vertex.",
     ],
     parentGuide:
       "Fold a paper strip into two angles along a ruler's edge and measure both with a protractor; they always add to 180°. Then cross two pencils and compare the opposite angles.",
@@ -94,23 +94,23 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "Why a triangle's angles add to 180°",
         paragraphs: [
-          "A triangle has three sides and three interior angles. Draw the line through $C$ parallel to side AB. Along that line, three angles at $C$ fill a straight angle: the triangle's ∠$C$ in the middle, and one on each side.",
-          "The angle beside $\\angle C$ on the $A$ side is an alternate interior angle to $\\angle A$, using transversal $AC$, so it equals $\\angle A$. In the same way, the angle on the $B$ side equals ∠$B$. The three angles fill a straight angle, so ∠$A$ + ∠$B$ + ∠$C = 180$°. It is the same as tearing off the three corners of a paper triangle and laying them side by side along a line.",
+          "A triangle has three sides and three interior angles. Draw the line through $C$ parallel to side $AB$. Along that line, three angles at $C$ fill a straight angle: the triangle's $\\angle C$ in the middle, and one on each side.",
+          "The angle beside $\\angle C$ on the $A$ side is an alternate interior angle to $\\angle A$, using transversal $AC$, so it equals $\\angle A$. In the same way, the angle on the $B$ side equals $\\angle B$. The three angles fill a straight angle, so $\\angle A$ + $\\angle B$ + $\\angle C = 180$°. It is the same as tearing off the three corners of a paper triangle and laying them side by side along a line.",
         ],
         illustration: "triangle-sum-line",
       },
       {
         title: "Exterior angles",
         paragraphs: [
-          "Extend side AB past $B$ to a point $D$. The angle ∠CBD between the extension and side BC is an exterior angle of the triangle. ∠$A$ and ∠$C$ are its remote interior angles: the two interior angles not at $B$.",
-          "The exterior angle and $\\angle B$ form a straight angle, so $\\angle CBD = 180° - \\angle B$. The angle sum gives $\\angle A + \\angle C = 180° - \\angle B$ too. So an exterior angle equals the sum of the two remote interior angles: ∠CBD = ∠$A$ + ∠$C$.",
+          "Extend side $AB$ past $B$ to a point $D$. The angle $\\angle CBD$ between the extension and side $BC$ is an exterior angle of the triangle. $\\angle A$ and $\\angle C$ are its remote interior angles: the two interior angles not at $B$.",
+          "The exterior angle and $\\angle B$ form a straight angle, so $\\angle CBD = 180° - \\angle B$. The angle sum gives $\\angle A + \\angle C = 180° - \\angle B$ too. So an exterior angle equals the sum of the two remote interior angles: $\\angle CBD$ = $\\angle A$ + $\\angle C$.",
         ],
         illustration: "exterior-angle",
       },
     ],
     workedExample: {
       prompt:
-        "In triangle ABC, side AB is extended past $B$ to point $D$. $\\angle A$ measures 48° and $\\angle CBD$ measures 113°. What is the measure of ∠$C$, in degrees?",
+        "In triangle $ABC$, side $AB$ is extended past $B$ to point $D$. $\\angle A$ measures 48° and $\\angle CBD$ measures 113°. What is the measure of $\\angle C$, in degrees?",
       steps: [
         "$\\angle CBD$ is an exterior angle; $\\angle A$ and $\\angle C$ are its remote interior angles, so $\\angle CBD = \\angle A + \\angle C$.",
         "$113° = 48° + \\angle C$.",

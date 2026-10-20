@@ -520,38 +520,38 @@ export function generateAngleProblem(
           maxHeight: 280,
           steps: [
             {
-              caption: `Ray ${b}${a} lies on 0 of the ${scale} scale.`,
+              caption: `Ray $${b}${a}$ lies on 0 of the ${scale} scale.`,
               actions: [
                 { do: "highlight", target: "p.ray.0" },
                 { do: "highlight", target: `p.${scale}.0` },
               ],
             },
             {
-              caption: `Follow the ${scale} scale from 0 to ray ${b}${c}.`,
+              caption: `Follow the ${scale} scale from 0 to ray $${b}${c}$.`,
               actions: [
                 { do: "trace", target: "sweep.mark.0" },
                 { do: "highlight", target: "p.ray.1" },
               ],
             },
             {
-              caption: `Angle ${a}${b}${c} measures {sweep.measure.0}.`,
+              caption: `Angle $${a}${b}${c}$ measures {sweep.measure.0}.`,
               actions: [{ do: "appear", target: "sweep.measure.0" }],
               audience: "lesson",
             },
           ],
         }),
       };
-      prompt = `What is the measure of angle ${a}${b}${c}, in degrees?`;
+      prompt = `What is the measure of angle $${a}${b}${c}$, in degrees?`;
       label = "Degrees";
       answer = String(m);
-      hint = `Ray ${b}${a} passes through 0 on the ${right ? "right" : "left"}. Use the scale that starts at 0 there, and follow it to ray ${b}${c}.`;
+      hint = `Ray $${b}${a}$ passes through 0 on the ${right ? "right" : "left"}. Use the scale that starts at 0 there, and follow it to ray $${b}${c}$.`;
       explanation = [
-        `Ray ${b}${a} lies on 0 of the ${scale} scale.`,
-        `Follow the ${scale} scale from 0 to ray ${b}${c}: it reads ${m}.`,
+        `Ray $${b}${a}$ lies on 0 of the ${scale} scale.`,
+        `Follow the ${scale} scale from 0 to ray $${b}${c}$: it reads ${m}.`,
         m === 90
           ? `Both scales read 90 there, so either gives the measure.`
-          : `The other scale reads ${180 - m} at ray ${b}${c}, but that scale is at 180, not 0, on ray ${b}${a}.`,
-        `Angle ${a}${b}${c} measures ${m}°.`,
+          : `The other scale reads ${180 - m} at ray $${b}${c}$, but that scale is at 180, not 0, on ray $${b}${a}$.`,
+        `Angle $${a}${b}${c}$ measures ${m}°.`,
       ];
       break;
     }
@@ -588,31 +588,31 @@ export function generateAngleProblem(
       );
       label = "Degrees";
       if (unknown === "whole") {
-        prompt = `Angle ${A}${B}${C} measures ${p}° and angle ${C}${B}${D} measures ${q}°. They do not overlap. What is the measure of angle ${A}${B}${D}?`;
+        prompt = `Angle $${A}${B}${C}$ measures ${p}° and angle $${C}${B}${D}$ measures ${q}°. They do not overlap. What is the measure of angle $${A}${B}${D}$?`;
         answer = String(W);
-        hint = `Angle ${A}${B}${D} is made of the two angles side by side, so their measures add: start from ${p}°.`;
+        hint = `Angle $${A}${B}${D}$ is made of the two angles side by side, so their measures add: start from ${p}°.`;
         explanation = [
-          `Angles ${A}${B}${C} and ${C}${B}${D} share ray ${B}${C} and do not overlap, so together they make angle ${A}${B}${D}.`,
-          `$${p} + ${q} = ${W}$, so angle ${A}${B}${D} measures ${W}°.`,
+          `Angles $${A}${B}${C}$ and $${C}${B}${D}$ share ray $${B}${C}$ and do not overlap, so together they make angle $${A}${B}${D}$.`,
+          `$${p} + ${q} = ${W}$, so angle $${A}${B}${D}$ measures ${W}°.`,
         ];
       } else {
         const known = unknown === "first" ? q : p,
           missing = unknown === "first" ? p : q;
         const [kName, mName] =
           unknown === "first"
-            ? [`${C}${B}${D}`, `${A}${B}${C}`]
-            : [`${A}${B}${C}`, `${C}${B}${D}`];
+            ? [`$${C}${B}${D}$`, `$${A}${B}${C}$`]
+            : [`$${A}${B}${C}$`, `$${C}${B}${D}$`];
         const wholeWords =
           W === 90
             ? " (a right angle)"
             : W === 180
               ? " (a straight angle)"
               : "";
-        prompt = `Angle ${A}${B}${D} measures ${W}°${wholeWords}. Angle ${kName} measures ${known}°. What is the measure of angle ${mName}?`;
+        prompt = `Angle $${A}${B}${D}$ measures ${W}°${wholeWords}. Angle ${kName} measures ${known}°. What is the measure of angle ${mName}?`;
         answer = String(missing);
-        hint = `The two angles fill angle ${A}${B}${D} with no overlap. Subtract the known part, ${known}°, from ${W}°.`;
+        hint = `The two angles fill angle $${A}${B}${D}$ with no overlap. Subtract the known part, ${known}°, from ${W}°.`;
         explanation = [
-          `Angles ${kName} and ${mName} together make angle ${A}${B}${D}, so ${known}° plus the missing angle is ${W}°.`,
+          `Angles ${kName} and ${mName} together make angle $${A}${B}${D}$, so ${known}° plus the missing angle is ${W}°.`,
           `$${W} - ${known} = ${missing}$, so angle ${mName} measures ${missing}°.`,
         ];
       }
@@ -780,10 +780,10 @@ export function generateAngleProblem(
       hint = `Look at the end past $${A}$ and the end past $${B}$: does each stop at its point, or keep going with an arrow?`;
       const right =
         kind === "line"
-          ? `line ${A}${B}`
+          ? `line $${A}${B}$`
           : kind === "ray"
-            ? `ray ${A}${B}`
-            : `line segment ${A}${B}`;
+            ? `ray $${A}${B}$`
+            : `line segment $${A}${B}$`;
       explanation = [
         kind === "line"
           ? "Both ends have arrows: it goes on forever both ways."
@@ -794,22 +794,22 @@ export function generateAngleProblem(
       ];
       const options: Choice[] = [
         {
-          label: `line ${A}${B}`,
+          label: `line $${A}${B}$`,
           feedback: "A line has arrows at both ends: it never stops.",
         },
         {
-          label: `ray ${A}${B}`,
-          feedback: `Ray ${A}${B} starts at $${A}$ and keeps going through $${B}$: one point and one arrow.`,
+          label: `ray $${A}${B}$`,
+          feedback: `Ray $${A}${B}$ starts at $${A}$ and keeps going through $${B}$: one point and one arrow.`,
         },
         {
-          label: `line segment ${A}${B}`,
+          label: `line segment $${A}${B}$`,
           feedback: `A line segment stops at both endpoints, with no arrows.`,
         },
       ];
       if (kind === "ray")
         options.push({
-          label: `ray ${B}${A}`,
-          feedback: `Ray ${B}${A} would start at $${B}$ and go on past $${A}$. This ray starts at $${A}$; a ray is named from its starting point.`,
+          label: `ray $${B}${A}$`,
+          feedback: `Ray $${B}${A}$ would start at $${B}$ and go on past $${A}$. This ray starts at $${A}$; a ray is named from its starting point.`,
         });
       choices = options.map((o) =>
         o.label === right ? { label: o.label, correct: true } : o,
