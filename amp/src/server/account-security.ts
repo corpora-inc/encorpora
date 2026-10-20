@@ -169,6 +169,17 @@ export function accountSecurity(pool: Pool, config: AccountsConfig) {
           message:
             "Add another available sign-in method before removing this one.",
         });
+      // A removed provider identity returns only through an explicit link
+      // from Security, never through a matching provider email.
+      if (kind === "account")
+        await db.query(
+          `INSERT INTO amp_auth_removed_identities ("userId", "providerId", "accountId")
+            SELECT "userId", "providerId", "accountId" FROM amp_auth_accounts
+            WHERE id=$1 AND "userId"=$2
+            ON CONFLICT ("userId", "providerId", "accountId")
+            DO UPDATE SET "removedAt"=clock_timestamp()`,
+          [id, userId],
+        );
       await db.query(`DELETE FROM ${table} WHERE id=$1 AND "userId"=$2`, [
         id,
         userId,
