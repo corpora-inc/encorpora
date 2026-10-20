@@ -876,6 +876,19 @@ function LegacyScreen() {
       throw e;
     }
   }
+  /** Skip: a neutral pass that shows the worked answer. */
+  async function skip() {
+    if (!learner || !problem) return;
+    const result = await api<Outcome>(`/learners/${learner.id}/skips`, {
+      problemId: problem.id,
+    });
+    setOutcome(result);
+    upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
+    upcoming.current.batch.catch(() => undefined);
+    void refreshProgress().catch((error) =>
+      console.error("Progress refresh failed", error),
+    );
+  }
   async function openBook(
     id: string,
     fromProblem = false,
@@ -1438,6 +1451,7 @@ function LegacyScreen() {
             busy={busy}
             pending={!!pending}
             submit={() => void action(submit)}
+            skip={nativeRuntime ? undefined : () => void action(skip)}
             next={() => void action(next)}
             requestLesson={async () =>
               (

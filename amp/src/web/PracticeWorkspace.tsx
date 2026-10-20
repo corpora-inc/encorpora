@@ -137,6 +137,9 @@ type Props = {
   submit: () => void;
   next: () => void;
   requestHint: () => void;
+  /** A neutral pass: shows the worked answer with no credit or penalty.
+   * Absent where the route is unavailable (the native bridge). */
+  skip?: () => void;
   /** This problem allows a calculator (computation is not the skill). */
   calculator?: boolean;
   /** A request error to show at the answer rather than at the top of the app. */
@@ -537,6 +540,16 @@ export function PracticeWorkspace(props: Props) {
             Hint
           </button>
         )}
+        {!outcome && props.skip && (
+          <button
+            className="text-button skip-action"
+            disabled={busy}
+            aria-label="Skip this problem and see its answer"
+            onClick={() => props.skip?.()}
+          >
+            Skip
+          </button>
+        )}
         <button
           className="text-button"
           disabled={lessonLoading}
@@ -595,6 +608,7 @@ export function PracticeWorkspace(props: Props) {
         : lessonBeforeAnswer
           ? "with the lesson"
           : "with a hint or lesson";
+  const skipped = !!outcome?.skipped;
   return (
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface" ref={surface}>
@@ -724,17 +738,30 @@ export function PracticeWorkspace(props: Props) {
         )}
         {outcome && (
           <div
-            className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}
+            className={`feedback solution-panel ${outcome.correct ? "correct" : skipped ? "skipped" : "incorrect"}`}
             role="status"
             aria-live="polite"
             aria-atomic="true"
           >
             <div className="feedback-head">
               <span className="result-mark" aria-hidden="true">
-                {outcome.correct ? "✓" : "✕"}
+                {outcome.correct ? "✓" : skipped ? "→" : "✕"}
               </span>
               <span className="feedback-title">
-                {outcome.correct ? (
+                {skipped ? (
+                  <>
+                    <span
+                      className="solution-answer"
+                      data-text={displayResponse(outcome.answer)}
+                    >
+                      Answer:{" "}
+                      <strong>
+                        <MathText text={displayResponse(outcome.answer)} />
+                      </strong>
+                    </span>
+                    <small>Skipped. Your progress is unchanged.</small>
+                  </>
+                ) : outcome.correct ? (
                   <>
                     Correct
                     {support && <small>{capitalize(support)}</small>}
@@ -829,7 +856,7 @@ export function PracticeWorkspace(props: Props) {
                   requestId,
                   report,
                   // A skip resolves a problem without an attempt.
-                  !!(outcome as { skipped?: boolean }).skipped,
+                  skipped,
                 ),
               )
             }

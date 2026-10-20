@@ -46,6 +46,7 @@ export const progressSchema = z.object({
     answered: z.number().int(),
     correct: z.number().int(),
     assisted: z.number().int(),
+    skipped: z.number().int().optional(),
   }),
   mastered: z.array(z.string()),
   frontier: z.object({
@@ -71,6 +72,7 @@ export const outcomeSchema = z.object({
   answer: z.string(),
   createdAt: z.string(),
   mastered: z.object({ skillId: z.string(), title: z.string() }).optional(),
+  skipped: z.literal(true).optional(),
 });
 export type TrialOutcome = z.infer<typeof outcomeSchema>;
 
@@ -188,6 +190,14 @@ export function answer(
     `/learners/${encodeURIComponent(session.learnerId)}/attempts`,
     outcomeSchema,
     { trial: session.token, body: input },
+  );
+}
+/** Skip: the worked answer, as a neutral reveal (learning/skip.ts). */
+export function skip(session: TrialSession, problemId: string) {
+  return request(
+    `/learners/${encodeURIComponent(session.learnerId)}/skips`,
+    outcomeSchema,
+    { trial: session.token, body: { problemId } },
   );
 }
 export function hint(session: TrialSession, problemId: string) {
