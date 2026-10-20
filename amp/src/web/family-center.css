@@ -576,3 +576,22 @@
     font-size: 24px;
   }
 }
+
+/* Phone landscape is a usable-by-scrolling target, not a fit target: at
+   390px high a focused section's fixed-height layout clipped its lower
+   controls. The family body scrolls instead, and sections take their
+   natural height. */
+@media (orientation: landscape) and (max-height: 499px) {
+  .family-body:has(.family-focused-section) {
+    display: block;
+    overflow: auto;
+  }
+  .family-focused-section {
+    min-height: auto;
+  }
+  .family-focused-section .family-learners {
+    flex: none;
+    min-height: auto;
+    overflow: visible;
+  }
+}
