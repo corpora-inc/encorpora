@@ -49,12 +49,24 @@ export function TrialPractice() {
 
 type Next = Awaited<ReturnType<typeof nextProblem>>;
 
+/** The unanswered problem and its draft answer, kept while the learner
+ * checks their level, so back returns to the same problem. Memory only: a
+ * refresh asks the planner again. */
+let open: {
+  learnerId: string;
+  problem: PublicProblem;
+  response: string;
+} | null = null;
+
 function Practice({ session }: { session: TrialSession }) {
   const navigate = useNavigate();
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
-  const [problem, setProblem] = useState<PublicProblem | null>(null);
-  const [response, setResponse] = useState("");
+  const kept = open?.learnerId === session.learnerId ? open : null;
+  const [problem, setProblem] = useState<PublicProblem | null>(
+    kept?.problem ?? null,
+  );
+  const [response, setResponse] = useState(kept?.response ?? "");
   const [outcome, setOutcome] = useState<TrialOutcome | null>(null);
   const [hintText, setHint] = useState("");
   const [hintCue, setHintCue] = useState<{
@@ -75,6 +87,12 @@ function Practice({ session }: { session: TrialSession }) {
   const [pending, setPending] = useState(false);
   usePracticeViewport(true);
   useEffect(() => trackSessionStart(), []);
+  useEffect(() => {
+    open =
+      problem && !outcome
+        ? { learnerId: session.learnerId, problem, response }
+        : null;
+  }, [problem, outcome, response]);
 
   const limits = progress.data;
   // The server's count seeds the meter once; answers then advance it here.
@@ -179,6 +197,7 @@ function Practice({ session }: { session: TrialSession }) {
           nativeRuntime ? undefined : (body) => reportProblem(session, body)
         }
         exit={() => void run(() => leave("/try/map"))}
+        exitHref="/try/map"
         submit={() =>
           void run(async () => {
             const attempt =

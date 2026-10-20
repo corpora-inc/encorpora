@@ -1397,6 +1397,7 @@ function LegacyScreen() {
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
             exit={() => setExploring(true)}
+            exitHref="/"
             key={problem.id}
             problem={problem}
             meta={meta}

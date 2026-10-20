@@ -145,8 +145,11 @@ type Props = {
   /** A request error to show at the answer rather than at the top of the app. */
   error?: string;
   clearError?: () => void;
-  /** Leave immersive practice for home, lessons, progress and settings. */
+  /** Open the learner's level view (home, or the trial's map), where the
+   * rest of the app is also reached. */
   exit: () => void;
+  /** That view's URL, so the control is a real link (new tab, copy link). */
+  exitHref: string;
   requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
   /** A calm status in the toolbar, such as the free-practice meter. */
@@ -613,16 +616,33 @@ export function PracticeWorkspace(props: Props) {
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface" ref={surface}>
         <div className="workspace-toolbar">
-          <button
-            className="workspace-exit"
-            aria-label="Exit practice"
-            title="Exit practice"
-            onClick={props.exit}
+          <a
+            className="workspace-level"
+            href={props.exitHref}
+            aria-label="Your level"
+            title="Your level"
+            onClick={(event) => {
+              // A modified click opens the view in a new tab as usual.
+              if (
+                event.button !== 0 ||
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey
+              )
+                return;
+              event.preventDefault();
+              props.exit();
+            }}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 6l12 12M18 6L6 18" />
+              <path d="M5 19.5h14" />
+              <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
             </svg>
-          </button>
+            <span className="workspace-level-label" aria-hidden="true">
+              Your level
+            </span>
+          </a>
           <span
             className="workspace-topic"
             data-strand={props.strand}
