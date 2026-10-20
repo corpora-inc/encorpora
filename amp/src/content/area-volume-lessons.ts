@@ -23,10 +23,10 @@ const volumeMeaning: Lesson["sections"][number] = {
   ],
 };
 const circleFacts: Lesson["sections"][number] = {
-  title: "Circles and pi",
+  title: "Radius, diameter and circle area",
   paragraphs: [
-    "The radius r of a circle is the distance from its center to the circle; the diameter is the distance across through the center, so the diameter is 2 × r. The number π (pi), about 3.14, is the ratio of any circle's circumference to its diameter.",
-    "A circle's area is π × r × r, written πr². A circle of radius 3 cm has area π × 3² = 9π square centimeters. An exact answer keeps π as a symbol: 9π. When a problem says to use 3.14 for π, multiply: 3.14 × 9 = 28.26, an approximate value.",
+    "The radius $r$ of a circle is the distance from its center to the circle; the diameter is the distance across through the center, so the diameter is $2 \\times r$. The number $\\pi$ (pi), about 3.14, is the ratio of any circle's circumference to its diameter.",
+    "A circle's area is $\\pi \\times r \\times r$, written $\\pi r^2$. A circle of radius 3 cm has area $\\pi \\times 3^2 = 9\\pi$ square centimeters. An exact answer keeps $\\pi$ as a symbol: $9\\pi$. When a problem says to use 3.14 for $\\pi$, multiply: 3.14 × 9 = 28.26, an approximate value.",
   ],
 };
 
@@ -413,45 +413,45 @@ export const areaVolumeLessons: Lesson[] = [
     id: "cylinder-volume",
     title: "Volume of a cylinder",
     summary:
-      "A cylinder is a stack of circles: volume = base area × height = πr²h.",
+      "A cylinder is a stack of circles: volume = base area × height = $\\pi r^2 h$.",
     templateIds: ["cylinder-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain why a cylinder's volume is its base area times its height.",
-      "Find a cylinder's volume exactly in terms of π or with 3.14, and find a missing height from the volume.",
+      "Find a cylinder's volume exactly in terms of $\\pi$ or with 3.14, and find a missing height from the volume.",
     ],
     sections: [
       circleFacts,
       {
         title: "A stack of circles",
         paragraphs: [
-          "A cylinder has two matching circular bases joined by a curved surface; its height is the perpendicular distance between the bases. Like a prism, it can be sliced into layers 1 unit thick, and every layer is a copy of the base. So volume = base area × height, and for a circular base that is V = πr²h.",
-          "A cylinder with radius 3 cm and height 5 cm has base area π × 3² = 9π square centimeters and volume 9π × 5 = 45π cubic centimeters. Using 3.14 for π: 3.14 × 45 = 141.3 cubic centimeters.",
+          "A cylinder has two matching circular bases joined by a curved surface; its height is the perpendicular distance between the bases. Like a prism, it can be sliced into layers 1 unit thick, and every layer is a copy of the base. So volume = base area × height, and for a circular base that is $V = \\pi r^2 h$.",
+          "A cylinder with radius 3 cm and height 5 cm has base area $\\pi \\times 3^2 = 9\\pi$ square centimeters and volume $9\\pi \\times 5 = 45\\pi$ cubic centimeters. Using 3.14 for $\\pi$: 3.14 × 45 = 141.3 cubic centimeters.",
         ],
         illustration: "av-cylinder-stack",
       },
       {
         title: "Diameter and missing height",
         paragraphs: [
-          "If a problem gives the diameter, halve it first: a diameter of 8 m means r = 4 m and base area π × 4² = 16π. Using 8 instead of 4 makes the base area four times too large.",
-          "To find a missing height, divide the volume by the base area: a cylinder with volume 80π and radius 4 has height 80π ÷ 16π = 5. The π cancels because both numbers are multiples of π.",
+          "If a problem gives the diameter, halve it first: a diameter of 8 m means $r = 4$ m and base area $\\pi \\times 4^2 = 16\\pi$. Using 8 instead of 4 makes the base area four times too large.",
+          "To find a missing height, divide the volume by the base area: a cylinder with volume $80\\pi$ and radius 4 has height $80\\pi \\div 16\\pi = 5$. The $\\pi$ cancels because both numbers are multiples of $\\pi$.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A cylinder has a diameter of 10 centimeters and a height of 6 centimeters. Its volume is $a\\pi$ cubic centimeters. What is a?",
+        "A cylinder has a diameter of 10 centimeters and a height of 6 centimeters. Its volume is $a\\pi$ cubic centimeters. What is $a$?",
       steps: [
         "The radius is half the diameter: 10 ÷ 2 = 5.",
         "Base area: $\\pi \\times 5^2 = 25\\pi$ square centimeters.",
-        "Volume: $25\\pi \\times 6 = 150\\pi$ cubic centimeters, so a = 150.",
+        "Volume: $25\\pi \\times 6 = 150\\pi$ cubic centimeters, so $a = 150$.",
       ],
       answer: "150",
     },
     pitfalls: [
       "Square the radius, not the diameter.",
-      "r² means r × r, not 2 × r.",
-      "An exact answer keeps π; only multiply by 3.14 when the problem says to.",
+      "$r^2$ means $r \\times r$, not $2 \\times r$.",
+      "An exact answer keeps $\\pi$; only multiply by 3.14 when the problem says to.",
     ],
     parentGuide:
       "Stack coins into a column. Each coin is a thin circle; the stack's volume is one coin's face area times the height of the stack. Compare two stacks of the same height but different coin sizes.",
@@ -460,12 +460,12 @@ export const areaVolumeLessons: Lesson[] = [
     id: "cone-sphere-volume",
     title: "Volume of cones and spheres",
     summary:
-      "A cone holds 1/3 of the cylinder with the same base and height; a sphere holds 2/3 of the cylinder that just contains it, which is 4/3 πr³.",
+      "A cone holds 1/3 of the cylinder with the same base and height; a sphere holds 2/3 of the cylinder that just contains it, which is $\\tfrac{4}{3}\\pi r^3$.",
     templateIds: ["cone-sphere-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Find the volume of a cone as one third of the matching cylinder.",
-      "Find the volume of a sphere or hemisphere from its radius, exactly or with 3.14 for π.",
+      "Find the volume of a sphere or hemisphere from its radius, exactly or with 3.14 for $\\pi$.",
     ],
     sections: [
       circleFacts,
@@ -473,32 +473,32 @@ export const areaVolumeLessons: Lesson[] = [
         title: "Cones",
         paragraphs: [
           "A cone has a circular base and a curved surface that narrows to a single point, its apex. Its height is the perpendicular distance from the apex to the base. A cone fills exactly 1/3 of the cylinder with the same base and height, a fact you can check by pouring: three cones of sand fill the cylinder.",
-          "So a cone's volume is V = 1/3 × πr²h. For radius 3 and height 4: the cylinder holds π × 3² × 4 = 36π, and the cone holds 1/3 × 36π = 12π.",
+          "So a cone's volume is $V = \\tfrac{1}{3} \\times \\pi r^2 h$. For radius 3 and height 4: the cylinder holds $\\pi \\times 3^2 \\times 4 = 36\\pi$, and the cone holds $\\tfrac{1}{3} \\times 36\\pi = 12\\pi$.",
         ],
         illustration: "av-cone-sphere-cylinder",
       },
       {
         title: "Spheres and hemispheres",
         paragraphs: [
-          "A sphere is the set of points at distance r from a center, like a ball. The smallest cylinder that contains it has radius r and height 2r, so it holds πr² × 2r = 2πr³. The sphere fills 2/3 of that cylinder, so V = 2/3 × 2πr³ = 4/3 πr³. Archimedes proved this more than two thousand years ago.",
-          "A hemisphere is half a sphere: V = 1/2 × 4/3 πr³ = 2/3 πr³. For r = 3: the sphere is 4/3 × 27π = 36π and the hemisphere is 18π. Cube the radius, r³ = r × r × r, before multiplying by 4/3.",
+          "A sphere is the set of points at distance $r$ from a center, like a ball. The smallest cylinder that contains it has radius $r$ and height $2r$, so it holds $\\pi r^2 \\times 2r = 2\\pi r^3$. The sphere fills 2/3 of that cylinder, so $V = \\tfrac{2}{3} \\times 2\\pi r^3 = \\tfrac{4}{3}\\pi r^3$. Archimedes proved this more than two thousand years ago.",
+          "A hemisphere is half a sphere: $V = \\tfrac{1}{2} \\times \\tfrac{4}{3}\\pi r^3 = \\tfrac{2}{3}\\pi r^3$. For $r = 3$: the sphere is $\\tfrac{4}{3} \\times 27\\pi = 36\\pi$ and the hemisphere is $18\\pi$. Cube the radius, $r^3 = r \\times r \\times r$, before multiplying by 4/3.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A sphere has a radius of 6 centimeters. Its volume is $a\\pi$ cubic centimeters. What is a?",
+        "A sphere has a radius of 6 centimeters. Its volume is $a\\pi$ cubic centimeters. What is $a$?",
       steps: [
         "Cube the radius: 6 × 6 × 6 = 216.",
         "Volume: $\\tfrac{4}{3} \\times 216\\pi = 288\\pi$ cubic centimeters.",
-        "Check: the containing cylinder holds $\\pi \\times 6^2 \\times 12 = 432\\pi$, and $\\tfrac{2}{3} \\times 432\\pi = 288\\pi$. So a = 288.",
+        "Check: the containing cylinder holds $\\pi \\times 6^2 \\times 12 = 432\\pi$, and $\\tfrac{2}{3} \\times 432\\pi = 288\\pi$. So $a = 288$.",
       ],
       answer: "288",
     },
     pitfalls: [
-      "Do not forget the one third for a cone: πr²h is the whole cylinder.",
+      "Do not forget the one third for a cone: $\\pi r^2 h$ is the whole cylinder.",
       "A sphere uses r³, not r²; halve a diameter before cubing.",
-      "A hemisphere is half a sphere: 2/3 πr³.",
+      "A hemisphere is half a sphere: $\\tfrac{2}{3}\\pi r^3$.",
     ],
     parentGuide:
       "Fill a paper cone with rice and pour it into a cylinder of the same base and height; count how many cones fill it. Compare a ball's size to a can that just holds it.",
@@ -620,11 +620,11 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     goal: "Find a cylinder's volume, or its height, from its radius or diameter.",
     terms: [
       ["radius", "Center to circle; half the diameter."],
-      ["πr²", "The area of a circle of radius r."],
+      ["base area", "The area of a circle of radius $r$: $\\pi r^2$."],
     ],
     method: [
       "Halve a diameter to get the radius.",
-      "Base area = π × r².",
+      "Base area = $\\pi \\times r^2$.",
       "Volume = base area × height; for a height, divide the volume by the base area.",
     ],
     watch: "Square the radius, not the diameter.",
@@ -633,12 +633,15 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     goal: "Find the volume of a cone, sphere or hemisphere.",
     terms: [
       ["cone", "1/3 of the cylinder with the same base and height."],
-      ["sphere", "4/3 πr³: 2/3 of the cylinder that just contains it."],
+      [
+        "sphere",
+        "$\\tfrac{4}{3}\\pi r^3$: 2/3 of the cylinder that just contains it.",
+      ],
     ],
     method: [
       "Halve a diameter to get the radius.",
-      "Cone: 1/3 × πr² × h. Sphere: 4/3 × πr³. Hemisphere: half a sphere.",
-      "Keep π for an exact answer, or multiply by 3.14 when told.",
+      "Cone: $\\tfrac{1}{3} \\times \\pi r^2 \\times h$. Sphere: $\\tfrac{4}{3} \\times \\pi r^3$. Hemisphere: half a sphere.",
+      "Keep $\\pi$ for an exact answer, or multiply by 3.14 when told.",
     ],
     watch: "Cube the radius for a sphere; do not forget the 1/3 for a cone.",
   },
@@ -662,7 +665,7 @@ export const areaVolumePrinciples: Record<string, string> = {
   "composite-face-prism-surface-area":
     "A right prism's side faces unroll into one rectangle as long as the face's perimeter, so its surface area is 2 × face area + perimeter × depth.",
   "cylinder-volume":
-    "A cylinder is a stack of copies of its circular base, so its volume is πr² × h.",
+    "A cylinder is a stack of copies of its circular base, so its volume is $\\pi r^2 \\times h$.",
   "cone-sphere-volume":
-    "A cone holds 1/3 of the cylinder with the same base and height; a sphere holds 2/3 of the cylinder that just contains it, giving 4/3 πr³.",
+    "A cone holds 1/3 of the cylinder with the same base and height; a sphere holds 2/3 of the cylinder that just contains it, giving $\\tfrac{4}{3}\\pi r^3$.",
 };
