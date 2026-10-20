@@ -94,6 +94,25 @@ Complete examples: `src/math/scene/explanations.ts` (`makeTenHops`, `partialProd
 
 Labels never need hand placement. Give a label `place` candidates or mark it `optional`, and use `halo` for a paper backing over grids.
 
+## Type size on screen
+
+Figure text sits below the prompt in the type hierarchy and never grows with the room a layout gives a figure.
+
+- A scene draws at its own layout width or smaller, never above 1×. Its labels are `sm` 15 px (ticks, categories, captions), `md` 18 px (table entries, point names) or `lg` 22 px (clock numerals). On a phone a figure may shrink until its smallest label is 12 px; past that the stage scrolls.
+- Legacy figures (fixed view boxes) are wrapped in `FigureTextCap`, which caps the box so their largest label is at most 18 px.
+- `verify-ui` and `verify-graphical-ui` measure every label at phone, tablet and desktop sizes. Data figures stay at or under 18 px everywhere, and no figure text is larger than the prompt at 768 px and wider.
+
+## Charts
+
+Bar charts, histograms, dot and line plots, box plots, scatter plots and tables follow one standard.
+
+- **Type.** Tick labels are `sm` in the muted text role. Category names are `sm` ink. A scale's name is a muted `sm` caption, left-aligned with the tick labels above the plot. It is not a title.
+- **Values.** When an item asks the learner to read the graph, the bars carry no value labels and the gridlines carry the reading. Value labels are only for explanations where the number is given, as in `bars`.
+- **Scale.** Use the finest nice step (1, 2, 5, 10…) that keeps 14 or fewer gridlines, so every asked value sits on a gridline. Labeled gridlines are at least 20 px apart. Label every gridline, or every 2nd or 5th, and end the scale on a labeled gridline.
+- **Lines.** Gridlines are 1 px hairlines in the grid role. The baseline is 1.5 px ink and is drawn over the bars' feet. Bar charts have no vertical axis line. Number-line axes are 1.5 px with 1.25 px ticks, 10 px major and 6 px minor.
+- **Marks.** Use one accent for the data. Bars fill 0.6 of their band, up to an 80 px band, and their top corners have a 3 px radius (`roundTop`). Histogram bins touch, stay square, and are separated by a paper hairline. A box plot is a 2 px accent outline with a 3 px radius. Its median is the one highlight, in the warm role.
+- **Spacing.** The plot is 150 to 200 px tall and grows by 20 px for each gridline. Labels sit 7 to 8 px from what they name.
+
 ## Verify
 
 - `npm run tsc`, `npm test` and `npm run lint:colors`. Paints are role names, never colors.

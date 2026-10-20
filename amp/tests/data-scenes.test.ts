@@ -104,12 +104,27 @@ test("box plots: whisker ends, box edges and median sit on their values", () => 
 });
 
 test("bar charts and histograms: heights exactly proportional to values", () => {
-  for (const id of ["scaled-bar-graph", "histogram-read"])
+  for (const id of [
+    "scaled-bar-graph",
+    "histogram-read",
+    "bar-chart-total",
+    "bar-chart-difference",
+    "comparison-factor",
+  ])
     for (const f of figures(id)) {
-      assert.ok(f.kind === "scaled-bar-graph" || f.kind === "histogram", id);
+      assert.ok(
+        f.kind === "scaled-bar-graph" ||
+          f.kind === "histogram" ||
+          f.kind === "bar-chart",
+        id,
+      );
       const l = layoutScene(legacyScene(f));
       const values =
-        f.kind === "histogram" ? f.counts : f.categories.map((c) => c.value);
+        f.kind === "histogram"
+          ? f.counts
+          : f.kind === "bar-chart"
+            ? f.values
+            : f.categories.map((c) => c.value);
       const zero = l.items.find((d) => d.id === "chart.grid.0");
       assert.ok(zero && zero.k === "line");
       const bars = values.map((_, i) =>
@@ -128,6 +143,36 @@ test("bar charts and histograms: heights exactly proportional to values", () => 
           if (prev && prev.k === "rect") near(b.x, prev.x + prev.w, 1e-6);
         }
       });
+    }
+});
+
+test("bar charts are read against the scale: no value labels, readable gridlines", () => {
+  for (const id of ["bar-chart-total", "bar-chart-difference"])
+    for (const f of figures(id)) {
+      assert.ok(f.kind === "bar-chart", id);
+      const l = layoutScene(legacyScene(f));
+      const texts = l.items.filter((d) => d.k === "text").map((d) => d.id);
+      // Category names, scale labels and the caption: never a bar's value.
+      assert.ok(
+        texts.every((t) => /^chart\.(bar\.\d+\.label|label\.y\.|unit)/.test(t)),
+        `${id}: ${texts.join(", ")}`,
+      );
+      // Every value sits on a gridline, and labeled gridlines sit 20 px or
+      // more apart, so a 6 or a 7 reads without a value label.
+      const lines = l.items.filter(
+        (d) => d.k === "line" && /^chart\.grid\.\d+$/.test(d.id),
+      );
+      for (const v of f.values)
+        assert.ok(
+          lines.some((d) => d.id === `chart.grid.${v}`),
+          `${id} ${v}`,
+        );
+      const ys = l.items
+        .filter((d) => d.k === "text" && d.id.startsWith("chart.label.y."))
+        .map((d) => (d.k === "text" ? d.box.y0 : 0))
+        .sort((a, b) => a - b);
+      for (let i = 1; i < ys.length; i++)
+        assert.ok(ys[i]! - ys[i - 1]! >= 19.5, `${id}: crowded scale labels`);
     }
 });
 
@@ -178,6 +223,8 @@ test("every data figure keeps its full width: no scale is squeezed to fit", () =
     "histogram-read",
     "scaled-picture-graph",
     "scaled-bar-graph",
+    "bar-chart-difference",
+    "comparison-factor",
     "sort-shapes-count",
   ])
     for (const f of figures(id, 256)) {

@@ -1061,6 +1061,18 @@ export const galleryCases: GalleryCase[] = [
 
 /** Legacy figures drawn through both renderers for screenshot parity. */
 export const parityFigures: SemanticFigure[] = [
+  {
+    kind: "bar-chart",
+    categories: ["Oak", "Pine", "Maple"],
+    values: [7, 6, 7],
+    valueLabel: "Trees",
+  },
+  {
+    kind: "bar-chart",
+    categories: ["Mia", "Sam"],
+    values: [6, 42],
+    valueLabel: "Tokens",
+  },
   { kind: "number-line", min: 0, max: 20, points: [6, 14] },
   { kind: "number-line", min: -10, max: 10, points: [-7, -6, 3] },
   { kind: "clock", hour: 10, minute: 10 },

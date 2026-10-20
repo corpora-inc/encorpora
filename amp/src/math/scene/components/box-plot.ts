@@ -79,7 +79,7 @@ registerComponent("boxPlot", {
           from: [a, y],
           to: [c, y],
           stroke: "accent",
-          width: 2.5,
+          width: 2,
         });
       whisker("whisker.low", lo, q1);
       whisker("whisker.high", q3, hi);
@@ -90,7 +90,7 @@ registerComponent("boxPlot", {
           from: [v, y - cap],
           to: [v, y + cap],
           stroke: "accent",
-          width: 2.5,
+          width: 2,
           data: { summary: k === 0 ? "min" : "max", value: v },
         });
       prims.push(
@@ -101,7 +101,8 @@ registerComponent("boxPlot", {
           size: [Math.max(q3 - q1, 1e-6), 2 * h],
           fill: "accent-fill",
           stroke: "accent",
-          width: 2.5,
+          width: 2,
+          radius: 3,
           data: { q1, q3 },
         },
         {
