@@ -14,6 +14,19 @@ test("Algebra 1 function items are valid, deterministic assessment items", () =>
       const problem = generateProblem(template.id, `alg1-${i}`);
       assert.deepEqual(problem, generateProblem(template.id, `alg1-${i}`));
       generatedProblemSchema.parse(problem);
+      // Money is written in words: "$" opens a math span in MathText.
+      assert.ok(
+        !/\$/.test(
+          JSON.stringify([
+            problem.public.prompt,
+            problem.public.response,
+            problem.hint,
+            problem.explanation,
+            problem.choiceFeedback ?? null,
+          ]),
+        ),
+        template.id,
+      );
       assert.equal(templateRole(template.id), "assessment");
       const { response, figure } = problem.public;
       assert.equal(

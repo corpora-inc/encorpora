@@ -12,11 +12,14 @@ import type { Graph, Point } from "../math/scene/spec";
 
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
+import { exponentialLessonScenes } from "../math/exponential-scenes";
 import { lessonScenes } from "./lesson-scenes";
+import { similarityTrigScenes } from "./similarity-trig-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
   ...lessonScenes,
+  ...similarityTrigScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],
@@ -169,6 +172,57 @@ export const sceneIllustrations = {
     .scene({
       title: "Solutions of 2x + 3y = 12 lie on its line; (4, 4) does not",
     }),
+  // Two constraints and the axes: the feasible region, one point in, one out.
+  "feasible-bakery": graph({
+    id: "g",
+    x: [0, 14],
+    y: [0, 13],
+    grid: 1,
+    tick: 2,
+  })
+    .shade("x + y <= 12", "4x + 7y >= 60", "x >= 0", "y >= 0")
+    .point(3, 8, "(3, 8)")
+    .point(8, 2, "(8, 2)", { open: true })
+    .scene({
+      title: "x + y ≤ 12 and 4x + 7y ≥ 60: (3, 8) is feasible, (8, 2) is not",
+    }),
+  // y < 2x − 1: a dashed boundary, and the test point (0, 0) on the unshaded side.
+  "half-plane-test-point": graph({ id: "g", x: [-5, 5], y: [-5, 5], grid: 1 })
+    .shade("y < 2x - 1")
+    .point(0, 0, "(0, 0)", { open: true })
+    .scene({ title: "y < 2x − 1: dashed boundary; (0, 0) fails the test" }),
+  // Solving 3(x − 4) = 18 with the reason for each step.
+  "equation-step-reasons": lineTable(
+    [
+      ["3(x − 4) = 18", "Given"],
+      ["3x − 12 = 18", "Distributive property"],
+      ["3x = 30", "Addition property of equality"],
+      ["x = 10", "Division property of equality"],
+    ],
+    { header: "none", rules: "rows", align: ["left", "left"] },
+  ).scene({ title: "Solving 3(x − 4) = 18, step by step" }),
+  // x + 2y = 7 above 3x − 2y = 5; their sum eliminates y.
+  "elimination-stacked": lineTable(
+    [
+      ["", "x", "+ 2y", "=", "7"],
+      ["+", "3x", "− 2y", "=", "5"],
+      ["", "4x", "", "=", "12"],
+    ],
+    {
+      header: "none",
+      rules: "rows",
+      total: 2,
+      align: ["center", "right", "left", "center", "right"],
+    },
+  ).scene({ title: "Adding x + 2y = 7 and 3x − 2y = 5 gives 4x = 12" }),
+  // The sum's line passes through the same solution as the original two.
+  "elimination-lines": graph({ id: "g", x: [-1, 7], y: [-2, 6], grid: 1 })
+    .line({ a: 1, b: 2, c: 7 }, { label: "x + 2y = 7" })
+    .line({ a: 3, b: -2, c: 5 }, { label: "3x − 2y = 5", color: "warm" })
+    .line({ x: 3 }, { label: "4x = 12", color: "gold", dash: "dash" })
+    .point(3, 2, "(3, 2)")
+    .scene({ title: "Three lines through the one solution (3, 2)" }),
+  ...exponentialLessonScenes,
 } as const satisfies Record<string, Scene>;
 export type SceneIllustration = keyof typeof sceneIllustrations;
 export const isSceneIllustration = (kind: string): kind is SceneIllustration =>

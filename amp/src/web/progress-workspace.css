@@ -514,84 +514,6 @@
     margin-bottom: 6px;
   }
 }
-@media (max-height: 500px) and (min-width: 601px) {
-  .progress-workspace {
-    padding: 6px 0;
-  }
-  .progress-surface {
-    padding: 8px 18px;
-  }
-  .progress-heading h1 {
-    font-size: 1.4375rem;
-    margin: 0 0 4px;
-  }
-  .progress-heading .eyebrow {
-    display: none;
-  }
-  .progress-controls {
-    margin: 8px 0;
-  }
-  .progress-page-controls {
-    margin-top: 6px;
-    padding-top: 6px;
-  }
-  .progress-cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .progress-skill-card {
-    min-height: 116px;
-    padding: 10px 14px;
-    gap: 4px;
-  }
-  .progress-detail-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 22px;
-    align-content: start;
-  }
-  .progress-detail-content h1 {
-    grid-column: 1/-1;
-    font-size: 1.4375rem;
-    margin: 0 0 8px;
-  }
-  .progress-counts {
-    padding: 8px 0;
-    gap: 24px;
-  }
-  .progress-counts strong {
-    font-size: 1.375rem;
-  }
-  .progress-recent {
-    padding-top: 0;
-  }
-  .progress-next-step {
-    grid-column: 1/-1;
-    padding-top: 8px;
-  }
-  .progress-next-step p {
-    font-size: 0.8125rem;
-    margin-bottom: 4px;
-  }
-  .progress-detail-content h2 {
-    font-size: 0.9375rem;
-    margin-bottom: 6px;
-  }
-  .progress-detail-actions {
-    padding-top: 8px;
-    margin-top: 6px;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-  }
-  .progress-detail-actions small {
-    grid-column: auto;
-  }
-  .progress-empty svg {
-    display: none;
-  }
-  .progress-empty h2 {
-    margin: 4px 0;
-  }
-}
 
 /* Reset marketing chrome inherited by semantic workspace headers and footers. */
 .progress-heading,
@@ -642,39 +564,6 @@
 @media (max-height: 650px) and (max-width: 600px) {
   .progress-detail-content h1 {
     margin: 0 0 6px;
-  }
-}
-
-@media (max-height: 500px) and (min-width: 601px) {
-  .progress-heading p {
-    font-size: 0.75rem;
-    line-height: 1.2;
-  }
-  .progress-mix {
-    padding: 10px 16px;
-  }
-  .progress-filters {
-    padding: 0;
-  }
-  .progress-skill-card {
-    min-height: 88px;
-    padding: 6px 12px;
-    gap: 2px;
-  }
-  .progress-card-area {
-    display: none;
-  }
-  .progress-card-title {
-    font-size: 1.125rem;
-  }
-  .progress-card-evidence {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-height: 500px) and (min-width: 601px) {
-  .progress-counts {
-    line-height: 1.2;
   }
 }
 

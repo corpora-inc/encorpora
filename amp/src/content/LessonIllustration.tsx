@@ -26,6 +26,7 @@ import {
 } from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { NumberSenseIllustration } from "./NumberSenseIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
@@ -152,6 +153,14 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "hundred-chart-moves" ||
+    kind === "teen-ten-frame" ||
+    kind === "number-line-hop-pair" ||
+    kind === "rounding-halfway" ||
+    kind === "power-of-ten-shift"
+  )
+    return <NumberSenseIllustration kind={kind} />;
   if (
     kind === "multiply-tens-groups" ||
     kind === "area-model-product" ||

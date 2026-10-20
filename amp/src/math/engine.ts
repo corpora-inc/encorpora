@@ -36,6 +36,10 @@ import {
   generateDistributionProblem,
 } from "./distribution-practice";
 import {
+  twoVariableTemplates,
+  generateTwoVariableProblem,
+} from "./two-variable-practice";
+import {
   linearFunctionTemplates,
   generateLinearFunctionProblem,
 } from "./linear-function-practice";
@@ -85,6 +89,14 @@ import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
+  exponentialTemplates,
+  generateExponentialProblem,
+} from "./exponential-practice";
+import {
+  similarityTrigTemplates,
+  generateSimilarityTrigProblem,
+} from "./similarity-trig-practice";
+import {
   probabilityRulesTemplates,
   generateProbabilityRulesProblem,
 } from "./probability-rules-practice";
@@ -104,6 +116,10 @@ import {
   multiplyDivideTemplates,
   generateMultiplyDivideProblem,
 } from "./multiply-divide-practice";
+import {
+  numberSenseTemplates,
+  generateNumberSenseProblem,
+} from "./number-sense-practice";
 import {
   comparisonTemplates,
   generateComparisonProblem,
@@ -298,6 +314,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
   ...polygonTemplates,
+  ...exponentialTemplates,
   ...angleTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
@@ -312,6 +329,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...numberSenseTemplates,
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
@@ -323,9 +341,11 @@ export const templates: readonly TemplateMetadata[] = [
   ...realNumberTemplates,
   ...numberSystemTemplates,
   ...probabilityRulesTemplates,
+  ...similarityTrigTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
+  ...twoVariableTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -492,9 +512,11 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    ...exponentialTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
+    ...twoVariableTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
@@ -511,6 +533,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...realNumberTemplates,
     ...numberSystemTemplates,
     ...probabilityRulesTemplates,
+    ...similarityTrigTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -562,8 +585,12 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (exponentialTemplates.some((t) => t.id === templateId))
+    return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (twoVariableTemplates.some((t) => t.id === templateId))
+    return generateTwoVariableProblem(templateId, seed);
   if (linearFunctionTemplates.some((t) => t.id === templateId))
     return generateLinearFunctionProblem(templateId, seed);
   if (angleTemplates.some((t) => t.id === templateId))
@@ -596,8 +623,12 @@ function generateRawProblem(
     return generateRealNumberProblem(templateId, seed);
   if (probabilityRulesTemplates.some((t) => t.id === templateId))
     return generateProbabilityRulesProblem(templateId, seed);
+  if (similarityTrigTemplates.some((t) => t.id === templateId))
+    return generateSimilarityTrigProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (numberSenseTemplates.some((t) => t.id === templateId))
+    return generateNumberSenseProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))
     return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))

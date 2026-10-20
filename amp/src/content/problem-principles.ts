@@ -6,12 +6,15 @@ import { numberSystemPrinciples } from "./number-system-lessons";
 import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { linearFunctionPrinciples } from "./linear-function-lessons";
+import { twoVariablePrinciples } from "./two-variable-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
 import { shapePrinciples } from "./shape-lessons";
 import { anglePrinciples } from "./angle-lessons";
 import { polygonPrinciples } from "./polygon-lessons";
+import { exponentialPrinciples } from "./exponential-lessons";
 import { probabilityRulesPrinciples } from "./probability-rules-lessons";
+import { similarityTrigPrinciples } from "./similarity-trig-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { bivariatePrinciples } from "./bivariate-lessons";
@@ -26,6 +29,7 @@ import { angleTrianglePrinciples } from "./angle-triangle-lessons";
 import { realNumberPrinciples } from "./real-number-lessons";
 import { radicalPrinciples } from "./radical-lessons";
 import { comparisonPrinciples } from "./comparison-lessons";
+import { numberSensePrinciples } from "./number-sense-lessons";
 import { multiplyDividePrinciples } from "./multiply-divide-lessons";
 import { addSubtractPrinciples } from "./add-subtract-lessons";
 import { factsPrinciples } from "./facts-lessons";
@@ -49,7 +53,9 @@ export const principles: Record<string, string> = {
   ...shapePrinciples,
   ...anglePrinciples,
   ...polygonPrinciples,
+  ...exponentialPrinciples,
   ...probabilityRulesPrinciples,
+  ...similarityTrigPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -66,6 +72,7 @@ export const principles: Record<string, string> = {
   ...timeMoneyPrinciples,
   ...attributePrinciples,
   ...comparisonPrinciples,
+  ...numberSensePrinciples,
   ...multiplyDividePrinciples,
   ...addSubtractPrinciples,
   ...factsPrinciples,
@@ -79,6 +86,7 @@ export const principles: Record<string, string> = {
   ...ratioRatePrinciples,
   ...patternFunctionPrinciples,
   ...linearFunctionPrinciples,
+  ...twoVariablePrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,
   ...circleMeasurementPrinciples,

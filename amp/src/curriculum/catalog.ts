@@ -517,7 +517,8 @@ function-transformations|algebra-2|functions|Describe shifts scales reflections 
 function-composition|algebra-2|functions|Compose functions and determine valid inputs|function-domain-range,function-evaluation|HSF
 inverse-functions|algebra-2|functions|Find inverses and restrict domains where needed|function-composition|HSF
 logarithms|algebra-2|functions|Use logarithms as inverses of exponential functions|exponential-models,inverse-functions|HSF
-exponential-equations|algebra-2|algebra|Solve exponential and logarithmic equations with domain checks|logarithms|HSF
+logarithm-properties|algebra-2|functions|Rewrite and evaluate logarithms with the product quotient and power rules and change of base|logarithms|
+exponential-equations|algebra-2|algebra|Solve exponential and logarithmic equations with domain checks|logarithms,logarithm-properties|HSF
 sequence-sums|algebra-2|functions|Calculate finite geometric sums and interpret them in context|geometric-sequences|HSA
 radians-unit-circle|algebra-2|trigonometry|Connect radians arc length and unit-circle coordinates|arc-sector-measure,special-right-triangles|HSF,SAT.geometry
 trigonometric-graphs|algebra-2|trigonometry|Interpret period amplitude phase and midline|radians-unit-circle,function-transformations|HSF
@@ -1395,6 +1396,42 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// High-school similarity and right-triangle trigonometry (G-SRT).
+for (const [skillId, suffix, description] of [
+  [
+    "dilation-properties",
+    "lengths-centers-invariants",
+    "Find image lengths, scale factors and image points of dilations, including centers other than the origin, and use that dilations keep angles and slopes.",
+  ],
+  [
+    "similarity-proofs",
+    "missing-side",
+    "Find missing sides of similar triangles from matching sides, a segment parallel to a side and shadows, and scale perimeters and areas.",
+  ],
+  [
+    "special-right-triangles",
+    "side-ratios",
+    "Find any side of a 45°-45°-90° or 30°-60°-90° triangle from another, in exact radical form.",
+  ],
+  [
+    "right-triangle-trigonometry",
+    "exact-ratios",
+    "Write sine, cosine and tangent of an acute angle as exact side ratios, and find a side from a given ratio.",
+  ],
+  [
+    "complementary-trigonometry",
+    "cofunctions",
+    "Use sin A = cos(90° − A) to find angles, solve for a variable and convert between the ratios of the two acute angles.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // High-school probability rules (S-CP): sets, addition, conditioning, products.
 for (const [skillId, suffix, description] of [
   [
@@ -1494,6 +1531,105 @@ for (const [skillId, facets] of [
         "Name lines, rays and segments; classify angles and triangles by angle; tell parallel from perpendicular lines.",
       ],
       ["symmetry", "Identify and count lines of symmetry of polygons."],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
+// Exponential growth, geometric sequences and series, and logarithms.
+for (const [skillId, facets] of [
+  [
+    "exponential-models",
+    [
+      [
+        "evaluate",
+        "Evaluate an exponential model at a later time from a table, a percent growth rate, a half-life or a formula with a whole or fractional base.",
+      ],
+      [
+        "construct",
+        "Choose y = a·bˣ from a table, a graph through marked points, or a growth or percent-decay story.",
+      ],
+    ],
+  ],
+  [
+    "growth-comparison",
+    [
+      [
+        "classify",
+        "Classify a table with equal input steps, or a story, as linear, exponential or neither.",
+      ],
+      [
+        "eventual",
+        "Find the first whole input at which 2ˣ or 3ˣ exceeds a given linear function, from a graph, a table or a story.",
+      ],
+    ],
+  ],
+  [
+    "exponential-equations",
+    [
+      [
+        "common-base",
+        "Solve exponential equations whose sides are powers of 2, 3 or 5, including reciprocals and powers on both sides.",
+      ],
+      [
+        "log-solution",
+        "Choose the exact logarithmic solution of a·bˣ = c, b^(x + h) = k, e^(rt) = k or a doubling-time equation.",
+      ],
+      [
+        "log-domain",
+        "Solve log equations of one logarithm, or of a sum or difference of two, rejecting candidates outside the domain.",
+      ],
+    ],
+  ],
+  [
+    "sequence-sums",
+    [
+      [
+        "finite-geometric",
+        "Sum finitely many terms of a geometric sequence given as a list, by first term and ratio, in sigma notation or in a story.",
+      ],
+    ],
+  ],
+  [
+    "logarithm-properties",
+    [
+      [
+        "rules",
+        "Evaluate and rewrite logarithms with the product, quotient and power rules.",
+      ],
+      [
+        "change-of-base",
+        "Evaluate logarithms by changing base, including quotients and products of logarithms.",
+      ],
+    ],
+  ],
+  [
+    "logarithms",
+    [
+      [
+        "exact-values",
+        "Evaluate logarithms of reciprocals, roots and powers of 10, and read a logarithm from its graph.",
+      ],
+      [
+        "forms",
+        "Translate between logarithmic and exponential form, and place a logarithm between consecutive whole numbers.",
+      ],
+    ],
+  ],
+  [
+    "geometric-sequences",
+    [
+      [
+        "ratio-terms",
+        "Find a common ratio, including negative and fractional ratios, a missing middle term, or a term from a recursive rule or two given terms.",
+      ],
     ],
   ],
 ] as const) {
@@ -1875,6 +2011,46 @@ for (const [skillId, suffix, description] of [
     "Find the volume of cones, spheres and hemispheres exactly as a multiple of pi or with 3.14.",
   ],
 
+  [
+    "systems-modeling",
+    "two-unknowns",
+    "Write and solve a count equation and a value equation for two unknown amounts.",
+  ],
+  [
+    "systems-modeling",
+    "feasible-combination",
+    "Choose the combination that meets every constraint of a situation, with the feasible region shaded.",
+  ],
+  [
+    "inequality-regions",
+    "read-region",
+    "Read the inequality or system shown by a shaded half-plane or overlap, with solid or dashed boundaries.",
+  ],
+  [
+    "inequality-regions",
+    "test-point",
+    "Decide which point solves a two-variable inequality, including points on the boundary.",
+  ],
+  [
+    "symbolic-linear-constraints",
+    "letter-coefficients",
+    "Solve linear equations and inequalities with a letter coefficient under its stated condition.",
+  ],
+  [
+    "symbolic-linear-constraints",
+    "exceptional-cases",
+    "Find the parameter value that gives a linear equation or system no solution or infinitely many.",
+  ],
+  [
+    "equation-reasoning",
+    "justify-steps",
+    "Name the property that justifies each step of solving a linear equation, and find a broken step.",
+  ],
+  [
+    "elimination-proof",
+    "sum-keeps-solutions",
+    "Add equations of a system and recognize the equivalent system and why it keeps every solution.",
+  ],
   [
     "coordinate-polygons",
     "aligned-side-lengths",
@@ -2670,6 +2846,47 @@ for (const [skillId, suffix, description] of [
     "arithmetic-patterns",
     "table-patterns",
     "Find a product in a multiplication-table window from the row step, doubling, or the sum of two rows.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Counting, number-line, rounding and powers-of-ten tasks cover bounded facets.
+for (const [skillId, suffix, description] of [
+  [
+    "count-to-100",
+    "counts-and-chart",
+    "Find a missing number in a count by ones or tens within 100, or in a window of the hundred chart.",
+  ],
+  [
+    "write-numerals",
+    "frames-to-twenty",
+    "Write the numeral for 0 to 20 counters shown in ten-frames.",
+  ],
+  [
+    "number-line-arithmetic",
+    "tens-and-ones-hops",
+    "Add or subtract within 100 as a tens hop and an ones hop, and find a hop's length between two numbers.",
+  ],
+  [
+    "round-whole-numbers",
+    "nearest-ten-hundred",
+    "Round whole numbers below 1,000 to the nearest ten or hundred, including halfway values and carries.",
+  ],
+  [
+    "large-place-value",
+    "rounding-large",
+    "Round five- and six-digit whole numbers to the nearest hundred, thousand or ten thousand.",
+  ],
+  [
+    "powers-of-ten",
+    "shift-by-powers",
+    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten, and compare one digit's values in two places.",
   ],
 ])
   skills

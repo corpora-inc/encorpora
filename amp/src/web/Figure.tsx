@@ -18,7 +18,6 @@ import { SignedLineFigure } from "./SignedLineFigure";
 import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
-import { DataDisplayFigure } from "./DataDisplayFigure";
 import { GeometryFigure } from "./GeometryFigure";
 import { ShapeFigure } from "./ShapeFigure";
 import type { SemanticFigure } from "../math/contracts";
@@ -68,11 +67,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "area-partition":
     case "fraction-bars":
       return <PartWholeFigure figure={figure} />;
-    case "sort-shapes":
-    case "picture-graph":
-    case "scaled-bar-graph":
-    case "histogram":
-      return <DataDisplayFigure figure={figure} />;
     case "cube-prism":
     case "box-prism":
     case "composite-prism":

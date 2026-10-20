@@ -48,7 +48,13 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
   // K (and younger): count or compare numerals, join, compare lengths,
   // weights or capacity, take away.
   [
-    ["count-objects", "teen-frame-compose", "greater-numeral"],
+    [
+      "count-objects",
+      "teen-frame-compose",
+      "greater-numeral",
+      "numeral-for-quantity",
+      "count-sequence-missing",
+    ],
     ["join-within-10", "facts-to-five"],
     ["compare-lengths", "compare-weights", "compare-capacity"],
     ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
@@ -103,7 +109,13 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "mental-ten-hundred",
       "multiply-by-tens",
     ],
-    ["place-value-digit", "hundreds-model", "compare-three-digit"],
+    [
+      "place-value-digit",
+      "hundreds-model",
+      "compare-three-digit",
+      "round-to-ten",
+      "round-to-hundred",
+    ],
     ["two-step-change", "delivery-then-use"],
     ["bar-chart-total", "bar-chart-difference"],
   ],
@@ -134,7 +146,12 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "equivalent-numerator",
       "whole-times-fraction",
     ],
-    ["factor-partner", "multidigit-digit-value", "compare-multidigit"],
+    [
+      "factor-partner",
+      "multidigit-digit-value",
+      "compare-multidigit",
+      "multiply-power-of-ten",
+    ],
     ["multiply-by-one-digit", "multiply-multidigit", "divide-by-one-digit"],
   ],
   // Grade 6: decimals, expressions and equations, fractions, the mean.

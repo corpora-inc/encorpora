@@ -690,7 +690,7 @@ function fractionVolumeCase(r: Random): Case {
         `Volume = length × width × height. Multiply the numerators and the denominators: $${product} = \\tfrac{${raw}}{${rawD}}${raw === volume.n && rawD === volume.d ? "" : ` = ${frac(volume)}`}$.`,
         `The volume is ${cubicText(volume, u)}.`,
       ],
-      hint: `Volume = length × width × height = ${edges.map((x) => len(x, u, true)).join(" × ")}. Write mixed numbers as fractions, multiply the numerators and the denominators, then simplify.`,
+      hint: `Multiply the three edges, ${list(edges.map((x) => len(x, u, true)))}. Write each mixed number as a fraction, multiply the numerators and the denominators, then simplify.`,
       figure: {
         kind: "fraction-box-prism",
         unit: u,
@@ -718,7 +718,7 @@ function fractionVolumeCase(r: Random): Case {
       `Divide by multiplying by the reciprocal: $${frac(volume)} \\div ${frac(base)} = ${frac(volume)} \\times ${frac(q(base.d, base.n))} = ${frac(answer)}$.`,
       `Check: $${product} = ${frac(volume)}$. The ${askName} is ${len(answer, u, true)}.`,
     ],
-    hint: `Volume = length × width × height. Multiply the two known edges, ${known.map((i) => len(edges[i]!, u, true)).join(" and ")}, then divide the volume, ${cubicText(volume, u)}, by that product.`,
+    hint: `The volume is length times width times height. Multiply the two known edges, ${known.map((i) => len(edges[i]!, u, true)).join(" and ")}, then divide the volume, ${cubicText(volume, u)}, by that product.`,
     figure: {
       kind: "fraction-box-prism",
       unit: u,
@@ -1118,7 +1118,7 @@ function cylinderCase(r: Random): Case {
       kind: "fraction",
       label: `Height (${unitWords[u][1]})`,
     };
-  const stack = `A cylinder is a stack of copies of its base, ${len(h, u)} tall. Volume = base area × height: $${pi(baseC)} \\times ${h} = ${pi(volumeC)}$ ${C}.`;
+  const stack = `A cylinder is a stack of copies of its base, ${len(h, u)} tall. The volume is the base area times the height: $${pi(baseC)} \\times ${h} = ${pi(volumeC)}$ ${C}.`;
   if (mode === "approx") {
     const value = approx(volumeC);
     return {

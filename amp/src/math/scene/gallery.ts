@@ -17,9 +17,18 @@ import {
   lineTable,
   tenFrame,
   tree,
+  triangle,
   venn,
 } from "./author";
 import type { Scene } from "./spec";
+import {
+  exponentialGraph,
+  exponentialLessonScenes,
+  logGraph,
+  raceBars,
+  raceGraph,
+  stepTable,
+} from "../exponential-scenes";
 import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 
 /** Reference scenes for every component: the gallery renders them at four
@@ -33,6 +42,73 @@ export type GalleryCase = {
 };
 
 export const galleryCases: GalleryCase[] = [
+  {
+    name: "Dot plot: a trial pivot and the mean, with distances (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 8,
+      mark: "dot",
+      groups: [{ values: [1, 2, 2, 3, 7] }],
+      unit: "goals",
+      references: [
+        { at: 4, distances: true, label: "pivot" },
+        { at: 3, distances: true, label: "mean" },
+      ],
+    }).build({ maxHeight: 720 }),
+  },
+  {
+    name: "Dot plot: quartiles and the box over the data (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 10,
+      mark: "dot",
+      groups: [{ values: [1, 2, 2, 3, 4, 5, 5, 6, 8, 9] }],
+      quartiles: true,
+      box: true,
+    }).build({ maxHeight: 720 }),
+  },
+  {
+    name: "Line plot: amounts shared equally (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 2,
+      denominator: 4,
+      mark: "x",
+      groups: [{ values: [0.25, 0.75, 1, 1, 1.5, 1.5] }],
+      share: 1,
+      unit: "liters",
+    }).build({ maxHeight: 720 }),
+  },
+  {
+    name: "Two dot plots: MADs laid across the gap between means (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 12,
+      mark: "dot",
+      groups: [
+        { label: "Morning", values: [3, 4, 5, 5, 6, 7] },
+        { label: "Afternoon", values: [6, 7, 8, 8, 9, 10] },
+      ],
+      unit: "push-ups",
+      references: [
+        { at: 5, group: 0, label: "mean" },
+        { at: 8, group: 1, label: "mean" },
+      ],
+      bricks: { from: 5, to: 8, size: 1 },
+    }).build({ maxHeight: 720 }),
+  },
   {
     name: "Number line: make ten, then add the rest (hint)",
     scene: numberLine({ id: "nl", min: 0, max: 20 })
@@ -291,6 +367,32 @@ export const galleryCases: GalleryCase[] = [
     scene: fractionBar({ shaded: 5, parts: 4, wholes: 2 }).scene(),
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
+  // Exponential growth and logarithms: tables, bars and curves.
+  // The full model: the players step through these in lessons.
+  ...Object.entries(exponentialLessonScenes).map(([name, scene]) => ({
+    name: `Exponential lesson: ${name}`,
+    scene: { ...scene, steps: undefined },
+    reveal: true,
+  })),
+  {
+    name: "Table: constant ratio, a later value asked",
+    scene: stepTable([0, 1, 2, 3], [5, 15, 45, 135], "×3"),
+  },
+  {
+    name: "Graph: exponential through marked points",
+    scene: exponentialGraph(3, 2, [0, 1, 2]),
+  },
+  { name: "Graph: line against exponential", scene: raceGraph(12, 20, 2, 8) },
+  { name: "Graph: log curve, height asked", scene: logGraph(2, 16, 17) },
+  {
+    name: "Bars: two offers by day",
+    scene: raceBars(
+      [0, 1, 2, 3],
+      { label: "Offer A", values: [40, 65, 90, 115] },
+      { label: "Offer B", values: [1, 2, 4, 8] },
+      "Day",
+    ),
+  },
   {
     name: "Venn: counts in every region",
     scene: venn("Art", "Music", { universe: "40 students" })
@@ -592,6 +694,63 @@ export const galleryCases: GalleryCase[] = [
       },
     ).scene({ title: "Adding the equations" }),
   },
+  {
+    name: "Triangle: right angle, sides and the reference angle",
+    scene: triangle([
+      [0, 0],
+      [4, 0],
+      [4, 3],
+    ])
+      .names("A", "C", "B")
+      .side(0, { label: 4 })
+      .side(1, { label: 3 })
+      .side(2, { label: null })
+      .angle(0, { mark: "arc", label: "θ" })
+      .angle(1, { mark: "right" })
+      .scene({ title: "Right triangle ABC" }),
+  },
+  {
+    name: "Triangle: similar pair with matching marks",
+    scene: scene(
+      triangle([
+        [0, 0],
+        [3, 0],
+        [1, 2],
+      ])
+        .names("A", "B", "C")
+        .side(0, { label: 6 })
+        .side(1, { label: 5 })
+        .angle(0, { mark: "arc" })
+        .angle(1, { mark: "arc", arcs: 2 })
+        .id("t1"),
+      triangle([
+        [5, 0],
+        [9.5, 0],
+        [6.5, 3],
+      ])
+        .names("D", "E", "F")
+        .side(0, { label: 9 })
+        .side(1, { label: null })
+        .angle(0, { mark: "arc" })
+        .angle(1, { mark: "arc", arcs: 2 })
+        .id("t2"),
+    ).build({ title: "Triangles ABC and DEF" }),
+  },
+  {
+    name: "Triangle: 30-60-90 with congruent ticks",
+    scene: triangle([
+      [0, 0],
+      [Math.sqrt(3) * 2, 0],
+      [0, 2],
+    ])
+      .side(0, { label: "2√3" })
+      .side(1, { label: 4 })
+      .side(2, { label: 2, ticks: 1 })
+      .angle(0, { mark: "right" })
+      .angle(1, { mark: "arc", label: "30°" })
+      .angle(2, { mark: "arc", arcs: 2, label: "60°" })
+      .scene(),
+  },
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */
@@ -673,4 +832,47 @@ export const parityFigures: SemanticFigure[] = [
   { kind: "base-ten", hundreds: 0, tens: 13, ones: 6 },
   { kind: "unit-array", rows: 7, columns: 6, splitAfterRow: 4 },
   { kind: "unit-array", rows: 3, columns: 9 },
+  {
+    kind: "histogram",
+    start: 0,
+    width: 10,
+    counts: [2, 5, 8, 6, 3],
+    unit: "minutes",
+  },
+  {
+    kind: "scaled-bar-graph",
+    categories: [
+      { label: "Mon", value: 30 },
+      { label: "Tue", value: 45 },
+      { label: "Wed", value: 15 },
+      { label: "Thu", value: 50 },
+    ],
+    step: 10,
+    max: 60,
+    unit: "cans",
+  },
+  {
+    kind: "picture-graph",
+    categories: [
+      { label: "Soccer", count: 25 },
+      { label: "Swim", count: 10 },
+      { label: "Tennis", count: 15 },
+    ],
+    key: 10,
+    unit: "students",
+  },
+  {
+    kind: "sort-shapes",
+    shapes: [
+      "circle",
+      "square",
+      "triangle",
+      "square",
+      "circle",
+      "triangle",
+      "circle",
+      "square",
+      "circle",
+    ],
+  },
 ];
