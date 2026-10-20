@@ -31,6 +31,8 @@ import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
+import { FLAG_RATE_LIMIT, problemFlagSchema } from "../feedback/problem-flags";
+import { recordProblemFlag } from "../feedback/record";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
 const birthYearSchema = z.number().int().min(1900).max(2100);
@@ -564,6 +566,26 @@ function routes(app: FastifyInstance, options: AppOptions) {
         : outcome;
     });
   });
+  /** "Report a problem" on a resolved problem. First-party only. */
+  app.post(
+    "/api/v1/learners/:learnerId/problem-flags",
+    { config: { rateLimit: { max: FLAG_RATE_LIMIT, timeWindow: "1 hour" } } },
+    async (request, reply) => {
+      const account = await parent(request);
+      const { learnerId } = paramsSchema.parse(request.params);
+      const input = problemFlagSchema.parse(request.body);
+      const saved = await options.repository.transaction(
+        account,
+        learnerId,
+        (tx) =>
+          recordProblemFlag(tx, input, {
+            trial: isTrialAccount(account),
+            apiCommit: build.commit,
+          }),
+      );
+      return reply.code(201).send(saved);
+    },
+  );
   registerBookRoutes(app, {
     repository: options.repository,
     parent,

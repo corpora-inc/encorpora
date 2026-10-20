@@ -18,3 +18,4 @@ import "katex/dist/katex.min.css";
 import "../theme.css";
 import "../premium-controls.css";
 import "../app-shell.css";
+import "../problem-flag.css";

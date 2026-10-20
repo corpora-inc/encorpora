@@ -213,6 +213,9 @@ export class FamilyRepository {
         "SELECT to_regclass('amp_purchase_consents') AS relation",
       )
     ).rows[0]?.relation;
+    const flags = !!(
+      await client.query("SELECT to_regclass('amp_problem_flags') AS relation")
+    ).rows[0]?.relation;
     let retained = 0,
       linked =
         !learnerId && stripe
@@ -271,6 +274,12 @@ export class FamilyRepository {
       await client.query("DELETE FROM amp_instances WHERE learner_id=$1", [
         row.id,
       ]);
+      // Reports outlive the learner only as notes-free reports on content.
+      if (flags)
+        await client.query(
+          "UPDATE amp_problem_flags SET learner_id=NULL,note=NULL WHERE learner_id=$1",
+          [row.id],
+        );
       if (preserve) {
         await client.query(
           "UPDATE amp_learners SET name='Deleted learner',birth_year=NULL,starting_band=NULL,starting_policy=NULL,starting_excluded_strands=NULL,deleted_at=COALESCE(deleted_at,now()),created_at=CASE WHEN deleted_at IS NULL THEN now() ELSE created_at END WHERE id=$1",
@@ -404,6 +413,17 @@ export class FamilyRepository {
             "SELECT to_jsonb(r) - 'input_digest' AS value FROM amp_offline_receipts r JOIN amp_offline_packs p ON p.id=r.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY r.pack_id,r.request_id",
           ],
         );
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_problem_flags') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "problem-report",
+          "SELECT to_jsonb(f) AS value FROM amp_problem_flags f JOIN amp_learners l ON l.id=f.learner_id WHERE l.account_id=$1 ORDER BY f.created_at,f.id",
+        ]);
       if (
         (
           await client.query(
