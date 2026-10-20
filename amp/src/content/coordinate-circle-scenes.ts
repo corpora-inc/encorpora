@@ -27,9 +27,9 @@ const inscribed = (c: number, id: string) =>
 export const coordinateCircleScenes = {
   // The inscribed angle's vertex slides along the arc; the angle stays 35°.
   "circle-inscribed-slide": scene(
-    inscribed(40, "c1"),
-    inscribed(90, "c2"),
-    inscribed(140, "c3"),
+    inscribed(60, "c1"),
+    inscribed(135, "c2"),
+    inscribed(170, "c3"),
   ).build({
     title: "An inscribed angle on arc AB, from three points of the circle",
     steps: [

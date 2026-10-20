@@ -182,6 +182,11 @@ registerComponent("circleDiagram", {
         // Away from the center, or to one side of a segment through it.
         if (normal[0] * mid[0] + normal[1] * mid[1] < 0)
           normal = [-normal[0], -normal[1]];
+        // A segment from the center (a radius, or O to an outside point)
+        // labels below and to its right, clear of the tangent and chords
+        // that meet its far end.
+        if ((g.from === "O" || g.to === "O") && normal[1] > 0)
+          normal = [-normal[0], -normal[1]];
         prims.push({
           type: "text",
           id: `segment.${i}.label`,
@@ -247,8 +252,13 @@ registerComponent("circleDiagram", {
           Math.acos(Math.max(-1, Math.min(1, u1[0] * u2[0] + u1[1] * u2[1]))) /
           2;
         const w = typeset(g.label ?? "?", "math", "sm").width;
+        // Far enough out to clear the arc, but near enough to read as this
+        // vertex's label even for a narrow angle.
         const r = px(
-          Math.max(34, (w / 2 + 8) / Math.sin(Math.max(half, 0.05))),
+          Math.min(
+            52,
+            Math.max(34, (w / 2 + 8) / Math.sin(Math.max(half, 0.05))),
+          ),
         );
         prims.push({
           type: "text",
@@ -275,10 +285,12 @@ registerComponent("circleDiagram", {
           font: "math",
           bold: true,
           place: [
-            [-6, 6, 1, -1],
-            [6, 6, -1, -1],
-            [-6, -6, 1, 1],
+            // Above the center first: central-angle marks open downward
+            // toward the arcs these figures measure.
             [6, -6, -1, 1],
+            [-6, -6, 1, 1],
+            [6, 6, -1, -1],
+            [-6, 6, 1, -1],
           ],
         },
       );
