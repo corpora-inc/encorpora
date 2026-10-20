@@ -48,6 +48,10 @@ import {
   generateQuadraticStructureProblem,
 } from "./quadratic-structure-practice";
 import {
+  functionToolkitTemplates,
+  generateFunctionToolkitProblem,
+} from "./function-toolkit-practice";
+import {
   patternFunctionTemplates,
   generatePatternFunctionProblem,
 } from "./pattern-function-practice";
@@ -357,6 +361,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
   ...quadraticStructureTemplates,
+  ...functionToolkitTemplates,
   ...twoVariableTemplates,
   ...equationTemplates,
   ...rationalTemplates,
@@ -529,6 +534,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
     ...quadraticStructureTemplates,
+    ...functionToolkitTemplates,
     ...twoVariableTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
@@ -610,6 +616,8 @@ function generateRawProblem(
     return generateLinearFunctionProblem(templateId, seed);
   if (quadraticStructureTemplates.some((t) => t.id === templateId))
     return generateQuadraticStructureProblem(templateId, seed);
+  if (functionToolkitTemplates.some((t) => t.id === templateId))
+    return generateFunctionToolkitProblem(templateId, seed);
   if (angleTemplates.some((t) => t.id === templateId))
     return generateAngleProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))

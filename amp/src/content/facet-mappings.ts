@@ -6,6 +6,7 @@ import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { linearFunctionFacetMappings } from "./linear-function-coverage";
 import { quadraticStructureFacetMappings } from "./quadratic-structure-coverage";
+import { functionToolkitFacetMappings } from "./function-toolkit-coverage";
 import { twoVariableFacetMappings } from "./two-variable-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
@@ -86,6 +87,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...patternFunctionFacetMappings,
   ...linearFunctionFacetMappings,
   ...quadraticStructureFacetMappings,
+  ...functionToolkitFacetMappings,
   ...twoVariableFacetMappings,
   ...equationFacetMappings,
   ...rationalFacetMappings,
