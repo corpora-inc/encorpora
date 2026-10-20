@@ -6,6 +6,7 @@ import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { linearFunctionLessons } from "./linear-function-lessons";
 import { quadraticStructureLessons } from "./quadratic-structure-lessons";
+import { functionToolkitLessons } from "./function-toolkit-lessons";
 import { twoVariableLessons } from "./two-variable-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
@@ -587,6 +588,7 @@ export const lessons: readonly Lesson[] = [
   ...patternFunctionLessons,
   ...linearFunctionLessons,
   ...quadraticStructureLessons,
+  ...functionToolkitLessons,
   ...twoVariableLessons,
   ...equationLessons,
   ...rationalLessons,

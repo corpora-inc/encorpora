@@ -7,6 +7,7 @@ import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { linearFunctionMethods } from "./linear-function-lessons";
 import { quadraticStructureMethods } from "./quadratic-structure-lessons";
+import { functionToolkitMethods } from "./function-toolkit-lessons";
 import { twoVariableMethods } from "./two-variable-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
@@ -98,6 +99,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...patternFunctionMethods,
   ...linearFunctionMethods,
   ...quadraticStructureMethods,
+  ...functionToolkitMethods,
   ...twoVariableMethods,
   ...equationMethods,
   ...rationalMethods,

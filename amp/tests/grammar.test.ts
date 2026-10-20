@@ -9,13 +9,17 @@ const rules: [RegExp, string][] = [
     "plural noun after 1",
   ],
   [/\b[Tt]here (are|were) 1\b/, "plural verb before 1"],
-  [/(?<![\d./−+×÷=*-]\s?)\b1 (were|are|have)\b/, "plural verb directly after 1"],
+  [
+    /(?<![\d./−+×÷=*-]\s?)\b1 (were|are|have)\b/,
+    "plural verb directly after 1",
+  ],
   [/\([a-z]*s\)|[a-z]\(s\)/, "“(s)” plural placeholder"],
   [
     /(?:^|[=:] )(-?[\d/.]+) = \1(?=[.,;]?$|[.,;] |\s[a-z])/,
     "repeated equal value (x = x)",
   ],
-  [/(?<![A-Za-z\d)])\(\d[\d/.]*\)/, "positive number in parentheses"],
+  // A TeX group before the parenthesis is function notation: f^{-1}(3).
+  [/(?<![A-Za-z\d)}])\(\d[\d/.]*\)/, "positive number in parentheses"],
   [
     /\b1 [a-z]+ (contain|use|have|are|make|remain|hold|become|give)\b/,
     "plural verb after 1",

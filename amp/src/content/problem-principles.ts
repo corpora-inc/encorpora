@@ -7,6 +7,7 @@ import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { linearFunctionPrinciples } from "./linear-function-lessons";
 import { quadraticStructurePrinciples } from "./quadratic-structure-lessons";
+import { functionToolkitPrinciples } from "./function-toolkit-lessons";
 import { twoVariablePrinciples } from "./two-variable-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
@@ -94,6 +95,7 @@ export const principles: Record<string, string> = {
   ...patternFunctionPrinciples,
   ...linearFunctionPrinciples,
   ...quadraticStructurePrinciples,
+  ...functionToolkitPrinciples,
   ...twoVariablePrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,

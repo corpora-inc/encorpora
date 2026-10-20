@@ -2503,6 +2503,62 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
+// The function toolkit: bounded tasks, each naming its limits.
+for (const [skillId, suffix, description] of [
+  [
+    "piecewise-functions",
+    "evaluate",
+    "Evaluate a piecewise-linear function from its rule or graph, at boundaries and in pricing stories.",
+  ],
+  [
+    "piecewise-functions",
+    "read-and-rewrite",
+    "Rewrite an absolute value as two linear pieces, read a piece's rule from a graph, and count solutions on a piecewise graph.",
+  ],
+  [
+    "function-transformations",
+    "equations",
+    "Match shifts, vertical stretches and reflections of parent graphs with their equations, and describe changes to a rule.",
+  ],
+  [
+    "function-transformations",
+    "points-and-symmetry",
+    "Follow a point through a transformation and use even and odd symmetry.",
+  ],
+  [
+    "function-composition",
+    "evaluate",
+    "Evaluate compositions from formulas, tables and graphs, and find inputs excluded from a composition's domain.",
+  ],
+  [
+    "function-composition",
+    "expressions",
+    "Write compositions as expressions in either order, and decompose a function into outer and inner parts.",
+  ],
+  [
+    "inverse-functions",
+    "values",
+    "Find values of an inverse function from a formula, a table or a graph.",
+  ],
+  [
+    "inverse-functions",
+    "find-and-restrict",
+    "Find inverses of linear functions and of quadratics restricted to one side of the vertex, and choose a one-to-one domain.",
+  ],
+  [
+    "cross-representation-comparison",
+    "features",
+    "Compare maxima, minima, intercepts and average rates of change of functions given by formulas, graphs and tables.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // Quadratic and polynomial structure: bounded tasks, each naming its limits.
 for (const [skillId, suffix, description] of [
   [
