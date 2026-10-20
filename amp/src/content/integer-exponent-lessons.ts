@@ -15,7 +15,7 @@ const foundations: Lesson["sections"] = [
     paragraphs: [
       "Compare 2^3 = 8, 2^2 = 4, and 2^1 = 2. Each decrease of 1 in the exponent divides the value by 2. Continuing gives 2^0 = 1, then 2^(−1) = 1/2 and 2^(−2) = 1/4. For any nonzero base $x$, x^0 = 1.",
       "A fraction a/b means a divided by $b$. Its numerator $a$ is above the fraction bar; its denominator $b$ is below. When $b$ is positive and $a$ is a whole number, it also names a parts of size 1/b. Negative fractions name values below zero. The denominator cannot be zero.",
-      "A reciprocal is a number that multiplies a given nonzero number to make 1. The reciprocal of 2 is 1/2; the reciprocal of −2/3 is −3/2. For a positive integer $n, x^{-n} = 1 / x^{n.} A$ negative exponent asks for a reciprocal, not a negative answer.",
+      "A reciprocal is a number that multiplies a given nonzero number to make 1. The reciprocal of 2 is 1/2; the reciprocal of −2/3 is −3/2. For a positive integer $n$, $x^{-n} = 1 / x^{n.} A$ negative exponent asks for a reciprocal, not a negative answer.",
     ],
   },
 ];
@@ -86,7 +86,7 @@ export const integerExponentLessons: Lesson[] = [
         title: "Join the factors",
         paragraphs: [
           "A product is the result of multiplication. In x^2 × x^3, the first power contributes two factors equal to $x$ and the second contributes three. There are five altogether: (x × x) × (x × x × x) = x^5. The base stays $x$; only the number of factors changes.",
-          "For any nonzero $x$ and integer exponents $m$ and $n, x^{m} \\times  x^{n} = x^{m + n}$. The words same base matter: 2^3 × 5^2 cannot be combined by adding 3 and 2 to make a power of either base.",
+          "For any nonzero $x$ and integer exponents $m$ and $n$, $x^{m} \\times  x^{n} = x^{m + n}$. The words same base matter: 2^3 × 5^2 cannot be combined by adding 3 and 2 to make a power of either base.",
         ],
       },
       {
@@ -99,7 +99,7 @@ export const integerExponentLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "For every nonzero real $x, x^{-3} \\times  x^{5} = x^{k}$. What is $k$?",
+        "For every nonzero real $x$, x^(−3) × x^5 = x^k. What is $k$?",
       steps: [
         "The two powers have the same base $x$. Add their exponents: −3 + 5 = 2.",
         "Therefore x^(−3) × x^5 = x^2, so k = 2.",
@@ -138,14 +138,14 @@ export const integerExponentLessons: Lesson[] = [
       {
         title: "Subtract the denominator's exponent",
         paragraphs: [
-          "For nonzero $x$ and any integers $m$ and $n, x^{m} \\div  x^{n} = x^{m - n}$. Dividing by x^n means multiplying by its reciprocal x^(−n). The product rule then adds $m$ and −n, giving m − n.",
+          "For nonzero $x$ and any integers $m$ and $n$, $x^{m} \\div  x^{n} = x^{m - n}$. Dividing by x^n means multiplying by its reciprocal x^(−n). The product rule then adds $m$ and −n, giving m − n.",
           "The order is numerator exponent minus denominator exponent. Subtracting a negative adds its positive opposite: 2 − (−3) = 2 + 3 = 5. If the exponents match, the quotient is x^0 = 1. The condition x ≠ 0 makes every division valid.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "For every nonzero real $x, x^{-2} \\div  x^{-5} = x^{k}$. What is $k$?",
+        "For every nonzero real $x$, x^(−2) ÷ x^(−5) = x^k. What is $k$?",
       steps: [
         "Subtract the denominator's exponent from the numerator's exponent: k = −2 − (−5).",
         "Subtracting −5 adds 5: −2 + 5 = 3. Therefore k = 3.",
@@ -177,7 +177,7 @@ export const integerExponentLessons: Lesson[] = [
         title: "Count groups of factors",
         paragraphs: [
           "Parentheses tell you which expression the outer exponent acts on. In (x^2)^3, the outer exponent 3 requests three copies of x^2: x^2 × x^2 × x^2. Each copy contains two factors equal to $x$. Three groups of two give six factors, so (x^2)^3 = x^6.",
-          "For nonzero $x$ and integer exponents $m$ and $n, (x^{m})^{n} = x^{m \\times  n}$. Multiply the inner exponent by the outer exponent. Compare (x^2)^3 with x^2 × x^3: the first has exponent 2 × 3 = 6; the second has exponent 2 + 3 = 5.",
+          "For nonzero $x$ and integer exponents $m$ and $n$, $(x^{m})^{n} = x^{m \\times  n}$. Multiply the inner exponent by the outer exponent. Compare (x^2)^3 with x^2 × x^3: the first has exponent 2 × 3 = 6; the second has exponent 2 + 3 = 5.",
         ],
       },
       {
@@ -189,7 +189,7 @@ export const integerExponentLessons: Lesson[] = [
       },
     ],
     workedExample: {
-      prompt: "For every nonzero real $x, (x^{-2})^{-3} = x^{k}$. What is $k$?",
+      prompt: "For every nonzero real $x$, (x^(−2))^(−3) = x^k. What is $k$?",
       steps: [
         "The inner exponent is −2 and the outer exponent is −3. Multiply: (−2) × (−3) = 6.",
         "Therefore (x^(−2))^(−3) = x^6, so k = 6.",
@@ -242,11 +242,11 @@ export const integerExponentMethods: Record<string, ProblemMethod> =
   );
 export const integerExponentPrinciples: Record<string, string> = {
   "negative-integer-power":
-    "For a nonzero base $x$ and positive integer $n, x^{-n} = 1 / x^{n}$. The reciprocal makes the product with x^n equal 1.",
+    "For a nonzero base $x$ and positive integer $n$, $x^{-n} = 1 / x^{n}$. The reciprocal makes the product with x^n equal 1.",
   "product-of-powers-exponent":
-    "For nonzero $x$ and integer exponents $m$ and $n, x^{m} \\times  x^{n} = x^{m + n}$: combine factors and cancel reciprocal pairs.",
+    "For nonzero $x$ and integer exponents $m$ and $n$, $x^{m} \\times  x^{n} = x^{m + n}$: combine factors and cancel reciprocal pairs.",
   "quotient-of-powers-exponent":
-    "For nonzero $x$ and integer exponents $m$ and $n, x^{m} \\div  x^{n} = x^{m - n}$: division multiplies by the reciprocal.",
+    "For nonzero $x$ and integer exponents $m$ and $n$, $x^{m} \\div  x^{n} = x^{m - n}$: division multiplies by the reciprocal.",
   "power-of-power-exponent":
-    "For nonzero $x$ and integer exponents $m$ and $n, (x^{m})^{n} = x^{m \\times  n}$: repeat groups of factors, using reciprocals for negative powers.",
+    "For nonzero $x$ and integer exponents $m$ and $n$, $(x^{m})^{n} = x^{m \\times  n}$: repeat groups of factors, using reciprocals for negative powers.",
 };

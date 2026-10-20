@@ -115,7 +115,7 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "No solution or infinitely many",
         paragraphs: [
-          "Collecting the $x$-terms of ax + 4 = 3x + 9 gives (a − 3)x = 5. If a = 3 the left side is 0 for every $x$ while the right side is 5: no solution. For any other $a, x = 5/(a - 3)$.",
+          "Collecting the $x$-terms of ax + 4 = 3x + 9 gives (a − 3)x = 5. If a = 3 the left side is 0 for every $x$ while the right side is 5: no solution. For any other $a$, $x = 5/(a - 3)$.",
           "2(x + 3) = 2x + c becomes 2x + 6 = 2x + c. The $x$-terms always match, so if c = 6 the two sides are identical and every $x$ is a solution; otherwise there is none. For a system, kx + 2y = 5 and 3x + y = 1 have no solution when the lines are parallel and different: k = 6 makes the left side twice 3x + y while 5 ≠ 2 × 1.",
         ],
       },

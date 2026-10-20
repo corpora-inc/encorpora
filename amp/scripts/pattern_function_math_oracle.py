@@ -205,6 +205,7 @@ def linear_from_points(points, name):
 
 
 def equation_line(text):
+    text = re.sub(r'^\$(.*)\$$', r'\1', text.strip())  # typeset as $y = 2x + 6$
     m = re.fullmatch(r'y = (−?\d*)x(?: ([+−]) (\d+))?', text)
     require(m is not None, 'Unrecognized linear equation: ' + text)
     slope = {'': 1, '−': -1}.get(m[1])
@@ -252,6 +253,7 @@ def solve_compare(public):
 
 
 def rule_function(text):
+    text = re.sub(r'^\$(.*)\$$', r'\1', text.strip())  # typeset as $y = x^2 + 1$
     """Exact evaluator for a displayed rule y = … in x (×, implicit products, ², /)."""
     require(text.startswith('y = '), 'Rule must define y')
     expr = text[4:].replace('−', '-').replace('²', '**2')

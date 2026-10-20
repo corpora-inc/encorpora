@@ -15,7 +15,7 @@ import subprocess
 from fractions import Fraction
 from pathlib import Path
 
-from algebra_one_expr import evaluate, holds, number, parse, require, solve_linear, variables
+from algebra_one_expr import untex, evaluate, holds, number, parse, require, solve_linear, variables
 
 LINEAR_FUNCTION_NUMBER = frozenset({
     'average-rate-formula', 'average-rate-display', 'linear-model-value', 'formula-value', 'solution-coordinate',
@@ -31,7 +31,8 @@ N = r'(−?\d+(?:\.\d+)?)'
 def options(public):
     response = public['response']
     require(response['kind'] == 'choice', 'Expected a choice response')
-    return [(o['id'], o['label']) for o in response['options']]
+    # An option typeset as one formula ($−2 ≤ x ≤ 3$) reads as its text.
+    return [(o['id'], untex(o['label'])) for o in response['options']]
 
 
 def only(public, truth):
@@ -435,7 +436,8 @@ SOLVERS = {
 
 def solve_linear_function(public):
     require(public['templateId'] in SOLVERS, 'Not an Algebra 1 function template')
-    return SOLVERS[public['templateId']](public)
+    # Formulas in the prompt are typeset ($f(x) = 2^x$); read them as text.
+    return SOLVERS[public['templateId']]({**public, 'prompt': untex(public['prompt'])})
 
 
 def review_problem(problem):

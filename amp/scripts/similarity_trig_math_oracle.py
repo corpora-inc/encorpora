@@ -32,6 +32,8 @@ def plain(text):
         t = re.sub(r'\\sqrt\{(\d+)\}', r'√\1', t)
         t = t.replace('^\\circ', '°').replace('\\theta', 'θ').replace('\\sin', 'sin').replace('\\cos', 'cos').replace('\\tan', 'tan')
         t = t.replace('-', '−')
+        # Angles and primed vertices are typeset too: $\angle B'$ reads ∠B′.
+        t = re.sub(r'\\angle\s*', '∠', t).replace("'", '′')
         return re.sub(r'\s+', ' ', t).strip()
     return re.sub(r'\$([^$]*)\$', inner, text)
 

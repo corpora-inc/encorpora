@@ -57,6 +57,13 @@ const EQUATION: [string, RegExp][] = [
   ["caret", /\^/],
   ["square root", /\bsqrt\b|√/],
   ["π outside math", /π/],
+  ["∠ outside math", /∠/],
+  // A named point, segment, line, ray, angle or polygon (segment AB,
+  // triangle ABC) is math, like a single point ($P$).
+  [
+    "bare point name",
+    /\b(?:segments?|sides?|lines?|rays?|chords?|arcs?|triangles?|angles?|quadrilaterals?|polygons?|pentagons?|hexagons?|parallelograms?|trapezoids?|squares?|rectangles?|vertices|diagonals?)\s+[A-Z]{2,4}′?(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])[A-Z]{2,3}′?\s*[=<>≤≥≠:²]/u,
+  ],
 ];
 
 /** A capitalized noun before a letter makes the letter a name ("Store A",

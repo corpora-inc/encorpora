@@ -11,7 +11,7 @@ def affine(expression, variable="x"):
     """Return exact (coefficient, constant), rejecting nonlinear expressions."""
     if not re.fullmatch(r"[a-zA-Z]", variable):
         raise ValueError("One variable required")
-    source = expression.replace("−", "-").replace("×", "*").replace("·", "*")
+    source = expression.replace("$", "").replace("−", "-").replace("×", "*").replace("·", "*")
     if not re.fullmatch(r"[0-9a-zA-Z+*/().\-\s]+", source):
         raise ValueError("Unsupported symbol")
     source = re.sub(r"(?<=[0-9)])(?=[a-zA-Z(])", "*", source)

@@ -772,7 +772,7 @@ function parameterSolutionCount(r: Random): Case {
       explanation: [
         `Subtract ${termText(q, "x")} from both sides: $(a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}$.`,
         `If a = ${n(q)}, the $x$-terms cancel and ${n(b)} is left on the left side and ${n(d)} on the right. Their difference is ${n(b)} − ${p1(d)} = ${n(b - d)}, not 0, so no $x$ is a solution.`,
-        `For any other $a, x = (${n(d)} − ${b < 0 ? `(${n(b)})` : b}) ÷ (a − ${q < 0 ? `(${n(q)})` : q})$ is a solution. So a = ${n(q)}.`,
+        `For any other $a$, $x = (${n(d)} − ${b < 0 ? `(${n(b)})` : b}) ÷ (a − ${q < 0 ? `(${n(q)})` : q})$ is a solution. So a = ${n(q)}.`,
       ],
       hint: `Collect the $x$-terms: ax − ${q < 0 ? `(${n(q)})` : q}x. When does that coefficient become 0, and what is left of ${n(b)} and ${n(d)}?`,
       tags: [frame],

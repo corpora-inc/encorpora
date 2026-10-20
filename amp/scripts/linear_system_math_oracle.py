@@ -16,8 +16,8 @@ COUNT = 'linear-system-solution-count'
 LINEAR_SYSTEM = frozenset({PAIR, COUNT})
 COUNT_LABELS = ('Exactly one ordered pair', 'No ordered pairs', 'Infinitely many ordered pairs')
 PROMPTS = {
-    PAIR: r'Which ordered pair \(x, y\) satisfies both equations for real x and y: (.+); (.+)\?',
-    COUNT: r'How many ordered pairs \(x, y\) satisfy both equations for real x and y: (.+); (.+)\?',
+    PAIR: r'Which ordered pair \$?\(x, y\)\$? satisfies both equations for real \$?x\$? and \$?y\$?: (.+); (.+)\?',
+    COUNT: r'How many ordered pairs \$?\(x, y\)\$? satisfy both equations for real \$?x\$? and \$?y\$?: (.+); (.+)\?',
 }
 
 
@@ -885,12 +885,12 @@ def check_linear_system_content(records):
     for lesson in lessons:
         worked=lesson['workedExample']
         if lesson['id']==PAIR:
-            found=re.fullmatch(r'Find the ordered pair \(x, y\) satisfying (.+) and (.+)\.',worked['prompt'])
+            found=re.fullmatch(r'Find the ordered pair \$?\(x, y\)\$? satisfying (.+) and (.+)\.',worked['prompt'])
             require(found is not None, 'Unexpected pair worked-example grammar')
             outcome,pair=solution(tuple(equation(value) for value in found.groups()))
             require(outcome=='one' and pair_value(worked['answer'])==pair, 'Incorrect standalone pair example')
         else:
-            found=re.fullmatch(r'How many ordered pairs \(x, y\) satisfy (.+) and (.+)\?',worked['prompt'])
+            found=re.fullmatch(r'How many ordered pairs \$?\(x, y\)\$? satisfy (.+) and (.+)\?',worked['prompt'])
             require(found is not None, 'Unexpected count worked-example grammar')
             outcome,_=solution(tuple(equation(value) for value in found.groups()))
             require(outcome=='infinite' and worked['answer']==COUNT_LABELS[2], 'Incorrect standalone count example')

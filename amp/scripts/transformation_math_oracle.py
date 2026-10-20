@@ -31,6 +31,7 @@ def reading(prompt):
     read as the plain names the patterns below spell out."""
     prompt = prompt.replace("$A'B'C'$", 'A′B′C′')
     prompt = re.sub(r"\$([ABC])'\$", r'\1′', prompt)
+    prompt = re.sub(r'\$([A-Z]+)\$', r'\1', prompt)
     return re.sub(r'\$([xy])\$-axis', r'\1-axis', prompt)
 
 def require(condition, message):
@@ -392,7 +393,7 @@ def solve_transformation(public):
     template = public['templateId']
     kind = public['response']['kind']
     require((kind == 'choice') == (template in TRANSFORMATION_CHOICE), 'Response kind mismatch')
-    return SOLVERS[template](public)
+    return SOLVERS[template]({**public, 'prompt': reading(public['prompt'])})
 
 
 # ---------- explanations ----------
@@ -538,7 +539,7 @@ def content(data=None):
 
 
 def tags(problems, template):
-    prompts = [p['public']['prompt'] for p in problems]
+    prompts = [reading(p['public']['prompt']) for p in problems]
     if template == 'coordinate-side-length':
         return {p.split(' ')[0] for p in prompts} == {'Rectangle', 'Triangle', 'Quadrilateral', 'Hexagon'}
     if template == 'coordinate-rectangle-measure':
