@@ -22,7 +22,7 @@ export function figureTextCapHeight(svg: SVGSVGElement): number | null {
   if (!view?.width || !view.height) return null;
   // No legacy figure scales its labels with a transform, so a label's
   // computed size is its size in view-box units.
-  const sizes = [...svg.querySelectorAll("text")].flatMap((t) => {
+  const sizes = Array.from(svg.querySelectorAll("text")).flatMap((t) => {
     const size = Number.parseFloat(getComputedStyle(t).fontSize);
     return size > 0 && t.textContent?.trim() ? [size] : [];
   });
@@ -43,9 +43,8 @@ export function figureTextCapHeight(svg: SVGSVGElement): number | null {
 export function FigureTextCap({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLSpanElement>(null);
   useLayoutEffect(() => {
-    for (const svg of ref.current?.querySelectorAll<SVGSVGElement>(
-      "svg[viewBox]",
-    ) ?? []) {
+    const svgs = ref.current?.querySelectorAll<SVGSVGElement>("svg[viewBox]");
+    for (const svg of svgs ? Array.from(svgs) : []) {
       if (svg.ownerSVGElement || svg.classList.contains("scene-figure"))
         continue;
       const cap = figureTextCapHeight(svg);
