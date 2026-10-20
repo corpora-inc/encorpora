@@ -99,6 +99,13 @@ The last command creates a desktop executable with bundled frontend assets. It e
 
 The crate exports Tauri's mobile entry point. Minimum configured OS versions are iOS 16 and Android API 29. Native IDE projects and app-store identities are not included. Generating a project with the Tauri CLI requires the appropriate Xcode or Android SDK/NDK installation; it does not create a store listing or authorize publishing.
 
+### Orientation
+
+Phones are portrait-only; tablets support every orientation.
+
+- iOS: `Info.ios.plist` sets `UISupportedInterfaceOrientations` to portrait and `UISupportedInterfaceOrientations~ipad` to all four orientations. The Tauri CLI merges it over the generated `gen/apple/*_iOS/Info.plist` on every `tauri ios build` and `tauri ios dev`, replacing the template's keys.
+- Android: `gen/android/app/src/main/java/inc/corpora/amp/MainActivity.kt` is the one tracked file under `gen/`, and `tauri android init` keeps it. It requests portrait when `smallestScreenWidthDp < 600` and leaves orientation unspecified on tablets. The check runs before the window is created and again on configuration changes, so a foldable that opens to tablet width can rotate.
+
 Cross-target checks, when the SDKs and toolchains are configured, run from `amp/mobile`:
 
 ```sh
@@ -106,7 +113,7 @@ cargo check --locked --target aarch64-apple-ios
 cargo check --locked --target aarch64-linux-android
 ```
 
-These checks verify Rust compilation only. They do not replace simulator/device launch, accessibility checks, lifecycle testing or store review. Signing material and generated IDE projects belong outside this source package; `/gen/` and `/target/` are ignored. There is no native in-app billing or ESA fulfillment implementation in this shell.
+These checks verify Rust compilation only. They do not replace simulator/device launch, accessibility checks, lifecycle testing or store review. Signing material and generated IDE projects belong outside this source package; `/target/` and everything in `/gen/` except the Android `MainActivity.kt` are ignored. There is no native in-app billing or ESA fulfillment implementation in this shell.
 
 The preview icon follows the AMP interface’s wave mark. Its editable source is `icons/source.svg`; regenerate the required PNG from `amp/mobile` with:
 

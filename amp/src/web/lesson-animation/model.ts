@@ -1,15 +1,15 @@
 import type { ProblemLessonView } from "../../content/problem-lessons";
-import type { SemanticFigure } from "../../math/contracts";
+import type {
+  CoordinateGeometryFigure,
+  PlaneMotion,
+  SemanticFigure,
+} from "../../math/contracts";
+import { applyMotion } from "../../math/plane-motion";
 import {
   geometryAnimationModel,
   geometryFrames,
   type GeometryAnimationModel,
 } from "./geometry";
-import {
-  shapeMorphFrames,
-  shapeMorphModel,
-  type ShapeMorphAnimation,
-} from "./shape-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -49,7 +49,6 @@ export type CompareAnimation = {
 };
 /** Equal-area grid regions; one region is the highlighted part. */
 export type AreaAnimation = { kind: "area"; figure: Area };
-type LinePlot = Extract<SemanticFigure, { kind: "line-plot" }>;
 type CounterRows = Extract<SemanticFigure, { kind: "counter-rows" }>;
 type BaseTenPair = Extract<SemanticFigure, { kind: "base-ten-pair" }>;
 type AreaModel = Extract<SemanticFigure, { kind: "area-model" }>;
@@ -61,8 +60,6 @@ export type DecimalAlignAnimation = {
   kind: "decimal-align";
   figure: DecimalChart;
 };
-type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
-type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 /** One analog clock: both hands start on the hour, then sweep to the time. */
 export type ClockSweepAnimation = {
@@ -106,7 +103,6 @@ export type AnimationModel =
       count: number;
       first: "share" | "measure";
     }
-  | ShapeMorphAnimation
   | {
       kind: "plot";
       rows: { x: number; y: number }[];
@@ -117,8 +113,6 @@ export type AnimationModel =
   | { kind: "balance"; figure: Balance; form: BalanceForm; x: number }
   | DecimalFillAnimation
   | DecimalAlignAnimation
-  | { kind: "prism-layers"; figure: CubePrism }
-  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
@@ -130,16 +124,19 @@ export type AnimationModel =
   | { kind: "array"; figure: ArrayFigure & { splitAfterRow: number } }
   | { kind: "exchange"; figure: Exchange; unit: 1 | 10 }
   | GeometryAnimationModel
-  | { kind: "line-plot-stack"; figure: LinePlot }
-  | { kind: "line-plot-share"; figure: LinePlot; share: number }
-  | { kind: "mean-balance"; figure: LinePlot; mad: boolean; trial: number }
-  | { kind: "box-build"; figure: LinePlot }
   | RateModel
-  | MadGapAnimation
   /** A point reflected across 0 onto its opposite. */
   | { kind: "opposite"; value: number; min: number; max: number }
   /** Signed changes added one jump at a time; values are exact halves. */
-  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number };
+  | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number }
+  | {
+      kind: "motion";
+      /** The pre-image alone, in a window that also holds the image. */
+      figure: CoordinateGeometryFigure;
+      motion: PlaneMotion;
+      given: LabeledPoint[];
+      image: LabeledPoint[];
+    };
 const half = (n: number) => Number.isFinite(n) && Number.isInteger(n * 2);
 /** Running positions of a jump sequence, exact for halves. */
 export const jumpStops = (start: number, jumps: number[]) =>
@@ -150,21 +147,8 @@ export const jumpStops = (start: number, jumps: number[]) =>
 /** TeX for a signed number; negatives in parentheses when they follow an operator. */
 /** Prose uses a typographic minus. */
 const shown = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
-const signedTex = (n: number, wrap = false) => (n < 0 && wrap ? `(${n})` : `${n}`);
-type DoubleDot = Extract<SemanticFigure, { kind: "double-dot-plot" }>;
-/** Two groups with the same whole-number MAD; the gap between means is laid out in MADs. */
-export type MadGapAnimation = {
-  kind: "mad-gap";
-  figure: DoubleDot;
-  means: [number, number];
-  mad: number;
-};
-const meanOf = (v: readonly number[]) =>
-  v.reduce((a, b) => a + b, 0) / v.length;
-const madOf = (v: readonly number[]) => {
-  const m = meanOf(v);
-  return v.reduce((a, x) => a + Math.abs(x - m), 0) / v.length;
-};
+const signedTex = (n: number, wrap = false) =>
+  n < 0 && wrap ? `(${n})` : `${n}`;
 /** Indexes of the first two addends that make ten, then the third. */
 export function tenPair(
   addends: readonly [number, number, number],
@@ -176,6 +160,101 @@ export function tenPair(
   ] as const)
     if (addends[p[0]] + addends[p[1]] === 10) return [...p];
   return null;
+}
+type LabeledPoint = { x: number; y: number; label: string };
+const motionTemplates = new Set([
+  "transformation-image",
+  "identify-rigid-motion",
+  "dilation-image",
+  "dilation-scale-factor",
+]);
+const moved = applyMotion;
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
+/** The single motion carrying every given vertex onto its labeled image, if any. */
+function detectMotion(
+  given: LabeledPoint[],
+  image: LabeledPoint[],
+): PlaneMotion | null {
+  const first = given.find((p) => p.x !== 0);
+  const candidates: PlaneMotion[] = [
+    { kind: "reflect", axis: "x" },
+    { kind: "reflect", axis: "y" },
+    { kind: "rotate", degrees: 90 },
+    { kind: "rotate", degrees: 180 },
+    { kind: "rotate", degrees: 270 },
+    {
+      kind: "translate",
+      dx: image[0]!.x - given[0]!.x,
+      dy: image[0]!.y - given[0]!.y,
+    },
+  ];
+  if (first) {
+    const i = given.indexOf(first),
+      num = image[i]!.x,
+      den = first.x,
+      g = gcd(num, den) * Math.sign(den);
+    if (Number.isInteger(num) && num / den > 0)
+      candidates.push({
+        kind: "dilate",
+        numerator: num / g,
+        denominator: den / g,
+      });
+  }
+  const fits = candidates.filter((m) =>
+    given.every((p, i) => {
+      const q = moved(m, p);
+      return q.x === image[i]!.x && q.y === image[i]!.y;
+    }),
+  );
+  return fits.length === 1 ? fits[0]! : null;
+}
+function motionModel(
+  f: CoordinateGeometryFigure,
+): Extract<AnimationModel, { kind: "motion" }> | null {
+  const givenShapes = f.shapes.filter((s) => s.role === "given"),
+    imageShapes = f.shapes.filter((s) => s.role === "image");
+  if (givenShapes.length !== 1 || imageShapes.length > 1) return null;
+  const given = givenShapes[0]!.vertices;
+  if (given.length !== 3 || !givenShapes[0]!.closed) return null;
+  let motion = f.motion ?? null;
+  if (!motion) {
+    const image = imageShapes[0]?.vertices;
+    if (!image || image.length !== 3) return null;
+    if (!image.every((v, i) => v.label === `${given[i]!.label}′`)) return null;
+    motion = detectMotion(given, image);
+  }
+  if (!motion) return null;
+  if (
+    motion.kind === "dilate" &&
+    (motion.numerator <= 0 || motion.denominator <= 0)
+  )
+    return null;
+  const image = given.map((p) => ({
+    ...moved(motion, p),
+    label: `${p.label}′`,
+  }));
+  if (image.some((p) => !Number.isInteger(p.x) || !Number.isInteger(p.y)))
+    return null;
+  const all = [...given, ...image, { x: 0, y: 0 }];
+  const window = {
+    xMin: Math.min(...all.map((p) => p.x)) - 1,
+    xMax: Math.max(...all.map((p) => p.x)) + 1,
+    yMin: Math.min(...all.map((p) => p.y)) - 1,
+    yMax: Math.max(...all.map((p) => p.y)) + 1,
+  };
+  if (window.xMax - window.xMin > 24 || window.yMax - window.yMin > 24)
+    return null;
+  return {
+    kind: "motion",
+    figure: {
+      kind: "coordinate-geometry",
+      ...window,
+      shapes: [{ role: "given", closed: true, vertices: given }],
+    },
+    motion,
+    given,
+    image,
+  };
 }
 const integer = (n: number, min: number, max: number) =>
   Number.isInteger(n) && n >= min && n <= max;
@@ -242,8 +321,6 @@ export function animationModel(
   const f = lesson.example.figure;
   const geometry = geometryAnimationModel(lesson.templateId, f);
   if (geometry) return geometry;
-  const morph = shapeMorphModel(lesson.templateId, f);
-  if (morph) return morph;
   if (
     lesson.templateId === "compare-capacity" &&
     f?.kind === "pour" &&
@@ -306,68 +383,6 @@ export function animationModel(
     chartValue(f.rows[0]!, f.places) !== chartValue(f.rows[1]!, f.places)
   )
     return { kind: "decimal-align", figure: f };
-  if (
-    (lesson.templateId === "unit-cube-volume" ||
-      lesson.templateId === "cube-layer-count") &&
-    f?.kind === "cube-prism" &&
-    integer(f.length, 1, 6) &&
-    integer(f.width, 1, 6) &&
-    integer(f.height, 2, 6)
-  )
-    return { kind: "prism-layers", figure: f };
-  if (
-    lesson.templateId === "first-quadrant-coordinates" &&
-    f?.kind === "quadrant-grid" &&
-    integer(f.size, 4, 10) &&
-    f.points.length === 1
-  )
-    return { kind: "quadrant-walk", figure: f };
-  if (
-    (lesson.templateId === "dot-plot-mean" ||
-      lesson.templateId === "dot-plot-mad") &&
-    f?.kind === "line-plot" &&
-    f.mark === "dot" &&
-    f.denominator === 1 &&
-    validPlot(f)
-  ) {
-    const mean = f.values.reduce((a, b) => a + b, 0) / f.values.length;
-    const lo = Math.min(...f.values),
-      hi = Math.max(...f.values);
-    // A trial pivot that is not the mean: the middle of the range, or beside it.
-    const mid = (lo + hi) / 2;
-    const trial = mid !== mean ? mid : mean + (hi - mean > 1 ? 1 : -1);
-    return {
-      kind: "mean-balance",
-      figure: f,
-      mad: lesson.templateId === "dot-plot-mad",
-      trial,
-    };
-  }
-  if (lesson.templateId === "means-in-mads" && f?.kind === "double-dot-plot") {
-    const [a, b] = f.groups.map((g) => g.values);
-    const mad = madOf(a!),
-      gap = Math.abs(meanOf(a!) - meanOf(b!));
-    if (
-      integer(mad, 1, 5) &&
-      madOf(b!) === mad &&
-      integer((2 * gap) / mad, 1, 12)
-    )
-      return {
-        kind: "mad-gap",
-        figure: f,
-        means: [meanOf(a!), meanOf(b!)],
-        mad,
-      };
-  }
-  if (
-    lesson.templateId === "dot-plot-iqr" &&
-    f?.kind === "line-plot" &&
-    f.mark === "dot" &&
-    f.denominator === 1 &&
-    validPlot(f) &&
-    f.values.length >= 4
-  )
-    return { kind: "box-build", figure: f };
   if (
     lesson.templateId === "balanced-addition" &&
     f?.kind === "equal-balance"
@@ -586,27 +601,6 @@ export function animationModel(
   )
     return rateModel(f);
   if (
-    (lesson.templateId === "line-plot-whole" ||
-      lesson.templateId === "fraction-line-plot") &&
-    f?.kind === "line-plot" &&
-    validPlot(f)
-  )
-    return { kind: "line-plot-stack", figure: f };
-  if (
-    lesson.templateId === "fraction-plot-equal-share" &&
-    f?.kind === "line-plot" &&
-    validPlot(f)
-  ) {
-    const total = f.values.reduce((a, b) => a + b, 0);
-    // The shared amount must land on a tick, and all marks must fit one stack.
-    if (total % f.values.length === 0 && f.values.length <= 8)
-      return {
-        kind: "line-plot-share",
-        figure: f,
-        share: total / f.values.length,
-      };
-  }
-  if (
     lesson.templateId === "exchange-base-ten" &&
     f?.kind === "base-ten" &&
     integer(f.hundreds, 0, 9) &&
@@ -618,6 +612,11 @@ export function animationModel(
     if (f.tens >= 10 && f.ones < 10)
       return { kind: "exchange", figure: f, unit: 10 };
   }
+  if (
+    motionTemplates.has(lesson.templateId) &&
+    f?.kind === "coordinate-geometry"
+  )
+    return motionModel(f);
   if (
     (lesson.templateId === "balance-one-step" ||
       lesson.templateId === "balance-two-step") &&
@@ -768,25 +767,81 @@ const UNIT: Record<number, [string, string]> = {
   3: ["third", "thirds"],
   4: ["quarter", "quarters"],
 };
-function validPlot(f: LinePlot) {
-  return (
-    integer(f.start, 0, 400) &&
-    integer(f.end, f.start + 1, f.start + 12) &&
-    f.values.length >= 3 &&
-    f.values.length <= 24 &&
-    f.values.every((v) => integer(v, f.start, f.end))
-  );
+const coordTex = (v: number) => String(v);
+const texPoints = (points: LabeledPoint[]) =>
+  // One formula per point, so a narrow panel wraps between points.
+  points
+    .map(
+      (p) =>
+        `$${p.label.replace("′", "'")}(${coordTex(p.x)}, ${coordTex(p.y)})$`,
+    )
+    .join(", ");
+const amount = (v: number, plus: string, minus: string) =>
+  `${Math.abs(v)} ${Math.abs(v) === 1 ? "unit" : "units"} ${v > 0 ? plus : minus}`;
+function motionFrames(model: Extract<AnimationModel, { kind: "motion" }>) {
+  const m = model.motion;
+  const k =
+    m.kind === "dilate"
+      ? m.denominator === 1
+        ? String(m.numerator)
+        : `${m.numerator}/${m.denominator}`
+      : "";
+  const kTex =
+    m.kind === "dilate"
+      ? m.denominator === 1
+        ? String(m.numerator)
+        : `\\tfrac{${m.numerator}}{${m.denominator}}`
+      : "";
+  const [guideTitle, guideText, rule, result] =
+    m.kind === "translate"
+      ? [
+          "Slide every point",
+          `Every vertex moves ${[...(m.dx ? [amount(m.dx, "right", "left")] : []), ...(m.dy ? [amount(m.dy, "up", "down")] : [])].join(" and ")}.`,
+          `$(x, y) \\to (x ${m.dx < 0 ? "-" : "+"} ${Math.abs(m.dx)},\\ y ${m.dy < 0 ? "-" : "+"} ${Math.abs(m.dy)})$`,
+          "Same size and shape, in a new place.",
+        ]
+      : m.kind === "reflect"
+        ? [
+            `Mirror line: the ${m.axis}-axis`,
+            `Each vertex moves straight across the ${m.axis}-axis, at a right angle to it, to the same distance on the other side.`,
+            m.axis === "x" ? "$(x, y) \\to (x, -y)$" : "$(x, y) \\to (-x, y)$",
+            `Same size and shape, flipped over the ${m.axis}-axis.`,
+          ]
+        : m.kind === "rotate"
+          ? [
+              m.degrees === 180
+                ? "Half turn about the origin"
+                : "Quarter turn about the origin",
+              `Each vertex turns ${m.degrees === 180 ? "180°" : `90° ${m.degrees === 90 ? "counterclockwise" : "clockwise"}`} around the origin and keeps its distance from it.`,
+              m.degrees === 90
+                ? "$(x, y) \\to (-y, x)$"
+                : m.degrees === 180
+                  ? "$(x, y) \\to (-x, -y)$"
+                  : "$(x, y) \\to (y, -x)$",
+              "Same size and shape, turned about the origin.",
+            ]
+          : [
+              "Rays from the center",
+              `Each vertex moves along its ray from the origin, and its distance from the origin is multiplied by ${k}.`,
+              `$(x, y) \\to (${kTex}x,\\ ${kTex}y)$`,
+              m.numerator > m.denominator
+                ? `Same shape; every length is ${k} times as long.`
+                : `Same shape; every length is ${k} as long.`,
+            ];
+  return [
+    {
+      title: "The pre-image",
+      text: `Triangle ${model.given.map((p) => p.label).join("")} before the ${m.kind === "dilate" ? "dilation" : "motion"}.`,
+      math: texPoints(model.given),
+    },
+    { title: guideTitle, text: guideText, math: rule },
+    {
+      title: `The image ${model.image.map((p) => p.label).join("")}`,
+      text: result,
+      math: texPoints(model.image),
+    },
+  ];
 }
-const plotted = (v: number, d: number) => {
-  const whole = Math.floor(v / d),
-    rest = v % d;
-  if (!rest) return `${whole}`;
-  let a = rest,
-    b = d;
-  while (b) [a, b] = [b, a % b];
-  const frac = `\\tfrac{${rest / a}}{${d / a}}`;
-  return whole ? `${whole}${frac}` : frac;
-};
 const plural = (n: number, one: string, many: string) =>
   `${n} ${n === 1 ? one : many}`;
 const tex = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
@@ -837,25 +892,10 @@ export const firstDifference = (figure: DecimalChart) => {
 };
 const written = (row: { ones: number; decimals: string }) =>
   `${row.ones}.${row.decimals}`;
-/** Quartiles by the median-of-halves convention (overall median left out for odd counts). */
-export function fiveNumbers(values: readonly number[]) {
-  const xs = [...values].sort((a, b) => a - b),
-    n = xs.length;
-  const median = (v: number[]) => {
-    const k = Math.floor(v.length / 2);
-    return v.length % 2 ? v[k]! : (v[k - 1]! + v[k]!) / 2;
-  };
-  return {
-    min: xs[0]!,
-    q1: median(xs.slice(0, Math.floor(n / 2))),
-    median: median(xs),
-    q3: median(xs.slice(Math.ceil(n / 2))),
-    max: xs[n - 1]!,
-  };
-}
 const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
+  if (model.kind === "motion") return motionFrames(model);
   if (
     model.kind === "triangle-sum" ||
     model.kind === "exterior-angle" ||
@@ -1066,7 +1106,6 @@ export function animationFrames(model: AnimationModel) {
       },
     ];
   }
-  if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
     const first = rows.find((r) => r.x !== 0) ?? rows[0]!;
@@ -1174,138 +1213,6 @@ export function animationFrames(model: AnimationModel) {
         title: "Compare from the left",
         text: `The first column that differs is the ${place}: ${digit(pa)} and ${digit(pb)}. Columns to its right cannot change the result.`,
         math: `$${written(a!)} ${sign} ${written(b!)}$`,
-      },
-    ];
-  }
-  if (model.kind === "prism-layers") {
-    const { length: l, width: w, height: h } = model.figure,
-      layer = l * w;
-    return [
-      {
-        title: "One layer",
-        text: `The top shows ${l} by ${w} cubes. The bottom layer is the same.`,
-        math: `$${l} \\times ${w} = ${layer}$ cubes`,
-      },
-      {
-        title: "Stack the layers",
-        text: `${h} identical layers fill the prism, hidden cubes included.`,
-        math: `$${h}$ layers`,
-      },
-      {
-        title: "Multiply",
-        text: `Each of the ${h} layers holds ${layer} cubes.`,
-        math: `$V = ${layer} \\times ${h} = ${layer * h}$ cubic units`,
-      },
-    ];
-  }
-  if (model.kind === "quadrant-walk") {
-    const { x, y } = model.figure.points[0]!;
-    return [
-      {
-        title: "Start at the origin",
-        text: "Both coordinates are 0 where the axes meet.",
-        math: "$(0, 0)$",
-      },
-      {
-        title: "Across first",
-        text: `Go ${x} across along the x-axis: the first coordinate.`,
-        math: `$x = ${x}$`,
-      },
-      {
-        title: "Then up",
-        text: `Go ${y} up to reach the point: the second coordinate.`,
-        math: `$(${x}, ${y})$`,
-      },
-    ];
-  }
-  if (model.kind === "mean-balance") {
-    const { values } = model.figure,
-      n = values.length,
-      sum = values.reduce((a, b) => a + b, 0),
-      mean = sum / n;
-    const below = values
-      .filter((v) => v < mean)
-      .reduce((a, v) => a + (mean - v), 0);
-    const g = (a: number, b: number): number => (b ? g(b, a % b) : a);
-    const frac = (p: number, q: number) => {
-      const k = g(Math.abs(p), q);
-      return q / k === 1
-        ? { tex: `${p / k}`, text: `${p / k}` }
-        : {
-            tex: `\\tfrac{${p / k}}{${q / k}}`,
-            text: `${p / k}/${q / k}`,
-          };
-    };
-    const belowText = frac(Math.round(below * n), n);
-    return [
-      {
-        title: "Put the dots on a beam",
-        text: `${n} values sit on the number line like equal weights.`,
-        math: `$\\text{sum} = ${sum}$`,
-      },
-      {
-        title: "Try a pivot",
-        text: `With the pivot at ${num(model.trial)}, the beam tips: one side carries more total distance.`,
-        math: `$\\text{pivot} = ${num(model.trial)}$`,
-      },
-      model.mad
-        ? {
-            title: "Balance, then measure the spread",
-            text: `The beam balances at the mean. The distances below it equal the distances above it, ${belowText.text} each side. The MAD is the mean of all the distances.`,
-            math: `$\\text{MAD} = \\dfrac{2 \\times ${belowText.tex}}{${n}}$`,
-          }
-        : {
-            title: "Balance at the mean",
-            text: `The beam balances at ${frac(sum, n).text}: the distances below it add up to the distances above it.`,
-            math: `$${sum} \\div ${n} = ${frac(sum, n).tex}$`,
-          },
-    ];
-  }
-  if (model.kind === "mad-gap") {
-    const [g1, g2] = model.figure.groups,
-      [m1, m2] = model.means,
-      gap = Math.abs(m1 - m2),
-      k = gap / model.mad;
-    return [
-      {
-        title: "Two groups, one scale",
-        text: `${g1.label} (top) and ${g2.label} (bottom) share one number line, so equal values line up. Both have a MAD of ${model.mad}.`,
-        math: `$\\text{MAD} = ${model.mad}$`,
-      },
-      {
-        title: "Find each mean",
-        text: [g1, g2]
-          .map(
-            (g, i) =>
-              `${g.label}: ${g.values.reduce((a, b) => a + b, 0)}\u00a0÷\u00a0${g.values.length}\u00a0=\u00a0${num(model.means[i]!)}.`,
-          )
-          .join(" "),
-        math: `$${num(Math.max(m1, m2))} - ${num(Math.min(m1, m2))} = ${num(gap)}$`,
-      },
-      {
-        title: "Lay MADs across the gap",
-        text: `The gap of ${num(gap)} holds ${num(k)} MADs of ${model.mad}. The more MADs between the means, the less the groups overlap.`,
-        math: `$${num(gap)} \\div ${model.mad} = ${num(k)}$`,
-      },
-    ];
-  }
-  if (model.kind === "box-build") {
-    const q = fiveNumbers(model.figure.values);
-    return [
-      {
-        title: "The ordered data",
-        text: "A dot plot already lists the values in order, left to right.",
-        math: `$${model.figure.values.length}\\text{ values}$`,
-      },
-      {
-        title: "Split at the median, then split each half",
-        text: "The median cuts the data into halves; each half’s median is a quartile.",
-        math: `$Q_1 = ${num(q.q1)},\\; \\text{median} = ${num(q.median)},\\; Q_3 = ${num(q.q3)}$`,
-      },
-      {
-        title: "Draw the box",
-        text: "The box spans the middle half of the data, from Q1 to Q3; the whiskers reach the least and greatest values.",
-        math: `$\\text{IQR} = ${num(q.q3)} - ${num(q.q1)} = ${num(q.q3 - q.q1)}$`,
       },
     ];
   }
@@ -1555,55 +1462,6 @@ export function animationFrames(model: AnimationModel) {
         title: "Name one part",
         text: `The shaded part is one of ${count} equal shares of the area.`,
         math: `$\\dfrac{${cells / count}}{${cells}} = \\dfrac{1}{${count}}$`,
-      },
-    ];
-  }
-  if (model.kind === "line-plot-stack") {
-    const { values, denominator: d } = model.figure;
-    const half = Math.ceil(values.length / 2);
-    const counts = new Map<number, number>();
-    for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1);
-    const n = Math.max(...counts.values());
-    const tops = [...counts]
-      .filter(([, c]) => c === n)
-      .map(([v]) => v)
-      .sort((a, b) => a - b);
-    return [
-      {
-        title: "Draw the scale",
-        text: `Mark equal spaces of ${d === 1 ? "one unit" : `1/${d} unit`} along the number line, wide enough for every measurement.`,
-        math: `${values.length}\\text{ measurements}`,
-      },
-      {
-        title: "One mark per measurement",
-        text: `Place an × above each length. A repeated length stacks on top of the one below.`,
-        math: `${half}\\text{ of }${values.length}\\text{ placed}`,
-      },
-      {
-        title: "Read the stacks",
-        text: `Every measurement is shown once. The tallest ${tops.length > 1 ? "stacks show the most common lengths" : "stack is the most common length"}.`,
-        math: `${n}\\text{ at }${tops.map((v) => plotted(v, d)).join("\\text{ and }")}`,
-      },
-    ].map((f) => ({ ...f, math: `$${f.math}$` }));
-  }
-  if (model.kind === "line-plot-share") {
-    const { values, denominator: d } = model.figure;
-    const total = values.reduce((a, b) => a + b, 0);
-    return [
-      {
-        title: "Read every amount",
-        text: `${values.length} beakers, each × one beaker, measured in ${d === 2 ? "halves" : d === 4 ? "fourths" : "eighths"} of a liter.`,
-        math: `$${values.length}\\text{ beakers}$`,
-      },
-      {
-        title: "Pool the water",
-        text: "Pour every beaker into one jug. The total does not change.",
-        math: `$\\text{total} = \\dfrac{${total}}{${d}}$`,
-      },
-      {
-        title: "Share it equally",
-        text: "Pour the total back into the beakers so each holds the same amount. Every × moves to one value.",
-        math: `$\\dfrac{${total}}{${d}} \\div ${values.length} = ${[`\\dfrac{${model.share}}{${d}}`, plotted(model.share, d).replace("tfrac", "dfrac")].filter((v, i, all) => all.indexOf(v) === i).join(" = ")}$`,
       },
     ];
   }

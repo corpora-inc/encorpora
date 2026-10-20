@@ -6,8 +6,8 @@ import {
   animationModel,
   animationFrames,
   jumpStops,
-  fiveNumbers,
 } from "../src/web/lesson-animation/model";
+import type { CoordinateGeometryFigure } from "../src/math/contracts";
 
 test("animation models conserve the quantities in real lesson examples", () => {
   const kinds = new Set<string>();
@@ -99,41 +99,6 @@ test("animation models conserve the quantities in real lesson examples", () => {
     "tens",
     "times",
   ]);
-});
-
-test("geometry models follow the lesson example's own figure", () => {
-  for (let i = 0; i < 60; i++) {
-    for (const id of ["unit-cube-volume", "cube-layer-count"]) {
-      const lesson = problemLesson(id, `animation-${i}`);
-      const model = animationModel(lesson);
-      assert(model?.kind === "prism-layers", id);
-      const { length: l, width: w, height: h } = model.figure;
-      const frames = animationFrames(model);
-      assert.equal(frames.length, 3);
-      assert.equal(
-        Number(lesson.example.answer),
-        id === "unit-cube-volume" ? l * w * h : l * w,
-      );
-      assert.equal(
-        frames[2]!.math,
-        `$V = ${l * w} \\times ${h} = ${l * w * h}$ cubic units`,
-      );
-    }
-    const lesson = problemLesson(
-      "first-quadrant-coordinates",
-      `animation-${i}`,
-    );
-    const model = animationModel(lesson);
-    assert(model?.kind === "quadrant-walk");
-    const { x, y } = model.figure.points[0]!;
-    assert.equal(lesson.example.answer, `(${x}, ${y})`);
-    assert.equal(animationFrames(model)[2]!.math, `$(${x}, ${y})$`);
-  }
-  // Locating among several points has no single path to trace.
-  assert.equal(
-    animationModel(problemLesson("first-quadrant-locate", "animation")),
-    null,
-  );
 });
 
 test("incompatible or invalid figures fall back to the ordinary lesson figure", () => {
@@ -340,6 +305,100 @@ test("balance adapter rejects unlevel or undrawable balances", () => {
   }
 });
 
+/** Coordinate rules restated here, independent of the generator and the model. */
+const rules: Record<string, (x: number, y: number) => [number, number]> = {
+  '{"kind":"reflect","axis":"x"}': (x, y) => [x, -y],
+  '{"kind":"reflect","axis":"y"}': (x, y) => [-x, y],
+  '{"kind":"rotate","degrees":90}': (x, y) => [-y, x],
+  '{"kind":"rotate","degrees":180}': (x, y) => [-x, -y],
+  '{"kind":"rotate","degrees":270}': (x, y) => [y, -x],
+};
+function expected(motion: object, x: number, y: number): [number, number] {
+  const m = motion as {
+    kind: string;
+    dx?: number;
+    dy?: number;
+    numerator?: number;
+    denominator?: number;
+  };
+  if (m.kind === "translate") return [x + m.dx!, y + m.dy!];
+  if (m.kind === "dilate")
+    return [
+      (x * m.numerator!) / m.denominator!,
+      (y * m.numerator!) / m.denominator!,
+    ];
+  return rules[JSON.stringify(motion)]!(x, y);
+}
+
+test("motion animations carry every vertex exactly onto its image", () => {
+  const seen = new Set<string>();
+  for (const id of [
+    "transformation-image",
+    "identify-rigid-motion",
+    "dilation-image",
+    "dilation-scale-factor",
+  ])
+    for (let i = 0; i < 80; i++) {
+      const lesson = problemLesson(id, `motion-${i}`);
+      const model = animationModel(lesson);
+      assert(model && model.kind === "motion", `${id} has no motion model`);
+      const figure = lesson.example.figure as CoordinateGeometryFigure;
+      const given = figure.shapes.find((s) => s.role === "given")!.vertices;
+      assert.deepEqual(
+        model.given.map((p) => [p.x, p.y]),
+        given.map((p) => [p.x, p.y]),
+      );
+      model.given.forEach((p, j) =>
+        assert.deepEqual(
+          [model.image[j]!.x, model.image[j]!.y],
+          expected(model.motion, p.x, p.y),
+        ),
+      );
+      // A stated image must be the one the animation lands on.
+      const image = figure.shapes.find((s) => s.role === "image");
+      if (image)
+        assert.deepEqual(
+          image.vertices.map((p) => [p.x, p.y]),
+          model.image.map((p) => [p.x, p.y]),
+        );
+      const frames = animationFrames(model);
+      assert.equal(frames.length, 3);
+      for (const p of model.image)
+        assert.ok(
+          frames[2]!.math.includes(`(${p.x}, ${p.y})`),
+          frames[2]!.math,
+        );
+      seen.add(
+        model.motion.kind === "rotate"
+          ? `rotate-${model.motion.degrees}`
+          : model.motion.kind === "reflect"
+            ? `reflect-${model.motion.axis}`
+            : model.motion.kind,
+      );
+    }
+  assert.deepEqual([...seen].sort(), [
+    "dilate",
+    "reflect-x",
+    "reflect-y",
+    "rotate-180",
+    "rotate-270",
+    "rotate-90",
+    "translate",
+  ]);
+});
+
+test("a figure whose image fits no single motion falls back to the static figure", () => {
+  const lesson = problemLesson("identify-rigid-motion", "motion-fallback");
+  const figure = structuredClone(
+    lesson.example.figure,
+  ) as CoordinateGeometryFigure;
+  figure.shapes[1]!.vertices[2]!.x += 1;
+  assert.equal(
+    animationModel({ ...lesson, example: { ...lesson.example, figure } }),
+    null,
+  );
+});
+
 test("geometry animations come from exact figures and state true measures", () => {
   const seen = new Set<string>();
   for (const id of [
@@ -376,75 +435,6 @@ test("geometry animations come from exact figures and state true measures", () =
     "transversal",
     "triangle-sum",
   ]);
-});
-
-test("line-plot animations keep every measurement and share the exact mean", () => {
-  for (const id of ["line-plot-whole", "fraction-line-plot"])
-    for (let i = 0; i < 40; i++) {
-      const model = animationModel(problemLesson(id, `stack-${i}`));
-      assert(model?.kind === "line-plot-stack", id);
-      assert.equal(animationFrames(model).length, 3);
-    }
-  for (let i = 0; i < 60; i++) {
-    const lesson = problemLesson("fraction-plot-equal-share", `share-${i}`);
-    const model = animationModel(lesson);
-    assert(model?.kind === "line-plot-share");
-    const { values, denominator } = model.figure;
-    assert.equal(
-      model.share * values.length,
-      values.reduce((a, b) => a + b, 0),
-    );
-    const [n, d] = lesson.example.answer.split("/").map(Number);
-    assert.equal(model.share * (d ?? 1), n! * denominator);
-    assert.ok(model.share >= Math.min(...values));
-    assert.ok(model.share <= Math.max(...values));
-  }
-});
-
-test("statistics animations balance at the exact mean and box the exact quartiles", () => {
-  for (const id of ["dot-plot-mean", "dot-plot-mad"])
-    for (let i = 0; i < 60; i++) {
-      const model = animationModel(problemLesson(id, `balance-${i}`));
-      assert(model?.kind === "mean-balance", id);
-      const { values } = model.figure;
-      const mean = values.reduce((a, b) => a + b, 0) / values.length;
-      assert.notEqual(model.trial, mean);
-      // Signed distances about the mean cancel: it is the balance point.
-      assert.ok(Math.abs(values.reduce((a, v) => a + (v - mean), 0)) < 1e-9);
-      assert.equal(animationFrames(model).length, 3);
-    }
-  for (let i = 0; i < 60; i++) {
-    const lesson = problemLesson("dot-plot-iqr", `box-${i}`);
-    const model = animationModel(lesson);
-    assert(model?.kind === "box-build");
-    const q = fiveNumbers(model.figure.values);
-    const [n, d] = lesson.example.answer.split("/").map(Number);
-    assert.equal(
-      q.q3 - q.q1,
-      Number(
-        lesson.example.answer.includes(".")
-          ? lesson.example.answer
-          : n! / (d ?? 1),
-      ),
-    );
-    assert.ok(
-      q.min <= q.q1 && q.q1 <= q.median && q.median <= q.q3 && q.q3 <= q.max,
-    );
-  }
-});
-
-test("the MAD-gap animation lays exactly the gap between the means in MADs", () => {
-  for (let i = 0; i < 60; i++) {
-    const lesson = problemLesson("means-in-mads", `gap-${i}`);
-    const model = animationModel(lesson);
-    assert(model?.kind === "mad-gap");
-    const [a, b] = model.figure.groups.map((g) => g.values);
-    const mean = (v: number[]) => v.reduce((s, x) => s + x, 0) / v.length;
-    assert.deepEqual(model.means, [mean(a!), mean(b!)]);
-    const [n, d] = lesson.example.answer.split("/").map(Number);
-    assert.equal(Math.abs(mean(a!) - mean(b!)) / model.mad, n! / (d ?? 1));
-    assert.equal(animationFrames(model).length, 3);
-  }
 });
 
 test("root zooms and decimal shifts follow the example's own givens exactly", () => {

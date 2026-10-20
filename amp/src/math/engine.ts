@@ -1,4 +1,8 @@
 import {
+  transformationTemplates,
+  generateTransformationProblem,
+} from "./transformation-practice";
+import {
   completingSquareTemplates,
   generateCompletingSquareProblem,
 } from "./completing-square-practice";
@@ -27,6 +31,10 @@ import {
   distributionTemplates,
   generateDistributionProblem,
 } from "./distribution-practice";
+import {
+  twoVariableTemplates,
+  generateTwoVariableProblem,
+} from "./two-variable-practice";
 import {
   linearFunctionTemplates,
   generateLinearFunctionProblem,
@@ -81,6 +89,18 @@ import { shapeTemplates, generateShapeProblem } from "./shape-practice";
 import { angleTemplates, generateAngleProblem } from "./angle-practice";
 import { polygonTemplates, generatePolygonProblem } from "./polygon-practice";
 import {
+  exponentialTemplates,
+  generateExponentialProblem,
+} from "./exponential-practice";
+import {
+  similarityTrigTemplates,
+  generateSimilarityTrigProblem,
+} from "./similarity-trig-practice";
+import {
+  probabilityRulesTemplates,
+  generateProbabilityRulesProblem,
+} from "./probability-rules-practice";
+import {
   factArrayTemplates,
   generateFactArrayProblem,
 } from "./fact-arrays-practice";
@@ -96,6 +116,10 @@ import {
   multiplyDivideTemplates,
   generateMultiplyDivideProblem,
 } from "./multiply-divide-practice";
+import {
+  numberSenseTemplates,
+  generateNumberSenseProblem,
+} from "./number-sense-practice";
 import {
   comparisonTemplates,
   generateComparisonProblem,
@@ -290,6 +314,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...volumeCoordinateTemplates,
   ...shapeTemplates,
   ...polygonTemplates,
+  ...exponentialTemplates,
   ...angleTemplates,
   ...linePlotTemplates,
   ...earlyDataTemplates,
@@ -304,18 +329,23 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalTemplates,
   ...addSubtractTemplates,
   ...comparisonTemplates,
+  ...numberSenseTemplates,
   ...multiplyDivideTemplates,
   ...factsTemplates,
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...transformationTemplates,
   ...angleTriangleTemplates,
   ...realNumberTemplates,
   ...numberSystemTemplates,
+  ...probabilityRulesTemplates,
+  ...similarityTrigTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
   ...quadraticStructureTemplates,
+  ...twoVariableTemplates,
   ...equationTemplates,
   ...rationalTemplates,
   ...circleMeasurementTemplates,
@@ -476,14 +506,17 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...transformationTemplates,
     ...completingSquareTemplates,
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    ...exponentialTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
     ...quadraticStructureTemplates,
+    ...twoVariableTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
@@ -499,6 +532,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...angleTriangleTemplates,
     ...realNumberTemplates,
     ...numberSystemTemplates,
+    ...probabilityRulesTemplates,
+    ...similarityTrigTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -532,6 +567,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (transformationTemplates.some((t) => t.id === templateId))
+    return generateTransformationProblem(templateId, seed);
   if (completingSquareTemplates.some((t) => t.id === templateId))
     return generateCompletingSquareProblem(templateId, seed);
   if (factoringTemplates.some((t) => t.id === templateId))
@@ -546,8 +583,12 @@ function generateRawProblem(
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))
     return generateShapeProblem(templateId, seed);
+  if (exponentialTemplates.some((t) => t.id === templateId))
+    return generateExponentialProblem(templateId, seed);
   if (polygonTemplates.some((t) => t.id === templateId))
     return generatePolygonProblem(templateId, seed);
+  if (twoVariableTemplates.some((t) => t.id === templateId))
+    return generateTwoVariableProblem(templateId, seed);
   if (linearFunctionTemplates.some((t) => t.id === templateId))
     return generateLinearFunctionProblem(templateId, seed);
   if (quadraticStructureTemplates.some((t) => t.id === templateId))
@@ -580,8 +621,14 @@ function generateRawProblem(
     return generateAngleTriangleProblem(templateId, seed);
   if (realNumberTemplates.some((t) => t.id === templateId))
     return generateRealNumberProblem(templateId, seed);
+  if (probabilityRulesTemplates.some((t) => t.id === templateId))
+    return generateProbabilityRulesProblem(templateId, seed);
+  if (similarityTrigTemplates.some((t) => t.id === templateId))
+    return generateSimilarityTrigProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
+  if (numberSenseTemplates.some((t) => t.id === templateId))
+    return generateNumberSenseProblem(templateId, seed);
   if (multiplyDivideTemplates.some((t) => t.id === templateId))
     return generateMultiplyDivideProblem(templateId, seed);
   if (addSubtractTemplates.some((t) => t.id === templateId))

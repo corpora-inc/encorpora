@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { segments, toTex } from "../src/web/MathText";
-import { displayAnswer } from "../src/web/ProblemLesson";
+import { segments, toTex, withSeparators } from "../src/web/MathText";
 
 // A missing number is part of its equation: one formula, typeset spacing.
 test("a blank and its equation typeset as one formula", () => {
@@ -25,6 +24,12 @@ test("a sentence-ending question mark is still prose", () => {
   assert.equal(s.filter((x) => x.math).length, 1);
 });
 
+test("a question mark after explicit TeX is prose, not a blank", () => {
+  const s = segments("What is $\\log_2 8$?");
+  assert.deepEqual(s.at(-1), { text: "?", math: false });
+  assert.equal(s.filter((x) => x.math).length, 1);
+});
+
 test("a thousands separator stays inside its numeral", () => {
   const math = segments("Multiply: 2,000 × 3 = 6,000; 70 × 50 = 3,500.")
     .filter((s) => s.math)
@@ -38,10 +43,10 @@ test("a thousands separator stays inside its numeral", () => {
 });
 
 test("a whole-number answer shows thousands separators", () => {
-  assert.equal(displayAnswer("6084"), "6,084");
-  assert.equal(displayAnswer("372946"), "372,946");
-  assert.equal(displayAnswer("940"), "940");
-  assert.equal(displayAnswer("3/4"), "3/4");
+  assert.equal(withSeparators("6084"), "6,084");
+  assert.equal(withSeparators("372946"), "372,946");
+  assert.equal(withSeparators("940"), "940");
+  assert.equal(withSeparators("3/4"), "3/4");
 });
 
 test("a bare symbol named in prose keeps its comma as prose", () => {

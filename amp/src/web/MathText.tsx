@@ -100,6 +100,12 @@ export function segments(text: string): Segment[] {
       });
       return;
     }
+    // A question mark right after explicit TeX ends the sentence; it is
+    // not a blank ("What is $\log_2 8$?").
+    if (part.startsWith("?") && out.at(-1)?.math) {
+      push("?", false);
+      part = part.slice(1);
+    }
     const words = part.split(/(\s+)/);
     let run: string[] = [];
     const flush = () => {
@@ -224,3 +230,9 @@ export function toTex(formula: string): string {
       .replace(/√/g, "\\sqrt ")
   );
 }
+
+/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
+export const withSeparators = (answer: string) =>
+  /^\d{4,}$/.test(answer)
+    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : answer;

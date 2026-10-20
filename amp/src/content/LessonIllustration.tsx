@@ -15,6 +15,7 @@ import { DecimalIllustration } from "./DecimalIllustration";
 import { TimeMoneyIllustration } from "./TimeMoneyIllustration";
 import { AttributeIllustration } from "./AttributeIllustration";
 import { CombinatoricsIllustration } from "./CombinatoricsIllustration";
+import { TransformationIllustration } from "./TransformationIllustration";
 import { AngleTriangleIllustration } from "./AngleTriangleIllustration";
 import { RealNumberIllustration } from "./RealNumberIllustration";
 import {
@@ -24,6 +25,7 @@ import {
 } from "./NumberSystemIllustration";
 import { RadicalIllustration } from "./RadicalIllustration";
 import { ComparisonIllustration } from "./ComparisonIllustration";
+import { NumberSenseIllustration } from "./NumberSenseIllustration";
 import { MultiplyDivideIllustration } from "./MultiplyDivideIllustration";
 import { AddSubtractIllustration } from "./AddSubtractIllustration";
 import { FactsIllustration } from "./FactsIllustration";
@@ -46,7 +48,7 @@ import {
   dataIllustrations,
   isDataIllustration,
 } from "./data-display-illustrations";
-import { DataDisplayFigure } from "../web/DataDisplayFigure";
+import { Figure } from "../web/Figure";
 import { isSceneIllustration, sceneIllustrations } from "./scene-illustrations";
 import { SceneFigure } from "../web/scene/SceneFigure";
 import { ScenePlayer } from "../web/scene/ScenePlayer";
@@ -82,7 +84,16 @@ export function LessonIllustration({
   if (isAngleIllustration(kind)) return <AngleIllustration kind={kind} />;
   if (isPolygonIllustration(kind)) return <PolygonIllustration kind={kind} />;
   if (isDataIllustration(kind))
-    return <DataDisplayFigure figure={dataIllustrations[kind]} />;
+    return <Figure figure={dataIllustrations[kind]} />;
+  if (
+    kind === "coordinate-side-lengths" ||
+    kind === "distance-triangle" ||
+    kind === "rigid-motions-panels" ||
+    kind === "dilation-rays" ||
+    kind === "similar-triangles-marked" ||
+    kind === "scale-drawing-plan"
+  )
+    return <TransformationIllustration kind={kind} />;
   if (isSceneIllustration(kind)) {
     const scene: Scene = sceneIllustrations[kind];
     return scene.steps?.length && !print ? (
@@ -135,6 +146,14 @@ export function LessonIllustration({
     kind === "expected-spinner"
   )
     return <CombinatoricsIllustration kind={kind} />;
+  if (
+    kind === "hundred-chart-moves" ||
+    kind === "teen-ten-frame" ||
+    kind === "number-line-hop-pair" ||
+    kind === "rounding-halfway" ||
+    kind === "power-of-ten-shift"
+  )
+    return <NumberSenseIllustration kind={kind} />;
   if (
     kind === "multiply-tens-groups" ||
     kind === "area-model-product" ||

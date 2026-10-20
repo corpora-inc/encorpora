@@ -1,10 +1,10 @@
+import { CoordinateGeometry } from "../TransformationFigure";
 import { GeometryModel } from "./GeometryAnimation";
 import { useEffect, useRef, useState } from "react";
 import { MathText } from "../MathText";
 import { areaModelLayout } from "../AreaModelFigure";
 import {
   animationFrames,
-  fiveNumbers,
   jumpStops,
   coefficientText,
   rootZoom,
@@ -12,7 +12,6 @@ import {
   standardForm,
   type AnimationModel,
 } from "./model";
-import { MadGapStage } from "./ComparisonAnimation";
 import {
   BalanceFrame,
   CUBE,
@@ -22,8 +21,6 @@ import {
   leftLayout,
   rightLayout,
 } from "../EquationFigure";
-import { IsoBox } from "../GeometryFigure";
-import { isoFit, isoPoint } from "../../math/geometry-figures";
 import { AreaStage, CompareStage, PartitionStage } from "./PartWholeAnimation";
 import {
   ArrayBuildStage,
@@ -35,16 +32,15 @@ import {
   MakeTenThreeStage,
   TapeJoinStage,
 } from "./EarlyOperationsAnimation";
-import { ShapeMorphStage } from "./ShapeAnimation";
 import { DecimalAlignStage, DecimalFillStage } from "./DecimalAnimation";
 import { ClockSweepStage } from "./TimeMoneyAnimation";
 import "./animation.css";
 import { Jars } from "../AttributeFigure";
-import { BoxMarks, LinePlotAxis, Mark } from "../DataDisplayFigure";
-import { linePlotLayout } from "../../math/data-display-models";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "motion":
+      return <MotionModel model={model} step={step} />;
     case "triangle-sum":
     case "exterior-angle":
     case "transversal":
@@ -66,8 +62,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       );
     case "area-model":
       return <AreaModelAnimation model={model} step={step} />;
-    case "shape-morph":
-      return <ShapeMorphStage model={model} step={step} />;
     case "plot":
       return <PlotModel model={model} step={step} />;
     case "clock-sweep":
@@ -76,14 +70,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <DecimalFillStage model={model} step={step} />;
     case "decimal-align":
       return <DecimalAlignStage model={model} step={step} />;
-    case "prism-layers":
-      return <PrismLayersModel model={model} step={step} />;
-    case "quadrant-walk":
-      return <QuadrantWalkModel model={model} step={step} />;
-    case "line-plot-stack":
-      return <StackModel model={model} step={step} />;
-    case "line-plot-share":
-      return <ShareModel model={model} step={step} />;
     case "make-ten":
       return <MakeTenModel model={model} step={step} />;
     case "array-build":
@@ -120,12 +106,6 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
       return <AreaStage model={model} step={step} />;
     case "balance":
       return <EquationBalanceModel model={model} step={step} />;
-    case "mean-balance":
-      return <BalanceModel model={model} step={step} />;
-    case "box-build":
-      return <BoxBuildModel model={model} step={step} />;
-    case "mad-gap":
-      return <MadGapStage model={model} step={step} />;
   }
 }
 
@@ -1195,352 +1175,7 @@ const motion = (delay: number) => ({
     "transform 700ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
   transitionDelay: `${delay}ms`,
 });
-/** Each measurement drops onto its value; repeats land on the stack below. */
-function StackModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "line-plot-stack" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const half = Math.ceil(model.figure.values.length / 2);
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <LinePlotAxis layout={layout} />
-      {layout.marks.map((m, i) => {
-        const shown = step === 2 || (step === 1 && i < half);
-        return (
-          <g
-            key={i}
-            data-stack-mark={i}
-            className="animation-move"
-            style={{
-              ...motion(step === 2 ? Math.max(0, i - half) * 70 : i * 70),
-              transform: `translateY(${shown ? 0 : -(m.cy + 24)}px)`,
-              opacity: shown ? 1 : 0,
-            }}
-          >
-            <Mark kind="x" cx={m.cx} cy={m.cy} />
-          </g>
-        );
-      })}
-    </>
-  );
-}
-/** Pool every amount, then give each beaker the same share: all marks move to the mean. */
-function ShareModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "line-plot-share" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const target = layout.x(model.share);
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <LinePlotAxis layout={layout} />
-      <line
-        className="animation-fade"
-        x1={target}
-        x2={target}
-        y1={14}
-        y2={layout.axisY}
-        stroke="var(--color-figure-warm)"
-        strokeWidth={2}
-        strokeDasharray="5 4"
-        style={{ opacity: step === 2 ? 1 : 0 }}
-      />
-      {layout.marks.map((m, i) => {
-        // Step 1 pours every amount into one row; step 2 gives each the same share.
-        const n = layout.marks.length,
-          pooled = layout.left + ((i + 0.5) * (layout.right - layout.left)) / n;
-        const dx = step === 2 ? target - m.cx : step === 1 ? pooled - m.cx : 0,
-          dy =
-            step === 2
-              ? layout.axisY - 15 - i * 18 - m.cy
-              : step === 1
-                ? 34 - m.cy
-                : 0;
-        return (
-          <g
-            key={i}
-            data-share-mark={i}
-            className="animation-move"
-            style={{
-              ...motion(step === 2 ? i * 80 : 0),
-              transform: `translate(${dx}px, ${dy}px)`,
-            }}
-          >
-            <Mark kind="x" cx={m.cx} cy={m.cy} />
-          </g>
-        );
-      })}
-    </>
-  );
-}
 
-/** Unit cubes fill the prism one layer at a time; every layer is identical. */
-function PrismLayersModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "prism-layers" }>;
-  step: number;
-}) {
-  const { length: l, width: w, height: h } = model.figure;
-  const { unit, origin } = isoFit(l, w, h, {
-    width: 250,
-    height: 196,
-    pad: 8,
-  });
-  const project = (x: number, y: number, z: number) =>
-    isoPoint(x, y, z, unit, origin);
-  return (
-    <>
-      {Array.from({ length: h }, (_, k) => {
-        const shown = k === 0 || step > 0;
-        const label = project(l, 0, k + 0.5);
-        return (
-          <g key={k} data-layer={k}>
-            <g
-              className="animation-move animation-fade"
-              style={{
-                opacity: shown ? 1 : 0,
-                transform: `translateY(${shown ? 0 : -36}px)`,
-                transitionDelay: step === 1 ? `${(k - 1) * 160}ms` : "0ms",
-              }}
-            >
-              <IsoBox at={[0, 0, k]} size={[l, w, 1]} grid project={project} />
-            </g>
-            <text
-              x={label.x + 12}
-              y={label.y + 5}
-              className="animation-fade"
-              style={{ opacity: step === 2 ? 1 : 0 }}
-            >
-              {k + 1}
-            </text>
-          </g>
-        );
-      })}
-    </>
-  );
-}
-
-/** A path traced from the origin: across by the first coordinate, then up. */
-function QuadrantWalkModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "quadrant-walk" }>;
-  step: number;
-}) {
-  const { size } = model.figure,
-    { x: px, y: py } = model.figure.points[0]!;
-  const cell = Math.min(26, 166 / size),
-    left = 160 - (cell * size) / 2,
-    bottom = 184;
-  const x = (n: number) => left + n * cell,
-    y = (n: number) => bottom - n * cell;
-  const ticks = Array.from({ length: size + 1 }, (_, i) => i);
-  return (
-    <>
-      {ticks.map((n) => (
-        <g key={n}>
-          <line
-            x1={x(n)}
-            x2={x(n)}
-            y1={y(0)}
-            y2={y(size)}
-            className="animation-gridline"
-          />
-          <line
-            x1={x(0)}
-            x2={x(size)}
-            y1={y(n)}
-            y2={y(n)}
-            className="animation-gridline"
-          />
-        </g>
-      ))}
-      <path
-        d={`M${x(0)} ${y(0)} H${x(size)} M${x(0)} ${y(0)} V${y(size)}`}
-        className="animation-outline"
-        strokeWidth="2"
-      />
-      <text x={x(0) - 8} y={y(0) + 14} textAnchor="end">
-        0
-      </text>
-      <text x={x(size) + 6} y={y(0) + 5}>
-        x
-      </text>
-      <text x={x(0)} y={y(size) - 6} textAnchor="middle">
-        y
-      </text>
-      <path
-        d={`M${x(0)} ${y(0)} H${x(px)}`}
-        pathLength={1}
-        className="animation-trace"
-        style={{ strokeDashoffset: step > 0 ? 0 : 1 }}
-      />
-      <path
-        d={`M${x(px)} ${y(0)} V${y(py)}`}
-        pathLength={1}
-        className="animation-trace"
-        style={{ strokeDashoffset: step > 1 ? 0 : 1 }}
-      />
-      <text
-        x={(x(0) + x(px)) / 2}
-        y={y(0) + 16}
-        textAnchor="middle"
-        className="animation-fade"
-        style={{ opacity: step > 0 ? 1 : 0 }}
-      >
-        {px}
-      </text>
-      <text
-        x={x(px) + 8}
-        y={(y(0) + y(py)) / 2 + 5}
-        className="animation-fade"
-        style={{ opacity: step > 1 ? 1 : 0 }}
-      >
-        {py}
-      </text>
-      <circle cx={x(0)} cy={y(0)} r="5" className="animation-origin" />
-      <circle cx={x(px)} cy={y(py)} r="6" className="animation-point" />
-      <text x={x(px) + 9} y={y(py) - 8} className="animation-point-label">
-        {step > 1 ? `P (${px}, ${py})` : "P"}
-      </text>
-    </>
-  );
-}
-
-/** The mean as a balance point: the data sit on a beam; off the mean it tips. */
-function BalanceModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "mean-balance" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const { values } = model.figure;
-  const mean = values.reduce((a, b) => a + b, 0) / values.length;
-  const torque = values.reduce((a, v) => a + (v - model.trial), 0);
-  const tilt =
-    step === 1
-      ? Math.sign(torque) *
-        Math.min(9, 3 + (6 * Math.abs(torque)) / values.length)
-      : 0;
-  const pivot = step === 2 ? mean : model.trial;
-  const origin = `${layout.x(model.trial)}px ${layout.axisY}px`;
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <g
-        className="animation-move"
-        style={{
-          transform: `rotate(${tilt}deg)`,
-          transformBox: "view-box",
-          transformOrigin: origin,
-        }}
-      >
-        <LinePlotAxis layout={layout} labelGap={20} />
-        {layout.marks.map((m, i) => (
-          <Mark key={i} kind="dot" cx={m.cx} cy={m.cy} />
-        ))}
-      </g>
-      <g
-        data-pivot={pivot}
-        className="animation-move animation-fade"
-        style={{
-          transform: `translateX(${layout.x(pivot) - layout.x(model.trial)}px)`,
-          opacity: step ? 1 : 0,
-          transition:
-            "transform 900ms cubic-bezier(0.22, 0.7, 0.18, 1), opacity 400ms ease",
-        }}
-      >
-        <path
-          d={`M${layout.x(model.trial)} ${layout.axisY + 2} l7 13 h-14 Z`}
-          fill="var(--color-figure-warm)"
-          stroke="var(--color-figure-paper)"
-          strokeWidth={1.5}
-        />
-      </g>
-    </>
-  );
-}
-/** Quartile lines split the ordered dots; the box rises over the middle half. */
-function BoxBuildModel({
-  model,
-  step,
-}: {
-  model: Extract<AnimationModel, { kind: "box-build" }>;
-  step: number;
-}) {
-  const layout = linePlotLayout(model.figure, 320);
-  const q = fiveNumbers(model.figure.values);
-  const box = {
-    top: 34,
-    bottom: layout.axisY - 6,
-    min: layout.x(q.min),
-    q1: layout.x(q.q1),
-    median: layout.x(q.median),
-    q3: layout.x(q.q3),
-    max: layout.x(q.max),
-  };
-  return (
-    <>
-      <text x="6" y="16" style={{ fontSize: 14 }}>
-        {model.figure.unit}
-      </text>
-      <g className="animation-fade" style={{ opacity: step === 2 ? 0.85 : 0 }}>
-        <BoxMarks box={box} />
-      </g>
-      <LinePlotAxis layout={layout} />
-      {layout.marks.map((m, i) => (
-        <Mark key={i} kind="dot" cx={m.cx} cy={m.cy} />
-      ))}
-      <g className="animation-fade" style={{ opacity: step === 1 ? 1 : 0 }}>
-        {[
-          [q.q1, "Q1"],
-          [q.median, "M"],
-          [q.q3, "Q3"],
-        ].map(([v, name]) => (
-          <g key={name} data-quartile={name}>
-            <line
-              x1={layout.x(v as number)}
-              x2={layout.x(v as number)}
-              y1={28}
-              y2={layout.axisY}
-              stroke="var(--color-figure-warm)"
-              strokeWidth={2}
-              strokeDasharray="5 4"
-            />
-            <text
-              x={layout.x(v as number)}
-              y={22}
-              textAnchor="middle"
-              style={{ fontSize: 13 }}
-            >
-              {name}
-            </text>
-          </g>
-        ))}
-      </g>
-    </>
-  );
-}
 /** Two ten-frames side by side; step 1 slides the needed squares from the
  * second frame into the first frame's empty places. */
 function MakeTenModel({
@@ -2075,3 +1710,152 @@ const withCommas = (text: string) => {
     whole!.length >= 5 ? whole!.replace(/\B(?=(\d{3})+$)/g, ",") : whole!;
   return part === undefined ? grouped : `${grouped}.${part}`;
 };
+
+/** The pre-image moves by the motion itself: a slide, a flip through the
+ * mirror line, a turn about the origin or a scaling from it. */
+function MotionModel({
+  model,
+  step,
+}: {
+  model: Extract<AnimationModel, { kind: "motion" }>;
+  step: number;
+}) {
+  const m = model.motion;
+  return (
+    <svg x="0" y="0" width="320" height="200" viewBox="0 0 320 250">
+      <CoordinateGeometry
+        figure={model.figure}
+        className="animation-grid-figure"
+        description=""
+      >
+        {({ x, y, unit }) => {
+          const origin = `${x(0)}px ${y(0)}px`;
+          const transform =
+            m.kind === "translate"
+              ? `translate(${m.dx * unit}px, ${-m.dy * unit}px)`
+              : m.kind === "reflect"
+                ? m.axis === "x"
+                  ? "scale(1, -1)"
+                  : "scale(-1, 1)"
+                : m.kind === "rotate"
+                  ? `rotate(${m.degrees === 90 ? -90 : m.degrees === 270 ? 90 : -180}deg)`
+                  : `scale(${m.numerator / m.denominator})`;
+          const pts = (list: { x: number; y: number }[]) =>
+            list.map((p) => `${x(p.x)},${y(p.y)}`).join(" ");
+          const guides = model.given.map((p, i) => {
+            const q = model.image[i]!;
+            return m.kind === "dilate" ? (
+              <line
+                key={i}
+                x1={x(0)}
+                y1={y(0)}
+                x2={x(
+                  Math.abs(q.x) > Math.abs(p.x) || Math.abs(q.y) > Math.abs(p.y)
+                    ? q.x
+                    : p.x,
+                )}
+                y2={y(
+                  Math.abs(q.x) > Math.abs(p.x) || Math.abs(q.y) > Math.abs(p.y)
+                    ? q.y
+                    : p.y,
+                )}
+                className="animation-guide"
+              />
+            ) : m.kind === "rotate" ? (
+              <line
+                key={i}
+                x1={x(0)}
+                y1={y(0)}
+                x2={x(p.x)}
+                y2={y(p.y)}
+                className="animation-guide"
+              />
+            ) : (
+              <line
+                key={i}
+                x1={x(p.x)}
+                y1={y(p.y)}
+                x2={x(q.x)}
+                y2={y(q.y)}
+                className="animation-guide"
+              />
+            );
+          });
+          return (
+            <>
+              <g
+                className="animation-fade"
+                style={{ opacity: step >= 1 ? 1 : 0 }}
+              >
+                {m.kind === "reflect" &&
+                  (m.axis === "x" ? (
+                    <line
+                      x1={x(model.figure.xMin)}
+                      x2={x(model.figure.xMax)}
+                      y1={y(0)}
+                      y2={y(0)}
+                      className="animation-mirror"
+                    />
+                  ) : (
+                    <line
+                      x1={x(0)}
+                      x2={x(0)}
+                      y1={y(model.figure.yMin)}
+                      y2={y(model.figure.yMax)}
+                      className="animation-mirror"
+                    />
+                  ))}
+                {guides}
+                {(m.kind === "rotate" || m.kind === "dilate") && (
+                  <circle
+                    cx={x(0)}
+                    cy={y(0)}
+                    r="4"
+                    className="animation-center"
+                  />
+                )}
+              </g>
+              <g
+                className="animation-fade"
+                style={{ opacity: step === 2 ? 1 : 0 }}
+              >
+                <polygon
+                  points={pts(model.image)}
+                  className="animation-image"
+                />
+                {model.image.map((p, i) => {
+                  const cx = model.image.reduce((a, v) => a + v.x, 0) / 3,
+                    cy = model.image.reduce((a, v) => a + v.y, 0) / 3;
+                  const dx = p.x - cx,
+                    dy = p.y - cy,
+                    len = Math.hypot(dx, dy) || 1;
+                  return (
+                    <text
+                      key={i}
+                      x={x(p.x) + (dx / len) * 15}
+                      y={y(p.y) - (dy / len) * 15 + 5}
+                      textAnchor="middle"
+                      className="animation-image-label"
+                    >
+                      {p.label}
+                    </text>
+                  );
+                })}
+              </g>
+              <polygon
+                data-moving="true"
+                points={pts(model.given)}
+                className={`animation-move animation-moving${step === 2 ? " landed" : ""}`}
+                style={{
+                  transformBox: "view-box",
+                  transformOrigin: origin,
+                  transform: step === 2 ? transform : "none",
+                }}
+              />
+            </>
+          );
+        }}
+      </CoordinateGeometry>
+    </svg>
+  );
+}

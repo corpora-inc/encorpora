@@ -3,8 +3,9 @@ import { AnimationBoundary } from "./lesson-animation/AnimationBoundary";
 import { animationModel } from "./lesson-animation/model";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { Figure } from "./Figure";
-import { MathText } from "./MathText";
+import { MathText, withSeparators } from "./MathText";
 import { ScenePlayer } from "./scene/ScenePlayer";
+import { dataWalkthrough } from "../math/scene/data-walkthroughs";
 
 const LessonAnimation = lazy(
   () => import("./lesson-animation/LessonAnimation"),
@@ -14,10 +15,12 @@ const LessonAnimation = lazy(
 export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   const figure = lesson.example.figure;
   // A scene with a walkthrough plays it, revealed, on the example's numbers.
+  // Data displays still travel as legacy kinds; their walkthroughs are
+  // built from the example's data.
   const walkthrough =
     figure?.kind === "scene" && figure.scene.steps?.length
       ? figure.scene
-      : null;
+      : dataWalkthrough(lesson.templateId, figure);
   const animation = walkthrough ? null : animationModel(lesson);
   return (
     <article className="problem-lesson">
@@ -99,7 +102,7 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <p className="lesson-example-answer">
           Answer:{" "}
           <strong>
-            <MathText text={displayAnswer(lesson.example.answer)} />
+            <MathText text={withSeparators(lesson.example.answer)} />
           </strong>
         </p>
       </section>
@@ -112,9 +115,3 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
     </article>
   );
 }
-
-/** A whole-number answer reads with thousands separators: 6084 → 6,084. */
-export const displayAnswer = (answer: string) =>
-  /^\d{4,}$/.test(answer)
-    ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    : answer;

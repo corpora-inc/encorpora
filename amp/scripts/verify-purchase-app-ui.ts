@@ -8,6 +8,7 @@ import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts.js";
 import { presentOffer } from "../src/funding-purchase/contracts.js";
 import { testFundingOffer } from "../tests/funding-purchase.fixture.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `
 const listeners=new Set();
@@ -213,6 +214,9 @@ async function openAccess(page: Page) {
   await page.locator('[data-purchase-entry="annual"]').waitFor();
 }
 async function visible(page: Page, selector: string) {
+  // Phone landscape only has to stay usable; the others must fit.
+  if (isPhoneLandscape(page.viewportSize()!))
+    return assertPhoneLandscapeSmoke(page, selector);
   const box = await page.locator(selector).boundingBox();
   assert.ok(
     box &&
@@ -241,6 +245,7 @@ try {
   for (const [width, height] of [
     [320, 568],
     [390, 844],
+    [1024, 768],
     [844, 390],
   ]) {
     const f = await setup(width, height, { disabled: true });

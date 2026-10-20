@@ -9,14 +9,16 @@ import { shapeTemplates } from "../src/math/shape-practice";
 import { supportedOfflineTemplates } from "../src/offline/repository";
 import { templateRole } from "../src/learning/placement";
 import { problemLesson } from "../src/content/problem-lessons";
+import { layoutScene } from "../src/math/scene";
 import {
-  animationFrames,
-  animationModel,
-} from "../src/web/lesson-animation/model";
+  frameAt,
+  missingTargets,
+  visibleSteps,
+} from "../src/math/scene/timeline";
 
 test("shape figures reach only clients that declare them", () => {
   for (const t of shapeTemplates)
-    assert.equal(t.requiredFigureCapability, "shape-figures-v1");
+    assert.equal(t.requiredFigureCapability, "scenes-v1");
   const ids = (figureCapabilities: FigureCapability[]) =>
     supportedOfflineTemplates({
       responseCapabilities: ["single-choice-v1"],
@@ -24,7 +26,7 @@ test("shape figures reach only clients that declare them", () => {
       requestId: "00000000-0000-4000-8000-000000000000",
     }).map((t) => t.id);
   assert.ok(!ids(["measurement-models-v1"]).includes("name-flat-shape"));
-  assert.ok(ids(["shape-figures-v1"]).includes("name-flat-shape"));
+  assert.ok(ids(["scenes-v1"]).includes("name-flat-shape"));
 });
 
 test("shape problems are deterministic, valid and balanced", () => {
@@ -55,20 +57,30 @@ test("every shape item is a whole assessment item", () => {
     assert.equal(templateRole(t.id), "assessment");
 });
 
-test("the attribute lesson morphs its own three shapes and keeps the side count", () => {
+test("the attribute lesson reshapes A into B, then into C", () => {
   for (let i = 0; i < 40; i++) {
-    const lesson = problemLesson("defining-attribute", `animation-${i}`);
-    const model = animationModel(lesson);
-    assert(model?.kind === "shape-morph");
-    const n = model.shapes[0]!.points.length;
-    assert.ok([3, 4, 6].includes(n));
-    const frames = animationFrames(model);
-    assert.equal(frames.length, 3);
-    for (const frame of frames)
-      assert.equal(frame.math, `$${n}$ sides, $${n}$ corners`);
+    const p = generateProblem("defining-attribute", `animation-${i}`);
+    const f = p.public.figure!;
+    assert(f.kind === "scene");
+    const steps = f.scene.steps!;
+    assert.deepEqual(missingTargets(layoutScene(f.scene), steps), []);
+    assert.deepEqual(
+      steps.flatMap((st) =>
+        st.actions.flatMap((a) => (a.do === "morph" ? [a.into] : [])),
+      ),
+      ["shapes.item.B.piece.0", "shapes.item.C.piece.0"],
+    );
+    // The morph ends exactly on C: the final frame is the static figure.
+    const l = layoutScene(f.scene);
+    const end = frameAt(l, steps, steps.length - 1, 1);
+    const c = l.items.find((d) => d.id === "shapes.item.C.piece.0")!;
+    assert(c.k === "path");
+    const pts = (d: string) =>
+      [...d.matchAll(/(-?[\d.]+) (-?[\d.]+)/g)]
+        .map((m) => `${(+m[1]!).toFixed(1)},${(+m[2]!).toFixed(1)}`)
+        .sort();
+    assert.deepEqual(pts(end["shapes.morph"]!.d!), pts(c.d));
+    // Every walkthrough step is lesson-only: hints show none of it.
+    assert.equal(visibleSteps(steps, "hint").length, 0);
   }
-  assert.equal(
-    animationModel(problemLesson("count-sides-corners", "animation")),
-    null,
-  );
 });

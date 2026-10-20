@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { base, label, num as zNum, small } from "../base";
+import { base, color, label, num as zNum, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import { typeset } from "../type";
 import { num } from "./format";
@@ -35,11 +35,60 @@ export const tableSchema = z
       .array(z.tuple([small.max(7), small.max(5)]))
       .max(4)
       .optional(),
+    /** A heading over the row labels ("x", "n"). */
+    corner: z.string().min(1).max(16).optional(),
+    /** Headings and row labels are mathematics (x, f(x), a_n, 2^x), set
+     * like the numbers rather than as bold words. */
+    math: z.boolean().optional(),
+    /** The change between consecutive rows of a body column (+3, ×2), drawn
+     * as bowed arrows in a gutter to that column's right. */
+    changes: z
+      .array(
+        z
+          .object({
+            column: small.max(5),
+            labels: z.array(z.union([label, z.literal(false)])).max(7),
+            color,
+          })
+          .strict(),
+      )
+      .max(3)
+      .optional(),
+    /** Bands behind rows or columns and a ring around cells: conditioning
+     * on a row or column, and the cell inside it. Timelines bring them in. */
+    highlight: z
+      .object({
+        rows: z.array(small.max(7)).max(8).optional(),
+        columns: z.array(small.max(5)).max(6).optional(),
+        cells: z
+          .array(z.tuple([small.max(7), small.max(5)]))
+          .max(12)
+          .optional(),
+      })
+      .strict()
+      .optional(),
   })
   .strict()
   .refine(
+    (t) =>
+      (t.highlight?.rows ?? []).every((r) => r < t.rows.length) &&
+      (t.highlight?.columns ?? []).every((c) => c < t.columns.length) &&
+      (t.highlight?.cells ?? []).every(
+        ([r, c]) => r < t.rows.length && c < t.columns.length,
+      ),
+    "Highlights name existing rows, columns and cells",
+  )
+  .refine(
     (t) => t.rows.every((r) => r.cells.length === t.columns.length),
     "Every row has one cell per column",
+  )
+  .refine(
+    (t) =>
+      (t.changes ?? []).every(
+        (c) =>
+          c.column < t.columns.length && c.labels.length === t.rows.length - 1,
+      ),
+    "A change labels each gap between rows of a real column",
   )
   .refine(
     (t) =>
@@ -107,16 +156,27 @@ const PAD = 12,
   TITLE = 30,
   MIN_COLUMN = 56;
 const isNumber = (v: unknown): v is number => typeof v === "number";
+/** Change gutters: arrow bow, gap and label. */
+const BEND = 7,
+  GUTTER_PAD = 6;
+/** Headings and row labels: bold words, or mathematics set like the cells. */
+const heading = (t: Table, text: string) =>
+  t.math
+    ? typeset(text, "math", "md").width
+    : typeset(text, "sans", "md", true).width;
 
 /** Column widths and row positions, in figure pixels from the top left. */
 export function tableGeometry(t: Table) {
   const labelWidth =
-    Math.max(...t.rows.map((r) => typeset(r.label, "sans", "md", true).width)) +
+    Math.max(
+      ...t.rows.map((r) => heading(t, r.label)),
+      t.corner ? heading(t, t.corner) : 0,
+    ) +
     2 * PAD;
   const widths = t.columns.map((c, j) =>
     Math.max(
       MIN_COLUMN,
-      typeset(c, "sans", "md", true).width + 2 * PAD,
+      heading(t, c) + 2 * PAD,
       ...t.rows.map((r) => {
         const v = r.cells[j];
         return v === null || v === undefined
@@ -130,15 +190,43 @@ export function tableGeometry(t: Table) {
       }),
     ),
   );
+  // A column with changes is followed by a gutter for its arrows and labels.
+  const gutters = t.columns.map((_, j) => {
+    const change = t.changes?.find((c) => c.column === j);
+    if (!change) return 0;
+    const widest = Math.max(
+      0,
+      ...change.labels.map((l) =>
+        l === false ? 0 : typeset(l, "math", "sm").width,
+      ),
+    );
+    return 4 + BEND + GUTTER_PAD + widest + 8;
+  });
   const lefts = widths.map(
-    (_, j) => labelWidth + widths.slice(0, j).reduce((a, b) => a + b, 0),
+    (_, j) =>
+      labelWidth +
+      widths.slice(0, j).reduce((a, b) => a + b, 0) +
+      gutters.slice(0, j).reduce((a, b) => a + b, 0),
   );
   const top = t.title ? TITLE : 0;
+  // Row rules join the labels to the body columns up to the first gutter;
+  // columns after it are boxed on their own.
+  const split = gutters.findIndex((w) => w > 0);
   return {
     labelWidth,
     widths,
+    gutters,
     lefts,
-    width: labelWidth + widths.reduce((a, b) => a + b, 0),
+    split,
+    /** Right edge of the block joined to the row labels. */
+    joined:
+      split < 0 || split === t.columns.length - 1
+        ? lefts.at(-1)! + widths.at(-1)!
+        : lefts[split]! + widths[split]!,
+    width:
+      labelWidth +
+      widths.reduce((a, b) => a + b, 0) +
+      gutters.reduce((a, b) => a + b, 0),
     titleTop: 0,
     headerTop: top,
     rowTop: (r: number) => top + HEADER + r * ROW,
@@ -160,6 +248,8 @@ registerComponent("table", {
     const lastRow = t.rows.length - 1,
       lastColumn = t.columns.length - 1;
     const prims: Prim[] = [];
+    const rows = new Set(t.highlight?.rows ?? []),
+      columns = new Set(t.highlight?.columns ?? []);
     if (t.title) {
       const span = t.sums ? lastColumn : t.columns.length;
       const x0 = g.lefts[0]!,
@@ -184,39 +274,77 @@ registerComponent("table", {
         },
       );
     }
+    const words = !t.math;
+    if (t.corner)
+      prims.push({
+        type: "text",
+        id: "corner",
+        at: P(PAD, g.headerTop + HEADER / 2 + 2),
+        text: t.corner,
+        font: words ? "sans" : "math",
+        bold: words || undefined,
+        align: [-1, 0],
+      });
     for (const [j, c] of t.columns.entries())
       prims.push({
         type: "text",
         id: `column.${j}`,
         at: P(g.lefts[j]! + g.widths[j]! / 2, g.headerTop + HEADER / 2 + 2),
         text: c,
-        font: "sans",
-        bold: true,
+        font: words ? "sans" : "math",
+        bold: words || undefined,
         align: [0, 0],
       });
     for (const [i, row] of t.rows.entries()) {
       const top = g.rowTop(i),
         total = t.sums && i === lastRow;
-      prims.push(
-        {
+      prims.push({
+        type: "rect",
+        id: `row.${i}`,
+        at: P(0, top + ROW),
+        size: size(g.joined, ROW),
+        fill: total ? "empty" : "paper",
+        stroke: "grid",
+        width: 1,
+      });
+      for (let j = g.split + 1; g.split >= 0 && j < t.columns.length; j++)
+        prims.push({
           type: "rect",
-          id: `row.${i}`,
-          at: P(0, top + ROW),
-          size: size(g.width, ROW),
-          fill: total ? "empty" : "paper",
+          id: `row.${i}.box.${j}`,
+          at: P(g.lefts[j]!, top + ROW),
+          size: size(g.widths[j]!, ROW),
+          fill: "paper",
           stroke: "grid",
           width: 1,
-        },
-        {
-          type: "text",
-          id: `row.${i}.label`,
-          at: P(PAD, top + ROW / 2),
-          text: row.label,
-          font: "sans",
-          bold: true,
-          align: [-1, 0],
-        },
-      );
+        });
+      // Highlight bands sit on the row, under its text.
+      if (rows.has(i))
+        prims.push({
+          type: "rect",
+          id: `band.row.${i}`,
+          at: P(0, top + ROW),
+          size: size(g.joined, ROW),
+          fill: "accent-fill",
+          noStroke: true,
+        });
+      for (const j of columns)
+        prims.push({
+          type: "rect",
+          id: `band.column.${j}.${i}`,
+          at: P(g.lefts[j]!, top + ROW),
+          size: size(g.widths[j]!, ROW),
+          fill: rows.has(i) ? "accent-strong" : "warm-fill",
+          noStroke: true,
+        });
+      prims.push({
+        type: "text",
+        id: `row.${i}.label`,
+        at: P(PAD, top + ROW / 2),
+        text: row.label,
+        font: words ? "sans" : "math",
+        bold: words || undefined,
+        align: [-1, 0],
+      });
       for (const [j, v] of row.cells.entries()) {
         const cx = g.lefts[j]! + g.widths[j]! / 2,
           cy = top + ROW / 2;
@@ -262,6 +390,44 @@ registerComponent("table", {
         });
       }
     }
+    for (const change of t.changes ?? []) {
+      const x = g.lefts[change.column]! + g.widths[change.column]! + 4;
+      for (const [i, l] of change.labels.entries()) {
+        const from = g.rowTop(i) + ROW / 2 + 5,
+          to = g.rowTop(i + 1) + ROW / 2 - 5;
+        prims.push({
+          type: "arrow",
+          id: `change.${change.column}.${i}`,
+          from: P(x, from),
+          to: P(x, to),
+          bend: BEND,
+          stroke: change.color ?? "accent",
+          width: 1.75,
+          data: { change: i, column: change.column },
+        });
+        if (l !== false)
+          prims.push({
+            type: "text",
+            id: `change.${change.column}.${i}.label`,
+            at: P(x + BEND + GUTTER_PAD, (from + to) / 2),
+            text: l,
+            size: "sm",
+            color: change.color ?? "accent",
+            align: [-1, 0],
+          });
+      }
+    }
+    for (const [i, j] of t.highlight?.cells ?? [])
+      prims.push({
+        type: "rect",
+        id: `mark.${i}.${j}`,
+        at: P(g.lefts[j]! + 4, g.rowTop(i) + ROW - 4),
+        size: size(g.widths[j]! - 8, ROW - 8),
+        radius: 6,
+        fill: "none",
+        stroke: "gold",
+        width: 3,
+      });
     if (t.sums) {
       const x = g.lefts[lastColumn]!;
       prims.push(
@@ -298,11 +464,17 @@ registerComponent("table", {
             ? num(filled[i]![j]!)
             : "the number to find"
           : "blank";
-    return `Table${t.title ? ` headed “${t.title}”` : ""} with columns ${t.columns.join(", ")}. ${t.rows
+    const changes = (t.changes ?? []).map(
+      (c) =>
+        ` Down the ${t.columns[c.column]} column, each step is ${c.labels
+          .map((l) => (l === false ? "unmarked" : l))
+          .join(", then ")}.`,
+    );
+    return `Table${t.title ? ` headed “${t.title}”` : ""} with ${t.corner ? `${t.corner} down the side and ` : ""}columns ${t.columns.join(", ")}. ${t.rows
       .map(
         (r, i) =>
           `${r.label}: ${r.cells.map((v, j) => cell(v, i, j)).join(", ")}.`,
       )
-      .join(" ")}`;
+      .join(" ")}${changes.join("")}`;
   },
 });

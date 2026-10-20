@@ -98,7 +98,13 @@ export function FactArrayIllustration({
             {n}
           </text>
         ))}
-        <text x={132} y={134} textAnchor="middle" {...text} fontSize={16}>
+        <text
+          x={132}
+          y={134}
+          textAnchor="middle"
+          {...text}
+          style={{ fontSize: 16 }}
+        >
           4 × 6 = 24
         </text>
       </Frame>
@@ -151,7 +157,13 @@ export function FactArrayIllustration({
         <text x={186} y={119} {...text}>
           2 × 6 = 12
         </text>
-        <text x={160} y={156} textAnchor="middle" {...text} fontSize={16}>
+        <text
+          x={160}
+          y={156}
+          textAnchor="middle"
+          {...text}
+          style={{ fontSize: 16 }}
+        >
           7 × 6 = 30 + 12 = 42
         </text>
       </Frame>
@@ -167,7 +179,13 @@ export function FactArrayIllustration({
         <Dots rows={4} columns={7} x={18} y={14} p={20} />
         {["4 × 7 = 28", "7 × 4 = 28", "28 ÷ 4 = 7", "28 ÷ 7 = 4"].map(
           (fact, i) => (
-            <text key={fact} x={196} y={32 + i * 21} {...text} fontSize={15}>
+            <text
+              key={fact}
+              x={196}
+              y={32 + i * 21}
+              {...text}
+              style={{ fontSize: 15 }}
+            >
               {fact}
             </text>
           ),
@@ -256,7 +274,13 @@ export function FactArrayIllustration({
         <text x={240} y={110} textAnchor="middle" {...text}>
           4 groups
         </text>
-        <text x={160} y={146} textAnchor="middle" {...text} fontSize={16}>
+        <text
+          x={160}
+          y={146}
+          textAnchor="middle"
+          {...text}
+          style={{ fontSize: 16 }}
+        >
           12 ÷ 3 = 4
         </text>
       </Frame>
@@ -294,7 +318,7 @@ export function FactArrayIllustration({
               y={94}
               textAnchor="middle"
               {...text}
-              fontSize={13}
+              style={{ fontSize: 13 }}
             >
               {6 * i}
             </text>
@@ -311,7 +335,7 @@ export function FactArrayIllustration({
                   y={38}
                   textAnchor="middle"
                   {...text}
-                  fontSize={12}
+                  style={{ fontSize: 12 }}
                 >
                   {i}
                 </text>
@@ -351,7 +375,7 @@ export function FactArrayIllustration({
         y={y + h / 2 + 5}
         textAnchor="middle"
         {...text}
-        fontWeight={bold ? 600 : 400}
+        style={{ fontWeight: bold ? 600 : 400 }}
       >
         {label}
       </text>
@@ -374,10 +398,10 @@ export function FactArrayIllustration({
           )}
         </g>
       ))}
-      <text x={244} y={y0 + h * 1.5 + 5} {...text} fontSize={12}>
+      <text x={244} y={y0 + h * 1.5 + 5} {...text} style={{ fontSize: 12 }}>
         +3 each step
       </text>
-      <text x={244} y={y0 + h * 2.5 + 5} {...text} fontSize={12}>
+      <text x={244} y={y0 + h * 2.5 + 5} {...text} style={{ fontSize: 12 }}>
         double row 3
       </text>
     </Frame>

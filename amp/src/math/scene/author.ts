@@ -16,10 +16,16 @@ import {
   type Scene,
   type RowBars,
   type Table,
+  type Bars,
+  type InkRole,
   type LineTable,
   type TenFrame,
+  type Venn,
+  type Tree,
+  type Triangle,
 } from "./spec";
 import type { Action, Step } from "./timeline";
+import { treeWidth } from "./components/tree";
 
 /**
  * Author API: chainable builders that produce plain scene data.
@@ -258,7 +264,11 @@ class GraphBuilder extends Builder<Graph> {
   }
   line(
     line: LineSpec,
-    options: { dash?: "solid" | "dash" | "dot"; label?: string } = {},
+    options: {
+      dash?: "solid" | "dash" | "dot";
+      label?: string;
+      color?: "accent" | "warm" | "gold" | "ink";
+    } = {},
   ) {
     return this.push("lines", { line, ...options });
   }
@@ -323,7 +333,21 @@ class RowBarsBuilder extends Builder<RowBars> {}
 export const rowBars = (spec: Omit<RowBars, "type">) =>
   new RowBarsBuilder({ type: "rowBars", ...spec } as RowBars);
 
-class TableBuilder extends Builder<Table> {}
+class TableBuilder extends Builder<Table> {
+  /** Label the change between consecutive rows of a body column: +3, ×2. */
+  changes(column: number, labels: (string | false)[], color?: InkRole) {
+    this.spec.changes = [
+      ...(this.spec.changes ?? []),
+      { column, labels, ...(color ? { color } : {}) },
+    ];
+    return this;
+  }
+  /** Bands behind rows or columns and rings around cells (conditioning). */
+  highlight(h: NonNullable<Table["highlight"]>) {
+    this.spec.highlight = h;
+    return this;
+  }
+}
 /** A table; with `sums`, the last column and row are totals, and derived
  * cells (null in `rows`) are found from them. */
 export const table = (spec: Omit<Table, "type">) =>
@@ -402,6 +426,78 @@ export const fractionBar = (
 export const clock = (hour: number, minute: number) =>
   new Simple<Clock>({ type: "clock", hour, minute });
 
+type Entry = string | number | null;
+const entry = (v: Entry) =>
+  v === null ? null : typeof v === "number" ? String(v).replace("-", "−") : v;
+
+class VennBuilder extends Builder<Venn> {
+  /** Values by region: a (first only), ab (both), b (second only), none. */
+  regions(values: Partial<Record<"a" | "ab" | "b" | "none", Entry>>) {
+    this.spec.regions = Object.fromEntries(
+      Object.entries(values).map(([k, v]) => [k, entry(v as Entry)]),
+    );
+    return this;
+  }
+  totals(a: Entry, b: Entry) {
+    this.spec.totals = [entry(a), entry(b)];
+    return this;
+  }
+  shade(...regions: NonNullable<Venn["shade"]>) {
+    this.spec.shade = regions;
+    return this;
+  }
+}
+/** venn("Art", "Music", { universe: "40 students" }).regions({ a: 12, ab: 6, b: 9, none: 13 }) */
+export const venn = (
+  a: string,
+  b: string,
+  options: { universe?: string } = {},
+) => new VennBuilder({ type: "venn", sets: [a, b], ...options });
+
+type TreeOutcome = {
+  label: string;
+  p: Entry;
+  /** The learner finds this branch: "?" unless revealed. */
+  derived?: boolean;
+  leaf?: Entry;
+};
+class TreeBuilder extends Builder<Tree> {
+  highlight(...paths: string[]) {
+    this.spec.highlight = paths;
+    return this;
+  }
+  /** Write each path's product in the leaf column (masked unless "shown"). */
+  products(mode: "shown" | "derived" = "derived") {
+    this.spec.products = mode;
+    return this;
+  }
+  /** A tree is as wide as its labels: the scene widens to hold it. */
+  override scene(options: SceneOptions = {}): Scene {
+    const natural = Math.ceil(treeWidth(this.spec) + 16);
+    return super.scene({
+      width: Math.min(720, Math.max(360, natural)),
+      ...options,
+    });
+  }
+}
+/** tree([{ label: "R", p: "3/5", children: [{ label: "R", p: "2/4" }, …] }, …]) */
+export const tree = (
+  branches: (TreeOutcome & { children?: TreeOutcome[] })[],
+) => {
+  const outcome = (o: TreeOutcome) => ({
+    label: o.label,
+    p: entry(o.p),
+    ...(o.derived ? { derived: true } : {}),
+    ...(o.leaf !== undefined ? { leaf: entry(o.leaf) } : {}),
+  });
+  return new TreeBuilder({
+    type: "tree",
+    branches: branches.map((b) => ({
+      ...outcome(b),
+      ...(b.children ? { children: b.children.map(outcome) } : {}),
+    })),
+  });
+};
 /** A protractor on a vertex: one ray on its baseline, the other crossing
  * the scales. */
 export const protractor = (
@@ -423,3 +519,59 @@ export const lineTable = (
   rows: LineTable["rows"],
   options: Partial<Omit<LineTable, "type" | "rows">> = {},
 ) => new Simple<LineTable>({ type: "lineTable", rows, ...options });
+
+/** bars(["0", "1", "2"], { values: [1, 2, 4] }), or two series side by side. */
+export const bars = (
+  categories: (string | number)[],
+  ...series: Bars["series"]
+) =>
+  new Simple<Bars>({
+    type: "bars",
+    categories: categories.map(String),
+    series,
+  });
+const text = (v: Entry | undefined) => (v === undefined ? undefined : entry(v));
+class TriangleBuilder extends Builder<Triangle> {
+  names(a: string, b: string, c: string) {
+    this.spec.names = [a, b, c];
+    return this;
+  }
+  /** Side i runs from vertex i to vertex i + 1. */
+  side(
+    i: 0 | 1 | 2,
+    spec: { label?: Entry; ticks?: number; color?: "accent" | "warm" | "gold" },
+  ) {
+    const sides = this.spec.sides ?? [{}, {}, {}];
+    sides[i] = {
+      ...(spec.label !== undefined ? { label: text(spec.label) } : {}),
+      ...(spec.ticks ? { ticks: spec.ticks } : {}),
+      ...(spec.color ? { color: spec.color } : {}),
+    };
+    this.spec.sides = sides as Triangle["sides"];
+    return this;
+  }
+  angle(
+    i: 0 | 1 | 2,
+    spec: {
+      mark?: "arc" | "right";
+      arcs?: number;
+      label?: Entry;
+      color?: "accent" | "warm" | "gold";
+    },
+  ) {
+    const angles = this.spec.angles ?? [{}, {}, {}];
+    angles[i] = {
+      ...(spec.mark ? { mark: spec.mark } : {}),
+      ...(spec.arcs ? { arcs: spec.arcs } : {}),
+      ...(spec.label !== undefined ? { label: text(spec.label) } : {}),
+      ...(spec.color ? { color: spec.color } : {}),
+    };
+    this.spec.angles = angles as Triangle["angles"];
+    return this;
+  }
+}
+/** triangle([[0, 0], [4, 0], [0, 3]]).names("A", "B", "C").side(0, { label: 4 }).angle(0, { mark: "right" }) */
+export const triangle = (
+  points: [Point, Point, Point],
+  options: { fill?: Triangle["fill"]; dash?: boolean } = {},
+) => new TriangleBuilder({ type: "triangle", points, ...options });

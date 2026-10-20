@@ -1,9 +1,11 @@
+import { transformationLessons } from "./transformation-lessons";
 import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
 import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { linearFunctionLessons } from "./linear-function-lessons";
 import { quadraticStructureLessons } from "./quadratic-structure-lessons";
+import { twoVariableLessons } from "./two-variable-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
 import { inferenceLessons } from "./inference-lessons";
@@ -28,8 +30,12 @@ import type { ShapeIllustrationKind } from "./ShapeIllustration";
 import type { AngleIllustrationKind } from "./AngleIllustration";
 import { angleLessons } from "./angle-lessons";
 import type { PolygonIllustrationKind } from "./PolygonIllustration";
+import { probabilityRulesLessons } from "./probability-rules-lessons";
+import { similarityTrigLessons } from "./similarity-trig-lessons";
 import { polygonLessons } from "./polygon-lessons";
+import { exponentialLessons } from "./exponential-lessons";
 import { comparisonLessons } from "./comparison-lessons";
+import { numberSenseLessons } from "./number-sense-lessons";
 import { multiplyDivideLessons } from "./multiply-divide-lessons";
 import { addSubtractLessons } from "./add-subtract-lessons";
 import { factsLessons } from "./facts-lessons";
@@ -67,6 +73,17 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "hundred-chart-moves"
+      | "teen-ten-frame"
+      | "number-line-hop-pair"
+      | "rounding-halfway"
+      | "power-of-ten-shift"
+      | "coordinate-side-lengths"
+      | "distance-triangle"
+      | "rigid-motions-panels"
+      | "dilation-rays"
+      | "similar-triangles-marked"
+      | "scale-drawing-plan"
       | "complete-square-area"
       | "complete-square-balance"
       | "complete-square-scaled"
@@ -520,89 +537,6 @@ export const baseLessons: Lesson[] = [
     parentGuide:
       "Make a small table for x = 1, 2, 3, 4, 5. Compare the symmetric outputs and distinguish the input 3 from the minimum value 5.",
   },
-  {
-    id: "geometric-sequences",
-    title: "Repeated multiplication",
-    summary:
-      "A geometric sequence multiplies by a fixed ratio between consecutive terms.",
-    templateIds: ["geometric-sequence"],
-    objectives: [
-      "Build terms by repeated multiplication.",
-      "Use aₙ = a₁r^(n − 1) with first-term indexing.",
-    ],
-    sections: [
-      {
-        title: "Use the same ratio each step",
-        paragraphs: [
-          "Starting with three and multiplying by two produces 3, 6, 12, 24, 48. The common ratio is two because each term is twice the one before.",
-          "An arithmetic sequence adds the same difference; a geometric sequence multiplies by the same ratio. Identify which relationship is present.",
-        ],
-      },
-      {
-        title: "Count the steps, not the term number",
-        paragraphs: [
-          "From term 1 to term 5 there are four multiplication steps. Thus term n is a₁ × r^(n − 1).",
-          "This formula uses a first term labeled 1. A sequence indexed from 0 uses a different starting exponent, so the indexing convention matters.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "The first term is 3 and the common ratio is 2. What is term 5?",
-      steps: [
-        "There are 5 − 1 = 4 steps after the first term.",
-        "Multiply by 2 four times: 3, 6, 12, 24, 48.",
-        "Equivalently, 3 × 2⁴ = 48.",
-      ],
-      answer: "48",
-    },
-    pitfalls: [
-      "Using exponent n instead of n − 1 advances one term too far.",
-      "Adding the common ratio does not generate a geometric sequence.",
-    ],
-    parentGuide:
-      "Label each term with its position. Draw an arrow marked ×2 between terms and count the arrows to prevent indexing errors.",
-  },
-  {
-    id: "logarithms",
-    title: "Ask for the exponent",
-    summary: "A logarithm reverses exponentiation.",
-    templateIds: ["logarithm-integer"],
-    objectives: [
-      "Translate between logarithmic and exponential statements.",
-      "Evaluate logarithms of integer powers.",
-    ],
-    sections: [
-      {
-        title: "Three parts of a power",
-        paragraphs: [
-          "In 3⁴ = 81, three is the base, four is the exponent, and eighty-one is the result. A logarithm asks for the exponent when the base and result are known.",
-          "The statement log base 3 of 81 = 4 means exactly 3⁴ = 81. It does not mean 81 divided by 3.",
-        ],
-      },
-      {
-        title: "Check with multiplication",
-        paragraphs: [
-          "List powers of the base until reaching the argument: 3, 9, 27, 81. Four factors of three produce eighty-one.",
-          "For real logarithms, the base must be positive and different from one, and the argument must be positive. These examples use whole-number bases greater than one.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is log base 3 of 81?",
-      steps: [
-        "Find p such that 3^p = 81.",
-        "3 × 3 × 3 × 3 = 81.",
-        "There are four factors, so p = 4.",
-      ],
-      answer: "4",
-    },
-    pitfalls: [
-      "A logarithm asks for an exponent, not a quotient.",
-      "Count the number of factors of the base, not just the multiplication symbols.",
-    ],
-    parentGuide:
-      "Cover the exponent in a familiar power equation and ask what it must be. Then write the equivalent logarithm statement.",
-  },
 ];
 
 export const lessons: readonly Lesson[] = [
@@ -625,11 +559,13 @@ export const lessons: readonly Lesson[] = [
   ...timeMoneyLessons,
   ...attributeLessons,
   ...comparisonLessons,
+  ...numberSenseLessons,
   ...multiplyDivideLessons,
   ...addSubtractLessons,
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...transformationLessons,
   ...angleTriangleLessons,
   ...realNumberLessons,
   ...numberSystemLessons,
@@ -637,6 +573,7 @@ export const lessons: readonly Lesson[] = [
   ...patternFunctionLessons,
   ...linearFunctionLessons,
   ...quadraticStructureLessons,
+  ...twoVariableLessons,
   ...equationLessons,
   ...rationalLessons,
   ...circleMeasurementLessons,
@@ -644,6 +581,9 @@ export const lessons: readonly Lesson[] = [
   ...shapeLessons,
   ...angleLessons,
   ...polygonLessons,
+  ...exponentialLessons,
+  ...probabilityRulesLessons,
+  ...similarityTrigLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

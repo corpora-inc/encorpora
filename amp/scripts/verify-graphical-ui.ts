@@ -13,6 +13,7 @@ import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -201,10 +202,13 @@ try {
           height: stage.clientHeight,
           scroll: stage.scrollHeight,
         }));
-      assert.ok(
-        geometry.scroll <= geometry.height + 2,
-        `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
-      );
+      // Phone landscape only has to stay usable; the others must fit.
+      if (isPhoneLandscape(size)) await assertPhoneLandscapeSmoke(page, id);
+      else
+        assert.ok(
+          geometry.scroll <= geometry.height + 2,
+          `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
+        );
       assert.ok(
         labels.every((l) => l.size >= 11.99),
         `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,
@@ -268,8 +272,18 @@ try {
       continue;
     for (const kind of ["lesson", "workbook", "solutions"] as const) {
       await printPage.setContent(publicationHtml(lesson, kind));
+      // Coordinate planes, clocks and number lines now draw through the scene
+      // renderer (#1177); they are the same printed graphs (99 + 25 + 25 of
+      // the 199) and get the same clipping and overlap checks.
       const result = await printPage
-        .locator(".graphical-figure")
+        .locator(
+          [
+            ".graphical-figure",
+            ...["coordinate-plane", "clock", "number-line"].map(
+              (kind) => `.scene-figure[data-kind="${kind}"]`,
+            ),
+          ].join(", "),
+        )
         .evaluateAll((figures) => {
           const issues: string[] = [];
           figures.forEach((figure, index) => {

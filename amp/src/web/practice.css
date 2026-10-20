@@ -115,10 +115,11 @@ nav button {
   min-height: 44px;
   flex: none;
 }
+/* The question keeps a readable minimum; below it the card scrolls. */
 .problem-stage {
   position: relative;
   flex: 1 1 auto;
-  min-height: 0;
+  min-height: 180px;
   overflow: auto;
   overscroll-behavior: contain;
   scrollbar-gutter: stable both-edges;
@@ -659,77 +660,6 @@ nav button {
     margin-top: 8px;
   }
 }
-@media (max-height: 500px) and (min-width: 651px) {
-  .practice-shell > header {
-    display: none;
-  }
-  .shell.practice-shell {
-    padding-inline: 16px;
-  }
-  .practice-shell > nav button {
-    min-height: 44px;
-    padding: 8px 16px;
-  }
-  .practice-surface {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 38%);
-    grid-template-rows: 44px minmax(0, 1fr);
-    gap: 0 18px;
-    padding: 4px 14px;
-  }
-  .workspace-toolbar {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .problem-stage {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  .answer-dock {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    border-top: 0;
-    padding: 0;
-    align-self: center;
-  }
-  .answer-status {
-    min-height: 24px;
-    font-size: 12px;
-  }
-  .answer-dock label {
-    margin-bottom: 2px;
-  }
-  .workspace-answer-row {
-    gap: 6px;
-  }
-  .workspace-answer-row input,
-  .answer-action {
-    height: 44px;
-  }
-  .answer-action {
-    width: 114px;
-    font-size: 13px;
-    padding: 8px;
-  }
-  .math-keypad {
-    gap: 4px;
-    margin-top: 4px;
-  }
-  .practice-tools {
-    gap: 8px;
-    justify-content: space-between;
-  }
-  .practice-tools button {
-    font-size: 11px;
-  }
-  .problem-content .question {
-    font-size: 22px;
-  }
-  .problem-content .figure {
-    height: 150px;
-    margin-top: 8px;
-  }
-}
 
 /* A choice is a complete mathematical statement. Its radio control keeps native
    arrow-key behavior; the letter is an aid to scanning, never the answer value. */
@@ -898,9 +828,11 @@ nav button {
   }
 }
 
-/* A unit grid needs legible labels even when the answer dock is compact. */
+/* A unit grid needs legible labels even when the answer dock is compact.
+   Coordinate planes draw through the scene renderer since #1177. */
 .problem-content .graphical-figure[data-kind="coordinate-plane"],
-.problem-content .geometry-figure[data-kind="quadrant-grid"] {
+.problem-content .scene-figure[data-kind="coordinate-plane"],
+.problem-content .scene-figure[data-kind="quadrant-grid"] {
   min-height: 130px;
   flex-shrink: 0;
 }
@@ -941,43 +873,14 @@ nav button {
     line-height: 1.3;
   }
 }
-/* A short landscape screen has width to spare: table and graph sit side by
-   side under the prompt (the component's inline layout is a column). */
-@media (max-height: 500px) and (min-width: 651px) {
-  .problem-content:has(.function-display) .question {
-    font-size: 18px;
-    line-height: 1.3;
-  }
-  .problem-content .figure.function-display {
-    flex-direction: row !important;
-    justify-content: center;
-    gap: 14px !important;
-    margin-top: 8px;
-  }
-  .problem-content .function-display svg {
-    flex: 0 0 auto;
-    width: auto !important;
-    height: min(150px, 34dvh) !important;
-    min-height: 0;
-    aspect-ratio: 320 / 248;
-  }
-}
 .choice-model .function-display svg {
   max-height: 150px;
 }
-/* A coordinate grid is read label by label: give it more of the screen. */
-.problem-content .geometry-figure[data-kind="quadrant-grid"] {
-  height: min(36dvh, 280px);
-  max-height: 280px;
-}
-.choice-model .geometry-figure[data-kind="quadrant-grid"] {
-  height: min(32dvh, 240px);
-}
 
 /* Lettered shapes and puzzle pieces are compared side by side at one scale:
- * give them the room a coordinate grid gets. */
-.problem-content .shape-figure {
+ * keep them at least as tall as a coordinate grid. */
+.problem-content .scene-figure[data-kind="plane-shapes"],
+.problem-content .scene-figure[data-kind="shape-puzzle"] {
   min-height: 130px;
-  height: min(38dvh, 300px);
-  max-height: 300px;
+  flex-shrink: 0;
 }

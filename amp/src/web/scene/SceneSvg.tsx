@@ -91,7 +91,7 @@ function Item({
       return (
         <path
           {...common}
-          d={d.d}
+          d={state?.d ?? d.d}
           stroke={strokeOf(d.stroke) ?? "none"}
           strokeWidth={d.w ? (state?.highlight ? d.w + 2 : d.w) : undefined}
           fill={fillOf(d.fill)}

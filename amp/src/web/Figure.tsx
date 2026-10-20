@@ -12,23 +12,24 @@ import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
 import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
 import { GraphicalFigure } from "./GraphicalFigure";
+import { CoordinateGeometry, SimilarTriangles } from "./TransformationFigure";
 import { SignedLineFigure } from "./SignedLineFigure";
 import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
-import { DataDisplayFigure } from "./DataDisplayFigure";
-import { GeometryFigure } from "./GeometryFigure";
-import { ShapeFigure } from "./ShapeFigure";
 import type { SemanticFigure } from "../math/contracts";
 import { isPorted, legacyScene } from "../math/scene/legacy";
 import { SceneFigure } from "./scene/SceneFigure";
+import type { Scene } from "../math/scene/spec";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   // Kinds ported to the scene framework draw through it (docs/figures-rfc.md).
   if (isPorted(figure))
     return <SceneFigure scene={legacyScene(figure)} kind={figure.kind} />;
   switch (figure.kind) {
     case "scene":
-      return <SceneFigure scene={figure.scene} />;
+      return (
+        <SceneFigure scene={figure.scene} kind={sceneKind(figure.scene)} />
+      );
     case "length-interval":
     case "measure-rectangle":
     case "rectangle-comparison":
@@ -58,24 +59,6 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "area-partition":
     case "fraction-bars":
       return <PartWholeFigure figure={figure} />;
-    case "sort-shapes":
-    case "picture-graph":
-    case "scaled-bar-graph":
-    case "line-plot":
-    case "histogram":
-    case "box-plot":
-    case "double-dot-plot":
-    case "double-box-plot":
-      return <DataDisplayFigure figure={figure} />;
-    case "cube-prism":
-    case "box-prism":
-    case "composite-prism":
-    case "quadrant-grid":
-      return <GeometryFigure figure={figure} />;
-    case "plane-shapes":
-    case "shape-puzzle":
-    case "solid-shape":
-      return <ShapeFigure figure={figure} />;
     case "grouped-counters":
       return <EqualGroupsFigure figure={figure} />;
     case "rational-line":
@@ -102,6 +85,10 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
       return <ComparisonFigure figure={figure} />;
     case "bar-chart":
       return <GraphicalFigure figure={figure} />;
+    case "coordinate-geometry":
+      return <CoordinateGeometry figure={figure} />;
+    case "similar-triangles":
+      return <SimilarTriangles figure={figure} />;
     case "signed-line":
       return <SignedLineFigure figure={figure} />;
     case "balance-scale":
@@ -230,4 +217,28 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
         </div>
       );
   }
+}
+
+/** A data-kind hook for styling: geometry scenes keep the names their
+ * figures had before the scene port, so practice-screen rules still apply. */
+function sceneKind(scene: Scene) {
+  const first = scene.elements[0];
+  if (!first) return "scene";
+  if (
+    first.type === "graph" &&
+    first.x[0] === 0 &&
+    first.y[0] === 0 &&
+    first.labels === "all"
+  )
+    return "quadrant-grid";
+  return (
+    (
+      {
+        shapes: "plane-shapes",
+        shapePuzzle: "shape-puzzle",
+        solid: "solid-shape",
+        isoSolid: "iso-solid",
+      } as Record<string, string>
+    )[first.type] ?? "scene"
+  );
 }

@@ -16,8 +16,19 @@ import {
   table,
   lineTable,
   tenFrame,
+  tree,
+  triangle,
+  venn,
 } from "./author";
 import type { Scene } from "./spec";
+import {
+  exponentialGraph,
+  exponentialLessonScenes,
+  logGraph,
+  raceBars,
+  raceGraph,
+  stepTable,
+} from "../exponential-scenes";
 import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
 
 /** Reference scenes for every component: the gallery renders them at four
@@ -31,6 +42,73 @@ export type GalleryCase = {
 };
 
 export const galleryCases: GalleryCase[] = [
+  {
+    name: "Dot plot: a trial pivot and the mean, with distances (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 8,
+      mark: "dot",
+      groups: [{ values: [1, 2, 2, 3, 7] }],
+      unit: "goals",
+      references: [
+        { at: 4, distances: true, label: "pivot" },
+        { at: 3, distances: true, label: "mean" },
+      ],
+    }).build({ maxHeight: 720 }),
+  },
+  {
+    name: "Dot plot: quartiles and the box over the data (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 10,
+      mark: "dot",
+      groups: [{ values: [1, 2, 2, 3, 4, 5, 5, 6, 8, 9] }],
+      quartiles: true,
+      box: true,
+    }).build({ maxHeight: 720 }),
+  },
+  {
+    name: "Line plot: amounts shared equally (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 2,
+      denominator: 4,
+      mark: "x",
+      groups: [{ values: [0.25, 0.75, 1, 1, 1.5, 1.5] }],
+      share: 1,
+      unit: "liters",
+    }).build({ maxHeight: 720 }),
+  },
+  {
+    name: "Two dot plots: MADs laid across the gap between means (lesson)",
+    reveal: true,
+    scene: scene({
+      type: "dotPlot",
+      id: "plot",
+      min: 0,
+      max: 12,
+      mark: "dot",
+      groups: [
+        { label: "Morning", values: [3, 4, 5, 5, 6, 7] },
+        { label: "Afternoon", values: [6, 7, 8, 8, 9, 10] },
+      ],
+      unit: "push-ups",
+      references: [
+        { at: 5, group: 0, label: "mean" },
+        { at: 8, group: 1, label: "mean" },
+      ],
+      bricks: { from: 5, to: 8, size: 1 },
+    }).build({ maxHeight: 720 }),
+  },
   {
     name: "Number line: make ten, then add the rest (hint)",
     scene: numberLine({ id: "nl", min: 0, max: 20 })
@@ -289,6 +367,121 @@ export const galleryCases: GalleryCase[] = [
     scene: fractionBar({ shaded: 5, parts: 4, wholes: 2 }).scene(),
   },
   { name: "Clock: 3:45", scene: clock(3, 45).scene({ width: 280 }) },
+  // Exponential growth and logarithms: tables, bars and curves.
+  // The full model: the players step through these in lessons.
+  ...Object.entries(exponentialLessonScenes).map(([name, scene]) => ({
+    name: `Exponential lesson: ${name}`,
+    scene: { ...scene, steps: undefined },
+    reveal: true,
+  })),
+  {
+    name: "Table: constant ratio, a later value asked",
+    scene: stepTable([0, 1, 2, 3], [5, 15, 45, 135], "×3"),
+  },
+  {
+    name: "Graph: exponential through marked points",
+    scene: exponentialGraph(3, 2, [0, 1, 2]),
+  },
+  { name: "Graph: line against exponential", scene: raceGraph(12, 20, 2, 8) },
+  { name: "Graph: log curve, height asked", scene: logGraph(2, 16, 17) },
+  {
+    name: "Bars: two offers by day",
+    scene: raceBars(
+      [0, 1, 2, 3],
+      { label: "Offer A", values: [40, 65, 90, 115] },
+      { label: "Offer B", values: [1, 2, 4, 8] },
+      "Day",
+    ),
+  },
+  {
+    name: "Venn: counts in every region",
+    scene: venn("Art", "Music", { universe: "40 students" })
+      .regions({ a: 12, ab: 6, b: 9, none: 13 })
+      .scene(),
+  },
+  {
+    name: "Venn: totals given, the union shaded (problem)",
+    scene: venn("Soccer", "Band", { universe: "60 students" })
+      .totals(25, 18)
+      .regions({ a: null, ab: 7, b: null })
+      .shade("a", "ab", "b")
+      .scene(),
+  },
+  {
+    name: "Venn: probabilities, neither shaded",
+    scene: venn("A", "B", { universe: "S" })
+      .regions({ a: "0.35", ab: "0.15", b: "0.2", none: null })
+      .shade("none")
+      .scene(),
+  },
+  {
+    name: "Two-way table: conditioning on one row",
+    scene: table({
+      columns: ["Online", "In person", "Total"],
+      rows: [
+        { label: "Grade 9", cells: [18, 12, 30] },
+        { label: "Grade 10", cells: [14, 26, 40] },
+        { label: "Total", cells: [32, 38, 70] },
+      ],
+      sums: true,
+      highlight: { rows: [1], cells: [[1, 0]] },
+    }).scene({ width: 400 }),
+  },
+  {
+    name: "Two-way table: conditioning on one column",
+    scene: table({
+      columns: ["Museum", "Zoo", "Park"],
+      rows: [
+        { label: "Adult", cells: [5, 20, 16] },
+        { label: "Child", cells: [22, 26, 4] },
+      ],
+      highlight: { columns: [2], cells: [[1, 2]] },
+    }).scene(),
+  },
+  {
+    name: "Tree: two draws without replacement",
+    scene: tree([
+      {
+        label: "R",
+        p: "3/5",
+        children: [
+          { label: "R", p: "2/4", leaf: "6/20" },
+          { label: "B", p: "2/4", leaf: "6/20" },
+        ],
+      },
+      {
+        label: "B",
+        p: "2/5",
+        children: [
+          { label: "R", p: "3/4", leaf: "6/20" },
+          { label: "B", p: "1/4", leaf: "2/20" },
+        ],
+      },
+    ])
+      .highlight("0", "0.1")
+      .scene(),
+  },
+  {
+    name: "Tree: rain and a late bus (problem)",
+    scene: tree([
+      {
+        label: "Rain",
+        p: "0.3",
+        children: [
+          { label: "Late", p: "0.4", leaf: null },
+          { label: "On time", p: null },
+        ],
+      },
+      {
+        label: "No rain",
+        p: "0.7",
+        children: [
+          { label: "Late", p: "0.1" },
+          { label: "On time", p: "0.9" },
+        ],
+      },
+    ]).scene(),
+  },
   {
     name: "Protractor: 0 on the left, ray at 130",
     scene: protractor([180, 130], ["A", "B", "C"]).scene({ width: 340 }),
@@ -501,6 +694,308 @@ export const galleryCases: GalleryCase[] = [
       },
     ).scene({ title: "Adding the equations" }),
   },
+  {
+    name: "Shapes: four lettered quadrilaterals with marks",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "shapes",
+          id: "shapes",
+          items: [
+            {
+              label: "A",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [2, 0],
+                    [2, 1],
+                    [0, 1],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "B",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1.4, 0],
+                    [2.1, 1.2],
+                    [0.7, 1.2],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "C",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1.3, 0],
+                    [1.3, 1.3],
+                    [0, 1.3],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "D",
+              marks: "parallel",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [2.2, 0],
+                    [2.7, 0.9],
+                    [0.5, 0.9],
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Shape puzzle: which piece completes the square",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "shapePuzzle",
+          id: "puzzle",
+          outline: [
+            [0, 0],
+            [2, 0],
+            [2, 2],
+            [0, 2],
+          ],
+          placed: [
+            {
+              type: "polygon",
+              points: [
+                [0, 0],
+                [2, 0],
+                [2, 2],
+              ],
+            },
+          ],
+          candidates: [
+            {
+              label: "A",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1, 0],
+                    [1, 1],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "B",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [0, -2],
+                    [2, 0],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "C",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [3, 0],
+                    [0, 2],
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Solids: a cube and a cone, hidden edges dashed",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "solid",
+          id: "cube",
+          solid: {
+            type: "prism",
+            height: 2,
+            base: {
+              type: "polygon",
+              points: [
+                [-1.2, -0.3],
+                [0.3, -1.2],
+                [1.2, 0.3],
+                [-0.3, 1.2],
+              ],
+            },
+          },
+        },
+        {
+          type: "solid",
+          id: "cone",
+          at: [3.4, 0],
+          solid: {
+            type: "pyramid",
+            height: 2.4,
+            base: { type: "ellipse", center: [0, 0], radii: [1, 1], angle: 0 },
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: "Unit cubes: layer by layer, running totals masked (hint)",
+    scene: {
+      v: 1,
+      width: 320,
+      elements: [
+        {
+          type: "isoSolid",
+          id: "prism",
+          solid: {
+            form: "cubes",
+            length: 4,
+            width: 3,
+            height: 3,
+            counts: true,
+          },
+        },
+      ],
+      steps: [0, 1, 2].map((k) => ({
+        caption: `Layer ${k + 1}: {prism.count.${k}} cubes so far.`,
+        actions: [
+          {
+            do: "fill" as const,
+            target: `prism.layer.${k}`,
+            fill: "warm-fill" as const,
+          },
+          { do: "appear" as const, target: `prism.count.${k}` },
+        ],
+      })),
+    },
+  },
+  {
+    name: "Box with a missing edge, and a stepped solid",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "isoSolid",
+          id: "box",
+          solid: {
+            form: "box",
+            length: { value: 6, unit: "cm" },
+            width: null,
+            height: { value: 3, unit: "cm" },
+          },
+        },
+        {
+          type: "isoSolid",
+          id: "steps",
+          at: [9, 0],
+          solid: {
+            form: "composite",
+            width: 2,
+            unit: "cm",
+            parts: [
+              { length: 3, height: 5 },
+              { length: 4, height: 2 },
+            ],
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: "Triangle: right angle, sides and the reference angle",
+    scene: triangle([
+      [0, 0],
+      [4, 0],
+      [4, 3],
+    ])
+      .names("A", "C", "B")
+      .side(0, { label: 4 })
+      .side(1, { label: 3 })
+      .side(2, { label: null })
+      .angle(0, { mark: "arc", label: "θ" })
+      .angle(1, { mark: "right" })
+      .scene({ title: "Right triangle ABC" }),
+  },
+  {
+    name: "Triangle: similar pair with matching marks",
+    scene: scene(
+      triangle([
+        [0, 0],
+        [3, 0],
+        [1, 2],
+      ])
+        .names("A", "B", "C")
+        .side(0, { label: 6 })
+        .side(1, { label: 5 })
+        .angle(0, { mark: "arc" })
+        .angle(1, { mark: "arc", arcs: 2 })
+        .id("t1"),
+      triangle([
+        [5, 0],
+        [9.5, 0],
+        [6.5, 3],
+      ])
+        .names("D", "E", "F")
+        .side(0, { label: 9 })
+        .side(1, { label: null })
+        .angle(0, { mark: "arc" })
+        .angle(1, { mark: "arc", arcs: 2 })
+        .id("t2"),
+    ).build({ title: "Triangles ABC and DEF" }),
+  },
+  {
+    name: "Triangle: 30-60-90 with congruent ticks",
+    scene: triangle([
+      [0, 0],
+      [Math.sqrt(3) * 2, 0],
+      [0, 2],
+    ])
+      .side(0, { label: "2√3" })
+      .side(1, { label: 4 })
+      .side(2, { label: 2, ticks: 1 })
+      .angle(0, { mark: "right" })
+      .angle(1, { mark: "arc", label: "30°" })
+      .angle(2, { mark: "arc", arcs: 2, label: "60°" })
+      .scene(),
+  },
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */
@@ -531,8 +1026,98 @@ export const parityFigures: SemanticFigure[] = [
   },
   { kind: "ten-frame", first: 7, second: 2, capacity: 10 },
   { kind: "ten-frame", first: 9, second: 6, capacity: 20 },
+  {
+    kind: "line-plot",
+    denominator: 4,
+    start: 4,
+    end: 12,
+    values: [5, 5, 6, 8, 8, 8, 9, 11, 12],
+    mark: "x",
+    unit: "inches",
+  },
+  {
+    kind: "line-plot",
+    denominator: 1,
+    start: 0,
+    end: 8,
+    values: [1, 2, 2, 3, 7],
+    mark: "dot",
+    unit: "goals",
+  },
+  {
+    kind: "double-dot-plot",
+    start: 0,
+    end: 12,
+    groups: [
+      { label: "Morning", values: [3, 4, 5, 5, 6, 7] },
+      { label: "Afternoon", values: [6, 7, 8, 8, 9, 10] },
+    ],
+    unit: "push-ups",
+  },
+  {
+    kind: "box-plot",
+    start: 40,
+    end: 100,
+    step: 5,
+    summary: [50, 65, 75, 85, 95],
+    unit: "points",
+  },
+  {
+    kind: "double-box-plot",
+    start: 40,
+    end: 100,
+    step: 5,
+    groups: [
+      { label: "Class A", summary: [55, 65, 75, 85, 95] },
+      { label: "Class B", summary: [45, 60, 65, 70, 90] },
+    ],
+    unit: "points",
+  },
   { kind: "base-ten", hundreds: 2, tens: 4, ones: 7 },
   { kind: "base-ten", hundreds: 0, tens: 13, ones: 6 },
   { kind: "unit-array", rows: 7, columns: 6, splitAfterRow: 4 },
   { kind: "unit-array", rows: 3, columns: 9 },
+  {
+    kind: "histogram",
+    start: 0,
+    width: 10,
+    counts: [2, 5, 8, 6, 3],
+    unit: "minutes",
+  },
+  {
+    kind: "scaled-bar-graph",
+    categories: [
+      { label: "Mon", value: 30 },
+      { label: "Tue", value: 45 },
+      { label: "Wed", value: 15 },
+      { label: "Thu", value: 50 },
+    ],
+    step: 10,
+    max: 60,
+    unit: "cans",
+  },
+  {
+    kind: "picture-graph",
+    categories: [
+      { label: "Soccer", count: 25 },
+      { label: "Swim", count: 10 },
+      { label: "Tennis", count: 15 },
+    ],
+    key: 10,
+    unit: "students",
+  },
+  {
+    kind: "sort-shapes",
+    shapes: [
+      "circle",
+      "square",
+      "triangle",
+      "square",
+      "circle",
+      "triangle",
+      "circle",
+      "square",
+      "circle",
+    ],
+  },
 ];
