@@ -87,7 +87,8 @@ export function LevelCheck({
               ?.focus({ preventScroll: true });
           }}
         >
-          <div className={styles.body}>
+          {/* Scrolls on short screens, so it is focusable for keyboards. */}
+          <div className={styles.body} tabIndex={0} aria-label={copy.title}>
             <p className={styles.eyebrow}>{copy.eyebrow(answered)}</p>
             <RadixDialog.Title className={styles.title}>
               {copy.title}
