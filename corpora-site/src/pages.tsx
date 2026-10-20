@@ -387,12 +387,14 @@ function Amp({ config }: { config: SiteConfig }) {
   );
 }
 function Esa({ config }: { config: SiteConfig }) {
-  const states = [...new Set(config.funding.map((r) => r.state))].sort();
+  const groups = [...new Set(config.funding.map((r) => r.state))].sort();
+  const states = groups.filter((state) => state !== "US");
+  const orderedGroups = groups.includes("US") ? ["US", ...states] : states;
   return (
     <>
       <Intro
         label="Education funds"
-        heading="Explore education funding by state."
+        heading="Explore education funding and savings."
       >
         <p className="lead">
           An education savings account (ESA) or scholarship may pay through a
@@ -405,26 +407,27 @@ function Esa({ config }: { config: SiteConfig }) {
         </p>
       </Intro>
       <section className="section">
-        <h2>Guidance by state</h2>
-        {states.length ? (
+        <h2>State programs and nationwide savings</h2>
+        {orderedGroups.length ? (
           <>
             <nav
               className="state-links"
-              aria-label="States with reviewed guidance"
+              aria-label="Funding and savings guidance"
             >
-              {states.map((s) => (
+              {orderedGroups.map((s) => (
                 <a href={`#state-${s}`} key={s}>
                   <StateIdentity state={s} compact />
-                  <span>{stateNames[s] ?? s}<small>{config.funding.filter((r) => r.state === s).length} {config.funding.filter((r) => r.state === s).length === 1 ? "program" : "programs"}</small></span>
+                  <span>{stateNames[s] ?? s}<small>{config.funding.filter((r) => r.state === s).length} {config.funding.filter((r) => r.state === s).length === 1 ? "route" : "routes"}</small></span>
                 </a>
               ))}
             </nav>
             <p className="directory-count">
               <strong>{config.funding.filter((r) => r.page).length} parent guides</strong>
-              {" · "}{states.length} {states.length === 1 ? "state" : "states"}
+              {states.length > 0 && <>{" · "}{states.length} {states.length === 1 ? "state" : "states"}</>}
+              {groups.includes("US") && <> · Nationwide savings guidance</>}
               <span>Guides explain purchase routes; inclusion does not mean vendor approval.</span>
             </p>
-            {states.map((state) => (
+            {orderedGroups.map((state) => (
               <section className="state" id={`state-${state}`} key={state}>
                 <h3 className="state-heading"><StateIdentity state={state} compact />{stateNames[state] ?? state}</h3>
                 <div className="program-grid">
@@ -466,7 +469,7 @@ function Esa({ config }: { config: SiteConfig }) {
           </>
         ) : (
           <p>
-            State-specific guidance is not published here yet. Check the
+            Funding guidance is not published here yet. Check the
             program’s official purchase rules before buying, or{" "}
             <a href="/support/">contact support</a> with your state and program
             name.
