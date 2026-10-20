@@ -323,43 +323,6 @@ export const extendedLessons: Lesson[] = [
       "Use two colors for positive and negative counters and remove opposite pairs to model the sum.",
   },
   {
-    id: "whole-number-powers",
-    title: "Powers count repeated factors",
-    summary: "An exponent tells how many copies of a base are multiplied.",
-    templateIds: ["integer-power"],
-    objectives: [
-      "Expand a positive integer power.",
-      "Explain the zero-exponent rule for a nonzero base.",
-    ],
-    sections: [
-      {
-        title: "Factors, not repeated addition",
-        paragraphs: [
-          "Three to the fourth power means 3 × 3 × 3 × 3. The exponent counts four factors of three.",
-          "Compute the products step by step: nine, twenty-seven, eighty-one. Multiplying the base by the exponent gives a different expression.",
-        ],
-      },
-      {
-        title: "One step down divides by the base",
-        paragraphs: [
-          "Compare 3³ = 27, 3² = 9 and 3¹ = 3. Reducing the exponent by one divides the value by three.",
-          "Continuing the pattern gives 3⁰ = 1. Every nonzero base to power zero is one; these exercises avoid zero as a base.",
-        ],
-      },
-    ],
-    workedExample: {
-      prompt: "What is 3 raised to the power 4?",
-      steps: ["Write four factors: 3 × 3 × 3 × 3.", "Multiply: 9 × 9 = 81."],
-      answer: "81",
-    },
-    pitfalls: [
-      "3⁴ is not 3 × 4.",
-      "A nonzero number to power zero equals one, not zero.",
-    ],
-    parentGuide:
-      "Write a descending table of powers and ask what operation connects each neighboring pair.",
-  },
-  {
     id: "slope-two-points",
     title: "Slope measures change per step",
     summary: "Slope compares vertical change with horizontal change on a line.",

@@ -11,6 +11,12 @@ import {
 } from "../src/learning/placement";
 import { projectSkillEvidence } from "../src/server/evidence.js";
 import { generateProblem, templates } from "../src/math/engine";
+import {
+  clientCanDraw,
+  figureCapabilities,
+  type ClientCapabilities,
+  type TemplateMetadata,
+} from "../src/math/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { guessChance, guessChanceOf } from "../src/math/guess-chance";
 import type { Outcome } from "../src/server/repository";
@@ -69,7 +75,43 @@ function firstProblems(
   return { start, ids: attempts.map((attempt) => attempt.templateId) };
 }
 
-test("every role and opener names a real, whole item every client can draw", () => {
+/** Clients as they exist: the current web app (everything), older native
+ * builds without scenes, builds missing any one figure family, typed-only
+ * clients, and a client that draws no figures at all. */
+const allFigures = [...figureCapabilities];
+const clients: [string, ClientCapabilities][] = [
+  [
+    "current",
+    {
+      responseCapabilities: ["single-choice-v1"],
+      figureCapabilities: allFigures,
+    },
+  ],
+  ...allFigures.map((missing): [string, ClientCapabilities] => [
+    `no ${missing}`,
+    {
+      responseCapabilities: ["single-choice-v1"],
+      figureCapabilities: allFigures.filter((c) => c !== missing),
+    },
+  ]),
+  ["typed only", { responseCapabilities: [], figureCapabilities: allFigures }],
+  [
+    "typed, no scenes",
+    {
+      responseCapabilities: [],
+      figureCapabilities: allFigures.filter((c) => c !== "scenes-v1"),
+    },
+  ],
+  [
+    "no figures",
+    { responseCapabilities: ["single-choice-v1"], figureCapabilities: [] },
+  ],
+  ["typed, no figures", { responseCapabilities: [], figureCapabilities: [] }],
+];
+const figureFree = (id: string) =>
+  byId.get(id)!.requiredFigureCapability === undefined;
+
+test("every role and opener names a real, whole item", () => {
   for (const id of scaffoldTemplateIds) assert.ok(byId.has(id), id);
   for (const [band, slots] of openerSlots.entries()) {
     assert.equal(slots.length, OPENER_COUNT, `band ${band}`);
@@ -86,9 +128,15 @@ test("every role and opener names a real, whole item every client can draw", () 
       );
     if (band > 0)
       assert.equal(new Set(strands.slice(0, 3)).size, 3, `band ${band}`);
-    // This year's or last year's material; high school opens on grade 8
-    // and Algebra 1.
-    const top = Math.min(band, 9);
+    // An older client that draws no figures still opens on at least two
+    // scripted strands; a slot it cannot draw goes to adaptive selection.
+    assert.ok(
+      slots.filter((pool) => pool.some(figureFree)).length >= 2,
+      `band ${band}: too few figure-free slots`,
+    );
+    // This year's or last year's material; high school opens on grade 8,
+    // Algebra 1 and Geometry.
+    const [low, high] = band >= 9 ? [8, 10] : [Math.max(0, band - 1), band];
     for (const pool of slots)
       for (const id of pool) {
         const template = byId.get(id);
@@ -97,14 +145,13 @@ test("every role and opener names a real, whole item every client can draw", () 
         // A choice opener needs at least three options: a correct pick on a
         // two-way choice is mostly luck and says little about the learner.
         assert.ok(guessChance(template) <= 1 / 3, id);
-        assert.equal(template.requiredFigureCapability, undefined, id);
         const grade = gradeOf(id);
         assert.ok(
-          grade <= top && grade >= Math.max(0, top - 1),
+          grade >= low && grade <= high,
           `${id} is grade ${grade}, band ${band}`,
         );
         // Short enough to read at a glance as a first impression.
-        for (const seed of ["a", "b", "c"])
+        for (const seed of ["a", "b", "c", "d", "e", "f", "g", "h"])
           assert.ok(
             generateProblem(id, seed).public.prompt.length <= 160,
             `${id}: ${generateProblem(id, seed).public.prompt}`,
@@ -132,7 +179,7 @@ test("every birth year from 2010 to 2022 opens on its curated, confidence-buildi
     }
 });
 
-test("choice openers bring measurement into K–2 placement; typed-only clients still get typed openers", () => {
+test("choice openers bring measurement, shapes and shares into K–2 placement; typed-only clients still get typed openers", () => {
   for (const birthYear of [2019, 2020, 2021]) {
     const { start, ids } = firstProblems(
       birthYear,
@@ -141,10 +188,21 @@ test("choice openers bring measurement into K–2 placement; typed-only clients 
     );
     assert.ok(start <= 2, String(start));
     assert.ok(
-      ids.some((id) => strandOf(id) === "measurement"),
+      ids.some((id) => guessChance(byId.get(id)!) > 0),
+      `${ids}`,
+    );
+    assert.ok(
+      ids.some((id) =>
+        ["measurement", "geometry", "fractions"].includes(strandOf(id)),
+      ),
       `${ids}`,
     );
   }
+  assert.ok(
+    openerSlots[0]!.some((pool) =>
+      pool.every((id) => strandOf(id) === "measurement"),
+    ),
+  );
   // A client without single-choice support never receives a choice item; a
   // slot it cannot draw falls through to adaptive selection.
   const typed = templates.filter((template) => guessChance(template) === 0);
@@ -160,6 +218,70 @@ test("choice openers bring measurement into K–2 placement; typed-only clients 
         assert.ok(slots[position]!.includes(id), `${birthYear}: ${id}`);
     });
   }
+});
+
+test("every client gets a valid opener for every grade: the slot item it can draw, else an adaptive one", () => {
+  const sceneOpeners = new Set<string>();
+  for (const [name, client] of clients) {
+    const catalog = templates.filter((template) =>
+      clientCanDraw(template, client),
+    );
+    for (let birthYear = 2009; birthYear <= 2022; birthYear++)
+      for (const sibling of ["first", "second"]) {
+        const { start, ids } = firstProblems(
+          birthYear,
+          `${birthYear}:${sibling}`,
+          OPENER_COUNT + 1,
+          catalog,
+        );
+        const slots = openerSlots[Math.min(start, openerSlots.length - 1)]!;
+        ids.forEach((id, position) => {
+          const where = `${name}, ${birthYear} ${sibling}, problem ${position + 1}: ${id}`;
+          const template: TemplateMetadata = byId.get(id)!;
+          // Never an item the client cannot draw, never a method step.
+          assert.ok(clientCanDraw(template, client), where);
+          assert.equal(templateRole(id), "assessment", where);
+          const slot = slots[position];
+          if (!slot) return;
+          const drawable = slot.filter((own) =>
+            clientCanDraw(byId.get(own)!, client),
+          );
+          // The learner's own pick when the client can draw it, otherwise
+          // the slot's next drawable item; only an undrawable slot leaves
+          // the choice to adaptive selection.
+          if (drawable.length) assert.ok(drawable.includes(id), where);
+          else assert.ok(!slot.includes(id), where);
+          if (template.requiredFigureCapability === "scenes-v1")
+            sceneOpeners.add(id);
+        });
+      }
+  }
+  // Scene items really do open placement for clients that draw them.
+  assert.ok(sceneOpeners.size >= 6, [...sceneOpeners].join());
+});
+
+test("a client without scenes keeps the scripted strand where the slot has a capability-free item", () => {
+  const client = clients.find(([name]) => name === "no scenes-v1")![1];
+  const catalog = templates.filter((template) =>
+    clientCanDraw(template, client),
+  );
+  for (let birthYear = 2009; birthYear <= 2022; birthYear++)
+    for (let i = 0; i < 6; i++) {
+      const { start, ids } = firstProblems(
+        birthYear,
+        `scene-less-${i}`,
+        OPENER_COUNT,
+        catalog,
+      );
+      const slots = openerSlots[Math.min(start, openerSlots.length - 1)]!;
+      ids.forEach((id, position) => {
+        const own = slots[position]!.filter((item) =>
+          clientCanDraw(byId.get(item)!, client),
+        );
+        if (own.length)
+          assert.equal(strandOf(id), strandOf(own[0]!), `${birthYear}: ${id}`);
+      });
+    }
 });
 
 test("siblings of the same age do not all start identically", () => {

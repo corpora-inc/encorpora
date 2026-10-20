@@ -1,20 +1,28 @@
 import styles from "./Auth.module.css";
 import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { queryClient, sessionOptions } from "../../lib/query";
+import {
+  authConfigOptions,
+  queryClient,
+  sessionOptions,
+} from "../../lib/query";
 import { useLoggedError, requestMessage } from "../../feedback";
 import { useEffect, useState, type FormEvent } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { accountClient } from "../../account-client";
-import { authConfig, signIn, notifyAccountSessionChanged } from "../../auth";
+import { signIn, notifyAccountSessionChanged } from "../../auth";
+import {
+  EmailDivider,
+  ProviderButtons,
+  isProvider,
+  providerNames,
+  type Provider,
+} from "./ProviderButtons";
+import { socialCopyFor, socialErrorMessage } from "./social-copy";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
-const providerNames: Record<string, string> = {
-  google: "Google",
-  apple: "Apple",
-  microsoft: "Microsoft",
-  github: "GitHub",
-};
 const titles: Record<Step, string> = {
   "sign-in": "Sign in",
   create: "Create your parent account",
@@ -70,8 +78,13 @@ export function SignInScreen() {
     else
       void navigate({ to: "/sign-in/$step", params: { step: next }, search });
   };
-  const [providers, setProviders] = useState<string[]>([]);
-  const [passwords, setPasswords] = useState(true);
+  const { data: config } = useSuspenseQuery(authConfigOptions);
+  const accounts = config.mode === "accounts";
+  const providers = accounts ? config.providers.filter(isProvider) : [];
+  const passwords = accounts ? config.passwords : true;
+  const copy = socialCopyFor(document.documentElement.lang);
+  const errorProvider = params.get("provider");
+  const [pending, setPending] = useState<Provider | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -83,22 +96,44 @@ export function SignInScreen() {
       ? "That password reset link expired or is invalid. Request a new link."
       : params.get("error") === "link_failed"
         ? "That login could not be linked. Sign in again, then try linking it from Security."
-        : params.get("error")
-          ? "That sign-in did not complete. Try again."
-          : "",
+        : params.get("error") && isProvider(errorProvider)
+          ? socialErrorMessage(
+              copy,
+              params.get("error")!,
+              providerNames[errorProvider],
+            )
+          : params.get("error")
+            ? "That sign-in did not complete. Try again."
+            : "",
   );
   useLoggedError(error);
   const [notice, setNotice] = useState("");
   useEffect(() => {
-    void authConfig().then((config) => {
-      if (config.mode !== "accounts") {
-        history.replaceState({}, "", "/");
-        void signIn();
-        return;
-      }
-      setProviders(config.providers);
-      setPasswords(config.passwords);
+    if (!accounts) {
+      history.replaceState({}, "", "/");
+      void signIn();
+    }
+  }, [accounts]);
+  // A provider's error is shown once; refresh and history do not replay it.
+  useEffect(() => {
+    if (!isProvider(errorProvider)) return;
+    void navigate({
+      to: ".",
+      search: (previous: Record<string, unknown>) => ({
+        ...previous,
+        error: undefined,
+        provider: undefined,
+      }),
+      replace: true,
     });
+  }, []);
+  // Returning from the provider with Back restores this page from the cache.
+  useEffect(() => {
+    const restored = (event: PageTransitionEvent) => {
+      if (event.persisted) setPending(null);
+    };
+    addEventListener("pageshow", restored);
+    return () => removeEventListener("pageshow", restored);
   }, []);
   function go(next: Step) {
     setStep(next);
@@ -194,19 +229,32 @@ export function SignInScreen() {
       }
     });
   }
-  const social = (provider: string) =>
+  // The provider returns here on failure (with its code), to the guided first
+  // run for a new parent, or to where this sign-in was headed.
+  const social = (provider: Provider) => {
+    setPending(provider);
+    setError("");
     void run(async () => {
-      fail(
-        await accountClient.signIn.social({
-          provider,
-          callbackURL: returnTo,
-          errorCallbackURL:
-            params.get("return") === "security"
-              ? "/?sign-in&return=security"
-              : "/?sign-in",
-        }),
-      );
+      const result = await accountClient.signIn.social({
+        provider,
+        callbackURL: returnTo,
+        newUserCallbackURL: "/start",
+        errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
+          {
+            provider,
+            ...(params.get("return") === "security"
+              ? { return: "security" }
+              : {}),
+          },
+        )}`,
+      });
+      if (result.error) {
+        setPending(null);
+        console.error("Provider sign-in did not start", provider, result.error);
+        throw new Error(socialErrorMessage(copy, "", providerNames[provider]));
+      }
     });
+  };
   const showProviders = step === "sign-in" || step === "create";
   return (
     <PageFrame>
@@ -219,16 +267,22 @@ export function SignInScreen() {
             {notice}
           </p>
         )}
-        {error && (
-          <p className="account-error" role="alert">
-            {error}
-          </p>
+        {/* Fixed and dismissible: it never moves or blocks the form. */}
+        <Toast message={error} onDismiss={() => setError("")} />
+        {showProviders && (
+          <ProviderButtons
+            providers={providers}
+            copy={copy}
+            busy={busy || !!pending}
+            pending={pending}
+            onSelect={social}
+          />
         )}
         {step === "sign-in" && (
           <button
             type="button"
             className="secondary"
-            disabled={busy}
+            disabled={busy || !!pending}
             onClick={() =>
               void run(async () => {
                 fail(await accountClient.signIn.passkey());
@@ -239,25 +293,8 @@ export function SignInScreen() {
             Sign in with a passkey
           </button>
         )}
-        {showProviders && providers.length > 0 && (
-          <div className="account-providers">
-            {providers.map((provider) => (
-              <button
-                key={provider}
-                type="button"
-                className="secondary"
-                disabled={busy}
-                onClick={() => social(provider)}
-              >
-                Continue with {providerNames[provider] ?? provider}
-              </button>
-            ))}
-          </div>
-        )}
         {showProviders && providers.length > 0 && passwords && (
-          <p className="account-divider" aria-hidden="true">
-            <span>or</span>
-          </p>
+          <EmailDivider copy={copy} />
         )}
         {step === "check-email" ? (
           <p>

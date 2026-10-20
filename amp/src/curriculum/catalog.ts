@@ -1396,6 +1396,16 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Whole-number powers (6.EE.A.1), with exponents in the order of operations.
+skills
+  .find((s) => s.id === "integer-powers")!
+  .facets.push({
+    id: "integer-powers.whole-number-powers",
+    description:
+      "Evaluate mental-math-sized whole-number powers, find a missing exponent, move between repeated products and powers, compare powers, evaluate products and sums containing a power, and read doubling or tripling as a power.",
+    status: "implemented",
+  });
+
 // High-school coordinate geometry and circles (G-GPE, G-C).
 for (const [skillId, suffix, description] of [
   [

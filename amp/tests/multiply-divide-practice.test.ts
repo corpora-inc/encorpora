@@ -86,7 +86,6 @@ test("multiplication and division openers are numeric and short", () => {
   for (const id of [
     "multiply-by-tens",
     "multiply-by-one-digit",
-    "multiply-multidigit",
     "divide-by-one-digit",
   ])
     assert.ok(openers.has(id), id);

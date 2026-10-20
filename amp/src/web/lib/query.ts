@@ -1,7 +1,7 @@
 import { QueryClient, queryOptions } from "@tanstack/react-query";
 import { meSchema } from "../../account/contracts";
 import type { AuthSession } from "../auth";
-import { accessSession } from "../auth";
+import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,6 +16,13 @@ export const sessionOptions = queryOptions({
     signal.throwIfAborted();
     return session;
   },
+  staleTime: Infinity,
+});
+/** How this deployment signs parents in (password, configured providers).
+ * Loaded before the sign-in screen renders, so its controls never shift. */
+export const authConfigOptions = queryOptions({
+  queryKey: ["auth-config"],
+  queryFn: () => authConfig(),
   staleTime: Infinity,
 });
 export const meKey = (identity: string | null) =>

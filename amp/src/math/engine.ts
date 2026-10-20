@@ -96,6 +96,7 @@ import {
   exponentialTemplates,
   generateExponentialProblem,
 } from "./exponential-practice";
+import { powerTemplates, generatePowerProblem } from "./power-practice";
 import {
   coordinateCircleTemplates,
   generateCoordinateCircleProblem,
@@ -351,6 +352,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...probabilityRulesTemplates,
   ...similarityTrigTemplates,
   ...coordinateCircleTemplates,
+  ...powerTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
@@ -546,6 +548,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...probabilityRulesTemplates,
     ...similarityTrigTemplates,
     ...coordinateCircleTemplates,
+    ...powerTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -641,6 +644,8 @@ function generateRawProblem(
     return generateSimilarityTrigProblem(templateId, seed);
   if (coordinateCircleTemplates.some((t) => t.id === templateId))
     return generateCoordinateCircleProblem(templateId, seed);
+  if (powerTemplates.some((t) => t.id === templateId))
+    return generatePowerProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (numberSenseTemplates.some((t) => t.id === templateId))
