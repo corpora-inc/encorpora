@@ -1,5 +1,5 @@
 import { ProblemLesson } from "./ProblemLesson";
-import { MathText } from "./MathText";
+import { MathText, spokenMath } from "./MathText";
 import { Calculator, type CalculatorDismissal } from "./Calculator";
 import {
   clearField,
@@ -333,7 +333,9 @@ export function PracticeWorkspace(props: Props) {
           }}
         >
           <fieldset disabled={locked}>
-            <legend>{problem.response.label}</legend>
+            <legend>
+              <MathText text={problem.response.label} />
+            </legend>
             <div className="choice-options">
               {problem.response.options.map((option, index) => (
                 <label
@@ -344,7 +346,7 @@ export function PracticeWorkspace(props: Props) {
                     type="radio"
                     name={`answer-${problem.id}`}
                     value={option.id}
-                    aria-label={option.label}
+                    aria-label={spokenMath(option.label)}
                     checked={response === option.id}
                     onChange={() => setResponse(option.id)}
                   />
@@ -385,7 +387,9 @@ export function PracticeWorkspace(props: Props) {
             props.submit();
           }}
         >
-          <label htmlFor="answer">{problem.response.label}</label>
+          <label htmlFor="answer">
+            <MathText text={problem.response.label} />
+          </label>
           <div className="workspace-answer-row">
             <input
               id="answer"
@@ -403,6 +407,7 @@ export function PracticeWorkspace(props: Props) {
               value={response}
               onChange={(event) => setResponse(event.target.value)}
               readOnly={locked}
+              aria-label={spokenMath(problem.response.label)}
               aria-describedby="problem-prompt answer-format"
               placeholder={
                 problem.response.kind === "fraction"
@@ -705,7 +710,8 @@ export function PracticeWorkspace(props: Props) {
                       </strong>
                     </span>
                     <small>
-                      You entered {displayResponse(outcome.response)}
+                      You entered{" "}
+                      <MathText text={displayResponse(outcome.response)} />
                       {support && `, ${support}`}
                     </small>
                   </>

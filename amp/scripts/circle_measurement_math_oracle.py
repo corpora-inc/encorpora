@@ -27,14 +27,14 @@ def parse_circle(public):
     template = public.get('templateId')
     require(template in CIRCLE, 'Unknown circle template')
     require(public.get('figure') is None, 'Unexpected runtime circle figure')
-    require(public.get('response') == {'kind': 'fraction', 'label': 'Exact coefficient a'},
+    require(public.get('response') == {'kind': 'fraction', 'label': 'Exact coefficient $a$'},
             'Circle response must request the exact coefficient')
     prefix = r'A circle has a (radius|diameter) of ([1-9][0-9]*(?:/2)?) cm\. '
     tails = {
-        'circle-circumference-coefficient': r'Its circumference is \$a\\pi\$ cm\. What is a\?',
-        'circle-area-coefficient': r'Its area is \$a\\pi\$ square centimeters\. What is a\?',
-        'arc-length-coefficient': r'An arc corresponds to a central angle of ([1-9][0-9]*) degrees\. Its length is \$a\\pi\$ cm\. What is a\?',
-        'sector-area-coefficient': r'A sector has a central angle of ([1-9][0-9]*) degrees\. Its area is \$a\\pi\$ square centimeters\. What is a\?',
+        'circle-circumference-coefficient': r'Its circumference is \$a\\pi\$ cm\. What is \$a\$\?',
+        'circle-area-coefficient': r'Its area is \$a\\pi\$ square centimeters\. What is \$a\$\?',
+        'arc-length-coefficient': r'An arc corresponds to a central angle of ([1-9][0-9]*) degrees\. Its length is \$a\\pi\$ cm\. What is \$a\$\?',
+        'sector-area-coefficient': r'A sector has a central angle of ([1-9][0-9]*) degrees\. Its area is \$a\\pi\$ square centimeters\. What is \$a\$\?',
     }
     found = re.fullmatch(prefix + tails[template], public.get('prompt', ''))
     require(found is not None, 'Malformed circle statement or units')
@@ -63,8 +63,8 @@ def fixture(template, kind, dimension, angle=360):
         'sector-area-coefficient': f'A sector has a central angle of {angle} degrees. Its area is $a\\pi$ square centimeters.',
     }
     return {'templateId': template,
-            'prompt': f'A circle has a {kind} of {dimension} cm. {endings[template]} What is a?',
-            'response': {'kind': 'fraction', 'label': 'Exact coefficient a'}}
+            'prompt': f'A circle has a {kind} of {dimension} cm. {endings[template]} What is $a$?',
+            'response': {'kind': 'fraction', 'label': 'Exact coefficient $a$'}}
 
 
 def review_circle_fixtures():
@@ -352,7 +352,7 @@ def check_lesson(record):
     require(lesson['id'] == template and lesson['templateIds'] == [template], 'Missing standalone circle lesson')
     worked = lesson['workedExample']
     public = {'templateId': template, 'prompt': worked['prompt'],
-              'response': {'kind': 'fraction', 'label': 'Exact coefficient a'}}
+              'response': {'kind': 'fraction', 'label': 'Exact coefficient $a$'}}
     require(Fraction(worked['answer']) == solve_circle(public), 'Mismatch in circle lesson example')
     require(len(worked['steps']) >= 3, 'Incomplete circle lesson worked solution')
     check_steps(public, worked['steps'])

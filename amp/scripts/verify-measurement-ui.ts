@@ -1,4 +1,5 @@
 import { choose } from "./ui-controls";
+import { spokenMath } from "../src/web/MathText";
 import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -277,10 +278,12 @@ try {
       const wrong = publicProblem.response.options.find(
         (o) => o.id !== generated.answer,
       )!;
-      await page.getByRole("radio", { name: wrong.label, exact: true }).check();
+      await page
+        .getByRole("radio", { name: spokenMath(wrong.label), exact: true })
+        .check();
     } else
       await page
-        .getByLabel(publicProblem.response.label, { exact: true })
+        .getByLabel(spokenMath(publicProblem.response.label), { exact: true })
         .fill("0");
     await page.getByRole("button", { name: /^Check$/ }).click();
     await page.locator(".feedback.incorrect").waitFor();
