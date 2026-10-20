@@ -25,6 +25,7 @@ import {
   skip,
   trialSessionOptions,
   type TrialOutcome,
+  type TrialProgress,
   type TrialSession,
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
@@ -33,6 +34,10 @@ import { gradeBand } from "./grade-band";
 import { failureMessage, TrialFailure } from "./TrialFrame";
 import { nativeRuntime } from "../../native-runtime";
 import { SKIP_USES_FREE_PROBLEM } from "../../../learning/skip";
+import { levelCheckDue } from "../../../learning/level-check";
+import { LevelCheck } from "./LevelCheck";
+import { approximateAge } from "./level-copy";
+import { strandOrder } from "./strands";
 
 /** `/try/practice`: placement, then adaptive practice, full screen. The
  * existing workspace, planner, lessons and hints; only the meter is new. */
@@ -85,6 +90,14 @@ function Practice({ session }: { session: TrialSession }) {
     response: string;
   } | null>(null);
   const [pending, setPending] = useState(false);
+  // The level check: fetched when its problem is used, shown with the next
+  // problem, so it never interrupts an answer or its feedback.
+  const due = useRef<{
+    count: number;
+    snapshot: Promise<TrialProgress>;
+  } | null>(null);
+  const [check, setCheck] = useState<TrialProgress | null>(null);
+  const [checkOpen, setCheckOpen] = useState(false);
   usePracticeViewport(true);
   useEffect(() => trackSessionStart(), []);
   // An answer in flight is not kept: its retry identity lives here only.
@@ -138,6 +151,19 @@ function Practice({ session }: { session: TrialSession }) {
         : { to },
     );
   }
+  /** A level check after this many problems used, when one is due. */
+  function schedule(count: number, free: { free: number; placement: number }) {
+    due.current = levelCheckDue(count, free)
+      ? {
+          count,
+          snapshot: queryClient.fetchQuery({
+            ...progressOptions(session),
+            staleTime: 0,
+          }),
+        }
+      : null;
+    due.current?.snapshot.catch(() => undefined);
+  }
   function show(next: Next) {
     if (next === "complete") return leave("/try/plans");
     setProblem(next.problems[0] ?? null);
@@ -170,6 +196,16 @@ function Practice({ session }: { session: TrialSession }) {
   const placed = answered === limits.placement;
   return (
     <div className="shell app-shell practice-shell immersive">
+      {check && (
+        <LevelCheck
+          progress={check}
+          strands={strandOrder(catalog.data)}
+          age={approximateAge(session.birthYear)}
+          open={checkOpen}
+          onContinue={() => setCheckOpen(false)}
+          onMap={() => setCheckOpen(false)}
+        />
+      )}
       <PracticeWorkspace
         key={problem.id}
         problem={problem}
@@ -234,6 +270,7 @@ function Practice({ session }: { session: TrialSession }) {
             track(placing ? "placement_answer" : "practice_answer", {
               index: placing ? count : count - limits.placement,
             });
+            schedule(count, limits);
             if (result.mastered) track("mastery");
             // Fetch the next problem while the feedback is read. Placement's
             // end and the limit lead to the map and the paywall instead.
@@ -261,7 +298,22 @@ function Practice({ session }: { session: TrialSession }) {
             }
             const ready = upcoming.current ?? nextProblem(session);
             upcoming.current = null;
-            show(await ready);
+            const level = due.current;
+            due.current = null;
+            // A level check that failed to load is skipped, never an error.
+            const [next, snapshot] = await Promise.all([
+              ready,
+              level?.snapshot.catch((failure: unknown) => {
+                console.warn("Level check not loaded", failure);
+                return null;
+              }),
+            ]);
+            show(next);
+            if (level && snapshot && next !== "complete") {
+              setCheck(snapshot);
+              setCheckOpen(true);
+              track("level_check_view", { index: level.count });
+            }
           })
         }
         skip={
@@ -276,6 +328,7 @@ function Practice({ session }: { session: TrialSession }) {
                   setOutcome(result);
                   setAnswered(count);
                   track("practice_skip");
+                  schedule(count, limits);
                   upcoming.current =
                     count === limits.placement || count >= limits.free
                       ? null

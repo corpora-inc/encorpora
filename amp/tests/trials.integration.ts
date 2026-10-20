@@ -105,6 +105,12 @@ test(
       assert.equal(fresh.free, FREE);
       assert.equal(fresh.remaining, FREE);
       assert.equal(fresh.frontier.placement, null);
+      // Before any answer the trend is the starting estimate from age alone.
+      assert.deepEqual(
+        fresh.trend.map((point: { answered: number }) => point.answered),
+        [0],
+      );
+      assert.equal(fresh.trend[0].level, fresh.frontier.current.overall.level);
       const stockpiled = (
         await app.inject({
           method: "POST",
@@ -223,6 +229,16 @@ test(
       assert.ok(complete.mastered.includes(numeric.skillId));
       assert.equal(complete.frontier.current.overall.answered, FREE);
       assert.equal(complete.frontier.placement.overall.answered, PLACEMENT);
+      // The level over the run: the start, every fifth answer, the latest.
+      // Its last point is the current estimate, and more answers narrow it.
+      assert.deepEqual(
+        complete.trend.map((point: { answered: number }) => point.answered),
+        [0, 5, 10],
+      );
+      const last = complete.trend.at(-1);
+      assert.equal(last.level, complete.frontier.current.overall.level);
+      assert.equal(last.sd, complete.frontier.current.overall.sd);
+      assert.ok(last.sd < complete.trend[0].sd, "the range narrows");
       for (let i = 0; i < 2; i++)
         assert.equal(
           (

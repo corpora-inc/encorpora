@@ -1,0 +1,190 @@
+/* The level check: a bottom sheet on phones, a centred card from 640px.
+   Fixed over practice, so nothing beneath it moves; the body scrolls and the
+   actions stay in reach. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-scrim);
+  animation: fade var(--motion-fast) ease-out;
+}
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  max-height: calc(100dvh - var(--space-5));
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: var(--shadow-overlay);
+  animation: rise var(--motion-step) var(--ease-standard);
+}
+.sheet:focus {
+  outline: none;
+}
+@media (min-width: 640px) and (min-height: 560px) {
+  .sheet {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    width: min(520px, calc(100vw - 2 * var(--space-6)));
+    max-height: calc(100dvh - 2 * var(--space-6));
+    border-bottom: 1px solid var(--color-border);
+    border-radius: var(--radius-panel);
+    transform: translate(-50%, -50%);
+    animation: appear var(--motion-step) var(--ease-standard);
+  }
+}
+.body {
+  display: grid;
+  gap: var(--space-4);
+  overflow: auto;
+  padding: var(--space-5) var(--space-5) var(--space-3);
+}
+.body:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.title {
+  margin: calc(-1 * var(--space-3)) 0 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.overall {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.overall > span:first-of-type {
+  margin: var(--space-1) 0;
+}
+.guess {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: 0;
+}
+.guessLabel {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+.guess strong {
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.summary,
+.sharpen {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-muted-text);
+}
+.sharpen {
+  color: var(--color-on-surface-raised);
+  font-weight: 600;
+}
+.block {
+  display: grid;
+  gap: var(--space-2);
+}
+.blockTitle {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--color-subtle-text);
+}
+.areas {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.areas li {
+  display: grid;
+  grid-template-columns: minmax(84px, 34%) 1fr;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 24px;
+}
+.areaName {
+  overflow: hidden;
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-muted-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-5)
+    calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--color-border);
+}
+.actions > * {
+  width: 100%;
+}
+@media (max-width: 420px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 380px) {
+  .body {
+    padding: var(--space-4) var(--space-4) var(--space-2);
+    gap: var(--space-3);
+  }
+  .title {
+    font-size: 23px;
+    margin-top: calc(-1 * var(--space-2));
+  }
+  .actions {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+@keyframes appear {
+  from {
+    transform: translate(-50%, calc(-50% + 12px));
+    opacity: 0;
+  }
+}

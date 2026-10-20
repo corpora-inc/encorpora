@@ -1,0 +1,119 @@
+/* Level charts: a track per estimate (band = likely range, dot = best
+   guess, tick = typical for age) and the run's trend. Strand colour comes
+   from the nearest [data-strand]; the overall estimate uses the primary. */
+.track {
+  --level-hue: var(--strand, var(--color-primary));
+  position: relative;
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+.large {
+  height: 14px;
+}
+.center {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 1.5px;
+  margin-left: -0.75px;
+  background: var(--color-border-strong);
+}
+.range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--level-hue) 34%, transparent);
+  transition:
+    left var(--motion-step) var(--ease-standard),
+    width var(--motion-step) var(--ease-standard);
+}
+.estimated .range {
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--level-hue) 24%, transparent) 0 4px,
+    transparent 4px 7px
+  );
+}
+.dot {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 3px solid var(--color-surface-raised);
+  border-radius: 50%;
+  background: var(--level-hue);
+  box-shadow: 0 0 0 1px var(--level-hue);
+  transform: translate(-50%, -50%);
+  transition: left var(--motion-step) var(--ease-standard);
+}
+.large .dot {
+  width: 22px;
+  height: 22px;
+  border-width: 4px;
+}
+.estimated .dot {
+  background: var(--color-surface-raised);
+}
+.axis {
+  position: relative;
+  display: block;
+  height: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--color-subtle-text);
+  font-variant-numeric: tabular-nums;
+}
+.axis span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.axis span:nth-child(1) {
+  left: 0;
+}
+.axis span:nth-child(2) {
+  transform: translateX(-50%);
+}
+.axis span:nth-child(3) {
+  right: 0;
+}
+.trend {
+  position: relative;
+  display: block;
+  height: 56px;
+}
+.trend svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.band {
+  fill: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  stroke: none;
+}
+.line {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.trendDot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 2.5px solid var(--color-surface-raised);
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+  transform: translate(-50%, -50%);
+}

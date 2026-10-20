@@ -53,6 +53,16 @@ export const progressSchema = z.object({
     placement: frontierSchema.nullable(),
     current: frontierSchema,
   }),
+  /** The overall estimate over the run (learning/level-check.ts). */
+  trend: z
+    .array(
+      z.object({
+        answered: z.number().int(),
+        level: z.number(),
+        sd: z.number(),
+      }),
+    )
+    .default([]),
 });
 export type TrialProgress = z.infer<typeof progressSchema>;
 const batchSchema = z.object({
@@ -76,8 +86,13 @@ export const outcomeSchema = z.object({
 });
 export type TrialOutcome = z.infer<typeof outcomeSchema>;
 
-/** The device's trial: its token and nameless learner, or null. */
-export type TrialSession = { token: string; learnerId: string };
+/** The device's trial: its token and nameless learner, or null. The birth
+ * year stays in memory, for the level check's "about 10". */
+export type TrialSession = {
+  token: string;
+  learnerId: string;
+  birthYear?: number | null;
+};
 export const trialSessionOptions = queryOptions({
   queryKey: ["trial", "session"],
   queryFn: async ({ signal }): Promise<TrialSession | null> => {
@@ -86,10 +101,23 @@ export const trialSessionOptions = queryOptions({
     try {
       const { learners } = await request(
         "/learners",
-        z.object({ learners: z.array(z.object({ id: z.string() })) }),
+        z.object({
+          learners: z.array(
+            z.object({
+              id: z.string(),
+              birthYear: z.number().int().nullable().optional(),
+            }),
+          ),
+        }),
         { trial: token, signal },
       );
-      return learners[0] ? { token, learnerId: learners[0].id } : null;
+      return learners[0]
+        ? {
+            token,
+            learnerId: learners[0].id,
+            birthYear: learners[0].birthYear ?? null,
+          }
+        : null;
     } catch (error) {
       // An expired or saved trial no longer authenticates: start fresh.
       if (error instanceof AppError && error.kind === "authentication") {
@@ -157,7 +185,11 @@ export async function startTrial(birthYear: number): Promise<TrialSession> {
   } catch (failure) {
     console.warn("Free practice token not saved on this device", failure);
   }
-  const session = { token: created.token, learnerId: created.learnerId };
+  const session = {
+    token: created.token,
+    learnerId: created.learnerId,
+    birthYear,
+  };
   queryClient.setQueryData(trialSessionOptions.queryKey, session);
   return session;
 }

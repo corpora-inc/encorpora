@@ -22,7 +22,7 @@ test("the vocabulary is exactly the issue's fixed list", () => {
     Object.keys(funnelPropsSchemas).sort(),
     [...FUNNEL_EVENTS].sort(),
   );
-  assert.equal(FUNNEL_EVENTS.length, 23);
+  assert.equal(FUNNEL_EVENTS.length, 24);
 });
 
 test("accepts known events with valid props", () => {
