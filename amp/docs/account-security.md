@@ -15,6 +15,20 @@ The account starts with an **unconfirmed email**. The confirmation link is sent 
 
 **Recovering an unconfirmed address.** Anyone could start an account under someone else's address. A password reset or setup link proves the address, so completing one on an unconfirmed account confirms it and removes every passkey, linked provider login and session created before. The owner keeps the account; whoever created it loses access. A parent who sets a password before confirming must add their passkey again.
 
+## Passkey sign-in
+
+Where passkeys can work, **Sign in with a passkey** is the sign-in screen's one primary action, above the provider buttons and the email form. The email field also offers saved passkeys through browser autofill (WebAuthn conditional mediation, `autocomplete="username webauthn"`); choosing one signs in. Credentials are discoverable, so no email is needed first.
+
+A passkey request that does not finish never dead-ends. Browsers do not reveal whether the parent cancelled or has no passkey for AMP (Chrome, for example, reports an unregistered security key itself), so one message, in a reserved line under the button, covers both: "No passkey for AMP was used. If you haven't saved one, sign in another way below, then add one in Family → Security." Nothing moves when it appears.
+
+**The offer after other sign-ins.** After a sign-in with a provider or password, a parent with no passkey sees **Add a passkey for faster sign-in** once: a fixed card over the bottom of the page, shown while the new session is fresh enough to add one (five minutes). **Add passkey** saves one on this device; **Not now** or adding one ends the offer for that parent in this browser (`localStorage`). A parent who has a passkey never sees it, and it stays off the sign-in screens, Security and practice.
+
+## Native app
+
+The Tauri app never offers passkeys. Its sign-in runs in the system browser (`native_sign_in`), not the webview, and the webview has no associated-domain (`webcredentials`, iOS) or Digital Asset Links (Android) binding to AMP's relying party, so a WebAuthn ceremony there would fail. `passkeysAvailable()` also returns false on IP-address origins, which WebAuthn rejects. Follow-up: native passkey sign-in needs the app's associated domains and asset links for the AMP origin, and a native AMP-accounts sign-in flow.
+
+## Security settings
+
 - **Passkeys:** register a device or security key, give it a name, rename or remove it, and use it on the sign-in screen. WebAuthn requires HTTPS, or `localhost` for local development; a loopback IP address is not a valid relying-party domain.
 - **Password:** change the password and revoke other sessions. A parent without a password can request an emailed, single-use setup link. Password sign-in and setup appear only when this deployment enables passwords.
 - **Authenticator:** enter the password, scan the QR code and verify a six-digit code before activation. Save the displayed backup codes privately. Each code works once; replacing the codes invalidates the previous set. Codes are not included in ordinary settings responses or retained in browser storage.
@@ -28,6 +42,6 @@ Security mutations and method removal serialize per parent inside database trans
 
 Method removal is server-authorized. At least one usable password, configured provider or passkey must survive. A password counts only when password sign-in is enabled and the email meets this deployment’s verification requirement. AMP blocks Better Auth's separate raw removal endpoints, which cannot enforce this cross-method invariant. Other accounts' methods cannot be renamed or removed.
 
-`tests/passkey-signup.integration.ts` drives real attestations and assertions from a software authenticator: atomic creation, abandoned and failed ceremonies, replay, cross-site requests, existing and concurrently taken emails, confirmation and passkey sign-in, and recovery by reset. `scripts/verify-passkey-sign-up-ui.ts` runs the browser flow with Chromium's virtual authenticator.
+`tests/passkey-signup.integration.ts` drives real attestations and assertions from a software authenticator: atomic creation, abandoned and failed ceremonies, replay, cross-site requests, existing and concurrently taken emails, confirmation and passkey sign-in, and recovery by reset. `scripts/verify-passkey-sign-up-ui.ts` and `scripts/verify-passkey-sign-in-ui.ts` run the browser flows with Chromium's virtual authenticator, including the no-passkey message and the one-time offer.
 
 `tests/account-security.integration.ts` covers account ownership, origins, stale sessions, password revocation, authenticator verification and recovery, signed OAuth callback fixtures, simultaneous provider/passkey removal, competing password rotations, OAuth callbacks paused during token exchange, provider sign-in paused before session creation, and request-local provider identity isolation. `scripts/verify-accounts-ui.ts` exercises the real server with a virtual WebAuthn authenticator and checks revocation during passkey enrollment and sign-in, device-clock skew, and the interface at 320, 390 and 1280 pixels. Its screenshots mask setup secrets and recovery codes.

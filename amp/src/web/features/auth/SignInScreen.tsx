@@ -21,7 +21,13 @@ import {
   type Provider,
 } from "./ProviderButtons";
 import { socialCopyFor, socialErrorMessage } from "./social-copy";
-import { passkeysAvailable, signUpWithPasskey } from "./passkey";
+import { WebAuthnAbortService } from "@simplewebauthn/browser";
+import {
+  NO_PASSKEY,
+  passkeyAutofill,
+  passkeysAvailable,
+  signUpWithPasskey,
+} from "./passkey";
 import { useAuthDraft } from "./draft";
 
 type Step =
@@ -98,6 +104,12 @@ export function SignInScreen() {
     !!config.passkeySignup &&
     passkeysAvailable();
   const passkeyMethod = passkeyCreate && params.get("method") !== "password";
+  // Passkey sign-in: the primary action wherever it can work.
+  const passkeySignIn = step === "sign-in" && accounts && passkeysAvailable();
+  const [passkeyProblem, setPasskeyProblem] = useState("");
+  // Each finished button attempt re-arms the autofill it cancelled.
+  const [autofillRound, setAutofillRound] = useState(0);
+  useLoggedError(passkeyProblem);
   const copy = socialCopyFor(document.documentElement.lang);
   const errorProvider = params.get("provider");
   const [pending, setPending] = useState<Provider | null>(null);
@@ -263,6 +275,37 @@ export function SignInScreen() {
       throw new Error(result.message);
     });
   }
+  // A passkey that never resolves to a session is explained in place, with
+  // the way forward. The browser does not say whether the parent cancelled or
+  // has no passkey for AMP, so the message covers both.
+  function signInWithPasskey() {
+    setPasskeyProblem("");
+    void run(async () => {
+      const result = await accountClient.signIn.passkey();
+      if (result.error) {
+        console.warn("Passkey sign-in did not finish", result.error);
+        setPasskeyProblem(NO_PASSKEY);
+        setAutofillRound((round) => round + 1);
+        return;
+      }
+      await done();
+    });
+  }
+  // Passkey autofill on the email field (conditional mediation). Choosing a
+  // passkey there signs in; the button or leaving the screen cancels it.
+  useEffect(() => {
+    if (!passkeySignIn || !passwords) return;
+    let live = true;
+    void passkeyAutofill(() => live)
+      .then((signedIn) => (signedIn && live ? done() : undefined))
+      .catch((failure) =>
+        console.warn("Passkey autofill unavailable", failure),
+      );
+    return () => {
+      live = false;
+      WebAuthnAbortService.cancelCeremony();
+    };
+  }, [passkeySignIn, passwords, autofillRound]);
   // The provider returns here on failure (with its code), to the guided first
   // run for a new parent, or to where this sign-in was headed.
   const social = (provider: Provider) => {
@@ -304,6 +347,35 @@ export function SignInScreen() {
         )}
         {/* Fixed and dismissible: it never moves or blocks the form. */}
         <Toast message={error} onDismiss={() => setError("")} />
+        {passkeySignIn && (
+          <div className={styles.passkey}>
+            <Button
+              type="button"
+              variant="primary"
+              disabled={busy || !!pending}
+              onClick={signInWithPasskey}
+            >
+              Sign in with a passkey
+            </Button>
+            {/* Hint and problem share one cell: the slot never resizes. */}
+            <p className={styles.slot}>
+              <small
+                className={styles.hint}
+                aria-hidden={!!passkeyProblem}
+                style={{ visibility: passkeyProblem ? "hidden" : undefined }}
+              >
+                Use the passkey on this device, your phone or a security key.
+              </small>
+              <small
+                className={styles.problem}
+                role="alert"
+                style={{ visibility: passkeyProblem ? undefined : "hidden" }}
+              >
+                {passkeyProblem || NO_PASSKEY}
+              </small>
+            </p>
+          </div>
+        )}
         {showProviders && (
           <ProviderButtons
             providers={providers}
@@ -312,21 +384,6 @@ export function SignInScreen() {
             pending={pending}
             onSelect={social}
           />
-        )}
-        {step === "sign-in" && (
-          <Button
-            type="button"
-            variant="secondary"
-            disabled={busy || !!pending}
-            onClick={() =>
-              void run(async () => {
-                fail(await accountClient.signIn.passkey());
-                await done();
-              })
-            }
-          >
-            Sign in with a passkey
-          </Button>
         )}
         {showProviders &&
           providers.length > 0 &&
@@ -364,7 +421,7 @@ export function SignInScreen() {
                   <input
                     required
                     type="email"
-                    autoComplete="email"
+                    autoComplete={passkeySignIn ? "username webauthn" : "email"}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -400,7 +457,11 @@ export function SignInScreen() {
                   />
                 </label>
               )}
-              <Button variant="primary" type="submit" disabled={busy}>
+              <Button
+                variant={passkeySignIn ? "secondary" : "primary"}
+                type="submit"
+                disabled={busy}
+              >
                 {
                   {
                     "sign-in": "Sign in",

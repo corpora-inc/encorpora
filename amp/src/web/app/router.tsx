@@ -10,6 +10,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { z } from "zod";
+import { lazy, Suspense } from "react";
 import { nativeRuntime } from "../native-runtime";
 import {
   authConfigOptions,
@@ -47,8 +48,26 @@ function RouterError({ error }: { error: unknown }) {
   const router = useRouter();
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
+// Offered once after a sign-in without a passkey; loaded off the first paint.
+const PasskeyOffer = lazy(() =>
+  import("../features/auth/PasskeyOffer").then((m) => ({
+    default: m.PasskeyOffer,
+  })),
+);
+function Root() {
+  return (
+    <>
+      <Outlet />
+      {!nativeRuntime && (
+        <Suspense fallback={null}>
+          <PasskeyOffer />
+        </Suspense>
+      )}
+    </>
+  );
+}
 const root = createRootRoute({
-  component: Outlet,
+  component: Root,
   validateSearch: (search) => searchSchema.parse(search),
   errorComponent: RouterError,
 });

@@ -8,3 +8,22 @@
   font-size: var(--text-small);
   line-height: 1.4;
 }
+.passkey {
+  display: grid;
+  gap: var(--space-2);
+}
+/* The hint and the problem overlap in one cell, sized by the longer. */
+.slot {
+  display: grid;
+  margin: 0;
+}
+.slot > * {
+  grid-area: 1 / 1;
+}
+.problem {
+  margin: 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.4;
+}

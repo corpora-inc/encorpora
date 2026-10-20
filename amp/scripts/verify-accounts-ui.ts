@@ -92,6 +92,13 @@ try {
     viewport: { width: 390, height: 760 },
   });
   const page = await context.newPage();
+  // The virtual authenticator answers any pending request by itself, so it
+  // would complete the email field's passkey autofill unasked. This flow
+  // tests the buttons; verify-passkey-sign-in-ui covers autofill.
+  await page.addInitScript(() => {
+    if ("PublicKeyCredential" in window)
+      PublicKeyCredential.isConditionalMediationAvailable = async () => false;
+  });
   const errors: string[] = [];
   page.on("response", (r) => {
     if (r.status() >= 429)

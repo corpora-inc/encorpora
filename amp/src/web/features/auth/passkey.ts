@@ -1,5 +1,7 @@
 import {
   browserSupportsWebAuthn,
+  browserSupportsWebAuthnAutofill,
+  startAuthentication,
   startRegistration,
   WebAuthnError,
 } from "@simplewebauthn/browser";
@@ -21,6 +23,11 @@ export function passkeysAvailable(): boolean {
     browserSupportsWebAuthn()
   );
 }
+
+/** What to do when a passkey sign-in did not finish: the browser does not
+ * reveal whether the parent cancelled or has no passkey for AMP yet. */
+export const NO_PASSKEY =
+  "No passkey for AMP was used. If you haven't saved one, sign in another way below, then add one in Family → Security.";
 
 export type PasskeySignUpResult =
   | { ok: true }
@@ -99,4 +106,34 @@ export async function signUpWithPasskey(
     };
   }
   return { ok: true };
+}
+
+/**
+ * Arm passkey autofill on the email field (WebAuthn conditional mediation).
+ * Resolves true once the parent chose a passkey and the server signed them
+ * in. `live` is checked before every step, so a screen that has gone never
+ * starts a ceremony or completes a sign-in in the background.
+ */
+export async function passkeyAutofill(live: () => boolean): Promise<boolean> {
+  if (!(await browserSupportsWebAuthnAutofill()) || !live()) return false;
+  const options = await fetch(
+    "/api/auth/passkey/generate-authenticate-options",
+    { credentials: "same-origin" },
+  );
+  if (!options.ok || !live()) return false;
+  let credential;
+  try {
+    credential = await startAuthentication({
+      optionsJSON: await options.json(),
+      useBrowserAutofill: true,
+    });
+  } catch {
+    return false; // Replaced by the button, or the screen closed.
+  }
+  if (!live()) return false;
+  const { clientExtensionResults: _ignored, ...response } = credential;
+  const verified = await post("/passkey/verify-authentication", { response });
+  if (!verified.response.ok)
+    console.warn("Passkey autofill sign-in refused", verified.response.status);
+  return verified.response.ok;
 }

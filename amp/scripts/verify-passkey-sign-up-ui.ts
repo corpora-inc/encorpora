@@ -160,6 +160,7 @@ try {
       assert.ok(lines <= (size.width < 360 ? 2 : 1), `label lines ${lines}`);
       await check(page, `sign-up ${theme} ${size.width}`);
       await page.screenshot({
+        animations: "disabled",
         path: new URL(
           `passkey-sign-up-${theme}-${size.width}x${size.height}.png`,
           shots,
@@ -179,6 +180,7 @@ try {
       );
       if (size.width === 390)
         await page.screenshot({
+          animations: "disabled",
           path: new URL(`passkey-sign-up-password-${theme}-390x844.png`, shots)
             .pathname,
           fullPage: true,
@@ -223,6 +225,7 @@ try {
     "the confirmation link was sent at sign-up",
   );
   await page.screenshot({
+    animations: "disabled",
     path: new URL("passkey-first-run-390x844.png", shots).pathname,
     fullPage: true,
   });
@@ -242,6 +245,7 @@ try {
       );
       assert.ok(overflow <= 0, `confirm ${theme} ${size.width}: overflow`);
       await page.screenshot({
+        animations: "disabled",
         path: new URL(
           `passkey-confirm-${theme}-${size.width}x${size.height}.png`,
           shots,
@@ -279,7 +283,11 @@ try {
   await page.getByRole("button", { name: "I confirmed my email" }).click();
   await page.waitForURL(`${origin}/start/plan`);
 
-  // Sign out, then back in with the passkey alone.
+  // Sign out, then back in with the passkey alone, from the button. (The
+  // virtual authenticator would also answer autofill unasked; hold that off.)
+  await page.addInitScript(() => {
+    PublicKeyCredential.isConditionalMediationAvailable = async () => false;
+  });
   await page.evaluate(() =>
     fetch("/api/auth/sign-out", { method: "POST" }).then((r) => r.ok),
   );
@@ -307,6 +315,7 @@ try {
   const after = await cdp.send("WebAuthn.getCredentials", { authenticatorId });
   assert.equal(after.credentials.length, 1, "no orphan passkey was created");
   await page.screenshot({
+    animations: "disabled",
     path: new URL("passkey-existing-email-390x844.png", shots).pathname,
     fullPage: true,
   });
