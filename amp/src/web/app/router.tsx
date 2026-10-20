@@ -76,8 +76,7 @@ async function beforeStart({ location }: { location: { pathname: string } }) {
 }
 const trial = (
   name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall" | "LevelInvite",
-) =>
-  lazyRouteComponent(() => import("../features/trial"), name);
+) => lazyRouteComponent(() => import("../features/trial"), name);
 /** The free trial: anonymous, resumable on this device, every step a URL. */
 const tryStart = createRoute({
   getParentRoute: () => root,
