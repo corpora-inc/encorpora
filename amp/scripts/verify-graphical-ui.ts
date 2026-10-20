@@ -13,7 +13,14 @@ import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
-import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
+import {
+  assertPhoneLandscapeSmoke,
+  assertProblemReachable,
+  isPhoneLandscape,
+  PHONE_REAL_BROWSERS,
+  TABLET_LANDSCAPE,
+  TABLET_LANDSCAPE_LARGE,
+} from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -167,6 +174,9 @@ try {
     for (const size of [
       { width: 320, height: 568 },
       { width: 390, height: 844 },
+      ...PHONE_REAL_BROWSERS,
+      TABLET_LANDSCAPE,
+      TABLET_LANDSCAPE_LARGE,
       { width: 844, height: 390 },
     ]) {
       await page.setViewportSize(size);
@@ -196,21 +206,16 @@ try {
         minText: Math.min(...labels.map((l) => l.size)),
         labels,
       });
-      const geometry = await page
-        .locator(".problem-stage")
-        .evaluate((stage) => ({
-          height: stage.clientHeight,
-          scroll: stage.scrollHeight,
-        }));
-      // Phone landscape only has to stay usable (#1206); the others must fit
-      // with labels at a readable on-screen size. Label size there depends on
-      // how large the viewport lets the figure render, so it is a fit check.
-      // Clipping and overlap below are in figure units and apply everywhere.
+      // Phone landscape only has to stay usable (#1206). Everywhere else the
+      // graph fits or scrolls cleanly (never clipped, never under the dock)
+      // with labels at a readable on-screen size: a figure shrinks to fit
+      // only down to that size, then the stage scrolls. Clipping and overlap
+      // below are in figure units and apply everywhere.
       if (isPhoneLandscape(size)) await assertPhoneLandscapeSmoke(page, id);
       else {
-        assert.ok(
-          geometry.scroll <= geometry.height + 2,
-          `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
+        await assertProblemReachable(
+          page,
+          `${fixture.name} ${size.width}×${size.height}`,
         );
         assert.ok(
           labels.every((l) => l.size >= 11.99),

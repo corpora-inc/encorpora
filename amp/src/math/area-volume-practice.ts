@@ -62,13 +62,13 @@ export const areaVolumeTemplates: readonly TemplateMetadata[] = (
       "cylinder-volume",
       "Cylinder volume",
       "curved-solid-volume",
-      "Find a cylinder's volume as a multiple of pi or with pi given, or find its height from its volume.",
+      "Find a cylinder's volume as a multiple of $\\pi$ or with $\\pi$ given, or find its height from its volume.",
     ],
     [
       "cone-sphere-volume",
       "Cone and sphere volume",
       "curved-solid-volume",
-      "Find the volume of a cone, sphere or hemisphere as a multiple of pi or with pi given.",
+      "Find the volume of a cone, sphere or hemisphere as a multiple of $\\pi$ or with $\\pi$ given.",
     ],
   ] as const
 ).map(([id, title, skillId, description]) => ({
@@ -1112,7 +1112,7 @@ function cylinderCase(r: Random): Case {
         `Volume = base area × height, so the height is the volume divided by the base area: $${pi(volumeC)} \\div ${pi(baseC)} = ${h}$.`,
         `Check: $${pi(baseC)} \\times ${h} = ${pi(volumeC)}$. The height is ${len(h, u)}.`,
       ],
-      hint: `Volume = base area × height. The cylinder has ${sizeText(d, u)}: find the base area, pi × radius², then divide $${pi(volumeC)}$ by it; the pi cancels.`,
+      hint: `Volume = base area × height. The cylinder has ${sizeText(d, u)}: find the base area, $\\pi r^2$, then divide $${pi(volumeC)}$ by it; the $\\pi$ cancels.`,
       figure,
       tags: ["missing-height", d.byDiameter ? "diameter" : "radius"],
       kind: "fraction",
@@ -1130,7 +1130,7 @@ function cylinderCase(r: Random): Case {
         stack,
         `Replace $\\pi$ with 3.14: $${pi(volumeC)} \\approx 3.14 \\times ${plain(volumeC)} = ${plain(value)}$. The volume is about ${plain(value)} ${C}.`,
       ],
-      hint: `Volume = pi × radius² × height. The cylinder has ${sizeText(d, u)} and is ${len(h, u)} tall: multiply radius × radius × height, then multiply by 3.14.`,
+      hint: `The volume is $V = \\pi \\times r \\times r \\times h$. The cylinder has ${sizeText(d, u)} and is ${len(h, u)} tall: multiply radius × radius × height, then multiply by 3.14.`,
       figure,
       tags: ["approximate", d.byDiameter ? "diameter" : "radius"],
       kind: "number",
@@ -1138,15 +1138,15 @@ function cylinderCase(r: Random): Case {
     };
   }
   return {
-    prompt: `A cylinder has ${sizeText(d, u)} and a height of ${len(h, u)}. Its volume is $a\\pi$ ${C}. What is a?`,
+    prompt: `A cylinder has ${sizeText(d, u)} and a height of ${len(h, u)}. Its volume is $a\\pi$ ${C}. What is $a$?`,
     answer: volumeC,
     explanation: [
       radiusStep(d, u),
       baseStep,
       stack,
-      `The number multiplying $\\pi$ is a, so $a = ${frac(volumeC)}$.`,
+      `The number multiplying $\\pi$ is $a$, so $a = ${frac(volumeC)}$.`,
     ],
-    hint: `Volume = pi × radius² × height. The cylinder has ${sizeText(d, u)} and is ${len(h, u)} tall: multiply radius × radius × height; that product is the number multiplying pi.`,
+    hint: `The volume is $V = \\pi \\times r \\times r \\times h$. The cylinder has ${sizeText(d, u)} and is ${len(h, u)} tall: multiply radius × radius × height; that product is the number multiplying $\\pi$.`,
     figure,
     tags: [
       "exact",
@@ -1154,7 +1154,7 @@ function cylinderCase(r: Random): Case {
       volumeC.d === 1 ? "whole-coefficient" : "fraction-coefficient",
     ],
     kind: "fraction",
-    label: "Exact coefficient a",
+    label: "Exact coefficient $a$",
   };
 }
 
@@ -1235,10 +1235,10 @@ function coneSphereCase(r: Random): Case {
     };
   }
   steps.push(
-    `The number multiplying $\\pi$ is a, so $a = ${frac(coefficient)}$.`,
+    `The number multiplying $\\pi$ is $a$, so $a = ${frac(coefficient)}$.`,
   );
   return {
-    prompt: `${given} Its volume is $a\\pi$ ${C}. What is a?`,
+    prompt: `${given} Its volume is $a\\pi$ ${C}. What is $a$?`,
     answer: coefficient,
     explanation: steps,
     hint: `${hints[solid]!} ${given}`,
@@ -1250,14 +1250,15 @@ function coneSphereCase(r: Random): Case {
       coefficient.d === 1 ? "whole-coefficient" : "fraction-coefficient",
     ],
     kind: "fraction",
-    label: "Exact coefficient a",
+    label: "Exact coefficient $a$",
   };
 }
 const hints: Record<string, string> = {
-  cone: "A cone holds one third of the cylinder with the same base and height: volume = one third × pi × radius² × height.",
-  sphere: "Volume of a sphere = four thirds × pi × radius³. Halve a diameter first.",
+  cone: "A cone holds one third of the cylinder with the same base and height: its volume is one third of $\\pi \\times r \\times r \\times h$.",
+  sphere:
+    "A sphere's volume is four thirds of $\\pi \\times r \\times r \\times r$. Halve a diameter first.",
   hemisphere:
-    "A hemisphere is half a sphere: volume = one half × four thirds × pi × radius³ = two thirds × pi × radius³.",
+    "A hemisphere is half a sphere: its volume is one half of four thirds, or two thirds, of $\\pi \\times r \\times r \\times r$.",
 };
 
 const builders: Record<string, (r: Random) => Case> = {

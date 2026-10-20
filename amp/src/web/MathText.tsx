@@ -236,3 +236,33 @@ export const withSeparators = (answer: string) =>
   /^\d{4,}$/.test(answer)
     ? answer.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     : answer;
+
+const SPOKEN: Record<string, string> = {
+  pi: "π",
+  theta: "θ",
+  times: "×",
+  div: "÷",
+  cdot: "·",
+  le: "≤",
+  ge: "≥",
+  neq: "≠",
+  pm: "±",
+  circ: "°",
+};
+/** Plain reading text for an accessible name: each `$…$` span becomes its
+ * source without TeX markup ("Exact coefficient $a$" → "Exact coefficient a",
+ * "$\frac{3}{4}\pi$" → "3/4π"). Text without TeX is returned unchanged. */
+export function spokenMath(text: string): string {
+  return text.replace(/\$([^$]+)\$/g, (_, tex: string) =>
+    tex
+      .replace(/\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2")
+      .replace(/\\sqrt\{([^{}]*)\}/g, "√$1")
+      .replace(/\\(?:text|mathrm)\{([^{}]*)\}/g, "$1")
+      .replace(/\\([A-Za-z]+)\s*/g, (m, name: string) => SPOKEN[name] ?? "")
+      .replace(/\^\{([^{}]*)\}/g, "^$1")
+      .replace(/[{}]/g, "")
+      .replace(/\\[,;!: ]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim(),
+  );
+}

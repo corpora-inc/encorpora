@@ -1,0 +1,307 @@
+import { segments } from "../../src/web/MathText";
+import { segmentPrintText } from "../../src/content/math-typesetting";
+import { generateProblem, templates } from "../../src/math/engine";
+import { methods } from "../../src/content/problem-methods";
+import { principles } from "../../src/content/problem-principles";
+import { lessons } from "../../src/content/lessons";
+
+/** Mathematical typography: every symbol, variable, expression or equation a
+ * learner reads is typeset as math (src/content/AGENTS.md). A text is read by
+ * two typesetters, MathText in the app and PrintMathText in lessons and print,
+ * so prose is whatever either one leaves as prose. */
+
+export type Issue = { rule: string; excerpt: string };
+
+/** The one place the word may name the number: "the ratio $\pi$ (pi)". */
+const NAMING = /\$\\pi\$ \(pi\)/g;
+
+/** Explicit allowlist. Each entry is prose that looks like a lone letter. */
+export const ALLOWED: readonly [RegExp, string][] = [
+  [/\b(?:e\.g\.|i\.e\.)/g, "Latin abbreviations are prose"],
+  [
+    /\b(?:[LTUV]-shaped?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
+    "a letter that names a shape (an L-shaped face), not a quantity",
+  ],
+  [
+    /(?<=\d\s?)(?:m|g|L|s|h)\b(?![-=])/g,
+    "a unit symbol after a number (8 m, 2 L) is text, like any unit",
+  ],
+];
+
+const relation = "=<>≤≥≠";
+const letter = "[A-Za-z]";
+const lone = (l: string) =>
+  `(?<![\\p{L}\\p{N}'’_\\\\])${l}(?![\\p{L}\\p{N}'’_])`;
+
+const EQUATION: [string, RegExp][] = [
+  [
+    "letter beside a relation",
+    new RegExp(`${lone(letter)}\\s*[${relation}]`, "u"),
+  ],
+  [
+    "relation beside a letter",
+    new RegExp(`[${relation}]\\s*${lone(letter)}`, "u"),
+  ],
+  [
+    "number times a letter",
+    new RegExp(
+      `\\d\\s*[×·*]\\s*${lone(letter)}|${lone(letter)}\\s*[×·*]\\s*\\d`,
+      "u",
+    ),
+  ],
+  ["caret", /\^/],
+  ["square root", /\bsqrt\b|√/],
+  ["π outside math", /π/],
+];
+
+/** A capitalized noun before a letter makes the letter a name ("Store A",
+ * "Shape B", "Choice C"): a label for an object in the story or a figure, set
+ * as prose like any name. Points, vertices, events and quantities are not
+ * names; they are math ($A$, $P(B)$). */
+export const NAMING_NOUNS =
+  "Store|Plan|Class|Shape|Clock|Piece|Offer|Pattern|Choice|Option|Bag|Box|Team|Card|Spinner|Group|Rectangle|Figure|Picture|Strip|Rod|Table|Function|Machine|Recipe|Garden|Company|Line|Graph|Model|Survey|School|Brand|Tank|Pool|Car|Train|Runner|Bike|Phone|Account|Job|Trip|Path|Route|Rule|Panel|Tile|Bar|Tower|Stack|Jar|Cup|Sample|Set";
+const NAMED = new RegExp(
+  `\\b(?:${NAMING_NOUNS})s?\\s+([A-Z](?:(?:,\\s*|\\s+(?:and|or)\\s+)[A-Z])*)(?![\\p{L}\\p{N}])`,
+  "gu",
+);
+/** Letters a text introduces as names. */
+export function namedLetters(text: string): Set<string> {
+  const found = new Set<string>();
+  for (const m of text.matchAll(NAMED))
+    for (const l of m[1]!.match(/[A-Z]/g)!) found.add(l);
+  return found;
+}
+
+export type Context = { variables?: Set<string>; names?: Set<string> };
+
+/** English words that follow a variable but never the article "a". */
+const VARIABLE_FOLLOWERS =
+  "is|are|was|and|or|to|lies|has|equals|plus|minus|times|divided|multiplied|squared|cubed|stays|appears|varies|changes|increases|decreases";
+
+/** A text as one typesetter reads it, each formula replaced by the
+ * placeholder 0, so prose keeps its neighbours ("$r = 4$ m" reads "0 m"). */
+const FORMULA = "0";
+function appProse(text: string) {
+  return segments(text)
+    .map((s) => (s.math ? FORMULA : s.text))
+    .join("");
+}
+function printProse(text: string) {
+  return segmentPrintText(text)
+    .map((s) => (s.kind === "text" ? s.source : FORMULA))
+    .join("");
+}
+
+/** Single-letter identifiers named inside a text's math. */
+export function mathVariables(text: string): Set<string> {
+  const found = new Set<string>();
+  const tex = [
+    ...segments(text)
+      .filter((s) => s.math)
+      .map((s) => s.text),
+    ...segmentPrintText(text)
+      .filter((s) => s.kind === "math")
+      .map((s) => (s.kind === "math" ? s.tex : "")),
+  ];
+  for (const t of tex) {
+    const stripped = t
+      .replace(/\\(?:text|mathrm|operatorname)\{[^}]*\}/g, " ")
+      .replace(/\\[A-Za-z]+/g, " ");
+    for (const m of stripped.matchAll(/(?<![A-Za-z])[A-Za-z](?![A-Za-z])/g))
+      found.add(m[0]);
+  }
+  return found;
+}
+
+/** Issues in one prose piece. `variables` are letters the surrounding
+ * material names as variables, which makes a bare "a" or "A" ambiguous. */
+function proseIssues(
+  piece: string,
+  variables: Set<string>,
+  names: Set<string>,
+): Issue[] {
+  const issues: Issue[] = [];
+  let text = piece;
+  for (const [pattern] of ALLOWED) text = text.replace(pattern, " ");
+  const at = (index: number, length = 1) =>
+    text.slice(Math.max(0, index - 24), index + length + 24).trim();
+  if (/\b[Pp]i\b/.test(text))
+    issues.push({
+      rule: "the word pi",
+      excerpt: at(text.search(/\b[Pp]i\b/), 2),
+    });
+  for (const [rule, pattern] of EQUATION) {
+    const m = pattern.exec(text);
+    if (m) issues.push({ rule, excerpt: at(m.index, m[0].length) });
+  }
+  const single = new RegExp(lone(`(${letter})`), "gu");
+  for (const m of text.matchAll(single)) {
+    const l = m[1]!,
+      before = text.slice(0, m.index),
+      after = text.slice(m.index + 1);
+    if (l === "I" || names.has(l)) continue;
+    // The article is followed by the word it modifies ("a circle"), never
+    // by a verb or operation word ("a is", "a and b").
+    const followedByWord = new RegExp(
+      `^\\s+(?!(?:${VARIABLE_FOLLOWERS})\\b)[\\p{L}\\p{N}]`,
+      "u",
+    ).test(after);
+    // "a" is the article unless the material names $a$ as a variable.
+    if (l === "a" && (!variables.has("a") || followedByWord)) continue;
+    // "A" is the article only where it starts a phrase.
+    if (
+      l === "A" &&
+      followedByWord &&
+      /(?:^\s*|[.?!:;]\s+|["“(—–]\s*)$/.test(before)
+    )
+      continue;
+    issues.push({
+      rule: /\p{Lu}/u.test(l)
+        ? "bare uppercase letter"
+        : "bare lowercase letter",
+      excerpt: at(m.index),
+    });
+  }
+  return issues;
+}
+
+/** Every typography issue in a text, read by both typesetters. A plain text
+ * (a title) is never typeset, so all of it is prose and it holds no TeX. */
+export function typographyIssues(
+  text: string,
+  context: Context = {},
+  plain = false,
+): Issue[] {
+  const source = text.replace(NAMING, "$\\pi$");
+  const variables = new Set([
+      ...(context.variables ?? []),
+      ...mathVariables(source),
+    ]),
+    names = new Set([...(context.names ?? []), ...namedLetters(source)]);
+  const seen = new Set<string>();
+  const out: Issue[] = [];
+  if (plain && text.includes("$"))
+    out.push({ rule: "TeX in a plain-text title", excerpt: text });
+  const readings = plain ? [text] : [appProse(source), printProse(source)];
+  for (const piece of readings)
+    for (const issue of proseIssues(piece, variables, names)) {
+      const key = `${issue.rule}|${issue.excerpt}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        out.push(issue);
+      }
+    }
+  return out;
+}
+
+export type LearnerText = {
+  owner: string;
+  where: string;
+  text: string;
+  /** Rendered as plain text, never typeset (titles). */
+  plain?: boolean;
+};
+export const SEEDS = 20;
+
+/** Every learner-facing text: each template's generated prompt, hint,
+ * answer label, choices, choice feedback and explanation over SEEDS seeds;
+ * its method, watch line and principle; and every reference lesson. */
+export function learnerTexts(): LearnerText[] {
+  const out: LearnerText[] = [];
+  const add = (owner: string, where: string, text: string | undefined) => {
+    if (text) out.push({ owner, where, text });
+  };
+  const title = (owner: string, where: string, text: string) =>
+    out.push({ owner, where, text, plain: true });
+  for (const t of templates) {
+    title(t.id, "title", t.title);
+    add(t.id, "description", t.description);
+    for (let i = 0; i < SEEDS; i++) {
+      const p = generateProblem(t.id, `typography-${i}`),
+        r = p.public.response;
+      add(t.id, "prompt", p.public.prompt);
+      add(t.id, "hint", p.hint);
+      add(t.id, "answer label", r.label);
+      p.explanation.forEach((s) => add(t.id, "explanation", s));
+      if (r.kind === "choice")
+        r.options.forEach((o) => add(t.id, "choice", o.label));
+      Object.values(p.choiceFeedback ?? {}).forEach((s) =>
+        add(t.id, "feedback", s),
+      );
+    }
+    const m = methods[t.id];
+    if (m) {
+      add(t.id, "method goal", m.goal);
+      (m.terms ?? []).forEach(([term, meaning]) => {
+        add(t.id, "method term", term);
+        add(t.id, "method term", meaning);
+      });
+      m.method.forEach((s) => add(t.id, "method step", s));
+      add(t.id, "method watch", m.watch);
+    }
+    add(t.id, "principle", principles[t.id]);
+  }
+  for (const l of lessons) {
+    const owner = `lesson:${l.id}`;
+    title(owner, "title", l.title);
+    add(owner, "summary", l.summary);
+    l.objectives.forEach((s) => add(owner, "objective", s));
+    l.sections.forEach((section) => {
+      title(owner, "section title", section.title);
+      section.paragraphs.forEach((s) => add(owner, "paragraph", s));
+    });
+    add(owner, "worked example", l.workedExample.prompt);
+    l.workedExample.steps.forEach((s) => add(owner, "worked step", s));
+    add(owner, "worked answer", l.workedExample.answer);
+    l.pitfalls.forEach((s) => add(owner, "pitfall", s));
+    add(owner, "parent guide", l.parentGuide);
+  }
+  return out;
+}
+
+/** Letters each owner's material names as variables or as names. A lesson
+ * shares the context of the templates it teaches. */
+export function ownerContexts(texts: LearnerText[]) {
+  const byOwner = new Map<string, Required<Context>>();
+  const of = (owner: string) => {
+    let c = byOwner.get(owner);
+    if (!c)
+      byOwner.set(owner, (c = { variables: new Set(), names: new Set() }));
+    return c;
+  };
+  for (const { owner, text } of texts) {
+    const c = of(owner);
+    for (const v of mathVariables(text)) c.variables.add(v);
+    for (const n of namedLetters(text)) c.names.add(n);
+  }
+  for (const l of lessons) {
+    const c = of(`lesson:${l.id}`);
+    for (const id of l.templateIds) {
+      const t = byOwner.get(id);
+      t?.variables.forEach((v) => c.variables.add(v));
+      t?.names.forEach((n) => c.names.add(n));
+    }
+  }
+  return byOwner;
+}
+
+/** Every issue, grouped by owner, one entry per distinct text. */
+export function corpusIssues() {
+  const texts = learnerTexts(),
+    contexts = ownerContexts(texts),
+    seen = new Set<string>(),
+    out = new Map<string, string[]>();
+  for (const { owner, where, text, plain } of texts) {
+    const key = `${owner}\n${where}\n${text}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const issues = typographyIssues(text, contexts.get(owner), plain);
+    if (!issues.length) continue;
+    const list = out.get(owner) ?? [];
+    list.push(
+      `${where}: ${text}\n    ${issues.map((i) => `${i.rule} «${i.excerpt}»`).join("; ")}`,
+    );
+    out.set(owner, list);
+  }
+  return out;
+}

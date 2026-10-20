@@ -96,7 +96,7 @@ test("animations conserve the example's quantities and match its answer", () => 
       const model = animationModel(lesson);
       if (
         id === "cylinder-volume" &&
-        !lesson.example.prompt.includes("What is a?")
+        !lesson.example.prompt.includes("What is $a$?")
       )
         continue;
       assert.ok(model, `${id}/${i}`);
