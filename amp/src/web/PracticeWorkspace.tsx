@@ -695,15 +695,16 @@ export function PracticeWorkspace(props: Props) {
           )}
         </div>
         <div className="answer-dock" ref={dock}>
-          {inputError && !outcome && (
-            <p className="answer-error" role="alert">
-              {inputError}
-            </p>
-          )}
           <div
             className="answer-controls"
             style={outcome ? { visibility: "hidden" } : undefined}
           >
+            {/* Floats just above the answer it explains, in either layout. */}
+            {inputError && !outcome && (
+              <p className="answer-error" role="alert">
+                {inputError}
+              </p>
+            )}
             {compact ? (
               <button
                 className="compact-answer-action"
@@ -798,7 +799,12 @@ export function PracticeWorkspace(props: Props) {
               </p>
             )}
             {(!outcome.correct || showWhy) && (
-              <ol className="feedback-steps">
+              <ol
+                className="feedback-steps"
+                // It scrolls when long, so keyboards must be able to reach it.
+                tabIndex={0}
+                aria-label="Explanation"
+              >
                 {outcome.explanation.map((step, index) => (
                   <li key={index} data-text={step}>
                     <MathText text={step} />

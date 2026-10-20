@@ -111,6 +111,9 @@ try {
   for (const viewport of [
     { width: 384, height: 700 },
     { width: 390, height: 844 },
+    // Tablets: the answer column beside the problem, and stacked in portrait.
+    { width: 1024, height: 768 },
+    { width: 768, height: 1024 },
     { width: 1280, height: 800 },
   ])
     for (const colorScheme of ["light", "dark"] as const) {

@@ -14,6 +14,19 @@ type Size = { width: number; height: number };
 export const PHONE_LANDSCAPE = { width: 844, height: 390 } as const;
 export const TABLET_LANDSCAPE = { width: 1024, height: 768 } as const;
 export const TABLET_LANDSCAPE_LARGE = { width: 1180, height: 820 } as const;
+export const TABLET_PORTRAIT = { width: 768, height: 1024 } as const;
+export const TABLET_PORTRAIT_LARGE = { width: 820, height: 1180 } as const;
+/** iPad sizes in both orientations: strict practice targets. In landscape
+ * the problem and the answer sit side by side (practice-tablet.css). */
+export const TABLETS = [
+  TABLET_LANDSCAPE,
+  TABLET_LANDSCAPE_LARGE,
+  TABLET_PORTRAIT,
+  TABLET_PORTRAIT_LARGE,
+] as const;
+export function isTabletLandscape(size: Size): boolean {
+  return size.width > size.height && size.width >= 900 && size.height >= 500;
+}
 
 /** Wider than tall and shorter than the smallest tablet in landscape. */
 export function isPhoneLandscape(size: Size | readonly number[]): boolean {
@@ -281,7 +294,9 @@ export const PHONE_REAL_BROWSERS = [
  * - The prompt and every figure lie inside the stage's vertical scroll range
  *   and its width, and no non-scrolling box between them and the stage cuts
  *   them off.
- * - The stage ends above the answer dock, and the dock is wholly on screen.
+ * - The stage and the answer dock do not overlap (the dock sits below the
+ *   stage, or beside it in two-column landscape), and the dock is wholly on
+ *   screen.
  * - Neither the page nor the stage overflows horizontally.
  *
  * Returns the stage's scroll geometry for reporting.
@@ -363,9 +378,11 @@ export async function assertProblemReachable(page: Page, label: string) {
       );
     if (dock) {
       const d = dock.getBoundingClientRect();
-      if (s.bottom > d.top + 1)
+      const across = Math.min(s.right, d.right) - Math.max(s.left, d.left);
+      const down = Math.min(s.bottom, d.bottom) - Math.max(s.top, d.top);
+      if (across > 1 && down > 1)
         found.push(
-          `stage runs ${Math.round(s.bottom - d.top)}px under the dock`,
+          `stage overlaps the dock by ${Math.round(across)}×${Math.round(down)}px`,
         );
       if (d.bottom > innerHeight + 1 || d.top < 0)
         found.push(
@@ -395,4 +412,30 @@ export async function assertProblemReachable(page: Page, label: string) {
     `${label}: part of the problem cannot be reached\n${result.found.join("\n")}`,
   );
   return result.geometry;
+}
+
+/**
+ * The whole problem is in view with no scrolling: the stage does not scroll,
+ * and the prompt and every figure lie inside its visible box. Returns the
+ * reasons it is not, empty when it is.
+ */
+export async function problemInView(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const found: string[] = [];
+    if (stage.scrollHeight > stage.clientHeight + 1)
+      found.push(
+        `stage scrolls ${stage.scrollHeight - stage.clientHeight}px (${stage.scrollHeight} > ${stage.clientHeight})`,
+      );
+    const s = stage.getBoundingClientRect();
+    const content = stage.querySelector(".problem-content");
+    for (const part of content ? [...content.children] : []) {
+      const b = part.getBoundingClientRect();
+      if (b.top < s.top - 1 || b.bottom > s.bottom + 1)
+        found.push(
+          `<${part.tagName.toLowerCase()}.${part.classList[0] ?? ""}> spans ${Math.round(b.top - s.top)}..${Math.round(b.bottom - s.top)} of a ${Math.round(s.height)}px stage`,
+        );
+    }
+    return found;
+  });
 }

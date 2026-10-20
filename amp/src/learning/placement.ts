@@ -248,9 +248,10 @@ export const openerSlots: OpenerSlots = [
   ],
   // High school: a linear or quadratic equation, the Pythagorean theorem or
   // similar triangles and circles, a function's value, vertex or exponential
-  // growth, then a two-way table (conditional relative frequency). No
-  // probability item fits yet: `event-set-count` runs past 160 characters
-  // on about a third of its variants, and the counting items are grade 12.
+  // growth, then a two-way table (joint, marginal or conditional relative
+  // frequency). No probability item fits yet: `event-set-count` runs past
+  // 160 characters on about a third of its variants, and the counting items
+  // are grade 12.
   [
     [
       "linear-equation",
@@ -274,7 +275,7 @@ export const openerSlots: OpenerSlots = [
       "exponential-model-rule",
       "parabola-vertex",
     ],
-    ["two-way-row-percent", "two-way-missing"],
+    ["two-way-row-percent", "two-way-missing", "relative-frequency-percent"],
   ],
 ];
 

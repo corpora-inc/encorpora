@@ -945,3 +945,7 @@ nav button {
 .choice-model .function-display svg {
   max-height: 150px;
 }
+/* The answer error floats above the answer controls, not the whole dock. */
+.answer-controls {
+  position: relative;
+}
