@@ -87,12 +87,13 @@ function Practice({ session }: { session: TrialSession }) {
   const [pending, setPending] = useState(false);
   usePracticeViewport(true);
   useEffect(() => trackSessionStart(), []);
+  // An answer in flight is not kept: its retry identity lives here only.
   useEffect(() => {
     open =
-      problem && !outcome
+      problem && !outcome && !pending
         ? { learnerId: session.learnerId, problem, response }
         : null;
-  }, [problem, outcome, response]);
+  }, [problem, outcome, response, pending]);
 
   const limits = progress.data;
   // The server's count seeds the meter once; answers then advance it here.
