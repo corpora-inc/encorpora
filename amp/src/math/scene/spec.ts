@@ -142,6 +142,8 @@ const rectSchema = z
     size: z.tuple([num.positive().max(1e6), num.positive().max(1e6)]),
     fill: fill.optional(),
     radius: num.min(0).max(40).optional(),
+    /** Round only the top corners: a bar standing on a baseline. */
+    roundTop: z.boolean().optional(),
     opacity: num.min(0).max(1).optional(),
   })
   .strict();

@@ -11,6 +11,8 @@ This repository is public. It holds names, public identifiers, URLs and the name
 | [`src/brand.json`](../src/brand.json) | The product name, expansion, public description, and the Stripe checkout name, description and statement descriptor. |
 | [`infra/environments.ts`](../infra/environments.ts) | Each environment's origin, Stripe mode, and the ids of its Stripe product and prices. |
 | [`infra/stripe.ts`](../infra/stripe.ts) | The Stripe product's managed fields, and the price set it sells. |
+| [`infra/auth-providers.ts`](../infra/auth-providers.ts) | Each sign-in app's intended state: names, origins, redirect URIs, scopes, claims. |
+| [`infra/secrets.ts`](../infra/secrets.ts) | The settings each environment's secret must hold, by name only. |
 
 ## Stripe catalog
 
@@ -33,3 +35,73 @@ The environment's Stripe key needs **Products: write** in addition to the read p
 On a pull request, `npm test` validates the declarations without credentials (`tests/stripe-catalog.test.ts`): the text comes from the brand, the statement descriptor satisfies Stripe's rules, the prices are $499 a year and $49 a month, and the planner refuses every price mismatch.
 
 The deploy pipeline runs `stripe apply` for each environment before it changes the release, from the API image being deployed, with that environment's settings. A failed apply stops that deploy before anything changes. A rollback of the release does not revert product text.
+
+## Settings check
+
+`infra/secrets.ts` lists the settings each environment needs, in groups: server, mail, Stripe, live Stripe, and one group per sign-in provider. Values are never declared, read back or printed.
+
+```sh
+npm run infra -- env check --env prod
+```
+
+The check fails, naming the missing settings, when a declared group is incomplete or a sign-in provider is only partly configured. The API refuses to start in that state, and the check says so before the release changes. It also checks the public values that must match the declarations: `AMP_ACCOUNTS_URL` and `AMP_STRIPE_APP_ORIGIN` are the environment's origin, `AMP_STRIPE_MODE` is its declared mode, and `AMP_APPLE_CLIENT_ID` is the declared Services ID. A complete provider that is not declared for the environment is a warning.
+
+To add a setting, declare it in `infra/secrets.ts` in the same pull request that makes the API read it. Then add the value to each environment's secret before that commit deploys.
+
+## Sign-in providers
+
+| Provider | Intended state | How it is applied |
+|---|---|---|
+| Microsoft | One registration for all environments: audience `AzureADandPersonalMicrosoftAccount`, access token version 2, three web redirect URIs, no implicit grant, ID token claims `email` and `xms_edov`, Graph delegated `openid`, `profile`, `email`, `offline_access`, `User.Read` | `entra plan` / `entra apply` through Microsoft Graph |
+| Google | Consent screen, plus one web client per environment (the stage client also serves `http://localhost:4310`) | By hand in the Google Cloud console; drift check |
+| GitHub | One OAuth App per environment (an app accepts one callback URL) | By hand in the organization's settings; no drift check |
+| Apple | One Services ID, `inc.corpora.amp.web`, for both deployed environments (Apple requires HTTPS) | By hand in the Apple Developer portal; drift check |
+
+`npm run infra -- providers desired` prints the full declaration: the checklist for a console with no API.
+
+### Drift check
+
+```sh
+npm run infra -- providers check --env stage
+```
+
+For each configured provider, the check opens the authorize URL with each redirect URI the environment's app must accept, and reads the page the provider returns. It never signs in. A provider's own rejection page fails the check: Google's `redirect_uri_mismatch`, Microsoft's invalid `redirect_uri`, or Apple's refusal. A network failure or an unfamiliar page is reported as not checked, so an outage or a redesigned page never blocks a deploy. GitHub validates the callback only after sign-in, so it is skipped.
+
+### Microsoft registration
+
+```sh
+npm run infra -- entra desired                        # offline
+npm run infra -- entra plan --from manifest.json      # offline, against an export
+npm run infra -- entra plan                           # live
+npm run infra -- entra apply                          # live: plan, PATCH the differences, read back
+```
+
+The registration is found by `AMP_MICROSOFT_CLIENT_ID`, the client id the environments already use. The offline plan reads the portal's manifest export (**Entra admin center → App registrations → AMP → Manifest → Download**, Microsoft Graph format). Apply changes only the managed properties. It sets the access token version before the sign-in audience, because personal accounts require version 2, and it never reads or changes client secrets.
+
+**One-time credential step (owner of the registration).** Live plan and apply need Microsoft Graph access as a user or service principal that owns the app:
+
+1. Install the Azure CLI (`brew install azure-cli`).
+2. Run `az login --allow-no-subscriptions` with the Microsoft account that owns the registration. Use `--tenant <directory id>` if the account has several directories.
+3. Run, with the client id taken from an environment's settings:
+
+   ```sh
+   AMP_MICROSOFT_CLIENT_ID=<client id> npm run infra -- entra plan
+   ```
+
+   The tool takes its token from `az account get-access-token`. `AMP_GRAPH_TOKEN` overrides it, for example with a token for a service principal that has `Application.ReadWrite.OwnedBy` and is an owner of the app. To run it unattended, store that service principal's credentials as a deploy secret.
+
+## In the deploy
+
+The deploy pipeline (in the hosting repository) runs these steps for each environment from the API image it is about to deploy, with that environment's settings, before it changes the release:
+
+1. `env check`: an incomplete group or a partial provider stops the deploy.
+2. `stripe apply`: the plan is logged, then the differences are applied. A price mismatch stops the deploy before any write.
+3. `providers check`: a provider rejecting a declared redirect URI stops the deploy, with the URI named.
+
+A failure in any of these changes nothing in the cluster. Entra is applied by hand until Graph credentials exist for the pipeline.
+
+## Manual steps that remain
+
+- **Google, GitHub and Apple:** create or edit their apps by hand from `infra/auth-providers.ts`, then put the client values in the environment's secret.
+- **Microsoft:** the one-time credential step above. After that, run `entra plan` and `entra apply`.
+- **Stripe keys and prices:** creating a restricted key, and any change to what AMP charges, stay in the Stripe Dashboard. A price change is a new price and a reviewed migration.

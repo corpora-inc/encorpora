@@ -81,6 +81,8 @@ export type Drawn = Common &
         w: number;
         h: number;
         rx?: number;
+        /** Only the top corners take the radius. */
+        roundTop?: boolean;
         stroke?: InkRole;
         sw?: number;
         fill: FillRole;
@@ -495,6 +497,7 @@ function draw(
           w: p.size[0] * s,
           h: p.size[1] * s,
           rx: p.radius,
+          ...(p.roundTop && { roundTop: true }),
           stroke: p.stroke,
           sw: p.stroke ? w : undefined,
           fill: p.fill ?? "none",

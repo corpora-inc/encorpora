@@ -12,7 +12,6 @@ import { AreaModelFigure } from "./AreaModelFigure";
 import { FactsFigure } from "./FactsFigure";
 import { FactArrayFigure } from "./FactArrayFigure";
 import { EarlyOperationsFigure } from "./EarlyOperationsFigure";
-import { GraphicalFigure } from "./GraphicalFigure";
 import { CoordinateGeometry, SimilarTriangles } from "./TransformationFigure";
 import { SignedLineFigure } from "./SignedLineFigure";
 import { RatioRateFigure } from "./RatioRateFigure";
@@ -105,8 +104,6 @@ function LegacyFigure({
     case "counter-rows":
     case "base-ten-pair":
       return <ComparisonFigure figure={figure} />;
-    case "bar-chart":
-      return <GraphicalFigure figure={figure} />;
     case "coordinate-geometry":
       return <CoordinateGeometry figure={figure} />;
     case "similar-triangles":
