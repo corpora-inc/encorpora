@@ -157,7 +157,7 @@ test("bar charts are read against the scale: no value labels, readable gridlines
         texts.every((t) => /^chart\.(bar\.\d+\.label|label\.y\.|unit)/.test(t)),
         `${id}: ${texts.join(", ")}`,
       );
-      // Every value sits on a gridline, and labeled gridlines sit 20 px or
+      // Every value sits on a gridline, and labeled gridlines sit 28 px or
       // more apart, so a 6 or a 7 reads without a value label.
       const lines = l.items.filter(
         (d) => d.k === "line" && /^chart\.grid\.\d+$/.test(d.id),
@@ -172,7 +172,7 @@ test("bar charts are read against the scale: no value labels, readable gridlines
         .map((d) => (d.k === "text" ? d.box.y0 : 0))
         .sort((a, b) => a - b);
       for (let i = 1; i < ys.length; i++)
-        assert.ok(ys[i]! - ys[i - 1]! >= 19.5, `${id}: crowded scale labels`);
+        assert.ok(ys[i]! - ys[i - 1]! >= 27.5, `${id}: crowded scale labels`);
     }
 });
 

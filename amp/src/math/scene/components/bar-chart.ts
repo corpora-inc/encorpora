@@ -53,14 +53,16 @@ const BAND = 80,
   WIDTH = 280,
   TOP = 30,
   GRID_GAP = 20,
+  LABEL_GAP = 28,
   RADIUS = 3;
 export function barChartGeometry(c: BarChart) {
   const gridlines = ticks(0, c.max, c.step);
   const steps = gridlines.length - 1;
   const plot = Math.min(200, Math.max(150, steps * GRID_GAP));
-  // Label every gridline when labels fit apart, else every 2nd or 5th.
+  // Label every gridline when labels sit well apart, else every 2nd or
+  // 5th: the unlabeled hairlines between still carry the reading.
   const stride =
-    [1, 2, 5, 10].find((k) => (plot / steps) * k >= GRID_GAP - 0.5) ?? 20;
+    [1, 2, 5, 10].find((k) => (plot / steps) * k >= LABEL_GAP - 0.5) ?? 20;
   const labeled = gridlines.filter((_, i) => i % stride === 0);
   const widest = Math.max(
     ...labeled.map((v) => typeset(numText(v), "math", "sm").width),

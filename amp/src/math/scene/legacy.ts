@@ -278,7 +278,8 @@ export function legacyScene(
             type: "barChart",
             id: "chart",
             bins: { start: f.start, width: f.width, counts: f.counts },
-            max: Math.ceil(peak / step) * step,
+            // An even number of steps, so the top gridline is labeled.
+            max: Math.max(2, Math.ceil(peak / (2 * step)) * 2) * step,
             step,
             unit: "count",
             xUnit: f.unit,

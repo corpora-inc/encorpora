@@ -108,7 +108,7 @@ Bar charts, histograms, dot and line plots, box plots, scatter plots and tables 
 
 - **Type.** Tick labels are `sm` in the muted text role. Category names are `sm` ink. A scale's name is a muted `sm` caption, left-aligned with the tick labels above the plot. It is not a title.
 - **Values.** When an item asks the learner to read the graph, the bars carry no value labels and the gridlines carry the reading. Value labels are only for explanations where the number is given, as in `bars`.
-- **Scale.** Use the finest nice step (1, 2, 5, 10…) that keeps 14 or fewer gridlines, so every asked value sits on a gridline. Labeled gridlines are at least 20 px apart. Label every gridline, or every 2nd or 5th, and end the scale on a labeled gridline.
+- **Scale.** Use the finest nice step (1, 2, 5, 10…) that keeps 14 or fewer gridlines, so every asked value sits on a gridline. Gridlines are at least 10 px apart and labeled ones at least 28 px apart. Label every gridline, or every 2nd or 5th, and end the scale on a labeled gridline.
 - **Lines.** Gridlines are 1 px hairlines in the grid role. The baseline is 1.5 px ink and is drawn over the bars' feet. Bar charts have no vertical axis line. Number-line axes are 1.5 px with 1.25 px ticks, 10 px major and 6 px minor.
 - **Marks.** Use one accent for the data. Bars fill 0.6 of their band, up to an 80 px band, and their top corners have a 3 px radius (`roundTop`). Histogram bins touch, stay square, and are separated by a paper hairline. A box plot is a 2 px accent outline with a 3 px radius. Its median is the one highlight, in the warm role.
 - **Spacing.** The plot is 150 to 200 px tall and grows by 20 px for each gridline. Labels sit 7 to 8 px from what they name.
