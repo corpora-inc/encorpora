@@ -41,6 +41,12 @@
     padding: 0 0 0 var(--space-5);
     border-left: 1px solid var(--color-border);
   }
+  /* The answer column has the card's height; a choice dock need not stop at
+     the stacked layout's 62% (practice.css). Its options still scroll inside
+     it before anything leaves the column. */
+  .practice-surface > .answer-dock:has(.choice-form) {
+    max-height: none;
+  }
   /* Absolutely placed in the answer column's grid area: the sheet covers the
      column it replaces, whatever the answer form's height. Both lines are
      explicit; an auto end line would mean the card's padding edge. */

@@ -114,3 +114,95 @@ test("mixed planning rejects invalid bounds and supports a one-template catalog"
   });
   assert.equal(choices.length, 3);
 });
+
+test("a template seen twice in the last nine problems waits, even as remediation", () => {
+  // Two misses on exponent laws send the learner to integer powers.
+  const history = [
+    answer("integer-power", 0, false),
+    answer("integer-addition", 1),
+    answer("integer-power", 2, false),
+    answer("product-of-powers-exponent", 3, false),
+    answer("product-of-powers-exponent", 4, false),
+  ];
+  for (let slot = 0; slot < 8; slot++) {
+    const [choice] = plan(history, 1, `remediate-${slot}`, now + 5 * 60000);
+    assert.notEqual(choice!.template.id, "integer-power");
+  }
+});
+
+test("support alternates with new work instead of filling every slot", () => {
+  const history = [
+    answer("integer-power", 0, false),
+    answer("integer-power", 1, false),
+    answer("one-step-equation", 2, false),
+    answer("one-step-equation", 3, false),
+    answer("percent-of", 4, false),
+    answer("percent-of", 5, false),
+  ];
+  const served = [...history];
+  const reasons: string[] = [];
+  for (let i = 0; i < 12; i++) {
+    const at = now + (6 + i) * 60000;
+    const [choice] = plan(served, 1, `alternate-${i}`, at);
+    reasons.push(choice!.reason);
+    served.push(answer(choice!.template.id, 6 + i, true, false, at));
+  }
+  for (let i = 1; i < reasons.length; i++)
+    assert.ok(
+      !(
+        ["prerequisite", "revisit", "review"].includes(reasons[i]!) &&
+        ["prerequisite", "revisit", "review"].includes(reasons[i - 1]!) &&
+        ["prerequisite", "revisit", "review"].includes(reasons[i - 2] ?? "")
+      ),
+      reasons.join(", "),
+    );
+});
+
+test("variety counts only this session: yesterday's template may return", () => {
+  const yesterday = now - 86400000;
+  const history = Array.from({ length: 6 }, (_, i) =>
+    answer(
+      i % 2 ? "integer-addition" : "integer-power",
+      i,
+      true,
+      false,
+      yesterday + i * 60000,
+    ),
+  );
+  const ids = new Set(
+    Array.from(
+      { length: 30 },
+      (_, i) => plan(history, 1, `day-${i}`)[0]!.template.id,
+    ),
+  );
+  assert.ok(ids.size > 1);
+  // Within the session the same history forbids a third integer-power.
+  const today = history.map((a, i) => ({
+    ...a,
+    createdAt: new Date(now - (6 - i) * 60000).toISOString(),
+  }));
+  for (let i = 0; i < 30; i++)
+    assert.notEqual(
+      plan(today, 1, `today-${i}`)[0]!.template.id,
+      "integer-power",
+    );
+});
+
+test("a prerequisite answered twice in a row leaves remediation", () => {
+  const history = [
+    answer("product-of-powers-exponent", 0, false),
+    answer("product-of-powers-exponent", 1, false),
+    answer("integer-power", 2),
+    answer("power-compare", 3),
+  ];
+  for (let i = 0; i < 10; i++) {
+    const [choice] = plan(history, 1, `cleared-${i}`, now + 4 * 60000);
+    assert.ok(
+      !(
+        choice!.reason === "prerequisite" &&
+        choice!.template.skillId === "integer-powers"
+      ),
+      choice!.template.id,
+    );
+  }
+});
