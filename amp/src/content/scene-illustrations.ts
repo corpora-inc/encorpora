@@ -12,6 +12,7 @@ import type { Graph, Point } from "../math/scene/spec";
 
 const g = (spec: Omit<Graph, "type">) => ({ type: "graph" as const, ...spec });
 import type { Scene } from "../math/scene/spec";
+import { quadraticStructureIllustrations } from "./quadratic-structure-illustrations";
 import { exponentialLessonScenes } from "../math/exponential-scenes";
 import { lessonScenes } from "./lesson-scenes";
 import { similarityTrigScenes } from "./similarity-trig-scenes";
@@ -172,6 +173,7 @@ export const sceneIllustrations = {
     .scene({
       title: "Solutions of 2x + 3y = 12 lie on its line; (4, 4) does not",
     }),
+  ...quadraticStructureIllustrations,
   // Two constraints and the axes: the feasible region, one point in, one out.
   "feasible-bakery": graph({
     id: "g",

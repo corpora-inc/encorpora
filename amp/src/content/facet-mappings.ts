@@ -4,6 +4,7 @@ import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { linearFunctionFacetMappings } from "./linear-function-coverage";
+import { quadraticStructureFacetMappings } from "./quadratic-structure-coverage";
 import { twoVariableFacetMappings } from "./two-variable-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
@@ -78,6 +79,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...ratioRateFacetMappings,
   ...patternFunctionFacetMappings,
   ...linearFunctionFacetMappings,
+  ...quadraticStructureFacetMappings,
   ...twoVariableFacetMappings,
   ...equationFacetMappings,
   ...rationalFacetMappings,
