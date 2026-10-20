@@ -225,6 +225,10 @@ function Label({
 }
 const strokeOrInk = (r: InkRole) => ink[r];
 
+/** The smallest on-screen label size, in CSS px, a figure may shrink to. A
+ * hair above 12 so subpixel box rounding never lands just under it. */
+const LEGIBLE_PX = 12.05;
+
 /** Draw a laid-out scene. The box is fixed by the layout: no layout shift. */
 export function SceneSvg({
   layout,
@@ -244,6 +248,16 @@ export function SceneSvg({
   // Shapes first, labels on top, each in display-list order.
   const shapes = layout.items.filter((d) => d.k !== "text"),
     labels = layout.items.filter((d) => d.k === "text");
+  // The shortest box that keeps the smallest label at LEGIBLE_PX on screen:
+  // a practice stage shrinks the figure down to this, then scrolls.
+  const smallest = Math.min(
+    ...labels.flatMap((d) =>
+      d.k === "text" ? d.t.runs.map((r) => r.size) : [],
+    ),
+  );
+  const legible = Number.isFinite(smallest)
+    ? Math.min(layout.height, (layout.height * LEGIBLE_PX) / smallest)
+    : null;
   const render = (d: Drawn, i: number) => {
     const st = states?.[d.id];
     const moved = st && (st.dx || st.dy);
@@ -269,12 +283,17 @@ export function SceneSvg({
       width="100%"
       role="img"
       aria-label={label}
-      style={{
-        maxWidth: layout.width,
-        maxHeight: "none",
-        height: "auto",
-        aspectRatio: `${layout.width} / ${layout.height}`,
-      }}
+      style={
+        {
+          maxWidth: layout.width,
+          maxHeight: "none",
+          height: "auto",
+          aspectRatio: `${layout.width} / ${layout.height}`,
+          ...(legible && {
+            "--scene-legible-height": `${Math.ceil(legible * 10) / 10}px`,
+          }),
+        } as React.CSSProperties
+      }
     >
       {shapes.map(render)}
       {labels.map(render)}

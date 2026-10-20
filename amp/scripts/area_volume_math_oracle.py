@@ -605,7 +605,7 @@ def disc_volume_coefficient(solid, r, h):
 
 
 PLAIN = r'(\d+(?:\.\d+)?)'
-TAIL = r'(?:Its volume is \$a\\pi\$ cubic (\w+)\. What is a\?|Use 3\.14 for \$\\pi\$\. What is its volume, in cubic (\w+)\?)'
+TAIL = r'(?:Its volume is \$a\\pi\$ cubic (\w+)\. What is \$a\$\?|Use 3\.14 for \$\\pi\$\. What is its volume, in cubic (\w+)\?)'
 
 
 def solve_curved(public):
@@ -985,13 +985,13 @@ def _fixtures():
         (_public('composite-area', 'The figure is a rectangle with its top right corner cut off by a straight line. Its other corners are right angles. Lengths are in centimeters. What is its area, in square centimeters?', cut), 80),
         (_public('composite-face-prism-volume', PRISM.format('volume', 'cubic'), face), 84),
         (_public('composite-face-prism-surface-area', PRISM.format('surface area', 'square'), face), 130),
-        (_public('cylinder-volume', r'A cylinder has a radius of 3 centimeters and a height of 5 centimeters. Its volume is $a\pi$ cubic centimeters. What is a?', curved('cylinder', r=3, h=5), 'fraction'), 45),
+        (_public('cylinder-volume', r'A cylinder has a radius of 3 centimeters and a height of 5 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('cylinder', r=3, h=5), 'fraction'), 45),
         (_public('cylinder-volume', r'A cylinder has a diameter of 6 centimeters and a height of 5 centimeters. Use 3.14 for $\pi$. What is its volume, in cubic centimeters?', curved('cylinder', d=6, h=5)), Fraction('141.3')),
         (_public('cylinder-volume', r'A cylinder has a volume of $45\pi$ cubic centimeters and a radius of 3 centimeters. What is its height, in centimeters?', curved('cylinder', r=3)), 5),
-        (_public('cone-sphere-volume', r'A cone has a radius of 3 centimeters and a height of 4 centimeters. Its volume is $a\pi$ cubic centimeters. What is a?', curved('cone', r=3, h=4), 'fraction'), 12),
-        (_public('cone-sphere-volume', r'A sphere has a radius of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is a?', curved('sphere', r=3), 'fraction'), 36),
-        (_public('cone-sphere-volume', r'A hemisphere has a radius of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is a?', curved('hemisphere', r=3), 'fraction'), 18),
-        (_public('cone-sphere-volume', r'A sphere has a diameter of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is a?', curved('sphere', d=3), 'fraction'), Fraction(9, 2)),
+        (_public('cone-sphere-volume', r'A cone has a radius of 3 centimeters and a height of 4 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('cone', r=3, h=4), 'fraction'), 12),
+        (_public('cone-sphere-volume', r'A sphere has a radius of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('sphere', r=3), 'fraction'), 36),
+        (_public('cone-sphere-volume', r'A hemisphere has a radius of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('hemisphere', r=3), 'fraction'), 18),
+        (_public('cone-sphere-volume', r'A sphere has a diameter of 3 centimeters. Its volume is $a\pi$ cubic centimeters. What is $a$?', curved('sphere', d=3), 'fraction'), Fraction(9, 2)),
     ]
     return cases
 
@@ -1293,7 +1293,7 @@ def worksheet_tags(problem):
             tags.add(f['solid'])
         if 'Use 3.14' in prompt:
             tags.add('approximate')
-        elif 'What is a?' in prompt:
+        elif 'What is $a$?' in prompt:
             tags.add('exact')
             if answer.denominator > 1:
                 tags.add('fraction-coefficient')

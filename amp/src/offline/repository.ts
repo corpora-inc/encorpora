@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
+  clientCanDraw,
   generatedProblemSchema,
   type GeneratedProblem,
   type TemplateMetadata,
@@ -29,13 +30,7 @@ export function supportedOfflineTemplates(
   input: IssueInput,
   available: readonly TemplateMetadata[] = templates,
 ) {
-  return available.filter(
-    (t) =>
-      (!t.requiredResponseCapability ||
-        input.responseCapabilities.includes(t.requiredResponseCapability)) &&
-      (!t.requiredFigureCapability ||
-        input.figureCapabilities.includes(t.requiredFigureCapability)),
-  );
+  return available.filter((t) => clientCanDraw(t, input));
 }
 export function uniquePoolChoices(
   choices: readonly PracticeChoice[],
