@@ -367,25 +367,27 @@ try {
           }
         });
 
-      // Sign-up and verification cards share one position under the AMP header.
+      // Sign-up has no bar: its card carries the brand and is centered in
+      // the viewport (or top-aligned with padding when taller than it).
       await page.goto(`${origin}/sign-up`);
       await page
         .getByRole("heading", { name: "Create your parent account" })
         .waitFor();
       await page.getByRole("link", { name: "AMP home" }).waitFor();
       const signUp = await box(page.locator("main section").first());
+      const viewport = page.viewportSize()!;
+      if (signUp.height + 48 <= viewport.height)
+        assert.ok(
+          Math.abs(signUp.y + signUp.height / 2 - viewport.height / 2) <= 1,
+          `${tag}: sign-up card is centered`,
+        );
+      else assert.ok(signUp.y >= 24, `${tag}: tall sign-up card keeps padding`);
       await fits(page, `${tag} sign-up`);
       await page.goto(`${origin}/start`);
       await page.waitForURL("**/start/verify-email");
       await page.getByRole("heading", { name: "Check your email" }).waitFor();
       await page.getByText("parent@example.test", { exact: true }).waitFor();
       const verify = await box(page.locator("main section").first());
-      assert.equal(
-        verify.y,
-        signUp.y,
-        `${tag}: verify card stays where sign-up was`,
-      );
-      assert.equal(verify.x, signUp.x, `${tag}: verify card keeps its column`);
       const look = (name: string, role: "button" | "link" = "button") =>
         page.getByRole(role, { name, exact: true }).evaluate((node) => {
           const style = getComputedStyle(node);
@@ -432,6 +434,9 @@ try {
       await page.waitForURL("**/start/plan");
       const plan = page.getByRole("radiogroup", { name: "Plan" });
       await plan.waitFor();
+      const planCard = await box(page.locator("main section").first());
+      assert.equal(planCard.y, verify.y, `${tag}: plan card stays put`);
+      assert.equal(planCard.x, verify.x, `${tag}: plan card keeps its column`);
       assert.equal(
         await page.getByText("Enrollment is unavailable").count(),
         0,

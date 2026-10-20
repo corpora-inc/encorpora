@@ -1,9 +1,10 @@
 /*
- * Provider buttons follow each brand's published button: Google's light and
- * dark "neutral" buttons, Apple's black (light) and white (dark) Sign in with
- * Apple button, Microsoft's light and dark buttons and GitHub's mark on its
- * own dark color. Every button has the same height, width and mark cell, so
- * the stack reads as one control set and labels stay centered.
+ * Every provider button has one neutral style: the shared surface fill, a
+ * hairline border, the official mark on the left and the same label color,
+ * weight and font. Each brand permits this: Google's neutral button, Apple's
+ * "white with outline" (light) and black (dark) styles, Microsoft's light and
+ * dark buttons, and GitHub's monochrome mark. Every button has the same
+ * height, width and mark cell, so the stack reads as one control set.
  */
 .stack {
   display: grid;
@@ -18,10 +19,13 @@
   min-height: var(--target-size);
   margin: 0;
   padding: 0 var(--space-3);
-  border: 1px solid;
+  border: 1px solid var(--color-provider-border);
   border-radius: var(--radius-control);
+  background: var(--color-provider);
+  color: var(--color-on-provider);
+  font: inherit;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
   text-align: center;
   cursor: pointer;
@@ -37,7 +41,7 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-/* A starting redirect keeps the brand's colors; the page leaves next. */
+/* A starting redirect keeps the button's colors; the page leaves next. */
 .button:disabled {
   cursor: progress;
 }
@@ -61,36 +65,6 @@
   overflow-wrap: normal;
   word-break: keep-all;
   hyphens: none;
-}
-.google {
-  background: var(--color-brand-google);
-  color: var(--color-on-brand-google);
-  border-color: var(--color-brand-google-border);
-  font-family: Roboto, Arial, sans-serif;
-}
-.apple {
-  background: var(--color-brand-apple);
-  color: var(--color-on-brand-apple);
-  border-color: var(--color-brand-apple-border);
-  font-family:
-    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue",
-    sans-serif;
-}
-.microsoft {
-  background: var(--color-brand-microsoft);
-  color: var(--color-on-brand-microsoft);
-  border-color: var(--color-brand-microsoft-border);
-  font-family:
-    "Segoe UI",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
-  font-weight: 600;
-}
-.github {
-  background: var(--color-brand-github);
-  color: var(--color-on-brand-github);
-  border-color: var(--color-brand-github-border);
 }
 .divider {
   display: flex;

@@ -157,6 +157,10 @@
   font-weight: 800;
   letter-spacing: -0.04em;
 }
+/* Set by index.html on the sign-in screens, whose card carries the brand. */
+[data-frame="card"] .app-loading-bar {
+  display: none;
+}
 .app-loading-body {
   display: flex;
   flex-direction: column;
