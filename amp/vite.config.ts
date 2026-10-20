@@ -25,5 +25,10 @@ export default defineConfig({
     ],
   },
   server: { port: 4310, proxy: { "/api": "http://127.0.0.1:4311" } },
-  build: { outDir: "dist" },
+  build: {
+    outDir: "dist",
+    // `level.html` is the app with the shared level card's Open Graph tags,
+    // served at /level (docker/nginx.conf).
+    rollupOptions: { input: { index: "index.html", level: "level.html" } },
+  },
 });

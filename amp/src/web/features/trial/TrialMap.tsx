@@ -13,6 +13,8 @@ import {
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
 import { strandOrder } from "./strands";
+import { ShareLevel } from "./ShareLevel";
+import { levelCardData } from "./share-data";
 import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
 import styles from "./Trial.module.css";
 
@@ -76,6 +78,12 @@ function MapView({ session }: { session: TrialSession }) {
           strands={strands}
           catalog={catalog.data}
           memoryKey={session.learnerId}
+        />
+        <ShareLevel
+          data={levelCardData(p, strands)}
+          birthYear={session.birthYear}
+          surface="map"
+          className={styles.share}
         />
         <div className={styles.actions}>
           {left > 0 ? (

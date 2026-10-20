@@ -1,0 +1,130 @@
+/* The share sheet: the card preview at its own 4:5 shape (reserved before
+   the image is drawn, so nothing moves), a privacy line, and the actions. */
+.icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-right: var(--space-2);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: var(--color-scrim);
+}
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1101;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  max-height: calc(100dvh - var(--space-5));
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: var(--shadow-overlay);
+}
+.sheet:focus {
+  outline: none;
+}
+@media (min-width: 640px) and (min-height: 560px) {
+  .sheet {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    width: min(560px, calc(100vw - 2 * var(--space-6)));
+    max-height: calc(100dvh - 2 * var(--space-6));
+    border-bottom: 1px solid var(--color-border);
+    border-radius: var(--radius-panel);
+    transform: translate(-50%, -50%);
+  }
+}
+.body {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  overflow: auto;
+  padding: var(--space-5) var(--space-5) var(--space-3);
+}
+.title {
+  justify-self: stretch;
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.preview {
+  width: auto;
+  height: min(46dvh, 420px);
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  box-shadow: 0 1px 2px var(--color-shadow);
+}
+.preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.privacy {
+  justify-self: stretch;
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--color-muted-text);
+}
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5)
+    calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--color-border);
+}
+.actions > * {
+  width: 100%;
+  min-width: 0;
+}
+.wide,
+.grownUps {
+  grid-column: 1 / -1;
+}
+.grownUps {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.grownUps p {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--color-muted-text);
+}
+@media (max-width: 380px) {
+  .body {
+    padding: var(--space-4) var(--space-4) var(--space-2);
+  }
+  .actions {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  .preview {
+    height: min(38dvh, 420px);
+  }
+}
