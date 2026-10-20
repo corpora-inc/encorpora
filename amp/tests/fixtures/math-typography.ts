@@ -326,3 +326,18 @@ export function corpusIssues() {
   }
   return out;
 }
+
+/** True when every "$" in a text opens or closes a formula, so no money is
+ * written with a dollar sign: the count is even, and no span is prose
+ * (a space at its edge, or a lowercase word outside \text). */
+export function dollarsAreMath(text: string): boolean {
+  if ((text.match(/\$/g)?.length ?? 0) % 2) return false;
+  return [...text.matchAll(/\$([^$]+)\$/g)].every(
+    ([, tex]) =>
+      !/^\s|\s$/.test(tex!) &&
+      // A product of variables (lwh) has no vowel; a word of prose does.
+      !/(?:^|[^\\a-zA-Z{])(?=[a-z]*[aeiou])[a-z]{3,}/.test(
+        tex!.replace(/\\(?:text|mathrm|overline)\{[^}]*\}/g, ""),
+      ),
+  );
+}

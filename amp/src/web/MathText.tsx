@@ -248,6 +248,7 @@ const SPOKEN: Record<string, string> = {
   neq: "≠",
   pm: "±",
   circ: "°",
+  angle: "∠",
 };
 /** Plain reading text for an accessible name: each `$…$` span becomes its
  * source without TeX markup ("Exact coefficient $a$" → "Exact coefficient a",
