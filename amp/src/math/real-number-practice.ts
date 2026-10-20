@@ -54,7 +54,7 @@ export const realNumberTemplates: readonly TemplateMetadata[] = (
     ],
     [
       "solve-square-cube-equation",
-      "Solve x² = p and x³ = p",
+      "Solve square and cube equations",
       "approximate-roots",
       "Find every real solution of a square or cube equation, using root symbols when needed.",
       true,
@@ -1185,7 +1185,9 @@ function hintFor(id: string, c: Case): string {
       return `Which two perfect squares is ${n} between? Their roots bound the answer. Then square the tenths between those roots, and compare ${n} with the square of the halfway point.`;
     }
     case "standard-to-scientific": {
-      const written = /^Write (.+) in scientific notation\.$/.exec(c.prompt)![1]!;
+      const written = /^Write (.+) in scientific notation\.$/.exec(
+        c.prompt,
+      )![1]!;
       return `Move the decimal point in ${written} until exactly one nonzero digit is to its left. The number of places moved, and the direction, give the power of 10.`;
     }
     case "scientific-to-standard": {

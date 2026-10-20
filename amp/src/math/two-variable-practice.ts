@@ -1,4 +1,5 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { formula } from "./polish";
 import { act, graph, lessonStep, lineTable, step } from "./scene/author";
 import type { LineTable as Table } from "./scene/spec";
 import {
@@ -229,7 +230,7 @@ function systemModelValue(r: Random): Case {
     prompt: story,
     answer: rat(ans),
     explanation: [
-      `Let a be the number of ${names[0]} and $b$ the number of ${names[1]}. Counting gives a + b = ${total}; the ${what} give ${pa}a + ${pb}b = ${value}.`,
+      `Let $a$ be the number of ${names[0]} and $b$ the number of ${names[1]}. Counting gives $a + b = ${total}$; the ${what} give $${pa}a + ${pb}b = ${value}$.`,
       `Substitute b = ${total} − a into the second equation: ${pa}a + ${pb}(${total} − a) = ${value}, so ${pa - pb}a + ${pb * total} = ${value} and ${pa - pb}a = ${value - pb * total}.`,
       `a = ${quotient(value - pb * total, pa - pb)}, and b = ${total} − ${a} = ${b}.`,
       `Check: ${pa} × ${a} + ${pb} × ${b} = ${value}. So there are ${ans} ${names[askFirst ? 0 : 1]}.`,
@@ -401,7 +402,7 @@ function halfPlaneInequality(r: Random): Case {
         for (let y = -5; y <= 5; y++)
           if (h1.test(x, y) && h2.test(x, y)) pts.push([x, y]);
       if (pts.length < 8 || pts.length > 80) continue;
-      const join = (a: string, b: string) => `${a} and ${b}`;
+      const join = (a: string, b: string) => `${formula(a)} and ${formula(b)}`;
       const correct = join(h1.text, h2.text);
       // A strictness change on a boundary that the other half-plane excludes
       // describes the same set: drop such options.
@@ -453,8 +454,8 @@ function halfPlaneInequality(r: Random): Case {
           .shade(plane(h1), plane(h2))
           .scene({ title: "A region bounded by two lines" }),
         explanation: [
-          `The region lies on one side of each boundary. The slanted line is ${h1.text.replace(/[<>≤≥]/, "=")}, with ${boundaryWords(h1)}; the other is ${h2.text.replace(/[<>≤≥]/, "=")}, with ${boundaryWords(h2)}.`,
-          `Test the shaded point ${pair(px, py)}: it makes both ${h1.text} and ${h2.text} true.`,
+          `The region lies on one side of each boundary. The slanted line is ${formula(h1.text.replace(/[<>≤≥]/, "="))}, with ${boundaryWords(h1)}; the other is ${formula(h2.text.replace(/[<>≤≥]/, "="))}, with ${boundaryWords(h2)}.`,
+          `Test the shaded point ${pair(px, py)}: it makes both ${formula(h1.text)} and ${formula(h2.text)} true.`,
           `So the region is ${correct}.`,
         ],
         hint: `Name each boundary line and whether it is solid or dashed, then test a shaded point such as ${pair(px, py)} in each inequality.`,
@@ -474,14 +475,17 @@ function halfPlaneInequality(r: Random): Case {
     const line = h.text.replace(/[<>≤≥]/, "=");
     return {
       prompt: `Which inequality does the shaded region show?`,
-      choices: [{ label: h.text, correct: true }, ...wrong],
+      choices: [
+        { label: formula(h.text), correct: true },
+        ...wrong.map((w) => ({ ...w, label: formula(w.label) })),
+      ],
       scene: graph({ id: "g", x: window, y: window, grid: 1 })
         .shade(plane(h))
         .scene({ title: "A shaded half-plane" }),
       explanation: [
-        `The boundary is the line ${line}, drawn with ${boundaryWords(h)}.`,
-        `Test the shaded point ${pair(px, py)}: substituting it makes ${h.text} true, so the shaded side is the ${sym[h.op]} side.`,
-        `So the region is ${h.text}.`,
+        `The boundary is the line ${formula(line)}, drawn with ${boundaryWords(h)}.`,
+        `Test the shaded point ${pair(px, py)}: substituting it makes ${formula(h.text)} true, so the shaded side is the ${sym[h.op]} side.`,
+        `So the region is ${formula(h.text)}.`,
       ],
       hint: `Find the boundary line from two of its grid points and note whether it is solid or dashed. Then substitute a shaded point, such as ${pair(px, py)}, into each option.`,
       tags: [kind, strict(h.op) ? "strict" : "inclusive"],
@@ -574,7 +578,7 @@ function inequalitySolutionPoint(r: Random): Case {
       ),
     ];
     return {
-      prompt: `Which point is a solution of ${h.text}? The graph shows the boundary line and the four points.`,
+      prompt: `Which point is a solution of ${formula(h.text)}? The graph shows the boundary line and the four points.`,
       choices: [
         { label: pair(...right!), correct: true },
         ...wrong.map((q) => ({
@@ -594,7 +598,7 @@ function inequalitySolutionPoint(r: Random): Case {
         `For ${pair(...right!)}: ${check(right!)}.`,
         `Each other point makes the inequality false${strict(h.op) ? ", including the point on the dashed line" : ""}.`,
       ],
-      hint: `Substitute each point into ${h.text}. A point on a solid boundary is a solution; a point on a dashed boundary is not.`,
+      hint: `Substitute each point into ${formula(h.text)}. A point on a solid boundary is a solution; a point on a dashed boundary is not.`,
       tags: [
         kind,
         strict(h.op) ? "strict" : "inclusive",
@@ -640,7 +644,7 @@ function literalEquationSolve(r: Random): Case {
         },
         {
           label: `x = ${n(d)} − ${k}`,
-          feedback: `${k} multiplies $x$; undo multiplication by dividing, not subtracting.`,
+          feedback: `$${k}$ multiplies $x$; undo multiplication by dividing, not subtracting.`,
         },
       ],
       explanation: [
@@ -720,14 +724,14 @@ function literalEquationSolve(r: Random): Case {
   const d = c - b;
   const res = positive ? op : flip[op];
   return {
-    prompt: `If $${k}$ ${positive ? ">" : "<"} 0, solve ${k}x${constText(b)} ${sym[op]} ${n(c)} for $x$.`,
+    prompt: `If $${k} ${positive ? ">" : "<"} 0$, solve $${k}x${constText(b)} ${sym[op]} ${n(c)}$ for $x$.`,
     choices: [
       { label: `x ${sym[res]} ${n(d)}/${k}`, correct: true },
       {
         label: `x ${sym[positive ? flip[op] : op]} ${n(d)}/${k}`,
         feedback: positive
           ? `$${k}$ is positive, so dividing by $${k}$ keeps the direction of the inequality.`
-          : `${k} is negative: dividing both sides by a negative number reverses the inequality.`,
+          : `$${k}$ is negative: dividing both sides by a negative number reverses the inequality.`,
       },
       {
         label: `x ${sym[res]} ${n(c + b)}/${k}`,
@@ -735,7 +739,7 @@ function literalEquationSolve(r: Random): Case {
       },
       {
         label: `x ${sym[res]} ${timesK(d, k)}`,
-        feedback: `${k} multiplies $x$, so divide by ${k}.`,
+        feedback: `$${k}$ multiplies $x$, so divide by $${k}$.`,
       },
     ],
     explanation: [
@@ -744,7 +748,7 @@ function literalEquationSolve(r: Random): Case {
         ? `Divide by $${k}$. Because ${k} > 0, the direction stays: x ${sym[res]} ${n(d)}/${k}.`
         : `Divide by $${k}$. Because ${k} < 0, the direction reverses: x ${sym[res]} ${n(d)}/${k}.`,
     ],
-    hint: `Isolate ${k}x first, then divide by $${k}$. Since $${k}$ ${positive ? ">" : "<"} 0, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
+    hint: `Isolate $${k}x$ first, then divide by $${k}$. Since $${k} ${positive ? ">" : "<"} 0$, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
     tags: [frame],
   };
 }
@@ -821,7 +825,7 @@ function parameterSolutionCount(r: Random): Case {
         `Multiply the second equation by ${n(t)}: ${twoTerm(a2 * t, b2 * t)} = ${n(c2 * t)}. Its $y$-coefficient now matches the first equation's.`,
         `With k = ${n(k)}, the left sides are equal but ${n(c1)} ≠ ${n(c2 * t)}, so no $(x, y)$ satisfies both. So k = ${n(k)}.`,
       ],
-      hint: `Make the $y$-coefficients match: multiply ${twoTerm(a2, b2)} = ${n(c2)} by the number that turns ${termText(b2, "y")} into ${termText(b1, "y")}.`,
+      hint: `Make the $y$-coefficients match: multiply ${twoTerm(a2, b2)} = ${n(c2)} by the number that turns $${termText(b2, "y")}$ into $${termText(b1, "y")}$.`,
       tags: [frame],
     };
   }
@@ -931,8 +935,8 @@ function path(r: Random, form: string): Path | null {
       ],
       did: [
         form === "both-sides"
-          ? `subtract ${coefX(c)} from both sides`
-          : `add the $x$-terms ${a}x and ${coefX(c)}`,
+          ? `subtract $${coefX(c)}$ from both sides`
+          : `add the $x$-terms $${a}x$ and $${coefX(c)}$`,
         moveWords(b),
         `divide both sides by ${k}`,
       ],
@@ -1107,7 +1111,7 @@ function eliminationEquivalent(r: Random): Case {
         title: "The system, one equation above the other",
         steps: [
           step(
-            `Line up like terms in columns. The $y$-terms ${termText(b1, "y")} and ${termText(k * b2, "y")}${k === 1 ? "" : " (after multiplying by " + n(k) + ")"} are opposites, so they cancel.`,
+            `Line up like terms in columns. The $y$-terms $${termText(b1, "y")}$ and ${termText(k * b2, "y")}${k === 1 ? "" : " (after multiplying by " + n(k) + ")"} are opposites, so they cancel.`,
             act.highlight("t.text.0.2"),
             act.highlight("t.text.1.2"),
           ),
@@ -1140,7 +1144,7 @@ function eliminationEquivalent(r: Random): Case {
             ]),
         {
           label: `${termText(sa, "x")}${termText(2 * b1, "y", false)} = ${n(sc)}`,
-          feedback: `The $y$-terms ${termText(b1, "y")} and ${termText(k * b2, "y")} are opposites, so they add to 0.`,
+          feedback: `The $y$-terms $${termText(b1, "y")}$ and $${termText(k * b2, "y")}$ are opposites, so they add to 0.`,
         },
         {
           label: `${termText(sa, "x")} = ${n(-sc)}`,
@@ -1156,10 +1160,10 @@ function eliminationEquivalent(r: Random): Case {
           k === 1
             ? `Add the left sides and the right sides.`
             : `Multiplied by ${n(k)}, the second equation is ${eqText(k * a2, k * b2, k * c2)}.`,
-          `The $y$-terms cancel: ${termText(b1, "y")} + ${pt(k * b2, "y")} = 0. The $x$-terms give ${termText(a1, "x")} + ${pt(k * a2, "x")} = ${termText(sa, "x")}, and the right sides give ${n(c1)} + ${p1(k * c2)} = ${n(sc)}.`,
+          `The $y$-terms cancel: $${termText(b1, "y")} + ${pt(k * b2, "y")} = 0$. The $x$-terms give $${termText(a1, "x")} + ${pt(k * a2, "x")} = ${termText(sa, "x")}$, and the right sides give ${n(c1)} + ${p1(k * c2)} = ${n(sc)}.`,
           `So ${sum}. Any $(x, y)$ that makes both equations true makes this one true too.`,
         ],
-        hint: `${k === 1 ? "Line up like terms" : `Multiply every term of the second equation by ${n(k)} first`}: ${termText(b1, "y")} and ${termText(k * b2, "y")} cancel. Add the $x$-terms, then add the right sides, ${n(c1)} and ${n(k * c2)}.`,
+        hint: `${k === 1 ? "Line up like terms" : `Multiply every term of the second equation by ${n(k)} first`}: $${termText(b1, "y")}$ and $${termText(k * b2, "y")}$ cancel. Add the $x$-terms, then add the right sides, ${n(c1)} and ${n(k * c2)}.`,
         tags: [frame],
       };
     }

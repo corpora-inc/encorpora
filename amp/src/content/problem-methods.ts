@@ -1084,7 +1084,9 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "proportional-rule-choice": {
     goal: "Given several rules, choose the proportional one.",
-    terms: [["proportional", "y = kx for a constant $k$: doubling $x$ doubles $y$."]],
+    terms: [
+      ["proportional", "y = kx for a constant $k$: doubling $x$ doubles $y$."],
+    ],
     method: [
       "A proportional rule is y = kx: one multiplier, no added constant.",
       "Check: it gives y = 0 when x = 0.",
@@ -1191,12 +1193,12 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply by the reciprocal, not by the fraction itself: (2/3)x = 4 gives x = 6.",
   },
   "grouped-linear-equation": {
-    goal: "Given an equation like a(x + b) = c, find $x$.",
+    goal: "Given an equation like $a(x + b) = c$, find $x$.",
     method: [
-      "Divide both sides by $a: 3(x + 2) = 15$ becomes x + 2 = 5.",
-      "Undo the + $b$ inside: x = 5 − 2 = 3.",
+      "Divide both sides by $a$: $3(x + 2) = 15$ becomes $x + 2 = 5$.",
+      "Undo the $+\\,b$ inside: $x = 5 - 2 = 3$.",
     ],
-    watch: "Divide the whole right side by a before undoing $b$.",
+    watch: "Divide the whole right side by $a$ before undoing $b$.",
   },
   "both-sides-linear-equation": {
     goal: "Given an equation with $x$ on both sides, find $x$.",
@@ -1251,7 +1253,8 @@ export const methods: Record<string, ProblemMethod> = {
       "For $x$, count across from the vertical axis.",
       "For $y$, count up or down from the horizontal axis.",
     ],
-    watch: "$x$ is the across distance and comes first; do not swap it with $y$.",
+    watch:
+      "$x$ is the across distance and comes first; do not swap it with $y$.",
   },
   "line-slope": {
     goal: "Given two points, find the slope of the line through them.",
@@ -1362,8 +1365,8 @@ export const methods: Record<string, ProblemMethod> = {
     terms: [["arithmetic sequence", "Each term adds the same difference $d$."]],
     method: [
       "Each term adds the common difference $d$ to the term before.",
-      "Term $n$ is n − 1 steps after term 1.",
-      "Term $n$ = first term + ($n$ − 1) × $d$.",
+      "Term $n$ is $n - 1$ steps after term 1.",
+      "Term $n$ is the first term plus $(n - 1) \\times d$.",
     ],
     watch: "Use n − 1 steps, not $n$: term 1 has no steps added.",
   },
@@ -1375,7 +1378,7 @@ export const methods: Record<string, ProblemMethod> = {
     method: [
       "Each term is the term before it times the ratio $r$.",
       "From term 1 to term $n$ there are n − 1 steps, so multiply by $r$ that many times.",
-      "Term $n$ = first term × $r$^$(n − 1)$.",
+      "Term $n$ is the first term times $r^{n - 1}$.",
     ],
     watch: "Use n − 1 factors of $r$, not $n$: term 1 has no factor of $r$.",
   },

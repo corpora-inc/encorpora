@@ -118,7 +118,7 @@ export const realNumberLessons: Lesson[] = [
   },
   {
     id: "square-cube-equations",
-    title: "Solve x² = p and x³ = p",
+    title: "Solve square and cube equations",
     summary:
       "A positive number has two square roots, one positive and one negative; every number has exactly one real cube root.",
     templateIds: ["solve-square-cube-equation"],

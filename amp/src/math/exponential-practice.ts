@@ -16,7 +16,6 @@ import {
 } from "./exponential-scenes.js";
 import { act, step } from "./scene/author.js";
 
-
 /** Exponential growth, geometric sequences and series, and logarithms
  * (Algebra 1 and 2). Every answer is exact; figures carry only givens. */
 const definitions: [string, string, string, string, boolean, boolean][] = [
@@ -814,7 +813,7 @@ function logEquation(r: Rand): Draft {
     for (const b of [2, 3, 5, 6, 10])
       for (let n = 1; b ** n <= 1000; n++)
         for (let x = 1; x * x < b ** n; x++)
-          if ((b ** n) % x === 0 && b ** n / x - x <= 24)
+          if (b ** n % x === 0 && b ** n / x - x <= 24)
             options.push([b, n, x, b ** n / x - x]);
     const [b, n, x, d] = pick(r, options);
     const other = -(x + d);
@@ -916,7 +915,7 @@ function logRules(r: Rand): Draft {
       for (const k of [1, 2])
         for (let m = 2; m * m <= b ** k; m++)
           if (
-            (b ** k) % m === 0 &&
+            b ** k % m === 0 &&
             powerOf(b, m) === undefined &&
             powerOf(b, b ** k / m) === undefined
           )
@@ -966,8 +965,8 @@ function logRules(r: Rand): Draft {
     hint: `Move the ${p} inside as an exponent: $${p}${lg(b)} ${m} = ${lg(b)} ${m}^{${p}}$. Then the difference of logs is the log of a quotient.`,
     explanation: [
       `Power rule: $${p}${lg(b)} ${m} = ${lg(b)} ${m}^{${p}} = ${lg(b)} ${m ** p}$.`,
-      `Quotient rule: $${lg(b)} ${m ** p} - ${lg(b)} ${c ** p} = ${lg(b)} ${(m ** p) / c ** p}$.`,
-      `$${(m ** p) / c ** p} = ${b}^{${p * j}}$, so the value is ${p * j}.`,
+      `Quotient rule: $${lg(b)} ${m ** p} - ${lg(b)} ${c ** p} = ${lg(b)} ${m ** p / c ** p}$.`,
+      `$${m ** p / c ** p} = ${b}^{${p * j}}$, so the value is ${p * j}.`,
     ],
   };
 }
@@ -1198,10 +1197,7 @@ function logValue(r: Rand): Draft {
     prompt: `What is $\\log ${value}$?`,
     answer: `${k}`,
     hint: `$\\log$ with no base means base 10. Write ${value} as a power of 10 by counting ${k < 0 ? "the places after the decimal point" : "its zeros"}.`,
-    explanation: [
-      `$${value} = 10^{${k}}$.`,
-      `So $\\log ${value} = ${s(k)}$.`,
-    ],
+    explanation: [`$${value} = 10^{${k}}$.`, `So $\\log ${value} = ${s(k)}$.`],
   };
 }
 

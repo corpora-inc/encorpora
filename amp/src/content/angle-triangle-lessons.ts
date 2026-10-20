@@ -95,7 +95,7 @@ export const angleTriangleLessons: Lesson[] = [
         title: "Why a triangle's angles add to 180°",
         paragraphs: [
           "A triangle has three sides and three interior angles. Draw the line through $C$ parallel to side AB. Along that line, three angles at $C$ fill a straight angle: the triangle's ∠$C$ in the middle, and one on each side.",
-          "The angle beside ∠$C$ on the $A$ side is an alternate interior angle to ∠$A$, using transversal AC, so it equals ∠$A$. In the same way, the angle on the $B$ side equals ∠$B$. The three angles fill a straight angle, so ∠$A$ + ∠$B$ + ∠$C = 180$°. It is the same as tearing off the three corners of a paper triangle and laying them side by side along a line.",
+          "The angle beside $\\angle C$ on the $A$ side is an alternate interior angle to $\\angle A$, using transversal $AC$, so it equals $\\angle A$. In the same way, the angle on the $B$ side equals ∠$B$. The three angles fill a straight angle, so ∠$A$ + ∠$B$ + ∠$C = 180$°. It is the same as tearing off the three corners of a paper triangle and laying them side by side along a line.",
         ],
         illustration: "triangle-sum-line",
       },
@@ -103,19 +103,19 @@ export const angleTriangleLessons: Lesson[] = [
         title: "Exterior angles",
         paragraphs: [
           "Extend side AB past $B$ to a point $D$. The angle ∠CBD between the extension and side BC is an exterior angle of the triangle. ∠$A$ and ∠$C$ are its remote interior angles: the two interior angles not at $B$.",
-          "The exterior angle and ∠$B$ form a straight angle, so ∠CBD = 180° − ∠$B$. The angle sum gives ∠$A$ + ∠$C = 180$° − ∠$B$ too. So an exterior angle equals the sum of the two remote interior angles: ∠CBD = ∠$A$ + ∠$C$.",
+          "The exterior angle and $\\angle B$ form a straight angle, so $\\angle CBD = 180° - \\angle B$. The angle sum gives $\\angle A + \\angle C = 180° - \\angle B$ too. So an exterior angle equals the sum of the two remote interior angles: ∠CBD = ∠$A$ + ∠$C$.",
         ],
         illustration: "exterior-angle",
       },
     ],
     workedExample: {
       prompt:
-        "In triangle ABC, side AB is extended past $B$ to point $D$. ∠$A$ measures 48° and ∠CBD measures 113°. What is the measure of ∠$C$, in degrees?",
+        "In triangle ABC, side AB is extended past $B$ to point $D$. $\\angle A$ measures 48° and $\\angle CBD$ measures 113°. What is the measure of ∠$C$, in degrees?",
       steps: [
-        "∠CBD is an exterior angle; ∠$A$ and ∠$C$ are its remote interior angles, so ∠CBD = ∠$A$ + ∠$C$.",
-        "113° = 48° + ∠$C$.",
-        "∠$C = 113$° − 48° = 65°.",
-        "Check with the angle sum: ∠$B = 180$° − 113° = 67°, and 48° + 67° + 65° = 180°.",
+        "$\\angle CBD$ is an exterior angle; $\\angle A$ and $\\angle C$ are its remote interior angles, so $\\angle CBD = \\angle A + \\angle C$.",
+        "$113° = 48° + \\angle C$.",
+        "$\\angle C = 113° - 48° = 65°$.",
+        "Check with the angle sum: $\\angle B = 180° - 113° = 67°$, and $48° + 67° + 65° = 180°$.",
       ],
       answer: "65",
       answerUnit: "degrees",
@@ -283,7 +283,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write ∠$A$ + ∠$B$ + ∠$C = 180$ with the given measures or expressions.",
+      "Write $\\angle A + \\angle B + \\angle C = 180°$ with the given measures or expressions.",
       "Solve for the unknown.",
       "Check that the three angles add to 180°.",
     ],

@@ -128,7 +128,7 @@ export const quadraticLessons: Lesson[] = [
         title: "Find and check the factors",
         paragraphs: [
           "A quadratic polynomial has highest power x². In ax² + bx + c, the numbers $a$, $b$, and $c$ are coefficients, with a ≠ 0. The term bx is the linear term; $c$ is the constant term. Factoring rewrites the polynomial as a product without changing its value.",
-          "If c = 0, factor out $x$: ax² + bx = $x(ax + b)$. Otherwise, divide out any common numerical factor, then find integers $m$ and $n$ whose sum is $b$ and whose product is ac. Replace bx by mx + nx, then factor the two pairs of terms by grouping.",
+          "If $c = 0$, factor out $x$: $ax^2 + bx = x(ax + b)$. Otherwise, divide out any common numerical factor, then find integers $m$ and $n$ whose sum is $b$ and whose product is ac. Replace bx by mx + nx, then factor the two pairs of terms by grouping.",
         ],
       },
       {

@@ -8,7 +8,7 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "parabola-features",
     title: "Parabolas: vertex, axis and translations",
     summary:
-      "The graph of a quadratic is a parabola. Its vertex is its turning point, and it is symmetric about the vertical line through the vertex. y = a(x − h)² + k is $y$ = ax² moved $h$ across and $k$ up.",
+      "The graph of a quadratic is a parabola. Its vertex is its turning point, and it is symmetric about the vertical line through the vertex. $y = a(x - h)^2 + k$ is $y = ax^2$ moved $h$ across and $k$ up.",
     templateIds: ["parabola-vertex", "parabola-axis", "parabola-shift"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -27,7 +27,7 @@ export const quadraticStructureLessons: Lesson[] = [
         illustration: "parabola-features",
       },
       {
-        title: "Translating y = x²",
+        title: "Translating a parabola",
         paragraphs: [
           "Replacing $x$ with x − h moves a graph $h$ units to the right: the old value at $x$ now appears at x + h. Adding $k$ to the output moves every point $k$ units up. So y = (x − h)² + k is the graph of y = x² moved $h$ across and $k$ up, and its vertex moves from (0, 0) to $(h, k)$.",
           "Watch the sign inside: y = (x + 3)² = (x − (−3))² moves 3 units left.",
@@ -50,7 +50,7 @@ export const quadraticStructureLessons: Lesson[] = [
       "Keep the minus sign in x = −b/(2a).",
     ],
     parentGuide:
-      "Sketch y = x² from a small table ($x$ = −2 to 2). Then ask where the point (0, 0) goes when the graph moves 3 right and 1 down, and check the new equation by substituting x = 3.",
+      "Sketch $y = x^2$ from a small table ($x$ from −2 to 2). Then ask where the point (0, 0) goes when the graph moves 3 right and 1 down, and check the new equation by substituting x = 3.",
   },
   {
     id: "expression-structure",
@@ -158,7 +158,7 @@ export const quadraticStructureLessons: Lesson[] = [
   },
   {
     id: "polynomial-division",
-    title: "Dividing by x − a",
+    title: "Dividing by a linear factor",
     summary:
       "Dividing $p(x)$ by x − a gives a quotient $q(x)$ and a remainder $R$ with p(x) = (x − a)q(x) + R. Synthetic division finds both; the remainder is $p(a)$.",
     templateIds: ["remainder-theorem", "polynomial-quotient"],
@@ -311,7 +311,9 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "remainder-theorem": {
     goal: "Find the remainder of p(x) ÷ (x − a), or a coefficient that makes $x - a a$ factor.",
-    terms: [["remainder theorem", "The remainder of p(x) ÷ (x − a) is $p(a)$."]],
+    terms: [
+      ["remainder theorem", "The remainder of p(x) ÷ (x − a) is $p(a)$."],
+    ],
     method: [
       "Read a from the divisor: x − a uses $a$, and x + a uses −a.",
       "Evaluate $p(a)$, or carry out synthetic division and read its last number.",

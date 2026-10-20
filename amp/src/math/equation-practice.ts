@@ -1049,7 +1049,7 @@ function twoStepModelCase(r: Random): Case {
     label: "Choose the equation",
     candidates,
     explanation: storyExplanation(s, right.text),
-    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Find the equation where the repeated amount multiplies ${s.model === "grouped" || s.model === "grouped-minus" ? `a group containing $${s.v}$` : s.v} and the result is ${show(s.r, s.mode)}.`,
+    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Find the equation where the repeated amount multiplies ${s.model === "grouped" || s.model === "grouped-minus" ? `a group containing $${s.v}$` : `$${s.v}$`} and the result is ${show(s.r, s.mode)}.`,
     tags: [s.key, s.model, s.mode],
   };
 }

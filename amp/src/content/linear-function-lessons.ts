@@ -168,8 +168,8 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Undo in reverse order",
         paragraphs: [
-          "In $A$ = bh/2, $h$ is multiplied by $b$ and divided by 2. Undo both on both sides, the last first: multiply by 2 to get 2A = bh, then divide by $b$ to get h = 2A/b. Each step keeps the two sides equal, so the new formula is true whenever the old one is.",
-          "When a term is added, undo it first. In $v$ = $u$ + at, $a$ is multiplied by $t$ and then $u$ is added. So subtract $u$, then divide by $t: a = (v - u)/t$. The parentheses matter: all of v − u is divided by $t$.",
+          "In $A = bh/2$, $h$ is multiplied by $b$ and divided by 2. Undo both on both sides, the last first: multiply by 2 to get 2A = bh, then divide by $b$ to get h = 2A/b. Each step keeps the two sides equal, so the new formula is true whenever the old one is.",
+          "When a term is added, undo it first. In $v = u + at$, $a$ is multiplied by $t$ and then $u$ is added. So subtract $u$, then divide by $t$: $a = (v - u)/t$. The parentheses matter: all of $v - u$ is divided by $t$.",
         ],
         illustration: "formula-isolate-steps",
       },
@@ -227,7 +227,8 @@ export const linearFunctionLessons: Lesson[] = [
       },
     ],
     workedExample: {
-      prompt: "The point (4, $k$) is on the graph of 2x + 3y = 17. What is $k$?",
+      prompt:
+        "The point (4, $k$) is on the graph of 2x + 3y = 17. What is $k$?",
       steps: [
         "Substitute x = 4: 2(4) + 3k = 17, so 8 + 3k = 17.",
         "Subtract 8: 3k = 9. Divide by 3: k = 3.",
@@ -324,7 +325,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Name the variable: what it counts and its units.",
-      "Write starting amount + rate × variable, and set it equal to the total (or ≤ a limit, or equal to a second expression).",
+      "Write starting amount + rate × variable, and set it equal to the total (or at most a limit, or equal to a second expression).",
       "Solve with inverse operations and check the answer in the story; for a limit, take the greatest whole number that fits.",
     ],
     watch:

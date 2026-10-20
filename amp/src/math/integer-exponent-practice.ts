@@ -188,7 +188,8 @@ export function integerExponentPrintCase(
         skillId: metadata.skillId,
         response: {
           kind: id === "negative-integer-power" ? "fraction" : "number",
-          label: id === "negative-integer-power" ? "Exact value" : "Exponent $k$",
+          label:
+            id === "negative-integer-power" ? "Exact value" : "Exponent $k$",
         },
       },
       answer,

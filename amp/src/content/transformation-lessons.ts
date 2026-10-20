@@ -129,7 +129,7 @@ export const transformationLessons: Lesson[] = [
       {
         title: "Three motions and their rules",
         paragraphs: [
-          "A translation slides every point the same distance in the same direction. Moving 6 units left and 2 units up subtracts 6 from every $x$-coordinate and adds 2 to every $y$-coordinate: $(x, y)$ → ($x$ − 6, $y$ + 2).",
+          "A translation slides every point the same distance in the same direction. Moving 6 units left and 2 units up subtracts 6 from every $x$-coordinate and adds 2 to every $y$-coordinate: $(x, y) \\to (x - 6, y + 2)$.",
           "A reflection over a line flips the figure across it, like a mirror image: each point moves straight across the line, at a right angle to it, to the same distance on the other side. Over the $x$-axis, $x$ stays and $y$ changes sign: ($x$, $y$) → (x, −y). Over the $y$-axis, ($x$, $y$) → (−x, y).",
           "A rotation turns the figure about a fixed point, the center, keeping every point's distance from the center. A half turn (180°) about the origin sends each point to the opposite side: $(x, y)$ → (−x, −y). A quarter turn (90°) counterclockwise sends the point (1, 0) to (0, 1) and (0, 1) to (−1, 0), so $(x, y)$ → (−y, x). A quarter turn clockwise is ($x$, $y$) → (y, −x).",
         ],
@@ -329,7 +329,9 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "identify-rigid-motion": {
     goal: "Name the single motion that carries a triangle onto its labeled image.",
-    terms: [["corresponding vertices", "$A$ and $A'$, $B$ and $B'$, $C$ and $C'$."]],
+    terms: [
+      ["corresponding vertices", "$A$ and $A'$, $B$ and $B'$, $C$ and $C'$."],
+    ],
     method: [
       "Pair each vertex with its image.",
       "Find the rule that fits all three pairs: added amounts, one sign change, both signs, or a swap.",

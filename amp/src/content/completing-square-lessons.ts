@@ -167,7 +167,7 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
 ];
 export const completingSquareMethods: Record<string, ProblemMethod> = {
   "complete-square-term": {
-    goal: "Find the constant that makes x² + bx + $c$ a squared binomial.",
+    goal: "Find the constant that makes $x^2 + bx + c$ a squared binomial.",
     terms,
     method: [
       "Expand (x + h)² as x² + 2hx + h².",

@@ -105,6 +105,7 @@ PLAIN_MATH = re.compile(r'\$([^$]+)\$')
 def plain_span(match):
     tex = match.group(1)
     reading = re.sub(r'\\angle\s*', '∠', tex)
+    reading = re.sub(r'\\t?frac\{([^{}]*)\}\{([^{}]*)\}', r'\1/\2', reading)
     if '\\' in reading:
         return match.group(0)
     return reading.replace("'", '′')

@@ -65,7 +65,7 @@ export const similarityTrigLessons: Lesson[] = [
     includeGeneratedRepresentation: false,
     objectives: [
       "Write sin, cos and tan of an acute angle as exact ratios of sides, and find a side from a ratio.",
-      "Use the side ratios of 45°-45°-90° and 30°-60°-90° triangles, and sin $A$ = cos(90° − $A$).",
+      "Use the side ratios of 45°-45°-90° and 30°-60°-90° triangles, and $\\sin A = \\cos(90° - A)$.",
     ],
     sections: [
       {
@@ -131,7 +131,7 @@ const terms = {
     ["matching sides", "Sides joining matching vertices, in name order."],
   ],
   special: [
-    ["45°-45°-90°", "Sides s, s and s√2."],
+    ["45°-45°-90°", "Sides $s$, $s$ and $s\\sqrt{2}$."],
     ["30°-60°-90°", "Sides $s$, $s\\sqrt 3$ and $2s$."],
   ],
   trig: [
@@ -140,7 +140,7 @@ const terms = {
   ],
   complement: [
     ["complementary", "Two angles that add to 90°."],
-    ["cofunction", "sin $A$ = cos(90° − $A$)."],
+    ["cofunction", "$\\sin A = \\cos(90° - A)$."],
   ],
 } satisfies Record<string, [string, string][]>;
 export const similarityTrigMethods: Record<string, ProblemMethod> = {
@@ -172,7 +172,7 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
     method: [
       "Name the given side: a leg, the hypotenuse, the shorter leg or the longer leg.",
       "Find $s$ from it: divide by √2, √3 or 2 as the pattern says.",
-      "Build the asked side from $s$, and rationalize if it has √ in a denominator.",
+      "Build the asked side from $s$, and rationalize if it has a square root in a denominator.",
     ],
     watch:
       "In a 30°-60°-90° triangle the shorter leg is opposite 30°, not 60°.",
@@ -189,7 +189,7 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
       "Opposite and adjacent swap when the angle changes; read them from the named angle.",
   },
   "complementary-trig": {
-    goal: "Use sin $A$ = cos(90° − $A$) to find an angle, a variable or a ratio.",
+    goal: "Use $\\sin A = \\cos(90° - A)$ to find an angle, a variable or a ratio.",
     terms: terms.complement,
     method: [
       "Recognize a sine and a cosine of two angles that must be complementary.",
@@ -209,5 +209,5 @@ export const similarityTrigPrinciples: Record<string, string> = {
   "trig-ratio":
     "In a right triangle, sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse and tan = opposite ÷ adjacent, all read from the chosen acute angle.",
   "complementary-trig":
-    "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so sin $A$ = cos(90° − $A$).",
+    "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
 };

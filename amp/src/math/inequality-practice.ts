@@ -105,7 +105,7 @@ function manageable(
   });
 }
 const remove = (value: Rational, variable = false) =>
-  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? term(q(Math.abs(value.n), value.d)) : number(q(Math.abs(value.n), value.d))} ${value.n < 0 ? "to" : "from"} both sides`;
+  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? `$${term(q(Math.abs(value.n), value.d))}$` : number(q(Math.abs(value.n), value.d))} ${value.n < 0 ? "to" : "from"} both sides`;
 const difference = (a: Rational, b: Rational) =>
   `${number(a)} ${b.n < 0 ? "+" : "−"} ${number(q(Math.abs(b.n), b.d))}`;
 
@@ -241,10 +241,10 @@ function generateInequalityCase(
       );
     if (!equal(coefficient, q(1)))
       explanation.push(
-        `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore $x$ ${solvedOp} ${number(target)}.`,
+        `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore $x ${solvedOp} ${number(target)}$.`,
       );
     explanation.push(
-      `The solution is $x$ ${solvedOp} ${number(target)}: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`,
+      `The solution is $x ${solvedOp} ${number(target)}$: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`,
     );
     const pointsLeft = solvedOp === "<" || solvedOp === "≤";
     // Use zero when it is strictly inside; otherwise choose the nearest interior

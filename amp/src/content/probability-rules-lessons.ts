@@ -81,7 +81,7 @@ export const probabilityRulesLessons: Lesson[] = [
         illustration: "probability-table-given",
       },
       {
-        title: "P(A | B) is not P(B | A)",
+        title: "Reversing the condition changes the probability",
         paragraphs: [
           "Reverse the condition and the sample space changes. Given that a student prefers online classes, only that column of 32 students remains, and 14 of them are in grade 10: $P(\\text{grade 10 | online}) = \\frac{14}{32} = \\frac{7}{16}$.",
           "Both answers share the numerator 14, the students who are in both groups. The denominator is always the size of the given event, so read which event comes after the bar.",
@@ -119,12 +119,12 @@ export const probabilityRulesLessons: Lesson[] = [
 
 const terms = {
   sets: [
-    ["A ∪ B", "$A$ or $B$: outcomes in $A$, in $B$ or in both."],
-    ["A ∩ B", "$A$ and $B$: outcomes in both."],
-    ["A′", "The complement: outcomes not in $A$."],
+    ["$A \\cup B$", "$A$ or $B$: outcomes in $A$, in $B$ or in both."],
+    ["$A \\cap B$", "$A$ and $B$: outcomes in both."],
+    ["$A'$", "The complement: outcomes not in $A$."],
   ],
   addition: [
-    ["$P(A \\text{ or } B)$", "The probability that A, B or both happen."],
+    ["$P(A \\text{ or } B)$", "The probability that $A$, $B$ or both happen."],
     ["mutually exclusive", "Events that cannot happen together."],
   ],
   conditional: [
@@ -145,7 +145,8 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       "Find the regions it covers: A only, both, $B$ only or neither; for a list, sort each outcome into its region.",
       "Add the counts of those regions; for a probability, divide by the size of the sample space.",
     ],
-    watch: "$A'$ includes the outcomes outside both events, not only those in $B$.",
+    watch:
+      "$A'$ includes the outcomes outside both events, not only those in $B$.",
   },
   "addition-rule-probability": {
     goal: "Find $P(A \\text{ or } B)$, or the overlap $P(A \\text{ and } B)$, with the addition rule.",

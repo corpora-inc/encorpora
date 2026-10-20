@@ -1311,7 +1311,8 @@ export function transformationPrintCase(
  * without stating the answer; a template's own first move otherwise. */
 function instanceHint(id: string, c: Case, numeric: boolean): string {
   const values = (text: string): string[] =>
-    text.replaceAll("−", "-").match(/(?<![\w.\/])-?\d+(?:\.\d+)?(?:\/\d+)?/g) ?? [];
+    text.replaceAll("−", "-").match(/(?<![\w.\/])-?\d+(?:\.\d+)?(?:\/\d+)?/g) ??
+    [];
   const given = new Set(values(c.prompt));
   if (id === "transformation-image") {
     const vertex = /coordinates of \$([A-Z])'\$/.exec(c.prompt)![1]!;

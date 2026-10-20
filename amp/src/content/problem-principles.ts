@@ -142,11 +142,11 @@ export const principles: Record<string, string> = {
   "place-value-digit":
     "Place value: a digit's value is the digit multiplied by the value of its place (1, 10, 100, …).",
   "expanded-form-missing":
-    "Expanded form writes a number as the sum of its place values: abc = 100a + 10b + $c$.",
+    "Expanded form writes a number as the sum of its place values: $\\overline{abc} = 100a + 10b + c$.",
   "exchange-base-ten":
     "Equivalent representations: 10 units of one place equal 1 unit of the next place; regrouping preserves value.",
   "skip-count-missing":
-    "An arithmetic pattern adds the same difference $d$ each step: next = previous + $d$.",
+    "An arithmetic pattern adds the same difference $d$ each step: $\\text{next} = \\text{previous} + d$.",
   "add-several-two-digit":
     "Commutative and associative properties: sum the tens and the ones separately, then combine.",
   "add-with-regrouping":
@@ -154,7 +154,7 @@ export const principles: Record<string, string> = {
   "subtract-with-regrouping":
     "The standard subtraction algorithm subtracts by place value, decomposing 1 of a higher place into 10 of the next lower place when needed.",
   "two-step-change":
-    "Changes apply in order, (start + $a$) − $b$, and each change is undone by its inverse: start = (end + $b$) − $a$.",
+    "Changes apply in order, $(\\text{start} + a) - b$, and each change is undone by its inverse: $\\text{start} = (\\text{end} + b) - a$.",
   // Multiplication and division
   "small-array-total":
     "Multiplication as an array: $r$ rows of $c$ objects contain r × c objects.",
@@ -163,12 +163,13 @@ export const principles: Record<string, string> = {
   "equal-tray-total":
     "Multiplication counts equal groups: $g$ groups of $s$ items contain g × s items.",
   "share-whole-items":
-    "Partitive division: sharing a total equally among $n$ groups gives total ÷ $n$ in each group.",
+    "Partitive division: sharing a total equally among $n$ groups gives $\\text{total} \\div n$ in each group.",
   "measure-whole-pieces":
     "Quotative (measurement) division: total ÷ size counts how many groups of that size fit.",
   "unknown-group-size":
-    "Inverse operations: $g$ × ? = total means ? = total ÷ $g$.",
-  "unknown-dividend": "Inverse operations: ? ÷ $a$ = $b$ means ? = a × b.",
+    "Inverse operations: $g \\times \\square = \\text{total}$ means $\\square = \\text{total} \\div g$.",
+  "unknown-dividend":
+    "Inverse operations: $\\square \\div a = b$ means $\\square = a \\times b$.",
   "split-array-part":
     "Distributive property: an array a × (b + c) splits into the partial products a × b and a × c.",
   "nested-bag-total":
@@ -192,7 +193,7 @@ export const principles: Record<string, string> = {
   "kit-leftovers":
     "Division with remainder: n = q × d + r with 0 ≤ r < d; the remainder $r$ is what is left over.",
   "delivery-then-use":
-    "Order of operations in context: find the product, then subtract: g × s − used.",
+    "Order of operations in context: find the product, then subtract: $g \\times s - \\text{used}$.",
   "purchase-change":
     "Change = payment − cost, where cost = quantity × unit price.",
   // Measurement and geometry
@@ -238,9 +239,9 @@ export const principles: Record<string, string> = {
   "bar-chart-difference":
     "Comparing frequencies: the difference between two categories is the larger frequency minus the smaller.",
   "mean-data":
-    "The arithmetic mean of $n$ values is their sum divided by $n$: (x₁ + … + xₙ) ÷ $n$.",
+    "The arithmetic mean of $n$ values is their sum divided by $n$: $(x_1 + \\cdots + x_n) \\div n$.",
   "simple-probability":
-    "Classical probability: for equally likely outcomes, $P(\\text{event})$ = favorable outcomes ÷ total outcomes.",
+    "Classical probability: for equally likely outcomes, $P(\\text{event}) = \\text{favorable outcomes} \\div \\text{total outcomes}$.",
   // Fractions
   "unit-piece-size":
     "Unit fraction: when a whole is partitioned into $b$ equal parts, each part is 1/b of the whole.",
@@ -263,7 +264,8 @@ export const principles: Record<string, string> = {
     "Adding like fractions: a/d + c/d = (a + c)/d; subtraction is its inverse.",
   "like-fraction-difference":
     "Subtracting like fractions: a/d − c/d = (a − c)/d. The denominator names the unit and is unchanged.",
-  "mixed-to-improper-numerator": "A mixed number $w \\tfrac{a}{b}$ equals (w × b + a)/b.",
+  "mixed-to-improper-numerator":
+    "A mixed number $w \\tfrac{a}{b}$ equals (w × b + a)/b.",
   "improper-whole-part":
     "Division with remainder: a/b = q + r/b where a = q × b + r and 0 ≤ r < b.",
   "improper-fractional-part":
@@ -297,7 +299,7 @@ export const principles: Record<string, string> = {
     "Decimal place value: aligning decimal points adds digits of equal place value.",
   "decimal-multiplication":
     "Decimals as fractions: ($a$/10ᵐ$) × (b$/10ⁿ$) = (a × b$)/10ᵐ⁺ⁿ, so the product has m + n decimal places.",
-  "ratio-missing": "Equivalent ratios: $a$ : $b$ = ka : kb for any positive $k$.",
+  "ratio-missing": "Equivalent ratios: $a : b = ka : kb$ for any positive $k$.",
   "unit-price":
     "Unit rate: price per item = total cost ÷ number of items; cost is proportional to quantity.",
   "percent-of": "Percent means per hundred: $p$% of n = (p/100) × n.",
@@ -309,13 +311,13 @@ export const principles: Record<string, string> = {
   "number-line-distance":
     "The distance between $a$ and $b$ on the number line is |a − b|.",
   "integer-power":
-    "Exponent notation: bⁿ = b × b × … × $b$ ($n$ factors), and b⁰ = 1 for b ≠ 0.",
+    "Exponent notation: $b^n = b \\times b \\times \\cdots \\times b$ ($n$ factors), and $b^0 = 1$ for $b \\neq 0$.",
   "operation-order":
     "Order of operations: grouping symbols, then exponents, then multiplication and division left to right, then addition and subtraction left to right.",
   "substitute-linear-expression":
     "Substitution: replacing a variable with a value evaluates the expression at that value.",
   "distributive-expression-choice":
-    "Distributive property of multiplication over addition: $a(b + c)$ = ab + ac, for all real numbers $a$, $b$, $c$.",
+    "Distributive property of multiplication over addition: $a(b + c) = ab + ac$, for all real numbers $a$, $b$, $c$.",
   "combine-like-coefficient":
     "Distributive property: ax + bx = (a + b)x, so like terms combine by adding their coefficients.",
   "linear-equation":
@@ -338,7 +340,7 @@ export const principles: Record<string, string> = {
   "line-slope":
     "Slope: m = (y₂ − y₁)/(x₂ − x₁), the rate of change of $y$ with respect to $x$.",
   "graphed-line-slope":
-    "Slope: $m$ = rise/run = (y₂ − y₁)/(x₂ − x₁). It is constant along a line.",
+    "Slope: $m = \\frac{\\text{rise}}{\\text{run}} = \\frac{y_2 - y_1}{x_2 - x_1}$. It is constant along a line.",
   "unequal-step-rate":
     "A linear function has a constant rate of change: (y₂ − y₁)/(x₂ − x₁) is the same for every pair of points.",
   "recover-linear-intercept":

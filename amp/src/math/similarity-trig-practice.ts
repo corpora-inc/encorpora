@@ -68,7 +68,7 @@ export const similarityTrigTemplates: readonly TemplateMetadata[] = [
     skillId: "complementary-trigonometry",
     gradeBand: "9–12",
     description:
-      "Use sin $x$° = cos(90 − $x$)° to find an angle, to solve for a variable, and to read cos $B$ from sin $A$ in a right triangle.",
+      "Use $\\sin x° = \\cos(90 - x)°$ to find an angle, to solve for a variable, and to read $\\cos B$ from $\\sin A$ in a right triangle.",
     ...scenes,
   },
 ];
@@ -493,7 +493,7 @@ function dilationCase(r: Random): Case {
         answer: image,
         explanation: [
           `A dilation multiplies the distance between any two points by the scale factor, ${frac(k)}.`,
-          `$A$′$B'$ $= ${L} × ${frac(k)} = ${frac(image)}$.`,
+          `$A'B' = ${L} × ${frac(k)} = ${frac(image)}$.`,
         ],
         hint: `Every length in the image is ${frac(k)} times the matching length, whatever the center. Apply that to AB = ${L}.`,
         tags: ["image-length", kv < 1 ? "reduction" : "enlargement"],
@@ -538,7 +538,7 @@ function dilationCase(r: Random): Case {
     const name = axis ? "y" : "x";
     const ext = Math.max(9, ...image.map((v) => Math.ceil(Math.abs(v)) + 1));
     return {
-      prompt: `A dilation with center C${pt(C)} and scale factor ${frac(k)} maps P${pt(P)} to $P'$. What is the $${name}$-coordinate of $P'$?`,
+      prompt: `A dilation with center $C${pt(C)}$ and scale factor ${frac(k)} maps $P${pt(P)}$ to $P'$. What is the $${name}$-coordinate of $P'$?`,
       answer,
       explanation: [
         `The step from $C$ to $P$ is ${pt([P[0] - C[0], P[1] - C[1]])}.`,
@@ -561,7 +561,7 @@ function dilationCase(r: Random): Case {
             ),
           ],
         }),
-      label: `${name}-coordinate`,
+      label: `$${name}$-coordinate`,
     };
   }
   const kind = r(0, 1);
@@ -582,11 +582,11 @@ function dilationCase(r: Random): Case {
   }
   const angle = r(20, 160);
   return {
-    prompt: `Triangle ABC has ∠$B$ = ${angle}°. A dilation with scale factor ${frac(k)} maps it to triangle $A'B'C'$. What is the measure of ∠$B'$, in degrees?`,
+    prompt: `Triangle $ABC$ has $\\angle B = ${angle}°$. A dilation with scale factor ${frac(k)} maps it to triangle $A'B'C'$. What is the measure of $\\angle B'$, in degrees?`,
     answer: q(angle),
     explanation: [
       "A dilation multiplies lengths but keeps the shape: it maps each angle to an angle of the same measure.",
-      `∠$B'$ = ∠$B$ = ${angle}°.`,
+      `$\\angle B' = \\angle B = ${angle}°$.`,
     ],
     hint: `A dilation by ${frac(k)} changes lengths. Does it change the angle between two sides at $B$?`,
     tags: ["angle"],
@@ -619,7 +619,7 @@ function specialCase(r: Random): Case {
         prompt: `A 45°-45°-90° triangle has legs of length ${a}. Its hypotenuse is c√2. What is $c$?`,
         answer: q(a),
         explanation: [
-          "The two legs are equal, so the hypotenuse is √(leg² + leg²) = leg × √2.",
+          "The two legs are equal, so the hypotenuse is $\\sqrt{\\text{leg}^2 + \\text{leg}^2} = \\text{leg} \\times \\sqrt{2}$.",
           `The hypotenuse is ${a}√2, so c = ${a}.`,
         ],
         hint: `With legs ${a} and ${a}, the Pythagorean theorem gives hypotenuse² = ${a}² + ${a}² = 2 × ${a}². Take the square root.`,
@@ -826,16 +826,16 @@ function trigCase(r: Random): Case {
       answer: exact[fn],
       explanation: [
         ...(third ? [third] : []),
-        `For angle ${at}, the ${parts[fn][0]} side is ${num} and the ${parts[fn][1]} is ${den}.`,
+        `For angle $${at}$, the ${parts[fn][0]} side is ${num} and the ${parts[fn][1]} is ${den}.`,
         `$\\${fn} ${at} = \\frac{\\text{${parts[fn][0]}}}{\\text{${parts[fn][1]}}}$ = ${ratio(num, den)}.`,
       ],
       hint:
         missing >= 0
-          ? `Two sides are given, ${[x, y, hyp].filter((_, j) => j !== missing).join(" and ")}; the Pythagorean theorem gives the third. Then, standing at angle ${at}, name the ${parts[fn][0]} side and the ${parts[fn][1]}.`
-          : `Stand at angle ${at}: the side across from it is opposite, the leg touching it is adjacent, and ${hyp} is the hypotenuse. ${fn} uses the ${parts[fn][0]} and the ${parts[fn][1]}.`,
+          ? `Two sides are given, ${[x, y, hyp].filter((_, j) => j !== missing).join(" and ")}; the Pythagorean theorem gives the third. Then, standing at angle $${at}$, name the ${parts[fn][0]} side and the ${parts[fn][1]}.`
+          : `Stand at angle $${at}$: the side across from it is opposite, the leg touching it is adjacent, and ${hyp} is the hypotenuse. $\\${fn}$ uses the ${parts[fn][0]} and the ${parts[fn][1]}.`,
       tags: [missing >= 0 ? "two-sides" : "three-sides", fn],
       figure: tri.scene({ title: "Right triangle ABC", steps: steps(fn) }),
-      label: `${fn} ${at}`,
+      label: `$\\${fn} ${at}$`,
     };
   }
   if (mode === 2) {
@@ -848,13 +848,13 @@ function trigCase(r: Random): Case {
     const askedSide = sideOf(num);
     tri = tri.side(askedSide as 0 | 1, { label: null });
     return {
-      prompt: `In right triangle ABC, the right angle is at $C$ and AB = ${hyp}. ${math(`${f} ${at} = ${frac(ratioV)}`)}. How long is the side ${f === "sin" ? "opposite" : "adjacent to"} angle ${at}?`,
+      prompt: `In right triangle ABC, the right angle is at $C$ and AB = ${hyp}. ${math(`${f} ${at} = ${frac(ratioV)}`)}. How long is the side ${f === "sin" ? "opposite" : "adjacent to"} angle $${at}$?`,
       answer,
       explanation: [
         `${math(`${f} ${at}`)} = ${parts[f][0]} ÷ hypotenuse, so ${parts[f][0]} = hypotenuse × ${math(`${f} ${at}`)}.`,
         `${hyp} × ${frac(ratioV)} = ${num}.`,
       ],
-      hint: `${f} ${at} compares the ${parts[f][0]} side to the hypotenuse, ${hyp}. Take ${frac(ratioV)} of ${hyp}.`,
+      hint: `${math(`${f} ${at}`)} compares the ${parts[f][0]} side to the hypotenuse, ${hyp}. Take ${frac(ratioV)} of ${hyp}.`,
       tags: ["side-from-ratio", f],
       figure: tri.scene({ title: "Right triangle ABC", steps: steps(f) }),
       label: "Length",
@@ -949,7 +949,7 @@ function complementaryCase(r: Random): Case {
       answer: v,
       explanation: [
         "$A$ and $B$ are the two acute angles of a right triangle, so A + B = 90°.",
-        "The side opposite $A$ is the side adjacent to $B$, and both ratios divide it by the hypotenuse: sin $A$ = cos $B$.",
+        "The side opposite $A$ is the side adjacent to $B$, and both ratios divide it by the hypotenuse: $\\sin A = \\cos B$.",
         `${math(`${asked} = ${frac(v)}`)}.`,
       ],
       hint: `${math(`${given} = ${frac(v)}`)} compares one leg with the hypotenuse. Find that leg: it is opposite one acute angle and next to the other.`,

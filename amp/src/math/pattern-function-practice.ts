@@ -440,7 +440,7 @@ export const equationContexts: Context[] = [
     key: "greenhouse",
     kind: "offset",
     intro: (c) => `A greenhouse is always ${c} °F warmer than the air outside.`,
-    shows: "When it is a °F outside, the greenhouse is $g$ °F.",
+    shows: "When it is $a$ °F outside, the greenhouse is $g$ °F.",
     x: "a",
     y: "g",
     xUnit: "°F",

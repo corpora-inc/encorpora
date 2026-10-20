@@ -49,7 +49,7 @@ export const probabilityRulesTemplates: readonly TemplateMetadata[] = [
     skillId: "conditional-probability",
     gradeBand: "9–12",
     description:
-      "Find $P(A \\mid  B)$ by restricting the sample space to B: from a two-way table, a Venn diagram, a list of outcomes or $P(A \\text{ and } B)$ ÷ $P(B)$.",
+      "Find $P(A \\mid  B)$ by restricting the sample space to $B$: from a two-way table, a Venn diagram, a list of outcomes or $P(A \\text{ and } B)$ ÷ $P(B)$.",
     ...scenes,
   },
   {
@@ -390,14 +390,14 @@ function eventSetCase(r: Random): Case {
     const inA = range(n).filter(A.holds),
       inB = range(n).filter(B.holds);
     return {
-      prompt: `A whole number from 1 to ${n} is chosen at random. Event A: ${A.text}. Event B: ${B.text}. How many outcomes are in the event ${expr.symbol("A", "B")}?`,
+      prompt: `A whole number from 1 to ${n} is chosen at random. Event $A$: ${A.text}. Event $B$: ${B.text}. How many outcomes are in the event ${math(expr.symbol("A", "B"))}?`,
       answer: q(outcomes.length),
       explanation: [
-        `A has ${inA.length} ${inA.length === 1 ? "outcome" : "outcomes"}: ${listed(inA)}. B has ${inB.length} ${inB.length === 1 ? "outcome" : "outcomes"}: ${listed(inB)}.`,
-        `${expr.symbol("A", "B")} ${meaning(expr.key)}.`,
+        `$A$ has ${inA.length} ${inA.length === 1 ? "outcome" : "outcomes"}: ${listed(inA)}. $B$ has ${inB.length} ${inB.length === 1 ? "outcome" : "outcomes"}: ${listed(inB)}.`,
+        `${math(expr.symbol("A", "B"))} ${meaning(expr.key)}.`,
         `Those outcomes are ${listed(outcomes)}, so the event has ${outcomes.length} ${outcomes.length === 1 ? "outcome" : "outcomes"}.`,
       ],
-      hint: `List the numbers 1 to ${n} that make A true and those that make B true. ${expr.symbol("A", "B")} ${meaning(expr.key)}.`,
+      hint: `List the numbers 1 to ${n} that make $A$ true and those that make $B$ true. ${math(expr.symbol("A", "B"))} ${meaning(expr.key)}.`,
       tags: ["listed", expr.key],
       count: "Number of outcomes",
     };
@@ -482,7 +482,7 @@ function eventSetCase(r: Random): Case {
       title: `Venn diagram of ${n} ${g.many}`,
       steps: [
         step(
-          `${expr.symbol(A, B)} ${meaning(expr.key, A, B)}.`,
+          `${math(expr.symbol(A, B))} ${meaning(expr.key, A, B)}.`,
           ...shade(expr.regions),
         ),
         step(
@@ -498,8 +498,8 @@ function eventSetCase(r: Random): Case {
   const setup = `Event $${A}$: the ${g.one} ${g.a.has}. Event $${B}$: the ${g.one} ${g.b.has}.`;
   const regionsText =
     expr.regions.length === 1
-      ? `${expr.symbol(A, B)} is ${names[expr.regions[0]!]}.`
-      : `${expr.symbol(A, B)} is made of ${expr.regions.length} regions: ${expr.regions
+      ? `${math(expr.symbol(A, B))} is ${names[expr.regions[0]!]}.`
+      : `${math(expr.symbol(A, B))} is made of ${expr.regions.length} regions: ${expr.regions
           .map((x) => names[x])
           .join(", ")
           .replace(/, ([^,]*)$/, " and $1")}.`;
@@ -516,7 +516,7 @@ function eventSetCase(r: Random): Case {
           : `That region holds ${inside} of the ${n} ${g.many}.`,
         `${math(`P(${expr.symbol(A, B)}) = ${ratio(inside, n)}`)}.`,
       ],
-      hint: `The whole sample space is all ${n} ${g.many}. Shade the regions that make ${expr.symbol(A, B)} true, add their counts, and divide by ${n}.`,
+      hint: `The whole sample space is all ${n} ${g.many}. Shade the regions that make ${math(expr.symbol(A, B))} true, add their counts, and divide by ${n}.`,
       tags: ["probability", expr.key],
       figure,
     };
@@ -525,7 +525,7 @@ function eventSetCase(r: Random): Case {
   const symbolic = r(0, 1) === 1;
   return {
     prompt: symbolic
-      ? `The Venn diagram sorts ${n} ${g.intro}. ${setup} How many ${g.many} are in the event ${expr.symbol(A, B)}?`
+      ? `The Venn diagram sorts ${n} ${g.intro}. ${setup} How many ${g.many} are in the event ${math(expr.symbol(A, B))}?`
       : `The Venn diagram sorts ${n} ${g.intro}. How many ${g.many} ${words}?`,
     answer: q(inside),
     explanation: [
@@ -535,10 +535,10 @@ function eventSetCase(r: Random): Case {
       expr.regions.length > 1
         ? `Add those counts: ${expr.regions.map((x) => counts[x]).join(" + ")} = ${inside}.`
         : `That region holds ${inside}.`,
-      `${inside} ${inside === 1 ? g.one : g.many} ${symbolic ? `${inside === 1 ? "is" : "are"} in ${expr.symbol(A, B)}` : words}.`,
+      `${inside} ${inside === 1 ? g.one : g.many} ${symbolic ? `${inside === 1 ? "is" : "are"} in ${math(expr.symbol(A, B))}` : words}.`,
     ],
     hint: symbolic
-      ? `${expr.symbol(A, B)} ${meaning(expr.key, A, B)}. Find those regions among the four counts, which add to ${n}.`
+      ? `${math(expr.symbol(A, B))} ${meaning(expr.key, A, B)}. Find those regions among the four counts, which add to ${n}.`
       : `Decide which of the four regions hold ${g.many} ${g.who} ${words}; the four counts add to ${n}.`,
     tags: [symbolic ? "symbols" : "words", expr.key],
     figure,
@@ -549,14 +549,14 @@ function eventSetCase(r: Random): Case {
 function meaning(key: string, A = "A", B = "B") {
   return {
     union: `contains the outcomes in $${A}$, in $${B}$ or in both`,
-    intersection: `contains only the outcomes in both ${A} and ${B}`,
-    complement: `contains the outcomes not in ${A}`,
-    neither: `contains the outcomes in neither ${A} nor ${B}`,
-    "only-first": `contains the outcomes in ${A} that are not in ${B}`,
-    "only-second": `contains the outcomes in ${B} that are not in ${A}`,
-    "union-complement": `contains the outcomes in ${A} or not in ${B}`,
-    "not-both": `contains every outcome except those in both ${A} and ${B}`,
-    "both-complements": `contains the outcomes outside ${A} and outside ${B}`,
+    intersection: `contains only the outcomes in both $${A}$ and $${B}$`,
+    complement: `contains the outcomes not in $${A}$`,
+    neither: `contains the outcomes in neither $${A}$ nor $${B}$`,
+    "only-first": `contains the outcomes in $${A}$ that are not in $${B}$`,
+    "only-second": `contains the outcomes in $${B}$ that are not in $${A}$`,
+    "union-complement": `contains the outcomes in $${A}$ or not in $${B}$`,
+    "not-both": `contains every outcome except those in both $${A}$ and $${B}$`,
+    "both-complements": `contains the outcomes outside $${A}$ and outside $${B}$`,
   }[key]!;
 }
 /** Shade Venn regions from this step on. */
@@ -976,10 +976,10 @@ function conditionalCase(r: Random): Case {
     prompt: `For two events $A$ and $B$, ${math(`P(A and B) = ${show(pAB)}`)} and ${math(`P(B) = ${show(pB)}`)}. Find ${math("P(A | B)")}.`,
     answer: pGiven,
     explanation: [
-      `${math("P(A | B)")} is the share of B's probability that also lies in A: ${math("P(A | B) = P(A and B) ÷ P(B)")}.`,
+      `${math("P(A | B)")} is the share of $B$'s probability that also lies in $A$: ${math("P(A | B) = P(A and B) ÷ P(B)")}.`,
       `${math(`P(A | B) = ${show(pAB)} ÷ ${show(pB)} = ${show(pGiven)}`)}.`,
     ],
-    hint: `Given B, the sample space shrinks to B, which has probability ${show(pB)}. Find what share of it the overlap, ${show(pAB)}, is.`,
+    hint: `Given $B$, the sample space shrinks to $B$, which has probability ${show(pB)}. Find what share of it the overlap, ${show(pAB)}, is.`,
     tags: ["formula", asDecimal ? "decimal" : "fraction"],
   };
 }
@@ -1327,7 +1327,7 @@ function multiplicationCase(r: Random): Case {
       `For both to happen, A must happen, and then B must happen given A: ${math("P(A and B) = P(A) × P(B | A)")}.`,
       `${math(`P(A and B) = ${show(pA)} × ${show(pBA)} = ${show(mul(pA, pBA))}`)}.`,
     ],
-    hint: `A happens with probability ${show(pA)}; of that, a share ${show(pBA)} also has B. Take that share of ${show(pA)}.`,
+    hint: `$A$ happens with probability ${show(pA)}; of that, a share ${show(pBA)} also has $B$. Take that share of ${show(pA)}.`,
     tags: ["formula", asDecimal ? "decimal" : "fraction"],
   };
 }

@@ -167,7 +167,7 @@ export const factoringLessons: Lesson[] = [
       {
         title: "Why splitting the middle term works",
         paragraphs: [
-          "Write the inside quadratic as Ax² + Bx + C, where $A$, $B$, and $C$ name its coefficients and $A$ is positive. If its factors are (rx + s)(tx + u), expansion gives rt x² + ru $x$ + st $x$ + su. Thus A = rt, C = su, and the middle coefficient is the sum ru + st.",
+          "Write the inside quadratic as $Ax^2 + Bx + C$, where $A$, $B$, and $C$ name its coefficients and $A$ is positive. If its factors are $(rx + s)(tx + u)$, expansion gives $rt\\,x^2 + ru\\,x + st\\,x + su$. Thus $A = rt$, $C = su$, and the middle coefficient is the sum $ru + st$.",
           "The two middle coefficients ru and st have product (ru)(st) = (rt)(su) = AC. Find integers $m$ and $n$ whose product is AC and whose sum is $B$. Replacing Bx by mx + nx preserves the expression because these are like terms with the same total coefficient.",
           "For 6x² + 11x + 3, calculate AC = 6 × 3 = 18. The positive factor pairs of 18 are 1 and 18, 2 and 9, and 3 and 6. Their sums are 19, 11, and 9. Choose 9 and 2, giving 6x² + 9x + 2x + 3.",
           "Grouping means collecting terms without changing their sum. Factor each pair: 6x² + 9x = 3x(2x + 3), and 2x + 3 = 1(2x + 3). The whole expression is 3x(2x + 3) + 1(2x + 3). Both groups share 2x + 3, so reverse distribution gives (3x + 1)(2x + 3).",

@@ -299,7 +299,7 @@ export const patternFunctionLessons: Lesson[] = [
     sections: [
       functionWords,
       {
-        title: "Equal steps in x, equal changes in y",
+        title: "Equal input steps, equal output changes",
         paragraphs: [
           "In the figure, y = 2x + 1 gives 1, 3, 5, 7 at x = 0, 1, 2, 3: each step adds 2, and the points lie on a straight line. The function y = x² gives 0, 1, 4, 9: the changes 1, 3 and 5 grow, and the points bend upward. Its rate of change is not constant, so it is not linear.",
           "To test a rule, find $y$ at x = 1, 2 and 3. Equal changes are necessary for a linear function; then confirm by rewriting the rule. A rule with $x$ squared, $x$ multiplied by itself, or $x$ in a denominator, as in y = 12/x, is not linear.",

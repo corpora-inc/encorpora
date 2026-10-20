@@ -600,7 +600,8 @@ export const equationMethods: Record<string, ProblemMethod> = {
       "Undo the remaining operation on both sides.",
       "Check by substituting into the original equation.",
     ],
-    watch: "For $px + q$, undo the + $q$ first; for p(x + q), divide by $p$ first.",
+    watch:
+      "For $px + q$, undo the + $q$ first; for p(x + q), divide by $p$ first.",
   },
   "two-step-word-problem": {
     goal: "Write and solve a two-step equation for a story.",

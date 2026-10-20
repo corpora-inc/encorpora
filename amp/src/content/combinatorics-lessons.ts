@@ -176,7 +176,7 @@ export const combinatoricsLessons: Lesson[] = [
     },
     pitfalls: [
       "If members have equal roles, do not stop at 10 × 9 × 8 × 7; that counts each committee 24 times.",
-      "Divide by the orders of one group, $k$ × ($k$ − 1) × … × 1, not by the number of people available.",
+      "Divide by the orders of one group, $k \\times (k - 1) \\times \\cdots \\times 1$, not by the number of people available.",
       "Use combinations only when order does not matter; for different offices, count arrangements.",
     ],
     parentGuide:
@@ -351,7 +351,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
         "arrangement",
         "A selection in which each item fills a different position.",
       ],
-      ["n!", "The product of every whole number from $n$ down to 1."],
+      ["$n!$", "The product of every whole number from $n$ down to 1."],
     ],
     method: [
       "Confirm that order or position matters.",
@@ -365,7 +365,10 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
     goal: "Count groups chosen from a collection when order does not matter.",
     terms: [
       ["combination", "A group whose members have the same role."],
-      ["orders of a group", "For $k$ items, k × (k − 1) × … × 1."],
+      [
+        "orders of a group",
+        "For $k$ items, $k \\times (k - 1) \\times \\cdots \\times 1$.",
+      ],
     ],
     method: [
       "Count ordered selections as a product of decreasing factors.",
@@ -430,13 +433,13 @@ export const combinatoricsPrinciples: Record<string, string> = {
   "counting-principle":
     "Multiplication principle: if one choice is made at each stage and the number of options at a stage does not depend on earlier choices, the number of outcomes is the product of the numbers of options.",
   "permutation-count":
-    "Arranging $r$ of $n$ different items without repetition gives $n$ × ($n$ − 1) × … × ($n$ − $r$ + 1) = $n$! ÷ ($n$ − $r$)! arrangements.",
+    "Arranging $r$ of $n$ different items without repetition gives $n \\times (n - 1) \\times \\cdots \\times (n - r + 1) = n! \\div (n - r)!$ arrangements.",
   "combination-count":
     "Each group of $k$ items appears in $k$! arrangements, so the number of groups is the number of arrangements divided by $k$!.",
   "combination-probability":
     "When every group is equally likely, the probability of an event is the number of favorable groups divided by the number of all groups.",
   "independent-events-probability":
-    "For independent events, $P(A \\text{ and } B)$ = $P(A)$ × $P(B)$. The complements are independent too, and $P(\\text{at least one})$ = 1 − $P(\\text{neither})$.",
+    "For independent events, $P(A \\text{ and } B) = P(A) \\times P(B)$. The complements are independent too, and $P(\\text{at least one}) = 1 - P(\\text{neither})$.",
   "expected-value":
     "The expected value is the probability-weighted sum of the payoffs; subtracting a fixed cost subtracts it from the expected value.",
 };

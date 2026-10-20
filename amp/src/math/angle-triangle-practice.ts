@@ -541,7 +541,9 @@ function triangleSumCase(r: Random): Case {
     `Check: ${exprs.map((e) => substitute(e.a, e.b, x)).join(", ")}; ${angles.join(" + ")} = 180.`,
   ];
   if (askAngle !== null)
-    steps.push(`So $\\angle ${names[askAngle]}$ measures ${angles[askAngle]}°.`);
+    steps.push(
+      `So $\\angle ${names[askAngle]}$ measures ${angles[askAngle]}°.`,
+    );
   return {
     prompt: `In triangle $${A}${B}${C}$, $\\angle ${A}$ measures ${labels[0]}, $\\angle ${B}$ measures ${labels[1]} and $\\angle ${C}$ measures ${labels[2]}. ${askAngle === null ? "What is the value of $x$?" : `What is the measure of $\\angle ${names[askAngle]}$, in degrees?`}`,
     answer: String(askAngle === null ? x : angles[askAngle]),
@@ -1345,8 +1347,7 @@ function instanceHint(id: string, c: Case): string {
     case "cross-section-shape":
       return `Each face the plane crosses adds one straight side to the cross-section. Decide which faces it crosses, then read each side's length from the dimensions ${list([...given])}.`;
   }
-  const answer: string | null =
-    c.response.kind === "choice" ? null : c.answer;
+  const answer: string | null = c.response.kind === "choice" ? null : c.answer;
   for (const step of c.explanation) {
     const named = values(step);
     if (

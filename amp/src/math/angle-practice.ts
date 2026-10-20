@@ -788,7 +788,7 @@ export function generateAngleProblem(
         kind === "line"
           ? "Both ends have arrows: it goes on forever both ways."
           : kind === "ray"
-            ? `It stops at ${A} and goes on forever past ${B}.`
+            ? `It stops at $${A}$ and goes on forever past $${B}$.`
             : `It stops at both $${A}$ and $${B}$.`,
         `${kind === "line" ? "A line goes on both ways" : kind === "ray" ? "A ray starts at one point and goes on one way; it is named from its starting point" : "A line segment has two endpoints"}, so this is ${right}.`,
       ];

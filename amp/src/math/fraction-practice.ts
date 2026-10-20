@@ -145,7 +145,7 @@ export function generateFractionPracticeProblem(
       };
       prompt = `What number is at $P$? Each whole interval has ${d} equal steps.`;
       answer = fraction(n, d);
-      hint = `Each whole is split into ${d} equal steps. Count the steps from 0 to P${n > d ? ", past 1 if needed," : ""} and write that count over ${d}.`;
+      hint = `Each whole is split into ${d} equal steps. Count the steps from 0 to $P$${n > d ? ", past 1 if needed," : ""} and write that count over ${d}.`;
       explanation = [
         `$P$ lies ${n} steps from zero; each step is 1/${d}.`,
         `Its position is ${n}/${d} = ${answer}.`,

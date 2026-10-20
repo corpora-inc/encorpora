@@ -98,7 +98,8 @@ export const integerExponentLessons: Lesson[] = [
       },
     ],
     workedExample: {
-      prompt: "For every nonzero real $x, x^{-3} \\times  x^{5} = x^{k}$. What is $k$?",
+      prompt:
+        "For every nonzero real $x, x^{-3} \\times  x^{5} = x^{k}$. What is $k$?",
       steps: [
         "The two powers have the same base $x$. Add their exponents: −3 + 5 = 2.",
         "Therefore x^(−3) × x^5 = x^2, so k = 2.",
@@ -143,7 +144,8 @@ export const integerExponentLessons: Lesson[] = [
       },
     ],
     workedExample: {
-      prompt: "For every nonzero real $x, x^{-2} \\div  x^{-5} = x^{k}$. What is $k$?",
+      prompt:
+        "For every nonzero real $x, x^{-2} \\div  x^{-5} = x^{k}$. What is $k$?",
       steps: [
         "Subtract the denominator's exponent from the numerator's exponent: k = −2 − (−5).",
         "Subtracting −5 adds 5: −2 + 5 = 3. Therefore k = 3.",

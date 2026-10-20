@@ -90,7 +90,7 @@ export function generateAlgebraProblem(
       const a = nz(5),
         aa = a < 0 ? a - 1 : a + 1,
         b = nz(6);
-      prompt = `Which expression equals ${aa}($x$ ${signed(b)}) for every real $x$?`;
+      prompt = `Which expression equals $${aa}(x ${signed(b)})$ for every real $x$?`;
       answer = "";
       hint = `Multiply ${aa} by both terms inside the brackets: ${aa} × x and ${aa} × ${paren(String(b))}.`;
       choices = [
@@ -118,7 +118,7 @@ export function generateAlgebraProblem(
       prompt = `Combine like terms in ${term(a)} ${b < 0 ? "−" : "+"} ${term(Math.abs(b))} ${signed(c)}. What is the coefficient of $x$?`;
       answer = String(a + b);
       label = "Coefficient of $x$";
-      hint = `The $x$ terms are ${term(a)} and ${term(b)}. Add their signed coefficients, ${a} + ${paren(String(b))}; ${c ? `the ${c} is not an $x$ term` : "the constant is not an $x$ term"}.`;
+      hint = `The $x$ terms are $${term(a)}$ and $${term(b)}$. Add their signed coefficients, ${a} + ${paren(String(b))}; ${c ? `the ${c} is not an $x$ term` : "the constant is not an $x$ term"}.`;
       explanation = [
         `${a} copies of $x$ plus ${b} copies of $x$ gives ${a + b} copies of $x$.`,
         `The coefficient is ${answer}. The constant ${c} does not contribute to it.`,
@@ -190,9 +190,9 @@ export function generateAlgebraProblem(
       prompt = `Solve ${linear(a, b)} = ${linear(c, d)}.`;
       answer = fraction(d - b, a - c);
       label = "x";
-      hint = `Collect the $x$ terms on one side: subtract ${term(c)} from both sides of ${linear(a, b)} = ${linear(c, d)}.`;
+      hint = `Collect the $x$ terms on one side: subtract $${term(c)}$ from both sides of $${linear(a, b)} = ${linear(c, d)}$.`;
       explanation = [
-        `Subtract ${term(c)} and ${paren(String(b))} from both sides: ${term(a - c)} = ${d - b}.`,
+        `Subtract $${term(c)}$ and ${paren(String(b))} from both sides: $${term(a - c)} = ${d - b}$.`,
         `The coefficient ${a - c} is nonzero, so divide: x = ${answer}.`,
         `Both original sides become ${fraction(a * (d - b) + b * (a - c), a - c)} at this value.`,
       ];
@@ -393,7 +393,7 @@ export function generateAlgebraProblem(
         drop = r(0, 1) ? r(1, 3) : 0,
         end = start - drop;
       prompt =
-        "$x$: minutes; $y$: meters from home. From A to $B$, how does $y$ change?";
+        "$x$: minutes; $y$: meters from home. From $A$ to $B$, how does $y$ change?";
       figure = {
         kind: "coordinate-plane",
         xMin: -1,
@@ -430,7 +430,7 @@ export function generateAlgebraProblem(
             : "A level segment has the same vertical coordinate throughout.",
         },
       ];
-      hint = `At A the graph is at ${start} meters from home. Read the height at $B$, then compare: $y$ is distance from home, not the route.`;
+      hint = `At $A$ the graph is at ${start} meters from home. Read the height at $B$, then compare: $y$ is distance from home, not the route.`;
       explanation = [
         `At 0 minutes the distance is ${start} meters; at 4 minutes it is ${end} meters.`,
         drop

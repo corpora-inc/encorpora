@@ -533,7 +533,8 @@ export const baseLessons: Lesson[] = [
       },
     ],
     workedExample: {
-      prompt: "For real $x$, what is the minimum value of f(x) = 2(x − 3)² + 5?",
+      prompt:
+        "For real $x$, what is the minimum value of f(x) = 2(x − 3)² + 5?",
       steps: [
         "The squared expression is nonnegative, so 2(x − 3)² ≥ 0.",
         "At x = 3, the squared expression is zero.",

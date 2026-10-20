@@ -123,12 +123,15 @@ const terms = {
     ["r²", "The right side of (x − h)² + (y − k)² = r²."],
   ],
   measure: [
-    ["distance", "√(run² + rise²) between two points."],
+    [
+      "distance",
+      "$\\sqrt{\\text{run}^2 + \\text{rise}^2}$ between two points.",
+    ],
     ["enclosing rectangle", "The grid rectangle just around a polygon."],
   ],
   partition: [
     ["AP : PB = m : $n$", "$P$ is m/(m + n) of the way from $A$ to $B$."],
-    ["run and rise", "The changes in x and y from $A$ to $B$."],
+    ["run and rise", "The changes in $x$ and $y$ from $A$ to $B$."],
   ],
   slope: [
     ["parallel", "Equal slopes."],
@@ -145,7 +148,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     terms: terms.circle,
     method: [
       "In x² + y² + Dx + Ey + F = 0, complete the square in $x$ and in $y$.",
-      "Read (x − h)² + (y − k)² = r²: the center is $(h, k)$, the radius is √(right side).",
+      "Read $(x - h)^2 + (y - k)^2 = r^2$: the center is $(h, k)$, the radius is the square root of the right side.",
       "From a center and a point, r² is the squared distance between them.",
     ],
     watch:
@@ -155,7 +158,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     goal: "Find a polygon's perimeter or area from the coordinates of its vertices.",
     terms: terms.measure,
     method: [
-      "Perimeter: count horizontal and vertical sides; use √(run² + rise²) for slanted sides; add.",
+      "Perimeter: count horizontal and vertical sides; use $\\sqrt{\\text{run}^2 + \\text{rise}^2}$ for slanted sides; add.",
       "Area: enclose the polygon in a grid rectangle and subtract the corner pieces, or halve the shoelace sum.",
     ],
     watch:

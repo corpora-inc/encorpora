@@ -2,7 +2,6 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { corpusIssues, typographyIssues } from "./fixtures/math-typography";
 import { generateProblem } from "../src/math/engine";
-import { pending } from "./fixtures/math-typography-pending";
 
 // Every symbol, variable, expression and equation a learner reads is typeset
 // as math (src/content/AGENTS.md, "Mathematical typography").
@@ -75,16 +74,12 @@ test("the gate flags each kind of bare mathematics", () => {
 });
 
 test("learner text typesets every symbol, variable and formula", () => {
-  const issues = corpusIssues();
-  const unexpected = [...issues]
-    .filter(([owner]) => !pending.has(owner))
-    .map(([owner, list]) => `## ${owner}\n${list.slice(0, 6).join("\n")}`);
+  const issues = [...corpusIssues()].map(
+    ([owner, list]) => `## ${owner}\n${list.slice(0, 6).join("\n")}`,
+  );
   assert.deepEqual(
-    unexpected,
+    issues,
     [],
     "Wrap each variable in $…$, write $\\pi$ for pi, and keep titles free of math (src/content/AGENTS.md)",
   );
-  // The pending list only shrinks: remove each owner once it passes.
-  const clean = [...pending].filter((owner) => !issues.has(owner));
-  assert.deepEqual(clean, [], "Remove these from math-typography-pending.ts");
 });

@@ -207,7 +207,7 @@ export const exponentialLessons: Lesson[] = [
     id: "logarithm-properties",
     title: "Logarithm rules",
     summary:
-      "Logarithms turn multiplication into addition: log(mn) = log $m$ + log $n$, $\\log(\\tfrac{m}{n}) = \\log m - \\log n, \\log m^{p} = p\\cdot \\log m$, and $\\log_{b} N = \\log N / \\log b$.",
+      "Logarithms turn multiplication into addition: $\\log(mn) = \\log m + \\log n$, $\\log(\\tfrac{m}{n}) = \\log m - \\log n, \\log m^{p} = p\\cdot \\log m$, and $\\log_{b} N = \\log N / \\log b$.",
     templateIds: ["log-rules-evaluate", "log-expand", "change-of-base"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -294,7 +294,8 @@ export const exponentialLessons: Lesson[] = [
   {
     id: "logarithms",
     title: "Ask for the exponent",
-    summary: "A logarithm reverses exponentiation: log_b N is the power of $b$ that gives $N$.",
+    summary:
+      "A logarithm reverses exponentiation: log_b N is the power of $b$ that gives $N$.",
     templateIds: [
       "logarithm-integer",
       "logarithm-value",
@@ -347,7 +348,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the starting value $a$ and the factor $b$ for one step: a percent increase $p$% gives b = 1 + p/100, a halving gives b = 1/2.",
       "Count the steps to the requested time.",
-      "Multiply a by $b$ once per step: $y = a·b$^steps.",
+      "Multiply $a$ by $b$ once per step: $y = a \\cdot b^{\\text{steps}}$.",
     ],
     watch:
       "Multiply by the factor each step; adding the same percent of the start every step is linear, not exponential.",
@@ -380,7 +381,8 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "Compare their values one step at a time.",
       "The first $x$ where the exponential is greater is the answer; after that it stays ahead.",
     ],
-    watch: "The function that starts larger does not stay larger; keep comparing until the order changes.",
+    watch:
+      "The function that starts larger does not stay larger; keep comparing until the order changes.",
   },
   "same-base-equation": {
     goal: "Given an exponential equation whose sides are powers of one base, find $x$ exactly.",
@@ -408,7 +410,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     terms: [terms.logarithm],
     method: [
       "Combine logs with the same base into one, using the product or quotient rule.",
-      "Rewrite log_b(stuff) = $n$ as stuff = bⁿ and solve.",
+      "Rewrite $\\log_b(\\text{stuff}) = n$ as $\\text{stuff} = b^n$ and solve.",
       "Reject any candidate that makes a logarithm's argument zero or negative.",
     ],
     watch:
@@ -422,7 +424,8 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "Count the terms $n$.",
       "Sₙ = a₁(rⁿ − 1)/(r − 1), or a₁(1 − rⁿ)/(1 − r) when r < 1.",
     ],
-    watch: "$n$ is the number of terms; the last term is a₁·rⁿ⁻¹, so its exponent is n − 1.",
+    watch:
+      "$n$ is the number of terms; the last term is a₁·rⁿ⁻¹, so its exponent is n − 1.",
   },
   "log-rules-evaluate": {
     goal: "Given a sum, difference or multiple of logarithms with one base, find its value.",
@@ -454,7 +457,8 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "Choose $c$ so both logs are easy: often the prime that $b$ and $N$ are powers of.",
       "Divide, or cancel the common logs.",
     ],
-    watch: "log_b N is $\\log N \\div  \\log b$, with the base in the denominator.",
+    watch:
+      "log_b N is $\\log N \\div  \\log b$, with the base in the denominator.",
   },
   "logarithm-value": {
     goal: "Given a logarithm of a reciprocal, root, decimal or a point on its graph, find its exact value.",
@@ -472,7 +476,8 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "log_b N = p and bᵖ = N say the same thing: the base stays the base, and the logarithm is the exponent.",
       "To place log_b N, list powers of $b$ until one passes $N$; the logarithm is between the exponents on either side.",
     ],
-    watch: "The result $N$ goes inside the logarithm; the exponent is the logarithm's value.",
+    watch:
+      "The result $N$ goes inside the logarithm; the exponent is the logarithm's value.",
   },
   "geometric-sequence-rule": {
     goal: "Given terms or a rule of a geometric sequence, find the ratio, a missing term or another term.",

@@ -243,7 +243,7 @@ def review_explanation(problem):
         divisors = [d for d in range(1, common+1) if all(v % d == 0 for v in target)]
         expected = 'Common positive coefficient factors: '+', '.join(map(str, divisors))+f'. The greatest is {common}.'
         require(steps[0] == expected, 'Incorrect common coefficient factors')
-        expected = (f'The smallest exponent of $x$ among the nonzero terms is {power}. The common variable factor is '+{1:'x',2:'x²'}[power]+'.'
+        expected = (f'The smallest exponent of $x$ among the nonzero terms is {power}. The common variable factor is $'+{1:'x',2:'x²'}[power]+'$.'
                     if power else 'A nonzero constant term has no factor $x$, so no power of $x$ is common to every term.')
         require(steps[1] == expected, 'Incorrect common variable factor')
     else:

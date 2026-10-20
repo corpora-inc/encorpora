@@ -129,7 +129,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
   "trend-line-predict": {
     goal: "Predict a value with a trend line.",
     method: [
-      "Find the slope from the two marked points: change in $y$ ÷ change in $x$.",
+      "Find the slope from the two marked points: $\\text{change in } y \\div \\text{change in } x$.",
       "Count the steps in $x$ from a marked point to the new $x$.",
       "Add slope × steps to that point’s $y$-value.",
     ],

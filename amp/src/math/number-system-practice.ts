@@ -92,7 +92,6 @@ export const numberSystemTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-
 type Random = (low: number, high: number) => number;
 type Choice = { label: string; correct?: true; feedback?: string };
 type Case = {

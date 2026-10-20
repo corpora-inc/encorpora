@@ -59,7 +59,7 @@ export const quadraticStructureTemplates: readonly TemplateMetadata[] = [
   {
     ...hs,
     id: "parabola-shift",
-    title: "Translating y = x²",
+    title: "Translating a parabola",
     skillId: "quadratic-graphs",
     description:
       "Connect a translation of y = x² to the equation y = (x − h)² + k, in words, on a graph and in reverse.",
@@ -126,7 +126,7 @@ export const quadraticStructureTemplates: readonly TemplateMetadata[] = [
   {
     ...hs,
     id: "polynomial-quotient",
-    title: "Divide by x − a",
+    title: "Divide by a linear factor",
     skillId: "polynomial-division",
     description:
       "Divide a cubic by x − a and write the quotient and remainder, with or without the synthetic-division layout.",
@@ -383,7 +383,10 @@ function parabolaAxis(r: Random): Case {
     ],
     hint: `Read the two $x$-intercepts on the $x$-axis. The axis of symmetry is halfway between them.`,
     hintCue: [
-      step("The two $x$-intercepts are mirror images.", act.highlight("g.point")),
+      step(
+        "The two $x$-intercepts are mirror images.",
+        act.highlight("g.point"),
+      ),
     ],
     tags,
   };
@@ -497,7 +500,7 @@ function areaModelProduct(r: Random): Case {
     const choices = options(right1, [
       {
         label: polyText([a * b, 0, s * u]),
-        feedback: `This leaves out the two $x$-regions, ${termText(a * u, "x")} and ${termText(b * s, "x")}.`,
+        feedback: `This leaves out the two $x$-regions, $${termText(a * u, "x")}$ and $${termText(b * s, "x")}$.`,
       },
       {
         label: polyText([a * b, a * u - b * s, s * u]),
@@ -637,7 +640,7 @@ function structureMeaning(r: Random): Case {
     };
     const correct = askFee ? labels.fee : labels.rate;
     return {
-      prompt: `${job[0]} charges $C$ dollars for ${job[2]} ${job[3]}, where ${rule}. What does ${askFee ? fee : rate} represent?`,
+      prompt: `${job[0]} charges $C$ dollars for $${job[2]}$ ${job[3]}, where $${rule}$. What does ${askFee ? fee : rate} represent?`,
       choices: [
         { label: correct, correct: true },
         ...(askFee
@@ -653,10 +656,10 @@ function structureMeaning(r: Random): Case {
       ],
       explanation: [
         `When ${job[2]} = 0, C = ${fee}: ${fee} dollars is charged before any ${job[3]}.`,
-        `Each extra ${job[1]} adds ${rate} dollars, since ${rate}${job[2]} grows by ${rate} when ${job[2]} grows by 1.`,
+        `Each extra ${job[1]} adds ${rate} dollars, since $${rate}${job[2]}$ grows by ${rate} when $${job[2]}$ grows by 1.`,
         `So ${askFee ? fee : rate} is ${correct.toLowerCase()}.`,
       ],
-      hint: `Compare $C$ for ${job[2]} = 0 and ${job[2]} = 1 in ${rule}. Which number is paid anyway, and which is added per ${job[1]}?`,
+      hint: `Compare $C$ for $${job[2]} = 0$ and $${job[2]} = 1$ in $${rule}$. Which number is paid anyway, and which is added per ${job[1]}?`,
       tags: [frame, askFee ? "constant" : "coefficient"],
     };
   }
@@ -954,7 +957,9 @@ function zerosFromFactors(r: Random): Case {
         `So the equation is ${form(sorted)}.`,
       ],
       hint: "Read the three $x$-intercepts and turn each into a factor (x − r). Then check whether the graph rises or falls on the right.",
-      hintCue: [step("Each $x$-intercept is a zero.", act.highlight("g.point"))],
+      hintCue: [
+        step("Each $x$-intercept is a zero.", act.highlight("g.point")),
+      ],
       walkthrough,
       tags: [frame, lc > 0 ? "up" : "down"],
     };
@@ -982,7 +987,7 @@ function zeroMultiplicity(r: Random): Case {
     const explanation = [
       "Near a zero from a squared factor, (x − r)² is never negative, so $y$ keeps one sign on both sides: the graph touches the axis and turns back.",
       "A factor to the first power changes sign at its zero, so the graph crosses there.",
-      `In ${form(d, s)}: ${factor(d)}² touches at x = ${n(d)}; ${factor(s)} crosses at x = ${n(s)}.`,
+      `In ${form(d, s)}: $${factor(d)}^2$ touches at $x = ${n(d)}$; $${factor(s)}$ crosses at $x = ${n(s)}$.`,
     ];
     if (frame === "factored") {
       const choices = options(
@@ -998,7 +1003,7 @@ function zeroMultiplicity(r: Random): Case {
           },
           {
             label: `The graph touches the $x$-axis at x = ${n(d)} and at x = ${n(s)}.`,
-            feedback: `${factor(s)} changes sign at x = ${n(s)}.`,
+            feedback: `$${factor(s)}$ changes sign at $x = ${n(s)}$.`,
           },
         ].concat([
           {
@@ -1020,7 +1025,7 @@ function zeroMultiplicity(r: Random): Case {
       const choices = options(form(d, s, 1), [
         {
           label: form(s, d, 1),
-          feedback: `This touches at x = ${n(s)} and crosses at x = ${n(d)}.`,
+          feedback: `This touches at $x = ${n(s)}$ and crosses at $x = ${n(d)}$.`,
         },
         {
           label: `y = ${factor(d)}${factor(s)}`,
@@ -1032,7 +1037,7 @@ function zeroMultiplicity(r: Random): Case {
         },
         {
           label: `y = ${factor(d)}${factor(s)}²`,
-          feedback: `This touches at x = ${n(s)}.`,
+          feedback: `This touches at $x = ${n(s)}$.`,
         },
       ]);
       if (!choices) continue;
@@ -1040,14 +1045,14 @@ function zeroMultiplicity(r: Random): Case {
         prompt: `A cubic graph touches the $x$-axis at x = ${n(d)} and crosses it at x = ${n(s)}, and nowhere else. Which equation could it have?`,
         choices,
         explanation,
-        hint: `Touching the axis needs a squared factor and crossing it a single one. The graph touches at x = ${n(d)} and crosses at x = ${n(s)}.`,
+        hint: `Touching the axis needs a squared factor and crossing it a single one. The graph touches at $x = ${n(d)}$ and crosses at $x = ${n(s)}$.`,
         tags: [frame],
       };
     }
     const choices = options(form(d, s), [
       {
         label: form(s, d),
-        feedback: `The graph touches at x = ${n(d)}: that factor is the squared one.`,
+        feedback: `The graph touches at $x = ${n(d)}$: that factor is the squared one.`,
       },
       {
         label: `y = ${lead(lc)}${factor(d)}${factor(s)}`,
@@ -1068,7 +1073,7 @@ function zeroMultiplicity(r: Random): Case {
       choices,
       scene: zerosGraph(lc, [d, d, s]),
       explanation: [
-        `The graph touches the $x$-axis at x = ${n(d)} and crosses at x = ${n(s)}.`,
+        `The graph touches the $x$-axis at x = ${n(d)} and crosses at $x = ${n(s)}$.`,
         ...explanation.slice(0, 2),
         `It ${lc > 0 ? "rises" : "falls"} on the right, so the equation is ${form(d, s)}.`,
       ],
@@ -1109,7 +1114,7 @@ function remainderTheorem(r: Random): Case {
       if (Math.abs(d) > 60 || d === 0) continue;
       const shown = `x³${b ? termText(b, "x²", false) : ""} + kx${constText(d)}`;
       return {
-        prompt: `For which number $k$ is ${div} a factor of p(x) = ${shown}?`,
+        prompt: `For which number $k$ is $${div}$ a factor of $p(x) = ${shown}$?`,
         answer: rat(k),
         explanation: [
           `x − a is a factor exactly when $p(a) = 0$ (the factor theorem). Here a = ${n(a)}.`,

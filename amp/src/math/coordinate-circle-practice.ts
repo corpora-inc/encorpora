@@ -213,7 +213,7 @@ function circleCase(r: Random): Case {
       answer: q(r2),
       explanation: [
         read
-          ? `From the graph, C = ${pt([h, k])} and P = ${pt(P)}.`
+          ? `From the graph, $C = ${pt([h, k])}$ and $P = ${pt(P)}$.`
           : `$r$ is the distance from the center ${pt([h, k])} to ${pt(P)}.`,
         `r² = (${n(P[0])} − ${n(h)})² + (${n(P[1])} − ${n(k)})² = ${dx}² + ${dy}² = ${r2}.`.replace(
           /− −/g,
@@ -244,7 +244,7 @@ function circleCase(r: Random): Case {
         `Matching ${shift("x", h)} with x − h gives h = ${n(h)}; matching ${shift("y", k)} with y − k gives k = ${n(k)}. So the center is ${pt([h, k])}, and the radius is the square root of ${rr * rr}: r = ${rr}.`,
         ask === "radius"
           ? `The radius is ${rr}.`
-          : `The ${ask}-coordinate of the center is ${n(ask === "x" ? h : k)}.`,
+          : `The $${ask}$-coordinate of the center is ${n(ask === "x" ? h : k)}.`,
       ],
       hint:
         ask === "radius"
@@ -306,7 +306,7 @@ function polygonCase(r: Random): Case {
       H = Math.max(...ys) - Math.min(...ys);
     const w = windowFor(pts, 1);
     return {
-      prompt: `A triangle has vertices A${pt(A)}, B${pt(B)} and C${pt(C)}. What is its area, in square units?`,
+      prompt: `A triangle has vertices $A${pt(A)}$, $B${pt(B)}$ and $C${pt(C)}$. What is its area, in square units?`,
       answer: q(area2, 2),
       explanation: [
         `Enclose it in the rectangle from x = ${n(Math.min(...xs))} to ${n(Math.max(...xs))} and y = ${n(Math.min(...ys))} to ${n(Math.max(...ys))}: ${W} × ${H} = ${W * H}.`,
@@ -318,7 +318,7 @@ function polygonCase(r: Random): Case {
         `Half its size: ${Math.abs(shoelace(pts).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
         `Area = ${frac(q(area2, 2))} square units.`,
       ],
-      hint: `Draw the smallest rectangle around A${pt(A)}, B${pt(B)} and C${pt(C)}: ${W} by ${H}. Subtract the right triangles in its corners that lie outside the triangle.`,
+      hint: `Draw the smallest rectangle around $A${pt(A)}$, $B${pt(B)}$ and $C${pt(C)}$: ${W} by ${H}. Subtract the right triangles in its corners that lie outside the triangle.`,
       tags: ["area", "triangle"],
       figure: graph({ x: w.x, y: w.y, tick: w.tick })
         .id("g")
@@ -364,7 +364,7 @@ function polygonCase(r: Random): Case {
     P.forEach((p, i) => (g = g.segment(p, P[(i + 1) % P.length]!)));
     const slanted = para ? 1 : 2;
     return {
-      prompt: `A ${para ? "parallelogram" : "triangle"} has vertices ${list(P.map((p, i) => `${names[i]}${pt(p)}`))}. What is its perimeter?`,
+      prompt: `A ${para ? "parallelogram" : "triangle"} has vertices ${list(P.map((p, i) => `$${names[i]}${pt(p)}$`))}. What is its perimeter?`,
       answer: q(perimeter),
       explanation: [
         para
@@ -375,7 +375,7 @@ function polygonCase(r: Random): Case {
           ? `Perimeter = 2 × (${base} + ${c}) = ${perimeter}.`
           : `Perimeter = ${a} + ${b} + ${c} = ${perimeter}.`,
       ],
-      hint: `From ${names[0]}${pt(P[0]!)}, count the horizontal and vertical sides on the grid. For a slanted side, use its run and rise in the distance formula.`,
+      hint: `From $${names[0]}${pt(P[0]!)}$, count the horizontal and vertical sides on the grid. For a slanted side, use its run and rise in the distance formula.`,
       tags: ["perimeter", para ? "parallelogram" : "triangle"],
       figure: g.scene({
         title: `A ${para ? "parallelogram" : "triangle"} on a grid`,
@@ -417,7 +417,7 @@ function polygonCase(r: Random): Case {
   const W = Math.max(...xs) - Math.min(...xs),
     H = Math.max(...ys) - Math.min(...ys);
   return {
-    prompt: `A quadrilateral has vertices ${list(P.map((p, i) => `${names[i]}${pt(p)}`))}, in order. What is its area, in square units?`,
+    prompt: `A quadrilateral has vertices ${list(P.map((p, i) => `$${names[i]}${pt(p)}$`))}, in order. What is its area, in square units?`,
     answer: q(area2, 2),
     explanation: [
       `Enclose it in a ${W} × ${H} rectangle, area ${W * H}.`,
@@ -429,7 +429,7 @@ function polygonCase(r: Random): Case {
       `Half its size: ${Math.abs(shoelace(P).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
       `Area = ${frac(q(area2, 2))} square units.`,
     ],
-    hint: `Surround ABCD, from A${pt(P[0]!)}, with a ${W}-by-${H} rectangle on the grid. The area you want is what is left after removing the corner triangles.`,
+    hint: `Surround ABCD, from $A${pt(P[0]!)}$, with a ${W}-by-${H} rectangle on the grid. The area you want is what is left after removing the corner triangles.`,
     tags: ["area", "quadrilateral"],
     figure: g.scene({ title: "Quadrilateral ABCD on a grid" }),
     label: "Area",
@@ -460,8 +460,8 @@ function partitionCase(r: Random): Case {
   const w = windowFor([A, B], 1);
   return {
     prompt: asRatio
-      ? `Point $P$ is on segment AB, with A${pt(A)} and B${pt(B)}, and divides it so that AP : PB = ${m} : ${k}. What is the $${name}$-coordinate of $P$?`
-      : `Point $P$ is ${frac(t)} of the way from A${pt(A)} to B${pt(B)}. What is the $${name}$-coordinate of $P$?`,
+      ? `Point $P$ is on segment AB, with $A${pt(A)}$ and $B${pt(B)}$, and divides it so that AP : PB = ${m} : ${k}. What is the $${name}$-coordinate of $P$?`
+      : `Point $P$ is ${frac(t)} of the way from $A${pt(A)}$ to $B${pt(B)}$. What is the $${name}$-coordinate of $P$?`,
     answer,
     explanation: [
       asRatio
@@ -496,7 +496,7 @@ function partitionCase(r: Random): Case {
           ),
         ],
       }),
-    label: `${name}-coordinate`,
+    label: `$${name}$-coordinate`,
   };
 }
 
@@ -526,7 +526,7 @@ function slopeCase(r: Random): Case {
         title: "Line AB and its slope triangle",
         steps: [
           step(
-            "Rise over run along AB gives the slope of ℓ.",
+            "Rise over run along AB gives the slope of $ℓ$.",
             act.highlight("g.slope.0"),
           ),
           step(
@@ -539,10 +539,10 @@ function slopeCase(r: Random): Case {
   if (mode === 0) {
     const parallel = r(0, 1) === 1;
     return {
-      prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. What is the slope of a line ${parallel ? "parallel" : "perpendicular"} to ℓ?`,
+      prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. What is the slope of a line ${parallel ? "parallel" : "perpendicular"} to $ℓ$?`,
       answer: parallel ? m : perp,
       explanation: [
-        `Slope of ℓ = (${n(B[1])} − ${n(A[1])}) ÷ (${n(B[0])} − ${n(A[0])}) = ${frac(m)}.`.replace(
+        `Slope of $ℓ$: $(${n(B[1])} − ${n(A[1])}) ÷ (${n(B[0])} − ${n(A[0])}) = ${frac(m)}$.`.replace(
           /− −/g,
           "+ ",
         ),
@@ -551,8 +551,8 @@ function slopeCase(r: Random): Case {
           : `Perpendicular slopes are negative reciprocals (their product is −1): −1 ÷ ${frac(m)} = ${frac(perp)}.`,
       ],
       hint: parallel
-        ? `Find the slope of ℓ from A${pt(A)} and B${pt(B)}: rise over run. A parallel line goes in the same direction.`
-        : `Find the slope of ℓ from A${pt(A)} and B${pt(B)}, then flip it and change its sign.`,
+        ? `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$: rise over run. A parallel line goes in the same direction.`
+        : `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$, then flip it and change its sign.`,
       tags: [parallel ? "parallel" : "perpendicular"],
       figure: base(),
       label: "Slope",
@@ -564,36 +564,36 @@ function slopeCase(r: Random): Case {
     const s = parallel ? m : perp;
     const b = q(P[1] * s.d - s.n * P[0], s.d);
     return {
-      prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. The line through P${pt(P)} ${parallel ? "parallel" : "perpendicular"} to ℓ has equation y = mx + b. What is $b$?`,
+      prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. The line through $P${pt(P)}$ ${parallel ? "parallel" : "perpendicular"} to $ℓ$ has equation y = mx + b. What is $b$?`,
       answer: b,
       explanation: [
-        `Slope of ℓ: ${frac(m)}. The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
+        `Slope of $ℓ$: ${frac(m)}. The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
         `Through $P$: ${n(P[1])} = ${frac(s)} × ${n(P[0])} + b, so $b = ${n(P[1])} ${s.n * P[0] < 0 ? "+" : "−"} ${frac(q(Math.abs(s.n * P[0]), s.d))} = ${frac(b)}$.`,
       ],
-      hint: `First the slope: ${parallel ? "equal to ℓ's" : "the negative reciprocal of ℓ's"}. Then put P${pt(P)} into y = mx + b and solve for $b$.`,
+      hint: `First the slope: ${parallel ? "equal to $ℓ$'s" : "the negative reciprocal of $ℓ$'s"}. Then put $P${pt(P)}$ into y = mx + b and solve for $b$.`,
       tags: [parallel ? "parallel-line" : "perpendicular-line"],
       figure: base(),
-      label: "b",
+      label: "Value of $b$",
     };
   }
   // A missing coordinate that makes two lines perpendicular.
   const C: Point = [A[0], A[1]];
   const D: Point = [A[0] - rise * 2, A[1] + runV * 2];
   return {
-    prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. Line $j$ passes through C${pt(C)} and $D(${n(D[0])}, k)$. For which value of $k$ is $j$ perpendicular to ℓ?`,
+    prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. Line $j$ passes through $C${pt(C)}$ and $D(${n(D[0])}, k)$. For which value of $k$ is $j$ perpendicular to $ℓ$?`,
     answer: q(D[1]),
     explanation: [
-      `Slope of ℓ: ${frac(m)}, so $j$ needs slope ${frac(perp)}.`,
-      `Slope of $j: (k − ${n(C[1])}) ÷ (${n(D[0])} − ${n(C[0])}) = ${frac(perp)}$, so k − ${n(C[1])} = ${frac(perp)} × ${n(D[0] - C[0])} = ${n(D[1] - C[1])}.`.replace(
+      `Slope of $ℓ$: ${frac(m)}, so $j$ needs slope ${frac(perp)}.`,
+      `Slope of $j$: $(k − ${n(C[1])}) ÷ (${n(D[0])} − ${n(C[0])}) = ${frac(perp)}$, so $k − ${n(C[1])} = ${frac(perp)} × ${n(D[0] - C[0])} = ${n(D[1] - C[1])}$.`.replace(
         /− −/g,
         "+ ",
       ),
       `k = ${n(D[1])}.`,
     ],
-    hint: `$j$ must have slope −1 ÷ (slope of ℓ). Write j's slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
+    hint: `$j$ must have slope −1 ÷ (slope of $ℓ$). Write j's slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
     tags: ["missing-coordinate"],
     figure: base(),
-    label: "k",
+    label: "Value of $k$",
   };
 }
 

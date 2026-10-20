@@ -1,4 +1,5 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { formula } from "./polish";
 import {
   act,
   f,
@@ -506,7 +507,7 @@ function contextDomainRange(r: Random): Case {
         ? `So the domain is 0 ≤ t ≤ ${end}.`
         : `Over that time the ${ctx.what} falls steadily from ${F}(0) = ${total} to ${F}(${end}) = 0, so the range is 0 ≤ ${F} ≤ ${total}.`,
     ],
-    hint: `Find when the situation ends: solve ${total} − ${rate}t = 0. Then ask which values the ${ask === "domain" ? `time t` : ctx.what} takes from t = 0 until then.`,
+    hint: `Find when the situation ends: solve $${total} − ${rate}t = 0$. Then ask which values the ${ask === "domain" ? `time $t$` : ctx.what} takes from $t = 0$ until then.`,
     tags: [kind, ask],
   };
 }
@@ -773,15 +774,15 @@ function averageRateDisplay(r: Random): Case {
           ],
         });
       return {
-        prompt: `The graph of y = f(x) passes through A at x = ${n(p0)} and B at x = ${n(q0)}. What is the average rate of change of $f$ from x = ${n(p0)} to x = ${n(q0)}?`,
+        prompt: `The graph of $y = f(x)$ passes through $A$ at $x = ${n(p0)}$ and $B$ at $x = ${n(q0)}$. What is the average rate of change of $f$ from $x = ${n(p0)}$ to $x = ${n(q0)}$?`,
         answer: ans,
         scene,
         explanation: [
-          `Read the coordinates from the grid: A = (${n(p0)}, ${n(fp)}) and B = (${n(q0)}, ${n(fq)}).`,
+          `Read the coordinates from the grid: $A = (${n(p0)}, ${n(fp)})$ and $B = (${n(q0)}, ${n(fq)})$.`,
           `The average rate of change is the slope of the secant line AB: (${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}.`,
-          `So it is ${fraction(ans)}. A curve does not change at one constant rate, but from A to B, $f$ changes by ${fraction(ans)} for each 1 that $x$ increases on average.`,
+          `So it is ${fraction(ans)}. A curve does not change at one constant rate, but from $A$ to $B$, $f$ changes by ${fraction(ans)} for each 1 that $x$ increases on average.`,
         ],
-        hint: `Read the $y$-values of A (at $x = ${n(p0)}$) and B (at $x = ${n(q0)}$) from the grid. The average rate is the rise from A to B divided by the run, ${n(q0)} − ${p(p0)}.`,
+        hint: `Read the $y$-values of $A$ (at $x = ${n(p0)}$) and $B$ (at $x = ${n(q0)}$) from the grid. The average rate is the rise from $A$ to $B$ divided by the run, ${n(q0)} − ${p(p0)}.`,
         tags: [frame, a > 0 ? "opens-up" : "opens-down"],
       };
     }
@@ -839,9 +840,9 @@ function averageRateDisplay(r: Random): Case {
   const ctx = pick(r, [
     {
       prompt: (a: number, b: number) =>
-        `The table shows the temperature T, in degrees Fahrenheit, $h$ hours after 6 a.m. What is the average rate of change of T, in degrees per hour, from h = ${a} to h = ${b}?`,
+        `The table shows the temperature $T$, in degrees Fahrenheit, $h$ hours after 6 a.m. What is the average rate of change of $T$, in degrees per hour, from $h = ${a}$ to $h = ${b}$?`,
       heads: ["h", "T"],
-      when: (x: number) => `at h = ${x}`,
+      when: (x: number) => `at $h = ${x}$`,
       xs: [0, 1, 2, 3, 4, 5],
       start: () => r(40, 60),
       change: () => r(-2, 6),
@@ -1064,7 +1065,7 @@ function linearModelEquation(r: Random): Case {
       y: "F",
       x: "d",
       say: (b: number, m: number) =>
-        `A taxi charges ${usd(b)} plus ${usd(m)} per mile. F is the fare, in dollars, for a ride of $d$ miles.`,
+        `A taxi charges ${usd(b)} plus ${usd(m)} per mile. $F$ is the fare, in dollars, for a ride of $d$ miles.`,
       yName: "fare F, in dollars",
       xName: "miles d",
     },
@@ -1082,7 +1083,7 @@ function linearModelEquation(r: Random): Case {
       y: "L",
       x: "t",
       say: (b: number, m: number) =>
-        `A candle is ${b} cm long and burns ${m} cm each hour. L is its length, in centimeters, after $t$ hours.`,
+        `A candle is ${b} cm long and burns ${m} cm each hour. $L$ is its length, in centimeters, after $t$ hours.`,
       yName: "length L, in centimeters",
       xName: "hours t",
     },
@@ -1191,7 +1192,7 @@ function linearModelEquation(r: Random): Case {
     scene,
     explanation: [
       first,
-      `A linear model is $${y}$ = (starting amount) + (rate)·$${x}$, so ${correct}.`,
+      `A linear model is $${y} = \\text{(starting amount)} + \\text{(rate)} \\cdot ${x}$, so ${correct}.`,
       `Check: at $${x} = 2$ the equation gives ${y} = ${b + 2 * s * m}${ctx.kind === "fall" ? `, which is ${b} − 2 × ${m}` : `, which is ${b} + 2 × ${m}`}.`,
     ],
     hint,
@@ -1223,7 +1224,10 @@ const formulas: FormulaCase[] = [
         "$h = A/(2b)$",
         "Multiplying both sides by 2 gives $2A = bh$; the 2 multiplies A.",
       ],
-      ["$h = 2b/A$", "Dividing $2A = bh$ by $b$ leaves $h = 2A ÷ b$, not $b ÷ A$."],
+      [
+        "$h = 2b/A$",
+        "Dividing $2A = bh$ by $b$ leaves $h = 2A ÷ b$, not $b ÷ A$.",
+      ],
       [
         "$h = 2A − b$",
         "$b$ multiplies $h$, so undo it by dividing, not subtracting.",
@@ -1282,16 +1286,23 @@ const formulas: FormulaCase[] = [
     others: "d and r",
     correct: "$t = d/r$",
     wrong: [
-      ["$t = r/d$", "Dividing $d = rt$ by $r$ leaves $d ÷ r$, with $d$ on top."],
+      [
+        "$t = r/d$",
+        "Dividing $d = rt$ by $r$ leaves $d ÷ r$, with $d$ on top.",
+      ],
       ["$t = dr$", "$r$ multiplies $t$, so divide by $r$."],
-      ["$t = d − r$", "$r$ multiplies $t$; undo it by dividing, not subtracting."],
+      [
+        "$t = d − r$",
+        "$r$ multiplies $t$; undo it by dividing, not subtracting.",
+      ],
     ],
     steps: ["$r$ multiplies $t$, so divide both sides by $r$.", "$t = d/r$."],
   },
   {
     family: "science",
     formula: "$F = 9C/5 + 32$",
-    about: "a temperature F in degrees Fahrenheit from $C$ in degrees Celsius",
+    about:
+      "a temperature $F$ in degrees Fahrenheit from $C$ in degrees Celsius",
     target: "C",
     others: "F",
     correct: "$C = 5(F − 32)/9$",
@@ -1300,10 +1311,13 @@ const formulas: FormulaCase[] = [
         "$C = 5F/9 − 32$",
         "Undo the steps in reverse order: subtract 32 first, then multiply by 5/9.",
       ],
-      ["$C = 9(F − 32)/5$", "Undo × 9/5 by multiplying by its reciprocal, 5/9."],
+      [
+        "$C = 9(F − 32)/5$",
+        "Undo × 9/5 by multiplying by its reciprocal, 5/9.",
+      ],
       [
         "$C = (5F − 32)/9$",
-        "Subtract 32 from F before multiplying; 32 is not multiplied by 5.",
+        "Subtract 32 from $F$ before multiplying; 32 is not multiplied by 5.",
       ],
     ],
     steps: [
@@ -1320,7 +1334,10 @@ const formulas: FormulaCase[] = [
     others: "$v$, $u$ and $t$",
     correct: "$a = (v − u)/t$",
     wrong: [
-      ["$a = v/t − u$", "Subtract $u$ first, then divide all of $v − u$ by $t$."],
+      [
+        "$a = v/t − u$",
+        "Subtract $u$ first, then divide all of $v − u$ by $t$.",
+      ],
       [
         "$a = (v + u)/t$",
         "$u$ is added on the right, so subtract it from both sides.",
@@ -1335,7 +1352,8 @@ const formulas: FormulaCase[] = [
   {
     family: "finance",
     formula: "$I = Prt$",
-    about: "the simple interest I on a principal $P$ at rate $r$ for $t$ years",
+    about:
+      "the simple interest $I$ on a principal $P$ at rate $r$ for $t$ years",
     target: "r",
     others: "I, $P$ and $t$",
     correct: "$r = I/(Pt)$",
@@ -1361,7 +1379,10 @@ const formulas: FormulaCase[] = [
     others: "A, $P$ and $r$",
     correct: "$t = (A − P)/(Pr)$",
     wrong: [
-      ["$t = A/(Pr) − P$", "Subtract $P$ first, then divide all of $A − P$ by Pr."],
+      [
+        "$t = A/(Pr) − P$",
+        "Subtract $P$ first, then divide all of $A − P$ by Pr.",
+      ],
       ["$t = (A − P)/r$", "$P$ multiplies $t$ too: divide by $P$ and by $r$."],
       [
         "$t = (A + P)/(Pr)$",
@@ -1381,7 +1402,10 @@ const formulas: FormulaCase[] = [
     others: "$y$, $m$ and $b$",
     correct: "$x = (y − b)/m$",
     wrong: [
-      ["$x = y/m − b$", "Subtract $b$ first, then divide all of $y − b$ by $m$."],
+      [
+        "$x = y/m − b$",
+        "Subtract $b$ first, then divide all of $y − b$ by $m$.",
+      ],
       ["$x = (y + b)/m$", "$b$ is added on the right, so subtract it."],
       ["$x = m/(y − b)$", "Divide $y − b$ by $m$, not $m$ by $y − b$."],
     ],
@@ -1398,7 +1422,10 @@ const formulas: FormulaCase[] = [
     others: "$x$, $a$, $b$ and $c$",
     correct: "$y = (c − ax)/b$",
     wrong: [
-      ["$y = c/b − ax$", "Divide every term by $b$: $(c − ax)/b = c/b − ax/b$."],
+      [
+        "$y = c/b − ax$",
+        "Divide every term by $b$: $(c − ax)/b = c/b − ax/b$.",
+      ],
       [
         "$y = (c + ax)/b$",
         "ax is added on the left, so subtract it from both sides.",
@@ -1423,7 +1450,10 @@ const formulas: FormulaCase[] = [
     wrong: [
       ["$x = (y − k)/m − h$", "$x − h = (y − k)/m$, so add $h$ to both sides."],
       ["$x = m(y − k) + h$", "Divide by $m$ to undo multiplication by $m$."],
-      ["$x = (y + k)/m + h$", "Keep $y − k$ as it is: only $m$ and $h$ are undone."],
+      [
+        "$x = (y + k)/m + h$",
+        "Keep $y − k$ as it is: only $m$ and $h$ are undone.",
+      ],
     ],
     steps: [
       "Divide both sides by $m$: $(y − k)/m = x − h$.",
@@ -1438,11 +1468,17 @@ const formulas: FormulaCase[] = [
     others: "C",
     correct: "$r = C/(2π)$",
     wrong: [
-      ["$r = 2πC$", "2π multiplies $r$, so divide by 2π."],
-      ["$r = C − 2π$", "$2\\pi$ multiplies $r$; undo multiplication by dividing."],
-      ["$r = 2π/C$", "Divide $C$ by 2π, not 2π by $C$."],
+      ["$r = 2πC$", "$2π$ multiplies $r$, so divide by $2π$."],
+      [
+        "$r = C − 2π$",
+        "$2\\pi$ multiplies $r$; undo multiplication by dividing.",
+      ],
+      ["$r = 2π/C$", "Divide $C$ by $2π$, not $2π$ by $C$."],
     ],
-    steps: ["$2\\pi$ multiplies $r$.", "Divide both sides by $2\\pi$: $r = C/(2π)$."],
+    steps: [
+      "$2\\pi$ multiplies $r$.",
+      "Divide both sides by $2\\pi$: $r = C/(2π)$.",
+    ],
   },
   {
     family: "geometry",
@@ -1454,7 +1490,10 @@ const formulas: FormulaCase[] = [
     wrong: [
       ["$h = Vπr²$", "$\\pi r^2$ multiplies $h$, so divide by it."],
       ["$h = πr²/V$", "Divide $V$ by πr², not πr² by $V$."],
-      ["$h = V − πr²$", "$\\pi r^2$ multiplies $h$; undo multiplication by dividing."],
+      [
+        "$h = V − πr²$",
+        "$\\pi r^2$ multiplies $h$; undo multiplication by dividing.",
+      ],
     ],
     steps: [
       "The product $\\pi r^2$ multiplies $h$: $V = (πr²)h$.",
@@ -1492,16 +1531,22 @@ const formulas: FormulaCase[] = [
     others: "d and t",
     correct: "$r = d/t$",
     wrong: [
-      ["$r = t/d$", "Dividing $d = rt$ by $t$ leaves $d ÷ t$, with $d$ on top."],
+      [
+        "$r = t/d$",
+        "Dividing $d = rt$ by $t$ leaves $d ÷ t$, with $d$ on top.",
+      ],
       ["$r = dt$", "$t$ multiplies $r$, so divide by $t$."],
-      ["$r = d − t$", "$t$ multiplies $r$; undo it by dividing, not subtracting."],
+      [
+        "$r = d − t$",
+        "$t$ multiplies $r$; undo it by dividing, not subtracting.",
+      ],
     ],
     steps: ["$t$ multiplies $r$, so divide both sides by $t$.", "$r = d/t$."],
   },
   {
     family: "science",
     formula: "$F = ma$",
-    about: "the force F on a mass $m$ with acceleration $a$",
+    about: "the force $F$ on a mass $m$ with acceleration $a$",
     target: "a",
     others: "F and m",
     correct: "$a = F/m$",
@@ -1531,12 +1576,16 @@ const formulas: FormulaCase[] = [
         "Subtracting at from both sides gives $v − at$, not $at − v$.",
       ],
     ],
-    steps: ["at is added to $u$.", "Subtract at from both sides: $u = v − at$."],
+    steps: [
+      "at is added to $u$.",
+      "Subtract at from both sides: $u = v − at$.",
+    ],
   },
   {
     family: "finance",
     formula: "$I = Prt$",
-    about: "the simple interest I on a principal $P$ at rate $r$ for $t$ years",
+    about:
+      "the simple interest $I$ on a principal $P$ at rate $r$ for $t$ years",
     target: "P",
     others: "$I$, $r$ and $t$",
     correct: "$P = I/(rt)$",
@@ -1553,7 +1602,7 @@ const formulas: FormulaCase[] = [
   {
     family: "finance",
     formula: "$T = p + px$",
-    about: "the total T paid on a price $p$ with a sales-tax rate $x$",
+    about: "the total $T$ paid on a price $p$ with a sales-tax rate $x$",
     target: "p",
     others: "T and x",
     correct: "$p = T/(1 + x)$",
@@ -1564,7 +1613,7 @@ const formulas: FormulaCase[] = [
       ],
       [
         "$p = T/x − 1$",
-        "Factor first: $T = p(1 + x)$, so divide T by all of $1 + x$.",
+        "Factor first: $T = p(1 + x)$, so divide $T$ by all of $1 + x$.",
       ],
       ["$p = (T − x)/2$", "$p + px$ is $p(1 + x)$, not $2p + x$."],
     ],
@@ -1588,7 +1637,10 @@ const formulas: FormulaCase[] = [
       ],
       ["$b = y/(mx)$", "$b$ is added, not multiplied: subtract mx."],
     ],
-    steps: ["mx is added to $b$.", "Subtract mx from both sides: $b = y − mx$."],
+    steps: [
+      "mx is added to $b$.",
+      "Subtract mx from both sides: $b = y − mx$.",
+    ],
   },
   {
     family: "lines",
@@ -1598,7 +1650,10 @@ const formulas: FormulaCase[] = [
     others: "$y$, $a$, $b$ and $c$",
     correct: "$x = (c − by)/a$",
     wrong: [
-      ["$x = c/a − by$", "Divide every term by $a$: $(c − by)/a = c/a − by/a$."],
+      [
+        "$x = c/a − by$",
+        "Divide every term by $a$: $(c − by)/a = c/a − by/a$.",
+      ],
       [
         "$x = (c + by)/a$",
         "by is added on the left, so subtract it from both sides.",
@@ -1617,7 +1672,7 @@ const formulas: FormulaCase[] = [
 function formulaIsolate(r: Random): Case {
   const fc = pick(r, formulas);
   return {
-    prompt: `The formula ${fc.formula} gives ${fc.about}. Which formula gives $${fc.target}$ in terms of ${fc.others}?`,
+    prompt: `The formula ${fc.formula} gives ${fc.about}. Which formula gives $${fc.target}$ in terms of ${fc.others.replace(/(?<![$\w])([A-Za-z])(?![$\w])/g, "$$$1$$")}?`,
     choices: [
       { label: fc.correct, correct: true },
       ...fc.wrong.map(([label, feedback]) => ({ label, feedback })),
@@ -1711,14 +1766,14 @@ function formulaValue(r: Random): Case {
     t = r(2, 8);
   const I = (P * rate * t) / 100;
   return {
-    prompt: `Simple interest is $I$ = Prt. Find the time $t$, in years, when I = ${I}, P = ${P} and r = ${rate / 100}.`,
+    prompt: `Simple interest is $I = Prt$. Find the time $t$, in years, when $I = ${I}$, $P = ${P}$ and $r = ${rate / 100}$.`,
     answer: rat(t),
     explanation: [
       `Solve for $t$: divide by $P$ and by $r$, so t = I/(Pr).`,
       `Substitute: Pr = ${P} × ${rate / 100} = ${(P * rate) / 100}, so t = ${I}/${(P * rate) / 100}.`,
       `t = ${t}.`,
     ],
-    hint: `Substitute I = ${I}, P = ${P} and r = ${rate / 100} into $I$ = Prt. Multiply ${P} × ${rate / 100} first, then divide.`,
+    hint: `Substitute $I = ${I}$, $P = ${P}$ and $r = ${rate / 100}$ into $I = Prt$. Multiply ${P} × ${rate / 100} first, then divide.`,
     tags: [frame],
   };
 }
@@ -1735,7 +1790,7 @@ type Equation = {
 };
 const ratIs = (v: Rational, y: number) => v.d === 1 && v.n === y;
 const rightSide = (expr: string, value: Rational, y: number) =>
-  `the right side is ${expr} = ${qt(value)}, $${ratIs(value, y) ? "equal to" : "not"} y = ${n(y)}$`;
+  `the right side is $${expr} = ${qt(value)}$, ${ratIs(value, y) ? "equal to" : "not"} $y = ${n(y)}$`;
 function equationFor(r: Random, frame: string): Equation {
   if (frame === "standard") {
     const a = nonzero(r, -5, 5),
@@ -1824,7 +1879,7 @@ function solutionPointChoice(r: Random): Case {
     const wrong = shuffle(r, unique).slice(0, 3);
     const check = eq.check;
     return {
-      prompt: `Which point is on the graph of ${eq.text}?`,
+      prompt: `Which point is on the graph of ${formula(eq.text)}?`,
       choices: [
         { label: pair([x0, y0]), correct: true },
         ...wrong.map(([x, y]) => ({
@@ -1837,7 +1892,7 @@ function solutionPointChoice(r: Random): Case {
         `For ${pair([x0, y0])}: ${check(x0, y0)}, so it is on the graph.`,
         `Each other pair makes the two sides differ, so those points are off the graph.`,
       ],
-      hint: `Put each pair into ${eq.text}, the first number for $x$ and the second for $y$, and keep the one that makes it true.`,
+      hint: `Put each pair into ${formula(eq.text)}, the first number for $x$ and the second for $y$, and keep the one that makes it true.`,
       tags: [frame],
     };
   }
@@ -1860,7 +1915,7 @@ function solutionCoordinate(r: Random): Case {
       .scene({ title: `Graph of ${text} with the line x = ${n(x0)}` });
     const sq = quadAt(a, b, c, x0);
     return {
-      prompt: `The point (${n(x0)}, $k$) is on the graph of ${text}. What is $k$?`,
+      prompt: `The point $(${n(x0)}, k)$ is on the graph of ${formula(text)}. What is $k$?`,
       answer: rat(k),
       scene,
       explanation: [
@@ -1868,7 +1923,7 @@ function solutionCoordinate(r: Random): Case {
         `k = ${sq} = ${n(k)}.`,
         `The parabola meets the dashed line x = ${n(x0)} at (${n(x0)}, ${n(k)}).`,
       ],
-      hint: `Substitute x = ${n(x0)} into ${text}; square ${n(x0)} before multiplying${a < 0 ? " by −1" : ""}.`,
+      hint: `Substitute $x = ${n(x0)}$ into ${formula(text)}; square ${n(x0)} before multiplying${a < 0 ? " by −1" : ""}.`,
       tags: [frame],
     };
   }
@@ -1893,7 +1948,7 @@ function solutionCoordinate(r: Random): Case {
       .scene({
         title: `Graph of ${text} with the line ${findY ? "x" : "y"} = ${n(known)}`,
       });
-    const point = findY ? `(${n(known)}, k)` : `(k, ${n(known)})`;
+    const point = findY ? `$(${n(known)}, k)$` : `$(k, ${n(known)})$`;
     const sub = findY
       ? `${scaled(a, known)}${termText(b, "k", false)}`
       : `${termText(a, "k")}${scaled(b, known, false)}`;
@@ -1909,7 +1964,7 @@ function solutionCoordinate(r: Random): Case {
       : `${times(a, ans, true)}${scaled(b, known, false)}`;
     const coeff = findY ? b : a;
     return {
-      prompt: `The point ${point} is on the graph of ${text}. What is $k$?`,
+      prompt: `The point ${point} is on the graph of ${formula(text)}. What is $k$?`,
       answer: ans,
       scene,
       explanation: [
@@ -1947,7 +2002,7 @@ const labels: Record<string, string> = {
   "formula-isolate": "Choose the formula",
   "formula-value": "Answer",
   "solution-point-choice": "Choose the point",
-  "solution-coordinate": "k",
+  "solution-coordinate": "Value of $k$",
 };
 const fractionItems = new Set([
   "average-rate-formula",

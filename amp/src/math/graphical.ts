@@ -108,7 +108,7 @@ export function generateGraphicalProblem(
         yMax: 5,
         points: [{ x, y, label: "P" }],
       };
-      prompt = `What is the ${coordinate}-coordinate of point $P$? Each grid step is one unit.`;
+      prompt = `What is the $${coordinate}$-coordinate of point $P$? Each grid step is one unit.`;
       answer = `${coordinate === "x" ? x : y}`;
       hint =
         coordinate === "x"

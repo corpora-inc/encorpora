@@ -52,7 +52,7 @@ export const choiceLessons: Lesson[] = [
   },
   {
     id: "equation-solution-sets",
-    title: "When the x-terms disappear",
+    title: "When the variable terms disappear",
     summary:
       "An equation can pick out one number, reject every number, or be true for every real number. Simplification reveals which story it tells.",
     templateIds: ["equation-solution-count"],
@@ -110,7 +110,7 @@ export const choiceLessons: Lesson[] = [
     ],
     sections: [
       {
-        title: "Start where x is zero",
+        title: "Start where the input is zero",
         paragraphs: [
           "The vertical axis is the set of points with x = 0. If a line crosses it at (0, 5), then the rule must give y = 5 when x = 0. In y = mx + b, the term mx becomes zero there, leaving $b$.",
           "The intercept is a $y$-coordinate, not the distance between two points. A line can cross high on the axis and climb slowly, or cross low and climb steeply. Starting height and rate of change do different jobs.",

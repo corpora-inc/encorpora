@@ -421,14 +421,14 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const isTex = match[1] !== undefined || /\\[A-Za-z]+|[\^_]\{/.test(tex);
     // Explicit math the conservative grammar declines (a point $D(−7, 5)$, a
     // formula with a variable) is still math: KaTeX reads its Unicode
-    // operators. Only prose captured between two currency amounts has a word
-    // in it, or a space at its edge ("$3 and a book costs $").
+    // operators. Only prose captured between two currency amounts has two
+    // words in a row, or a space at its edge ("$3 and a book costs $").
     const words = tex.replace(/\\[A-Za-z]+(?:\{[^}]*\})?/g, "");
     const declined =
       converted === null &&
       !/^\s|\s$/.test(tex) &&
-      !/[A-Za-z]{3,}/.test(words) &&
-      /[A-Za-z=+−×÷/<>≤≥≠√]/.test(tex);
+      !/[A-Za-z]{3,}\s+[A-Za-z]{2,}|[A-Za-z]{2,}\s+[A-Za-z]{3,}/.test(words) &&
+      /[A-Za-zπ=+−×÷/<>≤≥≠√]/.test(tex);
     const explicit =
       isTex ||
       declined ||

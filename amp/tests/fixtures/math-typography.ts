@@ -20,7 +20,7 @@ const NAMING = /\$\\pi\$ \(pi\)/g;
 export const ALLOWED: readonly [RegExp, string][] = [
   [/\b(?:e\.g\.|i\.e\.|a\.m\.|p\.m\.)/g, "Latin abbreviations are prose"],
   [
-    /\b(?:[LTUV]-shaped?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
+    /\b(?:[LTUV]-shaped?|[LTU] shapes?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
     "a letter that names a shape (an L-shaped face), not a quantity",
   ],
   [
@@ -64,7 +64,7 @@ const EQUATION: [string, RegExp][] = [
  * as prose like any name. Points, vertices, events and quantities are not
  * names; they are math ($A$, $P(B)$). */
 export const NAMING_NOUNS =
-  "store|plan|offer|shirt|set|option|choice|class|team|group|school|company|brand|shape|figure|picture|piece|pattern|rectangle|strip|rod|tile|panel|bar|tower|stack|line|graph|table|function|model|rule|machine|recipe|garden|clock|card|spinner|box|ball|bag|glass|mug|cup|jar|bottle|bucket|pitcher|bowl|vase|pot|tub|tank|pool|container|basket|tray|block|toy|book|pencil|stick|ribbon|rope|string|crayon|car|train|bus|runner|bike|phone|account|job|trip|path|route|survey";
+  "store|plan|offer|shirt|set|region|option|choice|class|team|group|school|company|brand|shape|figure|picture|piece|pattern|rectangle|strip|rod|tile|panel|bar|tower|stack|line|graph|table|function|model|rule|machine|recipe|garden|clock|card|spinner|box|ball|bag|glass|mug|cup|jar|bottle|bucket|pitcher|bowl|vase|pot|tub|tank|pool|container|basket|tray|block|toy|book|pencil|stick|ribbon|rope|string|crayon|car|train|bus|runner|bike|phone|account|job|trip|path|route|survey";
 const NAMED = new RegExp(
   `\\b(?:${NAMING_NOUNS})s?\\s+(?:\\(\\s*)?([A-Z](?:(?:,\\s*|\\s+(?:and|or)\\s+)[A-Z])*)(?![\\p{L}\\p{N}])`,
   "giu",

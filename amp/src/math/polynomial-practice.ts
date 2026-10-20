@@ -29,6 +29,8 @@ export const polynomialTemplates: readonly TemplateMetadata[] = [
 // Coefficients are indexed by exponent: [constant, x, x², ...].
 type Polynomial = number[];
 const power = (degree: number) => ["", "x", "x²", "x³"][degree]!;
+/** The power named in prose, typeset as math. */
+const powerMath = (degree: number) => `$${["", "x", "x^2", "x^3"][degree]!}$`;
 const signed = (value: number) =>
   value < 0 ? `(${String(value).replace("-", "−")})` : String(value);
 function format(p: Polynomial): string {
@@ -72,12 +74,12 @@ function combineSteps(
       const term = Array<number>(k + 1).fill(0);
       term[k] = c + d;
       steps.push(
-        `Keep ${format(term)}; the other ${source} has no ${k ? `${power(k)} term` : "constant term"}.`,
+        `Keep ${format(term)}; the other ${source} has no ${k ? `${powerMath(k)} term` : "constant term"}.`,
       );
       continue;
     }
     steps.push(
-      `${k ? `Coefficient of ${power(k)}` : "Constant term"}: ${signed(c)} + ${signed(d)} = ${String(c + d).replace("-", "−")}.${c + d === 0 ? " These terms cancel." : ""}`,
+      `${k ? `Coefficient of ${powerMath(k)}` : "Constant term"}: ${signed(c)} + ${signed(d)} = ${String(c + d).replace("-", "−")}.${c + d === 0 ? " These terms cancel." : ""}`,
     );
   }
   return steps;
@@ -314,7 +316,7 @@ export function generatePolynomialProblem(
         const feedback: string[] = [];
         for (let k = correct.length - 1; k >= 0; k--) {
           if ((item.result[k] ?? 0) === correct[k]) continue;
-          const target = k ? `the ${power(k)} term` : "the constant term";
+          const target = k ? `the ${powerMath(k)} term` : "the constant term";
           if (multiply) {
             const products = a.flatMap((c, j) => {
               const d = b[k - j] ?? 0;
@@ -323,7 +325,7 @@ export function generatePolynomialProblem(
             feedback.push(
               products.length
                 ? `For ${target}, calculate ${products.length > 1 ? "the sum of coefficient products" : "the coefficient product"}: ${products.join(" + ")}.`
-                : `${k ? `The coefficient of ${power(k)}` : "The constant term"} is 0: no nonzero term products contribute to ${target}.`,
+                : `${k ? `The coefficient of ${powerMath(k)}` : "The constant term"} is 0: no nonzero term products contribute to ${target}.`,
             );
           } else {
             feedback.push(

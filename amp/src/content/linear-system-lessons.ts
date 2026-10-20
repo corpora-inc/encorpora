@@ -78,7 +78,7 @@ const coordinates = {
   title: "Why lines show the solutions",
   paragraphs: [
     "A coordinate plane locates ordered pairs using two number lines called axes. They are perpendicular: they meet at a right angle, the square corner measuring 90°. The horizontal $x$-axis and vertical $y$-axis meet at the origin, (0, 0). To locate (2, 3), move 2 units right from the origin and then 3 units up. Negative $x$-values lie to the left; negative $y$-values lie below the $x$-axis.",
-    "A linear equation in $x$ and $y$ has the form ax + by = $c$, where $a$, $b$, and $c$ are fixed numbers and at least one of $a$ and $b$ is nonzero. The variables are not squared or multiplied together. All pairs satisfying one such equation lie on one straight line, and every point on that line satisfies the equation.",
+    "A linear equation in $x$ and $y$ has the form $ax + by = c$, where $a$, $b$, and $c$ are fixed numbers and at least one of $a$ and $b$ is nonzero. The variables are not squared or multiplied together. All pairs satisfying one such equation lie on one straight line, and every point on that line satisfies the equation.",
     "For example, y = x + 1 gives a $y$-value one greater than its $x$-value. Its points include (0, 1), (1, 2), and (2, 3). An intersection is a point shared by two lines. A shared point represents a pair satisfying both equations.",
   ],
 };

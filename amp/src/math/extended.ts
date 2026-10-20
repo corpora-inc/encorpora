@@ -335,8 +335,8 @@ export function generateExtendedProblem(
       answer = fraction(dy, dx);
       hint = `Slope is the change in $y$ over the change in $x$. Subtract in the same order for both: (${y1 + dy} − ${y1 < 0 ? `(${y1})` : y1}) ÷ (${x1 + dx} − ${x1 < 0 ? `(${x1})` : x1}).`;
       explanation = [
-        `Change in y: ${y1 + dy} − (${y1}) = ${dy}.`,
-        `Change in x: ${x1 + dx} − (${x1}) = ${dx}.`,
+        `Change in $y$: ${y1 + dy} − (${y1}) = ${dy}.`,
+        `Change in $x$: ${x1 + dx} − (${x1}) = ${dx}.`,
         `Slope = ${dy}/${dx} = ${answer}.`,
       ];
       break;
@@ -355,7 +355,7 @@ export function generateExtendedProblem(
       answer = `${x}`;
       hint =
         b === d
-          ? `Both equations have ${b}y. Subtract one equation from the other to remove $y$.`
+          ? `Both equations have $${b}y$. Subtract one equation from the other to remove $y$.`
           : `To remove $y$, make its coefficients match: multiply the first equation by ${d} and the second by ${b}, then subtract.`;
       explanation = [
         `Multiply the first equation by ${d} and the second by ${b}.`,

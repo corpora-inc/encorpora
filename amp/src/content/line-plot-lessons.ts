@@ -16,7 +16,7 @@ export const linePlotLessons: Lesson[] = [
       {
         title: "Every measurement gets one mark",
         paragraphs: [
-          "A line plot is a number line with an × above the length of each object. Two objects with the same length make a stack of two ×$s$.",
+          "A line plot is a number line with an × above the length of each object. Two objects with the same length make a stack of two × marks.",
           "These seven pencils measure 4, 5, 5, 6, 6, 6 and 8 inches. Three pencils are 6 inches long; no pencil is 7 inches, so nothing stands above 7.",
         ],
         illustration: "data-line-plot-inches",
@@ -186,7 +186,7 @@ export const linePlotMethods: Record<string, ProblemMethod> = {
       "Count marks at it, or to its right for “longer than”; count all marks for how many were measured.",
       "For longest minus shortest, subtract the leftmost mark’s length from the rightmost.",
     ],
-    watch: "Count ×$s$, not the numbers on the line.",
+    watch: "Count × marks, not the numbers on the line.",
   },
   "fraction-line-plot": {
     goal: "Count measurements at or beyond a half- or quarter-unit length on a line plot.",
@@ -214,12 +214,13 @@ export const linePlotMethods: Record<string, ProblemMethod> = {
       "Divide the total by the number of containers.",
       "Check the share lies between the least and greatest amounts.",
     ],
-    watch: "Divide by the number of ×$s$, not the number of different values.",
+    watch:
+      "Divide by the number of × marks, not the number of different values.",
   },
 };
 export const linePlotPrinciples: Record<string, string> = {
   "line-plot-whole":
-    "A line plot shows each measurement once, as an × above its value, so counting ×$s$ counts objects.",
+    "A line plot shows each measurement once, as an × above its value, so counting × marks counts objects.",
   "fraction-line-plot":
     "Ticks between whole numbers split each unit into equal parts, so each tick is one more half or fourth.",
   "fraction-plot-difference":
