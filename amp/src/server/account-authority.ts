@@ -42,7 +42,10 @@ export async function sessionMethodAuthority(
     body?: { response?: { id?: unknown } };
   } | null,
 ) {
-  if (context?.path === "/passkey/verify-authentication") {
+  if (
+    context?.path === "/passkey/verify-authentication" ||
+    context?.path === "/passkey-signup/verify"
+  ) {
     const credential = context.body?.response?.id;
     if (typeof credential !== "string" || !credential)
       throw new APIError("UNAUTHORIZED", {

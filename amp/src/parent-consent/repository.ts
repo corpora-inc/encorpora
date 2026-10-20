@@ -1,4 +1,7 @@
-import { learningConsentActive } from "../server/account-access.js";
+import {
+  learningConsentActive,
+  parentAddressConfirmed,
+} from "../server/account-access.js";
 import { randomBytes, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -139,6 +142,8 @@ export class ConsentRepository {
   async begin(account: string, input: unknown): Promise<void> {
     const body = beginConsentSchema.parse(input);
     await this.transaction(account, async (client) => {
+      if (!(await parentAddressConfirmed(client, account)))
+        throw new ConsentError("email_unconfirmed", 403);
       const p = await this.available(client),
         hash = noticeDigest(p);
       if (body.noticeDigest !== hash) throw new ConsentError("notice_changed");

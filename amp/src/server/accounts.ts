@@ -14,6 +14,7 @@ import { bearer, twoFactor } from "better-auth/plugins";
 import { fromNodeHeaders } from "better-auth/node";
 import { APIError } from "better-auth/api";
 import { passkey } from "@better-auth/passkey";
+import { passkeySignup, PASSKEY_SIGNUP_SECONDS } from "./passkey-signup";
 import { SignJWT, importPKCS8 } from "jose";
 import { Resend } from "resend";
 import type { FastifyInstance } from "fastify";
@@ -248,6 +249,14 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     origin,
     schema: { passkey: { modelName: "amp_auth_passkeys" } },
   });
+  // A new parent can start with a passkey wherever confirmation email can be
+  // delivered (the same condition as passwords).
+  const signupPlugin = passkeySignup({
+    enabled: config.passwords,
+    rpID: hostname,
+    rpName: "AMP",
+    origin,
+  });
   passkeyPlugin.endpoints.verifyPasskeyRegistration = serializeSecurityEndpoint(
     passkeyPlugin.endpoints.verifyPasskeyRegistration,
   );
@@ -336,6 +345,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       requireEmailVerification: config.production,
       minPasswordLength: 10,
       revokeSessionsOnPasswordReset: true,
+      // A reset link proves the address. Before it was confirmed, anyone could
+      // have added sign-in methods under it, so they go; the address is confirmed.
+      onPasswordReset: async ({ user }) => {
+        if (!user.emailVerified) await confirmByReset(pool, user.id);
+      },
       sendResetPassword: ({ user, url }) =>
         send(
           user.email,
@@ -382,7 +396,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         send(
           user.email,
           "Confirm your email for AMP",
-          "Confirm this address to finish creating your AMP parent account. If you did not create an AMP account, ignore this email; nothing happens without your confirmation.",
+          "Confirm this address for your AMP parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an AMP account, ignore this email; nothing happens without your confirmation.",
           url,
         ),
     },
@@ -417,8 +431,17 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       bearer(),
       twoFactorPlugin,
       passkeyPlugin,
+      signupPlugin,
     ],
-    rateLimit: { enabled: true, storage: "memory" },
+    rateLimit: {
+      enabled: true,
+      storage: "memory",
+      // Each attempt says whether an email has an account; keep that slow.
+      customRules: {
+        "/passkey-signup/options": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
+        "/passkey-signup/verify": { window: PASSKEY_SIGNUP_SECONDS, max: 10 },
+      },
+    },
     // Internal failures reach clients as a generic 500; log the cause.
     onAPIError: {
       onError: (error) => console.error("[accounts] request failed", error),
@@ -433,6 +456,48 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   return { auth, config };
 }
 export type Accounts = Awaited<ReturnType<typeof createAccounts>>;
+
+/** A password reset on an unconfirmed parent confirms the address and removes
+ * every passkey, provider login and session that predates it, under the parent
+ * lock that sign-in also takes. Otherwise whoever created the account under
+ * someone else's address would keep a way in after the owner recovers it. */
+export async function confirmByReset(pool: Pool, userId: string) {
+  const db = await pool.connect();
+  let discard = false;
+  try {
+    await db.query("BEGIN");
+    const parent = await db.query<{ emailVerified: boolean }>(
+      'SELECT "emailVerified" FROM amp_auth_users WHERE id=$1 FOR UPDATE',
+      [userId],
+    );
+    if (parent.rows[0] && !parent.rows[0].emailVerified) {
+      await db.query('DELETE FROM amp_auth_passkeys WHERE "userId"=$1', [
+        userId,
+      ]);
+      await db.query(
+        `DELETE FROM amp_auth_accounts WHERE "userId"=$1 AND "providerId"<>'credential'`,
+        [userId],
+      );
+      await db.query('DELETE FROM amp_auth_sessions WHERE "userId"=$1', [
+        userId,
+      ]);
+      await db.query(
+        'UPDATE amp_auth_users SET "emailVerified"=true, "updatedAt"=now() WHERE id=$1',
+        [userId],
+      );
+    }
+    await db.query("COMMIT");
+  } catch (error) {
+    try {
+      await db.query("ROLLBACK");
+    } catch {
+      discard = true;
+    }
+    throw error;
+  } finally {
+    db.release(discard);
+  }
+}
 
 /** Resolves a request's session (cookie, or `Authorization: Bearer <session
  * token>`) to its parent account id. */
@@ -456,6 +521,7 @@ export async function registerAccountRoutes(
   app.get("/api/v1/auth-config", async () => ({
     mode: "accounts",
     passwords: config.passwords,
+    passkeySignup: config.passwords,
     providers: enabledProviders(config),
   }));
   await app.register(async (scope) => {

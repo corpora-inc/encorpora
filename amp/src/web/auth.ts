@@ -28,7 +28,13 @@ const devSignedOut = "amp.dev.signedOut";
 
 /** How this deployment signs parents in, as the API reports it. */
 export type AuthConfig =
-  | { mode: "accounts"; passwords: boolean; providers: string[] }
+  | {
+      mode: "accounts";
+      passwords: boolean;
+      /** A new parent can create the account with a passkey. */
+      passkeySignup?: boolean;
+      providers: string[];
+    }
   | { mode: "oidc" | "development" | "native" };
 let config: Promise<AuthConfig> | null = null;
 export function authConfig(): Promise<AuthConfig> {

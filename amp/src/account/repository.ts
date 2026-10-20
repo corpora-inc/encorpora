@@ -78,7 +78,12 @@ export async function accountSummary(
     });
   const value = {
     signedIn: true as const,
-    account: { id: accountId, email, emailVerified },
+    account: {
+      id: accountId,
+      email,
+      emailVerified,
+      confirmationRequired: !emailVerified && !families.development,
+    },
     consent: {
       status: active
         ? ("active" as const)
@@ -100,18 +105,17 @@ export async function accountSummary(
       : {}),
     // Purchase-first enrollment: plan and payment (the verified consent) come
     // before any learner profile; a paid, unassigned purchase resumes there.
-    next:
-      !emailVerified && !families.development
-        ? "verify-email"
-        : !active
-          ? family.consent.status === "withdrawn"
-            ? "choose-plan"
-            : "try"
-          : learners.some((l) => l.entitlement.active)
-            ? "practice"
-            : unassigned || !learners.length
-              ? "add-learner"
-              : "choose-plan",
+    // An unconfirmed address does not block the trial; the consent steps ask
+    // for it (`confirmationRequired`), and the server refuses them without it.
+    next: !active
+      ? family.consent.status === "withdrawn"
+        ? "choose-plan"
+        : "try"
+      : learners.some((l) => l.entitlement.active)
+        ? "practice"
+        : unassigned || !learners.length
+          ? "add-learner"
+          : "choose-plan",
   };
   return meSchema.parse(value) as SignedInMe;
 }
