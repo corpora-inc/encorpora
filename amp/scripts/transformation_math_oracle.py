@@ -25,6 +25,14 @@ TRANSFORMATION = NUMBER | TRANSFORMATION_CHOICE
 POINT = r'\((−?\d+), (−?\d+)\)'
 
 
+
+def reading(prompt):
+    """Primed vertices and axes typeset as math ($A'B'C'$, $B'$, the $y$-axis)
+    read as the plain names the patterns below spell out."""
+    prompt = prompt.replace("$A'B'C'$", 'A′B′C′')
+    prompt = re.sub(r"\$([ABC])'\$", r'\1′', prompt)
+    return re.sub(r'\$([xy])\$-axis', r'\1-axis', prompt)
+
 def require(condition, message):
     if not condition:
         raise ValueError(message)
@@ -158,6 +166,7 @@ def parse_motion(phrase):
 
 
 def option_motion(label):
+    label = reading(label)
     m = re.fullmatch(r'A translation (.+)', label)
     if m:
         return parse_motion('translated ' + m[1])
@@ -262,7 +271,7 @@ def solve_exact_distance(public):
 
 
 def solve_image(public):
-    m = re.fullmatch(r'Triangle ABC has vertices (.+)\. It is (.+) to form triangle A′B′C′\. What are the coordinates of ([ABC])′\?', public['prompt'])
+    m = re.fullmatch(r'Triangle ABC has vertices (.+)\. It is (.+) to form triangle A′B′C′\. What are the coordinates of ([ABC])′\?', reading(public['prompt']))
     require(m is not None, 'Unrecognized image prompt')
     pts = vertices(m[1], 'ABC')
     motion = parse_motion(m[2])
@@ -274,7 +283,7 @@ def solve_image(public):
 
 
 def solve_identify(public):
-    m = re.fullmatch(r'Triangle ABC has vertices (.+)\. Triangle A′B′C′ has vertices (.+)\. Which single transformation maps triangle ABC onto triangle A′B′C′\?', public['prompt'])
+    m = re.fullmatch(r'Triangle ABC has vertices (.+)\. Triangle A′B′C′ has vertices (.+)\. Which single transformation maps triangle ABC onto triangle A′B′C′\?', reading(public['prompt']))
     require(m is not None, 'Unrecognized identify prompt')
     before, after = vertices(m[1], 'ABC'), vertices(m[2], ['A′', 'B′', 'C′'])
     require(shoelace(before) > 0, 'Degenerate triangle')
@@ -284,7 +293,7 @@ def solve_identify(public):
 
 
 def solve_scale_factor(public):
-    m = re.fullmatch(r'A dilation with center at the origin maps triangle ABC onto triangle A′B′C′\. Triangle ABC has vertices (.+), and triangle A′B′C′ has vertices (.+)\. What is the scale factor\?', public['prompt'])
+    m = re.fullmatch(r'A dilation with center at the origin maps triangle ABC onto triangle A′B′C′\. Triangle ABC has vertices (.+), and triangle A′B′C′ has vertices (.+)\. What is the scale factor\?', reading(public['prompt']))
     require(m is not None, 'Unrecognized scale-factor prompt')
     before, after = vertices(m[1], 'ABC'), vertices(m[2], ['A′', 'B′', 'C′'])
     require_figure(public, before, list('ABC'))
@@ -621,7 +630,7 @@ def _solve_prompt_only(template, prompt):
 
 def _worked_choice(template, prompt):
     require(template == 'transformation-image', 'Only image examples are worked as choices')
-    m = re.fullmatch(r'Triangle ABC has vertices (.+)\. It is (.+) to form triangle A′B′C′\. What are the coordinates of ([ABC])′\?', prompt)
+    m = re.fullmatch(r'Triangle ABC has vertices (.+)\. It is (.+) to form triangle A′B′C′\. What are the coordinates of ([ABC])′\?', reading(prompt))
     require(m is not None, 'Unrecognized worked example')
     pts = vertices(m[1], 'ABC')
     return point_text(apply(parse_motion(m[2]), pts['ABC'.index(m[3])]))

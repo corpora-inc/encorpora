@@ -1112,13 +1112,13 @@ const conditions: Condition[] = [
   },
   {
     key: "warm",
-    quote: (c) => `above ${int(c)} °$C$`,
+    quote: (c) => `above ${int(c)} °C`,
     op: ">",
     v: "t",
     low: -9,
     high: 9,
     text: (c) =>
-      `All afternoon the temperature stayed above ${int(c)} °$C$. Let $t$ be an afternoon temperature, in degrees Celsius.`,
+      `All afternoon the temperature stayed above ${int(c)} °C. Let $t$ be an afternoon temperature, in degrees Celsius.`,
   },
   {
     key: "bridge",
@@ -1132,13 +1132,13 @@ const conditions: Condition[] = [
   },
   {
     key: "freezer",
-    quote: (c) => `colder than ${int(c)} °$C$`,
+    quote: (c) => `colder than ${int(c)} °C`,
     op: "<",
     v: "t",
     low: -20,
     high: -5,
     text: (c) =>
-      `A freezer must stay colder than ${int(c)} °$C$. Let $t$ be an allowed freezer temperature, in degrees Celsius.`,
+      `A freezer must stay colder than ${int(c)} °C. Let $t$ be an allowed freezer temperature, in degrees Celsius.`,
   },
   {
     key: "bus",

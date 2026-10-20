@@ -367,7 +367,7 @@ export function generateMeasurementProblem(
         packs = Math.ceil(need / size),
         a = packs * price,
         b = need * rate;
-      prompt = `Need ${need} m of ribbon; pieces join without loss. $A$: whole ${size} m packs at ${price} ${price === 1 ? "dollar" : "dollars"} each. $B$: any length at ${rate} ${rate === 1 ? "dollar" : "dollars"} per meter. No other charges. Which costs less?`;
+      prompt = `Need ${need} m of ribbon; pieces join without loss. Offer A: whole ${size} m packs at ${price} ${price === 1 ? "dollar" : "dollars"} each. Offer B: any length at ${rate} ${rate === 1 ? "dollar" : "dollars"} per meter. No other charges. Which costs less?`;
       const winner = a === b ? "Same cost" : a < b ? "A" : "B";
       choices = ["A", "B", "Same cost"].map((name) => ({
         label: name,
@@ -375,13 +375,13 @@ export function generateMeasurementProblem(
           ? { correct: true as const }
           : {
               feedback:
-                "Use enough complete packs for $A$. $B$ can supply exactly the needed length; compare total bills.",
+                "Use enough complete packs for offer A. Offer B can supply exactly the needed length; compare total bills.",
             }),
       }));
       hint = `A sells only whole ${size} m packs: how many packs cover ${need} m? Compare that bill with B's ${need} × ${rate} dollars.`;
       explanation = [
         `A needs ${packs} complete ${packs === 1 ? "pack" : "packs"}: ${packs} × ${size} = ${packs * size} m, costing ${a} dollars.`,
-        `$B$ supplies exactly ${need} m for ${need} × ${rate} = ${b} dollars.`,
+        `Offer B supplies exactly ${need} m for ${need} × ${rate} = ${b} dollars.`,
         a === b
           ? `The bills tie. A leaves ${packs * size - need} m unused; that does not change the stated cost.`
           : `${winner} costs less. A's ${packs * size - need} m of unused ribbon does not reduce its bill.`,

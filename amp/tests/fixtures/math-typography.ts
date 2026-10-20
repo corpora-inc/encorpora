@@ -11,7 +11,7 @@ import { lessons } from "../../src/content/lessons";
  * two typesetters, MathText in the app and PrintMathText in lessons and print,
  * so prose is whatever either one leaves as prose. */
 
-export type Issue = { rule: string; excerpt: string };
+export type Issue = { rule: string; excerpt: string; index?: number };
 
 /** The one place the word may name the number: "the ratio $\pi$ (pi)". */
 const NAMING = /\$\\pi\$ \(pi\)/g;
@@ -24,8 +24,12 @@ export const ALLOWED: readonly [RegExp, string][] = [
     "a letter that names a shape (an L-shaped face), not a quantity",
   ],
   [
-    /(?<=\d\s?)(?:m|g|L|s|h)\b(?![-=])/g,
-    "a unit symbol after a number (8 m, 2 L) is text, like any unit",
+    /\bletters [A-Z] through [A-Z]\b/g,
+    "letters of the alphabet named as letters (the letters A through E)",
+  ],
+  [
+    /(?<=°\s?)[CF]\b|(?<=\d\s?)(?:m|g|L|s|h)\b(?![-=])|(?<=\b(?:in|[Ee]ach|per) )(?:m|g|L)\b(?![-=])/g,
+    "a unit symbol (8 m, 2 L, 4°C, length in m) is text, like any unit",
   ],
 ];
 
@@ -60,16 +64,16 @@ const EQUATION: [string, RegExp][] = [
  * as prose like any name. Points, vertices, events and quantities are not
  * names; they are math ($A$, $P(B)$). */
 export const NAMING_NOUNS =
-  "Store|Plan|Class|Shape|Clock|Piece|Offer|Pattern|Choice|Option|Bag|Box|Team|Card|Spinner|Group|Rectangle|Figure|Picture|Strip|Rod|Table|Function|Machine|Recipe|Garden|Company|Line|Graph|Model|Survey|School|Brand|Tank|Pool|Car|Train|Runner|Bike|Phone|Account|Job|Trip|Path|Route|Rule|Panel|Tile|Bar|Tower|Stack|Jar|Cup|Sample|Set";
+  "store|plan|offer|shirt|option|choice|class|team|group|school|company|brand|shape|figure|picture|piece|pattern|rectangle|strip|rod|tile|panel|bar|tower|stack|line|graph|table|function|model|rule|machine|recipe|garden|clock|card|spinner|box|ball|bag|glass|mug|cup|jar|bottle|bucket|pitcher|bowl|vase|pot|tub|tank|pool|container|basket|tray|block|toy|book|pencil|stick|ribbon|rope|string|crayon|car|train|bus|runner|bike|phone|account|job|trip|path|route|survey";
 const NAMED = new RegExp(
-  `\\b(?:${NAMING_NOUNS})s?\\s+([A-Z](?:(?:,\\s*|\\s+(?:and|or)\\s+)[A-Z])*)(?![\\p{L}\\p{N}])`,
-  "gu",
+  `\\b(?:${NAMING_NOUNS})s?\\s+(?:\\(\\s*)?([A-Z](?:(?:,\\s*|\\s+(?:and|or)\\s+)[A-Z])*)(?![\\p{L}\\p{N}])`,
+  "giu",
 );
 /** Letters a text introduces as names. */
 export function namedLetters(text: string): Set<string> {
   const found = new Set<string>();
   for (const m of text.matchAll(NAMED))
-    for (const l of m[1]!.match(/[A-Z]/g)!) found.add(l);
+    for (const l of m[1]!.match(/\b[A-Z]\b/g) ?? []) found.add(l);
   return found;
 }
 
@@ -161,6 +165,7 @@ function proseIssues(
         ? "bare uppercase letter"
         : "bare lowercase letter",
       excerpt: at(m.index),
+      index: m.index,
     });
   }
   return issues;
@@ -194,7 +199,7 @@ export function typographyIssues(
   const readings = plain ? [text] : [appProse(source), printProse(source)];
   for (const piece of readings)
     for (const issue of proseIssues(piece, variables, names)) {
-      const key = `${issue.rule}|${issue.excerpt}`;
+      const key = `${issue.rule}|${issue.excerpt}|${issue.index ?? ""}`;
       if (!seen.has(key)) {
         seen.add(key);
         out.push(issue);

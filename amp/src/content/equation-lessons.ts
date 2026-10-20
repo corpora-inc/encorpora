@@ -392,7 +392,7 @@ export const equationLessons: Lesson[] = [
         paragraphs: [
           "“More than”, “greater than”, “above” and “taller than” describe values greater than the boundary: use >. “Less than”, “below”, “younger than” and “colder than” describe values less than the boundary: use <.",
           "“At least”, “no less than” and “$c$ or more” include the boundary: use ≥. “At most”, “no more than” and “$c$ or fewer” include it too: use ≤. Test the boundary itself. A ride for riders taller than 48 inches does not admit a rider exactly 48 inches tall, so h > 48.",
-          "Negative boundaries follow the same rules. A freezer colder than −15 °$C$ could be at −20 °$C$, and −20 < −15, so t < −15.",
+          "Negative boundaries follow the same rules. A freezer colder than −15 °C could be at −20 °C, and −20 < −15, so t < −15.",
         ],
         illustration: "inequality-half-lines",
       },
@@ -410,7 +410,7 @@ export const equationLessons: Lesson[] = [
     pitfalls: [
       "“At least” means greater than or equal to, even though it contains the word “least”.",
       "Test the boundary: “more than 35” excludes 35; “35 or more” includes it.",
-      "Colder and below mean less than, also for negative temperatures: −20 °$C$ is colder than −15 °$C$, and −20 < −15.",
+      "Colder and below mean less than, also for negative temperatures: −20 °C is colder than −15 °C, and −20 < −15.",
     ],
     parentGuide:
       "Collect real rules with numbers, such as height limits, age discounts and speed limits. For each, ask whether the exact number on the sign is allowed, then write the inequality together.",

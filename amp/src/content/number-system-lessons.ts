@@ -246,8 +246,8 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Model each change with a sign",
         paragraphs: [
-          "This lesson uses addition, subtraction and multiplication of decimals. In a story, first choose the positive direction: up, warmer, or money added. A change in the opposite direction is negative. A starting value can be negative too, such as a temperature of −4.5°$C$ or an account balance of −32.50 dollars, which means 32.50 dollars is owed.",
-          "A repeated change is a product. Falling 1.5°$C$ each hour for 3 hours is 3 × (−1.5) = −4.5. A positive number times a negative number is negative because it adds the same negative change several times: (−1.5) + (−1.5) + (−1.5) = −4.5.",
+          "This lesson uses addition, subtraction and multiplication of decimals. In a story, first choose the positive direction: up, warmer, or money added. A change in the opposite direction is negative. A starting value can be negative too, such as a temperature of −4.5°C or an account balance of −32.50 dollars, which means 32.50 dollars is owed.",
+          "A repeated change is a product. Falling 1.5°C each hour for 3 hours is 3 × (−1.5) = −4.5. A positive number times a negative number is negative because it adds the same negative change several times: (−1.5) + (−1.5) + (−1.5) = −4.5.",
         ],
       },
       {
@@ -261,26 +261,26 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Change between two values",
         paragraphs: [
-          "The change from a starting value to an ending value is the end minus the start. From −7.5°$C$ to 4.25°$C$ the change is 4.25 − (−7.5) = 4.25 + 7.5 = 11.75 degrees. Subtracting a negative number adds its opposite: taking away a drop is the same as adding a rise.",
+          "The change from a starting value to an ending value is the end minus the start. From −7.5°C to 4.25°C the change is 4.25 − (−7.5) = 4.25 + 7.5 = 11.75 degrees. Subtracting a negative number adds its opposite: taking away a drop is the same as adding a rise.",
           "The vertical distance between a ledge at 26.5 meters and a diver at −16.5 meters is 26.5 − (−16.5) = 43 meters, the 26.5 meters above sea level plus the 16.5 meters below it.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "At 6 a.m. the temperature was −4.5°$C$. By noon it had risen 7.25°$C$. Then it fell 1.5°$C$ each hour for 3 hours. What was the temperature then, in °$C$?",
+        "At 6 a.m. the temperature was −4.5°C. By noon it had risen 7.25°C. Then it fell 1.5°C each hour for 3 hours. What was the temperature then, in °C?",
       steps: [
         "Rising is positive and falling is negative. The temperature starts at −4.5.",
-        "Falling 1.5°$C$ each hour for 3 hours is a change of 3 × (−1.5) = −4.5.",
+        "Falling 1.5°C each hour for 3 hours is a change of 3 × (−1.5) = −4.5.",
         "−4.5 + 7.25 + (−4.5) = 2.75 + (−4.5) = −1.75.",
-        "The temperature was −1.75°$C$.",
+        "The temperature was −1.75°C.",
       ],
       answer: "−1.75",
       answerUnit: "°C",
     },
     pitfalls: [
       "Give each change its sign before adding: −4.5 + 7.25 + 4.5 treats a fall as a rise.",
-      "Multiply a repeated change: 3 hours of falling 1.5°$C$ is 3 × (−1.5), not −1.5.",
+      "Multiply a repeated change: 3 hours of falling 1.5°C is 3 × (−1.5), not −1.5.",
       "For a change between two values, subtract the start from the end: from −7.5 to 4.25 the change is 11.75, not 4.25 − 7.5.",
     ],
     parentGuide:

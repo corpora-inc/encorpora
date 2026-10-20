@@ -99,6 +99,28 @@ def require(condition, message):
 
 SUPPORTED |= ABSOLUTE_VALUE
 
+PLAIN_MATH = re.compile(r'\$([^$]+)\$')
+
+
+def plain_span(match):
+    tex = match.group(1)
+    reading = re.sub(r'\\angle\s*', '∠', tex)
+    if '\\' in reading:
+        return match.group(0)
+    return reading.replace("'", '′')
+
+
+def plain_reading(value):
+    """The learner-facing text with each $…$ span that holds no other TeX
+    command read as its text: $x$ as x, $A'$ as A′, $\\angle ABC$ as ∠ABC."""
+    if isinstance(value, str):
+        return PLAIN_MATH.sub(plain_span, value)
+    if isinstance(value, list):
+        return [plain_reading(item) for item in value]
+    if isinstance(value, dict):
+        return {key: plain_reading(item) for key, item in value.items()}
+    return value
+
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
@@ -499,7 +521,15 @@ def review(stream):
         identity = (template, seed)
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
-        solved = solve(public)
+        try:
+            solved = solve(public)
+        except ValueError:
+            # A variable or point typeset as $x$ reads as x. The family oracles
+            # parse the plain wording, so retry once with TeX-free spans read
+            # as their text; formulas that use TeX commands are unchanged.
+            problem = plain_reading(problem)
+            public = problem['public']
+            solved = solve(public)
         if template in COMPLETING_SQUARE:
             completing_square_review.record(problem)
         if template in INTEGER_EXPONENT:

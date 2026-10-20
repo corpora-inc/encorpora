@@ -324,7 +324,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Name the variable: what it counts and its units.",
-      "Write starting amount + rate × variable, and set it equal to the total (or ≤ $a$ limit, or equal to a second expression).",
+      "Write starting amount + rate × variable, and set it equal to the total (or ≤ a limit, or equal to a second expression).",
       "Solve with inverse operations and check the answer in the story; for a limit, take the greatest whole number that fits.",
     ],
     watch:

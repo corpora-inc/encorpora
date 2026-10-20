@@ -153,7 +153,7 @@ const interval = (
   v: string,
   il: boolean,
   ih: boolean,
-) => `${n(lo)} ${sign(il)} ${v} ${sign(ih)} ${n(hi)}`;
+) => `$${n(lo)} ${sign(il)} ${v} ${sign(ih)} ${n(hi)}$`;
 /** Up to three distinct wrong options, never equal to the correct one. */
 function distinct(correct: string, candidates: Choice[]) {
   const seen = new Set([correct]);
@@ -434,7 +434,7 @@ function contextDomainRange(r: Random): Case {
       prompt: `${ctx.setup(cap, price)} Which describes the ${ask} of ${ctx.f} in this situation?`,
       choices: options,
       explanation: [
-        `The input ${ctx.v} counts ${ctx.unit}, so it is a whole number, and there are at most ${cap}: the domain is the whole numbers from 0 to ${cap}.`,
+        `The input $${ctx.v}$ counts ${ctx.unit}, so it is a whole number, and there are at most ${cap}: the domain is the whole numbers from 0 to ${cap}.`,
         `Each output is ${price} times an input: ${price} × 0 = 0, ${price} × 1 = ${price}, …, ${price} × ${cap} = ${top}.`,
         ask === "domain"
           ? `So the ${ask} is the whole numbers from 0 to ${cap}.`
@@ -659,7 +659,7 @@ function averageRateFormula(r: Random): Case {
       prompt: `A function $f$ has f(${n(p0)}) = ${n(fp)} and f(${n(q0)}) = ${n(fq)}. What is the average rate of change of $f$ from x = ${n(p0)} to x = ${n(q0)}?`,
       answer: ans,
       explanation: [
-        `The average rate of change is the change in $f$ divided by the change in x: (f(${n(q0)}) − f(${n(p0)})) ÷ (${n(q0)} − ${p(p0)}).`,
+        `The average rate of change is the change in $f$ divided by the change in $x$: $(f(${n(q0)}) − f(${n(p0)})) ÷ (${n(q0)} − ${p(p0)})$.`,
         `Change in $f$: ${n(fq)} − ${p(fp)} = ${n(fq - fp)}. Change in $x$: ${n(q0)} − ${p(p0)} = ${q0 - p0}.`,
         `Average rate of change: ${quotient(fq - fp, q0 - p0)}.`,
       ],
@@ -679,7 +679,7 @@ function averageRateFormula(r: Random): Case {
     const a = nonzero(r, -3, 3),
       b = r(-6, 6),
       c = r(-9, 9);
-    rule = `f(x) = ${quadText(a, b, c)}`;
+    rule = `$f(x) = ${quadText(a, b, c)}$`;
     at = (x) => a * x * x + b * x + c;
     sub = (x) => quadAt(a, b, c, x);
     p0 = r(-4, 3);
@@ -687,7 +687,7 @@ function averageRateFormula(r: Random): Case {
   } else if (frame === "exponential") {
     const base = pick(r, [2, 3]),
       c = r(1, 5);
-    rule = `f(x) = ${c === 1 ? "" : `${c} · `}${base}^x`;
+    rule = `$f(x) = ${c === 1 ? "" : `${c} · `}${base}^x$`;
     at = (x) => c * base ** x;
     sub = (x) => `${c === 1 ? "" : `${c} · `}${base}^${x}`;
     p0 = r(0, 2);
@@ -709,17 +709,17 @@ function averageRateFormula(r: Random): Case {
   const ans = rat(fq - fp, q0 - p0);
   const context =
     frame === "height"
-      ? `A ball's height, in feet, $t$ seconds after it is thrown up is ${rule}. Find its average rate of change, in feet per second, from t = ${p0} to t = ${q0}.`
-      : `For ${rule}, what is the average rate of change of $f$ from x = ${n(p0)} to x = ${n(q0)}?`;
+      ? `A ball's height, in feet, $t$ seconds after it is thrown up is ${rule}. Find its average rate of change, in feet per second, from $t = ${p0}$ to $t = ${q0}$.`
+      : `For ${rule}, what is the average rate of change of $f$ from $x = ${n(p0)}$ to $x = ${n(q0)}$?`;
   return {
     prompt: context,
     answer: ans,
     explanation: [
-      `Evaluate at both ends: ${name}(${n(q0)}) = ${sub(q0)} = ${n(fq)} and ${name}(${n(p0)}) = ${sub(p0)} = ${n(fp)}.`,
-      `Average rate of change = (${name}(${n(q0)}) − ${name}(${n(p0)})) ÷ (${n(q0)} − ${p(p0)}) = (${n(fq)} − ${p(fp)}) ÷ ${q0 - p0} = ${quotient(fq - fp, q0 - p0)}.`,
+      `Evaluate at both ends: $${name}(${n(q0)}) = ${sub(q0)} = ${n(fq)}$ and $${name}(${n(p0)}) = ${sub(p0)} = ${n(fp)}$.`,
+      `The average rate of change is $(${name}(${n(q0)}) − ${name}(${n(p0)})) ÷ (${n(q0)} − ${p(p0)}) = (${n(fq)} − ${p(fp)}) ÷ ${q0 - p0} = ${quotient(fq - fp, q0 - p0)}$.`,
       `So it is ${fraction(ans)}${unit ? ` ${unit}` : ""}: the slope of the line through (${n(p0)}, ${n(fp)}) and (${n(q0)}, ${n(fq)}).`,
     ],
-    hint: `Find ${name}(${n(q0)}) and ${name}(${n(p0)}) from ${rule} first. Then divide their difference by the change in ${v}, ${n(q0)} − ${p(p0)}.`,
+    hint: `Find $${name}(${n(q0)})$ and $${name}(${n(p0)})$ from ${rule} first. Then divide their difference by the change in $${v}$, ${n(q0)} − ${p(p0)}.`,
     tags: [frame, ans.d === 1 ? "integer" : "fraction"],
   };
 }
@@ -754,34 +754,34 @@ function averageRateDisplay(r: Random): Case {
           title: "Graph of f with a secant through A and B",
           steps: [
             step(
-              `$A$ is the point of the curve at x = ${n(p0)}; B is the point at x = ${n(q0)}.`,
+              `A is the point of the curve at x = ${n(p0)}; B is the point at x = ${n(q0)}.`,
               act.highlight("g.point.0"),
               act.highlight("g.point.1"),
             ),
             step(
-              `The secant line joins $A$ and B. Its slope is the average rate of change.`,
+              `The secant line joins A and B. Its slope is the average rate of change.`,
               act.highlight("g.secant.0"),
             ),
             step(
-              `Run: $x$ goes from ${n(p0)} to ${n(q0)}, {$g$.slope.0.run.label}. Rise: from $A$ to B the output changes by {$g$.slope.0.rise.label}.`,
+              `Run: $x$ goes from ${n(p0)} to ${n(q0)}, {g.slope.0.run.label}. Rise: from A to B the output changes by {g.slope.0.rise.label}.`,
               act.appear("g.slope.0"),
             ),
             lessonStep(
-              `Average rate of change = rise ÷ run = {$g$.slope.0.rise.label} ÷ {$g$.slope.0.run.label}.`,
+              `Average rate of change = rise ÷ run = {g.slope.0.rise.label} ÷ {g.slope.0.run.label}.`,
               act.highlight("g.slope.0"),
             ),
           ],
         });
       return {
-        prompt: `The graph of y = f(x) passes through $A$ at x = ${n(p0)} and B at x = ${n(q0)}. What is the average rate of change of $f$ from x = ${n(p0)} to x = ${n(q0)}?`,
+        prompt: `The graph of y = f(x) passes through A at x = ${n(p0)} and B at x = ${n(q0)}. What is the average rate of change of $f$ from x = ${n(p0)} to x = ${n(q0)}?`,
         answer: ans,
         scene,
         explanation: [
-          `Read the coordinates from the grid: $A = (${n(p0)}, ${n(fp)})$ and $B = (${n(q0)}, ${n(fq)})$.`,
+          `Read the coordinates from the grid: A = (${n(p0)}, ${n(fp)}) and B = (${n(q0)}, ${n(fq)}).`,
           `The average rate of change is the slope of the secant line AB: (${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}.`,
-          `So it is ${fraction(ans)}. A curve does not change at one constant rate, but from $A$ to B, $f$ changes by ${fraction(ans)} for each 1 that $x$ increases on average.`,
+          `So it is ${fraction(ans)}. A curve does not change at one constant rate, but from A to B, $f$ changes by ${fraction(ans)} for each 1 that $x$ increases on average.`,
         ],
-        hint: `Read the $y$-values of $A$ (at $x = ${n(p0)}$) and B (at $x = ${n(q0)}$) from the grid. The average rate is the rise from $A$ to B divided by the run, ${n(q0)} − ${p(p0)}.`,
+        hint: `Read the $y$-values of A (at $x = ${n(p0)}$) and B (at $x = ${n(q0)}$) from the grid. The average rate is the rise from A to B divided by the run, ${n(q0)} − ${p(p0)}.`,
         tags: [frame, a > 0 ? "opens-up" : "opens-down"],
       };
     }
@@ -839,7 +839,7 @@ function averageRateDisplay(r: Random): Case {
   const ctx = pick(r, [
     {
       prompt: (a: number, b: number) =>
-        `The table shows the temperature $T$, in degrees Fahrenheit, $h$ hours after 6 a.m. What is the average rate of change of $T$, in degrees per hour, from h = ${a} to h = ${b}?`,
+        `The table shows the temperature T, in degrees Fahrenheit, $h$ hours after 6 a.m. What is the average rate of change of T, in degrees per hour, from h = ${a} to h = ${b}?`,
       heads: ["h", "T"],
       when: (x: number) => `at h = ${x}`,
       xs: [0, 1, 2, 3, 4, 5],
@@ -886,7 +886,7 @@ function averageRateDisplay(r: Random): Case {
           act.highlight(`t.cell.0.${j + 1}`),
         ),
         step(
-          `Take ${ctx.heads[1]} at each end, then divide the change in ${ctx.heads[1]} by the change in ${ctx.heads[0]}, ${n(q0)} − ${p(p0)}.`,
+          `Take $${ctx.heads[1]}$ at each end, then divide the change in $${ctx.heads[1]}$ by the change in ${ctx.heads[0]}, ${n(q0)} − ${p(p0)}.`,
           act.highlight(`t.cell.1.${i + 1}`),
           act.highlight(`t.cell.1.${j + 1}`),
         ),
@@ -899,9 +899,9 @@ function averageRateDisplay(r: Random): Case {
     explanation: [
       `${ctx.when(p0)[0]!.toUpperCase()}${ctx.when(p0).slice(1)}, ${ctx.heads[1]} = ${n(fp)}; ${ctx.when(q0)}, ${ctx.heads[1]} = ${n(fq)}.`,
       `Average rate of change = (${n(fq)} − ${p(fp)}) ÷ (${q0} − ${p0}) = ${quotient(fq - fp, q0 - p0)}.`,
-      `So ${ctx.heads[1]} changed on average by ${fraction(ans)} ${ratEqOne(ans) ? ctx.unit.replace("degrees", "degree").replace("thousand people", "thousand people") : ctx.unit}, though it did not change by the same amount in every step.`,
+      `So $${ctx.heads[1]}$ changed on average by ${fraction(ans)} ${ratEqOne(ans) ? ctx.unit.replace("degrees", "degree").replace("thousand people", "thousand people") : ctx.unit}, though it did not change by the same amount in every step.`,
     ],
-    hint: `Take ${ctx.heads[1]} ${ctx.when(p0)} and ${ctx.when(q0)} from the shaded columns. Divide their difference by the time between them, ${q0} − ${p0}.`,
+    hint: `Take $${ctx.heads[1]}$ ${ctx.when(p0)} and ${ctx.when(q0)} from the shaded columns. Divide their difference by the time between them, ${q0} − ${p0}.`,
     tags: [frame, ctx.heads[1]!, ans.d === 1 ? "integer" : "fraction"],
   };
 }
@@ -918,8 +918,8 @@ function linearModelValue(r: Random): Case {
     const ctx = pick(r, [
       {
         who: "Maya",
-        what: "A gym charges a joining fee of $F$ dollars plus $R$ dollars per month",
-        did: "Maya has paid $T$ dollars in all",
+        what: "A gym charges a joining fee of F dollars plus R dollars per month",
+        did: "Maya has paid T dollars in all",
         ask: "For how many months has she been a member?",
         v: "m",
         unit: "months",
@@ -928,8 +928,8 @@ function linearModelValue(r: Random): Case {
       },
       {
         who: "Leo",
-        what: "A plumber charges $F$ dollars for a visit plus $R$ dollars per hour",
-        did: "Leo's bill is $T$ dollars",
+        what: "A plumber charges F dollars for a visit plus R dollars per hour",
+        did: "Leo's bill is T dollars",
         ask: "How many hours did the plumber work?",
         v: "h",
         unit: "hours",
@@ -938,8 +938,8 @@ function linearModelValue(r: Random): Case {
       },
       {
         who: "Ana",
-        what: "A bike rental costs $F$ dollars plus $R$ dollars per hour",
-        did: "Ana paid $T$ dollars",
+        what: "A bike rental costs F dollars plus R dollars per hour",
+        did: "Ana paid T dollars",
         ask: "For how many hours did she rent the bike?",
         v: "h",
         unit: "hours",
@@ -952,19 +952,19 @@ function linearModelValue(r: Random): Case {
       k = r(3, ctx.v === "m" ? 14 : 8);
     const total = fee + rate * k;
     const opening = ctx.what
-      .replace("$F$ dollars", `${usd(fee)}`)
-      .replace("$R$ dollars", `${usd(rate)}`);
-    const did = ctx.did.replace("$T$ dollars", `${usd(total)}`);
+      .replace("F dollars", `${usd(fee)}`)
+      .replace("R dollars", `${usd(rate)}`);
+    const did = ctx.did.replace("T dollars", `${usd(total)}`);
     return {
       prompt: `${opening}. ${did}. ${ctx.ask}`,
       answer: rat(k),
       explanation: [
-        `Let ${ctx.v} be the number of ${ctx.unit}. The fixed ${usd(fee)} plus ${usd(rate)} for each of the ${ctx.v} ${ctx.unit} is the total: ${fee} + ${rate}${ctx.v} = ${total}.`,
+        `Let $${ctx.v}$ be the number of ${ctx.unit}. The fixed ${usd(fee)} plus ${usd(rate)} for each of the $${ctx.v}$ ${ctx.unit} is the total: ${fee} + ${rate}${ctx.v} = ${total}.`,
         `Subtract ${fee} from both sides: ${rate}${ctx.v} = ${total - fee}.`,
         `Divide both sides by ${rate}: ${ctx.v} = ${k}.`,
         `Check: ${fee} + ${rate} × ${k} = ${total}.`,
       ],
-      hint: `Call the number of ${ctx.unit} ${ctx.v}: the ${usd(fee)} is paid once and the ${usd(rate)} is paid ${ctx.v} times, so ${fee} + ${rate}${ctx.v} = ${total}. Undo the one-time ${usd(fee)} first.`,
+      hint: `Call the number of ${ctx.unit} $${ctx.v}$: the ${usd(fee)} is paid once and the ${usd(rate)} is paid $${ctx.v}$ times, so ${fee} + ${rate}${ctx.v} = ${total}. Undo the one-time ${usd(fee)} first.`,
       tags: [frame],
     };
   }
@@ -975,20 +975,20 @@ function linearModelValue(r: Random): Case {
     const a2 = r(0, 20),
       a1 = a2 + k * (b2 - b1);
     const ctx = pick(r, [
-      ["Phone plan $A$ costs", "Plan B costs", "per month", "months", "m"],
-      ["Gym $A$ charges", "Gym B charges", "per visit", "visits", "v"],
-      ["Car rental $A$ charges", "Rental B charges", "per day", "days", "d"],
+      ["Phone plan A costs", "Plan B costs", "per month", "months", "m"],
+      ["Gym A charges", "Gym B charges", "per visit", "visits", "v"],
+      ["Car rental A charges", "Rental B charges", "per day", "days", "d"],
     ] as const);
     return {
       prompt: `${ctx[0]} ${usd(a1)} plus ${usd(b1)} ${ctx[2]}. ${ctx[1]} ${usd(a2)} plus ${usd(b2)} ${ctx[2]}. After how many ${ctx[3]} do they cost the same?`,
       answer: rat(k),
       explanation: [
-        `Let ${ctx[4]} be the number of ${ctx[3]}. The costs are ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}; set them equal: ${a1} + ${b1}${ctx[4]} = ${a2} + ${b2}${ctx[4]}.`,
+        `Let $${ctx[4]}$ be the number of ${ctx[3]}. The costs are ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}; set them equal: ${a1} + ${b1}${ctx[4]} = ${a2} + ${b2}${ctx[4]}.`,
         `Subtract ${b1}${ctx[4]} and ${a2} from both sides: ${a1 - a2} = ${b2 - b1}${ctx[4]}.`,
         `Divide by ${b2 - b1}: ${ctx[4]} = ${k}.`,
         `Check: ${a1} + ${b1} × ${k} = ${a1 + b1 * k} and ${a2} + ${b2} × ${k} = ${a2 + b2 * k}.`,
       ],
-      hint: `Write each cost with ${ctx[4]} for the number of ${ctx[3]}, ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}, and set the two expressions equal.`,
+      hint: `Write each cost with $${ctx[4]}$ for the number of ${ctx[3]}, ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}, and set the two expressions equal.`,
       tags: [frame],
     };
   }
@@ -1017,21 +1017,21 @@ function linearModelValue(r: Random): Case {
   }
   const ctx = pick(r, [
     [
-      "A fair charges $E$ dollars to enter and $R$ dollars per ride",
+      "A fair charges $E$ dollars to enter and R dollars per ride",
       "Ana has B dollars",
       "What is the greatest number of rides she can take?",
       "rides",
       "r",
     ],
     [
-      "A taxi charges $E$ dollars plus $R$ dollars per mile",
+      "A taxi charges $E$ dollars plus R dollars per mile",
       "Sam has B dollars",
       "What is the greatest whole number of miles he can ride?",
       "miles",
       "m",
     ],
     [
-      "A print shop charges $E$ dollars to set up plus $R$ dollars per poster",
+      "A print shop charges $E$ dollars to set up plus R dollars per poster",
       "The club has B dollars",
       "What is the greatest number of posters it can order?",
       "posters",
@@ -1043,10 +1043,10 @@ function linearModelValue(r: Random): Case {
     k = r(4, 15);
   const B = e + rate * k + r(0, rate - 1);
   return {
-    prompt: `${ctx[0].replace("$E$ dollars", usd(e)).replace("$R$ dollars", usd(rate))}. ${ctx[1].replace("B dollars", usd(B))}. ${ctx[2]}`,
+    prompt: `${ctx[0].replace("$E$ dollars", usd(e)).replace("R dollars", usd(rate))}. ${ctx[1].replace("B dollars", usd(B))}. ${ctx[2]}`,
     answer: rat(k),
     explanation: [
-      `Let ${ctx[4]} be the number of ${ctx[3]}. The cost may not exceed the money available: ${e} + ${rate}${ctx[4]} ≤ ${B}.`,
+      `Let $${ctx[4]}$ be the number of ${ctx[3]}. The cost may not exceed the money available: ${e} + ${rate}${ctx[4]} ≤ ${B}.`,
       `Subtract ${e}: ${rate}${ctx[4]} ≤ ${B - e}. Divide by ${rate}: ${ctx[4]} ≤ ${fraction(rat(B - e, rate))}.`,
       `The number of ${ctx[3]} is a whole number, so the greatest is ${k}. Check: ${e} + ${rate} × ${k} = ${e + rate * k} ≤ ${B}, but ${e} + ${rate} × ${k + 1} = ${e + rate * (k + 1)} > ${B}.`,
     ],
@@ -1064,8 +1064,8 @@ function linearModelEquation(r: Random): Case {
       y: "F",
       x: "d",
       say: (b: number, m: number) =>
-        `A taxi charges ${usd(b)} plus ${usd(m)} per mile. $F$ is the fare, in dollars, for a ride of $d$ miles.`,
-      yName: "fare $F$, in dollars",
+        `A taxi charges ${usd(b)} plus ${usd(m)} per mile. F is the fare, in dollars, for a ride of $d$ miles.`,
+      yName: "fare F, in dollars",
       xName: "miles d",
     },
     {
@@ -1082,8 +1082,8 @@ function linearModelEquation(r: Random): Case {
       y: "L",
       x: "t",
       say: (b: number, m: number) =>
-        `A candle is ${b} cm long and burns ${m} cm each hour. $L$ is its length, in centimeters, after $t$ hours.`,
-      yName: "length $L$, in centimeters",
+        `A candle is ${b} cm long and burns ${m} cm each hour. L is its length, in centimeters, after $t$ hours.`,
+      yName: "length L, in centimeters",
       xName: "hours t",
     },
   ]);
@@ -1109,7 +1109,7 @@ function linearModelEquation(r: Random): Case {
   const candidates: Choice[] = [
     {
       label: s > 0 ? eq(b, m) : `${y} = ${m} − ${times(b)}${x}`,
-      feedback: `This swaps the starting amount and the rate. The rate multiplies ${x}; the starting amount is the value when ${x} = 0.`,
+      feedback: `This swaps the starting amount and the rate. The rate multiplies $${x}$; the starting amount is the value when $${x} = 0$.`,
     },
     {
       label:
@@ -1118,12 +1118,12 @@ function linearModelEquation(r: Random): Case {
           : `${y} = ${times(m)}${x} + ${b}`,
       feedback:
         s > 0
-          ? `The starting amount ${b} is added, not subtracted: when ${x} = 0, ${y} = ${b}.`
-          : `${y} decreases as ${x} grows, so ${m}${x} is subtracted from the starting ${b}.`,
+          ? `The starting amount ${b} is added, not subtracted: when $${x} = 0$, $${y} = ${b}$.`
+          : `$${y}$ decreases as $${x}$ grows, so $${m}${x}$ is subtracted from the starting ${b}.`,
     },
     {
       label: `${y} = ${times(s > 0 ? m + b : b - m)}${x}`,
-      feedback: `This gives ${y} = 0 when ${x} = 0, but the starting value is ${b}.`,
+      feedback: `This gives $${y} = 0$ when $${x} = 0$, but the starting value is ${b}.`,
     },
     {
       label: `${y} = ${times(m)}(${x} + ${b})`,
@@ -1131,12 +1131,12 @@ function linearModelEquation(r: Random): Case {
     },
   ];
   const wrong = distinct(correct, candidates);
-  const rateWords = `${ctx.kind === "fall" ? "falls" : "rises"} by ${m} for each 1 that ${x} increases`;
+  const rateWords = `${ctx.kind === "fall" ? "falls" : "rises"} by ${m} for each 1 that $${x}$ increases`;
   let prompt: string, scene, first: string, hint: string;
   if (frame === "words") {
-    prompt = `${ctx.say(b, m)} Which equation gives ${y} in terms of ${x}?`;
-    first = `The starting amount, when ${x} = 0, is ${b}, and ${y} ${rateWords}.`;
-    hint = `Find the value of ${y} when ${x} = 0, here ${b}, and how much ${y} changes for each 1 that ${x} increases, here ${m}. Which of the two multiplies ${x}?`;
+    prompt = `${ctx.say(b, m)} Which equation gives $${y}$ in terms of $${x}$?`;
+    first = `The starting amount, when $${x} = 0$, is ${b}, and $${y}$ ${rateWords}.`;
+    hint = `Find the value of $${y}$ when $${x} = 0$, here ${b}, and how much $${y}$ changes for each 1 that $${x}$ increases, here ${m}. Which of the two multiplies $${x}$?`;
   } else if (frame === "graph") {
     const top = Math.max(b, b + s * m * X);
     const yMax = top + (top % 2 ? 1 : 2);
@@ -1155,23 +1155,23 @@ function linearModelEquation(r: Random): Case {
         title: `Graph of ${ctx.yName} against ${ctx.xName}`,
         steps: [
           step(
-            `Start where the line meets the ${y}-axis, at ${x} = 0: that value is the starting amount.`,
+            `Start where the line meets the $${y}$-axis, at $${x} = 0$: that value is the starting amount.`,
             act.appear("g.point.0"),
           ),
           step(
-            `Walk 1 to the right, then ${ctx.kind === "fall" ? "down" : "up"} to the line: the change, {$g$.slope.0.rise.label}, is the rate.`,
+            `Walk 1 to the right, then ${ctx.kind === "fall" ? "down" : "up"} to the line: the change, {g.slope.0.rise.label}, is the rate.`,
             act.appear("g.slope.0"),
           ),
           lessonStep(
-            `So the rate, {$g$.slope.0.rise.label} for each 1 that ${x} increases, multiplies ${x}, and the starting amount is added to it.`,
+            `So the rate, {g.slope.0.rise.label} for each 1 that $${x}$ increases, multiplies $${x}$, and the starting amount is added to it.`,
             act.highlight("g.slope.0"),
           ),
         ],
       });
     const sayIt = ctx.say(b, m).split(". ")[1]!;
-    prompt = `The graph shows a linear relationship. ${sayIt} Which equation gives ${y} in terms of ${x}?`;
-    first = `The graph starts at (0, ${b}), so ${y} = ${b} when ${x} = 0. From (0, ${b}) to (1, ${b + s * m}) it ${ctx.kind === "fall" ? "falls" : "rises"} ${m}, so ${y} ${rateWords}.`;
-    hint = `Read where the line meets the ${y}-axis, at ${x} = 0, then count how far it ${ctx.kind === "fall" ? "falls" : "rises"} from ${x} = 0 to ${x} = 1. The first is the starting amount; the second multiplies ${x}.`;
+    prompt = `The graph shows a linear relationship. ${sayIt} Which equation gives $${y}$ in terms of $${x}$?`;
+    first = `The graph starts at (0, ${b}), so $${y} = ${b}$ when $${x} = 0$. From (0, ${b}) to (1, ${b + s * m}) it ${ctx.kind === "fall" ? "falls" : "rises"} ${m}, so $${y}$ ${rateWords}.`;
+    hint = `Read where the line meets the $${y}$-axis, at $${x} = 0$, then count how far it ${ctx.kind === "fall" ? "falls" : "rises"} from $${x} = 0$ to $${x} = 1$. The first is the starting amount; the second multiplies $${x}$.`;
   } else {
     const start = r(1, Math.max(1, X - 3));
     const xs = [start, start + 1, start + 2, start + 3];
@@ -1181,9 +1181,9 @@ function linearModelEquation(r: Random): Case {
       [y, ...xs.map((v) => n(yv(v)))],
     ]).scene({ title: `Values of ${y}` });
     const sayIt = ctx.say(b, m).split(". ")[1]!;
-    prompt = `The table shows a linear relationship. ${sayIt} Which equation gives ${y} in terms of ${x}?`;
-    first = `Each time ${x} increases by 1, ${y} changes by ${n(s * m)}, so the rate is ${n(s * m)}. Working back from (${xs[0]}, ${n(yv(xs[0]!))}) by ${xs[0]} step${xs[0] === 1 ? "" : "s"} gives ${y} = ${b} at ${x} = 0.`;
-    hint = `Find the change in ${y} from one column to the next; that is the rate. Then work back from ${x} = ${xs[0]} to ${x} = 0 to find the starting amount.`;
+    prompt = `The table shows a linear relationship. ${sayIt} Which equation gives $${y}$ in terms of $${x}$?`;
+    first = `Each time $${x}$ increases by 1, $${y}$ changes by ${n(s * m)}, so the rate is ${n(s * m)}. Working back from (${xs[0]}, ${n(yv(xs[0]!))}) by ${xs[0]} step${xs[0] === 1 ? "" : "s"} gives $${y} = ${b}$ at $${x} = 0$.`;
+    hint = `Find the change in $${y}$ from one column to the next; that is the rate. Then work back from $${x} = ${xs[0]}$ to $${x} = 0$ to find the starting amount.`;
   }
   return {
     prompt,
@@ -1191,8 +1191,8 @@ function linearModelEquation(r: Random): Case {
     scene,
     explanation: [
       first,
-      `A linear model is ${y} = (starting amount) + (rate)·${x}, so ${correct}.`,
-      `Check: at ${x} = 2 the equation gives ${y} = ${b + 2 * s * m}${ctx.kind === "fall" ? `, which is ${b} − 2 × ${m}` : `, which is ${b} + 2 × ${m}`}.`,
+      `A linear model is $${y}$ = (starting amount) + (rate)·$${x}$, so ${correct}.`,
+      `Check: at $${x} = 2$ the equation gives ${y} = ${b + 2 * s * m}${ctx.kind === "fall" ? `, which is ${b} − 2 × ${m}` : `, which is ${b} + 2 × ${m}`}.`,
     ],
     hint,
     tags: [frame, ctx.y],
@@ -1213,404 +1213,404 @@ type FormulaCase = {
 const formulas: FormulaCase[] = [
   {
     family: "geometry",
-    formula: "A = ½bh",
-    about: "the area $A$ of a triangle with base $b$ and height $h$",
+    formula: "$A = \\tfrac{1}{2}bh$",
+    about: "the area A of a triangle with base $b$ and height $h$",
     target: "h",
     others: "A and b",
-    correct: "h = 2A/b",
+    correct: "$h = 2A/b$",
     wrong: [
       [
-        "h = A/(2b)",
-        "Multiplying both sides by 2 gives 2A = bh; the 2 multiplies $A$.",
+        "$h = A/(2b)$",
+        "Multiplying both sides by 2 gives $2A = bh$; the 2 multiplies A.",
       ],
-      ["h = 2b/A", "Dividing 2A = bh by $b$ leaves h = 2A ÷ b, not b ÷ A."],
+      ["$h = 2b/A$", "Dividing $2A = bh$ by $b$ leaves $h = 2A ÷ b$, not $b ÷ A$."],
       [
-        "h = 2A − b",
+        "$h = 2A − b$",
         "$b$ multiplies $h$, so undo it by dividing, not subtracting.",
       ],
     ],
     steps: [
-      "Multiply both sides by 2: 2A = bh.",
-      "Divide both sides by $b$: h = 2A/b.",
+      "Multiply both sides by 2: $2A = bh$.",
+      "Divide both sides by $b$: $h = 2A/b$.",
     ],
   },
   {
     family: "geometry",
-    formula: "P = 2l + 2w",
+    formula: "$P = 2l + 2w$",
     about: "the perimeter $P$ of a rectangle with length $l$ and width $w$",
     target: "w",
     others: "P and l",
-    correct: "w = (P − 2l)/2",
+    correct: "$w = (P − 2l)/2$",
     wrong: [
       [
-        "w = P/2 − 2l",
-        "Dividing by 2 must divide every term: (P − 2l)/2 = P/2 − l.",
+        "$w = P/2 − 2l$",
+        "Dividing by 2 must divide every term: $(P − 2l)/2 = P/2 − l$.",
       ],
-      ["w = (P − l)/2", "The term to remove is 2l, not $l$."],
+      ["$w = (P − l)/2$", "The term to remove is 2l, not $l$."],
       [
-        "w = P − 2l/2",
-        "Only half of $P$ remains after dividing; the whole P − 2l is divided by 2.",
+        "$w = P − 2l/2$",
+        "Only half of $P$ remains after dividing; the whole $P − 2l$ is divided by 2.",
       ],
     ],
     steps: [
-      "Subtract 2l from both sides: P − 2l = 2w.",
-      "Divide both sides by 2: w = (P − 2l)/2.",
+      "Subtract 2l from both sides: $P − 2l = 2w$.",
+      "Divide both sides by 2: $w = (P − 2l)/2$.",
     ],
   },
   {
     family: "geometry",
-    formula: "V = lwh",
+    formula: "$V = lwh$",
     about: "the volume $V$ of a box with length $l$, width $w$ and height $h$",
     target: "h",
-    others: "$V$, l and w",
-    correct: "$h = V$/(lw)",
+    others: "$V$, $l$ and $w$",
+    correct: "$h = V/(lw)$",
     wrong: [
-      ["h = Vlw", "$l$ and $w$ multiply $h$, so divide by them."],
-      ["h = lw/V", "This divides lw by $V$; it should divide $V$ by lw."],
-      ["h = V − lw", "lw multiplies $h$; undo multiplication by dividing."],
+      ["$h = Vlw$", "$l$ and $w$ multiply $h$, so divide by them."],
+      ["$h = lw/V$", "This divides lw by $V$; it should divide $V$ by lw."],
+      ["$h = V − lw$", "lw multiplies $h$; undo multiplication by dividing."],
     ],
     steps: [
-      "The product lw multiplies $h$: V = (lw)$h$.",
-      "Divide both sides by lw: $h = V$/(lw).",
+      "The product lw multiplies $h$: $V = (lw)h$.",
+      "Divide both sides by lw: $h = V/(lw)$.",
     ],
   },
   {
     family: "science",
-    formula: "d = rt",
+    formula: "$d = rt$",
     about: "the distance $d$ traveled at rate $r$ for time $t$",
     target: "t",
     others: "d and r",
-    correct: "t = d/r",
+    correct: "$t = d/r$",
     wrong: [
-      ["t = r/d", "Dividing $d$ = rt by $r$ leaves d ÷ r, with $d$ on top."],
-      ["t = dr", "$r$ multiplies $t$, so divide by $r$."],
-      ["t = d − r", "$r$ multiplies $t$; undo it by dividing, not subtracting."],
+      ["$t = r/d$", "Dividing $d = rt$ by $r$ leaves $d ÷ r$, with $d$ on top."],
+      ["$t = dr$", "$r$ multiplies $t$, so divide by $r$."],
+      ["$t = d − r$", "$r$ multiplies $t$; undo it by dividing, not subtracting."],
     ],
-    steps: ["$r$ multiplies $t$, so divide both sides by $r$.", "t = d/r."],
+    steps: ["$r$ multiplies $t$, so divide both sides by $r$.", "$t = d/r$."],
   },
   {
     family: "science",
-    formula: "F = 9C/5 + 32",
-    about: "a temperature $F$ in degrees Fahrenheit from $C$ in degrees Celsius",
+    formula: "$F = 9C/5 + 32$",
+    about: "a temperature F in degrees Fahrenheit from $C$ in degrees Celsius",
     target: "C",
     others: "F",
-    correct: "C = 5(F − 32)/9",
+    correct: "$C = 5(F − 32)/9$",
     wrong: [
       [
-        "C = 5F/9 − 32",
+        "$C = 5F/9 − 32$",
         "Undo the steps in reverse order: subtract 32 first, then multiply by 5/9.",
       ],
-      ["C = 9(F − 32)/5", "Undo × 9/5 by multiplying by its reciprocal, 5/9."],
+      ["$C = 9(F − 32)/5$", "Undo × 9/5 by multiplying by its reciprocal, 5/9."],
       [
-        "C = (5F − 32)/9",
-        "Subtract 32 from $F$ before multiplying; 32 is not multiplied by 5.",
+        "$C = (5F − 32)/9$",
+        "Subtract 32 from F before multiplying; 32 is not multiplied by 5.",
       ],
     ],
     steps: [
-      "Subtract 32 from both sides: F − 32 = 9C/5.",
-      "Multiply both sides by 5/9: C = 5(F − 32)/9.",
+      "Subtract 32 from both sides: $F − 32 = 9C/5$.",
+      "Multiply both sides by 5/9: $C = 5(F − 32)/9$.",
     ],
   },
   {
     family: "science",
-    formula: "$v$ = $u$ + at",
+    formula: "$v = u + at$",
     about:
       "the speed $v$ after accelerating at a for time $t$ from a starting speed $u$",
     target: "a",
-    others: "v, u and t",
-    correct: "a = (v − u)/t",
+    others: "$v$, $u$ and $t$",
+    correct: "$a = (v − u)/t$",
     wrong: [
-      ["a = v/t − u", "Subtract $u$ first, then divide all of v − u by $t$."],
+      ["$a = v/t − u$", "Subtract $u$ first, then divide all of $v − u$ by $t$."],
       [
-        "a = (v + u)/t",
+        "$a = (v + u)/t$",
         "$u$ is added on the right, so subtract it from both sides.",
       ],
-      ["a = t/(v − u)", "Divide v − u by t, not t by v − u."],
+      ["$a = t/(v − u)$", "Divide $v − u$ by $t$, not $t$ by $v − u$."],
     ],
     steps: [
-      "Subtract $u$ from both sides: $v$ − $u$ = at.",
-      "Divide both sides by $t: a = (v - u)/t$.",
+      "Subtract $u$ from both sides: $v − u = at$.",
+      "Divide both sides by $t$: $a = (v − u)/t$.",
     ],
   },
   {
     family: "finance",
-    formula: "I = Prt",
+    formula: "$I = Prt$",
     about: "the simple interest I on a principal $P$ at rate $r$ for $t$ years",
     target: "r",
     others: "I, $P$ and $t$",
-    correct: "r = I/(Pt)",
+    correct: "$r = I/(Pt)$",
     wrong: [
-      ["r = IPt", "$P$ and $t$ multiply $r$, so divide by them."],
-      ["r = Pt/I", "This divides Pt by I; it should divide I by Pt."],
+      ["$r = IPt$", "$P$ and $t$ multiply $r$, so divide by them."],
+      ["$r = Pt/I$", "This divides Pt by I; it should divide I by Pt."],
       [
-        "r = I/P − t",
+        "$r = I/P − t$",
         "$t$ multiplies $r$ too, so divide by $t$ as well; do not subtract it.",
       ],
     ],
     steps: [
-      "$P$ and $t$ both multiply $r$: I = (Pt)$r$.",
-      "Divide both sides by Pt: r = I/(Pt).",
+      "$P$ and $t$ both multiply $r$: $I = (Pt)r$.",
+      "Divide both sides by Pt: $r = I/(Pt)$.",
     ],
   },
   {
     family: "finance",
-    formula: "$A$ = $P$ + Prt",
+    formula: "$A = P + Prt$",
     about:
-      "the amount $A$ after simple interest on a principal $P$ at rate $r$ for $t$ years",
+      "the amount A after simple interest on a principal $P$ at rate $r$ for $t$ years",
     target: "t",
-    others: "A, P and $r$",
-    correct: "$t = (A − P)$/(Pr)",
+    others: "A, $P$ and $r$",
+    correct: "$t = (A − P)/(Pr)$",
     wrong: [
-      ["t = A/(Pr) − P", "Subtract $P$ first, then divide all of A − P by Pr."],
-      ["t = (A − P)/r", "$P$ multiplies $t$ too: divide by $P$ and by $r$."],
+      ["$t = A/(Pr) − P$", "Subtract $P$ first, then divide all of $A − P$ by Pr."],
+      ["$t = (A − P)/r$", "$P$ multiplies $t$ too: divide by $P$ and by $r$."],
       [
-        "$t = (A + P)$/(Pr)",
+        "$t = (A + P)/(Pr)$",
         "$P$ is added on the right, so subtract it from both sides.",
       ],
     ],
     steps: [
-      "Subtract $P$ from both sides: $A$ − $P$ = Prt.",
-      "Divide both sides by Pr: $t = (A − P)$/(Pr).",
+      "Subtract $P$ from both sides: $A − P = Prt$.",
+      "Divide both sides by Pr: $t = (A − P)/(Pr)$.",
     ],
   },
   {
     family: "lines",
-    formula: "y = mx + b",
-    about: "a line with slope m and y-intercept $b$",
+    formula: "$y = mx + b$",
+    about: "a line with slope $m$ and $y$-intercept $b$",
     target: "x",
-    others: "$y$, m and b",
-    correct: "x = (y − b)/m",
+    others: "$y$, $m$ and $b$",
+    correct: "$x = (y − b)/m$",
     wrong: [
-      ["x = y/m − b", "Subtract $b$ first, then divide all of y − b by $m$."],
-      ["x = (y + b)/m", "$b$ is added on the right, so subtract it."],
-      ["x = m/(y − b)", "Divide y − b by m, not m by y − b."],
+      ["$x = y/m − b$", "Subtract $b$ first, then divide all of $y − b$ by $m$."],
+      ["$x = (y + b)/m$", "$b$ is added on the right, so subtract it."],
+      ["$x = m/(y − b)$", "Divide $y − b$ by $m$, not $m$ by $y − b$."],
     ],
     steps: [
-      "Subtract $b$ from both sides: y − b = mx.",
-      "Divide both sides by $m: x = (y - b)/m$.",
+      "Subtract $b$ from both sides: $y − b = mx$.",
+      "Divide both sides by $m$: $x = (y − b)/m$.",
     ],
   },
   {
     family: "lines",
-    formula: "ax + by = $c$",
+    formula: "$ax + by = c$",
     about: "a line in standard form, with $b$ nonzero",
     target: "y",
-    others: "$x$, a, b and c",
-    correct: "y = (c − ax)/b",
+    others: "$x$, $a$, $b$ and $c$",
+    correct: "$y = (c − ax)/b$",
     wrong: [
-      ["y = c/b − ax", "Divide every term by $b$: (c − ax)/b = c/b − ax/b."],
+      ["$y = c/b − ax$", "Divide every term by $b$: $(c − ax)/b = c/b − ax/b$."],
       [
-        "y = (c + ax)/b",
+        "$y = (c + ax)/b$",
         "ax is added on the left, so subtract it from both sides.",
       ],
       [
-        "y = (ax − c)/b",
-        "Subtracting ax from both sides gives c − ax, not ax − c.",
+        "$y = (ax − c)/b$",
+        "Subtracting ax from both sides gives $c − ax$, not $ax − c$.",
       ],
     ],
     steps: [
-      "Subtract ax from both sides: by = $c$ − ax.",
-      "Divide both sides by $b$: y = (c − ax)/b.",
+      "Subtract ax from both sides: $by = c − ax$.",
+      "Divide both sides by $b$: $y = (c − ax)/b$.",
     ],
   },
   {
     family: "lines",
-    formula: "y − k = m(x − h)",
+    formula: "$y − k = m(x − h)$",
     about: "a line through $(h, k)$ with slope $m$",
     target: "x",
-    others: "$y$, k, m and h",
-    correct: "x = (y − k)/m + h",
+    others: "$y$, $k$, $m$ and $h$",
+    correct: "$x = (y − k)/m + h$",
     wrong: [
-      ["x = (y − k)/m − h", "x − h = (y − k)/m, so add $h$ to both sides."],
-      ["x = m(y − k) + h", "Divide by $m$ to undo multiplication by $m$."],
-      ["x = (y + k)/m + h", "Keep y − k as it is: only $m$ and $h$ are undone."],
+      ["$x = (y − k)/m − h$", "$x − h = (y − k)/m$, so add $h$ to both sides."],
+      ["$x = m(y − k) + h$", "Divide by $m$ to undo multiplication by $m$."],
+      ["$x = (y + k)/m + h$", "Keep $y − k$ as it is: only $m$ and $h$ are undone."],
     ],
     steps: [
-      "Divide both sides by $m: (y - k)/m = x - h$.",
-      "Add $h$ to both sides: x = (y − k)/m + h.",
+      "Divide both sides by $m$: $(y − k)/m = x − h$.",
+      "Add $h$ to both sides: $x = (y − k)/m + h$.",
     ],
   },
   {
     family: "geometry",
-    formula: "C = 2πr",
+    formula: "$C = 2πr$",
     about: "the circumference $C$ of a circle with radius $r$",
     target: "r",
     others: "C",
-    correct: "$r = C$/($2\\pi$)",
+    correct: "$r = C/(2π)$",
     wrong: [
-      ["r = 2πC", "2π multiplies $r$, so divide by 2π."],
-      ["$r = C − 2$$\\pi$", "$2\\pi$ multiplies $r$; undo multiplication by dividing."],
-      ["$r = 2$$\\pi$/$C$", "Divide $C$ by 2π, not 2π by $C$."],
+      ["$r = 2πC$", "2π multiplies $r$, so divide by 2π."],
+      ["$r = C − 2π$", "$2\\pi$ multiplies $r$; undo multiplication by dividing."],
+      ["$r = 2π/C$", "Divide $C$ by 2π, not 2π by $C$."],
     ],
-    steps: ["$2\\pi$ multiplies $r$.", "Divide both sides by $2\\pi$: $r = C$/($2\\pi$)."],
+    steps: ["$2\\pi$ multiplies $r$.", "Divide both sides by $2\\pi$: $r = C/(2π)$."],
   },
   {
     family: "geometry",
-    formula: "$V$ = $\\pi r^2h$",
+    formula: "$V = πr²h$",
     about: "the volume $V$ of a cylinder with radius $r$ and height $h$",
     target: "h",
     others: "V and r",
-    correct: "$h = V$/($\\pi r^2$)",
+    correct: "$h = V/(πr²)$",
     wrong: [
-      ["h = V$\\pi r^2$", "$\\pi r^2$ multiplies $h$, so divide by it."],
-      ["$h$ = $\\pi r^2$/$V$", "Divide $V$ by πr², not πr² by $V$."],
-      ["$h$ = $V$ − $\\pi r^2$", "$\\pi r^2$ multiplies $h$; undo multiplication by dividing."],
+      ["$h = Vπr²$", "$\\pi r^2$ multiplies $h$, so divide by it."],
+      ["$h = πr²/V$", "Divide $V$ by πr², not πr² by $V$."],
+      ["$h = V − πr²$", "$\\pi r^2$ multiplies $h$; undo multiplication by dividing."],
     ],
     steps: [
-      "The product $\\pi r^2$ multiplies $h$: $V$ = ($\\pi r^2$)$h$.",
-      "Divide both sides by $\\pi r^2$: $h = V$/($\\pi r^2$).",
+      "The product $\\pi r^2$ multiplies $h$: $V = (πr²)h$.",
+      "Divide both sides by $\\pi r^2$: $h = V/(πr²)$.",
     ],
   },
   {
     family: "geometry",
-    formula: "P = 2l + 2w",
+    formula: "$P = 2l + 2w$",
     about: "the perimeter $P$ of a rectangle with length $l$ and width $w$",
     target: "l",
     others: "P and w",
-    correct: "l = (P − 2w)/2",
+    correct: "$l = (P − 2w)/2$",
     wrong: [
       [
-        "l = P/2 − 2w",
-        "Dividing by 2 must divide every term: (P − 2w)/2 = P/2 − w.",
+        "$l = P/2 − 2w$",
+        "Dividing by 2 must divide every term: $(P − 2w)/2 = P/2 − w$.",
       ],
-      ["l = (P − w)/2", "The term to remove is 2w, not $w$."],
+      ["$l = (P − w)/2$", "The term to remove is 2w, not $w$."],
       [
-        "l = (P + 2w)/2",
+        "$l = (P + 2w)/2$",
         "2w is added on the right, so subtract it from both sides.",
       ],
     ],
     steps: [
-      "Subtract 2w from both sides: P − 2w = 2l.",
-      "Divide both sides by 2: l = (P − 2w)/2.",
+      "Subtract 2w from both sides: $P − 2w = 2l$.",
+      "Divide both sides by 2: $l = (P − 2w)/2$.",
     ],
   },
   {
     family: "science",
-    formula: "d = rt",
+    formula: "$d = rt$",
     about: "the distance $d$ traveled at rate $r$ for time $t$",
     target: "r",
     others: "d and t",
-    correct: "r = d/t",
+    correct: "$r = d/t$",
     wrong: [
-      ["r = t/d", "Dividing $d$ = rt by $t$ leaves d ÷ t, with $d$ on top."],
-      ["r = dt", "$t$ multiplies $r$, so divide by $t$."],
-      ["r = d − t", "$t$ multiplies $r$; undo it by dividing, not subtracting."],
+      ["$r = t/d$", "Dividing $d = rt$ by $t$ leaves $d ÷ t$, with $d$ on top."],
+      ["$r = dt$", "$t$ multiplies $r$, so divide by $t$."],
+      ["$r = d − t$", "$t$ multiplies $r$; undo it by dividing, not subtracting."],
     ],
-    steps: ["$t$ multiplies $r$, so divide both sides by $t$.", "r = d/t."],
+    steps: ["$t$ multiplies $r$, so divide both sides by $t$.", "$r = d/t$."],
   },
   {
     family: "science",
-    formula: "F = ma",
-    about: "the force $F$ on a mass $m$ with acceleration $a$",
+    formula: "$F = ma$",
+    about: "the force F on a mass $m$ with acceleration $a$",
     target: "a",
     others: "F and m",
-    correct: "a = F/m",
+    correct: "$a = F/m$",
     wrong: [
-      ["a = m/F", "Dividing F = ma by $m$ leaves F ÷ m."],
-      ["a = Fm", "$m$ multiplies $a$, so divide by $m$."],
-      ["a = F − m", "$m$ multiplies $a$; undo multiplication by dividing."],
+      ["$a = m/F$", "Dividing $F = ma$ by $m$ leaves $F ÷ m$."],
+      ["$a = Fm$", "$m$ multiplies $a$, so divide by $m$."],
+      ["$a = F − m$", "$m$ multiplies $a$; undo multiplication by dividing."],
     ],
-    steps: ["$m$ multiplies $a$, so divide both sides by $m$.", "a = F/m."],
+    steps: ["$m$ multiplies $a$, so divide both sides by $m$.", "$a = F/m$."],
   },
   {
     family: "science",
-    formula: "$v$ = $u$ + at",
+    formula: "$v = u + at$",
     about:
       "the speed $v$ after accelerating at a for time $t$ from a starting speed $u$",
     target: "u",
-    others: "v, a and t",
-    correct: "$u$ = $v$ − at",
+    others: "$v$, $a$ and $t$",
+    correct: "$u = v − at$",
     wrong: [
-      ["$u$ = $v$ + at", "at is added to $u$, so subtract it from both sides."],
+      ["$u = v + at$", "at is added to $u$, so subtract it from both sides."],
       [
-        "u = (v − a)/t",
+        "$u = (v − a)/t$",
         "$a$ and $t$ multiply each other; at is one term to subtract.",
       ],
       [
-        "$u$ = at − $v$",
-        "Subtracting at from both sides gives $v$ − at, not at − $v$.",
+        "$u = at − v$",
+        "Subtracting at from both sides gives $v − at$, not $at − v$.",
       ],
     ],
-    steps: ["at is added to $u$.", "Subtract at from both sides: $u$ = $v$ − at."],
+    steps: ["at is added to $u$.", "Subtract at from both sides: $u = v − at$."],
   },
   {
     family: "finance",
-    formula: "I = Prt",
+    formula: "$I = Prt$",
     about: "the simple interest I on a principal $P$ at rate $r$ for $t$ years",
     target: "P",
-    others: "I, r and t",
-    correct: "P = I/(rt)",
+    others: "$I$, $r$ and $t$",
+    correct: "$P = I/(rt)$",
     wrong: [
-      ["P = Irt", "$r$ and $t$ multiply $P$, so divide by them."],
-      ["P = rt/I", "This divides rt by I; it should divide I by rt."],
-      ["P = I − rt", "rt multiplies $P$; undo multiplication by dividing."],
+      ["$P = Irt$", "$r$ and $t$ multiply $P$, so divide by them."],
+      ["$P = rt/I$", "This divides rt by I; it should divide I by rt."],
+      ["$P = I − rt$", "rt multiplies $P$; undo multiplication by dividing."],
     ],
     steps: [
-      "$r$ and $t$ both multiply $P$: $I = P$(rt).",
-      "Divide both sides by rt: P = I/(rt).",
+      "$r$ and $t$ both multiply $P$: $I = P(rt)$.",
+      "Divide both sides by rt: $P = I/(rt)$.",
     ],
   },
   {
     family: "finance",
-    formula: "T = p + px",
-    about: "the total $T$ paid on a price $p$ with a sales-tax rate $x$",
+    formula: "$T = p + px$",
+    about: "the total T paid on a price $p$ with a sales-tax rate $x$",
     target: "p",
     others: "T and x",
-    correct: "p = T/(1 + x)",
+    correct: "$p = T/(1 + x)$",
     wrong: [
       [
-        "p = T − x",
-        "$p$ appears twice: factor it out, T = p(1 + x), then divide.",
+        "$p = T − x$",
+        "$p$ appears twice: factor it out, $T = p(1 + x)$, then divide.",
       ],
       [
-        "p = T/x − 1",
-        "Factor first: $T = p(1 + x)$, so divide $T$ by all of $1 + x$.",
+        "$p = T/x − 1$",
+        "Factor first: $T = p(1 + x)$, so divide T by all of $1 + x$.",
       ],
-      ["p = (T − x)/2", "p + px is p(1 + x), not 2p + x."],
+      ["$p = (T − x)/2$", "$p + px$ is $p(1 + x)$, not $2p + x$."],
     ],
     steps: [
-      "Factor out $p: T = p(1 + x)$.",
-      "Divide both sides by 1 + x: p = T/(1 + x).",
+      "Factor out $p$: $T = p(1 + x)$.",
+      "Divide both sides by $1 + x$: $p = T/(1 + x)$.",
     ],
   },
   {
     family: "lines",
-    formula: "y = mx + b",
-    about: "a line with slope m and y-intercept $b$",
+    formula: "$y = mx + b$",
+    about: "a line with slope $m$ and $y$-intercept $b$",
     target: "b",
-    others: "y, $m$ and x",
-    correct: "b = y − mx",
+    others: "$y$, $m$ and $x$",
+    correct: "$b = y − mx$",
     wrong: [
-      ["b = y + mx", "mx is added to $b$, so subtract it from both sides."],
+      ["$b = y + mx$", "mx is added to $b$, so subtract it from both sides."],
       [
-        "b = mx − y",
-        "Subtracting mx from both sides gives y − mx, not mx − y.",
+        "$b = mx − y$",
+        "Subtracting mx from both sides gives $y − mx$, not $mx − y$.",
       ],
-      ["$b = y$/(mx)", "$b$ is added, not multiplied: subtract mx."],
+      ["$b = y/(mx)$", "$b$ is added, not multiplied: subtract mx."],
     ],
-    steps: ["mx is added to $b$.", "Subtract mx from both sides: b = y − mx."],
+    steps: ["mx is added to $b$.", "Subtract mx from both sides: $b = y − mx$."],
   },
   {
     family: "lines",
-    formula: "ax + by = $c$",
+    formula: "$ax + by = c$",
     about: "a line in standard form, with a nonzero",
     target: "x",
-    others: "$y$, a, b and c",
-    correct: "$x$ = ($c$ − by)/$a$",
+    others: "$y$, $a$, $b$ and $c$",
+    correct: "$x = (c − by)/a$",
     wrong: [
-      ["$x = c$/$a$ − by", "Divide every term by $a$: ($c$ − by)/$a = c$/$a$ − by/$a$."],
+      ["$x = c/a − by$", "Divide every term by $a$: $(c − by)/a = c/a − by/a$."],
       [
-        "$x$ = ($c$ + by)/$a$",
+        "$x = (c + by)/a$",
         "by is added on the left, so subtract it from both sides.",
       ],
       [
-        "$x$ = (by − c)/a",
-        "Subtracting by from both sides gives $c$ − by, not by − $c$.",
+        "$x = (by − c)/a$",
+        "Subtracting by from both sides gives $c − by$, not $by − c$.",
       ],
     ],
     steps: [
-      "Subtract by from both sides: ax = $c$ − by.",
-      "Divide both sides by a: x = ($c$ − by)/$a$.",
+      "Subtract by from both sides: $ax = c − by$.",
+      "Divide both sides by $a$: $x = (c − by)/a$.",
     ],
   },
 ];

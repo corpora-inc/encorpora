@@ -723,8 +723,8 @@ function storyCase(r: Random): Case {
     const diff = end - start;
     const prompt =
       which === "rise"
-        ? `At 5 a.m. the temperature was ${decimal(start)}°$C$. At 2 p.m. it was ${decimal(end)}°$C$. By how many degrees did the temperature rise?`
-        : `At noon the temperature was ${decimal(start)}°$C$. At midnight it was ${decimal(end)}°$C$. What was the change in temperature, in degrees? Give a drop as a negative number.`;
+        ? `At 5 a.m. the temperature was ${decimal(start)}°C. At 2 p.m. it was ${decimal(end)}°C. By how many degrees did the temperature rise?`
+        : `At noon the temperature was ${decimal(start)}°C. At midnight it was ${decimal(end)}°C. What was the change in temperature, in degrees? Give a drop as a negative number.`;
     return {
       prompt,
       answer: answerText(diff),
@@ -803,14 +803,14 @@ function storyCase(r: Random): Case {
   } while (start === 0 || end === 0 || start + riseBy === 0);
   const fall = -hours * rate;
   return {
-    prompt: `At 6 a.m. the temperature was ${decimal(start)}°$C$. By noon it had risen ${decimal(riseBy)}°$C$. Then it fell ${decimal(rate)}°$C$ each hour for ${hours} hours. What was the temperature then, in °$C$?`,
+    prompt: `At 6 a.m. the temperature was ${decimal(start)}°C. By noon it had risen ${decimal(riseBy)}°C. Then it fell ${decimal(rate)}°C each hour for ${hours} hours. What was the temperature then, in °C?`,
     answer: answerText(end),
     hint: `Start at ${decimal(start)}. The rise adds ${decimal(riseBy)}; falling ${decimal(rate)} each hour for ${hours} hours adds ${hours} × (−${decimal(rate)}).`,
     explanation: [
       `Rising is positive and falling is negative. The temperature starts at ${decimal(start)}.`,
-      `Falling ${decimal(rate)}°$C$ each hour for ${hours} hours is a change of ${hours} × ${operand(-rate)} = ${decimal(fall)}.`,
+      `Falling ${decimal(rate)}°C each hour for ${hours} hours is a change of ${hours} × ${operand(-rate)} = ${decimal(fall)}.`,
       `${decimal(start)} + ${decimal(riseBy)} + ${operand(fall)} = ${decimal(start + riseBy)} + ${operand(fall)} = ${decimal(end)}.`,
-      `The temperature was ${decimal(end)}°$C$.`,
+      `The temperature was ${decimal(end)}°C.`,
     ],
     tags: ["temperature", end < 0 ? "negative-answer" : "positive-answer"],
   };

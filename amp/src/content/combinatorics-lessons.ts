@@ -5,7 +5,7 @@ const stages: Lesson["sections"][number] = {
   title: "Stages, options and outcomes",
   paragraphs: [
     "This lesson uses whole-number multiplication. A counting problem describes a process made of stages. At each stage you make one choice from a list of options. An outcome is one complete result of the whole process: one choice at every stage. Two outcomes are different when at least one stage has a different choice.",
-    "For an outfit made of one shirt and one pair of pants, the stages are “choose a shirt” and “choose pants”. Shirt $A$ with pants 1 is one outcome; shirt $A$ with pants 2 is another. Counting outcomes means counting complete results, not counting the items on the lists.",
+    "For an outfit made of one shirt and one pair of pants, the stages are “choose a shirt” and “choose pants”. Shirt A with pants 1 is one outcome; shirt A with pants 2 is another. Counting outcomes means counting complete results, not counting the items on the lists.",
   ],
 };
 const probability: Lesson["sections"][number] = {

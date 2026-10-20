@@ -367,8 +367,8 @@ export function generateAlgebraProblem(
         cross = fraction(fee, delta),
         whole = templateId === "first-cheaper-whole-input";
       prompt = whole
-        ? `Plan A costs ${fee} + ${low}x dollars; $B$ costs ${high}x dollars. For whole inputs $x$ from 0 to 24, what is the first $x$ where A is strictly cheaper?`
-        : `Plan A costs ${fee} + ${low}x dollars; $B$ costs ${high}x dollars. For real inputs $x$ from 0 to 24, at what $x$ do they cost the same?`;
+        ? `Plan A costs ${fee} + ${low}x dollars; Plan B costs ${high}x dollars. For whole inputs $x$ from 0 to 24, what is the first $x$ where A is strictly cheaper?`
+        : `Plan A costs ${fee} + ${low}x dollars; Plan B costs ${high}x dollars. For real inputs $x$ from 0 to 24, at what $x$ do they cost the same?`;
       answer = whole ? String(Math.floor(fee / delta) + 1) : cross;
       label = whole ? "First whole input" : "Shared input";
       hint = whole
