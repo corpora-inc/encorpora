@@ -33,6 +33,7 @@ import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
+import { brand } from "../brand";
 import { FLAG_RATE_LIMIT, problemFlagSchema } from "../feedback/problem-flags";
 import { recordProblemFlag } from "../feedback/record";
 const idSchema = z.string().uuid();
@@ -171,7 +172,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
   const build = buildInfo();
   app.get("/api/v1/health", async () => ({
     ok: true,
-    product: "AMP",
+    product: brand.name,
     version: 1,
     ...build,
   }));

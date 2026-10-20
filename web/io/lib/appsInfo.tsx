@@ -1,11 +1,12 @@
 import { JSX } from "react";
-import { FaAppStore, FaGooglePlay, FaGamepad } from "react-icons/fa";
+import { FaAppStore, FaGooglePlay, FaGamepad, FaGlobe } from "react-icons/fa";
 import appsData from "@/data/apps.json";
 
 const ICON_MAP: Record<string, JSX.Element> = {
   appStore: <FaAppStore />,
   googlePlay: <FaGooglePlay />,
   gamepad: <FaGamepad />,
+  web: <FaGlobe />,
 };
 
 interface App {
@@ -15,6 +16,8 @@ interface App {
   icon: string;
   featured?: boolean;
   status?: string;
+  /** A web app opens its one platform link directly instead of an Install menu. */
+  action?: string;
   landingUrl?: string;
   github?: string;
   platforms: {
