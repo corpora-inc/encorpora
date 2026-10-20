@@ -26,6 +26,7 @@ from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, so
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
 from exponential_math_oracle import EXPONENTIAL, EXPONENTIAL_CHOICE, solve_exponential, review_exponential_fixtures
+from power_math_oracle import POWER, POWER_CHOICE, solve_power, review_power_fixtures, review_power_problem
 from coordinate_circle_math_oracle import COORDINATE_CIRCLE, solve_coordinate_circle, review_coordinate_circle_fixtures, review_coordinate_circle_problem
 from similarity_trig_math_oracle import SIMILARITY_TRIG, solve_similarity_trig, review_similarity_trig_fixtures, review_similarity_trig_problem
 from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
@@ -76,13 +77,13 @@ SUPPORTED = frozenset({
     'mean-data', 'right-triangle', 'quadratic-vertex', 'geometric-sequence',
     'logarithm-integer', 'place-value-digit', 'decimal-addition',
     'compare-fractions', 'multiply-fractions', 'divide-fractions', 'ratio-missing',
-    'percent-of', 'integer-addition', 'integer-power', 'line-slope',
+    'percent-of', 'integer-addition', 'line-slope',
     'linear-system-x', 'simple-probability', 'arithmetic-term',
     'function-evaluation', 'unit-price', 'decimal-multiplication', 'operation-order',
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE
+SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
@@ -140,6 +141,8 @@ def solve(public):
         return solve_similarity_trig(public)
     if template in COORDINATE_CIRCLE:
         return solve_coordinate_circle(public)
+    if template in POWER:
+        return solve_power(public)
     if template in PATTERN_FUNCTION:
         return solve_pattern_function(public)
     if template in EQUATIONS:
@@ -360,9 +363,6 @@ def solve(public):
     if template == 'integer-addition':
         left, right = numbers
         return left + right
-    if template == 'integer-power':
-        base, exponent = numbers
-        return base ** exponent
     if template == 'line-slope':
         x1, y1, x2, y2 = numbers
         return f(y2-y1, x2-x1)
@@ -420,6 +420,7 @@ def review(stream):
     review_probability_rules_fixtures()
     review_similarity_trig_fixtures()
     review_coordinate_circle_fixtures()
+    review_power_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
     review_equation_fixtures()
@@ -567,7 +568,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -589,6 +590,8 @@ def review(stream):
             review_similarity_trig_problem(problem, solved)
         if template in COORDINATE_CIRCLE:
             review_coordinate_circle_problem(problem, solved)
+        if template in POWER:
+            review_power_problem(problem, solved)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)
