@@ -160,7 +160,23 @@ const FeaturedApps = () => {
                     </p>
                   )}
 
-                  {app.platforms.length === 0 ? (
+                  {app.action && app.platforms.length === 1 ? (
+                    <Button
+                      asChild
+                      className="w-full bg-black hover:bg-gray-800 text-white font-medium rounded-lg"
+                    >
+                      <a
+                        href={app.platforms[0].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className="w-5 h-5 mr-2 flex items-center justify-center">
+                          {app.platforms[0].icon}
+                        </span>
+                        <span>{app.action}</span>
+                      </a>
+                    </Button>
+                  ) : app.platforms.length === 0 ? (
                     <Button
                       disabled
                       className="w-full bg-gray-200 text-gray-500 font-medium rounded-lg cursor-not-allowed"

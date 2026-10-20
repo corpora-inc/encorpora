@@ -43,7 +43,7 @@ import { readingFrames } from "../../books/reading";
 import { readerCapabilities } from "../../books/capabilities";
 import type { BookSummary } from "../../books/catalog";
 import type { FractionBook } from "../../../books/fraction-field-guide/schema";
-import { product } from "../../product";
+import { brand } from "../../brand";
 import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import {
   figureCapabilities,
@@ -1065,12 +1065,12 @@ function LegacyScreen() {
           }}
           className="brand"
           href="/"
-          aria-label={`${product.name} home`}
+          aria-label={`${brand.name} home`}
         >
           <svg viewBox="0 0 64 32" aria-hidden="true">
             <path d="M0 16 C8 16 8 1 16 1 S24 31 32 31 S40 1 48 1 S56 16 64 16" />
           </svg>
-          {product.name}
+          {brand.name}
           <span>MATHEMATICS</span>
         </a>
         <div className="account">
@@ -1722,7 +1722,7 @@ function LegacyScreen() {
       {!learner && !familyOpen && !nativeRuntime && (
         <footer>
           <span>
-            {product.name} · A {product.company} learning studio
+            {brand.name} · {brand.expansion} · {brand.company}
           </span>
           <span>
             {catalog?.mode === "development"

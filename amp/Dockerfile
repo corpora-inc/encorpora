@@ -32,6 +32,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 COPY --from=build /app/src ./src
 COPY --from=build /app/scripts ./scripts
+# External configuration (scripts/external-config.ts) runs from this image at deploy.
+COPY --from=build /app/infra ./infra
 COPY --from=build /app/migrations ./migrations
 COPY --from=build /app/books ./books
 COPY --from=build /app/tsconfig.json ./
