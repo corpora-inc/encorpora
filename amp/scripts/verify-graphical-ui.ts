@@ -202,17 +202,21 @@ try {
           height: stage.clientHeight,
           scroll: stage.scrollHeight,
         }));
-      // Phone landscape only has to stay usable; the others must fit.
+      // Phone landscape only has to stay usable (#1206); the others must fit
+      // with labels at a readable on-screen size. Label size there depends on
+      // how large the viewport lets the figure render, so it is a fit check.
+      // Clipping and overlap below are in figure units and apply everywhere.
       if (isPhoneLandscape(size)) await assertPhoneLandscapeSmoke(page, id);
-      else
+      else {
         assert.ok(
           geometry.scroll <= geometry.height + 2,
           `${id} ${size.width}: scrolling ${JSON.stringify(geometry)}`,
         );
-      assert.ok(
-        labels.every((l) => l.size >= 11.99),
-        `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,
-      );
+        assert.ok(
+          labels.every((l) => l.size >= 11.99),
+          `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,
+        );
+      }
       const clipped = await page
         .locator(".problem-content svg text")
         .evaluateAll((nodes) =>
