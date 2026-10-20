@@ -288,8 +288,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return { birthYear };
     });
   });
-  /** The free run: phase, totals, skills mastered and the map before and
-   * after practice. Only an anonymous trial has one. */
+  /** The free run: phase, totals, skills mastered, the map before and
+   * after practice, and the overall level over the run. Only an anonymous
+   * trial has one. */
   app.get("/api/v1/learners/:learnerId/trial-progress", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -304,6 +305,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           placement: placed ? await tx.frontierAfter(progress.placement) : null,
           current: await tx.frontier(),
         },
+        trend: await tx.frontierTrend(),
       };
     });
   });

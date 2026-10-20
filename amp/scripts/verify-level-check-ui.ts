@@ -7,6 +7,7 @@ import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { figureCapabilities } from "../src/math/contracts";
+import { generateProblem } from "../src/math/engine";
 import { trialLimits } from "../src/server/trials";
 import { migrate } from "./migrate";
 
@@ -60,8 +61,7 @@ const shots =
   new URL("../artifacts/level-check/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
 
-/** A trial with `answers` problems answered through the API, alternating
- * right and wrong so the estimate moves. */
+/** A trial with `answers` problems answered through the API. */
 async function trialWith(answers: number) {
   const created = await app.inject({
     method: "POST",
@@ -87,12 +87,17 @@ async function trialWith(answers: number) {
     });
     assert.equal(batch.statusCode, 200, batch.body);
     const problem = batch.json().problems[0];
+    // Most answers right (from the generator), every fourth one wrong, so
+    // the estimate settles at a believable level.
+    const solution = generateProblem(problem.templateId, problem.seed);
     const response =
-      problem.response?.kind === "choice"
-        ? problem.response.options[i % 3 === 0 ? 1 : 0].id
-        : i % 3 === 0
-          ? "999999"
-          : "1";
+      i % 4 !== 3
+        ? solution.answer
+        : problem.response?.kind === "choice"
+          ? problem.response.options.find(
+              (o: { id: string }) => o.id !== solution.answer,
+            ).id
+          : "999999";
     const attempt = await app.inject({
       method: "POST",
       url: `/api/v1/learners/${learnerId}/attempts`,
@@ -191,6 +196,39 @@ async function shoot(page: Page, name: string, tag: string, full = false) {
   });
 }
 
+/** Answers the current problem through the visible controls. */
+async function answerOne(page: Page, correct: boolean) {
+  await page.locator(".problem-stage .question").waitFor();
+  const compact = page.locator(".compact-answer-action");
+  if (await compact.isVisible()) await compact.click();
+  const attempt = page.waitForResponse((r) => r.url().endsWith("/attempts"));
+  const choice = page.locator(".choice-option:visible");
+  if (await choice.count()) {
+    await choice.nth(correct ? 0 : 1).click();
+    await page.locator(".choice-submit:visible").click();
+  } else {
+    const input = page.locator("#answer:visible");
+    await input.fill(correct ? "1" : "999999");
+    await input.press("Enter");
+  }
+  assert.equal((await attempt).status(), 200);
+  await page.locator(".next-action").waitFor();
+}
+async function used(learnerId: string, token: string) {
+  const response = await app.inject({
+    method: "GET",
+    url: `/api/v1/learners/${learnerId}/trial-progress`,
+    headers: { authorization: `Trial ${token}` },
+  });
+  return response.json().totals.answered as number;
+}
+async function eventually(check: () => boolean, label: string) {
+  for (let i = 0; i < 60 && !check(); i++)
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  assert.ok(check(), label);
+}
+const checkTitle = "Here’s where we think you are";
+
 const viewports = [
   [320, 568],
   [384, 700],
@@ -257,6 +295,152 @@ try {
       assert.deepEqual(faults, [], `${tag}: no page errors`);
       await context.close();
     }
+
+  // The level check: after every fifth problem, between problems.
+  let dismissal = 0;
+  for (const theme of ["light", "dark"] as const)
+    for (const [width, height] of viewports) {
+      const tag = `${width}x${height}-${theme}`;
+      const trial = await trialWith(PLACEMENT + 3);
+      const { context, page, events, faults } = await open(
+        theme,
+        width,
+        height,
+        trial.token,
+      );
+      contexts.push(context);
+      await page.goto(`${origin}/try/practice`);
+      const dialog = page.getByRole("dialog", { name: checkTitle });
+      await answerOne(page, true);
+      await page.locator(".next-action").click();
+      await answerOne(page, false);
+      // The fifth problem's feedback is never covered.
+      await page.waitForTimeout(400);
+      assert.equal(await dialog.count(), 0, `${tag}: feedback stays readable`);
+      await shoot(page, "check-before", tag);
+      await page.locator(".next-action").click();
+      await dialog.waitFor();
+      await page.locator(".problem-stage .question").waitFor();
+      assert.ok(page.url().endsWith("/try/practice"), `${tag}: same route`);
+      const text = (await dialog.textContent()) ?? "";
+      assert.match(text, /Level check · 25 answered/);
+      assert.match(text, /You’re about 10 and have answered 25 problems/);
+      assert.match(text, /Our current best guess is /);
+      assert.match(text, /Keep answering and we’ll sharpen this\./);
+      assert.ok(
+        await dialog
+          .getByRole("img", { name: /^Best guess over 25 problems/ })
+          .count(),
+        `${tag}: the trend is drawn and described`,
+      );
+      assert.ok(
+        (await dialog.locator("li[data-strand]").count()) > 0,
+        `${tag}: practiced areas are shown`,
+      );
+      await eventually(
+        () =>
+          events.some(
+            (e) =>
+              e.event === "level_check_view" &&
+              (e.props as { index: number }).index === 25,
+          ),
+        `${tag}: level_check_view is recorded with its count`,
+      );
+      // Over the next problem, which does not move beneath it.
+      const prompt = page.locator("#problem-prompt");
+      const before = await prompt.boundingBox();
+      await fits(page, `${tag} level check`);
+      const sheet = await dialog.boundingBox();
+      assert.ok(
+        sheet &&
+          sheet.x >= 0 &&
+          sheet.x + sheet.width <= width + 0.5 &&
+          sheet.y >= 0 &&
+          sheet.y + sheet.height <= height + 0.5,
+        `${tag}: the level check fits the screen`,
+      );
+      for (const action of await dialog.locator("button, a").all())
+        if (await action.isVisible()) {
+          const box = await action.boundingBox();
+          assert.ok(box && box.height >= 44, `${tag}: 44px actions`);
+        }
+      await shoot(page, "check-over-problem", tag);
+      // Escape, a tap outside, or Continue: each closes it.
+      let attempts = 0;
+      page.on("request", (request) => {
+        if (request.url().endsWith("/attempts")) attempts++;
+      });
+      const how = ["escape", "outside", "continue"][dismissal++ % 3];
+      if (how === "escape") await page.keyboard.press("Escape");
+      else if (how === "outside") await page.mouse.click(8, 8);
+      else await dialog.getByRole("button", { name: "Continue" }).click();
+      await dialog.waitFor({ state: "detached" });
+      assert.deepEqual(
+        await prompt.boundingBox(),
+        before,
+        `${tag}: the problem never moved (${how})`,
+      );
+      await page
+        .waitForFunction(
+          () =>
+            document.activeElement ===
+            document.querySelector("#problem-prompt"),
+          undefined,
+          { timeout: 1000 },
+        )
+        .catch(async () => {
+          const active = await page.evaluate(
+            () =>
+              `${document.activeElement?.tagName}.${document.activeElement?.className}`,
+          );
+          assert.fail(
+            `${tag}: focus returns to the problem (${how}: ${active})`,
+          );
+        });
+      // It is not a problem: nothing was answered or used.
+      assert.equal(attempts, 0, `${tag}: no answer was sent`);
+      assert.equal(await used(trial.learnerId, trial.token), 25);
+      assert.equal(
+        (await page.locator(".workspace-toolbar").getByText("25").count()) > 0,
+        true,
+        `${tag}: the meter still reads 25`,
+      );
+
+      // "See your full map" opens /try/map; back returns to the problem.
+      if (width === 390 || width === 1280) {
+        for (let i = 0; i < 4; i++) {
+          await answerOne(page, true);
+          await page.locator(".next-action").click();
+          await dialog.waitFor({ state: "detached" });
+        }
+        await answerOne(page, true);
+        await page.locator(".next-action").click();
+        await dialog.waitFor();
+        assert.match((await dialog.textContent()) ?? "", /30 answered/);
+        const shown = await prompt.textContent();
+        await dialog.getByRole("link", { name: "See your full map" }).click();
+        await page.waitForURL("**/try/map");
+        await page.locator(".frontier-map").waitFor();
+        await page.goBack();
+        await page.waitForURL("**/try/practice");
+        await prompt.waitFor();
+        assert.equal(
+          await dialog.count(),
+          0,
+          `${tag}: no second check on return`,
+        );
+        assert.equal(
+          await prompt.textContent(),
+          shown,
+          `${tag}: back returns to the waiting problem`,
+        );
+      }
+      assert.deepEqual(faults, [], `${tag}: no page errors`);
+      await context.close();
+    }
+  console.log(
+    `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → /try/map and back.`,
+  );
   console.log(
     `Level check: "Your level" in the practice toolbar → /try/map (back, forward and refresh restore it) at ${viewports.map(([w, h]) => `${w}x${h}`).join(", ")} × light/dark; 44px target, labelled at 384px and up, no overflow, no toolbar overlap.`,
   );

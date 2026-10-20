@@ -14,10 +14,32 @@ import {
   estimateFrontier,
   initialLevel,
   type Frontier,
+  type FrontierObservation,
 } from "../learning/frontier";
+import { trendCounts, type TrendPoint } from "../learning/level-check";
 import { templateGrade } from "./mixed-practice";
 const templateById = new Map(templates.map((t) => [t.id, t]));
 const skillById = new Map(skills.map((s) => [s.id, s]));
+/** The frontier from a starting level and answers, with the catalog's
+ * grades, strands and guessing chances. */
+function frontierFrom(
+  start: number,
+  observations: readonly FrontierObservation[],
+  now: number,
+): Frontier {
+  return estimateFrontier({
+    start,
+    observations,
+    now,
+    gradeOf: (id) => {
+      const template = templateById.get(id);
+      return template && templateGrade(template, skillById);
+    },
+    strandOf: (id) =>
+      skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
+    guessOf: guessChanceOf,
+  });
+}
 import {
   lockLearningAccount,
   learningConsentActive,
@@ -106,6 +128,9 @@ export interface LearnerTransaction {
   masteredSkills(): Promise<string[]>;
   /** The frontier as estimated from only the first `answers` answers. */
   frontierAfter(answers: number): Promise<Frontier>;
+  /** The overall estimate after 0, every level-check step and all answers:
+   * how the level moved over the free run (learning/level-check.ts). */
+  frontierTrend(): Promise<TrendPoint[]>;
   trialPaywall(): Promise<void>;
   /** The learner's birth year, or null when none was given. */
   birthYear(): Promise<number | null>;
@@ -386,6 +411,11 @@ export class PgTransaction implements LearnerTransaction {
     now = Date.now(),
     answers: number | null = null,
   ): Promise<Frontier> {
+    const { start, observations } = await this.frontierInputs(now, answers);
+    return frontierFrom(start, observations, now);
+  }
+  /** The starting estimate from age and the answers in evidence order. */
+  private async frontierInputs(now: number, answers: number | null = null) {
     const learner = await this.db.query(
       "SELECT birth_year,starting_band FROM amp_learners WHERE id=$1",
       [this.learnerId],
@@ -396,21 +426,25 @@ export class PgTransaction implements LearnerTransaction {
         WHERE learner_id=$1 ORDER BY evidence_sequence LIMIT $2`,
       [this.learnerId, answers],
     );
-    return estimateFrontier({
+    return {
       start: initialLevel({
         birthYear: learner.rows[0]?.birth_year,
         band: learner.rows[0]?.starting_band,
         now,
       }),
-      observations: history.rows,
-      now,
-      gradeOf: (id) => {
-        const template = templateById.get(id);
-        return template && templateGrade(template, skillById);
-      },
-      strandOf: (id) =>
-        skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
-      guessOf: guessChanceOf,
+      observations: history.rows as FrontierObservation[],
+    };
+  }
+  async frontierTrend(): Promise<TrendPoint[]> {
+    const now = Date.now();
+    const { start, observations } = await this.frontierInputs(now);
+    return trendCounts(observations.length).map((answered) => {
+      const { level, sd } = frontierFrom(
+        start,
+        observations.slice(0, answered),
+        now,
+      ).overall;
+      return { answered, level, sd };
     });
   }
   async recentAttempts() {

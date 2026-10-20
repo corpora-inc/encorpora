@@ -30,6 +30,7 @@ export const FUNNEL_EVENTS = [
   "paid_practice_first",
   "refund_requested",
   "refund",
+  "level_check_view",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -135,6 +136,8 @@ export const funnelPropsSchemas = {
   learner_added: z.strictObject({ ageBand: z.enum(AGE_BANDS).optional() }),
   paid_practice_first: none,
   refund_requested: z.strictObject({ reason: z.enum(REFUND_REASONS) }),
+  /** The free assessment's level check, shown after `index` problems. */
+  level_check_view: z.strictObject({ index }),
   refund: z.strictObject({
     full: z.boolean(),
     /** A partial refund of the same purchase that later became full. */
