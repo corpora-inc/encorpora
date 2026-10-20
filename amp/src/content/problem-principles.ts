@@ -17,6 +17,7 @@ import { exponentialPrinciples } from "./exponential-lessons";
 import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { similarityTrigPrinciples } from "./similarity-trig-lessons";
 import { coordinateCirclePrinciples } from "./coordinate-circle-lessons";
+import { algebraStatisticsPrinciples } from "./algebra-statistics-lessons";
 import { powerPrinciples } from "./power-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
@@ -60,6 +61,7 @@ export const principles: Record<string, string> = {
   ...probabilityRulesPrinciples,
   ...similarityTrigPrinciples,
   ...coordinateCirclePrinciples,
+  ...algebraStatisticsPrinciples,
   ...powerPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,

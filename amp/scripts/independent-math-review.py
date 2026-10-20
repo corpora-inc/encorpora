@@ -27,6 +27,7 @@ from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponen
 from right_triangle_figure_oracle import review_right_triangle_figures
 from exponential_math_oracle import EXPONENTIAL, EXPONENTIAL_CHOICE, solve_exponential, review_exponential_fixtures
 from power_math_oracle import POWER, POWER_CHOICE, solve_power, review_power_fixtures, review_power_problem
+from algebra_statistics_math_oracle import ALGEBRA_STATISTICS, ALGEBRA_STATISTICS_CHOICE, solve_algebra_statistics, review_algebra_statistics_fixtures, review_algebra_statistics_problem
 from coordinate_circle_math_oracle import COORDINATE_CIRCLE, solve_coordinate_circle, review_coordinate_circle_fixtures, review_coordinate_circle_problem
 from similarity_trig_math_oracle import SIMILARITY_TRIG, solve_similarity_trig, review_similarity_trig_fixtures, review_similarity_trig_problem
 from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
@@ -83,7 +84,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER
+SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER | ALGEBRA_STATISTICS
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
@@ -141,6 +142,8 @@ def solve(public):
         return solve_similarity_trig(public)
     if template in COORDINATE_CIRCLE:
         return solve_coordinate_circle(public)
+    if template in ALGEBRA_STATISTICS:
+        return solve_algebra_statistics(public)
     if template in POWER:
         return solve_power(public)
     if template in PATTERN_FUNCTION:
@@ -420,6 +423,7 @@ def review(stream):
     review_probability_rules_fixtures()
     review_similarity_trig_fixtures()
     review_coordinate_circle_fixtures()
+    review_algebra_statistics_fixtures()
     review_power_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
@@ -568,7 +572,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -590,6 +594,8 @@ def review(stream):
             review_similarity_trig_problem(problem, solved)
         if template in COORDINATE_CIRCLE:
             review_coordinate_circle_problem(problem, solved)
+        if template in ALGEBRA_STATISTICS:
+            review_algebra_statistics_problem(problem, solved)
         if template in POWER:
             review_power_problem(problem, solved)
         counts[template] += 1

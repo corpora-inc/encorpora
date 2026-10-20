@@ -238,6 +238,30 @@ export const galleryCases: GalleryCase[] = [
       .scene(),
   },
   {
+    name: "Residual plot: axes on the frame, residual 0 drawn",
+    scene: graph({
+      x: [20, 70],
+      y: [-30, 30],
+      grid: [10, 10],
+      tick: [10, 10],
+      aspect: 0.5,
+      axisNames: ["speed (mph)", "residual"],
+      frame: true,
+    })
+      .scatter(
+        [
+          [20, 19],
+          [30, 2],
+          [40, -9],
+          [50, -12],
+          [60, -3],
+          [70, 16],
+        ],
+        { m: 0, b: 0 },
+      )
+      .scene(),
+  },
+  {
     name: "Area model: 34 × 6 (problem)",
     scene: areaModel(34, 6).scene({ title: "34 × 6 as an area model" }),
   },

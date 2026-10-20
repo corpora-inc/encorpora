@@ -34,6 +34,7 @@ import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { similarityTrigLessons } from "./similarity-trig-lessons";
 import { coordinateCircleLessons } from "./coordinate-circle-lessons";
+import { algebraStatisticsLessons } from "./algebra-statistics-lessons";
 import { powerLessons } from "./power-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { exponentialLessons } from "./exponential-lessons";
@@ -598,6 +599,7 @@ export const lessons: readonly Lesson[] = [
   ...probabilityRulesLessons,
   ...similarityTrigLessons,
   ...coordinateCircleLessons,
+  ...algebraStatisticsLessons,
   ...powerLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
