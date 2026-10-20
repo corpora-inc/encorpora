@@ -21,6 +21,7 @@ import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
 import { LessonIllustration } from "../../content/LessonIllustration";
 import { nativeRuntime } from "../native-runtime";
+import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
 import { learningRequest, learningCatalog } from "../learning-transport";
 import { ParentConsentCenter } from "../ParentConsentCenter";
@@ -1407,6 +1408,28 @@ function LegacyScreen() {
                 entry.templateIds.includes(problem.templateId),
               ) ?? lesson
             }
+            reportProblem={
+              // The native bridge has no report route; never offer one there.
+              nativeRuntime
+                ? undefined
+                : async (body) => {
+                    try {
+                      await api(`/learners/${learner.id}/problem-flags`, body);
+                      return "sent";
+                    } catch (failure) {
+                      if (
+                        failure instanceof HttpError &&
+                        failure.message === ALREADY_REPORTED
+                      )
+                        return "already";
+                      throw failure;
+                    }
+                  }
+            }
+            reportNote={noteAllowed({
+              trial: false,
+              birthYear: learner.birthYear,
+            })}
             response={response}
             setResponse={setResponse}
             outcome={outcome}

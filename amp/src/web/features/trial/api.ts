@@ -17,6 +17,11 @@ import {
 import { learningCatalog } from "../../learning-transport";
 import type { ProblemLessonView } from "../../../content/problem-lessons";
 import type { TrialCatalog } from "./types";
+import {
+  ALREADY_REPORTED,
+  type ProblemFlagInput,
+} from "../../../feedback/problem-flags";
+import type { ReportResult } from "../../ProblemFlag";
 
 /** The free trial is anonymous: a random device token, a nameless learner
  * and a birth year. Nothing here identifies a child or links an account. */
@@ -198,6 +203,24 @@ export function lessonSupport(session: TrialSession, problemId: string) {
     z.object({ lesson: z.custom<ProblemLessonView>((value) => !!value) }),
     { trial: session.token, body: { problemId } },
   );
+}
+/** "Report a problem". A trial reports with reasons only (no note). */
+export async function reportProblem(
+  session: TrialSession,
+  body: ProblemFlagInput,
+): Promise<ReportResult> {
+  try {
+    await request(
+      `/learners/${encodeURIComponent(session.learnerId)}/problem-flags`,
+      z.object({ id: z.string(), recorded: z.literal(true) }),
+      { trial: session.token, body },
+    );
+    return "sent";
+  } catch (error) {
+    if (error instanceof AppError && error.code === ALREADY_REPORTED)
+      return "already";
+    throw error;
+  }
 }
 export function recordPaywall(session: TrialSession) {
   return request(

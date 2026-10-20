@@ -25,6 +25,13 @@ import type { Lesson } from "../content/lessons";
 import { Figure } from "./Figure";
 import { ScenePlayer } from "./scene/ScenePlayer";
 import { visibleSteps, type Step } from "../math/scene/timeline";
+import type { ProblemFlagInput } from "../feedback/problem-flags";
+import { problemFlagBody } from "./problem-flag";
+import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
+type ReportSheet = typeof import("./ReportProblemSheet");
+/** The report sheet uses the UI kit's stylesheets, so it loads in the
+ * browser on demand (this module also loads under Node). */
+const loadReportSheet = () => import("./ReportProblemSheet");
 
 export function FocusDialog({
   title,
@@ -143,6 +150,10 @@ type Props = {
   status?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
+  /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
+  reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
+  /** The report offers its optional note (see `noteAllowed`). */
+  reportNote?: boolean;
 };
 
 /** Phones too short to keep the keypad docked under the problem. Taller
@@ -220,6 +231,24 @@ export function PracticeWorkspace(props: Props) {
   // A lesson opened before answering counts as support for this attempt.
   const [lessonBeforeAnswer, setLessonBeforeAnswer] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reported, setReported] = useState(false);
+  const [reportToast, setReportToast] = useState("");
+  const [reportSheet, setReportSheet] = useState<ReportSheet | null>(null);
+  // Fetched as the result appears, so the flag opens its sheet at once.
+  async function loadSheet() {
+    try {
+      const sheet = await loadReportSheet();
+      if (alive.current) setReportSheet(() => sheet);
+      return sheet;
+    } catch (failure) {
+      console.error("AMP report sheet failed to load:", failure);
+      return null;
+    }
+  }
+  useEffect(() => {
+    if (outcome && props.reportProblem && !reportSheet) void loadSheet();
+  }, [outcome?.id]);
   const [answerError, setAnswerError] = useState("");
   // Typing clears a message about the previous answer.
   useEffect(() => {
@@ -486,7 +515,7 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
-  function tools() {
+  function tools(feedback = false) {
     return (
       <div className="practice-tools">
         {outcome ? (
@@ -540,6 +569,18 @@ export function PracticeWorkspace(props: Props) {
         >
           {lessonLoading ? "Opening…" : "Lesson"}
         </button>
+        {feedback && props.reportProblem && (
+          <ReportProblemButton
+            reported={reported}
+            open={async () => {
+              if (reportSheet || (await loadSheet())) setReportOpen(true);
+              else
+                setLessonError(
+                  "Reporting couldn’t open. Check your connection and try again.",
+                );
+            }}
+          />
+        )}
       </div>
     );
   }
@@ -747,7 +788,7 @@ export function PracticeWorkspace(props: Props) {
             >
               Next <span aria-hidden="true">→</span>
             </button>
-            {tools()}
+            {tools(true)}
           </div>
         )}
       </section>
@@ -772,6 +813,44 @@ export function PracticeWorkspace(props: Props) {
           )}
           <div className="answer-dock compact-entry">{answerControls()}</div>
         </FocusDialog>
+      )}
+      {reportOpen && reportSheet && outcome && props.reportProblem && (
+        <FocusDialog
+          className="report-dialog"
+          title="Report a problem"
+          close={() => setReportOpen(false)}
+        >
+          <reportSheet.ReportProblemForm
+            allowNote={!!props.reportNote}
+            send={async (report, requestId) =>
+              props.reportProblem!(
+                await problemFlagBody(
+                  problem.id,
+                  requestId,
+                  report,
+                  // A skip resolves a problem without an attempt.
+                  !!(outcome as { skipped?: boolean }).skipped,
+                ),
+              )
+            }
+            done={(result) => {
+              setReported(true);
+              setReportOpen(false);
+              setReportToast(
+                result === "already"
+                  ? "This problem was already reported. Thank you."
+                  : "Thank you. Your report was sent.",
+              );
+            }}
+          />
+        </FocusDialog>
+      )}
+      {reportSheet && (
+        <reportSheet.Toast
+          tone="status"
+          message={reportToast}
+          onDismiss={() => setReportToast("")}
+        />
       )}
       {panel && (
         <FocusDialog

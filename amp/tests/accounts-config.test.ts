@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   accountsConfiguration,
   enabledProviders,
+  microsoftEmailVerified,
   providerSignupRefused,
 } from "../src/server/accounts.js";
 import { redactUrl } from "../src/server/app.js";
@@ -112,4 +113,27 @@ test("request logs never carry one-time tokens", () => {
     "/api/auth/callback/github?code=[redacted]&state=[redacted]",
   );
   assert.equal(redactUrl("/api/v1/learners"), "/api/v1/learners");
+});
+
+test("Microsoft email is verified only by xms_edov or a verified-address claim", () => {
+  const email = "parent@example.com";
+  assert.equal(microsoftEmailVerified({ email }), false, "email claim alone");
+  assert.equal(microsoftEmailVerified({ email, xms_edov: false }), false);
+  assert.equal(microsoftEmailVerified({ email, xms_edov: true }), true);
+  assert.equal(microsoftEmailVerified({ email, xms_edov: "true" }), true);
+  assert.equal(
+    microsoftEmailVerified({
+      email,
+      verified_primary_email: ["PARENT@example.com"],
+    }),
+    true,
+  );
+  assert.equal(
+    microsoftEmailVerified({
+      email,
+      verified_secondary_email: "other@example.com",
+    }),
+    false,
+  );
+  assert.equal(microsoftEmailVerified({ xms_edov: true }), false, "no email");
 });

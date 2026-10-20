@@ -11,7 +11,12 @@ import {
 } from "@tanstack/react-router";
 import { z } from "zod";
 import { nativeRuntime } from "../native-runtime";
-import { queryClient, sessionOptions, meOptions } from "../lib/query";
+import {
+  authConfigOptions,
+  queryClient,
+  sessionOptions,
+  meOptions,
+} from "../lib/query";
 import { LoadingScreen, RouteError } from "../ui/LoadingScreen";
 import {
   startDestination,
@@ -51,6 +56,8 @@ const auth = lazyRouteComponent(
   () => import("../features/auth/SignInScreen"),
   "SignInScreen",
 );
+/** Sign-in methods load with the route: the screen renders complete. */
+const loadAuthConfig = () => queryClient.ensureQueryData(authConfigOptions);
 const start = lazyRouteComponent(
   () => import("../features/onboarding/StartScreen"),
   "StartScreen",
@@ -111,16 +118,19 @@ const home = createRoute({
 const signIn = createRoute({
   getParentRoute: () => root,
   path: "/sign-in",
+  loader: loadAuthConfig,
   component: auth,
 });
 const signUp = createRoute({
   getParentRoute: () => root,
   path: "/sign-up",
+  loader: loadAuthConfig,
   component: auth,
 });
 const signInStep = createRoute({
   getParentRoute: () => root,
   path: "/sign-in/$step",
+  loader: loadAuthConfig,
   component: auth,
   params: {
     parse: (p) => ({
@@ -131,6 +141,7 @@ const signInStep = createRoute({
 const reset = createRoute({
   getParentRoute: () => root,
   path: "/reset-password",
+  loader: loadAuthConfig,
   component: auth,
 });
 const startIndex = createRoute({

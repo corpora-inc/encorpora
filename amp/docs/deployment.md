@@ -23,19 +23,25 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 - With mail, new password accounts must confirm their email before signing in.
 - In development, links are printed to the server log.
 
-**Providers.** Each provider is enabled only when all of its settings are present.
+**Providers.** Each provider is enabled only when all of its settings are present. `/api/v1/auth-config` lists the enabled providers, and the sign-in screens show a button only for those.
 - Google: `AMP_GOOGLE_CLIENT_ID` and `AMP_GOOGLE_CLIENT_SECRET`.
 - GitHub: `AMP_GITHUB_CLIENT_ID` and `AMP_GITHUB_CLIENT_SECRET`.
-- Microsoft: `AMP_MICROSOFT_CLIENT_ID` and `AMP_MICROSOFT_CLIENT_SECRET`, plus optional `AMP_MICROSOFT_TENANT_ID` (default `common`).
+- Microsoft: `AMP_MICROSOFT_CLIENT_ID` and `AMP_MICROSOFT_CLIENT_SECRET`, plus optional `AMP_MICROSOFT_TENANT_ID` (default `common`). The ID token must carry the optional claims `email` and `xms_edov`. Microsoft's `email` claim alone does not prove ownership, so AMP treats it as verified only when `xms_edov` is true or the address is listed in `verified_primary_email` or `verified_secondary_email`.
 - Apple: `AMP_APPLE_CLIENT_ID` (the Services ID), `AMP_APPLE_TEAM_ID`, `AMP_APPLE_KEY_ID` and `AMP_APPLE_PRIVATE_KEY` (the .p8 PEM; `\n` escapes are accepted), plus optional `AMP_APPLE_BUNDLE_ID`. The Apple client secret is minted at startup and is valid for 150 days, so a deploy refreshes it.
-- Register each provider's redirect URI as `<AMP_ACCOUNTS_URL>/api/auth/callback/<google|apple|microsoft|github>`.
+- Register each provider's redirect URI as `<AMP_ACCOUNTS_URL>/api/auth/callback/<google|apple|microsoft|github>`. Each environment (production, stage, local) has its own URI; a GitHub OAuth App accepts one callback URL, so each environment needs its own GitHub app. Apple accepts only HTTPS return URLs, so Apple cannot be tested on a loopback origin.
+- Apple's private relay addresses (`…@privaterelay.appleid.com`) receive mail only from senders registered for Sign in with Apple's email relay. Register the domain of `AMP_MAIL_FROM`.
+- Apple sends the parent's name only on the first authorization. AMP stores it then and never requires it.
+- The authorization request uses `state` and, where the provider supports it, PKCE (S256); Better Auth stores both server-side.
 
 `AMP_ACCOUNTS_TRUSTED_ORIGINS` lists extra allowed origins, such as native app schemes.
 
 **Linking.**
-- A sign-in with the same email links to an existing account only when the provider has verified the email.
+- A provider sign-in links to an existing parent with the same email only when the provider verified that email and the parent's own address is confirmed. No provider is trusted past its verification flag.
+- A parent who removed that identity, or who protects password sign-in with an authenticator, links it from **Security** instead (migration `0023`).
 - A signed-in parent may link a login that uses a different email.
 - Each provider identity belongs to one account.
+
+**New parents.** A provider sign-up creates the account with the provider's verified email and continues at `/start`, the same guided first run as an email sign-up: no consent, plan or learner step is skipped. A provider that has not verified the email cannot create an account.
 
 **Rate limits.** Sign-in attempts are throttled per client. The server uses the client address that `AMP_TRUSTED_PROXIES` resolves and ignores forwarded headers from untrusted peers.
 
@@ -88,6 +94,19 @@ Learner attempts are append-only through the application. Duplicate submissions 
 Retention policy must cover profiles, attempts, consent evidence, generated instances, backups, and financial records separately. Commerce events contain account and learner identifiers and are append-only for the application: deleting a learner does not erase those transaction records until financial retention ends. Family deletion removes live learning records and names, while retaining necessary opaque billing references, consent records, and minimal privacy audit events. Identity-provider accounts, payment-processor records, and backups have separate retention and deletion procedures. Do not describe learning-data deletion as complete account erasure.
 
 Schedule `npm run privacy:retention` daily with `AMP_DATABASE_URL` in protected job configuration. The job enforces the [retention schedule](parent-consent.md#retention): inactive learners' learning data, trial records, consent and funding records, offline packs, privacy events, export tickets and, after 7 years, financial records. `tests/retention.integration.ts` runs the actual purges against each period boundary. Monitor job failures and verify restored backups reapply deletion and consent restrictions before serving requests.
+
+### Insights report
+
+`npm run report:insights` reads the production database and reports, for a window (`--days`, default 30):
+
+- per problem family: served, answered, right, wrong, skipped, served-and-left, helped by a hint or lesson, median seconds from serving to the answer, and reports with their top reasons;
+- per strand and skill: learners practicing and review-ready;
+- the free trial: how many trials answered at least 1, 5, 10, 20, 30, 50, 75 and 100 problems, and how many reached placement, the paywall and a family;
+- placed grade bands, family starting points and the newest reports (problem, seed, outcome, answer and reasons).
+
+Output is plain text, `--json`, or one CSV per section with `--csv <dir>`. It carries counts and generated content only: no names, account, learner or trial identifiers, or report notes. `--notes` adds notes to the newest reports for the operator. It runs only in an interactive terminal or with `--csv`, so notes never go to log storage.
+
+There is no web page or route for it. Run it as a one-off job from the `api` image (the same image and protected `AMP_DATABASE_URL` configuration as `privacy:retention`) and read the job's output. For notes, run it in an interactive session in that image. `npm run report:funnel` remains the anonymous visitor funnel.
 
 Family exports stream bounded cursor batches with a two-minute limit. The shared API pool requires at least two connections so a snapshot export can hold one while other requests use another. Export audit writes use the snapshot connection before and after its read-only transaction. Concurrent exports can occupy the entire pool and queue other requests; production capacity requires a bounded global concurrency quota plus per-account request quotas. The existing peer-address limiter does not establish that capacity. Browser exports use a one-time, 60-second capability held only in memory and submitted in a native POST form body, never a URL or ambient cookie. Account and component-generation guards suppress stale download responses. Downloads already delivered to the browser cannot be recalled.
 

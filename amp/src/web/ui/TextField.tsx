@@ -1,4 +1,8 @@
-import { useId, type InputHTMLAttributes } from "react";
+import {
+  useId,
+  type InputHTMLAttributes,
+  type TextareaHTMLAttributes,
+} from "react";
 import styles from "./Controls.module.css";
 export function TextField({
   label,
@@ -19,6 +23,36 @@ export function TextField({
       <span id={`${id}-error`} className={styles.fieldError} aria-live="polite">
         {error ?? ""}
       </span>
+    </label>
+  );
+}
+/** A multi-line field with a live character count against its limit. */
+export function TextArea({
+  label,
+  maxLength,
+  value,
+  ...props
+}: TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  label: string;
+  maxLength: number;
+  value: string;
+}) {
+  const id = useId();
+  return (
+    <label className={styles.field} htmlFor={id}>
+      <span className={styles.fieldHeading}>
+        <span>{label}</span>
+        <span className={styles.count} aria-hidden="true">
+          {`${value.length}/${maxLength}`}
+        </span>
+      </span>
+      <textarea
+        {...props}
+        id={id}
+        value={value}
+        maxLength={maxLength}
+        className={`${styles.input} ${styles.textarea}`}
+      />
     </label>
   );
 }

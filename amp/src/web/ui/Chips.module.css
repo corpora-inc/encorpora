@@ -1,0 +1,64 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--target-size);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.chip:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+}
+.chip[aria-pressed="true"] {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
+}
+.chip[aria-pressed="true"]:hover:not(:disabled) {
+  background: var(--color-selected-hover);
+}
+.chip:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.chip:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+/* A ring, then a check in the same place: selecting never moves a label. */
+.mark {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ring {
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+.check,
+.chip[aria-pressed="true"] .ring {
+  opacity: 0;
+}
+.chip[aria-pressed="true"] .check {
+  opacity: 1;
+}
