@@ -21,6 +21,7 @@ import {
   lessonSupport,
   nextProblem,
   progressOptions,
+  reportProblem,
   trialSessionOptions,
   type TrialOutcome,
   type TrialSession,
@@ -29,6 +30,7 @@ import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
 import { gradeBand } from "./grade-band";
 import { failureMessage, TrialFailure } from "./TrialFrame";
+import { nativeRuntime } from "../../native-runtime";
 
 /** `/try/practice`: placement, then adaptive practice, full screen. The
  * existing workspace, planner, lessons and hints; only the meter is new. */
@@ -171,6 +173,9 @@ function Practice({ session }: { session: TrialSession }) {
           <FreeMeter answered={answered} free={limits.free} variant="pill" />
         }
         mastered={outcome?.mastered?.title ?? null}
+        reportProblem={
+          nativeRuntime ? undefined : (body) => reportProblem(session, body)
+        }
         exit={() => void run(() => leave("/try/map"))}
         submit={() =>
           void run(async () => {

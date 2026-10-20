@@ -28,7 +28,7 @@
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "report:funnel": "tsx scripts/report-funnel.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
-    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:social-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui",
+    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:social-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui && npm run test:flag-ui",
     "test:social-ui": "tsx scripts/verify-social-sign-in-ui.ts",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
     "test:choice-ui": "tsx scripts/verify-choice-ui.ts",
@@ -50,6 +50,7 @@
     "test:premium-ui": "tsx scripts/verify-premium-shell.ts",
     "test:onboarding-ui": "tsx scripts/verify-onboarding-ui.ts",
     "test:funnel-ui": "tsx scripts/verify-funnel-ui.ts",
+    "test:flag-ui": "tsx scripts/verify-problem-flag-ui.ts",
     "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features"
   },
   "dependencies": {

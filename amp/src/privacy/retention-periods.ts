@@ -23,6 +23,11 @@ export const RETENTION = {
    * from their last event. A converted visitor's events leave only monthly
    * aggregate counts with no visitor ID. */
   funnelEventDays: 90,
+  /** Notes on "Report a problem" reports, from when they were sent. */
+  problemFlagNoteDays: 90,
+  /** "Report a problem" reports, from when they were sent. Deleting a
+   * learner's learning data unlinks their reports and erases the notes. */
+  problemFlagDays: 365,
   /** Privacy activity log. */
   privacyAuditDays: 90,
 } as const;
