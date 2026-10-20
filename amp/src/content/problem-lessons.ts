@@ -59,6 +59,18 @@ export function problemLesson(
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   for (let i = 1; i < 8 && example.public.prompt === avoidPrompt; i++)
     example = generateProblem(templateId, `${seed}:lesson:${i}`);
+  // A type whose figures carry a walkthrough in some frames shows one: the
+  // example prefers an instance whose scene has steps to play.
+  const walks = (p: typeof example) =>
+    p.public.figure?.kind === "scene" && !!p.public.figure.scene.steps?.length;
+  if (!walks(example))
+    for (let i = 8; i < 24; i++) {
+      const next = generateProblem(templateId, `${seed}:lesson:${i}`);
+      if (walks(next) && next.public.prompt !== avoidPrompt) {
+        example = next;
+        break;
+      }
+    }
   const response = example.public.response;
   const answer =
     response.kind === "choice"
