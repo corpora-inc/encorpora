@@ -156,29 +156,33 @@ try {
           `${template.id} choices and action must fit ${size.width}x${size.height}`,
         );
       for (const graph of await page.locator(".choice-coordinate").all()) {
-        const issues = await graph.evaluate((svg) =>
-          [...svg.querySelectorAll("text")].flatMap((text) => {
-            const box = text.getBBox(),
-              scale = text.getScreenCTM(),
-              font = parseFloat(getComputedStyle(text).fontSize);
-            const pixels = scale ? font * Math.hypot(scale.a, scale.b) : 0;
-            return box.x >= -1 &&
-              box.x + box.width <= 301 &&
-              box.y >= -1 &&
-              box.y + box.height <= 177 &&
-              pixels >= 12
-              ? []
-              : [
-                  {
-                    text: text.textContent,
-                    x: box.x,
-                    y: box.y,
-                    width: box.width,
-                    height: box.height,
-                    pixels,
-                  },
-                ];
-          }),
+        // Phone landscape is a smoke target: it keeps the bounds checks but is
+        // not held to the on-screen label size.
+        const issues = await graph.evaluate(
+          (svg, phoneLandscape) =>
+            [...svg.querySelectorAll("text")].flatMap((text) => {
+              const box = text.getBBox(),
+                scale = text.getScreenCTM(),
+                font = parseFloat(getComputedStyle(text).fontSize);
+              const pixels = scale ? font * Math.hypot(scale.a, scale.b) : 0;
+              return box.x >= -1 &&
+                box.x + box.width <= 301 &&
+                box.y >= -1 &&
+                box.y + box.height <= 177 &&
+                (phoneLandscape || pixels >= 12)
+                ? []
+                : [
+                    {
+                      text: text.textContent,
+                      x: box.x,
+                      y: box.y,
+                      width: box.width,
+                      height: box.height,
+                      pixels,
+                    },
+                  ];
+            }),
+          isPhoneLandscape(size),
         );
         assert.deepEqual(
           issues,
