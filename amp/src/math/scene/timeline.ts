@@ -48,6 +48,9 @@ export const actionSchema = z.discriminatedUnion("do", [
       ]),
     })
     .strict(),
+  /** Reshape a polygon into another polygon with as many corners, each
+   * corner traveling to its nearest match; the shape stays reshaped. */
+  z.object({ do: z.literal("morph"), target, into: target }).strict(),
   /** Count a label up from `from` to its value. */
   z
     .object({
@@ -81,6 +84,8 @@ export type ItemState = {
   fill?: FillRole;
   stroke?: InkRole;
   highlight?: boolean;
+  /** A reshaped polygon's path, in figure pixels. */
+  d?: string;
 };
 
 export const matches = (id: string, t: string) =>
@@ -93,7 +98,7 @@ export function missingTargets(layout: Layout, steps: Step[]) {
     ...new Set(
       steps.flatMap((s) =>
         s.actions
-          .map((a) => a.target)
+          .flatMap((a) => (a.do === "morph" ? [a.target, a.into] : [a.target]))
           .filter((t) => !ids.some((id) => matches(id, t))),
       ),
     ),
@@ -181,6 +186,21 @@ export function frameAt(
             st.dx = (st.dx ?? 0) + a.by[0] * s * q;
             st.dy = (st.dy ?? 0) - a.by[1] * s * q;
             break;
+          case "morph": {
+            const into = items.find((e) => e.id === a.into);
+            if (d.k !== "path" || !into || into.k !== "path") break;
+            const from = corners(st.d ?? d.d),
+              to = corners(into.d);
+            if (!from || !to || from.length !== to.length) break;
+            const goal = aligned(from, to);
+            st.d = polygonPath(
+              from.map(([x, y], j) => [
+                x + (goal[j]![0] - x) * q,
+                y + (goal[j]![1] - y) * q,
+              ]),
+            );
+            break;
+          }
           case "count":
             if (d.k === "text" && !d.masked && q < 1) {
               const to = Number(d.plain.replace("−", "-"));
@@ -198,6 +218,36 @@ export function frameAt(
     if (st.opacity === 1 && Object.keys(st).length === 1) delete states[id];
   return states;
 }
+
+/** The corners of a closed straight path ("M…L…Z"), or null. */
+function corners(d: string): [number, number][] | null {
+  if (!/^M[^MZ]*Z$/.test(d.trim())) return null;
+  const out = [...d.matchAll(/[ML]\s*(-?[\d.]+)[ ,](-?[\d.]+)/g)].map(
+    (m) => [Number(m[1]), Number(m[2])] as [number, number],
+  );
+  return out.length >= 3 ? out : null;
+}
+/** Rotate the target's corner order so each corner travels least. */
+function aligned(from: [number, number][], to: [number, number][]) {
+  let best = to,
+    cost = Infinity;
+  for (let k = 0; k < to.length; k++) {
+    const turned = to.map((_, i) => to[(i + k) % to.length]!);
+    const c = turned.reduce(
+      (sum, p, i) => sum + Math.hypot(p[0] - from[i]![0], p[1] - from[i]![1]),
+      0,
+    );
+    if (c < cost) {
+      cost = c;
+      best = turned;
+    }
+  }
+  return best;
+}
+const polygonPath = (pts: [number, number][]) =>
+  pts
+    .map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(2)} ${y.toFixed(2)}`)
+    .join("") + "Z";
 
 /** Fill `{id}` placeholders with element labels, "?" where masked. */
 export function captionText(layout: Layout, caption: string) {

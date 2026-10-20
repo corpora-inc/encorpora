@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/native-preview/", import.meta.url);
 await mkdir(directory, { recursive: true });
 const vite = await createServer({
@@ -24,8 +25,11 @@ try {
     for (const viewport of [
       { width: 320, height: 568 },
       { width: 390, height: 844 },
+      { width: 1024, height: 768 },
       { width: 844, height: 390 },
     ]) {
+      // Phone landscape only has to stay usable; the others must fit.
+      const strict = !isPhoneLandscape(viewport);
       const page = await browser.newPage({ viewport });
       page.setDefaultTimeout(10000);
       const requests: string[] = [],
@@ -68,7 +72,7 @@ try {
         assert.ok(
           box &&
             box.y >= 0 &&
-            box.y + box.height <= viewport.height &&
+            (!strict || box.y + box.height <= viewport.height) &&
             box.height >= 44,
         );
         await button.click();
@@ -91,9 +95,11 @@ try {
         height: document.documentElement.scrollHeight,
       }));
       assert.ok(
-        bounds.width <= viewport.width && bounds.height <= viewport.height + 1,
+        bounds.width <= viewport.width &&
+          (!strict || bounds.height <= viewport.height + 1),
         `Native preview overflow: ${JSON.stringify(bounds)}`,
       );
+      if (!strict) await assertPhoneLandscapeSmoke(page, "Native preview");
       const calls = await page.evaluate(
         () =>
           (

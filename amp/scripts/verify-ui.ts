@@ -1,4 +1,11 @@
 import { choose } from "./ui-controls";
+import {
+  assertPhoneLandscapeSmoke,
+  isPhoneLandscape,
+  PHONE_LANDSCAPE,
+  TABLET_LANDSCAPE,
+  TABLET_LANDSCAPE_LARGE,
+} from "./ui-viewports";
 import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
@@ -106,7 +113,9 @@ try {
     { width: 390, height: 844 },
     { width: 320, height: 720 },
     { width: 320, height: 568 },
-    { width: 844, height: 390 },
+    TABLET_LANDSCAPE,
+    TABLET_LANDSCAPE_LARGE,
+    PHONE_LANDSCAPE,
   ]) {
     await page.setViewportSize(viewport);
     await resume(page);
@@ -118,6 +127,17 @@ try {
         ),
     );
     await page.locator(".problem-stage").waitFor();
+    if (isPhoneLandscape(viewport)) {
+      // Phone landscape is a smoke target: usable and scrollable, not fitted.
+      await assertPhoneLandscapeSmoke(page, "Practice");
+      await page.screenshot({
+        path: new URL(
+          `../artifacts/screenshots/practice-${viewport.width}.png`,
+          import.meta.url,
+        ).pathname,
+      });
+      continue;
+    }
     const fit = await page.evaluate(() => {
       const stage = document.querySelector(".problem-stage")!;
       const action = document.querySelector(
@@ -299,7 +319,7 @@ try {
     for (const size of [
       { width: 390, height: 844 },
       { width: 320, height: 568 },
-      { width: 844, height: 390 },
+      PHONE_LANDSCAPE,
     ]) {
       await page.setViewportSize(size);
       // Let the media-query subscription commit the appropriate answer surface.
@@ -309,6 +329,10 @@ try {
         ).matches;
         return !!document.querySelector(".compact-answer-action") === compact;
       });
+      if (isPhoneLandscape(size)) {
+        await assertPhoneLandscapeSmoke(page, template.id);
+        continue;
+      }
       const geometry = await page
         .locator(".problem-stage")
         .evaluate((stage) => ({
@@ -561,26 +585,29 @@ try {
   for (const size of [
     { width: 390, height: 844 },
     { width: 320, height: 568 },
-    { width: 844, height: 390 },
+    TABLET_LANDSCAPE,
+    PHONE_LANDSCAPE,
   ]) {
     await page.setViewportSize(size);
     await page
       .getByRole("navigation", { name: "Family sections" })
       .getByRole("button", { name: "Privacy", exact: true })
       .click();
-    assert.ok(
-      await page.evaluate(
-        () => document.documentElement.scrollHeight <= innerHeight + 1,
-      ),
-    );
-    const back = await page
-      .getByRole("button", { name: "Back", exact: true })
-      .boundingBox();
-    assert.ok(
-      back && back.y + back.height <= size.height,
-      "Family exit stays visible",
-    );
-    if (size.width !== 844) {
+    if (isPhoneLandscape(size)) {
+      await assertPhoneLandscapeSmoke(page, "Family privacy");
+    } else {
+      assert.ok(
+        await page.evaluate(
+          () => document.documentElement.scrollHeight <= innerHeight + 1,
+        ),
+      );
+      const back = await page
+        .getByRole("button", { name: "Back", exact: true })
+        .boundingBox();
+      assert.ok(
+        back && back.y + back.height <= size.height,
+        "Family exit stays visible",
+      );
       const lastChoice = await page
         .getByRole("button", { name: "What is retained?", exact: false })
         .boundingBox();

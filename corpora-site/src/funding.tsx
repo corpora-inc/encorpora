@@ -1,3 +1,4 @@
+import { StateIdentity, stateNames } from "./state-identity.js";
 import React from "./react.js";
 import type { SiteConfig } from "./config.js";
 
@@ -79,14 +80,17 @@ export function FundingPage({ funding }: { funding: FundingRoute }) {
         </ol>
       </nav>
       <div className="page-intro funding-intro">
-        <p className="eyebrow">
-          {funding.state} · {fundingLabels[funding.kind]}
-        </p>
-        <h1>{funding.program}</h1>
-        <p className="lead">{page.summary}</p>
-        <p className="fine">
-          Reviewed <time dateTime={page.reviewedOn}>{page.reviewedOn}</time>
-        </p>
+        <StateIdentity state={funding.state} />
+        <div className="funding-intro-copy">
+          <p className="eyebrow">
+            {stateNames[funding.state] ?? funding.state} · {fundingLabels[funding.kind]}
+          </p>
+          <h1>{funding.program}</h1>
+          <p className="lead">{page.summary}</p>
+          <p className="fine">
+            Reviewed <time dateTime={page.reviewedOn}>{page.reviewedOn}</time>
+          </p>
+        </div>
       </div>
       <div className="funding-layout">
         <aside className="funding-status" aria-labelledby="amp-program-status">

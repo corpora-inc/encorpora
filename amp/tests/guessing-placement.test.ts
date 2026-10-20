@@ -4,52 +4,26 @@ import { templates } from "../src/math/engine";
 import { guessChance, guessChanceOf } from "../src/math/guess-chance";
 import { simulatePlacement } from "./placement-simulation.fixture";
 
-const noGuessing = () => 0;
-
-test("simulated placement: no worse for typed-only learners, better with choice items mixed in", (t) => {
+// Fast smoke check for the inner loop. The paired 900-learner comparison of
+// the two estimators runs as `npm run test:placement-sim` (CI on main).
+test("guessing-aware placement leaves typed-only learners untouched", () => {
   const typed = templates.filter((template) => guessChance(template) === 0);
-  const typedBefore = simulatePlacement({
-    catalog: typed,
-    guessOf: noGuessing,
-  });
-  const typedAfter = simulatePlacement({
+  const seeds = [1];
+  const before = simulatePlacement({ catalog: typed, guessOf: () => 0, seeds });
+  const after = simulatePlacement({
     catalog: typed,
     guessOf: guessChanceOf,
+    seeds,
   });
-  const mixedBefore = simulatePlacement({
-    catalog: templates,
-    guessOf: noGuessing,
-  });
-  const mixedAfter = simulatePlacement({
+  assert.equal(after.learners, 30);
+  assert.deepEqual(after.runs, before.runs);
+});
+
+test("choice items are a real part of placement", () => {
+  const mixed = simulatePlacement({
     catalog: templates,
     guessOf: guessChanceOf,
+    seeds: [1],
   });
-  for (const [name, result] of Object.entries({
-    typedBefore,
-    typedAfter,
-    mixedBefore,
-    mixedAfter,
-  }))
-    t.diagnostic(`${name} ${JSON.stringify(result)}`);
-  // Typed answers keep full weight: the estimate is unchanged.
-  assert.deepEqual(typedAfter, typedBefore);
-  // Choice items are a real part of placement in this catalog.
-  assert.ok(mixedAfter.choiceShare > 0.15, JSON.stringify(mixedAfter));
-  const change = `${JSON.stringify(mixedBefore)} → ${JSON.stringify(mixedAfter)}`;
-  // Lucky picks no longer inflate the strands they land in…
-  assert.ok(
-    mixedAfter.choiceStrandError < mixedBefore.choiceStrandError,
-    change,
-  );
-  assert.ok(
-    mixedAfter.worstOverestimate < mixedBefore.worstOverestimate,
-    change,
-  );
-  assert.ok(mixedAfter.strandError <= mixedBefore.strandError, change);
-  // …the estimate settles no later, and the pooled level is no worse (it is
-  // dominated by typed answers). With 180 learners, adding unrelated typed
-  // families moves toPlace by about ±0.15 answers and the pooled error by
-  // about ±0.02 grade, so both comparisons allow that seed noise.
-  assert.ok(mixedAfter.toPlace <= mixedBefore.toPlace + 0.25, change);
-  assert.ok(mixedAfter.overallError <= mixedBefore.overallError + 0.02, change);
+  assert.ok(mixed.choiceShare > 0.15, JSON.stringify(mixed.choiceShare));
 });

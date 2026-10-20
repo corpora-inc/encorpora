@@ -9,6 +9,7 @@ import {
   retentionNotice,
   type FamilySummary,
 } from "../src/family/contracts.js";
+import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const source = `const listeners=new Set();window.familyFocus={emit(s){for(const f of listeners)f(s);}};export async function accessSession(){return {token:'fixture',accountId:'parent'};}export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f);}export async function signIn(){}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.familyFocus.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.familyFocus.emit(null);}`;
 const vite = await createServer({
@@ -31,6 +32,8 @@ const browser = await (
   process.env.AMP_BROWSER === "webkit" ? webkit : chromium
 ).launch();
 async function fits(page: Page, selector: string) {
+  if (isPhoneLandscape(page.viewportSize()!))
+    return assertPhoneLandscapeSmoke(page, selector);
   const box = await page.locator(selector).boundingBox();
   assert.ok(
     box &&
@@ -46,8 +49,11 @@ try {
   for (const [width, height] of [
     [320, 568],
     [390, 844],
+    [1024, 768],
     [844, 390],
   ]) {
+    // Phone landscape only has to stay usable; the others must fit.
+    const strict = !isPhoneLandscape([width, height]);
     const page = await browser.newPage({ viewport: { width, height } });
     page.setDefaultTimeout(12000);
     const faults: string[] = [];
@@ -188,7 +194,7 @@ try {
       available: e.clientHeight,
     }));
     assert.ok(
-      cardSpace.content <= cardSpace.available + 1,
+      !strict || cardSpace.content <= cardSpace.available + 1,
       `ordinary active license fits without inner scrolling at ${width}×${height}: ${JSON.stringify(cardSpace)}`,
     );
 
@@ -286,7 +292,7 @@ try {
         available: e.clientHeight,
       }));
     assert.ok(
-      pausedSpace.content <= pausedSpace.available + 1,
+      !strict || pausedSpace.content <= pausedSpace.available + 1,
       `paid license plus paused learning fits ${width}: ${JSON.stringify(pausedSpace)}`,
     );
     // Force the term line to wrap even when the local font would keep it on one line.
@@ -303,7 +309,7 @@ try {
         available: e.clientHeight,
       }));
     assert.ok(
-      wrappedSpace.content <= wrappedSpace.available + 1,
+      !strict || wrappedSpace.content <= wrappedSpace.available + 1,
       `wrapped term and paused status fit ${width}: ${JSON.stringify(wrappedSpace)}`,
     );
     await page.screenshot({

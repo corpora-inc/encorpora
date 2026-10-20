@@ -6,6 +6,7 @@ statements are judged on this file's own representative quadrilaterals.
 Generated answers, hints and explanations never enter `solve_polygon`.
 """
 import math
+from geometry_scene_view import figure_view
 import re
 
 from shape_math_oracle import EPS, equal, only, options, require, right_corners, sides, simple, simplify
@@ -125,7 +126,7 @@ def items(figure):
 
 def solve_polygon(public):
     family, prompt = public['templateId'], public['prompt']
-    figure = public.get('figure')
+    figure = figure_view(public.get('figure'))
     require(family in POLYGONS, 'Unsupported family')
     if family == 'name-polygon':
         require(prompt == 'What kind of polygon is this?', 'Name wording')

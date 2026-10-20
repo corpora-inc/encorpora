@@ -7,6 +7,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { chromium } from "playwright";
 import { BookScreenFigure } from "../src/web/BookScreenFigure.js";
 import type { Diagram } from "../src/publishing/schema.js";
+import { isPhoneLandscape } from "./ui-viewports";
 const models: Diagram[] = [
   ...algebraModels,
   {
@@ -66,6 +67,8 @@ const review: unknown[] = [];
 try {
   for (const [width, height] of [
     [320, 568],
+    [390, 844],
+    [1024, 768],
     [844, 390],
   ] as const) {
     const page = await browser.newPage({ viewport: { width, height } });
@@ -99,7 +102,8 @@ try {
         !frame ||
         frame.x < 0 ||
         frame.x + frame.width > width ||
-        frame.y + frame.height > height
+        // Phone landscape scrolls; only the other viewports must fit.
+        (!isPhoneLandscape([width, height]) && frame.y + frame.height > height)
       )
         throw new Error(
           `Model ${model.id} fails ${width}×${height}: ${JSON.stringify({ findings, frame })}`,
@@ -115,7 +119,9 @@ try {
     resolve(output, "validation.json"),
     JSON.stringify(review, null, 2),
   );
-  console.log(`Validated ${review.length} phone/landscape model frames.`);
+  console.log(
+    `Validated ${review.length} phone, tablet and phone-landscape model frames.`,
+  );
 } finally {
   await browser.close();
 }

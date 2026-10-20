@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { geometryScene } from "./geometry-scenes.js";
+import type { Scene } from "./scene/spec.js";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -74,7 +76,7 @@ export const shapeTemplates: readonly TemplateMetadata[] = definitions.map(
     description,
     version: 1,
     gradeBand: "K–2",
-    requiredFigureCapability: "shape-figures-v1",
+    requiredFigureCapability: "scenes-v1",
     ...(choice
       ? { requiredResponseCapability: "single-choice-v1" as const }
       : {}),
@@ -568,7 +570,8 @@ export function generateShapeProblem(
     explanation: string[] = [],
     figure: SemanticFigure,
     choices: Choice[] | undefined,
-    keepOrder = false;
+    keepOrder = false,
+    edit: ((scene: Scene) => Scene) | undefined;
   switch (templateId) {
     case "name-flat-shape": {
       const names: FlatName[] = [
@@ -1002,6 +1005,53 @@ export function generateShapeProblem(
       }));
       figure = { kind: "plane-shapes", items };
       const ordered = order.map((k) => pts[k]!);
+      // The lesson reshapes A into B, then into C: what changes, and what
+      // never does. The counts stay unwritten; the learner watches them.
+      const describe = (p: Pt[]) =>
+        [
+          holds("equal-sides", p)
+            ? "all sides the same length"
+            : "sides of different lengths",
+          holds("flat-bottom", p)
+            ? "a side flat along the bottom"
+            : "no side flat along the bottom",
+          holds("wider", p) ? "wider than tall" : "taller than wide",
+        ].join("; ");
+      edit = (scene) => ({
+        ...scene,
+        elements: scene.elements.map((e) =>
+          e.type === "shapes" ? { ...e, ghost: "A" as const } : e,
+        ),
+        steps: [
+          {
+            caption: `Shape A: ${describe(ordered[0]!)}. Watch its corners.`,
+            actions: [{ do: "highlight", target: "shapes.morph" }],
+            audience: "lesson",
+          },
+          {
+            caption: `Reshape it into B: now ${describe(ordered[1]!)}. Count the corners again.`,
+            actions: [
+              {
+                do: "morph",
+                target: "shapes.morph",
+                into: "shapes.item.B.piece.0",
+              },
+            ],
+            audience: "lesson",
+          },
+          {
+            caption: `Reshape it into C: now ${describe(ordered[2]!)}. The sides and corners never changed in number.`,
+            actions: [
+              {
+                do: "morph",
+                target: "shapes.morph",
+                into: "shapes.item.C.piece.0",
+              },
+            ],
+            audience: "lesson",
+          },
+        ],
+      });
       const defining =
         category === "triangle"
           ? "It has exactly 3 straight sides and 3 corners."
@@ -1081,7 +1131,7 @@ export function generateShapeProblem(
       prompt,
       skillId: meta.skillId,
       response,
-      figure,
+      figure: geometryScene(figure, edit),
     },
     answer,
     hint,

@@ -1,0 +1,260 @@
+import assert from "node:assert/strict";
+import { mkdir } from "node:fs/promises";
+import type { Page } from "playwright";
+
+type Size = { width: number; height: number };
+
+/**
+ * Viewport policy (founder decision 2026-10-19). The native app is
+ * portrait-only on phones, so phone portrait and tablets in both orientations
+ * are strict fit targets. A browser tab can still be rotated, so phone
+ * landscape is a smoke target: the page stays usable and scrolls vertically,
+ * but nothing has to fit without scrolling.
+ */
+export const PHONE_LANDSCAPE = { width: 844, height: 390 } as const;
+export const TABLET_LANDSCAPE = { width: 1024, height: 768 } as const;
+export const TABLET_LANDSCAPE_LARGE = { width: 1180, height: 820 } as const;
+
+/** Wider than tall and shorter than the smallest tablet in landscape. */
+export function isPhoneLandscape(size: Size | readonly number[]): boolean {
+  const [width, height] = Array.isArray(size)
+    ? size
+    : [(size as Size).width, (size as Size).height];
+  return width > height && height < 500;
+}
+
+/**
+ * Phone-landscape smoke check: no horizontal overflow, no two controls
+ * overlapping, and every control reachable by scrolling, unclipped and not
+ * covered by something else. Scroll positions are restored afterwards.
+ */
+export async function assertPhoneLandscapeSmoke(page: Page, label: string) {
+  // tsx names inner functions with an esbuild helper the page lacks.
+  await page.evaluate("globalThis.__name ??= (f) => f");
+  // Let resize handlers commit the new viewport before measuring.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  const problems = await page.evaluate(() => {
+    const found: string[] = [];
+    const width = innerWidth;
+    const height = innerHeight;
+    const overflow = Math.max(
+      document.documentElement.scrollWidth,
+      document.body.scrollWidth,
+    );
+    if (overflow > width + 1)
+      found.push(`horizontal overflow ${overflow}px > ${width}px`);
+    const describe = (element: Element) => {
+      const name =
+        element.getAttribute("aria-label") ??
+        (element.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 40);
+      const classes =
+        typeof element.className === "string" && element.className
+          ? `.${element.className.trim().split(/\s+/).join(".")}`
+          : "";
+      return `<${element.tagName.toLowerCase()}${classes}> "${name}"`;
+    };
+    const scope =
+      document.querySelector("dialog:modal, [aria-modal='true']") ??
+      document.body;
+    const controls = [
+      ...scope.querySelectorAll<HTMLElement>(
+        [
+          "button",
+          "a[href]",
+          "input:not([type=hidden])",
+          "select",
+          "textarea",
+          "summary",
+          "[role=button]",
+          "[role=tab]",
+          "[role=option]",
+          "[role=menuitem]",
+          "[role=radio]",
+          "[role=checkbox]",
+          "[role=switch]",
+          "[role=slider]",
+        ].join(","),
+      ),
+    ].filter((element) => {
+      if (element.closest("[hidden], [inert], [aria-hidden='true']"))
+        return false;
+      if (
+        !element.checkVisibility({
+          opacityProperty: true,
+          visibilityProperty: true,
+        })
+      )
+        return false;
+      const box = element.getBoundingClientRect();
+      return box.width >= 2 && box.height >= 2;
+    });
+    const boxes = (element: HTMLElement) =>
+      getComputedStyle(element).display === "inline"
+        ? [...element.getClientRects()].filter((r) => r.width && r.height)
+        : [element.getBoundingClientRect()];
+    // Overlap is measured on what is visible now: each box is clipped by its
+    // scroll containers, so content scrolled out of view does not count.
+    const visibleBoxes = (element: HTMLElement) =>
+      boxes(element)
+        .map((box) => {
+          let [left, top, right, bottom] = [
+            box.left,
+            box.top,
+            box.right,
+            box.bottom,
+          ];
+          for (
+            let ancestor = element.parentElement;
+            ancestor && ancestor !== document.body;
+            ancestor = ancestor.parentElement
+          ) {
+            const style = getComputedStyle(ancestor);
+            if (style.overflowX === "visible" && style.overflowY === "visible")
+              continue;
+            const clip = ancestor.getBoundingClientRect();
+            left = Math.max(left, clip.left);
+            top = Math.max(top, clip.top);
+            right = Math.min(right, clip.right);
+            bottom = Math.min(bottom, clip.bottom);
+          }
+          return { left, top, right, bottom };
+        })
+        .filter((b) => b.right - b.left > 1 && b.bottom - b.top > 1);
+    const measured = controls.map((element) => ({
+      element,
+      boxes: visibleBoxes(element),
+    }));
+    for (let i = 0; i < measured.length; i++)
+      for (let j = i + 1; j < measured.length; j++) {
+        const a = measured[i]!,
+          b = measured[j]!;
+        if (a.element.contains(b.element) || b.element.contains(a.element))
+          continue;
+        const overlap = a.boxes.some((p) =>
+          b.boxes.some(
+            (q) =>
+              Math.min(p.right, q.right) - Math.max(p.left, q.left) > 1 &&
+              Math.min(p.bottom, q.bottom) - Math.max(p.top, q.top) > 1,
+          ),
+        );
+        if (overlap)
+          found.push(`${describe(a.element)} overlaps ${describe(b.element)}`);
+      }
+    // A non-scrolling ancestor that cuts a control off makes it unreachable;
+    // so does a page that cannot scroll when a control lies past its edge.
+    const rootStyle = getComputedStyle(document.documentElement);
+    const bodyStyle = getComputedStyle(document.body);
+    const pageLocked = (axis: "overflowX" | "overflowY") =>
+      ["hidden", "clip"].includes(
+        rootStyle[axis] === "visible" ? bodyStyle[axis] : rootStyle[axis],
+      );
+    const scrollsIn = (
+      element: HTMLElement,
+      axis: "overflowX" | "overflowY",
+    ) => {
+      for (
+        let ancestor = element.parentElement;
+        ancestor && ancestor !== document.body;
+        ancestor = ancestor.parentElement
+      )
+        if (["auto", "scroll"].includes(getComputedStyle(ancestor)[axis]))
+          return ancestor;
+      return element;
+    };
+    for (const element of controls) {
+      const box = element.getBoundingClientRect();
+      const outerY = scrollsIn(element, "overflowY").getBoundingClientRect();
+      const outerX = scrollsIn(element, "overflowX").getBoundingClientRect();
+      if (
+        (pageLocked("overflowY") &&
+          (outerY.bottom > height + 1 || outerY.top < -1)) ||
+        (pageLocked("overflowX") &&
+          (outerX.right > width + 1 || outerX.left < -1))
+      ) {
+        found.push(
+          `${describe(element)} lies outside a page that cannot scroll (${[outerX.left, outerY.top, outerX.right, outerY.bottom].map(Math.round).join(",")} in ${width}×${height})`,
+        );
+        continue;
+      }
+      for (
+        let ancestor = element.parentElement;
+        ancestor && ancestor !== document.body;
+        ancestor = ancestor.parentElement
+      ) {
+        const style = getComputedStyle(ancestor);
+        const clip = ancestor.getBoundingClientRect();
+        const clipsX = ["hidden", "clip"].includes(style.overflowX);
+        const clipsY = ["hidden", "clip"].includes(style.overflowY);
+        if (
+          (clipsX &&
+            (box.left < clip.left - 1 || box.right > clip.right + 1)) ||
+          (clipsY && (box.top < clip.top - 1 || box.bottom > clip.bottom + 1))
+        ) {
+          found.push(
+            `${describe(element)} is clipped by ${describe(ancestor)}`,
+          );
+          break;
+        }
+      }
+    }
+    // Every control can be scrolled into view and is the thing a tap there hits.
+    const scrollers = [
+      document.scrollingElement!,
+      ...document.querySelectorAll("*"),
+    ]
+      .filter(
+        (element) =>
+          element.scrollHeight > element.clientHeight ||
+          element.scrollWidth > element.clientWidth,
+      )
+      .map((element) => ({
+        element,
+        top: element.scrollTop,
+        left: element.scrollLeft,
+      }));
+    for (const element of controls) {
+      element.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+        behavior: "instant",
+      });
+      const box = boxes(element)[0]!;
+      const left = Math.max(box.left, 0),
+        right = Math.min(box.right, width),
+        top = Math.max(box.top, 0),
+        bottom = Math.min(box.bottom, height);
+      if (right - left < 1 || bottom - top < 1) {
+        found.push(`${describe(element)} cannot be scrolled into view`);
+        continue;
+      }
+      const hit = document.elementFromPoint(
+        (left + right) / 2,
+        (top + bottom) / 2,
+      );
+      if (!hit || !(element === hit || element.contains(hit)))
+        found.push(
+          `${describe(element)} is covered by ${hit ? describe(hit) : "nothing"}`,
+        );
+    }
+    for (const { element, top, left } of scrollers)
+      element.scrollTo({ top, left, behavior: "instant" });
+    return found;
+  });
+  if (problems.length) {
+    const name = label.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+    await mkdir("artifacts/screenshots", { recursive: true });
+    await page.screenshot({
+      path: `artifacts/screenshots/phone-landscape-failure-${name}.png`,
+    });
+  }
+  assert.deepEqual(
+    problems,
+    [],
+    `${label} is unusable in phone landscape:\n${problems.join("\n")}`,
+  );
+}

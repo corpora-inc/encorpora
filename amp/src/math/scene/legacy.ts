@@ -18,6 +18,13 @@ export const portedKinds = [
   "sort-shapes",
   "base-ten",
   "unit-array",
+  "plane-shapes",
+  "shape-puzzle",
+  "solid-shape",
+  "cube-prism",
+  "box-prism",
+  "composite-prism",
+  "quadrant-grid",
 ] as const;
 export type PortedKind = (typeof portedKinds)[number];
 export function isPorted(
@@ -26,10 +33,101 @@ export function isPorted(
   return (portedKinds as readonly string[]).includes(f.kind);
 }
 
+/** Dot and box plots size their stacks and boxes in pixels, so their height
+ * does not shrink with the scale. The fit grows the scale by the room left
+ * under the ceiling each pass; a high ceiling lets it reach the full width
+ * in a few passes instead of stopping squeezed (a tall double dot plot was
+ * left 117 px wide under the default). */
+const PLOT_CEILING = 720;
+
 export function legacyScene(
   f: Extract<SemanticFigure, { kind: PortedKind }>,
 ): Scene {
   switch (f.kind) {
+    // Geometry figures from before the scene port: the same data, one
+    // component each (stored and offline problems still carry them).
+    case "plane-shapes":
+      return {
+        v: 1,
+        width: f.items.length === 1 ? 320 : 340,
+        elements: [{ type: "shapes", id: "shapes", items: f.items }],
+      };
+    case "shape-puzzle":
+      return {
+        v: 1,
+        width: 340,
+        elements: [
+          {
+            type: "shapePuzzle",
+            id: "puzzle",
+            outline: f.outline,
+            placed: f.placed,
+            candidates: f.candidates,
+          },
+        ],
+      };
+    case "solid-shape":
+      return {
+        v: 1,
+        width: 320,
+        elements: [{ type: "solid", id: "solid", solid: f.solid }],
+      };
+    case "cube-prism":
+      return {
+        v: 1,
+        width: 320,
+        elements: [
+          {
+            type: "isoSolid",
+            id: "prism",
+            solid: {
+              form: "cubes",
+              length: f.length,
+              width: f.width,
+              height: f.height,
+            },
+          },
+        ],
+      };
+    case "box-prism":
+      return {
+        v: 1,
+        width: 320,
+        // Labels stay at least 12 px when the figure shrinks to 150 px.
+        maxHeight: 230,
+        elements: [
+          {
+            type: "isoSolid",
+            id: "prism",
+            solid: {
+              form: "box",
+              length: f.length,
+              width: f.width,
+              height: f.height,
+            },
+          },
+        ],
+      };
+    case "composite-prism":
+      return {
+        v: 1,
+        width: 320,
+        maxHeight: 230,
+        elements: [
+          {
+            type: "isoSolid",
+            id: "prism",
+            solid: {
+              form: "composite",
+              width: f.width,
+              parts: f.parts,
+              unit: f.unit,
+            },
+          },
+        ],
+      };
+    case "quadrant-grid":
+      return quadrantScene(f.size, f.points);
     case "number-line":
       return {
         v: 1,
@@ -89,6 +187,7 @@ export function legacyScene(
     case "line-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "dotPlot",
@@ -105,6 +204,7 @@ export function legacyScene(
     case "double-dot-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "dotPlot",
@@ -121,6 +221,7 @@ export function legacyScene(
     case "double-box-plot":
       return {
         v: 1,
+        maxHeight: PLOT_CEILING,
         elements: [
           {
             type: "boxPlot",
@@ -218,4 +319,33 @@ export function legacyScene(
         elements: [{ type: "shapeSort", id: "shapes", shapes: f.shapes }],
       };
   }
+}
+
+/** The first quadrant with every whole-number gridline labeled. */
+export function quadrantScene(
+  size: number,
+  points: { x: number; y: number; label: string }[],
+  extra: Scene["elements"] = [],
+  steps?: Scene["steps"],
+): Scene {
+  return {
+    v: 1,
+    width: 300,
+    // As tall as the grid it replaces (280 px), so the answer dock fits.
+    maxHeight: 280,
+    elements: [
+      {
+        type: "graph",
+        id: "grid",
+        x: [0, size],
+        y: [0, size],
+        aspect: 1,
+        grid: 1,
+        labels: "all",
+        points: points.map((p) => ({ x: p.x, y: p.y, label: p.label })),
+      },
+      ...extra,
+    ],
+    ...(steps ? { steps } : {}),
+  };
 }
