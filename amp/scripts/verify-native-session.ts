@@ -775,8 +775,9 @@ try {
   await page.getByRole("button", { name: "← Back", exact: true }).click();
   await page.getByRole("button", { name: "Family menu" }).count();
   await page.getByLabel("Family menu").click();
+  // A Family menu item since #1155 (verify-session-ui uses the same role).
   await page
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await page
     .getByRole("heading", { name: "Family settings", exact: true })
@@ -832,8 +833,9 @@ try {
     () => document.activeElement?.getAttribute("aria-label") === "Family menu",
   );
   await page.getByLabel("Family menu").click();
+  // A Family menu item since #1155 (verify-session-ui uses the same role).
   await page
-    .getByRole("button", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage family", exact: true })
     .click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await page

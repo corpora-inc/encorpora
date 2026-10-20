@@ -25,6 +25,13 @@ import type { Lesson } from "../content/lessons";
 import { Figure } from "./Figure";
 import { ScenePlayer } from "./scene/ScenePlayer";
 import { visibleSteps, type Step } from "../math/scene/timeline";
+import type { ProblemFlagInput } from "../feedback/problem-flags";
+import { problemFlagBody } from "./problem-flag";
+import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
+type ReportSheet = typeof import("./ReportProblemSheet");
+/** The report sheet uses the UI kit's stylesheets, so it loads in the
+ * browser on demand (this module also loads under Node). */
+const loadReportSheet = () => import("./ReportProblemSheet");
 
 export function FocusDialog({
   title,
@@ -130,6 +137,9 @@ type Props = {
   submit: () => void;
   next: () => void;
   requestHint: () => void;
+  /** A neutral pass: shows the worked answer with no credit or penalty.
+   * Absent where the route is unavailable (the native bridge). */
+  skip?: () => void;
   /** This problem allows a calculator (computation is not the skill). */
   calculator?: boolean;
   /** A request error to show at the answer rather than at the top of the app. */
@@ -143,6 +153,10 @@ type Props = {
   status?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
+  /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
+  reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
+  /** The report offers its optional note (see `noteAllowed`). */
+  reportNote?: boolean;
 };
 
 /** Phones too short to keep the keypad docked under the problem. Taller
@@ -220,6 +234,24 @@ export function PracticeWorkspace(props: Props) {
   // A lesson opened before answering counts as support for this attempt.
   const [lessonBeforeAnswer, setLessonBeforeAnswer] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reported, setReported] = useState(false);
+  const [reportToast, setReportToast] = useState("");
+  const [reportSheet, setReportSheet] = useState<ReportSheet | null>(null);
+  // Fetched as the result appears, so the flag opens its sheet at once.
+  async function loadSheet() {
+    try {
+      const sheet = await loadReportSheet();
+      if (alive.current) setReportSheet(() => sheet);
+      return sheet;
+    } catch (failure) {
+      console.error("AMP report sheet failed to load:", failure);
+      return null;
+    }
+  }
+  useEffect(() => {
+    if (outcome && props.reportProblem && !reportSheet) void loadSheet();
+  }, [outcome?.id]);
   const [answerError, setAnswerError] = useState("");
   // Typing clears a message about the previous answer.
   useEffect(() => {
@@ -233,7 +265,11 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
+  const stage = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
+    // Each problem starts at its prompt's first line, wherever the last one
+    // was scrolled to.
+    if (stage.current) stage.current.scrollTop = 0;
     setPanel(null);
     setEntering(false);
     setLessonError("");
@@ -482,7 +518,7 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
-  function tools() {
+  function tools(feedback = false) {
     return (
       <div className="practice-tools">
         {outcome ? (
@@ -502,6 +538,16 @@ export function PracticeWorkspace(props: Props) {
             }}
           >
             Hint
+          </button>
+        )}
+        {!outcome && props.skip && (
+          <button
+            className="text-button skip-action"
+            disabled={busy}
+            aria-label="Skip this problem and see its answer"
+            onClick={() => props.skip?.()}
+          >
+            Skip
           </button>
         )}
         <button
@@ -536,6 +582,18 @@ export function PracticeWorkspace(props: Props) {
         >
           {lessonLoading ? "Opening…" : "Lesson"}
         </button>
+        {feedback && props.reportProblem && (
+          <ReportProblemButton
+            reported={reported}
+            open={async () => {
+              if (reportSheet || (await loadSheet())) setReportOpen(true);
+              else
+                setLessonError(
+                  "Reporting couldn’t open. Check your connection and try again.",
+                );
+            }}
+          />
+        )}
       </div>
     );
   }
@@ -550,6 +608,7 @@ export function PracticeWorkspace(props: Props) {
         : lessonBeforeAnswer
           ? "with the lesson"
           : "with a hint or lesson";
+  const skipped = !!outcome?.skipped;
   return (
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface" ref={surface}>
@@ -608,6 +667,7 @@ export function PracticeWorkspace(props: Props) {
         </div>
         <div
           className="problem-stage"
+          ref={stage}
           tabIndex={0}
           aria-label="Problem workspace"
         >
@@ -635,15 +695,16 @@ export function PracticeWorkspace(props: Props) {
           )}
         </div>
         <div className="answer-dock" ref={dock}>
-          {inputError && !outcome && (
-            <p className="answer-error" role="alert">
-              {inputError}
-            </p>
-          )}
           <div
             className="answer-controls"
             style={outcome ? { visibility: "hidden" } : undefined}
           >
+            {/* Floats just above the answer it explains, in either layout. */}
+            {inputError && !outcome && (
+              <p className="answer-error" role="alert">
+                {inputError}
+              </p>
+            )}
             {compact ? (
               <button
                 className="compact-answer-action"
@@ -678,17 +739,30 @@ export function PracticeWorkspace(props: Props) {
         )}
         {outcome && (
           <div
-            className={`feedback solution-panel ${outcome.correct ? "correct" : "incorrect"}`}
+            className={`feedback solution-panel ${outcome.correct ? "correct" : skipped ? "skipped" : "incorrect"}`}
             role="status"
             aria-live="polite"
             aria-atomic="true"
           >
             <div className="feedback-head">
               <span className="result-mark" aria-hidden="true">
-                {outcome.correct ? "✓" : "✕"}
+                {outcome.correct ? "✓" : skipped ? "→" : "✕"}
               </span>
               <span className="feedback-title">
-                {outcome.correct ? (
+                {skipped ? (
+                  <>
+                    <span
+                      className="solution-answer"
+                      data-text={displayResponse(outcome.answer)}
+                    >
+                      Answer:{" "}
+                      <strong>
+                        <MathText text={displayResponse(outcome.answer)} />
+                      </strong>
+                    </span>
+                    <small>Skipped. Your progress is unchanged.</small>
+                  </>
+                ) : outcome.correct ? (
                   <>
                     Correct
                     {support && <small>{capitalize(support)}</small>}
@@ -725,7 +799,12 @@ export function PracticeWorkspace(props: Props) {
               </p>
             )}
             {(!outcome.correct || showWhy) && (
-              <ol className="feedback-steps">
+              <ol
+                className="feedback-steps"
+                // It scrolls when long, so keyboards must be able to reach it.
+                tabIndex={0}
+                aria-label="Explanation"
+              >
                 {outcome.explanation.map((step, index) => (
                   <li key={index} data-text={step}>
                     <MathText text={step} />
@@ -742,7 +821,7 @@ export function PracticeWorkspace(props: Props) {
             >
               Next <span aria-hidden="true">→</span>
             </button>
-            {tools()}
+            {tools(true)}
           </div>
         )}
       </section>
@@ -767,6 +846,44 @@ export function PracticeWorkspace(props: Props) {
           )}
           <div className="answer-dock compact-entry">{answerControls()}</div>
         </FocusDialog>
+      )}
+      {reportOpen && reportSheet && outcome && props.reportProblem && (
+        <FocusDialog
+          className="report-dialog"
+          title="Report a problem"
+          close={() => setReportOpen(false)}
+        >
+          <reportSheet.ReportProblemForm
+            allowNote={!!props.reportNote}
+            send={async (report, requestId) =>
+              props.reportProblem!(
+                await problemFlagBody(
+                  problem.id,
+                  requestId,
+                  report,
+                  // A skip resolves a problem without an attempt.
+                  skipped,
+                ),
+              )
+            }
+            done={(result) => {
+              setReported(true);
+              setReportOpen(false);
+              setReportToast(
+                result === "already"
+                  ? "This problem was already reported. Thank you."
+                  : "Thank you. Your report was sent.",
+              );
+            }}
+          />
+        </FocusDialog>
+      )}
+      {reportSheet && (
+        <reportSheet.Toast
+          tone="status"
+          message={reportToast}
+          onDismiss={() => setReportToast("")}
+        />
       )}
       {panel && (
         <FocusDialog

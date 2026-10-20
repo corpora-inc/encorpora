@@ -14,6 +14,19 @@ type Size = { width: number; height: number };
 export const PHONE_LANDSCAPE = { width: 844, height: 390 } as const;
 export const TABLET_LANDSCAPE = { width: 1024, height: 768 } as const;
 export const TABLET_LANDSCAPE_LARGE = { width: 1180, height: 820 } as const;
+export const TABLET_PORTRAIT = { width: 768, height: 1024 } as const;
+export const TABLET_PORTRAIT_LARGE = { width: 820, height: 1180 } as const;
+/** iPad sizes in both orientations: strict practice targets. In landscape
+ * the problem and the answer sit side by side (practice-tablet.css). */
+export const TABLETS = [
+  TABLET_LANDSCAPE,
+  TABLET_LANDSCAPE_LARGE,
+  TABLET_PORTRAIT,
+  TABLET_PORTRAIT_LARGE,
+] as const;
+export function isTabletLandscape(size: Size): boolean {
+  return size.width > size.height && size.width >= 900 && size.height >= 500;
+}
 
 /** Wider than tall and shorter than the smallest tablet in landscape. */
 export function isPhoneLandscape(size: Size | readonly number[]): boolean {
@@ -257,4 +270,172 @@ export async function assertPhoneLandscapeSmoke(page: Page, label: string) {
     [],
     `${label} is unusable in phone landscape:\n${problems.join("\n")}`,
   );
+}
+
+/**
+ * Real phone browser viewports, with the browser's own bars showing. Each is a
+ * strict practice target: the problem fits or scrolls cleanly, never clipped.
+ */
+export const PHONE_ANDROID_CHROME = { width: 384, height: 700 } as const;
+export const PHONE_IPHONE_SE = { width: 375, height: 667 } as const;
+export const PHONE_SMALL_ANDROID = { width: 360, height: 640 } as const;
+export const PHONE_REAL_BROWSERS = [
+  PHONE_ANDROID_CHROME,
+  PHONE_IPHONE_SE,
+  PHONE_SMALL_ANDROID,
+] as const;
+
+/**
+ * The practice problem is reachable: content may scroll inside the problem
+ * stage, but nothing may be clipped where no scrolling reaches it.
+ *
+ * - The prompt's first line sits at or below the stage's scroll origin (an
+ *   overflow above that origin can never be scrolled to).
+ * - The prompt and every figure lie inside the stage's vertical scroll range
+ *   and its width, and no non-scrolling box between them and the stage cuts
+ *   them off.
+ * - The stage and the answer dock do not overlap (the dock sits below the
+ *   stage, or beside it in two-column landscape), and the dock is wholly on
+ *   screen.
+ * - Neither the page nor the stage overflows horizontally.
+ *
+ * Returns the stage's scroll geometry for reporting.
+ */
+export async function assertProblemReachable(page: Page, label: string) {
+  await page.evaluate("globalThis.__name ??= (f) => f");
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  const result = await page.evaluate(() => {
+    const found: string[] = [];
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const surface = stage.closest<HTMLElement>(".practice-surface");
+    const dock = surface?.querySelector<HTMLElement>(":scope > .answer-dock");
+    const saved = stage.scrollTop;
+    stage.scrollTop = 0;
+    const s = stage.getBoundingClientRect();
+    const top = s.top + stage.clientTop;
+    const bottom = top + stage.scrollHeight;
+    const left = s.left + stage.clientLeft;
+    const right = left + stage.clientWidth;
+    const name = (e: Element) =>
+      `<${e.tagName.toLowerCase()}${typeof e.className === "string" && e.className ? `.${e.className.trim().split(/\s+/).join(".")}` : ""}>`;
+    const question = stage.querySelector(".question");
+    const content = stage.querySelector(".problem-content");
+    if (!question || !content) found.push("no prompt in the problem stage");
+    else {
+      const q = question.getBoundingClientRect();
+      if (q.top < top - 1)
+        found.push(
+          `prompt starts ${Math.round(top - q.top)}px above the scroll origin`,
+        );
+      const parts = [
+        question,
+        ...content.children,
+        ...content.querySelectorAll("svg:not(svg svg), table, img, canvas"),
+      ];
+      for (const part of new Set(parts)) {
+        const b = part.getBoundingClientRect();
+        if (b.width < 2 || b.height < 2) continue;
+        if (b.top < top - 1 || b.bottom > bottom + 1)
+          found.push(
+            `${name(part)} spans ${Math.round(b.top - top)}..${Math.round(b.bottom - top)} outside the stage's scroll range 0..${Math.round(bottom - top)}`,
+          );
+        if (b.left < left - 1 || b.right > right + 1)
+          found.push(
+            `${name(part)} spans ${Math.round(b.left - left)}..${Math.round(b.right - left)} outside the stage width ${Math.round(right - left)}`,
+          );
+        for (
+          let a = part.parentElement;
+          a && a !== stage;
+          a = a.parentElement
+        ) {
+          const style = getComputedStyle(a);
+          const clip = a.getBoundingClientRect();
+          const cutY =
+            ["hidden", "clip"].includes(style.overflowY) &&
+            (b.top < clip.top - 1 || b.bottom > clip.bottom + 1);
+          const cutX =
+            ["hidden", "clip"].includes(style.overflowX) &&
+            (b.left < clip.left - 1 || b.right > clip.right + 1);
+          if (cutY || cutX) {
+            found.push(`${name(part)} is clipped by ${name(a)}`);
+            break;
+          }
+        }
+      }
+    }
+    if (stage.scrollWidth > stage.clientWidth + 1)
+      found.push(
+        `stage overflows horizontally ${stage.scrollWidth} > ${stage.clientWidth}`,
+      );
+    if (document.documentElement.scrollWidth > innerWidth)
+      found.push(
+        `page overflows horizontally ${document.documentElement.scrollWidth} > ${innerWidth}`,
+      );
+    if (dock) {
+      const d = dock.getBoundingClientRect();
+      const across = Math.min(s.right, d.right) - Math.max(s.left, d.left);
+      const down = Math.min(s.bottom, d.bottom) - Math.max(s.top, d.top);
+      if (across > 1 && down > 1)
+        found.push(
+          `stage overlaps the dock by ${Math.round(across)}×${Math.round(down)}px`,
+        );
+      if (d.bottom > innerHeight + 1 || d.top < 0)
+        found.push(
+          `answer dock ${Math.round(d.top)}..${Math.round(d.bottom)} is off a ${innerHeight}px screen`,
+        );
+    }
+    if (s.top < 0)
+      found.push(`stage starts ${Math.round(-s.top)}px off screen`);
+    const geometry = {
+      height: stage.clientHeight,
+      scroll: stage.scrollHeight,
+      at: saved,
+    };
+    stage.scrollTop = saved;
+    return { found, geometry };
+  });
+  if (result.found.length) {
+    const name = label.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+    await mkdir("artifacts/screenshots", { recursive: true });
+    await page.screenshot({
+      path: `artifacts/screenshots/unreachable-${name}.png`,
+    });
+  }
+  assert.deepEqual(
+    result.found,
+    [],
+    `${label}: part of the problem cannot be reached\n${result.found.join("\n")}`,
+  );
+  return result.geometry;
+}
+
+/**
+ * The whole problem is in view with no scrolling: the stage does not scroll,
+ * and the prompt and every figure lie inside its visible box. Returns the
+ * reasons it is not, empty when it is.
+ */
+export async function problemInView(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const found: string[] = [];
+    if (stage.scrollHeight > stage.clientHeight + 1)
+      found.push(
+        `stage scrolls ${stage.scrollHeight - stage.clientHeight}px (${stage.scrollHeight} > ${stage.clientHeight})`,
+      );
+    const s = stage.getBoundingClientRect();
+    const content = stage.querySelector(".problem-content");
+    for (const part of content ? [...content.children] : []) {
+      const b = part.getBoundingClientRect();
+      if (b.top < s.top - 1 || b.bottom > s.bottom + 1)
+        found.push(
+          `<${part.tagName.toLowerCase()}.${part.classList[0] ?? ""}> spans ${Math.round(b.top - s.top)}..${Math.round(b.bottom - s.top)} of a ${Math.round(s.height)}px stage`,
+        );
+    }
+    return found;
+  });
 }

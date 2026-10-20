@@ -12,6 +12,7 @@ import {
 import { betterAuth } from "better-auth";
 import { bearer, twoFactor } from "better-auth/plugins";
 import { fromNodeHeaders } from "better-auth/node";
+import { APIError } from "better-auth/api";
 import { passkey } from "@better-auth/passkey";
 import { SignJWT, importPKCS8 } from "jose";
 import { Resend } from "resend";
@@ -159,6 +160,38 @@ export function providerSignupRefused(
   return viaProvider && !user.emailVerified;
 }
 
+/** Thrown when a provider has not verified the email it reports; the sign-in
+ * screen explains it from this code. */
+export const PROVIDER_EMAIL_UNVERIFIED = "provider_email_unverified";
+
+/** Microsoft's `email` claim is not proof of ownership (the nOAuth class of
+ * takeover). It counts as verified only with `xms_edov` (the email domain's
+ * owner is verified; true for personal accounts that verified their address)
+ * or when it is one of the user's verified addresses. */
+export function microsoftEmailVerified(profile: {
+  email?: unknown;
+  xms_edov?: unknown;
+  verified_primary_email?: unknown;
+  verified_secondary_email?: unknown;
+}) {
+  const email = typeof profile.email === "string" ? profile.email : "";
+  if (!email) return false;
+  const listed = (claim: unknown) =>
+    (Array.isArray(claim) ? claim : [claim]).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase() === email.toLowerCase(),
+    );
+  return (
+    profile.xms_edov === true ||
+    profile.xms_edov === "true" ||
+    profile.xms_edov === 1 ||
+    profile.xms_edov === "1" ||
+    listed(profile.verified_primary_email) ||
+    listed(profile.verified_secondary_email)
+  );
+}
+
 export function enabledProviders(config: AccountsConfig): SocialProvider[] {
   return SOCIAL_PROVIDERS.filter((p) => !!config[p]);
 }
@@ -230,6 +263,14 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         }),
       }
     : undefined;
+  const microsoftOptions = config.microsoft && {
+    ...config.microsoft,
+    // The profile photo is not used; skip the extra Graph request.
+    disableProfilePhoto: true,
+    mapProfileToUser: (profile: Record<string, unknown>) => ({
+      emailVerified: microsoftEmailVerified(profile),
+    }),
+  };
   const auth = betterAuth({
     appName: "AMP",
     baseURL: config.baseURL,
@@ -276,12 +317,18 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           returned: false,
         },
       },
-      // Existing parents link identities explicitly from fresh Security sessions.
-      // A removed identity cannot reconnect through a matching provider email.
+      // A provider identity links to an existing parent only when the
+      // provider verified the email and the parent's own address is verified
+      // (Better Auth checks both; no provider is "trusted" past that). The
+      // account trigger (0023) also refuses identities the parent removed and
+      // parents with an authenticator; they link explicitly from Security,
+      // where a different email is allowed.
       accountLinking: {
         enabled: true,
+        disableImplicitLinking: false,
+        requireLocalEmailVerified: true,
+        trustedProviders: [],
         allowDifferentEmails: true,
-        disableImplicitLinking: true,
       },
     },
     emailAndPassword: {
@@ -317,7 +364,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       user: {
         create: {
           before: async (user, context) => {
-            if (providerSignupRefused(user, context?.path)) return false;
+            if (providerSignupRefused(user, context?.path))
+              throw new APIError("FORBIDDEN", {
+                code: PROVIDER_EMAIL_UNVERIFIED,
+                message: "The provider has not verified this email address.",
+              });
           },
         },
       },
@@ -348,10 +399,10 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           getUserInfo: rememberVerifiedProvider(github(config.github)),
         },
       }),
-      ...(config.microsoft && {
+      ...(microsoftOptions && {
         microsoft: {
-          ...config.microsoft,
-          getUserInfo: rememberVerifiedProvider(microsoft(config.microsoft)),
+          ...microsoftOptions,
+          getUserInfo: rememberVerifiedProvider(microsoft(microsoftOptions)),
         },
       }),
       ...(appleOptions && {

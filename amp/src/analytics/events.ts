@@ -13,6 +13,7 @@ export const FUNNEL_EVENTS = [
   "placement_done",
   "map_view",
   "practice_answer",
+  "practice_skip",
   "lesson_open",
   "hint_use",
   "mastery",
@@ -114,6 +115,9 @@ export const funnelPropsSchemas = {
   }),
   map_view: none,
   practice_answer: z.strictObject({ index }),
+  /** A neutral pass. Per-template skip rates come from the problem records
+   * (`npm run report:insights`), never from this anonymous stream. */
+  practice_skip: none,
   lesson_open: none,
   hint_use: none,
   mastery: none,

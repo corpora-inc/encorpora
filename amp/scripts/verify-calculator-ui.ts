@@ -20,7 +20,7 @@ import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {PracticeWorkspace, usePracticeViewport} from '/src/web/PracticeWorkspace.tsx';
 import '/src/web/style.css';import '/src/web/practice.css';import '/node_modules/katex/dist/katex.min.css';
-import '/src/web/theme.css';import '/src/web/premium-controls.css';import '/src/web/app-shell.css';
+import '/src/web/theme.css';import '/src/web/premium-controls.css';import '/src/web/app-shell.css';import '/src/web/practice-tablet.css';
 const problem=${JSON.stringify(problem)};
 window.pressed=[];
 function App(){
@@ -411,9 +411,17 @@ try {
 
   // Synthetic screenshots: no overflow at any width, light or dark.
   for (const colorScheme of ["light", "dark"] as const) {
-    for (const width of [320, 390, 768, 1280]) {
+    for (const [width, height] of [
+      [320, 720],
+      [390, 720],
+      [768, 900],
+      [768, 1024],
+      [1024, 768],
+      [1180, 820],
+      [1280, 900],
+    ] as const) {
       const shot = await browser.newPage({
-        viewport: { width, height: width < 768 ? 720 : 900 },
+        viewport: { width, height },
         colorScheme,
       });
       await shot.goto(pageUrl);
@@ -429,6 +437,15 @@ try {
         const panel = document
           .querySelector(".calculator")!
           .getBoundingClientRect();
+        // Beside the problem (two-column landscape) the panel stays in the
+        // answer column, over the keypad it stands in for.
+        const stage = document
+          .querySelector(".problem-stage")!
+          .getBoundingClientRect();
+        const dock = document
+          .querySelector(".practice-surface > .answer-dock")!
+          .getBoundingClientRect();
+        const beside = innerWidth > innerHeight && innerWidth >= 900;
         return {
           panel: [
             panel.left,
@@ -442,16 +459,27 @@ try {
             panel.left >= 0 &&
             panel.right <= innerWidth &&
             panel.bottom <= innerHeight,
+          clearOfProblem:
+            !beside ||
+            (panel.left >= stage.right &&
+              panel.right <= dock.right + 1 &&
+              panel.bottom <= dock.bottom + 1),
         };
       });
       assert.deepEqual(
-        { overflow: fit.overflow, inside: fit.inside },
-        { overflow: false, inside: true },
-        `Calculator must fit at ${width}px ${colorScheme}: ${fit.panel}`,
+        {
+          overflow: fit.overflow,
+          inside: fit.inside,
+          clearOfProblem: fit.clearOfProblem,
+        },
+        { overflow: false, inside: true, clearOfProblem: true },
+        `Calculator must fit at ${width}×${height} ${colorScheme}: ${fit.panel}`,
       );
       await shot.screenshot({
-        path: new URL(`calculator-${width}-${colorScheme}.png`, output)
-          .pathname,
+        path: new URL(
+          `calculator-${width}x${height}-${colorScheme}.png`,
+          output,
+        ).pathname,
       });
       await shot.close();
     }

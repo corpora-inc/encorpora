@@ -122,12 +122,17 @@ registerComponent("pictureGraph", {
       stroke: "axis",
       width: 2,
     });
+    // A full row of ten symbols makes the graph wider than a phone's stage,
+    // so it is drawn at about 74% on a 320 px phone: the key is set at the
+    // row labels' size so it still reads at 12 px or more there.
+    const key = `= ${p.key} ${plural(p.key, p.unit)}`,
+      keyWidth = Math.max(190, 34 + typeset(key, "sans", "md").width + 12);
     prims.push(
       {
         type: "rect",
         id: "key",
         at: P(g.labelWidth, g.keyY + 14),
-        size: [190 / s, 28 / s],
+        size: [keyWidth / s, 28 / s],
         radius: 6,
         fill: "empty",
       },
@@ -136,9 +141,8 @@ registerComponent("pictureGraph", {
         type: "text",
         id: "key.label",
         at: P(g.labelWidth + 34, g.keyY),
-        text: `= ${p.key} ${plural(p.key, p.unit)}`,
+        text: key,
         font: "sans",
-        size: "sm",
         align: [-1, 0],
       },
     );

@@ -17,6 +17,11 @@ import {
 import { learningCatalog } from "../../learning-transport";
 import type { ProblemLessonView } from "../../../content/problem-lessons";
 import type { TrialCatalog } from "./types";
+import {
+  ALREADY_REPORTED,
+  type ProblemFlagInput,
+} from "../../../feedback/problem-flags";
+import type { ReportResult } from "../../ProblemFlag";
 
 /** The free trial is anonymous: a random device token, a nameless learner
  * and a birth year. Nothing here identifies a child or links an account. */
@@ -41,6 +46,7 @@ export const progressSchema = z.object({
     answered: z.number().int(),
     correct: z.number().int(),
     assisted: z.number().int(),
+    skipped: z.number().int().optional(),
   }),
   mastered: z.array(z.string()),
   frontier: z.object({
@@ -66,6 +72,7 @@ export const outcomeSchema = z.object({
   answer: z.string(),
   createdAt: z.string(),
   mastered: z.object({ skillId: z.string(), title: z.string() }).optional(),
+  skipped: z.literal(true).optional(),
 });
 export type TrialOutcome = z.infer<typeof outcomeSchema>;
 
@@ -185,6 +192,14 @@ export function answer(
     { trial: session.token, body: input },
   );
 }
+/** Skip: the worked answer, as a neutral reveal (learning/skip.ts). */
+export function skip(session: TrialSession, problemId: string) {
+  return request(
+    `/learners/${encodeURIComponent(session.learnerId)}/skips`,
+    outcomeSchema,
+    { trial: session.token, body: { problemId } },
+  );
+}
 export function hint(session: TrialSession, problemId: string) {
   return request(
     `/learners/${encodeURIComponent(session.learnerId)}/hints`,
@@ -198,6 +213,24 @@ export function lessonSupport(session: TrialSession, problemId: string) {
     z.object({ lesson: z.custom<ProblemLessonView>((value) => !!value) }),
     { trial: session.token, body: { problemId } },
   );
+}
+/** "Report a problem". A trial reports with reasons only (no note). */
+export async function reportProblem(
+  session: TrialSession,
+  body: ProblemFlagInput,
+): Promise<ReportResult> {
+  try {
+    await request(
+      `/learners/${encodeURIComponent(session.learnerId)}/problem-flags`,
+      z.object({ id: z.string(), recorded: z.literal(true) }),
+      { trial: session.token, body },
+    );
+    return "sent";
+  } catch (error) {
+    if (error instanceof AppError && error.code === ALREADY_REPORTED)
+      return "already";
+    throw error;
+  }
 }
 export function recordPaywall(session: TrialSession) {
   return request(

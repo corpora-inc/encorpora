@@ -7,6 +7,7 @@ import { ratioRatePrinciples } from "./ratio-rate-lessons";
 import { patternFunctionPrinciples } from "./pattern-function-lessons";
 import { linearFunctionPrinciples } from "./linear-function-lessons";
 import { quadraticStructurePrinciples } from "./quadratic-structure-lessons";
+import { functionToolkitPrinciples } from "./function-toolkit-lessons";
 import { twoVariablePrinciples } from "./two-variable-lessons";
 import { equationPrinciples } from "./equation-lessons";
 import { volumeCoordinatePrinciples } from "./volume-coordinate-lessons";
@@ -17,6 +18,8 @@ import { exponentialPrinciples } from "./exponential-lessons";
 import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { similarityTrigPrinciples } from "./similarity-trig-lessons";
 import { coordinateCirclePrinciples } from "./coordinate-circle-lessons";
+import { algebraStatisticsPrinciples } from "./algebra-statistics-lessons";
+import { powerPrinciples } from "./power-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { bivariatePrinciples } from "./bivariate-lessons";
@@ -59,6 +62,8 @@ export const principles: Record<string, string> = {
   ...probabilityRulesPrinciples,
   ...similarityTrigPrinciples,
   ...coordinateCirclePrinciples,
+  ...algebraStatisticsPrinciples,
+  ...powerPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -90,6 +95,7 @@ export const principles: Record<string, string> = {
   ...patternFunctionPrinciples,
   ...linearFunctionPrinciples,
   ...quadraticStructurePrinciples,
+  ...functionToolkitPrinciples,
   ...twoVariablePrinciples,
   ...equationPrinciples,
   ...rationalPrinciples,
@@ -311,7 +317,7 @@ export const principles: Record<string, string> = {
   "number-line-distance":
     "The distance between $a$ and $b$ on the number line is |a − b|.",
   "integer-power":
-    "Exponent notation: $b^n = b \\times b \\times \\cdots \\times b$ ($n$ factors), and $b^0 = 1$ for $b \\neq 0$.",
+    "Exponent notation: $b^n$ is $n$ factors of $b$, and $b^0 = 1$ for $b \\neq 0$; $b^{m + n} = b^m \\cdot b^n$ lets a large power be built from smaller ones.",
   "operation-order":
     "Order of operations: grouping symbols, then exponents, then multiplication and division left to right, then addition and subtraction left to right.",
   "substitute-linear-expression":

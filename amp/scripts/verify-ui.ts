@@ -1,10 +1,15 @@
 import { choose } from "./ui-controls";
 import {
   assertPhoneLandscapeSmoke,
+  assertProblemReachable,
   isPhoneLandscape,
+  isTabletLandscape,
   PHONE_LANDSCAPE,
+  PHONE_REAL_BROWSERS,
+  problemInView,
   TABLET_LANDSCAPE,
   TABLET_LANDSCAPE_LARGE,
+  TABLETS,
 } from "./ui-viewports";
 import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
@@ -19,6 +24,9 @@ import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
 import { templates } from "../src/math/engine";
+/** Problem types allowed to need a scroll at one tablet size: a very tall
+ * figure past its legible floor. The sweep prints the list it measured. */
+const TABLET_SCROLL_BUDGET = 0;
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -111,10 +119,10 @@ try {
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },
+    ...PHONE_REAL_BROWSERS,
     { width: 320, height: 720 },
     { width: 320, height: 568 },
-    TABLET_LANDSCAPE,
-    TABLET_LANDSCAPE_LARGE,
+    ...TABLETS,
     PHONE_LANDSCAPE,
   ]) {
     await page.setViewportSize(viewport);
@@ -150,11 +158,15 @@ try {
         height: innerHeight,
       };
     });
+    // The question keeps its minimum and the answer action stays on screen;
+    // the problem fits or scrolls cleanly from its first line.
     assert.ok(
-      fit.stage >= 180 &&
-        fit.content <= fit.stage + 2 &&
-        fit.actionBottom <= fit.height,
+      fit.stage >= 180 && fit.actionBottom <= fit.height,
       `Question and answer action must fit ${viewport.width}×${viewport.height}: ${JSON.stringify(fit)}`,
+    );
+    await assertProblemReachable(
+      page,
+      `Practice ${viewport.width}×${viewport.height}`,
     );
     assert.ok(
       await page.evaluate(
@@ -164,7 +176,7 @@ try {
     );
     await page.screenshot({
       path: new URL(
-        `../artifacts/screenshots/practice-${viewport.width}.png`,
+        `../artifacts/screenshots/practice-${viewport.width}x${viewport.height}.png`,
         import.meta.url,
       ).pathname,
       fullPage: true,
@@ -198,6 +210,16 @@ try {
     "Next →",
   );
   const practiceHistoryLength = await page.evaluate(() => history.length);
+  // Leave the answered problem scrolled down (a temporary spacer makes any
+  // problem scroll): the next problem must open at its prompt's first line.
+  const answeredPrompt = await page.locator(".question").innerText();
+  assert.ok(
+    await page.locator(".problem-stage").evaluate((stage) => {
+      stage.style.paddingBottom = "2000px";
+      stage.scrollTop = 600;
+      return stage.scrollTop > 0;
+    }),
+  );
   await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   // The adaptive planner may serve a typed or a multiple-choice problem. The
@@ -205,6 +227,13 @@ try {
   // feedback to leave before accepting either answer form.
   await page.locator(".solution-panel").waitFor({ state: "detached" });
   await page.locator("#answer, .choice-form").first().waitFor();
+  const opened = await page.locator(".problem-stage").evaluate((stage) => {
+    const top = stage.scrollTop;
+    stage.style.paddingBottom = "";
+    return top;
+  });
+  if ((await page.locator(".question").innerText()) !== answeredPrompt)
+    assert.equal(opened, 0, "The next problem opens scrolled to its prompt");
   assert.equal(
     await page.evaluate(() => history.length),
     practiceHistoryLength,
@@ -294,6 +323,149 @@ try {
   );
   await page.unroute("**/batches");
   await page.unroute("**/lesson-support");
+  /** Landscape tablets put the answer beside the problem. Every state there
+   * (hint, a malformed answer, feedback, the next problem) keeps the problem
+   * still, stays in its own column and keeps 44 px targets. */
+  async function verifyTabletStates() {
+    for (const size of [TABLET_LANDSCAPE, TABLET_LANDSCAPE_LARGE]) {
+      await page.setViewportSize(size);
+      await startTopic(page, "mean-data");
+      await page.locator("#answer").waitFor();
+      const label = `Tablet ${size.width}×${size.height}`;
+      const boxes = () =>
+        page.evaluate(() => {
+          const rect = (selector: string) => {
+            const r = document.querySelector(selector)?.getBoundingClientRect();
+            return r && [r.left, r.top, r.right, r.bottom].map(Math.round);
+          };
+          return {
+            question: rect(".problem-content .question"),
+            figure: rect(".problem-content > :not(.question)"),
+            stage: rect(".problem-stage"),
+            dock: rect(".practice-surface > .answer-dock"),
+          };
+        });
+      const still = await boxes();
+      const [, , stageRight] = still.stage!;
+      const [dockLeft, dockTop, dockRight, dockBottom] = still.dock!;
+      assert.ok(
+        dockLeft >= stageRight,
+        `${label}: the answer sits beside the problem ${JSON.stringify(still)}`,
+      );
+      assert.deepEqual(
+        await problemInView(page),
+        [],
+        `${label}: whole problem`,
+      );
+      for (const target of await page
+        .locator(
+          ".answer-dock button:visible, .answer-dock input:visible, .workspace-toolbar button:visible",
+        )
+        .all()) {
+        const b = (await target.boundingBox())!;
+        assert.ok(
+          b.height >= 44 && b.width >= 44,
+          `${label}: ${(await target.getAttribute("aria-label")) ?? (await target.innerText())} is ${b.width}×${b.height}`,
+        );
+      }
+      // Entrances and theme transitions finish before a screenshot.
+      const shot = async (name: string) => {
+        await page.evaluate(() =>
+          Promise.all(
+            document
+              .getAnimations()
+              .filter((a) => a.effect?.getComputedTiming().endTime !== Infinity)
+              .map((a) => a.finished),
+          ),
+        );
+        await page.screenshot({
+          path: new URL(
+            `../artifacts/screenshots/tablet-${size.width}-${name}.png`,
+            import.meta.url,
+          ).pathname,
+        });
+      };
+      await shot("answer");
+      // The hint opens over the page and closes back to the same problem.
+      await page.getByRole("button", { name: "Hint", exact: true }).click();
+      await page.locator("dialog[open] .hint").waitFor();
+      await page
+        .locator("dialog[open] .hint:not(:has-text('Finding'))")
+        .waitFor();
+      assert.deepEqual(await boxes(), still, `${label}: hint moved the page`);
+      await shot("hint");
+      await page.keyboard.press("Escape");
+      await page.locator("dialog[open]").waitFor({ state: "detached" });
+      // A malformed answer is explained beside the field, in the answer column.
+      await page.locator("#answer").fill("not a number");
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      const error = (await page.locator(".answer-error").boundingBox())!;
+      const field = (await page.locator("#answer").boundingBox())!;
+      assert.ok(
+        error.x >= dockLeft - 1 &&
+          error.x + error.width <= dockRight + 1 &&
+          error.y >= dockTop - 1 &&
+          error.y + error.height <= field.y,
+        `${label}: answer error ${JSON.stringify(error)} beside the field`,
+      );
+      assert.deepEqual(
+        await boxes(),
+        still,
+        `${label}: the error moved the page`,
+      );
+      await shot("error");
+      await page.locator("#answer").fill("999999");
+      await page.getByRole("button", { name: "Check", exact: true }).click();
+      await page.locator(".solution-panel").waitFor();
+      await page
+        .locator(".solution-panel")
+        .evaluate((sheet) =>
+          Promise.all(sheet.getAnimations().map((a) => a.finished)),
+        );
+      // Feedback replaces the answer column, not the problem.
+      const sheet = (await page.locator(".solution-panel").boundingBox())!;
+      assert.ok(
+        sheet.x >= dockLeft - 1 &&
+          sheet.x + sheet.width <= dockRight + 1 &&
+          sheet.y >= dockTop - 1 &&
+          sheet.y + sheet.height <= dockBottom + 1,
+        `${label}: feedback ${JSON.stringify(sheet)} fills the answer column ${still.dock}`,
+      );
+      assert.deepEqual(
+        await boxes(),
+        still,
+        `${label}: feedback moved the page`,
+      );
+      const steps = page.locator(".feedback-steps");
+      if (await steps.count()) {
+        assert.equal(await steps.getAttribute("tabindex"), "0");
+        assert.equal(await steps.getAttribute("aria-label"), "Explanation");
+      }
+      for (const target of await page
+        .locator(".solution-panel button:visible")
+        .all()) {
+        const b = (await target.boundingBox())!;
+        assert.ok(b.height >= 44 && b.width >= 44, `${label}: feedback target`);
+      }
+      await shot("feedback");
+      await page.emulateMedia({ colorScheme: "dark" });
+      await shot("feedback-dark");
+      await page.emulateMedia({ colorScheme: "light" });
+      await page.getByRole("button", { name: "Next", exact: false }).click();
+      await page.locator(".solution-panel").waitFor({ state: "detached" });
+      assert.ok(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+        `${label}: no horizontal overflow`,
+      );
+    }
+  }
+  await verifyTabletStates();
+  // Tablets in both orientations show a figure problem whole, without
+  // scrolling. Measured per template; the rare very tall problem may scroll
+  // cleanly instead, and is listed rather than failing the sweep.
+  const tabletScrolls = new Map<string, string[]>();
   for (const template of templates) {
     // Respect the real server rate limit during this accelerated catalog sweep.
     if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75)
@@ -316,9 +488,13 @@ try {
       ),
       `Overflow in ${template.id}`,
     );
+    // Real phone browsers (their bars showing) and tablets are strict: the
+    // problem fits or scrolls cleanly, never clipped or hidden under the dock.
     for (const size of [
       { width: 390, height: 844 },
+      ...PHONE_REAL_BROWSERS,
       { width: 320, height: 568 },
+      ...TABLETS,
       PHONE_LANDSCAPE,
     ]) {
       await page.setViewportSize(size);
@@ -333,16 +509,27 @@ try {
         await assertPhoneLandscapeSmoke(page, template.id);
         continue;
       }
-      const geometry = await page
-        .locator(".problem-stage")
-        .evaluate((stage) => ({
-          height: stage.clientHeight,
-          scroll: stage.scrollHeight,
-        }));
-      assert.ok(
-        geometry.scroll <= geometry.height + 2,
-        `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
+      await assertProblemReachable(
+        page,
+        `${template.id} ${size.width}×${size.height}`,
       );
+      if (TABLETS.some((t) => t.width === size.width)) {
+        const why = await problemInView(page);
+        if (why.length) {
+          const key = `${size.width}×${size.height}`;
+          tabletScrolls.set(key, [
+            ...(tabletScrolls.get(key) ?? []),
+            `${template.id}: ${why[0]}`,
+          ]);
+          if (isTabletLandscape(size))
+            await page.screenshot({
+              path: new URL(
+                `../artifacts/screenshots/tablet-scroll-${template.id}-${size.width}.png`,
+                import.meta.url,
+              ).pathname,
+            });
+        }
+      }
       if (
         size.width === 320 &&
         [...equalGroupsDefinitions, ...algebraDefinitions].some(
@@ -377,6 +564,17 @@ try {
         ).pathname,
         fullPage: true,
       });
+  }
+  for (const size of TABLETS) {
+    const key = `${size.width}×${size.height}`;
+    const scrolled = tabletScrolls.get(key) ?? [];
+    console.log(
+      `Tablet ${key}: ${templates.length - scrolled.length} of ${templates.length} problem types show whole without scrolling.${scrolled.length ? `\n  ${scrolled.join("\n  ")}` : ""}`,
+    );
+    assert.ok(
+      scrolled.length <= TABLET_SCROLL_BUDGET,
+      `Tablet ${key}: ${scrolled.length} problem types need a scroll (budget ${TABLET_SCROLL_BUDGET})`,
+    );
   }
   // Lessons: every problem type has its own short lesson.
   await exitPractice(page);

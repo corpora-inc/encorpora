@@ -4,6 +4,7 @@ import {
   recordTrialEvent,
   recordTrialMilestones,
   trialProgress,
+  countSkips,
   type TrialProgress,
 } from "./trial-progress";
 import { skills } from "../curriculum/catalog";
@@ -39,6 +40,8 @@ import * as schema from "./schema";
 import type { SkillEvidence } from "./evidence.js";
 import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
+import type { PracticeSkip } from "../learning/skip";
+import type { ProblemFlag } from "../feedback/problem-flags";
 import type {
   StartingBand,
   PracticeStartingPoint,
@@ -57,10 +60,16 @@ export type Outcome = {
   explanation: string[];
   answer: string;
   createdAt: string;
+  /** Only on a skip's reveal, which is never stored as an attempt. */
+  skipped?: true;
 };
 export type SavedProblem = GeneratedProblem & {
   hintViewed?: boolean;
   lessonViewed?: boolean;
+  /** Passed with Skip: the answer was shown, and it can no longer be
+   * answered for credit. Read by the insights report's skip rate. */
+  skipped?: boolean;
+  skippedAt?: string;
 };
 export class ApiError extends Error {
   constructor(
@@ -84,6 +93,10 @@ export interface LearnerTransaction {
   problem(id: string): Promise<SavedProblem | undefined>;
   saveProblem(problem: SavedProblem): Promise<void>;
   saveAttempt(outcome: Outcome): Promise<void>;
+  /** Marks a problem skipped (see learning/skip.ts); no attempt is written. */
+  saveSkip(problem: SavedProblem): Promise<void>;
+  /** This session's skips, oldest first, for the planner's variety. */
+  recentSkips(): Promise<PracticeSkip[]>;
   hasAccess(): Promise<boolean>;
   /** Answers left in an anonymous trial, or null for a parent's learner. */
   trialRemaining(): Promise<number | null>;
@@ -94,6 +107,13 @@ export interface LearnerTransaction {
   /** The frontier as estimated from only the first `answers` answers. */
   frontierAfter(answers: number): Promise<Frontier>;
   trialPaywall(): Promise<void>;
+  /** The learner's birth year, or null when none was given. */
+  birthYear(): Promise<number | null>;
+  /** This learner's saved report for a request, or for a problem. */
+  flag(
+    key: { requestId: string } | { problemId: string },
+  ): Promise<{ id: string; requestId: string } | undefined>;
+  saveFlag(flag: ProblemFlag): Promise<void>;
 }
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
@@ -483,7 +503,26 @@ export class PgTransaction implements LearnerTransaction {
       "SELECT (outcome->>'correct')::boolean AS correct,(outcome->>'assisted')::boolean AS assisted FROM amp_attempts WHERE learner_id=$1",
       [this.learnerId],
     );
-    return trialProgress(attempts.rows, this.limits);
+    return trialProgress(
+      attempts.rows,
+      this.limits,
+      await countSkips(this.db, this.learnerId),
+    );
+  }
+  async saveSkip(problem: SavedProblem) {
+    await this.saveProblem(problem);
+    await recordTrialMilestones(this.db, this.learnerId, this.limits);
+  }
+  async recentSkips(): Promise<PracticeSkip[]> {
+    const result = await this.db.query(
+      `SELECT content->'public'->>'templateId' AS "templateId",
+        content->'public'->>'skillId' AS "skillId", content->>'skippedAt' AS "createdAt"
+       FROM amp_instances WHERE learner_id=$1 AND (content->>'skipped')::boolean
+         AND created_at>now()-interval '3 hours'
+       ORDER BY content->>'skippedAt' DESC LIMIT 12`,
+      [this.learnerId],
+    );
+    return (result.rows as PracticeSkip[]).reverse();
   }
   async masteredSkills() {
     return masteredSkills(await this.skillEvidence());
@@ -495,6 +534,51 @@ export class PgTransaction implements LearnerTransaction {
     if (!(await isLiveTrial(this.db, this.learnerId)))
       throw new ApiError(404, "Trial not found");
     await recordTrialEvent(this.db, this.learnerId, "paywall");
+  }
+  async birthYear() {
+    const result = await this.db.query(
+      "SELECT birth_year FROM amp_learners WHERE id=$1",
+      [this.learnerId],
+    );
+    return (result.rows[0]?.birth_year as number | null) ?? null;
+  }
+  async flag(key: { requestId: string } | { problemId: string }) {
+    const byRequest = "requestId" in key;
+    const result = await this.db.query(
+      `SELECT id,request_id AS "requestId" FROM amp_problem_flags WHERE learner_id=$1 AND ${byRequest ? "request_id=$2::uuid" : "problem_id=$2"}`,
+      [this.learnerId, byRequest ? key.requestId : key.problemId],
+    );
+    return result.rows[0] as { id: string; requestId: string } | undefined;
+  }
+  async saveFlag(flag: ProblemFlag) {
+    await this.db.query(
+      `INSERT INTO amp_problem_flags(id,learner_id,request_id,problem_id,template_id,template_version,seed,skill_id,
+        prompt,figure_kind,response_kind,response,outcome,assisted,reasons,note,web_commit,api_commit,client_kind,
+        viewport_width,viewport_height) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)`,
+      [
+        flag.id,
+        this.learnerId,
+        flag.requestId,
+        flag.problemId,
+        flag.templateId,
+        flag.templateVersion,
+        flag.seed,
+        flag.skillId,
+        flag.prompt,
+        flag.figureKind,
+        flag.responseKind,
+        flag.response,
+        flag.outcome,
+        flag.assisted,
+        flag.reasons,
+        flag.note,
+        flag.webCommit,
+        flag.apiCommit,
+        flag.clientKind,
+        flag.viewport.width,
+        flag.viewport.height,
+      ],
+    );
   }
   async trialRemaining() {
     return (await this.trialProgress())?.remaining ?? null;

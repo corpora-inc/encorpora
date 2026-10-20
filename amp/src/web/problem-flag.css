@@ -1,0 +1,96 @@
+/* "Report a problem": a quiet flag in the feedback sheet's tool row, and a
+   compact sheet of reasons. Loaded after the theme so the round flag keeps
+   its exact size where the row's text actions flex. */
+.feedback .practice-tools button.report-problem,
+.shell .feedback .practice-tools button.report-problem {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  background: transparent;
+  color: var(--color-muted-text);
+}
+.feedback .practice-tools button.report-problem:hover {
+  filter: none;
+  background: color-mix(in srgb, var(--color-on-surface) 8%, transparent);
+}
+.report-problem svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.feedback .practice-tools button.report-problem[data-reported] {
+  color: var(--color-primary);
+  cursor: default;
+}
+.feedback .practice-tools button.report-problem[data-reported]:hover {
+  background: transparent;
+}
+.report-problem[data-reported] .flag-cloth {
+  fill: currentColor;
+}
+.report-dialog {
+  width: min(480px, calc(100% - 32px));
+}
+.report-dialog .dialog-heading h2 {
+  font-size: 22px;
+}
+.report-dialog .dialog-content {
+  padding: 20px 20px 20px;
+}
+.report-form {
+  display: grid;
+  gap: var(--space-4);
+}
+/* Reserved for a failed send, so the message never moves Send. */
+.report-error {
+  min-height: 1.4em;
+  margin: 0 0 calc(-1 * var(--space-2));
+  font-size: var(--text-label);
+  line-height: 1.4;
+  color: var(--color-danger-accent);
+}
+.report-send {
+  width: 100%;
+  height: 52px;
+  border-radius: var(--radius-control);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: var(--text-body);
+  font-weight: 700;
+}
+.report-send:disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-subtle-text);
+  opacity: 1;
+}
+/* Phones and small tablets: a compact sheet from the bottom edge, sized to
+   its reasons, instead of the full-screen reading panel. */
+@media (max-width: 840px) {
+  dialog.practice-dialog.report-dialog {
+    inset: auto 0 0 0;
+    height: auto;
+    max-height: calc(100dvh - 24px);
+    border-top: 1px solid var(--color-border);
+    border-radius: 20px 20px 0 0;
+    padding-top: 0;
+  }
+  dialog.practice-dialog.report-dialog .dialog-content {
+    flex: 0 1 auto;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .report-dialog[open] {
+    animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}

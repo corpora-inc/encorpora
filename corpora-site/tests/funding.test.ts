@@ -81,3 +81,26 @@ test("build emits linked program HTML, canonical metadata, safe structured data 
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+
+test("nationwide guides render without inflating state counts, including a nationwide-only directory", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-national-funding-"));
+  const national = { ...fundingFixture, state: "US", page: { ...fundingFixture.page, slug: "national-savings" } };
+  try {
+    for (const funding of [[national], [national, fundingFixture]]) {
+      await buildSite(configSchema.parse({ funding }), dir);
+      const html = await readFile(join(dir, "esa/index.html"), "utf8");
+      assert.ok(html.includes('id="state-US"'));
+      assert.ok(html.includes("Nationwide savings guidance"));
+      assert.ok(html.includes(`/esa/national-savings/`));
+      assert.ok(!html.includes("2 states"));
+      assert.ok(!html.includes("0 states"));
+      assert.equal(html.includes("1 state"), funding.length === 2);
+      assert.ok(html.includes(`${funding.length} parent guides`));
+      const page = await readFile(join(dir, "esa/national-savings/index.html"), "utf8");
+      assert.ok(page.includes("Nationwide"));
+    }
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});

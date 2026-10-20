@@ -48,6 +48,10 @@ import {
   generateQuadraticStructureProblem,
 } from "./quadratic-structure-practice";
 import {
+  functionToolkitTemplates,
+  generateFunctionToolkitProblem,
+} from "./function-toolkit-practice";
+import {
   patternFunctionTemplates,
   generatePatternFunctionProblem,
 } from "./pattern-function-practice";
@@ -96,6 +100,11 @@ import {
   exponentialTemplates,
   generateExponentialProblem,
 } from "./exponential-practice";
+import { powerTemplates, generatePowerProblem } from "./power-practice";
+import {
+  algebraStatisticsTemplates,
+  generateAlgebraStatisticsProblem,
+} from "./algebra-statistics-practice";
 import {
   coordinateCircleTemplates,
   generateCoordinateCircleProblem,
@@ -351,10 +360,13 @@ export const templates: readonly TemplateMetadata[] = [
   ...probabilityRulesTemplates,
   ...similarityTrigTemplates,
   ...coordinateCircleTemplates,
+  ...algebraStatisticsTemplates,
+  ...powerTemplates,
   ...ratioRateTemplates,
   ...patternFunctionTemplates,
   ...linearFunctionTemplates,
   ...quadraticStructureTemplates,
+  ...functionToolkitTemplates,
   ...twoVariableTemplates,
   ...equationTemplates,
   ...rationalTemplates,
@@ -527,6 +539,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...patternFunctionTemplates,
     ...linearFunctionTemplates,
     ...quadraticStructureTemplates,
+    ...functionToolkitTemplates,
     ...twoVariableTemplates,
     ...equationTemplates,
     ...volumeCoordinateTemplates,
@@ -546,6 +559,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...probabilityRulesTemplates,
     ...similarityTrigTemplates,
     ...coordinateCircleTemplates,
+    ...algebraStatisticsTemplates,
+    ...powerTemplates,
     ...ratioRateTemplates,
     ...radicalTemplates,
     ...rationalTemplates,
@@ -614,6 +629,8 @@ function generateRawProblem(
     return generateLinearFunctionProblem(templateId, seed);
   if (quadraticStructureTemplates.some((t) => t.id === templateId))
     return generateQuadraticStructureProblem(templateId, seed);
+  if (functionToolkitTemplates.some((t) => t.id === templateId))
+    return generateFunctionToolkitProblem(templateId, seed);
   if (angleTemplates.some((t) => t.id === templateId))
     return generateAngleProblem(templateId, seed);
   if (patternFunctionTemplates.some((t) => t.id === templateId))
@@ -646,8 +663,12 @@ function generateRawProblem(
     return generateProbabilityRulesProblem(templateId, seed);
   if (similarityTrigTemplates.some((t) => t.id === templateId))
     return generateSimilarityTrigProblem(templateId, seed);
+  if (algebraStatisticsTemplates.some((t) => t.id === templateId))
+    return generateAlgebraStatisticsProblem(templateId, seed);
   if (coordinateCircleTemplates.some((t) => t.id === templateId))
     return generateCoordinateCircleProblem(templateId, seed);
+  if (powerTemplates.some((t) => t.id === templateId))
+    return generatePowerProblem(templateId, seed);
   if (radicalTemplates.some((t) => t.id === templateId))
     return generateRadicalProblem(templateId, seed);
   if (numberSenseTemplates.some((t) => t.id === templateId))

@@ -115,6 +115,9 @@ export const graphSchema = z
     aspect: zNum.min(0.05).max(20).optional(),
     labels: z.enum(["auto", "all", "ends", "none"]).optional(),
     axisNames: z.tuple([label, label]).optional(),
+    /** Axes on the window's bottom and left edges even when 0 lies inside
+     * it: a residual plot keeps its labels clear of the zero line. */
+    frame: z.boolean().optional(),
     points: z
       .array(
         z
@@ -448,8 +451,8 @@ registerComponent("graph", {
         ? null
         : [axisStep(g.grid, 0, shared), axisStep(g.grid, 1, shared)];
     // Axes cross at the origin when it is in view, else along the window edge.
-    const ax = y0 <= 0 && y1 >= 0 ? 0 : y0,
-      ay = x0 <= 0 && x1 >= 0 ? 0 : x0;
+    const ax = !g.frame && y0 <= 0 && y1 >= 0 ? 0 : y0,
+      ay = !g.frame && x0 <= 0 && x1 >= 0 ? 0 : x0;
     if (grid) {
       for (const v of ticks(x0, x1, grid[0]))
         if (v !== ay)

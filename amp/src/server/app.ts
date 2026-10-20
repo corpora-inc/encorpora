@@ -6,6 +6,7 @@ import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
 import {
+  clientCanDraw,
   figureCapabilities,
   generatedProblemSchema,
   type PublicProblem,
@@ -26,11 +27,14 @@ import {
 } from "./repository";
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
+import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
 import { isTrialAccount, trialLimits } from "./trials";
 import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
+import { FLAG_RATE_LIMIT, problemFlagSchema } from "../feedback/problem-flags";
+import { recordProblemFlag } from "../feedback/record";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
 const birthYearSchema = z.number().int().min(1900).max(2100);
@@ -341,16 +345,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
         : undefined;
       if (input.templateId && !focused)
         throw new ApiError(400, "Unknown problem family");
-      const supported = templates.filter(
-        (template) =>
-          (!template.requiredResponseCapability ||
-            input.responseCapabilities.includes(
-              template.requiredResponseCapability,
-            )) &&
-          (!template.requiredFigureCapability ||
-            input.figureCapabilities.includes(
-              template.requiredFigureCapability,
-            )),
+      // Scripted openers come from this list too: an opener the client
+      // cannot draw gives way to its slot's next drawable item, or to
+      // adaptive selection (learning/placement.ts).
+      const supported = templates.filter((template) =>
+        clientCanDraw(template, input),
       );
       if (focused && !supported.includes(focused))
         throw new ApiError(
@@ -375,6 +374,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
             frontier: await tx.frontier(),
+            skips: await tx.recentSkips(),
             count,
             seed: randomUUID(),
             learnerKey: learnerId,
@@ -445,6 +445,56 @@ function routes(app: FastifyInstance, options: AppOptions) {
       }
     },
   );
+  /** Skip: a neutral pass. The worked answer is shown; no attempt is written,
+   * so the frontier, evidence and mastery never see it (learning/skip.ts). */
+  app.post("/api/v1/learners/:learnerId/skips", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { problemId } = z
+      .object({ problemId: z.string().min(1).max(160) })
+      .strict()
+      .parse(request.body);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      const problem = await tx.problem(problemId);
+      if (!problem) throw new ApiError(404, "Problem not found");
+      if (await tx.attemptByProblem(problemId))
+        throw new ApiError(409, "This problem has already been answered");
+      if (!problem.skipped) {
+        const trialRemaining = await tx.trialRemaining();
+        if (
+          SKIP_USES_FREE_PROBLEM &&
+          trialRemaining !== null &&
+          trialRemaining <= 0
+        )
+          throw new ApiError(402, "trial-complete");
+        if (
+          trialRemaining === null &&
+          !options.development &&
+          !(await tx.hasAccess())
+        )
+          throw new ApiError(403, "An active student license is required");
+        problem.skipped = true;
+        problem.skippedAt = new Date().toISOString();
+        await tx.saveSkip(problem);
+      }
+      // A retried skip returns the same reveal.
+      const reveal: Outcome = {
+        id: `skip:${problem.public.id}`,
+        problemId: problem.public.id,
+        requestId: `skip:${problem.public.id}`,
+        skillId: problem.public.skillId,
+        templateId: problem.public.templateId,
+        response: "",
+        correct: false,
+        assisted: false,
+        explanation: problem.explanation,
+        answer: problem.answer,
+        createdAt: problem.skippedAt!,
+        skipped: true,
+      };
+      return reveal;
+    });
+  });
   app.post("/api/v1/learners/:learnerId/hints", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -529,6 +579,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
+      // A skip showed the answer: it can no longer be answered for credit.
+      if (problem.skipped)
+        throw new ApiError(
+          409,
+          "This problem was skipped and its answer shown. Continue to the next problem.",
+        );
       const outcome: Outcome = {
         id: randomUUID(),
         problemId: input.problemId,
@@ -564,6 +620,26 @@ function routes(app: FastifyInstance, options: AppOptions) {
         : outcome;
     });
   });
+  /** "Report a problem" on a resolved problem. First-party only. */
+  app.post(
+    "/api/v1/learners/:learnerId/problem-flags",
+    { config: { rateLimit: { max: FLAG_RATE_LIMIT, timeWindow: "1 hour" } } },
+    async (request, reply) => {
+      const account = await parent(request);
+      const { learnerId } = paramsSchema.parse(request.params);
+      const input = problemFlagSchema.parse(request.body);
+      const saved = await options.repository.transaction(
+        account,
+        learnerId,
+        (tx) =>
+          recordProblemFlag(tx, input, {
+            trial: isTrialAccount(account),
+            apiCommit: build.commit,
+          }),
+      );
+      return reply.code(201).send(saved);
+    },
+  );
   registerBookRoutes(app, {
     repository: options.repository,
     parent,

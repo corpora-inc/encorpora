@@ -21,6 +21,7 @@ import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
 import { LessonIllustration } from "../../content/LessonIllustration";
 import { nativeRuntime } from "../native-runtime";
+import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
 import { learningRequest, learningCatalog } from "../learning-transport";
 import { ParentConsentCenter } from "../ParentConsentCenter";
@@ -875,6 +876,19 @@ function LegacyScreen() {
       throw e;
     }
   }
+  /** Skip: a neutral pass that shows the worked answer. */
+  async function skip() {
+    if (!learner || !problem) return;
+    const result = await api<Outcome>(`/learners/${learner.id}/skips`, {
+      problemId: problem.id,
+    });
+    setOutcome(result);
+    upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
+    upcoming.current.batch.catch(() => undefined);
+    void refreshProgress().catch((error) =>
+      console.error("Progress refresh failed", error),
+    );
+  }
   async function openBook(
     id: string,
     fromProblem = false,
@@ -1407,6 +1421,28 @@ function LegacyScreen() {
                 entry.templateIds.includes(problem.templateId),
               ) ?? lesson
             }
+            reportProblem={
+              // The native bridge has no report route; never offer one there.
+              nativeRuntime
+                ? undefined
+                : async (body) => {
+                    try {
+                      await api(`/learners/${learner.id}/problem-flags`, body);
+                      return "sent";
+                    } catch (failure) {
+                      if (
+                        failure instanceof HttpError &&
+                        failure.message === ALREADY_REPORTED
+                      )
+                        return "already";
+                      throw failure;
+                    }
+                  }
+            }
+            reportNote={noteAllowed({
+              trial: false,
+              birthYear: learner.birthYear,
+            })}
             response={response}
             setResponse={setResponse}
             outcome={outcome}
@@ -1415,6 +1451,7 @@ function LegacyScreen() {
             busy={busy}
             pending={!!pending}
             submit={() => void action(submit)}
+            skip={nativeRuntime ? undefined : () => void action(skip)}
             next={() => void action(next)}
             requestLesson={async () =>
               (

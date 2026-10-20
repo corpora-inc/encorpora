@@ -88,3 +88,27 @@
   font-size: var(--text-label);
   color: var(--color-danger-accent);
 }
+.fieldHeading {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+/* Sized for the longest count and growing rightward from a fixed start, so
+   typing never moves it. */
+.count {
+  min-width: 7ch;
+  color: var(--color-subtle-text);
+  font-variant-numeric: tabular-nums;
+}
+.textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: calc(var(--target-size) * 2);
+  resize: none;
+  line-height: 1.4;
+}
+.textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

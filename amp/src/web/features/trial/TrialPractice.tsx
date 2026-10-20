@@ -21,6 +21,8 @@ import {
   lessonSupport,
   nextProblem,
   progressOptions,
+  reportProblem,
+  skip,
   trialSessionOptions,
   type TrialOutcome,
   type TrialSession,
@@ -29,6 +31,8 @@ import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
 import { gradeBand } from "./grade-band";
 import { failureMessage, TrialFailure } from "./TrialFrame";
+import { nativeRuntime } from "../../native-runtime";
+import { SKIP_USES_FREE_PROBLEM } from "../../../learning/skip";
 
 /** `/try/practice`: placement, then adaptive practice, full screen. The
  * existing workspace, planner, lessons and hints; only the meter is new. */
@@ -171,6 +175,9 @@ function Practice({ session }: { session: TrialSession }) {
           <FreeMeter answered={answered} free={limits.free} variant="pill" />
         }
         mastered={outcome?.mastered?.title ?? null}
+        reportProblem={
+          nativeRuntime ? undefined : (body) => reportProblem(session, body)
+        }
         exit={() => void run(() => leave("/try/map"))}
         submit={() =>
           void run(async () => {
@@ -236,6 +243,25 @@ function Practice({ session }: { session: TrialSession }) {
             upcoming.current = null;
             show(await ready);
           })
+        }
+        skip={
+          nativeRuntime
+            ? undefined
+            : () =>
+                void run(async () => {
+                  const result = await skip(session, problem.id);
+                  const count = SKIP_USES_FREE_PROBLEM
+                    ? answered + 1
+                    : answered;
+                  setOutcome(result);
+                  setAnswered(count);
+                  track("practice_skip");
+                  upcoming.current =
+                    count === limits.placement || count >= limits.free
+                      ? null
+                      : nextProblem(session);
+                  upcoming.current?.catch(() => undefined);
+                })
         }
         requestHint={() =>
           void run(async () => {

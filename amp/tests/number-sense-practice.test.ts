@@ -189,7 +189,6 @@ test("number-sense openers are numeric, short and placed", () => {
     "count-sequence-missing",
     "round-to-ten",
     "round-to-hundred",
-    "multiply-power-of-ten",
   ])
     assert.ok(openers.has(id), id);
 });

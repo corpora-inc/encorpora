@@ -33,20 +33,35 @@ export const PLACEMENT_ATTEMPTS = 20;
  * selection takes over from the frontier. */
 export const OPENER_COUNT = 4;
 
+/** A grade band's scripted openers: OPENER_COUNT slots, each a small pool
+ * of equivalent items. */
+export type OpenerSlots = readonly (readonly (readonly string[])[])[];
+
 /** Clean anchor items for the grade a learner of that age is working in
  * (frontier `expected`: K = 0 … 8, and 9 for every high-school age). Each
- * opener is this year's or last year's core material (grade 8 and
- * Algebra 1 for high school), so the first answers build confidence: short, familiar and whole.
+ * opener is this year's or last year's core material (grade 8, Algebra 1 and
+ * Geometry for high school), so the first answers build confidence: short,
+ * familiar and whole.
  * Choice items may open: the estimator discounts a correct pick by its guess
  * chance (learning/frontier.ts), so they are used where they bring a strand
- * the typed items cannot (comparing, clocks, coins) rather than as stand-ins
+ * the typed items cannot (shapes, shares, clocks) rather than as stand-ins
  * for typed items. Each slot is a small pool of equivalent items so
  * siblings do not see identical starts, while every choice stays a good first
  * impression. Each slot keeps to one strand and neighbouring slots differ, so
- * the opening batch is interleaved like the rest of practice. */
-export const openerSlots: readonly (readonly (readonly string[])[])[] = [
-  // K (and younger): count or compare numerals, join, compare lengths,
-  // weights or capacity, take away.
+ * the opening batch is interleaved like the rest of practice.
+ *
+ * Capabilities: an opener may need a figure family (`scenes-v1`, data
+ * displays) or choice responses. The planner only ever sees the templates the
+ * client declares it can draw (`clientCanDraw` in math/contracts.ts), so a
+ * client that cannot draw the learner's pick gets the next item in the same
+ * slot it can draw, and a slot with none falls through to adaptive selection.
+ * Either way the answer is a whole assessment item near the learner's age;
+ * tests/placement.test.ts proves it for every client. Where a strand has a
+ * capability-free item in reach, its slot keeps one, so older clients still
+ * open on the scripted strand. */
+export const openerSlots: OpenerSlots = [
+  // K (and younger): count or compare numerals, join or take away, compare
+  // lengths, weights or capacity, then name a shape.
   [
     [
       "count-objects",
@@ -55,26 +70,31 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "numeral-for-quantity",
       "count-sequence-missing",
     ],
-    ["join-within-10", "facts-to-five"],
-    ["compare-lengths", "compare-weights", "compare-capacity"],
-    ["take-away-within-10", "ten-frame-complement", "number-bond-missing"],
-  ],
-  // Grade 1: counting, facts within 10, a missing addend, then a clock or a
-  // length.
-  [
-    ["count-objects", "teen-frame-compose"],
-    ["join-within-10", "add-within-20", "count-on-back"],
-    ["unknown-addend-story", "balanced-addition"],
     [
-      "clock-hour-read",
-      "read-clock-hour-half",
-      "match-clock-half-hour",
-      "measure-with-units",
-      "compare-lengths",
+      "join-within-10",
+      "facts-to-five",
+      "take-away-within-10",
+      "ten-frame-complement",
+      "number-bond-missing",
     ],
+    ["compare-lengths", "compare-weights", "compare-capacity"],
+    ["name-flat-shape", "name-solid-shape", "find-named-shape"],
   ],
-  // Grade 2: facts within 20 or two-digit sums and differences, place value
-  // and comparison, a missing addend, then coins or a clock.
+  // Grade 1: facts within 10 or 20, equal shares, sides and shapes, a
+  // picture graph.
+  [
+    ["join-within-10", "add-within-20", "count-on-back"],
+    ["find-equal-shares", "name-equal-share", "larger-share"],
+    [
+      "count-sides-corners",
+      "name-flat-shape",
+      "name-solid-shape",
+      "defining-attribute",
+    ],
+    ["picture-graph-questions", "sort-shapes-count"],
+  ],
+  // Grade 2: facts within 20 or two-digit sums and differences, halves,
+  // thirds and quarters, polygons and solids, a bar chart or line plot.
   [
     [
       "add-within-20",
@@ -85,22 +105,21 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "subtract-two-digit-regroup",
     ],
     [
-      "tens-ones-model",
-      "continue-count-to-120",
-      "compare-two-digit",
-      "compare-three-digit",
+      "find-equal-thirds",
+      "name-share",
+      "same-share-different-shape",
+      "name-equal-share",
     ],
-    ["unknown-addend-story", "balanced-addition"],
+    ["name-polygon", "polygon-with-angles", "solid-parts"],
     [
-      "coin-total",
-      "pay-exact-coins",
-      "minutes-past-hour",
-      "read-clock-five-minutes",
-      "match-clock-five-minutes",
+      "bar-chart-total",
+      "bar-chart-difference",
+      "line-plot-whole",
+      "picture-graph-questions",
     ],
   ],
-  // Grade 3: regrouping or tens products, three-digit place value, a story,
-  // a bar chart.
+  // Grade 3: regrouping or tens products, unit fractions, area or
+  // quadrilaterals, three-digit place value.
   [
     [
       "add-with-regrouping",
@@ -110,22 +129,36 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "multiply-by-tens",
     ],
     [
+      "fraction-model",
+      "fraction-unit-count",
+      "compare-like-denominators",
+      "fraction-line-position",
+    ],
+    [
+      "rectangle-area",
+      "classify-quadrilateral",
+      "find-quadrilateral",
+      "name-polygon",
+    ],
+    [
       "place-value-digit",
       "hundreds-model",
       "compare-three-digit",
       "round-to-ten",
       "round-to-hundred",
     ],
-    ["two-step-change", "delivery-then-use"],
-    ["bar-chart-total", "bar-chart-difference"],
   ],
-  // Grade 4: multiplication facts, fractions of a whole, area, division.
+  // Grade 4: multiplication or division, fractions of a whole, area, angles
+  // or quadrilaterals, a scaled graph or line plot.
   [
     [
       "multiply-facts",
       "add-multidigit",
       "multiply-by-tens",
       "multiply-by-one-digit",
+      "divide-facts",
+      "share-or-group",
+      "divide-by-one-digit",
     ],
     [
       "fraction-model",
@@ -133,13 +166,22 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "compare-like-denominators",
       "compare-like-numerators",
     ],
-    ["rectangle-area"],
-    ["divide-facts", "share-or-group", "divide-by-one-digit"],
+    [
+      "rectangle-area",
+      "classify-quadrilateral",
+      "protractor-reading",
+      "angle-classify",
+    ],
+    ["scaled-bar-graph", "scaled-picture-graph", "fraction-line-plot"],
   ],
-  // Grade 5: decimals (grade 4 tenths and hundredths), fractions, factors or
-  // place value, multidigit multiplication or division.
+  // Grade 5: decimals (grade 4 tenths and hundredths), fractions, volume or
+  // coordinates, a fraction line plot.
   [
-    ["compare-decimals-hundredths", "decimal-grid-read"],
+    [
+      "compare-decimals-hundredths",
+      "decimal-grid-read",
+      "compare-decimals-thousandths",
+    ],
     [
       "compare-fractions",
       "compare-unlike-fractions",
@@ -147,19 +189,20 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "whole-times-fraction",
     ],
     [
-      "factor-partner",
-      "multidigit-digit-value",
-      "compare-multidigit",
-      "multiply-power-of-ten",
+      "unit-cube-volume",
+      "prism-volume-edges",
+      "first-quadrant-coordinates",
+      "angle-classify",
     ],
-    ["multiply-by-one-digit", "multiply-multidigit", "divide-by-one-digit"],
+    ["fraction-plot-equal-share"],
   ],
-  // Grade 6: decimals, expressions and equations, fractions, the mean.
+  // Grade 6: fractions, expressions and equations, area or volume, the mean.
   [
     [
-      "decimal-addition",
-      "decimal-multiplication",
-      "compare-decimals-thousandths",
+      "multiply-fractions",
+      "fraction-of-quantity",
+      "add-fractions",
+      "divide-fractions",
     ],
     [
       "operation-order",
@@ -167,21 +210,33 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "one-step-equation",
       "dependent-variable-value",
     ],
-    ["multiply-fractions", "fraction-of-quantity", "add-fractions"],
-    ["mean-data", "mean-missing-value"],
+    ["triangle-area-base-height", "net-surface-area", "prism-volume-edges"],
+    ["mean-data", "mean-missing-value", "dot-plot-mean"],
   ],
-  // Grade 7: powers and equations, unit rates, the mean or a sample estimate, distance on a number line.
+  // Grade 7: powers and equations, unit rates, circles, angles or area,
+  // distance on a number line.
   [
     ["integer-power", "two-step-equation", "dependent-variable-value"],
     ["unit-price", "fraction-unit-rate", "unit-rate"],
-    ["mean-data", "mean-missing-value", "sample-proportion-estimate"],
+    [
+      "circle-area-coefficient",
+      "circle-circumference-coefficient",
+      "angle-pair-measure",
+      "triangle-area-base-height",
+    ],
     ["number-line-distance", "opposite-on-line", "greatest-common-factor"],
   ],
-  // Grade 8: signed and real numbers, unit rates, probability and circles.
+  // Grade 8: signed and real numbers, linear equations and slope, two-way
+  // tables or a median, circles, triangles and solids.
   [
     ["integer-addition", "root-between-integers", "scientific-to-standard"],
-    ["unit-price", "fraction-unit-rate"],
-    ["simple-probability"],
+    [
+      "linear-equation",
+      "both-sides-linear-equation",
+      "grouped-linear-equation",
+      "line-slope",
+    ],
+    ["two-way-missing", "two-way-row-percent", "median-data", "range-data"],
     [
       "circle-area-coefficient",
       "circle-circumference-coefficient",
@@ -191,18 +246,36 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "cylinder-volume",
     ],
   ],
-  // High school: an equation or formula, the Pythagorean theorem, a linear
-  // model, then a function's value or average rate of change (Algebra 1).
+  // High school: a linear or quadratic equation, the Pythagorean theorem or
+  // similar triangles and circles, a function's value, vertex or exponential
+  // growth, then a two-way table (joint, marginal or conditional relative
+  // frequency). No probability item fits yet: `event-set-count` runs past
+  // 160 characters on about a third of its variants, and the counting items
+  // are grade 12.
   [
     [
       "linear-equation",
       "both-sides-linear-equation",
       "formula-value",
-      "line-slope",
+      "quadratic-factored-solutions",
+      "quadratic-real-solution-count",
     ],
-    ["right-triangle"],
-    ["linear-model-value"],
-    ["average-rate-formula", "function-evaluation"],
+    [
+      "right-triangle",
+      "right-triangle-missing-leg",
+      "similar-triangle-side",
+      "circle-equation",
+    ],
+    [
+      "function-evaluation",
+      "average-rate-formula",
+      "quadratic-vertex",
+      "geometric-sequence",
+      "geometric-sequence-rule",
+      "exponential-model-rule",
+      "parabola-vertex",
+    ],
+    ["two-way-row-percent", "two-way-missing", "relative-frequency-percent"],
   ],
 ];
 
@@ -213,13 +286,17 @@ export function openerCandidates(options: {
   expectedGrade: number;
   position: number;
   learnerKey: string;
+  /** The opener table; simulations compare alternatives. */
+  slots?: OpenerSlots;
 }): string[] {
+  const slots = options.slots ?? openerSlots;
   if (options.position < 0 || options.position >= OPENER_COUNT) return [];
+  if (!slots.length) return [];
   const band = Math.max(
     0,
-    Math.min(openerSlots.length - 1, Math.round(options.expectedGrade)),
+    Math.min(slots.length - 1, Math.round(options.expectedGrade)),
   );
-  const pool = openerSlots[band]![options.position] ?? [];
+  const pool = slots[band]![options.position] ?? [];
   if (!pool.length) return [];
   const pick =
     createHash("sha256")

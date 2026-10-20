@@ -1396,6 +1396,53 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// Whole-number powers (6.EE.A.1), with exponents in the order of operations.
+skills
+  .find((s) => s.id === "integer-powers")!
+  .facets.push({
+    id: "integer-powers.whole-number-powers",
+    description:
+      "Evaluate mental-math-sized whole-number powers, find a missing exponent, move between repeated products and powers, compare powers, evaluate products and sums containing a power, and read doubling or tripling as a power.",
+    status: "implemented",
+  });
+
+// Algebra 1 statistics (S-ID): summaries, two-way tables, regression,
+// residuals and correlation, association versus causation.
+for (const [skillId, suffix, description] of [
+  [
+    "statistical-summary-comparison",
+    "outliers-and-shape",
+    "Predict how an outlier moves the mean and the median, describe box-plot shapes, choose medians and IQRs for skewed data, and tell the range from the IQR.",
+  ],
+  [
+    "categorical-association",
+    "relative-frequencies",
+    "Find joint, marginal and conditional relative frequencies in two-way tables, tell a conditional percent from its reverse, and judge association by conditional percents.",
+  ],
+  [
+    "regression-interpretation",
+    "slope-intercept",
+    "Interpret least-squares slopes with units and intercepts in context, recognize an intercept outside the data, and predict from the line.",
+  ],
+  [
+    "residuals-correlation",
+    "residuals-and-r",
+    "Find residuals and observed values, read residual plots, estimate and compare correlation coefficients, and recognize curves that r misses.",
+  ],
+  [
+    "causal-claims",
+    "association-causation",
+    "Explain associations by lurking variables or reverse causation, choose randomized experiments to test causes, and state what a study design supports.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // High-school coordinate geometry and circles (G-GPE, G-C).
 for (const [skillId, suffix, description] of [
   [
@@ -2446,6 +2493,62 @@ for (const [skillId, suffix, description] of [
     "rational-exponents",
     "rational-base-fractional-powers",
     "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// The function toolkit: bounded tasks, each naming its limits.
+for (const [skillId, suffix, description] of [
+  [
+    "piecewise-functions",
+    "evaluate",
+    "Evaluate a piecewise-linear function from its rule or graph, at boundaries and in pricing stories.",
+  ],
+  [
+    "piecewise-functions",
+    "read-and-rewrite",
+    "Rewrite an absolute value as two linear pieces, read a piece's rule from a graph, and count solutions on a piecewise graph.",
+  ],
+  [
+    "function-transformations",
+    "equations",
+    "Match shifts, vertical stretches and reflections of parent graphs with their equations, and describe changes to a rule.",
+  ],
+  [
+    "function-transformations",
+    "points-and-symmetry",
+    "Follow a point through a transformation and use even and odd symmetry.",
+  ],
+  [
+    "function-composition",
+    "evaluate",
+    "Evaluate compositions from formulas, tables and graphs, and find inputs excluded from a composition's domain.",
+  ],
+  [
+    "function-composition",
+    "expressions",
+    "Write compositions as expressions in either order, and decompose a function into outer and inner parts.",
+  ],
+  [
+    "inverse-functions",
+    "values",
+    "Find values of an inverse function from a formula, a table or a graph.",
+  ],
+  [
+    "inverse-functions",
+    "find-and-restrict",
+    "Find inverses of linear functions and of quadratics restricted to one side of the vertex, and choose a one-to-one domain.",
+  ],
+  [
+    "cross-representation-comparison",
+    "features",
+    "Compare maxima, minima, intercepts and average rates of change of functions given by formulas, graphs and tables.",
   ],
 ])
   skills

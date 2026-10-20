@@ -72,6 +72,28 @@
   --color-strand-data: #2a8080;
   --color-strand-probability: #8a5aa0;
   --color-strand-modeling: #b4532a;
+  /* Provider sign-in buttons, as each brand publishes them for light pages. */
+  --color-brand-google: #ffffff;
+  --color-on-brand-google: #1f1f1f;
+  --color-brand-google-border: #747775;
+  --color-brand-apple: #000000;
+  --color-on-brand-apple: #ffffff;
+  --color-brand-apple-border: #000000;
+  --color-brand-microsoft: #ffffff;
+  --color-on-brand-microsoft: #5e5e5e;
+  --color-brand-microsoft-border: #8c8c8c;
+  --color-brand-github: #24292f;
+  --color-on-brand-github: #ffffff;
+  --color-brand-github-border: #24292f;
+  /* Provider marks: fixed brand colors, the same in both themes. */
+  --color-brand-google-red: #ea4335;
+  --color-brand-google-blue: #4285f4;
+  --color-brand-google-yellow: #fbbc05;
+  --color-brand-google-green: #34a853;
+  --color-brand-microsoft-red: #f25022;
+  --color-brand-microsoft-green: #7fba00;
+  --color-brand-microsoft-blue: #00a4ef;
+  --color-brand-microsoft-yellow: #ffb900;
 }
 @media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -134,6 +156,27 @@
     --color-strand-data: #70cccc;
     --color-strand-probability: #c7a0e3;
     --color-strand-modeling: #ee9a75;
+    /* Provider sign-in buttons, as each brand publishes them for dark pages. */
+    --color-brand-google: #131314;
+    --color-on-brand-google: #e3e3e3;
+    --color-brand-google-border: #8e918f;
+    --color-brand-apple: #ffffff;
+    --color-on-brand-apple: #000000;
+    --color-brand-apple-border: #ffffff;
+    --color-brand-microsoft: #2f2f2f;
+    --color-on-brand-microsoft: #ffffff;
+    --color-brand-microsoft-border: #8c8c8c;
+    --color-brand-github: #24292f;
+    --color-on-brand-github: #ffffff;
+    --color-brand-github-border: #8c8c8c;
+    --color-brand-google-red: #ea4335;
+    --color-brand-google-blue: #4285f4;
+    --color-brand-google-yellow: #fbbc05;
+    --color-brand-google-green: #34a853;
+    --color-brand-microsoft-red: #f25022;
+    --color-brand-microsoft-green: #7fba00;
+    --color-brand-microsoft-blue: #00a4ef;
+    --color-brand-microsoft-yellow: #ffb900;
   }
 }
 :root[data-theme="dark"] {
@@ -196,6 +239,27 @@
   --color-strand-data: #70cccc;
   --color-strand-probability: #c7a0e3;
   --color-strand-modeling: #ee9a75;
+  /* Provider sign-in buttons, as each brand publishes them for dark pages. */
+  --color-brand-google: #131314;
+  --color-on-brand-google: #e3e3e3;
+  --color-brand-google-border: #8e918f;
+  --color-brand-apple: #ffffff;
+  --color-on-brand-apple: #000000;
+  --color-brand-apple-border: #ffffff;
+  --color-brand-microsoft: #2f2f2f;
+  --color-on-brand-microsoft: #ffffff;
+  --color-brand-microsoft-border: #8c8c8c;
+  --color-brand-github: #24292f;
+  --color-on-brand-github: #ffffff;
+  --color-brand-github-border: #8c8c8c;
+  --color-brand-google-red: #ea4335;
+  --color-brand-google-blue: #4285f4;
+  --color-brand-google-yellow: #fbbc05;
+  --color-brand-google-green: #34a853;
+  --color-brand-microsoft-red: #f25022;
+  --color-brand-microsoft-green: #7fba00;
+  --color-brand-microsoft-blue: #00a4ef;
+  --color-brand-microsoft-yellow: #ffb900;
 }
 
 /*

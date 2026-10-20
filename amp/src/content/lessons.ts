@@ -6,6 +6,7 @@ import { ratioRateLessons } from "./ratio-rate-lessons";
 import { patternFunctionLessons } from "./pattern-function-lessons";
 import { linearFunctionLessons } from "./linear-function-lessons";
 import { quadraticStructureLessons } from "./quadratic-structure-lessons";
+import { functionToolkitLessons } from "./function-toolkit-lessons";
 import { twoVariableLessons } from "./two-variable-lessons";
 import { equationLessons } from "./equation-lessons";
 import { distributionLessons } from "./distribution-lessons";
@@ -34,6 +35,8 @@ import type { PolygonIllustrationKind } from "./PolygonIllustration";
 import { probabilityRulesLessons } from "./probability-rules-lessons";
 import { similarityTrigLessons } from "./similarity-trig-lessons";
 import { coordinateCircleLessons } from "./coordinate-circle-lessons";
+import { algebraStatisticsLessons } from "./algebra-statistics-lessons";
+import { powerLessons } from "./power-lessons";
 import { polygonLessons } from "./polygon-lessons";
 import { exponentialLessons } from "./exponential-lessons";
 import { comparisonLessons } from "./comparison-lessons";
@@ -586,6 +589,7 @@ export const lessons: readonly Lesson[] = [
   ...patternFunctionLessons,
   ...linearFunctionLessons,
   ...quadraticStructureLessons,
+  ...functionToolkitLessons,
   ...twoVariableLessons,
   ...equationLessons,
   ...rationalLessons,
@@ -598,6 +602,8 @@ export const lessons: readonly Lesson[] = [
   ...probabilityRulesLessons,
   ...similarityTrigLessons,
   ...coordinateCircleLessons,
+  ...algebraStatisticsLessons,
+  ...powerLessons,
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,

@@ -21,6 +21,20 @@
   box-shadow: var(--shadow-overlay);
 }
 .toast button {
+  flex: none;
   min-width: var(--target-size);
   min-height: var(--target-size);
+  margin-left: auto;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface-raised);
+  font-size: 22px;
+}
+.toast button:hover {
+  filter: none;
+  background: var(--color-surface-raised-hover);
+}
+.viewport.top {
+  top: calc(var(--space-4) + env(safe-area-inset-top, 0px));
+  bottom: auto;
 }

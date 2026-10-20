@@ -26,6 +26,8 @@ from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, so
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
 from exponential_math_oracle import EXPONENTIAL, EXPONENTIAL_CHOICE, solve_exponential, review_exponential_fixtures
+from power_math_oracle import POWER, POWER_CHOICE, solve_power, review_power_fixtures, review_power_problem
+from algebra_statistics_math_oracle import ALGEBRA_STATISTICS, ALGEBRA_STATISTICS_CHOICE, solve_algebra_statistics, review_algebra_statistics_fixtures, review_algebra_statistics_problem
 from coordinate_circle_math_oracle import COORDINATE_CIRCLE, solve_coordinate_circle, review_coordinate_circle_fixtures, review_coordinate_circle_problem
 from similarity_trig_math_oracle import SIMILARITY_TRIG, solve_similarity_trig, review_similarity_trig_fixtures, review_similarity_trig_problem
 from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
@@ -49,6 +51,7 @@ from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
 from two_variable_math_oracle import TWO_VARIABLE, TWO_VARIABLE_CHOICE, solve_two_variable, review_two_variable_fixtures, review_problem as review_two_variable_problem, review_two_variable_content, review_content_mutations as review_two_variable_mutations
 from linear_function_math_oracle import LINEAR_FUNCTION, LINEAR_FUNCTION_CHOICE, solve_linear_function, review_linear_function_fixtures, review_problem as review_linear_function_problem, review_linear_function_content, review_content_mutations as review_linear_function_mutations
+from function_toolkit_math_oracle import FUNCTION_TOOLKIT, FUNCTION_TOOLKIT_CHOICE, solve_function_toolkit, review_function_toolkit_fixtures, review_problem as review_function_toolkit_problem, review_function_toolkit_content, review_content_mutations as review_function_toolkit_mutations
 from quadratic_structure_math_oracle import QUADRATIC_STRUCTURE, QUADRATIC_STRUCTURE_CHOICE, solve_quadratic_structure, review_quadratic_structure_fixtures, review_problem as review_quadratic_structure_problem, review_quadratic_structure_content, review_content_mutations as review_quadratic_structure_mutations
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
@@ -76,17 +79,18 @@ SUPPORTED = frozenset({
     'mean-data', 'right-triangle', 'quadratic-vertex', 'geometric-sequence',
     'logarithm-integer', 'place-value-digit', 'decimal-addition',
     'compare-fractions', 'multiply-fractions', 'divide-fractions', 'ratio-missing',
-    'percent-of', 'integer-addition', 'integer-power', 'line-slope',
+    'percent-of', 'integer-addition', 'line-slope',
     'linear-system-x', 'simple-probability', 'arithmetic-term',
     'function-evaluation', 'unit-price', 'decimal-multiplication', 'operation-order',
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE
+SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER | ALGEBRA_STATISTICS
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
 SUPPORTED |= QUADRATIC_STRUCTURE
+SUPPORTED |= FUNCTION_TOOLKIT
 SUPPORTED |= EXPONENTIAL
 SUPPORTED |= TWO_VARIABLE
 
@@ -186,6 +190,8 @@ def solve_family(public):
         return solve_linear_function(public)
     if template in QUADRATIC_STRUCTURE:
         return solve_quadratic_structure(public)
+    if template in FUNCTION_TOOLKIT:
+        return solve_function_toolkit(public)
     if template in ANGLE_TRIANGLE:
         return solve_angle_triangle(public)
     if template in REAL_NUMBER:
@@ -210,6 +216,10 @@ def solve_family(public):
         return solve_similarity_trig(public)
     if template in COORDINATE_CIRCLE:
         return solve_coordinate_circle(public)
+    if template in ALGEBRA_STATISTICS:
+        return solve_algebra_statistics(public)
+    if template in POWER:
+        return solve_power(public)
     if template in PATTERN_FUNCTION:
         return solve_pattern_function(public)
     if template in EQUATIONS:
@@ -430,9 +440,6 @@ def solve_family(public):
     if template == 'integer-addition':
         left, right = numbers
         return left + right
-    if template == 'integer-power':
-        base, exponent = numbers
-        return base ** exponent
     if template == 'line-slope':
         x1, y1, x2, y2 = numbers
         return f(y2-y1, x2-x1)
@@ -475,6 +482,8 @@ def review(stream):
     review_linear_function_mutations()
     review_quadratic_structure_fixtures()
     review_quadratic_structure_mutations()
+    review_function_toolkit_fixtures()
+    review_function_toolkit_mutations()
     review_angle_triangle_fixtures()
     review_real_number_fixtures()
     review_real_number_mutations()
@@ -490,6 +499,8 @@ def review(stream):
     review_probability_rules_fixtures()
     review_similarity_trig_fixtures()
     review_coordinate_circle_fixtures()
+    review_algebra_statistics_fixtures()
+    review_power_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
     review_equation_fixtures()
@@ -600,6 +611,8 @@ def review(stream):
             review_linear_function_problem(problem)
         if template in QUADRATIC_STRUCTURE:
             review_quadratic_structure_problem(problem)
+        if template in FUNCTION_TOOLKIT:
+            review_function_toolkit_problem(problem)
         if template in EQUATIONS:
             review_equation_problem(problem)
         if template in COMBINATORICS:
@@ -645,7 +658,7 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -667,6 +680,10 @@ def review(stream):
             review_similarity_trig_problem(problem, solved)
         if template in COORDINATE_CIRCLE:
             review_coordinate_circle_problem(problem, solved)
+        if template in ALGEBRA_STATISTICS:
+            review_algebra_statistics_problem(problem, solved)
+        if template in POWER:
+            review_power_problem(problem, solved)
     for line_number, line in enumerate(stream, 2):
         require(line.strip(), f'Empty record at line {line_number}')
         record = json.loads(line)
@@ -708,6 +725,7 @@ def review(stream):
     print('Independent Algebra 1 two-variable content: ' + json.dumps(review_two_variable_content()), file=sys.stderr)
     print('Independent Algebra 1 function content: ' + json.dumps(review_linear_function_content()), file=sys.stderr)
     print('Independent quadratic-structure content: ' + json.dumps(review_quadratic_structure_content()), file=sys.stderr)
+    print('Independent function-toolkit content: ' + json.dumps(review_function_toolkit_content()), file=sys.stderr)
     print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)
