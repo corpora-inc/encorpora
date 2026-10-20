@@ -31,7 +31,7 @@ def reading(prompt):
     read as the plain names the patterns below spell out."""
     prompt = prompt.replace("$A'B'C'$", 'A′B′C′')
     prompt = re.sub(r"\$([ABC])'\$", r'\1′', prompt)
-    prompt = re.sub(r'\$([A-Z]+)\$', r'\1', prompt)
+    prompt = re.sub(r'\$([A-Z]+|[A-Z]{2,3} = [\d./−-]+)\$', r'\1', prompt)
     return re.sub(r'\$([xy])\$-axis', r'\1-axis', prompt)
 
 def require(condition, message):
@@ -613,6 +613,7 @@ def _with_figure(template, prompt):
 
 
 def _solve_prompt_only(template, prompt):
+    prompt = reading(prompt)
     if template == 'similar-triangles-side':
         m = re.search(r'Triangle ([A-Z]{3}) is similar to triangle ([A-Z]{3}).*In (\w+), (.+)\. What is ([A-Z]{2})', prompt)
         lengths = dict(re.findall(r'([A-Z]{2}) = ([\d.]+)', m[4]))
