@@ -169,27 +169,56 @@ header {
 .shell.immersive .practice-workspace {
   padding-top: 8px;
 }
-.workspace-exit {
+/* "Your level": the way out of immersive practice leads to the level map,
+   so it reads as a place to check, not a close button. A tinted pill with a
+   chart glyph; the label drops below 384px and the pill becomes a circle. */
+.workspace-level {
   display: inline-flex;
+  flex: none;
   align-items: center;
   justify-content: center;
-  margin-left: -10px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--color-muted-text);
+  gap: 6px;
+  box-sizing: border-box;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 14px 0 11px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--motion-fast) ease-out;
 }
-.workspace-exit svg {
-  width: 22px;
-  height: 22px;
+.workspace-level svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 2.2;
   stroke-linecap: round;
 }
-.workspace-exit:hover {
-  background: var(--color-surface-sunken);
-  color: var(--color-on-surface);
+.workspace-level:hover {
+  background: var(--color-secondary-hover);
+}
+.workspace-level:active {
+  background: var(--color-secondary-active);
+}
+.workspace-level:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+@media (max-width: 383px) {
+  .workspace-level {
+    width: 44px;
+    padding: 0;
+  }
+  .workspace-level-label {
+    display: none;
+  }
 }
 
 /* Practice surface */
@@ -1122,7 +1151,6 @@ html:has(.shell.flow)::-webkit-scrollbar {
 /* ── Controls: exact shapes ──────────────────────────────────────────────
    Round controls are true circles (equal width, height and min sizes);
    quiet text actions are real buttons with one width, padding and radius. */
-.workspace-exit,
 .dialog-close {
   flex: none;
   width: 44px;

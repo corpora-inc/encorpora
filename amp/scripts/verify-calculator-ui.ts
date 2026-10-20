@@ -29,7 +29,7 @@ function App(){
   const note=(name)=>()=>window.pressed.push(name);
   return React.createElement('div',{className:'shell app-shell practice-shell immersive'},
     React.createElement(PracticeWorkspace,{problem,lesson:null,response,setResponse,outcome:null,hint:'',pending:false,busy:false,
-      calculator:true,submit:note('submit'),next:note('next'),requestHint:note('hint'),exit:note('exit'),
+      calculator:true,submit:note('submit'),next:note('next'),requestHint:note('hint'),exit:note('exit'),exitHref:'/',
       requestLesson:()=>new Promise(()=>{})}));
 }
 createRoot(document.getElementById('root')).render(React.createElement(App));
@@ -320,7 +320,7 @@ try {
   // A tap outside closes the calculator without pressing what lies beneath.
   await toggle.tap();
   await calculator(page).waitFor();
-  const exit = page.getByRole("button", { name: "Exit practice" });
+  const exit = page.getByRole("link", { name: "Your level" });
   await exit.tap();
   await calculator(page).waitFor({ state: "detached" });
   await page.waitForTimeout(100);
@@ -329,7 +329,7 @@ try {
       () => (window as unknown as { pressed: string[] }).pressed,
     ),
     [],
-    "The tap outside also pressed Exit practice",
+    "The tap outside also pressed Your level",
   );
   assert(
     await toggle.evaluate((el) => el === document.activeElement),
@@ -398,14 +398,14 @@ try {
   assert(await deskToggle.evaluate((el) => el === document.activeElement));
   await deskToggle.click();
   await calculator(desktop).waitFor();
-  await desktop.getByRole("button", { name: "Exit practice" }).click();
+  await desktop.getByRole("link", { name: "Your level" }).click();
   await calculator(desktop).waitFor({ state: "detached" });
   assert.deepEqual(
     await desktop.evaluate(
       () => (window as unknown as { pressed: string[] }).pressed,
     ),
     [],
-    "The click outside also pressed Exit practice",
+    "The click outside also pressed Your level",
   );
   await desktop.close();
 
