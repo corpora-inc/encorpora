@@ -57,6 +57,24 @@ Hosted practice and document downloads require an active student grant. Import r
 
 The preview catalog exposes its reference lessons for exploration. A commercial content-release policy and authenticated paid library must be established before replacing reference content with the paid curriculum.
 
+## Releases
+
+Green ships. A merge to `main` that touches `amp/` reaches production on its own: the first deploy poll (every 10 minutes) after its CI turns green builds and deploys it.
+
+1. **Merge.** CI runs on the `main` commit.
+2. **Green.** Some run of the `CI` workflow on that commit concluded `amp`, `amp-browser` and `amp-content` successful, at their latest attempt. A failed, cancelled, skipped or missing check is not green. A run cancelled because a newer push superseded it is not green either; the next commit's run tests the whole tree.
+3. **Deploy.** Every 10 minutes the hosting repository's deploy workflow (`deploy-corpora-amp`, outside this repository) deploys the newest green `main` commit touching `amp/` wherever it is not already live. When the newest commit is red or still running, it deploys the newest earlier green one, and its log says so: `newest X is red (amp-browser failure); deploying last green Y`. A poll with nothing new succeeds quietly. Stage and production deploy in parallel. Each must pass smoke checks, including that `/api/v1/health` reports the commit just deployed, or it rolls back automatically.
+
+**What is live.** `amp/scripts/release-status.sh` prints `main`'s head and its CI verdict, the newest green commit, the commit stage and production run, and how far production is behind `main` and behind green. It uses only the public GitHub API and the health endpoints. Directly:
+- `curl https://amp.corpora.inc/api/v1/health` returns `commit` (the full source commit) and `builtAt` (UTC);
+- the web serves the same at `/version.json`.
+
+Both are `null` for an image built without the pipeline's `SOURCE_COMMIT` and `BUILT_AT` build arguments.
+
+**Production is held** when no recent commit is green, so the poll deploys nothing. Fix `main` forward until CI is green; the next poll deploys it. A commit that failed its deploy (rollout or smoke checks) is rolled back and held until a newer green commit arrives.
+
+**Force or roll back.** Run the deploy workflow manually with an explicit `ref` (a commit, short commit, branch or tag). An explicit ref deploys exactly that commit, green or not; this is the founder's override. It also holds the poll's current candidate, so the poll does not immediately replace the forced release; the next green commit resumes normal deploys. With `ref` empty, a manual run deploys the newest green commit. To undo a change for good, revert it on `main`; the revert ships when it is green.
+
 ## Operations
 
 Serve `dist/` and proxy `/api` to the application. `Dockerfile` builds both: target `api` (the server, migrations and scheduled jobs; non-root, read-only root filesystem compatible) and target `web` (nginx serving `dist/` with a single-page fallback, `docker/nginx.conf`). Each listens on port 8080. Deployment configuration for a particular host lives outside this repository. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The local PDF delivery adapter reads built artifacts; production distribution needs an immutable object-storage/CDN release and download policy.

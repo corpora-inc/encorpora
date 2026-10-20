@@ -30,6 +30,7 @@ import { isTrialAccount, trialLimits } from "./trials";
 import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
+import { buildInfo } from "./build-info";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
 const birthYearSchema = z.number().int().min(1900).max(2100);
@@ -162,10 +163,13 @@ function routes(app: FastifyInstance, options: AppOptions) {
       );
     return account;
   }
+  // `commit` and `builtAt` name the running release (null in a local build).
+  const build = buildInfo();
   app.get("/api/v1/health", async () => ({
     ok: true,
     product: "AMP",
     version: 1,
+    ...build,
   }));
   // Identity binding precedes learning consent; this endpoint grants no access.
   app.get("/api/v1/session", async (request) => ({

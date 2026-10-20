@@ -15,6 +15,15 @@ ARG VITE_AMP_SCOPES=""
 ARG VITE_AMP_RESOURCE=""
 # Type checking is CI's job; the image only bundles.
 RUN npx vite build
+# The release this image is: the full source commit and the UTC build time,
+# passed by the deploy pipeline (public; see src/server/build-info.ts).
+# Declared after the bundle, so a new commit reuses every layer above. The web
+# serves them at /version.json; the API reports them in /api/v1/health.
+ARG SOURCE_COMMIT=""
+ARG BUILT_AT=""
+RUN node -e 'const [commit, builtAt] = process.argv.slice(1).map((v) => v || null); \
+  require("fs").writeFileSync("dist/version.json", JSON.stringify({ commit, builtAt }) + "\n")' \
+  "$SOURCE_COMMIT" "$BUILT_AT"
 
 FROM ${NODE_IMAGE} AS api
 ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
@@ -26,6 +35,9 @@ COPY --from=build /app/scripts ./scripts
 COPY --from=build /app/migrations ./migrations
 COPY --from=build /app/books ./books
 COPY --from=build /app/tsconfig.json ./
+ARG SOURCE_COMMIT=""
+ARG BUILT_AT=""
+ENV AMP_BUILD_COMMIT=${SOURCE_COMMIT} AMP_BUILD_TIME=${BUILT_AT}
 USER 65532:65532
 EXPOSE 8080
 CMD ["node_modules/.bin/tsx", "src/server/main.ts"]
