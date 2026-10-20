@@ -2,6 +2,7 @@ import type { PoolClient } from "pg";
 import type { SkillEvidence } from "./evidence";
 import type { Outcome } from "./repository";
 import type { TrialLimits } from "./trials";
+import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
 
 /** Placement, then adaptive practice with lessons, hints and review, until
  * the free allowance is used. One engine: the mixed-practice planner. */
@@ -10,14 +11,22 @@ export type TrialProgress = {
   free: number;
   placement: number;
   remaining: number;
-  totals: { answered: number; correct: number; assisted: number };
+  /** `answered` counts the problems used: answers, and skips while
+   * SKIP_USES_FREE_PROBLEM holds. `skipped` counts every skip. */
+  totals: {
+    answered: number;
+    correct: number;
+    assisted: number;
+    skipped: number;
+  };
 };
 
 export function trialProgress(
   attempts: Pick<Outcome, "correct" | "assisted">[],
   limits: TrialLimits,
+  skipped = 0,
 ): TrialProgress {
-  const answered = attempts.length;
+  const answered = attempts.length + (SKIP_USES_FREE_PROBLEM ? skipped : 0);
   return {
     phase:
       answered < limits.placement
@@ -32,6 +41,7 @@ export function trialProgress(
       answered,
       correct: attempts.filter((a) => a.correct).length,
       assisted: attempts.filter((a) => a.assisted).length,
+      skipped,
     },
   };
 }
@@ -59,7 +69,16 @@ export async function isLiveTrial(db: PoolClient, learnerId: string) {
   return !!trial.rowCount;
 }
 
-/** Persisted-answer milestones. */
+/** Skipped problems, which are never attempts. */
+export async function countSkips(db: PoolClient, learnerId: string) {
+  const result = await db.query(
+    "SELECT count(*)::int AS n FROM amp_instances WHERE learner_id=$1 AND (content->>'skipped')::boolean",
+    [learnerId],
+  );
+  return (result.rows[0]?.n as number) ?? 0;
+}
+
+/** Persisted-answer milestones: problems used, as the trial counts them. */
 export async function recordTrialMilestones(
   db: PoolClient,
   learnerId: string,
@@ -70,7 +89,11 @@ export async function recordTrialMilestones(
     FROM amp_trials t WHERE t.learner_id=$1 AND t.adopted_at IS NULL AND t.expires_at>now()`,
     [learnerId],
   );
-  if (result.rows[0]?.answered === limits.placement)
+  const used =
+    result.rows[0] &&
+    result.rows[0].answered +
+      (SKIP_USES_FREE_PROBLEM ? await countSkips(db, learnerId) : 0);
+  if (used === limits.placement)
     await recordTrialEvent(db, learnerId, "placement_done");
 }
 
