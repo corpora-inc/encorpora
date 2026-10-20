@@ -13,6 +13,18 @@
     "github": "https://github.com/corpora-inc/encorpora/tree/main/dynawalla"
   },
   {
+    "id": "amp",
+    "title": "AMP Mathematics",
+    "description": "Adaptive math practice. AMP finds each learner's level and moves them forward, with a hint and a lesson for every problem type and printable worksheets with solutions.",
+    "icon": "/logos/amp-logo.webp",
+    "featured": true,
+    "action": "Open",
+    "platforms": [
+      { "name": "Web", "link": "https://amp.corpora.inc", "iconKey": "web" }
+    ],
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/amp"
+  },
+  {
     "id": "corpan",
     "title": "Corpan",
     "description": "Learn from 50+ languages from any language - fully localized, practical sentences, instant audio, and easy switching. Real-world phrases. No ads - just pure learning.",

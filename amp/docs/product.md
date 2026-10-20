@@ -1,6 +1,6 @@
 # AMP product specification
 
-AMP's target is a complete adaptive mathematics program from early counting through precalculus and SAT Math preparation. Parents purchase one annual student license covering instruction, practice, progress reporting, and downloadable learning materials. One parent account can manage several independently licensed learners.
+AMP (Adaptive Math Pathways), sold as AMP Mathematics, is named and described in one place: [`src/brand.json`](../src/brand.json). AMP's target is a complete adaptive mathematics program from early counting through precalculus and SAT Math preparation. Parents purchase one annual student license covering instruction, practice, progress reporting, and downloadable learning materials. One parent account can manage several independently licensed learners.
 
 The application is a conventional online service with shared identity and progress across browsers and mobile devices. PDFs provide offline study. Interactive offline packs, translations, narration, video, and AP mathematics are subsequent capabilities. Mathematical structures and instructional prose are separate so additional media and languages can be introduced without rewriting the mathematics.
 
