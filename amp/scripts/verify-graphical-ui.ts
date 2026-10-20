@@ -15,7 +15,11 @@ import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
 import { layoutScene } from "../src/math/scene/index";
 import { isPorted, legacyScene } from "../src/math/scene/legacy";
+import { typeSizes } from "../src/math/scene/type";
+import { FIGURE_TEXT_MAX_PX } from "../src/web/FigureTextCap";
 import {
+  assertFigureTextScale,
+  figureTextScale,
   assertPhoneLandscapeSmoke,
   assertProblemReachable,
   isPhoneLandscape,
@@ -108,6 +112,13 @@ const DATA_PHONES = [
   PHONE_ANDROID_CHROME,
   { width: 390, height: 844 },
 ];
+/** Tablets in both orientations, the two-column landscape layout, and a
+ * desktop: sizes that give a figure more room than it needs. */
+const DATA_WIDE = [
+  PHONE_ANDROID_CHROME,
+  ...TABLETS,
+  { width: 1280, height: 800 },
+];
 /** Per template, the seeds that stress legibility most: the figure whose
  * smallest label shrinks most when fitted to a narrow phone (widest layout
  * per label size) and the tallest figure. */
@@ -194,6 +205,11 @@ try {
             continue;
           }
           // Reachability on these sizes is verify-ui's per-template sweep.
+          assertFigureTextScale(
+            await figureTextScale(phone),
+            label,
+            FIGURE_TEXT_MAX_PX,
+          );
           const labels = await labelSizes(phone),
             min = Math.min(...labels.map((l) => l.size));
           const key = `${size.width}×${size.height}`;
@@ -231,6 +247,42 @@ try {
     );
     await phone.close();
     assert.deepEqual(failures, [], "data figure labels under 12 px on a phone");
+  }
+  // The same data figures on tablets and desktops, where the layout offers a
+  // figure far more room than it needs: labels keep the figure type sizes,
+  // below the prompt, instead of growing with the box.
+  {
+    const wide = await browser.newPage({ hasTouch: true });
+    await wide.goto("http://127.0.0.1:4434");
+    await choose(
+      wide.getByRole("button", { name: "Learner", exact: true }),
+      learner.id,
+    );
+    let shown: PublicProblem | undefined;
+    await wide.route("**/batches", async (route) => {
+      const response = await route.fetch(),
+        body = await response.json();
+      // Fixture substitution changes only the displayed problem. No attempts are made.
+      body.problems = [shown];
+      body.selection = [
+        { problemId: shown!.id, reason: "focus", strand: "math" },
+      ];
+      await route.fulfill({ response, json: body });
+    });
+    for (const id of DATA_TEMPLATES) {
+      shown = generateProblem(id, dataFixtures(id)[0]!).public;
+      await wide.setViewportSize(DATA_WIDE[0]!);
+      await startTopic(wide, id);
+      await wide.locator(".problem-content svg").first().waitFor();
+      for (const size of DATA_WIDE) {
+        await wide.setViewportSize(size);
+        const label = `${id} ${size.width}×${size.height}`;
+        const scale = await figureTextScale(wide);
+        rows.push({ id: `data-wide ${id}`, ...size, ...scale });
+        assertFigureTextScale(scale, label, FIGURE_TEXT_MAX_PX);
+      }
+    }
+    await wide.close();
   }
   const page = await browser.newPage({ hasTouch: true });
   await page.goto("http://127.0.0.1:4434");
@@ -386,6 +438,12 @@ try {
         assert.ok(
           labels.every((l) => l.size >= 11.99),
           `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,
+        );
+        assertFigureTextScale(
+          await figureTextScale(page),
+          `${fixture.name} ${size.width}×${size.height}`,
+          typeSizes.lg,
+          size.width >= 768,
         );
         // A tablet, in either orientation, shows the prompt and the whole
         // graph at once: no scrolling to find the figure.

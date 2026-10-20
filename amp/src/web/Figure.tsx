@@ -19,18 +19,31 @@ import { RatioRateFigure } from "./RatioRateFigure";
 import { FunctionDisplay } from "./FunctionDisplay";
 import { EquationFigure } from "./EquationFigure";
 import type { SemanticFigure } from "../math/contracts";
-import { isPorted, legacyScene } from "../math/scene/legacy";
+import { isPorted, legacyScene, type PortedKind } from "../math/scene/legacy";
+import { FigureTextCap } from "./FigureTextCap";
 import { SceneFigure } from "./scene/SceneFigure";
 import type { Scene } from "../math/scene/spec";
 export function Figure({ figure }: { figure: SemanticFigure }) {
   // Kinds ported to the scene framework draw through it (docs/figures-rfc.md).
   if (isPorted(figure))
     return <SceneFigure scene={legacyScene(figure)} kind={figure.kind} />;
+  if (figure.kind === "scene")
+    return <SceneFigure scene={figure.scene} kind={sceneKind(figure.scene)} />;
+  return (
+    <FigureTextCap>
+      <LegacyFigure figure={figure} />
+    </FigureTextCap>
+  );
+}
+
+/** A figure drawn by its own fixed view box; FigureTextCap keeps its labels
+ * within the figure type sizes. */
+function LegacyFigure({
+  figure,
+}: {
+  figure: Exclude<SemanticFigure, { kind: "scene" | PortedKind }>;
+}) {
   switch (figure.kind) {
-    case "scene":
-      return (
-        <SceneFigure scene={figure.scene} kind={sceneKind(figure.scene)} />
-      );
     case "length-interval":
     case "measure-rectangle":
     case "rectangle-comparison":
