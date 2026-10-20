@@ -13,11 +13,17 @@ import { generateProblem } from "../src/math/engine";
 import type { PublicProblem, SemanticFigure } from "../src/math/contracts";
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
+import { layoutScene } from "../src/math/scene/index";
+import { isPorted, legacyScene } from "../src/math/scene/legacy";
 import {
   assertPhoneLandscapeSmoke,
   assertProblemReachable,
   isPhoneLandscape,
+  PHONE_ANDROID_CHROME,
+  PHONE_IPHONE_SE,
+  PHONE_LANDSCAPE,
   PHONE_REAL_BROWSERS,
+  PHONE_SMALL_ANDROID,
   TABLET_LANDSCAPE,
   TABLET_LANDSCAPE_LARGE,
 } from "./ui-viewports";
@@ -63,14 +69,175 @@ const output = new URL(
 await mkdir(output, {
   recursive: true,
 });
+/** Every data display a learner practices: dot, line and double dot plots,
+ * box plots, histograms, bar and picture graphs, scatter plots and two-way
+ * tables. */
+const DATA_TEMPLATES = [
+  "line-plot-whole",
+  "fraction-line-plot",
+  "fraction-plot-difference",
+  "fraction-plot-equal-share",
+  "dot-plot-mean",
+  "dot-plot-mad",
+  "dot-plot-iqr",
+  "typical-value-choice",
+  "sample-estimates-plot",
+  "means-in-mads",
+  "box-plot-read",
+  "double-box-compare",
+  "compare-distributions-choice",
+  "histogram-read",
+  "bar-chart-total",
+  "bar-chart-difference",
+  "scaled-bar-graph",
+  "picture-graph-questions",
+  "scaled-picture-graph",
+  "scatter-association-choice",
+  "trend-line-predict",
+  "trend-slope-meaning",
+  "two-way-missing",
+  "two-way-row-percent",
+  "two-way-association-choice",
+];
+/** Phone portrait sizes where a data figure's labels must read at 12 px or
+ * more (phone landscape is smoke-only, #1206). */
+const DATA_PHONES = [
+  { width: 320, height: 568 },
+  PHONE_SMALL_ANDROID,
+  PHONE_IPHONE_SE,
+  PHONE_ANDROID_CHROME,
+  { width: 390, height: 844 },
+];
+/** Per template, the seeds that stress legibility most: the figure whose
+ * smallest label shrinks most when fitted to a narrow phone (widest layout
+ * per label size) and the tallest figure. */
+function dataFixtures(id: string) {
+  let narrow: { seed: string; ratio: number } | undefined,
+    tall: { seed: string; height: number } | undefined;
+  for (let i = 0; i < 64; i++) {
+    const seed = `data-legibility-${i}`,
+      f = generateProblem(id, seed).public.figure;
+    const scene =
+      f?.kind === "scene" ? f.scene : f && isPorted(f) ? legacyScene(f) : null;
+    if (!scene) return [seed];
+    const l = layoutScene(scene),
+      smallest = Math.min(
+        ...l.items.flatMap((d) =>
+          d.k === "text" ? d.t.runs.map((r) => r.size) : [],
+        ),
+      ),
+      ratio = l.width / smallest;
+    if (!narrow || ratio > narrow.ratio) narrow = { seed, ratio };
+    if (!tall || l.height > tall.height) tall = { seed, height: l.height };
+  }
+  return [...new Set([narrow!.seed, tall!.seed])];
+}
+/** On-screen size, in CSS px, of every label in the practice figure. */
+async function labelSizes(page: import("playwright").Page) {
+  return page.locator(".problem-content svg text").evaluateAll((nodes) =>
+    nodes.map((node) => {
+      const t = node as SVGTextElement,
+        m = t.getScreenCTM()!;
+      return {
+        text: t.textContent,
+        size:
+          Number.parseFloat(getComputedStyle(t).fontSize) *
+          Math.hypot(m.c, m.d),
+      };
+    }),
+  );
+}
+const rows: unknown[] = [];
 try {
+  // Data figures on a phone-emulated page (mobile viewport, touch, 3x).
+  {
+    const phone = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+      deviceScaleFactor: 3,
+      ...(browserName === "chromium" ? { isMobile: true } : {}),
+    });
+    await phone.goto("http://127.0.0.1:4434");
+    await choose(
+      phone.getByRole("button", { name: "Learner", exact: true }),
+      learner.id,
+    );
+    let shown: PublicProblem | undefined;
+    await phone.route("**/batches", async (route) => {
+      const response = await route.fetch(),
+        body = await response.json();
+      // Fixture substitution changes only the displayed problem. No attempts are made.
+      body.problems = [shown];
+      body.selection = [
+        { problemId: shown!.id, reason: "focus", strand: "math" },
+      ];
+      await route.fulfill({ response, json: body });
+    });
+    const smallest: Record<string, Record<string, number>> = {};
+    const failures: string[] = [];
+    for (const id of DATA_TEMPLATES)
+      for (const seed of dataFixtures(id)) {
+        shown = generateProblem(id, seed).public;
+        await phone.setViewportSize(DATA_PHONES[DATA_PHONES.length - 1]!);
+        await startTopic(phone, id);
+        await phone.locator(".problem-content svg").first().waitFor();
+        for (const size of [...DATA_PHONES, PHONE_LANDSCAPE]) {
+          await phone.setViewportSize(size);
+          await phone.waitForFunction(
+            () =>
+              !!document.querySelector(".compact-answer-action") ===
+              matchMedia("(max-width: 650px) and (max-height: 640px)").matches,
+          );
+          const label = `${id} ${seed} ${size.width}×${size.height}`;
+          if (isPhoneLandscape(size)) {
+            await assertPhoneLandscapeSmoke(phone, label);
+            continue;
+          }
+          // Reachability on these sizes is verify-ui's per-template sweep.
+          const labels = await labelSizes(phone),
+            min = Math.min(...labels.map((l) => l.size));
+          const key = `${size.width}×${size.height}`;
+          smallest[id] ??= {};
+          smallest[id][key] = Math.min(smallest[id][key] ?? 99, min);
+          rows.push({
+            id: `data ${id} ${seed}`,
+            ...size,
+            minText: min,
+            labels,
+          });
+          if (min < 11.99) {
+            failures.push(
+              `${label}: ${labels
+                .filter((l) => l.size < 11.99)
+                .map((l) => `${l.text} ${l.size.toFixed(1)}px`)
+                .join(", ")}`,
+            );
+            await phone.screenshot({
+              path: new URL(`data-${id}-${seed}-${size.width}.png`, output)
+                .pathname,
+            });
+          }
+        }
+      }
+    console.table(
+      Object.fromEntries(
+        Object.entries(smallest).map(([id, sizes]) => [
+          id,
+          Object.fromEntries(
+            Object.entries(sizes).map(([k, v]) => [k, Number(v.toFixed(1))]),
+          ),
+        ]),
+      ),
+    );
+    await phone.close();
+    assert.deepEqual(failures, [], "data figure labels under 12 px on a phone");
+  }
   const page = await browser.newPage({ hasTouch: true });
   await page.goto("http://127.0.0.1:4434");
   await choose(
     page.getByRole("button", { name: "Learner", exact: true }),
     learner.id,
   );
-  const rows = [];
   const fixtures: {
     name: string;
     problem: PublicProblem;
