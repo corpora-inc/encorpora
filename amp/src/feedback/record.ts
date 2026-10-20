@@ -26,8 +26,9 @@ export async function recordProblemFlag(
   if (await tx.flag({ problemId: input.problemId }))
     throw new ApiError(409, ALREADY_REPORTED);
   const attempt = await tx.attemptByProblem(input.problemId);
-  // A report follows the result: an answer, or a skip (which has no attempt).
-  if (!attempt && !input.skipped)
+  // A report follows the result: an answer, or a skip (which has no attempt
+  // and is recorded on the problem itself).
+  if (!attempt && !(input.skipped && problem.skipped))
     throw new ApiError(409, "Answer or skip this problem before reporting it");
   const note = input.note?.trim() || null;
   if (

@@ -210,8 +210,23 @@ test(
         ).statusCode,
         201,
       );
-      // A skip resolves a problem without an attempt.
+      // A skip resolves a problem without an attempt. Claiming one that the
+      // server never recorded is refused.
       const skipped = await serve(trial);
+      const unskipped = await report(trial, {
+        problemId: skipped.id,
+        requestId: randomUUID(),
+        reasons: ["tedious"],
+        skipped: true,
+      });
+      assert.equal(unskipped.statusCode, 409, unskipped.body);
+      const skipping = await app.inject({
+        method: "POST",
+        url: `${base}/skips`,
+        headers: trial,
+        payload: { problemId: skipped.id },
+      });
+      assert.equal(skipping.statusCode, 200, skipping.body);
       const skip = await report(trial, {
         problemId: skipped.id,
         requestId: randomUUID(),

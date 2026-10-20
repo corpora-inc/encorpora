@@ -108,6 +108,25 @@ export function simulateTrial(options: {
   return served;
 }
 
+/** The attempts behind a simulated run, as the repository would return
+ * them, and the time of its last answer. */
+export function runAttempts(key: string, served: readonly ServedItem[]) {
+  const attempts: Outcome[] = served.map((item, i) => ({
+    id: `${key}:${i}`,
+    problemId: `${key}:p${i}`,
+    requestId: `${key}:r${i}`,
+    skillId: item.skillId,
+    templateId: item.templateId,
+    response: "",
+    correct: item.correct,
+    assisted: false,
+    explanation: [],
+    answer: "",
+    createdAt: new Date(october + i * 40000).toISOString(),
+  }));
+  return { attempts, last: october + (served.length - 1) * 40000 };
+}
+
 /** Learners whose age puts them in grades 6–8, from a grade and a half
  * below to two grades above that level. */
 export function trialLearners(seeds = 8) {

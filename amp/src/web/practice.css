@@ -759,6 +759,40 @@ nav button {
   min-height: 48px;
   margin-top: 10px;
 }
+/* Fit, then scroll (#1218): the choice dock never runs off the screen. Long
+   statement choices on a short phone (375×667) made it taller than the
+   surface. It takes at most 62% of the practice surface; past that the
+   options scroll inside it, while the legend, Check and the tools stay put
+   and the problem stage above keeps its own scroll. */
+.answer-dock:has(.choice-form) {
+  display: flex;
+  flex-direction: column;
+  max-height: 62%;
+  min-height: 0;
+}
+.answer-dock:has(.choice-form) > * {
+  flex: none;
+}
+.answer-dock:has(.choice-form) > .answer-controls,
+.answer-controls > .choice-form,
+.answer-controls > .choice-form > fieldset {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.answer-controls > .choice-form > fieldset > legend,
+.answer-controls > .choice-form > .choice-submit {
+  flex: none;
+}
+.answer-controls .choice-options {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Room for the focus ring and selection outline inside the scroller. */
+  padding: 3px;
+  margin: -3px;
+}
 .choice-model .figure {
   width: 100%;
   height: 120px;
@@ -910,4 +944,8 @@ nav button {
 }
 .choice-model .function-display svg {
   max-height: 150px;
+}
+/* The answer error floats above the answer controls, not the whole dock. */
+.answer-controls {
+  position: relative;
 }

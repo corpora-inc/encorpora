@@ -218,6 +218,7 @@ test(
         answered: FREE,
         correct: FREE - 1,
         assisted: 1,
+        skipped: 0,
       });
       assert.ok(complete.mastered.includes(numeric.skillId));
       assert.equal(complete.frontier.current.overall.answered, FREE);

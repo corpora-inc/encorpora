@@ -31,7 +31,12 @@ test("the free run is placement, then adaptive practice, then complete", () => {
   assert.equal(run(99).remaining, 1);
   assert.equal(run(100).phase, "complete");
   assert.equal(run(100).remaining, 0);
-  assert.deepEqual(run(3).totals, { answered: 3, correct: 3, assisted: 0 });
+  assert.deepEqual(run(3).totals, {
+    answered: 3,
+    correct: 3,
+    assisted: 0,
+    skipped: 0,
+  });
 });
 
 test("placement is a fifth of a small allowance and never more than twenty", () => {

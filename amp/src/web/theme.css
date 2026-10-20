@@ -365,6 +365,13 @@ header {
   );
   color: var(--color-on-surface);
 }
+/* A skip is neutral: the answer on a plain surface, no red and no mark of
+   a miss. */
+.feedback.skipped {
+  background: color-mix(in srgb, var(--color-surface-raised) 94%, transparent);
+  border-color: var(--color-border-strong);
+  color: var(--color-on-surface);
+}
 .feedback-head {
   display: flex;
   align-items: center;
@@ -385,6 +392,11 @@ header {
 }
 .feedback.incorrect .result-mark {
   background: var(--color-danger-accent);
+}
+.feedback.skipped .result-mark {
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border-strong);
 }
 .feedback-title {
   display: flex;
