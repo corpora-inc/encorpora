@@ -142,7 +142,10 @@ export async function renderLevelCard(
     panelY + 186,
   );
   ctx.textAlign = "left";
-  const scale = levelScale(Math.round(data.overall.level));
+  const scale = levelScale(Math.round(data.overall.level), [
+    data.overall,
+    ...data.strands,
+  ]);
   track(
     ctx,
     { x: pad + 48, y: panelY + 238, w: inner - 96, h: 22 },

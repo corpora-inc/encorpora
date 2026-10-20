@@ -210,7 +210,7 @@ function ShareSheet({
             )}
             {card ? (
               <a
-                className={buttonClass("secondary")}
+                className={buttonClass("secondary", grownUp ? "" : styles.wide)}
                 href={card.url}
                 download="amp-level.png"
                 onClick={() => done("download")}
@@ -218,7 +218,11 @@ function ShareSheet({
                 {shareCopy.download}
               </a>
             ) : (
-              <Button variant="secondary" disabled>
+              <Button
+                variant="secondary"
+                className={grownUp ? "" : styles.wide}
+                disabled
+              >
                 {shareCopy.download}
               </Button>
             )}
