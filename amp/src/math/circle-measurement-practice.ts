@@ -99,7 +99,7 @@ export function circleMeasurementPrintCase(
       ? `${opening} Its ${isArea ? "area" : "circumference"} is $a\\pi$ ${unit}. What is $a$?`
       : isArc
         ? `${opening} An arc corresponds to a central angle of ${angle} degrees. Its length is $a\\pi$ cm. What is $a$?`
-        : `${opening} A sector has a central angle of ${angle} degrees. Its area is $a\\pi$ square centimeters. What is $a$?`;
+        : `${opening} $A$ sector has a central angle of ${angle} degrees. Its area is $a\\pi$ square centimeters. What is $a$?`;
   const radiusStep = isRadius
     ? `The given length is the radius: $r = ${tex(radius)}$ cm.`
     : `A diameter is twice the radius. Divide by 2: $r = ${tex(given)} \\div 2 = ${tex(radius)}$ cm.`;

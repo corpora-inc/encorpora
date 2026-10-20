@@ -198,7 +198,7 @@ export function generateEqualGroupsProblem(
         split = r(1, rows - 1),
         top = r(0, 1) === 0;
       figure = { kind: "unit-array", rows, columns, splitAfterRow: split };
-      prompt = `The array is split into regions A and B. How many unit squares are in region ${top ? "A" : "B"}?`;
+      prompt = `The array is split into regions $A$ and $B$. How many unit squares are in region ${top ? "A" : "B"}?`;
       answer = (top ? split : rows - split) * columns;
       label = "Squares in the region";
       hint = `Region ${top ? "A" : "B"} has only some of the rows. Count its rows, then multiply by the squares in one row.`;

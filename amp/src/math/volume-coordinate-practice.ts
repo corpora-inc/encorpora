@@ -361,23 +361,23 @@ export function generateVolumeCoordinateProblem(
         steps: [
           {
             caption:
-              "Go across along the horizontal axis until you are straight below P. That distance is the first coordinate.",
+              "Go across along the horizontal axis until you are straight below $P$. That distance is the first coordinate.",
             actions: [{ do: "trace", target: "grid.slope.0.run" }],
           },
           {
             caption:
-              "Then go straight up to P. That distance is the second coordinate: across first, then up.",
+              "Then go straight up to $P$. That distance is the second coordinate: across first, then up.",
             actions: [{ do: "trace", target: "grid.slope.0.rise" }],
             audience: "lesson",
           },
         ],
       });
-      prompt = "What are the coordinates of point P?";
-      hint = `From P, go straight down to the horizontal axis for the first number, then straight left for the second. P is ${x > y ? "farther across than it is up" : "higher up than it is across"}, so check that its first number is the ${x > y ? "larger" : "smaller"} one.`;
+      prompt = "What are the coordinates of point $P$?";
+      hint = `From $P$, go straight down to the horizontal axis for the first number, then straight left for the second. $P$ is ${x > y ? "farther across than it is up" : "higher up than it is across"}, so check that its first number is the ${x > y ? "larger" : "smaller"} one.`;
       explanation = [
-        `Straight below P, the horizontal axis reads ${x}. That is the first coordinate.`,
-        `Straight left of P, the vertical axis reads ${y}. That is the second coordinate.`,
-        `P is at ${pair(x, y)}: across first, then up.`,
+        `Straight below $P$, the horizontal axis reads ${x}. That is the first coordinate.`,
+        `Straight left of $P$, the vertical axis reads ${y}. That is the second coordinate.`,
+        `$P$ is at ${pair(x, y)}: across first, then up.`,
       ];
       choices = [
         { label: pair(x, y), correct: true },
@@ -416,10 +416,10 @@ export function generateVolumeCoordinateProblem(
         points: [{ x, y, label: "A" }],
       };
       const end = pair(x + right, y + up);
-      prompt = `Start at point A. Move ${count(right, "unit")} right and ${count(up, "unit")} up. What are the coordinates of the point where you stop?`;
+      prompt = `Start at point $A$. Move ${count(right, "unit")} right and ${count(up, "unit")} up. What are the coordinates of the point where you stop?`;
       hint = `Read A's coordinates first. Moving ${right} right adds ${right} to the first number; moving ${up} up adds ${up} to the second.`;
       explanation = [
-        `A is at ${pair(x, y)}.`,
+        `$A$ is at ${pair(x, y)}.`,
         `Moving right changes only the first coordinate: $${x} + ${right} = ${x + right}$.`,
         `Moving up changes only the second coordinate: $${y} + ${up} = ${y + up}$.`,
         `You stop at ${end}.`,

@@ -372,13 +372,13 @@ function generateCase(
     }
     explanation = uniqueSteps(rows, data.solution);
     hint = isPair
-      ? `A solution makes both ${equation(rows[0])} and ${equation(rows[1])} true. Test each pair in the first equation, then check the ones that pass in the second; x comes first in a pair.`
+      ? `A solution makes both ${equation(rows[0])} and ${equation(rows[1])} true. Test each pair in the first equation, then check the ones that pass in the second; $x$ comes first in a pair.`
       : `Combine ${equation(rows[0])} and ${equation(rows[1])} so one variable cancels. Does a single value remain, a false statement, or 0 = 0?`;
     candidates = isPair
       ? data.points.map((point, i) => ({
           label: pair(point),
           correct: i === data.target,
-          feedback: `${checkLine(rows[0], point, "first")} ${checkLine(rows[1], point, "second")} A solution must satisfy both equations.`,
+          feedback: `${checkLine(rows[0], point, "first")} ${checkLine(rows[1], point, "second")} $A$ solution must satisfy both equations.`,
         }))
       : countLabels.map((label, i) => ({
           label,
@@ -447,7 +447,7 @@ function generateCase(
         templateVersion: 1,
         seed,
         skillId: metadata.skillId,
-        prompt: `${isPair ? "Which ordered pair (x, y) satisfies" : "How many ordered pairs (x, y) satisfy"} both equations for real x and y: ${equation(rows[0])}; ${equation(rows[1])}?`,
+        prompt: `${isPair ? "Which ordered pair $(x, y)$ satisfies" : "How many ordered pairs $(x, y)$ satisfy"} both equations for real $x$ and $y$: ${equation(rows[0])}; ${equation(rows[1])}?`,
         response: {
           kind: "choice",
           label: isPair

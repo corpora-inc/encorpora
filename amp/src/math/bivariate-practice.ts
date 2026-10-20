@@ -86,7 +86,7 @@ function trendScene(
       act.appear("g.residual"),
     ),
     step(
-      `Between the marked points, ${c.names[0]} changes by {g.slope.0.run.label} and ${c.names[1]} by {g.slope.0.rise.label}: slope = rise ÷ run.`,
+      `Between the marked points, ${c.names[0]} changes by {$g$.slope.0.run.label} and ${c.names[1]} by {$g$.slope.0.rise.label}: slope = rise ÷ run.`,
       act.appear("g.slope.0"),
       act.highlight("g.point"),
     ),
@@ -96,7 +96,7 @@ function trendScene(
           act.highlight("g.fit"),
         )
       : lessonStep(
-          `Follow the line to ${c.names[0]} = ${predict}: it predicts {g.predict.label}.`,
+          `Follow the line to ${c.names[0]} = ${predict}: it predicts {$g$.predict.label}.`,
 
           act.appear("g.predict"),
         ),
@@ -266,7 +266,7 @@ const associationContexts: {
     kind: "nonlinear",
     describe: (n) => `the temperature at ${n} times during one day`,
     x: { label: "hour of the day", start: 6, end: 20, step: 2 },
-    y: { label: "temperature (°F)", start: 40, end: 90, step: 10 },
+    y: { label: "temperature (°$F$)", start: 40, end: 90, step: 10 },
     names: ["the hour", "temperature"],
     shape: (r, x) => 84 - 0.7 * (x - 14) ** 2 + r(-2, 2),
     read: "The temperature rose through the morning, peaked in the afternoon, then fell.",
@@ -412,21 +412,21 @@ const trendContexts = [
   {
     describe: (n: number) =>
       `the high temperature and the cups of lemonade sold on each of ${n} days`,
-    x: { label: "temperature (°F)", start: 60, end: 100, step: 5 },
+    x: { label: "temperature (°$F$)", start: 60, end: 100, step: 5 },
     y: { label: "cups sold", start: 0, end: 100, step: 10 },
     names: ["temperature", "cups sold"],
     slopes: [1, 2],
     intercepts: [-110, -40],
     noise: 5,
     ask: (x: number) =>
-      `Use the trend line to predict how many cups sell on a ${x}°F day.`,
+      `Use the trend line to predict how many cups sell on a ${x}°$F$ day.`,
     xUnit: ["degree", "degrees"],
     rate: (k: number, up: boolean) =>
       `Each additional degree goes with about ${k} ${up ? "more" : "fewer"} ${k === 1 ? "cup" : "cups"} sold.`,
     reversed: (k: number, up: boolean) =>
       `Each additional cup sold goes with about ${k} ${up ? "more" : "fewer"} ${k === 1 ? "degree" : "degrees"}.`,
     zero: (b: number, x: number, y: number) =>
-      `On a ${x}°F day about ${y} cups sell.`,
+      `On a ${x}°$F$ day about ${y} cups sell.`,
     intercept: false,
   },
 ] as const;
@@ -497,7 +497,7 @@ function slopeMeaning(r: Random): Draft {
       `Slope: (${f(x2)} − ${f(x1)}) ÷ (${x2} − ${x1}) = ${signed(m)}.`,
       `The slope is the change in ${c.names[1]} for each additional ${xOne}. ${correct}`,
       c.intercept
-        ? `The y-intercept, ${b}, is a different fact: the predicted ${c.names[1]} when ${c.names[0]} is 0.`
+        ? `The $y$-intercept, ${b}, is a different fact: the predicted ${c.names[1]} when ${c.names[0]} is 0.`
         : "The slope is a rate: it describes change, not any single point on the line.",
     ],
     choices: [
@@ -505,7 +505,7 @@ function slopeMeaning(r: Random): Draft {
       {
         label: c.zero(b, x1, f(x1)),
         feedback: c.intercept
-          ? `That is the y-intercept, ${b}: where the line meets ${c.names[0]} = 0. The slope is the change for each additional ${xOne}.`
+          ? `That is the $y$-intercept, ${b}: where the line meets ${c.names[0]} = 0. The slope is the change for each additional ${xOne}.`
           : `That reads one point on the line, not the change for each additional ${xOne}.`,
       },
       {
@@ -612,12 +612,12 @@ function twoWayMissing(r: Random): Draft {
         act.highlight(`t.cell.2.${j}`),
       ),
       step(
-        `Its total minus the ${c.rows[1 - i]} count: {t.cell.2.${j}} − {t.cell.${1 - i}.${j}}.`,
+        `Its total minus the ${c.rows[1 - i]} count: {$t$.cell.2.${j}} − {$t$.cell.${1 - i}.${j}}.`,
         act.highlight(`t.cell.2.${j}`),
         act.highlight(`t.cell.${1 - i}.${j}`),
       ),
       lessonStep(
-        `${c.nouns[i][0]!.toUpperCase()}${c.nouns[i].slice(1)} who ${j === 0 ? c.trait : c.not}: {t.cell.${i}.${j}}.`,
+        `${c.nouns[i][0]!.toUpperCase()}${c.nouns[i].slice(1)} who ${j === 0 ? c.trait : c.not}: {$t$.cell.${i}.${j}}.`,
         act.highlight(`t.cell.${i}.${j}`),
       ),
     ],

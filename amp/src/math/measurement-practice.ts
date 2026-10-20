@@ -92,14 +92,14 @@ export function generateMeasurementProblem(
         endNumerator: end,
         unit: "cm",
       };
-      prompt = "The strip runs from A to B. What is its length in cm?";
+      prompt = "The strip runs from $A$ to $B$. What is its length in cm?";
       answer = rational(end - start, denominator);
       label = "Length in cm";
       hint = whole
         ? `A starts at the ${start} cm mark, not at 0. Read B's mark and subtract ${start}.`
-        : `Each centimeter is cut into ${denominator} small spaces. Count the small spaces from A to B, then write that count over ${denominator}.`;
+        : `Each centimeter is cut into ${denominator} small spaces. Count the small spaces from $A$ to $B$, then write that count over ${denominator}.`;
       explanation = [
-        `A is at ${rational(start, denominator)} cm; B is at ${rational(end, denominator)} cm.`,
+        `$A$ is at ${rational(start, denominator)} cm; $B$ is at ${rational(end, denominator)} cm.`,
         `${rational(end, denominator)} − ${rational(start, denominator)} = ${answer} cm.`,
         whole
           ? "The starting mark is a position, not an extra unit of length."
@@ -232,12 +232,12 @@ export function generateMeasurementProblem(
             }),
       }));
       hint = sameArea
-        ? `Equal area does not mean equal border. Add all four sides of A (${a[0]} by ${a[1]}) and of B (${b[0]} by ${b[1]}).`
-        : `An equal border does not mean equal area. Multiply the sides of A (${a[0]} by ${a[1]}) and of B (${b[0]} by ${b[1]}).`;
+        ? `Equal area does not mean equal border. Add all four sides of $A$ (${a[0]} by ${a[1]}) and of $B$ (${b[0]} by ${b[1]}).`
+        : `An equal border does not mean equal area. Multiply the sides of $A$ (${a[0]} by ${a[1]}) and of $B$ (${b[0]} by ${b[1]}).`;
       explanation = [
         sameArea
           ? `A: 2 × (${a[0]} + ${a[1]}) = ${valueA} cm. B: 2 × (${b[0]} + ${b[1]}) = ${valueB} cm.`
-          : `A: ${a[0]} × ${a[1]} = ${valueA} square cm. B: ${b[0]} × ${b[1]} = ${valueB} square cm.`,
+          : `$A$: ${a[0]} × ${a[1]} = ${valueA} square cm. $B$: ${b[0]} × ${b[1]} = ${valueB} square cm.`,
         `Rectangle ${winner} has the ${sameArea ? "shorter border" : "greater area"}. Equal ${sameArea ? "areas" : "perimeters"} alone do not determine that comparison.`,
       ];
       break;
@@ -367,7 +367,7 @@ export function generateMeasurementProblem(
         packs = Math.ceil(need / size),
         a = packs * price,
         b = need * rate;
-      prompt = `Need ${need} m of ribbon; pieces join without loss. A: whole ${size} m packs at ${price} ${price === 1 ? "dollar" : "dollars"} each. B: any length at ${rate} ${rate === 1 ? "dollar" : "dollars"} per meter. No other charges. Which costs less?`;
+      prompt = `Need ${need} m of ribbon; pieces join without loss. $A$: whole ${size} m packs at ${price} ${price === 1 ? "dollar" : "dollars"} each. $B$: any length at ${rate} ${rate === 1 ? "dollar" : "dollars"} per meter. No other charges. Which costs less?`;
       const winner = a === b ? "Same cost" : a < b ? "A" : "B";
       choices = ["A", "B", "Same cost"].map((name) => ({
         label: name,
@@ -375,13 +375,13 @@ export function generateMeasurementProblem(
           ? { correct: true as const }
           : {
               feedback:
-                "Use enough complete packs for A. B can supply exactly the needed length; compare total bills.",
+                "Use enough complete packs for $A$. $B$ can supply exactly the needed length; compare total bills.",
             }),
       }));
       hint = `A sells only whole ${size} m packs: how many packs cover ${need} m? Compare that bill with B's ${need} × ${rate} dollars.`;
       explanation = [
         `A needs ${packs} complete ${packs === 1 ? "pack" : "packs"}: ${packs} × ${size} = ${packs * size} m, costing ${a} dollars.`,
-        `B supplies exactly ${need} m for ${need} × ${rate} = ${b} dollars.`,
+        `$B$ supplies exactly ${need} m for ${need} × ${rate} = ${b} dollars.`,
         a === b
           ? `The bills tie. A leaves ${packs * size - need} m unused; that does not change the stated cost.`
           : `${winner} costs less. A's ${packs * size - need} m of unused ribbon does not reduce its bill.`,

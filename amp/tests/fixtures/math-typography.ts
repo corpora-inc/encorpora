@@ -1,3 +1,4 @@
+import katex from "katex";
 import { segments } from "../../src/web/MathText";
 import { segmentPrintText } from "../../src/content/math-typesetting";
 import { generateProblem, templates } from "../../src/math/engine";
@@ -17,7 +18,7 @@ const NAMING = /\$\\pi\$ \(pi\)/g;
 
 /** Explicit allowlist. Each entry is prose that looks like a lone letter. */
 export const ALLOWED: readonly [RegExp, string][] = [
-  [/\b(?:e\.g\.|i\.e\.)/g, "Latin abbreviations are prose"],
+  [/\b(?:e\.g\.|i\.e\.|a\.m\.|p\.m\.)/g, "Latin abbreviations are prose"],
   [
     /\b(?:[LTUV]-shaped?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
     "a letter that names a shape (an L-shaped face), not a quantity",
@@ -76,7 +77,7 @@ export type Context = { variables?: Set<string>; names?: Set<string> };
 
 /** English words that follow a variable but never the article "a". */
 const VARIABLE_FOLLOWERS =
-  "is|are|was|and|or|to|lies|has|equals|plus|minus|times|divided|multiplied|squared|cubed|stays|appears|varies|changes|increases|decreases";
+  "is|are|was|and|or|to|lies|has|equals|stays|appears|varies|changes|increases|decreases";
 
 /** A text as one typesetter reads it, each formula replaced by the
  * placeholder 0, so prose keeps its neighbours ("$r = 4$ m" reads "0 m"). */
@@ -180,6 +181,14 @@ export function typographyIssues(
     names = new Set([...(context.names ?? []), ...namedLetters(source)]);
   const seen = new Set<string>();
   const out: Issue[] = [];
+  // Every explicit formula must typeset; KaTeX would otherwise show its source.
+  for (const m of source.matchAll(/\$([^$]+)\$/g))
+    try {
+      katex.renderToString(m[1]!, { throwOnError: true });
+    } catch {
+      if (/[\\A-Za-z]/.test(m[1]!))
+        out.push({ rule: "TeX that does not typeset", excerpt: m[0] });
+    }
   if (plain && text.includes("$"))
     out.push({ rule: "TeX in a plain-text title", excerpt: text });
   const readings = plain ? [text] : [appProse(source), printProse(source)];

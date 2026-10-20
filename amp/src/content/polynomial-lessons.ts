@@ -14,9 +14,9 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
     goal: "Simplify a sum of polynomials by combining like terms.",
     terms,
     method: [
-      "Match terms with the same power of x. A missing term has coefficient zero.",
-      "Add the coefficients of each group of like terms; leave the power of x unchanged.",
-      "Write terms in descending powers of x and omit zero terms. If every term cancels, write 0.",
+      "Match terms with the same power of $x$. A missing term has coefficient zero.",
+      "Add the coefficients of each group of like terms; leave the power of $x$ unchanged.",
+      "Write terms in descending powers of $x$ and omit zero terms. If every term cancels, write 0.",
     ],
     watch: "Adding x² terms does not produce x⁴: 2x² + 3x² = 5x².",
   },
@@ -26,8 +26,8 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
     method: [
       "Replace subtraction of the second polynomial by addition of its opposite.",
       "Change the sign of every term in the second polynomial, including its constant.",
-      "Combine terms with the same power of x by adding their signed coefficients.",
-      "Write terms in descending powers of x; omit zero terms or write 0 if all terms cancel.",
+      "Combine terms with the same power of $x$ by adding their signed coefficients.",
+      "Write terms in descending powers of $x$; omit zero terms or write 0 if all terms cancel.",
     ],
     watch:
       "The minus sign before parentheses affects every term inside: −(x² − 3x + 2) = −x² + 3x − 2.",
@@ -41,8 +41,8 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
     method: [
       "Multiply each term of the first factor by every term of the second factor.",
       "For each term product, multiply the coefficients and add exponents on powers of x: x^m × x^n = x^(m+n).",
-      "Add the partial products. Combine only terms with the same power of x.",
-      "Write the result in descending powers of x, omitting zero terms.",
+      "Add the partial products. Combine only terms with the same power of $x$.",
+      "Write the result in descending powers of $x$, omitting zero terms.",
     ],
     watch:
       "A square includes cross products: (x + 3)² = x² + 6x + 9, not x² + 9.",
@@ -50,7 +50,7 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
 };
 export const polynomialPrinciples: Record<string, string> = {
   "polynomial-addition":
-    "The distributive property gives axⁿ + bxⁿ = (a + b)xⁿ. Only like terms share the same power of x.",
+    "The distributive property gives axⁿ + bxⁿ = (a + b)xⁿ. Only like terms share the same power of $x$.",
   "polynomial-subtraction":
     "Subtracting a sum means adding its opposite: P − (A + B) = P + (−A) + (−B). Then combine like terms.",
   "polynomial-multiplication":
@@ -72,8 +72,8 @@ export const polynomialLessons: Lesson[] = [
       {
         title: "Which terms combine",
         paragraphs: [
-          "A polynomial is a sum of terms such as 3x², −2x, and 5. A coefficient is the number multiplying a power of x. In −x² the coefficient is −1. A constant has no variable factor.",
-          "Like terms have the same power of x. The distributive property explains their sum: 3x² + 4x² = (3 + 4)x² = 7x². Terms 3x² and 4x are unlike and cannot be combined into one term.",
+          "A polynomial is a sum of terms such as 3x², −2x, and 5. A coefficient is the number multiplying a power of $x$. In −x² the coefficient is −1. A constant has no variable factor.",
+          "Like terms have the same power of $x$. The distributive property explains their sum: 3x² + 4x² = (3 + 4)x² = 7x². Terms 3x² and 4x are unlike and cannot be combined into one term.",
         ],
       },
       {
@@ -89,7 +89,7 @@ export const polynomialLessons: Lesson[] = [
       steps: [
         "Group by power: (3 − 1)x³ + (0 + 4)x² + (−2 + 2)x + (5 − 8).",
         "Add the coefficients: 2x³ + 4x² + 0x − 3.",
-        "Omit the zero x term and keep descending powers: 2x³ + 4x² − 3.",
+        "Omit the zero $x$ term and keep descending powers: 2x³ + 4x² − 3.",
       ],
       answer: "2x³ + 4x² − 3",
     },
@@ -162,7 +162,7 @@ export const polynomialLessons: Lesson[] = [
       {
         title: "Add the partial products",
         paragraphs: [
-          "A partial product comes from distributing one term of the first factor. After finding all partial products, combine like terms, which have the same power of x. Addition changes their coefficients, not their exponents.",
+          "A partial product comes from distributing one term of the first factor. After finding all partial products, combine like terms, which have the same power of $x$. Addition changes their coefficients, not their exponents.",
           "Special products follow the same rule: (x + 3)² = x² + 3x + 3x + 9 = x² + 6x + 9. For (x + 3)(x − 3), the cross terms cancel: x² − 3x + 3x − 9 = x² − 9.",
         ],
       },

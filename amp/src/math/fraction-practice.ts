@@ -143,11 +143,11 @@ export function generateFractionPracticeProblem(
         points: [{ numerator: n, label: "P" }],
         unit: "one whole",
       };
-      prompt = `What number is at P? Each whole interval has ${d} equal steps.`;
+      prompt = `What number is at $P$? Each whole interval has ${d} equal steps.`;
       answer = fraction(n, d);
       hint = `Each whole is split into ${d} equal steps. Count the steps from 0 to P${n > d ? ", past 1 if needed," : ""} and write that count over ${d}.`;
       explanation = [
-        `P lies ${n} steps from zero; each step is 1/${d}.`,
+        `$P$ lies ${n} steps from zero; each step is 1/${d}.`,
         `Its position is ${n}/${d} = ${answer}.`,
       ];
       break;
@@ -316,12 +316,12 @@ export function generateFractionPracticeProblem(
         ],
         unit: "meters",
       };
-      prompt = `How many meters separate A and B? Each meter has ${d} equal steps.`;
+      prompt = `How many meters separate $A$ and $B$? Each meter has ${d} equal steps.`;
       label = "Distance in meters";
       answer = fraction(b - a, d);
-      hint = `Count the steps between A and B on the line, not from 0. Each meter has ${d} steps, so write that count over ${d}.`;
+      hint = `Count the steps between $A$ and $B$ on the line, not from 0. Each meter has ${d} steps, so write that count over ${d}.`;
       explanation = [
-        `A is at ${a}/${d} meter(s); B is at ${b}/${d} meter(s).`,
+        `$A$ is at ${a}/${d} meter(s); $B$ is at ${b}/${d} meter(s).`,
         `Their distance is (${b} − ${a})/${d} = ${answer} meter(s).`,
       ];
       break;

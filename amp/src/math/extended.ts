@@ -71,14 +71,14 @@ export const extendedTemplates: readonly TemplateMetadata[] = [
     "Slope through two points",
     "slope",
     "6–8",
-    "Find slope as change in y divided by change in x.",
+    "Find slope as change in $y$ divided by change in $x$.",
   ],
   [
     "linear-system-x",
     "Solve a linear system",
     "linear-systems",
     "9–12",
-    "Find x in a system with a unique integer solution.",
+    "Find $x$ in a system with a unique integer solution.",
   ],
   [
     "simple-probability",
@@ -333,7 +333,7 @@ export function generateExtendedProblem(
       prompt = `What is the slope of the line through (${x1}, ${y1}) and (${x1 + dx}, ${y1 + dy})?`;
       kind = "fraction";
       answer = fraction(dy, dx);
-      hint = `Slope is the change in y over the change in x. Subtract in the same order for both: (${y1 + dy} − ${y1 < 0 ? `(${y1})` : y1}) ÷ (${x1 + dx} − ${x1 < 0 ? `(${x1})` : x1}).`;
+      hint = `Slope is the change in $y$ over the change in $x$. Subtract in the same order for both: (${y1 + dy} − ${y1 < 0 ? `(${y1})` : y1}) ÷ (${x1 + dx} − ${x1 < 0 ? `(${x1})` : x1}).`;
       explanation = [
         `Change in y: ${y1 + dy} − (${y1}) = ${dy}.`,
         `Change in x: ${x1 + dx} − (${x1}) = ${dx}.`,
@@ -351,12 +351,12 @@ export function generateExtendedProblem(
         y = r(-8, 8),
         e = a * x + b * y,
         f = c * x + d * y;
-      prompt = `Solve for x in the system: ${a}x + ${b}y = ${e}; ${c}x + ${d}y = ${f}.`;
+      prompt = `Solve for $x$ in the system: ${a}x + ${b}y = ${e}; ${c}x + ${d}y = ${f}.`;
       answer = `${x}`;
       hint =
         b === d
-          ? `Both equations have ${b}y. Subtract one equation from the other to remove y.`
-          : `To remove y, make its coefficients match: multiply the first equation by ${d} and the second by ${b}, then subtract.`;
+          ? `Both equations have ${b}y. Subtract one equation from the other to remove $y$.`
+          : `To remove $y$, make its coefficients match: multiply the first equation by ${d} and the second by ${b}, then subtract.`;
       explanation = [
         `Multiply the first equation by ${d} and the second by ${b}.`,
         `Subtract: (${a * d} − ${b * c})x = ${e * d} − (${b * f}).`,
@@ -395,9 +395,9 @@ export function generateExtendedProblem(
         b = r(1, 8),
         c = r(1, 10),
         x = r(-5, 5);
-      prompt = `If f(x) = ${a}x² + ${b}x + ${c}, what is f(${x})?`;
+      prompt = `If f(x) = ${a}x² + ${b}x + ${c}, what is $f(${x})$?`;
       answer = `${a * x * x + b * x + c}`;
-      hint = `Replace every x with (${x}): f(${x}) = ${a}(${x})² + ${b}(${x}) + ${c}. Square first${x < 0 ? `; (${x})² is positive` : ""}.`;
+      hint = `Replace every $x$ with (${x}): f(${x}) = ${a}(${x})² + ${b}(${x}) + ${c}. Square first${x < 0 ? `; (${x})² is positive` : ""}.`;
       explanation = [
         `f(${x}) = ${a} × (${x})² + ${b} × (${x}) + ${c}.`,
         `${a * x * x} + (${b * x}) + ${c} = ${answer}.`,

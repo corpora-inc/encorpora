@@ -394,7 +394,7 @@ const tables = [
   ["Blue beads", "White beads", "blue beads to white beads in a necklace"],
   ["Laps", "Minutes", "laps run to minutes at a steady pace"],
   ["Tickets", "Cost ($)", "tickets to their cost in dollars"],
-  ["Red paint (L)", "White paint (L)", "red paint to white paint, in liters"],
+  ["Red paint ($L$)", "White paint ($L$)", "red paint to white paint, in liters"],
 ] as const;
 function ratioTableCase(r: Random): Case {
   const context = tables[r(0, tables.length - 1)]!;

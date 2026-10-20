@@ -370,56 +370,56 @@ const oneStepStories: Story[] = [
     form: "add",
     v: "s",
     text: (p, total) =>
-      `A class had some stickers. The teacher added ${p} more, and now the class has ${total} stickers. Let s be the number of stickers the class had at first.`,
+      `A class had some stickers. The teacher added ${p} more, and now the class has ${total} stickers. Let $s$ be the number of stickers the class had at first.`,
   },
   {
     key: "water",
     form: "add",
     v: "d",
     text: (p, total) =>
-      `Rain raised the water in a barrel by ${p} centimeters. The water is now ${total} centimeters deep. Let d be the depth before the rain, in centimeters.`,
+      `Rain raised the water in a barrel by ${p} centimeters. The water is now ${total} centimeters deep. Let $d$ be the depth before the rain, in centimeters.`,
   },
   {
     key: "muffins",
     form: "sub",
     v: "m",
     text: (p, left) =>
-      `A bakery sold ${p} muffins in the morning and had ${left} muffins left. Let m be the number of muffins the bakery had at the start.`,
+      `A bakery sold ${p} muffins in the morning and had ${left} muffins left. Let $m$ be the number of muffins the bakery had at the start.`,
   },
   {
     key: "ribbon",
     form: "sub",
     v: "r",
     text: (p, left) =>
-      `A ${p}-centimeter piece was cut from a ribbon, leaving ${left} centimeters. Let r be the ribbon's original length, in centimeters.`,
+      `A ${p}-centimeter piece was cut from a ribbon, leaving ${left} centimeters. Let $r$ be the ribbon's original length, in centimeters.`,
   },
   {
     key: "tickets",
     form: "mul",
     v: "t",
     text: (p, total) =>
-      `Museum tickets cost ${p} dollars each. A class paid ${total} dollars for tickets. Let t be the number of tickets the class bought.`,
+      `Museum tickets cost ${p} dollars each. A class paid ${total} dollars for tickets. Let $t$ be the number of tickets the class bought.`,
   },
   {
     key: "chairs",
     form: "mul",
     v: "r",
     text: (p, total) =>
-      `A hall has ${total} chairs set out in rows of ${p}. Let r be the number of rows.`,
+      `A hall has ${total} chairs set out in rows of ${p}. Let $r$ be the number of rows.`,
   },
   {
     key: "pencils",
     form: "div",
     v: "n",
     text: (p, each) =>
-      `A box of pencils is shared equally among ${p} students, and each student gets ${each} pencils. Let n be the number of pencils in the box.`,
+      `A box of pencils is shared equally among ${p} students, and each student gets ${each} pencils. Let $n$ be the number of pencils in the box.`,
   },
   {
     key: "rope",
     form: "div",
     v: "L",
     text: (p, each) =>
-      `A rope is cut into ${p} pieces of equal length. Each piece is ${each} meters long. Let L be the length of the rope, in meters.`,
+      `A rope is cut into ${p} pieces of equal length. Each piece is ${each} meters long. Let $L$ be the length of the rope, in meters.`,
   },
 ];
 
@@ -560,30 +560,30 @@ function balanceCase(r: Random, twoStep: boolean): Case {
   };
   const prompt =
     groups > 1
-      ? `The balance is level. The left pan holds ${groups} identical bags, and each bag holds one x block and ${units} ${units === 1 ? "cube" : "cubes"}. The right pan holds ${right} cubes. Each cube weighs 1 gram. How many grams does one x block weigh?`
-      : `The balance is level. Every block labeled x has the same weight, and each small cube weighs 1 gram. How many grams does one x block weigh?`;
+      ? `The balance is level. The left pan holds ${groups} identical bags, and each bag holds one $x$ block and ${units} ${units === 1 ? "cube" : "cubes"}. The right pan holds ${right} cubes. Each cube weighs 1 gram. How many grams does one $x$ block weigh?`
+      : `The balance is level. Every block labeled $x$ has the same weight, and each small cube weighs 1 gram. How many grams does one $x$ block weigh?`;
   const cubes = (n: number) => `${n} ${n === 1 ? "cube" : "cubes"}`;
   const explanation: string[] = [];
   let hint: string;
   if (form === "add") {
     explanation.push(
-      `The left pan holds one x block and ${cubes(units)}; the right pan holds ${cubes(right)}. Level pans mean equal weights: x + ${units} = ${right}.`,
+      `The left pan holds one $x$ block and ${cubes(units)}; the right pan holds ${cubes(right)}. Level pans mean equal weights: x + ${units} = ${right}.`,
       `Remove ${cubes(units)} from each pan. Equal weights taken from both pans keep the balance level: x = ${right} − ${units} = ${x}.`,
       `Check: ${x} + ${units} = ${right}.`,
     );
-    hint = `Take the same number of cubes off both pans until the x block is alone.`;
+    hint = `Take the same number of cubes off both pans until the $x$ block is alone.`;
   } else if (form === "mul") {
     explanation.push(
-      `The left pan holds ${blocks} x blocks; the right pan holds ${cubes(right)}. Level pans mean equal weights: ${blocks}x = ${right}.`,
-      `Split each pan into ${blocks} equal groups. One group on the left is one x block, and it balances one group on the right: x = ${right} ÷ ${blocks} = ${x}.`,
+      `The left pan holds ${blocks} $x$ blocks; the right pan holds ${cubes(right)}. Level pans mean equal weights: ${blocks}x = ${right}.`,
+      `Split each pan into ${blocks} equal groups. One group on the left is one $x$ block, and it balances one group on the right: x = ${right} ÷ ${blocks} = ${x}.`,
       `Check: ${blocks} × ${x} = ${right}.`,
     );
-    hint = `Split both pans into ${blocks} equal groups, one x block in each group on the left.`;
+    hint = `Split both pans into ${blocks} equal groups, one $x$ block in each group on the left.`;
   } else if (form === "plain") {
     explanation.push(
-      `The left pan holds ${blocks} x blocks and ${cubes(units)}; the right pan holds ${cubes(right)}. Level pans mean equal weights: ${blocks}x + ${units} = ${right}.`,
+      `The left pan holds ${blocks} $x$ blocks and ${cubes(units)}; the right pan holds ${cubes(right)}. Level pans mean equal weights: ${blocks}x + ${units} = ${right}.`,
       `Remove ${cubes(units)} from each pan. The balance stays level: ${blocks}x = ${right} − ${units} = ${right - units}.`,
-      `Split each pan into ${blocks} equal groups. One x block balances one group: x = ${right - units} ÷ ${blocks} = ${x}.`,
+      `Split each pan into ${blocks} equal groups. One $x$ block balances one group: x = ${right - units} ÷ ${blocks} = ${x}.`,
       `Check: ${blocks} × ${x} + ${units} = ${right}.`,
     );
     hint = `First remove the loose cubes from both pans. Then split both pans into ${blocks} equal groups.`;
@@ -601,7 +601,7 @@ function balanceCase(r: Random, twoStep: boolean): Case {
     prompt,
     figure,
     kind: "number",
-    label: "Weight of one x block, in grams",
+    label: "Weight of one $x$ block, in grams",
     answer: String(x),
     explanation,
     hint,
@@ -741,7 +741,7 @@ function twoStepStory(r: Random): TwoStepStory {
       model: "plain",
       v: "m",
       story: `A gym charges a ${fee}-dollar sign-up fee plus ${rate} dollars per month. Ravi has paid ${rate * x + fee} dollars in all.`,
-      define: "Let m be the number of months Ravi has paid for.",
+      define: "Let $m$ be the number of months Ravi has paid for.",
       question: "For how many months has Ravi paid?",
       label: "Number of months",
       unit: "months",
@@ -749,7 +749,7 @@ function twoStepStory(r: Random): TwoStepStory {
       c: q(fee),
       r: q(rate * x + fee),
       x,
-      relation: `The total paid is ${rate} dollars for each of m months plus the ${fee}-dollar fee`,
+      relation: `The total paid is ${rate} dollars for each of $m$ months plus the ${fee}-dollar fee`,
       mode: "whole",
       pMeaning: `${rate} dollars is paid once for each month`,
       cMeaning: `the ${fee}-dollar fee is paid once`,
@@ -764,7 +764,7 @@ function twoStepStory(r: Random): TwoStepStory {
       model: "plain",
       v: "w",
       story: `Mia has ${saved} dollars saved and adds ${rate} dollars each week. She wants to have ${saved + rate * x} dollars.`,
-      define: "Let w be the number of weeks until Mia has that amount.",
+      define: "Let $w$ be the number of weeks until Mia has that amount.",
       question: `After how many weeks will Mia have exactly ${saved + rate * x} dollars?`,
       label: "Number of weeks",
       unit: "weeks",
@@ -772,7 +772,7 @@ function twoStepStory(r: Random): TwoStepStory {
       c: q(saved),
       r: q(saved + rate * x),
       x,
-      relation: `The amount saved is ${rate} dollars for each of w weeks plus the ${saved} dollars already saved`,
+      relation: `The amount saved is ${rate} dollars for each of $w$ weeks plus the ${saved} dollars already saved`,
       mode: "whole",
       pMeaning: `${rate} dollars is added once for each week`,
       cMeaning: `the ${saved} dollars are already saved at the start`,
@@ -788,7 +788,7 @@ function twoStepStory(r: Random): TwoStepStory {
       model: "plain",
       v: "d",
       story: `A taxi ride costs ${dollars(start)} to start plus ${dollars(rate)} for each mile. Ana's ride cost ${dollars(total)}.`,
-      define: "Let d be the number of miles Ana rode.",
+      define: "Let $d$ be the number of miles Ana rode.",
       question: "How many miles did Ana ride?",
       label: "Number of miles",
       unit: "miles",
@@ -796,7 +796,7 @@ function twoStepStory(r: Random): TwoStepStory {
       c: q(start, 100),
       r: q(total, 100),
       x,
-      relation: `The cost is ${dollars(rate)} for each of d miles plus the starting charge of ${dollars(start)}`,
+      relation: `The cost is ${dollars(rate)} for each of $d$ miles plus the starting charge of ${dollars(start)}`,
       mode: "decimal",
       pMeaning: `${dollars(rate)} is charged once for each mile`,
       cMeaning: `the starting charge of ${dollars(start)} is paid once`,
@@ -812,7 +812,7 @@ function twoStepStory(r: Random): TwoStepStory {
       model: "decreasing",
       v: "t",
       story: `A tank holds ${full} liters of water. It drains ${rate} liters each minute until it holds ${left} liters.`,
-      define: "Let t be the number of minutes the tank drains.",
+      define: "Let $t$ be the number of minutes the tank drains.",
       question: `After how many minutes does the tank hold ${left} liters?`,
       label: "Number of minutes",
       unit: "minutes",
@@ -820,7 +820,7 @@ function twoStepStory(r: Random): TwoStepStory {
       c: q(full),
       r: q(left),
       x,
-      relation: `The water left is the ${full} liters at the start minus ${rate} liters for each of t minutes`,
+      relation: `The water left is the ${full} liters at the start minus ${rate} liters for each of $t$ minutes`,
       mode: "whole",
       pMeaning: `${rate} liters drain out once for each minute`,
       cMeaning: `the tank starts with ${full} liters`,
@@ -835,7 +835,7 @@ function twoStepStory(r: Random): TwoStepStory {
       model: "grouped",
       v: "c",
       story: `Each of ${friends} friends buys one movie ticket and one ${snack}-dollar snack. Together they spend ${friends * (x + snack)} dollars.`,
-      define: "Let c be the cost of one ticket, in dollars.",
+      define: "Let $c$ be the cost of one ticket, in dollars.",
       question: "What does one ticket cost, in dollars?",
       label: "Cost of one ticket, in dollars",
       unit: "dollars",
@@ -859,7 +859,7 @@ function twoStepStory(r: Random): TwoStepStory {
       model: "grouped",
       v: "w",
       story: `A rectangle has a perimeter of ${2 * (x + length)} centimeters. Its length is ${length} centimeters.`,
-      define: "Let w be the rectangle's width, in centimeters.",
+      define: "Let $w$ be the rectangle's width, in centimeters.",
       question: "What is the rectangle's width, in centimeters?",
       label: "Width, in centimeters",
       unit: "centimeters",
@@ -882,7 +882,7 @@ function twoStepStory(r: Random): TwoStepStory {
     model: "grouped-minus",
     v: "s",
     story: `In a sale, every shirt is ${off} dollars off its regular price. Jo buys ${shirts} shirts at the sale price and pays ${shirts * (x - off)} dollars.`,
-    define: "Let s be the regular price of one shirt, in dollars.",
+    define: "Let $s$ be the regular price of one shirt, in dollars.",
     question: "What is the regular price of one shirt, in dollars?",
     label: "Regular price, in dollars",
     unit: "dollars",
@@ -1098,7 +1098,7 @@ const conditions: Condition[] = [
     low: 40,
     high: 54,
     text: (c) =>
-      `A ride admits only riders taller than ${c} inches. Let h be the height of a rider the ride admits, in inches.`,
+      `A ride admits only riders taller than ${c} inches. Let $h$ be the height of a rider the ride admits, in inches.`,
   },
   {
     key: "shipping",
@@ -1108,17 +1108,17 @@ const conditions: Condition[] = [
     low: 20,
     high: 60,
     text: (c) =>
-      `An order ships free only when its total is more than ${c} dollars. Let t be the total of an order that ships free, in dollars.`,
+      `An order ships free only when its total is more than ${c} dollars. Let $t$ be the total of an order that ships free, in dollars.`,
   },
   {
     key: "warm",
-    quote: (c) => `above ${int(c)} °C`,
+    quote: (c) => `above ${int(c)} °$C$`,
     op: ">",
     v: "t",
     low: -9,
     high: 9,
     text: (c) =>
-      `All afternoon the temperature stayed above ${int(c)} °C. Let t be an afternoon temperature, in degrees Celsius.`,
+      `All afternoon the temperature stayed above ${int(c)} °$C$. Let $t$ be an afternoon temperature, in degrees Celsius.`,
   },
   {
     key: "bridge",
@@ -1128,17 +1128,17 @@ const conditions: Condition[] = [
     low: 8,
     high: 20,
     text: (c) =>
-      `A bridge allows only trucks that weigh less than ${c} tons. Let w be the weight of a truck the bridge allows, in tons.`,
+      `A bridge allows only trucks that weigh less than ${c} tons. Let $w$ be the weight of a truck the bridge allows, in tons.`,
   },
   {
     key: "freezer",
-    quote: (c) => `colder than ${int(c)} °C`,
+    quote: (c) => `colder than ${int(c)} °$C$`,
     op: "<",
     v: "t",
     low: -20,
     high: -5,
     text: (c) =>
-      `A freezer must stay colder than ${int(c)} °C. Let t be an allowed freezer temperature, in degrees Celsius.`,
+      `A freezer must stay colder than ${int(c)} °$C$. Let $t$ be an allowed freezer temperature, in degrees Celsius.`,
   },
   {
     key: "bus",
@@ -1158,7 +1158,7 @@ const conditions: Condition[] = [
     low: 4,
     high: 11,
     text: (c) =>
-      `A team needs at least ${c} players to start a game. Let p be the number of players on a team that can start.`,
+      `A team needs at least ${c} players to start a game. Let $p$ be the number of players on a team that can start.`,
   },
   {
     key: "pass",
@@ -1168,7 +1168,7 @@ const conditions: Condition[] = [
     low: 60,
     high: 80,
     text: (c) =>
-      `A test is passed with a score of ${c} points or more. Let s be a passing score, in points.`,
+      `A test is passed with a score of ${c} points or more. Let $s$ be a passing score, in points.`,
   },
   {
     key: "elevator",
@@ -1178,7 +1178,7 @@ const conditions: Condition[] = [
     low: 8,
     high: 16,
     text: (c) =>
-      `An elevator may carry at most ${c} people. Let n be the number of people on the elevator during a trip.`,
+      `An elevator may carry at most ${c} people. Let $n$ be the number of people on the elevator during a trip.`,
   },
   {
     key: "bag",
@@ -1188,7 +1188,7 @@ const conditions: Condition[] = [
     low: 7,
     high: 23,
     text: (c) =>
-      `A carry-on bag may weigh no more than ${c} kilograms. Let w be the weight of an allowed bag, in kilograms.`,
+      `A carry-on bag may weigh no more than ${c} kilograms. Let $w$ be the weight of an allowed bag, in kilograms.`,
   },
 ];
 
@@ -1460,7 +1460,7 @@ function solutionSetCase(r: Random): Case {
       `In the list ${list(correctValues)}, every number is ${words[op]} ${int(c)}, so each one is a solution.`,
       `Every other list contains a number that makes x ${op} ${int(c)} false.`,
     ],
-    hint: `Substitute each number for x and ask whether the comparison with ${int(c)} is true. One false value rules out the list.`,
+    hint: `Substitute each number for $x$ and ask whether the comparison with ${int(c)} is true. One false value rules out the list.`,
     tags: [`operator:${op}`, "lists", c < 0 ? "negative" : "nonnegative"],
   };
 }

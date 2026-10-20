@@ -39,7 +39,7 @@ export const probabilityRulesTemplates: readonly TemplateMetadata[] = [
     skillId: "probability-addition",
     gradeBand: "9–12",
     description:
-      "Find P(A or B) as P(A) + P(B) − P(A and B), from counts, probabilities or a deck of cards, and solve the rule for the overlap.",
+      "Find $P(A \\text{ or } B)$ as $P(A)$ + $P(B)$ − $P(A \\text{ and } B)$, from counts, probabilities or a deck of cards, and solve the rule for the overlap.",
     ...scenes,
   },
   {
@@ -49,7 +49,7 @@ export const probabilityRulesTemplates: readonly TemplateMetadata[] = [
     skillId: "conditional-probability",
     gradeBand: "9–12",
     description:
-      "Find P(A | B) by restricting the sample space to B: from a two-way table, a Venn diagram, a list of outcomes or P(A and B) ÷ P(B).",
+      "Find $P(A \\mid  B)$ by restricting the sample space to B: from a two-way table, a Venn diagram, a list of outcomes or $P(A \\text{ and } B)$ ÷ $P(B)$.",
     ...scenes,
   },
   {
@@ -59,7 +59,7 @@ export const probabilityRulesTemplates: readonly TemplateMetadata[] = [
     skillId: "probability-multiplication",
     gradeBand: "9–12",
     description:
-      "Find P(A and B) as P(A) × P(B | A) for draws without replacement and two-stage trees, and add the paths that make up an event.",
+      "Find $P(A \\text{ and } B)$ as $P(A) \\times  P(B | A)$ for draws without replacement and two-stage trees, and add the paths that make up an event.",
     ...scenes,
   },
 ];

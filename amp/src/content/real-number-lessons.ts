@@ -10,7 +10,7 @@ export const realNumberLessons: Lesson[] = [
     templateIds: ["classify-real-number", "repeating-decimal-to-fraction"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Decide whether a root, fraction, decimal or multiple of π is rational or irrational.",
+      "Decide whether a root, fraction, decimal or multiple of $\\pi$ is rational or irrational.",
       "Write a repeating decimal as a fraction in simplest form.",
     ],
     sections: [
@@ -18,7 +18,7 @@ export const realNumberLessons: Lesson[] = [
         title: "Rational numbers",
         paragraphs: [
           "This lesson uses fractions, decimals and long division. An integer is a whole number or the opposite of one: …, −2, −1, 0, 1, 2, …. A rational number is a number that can be written as a quotient $\\frac{a}{b}$ of two integers with $b \\neq 0$. Every integer is rational, because $5 = \\frac{5}{1}$ and $-8 = \\frac{-8}{1}$. A terminating decimal is rational too: $0.25 = \\frac{25}{100}$.",
-          "Dividing a by b by long division gives the decimal of $\\frac{a}{b}$. Each remainder is a whole number less than b. If a remainder is 0, the decimal ends. Otherwise there are fewer than b possible remainders, so one of them comes back, and from then on the same digits come back in the same order. So the decimal of a rational number either ends or repeats one block of digits forever.",
+          "Dividing a by $b$ by long division gives the decimal of $\\frac{a}{b}$. Each remainder is a whole number less than $b$. If a remainder is 0, the decimal ends. Otherwise there are fewer than $b$ possible remainders, so one of them comes back, and from then on the same digits come back in the same order. So the decimal of a rational number either ends or repeats one block of digits forever.",
           "A bar over digits marks the block that repeats: $\\frac{7}{9} = 0.777\\ldots = 0.\\overline{7}$ and $\\frac{3}{11} = 0.272727\\ldots = 0.\\overline{27}$.",
         ],
       },
@@ -33,7 +33,7 @@ export const realNumberLessons: Lesson[] = [
       {
         title: "Repeating decimals as fractions",
         paragraphs: [
-          "Every repeating decimal is rational, and a subtraction shows which fraction it is. Call the number x. Multiplying by 10 moves every digit one place to the left. If the repeating block has 2 digits, multiplying by $10^2 = 100$ moves the digits two places, so $100x$ has exactly the same endless tail after the decimal point as x.",
+          "Every repeating decimal is rational, and a subtraction shows which fraction it is. Call the number $x$. Multiplying by 10 moves every digit one place to the left. If the repeating block has 2 digits, multiplying by $10^2 = 100$ moves the digits two places, so $100x$ has exactly the same endless tail after the decimal point as $x$.",
           "For $x = 0.\\overline{27} = 0.272727\\ldots$, $100x = 27.272727\\ldots$. Subtracting cancels the tails: $100x - x = 27$, so $99x = 27$ and $x = \\frac{27}{99} = \\frac{3}{11}$. Check by dividing: $3 \\div 11 = 0.2727\\ldots$.",
           "If a digit comes before the repeating block, first move it to the left of the point. For $x = 0.1\\overline{6} = 0.1666\\ldots$, $10x = 1.666\\ldots$ and $100x = 16.666\\ldots$. Then $100x - 10x = 16 - 1 = 15$, so $90x = 15$ and $x = \\frac{15}{90} = \\frac{1}{6}$.",
         ],
@@ -44,7 +44,7 @@ export const realNumberLessons: Lesson[] = [
       prompt: "Write $0.\\overline{36}$ as a fraction in simplest form.",
       steps: [
         "Let $x = 0.\\overline{36} = 0.363636\\ldots$. The repeating block 36 has two digits.",
-        "Multiply by $10^{2} = 100$: $100x = 36.363636\\ldots$, which has the same tail as x.",
+        "Multiply by $10^{2} = 100$: $100x = 36.363636\\ldots$, which has the same tail as $x$.",
         "Subtract to cancel the tails: $100x - x = 36$, so $99x = 36$.",
         "Divide by 99 and reduce by the common factor 9: $x = \\frac{36}{99} = \\frac{4}{11}$.",
       ],
@@ -63,7 +63,7 @@ export const realNumberLessons: Lesson[] = [
     id: "approximate-roots",
     title: "Approximate square and cube roots",
     summary:
-      "Squares grow as numbers grow, so catching n between two squares catches √n between their roots; repeat with tenths.",
+      "Squares grow as numbers grow, so catching $n$ between two squares catches √n between their roots; repeat with tenths.",
     templateIds: [
       "root-between-integers",
       "root-nearest-tenth",
@@ -78,7 +78,7 @@ export const realNumberLessons: Lesson[] = [
       {
         title: "Squares, cubes and their roots",
         paragraphs: [
-          "This lesson uses multiplication of decimals. The square of a number is the number times itself: $4^2 = 4 \\times 4 = 16$. The square root $\\sqrt{n}$ of a nonnegative number n is the nonnegative number whose square is n, so $\\sqrt{16} = 4$. The cube of a number uses it as a factor three times: $4^3 = 64$. The cube root $\\sqrt[3]{n}$ is the number whose cube is n, so $\\sqrt[3]{64} = 4$.",
+          "This lesson uses multiplication of decimals. The square of a number is the number times itself: $4^2 = 4 \\times 4 = 16$. The square root $\\sqrt{n}$ of a nonnegative number $n$ is the nonnegative number whose square is $n$, so $\\sqrt{16} = 4$. The cube of a number uses it as a factor three times: $4^3 = 64$. The cube root $\\sqrt[3]{n}$ is the number whose cube is $n$, so $\\sqrt[3]{64} = 4$.",
           "For nonnegative numbers, a larger number has a larger square and a larger square root; for all numbers, a larger number has a larger cube and a larger cube root. So squares put roots in order. Since $16 < 20 < 25$, $\\sqrt{16} < \\sqrt{20} < \\sqrt{25}$, that is $4 < \\sqrt{20} < 5$. Consecutive whole numbers differ by 1, like 4 and 5.",
         ],
       },
@@ -124,15 +124,15 @@ export const realNumberLessons: Lesson[] = [
     templateIds: ["solve-square-cube-equation"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Find every real solution of $x^2 = p$ for a positive p and of $x^3 = p$ for any p.",
+      "Find every real solution of $x^2 = p$ for a positive $p$ and of $x^3 = p$ for any $p$.",
       "Write solutions that are not whole numbers or fractions with root symbols.",
     ],
     sections: [
       {
         title: "Square roots come in pairs",
         paragraphs: [
-          "This lesson uses multiplication of signed numbers. A solution of an equation is a value of x that makes it true. For $x^2 = 49$ we need numbers whose square is 49. $7^2 = 49$, and $(-7)^2 = (-7)(-7) = 49$ because the product of two negative numbers is positive. So $x^2 = 49$ has two solutions: $x = 7$ or $x = -7$, also written $x = \\pm 7$.",
-          "No other number works: a positive number greater than 7 has a square greater than 49, and a positive number less than 7 has a smaller square; the same is true of their opposites. When p is not a perfect square, write the solutions with the root symbol: $x^2 = 12$ gives $x = \\sqrt{12}$ or $x = -\\sqrt{12}$. The symbol $\\sqrt{12}$ alone means only the positive root. A square is never negative, so $x^2 = -9$ has no real solution.",
+          "This lesson uses multiplication of signed numbers. A solution of an equation is a value of $x$ that makes it true. For $x^2 = 49$ we need numbers whose square is 49. $7^2 = 49$, and $(-7)^2 = (-7)(-7) = 49$ because the product of two negative numbers is positive. So $x^2 = 49$ has two solutions: $x = 7$ or $x = -7$, also written $x = \\pm 7$.",
+          "No other number works: a positive number greater than 7 has a square greater than 49, and a positive number less than 7 has a smaller square; the same is true of their opposites. When $p$ is not a perfect square, write the solutions with the root symbol: $x^2 = 12$ gives $x = \\sqrt{12}$ or $x = -\\sqrt{12}$. The symbol $\\sqrt{12}$ alone means only the positive root. A square is never negative, so $x^2 = -9$ has no real solution.",
         ],
         illustration: "root-solutions",
       },
@@ -140,7 +140,7 @@ export const realNumberLessons: Lesson[] = [
         title: "Exactly one cube root",
         paragraphs: [
           "Cubing keeps the sign: $4^3 = 64$ and $(-4)^3 = (-4)(-4)(-4) = -64$. So $x^3 = 64$ has the single solution $x = 4$, and $x^3 = -64$ has the single solution $x = -4$. A larger number always has a larger cube, so no other number has the same cube.",
-          "When p is not a perfect cube, write $x = \\sqrt[3]{p}$. The equation $x^3 = 20$ has one real solution, $x = \\sqrt[3]{20}$, which is between 2 and 3 because $2^3 = 8$ and $3^3 = 27$.",
+          "When $p$ is not a perfect cube, write $x = \\sqrt[3]{p}$. The equation $x^3 = 20$ has one real solution, $x = \\sqrt[3]{20}$, which is between 2 and 3 because $2^3 = 8$ and $3^3 = 27$.",
         ],
       },
     ],
@@ -188,7 +188,7 @@ export const realNumberLessons: Lesson[] = [
       {
         title: "Scientific notation and standard form",
         paragraphs: [
-          "A number is in scientific notation when it is written as $a \\times 10^{n}$, where the coefficient a is at least 1 and less than 10, and the exponent n is an integer. Standard form is the ordinary way of writing the number with digits and a decimal point.",
+          "A number is in scientific notation when it is written as $a \\times 10^{n}$, where the coefficient $a$ is at least 1 and less than 10, and the exponent $n$ is an integer. Standard form is the ordinary way of writing the number with digits and a decimal point.",
           "To write $3.07 \\times 10^{5}$ in standard form, move the decimal point 5 places to the right and fill the empty places with zeros: 307,000. For $3.07 \\times 10^{-4}$, move it 4 places to the left: 0.000307. To go the other way, move the point until exactly one nonzero digit is to its left and count the places moved: 0.000307 becomes 3.07 after 4 places, so $0.000307 = 3.07 \\times 10^{-4}$.",
           "Numbers of 10 or more have positive exponents; numbers between 0 and 1 have negative exponents. A negative exponent makes a small positive number, not a negative number.",
         ],
@@ -234,7 +234,7 @@ export const realNumberLessons: Lesson[] = [
       {
         title: "Multiply and divide",
         paragraphs: [
-          "This lesson uses decimal arithmetic and scientific notation: $a \\times 10^{n}$ with a at least 1 and less than 10 and n an integer. Factors can be multiplied in any order and grouping, so $(3 \\times 10^{4}) \\times (4 \\times 10^{6}) = (3 \\times 4) \\times (10^{4} \\times 10^{6})$. Multiplying powers of 10 adds exponents: $10^{4} \\times 10^{6}$ has $4 + 6 = 10$ factors of 10. The product is $12 \\times 10^{10}$.",
+          "This lesson uses decimal arithmetic and scientific notation: $a \\times 10^{n}$ with a at least 1 and less than 10 and $n$ an integer. Factors can be multiplied in any order and grouping, so $(3 \\times 10^{4}) \\times (4 \\times 10^{6}) = (3 \\times 4) \\times (10^{4} \\times 10^{6})$. Multiplying powers of 10 adds exponents: $10^{4} \\times 10^{6}$ has $4 + 6 = 10$ factors of 10. The product is $12 \\times 10^{10}$.",
           "The coefficient 12 is not less than 10, so rewrite it: $12 = 1.2 \\times 10^{1}$, and $12 \\times 10^{10} = 1.2 \\times 10^{11}$. Division works the same way with subtraction: $(8 \\times 10^{9}) \\div (2 \\times 10^{3}) = 4 \\times 10^{6}$. When the coefficient quotient is less than 1, as in $(2 \\times 10^{9}) \\div (8 \\times 10^{3}) = 0.25 \\times 10^{6}$, rewrite $0.25 = 2.5 \\times 10^{-1}$ to get $2.5 \\times 10^{5}$.",
         ],
         illustration: "scientific-regroup",
@@ -294,9 +294,9 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       ["repeating block", "The digits under the bar, which repeat forever."],
     ],
     method: [
-      "Call the decimal x and write out a few repetitions.",
-      "Multiply x by powers of 10 so that two copies have the same tail after the point.",
-      "Subtract to cancel the tails, solve for x, and reduce the fraction.",
+      "Call the decimal $x$ and write out a few repetitions.",
+      "Multiply $x$ by powers of 10 so that two copies have the same tail after the point.",
+      "Subtract to cancel the tails, solve for $x$, and reduce the fraction.",
     ],
     watch: "Use 10 raised to the length of the repeating block, not always 10.",
   },
@@ -333,12 +333,12 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   "solve-square-cube-equation": {
     goal: "Find every real solution of $x^2 = p$ or $x^3 = p$.",
     terms: [
-      ["solution", "A value of x that makes the equation true."],
+      ["solution", "A value of $x$ that makes the equation true."],
       ["±", "Both the positive and the negative value."],
     ],
     method: [
       "For $x^2 = p$ with $p > 0$, the solutions are $\\sqrt{p}$ and $-\\sqrt{p}$.",
-      "For $x^3 = p$, the one solution is $\\sqrt[3]{p}$, with the same sign as p.",
+      "For $x^3 = p$, the one solution is $\\sqrt[3]{p}$, with the same sign as $p$.",
       "Simplify a root of a perfect square or cube to a number.",
     ],
     watch: "Squares have two roots; cubes have one.",
@@ -349,7 +349,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       ["standard form", "The number written with digits and a decimal point."],
     ],
     method: [
-      "Move the decimal point n places: right if n is positive, left if negative.",
+      "Move the decimal point $n$ places: right if $n$ is positive, left if negative.",
       "Fill empty places with zeros.",
     ],
     watch: "The exponent counts places moved, not zeros written.",
@@ -359,7 +359,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "scientific notation",
-        "$a \\times 10^{n}$ with a at least 1 and less than 10, n an integer.",
+        "$a \\times 10^{n}$ with a at least 1 and less than 10, $n$ an integer.",
       ],
     ],
     method: [
@@ -398,17 +398,17 @@ export const realNumberPrinciples: Record<string, string> = {
   "repeating-decimal-to-fraction":
     "Multiplying by a power of 10 shifts digits without changing them, so two copies of a repeating decimal with the same tail differ by a whole number.",
   "root-between-integers":
-    "Squares and cubes keep order: if $a^2 < n < b^2$ for nonnegative a and b, then $a < \\sqrt{n} < b$.",
+    "Squares and cubes keep order: if $a^2 < n < b^2$ for nonnegative $a$ and $b$, then $a < \\sqrt{n} < b$.",
   "root-nearest-tenth":
-    "Because squaring keeps order for nonnegative numbers, comparing n with the square of a halfway point shows which side of it $\\sqrt{n}$ lies on.",
+    "Because squaring keeps order for nonnegative numbers, comparing $n$ with the square of a halfway point shows which side of it $\\sqrt{n}$ lies on.",
   "compare-irrational-values":
     "Numbers that lie in different intervals of a number line are ordered by those intervals.",
   "solve-square-cube-equation":
     "A positive number has exactly two real square roots, $\\sqrt{p}$ and $-\\sqrt{p}$; every real number has exactly one real cube root.",
   "scientific-to-standard":
-    "Multiplying by $10^{n}$ moves every digit n places to a larger place value when n is positive and to a smaller one when n is negative.",
+    "Multiplying by $10^{n}$ moves every digit $n$ places to a larger place value when $n$ is positive and to a smaller one when $n$ is negative.",
   "standard-to-scientific":
-    "Every positive number can be written in exactly one way as $a \\times 10^{n}$ with $1 \\le a < 10$ and n an integer.",
+    "Every positive number can be written in exactly one way as $a \\times 10^{n}$ with $1 \\le a < 10$ and $n$ an integer.",
   "scientific-times-larger":
     "$\\frac{a \\times 10^{m}}{b \\times 10^{n}} = \\frac{a}{b} \\times 10^{m - n}$.",
   "scientific-operations":

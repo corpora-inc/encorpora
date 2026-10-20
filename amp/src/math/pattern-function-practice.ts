@@ -376,7 +376,7 @@ export const equationContexts: Context[] = [
     key: "car",
     kind: "rate",
     intro: () => "A car travels at a constant speed.",
-    shows: "After t hours it has gone d miles.",
+    shows: "After $t$ hours it has gone $d$ miles.",
     x: "t",
     y: "d",
     xUnit: "hours",
@@ -388,7 +388,7 @@ export const equationContexts: Context[] = [
     key: "pay",
     kind: "rate",
     intro: () => "Sam is paid the same amount for every hour of work.",
-    shows: "For h hours, Sam earns p dollars.",
+    shows: "For $h$ hours, Sam earns $p$ dollars.",
     x: "h",
     y: "p",
     xUnit: "hours",
@@ -400,7 +400,7 @@ export const equationContexts: Context[] = [
     key: "printer",
     kind: "rate",
     intro: () => "A printer prints pages at a constant rate.",
-    shows: "In m minutes it prints p pages.",
+    shows: "In $m$ minutes it prints $p$ pages.",
     x: "m",
     y: "p",
     xUnit: "minutes",
@@ -424,7 +424,7 @@ export const equationContexts: Context[] = [
     key: "ages",
     kind: "offset",
     intro: (c) => `Mia is always ${c} years older than her brother.`,
-    shows: "When her brother is b, Mia is m.",
+    shows: "When her brother is $b$, Mia is $m$.",
     x: "b",
     y: "m",
     xUnit: "years",
@@ -439,8 +439,8 @@ export const equationContexts: Context[] = [
   {
     key: "greenhouse",
     kind: "offset",
-    intro: (c) => `A greenhouse is always ${c} °F warmer than the air outside.`,
-    shows: "When it is a °F outside, the greenhouse is g °F.",
+    intro: (c) => `A greenhouse is always ${c} °$F$ warmer than the air outside.`,
+    shows: "When it is a °$F$ outside, the greenhouse is $g$ °$F$.",
     x: "a",
     y: "g",
     xUnit: "°F",
@@ -555,11 +555,11 @@ function valueCase(r: Random): Case {
       brother = r(2, 12),
       mia = brother + c;
     return {
-      prompt: `Mia is always ${c} years older than her brother, so m = b + ${c}, where m is Mia's age and b is her brother's. How old is her brother when Mia is ${mia}?`,
+      prompt: `Mia is always ${c} years older than her brother, so m = b + ${c}, where $m$ is Mia's age and $b$ is her brother's. How old is her brother when Mia is ${mia}?`,
       answer: brother,
-      hint: `Substitute Mia's age for m: ${mia} = b + ${c}. Undo the + ${c}.`,
+      hint: `Substitute Mia's age for $m$: ${mia} = b + ${c}. Undo the + ${c}.`,
       explanation: [
-        `In m = b + ${c}, Mia's age m depends on her brother's age b. Substitute m = ${mia}: ${mia} = b + ${c}.`,
+        `In m = b + ${c}, Mia's age $m$ depends on her brother's age $b$. Substitute m = ${mia}: ${mia} = b + ${c}.`,
         `Subtract ${c} from both sides: b = ${mia} − ${c} = ${brother}.`,
         `Check: ${brother} + ${c} = ${mia}. Her brother is ${brother} years old.`,
       ],
@@ -578,10 +578,10 @@ function valueCase(r: Random): Case {
   const { x, y } = table;
   const forward = mode === "printer" || mode === "pay";
   const prompt = {
-    printer: `A printer prints ${c} pages per minute, so p = ${c}m for p pages in m minutes. How many pages does it print in ${input} minutes?`,
-    car: `A car travels at a constant speed, so d = ${c}t for d miles in t hours. How many hours does it take to travel ${output} miles?`,
-    tickets: `Each ticket costs ${c} dollars, so c = ${c}n for a cost of c dollars for n tickets. How many tickets cost ${output} dollars?`,
-    pay: `Sam earns ${c} dollars per hour, so p = ${c}h for p dollars earned in h hours. How many dollars does Sam earn in ${input} hours?`,
+    printer: `A printer prints ${c} pages per minute, so p = ${c}m for $p$ pages in $m$ minutes. How many pages does it print in ${input} minutes?`,
+    car: `A car travels at a constant speed, so d = ${c}t for $d$ miles in $t$ hours. How many hours does it take to travel ${output} miles?`,
+    tickets: `Each ticket costs ${c} dollars, so c = ${c}n for a cost of $c$ dollars for $n$ tickets. How many tickets cost ${output} dollars?`,
+    pay: `Sam earns ${c} dollars per hour, so p = ${c}h for $p$ dollars earned in $h$ hours. How many dollars does Sam earn in ${input} hours?`,
   }[mode];
   const unit = {
     printer: "pages",
@@ -625,7 +625,7 @@ function equationText(f: Linear) {
   const slope = m === 1 ? "x" : m === -1 ? "−x" : `${n(m)}x`;
   return f.b === 0
     ? `y = ${slope}`
-    : `y = ${slope} ${f.b < 0 ? "−" : "+"} ${Math.abs(f.b)}`;
+    : `$y = ${slope} ${f.b < 0 ? "−" : "+"} ${Math.abs(f.b)}$`;
 }
 function compareCase(r: Random): Case {
   const [repA, repB] = pick(r, [
@@ -668,12 +668,12 @@ function compareCase(r: Random): Case {
       figure.table = { title: `Function ${name}`, columns: ["x", "y"], rows };
       const [u, v] = [rows[0]!, rows[1]!];
       const lines = [
-        `Function ${name}: from x = ${u.x} to x = ${v.x}, y changes from ${n(u.y)} to ${n(v.y)}. Its rate of change is (${n(v.y)} − ${p(u.y)}) ÷ (${v.x} − ${u.x}) = ${rateText(f)}.`,
+        `Function ${name}: from x = ${u.x} to x = ${v.x}, $y$ changes from ${n(u.y)} to ${n(v.y)}. Its rate of change is (${n(v.y)} − ${p(u.y)}) ÷ (${v.x} − ${u.x}) = ${rateText(f)}.`,
       ];
       lines.push(
         u.x === 0
           ? `The table gives y = ${n(f.b)} at x = 0, so the initial value of function ${name} is ${n(f.b)}.`
-          : `Work back from x = ${u.x} to x = 0, a change of ${u.x} in x: ${n(u.y)} − ${u.x} × ${f.rise < 0 ? `(${rateText(f)})` : rateText(f)} = ${n(f.b)}. The initial value of function ${name} is ${n(f.b)}.`,
+          : `Work back from x = ${u.x} to x = 0, a change of ${u.x} in $x$: ${n(u.y)} − ${u.x} × ${f.rise < 0 ? `(${rateText(f)})` : rateText(f)} = ${n(f.b)}. The initial value of function ${name} is ${n(f.b)}.`,
       );
       return lines;
     }
@@ -685,10 +685,10 @@ function compareCase(r: Random): Case {
     }
     if (rep === "equation")
       return [
-        `Function ${name} is ${equationText(f)}. In $y = mx + b$ form, the rate of change is the coefficient of x, ${rateText(f)}, and the initial value is the constant, ${n(f.b)}.`,
+        `Function ${name} is ${equationText(f)}. In $y = mx + b$ form, the rate of change is the coefficient of $x$, ${rateText(f)}, and the initial value is the constant, ${n(f.b)}.`,
       ];
     return [
-      `Function ${name} has the output ${n(f.b)} at x = 0, its initial value. Its output ${f.rise > 0 ? "increases" : "decreases"} by ${Math.abs(f.rise)} for each increase of 1 in x, so its rate of change is ${rateText(f)}.`,
+      `Function ${name} has the output ${n(f.b)} at x = 0, its initial value. Its output ${f.rise > 0 ? "increases" : "decreases"} by ${Math.abs(f.rise)} for each increase of 1 in $x$, so its rate of change is ${rateText(f)}.`,
     ];
   };
   const explanation = [...describe("A", A, repA), ...describe("B", B, repB)];
@@ -723,17 +723,17 @@ function compareCase(r: Random): Case {
         ? "the graph"
         : rep === "equation"
           ? `the equation ${equationText(f)}`
-          : `a description: its output is ${n(f.b)} when x = 0 and ${f.rise > 0 ? "increases" : "decreases"} by ${Math.abs(f.rise)} for each increase of 1 in x`;
+          : `a description: its output is ${n(f.b)} when x = 0 and ${f.rise > 0 ? "increases" : "decreases"} by ${Math.abs(f.rise)} for each increase of 1 in $x$`;
   const step = (name: "A" | "B", rep: Rep, f: Linear) => {
     if (rep === "table") {
       const [u, v] = figure.table!.rows;
-      return `in the table, divide the change in y by the change in x from x = ${u!.x} to x = ${v!.x}, and find y at x = 0`;
+      return `in the table, divide the change in $y$ by the change in $x$ from x = ${u!.x} to x = ${v!.x}, and find $y$ at x = 0`;
     }
     if (rep === "graph")
       return `on graph ${name}, read where the line crosses the vertical axis and how far it rises from x = 0 to x = 4`;
     if (rep === "equation")
-      return `in ${equationText(f)}, read the coefficient of x and the constant`;
-    return `the description gives the output ${n(f.b)} at x = 0 and the change for each increase of 1 in x`;
+      return `in ${equationText(f)}, read the coefficient of $x$ and the constant`;
+    return `the description gives the output ${n(f.b)} at x = 0 and the change for each increase of 1 in $x$`;
   };
   const hint = `For A, ${step("A", repA, A)}. For B, ${step("B", repB, B)}. Compare the two rates, then the two initial values, as signed numbers.`;
   const prompt = `Function A is given by ${words("A", repA, A)}. Function B is given by ${words("B", repB, B)}. Which statement compares their rates of change and initial values correctly?`;
@@ -788,10 +788,10 @@ function linearRule(r: Random, kind: string): Rule {
     const m = pick(r, [-6, -5, -4, -3, -2, 2, 3, 4, 5, 6, 7, 8]),
       b = pick(r, [-9, -7, -5, -4, -3, -1, 1, 2, 3, 5, 6, 8]);
     return {
-      text: `y = ${n(m)}x ${s(b)}`,
+      text: `$y = ${n(m)}x ${s(b)}$`,
       linear: true,
       kind,
-      note: `y = ${n(m)}x ${s(b)} is already in $y = mx + b$ form, with rate of change ${n(m)}`,
+      note: `$y = ${n(m)}x ${s(b)}$ is already in $y = mx + b$ form, with rate of change ${n(m)}`,
     };
   }
   if (kind === "constant") {
@@ -807,10 +807,10 @@ function linearRule(r: Random, kind: string): Rule {
     const k = r(2, 6),
       h = pick(r, [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]);
     return {
-      text: `y = ${k}(x ${s(h)})`,
+      text: `$y = ${k}(x ${s(h)})$`,
       linear: true,
       kind,
-      note: `y = ${k}(x ${s(h)}) multiplies out to y = ${k}x ${s(k * h)}`,
+      note: `$y = ${k}(x ${s(h)})$ multiplies out to $y = ${k}x ${s(k * h)}$`,
     };
   }
   if (kind === "divided") {
@@ -820,7 +820,7 @@ function linearRule(r: Random, kind: string): Rule {
       text: `y = x/${d} ${s(b)}`,
       linear: true,
       kind,
-      note: `y = x/${d} ${s(b)} has rate of change 1/${d}: y changes by 1/${d} for each increase of 1 in x`,
+      note: `y = x/${d} ${s(b)} has rate of change 1/${d}: $y$ changes by 1/${d} for each increase of 1 in $x$`,
     };
   }
   if (kind === "reversed") {
@@ -836,10 +836,10 @@ function linearRule(r: Random, kind: string): Rule {
   if (kind === "square") {
     const b = pick(r, [-4, -3, -2, -1, 1, 2, 3, 4, 5]);
     return {
-      text: `y = x² ${s(b)}`,
+      text: `$y = x² ${s(b)}$`,
       linear: false,
       kind,
-      note: unequal(`y = x² ${s(b)}`, (x) => x * x + b),
+      note: unequal(`$y = x² ${s(b)}$`, (x) => x * x + b),
     };
   }
   if (kind === "scaled-square") {
@@ -886,12 +886,12 @@ function linearCase(r: Random): Case {
   if (new Set(rules.map((rule) => rule.text)).size !== 4) return linearCase(r);
   const [answer, ...others] = rules;
   const explanation = [
-    "A function is linear when its rule can be written $y = mx + b$. Then y changes by the same amount, m, for each increase of 1 in x, and its graph is a straight line.",
+    "A function is linear when its rule can be written $y = mx + b$. Then $y$ changes by the same amount, $m$, for each increase of 1 in $x$, and its graph is a straight line.",
     `The rule ${answer!.note}, so it ${wantLinear ? "is" : "is not"} linear.`,
     `The other rules ${wantLinear ? "are not linear" : "are linear"}: ${others.map((o) => o.note).join("; ")}.`,
   ];
   return {
-    hint: `Test one rule at x = 1, 2 and 3. For ${others[0]!.text}, find the three values of y: a linear rule changes y by the same amount each time. Then rewrite each other rule in the form $y = mx + b$ if you can.`,
+    hint: `Test one rule at x = 1, 2 and 3. For ${others[0]!.text}, find the three values of $y$: a linear rule changes $y$ by the same amount each time. Then rewrite each other rule in the form $y = mx + b$ if you can.`,
     prompt: wantLinear
       ? "Which equation defines a linear function?"
       : "Which equation defines a function that is not linear?",

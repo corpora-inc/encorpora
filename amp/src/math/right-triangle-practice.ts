@@ -81,7 +81,7 @@ export function generateRightTriangleProblem(
     response = { kind: "number", label: "Missing leg length in centimeters" };
     hint = `The ${c} cm side is the hypotenuse, opposite the right angle. Write x² + ${known}² = ${c}², then subtract ${known}² from ${c}².`;
     explanation = [
-      `Let x be the missing leg length in centimeters. The Pythagorean theorem gives x² + ${known}² = ${c}².`,
+      `Let $x$ be the missing leg length in centimeters. The Pythagorean theorem gives x² + ${known}² = ${c}².`,
       `Square the known lengths: ${known}² = ${known} × ${known} = ${known * known} and ${c}² = ${c} × ${c} = ${c * c}.`,
       `Subtract ${known * known} from both sides: x² = ${c * c} − ${known * known} = ${missing * missing}.`,
       `Since ${missing} × ${missing} = ${missing * missing} and a length is positive, x = ${missing}. The missing leg is ${missing} cm long.`,

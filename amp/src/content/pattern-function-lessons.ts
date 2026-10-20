@@ -11,15 +11,15 @@ const patternWords: Lesson["sections"][number] = {
 const variableWords: Lesson["sections"][number] = {
   title: "Variables that depend on each other",
   paragraphs: [
-    "This lesson uses multiplication, division and the coordinate grid. A variable is a letter that stands for a quantity that can change, such as t for a number of hours or d for a distance in miles. When one quantity is found from the other, the one you choose or know first is the independent variable, and the one that results is the dependent variable. Distance depends on time, so t is independent and d is dependent.",
-    "A table lists matching values: each column pairs a value of the independent variable with the value of the dependent variable that goes with it. A graph shows each pair as a point: move across to the independent value on the horizontal axis, then up to the dependent value on the vertical axis. An equation such as d = 65t states the relationship for every pair at once. The dependent variable stands alone on one side, so the equation reads “d equals 65 times t”.",
+    "This lesson uses multiplication, division and the coordinate grid. A variable is a letter that stands for a quantity that can change, such as $t$ for a number of hours or $d$ for a distance in miles. When one quantity is found from the other, the one you choose or know first is the independent variable, and the one that results is the dependent variable. Distance depends on time, so $t$ is independent and $d$ is dependent.",
+    "A table lists matching values: each column pairs a value of the independent variable with the value of the dependent variable that goes with it. A graph shows each pair as a point: move across to the independent value on the horizontal axis, then up to the dependent value on the vertical axis. An equation such as d = 65t states the relationship for every pair at once. The dependent variable stands alone on one side, so the equation reads “$d$ equals 65 times $t$”.",
   ],
 };
 const functionWords: Lesson["sections"][number] = {
   title: "Rate of change and initial value",
   paragraphs: [
-    "This lesson uses signed numbers, fractions and the coordinate grid. A function is a rule that gives exactly one output y for each input x. The rate of change of a function is how much y changes for each increase of 1 in x. Between two points it is the change in y divided by the change in x: from (2, 5) to (4, 9), the rate is (9 − 5) ÷ (4 − 2) = 2.",
-    "The initial value is the output when x = 0, where the graph crosses the vertical axis. A function is linear when its rate of change is the same between every pair of points; then its graph is a straight line and its rule can be written $y = mx + b$, where m is the rate of change and b is the initial value. In y = 2x + 1, the rate of change is 2 and the initial value is 1.",
+    "This lesson uses signed numbers, fractions and the coordinate grid. A function is a rule that gives exactly one output $y$ for each input $x$. The rate of change of a function is how much $y$ changes for each increase of 1 in $x$. Between two points it is the change in $y$ divided by the change in $x$: from (2, 5) to (4, 9), the rate is (9 − 5) ÷ (4 − 2) = 2.",
+    "The initial value is the output when x = 0, where the graph crosses the vertical axis. A function is linear when its rate of change is the same between every pair of points; then its graph is a straight line and its rule can be written $y = mx + b$, where $m$ is the rate of change and $b$ is the initial value. In y = 2x + 1, the rate of change is 2 and the initial value is 1.",
   ],
 };
 
@@ -115,7 +115,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "related-patterns-relationship",
     title: "Relate two patterns",
     summary:
-      "Pair the terms of two patterns; when B's step is k times A's step and both start at 0, every B-term is k times its A-term.",
+      "Pair the terms of two patterns; when B's step is $k$ times A's step and both start at 0, every B-term is $k$ times its A-term.",
     templateIds: ["related-patterns-relationship"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -174,16 +174,16 @@ export const patternFunctionLessons: Lesson[] = [
         title: "Find what is constant",
         paragraphs: [
           "In the figure, a car travels 65, 130, 195 and 260 miles after 1, 2, 3 and 4 hours. Divide each distance by its time: 65 ÷ 1 = 65, 130 ÷ 2 = 65, 195 ÷ 3 = 65, 260 ÷ 4 = 65. The quotient is the same in every row, so the distance is always 65 times the time: d = 65t. The points lie on a straight line through (0, 0), because no time means no distance.",
-          "Some relationships add instead of multiply. If Mia is always 4 years older than her brother, then her age m is her brother's age b plus 4 in every row: m = b + 4. Test a rule on every row before choosing it. For the car, d = t + 65 gives 1 + 65 = 66 in the first row, not 65, so it is not the rule.",
+          "Some relationships add instead of multiply. If Mia is always 4 years older than her brother, then her age $m$ is her brother's age $b$ plus 4 in every row: m = b + 4. Test a rule on every row before choosing it. For the car, d = t + 65 gives 1 + 65 = 66 in the first row, not 65, so it is not the rule.",
         ],
         illustration: "dependent-variable-graph",
       },
     ],
     workedExample: {
       prompt:
-        "A car travels at a constant speed. After 1, 2, 3 and 4 hours it has traveled 65, 130, 195 and 260 miles. Which equation gives the distance d, in miles, in terms of the time t, in hours?",
+        "A car travels at a constant speed. After 1, 2, 3 and 4 hours it has traveled 65, 130, 195 and 260 miles. Which equation gives the distance $d$, in miles, in terms of the time $t$, in hours?",
       steps: [
-        "The distance depends on the time, so t is the independent variable and d is the dependent variable.",
+        "The distance depends on the time, so $t$ is the independent variable and $d$ is the dependent variable.",
         "Divide each distance by its time: 65 ÷ 1 = 65, 130 ÷ 2 = 65, 195 ÷ 3 = 65 and 260 ÷ 4 = 65.",
         "The distance is always 65 times the time, so d = 65t.",
       ],
@@ -213,16 +213,16 @@ export const patternFunctionLessons: Lesson[] = [
       {
         title: "Substitute, then undo",
         paragraphs: [
-          "To use an equation, replace the variable you know with its value. If you know t in d = 55t, multiply: when t = 4, d = 55 × 4 = 220. The equation then gives the dependent value directly.",
-          "If you know d instead, the equation becomes a question about t: 330 = 55t asks what number times 55 is 330. Division undoes multiplication, so t = 330 ÷ 55 = 6. For an addition rule such as m = b + 3, subtraction undoes addition: when m = 12, b = 12 − 3 = 9. Check by putting the answer back into the equation: 55 × 6 = 330.",
+          "To use an equation, replace the variable you know with its value. If you know $t$ in d = 55t, multiply: when t = 4, d = 55 × 4 = 220. The equation then gives the dependent value directly.",
+          "If you know $d$ instead, the equation becomes a question about $t$: 330 = 55t asks what number times 55 is 330. Division undoes multiplication, so t = 330 ÷ 55 = 6. For an addition rule such as m = b + 3, subtraction undoes addition: when m = 12, b = 12 − 3 = 9. Check by putting the answer back into the equation: 55 × 6 = 330.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A car travels at a constant speed, so d = 55t for d miles in t hours. How many hours does it take to travel 330 miles?",
+        "A car travels at a constant speed, so d = 55t for $d$ miles in $t$ hours. How many hours does it take to travel 330 miles?",
       steps: [
-        "Distance d depends on time t. Substitute d = 330: 330 = 55t.",
+        "Distance $d$ depends on time $t$. Substitute d = 330: 330 = 55t.",
         "Divide both sides by 55: t = 330 ÷ 55 = 6.",
         "Check: 55 × 6 = 330.",
       ],
@@ -230,7 +230,7 @@ export const patternFunctionLessons: Lesson[] = [
       answerUnit: "hours",
     },
     pitfalls: [
-      "Substitute the known value for the right variable: 330 is a distance, so it replaces d, not t.",
+      "Substitute the known value for the right variable: 330 is a distance, so it replaces $d$, not $t$.",
       "Do not multiply when the unknown is already multiplied: 55 × 330 answers a different question.",
       "Check the answer in the original equation before writing the unit.",
     ],
@@ -253,7 +253,7 @@ export const patternFunctionLessons: Lesson[] = [
       {
         title: "One question, four representations",
         paragraphs: [
-          "From an equation $y = mx + b$, read m and b. From a table, divide the change in y by the change in x between two rows; if x = 0 is not listed, work back from a row: the initial value is y minus x times the rate. From a graph, read the initial value where the line crosses the vertical axis and find the rate from two marked points. From a description, the starting amount is the initial value and the change for each 1 of x is the rate.",
+          "From an equation $y = mx + b$, read $m$ and $b$. From a table, divide the change in $y$ by the change in $x$ between two rows; if x = 0 is not listed, work back from a row: the initial value is $y$ minus $x$ times the rate. From a graph, read the initial value where the line crosses the vertical axis and find the rate from two marked points. From a description, the starting amount is the initial value and the change for each 1 of $x$ is the rate.",
           "In the figure, function A is given by the table x = 0, 3, 6, 9 and y = 1, 7, 13, 19. Its rate is (7 − 1) ÷ (3 − 0) = 2 and its initial value is 1. Function B's line passes through (0, 6) and (4, 8): its initial value is 6 and its rate is (8 − 6) ÷ (4 − 0) = 1/2. A has the greater rate of change, and B has the greater initial value. Line A is steeper, but it starts lower.",
         ],
         illustration: "compare-functions-graph",
@@ -261,7 +261,7 @@ export const patternFunctionLessons: Lesson[] = [
       {
         title: "Negative rates",
         paragraphs: [
-          "A negative rate of change means y decreases as x increases. Any negative rate is less than any positive rate, even when its line looks steeper: −3 < 1/2. Compare the signed numbers, not the steepness of the lines.",
+          "A negative rate of change means $y$ decreases as $x$ increases. Any negative rate is less than any positive rate, even when its line looks steeper: −3 < 1/2. Compare the signed numbers, not the steepness of the lines.",
           "Compare each feature separately. One function can have the greater rate of change while the other has the greater initial value, and a function that starts higher can be overtaken by one that grows faster.",
         ],
       },
@@ -280,7 +280,7 @@ export const patternFunctionLessons: Lesson[] = [
     pitfalls: [
       "Compare signed values: a rate of −4 is less than a rate of 1.",
       "Do not read the initial value from the first row of a table unless that row has x = 0.",
-      "When table rows are 2 apart in x, divide the change in y by 2 to get the change for each 1.",
+      "When table rows are 2 apart in $x$, divide the change in $y$ by 2 to get the change for each 1.",
     ],
     parentGuide:
       "Compare two savings plans: one starts with 20 dollars and adds 2 each week, the other starts with 5 and adds 5. Make a short table for each and ask which starts higher, which grows faster, and when the second catches up.",
@@ -294,7 +294,7 @@ export const patternFunctionLessons: Lesson[] = [
     includeGeneratedRepresentation: false,
     objectives: [
       "Recognize linear functions written in forms other than $y = mx + b$, including y = c and y = k(x + h).",
-      "Show that a function is not linear by finding unequal changes in y over equal steps in x.",
+      "Show that a function is not linear by finding unequal changes in $y$ over equal steps in $x$.",
     ],
     sections: [
       functionWords,
@@ -302,15 +302,15 @@ export const patternFunctionLessons: Lesson[] = [
         title: "Equal steps in x, equal changes in y",
         paragraphs: [
           "In the figure, y = 2x + 1 gives 1, 3, 5, 7 at x = 0, 1, 2, 3: each step adds 2, and the points lie on a straight line. The function y = x² gives 0, 1, 4, 9: the changes 1, 3 and 5 grow, and the points bend upward. Its rate of change is not constant, so it is not linear.",
-          "To test a rule, find y at x = 1, 2 and 3. Equal changes are necessary for a linear function; then confirm by rewriting the rule. A rule with x squared, x multiplied by itself, or x in a denominator, as in y = 12/x, is not linear.",
+          "To test a rule, find $y$ at x = 1, 2 and 3. Equal changes are necessary for a linear function; then confirm by rewriting the rule. A rule with $x$ squared, $x$ multiplied by itself, or $x$ in a denominator, as in y = 12/x, is not linear.",
         ],
         illustration: "linear-nonlinear-graph",
       },
       {
         title: "Linear rules in disguise",
         paragraphs: [
-          "Multiply out parentheses: y = 3(x − 2) is y = 3x − 6. Reorder terms: y = 5 − 2x is y = −2x + 5. Dividing x by a number multiplies it by a fraction: y = x/2 − 4 has rate of change 1/2. All three are linear.",
-          "A constant rule such as y = 7 is also linear: it is y = 0x + 7, with rate of change 0, and its graph is a horizontal line. Being linear depends on the rate of change being constant, not on the letter x appearing.",
+          "Multiply out parentheses: y = 3(x − 2) is y = 3x − 6. Reorder terms: y = 5 − 2x is y = −2x + 5. Dividing $x$ by a number multiplies it by a fraction: y = x/2 − 4 has rate of change 1/2. All three are linear.",
+          "A constant rule such as y = 7 is also linear: it is y = 0x + 7, with rate of change 0, and its graph is a horizontal line. Being linear depends on the rate of change being constant, not on the letter $x$ appearing.",
         ],
       },
     ],
@@ -329,7 +329,7 @@ export const patternFunctionLessons: Lesson[] = [
       "A function that always increases is not necessarily linear; check that the increases are equal.",
     ],
     parentGuide:
-      "Make a table for y = 2x + 1 and for y = x × x together for x = 0 to 4. Compare how much y grows at each step, and plot both on squared paper to see which points line up.",
+      "Make a table for y = 2x + 1 and for y = x × x together for x = 0 to 4. Compare how much $y$ grows at each step, and plot both on squared paper to see which points line up.",
   },
 ];
 
@@ -403,8 +403,8 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "compare-function-rates": {
     goal: "Compare the rates of change and initial values of two linear functions.",
     terms: [
-      ["rate of change", "Change in y divided by change in x."],
-      ["initial value", "The value of y when x = 0."],
+      ["rate of change", "Change in $y$ divided by change in $x$."],
+      ["initial value", "The value of $y$ when x = 0."],
     ],
     method: [
       "For each function, find the rate of change from its own representation.",
@@ -420,7 +420,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
     method: [
       "Rewrite each rule: multiply out parentheses and reorder terms.",
       "A rule in the form $y = mx + b$, including y = c, is linear.",
-      "Confirm a nonlinear rule by finding unequal changes in y at x = 1, 2, 3.",
+      "Confirm a nonlinear rule by finding unequal changes in $y$ at x = 1, 2, 3.",
     ],
     watch: "y = 7 is linear, with rate of change 0.",
   },
@@ -430,15 +430,15 @@ export const patternFunctionPrinciples: Record<string, string> = {
   "rule-pattern-term":
     "Each term comes from the one before by the rule, so the nth term is reached by applying the rule n − 1 times to the start.",
   "rule-pattern-feature":
-    "A feature of the start that the step preserves holds for every term: an even step keeps the start's parity, and a step that is a multiple of k keeps the start's remainder after division by k.",
+    "A feature of the start that the step preserves holds for every term: an even step keeps the start's parity, and a step that is a multiple of $k$ keeps the start's remainder after division by $k$.",
   "related-patterns-relationship":
-    "If two patterns start at 0 and B's step is k times A's step, then after any number of steps each B-term is k times its matching A-term, and the pairs lie on a line through (0, 0).",
+    "If two patterns start at 0 and B's step is $k$ times A's step, then after any number of steps each B-term is $k$ times its matching A-term, and the pairs lie on a line through (0, 0).",
   "dependent-variable-equation":
     "An equation states the relationship for every pair: the dependent variable equals the same expression in the independent variable in every row of the table and at every point of the graph.",
   "dependent-variable-value":
     "Substituting a known value turns the equation into a statement about one unknown, which inverse operations solve.",
   "compare-function-rates":
-    "A linear function $y = mx + b$ has rate of change m and initial value b in every representation, so two functions are compared by comparing their m values and their b values.",
+    "A linear function $y = mx + b$ has rate of change $m$ and initial value $b$ in every representation, so two functions are compared by comparing their $m$ values and their $b$ values.",
   "linear-function-choice":
     "A function is linear exactly when its rate of change is constant, that is, when its rule can be written $y = mx + b$.",
 };

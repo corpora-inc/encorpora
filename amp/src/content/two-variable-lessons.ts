@@ -18,14 +18,14 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "One equation per fact",
         paragraphs: [
-          "A theater sold 40 tickets for 380 dollars; adult tickets cost 12 dollars and child tickets 7 dollars. Let a be the adult tickets and c the child tickets. Counting gives a + c = 40, and the money gives 12a + 7c = 380.",
+          "A theater sold 40 tickets for 380 dollars; adult tickets cost 12 dollars and child tickets 7 dollars. Let a be the adult tickets and $c$ the child tickets. Counting gives a + c = 40, and the money gives 12a + 7c = 380.",
           "Substitute c = 40 − a: 12a + 7(40 − a) = 380, so 5a + 280 = 380, 5a = 100 and a = 20. Then c = 40 − 20 = 20. Check: 12 × 20 + 7 × 20 = 380.",
         ],
       },
       {
         title: "Constraints and the feasible region",
         paragraphs: [
-          "A bakery can bake at most 12 boxes a day and wants to take in at least 60 dollars, selling small boxes at 4 dollars and large boxes at 7 dollars. With x small and y large boxes: x + y ≤ 12 and 4x + 7y ≥ 60, with x ≥ 0 and y ≥ 0.",
+          "A bakery can bake at most 12 boxes a day and wants to take in at least 60 dollars, selling small boxes at 4 dollars and large boxes at 7 dollars. With $x$ small and $y$ large boxes: x + y ≤ 12 and 4x + 7y ≥ 60, with x ≥ 0 and y ≥ 0.",
           "Each inequality is true on one side of its boundary line. The combinations that meet every condition are the overlap: the shaded feasible region. (3, 8) is inside it: 3 + 8 = 11 ≤ 12 and 4 × 3 + 7 × 8 = 68 ≥ 60. (8, 2) is not: 4 × 8 + 7 × 2 = 46, less than 60.",
         ],
         illustration: "feasible-bakery",
@@ -64,7 +64,7 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "Boundary, then side",
         paragraphs: [
-          "For y < 2x − 1, first draw the boundary y = 2x − 1. Points on it make y equal to 2x − 1, not less, so they are not solutions: draw the line dashed. For y ≤ 2x − 1 the line is included and drawn solid.",
+          "For y < 2x − 1, first draw the boundary y = 2x − 1. Points on it make $y$ equal to 2x − 1, not less, so they are not solutions: draw the line dashed. For y ≤ 2x − 1 the line is included and drawn solid.",
           "Then test one point off the line. (0, 0) gives 0 < 2 × 0 − 1 = −1, which is false, so (0, 0) is not a solution and the other side is shaded. Every point on one side gives the same answer, because the line is where the two sides change places.",
         ],
         illustration: "half-plane-test-point",
@@ -91,7 +91,7 @@ export const twoVariableLessons: Lesson[] = [
       "Do not use (0, 0) as the test point when it lies on the boundary.",
     ],
     parentGuide:
-      "Draw a line on graph paper, pick points on both sides and on the line, and sort them as solutions or not for “y is greater than” and “y is at most”. Ask which points change when the line becomes dashed.",
+      "Draw a line on graph paper, pick points on both sides and on the line, and sort them as solutions or not for “$y$ is greater than” and “$y$ is at most”. Ask which points change when the line becomes dashed.",
   },
   {
     id: "literal-equations",
@@ -108,15 +108,15 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "Treat the letter as a fixed number",
         paragraphs: [
-          "To solve kx + 7 = 19 for x, subtract 7: kx = 12. Dividing by k is allowed only when k ≠ 0, so x = 12/k for every k ≠ 0. When k = 0 the left side is 7 for every x, never 19, so there is no solution.",
-          "Inequalities need the sign of the letter. If k < 0, then kx + 4 ≥ 10 gives kx ≥ 6 and, dividing by the negative k, x ≤ 6/k. With k = −2: x ≤ −3, and indeed x = −4 gives 8 + 4 = 12 ≥ 10.",
+          "To solve kx + 7 = 19 for $x$, subtract 7: kx = 12. Dividing by $k$ is allowed only when k ≠ 0, so x = 12/k for every k ≠ 0. When k = 0 the left side is 7 for every $x$, never 19, so there is no solution.",
+          "Inequalities need the sign of the letter. If k < 0, then kx + 4 ≥ 10 gives kx ≥ 6 and, dividing by the negative $k$, x ≤ 6/k. With k = −2: x ≤ −3, and indeed x = −4 gives 8 + 4 = 12 ≥ 10.",
         ],
       },
       {
         title: "No solution or infinitely many",
         paragraphs: [
-          "Collecting the x-terms of ax + 4 = 3x + 9 gives (a − 3)x = 5. If a = 3 the left side is 0 for every x while the right side is 5: no solution. For any other a, x = 5/(a − 3).",
-          "2(x + 3) = 2x + c becomes 2x + 6 = 2x + c. The x-terms always match, so if c = 6 the two sides are identical and every x is a solution; otherwise there is none. For a system, kx + 2y = 5 and 3x + y = 1 have no solution when the lines are parallel and different: k = 6 makes the left side twice 3x + y while 5 ≠ 2 × 1.",
+          "Collecting the $x$-terms of ax + 4 = 3x + 9 gives (a − 3)x = 5. If a = 3 the left side is 0 for every $x$ while the right side is 5: no solution. For any other $a, x = 5/(a - 3)$.",
+          "2(x + 3) = 2x + c becomes 2x + 6 = 2x + c. The $x$-terms always match, so if c = 6 the two sides are identical and every $x$ is a solution; otherwise there is none. For a system, kx + 2y = 5 and 3x + y = 1 have no solution when the lines are parallel and different: k = 6 makes the left side twice 3x + y while 5 ≠ 2 × 1.",
         ],
       },
     ],
@@ -125,17 +125,17 @@ export const twoVariableLessons: Lesson[] = [
         "For what value of a does the equation ax + 4 = 3x + 9 have no solution?",
       steps: [
         "Subtract 3x and 4 from both sides: (a − 3)x = 5.",
-        "If a = 3, the left side is 0 · x, which is 0 for every x, while the right side is 5: no x works.",
+        "If a = 3, the left side is $0 · x$, which is 0 for every $x$, while the right side is 5: no $x$ works.",
       ],
       answer: "3",
     },
     pitfalls: [
       "Do not divide by a letter without saying it is nonzero.",
       "Dividing an inequality by a negative letter reverses it.",
-      "No solution needs equal x-coefficients and different constants; equal constants too give infinitely many.",
+      "No solution needs equal $x$-coefficients and different constants; equal constants too give infinitely many.",
     ],
     parentGuide:
-      "Solve one equation together with a number, such as 3x + 7 = 19, then replace the 3 with k and solve again, saying at each step what the step needs (k ≠ 0). Ask what happens when k is 0.",
+      "Solve one equation together with a number, such as 3x + 7 = 19, then replace the 3 with $k$ and solve again, saying at each step what the step needs (k ≠ 0). Ask what happens when $k$ is 0.",
   },
   {
     id: "equation-reasoning",
@@ -197,24 +197,24 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "Stack and add",
         paragraphs: [
-          "Write x + 2y = 7 above 3x − 2y = 5. The y-terms are opposites, so adding the left sides and the right sides gives 4x + 0y = 12, that is 4x = 12, and x = 3. Then x + 2y = 7 gives 2y = 4 and y = 2.",
-          "If no terms are opposites, multiply an equation first, both of its sides: to eliminate y from 2x + 3y = 13 and x − y = 4, add 3 times the second, 3x − 3y = 12, to the first: 5x = 25.",
+          "Write x + 2y = 7 above 3x − 2y = 5. The $y$-terms are opposites, so adding the left sides and the right sides gives 4x + 0y = 12, that is 4x = 12, and x = 3. Then x + 2y = 7 gives 2y = 4 and y = 2.",
+          "If no terms are opposites, multiply an equation first, both of its sides: to eliminate $y$ from 2x + 3y = 13 and x − y = 4, add 3 times the second, 3x − 3y = 12, to the first: 5x = 25.",
         ],
         illustration: "elimination-stacked",
       },
       {
         title: "No solution gained or lost",
         paragraphs: [
-          "If (x, y) makes both equations true, adding equal amounts to equal amounts keeps them equal, so it makes the sum true. Back the other way, subtracting the first equation from the sum gives the second. So the systems {x + 2y = 7, 3x − 2y = 5} and {x + 2y = 7, 4x = 12} have the same solutions.",
+          "If $(x, y)$ makes both equations true, adding equal amounts to equal amounts keeps them equal, so it makes the sum true. Back the other way, subtracting the first equation from the sum gives the second. So the systems {$x + 2y = 7$, 3x − 2y = 5} and {$x + 2y = 7$, 4x = 12} have the same solutions.",
           "On a graph, the three lines x + 2y = 7, 3x − 2y = 5 and x = 3 all pass through the same point, (3, 2). The new line is different, but it crosses at the same solution.",
         ],
         illustration: "elimination-lines",
       },
     ],
     workedExample: {
-      prompt: "Add x + 2y = 7 and 3x − 2y = 5. What is x?",
+      prompt: "Add x + 2y = 7 and 3x − 2y = 5. What is $x$?",
       steps: [
-        "The y-terms cancel: 2y + (−2y) = 0. The sum is 4x = 12.",
+        "The $y$-terms cancel: 2y + (−2y) = 0. The sum is 4x = 12.",
         "Divide by 4: x = 3.",
       ],
       answer: "3",
@@ -222,10 +222,10 @@ export const twoVariableLessons: Lesson[] = [
     pitfalls: [
       "Multiply every term of an equation, its right side too.",
       "Keep one original equation beside the sum; the sum alone has infinitely many solutions.",
-      "Add like terms in columns; do not add an x-term to a y-term.",
+      "Add like terms in columns; do not add an $x$-term to a $y$-term.",
     ],
     parentGuide:
-      "Write two equations whose y-terms are opposites, add them together, and check that the original solution also makes the sum true. Then ask why adding can never lose a solution.",
+      "Write two equations whose $y$-terms are opposites, add them together, and check that the original solution also makes the sum true. Then ask why adding can never lose a solution.",
   },
 ];
 
@@ -258,12 +258,12 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
       "Substitute a shaded point to choose the direction of the sign.",
     ],
     watch:
-      "Test a point instead of guessing the side from the sign: y > … is above, but 2x + 3y > … depends on the coefficients.",
+      "Test a point instead of guessing the side from the sign: $y$ > … is above, but 2x + 3y > … depends on the coefficients.",
   },
   "inequality-solution-point": {
     goal: "Choose the point that solves a two-variable inequality.",
     method: [
-      "Substitute each point, x first, into the inequality.",
+      "Substitute each point, $x$ first, into the inequality.",
       "Keep the point that makes it true; on the boundary, only ≤ and ≥ include it.",
     ],
     watch: "A point on a dashed boundary is not a solution.",
@@ -271,7 +271,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
   "literal-equation-solve": {
     goal: "Solve a linear equation or inequality with a letter as a coefficient.",
     method: [
-      "Treat the letter as a fixed number and isolate the x-term with inverse operations.",
+      "Treat the letter as a fixed number and isolate the $x$-term with inverse operations.",
       "Divide by the coefficient, using the stated condition that it is not 0.",
       "For an inequality, reverse the sign when the letter you divide by is negative.",
     ],
@@ -281,12 +281,12 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
   "parameter-solution-count": {
     goal: "Find the parameter value that gives no solution or infinitely many.",
     method: [
-      "Collect the x-terms on one side and the constants on the other.",
-      "No solution: the x-coefficient is 0 and the constants differ. Infinitely many: both sides are identical.",
+      "Collect the $x$-terms on one side and the constants on the other.",
+      "No solution: the $x$-coefficient is 0 and the constants differ. Infinitely many: both sides are identical.",
       "For a system: no solution when the lines are parallel and different.",
     ],
     watch:
-      "Equal x-coefficients alone are not enough: compare the constants too.",
+      "Equal $x$-coefficients alone are not enough: compare the constants too.",
   },
   "equation-step-property": {
     goal: "Name the reason for a step in solving an equation, or find the wrong step.",
@@ -321,7 +321,7 @@ export const twoVariablePrinciples: Record<string, string> = {
   "literal-equation-solve":
     "Properties of equality hold for every value of a letter coefficient, except that division requires it to be nonzero and dividing an inequality by a negative reverses it.",
   "parameter-solution-count":
-    "A linear equation ax = b has no solution when a = 0 and b ≠ 0, and every x is a solution when a = 0 and b = 0.",
+    "A linear equation ax = b has no solution when a = 0 and b ≠ 0, and every $x$ is a solution when a = 0 and b = 0.",
   "equation-step-property":
     "Applying the same operation to both sides, or rewriting one side as an equal expression, produces an equation with exactly the same solutions.",
   "elimination-equivalent":

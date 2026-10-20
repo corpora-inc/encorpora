@@ -178,7 +178,7 @@ function countingCase(r: Random): Case {
       n = digits ? 10 : r(3, 9),
       symbols = digits
         ? "one of the 10 digits 0 through 9, and digits may repeat"
-        : `one of the ${n} letters A through ${String.fromCharCode(64 + n)}, and letters may repeat`;
+        : `one of the ${n} letters $A$ through ${String.fromCharCode(64 + n)}, and letters may repeat`;
     const total = n ** k;
     return {
       prompt: `A code has ${k} positions. Each position is ${symbols}. How many different codes are possible?`,

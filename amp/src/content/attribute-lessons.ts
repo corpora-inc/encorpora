@@ -117,7 +117,7 @@ export const attributeLessons: Lesson[] = [
       {
         title: "Grams on a balance",
         paragraphs: [
-          "Mass is measured in grams (g) and kilograms (kg); 1 kg is 1000 g. When a balance is level, both pans hold the same mass.",
+          "Mass is measured in grams ($g$) and kilograms (kg); 1 kg is 1000 g. When a balance is level, both pans hold the same mass.",
           "So an object balanced by 200 g, 50 g and 5 g has a mass of 200 + 50 + 5 = 255 g.",
         ],
         illustration: "balance-grams",
@@ -125,7 +125,7 @@ export const attributeLessons: Lesson[] = [
       {
         title: "Liters on a scale",
         paragraphs: [
-          "Liquid volume is measured in liters (L). A container's scale may not mark every liter. Find what one tick is worth: divide the jump between two labels by the number of spaces between them.",
+          "Liquid volume is measured in liters ($L$). A container's scale may not mark every liter. Find what one tick is worth: divide the jump between two labels by the number of spaces between them.",
           "On a scale labeled 0, 10, 20, 30 with 5 spaces between labels, each tick is 10 ÷ 5 = 2 liters. Water 3 ticks above 20 is 20 + 3 × 2 = 26 liters.",
         ],
         illustration: "liquid-scale-ticks",
@@ -174,8 +174,8 @@ export const attributeMethods: Record<string, ProblemMethod> = {
     goal: "Decide which container holds more after pouring one into the other.",
     terms: [["Capacity", "How much a container can hold."]],
     method: [
-      "Look at container B after all of the water from A is poured in.",
-      "Room left: B holds more. Spilled: A holds more. Exactly full: the same.",
+      "Look at container $B$ after all of the water from $A$ is poured in.",
+      "Room left: $B$ holds more. Spilled: A holds more. Exactly full: the same.",
     ],
     watch: "A taller container does not always hold more.",
   },
@@ -208,7 +208,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "read-liquid-volume": {
     goal: "Read a liquid volume in liters on a container scale.",
-    terms: [["Liter (L)", "A unit of liquid volume."]],
+    terms: [["Liter ($L$)", "A unit of liquid volume."]],
     method: [
       "Find a tick's value: the jump between labels ÷ the spaces between them.",
       "Start at the label below the water and count on by the tick value.",
@@ -217,7 +217,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "balance-mass": {
     goal: "Find an object's mass from the standard masses that balance it.",
-    terms: [["Gram (g)", "A unit of mass; 1000 g is 1 kilogram."]],
+    terms: [["Gram ($g$)", "A unit of mass; 1000 g is 1 kilogram."]],
     method: [
       "Check the beam is level: then both pans hold the same mass.",
       "Add the standard masses on the other pan, largest first, in grams.",
@@ -249,7 +249,7 @@ export const attributePrinciples: Record<string, string> = {
   "correct-unit-measure":
     "Every part of the length must be covered by exactly one unit, starting at the end.",
   "order-lengths":
-    "If A is longer than B and B is longer than C, then A is longer than C.",
+    "If $A$ is longer than $B$ and $B$ is longer than $C$, then $A$ is longer than $C$.",
   "read-liquid-volume":
     "Equal spaces on a scale are equal amounts: the gap between labels divided by the spaces gives one tick.",
   "balance-mass": "A level balance means the masses on both pans are equal.",

@@ -4,21 +4,21 @@ import type { ProblemMethod } from "./problem-lessons";
 const equationTerms: Lesson["sections"][number] = {
   title: "Equations, variables and solutions",
   paragraphs: [
-    "This lesson uses addition, subtraction, multiplication and division of whole numbers, decimals and fractions. An equation is a statement that two expressions have the same value; the equals sign = separates them. A variable is a letter, such as x or n, that stands for a number we do not yet know. A number written next to a letter multiplies it: 4x means 4 × x.",
+    "This lesson uses addition, subtraction, multiplication and division of whole numbers, decimals and fractions. An equation is a statement that two expressions have the same value; the equals sign = separates them. A variable is a letter, such as $x$ or $n$, that stands for a number we do not yet know. A number written next to a letter multiplies it: 4x means 4 × x.",
     "A solution of an equation is a value of the variable that makes the statement true. For x + 3 = 7 the solution is 4, because 4 + 3 = 7 is true; 5 is not a solution, because 5 + 3 = 8. To solve an equation means to find its solution.",
   ],
 };
 const balanceTerms: Lesson["sections"][number] = {
   title: "A level balance is an equation",
   paragraphs: [
-    "This lesson uses whole-number addition, subtraction, multiplication and division. A balance compares weights: when its two pans are level, they hold equal weight. In these puzzles every block labeled x has the same unknown weight, and every small cube weighs 1 gram. A letter that stands for an unknown number is called a variable, and 3x means 3 × x.",
+    "This lesson uses whole-number addition, subtraction, multiplication and division. A balance compares weights: when its two pans are level, they hold equal weight. In these puzzles every block labeled $x$ has the same unknown weight, and every small cube weighs 1 gram. A letter that stands for an unknown number is called a variable, and 3x means 3 × x.",
     "Write the left pan's weight, an equals sign, and the right pan's weight. One block and 3 cubes balancing 7 cubes is x + 3 = 7. Three blocks balancing 12 cubes is 3x = 12. An equation written this way is true for the block's real weight, which is the solution.",
   ],
 };
 const inequalityTerms: Lesson["sections"][number] = {
   title: "Inequalities and their solutions",
   paragraphs: [
-    "This lesson uses comparing positive and negative numbers on a number line, where numbers increase to the right. An inequality compares two values: x > 2 means x is greater than 2, and x < 2 means x is less than 2. x ≥ 2 means x is greater than or equal to 2, and x ≤ 2 means x is less than or equal to 2. The number 2 here is the boundary.",
+    "This lesson uses comparing positive and negative numbers on a number line, where numbers increase to the right. An inequality compares two values: x > 2 means $x$ is greater than 2, and x < 2 means $x$ is less than 2. x ≥ 2 means $x$ is greater than or equal to 2, and x ≤ 2 means $x$ is less than or equal to 2. The number 2 here is the boundary.",
     "A solution of an inequality is a value that makes it true. 3 is a solution of x > 2, because 3 > 2 is true. 2 is not a solution of x > 2, because 2 > 2 is false, but 2 is a solution of x ≥ 2, because 2 is equal to 2.",
   ],
 };
@@ -48,7 +48,7 @@ export const equationLessons: Lesson[] = [
       {
         title: "Keep the balance level",
         paragraphs: [
-          "Think of an equation as a level balance. The left pan holds x + 3: one block of unknown weight x and 3 one-gram cubes. The right pan holds 7 cubes. The pans are level, so the two weights are equal.",
+          "Think of an equation as a level balance. The left pan holds x + 3: one block of unknown weight $x$ and 3 one-gram cubes. The right pan holds 7 cubes. The pans are level, so the two weights are equal.",
           "Take 3 cubes off each pan. Both pans lose the same weight, so they stay level: the block alone balances 4 cubes, and x = 4. Doing the same thing to both sides of an equation always keeps the sides equal, so each step gives a new equation with the same solution.",
         ],
         illustration: "balance-remove",
@@ -64,7 +64,7 @@ export const equationLessons: Lesson[] = [
       },
     ],
     workedExample: {
-      prompt: "Solve for n: 4n = 7.4.",
+      prompt: "Solve for $n$: 4n = 7.4.",
       steps: [
         "4n means 4 × n. The variable is multiplied by 4, so divide both sides by 4.",
         "n = 7.4 ÷ 4 = 1.85.",
@@ -94,9 +94,9 @@ export const equationLessons: Lesson[] = [
       {
         title: "From words to an equation",
         paragraphs: [
-          "This lesson uses the four operations with whole numbers. A variable is a letter that stands for an unknown number. Define it by saying exactly what it counts, such as “let s be the number of stickers at first”. An equation states that two expressions are equal, and 9t means 9 × t.",
-          "Read the story for the one action applied to the unknown. Something added or gained gives x + p. Something taken away, used or sold gives x − p. Equal groups of a known size give px. Equal sharing into p parts gives x ÷ p. The other side of the equation is the result the story reports.",
-          "A tape diagram shows the relationship. For a class that had some stickers, received 14 more and now has 41, one bar is split into s and 14, and its whole length is 41: s + 14 = 41.",
+          "This lesson uses the four operations with whole numbers. A variable is a letter that stands for an unknown number. Define it by saying exactly what it counts, such as “let $s$ be the number of stickers at first”. An equation states that two expressions are equal, and 9t means 9 × t.",
+          "Read the story for the one action applied to the unknown. Something added or gained gives x + p. Something taken away, used or sold gives x − p. Equal groups of a known size give px. Equal sharing into $p$ parts gives x ÷ p. The other side of the equation is the result the story reports.",
+          "A tape diagram shows the relationship. For a class that had some stickers, received 14 more and now has 41, one bar is split into $s$ and 14, and its whole length is 41: s + 14 = 41.",
         ],
         illustration: "equation-tape",
       },
@@ -110,9 +110,9 @@ export const equationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Museum tickets cost 9 dollars each. A class paid 117 dollars for tickets. Let t be the number of tickets the class bought. Which equation represents the situation, and what is its solution?",
+        "Museum tickets cost 9 dollars each. A class paid 117 dollars for tickets. Let $t$ be the number of tickets the class bought. Which equation represents the situation, and what is its solution?",
       steps: [
-        "Each ticket costs 9 dollars, so t tickets cost 9 × t dollars: 9t = 117.",
+        "Each ticket costs 9 dollars, so $t$ tickets cost 9 × t dollars: 9t = 117.",
         "Division undoes multiplication, so divide both sides by 9: t = 117 ÷ 9 = 13.",
         "Check in the story: 13 tickets at 9 dollars each cost 13 × 9 = 117 dollars.",
       ],
@@ -158,7 +158,7 @@ export const equationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A level balance has one x block and 5 cubes on the left pan and 12 cubes on the right pan. Each cube weighs 1 gram. How many grams does the x block weigh?",
+        "A level balance has one $x$ block and 5 cubes on the left pan and 12 cubes on the right pan. Each cube weighs 1 gram. How many grams does the $x$ block weigh?",
       steps: [
         "Level pans hold equal weights: x + 5 = 12.",
         "Remove 5 cubes from each pan. The balance stays level: x = 12 − 5 = 7.",
@@ -189,15 +189,15 @@ export const equationLessons: Lesson[] = [
       {
         title: "Reverse the order of operations",
         paragraphs: [
-          "This lesson uses arithmetic with positive and negative numbers. In an equation, a variable such as x stands for an unknown number, and 3x means 3 × x. A solution is a value of x that makes both sides equal. Doing the same operation to both sides keeps them equal, so each step gives an equation with the same solution.",
-          "Read 3x + 5 = 20 as a sequence: start with x, multiply by 3, then add 5, and the result is 20. To get back to x, undo the last operation first: subtract 5 to get 20 − 5 = 15, then divide by 3 to get 15 ÷ 3 = 5. Shoes put on after socks come off first.",
+          "This lesson uses arithmetic with positive and negative numbers. In an equation, a variable such as $x$ stands for an unknown number, and 3x means 3 × x. A solution is a value of $x$ that makes both sides equal. Doing the same operation to both sides keeps them equal, so each step gives an equation with the same solution.",
+          "Read 3x + 5 = 20 as a sequence: start with $x$, multiply by 3, then add 5, and the result is 20. To get back to $x$, undo the last operation first: subtract 5 to get 20 − 5 = 15, then divide by 3 to get 15 ÷ 3 = 5. Shoes put on after socks come off first.",
         ],
         illustration: "undo-chain",
       },
       {
         title: "Parentheses change the order",
         paragraphs: [
-          "In 4(x − 3) = 28, the parentheses come first: subtract 3 from x, then multiply by 4. Undo in reverse: divide both sides by 4 to get x − 3 = 28 ÷ 4 = 7, then add 3 to get x = 7 + 3 = 10.",
+          "In 4(x − 3) = 28, the parentheses come first: subtract 3 from $x$, then multiply by 4. Undo in reverse: divide both sides by 4 to get x − 3 = 28 ÷ 4 = 7, then add 3 to get x = 7 + 3 = 10.",
           "You may also distribute first, because 4(x − 3) = 4x − 12. Then 4x − 12 = 28 gives 4x = 28 + 12 = 40 and x = 40 ÷ 4 = 10. Both routes give the same solution because every step keeps the sides equal.",
         ],
       },
@@ -220,7 +220,7 @@ export const equationLessons: Lesson[] = [
     },
     pitfalls: [
       "Undo addition or subtraction before multiplication: for 3x + 5 = 20, do not divide 20 by 3 first.",
-      "Keep the sign with the coefficient: in 7 − 2x = 1 the coefficient of x is −2, so −2x = 1 − 7 = −6 and x = 3.",
+      "Keep the sign with the coefficient: in 7 − 2x = 1 the coefficient of $x$ is −2, so −2x = 1 − 7 = −6 and x = 3.",
       "When distributing, multiply every term inside the parentheses: 4(x − 3) is 4x − 12, not 4x − 3.",
     ],
     parentGuide:
@@ -241,8 +241,8 @@ export const equationLessons: Lesson[] = [
         title: "Two shapes of story",
         paragraphs: [
           "This lesson uses arithmetic with whole numbers and decimals. A variable is a letter for the unknown quantity; define it by saying what it counts and in what unit. An equation states that two expressions are equal, and 12m means 12 × m.",
-          "In $px + q = r$, an amount p repeats once for every unit of x, and an amount q happens once. A 25-dollar sign-up fee plus 12 dollars per month for m months costs 12m + 25 dollars. In p(x + q) = r there are p equal groups, and each group contains x and q. Four friends who each buy a ticket costing c dollars and a 3-dollar snack spend 4(c + 3) dollars.",
-          "The tape diagrams show the difference. 3x + 6 = 21 has three copies of x and one 6. 3(c + 2) = 21 has three copies of the whole group c + 2.",
+          "In $px + q = r$, an amount $p$ repeats once for every unit of $x$, and an amount $q$ happens once. A 25-dollar sign-up fee plus 12 dollars per month for $m$ months costs 12m + 25 dollars. In p(x + q) = r there are $p$ equal groups, and each group contains $x$ and $q$. Four friends who each buy a ticket costing $c$ dollars and a 3-dollar snack spend 4(c + 3) dollars.",
+          "The tape diagrams show the difference. 3x + 6 = 21 has three copies of $x$ and one 6. 3(c + 2) = 21 has three copies of the whole group c + 2.",
         ],
         illustration: "two-step-tape",
       },
@@ -258,7 +258,7 @@ export const equationLessons: Lesson[] = [
       prompt:
         "A gym charges a 30-dollar sign-up fee plus 14 dollars per month. Ravi has paid 142 dollars in all. For how many months has Ravi paid?",
       steps: [
-        "Let m be the number of months Ravi has paid for. The total paid is 14 dollars for each of m months plus the 30-dollar fee: 14m + 30 = 142.",
+        "Let $m$ be the number of months Ravi has paid for. The total paid is 14 dollars for each of $m$ months plus the 30-dollar fee: 14m + 30 = 142.",
         "Subtract 30 from both sides: 14m = 142 − 30 = 112.",
         "Divide both sides by 14: m = 112 ÷ 14 = 8.",
         "Check: 14 × 8 + 30 = 112 + 30 = 142.",
@@ -288,23 +288,23 @@ export const equationLessons: Lesson[] = [
       {
         title: "Which amount repeats?",
         paragraphs: [
-          "This lesson uses whole numbers and decimals. A variable such as d stands for the unknown quantity the story asks about, and 2.25d means 2.25 × d. An equation represents a story when its two sides are equal for the story's true quantity and every part of the story appears in it exactly once.",
-          "Ask what happens once for each unit of the unknown. A taxi that charges 2.25 dollars for each mile charges 2.25d dollars for d miles. The starting charge of 3.50 dollars happens once, so it is added once: for a ride that costs 32.75 dollars, 2.25d + 3.5 = 32.75. Swapping the amounts, 3.5d + 2.25, would charge 3.50 dollars a mile.",
-          "Ask whether an amount is added or taken away. A tank that starts with 80 liters and drains 6 liters each minute holds 80 − 6t liters after t minutes.",
+          "This lesson uses whole numbers and decimals. A variable such as $d$ stands for the unknown quantity the story asks about, and 2.25d means 2.25 × d. An equation represents a story when its two sides are equal for the story's true quantity and every part of the story appears in it exactly once.",
+          "Ask what happens once for each unit of the unknown. A taxi that charges 2.25 dollars for each mile charges 2.25d dollars for $d$ miles. The starting charge of 3.50 dollars happens once, so it is added once: for a ride that costs 32.75 dollars, 2.25d + 3.5 = 32.75. Swapping the amounts, 3.5d + 2.25, would charge 3.50 dollars a mile.",
+          "Ask whether an amount is added or taken away. A tank that starts with 80 liters and drains 6 liters each minute holds 80 − 6t liters after $t$ minutes.",
         ],
       },
       {
         title: "Groups that contain the unknown",
         paragraphs: [
-          "When each of p equal groups contains the unknown and an extra amount, the whole group is multiplied. Five friends who each buy a ticket costing c dollars and an 8-dollar snack spend 5(c + 8) dollars; 5c + 8 would count only one snack.",
-          "A rectangle's perimeter uses the length and the width twice each, so with length 16 and width w the perimeter is 2(w + 16). In the tape diagrams, 3x + 6 shows one 6 and 3(c + 2) shows a 2 in every group.",
+          "When each of $p$ equal groups contains the unknown and an extra amount, the whole group is multiplied. Five friends who each buy a ticket costing $c$ dollars and an 8-dollar snack spend 5(c + 8) dollars; 5c + 8 would count only one snack.",
+          "A rectangle's perimeter uses the length and the width twice each, so with length 16 and width $w$ the perimeter is 2(w + 16). In the tape diagrams, 3x + 6 shows one 6 and 3(c + 2) shows a 2 in every group.",
         ],
         illustration: "two-step-tape",
       },
     ],
     workedExample: {
       prompt:
-        "Each of 5 friends buys one movie ticket and one 8-dollar snack. Together they spend 95 dollars. Let c be the cost of one ticket, in dollars. Which equation can be used to find c?",
+        "Each of 5 friends buys one movie ticket and one 8-dollar snack. Together they spend 95 dollars. Let $c$ be the cost of one ticket, in dollars. Which equation can be used to find $c$?",
       steps: [
         "Each friend spends c + 8 dollars: one ticket and one snack.",
         "There are 5 friends, so the total is 5 times that amount: 5(c + 8) = 95.",
@@ -335,7 +335,7 @@ export const equationLessons: Lesson[] = [
       {
         title: "Read the balance",
         paragraphs: [
-          "This lesson uses whole-number arithmetic. A balance whose pans are level holds equal weight on both pans. Every block labeled x has the same unknown weight, and every small cube weighs 1 gram. A letter that stands for an unknown number is a variable, and 3x means 3 × x.",
+          "This lesson uses whole-number arithmetic. A balance whose pans are level holds equal weight on both pans. Every block labeled $x$ has the same unknown weight, and every small cube weighs 1 gram. A letter that stands for an unknown number is a variable, and 3x means 3 × x.",
           "Write each pan's weight and set them equal. Three blocks and 5 cubes balancing 20 cubes is 3x + 5 = 20. Two identical bags, each holding one block and 1 cube, balancing 10 cubes is 2(x + 1) = 10: there are 2 groups, and each group is x + 1.",
         ],
       },
@@ -357,7 +357,7 @@ export const equationLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A level balance has 3 x blocks and 4 cubes on the left pan and 19 cubes on the right pan. Each cube weighs 1 gram. How many grams does one x block weigh?",
+        "A level balance has 3 $x$ blocks and 4 cubes on the left pan and 19 cubes on the right pan. Each cube weighs 1 gram. How many grams does one $x$ block weigh?",
       steps: [
         "Level pans hold equal weights: 3x + 4 = 19.",
         "Remove 4 cubes from each pan: 3x = 19 − 4 = 15.",
@@ -391,15 +391,15 @@ export const equationLessons: Lesson[] = [
         title: "From words to symbols",
         paragraphs: [
           "“More than”, “greater than”, “above” and “taller than” describe values greater than the boundary: use >. “Less than”, “below”, “younger than” and “colder than” describe values less than the boundary: use <.",
-          "“At least”, “no less than” and “c or more” include the boundary: use ≥. “At most”, “no more than” and “c or fewer” include it too: use ≤. Test the boundary itself. A ride for riders taller than 48 inches does not admit a rider exactly 48 inches tall, so h > 48.",
-          "Negative boundaries follow the same rules. A freezer colder than −15 °C could be at −20 °C, and −20 < −15, so t < −15.",
+          "“At least”, “no less than” and “$c$ or more” include the boundary: use ≥. “At most”, “no more than” and “$c$ or fewer” include it too: use ≤. Test the boundary itself. A ride for riders taller than 48 inches does not admit a rider exactly 48 inches tall, so h > 48.",
+          "Negative boundaries follow the same rules. A freezer colder than −15 °$C$ could be at −20 °$C$, and −20 < −15, so t < −15.",
         ],
         illustration: "inequality-half-lines",
       },
     ],
     workedExample: {
       prompt:
-        "A carry-on bag may weigh no more than 10 kilograms. Let w be the weight of an allowed bag, in kilograms. Which inequality describes all possible values of w?",
+        "A carry-on bag may weigh no more than 10 kilograms. Let $w$ be the weight of an allowed bag, in kilograms. Which inequality describes all possible values of $w$?",
       steps: [
         "“No more than 10 kilograms” allows weights less than 10.",
         "A bag of exactly 10 kilograms is allowed, so the boundary is included.",
@@ -410,7 +410,7 @@ export const equationLessons: Lesson[] = [
     pitfalls: [
       "“At least” means greater than or equal to, even though it contains the word “least”.",
       "Test the boundary: “more than 35” excludes 35; “35 or more” includes it.",
-      "Colder and below mean less than, also for negative temperatures: −20 °C is colder than −15 °C, and −20 < −15.",
+      "Colder and below mean less than, also for negative temperatures: −20 °$C$ is colder than −15 °$C$, and −20 < −15.",
     ],
     parentGuide:
       "Collect real rules with numbers, such as height limits, age discounts and speed limits. For each, ask whether the exact number on the sign is allowed, then write the inequality together.",
@@ -573,7 +573,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
       "Check both parts: a correct solution of the wrong equation is still wrong.",
   },
   "balance-one-step": {
-    goal: "Find the weight of one x block on a level balance with one step.",
+    goal: "Find the weight of one $x$ block on a level balance with one step.",
     terms: [
       [
         "level balance",
@@ -588,7 +588,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
     watch: "Change both pans in the same way, never one pan alone.",
   },
   "two-step-equation": {
-    goal: "Solve $px + q = r$ or p(x + q) = r for x.",
+    goal: "Solve $px + q = r$ or p(x + q) = r for $x$.",
     terms: [
       [
         "coefficient",
@@ -596,11 +596,11 @@ export const equationMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Name the last operation applied to x and undo it on both sides.",
+      "Name the last operation applied to $x$ and undo it on both sides.",
       "Undo the remaining operation on both sides.",
       "Check by substituting into the original equation.",
     ],
-    watch: "For $px + q$, undo the + q first; for p(x + q), divide by p first.",
+    watch: "For $px + q$, undo the + $q$ first; for p(x + q), divide by $p$ first.",
   },
   "two-step-word-problem": {
     goal: "Write and solve a two-step equation for a story.",
@@ -628,14 +628,14 @@ export const equationMethods: Record<string, ProblemMethod> = {
       "Decide whether the extra amount occurs once or once in every group.",
       "Choose the equation that uses every part of the story exactly once.",
     ],
-    watch: "p(x + q) counts q in every group; $px + q$ counts it once.",
+    watch: "p(x + q) counts $q$ in every group; $px + q$ counts it once.",
   },
   "balance-two-step": {
-    goal: "Find the weight of one x block on a level balance with two steps.",
+    goal: "Find the weight of one $x$ block on a level balance with two steps.",
     terms: [
       [
         "bag",
-        "A group holding one x block and some cubes; all bags are identical.",
+        "A group holding one $x$ block and some cubes; all bags are identical.",
       ],
     ],
     method: [
@@ -705,7 +705,7 @@ export const equationPrinciples: Record<string, string> = {
   "balance-one-step":
     "Removing equal weights from both pans, or splitting both pans into the same number of equal groups, keeps a balance level.",
   "two-step-equation":
-    "Operations applied to x are undone in reverse order, and each step done to both sides keeps the equation's solution unchanged.",
+    "Operations applied to $x$ are undone in reverse order, and each step done to both sides keeps the equation's solution unchanged.",
   "two-step-word-problem":
     "A repeated amount multiplies the unknown and a one-time amount is added once: $px + q = r$. Equal groups that each contain the unknown give p(x + q) = r.",
   "two-step-equation-model":
@@ -717,7 +717,7 @@ export const equationPrinciples: Record<string, string> = {
   "inequality-from-number-line":
     "A graph's circle shows whether the boundary is a solution, and its ray shows the direction in which all other solutions lie.",
   "inequality-number-line-choice":
-    "The graph of x > c, x < c, x ≥ c or x ≤ c is a ray from c, toward greater or lesser numbers, with a filled circle exactly when c is a solution.",
+    "The graph of x > c, x < c, x ≥ c or x ≤ c is a ray from $c$, toward greater or lesser numbers, with a filled circle exactly when $c$ is a solution.",
   "inequality-solution-set":
     "Every number on the correct side of the boundary satisfies a simple inequality, and between any two such numbers lies another, so there are infinitely many solutions.",
 };

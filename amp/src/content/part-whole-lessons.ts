@@ -93,11 +93,11 @@ export const partWholeLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Two same-size rectangles: A is cut into 3 equal columns and B into 3 equal rows. One part of each is shaded. Which is larger?",
+        "Two same-size rectangles: $A$ is cut into 3 equal columns and $B$ into 3 equal rows. One part of each is shaded. Which is larger?",
       steps: [
-        "A has 3 equal parts, so its shaded part is one third of A.",
-        "B has 3 equal parts, so its shaded part is one third of B.",
-        "A and B are the same size, so the parts are the same amount, though one is tall and thin and the other is short and wide.",
+        "$A$ has 3 equal parts, so its shaded part is one third of $A$.",
+        "$B$ has 3 equal parts, so its shaded part is one third of $B$.",
+        "$A$ and $B$ are the same size, so the parts are the same amount, though one is tall and thin and the other is short and wide.",
       ],
       answer: "They are the same amount.",
     },
@@ -117,7 +117,7 @@ export const partWholeLessons: Lesson[] = [
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain that parts with equal area are equal shares even when their shapes differ.",
-      "Name one of n equal-area parts as the unit fraction 1/n of the whole area.",
+      "Name one of $n$ equal-area parts as the unit fraction 1/n of the whole area.",
       "Find the area of one part by dividing the whole area by the number of parts.",
     ],
     sections: [
@@ -290,7 +290,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Count the parts; they have equal area even if their shapes differ.",
-      "One of n equal parts is 1/n of the whole area.",
+      "One of $n$ equal parts is 1/n of the whole area.",
       "Check: each part's squares times the number of parts gives the whole.",
     ],
     watch: "Different shapes can have the same area.",
@@ -365,7 +365,7 @@ export const partWholePrinciples: Record<string, string> = {
   "same-share-different-shape":
     "Equal shares of the same whole are the same amount even when their shapes differ.",
   "equal-area-fraction":
-    "Parts with equal area are equal shares: each of n such parts is 1/n of the whole area.",
+    "Parts with equal area are equal shares: each of $n$ such parts is 1/n of the whole area.",
   "equal-area-part-size":
     "Equal-area parts split the whole area evenly: one part's area is the whole area divided by the number of parts.",
   "compare-like-denominators":

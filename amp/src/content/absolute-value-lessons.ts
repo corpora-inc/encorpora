@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 const terms: NonNullable<ProblemMethod["terms"]> = [
   [
     "absolute value",
-    "Distance from zero on the number line. The bars |t| mean the absolute value of t.",
+    "Distance from zero on the number line. The bars |$t$| mean the absolute value of $t$.",
   ],
   [
     "solution set",
@@ -11,7 +11,7 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
   ],
   [
     "coefficient",
-    "A number multiplying a variable or expression. In −2x, the coefficient of x is −2.",
+    "A number multiplying a variable or expression. In −2x, the coefficient of $x$ is −2.",
   ],
 ];
 export const absoluteValueMethods: Record<string, ProblemMethod> = {
@@ -27,12 +27,12 @@ export const absoluteValueMethods: Record<string, ProblemMethod> = {
       "Absolute value is never negative, but the number inside the bars can be negative.",
   },
   "absolute-value-affine-equation": {
-    goal: "Find all real values of x that give the expression inside the bars the required absolute value.",
+    goal: "Find all real values of $x$ that give the expression inside the bars the required absolute value.",
     terms,
     method: [
       "If the target is negative, there are no real solutions. If it is zero, set the inside expression equal to zero.",
       "For a positive target, set the inside expression equal to the target or its opposite. Solve both equations.",
-      "Undo the constant term, then divide by the nonzero coefficient of x. Keep exact fractions.",
+      "Undo the constant term, then divide by the nonzero coefficient of $x$. Keep exact fractions.",
       "Check every candidate in the original equation and include every valid value.",
     ],
     watch:
@@ -42,7 +42,7 @@ export const absoluteValueMethods: Record<string, ProblemMethod> = {
     goal: "Isolate an absolute value, then find the complete real solution set.",
     terms,
     method: [
-      "If an outside multiplier is zero, evaluate the resulting constant equation. If the coefficient of x inside is zero, evaluate that constant expression instead.",
+      "If an outside multiplier is zero, evaluate the resulting constant equation. If the coefficient of $x$ inside is zero, evaluate that constant expression instead.",
       "Otherwise subtract the outside constant from both sides, then divide by the nonzero outside multiplier.",
       "A negative isolated target gives no solutions; zero gives one branch; a positive target gives two branches.",
       "Solve each branch and substitute each candidate in the original equation.",
@@ -53,11 +53,11 @@ export const absoluteValueMethods: Record<string, ProblemMethod> = {
 };
 export const absoluteValuePrinciples: Record<string, string> = {
   "absolute-value-direct-equation":
-    "Absolute value is distance from zero. For a positive c, |x| = c exactly when x = c or x = −c; |x| = 0 exactly when x = 0; a negative c is impossible.",
+    "Absolute value is distance from zero. For a positive $c$, |x| = c exactly when x = c or x = −c; |x| = 0 exactly when x = 0; a negative $c$ is impossible.",
   "absolute-value-affine-equation":
-    "For positive c, |ax + b| = c is equivalent to ax + b = c or ax + b = −c. Solving both equations with reversible operations gives every real solution.",
+    "For positive $c$, |ax + b| = c is equivalent to ax + b = c or ax + b = −c. Solving both equations with reversible operations gives every real solution.",
   "absolute-value-transformed-equation":
-    "Adding the same number and dividing by the same nonzero number preserve an equation's solutions. Isolate the absolute value before splitting into sign branches; a constant equality is true for all real x or for none.",
+    "Adding the same number and dividing by the same nonzero number preserve an equation's solutions. Isolate the absolute value before splitting into sign branches; a constant equality is true for all real $x$ or for none.",
 };
 const foundations: Lesson["sections"][number] = {
   title: "Absolute value measures distance",
@@ -70,21 +70,21 @@ const foundations: Lesson["sections"][number] = {
 const equations: Lesson["sections"][number] = {
   title: "What it means to solve an equation",
   paragraphs: [
-    "A variable, such as x, stands for a number. An expression, such as 2x − 3, describes a quantity; 2x means 2 times x. An equation says that two expressions have equal values. A solution is a value of x that makes that equality true. To check a proposed solution, substitute it for every x and calculate both sides.",
-    "The complete solution set contains every solution and no other values. The word or joins alternatives: x = −3 or x = 3 means either value works. It does not mean that x must have both values at once. No real solutions means that no point on the number line works; all real numbers means that every point works.",
+    "A variable, such as $x$, stands for a number. An expression, such as 2x − 3, describes a quantity; 2x means 2 times $x$. An equation says that two expressions have equal values. A solution is a value of $x$ that makes that equality true. To check a proposed solution, substitute it for every $x$ and calculate both sides.",
+    "The complete solution set contains every solution and no other values. The word or joins alternatives: x = −3 or x = 3 means either value works. It does not mean that $x$ must have both values at once. No real solutions means that no point on the number line works; all real numbers means that every point works.",
   ],
 };
 const branches: Lesson["sections"][number] = {
   title: "Why there are two branches, one branch, or none",
   paragraphs: [
-    "If a distance from zero is positive, exactly two points have that distance: one on each side of zero. Therefore |t| = 3 means t = 3 or t = −3. Here t represents the entire quantity inside the bars; it can be x or an expression involving x. The two equations are called branches because each is a separate possibility to solve.",
+    "If a distance from zero is positive, exactly two points have that distance: one on each side of zero. Therefore |t| = 3 means t = 3 or t = −3. Here $t$ represents the entire quantity inside the bars; it can be $x$ or an expression involving $x$. The two equations are called branches because each is a separate possibility to solve.",
     "If the distance is zero, the two possibilities coincide: |t| = 0 means t = 0. Writing zero twice does not give two different solutions. If the proposed distance is negative, such as |t| = −3, there is no solution because distances cannot be negative.",
   ],
 };
 const operations: Lesson["sections"][number] = {
   title: "Solve each branch without changing its solutions",
   paragraphs: [
-    "A coefficient is a number multiplying a variable; in −2x + 3, the coefficient of x is −2 and the constant term is 3. A constant does not depend on x. To isolate x means to leave x alone on one side of an equation. Subtract or add the same constant on both sides, then divide both sides by the nonzero coefficient. These operations are reversible, so they preserve exactly which values satisfy the equation. Division by zero is undefined.",
+    "A coefficient is a number multiplying a variable; in −2x + 3, the coefficient of $x$ is −2 and the constant term is 3. A constant does not depend on $x$. To isolate $x$ means to leave $x$ alone on one side of an equation. Subtract or add the same constant on both sides, then divide both sides by the nonzero coefficient. These operations are reversible, so they preserve exactly which values satisfy the equation. Division by zero is undefined.",
     "Keep fractions exact. In 3/2, the denominator 2 divides one unit into two equal parts, and the numerator 3 counts three such parts. A negative fraction is the opposite of that positive quantity. To add or subtract fractions, express them in equal-sized parts: 5/2 − 3 = 5/2 − 6/2 = −1/2. To divide by −2, multiply by its reciprocal −1/2, the number that gives 1 when multiplied by −2. Thus (−1/2) ÷ (−2) = (−1/2) × (−1/2) = 1/4.",
   ],
 };
@@ -155,8 +155,8 @@ export const absoluteValueLessons: Lesson[] = [
       {
         title: "The distance belongs to the whole inside expression",
         paragraphs: [
-          "In |2x − 3| = 5, the number whose distance is 5 is 2x − 3, not x. It must equal 5 or −5. The branches are 2x − 3 = 5 or 2x − 3 = −5. Adding 3 gives 2x = 8 or 2x = −2; dividing by 2 gives x = 4 or x = −1. The solutions need not be opposites, because the expression inside is not simply x.",
-          "The expression x − 2 is the signed displacement from 2 to x: it is positive to the right of 2 and negative to the left. Its absolute value is the distance between x and 2. Thus |x − 2| = 3 places the solutions three units on either side of 2, at −1 and 5. The center 2 is not a solution because its distance from itself is zero.",
+          "In |2x − 3| = 5, the number whose distance is 5 is 2x − 3, not $x$. It must equal 5 or −5. The branches are 2x − 3 = 5 or 2x − 3 = −5. Adding 3 gives 2x = 8 or 2x = −2; dividing by 2 gives x = 4 or x = −1. The solutions need not be opposites, because the expression inside is not simply $x$.",
+          "The expression x − 2 is the signed displacement from 2 to $x$: it is positive to the right of 2 and negative to the left. Its absolute value is the distance between $x$ and 2. Thus |x − 2| = 3 places the solutions three units on either side of 2, at −1 and 5. The center 2 is not a solution because its distance from itself is zero.",
         ],
         illustration: "absolute-value-shifted",
       },
@@ -165,7 +165,7 @@ export const absoluteValueLessons: Lesson[] = [
         title: "Zero and negative targets",
         paragraphs: [
           "For |2x − 3| = 0, set 2x − 3 = 0. Add 3 to obtain 2x = 3, then divide by 2 to obtain x = 3/2. Check: 2 × (3/2) − 3 = 0 and |0| = 0. There is one solution.",
-          "For |2x − 3| = −5, stop: the left side is nonnegative for every real x, so it cannot equal −5. There are no real solutions. Do not create sign branches for a negative target.",
+          "For |2x − 3| = −5, stop: the left side is nonnegative for every real $x$, so it cannot equal −5. There are no real solutions. Do not create sign branches for a negative target.",
         ],
       },
     ],
@@ -183,7 +183,7 @@ export const absoluteValueLessons: Lesson[] = [
     },
     pitfalls: [
       "Do not write |2x − 3| as |2x| − |3|. For x = 1, the first is 1 but the second is −1.",
-      "Solve both sign branches and substitute the resulting x values, not the target distances, into the original equation.",
+      "Solve both sign branches and substitute the resulting $x$ values, not the target distances, into the original equation.",
     ],
     parentGuide:
       "Ask why the solutions of |x − 2| = 3 are centered at 2 rather than zero. Then have the learner solve |−2x + 3| = 0 and explain why there is only one answer.",
@@ -215,8 +215,8 @@ export const absoluteValueLessons: Lesson[] = [
       {
         title: "When a coefficient is zero",
         paragraphs: [
-          "A zero outside multiplier removes the entire absolute-value term. For 0|2x + 1| + 4 = 4, zero times any real quantity is zero, so the equation becomes 4 = 4. Every real x works. Changing the right side to 7 gives 4 = 7, a false statement; no real x works. Do not divide by the outside coefficient when it is zero.",
-          "A zero coefficient of x inside the bars also makes the expression constant. In 2|0x − 3| − 1 = 5, we have 0x = 0 for every x. The left side is 2|−3| − 1 = 2 × 3 − 1 = 5. Thus every real number is a solution. If the right side were 4, there would be no solutions.",
+          "A zero outside multiplier removes the entire absolute-value term. For 0|2x + 1| + 4 = 4, zero times any real quantity is zero, so the equation becomes 4 = 4. Every real $x$ works. Changing the right side to 7 gives 4 = 7, a false statement; no real $x$ works. Do not divide by the outside coefficient when it is zero.",
+          "A zero coefficient of $x$ inside the bars also makes the expression constant. In 2|0x − 3| − 1 = 5, we have 0x = 0 for every $x$. The left side is 2|−3| − 1 = 2 × 3 − 1 = 5. Thus every real number is a solution. If the right side were 4, there would be no solutions.",
           "These constant equations have infinitely many solutions when true and no solutions when false. A nonzero coefficient inside and a nonzero outside multiplier instead give zero, one, or two solutions, according to the isolated distance.",
         ],
       },

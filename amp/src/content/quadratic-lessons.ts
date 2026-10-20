@@ -6,7 +6,7 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
     goal: "Given a quadratic equation as a product equal to zero, find every real solution.",
     terms: [
       ["factor", "An expression multiplied by another expression."],
-      ["root", "A value of x that makes the polynomial equal zero."],
+      ["root", "A value of $x$ that makes the polynomial equal zero."],
       [
         "repeated root",
         "A root that occurs in more than one factor; it is one distinct solution.",
@@ -14,22 +14,22 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Set each linear factor equal to zero.",
-      "In each equation, subtract the constant and divide by the nonzero coefficient of x.",
+      "In each equation, subtract the constant and divide by the nonzero coefficient of $x$.",
       "Include both roots if they differ; list a repeated root once. Check each root in the original product.",
     ],
     watch:
-      "Dividing by a factor containing x can discard a root. Set the factors equal to zero instead.",
+      "Dividing by a factor containing $x$ can discard a root. Set the factors equal to zero instead.",
   },
   "quadratic-expanded-solutions": {
     goal: "Given an expanded quadratic equation with rational roots, factor it and find every real solution.",
     terms: [
-      ["quadratic", "A polynomial whose highest power of x is x²."],
-      ["coefficient", "The number multiplying a power of x."],
-      ["root", "A value of x that makes the polynomial equal zero."],
+      ["quadratic", "A polynomial whose highest power of $x$ is x²."],
+      ["coefficient", "The number multiplying a power of $x$."],
+      ["root", "A value of $x$ that makes the polynomial equal zero."],
     ],
     method: [
-      "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out x.",
-      "Otherwise, divide out any common numerical factor, then find integers m and n with m + n = b and mn = ac. Replace bx by mx + nx and factor by grouping.",
+      "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out $x$.",
+      "Otherwise, divide out any common numerical factor, then find integers $m$ and $n$ with m + n = b and mn = ac. Replace bx by mx + nx and factor by grouping.",
       "Check the factors by multiplication. Set each factor equal to zero and solve both equations.",
       "List each distinct root once and check it in the original equation.",
     ],
@@ -53,8 +53,8 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Read a, b, and c with their signs; a missing x term or constant has coefficient zero.",
-      "Calculate b² − 4ac, using parentheses when squaring a negative b.",
+      "Read $a$, $b$, and $c$ with their signs; a missing $x$ term or constant has coefficient zero.",
+      "Calculate b² − 4ac, using parentheses when squaring a negative $b$.",
       "A positive discriminant gives two distinct real solutions, zero gives one, and a negative value gives none.",
     ],
     watch:
@@ -85,14 +85,14 @@ export const quadraticLessons: Lesson[] = [
       {
         title: "Why either factor can be zero",
         paragraphs: [
-          "A factor is an expression in a product. A root is a value that makes a polynomial zero. If AB = 0, then A = 0 or B = 0: when A is nonzero, division by A gives B = 0.",
+          "A factor is an expression in a product. A root is a value that makes a polynomial zero. If AB = 0, then A = 0 or B = 0: when $A$ is nonzero, division by $A$ gives B = 0.",
           "For (2x − 3)(x + 4) = 0, solve 2x − 3 = 0 and x + 4 = 0 separately. The roots are 3/2 and −4. Either root makes the product zero.",
         ],
       },
       {
         title: "Keep every distinct root",
         paragraphs: [
-          "For x(x − 5) = 0, zero is a root. Dividing by x would lose it. For (x − 2)² = 0, both factors give 2: one distinct solution, called a repeated root.",
+          "For x(x − 5) = 0, zero is a root. Dividing by $x$ would lose it. For (x − 2)² = 0, both factors give 2: one distinct solution, called a repeated root.",
           "The product must equal zero. For (x − 2)(x + 3) = 4, neither x = 2 nor x = −3 is a solution: both give zero instead of four.",
         ],
       },
@@ -108,10 +108,10 @@ export const quadraticLessons: Lesson[] = [
     },
     pitfalls: [
       "The zero-product property requires the product to equal zero.",
-      "The factors do not have to be zero at the same value of x.",
+      "The factors do not have to be zero at the same value of $x$.",
     ],
     parentGuide:
-      "Ask the learner to explain why both roots belong and why dividing by x loses a root in x(x − 5) = 0.",
+      "Ask the learner to explain why both roots belong and why dividing by $x$ loses a root in x(x − 5) = 0.",
   },
   {
     id: "quadratic-expanded-solutions",
@@ -127,8 +127,8 @@ export const quadraticLessons: Lesson[] = [
       {
         title: "Find and check the factors",
         paragraphs: [
-          "A quadratic polynomial has highest power x². In ax² + bx + c, the numbers a, b, and c are coefficients, with a ≠ 0. The term bx is the linear term; c is the constant term. Factoring rewrites the polynomial as a product without changing its value.",
-          "If c = 0, factor out x: ax² + bx = x(ax + b). Otherwise, divide out any common numerical factor, then find integers m and n whose sum is b and whose product is ac. Replace bx by mx + nx, then factor the two pairs of terms by grouping.",
+          "A quadratic polynomial has highest power x². In ax² + bx + c, the numbers $a$, $b$, and $c$ are coefficients, with a ≠ 0. The term bx is the linear term; $c$ is the constant term. Factoring rewrites the polynomial as a product without changing its value.",
+          "If c = 0, factor out $x$: ax² + bx = $x(ax + b)$. Otherwise, divide out any common numerical factor, then find integers $m$ and $n$ whose sum is $b$ and whose product is ac. Replace bx by mx + nx, then factor the two pairs of terms by grouping.",
         ],
       },
       {
@@ -150,8 +150,8 @@ export const quadraticLessons: Lesson[] = [
       answer: "x = −2/3 or x = 1/2",
     },
     pitfalls: [
-      "When a is not 1, the numbers used to split bx must multiply to ac, not merely to c.",
-      "Keep a zero root when factoring out x.",
+      "When $a$ is not 1, the numbers used to split bx must multiply to ac, not merely to $c$.",
+      "Keep a zero root when factoring out $x$.",
     ],
     parentGuide:
       "Ask the learner to multiply the factors before solving. Include an example with no constant term and one with a repeated root.",
@@ -177,7 +177,7 @@ export const quadraticLessons: Lesson[] = [
       {
         title: "Count roots and keep coefficient signs",
         paragraphs: [
-          "Distinct means different. You do not count the same root twice. A missing x term means b = 0; a missing constant means c = 0. Keep negative coefficients in parentheses when substituting.",
+          "Distinct means different. You do not count the same root twice. A missing $x$ term means b = 0; a missing constant means c = 0. Keep negative coefficients in parentheses when substituting.",
           "For x² − 4 = 0, the discriminant is 16, giving two roots: −2 and 2. For x² = 0, it is zero, giving the single root 0. For x² + 4 = 0, it is −16, giving no real roots.",
         ],
       },

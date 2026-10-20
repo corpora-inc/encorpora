@@ -65,13 +65,13 @@ export const choiceLessons: Lesson[] = [
         title: "What counts as a solution?",
         paragraphs: [
           "A solution is a value that makes the original left and right sides equal. In 2x + 3 = 3x + 7, subtracting 2x and then 7 gives −4 = x. Only x = −4 works. Substitute it into the original: both sides are −5.",
-          "The operations must preserve equality. Subtracting the same expression from both sides does this. Keep checking the relationship between the sides instead of assuming every equation must end with x equal to a number.",
+          "The operations must preserve equality. Subtracting the same expression from both sides does this. Keep checking the relationship between the sides instead of assuming every equation must end with $x$ equal to a number.",
         ],
       },
       {
         title: "Cancellation can tell two different stories",
         paragraphs: [
-          "For 4x + 3 = 4x + 8, subtract 4x from both sides. You get 3 = 8. That statement is never true, whatever x was. There is no solution; x = 0 does not rescue it.",
+          "For 4x + 3 = 4x + 8, subtract 4x from both sides. You get 3 = 8. That statement is never true, whatever $x$ was. There is no solution; x = 0 does not rescue it.",
           "For 4x + 3 = 4x + 3, the same subtraction gives 3 = 3. Every real number works because the two expressions are identical. There are infinitely many solutions, not just the value zero.",
         ],
       },
@@ -79,7 +79,7 @@ export const choiceLessons: Lesson[] = [
         title: "A quick test is not a proof",
         paragraphs: [
           "Trying x = 0 can disprove a claim that every number works. It cannot by itself prove that no number works: the equation might have a different solution. Simplifying the equation explains the entire solution set.",
-          "When all variable terms cancel, read the remaining equality. A false number statement means no solution; a true number statement means every real x works. If a nonzero multiple of x remains, isolate x to obtain exactly one solution.",
+          "When all variable terms cancel, read the remaining equality. A false number statement means no solution; a true number statement means every real $x$ works. If a nonzero multiple of $x$ remains, isolate $x$ to obtain exactly one solution.",
         ],
       },
     ],
@@ -87,13 +87,13 @@ export const choiceLessons: Lesson[] = [
       prompt: "How many real-number solutions does 5x + 2 = 5x + 9 have?",
       steps: [
         "Subtract 5x from both sides: 2 = 9.",
-        "The equality is false regardless of x. There is no solution.",
+        "The equality is false regardless of $x$. There is no solution.",
       ],
       answer: "No solution",
     },
     pitfalls: [
       "0x = 7 is impossible; it does not mean x = 0.",
-      "0x = 0 is true for every real x. Do not divide both sides by zero.",
+      "0x = 0 is true for every real $x$. Do not divide both sides by zero.",
     ],
     parentGuide:
       "Write three equations: 2x + 1 = 3x + 5, 2x + 1 = 2x + 5, and 2x + 1 = 2x + 1. Ask what changes between them and why that changes the solution set. Have the learner construct a fourth example of each kind.",
@@ -105,21 +105,21 @@ export const choiceLessons: Lesson[] = [
       "An intercept locates a line and a slope describes its change. Together they determine the rule y = mx + b.",
     templateIds: ["graph-equation-choice"],
     objectives: [
-      "Read a y-intercept and a rate of change from two labeled points.",
+      "Read a $y$-intercept and a rate of change from two labeled points.",
       "Check a proposed linear equation against the graph.",
     ],
     sections: [
       {
         title: "Start where x is zero",
         paragraphs: [
-          "The vertical axis is the set of points with x = 0. If a line crosses it at (0, 5), then the rule must give y = 5 when x = 0. In y = mx + b, the term mx becomes zero there, leaving b.",
-          "The intercept is a y-coordinate, not the distance between two points. A line can cross high on the axis and climb slowly, or cross low and climb steeply. Starting height and rate of change do different jobs.",
+          "The vertical axis is the set of points with x = 0. If a line crosses it at (0, 5), then the rule must give y = 5 when x = 0. In y = mx + b, the term mx becomes zero there, leaving $b$.",
+          "The intercept is a $y$-coordinate, not the distance between two points. A line can cross high on the axis and climb slowly, or cross low and climb steeply. Starting height and rate of change do different jobs.",
         ],
       },
       {
         title: "Count change in coordinate units",
         paragraphs: [
-          "Suppose a second point is (2, 9). Moving from (0, 5) to (2, 9) changes x by 2 and y by 4. The slope is 4 divided by 2, or 2 units up for each unit to the right.",
+          "Suppose a second point is (2, 9). Moving from (0, 5) to (2, 9) changes $x$ by 2 and $y$ by 4. The slope is 4 divided by 2, or 2 units up for each unit to the right.",
           "Read the numbers on both axes. A grid square is not always one unit, and the drawing may stretch the two axes differently. Slope comes from coordinate changes, not the visual angle of the line on the screen.",
         ],
       },
@@ -127,7 +127,7 @@ export const choiceLessons: Lesson[] = [
         title: "Put the two facts together",
         paragraphs: [
           "A slope of 2 and intercept of 5 give y = 2x + 5. At x = 2, this predicts 9, matching the second point. Testing a second point catches a rule with the correct starting height but the wrong slope.",
-          "Swapping the numbers gives y = 5x + 2, which starts at the wrong height. Dropping the constant gives y = 2x, which passes through the origin. A negative coefficient would make y fall as x increases. Each choice makes a different claim you can check.",
+          "Swapping the numbers gives y = 5x + 2, which starts at the wrong height. Dropping the constant gives y = 2x, which passes through the origin. A negative coefficient would make $y$ fall as $x$ increases. Each choice makes a different claim you can check.",
         ],
       },
     ],

@@ -120,7 +120,7 @@ export const polygonLessons: Lesson[] = [
       {
         title: "Testing a statement",
         paragraphs: [
-          '"Every X is a Y" is false if you can draw one X that is not a Y. A long, thin rectangle is a rectangle but not a square, so "every rectangle is a square" is false.',
+          '"Every $X$ is a $Y$" is false if you can draw one $X$ that is not a $Y$. A long, thin rectangle is a rectangle but not a square, so "every rectangle is a square" is false.',
           "If no such drawing exists, the statement is true: every square has 4 right angles, so every square is a rectangle.",
         ],
       },
@@ -228,7 +228,7 @@ export const polygonMethods: Record<string, ProblemMethod> = {
     goal: "Given statements about categories, choose the one that is always true.",
     terms: terms.tree,
     method: [
-      "For each statement 'every X is a Y', try to picture an X that is not a Y.",
+      "For each statement 'every $X$ is a Y', try to picture an $X$ that is not a $Y$.",
       "If you can, the statement is false.",
       "The statement with no such picture is true.",
     ],
@@ -258,7 +258,7 @@ export const polygonPrinciples: Record<string, string> = {
   "quadrilateral-names":
     "A shape belongs to every category above it in the quadrilateral tree.",
   "hierarchy-statement":
-    "Every X is a Y when each defining property of Y is also a property of every X.",
+    "Every $X$ is a $Y$ when each defining property of $Y$ is also a property of every $X$.",
   "inherited-property":
     "A subcategory has every property of the category that contains it.",
 };

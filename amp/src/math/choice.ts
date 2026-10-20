@@ -108,15 +108,15 @@ export function generateChoiceProblem(
       const c = category === 0 ? a + r(1, 4) : a;
       const d = category === 2 ? b : b + r(1, 6);
       prompt = `How many real-number solutions does ${a}x + ${b} = ${c}x + ${d} have?`;
-      hint = `Subtract ${a}x and ${b} from both sides of ${a}x + ${b} = ${c}x + ${d}. Is what is left a value for x, a false statement, or true for every x?`;
+      hint = `Subtract ${a}x and ${b} from both sides of ${a}x + ${b} = ${c}x + ${d}. Is what is left a value for $x$, a false statement, or true for every $x$?`;
       explanation = [
         `Subtract ${a}x and then ${b} from both sides: 0 = ${c - a}x + ${d - b}.`,
         category === 0
-          ? `The coefficient ${c - a} is not zero. Exactly one x makes ${c - a}x = ${b - d}.`
+          ? `The coefficient ${c - a} is not zero. Exactly one $x$ makes ${c - a}x = ${b - d}.`
           : category === 1
-            ? `This says 0 = ${d - b}, which is false for every x. There is no solution.`
-            : "This says 0 = 0. It is true for every real number x, so there are infinitely many solutions.",
-        "A zero coefficient does not mean x is zero. When all x-terms cancel, check whether the remaining statement is true or false.",
+            ? `This says 0 = ${d - b}, which is false for every $x$. There is no solution.`
+            : "This says 0 = 0. It is true for every real number $x$, so there are infinitely many solutions.",
+        "A zero coefficient does not mean $x$ is zero. When all $x$-terms cancel, check whether the remaining statement is true or false.",
       ];
       choices = [
         "Exactly one solution",
@@ -129,10 +129,10 @@ export function generateChoiceProblem(
               label,
               feedback:
                 index === 0
-                  ? "One solution requires an equation that singles out one value of x. Here the x-terms cancel."
+                  ? "One solution requires an equation that singles out one value of $x$. Here the $x$-terms cancel."
                   : index === 1
                     ? "No solution means the simplified equality is impossible. Cancellation alone does not prove that."
-                    : "Infinitely many solutions means both expressions agree for every x. Check both the x-coefficients and the constants.",
+                    : "Infinitely many solutions means both expressions agree for every $x$. Check both the $x$-coefficients and the constants.",
             },
       );
       break;
@@ -140,7 +140,7 @@ export function generateChoiceProblem(
     case "graph-equation-choice": {
       const m = r(1, 3),
         b = r(4, 6);
-      prompt = "Which equation matches the line through A and B?";
+      prompt = "Which equation matches the line through $A$ and $B$?";
       figure = {
         kind: "coordinate-plane",
         xMin: -1,
@@ -153,26 +153,26 @@ export function generateChoiceProblem(
         ],
         lines: [{ m, b }],
       };
-      hint = `A sits on the y-axis at ${b}, so the line crosses the y-axis there. From A to B, x goes up by 2: how much does y go up?`;
+      hint = `A sits on the $y$-axis at ${b}, so the line crosses the $y$-axis there. From $A$ to $B$, $x$ goes up by 2: how much does $y$ go up?`;
       explanation = [
-        `A is (0, ${b}), so the y-intercept is ${b}. The rule must give y = ${b} when x = 0.`,
-        `From A to B, x increases by 2 and y increases by ${2 * m}. The slope is ${2 * m}/2 = ${m}.`,
-        `The rule is y = ${m}x + ${b}. Check B: ${m} × 2 + ${b} = ${b + 2 * m}.`,
+        `$A$ is (0, ${b}), so the $y$-intercept is ${b}. The rule must give y = ${b} when x = 0.`,
+        `From $A$ to $B$, $x$ increases by 2 and $y$ increases by ${2 * m}. The slope is ${2 * m}/2 = ${m}.`,
+        `The rule is y = ${m}x + ${b}. Check $B$: ${m} × 2 + ${b} = ${b + 2 * m}.`,
       ];
       choices = [
         { label: `y = ${m}x + ${b}`, correct: true },
         {
           label: `y = ${b}x + ${m}`,
-          feedback: `This swaps the slope and intercept. At x = 0 it gives y = ${m}, but A is at y = ${b}.`,
+          feedback: `This swaps the slope and intercept. At x = 0 it gives y = ${m}, but $A$ is at y = ${b}.`,
         },
         {
           label: `y = ${m}x`,
-          feedback: `This line would pass through (0, 0). The displayed line crosses the y-axis at ${b}.`,
+          feedback: `This line would pass through (0, 0). The displayed line crosses the $y$-axis at ${b}.`,
         },
         {
           label: `y = −${m}x + ${b}`,
           feedback:
-            "A negative slope falls as x increases. The displayed line rises from A to B.",
+            "A negative slope falls as $x$ increases. The displayed line rises from $A$ to $B$.",
         },
       ];
       break;

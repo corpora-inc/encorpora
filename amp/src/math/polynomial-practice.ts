@@ -234,13 +234,13 @@ export function generatePolynomialProblem(
     const termsA = a.filter(Boolean).length,
       termsB = b.filter(Boolean).length;
     hint = singleTermProduct
-      ? `Multiply the signed coefficients of ${format(a)} and ${format(b)}, and add their exponents of x.`
+      ? `Multiply the signed coefficients of ${format(a)} and ${format(b)}, and add their exponents of $x$.`
       : `Multiply ${termsA === 1 ? format(a) : `each of the ${termsA} terms of ${format(a)}`} by ${termsB === 1 ? format(b) : `each of the ${termsB} terms of ${format(b)}`}: ${termsA * termsB} products. Then combine like terms.`;
     const partials: Polynomial[] = [];
     explanation = [
       singleTermProduct
-        ? "Multiply the coefficients. The product of powers property adds exponents when multiplying powers with the same base, x."
-        : "Use the distributive property. In each term product, multiply coefficients and add exponents of powers with the same base, x.",
+        ? "Multiply the coefficients. The product of powers property adds exponents when multiplying powers with the same base, $x$."
+        : "Use the distributive property. In each term product, multiply coefficients and add exponents of powers with the same base, $x$.",
     ];
     for (let k = a.length - 1; k >= 0; k--) {
       if (!a[k]) continue;
@@ -278,20 +278,20 @@ export function generatePolynomialProblem(
         ...(hasLikeTerms
           ? combineSteps(partials[0]!, partials[1]!, "partial product")
           : [
-              "There are no like terms to combine: each nonzero term has a different power of x.",
+              "There are no like terms to combine: each nonzero term has a different power of $x$.",
             ]),
       );
     }
   } else {
     prompt = `Simplify (${format(a)}) ${subtract ? "−" : "+"} (${format(b)}).`;
     hint = subtract
-      ? `Subtracting (${format(b)}) means adding its opposite: change the sign of every one of its terms. Then combine terms with the same power of x.`
-      : `Match the terms of ${format(a)} and ${format(b)} by their power of x and add the coefficients; a missing power has coefficient 0.`;
+      ? `Subtracting (${format(b)}) means adding its opposite: change the sign of every one of its terms. Then combine terms with the same power of $x$.`
+      : `Match the terms of ${format(a)} and ${format(b)} by their power of $x$ and add the coefficients; a missing power has coefficient 0.`;
     const signedB = b.map((c) => (subtract ? -c : c));
     explanation = [
       subtract
         ? `Distribute −1 to every term of the second polynomial: −(${format(b)}) = ${format(signedB)}.`
-        : "Group like terms: terms with the same power of x. Add their coefficients without changing the power.",
+        : "Group like terms: terms with the same power of $x$. Add their coefficients without changing the power.",
     ];
     if (subtract)
       explanation.push(

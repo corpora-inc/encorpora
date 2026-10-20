@@ -419,15 +419,31 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const converted = expressionToTex(tex);
     // A command or a braced script is TeX; a currency amount has neither.
     const isTex = match[1] !== undefined || /\\[A-Za-z]+|[\^_]\{/.test(tex);
+    // Explicit math the conservative grammar declines (a point $D(−7, 5)$, a
+    // formula with a variable) is still math: KaTeX reads its Unicode
+    // operators. Only prose captured between two currency amounts has a word
+    // in it, or a space at its edge ("$3 and a book costs $").
+    const words = tex.replace(/\\[A-Za-z]+(?:\{[^}]*\})?/g, "");
+    const declined =
+      converted === null &&
+      !/^\s|\s$/.test(tex) &&
+      !/[A-Za-z]{3,}/.test(words) &&
+      /[A-Za-z=+−×÷/<>≤≥≠√]/.test(tex);
     const explicit =
-      isTex || (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
+      isTex ||
+      declined ||
+      (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
     if (!explicit) {
       // A currency marker must not consume the opening delimiter of later TeX.
       explicitPattern.lastIndex = match.index + 1;
       continue;
     }
     prose(text.slice(previous, match.index));
-    segments.push({ kind: "math", source, tex: isTex ? tex : converted! });
+    segments.push({
+      kind: "math",
+      source,
+      tex: isTex ? tex : declined ? tex.replaceAll("−", "-") : converted!,
+    });
     previous = match.index + source.length;
   }
   prose(text.slice(previous));

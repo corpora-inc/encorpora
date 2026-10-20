@@ -4,15 +4,15 @@ import type { ProblemMethod } from "./problem-lessons";
 const terms = {
   exponential: [
     "exponential function",
-    "y = a·bˣ: it starts at a and multiplies by the growth factor b for each step of 1 in x.",
+    "$y = a·b$ˣ: it starts at $a$ and multiplies by the growth factor $b$ for each step of 1 in $x$.",
   ] as [string, string],
   logarithm: [
     "logarithm",
-    "log_b N is the exponent p with b^p = N; log with no base means base 10, and ln means base e.",
+    "log_b N is the exponent $p$ with b^p = N; log with no base means base 10, and ln means base $e$.",
   ] as [string, string],
   ratio: [
     "common ratio",
-    "The number r each term is multiplied by to get the next.",
+    "The number $r$ each term is multiplied by to get the next.",
   ] as [string, string],
 };
 
@@ -21,12 +21,12 @@ export const exponentialLessons: Lesson[] = [
     id: "exponential-models",
     title: "Growth by a constant factor",
     summary:
-      "An exponential model multiplies by the same factor over each equal step: y = a·bˣ starts at a and multiplies by b.",
+      "An exponential model multiplies by the same factor over each equal step: $y = a·b$ˣ starts at $a$ and multiplies by $b$.",
     templateIds: ["exponential-model-value", "exponential-model-rule"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Find the starting value a and the growth factor b from a table, a graph or a story.",
-      "Turn a percent change into a factor: growing by p% multiplies by 1 + p/100; losing p% multiplies by 1 − p/100.",
+      "Find the starting value $a$ and the growth factor $b$ from a table, a graph or a story.",
+      "Turn a percent change into a factor: growing by $p$% multiplies by 1 + p/100; losing $p$% multiplies by 1 − p/100.",
       "Evaluate an exponential model at a later time.",
     ],
     sections: [
@@ -163,7 +163,7 @@ export const exponentialLessons: Lesson[] = [
     id: "sequence-sums",
     title: "Adding a geometric sequence",
     summary:
-      "The sum of n terms of a geometric sequence with first term a₁ and ratio r ≠ 1 is Sₙ = a₁(rⁿ − 1)/(r − 1).",
+      "The sum of $n$ terms of a geometric sequence with first term a₁ and ratio r ≠ 1 is Sₙ = a₁(rⁿ − 1)/(r − 1).",
     templateIds: ["geometric-series-sum"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -207,7 +207,7 @@ export const exponentialLessons: Lesson[] = [
     id: "logarithm-properties",
     title: "Logarithm rules",
     summary:
-      "Logarithms turn multiplication into addition: log(mn) = log m + log n, log(m/n) = log m − log n, log mᵖ = p·log m, and log_b N = log N / log b.",
+      "Logarithms turn multiplication into addition: log(mn) = log $m$ + log $n$, $\\log(\\tfrac{m}{n}) = \\log m - \\log n, \\log m^{p} = p\\cdot \\log m$, and $\\log_{b} N = \\log N / \\log b$.",
     templateIds: ["log-rules-evaluate", "log-expand", "change-of-base"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -270,7 +270,7 @@ export const exponentialLessons: Lesson[] = [
       {
         title: "Count the steps, not the term number",
         paragraphs: [
-          "From term 1 to term 5 there are four multiplication steps. Thus term n is a₁ × r^(n − 1).",
+          "From term 1 to term 5 there are four multiplication steps. Thus term $n$ is a₁ × r^(n − 1).",
           "A recursive rule such as $a_n = 3a_{n-1}$ gives the same sequence one step at a time. Between two known terms, the ratio is applied once per step: from $a_2$ to $a_5$ is three steps, so $\\frac{a_5}{a_2} = r^3$.",
         ],
       },
@@ -285,7 +285,7 @@ export const exponentialLessons: Lesson[] = [
       answer: "48",
     },
     pitfalls: [
-      "Using exponent n instead of n − 1 advances one term too far.",
+      "Using exponent $n$ instead of n − 1 advances one term too far.",
       "Adding the common ratio does not generate a geometric sequence.",
     ],
     parentGuide:
@@ -294,7 +294,7 @@ export const exponentialLessons: Lesson[] = [
   {
     id: "logarithms",
     title: "Ask for the exponent",
-    summary: "A logarithm reverses exponentiation: log_b N is the power of b that gives N.",
+    summary: "A logarithm reverses exponentiation: log_b N is the power of $b$ that gives $N$.",
     templateIds: [
       "logarithm-integer",
       "logarithm-value",
@@ -325,7 +325,7 @@ export const exponentialLessons: Lesson[] = [
     workedExample: {
       prompt: "What is log base 3 of 81?",
       steps: [
-        "Find p such that 3^p = 81.",
+        "Find $p$ such that 3^p = 81.",
         "3 × 3 × 3 × 3 = 81.",
         "There are four factors, so p = 4.",
       ],
@@ -345,19 +345,19 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     goal: "Given an exponential model as a table, a percent rate, a half-life or a formula, find its value at a later time.",
     terms: [terms.exponential],
     method: [
-      "Find the starting value a and the factor b for one step: a percent increase p% gives b = 1 + p/100, a halving gives b = 1/2.",
+      "Find the starting value $a$ and the factor $b$ for one step: a percent increase $p$% gives b = 1 + p/100, a halving gives b = 1/2.",
       "Count the steps to the requested time.",
-      "Multiply a by b once per step: y = a·b^steps.",
+      "Multiply a by $b$ once per step: $y = a·b$^steps.",
     ],
     watch:
       "Multiply by the factor each step; adding the same percent of the start every step is linear, not exponential.",
   },
   "exponential-model-rule": {
-    goal: "Given a table, a graph or a story, choose the equation y = a·bˣ that fits it.",
+    goal: "Given a table, a graph or a story, choose the equation $y = a·b$ˣ that fits it.",
     terms: [terms.exponential],
     method: [
-      "a is the value at x = 0: read it from the table or graph, or the story's starting amount.",
-      "b is the factor per step: divide a value by the one before it, or turn the percent change into 1 ± p/100.",
+      "$a$ is the value at x = 0: read it from the table or graph, or the story's starting amount.",
+      "$b$ is the factor per step: divide a value by the one before it, or turn the percent change into 1 ± p/100.",
       "Check the chosen equation at another point.",
     ],
     watch:
@@ -366,7 +366,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
   "linear-or-exponential": {
     goal: "Given a table or a story, decide whether the change is linear, exponential or neither.",
     method: [
-      "Make sure the steps in x are equal.",
+      "Make sure the steps in $x$ are equal.",
       "Equal differences between consecutive outputs mean linear; equal ratios mean exponential.",
       "If neither the differences nor the ratios are constant, it is neither.",
     ],
@@ -378,12 +378,12 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     method: [
       "Write both functions (or continue both patterns) at x = 0, 1, 2, ….",
       "Compare their values one step at a time.",
-      "The first x where the exponential is greater is the answer; after that it stays ahead.",
+      "The first $x$ where the exponential is greater is the answer; after that it stays ahead.",
     ],
     watch: "The function that starts larger does not stay larger; keep comparing until the order changes.",
   },
   "same-base-equation": {
-    goal: "Given an exponential equation whose sides are powers of one base, find x exactly.",
+    goal: "Given an exponential equation whose sides are powers of one base, find $x$ exactly.",
     method: [
       "Write each side as a power of the same base, including reciprocals as negative powers.",
       "Multiply out any power of a power.",
@@ -397,8 +397,8 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     terms: [terms.logarithm],
     method: [
       "Isolate the power: divide away any coefficient, and set aside any shift in the exponent.",
-      "Name the exponent with a logarithm whose base is the base of the power: bˣ = k gives x = log_b k.",
-      "Undo any remaining shift or coefficient on x.",
+      "Name the exponent with a logarithm whose base is the base of the power: bˣ = $k$ gives x = log_b k.",
+      "Undo any remaining shift or coefficient on $x$.",
     ],
     watch:
       "Divide by the coefficient before taking the logarithm; the base of the power is the base of the log.",
@@ -408,7 +408,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     terms: [terms.logarithm],
     method: [
       "Combine logs with the same base into one, using the product or quotient rule.",
-      "Rewrite log_b(stuff) = n as stuff = bⁿ and solve.",
+      "Rewrite log_b(stuff) = $n$ as stuff = bⁿ and solve.",
       "Reject any candidate that makes a logarithm's argument zero or negative.",
     ],
     watch:
@@ -418,22 +418,22 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     goal: "Given a finite geometric series, find its sum.",
     terms: [terms.ratio],
     method: [
-      "Identify the first term a₁ and the ratio r.",
-      "Count the terms n.",
+      "Identify the first term a₁ and the ratio $r$.",
+      "Count the terms $n$.",
       "Sₙ = a₁(rⁿ − 1)/(r − 1), or a₁(1 − rⁿ)/(1 − r) when r < 1.",
     ],
-    watch: "n is the number of terms; the last term is a₁·rⁿ⁻¹, so its exponent is n − 1.",
+    watch: "$n$ is the number of terms; the last term is a₁·rⁿ⁻¹, so its exponent is n − 1.",
   },
   "log-rules-evaluate": {
     goal: "Given a sum, difference or multiple of logarithms with one base, find its value.",
     terms: [terms.logarithm],
     method: [
-      "Move any coefficient inside as an exponent: p·log_b m = log_b mᵖ.",
+      "Move any coefficient inside as an exponent: $p\\cdot \\log_{b} m = \\log_{b} m^{p}$.",
       "Combine: a sum multiplies the arguments, a difference divides them.",
       "Write the single argument as a power of the base; its exponent is the value.",
     ],
     watch:
-      "The rules need one base, and they combine products and quotients: log(m + n) cannot be split.",
+      "The rules need one base, and they combine products and quotients: $\\log(m + n)$ cannot be split.",
   },
   "log-expand": {
     goal: "Given a logarithm of a product, quotient or root, or a combination of logarithms, choose the equivalent form.",
@@ -450,11 +450,11 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     goal: "Given a logarithm in an awkward base, or a product or quotient of logs, find its value.",
     terms: [terms.logarithm],
     method: [
-      "log_b N = log_c N ÷ log_c b for any base c.",
-      "Choose c so both logs are easy: often the prime that b and N are powers of.",
+      "log_b N = log_c N ÷ log_c b for any base $c$.",
+      "Choose $c$ so both logs are easy: often the prime that $b$ and $N$ are powers of.",
       "Divide, or cancel the common logs.",
     ],
-    watch: "log_b N is log N ÷ log b, with the base in the denominator.",
+    watch: "log_b N is $\\log N \\div  \\log b$, with the base in the denominator.",
   },
   "logarithm-value": {
     goal: "Given a logarithm of a reciprocal, root, decimal or a point on its graph, find its exact value.",
@@ -470,17 +470,17 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     terms: [terms.logarithm],
     method: [
       "log_b N = p and bᵖ = N say the same thing: the base stays the base, and the logarithm is the exponent.",
-      "To place log_b N, list powers of b until one passes N; the logarithm is between the exponents on either side.",
+      "To place log_b N, list powers of $b$ until one passes $N$; the logarithm is between the exponents on either side.",
     ],
-    watch: "The result N goes inside the logarithm; the exponent is the logarithm's value.",
+    watch: "The result $N$ goes inside the logarithm; the exponent is the logarithm's value.",
   },
   "geometric-sequence-rule": {
     goal: "Given terms or a rule of a geometric sequence, find the ratio, a missing term or another term.",
     terms: [terms.ratio],
     method: [
-      "The ratio r is any term divided by the term before it.",
-      "Between terms k steps apart, the quotient is rᵏ.",
-      "Multiply by r once per step forward, or divide once per step back.",
+      "The ratio $r$ is any term divided by the term before it.",
+      "Between terms $k$ steps apart, the quotient is rᵏ.",
+      "Multiply by $r$ once per step forward, or divide once per step back.",
     ],
     watch:
       "Keep the sign: a ratio can be negative, so terms may alternate in sign.",

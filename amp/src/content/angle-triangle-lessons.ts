@@ -4,7 +4,7 @@ import type { ProblemMethod } from "./problem-lessons";
 const angleWords: Lesson["sections"][number] = {
   title: "Rays, angles and degrees",
   paragraphs: [
-    "A ray starts at a point and goes on forever in one direction. Two rays that start at the same point, the vertex, form an angle. ∠AOB names the angle whose vertex is O and whose rays pass through A and B; the vertex letter is always in the middle. m∠AOB, or just ∠AOB in a sentence about size, means its measure in degrees.",
+    "A ray starts at a point and goes on forever in one direction. Two rays that start at the same point, the vertex, form an angle. ∠AOB names the angle whose vertex is $O$ and whose rays pass through $A$ and $B$; the vertex letter is always in the middle. $m$∠AOB, or just ∠AOB in a sentence about size, means its measure in degrees.",
     "A full turn around a point is 360°. Half a turn, a straight angle, is 180°: its two rays point in opposite directions and form a straight line. A quarter turn, a right angle, is 90° and is marked with a small square.",
   ],
 };
@@ -19,7 +19,7 @@ export const angleTriangleLessons: Lesson[] = [
     includeGeneratedRepresentation: false,
     objectives: [
       "Recognize supplementary, complementary, adjacent and vertical angles.",
-      "Write and solve an equation for an unknown angle, including angles given as expressions in x.",
+      "Write and solve an equation for an unknown angle, including angles given as expressions in $x$.",
     ],
     sections: [
       angleWords,
@@ -41,14 +41,14 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "From a relationship to an equation",
         paragraphs: [
-          "When angles are given as expressions such as (3x + 12)°, write the relationship as an equation in x: parts of a straight angle add to 180, parts of a right angle add to 90, and vertical angles are equal. Solve the equation, then substitute x back into each expression to find the angles and to check that they fit the relationship.",
+          "When angles are given as expressions such as (3x + 12)°, write the relationship as an equation in $x$: parts of a straight angle add to 180, parts of a right angle add to 90, and vertical angles are equal. Solve the equation, then substitute $x$ back into each expression to find the angles and to check that they fit the relationship.",
           "For vertical angles marked (4x − 6)° and (2x + 30)°, write 4x − 6 = 2x + 30. Subtract 2x from both sides: 2x − 6 = 30. Add 6: 2x = 36, so x = 18. Each angle measures 4(18) − 6 = 66°, and 2(18) + 30 = 66° checks.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "Points A, O and B lie on a straight line, and ray OC is drawn from O. ∠AOC measures (3x + 12)° and ∠COB measures (2x − 7)°. What is the value of x?",
+        "Points $A$, $O$ and $B$ lie on a straight line, and ray OC is drawn from $O$. ∠AOC measures (3x + 12)° and ∠COB measures (2x − 7)°. What is the value of $x$?",
       steps: [
         "∠AOC and ∠COB are a linear pair, so they add to 180°: (3x + 12) + (2x − 7) = 180.",
         "Combine like terms: 5x + 5 = 180.",
@@ -58,7 +58,7 @@ export const angleTriangleLessons: Lesson[] = [
       answer: "35",
     },
     pitfalls: [
-      "x is not an angle: after solving, substitute it to find a measure if the question asks for one.",
+      "$x$ is not an angle: after solving, substitute it to find a measure if the question asks for one.",
       "Vertical angles are equal; angles side by side along a line add to 180°. Check which pair you have before writing the equation.",
       "Read the middle letter of ∠AOC as the vertex.",
     ],
@@ -94,28 +94,28 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "Why a triangle's angles add to 180°",
         paragraphs: [
-          "A triangle has three sides and three interior angles. Draw the line through C parallel to side AB. Along that line, three angles at C fill a straight angle: the triangle's ∠C in the middle, and one on each side.",
-          "The angle beside ∠C on the A side is an alternate interior angle to ∠A, using transversal AC, so it equals ∠A. In the same way, the angle on the B side equals ∠B. The three angles fill a straight angle, so ∠A + ∠B + ∠C = 180°. It is the same as tearing off the three corners of a paper triangle and laying them side by side along a line.",
+          "A triangle has three sides and three interior angles. Draw the line through $C$ parallel to side AB. Along that line, three angles at $C$ fill a straight angle: the triangle's ∠$C$ in the middle, and one on each side.",
+          "The angle beside ∠$C$ on the $A$ side is an alternate interior angle to ∠$A$, using transversal AC, so it equals ∠$A$. In the same way, the angle on the $B$ side equals ∠$B$. The three angles fill a straight angle, so ∠$A$ + ∠$B$ + ∠$C = 180$°. It is the same as tearing off the three corners of a paper triangle and laying them side by side along a line.",
         ],
         illustration: "triangle-sum-line",
       },
       {
         title: "Exterior angles",
         paragraphs: [
-          "Extend side AB past B to a point D. The angle ∠CBD between the extension and side BC is an exterior angle of the triangle. ∠A and ∠C are its remote interior angles: the two interior angles not at B.",
-          "The exterior angle and ∠B form a straight angle, so ∠CBD = 180° − ∠B. The angle sum gives ∠A + ∠C = 180° − ∠B too. So an exterior angle equals the sum of the two remote interior angles: ∠CBD = ∠A + ∠C.",
+          "Extend side AB past $B$ to a point $D$. The angle ∠CBD between the extension and side BC is an exterior angle of the triangle. ∠$A$ and ∠$C$ are its remote interior angles: the two interior angles not at $B$.",
+          "The exterior angle and ∠$B$ form a straight angle, so ∠CBD = 180° − ∠$B$. The angle sum gives ∠$A$ + ∠$C = 180$° − ∠$B$ too. So an exterior angle equals the sum of the two remote interior angles: ∠CBD = ∠$A$ + ∠$C$.",
         ],
         illustration: "exterior-angle",
       },
     ],
     workedExample: {
       prompt:
-        "In triangle ABC, side AB is extended past B to point D. ∠A measures 48° and ∠CBD measures 113°. What is the measure of ∠C, in degrees?",
+        "In triangle ABC, side AB is extended past $B$ to point $D$. ∠$A$ measures 48° and ∠CBD measures 113°. What is the measure of ∠$C$, in degrees?",
       steps: [
-        "∠CBD is an exterior angle; ∠A and ∠C are its remote interior angles, so ∠CBD = ∠A + ∠C.",
-        "113° = 48° + ∠C.",
-        "∠C = 113° − 48° = 65°.",
-        "Check with the angle sum: ∠B = 180° − 113° = 67°, and 48° + 67° + 65° = 180°.",
+        "∠CBD is an exterior angle; ∠$A$ and ∠$C$ are its remote interior angles, so ∠CBD = ∠$A$ + ∠$C$.",
+        "113° = 48° + ∠$C$.",
+        "∠$C = 113$° − 48° = 65°.",
+        "Check with the angle sum: ∠$B = 180$° − 113° = 67°, and 48° + 67° + 65° = 180°.",
       ],
       answer: "65",
       answerUnit: "degrees",
@@ -156,7 +156,7 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "Possible third sides",
         paragraphs: [
-          "When two sides a and b are known, the third side s must be shorter than their sum, s < a + b, and longer than their difference, s > a − b for a larger than b. For sides 5 cm and 9 cm: 4 < s < 14, so the whole-number lengths 5 through 13 work.",
+          "When two sides $a$ and $b$ are known, the third side $s$ must be shorter than their sum, s < a + b, and longer than their difference, s > a − b for a larger than $b$. For sides 5 cm and 9 cm: 4 < s < 14, so the whole-number lengths 5 through 13 work.",
           "The difference bound comes from the same rule applied to the longer given side: 9 < 5 + s, so s > 4. Both bounds are strict, because a third side of exactly 4 cm or 14 cm would make the three sides lie flat. Counting the whole numbers from 5 through 13 gives 13 − 5 + 1 = 9 possible lengths.",
         ],
       },
@@ -172,7 +172,7 @@ export const angleTriangleLessons: Lesson[] = [
       prompt:
         "Two sides of a triangle measure 6 cm and 10 cm. The third side is a whole number of centimeters. How many different lengths are possible for the third side?",
       steps: [
-        "The third side s must be shorter than 6 + 10 = 16.",
+        "The third side $s$ must be shorter than 6 + 10 = 16.",
         "It must be longer than 10 − 6 = 4, so that 6 + s is more than 10.",
         "The whole numbers from 5 through 15 work: 15 − 5 + 1 = 11 lengths.",
       ],
@@ -255,7 +255,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "Opposite angles at a crossing are equal; angles side by side on a line add to 180°.",
   },
   "angle-equation": {
-    goal: "Write an equation from an angle relationship, solve for x, and find an angle if asked.",
+    goal: "Write an equation from an angle relationship, solve for $x$, and find an angle if asked.",
     terms: [
       [
         "adjacent angles",
@@ -268,14 +268,14 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Choose the relationship: parts add to the whole, or vertical angles are equal.",
-      "Write the equation with the expressions and solve for x.",
-      "Substitute x into the expression for the asked angle and check.",
+      "Write the equation with the expressions and solve for $x$.",
+      "Substitute $x$ into the expression for the asked angle and check.",
     ],
     watch:
-      "Answer what is asked: x, or the angle's measure after substituting x.",
+      "Answer what is asked: $x$, or the angle's measure after substituting $x$.",
   },
   "triangle-angle-sum": {
-    goal: "Find an unknown angle of a triangle, or the value of x, from the 180° angle sum.",
+    goal: "Find an unknown angle of a triangle, or the value of $x$, from the 180° angle sum.",
     terms: [
       [
         "interior angle",
@@ -283,7 +283,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write ∠A + ∠B + ∠C = 180 with the given measures or expressions.",
+      "Write ∠$A$ + ∠$B$ + ∠$C = 180$ with the given measures or expressions.",
       "Solve for the unknown.",
       "Check that the three angles add to 180°.",
     ],

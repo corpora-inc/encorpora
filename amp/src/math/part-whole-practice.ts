@@ -9,12 +9,12 @@ import { snakeRegions, type PartitionedShape } from "./part-whole-models";
 type Response = "choice" | "fraction" | "number";
 // id | title | skill | grade band | response | description
 const rows = `
-find-equal-shares|Find halves or quarters|halves-and-quarters|K–2|choice|Pick the shape cut into two or four equal parts from a shape with unequal parts and a shape with a different number of equal parts.
-name-equal-share|Name halves and quarters|halves-and-quarters|K–2|choice|Name the shaded part of a circle, square or rectangle cut into two or four equal parts.
-larger-share|Halves and quarters of one size|halves-and-quarters|K–2|choice|Decide whether one half or one quarter of two same-size shapes is larger or smaller.
-find-equal-thirds|Find halves, thirds or quarters|thirds-and-partitions|K–2|choice|Pick the shape cut into two, three or four equal parts from a shape with unequal parts and a shape with a different number of equal parts.
-name-share|Name halves, thirds and quarters|thirds-and-partitions|K–2|choice|Name the shaded part of a shape cut into two, three or four equal parts, including a whole as all of its parts.
-same-share-different-shape|Equal shares, different shapes|thirds-and-partitions|K–2|choice|Compare one equal share of two same-size wholes cut in different ways, with the same or a different number of parts.
+find-equal-shares|Find halves or quarters|halves-and-quarters|$K$–2|choice|Pick the shape cut into two or four equal parts from a shape with unequal parts and a shape with a different number of equal parts.
+name-equal-share|Name halves and quarters|halves-and-quarters|$K$–2|choice|Name the shaded part of a circle, square or rectangle cut into two or four equal parts.
+larger-share|Halves and quarters of one size|halves-and-quarters|$K$–2|choice|Decide whether one half or one quarter of two same-size shapes is larger or smaller.
+find-equal-thirds|Find halves, thirds or quarters|thirds-and-partitions|$K$–2|choice|Pick the shape cut into two, three or four equal parts from a shape with unequal parts and a shape with a different number of equal parts.
+name-share|Name halves, thirds and quarters|thirds-and-partitions|$K$–2|choice|Name the shaded part of a shape cut into two, three or four equal parts, including a whole as all of its parts.
+same-share-different-shape|Equal shares, different shapes|thirds-and-partitions|$K$–2|choice|Compare one equal share of two same-size wholes cut in different ways, with the same or a different number of parts.
 equal-area-fraction|An equal-area part as a fraction|partition-area|3–5|fraction|Name one of several equal-area grid regions of different shapes as a unit fraction of the rectangle's area.
 equal-area-part-size|Area of one equal part|partition-area|3–5|number|Find the area of one part when a rectangle of known area is split into a counted number of equal-area parts.
 compare-like-denominators|Compare same-size pieces|compare-fractions|3–5|fraction|Choose the greater or lesser of two fractions of one whole with the same denominator.

@@ -196,7 +196,7 @@ function circleCase(r: Random): Case {
         title: "A circle with center C through P",
         steps: [
           step(
-            "The radius is the distance from the center C to P.",
+            "The radius is the distance from the center $C$ to $P$.",
             act.trace("g.segment.0"),
           ),
           step(
@@ -208,13 +208,13 @@ function circleCase(r: Random): Case {
     const read = mode === 3;
     return {
       prompt: read
-        ? `The graph shows a circle with center C and a point P on it. Its equation is (x − a)² + (y − b)² = c. What is c?`
+        ? `The graph shows a circle with center $C$ and a point $P$ on it. Its equation is (x − a)² + (y − b)² = c. What is $c$?`
         : `A circle has center ${pt([h, k])} and passes through ${pt(P)}. Its equation is ${math(`${sq("x", h)} + ${sq("y", k)} = r²`)}. What is r²?`,
       answer: q(r2),
       explanation: [
         read
           ? `From the graph, C = ${pt([h, k])} and P = ${pt(P)}.`
-          : `r is the distance from the center ${pt([h, k])} to ${pt(P)}.`,
+          : `$r$ is the distance from the center ${pt([h, k])} to ${pt(P)}.`,
         `r² = (${n(P[0])} − ${n(h)})² + (${n(P[1])} − ${n(k)})² = ${dx}² + ${dy}² = ${r2}.`.replace(
           /− −/g,
           "+ ",
@@ -222,8 +222,8 @@ function circleCase(r: Random): Case {
         `r² = ${r2}.`,
       ],
       hint: read
-        ? "Read the center C and the point P from the grid. The squared radius is (change in x)² + (change in y)²."
-        : `The radius runs from ${pt([h, k])} to ${pt(P)}. Square the change in x and the change in y, and add.`,
+        ? "Read the center $C$ and the point $P$ from the grid. The squared radius is (change in $x$)² + (change in $y$)²."
+        : `The radius runs from ${pt([h, k])} to ${pt(P)}. Square the change in $x$ and the change in $y$, and add.`,
       tags: [read ? "graph" : "center-point"],
       figure,
       label: read ? "c" : "r²",
@@ -240,7 +240,7 @@ function circleCase(r: Random): Case {
       }`,
       answer: q(ask === "radius" ? rr : ask === "x" ? h : k),
       explanation: [
-        `Compare with ${math("(x − h)² + (y − k)² = r²")}: the center is (h, k) and r² is the right side.`,
+        `Compare with ${math("(x − h)² + (y − k)² = r²")}: the center is $(h, k)$ and r² is the right side.`,
         `Matching ${shift("x", h)} with x − h gives h = ${n(h)}; matching ${shift("y", k)} with y − k gives k = ${n(k)}. So the center is ${pt([h, k])}, and the radius is the square root of ${rr * rr}: r = ${rr}.`,
         ask === "radius"
           ? `The radius is ${rr}.`
@@ -269,7 +269,7 @@ function circleCase(r: Random): Case {
     }`,
     answer: q(ask === "radius" ? rr : ask === "x" ? h : k),
     explanation: [
-      `Group and complete each square: add (half the x-coefficient)² = ${h * h} and (half the y-coefficient)² = ${k * k} to both sides.`,
+      `Group and complete each square: add (half the $x$-coefficient)² = ${h * h} and (half the $y$-coefficient)² = ${k * k} to both sides.`,
       `${math(`${sq("x", h)} + ${sq("y", k)} = ${n(-F)} + ${h * h} + ${k * k} = ${rr * rr}`)}.`
         .replace("+ 0 + 0 ", "")
         .replace(/= (−?\d+) \+ 0 \+ /, "= $1 + "),
@@ -277,7 +277,7 @@ function circleCase(r: Random): Case {
         ? `r² = ${rr * rr}, so the radius is ${rr}.`
         : `The center is ${pt([h, k])}, so its ${ask}-coordinate is ${n(ask === "x" ? h : k)}.`,
     ],
-    hint: `Complete the square in x and in y: the x-coefficient ${n(D)} halves to ${n(D / 2)}, and the y-coefficient ${n(E)} halves to ${n(E / 2)}.`,
+    hint: `Complete the square in $x$ and in $y$: the $x$-coefficient ${n(D)} halves to ${n(D / 2)}, and the $y$-coefficient ${n(E)} halves to ${n(E / 2)}.`,
     tags: ["general", ask],
     label: ask === "radius" ? "Radius" : `${ask}-coordinate`,
   };
@@ -421,7 +421,7 @@ function polygonCase(r: Random): Case {
     answer: q(area2, 2),
     explanation: [
       `Enclose it in a ${W} × ${H} rectangle, area ${W * H}.`,
-      `Subtract the corner pieces, or use the shoelace sum around A, B, C, D: ${shoelace(
+      `Subtract the corner pieces, or use the shoelace sum around $A$, $B$, $C$, $D$: ${shoelace(
         P,
       )
         .terms.map((t) => `(${t.text})`)
@@ -460,22 +460,22 @@ function partitionCase(r: Random): Case {
   const w = windowFor([A, B], 1);
   return {
     prompt: asRatio
-      ? `Point P is on segment AB, with A${pt(A)} and B${pt(B)}, and divides it so that AP : PB = ${m} : ${k}. What is the ${name}-coordinate of P?`
-      : `Point P is ${frac(t)} of the way from A${pt(A)} to B${pt(B)}. What is the ${name}-coordinate of P?`,
+      ? `Point $P$ is on segment AB, with A${pt(A)} and B${pt(B)}, and divides it so that AP : PB = ${m} : ${k}. What is the ${name}-coordinate of $P$?`
+      : `Point $P$ is ${frac(t)} of the way from A${pt(A)} to B${pt(B)}. What is the ${name}-coordinate of $P$?`,
     answer,
     explanation: [
       asRatio
-        ? `With AP : PB = ${m} : ${k}, AB has ${total} equal parts, and P is ${m} ${m === 1 ? "part" : "parts"} from A: ${frac(t)} of the way.`
-        : `P is ${frac(t)} of the way along AB.`,
-      `The ${name}-coordinate changes by ${n(run)} from A to B; ${frac(t)} of that is ${frac(q(run * m, total))}.`,
+        ? `With AP : PB = ${m} : ${k}, AB has ${total} equal parts, and $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$: ${frac(t)} of the way.`
+        : `$P$ is ${frac(t)} of the way along AB.`,
+      `The ${name}-coordinate changes by ${n(run)} from $A$ to $B$; ${frac(t)} of that is ${frac(q(run * m, total))}.`,
       `${n(A[axis]!)} + ${frac(q(run * m, total))} = ${frac(answer)}.`.replace(
         "+ −",
         "− ",
       ),
     ],
     hint: asRatio
-      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; P is ${m} ${m === 1 ? "part" : "parts"} from A. Take that fraction of the change in ${name} and add it to A's ${name}.`
-      : `Take ${frac(t)} of the change in ${name} from A to B, then add it to A's ${name}-coordinate.`,
+      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in ${name} and add it to A's ${name}.`
+      : `Take ${frac(t)} of the change in ${name} from $A$ to $B$, then add it to A's ${name}-coordinate.`,
     tags: [asRatio ? "ratio" : "fraction", `axis-${name}`],
     figure: graph({ x: w.x, y: w.y, tick: w.tick })
       .id("g")
@@ -487,11 +487,11 @@ function partitionCase(r: Random): Case {
         title: "Segment AB",
         steps: [
           step(
-            "From A to B: the run and the rise.",
+            "From $A$ to $B$: the run and the rise.",
             act.highlight("g.slope.0"),
           ),
           step(
-            `P keeps the same fraction of each: ${frac(t)} of the run and ${frac(t)} of the rise.`,
+            `$P$ keeps the same fraction of each: ${frac(t)} of the run and ${frac(t)} of the rise.`,
             light("g.segment.0", "accent"),
           ),
         ],
@@ -564,13 +564,13 @@ function slopeCase(r: Random): Case {
     const s = parallel ? m : perp;
     const b = q(P[1] * s.d - s.n * P[0], s.d);
     return {
-      prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. The line through P${pt(P)} ${parallel ? "parallel" : "perpendicular"} to ℓ has equation y = mx + b. What is b?`,
+      prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. The line through P${pt(P)} ${parallel ? "parallel" : "perpendicular"} to ℓ has equation y = mx + b. What is $b$?`,
       answer: b,
       explanation: [
         `Slope of ℓ: ${frac(m)}. The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
-        `Through P: ${n(P[1])} = ${frac(s)} × ${n(P[0])} + b, so b = ${n(P[1])} ${s.n * P[0] < 0 ? "+" : "−"} ${frac(q(Math.abs(s.n * P[0]), s.d))} = ${frac(b)}.`,
+        `Through $P$: ${n(P[1])} = ${frac(s)} × ${n(P[0])} + b, so $b = ${n(P[1])} ${s.n * P[0] < 0 ? "+" : "−"} ${frac(q(Math.abs(s.n * P[0]), s.d))} = ${frac(b)}$.`,
       ],
-      hint: `First the slope: ${parallel ? "equal to ℓ's" : "the negative reciprocal of ℓ's"}. Then put P${pt(P)} into y = mx + b and solve for b.`,
+      hint: `First the slope: ${parallel ? "equal to ℓ's" : "the negative reciprocal of ℓ's"}. Then put P${pt(P)} into y = mx + b and solve for $b$.`,
       tags: [parallel ? "parallel-line" : "perpendicular-line"],
       figure: base(),
       label: "b",
@@ -580,17 +580,17 @@ function slopeCase(r: Random): Case {
   const C: Point = [A[0], A[1]];
   const D: Point = [A[0] - rise * 2, A[1] + runV * 2];
   return {
-    prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. Line j passes through C${pt(C)} and D(${n(D[0])}, k). For which value of k is j perpendicular to ℓ?`,
+    prompt: `Line ℓ passes through A${pt(A)} and B${pt(B)}. Line $j$ passes through C${pt(C)} and $D(${n(D[0])}, k)$. For which value of $k$ is $j$ perpendicular to ℓ?`,
     answer: q(D[1]),
     explanation: [
-      `Slope of ℓ: ${frac(m)}, so j needs slope ${frac(perp)}.`,
-      `Slope of j: (k − ${n(C[1])}) ÷ (${n(D[0])} − ${n(C[0])}) = ${frac(perp)}, so k − ${n(C[1])} = ${frac(perp)} × ${n(D[0] - C[0])} = ${n(D[1] - C[1])}.`.replace(
+      `Slope of ℓ: ${frac(m)}, so $j$ needs slope ${frac(perp)}.`,
+      `Slope of $j: (k − ${n(C[1])}) ÷ (${n(D[0])} − ${n(C[0])}) = ${frac(perp)}$, so k − ${n(C[1])} = ${frac(perp)} × ${n(D[0] - C[0])} = ${n(D[1] - C[1])}.`.replace(
         /− −/g,
         "+ ",
       ),
       `k = ${n(D[1])}.`,
     ],
-    hint: `j must have slope −1 ÷ (slope of ℓ). Write j's slope from C and D with k in it, and set the two equal.`,
+    hint: `$j$ must have slope −1 ÷ (slope of ℓ). Write j's slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
     tags: ["missing-coordinate"],
     figure: base(),
     label: "k",
@@ -610,8 +610,8 @@ function circleAngleCase(r: Random): Case {
     const inscribed = central / 2;
     return {
       prompt: fromCentral
-        ? `In circle O, central angle AOB measures ${central}°, and C is on the circle but not on arc AB, the arc inside angle AOB. What is the measure of inscribed angle ACB, in degrees?`
-        : `In circle O, inscribed angle ACB measures ${inscribed}°. What is the measure of central angle AOB, in degrees, on the same arc AB?`,
+        ? `In circle $O$, central angle AOB measures ${central}°, and $C$ is on the circle but not on arc AB, the arc inside angle AOB. What is the measure of inscribed angle ACB, in degrees?`
+        : `In circle $O$, inscribed angle ACB measures ${inscribed}°. What is the measure of central angle AOB, in degrees, on the same arc AB?`,
       answer: q(fromCentral ? inscribed : central),
       explanation: [
         "An inscribed angle and a central angle on the same arc: the inscribed angle is half the central angle.",
@@ -677,13 +677,13 @@ function circleAngleCase(r: Random): Case {
     // ∠CAB is half of arc CB: C sits at 2x° when B is at 0° and A at 180°.
     const c0 = 2 * x;
     return {
-      prompt: `AB is a diameter of circle O, and C is another point on the circle. ∠CAB = ${x}°. What is the measure of ∠CBA, in degrees?`,
+      prompt: `AB is a diameter of circle $O$, and $C$ is another point on the circle. ∠CAB = ${x}°. What is the measure of ∠CBA, in degrees?`,
       answer: q(90 - x),
       explanation: [
         "An angle inscribed in a semicircle is a right angle: ∠ACB stands on the 180° arc, so it measures 180° ÷ 2 = 90°.",
         `The angles of triangle ABC add to 180°: ∠CBA = 180° − 90° − ${x}° = ${90 - x}°.`,
       ],
-      hint: `AB is a diameter, so the angle at C is special. Then use the triangle's angle sum with ${x}°.`,
+      hint: `AB is a diameter, so the angle at $C$ is special. Then use the triangle's angle sum with ${x}°.`,
       tags: ["semicircle"],
       figure: circleDiagram({
         points: [
@@ -732,11 +732,11 @@ function circleAngleCase(r: Random): Case {
     const pAngle = tAngle - (Math.acos(radius / c) * 180) / Math.PI;
     return {
       prompt: askTangent
-        ? `PT is tangent to circle O at T. The radius is ${a} and OP = ${c}. How long is PT?`
-        : `PT is tangent to circle O at T. PT = ${b} and OP = ${c}. What is the radius of the circle?`,
+        ? `PT is tangent to circle $O$ at $T$. The radius is ${a} and OP = ${c}. How long is PT?`
+        : `PT is tangent to circle $O$ at $T$. PT = ${b} and OP = ${c}. What is the radius of the circle?`,
       answer: q(askTangent ? b : a),
       explanation: [
-        "A tangent is perpendicular to the radius at the point of tangency, so triangle OTP has a right angle at T, with hypotenuse OP.",
+        "A tangent is perpendicular to the radius at the point of tangency, so triangle OTP has a right angle at $T$, with hypotenuse OP.",
         askTangent
           ? `PT = √(${c}² − ${a}²) = √${c * c - a * a} = ${b}.`
           : `OT = √(${c}² − ${b}²) = √${c * c - b * b} = ${a}.`,
@@ -784,7 +784,7 @@ function circleAngleCase(r: Random): Case {
   const c0 = (b0 + rest * 0.3) % 360,
     d0 = (b0 + rest * 0.7) % 360;
   return {
-    prompt: `Points A, B, C and D are on a circle, with C and D on the same side of chord AB. ∠ACB = ${x}°. What is the measure of ∠ADB, in degrees?`,
+    prompt: `Points $A$, $B$, $C$ and $D$ are on a circle, with $C$ and $D$ on the same side of chord AB. ∠ACB = ${x}°. What is the measure of ∠ADB, in degrees?`,
     answer: q(x),
     explanation: [
       "Both angles are inscribed angles on the same arc AB.",

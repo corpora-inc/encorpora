@@ -22,23 +22,23 @@ export const coordinateCircleLessons: Lesson[] = [
       {
         title: "A circle is a distance",
         paragraphs: [
-          "A circle with center (h, k) and radius r is every point (x, y) at distance r from the center. The distance formula, squared, gives its equation: (x − h)² + (y − k)² = r².",
-          "Read the center from the signs: (x + 3) is x − (−3), so h = −3. The right side is r², not r. In the form x² + y² + Dx + Ey + F = 0, complete the square in x and in y to find the center and radius.",
+          "A circle with center $(h, k)$ and radius $r$ is every point $(x, y)$ at distance $r$ from the center. The distance formula, squared, gives its equation: (x − h)² + (y − k)² = r².",
+          "Read the center from the signs: (x + 3) is x − (−3), so h = −3. The right side is r², not $r$. In the form x² + y² + Dx + Ey + F = 0, complete the square in $x$ and in $y$ to find the center and radius.",
         ],
         illustration: "circle-equation-distance",
       },
       {
         title: "Lengths and areas from coordinates",
         paragraphs: [
-          "A horizontal or vertical side is a difference of coordinates. A slanted side with run a and rise b has length √(a² + b²).",
+          "A horizontal or vertical side is a difference of coordinates. A slanted side with run $a$ and rise $b$ has length √(a² + b²).",
           "For area, enclose the polygon in a rectangle along the grid lines and subtract the right triangles in the corners. The shoelace sum, half of |Σ (xᵢyᵢ₊₁ − xᵢ₊₁yᵢ)|, gives the same area in one calculation.",
         ],
       },
       {
         title: "Partitioning a segment",
         paragraphs: [
-          "The point P with AP : PB = m : n is m/(m + n) of the way from A to B. Take that fraction of the run and of the rise, and add each to A's coordinates.",
-          "From A(−3, −2) to B(6, 4), the run is 9 and the rise is 6. For 1 : 2, P is 1/3 of the way: (−3 + 3, −2 + 2) = (0, 0).",
+          "The point $P$ with AP : PB = m : $n$ is m/(m + n) of the way from $A$ to $B$. Take that fraction of the run and of the rise, and add each to A's coordinates.",
+          "From A(−3, −2) to $B(6, 4)$, the run is 9 and the rise is 6. For 1 : 2, $P$ is 1/3 of the way: $(-3 + 3, -2 + 2) = (0, 0)$.",
         ],
         illustration: "segment-partition",
       },
@@ -46,7 +46,7 @@ export const coordinateCircleLessons: Lesson[] = [
         title: "Parallel and perpendicular slopes",
         paragraphs: [
           "Parallel lines have equal slopes. Turning a slope triangle a quarter turn swaps its run and rise and reverses one of them, so a perpendicular line's slope is the negative reciprocal: 2/3 becomes −3/2.",
-          "The product of perpendicular slopes is −1 (unless one line is vertical). To write a line through a point, use the slope and the point in y = mx + b and solve for b.",
+          "The product of perpendicular slopes is −1 (unless one line is vertical). To write a line through a point, use the slope and the point in y = mx + b and solve for $b$.",
         ],
         illustration: "slope-perpendicular-turn",
       },
@@ -64,7 +64,7 @@ export const coordinateCircleLessons: Lesson[] = [
     pitfalls: [
       "The right side of the standard form is r²: take its square root for the radius.",
       "The center's coordinates have the opposite signs of the numbers inside the parentheses.",
-      "For AP : PB = m : n, P is m/(m + n) of the way, not m/n.",
+      "For AP : PB = m : $n$, $P$ is m/(m + n) of the way, not m/n.",
     ],
     parentGuide:
       "Tie a string to a pin on graph paper and trace a circle. Mark the center and a point on the circle, count the squares across and up between them, and check that across² + up² is the string length squared.",
@@ -84,23 +84,23 @@ export const coordinateCircleLessons: Lesson[] = [
       {
         title: "Inscribed angles are half the central angle",
         paragraphs: [
-          "A central angle has its vertex at the center; an inscribed angle has its vertex on the circle. On the same arc, the inscribed angle is half the central angle: 70° at the center gives 35° at C.",
-          "The vertex C can be anywhere on the circle on the other side of chord AB: every such angle is half of the same central angle, so all of them are equal.",
+          "A central angle has its vertex at the center; an inscribed angle has its vertex on the circle. On the same arc, the inscribed angle is half the central angle: 70° at the center gives 35° at $C$.",
+          "The vertex $C$ can be anywhere on the circle on the other side of chord AB: every such angle is half of the same central angle, so all of them are equal.",
         ],
         illustration: "circle-inscribed-slide",
       },
       {
         title: "Semicircles and tangents",
         paragraphs: [
-          "A diameter's arc is 180°, so an angle inscribed in a semicircle is 180° ÷ 2 = 90°. Triangle ABC with AB a diameter is always right-angled at C.",
-          "A tangent touches the circle at one point T, and it is perpendicular to the radius OT there. So O, T and an outside point P on the tangent make a right triangle with hypotenuse OP: with radius 5 and OP = 13, PT = √(13² − 5²) = 12.",
+          "A diameter's arc is 180°, so an angle inscribed in a semicircle is 180° ÷ 2 = 90°. Triangle ABC with AB a diameter is always right-angled at $C$.",
+          "A tangent touches the circle at one point $T$, and it is perpendicular to the radius OT there. So $O$, $T$ and an outside point $P$ on the tangent make a right triangle with hypotenuse OP: with radius 5 and OP = 13, PT = √(13² − 5²) = 12.",
         ],
         illustration: "circle-tangent-radius",
       },
     ],
     workedExample: {
       prompt:
-        "In circle O, central angle AOB measures 110°, and C is on the circle, on the other side of chord AB. What is the measure of inscribed angle ACB?",
+        "In circle $O$, central angle AOB measures 110°, and $C$ is on the circle, on the other side of chord AB. What is the measure of inscribed angle ACB?",
       steps: [
         "ACB and AOB are on the same arc AB.",
         "The inscribed angle is half the central angle: 110° ÷ 2 = 55°.",
@@ -119,7 +119,7 @@ export const coordinateCircleLessons: Lesson[] = [
 
 const terms = {
   circle: [
-    ["center (h, k)", "The point every point of the circle is r from."],
+    ["center $(h, k)$", "The point every point of the circle is $r$ from."],
     ["r²", "The right side of (x − h)² + (y − k)² = r²."],
   ],
   measure: [
@@ -127,8 +127,8 @@ const terms = {
     ["enclosing rectangle", "The grid rectangle just around a polygon."],
   ],
   partition: [
-    ["AP : PB = m : n", "P is m/(m + n) of the way from A to B."],
-    ["run and rise", "The changes in x and y from A to B."],
+    ["AP : PB = m : $n$", "$P$ is m/(m + n) of the way from $A$ to $B$."],
+    ["run and rise", "The changes in x and y from $A$ to $B$."],
   ],
   slope: [
     ["parallel", "Equal slopes."],
@@ -144,8 +144,8 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     goal: "Find a circle's center, radius or r² from its equation, a center and a point, or its graph.",
     terms: terms.circle,
     method: [
-      "In x² + y² + Dx + Ey + F = 0, complete the square in x and in y.",
-      "Read (x − h)² + (y − k)² = r²: the center is (h, k), the radius is √(right side).",
+      "In x² + y² + Dx + Ey + F = 0, complete the square in $x$ and in $y$.",
+      "Read (x − h)² + (y − k)² = r²: the center is $(h, k)$, the radius is √(right side).",
       "From a center and a point, r² is the squared distance between them.",
     ],
     watch:
@@ -165,11 +165,11 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     goal: "Find the point that divides a segment in a ratio or at a fraction of the way.",
     terms: terms.partition,
     method: [
-      "Turn the ratio m : n into the fraction m/(m + n).",
-      "Find the run and the rise from A to B.",
+      "Turn the ratio $m$ : $n$ into the fraction m/(m + n).",
+      "Find the run and the rise from $A$ to $B$.",
       "Add that fraction of each to A's coordinates.",
     ],
-    watch: "The fraction is m/(m + n), measured from A, not m/n.",
+    watch: "The fraction is m/(m + n), measured from $A$, not m/n.",
   },
   "perpendicular-slopes": {
     goal: "Use parallel and perpendicular slopes for a slope, a line through a point or a missing coordinate.",
@@ -177,7 +177,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the given line's slope: rise ÷ run.",
       "Parallel: the same slope. Perpendicular: flip it and change its sign.",
-      "Through a point, solve y = mx + b for b; for a missing coordinate, set the slopes equal.",
+      "Through a point, solve y = mx + b for $b$; for a missing coordinate, set the slopes equal.",
     ],
     watch:
       "Perpendicular needs both the flip and the sign change: 2/3 becomes −3/2, not 3/2.",
@@ -195,11 +195,11 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
 };
 export const coordinateCirclePrinciples: Record<string, string> = {
   "circle-equation":
-    "A circle with center (h, k) and radius r is the set of points with (x − h)² + (y − k)² = r², the distance formula squared.",
+    "A circle with center $(h, k)$ and radius $r$ is the set of points with (x − h)² + (y − k)² = r², the distance formula squared.",
   "coordinate-polygon":
     "Lengths on the plane come from the distance formula, and areas from an enclosing rectangle or the shoelace sum.",
   "segment-partition":
-    "The point dividing AB in the ratio m : n is A plus m/(m + n) of the change from A to B, in each coordinate.",
+    "The point dividing AB in the ratio $m$ : $n$ is $A$ plus m/(m + n) of the change from $A$ to $B$, in each coordinate.",
   "perpendicular-slopes":
     "Parallel lines have equal slopes; perpendicular lines have slopes whose product is −1.",
   "circle-angles":

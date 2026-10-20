@@ -132,17 +132,17 @@ export function integerExponentPrintCase(
         : operation === "quotient"
           ? `${left} ÷ ${right}`
           : power(`(${left})`, b);
-    prompt = `For every nonzero real x, ${expression} = x^k. What is k?`;
+    prompt = `For every nonzero real $x$, ${expression} = x^k. What is $k$?`;
     answer = String(result);
     hint =
       operation === "product"
-        ? `The base stays x, so add the exponents, signs included: ${signed(a)} + ${operand(b)}.`
+        ? `The base stays $x$, so add the exponents, signs included: ${signed(a)} + ${operand(b)}.`
         : operation === "quotient"
-          ? `The base stays x, so subtract the bottom exponent from the top: ${signed(a)} − ${operand(b)}.${b < 0 ? " Subtracting a negative adds." : ""}`
+          ? `The base stays $x$, so subtract the bottom exponent from the top: ${signed(a)} − ${operand(b)}.${b < 0 ? " Subtracting a negative adds." : ""}`
           : `A power of a power multiplies the exponents: ${signed(a)} × ${operand(b)}, not ${signed(a)} + ${operand(b)}.`;
     const calculation = `${signed(a)} ${operation === "product" ? "+" : operation === "quotient" ? "−" : "×"} ${operand(b)} = ${signed(result)}`;
     explanation = [
-      "The letter x represents the same nonzero real number throughout. The letter k is the exponent to find.",
+      "The letter $x$ represents the same nonzero real number throughout. The letter $k$ is the exponent to find.",
       operation === "product"
         ? "For powers with the same base, multiplication adds the exponents. This rule also includes zero exponents and reciprocal factors from negative exponents."
         : operation === "quotient"
@@ -152,7 +152,7 @@ export function integerExponentPrintCase(
       `Therefore ${expression} = ${power("x", result)}, so k = ${signed(result)}.`,
       ...(result === 0
         ? [
-            "The result is x^0 = 1 because x is nonzero. The requested exponent is 0, not the value 1.",
+            "The result is x^0 = 1 because $x$ is nonzero. The requested exponent is 0, not the value 1.",
           ]
         : result < 0
           ? [
@@ -188,7 +188,7 @@ export function integerExponentPrintCase(
         skillId: metadata.skillId,
         response: {
           kind: id === "negative-integer-power" ? "fraction" : "number",
-          label: id === "negative-integer-power" ? "Exact value" : "Exponent k",
+          label: id === "negative-integer-power" ? "Exact value" : "Exponent $k$",
         },
       },
       answer,

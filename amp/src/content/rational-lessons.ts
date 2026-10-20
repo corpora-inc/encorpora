@@ -5,7 +5,7 @@ const foundations: Lesson["sections"] = [
   {
     title: "Read a signed fraction",
     paragraphs: [
-      "A fraction $\\frac{a}{b}$ names the quotient $a \\div b$. The denominator b, below the bar, is the number of equal parts that make one whole. The numerator a, above the bar, counts those parts. Thus $\\frac{3}{4}$ counts three of the four equal parts of one whole. A denominator is never 0, because no number of parts can make a whole of zero parts.",
+      "A fraction $\\frac{a}{b}$ names the quotient $a \\div b$. The denominator $b$, below the bar, is the number of equal parts that make one whole. The numerator $a$, above the bar, counts those parts. Thus $\\frac{3}{4}$ counts three of the four equal parts of one whole. A denominator is never 0, because no number of parts can make a whole of zero parts.",
       "Integers are the whole numbers 0, 1, 2, 3 and so on, together with their negatives. A rational number is a quotient of two integers with a nonzero denominator; it can be positive, negative or zero. On a number line, $-\\frac{3}{4}$ lies three quarters of a unit to the left of 0. One minus sign may be written before the fraction or in its numerator: $-\\frac{3}{4} = \\frac{-3}{4}$.",
       "Equivalent fractions name the same number. Multiplying the numerator and the denominator by the same nonzero number keeps the value, because the multiplying fraction equals 1: $\\frac{3}{4} = \\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}$. Dividing both by a common factor reverses this. A fraction is in lowest terms when its numerator and denominator have no common factor greater than 1.",
     ],
@@ -44,7 +44,7 @@ export const rationalLessons: Lesson[] = [
       {
         title: "Subtract by adding the opposite",
         paragraphs: [
-          "The opposite of a number is the number the same distance from 0 on the other side: the opposite of $-\\frac{1}{3}$ is $\\frac{1}{3}$. Subtracting a number undoes adding it, so subtracting b is the same as adding its opposite: $a - b = a + (-b)$. Subtracting a negative fraction therefore moves right: $\\frac{1}{2} - (-\\frac{1}{3}) = \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$.",
+          "The opposite of a number is the number the same distance from 0 on the other side: the opposite of $-\\frac{1}{3}$ is $\\frac{1}{3}$. Subtracting a number undoes adding it, so subtracting $b$ is the same as adding its opposite: $a - b = a + (-b)$. Subtracting a negative fraction therefore moves right: $\\frac{1}{2} - (-\\frac{1}{3}) = \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$.",
           "The least common denominator is the smallest positive number that both denominators divide. Rename each fraction with it, add the signed numerators over that denominator, then reduce. Never add the denominators: $\\frac{1}{2} + \\frac{1}{2} = 1$, not $\\frac{2}{4}$. Check a sum by subtracting one addend from it to recover the other.",
         ],
       },
@@ -164,7 +164,7 @@ export const rationalLessons: Lesson[] = [
     templateIds: ["rational-power"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Interpret $x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$ as the nth root of x raised to the power m, and a negative exponent as a reciprocal.",
+      "Interpret $x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$ as the nth root of $x$ raised to the power $m$, and a negative exponent as a reciprocal.",
       "Evaluate fractional powers of positive fractions exactly.",
     ],
     sections: [
@@ -172,8 +172,8 @@ export const rationalLessons: Lesson[] = [
       {
         title: "Powers and roots of fractions",
         paragraphs: [
-          "In $x^3$, the base x is multiplied by itself 3 times; the exponent 3 counts the factors. A power of a fraction powers its numerator and denominator: $\\left(\\frac{2}{3}\\right)^{3} = \\frac{2 \\times 2 \\times 2}{3 \\times 3 \\times 3} = \\frac{8}{27}$. A negative exponent means the reciprocal of the power, $x^{-p} = \\frac{1}{x^p}$, and $x^0 = 1$ for every nonzero x.",
-          "The nth root of a positive number x is the positive number whose nth power is x. The square root is the second root and the cube root is the third: $\\sqrt[3]{\\frac{8}{27}} = \\frac{2}{3}$ because $\\left(\\frac{2}{3}\\right)^{3} = \\frac{8}{27}$. These lessons use positive bases, so every root here is one positive number.",
+          "In $x^3$, the base $x$ is multiplied by itself 3 times; the exponent 3 counts the factors. A power of a fraction powers its numerator and denominator: $\\left(\\frac{2}{3}\\right)^{3} = \\frac{2 \\times 2 \\times 2}{3 \\times 3 \\times 3} = \\frac{8}{27}$. A negative exponent means the reciprocal of the power, $x^{-p} = \\frac{1}{x^p}$, and $x^0 = 1$ for every nonzero $x$.",
+          "The nth root of a positive number $x$ is the positive number whose nth power is $x$. The square root is the second root and the cube root is the third: $\\sqrt[3]{\\frac{8}{27}} = \\frac{2}{3}$ because $\\left(\\frac{2}{3}\\right)^{3} = \\frac{8}{27}$. These lessons use positive bases, so every root here is one positive number.",
         ],
       },
       {
@@ -266,9 +266,9 @@ export const rationalMethods: Record<string, ProblemMethod> = {
       ["nth root", "The positive number whose nth power is the given number."],
     ],
     method: [
-      "Read the exponent m/n: n names the root, m the power.",
+      "Read the exponent m/n: $n$ names the root, $m$ the power.",
       "Take the nth root of the numerator and of the denominator.",
-      "Raise the root to the power m.",
+      "Raise the root to the power $m$.",
       "If the exponent is negative, take the reciprocal.",
     ],
     watch: "A negative exponent makes a reciprocal, not a negative.",
@@ -282,5 +282,5 @@ export const rationalPrinciples: Record<string, string> = {
   "complex-fraction":
     "Multiplying a fraction's numerator and denominator by the same nonzero number keeps its value.",
   "rational-power":
-    "Since (x^(1/n))^n = x, the exponent 1/n means the nth root, and x^(m/n) is that root to the power m.",
+    "Since (x^(1/n))^n = x, the exponent 1/n means the nth root, and x^(m/n) is that root to the power $m$.",
 };

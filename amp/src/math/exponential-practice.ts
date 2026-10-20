@@ -32,7 +32,7 @@ const definitions: [string, string, string, string, boolean, boolean][] = [
     "exponential-model-rule",
     "Choose the exponential rule",
     "exponential-models",
-    "Choose y = a·bˣ from a table, a graph through marked points, or a growth or decay story.",
+    "Choose $y = a·b$ˣ from a table, a graph through marked points, or a growth or decay story.",
     true,
     true,
   ],
@@ -596,7 +596,7 @@ function overtakes(r: Rand): Draft {
 
 function sameBase(r: Rand): Draft {
   const frame = r(0, 3);
-  const base = { kind: "fraction" as const, label: "Exact value of x" };
+  const base = { kind: "fraction" as const, label: "Exact value of $x$" };
   if (frame === 0) {
     const b = pick(r, [2, 3, 5]),
       n = b === 2 ? r(3, 7) : b === 3 ? r(2, 5) : r(2, 4);

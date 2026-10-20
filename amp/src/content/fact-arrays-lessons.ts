@@ -58,7 +58,7 @@ export const factArrayLessons: Lesson[] = [
     id: "division",
     title: "Division facts: think multiplication",
     summary:
-      "n ÷ d asks which number times d makes n, so every division fact is a multiplication fact read backwards.",
+      "n ÷ d asks which number times $d$ makes $n$, so every division fact is a multiplication fact read backwards.",
     templateIds: ["divide-facts"],
     objectives: [
       "Find a quotient from the related multiplication fact.",
@@ -104,8 +104,8 @@ export const factArrayLessons: Lesson[] = [
       "A box in a multiplication or division equation stands for the one number that makes it true, and every such box is found from a multiplication fact.",
     templateIds: ["missing-factor-fact"],
     objectives: [
-      "Find an unknown factor in a × □ = n or □ × b = n.",
-      "Find an unknown divisor by rewriting n ÷ □ = q as □ × q = n.",
+      "Find an unknown factor in $a \\times  \\boxed{\\phantom{0}} = n$ or $\\boxed{\\phantom{0}} \\times  b = n$.",
+      "Find an unknown divisor by rewriting $n \\div  \\boxed{\\phantom{0}} = q$ as $\\boxed{\\phantom{0}} \\times  q = n$.",
     ],
     sections: [
       {
@@ -254,8 +254,8 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
       ["quotient", "The result of dividing."],
     ],
     method: [
-      "Rewrite n ÷ d = □ as d × □ = n.",
-      "Find the missing factor from a fact you know or by skip-counting by d.",
+      "Rewrite $n \\div  d = \\boxed{\\phantom{0}}$ as $d \\times  \\boxed{\\phantom{0}} = n$.",
+      "Find the missing factor from a fact you know or by skip-counting by $d$.",
       "Check: divisor × quotient = dividend.",
     ],
     watch:
@@ -264,8 +264,8 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
   "missing-factor-fact": {
     goal: "Given a multiplication or division equation with a box, find the number in the box.",
     method: [
-      "Write the equation as a multiplication: a × □ = n, □ × b = n, or for n ÷ □ = q, □ × q = n.",
-      "Skip-count by the known factor to n and count the skips.",
+      "Write the equation as a multiplication: $a \\times  \\boxed{\\phantom{0}} = n$, $\\boxed{\\phantom{0}} \\times  b = n$, or for $n \\div  \\boxed{\\phantom{0}} = q$, $\\boxed{\\phantom{0}} \\times  q = n$.",
+      "Skip-count by the known factor to $n$ and count the skips.",
       "Put the number back in the box and check the equation.",
     ],
     watch: "The box is a factor, never the total: in 6 × □ = 42 it is 7.",
@@ -301,11 +301,11 @@ export const factArrayPrinciples: Record<string, string> = {
   "multiply-facts":
     "Multiplication is commutative (a × b = b × a) and distributes over addition: (5 + 2) × b = 5 × b + 2 × b.",
   "divide-facts":
-    "Division is the inverse of multiplication: n ÷ d = q exactly when d × q = n (d ≠ 0).",
+    "Division is the inverse of multiplication: n ÷ d = q exactly when $d \\times  q = n (d \\neq  0)$.",
   "missing-factor-fact":
-    "An unknown factor or divisor is found from the related multiplication: a × □ = n and n ÷ □ = q each name a factor of n.",
+    "An unknown factor or divisor is found from the related multiplication: $a \\times  \\boxed{\\phantom{0}} = n$ and $n \\div  \\boxed{\\phantom{0}} = q$ each name a factor of $n$.",
   "share-or-group":
-    "n ÷ d answers both how many in each of d equal groups and how many groups of d make n, because d × q = q × d.",
+    "n ÷ d answers both how many in each of $d$ equal groups and how many groups of $d$ make $n$, because d × q = q × d.",
   "times-table-pattern":
     "a × (c + 1) = a × c + a, (2a) × c = 2(a × c), and (a + b) × c = a × c + b × c.",
 };
