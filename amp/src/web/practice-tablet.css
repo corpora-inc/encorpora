@@ -65,6 +65,10 @@
     width: auto;
     margin: 0;
   }
+  /* The sheet's rounded corners would show the rule beside it. */
+  .practice-surface:has(> .feedback) > .answer-dock {
+    border-left-color: transparent;
+  }
   .practice-surface > .feedback {
     top: 0;
     min-height: 0;

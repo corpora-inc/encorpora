@@ -368,13 +368,23 @@ try {
           `${label}: ${(await target.getAttribute("aria-label")) ?? (await target.innerText())} is ${b.width}×${b.height}`,
         );
       }
-      const shot = (name: string) =>
-        page.screenshot({
+      // Entrances and theme transitions finish before a screenshot.
+      const shot = async (name: string) => {
+        await page.evaluate(() =>
+          Promise.all(
+            document
+              .getAnimations()
+              .filter((a) => a.effect?.getComputedTiming().endTime !== Infinity)
+              .map((a) => a.finished),
+          ),
+        );
+        await page.screenshot({
           path: new URL(
             `../artifacts/screenshots/tablet-${size.width}-${name}.png`,
             import.meta.url,
           ).pathname,
         });
+      };
       await shot("answer");
       // The hint opens over the page and closes back to the same problem.
       await page.getByRole("button", { name: "Hint", exact: true }).click();
