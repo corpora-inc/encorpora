@@ -102,7 +102,6 @@ export const pending = new Set<string>([
   "inequality-number-line-choice",
   "inequality-solution-point",
   "inequality-solution-set",
-  "integer-power",
   "kit-leftovers",
   "lesson:absolute-value-affine-equation",
   "lesson:absolute-value-direct-equation",

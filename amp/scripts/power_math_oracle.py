@@ -50,7 +50,8 @@ def evaluate_power(prompt):
 
 
 def missing_exponent(prompt):
-    m = re.fullmatch(r'If \$(\d+)\^n = ([\d{},]+)\$, what is \$n\$\?', prompt) or \
+    m = re.fullmatch(r'If \$(\d+)\^n = (\d+)\$, what is \$n\$\?', prompt) or \
+        re.fullmatch(r'If \$(\d+)\^n\$ equals ([\d,]+), what is \$n\$\?', prompt) or \
         re.fullmatch(r'How many factors of (\d+) multiply to make ([\d,]+)\?', prompt)
     require(m is not None, f'Unrecognized missing-exponent prompt: {prompt}')
     b, v = int(m[1]), int(m[2].replace('{,}', '').replace(',', ''))

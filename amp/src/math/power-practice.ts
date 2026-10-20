@@ -231,7 +231,9 @@ function missingExponent(r: Random): Draft {
   const frame = r(0, 1);
   const prompt =
     frame === 0
-      ? `If ${math(`${b}^n = ${texNumber(value)}`)}, what is ${math("n")}?`
+      ? value < 10000
+        ? `If ${math(`${b}^n = ${value}`)}, what is ${math("n")}?`
+        : `If ${math(`${b}^n`)} equals ${prose(value)}, what is ${math("n")}?`
       : `How many factors of ${b} multiply to make ${prose(value)}?`;
   const hint =
     b === 10
@@ -240,7 +242,7 @@ function missingExponent(r: Random): Draft {
   return {
     prompt,
     answer: String(e),
-    label: frame === 0 ? "Exponent n" : "Number of factors",
+    label: frame === 0 ? "Exponent" : "Number of factors",
     hint,
     explanation: [
       `${math(`${product(b, e)} = ${texNumber(value)}`)}: that is ${factors(e)} of ${b}.`,
