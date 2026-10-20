@@ -1,4 +1,5 @@
 import { AppError } from "../lib/AppError";
+import { brand } from "../../brand";
 
 /**
  * The first paint and every route-level wait: the brand bar in its final
@@ -17,7 +18,7 @@ export function LoadingScreen({
 }) {
   return (
     <div className="app-loading" aria-busy={!error}>
-      <div className="app-loading-bar">AMP</div>
+      <div className="app-loading-bar">{brand.name}</div>
       <main className="app-loading-body">
         {error && (
           <>

@@ -847,7 +847,7 @@ try {
       await context.close();
     }
   console.log(
-    "Onboarding: verify → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
+    "Onboarding: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
 } finally {
   await browser.close();

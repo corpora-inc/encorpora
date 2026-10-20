@@ -13,7 +13,7 @@ A new parent can create the account with a passkey alone: email, then **Create a
 
 The account starts with an **unconfirmed email**. The confirmation link is sent immediately and the parent continues into the free trial. Consent and purchase wait for confirmation; see [parent consent](parent-consent.md#confirmed-parent-email).
 
-**Recovering an unconfirmed address.** Anyone could start an account under someone else's address. A password reset or setup link proves the address, so completing one on an unconfirmed account confirms it and removes every passkey, linked provider login and session created before. The owner keeps the account; whoever created it loses access. A parent who sets a password before confirming must add their passkey again.
+**Recovering an unconfirmed address.** Anyone could start an account under someone else's address. A password reset or setup link proves the address, so completing one on an unconfirmed account confirms it and removes every passkey, linked provider login and session created before. The owner keeps the account; whoever created it loses access. A parent who sets a password before confirming must add their passkey again. Opening the confirmation link instead keeps the account's passkeys, so that email tells anyone who did not create the account to ignore it, and Security lists every passkey.
 
 ## Passkey sign-in
 

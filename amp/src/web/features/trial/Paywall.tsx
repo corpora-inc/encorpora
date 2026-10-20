@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { brand } from "../../../brand";
 import { strandNames } from "../../BirthYearPrompt";
 import { gradeName } from "../../Home";
 import { rememberPlanChoice } from "../../lib/pending-trial";
@@ -130,7 +131,7 @@ function PlansView({
         <p className={styles.eyebrow}>
           {reason === "limit" && run
             ? `All ${run.free} free problems used`
-            : "AMP Mathematics"}
+            : brand.productName}
         </p>
         <h1 className={styles.title}>
           {reason === "limit" ? "Keep going from here" : "Choose a plan"}
