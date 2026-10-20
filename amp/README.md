@@ -1,6 +1,6 @@
-# AMP mathematics
+# AMP Mathematics
 
-AMP is a TypeScript/PostgreSQL adaptive mathematics studio for parent-managed learners. Its curriculum target spans elementary mathematics through precalculus and SAT Math preparation. Interactive practice uses deterministic server-generated problems, exact grading, and shared visual models. Lessons also produce printable mini-textbooks, workbooks, and worked solutions.
+AMP (Adaptive Math Pathways) is a TypeScript/PostgreSQL adaptive mathematics studio for parent-managed learners. Its curriculum target spans elementary mathematics through precalculus and SAT Math preparation. Interactive practice uses deterministic server-generated problems, exact grading, and shared visual models. Lessons also produce printable mini-textbooks, workbooks, and worked solutions.
 
 This workspace is a development preview. It contains a complete numbered Common Core inventory and a planned skill graph, with selected working problem families and lessons. Inventory coverage does not establish complete instruction, assessment, or learning outcomes. Run the audits below for the current counts and gaps. The product is not approved by an ESA program and does not process live subscription payments.
 

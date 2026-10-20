@@ -1,0 +1,12 @@
+{
+  "name": "AMP",
+  "expansion": "Adaptive Math Pathways",
+  "productName": "AMP Mathematics",
+  "company": "Corpora",
+  "description": "Adaptive math practice. AMP finds each learner's level and moves them forward, with a hint and a lesson for every problem type and printable worksheets with solutions.",
+  "checkout": {
+    "name": "AMP — Adaptive Math Pathways",
+    "description": "Adaptive math practice for one learner. AMP finds their level and moves them forward, with a hint and a lesson for every problem type and printable worksheets with solutions.",
+    "statementDescriptor": "AMP MATH"
+  }
+}
