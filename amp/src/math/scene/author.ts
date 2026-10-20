@@ -23,6 +23,7 @@ import {
   type Venn,
   type Tree,
   type Triangle,
+  type CircleDiagram,
 } from "./spec";
 import type { Action, Step } from "./timeline";
 import { treeWidth } from "./components/tree";
@@ -583,3 +584,8 @@ export const triangle = (
   points: [Point, Point, Point],
   options: { fill?: Triangle["fill"]; dash?: boolean } = {},
 ) => new TriangleBuilder({ type: "triangle", points, ...options });
+
+class CircleDiagramBuilder extends Builder<CircleDiagram> {}
+/** circleDiagram({ points: [{ name: "A", at: 200 }, …], center: true, segments: […] }) */
+export const circleDiagram = (spec: Omit<CircleDiagram, "type">) =>
+  new CircleDiagramBuilder({ type: "circleDiagram", ...spec } as CircleDiagram);

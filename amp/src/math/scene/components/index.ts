@@ -10,6 +10,7 @@ import { barChartSchema } from "./bar-chart";
 import { barsSchema } from "./bars";
 import { baseTenSchema } from "./base-ten";
 import { boxPlotSchema } from "./box-plot";
+import { circleDiagramSchema } from "./circle-diagram";
 import { clockSchema } from "./clock";
 import { dotPlotSchema } from "./dot-plot";
 import { fractionBarSchema } from "./fraction-bar";
@@ -38,6 +39,7 @@ export const componentSchemas = [
   barsSchema,
   baseTenSchema,
   boxPlotSchema,
+  circleDiagramSchema,
   clockSchema,
   dotPlotSchema,
   fractionBarSchema,
@@ -67,6 +69,7 @@ export * from "./bar-chart";
 export * from "./bars";
 export * from "./base-ten";
 export * from "./box-plot";
+export * from "./circle-diagram";
 export * from "./clock";
 export * from "./dot-plot";
 export * from "./fraction-bar";

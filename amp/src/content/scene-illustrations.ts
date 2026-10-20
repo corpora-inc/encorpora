@@ -16,11 +16,13 @@ import { quadraticStructureIllustrations } from "./quadratic-structure-illustrat
 import { exponentialLessonScenes } from "../math/exponential-scenes";
 import { lessonScenes } from "./lesson-scenes";
 import { similarityTrigScenes } from "./similarity-trig-scenes";
+import { coordinateCircleScenes } from "./coordinate-circle-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
   ...lessonScenes,
   ...similarityTrigScenes,
+  ...coordinateCircleScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],
