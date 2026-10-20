@@ -23,19 +23,25 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 - With mail, new password accounts must confirm their email before signing in.
 - In development, links are printed to the server log.
 
-**Providers.** Each provider is enabled only when all of its settings are present.
+**Providers.** Each provider is enabled only when all of its settings are present. `/api/v1/auth-config` lists the enabled providers, and the sign-in screens show a button only for those.
 - Google: `AMP_GOOGLE_CLIENT_ID` and `AMP_GOOGLE_CLIENT_SECRET`.
 - GitHub: `AMP_GITHUB_CLIENT_ID` and `AMP_GITHUB_CLIENT_SECRET`.
-- Microsoft: `AMP_MICROSOFT_CLIENT_ID` and `AMP_MICROSOFT_CLIENT_SECRET`, plus optional `AMP_MICROSOFT_TENANT_ID` (default `common`).
+- Microsoft: `AMP_MICROSOFT_CLIENT_ID` and `AMP_MICROSOFT_CLIENT_SECRET`, plus optional `AMP_MICROSOFT_TENANT_ID` (default `common`). The ID token must carry the optional claims `email` and `xms_edov`. Microsoft's `email` claim alone does not prove ownership, so AMP treats it as verified only when `xms_edov` is true or the address is listed in `verified_primary_email` or `verified_secondary_email`.
 - Apple: `AMP_APPLE_CLIENT_ID` (the Services ID), `AMP_APPLE_TEAM_ID`, `AMP_APPLE_KEY_ID` and `AMP_APPLE_PRIVATE_KEY` (the .p8 PEM; `\n` escapes are accepted), plus optional `AMP_APPLE_BUNDLE_ID`. The Apple client secret is minted at startup and is valid for 150 days, so a deploy refreshes it.
-- Register each provider's redirect URI as `<AMP_ACCOUNTS_URL>/api/auth/callback/<google|apple|microsoft|github>`.
+- Register each provider's redirect URI as `<AMP_ACCOUNTS_URL>/api/auth/callback/<google|apple|microsoft|github>`. Each environment (production, stage, local) has its own URI; a GitHub OAuth App accepts one callback URL, so each environment needs its own GitHub app. Apple accepts only HTTPS return URLs, so Apple cannot be tested on a loopback origin.
+- Apple's private relay addresses (`…@privaterelay.appleid.com`) receive mail only from senders registered for Sign in with Apple's email relay. Register the domain of `AMP_MAIL_FROM`.
+- Apple sends the parent's name only on the first authorization. AMP stores it then and never requires it.
+- The authorization request uses `state` and, where the provider supports it, PKCE (S256); Better Auth stores both server-side.
 
 `AMP_ACCOUNTS_TRUSTED_ORIGINS` lists extra allowed origins, such as native app schemes.
 
 **Linking.**
-- A sign-in with the same email links to an existing account only when the provider has verified the email.
+- A provider sign-in links to an existing parent with the same email only when the provider verified that email and the parent's own address is confirmed. No provider is trusted past its verification flag.
+- A parent who removed that identity, or who protects password sign-in with an authenticator, links it from **Security** instead (migration `0023`).
 - A signed-in parent may link a login that uses a different email.
 - Each provider identity belongs to one account.
+
+**New parents.** A provider sign-up creates the account with the provider's verified email and continues at `/start`, the same guided first run as an email sign-up: no consent, plan or learner step is skipped. A provider that has not verified the email cannot create an account.
 
 **Rate limits.** Sign-in attempts are throttled per client. The server uses the client address that `AMP_TRUSTED_PROXIES` resolves and ignores forwarded headers from untrusted peers.
 

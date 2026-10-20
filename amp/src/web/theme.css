@@ -1846,16 +1846,8 @@ html[data-input="pointer"] :focus-visible {
 .account-sign-in h2 {
   margin: 0 0 4px;
 }
-.account-providers,
 .account-form {
   display: grid;
-  gap: 8px;
-}
-.account-providers button {
-  width: 100%;
-  min-height: 48px;
-}
-.account-form {
   gap: 12px;
 }
 .account-form label {
@@ -1882,21 +1874,6 @@ html[data-input="pointer"] :focus-visible {
 .account-form .go-button {
   width: 100%;
   margin-top: 4px;
-}
-.account-divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 4px 0;
-  color: var(--color-subtle-text);
-  font-size: 13px;
-}
-.account-divider::before,
-.account-divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--color-border);
 }
 .account-links {
   display: flex;
