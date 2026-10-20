@@ -1163,7 +1163,7 @@ function linearModelEquation(r: Random): Case {
             act.appear("g.slope.0"),
           ),
           lessonStep(
-            `${y} = rate × ${x} + starting amount, with the rate {g.slope.0.rise.label} per 1 ${x}.`,
+            `So the rate, {g.slope.0.rise.label} for each 1 that ${x} increases, multiplies ${x}, and the starting amount is added to it.`,
             act.highlight("g.slope.0"),
           ),
         ],

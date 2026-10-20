@@ -4,6 +4,7 @@ import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem } from "../src/math/engine";
 import { linearFunctionTemplates } from "../src/math/linear-function-practice";
 import { templateRole } from "../src/learning/placement";
+import { problemLesson } from "../src/content/problem-lessons";
 import { layoutScene, sceneSchema } from "../src/math/scene";
 import { missingTargets, visibleSteps } from "../src/math/scene/timeline";
 import { sceneIllustrations } from "../src/content/scene-illustrations";
@@ -108,5 +109,20 @@ test("walkthroughs name only parts their scene has and never state the answer", 
       // Masked labels (the rise of a secant) never show a value.
       for (const d of masked.items)
         if (d.k === "text" && d.masked) assert.equal(d.plain, "?");
+    }
+});
+
+test("a lesson example plays the type's walkthrough when it has one", () => {
+  for (const id of [
+    "linear-model-equation",
+    "average-rate-display",
+    "graph-domain-range",
+  ])
+    for (const seed of ["a", "b", "c", "scene-player"]) {
+      const figure = problemLesson(id, seed).example.figure;
+      assert.ok(
+        figure?.kind === "scene" && figure.scene.steps?.length,
+        `${id}/${seed}`,
+      );
     }
 });
