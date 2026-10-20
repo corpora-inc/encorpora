@@ -36,6 +36,8 @@ import { nativeRuntime } from "../../native-runtime";
 import { SKIP_USES_FREE_PROBLEM } from "../../../learning/skip";
 import { levelCheckDue } from "../../../learning/level-check";
 import { LevelCheck } from "./LevelCheck";
+import { ShareLevel } from "./ShareLevel";
+import { levelCardData } from "./share-data";
 import { approximateAge } from "./level-copy";
 import { strandOrder } from "./strands";
 
@@ -204,6 +206,13 @@ function Practice({ session }: { session: TrialSession }) {
           open={checkOpen}
           onContinue={() => setCheckOpen(false)}
           onMap={() => setCheckOpen(false)}
+          actions={
+            <ShareLevel
+              data={levelCardData(check, strandOrder(catalog.data))}
+              birthYear={session.birthYear}
+              surface="check"
+            />
+          }
         />
       )}
       <PracticeWorkspace

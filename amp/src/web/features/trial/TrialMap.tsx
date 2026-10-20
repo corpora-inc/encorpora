@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { strandNames } from "../../BirthYearPrompt";
 import { FrontierMap, gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
 import { frameCard, PageFrame } from "../../ui/PageFrame";
@@ -13,6 +12,9 @@ import {
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
+import { strandOrder } from "./strands";
+import { ShareLevel } from "./ShareLevel";
+import { levelCardData } from "./share-data";
 import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
 import styles from "./Trial.module.css";
 
@@ -51,20 +53,12 @@ function MapView({ session }: { session: TrialSession }) {
   if (p.phase === "placement" && p.totals.answered === 0)
     return <Navigate to="/try/practice" replace />;
   const frontier = p.frontier.current;
-  const strands = Object.keys(strandNames).filter((strand) =>
-    catalog.data.skills.some(
-      (skill) =>
-        skill.strand === strand &&
-        catalog.data.templates.some((t) => t.skillId === skill.id),
-    ),
-  );
+  const strands = strandOrder(catalog.data);
   const left = p.remaining;
   return (
     <PageFrame>
       <section className={`${frameCard} ${styles.panel}`}>
-        <p className={styles.eyebrow}>
-          {p.phase === "placement" ? "Placement in progress" : "Free practice"}
-        </p>
+        <p className={styles.eyebrow}>Free level check</p>
         <h1 className={styles.title}>
           Estimated level: {gradeName(frontier.overall.level)}
         </h1>
@@ -72,13 +66,25 @@ function MapView({ session }: { session: TrialSession }) {
           {p.phase === "placement"
             ? `${p.placement - p.totals.answered} placement problems to go. The map sharpens with each answer.`
             : left > 0
-              ? `Placement is done. The next ${left} free problems practice right at this level, with a lesson and a hint on every problem.`
+              ? "Each answer sharpens the map. Practice continues right at this level, with a lesson and a hint on every problem."
               : `All ${p.free} free problems are used. Choose a plan to keep going from here.`}
         </p>
         <div className={styles.meterRow}>
           <FreeMeter answered={p.totals.answered} free={p.free} />
         </div>
-        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
+        <FrontierMap
+          name="the learner"
+          frontier={frontier}
+          strands={strands}
+          catalog={catalog.data}
+          memoryKey={session.learnerId}
+        />
+        <ShareLevel
+          data={levelCardData(p, strands)}
+          birthYear={session.birthYear}
+          surface="map"
+          className={styles.share}
+        />
         <div className={styles.actions}>
           {left > 0 ? (
             <>

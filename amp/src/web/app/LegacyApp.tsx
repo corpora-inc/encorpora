@@ -1481,6 +1481,8 @@ function LegacyScreen() {
             resuming={!!problem}
             frontier={frontierMap}
             strands={homeStrands}
+            catalog={catalog}
+            memoryKey={learner.id}
             busy={busy}
             go={() =>
               problem ? setExploring(false) : void action(() => loadBatch(""))

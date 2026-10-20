@@ -77,10 +77,10 @@
 .axis span:nth-child(1) {
   left: 0;
 }
-.axis span:nth-child(2) {
+.axis span[style] {
   transform: translateX(-50%);
 }
-.axis span:nth-child(3) {
+.axis span:last-child {
   right: 0;
 }
 .trend {

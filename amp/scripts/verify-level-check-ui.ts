@@ -1,3 +1,4 @@
+import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
@@ -61,12 +62,15 @@ const shots =
   new URL("../artifacts/level-check/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
 
+let trials = 0;
 /** A trial with `answers` problems answered through the API. */
-async function trialWith(answers: number) {
+async function trialWith(answers: number, birthYear = 2016) {
+  // Each fixture trial comes from its own address, under the start limit.
   const created = await app.inject({
     method: "POST",
     url: "/api/v1/trials",
-    payload: { birthYear: 2016 },
+    remoteAddress: `10.0.0.${++trials}`,
+    payload: { birthYear },
   });
   assert.equal(created.statusCode, 201, created.body);
   const { token, learnerId } = created.json() as {
@@ -118,10 +122,12 @@ async function open(
   width: number,
   height: number,
   token: string,
+  reducedMotion: "reduce" | "no-preference" = "no-preference",
 ) {
   const context = await browser.newContext({
     viewport: { width, height },
     colorScheme: theme,
+    reducedMotion,
   });
   await context.addInitScript(
     (value) => localStorage.setItem("amp.trial", value),
@@ -186,6 +192,20 @@ async function toolbarClean(page: Page, label: string) {
     return found;
   });
   assert.deepEqual(problems, [], `${label}: toolbar`);
+}
+/** No serious or critical WCAG 2.1 AA violations (at 390 light only). */
+async function axe(page: Page, label: string, tag: string) {
+  if (!tag.startsWith("390x844-light")) return;
+  const result = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+    .analyze();
+  assert.deepEqual(
+    result.violations
+      .filter((v) => ["serious", "critical"].includes(v.impact ?? ""))
+      .map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(" ")}`),
+    [],
+    `${label}: no serious accessibility violations`,
+  );
 }
 async function shoot(page: Page, name: string, tag: string, full = false) {
   await page.mouse.move(0, 0);
@@ -364,6 +384,7 @@ try {
           const box = await action.boundingBox();
           assert.ok(box && box.height >= 44, `${tag}: 44px actions`);
         }
+      await axe(page, "level check", tag);
       await shoot(page, "check-over-problem", tag);
       // Escape, a tap outside, or Continue: each closes it.
       let attempts = 0;
@@ -438,6 +459,346 @@ try {
       assert.deepEqual(faults, [], `${tag}: no page errors`);
       await context.close();
     }
+
+  // The map: every level stated inline with what it means, no rows to open,
+  // and the bars move from the last visit's levels on this device.
+  const mapped = await trialWith(PLACEMENT + 8);
+  for (const theme of ["light", "dark"] as const)
+    for (const [width, height] of viewports) {
+      const tag = `${width}x${height}-${theme}`;
+      const { context, page, faults } = await open(
+        theme,
+        width,
+        height,
+        mapped.token,
+      );
+      contexts.push(context);
+      await page.goto(`${origin}/try/map`);
+      const map = page.locator(".frontier-map");
+      await map.waitFor();
+      assert.equal(
+        await map.locator("[aria-expanded]").count(),
+        0,
+        `${tag}: no show/hide rows`,
+      );
+      const rows = map.locator(".frontier-row");
+      assert.ok((await rows.count()) >= 6, `${tag}: every area has a row`);
+      for (const row of await rows.all()) {
+        assert.match(
+          (await row.locator(".frontier-level").textContent()) ?? "",
+          /^(K|Grade \d+|Algebra 1|Geometry|Algebra 2|Precalculus|College) likely /,
+        );
+        assert.ok(
+          ((await row.locator(".frontier-meaning").textContent()) ?? "")
+            .length > 10,
+          `${tag}: each row says what its level means`,
+        );
+        const [name, level] = await Promise.all([
+          row.locator(".frontier-name").boundingBox(),
+          row.locator(".frontier-level").boundingBox(),
+        ]);
+        assert.ok(
+          name &&
+            level &&
+            (name.x + name.width <= level.x + 0.5 ||
+              name.y + name.height <= level.y + 0.5),
+          `${tag}: an area's name and level never overlap`,
+        );
+      }
+      assert.ok(
+        (await map
+          .getByText(/^At (kindergarten|K|Grade|Algebra|Geometry)/)
+          .count()) > 0,
+        `${tag}: problem types name what the level means`,
+      );
+      const meter = page.locator("main").getByText(/^Level check · /);
+      assert.equal(
+        (await meter.textContent())?.replace(/\s+/g, " "),
+        `Level check · ${PLACEMENT + 8} answered`,
+      );
+      await page.getByText(`of ${FREE}`, { exact: true }).waitFor();
+      await fits(page, `${tag} map`);
+      await axe(page, "map", tag);
+      await shoot(page, "map", tag, true);
+      assert.deepEqual(faults, [], `${tag}: no page errors`);
+      await context.close();
+    }
+  // Between visits: the dot starts where it was last seen and moves; with
+  // reduced motion it moves without a transition.
+  for (const motion of ["no-preference", "reduce"] as const) {
+    const { context, page } = await open(
+      "light",
+      390,
+      844,
+      mapped.token,
+      motion,
+    );
+    contexts.push(context);
+    // tsx names inner functions with a helper the page lacks.
+    await context.addInitScript({ content: "globalThis.__name ??= (f) => f" });
+    await context.addInitScript((key) => {
+      localStorage.setItem(
+        key,
+        JSON.stringify({
+          strands: Object.fromEntries(
+            [
+              "number",
+              "operations",
+              "fractions",
+              "decimals",
+              "ratio",
+              "algebra",
+              "reasoning",
+              "functions",
+              "geometry",
+              "trigonometry",
+              "measurement",
+              "data",
+              "probability",
+              "modeling",
+            ].map((strand) => [strand, { level: 0, sd: 3 }]),
+          ),
+        }),
+      );
+      const seen: string[] = [];
+      (window as unknown as { __lefts: string[] }).__lefts = seen;
+      let frame = 0;
+      const record = () => {
+        const dot = document.querySelector<HTMLElement>(
+          ".frontier-row[data-measured] > span > span:last-child",
+        );
+        const left = dot?.style.left;
+        if (left && seen.at(-1) !== left) seen.push(left);
+        if (++frame < 600) requestAnimationFrame(record);
+      };
+      requestAnimationFrame(record);
+    }, `amp.level.seen.${mapped.learnerId}`);
+    await page.goto(`${origin}/try/map`);
+    await page.locator(".frontier-map").waitFor();
+    await page.waitForTimeout(1200);
+    const lefts = await page.evaluate(
+      () => (window as unknown as { __lefts: string[] }).__lefts,
+    );
+    assert.ok(
+      lefts.length >= 2,
+      `map moves from the last visit (${motion}): ${JSON.stringify(lefts)}`,
+    );
+    const duration = await page
+      .locator(".frontier-row[data-measured] > span > span:last-child")
+      .first()
+      .evaluate((node) => getComputedStyle(node).transitionDuration);
+    assert.equal(
+      duration === "0s",
+      motion === "reduce",
+      `transition ${duration} under ${motion}`,
+    );
+    const stored = await page.evaluate(
+      (key) => JSON.parse(localStorage.getItem(key) ?? "null"),
+      `amp.level.seen.${mapped.learnerId}`,
+    );
+    assert.ok(
+      Object.values(stored.strands as Record<string, { level: number }>).some(
+        (e) => e.level !== 0,
+      ),
+      "this visit's levels are remembered",
+    );
+    await context.close();
+  }
+  console.log(
+    "Map: every level and what it means inline (no show/hide), meter leads with the count, bars move from the last visit (instant with reduced motion).",
+  );
+
+  // Share: a card with levels only and a link that starts a fresh check.
+  // The learner (born 2016) may be under 13: only "Download image" until a
+  // parent or guardian steps in.
+  const pngSize = (bytes: Buffer) => [
+    bytes.readUInt32BE(16),
+    bytes.readUInt32BE(20),
+  ];
+  for (const theme of ["light", "dark"] as const)
+    for (const [width, height] of viewports) {
+      const tag = `${width}x${height}-${theme}`;
+      const { context, page, events, faults } = await open(
+        theme,
+        width,
+        height,
+        mapped.token,
+      );
+      contexts.push(context);
+      await context.grantPermissions(["clipboard-read", "clipboard-write"], {
+        origin,
+      });
+      await page.goto(`${origin}/try/map`);
+      await page.locator(".frontier-map").waitFor();
+      await page
+        .getByRole("button", { name: "Share your child’s level" })
+        .click();
+      const sheet = page.getByRole("dialog", {
+        name: "Share your child’s level",
+      });
+      await sheet.waitFor();
+      const preview = sheet.locator("img");
+      await preview.waitFor();
+      await preview.evaluate((img: HTMLImageElement) => img.decode());
+      assert.deepEqual(
+        await preview.evaluate((img: HTMLImageElement) => [
+          img.naturalWidth,
+          img.naturalHeight,
+        ]),
+        [1080, 1350],
+      );
+      for (const name of ["Facebook", "X", "Copy link", "Share…"])
+        assert.equal(
+          await sheet
+            .getByRole(
+              name === "Copy link" || name === "Share…" ? "button" : "link",
+              { name, exact: true },
+            )
+            .count(),
+          0,
+          `${tag}: no ${name} before a grown-up steps in`,
+        );
+      await sheet.getByRole("link", { name: "Download image" }).waitFor();
+      await fits(page, `${tag} share (child)`);
+      await shoot(page, "share-child", tag);
+      // The image the family saves.
+      const download = page.waitForEvent("download");
+      await sheet.getByRole("link", { name: "Download image" }).click();
+      const saved = await download;
+      assert.equal(saved.suggestedFilename(), "amp-level.png");
+      const card = `${shots}/card-${theme}.png`;
+      await saved.saveAs(card);
+      const { readFileSync } = await import("node:fs");
+      assert.deepEqual(pngSize(readFileSync(card)), [1080, 1350]);
+      // A parent or guardian opens the rest.
+      await sheet
+        .getByRole("button", { name: "I’m a parent or guardian" })
+        .click();
+      const facebook = sheet.getByRole("link", { name: "Facebook" }),
+        x = sheet.getByRole("link", { name: "X", exact: true });
+      await facebook.waitFor();
+      const link = `${origin}/level?utm_source=share&utm_medium=level-card`;
+      for (const href of [
+        await facebook.getAttribute("href"),
+        await x.getAttribute("href"),
+      ]) {
+        assert.ok(href, `${tag}: a plain share link`);
+        assert.ok(!href.includes(mapped.learnerId), "no learner id");
+        assert.ok(!href.includes(mapped.token), "no trial token");
+        assert.ok(href.includes(encodeURIComponent(link)), "the fresh link");
+      }
+      assert.equal(await facebook.getAttribute("target"), "_blank");
+      assert.match((await facebook.getAttribute("rel")) ?? "", /noopener/);
+      await sheet.getByRole("button", { name: "Copy link" }).click();
+      await sheet.getByRole("button", { name: "Link copied" }).waitFor();
+      assert.equal(
+        await page.evaluate(() => navigator.clipboard.readText()),
+        link,
+      );
+      await fits(page, `${tag} share (grown-up)`);
+      for (const action of await sheet.locator("button, a").all())
+        if (await action.isVisible()) {
+          const box = await action.boundingBox();
+          assert.ok(box && box.height >= 44, `${tag}: 44px share actions`);
+        }
+      await axe(page, "share sheet", tag);
+      await shoot(page, "share", tag);
+      await eventually(
+        () =>
+          ["download", "copy"].every((channel) =>
+            events.some(
+              (e) =>
+                e.event === "share_complete" &&
+                (e.props as { channel: string }).channel === channel,
+            ),
+          ) &&
+          events.some(
+            (e) =>
+              e.event === "share_open" &&
+              (e.props as { surface: string }).surface === "map",
+          ),
+        `${tag}: share_open and share_complete are recorded`,
+      );
+      await page.keyboard.press("Escape");
+      await sheet.waitFor({ state: "detached" });
+      assert.deepEqual(faults, [], `${tag}: no page errors`);
+      await context.close();
+    }
+  {
+    // An adult learner: every option at once, and Share from the level check.
+    const adult = await trialWith(PLACEMENT + 4, 1988);
+    const { context, page, events } = await open(
+      "light",
+      390,
+      844,
+      adult.token,
+    );
+    contexts.push(context);
+    await page.goto(`${origin}/try/practice`);
+    await answerOne(page, true);
+    await page.locator(".next-action").click();
+    const check = page.getByRole("dialog", { name: checkTitle });
+    await check.waitFor();
+    await check.getByRole("button", { name: "Share your level" }).click();
+    const sheet = page.getByRole("dialog", { name: "Share your level" });
+    await sheet.getByRole("link", { name: "Facebook" }).waitFor();
+    await sheet.getByRole("link", { name: "X", exact: true }).waitFor();
+    await sheet.getByRole("button", { name: "Copy link" }).waitFor();
+    assert.equal(
+      await sheet
+        .getByRole("button", { name: "I’m a parent or guardian" })
+        .count(),
+      0,
+    );
+    await shoot(page, "share-adult-over-check", "390x844-light");
+    await page.keyboard.press("Escape");
+    await sheet.waitFor({ state: "detached" });
+    // Escape closes the share sheet first; the level check stays.
+    await check.waitFor();
+    await eventually(
+      () =>
+        events.some(
+          (e) =>
+            e.event === "share_open" &&
+            (e.props as { surface: string }).surface === "check",
+        ),
+      "share_open from the level check",
+    );
+    await context.close();
+  }
+  {
+    // The shared link: a new visitor lands, counted with the card's tags,
+    // and starts their own level check.
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+    });
+    contexts.push(context);
+    const events: { event: string; props?: unknown }[] = [];
+    await context.route("**/api/v1/events", async (route) => {
+      events.push(
+        ...(route.request().postDataJSON() as { events: typeof events }).events,
+      );
+      await route.fulfill({ status: 204 });
+    });
+    const page = await context.newPage();
+    await page.goto(`${origin}/level?utm_source=share&utm_medium=level-card`);
+    await page.waitForURL("**/try");
+    await page.getByRole("group", { name: "Birth year" }).waitFor();
+    await eventually(
+      () =>
+        events.some(
+          (e) =>
+            e.event === "landing_view" &&
+            (e.props as { utmSource?: string }).utmSource === "share" &&
+            (e.props as { utmMedium?: string }).utmMedium === "level-card",
+        ),
+      "the card's link counts as a landing from a share",
+    );
+    await context.close();
+  }
+  console.log(
+    "Share: card 1080x1350 with levels only; under 13 only Download image until a parent or guardian steps in; Facebook/X are plain links with the fresh /level link and no learner data; Copy link copies it; share_open/share_complete recorded; adult sees every option, from the level check too; /level lands with share tags and starts a new check.",
+  );
   console.log(
     `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → /try/map and back.`,
   );

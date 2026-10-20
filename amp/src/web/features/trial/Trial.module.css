@@ -56,7 +56,8 @@
   width: 100%;
 }
 
-/* "12 of 100 free": a quiet bar on pages, a pill in the practice toolbar. */
+/* "Level check · 12 answered ▬ of 100": the count leads, the allowance is
+   quiet. A bar on pages, a pill in the practice toolbar. */
 .meter {
   display: inline-flex;
   align-items: center;
@@ -96,6 +97,13 @@
   color: var(--color-on-surface);
   font-weight: 700;
 }
+.meterQuiet {
+  color: var(--color-subtle-text);
+}
+.bar .meterText {
+  color: var(--color-muted-text);
+  font-weight: 600;
+}
 .meterShort {
   display: none;
 }
@@ -110,6 +118,9 @@
   height: 5px;
 }
 @media (max-width: 420px) {
+  .pill {
+    gap: 0;
+  }
   .pill .meterLong {
     display: none;
   }
@@ -352,4 +363,7 @@
   50% {
     opacity: 0.55;
   }
+}
+.share {
+  justify-self: start;
 }

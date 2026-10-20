@@ -31,6 +31,8 @@ export const FUNNEL_EVENTS = [
   "refund_requested",
   "refund",
   "level_check_view",
+  "share_open",
+  "share_complete",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -96,6 +98,15 @@ export const REFUND_REASONS = [
   "other",
 ] as const;
 export const PLAN_INTERVALS = ["year", "month"] as const;
+/** Where "Share your level" was opened, and how the card left. */
+export const SHARE_SURFACES = ["check", "map"] as const;
+export const SHARE_CHANNELS = [
+  "system",
+  "facebook",
+  "x",
+  "copy",
+  "download",
+] as const;
 
 const index = z.number().int().min(0).max(100_000);
 const none = z.strictObject({});
@@ -138,6 +149,10 @@ export const funnelPropsSchemas = {
   refund_requested: z.strictObject({ reason: z.enum(REFUND_REASONS) }),
   /** The free assessment's level check, shown after `index` problems. */
   level_check_view: z.strictObject({ index }),
+  share_open: z.strictObject({ surface: z.enum(SHARE_SURFACES) }),
+  /** A system share that finished, a Facebook or X link opened, the link
+   * copied or the image saved. */
+  share_complete: z.strictObject({ channel: z.enum(SHARE_CHANNELS) }),
   refund: z.strictObject({
     full: z.boolean(),
     /** A partial refund of the same purchase that later became full. */

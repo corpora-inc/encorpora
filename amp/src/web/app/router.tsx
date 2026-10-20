@@ -74,8 +74,9 @@ async function beforeStart({ location }: { location: { pathname: string } }) {
   const target = startDestination(me, location.pathname, !!chosenPlan());
   if (target) throw redirect({ ...startNavigation(target), replace: true });
 }
-const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
-  lazyRouteComponent(() => import("../features/trial"), name);
+const trial = (
+  name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall" | "LevelInvite",
+) => lazyRouteComponent(() => import("../features/trial"), name);
 /** The free trial: anonymous, resumable on this device, every step a URL. */
 const tryStart = createRoute({
   getParentRoute: () => root,
@@ -96,6 +97,12 @@ const tryPlans = createRoute({
   getParentRoute: () => root,
   path: "/try/plans",
   component: trial("Paywall"),
+});
+/** A shared level card's link: a fresh level check (features/trial). */
+const levelInvite = createRoute({
+  getParentRoute: () => root,
+  path: "/level",
+  component: trial("LevelInvite"),
 });
 const home = createRoute({
   getParentRoute: () => root,
@@ -210,6 +217,7 @@ export const router = createRouter({
     tryPractice,
     tryMap,
     tryPlans,
+    levelInvite,
     fallback,
   ]),
   history: nativeRuntime
