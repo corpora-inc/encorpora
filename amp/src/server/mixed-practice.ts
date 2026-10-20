@@ -16,6 +16,7 @@ import {
   PLACEMENT_ATTEMPTS,
   openerCandidates,
   templateRole,
+  type OpenerSlots,
 } from "../learning/placement";
 
 export type PracticeReason =
@@ -76,6 +77,8 @@ export function planMixedPractice(options: {
   /** Stable per learner, so siblings start differently but a learner's own
    * scripted openers never change between requests. */
   learnerKey?: string;
+  /** Scripted opener table; defaults to the production `openerSlots`. */
+  openers?: OpenerSlots;
 }): PracticeChoice[] {
   const { templates, skills, evidence, seed } = options;
   if (!templates.length) throw new Error("No active templates");
@@ -173,6 +176,7 @@ export function planMixedPractice(options: {
       expectedGrade: frontier.expected,
       position: answered + slot,
       learnerKey: options.learnerKey ?? seed,
+      slots: options.openers,
     })
       .map((id) => pool.find((template) => template.id === id))
       .find(

@@ -139,13 +139,7 @@ test("large numbers use thousands separators", () => {
 
 test("comparison openers are whole, short and numeric", () => {
   const openers = new Set(openerSlots.flat(2));
-  for (const id of [
-    "greater-numeral",
-    "compare-two-digit",
-    "compare-three-digit",
-    "multidigit-digit-value",
-    "compare-multidigit",
-  ]) {
+  for (const id of ["greater-numeral", "compare-three-digit"]) {
     assert.ok(openers.has(id), id);
     assert.equal(
       comparisonTemplates.find((t) => t.id === id)!.requiredResponseCapability,

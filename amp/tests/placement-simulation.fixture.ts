@@ -1,6 +1,9 @@
 import { planMixedPractice, templateGrade } from "../src/server/mixed-practice";
 import { estimateFrontier, strandLevel } from "../src/learning/frontier";
-import { PLACEMENT_ATTEMPTS } from "../src/learning/placement";
+import {
+  PLACEMENT_ATTEMPTS,
+  type OpenerSlots,
+} from "../src/learning/placement";
 import { projectSkillEvidence } from "../src/server/evidence.js";
 import { generateProblem, templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
@@ -58,6 +61,7 @@ function place(options: {
   seed: number;
   catalog: readonly TemplateMetadata[];
   guessOf: (templateId: string) => number;
+  openers?: OpenerSlots;
 }): Run {
   const attempts: Outcome[] = [];
   const errors: number[] = [];
@@ -84,6 +88,7 @@ function place(options: {
       seed: `${key}:${i}`,
       now: at,
       learnerKey: key,
+      openers: options.openers,
     });
     const template = choice!.template;
     const response = generateProblem(template.id, `${key}:${i}`).public
@@ -160,14 +165,16 @@ export function simulatePlacement(options: {
   catalog: readonly TemplateMetadata[];
   guessOf: (templateId: string) => number;
   seeds?: readonly number[];
+  /** Scripted opener table; defaults to the production one. */
+  openers?: OpenerSlots;
 }) {
-  const { catalog, guessOf } = options;
+  const { catalog, guessOf, openers } = options;
   const runs: Run[] = [];
   for (const level of [-0.5, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5])
     for (const offset of [-2, 0, 2])
       for (const seed of options.seeds ?? [1, 2, 3, 4, 5, 6]) {
         const start = Math.max(0, Math.min(12, Math.round(level) + offset));
-        runs.push(place({ level, start, seed, catalog, guessOf }));
+        runs.push(place({ level, start, seed, catalog, guessOf, openers }));
       }
   const mean = (pick: (run: Run) => number | null) => {
     const values = runs.map(pick).filter((value) => value !== null);
@@ -184,5 +191,39 @@ export function simulatePlacement(options: {
     choiceStrandError: mean((run) => run.choiceStrandError),
     toPlace: mean((run) => run.toPlace),
     choiceShare: mean((run) => run.choiceShare),
+  };
+}
+
+/** Two placements of the same synthetic learners, before and after a change.
+ * Each learner's answers depend only on the learner and the item (common
+ * random numbers), so the per-learner differences after − before measure the
+ * change.
+ * Bounds come from those differences' own standard error, never from a
+ * hand-set constant, so the comparisons stay meaningful as the catalog grows. */
+export function paired(
+  before: readonly Run[],
+  after: readonly Run[],
+  pick: (run: Run) => number | null,
+) {
+  const differences: number[] = [];
+  before.forEach((run, i) => {
+    const a = pick(after[i]!),
+      b = pick(run);
+    if (a !== null && b !== null) differences.push(a - b);
+  });
+  const n = differences.length;
+  const mean = differences.reduce((sum, d) => sum + d, 0) / n;
+  const variance =
+    differences.reduce((sum, d) => sum + (d - mean) ** 2, 0) / (n - 1);
+  const se = Math.sqrt(variance / n);
+  const round = (v: number) => Math.round(v * 1000) / 1000;
+  return {
+    n,
+    mean: round(mean),
+    se: round(se),
+    /** One-sided, about 98%: the change is not detectably worse. */
+    noWorse: mean <= 2 * se,
+    /** One-sided, about 98%: the change is detectably better. */
+    better: mean + 2 * se < 0,
   };
 }
