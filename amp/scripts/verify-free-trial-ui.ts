@@ -438,8 +438,25 @@ async function answerOne(page: Page, correct: boolean) {
   await page.locator(".next-action").waitFor();
   return response.json();
 }
+/** Next; a level check that opens with the next problem is continued
+ * past (verify-level-check-ui.ts covers it). */
 async function next(page: Page) {
+  const leaving = page.url();
   await page.locator(".next-action").click();
+  // The feedback leaves when the next problem shows; the map and the
+  // paywall are new routes.
+  await Promise.race([
+    page.locator(".next-action").waitFor({ state: "detached" }),
+    page.waitForURL((url) => url.href !== leaving),
+  ]);
+  await frames(page);
+  const check = page.getByRole("dialog", {
+    name: "Here’s where we think you are",
+  });
+  if (await check.isVisible()) {
+    await check.getByRole("button", { name: "Continue" }).click();
+    await check.waitFor({ state: "detached" });
+  }
 }
 async function shoot(page: Page, name: string, tag: string, full = false) {
   await page.mouse.move(0, 0);
