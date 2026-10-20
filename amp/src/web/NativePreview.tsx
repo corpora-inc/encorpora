@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { useLayoutEffect, useRef, useState } from "react";
+import { brand } from "../brand";
 
 interface NativeStatus {
   apiConfiguration: "configured" | "unconfigured" | "invalid";
@@ -43,7 +44,7 @@ export function NativePreview() {
   return (
     <main className="native-preview">
       <section className="card welcome" aria-labelledby="native-title">
-        <p className="eyebrow">AMP · MATHEMATICS</p>
+        <p className="eyebrow">{brand.productName}</p>
         <h1 id="native-title">Native preview</h1>
         <p>Family sign-in and learning require a configured web application.</p>
         <p>

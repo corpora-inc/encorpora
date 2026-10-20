@@ -21,6 +21,7 @@ import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { ApiError } from "./repository";
 import type { Authenticator } from "./auth";
+import { brand, brandTitle } from "../brand";
 
 /** AMP's own parent accounts: users, sessions and linked sign-in methods live
  * in AMP's database (Better Auth). An account id is `amp|<user id>`. */
@@ -219,7 +220,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
         from: config.mail!.from,
         to,
         subject,
-        text: `${text}\n\n${url}\n`,
+        text: `${text}\n\n${url}\n\n${brandTitle}\n`,
       });
       if (error) throw new Error(`Email not sent: ${error.message}`);
     } else if (!config.production) {
@@ -228,7 +229,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   }
   const { origin, hostname } = new URL(config.baseURL);
   const twoFactorPlugin = twoFactor({
-    issuer: "AMP",
+    issuer: brand.name,
     schema: { twoFactor: { modelName: "amp_auth_two_factors" } },
   });
   const protectedTwoFactor = new Set([
@@ -245,7 +246,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   }
   const passkeyPlugin = passkey({
     rpID: hostname,
-    rpName: "AMP",
+    rpName: brand.name,
     origin,
     schema: { passkey: { modelName: "amp_auth_passkeys" } },
   });
@@ -254,7 +255,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const signupPlugin = passkeySignup({
     enabled: config.passwords,
     rpID: hostname,
-    rpName: "AMP",
+    rpName: brand.name,
     origin,
   });
   passkeyPlugin.endpoints.verifyPasskeyRegistration = serializeSecurityEndpoint(
@@ -281,7 +282,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     }),
   };
   const auth = betterAuth({
-    appName: "AMP",
+    appName: brand.name,
     baseURL: config.baseURL,
     basePath: "/api/auth",
     secret: config.secret,
@@ -353,7 +354,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       sendResetPassword: ({ user, url }) =>
         send(
           user.email,
-          "Reset your AMP password",
+          `Reset your ${brand.name} password`,
           "Use this link to choose a new password. It expires in one hour. If you did not ask for it, ignore this email.",
           url,
         ),
@@ -395,8 +396,8 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       sendVerificationEmail: ({ user, url }) =>
         send(
           user.email,
-          "Confirm your email for AMP",
-          "Confirm this address for your AMP parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an AMP account, ignore this email; nothing happens without your confirmation.",
+          `Confirm your email for ${brand.name}`,
+          `Confirm this address for your ${brand.name} parent account. Until it is confirmed, the account cannot buy access or give consent for a learner. If you did not create an ${brand.name} account, ignore this email; nothing happens without your confirmation.`,
           url,
         ),
     },

@@ -59,7 +59,7 @@ import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
 import { absoluteValueWorksheet } from "./absolute-value-worksheets";
 import { absoluteValueTemplates } from "../math/absolute-value-practice";
 import { LessonIllustration } from "./LessonIllustration";
-import { product } from "../product";
+import { brand } from "../brand";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Figure } from "../web/Figure";
@@ -250,7 +250,7 @@ export function publicationHtml(
   const body = (
     <article>
       <header>
-        <span>{product.name} / MATHEMATICS</span>
+        <span>{brand.name} / MATHEMATICS</span>
         <span>Edition {edition}</span>
       </header>
       <h1>{lesson.title}</h1>
@@ -377,7 +377,7 @@ export function publicationHtml(
         </>
       )}
       <footer>
-        {product.company} · {product.name} · {lesson.id} · Edition {edition}
+        {brand.company} · {brand.name} · {lesson.id} · Edition {edition}
       </footer>
     </article>
   );

@@ -11,6 +11,7 @@ The site tone is **understated and elegant**. "Pure Learning" is the tagline. Av
 ### Product Facts (verify these against actual code before using)
 
 - **Dynawalla**: An arcade of short maths games (the count comes from the manifests — do not restate it in copy) where the arithmetic is the mechanic, not a quiz between rounds. Android is live on Google Play; iOS is submitted and **waiting for review**, shown as "coming soon" and NOT linked. Has a web presence at `/dynawalla/` plus one page per game at `/dynawalla/<slug>/`. Every name, description, skill list and age on those pages is generated from `dynawalla/games/<game>/pack.json` by `web/scripts/generate-dynawalla-games.js` (runs in `prebuild`) — **never hand-write the game list or restate it as prose**, and never state a game count in copy you author. The key art is not artwork: it is computed from the pack id by `lib/dynawalla/art.ts` + `motifs.ts`, ported from the app so the picture matches the device. The games are bundled into the app and play offline.
+- **AMP Mathematics** (AMP = Adaptive Math Pathways): adaptive math practice on the web at `https://amp.corpora.inc`. Its card's title and description must equal `amp/src/brand.json` (`productName`, `description`); `amp/tests/brand.test.ts` enforces it. Never state a grade range.
 - **Corpan**: Language learning app with downloadable packs. 50+ languages. iOS + Android. Has a web presence at /corpan/ with playable packs.
 - **Homeschool Offline**: A private homeschool **journal/calendar** app. Track school days, add notes and photos, manage multiple students. 100% offline, no cloud. It is NOT a curriculum or K-12 content platform. Check `/homeschool-offline/` for the actual app code.
 - **Hanzipan**: A Corpan pack (not a standalone app). Mandarin character studio.
@@ -21,6 +22,7 @@ The site tone is **understated and elegant**. "Pure Learning" is the tagline. Av
 ### Logos
 Each app has its own logo. Do NOT reuse the Corpan logo for other apps.
 - Dynawalla: `/web/io/public/logos/dynawalla-logo.webp` (purple minaret-and-gear mark — the brand rule is white or black only, never a colour wash)
+- AMP: `/web/io/public/logos/amp-logo.webp` (rendered from `amp/mobile/icons/source.svg`)
 - Corpan: `/web/io/public/logos/corpan-logo.webp`
 - Homeschool Offline: `/web/io/public/logos/homeschool-logo.webp` (smiley house icon)
 - Yijing: `/web/io/public/logos/iching-logo.webp`
