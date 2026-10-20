@@ -634,3 +634,22 @@
     font-size: 0.75rem;
   }
 }
+
+/* Phone landscape is a usable-by-scrolling target, not a fit target: at
+   390px high the heading, filters and pager left the card stage no room.
+   The whole workspace scrolls instead. */
+@media (orientation: landscape) and (max-height: 499px) {
+  .progress-workspace {
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+  .progress-workspace .progress-card-stage,
+  .progress-workspace .progress-detail-content {
+    flex: none;
+    overflow: visible;
+  }
+  /* Size containment (theme.css) would give the stage no height of its own. */
+  .progress-workspace .progress-card-stage {
+    container-type: normal;
+  }
+}
