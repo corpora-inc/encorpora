@@ -60,13 +60,6 @@ export const extendedTemplates: readonly TemplateMetadata[] = [
     "Combine positive and negative integer changes.",
   ],
   [
-    "integer-power",
-    "Evaluate powers",
-    "integer-powers",
-    "6–8",
-    "Evaluate a whole-number base raised to a nonnegative integer exponent.",
-  ],
-  [
     "line-slope",
     "Slope through two points",
     "slope",
@@ -303,26 +296,6 @@ export function generateExtendedProblem(
         `Start at ${a}. Adding ${b} changes the value by ${b}.`,
         `${a} + (${b}) = ${answer}.`,
       ];
-      break;
-    }
-    case "integer-power": {
-      const base = r(2, 9),
-        exponent = r(0, 5);
-      prompt = `What is ${base} raised to the power ${exponent}?`;
-      answer = `${base ** exponent}`;
-      hint =
-        exponent === 0
-          ? `Follow the pattern: ${base}² = ${base * base} and ${base}¹ = ${base}. Each step down in the exponent divides by ${base}. What is ${base}⁰?`
-          : exponent === 1
-            ? `The power 1 is a single factor of ${base}.`
-            : `${base} to the power ${exponent} means ${exponent} factors of ${base}: ${Array(exponent).fill(base).join(" × ")}.`;
-      explanation =
-        exponent === 0
-          ? [`Any nonzero base raised to power zero is 1.`, `${base}^0 = 1.`]
-          : [
-              `${base}^${exponent} means ${Array(exponent).fill(base).join(" × ")}.`,
-              `The product is ${answer}.`,
-            ];
       break;
     }
     case "line-slope": {

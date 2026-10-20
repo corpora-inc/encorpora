@@ -17,6 +17,7 @@ import { exponentialMethods } from "./exponential-lessons";
 import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { similarityTrigMethods } from "./similarity-trig-lessons";
 import { coordinateCircleMethods } from "./coordinate-circle-lessons";
+import { powerMethods } from "./power-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { bivariateMethods } from "./bivariate-lessons";
@@ -63,6 +64,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...probabilityRulesMethods,
   ...similarityTrigMethods,
   ...coordinateCircleMethods,
+  ...powerMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
@@ -1112,16 +1114,17 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "From −7 to 6 is 6 − (−7) = 13, not 6 − 7.",
   },
   "integer-power": {
-    goal: "Given a base and an exponent, find the power.",
+    goal: "Given a base and an exponent, find the power's value.",
     terms: [
-      ["base", "The number being multiplied."],
-      ["exponent", "How many copies of the base are multiplied."],
+      ["base", "The repeated factor."],
+      ["exponent", "How many factors of the base are multiplied."],
     ],
     method: [
-      "Multiply exponent-many copies of the base.",
-      "Any nonzero base to the power 0 is 1.",
+      "Write the factors: $b^n$ is $n$ factors of $b$.",
+      "Group them into powers you know: $3^4 = 3^2 \\cdot 3^2$, $2^7 = 2^5 \\cdot 2^2$.",
+      "Multiply the groups. A nonzero base to the power 0 is 1.",
     ],
-    watch: "8⁴ = 8 × 8 × 8 × 8, not 8 × 4.",
+    watch: "$8^3 = 8 \\cdot 8 \\cdot 8$, not $8 \\cdot 3$.",
   },
   "operation-order": {
     goal: "Given an expression, find its value.",

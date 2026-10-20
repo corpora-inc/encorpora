@@ -125,7 +125,6 @@ test("every extended family has one original companion lesson and mathematically
     "equivalent-ratios": String(2 * (12 / 3)),
     "percent-quantity": String((25 * 80) / 100),
     "signed-addition": String(-7 + 12),
-    "whole-number-powers": String(3 ** 4),
     "slope-two-points": `${8 - 2}/${5 - 1}`,
     "systems-elimination": "2",
     "equally-likely-probability": `3/${3 + 5}`,

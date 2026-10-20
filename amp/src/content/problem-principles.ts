@@ -17,6 +17,7 @@ import { exponentialPrinciples } from "./exponential-lessons";
 import { probabilityRulesPrinciples } from "./probability-rules-lessons";
 import { similarityTrigPrinciples } from "./similarity-trig-lessons";
 import { coordinateCirclePrinciples } from "./coordinate-circle-lessons";
+import { powerPrinciples } from "./power-lessons";
 import { distributionPrinciples } from "./distribution-lessons";
 import { inferencePrinciples } from "./inference-lessons";
 import { bivariatePrinciples } from "./bivariate-lessons";
@@ -59,6 +60,7 @@ export const principles: Record<string, string> = {
   ...probabilityRulesPrinciples,
   ...similarityTrigPrinciples,
   ...coordinateCirclePrinciples,
+  ...powerPrinciples,
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
@@ -309,7 +311,7 @@ export const principles: Record<string, string> = {
   "number-line-distance":
     "The distance between a and b on the number line is |a − b|.",
   "integer-power":
-    "Exponent notation: bⁿ = b × b × … × b (n factors), and b⁰ = 1 for b ≠ 0.",
+    "Exponent notation: $b^n$ is $n$ factors of $b$, and $b^0 = 1$ for $b \\neq 0$; $b^{m + n} = b^m \\cdot b^n$ lets a large power be built from smaller ones.",
   "operation-order":
     "Order of operations: grouping symbols, then exponents, then multiplication and division left to right, then addition and subtraction left to right.",
   "substitute-linear-expression":
