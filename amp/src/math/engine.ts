@@ -211,7 +211,7 @@ import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
-import { polish } from "./polish";
+import { mathLabel, polish } from "./polish";
 import type {
   GeneratedProblem,
   PublicProblem,
@@ -575,7 +575,14 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
     ...problem,
-    public: { ...problem.public, prompt: text(problem.public.prompt) },
+    public: {
+      ...problem.public,
+      prompt: text(problem.public.prompt),
+      response: {
+        ...problem.public.response,
+        label: mathLabel(problem.public.response.label),
+      },
+    },
     explanation: problem.explanation.map(text),
     hint: text(problem.hint),
     ...(problem.choiceFeedback
@@ -825,7 +832,7 @@ function generateRawProblem(
         b = r(1, 20),
         x = r(-12, 12),
         c = a * x + b;
-      prompt = `Solve for x: ${a}x + ${b} = ${c}.`;
+      prompt = `Solve for $x$: $${a}x + ${b} = ${c}$.`;
       answer = `${x}`;
       hint = `Undo the + ${b} first: subtract ${b} from both sides of ${a}x + ${b} = ${c}.`;
       explanation = [
@@ -859,7 +866,7 @@ function generateRawProblem(
       figure = { kind: "right-triangle", a, b, unit: "cm" };
       prompt = `A right triangle has perpendicular legs ${a} cm and ${b} cm. What is the hypotenuse length in centimeters?`;
       answer = `${c}`;
-      hint = `The hypotenuse c is the side opposite the right angle. Write c² = ${a}² + ${b}² and work out the right side.`;
+      hint = `The hypotenuse $c$ is the side opposite the right angle. Write $c^2 = ${a}^2 + ${b}^2$ and work out the right side.`;
       explanation = [
         `c² = ${a}² + ${b}² = ${a * a + b * b}.`,
         `Take the positive square root: c = ${c} cm.`,
@@ -870,9 +877,9 @@ function generateRawProblem(
       const a = r(1, 5),
         h = r(1, 12),
         k = r(1, 20);
-      prompt = `For real x, what is the minimum value of f(x) = ${a}(x − ${h})² + ${k}?`;
+      prompt = `For real $x$, what is the minimum value of $f(x) = ${a}(x − ${h})² + ${k}$?`;
       answer = `${k}`;
-      hint = `(x − ${h})² is never negative, and it is 0 when x = ${h}. What is f(${h})?`;
+      hint = `$(x − ${h})²$ is never negative, and it is 0 when $x = ${h}$. What is $f(${h})$?`;
       explanation = [
         `${a}(x − ${h})² is at least zero because ${a} is positive.`,
         `At x = ${h}, it equals zero, so the minimum is ${k}.`,
@@ -887,8 +894,8 @@ function generateRawProblem(
       answer = `${BigInt(a) * BigInt(ratio) ** BigInt(n - 1)}`;
       hint = `From term 1 to term ${n} is ${n - 1} steps. Start at ${a} and multiply by ${ratio} once per step.`;
       explanation = [
-        `Term n = first term × ratio^(n − 1).`,
-        `Term ${n} = ${a} × ${ratio}^${n - 1} = ${answer}.`,
+        `Term $n$ is the first term times the ratio raised to the power $n - 1$.`,
+        `Term ${n} is $${a} \\times ${ratio}^{${n - 1}} = ${answer}$.`,
       ];
       break;
     }
@@ -900,7 +907,7 @@ function generateRawProblem(
       answer = `${power}`;
       hint = `log base ${base} of ${argument} asks: ${base} to what power is ${argument}? Multiply ${base} by itself until you reach ${argument}, counting the factors.`;
       explanation = [
-        `Find p such that ${base}^p = ${argument}.`,
+        `Find $p$ such that $${base}^p = ${argument}$.`,
         `${base}^${power} = ${argument}, so the logarithm is ${power}.`,
       ];
       break;

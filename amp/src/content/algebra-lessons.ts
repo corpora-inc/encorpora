@@ -19,22 +19,22 @@ export const algebraLessons: Lesson[] = [
       {
         title: "A place for the whole value",
         paragraphs: [
-          "In 3x + 2, the x is a place for one complete value. At x = −1/2, write 3 × (−1/2) + 2. Parentheses keep the negative sign attached to the input.",
+          "In 3x + 2, the $x$ is a place for one complete value. At x = −1/2, write 3 × (−1/2) + 2. Parentheses keep the negative sign attached to the input.",
           "An expression names a value. An equation makes a statement that two values agree. Evaluating an expression does not require inventing an equals sign with zero.",
         ],
       },
       {
         title: "One multiplier, every term",
         paragraphs: [
-          "Imagine three bags, each holding x counters and two extra counters. Their total is 3(x + 2). Three copies of x and three copies of two give 3x + 6.",
+          "Imagine three bags, each holding $x$ counters and two extra counters. Their total is 3(x + 2). Three copies of $x$ and three copies of two give 3x + 6.",
           "The same property works with signed quantities: −2(x − 3) = −2x + 6. The positive six comes from multiplying two negative factors, not from ignoring the subtraction.",
         ],
       },
       {
         title: "Collect the same kind of quantity",
         paragraphs: [
-          "In 4x − 7x + 5, the x terms combine to −3x. The constant five is not another x term. The coefficient is −3; the full expression is −3x + 5.",
-          "In 4x − 4x + 5, the x terms cancel. Their coefficient is zero, and the expression equals five for every input.",
+          "In 4x − 7x + 5, the $x$ terms combine to −3x. The constant five is not another $x$ term. The coefficient is −3; the full expression is −3x + 5.",
+          "In 4x − 4x + 5, the $x$ terms cancel. Their coefficient is zero, and the expression equals five for every input.",
         ],
       },
     ],
@@ -50,7 +50,7 @@ export const algebraLessons: Lesson[] = [
     },
     pitfalls: [
       "Distributing to only the first term changes the expression.",
-      "Adding a constant to an x coefficient mixes unlike quantities.",
+      "Adding a constant to an $x$ coefficient mixes unlike quantities.",
       "One successful numerical check cannot prove two expressions agree for every input.",
     ],
     parentGuide:
@@ -139,7 +139,7 @@ export const algebraLessons: Lesson[] = [
       {
         title: "Separate the start from the change",
         paragraphs: [
-          "For y = mx + b, mx is the change accumulated from input zero to input x. The number b is the output at zero.",
+          "For y = mx + b, mx is the change accumulated from input zero to input $x$. The number $b$ is the output at zero.",
           "If the rate is 3/2 and the rule passes through (3, 8), then b = 8 − (3/2) × 3 = 7/2. The observed output eight is not the starting value.",
         ],
       },

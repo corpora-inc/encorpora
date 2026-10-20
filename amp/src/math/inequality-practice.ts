@@ -105,7 +105,7 @@ function manageable(
   });
 }
 const remove = (value: Rational, variable = false) =>
-  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? term(q(Math.abs(value.n), value.d)) : number(q(Math.abs(value.n), value.d))} ${value.n < 0 ? "to" : "from"} both sides`;
+  `${value.n < 0 ? "Add" : "Subtract"} ${variable ? `$${term(q(Math.abs(value.n), value.d))}$` : number(q(Math.abs(value.n), value.d))} ${value.n < 0 ? "to" : "from"} both sides`;
 const difference = (a: Rational, b: Rational) =>
   `${number(a)} ${b.n < 0 ? "+" : "−"} ${number(q(Math.abs(b.n), b.d))}`;
 
@@ -168,7 +168,7 @@ function generateInequalityCase(
     tags.push(equality ? "equal" : "unequal", truth ? "true" : "false");
     left = `${number(q(factor))}(${linear(q(a), q(b))})${constant(q(d))}`;
     right = linear(q(coefficient), q(rhs));
-    hint = `Distribute ${number(q(factor))} across (${linear(q(a), q(b))}) first: the x terms on the two sides then match. Remove ${term(q(coefficient))} from both sides and check whether the numbers left make a true comparison.`;
+    hint = `Distribute ${number(q(factor))} across (${linear(q(a), q(b))}) first: the $x$ terms on the two sides then match. Remove ${term(q(coefficient))} from both sides and check whether the numbers left make a true comparison.`;
     explanation.push(
       `Distribute ${number(q(factor))} across the parentheses: ${linear(q(coefficient), q(factor * b))}${constant(q(d))} ${op} ${right}.`,
       ...(d === 0
@@ -177,7 +177,7 @@ function generateInequalityCase(
             `Combine the constants: ${linear(q(coefficient), q(lhs))} ${op} ${right}.`,
           ]),
       `${remove(q(coefficient), true)}: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
-      `This comparison is ${truth ? "true" : "false"}. No x remains, so ${truth ? "every real value of x makes the original inequality true" : "no real value of x makes the original inequality true"}.`,
+      `This comparison is ${truth ? "true" : "false"}. No $x$ remains, so ${truth ? "every real value of $x$ makes the original inequality true" : "no real value of $x$ makes the original inequality true"}.`,
     );
     const correct = truth ? "All real numbers" : "No real numbers";
     candidates = ["All real numbers", "No real numbers"].map((label) => ({
@@ -220,7 +220,7 @@ function generateInequalityCase(
           : [
               `Combine the constants: ${linear(q(k * a), lhsConstant)} ${op} ${right}.`,
             ]),
-        `${remove(other, true)}. The x coefficient becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
+        `${remove(other, true)}. The $x$ coefficient becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
       );
     }
     const remaining = sub(rhsConstant, lhsConstant);
@@ -241,10 +241,10 @@ function generateInequalityCase(
       );
     if (!equal(coefficient, q(1)))
       explanation.push(
-        `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore x ${solvedOp} ${number(target)}.`,
+        `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore $x ${solvedOp} ${number(target)}$.`,
       );
     explanation.push(
-      `The solution is x ${solvedOp} ${number(target)}: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`,
+      `The solution is $x ${solvedOp} ${number(target)}$: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`,
     );
     const pointsLeft = solvedOp === "<" || solvedOp === "≤";
     // Use zero when it is strictly inside; otherwise choose the nearest interior
@@ -269,19 +269,19 @@ function generateInequalityCase(
         label: `x ${direction} ${number(boundary)}`,
         correct: equal(boundary, target) && direction === solvedOp,
         feedback: equal(boundary, target)
-          ? `The boundary ${number(target)} is correct, but the direction is reversed. ${coefficient.n < 0 ? "Dividing by the negative coefficient reverses the original comparison" : "Dividing by the positive coefficient keeps the original comparison"}, giving x ${solvedOp} ${number(target)}.`
+          ? `The boundary ${number(target)} is correct, but the direction is reversed. ${coefficient.n < 0 ? "Dividing by the negative coefficient reverses the original comparison" : "Dividing by the positive coefficient keeps the original comparison"}, giving $x$ ${solvedOp} ${number(target)}.`
           : direction === solvedOp
             ? `The direction is correct, but the boundary is not. Divide ${number(remaining)} by ${number(coefficient)} to obtain ${number(target)}.`
-            : `Check both the boundary and the direction. Dividing ${number(remaining)} by ${number(coefficient)} gives ${number(target)}; ${coefficient.n < 0 ? "the negative divisor reverses" : "the positive divisor preserves"} the comparison, giving x ${solvedOp} ${number(target)}.`,
+            : `Check both the boundary and the direction. Dividing ${number(remaining)} by ${number(coefficient)} gives ${number(target)}; ${coefficient.n < 0 ? "the negative divisor reverses" : "the positive divisor preserves"} the comparison, giving $x$ ${solvedOp} ${number(target)}.`,
       })),
     );
-    const divide = `When you divide by the x coefficient, ${number(coefficient)}, ask whether it is negative.`;
+    const divide = `When you divide by the $x$ coefficient, ${number(coefficient)}, ask whether it is negative.`;
     hint =
       templateId === "grouped-linear-inequality"
-        ? `Distribute ${left.slice(0, left.indexOf("("))} to every term in the parentheses, then collect the x terms on one side. Before dividing by the x coefficient, check its sign: a negative divisor reverses the comparison.`
-        : `${lhsConstant.n ? `Remove the ${number(lhsConstant)} from both sides of ${left} ${op} ${right} first.` : `The x term in ${left} ${op} ${right} is already alone.`} ${divide}`;
+        ? `Distribute ${left.slice(0, left.indexOf("("))} to every term in the parentheses, then collect the $x$ terms on one side. Before dividing by the $x$ coefficient, check its sign: a negative divisor reverses the comparison.`
+        : `${lhsConstant.n ? `Remove the ${number(lhsConstant)} from both sides of ${left} ${op} ${right} first.` : `The $x$ term in ${left} ${op} ${right} is already alone.`} ${divide}`;
     feedback =
-      "Both the boundary and the direction must be correct. Isolate x with exact arithmetic, and reverse the comparison when dividing by a negative number.";
+      "Both the boundary and the direction must be correct. Isolate $x$ with exact arithmetic, and reverse the comparison when dividing by a negative number.";
   }
   const options = shuffle(candidates, r).map((c, i) => ({
     id: `option-${"abcd"[i]}`,
@@ -301,7 +301,7 @@ function generateInequalityCase(
         templateVersion: 1,
         seed,
         skillId: metadata.skillId,
-        prompt: `Solve for real x: ${left} ${op} ${right}.`,
+        prompt: `Solve for real $x$: ${left} ${op} ${right}.`,
         response: {
           kind: "choice",
           label: "Choose the complete solution set",

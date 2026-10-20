@@ -492,7 +492,7 @@ function skewedBoxes(r: Random): Case {
         ),
         explanation: [
           ...explain,
-          `Range = maximum − minimum: ${A} ${span[0]! * k}, ${B} ${span[1]! * k}. IQR = Q3 − Q1: ${A} ${iqr[0]! * k}, ${B} ${iqr[1]! * k}.`,
+          `Range = maximum − minimum: ${A} ${span[0]! * k}, ${B} ${span[1]! * k}. $\\text{IQR} = Q_3 - Q_1$: ${A} ${iqr[0]! * k}, ${B} ${iqr[1]! * k}.`,
           `${statement(wideRange, wide)} The range depends on the two most extreme values; the IQR describes the middle half of the data.`,
         ],
         hint: `Range is whisker end to whisker end; IQR is the width of the box. Read both for ${A} and for ${B}.`,

@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { spokenMath } from "../src/web/MathText";
 import { planMixedPractice, templateGrade } from "../src/server/mixed-practice";
 import { estimateFrontier, initialLevel } from "../src/learning/frontier";
 import {
@@ -153,7 +154,8 @@ test("every role and opener names a real, whole item", () => {
         // Short enough to read at a glance as a first impression.
         for (const seed of ["a", "b", "c", "d", "e", "f", "g", "h"])
           assert.ok(
-            generateProblem(id, seed).public.prompt.length <= 160,
+            // Characters a reader sees: TeX delimiters are not read.
+            spokenMath(generateProblem(id, seed).public.prompt).length <= 160,
             `${id}: ${generateProblem(id, seed).public.prompt}`,
           );
       }

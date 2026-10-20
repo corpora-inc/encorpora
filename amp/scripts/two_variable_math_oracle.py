@@ -15,7 +15,7 @@ import subprocess
 from fractions import Fraction
 from pathlib import Path
 
-from algebra_one_expr import evaluate, holds, number, parse, require, solve_linear
+from algebra_one_expr import untex, evaluate, holds, number, parse, require, solve_linear
 from linear_function_math_oracle import arithmetic_claims, options, only, graph_of, case, choice, scene
 
 TWO_VARIABLE_NUMBER = frozenset({'system-model-value', 'parameter-solution-count'})
@@ -360,7 +360,8 @@ SOLVERS = {
 
 def solve_two_variable(public):
     require(public['templateId'] in SOLVERS, 'Not a two-variable template')
-    return SOLVERS[public['templateId']](public)
+    # Formulas in the prompt are typeset; read them as text.
+    return SOLVERS[public['templateId']]({**public, 'prompt': untex(public['prompt'])})
 
 
 def review_problem(problem):

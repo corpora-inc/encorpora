@@ -65,3 +65,23 @@ export function displayAnswer(value: string): string {
     .toFixed(places)
     .replace(/\.?0+$/, "");
 }
+
+/** A plain formula ("y < −1/2x − 2") as explicit TeX for both typesetters. A
+ * fraction that multiplies a letter or a group is set as \tfrac, so 1/2x reads
+ * as one half of x. */
+export const formula = (plain: string) =>
+  plain.includes("$")
+    ? plain
+    : `$${plain.replace(/(\d+)\/(\d+)(?=\s*[A-Za-z(])/g, "\\tfrac{$1}{$2}")}$`;
+
+/** An answer-field label that names a variable is set as math: "x" reads
+ * "Value of $x$", "x-coordinate" reads "$x$-coordinate", "sin A" reads
+ * "$\sin A$". Any other label is returned unchanged. */
+export function mathLabel(label: string): string {
+  if (/^[A-Za-z]$/.test(label)) return `Value of $${label}$`;
+  const coordinate = /^([xy])-coordinate$/.exec(label);
+  if (coordinate) return `$${coordinate[1]}$-coordinate`;
+  const trig = /^(sin|cos|tan) ([A-Z]|θ)$/.exec(label);
+  if (trig) return `$\\${trig[1]} ${trig[2] === "θ" ? "\\theta" : trig[2]}$`;
+  return label;
+}

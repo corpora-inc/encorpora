@@ -24,15 +24,15 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "One output for each input",
         paragraphs: [
-          "A relation pairs inputs x with outputs y. It is a function when each input has exactly one output. In the table, the input 2 is paired with both 3 and 7, so the relation is not a function. The output 4 appears twice, for the inputs 1 and 5; that is allowed, because each of those inputs still has one output.",
-          "An equation defines y as a function of x when every x gives one y. y = x² + 1 does: each x has one square. x = y² does not: x = 4 is true for y = 2 and for y = −2.",
+          "A relation pairs inputs $x$ with outputs $y$. It is a function when each input has exactly one output. In the table, the input 2 is paired with both 3 and 7, so the relation is not a function. The output 4 appears twice, for the inputs 1 and 5; that is allowed, because each of those inputs still has one output.",
+          "An equation defines $y$ as a function of $x$ when every $x$ gives one y. y = x² + 1 does: each $x$ has one square. x = y² does not: x = 4 is true for y = 2 and for y = −2.",
         ],
         illustration: "relation-repeated-input",
       },
       {
         title: "Domain and range on a graph",
         paragraphs: [
-          "The domain is every x-value that has a point on the graph: read it along the x-axis, from the left end to the right end. The range is every y-value the graph reaches: read it up the y-axis, from the lowest point to the highest.",
+          "The domain is every $x$-value that has a point on the graph: read it along the $x$-axis, from the left end to the right end. The range is every $y$-value the graph reaches: read it up the $y$-axis, from the lowest point to the highest.",
           "A filled dot includes its endpoint; an open dot leaves it out. The graph shown starts at (−3, 6) with a filled dot and ends at (4, 2.5) with an open dot, so its domain is −3 ≤ x < 4. Its lowest point is the turning point (1, −2) and its highest is (−3, 6), so its range is −2 ≤ y ≤ 6. The range of a curve is not always set by its ends.",
         ],
         illustration: "domain-range-axes",
@@ -47,10 +47,10 @@ export const linearFunctionLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A 300-liter tank drains at 15 liters per minute. W(t) = 300 − 15t gives the water left after t minutes, until the tank is empty. What is the domain of W?",
+        "A 300-liter tank drains at 15 liters per minute. W(t) = 300 − 15t gives the water left after $t$ minutes, until the tank is empty. What is the domain of $W$?",
       steps: [
         "The tank is empty when W(t) = 0: 300 − 15t = 0, so t = 300 ÷ 15 = 20.",
-        "Time is continuous and starts at 0, so t takes every value from 0 to 20.",
+        "Time is continuous and starts at 0, so $t$ takes every value from 0 to 20.",
       ],
       answer: "0 ≤ t ≤ 20",
     },
@@ -60,13 +60,13 @@ export const linearFunctionLessons: Lesson[] = [
       "Do not use every real number when the input counts objects: it must be a whole number.",
     ],
     parentGuide:
-      "Point to an everyday function, such as the price of n identical tickets, and ask which inputs make sense (can n be 2.5? 1,000?) and which outputs can occur. Then trace a graph with a finger from its left end to its right end, and from its lowest point to its highest, saying the domain and range aloud.",
+      "Point to an everyday function, such as the price of $n$ identical tickets, and ask which inputs make sense (can $n$ be 2.5? 1,000?) and which outputs can occur. Then trace a graph with a finger from its left end to its right end, and from its lowest point to its highest, saying the domain and range aloud.",
   },
   {
     id: "average-rate-of-change",
     title: "Average rate of change",
     summary:
-      "The average rate of change of f from x = a to x = b is (f(b) − f(a)) ÷ (b − a): the slope of the secant line through the two points.",
+      "The average rate of change of $f$ from x = a to x = b is (f(b) − f(a)) ÷ (b − a): the slope of the secant line through the two points.",
     templateIds: ["average-rate-formula", "average-rate-display"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -77,22 +77,22 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Change in output over change in input",
         paragraphs: [
-          "A line changes at one constant rate, its slope. A curve does not, so we measure its average rate over an interval: the change in f divided by the change in x, (f(b) − f(a)) ÷ (b − a). Only the two ends of the interval enter; what f does in between does not.",
+          "A line changes at one constant rate, its slope. A curve does not, so we measure its average rate over an interval: the change in $f$ divided by the change in x, (f(b) − f(a)) ÷ (b − a). Only the two ends of the interval enter; what $f$ does in between does not.",
           "For f(x) = x² − 2x − 1 from x = 1 to x = 4: f(4) = 16 − 8 − 1 = 7 and f(1) = 1 − 2 − 1 = −2, so the average rate is (7 − (−2)) ÷ (4 − 1) = 9 ÷ 3 = 3.",
         ],
       },
       {
         title: "The secant line",
         paragraphs: [
-          "Draw the line through A = (1, −2) and B = (4, 7). This secant line rises 9 over a run of 3, so its slope is 3: the same number as the average rate. A secant is the straight path that gets from A to B at one steady rate.",
-          "Units follow the quotient. If h(t) is a height in feet after t seconds, the average rate is in feet per second. If P is a population in thousands and x is a year, it is thousands per year. A negative average rate means the output fell over the interval.",
+          "Draw the line through $A = (1, -2)$ and $B = (4, 7)$. This secant line rises 9 over a run of 3, so its slope is 3: the same number as the average rate. A secant is the straight path that gets from $A$ to $B$ at one steady rate.",
+          "Units follow the quotient. If $h(t)$ is a height in feet after $t$ seconds, the average rate is in feet per second. If $P$ is a population in thousands and $x$ is a year, it is thousands per year. A negative average rate means the output fell over the interval.",
         ],
         illustration: "average-rate-secant",
       },
     ],
     workedExample: {
       prompt:
-        "For f(x) = x² − 2x − 1, what is the average rate of change of f from x = 1 to x = 4?",
+        "For f(x) = x² − 2x − 1, what is the average rate of change of $f$ from x = 1 to x = 4?",
       steps: [
         "f(4) = 16 − 8 − 1 = 7 and f(1) = 1 − 2 − 1 = −2.",
         "Average rate of change = (7 − (−2)) ÷ (4 − 1) = 9/3 = 3.",
@@ -101,8 +101,8 @@ export const linearFunctionLessons: Lesson[] = [
     },
     pitfalls: [
       "Subtract in the same order on top and bottom: (f(b) − f(a)) ÷ (b − a), not (f(b) − f(a)) ÷ (a − b).",
-      "Divide by the change in x, not by b alone.",
-      "Use the function's values, not the x-values: the rate from x = 1 to x = 4 is not (4 − 1) ÷ something.",
+      "Divide by the change in $x$, not by $b$ alone.",
+      "Use the function's values, not the $x$-values: the rate from x = 1 to x = 4 is not (4 − 1) ÷ something.",
     ],
     parentGuide:
       "Use a car trip: 120 miles in 3 hours is an average of 40 miles per hour even if the car stopped for gas. Then ask for the average rate between two rows of any table you meet, such as temperatures through a day.",
@@ -111,7 +111,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "linear-models",
     title: "Build linear models",
     summary:
-      "A quantity that starts at b and changes by m for each unit of x is modeled by y = mx + b; set it equal to a known total, or compare it with a limit, and solve.",
+      "A quantity that starts at $b$ and changes by $m$ for each unit of $x$ is modeled by y = mx + b; set it equal to a known total, or compare it with a limit, and solve.",
     templateIds: ["linear-model-value", "linear-model-equation"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -122,8 +122,8 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Starting amount and rate",
         paragraphs: [
-          "A taxi charges 3 dollars plus 2 dollars per mile. The 3 dollars is paid once, whatever the distance: it is the starting amount, the fare when d = 0. The 2 dollars is paid once for each mile: it is the rate, and it multiplies d. So F = 2d + 3.",
-          "On the graph, the starting amount is where the line meets the F-axis, (0, 3), and the rate is the rise for each step of 1 to the right: 2. In a table, the rate is the change from one column to the next when d goes up by 1, and the starting amount is found by working back to d = 0.",
+          "A taxi charges 3 dollars plus 2 dollars per mile. The 3 dollars is paid once, whatever the distance: it is the starting amount, the fare when d = 0. The 2 dollars is paid once for each mile: it is the rate, and it multiplies $d$. So F = 2d + 3.",
+          "On the graph, the starting amount is where the line meets the $F$-axis, (0, 3), and the rate is the rise for each step of 1 to the right: 2. In a table, the rate is the change from one column to the next when $d$ goes up by 1, and the starting amount is found by working back to d = 0.",
         ],
         illustration: "linear-model-graph",
       },
@@ -139,7 +139,7 @@ export const linearFunctionLessons: Lesson[] = [
       prompt:
         "A gym charges a joining fee of 40 dollars plus 25 dollars per month. Maya has paid 315 dollars in all. For how many months has she been a member?",
       steps: [
-        "Let m be the number of months: 40 + 25m = 315.",
+        "Let $m$ be the number of months: 40 + 25m = 315.",
         "Subtract 40: 25m = 275. Divide by 25: m = 11.",
         "Check: 40 + 25 × 11 = 315.",
       ],
@@ -151,7 +151,7 @@ export const linearFunctionLessons: Lesson[] = [
       "For “at most”, round down to a whole number that still fits; check it and the next one.",
     ],
     parentGuide:
-      "Find a real price with a fixed part and a per-unit part (a phone plan, a delivery fee) and ask your learner to write the cost for n units, then to find n for a given bill. Ask what the graph would look like and where it would start.",
+      "Find a real price with a fixed part and a per-unit part (a phone plan, a delivery fee) and ask your learner to write the cost for $n$ units, then to find $n$ for a given bill. Ask what the graph would look like and where it would start.",
   },
   {
     id: "rearrange-formulas",
@@ -168,8 +168,8 @@ export const linearFunctionLessons: Lesson[] = [
       {
         title: "Undo in reverse order",
         paragraphs: [
-          "In A = bh/2, h is multiplied by b and divided by 2. Undo both on both sides, the last first: multiply by 2 to get 2A = bh, then divide by b to get h = 2A/b. Each step keeps the two sides equal, so the new formula is true whenever the old one is.",
-          "When a term is added, undo it first. In v = u + at, a is multiplied by t and then u is added. So subtract u, then divide by t: a = (v − u)/t. The parentheses matter: all of v − u is divided by t.",
+          "In $A = bh/2$, $h$ is multiplied by $b$ and divided by 2. Undo both on both sides, the last first: multiply by 2 to get 2A = bh, then divide by $b$ to get h = 2A/b. Each step keeps the two sides equal, so the new formula is true whenever the old one is.",
+          "When a term is added, undo it first. In $v = u + at$, $a$ is multiplied by $t$ and then $u$ is added. So subtract $u$, then divide by $t$: $a = (v - u)/t$. The parentheses matter: all of $v - u$ is divided by $t$.",
         ],
         illustration: "formula-isolate-steps",
       },
@@ -177,22 +177,22 @@ export const linearFunctionLessons: Lesson[] = [
         title: "Rearrange, then substitute",
         paragraphs: [
           "With P = 2l + 2w, P = 46 and l = 15: w = (P − 2l)/2 = (46 − 30)/2 = 8. Substituting first also works: 46 = 30 + 2w, so 2w = 16 and w = 8.",
-          "Rearranging first gives a formula to reuse. A thermometer table needs C = 5(F − 32)/9 once, then each F gives its C directly: F = 86 gives C = 5 × 54/9 = 30.",
+          "Rearranging first gives a formula to reuse. A thermometer table needs C = 5(F − 32)/9 once, then each $F$ gives its $C$ directly: F = 86 gives C = 5 × 54/9 = 30.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A rectangle's perimeter is P = 2l + 2w. Find the width w when P = 46 and the length l = 15.",
+        "A rectangle's perimeter is P = 2l + 2w. Find the width $w$ when P = 46 and the length l = 15.",
       steps: [
-        "Solve for w: subtract 2l, then divide by 2, so w = (P − 2l)/2.",
+        "Solve for $w$: subtract 2l, then divide by 2, so w = (P − 2l)/2.",
         "Substitute: w = (46 − 30)/2 = 16/2 = 8.",
       ],
       answer: "8",
     },
     pitfalls: [
       "Divide every term by the coefficient: (P − 2l)/2 is P/2 − l, not P/2 − 2l.",
-      "Undo an added term before dividing; subtract 32 from F before multiplying by 5/9.",
+      "Undo an added term before dividing; subtract 32 from $F$ before multiplying by 5/9.",
       "Keep the division the right way up: from d = rt, t = d/r, not r/d.",
     ],
     parentGuide:
@@ -202,7 +202,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "graphs-as-solution-sets",
     title: "Graphs as solution sets",
     summary:
-      "The graph of an equation in x and y is the set of all points whose coordinates make it true: a point is on the graph exactly when it solves the equation.",
+      "The graph of an equation in $x$ and $y$ is the set of all points whose coordinates make it true: a point is on the graph exactly when it solves the equation.",
     templateIds: ["solution-point-choice", "solution-coordinate"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -214,20 +214,21 @@ export const linearFunctionLessons: Lesson[] = [
         title: "On the graph means makes it true",
         paragraphs: [
           "Every point on the line 2x + 3y = 12 is a solution: (0, 4) gives 0 + 12 = 12, (3, 2) gives 6 + 6 = 12 and (6, 0) gives 12 + 0 = 12. A point off the line, such as (4, 4), gives 8 + 12 = 20, not 12, so it is not a solution.",
-          "The same holds for any equation. The graph of y = x² − 3 contains (2, 1) because 2² − 3 = 1, and does not contain (1, 2) because 1² − 3 = −2. Always substitute x first and y second.",
+          "The same holds for any equation. The graph of y = x² − 3 contains (2, 1) because 2² − 3 = 1, and does not contain (1, 2) because 1² − 3 = −2. Always substitute $x$ first and $y$ second.",
         ],
         illustration: "solution-set-line",
       },
       {
         title: "Find a missing coordinate",
         paragraphs: [
-          "If (4, k) is on the graph of 2x + 3y = 17, its coordinates make the equation true: 2(4) + 3k = 17, so 3k = 9 and k = 3. The vertical line x = 4 crosses the graph at exactly that point.",
+          "If (4, $k$) is on the graph of 2x + 3y = 17, its coordinates make the equation true: 2(4) + 3k = 17, so 3k = 9 and k = 3. The vertical line x = 4 crosses the graph at exactly that point.",
           "A line can cross at a point that is not on the grid. For 2x + 5y = 14 and x = −2: −4 + 5k = 14, so k = 18/5. Reading a graph estimates; substituting gives the exact value.",
         ],
       },
     ],
     workedExample: {
-      prompt: "The point (4, k) is on the graph of 2x + 3y = 17. What is k?",
+      prompt:
+        "The point (4, $k$) is on the graph of 2x + 3y = 17. What is $k$?",
       steps: [
         "Substitute x = 4: 2(4) + 3k = 17, so 8 + 3k = 17.",
         "Subtract 8: 3k = 9. Divide by 3: k = 3.",
@@ -235,7 +236,7 @@ export const linearFunctionLessons: Lesson[] = [
       answer: "3",
     },
     pitfalls: [
-      "Substitute the first coordinate for x and the second for y; (3, 2) and (2, 3) are different points.",
+      "Substitute the first coordinate for $x$ and the second for $y$; (3, 2) and (2, 3) are different points.",
       "Check every point by substitution: a point that looks close to a line may miss it.",
       "Square the whole substituted value: (−2)² = 4, while −2² = −4.",
     ],
@@ -248,16 +249,16 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "graph-domain-range": {
     goal: "Read the domain or range of a function from its whole graph.",
     terms: [
-      ["domain", "Every x-value that has a point on the graph."],
-      ["range", "Every y-value the graph reaches."],
+      ["domain", "Every $x$-value that has a point on the graph."],
+      ["range", "Every $y$-value the graph reaches."],
     ],
     method: [
-      "For the domain, read along the x-axis from the graph's left end to its right end.",
-      "For the range, read up the y-axis from the lowest point to the highest, checking any turning point as well as the ends.",
+      "For the domain, read along the $x$-axis from the graph's left end to its right end.",
+      "For the range, read up the $y$-axis from the lowest point to the highest, checking any turning point as well as the ends.",
       "Use ≤ at a filled dot and < at an open dot.",
     ],
     watch:
-      "Attach each dot to its own value: on a falling line the right end gives the lowest y-value.",
+      "Attach each dot to its own value: on a falling line the right end gives the lowest $y$-value.",
   },
   "context-domain-range": {
     goal: "Choose the inputs or outputs that make sense for a function describing a situation.",
@@ -280,7 +281,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "For ordered pairs, list the inputs and look for one that appears with two different outputs.",
-      "For an equation, try an x-value and count the y-values that make it true; y and −y together mean two outputs.",
+      "For an equation, try an $x$-value and count the $y$-values that make it true; $y$ and −y together mean two outputs.",
     ],
     watch:
       "A repeated output is allowed; only a repeated input with different outputs breaks a function.",
@@ -299,7 +300,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
       "Divide and simplify; attach units of output per unit of input in a context.",
     ],
     watch:
-      "Divide by the change in x, b − a, keeping the same order on top and bottom.",
+      "Divide by the change in $x$, b − a, keeping the same order on top and bottom.",
   },
   "average-rate-display": {
     goal: "Find the average rate of change over an interval from a graph or a table.",
@@ -324,7 +325,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Name the variable: what it counts and its units.",
-      "Write starting amount + rate × variable, and set it equal to the total (or ≤ a limit, or equal to a second expression).",
+      "Write starting amount + rate × variable, and set it equal to the total (or at most a limit, or equal to a second expression).",
       "Solve with inverse operations and check the answer in the story; for a limit, take the greatest whole number that fits.",
     ],
     watch:
@@ -357,15 +358,15 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
       "Undo the operations on the unknown in reverse order, on both sides, until it stands alone.",
     ],
     watch:
-      "Undo addition or subtraction before multiplication or division: subtract 32 from F before multiplying by 5/9.",
+      "Undo addition or subtraction before multiplication or division: subtract 32 from $F$ before multiplying by 5/9.",
   },
   "solution-point-choice": {
     goal: "Choose the point that lies on the graph of an equation.",
     method: [
-      "Substitute each pair into the equation, the first number for x and the second for y.",
+      "Substitute each pair into the equation, the first number for $x$ and the second for $y$.",
       "Keep the pair that makes the equation true; the graph is exactly the set of such points.",
     ],
-    watch: "(a, b) and (b, a) are different points: keep x first.",
+    watch: "$(a, b)$ and $(b, a)$ are different points: keep $x$ first.",
   },
   "solution-coordinate": {
     goal: "Find the missing coordinate of a point on the graph of an equation.",
@@ -379,19 +380,19 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
 
 export const linearFunctionPrinciples: Record<string, string> = {
   "graph-domain-range":
-    "The domain is the projection of the graph onto the x-axis and the range is its projection onto the y-axis; a filled endpoint belongs to the graph and an open one does not.",
+    "The domain is the projection of the graph onto the $x$-axis and the range is its projection onto the $y$-axis; a filled endpoint belongs to the graph and an open one does not.",
   "context-domain-range":
     "A situation restricts a function to the inputs that are meaningful, and the range is the set of outputs of exactly those inputs.",
   "function-relation-test":
     "A relation is a function exactly when no input is paired with two different outputs.",
   "average-rate-formula":
-    "The average rate of change of f on [a, b] is (f(b) − f(a)) ÷ (b − a), the slope of the line through (a, f(a)) and (b, f(b)).",
+    "The average rate of change of $f$ on [$a$, $b$] is (f(b) − f(a)) ÷ (b − a), the slope of the line through $(a, f(a))$ and $(b, f(b))$.",
   "average-rate-display":
     "An average rate of change depends only on the function's values at the two ends of the interval.",
   "linear-model-value":
-    "A quantity that starts at b and changes by m per unit is mx + b, and a stated total or limit turns it into an equation or inequality to solve.",
+    "A quantity that starts at $b$ and changes by $m$ per unit is mx + b, and a stated total or limit turns it into an equation or inequality to solve.",
   "linear-model-equation":
-    "In y = mx + b, b is the value when x = 0 and m is the change in y for each increase of 1 in x, in every representation.",
+    "In y = mx + b, $b$ is the value when x = 0 and $m$ is the change in $y$ for each increase of 1 in $x$, in every representation.",
   "formula-isolate":
     "Applying the same inverse operation to both sides keeps a formula true, so undoing the operations on one variable in reverse order isolates it.",
   "formula-value":

@@ -18,15 +18,15 @@ export const probabilityRulesLessons: Lesson[] = [
         title: "Events are sets of outcomes",
         paragraphs: [
           "The sample space is the set of all outcomes. An event is a set of some of them: the students who take art, the numbers from 1 to 20 that are even. With equally likely outcomes, an event's probability is its count divided by the sample space's count.",
-          "A Venn diagram draws two events as overlapping circles inside a rectangle, the sample space. Its four regions hold every outcome exactly once: in A only, in both, in B only, or in neither. Here the four counts add to 12 + 6 + 9 + 13 = 40 students.",
+          "A Venn diagram draws two events as overlapping circles inside a rectangle, the sample space. Its four regions hold every outcome exactly once: in $A$ only, in both, in $B$ only, or in neither. Here the four counts add to 12 + 6 + 9 + 13 = 40 students.",
         ],
         illustration: "probability-venn-regions",
       },
       {
         title: "Or, and, not",
         paragraphs: [
-          "A ∪ B, read “A union B” or “A or B”, holds every outcome in A, in B or in both: 12 + 6 + 9 = 27 students. A ∩ B, read “A intersect B” or “A and B”, holds only the overlap: 6 students.",
-          "A′, the complement of A, holds every outcome not in A: here the Music-only region and the outside, 9 + 13 = 22 students, which is 40 − 18. “Neither” is (A ∪ B)′, the outside region alone; it is the same set as A′ ∩ B′.",
+          "$A \\cup  B$, read “A union $B$” or “$A$ or $B$”, holds every outcome in $A$, in $B$ or in both: 12 + 6 + 9 = 27 students. $A \\cap  B$, read “A intersect $B$” or “$A$ and $B$”, holds only the overlap: 6 students.",
+          "$A'$, the complement of $A$, holds every outcome not in $A$: here the Music-only region and the outside, 9 + 13 = 22 students, which is 40 − 18. “Neither” is ($A \\cup  B$)′, the outside region alone; it is the same set as $A' \\cap  B'$.",
         ],
         illustration: "probability-venn-complement",
       },
@@ -34,7 +34,7 @@ export const probabilityRulesLessons: Lesson[] = [
         title: "The addition rule",
         paragraphs: [
           "18 students take art and 15 take music, but 18 + 15 = 33 is more than the 27 who take art or music. The 6 who take both are inside both totals, so they were counted twice. Subtract them once: 18 + 15 − 6 = 27.",
-          "Divide by 40 and the same step becomes the addition rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$. When A and B cannot happen together, they are mutually exclusive, $P(A \\text{ and } B) = 0$, and the probabilities simply add. Solved for the overlap, the rule reads $P(A \\text{ and } B) = P(A) + P(B) - P(A \\text{ or } B)$.",
+          "Divide by 40 and the same step becomes the addition rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$. When $A$ and $B$ cannot happen together, they are mutually exclusive, $P(A \\text{ and } B) = 0$, and the probabilities simply add. Solved for the overlap, the rule reads $P(A \\text{ and } B) = P(A) + P(B) - P(A \\text{ or } B)$.",
         ],
         illustration: "probability-venn-union",
       },
@@ -52,7 +52,7 @@ export const probabilityRulesLessons: Lesson[] = [
     pitfalls: [
       "“Or” includes the outcomes in both events; do not leave the overlap out.",
       "Adding $P(A)$ and $P(B)$ counts the overlap twice; subtract $P(A \\text{ and } B)$ once.",
-      "A′ is everything outside A, including outcomes outside both circles.",
+      "$A'$ is everything outside $A$, including outcomes outside both circles.",
     ],
     parentGuide:
       "Ask everyone at dinner two yes-or-no questions, such as “Do you like soup?” and “Do you like salad?”. Draw a Venn diagram of the answers and count “soup or salad” two ways: region by region, and as soup + salad − both.",
@@ -61,7 +61,7 @@ export const probabilityRulesLessons: Lesson[] = [
     id: "conditional-and-multiplication-rule",
     title: "Conditional probability and the multiplication rule",
     summary:
-      "“Given B” shrinks the sample space to B: $P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$. Turned around, $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$.",
+      "“Given $B$” shrinks the sample space to $B$: $P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$. Turned around, $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$.",
     templateIds: [
       "conditional-probability-value",
       "multiplication-rule-probability",
@@ -75,13 +75,13 @@ export const probabilityRulesLessons: Lesson[] = [
       {
         title: "“Given” shrinks the sample space",
         paragraphs: [
-          "$P(A \\mid B)$, read “the probability of A given B”, is the probability of A when B is known to have happened. Only outcomes in B are still possible, so B becomes the sample space.",
+          "$P(A \\mid B)$, read “the probability of $A$ given $B$”, is the probability of $A$ when $B$ is known to have happened. Only outcomes in $B$ are still possible, so $B$ becomes the sample space.",
           "In the table, given that a student is in grade 10, only that row of 40 students remains. 14 of them prefer online classes, so $P(\\text{online | grade 10}) = \\frac{14}{40} = \\frac{7}{20}$. As probabilities: $P(A \\mid B) = P(A \\text{ and } B) \\div P(B) = (\\frac{14}{70}) \\div (\\frac{40}{70}) = \\frac{14}{40}$.",
         ],
         illustration: "probability-table-given",
       },
       {
-        title: "P(A | B) is not P(B | A)",
+        title: "Reversing the condition changes the probability",
         paragraphs: [
           "Reverse the condition and the sample space changes. Given that a student prefers online classes, only that column of 32 students remains, and 14 of them are in grade 10: $P(\\text{grade 10 | online}) = \\frac{14}{32} = \\frac{7}{16}$.",
           "Both answers share the numerator 14, the students who are in both groups. The denominator is always the size of the given event, so read which event comes after the bar.",
@@ -91,7 +91,7 @@ export const probabilityRulesLessons: Lesson[] = [
       {
         title: "The multiplication rule and trees",
         paragraphs: [
-          "For both A and B to happen, A must happen, and then B must happen given A: $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$. Drawing without replacement is the typical case. From 3 red and 2 blue marbles, the first is red with probability 3/5; then 2 red remain among 4 marbles, so both are red with probability 3/5 × 2/4 = 6/20.",
+          "For both $A$ and $B$ to happen, $A$ must happen, and then $B$ must happen given $A$: $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$. Drawing without replacement is the typical case. From 3 red and 2 blue marbles, the first is red with probability 3/5; then 2 red remain among 4 marbles, so both are red with probability 3/5 × 2/4 = 6/20.",
           "A tree shows every path. Each branch is labeled with its probability given the branches before it, and a path's probability is the product along it. An event made of several paths, such as “one of each color”, adds those paths: 6/20 + 6/20 = 12/20 = 3/5. The four path products add to 1.",
         ],
         illustration: "probability-tree-draws",
@@ -108,7 +108,7 @@ export const probabilityRulesLessons: Lesson[] = [
       answer: "0.19",
     },
     pitfalls: [
-      "The denominator of $P(A \\mid B)$ is the count or probability of B, not of the whole sample space.",
+      "The denominator of $P(A \\mid B)$ is the count or probability of $B$, not of the whole sample space.",
       "Without replacement, the second draw comes from one fewer item, and the first draw changes what remains.",
       "Multiply along a path; add different paths that make up the same event.",
     ],
@@ -119,20 +119,20 @@ export const probabilityRulesLessons: Lesson[] = [
 
 const terms = {
   sets: [
-    ["A ∪ B", "A or B: outcomes in A, in B or in both."],
-    ["A ∩ B", "A and B: outcomes in both."],
-    ["A′", "The complement: outcomes not in A."],
+    ["$A \\cup B$", "$A$ or $B$: outcomes in $A$, in $B$ or in both."],
+    ["$A \\cap B$", "$A$ and $B$: outcomes in both."],
+    ["$A'$", "The complement: outcomes not in $A$."],
   ],
   addition: [
-    ["P(A or B)", "The probability that A, B or both happen."],
+    ["$P(A \\text{ or } B)$", "The probability that $A$, $B$ or both happen."],
     ["mutually exclusive", "Events that cannot happen together."],
   ],
   conditional: [
-    ["P(A | B)", "The probability of A given that B happened."],
+    ["$P(A \\mid  B)$", "The probability of $A$ given that $B$ happened."],
     ["sample space", "The set of outcomes still possible."],
   ],
   multiplication: [
-    ["P(B | A)", "The probability of B once A has happened."],
+    ["$P(B \\mid  A)$", "The probability of $B$ once $A$ has happened."],
     ["without replacement", "A drawn item is not put back."],
   ],
 } satisfies Record<string, [string, string][]>;
@@ -142,10 +142,11 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     terms: terms.sets,
     method: [
       "Translate the event: or is ∪, and is ∩, not is ′.",
-      "Find the regions it covers: A only, both, B only or neither; for a list, sort each outcome into its region.",
+      "Find the regions it covers: A only, both, $B$ only or neither; for a list, sort each outcome into its region.",
       "Add the counts of those regions; for a probability, divide by the size of the sample space.",
     ],
-    watch: "A′ includes the outcomes outside both events, not only those in B.",
+    watch:
+      "$A'$ includes the outcomes outside both events, not only those in $B$.",
   },
   "addition-rule-probability": {
     goal: "Find $P(A \\text{ or } B)$, or the overlap $P(A \\text{ and } B)$, with the addition rule.",
@@ -159,11 +160,11 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       "Adding $P(A)$ and $P(B)$ counts the overlap twice; subtract it once, unless the events cannot happen together.",
   },
   "conditional-probability-value": {
-    goal: "Find $P(A \\mid B)$ by restricting the sample space to B.",
+    goal: "Find $P(A \\mid B)$ by restricting the sample space to $B$.",
     terms: terms.conditional,
     method: [
-      "Find the given event B: a row, a column, a circle or a list of outcomes.",
-      "Count B, then count the outcomes in B that are also in A.",
+      "Find the given event $B$: a row, a column, a circle or a list of outcomes.",
+      "Count $B$, then count the outcomes in $B$ that are also in $A$.",
       "Divide: $P(A \\mid B) = n(A \\text{ and } B) \\div n(B)$, or $P(A \\text{ and } B) \\div P(B)$.",
     ],
     watch:
@@ -187,7 +188,7 @@ export const probabilityRulesPrinciples: Record<string, string> = {
   "addition-rule-probability":
     "$P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$, because outcomes in both events are counted in $P(A)$ and in $P(B)$.",
   "conditional-probability-value":
-    "$P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$: knowing that B happened makes B the sample space.",
+    "$P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$: knowing that $B$ happened makes $B$ the sample space.",
   "multiplication-rule-probability":
     "$P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$; the paths of a tree multiply along their branches and add across paths.",
 };

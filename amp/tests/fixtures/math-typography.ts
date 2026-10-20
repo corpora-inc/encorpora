@@ -1,3 +1,4 @@
+import katex from "katex";
 import { segments } from "../../src/web/MathText";
 import { segmentPrintText } from "../../src/content/math-typesetting";
 import { generateProblem, templates } from "../../src/math/engine";
@@ -10,21 +11,25 @@ import { lessons } from "../../src/content/lessons";
  * two typesetters, MathText in the app and PrintMathText in lessons and print,
  * so prose is whatever either one leaves as prose. */
 
-export type Issue = { rule: string; excerpt: string };
+export type Issue = { rule: string; excerpt: string; index?: number };
 
 /** The one place the word may name the number: "the ratio $\pi$ (pi)". */
 const NAMING = /\$\\pi\$ \(pi\)/g;
 
 /** Explicit allowlist. Each entry is prose that looks like a lone letter. */
 export const ALLOWED: readonly [RegExp, string][] = [
-  [/\b(?:e\.g\.|i\.e\.)/g, "Latin abbreviations are prose"],
+  [/\b(?:e\.g\.|i\.e\.|a\.m\.|p\.m\.)/g, "Latin abbreviations are prose"],
   [
-    /\b(?:[LTUV]-shaped?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
+    /\b(?:[LTUV]-shaped?|[LTU] shapes?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
     "a letter that names a shape (an L-shaped face), not a quantity",
   ],
   [
-    /(?<=\d\s?)(?:m|g|L|s|h)\b(?![-=])/g,
-    "a unit symbol after a number (8 m, 2 L) is text, like any unit",
+    /\bletters [A-Z] through [A-Z]\b/g,
+    "letters of the alphabet named as letters (the letters A through E)",
+  ],
+  [
+    /(?<=°\s?)[CF]\b|(?<=\d\s?)(?:m|g|L|s|h)\b(?![-=])|(?<=\b(?:in|[Ee]ach|per) )(?:m|g|L)\b(?![-=])/g,
+    "a unit symbol (8 m, 2 L, 4°C, length in m) is text, like any unit",
   ],
 ];
 
@@ -52,6 +57,13 @@ const EQUATION: [string, RegExp][] = [
   ["caret", /\^/],
   ["square root", /\bsqrt\b|√/],
   ["π outside math", /π/],
+  ["∠ outside math", /∠/],
+  // A named point, segment, line, ray, angle or polygon (segment AB,
+  // triangle ABC) is math, like a single point ($P$).
+  [
+    "bare point name",
+    /\b(?:[Ss]egments?|[Ss]ides?|[Ll]ines?|[Rr]ays?|[Cc]hords?|[Aa]rcs?|[Tt]riangles?|[Aa]ngles?|[Qq]uadrilaterals?|[Pp]olygons?|[Pp]entagons?|[Hh]exagons?|[Pp]arallelograms?|[Tt]rapezoids?|[Ss]quares?|[Rr]ectangles?|[Vv]ertices|[Dd]iagonals?|[Pp]oints?|[Dd]iameters?|[Rr]adius|[Rr]adii|[Tt]angents?|[Ss]ecants?|[Cc]ircles?)\s+[A-Z]{2,4}′?(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])[A-Z]{2,3}′?(?:\s*[=<>≤≥≠²]|\s+:)/u,
+  ],
 ];
 
 /** A capitalized noun before a letter makes the letter a name ("Store A",
@@ -59,16 +71,16 @@ const EQUATION: [string, RegExp][] = [
  * as prose like any name. Points, vertices, events and quantities are not
  * names; they are math ($A$, $P(B)$). */
 export const NAMING_NOUNS =
-  "Store|Plan|Class|Shape|Clock|Piece|Offer|Pattern|Choice|Option|Bag|Box|Team|Card|Spinner|Group|Rectangle|Figure|Picture|Strip|Rod|Table|Function|Machine|Recipe|Garden|Company|Line|Graph|Model|Survey|School|Brand|Tank|Pool|Car|Train|Runner|Bike|Phone|Account|Job|Trip|Path|Route|Rule|Panel|Tile|Bar|Tower|Stack|Jar|Cup|Sample|Set";
+  "store|plan|offer|shirt|set|region|option|choice|class|team|group|school|company|brand|shape|figure|picture|piece|pattern|rectangle|strip|rod|tile|panel|bar|tower|stack|line|graph|table|function|model|rule|machine|recipe|garden|clock|card|spinner|box|ball|bag|glass|mug|cup|jar|bottle|bucket|pitcher|bowl|vase|pot|tub|tank|pool|container|basket|tray|block|toy|book|pencil|stick|ribbon|rope|string|crayon|car|train|bus|runner|bike|phone|account|job|trip|path|route|survey";
 const NAMED = new RegExp(
-  `\\b(?:${NAMING_NOUNS})s?\\s+([A-Z](?:(?:,\\s*|\\s+(?:and|or)\\s+)[A-Z])*)(?![\\p{L}\\p{N}])`,
-  "gu",
+  `\\b(?:${NAMING_NOUNS})s?\\s+(?:\\(\\s*)?([A-Z](?:(?:,\\s*|\\s+(?:and|or)\\s+)[A-Z])*)(?![\\p{L}\\p{N}])`,
+  "giu",
 );
 /** Letters a text introduces as names. */
 export function namedLetters(text: string): Set<string> {
   const found = new Set<string>();
   for (const m of text.matchAll(NAMED))
-    for (const l of m[1]!.match(/[A-Z]/g)!) found.add(l);
+    for (const l of m[1]!.match(/\b[A-Z]\b/g) ?? []) found.add(l);
   return found;
 }
 
@@ -76,7 +88,7 @@ export type Context = { variables?: Set<string>; names?: Set<string> };
 
 /** English words that follow a variable but never the article "a". */
 const VARIABLE_FOLLOWERS =
-  "is|are|was|and|or|to|lies|has|equals|plus|minus|times|divided|multiplied|squared|cubed|stays|appears|varies|changes|increases|decreases";
+  "is|are|was|and|or|to|lies|has|equals|stays|appears|varies|changes|increases|decreases";
 
 /** A text as one typesetter reads it, each formula replaced by the
  * placeholder 0, so prose keeps its neighbours ("$r = 4$ m" reads "0 m"). */
@@ -160,6 +172,7 @@ function proseIssues(
         ? "bare uppercase letter"
         : "bare lowercase letter",
       excerpt: at(m.index),
+      index: m.index,
     });
   }
   return issues;
@@ -180,12 +193,20 @@ export function typographyIssues(
     names = new Set([...(context.names ?? []), ...namedLetters(source)]);
   const seen = new Set<string>();
   const out: Issue[] = [];
+  // Every explicit formula must typeset; KaTeX would otherwise show its source.
+  for (const m of source.matchAll(/\$([^$]+)\$/g))
+    try {
+      katex.renderToString(m[1]!, { throwOnError: true });
+    } catch {
+      if (/[\\A-Za-z]/.test(m[1]!))
+        out.push({ rule: "TeX that does not typeset", excerpt: m[0] });
+    }
   if (plain && text.includes("$"))
     out.push({ rule: "TeX in a plain-text title", excerpt: text });
   const readings = plain ? [text] : [appProse(source), printProse(source)];
   for (const piece of readings)
     for (const issue of proseIssues(piece, variables, names)) {
-      const key = `${issue.rule}|${issue.excerpt}`;
+      const key = `${issue.rule}|${issue.excerpt}|${issue.index ?? ""}`;
       if (!seen.has(key)) {
         seen.add(key);
         out.push(issue);
@@ -304,4 +325,19 @@ export function corpusIssues() {
     out.set(owner, list);
   }
   return out;
+}
+
+/** True when every "$" in a text opens or closes a formula, so no money is
+ * written with a dollar sign: the count is even, and no span is prose
+ * (a space at its edge, or a lowercase word outside \text). */
+export function dollarsAreMath(text: string): boolean {
+  if ((text.match(/\$/g)?.length ?? 0) % 2) return false;
+  return [...text.matchAll(/\$([^$]+)\$/g)].every(
+    ([, tex]) =>
+      !/^\s|\s$/.test(tex!) &&
+      // A product of variables (lwh) has no vowel; a word of prose does.
+      !/(?:^|[^\\a-zA-Z{])(?=[a-z]*[aeiou])[a-z]{3,}/.test(
+        tex!.replace(/\\(?:text|mathrm|overline)\{[^}]*\}/g, ""),
+      ),
+  );
 }

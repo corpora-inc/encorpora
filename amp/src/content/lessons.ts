@@ -441,13 +441,13 @@ export const baseLessons: Lesson[] = [
         title: "Equality is a balance",
         paragraphs: [
           "An equation states that two expressions have the same value. Subtracting the same amount from both sides preserves equality. Dividing both sides by the same nonzero number also preserves equality.",
-          "To solve ax + b = c with a nonzero, subtract b first and then divide by a. These operations undo addition and multiplication.",
+          "To solve ax + b = c with a nonzero, subtract $b$ first and then divide by $a$. These operations undo addition and multiplication.",
         ],
       },
       {
         title: "Check in the original equation",
         paragraphs: [
-          "Replace x with your proposed solution. Compute the left side and compare it with the right side.",
+          "Replace $x$ with your proposed solution. Compute the left side and compare it with the right side.",
           "Negative solutions are possible. Follow the signs carefully when the right side minus the constant is negative.",
         ],
       },
@@ -463,7 +463,7 @@ export const baseLessons: Lesson[] = [
     },
     pitfalls: [
       "Changing only one side usually destroys equality.",
-      "The coefficient multiplies x; remove it by division, not subtraction.",
+      "The coefficient multiplies $x$; remove it by division, not subtraction.",
     ],
     parentGuide:
       "Ask which operation the learner is undoing and why the same change must happen on both sides. Let substitution settle disagreements.",
@@ -524,19 +524,20 @@ export const baseLessons: Lesson[] = [
         title: "A square cannot be negative",
         paragraphs: [
           "For real x, (x − h)² is at least zero. It becomes zero exactly when x = h. Multiplying by a positive coefficient preserves this lower bound.",
-          "Therefore f(x) = a(x − h)² + k with a positive has minimum value k. The vertex is the point (h, k).",
+          "Therefore f(x) = a(x − h)² + k with a positive has minimum value $k$. The vertex is the point $(h, k)$.",
         ],
       },
       {
         title: "Input and output are different",
         paragraphs: [
-          "The input h tells where the minimum occurs. The output k tells the minimum value. Read the question carefully to decide which is requested.",
+          "The input $h$ tells where the minimum occurs. The output $k$ tells the minimum value. Read the question carefully to decide which is requested.",
           "A negative coefficient opens the parabola downward and gives a maximum instead. This lesson’s practice uses positive coefficients and a real-number domain.",
         ],
       },
     ],
     workedExample: {
-      prompt: "For real x, what is the minimum value of f(x) = 2(x − 3)² + 5?",
+      prompt:
+        "For real $x$, what is the minimum value of f(x) = 2(x − 3)² + 5?",
       steps: [
         "The squared expression is nonnegative, so 2(x − 3)² ≥ 0.",
         "At x = 3, the squared expression is zero.",
@@ -545,7 +546,7 @@ export const baseLessons: Lesson[] = [
       answer: "5",
     },
     pitfalls: [
-      "The x-coordinate of the vertex is not the minimum output.",
+      "The $x$-coordinate of the vertex is not the minimum output.",
       "The coefficient’s sign determines whether the vertex is a minimum or maximum.",
     ],
     parentGuide:

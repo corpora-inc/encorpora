@@ -122,10 +122,10 @@ function generateCase(
     tags.push(truth ? "true" : "false");
     explanation.push(
       kind === "constant-interior"
-        ? `For every real x, 0x = 0, so |${inner(a, b)}| = |${fmt(q(b))}| = ${Math.abs(b)}.`
-        : `For every real x, multiplying |${inner(a, b)}| by 0 gives 0.`,
+        ? `For every real $x$, 0x = 0, so |${inner(a, b)}| = |${fmt(q(b))}| = ${Math.abs(b)}.`
+        : `For every real $x$, multiplying |${inner(a, b)}| by 0 gives 0.`,
       `The left side is ${kind === "constant-interior" ? `${fmt(q(k))} × ${Math.abs(b)}${constant(d)}` : `0${constant(d)}`} = ${fmt(q(total))}. The equation therefore says ${fmt(q(total))} = ${fmt(e)}.`,
-      `This numerical statement is ${truth ? "true" : "false"} and does not depend on x. ${truth ? "Every real number satisfies the original equation." : "No real number satisfies the original equation."}`,
+      `This numerical statement is ${truth ? "true" : "false"} and does not depend on $x$. ${truth ? "Every real number satisfies the original equation." : "No real number satisfies the original equation."}`,
     );
   } else {
     let other: Q;
@@ -228,19 +228,19 @@ function generateCase(
   const frame = r(0, 2),
     prompt = [
       `Solve ${equation}. Choose the complete set of real solutions.`,
-      `Which values of x make ${equation} true? Choose the complete set.`,
-      `Find every real number x for which ${equation}. Choose the complete set.`,
+      `Which values of $x$ make ${equation} true? Choose the complete set.`,
+      `Find every real number $x$ for which ${equation}. Choose the complete set.`,
     ][frame]!;
   const inside = inner(a, b),
     shift = `${d < 0 ? "add" : "subtract"} ${Math.abs(d)} ${d < 0 ? "to" : "from"} both sides of ${equation}`,
     hint = !transformed
       ? direct
         ? `The bars measure distance from 0, so this asks for every point ${fmt(e)} ${e.d === 1 && Math.abs(e.n) === 1 ? "unit" : "units"} from 0. Decide whether a distance of ${fmt(e)} is possible, and how many points have it.`
-        : `Call the whole inside t = ${inside}, so |t| = ${fmt(e)}. Decide which values t can take, then solve ${inside} = t for each one.`
+        : `Call the whole inside t = ${inside}, so |t| = ${fmt(e)}. Decide which values $t$ can take, then solve ${inside} = t for each one.`
       : k === 0
-        ? `In ${equation} the bars are multiplied by 0, so the left side is ${fmt(q(d))} for every x. Compare that constant with ${fmt(e)}.`
+        ? `In ${equation} the bars are multiplied by 0, so the left side is ${fmt(q(d))} for every $x$. Compare that constant with ${fmt(e)}.`
         : a === 0
-          ? `In ${equation} the inside, ${inside}, is ${fmt(q(b))} for every x. Evaluate the left side as one number and compare it with ${fmt(e)}.`
+          ? `In ${equation} the inside, ${inside}, is ${fmt(q(b))} for every $x$. Evaluate the left side as one number and compare it with ${fmt(e)}.`
           : `Isolate the bars before splitting: ${shift}${k === 1 ? "" : `, then divide both sides by ${fmt(q(k))}`}. The sign of the isolated value tells you how many branches there are.`;
   const options = shuffle(candidates, r).map((text, i) => ({
     id: `option-${"abcd"[i]}`,

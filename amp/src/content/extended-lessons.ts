@@ -182,7 +182,7 @@ export const extendedLessons: Lesson[] = [
         title: "Why the reciprocal works",
         paragraphs: [
           "Multiplying by the reciprocal of the divisor changes that divisor to one. This measures the dividend in units of the divisor.",
-          "For a/b divided by c/d, multiply a/b by d/c. The divisor must be nonzero, so c cannot be zero.",
+          "For a/b divided by c/d, multiply a/b by d/c. The divisor must be nonzero, so $c$ cannot be zero.",
         ],
       },
     ],
@@ -265,7 +265,7 @@ export const extendedLessons: Lesson[] = [
       {
         title: "Multiply by the fraction",
         paragraphs: [
-          "To find p percent of a quantity, multiply the quantity by p/100. Simplifying first can make the calculation easier.",
+          "To find $p$ percent of a quantity, multiply the quantity by p/100. Simplifying first can make the calculation easier.",
           "For a positive whole and a percentage between zero and one hundred, the result lies between zero and the whole. Use that as a reasonableness check.",
         ],
       },
@@ -336,14 +336,14 @@ export const extendedLessons: Lesson[] = [
         title: "Use a consistent direction",
         paragraphs: [
           "For points (x₁,y₁) and (x₂,y₂), slope is (y₂ − y₁)/(x₂ − x₁). Subtract coordinates in the same point order in both places.",
-          "A slope of 3/2 means y increases by three for every increase of two in x. A negative slope means y falls as x increases.",
+          "A slope of 3/2 means $y$ increases by three for every increase of two in $x$. A negative slope means $y$ falls as $x$ increases.",
         ],
       },
       {
         title: "Check the denominator",
         paragraphs: [
-          "A horizontal line has zero change in y and therefore slope zero. A vertical line has zero change in x, so its slope is undefined.",
-          "The practice uses distinct x-coordinates, which guarantees a numeric slope. Fractions are valid and need not be rounded.",
+          "A horizontal line has zero change in $y$ and therefore slope zero. A vertical line has zero change in $x$, so its slope is undefined.",
+          "The practice uses distinct $x$-coordinates, which guarantees a numeric slope. Fractions are valid and need not be rounded.",
         ],
       },
     ],
@@ -358,7 +358,7 @@ export const extendedLessons: Lesson[] = [
     },
     pitfalls: [
       "Do not reverse point order in only one difference.",
-      "Slope is change in y divided by change in x, not the reverse.",
+      "Slope is change in $y$ divided by change in $x$, not the reverse.",
     ],
     parentGuide:
       "Plot the two points, draw a horizontal then vertical path between them, and label each change.",
@@ -376,20 +376,20 @@ export const extendedLessons: Lesson[] = [
       {
         title: "One shared solution",
         paragraphs: [
-          "Each linear equation describes pairs of x and y values. Solving a system means finding a pair common to both equations.",
+          "Each linear equation describes pairs of $x$ and $y$ values. Solving a system means finding a pair common to both equations.",
           "Multiplying an entire equation by a nonzero number preserves its solutions. Use this to make one variable’s coefficients match.",
         ],
       },
       {
         title: "Subtract to eliminate",
         paragraphs: [
-          "When the y coefficients agree, subtract one whole equation from the other. The y terms cancel, leaving an equation in x.",
-          "After finding x, substitute it into an original equation to find y, then check both. Some systems have no solution or infinitely many; this practice uses systems with one solution.",
+          "When the $y$ coefficients agree, subtract one whole equation from the other. The $y$ terms cancel, leaving an equation in $x$.",
+          "After finding $x$, substitute it into an original equation to find $y$, then check both. Some systems have no solution or infinitely many; this practice uses systems with one solution.",
         ],
       },
     ],
     workedExample: {
-      prompt: "Find x if 2x + y = 7 and x + y = 5.",
+      prompt: "Find $x$ if 2x + y = 7 and x + y = 5.",
       steps: [
         "Subtract the second equation from the first: x = 2.",
         "Substitute: 2 + y = 5, so y = 3.",
@@ -402,7 +402,7 @@ export const extendedLessons: Lesson[] = [
       "A pair that satisfies only one equation is not a system solution.",
     ],
     parentGuide:
-      "Write the equations on aligned rows and mark the matching y terms before subtracting.",
+      "Write the equations on aligned rows and mark the matching $y$ terms before subtracting.",
   },
   {
     id: "equally-likely-probability",
@@ -467,7 +467,7 @@ export const extendedLessons: Lesson[] = [
       {
         title: "Jump to a later term",
         paragraphs: [
-          "Term n is a₁ + (n − 1)d when the first term is numbered one. There is one fewer jump than the term number.",
+          "Term $n$ is a₁ + (n − 1)d when the first term is numbered one. There is one fewer jump than the term number.",
           "For the fifth term, begin at the first value and make four jumps. This also explains why multiplying the first term by the term number is generally wrong.",
         ],
       },
@@ -500,7 +500,7 @@ export const extendedLessons: Lesson[] = [
       {
         title: "The input belongs everywhere",
         paragraphs: [
-          "The notation f(−2) asks for the output of f when the input is negative two. Replace every x in the rule with (−2).",
+          "The notation f(−2) asks for the output of $f$ when the input is negative two. Replace every $x$ in the rule with (−2).",
           "Parentheses around negative inputs keep the sign attached to the number, especially when raising it to a power.",
         ],
       },
@@ -508,7 +508,7 @@ export const extendedLessons: Lesson[] = [
         title: "Evaluate in order",
         paragraphs: [
           "Calculate powers before multiplication, then combine terms. For a quadratic, the squared input and the linear input can contribute terms with different signs.",
-          "Function notation does not mean f multiplied by the input. It names a rule and supplies that rule’s input.",
+          "Function notation does not mean $f$ multiplied by the input. It names a rule and supplies that rule’s input.",
         ],
       },
     ],
@@ -522,7 +522,7 @@ export const extendedLessons: Lesson[] = [
       answer: "3",
     },
     pitfalls: [
-      "Replace every occurrence of x with the same input.",
+      "Replace every occurrence of $x$ with the same input.",
       "(−2)² is positive four.",
     ],
     parentGuide:

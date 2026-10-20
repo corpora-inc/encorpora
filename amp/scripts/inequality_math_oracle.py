@@ -96,7 +96,7 @@ def parsed(public):
     require(template in INEQUALITY, 'Unknown inequality family')
     require(public.get('figure') is None, 'Unexpected inequality figure')
     require(public['response']['kind'] == 'choice', 'Inequality needs a solution-set choice')
-    found = re.fullmatch(r'Solve for real x: (.+) ([<≤>≥]) (.+)\.', public['prompt'])
+    found = re.fullmatch(r'Solve for real \$?x\$?: (.+) ([<≤>≥]) (.+)\.', public['prompt'])
     require(found is not None, 'Unsupported inequality prompt or missing real domain')
     left_text, op, right_text = found.groups()
     left, right = affine(left_text), affine(right_text)
@@ -792,7 +792,7 @@ def review_inequality_content_mutations(records):
         if result[1] != 0:
             continue
         original = problem['public']
-        left_text = re.fullmatch(r'Solve for real x: (.+) ([<≤>≥]) (.+)\.', original['prompt'])[1]
+        left_text = re.fullmatch(r'Solve for real \$?x\$?: (.+) ([<≤>≥]) (.+)\.', original['prompt'])[1]
         for replacement in (Fraction(i) for i in range(-12, 13) if i):
             public = copy.deepcopy(original)
             total = left[1] + (left[0]-right[0])*replacement
@@ -818,7 +818,7 @@ def review_inequality_content_mutations(records):
         if left[1] != right[1] or op not in ('<', '>'):
             continue
         public = copy.deepcopy(problem['public'])
-        left_text = re.fullmatch(r'Solve for real x: (.+) ([<≤>≥]) (.+)\.', public['prompt'])[1]
+        left_text = re.fullmatch(r'Solve for real \$?x\$?: (.+) ([<≤>≥]) (.+)\.', public['prompt'])[1]
         total = left[1] + (-1 if op == '<' else 1)
         public['prompt'] = f'Solve for real x: {left_text} {op} {linear(right[0], total)}.'
         replace_prompt(sheet, index, public)

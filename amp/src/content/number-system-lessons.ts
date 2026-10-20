@@ -40,7 +40,7 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Factor the GCF out of a sum",
         paragraphs: [
-          "The distributive property says that a × b + a × c = a × (b + c). Rewriting a sum this way is called factoring out a. A number written directly before parentheses means multiplication: 4(9 + 2) means 4 × (9 + 2).",
+          "The distributive property says that a × b + a × c = a × (b + c). Rewriting a sum this way is called factoring out $a$. A number written directly before parentheses means multiplication: 4(9 + 2) means 4 × (9 + 2).",
           "For 36 + 8, the GCF is 4: 36 = 4 × 9 and 8 = 4 × 2. So 36 + 8 = 4 × 9 + 4 × 2 = 4(9 + 2). The figure shows a rectangle 4 units tall whose width is split into 9 and 2. Its parts have areas 36 and 8, and the whole has area 4 × 11 = 44.",
           "After the GCF is factored out, the numbers in the parentheses, 9 and 2, have no common factor greater than 1. Factoring out a smaller common factor, as in 2(18 + 4), gives the right value but leaves the common factor 2 inside the parentheses.",
         ],

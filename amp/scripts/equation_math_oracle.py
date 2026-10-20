@@ -128,6 +128,7 @@ class Linear:
 
 def equation(text, variable=None):
     """(a, b) with a·v + b = 0, the variable letter, and the unique solution."""
+    text = text.replace('$', '')  # typeset as $8(n − 3) = 40$
     left, sep, right = text.partition('=')
     require(sep and '=' not in right, f'Not one equation: {text!r}')
     lp = Linear(left.strip(), variable)

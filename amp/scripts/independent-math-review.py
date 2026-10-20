@@ -103,8 +103,78 @@ def require(condition, message):
 
 SUPPORTED |= ABSOLUTE_VALUE
 
+PLAIN_MATH = re.compile(r'\$([^$]+)\$')
+
+
+# Only a single typeset name is read as text: a variable ($x$, $A'$), a named
+# point ($A(1, 2)$), a pair ($(x, y)$), an angle ($\\angle ABC$) or a fraction.
+# A formula with an operation keeps its TeX, so checks of written arithmetic
+# still see it.
+PLAIN_NAME = re.compile(r"[A-Za-z]+'?|[A-Z]'?\([^()$=]*\)|\([a-z], [a-z]\)|\\angle\s*[A-Z]+'?|\\t?frac\{\d+\}\{\d+\}|[\dπ]+π?[a-z]?")
+
+
+def plain_span(match):
+    tex = match.group(1)
+    if not PLAIN_NAME.fullmatch(tex):
+        return match.group(0)
+    reading = re.sub(r'\\angle\s*', '∠', tex)
+    reading = re.sub(r'\\t?frac\{([^{}]*)\}\{([^{}]*)\}', r'\1/\2', reading)
+    return reading.replace("'", '′')
+
+
+def plain_reading(value):
+    """The learner-facing text with each $…$ span that holds no other TeX
+    command read as its text: $x$ as x, $A'$ as A′, $\\angle ABC$ as ∠ABC."""
+    if isinstance(value, str):
+        return PLAIN_MATH.sub(plain_span, value)
+    if isinstance(value, list):
+        return [plain_reading(item) for item in value]
+    if isinstance(value, dict):
+        return {key: plain_reading(item) for key, item in value.items()}
+    return value
+
+def read_plainly(check):
+    """A family check that retries once with the plain reading of a problem,
+    lesson or record whose variables are typeset ($x$ read as x)."""
+    def check_typeset(*args, **kwargs):
+        readings = [plain_reading(arg) for arg in args]
+        retry = readings != list(args)
+        try:
+            result = check(*args, **kwargs)
+            if result is not False or not retry:
+                return result
+        except (ValueError, TypeError, KeyError, AttributeError, StopIteration):
+            if not retry:
+                raise
+        return check(*readings, **kwargs)
+    check_typeset.__wrapped__ = check
+    return check_typeset
+
+
+# Family oracles also call their own solvers and checks (worksheet, lesson and
+# explanation reviews); each reads typeset variables the same way.
+PLAIN_CHECKS = re.compile(r'^(?:solve|review_|check_|parse|worked_answer|equation_of)')
+for _module in list(sys.modules.values()):
+    if getattr(_module, '__name__', '').endswith('_math_oracle'):
+        for _name, _value in list(vars(_module).items()):
+            if PLAIN_CHECKS.match(_name) and callable(_value) and getattr(_value, '__module__', None) == _module.__name__:
+                setattr(_module, _name, read_plainly(_value))
+
+
 def solve(public):
-    """Only public prompt/figure givens enter this function, never generated answers."""
+    """Only public prompt/figure givens enter this function, never generated
+    answers. A family oracle that does not read the typeset wording retries
+    with its plain reading (see plain_reading)."""
+    try:
+        return solve_family(public)
+    except ValueError:
+        reading = plain_reading(public)
+        if reading == public:
+            raise
+        return solve_family(reading)
+
+
+def solve_family(public):
     template = public['templateId']
     if template in AREA_VOLUME:
         return solve_area_volume(public)
@@ -495,42 +565,39 @@ def review(stream):
     facts_corpus = FactsCorpus()
     fact_arrays_corpus = FactArraysCorpus()
     early_operations_corpus = EarlyOperationsCorpus()
-    for line_number, line in enumerate(stream, 2):
-        require(line.strip(), f'Empty record at line {line_number}')
-        record = json.loads(line)
-        require(record.get('kind') == 'case', f'Unexpected record at line {line_number}')
-        problem = record['problem']
+    def check_case(problem, record=True):
+        """Every review of one generated case, on the given reading of it."""
+        nonlocal area_volume_equalities
         public = problem['public']
         template, seed = public['templateId'], public['seed']
-        require(template in SUPPORTED, f'Unknown family {template}')
-        match = re.fullmatch(r'independent-(0|[1-9][0-9]*)', seed)
-        require(match is not None, f'Invalid seed {seed}')
-        index = int(match[1])
-        require(start <= index < start + count, f'Seed outside declared range: {seed}')
-        identity = (template, seed)
-        require(identity not in seen, f'Duplicate case {identity}')
-        seen.add(identity)
-        solved = solve(public)
+        solved = solve_family(public)
         if template in COMPLETING_SQUARE:
-            completing_square_review.record(problem)
+            if record:
+                completing_square_review.record(problem)
         if template in INTEGER_EXPONENT:
-            exponent_review.record(public, solved)
+            if record:
+                exponent_review.record(public, solved)
             review_integer_exponent_explanation(public, problem["explanation"])
         if template in RIGHT_TRIANGLE:
-            right_triangles.record(public, solved)
+            if record:
+                right_triangles.record(public, solved)
         if template in RIGHT_TRIANGLE_CHOICE:
             review_converse_explanation(public, problem['explanation'])
         if template in POLYNOMIAL:
-            polynomial_shortcuts.record(public, solved)
+            if record:
+                polynomial_shortcuts.record(public, solved)
         if template in FACTORING:
-            factoring_review.record(public, solved)
+            if record:
+                factoring_review.record(public, solved)
             review_factoring_explanation(problem)
         if template in PERCENT_CHANGE:
             review_percent_explanation(public, problem['explanation'])
         if template in INEQUALITY:
-            inequality_review.record(public, solved)
+            if record:
+                inequality_review.record(public, solved)
         if template in LINEAR_SYSTEM:
-            system_review.record(public, solved)
+            if record:
+                system_review.record(public, solved)
             review_linear_system_explanation(public, problem['explanation'], problem['choiceFeedback'])
         if template in DESCRIPTIVE_STATISTICS:
             review_statistics_explanation(problem)
@@ -551,7 +618,9 @@ def review(stream):
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
         if template in AREA_VOLUME:
-            area_volume_equalities += review_area_volume_problem(problem)
+            checked = review_area_volume_problem(problem)
+            if record:
+                area_volume_equalities += checked
         if template in REAL_NUMBER:
             review_real_number_problem(problem)
         if template in NUMBER_SYSTEM:
@@ -562,24 +631,33 @@ def review(stream):
         if template in RADICAL_TYPES:
             review_radical_problem(problem)
         if template in ADD_SUBTRACT:
-            add_subtract_corpus.record(public, solved)
+            if record:
+                add_subtract_corpus.record(public, solved)
         if template in FACTS:
-            facts_corpus.record(public, solved)
+            if record:
+                facts_corpus.record(public, solved)
         if template in FACT_ARRAYS:
-            fact_arrays_corpus.record(public, solved)
+            if record:
+                fact_arrays_corpus.record(public, solved)
         if template in EARLY_OPERATIONS:
-            early_operations_corpus.record(public, solved)
+            if record:
+                early_operations_corpus.record(public, solved)
         if template in COMPARISON:
-            comparison_corpus.record(public, solved)
+            if record:
+                comparison_corpus.record(public, solved)
         if template in NUMBER_SENSE:
-            number_sense_corpus.record(public, solved)
+            if record:
+                number_sense_corpus.record(public, solved)
         if template in MULTIPLY_DIVIDE:
-            multiply_divide_corpus.record(public, solved)
+            if record:
+                multiply_divide_corpus.record(public, solved)
         if template in DECIMAL:
-            decimal_corpus.record(public, solved)
+            if record:
+                decimal_corpus.record(public, solved)
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
-            rational_corpus.record(public, solved)
+            if record:
+                rational_corpus.record(public, solved)
         if template in FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
@@ -606,6 +684,32 @@ def review(stream):
             review_algebra_statistics_problem(problem, solved)
         if template in POWER:
             review_power_problem(problem, solved)
+    for line_number, line in enumerate(stream, 2):
+        require(line.strip(), f'Empty record at line {line_number}')
+        record = json.loads(line)
+        require(record.get('kind') == 'case', f'Unexpected record at line {line_number}')
+        problem = record['problem']
+        public = problem['public']
+        template, seed = public['templateId'], public['seed']
+        require(template in SUPPORTED, f'Unknown family {template}')
+        match = re.fullmatch(r'independent-(0|[1-9][0-9]*)', seed)
+        require(match is not None, f'Invalid seed {seed}')
+        index = int(match[1])
+        require(start <= index < start + count, f'Seed outside declared range: {seed}')
+        identity = (template, seed)
+        require(identity not in seen, f'Duplicate case {identity}')
+        seen.add(identity)
+        try:
+            check_case(problem, record=False)
+        except (ValueError, TypeError, KeyError, AttributeError, StopIteration):
+            # A variable or point typeset as $x$ reads as x. A family oracle that
+            # parses the plain wording reviews the plain reading instead; every
+            # check runs once without recording first, so nothing counts twice.
+            reading = plain_reading(problem)
+            if reading == problem:
+                raise
+            problem = reading
+        check_case(problem)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)

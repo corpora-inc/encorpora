@@ -245,11 +245,11 @@ export function factoringPrintCase(id: string, seed: string) {
     explanation.push(
       `Common positive coefficient factors: ${divisors.join(", ")}. The greatest is ${g}.`,
       k === 0
-        ? "A nonzero constant term has no factor x, so no power of x is common to every term."
-        : `The smallest exponent of x among the nonzero terms is ${k}. The common variable factor is ${power(k)}.`,
+        ? "A nonzero constant term has no factor $x$, so no power of $x$ is common to every term."
+        : `The smallest exponent of $x$ among the nonzero terms is ${k}. The common variable factor is $${power(k)}$.`,
     );
     explanation.push(
-      `The greatest common monomial factor is ${format(selected.left)}. Find each remaining term by multiplication.`,
+      `The greatest common monomial factor is ${/[a-z]/.test(format(selected.left)) ? `$${format(selected.left)}$` : format(selected.left)}. Find each remaining term by multiplication.`,
     );
     for (let j = selected.right.length - 1; j >= 0; j--)
       if (selected.right[j]) {
@@ -342,9 +342,9 @@ export function factoringPrintCase(id: string, seed: string) {
     .reverse()
     .join(", ");
   const hint = extraction
-    ? `The coefficients of ${shown} have sizes ${magnitudes}. Find the largest whole number dividing all of them, then the lowest power of x that appears in every term.`
+    ? `The coefficients of ${shown} have sizes ${magnitudes}. Find the largest whole number dividing all of them, then the lowest power of $x$ that appears in every term.`
     : id === "monic-quadratic-factorization"
-      ? `For ${shown}, find two integers whose product is ${signed(p[0]!)} and whose sum is ${signed(p[1]!)}. Each one completes a factor x + __.`
+      ? `For ${shown}, find two integers whose product is ${signed(p[0]!)} and whose sum is ${signed(p[1]!)}. Each one completes a factor $x + \\square$.`
       : `Start with ${shown}: take out the greatest common factor of ${magnitudes}${p[2]! < 0 ? ", with a minus sign so the x² term inside is positive" : ""}. Then split the middle term of what remains using the product of its first and last coefficients.`;
   const walkthrough = extraction
     ? commonFactorArea(

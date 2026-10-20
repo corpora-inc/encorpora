@@ -133,13 +133,13 @@ export const transformationTemplates: readonly TemplateMetadata[] = [
 
 const hints: Record<string, string> = {
   "coordinate-side-length":
-    "Two vertices with the same x-coordinate lie on a vertical line, so the side's length is the distance between their y-coordinates; with the same y-coordinate, use the x-coordinates. Coordinates on opposite sides of 0 add their distances from 0.",
+    "Two vertices with the same $x$-coordinate lie on a vertical line, so the side's length is the distance between their $y$-coordinates; with the same $y$-coordinate, use the $x$-coordinates. Coordinates on opposite sides of 0 add their distances from 0.",
   "coordinate-rectangle-measure":
     "Find the width from two vertices on a horizontal side and the height from two vertices on a vertical side. Perimeter adds all four sides; area multiplies width by height.",
   "coordinate-distance":
-    "The segment is the hypotenuse of a right triangle whose legs are the change in x and the change in y. Square the legs, add, and take the square root.",
+    "The segment is the hypotenuse of a right triangle whose legs are the change in $x$ and the change in $y$. Square the legs, add, and take the square root.",
   "coordinate-distance-exact":
-    "Use the change in x and the change in y as the legs of a right triangle. The distance squared is the sum of their squares; take the square root and remove any square factor.",
+    "Use the change in $x$ and the change in $y$ as the legs of a right triangle. The distance squared is the sum of their squares; take the square root and remove any square factor.",
   "transformation-image":
     "Apply the motion's rule to the vertex: a translation adds to the coordinates, a reflection changes one sign, and a rotation about the origin swaps or negates coordinates.",
   "identify-rigid-motion":
@@ -147,7 +147,7 @@ const hints: Record<string, string> = {
   "dilation-image":
     "A dilation centered at the origin multiplies both coordinates of every point by the scale factor.",
   "dilation-scale-factor":
-    "A dilation centered at the origin multiplies every coordinate by the same scale factor k. Divide an image coordinate by the matching original coordinate.",
+    "A dilation centered at the origin multiplies every coordinate by the same scale factor $k$. Divide an image coordinate by the matching original coordinate.",
   "similar-triangles-side":
     "Match corresponding sides by the order of the vertices. One pair of known corresponding sides gives the scale factor; multiply the matching side by it.",
   "scale-drawing":
@@ -172,6 +172,12 @@ const list = (items: string[]) =>
     ? items.join(" and ")
     : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
 const units = (v: number, word = "unit") => `${v} ${word}${v === 1 ? "" : "s"}`;
+/** The same reduced fraction as TeX: "\\tfrac{3}{2}", "-\\tfrac{1}{3}" or "4". */
+function fracTex(num: number, den: number) {
+  const f = frac(num, den).replace("−", "-");
+  const m = /^(-?)(\d+)\/(\d+)$/.exec(f);
+  return m ? `${m[1]}\\tfrac{${m[2]}}{${m[3]}}` : f;
+}
 /** A reduced fraction for display: "3/2", "−1/3" or "4". */
 function frac(num: number, den: number) {
   if (den < 0) [num, den] = [-num, -den];
@@ -194,6 +200,8 @@ function decimal(num: number, den: number) {
   return String(num / den);
 }
 const prime = (label: string) => `${label}′`;
+/** A primed vertex named in prose, typeset as math. */
+const primed = (label: string) => `$${label}'$`;
 
 function random(id: string, seed: string): Random {
   let counter = 0;
@@ -249,7 +257,7 @@ const labelled = (labels: string, points: Point[]) =>
 /** How far apart two numbers on one axis are, explained through distances from 0. */
 function axisGap(a: number, b: number, axis: "x" | "y") {
   const gap = Math.abs(a - b),
-    side = axis === "x" ? "the y-axis" : "the x-axis";
+    side = axis === "x" ? "the $y$-axis" : "the $x$-axis";
   if (a === 0 || b === 0) {
     const other = a === 0 ? b : a;
     return {
@@ -357,12 +365,12 @@ function sideCase(r: Random): Case {
   const shared = vertical ? a.x : a.y;
   const gap = vertical ? axisGap(a.y, b.y, "y") : axisGap(a.x, b.x, "x");
   return {
-    prompt: `${p.name} ${p.labels} has vertices ${vertexList(p)}. What is the length of side ${la}${lb}, in units?`,
+    prompt: `${p.name} $${p.labels}$ has vertices ${vertexList(p)}. What is the length of side $${la}${lb}$, in units?`,
     answer: String(gap.gap),
     explanation: [
-      `${named(la, a)} and ${named(lb, b)} have the same ${vertical ? "x" : "y"}-coordinate, ${n(shared)}, so side ${la}${lb} is ${vertical ? "vertical" : "horizontal"}. Its length is the distance between the ${vertical ? "y" : "x"}-coordinates ${n(vertical ? a.y : a.x)} and ${n(vertical ? b.y : b.x)}.`,
+      `${named(la, a)} and ${named(lb, b)} have the same $${vertical ? "x" : "y"}$-coordinate, ${n(shared)}, so side $${la}${lb}$ is ${vertical ? "vertical" : "horizontal"}. Its length is the distance between the $${vertical ? "y" : "x"}$-coordinates ${n(vertical ? a.y : a.x)} and ${n(vertical ? b.y : b.x)}.`,
       gap.text,
-      `Side ${la}${lb} is ${units(gap.gap)} long.`,
+      `Side $${la}${lb}$ is ${units(gap.gap)} long.`,
     ],
     tags: [p.name.toLowerCase(), vertical ? "vertical" : "horizontal", gap.tag],
     figure: coordinateFigure([
@@ -385,11 +393,11 @@ function rectangleCase(r: Random): Case {
   const area = r(0, 1) === 1;
   const value = area ? w.gap * h.gap : 2 * (w.gap + h.gap);
   return {
-    prompt: `Rectangle ABCD has vertices ${vertexList(rect)}. What is its ${area ? "area, in square units" : "perimeter, in units"}?`,
+    prompt: `Rectangle $ABCD$ has vertices ${vertexList(rect)}. What is its ${area ? "area, in square units" : "perimeter, in units"}?`,
     answer: String(value),
     explanation: [
-      `Side AB joins ${named("A", pts[0]!)} and ${named("B", pts[1]!)}, which share the y-coordinate ${n(y1)}, so it is horizontal. Its length is the distance between ${n(x1)} and ${n(x2)}. ${w.text}`,
-      `Side BC joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the x-coordinate ${n(x2)}, so it is vertical. Its length is the distance between ${n(y1)} and ${n(y2)}. ${h.text}`,
+      `Side $AB$ joins ${named("A", pts[0]!)} and ${named("B", pts[1]!)}, which share the $y$-coordinate ${n(y1)}, so it is horizontal. Its length is the distance between ${n(x1)} and ${n(x2)}. ${w.text}`,
+      `Side $BC$ joins ${named("B", pts[1]!)} and ${named("C", pts[2]!)}, which share the $x$-coordinate ${n(x2)}, so it is vertical. Its length is the distance between ${n(y1)} and ${n(y2)}. ${h.text}`,
       area
         ? `The rectangle is ${w.gap} units wide and ${h.gap} units tall. Area = width × height = ${w.gap} × ${h.gap} = ${value} square units.`
         : `Opposite sides of a rectangle are equal, so the perimeter is ${w.gap} + ${h.gap} + ${w.gap} + ${h.gap} = 2 × (${w.gap} + ${h.gap}) = ${value} units.`,
@@ -422,7 +430,7 @@ function legs(a: Point, b: Point) {
   return {
     dx,
     dy,
-    text: `The horizontal leg is the change in x: ${n(Math.max(a.x, b.x))} − ${Math.min(a.x, b.x) < 0 ? `(${n(Math.min(a.x, b.x))})` : n(Math.min(a.x, b.x))} = ${dx}. The vertical leg is the change in y: ${n(Math.max(a.y, b.y))} − ${Math.min(a.y, b.y) < 0 ? `(${n(Math.min(a.y, b.y))})` : n(Math.min(a.y, b.y))} = ${dy}.`,
+    text: `The horizontal leg is the change in $x$: ${n(Math.max(a.x, b.x))} − ${Math.min(a.x, b.x) < 0 ? `(${n(Math.min(a.x, b.x))})` : n(Math.min(a.x, b.x))} = ${dx}. The vertical leg is the change in $y$: ${n(Math.max(a.y, b.y))} − ${Math.min(a.y, b.y) < 0 ? `(${n(Math.min(a.y, b.y))})` : n(Math.min(a.y, b.y))} = ${dy}.`,
   };
 }
 const triples = [
@@ -489,7 +497,7 @@ function exactDistanceCase(r: Random): Case {
   if (signX !== dx || signY !== dy)
     candidates.push([
       rootValue(signX * signX + signY * signY || 1),
-      `That subtracts the coordinates as if they had the same sign. ${a.x * b.x < 0 ? `The x-coordinates ${n(a.x)} and ${n(b.x)} lie on opposite sides of 0, so the horizontal leg is ${dx}.` : `The y-coordinates ${n(a.y)} and ${n(b.y)} lie on opposite sides of 0, so the vertical leg is ${dy}.`}`,
+      `That subtracts the coordinates as if they had the same sign. ${a.x * b.x < 0 ? `The $x$-coordinates ${n(a.x)} and ${n(b.x)} lie on opposite sides of 0, so the horizontal leg is ${dx}.` : `The $y$-coordinates ${n(a.y)} and ${n(b.y)} lie on opposite sides of 0, so the vertical leg is ${dy}.`}`,
     ]);
   candidates.push([
     String(dx + dy),
@@ -528,13 +536,13 @@ function exactDistanceCase(r: Random): Case {
         ? `${c2} has no square factor greater than 1, so $\\sqrt{${c2}}$ is already in simplest form.`
         : `${c2} = ${root[0] * root[0]} × ${root[1]}, and ${root[0] * root[0]} is a perfect square, so $\\sqrt{${c2}} = \\sqrt{${root[0] * root[0]}} \\times \\sqrt{${root[1]}} = ${root[0]}\\sqrt{${root[1]}}$.`;
   return {
-    prompt: `Point A is at ${pt(a)} and point B is at ${pt(b)}. What is the exact distance AB, in units?`,
+    prompt: `Point $A$ is at ${pt(a)} and point $B$ is at ${pt(b)}. What is the exact distance AB, in units?`,
     answer: correct,
     options: [correct, ...distractors.map((d) => d[0])],
     feedback: Object.fromEntries(distractors),
     explanation: [
-      `Draw a right triangle with AB as its hypotenuse and legs along the grid. ${l.text}`,
-      `By the Pythagorean theorem, AB² = ${dx}² + ${dy}² = ${dx * dx} + ${dy * dy} = ${c2}, so AB = $\\sqrt{${c2}}$.`,
+      `Draw a right triangle with $AB$ as its hypotenuse and legs along the grid. ${l.text}`,
+      `By the Pythagorean theorem, $AB^2 = ${dx}^2 + ${dy}^2 = ${dx * dx} + ${dy * dy} = ${c2}$, so $AB$ = $\\sqrt{${c2}}$.`,
       simplify,
       `The exact distance is ${correct} units.`,
     ],
@@ -570,7 +578,7 @@ function motionPhrase(m: PlaneMotion) {
     case "translate":
       return `translated ${translationWords(m.dx, m.dy)}`;
     case "reflect":
-      return `reflected over the ${m.axis}-axis`;
+      return `reflected over the $${m.axis}$-axis`;
     case "rotate":
       return m.degrees === 180
         ? "rotated 180° about the origin"
@@ -584,7 +592,7 @@ function motionName(m: PlaneMotion) {
     case "translate":
       return `A translation ${translationWords(m.dx, m.dy)}`;
     case "reflect":
-      return `A reflection over the ${m.axis}-axis`;
+      return `A reflection over the $${m.axis}$-axis`;
     case "rotate":
       return m.degrees === 180
         ? "A rotation of 180° about the origin"
@@ -597,33 +605,33 @@ function motionName(m: PlaneMotion) {
 function motionRule(m: PlaneMotion) {
   switch (m.kind) {
     case "translate":
-      return `(x, y) → (x ${m.dx < 0 ? "−" : "+"} ${Math.abs(m.dx)}, y ${m.dy < 0 ? "−" : "+"} ${Math.abs(m.dy)})`;
+      return `$(x, y) \\to (x ${m.dx < 0 ? "-" : "+"} ${Math.abs(m.dx)}, y ${m.dy < 0 ? "-" : "+"} ${Math.abs(m.dy)})$`;
     case "reflect":
-      return m.axis === "x" ? "(x, y) → (x, −y)" : "(x, y) → (−x, y)";
+      return m.axis === "x" ? "$(x, y) \\to (x, -y)$" : "$(x, y) \\to (-x, y)$";
     case "rotate":
       return m.degrees === 90
-        ? "(x, y) → (−y, x)"
+        ? "$(x, y) \\to (-y, x)$"
         : m.degrees === 180
-          ? "(x, y) → (−x, −y)"
-          : "(x, y) → (y, −x)";
+          ? "$(x, y) \\to (-x, -y)$"
+          : "$(x, y) \\to (y, -x)$";
     case "dilate":
-      return `(x, y) → (${frac(m.numerator, m.denominator)}x, ${frac(m.numerator, m.denominator)}y)`;
+      return `$(x, y) \\to (${fracTex(m.numerator, m.denominator)}x, ${fracTex(m.numerator, m.denominator)}y)$`;
   }
 }
 function motionReason(m: PlaneMotion) {
   switch (m.kind) {
     case "translate":
-      return `A translation slides every point the same distance in the same direction: ${translationWords(m.dx, m.dy)} adds ${n(m.dx)} to each x-coordinate and ${n(m.dy)} to each y-coordinate.`;
+      return `A translation slides every point the same distance in the same direction: ${translationWords(m.dx, m.dy)} adds ${n(m.dx)} to each $x$-coordinate and ${n(m.dy)} to each $y$-coordinate.`;
     case "reflect":
       return m.axis === "x"
-        ? "A reflection over the x-axis moves each point straight across the axis to the same distance on the other side. The x-coordinate stays the same and the y-coordinate changes sign."
-        : "A reflection over the y-axis moves each point straight across the axis to the same distance on the other side. The y-coordinate stays the same and the x-coordinate changes sign.";
+        ? "A reflection over the $x$-axis moves each point straight across the axis to the same distance on the other side. The $x$-coordinate stays the same and the $y$-coordinate changes sign."
+        : "A reflection over the $y$-axis moves each point straight across the axis to the same distance on the other side. The $y$-coordinate stays the same and the $x$-coordinate changes sign.";
     case "rotate":
       return m.degrees === 180
         ? "A half turn about the origin carries each point to the opposite side of the origin at the same distance, so both coordinates change sign."
         : m.degrees === 90
-          ? "A quarter turn counterclockwise about the origin carries a point 1 unit right of the origin to 1 unit above it, and a point 1 unit above it to 1 unit left of it. So the old y-coordinate, with its sign changed, becomes the new x-coordinate, and the old x-coordinate becomes the new y-coordinate."
-          : "A quarter turn clockwise about the origin carries a point 1 unit above the origin to 1 unit right of it, and a point 1 unit right of it to 1 unit below it. So the old y-coordinate becomes the new x-coordinate, and the old x-coordinate, with its sign changed, becomes the new y-coordinate.";
+          ? "A quarter turn counterclockwise about the origin carries a point 1 unit right of the origin to 1 unit above it, and a point 1 unit above it to 1 unit left of it. So the old $y$-coordinate, with its sign changed, becomes the new $x$-coordinate, and the old $x$-coordinate becomes the new $y$-coordinate."
+          : "A quarter turn clockwise about the origin carries a point 1 unit above the origin to 1 unit right of it, and a point 1 unit right of it to 1 unit below it. So the old $y$-coordinate becomes the new $x$-coordinate, and the old $x$-coordinate, with its sign changed, becomes the new $y$-coordinate.";
     case "dilate":
       return `A dilation centered at the origin moves every point along the ray from the origin through it, multiplying its distance from the origin by ${frac(m.numerator, m.denominator)}. Both coordinates are multiplied by ${frac(m.numerator, m.denominator)}.`;
   }
@@ -713,7 +721,7 @@ function imageCase(r: Random): Case {
             ],
             [
               { x: p.x + motion.dy, y: p.y + motion.dx },
-              "That applies the horizontal shift to y and the vertical shift to x. Horizontal moves change x; vertical moves change y.",
+              "That applies the horizontal shift to $y$ and the vertical shift to $x$. Horizontal moves change $x$; vertical moves change $y$.",
             ],
             [
               { x: p.x + motion.dx, y: p.y - motion.dy },
@@ -751,7 +759,7 @@ function imageCase(r: Random): Case {
         distractors.push([label, why]);
     }
     if (distractors.length < 3) continue;
-    const prompt = `Triangle ABC has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle A′B′C′. What are the coordinates of ${prime(label)}?`;
+    const prompt = `Triangle $ABC$ has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle $A'B'C'$. What are the coordinates of ${primed(label)}?`;
     return {
       prompt,
       answer: correct,
@@ -760,7 +768,7 @@ function imageCase(r: Random): Case {
       explanation: [
         motionReason(motion),
         `The rule is ${motionRule(motion)}.`,
-        `Apply it to ${named(label, p)}: ${prime(label)} is at ${correct}.`,
+        `Apply it to ${named(label, p)}: ${primed(label)} is at ${correct}.`,
       ],
       tags: [motionTag(motion)],
       figure: coordinateFigure(
@@ -841,7 +849,7 @@ function identifyCase(r: Random): Case {
         const L = "ABC"[miss]!;
         distractors.push([
           label,
-          `That motion sends ${named(L, pts[miss]!)} to ${pt(applyMotion(m, pts[miss]!))}, but ${prime(L)} is at ${pt(images[miss]!)}. Check every vertex, not only one.`,
+          `That motion sends ${named(L, pts[miss]!)} to ${pt(applyMotion(m, pts[miss]!))}, but ${primed(L)} is at ${pt(images[miss]!)}. Check every vertex, not only one.`,
         ]);
       }
     }
@@ -849,14 +857,14 @@ function identifyCase(r: Random): Case {
     const before = list(pts.map((v, i) => named("ABC"[i]!, v))),
       after = list(images.map((v, i) => named(prime("ABC"[i]!), v)));
     return {
-      prompt: `Triangle ABC has vertices ${before}. Triangle A′B′C′ has vertices ${after}. Which single transformation maps triangle ABC onto triangle A′B′C′?`,
+      prompt: `Triangle $ABC$ has vertices ${before}. Triangle $A'B'C'$ has vertices ${after}. Which single transformation maps triangle $ABC$ onto triangle $A'B'C'$?`,
       answer: correct,
       options: [correct, ...distractors.map((d) => d[0])],
       feedback: Object.fromEntries(distractors),
       explanation: [
         `Compare each vertex with its image: ${pts.map((p, i) => `${pt(p)} → ${pt(images[i]!)}`).join(", ")}.`,
         motion.kind === "translate"
-          ? `Every x-coordinate changes by ${n(motion.dx)} and every y-coordinate changes by ${n(motion.dy)}, so each point slides the same distance in the same direction.`
+          ? `Every $x$-coordinate changes by ${n(motion.dx)} and every $y$-coordinate changes by ${n(motion.dy)}, so each point slides the same distance in the same direction.`
           : `${motionReason(motion)} Every vertex follows this rule: ${motionRule(motion)}.`,
         `The transformation is ${correct.replace(/^A /, "a ")}.`,
       ],
@@ -926,11 +934,11 @@ function dilationImageCase(r: Random): Case {
     wrong.push(
       [
         { x: q.x, y: p.y },
-        "Only the x-coordinate was multiplied. Multiply both coordinates by the scale factor.",
+        "Only the $x$-coordinate was multiplied. Multiply both coordinates by the scale factor.",
       ],
       [
         { x: p.x, y: q.y },
-        "Only the y-coordinate was multiplied. Multiply both coordinates by the scale factor.",
+        "Only the $y$-coordinate was multiplied. Multiply both coordinates by the scale factor.",
       ],
       [
         { x: -q.x, y: -q.y },
@@ -949,14 +957,14 @@ function dilationImageCase(r: Random): Case {
     }
     if (distractors.length < 3) continue;
     return {
-      prompt: `Triangle ABC has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle A′B′C′. What are the coordinates of ${prime(label)}?`,
+      prompt: `Triangle $ABC$ has vertices ${list(pts.map((v, i) => named("ABC"[i]!, v)))}. It is ${motionPhrase(motion)} to form triangle $A'B'C'$. What are the coordinates of ${primed(label)}?`,
       answer: correct,
       options: [correct, ...distractors.map((d) => d[0])],
       feedback: Object.fromEntries(distractors),
       explanation: [
         motionReason(motion),
-        `Multiply both coordinates of ${named(label, p)} by ${kText}. The new x-coordinate is ${n(p.x)} × ${kText} = ${n(q.x)}, and the new y-coordinate is ${n(p.y)} × ${kText} = ${n(q.y)}.`,
-        `${prime(label)} is at ${correct}.`,
+        `Multiply both coordinates of ${named(label, p)} by ${kText}. The new $x$-coordinate is ${n(p.x)} × ${kText} = ${n(q.x)}, and the new $y$-coordinate is ${n(p.y)} × ${kText} = ${n(q.y)}.`,
+        `${primed(label)} is at ${correct}.`,
       ],
       tags: [
         num > den ? "enlarge" : "reduce",
@@ -983,12 +991,12 @@ function scaleFactorCase(r: Random): Case {
     q2 = images[j]!,
     L2 = "ABC"[j]!;
   return {
-    prompt: `A dilation with center at the origin maps triangle ABC onto triangle A′B′C′. Triangle ABC has vertices ${list(pts.map((v, idx) => named("ABC"[idx]!, v)))}, and triangle A′B′C′ has vertices ${list(images.map((v, idx) => named(prime("ABC"[idx]!), v)))}. What is the scale factor?`,
+    prompt: `A dilation with center at the origin maps triangle $ABC$ onto triangle $A'B'C'$. Triangle $ABC$ has vertices ${list(pts.map((v, idx) => named("ABC"[idx]!, v)))}, and triangle $A'B'C'$ has vertices ${list(images.map((v, idx) => named(prime("ABC"[idx]!), v)))}. What is the scale factor?`,
     answer: answerFraction(num, den),
     explanation: [
-      "A dilation centered at the origin multiplies both coordinates of every point by the same scale factor k.",
+      "A dilation centered at the origin multiplies both coordinates of every point by the same scale factor $k$.",
       `${named(L, p)} maps to ${named(prime(L), q)}, so k = ${n(q.x)} ÷ ${p.x < 0 ? `(${n(p.x)})` : p.x} = ${kText}.`,
-      `Check with ${L2}. Multiplying its coordinates gives ${n(p2.x)} × ${kText} = ${n(q2.x)} and ${n(p2.y)} × ${kText} = ${n(q2.y)}, which match ${named(prime(L2), q2)}.`,
+      `Check with $${L2}$. Multiplying its coordinates gives ${n(p2.x)} × ${kText} = ${n(q2.x)} and ${n(p2.y)} × ${kText} = ${n(q2.y)}, which match ${named(prime(L2), q2)}.`,
       num > den
         ? `The scale factor is ${kText}. It is greater than 1, so the image is an enlargement.`
         : `The scale factor is ${kText}. It is less than 1, so the image is a reduction.`,
@@ -1076,12 +1084,12 @@ function similarCase(r: Random): Case {
       .map((i) => `${sideName(first, i)} = ${sides[i]}`)
       .concat(`${sideName(second, known)} = ${knownImage}`);
     return {
-      prompt: `Triangle ${first} is similar to triangle ${second}, with ${list([...first].map((v, i) => `${v} corresponding to ${second[i]}`))}. In ${unitWords[unit][0]}, ${list(given)}. What is ${sideName(second, asked)}, in ${unitWords[unit][0]}?`,
+      prompt: `Triangle $${first}$ is similar to triangle $${second}$, with ${list([...first].map((v, i) => `$${v}$ corresponding to $${second[i]}$`))}. In ${unitWords[unit][0]}, ${list(given)}. What is ${sideName(second, asked)}, in ${unitWords[unit][0]}?`,
       answer: askedValue,
       explanation: [
         `Corresponding sides join corresponding vertices: ${correspond}.`,
-        `The known pair ${sideName(first, known)} and ${sideName(second, known)} gives the scale factor from ${first} to ${second}: ${knownImage} ÷ ${sides[known]} = ${k}.`,
-        `Every side of ${second} is ${k} times its corresponding side of ${first}, so ${sideName(second, asked)} = ${sideName(first, asked)} × ${k} = ${sides[asked]} × ${k} = ${askedValue}.`,
+        `The known pair ${sideName(first, known)} and ${sideName(second, known)} gives the scale factor from ${first} to $${second}$: ${knownImage} ÷ ${sides[known]} = ${k}.`,
+        `Every side of $${second}$ is ${k} times its corresponding side of $${first}$, so $${sideName(second, asked)} = ${sideName(first, asked)} × ${k} = ${sides[asked]} × ${k} = ${askedValue}$.`,
         `${sideName(second, asked)} is ${askedValue} ${unitWords[unit][0]}.`,
       ],
       tags: [
@@ -1303,10 +1311,11 @@ export function transformationPrintCase(
  * without stating the answer; a template's own first move otherwise. */
 function instanceHint(id: string, c: Case, numeric: boolean): string {
   const values = (text: string): string[] =>
-    text.replaceAll("−", "-").match(/(?<![\w.\/])-?\d+(?:\.\d+)?(?:\/\d+)?/g) ?? [];
+    text.replaceAll("−", "-").match(/(?<![\w.\/])-?\d+(?:\.\d+)?(?:\/\d+)?/g) ??
+    [];
   const given = new Set(values(c.prompt));
   if (id === "transformation-image") {
-    const vertex = /coordinates of ([A-Z])′/.exec(c.prompt)![1]!;
+    const vertex = /coordinates of \$([A-Z])'\$/.exec(c.prompt)![1]!;
     const at = new RegExp(`${vertex}\\(([^)]*)\\)`).exec(c.prompt)![0];
     return `${c.explanation[0]} Apply that to $${at}$.`;
   }

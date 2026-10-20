@@ -33,11 +33,11 @@ export const angleLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Ray BA lies on 0 on the left of a protractor. Ray BC crosses the outer scale at 50 and the inner scale at 130. What is angle ABC?",
+        "Ray $BA$ lies on 0 on the left of a protractor. Ray $BC$ crosses the outer scale at 50 and the inner scale at 130. What is angle $ABC$?",
       steps: [
-        "Ray BA is at 0 on the left, where the outer scale starts.",
-        "Follow the outer scale to ray BC: it reads 50.",
-        "Angle ABC measures 50°; the 130 belongs to the scale that starts on the right.",
+        "Ray $BA$ is at 0 on the left, where the outer scale starts.",
+        "Follow the outer scale to ray $BC$: it reads 50.",
+        "Angle $ABC$ measures 50°; the 130 belongs to the scale that starts on the right.",
       ],
       answer: "50",
       answerUnit: "degrees",
@@ -69,7 +69,7 @@ export const angleLessons: Lesson[] = [
       {
         title: "Lines, rays and segments",
         paragraphs: [
-          "A line goes on forever both ways; arrows show this. A ray starts at a point and goes on forever one way; ray AB starts at A. A line segment stops at both endpoints.",
+          "A line goes on forever both ways; arrows show this. A ray starts at a point and goes on forever one way; ray $AB$ starts at $A$. A line segment stops at both endpoints.",
           "An angle is two rays that share an endpoint, the vertex.",
         ],
         illustration: "line-ray-segment",
@@ -94,7 +94,7 @@ export const angleLessons: Lesson[] = [
       answer: "perpendicular",
     },
     pitfalls: [
-      "Ray AB starts at A; ray BA starts at B. They are different rays.",
+      "Ray $AB$ starts at $A$; ray $BA$ starts at $B$. They are different rays.",
       "Lines that cross at an angle close to a right angle are not perpendicular unless it is exactly a right angle.",
     ],
     parentGuide:
@@ -123,7 +123,7 @@ export const angleLessons: Lesson[] = [
       {
         title: "Count them all",
         paragraphs: [
-          "Try folds through opposite corners and through the middles of opposite sides. A regular shape with n equal sides has n lines of symmetry.",
+          "Try folds through opposite corners and through the middles of opposite sides. A regular shape with $n$ equal sides has $n$ lines of symmetry.",
           "Some shapes have none: a slanted parallelogram and a triangle with three different sides cannot be folded into matching halves.",
         ],
       },
@@ -143,7 +143,7 @@ export const angleLessons: Lesson[] = [
       "Check the diagonals of rectangles and parallelograms by folding; they are not lines of symmetry.",
     ],
     parentGuide:
-      "Cut shapes from paper and fold them. Ask before each fold whether the halves will match, then check. Letters such as A, H and X make good tests.",
+      "Cut shapes from paper and fold them. Ask before each fold whether the halves will match, then check. Letters such as $A$, $H$ and $X$ make good tests.",
   },
 ];
 
@@ -208,7 +208,7 @@ export const angleMethods: Record<string, ProblemMethod> = {
       "Look at each end: an arrow goes on forever; a point stops.",
       "Two arrows: line. Two points: segment. One of each: a ray named from its starting point.",
     ],
-    watch: "Ray AB starts at A, so the first letter is the endpoint.",
+    watch: "Ray $AB$ starts at $A$, so the first letter is the endpoint.",
   },
   "line-relationship": {
     goal: "Given two lines on a dot grid, tell whether they are parallel, perpendicular or neither.",

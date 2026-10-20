@@ -121,3 +121,13 @@ def solve_linear(text, unknown, env):
 
 def number(text):
     return Fraction(text.replace('−', '-'))
+
+
+def untex(text):
+    """Formulas typeset as $…$ read as the plain text the readers here parse:
+    \\tfrac{1}{2} as ½, other \\tfrac{a}{b} as a/b, \\le and \\ge as ≤ and ≥."""
+    def plain(m):
+        tex = m[1].replace('\\tfrac{1}{2}', '½')
+        tex = re.sub(r'\\t?frac\{(\d+)\}\{(\d+)\}', r'\1/\2', tex)
+        return tex.replace('\\le ', '≤ ').replace('\\ge ', '≥ ').replace('\\times ', '× ')
+    return re.sub(r'\$([^$]*)\$', plain, text)

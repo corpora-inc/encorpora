@@ -44,7 +44,7 @@ export const angleTriangleTemplates: readonly TemplateMetadata[] = [
     skillId: "triangle-angle-theorems",
     gradeBand: "6–8",
     description:
-      "Use the 180° angle sum of a triangle to find an unknown angle or the value of x.",
+      "Use the 180° angle sum of a triangle to find an unknown angle or the value of $x$.",
   },
   {
     id: "triangle-exterior-angle",
@@ -118,7 +118,7 @@ const hints: Record<string, string> = {
   "angle-pair-measure":
     "Name the whole angle the parts fill: a straight line is 180°, a right angle is 90° and a full turn is 360°. Vertical angles are equal. Subtract the known part from the whole.",
   "angle-equation":
-    "Write one equation from the relationship: the parts of a straight angle add to 180°, the parts of a right angle add to 90°, adjacent parts add to the whole angle, and vertical angles are equal. Then solve for x.",
+    "Write one equation from the relationship: the parts of a straight angle add to 180°, the parts of a right angle add to 90°, adjacent parts add to the whole angle, and vertical angles are equal. Then solve for $x$.",
   "triangle-angle-sum":
     "The three angles of every triangle add to 180°. Write that sum with the given measures and solve for the unknown.",
   "triangle-exterior-angle":
@@ -235,7 +235,7 @@ function rays(
     figure,
     letters,
     O,
-    name: (from, to) => `∠${letters[from]}${O}${letters[to]}`,
+    name: (from, to) => `$\\angle ${letters[from]}${O}${letters[to]}$`,
   };
 }
 
@@ -262,8 +262,8 @@ function anglePairCase(r: Random): Case {
       marks.unshift({ from: 0, to: 2, label: "90°", right: true });
     const setup =
       mode === 0
-        ? `Points ${R}, ${s.O} and ${P} lie on a straight line, and ray ${s.O}${Q} is drawn from ${s.O}.`
-        : `∠${P}${s.O}${R} is a right angle, and ray ${s.O}${Q} lies inside it.`;
+        ? `Points $${R}$, $${s.O}$ and $${P}$ lie on a straight line, and ray $${s.O}${Q}$ is drawn from $${s.O}$.`
+        : `$\\angle ${P}${s.O}${R}$ is a right angle, and ray $${s.O}${Q}$ lies inside it.`;
     return {
       prompt: `${setup} ${knownName} measures ${known}°. What is the measure of ${unknownName}, in degrees?`,
       answer: String(unknown),
@@ -271,8 +271,8 @@ function anglePairCase(r: Random): Case {
       response: { kind: "number", label: "Angle measure in degrees" },
       explanation: [
         mode === 0
-          ? `${R}, ${s.O} and ${P} lie on a line, so ∠${P}${s.O}${R} is a straight angle: 180°. Ray ${s.O}${Q} splits it into ${knownName} and ${unknownName}, which do not overlap.`
-          : `∠${P}${s.O}${R} is a right angle: 90°. Ray ${s.O}${Q} splits it into ${knownName} and ${unknownName}, which do not overlap.`,
+          ? `$${R}$, $${s.O}$ and $${P}$ lie on a line, so $\\angle ${P}${s.O}${R}$ is a straight angle: 180°. Ray $${s.O}${Q}$ splits it into ${knownName} and ${unknownName}, which do not overlap.`
+          : `$\\angle ${P}${s.O}${R}$ is a right angle: 90°. Ray $${s.O}${Q}$ splits it into ${knownName} and ${unknownName}, which do not overlap.`,
         `Adjacent parts add to the whole: ${known}° + ${unknownName} = ${whole}°.`,
         `Subtract: ${unknownName} = ${whole}° − ${known}° = ${unknown}°.`,
         mode === 0
@@ -300,7 +300,7 @@ function anglePairCase(r: Random): Case {
       { from: target, to: (target + 1) % 4, label: "?" },
     ];
     return {
-      prompt: `Lines ${P}${R} and ${Q}${S} cross at ${s.O}. ${name(start)} measures ${known}°. What is the measure of ${name(target)}, in degrees?`,
+      prompt: `Lines $${P}${R}$ and $${Q}${S}$ cross at $${s.O}$. ${name(start)} measures ${known}°. What is the measure of ${name(target)}, in degrees?`,
       answer: String(unknown),
       figure: { ...s.figure, marks },
       response: { kind: "number", label: "Angle measure in degrees" },
@@ -311,7 +311,7 @@ function anglePairCase(r: Random): Case {
             `${name(target)} = ${known}°.`,
           ]
         : [
-            `${name(start)} and ${name(target)} are adjacent, and together they fill one side of line ${[P + R, Q + S][target === (start + 1) % 4 ? start % 2 : (start + 1) % 2]}: a straight angle.`,
+            `${name(start)} and ${name(target)} are adjacent, and together they fill one side of line $${[P + R, Q + S][target === (start + 1) % 4 ? start % 2 : (start + 1) % 2]}$: a straight angle.`,
             `They are supplementary: ${known}° + ${name(target)} = 180°.`,
             `${name(target)} = 180° − ${known}° = ${unknown}°.`,
           ],
@@ -334,12 +334,12 @@ function anglePairCase(r: Random): Case {
     { from: 2, to: 0, label: "?" },
   ];
   return {
-    prompt: `Rays ${s.O}${P}, ${s.O}${Q} and ${s.O}${R} divide the full turn around ${s.O} into three angles. ${s.name(0, 1)} measures ${p}° and ${s.name(1, 2)} measures ${q}°. What is the measure of ${s.name(2, 0)}, in degrees?`,
+    prompt: `Rays $${s.O}${P}$, $${s.O}${Q}$ and $${s.O}${R}$ divide the full turn around $${s.O}$ into three angles. ${s.name(0, 1)} measures ${p}° and ${s.name(1, 2)} measures ${q}°. What is the measure of ${s.name(2, 0)}, in degrees?`,
     answer: String(third),
     figure: { ...s.figure, marks },
     response: { kind: "number", label: "Angle measure in degrees" },
     explanation: [
-      `The three angles fill the full turn around ${s.O} without overlapping, so they add to 360°.`,
+      `The three angles fill the full turn around $${s.O}$ without overlapping, so they add to 360°.`,
       `${p}° + ${q}° + ${s.name(2, 0)} = 360°, so ${s.name(2, 0)} = 360° − ${p + q}° = ${third}°.`,
     ],
     tags: ["full-turn"],
@@ -368,7 +368,7 @@ function angleEquationCase(r: Random): Case {
     const [hi, lo] = e1.a > e2.a ? [e1, e2] : [e2, e1];
     const steps = [
       `${name(first)} and ${name(second)} are vertical angles, so they are equal: ${linear(e1.a, e1.b)} = ${linear(e2.a, e2.b)}.`,
-      `Subtract ${linear(lo.a, 0)} from both sides: ${linear(hi.a - lo.a, hi.b)} = ${num(lo.b)}.`,
+      `Subtract $${linear(lo.a, 0)}$ from both sides: ${linear(hi.a - lo.a, hi.b)} = ${num(lo.b)}.`,
       ...(hi.b !== 0
         ? [
             `${hi.b > 0 ? "Subtract" : "Add"} ${Math.abs(hi.b)} ${hi.b > 0 ? "from" : "to"} both sides: ${linear(hi.a - lo.a, 0)} = ${num(lo.b - hi.b)}.`,
@@ -381,7 +381,7 @@ function angleEquationCase(r: Random): Case {
     ];
     if (askAngle) steps.push(`So ${name(first)} measures ${v}°.`);
     return {
-      prompt: `Lines ${P}${R} and ${Q}${S} cross at ${s.O}. ${name(first)} measures ${L1} and ${name(second)} measures ${L2}. ${askAngle ? `What is the measure of ${name(first)}, in degrees?` : "What is the value of x?"}`,
+      prompt: `Lines $${P}${R}$ and $${Q}${S}$ cross at $${s.O}$. ${name(first)} measures ${L1} and ${name(second)} measures ${L2}. ${askAngle ? `What is the measure of ${name(first)}, in degrees?` : "What is the value of $x$?"}`,
       answer: String(askAngle ? v : x),
       figure: {
         ...s.figure,
@@ -392,7 +392,7 @@ function angleEquationCase(r: Random): Case {
       },
       response: {
         kind: "number",
-        label: askAngle ? "Angle measure in degrees" : "Value of x",
+        label: askAngle ? "Angle measure in degrees" : "Value of $x$",
       },
       explanation: steps,
       tags: ["vertical", askAngle ? "ask-angle" : "ask-x"],
@@ -421,16 +421,16 @@ function angleEquationCase(r: Random): Case {
   if (mode === 3) marks.unshift({ from: 0, to: 2, label: `${whole}°` });
   const setup =
     mode === 0
-      ? `Points ${R}, ${s.O} and ${P} lie on a straight line, and ray ${s.O}${Q} is drawn from ${s.O}.`
+      ? `Points $${R}$, $${s.O}$ and $${P}$ lie on a straight line, and ray $${s.O}${Q}$ is drawn from $${s.O}$.`
       : mode === 1
-        ? `∠${P}${s.O}${R} is a right angle, and ray ${s.O}${Q} lies inside it.`
-        : `Ray ${s.O}${Q} lies inside ∠${P}${s.O}${R}, which measures ${whole}°.`;
+        ? `$\\angle ${P}${s.O}${R}$ is a right angle, and ray $${s.O}${Q}$ lies inside it.`
+        : `Ray $${s.O}${Q}$ lies inside $\\angle ${P}${s.O}${R}$, which measures ${whole}°.`;
   const relation =
     mode === 0
-      ? `The two angles fill the straight angle ∠${P}${s.O}${R}, so they add to 180°`
+      ? `The two angles fill the straight angle $\\angle ${P}${s.O}${R}$, so they add to 180°`
       : mode === 1
-        ? `The two angles fill the right angle ∠${P}${s.O}${R}, so they add to 90°`
-        : `The two adjacent angles fill ∠${P}${s.O}${R}, so they add to ${whole}°`;
+        ? `The two angles fill the right angle $\\angle ${P}${s.O}${R}$, so they add to 90°`
+        : `The two adjacent angles fill $\\angle ${P}${s.O}${R}$, so they add to ${whole}°`;
   const steps = [
     `${relation}: (${linear(e1.a, e1.b)}) + (${linear(e2.a, e2.b)}) = ${whole}.`,
     ...solveSteps(e1.a + e2.a, e1.b + e2.b, whole, x),
@@ -438,12 +438,12 @@ function angleEquationCase(r: Random): Case {
   ];
   if (askAngle) steps.push(`So ${first} measures ${v1}°.`);
   return {
-    prompt: `${setup} ${first} measures ${L1} and ${second} measures ${L2}. ${askAngle ? `What is the measure of ${first}, in degrees?` : "What is the value of x?"}`,
+    prompt: `${setup} ${first} measures ${L1} and ${second} measures ${L2}. ${askAngle ? `What is the measure of ${first}, in degrees?` : "What is the value of $x$?"}`,
     answer: String(askAngle ? v1 : x),
     figure: { ...s.figure, marks },
     response: {
       kind: "number",
-      label: askAngle ? "Angle measure in degrees" : "Value of x",
+      label: askAngle ? "Angle measure in degrees" : "Value of $x$",
     },
     explanation: steps,
     tags: [
@@ -504,7 +504,7 @@ function triangleSumCase(r: Random): Case {
       string,
     ];
     return {
-      prompt: `In triangle ${A}${B}${C}, ∠${names[known[0]!]} measures ${k1}° and ∠${names[known[1]!]} measures ${k2}°. What is the measure of ∠${names[missing]}, in degrees?`,
+      prompt: `In triangle $${A}${B}${C}$, $\\angle ${names[known[0]!]}$ measures ${k1}° and $\\angle ${names[known[1]!]}$ measures ${k2}°. What is the measure of $\\angle ${names[missing]}$, in degrees?`,
       answer: String(angles[missing]),
       figure: {
         kind: "triangle-angles",
@@ -514,9 +514,9 @@ function triangleSumCase(r: Random): Case {
       },
       response: { kind: "number", label: "Angle measure in degrees" },
       explanation: [
-        `The three angles of a triangle add to 180°: ${k1}° + ${k2}° + ∠${names[missing]} = 180°.`,
+        `The three angles of a triangle add to 180°: ${k1}° + ${k2}° + $\\angle ${names[missing]}$ = 180°.`,
         `Add the known angles: ${k1}° + ${k2}° = ${k1 + k2}°.`,
-        `Subtract from 180°: ∠${names[missing]} = 180° − ${k1 + k2}° = ${angles[missing]}°.`,
+        `Subtract from 180°: $\\angle ${names[missing]}$ = 180° − ${k1 + k2}° = ${angles[missing]}°.`,
       ],
       tags: ["numeric", right ? "right" : "no-right", `missing-${missing}`],
     };
@@ -541,14 +541,16 @@ function triangleSumCase(r: Random): Case {
     `Check: ${exprs.map((e) => substitute(e.a, e.b, x)).join(", ")}; ${angles.join(" + ")} = 180.`,
   ];
   if (askAngle !== null)
-    steps.push(`So ∠${names[askAngle]} measures ${angles[askAngle]}°.`);
+    steps.push(
+      `So $\\angle ${names[askAngle]}$ measures ${angles[askAngle]}°.`,
+    );
   return {
-    prompt: `In triangle ${A}${B}${C}, ∠${A} measures ${labels[0]}, ∠${B} measures ${labels[1]} and ∠${C} measures ${labels[2]}. ${askAngle === null ? "What is the value of x?" : `What is the measure of ∠${names[askAngle]}, in degrees?`}`,
+    prompt: `In triangle $${A}${B}${C}$, $\\angle ${A}$ measures ${labels[0]}, $\\angle ${B}$ measures ${labels[1]} and $\\angle ${C}$ measures ${labels[2]}. ${askAngle === null ? "What is the value of $x$?" : `What is the measure of $\\angle ${names[askAngle]}$, in degrees?`}`,
     answer: String(askAngle === null ? x : angles[askAngle]),
     figure: { kind: "triangle-angles", angles, vertices: names, labels },
     response: {
       kind: "number",
-      label: askAngle === null ? "Value of x" : "Angle measure in degrees",
+      label: askAngle === null ? "Value of $x$" : "Angle measure in degrees",
     },
     explanation: steps,
     tags: ["algebra", askAngle === null ? "ask-x" : "ask-angle"],
@@ -561,8 +563,8 @@ function exteriorCase(r: Random): Case {
   const D = after[C]!;
   const angles = triangleAngles(r, 20, 120);
   const ext = 180 - angles[1];
-  const exteriorName = `∠${C}${B}${D}`;
-  const setup = `In triangle ${A}${B}${C}, side ${A}${B} is extended past ${B} to point ${D}.`;
+  const exteriorName = `$\\angle ${C}${B}${D}$`;
+  const setup = `In triangle $${A}${B}${C}$, side $${A}${B}$ is extended past $${B}$ to point $${D}$.`;
   const mode = r(0, 3);
   if (mode <= 1) {
     const labels = [`${angles[0]}°`, null, `${angles[2]}°`] as [
@@ -572,7 +574,7 @@ function exteriorCase(r: Random): Case {
     ];
     if (mode === 0)
       return {
-        prompt: `${setup} ∠${A} measures ${angles[0]}° and ∠${C} measures ${angles[2]}°. What is the measure of ${exteriorName}, in degrees?`,
+        prompt: `${setup} $\\angle ${A}$ measures ${angles[0]}° and $\\angle ${C}$ measures ${angles[2]}°. What is the measure of ${exteriorName}, in degrees?`,
         answer: String(ext),
         figure: {
           kind: "triangle-angles",
@@ -583,8 +585,8 @@ function exteriorCase(r: Random): Case {
         },
         response: { kind: "number", label: "Angle measure in degrees" },
         explanation: [
-          `${exteriorName} and ∠${A}${B}${C} form a straight angle along line ${A}${D}, so ${exteriorName} = 180° − ∠${B}.`,
-          `The triangle's angles add to 180°, so ∠${B} = 180° − (∠${A} + ∠${C}). Then ${exteriorName} = ∠${A} + ∠${C}.`,
+          `${exteriorName} and $\\angle ${A}${B}${C}$ form a straight angle along line $${A}${D}$, so ${exteriorName} = 180° − $\\angle ${B}$.`,
+          `The triangle's angles add to 180°, so $\\angle ${B}$ = 180° − ($\\angle ${A}$ + $\\angle ${C}$). Then ${exteriorName} = $\\angle ${A}$ + $\\angle ${C}$.`,
           `${exteriorName} = ${angles[0]}° + ${angles[2]}° = ${ext}°.`,
         ],
         tags: ["find-exterior"],
@@ -595,7 +597,7 @@ function exteriorCase(r: Random): Case {
     const tl = [...labels] as typeof labels;
     tl[target] = "?";
     return {
-      prompt: `${setup} ${exteriorName} measures ${ext}° and ∠${names[known]} measures ${angles[known]}°. What is the measure of ∠${names[target]}, in degrees?`,
+      prompt: `${setup} ${exteriorName} measures ${ext}° and $\\angle ${names[known]}$ measures ${angles[known]}°. What is the measure of $\\angle ${names[target]}$, in degrees?`,
       answer: String(angles[target]),
       figure: {
         kind: "triangle-angles",
@@ -606,9 +608,9 @@ function exteriorCase(r: Random): Case {
       },
       response: { kind: "number", label: "Angle measure in degrees" },
       explanation: [
-        `An exterior angle equals the sum of the two interior angles that are not next to it: ${exteriorName} = ∠${A} + ∠${C}.`,
-        `${ext}° = ${findA ? `∠${A} + ${angles[2]}°` : `${angles[0]}° + ∠${C}`}.`,
-        `∠${names[target]} = ${ext}° − ${angles[known]}° = ${angles[target]}°.`,
+        `An exterior angle equals the sum of the two interior angles that are not next to it: ${exteriorName} = $\\angle ${A}$ + $\\angle ${C}$.`,
+        `${ext}° = ${findA ? `$\\angle ${A}$ + ${angles[2]}°` : `${angles[0]}° + $\\angle ${C}$`}.`,
+        `$\\angle ${names[target]}$ = ${ext}° − ${angles[known]}° = ${angles[target]}°.`,
       ],
       tags: ["find-remote"],
     };
@@ -636,7 +638,7 @@ function exteriorCase(r: Random): Case {
   ];
   const LE = angleLabel(ee.a, ee.b);
   return {
-    prompt: `${setup} ∠${A} measures ${L[0]}, ∠${C} measures ${L[2]} and ${exteriorName} measures ${LE}. What is the value of x?`,
+    prompt: `${setup} $\\angle ${A}$ measures ${L[0]}, $\\angle ${C}$ measures ${L[2]} and ${exteriorName} measures ${LE}. What is the value of $x$?`,
     answer: String(x),
     figure: {
       kind: "triangle-angles",
@@ -645,10 +647,10 @@ function exteriorCase(r: Random): Case {
       labels: L,
       exterior: { point: D, label: LE },
     },
-    response: { kind: "number", label: "Value of x" },
+    response: { kind: "number", label: "Value of $x$" },
     explanation: [
       `An exterior angle equals the sum of the two remote interior angles: (${linear(ea.a, ea.b)}) + (${linear(ec.a, ec.b)}) = ${linear(ee.a, ee.b)}.`,
-      `Collect the x-terms on the left and the numbers on the right: ${linear(a, 0)} = ${num(-c)}.`,
+      `Collect the $x$-terms on the left and the numbers on the right: ${linear(a, 0)} = ${num(-c)}.`,
       ...(a !== 1
         ? [`Divide both sides by ${a}: x = ${x}.`]
         : [`So x = ${x}.`]),
@@ -751,11 +753,11 @@ function parallelCase(r: Random): Case {
   if (r(0, 1)) pair = [pair[2], pair[3], pair[0], pair[1]];
   const [c1, p1, c2, p2] = pair;
   const where = (c: number, p: number) =>
-    `at line ${c === 0 ? m : n}, ${positionWords[p]}`;
+    `at line $${c === 0 ? m : n}$, ${positionWords[p]}`;
   const given = measure(p1),
     unknown = measure(p2);
   const equal = p1 % 2 === p2 % 2;
-  const setup = `Lines ${m} and ${n} are parallel, and line ${t} crosses both.`;
+  const setup = `Lines $${m}$ and $${n}$ are parallel, and line $${t}$ crosses both.`;
   if (!algebra) {
     const explanation: string[] = [];
     if (relation)
@@ -766,13 +768,13 @@ function parallelCase(r: Random): Case {
           : relation.name === "a linear pair"
             ? `They lie side by side along one line, so they add to 180°.`
             : relation.equal
-              ? `Because ${m} and ${n} are parallel, sliding one crossing along ${t} onto the other matches its angles exactly, so ${relation.name} are equal.`
-              : `Because ${m} and ${n} are parallel, same-side interior angles add to 180°: each one forms a straight angle with an angle equal to the other.`,
+              ? `Because $${m}$ and $${n}$ are parallel, sliding one crossing along $${t}$ onto the other matches its angles exactly, so ${relation.name} are equal.`
+              : `Because $${m}$ and $${n}$ are parallel, same-side interior angles add to 180°: each one forms a straight angle with an angle equal to the other.`,
       );
     else
       explanation.push(
-        `Because ${m} and ${n} are parallel, sliding the crossing at line ${c1 === 0 ? m : n} along ${t} onto the crossing at line ${c2 === 0 ? m : n} matches every angle. So the angle ${where(c2, p1)} also measures ${given}°.`,
-        `The angle marked x° lies next to that angle along a line, so the two add to 180°.`,
+        `Because $${m}$ and $${n}$ are parallel, sliding the crossing at line $${c1 === 0 ? m : n}$ along $${t}$ onto the crossing at line $${c2 === 0 ? m : n}$ matches every angle. So the angle ${where(c2, p1)} also measures ${given}°.`,
+        `The angle marked $x$° lies next to that angle along a line, so the two add to 180°.`,
       );
     explanation.push(
       equal
@@ -780,7 +782,7 @@ function parallelCase(r: Random): Case {
         : `x + ${given} = 180, so x = 180 − ${given} = ${unknown}.`,
     );
     return {
-      prompt: `${setup} One marked angle measures ${given}°. What is the value of x?`,
+      prompt: `${setup} One marked angle measures ${given}°. What is the value of $x$?`,
       answer: String(unknown),
       figure: {
         kind: "parallel-transversal",
@@ -791,7 +793,7 @@ function parallelCase(r: Random): Case {
           { crossing: c2 as 0 | 1, position: p2, label: "x°" },
         ],
       },
-      response: { kind: "number", label: "Value of x" },
+      response: { kind: "number", label: "Value of $x$" },
       explanation,
       tags: [
         "numeric",
@@ -815,7 +817,7 @@ function parallelCase(r: Random): Case {
     const [hi, lo] = e1.a > e2.a ? [e1, e2] : [e2, e1];
     explanation.push(
       `Write the equation: ${linear(e1.a, e1.b)} = ${linear(e2.a, e2.b)}.`,
-      `Subtract ${linear(lo.a, 0)} from both sides: ${linear(hi.a - lo.a, hi.b)} = ${num(lo.b)}.`,
+      `Subtract $${linear(lo.a, 0)}$ from both sides: ${linear(hi.a - lo.a, hi.b)} = ${num(lo.b)}.`,
       ...(hi.b !== 0
         ? [
             `${hi.b > 0 ? "Subtract" : "Add"} ${Math.abs(hi.b)} ${hi.b > 0 ? "from" : "to"} both sides: ${linear(hi.a - lo.a, 0)} = ${num(lo.b - hi.b)}.`,
@@ -834,7 +836,7 @@ function parallelCase(r: Random): Case {
     `Check: ${substitute(e1.a, e1.b, x)} and ${substitute(e2.a, e2.b, x)}.`,
   );
   return {
-    prompt: `${setup} The marked angles measure ${L1} and ${L2}. What is the value of x?`,
+    prompt: `${setup} The marked angles measure ${L1} and ${L2}. What is the value of $x$?`,
     answer: String(x),
     figure: {
       kind: "parallel-transversal",
@@ -845,7 +847,7 @@ function parallelCase(r: Random): Case {
         { crossing: c2 as 0 | 1, position: p2, label: L2 },
       ],
     },
-    response: { kind: "number", label: "Value of x" },
+    response: { kind: "number", label: "Value of $x$" },
     explanation,
     tags: [
       "algebra",
@@ -948,8 +950,8 @@ function thirdSideCase(r: Random): Case {
       label: ask === 2 ? "Number of lengths" : `Length in ${plural}`,
     },
     explanation: [
-      `Call the third side s. Each side must be shorter than the other two together.`,
-      `s < ${a} + ${b} = ${hi}, so s is less than ${hi}.`,
+      `Call the third side $s$. Each side must be shorter than the other two together.`,
+      `s < ${a} + ${b} = ${hi}, so $s$ is less than ${hi}.`,
       `The longer given side, ${Math.max(a, b)}, must be less than ${Math.min(a, b)} + s, so s > ${Math.max(a, b)} − ${Math.min(a, b)} = ${lo}.`,
       ask === 0
         ? `The greatest whole number less than ${hi} is ${hi - 1}.`
@@ -1345,8 +1347,7 @@ function instanceHint(id: string, c: Case): string {
     case "cross-section-shape":
       return `Each face the plane crosses adds one straight side to the cross-section. Decide which faces it crosses, then read each side's length from the dimensions ${list([...given])}.`;
   }
-  const answer: string | null =
-    c.response.kind === "choice" ? null : c.answer;
+  const answer: string | null = c.response.kind === "choice" ? null : c.answer;
   for (const step of c.explanation) {
     const named = values(step);
     if (

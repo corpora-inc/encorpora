@@ -79,7 +79,7 @@ export function generateAlgebraProblem(
       answer = fraction(a * n + 2 * b, 2);
       label = "Expression value";
       const times = a === 1 ? "" : a === -1 ? "−" : `${a} × `;
-      hint = `Replace x with ${paren(x)}: ${times}${paren(x)} ${signed(b)}. Multiply first, keeping the signs.`;
+      hint = `Replace $x$ with ${paren(x)}: ${times}${paren(x)} ${signed(b)}. Multiply first, keeping the signs.`;
       explanation = [
         `Substitute: ${a} × ${paren(x)} ${signed(b)}.`,
         `Multiply first: ${fraction(a * n, 2)} ${signed(b)} = ${answer}.`,
@@ -90,7 +90,7 @@ export function generateAlgebraProblem(
       const a = nz(5),
         aa = a < 0 ? a - 1 : a + 1,
         b = nz(6);
-      prompt = `Which expression equals ${aa}(x ${signed(b)}) for every real x?`;
+      prompt = `Which expression equals $${aa}(x ${signed(b)})$ for every real $x$?`;
       answer = "";
       hint = `Multiply ${aa} by both terms inside the brackets: ${aa} × x and ${aa} × ${paren(String(b))}.`;
       choices = [
@@ -106,7 +106,7 @@ export function generateAlgebraProblem(
         },
       ];
       explanation = [
-        `${aa}(x ${signed(b)}) = ${aa} × x + ${aa} × ${paren(String(b))}.`,
+        `$${aa}(x ${signed(b)}) = ${aa} × x + ${aa} × ${paren(String(b))}$.`,
         `The equivalent expression is ${linear(aa, aa * b)}. Both terms were multiplied.`,
       ];
       break;
@@ -115,16 +115,16 @@ export function generateAlgebraProblem(
       const a = nz(8),
         b = nz(8),
         c = r(-9, 9);
-      prompt = `Combine like terms in ${term(a)} ${b < 0 ? "−" : "+"} ${term(Math.abs(b))} ${signed(c)}. What is the coefficient of x?`;
+      prompt = `Combine like terms in ${term(a)} ${b < 0 ? "−" : "+"} ${term(Math.abs(b))} ${signed(c)}. What is the coefficient of $x$?`;
       answer = String(a + b);
-      label = "Coefficient of x";
-      hint = `The x terms are ${term(a)} and ${term(b)}. Add their signed coefficients, ${a} + ${paren(String(b))}; ${c ? `the ${c} is not an x term` : "the constant is not an x term"}.`;
+      label = "Coefficient of $x$";
+      hint = `The $x$ terms are $${term(a)}$ and $${term(b)}$. Add their signed coefficients, ${a} + ${paren(String(b))}; ${c ? `the ${c} is not an $x$ term` : "the constant is not an $x$ term"}.`;
       explanation = [
-        `${a} copies of x plus ${b} copies of x gives ${a + b} copies of x.`,
+        `${a} copies of $x$ plus ${b} copies of $x$ gives ${a + b} copies of $x$.`,
         `The coefficient is ${answer}. The constant ${c} does not contribute to it.`,
         ...(a + b === 0
           ? [
-              "The x terms cancel; zero is the coefficient, even though the x term can be omitted.",
+              "The $x$ terms cancel; zero is the coefficient, even though the $x$ term can be omitted.",
             ]
           : []),
       ];
@@ -134,12 +134,12 @@ export function generateAlgebraProblem(
       const a = nz(6),
         b = r(-8, 8),
         c = r(-20, 20);
-      prompt = `Solve ${a}(x ${signed(b)}) = ${c}.`;
+      prompt = `Solve $${a}(x ${signed(b)}) = ${c}$.`;
       answer = fraction(c - a * b, a);
       label = "x";
-      hint = `Undo the multiplication by ${a} first: divide both sides of ${a}(x ${signed(b)}) = ${c} by ${a}.`;
+      hint = `Undo the multiplication by ${a} first: divide both sides of $${a}(x ${signed(b)}) = ${c}$ by ${a}.`;
       explanation = [
-        `Divide both sides by ${a}: x ${signed(b)} = ${fraction(c, a)}.`,
+        `Divide both sides by ${a}: $x ${signed(b)} = ${fraction(c, a)}$.`,
         `Subtract ${paren(String(b))}: x = ${answer}.`,
         `Check: ${a} × ${paren(fraction(c, a))} = ${c}.`,
       ];
@@ -168,12 +168,12 @@ export function generateAlgebraProblem(
         b = r(-9, 9),
         c = r(-9, 9),
         coefficient = fraction(p, q);
-      prompt = `Solve (${coefficient})x ${signed(b)} = ${c}.`;
+      prompt = `Solve $(${coefficient})x ${signed(b)} = ${c}$.`;
       answer = fraction((c - b) * q, p);
       label = "x";
       hint = b
         ? `Undo the ${signed(b)} first on both sides. Then multiply both sides by the reciprocal of ${coefficient}.`
-        : `Multiply both sides by the reciprocal of ${coefficient}, so the x stands alone.`;
+        : `Multiply both sides by the reciprocal of ${coefficient}, so the $x$ stands alone.`;
       explanation = [
         `Subtract ${paren(String(b))}: (${coefficient})x = ${c - b}.`,
         `Multiply by ${fraction(q, p)}: x = ${answer}.`,
@@ -190,9 +190,9 @@ export function generateAlgebraProblem(
       prompt = `Solve ${linear(a, b)} = ${linear(c, d)}.`;
       answer = fraction(d - b, a - c);
       label = "x";
-      hint = `Collect the x terms on one side: subtract ${term(c)} from both sides of ${linear(a, b)} = ${linear(c, d)}.`;
+      hint = `Collect the $x$ terms on one side: subtract $${term(c)}$ from both sides of $${linear(a, b)} = ${linear(c, d)}$.`;
       explanation = [
-        `Subtract ${term(c)} and ${paren(String(b))} from both sides: ${term(a - c)} = ${d - b}.`,
+        `Subtract $${term(c)}$ and ${paren(String(b))} from both sides: $${term(a - c)} = ${d - b}$.`,
         `The coefficient ${a - c} is nonzero, so divide: x = ${answer}.`,
         `Both original sides become ${fraction(a * (d - b) + b * (a - c), a - c)} at this value.`,
       ];
@@ -339,7 +339,7 @@ export function generateAlgebraProblem(
     case "proportional-rule-choice": {
       const k = nz(6),
         b = nz(8);
-      prompt = "Which rule is proportional for all real inputs x?";
+      prompt = "Which rule is proportional for all real inputs $x$?";
       hint = `Put x = 0 into each rule. A proportional rule must give 0, so it cannot add ${b} or ${-b}.`;
       choices = [
         { label: `y = ${term(k)}`, correct: true },
@@ -354,7 +354,7 @@ export function generateAlgebraProblem(
       ];
       explanation = [
         `The selected rule has the form y = kx, with constant multiplier ${k}.`,
-        `For every nonzero x, y/x = ${k}; at x = 0, y = 0. Negative multipliers are allowed in this real-valued algebraic setting.`,
+        `For every nonzero $x$, y/x = ${k}; at x = 0, y = 0. Negative multipliers are allowed in this real-valued algebraic setting.`,
       ];
       break;
     }
@@ -367,20 +367,20 @@ export function generateAlgebraProblem(
         cross = fraction(fee, delta),
         whole = templateId === "first-cheaper-whole-input";
       prompt = whole
-        ? `Plan A costs ${fee} + ${low}x dollars; B costs ${high}x dollars. For whole inputs x from 0 to 24, what is the first x where A is strictly cheaper?`
-        : `Plan A costs ${fee} + ${low}x dollars; B costs ${high}x dollars. For real inputs x from 0 to 24, at what x do they cost the same?`;
+        ? `Plan A costs ${fee} + ${low}x dollars; Plan B costs ${high}x dollars. For whole inputs $x$ from 0 to 24, what is the first $x$ where A is strictly cheaper?`
+        : `Plan A costs ${fee} + ${low}x dollars; Plan B costs ${high}x dollars. For real inputs $x$ from 0 to 24, at what $x$ do they cost the same?`;
       answer = whole ? String(Math.floor(fee / delta) + 1) : cross;
       label = whole ? "First whole input" : "Shared input";
       hint = whole
         ? `First find the tie: ${fee} + ${low}x = ${high}x. A is strictly cheaper only for inputs after the tie.`
-        : `Set the costs equal, ${fee} + ${low}x = ${high}x, then collect the x terms on one side.`;
+        : `Set the costs equal, ${fee} + ${low}x = ${high}x, then collect the $x$ terms on one side.`;
       explanation = [
         `Equal costs mean ${fee} + ${low}x = ${high}x, so ${fee} = ${delta}x.`,
         `The tie is at x = ${cross}. Each additional input saves ${delta} dollars under A.`,
         ...(whole
           ? [
               `A is strictly cheaper when x > ${cross}. The first whole input is ${answer}.`,
-              `At x = ${answer}, A costs ${fee + low * Number(answer)} dollars and B costs ${high * Number(answer)} dollars. At x = ${Number(answer) - 1}, A is not strictly cheaper.`,
+              `At x = ${answer}, A costs ${fee + low * Number(answer)} dollars and $B$ costs ${high * Number(answer)} dollars. At x = ${Number(answer) - 1}, A is not strictly cheaper.`,
             ]
           : [
               `At this input both costs equal ${fraction(high * fee, delta)} dollars.`,
@@ -393,7 +393,7 @@ export function generateAlgebraProblem(
         drop = r(0, 1) ? r(1, 3) : 0,
         end = start - drop;
       prompt =
-        "x: minutes; y: meters from home. From A to B, how does y change?";
+        "$x$: minutes; $y$: meters from home. From $A$ to $B$, how does $y$ change?";
       figure = {
         kind: "coordinate-plane",
         xMin: -1,
@@ -430,7 +430,7 @@ export function generateAlgebraProblem(
             : "A level segment has the same vertical coordinate throughout.",
         },
       ];
-      hint = `At A the graph is at ${start} meters from home. Read the height at B, then compare: y is distance from home, not the route.`;
+      hint = `At $A$ the graph is at ${start} meters from home. Read the height at $B$, then compare: $y$ is distance from home, not the route.`;
       explanation = [
         `At 0 minutes the distance is ${start} meters; at 4 minutes it is ${end} meters.`,
         drop

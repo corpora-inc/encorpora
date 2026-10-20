@@ -92,7 +92,6 @@ export const numberSystemTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-
 type Random = (low: number, high: number) => number;
 type Choice = { label: string; correct?: true; feedback?: string };
 type Case = {
@@ -226,7 +225,7 @@ function gcfCase(r: Random): Case {
       answer: String(g),
       hint: `A tile side that fits with no cuts divides both ${a} and ${b}. List the factors of each number and find the greatest one they share.`,
       explanation: [
-        `Square tiles of side s fit exactly along both edges when s divides both ${a} and ${b}, so s must be a common factor.`,
+        `Square tiles of side $s$ fit exactly along both edges when $s$ divides both ${a} and ${b}, so $s$ must be a common factor.`,
         ...factorSteps,
         `Tiles with side ${g} feet make ${a} ÷ ${g} = ${plural(m, "tile", "tiles")} along one edge and ${b} ÷ ${g} = ${plural(n, "tile", "tiles")} along the other. The largest side length is ${g} feet.`,
       ],
@@ -642,12 +641,12 @@ function oppositeCase(r: Random): Case {
     d = Math.abs(a);
   const prompt =
     mode === "double"
-      ? "Point P marks a number on the number line. What is the opposite of the opposite of that number?"
+      ? "Point $P$ marks a number on the number line. What is the opposite of the opposite of that number?"
       : mode === "other-side"
-        ? "Point R (not shown) is the same distance from 0 as point P, on the other side of 0. What number is at R?"
-        : "Point P marks a number on the number line. What is the opposite of that number?";
+        ? "Point $R$ (not shown) is the same distance from 0 as point $P$, on the other side of 0. What number is at $R$?"
+        : "Point $P$ marks a number on the number line. What is the opposite of that number?";
   const answer = mode === "double" ? a : -a;
-  const read = `Each tick is 1 unit. P is ${plural(d, "unit", "units")} to the ${side} of 0, so P is at ${signed(a)}.`;
+  const read = `Each tick is 1 unit. $P$ is ${plural(d, "unit", "units")} to the ${side} of 0, so $P$ is at ${signed(a)}.`;
   const explanation =
     mode === "double"
       ? [
@@ -666,8 +665,8 @@ function oppositeCase(r: Random): Case {
     answer: String(answer),
     hint:
       mode === "double"
-        ? `P is to the ${side} of 0. Read the number at P, take its opposite, then take the opposite of that.`
-        : `P is to the ${side} of 0. Count its ticks from 0; the opposite is the same number of ticks on the ${other} side.`,
+        ? `$P$ is to the ${side} of 0. Read the number at $P$, take its opposite, then take the opposite of that.`
+        : `$P$ is to the ${side} of 0. Count its ticks from 0; the opposite is the same number of ticks on the ${other} side.`,
     explanation,
     tags: [mode, a < 0 ? "negative-point" : "positive-point"],
     figure: {

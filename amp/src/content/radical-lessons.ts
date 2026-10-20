@@ -14,7 +14,7 @@ const foundations: Lesson["sections"] = [
     title: "Extract a square factor",
     paragraphs: [
       "A factor is a number that multiplies another to make a given number. In $18 = 9 \\times 2$, both 9 and 2 are factors of 18. The factor 9 is a perfect square, so $\\sqrt{18} = \\sqrt{9}\\sqrt{2} = 3\\sqrt{2}$. The coefficient 3 multiplies the root; it counts three copies of $\\sqrt{2}$.",
-      "For any nonnegative numbers a and b, $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$. The product on the right is nonnegative and its square is ab, so it is the principal square root of ab. This product rule justifies taking a square factor outside a radical. It does not give a rule for adding radicands.",
+      "For any nonnegative numbers $a$ and $b$, $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$. The product on the right is nonnegative and its square is ab, so it is the principal square root of ab. This product rule justifies taking a square factor outside a radical. It does not give a rule for adding radicands.",
       "In simplest radical form, no square factor greater than 1 remains inside a square root. Such a radicand is called square-free. For example, 6 is square-free, but 12 contains the square factor 4. Look for square factors 4, 9, 16, 25 and so on. Using the largest one finishes the extraction in a single step.",
       "You need multiplication, factor pairs and signed-number arithmetic. Multiplying two numbers with the same sign gives a positive product; different signs give a negative product. Keep a signed coefficient outside the root while simplifying the nonnegative radicand.",
     ],

@@ -41,7 +41,7 @@ export const combinatoricsLessons: Lesson[] = [
       {
         title: "Why the counts multiply",
         paragraphs: [
-          "A tree diagram draws one branch for each option at each stage. In the figure, 3 branches lead to shirts A, B and C. From each shirt, 2 branches lead to pants 1 and 2. Every path from the start to the right end is one outfit, and every outfit has exactly one path.",
+          "A tree diagram draws one branch for each option at each stage. In the figure, 3 branches lead to shirts $A$, $B$ and $C$. From each shirt, 2 branches lead to pants 1 and 2. Every path from the start to the right end is one outfit, and every outfit has exactly one path.",
           "Each shirt carries the same 2 pants branches, so the paths form 3 equal groups of 2. Equal groups are counted by multiplication: 3 × 2 = 6 outfits. Adding a third stage, such as 4 hats, gives each of the 6 paths 4 new branches: 6 × 4 = 24.",
           "This is the multiplication principle. If a process has stages, and the number of options at each stage does not depend on what was chosen earlier, the number of outcomes is the product of the numbers of options. The order in which you multiply does not matter: 3 × 2 × 4 = 2 × 4 × 3.",
         ],
@@ -104,8 +104,8 @@ export const combinatoricsLessons: Lesson[] = [
       {
         title: "Factorials and partial arrangements",
         paragraphs: [
-          "Arranging all of n different items uses every whole number from n down to 1. This product is written n! and read “n factorial”. Five books can stand on a shelf in 5! = 5 × 4 × 3 × 2 × 1 = 120 orders.",
-          "Arranging only r of n items uses r decreasing factors starting at n. Filling 3 places from 5 runners uses 5 × 4 × 3. The same count is 5! ÷ 2! = 120 ÷ 2 = 60: the factorial of the 2 unused runners divides out the factors you do not need. The number of factors always equals the number of positions filled.",
+          "Arranging all of $n$ different items uses every whole number from $n$ down to 1. This product is written $n$! and read “$n$ factorial”. Five books can stand on a shelf in 5! = 5 × 4 × 3 × 2 × 1 = 120 orders.",
+          "Arranging only $r$ of $n$ items uses $r$ decreasing factors starting at $n$. Filling 3 places from 5 runners uses 5 × 4 × 3. The same count is 5! ÷ 2! = 120 ÷ 2 = 60: the factorial of the 2 unused runners divides out the factors you do not need. The number of factors always equals the number of positions filled.",
         ],
       },
     ],
@@ -150,7 +150,7 @@ export const combinatoricsLessons: Lesson[] = [
       {
         title: "Each group appears once for every order",
         paragraphs: [
-          "The figure lists all 12 ordered pairs from A, B, C and D. Each column holds the same two people in both orders, such as AB and BA. Those two arrangements form one committee, so the 12 arrangements make 12 ÷ 2 = 6 committees.",
+          "The figure lists all 12 ordered pairs from $A$, $B$, $C$ and $D$. Each column holds the same two people in both orders, such as AB and BA. Those two arrangements form one committee, so the 12 arrangements make 12 ÷ 2 = 6 committees.",
           "Every group is repeated the same number of times: once for each way to order its own members. A group of 3 can be ordered in 3 × 2 × 1 = 6 ways; a group of 4 in 4 × 3 × 2 × 1 = 24 ways. Dividing the arrangements by that number counts each group exactly once.",
         ],
         illustration: "combination-orders",
@@ -158,7 +158,7 @@ export const combinatoricsLessons: Lesson[] = [
       {
         title: "Notation and checks",
         paragraphs: [
-          "The number of groups of k items chosen from n is written $\\binom{n}{k}$ and read “n choose k”. For a committee of 4 from 10 students: arrangements 10 × 9 × 8 × 7 = 5040, orders of one committee 4 × 3 × 2 × 1 = 24, and 5040 ÷ 24 = 210 committees.",
+          "The number of groups of $k$ items chosen from $n$ is written $\\binom{n}{k}$ and read “$n$ choose $k$”. For a committee of 4 from 10 students: arrangements 10 × 9 × 8 × 7 = 5040, orders of one committee 4 × 3 × 2 × 1 = 24, and 5040 ÷ 24 = 210 committees.",
           "Handshakes are pairs: if each of 9 people shakes hands once with every other person, there are 9 × 8 ÷ 2 = 36 handshakes. Choosing who serves also chooses who does not, so choosing 4 of 10 gives the same count as choosing 6 of 10 to leave out. A group count is always a whole number; a fraction signals a missing factor.",
         ],
       },
@@ -176,7 +176,7 @@ export const combinatoricsLessons: Lesson[] = [
     },
     pitfalls: [
       "If members have equal roles, do not stop at 10 × 9 × 8 × 7; that counts each committee 24 times.",
-      "Divide by the orders of one group, k × (k − 1) × … × 1, not by the number of people available.",
+      "Divide by the orders of one group, $k \\times (k - 1) \\times \\cdots \\times 1$, not by the number of people available.",
       "Use combinations only when order does not matter; for different offices, count arrangements.",
     ],
     parentGuide:
@@ -242,14 +242,14 @@ export const combinatoricsLessons: Lesson[] = [
         paragraphs: [
           "Two events are independent when knowing whether one happened does not change the probability of the other. A cube roll and a separate spin are independent: the cube cannot affect the spinner. Drawing two marbles without putting the first back is not independent, because the first draw changes what remains.",
           "Pair every cube result with every spinner result. A cube has 6 results and a 5-section spinner has 5, so there are 6 × 5 = 30 equally likely pairs. In the grid, “even cube result and spinner greater than 3” fills 3 columns of 2 cells: 3 × 2 = 6 pairs. The probability is 6/30, which equals 3/6 × 2/5.",
-          "That is why, for independent events A and B, the probability that both happen is the product of their probabilities. Independent is different from mutually exclusive. Mutually exclusive events cannot happen together, like an even and an odd result on one roll. Independent events with positive probabilities can happen together, as the hatched cells show.",
+          "That is why, for independent events $A$ and $B$, the probability that both happen is the product of their probabilities. Independent is different from mutually exclusive. Mutually exclusive events cannot happen together, like an even and an odd result on one roll. Independent events with positive probabilities can happen together, as the hatched cells show.",
         ],
         illustration: "independent-grid",
       },
       {
         title: "Neither and at least one",
         paragraphs: [
-          "If A and B are independent, so are their complements. The probability that neither happens is the probability that A fails times the probability that B fails. With 1/2 for an even cube result and 2/5 for a spin above 3, the failures have probabilities 1 − 1/2 = 1/2 and 1 − 2/5 = 3/5, so neither happens with probability 1/2 × 3/5 = 3/10.",
+          "If $A$ and $B$ are independent, so are their complements. The probability that neither happens is the probability that $A$ fails times the probability that $B$ fails. With 1/2 for an even cube result and 2/5 for a spin above 3, the failures have probabilities 1 − 1/2 = 1/2 and 1 − 2/5 = 3/5, so neither happens with probability 1/2 × 3/5 = 3/10.",
           "“At least one happens” is the complement of “neither happens”: every pair is in exactly one of the two. So its probability is 1 − 3/10 = 7/10.",
           "Adding the two probabilities does not work: 1/2 + 2/5 = 9/10 counts the 6 pairs where both happen twice. Subtracting that overlap once gives 9/10 − 1/5 = 7/10, the same answer.",
         ],
@@ -351,11 +351,11 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
         "arrangement",
         "A selection in which each item fills a different position.",
       ],
-      ["n!", "The product of every whole number from n down to 1."],
+      ["$n!$", "The product of every whole number from $n$ down to 1."],
     ],
     method: [
       "Confirm that order or position matters.",
-      "Give the first position all n options and each later position one fewer.",
+      "Give the first position all $n$ options and each later position one fewer.",
       "Multiply one factor for each position filled.",
     ],
     watch:
@@ -365,7 +365,10 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
     goal: "Count groups chosen from a collection when order does not matter.",
     terms: [
       ["combination", "A group whose members have the same role."],
-      ["orders of a group", "For k items, k × (k − 1) × … × 1."],
+      [
+        "orders of a group",
+        "For $k$ items, $k \\times (k - 1) \\times \\cdots \\times 1$.",
+      ],
     ],
     method: [
       "Count ordered selections as a product of decreasing factors.",
@@ -430,13 +433,13 @@ export const combinatoricsPrinciples: Record<string, string> = {
   "counting-principle":
     "Multiplication principle: if one choice is made at each stage and the number of options at a stage does not depend on earlier choices, the number of outcomes is the product of the numbers of options.",
   "permutation-count":
-    "Arranging r of n different items without repetition gives n × (n − 1) × … × (n − r + 1) = n! ÷ (n − r)! arrangements.",
+    "Arranging $r$ of $n$ different items without repetition gives $n \\times (n - 1) \\times \\cdots \\times (n - r + 1) = n! \\div (n - r)!$ arrangements.",
   "combination-count":
-    "Each group of k items appears in k! arrangements, so the number of groups is the number of arrangements divided by k!.",
+    "Each group of $k$ items appears in $k$! arrangements, so the number of groups is the number of arrangements divided by $k$!.",
   "combination-probability":
     "When every group is equally likely, the probability of an event is the number of favorable groups divided by the number of all groups.",
   "independent-events-probability":
-    "For independent events, P(A and B) = P(A) × P(B). The complements are independent too, and P(at least one) = 1 − P(neither).",
+    "For independent events, $P(A \\text{ and } B) = P(A) \\times P(B)$. The complements are independent too, and $P(\\text{at least one}) = 1 - P(\\text{neither})$.",
   "expected-value":
     "The expected value is the probability-weighted sum of the payoffs; subtracting a fixed cost subtracts it from the expected value.",
 };

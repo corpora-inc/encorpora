@@ -262,11 +262,11 @@ function draft(templateId: string, r: Random): Draft {
         const w = r(0, 4);
         const answer = decimal(w * 10 + point, 1);
         return {
-          prompt: "What decimal is at point P?",
-          hint: `From ${w} to ${w + 1} is cut into 10 equal steps, so each step is one tenth. Count the steps from ${w} to P.`,
+          prompt: "What decimal is at point $P$?",
+          hint: `From ${w} to ${w + 1} is cut into 10 equal steps, so each step is one tenth. Count the steps from ${w} to $P$.`,
           explanation: [
             `The whole from ${w} to ${w + 1} is cut into 10 equal intervals, so each is 1/10 = 0.1.`,
-            `P is ${count(point, "interval", "intervals")} past ${w}: ${w} + ${point} × 0.1 = ${answer}.`,
+            `$P$ is ${count(point, "interval", "intervals")} past ${w}: ${w} + ${point} × 0.1 = ${answer}.`,
           ],
           answer,
           label: "Decimal",
@@ -283,11 +283,11 @@ function draft(templateId: string, r: Random): Draft {
         right = decimal(t + 1, 1);
       const answer = fixed(t * 10 + point, 2);
       return {
-        prompt: "What decimal is at point P?",
-        hint: `From ${left} to ${right} is one tenth, cut into 10 equal steps, so each step is one hundredth. Count the steps from ${left} to P.`,
+        prompt: "What decimal is at point $P$?",
+        hint: `From ${left} to ${right} is one tenth, cut into 10 equal steps, so each step is one hundredth. Count the steps from ${left} to $P$.`,
         explanation: [
           `From ${left} to ${right} is one tenth, cut into 10 equal intervals, so each is 1/100 = 0.01.`,
-          `P is ${count(point, "interval", "intervals")} past ${left}: ${left} + ${point} × 0.01 = ${answer}.`,
+          `$P$ is ${count(point, "interval", "intervals")} past ${left}: ${left} + ${point} × 0.01 = ${answer}.`,
         ],
         answer,
         label: "Decimal",

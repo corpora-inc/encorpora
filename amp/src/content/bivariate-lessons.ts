@@ -53,7 +53,7 @@ export const bivariateLessons: Lesson[] = [
       answer: "75",
     },
     pitfalls: [
-      "The slope is a rate, change in y for each 1 more of x; the intercept is a single value at x = 0.",
+      "The slope is a rate, change in $y$ for each 1 more of $x$; the intercept is a single value at x = 0.",
       "An association does not show that one quantity causes the other.",
     ],
     parentGuide:
@@ -120,8 +120,8 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Read the points left to right as x increases.",
-      "Ask whether y tends to rise, fall, follow a curve, or show no trend.",
+      "Read the points left to right as $x$ increases.",
+      "Ask whether $y$ tends to rise, fall, follow a curve, or show no trend.",
       "If the points follow a line, name the direction: positive or negative.",
     ],
     watch: "A curved pattern is an association too, but it is not linear.",
@@ -129,9 +129,9 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
   "trend-line-predict": {
     goal: "Predict a value with a trend line.",
     method: [
-      "Find the slope from the two marked points: change in y ÷ change in x.",
-      "Count the steps in x from a marked point to the new x.",
-      "Add slope × steps to that point’s y-value.",
+      "Find the slope from the two marked points: $\\text{change in } y \\div \\text{change in } x$.",
+      "Count the steps in $x$ from a marked point to the new $x$.",
+      "Add slope × steps to that point’s $y$-value.",
     ],
     watch:
       "Moving left means negative steps: the change has the opposite sign.",
@@ -140,11 +140,11 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
     goal: "Interpret a trend line’s slope in context.",
     method: [
       "Find the slope from the two marked points.",
-      "Say it as a rate: for each 1 more of x, y changes by the slope.",
+      "Say it as a rate: for each 1 more of $x$, $y$ changes by the slope.",
       "Use “more” for a positive slope and “fewer” or “lower” for a negative one.",
     ],
     watch:
-      "The value at x = 0 is the intercept, not the slope; and do not swap x and y.",
+      "The value at x = 0 is the intercept, not the slope; and do not swap $x$ and $y$.",
   },
   "two-way-missing": {
     goal: "Find a missing count in a two-way table.",
@@ -177,9 +177,9 @@ export const bivariatePrinciples: Record<string, string> = {
   "scatter-association-choice":
     "An association is a trend in how two quantities vary together: up or down, along a line or a curve, or no trend at all.",
   "trend-line-predict":
-    "A trend line predicts y by starting from a point on it and adding slope × the change in x.",
+    "A trend line predicts $y$ by starting from a point on it and adding slope × the change in $x$.",
   "trend-slope-meaning":
-    "A trend line’s slope is the change in y for each 1 more of x, a rate in the units of the context.",
+    "A trend line’s slope is the change in $y$ for each 1 more of $x$, a rate in the units of the context.",
   "two-way-missing":
     "Every row and column of a two-way table adds to its total, so a line with one blank determines it.",
   "two-way-row-percent":

@@ -1,4 +1,5 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { formula } from "./polish";
 import { act, graph, lessonStep, lineTable, step } from "./scene/author";
 import type { LineTable as Table } from "./scene/spec";
 import {
@@ -73,7 +74,7 @@ export const twoVariableTemplates: readonly TemplateMetadata[] = [
     title: "Solve with a letter for a number",
     skillId: "symbolic-linear-constraints",
     description:
-      "Solve a linear equation or inequality with a letter as a coefficient, using the stated condition (k ≠ 3, k < 0) that each step needs.",
+      "Solve a linear equation or inequality with a letter as a coefficient, using the stated condition $(k \\neq  3, k < 0)$ that each step needs.",
     ...choice,
   },
   {
@@ -229,12 +230,12 @@ function systemModelValue(r: Random): Case {
     prompt: story,
     answer: rat(ans),
     explanation: [
-      `Let a be the number of ${names[0]} and b the number of ${names[1]}. Counting gives a + b = ${total}; the ${what} give ${pa}a + ${pb}b = ${value}.`,
+      `Let $a$ be the number of ${names[0]} and $b$ the number of ${names[1]}. Counting gives $a + b = ${total}$; the ${what} give $${pa}a + ${pb}b = ${value}$.`,
       `Substitute b = ${total} − a into the second equation: ${pa}a + ${pb}(${total} − a) = ${value}, so ${pa - pb}a + ${pb * total} = ${value} and ${pa - pb}a = ${value - pb * total}.`,
       `a = ${quotient(value - pb * total, pa - pb)}, and b = ${total} − ${a} = ${b}.`,
       `Check: ${pa} × ${a} + ${pb} × ${b} = ${value}. So there are ${ans} ${names[askFirst ? 0 : 1]}.`,
     ],
-    hint: `Use one equation for the count and one for the ${what}: a + b = ${total} and ${pa}a + ${pb}b = ${value}. Replace b with ${total} − a.`,
+    hint: `Use one equation for the count and one for the ${what}: a + b = ${total} and ${pa}a + ${pb}b = ${value}. Replace $b$ with ${total} − a.`,
     tags: [kind, askFirst ? "first" : "second"],
   };
 }
@@ -294,14 +295,14 @@ function constraintFeasible(r: Random): Case {
       .scene({ title: "Feasible region of the two constraints" });
     const story =
       kind === "bakery"
-        ? `A bakery sells x small boxes of muffins at ${usd(p1)} and y large boxes at ${usd(p2)}. It can bake at most ${cap} boxes a day and wants to take in at least ${usd(goal)}.`
-        : `Jo tutors for x hours at ${usd(p1)} an hour and works y hours at a store at ${usd(p2)} an hour. Jo can work at most ${cap} hours a week and wants to earn at least ${usd(goal)}.`;
+        ? `A bakery sells $x$ small boxes of muffins at ${usd(p1)} and $y$ large boxes at ${usd(p2)}. It can bake at most ${cap} boxes a day and wants to take in at least ${usd(goal)}.`
+        : `Jo tutors for $x$ hours at ${usd(p1)} an hour and works $y$ hours at a store at ${usd(p2)} an hour. Jo can work at most ${cap} hours a week and wants to earn at least ${usd(goal)}.`;
     const fb = ([x, y]: [number, number]) =>
       x + y > cap
         ? `${x} + ${y} = ${x + y}, more than ${cap}: this breaks x + y ≤ ${cap}.`
         : `${p1} × ${x} + ${p2} × ${y} = ${p1 * x + p2 * y}, less than ${goal}: this breaks ${p1}x + ${p2}y ≥ ${goal}.`;
     return {
-      prompt: `${story} The shaded region shows x + y ≤ ${cap} and ${p1}x + ${p2}y ≥ ${goal}. Which (x, y) meets both conditions?`,
+      prompt: `${story} The shaded region shows x + y ≤ ${cap} and ${p1}x + ${p2}y ≥ ${goal}. Which $(x, y)$ meets both conditions?`,
       choices: [
         { label: pair(...right), correct: true },
         ...three.map((w) => ({ label: pair(...w), feedback: fb(w) })),
@@ -401,7 +402,7 @@ function halfPlaneInequality(r: Random): Case {
         for (let y = -5; y <= 5; y++)
           if (h1.test(x, y) && h2.test(x, y)) pts.push([x, y]);
       if (pts.length < 8 || pts.length > 80) continue;
-      const join = (a: string, b: string) => `${a} and ${b}`;
+      const join = (a: string, b: string) => `${formula(a)} and ${formula(b)}`;
       const correct = join(h1.text, h2.text);
       // A strictness change on a boundary that the other half-plane excludes
       // describes the same set: drop such options.
@@ -453,8 +454,8 @@ function halfPlaneInequality(r: Random): Case {
           .shade(plane(h1), plane(h2))
           .scene({ title: "A region bounded by two lines" }),
         explanation: [
-          `The region lies on one side of each boundary. The slanted line is ${h1.text.replace(/[<>≤≥]/, "=")}, with ${boundaryWords(h1)}; the other is ${h2.text.replace(/[<>≤≥]/, "=")}, with ${boundaryWords(h2)}.`,
-          `Test the shaded point ${pair(px, py)}: it makes both ${h1.text} and ${h2.text} true.`,
+          `The region lies on one side of each boundary. The slanted line is ${formula(h1.text.replace(/[<>≤≥]/, "="))}, with ${boundaryWords(h1)}; the other is ${formula(h2.text.replace(/[<>≤≥]/, "="))}, with ${boundaryWords(h2)}.`,
+          `Test the shaded point ${pair(px, py)}: it makes both ${formula(h1.text)} and ${formula(h2.text)} true.`,
           `So the region is ${correct}.`,
         ],
         hint: `Name each boundary line and whether it is solid or dashed, then test a shaded point such as ${pair(px, py)} in each inequality.`,
@@ -474,14 +475,17 @@ function halfPlaneInequality(r: Random): Case {
     const line = h.text.replace(/[<>≤≥]/, "=");
     return {
       prompt: `Which inequality does the shaded region show?`,
-      choices: [{ label: h.text, correct: true }, ...wrong],
+      choices: [
+        { label: formula(h.text), correct: true },
+        ...wrong.map((w) => ({ ...w, label: formula(w.label) })),
+      ],
       scene: graph({ id: "g", x: window, y: window, grid: 1 })
         .shade(plane(h))
         .scene({ title: "A shaded half-plane" }),
       explanation: [
-        `The boundary is the line ${line}, drawn with ${boundaryWords(h)}.`,
-        `Test the shaded point ${pair(px, py)}: substituting it makes ${h.text} true, so the shaded side is the ${sym[h.op]} side.`,
-        `So the region is ${h.text}.`,
+        `The boundary is the line ${formula(line)}, drawn with ${boundaryWords(h)}.`,
+        `Test the shaded point ${pair(px, py)}: substituting it makes ${formula(h.text)} true, so the shaded side is the ${sym[h.op]} side.`,
+        `So the region is ${formula(h.text)}.`,
       ],
       hint: `Find the boundary line from two of its grid points and note whether it is solid or dashed. Then substitute a shaded point, such as ${pair(px, py)}, into each option.`,
       tags: [kind, strict(h.op) ? "strict" : "inclusive"],
@@ -574,7 +578,7 @@ function inequalitySolutionPoint(r: Random): Case {
       ),
     ];
     return {
-      prompt: `Which point is a solution of ${h.text}? The graph shows the boundary line and the four points.`,
+      prompt: `Which point is a solution of ${formula(h.text)}? The graph shows the boundary line and the four points.`,
       choices: [
         { label: pair(...right!), correct: true },
         ...wrong.map((q) => ({
@@ -594,7 +598,7 @@ function inequalitySolutionPoint(r: Random): Case {
         `For ${pair(...right!)}: ${check(right!)}.`,
         `Each other point makes the inequality false${strict(h.op) ? ", including the point on the dashed line" : ""}.`,
       ],
-      hint: `Substitute each point into ${h.text}. A point on a solid boundary is a solution; a point on a dashed boundary is not.`,
+      hint: `Substitute each point into ${formula(h.text)}. A point on a solid boundary is a solution; a point on a dashed boundary is not.`,
       tags: [
         kind,
         strict(h.op) ? "strict" : "inclusive",
@@ -627,7 +631,7 @@ function literalEquationSolve(r: Random): Case {
     if (c === b) return literalEquationSolve(r);
     const d = c - b;
     return {
-      prompt: `Solve ${k}x${constText(b)} = ${n(c)} for x, where ${k} ≠ 0.`,
+      prompt: `Solve ${k}x${constText(b)} = ${n(c)} for $x$, where ${k} ≠ 0.`,
       choices: [
         { label: `x = ${n(d)}/${k}`, correct: true },
         {
@@ -636,18 +640,18 @@ function literalEquationSolve(r: Random): Case {
         },
         {
           label: `x = ${timesK(d, k)}`,
-          feedback: `${k} multiplies x, so divide by ${k}; do not multiply.`,
+          feedback: `$${k}$ multiplies $x$, so divide by $${k}$; do not multiply.`,
         },
         {
           label: `x = ${n(d)} − ${k}`,
-          feedback: `${k} multiplies x; undo multiplication by dividing, not subtracting.`,
+          feedback: `$${k}$ multiplies $x$; undo multiplication by dividing, not subtracting.`,
         },
       ],
       explanation: [
-        `Treat ${k} as a fixed nonzero number. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x = ${n(d)}.`,
-        `Divide both sides by ${k}, allowed because ${k} ≠ 0: x = ${n(d)}/${k}.`,
+        `Treat $${k}$ as a fixed nonzero number. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x = ${n(d)}.`,
+        `Divide both sides by $${k}$, allowed because ${k} ≠ 0: x = ${n(d)}/${k}.`,
       ],
-      hint: `Undo the ${b < 0 ? `− ${-b}` : `+ ${b}`} first, so that ${k}x stands alone, then divide by ${k}.`,
+      hint: `Undo the ${b < 0 ? `− ${-b}` : `+ ${b}`} first, so that ${k}x stands alone, then divide by $${k}$.`,
       tags: [frame],
     };
   }
@@ -658,7 +662,7 @@ function literalEquationSolve(r: Random): Case {
     if (d === b) return literalEquationSolve(r);
     const top = d - b;
     return {
-      prompt: `Solve ${k}x${constText(b)} = ${q}x${constText(d)} for x, where ${k} ≠ ${q}.`,
+      prompt: `Solve ${k}x${constText(b)} = ${q}x${constText(d)} for $x$, where ${k} ≠ ${q}.`,
       choices: [
         { label: `x = ${n(top)}/(${k} − ${q})`, correct: true },
         {
@@ -671,15 +675,15 @@ function literalEquationSolve(r: Random): Case {
         },
         {
           label: `x = ${n(top)}/(${q} − ${k})`,
-          feedback: `Collect x on the left: ${k}x − ${q}x = (${k} − ${q})x. Dividing by ${q} − ${k} changes the sign.`,
+          feedback: `Collect $x$ on the left: ${k}x − ${q}x = (${k} − ${q})x. Dividing by ${q} − ${k} changes the sign.`,
         },
       ],
       explanation: [
-        `Subtract ${q}x from both sides: (${k} − ${q})x${constText(b)} = ${n(d)}.`,
+        `Subtract ${q}x from both sides: $(${k} − ${q})x${constText(b)} = ${n(d)}$.`,
         `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: (${k} − ${q})x = ${n(top)}.`,
         `Divide by ${k} − ${q}, which is not 0 because ${k} ≠ ${q}: x = ${n(top)}/(${k} − ${q}).`,
       ],
-      hint: `Collect the x-terms on one side: subtract ${q}x from both sides, so the x-term becomes (${k} − ${q})x.`,
+      hint: `Collect the $x$-terms on one side: subtract ${q}x from both sides, so the $x$-term becomes (${k} − ${q})x.`,
       tags: [frame],
     };
   }
@@ -688,7 +692,7 @@ function literalEquationSolve(r: Random): Case {
       c = nonzero(r, -12, 12);
     const inner = `x${constText(-h)}`;
     return {
-      prompt: `Solve ${k}(${inner}) = ${n(c)} for x, where ${k} ≠ 0.`,
+      prompt: `Solve ${k}(${inner}) = ${n(c)} for $x$, where ${k} ≠ 0.`,
       choices: [
         { label: `x = ${n(c)}/${k}${constText(h)}`, correct: true },
         {
@@ -697,18 +701,18 @@ function literalEquationSolve(r: Random): Case {
         },
         {
           label: `x = ${n(c - h)}/${k}`,
-          feedback: `Divide by ${k} first: all of x${constText(-h)} is multiplied by ${k}.`,
+          feedback: `Divide by $${k}$ first: all of x${constText(-h)} is multiplied by $${k}$.`,
         },
         {
           label: `x = ${timesK(c, k)}${constText(h)}`,
-          feedback: `${k} multiplies the group, so divide by ${k}.`,
+          feedback: `$${k}$ multiplies the group, so divide by $${k}$.`,
         },
       ],
       explanation: [
-        `${k} multiplies all of ${inner}. Divide both sides by ${k}, allowed because ${k} ≠ 0: ${inner} = ${n(c)}/${k}.`,
+        `$${k}$ multiplies all of ${inner}. Divide both sides by $${k}$, allowed because ${k} ≠ 0: ${inner} = ${n(c)}/${k}.`,
         `${h < 0 ? `Subtract ${-h} from` : `Add ${h} to`} both sides: x = ${n(c)}/${k}${constText(h)}.`,
       ],
-      hint: `${k} multiplies the whole group ${inner}: divide both sides by ${k} first, then undo the ${h < 0 ? `+ ${-h}` : `− ${h}`}.`,
+      hint: `$${k}$ multiplies the whole group ${inner}: divide both sides by $${k}$ first, then undo the ${h < 0 ? `+ ${-h}` : `− ${h}`}.`,
       tags: [frame],
     };
   }
@@ -720,14 +724,14 @@ function literalEquationSolve(r: Random): Case {
   const d = c - b;
   const res = positive ? op : flip[op];
   return {
-    prompt: `If ${k} ${positive ? ">" : "<"} 0, solve ${k}x${constText(b)} ${sym[op]} ${n(c)} for x.`,
+    prompt: `If $${k} ${positive ? ">" : "<"} 0$, solve $${k}x${constText(b)} ${sym[op]} ${n(c)}$ for $x$.`,
     choices: [
       { label: `x ${sym[res]} ${n(d)}/${k}`, correct: true },
       {
         label: `x ${sym[positive ? flip[op] : op]} ${n(d)}/${k}`,
         feedback: positive
-          ? `${k} is positive, so dividing by ${k} keeps the direction of the inequality.`
-          : `${k} is negative: dividing both sides by a negative number reverses the inequality.`,
+          ? `$${k}$ is positive, so dividing by $${k}$ keeps the direction of the inequality.`
+          : `$${k}$ is negative: dividing both sides by a negative number reverses the inequality.`,
       },
       {
         label: `x ${sym[res]} ${n(c + b)}/${k}`,
@@ -735,16 +739,16 @@ function literalEquationSolve(r: Random): Case {
       },
       {
         label: `x ${sym[res]} ${timesK(d, k)}`,
-        feedback: `${k} multiplies x, so divide by ${k}.`,
+        feedback: `$${k}$ multiplies $x$, so divide by $${k}$.`,
       },
     ],
     explanation: [
       `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x ${sym[op]} ${n(d)}.`,
       positive
-        ? `Divide by ${k}. Because ${k} > 0, the direction stays: x ${sym[res]} ${n(d)}/${k}.`
-        : `Divide by ${k}. Because ${k} < 0, the direction reverses: x ${sym[res]} ${n(d)}/${k}.`,
+        ? `Divide by $${k}$. Because ${k} > 0, the direction stays: x ${sym[res]} ${n(d)}/${k}.`
+        : `Divide by $${k}$. Because ${k} < 0, the direction reverses: x ${sym[res]} ${n(d)}/${k}.`,
     ],
-    hint: `Isolate ${k}x first, then divide by ${k}. Since ${k} ${positive ? ">" : "<"} 0, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
+    hint: `Isolate $${k}x$ first, then divide by $${k}$. Since $${k} ${positive ? ">" : "<"} 0$, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
     tags: [frame],
   };
 }
@@ -766,11 +770,11 @@ function parameterSolutionCount(r: Random): Case {
       prompt: `For what value of a does the equation ax${constText(b)} = ${termText(q, "x")}${constText(d)} have no solution?`,
       answer: rat(q),
       explanation: [
-        `Subtract ${termText(q, "x")} from both sides: (a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}.`,
-        `If a = ${n(q)}, the x-terms cancel and ${n(b)} is left on the left side and ${n(d)} on the right. Their difference is ${n(b)} − ${p1(d)} = ${n(b - d)}, not 0, so no x is a solution.`,
-        `For any other a, x = (${n(d)} − ${b < 0 ? `(${n(b)})` : b}) ÷ (a − ${q < 0 ? `(${n(q)})` : q}) is a solution. So a = ${n(q)}.`,
+        `Subtract ${termText(q, "x")} from both sides: $(a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}$.`,
+        `If a = ${n(q)}, the $x$-terms cancel and ${n(b)} is left on the left side and ${n(d)} on the right. Their difference is ${n(b)} − ${p1(d)} = ${n(b - d)}, not 0, so no $x$ is a solution.`,
+        `For any other $a$, $x = (${n(d)} − ${b < 0 ? `(${n(b)})` : b}) ÷ (a − ${q < 0 ? `(${n(q)})` : q})$ is a solution. So a = ${n(q)}.`,
       ],
-      hint: `Collect the x-terms: ax − ${q < 0 ? `(${n(q)})` : q}x. When does that coefficient become 0, and what is left of ${n(b)} and ${n(d)}?`,
+      hint: `Collect the $x$-terms: ax − ${q < 0 ? `(${n(q)})` : q}x. When does that coefficient become 0, and what is left of ${n(b)} and ${n(d)}?`,
       tags: [frame],
     };
   }
@@ -778,12 +782,12 @@ function parameterSolutionCount(r: Random): Case {
     const m = r(2, 6),
       h = nonzero(r, -6, 6);
     return {
-      prompt: `For what value of c does the equation ${m}(x${constText(h)}) = ${m}x + c have infinitely many solutions?`,
+      prompt: `For what value of $c$ does the equation $${m}(x${constText(h)}) = ${m}x + c$ have infinitely many solutions?`,
       answer: rat(m * h),
       explanation: [
-        `Distribute, ${m} × ${p1(h)} = ${n(m * h)}: ${m}x${constText(m * h)} = ${m}x + c.`,
-        `The x-terms match on both sides, so subtracting ${m}x leaves ${n(m * h)} = c.`,
-        `If c = ${n(m * h)}, the two sides are identical and every x is a solution; otherwise there is none. So c = ${n(m * h)}.`,
+        `Distribute, ${m} × ${p1(h)} = ${n(m * h)}: $${m}x${constText(m * h)} = ${m}x + c$.`,
+        `The $x$-terms match on both sides, so subtracting ${m}x leaves ${n(m * h)} = c.`,
+        `If c = ${n(m * h)}, the two sides are identical and every $x$ is a solution; otherwise there is none. So c = ${n(m * h)}.`,
       ],
       hint: `Distribute ${m} over (x${constText(h)}) and compare the two sides term by term.`,
       tags: [frame],
@@ -797,10 +801,10 @@ function parameterSolutionCount(r: Random): Case {
       answer: rat(m),
       explanation: [
         `Distribute on the right, ${n(m)} × ${p1(h)} = ${n(m * h)}: ${m < 0 ? `−${-m}` : m}(x${constText(h)}) = ${termText(m, "x")}${constText(m * h)}.`,
-        `The constants already match: ${n(m * h)} on each side. The equation holds for every x exactly when the x-coefficients match too.`,
+        `The constants already match: ${n(m * h)} on each side. The equation holds for every $x$ exactly when the $x$-coefficients match too.`,
         `So a = ${n(m)}.`,
       ],
-      hint: `Distribute the ${n(m)} on the right side over (x${constText(h)}), then compare the coefficient of x and the constant on each side.`,
+      hint: `Distribute the ${n(m)} on the right side over (x${constText(h)}), then compare the coefficient of $x$ and the constant on each side.`,
       tags: [frame],
     };
   }
@@ -814,14 +818,14 @@ function parameterSolutionCount(r: Random): Case {
       c1 = r(-12, 12);
     if (c1 === c2 * t) continue;
     return {
-      prompt: `For what value of k does the system kx${b1 < 0 ? " − " : " + "}${Math.abs(b1) === 1 ? "" : Math.abs(b1)}y = ${n(c1)} and ${twoTerm(a2, b2)} = ${n(c2)} have no solution?`,
+      prompt: `For what value of $k$ does the system kx${b1 < 0 ? " − " : " + "}${Math.abs(b1) === 1 ? "" : Math.abs(b1)}y = ${n(c1)} and ${twoTerm(a2, b2)} = ${n(c2)} have no solution?`,
       answer: rat(k),
       explanation: [
-        `Two lines have no common point when they are parallel and different: same slope, different intercept. The first equation's y-coefficient is ${p1(t)} times the second's, ${n(b2)} × ${p1(t)} = ${n(b1)}, so k must be ${n(a2)} × ${p1(t)} = ${n(k)}.`,
-        `Multiply the second equation by ${n(t)}: ${twoTerm(a2 * t, b2 * t)} = ${n(c2 * t)}. Its y-coefficient now matches the first equation's.`,
-        `With k = ${n(k)}, the left sides are equal but ${n(c1)} ≠ ${n(c2 * t)}, so no (x, y) satisfies both. So k = ${n(k)}.`,
+        `Two lines have no common point when they are parallel and different: same slope, different intercept. The first equation's $y$-coefficient is ${p1(t)} times the second's, ${n(b2)} × ${p1(t)} = ${n(b1)}, so $k$ must be ${n(a2)} × ${p1(t)} = ${n(k)}.`,
+        `Multiply the second equation by ${n(t)}: ${twoTerm(a2 * t, b2 * t)} = ${n(c2 * t)}. Its $y$-coefficient now matches the first equation's.`,
+        `With k = ${n(k)}, the left sides are equal but ${n(c1)} ≠ ${n(c2 * t)}, so no $(x, y)$ satisfies both. So k = ${n(k)}.`,
       ],
-      hint: `Make the y-coefficients match: multiply ${twoTerm(a2, b2)} = ${n(c2)} by the number that turns ${termText(b2, "y")} into ${termText(b1, "y")}.`,
+      hint: `Make the $y$-coefficients match: multiply ${twoTerm(a2, b2)} = ${n(c2)} by the number that turns $${termText(b2, "y")}$ into $${termText(b1, "y")}$.`,
       tags: [frame],
     };
   }
@@ -931,8 +935,8 @@ function path(r: Random, form: string): Path | null {
       ],
       did: [
         form === "both-sides"
-          ? `subtract ${coefX(c)} from both sides`
-          : `add the x-terms ${a}x and ${coefX(c)}`,
+          ? `subtract $${coefX(c)}$ from both sides`
+          : `add the $x$-terms $${a}x$ and $${coefX(c)}$`,
         moveWords(b),
         `divide both sides by ${k}`,
       ],
@@ -1020,7 +1024,7 @@ function equationStepProperty(r: Random): Case {
   if (steps !== 3) return equationStepProperty(r);
   void labels;
   return {
-    prompt: `Each step below should keep ${ch.lines[0]} equivalent: Step k turns the line above it into its own line. Which step contains an error?`,
+    prompt: `Each step below should keep ${ch.lines[0]} equivalent: Step $k$ turns the line above it into its own line. Which step contains an error?`,
     choices: ["Step 1", "Step 2", "Step 3", "No step has an error"].map(
       (label, j) =>
         j === bad - 1
@@ -1107,12 +1111,12 @@ function eliminationEquivalent(r: Random): Case {
         title: "The system, one equation above the other",
         steps: [
           step(
-            `Line up like terms in columns. The y-terms ${termText(b1, "y")} and ${termText(k * b2, "y")}${k === 1 ? "" : " (after multiplying by " + n(k) + ")"} are opposites, so they cancel.`,
+            `Line up like terms in columns. The $y$-terms $${termText(b1, "y")}$ and ${termText(k * b2, "y")}${k === 1 ? "" : " (after multiplying by " + n(k) + ")"} are opposites, so they cancel.`,
             act.highlight("t.text.0.2"),
             act.highlight("t.text.1.2"),
           ),
           step(
-            `Then the x-terms combine, and the right sides add${k === 1 ? "" : `, the second multiplied by ${n(k)}`}.`,
+            `Then the $x$-terms combine, and the right sides add${k === 1 ? "" : `, the second multiplied by ${n(k)}`}.`,
             act.highlight("t.text.0.1"),
             act.highlight("t.text.1.1"),
             act.highlight("t.text.0.4"),
@@ -1135,12 +1139,12 @@ function eliminationEquivalent(r: Random): Case {
           : [
               {
                 label: `${termText(a1 - k * a2, "x")} = ${n(c1 - k * c2)}`,
-                feedback: `That subtracts the equations. Adding keeps the x-terms ${termText(a1, "x")} and ${termText(k * a2, "x")} together: ${termText(sa, "x")}.`,
+                feedback: `That subtracts the equations. Adding keeps the $x$-terms ${termText(a1, "x")} and ${termText(k * a2, "x")} together: ${termText(sa, "x")}.`,
               },
             ]),
         {
           label: `${termText(sa, "x")}${termText(2 * b1, "y", false)} = ${n(sc)}`,
-          feedback: `The y-terms ${termText(b1, "y")} and ${termText(k * b2, "y")} are opposites, so they add to 0.`,
+          feedback: `The $y$-terms $${termText(b1, "y")}$ and $${termText(k * b2, "y")}$ are opposites, so they add to 0.`,
         },
         {
           label: `${termText(sa, "x")} = ${n(-sc)}`,
@@ -1156,10 +1160,10 @@ function eliminationEquivalent(r: Random): Case {
           k === 1
             ? `Add the left sides and the right sides.`
             : `Multiplied by ${n(k)}, the second equation is ${eqText(k * a2, k * b2, k * c2)}.`,
-          `The y-terms cancel: ${termText(b1, "y")} + ${pt(k * b2, "y")} = 0. The x-terms give ${termText(a1, "x")} + ${pt(k * a2, "x")} = ${termText(sa, "x")}, and the right sides give ${n(c1)} + ${p1(k * c2)} = ${n(sc)}.`,
-          `So ${sum}. Any (x, y) that makes both equations true makes this one true too.`,
+          `The $y$-terms cancel: $${termText(b1, "y")} + ${pt(k * b2, "y")} = 0$. The $x$-terms give $${termText(a1, "x")} + ${pt(k * a2, "x")} = ${termText(sa, "x")}$, and the right sides give ${n(c1)} + ${p1(k * c2)} = ${n(sc)}.`,
+          `So ${sum}. Any $(x, y)$ that makes both equations true makes this one true too.`,
         ],
-        hint: `${k === 1 ? "Line up like terms" : `Multiply every term of the second equation by ${n(k)} first`}: ${termText(b1, "y")} and ${termText(k * b2, "y")} cancel. Add the x-terms, then add the right sides, ${n(c1)} and ${n(k * c2)}.`,
+        hint: `${k === 1 ? "Line up like terms" : `Multiply every term of the second equation by ${n(k)} first`}: $${termText(b1, "y")}$ and $${termText(k * b2, "y")}$ cancel. Add the $x$-terms, then add the right sides, ${n(c1)} and ${n(k * c2)}.`,
         tags: [frame],
       };
     }
@@ -1203,12 +1207,12 @@ function eliminationEquivalent(r: Random): Case {
         correct: true,
       },
       {
-        label: `Adding two equations gives an equation that every pair (x, y) satisfies.`,
+        label: `Adding two equations gives an equation that every pair $(x, y)$ satisfies.`,
         feedback: `Test a pair that is not ${pair(x, y)}: the sum is false for most pairs. It is true for the system's solutions.`,
       },
       {
         label: `The sum has fewer variables, so it has fewer solutions, and those are the system's.`,
-        feedback: `${sum} alone has infinitely many solutions (any y). It is the pair with the first equation that pins down ${pair(x, y)}.`,
+        feedback: `${sum} alone has infinitely many solutions (any $y$). It is the pair with the first equation that pins down ${pair(x, y)}.`,
       },
       {
         label: `Adding changes the solutions, but the first equation corrects them.`,
@@ -1220,8 +1224,8 @@ function eliminationEquivalent(r: Random): Case {
       choices: reasons,
       scene: stacked,
       explanation: [
-        `If (x, y) makes both equations true, adding equal amounts to equal amounts keeps them equal, so it makes ${sum} true.`,
-        `Back the other way: if (x, y) satisfies ${e1} and ${sum}, subtracting the first from the sum gives ${e2}. So no solution is gained or lost.`,
+        `If $(x, y)$ makes both equations true, adding equal amounts to equal amounts keeps them equal, so it makes ${sum} true.`,
+        `Back the other way: if $(x, y)$ satisfies ${e1} and ${sum}, subtracting the first from the sum gives ${e2}. So no solution is gained or lost.`,
         `Both systems are solved by ${pair(x, y)}.`,
       ],
       hint: `Take the solution of the first system, ${pair(x, y)}, and check it in ${sum}. Then ask how to get ${e2} back from the new system.`,

@@ -426,7 +426,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
 
 export const ratioRatePrinciples: Record<string, string> = {
   "unit-rate":
-    "A unit rate is the amount for 1 unit: if a quantity a goes with b units, a ÷ b goes with 1 unit.",
+    "A unit rate is the amount for 1 unit: if a quantity a goes with $b$ units, a ÷ b goes with 1 unit.",
   "better-buy":
     "Packages compare fairly only at the same size; the unit price, total price ÷ number of items, puts every package at 1 item.",
   "ratio-table-missing":

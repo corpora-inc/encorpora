@@ -64,7 +64,7 @@ test("independent answers follow displayed givens over varied deterministic seed
             ),
           );
           if (template.id === "coordinate-point-reading")
-            expected = problem.public.prompt.includes("x-coordinate")
+            expected = /\$?x\$?-coordinate/.test(problem.public.prompt)
               ? figure.points[0]!.x
               : figure.points[0]!.y;
           else {

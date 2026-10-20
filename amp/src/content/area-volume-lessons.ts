@@ -413,7 +413,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "cylinder-volume",
     title: "Volume of a cylinder",
     summary:
-      "A cylinder is a stack of circles: volume = base area × height = $\\pi r^2 h$.",
+      "A cylinder is a stack of circles: $V = \\text{base area} \\times \\text{height} = \\pi r^2 h$.",
     templateIds: ["cylinder-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -624,7 +624,7 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Halve a diameter to get the radius.",
-      "Base area = $\\pi \\times r^2$.",
+      "Base area: $\\pi \\times r^2$.",
       "Volume = base area × height; for a height, divide the volume by the base area.",
     ],
     watch: "Square the radius, not the diameter.",

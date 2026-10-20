@@ -233,7 +233,8 @@ export const factsPrinciples: Record<string, string> = {
     "The number added or subtracted equals the number of counts said after the start.",
   "make-ten-fact":
     "Associativity lets an addend be split to make a ten: $8 + 5 = 8 + (2 + 3) = (8 + 2) + 3 = 13$.",
-  "related-subtraction": "c − b is the missing addend in b + □ = c.",
+  "related-subtraction":
+    "$c - b$ is the missing addend in $b + \\boxed{\\phantom{0}} = c$.",
   "mental-ten-hundred":
     "Place value: adding 10 or 100 adds one unit to the tens or hundreds place, regrouping ten of a place into one of the next.",
 };

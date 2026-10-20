@@ -130,11 +130,11 @@ export function completingSquarePrintCase(
       `What constant $c$ makes $${given} + c$ a perfect square $(x + h)^2$ for some real $h$?`,
       `The tiles show $${given}$ as a square missing its corner. What constant $c$ completes the square, so that $${given} + c = (x + h)^2$?`,
     ][frame]!;
-    response = { kind: "fraction", label: "Constant c" };
+    response = { kind: "fraction", label: "Constant $c$" };
     answer = square.d === 1 ? String(square.n) : `${square.n}/${square.d}`;
     hint =
       frame === 2
-        ? `The ${Math.abs(b)} x strips of $${given}$ are split evenly between the two sides of the $x^2$ square. The missing corner is a square whose side is one of those halves: find its area.`
+        ? `The ${Math.abs(b)} $x$ strips of $${given}$ are split evenly between the two sides of the $x^2$ square. The missing corner is a square whose side is one of those halves: find its area.`
         : `$(x + h)^2$ expands to $x^2 + 2hx + h^2$. Match $2h$ to $${b}$, the coefficient of $x$ in $${given}$, then square $h$.`;
     explanation = [
       "Multiplying the two identical factors gives $(x + h)^2 = x^2 + 2hx + h^2$.",

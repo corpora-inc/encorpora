@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem } from "../src/math/engine";
+import { dollarsAreMath } from "./fixtures/math-typography";
 import { linearFunctionTemplates } from "../src/math/linear-function-practice";
 import { templateRole } from "../src/learning/placement";
 import { problemLesson } from "../src/content/problem-lessons";
@@ -16,17 +17,26 @@ test("Algebra 1 function items are valid, deterministic assessment items", () =>
       const problem = generateProblem(template.id, `alg1-${i}`);
       assert.deepEqual(problem, generateProblem(template.id, `alg1-${i}`));
       generatedProblemSchema.parse(problem);
-      // Money is written in words: "$" opens a math span in MathText.
+      // Money is written in words: "$" only opens and closes math spans.
       assert.ok(
-        !/\$/.test(
-          JSON.stringify([
-            problem.public.prompt,
-            problem.public.response,
-            problem.hint,
-            problem.explanation,
-            problem.choiceFeedback ?? null,
-          ]),
-        ),
+        [
+          problem.public.prompt,
+          problem.public.response,
+          problem.hint,
+          problem.explanation,
+          problem.choiceFeedback ?? null,
+        ]
+          .flat()
+          .flatMap((v) =>
+            typeof v === "string"
+              ? [v]
+              : v && typeof v === "object"
+                ? Object.values(v).flatMap((w) =>
+                    typeof w === "string" ? [w] : JSON.stringify(w),
+                  )
+                : [],
+          )
+          .every(dollarsAreMath),
         template.id,
       );
       assert.equal(templateRole(template.id), "assessment");
@@ -55,6 +65,9 @@ test("Algebra 1 function items are valid, deterministic assessment items", () =>
   }
 });
 
+/** Characters a reader sees: TeX delimiters are not read. */
+const readLength = (prompt: string) => prompt.replaceAll("$", "").length;
+
 test("high-school openers read at a glance", () => {
   for (const id of [
     "linear-model-value",
@@ -63,7 +76,7 @@ test("high-school openers read at a glance", () => {
   ])
     for (let i = 0; i < 1000; i++)
       assert.ok(
-        generateProblem(id, `opener-${i}`).public.prompt.length <= 160,
+        readLength(generateProblem(id, `opener-${i}`).public.prompt) <= 160,
         id,
       );
 });

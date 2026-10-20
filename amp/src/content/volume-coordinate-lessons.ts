@@ -60,15 +60,15 @@ export const volumeCoordinateLessons: Lesson[] = [
     ],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Use V = l × w × h, and V = B × h with B the base area, to find a volume.",
+      "Use V = l × w × h, and V = B × h with $B$ the base area, to find a volume.",
       "Find a missing edge from a volume, and add the volumes of joined prisms.",
     ],
     sections: [
       {
         title: "From cubes to a formula",
         paragraphs: [
-          "Along a base l cm long and w cm wide, one layer of centimeter cubes holds l × w cubes. That number is also the base area B in square centimeters.",
-          "A height of h cm stacks h layers, so $V = l \\times w \\times h = B \\times h$ cubic centimeters. Any face can be the base: the product of the three edges is the same in any order.",
+          "Along a base $l$ cm long and $w$ cm wide, one layer of centimeter cubes holds l × w cubes. That number is also the base area $B$ in square centimeters.",
+          "A height of $h$ cm stacks $h$ layers, so $V = l \\times w \\times h = B \\times h$ cubic centimeters. Any face can be the base: the product of the three edges is the same in any order.",
         ],
       },
       {
@@ -102,7 +102,7 @@ export const volumeCoordinateLessons: Lesson[] = [
     id: "first-quadrant-coordinates",
     title: "Points on a coordinate grid",
     summary:
-      "An ordered pair (x, y) locates a point: x units across from 0, then y units up.",
+      "An ordered pair $(x, y)$ locates a point: $x$ units across from 0, then $y$ units up.",
     templateIds: [
       "first-quadrant-locate",
       "first-quadrant-coordinates",
@@ -117,8 +117,8 @@ export const volumeCoordinateLessons: Lesson[] = [
       {
         title: "Across first, then up",
         paragraphs: [
-          "Two number lines meet at 0 at a right angle. The horizontal one is the x-axis; the vertical one is the y-axis. Their meeting point, 0 on both, is the origin.",
-          "In the pair (x, y), the first number says how far across from the origin, and the second says how far up. Order matters: (2, 5) and (5, 2) are different points.",
+          "Two number lines meet at 0 at a right angle. The horizontal one is the $x$-axis; the vertical one is the $y$-axis. Their meeting point, 0 on both, is the origin.",
+          "In the pair $(x, y)$, the first number says how far across from the origin, and the second says how far up. Order matters: (2, 5) and (5, 2) are different points.",
         ],
         illustration: "ordered-pair-path",
       },
@@ -126,7 +126,7 @@ export const volumeCoordinateLessons: Lesson[] = [
         title: "Moving on the grid",
         paragraphs: [
           "Moving right adds to the first coordinate; moving up adds to the second. A move right never changes the second coordinate, and a move up never changes the first.",
-          "Count gridlines, not squares, starting from 0. A point on the x-axis has second coordinate 0; a point on the y-axis has first coordinate 0.",
+          "Count gridlines, not squares, starting from 0. A point on the $x$-axis has second coordinate 0; a point on the $y$-axis has first coordinate 0.",
         ],
       },
     ],
@@ -159,7 +159,7 @@ const terms = {
     ["volume", "The number of unit cubes that fill a solid."],
   ],
   grid: [
-    ["ordered pair", "(x, y): x across from 0, then y up."],
+    ["ordered pair", "$(x, y)$: $x$ across from 0, then $y$ up."],
     ["origin", "The point (0, 0), where the axes meet."],
   ],
 } satisfies Record<string, [string, string][]>;
@@ -231,8 +231,8 @@ export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
     goal: "Given a plotted point, choose its ordered pair.",
     terms: terms.grid,
     method: [
-      "Go straight down from the point to the x-axis: that number comes first.",
-      "Go straight left to the y-axis: that number comes second.",
+      "Go straight down from the point to the $x$-axis: that number comes first.",
+      "Go straight left to the $y$-axis: that number comes second.",
       "Write (first, second).",
     ],
     watch:
@@ -262,9 +262,9 @@ export const volumeCoordinatePrinciples: Record<string, string> = {
   "composite-prism-volume":
     "Volume is additive: non-overlapping parts add to the whole.",
   "first-quadrant-locate":
-    "An ordered pair (x, y) means x across from the origin, then y up.",
+    "An ordered pair $(x, y)$ means $x$ across from the origin, then $y$ up.",
   "first-quadrant-coordinates":
-    "A point's first coordinate is its distance across from the y-axis; its second is its distance up from the x-axis.",
+    "A point's first coordinate is its distance across from the $y$-axis; its second is its distance up from the $x$-axis.",
   "coordinate-move":
     "Moving right changes only the first coordinate; moving up changes only the second.",
 };

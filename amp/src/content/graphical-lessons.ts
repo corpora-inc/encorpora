@@ -13,21 +13,21 @@ export const graphicalLessons: Lesson[] = [
       {
         title: "Start at the origin",
         paragraphs: [
-          "The origin is where the two zero lines meet. In an ordered pair (x, y), x describes horizontal position and y describes vertical position.",
-          "Follow the horizontal scale to locate x. Positive values are to the right and negative values are to the left. Then use the vertical scale: positive values go up and negative values go down.",
+          "The origin is where the two zero lines meet. In an ordered pair ($x$, $y$), $x$ describes horizontal position and $y$ describes vertical position.",
+          "Follow the horizontal scale to locate $x$. Positive values are to the right and negative values are to the left. Then use the vertical scale: positive values go up and negative values go down.",
         ],
       },
       {
         title: "Read the requested coordinate",
         paragraphs: [
-          "For a point at (−3, 2), the x-coordinate is −3 and the y-coordinate is 2. A question asking for just one coordinate needs one number, not both.",
+          "For a point at (−3, 2), the $x$-coordinate is −3 and the $y$-coordinate is 2. A question asking for just one coordinate needs one number, not both.",
           "Check the grid scale before counting squares. These practice grids use one unit per step.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "Point P is three units left and two units above the origin. What is its x-coordinate?",
+        "Point $P$ is three units left and two units above the origin. What is its $x$-coordinate?",
       steps: [
         "Left corresponds to negative horizontal values.",
         "The horizontal position is −3; the vertical position is 2.",
@@ -35,7 +35,7 @@ export const graphicalLessons: Lesson[] = [
       answer: "−3",
     },
     pitfalls: [
-      "Do not reverse x and y.",
+      "Do not reverse $x$ and $y$.",
       "A point on an axis has one coordinate equal to zero.",
     ],
     parentGuide:
@@ -55,7 +55,7 @@ export const graphicalLessons: Lesson[] = [
       {
         title: "Use the same direction twice",
         paragraphs: [
-          "Choose a starting point and an ending point. Subtract their y-coordinates to find vertical change, then subtract their x-coordinates in the same order to find horizontal change.",
+          "Choose a starting point and an ending point. Subtract their $y$-coordinates to find vertical change, then subtract their $x$-coordinates in the same order to find horizontal change.",
           "Slope is vertical change divided by horizontal change. Moving right along a rising line gives a positive slope; moving right along a falling line gives a negative slope.",
         ],
       },
@@ -78,7 +78,7 @@ export const graphicalLessons: Lesson[] = [
     },
     pitfalls: [
       "Subtract both coordinates in the same point order.",
-      "Use changes between points, not either point’s y/x ratio.",
+      "Use changes between points, not either point’s $y$/$x$ ratio.",
     ],
     parentGuide:
       "Ask the learner to trace a horizontal move and a vertical move between the two plotted points.",

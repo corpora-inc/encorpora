@@ -11,7 +11,7 @@ def affine(expression, variable="x"):
     """Return exact (coefficient, constant), rejecting nonlinear expressions."""
     if not re.fullmatch(r"[a-zA-Z]", variable):
         raise ValueError("One variable required")
-    source = expression.replace("−", "-").replace("×", "*").replace("·", "*")
+    source = expression.replace("$", "").replace("−", "-").replace("×", "*").replace("·", "*")
     if not re.fullmatch(r"[0-9a-zA-Z+*/().\-\s]+", source):
         raise ValueError("Unsupported symbol")
     source = re.sub(r"(?<=[0-9)])(?=[a-zA-Z(])", "*", source)
@@ -199,7 +199,7 @@ def solve_algebra(public):
     if template in {'shared-plan-input','first-cheaper-whole-input'}:
         domain = 'real' if template == 'shared-plan-input' else 'whole'
         ending = 'at what x do they cost the same' if domain == 'real' else 'what is the first x where A is strictly cheaper'
-        left,right,minimum,maximum = match(rf'Plan A costs (.+) dollars; B costs (.+) dollars\. For {domain} inputs x from ([0-9]+) to ([0-9]+), {ending}\?', prompt)
+        left,right,minimum,maximum = match(rf'Plan A costs (.+) dollars; Plan B costs (.+) dollars\. For {domain} inputs x from ([0-9]+) to ([0-9]+), {ending}\?', prompt)
         a,b = affine(left);c,d = affine(right)
         lower,upper = int(minimum),int(maximum)
         require(0 <= lower <= upper and a >= 0 and c > a and b > d and d == 0, 'Invalid public cost or domain')
@@ -251,8 +251,8 @@ def review_algebra_fixtures():
         (public('unequal-step-rate', 'A linear rule gives (0, 1), (2, 2), and (5, 7/2). What is its output change per input unit?'), F(1,2)),
         (public('recover-linear-intercept', 'A linear rule has rate -3/2 and passes through (2, 1). What is its output when the input is 0?'), F(4)),
         (public('predict-linear-output', 'Assume a linear rule through (1, 1/2) and (3, 3/2). What is the output at input 0?'), F(0)),
-        (public('shared-plan-input', 'Plan A costs 13 + 2x dollars; B costs 5x dollars. For real inputs x from 0 to 8, at what x do they cost the same?'), F(13,3)),
-        (public('first-cheaper-whole-input', 'Plan A costs 12 + 2x dollars; B costs 5x dollars. For whole inputs x from 0 to 8, what is the first x where A is strictly cheaper?'), 5),
+        (public('shared-plan-input', 'Plan A costs 13 + 2x dollars; Plan B costs 5x dollars. For real inputs x from 0 to 8, at what x do they cost the same?'), F(13,3)),
+        (public('first-cheaper-whole-input', 'Plan A costs 12 + 2x dollars; Plan B costs 5x dollars. For whole inputs x from 0 to 8, what is the first x where A is strictly cheaper?'), 5),
         (public('distributive-expression-choice', 'Which expression equals -2(x - 3) for every real x?', ['-2x + 6', '-2x - 6', '-2x + 3']), '0'),
         (public('check-equation-candidate', 'Does x = 0 satisfy x + 4 = 2? Choose the accurate check.', ['Left = 4; right = 2. No.', 'Left = 3; right = 2. No.', 'Left = 4; right = 4. Yes.']), '0'),
         (public('relation-function-choice', 'Which list of (input, output) pairs represents a function?', ['(1, 2), (1, 2), (3, 2)', '(1, 2), (1, 3), (2, 2)', '(1, 2), (2, 2), (2, 3)']), '0'),

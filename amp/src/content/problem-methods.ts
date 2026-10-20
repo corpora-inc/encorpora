@@ -434,9 +434,9 @@ export const methods: Record<string, ProblemMethod> = {
       "Divide the total by the number of groups; multiplying them gives a bigger number than the total.",
   },
   "unknown-dividend": {
-    goal: "Given ? ÷ a = b, find the number being divided.",
+    goal: "Given ? ÷ $a$ = $b$, find the number being divided.",
     method: [
-      "? ÷ a = b means ? splits into a groups of b.",
+      "? ÷ $a$ = $b$ means ? splits into a groups of $b$.",
       "Multiply: a × b gives the missing number.",
     ],
     watch: "Multiply to undo division; dividing again gives a smaller number.",
@@ -491,12 +491,12 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Use 90, not 9.",
   },
   "comparison-amount": {
-    goal: "Given one amount and “n times as many,” find the other amount.",
+    goal: "Given one amount and “$n$ times as many,” find the other amount.",
     method: [
-      "“n times as many” means n copies of the amount.",
-      "Multiply the amount by n: 4 times as many as 9 is 4 × 9.",
+      "“$n$ times as many” means $n$ copies of the amount.",
+      "Multiply the amount by $n$: 4 times as many as 9 is 4 × 9.",
     ],
-    watch: "Do not add n. 4 times as many as 9 is 36, not 13.",
+    watch: "Do not add $n$. 4 times as many as 9 is 36, not 13.",
   },
   "comparison-factor": {
     goal: "Given two amounts, find how many times as many one is as the other.",
@@ -949,7 +949,7 @@ export const methods: Record<string, ProblemMethod> = {
   "whole-times-fraction": {
     goal: "Given several groups of the same fraction, find the total.",
     method: [
-      "n groups of a/b are n × a pieces of size 1/b.",
+      "$n$ groups of a/b are n × a pieces of size 1/b.",
       "Multiply the number of groups by the numerator and keep the denominator.",
       "Simplify.",
     ],
@@ -985,8 +985,8 @@ export const methods: Record<string, ProblemMethod> = {
   "unit-fraction-share": {
     goal: "Given a unit fraction shared equally, find each share.",
     method: [
-      "Cut the 1/a into b equal parts.",
-      "Each part is 1/b of 1/a, so dividing 1/a among b people gives 1/(a × b).",
+      "Cut the 1/a into $b$ equal parts.",
+      "Each part is 1/b of 1/a, so dividing 1/a among $b$ people gives 1/(a × b).",
     ],
     watch:
       "Sharing makes each part smaller: multiply the denominator by the number of people.",
@@ -994,8 +994,8 @@ export const methods: Record<string, ProblemMethod> = {
   "fraction-share-amount": {
     goal: "Given a fraction shared equally, find each share.",
     method: [
-      "Dividing a/b among n people gives each a/(b × n).",
-      "If n divides the numerator, share the pieces instead: 6/8 among 3 is 2/8 each.",
+      "Dividing a/b among $n$ people gives each a/(b × n).",
+      "If $n$ divides the numerator, share the pieces instead: 6/8 among 3 is 2/8 each.",
       "Simplify.",
     ],
     watch: "5/6 ÷ 3 = 5/18.",
@@ -1090,7 +1090,9 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "proportional-rule-choice": {
     goal: "Given several rules, choose the proportional one.",
-    terms: [["proportional", "y = kx for a constant k: doubling x doubles y."]],
+    terms: [
+      ["proportional", "y = kx for a constant $k$: doubling $x$ doubles $y$."],
+    ],
     method: [
       "A proportional rule is y = kx: one multiplier, no added constant.",
       "Check: it gives y = 0 when x = 0.",
@@ -1141,9 +1143,9 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Multiply before adding: 2 + 3 × 4 is 14, not 20.",
   },
   "substitute-linear-expression": {
-    goal: "Given an expression and a value of x, find the expression's value.",
+    goal: "Given an expression and a value of $x$, find the expression's value.",
     method: [
-      "Replace x with the value in parentheses, sign included: 3x − 4 at x = −2 is 3 × (−2) − 4.",
+      "Replace $x$ with the value in parentheses, sign included: 3x − 4 at x = −2 is 3 × (−2) − 4.",
       "Multiply before adding.",
     ],
     watch: "Keep the sign of the value: 3 × (−2) is −6, not 6.",
@@ -1157,30 +1159,30 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Multiply the constant too: 3(x + 5) is 3x + 15, not 3x + 5.",
   },
   "combine-like-coefficient": {
-    goal: "Given an expression, find the coefficient of x after combining like terms.",
+    goal: "Given an expression, find the coefficient of $x$ after combining like terms.",
     terms: [
-      ["coefficient", "The number multiplying x."],
+      ["coefficient", "The number multiplying $x$."],
       ["like terms", "Terms with the same variable part, like −2x and −6x."],
     ],
     method: [
-      "Find the x terms; each coefficient keeps its sign: 5x − 2x has 5 and −2.",
+      "Find the $x$ terms; each coefficient keeps its sign: 5x − 2x has 5 and −2.",
       "Add those coefficients: 5 + (−2) = 3.",
       "Ignore the constants.",
     ],
-    watch: "The constant is not an x term; never add it to the coefficient.",
+    watch: "The constant is not an $x$ term; never add it to the coefficient.",
   },
   "linear-equation": {
-    goal: "Given an equation like ax + b = c, find x.",
+    goal: "Given an equation like ax + b = c, find $x$.",
     method: [
-      "Undo the addition first: subtract b from both sides, leaving ax = c − b.",
-      "Undo the multiplication: divide both sides by a.",
-      "Check by putting x back into ax + b.",
+      "Undo the addition first: subtract $b$ from both sides, leaving ax = c − b.",
+      "Undo the multiplication: divide both sides by $a$.",
+      "Check by putting $x$ back into ax + b.",
     ],
     watch:
-      "Subtract b from both sides before dividing. Dividing first means b must be divided too.",
+      "Subtract $b$ from both sides before dividing. Dividing first means $b$ must be divided too.",
   },
   "negative-coefficient-equation": {
-    goal: "Given an equation where x is multiplied by a negative number, find x.",
+    goal: "Given an equation where $x$ is multiplied by a negative number, find $x$.",
     method: [
       "Undo the added or subtracted constant on both sides.",
       "Divide both sides by the coefficient, sign included.",
@@ -1189,7 +1191,7 @@ export const methods: Record<string, ProblemMethod> = {
       "Divide by the negative coefficient, sign and all: −3x = 12 gives x = −4.",
   },
   "rational-coefficient-equation": {
-    goal: "Given an equation where x is multiplied by a fraction, find x.",
+    goal: "Given an equation where $x$ is multiplied by a fraction, find $x$.",
     method: [
       "Undo the added constant on both sides.",
       "Multiply both sides by the reciprocal of the fraction.",
@@ -1198,17 +1200,17 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply by the reciprocal, not by the fraction itself: (2/3)x = 4 gives x = 6.",
   },
   "grouped-linear-equation": {
-    goal: "Given an equation like a(x + b) = c, find x.",
+    goal: "Given an equation like $a(x + b) = c$, find $x$.",
     method: [
-      "Divide both sides by a: 3(x + 2) = 15 becomes x + 2 = 5.",
-      "Undo the + b inside: x = 5 − 2 = 3.",
+      "Divide both sides by $a$: $3(x + 2) = 15$ becomes $x + 2 = 5$.",
+      "Undo the $+\\,b$ inside: $x = 5 - 2 = 3$.",
     ],
-    watch: "Divide the whole right side by a before undoing b.",
+    watch: "Divide the whole right side by $a$ before undoing $b$.",
   },
   "both-sides-linear-equation": {
-    goal: "Given an equation with x on both sides, find x.",
+    goal: "Given an equation with $x$ on both sides, find $x$.",
     method: [
-      "Subtract one x term from both sides so x is on one side.",
+      "Subtract one $x$ term from both sides so $x$ is on one side.",
       "Move the constants to the other side.",
       "Divide by the coefficient.",
     ],
@@ -1227,20 +1229,20 @@ export const methods: Record<string, ProblemMethod> = {
   "equation-solution-count": {
     goal: "Given a linear equation, decide whether it has one, no, or infinitely many solutions.",
     method: [
-      "Move all x terms to one side and constants to the other.",
-      "x remains: exactly one solution.",
-      "x cancels and the statement is false (0 = 5): no solution.",
-      "x cancels and the statement is true (0 = 0): every number is a solution.",
+      "Move all $x$ terms to one side and constants to the other.",
+      "$x$ remains: exactly one solution.",
+      "$x$ cancels and the statement is false (0 = 5): no solution.",
+      "$x$ cancels and the statement is true (0 = 0): every number is a solution.",
     ],
     watch:
-      "When the x terms cancel, check the numbers left; 0 = 0 means every number works, not that x = 0.",
+      "When the $x$ terms cancel, check the numbers left; 0 = 0 means every number works, not that x = 0.",
   },
   "linear-system-x": {
-    goal: "Given two equations in x and y, find x.",
+    goal: "Given two equations in $x$ and $y$, find $x$.",
     method: [
-      "Multiply the equations so the y coefficients match.",
-      "Subtract one equation from the other to remove y.",
-      "Solve for x.",
+      "Multiply the equations so the $y$ coefficients match.",
+      "Subtract one equation from the other to remove $y$.",
+      "Solve for $x$.",
     ],
     watch:
       "Multiply every term of an equation, including the number on the right side.",
@@ -1250,22 +1252,23 @@ export const methods: Record<string, ProblemMethod> = {
     goal: "Given a point on a grid, find one of its coordinates.",
     terms: [
       [
-        "coordinates (x, y)",
-        "x is the distance across from the y-axis; y is the distance up from the x-axis.",
+        "coordinates $(x, y)$",
+        "$x$ is the distance across from the $y$-axis; $y$ is the distance up from the $x$-axis.",
       ],
     ],
     method: [
-      "For x, count across from the vertical axis.",
-      "For y, count up or down from the horizontal axis.",
+      "For $x$, count across from the vertical axis.",
+      "For $y$, count up or down from the horizontal axis.",
     ],
-    watch: "x is the across distance and comes first; do not swap it with y.",
+    watch:
+      "$x$ is the across distance and comes first; do not swap it with $y$.",
   },
   "line-slope": {
     goal: "Given two points, find the slope of the line through them.",
-    terms: [["slope", "Change in y divided by change in x."]],
+    terms: [["slope", "Change in $y$ divided by change in $x$."]],
     method: [
-      "Subtract the y-values: y₂ − y₁.",
-      "Subtract the x-values in the same order: x₂ − x₁.",
+      "Subtract the $y$-values: y₂ − y₁.",
+      "Subtract the $x$-values in the same order: x₂ − x₁.",
       "Divide.",
     ],
     watch:
@@ -1275,7 +1278,7 @@ export const methods: Record<string, ProblemMethod> = {
     goal: "Given a line on a grid through two marked points, find its slope.",
     method: [
       "Read both points' coordinates.",
-      "Slope = (change in y) ÷ (change in x), same order for both.",
+      "Slope = (change in $y$) ÷ (change in $x$), same order for both.",
     ],
     watch: "A line falling to the right has negative slope.",
   },
@@ -1290,11 +1293,11 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "recover-linear-intercept": {
     goal: "Given the rate of a linear rule and one point, find the output at input 0.",
-    terms: [["intercept b", "The output when the input is 0 in y = mx + b."]],
+    terms: [["intercept $b$", "The output when the input is 0 in y = mx + b."]],
     method: [
       "Substitute the point into y = mx + b.",
-      "Solve for b: subtract m × x from y.",
-      "b is the output when the input is 0.",
+      "Solve for $b$: subtract m × x from $y$.",
+      "$b$ is the output when the input is 0.",
     ],
     watch: "Subtract the rate times the input, not the rate alone.",
   },
@@ -1310,12 +1313,12 @@ export const methods: Record<string, ProblemMethod> = {
   "graph-equation-choice": {
     goal: "Given a line on a grid, choose its equation.",
     method: [
-      "Read b, the y-value where the line crosses the y-axis.",
-      "Find the slope m from two points.",
+      "Read $b$, the $y$-value where the line crosses the $y$-axis.",
+      "Find the slope $m$ from two points.",
       "The equation is y = mx + b.",
     ],
     watch:
-      "Do not swap the slope and the intercept: the crossing height is b, the number added.",
+      "Do not swap the slope and the intercept: the crossing height is $b$, the number added.",
   },
   "relation-function-choice": {
     goal: "Given lists of input-output pairs, choose the one that is a function.",
@@ -1342,7 +1345,7 @@ export const methods: Record<string, ProblemMethod> = {
     goal: "Given two cost rules, find the input where they cost the same.",
     method: [
       "Set the two cost expressions equal: 20 + 3x = 5x.",
-      "Collect the x terms on one side and solve: 20 = 2x, so x = 10.",
+      "Collect the $x$ terms on one side and solve: 20 = 2x, so x = 10.",
     ],
     watch: "Set the costs equal; do not compare the rates or the fees alone.",
   },
@@ -1356,52 +1359,52 @@ export const methods: Record<string, ProblemMethod> = {
       "At the tie the costs are equal, not cheaper; take the next whole number even when the tie is whole.",
   },
   "function-evaluation": {
-    goal: "Given f(x) and an input, find the output.",
+    goal: "Given $f(x)$ and an input, find the output.",
     method: [
-      "Replace every x with the input, in parentheses.",
+      "Replace every $x$ with the input, in parentheses.",
       "Powers first, then multiplication, then addition.",
     ],
     watch:
       "Square the input before multiplying by its coefficient, and keep the parentheses: (−3)² = 9.",
   },
   "arithmetic-term": {
-    goal: "Given the first term and common difference, find term n.",
-    terms: [["arithmetic sequence", "Each term adds the same difference d."]],
+    goal: "Given the first term and common difference, find term $n$.",
+    terms: [["arithmetic sequence", "Each term adds the same difference $d$."]],
     method: [
-      "Each term adds the common difference d to the term before.",
-      "Term n is n − 1 steps after term 1.",
-      "Term n = first term + (n − 1) × d.",
+      "Each term adds the common difference $d$ to the term before.",
+      "Term $n$ is $n - 1$ steps after term 1.",
+      "Term $n$ is the first term plus $(n - 1) \\times d$.",
     ],
-    watch: "Use n − 1 steps, not n: term 1 has no steps added.",
+    watch: "Use n − 1 steps, not $n$: term 1 has no steps added.",
   },
   "geometric-sequence": {
-    goal: "Given the first term and common ratio, find term n.",
+    goal: "Given the first term and common ratio, find term $n$.",
     terms: [
-      ["geometric sequence", "Each term multiplies by the same ratio r."],
+      ["geometric sequence", "Each term multiplies by the same ratio $r$."],
     ],
     method: [
-      "Each term is the term before it times the ratio r.",
-      "From term 1 to term n there are n − 1 steps, so multiply by r that many times.",
-      "Term n = first term × r^(n − 1).",
+      "Each term is the term before it times the ratio $r$.",
+      "From term 1 to term $n$ there are n − 1 steps, so multiply by $r$ that many times.",
+      "Term $n$ is the first term times $r^{n - 1}$.",
     ],
-    watch: "Use n − 1 factors of r, not n: term 1 has no factor of r.",
+    watch: "Use n − 1 factors of $r$, not $n$: term 1 has no factor of $r$.",
   },
   "quadratic-vertex": {
     goal: "Given f(x) = a(x − h)² + k with a > 0, find its minimum value.",
     method: [
       "A square is never negative and is 0 at x = h.",
-      "With a > 0, the smallest value of f is k.",
+      "With a > 0, the smallest value of $f$ is $k$.",
     ],
     watch:
-      "The minimum value is k, the value of f. The number h is where it happens, not the minimum.",
+      "The minimum value is $k$, the value of $f$. The number $h$ is where it happens, not the minimum.",
   },
   "logarithm-integer": {
-    goal: "Given log base b of N, find its value.",
-    terms: [["logarithm", "log_b N is the exponent p with b^p = N."]],
+    goal: "Given log base $b$ of $N$, find its value.",
+    terms: [["logarithm", "log_b N is the exponent $p$ with b^p = N."]],
     method: [
-      "log_b N asks: b to what power is N?",
-      "Multiply b by itself, counting the factors: b, b², b³, …",
-      "The number of factors that reaches N is the logarithm.",
+      "log_b N asks: $b$ to what power is $N$?",
+      "Multiply $b$ by itself, counting the factors: $b$, b², b³, …",
+      "The number of factors that reaches $N$ is the logarithm.",
     ],
     watch:
       "The logarithm is the exponent, not N ÷ b: log base 2 of 8 is 3, not 4.",

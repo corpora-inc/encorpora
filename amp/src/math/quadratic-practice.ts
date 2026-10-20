@@ -84,7 +84,7 @@ function solveFactor(a: number, b: number): string {
   const equation = `${polynomial(0, a, b)} = 0`;
   if (b === 0)
     return a === 1
-      ? "The factor x is zero exactly when x = 0."
+      ? "The factor $x$ is zero exactly when x = 0."
       : `Divide both sides of ${equation} by (${a}): x = 0.`;
   const operation = b < 0 ? `add ${-b} to` : `subtract ${b} from`;
   return `In ${equation}, ${operation} both sides${a === 1 ? "" : `, then divide both sides by (${a})`}: x = ${fraction(-b, a)}.`;
@@ -175,7 +175,7 @@ export function generateQuadraticProblem(
         lb = 0;
         ra = A;
         rb = B;
-        hint = `Every term of ${expanded} has a factor of x. Factor out x, then set each of the two factors equal to zero.`;
+        hint = `Every term of ${expanded} has a factor of $x$. Factor out $x$, then set each of the two factors equal to zero.`;
         factoring.push(
           `Factor out x: ${expanded} = x(${polynomial(0, A, B)}) = 0.`,
         );
@@ -228,7 +228,7 @@ export function generateQuadraticProblem(
       {
         roots: roots.map(({ n, d }) => ({ n: -n, d })),
         feedback:
-          "Solving ax + b = 0 requires subtracting b before dividing by a. Check the sign of each root.",
+          "Solving ax + b = 0 requires subtracting $b$ before dividing by $a$. Check the sign of each root.",
       },
       ...[1, -1, 2, -2].map((shift) => ({
         roots: roots.map(({ n, d }) => ({ n: n + shift * d, d })),

@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem } from "../src/math/engine";
+import { dollarsAreMath } from "./fixtures/math-typography";
 import { twoVariableTemplates } from "../src/math/two-variable-practice";
 import { templateRole } from "../src/learning/placement";
 import { layoutScene } from "../src/math/scene";
@@ -14,17 +15,26 @@ test("Algebra 1 two-variable items are valid, deterministic assessment items", (
       const problem = generateProblem(template.id, `alg1-${i}`);
       assert.deepEqual(problem, generateProblem(template.id, `alg1-${i}`));
       generatedProblemSchema.parse(problem);
-      // Money is written in words: "$" opens a math span in MathText.
+      // Money is written in words: "$" only opens and closes math spans.
       assert.ok(
-        !/\$/.test(
-          JSON.stringify([
-            problem.public.prompt,
-            problem.public.response,
-            problem.hint,
-            problem.explanation,
-            problem.choiceFeedback ?? null,
-          ]),
-        ),
+        [
+          problem.public.prompt,
+          problem.public.response,
+          problem.hint,
+          problem.explanation,
+          problem.choiceFeedback ?? null,
+        ]
+          .flat()
+          .flatMap((v) =>
+            typeof v === "string"
+              ? [v]
+              : v && typeof v === "object"
+                ? Object.values(v).flatMap((w) =>
+                    typeof w === "string" ? [w] : JSON.stringify(w),
+                  )
+                : [],
+          )
+          .every(dollarsAreMath),
         template.id,
       );
       assert.equal(templateRole(template.id), "assessment");

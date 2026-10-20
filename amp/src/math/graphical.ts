@@ -108,15 +108,15 @@ export function generateGraphicalProblem(
         yMax: 5,
         points: [{ x, y, label: "P" }],
       };
-      prompt = `What is the ${coordinate}-coordinate of point P? Each grid step is one unit.`;
+      prompt = `What is the $${coordinate}$-coordinate of point $P$? Each grid step is one unit.`;
       answer = `${coordinate === "x" ? x : y}`;
       hint =
         coordinate === "x"
-          ? "For the x-coordinate, count grid steps from the vertical axis straight across to P: right is positive, left is negative. Ignore how high P is."
-          : "For the y-coordinate, count grid steps from the horizontal axis straight up or down to P: up is positive, down is negative. Ignore how far across P is.";
+          ? "For the $x$-coordinate, count grid steps from the vertical axis straight across to $P$: right is positive, left is negative. Ignore how high $P$ is."
+          : "For the $y$-coordinate, count grid steps from the horizontal axis straight up or down to $P$: up is positive, down is negative. Ignore how far across $P$ is.";
       explanation = [
-        `Point P is at (${x}, ${y}).`,
-        `Its ${coordinate}-coordinate is ${answer}.`,
+        `Point $P$ is at (${x}, ${y}).`,
+        `Its $${coordinate}$-coordinate is ${answer}.`,
       ];
       break;
     }
@@ -141,14 +141,14 @@ export function generateGraphicalProblem(
         lines: [{ m, b: y1 - m * x1 }],
       };
       prompt =
-        "What is the slope of the line through A and B? Each grid step is one unit.";
+        "What is the slope of the line through $A$ and $B$? Each grid step is one unit.";
       answer = fraction(rise, run);
       responseKind = "fraction";
       hint = rise
-        ? `Count from A to B: steps right for the run, then steps ${rise < 0 ? "down for the rise, which is negative because the line falls" : "up for the rise"}. Slope = rise ÷ run.`
-        : "A and B are at the same height. Count the rise from A to B, then divide it by the run.";
+        ? `Count from $A$ to $B$: steps right for the run, then steps ${rise < 0 ? "down for the rise, which is negative because the line falls" : "up for the rise"}. Slope = rise ÷ run.`
+        : "$A$ and $B$ are at the same height. Count the rise from $A$ to $B$, then divide it by the run.";
       explanation = [
-        `A = (${x1}, ${y1}) and B = (${x2}, ${y2}).`,
+        `$A = (${x1}, ${y1})$ and $B = (${x2}, ${y2})$.`,
         `The vertical change is ${y2} − (${y1}) = ${rise}; the horizontal change is ${x2} − (${x1}) = ${run}.`,
         `Slope = ${rise}/${run} = ${answer}.`,
       ];

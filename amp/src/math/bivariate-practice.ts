@@ -497,7 +497,7 @@ function slopeMeaning(r: Random): Draft {
       `Slope: (${f(x2)} − ${f(x1)}) ÷ (${x2} − ${x1}) = ${signed(m)}.`,
       `The slope is the change in ${c.names[1]} for each additional ${xOne}. ${correct}`,
       c.intercept
-        ? `The y-intercept, ${b}, is a different fact: the predicted ${c.names[1]} when ${c.names[0]} is 0.`
+        ? `The $y$-intercept, ${b}, is a different fact: the predicted ${c.names[1]} when ${c.names[0]} is 0.`
         : "The slope is a rate: it describes change, not any single point on the line.",
     ],
     choices: [
@@ -505,7 +505,7 @@ function slopeMeaning(r: Random): Draft {
       {
         label: c.zero(b, x1, f(x1)),
         feedback: c.intercept
-          ? `That is the y-intercept, ${b}: where the line meets ${c.names[0]} = 0. The slope is the change for each additional ${xOne}.`
+          ? `That is the $y$-intercept, ${b}: where the line meets ${c.names[0]} = 0. The slope is the change for each additional ${xOne}.`
           : `That reads one point on the line, not the change for each additional ${xOne}.`,
       },
       {

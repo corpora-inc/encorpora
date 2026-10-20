@@ -21,7 +21,7 @@ export const realNumberTemplates: readonly TemplateMetadata[] = (
       "classify-real-number",
       "Rational or irrational",
       "irrational-numbers",
-      "Identify the one rational or irrational number among roots, repeating decimals, fractions and multiples of π.",
+      "Identify the one rational or irrational number among roots, repeating decimals, fractions and multiples of $\\pi$.",
       true,
     ],
     [
@@ -54,7 +54,7 @@ export const realNumberTemplates: readonly TemplateMetadata[] = (
     ],
     [
       "solve-square-cube-equation",
-      "Solve x² = p and x³ = p",
+      "Solve square and cube equations",
       "approximate-roots",
       "Find every real solution of a square or cube equation, using root symbols when needed.",
       true,
@@ -102,7 +102,7 @@ const hints: Record<string, string> = {
   "classify-real-number":
     "A rational number can be written as a fraction of two integers; its decimal ends or repeats. Check each number: is it a perfect square or cube under the root, a fraction, or a decimal that ends or repeats?",
   "repeating-decimal-to-fraction":
-    "Call the decimal x. Multiply x by a power of 10 that shifts one full repeating block past the decimal point, then subtract so the endless tails cancel.",
+    "Call the decimal $x$. Multiply $x$ by a power of 10 that shifts one full repeating block past the decimal point, then subtract so the endless tails cancel.",
   "root-between-integers":
     "Find the perfect squares (or cubes) just below and just above the number under the root. Their roots are the two whole numbers.",
   "root-nearest-tenth":
@@ -110,7 +110,7 @@ const hints: Record<string, string> = {
   "compare-irrational-values":
     "Place each number between two consecutive tenths: square or cube tenths for a root, divide for a fraction. Numbers in different intervals are ordered by their intervals.",
   "solve-square-cube-equation":
-    "Ask which numbers give p when squared (or cubed). A positive number has two square roots, one positive and one negative; every number has exactly one real cube root, with the same sign.",
+    "Ask which numbers give $p$ when squared (or cubed). A positive number has two square roots, one positive and one negative; every number has exactly one real cube root, with the same sign.",
   "scientific-to-standard":
     "The exponent counts how many places the decimal point moves: right for a positive exponent, left for a negative one. Fill empty places with zeros.",
   "standard-to-scientific":
@@ -927,7 +927,7 @@ function toScientificCase(r: Random): Case {
     prompt: `Write ${standardText(value)} in scientific notation.`,
     answer: [{ label: `$${correct}$` }, ...picked],
     explanation: [
-      "Scientific notation writes a number as $a \\times 10^{n}$, where $1 \\le a < 10$ and n is an integer.",
+      "Scientific notation writes a number as $a \\times 10^{n}$, where $1 \\le a < 10$ and $n$ is an integer.",
       `Move the decimal point so one nonzero digit is to its left: ${standardText(value)} becomes ${plain(c)}. The digits do not change.`,
       n > 0
         ? `The point moved ${places(n)} to the left, so ${plain(c)} must be multiplied by $10^{${n}}$ to restore the value.`
@@ -1177,7 +1177,7 @@ function hintFor(id: string, c: Case): string {
     case "classify-real-number":
       return `Test ${options[1]!.label}: can it be written as a quotient of two integers, or as a decimal that ends or repeats? Test each option the same way.`;
     case "repeating-decimal-to-fraction":
-      return `${first} Multiply x by the power of 10 that shifts one whole block, then subtract x so the repeating tails cancel.`;
+      return `${first} Multiply $x$ by the power of 10 that shifts one whole block, then subtract $x$ so the repeating tails cancel.`;
     case "root-between-integers":
       return `${first.split(":")[0]}. The root lies between their roots.`;
     case "root-nearest-tenth": {
@@ -1185,7 +1185,9 @@ function hintFor(id: string, c: Case): string {
       return `Which two perfect squares is ${n} between? Their roots bound the answer. Then square the tenths between those roots, and compare ${n} with the square of the halfway point.`;
     }
     case "standard-to-scientific": {
-      const written = /^Write (.+) in scientific notation\.$/.exec(c.prompt)![1]!;
+      const written = /^Write (.+) in scientific notation\.$/.exec(
+        c.prompt,
+      )![1]!;
       return `Move the decimal point in ${written} until exactly one nonzero digit is to its left. The number of places moved, and the direction, give the power of 10.`;
     }
     case "scientific-to-standard": {

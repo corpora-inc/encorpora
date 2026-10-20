@@ -15,7 +15,8 @@ function currencySpans(text: string) {
     .filter(
       (tex) =>
         /^\s|\s$/.test(tex) ||
-        /(?:^|[^\\a-zA-Z{])[a-zA-Z]{3,}/.test(
+        // Prose has a lowercase word; a named point ($JKL$) is math.
+        /(?:^|[^\\a-zA-Z{])[a-z][a-zA-Z]{2,}/.test(
           tex.replace(/\\text\{[^}]*\}/g, ""),
         ),
     );

@@ -56,7 +56,7 @@ export const percentChangePrinciples: Record<string, string> = {
   "percent-change-rate":
     "A relative change compares the amount added or removed with the original positive quantity. Expressing that ratio in hundredths gives the percent change.",
   "percent-change-final":
-    "The original quantity represents 100%. Adding or removing p% of that same original leaves (100 + p)% or (100 − p)% of it.",
+    "The original quantity represents 100%. Adding or removing $p$% of that same original leaves $(100 + p)$% or $(100 − p)$% of it.",
   "percent-change-original":
     "The final quantity equals the original times its change multiplier. Division by that nonzero multiplier reverses the multiplication and recovers the original.",
 };
