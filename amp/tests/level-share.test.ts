@@ -126,13 +126,17 @@ test("/level serves the app with the card's Open Graph tags and no learner data"
       level,
     )?.[1];
   assert.equal(og("url"), "https://amp.corpora.inc/level");
-  assert.equal(og("image"), "https://amp.corpora.inc/og/level.png");
+  assert.equal(og("image"), "https://amp.corpora.inc/og/level.jpg");
   assert.equal(og("title"), "What’s your level?");
   assert.match(
     level,
     /<meta name="twitter:card" content="summary_large_image"/,
   );
-  readFileSync(new URL("../public/og/level.png", import.meta.url));
+  // A JPEG, so Git LFS (which holds *.png here) never swaps in a pointer.
+  const image = readFileSync(
+    new URL("../public/og/level.jpg", import.meta.url),
+  );
+  assert.deepEqual([...image.subarray(0, 3)], [0xff, 0xd8, 0xff]);
   const nginx = read("docker/nginx.conf");
   assert.match(
     nginx,

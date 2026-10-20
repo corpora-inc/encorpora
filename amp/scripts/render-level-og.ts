@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 /**
- * Renders `public/og/level.png`, the Open Graph image on `/level` (the link
+ * Renders `public/og/level.jpg`, the Open Graph image on `/level` (the link
  * on a shared level card). It is the same for everyone: no learner's levels,
  * only illustrative bars, in the light theme's tokens. Run after changing
  * the look: `npx tsx scripts/render-level-og.ts`.
@@ -41,7 +41,9 @@ const page = await browser.newPage({
 });
 await page.setContent(html);
 await page.screenshot({
-  path: new URL("../public/og/level.png", import.meta.url).pathname,
+  path: new URL("../public/og/level.jpg", import.meta.url).pathname,
+  type: "jpeg",
+  quality: 92,
 });
 await browser.close();
-console.log("Wrote public/og/level.png");
+console.log("Wrote public/og/level.jpg");
