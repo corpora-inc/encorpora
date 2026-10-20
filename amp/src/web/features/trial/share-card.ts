@@ -37,7 +37,10 @@ function roundRect(
   r: number,
 ) {
   ctx.beginPath();
-  ctx.roundRect(x, y, w, h, Math.min(r, h / 2, w / 2));
+  // Older Safari lacks roundRect: square corners rather than no card.
+  if (typeof ctx.roundRect === "function")
+    ctx.roundRect(x, y, w, h, Math.min(r, h / 2, w / 2));
+  else ctx.rect(x, y, w, h);
 }
 
 /** One estimate on a track: band = likely range, dot = best guess. */
