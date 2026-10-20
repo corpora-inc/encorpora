@@ -513,14 +513,14 @@ try {
       continue;
     for (const kind of ["lesson", "workbook", "solutions"] as const) {
       await printPage.setContent(publicationHtml(lesson, kind));
-      // Coordinate planes, clocks and number lines now draw through the scene
-      // renderer (#1177); they are the same printed graphs (99 + 25 + 25 of
-      // the 199) and get the same clipping and overlap checks.
+      // Coordinate planes, clocks and number lines (#1177) and bar charts now
+      // draw through the scene renderer; they are the same printed graphs
+      // and get the same clipping and overlap checks.
       const result = await printPage
         .locator(
           [
             ".graphical-figure",
-            ...["coordinate-plane", "clock", "number-line"].map(
+            ...["coordinate-plane", "clock", "number-line", "bar-chart"].map(
               (kind) => `.scene-figure[data-kind="${kind}"]`,
             ),
           ].join(", "),

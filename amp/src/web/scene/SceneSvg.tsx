@@ -118,6 +118,22 @@ function Item({
         />
       );
     case "rect":
+      if (d.roundTop && d.rx) {
+        const r = Math.min(d.rx, d.w / 2, d.h),
+          b = d.y + d.h;
+        return (
+          <path
+            {...common}
+            d={`M${d.x} ${b}V${d.y + r}A${r} ${r} 0 0 1 ${d.x + r} ${d.y}H${d.x + d.w - r}A${r} ${r} 0 0 1 ${d.x + d.w} ${d.y + r}V${b}Z`}
+            stroke={
+              strokeOf(d.stroke) ?? (state?.highlight ? ink.warm : "none")
+            }
+            strokeWidth={state?.highlight ? (d.sw ?? 0) + 2.5 : d.sw}
+            fill={fillOf(d.fill)}
+            fillOpacity={d.opacity}
+          />
+        );
+      }
       return (
         <rect
           {...common}

@@ -46,21 +46,36 @@ export const barChartSchema = z
   );
 export type BarChart = z.infer<typeof barChartSchema>;
 
-/** Pixel geometry from the top left; compile divides by the scale. */
-const PLOT = 150,
-  TOP = 36,
-  WIDTH = 280;
+/** Pixel geometry from the top left; compile divides by the scale. The
+ * plot grows with the number of gridlines, up to a ceiling, so a fine scale
+ * keeps its gridlines apart (docs/figures.md, Charts). */
+const BAND = 80,
+  WIDTH = 280,
+  TOP = 30,
+  GRID_GAP = 20,
+  LABEL_GAP = 28,
+  RADIUS = 3;
 export function barChartGeometry(c: BarChart) {
   const gridlines = ticks(0, c.max, c.step);
-  const left =
-    Math.max(...gridlines.map((v) => typeset(numText(v), "math", "sm").width)) +
-    14;
-  const y = (v: number) => TOP + PLOT - (PLOT * v) / c.max;
+  const steps = gridlines.length - 1;
+  const plot = Math.min(200, Math.max(150, steps * GRID_GAP));
+  // Label every gridline when labels sit well apart, else every 2nd or
+  // 5th: the unlabeled hairlines between still carry the reading.
+  const stride =
+    [1, 2, 5, 10].find((k) => (plot / steps) * k >= LABEL_GAP - 0.5) ?? 20;
+  const labeled = gridlines.filter((_, i) => i % stride === 0);
+  const widest = Math.max(
+    ...labeled.map((v) => typeset(numText(v), "math", "sm").width),
+  );
+  const left = widest + 14;
+  const y = (v: number) => TOP + plot - (plot * v) / c.max;
   const n = c.bars?.length ?? c.bins!.counts.length;
-  const slot = WIDTH / n;
+  // Separate bars keep one band width and a 0.6 bar-to-band ratio; bins
+  // share the full width and touch.
+  const slot = c.bars ? Math.min(BAND, WIDTH / n) : WIDTH / n;
   const bars = c.bars
     ? c.bars.map((b, i) => {
-        const w = Math.min(48, slot * 0.6);
+        const w = slot * 0.6;
         return {
           x: left + slot * i + (slot - w) / 2,
           w,
@@ -76,11 +91,13 @@ export function barChartGeometry(c: BarChart) {
       }));
   return {
     left,
-    right: left + WIDTH,
+    widest,
+    right: left + slot * n,
     top: TOP,
-    bottom: TOP + PLOT,
+    bottom: TOP + plot,
     y,
     gridlines,
+    labeled: new Set(labeled),
     bars,
   };
 }
@@ -91,51 +108,62 @@ registerComponent("barChart", {
     const g = barChartGeometry(c);
     const P = (x: number, y: number): [number, number] => [x / s, -y / s];
     const prims: Prim[] = [];
-    for (const v of g.gridlines)
-      prims.push(
-        {
+    // Hairline gridlines carry the reading; the baseline is drawn last,
+    // over the bars' feet.
+    for (const v of g.gridlines) {
+      if (v)
+        prims.push({
           type: "segment",
           id: `grid.${v}`,
           from: P(g.left, g.y(v)),
           to: P(g.right, g.y(v)),
-          stroke: v ? "grid" : "ink",
-          width: v ? 1 : 2,
-        },
-        {
+          stroke: "grid",
+          width: 1,
+        });
+      if (g.labeled.has(v))
+        prims.push({
           type: "text",
           id: `label.y.${v}`,
           at: P(g.left - 8, g.y(v)),
           text: numText(v),
           size: "sm",
+          color: "muted",
           align: [1, 0],
           data: { "tick-label": v },
-        },
-      );
+        });
+    }
     if (c.unit)
+      // A quiet caption over the scale, flush with its labels.
       prims.push({
         type: "text",
         id: "unit",
-        at: P(g.left - 8, g.top - 14),
+        at: P(g.left - 8 - g.widest, g.top - 14),
         text: c.unit,
         font: "sans",
         size: "sm",
-        align: [1, 1],
+        color: "muted",
+        align: [-1, 1],
       });
     for (const [i, b] of g.bars.entries()) {
       const value = c.bars ? c.bars[i]!.value : c.bins!.counts[i]!;
-      if (value > 0)
+      const h = g.bottom - b.top;
+      if (value > 0) {
+        // Separate bars round their top corners, flush with the baseline;
+        // touching bins stay square, parted by a paper hairline.
         prims.push({
           type: "rect",
           id: `bar.${i}`,
           at: P(b.x, g.bottom),
-          size: [b.w / s, (g.bottom - b.top) / s],
-          fill: "accent-strong",
-          stroke: "accent",
-          width: 2,
+          size: [b.w / s, h / s],
+          fill: "accent",
+          ...(c.bars
+            ? { radius: RADIUS, roundTop: true }
+            : { stroke: "paper", width: 1 }),
           data: c.bars
             ? { bar: c.bars[i]!.label, value }
             : { bin: c.bins!.start + i * c.bins!.width, count: value },
         });
+      }
       if (c.bars)
         prims.push({
           type: "text",
@@ -158,8 +186,8 @@ registerComponent("barChart", {
             id: `edge.${i}`,
             at: P(x, g.bottom),
             dir: [0, 1],
-            length: 12,
-            stroke: "ink",
+            length: 6,
+            stroke: "axis",
             data: { edge: v },
           },
           {
@@ -168,6 +196,7 @@ registerComponent("barChart", {
             at: P(x, g.bottom + 8),
             text: numText(v),
             size: "sm",
+            color: "muted",
             align: [0, -1],
           },
         );
@@ -180,16 +209,17 @@ registerComponent("barChart", {
           text: c.xUnit,
           font: "sans",
           size: "sm",
+          color: "muted",
           align: [1, -1],
         });
     }
     prims.push({
       type: "segment",
-      id: "axis.y",
-      from: P(g.left, g.top),
-      to: P(g.left, g.bottom),
+      id: "grid.0",
+      from: P(g.left, g.bottom),
+      to: P(g.right, g.bottom),
       stroke: "ink",
-      width: 2,
+      width: 1.5,
     });
     return prims;
   },
