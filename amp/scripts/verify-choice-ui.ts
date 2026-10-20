@@ -234,16 +234,25 @@ try {
           .locator(".solution-answer")
           .getAttribute("data-text"))!.includes(correct.label),
       );
+      // Labels are typeset (#1217): read each formula as the text it renders.
+      const panelText = await page
+        .locator(".solution-panel")
+        .evaluate((panel) => {
+          const copy = panel.cloneNode(true) as HTMLElement;
+          copy
+            .querySelectorAll<HTMLElement>(".math[data-plain]")
+            .forEach((math) => math.replaceWith(math.dataset.plain!));
+          return copy.textContent ?? "";
+        });
+      // A formula carries its closing punctuation and a typographic minus, so
+      // compare the sequence of tokens, not spacing or sentence punctuation.
+      const tokens = (text: string) =>
+        text.replace(/−/g, "-").replace(/[\s;.,:!?]/g, "");
       assert.ok(
-        (await page.locator(".solution-panel").innerText()).includes(
-          wrong.label,
-        ),
+        tokens(panelText).includes(tokens(wrong.label)),
+        `${template.id}: the panel names the chosen ${wrong.label}`,
       );
-      assert.ok(
-        !(await page.locator(".solution-panel").innerText()).includes(
-          "option-",
-        ),
-      );
+      assert.ok(!panelText.includes("option-"));
       assert.equal(
         await page
           .locator(".solution-panel li")
