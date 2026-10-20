@@ -1,5 +1,6 @@
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
+import { spokenMath } from "../src/web/MathText";
 import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
 import { linearSystemTemplates } from "../src/math/linear-system-practice.js";
@@ -109,7 +110,7 @@ try {
           await page
             .locator(`input[type="radio"][value="${option.id}"]`)
             .getAttribute("aria-label"),
-          option.label,
+          spokenMath(option.label),
           "Typesetting must preserve each answer’s accessible source label",
         );
       }
@@ -191,7 +192,9 @@ try {
         await page.getByRole("radio").nth(1).isChecked(),
         "Native radio arrow selection",
       );
-      await page.getByRole("radio", { name: wrong.label, exact: true }).check();
+      await page
+        .getByRole("radio", { name: spokenMath(wrong.label), exact: true })
+        .check();
       await page.screenshot({
         path: new URL(`${template.id}-${size.width}.png`, directory).pathname,
       });

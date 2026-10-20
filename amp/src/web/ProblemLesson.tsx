@@ -37,7 +37,9 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <dl className="lesson-terms">
           {lesson.terms.map(({ term, meaning }) => (
             <div key={term}>
-              <dt>{term}</dt>
+              <dt>
+                <MathText text={term} />
+              </dt>
               <dd>
                 <MathText text={meaning} />
               </dd>

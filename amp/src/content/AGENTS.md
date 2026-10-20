@@ -11,3 +11,16 @@ A lesson must teach its stated objective to a learner who has not read another A
 - Inspect rendered Letter and A4 pages. Fractions, roots, exponents, and adjacent steps need visible separation; a bounding-box pass alone does not establish good spacing. Check figure labels, page breaks, answer labels, and the relationship between prose and diagrams.
 - Before applying a revised lesson pattern broadly, independently review a representative lesson for mathematical meaning and first-time-learner clarity, and inspect its exported pages visually.
 - Every problem hint is one teaching step for its own instance: the generator writes it from the template's givens, names at least one number the prompt states, points to the method's first move, and never states the answer. Every method has a `watch` line (the most common error, stated as what to do) and at least two steps. `tests/instance-hints.test.ts` enforces these rules for every template.
+
+## Mathematical typography
+
+Every mathematical symbol, variable, expression or equation a learner reads is typeset as math. This covers prompts, hints, methods (steps, terms and `watch`), principles, lessons (all text and worked examples), choice labels, choice feedback, explanations, worksheets, publications and answer-field labels.
+
+- Wrap each variable in TeX: `$a$`, `$r = 12 \div 2 = 6$ cm`, `$C$`, `$x$-axis`. KaTeX sets variables in italic. A lone letter is never typeset on its own, so a bare "a" or "r" reads as an upright word.
+- Write `$\pi$`, never the word "pi" or a bare "π", wherever the number is meant. The one sentence that introduces the name may say "the ratio $\pi$ (pi)".
+- Units are text outside the math (`$r = 4$ m`, `$9\pi$ square centimeters`), or `\text{cm}` inside it, consistently within a text.
+- The article "a", the pronoun "I", and a letter that names an object ("Store A", "Shape B", "an L-shaped face") are prose. The variable $a$, a point $P$ and an event $A$ are math.
+- A plain formula with an operation ("3 × 4 = 12", "r = 6 ÷ 2") is typeset automatically by MathText and PrintMathText; prefer explicit `$…$` in new text. Never wrap a bare number alone (`$12$` prints as currency).
+- Titles (template, lesson and section) render as plain text: keep them free of TeX and symbols.
+
+`tests/math-typography.test.ts` enforces this for every template over 20 seeds and for all static lesson, method and principle text, through both typesetters. Its allowlist (`tests/fixtures/math-typography.ts`) is short and gives a reason for each entry; extend it only for prose that cannot be math.

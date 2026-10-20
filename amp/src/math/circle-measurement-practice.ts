@@ -96,16 +96,16 @@ export function circleMeasurementPrintCase(
   const opening = `A circle has a ${dimension} of ${plain(given)} cm.`;
   const prompt =
     angle === null
-      ? `${opening} Its ${isArea ? "area" : "circumference"} is $a\\pi$ ${unit}. What is a?`
+      ? `${opening} Its ${isArea ? "area" : "circumference"} is $a\\pi$ ${unit}. What is $a$?`
       : isArc
-        ? `${opening} An arc corresponds to a central angle of ${angle} degrees. Its length is $a\\pi$ cm. What is a?`
-        : `${opening} A sector has a central angle of ${angle} degrees. Its area is $a\\pi$ square centimeters. What is a?`;
+        ? `${opening} An arc corresponds to a central angle of ${angle} degrees. Its length is $a\\pi$ cm. What is $a$?`
+        : `${opening} A sector has a central angle of ${angle} degrees. Its area is $a\\pi$ square centimeters. What is $a$?`;
   const radiusStep = isRadius
-    ? `The given length is the radius: r = ${plain(radius)} cm.`
-    : `A diameter is twice the radius. Divide by 2: r = ${plain(given)} ÷ 2 = ${plain(radius)} cm.`;
+    ? `The given length is the radius: $r = ${tex(radius)}$ cm.`
+    : `A diameter is twice the radius. Divide by 2: $r = ${tex(given)} \\div 2 = ${tex(radius)}$ cm.`;
   const fullStep = isArea
-    ? `Square the radius: ${plain(radius)} × ${plain(radius)} = ${plain(full)}. The full circle has area $A = \\pi r^2 = ${pi(full)}$ square centimeters.`
-    : `Twice the radius is ${plain(diameter)} cm. The full circumference is $C = 2\\pi r = ${pi(full)}$ cm.`;
+    ? `Square the radius: $${tex(radius)} \\times ${tex(radius)} = ${tex(full)}$. The full circle has area $A = \\pi r^2 = ${pi(full)}$ square centimeters.`
+    : `Twice the radius is $d = ${tex(diameter)}$ cm. The full circumference is $C = 2\\pi r = ${pi(full)}$ cm.`;
   let explanation: string[], hint: string;
   if (angle === null) {
     explanation = [
@@ -118,23 +118,23 @@ export function circleMeasurementPrintCase(
     ];
     hint = isArea
       ? isRadius
-        ? `Area = π × r × r, and the radius is ${plain(given)} cm. The coefficient a is the number multiplying π: square the radius.`
-        : `Area = π × r × r, and r is half the diameter. Halve ${plain(given)} cm first, then square it.`
+        ? `The area is $A = \\pi r^2$, and the radius is ${plain(given)} cm. The coefficient $a$ is the number multiplying $\\pi$: square the radius.`
+        : `The area is $A = \\pi r^2$, and $r$ is half the diameter. Halve ${plain(given)} cm first, then square it.`
       : isRadius
-        ? `Circumference = π × diameter. The radius is ${plain(given)} cm, so first find the diameter, twice the radius.`
-        : `Circumference = π × diameter, and the diameter is ${plain(given)} cm. The coefficient a is the number multiplying π.`;
+        ? `The circumference is $C = \\pi d$, where $d$ is the diameter. The radius is ${plain(given)} cm, so first find the diameter, twice the radius.`
+        : `The circumference is $C = \\pi d$, and the diameter is ${plain(given)} cm. The coefficient $a$ is the number multiplying $\\pi$.`;
   } else {
     const comparison = angle < 180 ? "<" : angle === 180 ? "=" : ">";
     const half = divide(full, q(2));
     explanation = [
       radiusStep,
-      `A full turn is 360 degrees. The ${isArc ? "arc" : "sector"} covers ${angle}/360 = ${plain(part)} of the full circle.`,
+      `A full turn is 360 degrees. The ${isArc ? "arc" : "sector"} covers $\\frac{${angle}}{360} = ${tex(part)}$ of the full circle.`,
       fullStep,
       `Take that same fraction of the ${isArc ? "circumference" : "circle's area"}: $${tex(part)} \\times ${pi(full)} = ${pi(coefficient)}$ ${unit}.`,
       `The coefficient is the number multiplying $\\pi$, so $a = ${tex(coefficient)}$.`,
       `Check against half the circle: $${angle} ${comparison} 180$ and $${tex(coefficient)} ${comparison} ${tex(half)}$. Both comparisons agree because the measure scales with the central angle.`,
     ];
-    hint = `Find what fraction of a full turn ${angle} degrees is. Then take that fraction of the full ${isArc ? "circumference" : "area"}, found from the ${dimension} of ${plain(given)} cm as a multiple of π.`;
+    hint = `Find what fraction of a full turn ${angle} degrees is. Then take that fraction of the full ${isArc ? "circumference" : "area"}, found from the ${dimension} of ${plain(given)} cm as a multiple of $\\pi$.`;
   }
   const tags = [
     dimension,
@@ -167,7 +167,7 @@ export function circleMeasurementPrintCase(
         seed,
         skillId: metadata.skillId,
         prompt,
-        response: { kind: "fraction", label: "Exact coefficient a" },
+        response: { kind: "fraction", label: "Exact coefficient $a$" },
       },
       answer: plain(coefficient),
       hint,
