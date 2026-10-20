@@ -227,7 +227,7 @@ const strokeOrInk = (r: InkRole) => ink[r];
 
 /** The smallest on-screen label size, in CSS px, a figure may shrink to. A
  * hair above 12 so subpixel box rounding never lands just under it. */
-const LEGIBLE_PX = 12.05;
+export const LEGIBLE_PX = 12.05;
 
 /** Draw a laid-out scene. The box is fixed by the layout: no layout shift. */
 export function SceneSvg({

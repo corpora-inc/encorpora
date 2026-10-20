@@ -1,7 +1,10 @@
 import { choose } from "./ui-controls";
+import { typeSizes } from "../src/math/scene/type";
 import {
+  assertFigureTextScale,
   assertPhoneLandscapeSmoke,
   assertProblemReachable,
+  figureTextScale,
   isPhoneLandscape,
   isTabletLandscape,
   PHONE_LANDSCAPE,
@@ -512,6 +515,14 @@ try {
       await assertProblemReachable(
         page,
         `${template.id} ${size.width}×${size.height}`,
+      );
+      // Figure labels never outgrow the prompt or the figure type sizes,
+      // however much room the layout gives the figure.
+      assertFigureTextScale(
+        await figureTextScale(page),
+        `${template.id} ${size.width}×${size.height}`,
+        typeSizes.lg,
+        size.width >= 768,
       );
       if (TABLETS.some((t) => t.width === size.width)) {
         const why = await problemInView(page);

@@ -580,7 +580,7 @@ header {
 .lesson-example .figure {
   display: block;
   width: 100%;
-  max-height: 200px;
+  max-height: min(200px, var(--figure-cap-height, 200px));
   margin: 8px 0;
 }
 .lesson-example-prompt {

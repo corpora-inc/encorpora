@@ -256,9 +256,11 @@ nav button:hover {
   line-height: 1.55;
   letter-spacing: -0.5px;
 }
+/* --figure-cap-height (FigureTextCap.tsx) keeps a legacy figure's labels
+   within the figure type sizes: every figure max-height takes the smaller. */
 .figure {
   display: block;
-  max-height: 230px;
+  max-height: min(230px, var(--figure-cap-height, 230px));
   width: 100%;
   margin: 15px auto 28px;
 }
@@ -626,26 +628,26 @@ footer {
 }
 
 .figure[data-kind="coordinate-plane"] {
-  max-height: 360px;
+  max-height: min(360px, var(--figure-cap-height, 360px));
 }
 .figure[data-kind="coordinate-geometry"] {
-  max-height: 360px;
+  max-height: min(360px, var(--figure-cap-height, 360px));
 }
 .figure[data-kind="clock"] {
-  max-height: 300px;
+  max-height: min(300px, var(--figure-cap-height, 300px));
 }
 .figure[data-kind="number-line"] {
-  max-height: none;
+  max-height: var(--figure-cap-height, none);
   /* Wide enough to read every tick; labels stay near prose size. */
   max-width: 480px;
 }
 .figure[data-kind="balance-scale"] {
   max-width: 480px;
-  max-height: none;
+  max-height: var(--figure-cap-height, none);
 }
 .figure[data-kind="inequality-lines"] {
   max-width: 520px;
-  max-height: none;
+  max-height: var(--figure-cap-height, none);
 }
 
 /* The native preview has no authenticated browser workspace. */
