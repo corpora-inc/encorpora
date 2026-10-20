@@ -908,52 +908,7 @@ header {
   font-size: clamp(32px, 6vw, 48px);
   line-height: 1.05;
 }
-.frontier-map {
-  padding: 20px 24px 24px;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  background: var(--color-surface-raised);
-}
-.frontier-map ul {
-  display: grid;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.frontier-map li {
-  display: grid;
-  grid-template-columns: min(132px, 34%) 1fr;
-  align-items: center;
-  gap: 16px;
-}
-.frontier-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-muted-text);
-}
-.frontier-track {
-  position: relative;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--color-surface-sunken);
-  box-shadow: inset 0 0 0 1px var(--color-border);
-}
-.frontier-dot {
-  position: absolute;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  border: 3px solid var(--color-surface-raised);
-  border-radius: 50%;
-  background: var(--strand);
-  box-shadow: 0 0 0 1px var(--strand);
-  transform: translate(-50%, -50%);
-  transition: left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.frontier-track.estimated .frontier-track.estimated .frontier-dot {
-  background: var(--color-surface-raised);
-}
+
 .home-birth-year {
   align-self: center;
   font-size: 13px;
@@ -963,9 +918,6 @@ header {
   .frontier-map {
     padding: 18px 16px;
     border-radius: 16px;
-  }
-  .frontier-map li {
-    gap: 12px;
   }
 }
 /* Base-ten blocks share the counters' accent role in every figure and lesson
@@ -1065,18 +1017,6 @@ button:focus:not(:focus-visible) {
 .lesson-example,
 .lesson-watch {
   background: var(--color-surface-sunken);
-}
-.frontier-heading {
-  margin-bottom: 16px;
-}
-.frontier-heading h2 {
-  margin: 0 0 2px;
-  font-size: 17px;
-}
-.frontier-heading p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--color-subtle-text);
 }
 
 .shell .lesson-sheet h2 {
@@ -1228,89 +1168,7 @@ html[data-input="pointer"] :focus-visible {
   font-weight: 600;
   color: var(--color-muted-text);
 }
-.frontier-map li {
-  display: block;
-}
-.frontier-row {
-  display: grid;
-  grid-template-columns: min(132px, 34%) 1fr;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  min-height: 36px;
-  padding: 6px 8px;
-  margin: 0 -8px;
-  box-sizing: content-box;
-  border: 0;
-  border-radius: 10px;
-  background: transparent;
-  color: inherit;
-  font-weight: inherit;
-  text-align: left;
-}
-.frontier-row:hover,
-.frontier-row[aria-expanded="true"] {
-  background: var(--color-surface-sunken);
-}
-.frontier-map ul {
-  gap: 2px;
-}
-.frontier-track {
-  height: 10px;
-  background: var(--color-surface-sunken);
-}
-.frontier-center {
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  left: 50%;
-  width: 1.5px;
-  background: var(--color-border-strong);
-}
-.frontier-range {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--strand) 32%, transparent);
-  transition:
-    left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
-    width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.frontier-track.estimated .frontier-range {
-  background: repeating-linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--strand) 22%, transparent) 0 4px,
-    transparent 4px 7px
-  );
-}
-.frontier-detail {
-  margin: 4px 0 8px calc(min(132px, 34%) + 16px);
-  font-size: 14px;
-  color: var(--color-muted-text);
-}
-.frontier-axis {
-  position: relative;
-  height: 18px;
-  margin: 10px 0 0 calc(min(132px, 34%) + 16px);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-subtle-text);
-}
-.frontier-axis span {
-  position: absolute;
-  white-space: nowrap;
-}
-.frontier-axis span:nth-child(1) {
-  left: 0;
-}
-.frontier-axis span:nth-child(2) {
-  left: 50%;
-  transform: translateX(-50%);
-}
-.frontier-axis span:nth-child(3) {
-  right: 0;
-}
+
 .answer-dock > div > .practice-tools {
   margin-top: 8px;
 }
@@ -1752,23 +1610,7 @@ html[data-input="pointer"] :focus-visible {
 .trial-save input {
   width: 100%;
 }
-@media (max-width: 360px) {
-  .frontier-row {
-    grid-template-columns: 96px 1fr;
-    gap: 12px;
-  }
-  .frontier-name {
-    font-size: 13px;
-  }
-  .frontier-axis,
-  .frontier-detail {
-    margin-left: 108px;
-  }
-  /* The heading explains the centre line; two end labels fit. */
-  .frontier-axis span:nth-child(2) {
-    display: none;
-  }
-}
+
 /* Signed out: the welcome card sits in the app column. */
 .shell.app-shell.flow > section.welcome {
   margin-bottom: 32px;

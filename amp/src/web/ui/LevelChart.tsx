@@ -76,12 +76,14 @@ export function LevelAxis({
   scale: LevelScale;
   name: (level: number) => string;
 }) {
+  // The centre label drops when it would crowd an end label.
+  const center = scaleAt(scale, scale.center);
   return (
     <span className={styles.axis} aria-hidden="true">
       <span>{name(scale.lo)}</span>
-      <span style={{ left: pct(scaleAt(scale, scale.center)) }}>
-        {name(scale.center)}
-      </span>
+      {center >= 0.25 && center <= 0.75 && (
+        <span style={{ left: pct(center) }}>{name(scale.center)}</span>
+      )}
       <span>
         {name(scale.hi)}
         {scale.hi < COLLEGE ? "+" : ""}

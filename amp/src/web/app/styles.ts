@@ -16,6 +16,7 @@ import "../book-reader.css";
 import "../early-number-reader.css";
 import "katex/dist/katex.min.css";
 import "../theme.css";
+import "../level-map.css";
 import "../premium-controls.css";
 import "../app-shell.css";
 import "../problem-flag.css";
