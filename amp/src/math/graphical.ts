@@ -116,7 +116,7 @@ export function generateGraphicalProblem(
           : "For the $y$-coordinate, count grid steps from the horizontal axis straight up or down to $P$: up is positive, down is negative. Ignore how far across $P$ is.";
       explanation = [
         `Point $P$ is at (${x}, ${y}).`,
-        `Its ${coordinate}-coordinate is ${answer}.`,
+        `Its $${coordinate}$-coordinate is ${answer}.`,
       ];
       break;
     }
@@ -148,7 +148,7 @@ export function generateGraphicalProblem(
         ? `Count from $A$ to $B$: steps right for the run, then steps ${rise < 0 ? "down for the rise, which is negative because the line falls" : "up for the rise"}. Slope = rise ÷ run.`
         : "$A$ and $B$ are at the same height. Count the rise from $A$ to $B$, then divide it by the run.";
       explanation = [
-        `A = (${x1}, ${y1}) and B = (${x2}, ${y2}).`,
+        `$A = (${x1}, ${y1})$ and $B = (${x2}, ${y2})$.`,
         `The vertical change is ${y2} − (${y1}) = ${rise}; the horizontal change is ${x2} − (${x1}) = ${run}.`,
         `Slope = ${rise}/${run} = ${answer}.`,
       ];

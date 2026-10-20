@@ -240,7 +240,7 @@ export const principles: Record<string, string> = {
   "mean-data":
     "The arithmetic mean of $n$ values is their sum divided by $n$: (x₁ + … + xₙ) ÷ $n$.",
   "simple-probability":
-    "Classical probability: for equally likely outcomes, $P(event)$ = favorable outcomes ÷ total outcomes.",
+    "Classical probability: for equally likely outcomes, $P(\\text{event})$ = favorable outcomes ÷ total outcomes.",
   // Fractions
   "unit-piece-size":
     "Unit fraction: when a whole is partitioned into $b$ equal parts, each part is 1/b of the whole.",

@@ -777,7 +777,7 @@ export function generateAngleProblem(
         },
       );
       prompt = "Which name matches this figure?";
-      hint = `Look at the end past ${A} and the end past ${B}: does each stop at its point, or keep going with an arrow?`;
+      hint = `Look at the end past $${A}$ and the end past $${B}$: does each stop at its point, or keep going with an arrow?`;
       const right =
         kind === "line"
           ? `line ${A}${B}`
@@ -789,7 +789,7 @@ export function generateAngleProblem(
           ? "Both ends have arrows: it goes on forever both ways."
           : kind === "ray"
             ? `It stops at ${A} and goes on forever past ${B}.`
-            : `It stops at both ${A} and ${B}.`,
+            : `It stops at both $${A}$ and $${B}$.`,
         `${kind === "line" ? "A line goes on both ways" : kind === "ray" ? "A ray starts at one point and goes on one way; it is named from its starting point" : "A line segment has two endpoints"}, so this is ${right}.`,
       ];
       const options: Choice[] = [
@@ -799,7 +799,7 @@ export function generateAngleProblem(
         },
         {
           label: `ray ${A}${B}`,
-          feedback: `Ray ${A}${B} starts at ${A} and keeps going through ${B}: one point and one arrow.`,
+          feedback: `Ray ${A}${B} starts at $${A}$ and keeps going through $${B}$: one point and one arrow.`,
         },
         {
           label: `line segment ${A}${B}`,
@@ -809,7 +809,7 @@ export function generateAngleProblem(
       if (kind === "ray")
         options.push({
           label: `ray ${B}${A}`,
-          feedback: `Ray ${B}${A} would start at ${B} and go on past ${A}. This ray starts at ${A}; a ray is named from its starting point.`,
+          feedback: `Ray ${B}${A} would start at $${B}$ and go on past $${A}$. This ray starts at $${A}$; a ray is named from its starting point.`,
         });
       choices = options.map((o) =>
         o.label === right ? { label: o.label, correct: true } : o,

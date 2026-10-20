@@ -493,7 +493,7 @@ function dilationCase(r: Random): Case {
         answer: image,
         explanation: [
           `A dilation multiplies the distance between any two points by the scale factor, ${frac(k)}.`,
-          `A′B′ $= ${L} × ${frac(k)} = ${frac(image)}$.`,
+          `$A$′$B'$ $= ${L} × ${frac(k)} = ${frac(image)}$.`,
         ],
         hint: `Every length in the image is ${frac(k)} times the matching length, whatever the center. Apply that to AB = ${L}.`,
         tags: ["image-length", kv < 1 ? "reduction" : "enlargement"],
@@ -538,12 +538,12 @@ function dilationCase(r: Random): Case {
     const name = axis ? "y" : "x";
     const ext = Math.max(9, ...image.map((v) => Math.ceil(Math.abs(v)) + 1));
     return {
-      prompt: `A dilation with center C${pt(C)} and scale factor ${frac(k)} maps P${pt(P)} to $P'$. What is the ${name}-coordinate of $P'$?`,
+      prompt: `A dilation with center C${pt(C)} and scale factor ${frac(k)} maps P${pt(P)} to $P'$. What is the $${name}$-coordinate of $P'$?`,
       answer,
       explanation: [
-        `The step from C to P is ${pt([P[0] - C[0], P[1] - C[1]])}.`,
+        `The step from $C$ to $P$ is ${pt([P[0] - C[0], P[1] - C[1]])}.`,
         `The dilation multiplies that step by ${frac(k)}: (${frac(mul(k, q(P[0] - C[0])))}, ${frac(mul(k, q(P[1] - C[1])))}).`,
-        `Add it to $C$: the ${name}-coordinate is ${frac(q(c))} ${p - c < 0 ? "−" : "+"} ${frac(mul(k, q(Math.abs(p - c))))} = ${frac(answer)}.`,
+        `Add it to $C$: the $${name}$-coordinate is $${frac(q(c))} ${p - c < 0 ? "−" : "+"} ${frac(mul(k, q(Math.abs(p - c))))} = ${frac(answer)}$.`,
       ],
       hint: `Measure the step from the center $C$ to $P$, not from the origin. Multiply that step by ${frac(k)}, then add it to $C$.`,
       tags: ["center", `axis-${name}`],

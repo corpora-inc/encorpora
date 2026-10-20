@@ -249,7 +249,7 @@ function uniqueSteps(rows: [Row, Row], solution: Point): string[] {
     const coefficient = known === 0 ? row.a : row.b,
       variable = known === 0 ? "x" : "y";
     steps.push(
-      `The ${directIndex === 0 ? "first" : "second"} equation contains only ${variable}: ${equation(row)}. ${coefficient === 1 ? `It gives ${variable} = ${num(solution[known])}` : `Divide both sides by ${num(q(coefficient))}: ${variable} = ${operand(row.c)} ÷ ${operand(q(coefficient))} = ${num(solution[known])}`}.`,
+      `The ${directIndex === 0 ? "first" : "second"} equation contains only $${variable}$: ${equation(row)}. ${coefficient === 1 ? `It gives ${variable} = ${num(solution[known])}` : `Divide both sides by ${num(q(coefficient))}: ${variable} = ${operand(row.c)} ÷ ${operand(q(coefficient))} = ${num(solution[known])}`}.`,
     );
   } else {
     const { key, m, n } = elimination(...rows),
@@ -260,13 +260,13 @@ function uniqueSteps(rows: [Row, Row], solution: Point): string[] {
       coefficient = known === 0 ? first.a + second.a : first.b + second.b,
       constant = add(first.c, second.c);
     steps.push(
-      `Eliminate ${key === "a" ? "x" : "y"} by making its coefficients opposites. ${m === 1 ? `Keep the first equation: ${equation(first)}` : `Multiply every term in the first equation by ${num(q(m))}: ${equation(first)}`}.`,
+      `Eliminate $${key === "a" ? "x" : "y"}$ by making its coefficients opposites. ${m === 1 ? `Keep the first equation: ${equation(first)}` : `Multiply every term in the first equation by ${num(q(m))}: ${equation(first)}`}.`,
     );
     steps.push(
       `${n === 1 ? "Keep the second equation" : `Multiply every term in the second equation by ${num(q(n))}`}: ${equation(second)}.`,
     );
     steps.push(
-      `Add corresponding sides of the two equations. The ${key === "a" ? "x" : "y"} terms cancel: ${term(coefficient, variable)} = ${signedSum(first.c, second.c)} = ${num(constant)}. Keep an original equation to recover the other coordinate.`,
+      `Add corresponding sides of the two equations. The $${key === "a" ? "x" : "y"}$ terms cancel: ${term(coefficient, variable)} = ${signedSum(first.c, second.c)} = ${num(constant)}. Keep an original equation to recover the other coordinate.`,
     );
     if (coefficient !== 1)
       steps.push(
@@ -284,7 +284,7 @@ function uniqueSteps(rows: [Row, Row], solution: Point): string[] {
     remainder = sub(row.c, product);
   if (knownCoefficient !== 0) {
     steps.push(
-      `Substitute ${knownVariable} = ${num(solution[known])} in the original ${rowIndex === 0 ? "first" : "second"} equation, ${equation(row)}. Its ${knownVariable} term is ${num(q(knownCoefficient))} × ${operand(solution[known])} = ${num(product)}.`,
+      `Substitute ${knownVariable} = ${num(solution[known])} in the original ${rowIndex === 0 ? "first" : "second"} equation, ${equation(row)}. Its $${knownVariable}$ term is ${num(q(knownCoefficient))} × ${operand(solution[known])} = ${num(product)}.`,
     );
     steps.push(
       product.n === 0
@@ -293,14 +293,14 @@ function uniqueSteps(rows: [Row, Row], solution: Point): string[] {
     );
   } else
     steps.push(
-      `The original ${rowIndex === 0 ? "first" : "second"} equation contains only ${variable}: ${equation(row)}.`,
+      `The original ${rowIndex === 0 ? "first" : "second"} equation contains only $${variable}$: ${equation(row)}.`,
     );
   if (coefficient !== 1)
     steps.push(
       `Divide both sides by ${num(q(coefficient))}: ${variable} = ${operand(remainder)} ÷ ${operand(q(coefficient))} = ${num(solution[other])}.`,
     );
   steps.push(
-    `Write x first and y second: ${pair(solution)}.`,
+    `Write $x$ first and $y$ second: ${pair(solution)}.`,
     checkLine(rows[0], solution, "first"),
     checkLine(rows[1], solution, "second"),
   );

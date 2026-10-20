@@ -236,7 +236,7 @@ function circleCase(r: Random): Case {
       prompt: `A circle has equation ${math(`${sq("x", h)} + ${sq("y", k)} = ${rr * rr}`)}. ${
         ask === "radius"
           ? "What is its radius?"
-          : `What is the ${ask}-coordinate of its center?`
+          : `What is the $${ask}$-coordinate of its center?`
       }`,
       answer: q(ask === "radius" ? rr : ask === "x" ? h : k),
       explanation: [
@@ -265,7 +265,7 @@ function circleCase(r: Random): Case {
     prompt: `A circle has equation ${math(`x² + y²${term(D, "x")}${term(E, "y")}${term(F, "")} = 0`)}. ${
       ask === "radius"
         ? "What is its radius?"
-        : `What is the ${ask}-coordinate of its center?`
+        : `What is the $${ask}$-coordinate of its center?`
     }`,
     answer: q(ask === "radius" ? rr : ask === "x" ? h : k),
     explanation: [
@@ -275,7 +275,7 @@ function circleCase(r: Random): Case {
         .replace(/= (−?\d+) \+ 0 \+ /, "= $1 + "),
       ask === "radius"
         ? `r² = ${rr * rr}, so the radius is ${rr}.`
-        : `The center is ${pt([h, k])}, so its ${ask}-coordinate is ${n(ask === "x" ? h : k)}.`,
+        : `The center is ${pt([h, k])}, so its $${ask}$-coordinate is ${n(ask === "x" ? h : k)}.`,
     ],
     hint: `Complete the square in $x$ and in $y$: the $x$-coefficient ${n(D)} halves to ${n(D / 2)}, and the $y$-coefficient ${n(E)} halves to ${n(E / 2)}.`,
     tags: ["general", ask],
@@ -460,22 +460,22 @@ function partitionCase(r: Random): Case {
   const w = windowFor([A, B], 1);
   return {
     prompt: asRatio
-      ? `Point $P$ is on segment AB, with A${pt(A)} and B${pt(B)}, and divides it so that AP : PB = ${m} : ${k}. What is the ${name}-coordinate of $P$?`
-      : `Point $P$ is ${frac(t)} of the way from A${pt(A)} to B${pt(B)}. What is the ${name}-coordinate of $P$?`,
+      ? `Point $P$ is on segment AB, with A${pt(A)} and B${pt(B)}, and divides it so that AP : PB = ${m} : ${k}. What is the $${name}$-coordinate of $P$?`
+      : `Point $P$ is ${frac(t)} of the way from A${pt(A)} to B${pt(B)}. What is the $${name}$-coordinate of $P$?`,
     answer,
     explanation: [
       asRatio
         ? `With AP : PB = ${m} : ${k}, AB has ${total} equal parts, and $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$: ${frac(t)} of the way.`
         : `$P$ is ${frac(t)} of the way along AB.`,
-      `The ${name}-coordinate changes by ${n(run)} from $A$ to $B$; ${frac(t)} of that is ${frac(q(run * m, total))}.`,
+      `The $${name}$-coordinate changes by ${n(run)} from $A$ to $B$; ${frac(t)} of that is ${frac(q(run * m, total))}.`,
       `${n(A[axis]!)} + ${frac(q(run * m, total))} = ${frac(answer)}.`.replace(
         "+ −",
         "− ",
       ),
     ],
     hint: asRatio
-      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in ${name} and add it to A's ${name}.`
-      : `Take ${frac(t)} of the change in ${name} from $A$ to $B$, then add it to A's ${name}-coordinate.`,
+      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in $${name}$ and add it to A's $${name}$.`
+      : `Take ${frac(t)} of the change in $${name}$ from $A$ to $B$, then add it to A's $${name}$-coordinate.`,
     tags: [asRatio ? "ratio" : "fraction", `axis-${name}`],
     figure: graph({ x: w.x, y: w.y, tick: w.tick })
       .id("g")

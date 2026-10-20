@@ -431,7 +431,7 @@ function contextDomainRange(r: Random): Case {
             },
           ];
     return {
-      prompt: `${ctx.setup(cap, price)} Which describes the ${ask} of ${ctx.f} in this situation?`,
+      prompt: `${ctx.setup(cap, price)} Which describes the ${ask} of $${ctx.f}$ in this situation?`,
       choices: options,
       explanation: [
         `The input $${ctx.v}$ counts ${ctx.unit}, so it is a whole number, and there are at most ${cap}: the domain is the whole numbers from 0 to ${cap}.`,
@@ -470,7 +470,7 @@ function contextDomainRange(r: Random): Case {
           { label: `0 ≤ t ≤ ${end}`, correct: true },
           {
             label: `0 ≤ t ≤ ${total}`,
-            feedback: `${total} is the starting ${ctx.what}, not a time. Find when ${F}($t$) reaches 0: ${total} ÷ ${rate}.`,
+            feedback: `${total} is the starting ${ctx.what}, not a time. Find when $${F}$($t$) reaches 0: ${total} ÷ ${rate}.`,
           },
           {
             label: `t ≥ 0`,
@@ -497,7 +497,7 @@ function contextDomainRange(r: Random): Case {
           },
         ];
   return {
-    prompt: `${ctx.setup(total, rate)} Which describes the ${ask} of ${F} in this situation?`,
+    prompt: `${ctx.setup(total, rate)} Which describes the ${ask} of $${F}$ in this situation?`,
     choices: options,
     explanation: [
       `The function starts at t = 0 and stops when ${F}(t) = 0: ${total} − ${rate}t = 0 gives t = ${total} ÷ ${rate} = ${end}.`,
@@ -1617,16 +1617,16 @@ const formulas: FormulaCase[] = [
 function formulaIsolate(r: Random): Case {
   const fc = pick(r, formulas);
   return {
-    prompt: `The formula ${fc.formula} gives ${fc.about}. Which formula gives ${fc.target} in terms of ${fc.others}?`,
+    prompt: `The formula ${fc.formula} gives ${fc.about}. Which formula gives $${fc.target}$ in terms of ${fc.others}?`,
     choices: [
       { label: fc.correct, correct: true },
       ...fc.wrong.map(([label, feedback]) => ({ label, feedback })),
     ],
     explanation: [
-      `Treat ${fc.target} as the unknown and every other letter as a known number. Undo what is done to ${fc.target}, in reverse order, on both sides.`,
+      `Treat $${fc.target}$ as the unknown and every other letter as a known number. Undo what is done to $${fc.target}$, in reverse order, on both sides.`,
       ...fc.steps,
     ],
-    hint: `In ${fc.formula}, list what is done to ${fc.target}, then undo the last of those steps first on both sides.`,
+    hint: `In ${fc.formula}, list what is done to $${fc.target}$, then undo the last of those steps first on both sides.`,
     tags: [fc.family, fc.target],
   };
 }

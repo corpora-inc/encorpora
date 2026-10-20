@@ -436,7 +436,7 @@ export const combinatoricsPrinciples: Record<string, string> = {
   "combination-probability":
     "When every group is equally likely, the probability of an event is the number of favorable groups divided by the number of all groups.",
   "independent-events-probability":
-    "For independent events, $P(A \\text{ and } B)$ = $P(A)$ × $P(B)$. The complements are independent too, and $P(at least one)$ = 1 − $P(neither)$.",
+    "For independent events, $P(A \\text{ and } B)$ = $P(A)$ × $P(B)$. The complements are independent too, and $P(\\text{at least one})$ = 1 − $P(\\text{neither})$.",
   "expected-value":
     "The expected value is the probability-weighted sum of the payoffs; subtracting a fixed cost subtracts it from the expected value.",
 };

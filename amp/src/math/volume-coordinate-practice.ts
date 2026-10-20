@@ -305,22 +305,22 @@ export function generateVolumeCoordinateProblem(
       explanation = [
         `The first number, ${x}, means ${count(x, "unit")} across from 0.`,
         `The second number, ${y}, means ${count(y, "unit")} up.`,
-        `Point ${right.label} is ${x} right and ${y} up, so it is at ${pair(x, y)}.`,
+        `Point $${right.label}$ is ${x} right and ${y} up, so it is at ${pair(x, y)}.`,
       ];
       keepOrder = true;
       choices = named.map((p) =>
         p.why === "target"
-          ? { label: p.label, correct: true }
+          ? { label: `$${p.label}$`, correct: true }
           : {
-              label: p.label,
+              label: `$${p.label}$`,
               feedback:
                 p.why === "swapped"
-                  ? `${p.label} is at ${pair(p.x, p.y)}: ${p.x} right and ${p.y} up. That reverses the pair. Go across first, then up.`
+                  ? `$${p.label}$ is at ${pair(p.x, p.y)}: ${p.x} right and ${p.y} up. That reverses the pair. Go across first, then up.`
                   : p.why === "up"
-                    ? `${p.label} is ${x} right but ${p.y} up, not ${y}. Count up from 0 along the vertical axis.`
+                    ? `$${p.label}$ is ${x} right but ${p.y} up, not ${y}. Count up from 0 along the vertical axis.`
                     : p.why === "across"
-                      ? `${p.label} is ${y} up but ${p.x} right, not ${x}. Count across from 0 along the horizontal axis.`
-                      : `${p.label} is at ${pair(p.x, p.y)}, not ${pair(x, y)}. Go ${x} right from 0, then ${y} up.`,
+                      ? `$${p.label}$ is ${y} up but ${p.x} right, not ${x}. Count across from 0 along the horizontal axis.`
+                      : `$${p.label}$ is at ${pair(p.x, p.y)}, not ${pair(x, y)}. Go ${x} right from 0, then ${y} up.`,
             },
       );
       break;

@@ -284,21 +284,21 @@ function oneStepCase(r: Random): Case {
         ? `${show(p, mode)} + ${v} = ${show(total, mode)}`
         : `${v} + ${show(p, mode)} = ${show(total, mode)}`;
       explanation.push(
-        `The equation says that adding ${show(p, mode)} to ${v} gives ${show(total, mode)}. Subtraction undoes addition, so subtract ${show(p, mode)} from both sides. Taking the same amount from two equal amounts leaves equal amounts.`,
+        `The equation says that adding ${show(p, mode)} to $${v}$ gives ${show(total, mode)}. Subtraction undoes addition, so subtract ${show(p, mode)} from both sides. Taking the same amount from two equal amounts leaves equal amounts.`,
         `${v} = ${combine(total, p, "−", mode)}.`,
         `Check: ${combine(x, p, "+", mode)}.`,
       );
-      hint = `Subtract ${show(p, mode)} from both sides so that ${v} is alone on one side.`;
+      hint = `Subtract ${show(p, mode)} from both sides so that $${v}$ is alone on one side.`;
     } else {
       const result = other;
       x = add(result, p);
       equation = `${v} − ${show(p, mode)} = ${show(result, mode)}`;
       explanation.push(
-        `The equation says that taking ${show(p, mode)} away from ${v} leaves ${show(result, mode)}. Addition undoes subtraction, so add ${show(p, mode)} to both sides. Adding the same amount to two equal amounts keeps them equal.`,
+        `The equation says that taking ${show(p, mode)} away from $${v}$ leaves ${show(result, mode)}. Addition undoes subtraction, so add ${show(p, mode)} to both sides. Adding the same amount to two equal amounts keeps them equal.`,
         `${v} = ${combine(result, p, "+", mode)}.`,
         `Check: ${combine(x, p, "−", mode)}.`,
       );
-      hint = `Add ${show(p, mode)} to both sides so that ${v} is alone on one side.`;
+      hint = `Add ${show(p, mode)} to both sides so that $${v}$ is alone on one side.`;
     }
   } else if (form === "mul") {
     const p = r(2, 12);
@@ -340,16 +340,16 @@ function oneStepCase(r: Random): Case {
         ? `${show(quotient, mode)} × ${p} = ${quotient.n * p}/${quotient.d}${q(quotient.n * p, quotient.d).d === quotient.d ? "" : ` = ${show(x, mode)}`}`
         : `${show(quotient, mode)} × ${p} = ${show(x, mode)}`;
     explanation.push(
-      `The equation says that ${v} divided into ${p} equal parts gives ${show(quotient, mode)}. Multiplication undoes division, so multiply both sides by ${p}.`,
+      `The equation says that $${v}$ divided into ${p} equal parts gives ${show(quotient, mode)}. Multiplication undoes division, so multiply both sides by ${p}.`,
       `${v} = ${product}.`,
       `Check: ${show(x, mode)} ÷ ${p} = ${show(quotient, mode)}.`,
     );
-    hint = `Multiply both sides by ${p} so that ${v} is alone on one side.`;
+    hint = `Multiply both sides by ${p} so that $${v}$ is alone on one side.`;
   }
   return {
-    prompt: `Solve for ${v}: ${equation}.`,
+    prompt: `Solve for $${v}$: ${equation}.`,
     kind: mode === "fraction" ? "fraction" : "number",
-    label: `Value of ${v}`,
+    label: `Value of $${v}$`,
     answer: answerText(x, mode),
     explanation,
     hint,
@@ -492,7 +492,7 @@ function oneStepStoryCase(r: Random): Case {
     candidates,
     explanation: [
       `In the story, ${meaning}. The equation is ${equation}.`,
-      `To find ${v}, ${inverse}.`,
+      `To find $${v}$, ${inverse}.`,
       `Check: ${
         form === "add"
           ? `${solution} + ${p} = ${given}`
@@ -503,7 +503,7 @@ function oneStepStoryCase(r: Random): Case {
               : `${solution} ÷ ${p} = ${given}`
       }.`,
     ],
-    hint: `In the story, ${meaning}. Write that operation on ${v}, then undo it to find ${v}.`,
+    hint: `In the story, ${meaning}. Write that operation on $${v}$, then undo it to find $${v}$.`,
     tags: [story.key, form],
   };
 }
@@ -639,10 +639,10 @@ function twoStepCase(r: Random): Case {
     x = q(xi);
     const inner = q(xi + c),
       right = q(p * (xi + c));
-    equation = `${p < 0 ? "−" : ""}${Math.abs(p)}(${v} ${signed(q(c))}) = ${show(right, "whole")}`;
+    equation = `$${p < 0 ? "−" : ""}${Math.abs(p)}(${v} ${signed(q(c))}) = ${show(right, "whole")}$`;
     explanation.push(
-      `The parentheses are multiplied by ${show(q(p), "whole")}. Undo that last operation first: divide both sides by ${show(q(p), "whole")}. ${v} ${signed(q(c))} = ${show(right, "whole")} ÷ ${operand(q(p))} = ${show(inner, "whole")}.`,
-      `${c > 0 ? `Subtract ${c} from` : `Add ${-c} to`} both sides: ${v} = ${show(inner, "whole")} ${c > 0 ? "−" : "+"} ${Math.abs(c)} = ${show(x, "whole")}.`,
+      `The parentheses are multiplied by ${show(q(p), "whole")}. Undo that last operation first: divide both sides by ${show(q(p), "whole")}: $${v} ${signed(q(c))} = ${show(right, "whole")} ÷ ${operand(q(p))} = ${show(inner, "whole")}$.`,
+      `${c > 0 ? `Subtract ${c} from` : `Add ${-c} to`} both sides: $${v} = ${show(inner, "whole")} ${c > 0 ? "−" : "+"} ${Math.abs(c)} = ${show(x, "whole")}$.`,
       `Check: ${show(q(p), "whole")} × (${show(x, "whole")} ${signed(q(c))}) = ${show(q(p), "whole")} × ${operand(inner)} = ${show(right, "whole")}.`,
     );
     hint = `Divide both sides by ${show(q(p), "whole")} first, then undo the ${c > 0 ? "addition" : "subtraction"} inside the parentheses.`;
@@ -695,9 +695,9 @@ function twoStepCase(r: Random): Case {
   }
   tags.push(x.n < 0 ? "negative-solution" : "positive-solution");
   return {
-    prompt: `Solve for ${v}: ${equation}.`,
+    prompt: `Solve for $${v}$: ${equation}.`,
     kind: "number",
-    label: `Value of ${v}`,
+    label: `Value of $${v}$`,
     answer: answerText(x, "whole"),
     explanation,
     hint,
@@ -996,8 +996,8 @@ function storyExplanation(s: TwoStepStory, equation: string) {
     const each = div(s.r, s.p);
     const plus = s.model === "grouped";
     steps.push(
-      `Divide both sides by ${P}: ${v} ${plus ? "+" : "−"} ${C} = ${R} ÷ ${P} = ${show(each, m)}.`,
-      `${plus ? `Subtract ${C} from` : `Add ${C} to`} both sides: ${v} = ${show(each, m)} ${plus ? "−" : "+"} ${C} = ${X}.`,
+      `Divide both sides by ${P}: $${v} ${plus ? "+" : "−"} ${C} = ${R} ÷ ${P} = ${show(each, m)}$.`,
+      `${plus ? `Subtract ${C} from` : `Add ${C} to`} both sides: $${v} = ${show(each, m)} ${plus ? "−" : "+"} ${C} = ${X}$.`,
       `Check: ${P} × (${X} ${plus ? "+" : "−"} ${C}) = ${P} × ${show(each, m)} = ${R}.`,
     );
   }
@@ -1013,7 +1013,7 @@ function twoStepWordCase(r: Random): Case {
     label: s.label,
     answer: String(s.x),
     explanation: storyExplanation(s, equation),
-    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Write one equation in ${s.v} for the total ${show(s.r, s.mode)}, then undo its steps in reverse order.`,
+    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Write one equation in $${s.v}$ for the total ${show(s.r, s.mode)}, then undo its steps in reverse order.`,
     tags: [s.key, s.model, s.mode],
   };
 }
@@ -1044,12 +1044,12 @@ function twoStepModelCase(r: Random): Case {
     })),
   ];
   return {
-    prompt: `${s.story} ${s.define} Which equation can be used to find ${s.v}?`,
+    prompt: `${s.story} ${s.define} Which equation can be used to find $${s.v}$?`,
     kind: "choice",
     label: "Choose the equation",
     candidates,
     explanation: storyExplanation(s, right.text),
-    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Find the equation where the repeated amount multiplies ${s.model === "grouped" || s.model === "grouped-minus" ? `a group containing ${s.v}` : s.v} and the result is ${show(s.r, s.mode)}.`,
+    hint: `${capitalize(s.pMeaning)}, and ${s.cMeaning}. Find the equation where the repeated amount multiplies ${s.model === "grouped" || s.model === "grouped-minus" ? `a group containing $${s.v}$` : s.v} and the result is ${show(s.r, s.mode)}.`,
     tags: [s.key, s.model, s.mode],
   };
 }
@@ -1214,7 +1214,7 @@ function contextCase(r: Random): Case {
       : { feedback: relationFeedback(rel, op, cond.quote(c)) }),
   }));
   return {
-    prompt: `${cond.text(c)} Which inequality describes all possible values of ${v}?`,
+    prompt: `${cond.text(c)} Which inequality describes all possible values of $${v}$?`,
     kind: "choice",
     label: "Choose the inequality",
     candidates,

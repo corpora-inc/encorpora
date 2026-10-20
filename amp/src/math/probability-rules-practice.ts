@@ -495,7 +495,7 @@ function eventSetCase(r: Random): Case {
     });
   const names = regionNames(g);
   const parts = expr.regions.map((x) => `${counts[x]} (${names[x]})`);
-  const setup = `Event ${A}: the ${g.one} ${g.a.has}. Event ${B}: the ${g.one} ${g.b.has}.`;
+  const setup = `Event $${A}$: the ${g.one} ${g.a.has}. Event $${B}$: the ${g.one} ${g.b.has}.`;
   const regionsText =
     expr.regions.length === 1
       ? `${expr.symbol(A, B)} is ${names[expr.regions[0]!]}.`
@@ -548,7 +548,7 @@ function eventSetCase(r: Random): Case {
 /** What an event in set notation contains, in words, for events A and B. */
 function meaning(key: string, A = "A", B = "B") {
   return {
-    union: `contains the outcomes in ${A}, in ${B} or in both`,
+    union: `contains the outcomes in $${A}$, in $${B}$ or in both`,
     intersection: `contains only the outcomes in both ${A} and ${B}`,
     complement: `contains the outcomes not in ${A}`,
     neither: `contains the outcomes in neither ${A} nor ${B}`,
@@ -668,7 +668,7 @@ function additionCase(r: Random): Case {
       prompt: `Of ${n} ${g.intro}, ${nA} ${g.a.have}, ${nB} ${g.b.have} and ${c.ab} ${g.both}. One ${g.one} is chosen at random. What is the probability that the ${g.one} ${g.a.has} or ${g.b.has}?`,
       answer: q(union, n),
       explanation: [
-        `Let ${g.a.letter} be “the ${g.one} ${g.a.has}” and ${g.b.letter} be “the ${g.one} ${g.b.has}”. ${math(`P(${g.a.letter}) = ${ratio(nA, n)}`)}, ${math(`P(${g.b.letter}) = ${ratio(nB, n)}`)} and ${math(`P(${g.a.letter} and ${g.b.letter}) = ${ratio(c.ab, n)}`)}.`,
+        `Let $${g.a.letter}$ be “the ${g.one} ${g.a.has}” and $${g.b.letter}$ be “the ${g.one} ${g.b.has}”. ${math(`P(${g.a.letter}) = ${ratio(nA, n)}`)}, ${math(`P(${g.b.letter}) = ${ratio(nB, n)}`)} and ${math(`P(${g.a.letter} and ${g.b.letter}) = ${ratio(c.ab, n)}`)}.`,
         `Adding ${nA} and ${nB} counts the ${c.ab} ${c.ab === 1 ? g.one : g.many} in the overlap twice, so subtract the overlap once: ${nA} + ${nB} − ${c.ab} = ${union}.`,
         `${math(`P(${g.a.letter} or ${g.b.letter}) = ${ratio(union, n)}`)}.`,
       ],

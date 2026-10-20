@@ -412,7 +412,7 @@ export const equationContexts: Context[] = [
     key: "tickets",
     kind: "rate",
     intro: () => "Every ticket to a show costs the same amount.",
-    shows: "n tickets cost c dollars.",
+    shows: "$n$ tickets cost $c$ dollars.",
     x: "n",
     y: "c",
     xUnit: "tickets",
@@ -469,30 +469,30 @@ function equationCase(r: Random): Case {
     choices.push(
       {
         label: `${x} = ${c}${y}`,
-        feedback: `This equation makes ${x} depend on ${y}. Here ${y} depends on ${x}, so ${y} stands alone: ${correct}.`,
+        feedback: `This equation makes $${x}$ depend on $${y}$. Here $${y}$ depends on $${x}$, so $${y}$ stands alone: ${correct}.`,
       },
       {
         label: `${y} = ${x} + ${c}`,
-        feedback: `Check a row: when ${x} = ${row.x}, ${row.x} + ${c} = ${row.x + c}, but the table shows ${row.y}. Here ${y} is ${c} times ${x}, not ${c} more.`,
+        feedback: `Check a row: when ${x} = ${row.x}, ${row.x} + ${c} = ${row.x + c}, but the table shows ${row.y}. Here $${y}$ is ${c} times $${x}$, not ${c} more.`,
       },
       {
         label: `${y} = ${wrongRate}${x}`,
-        feedback: `${wrongRate} is ${xs[0] !== 1 ? `the value of ${y} when ${x} = ${xs[0]}` : `the change in ${y} from one row to the next, when ${x} grows by ${xs[1]! - xs[0]!}`}, not the amount for each 1 of ${x}. Divide: ${row.y} ÷ ${row.x} = ${c}.`,
+        feedback: `${wrongRate} is ${xs[0] !== 1 ? `the value of $${y}$ when ${x} = ${xs[0]}` : `the change in $${y}$ from one row to the next, when $${x}$ grows by ${xs[1]! - xs[0]!}`}, not the amount for each 1 of $${x}$. Divide: ${row.y} ÷ ${row.x} = ${c}.`,
       },
     );
   } else {
     choices.push(
       {
         label: `${x} = ${y} + ${c}`,
-        feedback: `This equation makes ${x} the larger value. Here ${y} is ${c} more than ${x}, so ${correct}.`,
+        feedback: `This equation makes $${x}$ the larger value. Here $${y}$ is ${c} more than $${x}$, so ${correct}.`,
       },
       {
         label: `${y} = ${c}${x}`,
-        feedback: `Check a row: when ${x} = ${row.x}, ${c} × ${row.x} = ${c * row.x}, but the table shows ${row.y}. Here ${y} is ${c} more than ${x}, not ${c} times ${x}.`,
+        feedback: `Check a row: when ${x} = ${row.x}, ${c} × ${row.x} = ${c * row.x}, but the table shows ${row.y}. Here $${y}$ is ${c} more than $${x}$, not ${c} times $${x}$.`,
       },
       {
         label: `${y} = ${x} − ${c}`,
-        feedback: `In every row ${y} is larger than ${x}, so ${c} is added to ${x}, not subtracted.`,
+        feedback: `In every row $${y}$ is larger than $${x}$, so ${c} is added to $${x}$, not subtracted.`,
       },
     );
   }
@@ -500,16 +500,16 @@ function equationCase(r: Random): Case {
     ya = niceAxis(rows.at(-1)!.y);
   const label = (v: string, unit: string) => `${v} (${unit})`;
   const explanation = [
-    `The independent variable is ${x}: its values are chosen first. The dependent variable is ${y}: its value depends on ${x}.`,
+    `The independent variable is $${x}$: its values are chosen first. The dependent variable is $${y}$: its value depends on $${x}$.`,
     rate
       ? `In every row, ${y} ÷ ${x} is the same: ${rows.map((w) => `${w.y} ÷ ${w.x} = ${c}`).join("; ")}.`
       : `In every row, ${y} − ${x} is the same: ${rows.map((w) => `${w.y} − ${w.x} = ${c}`).join("; ")}.`,
     rate
-      ? `So ${y} is always ${c} times ${x}: ${correct}. On the graph, the points lie on a line through (0, 0) that rises ${c} for each 1 to the right.`
-      : `So ${y} is always ${c} more than ${x}: ${correct}. On the graph, the points lie on a line that crosses the vertical axis at ${c} and rises 1 for each 1 to the right.`,
+      ? `So $${y}$ is always ${c} times $${x}$: ${correct}. On the graph, the points lie on a line through (0, 0) that rises ${c} for each 1 to the right.`
+      : `So $${y}$ is always ${c} more than $${x}$: ${correct}. On the graph, the points lie on a line that crosses the vertical axis at ${c} and rises 1 for each 1 to the right.`,
   ];
   return {
-    prompt: `${ctx.intro(c)} ${ctx.shows} Which equation gives ${y} in terms of ${x}?`,
+    prompt: `${ctx.intro(c)} ${ctx.shows} Which equation gives $${y}$ in terms of $${x}$?`,
     hint: rate
       ? `Take one row: when ${x} = ${row.x}, ${y} = ${row.y}. Is ${row.y} a fixed number times ${row.x}, or a fixed number more than ${row.x}? Test the same on a second row.`
       : `The story gives ${c}. Take one row: when ${x} = ${row.x}, ${y} = ${row.y}. Is ${row.y} equal to ${c} times ${row.x}, or ${c} more than ${row.x}?`,
@@ -591,12 +591,12 @@ function valueCase(r: Random): Case {
   }[mode];
   const explanation = forward
     ? [
-        `In ${y} = ${c}${x}, ${y} is the dependent variable: it depends on ${x}. Substitute ${x} = ${input}.`,
+        `In ${y} = ${c}${x}, $${y}$ is the dependent variable: it depends on $${x}$. Substitute ${x} = ${input}.`,
         `${y} = ${c} × ${input} = ${output}.`,
         `The answer is ${output} ${unit}.`,
       ]
     : [
-        `In ${y} = ${c}${x}, ${y} is the dependent variable and ${x} is the independent variable. Substitute ${y} = ${output}: ${output} = ${c}${x}.`,
+        `In ${y} = ${c}${x}, $${y}$ is the dependent variable and $${x}$ is the independent variable. Substitute ${y} = ${output}: ${output} = ${c}${x}.`,
         `Divide both sides by ${c}: ${x} = ${output} ÷ ${c} = ${input}.`,
         `Check: ${c} × ${input} = ${output}. The answer is ${input} ${unit}.`,
       ];

@@ -636,7 +636,7 @@ function literalEquationSolve(r: Random): Case {
         },
         {
           label: `x = ${timesK(d, k)}`,
-          feedback: `${k} multiplies $x$, so divide by ${k}; do not multiply.`,
+          feedback: `$${k}$ multiplies $x$, so divide by $${k}$; do not multiply.`,
         },
         {
           label: `x = ${n(d)} − ${k}`,
@@ -644,10 +644,10 @@ function literalEquationSolve(r: Random): Case {
         },
       ],
       explanation: [
-        `Treat ${k} as a fixed nonzero number. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x = ${n(d)}.`,
-        `Divide both sides by ${k}, allowed because ${k} ≠ 0: x = ${n(d)}/${k}.`,
+        `Treat $${k}$ as a fixed nonzero number. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x = ${n(d)}.`,
+        `Divide both sides by $${k}$, allowed because ${k} ≠ 0: x = ${n(d)}/${k}.`,
       ],
-      hint: `Undo the ${b < 0 ? `− ${-b}` : `+ ${b}`} first, so that ${k}x stands alone, then divide by ${k}.`,
+      hint: `Undo the ${b < 0 ? `− ${-b}` : `+ ${b}`} first, so that ${k}x stands alone, then divide by $${k}$.`,
       tags: [frame],
     };
   }
@@ -675,7 +675,7 @@ function literalEquationSolve(r: Random): Case {
         },
       ],
       explanation: [
-        `Subtract ${q}x from both sides: (${k} − ${q})x${constText(b)} = ${n(d)}.`,
+        `Subtract ${q}x from both sides: $(${k} − ${q})x${constText(b)} = ${n(d)}$.`,
         `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: (${k} − ${q})x = ${n(top)}.`,
         `Divide by ${k} − ${q}, which is not 0 because ${k} ≠ ${q}: x = ${n(top)}/(${k} − ${q}).`,
       ],
@@ -697,18 +697,18 @@ function literalEquationSolve(r: Random): Case {
         },
         {
           label: `x = ${n(c - h)}/${k}`,
-          feedback: `Divide by ${k} first: all of x${constText(-h)} is multiplied by ${k}.`,
+          feedback: `Divide by $${k}$ first: all of x${constText(-h)} is multiplied by $${k}$.`,
         },
         {
           label: `x = ${timesK(c, k)}${constText(h)}`,
-          feedback: `${k} multiplies the group, so divide by ${k}.`,
+          feedback: `$${k}$ multiplies the group, so divide by $${k}$.`,
         },
       ],
       explanation: [
-        `${k} multiplies all of ${inner}. Divide both sides by ${k}, allowed because ${k} ≠ 0: ${inner} = ${n(c)}/${k}.`,
+        `$${k}$ multiplies all of ${inner}. Divide both sides by $${k}$, allowed because ${k} ≠ 0: ${inner} = ${n(c)}/${k}.`,
         `${h < 0 ? `Subtract ${-h} from` : `Add ${h} to`} both sides: x = ${n(c)}/${k}${constText(h)}.`,
       ],
-      hint: `${k} multiplies the whole group ${inner}: divide both sides by ${k} first, then undo the ${h < 0 ? `+ ${-h}` : `− ${h}`}.`,
+      hint: `$${k}$ multiplies the whole group ${inner}: divide both sides by $${k}$ first, then undo the ${h < 0 ? `+ ${-h}` : `− ${h}`}.`,
       tags: [frame],
     };
   }
@@ -720,13 +720,13 @@ function literalEquationSolve(r: Random): Case {
   const d = c - b;
   const res = positive ? op : flip[op];
   return {
-    prompt: `If ${k} ${positive ? ">" : "<"} 0, solve ${k}x${constText(b)} ${sym[op]} ${n(c)} for $x$.`,
+    prompt: `If $${k}$ ${positive ? ">" : "<"} 0, solve ${k}x${constText(b)} ${sym[op]} ${n(c)} for $x$.`,
     choices: [
       { label: `x ${sym[res]} ${n(d)}/${k}`, correct: true },
       {
         label: `x ${sym[positive ? flip[op] : op]} ${n(d)}/${k}`,
         feedback: positive
-          ? `${k} is positive, so dividing by ${k} keeps the direction of the inequality.`
+          ? `$${k}$ is positive, so dividing by $${k}$ keeps the direction of the inequality.`
           : `${k} is negative: dividing both sides by a negative number reverses the inequality.`,
       },
       {
@@ -741,10 +741,10 @@ function literalEquationSolve(r: Random): Case {
     explanation: [
       `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x ${sym[op]} ${n(d)}.`,
       positive
-        ? `Divide by ${k}. Because ${k} > 0, the direction stays: x ${sym[res]} ${n(d)}/${k}.`
-        : `Divide by ${k}. Because ${k} < 0, the direction reverses: x ${sym[res]} ${n(d)}/${k}.`,
+        ? `Divide by $${k}$. Because ${k} > 0, the direction stays: x ${sym[res]} ${n(d)}/${k}.`
+        : `Divide by $${k}$. Because ${k} < 0, the direction reverses: x ${sym[res]} ${n(d)}/${k}.`,
     ],
-    hint: `Isolate ${k}x first, then divide by ${k}. Since ${k} ${positive ? ">" : "<"} 0, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
+    hint: `Isolate ${k}x first, then divide by $${k}$. Since $${k}$ ${positive ? ">" : "<"} 0, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
     tags: [frame],
   };
 }
