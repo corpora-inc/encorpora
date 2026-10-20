@@ -57,6 +57,10 @@
   overflow: auto;
   padding: var(--space-5) var(--space-5) var(--space-3);
 }
+.body:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+}
 .title {
   justify-self: stretch;
   margin: 0;

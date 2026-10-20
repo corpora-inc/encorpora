@@ -1,3 +1,4 @@
+import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
@@ -192,6 +193,20 @@ async function toolbarClean(page: Page, label: string) {
   });
   assert.deepEqual(problems, [], `${label}: toolbar`);
 }
+/** No serious or critical WCAG 2.1 AA violations (at 390 light only). */
+async function axe(page: Page, label: string, tag: string) {
+  if (!tag.startsWith("390x844-light")) return;
+  const result = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+    .analyze();
+  assert.deepEqual(
+    result.violations
+      .filter((v) => ["serious", "critical"].includes(v.impact ?? ""))
+      .map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(" ")}`),
+    [],
+    `${label}: no serious accessibility violations`,
+  );
+}
 async function shoot(page: Page, name: string, tag: string, full = false) {
   await page.mouse.move(0, 0);
   await frames(page);
@@ -369,6 +384,7 @@ try {
           const box = await action.boundingBox();
           assert.ok(box && box.height >= 44, `${tag}: 44px actions`);
         }
+      await axe(page, "level check", tag);
       await shoot(page, "check-over-problem", tag);
       // Escape, a tap outside, or Continue: each closes it.
       let attempts = 0;
@@ -502,6 +518,7 @@ try {
       );
       await page.getByText(`of ${FREE}`, { exact: true }).waitFor();
       await fits(page, `${tag} map`);
+      await axe(page, "map", tag);
       await shoot(page, "map", tag, true);
       assert.deepEqual(faults, [], `${tag}: no page errors`);
       await context.close();
@@ -684,6 +701,7 @@ try {
           const box = await action.boundingBox();
           assert.ok(box && box.height >= 44, `${tag}: 44px share actions`);
         }
+      await axe(page, "share sheet", tag);
       await shoot(page, "share", tag);
       await eventually(
         () =>

@@ -131,7 +131,11 @@ function ShareSheet({
           className={styles.sheet}
           aria-describedby="share-level-privacy"
         >
-          <div className={styles.body}>
+          <div
+            className={styles.body}
+            tabIndex={0}
+            aria-label={shareCopy.open(child)}
+          >
             <RadixDialog.Title className={styles.title}>
               {shareCopy.open(child)}
             </RadixDialog.Title>
