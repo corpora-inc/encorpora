@@ -17,6 +17,7 @@ import { exponentialMethods } from "./exponential-lessons";
 import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { similarityTrigMethods } from "./similarity-trig-lessons";
 import { coordinateCircleMethods } from "./coordinate-circle-lessons";
+import { algebraStatisticsMethods } from "./algebra-statistics-lessons";
 import { powerMethods } from "./power-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
@@ -64,6 +65,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...probabilityRulesMethods,
   ...similarityTrigMethods,
   ...coordinateCircleMethods,
+  ...algebraStatisticsMethods,
   ...powerMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,

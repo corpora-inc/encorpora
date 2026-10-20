@@ -18,6 +18,7 @@ import { lessonScenes } from "./lesson-scenes";
 import { similarityTrigScenes } from "./similarity-trig-scenes";
 import { coordinateCircleScenes } from "./coordinate-circle-scenes";
 import { powerScenes } from "./power-scenes";
+import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
@@ -25,6 +26,7 @@ export const sceneIllustrations = {
   ...similarityTrigScenes,
   ...coordinateCircleScenes,
   ...powerScenes,
+  ...statisticsModelScenes,
   "scene-scatter-study": graph({
     x: [0, 10],
     y: [30, 100],

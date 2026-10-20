@@ -21,6 +21,8 @@ import { linearFunctionWorksheet } from "./linear-function-worksheets";
 import { quadraticStructureWorksheet } from "./quadratic-structure-worksheets";
 import { quadraticStructureTemplates } from "../math/quadratic-structure-practice";
 import { twoVariableWorksheet } from "./two-variable-worksheets";
+import { algebraStatisticsWorksheet } from "./algebra-statistics-worksheets";
+import { algebraStatisticsTemplates } from "../math/algebra-statistics-practice";
 import { twoVariableTemplates } from "../math/two-variable-practice";
 import { linearFunctionTemplates } from "../math/linear-function-practice";
 import { patternFunctionTemplates } from "../math/pattern-function-practice";
@@ -105,6 +107,8 @@ export function publicationHtml(
                 ? numberSystemWorksheet(id, lesson.id, edition)
                 : ratioRateTemplates.some((t) => t.id === id)
                   ? ratioRateWorksheet(id, lesson.id, edition)
+                  : algebraStatisticsTemplates.some((t) => t.id === id)
+                  ? algebraStatisticsWorksheet(id, lesson.id, edition)
                   : twoVariableTemplates.some((t) => t.id === id)
                     ? twoVariableWorksheet(id, lesson.id, edition)
                     : linearFunctionTemplates.some((t) => t.id === id)
