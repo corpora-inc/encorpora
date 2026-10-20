@@ -24,8 +24,8 @@ import {
   PHONE_LANDSCAPE,
   PHONE_REAL_BROWSERS,
   PHONE_SMALL_ANDROID,
-  TABLET_LANDSCAPE,
-  TABLET_LANDSCAPE_LARGE,
+  problemInView,
+  TABLETS,
 } from "./ui-viewports";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
@@ -342,8 +342,7 @@ try {
       { width: 320, height: 568 },
       { width: 390, height: 844 },
       ...PHONE_REAL_BROWSERS,
-      TABLET_LANDSCAPE,
-      TABLET_LANDSCAPE_LARGE,
+      ...TABLETS,
       { width: 844, height: 390 },
     ]) {
       await page.setViewportSize(size);
@@ -388,6 +387,14 @@ try {
           labels.every((l) => l.size >= 11.99),
           `${id} ${size.width}: tiny labels ${JSON.stringify(labels)}`,
         );
+        // A tablet, in either orientation, shows the prompt and the whole
+        // graph at once: no scrolling to find the figure.
+        if (TABLETS.some((t) => t.width === size.width))
+          assert.deepEqual(
+            await problemInView(page),
+            [],
+            `${fixture.name} ${size.width}×${size.height}: graph out of view`,
+          );
       }
       const clipped = await page
         .locator(".problem-content svg text")
