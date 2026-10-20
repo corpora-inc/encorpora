@@ -258,3 +258,141 @@ export async function assertPhoneLandscapeSmoke(page: Page, label: string) {
     `${label} is unusable in phone landscape:\n${problems.join("\n")}`,
   );
 }
+
+/**
+ * Real phone browser viewports, with the browser's own bars showing. Each is a
+ * strict practice target: the problem fits or scrolls cleanly, never clipped.
+ */
+export const PHONE_ANDROID_CHROME = { width: 384, height: 700 } as const;
+export const PHONE_IPHONE_SE = { width: 375, height: 667 } as const;
+export const PHONE_SMALL_ANDROID = { width: 360, height: 640 } as const;
+export const PHONE_REAL_BROWSERS = [
+  PHONE_ANDROID_CHROME,
+  PHONE_IPHONE_SE,
+  PHONE_SMALL_ANDROID,
+] as const;
+
+/**
+ * The practice problem is reachable: content may scroll inside the problem
+ * stage, but nothing may be clipped where no scrolling reaches it.
+ *
+ * - The prompt's first line sits at or below the stage's scroll origin (an
+ *   overflow above that origin can never be scrolled to).
+ * - The prompt and every figure lie inside the stage's vertical scroll range
+ *   and its width, and no non-scrolling box between them and the stage cuts
+ *   them off.
+ * - The stage ends above the answer dock, and the dock is wholly on screen.
+ * - Neither the page nor the stage overflows horizontally.
+ *
+ * Returns the stage's scroll geometry for reporting.
+ */
+export async function assertProblemReachable(page: Page, label: string) {
+  await page.evaluate("globalThis.__name ??= (f) => f");
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  const result = await page.evaluate(() => {
+    const found: string[] = [];
+    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
+    const surface = stage.closest<HTMLElement>(".practice-surface");
+    const dock = surface?.querySelector<HTMLElement>(":scope > .answer-dock");
+    const saved = stage.scrollTop;
+    stage.scrollTop = 0;
+    const s = stage.getBoundingClientRect();
+    const top = s.top + stage.clientTop;
+    const bottom = top + stage.scrollHeight;
+    const left = s.left + stage.clientLeft;
+    const right = left + stage.clientWidth;
+    const name = (e: Element) =>
+      `<${e.tagName.toLowerCase()}${typeof e.className === "string" && e.className ? `.${e.className.trim().split(/\s+/).join(".")}` : ""}>`;
+    const question = stage.querySelector(".question");
+    const content = stage.querySelector(".problem-content");
+    if (!question || !content) found.push("no prompt in the problem stage");
+    else {
+      const q = question.getBoundingClientRect();
+      if (q.top < top - 1)
+        found.push(
+          `prompt starts ${Math.round(top - q.top)}px above the scroll origin`,
+        );
+      const parts = [
+        question,
+        ...content.children,
+        ...content.querySelectorAll("svg:not(svg svg), table, img, canvas"),
+      ];
+      for (const part of new Set(parts)) {
+        const b = part.getBoundingClientRect();
+        if (b.width < 2 || b.height < 2) continue;
+        if (b.top < top - 1 || b.bottom > bottom + 1)
+          found.push(
+            `${name(part)} spans ${Math.round(b.top - top)}..${Math.round(b.bottom - top)} outside the stage's scroll range 0..${Math.round(bottom - top)}`,
+          );
+        if (b.left < left - 1 || b.right > right + 1)
+          found.push(
+            `${name(part)} spans ${Math.round(b.left - left)}..${Math.round(b.right - left)} outside the stage width ${Math.round(right - left)}`,
+          );
+        for (
+          let a = part.parentElement;
+          a && a !== stage;
+          a = a.parentElement
+        ) {
+          const style = getComputedStyle(a);
+          const clip = a.getBoundingClientRect();
+          const cutY =
+            ["hidden", "clip"].includes(style.overflowY) &&
+            (b.top < clip.top - 1 || b.bottom > clip.bottom + 1);
+          const cutX =
+            ["hidden", "clip"].includes(style.overflowX) &&
+            (b.left < clip.left - 1 || b.right > clip.right + 1);
+          if (cutY || cutX) {
+            found.push(`${name(part)} is clipped by ${name(a)}`);
+            break;
+          }
+        }
+      }
+    }
+    if (stage.scrollWidth > stage.clientWidth + 1)
+      found.push(
+        `stage overflows horizontally ${stage.scrollWidth} > ${stage.clientWidth}`,
+      );
+    if (document.documentElement.scrollWidth > innerWidth)
+      found.push(
+        `page overflows horizontally ${document.documentElement.scrollWidth} > ${innerWidth}`,
+      );
+    if (dock) {
+      const d = dock.getBoundingClientRect();
+      if (s.bottom > d.top + 1)
+        found.push(
+          `stage runs ${Math.round(s.bottom - d.top)}px under the dock`,
+        );
+      if (d.bottom > innerHeight + 1 || d.top < 0)
+        found.push(
+          `answer dock ${Math.round(d.top)}..${Math.round(d.bottom)} is off a ${innerHeight}px screen`,
+        );
+    }
+    if (s.top < 0)
+      found.push(`stage starts ${Math.round(-s.top)}px off screen`);
+    const geometry = {
+      height: stage.clientHeight,
+      scroll: stage.scrollHeight,
+      at: saved,
+    };
+    stage.scrollTop = saved;
+    return { found, geometry };
+  });
+  if (result.found.length) {
+    const name = label.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+    await mkdir("artifacts/screenshots", { recursive: true });
+    await page.screenshot({
+      path: `artifacts/screenshots/unreachable-${name}.png`,
+    });
+  }
+  assert.deepEqual(
+    result.found,
+    [],
+    `${label}: part of the problem cannot be reached\n${result.found.join("\n")}`,
+  );
+  return result.geometry;
+}

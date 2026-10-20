@@ -1,8 +1,10 @@
 import { choose } from "./ui-controls";
 import {
   assertPhoneLandscapeSmoke,
+  assertProblemReachable,
   isPhoneLandscape,
   PHONE_LANDSCAPE,
+  PHONE_REAL_BROWSERS,
   TABLET_LANDSCAPE,
   TABLET_LANDSCAPE_LARGE,
 } from "./ui-viewports";
@@ -111,6 +113,7 @@ try {
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },
+    ...PHONE_REAL_BROWSERS,
     { width: 320, height: 720 },
     { width: 320, height: 568 },
     TABLET_LANDSCAPE,
@@ -150,11 +153,15 @@ try {
         height: innerHeight,
       };
     });
+    // The question keeps its minimum and the answer action stays on screen;
+    // the problem fits or scrolls cleanly from its first line.
     assert.ok(
-      fit.stage >= 180 &&
-        fit.content <= fit.stage + 2 &&
-        fit.actionBottom <= fit.height,
+      fit.stage >= 180 && fit.actionBottom <= fit.height,
       `Question and answer action must fit ${viewport.width}×${viewport.height}: ${JSON.stringify(fit)}`,
+    );
+    await assertProblemReachable(
+      page,
+      `Practice ${viewport.width}×${viewport.height}`,
     );
     assert.ok(
       await page.evaluate(
@@ -198,6 +205,16 @@ try {
     "Next →",
   );
   const practiceHistoryLength = await page.evaluate(() => history.length);
+  // Leave the answered problem scrolled down (a temporary spacer makes any
+  // problem scroll): the next problem must open at its prompt's first line.
+  const answeredPrompt = await page.locator(".question").innerText();
+  assert.ok(
+    await page.locator(".problem-stage").evaluate((stage) => {
+      stage.style.paddingBottom = "2000px";
+      stage.scrollTop = 600;
+      return stage.scrollTop > 0;
+    }),
+  );
   await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   // The adaptive planner may serve a typed or a multiple-choice problem. The
@@ -205,6 +222,13 @@ try {
   // feedback to leave before accepting either answer form.
   await page.locator(".solution-panel").waitFor({ state: "detached" });
   await page.locator("#answer, .choice-form").first().waitFor();
+  const opened = await page.locator(".problem-stage").evaluate((stage) => {
+    const top = stage.scrollTop;
+    stage.style.paddingBottom = "";
+    return top;
+  });
+  if ((await page.locator(".question").innerText()) !== answeredPrompt)
+    assert.equal(opened, 0, "The next problem opens scrolled to its prompt");
   assert.equal(
     await page.evaluate(() => history.length),
     practiceHistoryLength,
@@ -316,9 +340,14 @@ try {
       ),
       `Overflow in ${template.id}`,
     );
+    // Real phone browsers (their bars showing) and tablets are strict: the
+    // problem fits or scrolls cleanly, never clipped or hidden under the dock.
     for (const size of [
       { width: 390, height: 844 },
+      ...PHONE_REAL_BROWSERS,
       { width: 320, height: 568 },
+      TABLET_LANDSCAPE,
+      TABLET_LANDSCAPE_LARGE,
       PHONE_LANDSCAPE,
     ]) {
       await page.setViewportSize(size);
@@ -333,15 +362,9 @@ try {
         await assertPhoneLandscapeSmoke(page, template.id);
         continue;
       }
-      const geometry = await page
-        .locator(".problem-stage")
-        .evaluate((stage) => ({
-          height: stage.clientHeight,
-          scroll: stage.scrollHeight,
-        }));
-      assert.ok(
-        geometry.scroll <= geometry.height + 2,
-        `${template.id} must fit ${size.width}×${size.height}: ${JSON.stringify(geometry)}`,
+      await assertProblemReachable(
+        page,
+        `${template.id} ${size.width}×${size.height}`,
       );
       if (
         size.width === 320 &&

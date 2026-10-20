@@ -115,7 +115,10 @@ nav button {
   min-height: 44px;
   flex: none;
 }
-/* The question keeps a readable minimum; below it the card scrolls. */
+/* The question keeps a readable minimum; below it the card scrolls.
+   Content is never unreachable: the problem fits by shrinking its figure to a
+   legible floor, and past that floor the stage scrolls from the prompt's
+   first line. The answer dock below never moves. */
 .problem-stage {
   position: relative;
   flex: 1 1 auto;
@@ -125,17 +128,35 @@ nav button {
   scrollbar-gutter: stable both-edges;
   display: flex;
   flex-direction: column;
+  /* Scroll shadows: an edge shades only while more of the problem lies past
+     it. The surface-coloured covers scroll with the content and hide each
+     shade once its edge is reached; nothing is laid out, so nothing moves. */
+  --stage-paper: var(--color-surface-raised);
+  background:
+    linear-gradient(var(--stage-paper) 40%, transparent) top / 100% 28px
+      no-repeat local,
+    linear-gradient(transparent, var(--stage-paper) 60%) bottom / 100% 28px
+      no-repeat local,
+    radial-gradient(farthest-side at 50% 0, var(--color-shadow), transparent)
+      top / 100% 14px no-repeat scroll,
+    radial-gradient(farthest-side at 50% 100%, var(--color-shadow), transparent)
+      bottom / 100% 14px no-repeat scroll;
 }
+/* Auto margins centre a problem that fits and fall to zero when it does not;
+   the content then shrinks to the stage, its figure yields height, and what
+   still overflows runs downward into the stage's scroll range. Centring with
+   justify-content would push the prompt's first line above the scroll origin,
+   where no scrolling can reach it. */
 .problem-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-height: 100%;
+  justify-content: flex-start;
   width: 100%;
   max-width: 760px;
   margin: auto;
   padding: 20px 6px;
-  flex: none;
+  flex: 0 1 auto;
+  min-height: 0;
 }
 .problem-content .question {
   flex: none;
@@ -366,6 +387,10 @@ nav button {
   margin-top: 24px;
 }
 @media (max-width: 650px) {
+  /* Phone practice drops the card: the stage sits on the screen surface. */
+  .shell.immersive .problem-stage {
+    --stage-paper: var(--color-surface);
+  }
   nav {
     gap: 4px;
   }
@@ -828,13 +853,23 @@ nav button {
   }
 }
 
-/* A unit grid needs legible labels even when the answer dock is compact.
-   Coordinate planes draw through the scene renderer since #1177. */
-.problem-content .graphical-figure[data-kind="coordinate-plane"],
-.problem-content .scene-figure[data-kind="coordinate-plane"],
-.problem-content .scene-figure[data-kind="quadrant-grid"] {
+/* A unit grid needs legible labels even when the answer dock is compact. */
+.problem-content .graphical-figure[data-kind="coordinate-plane"] {
   min-height: 130px;
   flex-shrink: 0;
+}
+/* A scene figure yields height to the prompt and answer dock down to the box
+   that keeps its smallest label at 12 px (set by SceneSvg); below that the
+   stage scrolls instead. Grids and side-by-side shapes keep a grid's minimum. */
+.problem-content .scene-figure {
+  flex: 0 1 auto;
+  min-height: max(110px, var(--scene-legible-height, 0px));
+}
+.problem-content .scene-figure[data-kind="coordinate-plane"],
+.problem-content .scene-figure[data-kind="quadrant-grid"],
+.problem-content .scene-figure[data-kind="plane-shapes"],
+.problem-content .scene-figure[data-kind="shape-puzzle"] {
+  min-height: max(130px, var(--scene-legible-height, 0px));
 }
 
 /* Keep labeled measurement models readable above the desktop answer dock. */
@@ -875,12 +910,4 @@ nav button {
 }
 .choice-model .function-display svg {
   max-height: 150px;
-}
-
-/* Lettered shapes and puzzle pieces are compared side by side at one scale:
- * keep them at least as tall as a coordinate grid. */
-.problem-content .scene-figure[data-kind="plane-shapes"],
-.problem-content .scene-figure[data-kind="shape-puzzle"] {
-  min-height: 130px;
-  flex-shrink: 0;
 }
