@@ -1,8 +1,8 @@
 import type { Page } from "playwright";
 
-/** Leave immersive practice, if active, for the home sections. */
+/** Leave immersive practice, if active, for home: "Your level". */
 export async function exitPractice(page: Page) {
-  const exit = page.getByRole("button", { name: "Exit practice", exact: true });
+  const exit = page.getByRole("link", { name: "Your level", exact: true });
   if (await exit.count()) await exit.click();
 }
 
