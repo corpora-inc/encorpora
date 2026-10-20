@@ -47,6 +47,11 @@
   .practice-surface > .answer-dock:has(.choice-form) {
     max-height: none;
   }
+  /* Choices stack in the narrow column, one statement per row, so a long
+     statement reads on one or two lines instead of four. */
+  .practice-surface > .answer-dock .choice-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
   /* Absolutely placed in the answer column's grid area: the sheet covers the
      column it replaces, whatever the answer form's height. Both lines are
      explicit; an auto end line would mean the card's padding edge. */
