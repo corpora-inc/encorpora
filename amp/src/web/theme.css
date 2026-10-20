@@ -18,13 +18,15 @@
 [data-strand="ratio"] {
   --strand: var(--color-strand-ratio);
 }
-[data-strand="algebra"] {
+[data-strand="algebra"],
+[data-strand="reasoning"] {
   --strand: var(--color-strand-algebra);
 }
 [data-strand="functions"] {
   --strand: var(--color-strand-functions);
 }
-[data-strand="geometry"] {
+[data-strand="geometry"],
+[data-strand="trigonometry"] {
   --strand: var(--color-strand-geometry);
 }
 [data-strand="measurement"] {
