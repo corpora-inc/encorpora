@@ -1,6 +1,10 @@
 import styles from "./Trial.module.css";
 
-/** A calm count of free problems used: "12 of 100 free". */
+/**
+ * The free level check's count. It leads with what has been done ("Level
+ * check · 11 answered") and shows the allowance quietly ("of 100"), because
+ * the picture is useful long before the last free problem.
+ */
 export function FreeMeter({
   answered,
   free,
@@ -18,15 +22,24 @@ export function FreeMeter({
       <span className="sr-only">
         {used} of {free} free problems used
       </span>
+      {variant === "bar" ? (
+        <span className={styles.meterText} aria-hidden="true">
+          Level check · <strong>{used}</strong> answered
+        </span>
+      ) : (
+        <span className={styles.meterText} aria-hidden="true">
+          <strong>{used}</strong>
+          <span className={styles.meterLong}> answered</span>
+        </span>
+      )}
       <span className={styles.meterTrack} aria-hidden="true">
         <span
           className={styles.meterFill}
           style={{ transform: `scaleX(${share})` }}
         />
       </span>
-      <span className={styles.meterText} aria-hidden="true">
-        <strong>{used}</strong>
-        <span className={styles.meterLong}> of {free} free</span>
+      <span className={styles.meterQuiet} aria-hidden="true">
+        <span className={styles.meterLong}>of {free}</span>
         <span className={styles.meterShort}>/{free}</span>
       </span>
     </span>

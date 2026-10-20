@@ -61,11 +61,14 @@ const shots =
   new URL("../artifacts/level-check/", import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
 
+let trials = 0;
 /** A trial with `answers` problems answered through the API. */
 async function trialWith(answers: number) {
+  // Each fixture trial comes from its own address, under the start limit.
   const created = await app.inject({
     method: "POST",
     url: "/api/v1/trials",
+    remoteAddress: `10.0.0.${++trials}`,
     payload: { birthYear: 2016 },
   });
   assert.equal(created.statusCode, 201, created.body);
@@ -118,10 +121,12 @@ async function open(
   width: number,
   height: number,
   token: string,
+  reducedMotion: "reduce" | "no-preference" = "no-preference",
 ) {
   const context = await browser.newContext({
     viewport: { width, height },
     colorScheme: theme,
+    reducedMotion,
   });
   await context.addInitScript(
     (value) => localStorage.setItem("amp.trial", value),
@@ -438,6 +443,153 @@ try {
       assert.deepEqual(faults, [], `${tag}: no page errors`);
       await context.close();
     }
+
+  // The map: every level stated inline with what it means, no rows to open,
+  // and the bars move from the last visit's levels on this device.
+  const mapped = await trialWith(PLACEMENT + 8);
+  for (const theme of ["light", "dark"] as const)
+    for (const [width, height] of viewports) {
+      const tag = `${width}x${height}-${theme}`;
+      const { context, page, faults } = await open(
+        theme,
+        width,
+        height,
+        mapped.token,
+      );
+      contexts.push(context);
+      await page.goto(`${origin}/try/map`);
+      const map = page.locator(".frontier-map");
+      await map.waitFor();
+      assert.equal(
+        await map.locator("[aria-expanded]").count(),
+        0,
+        `${tag}: no show/hide rows`,
+      );
+      const rows = map.locator(".frontier-row");
+      assert.ok((await rows.count()) >= 6, `${tag}: every area has a row`);
+      for (const row of await rows.all()) {
+        assert.match(
+          (await row.locator(".frontier-level").textContent()) ?? "",
+          /^(K|Grade \d+|Algebra 1|Geometry|Algebra 2|Precalculus|College) likely /,
+        );
+        assert.ok(
+          ((await row.locator(".frontier-meaning").textContent()) ?? "")
+            .length > 10,
+          `${tag}: each row says what its level means`,
+        );
+        const [name, level] = await Promise.all([
+          row.locator(".frontier-name").boundingBox(),
+          row.locator(".frontier-level").boundingBox(),
+        ]);
+        assert.ok(
+          name &&
+            level &&
+            (name.x + name.width <= level.x + 0.5 ||
+              name.y + name.height <= level.y + 0.5),
+          `${tag}: an area's name and level never overlap`,
+        );
+      }
+      assert.ok(
+        (await map
+          .getByText(/^At (kindergarten|K|Grade|Algebra|Geometry)/)
+          .count()) > 0,
+        `${tag}: problem types name what the level means`,
+      );
+      const meter = page.locator("main").getByText(/^Level check · /);
+      assert.equal(
+        (await meter.textContent())?.replace(/\s+/g, " "),
+        `Level check · ${PLACEMENT + 8} answered`,
+      );
+      await page.getByText(`of ${FREE}`, { exact: true }).waitFor();
+      await fits(page, `${tag} map`);
+      await shoot(page, "map", tag, true);
+      assert.deepEqual(faults, [], `${tag}: no page errors`);
+      await context.close();
+    }
+  // Between visits: the dot starts where it was last seen and moves; with
+  // reduced motion it moves without a transition.
+  for (const motion of ["no-preference", "reduce"] as const) {
+    const { context, page } = await open(
+      "light",
+      390,
+      844,
+      mapped.token,
+      motion,
+    );
+    contexts.push(context);
+    // tsx names inner functions with a helper the page lacks.
+    await context.addInitScript({ content: "globalThis.__name ??= (f) => f" });
+    await context.addInitScript((key) => {
+      localStorage.setItem(
+        key,
+        JSON.stringify({
+          strands: Object.fromEntries(
+            [
+              "number",
+              "operations",
+              "fractions",
+              "decimals",
+              "ratio",
+              "algebra",
+              "reasoning",
+              "functions",
+              "geometry",
+              "trigonometry",
+              "measurement",
+              "data",
+              "probability",
+              "modeling",
+            ].map((strand) => [strand, { level: 0, sd: 3 }]),
+          ),
+        }),
+      );
+      const seen: string[] = [];
+      (window as unknown as { __lefts: string[] }).__lefts = seen;
+      let frame = 0;
+      const record = () => {
+        const dot = document.querySelector<HTMLElement>(
+          ".frontier-row[data-measured] > span > span:last-child",
+        );
+        const left = dot?.style.left;
+        if (left && seen.at(-1) !== left) seen.push(left);
+        if (++frame < 600) requestAnimationFrame(record);
+      };
+      requestAnimationFrame(record);
+    }, `amp.level.seen.${mapped.learnerId}`);
+    await page.goto(`${origin}/try/map`);
+    await page.locator(".frontier-map").waitFor();
+    await page.waitForTimeout(1200);
+    const lefts = await page.evaluate(
+      () => (window as unknown as { __lefts: string[] }).__lefts,
+    );
+    assert.ok(
+      lefts.length >= 2,
+      `map moves from the last visit (${motion}): ${JSON.stringify(lefts)}`,
+    );
+    const duration = await page
+      .locator(".frontier-row[data-measured] > span > span:last-child")
+      .first()
+      .evaluate((node) => getComputedStyle(node).transitionDuration);
+    assert.equal(
+      duration === "0s",
+      motion === "reduce",
+      `transition ${duration} under ${motion}`,
+    );
+    const stored = await page.evaluate(
+      (key) => JSON.parse(localStorage.getItem(key) ?? "null"),
+      `amp.level.seen.${mapped.learnerId}`,
+    );
+    assert.ok(
+      Object.values(stored.strands as Record<string, { level: number }>).some(
+        (e) => e.level !== 0,
+      ),
+      "this visit's levels are remembered",
+    );
+    await context.close();
+  }
+  console.log(
+    "Map: every level and what it means inline (no show/hide), meter leads with the count, bars move from the last visit (instant with reduced motion).",
+  );
   console.log(
     `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → /try/map and back.`,
   );

@@ -1,0 +1,97 @@
+/* The level map ("Where you are"): one card, a row per area. Each row states
+   its level, draws it (ui/LevelChart), and says what the level means there.
+   Text sizes come from the shared type tokens. */
+.frontier-map {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.frontier-heading {
+  margin-bottom: var(--space-4);
+}
+.frontier-heading h2 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-body);
+}
+.frontier-heading p {
+  margin: 0;
+  font-size: var(--text-label);
+  line-height: 1.5;
+  color: var(--color-subtle-text);
+}
+.frontier-map ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.frontier-row {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.frontier-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.frontier-row-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 var(--space-3);
+  min-width: 0;
+}
+.frontier-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+  font-size: var(--text-label);
+  font-weight: 650;
+  color: var(--color-on-surface-raised);
+}
+.frontier-name::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--strand, var(--color-primary));
+}
+.frontier-level {
+  flex: none;
+  margin-left: auto;
+  font-size: var(--text-label);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--color-on-surface-raised);
+}
+.frontier-level strong {
+  font-weight: 700;
+}
+.frontier-likely {
+  font-size: var(--text-small);
+  color: var(--color-subtle-text);
+}
+.frontier-meaning {
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--color-muted-text);
+}
+.frontier-topics {
+  color: var(--color-on-surface-raised);
+}
+.frontier-axis {
+  margin-top: var(--space-2);
+}
+@media (max-width: 650px) {
+  .frontier-map {
+    padding: var(--space-4);
+    border-radius: 16px;
+  }
+}
