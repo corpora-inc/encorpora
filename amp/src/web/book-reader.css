@@ -601,3 +601,16 @@
 .percent-grid-figure .ratio-model-art {
   max-width: 300px;
 }
+
+/* Phone landscape is a usable-by-scrolling target, not a fit target: with
+   390px of height the toolbar, heading and controls left the stage too
+   little room to reach a task's buttons. The whole reader scrolls instead. */
+@media (orientation: landscape) and (max-height: 499px) {
+  .shell.app-shell > main.book-reader {
+    overflow-y: auto;
+  }
+  .shell.app-shell > main.book-reader .reader-stage {
+    flex: none;
+    overflow: visible;
+  }
+}
