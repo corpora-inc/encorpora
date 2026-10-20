@@ -1,0 +1,75 @@
+/* ── Tablets and desktops in landscape: problem left, answer right ─────────
+   Stacked, the prompt and the docked keypad left a landscape tablet about
+   310 px for the problem, so figures started below the fold. Side by side,
+   the problem gets the card's full height and the answer field, Check and
+   keypad sit in a column of their own, under the right thumb.
+
+   Everything that replaces or covers the answer (feedback, the calculator)
+   takes that column's grid area, so the problem never moves. Phones, short
+   landscape phones and portrait tablets keep the stacked layout. */
+@media (orientation: landscape) and (min-width: 900px) and (min-height: 500px) {
+  /* Two columns need the width a stacked problem left unused. */
+  .shell.app-shell.immersive {
+    max-width: 1200px;
+  }
+  .practice-surface {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(340px, 36%, 420px);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: var(--space-5);
+    padding: var(--space-3) var(--space-5) var(--space-5);
+  }
+  .practice-surface > .workspace-toolbar {
+    grid-column: 1 / -1;
+  }
+  .practice-surface > .problem-stage {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+  }
+  /* The answer column: its controls centre beside the problem, divided from
+     it by a rule rather than a second card. */
+  .practice-surface > .answer-dock {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+    width: auto;
+    margin: 0;
+    padding: 0 0 0 var(--space-5);
+    border-left: 1px solid var(--color-border);
+  }
+  /* Absolutely placed in the answer column's grid area: the sheet covers the
+     column it replaces, whatever the answer form's height. Both lines are
+     explicit; an auto end line would mean the card's padding edge. */
+  .practice-surface > .feedback,
+  .practice-surface > .calculator {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    margin: 0;
+  }
+  .practice-surface > .feedback {
+    top: 0;
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+  }
+  /* The column is narrower than a stacked prompt line; one step smaller reads
+     at the same distance and wraps less. */
+  .problem-content .question {
+    font-size: clamp(22px, 2.6vw, 30px);
+  }
+  /* The problem has the card's height to itself, so a figure may draw larger.
+     It still yields height down to its legible floor before the stage
+     scrolls. */
+  .problem-content .figure {
+    height: min(50dvh, 420px);
+    max-height: 420px;
+  }
+}
