@@ -220,6 +220,27 @@ export const figureCapabilities = [
   "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
+/** The response and figure families a client declares it can show. */
+export interface ClientCapabilities {
+  responseCapabilities: readonly string[];
+  figureCapabilities: readonly string[];
+}
+/** The one rule for what a client may be sent: it declares every capability
+ * the template needs. Practice, placement openers and offline packs all
+ * select from the templates this admits. */
+export const clientCanDraw = (
+  template: Pick<
+    TemplateMetadata,
+    "requiredFigureCapability" | "requiredResponseCapability"
+  >,
+  client: ClientCapabilities,
+): boolean =>
+  (!template.requiredResponseCapability ||
+    client.responseCapabilities.includes(
+      template.requiredResponseCapability,
+    )) &&
+  (!template.requiredFigureCapability ||
+    client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */

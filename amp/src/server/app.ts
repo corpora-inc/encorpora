@@ -6,6 +6,7 @@ import rateLimit from "@fastify/rate-limit";
 import { z, ZodError } from "zod";
 import { createHash, randomUUID } from "node:crypto";
 import {
+  clientCanDraw,
   figureCapabilities,
   generatedProblemSchema,
   type PublicProblem,
@@ -341,16 +342,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
         : undefined;
       if (input.templateId && !focused)
         throw new ApiError(400, "Unknown problem family");
-      const supported = templates.filter(
-        (template) =>
-          (!template.requiredResponseCapability ||
-            input.responseCapabilities.includes(
-              template.requiredResponseCapability,
-            )) &&
-          (!template.requiredFigureCapability ||
-            input.figureCapabilities.includes(
-              template.requiredFigureCapability,
-            )),
+      // Scripted openers come from this list too: an opener the client
+      // cannot draw gives way to its slot's next drawable item, or to
+      // adaptive selection (learning/placement.ts).
+      const supported = templates.filter((template) =>
+        clientCanDraw(template, input),
       );
       if (focused && !supported.includes(focused))
         throw new ApiError(
