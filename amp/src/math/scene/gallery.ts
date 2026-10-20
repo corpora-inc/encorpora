@@ -18,6 +18,7 @@ import {
   tenFrame,
   tree,
   triangle,
+  circleDiagram,
   venn,
 } from "./author";
 import type { Scene } from "./spec";
@@ -695,6 +696,251 @@ export const galleryCases: GalleryCase[] = [
     ).scene({ title: "Adding the equations" }),
   },
   {
+    name: "Shapes: four lettered quadrilaterals with marks",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "shapes",
+          id: "shapes",
+          items: [
+            {
+              label: "A",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [2, 0],
+                    [2, 1],
+                    [0, 1],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "B",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1.4, 0],
+                    [2.1, 1.2],
+                    [0.7, 1.2],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "C",
+              marks: "sides-angles",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1.3, 0],
+                    [1.3, 1.3],
+                    [0, 1.3],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "D",
+              marks: "parallel",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [2.2, 0],
+                    [2.7, 0.9],
+                    [0.5, 0.9],
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Shape puzzle: which piece completes the square",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "shapePuzzle",
+          id: "puzzle",
+          outline: [
+            [0, 0],
+            [2, 0],
+            [2, 2],
+            [0, 2],
+          ],
+          placed: [
+            {
+              type: "polygon",
+              points: [
+                [0, 0],
+                [2, 0],
+                [2, 2],
+              ],
+            },
+          ],
+          candidates: [
+            {
+              label: "A",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [1, 0],
+                    [1, 1],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "B",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [0, -2],
+                    [2, 0],
+                  ],
+                },
+              ],
+            },
+            {
+              label: "C",
+              pieces: [
+                {
+                  type: "polygon",
+                  points: [
+                    [0, 0],
+                    [3, 0],
+                    [0, 2],
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Solids: a cube and a cone, hidden edges dashed",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "solid",
+          id: "cube",
+          solid: {
+            type: "prism",
+            height: 2,
+            base: {
+              type: "polygon",
+              points: [
+                [-1.2, -0.3],
+                [0.3, -1.2],
+                [1.2, 0.3],
+                [-0.3, 1.2],
+              ],
+            },
+          },
+        },
+        {
+          type: "solid",
+          id: "cone",
+          at: [3.4, 0],
+          solid: {
+            type: "pyramid",
+            height: 2.4,
+            base: { type: "ellipse", center: [0, 0], radii: [1, 1], angle: 0 },
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: "Unit cubes: layer by layer, running totals masked (hint)",
+    scene: {
+      v: 1,
+      width: 320,
+      elements: [
+        {
+          type: "isoSolid",
+          id: "prism",
+          solid: {
+            form: "cubes",
+            length: 4,
+            width: 3,
+            height: 3,
+            counts: true,
+          },
+        },
+      ],
+      steps: [0, 1, 2].map((k) => ({
+        caption: `Layer ${k + 1}: {prism.count.${k}} cubes so far.`,
+        actions: [
+          {
+            do: "fill" as const,
+            target: `prism.layer.${k}`,
+            fill: "warm-fill" as const,
+          },
+          { do: "appear" as const, target: `prism.count.${k}` },
+        ],
+      })),
+    },
+  },
+  {
+    name: "Box with a missing edge, and a stepped solid",
+    scene: {
+      v: 1,
+      width: 340,
+      elements: [
+        {
+          type: "isoSolid",
+          id: "box",
+          solid: {
+            form: "box",
+            length: { value: 6, unit: "cm" },
+            width: null,
+            height: { value: 3, unit: "cm" },
+          },
+        },
+        {
+          type: "isoSolid",
+          id: "steps",
+          at: [9, 0],
+          solid: {
+            form: "composite",
+            width: 2,
+            unit: "cm",
+            parts: [
+              { length: 3, height: 5 },
+              { length: 4, height: 2 },
+            ],
+          },
+        },
+      ],
+    },
+  },
+  {
     name: "Triangle: right angle, sides and the reference angle",
     scene: triangle([
       [0, 0],
@@ -750,6 +996,42 @@ export const galleryCases: GalleryCase[] = [
       .angle(1, { mark: "arc", label: "30°" })
       .angle(2, { mark: "arc", arcs: 2, label: "60°" })
       .scene(),
+  },
+  {
+    name: "Circle: inscribed and central angles on one arc",
+    scene: circleDiagram({
+      points: [
+        { name: "A", at: 200 },
+        { name: "B", at: 330 },
+        { name: "C", at: 95 },
+      ],
+      center: true,
+      segments: [
+        { from: "C", to: "A" },
+        { from: "C", to: "B" },
+        { from: "O", to: "A", dash: true },
+        { from: "O", to: "B", dash: true },
+      ],
+      angles: [
+        { at: "C", from: "A", to: "B", label: "?" },
+        { at: "O", from: "A", to: "B", label: "130°", color: "accent" },
+      ],
+      arcs: [{ from: "A", to: "B" }],
+    }).scene({ title: "Inscribed angle ACB and central angle AOB" }),
+  },
+  {
+    name: "Circle: a tangent meets the radius at a right angle",
+    scene: circleDiagram({
+      points: [{ name: "T", at: 90 }],
+      outside: [{ name: "P", at: 30, dist: 2 }],
+      center: true,
+      segments: [
+        { from: "O", to: "T", label: "5" },
+        { from: "T", to: "P", label: null, color: "accent" },
+        { from: "O", to: "P", label: "10", dash: true },
+      ],
+      angles: [{ at: "T", from: "O", to: "P", mark: "right" }],
+    }).scene({ title: "Tangent PT and radius OT" }),
   },
 ];
 

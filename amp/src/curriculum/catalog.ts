@@ -1396,6 +1396,42 @@ for (const [id, description] of [
     status: "implemented",
   });
 
+// High-school coordinate geometry and circles (G-GPE, G-C).
+for (const [skillId, suffix, description] of [
+  [
+    "circle-equations",
+    "center-radius",
+    "Read the center and radius of a circle from its standard or general equation, and find r² from a center and a point or a graph.",
+  ],
+  [
+    "coordinate-measurement",
+    "perimeter-area",
+    "Find perimeters with the distance formula and areas of triangles and quadrilaterals from vertex coordinates.",
+  ],
+  [
+    "segment-division",
+    "internal-ratio",
+    "Find the point that divides a directed segment internally in a ratio or at a fraction of the way.",
+  ],
+  [
+    "slope-proofs",
+    "parallel-perpendicular",
+    "Use equal and negative reciprocal slopes for parallel and perpendicular lines, lines through a point and missing coordinates.",
+  ],
+  [
+    "circle-theorems",
+    "inscribed-tangent",
+    "Use inscribed and central angles on one arc, the right angle in a semicircle, and tangents perpendicular to radii.",
+  ],
+] as const)
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
 // High-school similarity and right-triangle trigonometry (G-SRT).
 for (const [skillId, suffix, description] of [
   [
@@ -2410,6 +2446,67 @@ for (const [skillId, suffix, description] of [
     "rational-exponents",
     "rational-base-fractional-powers",
     "Evaluate a positive rational base that is an exact nth power raised to a fractional exponent m/n, including negative exponents.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Quadratic and polynomial structure: bounded tasks, each naming its limits.
+for (const [skillId, suffix, description] of [
+  [
+    "quadratic-graphs",
+    "vertex",
+    "Find a parabola's vertex from vertex form, standard form or its graph on an integer grid.",
+  ],
+  [
+    "quadratic-graphs",
+    "axis-of-symmetry",
+    "Find a parabola's axis of symmetry from its zeros, two points at the same height, or x = −b/(2a).",
+  ],
+  [
+    "quadratic-graphs",
+    "translations",
+    "Connect translations of y = x² by whole units with y = (x − h)² + k.",
+  ],
+  [
+    "expression-structure",
+    "binomial-products",
+    "Expand a product of two binomials as the regions of an area model.",
+  ],
+  [
+    "expression-structure",
+    "interpret-parts",
+    "Interpret a constant, coefficient or growth factor of a formula in context.",
+  ],
+  [
+    "expression-structure",
+    "rewrite-by-structure",
+    "Rewrite an expression as a product by seeing a difference of squares or a perfect square in it.",
+  ],
+  [
+    "polynomial-zeros",
+    "factors-and-zeros",
+    "Connect the linear factors of a cubic with its zeros, x-intercepts and end behavior.",
+  ],
+  [
+    "polynomial-zeros",
+    "multiplicity",
+    "Tell from a squared or single factor whether a graph touches or crosses the x-axis.",
+  ],
+  [
+    "polynomial-division",
+    "remainder-theorem",
+    "Find the remainder of p(x) ÷ (x − a) as p(a), or a coefficient that makes x − a a factor.",
+  ],
+  [
+    "polynomial-division",
+    "divide-by-linear",
+    "Divide a cubic by x − a into a quotient and remainder with synthetic division.",
   ],
 ])
   skills

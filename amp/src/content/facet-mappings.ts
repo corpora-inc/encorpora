@@ -5,6 +5,7 @@ import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
 import { linearFunctionFacetMappings } from "./linear-function-coverage";
+import { quadraticStructureFacetMappings } from "./quadratic-structure-coverage";
 import { twoVariableFacetMappings } from "./two-variable-coverage";
 import { equationFacetMappings } from "./equation-coverage";
 import { decimalFacetMappings } from "./decimal-coverage";
@@ -17,6 +18,7 @@ import { polygonFacetMappings } from "./polygon-coverage";
 import { exponentialFacetMappings } from "./exponential-coverage";
 import { probabilityRulesFacetMappings } from "./probability-rules-coverage";
 import { similarityTrigFacetMappings } from "./similarity-trig-coverage";
+import { coordinateCircleFacetMappings } from "./coordinate-circle-coverage";
 import { distributionFacetMappings } from "./distribution-coverage";
 import { ratioRateFacetMappings } from "./ratio-rate-coverage";
 import { inferenceFacetMappings } from "./inference-coverage";
@@ -55,6 +57,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...exponentialFacetMappings,
   ...probabilityRulesFacetMappings,
   ...similarityTrigFacetMappings,
+  ...coordinateCircleFacetMappings,
   ...distributionFacetMappings,
   ...inferenceFacetMappings,
   ...bivariateFacetMappings,
@@ -80,6 +83,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...ratioRateFacetMappings,
   ...patternFunctionFacetMappings,
   ...linearFunctionFacetMappings,
+  ...quadraticStructureFacetMappings,
   ...twoVariableFacetMappings,
   ...equationFacetMappings,
   ...rationalFacetMappings,

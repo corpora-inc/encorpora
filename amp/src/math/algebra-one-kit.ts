@@ -6,6 +6,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import type { Scene } from "./scene/spec";
+import type { Step } from "./scene/timeline";
 
 /** Shared machinery for the Algebra 1 families: seeded draws, exact
  * rationals, typographic signs and the choice/number problem assembly. */
@@ -21,6 +22,10 @@ export type Case = {
   tags: string[];
   /** One teaching step written from this problem's own givens. */
   hint: string;
+  /** The hint's cue over this problem's scene (private). */
+  hintCue?: Step[];
+  /** A worked model for this instance's lesson (private; may show the answer). */
+  walkthrough?: Scene;
 };
 
 export function seeded(id: string, seed: string): Random {
@@ -160,6 +165,8 @@ export function assemble(
     answer,
     explanation: c.explanation,
     hint: c.hint,
+    ...(c.hintCue ? { hintCue: c.hintCue } : {}),
+    ...(c.walkthrough ? { walkthrough: c.walkthrough } : {}),
     ...(choiceFeedback ? { choiceFeedback } : {}),
   };
   return {

@@ -15,11 +15,6 @@ import {
   geometryFrames,
   type GeometryAnimationModel,
 } from "./geometry";
-import {
-  shapeMorphFrames,
-  shapeMorphModel,
-  type ShapeMorphAnimation,
-} from "./shape-model";
 
 type Fraction = Extract<SemanticFigure, { kind: "fraction" }>;
 type ArrayFigure = Extract<SemanticFigure, { kind: "unit-array" }>;
@@ -70,8 +65,6 @@ export type DecimalAlignAnimation = {
   kind: "decimal-align";
   figure: DecimalChart;
 };
-type CubePrism = Extract<SemanticFigure, { kind: "cube-prism" }>;
-type Grid = Extract<SemanticFigure, { kind: "quadrant-grid" }>;
 type TenFramePair = Extract<SemanticFigure, { kind: "ten-frame-pair" }>;
 /** One analog clock: both hands start on the hour, then sweep to the time. */
 export type ClockSweepAnimation = {
@@ -115,7 +108,6 @@ export type AnimationModel =
       count: number;
       first: "share" | "measure";
     }
-  | ShapeMorphAnimation
   | {
       kind: "plot";
       rows: { x: number; y: number }[];
@@ -126,8 +118,6 @@ export type AnimationModel =
   | { kind: "balance"; figure: Balance; form: BalanceForm; x: number }
   | DecimalFillAnimation
   | DecimalAlignAnimation
-  | { kind: "prism-layers"; figure: CubePrism }
-  | { kind: "quadrant-walk"; figure: Grid }
   | { kind: "make-ten"; figure: TenFramePair }
   | PartitionAnimation
   | CompareAnimation
@@ -339,8 +329,6 @@ export function animationModel(
   const f = lesson.example.figure;
   const geometry = geometryAnimationModel(lesson.templateId, f);
   if (geometry) return geometry;
-  const morph = shapeMorphModel(lesson.templateId, f);
-  if (morph) return morph;
   if (
     lesson.templateId === "compare-capacity" &&
     f?.kind === "pour" &&
@@ -403,22 +391,6 @@ export function animationModel(
     chartValue(f.rows[0]!, f.places) !== chartValue(f.rows[1]!, f.places)
   )
     return { kind: "decimal-align", figure: f };
-  if (
-    (lesson.templateId === "unit-cube-volume" ||
-      lesson.templateId === "cube-layer-count") &&
-    f?.kind === "cube-prism" &&
-    integer(f.length, 1, 6) &&
-    integer(f.width, 1, 6) &&
-    integer(f.height, 2, 6)
-  )
-    return { kind: "prism-layers", figure: f };
-  if (
-    lesson.templateId === "first-quadrant-coordinates" &&
-    f?.kind === "quadrant-grid" &&
-    integer(f.size, 4, 10) &&
-    f.points.length === 1
-  )
-    return { kind: "quadrant-walk", figure: f };
   if (
     lesson.templateId === "balanced-addition" &&
     f?.kind === "equal-balance"
@@ -1148,7 +1120,6 @@ export function animationFrames(model: AnimationModel) {
       },
     ];
   }
-  if (model.kind === "shape-morph") return shapeMorphFrames(model);
   if (model.kind === "plot") {
     const { rows, rule } = model;
     const first = rows.find((r) => r.x !== 0) ?? rows[0]!;
@@ -1256,47 +1227,6 @@ export function animationFrames(model: AnimationModel) {
         title: "Compare from the left",
         text: `The first column that differs is the ${place}: ${digit(pa)} and ${digit(pb)}. Columns to its right cannot change the result.`,
         math: `$${written(a!)} ${sign} ${written(b!)}$`,
-      },
-    ];
-  }
-  if (model.kind === "prism-layers") {
-    const { length: l, width: w, height: h } = model.figure,
-      layer = l * w;
-    return [
-      {
-        title: "One layer",
-        text: `The top shows ${l} by ${w} cubes. The bottom layer is the same.`,
-        math: `$${l} \\times ${w} = ${layer}$ cubes`,
-      },
-      {
-        title: "Stack the layers",
-        text: `${h} identical layers fill the prism, hidden cubes included.`,
-        math: `$${h}$ layers`,
-      },
-      {
-        title: "Multiply",
-        text: `Each of the ${h} layers holds ${layer} cubes.`,
-        math: `$V = ${layer} \\times ${h} = ${layer * h}$ cubic units`,
-      },
-    ];
-  }
-  if (model.kind === "quadrant-walk") {
-    const { x, y } = model.figure.points[0]!;
-    return [
-      {
-        title: "Start at the origin",
-        text: "Both coordinates are 0 where the axes meet.",
-        math: "$(0, 0)$",
-      },
-      {
-        title: "Across first",
-        text: `Go ${x} across along the x-axis: the first coordinate.`,
-        math: `$x = ${x}$`,
-      },
-      {
-        title: "Then up",
-        text: `Go ${y} up to reach the point: the second coordinate.`,
-        math: `$(${x}, ${y})$`,
       },
     ];
   }

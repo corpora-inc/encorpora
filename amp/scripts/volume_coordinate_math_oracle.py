@@ -5,6 +5,7 @@ semantic figure (cube counts, edge labels, plotted points). Generated answers,
 hints and explanations never enter `solve_volume_coordinate`.
 """
 import re
+from geometry_scene_view import figure_view
 from fractions import Fraction
 
 VOLUME_COORDINATE = frozenset({
@@ -62,7 +63,7 @@ def grid(figure):
 
 
 def solve_volume_coordinate(public):
-    family, prompt, figure = public['templateId'], public['prompt'], public['figure']
+    family, prompt, figure = public['templateId'], public['prompt'], figure_view(public['figure'])
     require(family in VOLUME_COORDINATE, 'Unsupported family')
     if family in {'unit-cube-volume', 'cube-layer-count'}:
         require(prompt == ('Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?'

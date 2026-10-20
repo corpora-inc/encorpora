@@ -6,6 +6,7 @@ import { numberSystemMethods } from "./number-system-lessons";
 import { ratioRateMethods } from "./ratio-rate-lessons";
 import { patternFunctionMethods } from "./pattern-function-lessons";
 import { linearFunctionMethods } from "./linear-function-lessons";
+import { quadraticStructureMethods } from "./quadratic-structure-lessons";
 import { twoVariableMethods } from "./two-variable-lessons";
 import { equationMethods } from "./equation-lessons";
 import { volumeCoordinateMethods } from "./volume-coordinate-lessons";
@@ -15,6 +16,7 @@ import { polygonMethods } from "./polygon-lessons";
 import { exponentialMethods } from "./exponential-lessons";
 import { probabilityRulesMethods } from "./probability-rules-lessons";
 import { similarityTrigMethods } from "./similarity-trig-lessons";
+import { coordinateCircleMethods } from "./coordinate-circle-lessons";
 import { distributionMethods } from "./distribution-lessons";
 import { inferenceMethods } from "./inference-lessons";
 import { bivariateMethods } from "./bivariate-lessons";
@@ -60,6 +62,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...exponentialMethods,
   ...probabilityRulesMethods,
   ...similarityTrigMethods,
+  ...coordinateCircleMethods,
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
@@ -90,6 +93,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...ratioRateMethods,
   ...patternFunctionMethods,
   ...linearFunctionMethods,
+  ...quadraticStructureMethods,
   ...twoVariableMethods,
   ...equationMethods,
   ...rationalMethods,

@@ -6,6 +6,7 @@ shared edges, and a puzzle's gap is the outline minus the placed pieces.
 Generated answers, hints and explanations never enter `solve_shape`.
 """
 import math
+from geometry_scene_view import figure_view
 import re
 
 SHAPES = frozenset({
@@ -272,7 +273,7 @@ FLAT_NAMES = {'circle', 'triangle', 'square', 'rectangle', 'hexagon'}
 
 
 def solve_shape(public):
-    family, prompt, figure = public['templateId'], public['prompt'], public['figure']
+    family, prompt, figure = public['templateId'], public['prompt'], figure_view(public['figure'])
     require(family in SHAPES, 'Unsupported family')
     if family == 'name-flat-shape':
         require(prompt == 'What is the name of this shape?' and figure['kind'] == 'plane-shapes', 'Name wording')

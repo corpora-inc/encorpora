@@ -26,6 +26,7 @@ from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, so
 from integer_exponent_math_oracle import INTEGER_EXPONENT, solve_integer_exponent, review_integer_exponent_fixtures, review_integer_exponent_explanation, review_integer_exponent_content, IntegerExponentReview
 from right_triangle_figure_oracle import review_right_triangle_figures
 from exponential_math_oracle import EXPONENTIAL, EXPONENTIAL_CHOICE, solve_exponential, review_exponential_fixtures
+from coordinate_circle_math_oracle import COORDINATE_CIRCLE, solve_coordinate_circle, review_coordinate_circle_fixtures, review_coordinate_circle_problem
 from similarity_trig_math_oracle import SIMILARITY_TRIG, solve_similarity_trig, review_similarity_trig_fixtures, review_similarity_trig_problem
 from probability_rules_math_oracle import PROBABILITY_RULES, solve_probability_rules, review_probability_rules_fixtures, review_probability_rules_problem
 from polygon_math_oracle import POLYGONS, POLYGONS_CHOICE, solve_polygon, review_polygon_fixtures, review_polygon_problem
@@ -48,6 +49,7 @@ from number_system_math_oracle import NUMBER_SYSTEM, NUMBER_SYSTEM_CHOICE, solve
 from ratio_rate_math_oracle import RATIO_RATE, CHOICE_TYPES as RATIO_RATE_CHOICE, solve_ratio_rate, review_ratio_rate_fixtures, review_problem as review_ratio_rate_problem, review_ratio_rate_content, review_content_mutations as review_ratio_rate_mutations
 from two_variable_math_oracle import TWO_VARIABLE, TWO_VARIABLE_CHOICE, solve_two_variable, review_two_variable_fixtures, review_problem as review_two_variable_problem, review_two_variable_content, review_content_mutations as review_two_variable_mutations
 from linear_function_math_oracle import LINEAR_FUNCTION, LINEAR_FUNCTION_CHOICE, solve_linear_function, review_linear_function_fixtures, review_problem as review_linear_function_problem, review_linear_function_content, review_content_mutations as review_linear_function_mutations
+from quadratic_structure_math_oracle import QUADRATIC_STRUCTURE, QUADRATIC_STRUCTURE_CHOICE, solve_quadratic_structure, review_quadratic_structure_fixtures, review_problem as review_quadratic_structure_problem, review_quadratic_structure_content, review_content_mutations as review_quadratic_structure_mutations
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
@@ -80,10 +82,11 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG
+SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
+SUPPORTED |= QUADRATIC_STRUCTURE
 SUPPORTED |= EXPONENTIAL
 SUPPORTED |= TWO_VARIABLE
 
@@ -111,6 +114,8 @@ def solve(public):
         return solve_complete_square(public)
     if template in LINEAR_FUNCTION:
         return solve_linear_function(public)
+    if template in QUADRATIC_STRUCTURE:
+        return solve_quadratic_structure(public)
     if template in ANGLE_TRIANGLE:
         return solve_angle_triangle(public)
     if template in REAL_NUMBER:
@@ -133,6 +138,8 @@ def solve(public):
         return solve_probability_rules(public)
     if template in SIMILARITY_TRIG:
         return solve_similarity_trig(public)
+    if template in COORDINATE_CIRCLE:
+        return solve_coordinate_circle(public)
     if template in PATTERN_FUNCTION:
         return solve_pattern_function(public)
     if template in EQUATIONS:
@@ -396,6 +403,8 @@ def review(stream):
     review_completing_square_content_fixtures()
     review_linear_function_fixtures()
     review_linear_function_mutations()
+    review_quadratic_structure_fixtures()
+    review_quadratic_structure_mutations()
     review_angle_triangle_fixtures()
     review_real_number_fixtures()
     review_real_number_mutations()
@@ -410,6 +419,7 @@ def review(stream):
     review_exponential_fixtures()
     review_probability_rules_fixtures()
     review_similarity_trig_fixtures()
+    review_coordinate_circle_fixtures()
     review_pattern_function_fixtures()
     review_pattern_function_mutations()
     review_equation_fixtures()
@@ -521,6 +531,8 @@ def review(stream):
             review_two_variable_problem(problem)
         if template in LINEAR_FUNCTION:
             review_linear_function_problem(problem)
+        if template in QUADRATIC_STRUCTURE:
+            review_quadratic_structure_problem(problem)
         if template in EQUATIONS:
             review_equation_problem(problem)
         if template in COMBINATORICS:
@@ -555,7 +567,7 @@ def review(stream):
         if template in RATIONAL_TYPES:
             review_rational_problem(problem)
             rational_corpus.record(public, solved)
-        if template in EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -575,6 +587,8 @@ def review(stream):
             review_probability_rules_problem(problem, solved)
         if template in SIMILARITY_TRIG:
             review_similarity_trig_problem(problem, solved)
+        if template in COORDINATE_CIRCLE:
+            review_coordinate_circle_problem(problem, solved)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)
@@ -589,6 +603,7 @@ def review(stream):
     print('Independent ratio and rate content: ' + json.dumps(review_ratio_rate_content()), file=sys.stderr)
     print('Independent Algebra 1 two-variable content: ' + json.dumps(review_two_variable_content()), file=sys.stderr)
     print('Independent Algebra 1 function content: ' + json.dumps(review_linear_function_content()), file=sys.stderr)
+    print('Independent quadratic-structure content: ' + json.dumps(review_quadratic_structure_content()), file=sys.stderr)
     print('Independent pattern/function content: ' + json.dumps(review_pattern_function_content()), file=sys.stderr)
     print('Independent equation content: ' + json.dumps(review_equation_content()), file=sys.stderr)
     print('Independent add-subtract coverage: ' + json.dumps(add_subtract_corpus.finish()), file=sys.stderr)

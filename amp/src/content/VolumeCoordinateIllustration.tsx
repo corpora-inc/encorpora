@@ -1,15 +1,30 @@
 import React from "react";
-import { isoFit, isoPoint } from "../math/geometry-figures";
-import { IsoBox, QuadrantGrid, quadrantLayout } from "../web/GeometryFigure";
+import { SceneFigure } from "../web/scene/SceneFigure";
+import { scene } from "../math/scene/author";
+import { iso } from "../math/scene/components/iso-solid";
+import { quadrantScene } from "../math/scene/legacy";
+import type { Element, Point, Scene } from "../math/scene/spec";
 
 export type VolumeCoordinateIllustrationKind =
   "volume-layers" | "prism-composite" | "ordered-pair-path";
 
-const ink = "var(--color-figure-ink)",
-  warm = "var(--color-figure-warm)",
-  text = { fontSize: 19, fill: ink };
+const label = (
+  id: string,
+  at: Point,
+  text: string,
+  align: [-1 | 0 | 1, -1 | 0 | 1],
+): Element => ({
+  type: "text",
+  id,
+  at,
+  text,
+  font: "sans",
+  align,
+  halo: true,
+});
 
-/** Exact models: every cube, edge and gridline is drawn at true proportion. */
+/** Exact lesson models, built as scenes and drawn revealed: every cube,
+ * edge and gridline at true proportion. */
 export function VolumeCoordinateIllustration({
   kind,
 }: {
@@ -24,15 +39,10 @@ export function VolumeCoordinateIllustration({
   return (
     <figure
       className="lesson-illustration"
+      data-lesson-illustration={kind}
       style={{ margin: "24px 0", breakInside: "avoid" }}
     >
-      {kind === "volume-layers" ? (
-        <Layers />
-      ) : kind === "prism-composite" ? (
-        <Composite />
-      ) : (
-        <OrderedPair />
-      )}
+      <SceneFigure scene={scenes[kind]()} reveal kind={kind} />
       <figcaption style={{ fontSize: "0.875rem", marginTop: 8 }}>
         {caption}
       </figcaption>
@@ -40,113 +50,85 @@ export function VolumeCoordinateIllustration({
   );
 }
 
-const svgStyle = {
-  width: "100%",
-  maxWidth: 420,
-  display: "block",
-  margin: "0 auto",
-} as const;
-
-function Layers() {
-  const lift = 2.4;
-  const { unit, origin } = isoFit(4, 3, 2 + lift, {
-    width: 360,
-    height: 250,
-    pad: 18,
-  });
-  const at = (layer: number) => (x: number, y: number, z: number) =>
-    isoPoint(x, y, z + layer * (1 + lift), unit, {
-      x: origin.x - 70,
-      y: origin.y,
+const scenes: Record<VolumeCoordinateIllustrationKind, () => Scene> = {
+  "volume-layers": () => {
+    const lift = 1.4;
+    return scene(
+      {
+        type: "isoSolid",
+        id: "prism",
+        solid: { form: "cubes", length: 4, width: 3, height: 2, lift },
+      },
+      label("layer0", iso(4, 0, 0.5), "4 × 3 = 12", [-1, 0]),
+      label("layer1", iso(4, 0, 1 + lift + 0.5), "12 more", [-1, 0]),
+    ).build({ width: 360, title: "A prism lifted apart into its layers" });
+  },
+  "prism-composite": () => {
+    const apart = 1.4;
+    return scene(
+      {
+        type: "isoSolid",
+        id: "prism",
+        solid: {
+          form: "composite",
+          width: 2,
+          parts: [
+            { length: 3, height: 5 },
+            { length: 4, height: 2 },
+          ],
+          unit: "cm",
+          apart,
+        },
+      },
+      label("tall", iso(1.5, 0, 5), "3 × 2 × 5 = 30", [-1, 1]),
+      label("short", iso(3 + apart + 4, 2, 0), "4 × 2 × 2 = 16", [0, -1]),
+    ).build({ width: 360, title: "A stepped solid as two prisms" });
+  },
+  "ordered-pair-path": () => {
+    const base = quadrantScene(6, [
+      { x: 2, y: 5, label: "A" },
+      { x: 5, y: 2, label: "B" },
+    ]);
+    const walk = (
+      id: string,
+      pts: Point[],
+      stroke: "warm" | "axis",
+      dash?: "dash",
+    ): Element => ({
+      type: "polyline",
+      id,
+      points: pts,
+      stroke,
+      width: stroke === "warm" ? 4 : 2.5,
+      ...(dash ? { dash } : {}),
     });
-  const label = (layer: number) => at(layer)(4, 0, 0.5);
-  return (
-    <svg
-      viewBox="0 0 360 250"
-      role="img"
-      aria-label="Two layers of 12 unit cubes each, one lifted above the other"
-      data-lesson-illustration="volume-layers"
-      style={svgStyle}
-    >
-      {[0, 1].map((layer) => (
-        <g key={layer}>
-          <IsoBox size={[4, 3, 1]} grid project={at(layer)} />
-          <text x={label(layer).x + 16} y={label(layer).y + 6} style={text}>
-            {layer === 0 ? "4 × 3 = 12" : "12 more"}
-          </text>
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function Composite() {
-  const gap = 1.4;
-  const { unit, origin } = isoFit(3 + gap + 4, 2, 5, {
-    width: 360,
-    height: 250,
-    pad: 30,
-  });
-  const p = (x: number, y: number, z: number) =>
-    isoPoint(x, y, z, unit, origin);
-  const tall = p(1.5, 0, 5),
-    short = p(3 + gap + 4, 2, 0);
-  return (
-    <svg
-      viewBox="0 0 360 250"
-      role="img"
-      aria-label="A 3 by 2 by 5 prism and a 4 by 2 by 2 prism, separated"
-      data-lesson-illustration="prism-composite"
-      style={svgStyle}
-    >
-      <IsoBox size={[3, 2, 5]} grid project={p} />
-      <IsoBox at={[3 + gap, 0, 0]} size={[4, 2, 2]} grid project={p} />
-      <text x={tall.x + 14} y={tall.y - 10} style={text}>
-        3 × 2 × 5 = 30
-      </text>
-      {/* Baseline 8px inside the 250 view box: at +30 it sat on the bottom
-          edge, so the text's descent crossed it (caught on CI's fonts). */}
-      <text x={short.x - 30} y={short.y + 22} textAnchor="middle" style={text}>
-        4 × 2 × 2 = 16
-      </text>
-    </svg>
-  );
-}
-
-function OrderedPair() {
-  const figure = {
-    kind: "quadrant-grid" as const,
-    size: 6,
-    points: [
-      { x: 2, y: 5, label: "A" as const },
-      { x: 5, y: 2, label: "B" as const },
-    ],
-  };
-  const { x, y } = quadrantLayout(6);
-  return (
-    <div data-lesson-illustration="ordered-pair-path" style={svgStyle}>
-      <QuadrantGrid figure={figure}>
-        <path
-          d={`M${x(0)} ${y(0)} H${x(2)} V${y(5)}`}
-          fill="none"
-          stroke={warm}
-          strokeWidth={4}
-          strokeLinejoin="round"
-        />
-        <path
-          d={`M${x(0)} ${y(0)} H${x(5)} V${y(2)}`}
-          fill="none"
-          stroke="var(--color-figure-axis)"
-          strokeWidth={2.5}
-          strokeDasharray="6 5"
-        />
-        <text x={x(1)} y={y(0) - 10} textAnchor="middle" style={text}>
-          2
-        </text>
-        <text x={x(2) + 10} y={y(2.5)} style={text}>
-          5
-        </text>
-      </QuadrantGrid>
-    </div>
-  );
-}
+    return {
+      ...base,
+      elements: [
+        ...base.elements,
+        walk(
+          "toA",
+          [
+            [0, 0],
+            [2, 0],
+            [2, 5],
+          ],
+          "warm",
+        ),
+        walk(
+          "toB",
+          [
+            [0, 0],
+            [5, 0],
+            [5, 2],
+          ],
+          "axis",
+          "dash",
+        ),
+        { ...label("across", [1, 0], "2", [0, 1]), offset: [0, -8] } as Element,
+        { ...label("up", [2, 2.5], "5", [-1, 0]), offset: [10, 0] } as Element,
+      ],
+      title: "Across 2, then up 5",
+    };
+  },
+};

@@ -23,6 +23,7 @@ import {
   type Venn,
   type Tree,
   type Triangle,
+  type CircleDiagram,
 } from "./spec";
 import type { Action, Step } from "./timeline";
 import { treeWidth } from "./components/tree";
@@ -258,7 +259,11 @@ class GraphBuilder extends Builder<Graph> {
     x: number,
     y: number,
     label?: string,
-    options: { open?: boolean; derived?: boolean } = {},
+    options: {
+      open?: boolean;
+      derived?: boolean;
+      color?: "accent" | "warm" | "gold" | "ink";
+    } = {},
   ) {
     return this.push("points", { x, y, label, ...options });
   }
@@ -296,7 +301,11 @@ class GraphBuilder extends Builder<Graph> {
   segment(
     from: Point,
     to: Point,
-    options: { dash?: "solid" | "dash" | "dot"; arrow?: boolean } = {},
+    options: {
+      dash?: "solid" | "dash" | "dot";
+      arrow?: boolean;
+      color?: "accent" | "warm" | "gold" | "ink";
+    } = {},
   ) {
     return this.push("segments", { from, to, ...options });
   }
@@ -575,3 +584,8 @@ export const triangle = (
   points: [Point, Point, Point],
   options: { fill?: Triangle["fill"]; dash?: boolean } = {},
 ) => new TriangleBuilder({ type: "triangle", points, ...options });
+
+class CircleDiagramBuilder extends Builder<CircleDiagram> {}
+/** circleDiagram({ points: [{ name: "A", at: 200 }, …], center: true, segments: […] }) */
+export const circleDiagram = (spec: Omit<CircleDiagram, "type">) =>
+  new CircleDiagramBuilder({ type: "circleDiagram", ...spec } as CircleDiagram);
