@@ -8,12 +8,12 @@ import type {
 type Response = "choice" | "number";
 // id | title | skill | grade band | response | description
 const rows = `
-compare-lengths|Which is longer?|compare-attributes|$K$–2|choice|Compare the lengths of two strips, aligned or not at their left ends, or recognize equal lengths.
-compare-weights|Which is heavier?|compare-attributes|$K$–2|choice|Read a balance to decide which of two objects is heavier or lighter, or that they weigh the same; drawn size does not follow weight.
-compare-capacity|Which holds more?|compare-attributes|$K$–2|choice|Decide which jar holds more after a full jar is poured into an empty one.
-measure-with-units|Measure with equal units|measure-equal-units|$K$–2|number|Count equal cubes or paper clips laid end to end, without gaps or overlaps, along an object.
-correct-unit-measure|Measure without gaps or overlaps|measure-equal-units|$K$–2|choice|Pick the picture that measures correctly from layouts with gaps, overlaps or a shifted start.
-order-lengths|Longest and shortest|measure-equal-units|$K$–2|choice|Order three ribbons from two length comparisons and name the longest or shortest.
+compare-lengths|Which is longer?|compare-attributes|K–2|choice|Compare the lengths of two strips, aligned or not at their left ends, or recognize equal lengths.
+compare-weights|Which is heavier?|compare-attributes|K–2|choice|Read a balance to decide which of two objects is heavier or lighter, or that they weigh the same; drawn size does not follow weight.
+compare-capacity|Which holds more?|compare-attributes|K–2|choice|Decide which jar holds more after a full jar is poured into an empty one.
+measure-with-units|Measure with equal units|measure-equal-units|K–2|number|Count equal cubes or paper clips laid end to end, without gaps or overlaps, along an object.
+correct-unit-measure|Measure without gaps or overlaps|measure-equal-units|K–2|choice|Pick the picture that measures correctly from layouts with gaps, overlaps or a shifted start.
+order-lengths|Longest and shortest|measure-equal-units|K–2|choice|Order three ribbons from two length comparisons and name the longest or shortest.
 read-liquid-volume|Read liters on a scale|mass-volume|3–5|number|Read a liquid level in liters on a container scale whose ticks are worth 1, 2 or 5 liters.
 balance-mass|Find a mass with a balance|mass-volume|3–5|number|Find an object's mass in grams from the standard masses that balance it.
 mass-volume-story|Mass and volume stories|mass-volume|3–5|number|Solve a one-step addition, subtraction, multiplication or division story in grams, kilograms or liters.

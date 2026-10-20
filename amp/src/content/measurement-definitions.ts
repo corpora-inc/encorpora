@@ -1,6 +1,6 @@
 /** Selected measurement decisions, with exact domains and teaching destinations. */
 const rows = `
-shifted-ruler-length|Measure from a shifted start|ruler-measurement|start-away-from-zero|numeric|$K$–2|Read a whole-unit interval from a nonzero ruler position.|Start 1…6 cm, end greater by 1…6 cm on a 0…12 cm scale.
+shifted-ruler-length|Measure from a shifted start|ruler-measurement|start-away-from-zero|numeric|K–2|Read a whole-unit interval from a nonzero ruler position.|Start 1…6 cm, end greater by 1…6 cm on a 0…12 cm scale.
 fractional-ruler-length|Read the spaces between marks|ruler-measurement|fractional-lengths|numeric|3–5|Read an exact half- or quarter-unit distance.|Nonzero half/quarter tick positions on 0…3 cm; distance may be integral or fractional.
 rectangle-border-length|Follow the whole border|perimeter|opposite-sides|numeric|3–5|Find the complete perimeter of a rectangle.|Positive integer width and height 2…12 cm, including squares.
 rectangle-missing-border-side|Find a missing side from the border|perimeter|missing-side|numeric|3–5|Recover a rectangle side from perimeter and one perpendicular side.|Known and unknown sides 2…12 cm; only known side and perimeter are public givens.
