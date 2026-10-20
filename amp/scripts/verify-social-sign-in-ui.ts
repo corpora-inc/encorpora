@@ -112,6 +112,7 @@ const sizes = [
   { width: 320, height: 640 },
   { width: 384, height: 700 },
   { width: 390, height: 844 },
+  { width: 768, height: 1024 },
   { width: 1280, height: 900 },
 ];
 

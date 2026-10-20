@@ -61,3 +61,22 @@
     padding: var(--space-4);
   }
 }
+/* No bar: the card is centered in the safe area. Auto margins center it and
+ * collapse to the padding when the card is taller than the screen, so it is
+ * never clipped. */
+.centered {
+  grid-template-rows: minmax(0, 1fr);
+}
+.centered .main {
+  padding: max(var(--space-5), env(safe-area-inset-top))
+    max(var(--space-4), env(safe-area-inset-right))
+    max(var(--space-5), env(safe-area-inset-bottom))
+    max(var(--space-4), env(safe-area-inset-left));
+}
+.centered .main > * {
+  margin-block: auto;
+}
+.cardBrand {
+  justify-self: start;
+  margin-top: calc(-1 * var(--space-2));
+}

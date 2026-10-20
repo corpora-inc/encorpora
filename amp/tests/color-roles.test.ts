@@ -62,16 +62,11 @@ function check(theme: Theme) {
     need(`${tone}-accent`, "surface", UI);
     need(`${tone}-accent`, "surface-raised", UI);
   }
-  // Provider sign-in buttons: brand label on brand fill, and a shape (fill or
-  // border) that reads against the sign-in card.
-  for (const brand of ["google", "apple", "microsoft", "github"]) {
-    need(`on-brand-${brand}`, `brand-${brand}`, TEXT);
-    const fill = contrast(
-      color(`--color-brand-${brand}`),
-      color("--color-surface-raised"),
-    );
-    if (fill < UI) need(`brand-${brand}-border`, "surface-raised", UI);
-  }
+  // Provider sign-in buttons share one neutral style: the label on the fill,
+  // and a shape (fill or border) that reads against the sign-in card.
+  need("on-provider", "provider", TEXT);
+  if (contrast(color("--color-provider"), color("--color-surface-raised")) < UI)
+    need("provider-border", "surface-raised", UI);
   // A filled button is a UI component: its shape must read against the page.
   need("primary", "surface", UI);
   need("selected", "surface-sunken", UI);

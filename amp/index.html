@@ -32,6 +32,10 @@
         font-weight: 800;
         letter-spacing: -0.04em;
       }
+      /* The sign-in screens have no bar: their card carries the brand. */
+      [data-frame="card"] .app-loading-bar {
+        display: none;
+      }
       @media (prefers-color-scheme: dark) {
         html,
         body {
@@ -45,6 +49,10 @@
     </style>
   </head>
   <body>
+    <script>
+      if (/^\/(sign-in|sign-up|reset-password)(\/|$)/.test(location.pathname))
+        document.documentElement.dataset.frame = "card";
+    </script>
     <div id="root">
       <div class="app-loading" aria-busy="true">
         <div class="app-loading-bar">AMP</div>

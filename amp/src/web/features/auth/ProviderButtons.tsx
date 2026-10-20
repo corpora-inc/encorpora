@@ -12,7 +12,8 @@ export const isProvider = (value: unknown): value is Provider =>
   typeof value === "string" && value in providerNames;
 
 /** Official marks, unmodified: Google's four-color G, the Apple logo,
- * Microsoft's four squares and GitHub's Invertocat. Colors are brand tokens. */
+ * Microsoft's four squares and GitHub's Invertocat. The multicolor marks use
+ * brand tokens; Apple's and GitHub's take the button's label color. */
 function Mark({ provider }: { provider: Provider }) {
   if (provider === "google")
     return (
@@ -110,7 +111,11 @@ export function ProviderButtons({
         <button
           key={provider}
           type="button"
-          className={`${styles.button} ${styles[provider]}`}
+          className={
+            provider === "apple"
+              ? `${styles.button} ${styles.apple}`
+              : styles.button
+          }
           disabled={busy}
           aria-busy={pending === provider || undefined}
           data-provider={provider}

@@ -1,5 +1,6 @@
 import styles from "./Auth.module.css";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
+import { Button } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import {
@@ -257,10 +258,11 @@ export function SignInScreen() {
   };
   const showProviders = step === "sign-in" || step === "create";
   return (
-    <PageFrame>
+    <PageFrame centered>
       <section
         className={`card welcome account-sign-in ${frameCard} ${styles.frame}`}
       >
+        <FrameBrand />
         <h2>{titles[step]}</h2>
         {notice && (
           <p className="account-notice" role="status">
@@ -279,9 +281,9 @@ export function SignInScreen() {
           />
         )}
         {step === "sign-in" && (
-          <button
+          <Button
             type="button"
-            className="secondary"
+            variant="secondary"
             disabled={busy || !!pending}
             onClick={() =>
               void run(async () => {
@@ -291,7 +293,7 @@ export function SignInScreen() {
             }
           >
             Sign in with a passkey
-          </button>
+          </Button>
         )}
         {showProviders && providers.length > 0 && passwords && (
           <EmailDivider copy={copy} />
@@ -358,7 +360,7 @@ export function SignInScreen() {
                   />
                 </label>
               )}
-              <button className="go-button" disabled={busy}>
+              <Button variant="primary" type="submit" disabled={busy}>
                 {
                   {
                     "sign-in": "Sign in",
@@ -369,7 +371,7 @@ export function SignInScreen() {
                     "check-email": "",
                   }[step]
                 }
-              </button>
+              </Button>
             </form>
           )
         )}
