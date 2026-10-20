@@ -1,3 +1,4 @@
+import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
@@ -74,6 +75,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...factsFacetMappings,
   ...factArrayFacetMappings,
   ...combinatoricsFacetMappings,
+  ...areaVolumeFacetMappings,
   ...transformationFacetMappings,
   ...angleTriangleFacetMappings,
   ...realNumberFacetMappings,

@@ -1,3 +1,4 @@
+import { areaVolumeLessons } from "./area-volume-lessons";
 import { transformationLessons } from "./transformation-lessons";
 import { completingSquareLessons } from "./completing-square-lessons";
 import { factoringLessons } from "./factoring-lessons";
@@ -74,6 +75,15 @@ export interface Lesson {
     title: string;
     paragraphs: string[];
     illustration?:
+      | "av-triangle-half"
+      | "av-polygon-split"
+      | "av-prism-net"
+      | "av-cube-packing"
+      | "av-composite-split"
+      | "av-prism-layers"
+      | "av-prism-unrolled"
+      | "av-cylinder-stack"
+      | "av-cone-sphere-cylinder"
       | "hundred-chart-moves"
       | "teen-ten-frame"
       | "number-line-hop-pair"
@@ -566,6 +576,7 @@ export const lessons: readonly Lesson[] = [
   ...factsLessons,
   ...factArrayLessons,
   ...combinatoricsLessons,
+  ...areaVolumeLessons,
   ...transformationLessons,
   ...angleTriangleLessons,
   ...realNumberLessons,

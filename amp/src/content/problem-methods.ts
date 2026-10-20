@@ -1,3 +1,4 @@
+import { areaVolumeMethods } from "./area-volume-lessons";
 import { transformationMethods } from "./transformation-lessons";
 import { completingSquareMethods } from "./completing-square-lessons";
 import { factoringMethods } from "./factoring-lessons";
@@ -84,6 +85,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...factsMethods,
   ...factArrayMethods,
   ...combinatoricsMethods,
+  ...areaVolumeMethods,
   ...transformationMethods,
   ...angleTriangleMethods,
   ...realNumberMethods,

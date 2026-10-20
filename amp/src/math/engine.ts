@@ -1,4 +1,8 @@
 import {
+  areaVolumeTemplates,
+  generateAreaVolumeProblem,
+} from "./area-volume-practice";
+import {
   transformationTemplates,
   generateTransformationProblem,
 } from "./transformation-practice";
@@ -339,6 +343,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factArrayTemplates,
   ...earlyOperationsTemplates,
   ...combinatoricsTemplates,
+  ...areaVolumeTemplates,
   ...transformationTemplates,
   ...angleTriangleTemplates,
   ...realNumberTemplates,
@@ -511,6 +516,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   // These authored algebra strings need their grouping parentheses and complete identities.
   // The general noun/number copy-edit removes both, changing fractional division.
   const preserveAlgebra = [
+    ...areaVolumeTemplates,
     ...transformationTemplates,
     ...completingSquareTemplates,
     ...factoringTemplates,
@@ -573,6 +579,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (areaVolumeTemplates.some((t) => t.id === templateId))
+    return generateAreaVolumeProblem(templateId, seed);
   if (transformationTemplates.some((t) => t.id === templateId))
     return generateTransformationProblem(templateId, seed);
   if (completingSquareTemplates.some((t) => t.id === templateId))

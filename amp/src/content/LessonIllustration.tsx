@@ -1,3 +1,4 @@
+import { AreaVolumeIllustration } from "./AreaVolumeIllustration";
 import { CompletingSquareIllustration } from "./CompletingSquareIllustration";
 import { FactoringIllustration } from "./FactoringIllustration";
 import { RatioRateIllustration } from "./RatioRateIllustration";
@@ -64,6 +65,12 @@ export function LessonIllustration({
   /** Printed pages show a walkthrough's final frame. */
   print?: boolean;
 }) {
+  if (kind.startsWith("av-"))
+    return (
+      <AreaVolumeIllustration
+        kind={kind as Parameters<typeof AreaVolumeIllustration>[0]["kind"]}
+      />
+    );
   if (kind === "factoring-gcf") return <FactoringIllustration kind="gcf" />;
   if (kind === "factoring-monic") return <FactoringIllustration kind="monic" />;
   if (kind === "factoring-nonmonic")

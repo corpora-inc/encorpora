@@ -53,6 +53,7 @@ from quadratic_structure_math_oracle import QUADRATIC_STRUCTURE, QUADRATIC_STRUC
 from pattern_function_math_oracle import PATTERN_FUNCTION, PATTERN_FUNCTION_CHOICE, solve_pattern_function, review_pattern_function_fixtures, review_problem as review_pattern_function_problem, review_pattern_function_content, review_content_mutations as review_pattern_function_mutations
 from equation_math_oracle import EQUATIONS, EQUATIONS_CHOICE, solve_equations, review_equation_fixtures, review_problem as review_equation_problem, review_equation_content, review_content_mutations as review_equation_mutations
 from combinatorics_math_oracle import COMBINATORICS, solve_combinatorics, review_combinatorics_fixtures, review_problem as review_combinatorics_problem, review_combinatorics_content, review_content_mutations as review_combinatorics_mutations
+from area_volume_math_oracle import AREA_VOLUME, solve_area_volume, review_area_volume_fixtures, review_problem as review_area_volume_problem, review_area_volume_content, review_content_mutations as review_area_volume_mutations
 from rational_math_oracle import RATIONAL_TYPES, solve_rational, review_fixtures as review_rational_fixtures, RationalCorpus
 from number_sense_math_oracle import NUMBER_SENSE, solve_number_sense, review_number_sense_fixtures, NumberSenseCorpus
 from multiply_divide_math_oracle import MULTIPLY_DIVIDE, solve_multiply_divide, review_multiply_divide_fixtures, MultiplyDivideCorpus
@@ -81,7 +82,7 @@ SUPPORTED = frozenset({
     'coordinate-point-reading', 'graphed-line-slope', 'bar-chart-total',
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
-SUPPORTED = TRANSFORMATION | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | ANGLE_TRIANGLE | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE
+SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
@@ -101,6 +102,8 @@ SUPPORTED |= ABSOLUTE_VALUE
 def solve(public):
     """Only public prompt/figure givens enter this function, never generated answers."""
     template = public['templateId']
+    if template in AREA_VOLUME:
+        return solve_area_volume(public)
     if template in TWO_VARIABLE:
         return solve_two_variable(public)
     if template in NUMBER_SENSE:
@@ -390,6 +393,8 @@ def solve(public):
 
 
 def review(stream):
+    area_volume_fixtures = review_area_volume_fixtures()
+    area_volume_mutants = review_area_volume_mutations()
     review_two_variable_fixtures()
     review_two_variable_mutations()
     review_transformation_fixtures()
@@ -462,6 +467,7 @@ def review(stream):
     start, count = manifest['seedStart'], manifest['seedCount']
     require(type(start) is int and type(count) is int and start >= 0 and count >= 256, 'Require at least 256 seeds per family')
     seen, counts = set(), Counter()
+    area_volume_equalities = 0
     polynomial_shortcuts = PolynomialShortcutReview()
     factoring_review = FactoringReview()
     inequality_review = InequalityReview()
@@ -531,6 +537,8 @@ def review(stream):
             review_equation_problem(problem)
         if template in COMBINATORICS:
             review_combinatorics_problem(problem)
+        if template in AREA_VOLUME:
+            area_volume_equalities += review_area_volume_problem(problem)
         if template in REAL_NUMBER:
             review_real_number_problem(problem)
         if template in NUMBER_SYSTEM:
@@ -583,6 +591,8 @@ def review(stream):
             review_coordinate_circle_problem(problem, solved)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
+    print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)
+    print('Independent area/volume content: ' + json.dumps({**review_area_volume_content(), 'rejectedContentMutations': area_volume_mutants}), file=sys.stderr)
     print('Independent number-sense coverage: ' + json.dumps(number_sense_corpus.finish()), file=sys.stderr)
     print('Independent coordinate-geometry content: ' + json.dumps(review_transformation_content()), file=sys.stderr)
     print('Independent completing-square coverage: ' + json.dumps(completing_square_review.finish(count)), file=sys.stderr)

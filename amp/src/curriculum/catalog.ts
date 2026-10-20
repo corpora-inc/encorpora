@@ -1994,7 +1994,59 @@ for (const [skillId, suffix, description] of [
     });
 
 // Bounded counting and discrete-probability tasks; each facet names its limits.
+// Area, surface area and volume facets (grades 6–8) name their limits too.
 for (const [skillId, suffix, description] of [
+  [
+    "triangle-area",
+    "base-height-triangles",
+    "Find triangle areas from a base and its perpendicular height, including right and obtuse triangles and figures that also label slanted sides.",
+  ],
+  [
+    "triangle-area",
+    "polygon-decomposition",
+    "Find areas of parallelograms, trapezoids and pentagons by rearranging or splitting them into rectangles and triangles.",
+  ],
+  [
+    "surface-area",
+    "prism-pyramid-nets",
+    "Find surface area by adding the face areas shown in nets of rectangular prisms, triangular prisms and square pyramids.",
+  ],
+  [
+    "fractional-prism-volume",
+    "unit-fraction-packing",
+    "Count the cubes with edges of 1/2, 1/3 or 1/4 that fill a rectangular prism and find its volume as count times cube volume.",
+  ],
+  [
+    "fractional-prism-volume",
+    "fraction-edge-formula",
+    "Find a rectangular prism's volume, or a missing edge, with fractional edge lengths using V = lwh.",
+  ],
+  [
+    "composite-measurement",
+    "composite-polygon-area",
+    "Find areas of L-, T- and U-shaped figures and of rectangles with a corner cut off, recovering unlabeled sides.",
+  ],
+  [
+    "composite-measurement",
+    "composite-prism-volume",
+    "Find the volume of right prisms with L- or T-shaped faces as face area times depth.",
+  ],
+  [
+    "composite-measurement",
+    "composite-prism-surface-area",
+    "Find the surface area of right prisms with L- or T-shaped faces as twice the face area plus perimeter times depth.",
+  ],
+  [
+    "curved-solid-volume",
+    "cylinder-volume",
+    "Find a cylinder's volume exactly as a multiple of pi or with 3.14, and its height from its volume.",
+  ],
+  [
+    "curved-solid-volume",
+    "cone-sphere-volume",
+    "Find the volume of cones, spheres and hemispheres exactly as a multiple of pi or with 3.14.",
+  ],
+
   [
     "systems-modeling",
     "two-unknowns",

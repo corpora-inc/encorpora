@@ -1,3 +1,8 @@
+import {
+  areaVolumeAnimationModel,
+  areaVolumeFrames,
+  type AreaVolumeAnimation,
+} from "./area-volume-model";
 import type { ProblemLessonView } from "../../content/problem-lessons";
 import type {
   CoordinateGeometryFigure,
@@ -129,6 +134,7 @@ export type AnimationModel =
   | { kind: "opposite"; value: number; min: number; max: number }
   /** Signed changes added one jump at a time; values are exact halves. */
   | { kind: "jumps"; start: number; jumps: number[]; min: number; max: number }
+  | AreaVolumeAnimation
   | {
       kind: "motion";
       /** The pre-image alone, in a window that also holds the image. */
@@ -293,6 +299,8 @@ function plotRule(f: Display): PlotRule | null {
 export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
+  const areaVolume = areaVolumeAnimationModel(lesson);
+  if (areaVolume) return areaVolume;
   const g = lesson.example.givens;
   if (
     (lesson.templateId === "root-between-integers" ||
@@ -896,6 +904,12 @@ const num = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 
 export function animationFrames(model: AnimationModel) {
   if (model.kind === "motion") return motionFrames(model);
+  if (
+    model.kind === "triangle-double" ||
+    model.kind === "net-fold" ||
+    model.kind === "cylinder-stack"
+  )
+    return areaVolumeFrames(model);
   if (
     model.kind === "triangle-sum" ||
     model.kind === "exterior-angle" ||

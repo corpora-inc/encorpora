@@ -1,4 +1,5 @@
 import { MeasurementFigure } from "./MeasurementFigure";
+import { AreaVolumeFigure } from "./AreaVolumeFigure";
 import { AngleTriangleFigure } from "./AngleTriangleFigure";
 import { PartWholeFigure } from "./PartWholeFigure";
 import { AttributeFigure } from "./AttributeFigure";
@@ -34,6 +35,14 @@ export function Figure({ figure }: { figure: SemanticFigure }) {
     case "measure-rectangle":
     case "rectangle-comparison":
       return <MeasurementFigure figure={figure} />;
+    case "measured-polygon":
+    case "rectangular-prism-net":
+    case "triangular-prism-net":
+    case "square-pyramid-net":
+    case "fraction-box-prism":
+    case "extruded-polygon":
+    case "curved-solid":
+      return <AreaVolumeFigure figure={figure} />;
     case "angle-rays":
     case "triangle-angles":
     case "parallel-transversal":

@@ -1,3 +1,4 @@
+import { AreaVolumeModel } from "./AreaVolumeModels";
 import { CoordinateGeometry } from "../TransformationFigure";
 import { GeometryModel } from "./GeometryAnimation";
 import { useEffect, useRef, useState } from "react";
@@ -39,6 +40,10 @@ import { Jars } from "../AttributeFigure";
 
 function Stage({ model, step }: { model: AnimationModel; step: number }) {
   switch (model.kind) {
+    case "triangle-double":
+    case "net-fold":
+    case "cylinder-stack":
+      return <AreaVolumeModel model={model} step={step} />;
     case "motion":
       return <MotionModel model={model} step={step} />;
     case "triangle-sum":

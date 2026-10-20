@@ -188,6 +188,7 @@ export const openerSlots: readonly (readonly (readonly string[])[])[] = [
       "coordinate-distance",
       "triangle-angle-sum",
       "angle-pair-measure",
+      "cylinder-volume",
     ],
   ],
   // High school: an equation or formula, the Pythagorean theorem, a linear

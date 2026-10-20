@@ -1,3 +1,5 @@
+import { areaVolumeWorksheet } from "./area-volume-worksheets";
+import { areaVolumeTemplates } from "../math/area-volume-practice";
 import { transformationWorksheet } from "./transformation-worksheets";
 import { transformationTemplates } from "../math/transformation-practice";
 import { completingSquareTemplates } from "../math/completing-square-practice";
@@ -85,7 +87,9 @@ export function publicationHtml(
   edition = "1",
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
-    transformationTemplates.some((t) => t.id === id)
+    areaVolumeTemplates.some((t) => t.id === id)
+      ? areaVolumeWorksheet(id, lesson.id, edition)
+      : transformationTemplates.some((t) => t.id === id)
       ? transformationWorksheet(id, lesson.id, edition)
       : completingSquareTemplates.some((t) => t.id === id)
         ? completingSquareWorksheet(id, lesson.id, edition)
