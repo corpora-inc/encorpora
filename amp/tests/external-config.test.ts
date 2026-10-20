@@ -179,6 +179,29 @@ test("only a recognised rejection counts as drift; outages are warnings", async 
   assert.ok(outage.lines.some((l) => l.includes("not checked (network down)")));
 });
 
+test("Apple's bare 403 is drift only when Apple answered another return URL", async () => {
+  const env = completeEnv("stage");
+  const [first] = registeredRedirects("apple", "stage");
+  const answer = (blockAll: boolean) => async (url: string) => {
+    if (!url.includes("appleid.apple.com"))
+      return {
+        status: 200,
+        url: url
+          .replace("login.microsoftonline.com", "login.live.com")
+          .replace(/o\/oauth2.*/, "v3/signin/identifier"),
+        body: "",
+      };
+    const rejected = blockAll || url.includes(encodeURIComponent(first));
+    return { status: rejected ? 403 : 200, url, body: "" };
+  };
+  assert.equal((await checkProviders("stage", env, answer(false))).drift, 1);
+  const blocked = await checkProviders("stage", env, answer(true));
+  assert.equal(blocked.drift, 0);
+  assert.ok(
+    blocked.lines.some((l) => l.includes("Apple refused every request")),
+  );
+});
+
 /** A registration as the Entra portal creates it, before the setup steps. */
 function portalDefault(): Registration {
   return {

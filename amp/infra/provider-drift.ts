@@ -72,7 +72,14 @@ export function classify(
         return { status: "ok" };
       break;
     case "apple":
-      if (status === 403 || /invalid_client|invalid_request/.test(body))
+      // Apple's rejection is a bare HTTP 403, which a blocked client also
+      // gets: checkProviders counts it only when another return URL succeeds.
+      if (status === 403)
+        return {
+          status: "drift",
+          reason: "return URL not registered (HTTP 403)",
+        };
+      if (/invalid_client|invalid_request/.test(body))
         return {
           status: "drift",
           reason: "client id or return URL not registered",
@@ -139,17 +146,36 @@ export async function checkProviders(
 ): Promise<DriftReport> {
   const { probes: list, skipped } = probes(environment, env);
   const lines = [`Sign-in providers: ${environment}`];
-  let drift = 0;
+  const verdicts: Verdict[] = [];
   for (const probe of list) {
-    let verdict: Verdict;
     try {
-      verdict = classify(probe.provider, await fetcher(probe.url));
+      verdicts.push(classify(probe.provider, await fetcher(probe.url)));
     } catch (error) {
-      verdict = {
+      verdicts.push({
         status: "unknown",
         reason: error instanceof Error ? error.message : String(error),
-      };
+      });
     }
+  }
+  // A bare 403 from Apple is drift only when Apple answered another return
+  // URL for the same client: a 403 for every request is more likely a block
+  // on this network than a console change, and must not stop a deploy.
+  const appleAnswered = list.some(
+    (p, i) => p.provider === "apple" && verdicts[i].status === "ok",
+  );
+  let drift = 0;
+  for (const [i, probe] of list.entries()) {
+    let verdict = verdicts[i];
+    if (
+      probe.provider === "apple" &&
+      verdict.status === "drift" &&
+      verdict.reason.endsWith("(HTTP 403)") &&
+      !appleAnswered
+    )
+      verdict = {
+        status: "unknown",
+        reason: "Apple refused every request (HTTP 403)",
+      };
     const where = `${probe.provider} ${probe.redirectUri}`;
     if (verdict.status === "ok") lines.push(`  = ${where}`);
     else if (verdict.status === "drift") {
