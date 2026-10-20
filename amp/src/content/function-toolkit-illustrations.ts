@@ -12,17 +12,17 @@ import {
 /** Lesson models for the function toolkit, drawn revealed and played. */
 const example: Piece[] = [
   { m: 2, b: 1, lo: null, hi: 2, loIn: false, hiIn: false },
-  { m: -1, b: 7, lo: 2, hi: null, loIn: true, hiIn: false },
+  { m: -1, b: 6, lo: 2, hi: null, loIn: true, hiIn: false },
 ];
 const absPieces: Piece[] = [
   { m: -1, b: 3, lo: null, hi: 1, loIn: false, hiIn: false },
   { m: 1, b: 1, lo: 1, hi: null, loIn: true, hiIn: false },
 ];
 export const functionToolkitIllustrations = {
-  // f(x) = 2x + 1 for x < 2 and −x + 7 for x ≥ 2: f(2) = 5.
+  // f(x) = 2x + 1 for x < 2 and −x + 6 for x ≥ 2: a jump at 2, f(2) = 4.
   "piecewise-pieces": piecewiseWalkthrough(
     example,
-    ["2x + 1", "-x + 7"],
+    ["2x + 1", "-x + 6"],
     ["x < 2", "x \\ge 2"],
     2,
   ),

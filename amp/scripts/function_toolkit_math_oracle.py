@@ -937,7 +937,7 @@ def review_illustrations(figures):
     by = {f['kind']: f['scene'] for f in figures}
     g = by['piecewise-pieces']['elements'][0]
     curves = [spec_fn(c['fn']) for c in g['curves']]
-    require(curves[1](2) == g['points'][0]['y'] == 5 and g['curves'][0]['ends'][1] == 'open' and g['curves'][1]['ends'][0] == 'closed', 'f(2) = 5 on the closed piece')
+    require(curves[1](2) == g['points'][0]['y'] == 4 and curves[0](2) == 5 and g['curves'][0]['ends'][1] == 'open' and g['curves'][1]['ends'][0] == 'closed', 'f(2) = 4 on the closed piece; the open end is at height 5')
     a = by['abs-pieces']['elements'][0]
     left, right = (spec_fn(c['fn']) for c in a['curves'])
     require(all(left(x) == abs(Fraction(x) - 1) + 2 for x in (-2, 0)) and all(right(x) == abs(Fraction(x) - 1) + 2 for x in (1, 3)), '|x − 1| + 2 in pieces')

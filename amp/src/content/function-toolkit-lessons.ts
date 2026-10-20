@@ -21,8 +21,8 @@ export const functionToolkitLessons: Lesson[] = [
       {
         title: "One input, one rule",
         paragraphs: [
-          "In $f(x) = \\begin{cases} 2x + 1 & x < 2 \\\\ -x + 7 & x \\ge 2 \\end{cases}$ the conditions split the number line at $2$ without overlap, so every input satisfies exactly one of them. For $x = 1$, $1 < 2$, so $f(1) = 2 \\cdot 1 + 1 = 3$.",
-          "At the boundary the inequality signs decide: $2 \\ge 2$ is true and $2 < 2$ is false, so $f(2) = -2 + 7 = 5$. On the graph the left piece ends in an open circle at $(2, 5)$ and the right piece starts with a filled dot at $(2, 5)$; only filled dots are points of the graph.",
+          "In $f(x) = \\begin{cases} 2x + 1 & x < 2 \\\\ -x + 6 & x \\ge 2 \\end{cases}$ the conditions split the number line at 2 without overlap, so every input satisfies exactly one of them. For $x = 1$, $1 < 2$, so $f(1) = 2 \\cdot 1 + 1 = 3$.",
+          "At the boundary the inequality signs decide: $2 \\ge 2$ is true and $2 < 2$ is false, so $f(2) = -2 + 6 = 4$. On the graph the left piece ends in an open circle at $(2, 5)$ and the right piece starts with a filled dot at $(2, 4)$: the graph jumps, and only the filled dot is a point of the graph.",
         ],
         illustration: "piecewise-pieces",
       },
@@ -37,12 +37,12 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Let $f(x) = \\begin{cases} 2x + 1 & x < 2 \\\\ -x + 7 & x \\ge 2 \\end{cases}$. What is $f(2)$?",
+        "Let $f(x) = \\begin{cases} 2x + 1 & x < 2 \\\\ -x + 6 & x \\ge 2 \\end{cases}$. What is $f(2)$?",
       steps: [
-        "$2 \\ge 2$, so $x = 2$ uses the rule $f(x) = -x + 7$.",
-        "$f(2) = -2 + 7 = 5$.",
+        "$2 \\ge 2$, so $x = 2$ uses the rule $f(x) = -x + 6$.",
+        "$f(2) = -2 + 6 = 4$.",
       ],
-      answer: "5",
+      answer: "4",
     },
     pitfalls: [
       "Use one rule only: the condition that the input satisfies picks it.",
@@ -69,7 +69,7 @@ export const functionToolkitLessons: Lesson[] = [
         title: "Inside changes inputs, outside changes outputs",
         paragraphs: [
           "Adding $k$ outside, $f(x) + k$, adds $k$ to every height: the graph moves $k$ up. Multiplying outside, $af(x)$, multiplies every height by $a$: the graph stretches away from the $x$-axis, and flips across it when $a$ is negative.",
-          "Changing the input works backwards. $f(x - 3)$ reaches the value $f$ had at $0$ only when $x - 3 = 0$, at $x = 3$: the graph moves 3 to the right. $f(2x)$ reaches the value $f$ had at $4$ when $2x = 4$, at $x = 2$: every $x$-coordinate is divided by 2.",
+          "Changing the input works backwards. $f(x - 3)$ reaches the value $f$ had at 0 only when $x - 3 = 0$, at $x = 3$: the graph moves 3 to the right. $f(2x)$ reaches the value $f$ had at 4 when $2x = 4$, at $x = 2$: every $x$-coordinate is divided by 2.",
           "Do the steps in this order: shift across, stretch or reflect, then shift up. $y = x^2$ moved 1 right, stretched by $-2$ and moved 3 up is $y = -2(x - 1)^2 + 3$, with vertex $(1, 3)$.",
         ],
         illustration: "transform-parent",

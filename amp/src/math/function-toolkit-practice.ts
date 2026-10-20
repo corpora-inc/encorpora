@@ -164,6 +164,8 @@ export function polyTex(desc: number[], v = "x") {
 /** "x - 3", "x + 2" or "x". */
 const shifted = (h: number, v = "x") =>
   h === 0 ? v : `${v} ${h > 0 ? "-" : "+"} ${Math.abs(h)}`;
+/** A number in prose: a negative one is set as math for its minus sign. */
+const mn = (v: number) => (v < 0 ? M(tn(v)) : String(v));
 const units = (v: number) =>
   `${Math.abs(v)} ${Math.abs(v) === 1 ? "unit" : "units"}`;
 const pt = (x: number, y: number) => `(${tn(x)}, ${tn(y)})`;
@@ -759,12 +761,12 @@ function transformEquation(r: Random): Case {
         : []),
       ...(a !== 1
         ? [
-            `${a < 0 ? (a === -1 ? "Reflecting across the $x$-axis" : `Reflecting across the $x$-axis and stretching by ${Math.abs(a)}`) : `Stretching vertically by ${a}`} multiplies every output by ${M(tn(a))}: ${M(`y = ${formTex(p, a, h, 0)}`)}.`,
+            `${a < 0 ? (a === -1 ? "Reflecting across the $x$-axis" : `Reflecting across the $x$-axis and stretching by ${Math.abs(a)}`) : `Stretching vertically by ${a}`} multiplies every output by ${mn(a)}: ${M(`y = ${formTex(p, a, h, 0)}`)}.`,
           ]
         : []),
       ...(k !== 0
         ? [
-            `Shifting ${units(k)} ${k > 0 ? "up" : "down"} adds ${M(tn(k))} to every output: ${M(`y = ${formTex(p, a, h, k)}`)}.`,
+            `Shifting ${units(k)} ${k > 0 ? "up" : "down"} adds ${mn(k)} to every output: ${M(`y = ${formTex(p, a, h, k)}`)}.`,
           ]
         : []),
     ];
@@ -775,7 +777,7 @@ function transformEquation(r: Random): Case {
         scene: transformGraph(p, a, h, k),
         explanation: [
           `The key point of ${M(`y = ${base}`)} moved from ${M("(0, 0)")} to ${M(pt(h, k))}.`,
-          `One unit right of its key point, ${M(`y = ${base}`)} rises 1 unit and the solid curve ${a > 0 ? "rises" : "falls"} ${units(a)}: every height is multiplied by ${M(tn(a))}.`,
+          `One unit right of its key point, ${M(`y = ${base}`)} rises 1 unit and the solid curve ${a > 0 ? "rises" : "falls"} ${units(a)}: every height is multiplied by ${mn(a)}.`,
           `So the solid curve is ${M(`y = ${formTex(p, a, h, k)}`)}.`,
         ],
         hint: `The dashed curve ${M(`y = ${base}`)} has its key point at ${M("(0, 0)")}. See where the marked point moved, then compare heights 1 unit to its right.`,
@@ -808,7 +810,7 @@ function transformEquation(r: Random): Case {
         ...explain,
         `So the new graph is ${M(`y = ${formTex(p, a, h, k)}`)}.`,
       ],
-      hint: `Work in the order given. The shift of ${units(h)} ${h > 0 ? "right" : "left"} changes ${M("x")} to ${M(shifted(h))}; then multiply the output by ${M(tn(a))} before adding ${M(tn(k))}.`,
+      hint: `Work in the order given. The shift of ${units(h)} ${h > 0 ? "right" : "left"} changes ${M("x")} to ${M(shifted(h))}; then multiply the output by ${mn(a)} before adding ${mn(k)}.`,
       walkthrough,
       tags: ["words", p],
     };

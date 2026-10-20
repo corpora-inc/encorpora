@@ -268,10 +268,10 @@ export function transformWalkthrough(
     steps.push(
       step(
         i === stages.length - 1
-          ? `Multiplying every output by $${a}$ ${a < 0 ? "reflects the curve across the $x$-axis and " : ""}${Math.abs(a) === 1 ? "keeps its shape" : `stretches it by $${Math.abs(a)}$`}: height $1$ becomes $${a}$.`
+          ? `Multiplying every output by ${a < 0 ? `$${a}$` : a} ${a < 0 ? "reflects the curve across the $x$-axis and " : ""}${Math.abs(a) === 1 ? "keeps its shape" : `stretches it by ${Math.abs(a)}`}: height 1 becomes ${a < 0 ? `$${a}$` : a}.`
           : s === 0
-            ? "As the multiplier shrinks to $0$ the curve flattens onto the $x$-axis."
-            : `Multiplying every output by $${s}$ stretches the curve away from the $x$-axis.`,
+            ? "As the multiplier shrinks to 0 the curve flattens onto the $x$-axis."
+            : `Multiplying every output by ${s} stretches the curve away from the $x$-axis.`,
         ...actions,
       ),
     );
