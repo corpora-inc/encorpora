@@ -47,6 +47,13 @@
   .practice-surface > .answer-dock:has(.choice-form) {
     max-height: none;
   }
+  /* Hint, Skip and Lesson (Lesson and the flag on feedback) share the
+     column's width evenly, as on a phone, instead of overflowing it. */
+  .practice-surface .practice-tools button {
+    flex: 0 1 112px;
+    min-width: 0;
+    padding-inline: var(--space-2);
+  }
   /* Choices stack in the narrow column, one statement per row, so a long
      statement reads on one or two lines instead of four. */
   .practice-surface > .answer-dock .choice-options {
