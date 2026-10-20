@@ -233,7 +233,11 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
+  const stage = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
+    // Each problem starts at its prompt's first line, wherever the last one
+    // was scrolled to.
+    if (stage.current) stage.current.scrollTop = 0;
     setPanel(null);
     setEntering(false);
     setLessonError("");
@@ -603,6 +607,7 @@ export function PracticeWorkspace(props: Props) {
         </div>
         <div
           className="problem-stage"
+          ref={stage}
           tabIndex={0}
           aria-label="Problem workspace"
         >
