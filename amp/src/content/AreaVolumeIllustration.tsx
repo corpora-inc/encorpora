@@ -137,7 +137,7 @@ function TriangleHalf() {
         strokeWidth={2}
         strokeDasharray="7 4"
       />
-      <path d={d(tri)} fill={avColor.fill} {...outline} />
+      <path d={d(tri)} fill={avColor.accentFill} {...outline} />
       <line
         x1={P(2, 5)[0]}
         y1={P(2, 5)[1]}
@@ -204,7 +204,7 @@ function PolygonSplit() {
         "data-upper": upper.flat().join(","),
       }}
     >
-      <path d={d(lower)} fill={avColor.fill} {...outline} />
+      <path d={d(lower)} fill={avColor.accentFill} {...outline} />
       <path d={d(upper)} fill={avColor.goldFill} {...outline} />
       <line
         x1={P(1, 4)[0]}
@@ -261,7 +261,7 @@ function PrismNet() {
     oy = 20;
   const P = (p: readonly number[]): Pt => [ox + p[0]! * s, oy + p[1]! * s];
   const fills = {
-    "pair-a": avColor.fill,
+    "pair-a": avColor.accentFill,
     "pair-b": avColor.goldFill,
     "pair-c": avColor.warmFill,
   } as Record<string, string>;
@@ -337,7 +337,7 @@ function obliqueBox(
     <g key={key}>
       <path d={d(top)} fill={avColor.paper} />
       <path d={d(side)} fill={avColor.fillStrong} />
-      <path d={d(front)} fill={avColor.fill} />
+      <path d={d(front)} fill={avColor.accentFill} />
       {lines}
       {[top, side, front].map((f, i) => (
         <path key={i} d={d(f)} fill="none" {...outline} />
@@ -410,7 +410,7 @@ function CompositeSplit() {
     >
       <path
         d={d([P(A, 0, 0), P(A, 10, 0), P(A, 10, 4), P(A, 0, 4)])}
-        fill={avColor.fill}
+        fill={avColor.accentFill}
         {...outline}
       />
       <path
@@ -441,7 +441,7 @@ function CompositeSplit() {
         strokeWidth={2}
         strokeDasharray="6 4"
       />
-      <path d={d(L(B))} fill={avColor.fill} {...outline} />
+      <path d={d(L(B))} fill={avColor.accentFill} {...outline} />
       <text
         x={P(B, 3, 4.5)[0]}
         y={P(B, 3, 4.5)[1] + 6}
@@ -532,7 +532,7 @@ function extruded(
       ))}
       <path
         d={d(face.map(([x, y]) => P(x, y, z0)))}
-        fill={avColor.fill}
+        fill={avColor.accentFill}
         {...outline}
         strokeWidth={1.75}
       />
@@ -600,7 +600,7 @@ function PrismUnrolled() {
     >
       <path
         d={d(LFACE.map(([px, py]) => [20 + px * 12, 90 - py * 12] as Pt))}
-        fill={avColor.fill}
+        fill={avColor.accentFill}
         {...outline}
       />
       <text x={20 + 4 * 12} y={110} textAnchor="middle" style={label}>
@@ -664,7 +664,7 @@ function CylinderStack() {
       <g key={i} data-layer={i + 1}>
         <path
           d={`M${cx - R} ${top} L${cx - R} ${bottom} A${R} ${ry} 0 0 0 ${cx + R} ${bottom} L${cx + R} ${top} Z`}
-          fill={avColor.fill}
+          fill={avColor.accentFill}
           {...outline}
           strokeWidth={1.75}
         />
@@ -732,7 +732,7 @@ function ConeSphereCylinder() {
             <>
               <path
                 d={`M${x} ${top} L${x + R} ${bottom} A${R} ${ry} 0 0 1 ${x - R} ${bottom} Z`}
-                fill={avColor.fill}
+                fill={avColor.accentFill}
                 {...outline}
               />
               <path
@@ -747,7 +747,7 @@ function ConeSphereCylinder() {
                 cx={x}
                 cy={(top + bottom) / 2}
                 r={R}
-                fill={avColor.fill}
+                fill={avColor.accentFill}
                 {...outline}
               />
               <path
@@ -766,7 +766,7 @@ function ConeSphereCylinder() {
             <>
               <path
                 d={`M${x - R} ${top} L${x - R} ${bottom} A${R} ${ry} 0 0 0 ${x + R} ${bottom} L${x + R} ${top} Z`}
-                fill={avColor.fill}
+                fill={avColor.accentFill}
                 {...outline}
               />
               <ellipse

@@ -81,7 +81,7 @@ function TriangleDouble({
       </g>
       <path
         d={d(tri)}
-        fill={avColor.fill}
+        fill={avColor.accentFill}
         stroke={avColor.line}
         strokeWidth={2.5}
         strokeLinejoin="round"
@@ -124,11 +124,11 @@ function TriangleDouble({
 }
 
 const roleFill: Record<NetFace["role"], string> = {
-  "pair-a": avColor.fill,
+  "pair-a": avColor.accentFill,
   "pair-b": avColor.goldFill,
   "pair-c": avColor.warmFill,
   base: avColor.goldFill,
-  lateral: avColor.fill,
+  lateral: avColor.accentFill,
   end: avColor.goldFill,
 };
 /** Folds the net in 3D with an eased tween; reduced motion jumps to the end. */
@@ -262,7 +262,7 @@ function CylinderStack({
           >
             <path
               d={`M${r2(cx - R)} ${r2(top)} L${r2(cx - R)} ${r2(low)} A${r2(R)} ${r2(ry)} 0 0 0 ${r2(cx + R)} ${r2(low)} L${r2(cx + R)} ${r2(top)} Z`}
-              fill={avColor.fill}
+              fill={avColor.accentFill}
               stroke={avColor.line}
               strokeWidth={1.25}
             />

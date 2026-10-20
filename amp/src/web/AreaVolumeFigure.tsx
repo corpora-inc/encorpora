@@ -14,7 +14,7 @@ import {
 export const avColor = {
   ink: "var(--color-figure-ink, #174a43)",
   line: "var(--color-figure-accent, #20776d)",
-  fill: "var(--color-figure-accent-fill, #d4e9e1)",
+  accentFill: "var(--color-figure-accent-fill, #d4e9e1)",
   fillStrong: "var(--color-figure-accent-fill-strong, #c5ded6)",
   paper: "var(--color-figure-empty, #f6f2e8)",
   warm: "var(--color-figure-warm, #9c4420)",
@@ -219,7 +219,7 @@ function Polygon({
       })}
       <path
         d={path(pts)}
-        fill={avColor.fill}
+        fill={avColor.accentFill}
         stroke={avColor.line}
         strokeWidth={2.5}
         strokeLinejoin="round"
@@ -276,11 +276,11 @@ function Polygon({
 }
 
 const roleFill: Record<NetFace["role"], string> = {
-  "pair-a": avColor.fill,
+  "pair-a": avColor.accentFill,
   "pair-b": avColor.goldFill,
   "pair-c": avColor.warmFill,
   base: avColor.goldFill,
-  lateral: avColor.fill,
+  lateral: avColor.accentFill,
   end: avColor.goldFill,
 };
 function Net({
@@ -513,7 +513,11 @@ function oblique(s: number, ox: number, oy: number) {
   ];
 }
 const value = (f: FigureFraction | null) => (f ? f.n / f.d : null);
-function Box({ figure: f }: { figure: Extract<Model, { kind: "fraction-box-prism" }> }) {
+function Box({
+  figure: f,
+}: {
+  figure: Extract<Model, { kind: "fraction-box-prism" }>;
+}) {
   // A missing edge is drawn at the length its volume implies only in the
   // problem's own numbers; here it is drawn at a neutral size and labeled "?".
   const known = [value(f.length), value(f.width), value(f.height)].filter(
@@ -525,7 +529,10 @@ function Box({ figure: f }: { figure: Extract<Model, { kind: "fraction-box-prism
     H = value(f.height) ?? fallback;
   const spanX = L + D * DEPTH * Math.cos(ANGLE),
     spanY = H + D * DEPTH * Math.sin(ANGLE);
-  const s = Math.min((W - 200) / spanX  /* room for edge labels such as "1½ cm" on both sides */, 190 / spanY);
+  const s = Math.min(
+    (W - 200) / spanX /* room for edge labels such as "1½ cm" on both sides */,
+    190 / spanY,
+  );
   const ox = (W - spanX * s) / 2 - 10,
     oy = 26 + spanY * s;
   const P = oblique(s, ox, oy);
@@ -594,7 +601,7 @@ function Box({ figure: f }: { figure: Extract<Model, { kind: "fraction-box-prism
       ))}
       <path d={path(top)} fill={avColor.paper} stroke="none" />
       <path d={path(side)} fill={avColor.fillStrong} stroke="none" />
-      <path d={path(front)} fill={avColor.fill} stroke="none" />
+      <path d={path(front)} fill={avColor.accentFill} stroke="none" />
       {grid}
       {[top, side, front].map((face, i) => (
         <path
@@ -724,7 +731,7 @@ function Extruded({
       ))}
       <path
         d={path(front)}
-        fill={avColor.fill}
+        fill={avColor.accentFill}
         stroke={avColor.line}
         strokeWidth={2.5}
         strokeLinejoin="round"
@@ -847,7 +854,7 @@ function CurvedSolid({
       <>
         <path
           d={`M${n(cx - R)} ${n(top)} L${n(cx - R)} ${n(bottom)} A${n(R)} ${n(ry)} 0 0 0 ${n(cx + R)} ${n(bottom)} L${n(cx + R)} ${n(top)} Z`}
-          fill={avColor.fill}
+          fill={avColor.accentFill}
           stroke="none"
         />
         <ellipse
@@ -876,7 +883,7 @@ function CurvedSolid({
       <>
         <path
           d={`M${cx} ${apex} L${n(cx + R)} ${n(base)} A${n(R)} ${n(ry)} 0 0 1 ${n(cx - R)} ${n(base)} Z`}
-          fill={avColor.fill}
+          fill={avColor.accentFill}
           stroke="none"
         />
         <path
@@ -911,7 +918,7 @@ function CurvedSolid({
           cx={cx}
           cy={n(cy)}
           r={n(R)}
-          fill={avColor.fill}
+          fill={avColor.accentFill}
           {...{ stroke: avColor.line, strokeWidth: 2.5 }}
         />
         <path d={arc(cy, 1)} {...dashed} />
@@ -932,7 +939,7 @@ function CurvedSolid({
       <>
         <path
           d={`M${n(cx - R)} ${n(cy)} A${n(R)} ${n(R)} 0 0 1 ${n(cx + R)} ${n(cy)} A${n(R)} ${n(ry)} 0 0 1 ${n(cx - R)} ${n(cy)} Z`}
-          fill={avColor.fill}
+          fill={avColor.accentFill}
           stroke="none"
         />
         <path
