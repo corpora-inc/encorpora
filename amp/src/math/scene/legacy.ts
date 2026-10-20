@@ -14,6 +14,7 @@ export const portedKinds = [
   "double-box-plot",
   "histogram",
   "scaled-bar-graph",
+  "bar-chart",
   "picture-graph",
   "sort-shapes",
   "base-ten",
@@ -277,10 +278,35 @@ export function legacyScene(
             type: "barChart",
             id: "chart",
             bins: { start: f.start, width: f.width, counts: f.counts },
-            max: Math.ceil(peak / step) * step,
+            // An even number of steps, so the top gridline is labeled.
+            max: Math.max(2, Math.ceil(peak / (2 * step)) * 2) * step,
             step,
             unit: "count",
             xUnit: f.unit,
+          },
+        ],
+      };
+    }
+    case "bar-chart": {
+      // A read-the-graph item: the bars carry no value labels, so the
+      // learner reads each top against the gridlines. The finest nice step
+      // with at most 14 gridlines, and a top an even number of steps up, so
+      // the labeled gridlines (every one or every other) end on the top.
+      const peak = Math.max(...f.values),
+        step = [1, 2, 5, 10, 20, 50, 100].find((k) => peak / k <= 14) ?? 200;
+      return {
+        v: 1,
+        elements: [
+          {
+            type: "barChart",
+            id: "chart",
+            bars: f.categories.map((label, i) => ({
+              label,
+              value: f.values[i]!,
+            })),
+            max: Math.max(2, Math.ceil(peak / (2 * step)) * 2) * step,
+            step,
+            unit: f.valueLabel,
           },
         ],
       };

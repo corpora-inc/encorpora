@@ -61,7 +61,7 @@ export function axis(
     from: [min - pad, y],
     to: [max + pad, y],
     stroke: "ink",
-    width: 2,
+    width: 1.5,
     obstacle: true,
   });
   for (const { v, labeled, major = labeled } of list) {
@@ -70,8 +70,9 @@ export function axis(
       id: `${id}.tick.${v}`,
       at: [v, y],
       dir: [0, 1],
-      length: major ? 14 : 8,
+      length: major ? 10 : 6,
       stroke: "ink",
+      width: 1.25,
       data: { tick: v },
     });
     if (labels && labeled)
@@ -81,7 +82,8 @@ export function axis(
         at: [v, y],
         text: text(v),
         size: "sm",
-        offset: [0, 9],
+        color: "muted",
+        offset: [0, 7],
         align: [0, -1],
         data: { "tick-label": v },
       });
@@ -101,5 +103,6 @@ export const unitLabel = (
   text,
   font: "sans",
   size: "sm",
+  color: "muted",
   align: [1, -1],
 });

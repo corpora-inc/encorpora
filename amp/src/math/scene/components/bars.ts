@@ -50,7 +50,7 @@ registerComponent("bars", {
       H = plotHeight(b),
       max = Math.max(...b.series.flatMap((s) => s.values));
     const two = b.series.length === 2,
-      w = two ? 0.36 : 0.62,
+      w = two ? 0.36 : 0.6,
       gap = two ? 0.04 : 0;
     for (const [k, s] of b.series.entries())
       for (const [i, v] of s.values.entries()) {
@@ -64,6 +64,8 @@ registerComponent("bars", {
             at: [x, 0],
             size: [w, h],
             fill: s.color ?? (k === 0 ? "accent" : "warm"),
+            radius: 3,
+            roundTop: true,
             data: { series: k, bar: i, value: v },
           });
         if (b.valueLabels !== false)
@@ -86,8 +88,8 @@ registerComponent("bars", {
       id: "baseline",
       from: [0, 0],
       to: [n, 0],
-      stroke: "axis",
-      width: 2,
+      stroke: "ink",
+      width: 1.5,
     });
     for (const [i, c] of b.categories.entries())
       prims.push({
