@@ -18,6 +18,7 @@ import {
   templateRole,
   type OpenerSlots,
 } from "../learning/placement";
+import type { PracticeSkip } from "../learning/skip";
 
 export type PracticeReason =
   "review" | "revisit" | "prerequisite" | "frontier" | "explore";
@@ -53,8 +54,26 @@ export const VARIETY = {
   /** Answers older than this belong to an earlier session: they no longer
    * count against variety, so yesterday's practice can return today. */
   sessionMs: 3 * 3600000,
+  /** A skipped template stays out for the rest of the session, unless
+   * nothing else is eligible. */
+  skipPenalty: 150,
+  /** The next problems after a skip prefer work this many grades below the
+   * learner's level: inside the session only, never in the persisted
+   * estimate. */
+  skipEase: 0.75,
+  /** Points per grade above that eased aim. */
+  skipEaseWeight: 90,
+  skipEaseProblems: 2,
+  /** The skipped skill returns, in another template, once this many
+   * problems have passed. */
+  skipReturnAfter: 4,
 } as const;
-type Served = { templateId: string; skillId: string; strand: string };
+type Served = {
+  templateId: string;
+  skillId: string;
+  strand: string;
+  skip?: true;
+};
 /** How many problems ago each key was last served (1 = the previous one),
  * and how often within the last `window`. */
 function recency(
@@ -118,6 +137,9 @@ export function planMixedPractice(options: {
   /** Stable per learner, so siblings start differently but a learner's own
    * scripted openers never change between requests. */
   learnerKey?: string;
+  /** This session's skips (learning/skip.ts): neutral passes that change no
+   * evidence, but shape what comes next. */
+  skips?: readonly PracticeSkip[];
   /** Scripted opener table; defaults to the production `openerSlots`. */
   openers?: OpenerSlots;
 }): PracticeChoice[] {
@@ -219,8 +241,29 @@ export function planMixedPractice(options: {
       .filter((attempt) => !attempt.correct || attempt.assisted).length;
     if (misses >= 2) collectPrerequisites(entry.skillId);
   }
-  const session = attempts.filter(
-    (a) => now - Date.parse(a.createdAt) < VARIETY.sessionMs,
+  const inSession = (at: string) => now - Date.parse(at) < VARIETY.sessionMs;
+  // Answers and skips in the order they happened.
+  const session: (Served & { at: number })[] = [
+    ...attempts
+      .filter((a) => inSession(a.createdAt))
+      .map((a) => ({
+        templateId: a.templateId,
+        skillId: a.skillId,
+        strand: strandOf(a.skillId),
+        at: Date.parse(a.createdAt),
+      })),
+    ...(options.skips ?? [])
+      .filter((s) => inSession(s.createdAt))
+      .map((s) => ({
+        templateId: s.templateId,
+        skillId: s.skillId,
+        strand: strandOf(s.skillId),
+        skip: true as const,
+        at: Date.parse(s.createdAt),
+      })),
+  ].sort((a, b) => a.at - b.at);
+  const skippedTemplates = new Set(
+    session.filter((s) => s.skip).map((s) => s.templateId),
   );
   for (let slot = 0; slot < options.count; slot++) {
     const opener = openerCandidates({
@@ -249,11 +292,7 @@ export function planMixedPractice(options: {
     const lastStrand =
       lastChoice?.strand ?? (latest ? strandOf(latest.skillId) : null);
     const history: Served[] = [
-      ...session.map((a) => ({
-        templateId: a.templateId,
-        skillId: a.skillId,
-        strand: strandOf(a.skillId),
-      })),
+      ...session,
       ...chosen.map((c) => ({
         templateId: c.template.id,
         skillId: c.template.skillId,
@@ -266,6 +305,26 @@ export function planMixedPractice(options: {
       VARIETY.templateWindow - 1,
     );
     const bySkill = recency(history, (s) => s.skillId, 0);
+    // After a skip, the next problems step slightly easier.
+    const lastSkip = history.map((s) => !!s.skip).lastIndexOf(true);
+    const ease =
+      lastSkip >= 0 && history.length - lastSkip <= VARIETY.skipEaseProblems
+        ? VARIETY.skipEase
+        : 0;
+    // A skipped skill comes back after other work, through another template.
+    const requeued = new Set(
+      history
+        .map((s, i) => ({ ...s, gap: history.length - i, i }))
+        .filter(
+          (s) =>
+            s.skip &&
+            s.gap >= VARIETY.skipReturnAfter &&
+            !history
+              .slice(s.i + 1)
+              .some((later) => later.skillId === s.skillId),
+        )
+        .map((s) => s.skillId),
+    );
     const byStrand = recency(history, (s) => s.strand, VARIETY.strandWindow);
     // Support (a prerequisite, a revisit, a due review) alternates with new
     // work: after a support problem the next slot is not reserved for one.
@@ -288,7 +347,9 @@ export function planMixedPractice(options: {
       const target = targetOf(strand);
       const due = state?.reviewDueAt ?? null;
       const overdue = due !== null && due <= now;
-      const returningError = !!last && (!last.correct || last.assisted);
+      const returningError =
+        (!!last && (!last.correct || last.assisted)) ||
+        requeued.has(template.skillId);
       // Support returns only within reach: a miss above the lowered frontier
       // is evidence about the frontier, not a skill to repeat yet.
       const distance = grade - target;
@@ -331,6 +392,9 @@ export function planMixedPractice(options: {
           (VARIETY.templatePenalty * (VARIETY.templateFade + 1 - templateGap)) /
           VARIETY.templateFade;
       score -= VARIETY.skillPenalty[bySkill.gap(template.skillId)] ?? 0;
+      if (skippedTemplates.has(template.id)) score -= VARIETY.skipPenalty;
+      // Just after a skip, prefer work a little below the learner's level.
+      if (ease) score -= VARIETY.skipEaseWeight * Math.max(0, distance + ease);
       if (strand === lastStrand) score -= 45;
       score -= VARIETY.strandPenalty * byStrand.count(strand);
       score -=
@@ -351,7 +415,8 @@ export function planMixedPractice(options: {
         support: ["prerequisite", "revisit", "review"].includes(reason),
         fresh:
           templateGap > 1 &&
-          byTemplate.count(template.id) < VARIETY.templateMax,
+          byTemplate.count(template.id) < VARIETY.templateMax &&
+          !skippedTemplates.has(template.id),
         skillGap: bySkill.gap(template.skillId),
       };
     });

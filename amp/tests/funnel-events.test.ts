@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import Fastify from "fastify";
 import {
   EVENT_MAX_IN_FLIGHT,
@@ -22,7 +22,7 @@ test("the vocabulary is exactly the issue's fixed list", () => {
     Object.keys(funnelPropsSchemas).sort(),
     [...FUNNEL_EVENTS].sort(),
   );
-  assert.equal(FUNNEL_EVENTS.length, 22);
+  assert.equal(FUNNEL_EVENTS.length, 23);
 });
 
 test("accepts known events with valid props", () => {
@@ -90,13 +90,19 @@ test("bounds the batch and the visitor ID", () => {
 });
 
 test("the database guard lists exactly the same vocabulary", () => {
-  const sql = readFileSync(
-    new URL("../migrations/0022-funnel-events.sql", import.meta.url),
-    "utf8",
-  );
-  const list = /event text NOT NULL CHECK \(event IN \(([^)]*)\)\)/.exec(
-    sql,
-  )?.[1];
+  // The newest migration that sets the event check is the one in force.
+  const directory = new URL("../migrations/", import.meta.url);
+  const list = readdirSync(directory)
+    .filter((name) => name.endsWith(".sql"))
+    .sort()
+    .map(
+      (name) =>
+        /CHECK \(event IN \(([^)]*)\)\)/.exec(
+          readFileSync(new URL(name, directory), "utf8"),
+        )?.[1],
+    )
+    .filter((found) => found !== undefined)
+    .at(-1);
   assert.ok(list);
   assert.deepEqual(
     list.split(",").map((name) => name.trim().replaceAll("'", "")),

@@ -4,6 +4,7 @@ import {
   recordTrialEvent,
   recordTrialMilestones,
   trialProgress,
+  countSkips,
   type TrialProgress,
 } from "./trial-progress";
 import { skills } from "../curriculum/catalog";
@@ -39,6 +40,7 @@ import * as schema from "./schema";
 import type { SkillEvidence } from "./evidence.js";
 import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem } from "../math/contracts";
+import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
 import type {
   StartingBand,
@@ -58,10 +60,16 @@ export type Outcome = {
   explanation: string[];
   answer: string;
   createdAt: string;
+  /** Only on a skip's reveal, which is never stored as an attempt. */
+  skipped?: true;
 };
 export type SavedProblem = GeneratedProblem & {
   hintViewed?: boolean;
   lessonViewed?: boolean;
+  /** Passed with Skip: the answer was shown, and it can no longer be
+   * answered for credit. Read by the insights report's skip rate. */
+  skipped?: boolean;
+  skippedAt?: string;
 };
 export class ApiError extends Error {
   constructor(
@@ -85,6 +93,10 @@ export interface LearnerTransaction {
   problem(id: string): Promise<SavedProblem | undefined>;
   saveProblem(problem: SavedProblem): Promise<void>;
   saveAttempt(outcome: Outcome): Promise<void>;
+  /** Marks a problem skipped (see learning/skip.ts); no attempt is written. */
+  saveSkip(problem: SavedProblem): Promise<void>;
+  /** This session's skips, oldest first, for the planner's variety. */
+  recentSkips(): Promise<PracticeSkip[]>;
   hasAccess(): Promise<boolean>;
   /** Answers left in an anonymous trial, or null for a parent's learner. */
   trialRemaining(): Promise<number | null>;
@@ -491,7 +503,26 @@ export class PgTransaction implements LearnerTransaction {
       "SELECT (outcome->>'correct')::boolean AS correct,(outcome->>'assisted')::boolean AS assisted FROM amp_attempts WHERE learner_id=$1",
       [this.learnerId],
     );
-    return trialProgress(attempts.rows, this.limits);
+    return trialProgress(
+      attempts.rows,
+      this.limits,
+      await countSkips(this.db, this.learnerId),
+    );
+  }
+  async saveSkip(problem: SavedProblem) {
+    await this.saveProblem(problem);
+    await recordTrialMilestones(this.db, this.learnerId, this.limits);
+  }
+  async recentSkips(): Promise<PracticeSkip[]> {
+    const result = await this.db.query(
+      `SELECT content->'public'->>'templateId' AS "templateId",
+        content->'public'->>'skillId' AS "skillId", content->>'skippedAt' AS "createdAt"
+       FROM amp_instances WHERE learner_id=$1 AND (content->>'skipped')::boolean
+         AND created_at>now()-interval '3 hours'
+       ORDER BY content->>'skippedAt' DESC LIMIT 12`,
+      [this.learnerId],
+    );
+    return (result.rows as PracticeSkip[]).reverse();
   }
   async masteredSkills() {
     return masteredSkills(await this.skillEvidence());
