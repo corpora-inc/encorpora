@@ -171,9 +171,9 @@ nav button {
 }
 .problem-content .figure {
   flex: 0 1 auto;
-  min-height: 110px;
+  min-height: min(110px, var(--figure-cap-height, 110px));
   height: min(25dvh, 250px);
-  max-height: 250px;
+  max-height: min(250px, var(--figure-cap-height, 250px));
   width: 100%;
   margin: 18px auto 0;
 }

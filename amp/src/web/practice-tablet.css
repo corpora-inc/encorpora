@@ -92,6 +92,6 @@
      scrolls. */
   .problem-content .figure {
     height: min(50dvh, 420px);
-    max-height: 420px;
+    max-height: min(420px, var(--figure-cap-height, 420px));
   }
 }

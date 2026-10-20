@@ -429,8 +429,13 @@ export async function problemInView(page: Page): Promise<string[]> {
       );
     const s = stage.getBoundingClientRect();
     const content = stage.querySelector(".problem-content");
-    for (const part of content ? [...content.children] : []) {
+    // A box-less wrapper (display: contents) is read through its figure.
+    const parts = content
+      ? [...content.children, ...content.querySelectorAll("svg:not(svg svg)")]
+      : [];
+    for (const part of new Set(parts)) {
       const b = part.getBoundingClientRect();
+      if (b.width < 2 || b.height < 2) continue;
       if (b.top < s.top - 1 || b.bottom > s.bottom + 1)
         found.push(
           `<${part.tagName.toLowerCase()}.${part.classList[0] ?? ""}> spans ${Math.round(b.top - s.top)}..${Math.round(b.bottom - s.top)} of a ${Math.round(s.height)}px stage`,
@@ -438,4 +443,51 @@ export async function problemInView(page: Page): Promise<string[]> {
     }
     return found;
   });
+}
+
+/** On-screen sizes, in CSS px, of the prompt and of the practice figure's
+ * labels (through every SVG transform). */
+export async function figureTextScale(page: Page) {
+  return page.evaluate(() => {
+    const prompt = Number.parseFloat(
+      getComputedStyle(document.querySelector(".problem-content .question")!)
+        .fontSize,
+    );
+    const labels = [
+      ...document.querySelectorAll<SVGTextElement>(".problem-content svg text"),
+    ]
+      .filter((t) => t.textContent?.trim() && t.getBBox().width > 0)
+      .map((t) => {
+        const m = t.getScreenCTM()!;
+        return {
+          text: t.textContent!,
+          size:
+            Number.parseFloat(getComputedStyle(t).fontSize) *
+            Math.hypot(m.c, m.d),
+        };
+      });
+    return { prompt, labels };
+  });
+}
+/** Figure text stays within the figure type sizes (`cap`) and, where
+ * `belowPrompt`, under the prompt. A figure whose labels span a wide range
+ * of sizes may exceed the cap only by keeping its smallest label at the
+ * legible floor. */
+export function assertFigureTextScale(
+  scale: Awaited<ReturnType<typeof figureTextScale>>,
+  label: string,
+  cap: number,
+  belowPrompt = true,
+) {
+  if (!scale.labels.length) return;
+  const sizes = scale.labels.map((l) => l.size),
+    limit = belowPrompt ? Math.min(cap, scale.prompt) : cap,
+    floorBound = Math.min(...sizes) <= 12.25;
+  const over = scale.labels.filter((l) => l.size > limit + 0.1);
+  assert.ok(
+    floorBound || !over.length,
+    `${label}: figure text exceeds ${limit.toFixed(1)} px (prompt ${scale.prompt.toFixed(1)} px): ${over
+      .map((l) => `${l.text} ${l.size.toFixed(1)}`)
+      .join(", ")}`,
+  );
 }
