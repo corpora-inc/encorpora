@@ -15,7 +15,15 @@
 # so `import "zod"` from /app/contracts/src resolves /app/node_modules/zod, and
 # tsx/colyseus resolve the same way for the server entry under /app/server/src.
 
-FROM node:20-slim
+FROM node:22-bookworm-slim@sha256:3ed98443660ff48413b5af19ecefce3b9d50845a901a43420d47cc63a9fddbe9
+
+# Use Debian's patched trust store for npm and outbound TLS. Node's bundled
+# roots are independent and must not reintroduce the compromised authorities.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates \
+    && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge 20250419~deb12u2 \
+    && rm -rf /var/lib/apt/lists/*
+ENV NODE_OPTIONS=--use-openssl-ca
 
 ENV NODE_ENV=production
 # App Runner routes to the port the container EXPOSEs; 8080 is its default.

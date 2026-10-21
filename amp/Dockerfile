@@ -1,9 +1,18 @@
 # syntax=docker/dockerfile:1.7
 # AMP: one build, two images. `api` runs the Fastify server, its migrations
 # and its scheduled jobs; `web` serves the built browser app.
-ARG NODE_IMAGE=node:22.17.1-bookworm-slim
+ARG NODE_IMAGE=node:22-bookworm-slim@sha256:3ed98443660ff48413b5af19ecefce3b9d50845a901a43420d47cc63a9fddbe9
 
-FROM ${NODE_IMAGE} AS build
+FROM ${NODE_IMAGE} AS node-base
+# Node's bundled roots are independent of Debian's trust store. Install the
+# eMudhra distrust update and use that store for npm, builds, and outbound TLS.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates \
+    && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge 20250419~deb12u2 \
+    && rm -rf /var/lib/apt/lists/*
+ENV NODE_OPTIONS=--use-openssl-ca
+
+FROM node-base AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts
@@ -25,7 +34,7 @@ RUN node -e 'const [commit, builtAt] = process.argv.slice(1).map((v) => v || nul
   require("fs").writeFileSync("dist/version.json", JSON.stringify({ commit, builtAt }) + "\n")' \
   "$SOURCE_COMMIT" "$BUILT_AT"
 
-FROM ${NODE_IMAGE} AS api
+FROM node-base AS api
 ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
 WORKDIR /app
 COPY package.json package-lock.json ./
