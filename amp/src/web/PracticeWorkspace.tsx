@@ -764,6 +764,19 @@ export function PracticeWorkspace(props: Props) {
             aria-live="polite"
             aria-atomic="true"
           >
+            {outcome.correct && (
+              <svg
+                className="feedback-wave"
+                viewBox="0 0 320 32"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  pathLength="1"
+                  d="M0 16 Q10 0 20 16 T40 16 T60 16 T80 16 T100 16 T120 16 T140 16 T160 16 T180 16 T200 16 T220 16 T240 16 T260 16 T280 16 T300 16 T320 16"
+                />
+              </svg>
+            )}
             <div className="feedback-head">
               <span className="result-mark" aria-hidden="true">
                 {outcome.correct ? "✓" : skipped ? "→" : "✕"}

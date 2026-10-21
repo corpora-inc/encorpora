@@ -398,7 +398,7 @@ async function coldLoad(
     `${label}: only the skeleton or the destination is ever painted`,
   );
   assert.ok(shots.length > 0, `${label}: frames were captured`);
-  if (destination === "Your math pathway starts here") {
+  if (destination === "Your math pathways start here") {
     assert.equal(
       await page.locator("header").count(),
       0,
@@ -515,6 +515,11 @@ try {
         .locator(".start-card")
         .evaluate((card) => {
           const rect = card.getBoundingClientRect();
+          const wordmark = card.querySelector(
+            'a[aria-label="AMP home"] > span',
+          )!;
+          const wordmarkRange = document.createRange();
+          wordmarkRange.selectNodeContents(wordmark);
           const controls = [...card.querySelectorAll("button")].map((button) =>
             button.getBoundingClientRect(),
           );
@@ -526,9 +531,15 @@ try {
               (r) => r.width >= 44 && r.height >= 44 && r.bottom <= innerHeight,
             ),
             hasBrand: card.textContent?.includes("Adaptive Math Pathways"),
+            wordmarkLines: wordmarkRange.getClientRects().length,
           };
         });
       assert.ok(startGeometry.hasBrand, `${tag}: brand inside card`);
+      assert.equal(
+        startGeometry.wordmarkLines,
+        1,
+        `${tag}: AMP never breaks across lines`,
+      );
       assert.ok(
         startGeometry.height <= startGeometry.viewport + 1,
         `${tag}: entire entry fits without vertical scroll`,
@@ -820,7 +831,7 @@ try {
       const seen = await coldLoad(
         parent,
         "/",
-        "Your math pathway starts here",
+        "Your math pathways start here",
         `parent-${tag}`,
         fresh(),
       );
@@ -832,7 +843,7 @@ try {
       await coldLoad(
         parent,
         "/start",
-        "Your math pathway starts here",
+        "Your math pathways start here",
         `parent-start-${tag}`,
         fresh(),
       );
@@ -846,7 +857,7 @@ try {
       await coldLoad(
         visitor,
         "/try",
-        "Your math pathway starts here",
+        "Your math pathways start here",
         `direct-try-${tag}`,
         fresh(),
       );

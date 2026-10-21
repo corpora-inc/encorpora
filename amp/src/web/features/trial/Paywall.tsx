@@ -8,7 +8,7 @@ import { rememberPlanChoice } from "../../lib/pending-trial";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { PlanChoice } from "../billing";
 import {
   catalogOptions,
@@ -55,6 +55,7 @@ export function Paywall() {
   if (failed)
     return (
       <TrialFailure
+        centered
         error={failed}
         retry={() => {
           void trial.refetch();
@@ -70,7 +71,7 @@ export function Paywall() {
     prices.data &&
     catalog.data &&
     !parent.isPending;
-  if (!ready) return <TrialSkeleton wide />;
+  if (!ready) return <TrialSkeleton wide centered />;
   const run = progress.data ?? null;
   const reason =
     run && run.remaining === 0 ? "limit" : (search.reason ?? "choice");
@@ -126,8 +127,9 @@ function PlansView({
   const offer =
     offers.find((entry) => entry.interval === interval) ?? offers[0] ?? null;
   return (
-    <PageFrame>
+    <PageFrame centered>
       <section className={`${frameCard} ${styles.panel}`}>
+        <FrameBrand expanded />
         <p className={styles.eyebrow}>
           {reason === "limit" && run
             ? `All ${run.free} free problems used`
