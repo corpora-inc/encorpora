@@ -91,6 +91,7 @@ jobs:
           # Public Mozilla CA certificates, with source checksum and CA-only tests.
           ALLOWLIST: |
             corpan/infra/terraform/tls-trust/ca-certificates.pem
+            .github/scripts/java-trust-fixtures/affected-roots.pem
         run: |
           set -euo pipefail
           # THREE-dot. `pull_request.base.sha` is the base BRANCH TIP at event
