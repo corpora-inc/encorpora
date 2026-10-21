@@ -1,4 +1,5 @@
 import { learningConsentActive } from "../server/account-access.js";
+import { recordFundedCampaignEvent } from "../analytics/funded-campaign.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import {
@@ -138,6 +139,8 @@ export async function provisionFundingRequest(
         "UPDATE amp_funding_requests SET order_id=$2,conversion_payload=$3 WHERE id=$1",
         [request.id, order.id, JSON.stringify(data)],
       );
+      for (const event of data.events)
+        await recordFundedCampaignEvent(client, event);
       return { requestId: request.id, orderId: order.id };
     },
     true,

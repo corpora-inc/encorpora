@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile } from "node:fs/promises";
+import { migrate } from "../scripts/migrate.js";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import type { CommerceEvent, OrderInput } from "../src/commerce/contracts.js";
@@ -94,37 +94,10 @@ test(
     });
     try {
       await admin.query(`CREATE SCHEMA ${schema}`);
-      // Only this fresh random schema is modified. No public tables are truncated.
-      await pool.query(
-        await readFile(
-          new URL("../migrations/0001.sql", import.meta.url),
-          "utf8",
-        ),
-      );
-      await pool.query(
-        await readFile(
-          new URL("../migrations/0002-commerce.sql", import.meta.url),
-          "utf8",
-        ),
-      );
-      await pool.query(
-        await readFile(
-          new URL("../migrations/0006-commerce-orders.sql", import.meta.url),
-          "utf8",
-        ),
-      );
-      for (const file of [
-        "0003-parent-consent.sql",
-        "0004-parent-lifecycle.sql",
-        "0015-trials.sql",
-        "0018-trial-teaching.sql",
-      ])
-        await pool.query(
-          await readFile(
-            new URL(`../migrations/${file}`, import.meta.url),
-            "utf8",
-          ),
-        );
+      // Run the deployed schema, including optional funded-order attribution.
+      const scoped = new URL(connectionString);
+      scoped.searchParams.set("options", `-c search_path=${schema}`);
+      await migrate(scoped.href);
       await pool.query(
         "INSERT INTO amp_learners(id,account_id,name) VALUES('child','parent','Test student')",
       );

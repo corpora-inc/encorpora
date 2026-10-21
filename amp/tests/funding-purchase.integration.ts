@@ -22,7 +22,10 @@ async function fixture(
     schema = `amp_funding_${randomUUID().replaceAll("-", "")}`;
   const admin = new Pool({ connectionString: url, max: 1 });
   const scoped = new URL(url);
-  scoped.searchParams.set("options", `-c search_path=${schema}`);
+  scoped.searchParams.set(
+    "options",
+    `-c search_path=${schema} -c timezone=Pacific/Honolulu`,
+  );
   scoped.searchParams.set("application_name", schema);
   const pool = new Pool({ connectionString: scoped.href, max: 8 });
   try {
@@ -47,6 +50,91 @@ const create = () => ({
   learnerId: "child",
   idempotencyKey: randomUUID(),
 });
+const campaignAttribution = {
+  campaign: "ar-efa-launch",
+  source: "facebook",
+  medium: "paid-social",
+} as const;
+const arkansasOffer = { ...offer, programId: "ar-efa", jurisdiction: "AR" };
+async function campaignCounts(pool: Pool) {
+  return (
+    await pool.query(
+      "SELECT action,sum(count)::int count FROM amp_funded_campaign_daily GROUP BY action ORDER BY action",
+    )
+  ).rows;
+}
+test(
+  "funded campaign uses evidence UTC dates and rolls back an invalid provisioning bundle",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
+      const midnight = new Date();
+      midnight.setUTCHours(0, 0, 0, 0);
+      const createdAt = new Date(midnight.getTime() - 2 * 86400000);
+      const evidenceAt = new Date(midnight.getTime() - 86400000).toISOString();
+      const request = await repo.create(
+        "owner",
+        { ...create(), campaignAttribution },
+        createdAt,
+      );
+      const input = bundle(request.id);
+      for (const event of input.events) event.occurredAt = evidenceAt;
+      const first = input.events[0]!;
+      assert.equal(first.type, "order.created");
+      if (first.type !== "order.created") throw new Error("Invalid fixture");
+      first.order.license.startsAt = evidenceAt;
+      first.order.license.endsAt = annualTermEnd(evidenceAt);
+      input.events.splice(2, 0, {
+        id: randomUUID(),
+        orderId: first.orderId,
+        channel: "esa",
+        channelReference: first.channelReference,
+        type: "order.settled",
+        occurredAt: evidenceAt,
+        amountMinor: first.order.amountMinor,
+        currency: "USD",
+        evidence: "verified-fixture-settlement",
+      });
+      const invalid = {
+        ...input,
+        events: [
+          input.events[0]!,
+          input.events[1]!,
+          input.events[2]!,
+          input.events[4]!,
+          input.events[3]!,
+        ],
+      };
+      await assert.rejects(
+        provisionFundingRequest(pool, invalid, [arkansasOffer]),
+      );
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_commerce_orders"))
+          .rows[0].n,
+        0,
+      );
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "request_prepared", count: 1 },
+      ]);
+      await provisionFundingRequest(pool, input, [arkansasOffer]);
+      await provisionFundingRequest(pool, input, [arkansasOffer]);
+      const rows = (
+        await pool.query(
+          "SELECT day::text,action,count::int FROM amp_funded_campaign_daily ORDER BY action",
+        )
+      ).rows;
+      assert.deepEqual(rows, [
+        { day: evidenceAt.slice(0, 10), action: "order_created", count: 1 },
+        { day: evidenceAt.slice(0, 10), action: "order_settled", count: 1 },
+        {
+          day: createdAt.toISOString().slice(0, 10),
+          action: "request_prepared",
+          count: 1,
+        },
+      ]);
+    }),
+);
 function bundle(requestId: string) {
   const id = randomUUID(),
     at = new Date().toISOString();
@@ -90,6 +178,241 @@ function bundle(requestId: string) {
   ];
   return { requestId, events };
 }
+test(
+  "funded campaign labels are immutable on retry and aggregate preparation survives expiry",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
+      const input = { ...create(), campaignAttribution };
+      const results = await Promise.all(
+        Array.from({ length: 6 }, () => repo.create("owner", input)),
+      );
+      assert.equal(new Set(results.map((r) => r.id)).size, 1);
+      await repo.create("owner", {
+        ...input,
+        campaignAttribution: { ...campaignAttribution, source: "google" },
+      });
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "request_prepared", count: 1 },
+      ]);
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT campaign_attribution FROM amp_funding_requests WHERE id=$1",
+            [results[0]!.id],
+          )
+        ).rows[0].campaign_attribution,
+        campaignAttribution,
+      );
+      assert.equal(
+        "campaignAttribution" in (await repo.present("owner", results[0]!)),
+        false,
+      );
+      const { FamilyRepository } = await import("../src/family/repository.js");
+      let exported: Record<string, unknown> | undefined;
+      for await (const chunk of new FamilyRepository(pool).export("owner")) {
+        const record = JSON.parse(chunk);
+        if (
+          record.type === "funding-request" &&
+          record.data.id === results[0]!.id
+        )
+          exported = record.data;
+      }
+      assert.deepEqual(exported?.campaignAttribution, campaignAttribution);
+      assert.equal("campaign_counted" in exported!, false);
+      const unattributed = { ...create() };
+      await repo.create("owner", unattributed);
+      await repo.create("owner", { ...unattributed, campaignAttribution });
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "request_prepared", count: 1 },
+      ]);
+      assert.equal(
+        await purgeExpiredFundingRequests(pool, new Date("2100-01-01")),
+        2,
+      );
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "request_prepared", count: 1 },
+      ]);
+      const columns = (
+        await pool.query(
+          "SELECT column_name FROM information_schema.columns WHERE table_schema=current_schema() AND table_name='amp_funded_campaign_daily' ORDER BY ordinal_position",
+        )
+      ).rows.map((r) => r.column_name);
+      assert.deepEqual(columns, [
+        "day",
+        "campaign",
+        "source",
+        "medium",
+        "action",
+        "count",
+      ]);
+    }),
+);
+
+test(
+  "funded campaign counts verified settlement/refund once, including settlement after credit activation",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
+      const request = await repo.create("owner", {
+        ...create(),
+        campaignAttribution,
+      });
+      await repo.update("owner", request.id, "parent-reported-submitted");
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "request_prepared", count: 1 },
+      ]);
+      const input = bundle(request.id);
+      await Promise.all([
+        provisionFundingRequest(pool, input, [arkansasOffer]),
+        provisionFundingRequest(pool, input, [arkansasOffer]),
+      ]);
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "order_created", count: 1 },
+        { action: "request_prepared", count: 1 },
+      ]);
+      const event = {
+        ...input.events[0]!,
+        type: "order.settled" as const,
+        id: randomUUID(),
+        occurredAt: new Date().toISOString(),
+        evidence: "verified-fixture-payment",
+        amountMinor: 12300,
+        currency: "USD",
+      };
+      // Build the strict envelope without carrying order.created's order payload.
+      const {
+        orderId,
+        channel,
+        channelReference,
+        occurredAt,
+        id,
+        type,
+        evidence,
+        amountMinor,
+        currency,
+      } = event;
+      const settlement = {
+        orderId,
+        channel,
+        channelReference,
+        occurredAt,
+        id,
+        type,
+        evidence,
+        amountMinor,
+        currency,
+      };
+      await assert.rejects(
+        applyCommerceEvent(pool, { ...settlement, amountMinor: 1 }),
+      );
+      await Promise.all(
+        Array.from({ length: 6 }, () => applyCommerceEvent(pool, settlement)),
+      );
+      await applyCommerceEvent(pool, {
+        ...settlement,
+        type: "refund.requested",
+        id: randomUUID(),
+        occurredAt: new Date().toISOString(),
+      });
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "order_created", count: 1 },
+        { action: "order_settled", count: 1 },
+        { action: "request_prepared", count: 1 },
+      ]);
+      const refund = {
+        ...settlement,
+        type: "refund.completed",
+        id: randomUUID(),
+        occurredAt: new Date().toISOString(),
+      };
+      await applyCommerceEvent(pool, refund);
+      await applyCommerceEvent(pool, refund);
+      await provisionFundingRequest(pool, input, []);
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "order_created", count: 1 },
+        { action: "order_settled", count: 1 },
+        { action: "refund_completed", count: 1 },
+        { action: "request_prepared", count: 1 },
+      ]);
+      assert.equal(
+        await purgeExpiredFundingRequests(pool, new Date("2100-01-01")),
+        0,
+      );
+    }),
+);
+
+test(
+  "funded campaign rejects untrusted labels/programs and honors parent privacy headers",
+  enabled,
+  () =>
+    fixture(async (pool, otherProgram) => {
+      await assert.rejects(
+        otherProgram.create("owner", { ...create(), campaignAttribution }),
+        /campaign_program_mismatch/,
+      );
+      const wrongState = new FundingPurchaseRepository(pool, [
+        { ...arkansasOffer, jurisdiction: "GA" },
+      ]);
+      await assert.rejects(
+        wrongState.create("owner", { ...create(), campaignAttribution }),
+        /campaign_program_mismatch/,
+      );
+      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
+      for (const extra of [
+        { email: "parent@example.test" },
+        { source: "parent@example.test" },
+        { campaign: "unknown" },
+        { medium: "paid_social" },
+      ])
+        await assert.rejects(
+          repo.create("owner", {
+            ...create(),
+            campaignAttribution: { ...campaignAttribution, ...extra },
+          }),
+        );
+      const app = Fastify();
+      await registerFundingPurchaseRoutes(app, {
+        pool,
+        offers: [arkansasOffer],
+        authenticate: async () => "owner",
+      });
+      try {
+        for (const headers of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+          const result = await app.inject({
+            method: "POST",
+            url: "/api/v1/funding/requests",
+            headers,
+            payload: {
+              ...create(),
+              campaignAttribution: { email: "discarded@example.test" },
+            },
+          });
+          assert.equal(result.statusCode, 200);
+          const invalidPurchase = await app.inject({
+            method: "POST",
+            url: "/api/v1/funding/requests",
+            headers,
+            payload: { ...create(), extra: "not-allowed", campaignAttribution },
+          });
+          assert.equal(invalidPurchase.statusCode, 400);
+        }
+        assert.deepEqual(await campaignCounts(pool), []);
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*)::int n FROM amp_funding_requests WHERE campaign_attribution IS NOT NULL",
+            )
+          ).rows[0].n,
+          0,
+        );
+      } finally {
+        await app.close();
+      }
+    }),
+);
 test(
   "parent requests are isolated, price-bound, concurrent-idempotent and never grants",
   enabled,

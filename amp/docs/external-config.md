@@ -108,6 +108,8 @@ A failure in any of these changes nothing in the cluster. Entra is applied by ha
 
 ## Public campaign counts
 
+Verified funding-request transitions have a separate [funded campaign report](funded-campaign.md). Its optional fixed labels are captured at request creation; public page clicks cannot write paid-order counters.
+
 `AMP_CAMPAIGN_SITE_ORIGIN` is an optional HTTPS origin for the public marketing
 site. Without it, `/api/v1/campaign-events` is not registered. Set the exact
 marketing origin in the existing external environment configuration, run

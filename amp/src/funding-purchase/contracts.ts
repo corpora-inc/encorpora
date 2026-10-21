@@ -1,5 +1,6 @@
 import type { CommerceOrder, LicenseGrant } from "../commerce/contracts.js";
 import { z } from "zod";
+import { fundedCampaignSchema } from "../analytics/funded-campaign.js";
 const text = z
   .string()
   .trim()
@@ -76,6 +77,7 @@ export const createFundingRequestSchema = z.strictObject({
   offerRevision: id,
   learnerId: text,
   idempotencyKey: z.string().uuid(),
+  campaignAttribution: fundedCampaignSchema.optional(),
 });
 export type CreateFundingRequest = z.infer<typeof createFundingRequestSchema>;
 export interface FundingRequest {
