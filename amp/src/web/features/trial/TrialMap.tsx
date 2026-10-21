@@ -22,9 +22,13 @@ export function TrialMap() {
   const session = useQuery(trialSessionOptions);
   if (session.error)
     return (
-      <TrialFailure error={session.error} retry={() => session.refetch()} />
+      <TrialFailure
+        centered
+        error={session.error}
+        retry={() => session.refetch()}
+      />
     );
-  if (session.isPending) return <TrialSkeleton wide />;
+  if (session.isPending) return <TrialSkeleton wide centered />;
   if (!session.data) return <Navigate to="/try" replace />;
   return <MapView session={session.data} />;
 }
@@ -39,13 +43,21 @@ function MapView({ session }: { session: TrialSession }) {
   if (isEnded(progress.error)) return <TrialEnded />;
   if (progress.error && !progress.data)
     return (
-      <TrialFailure error={progress.error} retry={() => progress.refetch()} />
+      <TrialFailure
+        centered
+        error={progress.error}
+        retry={() => progress.refetch()}
+      />
     );
   if (catalog.error)
     return (
-      <TrialFailure error={catalog.error} retry={() => catalog.refetch()} />
+      <TrialFailure
+        centered
+        error={catalog.error}
+        retry={() => catalog.refetch()}
+      />
     );
-  if (!progress.data || !catalog.data) return <TrialSkeleton wide />;
+  if (!progress.data || !catalog.data) return <TrialSkeleton wide centered />;
   const p = progress.data;
   // Before placement finishes there is no map yet: keep placing.
   if (p.phase === "placement" && p.totals.answered === 0)
@@ -60,7 +72,7 @@ function MapView({ session }: { session: TrialSession }) {
   );
   const left = p.remaining;
   return (
-    <PageFrame>
+    <PageFrame centered>
       <section className={`${frameCard} ${styles.panel}`}>
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
