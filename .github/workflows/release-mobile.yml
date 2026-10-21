@@ -19,6 +19,10 @@ on:
         type: choice
         default: both
         options: [both, ios, android]
+      artifact_only:
+        description: Build signed artifacts without store uploads
+        type: boolean
+        default: false
 
 concurrency:
   group: release-mobile-${{ github.ref }}
@@ -34,12 +38,15 @@ jobs:
       version: ${{ steps.decide.outputs.version }}
       do_ios: ${{ steps.decide.outputs.do_ios }}
       do_android: ${{ steps.decide.outputs.do_android }}
+      store_upload: ${{ steps.decide.outputs.store_upload }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2 # need HEAD^ to diff the version
       - id: decide
         working-directory: corpan/corpan-app
+        env:
+          ARTIFACT_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.artifact_only || false }}
         run: |
           set -euo pipefail
           VERSION=$(node -p "require('./src-tauri/tauri.conf.json').version")
@@ -54,6 +61,7 @@ jobs:
           fi
           PLAT="${{ github.event.inputs.platforms || 'both' }}"
           echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
+          echo "store_upload=$([ "$ARTIFACT_ONLY" = true ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
           echo "do_ios=$([ "$RELEASE" = true ] && { [ "$PLAT" = both ] || [ "$PLAT" = ios ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
           echo "do_android=$([ "$RELEASE" = true ] && { [ "$PLAT" = both ] || [ "$PLAT" = android ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
           echo "Version $VERSION · release=$RELEASE · platforms=$PLAT"
@@ -84,7 +92,7 @@ jobs:
       - uses: actions/setup-node@v4
         if: steps.secrets.outputs.have == 'true'
         with:
-          node-version: "20"
+          node-version: "22.23.4"
           cache: "npm"
           cache-dependency-path: corpan/corpan-app/package-lock.json
 
@@ -239,8 +247,17 @@ jobs:
             -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
           ls -la src-tauri/gen/apple/build/export
 
-      - name: Upload to TestFlight
+      - name: Keep signed IPA
         if: steps.secrets.outputs.have == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpan-ios-${{ github.run_id }}
+          path: corpan/corpan-app/src-tauri/gen/apple/build/export/corpan.ipa
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Upload to TestFlight
+        if: steps.secrets.outputs.have == 'true' && needs.gate.outputs.store_upload == 'true'
         uses: apple-actions/upload-testflight-build@v3
         with:
           app-path: corpan/corpan-app/src-tauri/gen/apple/build/export/corpan.ipa
@@ -269,7 +286,7 @@ jobs:
       - uses: actions/setup-node@v4
         if: steps.secrets.outputs.have == 'true'
         with:
-          node-version: "20"
+          node-version: "22.23.4"
           cache: "npm"
           cache-dependency-path: corpan/corpan-app/package-lock.json
       - uses: actions/setup-java@v4
@@ -404,8 +421,17 @@ jobs:
             "$AAB" "${{ secrets.ANDROID_KEY_ALIAS }}"
           jarsigner -verify "$AAB" && echo "AAB signature verified"
 
-      - name: Upload to Play internal
+      - name: Keep signed AAB
         if: steps.secrets.outputs.have == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpan-android-${{ github.run_id }}
+          path: corpan/corpan-app/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Upload to Play internal
+        if: steps.secrets.outputs.have == 'true' && needs.gate.outputs.store_upload == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
