@@ -1,0 +1,49 @@
+# CI trust bootstrap
+
+`ci_trust.py` selects a checksum-verified public CA bundle for subsequent CI
+clients. It runs on GitHub-hosted runners, before checkout or JavaScript actions.
+The workflow must set `NODE_OPTIONS: --use-openssl-ca` in its YAML environment;
+GitHub forbids setting that variable through `GITHUB_ENV`.
+
+The bootstrap downloads the maintained CA asset from an immutable repository
+commit and checks its independently committed SHA-256 before activation. It
+writes the selected bundle and an exclusive empty fallback directory under the
+stable `RUNNER_TEMP/corpora-ci-trust-v1` path, then publishes explicit OpenSSL,
+Node, curl, Git, Python package-tooling, AWS, Google CLI and Cargo trust settings
+through `GITHUB_ENV`. Rustup selects curl. Existing state, additional Node roots,
+conflicting Node trust selection and verification-bypass settings are refused.
+Java keystores, embedded application stores and browser verification require
+separate controls.
+
+On Ubuntu hosts, the helper disables exact distrusted distribution roots,
+quarantines local files containing only distrusted roots, preserves ordinary
+custom roots and refreshes the system CA store. Mixed custom bundles require
+review. A Docker daemon is restarted only when no containers exist, including stopped containers. Its
+actual registry transport must then reject all twelve incident hosts with issuer
+errors and accept a valid registry control. Start test services after this
+bootstrap. macOS keychains and signing identities are not changed.
+
+Job containers use the explicit `--clients-only` mode. On Linux it repairs the container default store as container root, including
+compiled curl fallback paths; environment variables alone cannot exclude those
+paths. It never refreshes or makes a protection claim about the host daemon.
+An already clean image retains its exact published bundle and directory layout. The image
+must provide Python 3. A pre-checkout loader must verify the helper's own hash
+before executing a real temporary file; the Ubuntu root sub-action needs that
+file path. Pin both the helper's immutable commit and its SHA-256. Override job
+working-directory defaults so the loader runs in an existing runner directory.
+
+These controls cannot protect runner initialization, action downloads or
+container pulls that happen before the first workflow step. A verified provider
+bootstrap or a separately controlled runner architecture is required for those
+paths. A source merge or a clean CA file alone does not prove every live client
+uses it; verify actual transports on each supported runner platform.
+
+When updating trust data, review the source and checksum, publish the helper
+through the normal PR gates, and update consuming loader pins together.
+
+References:
+
+- [Incident test chains and package tracker](https://emudhra.we-have-a-problem.com/)
+- [GitHub environment-file restrictions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-environment-variable)
+- [GitHub runner environment variables](https://docs.github.com/en/actions/reference/workflows-and-actions/variables)
+- [Cargo HTTP CA configuration](https://doc.rust-lang.org/cargo/reference/environment-variables.html)
