@@ -299,6 +299,16 @@ export function Legal({
             follow the program’s instructions to return reimbursed funds. Do not
             retain reimbursement for a refunded purchase.
           </p>
+          <h2>Arkansas EFA DirectPay purchases</h2>
+          <p>
+            For Arkansas EFA purchases paid through ClassWallet DirectPay,
+            request a full refund within 30 days of payment; no reason is
+            required. The full amount returns through the program to the
+            original EFA funding source, not to you personally. We follow
+            ClassWallet and Arkansas refund instructions. Required program
+            refunds and applicable consumer rights continue to apply;
+            processing times vary.
+          </p>
           <h2>Program and marketplace payments</h2>
           <p>
             For purchases paid directly through an education program or
