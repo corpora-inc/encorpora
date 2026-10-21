@@ -39,8 +39,14 @@ type Props = {
   cancel?: () => void;
   /** Replaces "What year was {name} born?". */
   title?: string;
+  description?: string;
   /** Inside a page that already has its main landmark, with this card class. */
-  embedded?: { className: string; header?: ReactNode };
+  embedded?: {
+    className: string;
+    header?: ReactNode;
+    footer?: ReactNode;
+    containerClassName?: string;
+  };
 };
 
 /** The only question before practice: it sets where placement begins. */
@@ -49,15 +55,19 @@ export function BirthYearPrompt(props: Props) {
   const years = Array.from({ length: 16 }, (_, i) => thisYear - 4 - i);
   const Root = props.embedded ? "div" : "main";
   return (
-    <Root className={props.embedded ? undefined : "practice-start"}>
+    <Root
+      className={
+        props.embedded ? props.embedded.containerClassName : "practice-start"
+      }
+    >
       <section
         className={`start-card birth-year ${props.embedded?.className ?? ""}`}
       >
         {props.embedded?.header}
         <h1>{props.title ?? `What year was ${props.name} born?`}</h1>
         <p>
-          The first problems check skills expected by that age. Practice then
-          moves up or down until each problem is just within reach.
+          {props.description ??
+            "We’ll use the birth year to find a starting point, then adapt as the learner progresses."}
         </p>
         <div className="year-grid" role="group" aria-label="Birth year">
           {years.map((year) => (
@@ -78,6 +88,7 @@ export function BirthYearPrompt(props: Props) {
             Adult
           </button>
         </div>
+        {props.embedded?.footer}
         {props.cancel && (
           <button className="text-button" onClick={props.cancel}>
             Cancel

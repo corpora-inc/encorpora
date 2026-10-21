@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { AppError } from "../../lib/AppError";
 import { forgetTrial } from "./api";
 import { Button } from "../../ui/Button";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import styles from "./Trial.module.css";
 
 /** What failed and what to do, for an action outside a request helper. */
@@ -14,14 +14,21 @@ export function failureMessage(error: unknown, fallback: string) {
 }
 
 /** The same frame and card size as the screen it stands in for. */
-export function TrialSkeleton({ wide = false }: { wide?: boolean }) {
+export function TrialSkeleton({
+  wide = false,
+  centered = false,
+}: {
+  wide?: boolean;
+  centered?: boolean;
+}) {
   return (
-    <PageFrame>
+    <PageFrame centered={centered}>
       <section
         className={`${frameCard} ${wide ? styles.panel : styles.start}`}
         aria-busy="true"
         aria-label="Loading free practice"
       >
+        {centered && <FrameBrand expanded />}
         <div className={styles.skeleton}>
           <span style={{ width: "40%", height: 14 }} />
           <span style={{ width: "75%", height: 34 }} />
@@ -37,13 +44,16 @@ export function TrialSkeleton({ wide = false }: { wide?: boolean }) {
 export function TrialFailure({
   error,
   retry,
+  centered = false,
 }: {
   error: unknown;
   retry: () => void;
+  centered?: boolean;
 }) {
   return (
-    <PageFrame>
+    <PageFrame centered={centered}>
       <section className={`${frameCard} ${styles.start}`}>
+        {centered && <FrameBrand expanded />}
         <h1 className={styles.title}>Free practice didn’t load</h1>
         <p role="alert" className={styles.lede}>
           {failureMessage(
