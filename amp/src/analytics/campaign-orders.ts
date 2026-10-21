@@ -19,7 +19,7 @@ export async function arkansasOrderSummary(pool: Pool, days: number) {
     LEFT JOIN amp_commerce_orders o ON o.id=r.order_id AND o.channel='esa'
     WHERE r.offer_snapshot->>'programId'='ar-efa'
       AND r.offer_snapshot->>'jurisdiction'='AR'
-      AND r.created_at >= ((CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int) AT TIME ZONE 'UTC'`,
+      AND r.created_at >= ((CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int)::timestamp AT TIME ZONE 'UTC'`,
     [days - 1],
   );
   return result.rows[0];
