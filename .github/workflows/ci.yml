@@ -100,7 +100,7 @@ jobs:
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           # The static site imports AMP figures, content, audit and theme at build time.
           set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
-          set_output amp '^(amp/|web/io/data/apps\.json$|\.github/workflows/ci\.yml$)'
+          set_output amp '^(amp/|web/io/data/apps\.json$|\.github/scripts/(amp_inventory_paths|test_amp_inventory_paths)\.py$|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
@@ -1380,7 +1380,8 @@ jobs:
       - name: Install PDF inspection tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
-      - run: npm test
+      - name: Application and focused math tests
+        run: npm run test:core
       # No color literal outside src/web/ui/tokens.css.
       - run: npm run lint:colors
       - run: npm run build
@@ -1446,8 +1447,11 @@ jobs:
   amp-content:
     name: amp-content
     needs: changes
-    if: needs.changes.outputs.amp == 'true' && github.event_name == 'push'
+    if: needs.changes.outputs.amp == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
     defaults:
       run:
         working-directory: amp
@@ -1458,17 +1462,82 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: amp/package-lock.json
+      - name: Fingerprint content inputs and runner
+        id: content-key
+        run: |
+          inputs=$(python3 ../.github/scripts/amp_inventory_paths.py --fingerprint)
+          environment=$(printf '%s\n' "$ImageOS" "$ImageVersion" "$(node --version)" "$(python3 --version)" | sha256sum | cut -d ' ' -f1)
+          echo "key=amp-content-success-v1-${inputs}-${environment}" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@v4
+        id: content-cache
+        if: github.event_name != 'workflow_dispatch'
+        with:
+          path: amp/artifacts/content-check-success.txt
+          key: ${{ steps.content-key.outputs.key }}
+      - name: Verify reusable result
+        id: reuse
+        env:
+          EXACT_HIT: ${{ steps.content-cache.outputs.cache-hit }}
+          EXPECTED: ${{ steps.content-key.outputs.key }}
+        run: |
+          reuse=false
+          if [ "$EXACT_HIT" = true ] && [ -f artifacts/content-check-success.txt ] && [ "$(cat artifacts/content-check-success.txt)" = "$EXPECTED" ]; then
+            reuse=true
+          fi
+          echo "verified=$reuse" >> "$GITHUB_OUTPUT"
+          echo "Content checks: exact successful input/environment reuse=$reuse" >> "$GITHUB_STEP_SUMMARY"
+      # Remove an older success BEFORE forced/fresh validation. If invalidation
+      # fails, stop before testing rather than leaving a newer failure reusable.
+      - name: Invalidate earlier success before revalidation
+        if: steps.reuse.outputs.verified != 'true' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v7
+        env:
+          CONTENT_CACHE_KEY: ${{ steps.content-key.outputs.key }}
+        with:
+          script: |
+            try {
+              await github.rest.actions.deleteActionsCacheByKey({
+                ...context.repo,
+                key: process.env.CONTENT_CACHE_KEY,
+                ref: 'refs/heads/main',
+              });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
       - name: Install PDF inspection tools
+        if: steps.reuse.outputs.verified != 'true'
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
-      - run: npm ci
-      - run: npm run audit
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm ci
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run audit
       # publications renders PDFs with Playwright's Chromium.
-      - run: npx playwright install --with-deps chromium
-      - run: npm run publications
-      - run: npm run production:queue
-      - run: npm run review:math
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run publications
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run production:queue
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run review:math
       # The paired 900-learner placement simulation (about a minute).
-      - run: npm run test:placement-sim
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run test:placement-sim
+      - name: Full independent inventory and corruption checks
+        if: steps.reuse.outputs.verified != 'true'
+        run: npm run test:inventory
+      - name: Record successful content check
+        if: steps.reuse.outputs.verified != 'true'
+        env:
+          EXPECTED: ${{ steps.content-key.outputs.key }}
+        run: |
+          mkdir -p artifacts
+          printf '%s\n' "$EXPECTED" > artifacts/content-check-success.txt
+      - uses: actions/cache/save@v4
+        if: steps.reuse.outputs.verified != 'true' && github.ref == 'refs/heads/main'
+        with:
+          path: amp/artifacts/content-check-success.txt
+          key: ${{ steps.content-key.outputs.key }}
       - name: Preserve synthetic book overflow screenshots
         if: failure()
         uses: actions/upload-artifact@v4
