@@ -7,7 +7,7 @@ def test_receipt_and_application_changes_do_not_run_inventory():
         'amp/tests/payment-evidence.test.ts',
         'amp/docs/billing.md',
     ])
-    assert requires_inventory(['amp/src/server/auth.ts'])
+    assert not requires_inventory(['amp/src/server/auth.ts'])
     assert requires_inventory(['amp/src/web/ui/tokens.css'])
 
 
@@ -20,6 +20,7 @@ def test_math_and_unknown_inputs_run_inventory():
         'amp/tests/independent-review.test.ts', 'amp/books/book.json',
         'amp/package.json', 'amp/package-lock.json', 'amp/tsconfig.json',
         'amp/src/new-shared-area/value.ts', '.github/workflows/ci.yml',
+        '.github/workflows/amp-deep-checks.yml',
         '.github/scripts/amp_inventory_paths.py',
     ):
         assert requires_inventory([path]), path
@@ -51,7 +52,7 @@ def test_cache_reuse_requires_exact_hit_and_matching_success_marker(tmp_path):
     import os
     from pathlib import Path
     import subprocess
-    workflow = (Path(__file__).resolve().parents[1] / 'workflows/ci.yml').read_text()
+    workflow = (Path(__file__).resolve().parents[1] / 'workflows/amp-deep-checks.yml').read_text()
     block = workflow.split('      - name: Verify reusable result\n', 1)[1]
     script = block.split('        run: |\n', 1)[1].split('      - name:', 1)[0]
     script = '\n'.join(line[10:] for line in script.splitlines() if line.startswith('          '))
@@ -72,3 +73,43 @@ def test_cache_reuse_requires_exact_hit_and_matching_success_marker(tmp_path):
                        env={**os.environ, 'EXACT_HIT': exact, 'EXPECTED': 'key',
                             'GITHUB_OUTPUT': str(output), 'GITHUB_STEP_SUMMARY': str(tmp_path / 'summary')})
         assert output.read_text().strip() == f'verified={expected}'
+
+
+def test_application_changes_do_not_repeat_math_inventory():
+    for path in ('amp/src/server/trials.ts', 'amp/src/account/routes.ts',
+                 'amp/src/funding-purchase/contracts.ts', 'amp/src/commerce/event.ts'):
+        assert not requires_inventory([path]), path
+
+
+def test_deep_checks_are_separate_from_release_gate():
+    from pathlib import Path
+    import yaml
+    workflows = Path(__file__).resolve().parents[1] / 'workflows'
+    ci = yaml.safe_load((workflows / 'ci.yml').read_text())
+    deep = yaml.safe_load((workflows / 'amp-deep-checks.yml').read_text())
+    assert 'amp' in ci['jobs']['ci-gate']['needs']
+    assert 'amp-browser' not in ci['jobs']
+    assert 'amp-content' not in ci['jobs']
+    commands = [s.get('run', '') for s in ci['jobs']['amp']['steps']]
+    for command in ('npm run test:core', 'npm run build', 'npm run test:db'):
+        assert command in commands
+    assert set(deep['jobs']['report']['needs']) == {'changes', 'amp-browser', 'amp-content'}
+    content = str(deep['jobs']['amp-content']['steps'])
+    for command in ('npm run audit', 'npm run review:math', 'npm run test:inventory',
+                    'npm run test:placement-sim'):
+        assert command in content
+    # Scheduled/manual runs must not silently reuse an old successful result.
+    restore = next(s for s in deep['jobs']['amp-content']['steps']
+                   if s.get('uses') == 'actions/cache/restore@v4')
+    assert restore['if'] == "github.event_name == 'push'"
+
+
+def test_every_background_content_test_triggers_content_workflow():
+    from pathlib import Path
+    import json
+    import subprocess
+    root = Path(__file__).resolve().parents[2]
+    filenames = json.loads(subprocess.check_output(
+        ['node', 'amp/scripts/test-suite.mjs', 'content', '--list'], cwd=root))
+    for filename in filenames:
+        assert requires_inventory(['amp/tests/' + filename])

@@ -7,17 +7,22 @@ import subprocess
 # Math/content/publication inputs and all scripts remain outside this list.
 APPLICATION_AREAS = (
     'amp/src/billing/', 'amp/src/family/', 'amp/src/parent-consent/',
-    'amp/src/privacy/',
+    'amp/src/privacy/', 'amp/src/account/', 'amp/src/analytics/',
+    'amp/src/commerce/', 'amp/src/feedback/', 'amp/src/funding/',
+    'amp/src/funding-purchase/', 'amp/src/server/',
 )
+
+
+CONTENT_TESTS = ('amp/tests/grammar.test.ts', 'amp/tests/math-typography.test.ts', 'amp/tests/publications.test.ts', 'amp/tests/instance-hints.test.ts', 'amp/tests/problem-lessons.test.ts')
 
 
 def requires_inventory(paths):
     for path in paths:
-        if path == '.github/workflows/ci.yml' or path.startswith('.github/scripts/'):
+        if path in ('.github/workflows/ci.yml', '.github/workflows/amp-deep-checks.yml') or path.startswith('.github/scripts/'):
             return True
         if not path.startswith('amp/'):
             continue
-        if path == 'amp/tests/independent-review.test.ts':
+        if path == 'amp/tests/independent-review.test.ts' or path in CONTENT_TESTS:
             return True
         if (path.startswith('amp/tests/') and path.endswith('.test.ts')) or path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             continue

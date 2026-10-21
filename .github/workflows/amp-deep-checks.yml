@@ -1,0 +1,236 @@
+name: AMP deep checks
+
+# Independent feedback, never a release prerequisite or required PR context.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'amp/**'
+      - '.github/workflows/amp-deep-checks.yml'
+      - '.github/scripts/amp_inventory_paths.py'
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+concurrency:
+  group: amp-deep-checks-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      browser: ${{ steps.paths.outputs.browser }}
+      content: ${{ steps.paths.outputs.content }}
+      native: ${{ steps.paths.outputs.native }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: paths
+        env:
+          BASE: ${{ github.event.before }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" != push ] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            printf 'browser=true\ncontent=true\nnative=true\n' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git diff --name-only "$BASE" "$GITHUB_SHA" > "$RUNNER_TEMP/amp-paths"
+          content=$(python3 .github/scripts/amp_inventory_paths.py < "$RUNNER_TEMP/amp-paths")
+          browser=false
+          native=false
+          if grep -Eq '^(amp/(src/|scripts/|tests/|package(-lock)?\.json$|[^/]*config[^/]*$)|\.github/workflows/amp-deep-checks\.yml$)' "$RUNNER_TEMP/amp-paths"; then browser=true; fi
+          if grep -Eq '^(amp/(mobile/|src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|src/server/(app|auth)\.|scripts/verify-native-session\.)|\.github/workflows/amp-deep-checks\.yml$)' "$RUNNER_TEMP/amp-paths"; then native=true; browser=true; fi
+          printf 'browser=%s\ncontent=%s\nnative=%s\n' "$browser" "$content" "$native" >> "$GITHUB_OUTPUT"
+
+  amp-browser:
+    name: amp-browser
+    timeout-minutes: 60
+    needs: changes
+    if: needs.changes.outputs.browser == 'true'
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: amp
+          POSTGRES_PASSWORD: amp
+          POSTGRES_DB: amp_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U amp"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    defaults:
+      run:
+        working-directory: amp
+    env:
+      AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
+      # Measure layout in the font Android learners get, not DejaVu Sans:
+      # see amp/scripts/ci-fonts.conf. verify-ui asserts the prompt uses it.
+      FONTCONFIG_FILE: ${{ github.workspace }}/amp/scripts/ci-fonts.conf
+      AMP_EXPECT_UI_FONT: Roboto
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      # test:payment-ui and the print suites inspect PDFs with pdfinfo.
+      - name: Install PDF inspection tools and the Android UI font
+        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
+      - run: npm run test:ui
+      - run: npm run test:family-ui
+      # Zero contrast violations: every route and state, light and dark, 390 and 1280.
+      - run: npm run test:contrast
+      - name: Preserve the contrast sweep report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-contrast-${{ github.run_attempt }}
+          path: amp/artifacts/contrast/
+          if-no-files-found: ignore
+          retention-days: 7
+      - uses: dtolnay/rust-toolchain@1.93.0
+        if: needs.changes.outputs.native == 'true'
+      - run: npm run test:native-session
+        if: needs.changes.outputs.native == 'true'
+
+  amp-content:
+    name: amp-content
+    timeout-minutes: 120
+    needs: changes
+    if: needs.changes.outputs.content == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    defaults:
+      run:
+        working-directory: amp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - name: Fingerprint content inputs and runner
+        id: content-key
+        run: |
+          inputs=$(python3 ../.github/scripts/amp_inventory_paths.py --fingerprint)
+          environment=$(printf '%s\n' "$ImageOS" "$ImageVersion" "$(node --version)" "$(python3 --version)" | sha256sum | cut -d ' ' -f1)
+          echo "key=amp-content-success-v1-${inputs}-${environment}" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@v4
+        id: content-cache
+        if: github.event_name == 'push'
+        with:
+          path: amp/artifacts/content-check-success.txt
+          key: ${{ steps.content-key.outputs.key }}
+      - name: Verify reusable result
+        id: reuse
+        env:
+          EXACT_HIT: ${{ steps.content-cache.outputs.cache-hit }}
+          EXPECTED: ${{ steps.content-key.outputs.key }}
+        run: |
+          reuse=false
+          if [ "$EXACT_HIT" = true ] && [ -f artifacts/content-check-success.txt ] && [ "$(cat artifacts/content-check-success.txt)" = "$EXPECTED" ]; then
+            reuse=true
+          fi
+          echo "verified=$reuse" >> "$GITHUB_OUTPUT"
+          echo "Content checks: exact successful input/environment reuse=$reuse" >> "$GITHUB_STEP_SUMMARY"
+      # Remove an older success BEFORE forced/fresh validation. If invalidation
+      # fails, stop before testing rather than leaving a newer failure reusable.
+      - name: Invalidate earlier success before revalidation
+        if: steps.reuse.outputs.verified != 'true' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v7
+        env:
+          CONTENT_CACHE_KEY: ${{ steps.content-key.outputs.key }}
+        with:
+          script: |
+            try {
+              await github.rest.actions.deleteActionsCacheByKey({
+                ...context.repo,
+                key: process.env.CONTENT_CACHE_KEY,
+                ref: 'refs/heads/main',
+              });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
+      - name: Install PDF inspection tools
+        if: steps.reuse.outputs.verified != 'true'
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm ci
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run audit
+      # publications renders PDFs with Playwright's Chromium.
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run publications
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run production:queue
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run review:math
+      # The paired 900-learner placement simulation (about a minute).
+      - if: steps.reuse.outputs.verified != 'true'
+        run: npm run test:placement-sim
+      - name: Complete-catalog regression sweeps
+        if: steps.reuse.outputs.verified != 'true'
+        run: npm run test:content
+      - name: Full independent inventory and corruption checks
+        if: steps.reuse.outputs.verified != 'true'
+        run: npm run test:inventory
+      - name: Record successful content check
+        if: steps.reuse.outputs.verified != 'true'
+        env:
+          EXPECTED: ${{ steps.content-key.outputs.key }}
+        run: |
+          mkdir -p artifacts
+          printf '%s\n' "$EXPECTED" > artifacts/content-check-success.txt
+      - uses: actions/cache/save@v4
+        if: steps.reuse.outputs.verified != 'true' && github.ref == 'refs/heads/main'
+        with:
+          path: amp/artifacts/content-check-success.txt
+          key: ${{ steps.content-key.outputs.key }}
+      - name: Preserve synthetic book overflow screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-book-overflow-${{ github.run_attempt }}
+          path: |
+            amp/artifacts/book-reader/*/overflow-*.png
+            amp/artifacts/progress-review/overflow-*.png
+          if-no-files-found: ignore
+          retention-days: 3
+
+  report:
+    needs: [changes, amp-browser, amp-content]
+    if: ${{ always() && !cancelled() }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Report deep-check failures
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = 'AMP deep checks failed';
+            const body = `Deep validation failed for ${context.sha}: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}. Investigate and fix forward; this workflow does not gate deployment.`;
+            const issues = await github.paginate(github.rest.issues.listForRepo, {...context.repo, state: 'open', labels: 'bug'});
+            const issue = issues.find(i => !i.pull_request && i.title === title);
+            if (issue) await github.rest.issues.createComment({...context.repo, issue_number: issue.number, body});
+            else await github.rest.issues.create({...context.repo, title, body, labels: ['bug']});
+            core.setFailed('Deep validation failed; follow-up issue recorded.');

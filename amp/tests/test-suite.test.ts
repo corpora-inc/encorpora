@@ -12,9 +12,10 @@ function list(suite: string): string[] {
   assert.equal(result.status, 0, result.stderr);
   return JSON.parse(result.stdout);
 }
-test("core and inventory partition every unit test exactly once", () => {
+test("core, content and inventory partition every unit test exactly once", () => {
   const core = list("core");
   const inventory = list("inventory");
+  const content = list("content");
   const all = list("all");
   assert.deepEqual(inventory, ["independent-review.test.ts"]);
   assert.ok(core.length > 0);
@@ -22,7 +23,13 @@ test("core and inventory partition every unit test exactly once", () => {
     core.some((name) => inventory.includes(name)),
     false,
   );
-  assert.deepEqual([...core, ...inventory].sort(), all);
+  assert.ok(content.includes("publications.test.ts"));
+  assert.ok(core.includes("math.test.ts"));
+  assert.equal(
+    new Set([...core, ...content, ...inventory]).size,
+    core.length + content.length + inventory.length,
+  );
+  assert.deepEqual([...core, ...content, ...inventory].sort(), all);
   assert.deepEqual(
     all,
     readdirSync(new URL("./", import.meta.url))
