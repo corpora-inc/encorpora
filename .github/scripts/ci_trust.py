@@ -17,12 +17,14 @@ import stat
 import subprocess
 import sys
 import tempfile
+import types
 import urllib.request
 
 CA_URL = ('https://raw.githubusercontent.com/corpora-inc/encorpora/'
           '33231bb934b125f4386b7ab00a112259e5eb29f6/'
           'corpan/infra/terraform/tls-trust/ca-certificates.pem')
 CA_SHA256 = '796f1389bfea13c0ed78f663b765baaff54a508e5483786bd6ece73c5e3e3cbe'
+WINDOWS_ASSETS = {'windows_trust_inventory.py': ('82afa68fa562894d041de9b92e94ae7152838ca85f1fa6ab291b37b899d7cc51', 20000), 'windows_trust_repair.py': ('fb286be0facd0c752bf9910cdcd2ef739e022dc6e7fa4cd6b1e152ca635ed8c5', 40000), 'windows-trust-public-certificates.json': ('38b76c3e74dc30c2feb31bcd81f194b8cc03d49f2e25a06b8769b34c9d37bb8e', 40000)}
 BLOCKED = {
     '7dd78d5f4f13459a83dff9abbba62edbaf6f2d102bf257fd712f4d9f2746ed8d',
     'f2edaaff3d9b701fb4d14c9f285f8c0bad90fc3bcc1fa07d47f4718edaba34a5',
@@ -229,12 +231,59 @@ def refresh_docker():
     return {'available': True, 'incident_issuer_rejections': len(HOSTS), 'valid_control': True}
 
 
-def bootstrap(clients_only=False):
+class RejectWindowsAssetRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        fp.close()
+        raise RuntimeError('unexpected Windows trust asset redirect')
+
+
+def repair_windows_store(source_commit, root, bundle, empty):
+    """Load only same-commit assets whose independent digests match this helper."""
+    require(isinstance(source_commit, str) and re.fullmatch(r'[0-9a-f]{40}', source_commit),
+            'Windows bootstrap requires an immutable --source-commit')
+    context = ssl.create_default_context(cafile=str(bundle))
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}),
+                                        urllib.request.HTTPSHandler(context=context),
+                                        RejectWindowsAssetRedirect())
+    payloads = {}
+    for name, (digest, limit) in WINDOWS_ASSETS.items():
+        url = ('https://raw.githubusercontent.com/corpora-inc/encorpora/' + source_commit +
+               '/.github/scripts/' + name)
+        with opener.open(url, timeout=30) as response:
+            require(response.url == url, 'unexpected Windows trust asset redirect')
+            data = response.read(limit + 1)
+        require(len(data) <= limit and hashlib.sha256(data).hexdigest() == digest,
+                'Windows trust asset checksum or size mismatch')
+        payloads[name] = data
+    # Verify every asset before any import or native operation. Execute exactly
+    # the verified bytes, rather than reopening a potentially replaced file.
+    for name, data in payloads.items():
+        path = root / name
+        with path.open('xb') as output:
+            output.write(data)
+        path.chmod(0o600)
+    modules = {}
+    for name in ('windows_trust_inventory.py', 'windows_trust_repair.py'):
+        module = types.ModuleType('_corpora_' + name[:-3])
+        module.__file__ = str(root / name)
+        module.__source_sha256__ = WINDOWS_ASSETS[name][0]
+        exec(compile(payloads[name], module.__file__, 'exec'), module.__dict__)
+        modules[name] = module
+    return modules['windows_trust_repair.py'].repair(
+        modules['windows_trust_inventory.py'],
+        payloads['windows-trust-public-certificates.json'], bundle, empty)
+
+
+def bootstrap(clients_only=False, source_commit=None):
     require(os.environ.get('GITHUB_ACTIONS') == 'true' and os.environ.get('RUNNER_ENVIRONMENT') == 'github-hosted', 'GitHub-hosted Actions execution required')
     require(not any(os.environ.get(name) for name in ('NODE_EXTRA_CA_CERTS', 'NODE_USE_SYSTEM_CA', 'NODE_TLS_REJECT_UNAUTHORIZED', 'GIT_SSL_NO_VERIFY')), 'custom Node/Git trust or bypass setting requires review')
     options = shlex.split(os.environ.get('NODE_OPTIONS', ''))
     require(options.count('--use-openssl-ca') == 1 and not any(flag.split('=', 1)[0] in ('--use-bundled-ca', '--use-system-ca') for flag in options),
             'workflow must select Node OpenSSL trust before actions')
+    if sys.platform == 'win32':
+        require(not clients_only, 'Windows job-container mode is unsupported')
+        require(isinstance(source_commit, str) and re.fullmatch(r'[0-9a-f]{40}', source_commit),
+                'Windows bootstrap requires an immutable --source-commit')
     parent = Path(os.environ['RUNNER_TEMP'])
     require(parent.is_dir() and '\n' not in str(parent) and '\r' not in str(parent), 'invalid runner temporary path')
     root = parent / 'corpora-ci-trust-v1'
@@ -254,6 +303,7 @@ def bootstrap(clients_only=False):
     host = None
     container_store = None
     docker = {'available': False}
+    windows = None
     if sys.platform == 'linux':
         if clients_only:
             require(container_context() and os.geteuid() == 0, 'Linux job-container root context required')
@@ -264,10 +314,12 @@ def bootstrap(clients_only=False):
             result = run(['sudo', '-n', '/usr/bin/env', 'GITHUB_ACTIONS=true', 'RUNNER_ENVIRONMENT=github-hosted', sys.executable, '-I', source, '--repair-linux-store'])
             host = json.loads(result.stdout)
             docker = refresh_docker()
+    elif sys.platform == 'win32':
+        windows = repair_windows_store(source_commit, root, bundle, empty)
     with Path(os.environ['GITHUB_ENV']).open('a') as stream:
         for name, value in environment.items():
             stream.write(name + '=' + value + '\n')
-    return {'ca_sha256': CA_SHA256, 'selected_bundle': str(bundle), 'host': host, 'container_store': container_store, 'docker': docker,
+    return {'ca_sha256': CA_SHA256, 'selected_bundle': str(bundle), 'host': host, 'container_store': container_store, 'docker': docker, 'windows': windows,
             'scope': 'job clients only; host/bootstrap unverified' if clients_only else 'subsequent job clients; initial runner downloads unverified'}
 
 
@@ -276,9 +328,10 @@ if __name__ == '__main__':
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--repair-linux-store', action='store_true')
     mode.add_argument('--clients-only', action='store_true', help='repair Linux job-container trust as container root; never refresh the host daemon')
+    parser.add_argument('--source-commit', help='full immutable helper commit used for verified Windows sibling assets')
     options = parser.parse_args()
     try:
-        print(json.dumps(repair_linux_store() if options.repair_linux_store else bootstrap(options.clients_only), sort_keys=True))
+        print(json.dumps(repair_linux_store() if options.repair_linux_store else bootstrap(options.clients_only, options.source_commit), sort_keys=True))
     except (RuntimeError, OSError, ValueError, subprocess.SubprocessError) as error:
         print(json.dumps({'ok': False, 'error': str(error) if isinstance(error, RuntimeError) else type(error).__name__}))
         raise SystemExit(1)

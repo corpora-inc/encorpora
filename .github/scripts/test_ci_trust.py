@@ -254,5 +254,158 @@ class DistributionPermissionsTests(unittest.TestCase):
         self.assertEqual(stat.S_IMODE(self.certificate.stat().st_mode), 0o777)
 
 
+class WindowsAssetLoaderTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.bundle = self.root / 'ca.pem'
+        self.bundle.write_bytes(CA)
+        self.empty = self.root / 'empty'
+        self.empty.mkdir()
+        self.commit = '1' * 40
+        self.assets = {name: (Path(__file__).parent / name).read_bytes()
+                       for name in trust.WINDOWS_ASSETS}
+
+    def invoke(self, fault=None, replace_file=False):
+        events = []
+        self.events = events
+        def download(url, **kwargs):
+            self.assertIn('/' + self.commit + '/.github/scripts/', url)
+            name = url.rsplit('/', 1)[-1]
+            events.append('download:' + name)
+            data = self.assets[name]
+            if fault == 'checksum' and name.endswith('.json'):
+                data += b' '
+            if fault == 'oversize' and name.endswith('.json'):
+                data = b'x' * (trust.WINDOWS_ASSETS[name][1] + 1)
+            response = io.BytesIO(data)
+            response.url = url + '/redirect' if fault == 'redirect' else url
+            return response
+        def repaired(inventory, manifest, bundle, empty):
+            events.append('repair')
+            self.assertEqual(inventory.__source_sha256__,
+                             trust.WINDOWS_ASSETS['windows_trust_inventory.py'][0])
+            self.assertEqual(manifest, self.assets['windows-trust-public-certificates.json'])
+            self.assertEqual((bundle, empty), (self.bundle, self.empty))
+            return {'available': True, 'idempotent': True}
+        def execute(code, namespace):
+            events.append('execute:' + Path(namespace['__file__']).name)
+            if replace_file:
+                Path(namespace['__file__']).write_text("raise RuntimeError('unverified file executed')")
+            exec(code, namespace)
+            if namespace['__name__'].endswith('windows_trust_repair'):
+                namespace['repair'] = repaired
+        opener = SimpleNamespace(open=download)
+        with patch.object(trust.urllib.request, 'build_opener', return_value=opener) as build, \
+             patch.object(trust, 'exec', side_effect=execute, create=True):
+            result = trust.repair_windows_store(self.commit, self.root, self.bundle, self.empty)
+        handlers = build.call_args.args
+        self.assertEqual(handlers[0].proxies, {})
+        context = handlers[1]._context
+        self.assertTrue(context.check_hostname)
+        self.assertEqual(context.verify_mode, trust.ssl.CERT_REQUIRED)
+        self.assertEqual(events[:3], ['download:' + name for name in trust.WINDOWS_ASSETS])
+        self.assertEqual(events[-1], 'repair')
+        return result
+
+    def test_all_asset_digests_and_individual_limits_match_public_source(self):
+        for name, (digest, limit) in trust.WINDOWS_ASSETS.items():
+            self.assertLess(limit, 50000)
+            self.assertLessEqual(len(self.assets[name]), limit)
+            self.assertEqual(trust.hashlib.sha256(self.assets[name]).hexdigest(), digest)
+        self.assertLess(Path(trust.__file__).stat().st_size, 50000)
+
+    def test_all_assets_are_verified_before_native_module_execution(self):
+        self.assertTrue(self.invoke()['idempotent'])
+
+    def test_replaced_disk_file_cannot_replace_verified_in_memory_execution(self):
+        self.assertTrue(self.invoke(replace_file=True)['available'])
+
+    def test_checksum_size_and_redirect_fail_before_any_execution_or_asset_write(self):
+        for fault in ('checksum', 'oversize', 'redirect'):
+            with self.subTest(fault=fault):
+                with self.assertRaises(RuntimeError):
+                    self.invoke(fault)
+                self.assertFalse(any(event.startswith('execute:') or event == 'repair' for event in self.events))
+            self.assertEqual({p.name for p in self.root.iterdir()}, {'ca.pem', 'empty'})
+
+    def test_mutable_or_malformed_revision_fails_before_network(self):
+        for commit in (None, '', 'main', 'a' * 39, 'g' * 40, 'a' * 40 + '/path'):
+            with patch.object(trust.urllib.request, 'build_opener') as network:
+                with self.assertRaisesRegex(RuntimeError, 'immutable'):
+                    trust.repair_windows_store(commit, self.root, self.bundle, self.empty)
+                network.assert_not_called()
+
+    def test_redirect_is_denied_without_following_even_if_destination_returns_to_original(self):
+        from email.message import Message
+        from urllib.response import addinfourl
+        requests = []
+        responses = []
+        class RedirectingHTTPS(trust.urllib.request.HTTPSHandler):
+            def https_open(inner, request):
+                requests.append(request.full_url)
+                headers = Message()
+                # A second response would return to the original URL. It must
+                # never be reached, even though a final-URL check could pass.
+                headers['Location'] = request.full_url + '/elsewhere' if len(requests) == 1 else requests[0]
+                response = addinfourl(io.BytesIO(b''), headers, request.full_url, 302)
+                response.msg = 'Found'
+                responses.append(response)
+                return response
+        with patch.object(trust.urllib.request, 'HTTPSHandler', RedirectingHTTPS), \
+             patch.object(trust, 'exec', create=True) as execute:
+            with self.assertRaisesRegex(RuntimeError, 'redirect'):
+                trust.repair_windows_store(self.commit, self.root, self.bundle, self.empty)
+        self.assertEqual(len(requests), 1)
+        self.assertTrue(responses[0].closed)
+        execute.assert_not_called()
+        self.assertEqual({p.name for p in self.root.iterdir()}, {'ca.pem', 'empty'})
+
+
+class WindowsBootstrapTests(unittest.TestCase):
+    setUp = BootstrapTests.setUp
+    def test_windows_requires_full_revision_and_supported_host_mode_before_network(self):
+        with patch.dict(os.environ, self.environment, clear=True), \
+             patch.object(trust.sys, 'platform', 'win32'), \
+             patch.object(trust.urllib.request, 'build_opener') as network:
+            with self.assertRaisesRegex(RuntimeError, 'immutable'):
+                trust.bootstrap()
+            with self.assertRaisesRegex(RuntimeError, 'job-container'):
+                trust.bootstrap(True, '1' * 40)
+        network.assert_not_called()
+        self.assertFalse((self.root / 'corpora-ci-trust-v1').exists())
+
+    def test_windows_store_failure_never_exports_partial_job_environment(self):
+        response = io.BytesIO(CA)
+        response.url = trust.CA_URL
+        before = self.output.read_bytes()
+        with patch.dict(os.environ, self.environment, clear=True), \
+             patch.object(trust.sys, 'platform', 'win32'), \
+             patch.object(trust.urllib.request, 'build_opener', return_value=SimpleNamespace(open=lambda *a, **k: response)), \
+             patch.object(trust, 'repair_windows_store', side_effect=RuntimeError('unsafe synthetic store')):
+            with self.assertRaisesRegex(RuntimeError, 'unsafe synthetic'):
+                trust.bootstrap(source_commit='1' * 40)
+        self.assertEqual(self.output.read_bytes(), before)
+
+    def test_windows_exports_only_after_verified_repair_and_keeps_linux_daemon_untouched(self):
+        response = io.BytesIO(CA)
+        response.url = trust.CA_URL
+        def repaired(commit, root, bundle, empty):
+            self.assertEqual(commit, '1' * 40)
+            self.assertEqual(self.output.read_text(), 'PREEXISTING=preserved\n')
+            self.assertEqual(bundle.read_bytes(), CA)
+            return {'available': True, 'fresh_default_context_clear': True}
+        with patch.dict(os.environ, self.environment, clear=True), \
+             patch.object(trust.sys, 'platform', 'win32'), \
+             patch.object(trust.urllib.request, 'build_opener', return_value=SimpleNamespace(open=lambda *a, **k: response)), \
+             patch.object(trust, 'repair_windows_store', side_effect=repaired), \
+             patch.object(trust, 'refresh_docker') as docker:
+            result = trust.bootstrap(source_commit='1' * 40)
+        docker.assert_not_called()
+        self.assertTrue(result['windows']['fresh_default_context_clear'])
+        self.assertIn('SSL_CERT_FILE=', self.output.read_text())
+
+
 if __name__ == '__main__':
     unittest.main()
