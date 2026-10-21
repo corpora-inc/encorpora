@@ -21,6 +21,14 @@ In a second terminal in `amp/`, run `npm run dev`, then open <http://127.0.0.1:4
 
 The database volume preserves practice between runs. `docker compose -p amp-foundation stop` stops the local database without deleting its contents. Set `AMP_DB_PORT` if the default port is occupied, and use the corresponding port in the database URL.
 
+## Review problems and lessons locally
+
+Run `npm run dev:content` from `amp/`, then open <http://127.0.0.1:4312>. This standalone review tool uses the real generators, math renderers, figures and lessons. It needs installed dependencies but no database or parent account, and records no attempts or mastery.
+
+Choose a problem type and seed. The address preserves both, so a reviewer can reproduce the exact problem. Try an answer, reveal its hint or worked solution, and compare the in-practice lesson with the full reference lesson. “Another problem” changes the seed. Browser back and forward restore selections. Review a few representative instances and boundary cases before expanding a family; feedback should include the address and the part to change.
+
+The tool binds only to `127.0.0.1`; `AMP_REVIEW_PORT` changes its default port. It is a separate local presentation surface, not a check of account flows, adaptive scheduling or learner progress. The full AMP application runs separately at <http://127.0.0.1:4310>.
+
 ## Verify and publish documents
 
 ```sh
