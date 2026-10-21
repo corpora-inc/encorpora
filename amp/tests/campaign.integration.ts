@@ -15,7 +15,10 @@ test(
     const schema = `campaign_${randomUUID().replaceAll("-", "")}`;
     const admin = new Pool({ connectionString: url });
     const scoped = new URL(url);
-    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    scoped.searchParams.set(
+      "options",
+      `-c search_path=${schema} -c timezone=Pacific/Honolulu`,
+    );
     const pool = new Pool({ connectionString: scoped.href });
     const app = Fastify();
     try {
@@ -99,6 +102,17 @@ test(
       assert.equal(summary.settled_orders, 1);
       assert.equal(summary.refunded_orders, 1);
       assert.equal(summary.issued_license_orders, 0);
+      await pool.query(
+        `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,status,created_at,expires_at)
+      SELECT 'utc-boundary',account_id,learner_id,$1,offer_id,offer_revision,offer_snapshot,status,
+      ((CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date)::timestamp AT TIME ZONE 'UTC',expires_at
+      FROM amp_funding_requests WHERE id='ar-ready'`,
+        [randomUUID()],
+      );
+      assert.equal(
+        (await arkansasOrderSummary(pool, 1)).prepared_request_records,
+        3,
+      );
     } finally {
       await app.close();
       await pool.end();
