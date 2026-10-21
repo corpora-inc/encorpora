@@ -123,7 +123,7 @@ test("guided purchase copy is optional, escaped and uses a safe support action",
       "utf8",
     );
     assert.ok(html.includes('class="funding-guided"'));
-    assert.ok(html.includes('href="/support/">Request a curriculum invoice'));
+    assert.match(html, /href="\/support\/"[^>]*>Request a curriculum invoice/);
     assert.ok(html.includes(guidedFundingFixture.page.presentation.headline));
     assert.equal(
       configSchema.safeParse({
@@ -159,6 +159,32 @@ test("ClassWallet DirectPay is labeled consistently without marketplace enrollme
       assert.ok(html.includes("ClassWallet DirectPay"));
       assert.ok(!html.includes("Marketplace or direct payment"));
     }
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("guided DirectPay shows configured fixed-term prices and an invoice email", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-directpay-prices-"));
+  try {
+    await buildSite(configSchema.parse({
+      supportEmail: "support@example.invalid",
+      plans: [{ interval: "year", amountMinor: 32100, currency: "USD", renews: true }],
+      funding: [{ ...guidedFundingFixture, kind: "classwallet-direct-pay" }],
+    }), dir);
+    const html = await readFile(join(dir, "esa/synthetic-program/index.html"), "utf8");
+    assert.ok(html.includes("$321.00"));
+    assert.ok(html.includes("12 months"));
+    assert.ok(html.includes("No automatic renewal."));
+    assert.ok(html.includes("How to pay with EFA funds"));
+    assert.ok(html.includes("support@example.invalid</a>"));
+    assert.equal((html.match(/data-campaign-action="invoice"/g) ?? []).length, 3);
+    const href = html.match(/href="(mailto:[^"]+)"/)?.[1];
+    assert.ok(href);
+    const body = new URL(href.replaceAll("&amp;", "&")).searchParams.get("body");
+    assert.ok(body?.includes("Preferred start date:"));
+    assert.ok(body?.includes("I have an AMP account: yes / no"));
+    assert.ok(!body?.includes("student name"));
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

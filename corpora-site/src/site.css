@@ -1132,7 +1132,7 @@ footer > .fine {
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--surface)), var(--surface));
   gap: 32px;
 }
-.funding-guided .funding-intro h1 { max-width: 18ch; }
+.funding-guided .funding-intro h1 { max-width: 18ch; text-wrap: balance; }
 .funding-guided .funding-layout { margin-block-start: clamp(32px, 4vw, 56px); }
 .funding-approved-label {
   display: inline-block;
@@ -1189,4 +1189,21 @@ footer > .fine {
   .funding-guided .funding-intro > .state-identity { align-items: center; gap: 12px; }
   .funding-guided .state-outline { width: 110px; height: 96px; }
   .funding-guided .funding-intro > .state-identity .state-code-small { font-size: 1.25rem; }
+}
+
+.funding-plan-summary { margin-top: 20px; }
+.funding-plan-summary ul { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; padding: 0; margin: 0; }
+.funding-plan-summary li { margin: 0; }
+.funding-plan-summary strong { font-size: 1.25rem; }
+.funding-plan-summary .fine { margin: 6px 0 0; }
+.funding-email { max-width: 65ch; overflow-wrap: anywhere; }
+.funding-email a { font-weight: 650; }
+
+.funding-directpay .funding-intro-copy > .eyebrow { display: none; }
+.funding-purchase-summary { margin-top: 24px; }
+@media (max-width: 600px) {
+  .funding-directpay .funding-intro { gap: 16px; }
+  .funding-directpay .funding-intro > .state-identity { padding: 12px 16px; }
+  .funding-directpay .state-outline { width: 88px; height: 64px; }
+  .funding-directpay .funding-actions { margin-top: 20px; }
 }
