@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
     title: "Privacy Promise – Corpora Inc",
     description:
-        "Privacy information for Corpora offline learning products, with a separate policy for the ¡AHA! mathematics app.",
+        "Privacy information for Corpora offline learning products, with separate policies for AMP Mathematics and the ¡AHA! mathematics app.",
 };
 
 export default function PrivacyPage() {
@@ -12,7 +12,15 @@ export default function PrivacyPage() {
         <main className="min-h-screen bg-white text-gray-800 px-6 py-16">
             <div className="max-w-3xl mx-auto">
                 <h1 className="text-5xl font-extrabold mb-6">Privacy Promise</h1>
-                <p className="text-sm text-gray-500 mb-8">Last updated 14 October 2026</p>
+                <p className="text-sm text-gray-500 mb-8">Last updated 20 October 2026</p>
+
+                <section className="mb-8 rounded-md border border-gray-200 p-5" aria-labelledby="amp-privacy">
+                    <h2 id="amp-privacy" className="text-2xl font-semibold mb-3">AMP Mathematics</h2>
+                    <p className="leading-relaxed">
+                        AMP’s online service has its own <a href="https://corpora.inc/legal/privacy/" className="underline">privacy policy</a> covering
+                        parent accounts, learner data, payments and retention. Read it when signing in to or using AMP.
+                    </p>
+                </section>
 
                 <p className="text-lg mb-6">
                     This policy covers Corpora’s offline learning products, including <strong>Corpán</strong>, our language
