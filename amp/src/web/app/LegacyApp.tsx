@@ -1546,8 +1546,14 @@ function LegacyScreen() {
                   void action(() => loadBatch(templateId))
                 }
               />
-              <details className="book-list">
-                <summary>Reference lessons and worksheets</summary>
+              <section
+                className="book-list"
+                aria-labelledby="reference-materials"
+              >
+                <h2 id="reference-materials">Lessons and worksheets</h2>
+                <p>
+                  Open a lesson for its printable workbook and solution key.
+                </p>
                 <ul>
                   {(catalog?.lessons ?? []).map((reference) => (
                     <li key={reference.id}>
@@ -1569,7 +1575,7 @@ function LegacyScreen() {
                     </li>
                   ))}
                 </ul>
-              </details>
+              </section>
               <section className="book-list" aria-label="Printable books">
                 <h2>Printable books</h2>
                 <ul>
@@ -1643,8 +1649,11 @@ function LegacyScreen() {
                 {readingLesson.title}
               </h2>
               {!nativeRuntime && (
-                <details className="reader-downloads">
-                  <summary>Download &amp; print</summary>
+                <section
+                  className="reader-downloads"
+                  aria-label="Download and print"
+                >
+                  <h3>Download &amp; print</h3>
                   <div className="downloads">
                     {(["lesson", "workbook", "solutions"] as const).map(
                       (kind) => (
@@ -1659,7 +1668,7 @@ function LegacyScreen() {
                       ),
                     )}
                   </div>
-                </details>
+                </section>
               )}
               {readingLesson.sections.map((s) => (
                 <section key={s.title}>
