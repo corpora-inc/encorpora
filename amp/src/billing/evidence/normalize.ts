@@ -16,6 +16,7 @@ export function normalizeFinancialEvidence(
   chargeId: string,
   refunds: Stripe.Refund[],
   paymentMethod?: string,
+  chargeIdentity?: { cardLast4?: unknown; billingName?: unknown },
 ): FinancialResult {
   const review = (reason: string): FinancialResult => ({
     kind: "review",
@@ -123,6 +124,18 @@ export function normalizeFinancialEvidence(
     observation: {
       ...(paymentMethod && /^[a-z0-9_]{1,60}$/.test(paymentMethod)
         ? { paymentMethod }
+        : {}),
+      ...(paymentMethod === "card" &&
+      typeof chargeIdentity?.cardLast4 === "string" &&
+      chargeIdentity.cardLast4.length === 4 &&
+      /^[0-9]{4}$/.test(chargeIdentity.cardLast4)
+        ? { cardLast4: chargeIdentity.cardLast4 }
+        : {}),
+      ...(typeof chargeIdentity?.billingName === "string" &&
+      chargeIdentity.billingName.trim().length > 0 &&
+      chargeIdentity.billingName.length <= 180 &&
+      !/[\x00-\x1f\x7f]/.test(chargeIdentity.billingName)
+        ? { billingName: chargeIdentity.billingName.trim().normalize("NFC") }
         : {}),
       invoiceReason:
         invoice.billing_reason === "subscription_create"

@@ -329,6 +329,10 @@ export class StripeGateway {
         charge.id,
         refunds.data,
         charge.payment_method_details?.type,
+        {
+          cardLast4: charge.payment_method_details?.card?.last4,
+          billingName: charge.billing_details?.name,
+        },
       ),
       invoiceId,
       subscriptionId,

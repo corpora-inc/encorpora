@@ -42,7 +42,7 @@ export async function paymentPdf(
     throw new BillingError("adjustment_not_found", 404);
   const document = await PDFDocument.create();
   document.setTitle(
-    adjustmentId ? "Payment refund adjustment" : "Paid purchase record",
+    adjustmentId ? "Payment refund adjustment" : "Paid receipt",
   );
   document.setAuthor(b.profile.seller.legalName);
   document.setCreationDate(new Date(b.paidAt * 1000));
@@ -129,12 +129,7 @@ export async function paymentPdf(
     text(value);
   }
   newPage();
-  text(
-    adjustmentId ? "Refund adjustment" : "Paid purchase record",
-    25,
-    true,
-    12,
-  );
+  text(adjustmentId ? "Refund adjustment" : "Paid receipt", 25, true, 12);
   text(
     "A record of verified payment facts. Not a tax form, funding approval, or guarantee of reimbursement.",
     10,
@@ -153,11 +148,31 @@ export async function paymentPdf(
     "Purchase",
     `${b.profile.product.title}\n${b.profile.product.description}\nSKU: ${b.profile.sku} · Quantity: 1\nItem amount before tax: ${paymentMoney(b.preTaxMinor)}`,
   );
+  if (b.billingName) {
+    // Preserve the exact Unicode name in the baseline; never transliterate identity.
+    let printable = true;
+    try {
+      regular.encodeText(b.billingName);
+    } catch {
+      printable = false;
+    }
+    field(
+      "Paying customer (processor billing name)",
+      printable
+        ? b.billingName
+        : "Name recorded; this PDF font cannot display it. Contact purchase support for billing-name evidence.",
+    );
+  } else
+    field(
+      "Paying customer (processor billing name)",
+      "Not recorded; contact purchase support for billing-name evidence.",
+    );
   if (learnerName) field("Learner name (entered by parent)", learnerName);
   field(
     "Payment method",
     b.paymentMethod
-      ? b.paymentMethod.replaceAll("_", " ")
+      ? b.paymentMethod.replaceAll("_", " ") +
+          (b.cardLast4 ? ` ending in ${b.cardLast4}` : "")
       : "Not recorded; contact purchase support for payment-method evidence.",
   );
   field(

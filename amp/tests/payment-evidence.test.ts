@@ -139,3 +139,57 @@ test("refund observations retain failed and pending facts without counting them 
       "review",
     );
 });
+
+test("receipt identity accepts only transaction-backed bounded name and exactly four card digits", () => {
+  const result = normalizeFinancialEvidence(
+    invoice(),
+    "ch_fixture",
+    [],
+    "card",
+    { cardLast4: "0123", billingName: "  E\u0301lodie 家  " },
+  );
+  assert.equal(result.kind, "verified");
+  if (result.kind !== "verified") return;
+  assert.equal(result.observation.cardLast4, "0123");
+  assert.equal(result.observation.billingName, "Élodie 家");
+  for (const invalid of [
+    "123",
+    "12345",
+    "１２３４",
+    "12a4",
+    1234,
+    " 1234",
+    "1234\n",
+  ]) {
+    const result = normalizeFinancialEvidence(
+      invoice(),
+      "ch_fixture",
+      [],
+      "card",
+      { cardLast4: invalid },
+    );
+    assert.equal(result.kind, "verified");
+    if (result.kind === "verified")
+      assert.equal(result.observation.cardLast4, undefined);
+  }
+  for (const invalid of ["", " ", "a".repeat(181), "name\nforged", 123]) {
+    const result = normalizeFinancialEvidence(
+      invoice(),
+      "ch_fixture",
+      [],
+      "card",
+      { billingName: invalid },
+    );
+    if (result.kind === "verified")
+      assert.equal(result.observation.billingName, undefined);
+  }
+  const other = normalizeFinancialEvidence(
+    invoice(),
+    "ch_fixture",
+    [],
+    "link",
+    { cardLast4: "4242" },
+  );
+  if (other.kind === "verified")
+    assert.equal(other.observation.cardLast4, undefined);
+});

@@ -114,6 +114,16 @@ export async function recordFinancialEvidence(
           ? { paymentMethod: observation.paymentMethod }
           : {}
         : {}),
+      ...(!stored.baseline || stored.baseline.cardLast4 !== undefined
+        ? observation.cardLast4
+          ? { cardLast4: observation.cardLast4 }
+          : {}
+        : {}),
+      ...(!stored.baseline || stored.baseline.billingName !== undefined
+        ? observation.billingName
+          ? { billingName: observation.billingName }
+          : {}
+        : {}),
       invoiceReason: observation.invoiceReason,
       invoiceId: payment.invoiceId,
       chargeId: payment.chargeId,
@@ -183,6 +193,8 @@ export async function recordFinancialEvidence(
     // empty refund adjustment when a legacy invoice is replayed.
     const observation = { ...financial.observation };
     delete observation.paymentMethod;
+    delete observation.cardLast4;
+    delete observation.billingName;
     financial = { kind: "verified", observation };
   }
   const digest = evidenceDigest(financial);

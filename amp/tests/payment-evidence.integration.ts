@@ -73,6 +73,8 @@ test(
       }[] = [];
       let failInvoiceFetch = false;
       let paymentMethod: string | undefined = "card";
+      let cardLast4: string | undefined = "4242";
+      let billingName: string | undefined = "Élodie Parent";
       const real = new Stripe(config.secretKey);
       const client = {
         webhooks: real.webhooks,
@@ -90,7 +92,11 @@ test(
         charges: {
           retrieve: async () => ({
             ...f.charge,
-            payment_method_details: { type: paymentMethod },
+            payment_method_details: {
+              type: paymentMethod,
+              card: { last4: cardLast4 },
+            },
+            billing_details: { name: billingName },
           }),
         },
         refunds: {
@@ -208,6 +214,8 @@ test(
       assert.equal(receipt.rawPayload.subarray(0, 5).toString(), "%PDF-");
       const receiptPost = `/api/v1/payments/${history[0]!.id}/receipt.pdf`;
       assert.equal(history[0]!.baseline!.paymentMethod, "card");
+      assert.equal(history[0]!.baseline!.cardLast4, "4242");
+      assert.equal(history[0]!.baseline!.billingName, "Élodie Parent");
       for (const [authorization, payload, status] of [
         ["Bearer parent", { programId: "fixture-program" }, 400],
         ["Bearer other", { learnerName: "Jo Example" }, 404],
@@ -391,6 +399,8 @@ test(
         await secondPool.end();
       }
       // A second, genuine annual invoice arrives after consent withdrawal. Financial facts commit; access cannot activate.
+      cardLast4 = undefined;
+      billingName = undefined;
       paymentMethod = undefined; // A legacy record has no stored method evidence.
       invoice.id = "in_second";
       invoice.billing_reason = "subscription_cycle";
@@ -440,6 +450,8 @@ test(
         "receipt_payment_method_unavailable",
       );
       paymentMethod = "card";
+      cardLast4 = "1234";
+      billingName = "Later Changed Name";
       await send("invoice.paid", invoice.id);
       await billing.runBatch();
       const replayedLegacy = (await paymentHistory(pool, "parent")).find(
@@ -774,6 +786,38 @@ test(
         ).rows[0].count,
         0,
       );
+      // Each transaction-identity field independently protects the receipt baseline.
+      for (const field of ["billingName", "cardLast4"] as const) {
+        invoice.id = `in_identity_${field}`;
+        f.payments.data[0]!.invoice = invoice.id;
+        f.charge.id = `ch_identity_${field}`;
+        f.intent.latest_charge = f.charge.id;
+        billingName = "Original Billing Name";
+        cardLast4 = "0123";
+        await send("invoice.paid", invoice.id);
+        await billing.runBatch();
+        const originalIdentity = (await paymentHistory(pool, "parent")).find(
+          (item) => item.baseline?.invoiceId === invoice.id,
+        )!;
+        assert.equal(originalIdentity.status, "verified");
+        assert.equal(
+          originalIdentity.baseline!.billingName,
+          "Original Billing Name",
+        );
+        assert.equal(originalIdentity.baseline!.cardLast4, "0123");
+        if (field === "billingName") billingName = "Different Billing Name";
+        else cardLast4 = "9999";
+        await send("invoice.paid", invoice.id);
+        await billing.runBatch();
+        const conflictedIdentity = (await paymentHistory(pool, "parent")).find(
+          (item) => item.id === originalIdentity.id,
+        )!;
+        assert.equal(conflictedIdentity.status, "review", field);
+        assert.deepEqual(
+          conflictedIdentity.baseline,
+          originalIdentity.baseline,
+        );
+      }
     } finally {
       await app.close();
       await pool.end();

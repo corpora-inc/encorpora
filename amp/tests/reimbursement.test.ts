@@ -78,6 +78,8 @@ test("accepted printable repertoire agrees with the PDF font and composes accent
 });
 test("receipts deterministically include the parent name and every supported required field without changing facts", async () => {
   const record = structuredClone(syntheticPaymentRecord);
+  record.baseline!.billingName = "Paying Parent";
+  record.baseline!.cardLast4 = "4242";
   const before = JSON.stringify(record);
   const first = await paymentPdf(record, undefined, "Élodie Muñoz");
   assert.deepEqual(first, await paymentPdf(record, undefined, "Élodie Muñoz"));
@@ -90,6 +92,9 @@ test("receipts deterministically include the parent name and every supported req
       encoding: "utf8",
     });
     for (const expected of [
+      "Paid receipt",
+      "Paying Parent",
+      "card ending in 4242",
       "Synthetic Éducation Company",
       "100 Example Street",
       "Jan 1, 2026",
@@ -115,6 +120,22 @@ test("receipts deterministically include the parent name and every supported req
         "Not recorded",
       ),
     );
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("unsupported billing-name glyphs remain intact in evidence and do not corrupt receipts", async () => {
+  const record = structuredClone(syntheticPaymentRecord);
+  record.baseline!.billingName = "测试";
+  const before = JSON.stringify(record);
+  const directory = await mkdtemp(join(tmpdir(), "amp-unicode-billing-"));
+  try {
+    const path = join(directory, "receipt.pdf");
+    await writeFile(path, await paymentPdf(record));
+    const text = execFileSync("pdftotext", [path, "-"], { encoding: "utf8" });
+    assert.ok(text.includes("this PDF font cannot display it"));
+    assert.equal(JSON.stringify(record), before);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
