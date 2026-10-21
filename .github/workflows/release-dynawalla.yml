@@ -41,6 +41,10 @@ on:
         type: choice
         default: both
         options: [both, ios, android]
+      artifact_only:
+        description: Build signed artifacts without store uploads
+        type: boolean
+        default: false
 
 concurrency:
   # Serialises every release of THIS app, and never cancels an in-flight
@@ -96,6 +100,7 @@ jobs:
       run_started: ${{ steps.decide.outputs.run_started }}
       do_ios: ${{ steps.decide.outputs.do_ios }}
       do_android: ${{ steps.decide.outputs.do_android }}
+      store_upload: ${{ steps.decide.outputs.store_upload }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -111,6 +116,7 @@ jobs:
           # nothing — the defect written up in RELEASE_ENGINEERING.md.
           BEFORE: ${{ github.event.before }}
           PLATFORMS: ${{ github.event.inputs.platforms || 'both' }}
+          ARTIFACT_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.artifact_only || false }}
         run: |
           set -euo pipefail
           cd "$APP_DIR"
@@ -201,6 +207,7 @@ jobs:
           echo "run_started=$RUN_STARTED" >> "$GITHUB_OUTPUT"
 
           echo "release=$RELEASE" >> "$GITHUB_OUTPUT"
+          echo "store_upload=$([ "$ARTIFACT_ONLY" = true ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
           echo "do_ios=$([ "$RELEASE" = true ] && { [ "$PLATFORMS" = both ] || [ "$PLATFORMS" = ios ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
           echo "do_android=$([ "$RELEASE" = true ] && { [ "$PLATFORMS" = both ] || [ "$PLATFORMS" = android ]; } && echo true || echo false)" >> "$GITHUB_OUTPUT"
 
@@ -351,6 +358,7 @@ jobs:
           rm -f "$RUNNER_TEMP/profile.plist"
 
       - name: Preflight · the App Store Connect app record exists
+        if: needs.gate.outputs.store_upload == 'true'
         # Nothing downstream of here can succeed if the app record for this
         # bundle id has not been created, and there is no app-create operation
         # in the App Store Connect API — it is a founder action on the website
@@ -368,9 +376,8 @@ jobs:
         # heard of it, and together they are the whole of "can this run
         # possibly ship?" — asked before `npm ci` and the ~50-minute archive.
         #
-        # No `continue-on-error`, no `if:`. A preflight that cannot fail the
-        # job is a log line, and the failure mode being prevented is precisely
-        # a run that burns an hour before telling anyone.
+        # Store deliveries require this preflight to pass before the archive.
+        # Artifact-only builds skip store access and retain local signing checks.
         #
         # Secrets through `env:`, never interpolated into the `run:` text — see
         # the note on the profile step above.
@@ -675,6 +682,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Upload to TestFlight
+        if: needs.gate.outputs.store_upload == 'true'
         uses: apple-actions/upload-testflight-build@9fd28d4e690396e43caca69cef54cccccce77034 # v3
         with:
           app-path: ${{ steps.ipa.outputs.ipa }}
@@ -683,6 +691,7 @@ jobs:
           api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
 
       - name: Verify the build reached App Store Connect
+        if: needs.gate.outputs.store_upload == 'true'
         # The upload action succeeds when Apple accepts the TRANSFER. Apple can
         # still reject the package during processing, and that rejection
         # arrives by email, not by exit code. Read it back.
@@ -768,6 +777,7 @@ jobs:
           python-version: "3.12"
 
       - name: Preflight · the Play app record exists and is reachable
+        if: needs.gate.outputs.store_upload == 'true'
         # The Android twin of the iOS preflight above, and for the same reason:
         # the Play app record is a founder Console action (androidpublisher has
         # no app-create method) and a per-app permission grant does NOT inherit
@@ -1037,6 +1047,7 @@ jobs:
       # the versionCode is on the track either way. Only "was it added by this
       # run" distinguishes them.
       - name: Snapshot the Play internal track
+        if: needs.gate.outputs.store_upload == 'true'
         id: playbefore
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
@@ -1048,6 +1059,7 @@ jobs:
           python3 .github/scripts/verify_play_upload.py --snapshot
 
       - name: Upload to Play internal
+        if: needs.gate.outputs.store_upload == 'true'
         # Pinned to a commit SHA, not the mutable `v1` tag: this action is
         # handed the live Play service account. Trailing comment is the tag it
         # resolved from.
@@ -1066,6 +1078,7 @@ jobs:
           status: ${{ vars.DYNAWALLA_PLAY_RELEASE_STATUS || 'draft' }}
 
       - name: Verify the build reached the Play internal track
+        if: needs.gate.outputs.store_upload == 'true'
         # The upload action reports success on its own 2xx responses. Read the
         # track back and assert THIS RUN put the versionCode there — presence
         # alone is satisfied by the duplicate this check exists to catch.
