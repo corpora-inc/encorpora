@@ -58,6 +58,7 @@
     "test:level-ui": "tsx scripts/verify-level-check-ui.ts",
     "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features",
     "test:core": "node scripts/test-suite.mjs core",
+    "test:content": "node scripts/test-suite.mjs content",
     "test:inventory": "node scripts/test-suite.mjs inventory",
     "coverage:report": "tsx scripts/coverage-report.ts",
     "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts"

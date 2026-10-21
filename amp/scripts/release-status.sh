@@ -10,7 +10,7 @@
 #        30 with gh, 12 anonymously)
 #
 # "Green" is the deploy rule (docs/deployment.md, Releases): some run of the CI
-# workflow on that commit concluded `amp`, `amp-browser` and `amp-content`
+# workflow on that commit concluded `amp` and `ci-gate`
 # SUCCESS at their latest attempt. Cancelled, superseded, skipped or missing
 # runs are not green.
 set -euo pipefail
@@ -18,7 +18,7 @@ repo=corpora-inc/encorpora
 prod=${AMP_PROD_URL:-https://amp.corpora.inc}
 stage=${AMP_STAGE_URL:-https://amp-stage.corpora.inc}
 scan=${AMP_STATUS_SCAN:-}
-required='["amp", "amp-browser", "amp-content"]'
+required='["amp", "ci-gate"]'
 
 # About two requests per commit searched: anonymous requests (60 an hour)
 # search fewer.
