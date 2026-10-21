@@ -30,7 +30,7 @@
     "report:insights": "tsx scripts/insights-report.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
     "infra": "tsx scripts/external-config.ts",
-    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:social-ui && npm run test:passkey-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui && npm run test:flag-ui && npm run test:skip-ui && npm run test:level-ui",
+    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:social-ui && npm run test:passkey-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funnel-ui && npm run test:flag-ui && npm run test:skip-ui && npm run test:level-ui && npm run test:pathways-ui",
     "test:social-ui": "tsx scripts/verify-social-sign-in-ui.ts",
     "test:passkey-ui": "tsx scripts/verify-passkey-sign-up-ui.ts",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",
@@ -59,7 +59,8 @@
     "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features",
     "test:core": "node scripts/test-suite.mjs core",
     "test:inventory": "node scripts/test-suite.mjs inventory",
-    "coverage:report": "tsx scripts/coverage-report.ts"
+    "coverage:report": "tsx scripts/coverage-report.ts",
+    "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",
@@ -87,6 +88,7 @@
     "react-dom": "^19.2.0",
     "resend": "6.34.1",
     "stripe": "23.0.0",
+    "three": "^0.186.1",
     "tsx": "^4.20.0",
     "zod": "^4.1.0",
     "zustand": "^5.0.15"
@@ -103,6 +105,7 @@
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^5.0.0",
     "jsdom": "^30.1.3",
     "playwright": "^1.55.0",

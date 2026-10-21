@@ -670,14 +670,29 @@ function LegacyScreen() {
   useEffect(() => {
     if (
       route.parts[0] === "practice" &&
+      !!catalog &&
       learner?.birthYear != null &&
       !problem &&
       !busy &&
       !error &&
       learningAllowed
     )
-      void action(() => loadBatch(""));
-  }, [route.location.pathname, learner?.id, learner?.birthYear, busy, error]);
+      void action(() => {
+        const skillId = new URLSearchParams(route.location.search).get("skill");
+        const template = skillId
+          ? catalog?.templates.find((t) => t.skillId === skillId)
+          : undefined;
+        return loadBatch(template?.id ?? "");
+      });
+  }, [
+    route.location.pathname,
+    route.location.search,
+    catalog,
+    learner?.id,
+    learner?.birthYear,
+    busy,
+    error,
+  ]);
   function closePurchase() {
     // A purchase opened from "how to pay" returns there.
     if (purchaseView !== "choose" && purchaseFromChoice) {
@@ -803,6 +818,8 @@ function LegacyScreen() {
   );
   function applyBatch(data: Batch) {
     if (route.location.pathname !== "/practice") navigate("/practice");
+    if (new URLSearchParams(route.location.search).has("skill"))
+      navigate("/practice", { replace: true });
     showProblem(data.problems[0]);
     setQueue(data.problems.slice(1));
     setLesson(data.lesson);

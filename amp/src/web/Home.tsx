@@ -1,3 +1,5 @@
+import { nativeRuntime } from "./native-runtime";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { strandNames } from "./BirthYearPrompt";
 
@@ -54,6 +56,11 @@ export function Home(props: Props) {
           {props.resuming ? "Continue" : "Go"}
         </button>
       </section>
+      {!nativeRuntime && (
+        <Link to="/pathways" className="text-button">
+          Explore your pathways →
+        </Link>
+      )}
       <FrontierMap
         name={props.name}
         frontier={props.frontier}
