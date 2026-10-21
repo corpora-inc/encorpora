@@ -54,6 +54,12 @@ export function Legal({
             materials, share account access outside your family, or redistribute
             the materials publicly.
           </p>
+          <p>
+            When your subscription expires, app access and new downloads end. You
+            may continue using and printing worksheets you downloaded during that
+            subscription for the licensed learner’s personal education. The
+            restrictions on resale and public redistribution continue to apply.
+          </p>
           <h2>Price, term, and renewal</h2>
           <p>
             The checkout shows the price, currency, taxes, access period, and
