@@ -1,3 +1,4 @@
+import { rationalExpressionLessons } from "./rational-expression-lessons";
 import { nonlinearSystemLessons } from "./nonlinear-system-lessons";
 import { areaVolumeLessons } from "./area-volume-lessons";
 import { transformationLessons } from "./transformation-lessons";
@@ -610,6 +611,7 @@ export const lessons: readonly Lesson[] = [
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
+  ...rationalExpressionLessons,
   ...nonlinearSystemLessons,
   ...baseLessons,
   ...extendedLessons,

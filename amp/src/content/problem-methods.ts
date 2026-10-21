@@ -1,3 +1,4 @@
+import { rationalExpressionMethods } from "./rational-expression-lessons";
 import { nonlinearSystemMethods } from "./nonlinear-system-lessons";
 import { areaVolumeMethods } from "./area-volume-lessons";
 import { transformationMethods } from "./transformation-lessons";
@@ -108,6 +109,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...percentChangeMethods,
   ...inequalityMethods,
   ...linearSystemMethods,
+  ...rationalExpressionMethods,
   ...nonlinearSystemMethods,
   // Counting and early operations
   "count-objects": {

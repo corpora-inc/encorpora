@@ -23,6 +23,33 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  "rational-expression-hole": graph({
+    id: "g",
+    x: [-1, 7],
+    y: [-3, 4],
+    grid: 1,
+  })
+    .curve(f.rational([1, -3], [1, -4]), { color: "accent" })
+    .point(2, 0.5, "(2, 1/2)", { open: true, color: "warm" })
+    .line({ a: 1, b: 0, c: 4 }, { dash: "dash", color: "warm" })
+    .scene({
+      title:
+        "The rule y = (x − 3)/(x − 4), with the point (2, 1/2) removed. Both x = 2 and x = 4 are excluded from the original expression.",
+      steps: [
+        step(
+          "Trace the simplified rule $y = (x - 3)/(x - 4)$.",
+          act.trace("g.curve.0"),
+        ),
+        step(
+          "The open circle removes the point at $x = 2$: the original denominator was 0 there.",
+          act.highlight("g.point.0"),
+        ),
+        step(
+          "The denominator is also 0 at $x = 4$. There is no curve point at this input.",
+          act.highlight("g.line.0"),
+        ),
+      ],
+    }),
   "nonlinear-system-example": graph({
     id: "g",
     x: [-3, 4],

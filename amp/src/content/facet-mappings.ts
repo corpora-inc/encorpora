@@ -52,6 +52,20 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  {
+    templateId: "rational-expression-domain",
+    facetId: "rational-expression-domain.factored-denominator",
+    extent: "partial",
+    rationale:
+      "Choose excluded integer inputs for a denominator given as two monic linear factors, including a repeated factor. Does not assess expanded or higher-degree denominators, noninteger exclusions or constructed domain statements.",
+  },
+  {
+    templateId: "rational-expression-simplify",
+    facetId: "rational-expressions.cancel-common-linear-factor",
+    extent: "partial",
+    rationale:
+      "Choose an equivalent linear-over-linear expression and complete original integer exclusions after factoring bounded quadratics with one shared factor. Recognition only; general rational operations and constructed symbolic responses require separate assessment.",
+  },
   ...[
     "nonlinear-system-read",
     "nonlinear-system-solve",
