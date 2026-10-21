@@ -146,3 +146,20 @@ test("guided purchase copy is optional, escaped and uses a safe support action",
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("ClassWallet DirectPay is labeled consistently without marketplace enrollment", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-directpay-"));
+  try {
+    await buildSite(
+      configSchema.parse({ funding: [{ ...fundingFixture, kind: "classwallet-direct-pay" }] }),
+      dir,
+    );
+    for (const path of ["esa/index.html", "esa/synthetic-program/index.html"]) {
+      const html = await readFile(join(dir, path), "utf8");
+      assert.ok(html.includes("ClassWallet DirectPay"));
+      assert.ok(!html.includes("Marketplace or direct payment"));
+    }
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});

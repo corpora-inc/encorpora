@@ -15,6 +15,7 @@ const route = z.strictObject({
   program: text,
   kind: z.enum([
     "marketplace",
+    "classwallet-direct-pay",
     "reimbursement",
     "tax-benefit",
     "school-purchase",

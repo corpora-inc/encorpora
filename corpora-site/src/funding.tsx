@@ -5,6 +5,7 @@ import type { SiteConfig } from "./config.js";
 export type FundingRoute = SiteConfig["funding"][number];
 export const fundingLabels: Record<FundingRoute["kind"], string> = {
   marketplace: "Marketplace or direct payment",
+  "classwallet-direct-pay": "ClassWallet DirectPay",
   reimbursement: "Reimbursement",
   "tax-benefit": "Tax credit or deduction",
   "school-purchase": "School or provider purchase",
