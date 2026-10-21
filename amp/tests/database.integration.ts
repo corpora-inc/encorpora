@@ -5,6 +5,7 @@ import { migrate } from "../scripts/migrate";
 import { PostgresRepository } from "../src/server/repository";
 import { buildApp } from "../src/server/app";
 import { generateProblem } from "../src/math/engine";
+import { skills } from "../src/curriculum/catalog";
 const url = process.env.AMP_TEST_DATABASE_URL;
 test(
   "PostgreSQL API ownership, durable attempts, idempotency, hints and access grants",
@@ -119,13 +120,27 @@ test(
         payload: { count: 3 },
       });
       assert.equal(mixed.statusCode, 200);
-      assert.equal(
+      const mixedBody = mixed.json();
+      assert.equal(mixedBody.problems.length, 3);
+      assert.deepEqual(
+        mixedBody.selection.map(
+          (entry: { problemId: string }) => entry.problemId,
+        ),
+        mixedBody.problems.map((problem: { id: string }) => problem.id),
+      );
+      assert.deepEqual(
+        mixedBody.selection.map((entry: { strand: string }) => entry.strand),
+        mixedBody.problems.map(
+          (problem: { skillId: string }) =>
+            skills.find((skill) => skill.id === problem.skillId)!.strand,
+        ),
+      );
+      // Support can legitimately revisit a strand within a mixed batch.
+      // Exact policy trajectories are covered by seeded scheduler tests.
+      assert.ok(
         new Set(
-          mixed
-            .json()
-            .selection.map((entry: { strand: string }) => entry.strand),
-        ).size,
-        3,
+          mixedBody.selection.map((entry: { strand: string }) => entry.strand),
+        ).size >= 2,
       );
       const supportProblem = mixed.json().problems[0];
       const stolenSupport = await app.inject({
