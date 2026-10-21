@@ -180,7 +180,6 @@ export async function assertPhoneLandscapeSmoke(page: Page, label: string) {
       return element;
     };
     for (const element of controls) {
-      const box = element.getBoundingClientRect();
       const outerY = scrollsIn(element, "overflowY").getBoundingClientRect();
       const outerX = scrollsIn(element, "overflowX").getBoundingClientRect();
       if (
@@ -193,26 +192,6 @@ export async function assertPhoneLandscapeSmoke(page: Page, label: string) {
           `${describe(element)} lies outside a page that cannot scroll (${[outerX.left, outerY.top, outerX.right, outerY.bottom].map(Math.round).join(",")} in ${width}×${height})`,
         );
         continue;
-      }
-      for (
-        let ancestor = element.parentElement;
-        ancestor && ancestor !== document.body;
-        ancestor = ancestor.parentElement
-      ) {
-        const style = getComputedStyle(ancestor);
-        const clip = ancestor.getBoundingClientRect();
-        const clipsX = ["hidden", "clip"].includes(style.overflowX);
-        const clipsY = ["hidden", "clip"].includes(style.overflowY);
-        if (
-          (clipsX &&
-            (box.left < clip.left - 1 || box.right > clip.right + 1)) ||
-          (clipsY && (box.top < clip.top - 1 || box.bottom > clip.bottom + 1))
-        ) {
-          found.push(
-            `${describe(element)} is clipped by ${describe(ancestor)}`,
-          );
-          break;
-        }
       }
     }
     // Every control can be scrolled into view and is the thing a tap there hits.
@@ -236,7 +215,38 @@ export async function assertPhoneLandscapeSmoke(page: Page, label: string) {
         inline: "nearest",
         behavior: "instant",
       });
+      // scrollIntoView can also scroll overflow:hidden containers, which a
+      // pointer user cannot scroll. Restore those axes before measuring.
+      for (const { element: scroller, top, left } of scrollers) {
+        const style = getComputedStyle(scroller);
+        if (["hidden", "clip"].includes(style.overflowY))
+          scroller.scrollTop = top;
+        if (["hidden", "clip"].includes(style.overflowX))
+          scroller.scrollLeft = left;
+      }
       const box = boxes(element)[0]!;
+      // Check clipping after scrolling: a nested scroll area can reveal a
+      // control that initially lies outside an outer dialog clip.
+      for (
+        let ancestor = element.parentElement;
+        ancestor && ancestor !== document.body;
+        ancestor = ancestor.parentElement
+      ) {
+        const style = getComputedStyle(ancestor);
+        const clip = ancestor.getBoundingClientRect();
+        const clipsX = ["hidden", "clip"].includes(style.overflowX);
+        const clipsY = ["hidden", "clip"].includes(style.overflowY);
+        if (
+          (clipsX &&
+            (box.left < clip.left - 1 || box.right > clip.right + 1)) ||
+          (clipsY && (box.top < clip.top - 1 || box.bottom > clip.bottom + 1))
+        ) {
+          found.push(
+            `${describe(element)} is clipped by ${describe(ancestor)}`,
+          );
+          break;
+        }
+      }
       const left = Math.max(box.left, 0),
         right = Math.min(box.right, width),
         top = Math.max(box.top, 0),
