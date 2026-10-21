@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { fundingFixture } from "../tests/funding-fixture.js";
+import { guidedFundingFixture as fundingFixture } from "../tests/funding-fixture.js";
 import { resolve } from "node:path";
 import { buildSite } from "../src/build.js";
 import { configSchema } from "../src/config.js";
@@ -150,6 +150,34 @@ try {
       0,
       `Configured accessibility ${path}`,
     );
+  }
+  for (const width of [320, 390, 1280]) {
+    await fixturePage.setViewportSize({ width, height: 900 });
+    await fixturePage.goto(production.url + "/esa/synthetic-program/");
+    const action = fixturePage.locator(".funding-actions .button");
+    const href = new URL((await action.getAttribute("href"))!);
+    assert.equal(href.protocol, "mailto:");
+    assert.equal(
+      href.searchParams.get("subject"),
+      "Curriculum invoice & purchase question",
+    );
+    assert.ok(
+      await fixturePage.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    assert.equal(
+      (
+        await new AxeBuilder({ page: fixturePage })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze()
+      ).violations.length,
+      0,
+    );
+    await fixturePage.screenshot({
+      path: `artifacts/funding-guided-${width}.png`,
+      fullPage: true,
+    });
   }
   await fixturePage.goto(production.url + "/schools/");
   const inquiry = new URL(
