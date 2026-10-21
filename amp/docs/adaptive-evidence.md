@@ -1,5 +1,8 @@
 # Practice evidence and frontier experiments
 
+For the curriculum budgets, selection probabilities, and proposed full learner
+model, see [Pathway selection](pathway-selection.md).
+
 AMP selects mixed practice from implemented problem families. Production uses the Bayesian grade-based estimator in `src/learning/frontier.ts` and scheduler in `src/server/mixed-practice.ts`. These organize practice; they are not validated grade placement, mastery or standardized-test score estimates. Curriculum links do not establish that a learner has demonstrated a skill.
 
 ## Production evidence and selection

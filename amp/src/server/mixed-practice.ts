@@ -1,4 +1,7 @@
-import { createHash } from "node:crypto";
+import {
+  selectNextCandidate,
+  type SelectionTrace,
+} from "../learning/selection-policy.js";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Outcome } from "./repository";
 import type { GradeBand } from "../curriculum/types";
@@ -26,6 +29,8 @@ export type PracticeChoice = {
   template: TemplateMetadata;
   reason: PracticeReason;
   strand: string;
+  /** Internal explanation; absent for scripted placement openers. */
+  selection?: SelectionTrace & { mode: "adaptive" | "support" };
 };
 type SkillNode = {
   id: string;
@@ -387,12 +392,14 @@ export function planMixedPractice(options: {
       // Interleave: a miss returns after other work, never as an instant
       // loop, and a template that was just seen waits longest of all.
       const templateGap = byTemplate.gap(template.id);
+      let familyAdjustment = 0;
       if (templateGap <= VARIETY.templateFade)
-        score -=
+        familyAdjustment -=
           (VARIETY.templatePenalty * (VARIETY.templateFade + 1 - templateGap)) /
           VARIETY.templateFade;
       score -= VARIETY.skillPenalty[bySkill.gap(template.skillId)] ?? 0;
-      if (skippedTemplates.has(template.id)) score -= VARIETY.skipPenalty;
+      if (skippedTemplates.has(template.id))
+        familyAdjustment -= VARIETY.skipPenalty;
       // Just after a skip, prefer work a little below the learner's level.
       if (ease) score -= VARIETY.skipEaseWeight * Math.max(0, distance + ease);
       if (strand === lastStrand) score -= 45;
@@ -401,16 +408,12 @@ export function planMixedPractice(options: {
         chosen.filter((entry) => entry.template.skillId === template.skillId)
           .length * 150;
       score -= chosen.filter((entry) => entry.strand === strand).length * 120;
-      const tie =
-        createHash("sha256")
-          .update(`${seed}:${slot}:${template.id}`)
-          .digest()
-          .readUInt32BE(0) / 0x100000000;
       return {
         template,
         reason,
         strand,
-        score: score + tie * 8,
+        score,
+        familyScore: score + familyAdjustment,
         poolEligible: grade <= target + 1 || reason === "prerequisite",
         support: ["prerequisite", "revisit", "review"].includes(reason),
         fresh:
@@ -427,9 +430,6 @@ export function planMixedPractice(options: {
     // Variety is a rule, not a weight, whenever another problem can be asked.
     const varied = ceilinged.filter((entry) => entry.fresh);
     const eligible = varied.length ? varied : ceilinged;
-    eligible.sort(
-      (a, b) => b.score - a.score || a.template.id.localeCompare(b.template.id),
-    );
     // Reserve one support/retrieval slot per batch so variety cannot starve a
     // gap or a due review; immediate repetitions wait for intervening work.
     const reserved =
@@ -437,7 +437,7 @@ export function planMixedPractice(options: {
       !chosen.some((entry) =>
         ["prerequisite", "revisit", "review"].includes(entry.reason),
       )
-        ? eligible.find(
+        ? eligible.filter(
             (entry) =>
               entry.support &&
               entry.skillGap > 2 &&
@@ -445,9 +445,22 @@ export function planMixedPractice(options: {
                 (choice) => choice.template.skillId === entry.template.skillId,
               ),
           )
-        : undefined;
-    const { template, reason, strand } = reserved ?? eligible[0];
-    chosen.push({ template, reason, strand });
+        : [];
+    const support = reserved.length > 0;
+    const { candidate, trace } = selectNextCandidate(
+      support ? reserved : eligible,
+      `${seed}:${slot}`,
+    );
+    const { template, reason, strand } = candidate;
+    chosen.push({
+      template,
+      reason,
+      strand,
+      selection: {
+        ...trace,
+        mode: support ? "support" : "adaptive",
+      },
+    });
   }
   return chosen;
 }
