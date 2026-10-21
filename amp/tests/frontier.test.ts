@@ -118,22 +118,7 @@ test("a learner missing basics descends as far as counting within a few problems
   assert.ok(frontier.overall.level <= 1);
 });
 
-test("each strand finds its own frontier: a fraction gap does not hold back algebra", () => {
-  const { shown, frontier } = simulate(2012, (strand) =>
-    strand === "fractions" ? 3 : 7,
-  );
-  assert.ok(strandLevel(frontier, "fractions") <= 4.5);
-  assert.ok(strandLevel(frontier, "algebra") >= 6);
-  const late = shown.slice(15);
-  assert.ok(
-    late.some((entry) => entry.strand === "fractions" && entry.grade <= 4),
-  );
-  assert.ok(
-    late.some((entry) => entry.strand !== "fractions" && entry.grade >= 6),
-  );
-});
-
-test("a strand whose material tops out below the learner's level is still probed", () => {
+test("mixed frontiers find fraction gaps while preserving advanced algebra across seeds", () => {
   // Fractions material ends near grade 6; a grade-7 learner with a fraction gap
   // must still meet it, or the gap is never found. Each seed must place
   // fractions at least two grades below the learner's other strands; across
@@ -141,6 +126,10 @@ test("a strand whose material tops out below the learner's level is still probed
   // bound failed whenever a run of lucky draws met grade-4 items, which any
   // change to the template inventory can rearrange.)
   const levels: number[] = [];
+  let lateFractionRepair = 0;
+  // Weighted sampling has more than one valid trajectory. Require useful
+  // lower-grade repair in at least 90% of 40 independent seeded runs, while
+  // checking detection and preservation of the stronger strand separately.
   for (let seed = 1; seed <= 40; seed++) {
     const { shown, frontier } = simulate(
       2012,
@@ -155,7 +144,23 @@ test("a strand whose material tops out below the learner's level is still probed
     const level = strandLevel(frontier, "fractions");
     assert.ok(level <= 5, `seed ${seed} missed the fraction gap: ${level}`);
     levels.push(level);
+    assert.ok(
+      strandLevel(frontier, "algebra") >= 6,
+      `seed ${seed} suppressed algebra`,
+    );
+    const late = shown.slice(15);
+    lateFractionRepair += Number(
+      late.some((e) => e.strand === "fractions" && e.grade <= 4),
+    );
+    assert.ok(
+      late.some((e) => e.strand !== "fractions" && e.grade >= 6),
+      `seed ${seed} lost advanced work`,
+    );
   }
+  assert.ok(
+    lateFractionRepair >= 36,
+    `late fraction repair in ${lateFractionRepair}/40 runs`,
+  );
   levels.sort((a, b) => a - b);
   assert.ok(levels[20]! <= 4, `median fraction estimate ${levels[20]}`);
   assert.ok(levels.filter((l) => l <= 4.5).length >= 36, String(levels));

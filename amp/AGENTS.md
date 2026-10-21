@@ -3,6 +3,8 @@
 AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repository trunk procedure. AHA's app-specific identity and persistence constraints do not apply here.
 
 - Keep curriculum coverage claims tied to the machine-readable audit. A mapped skill is not an implemented or verified skill.
+- Every new skill must join a stable exposure objective in `src/curriculum/selection.ts`. Fine-grained graph steps and new generators share that objective’s budget; creating an objective is an intentional curriculum-mix change. Keep frequency weights separate from difficulty.
+- Follow [the pathway selection model](docs/pathway-selection.md) for adaptive metadata. Preserve direct evidence separately from inferred prerequisite support; do not award ancestor mastery from a downstream answer.
 - Mathematical truth is server-owned and deterministic. Never send grading secrets in a public problem payload.
 - Preserve immutable problem versions and evidence. Retries must not duplicate attempts or progress credit.
 - Parent/learner authorization must be enforced on the server. Development authentication is loopback-only and forbidden in production.
