@@ -123,7 +123,15 @@ export function Legal({
           <h2>This website</h2>
           <p>
             The site does not set advertising or analytics cookies, load
-            advertising pixels, or send answers to an analytics service. Opening
+            advertising pixels, or send answers to an analytics service. On the
+            Arkansas funding page, our own server counts page views, trial-link
+            clicks and invoice-email-link clicks by day and fixed campaign
+            labels. These counts contain no visitor identifier, name, email,
+            learning answer, or full page URL. An invoice-link click does not
+            establish an invoice request or purchase. We honor browser Global
+            Privacy Control and Do Not Track signals for this measurement.
+            Campaign labels may accompany the trial link; the app's separate
+            trial measurement is described below. Opening
             a worked example does not submit an answer. The hosting service can
             receive an IP address, requested URL, and browser information to
             deliver pages and protect the service. Links to the AMP app and
