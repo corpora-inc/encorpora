@@ -123,7 +123,7 @@ test("guided purchase copy is optional, escaped and uses a safe support action",
       "utf8",
     );
     assert.ok(html.includes('class="funding-guided"'));
-    assert.ok(html.includes('href="/support/">Request a curriculum invoice'));
+    assert.match(html, /href="\/support\/"[^>]*>Request a curriculum invoice/);
     assert.ok(html.includes(guidedFundingFixture.page.presentation.headline));
     assert.equal(
       configSchema.safeParse({
