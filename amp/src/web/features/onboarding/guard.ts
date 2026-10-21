@@ -15,14 +15,23 @@ export type StartTarget =
   StartStep | "/sign-in" | "/purchase" | "/practice" | "/try";
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
+/** Steps that record consent or take payment; they need a confirmed address. */
+const consentSteps: readonly string[] = [
+  "/start/plan",
+  "/start/purchase",
+  "/start/consent",
+];
+
 /**
  * The single first-run guard, used by route `beforeLoad` and by the mounted
  * screen when `/me` changes. Returns where to go instead, or null to stay.
  *
- * Order: verify email → free trial → plan → secure payment (the verified
- * parental consent) → learner name → birth year → practice. No learner
- * details are collected before consent, so the learner steps open only once
- * `next` says so. `buying` is a plan chosen on the paywall before sign-up.
+ * Order: free trial → plan → secure payment (the verified parental consent)
+ * → learner name → birth year → practice. No learner details are collected
+ * before consent, so the learner steps open only once `next` says so. A
+ * parent whose address is unconfirmed confirms it on the way into the plan:
+ * nothing before that waits for it. `buying` is a plan chosen on the paywall
+ * before sign-up.
  */
 export function startDestination(
   me: Me,
@@ -30,11 +39,28 @@ export function startDestination(
   buying = false,
 ): StartTarget | null {
   if (!me.signedIn) return "/sign-in";
+  const confirm =
+    !!me.account.confirmationRequired &&
+    (me.next === "try" || me.next === "choose-plan");
+  if (pathname === "/start/verify-email") {
+    if (confirm) return null;
+    // Confirmed: continue to the plan the parent was opening.
+    return route(me, "/start/plan", buying) ?? "/start/plan";
+  }
+  const target = route(me, pathname, buying);
+  return confirm && consentSteps.includes(target ?? pathname)
+    ? "/start/verify-email"
+    : target;
+}
+
+function route(
+  me: Extract<Me, { signedIn: true }>,
+  pathname: string,
+  buying: boolean,
+): StartTarget | null {
   const stay = (allowed: readonly string[], fallback: StartTarget) =>
     allowed.includes(pathname) ? null : fallback;
   switch (me.next) {
-    case "verify-email":
-      return stay(["/start/verify-email"], "/start/verify-email");
     case "try":
       // The plan opens when the parent chooses to buy; otherwise practice free.
       return stay(

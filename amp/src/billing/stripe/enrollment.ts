@@ -6,7 +6,10 @@ import {
   currentPolicy,
   policyGeneration,
 } from "../../parent-consent/policy.js";
-import { learningConsentActive } from "../../server/account-access.js";
+import {
+  learningConsentActive,
+  parentAddressConfirmed,
+} from "../../server/account-access.js";
 import { applyCommerceEventInTransaction } from "../../commerce/postgres.js";
 import { assertFinancialIdentity } from "../evidence/repository.js";
 import { parseDocumentProfile } from "../evidence/profile.js";
@@ -36,6 +39,8 @@ export async function reserveEnrollment(
   purchaseAcknowledgement.parse(acknowledgement);
   const selected = planConfig(repository.config, interval);
   return repository.transaction(account, async (client) => {
+    if (!(await parentAddressConfirmed(client, account)))
+      throw new BillingError("email_unconfirmed", 403);
     const policy = await currentPolicy(client, repository.consentPolicy);
     if (!policy.review.paymentNotificationsReviewed)
       throw new BillingError("purchase_consent_unavailable", 503);

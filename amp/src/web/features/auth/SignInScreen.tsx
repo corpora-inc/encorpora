@@ -21,6 +21,8 @@ import {
   type Provider,
 } from "./ProviderButtons";
 import { socialCopyFor, socialErrorMessage } from "./social-copy";
+import { passkeysAvailable, signUpWithPasskey } from "./passkey";
+import { useAuthDraft } from "./draft";
 
 type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
@@ -64,13 +66,18 @@ export function SignInScreen() {
             )
           ? (routeLocation.pathname.split("/")[2] as Step)
           : "sign-in";
-  const setStep = (next: Step) => {
+  const setStep = (next: Step | "create-password") => {
     const search =
       params.get("return") === "security"
         ? { return: "security" as const }
         : {};
     if (next === "create") void navigate({ to: "/sign-up", search });
     else if (next === "sign-in") void navigate({ to: "/sign-in", search });
+    else if (next === "create-password")
+      void navigate({
+        to: "/sign-up",
+        search: { ...search, method: "password" },
+      });
     else if (next === "reset")
       void navigate({
         to: "/reset-password",
@@ -83,11 +90,18 @@ export function SignInScreen() {
   const accounts = config.mode === "accounts";
   const providers = accounts ? config.providers.filter(isProvider) : [];
   const passwords = accounts ? config.passwords : true;
+  // Passkey-first sign-up wherever this browser and deployment support it;
+  // a password is the secondary choice (`?method=password`).
+  const passkeyCreate =
+    step === "create" &&
+    accounts &&
+    !!config.passkeySignup &&
+    passkeysAvailable();
+  const passkeyMethod = passkeyCreate && params.get("method") !== "password";
   const copy = socialCopyFor(document.documentElement.lang);
   const errorProvider = params.get("provider");
   const [pending, setPending] = useState<Provider | null>(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const { email, setEmail } = useAuthDraft();
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [backup, setBackup] = useState(false);
@@ -108,7 +122,10 @@ export function SignInScreen() {
             : "",
   );
   useLoggedError(error);
-  const [notice, setNotice] = useState("");
+  // A notice carried from another screen (an email that already has an
+  // account) shows once, on arrival.
+  const [notice, setNotice] = useState(() => useAuthDraft.getState().notice);
+  useEffect(() => void useAuthDraft.getState().takeNotice(), []);
   useEffect(() => {
     if (!accounts) {
       history.replaceState({}, "", "/");
@@ -136,7 +153,7 @@ export function SignInScreen() {
     addEventListener("pageshow", restored);
     return () => removeEventListener("pageshow", restored);
   }, []);
-  function go(next: Step) {
+  function go(next: Step | "create-password") {
     setStep(next);
     setError("");
     setNotice("");
@@ -190,7 +207,7 @@ export function SignInScreen() {
         await done();
       } else if (step === "create") {
         const result = await accountClient.signUp.email({
-          name: name.trim(),
+          name: "",
           email,
           password,
           callbackURL: "/start",
@@ -228,6 +245,22 @@ export function SignInScreen() {
         );
         await done();
       }
+    });
+  }
+  // The account, its passkey and the session are created together, then the
+  // parent goes straight into the guided first run.
+  function createWithPasskey(event: FormEvent) {
+    event.preventDefault();
+    void run(async () => {
+      const result = await signUpWithPasskey(email.trim());
+      if (result.ok) return done();
+      if (result.code === "exists") {
+        useAuthDraft.getState().carry(email.trim(), result.message);
+        go("sign-in");
+        setNotice(result.message);
+        return;
+      }
+      throw new Error(result.message);
     });
   }
   // The provider returns here on failure (with its code), to the guided first
@@ -295,10 +328,29 @@ export function SignInScreen() {
             Sign in with a passkey
           </Button>
         )}
-        {showProviders && providers.length > 0 && passwords && (
-          <EmailDivider copy={copy} />
-        )}
-        {step === "check-email" ? (
+        {showProviders &&
+          providers.length > 0 &&
+          (passwords || passkeyCreate) && <EmailDivider copy={copy} />}
+        {passkeyMethod ? (
+          <form className="account-form" onSubmit={createWithPasskey}>
+            <label>
+              Email
+              <input
+                required
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+            <Button variant="primary" type="submit" disabled={busy}>
+              Create account with a passkey
+            </Button>
+            <small className={styles.hint}>
+              No password to remember. This device keeps your passkey.
+            </small>
+          </form>
+        ) : step === "check-email" ? (
           <p>
             We sent a link to {email}. Open it to confirm the address and finish
             creating the account.
@@ -306,18 +358,6 @@ export function SignInScreen() {
         ) : (
           (passwords || !showProviders) && (
             <form className="account-form" onSubmit={submit}>
-              {step === "create" && (
-                <label>
-                  Your name
-                  <input
-                    required
-                    autoComplete="name"
-                    maxLength={80}
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </label>
-              )}
               {step !== "reset" && step !== "two-factor" && (
                 <label>
                   Email
@@ -387,9 +427,23 @@ export function SignInScreen() {
             </>
           )}
           {step === "create" && (
-            <button className="text-button" onClick={() => go("sign-in")}>
-              I already have an account
-            </button>
+            <>
+              {passkeyCreate && passwords && (
+                <button
+                  className="text-button"
+                  onClick={() =>
+                    go(passkeyMethod ? "create-password" : "create")
+                  }
+                >
+                  {passkeyMethod
+                    ? "Use a password instead"
+                    : "Use a passkey instead"}
+                </button>
+              )}
+              <button className="text-button" onClick={() => go("sign-in")}>
+                I already have an account
+              </button>
+            </>
           )}
           {step === "two-factor" && (
             <button

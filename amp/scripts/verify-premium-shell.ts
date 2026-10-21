@@ -165,7 +165,10 @@ try {
         .waitFor();
       assert.ok(page.url().endsWith("/sign-up"));
       await fits(page);
-      await page.getByLabel("Your name").fill("Sample Parent");
+      // A passkey is the first choice; this flow uses the password option.
+      await page
+        .getByRole("button", { name: "Use a password instead" })
+        .click();
       await page
         .getByLabel("Email")
         .fill(`shell-${theme}-${width}-${Date.now()}@example.com`);
@@ -404,13 +407,20 @@ try {
           route.fulfill({
             json: {
               ...actual,
-              next: "verify-email",
-              account: { ...actual.account, emailVerified: false },
+              next: "try",
+              consent: { status: "none", method: null },
+              account: {
+                ...actual.account,
+                emailVerified: false,
+                confirmationRequired: true,
+              },
             },
           }),
         );
-        await page.goto(`${origin}/start/name`);
-        await page.getByRole("heading", { name: "Check your email" }).waitFor();
+        await page.goto(`${origin}/start/plan`);
+        await page
+          .getByRole("heading", { name: "Confirm your email" })
+          .waitFor();
         assert.match(page.url(), /start\/verify-email/);
         let releaseEmail!: () => void;
         const emailHold = new Promise<void>((resolve) => {

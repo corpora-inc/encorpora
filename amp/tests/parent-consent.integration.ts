@@ -672,3 +672,38 @@ test(
       );
     }),
 );
+test(
+  "an AMP parent must confirm the account email before email-plus enrollment",
+  enabled,
+  async () =>
+    fixture(async (pool, r) => {
+      await pool.query(
+        `INSERT INTO amp_auth_users (id,name,email,"emailVerified") VALUES ('passkey-parent','','parent@example.com',false)`,
+      );
+      await assert.rejects(
+        r.begin("amp|passkey-parent", begin()),
+        (error: { code?: string; statusCode?: number }) =>
+          error.code === "email_unconfirmed" && error.statusCode === 403,
+      );
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_consent_requests"))
+          .rows[0].n,
+        0,
+      );
+      // An unknown parent is never treated as confirmed.
+      await assert.rejects(
+        r.begin("amp|missing", begin()),
+        /email_unconfirmed/,
+      );
+      await pool.query(
+        `UPDATE amp_auth_users SET "emailVerified"=true WHERE id='passkey-parent'`,
+      );
+      await r.begin("amp|passkey-parent", begin());
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_consent_requests"))
+          .rows[0].n,
+        1,
+      );
+      assert.equal(await active(pool, "amp|passkey-parent"), false);
+    }),
+);

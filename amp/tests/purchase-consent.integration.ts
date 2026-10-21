@@ -1223,3 +1223,31 @@ test(
       ]);
     }),
 );
+
+test(
+  "an AMP parent must confirm the account email before purchase-backed enrollment",
+  enabled,
+  async () =>
+    fixture(async (f) => {
+      await f.pool.query(
+        `INSERT INTO amp_auth_users (id,name,email,"emailVerified") VALUES ('passkey-parent','','parent@example.com',false)`,
+      );
+      await assert.rejects(
+        f.checkout("amp|passkey-parent"),
+        (error: { code?: string; statusCode?: number }) =>
+          error.code === "email_unconfirmed" && error.statusCode === 403,
+      );
+      assert.equal(f.created(), 0, "no Stripe checkout was opened");
+      assert.equal(
+        (await f.pool.query("SELECT count(*)::int n FROM amp_stripe_checkouts"))
+          .rows[0].n,
+        0,
+      );
+      await f.pool.query(
+        `UPDATE amp_auth_users SET "emailVerified"=true WHERE id='passkey-parent'`,
+      );
+      const row = await f.checkout("amp|passkey-parent");
+      assert.equal(row.learner_id, null);
+      assert.equal(f.created(), 1);
+    }),
+);

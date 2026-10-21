@@ -266,6 +266,7 @@ test(
           assert.deepEqual(config, {
             mode: "accounts",
             passwords: true,
+            passkeySignup: true,
             providers: ["google", "apple", "microsoft", "github"],
           });
         },
@@ -294,13 +295,19 @@ test(
             name: "Password Parent",
           });
           assert.equal(signup.statusCode, 200);
-          assert.equal((await me(cookies(signup))).next, "verify-email");
+          // Unconfirmed: the trial is open; consent and purchase wait.
+          const unconfirmed = await me(cookies(signup));
+          assert.equal(unconfirmed.next, "try");
+          assert.ok(unconfirmed.signedIn);
+          assert.equal(unconfirmed.account.confirmationRequired, true);
           await repo.pool.query(
             `UPDATE amp_auth_users SET "emailVerified"=true WHERE email=$1`,
             ["password.parent@example.com"],
           );
           const confirmed = await me(cookies(signup));
           assert.equal(confirmed.next, state.next);
+          assert.ok(confirmed.signedIn);
+          assert.equal(confirmed.account.confirmationRequired, false);
           assert.deepEqual(confirmed.consent, state.consent);
           // The same identity signs in again without a new account.
           const again = await providerSignIn("google", {

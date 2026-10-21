@@ -39,6 +39,22 @@ Database tests require a disposable database; they create and remove their own f
 
 Publications are written to `artifacts/publications/` in Letter and A4 formats. Each workbook has a matching solution volume with the same deterministic problems. The lesson library offers authenticated PDF downloads after these artifacts have been built. PDFs and screenshots are generated artifacts, not Git source files.
 
+
+## Test suites
+
+| Command | Coverage | When required |
+| --- | --- | --- |
+| `npm run test:core` | Application unit tests and focused mathematics tests | Every AMP pull request and merge queue run |
+| `npm run test:inventory` | Full independent mathematics inventory and deliberate-corruption checks | After merge on main when no exact successful input/environment result exists; manual revalidation |
+| `npm test` | Both unit suites | Complete local verification |
+| `npm run test:db` | Database integration and access/payment isolation | Every AMP CI run; locally for affected persistence, money, consent and privacy paths |
+
+The content fingerprint in `.github/scripts/amp_inventory_paths.py` includes mathematics, content, publications, scripts, simulations, dependencies, rendering and unknown AMP areas. It excludes explicitly independent billing/family/privacy/consent code, ordinary core-test files and documentation. Filenames, Git blob identifiers and file modes are hashed, so edits, removals and renames invalidate the result. Keep this boundary current when adding dependencies between application and content code.
+
+Expensive content checks run after merge. A main run may reuse only an exact successful content/environment fingerprint; cache misses, failed runs and unknown inputs trigger verification. The success marker is saved only after all content commands pass. Manual runs force revalidation. An unrelated commit cannot turn a failed content check green because failed inputs have no successful marker.
+
+The existing `ci-gate` aggregates results; no path-specific job is an independent required status. Main also runs browser checks. Production advances only to a main commit whose three AMP release jobs succeed, either by executing content checks or verifying their exact reusable result. Failures are fixed forward through another PR.
+
 ## Architecture
 
 - `src/math` defines bounded mathematical structures, runtime contracts, deterministic template generation, and exact numeric grading.

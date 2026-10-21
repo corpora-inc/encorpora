@@ -52,16 +52,33 @@ test("signed-out visitors go to sign in from every step", () => {
   );
 });
 
-test("an unverified parent can only see the verification step", () => {
-  expect(table(me({ next: "verify-email" }))).toEqual({
-    "/start": "/start/verify-email",
+test("an unconfirmed parent practices free and confirms the address on the way into the plan", () => {
+  const unconfirmed = (next: SignedInMe["next"]) =>
+    me({
+      next,
+      account: {
+        id: "parent",
+        email: "parent@example.test",
+        emailVerified: false,
+        confirmationRequired: true,
+      },
+    });
+  expect(table(unconfirmed("try"))).toEqual({
+    "/start": "/try",
     "/start/verify-email": null,
     "/start/plan": "/start/verify-email",
     "/start/purchase": "/start/verify-email",
     "/start/consent": "/start/verify-email",
-    "/start/name": "/start/verify-email",
-    "/start/birth-year": "/start/verify-email",
+    "/start/name": "/try",
+    "/start/birth-year": "/try",
   });
+  // A plan chosen before sign-up leads to the confirmation step first.
+  expect(startDestination(unconfirmed("try"), "/start", true)).toBe(
+    "/start/verify-email",
+  );
+  expect(table(unconfirmed("choose-plan"))["/start"]).toBe(
+    "/start/verify-email",
+  );
 });
 
 test("a parent without consent chooses a plan first; consent is never a forced detour", () => {
@@ -136,7 +153,7 @@ test("a practicing family may add another learner; everything else opens practic
 test("a signed-in parent without a purchase gets the free trial; plan steps open only when they choose to buy", () => {
   expect(table(me({ next: "try" }))).toEqual({
     "/start": "/try",
-    "/start/verify-email": "/try",
+    "/start/verify-email": "/start/plan",
     "/start/plan": null,
     "/start/purchase": null,
     "/start/consent": null,
