@@ -1,4 +1,8 @@
 import {
+  radicalEquationTemplates,
+  generateRadicalEquationProblem,
+} from "./radical-equation-practice";
+import {
   rationalEquationTemplates,
   generateRationalEquationProblem,
 } from "./rational-equation-practice";
@@ -395,6 +399,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...inequalityTemplates,
   ...linearSystemTemplates,
   ...rationalExpressionTemplates,
+  ...radicalEquationTemplates,
   ...rationalEquationTemplates,
   ...geometryProofTemplates,
   ...nonlinearSystemTemplates,
@@ -591,6 +596,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...inequalityTemplates,
     ...linearSystemTemplates,
     ...rationalExpressionTemplates,
+    ...radicalEquationTemplates,
     ...rationalEquationTemplates,
     ...geometryProofTemplates,
     ...nonlinearSystemTemplates,
@@ -719,6 +725,8 @@ function generateRawProblem(
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (radicalEquationTemplates.some((t) => t.id === templateId))
+    return generateRadicalEquationProblem(templateId, seed);
   if (rationalEquationTemplates.some((t) => t.id === templateId))
     return generateRationalEquationProblem(templateId, seed);
   if (geometryProofTemplates.some((t) => t.id === templateId))

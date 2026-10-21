@@ -1,3 +1,4 @@
+import { radicalEquationMethods } from "./radical-equation-lessons";
 import { rationalEquationMethods } from "./rational-equation-lessons";
 import { geometryProofMethods } from "./geometry-proof-lessons";
 import { rationalExpressionMethods } from "./rational-expression-lessons";
@@ -112,6 +113,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...inequalityMethods,
   ...linearSystemMethods,
   ...rationalExpressionMethods,
+  ...radicalEquationMethods,
   ...rationalEquationMethods,
   ...geometryProofMethods,
   ...nonlinearSystemMethods,

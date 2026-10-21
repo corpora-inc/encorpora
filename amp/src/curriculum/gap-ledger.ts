@@ -59,11 +59,11 @@ export const initialGapTasks: readonly GapTask[] = [
     skillId: "radical-equations",
     sourceIds: ["HSA.REI.A.2"],
     objective:
-      "Solve radical equations and reject candidates introduced by squaring.",
+      "Extend square-root equation solving to repeated or irrational candidates and multiple radicals.",
     existingSupport:
-      "Rational-exponent and quadratic-equation practice provides prerequisites; radical-equations has no bound family.",
+      "radical-equation-isolated and radical-equation-shifted construct exact rational solutions; radical-equation-check selects all solutions after squaring with two distinct integer candidates, including zero, one or two valid solutions.",
     acceptance: [
-      "Begin with one isolated square root and a constant, then a variable expression on the other side.",
+      "Add repeated and irrational candidates without losing original domain and sign checks.",
       "Check radicand domains and required signs before and after squaring.",
       "Include no-solution cases and extraneous candidates checked in the original equation.",
     ],

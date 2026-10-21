@@ -43,7 +43,7 @@ linear-models|6|6|slope,linear-models,linear-equation-modeling,model-quantities
 inequalities|4|4|simple-inequalities,linear-inequalities,inequality-regions,graph-solution-sets
 systems|5|5|linear-systems,systems-modeling,elimination-proof
 absolute-value-equations|2|2|absolute-value-equations
-powers-radicals|4|4|integer-powers,exponent-laws,rational-exponents,radical-equations
+powers-radicals|4|4|integer-powers,exponent-laws,rational-exponents,square-root-equations,radical-equations
 polynomials-quadratics|6|6|polynomial-arithmetic,factor-quadratics,quadratic-equations,complete-square,quadratic-formula,polynomial-division,polynomial-zeros,polynomial-identities
 rational-algebra|3|3|rational-expression-domain,rational-expressions,rational-equation-one-denominator,rational-equations
 nonlinear-systems|2|2|nonlinear-intersection-reading,nonlinear-systems,nonlinear-intersection-count,nonlinear-equation-modeling,graphical-equation-solving
