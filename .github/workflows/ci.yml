@@ -22,6 +22,9 @@ concurrency:
   # running push completes and only the newest waiting push runs next.
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
+env:
+  NODE_OPTIONS: --use-openssl-ca
+
 jobs:
   changes:
     name: changes
@@ -50,6 +53,29 @@ jobs:
       terraform: ${{ steps.filter.outputs.terraform }}
       web: ${{ steps.filter.outputs.web }}
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -102,7 +128,7 @@ jobs:
           set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
           set_output amp '^(amp/|web/io/data/apps\.json$|\.github/scripts/(amp_inventory_paths|test_amp_inventory_paths)\.py$|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
-          set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review|amp-deep-checks)\.yml$)'
+          set_output ci_scripts '^(\.github/scripts/|\.github/workflows/[^/]+\.ya?ml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
           # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
           # `../packs/shared/*` and `include`s `../packs/shared/analytics`, vite
@@ -322,6 +348,29 @@ jobs:
     if: needs.changes.outputs.corpan_app == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -367,6 +416,29 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
@@ -395,6 +467,29 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
@@ -420,6 +515,29 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - name: Fetch the app icon (Git LFS)
         # `*.png` is Git LFS repo-wide, so a plain checkout leaves a pointer
@@ -474,6 +592,29 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -556,6 +697,29 @@ jobs:
     if: needs.changes.outputs.lambda == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -575,6 +739,29 @@ jobs:
     if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -594,6 +781,29 @@ jobs:
     if: needs.changes.outputs.packs == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -664,6 +874,29 @@ jobs:
     if: needs.changes.outputs.terraform == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -688,6 +921,29 @@ jobs:
     if: needs.changes.outputs.packs == 'true' || needs.changes.outputs.web == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -719,6 +975,29 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -750,6 +1029,29 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -800,6 +1102,29 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -984,6 +1309,29 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - name: Fetch the app icons (Git LFS)
         # `*.png` is Git LFS repo-wide (.gitattributes:2), and Tauri's
@@ -1292,6 +1640,29 @@ jobs:
       run:
         working-directory: aha/aha-app
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -1322,6 +1693,29 @@ jobs:
       run:
         working-directory: aha/aha-app/src-tauri
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - name: Fetch native icons
         run: git lfs pull --include="aha/aha-app/src-tauri/icons/*"
@@ -1348,26 +1742,56 @@ jobs:
     needs: changes
     if: needs.changes.outputs.amp == 'true'
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:17-alpine
-        env:
-          POSTGRES_USER: amp
-          POSTGRES_PASSWORD: amp
-          POSTGRES_DB: amp_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U amp"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
     defaults:
       run:
         working-directory: amp
     env:
       AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - name: Start PostgreSQL after trust verification
+        id: ci-postgres
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          container_id=$(docker run --detach \
+            --publish 127.0.0.1:5432:5432 \
+            --env POSTGRES_USER=amp --env POSTGRES_PASSWORD=amp --env POSTGRES_DB=amp_test \
+            --health-cmd 'pg_isready -U amp' --health-interval 5s --health-timeout 5s --health-retries 10 \
+            postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24)
+          [[ "$container_id" =~ ^[0-9a-f]{64}$ ]]
+          printf 'container_id=%s\n' "$container_id" >> "$GITHUB_OUTPUT"
+          for attempt in {1..20}; do
+            health=$(docker inspect --format '{{.State.Health.Status}}' "$container_id")
+            if [ "$health" = healthy ]; then exit 0; fi
+            if [ "$health" = unhealthy ]; then break; fi
+            sleep 5
+          done
+          echo 'PostgreSQL failed its bounded health check' >&2
+          exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -1384,6 +1808,16 @@ jobs:
       - run: npm run lint:colors
       - run: npm run build
       - run: npm run test:db
+      - name: Remove this job's PostgreSQL container
+        if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        env:
+          CI_POSTGRES_CONTAINER_ID: ${{ steps.ci-postgres.outputs.container_id }}
+        run: |
+          set -euo pipefail
+          [[ "$CI_POSTGRES_CONTAINER_ID" =~ ^[0-9a-f]{64}$ ]]
+          docker rm --force --volumes "$CI_POSTGRES_CONTAINER_ID"
 
   amp-native:
     name: amp-native
@@ -1394,6 +1828,29 @@ jobs:
       run:
         working-directory: amp/mobile
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - run: git lfs pull --include="amp/mobile/icons/icon.png" --exclude=""
       - uses: actions/setup-node@v4
@@ -1423,6 +1880,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -1477,6 +1957,29 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - name: Require all CI jobs to have passed or been skipped
         env:
           RESULTS: ${{ join(needs.*.result, ',') }}
