@@ -644,13 +644,21 @@ nav button {
   margin: 12px 0 24px;
   border-block: 1px solid var(--color-border);
 }
-.reader-downloads summary {
-  cursor: pointer;
-  padding: 14px 0;
+.reader-downloads h3 {
+  margin: 14px 0;
   color: var(--color-primary);
 }
 .reader-downloads .downloads {
   margin: 0 0 16px;
+}
+.reader-downloads .downloads button {
+  flex: 1 1 180px;
+  min-height: 44px;
+}
+@media print {
+  .reader-downloads {
+    display: none;
+  }
 }
 .workspace-error {
   position: absolute;
