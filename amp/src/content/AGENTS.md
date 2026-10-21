@@ -1,5 +1,7 @@
 # Standalone mathematics lessons
 
+For new and substantially revised lessons, follow the plain explanation → worked example → visualization → optional useful application → precise statement sequence in [the content-family playbook](../../docs/content-family-playbook.md). Define terms before first use and preserve rigorous conditions throughout. Existing lessons do not require a bulk rewrite.
+
 A lesson must teach its stated objective to a learner who has not read another AMP lesson. Repeat a needed definition rather than relying on a link or a prerequisite label. State any basic skills the lesson genuinely requires.
 
 - Define vocabulary and notation before using them to explain a procedure. Connect each symbol to the quantity it represents. For fractions, explain the whole, equal parts, numerator, and denominator; for right triangles, explain a triangle, a right angle, the legs, and the hypotenuse.

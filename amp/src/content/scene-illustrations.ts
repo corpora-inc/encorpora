@@ -23,6 +23,35 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  "nonlinear-system-example": graph({
+    id: "g",
+    x: [-3, 4],
+    y: [-2, 8],
+    grid: 1,
+  })
+    .curve(f.poly(1, 0, 0), { color: "accent" })
+    .curve(f.poly(1, 2), { color: "warm", dash: "dash" })
+    .point(-1, 1, "(-1, 1)")
+    .point(2, 4, "(2, 4)")
+    .scene({
+      title:
+        "The parabola y = x² and straight line y = x + 2 share (-1, 1) and (2, 4).",
+      steps: [
+        step(
+          "Trace the parabola: each point follows $y = x^2$.",
+          act.trace("g.curve.0"),
+        ),
+        step(
+          "Trace the line: each point follows $y = x + 2$.",
+          act.trace("g.curve.1"),
+        ),
+        step(
+          "Both rules give the same point at $(-1, 1)$ and $(2, 4)$.",
+          act.highlight("g.point.0"),
+          act.highlight("g.point.1"),
+        ),
+      ],
+    }),
   ...lessonScenes,
   ...similarityTrigScenes,
   ...coordinateCircleScenes,

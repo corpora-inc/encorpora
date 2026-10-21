@@ -444,6 +444,7 @@ export function buildCoverageManifest(input: CoverageInput = {}) {
       fullyCoveredStandards: 0,
     },
     missingInstructionTemplateIds,
+    facetMappings: validMappings,
     bookBindings: validBookBindings
       .map((binding) => ({
         ...binding,

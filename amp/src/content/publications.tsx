@@ -310,6 +310,19 @@ export function publicationHtml(
                 </p>
               </section>
             )}
+          {lesson.closingSections?.map((section) => (
+            <section key={section.title}>
+              <h2>{section.title}</h2>
+              {section.paragraphs.map((p) => (
+                <p key={p}>
+                  <PrintMathText text={p} />
+                </p>
+              ))}
+              {section.illustration && (
+                <LessonIllustration kind={section.illustration} print />
+              )}
+            </section>
+          ))}
           <h2>Common stumbling blocks</h2>
           <ul>
             {lesson.pitfalls.map((p) => (

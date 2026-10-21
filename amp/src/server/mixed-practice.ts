@@ -457,7 +457,10 @@ export function templateGrade(
   nodes: ReadonlyMap<string, { gradeBand?: GradeBand }>,
 ): number {
   const band = nodes.get(template.skillId)?.gradeBand;
-  return band ? gradeNumber[band] : coarse[template.gradeBand];
+  const offset = template.difficultyOffset ?? 0;
+  if (!Number.isFinite(offset) || Math.abs(offset) > 1)
+    throw new Error("Invalid template difficulty offset");
+  return (band ? gradeNumber[band] : coarse[template.gradeBand]) + offset;
 }
 const coarse: Record<TemplateMetadata["gradeBand"], number> = {
   "K–2": 1,

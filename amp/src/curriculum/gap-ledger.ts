@@ -1,0 +1,267 @@
+import { skills, standards } from "./catalog";
+import { coverageTargets } from "./coverage-targets";
+import { buildCoverageManifest, type CoverageInput } from "../content/coverage";
+
+export interface GapTask {
+  id: string;
+  skillId: string;
+  objective: string;
+  sourceIds: readonly string[];
+  existingSupport: string;
+  acceptance: readonly string[];
+}
+/** Reconciled tasks, not an exhaustive state-standard inventory or completion claims. */
+export const initialGapTasks: readonly GapTask[] = [
+  {
+    id: "percent-points",
+    skillId: "percent-change",
+    sourceIds: ["7.RP.A.3"],
+    objective:
+      "Distinguish percentage-point differences from relative percent changes.",
+    existingSupport:
+      "percent-change-rate assesses relative change; lessons explain percentage points.",
+    acceptance: [
+      "Ask for percentage-point answers directly.",
+      "Contrast the two questions for the same givens, including decreases and zero change.",
+      "Keep the zero-base restriction on relative change explicit.",
+    ],
+  },
+  {
+    id: "successive-percent",
+    skillId: "percent-change",
+    sourceIds: ["7.RP.A.3"],
+    objective: "Apply successive percentage changes with changing bases.",
+    existingSupport:
+      "The in-the-same-proportion book teaches discount then tax and equal opposite changes; adaptive families apply one change.",
+    acceptance: [
+      "Include increase/increase, decrease/decrease and both mixed orders.",
+      "Assess equal opposite changes and reverse recovery with nonzero multipliers.",
+      "State whether money is rounded after each step or only at the end; test halfway cases.",
+    ],
+  },
+  {
+    id: "positional-language",
+    skillId: "name-shapes",
+    sourceIds: ["K.G.A.1"],
+    objective: "Describe relative positions of objects with spatial language.",
+    existingSupport:
+      "Shape recognition already varies orientation and size; positional language is explicitly unassessed.",
+    acceptance: [
+      "Include above, below, beside, in front of, behind and next to.",
+      "Use unambiguous figures and a text-accessible equivalent.",
+      "Distinguish recognition from learner-produced descriptions.",
+    ],
+  },
+  {
+    id: "story-unknown-matrix",
+    skillId: "addition-stories",
+    sourceIds: ["1.OA.A.1"],
+    objective:
+      "Reconcile addition and subtraction story structures with every required unknown position.",
+    existingSupport:
+      "Missing starts, addends and several story positions already have practice and number-builders instruction.",
+    acceptance: [
+      "Inventory add-to, take-from, put-together/take-apart and comparison structures against the source table.",
+      "Reuse existing families and add only unassessed cells.",
+      "Keep selecting an equation distinct from constructing it.",
+    ],
+  },
+  {
+    id: "root-composition-domain",
+    skillId: "function-composition",
+    sourceIds: ["HSF.BF.A.1"],
+    objective:
+      "Determine domain restrictions for compositions involving square roots.",
+    existingSupport:
+      "composition-value already assesses excluded inputs for rational outer functions.",
+    acceptance: [
+      "Check inner domain and the outer radicand restriction together.",
+      "Include boundary inclusion, empty and unrestricted domains where applicable.",
+      "Verify by independent inequality reasoning and counterexamples.",
+    ],
+  },
+  {
+    id: "compare-interval-rates",
+    skillId: "average-rate-change",
+    sourceIds: ["HSF.IF.B.6"],
+    objective: "Compare average rates of change across intervals.",
+    existingSupport:
+      "Rates from formulas, graphs and tables already exist; exponential-overtakes assesses eventual growth.",
+    acceptance: [
+      "Compare equal- and unequal-width intervals.",
+      "Include positive, negative and zero rates and consistent units.",
+      "Cover formulas, tables and graphs without substituting endpoint height for rate.",
+    ],
+  },
+];
+
+export function buildGapLedger(input: CoverageInput = {}) {
+  const manifest = buildCoverageManifest(input);
+  const nodes = input.skills ?? skills;
+  const refs = input.standards ?? standards;
+  const mappings = manifest.facetMappings;
+  const nodeById = new Map(nodes.map((s) => [s.id, s]));
+  const rows = manifest.skills.map((row) => {
+    const node = nodeById.get(row.id)!;
+    return {
+      id: row.id,
+      gradeBand: node.gradeBand,
+      strand: node.strand,
+      objective: node.description,
+      standardIds: row.standardIds,
+      practice: row.templateIds.length
+        ? ("present" as const)
+        : ("missing" as const),
+      templateIds: row.templateIds,
+      instruction: {
+        lessonIds: row.lessonIds,
+        bookPageBindings: row.bookPageBindings,
+      },
+      facets: row.facets.map((facet) => {
+        const links = mappings.filter((m) => m.facetId === facet.id);
+        return {
+          id: facet.id,
+          objective: node.facets.find((f) => f.id === facet.id)!.description,
+          status: facet.independentlyReviewed
+            ? ("verified" as const)
+            : links.some((m) => m.extent === "complete")
+              ? ("implemented" as const)
+              : links.length
+                ? ("partial" as const)
+                : ("missing" as const),
+          templateIds: facet.templateIds,
+          declaredScopes: links.map(({ templateId, extent, rationale }) => ({
+            templateId,
+            extent,
+            rationale,
+          })),
+        };
+      }),
+      // A lesson binding is not reviewed instructional evidence; a runtime hint
+      // or an editorial grade is not proof of instructional quality/calibration.
+      hintReview: "not-recorded" as const,
+      lessonReview: "not-recorded" as const,
+      empiricalCalibration: "not-recorded" as const,
+    };
+  });
+  const facets = rows.flatMap((row) => row.facets);
+  const grades = [...new Set(nodes.map((s) => s.gradeBand))].map(
+    (gradeBand) => {
+      const group = rows.filter((s) => s.gradeBand === gradeBand);
+      return {
+        gradeBand,
+        skills: group.length,
+        withPractice: group.filter((s) => s.practice === "present").length,
+      };
+    },
+  );
+  const unmappedTemplates = manifest.artifacts
+    .filter(
+      (a) =>
+        a.kind === "template" &&
+        !mappings.some((m) => m.templateId === a.sourceId),
+    )
+    .map((a) => a.sourceId);
+  return {
+    schemaVersion: 1,
+    valid: manifest.valid,
+    errors: manifest.errors,
+    target: "US-50-states-DC-general-math-assessments-and-SAT-Suite",
+    targetComplete: false,
+    targets: coverageTargets,
+    blockers: [
+      "State and assessment source inventories require versioned component-level reconciliation.",
+      "Existing catalog facets are not an exhaustive assessment blueprint.",
+      "Review and calibration evidence must be recorded independently of content presence.",
+    ],
+    summary: {
+      ...manifest.summary,
+      skillsWithPractice: rows.filter((s) => s.practice === "present").length,
+      skillsWithoutPractice: rows.filter((s) => s.practice === "missing")
+        .length,
+      facetsByStatus: Object.fromEntries(
+        ["missing", "partial", "implemented", "verified"].map((status) => [
+          status,
+          facets.filter((f) => f.status === status).length,
+        ]),
+      ),
+      templatesWithoutFacetMapping: unmappedTemplates.length,
+      pendingTargetInventories: coverageTargets.length,
+    },
+    grades,
+    sources: refs.map(({ id, sourceUrl, sourceReviewedAt, scope }) => ({
+      id,
+      sourceUrl,
+      sourceReviewedAt,
+      scope,
+    })),
+    skills: rows,
+    templatesWithoutFacetMapping: unmappedTemplates,
+    // Narrow gap tasks are intentionally separate from the broad facet statuses.
+    // Never mark them complete merely because a related skill has a template.
+    initialTasks: initialGapTasks,
+  };
+}
+
+export function renderGapLedger(
+  report: ReturnType<typeof buildGapLedger>,
+): string {
+  const cell = (value: string) =>
+    value.replaceAll("|", "\\|").replaceAll("\n", " ");
+  return [
+    "# AMP mathematics coverage ledger",
+    "",
+    "Runtime presence and declared facet coverage are reported separately. This is not certification of complete standards coverage.",
+    "",
+    `Audit valid: ${report.valid}. Skills with practice: ${report.summary.skillsWithPractice}/${report.summary.skills}. Pending target inventories: ${report.summary.pendingTargetInventories}.`,
+    "",
+    ...report.errors.map((error) => `ERROR: ${error}`),
+    "## Source inventory blockers",
+    "",
+    ...report.blockers.map((b) => `- [ ] ${b}`),
+    "",
+    "## Targets",
+    "",
+    ...report.targets.map(
+      (t) => `- [ ] ${t.name}: source inventory ${t.sourceInventory}`,
+    ),
+    "",
+    "## Practice by grade",
+    "",
+    "| Grade/course | Skills with practice | Catalog skills |",
+    "| --- | ---: | ---: |",
+    ...report.grades.map(
+      (g) => `| ${g.gradeBand} | ${g.withPractice} | ${g.skills} |`,
+    ),
+    "",
+    "## Initial gap tasks",
+    "",
+    ...report.initialTasks.flatMap((t) => [
+      `- [ ] **${t.id}**: ${t.objective}`,
+      `  Existing support: ${t.existingSupport}`,
+      ...t.acceptance.map((a) => `  - ${a}`),
+    ]),
+    "",
+    "## Skills without registered practice",
+    "",
+    ...report.skills
+      .filter((s) => s.practice === "missing")
+      .map((s) => `- [ ] ${s.id} (${s.gradeBand}): ${s.objective}`),
+    "",
+    "## Declared facets",
+    "",
+    "| Facet | Status | Templates | Declared scope and limitations |",
+    "| --- | --- | --- | --- |",
+    ...report.skills.flatMap((s) =>
+      s.facets.map(
+        (f) =>
+          `| ${f.id} | ${f.status} | ${f.templateIds.join(", ") || "—"} | ${cell(f.declaredScopes.map((m) => m.rationale).join("; ") || "No template-to-facet mapping; related skill practice is not facet evidence.")} |`,
+      ),
+    ),
+    "",
+    "## Templates needing facet reconciliation",
+    "",
+    ...report.templatesWithoutFacetMapping.map((id) => `- [ ] ${id}`),
+    "",
+  ].join("\n");
+}

@@ -58,7 +58,8 @@
     "test:level-ui": "tsx scripts/verify-level-check-ui.ts",
     "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features",
     "test:core": "node scripts/test-suite.mjs core",
-    "test:inventory": "node scripts/test-suite.mjs inventory"
+    "test:inventory": "node scripts/test-suite.mjs inventory",
+    "coverage:report": "tsx scripts/coverage-report.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",
