@@ -346,6 +346,13 @@ try {
           ),
         `${tag}: level_check_view is recorded with its count`,
       );
+      // Measure the resting sheet, not its entrance translation. Visibility
+      // and the analytics beacon can both arrive before the animation ends.
+      await dialog.evaluate(async (element) => {
+        await Promise.all(
+          element.getAnimations().map((animation) => animation.finished),
+        );
+      });
       // Over the next problem, which does not move beneath it.
       const prompt = page.locator("#problem-prompt");
       const before = await prompt.boundingBox();
@@ -357,7 +364,7 @@ try {
           sheet.x + sheet.width <= width + 0.5 &&
           sheet.y >= 0 &&
           sheet.y + sheet.height <= height + 0.5,
-        `${tag}: the level check fits the screen`,
+        `${tag}: the level check fits the screen: ${JSON.stringify(sheet)}`,
       );
       for (const action of await dialog.locator("button, a").all())
         if (await action.isVisible()) {
