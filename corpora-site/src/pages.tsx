@@ -161,9 +161,10 @@ function Plans({ config }: { config: SiteConfig }) {
         )}
         <aside className="plan-note">
           <p>
-            <strong>30-day refund policy.</strong>
+            <strong>30-day full refund for personal payments.</strong>
             <br />
-            Request a refund to the original payment method.
+            Program and marketplace payment rules may differ. Refunds return
+            through the original payment route.
           </p>
           <a href="/legal/refund/">
             {config.legalReviewed ? "Read the policy" : "Read the draft policy"}{" "}
@@ -517,7 +518,7 @@ const faq = [
   ],
   [
     "How do cancellation and refunds work?",
-    "Cancel renewal in the parent billing portal. For a refund, contact support within 30 days of payment. Eligible refunds go to the original payment method. See the refund policy for funded purchases.",
+    "Cancel renewal in the parent billing portal. For personal payments, request a full refund within 30 days, including if you later seek reimbursement. Direct program and marketplace payments follow the administrator’s disclosed rules where they differ. Refunds return through the original payment route. See the refund policy.",
   ],
   [
     "What device do we need?",
