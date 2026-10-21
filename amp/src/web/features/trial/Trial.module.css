@@ -6,6 +6,10 @@
   text-align: left !important;
   color: var(--color-on-surface);
 }
+.start,
+.panel {
+  grid-template-columns: minmax(0, 1fr);
+}
 .panel {
   width: min(100%, 640px) !important;
 }
@@ -54,6 +58,35 @@
 }
 .actions > * {
   width: 100%;
+}
+.share {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+.share button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.share [role="status"] {
+  min-height: 1.45em;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.shareText {
+  display: grid;
+  gap: 8px;
+}
+.shareText textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  font: inherit;
+  resize: vertical;
 }
 
 /* "12 of 100 free": a quiet bar on pages, a pill in the practice toolbar. */
@@ -370,7 +403,10 @@
   max-width: none;
 }
 .intro :global(.year-grid) {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, max(3.5rem, calc(25% - 4.5px))), 1fr)
+  );
   gap: 6px;
   margin: var(--space-1) 0 0;
 }

@@ -5,6 +5,7 @@ import type { TemplateMetadata } from "../math/contracts";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { gradeOrder, strandNames } from "./BirthYearPrompt";
 import { ProblemLesson } from "./ProblemLesson";
+import { Select } from "./ui/Select";
 
 type Props = {
   templates: readonly TemplateMetadata[];
@@ -113,26 +114,26 @@ export function LessonIndex(props: Props) {
     );
   return (
     <section className="lesson-index" aria-label="Lessons by problem type">
-      <div className="strand-row" role="tablist">
-        {groups.map((group) => (
-          <button
-            key={group.key}
-            role="tab"
-            aria-selected={group.key === strand}
-            data-strand={group.key}
-            className="strand-chip"
-            onClick={() => select("strand", group.key)}
-          >
-            {strandNames[group.key]}
-          </button>
-        ))}
+      <div className="lesson-library-heading">
+        <h1>Lessons</h1>
+        <Select
+          aria-label="Math area"
+          value={strand}
+          onValueChange={(value) => select("strand", value)}
+        >
+          {groups.map((group) => (
+            <option key={group.key} value={group.key}>
+              {strandNames[group.key]}
+            </option>
+          ))}
+        </Select>
       </div>
       {groups.map((group) => (
         <ul
           key={group.key}
           className="topic-list"
           data-strand={group.key}
-          role="tabpanel"
+          aria-label={strandNames[group.key]}
           hidden={group.key !== strand}
         >
           {group.topics.map((template) => (
