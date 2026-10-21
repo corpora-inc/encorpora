@@ -149,6 +149,16 @@ export function Legal({
             Global Privacy Control and Do Not Track prevent capturing new
             campaign labels with a request.
           </p>
+          <p>
+            To resume an Arkansas purchase after parent-consent emails, AMP
+            saves a pending purchase in this browser with a seven-day expiration,
+            scoped to the signed-in parent account. It contains permitted
+            campaign labels and an expiration time, not consent tokens or
+            learner details. Preparing a quote or leaving that consent flow
+            clears it. Privacy signals remove its campaign labels. This
+            continuation works across tabs on the same device; it is not sent
+            to an advertising platform.
+          </p>
           <h2>Free practice</h2>
           <p>
             Free practice, a short placement followed by adaptive practice up to

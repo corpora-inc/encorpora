@@ -12,7 +12,12 @@ export const startSteps = [
 export type StartStep = (typeof startSteps)[number];
 
 export type StartTarget =
-  StartStep | "/sign-in" | "/purchase" | "/practice" | "/try";
+  | StartStep
+  | "/sign-in"
+  | "/purchase"
+  | "/purchase/arkansas-efa"
+  | "/practice"
+  | "/try";
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
 /** Steps that record consent or take payment; they need a confirmed address. */
@@ -37,8 +42,17 @@ export function startDestination(
   me: Me,
   pathname: string,
   buying = false,
+  funded = false,
 ): StartTarget | null {
   if (!me.signedIn) return "/sign-in";
+  if (funded) {
+    if (me.account.confirmationRequired)
+      return pathname === "/start/verify-email" ? null : "/start/verify-email";
+    if (me.consent.status !== "active")
+      return pathname === "/start/consent" ? null : "/start/consent";
+    if (learnerSteps.includes(pathname)) return null;
+    return me.learners.length ? "/purchase/arkansas-efa" : "/start/name";
+  }
   const confirm =
     !!me.account.confirmationRequired &&
     (me.next === "try" || me.next === "choose-plan");

@@ -189,3 +189,16 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("Arkansas free practice keeps the funded purchase preference without tracking", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-arkansas-entry-"));
+  try {
+    await buildSite(configSchema.parse({
+      appUrl: "https://app.example.invalid",
+      funding: [{ ...guidedFundingFixture, page: { ...guidedFundingFixture.page, slug: "arkansas-efa" } }],
+    }), dir);
+    const html = await readFile(join(dir, "esa/arkansas-efa/index.html"), "utf8");
+    assert.ok(html.includes('href="https://app.example.invalid/try?program=ar-efa"'));
+    assert.ok(!html.includes("utm_campaign="));
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});

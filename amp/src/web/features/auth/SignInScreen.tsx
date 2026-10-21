@@ -22,6 +22,11 @@ import {
 } from "./ProviderButtons";
 import { socialCopyFor, socialErrorMessage } from "./social-copy";
 import { passkeysAvailable, signUpWithPasskey } from "./passkey";
+import {
+  continuationSearch,
+  continuationUrl,
+  fundedPath,
+} from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
 
 type Step =
@@ -49,7 +54,10 @@ export function SignInScreen() {
       void navigate({
         to: "/sign-in/$step",
         params: { step: "forgot" },
-        search: { error: "reset_link_invalid" },
+        search: {
+          ...continuationSearch(routeLocation.search),
+          error: "reset_link_invalid",
+        },
         replace: true,
       });
   }, [invalidReset]);
@@ -67,10 +75,7 @@ export function SignInScreen() {
           ? (routeLocation.pathname.split("/")[2] as Step)
           : "sign-in";
   const setStep = (next: Step | "create-password") => {
-    const search =
-      params.get("return") === "security"
-        ? { return: "security" as const }
-        : {};
+    const search = continuationSearch(routeLocation.search);
     if (next === "create") void navigate({ to: "/sign-up", search });
     else if (next === "sign-in") void navigate({ to: "/sign-in", search });
     else if (next === "create-password")
@@ -158,12 +163,13 @@ export function SignInScreen() {
     setError("");
     setNotice("");
   }
-  const returnTo =
-    params.get("return") === "security" ? "/family/security" : "/";
+  const carry = continuationSearch(routeLocation.search);
+  const returnTo = continuationUrl(carry, "/");
+  const newUserReturn = continuationUrl(carry);
   const done = async () => {
     notifyAccountSessionChanged();
     await queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 });
-    if (returnTo === "/family/security")
+    if (carry.return === "security")
       await navigate({
         to: "/$",
         params: { _splat: "family/security" },
@@ -171,7 +177,13 @@ export function SignInScreen() {
       });
     else
       await navigate({
-        to: step === "create" ? "/start" : "/",
+        to:
+          carry.return === "arkansas-efa"
+            ? fundedPath
+            : step === "create"
+              ? "/start"
+              : "/",
+        search: carry,
         replace: true,
       });
   };
@@ -210,7 +222,7 @@ export function SignInScreen() {
           name: "",
           email,
           password,
-          callbackURL: "/start",
+          callbackURL: newUserReturn,
         });
         fail(result);
         // Where email must be confirmed first, no session is issued yet.
@@ -220,7 +232,7 @@ export function SignInScreen() {
         fail(
           await accountClient.requestPasswordReset({
             email,
-            redirectTo: "/?reset-password",
+            redirectTo: `/reset-password?${new URLSearchParams(carry as Record<string, string>)}`,
           }),
         );
         setNotice(
@@ -272,13 +284,11 @@ export function SignInScreen() {
       const result = await accountClient.signIn.social({
         provider,
         callbackURL: returnTo,
-        newUserCallbackURL: "/start",
+        newUserCallbackURL: newUserReturn,
         errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
           {
             provider,
-            ...(params.get("return") === "security"
-              ? { return: "security" }
-              : {}),
+            ...carry,
           },
         )}`,
       });

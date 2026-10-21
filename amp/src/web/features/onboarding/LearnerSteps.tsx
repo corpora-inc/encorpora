@@ -5,6 +5,7 @@ import type { AuthSession } from "../../auth";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
 import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
+import { continuationSearch, fundedPath } from "../../lib/funded-entry";
 import { clearStoredTrial, storedTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
@@ -32,6 +33,7 @@ export function LearnerSteps({
 }) {
   const navigate = useNavigate(),
     location = useLocation();
+  const search = continuationSearch(location.search);
   const draft = useDraft(),
     mine = draft.owner === session.accountId;
   const name = mine ? draft.name : "";
@@ -47,6 +49,7 @@ export function LearnerSteps({
     setTrial(null);
   };
   const firstRun = me.next !== "practice";
+  const funded = search.return === "arkansas-efa";
   const purchase = me.unassignedPurchase;
   const waiting = me.learners.filter((learner) => !learner.entitlement.active);
   useEffect(() => {
@@ -54,17 +57,21 @@ export function LearnerSteps({
   }, [session.accountId]);
   useEffect(() => {
     if (location.pathname === "/start/birth-year" && !name.trim())
-      void navigate({ to: "/start/name", replace: true });
+      void navigate({ to: "/start/name", search, replace: true });
   }, [location.pathname, name]);
   const busy =
     create.isPending || claim.isPending || correct.isPending || adopt.isPending;
   const practice = (learnerId: string) => {
     useLearnerStore.getState().select(learnerId);
     draft.clear();
-    void navigate({ to: "/$", params: { _splat: "practice" }, replace: true });
+    void navigate(
+      search.return === "arkansas-efa"
+        ? { to: fundedPath, search, replace: true }
+        : { to: "/$", params: { _splat: "practice" }, replace: true },
+    );
   };
   const assign = (learnerId: string) =>
-    purchase
+    purchase && search.return !== "arkansas-efa"
       ? claim.mutate(
           { purchaseId: purchase.id, learnerId },
           { onSuccess: () => practice(learnerId) },
@@ -99,14 +106,21 @@ export function LearnerSteps({
             header: (
               <>
                 <FrameBrand expanded />
-                {firstRun && <Progress step={4} />}
+                {funded ? (
+                  <div className={styles.progress}>
+                    <span>Starting point</span>
+                    <span>Step 2 of 2</span>
+                  </div>
+                ) : (
+                  firstRun && <Progress step={4} />
+                )}
               </>
             ),
           }}
           name={name.trim()}
           birthYear={mine ? draft.year : null}
           busy={busy}
-          cancel={() => void navigate({ to: "/start/name" })}
+          cancel={() => void navigate({ to: "/start/name", search })}
           saveBirthYear={(year) => {
             claim.reset();
             create.reset();
@@ -162,7 +176,7 @@ export function LearnerSteps({
     <section className={`${frameCard} ${styles.step}`}>
       <FrameBrand expanded />
       {toast}
-      {firstRun ? (
+      {firstRun && !funded ? (
         <Progress step={3} />
       ) : (
         <div className={styles.progress}>
@@ -198,7 +212,7 @@ export function LearnerSteps({
         onSubmit={(event) => {
           event.preventDefault();
           if (!name.trim()) return;
-          if (!trial) return void navigate({ to: "/start/birth-year" });
+          if (!trial) return void navigate({ to: "/start/birth-year", search });
           // Saved before a failed claim: claim again, never adopt twice.
           if (mine && draft.learnerId) return assign(draft.learnerId);
           claim.reset();
