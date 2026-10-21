@@ -1,4 +1,9 @@
 import {
+  DEFAULT_PRACTICE_POLICY,
+  assertPracticePolicy,
+  type PracticePolicy,
+} from "../learning/practice-policy.js";
+import {
   selectNextCandidate,
   type SelectionTrace,
 } from "../learning/selection-policy.js";
@@ -10,13 +15,15 @@ import {
   gradeNumber,
   initialLevel,
   strandEstimate,
-  targetGrade,
   type Frontier,
 } from "../learning/frontier";
-import { projectSkillEvidence, type SkillEvidence } from "./evidence.js";
+import {
+  RETRIEVAL_INTERVALS,
+  projectSkillEvidence,
+  type SkillEvidence,
+} from "./evidence.js";
 import { guessChance } from "../math/guess-chance";
 import {
-  PLACEMENT_ATTEMPTS,
   openerCandidates,
   templateRole,
   type OpenerSlots,
@@ -38,41 +45,13 @@ type SkillNode = {
   strand: string;
   gradeBand?: GradeBand;
 };
-const DAY = 86400000;
 
 /** Variety over the served sequence (answered problems, then this batch).
  * A template never repeats back to back and appears at most `templateMax`
  * times in any `templateWindow` problems, unless nothing else is eligible.
  * A skill returns only after other work, with gentler penalties as it ages;
  * a strand that filled the last few problems yields to the others. */
-export const VARIETY = {
-  templateWindow: 10,
-  templateMax: 2,
-  /** Points against a template served g problems ago: fades to 0 at 13. */
-  templateFade: 12,
-  templatePenalty: 60,
-  /** Points against a skill served g problems ago (index g; g = 1 is the
-   * immediately previous problem). */
-  skillPenalty: [0, 200, 90, 60, 40, 25, 12],
-  strandWindow: 4,
-  strandPenalty: 20,
-  /** Answers older than this belong to an earlier session: they no longer
-   * count against variety, so yesterday's practice can return today. */
-  sessionMs: 3 * 3600000,
-  /** A skipped template stays out for the rest of the session, unless
-   * nothing else is eligible. */
-  skipPenalty: 150,
-  /** The next problems after a skip prefer work this many grades below the
-   * learner's level: inside the session only, never in the persisted
-   * estimate. */
-  skipEase: 0.75,
-  /** Points per grade above that eased aim. */
-  skipEaseWeight: 90,
-  skipEaseProblems: 2,
-  /** The skipped skill returns, in another template, once this many
-   * problems have passed. */
-  skipReturnAfter: 4,
-} as const;
+export const VARIETY = DEFAULT_PRACTICE_POLICY.variety;
 type Served = {
   templateId: string;
   skillId: string;
@@ -112,12 +91,12 @@ export function reviewDueAt(attempts: readonly Outcome[]): number | null {
     if (!attempt.correct || attempt.assisted) {
       successes = 0;
       creditedAt = -Infinity;
-    } else if (at - creditedAt >= DAY / 4) {
+    } else if (at - creditedAt >= RETRIEVAL_INTERVALS[1]!) {
       successes++;
       creditedAt = at;
     }
   }
-  const intervals = [0, DAY / 4, DAY, 3 * DAY, 7 * DAY, 14 * DAY, 30 * DAY];
+  const intervals = RETRIEVAL_INTERVALS;
   return (
     Date.parse(last.createdAt) +
     intervals[Math.min(successes, intervals.length - 1)]
@@ -128,11 +107,13 @@ export function reviewDueAt(attempts: readonly Outcome[]): number | null {
  * Each strand aims at its own estimated frontier; due reviews, missed skills
  * and unmet prerequisites take reserved slots. Nothing grants ancestor credit. */
 export function planMixedPractice(options: {
+  /** Compile with createPracticePolicy; immutable and local to this request. */
+  policy?: PracticePolicy;
   templates: readonly TemplateMetadata[];
   skills: readonly SkillNode[];
   attempts: readonly Outcome[];
   evidence: readonly SkillEvidence[];
-  /** Placement estimate; without one, the recent attempts start from grade 1. */
+  /** Placement estimate; absent one, replay recent attempts from the default prior. */
   frontier?: Frontier;
   count: number;
   seed: string;
@@ -149,6 +130,9 @@ export function planMixedPractice(options: {
   openers?: OpenerSlots;
 }): PracticeChoice[] {
   const { templates, skills, evidence, seed } = options;
+  const policy = options.policy ?? DEFAULT_PRACTICE_POLICY;
+  assertPracticePolicy(policy);
+  const { scoring, support, variety } = policy;
   if (!templates.length) throw new Error("No active templates");
   if (
     !Number.isInteger(options.count) ||
@@ -193,7 +177,12 @@ export function planMixedPractice(options: {
     );
   }
   const targetOf = (strand: string) => {
-    const level = targetGrade(strandEstimate(frontier, strand));
+    const estimate = strandEstimate(frontier, strand);
+    const level =
+      estimate.level +
+      policy.target.levelOffset +
+      policy.target.uncertaintyWeight * estimate.sd;
+    if (!policy.target.clampToAvailable) return level;
     const floor = strandFloor.get(strand)!;
     const ceiling = strandCeiling.get(strand)!;
     if (level > ceiling) return ceiling;
@@ -203,7 +192,7 @@ export function planMixedPractice(options: {
   // the learner is placed. The first answers follow the scripted openers.
   const answered = frontier.overall.answered;
   const pool =
-    answered < PLACEMENT_ATTEMPTS
+    answered < policy.placement.assessmentOnlyAttempts
       ? templates.filter(
           (template) => templateRole(template.id) === "assessment",
         )
@@ -217,12 +206,18 @@ export function planMixedPractice(options: {
   const latest = attempts.at(-1);
   const remediation = new Set<string>();
   const implemented = new Set(templates.map((template) => template.skillId));
-  // A prerequisite answered independently twice in a row has been shown for
-  // now: it leaves remediation (no mastery credit) instead of looping until
+  // A configured streak of independent successes demonstrates a prerequisite
+  // for this scheduling decision: it leaves remediation (no mastery credit) instead of looping until
   // it is review-ready.
   const demonstrated = (skillId: string) => {
-    const recent = stats.get(skillId)?.recentOutcomes.slice(-2) ?? [];
-    return recent.length === 2 && recent.every((a) => a.correct && !a.assisted);
+    const recent =
+      stats
+        .get(skillId)
+        ?.recentOutcomes.slice(-support.demonstratedSuccesses) ?? [];
+    return (
+      recent.length === support.demonstratedSuccesses &&
+      recent.every((a) => a.correct && !a.assisted)
+    );
   };
   // Cross catalog gaps to the nearest teachable ancestors on each branch.
   // A visited set also bounds malformed/cyclic input without manufacturing credit.
@@ -239,14 +234,14 @@ export function planMixedPractice(options: {
       else collectPrerequisites(prerequisite, visited);
     }
   }
-  // Only repeated trouble sends a learner down the graph; one slip is revisited.
+  // The configured error window and threshold determine prerequisite repair.
   for (const entry of stats.values()) {
     const misses = entry.recentOutcomes
-      .slice(-2)
+      .slice(-support.errorWindow)
       .filter((attempt) => !attempt.correct || attempt.assisted).length;
-    if (misses >= 2) collectPrerequisites(entry.skillId);
+    if (misses >= support.errorsToRepair) collectPrerequisites(entry.skillId);
   }
-  const inSession = (at: string) => now - Date.parse(at) < VARIETY.sessionMs;
+  const inSession = (at: string) => now - Date.parse(at) < variety.sessionMs;
   // Answers and skips in the order they happened.
   const session: (Served & { at: number })[] = [
     ...attempts
@@ -275,7 +270,7 @@ export function planMixedPractice(options: {
       expectedGrade: frontier.expected,
       position: answered + slot,
       learnerKey: options.learnerKey ?? seed,
-      slots: options.openers,
+      slots: policy.placement.scriptedOpeners ? options.openers : [],
     })
       .map((id) => pool.find((template) => template.id === id))
       .find(
@@ -307,14 +302,14 @@ export function planMixedPractice(options: {
     const byTemplate = recency(
       history,
       (s) => s.templateId,
-      VARIETY.templateWindow - 1,
+      variety.templateWindow - 1,
     );
     const bySkill = recency(history, (s) => s.skillId, 0);
     // After a skip, the next problems step slightly easier.
     const lastSkip = history.map((s) => !!s.skip).lastIndexOf(true);
     const ease =
-      lastSkip >= 0 && history.length - lastSkip <= VARIETY.skipEaseProblems
-        ? VARIETY.skipEase
+      lastSkip >= 0 && history.length - lastSkip <= variety.skipEaseProblems
+        ? variety.skipEase
         : 0;
     // A skipped skill comes back after other work, through another template.
     const requeued = new Set(
@@ -323,16 +318,16 @@ export function planMixedPractice(options: {
         .filter(
           (s) =>
             s.skip &&
-            s.gap >= VARIETY.skipReturnAfter &&
+            s.gap >= variety.skipReturnAfter &&
             !history
               .slice(s.i + 1)
               .some((later) => later.skillId === s.skillId),
         )
         .map((s) => s.skillId),
     );
-    const byStrand = recency(history, (s) => s.strand, VARIETY.strandWindow);
-    // Support (a prerequisite, a revisit, a due review) alternates with new
-    // work: after a support problem the next slot is not reserved for one.
+    const byStrand = recency(history, (s) => s.strand, variety.strandWindow);
+    // With alternation enabled, support (repair/revisit/review) yields the next
+    // reservation to new work.
     const previousOutcomes = lastSkill
       ? (stats.get(lastSkill)?.recentOutcomes ?? [])
       : [];
@@ -358,13 +353,13 @@ export function planMixedPractice(options: {
       // Support returns only within reach: a miss above the lowered frontier
       // is evidence about the frontier, not a skill to repeat yet.
       const distance = grade - target;
-      const reachable = distance <= 1;
+      const reachable = distance <= support.prerequisiteReach;
       const reason: PracticeReason =
         remediation.has(template.skillId) && reachable
           ? "prerequisite"
-          : returningError && distance <= 0.25
+          : returningError && distance <= support.revisitReach
             ? "revisit"
-            : overdue && distance <= 0.5
+            : overdue && distance <= support.reviewReach
               ? "review"
               : state
                 ? "frontier"
@@ -372,54 +367,72 @@ export function planMixedPractice(options: {
       // Aim at the frontier: work far below it teaches little, and work well
       // beyond it cannot be done yet.
       let score =
-        100 -
-        Math.abs(distance) * 30 -
-        (distance > 1 ? (distance - 1) * 120 : 0) -
-        (distance < -1.5 ? (-distance - 1.5) * 40 : 0);
-      if (reason === "prerequisite") score = Math.max(score, 85) + 20;
-      if (reason === "revisit") score = Math.max(score, 70) + 15;
-      if (reason === "review") score = Math.max(score, 60) + 10;
-      if (state?.status === "review-ready" && !overdue) score -= 60;
-      if (!state && Math.abs(distance) <= 1) score += 12;
+        scoring.base -
+        Math.abs(distance) * scoring.distancePenalty -
+        (distance > scoring.harderBoundary
+          ? (distance - scoring.harderBoundary) * scoring.harderPenalty
+          : 0) -
+        (distance < -scoring.easierBoundary
+          ? (-distance - scoring.easierBoundary) * scoring.easierPenalty
+          : 0);
+      if (reason === "prerequisite")
+        score =
+          Math.max(score, scoring.prerequisite.floor) +
+          scoring.prerequisite.bonus;
+      if (reason === "revisit")
+        score = Math.max(score, scoring.revisit.floor) + scoring.revisit.bonus;
+      if (reason === "review")
+        score = Math.max(score, scoring.review.floor) + scoring.review.bonus;
+      if (state?.status === "review-ready" && !overdue)
+        score -= scoring.notDuePenalty;
+      if (!state && Math.abs(distance) <= scoring.nearbyRadius)
+        score += scoring.unseenBonus;
       // Seek information where the estimate is least certain, and lean into
       // strands below the level expected for the learner's age.
       const estimate = strandEstimate(frontier, strand);
-      if (Math.abs(distance) <= 1) {
-        score += 14 * estimate.sd;
+      if (Math.abs(distance) <= scoring.nearbyRadius) {
+        score += scoring.uncertaintyWeight * estimate.sd;
         score +=
-          10 * Math.max(0, Math.min(2, frontier.expected - estimate.level));
+          scoring.ageGapWeight *
+          Math.max(
+            0,
+            Math.min(scoring.ageGapCap, frontier.expected - estimate.level),
+          );
       }
       // Interleave: a miss returns after other work, never as an instant
       // loop, and a template that was just seen waits longest of all.
       const templateGap = byTemplate.gap(template.id);
       let familyAdjustment = 0;
-      if (templateGap <= VARIETY.templateFade)
+      if (templateGap <= variety.templateFade)
         familyAdjustment -=
-          (VARIETY.templatePenalty * (VARIETY.templateFade + 1 - templateGap)) /
-          VARIETY.templateFade;
-      score -= VARIETY.skillPenalty[bySkill.gap(template.skillId)] ?? 0;
+          (variety.templatePenalty * (variety.templateFade + 1 - templateGap)) /
+          variety.templateFade;
+      score -= variety.skillPenalty[bySkill.gap(template.skillId)] ?? 0;
       if (skippedTemplates.has(template.id))
-        familyAdjustment -= VARIETY.skipPenalty;
+        familyAdjustment -= variety.skipPenalty;
       // Just after a skip, prefer work a little below the learner's level.
-      if (ease) score -= VARIETY.skipEaseWeight * Math.max(0, distance + ease);
-      if (strand === lastStrand) score -= 45;
-      score -= VARIETY.strandPenalty * byStrand.count(strand);
+      if (ease) score -= variety.skipEaseWeight * Math.max(0, distance + ease);
+      if (strand === lastStrand) score -= scoring.sameStrandPenalty;
+      score -= variety.strandPenalty * byStrand.count(strand);
       score -=
         chosen.filter((entry) => entry.template.skillId === template.skillId)
-          .length * 150;
-      score -= chosen.filter((entry) => entry.strand === strand).length * 120;
+          .length * scoring.batchSkillPenalty;
+      score -=
+        chosen.filter((entry) => entry.strand === strand).length *
+        scoring.batchStrandPenalty;
       return {
         template,
         reason,
         strand,
         score,
         familyScore: score + familyAdjustment,
-        poolEligible: grade <= target + 1 || reason === "prerequisite",
+        poolEligible:
+          grade <= target + scoring.poolReach || reason === "prerequisite",
         support: ["prerequisite", "revisit", "review"].includes(reason),
         fresh:
-          templateGap > 1 &&
-          byTemplate.count(template.id) < VARIETY.templateMax &&
-          !skippedTemplates.has(template.id),
+          templateGap > variety.minimumTemplateGap &&
+          byTemplate.count(template.id) < variety.templateMax &&
+          (!variety.excludeSkipped || !skippedTemplates.has(template.id)),
         skillGap: bySkill.gap(template.skillId),
       };
     });
@@ -427,29 +440,34 @@ export function planMixedPractice(options: {
       ? candidates.filter((entry) => entry.poolEligible)
       : candidates;
     if (!ceilinged.length) break;
-    // Variety is a rule, not a weight, whenever another problem can be asked.
-    const varied = ceilinged.filter((entry) => entry.fresh);
+    // When enabled, freshness is a rule whenever another problem can be asked.
+    const varied = variety.enforceFreshness
+      ? ceilinged.filter((entry) => entry.fresh)
+      : [];
     const eligible = varied.length ? varied : ceilinged;
     // Reserve one support/retrieval slot per batch so variety cannot starve a
     // gap or a due review; immediate repetitions wait for intervening work.
     const reserved =
-      !lastWasSupport &&
+      support.reserveSlot &&
+      (!support.alternate || !lastWasSupport) &&
       !chosen.some((entry) =>
         ["prerequisite", "revisit", "review"].includes(entry.reason),
       )
         ? eligible.filter(
             (entry) =>
               entry.support &&
-              entry.skillGap > 2 &&
+              entry.skillGap > support.minimumSkillGap &&
               !chosen.some(
                 (choice) => choice.template.skillId === entry.template.skillId,
               ),
           )
         : [];
-    const support = reserved.length > 0;
+    const reservedSupport = reserved.length > 0;
     const { candidate, trace } = selectNextCandidate(
-      support ? reserved : eligible,
+      reservedSupport ? reserved : eligible,
       `${seed}:${slot}`,
+      undefined,
+      policy,
     );
     const { template, reason, strand } = candidate;
     chosen.push({
@@ -458,7 +476,7 @@ export function planMixedPractice(options: {
       strand,
       selection: {
         ...trace,
-        mode: support ? "support" : "adaptive",
+        mode: reservedSupport ? "support" : "adaptive",
       },
     });
   }

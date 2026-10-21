@@ -220,9 +220,9 @@ small diverse sequence without pretending unobserved answers succeeded. On
 reconnect, reconcile attempts before planning further. The best second problem
 often depends on the first response; a batch is a contingency-limited plan.
 
-## Exact production allocation
+## Default production allocation
 
-The existing planner supplies a utility score `u` after frontier and recency
+With the default policy, the planner supplies a utility score `u` after frontier and recency
 adjustments. It first applies client/placement eligibility, freshness rules and
 support reservations. Let `b` be the greatest score in that remaining pool.
 Candidates with `u < b - 24` are excluded. The window prevents curriculum
@@ -290,3 +290,78 @@ realized instance features; improve local prerequisite diagnosis; estimate bound
 goal-aware unlock value; and test outcome-informed policy adjustments. Each
 increment should retain an explainable fallback and pass invariance tests before
 it controls practice.
+
+## Configuring a selection hypothesis
+
+`src/learning/practice-policy.ts` defines the JSON-compatible parameter schema
+and `DEFAULT_PRACTICE_POLICY`. `createPracticePolicy` validates and copies an
+input, rejects unknown fields and weight IDs, computes a canonical SHA-256
+fingerprint, and deeply freezes the result. Compile once per experiment or
+service, then pass that object to each planning call. There is no global setter.
+
+```ts
+import {
+  createPracticePolicy,
+  practiceParameters,
+} from "../src/learning/practice-policy.js";
+import { planMixedPractice } from "../src/server/mixed-practice.js";
+
+const parameters = practiceParameters(); // Independent mutable copy of defaults.
+parameters.version = "uncertainty-probe-1";
+parameters.scoring.uncertaintyWeight = 20;
+parameters.sampling.temperature = 18;
+parameters.weights.objectives["fraction-operations"] = 8;
+const policy = createPracticePolicy(parameters);
+const choices = planMixedPractice({ ...learnerSnapshot, policy });
+```
+
+`learnerSnapshot` supplies the catalog, learner evidence, frontier, seed, time
+and requested batch size. For a file-backed or calculated policy, pass the parsed
+JSON or computed object to the same compiler. Parameter names and units are
+explicit: score coefficients are utility points, distances use the curriculum
+grade axis, windows/gaps count problems, and `sessionMs` uses milliseconds.
+
+| Parameter group | Controls |
+| --- | --- |
+| `sampling` | Competitive utility window and sampling temperature |
+| `target` | Offset from estimated level, uncertainty contribution, clamping to available material |
+| `placement` | Assessment-only duration and whether scripted openers run |
+| `support` | Error window and threshold, demonstrated prerequisite successes, reachable distances, support reservation and alternation |
+| `scoring` | Difficulty-distance penalties, support floors/bonuses, review/novelty/uncertainty/age-gap adjustments, batch penalties and offline reach |
+| `variety` | Freshness, template/skill/strand repetition, session duration, skip easing and return timing |
+| `weights` | Objective, skill and family weights; omitted skill/family entries have weight 1; omitted objectives use the catalog's importance |
+
+Use `buildApp({ ...options, practicePolicy: policy })` for online practice and
+`registerOfflineRoutes(app, { ...options, practicePolicy: policy })` for offline
+issuance. Pass the **same** compiled object to both when a service runs an
+experiment. `OfflineRepository` also accepts it as its third constructor argument.
+These are trusted service inputs; learners cannot submit a policy in an API
+request. A simulation with a different catalog can provide explicit objective,
+skill and family IDs as the compiler's second argument.
+
+Adaptive decision traces include algorithm version, policy label, policy
+fingerprint and curriculum version. The fingerprint includes every parameter,
+even if two hypotheses reuse the same label; JSON key order does not affect it.
+Save the source policy JSON, catalog/content revisions, learner snapshot, time
+and seeds alongside results. A hash identifies configuration but cannot restore
+it. Low-level allocator tests may supply a custom `budgetOf` function; that
+function is a separate input and is not represented by the policy fingerprint.
+Scripted openers and user-selected drills bypass weighted selection and do not
+produce its probability trace. Decision traces are not durably stored yet.
+
+Selection policy deliberately does not rewrite evidence. `frontier` and `evidence`
+are independent planner inputs, so estimator hypotheses can be compared using
+explicitly rebuilt inputs. Production frontier inference, mastery/retrieval
+projection and grade/content mappings keep their own model semantics. Their
+constants are not controls on this selection policy: changing persisted evidence
+semantics needs a versioned rebuild. API limits, mathematical constants, RNG
+precision and numeric safety bounds are also not learning-policy knobs.
+
+For a paired comparison, hold starting learners, catalog, clock and response
+randomness fixed, change one policy component, and record both configurations.
+Then compare gap detection, review service, challenge fit and diversity before
+measuring delayed learning outcomes. The default-equivalence fixture pins
+problem choices, reasons, utilities and probabilities across 80 fixed runs
+against the implementation before parameter extraction. Policy injection tests
+verify altered weights, temperature, targeting and repair, plus isolation between
+runs. No default selection values change when this configuration layer is used.
