@@ -1,7 +1,7 @@
 /**
- * Scene timelines in a real browser: the two flagship walkthroughs in a
- * lesson (revealed) and in a hint (the learner's own masked scene and its
- * cue), at 320, 390, 768 and 1280 px in light and dark.
+ * Scene timelines in a real browser: manual lesson/hint walkthroughs and
+ * short looping circle and single-step hints, at 320, 390, 768 and 1280 px
+ * in light and dark. Hints use the learner's own masked scene and cue.
  *
  *   npx tsx scripts/verify-scene-player-ui.ts   screenshots in artifacts/scene-player/
  *   npx tsx scripts/verify-scene-player-ui.ts complete-square-solutions ...
@@ -9,7 +9,7 @@
  *       ("complete-square-term@seed" picks the lesson's example seed)
  *
  * Fails on horizontal overflow, a panel that changes size between steps,
- * controls under 44 px, playback that does not finish, or a reduced-motion
+ * controls under 44 px, broken manual or looping playback, or a reduced-motion
  * view that is not the final frame with every caption.
  */
 import assert from "node:assert/strict";
@@ -47,6 +47,24 @@ const hints = ["add-within-20", "tens-contribution"].map((id, i) => {
       };
   }
 });
+// The circle hint is the short explanation used during coordinate practice.
+const circleHint = (() => {
+  for (let i = 0; i < 100; i++) {
+    const p = generateProblem("circle-equation", `short-circle-${i}`);
+    if (
+      p.public.figure?.kind === "scene" &&
+      p.public.figure.scene.steps?.length === 2
+    )
+      return {
+        id: p.public.id,
+        figure: p.public.figure,
+        cue: p.hintCue ?? null,
+      };
+  }
+  throw new Error("No two-step circle fixture");
+})();
+hints.push(circleHint);
+hints.push({ ...circleHint, cue: circleHint.figure.scene.steps!.slice(0, 1) });
 const entry = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
@@ -112,6 +130,8 @@ const views: (readonly ["lesson" | "hint", number, string])[] = only.length
       ["lesson", 1, "lesson-area"],
       ["hint", 0, "hint-add"],
       ["hint", 1, "hint-area"],
+      ["hint", 2, "hint-circle"],
+      ["hint", 3, "hint-single"],
     ];
 try {
   for (const theme of ["light", "dark"])
@@ -120,6 +140,21 @@ try {
         const tag = `${name} ${theme} ${width}`;
         const page = await browser.newPage({
           viewport: { width, height: 1000 },
+        });
+        await page.addInitScript(() => {
+          // Exercise real timing/RAF with brief holds so repeats stay fast.
+          document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+              for (const name of [
+                "--motion-step",
+                "--motion-trace",
+                "--motion-hold",
+              ])
+                document.documentElement.style.setProperty(name, "80ms");
+            },
+            { once: true },
+          );
         });
         page.on("pageerror", (e) => failures.push(`${tag}: ${e.message}`));
         page.on(
@@ -153,12 +188,103 @@ try {
             path: new URL(`${name}-${theme}-${width}-start.png`, out).pathname,
           });
         // Step through with Next: the panel keeps its size at every step.
-        const count = Number(
-          (await panel
-            .locator(".scene-player-count")
-            .first()
-            .textContent())!.split("/")[1],
-        );
+        const count = Number(await panel.getAttribute("data-step-count"));
+        if ((await panel.getAttribute("data-playback")) === "loop") {
+          assert.equal(
+            await panel.locator(".scene-player-prose li").count(),
+            count,
+          );
+          assert.equal(
+            await panel
+              .locator(".scene-player-count, .scene-player-controls")
+              .count(),
+            0,
+          );
+          assert.equal(await panel.locator("button").count(), 1);
+          assert.equal(await panel.locator("button").innerText(), "");
+          // It starts and repeats without a click, even with a single step.
+          await page.waitForFunction(
+            () =>
+              Number(
+                document
+                  .querySelector(".scene-player")
+                  ?.getAttribute("data-cycle"),
+              ) > 0,
+          );
+          assert.equal(await box(), initial, `${tag}: stable looping prose`);
+          await panel.getByRole("button", { name: "Pause animation" }).click();
+          const replay = panel.getByRole("button", {
+            name: "Replay animation",
+          });
+          await replay.waitFor();
+          const paused = await panel.getAttribute("data-cycle");
+          const drawing = await panel.locator(".scene-figure").innerHTML();
+          await page.waitForTimeout(180);
+          assert.equal(await panel.getAttribute("data-cycle"), paused);
+          assert.equal(
+            await panel.locator(".scene-figure").innerHTML(),
+            drawing,
+            `${tag}: pause freezes the diagram`,
+          );
+          assert.equal(
+            await panel.locator('li[aria-current="step"]').count(),
+            1,
+          );
+          assert.equal(
+            await panel
+              .locator('li[aria-current="step"]')
+              .evaluate((el) => [...el.parentElement!.children].indexOf(el)),
+            Number(await panel.getAttribute("data-step")),
+          );
+          await panel.screenshot({
+            path: new URL(`${name}-${theme}-${width}-step.png`, out).pathname,
+          });
+          await replay.click();
+          await page.waitForFunction(
+            (previous) =>
+              Number(
+                document
+                  .querySelector(".scene-player")
+                  ?.getAttribute("data-cycle"),
+              ) >
+              previous + 1,
+            Number(paused),
+          );
+          if (width === 390) {
+            await page.evaluate(() => {
+              document.body.style.paddingBottom = "2000px";
+              scrollTo(0, document.body.scrollHeight);
+            });
+            await page.waitForTimeout(100);
+            const offscreen = await panel.getAttribute("data-cycle");
+            await page.waitForTimeout(500);
+            assert.equal(
+              await panel.getAttribute("data-cycle"),
+              offscreen,
+              `${tag}: offscreen playback pauses`,
+            );
+            await panel.scrollIntoViewIfNeeded();
+            await page.waitForFunction(
+              (previous) =>
+                Number(
+                  document
+                    .querySelector(".scene-player")
+                    ?.getAttribute("data-cycle"),
+                ) > previous,
+              Number(offscreen),
+            );
+            await page.emulateMedia({ reducedMotion: "reduce" });
+            await panel.locator(".scene-player-all").waitFor();
+            assert.equal(await panel.locator("button").count(), 0);
+            assert.equal(await panel.getAttribute("data-done"), "true");
+            assert.equal(
+              await panel.locator(".scene-player-all li").count(),
+              count,
+            );
+          }
+          await page.close();
+          continue;
+        }
         for (let s = 0; s < count; s++) {
           await panel.getByRole("button", { name: "Next" }).click();
           if ((await box()) !== initial)

@@ -34,10 +34,10 @@ function motion() {
 }
 
 /**
- * Steps over a scene: Back, Play (Pause, Replay) and Next, one caption per
- * step. The stage and the tallest caption are reserved before the first
- * frame, so stepping never moves the page. Under reduced motion it shows the
- * final frame and every caption in order.
+ * Short scenes play and loop with their prose highlighted in place. Longer
+ * walkthroughs have manual stepping. The stage and captions reserve their
+ * space so playback never moves the page. Reduced motion shows the final
+ * frame and every caption without autoplay.
  *
  * `mode="hint"` plays the learner's own scene, masked, and stops before
  * lesson-only steps. `cue` (a hint's figure cue) replaces the scene's steps;
@@ -77,12 +77,16 @@ export function ScenePlayer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
   const last = steps.length - 1;
+  const short = steps.length > 0 && steps.length <= 2;
   const [reduced, setReduced] = useState(
     () => window.matchMedia(reducedQuery).matches,
   );
   const [step, setStep] = useState(0);
   const [progress, setProgress] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [cycle, setCycle] = useState(0);
+  const [inView, setInView] = useState(false);
+  const panel = useRef<HTMLElement>(null);
   const raf = useRef(0);
   useEffect(() => {
     const media = window.matchMedia(reducedQuery);
@@ -93,15 +97,26 @@ export function ScenePlayer({
     media.addEventListener("change", change);
     return () => media.removeEventListener("change", change);
   }, []);
+  // Do not animate diagrams outside the visible lesson or hint.
+  useEffect(() => {
+    const element = panel.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry?.isIntersecting ?? false);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [key]);
   // A new scene or cue starts over.
   useEffect(() => {
     setStep(0);
     setProgress(0);
-    setPlaying(false);
-  }, [key]);
-  // One loop: run the step, hold on its result, then continue while playing.
+    setCycle(0);
+    setPlaying(short && !reduced);
+  }, [key, short, reduced]);
+  // Run each step and hold its result; short scenes pause briefly then repeat.
   useEffect(() => {
-    if (!playing || reduced) return;
+    if (!playing || reduced || !inView) return;
     const m = motion();
     const traced = steps[step]?.actions.some((a) => a.do === "trace");
     const duration = Math.max(1, traced ? m.trace : m.step);
@@ -111,12 +126,13 @@ export function ScenePlayer({
       const t = Math.min(1, (now - start) / duration);
       setProgress(t);
       if (t < 1) raf.current = requestAnimationFrame(tick);
-      else if (step >= last) setPlaying(false);
+      else if (step >= last && !short) setPlaying(false);
       else {
         holdUntil ||= now + m.hold * (steps[step]?.hold ?? 1);
         if (now >= holdUntil) {
-          setStep(step + 1);
+          setStep(step >= last ? 0 : step + 1);
           setProgress(0);
+          if (step >= last) setCycle((value) => value + 1);
         } else raf.current = requestAnimationFrame(tick);
       }
     };
@@ -124,7 +140,7 @@ export function ScenePlayer({
     return () => cancelAnimationFrame(raf.current);
     // Progress is read once at the start of each run.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playing, reduced, step, key]);
+  }, [playing, reduced, inView, step, key, cycle]);
   const shown = reduced ? last : step;
   const description = useMemo(() => {
     const settled = frameAt(layout, steps, shown, 1, entrances);
@@ -145,9 +161,13 @@ export function ScenePlayer({
   const atStart = step === 0 && progress === 0;
   return (
     <section
+      ref={panel}
       className="scene-player"
       aria-label={label}
       data-mode={mode}
+      data-playback={short ? "loop" : "manual"}
+      data-step-count={steps.length}
+      data-cycle={cycle}
       data-step={shown}
       data-done={reduced || done ? "true" : "false"}
     >
@@ -160,6 +180,52 @@ export function ScenePlayer({
             </li>
           ))}
         </ol>
+      ) : short ? (
+        <div className="scene-player-story">
+          <ol className="scene-player-prose">
+            {steps.map((s, i) => (
+              <li key={i} aria-current={i === step ? "step" : undefined}>
+                <MathText text={captionText(layout, s.caption)} />
+              </li>
+            ))}
+          </ol>
+          <button
+            type="button"
+            className="scene-player-toggle"
+            aria-label={playing ? "Pause animation" : "Replay animation"}
+            title={playing ? "Pause animation" : "Replay animation"}
+            onClick={() => {
+              if (playing) setPlaying(false);
+              else {
+                setStep(0);
+                setProgress(0);
+                setCycle((value) => value + 1);
+                setPlaying(true);
+              }
+            }}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {playing ? (
+                <path d="M9 5v14M15 5v14" />
+              ) : (
+                <>
+                  <path d="M3 10a9 9 0 1 1 2.7 8.4" />
+                  <path d="M3 4v6h6" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       ) : (
         <>
           <div
@@ -174,7 +240,7 @@ export function ScenePlayer({
                 style={{ visibility: i === step ? "visible" : "hidden" }}
               >
                 <span className="scene-player-count">
-                  {i + 1}/{steps.length}
+                  Step {i + 1} of {steps.length}
                 </span>{" "}
                 <MathText text={captionText(layout, s.caption)} />
               </p>
