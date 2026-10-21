@@ -162,10 +162,15 @@ async function measureStack(page: Page, label: string) {
       `${label}: ${order[i]} is ${box.height}px tall`,
     );
     assert.equal(box.width, boxes[0].width, `${label}: equal widths`);
-    assert.equal(box.x, boxes[0].x, `${label}: one aligned column`);
+    assert.equal(box.x, boxes[i % 2].x, `${label}: aligned columns`);
     assert.equal(box.height, boxes[0].height, `${label}: equal heights`);
     assert.equal(box.clipped, false, `${label}: ${order[i]} label clipped`);
-    if (i) assert.ok(box.y > boxes[i - 1].y, `${label}: stacked`);
+    if (i % 2) assert.equal(box.y, boxes[i - 1].y, `${label}: aligned rows`);
+    if (i >= 2)
+      assert.ok(
+        box.y >= boxes[i - 2].y + boxes[i - 2].height + 7,
+        `${label}: separated touch targets`,
+      );
   }
   return boxes;
 }
@@ -203,7 +208,10 @@ async function checkScreen(
     .waitFor();
   const boxes = await measureStack(page, label);
   assert.equal(
-    (await page.locator("button[data-provider]").first().textContent())?.trim(),
+    await page
+      .locator("button[data-provider]")
+      .first()
+      .getAttribute("aria-label"),
     fill(socialCopyFor(lang).continueWith, "Google"),
     `${label}: copy in the page's language`,
   );

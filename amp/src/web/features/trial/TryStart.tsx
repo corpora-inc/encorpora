@@ -50,7 +50,7 @@ function BirthYear() {
           ),
         }}
         name="the learner"
-        title="Your math pathway starts here"
+        title="Your math pathways start here"
         description="Choose your birth year, and we’ll find your starting point—then adapt as you learn."
         birthYear={null}
         busy={busy}

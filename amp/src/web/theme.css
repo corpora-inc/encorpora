@@ -376,6 +376,45 @@ header {
   );
   color: var(--color-on-surface);
 }
+.feedback-wave {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  width: calc(100% - 32px);
+  height: 18px;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--color-success-accent);
+  stroke-width: 1.4;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .feedback-wave {
+    animation: feedback-wave-fade 800ms ease-out both;
+  }
+  .feedback-wave path {
+    stroke-dasharray: 1;
+    animation: feedback-wave-draw 650ms ease-out both;
+  }
+}
+@keyframes feedback-wave-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes feedback-wave-fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  30%,
+  65% {
+    opacity: 0.65;
+  }
+}
 .feedback.incorrect {
   background: color-mix(in srgb, var(--color-danger) 94%, transparent);
   border-color: color-mix(
@@ -664,13 +703,21 @@ header {
 }
 .year-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, max(3.5rem, calc(25% - 6px))), 1fr)
+  );
   gap: 8px;
   margin-bottom: 8px;
 }
+.year-grid .adult {
+  grid-column: 1 / -1;
+}
 .year-grid button {
+  min-width: 0;
+  white-space: nowrap;
   min-height: 48px;
-  padding: 8px;
+  padding: 8px 4px;
   background: var(--color-surface-sunken);
   color: var(--color-on-surface);
   border: 1px solid var(--color-border);
@@ -697,6 +744,36 @@ header {
 }
 .lesson-sheet {
   max-width: 720px;
+}
+.lesson-library-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.lesson-library-heading h1 {
+  margin: 0;
+  font-size: 28px;
+}
+.lesson-library-heading .premium-select {
+  width: auto;
+  min-width: 180px;
+  flex: 1 1 180px;
+  max-width: 320px;
+}
+.book-list > summary {
+  cursor: pointer;
+  min-height: 44px;
+  align-content: center;
+  color: var(--color-on-surface);
+}
+.book-list > summary h2 {
+  display: inline;
+  margin: 0;
+}
+.book-list[open] > summary {
+  margin-bottom: 12px;
 }
 .lesson-sheet h2 {
   margin: 8px 0 12px;

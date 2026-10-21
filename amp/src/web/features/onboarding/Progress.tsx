@@ -10,7 +10,7 @@ export function Progress({ step }: { step: 1 | 2 | 3 | 4 }) {
     >
       <span aria-hidden="true">{labels[step - 1]}</span>
       <span aria-hidden="true">
-        {step} / {labels.length}
+        Step {step} of {labels.length}
       </span>
     </div>
   );

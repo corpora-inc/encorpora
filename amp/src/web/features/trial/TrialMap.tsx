@@ -13,6 +13,7 @@ import {
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
+import { ShareAssessment } from "./ShareAssessment";
 import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
 import styles from "./Trial.module.css";
 
@@ -84,7 +85,7 @@ function MapView({ session }: { session: TrialSession }) {
           {p.phase === "placement"
             ? `${p.placement - p.totals.answered} placement problems to go. The map sharpens with each answer.`
             : left > 0
-              ? `Placement is done. The next ${left} free problems practice right at this level, with a lesson and a hint on every problem.`
+              ? `Keep exploring your pathways with ${left} free problems, hints, and lessons.`
               : `All ${p.free} free problems are used. Choose a plan to keep going from here.`}
         </p>
         <div className={styles.meterRow}>
@@ -117,6 +118,9 @@ function MapView({ session }: { session: TrialSession }) {
             </Link>
           )}
         </div>
+        {p.phase !== "placement" && (
+          <ShareAssessment level={gradeName(frontier.overall.level)} />
+        )}
       </section>
     </PageFrame>
   );

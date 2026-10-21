@@ -7,7 +7,7 @@ import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
 import { clearStoredTrial, storedTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
-import { frameCard } from "../../ui/PageFrame";
+import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { queryClient, refreshMe } from "../../lib/query";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
@@ -95,7 +95,13 @@ export function LearnerSteps({
         <BirthYearPrompt
           embedded={{
             className: `${frameCard} ${styles.step}`,
-            header: firstRun ? <Progress step={4} /> : undefined,
+            containerClassName: styles.yearContainer,
+            header: (
+              <>
+                <FrameBrand expanded />
+                {firstRun && <Progress step={4} />}
+              </>
+            ),
           }}
           name={name.trim()}
           birthYear={mine ? draft.year : null}
@@ -154,13 +160,14 @@ export function LearnerSteps({
     );
   return (
     <section className={`${frameCard} ${styles.step}`}>
+      <FrameBrand expanded />
       {toast}
       {firstRun ? (
         <Progress step={3} />
       ) : (
         <div className={styles.progress}>
           <span>New learner</span>
-          <span>1 / 2</span>
+          <span>Step 1 of 2</span>
         </div>
       )}
       <h1>{trial ? "Who’s been practicing?" : "Who’s learning?"}</h1>

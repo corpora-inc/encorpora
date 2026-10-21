@@ -1546,57 +1546,64 @@ function LegacyScreen() {
                   void action(() => loadBatch(templateId))
                 }
               />
-              <section
-                className="book-list"
-                aria-labelledby="reference-materials"
-              >
-                <h2 id="reference-materials">Lessons and worksheets</h2>
-                <p>
-                  Open a lesson for its printable workbook and solution key.
-                </p>
-                <ul>
-                  {(catalog?.lessons ?? []).map((reference) => (
-                    <li key={reference.id}>
-                      <button
-                        className="text-button"
-                        data-lesson-id={reference.id}
-                        disabled={busy}
-                        onClick={(event) => {
-                          readerTriggerId.current = reference.id;
-                          libraryScroll.current =
-                            event.currentTarget.closest("main")?.scrollTop ?? 0;
-                          void action(() =>
-                            openReferenceLesson(reference, null),
-                          );
-                        }}
-                      >
-                        {reference.title}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-              <section className="book-list" aria-label="Printable books">
-                <h2>Printable books</h2>
-                <ul>
-                  {books.map((book) => (
-                    <li key={book.id}>
-                      <span>
-                        {book.title}
-                        <small>{book.pages} pages</small>
-                      </span>
-                      <button
-                        className="text-button"
-                        disabled={busy}
-                        data-book-id={book.id}
-                        onClick={() => void action(() => openBook(book.id))}
-                      >
-                        Open book
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+              {!new URLSearchParams(route.location.search).has("topic") && (
+                <>
+                  <details
+                    className="book-list"
+                    aria-labelledby="reference-materials"
+                  >
+                    <summary>
+                      <h2 id="reference-materials">Lessons and worksheets</h2>
+                    </summary>
+                    <p>
+                      Open a lesson for its printable workbook and solution key.
+                    </p>
+                    <ul>
+                      {(catalog?.lessons ?? []).map((reference) => (
+                        <li key={reference.id}>
+                          <button
+                            className="text-button"
+                            data-lesson-id={reference.id}
+                            disabled={busy}
+                            onClick={(event) => {
+                              readerTriggerId.current = reference.id;
+                              libraryScroll.current =
+                                event.currentTarget.closest("main")
+                                  ?.scrollTop ?? 0;
+                              void action(() =>
+                                openReferenceLesson(reference, null),
+                              );
+                            }}
+                          >
+                            {reference.title}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                  <section className="book-list" aria-label="Printable books">
+                    <h2>Printable books</h2>
+                    <ul>
+                      {books.map((book) => (
+                        <li key={book.id}>
+                          <span>
+                            {book.title}
+                            <small>{book.pages} pages</small>
+                          </span>
+                          <button
+                            className="text-button"
+                            disabled={busy}
+                            data-book-id={book.id}
+                            onClick={() => void action(() => openBook(book.id))}
+                          >
+                            Open book
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                </>
+              )}
             </>
           )}
           {readingLesson && (

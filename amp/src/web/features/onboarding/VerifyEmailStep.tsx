@@ -6,7 +6,7 @@ import { AppError } from "../../lib/AppError";
 import type { AuthSession } from "../../auth";
 import { refreshMe } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
-import { frameCard } from "../../ui/PageFrame";
+import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import styles from "./Start.module.css";
 
@@ -49,6 +49,7 @@ export function VerifyEmailStep({
   const busy = confirmation.isPending || verification.isPending;
   return (
     <section className={`${frameCard} ${styles.step}`}>
+      <FrameBrand expanded />
       <Toast
         message={
           verification.error?.message ??

@@ -380,12 +380,19 @@ try {
       await page.getByRole("link", { name: "AMP home" }).waitFor();
       const signUp = await box(page.locator("main section").first());
       const viewport = page.viewportSize()!;
-      if (signUp.height + 48 <= viewport.height)
+      const authInset = await page
+        .locator("main")
+        .evaluate((node) => parseFloat(getComputedStyle(node).paddingTop));
+      if (signUp.height + 2 * authInset <= viewport.height)
         assert.ok(
           Math.abs(signUp.y + signUp.height / 2 - viewport.height / 2) <= 1,
           `${tag}: sign-up card is centered`,
         );
-      else assert.ok(signUp.y >= 24, `${tag}: tall sign-up card keeps padding`);
+      else
+        assert.ok(
+          signUp.y >= authInset,
+          `${tag}: tall sign-up card keeps padding`,
+        );
       await fits(page, `${tag} sign-up`);
       await page.goto(`${origin}/start`);
       await page.waitForURL("**/start/verify-email");
@@ -439,7 +446,12 @@ try {
       const plan = page.getByRole("radiogroup", { name: "Plan" });
       await plan.waitFor();
       const planCard = await box(page.locator("main section").first());
-      assert.equal(planCard.y, verify.y, `${tag}: plan card stays put`);
+      assert.ok(planCard.y >= 24, `${tag}: plan card keeps safe top padding`);
+      if (planCard.height + 48 <= viewport.height)
+        assert.ok(
+          Math.abs(planCard.y + planCard.height / 2 - viewport.height / 2) <= 1,
+          `${tag}: short setup cards are centered`,
+        );
       assert.equal(planCard.x, verify.x, `${tag}: plan card keeps its column`);
       assert.equal(
         await page.getByText("Enrollment is unavailable").count(),

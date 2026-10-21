@@ -7,11 +7,13 @@ export function Dialog({
   onOpenChange,
   title,
   children,
+  onCloseAutoFocus,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   children: ReactNode;
+  onCloseAutoFocus?: (event: Event) => void;
 }) {
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -20,6 +22,7 @@ export function Dialog({
         <RadixDialog.Content
           className={styles.content}
           aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
         >
           <header className={styles.header}>
             <RadixDialog.Title className={styles.title}>

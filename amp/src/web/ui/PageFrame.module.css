@@ -30,6 +30,10 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   text-decoration: none;
+  white-space: nowrap;
+}
+.wordmark {
+  flex: 0 0 auto;
 }
 .brand:hover {
   background: var(--color-surface-sunken);
@@ -46,11 +50,12 @@
   padding: clamp(var(--space-4), 5vh, 56px) var(--space-4) var(--space-6);
 }
 .main .card {
+  container-type: inline-size;
   box-sizing: border-box;
   width: min(100%, var(--width-form));
   max-width: none;
   margin: 0;
-  padding: var(--space-5);
+  padding: var(--frame-card-padding, var(--space-5));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-panel);
   background: var(--color-surface-raised);
@@ -58,7 +63,7 @@
 }
 @media (max-width: 400px) {
   .main .card {
-    padding: var(--space-4);
+    padding: var(--frame-card-padding, var(--space-4));
   }
 }
 /* No bar: the card is centered in the safe area. Auto margins center it and
@@ -68,9 +73,9 @@
   grid-template-rows: minmax(0, 1fr);
 }
 .centered .main {
-  padding: max(var(--space-5), env(safe-area-inset-top))
+  padding: max(var(--frame-inset, var(--space-5)), env(safe-area-inset-top))
     max(var(--space-4), env(safe-area-inset-right))
-    max(var(--space-5), env(safe-area-inset-bottom))
+    max(var(--frame-inset, var(--space-5)), env(safe-area-inset-bottom))
     max(var(--space-4), env(safe-area-inset-left));
 }
 .centered .main > * {
@@ -78,6 +83,8 @@
 }
 .cardBrand {
   justify-self: start;
+  width: max-content;
+  max-width: calc(100% + var(--space-2));
   margin-top: calc(-1 * var(--space-2));
 }
 .brandDivider {
@@ -86,8 +93,24 @@
   color: var(--color-muted-text);
 }
 .brandExpansion {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: normal;
+  text-wrap: balance;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0;
   color: var(--color-muted-text);
+}
+/* At high zoom, let the expansion form its own line; AMP stays intact. */
+@container (max-width: 220px) {
+  .cardBrand {
+    flex-wrap: wrap;
+  }
+  .brandDivider {
+    display: none;
+  }
+  .brandExpansion {
+    flex-basis: 100%;
+  }
 }

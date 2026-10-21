@@ -5,7 +5,7 @@ import type { EnrollmentPhase } from "../../../billing/stripe/enrollment-contrac
 import type { AuthSession } from "../../auth";
 import { AppError } from "../../lib/AppError";
 import { Button, buttonClass } from "../../ui/Button";
-import { frameCard } from "../../ui/PageFrame";
+import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import {
   enrollmentOptions,
@@ -197,6 +197,7 @@ export function PurchaseStep({ session }: { session: AuthSession }) {
       aria-busy={tone[shown] === "busy"}
       data-phase={shown}
     >
+      <FrameBrand expanded />
       <Toast
         message={portal.error?.message ?? ""}
         onDismiss={() => portal.reset()}

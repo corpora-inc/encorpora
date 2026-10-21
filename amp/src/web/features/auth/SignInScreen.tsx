@@ -291,7 +291,7 @@ export function SignInScreen() {
   };
   const showProviders = step === "sign-in" || step === "create";
   return (
-    <PageFrame centered>
+    <PageFrame centered className={styles.authFrame}>
       <section
         className={`card welcome account-sign-in ${frameCard} ${styles.frame}`}
       >

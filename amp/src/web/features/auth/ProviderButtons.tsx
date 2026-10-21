@@ -88,7 +88,7 @@ function Mark({ provider }: { provider: Provider }) {
   );
 }
 
-/** One equal-width stack of provider buttons. Only providers this deployment
+/** Equal-size provider buttons; larger sets use a compact two-column grid. Only providers this deployment
  * has configured are passed in, so no button here is guaranteed to fail. */
 export function ProviderButtons({
   providers,
@@ -106,7 +106,7 @@ export function ProviderButtons({
 }) {
   if (!providers.length) return null;
   return (
-    <div className={styles.stack}>
+    <div className={styles.stack} data-compact={providers.length > 2}>
       {providers.map((provider) => (
         <button
           key={provider}
@@ -119,13 +119,16 @@ export function ProviderButtons({
           disabled={busy}
           aria-busy={pending === provider || undefined}
           data-provider={provider}
+          aria-label={fill(copy.continueWith, providerNames[provider])}
           onClick={() => onSelect(provider)}
         >
           <span className={styles.mark}>
             <Mark provider={provider} />
           </span>
           <span className={styles.label}>
-            {fill(copy.continueWith, providerNames[provider])}
+            {providers.length > 2
+              ? providerNames[provider]
+              : fill(copy.continueWith, providerNames[provider])}
           </span>
         </button>
       ))}
