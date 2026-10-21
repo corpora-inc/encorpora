@@ -21,6 +21,7 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 **Email.** `AMP_MAIL_RESEND_API_KEY` and `AMP_MAIL_FROM` send verification and reset emails.
 - In production without mail, email and password sign-in is off.
 - With mail, new password accounts must confirm their email before signing in.
+- A new parent can instead create the account with a passkey and sign in at once; the email is confirmed later, before consent or purchase ([account security](account-security.md#passkey-sign-up)). Passkey sign-up needs mail (or development) and a domain origin: WebAuthn rejects IP-address origins, so use `localhost`, not `127.0.0.1`, to try it locally.
 - In development, links are printed to the server log.
 
 **Providers.** Each provider is enabled only when all of its settings are present. `/api/v1/auth-config` lists the enabled providers, and the sign-in screens show a button only for those.
@@ -41,7 +42,7 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 - A signed-in parent may link a login that uses a different email.
 - Each provider identity belongs to one account.
 
-**New parents.** A provider sign-up creates the account with the provider's verified email and continues at `/start`, the same guided first run as an email sign-up: no consent, plan or learner step is skipped. A provider that has not verified the email cannot create an account.
+**New parents.** A provider sign-up creates the account with the provider's verified email and continues at `/start`, the same guided first run as an email or passkey sign-up: no consent, plan or learner step is skipped. A provider that has not verified the email cannot create an account.
 
 **Rate limits.** Sign-in attempts are throttled per client. The server uses the client address that `AMP_TRUSTED_PROXIES` resolves and ignores forwarded headers from untrusted peers.
 

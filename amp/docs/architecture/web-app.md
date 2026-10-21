@@ -61,11 +61,11 @@ amp/src/web/
 Add `GET /api/v1/me`. Every guard and every first-run decision reads it:
 
 ```ts
-{ signedIn, account: { id, email, emailVerified },
+{ signedIn, account: { id, email, emailVerified, confirmationRequired },
   consent: { status, method },                       // none | pending | active | withdrawn
   learners: [{ id, name, birthYear, entitlement: { active, plan, endsAt } }],
   trial?: { token, placement },                      // an unsaved anonymous placement
-  next: "verify-email" | "add-learner" | "choose-plan" | "practice" }
+  next: "try" | "add-learner" | "choose-plan" | "practice" }
 ```
 
 **Route guards (`beforeLoad`)** redirect by `next`. The UI never offers an action that `me` says will fail; it shows the step that makes it possible instead. For example:
@@ -74,7 +74,7 @@ Add `GET /api/v1/me`. Every guard and every first-run decision reads it:
 
 ## First run (`/start`)
 
-**Flow:** sign up (or arrive from a saved trial) → verify email (in place, nothing shifts) → **choose a plan** (`/start/plan`: annual or monthly from the server offer, the direct notice and an explicit parent acknowledgement; payment is the verified parental consent, #1087) → Stripe Checkout → **return** (`/start/purchase` polls the verified enrollment phase) → **add your learner** (`/start/name`, then the birth-year picker; no learner profile exists before consent) → the paid enrollment is claimed for that learner → **practice**.
+**Flow:** sign up (or arrive from a saved trial) → free trial → confirm email if the account's address is unconfirmed (a passkey sign-up; in place, nothing shifts) → **choose a plan** (`/start/plan`: annual or monthly from the server offer, the direct notice and an explicit parent acknowledgement; payment is the verified parental consent, #1087) → Stripe Checkout → **return** (`/start/purchase` polls the verified enrollment phase) → **add your learner** (`/start/name`, then the birth-year picker; no learner profile exists before consent) → the paid enrollment is claimed for that learner → **practice**.
 
 One guard (`features/onboarding/guard.ts`) maps `me.next` to the allowed steps for both route `beforeLoad` and the mounted screen. A paid, unassigned purchase makes `next` = `add-learner` until it is claimed.
 

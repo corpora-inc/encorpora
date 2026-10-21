@@ -10,6 +10,24 @@ export async function lockLearningAccount(
     [accountId],
   );
 }
+/** Consent and purchase need an account whose email the parent has
+ * confirmed. A passkey sign-up starts unconfirmed; other identities (OIDC,
+ * development) are confirmed by their issuer. */
+export async function parentAddressConfirmed(
+  client: Pick<PoolClient, "query">,
+  accountId: string,
+): Promise<boolean> {
+  if (!accountId.startsWith("amp|")) return true;
+  const table = await client.query(
+    "SELECT to_regclass('amp_auth_users') IS NOT NULL AS present",
+  );
+  if (!table.rows[0].present) return true;
+  const user = await client.query(
+    'SELECT "emailVerified" FROM amp_auth_users WHERE id=$1 FOR SHARE',
+    [accountId.slice(4)],
+  );
+  return user.rows[0]?.emailVerified === true;
+}
 export async function learningConsentActive(
   client: PoolClient,
   accountId: string,

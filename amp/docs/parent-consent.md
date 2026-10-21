@@ -8,6 +8,12 @@ A parent signs in, reviews the notice and supplies their own email address. The 
 
 The 24-hour delay is a product safeguard, not a statutory minimum or safe harbor. The additional affirmative response is also a product safeguard. Applicable law and the actual deployment's practices require independent assessment before enabling this method.
 
+## Confirmed parent email
+
+Both enrollment methods require an AMP parent account whose email address the parent has confirmed through the emailed link (`amp_auth_users.emailVerified`). `POST /api/v1/consent/requests` and `POST /api/v1/billing/enrollment/checkout` check it inside the account transaction and refuse with `403 email_unconfirmed`, before any consent request or Stripe checkout exists. This is an account-ownership safeguard, not consent evidence: email-plus still verifies its own recipient address and purchase consent still rests on the verified payment.
+
+Accounts created with a password in production, or through a provider, are confirmed when they first sign in. A passkey sign-up starts unconfirmed: the parent can sign in, use the free trial and open Family. `/api/v1/me` reports `account.confirmationRequired`; the first run shows **Confirm your email** in place on the way into the plan, with resend, and continues to the plan once the link is opened.
+
 ## Supported legal boundary
 
 Research checked October 17, 2026 against the amended rule; eCFR displayed Title 16 through October 15. Email-plus is listed only for operators that do not disclose children's personal information within the rule's definition. An ordinary login, checkbox or email-verification flag is not the evidence implemented here. Material changes require renewed notice and consent. [16 CFR 312.5](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.5)

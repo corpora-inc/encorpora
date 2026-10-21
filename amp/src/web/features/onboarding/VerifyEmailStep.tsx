@@ -10,7 +10,8 @@ import { frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import styles from "./Start.module.css";
 
-/** Confirm the parent's address in place: one primary action, nothing shifts. */
+/** Confirm the parent's address on the way into the plan: consent and payment
+ * need it, nothing before them does. One primary action, nothing shifts. */
 export function VerifyEmailStep({
   session,
   me,
@@ -23,7 +24,7 @@ export function VerifyEmailStep({
     mutationFn: async () => {
       const result = await accountClient.sendVerificationEmail({
         email,
-        callbackURL: "/start",
+        callbackURL: "/start/plan",
       });
       if (result.error) {
         const error = new AppError(
@@ -40,7 +41,7 @@ export function VerifyEmailStep({
   const confirmation = useMutation({
     mutationFn: async () => {
       const fresh = await refreshMe(session);
-      return fresh.signedIn && fresh.next === "verify-email"
+      return fresh.signedIn && fresh.account.confirmationRequired
         ? "Your email is not confirmed yet. Open the link in your email, then try again."
         : "";
     },
@@ -61,11 +62,10 @@ export function VerifyEmailStep({
           confirmation.reset();
         }}
       />
-      <h1>Check your email</h1>
+      <h1>Confirm your email</h1>
       <p>
-        We sent a confirmation link to{" "}
+        Before you choose a plan, confirm your address. We sent a link to{" "}
         <span className={styles.address}>{email || "your email address"}</span>.
-        Open it to continue setting up your family.
       </p>
       <div className={styles.actions}>
         <Button
@@ -90,8 +90,8 @@ export function VerifyEmailStep({
         >
           {verification.isPending ? "Sending email…" : "Send another email"}
         </Button>
-        <Link to="/sign-in" className={buttonClass("quiet")}>
-          Back to sign in
+        <Link to="/try" className={buttonClass("quiet")}>
+          Keep practicing free
         </Link>
       </div>
     </section>

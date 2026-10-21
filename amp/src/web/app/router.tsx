@@ -39,6 +39,7 @@ const searchSchema = z
     interval: z.enum(["year", "month"]).optional().catch(undefined),
     reason: z.enum(["limit", "choice"]).optional().catch(undefined),
     "sign-in": z.string().optional(),
+    method: z.enum(["password"]).optional().catch(undefined),
     "reset-password": z.string().optional(),
   })
   .passthrough();
