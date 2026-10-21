@@ -15,7 +15,12 @@ conflicting Node trust selection and verification-bypass settings are refused.
 Java keystores, embedded application stores and browser verification require
 separate controls.
 
-On Ubuntu hosts, the helper disables exact distrusted distribution roots,
+On Ubuntu hosts, the helper checks the root-owned distribution CA source tree.
+It removes group/other write permission from `/usr/share` itself and that bounded
+CA subtree before reading sources, preserving certificate bytes, other mode bits
+and unrelated `/usr/share` children. Unknown owners, symlinks, special files and
+hard-linked files require review. Containers must supply protected source
+permissions. The helper disables exact distrusted distribution roots,
 quarantines local files containing only distrusted roots, preserves ordinary
 custom roots and refreshes the system CA store. Mixed custom bundles require
 review. A Docker daemon is restarted only when no containers exist, including stopped containers. Its

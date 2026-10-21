@@ -4,6 +4,7 @@ import io
 import os
 from pathlib import Path
 import re
+import stat
 import subprocess
 import tempfile
 from types import SimpleNamespace
@@ -176,6 +177,81 @@ class BootstrapTests(unittest.TestCase):
                  patch.object(trust, 'run', side_effect=run):
                 with self.assertRaises(RuntimeError):
                     trust.refresh_docker()
+
+
+class DistributionPermissionsTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.share = self.root / 'share'
+        self.sources = self.share / 'ca-certificates'
+        self.mozilla = self.sources / 'mozilla'
+        self.mozilla.mkdir(parents=True)
+        self.certificate = self.mozilla / 'root.crt'
+        self.certificate.write_bytes(CA)
+        self.outside = self.share / 'unrelated'
+        self.outside.write_bytes(b'unrelated content')
+        for path in (self.share, self.sources, self.mozilla, self.certificate, self.outside):
+            path.chmod(0o777)
+
+    def invoke(self, allow=True, unowned=None, race=False):
+        original_lstat, original_fstat, original_open = Path.lstat, os.fstat, os.open
+        def root_stat(value, owner=0):
+            return SimpleNamespace(st_uid=owner, st_mode=value.st_mode, st_dev=value.st_dev,
+                                   st_ino=value.st_ino, st_nlink=value.st_nlink)
+        def lstat(path):
+            return root_stat(original_lstat(path), 123 if path == unowned else 0)
+        def open_file(path, flags):
+            if race and path == self.certificate:
+                replacement = path.with_name('replacement')
+                replacement.write_bytes(b'replaced source')
+                replacement.chmod(0o777)
+                os.replace(replacement, path)
+            return original_open(path, flags)
+        with patch.object(Path, 'lstat', new=lstat), \
+             patch.object(trust.os, 'fstat', side_effect=lambda fd: root_stat(original_fstat(fd))), \
+             patch.object(trust.os, 'open', side_effect=open_file), \
+             patch.object(trust, 'protected'):
+            return trust.harden_distribution_sources(self.share, self.sources, allow)
+
+    def test_hardening_preserves_bytes_inodes_other_bits_and_unrelated_share_children(self):
+        content = self.certificate.read_bytes()
+        inode = self.certificate.stat().st_ino
+        result = self.invoke()
+        self.assertEqual(result, {'source_objects_checked': 4, 'source_permissions_hardened': 4})
+        self.assertEqual(self.certificate.read_bytes(), content)
+        self.assertEqual(self.certificate.stat().st_ino, inode)
+        for path in (self.share, self.sources, self.mozilla, self.certificate):
+            self.assertEqual(stat.S_IMODE(path.stat().st_mode), 0o755)
+        self.assertEqual(stat.S_IMODE(self.outside.stat().st_mode), 0o777)
+        self.assertEqual(self.outside.read_bytes(), b'unrelated content')
+        self.assertEqual(self.invoke()['source_permissions_hardened'], 0)
+
+    def test_unknown_owner_symlink_hardlink_and_special_type_refused_before_any_chmod(self):
+        for kind in ('owner', 'symlink', 'hardlink', 'fifo'):
+            with self.subTest(kind=kind):
+                extra = self.mozilla / 'extra'
+                if kind == 'symlink': extra.symlink_to(self.outside)
+                if kind == 'hardlink': os.link(self.certificate, extra)
+                if kind == 'fifo': os.mkfifo(extra)
+                try:
+                    with self.assertRaises(RuntimeError):
+                        self.invoke(unowned=self.certificate if kind == 'owner' else None)
+                    self.assertEqual(stat.S_IMODE(self.share.stat().st_mode), 0o777)
+                    self.assertEqual(stat.S_IMODE(self.certificate.stat().st_mode), 0o777)
+                finally:
+                    if extra.exists() or extra.is_symlink(): extra.unlink()
+
+    def test_container_refuses_mutable_sources_without_changing_permissions(self):
+        with self.assertRaisesRegex(RuntimeError, 'container distribution sources'):
+            self.invoke(allow=False)
+        self.assertEqual(stat.S_IMODE(self.share.stat().st_mode), 0o777)
+
+    def test_replaced_inode_refused_before_chmod_of_replacement(self):
+        with self.assertRaisesRegex(RuntimeError, 'changed during hardening'):
+            self.invoke(race=True)
+        self.assertEqual(stat.S_IMODE(self.certificate.stat().st_mode), 0o777)
 
 
 if __name__ == '__main__':
