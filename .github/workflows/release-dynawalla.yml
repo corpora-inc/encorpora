@@ -771,6 +771,8 @@ jobs:
           distribution: temurin
           # The committed gen/android/app/build.gradle.kts compiles at Java 17.
           java-version: "17"
+      - name: Remove distrusted Java CA roots
+        run: java "$GITHUB_WORKSPACE/.github/scripts/RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
