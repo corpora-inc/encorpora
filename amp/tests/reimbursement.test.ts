@@ -78,6 +78,7 @@ test("accepted printable repertoire agrees with the PDF font and composes accent
 });
 test("receipts deterministically include the parent name and every supported required field without changing facts", async () => {
   const record = structuredClone(syntheticPaymentRecord);
+  record.baseline!.invoiceCustomerName = "Invoice Parent";
   record.baseline!.billingName = "Paying Parent";
   record.baseline!.cardLast4 = "4242";
   const before = JSON.stringify(record);
@@ -93,6 +94,8 @@ test("receipts deterministically include the parent name and every supported req
     });
     for (const expected of [
       "Paid receipt",
+      "Invoice Parent",
+      "Payment method billing name",
       "Paying Parent",
       "card ending in 4242",
       "Synthetic Éducation Company",

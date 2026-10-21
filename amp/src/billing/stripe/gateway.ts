@@ -125,7 +125,8 @@ export class StripeGateway {
         ...(this.config.automaticTax
           ? { billing_address_collection: "required" as const }
           : {}),
-        customer_update: { address: "auto" },
+        name_collection: { individual: { enabled: true, optional: false } },
+        customer_update: { address: "auto", name: "auto" },
         success_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=processing&purchase=${encodeURIComponent(checkoutId)}`,
         cancel_url: `${this.config.appOrigin}/${enrollment ? "start/purchase" : ""}?billing=canceled&purchase=${encodeURIComponent(checkoutId)}`,
       },

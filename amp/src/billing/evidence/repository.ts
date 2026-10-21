@@ -124,6 +124,11 @@ export async function recordFinancialEvidence(
           ? { billingName: observation.billingName }
           : {}
         : {}),
+      ...(!stored.baseline || stored.baseline.invoiceCustomerName !== undefined
+        ? observation.invoiceCustomerName
+          ? { invoiceCustomerName: observation.invoiceCustomerName }
+          : {}
+        : {}),
       invoiceReason: observation.invoiceReason,
       invoiceId: payment.invoiceId,
       chargeId: payment.chargeId,
@@ -195,6 +200,7 @@ export async function recordFinancialEvidence(
     delete observation.paymentMethod;
     delete observation.cardLast4;
     delete observation.billingName;
+    delete observation.invoiceCustomerName;
     financial = { kind: "verified", observation };
   }
   const digest = evidenceDigest(financial);

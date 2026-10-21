@@ -10,6 +10,14 @@ function amount(value: unknown): value is number {
     value <= 100_000_000
   );
 }
+function normalizedName(value: unknown): string | undefined {
+  return typeof value === "string" &&
+    value.trim().length > 0 &&
+    value.length <= 180 &&
+    !/[\x00-\x1f\x7f]/.test(value)
+    ? value.trim().normalize("NFC")
+    : undefined;
+}
 /** Exact monetary facts only; missing tax fields are not inferred from a price. */
 export function normalizeFinancialEvidence(
   invoice: Stripe.Invoice,
@@ -131,11 +139,12 @@ export function normalizeFinancialEvidence(
       /^[0-9]{4}$/.test(chargeIdentity.cardLast4)
         ? { cardLast4: chargeIdentity.cardLast4 }
         : {}),
-      ...(typeof chargeIdentity?.billingName === "string" &&
-      chargeIdentity.billingName.trim().length > 0 &&
-      chargeIdentity.billingName.length <= 180 &&
-      !/[\x00-\x1f\x7f]/.test(chargeIdentity.billingName)
-        ? { billingName: chargeIdentity.billingName.trim().normalize("NFC") }
+      ...(normalizedName(chargeIdentity?.billingName)
+        ? { billingName: normalizedName(chargeIdentity?.billingName) }
+        : {}),
+      // Stripe freezes customer_name at invoice finalization. Never fetch current Customer.
+      ...(invoice.status === "paid" && normalizedName(invoice.customer_name)
+        ? { invoiceCustomerName: normalizedName(invoice.customer_name) }
         : {}),
       invoiceReason:
         invoice.billing_reason === "subscription_create"

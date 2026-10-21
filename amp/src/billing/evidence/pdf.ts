@@ -148,25 +148,28 @@ export async function paymentPdf(
     "Purchase",
     `${b.profile.product.title}\n${b.profile.product.description}\nSKU: ${b.profile.sku} · Quantity: 1\nItem amount before tax: ${paymentMoney(b.preTaxMinor)}`,
   );
-  if (b.billingName) {
-    // Preserve the exact Unicode name in the baseline; never transliterate identity.
+  function identityField(label: string, name: string | undefined) {
+    if (!name) {
+      field(label, "Not recorded; contact purchase support for name evidence.");
+      return;
+    }
+    // Preserve Unicode identity in the baseline; never transliterate a name.
     let printable = true;
     try {
-      regular.encodeText(b.billingName);
+      regular.encodeText(name);
     } catch {
       printable = false;
     }
     field(
-      "Paying customer (processor billing name)",
+      label,
       printable
-        ? b.billingName
-        : "Name recorded; this PDF font cannot display it. Contact purchase support for billing-name evidence.",
+        ? name
+        : "Name recorded; this PDF font cannot display it. Contact purchase support for name evidence.",
     );
-  } else
-    field(
-      "Paying customer (processor billing name)",
-      "Not recorded; contact purchase support for billing-name evidence.",
-    );
+  }
+  identityField("Paying customer (finalized invoice)", b.invoiceCustomerName);
+  if (b.billingName)
+    identityField("Payment method billing name", b.billingName);
   if (learnerName) field("Learner name (entered by parent)", learnerName);
   field(
     "Payment method",

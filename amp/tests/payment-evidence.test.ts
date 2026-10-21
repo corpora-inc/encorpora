@@ -193,3 +193,28 @@ test("receipt identity accepts only transaction-backed bounded name and exactly 
   if (other.kind === "verified")
     assert.equal(other.observation.cardLast4, undefined);
 });
+
+test("payer name comes only from the finalized invoice snapshot", () => {
+  const paid = normalizeFinancialEvidence(
+    invoice({ customer_name: "Invoice Parent" }),
+    "ch_fixture",
+    [],
+  );
+  assert.equal(paid.kind, "verified");
+  if (paid.kind === "verified")
+    assert.equal(paid.observation.invoiceCustomerName, "Invoice Parent");
+  for (const change of [
+    { status: "draft", customer_name: "Draft Name" },
+    { customer_name: null },
+    { customer_name: "Name\nInjected" },
+  ]) {
+    const result = normalizeFinancialEvidence(
+      invoice(change),
+      "ch_fixture",
+      [],
+    );
+    assert.equal(result.kind, "verified");
+    if (result.kind === "verified")
+      assert.equal(result.observation.invoiceCustomerName, undefined);
+  }
+});

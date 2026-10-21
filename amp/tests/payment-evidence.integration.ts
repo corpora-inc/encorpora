@@ -51,6 +51,7 @@ test(
       const invoice = {
         ...f.invoice,
         billing_reason: "subscription_create",
+        customer_name: "Invoice Parent" as string | undefined,
         amount_overpaid: 0,
         amount_shipping: 0,
         starting_balance: 0,
@@ -216,6 +217,7 @@ test(
       assert.equal(history[0]!.baseline!.paymentMethod, "card");
       assert.equal(history[0]!.baseline!.cardLast4, "4242");
       assert.equal(history[0]!.baseline!.billingName, "Élodie Parent");
+      assert.equal(history[0]!.baseline!.invoiceCustomerName, "Invoice Parent");
       for (const [authorization, payload, status] of [
         ["Bearer parent", { programId: "fixture-program" }, 400],
         ["Bearer other", { learnerName: "Jo Example" }, 404],
@@ -399,6 +401,7 @@ test(
         await secondPool.end();
       }
       // A second, genuine annual invoice arrives after consent withdrawal. Financial facts commit; access cannot activate.
+      invoice.customer_name = undefined;
       cardLast4 = undefined;
       billingName = undefined;
       paymentMethod = undefined; // A legacy record has no stored method evidence.
@@ -452,6 +455,7 @@ test(
       paymentMethod = "card";
       cardLast4 = "1234";
       billingName = "Later Changed Name";
+      invoice.customer_name = "Newer Invoice Name";
       await send("invoice.paid", invoice.id);
       await billing.runBatch();
       const replayedLegacy = (await paymentHistory(pool, "parent")).find(
@@ -787,11 +791,16 @@ test(
         0,
       );
       // Each transaction-identity field independently protects the receipt baseline.
-      for (const field of ["billingName", "cardLast4"] as const) {
+      for (const field of [
+        "billingName",
+        "cardLast4",
+        "invoiceCustomerName",
+      ] as const) {
         invoice.id = `in_identity_${field}`;
         f.payments.data[0]!.invoice = invoice.id;
         f.charge.id = `ch_identity_${field}`;
         f.intent.latest_charge = f.charge.id;
+        invoice.customer_name = "Original Invoice Name";
         billingName = "Original Billing Name";
         cardLast4 = "0123";
         await send("invoice.paid", invoice.id);
@@ -806,7 +815,8 @@ test(
         );
         assert.equal(originalIdentity.baseline!.cardLast4, "0123");
         if (field === "billingName") billingName = "Different Billing Name";
-        else cardLast4 = "9999";
+        else if (field === "cardLast4") cardLast4 = "9999";
+        else invoice.customer_name = "Changed Invoice Name";
         await send("invoice.paid", invoice.id);
         await billing.runBatch();
         const conflictedIdentity = (await paymentHistory(pool, "parent")).find(

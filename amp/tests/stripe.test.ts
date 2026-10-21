@@ -331,7 +331,8 @@ test("hosted Checkout fixes product, quantity, customer, metadata and redirects 
     line_items: [{ price: config.priceId, quantity: 1 }],
     allow_promotion_codes: false,
     automatic_tax: { enabled: false },
-    customer_update: { address: "auto" },
+    name_collection: { individual: { enabled: true, optional: false } },
+    customer_update: { address: "auto", name: "auto" },
     success_url: `https://example.test/?billing=processing&purchase=${binding.id}`,
     cancel_url: `https://example.test/?billing=canceled&purchase=${binding.id}`,
   });
@@ -415,7 +416,13 @@ test("automatic tax collects the full billing address and saves it to the custom
   await taxed.gateway.createCheckout(binding.id, binding.customerId);
   assert.deepEqual(taxed.calls[0]!.automatic_tax, { enabled: true });
   assert.equal(taxed.calls[0]!.billing_address_collection, "required");
-  assert.deepEqual(taxed.calls[0]!.customer_update, { address: "auto" });
+  assert.deepEqual(taxed.calls[0]!.customer_update, {
+    address: "auto",
+    name: "auto",
+  });
+  assert.deepEqual(taxed.calls[0]!.name_collection, {
+    individual: { enabled: true, optional: false },
+  });
   const untaxed = checkoutCapture({ ...config, automaticTax: false });
   await untaxed.gateway.createCheckout(binding.id, binding.customerId);
   assert.deepEqual(untaxed.calls[0]!.automatic_tax, { enabled: false });
