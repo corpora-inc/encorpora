@@ -510,7 +510,8 @@ radical-equations|algebra-2|algebra|Solve radical equations and reject extraneou
 complex-numbers|algebra-2|number|Calculate with complex numbers and solve quadratics over them|quadratic-formula|HSN
 polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient and remainder|polynomial-arithmetic|HSA
 polynomial-zeros|algebra-2|algebra|Connect factors zeros and polynomial graphs|polynomial-division,complex-numbers|HSA,HSF,SAT.advanced-math
-rational-expressions|algebra-2|algebra|Operate on rational expressions while retaining domain restrictions|factor-quadratics,fraction-division|HSA,SAT.advanced-math
+rational-expression-domain|algebra-1|algebra|Find inputs excluded by a rational expression’s denominator|linear-equations,function-domain-range|HSA
+rational-expressions|algebra-2|algebra|Operate on rational expressions while retaining domain restrictions|rational-expression-domain,factor-quadratics,fraction-division|HSA,SAT.advanced-math
 rational-equations|algebra-2|algebra|Solve rational equations and check excluded values|rational-expressions|HSA,SAT.advanced-math
 nonlinear-intersection-reading|algebra-2|algebra|Read shared points of a line and parabola as simultaneous solutions|graph-solution-sets,quadratic-graphs|HSA
 nonlinear-systems|algebra-2|algebra|Solve systems involving linear and nonlinear relations|nonlinear-intersection-reading,linear-systems,quadratic-equations|HSA,SAT.advanced-math
@@ -759,7 +760,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSA.APR.D.7",
     "Rational expression arithmetic",
-    "rational-expressions",
+    "rational-expression-domain,rational-expressions",
     true,
   ],
   [
@@ -3101,5 +3102,26 @@ for (const [skillId, suffix, description] of [
     .facets.push({
       id: `${skillId}.${suffix}`,
       description,
+      status: "implemented",
+    });
+
+// Bounded rational-expression steps do not establish all rational operations.
+for (const [skillId, suffix, description] of [
+  [
+    "rational-expression-domain",
+    "factored-denominator",
+    "Identify all excluded real inputs from a denominator given as two monic linear factors, including repeated factors and a numerator sharing a factor.",
+  ],
+  [
+    "rational-expressions",
+    "cancel-common-linear-factor",
+    "Recognize a simplified quotient of bounded quadratics with one common monic linear factor, while retaining both distinct original excluded inputs. Does not assess addition, subtraction, multiplication or division of separate rational expressions.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description: description!,
       status: "implemented",
     });

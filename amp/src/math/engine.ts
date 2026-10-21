@@ -1,4 +1,8 @@
 import {
+  rationalExpressionTemplates,
+  generateRationalExpressionProblem,
+} from "./rational-expression-practice";
+import {
   nonlinearSystemTemplates,
   generateNonlinearSystemProblem,
 } from "./nonlinear-system-practice";
@@ -382,6 +386,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
+  ...rationalExpressionTemplates,
   ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
@@ -575,6 +580,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
+    ...rationalExpressionTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -701,6 +707,8 @@ function generateRawProblem(
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (rationalExpressionTemplates.some((t) => t.id === templateId))
+    return generateRationalExpressionProblem(templateId, seed);
   if (nonlinearSystemTemplates.some((t) => t.id === templateId))
     return generateNonlinearSystemProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))

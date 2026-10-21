@@ -1,3 +1,4 @@
+import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
 import { transformationPrinciples } from "./transformation-lessons";
@@ -105,6 +106,7 @@ export const principles: Record<string, string> = {
   ...percentChangePrinciples,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
+  ...rationalExpressionPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":
