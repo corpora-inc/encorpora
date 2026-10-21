@@ -24,6 +24,7 @@ test("reject missing rights and invalid layouts before rendering", () => {
     { scenes: [] },
     { voice: "v.wav" },
     { music: "m.wav" },
+    { static: true, scenes: [{ ...scene, video: "demo.mp4" }] },
     { scenes: [{ ...scene, seconds: -1 }] },
   ])
     assert.throws(() => validate({ ...manifest, ...change }));

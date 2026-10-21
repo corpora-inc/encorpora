@@ -31,6 +31,8 @@ export function validate(m) {
     if (!Number.isFinite(s.seconds) || s.seconds <= 0 || s.seconds > 60)
       throw Error("Invalid duration");
     if (s.video && s.image) throw Error("Choose one media source");
+    if (m.static && s.video)
+      throw Error("Static assets require an image source");
   }
   if (m.music && !m.musicRights) throw Error("Music provenance required");
   if (m.voice && !m.voiceDisclosure) throw Error("Voice disclosure required");
