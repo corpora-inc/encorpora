@@ -30,6 +30,14 @@ const route = z.strictObject({
         .regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/)
         .max(80),
       summary: text.max(240),
+      presentation: z
+        .strictObject({
+          headline: text.max(160),
+          statusLabel: text.max(100),
+          actionLabel: text.max(80),
+          actionSubject: text.max(160),
+        })
+        .optional(),
       eligibility: text,
       ampStatus: text,
       steps: z.array(text).min(1).max(8),

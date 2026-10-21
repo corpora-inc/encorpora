@@ -35,3 +35,16 @@ export const fundingFixture = {
     reviewedOn: "2026-01-01",
   },
 };
+
+export const guidedFundingFixture = {
+  ...fundingFixture,
+  page: {
+    ...fundingFixture.page,
+    presentation: {
+      headline: "Use your education funds for mathematics",
+      statusLabel: "Synthetic reviewed route · Direct payment",
+      actionLabel: "Request a curriculum invoice",
+      actionSubject: "Curriculum invoice & purchase question",
+    },
+  },
+};
