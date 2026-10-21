@@ -24,7 +24,7 @@ import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
  * verified return → the free practice becomes the paid learner, who keeps
  * practicing. Also: a signed-in parent without a purchase lands in the trial,
  * the first paint never flashes loading text, nothing shifts, axe is clean.
- * Runs at 320x568, 390x844 and 1280x800, plus an 844x390 phone-landscape
+ * Runs at 320x568, 384x688, 390x844, 768x1024 and 1280x800, plus an 844x390 phone-landscape
  * smoke, in light and dark.
  */
 const url = process.env.AMP_TEST_DATABASE_URL;
@@ -398,12 +398,18 @@ async function coldLoad(
     `${label}: only the skeleton or the destination is ever painted`,
   );
   assert.ok(shots.length > 0, `${label}: frames were captured`);
-  if (destination.startsWith("What year"))
+  if (destination === "Your math pathway starts here") {
     assert.equal(
-      (await page.locator("header").first().boundingBox())?.height,
-      64,
-      `${label}: the destination's bar is exactly the skeleton's bar`,
+      await page.locator("header").count(),
+      0,
+      `${label}: no separate brand bar`,
     );
+    await page
+      .locator(".start-card")
+      .getByText("Adaptive Math Pathways", { exact: true })
+      .waitFor();
+  }
+
   await writeFile(`${shots_dir}/first-frame-${label}.png`, shots[0]!);
   assert.deepEqual(await flashes(page), []);
   assert.equal(await shift(page), 0, `${label}: nothing shifts`);
@@ -469,7 +475,9 @@ async function shoot(page: Page, name: string, tag: string, full = false) {
 
 const viewports = [
   [320, 568],
+  [384, 688],
   [390, 844],
+  [768, 1024],
   [844, 390],
   [1280, 800],
 ] as const;
@@ -503,6 +511,50 @@ try {
       const years = page.getByRole("group", { name: "Birth year" });
       await years.waitFor();
       await fits(page, `${tag} start`);
+      const startGeometry = await page
+        .locator(".start-card")
+        .evaluate((card) => {
+          const rect = card.getBoundingClientRect();
+          const controls = [...card.querySelectorAll("button")].map((button) =>
+            button.getBoundingClientRect(),
+          );
+          return {
+            viewport: innerHeight,
+            height: document.documentElement.scrollHeight,
+            center: rect.top + rect.height / 2,
+            buttonsFit: controls.every(
+              (r) => r.width >= 44 && r.height >= 44 && r.bottom <= innerHeight,
+            ),
+            hasBrand: card.textContent?.includes("Adaptive Math Pathways"),
+          };
+        });
+      assert.ok(startGeometry.hasBrand, `${tag}: brand inside card`);
+      assert.ok(
+        startGeometry.height <= startGeometry.viewport + 1,
+        `${tag}: entire entry fits without vertical scroll`,
+      );
+      assert.ok(
+        Math.abs(startGeometry.center - startGeometry.viewport / 2) < 2,
+        `${tag}: card centered`,
+      );
+      assert.ok(
+        startGeometry.buttonsFit,
+        `${tag}: all accessible year targets visible`,
+      );
+
+      if (width === 320) {
+        await page.setViewportSize({ width: 568, height: 320 });
+        await frames(page);
+        assert.ok(
+          await page.evaluate(
+            () => document.documentElement.scrollHeight <= innerHeight + 1,
+          ),
+          `${tag}: small-phone landscape entry fits`,
+        );
+        await shoot(page, "start-landscape", tag);
+        await page.setViewportSize({ width, height });
+        await frames(page);
+      }
       if (audit) await axe(page, "start");
       await shoot(page, "start", tag);
 
@@ -768,7 +820,7 @@ try {
       const seen = await coldLoad(
         parent,
         "/",
-        "What year was the learner born?",
+        "Your math pathway starts here",
         `parent-${tag}`,
         fresh(),
       );
@@ -780,7 +832,7 @@ try {
       await coldLoad(
         parent,
         "/start",
-        "What year was the learner born?",
+        "Your math pathway starts here",
         `parent-start-${tag}`,
         fresh(),
       );
@@ -791,10 +843,17 @@ try {
       });
       await visitor.addInitScript({ content: watch });
       await coldLoad(visitor, "/", "Try free", `visitor-${tag}`, fresh());
+      await coldLoad(
+        visitor,
+        "/try",
+        "Your math pathway starts here",
+        `direct-try-${tag}`,
+        fresh(),
+      );
       await visitor.close();
     }
   console.log(
-    `Free trial: welcome → birth year → ${PLACEMENT} placement → map → plans by choice → not now → practice → mastery moment → paywall at ${FREE} → not now → map → plans → sign-up → plan (monthly kept) → Stripe redirect → paid → adopt → claim → practice with every free answer; cold / for a signed-in unpaid parent paints only the skeleton then /try, and for a visitor only the skeleton then the welcome; at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, no layout shift, no loading flash, axe clean.`,
+    `Free trial: welcome → birth year → ${PLACEMENT} placement → map → plans by choice → not now → practice → mastery moment → paywall at ${FREE} → not now → map → plans → sign-up → plan (monthly kept) → Stripe redirect → paid → adopt → claim → practice with every free answer; cold / for a signed-in unpaid parent paints only the skeleton then /try, and for a visitor only the skeleton then the welcome; at 320x568/384x688/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, no layout shift, no loading flash, axe clean.`,
   );
 } finally {
   await browser.close();

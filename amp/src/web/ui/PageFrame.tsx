@@ -8,7 +8,7 @@ export const frameCard = styles.card;
  * The branded frame for sign-in, sign-up and first-run steps.
  *
  * First-run cards are top-anchored at one offset under the brand bar, so
- * moving between steps never moves the card. `centered` (the sign-in screens)
+ * moving between steps never moves the card. `centered` (sign-in and trial entry)
  * drops the bar: the card carries the brand itself (`FrameBrand`) and sits in
  * the middle of the safe area, or at its top with padding when it is taller
  * than the screen.
@@ -47,7 +47,7 @@ export function PageFrame({
   );
 }
 /** The wordmark at the top of a centered card; it links home. */
-export function FrameBrand() {
+export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
   return (
     <Link
       to="/"
@@ -55,6 +55,14 @@ export function FrameBrand() {
       aria-label={`${brand.name} home`}
     >
       {brand.name}
+      {expanded && (
+        <>
+          <span className={styles.brandDivider} aria-hidden="true">
+            ·
+          </span>
+          <span className={styles.brandExpansion}>{brand.expansion}</span>
+        </>
+      )}
     </Link>
   );
 }

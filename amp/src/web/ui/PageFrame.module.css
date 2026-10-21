@@ -80,3 +80,14 @@
   justify-self: start;
   margin-top: calc(-1 * var(--space-2));
 }
+.brandDivider {
+  margin-inline: var(--space-2);
+  font-weight: 400;
+  color: var(--color-muted-text);
+}
+.brandExpansion {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--color-muted-text);
+}

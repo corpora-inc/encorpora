@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
 import { AppError } from "../../lib/AppError";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import { startTrial, trialSessionOptions } from "./api";
 import { track, trackSessionStart } from "./analytics";
@@ -16,9 +16,13 @@ export function TryStart() {
   const session = useQuery(trialSessionOptions);
   if (session.error)
     return (
-      <TrialFailure error={session.error} retry={() => session.refetch()} />
+      <TrialFailure
+        centered
+        error={session.error}
+        retry={() => session.refetch()}
+      />
     );
-  if (session.isPending) return <TrialSkeleton />;
+  if (session.isPending) return <TrialSkeleton centered />;
   if (session.data) return <Navigate to="/try/practice" replace />;
   return <BirthYear />;
 }
@@ -32,17 +36,22 @@ function BirthYear() {
     track("try_click");
   }, []);
   return (
-    <PageFrame>
+    <PageFrame centered>
       <Toast message={error} onDismiss={() => setError("")} />
       <BirthYearPrompt
         embedded={{
-          className: `${frameCard} ${styles.start}`,
-          header: (
-            <p className={styles.eyebrow}>Free practice · No account needed</p>
+          containerClassName: styles.introContainer,
+          className: `${frameCard} ${styles.start} ${styles.intro}`,
+          header: <FrameBrand expanded />,
+          footer: (
+            <p className={styles.introNote}>
+              Free practice · No account needed
+            </p>
           ),
         }}
         name="the learner"
-        title="What year was the learner born?"
+        title="Your math pathway starts here"
+        description="Choose your birth year, and we’ll find your starting point—then adapt as you learn."
         birthYear={null}
         busy={busy}
         saveBirthYear={(year) => {

@@ -32,7 +32,7 @@
         font-weight: 800;
         letter-spacing: -0.04em;
       }
-      /* The sign-in screens have no bar: their card carries the brand. */
+      /* Centered entry screens carry the brand inside their card. */
       [data-frame="card"] .app-loading-bar {
         display: none;
       }
@@ -50,7 +50,10 @@
   </head>
   <body>
     <script>
-      if (/^\/(sign-in|sign-up|reset-password)(\/|$)/.test(location.pathname))
+      if (
+        /^\/(sign-in|sign-up|reset-password)(\/|$)/.test(location.pathname) ||
+        /^\/try\/?$/.test(location.pathname)
+      )
         document.documentElement.dataset.frame = "card";
     </script>
     <div id="root">
