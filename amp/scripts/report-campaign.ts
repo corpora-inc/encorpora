@@ -1,3 +1,4 @@
+import { arkansasOrderSummary } from "../src/analytics/campaign-orders.js";
 import { RETENTION } from "../src/privacy/retention-periods.js";
 import { createDatabasePool } from "../src/server/database.js";
 
@@ -28,6 +29,7 @@ try {
     GROUP BY v.utm_source,v.utm_medium,e.event ORDER BY 1,2,3`,
     [days - 1],
   );
+  const arkansasOrders = await arkansasOrderSummary(pool, days);
   console.log(
     JSON.stringify(
       {
@@ -37,8 +39,14 @@ try {
           invoice_click:
             "Opening an email link, not an invoice request, approved order, or sale.",
           funnel:
-            "Existing AMP first-touch campaign events. Purchase is server-verified. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
+            "Existing AMP first-touch campaign events. Purchase means a server-verified Stripe purchase, not an ESA/ClassWallet order. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
         },
+        limitations: [
+          "Arkansas order totals are current states for funding requests created in the report window, not purchases attributed to an ad.",
+          "Only retained offers with programId ar-efa and jurisdiction AR establish Arkansas classification. Unlinked commerce imports and email-only invoices are excluded.",
+          "Prepared request records include submitted and cancelled records. Approved, settled, issued and refunded totals overlap; they are not additive sales.",
+        ],
+        arkansasOrders,
         activity: activity.rows,
         funnel: funnel.rows,
       },

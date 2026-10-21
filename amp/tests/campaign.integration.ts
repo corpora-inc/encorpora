@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import Fastify from "fastify";
 import { migrate } from "../scripts/migrate";
+import { arkansasOrderSummary } from "../src/analytics/campaign-orders";
 import { registerCampaignRoutes } from "../src/analytics/campaign-routes";
 
 test(
@@ -53,6 +54,51 @@ test(
           .count,
         "0",
       );
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('fixture-learner','fixture-parent','Test')",
+      );
+      for (const [id, programId, jurisdiction, status] of [
+        ["ar-ready", "ar-efa", "AR", "prepared"],
+        ["ar-submitted", "ar-efa", "AR", "parent-reported-submitted"],
+        ["other", "fl-pep", "FL", "prepared"],
+        ["wrong-state", "ar-efa", "GA", "prepared"],
+      ]) {
+        await pool.query(
+          `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,status,created_at,expires_at)
+        VALUES($1,'fixture-parent','fixture-learner',$2,'fixture-offer','1',$3,$4,now(),now()+interval '1 day')`,
+          [
+            id,
+            randomUUID(),
+            JSON.stringify({ programId, jurisdiction }),
+            status,
+          ],
+        );
+      }
+      const order = {
+        id: "fixture-order",
+        account: { id: "fixture-parent" },
+        license: { accountId: "fixture-parent", learnerId: "fixture-learner" },
+        channel: "esa",
+        channelReference: "fixture-program",
+        externalOrderId: "fixture-external",
+        approval: "approved",
+        settlement: "settled",
+        refund: "completed",
+      };
+      await pool.query(
+        `INSERT INTO amp_commerce_orders(id,account_id,learner_id,channel,channel_reference,external_order_id,order_state) VALUES('fixture-order','fixture-parent','fixture-learner','esa','fixture-program','fixture-external',$1)`,
+        [JSON.stringify(order)],
+      );
+      await pool.query(
+        `UPDATE amp_funding_requests SET order_id='fixture-order',conversion_payload='{}' WHERE id='ar-submitted'`,
+      );
+      const summary = await arkansasOrderSummary(pool, 30);
+      assert.equal(summary.prepared_request_records, 2);
+      assert.equal(summary.parent_reported_submitted, 1);
+      assert.equal(summary.linked_esa_orders, 1);
+      assert.equal(summary.settled_orders, 1);
+      assert.equal(summary.refunded_orders, 1);
+      assert.equal(summary.issued_license_orders, 0);
     } finally {
       await app.close();
       await pool.end();
