@@ -61,7 +61,8 @@
     "test:content": "node scripts/test-suite.mjs content",
     "test:inventory": "node scripts/test-suite.mjs inventory",
     "coverage:report": "tsx scripts/coverage-report.ts",
-    "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts"
+    "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts",
+    "dev:content": "tsx watch scripts/content-review.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",
