@@ -1,12 +1,13 @@
 """Select the expensive inventory check; unknown AMP areas run it by default."""
 import sys
+import hashlib
+import subprocess
 
 # These application areas are tested by the core suite and database checks.
 # Math/content/publication inputs and all scripts remain outside this list.
 APPLICATION_AREAS = (
     'amp/src/billing/', 'amp/src/family/', 'amp/src/parent-consent/',
-    'amp/src/privacy/', 'amp/src/server/', 'amp/src/web/features/',
-    'amp/src/web/app/', 'amp/src/web/lib/', 'amp/src/web/ui/',
+    'amp/src/privacy/',
 )
 
 
@@ -18,7 +19,7 @@ def requires_inventory(paths):
             continue
         if path == 'amp/tests/independent-review.test.ts':
             return True
-        if path.startswith(('amp/tests/', 'amp/docs/')) or path in ('amp/README.md', 'amp/AGENTS.md'):
+        if (path.startswith('amp/tests/') and path.endswith('.test.ts')) or path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             continue
         if path.startswith(APPLICATION_AREAS):
             continue
@@ -26,5 +27,24 @@ def requires_inventory(paths):
     return False
 
 
+def fingerprint(records):
+    selected = []
+    for record in records:
+        if not record:
+            continue
+        _, path = record.split(b'\t', 1)
+        if requires_inventory([path.decode('utf-8')]):
+            selected.append(record)
+    if not selected:
+        raise ValueError('No content inputs found')
+    return hashlib.sha256(b'\0'.join(sorted(selected))).hexdigest()
+
+
 if __name__ == '__main__':
-    print('true' if requires_inventory(sys.stdin.read().splitlines()) else 'false')
+    if sys.argv[1:] == ['--fingerprint']:
+        tree = subprocess.check_output(['git', 'ls-tree', '-rz', '--full-tree', 'HEAD'])
+        print(fingerprint(tree.split(b'\0')))
+    elif not sys.argv[1:]:
+        print('true' if requires_inventory(sys.stdin.read().splitlines()) else 'false')
+    else:
+        raise SystemExit('Expected --fingerprint or paths on stdin')

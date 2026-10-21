@@ -45,13 +45,15 @@ Publications are written to `artifacts/publications/` in Letter and A4 formats. 
 | Command | Coverage | When required |
 | --- | --- | --- |
 | `npm run test:core` | Application unit tests and focused mathematics tests | Every AMP pull request and merge queue run |
-| `npm run test:inventory` | Full independent mathematics inventory and deliberate-corruption checks | Inventory-input changes before merge; every main/manual AMP run |
+| `npm run test:inventory` | Full independent mathematics inventory and deliberate-corruption checks | After merge on main when no exact successful input/environment result exists; manual revalidation |
 | `npm test` | Both unit suites | Complete local verification |
 | `npm run test:db` | Database integration and access/payment isolation | Every AMP CI run; locally for affected persistence, money, consent and privacy paths |
 
-The inventory selector in `.github/scripts/amp_inventory_paths.py` exempts explicitly listed application areas, ordinary unit-test files and documentation. Mathematics, content, publications, scripts, dependencies and unknown AMP areas select the full inventory. Changes to the selector or CI workflow also select it. Keep this boundary current when adding dependencies between application and mathematics code.
+The content fingerprint in `.github/scripts/amp_inventory_paths.py` includes mathematics, content, publications, scripts, simulations, dependencies, rendering and unknown AMP areas. It excludes explicitly independent billing/family/privacy/consent code, ordinary core-test files and documentation. Filenames, Git blob identifiers and file modes are hashed, so edits, removals and renames invalidate the result. Keep this boundary current when adding dependencies between application and content code.
 
-The existing `ci-gate` aggregates results; no path-specific job is an independent required status. Main also runs the browser and content checks. Production advances only to a main commit that passes all three AMP release jobs; failures are fixed forward through another PR.
+Expensive content checks run after merge. A main run may reuse only an exact successful content/environment fingerprint; cache misses, failed runs and unknown inputs trigger verification. The success marker is saved only after all content commands pass. Manual runs force revalidation. An unrelated commit cannot turn a failed content check green because failed inputs have no successful marker.
+
+The existing `ci-gate` aggregates results; no path-specific job is an independent required status. Main also runs browser checks. Production advances only to a main commit whose three AMP release jobs succeed, either by executing content checks or verifying their exact reusable result. Failures are fixed forward through another PR.
 
 ## Architecture
 
