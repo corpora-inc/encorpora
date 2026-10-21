@@ -3,8 +3,8 @@
 from pathlib import Path
 import sys
 
-HELPER_COMMIT = '17ff4c57cf68f96f9509825afa285ef658b82f6f'
-HELPER_SHA256 = '36c05f8077fd4bc7b8498ca966ef68532257a839093f610cc1b8b7bd62bc76e9'
+HELPER_COMMIT = 'b322c6b3d3cf79cb24184e11c83de2e46edbe16d'
+HELPER_SHA256 = '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2'
 LOADER = '''      - name: Initialize verified client trust
         id: ci-trust
         shell: bash
