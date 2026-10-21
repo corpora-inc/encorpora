@@ -64,9 +64,11 @@ export function fundingStructuredData(
 export function FundingPage({
   funding,
   supportEmail,
+  appUrl,
 }: {
   funding: FundingRoute;
   supportEmail?: string;
+  appUrl?: string;
 }) {
   const page = funding.page;
   if (!page) throw new Error("Funding page content is missing");
@@ -76,7 +78,10 @@ export function FundingPage({
       ? `mailto:${supportEmail}?subject=${encodeURIComponent(presentation.actionSubject)}`
       : "/support/";
   return (
-    <div className={presentation ? "funding-guided" : undefined}>
+    <div
+      className={presentation ? "funding-guided" : undefined}
+      data-campaign-program={presentation ? page.slug : undefined}
+    >
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <ol>
           <li>
@@ -98,17 +103,29 @@ export function FundingPage({
             {fundingLabels[funding.kind]}
           </p>
           {presentation && (
-            <p className="funding-approved-label">{presentation.statusLabel}</p>
+            <p className="funding-approved-label">
+              <span aria-hidden="true">✓ </span>
+              {presentation.statusLabel}
+            </p>
           )}
           <h1>{presentation?.headline ?? funding.program}</h1>
           <p className="lead">{page.summary}</p>
           {presentation && (
             <div className="funding-actions">
-              <a className="button" href={actionHref}>
+              <a
+                className="button"
+                href={actionHref}
+                data-campaign-action="invoice"
+              >
                 {presentation.actionLabel} <span aria-hidden="true">↗</span>
               </a>
-              <a className="funding-explore" href="/amp/">
-                Explore AMP Math <span aria-hidden="true">→</span>
+              <a
+                className="funding-explore"
+                data-campaign-action={appUrl ? "try" : undefined}
+                href={appUrl ? new URL("/try", appUrl).href : "/amp/"}
+              >
+                {appUrl ? "Try AMP Math" : "Explore AMP Math"}{" "}
+                <span aria-hidden="true">→</span>
               </a>
             </div>
           )}

@@ -1181,3 +1181,11 @@ footer > .fine {
   .funding-guided .funding-steps li { padding: 18px 16px 18px 64px; }
   .funding-guided .funding-steps li::before { left: 14px; top: 18px; width: 32px; height: 32px; }
 }
+
+.state-outline { position: relative; width: 100%; max-width: 160px; height: 145px; flex-shrink: 0; fill: color-mix(in srgb, var(--primary) 16%, var(--surface)); stroke: var(--primary); stroke-width: 1.2; stroke-linejoin: round; }
+.state-identity .state-code-small { font-size: 1.25rem; letter-spacing: .06em; }
+@media (max-width: 760px) {
+  .funding-guided .funding-intro > .state-identity { align-items: center; gap: 12px; }
+  .funding-guided .state-outline { width: 110px; height: 96px; }
+  .funding-guided .funding-intro > .state-identity .state-code-small { font-size: 1.25rem; }
+}
