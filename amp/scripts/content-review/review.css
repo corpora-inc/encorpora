@@ -1,0 +1,99 @@
+.content-review {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px 16px 64px;
+}
+.content-review header {
+  display: block;
+  margin-bottom: 24px;
+}
+.review-featured,
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+.review-featured a {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+.review-featured a[aria-current] {
+  font-weight: 700;
+  border-color: var(--color-primary);
+}
+.review-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 160px;
+  gap: 12px;
+}
+.review-controls select,
+.review-controls input {
+  width: 100%;
+}
+.review-card {
+  padding: 24px;
+  margin: 16px 0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface-raised);
+}
+.review-prompt {
+  font-size: 20px;
+  line-height: 1.9;
+}
+.review-card fieldset {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+}
+.review-card legend {
+  margin-bottom: 12px;
+}
+.review-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 8px;
+  cursor: pointer;
+  line-height: 1.9;
+}
+.review-option input {
+  flex: 0 0 auto;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+.review-status {
+  min-height: 3em;
+  margin: 16px 0 0;
+}
+.review-card li {
+  margin-bottom: 12px;
+  line-height: 1.9;
+}
+.review-card iframe {
+  width: 100%;
+  height: 900px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.content-review footer {
+  margin-top: 32px;
+}
+@media (max-width: 540px) {
+  .review-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .review-card {
+    padding: 16px;
+  }
+  .review-actions button {
+    flex: 1 1 140px;
+  }
+}
+
+.content-review h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+}
