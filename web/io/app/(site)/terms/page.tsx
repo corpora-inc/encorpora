@@ -13,9 +13,16 @@ export default function TermsPage() {
         <main className="min-h-screen bg-white text-gray-800 px-6 py-16">
             <div className="max-w-3xl mx-auto">
                 <h1 className="text-5xl font-extrabold mb-6">Terms of Use</h1>
+                <section className="mb-8 rounded-md border border-gray-200 p-5" aria-labelledby="amp-terms">
+                    <h2 id="amp-terms" className="text-2xl font-semibold mb-3">AMP Mathematics</h2>
+                    <p className="leading-relaxed">
+                        AMP’s online service uses the <a href="https://corpora.inc/legal/terms/" className="underline">AMP terms of service</a> and <a href="https://corpora.inc/legal/refund/" className="underline">refund policy</a>.
+                        Read these for account use, subscriptions and purchases through education-funding programs.
+                    </p>
+                </section>
+
                 <p className="text-lg mb-12">
-                    Plain English. No fine print. By using Corpán or any other Corpora
-                    Inc app, you agree to the terms below.
+                    These terms cover Corpán and other Corpora Inc apps that do not provide separate terms.
                 </p>
 
                 <section className="mb-12">
