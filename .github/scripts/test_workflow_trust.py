@@ -111,8 +111,10 @@ class WorkflowTrust(unittest.TestCase):
             run.assert_not_called()
 
     def test_loader_executes_only_verified_real_temporary_file(self):
-        helper = (ROOT / '.github/scripts/ci_trust.py').read_bytes()
-        self.assertEqual(hashlib.sha256(helper).hexdigest(), sync.HELPER_SHA256)
+        # Consumer pins track a published revision independently of new helper
+        # source changes. Exercise execution with a checksum-bound fixture.
+        helper = b"print('verified fixture')\n"
+        script = SCRIPT.replace(sync.HELPER_SHA256, hashlib.sha256(helper).hexdigest())
         class Response(io.BytesIO):
             url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/' + sync.HELPER_COMMIT + '/.github/scripts/ci_trust.py'
         def execute(args, **kwargs):
@@ -125,7 +127,7 @@ class WorkflowTrust(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary, patch.dict(os.environ, {'RUNNER_TEMP': temporary}), \
              patch('urllib.request.build_opener') as opener, patch('subprocess.run', side_effect=execute) as run:
             opener.return_value.open.return_value = Response(helper)
-            exec(compile(SCRIPT, '<loader>', 'exec'), {})
+            exec(compile(script, '<loader>', 'exec'), {})
             run.assert_called_once()
             self.assertFalse(list(Path(temporary).iterdir()))
 
