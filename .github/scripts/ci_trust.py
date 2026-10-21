@@ -13,6 +13,7 @@ import re
 import shutil
 import shlex
 import ssl
+import stat
 import subprocess
 import sys
 import tempfile
@@ -67,6 +68,61 @@ def protected(path):
                 'unprotected host trust path')
 
 
+def harden_distribution_sources(share, sources, allow_hardening):
+    """Remove write access from a bounded, root-owned distribution CA tree.
+
+    Some hosted Ubuntu images make these public sources world-writable. Check
+    every object before changing permissions; never follow links or touch the
+    other children of /usr/share. Containers must arrive with protected sources.
+    """
+    require(sources.parent == share, 'unexpected distribution source location')
+    protected(share.parent)
+    pending, records = [sources], []
+    item = share.lstat()
+    require(stat.S_ISDIR(item.st_mode) and item.st_uid == 0,
+            'untrusted distribution source directory')
+    records.append((share, item))
+    while pending:
+        path = pending.pop()
+        item = path.lstat()
+        require(item.st_uid == 0 and (stat.S_ISDIR(item.st_mode) or stat.S_ISREG(item.st_mode)),
+                'unknown distribution source owner or type')
+        require(not stat.S_ISREG(item.st_mode) or item.st_nlink == 1,
+                'hard-linked distribution source requires review')
+        records.append((path, item))
+        require(len(records) <= 4096, 'distribution source tree exceeds review bound')
+        if stat.S_ISDIR(item.st_mode):
+            pending.extend(path.iterdir())
+    require(allow_hardening or not any(item.st_mode & 0o022 for _, item in records),
+            'container distribution sources require protected permissions')
+    changed = 0
+    for path, expected in sorted(records, key=lambda record: len(record[0].parts)):
+        protected(path.parent)
+        flags = os.O_RDONLY | os.O_NOFOLLOW
+        if stat.S_ISDIR(expected.st_mode):
+            flags |= os.O_DIRECTORY
+        descriptor = os.open(path, flags)
+        try:
+            current = os.fstat(descriptor)
+            require((current.st_dev, current.st_ino, current.st_uid, current.st_mode, current.st_nlink) ==
+                    (expected.st_dev, expected.st_ino, expected.st_uid, expected.st_mode, expected.st_nlink),
+                    'distribution source changed during hardening')
+            mode = stat.S_IMODE(current.st_mode)
+            if mode & 0o022:
+                os.fchmod(descriptor, mode & ~0o022)
+                changed += 1
+            after = os.fstat(descriptor)
+            visible = path.lstat()
+            require(after.st_uid == 0 and not after.st_mode & 0o022 and
+                    (not stat.S_ISREG(after.st_mode) or after.st_nlink == 1) and
+                    (visible.st_dev, visible.st_ino, visible.st_mode) ==
+                    (after.st_dev, after.st_ino, after.st_mode),
+                    'distribution source hardening not retained')
+        finally:
+            os.close(descriptor)
+    return {'source_objects_checked': len(records), 'source_permissions_hardened': changed}
+
+
 def run(arguments, **kwargs):
     return subprocess.run(arguments, capture_output=True, text=True, timeout=60, check=True,
                           env={'PATH': '/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C'}, **kwargs)
@@ -114,6 +170,7 @@ def repair_linux_store():
     require(sys.platform == 'linux' and os.geteuid() == 0 and os.environ.get('GITHUB_ACTIONS') == 'true' and os.environ.get('RUNNER_ENVIRONMENT') == 'github-hosted', 'isolated GitHub-hosted Ubuntu root action required')
     configuration = Path('/etc/ca-certificates.conf')
     sources, local = Path('/usr/share/ca-certificates'), Path('/usr/local/share/ca-certificates')
+    permissions = harden_distribution_sources(sources.parent, sources, not container_context())
     for path in (configuration, sources, local):
         protected(path)
     current_roots = store_fingerprints(Path('/etc/ssl/certs'))
@@ -145,7 +202,7 @@ def repair_linux_store():
         run(['/usr/sbin/update-ca-certificates', '--fresh'])
     require(not store_fingerprints(Path('/etc/ssl/certs')) & BLOCKED, 'affected Linux anchors remain')
     return {'disabled_distribution_roots': disabled, 'quarantined_local_roots': len(quarantine),
-            'regenerated': regenerated}
+            'regenerated': regenerated, **permissions}
 
 
 
