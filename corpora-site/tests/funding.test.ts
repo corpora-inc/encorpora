@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { configSchema } from "../src/config.js";
 import { buildSite } from "../src/build.js";
-import { fundingFixture } from "./funding-fixture.js";
+import { fundingFixture, guidedFundingFixture } from "./funding-fixture.js";
 
 test("program paths reject traversal, duplicates and invalid review windows", () => {
   for (const slug of ["../legal", "a/b", "<script>", "AMP", ""]) {
@@ -82,10 +82,13 @@ test("build emits linked program HTML, canonical metadata, safe structured data 
   }
 });
 
-
 test("nationwide guides render without inflating state counts, including a nationwide-only directory", async () => {
   const dir = await mkdtemp(join(tmpdir(), "corpora-national-funding-"));
-  const national = { ...fundingFixture, state: "US", page: { ...fundingFixture.page, slug: "national-savings" } };
+  const national = {
+    ...fundingFixture,
+    state: "US",
+    page: { ...fundingFixture.page, slug: "national-savings" },
+  };
   try {
     for (const funding of [[national], [national, fundingFixture]]) {
       await buildSite(configSchema.parse({ funding }), dir);
@@ -97,9 +100,48 @@ test("nationwide guides render without inflating state counts, including a natio
       assert.ok(!html.includes("0 states"));
       assert.equal(html.includes("1 state"), funding.length === 2);
       assert.ok(html.includes(`${funding.length} parent guides`));
-      const page = await readFile(join(dir, "esa/national-savings/index.html"), "utf8");
+      const page = await readFile(
+        join(dir, "esa/national-savings/index.html"),
+        "utf8",
+      );
       assert.ok(page.includes("Nationwide"));
     }
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("guided purchase copy is optional, escaped and uses a safe support action", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-guided-"));
+  try {
+    await buildSite(
+      configSchema.parse({ funding: [guidedFundingFixture] }),
+      dir,
+    );
+    const html = await readFile(
+      join(dir, "esa/synthetic-program/index.html"),
+      "utf8",
+    );
+    assert.ok(html.includes('class="funding-guided"'));
+    assert.ok(html.includes('href="/support/">Request a curriculum invoice'));
+    assert.ok(html.includes(guidedFundingFixture.page.presentation.headline));
+    assert.equal(
+      configSchema.safeParse({
+        funding: [
+          {
+            ...guidedFundingFixture,
+            page: {
+              ...guidedFundingFixture.page,
+              presentation: {
+                ...guidedFundingFixture.page.presentation,
+                actionSubject: "request\r\nBcc: injected@example.invalid",
+              },
+            },
+          },
+        ],
+      }).success,
+      false,
+    );
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
