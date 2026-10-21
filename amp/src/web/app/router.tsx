@@ -188,6 +188,17 @@ const startVerify = createRoute({
   beforeLoad: beforeStart,
   component: start,
 });
+const pathways = createRoute({
+  getParentRoute: () => root,
+  path: "/pathways",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/pathways/PathwaysScreen"),
+    "PathwaysScreen",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => root,
   path: "/$",
@@ -211,6 +222,7 @@ export const router = createRouter({
     tryPractice,
     tryMap,
     tryPlans,
+    pathways,
     fallback,
   ]),
   history: nativeRuntime

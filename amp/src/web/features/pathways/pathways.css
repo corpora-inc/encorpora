@@ -1,0 +1,236 @@
+.pathways {
+  max-width: 1440px;
+  margin: auto;
+  padding: clamp(12px, 3vw, 32px);
+  color: var(--color-on-surface);
+  background: var(--color-surface);
+}
+.pathways * {
+  box-sizing: border-box;
+}
+.pathways button,
+.pathways select,
+.pathways input,
+.pathways-go {
+  min-height: 44px;
+  font: inherit;
+}
+.pathways button,
+.pathways select,
+.pathways input {
+  color: var(--color-on-surface-raised);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.pathways button {
+  cursor: pointer;
+}
+.pathways :focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+.pathways a {
+  color: var(--color-primary);
+}
+.pathways-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.pathways h1 {
+  margin: 8px 0;
+  font-size: clamp(26px, 4vw, 40px);
+}
+.pathways .pathways-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 99px;
+  text-decoration: none;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 700;
+}
+.pathways-status {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 80px;
+}
+.pathways-status p {
+  flex: 1 1 300px;
+}
+.pathways .pathways-status label {
+  flex: 0 1 230px;
+  min-width: 180px;
+}
+.pathways-summary,
+.pathways-note {
+  color: var(--color-muted-text);
+}
+.pathways-viewport {
+  height: clamp(320px, 52vh, 620px);
+  position: relative;
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.pathways-canvas {
+  width: 100%;
+  height: 100%;
+}
+.pathways-canvas canvas {
+  display: block;
+  touch-action: none;
+}
+.pathways-camera {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+}
+.pathways-camera button {
+  min-width: 44px;
+}
+.pathways-gesture {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  right: 12px;
+  margin: 0;
+  padding: 8px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  border-radius: 8px;
+  font-size: 12px;
+  pointer-events: none;
+}
+.pathways-fallback {
+  position: absolute;
+  inset: 70px 20px auto;
+}
+.pathways-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+.pathways-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pathways label {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.pathways input,
+.pathways select {
+  width: 100%;
+}
+.pathways ul {
+  list-style: none;
+  padding: 0;
+}
+.pathways-skill-list {
+  max-height: 390px;
+  overflow: auto;
+  padding: 4px !important;
+}
+.pathways li button {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 6px;
+}
+.pathways-skill-list button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.pathways button[aria-pressed="true"] {
+  background: var(--color-selected);
+  color: var(--color-on-selected);
+}
+.pathways small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.pathways-gem {
+  font-size: 16px;
+}
+.pathways-gem.stage-1 {
+  font-size: 22px;
+}
+.pathways-gem.stage-2 {
+  font-size: 28px;
+}
+.pathways-gem.stage-3 {
+  font-size: 34px;
+}
+.pathways-detail {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  overflow-wrap: anywhere;
+}
+.pathways-detail h2 {
+  margin-top: 0;
+}
+.pathways-note {
+  font-size: 13px;
+  margin-top: 24px;
+  line-height: 1.6;
+}
+@media (max-width: 650px) {
+  .pathways-panels {
+    grid-template-columns: 1fr;
+  }
+  .pathways-detail {
+    grid-row: 1;
+  }
+  .pathways-status {
+    gap: 8px;
+  }
+  .pathways-filters {
+    flex-direction: column;
+  }
+}
+
+.pathways h1,
+.pathways h2 {
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+.pathways-selection {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 60px;
+  margin: 0;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font-size: 13px;
+  pointer-events: none;
+}
+.pathways-estimates {
+  margin-top: 16px;
+}
+.pathways-estimates summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+}
