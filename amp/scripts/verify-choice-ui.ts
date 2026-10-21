@@ -1,3 +1,4 @@
+import { verifyLandscapeSmokeChecks } from "./verify-ui-viewports";
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
 import { spokenMath } from "../src/web/MathText";
@@ -56,7 +57,9 @@ const directory = new URL(
 );
 await mkdir(directory, { recursive: true });
 try {
+  await verifyLandscapeSmokeChecks(browser);
   const page = await browser.newPage({ hasTouch: true });
+  page.setDefaultTimeout(30_000);
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4390");
@@ -69,6 +72,7 @@ try {
     { width: 320, height: 568 },
     { width: 1024, height: 768 },
     { width: 844, height: 390 },
+    { width: 568, height: 320 },
     { width: 1280, height: 900 },
   ]) {
     await page.setViewportSize(size);
@@ -79,15 +83,31 @@ try {
       ...algebraTemplates.filter(
         (t) => t.requiredResponseCapability === "single-choice-v1",
       ),
-    ]) {
+    ].filter(
+      (_, index) =>
+        // The extra compact landscape case reproduces the nested-dialog and
+        // feedback-exit regressions; the five standard sizes cover every topic.
+        size.width !== 568 || index === 0,
+    )) {
+      console.log(
+        `Choice journey: ${template.id} at ${size.width}x${size.height}`,
+      );
       const batchPromise = page.waitForResponse(
         (response) =>
           response.url().endsWith("/batches") &&
           response.request().method() === "POST" &&
           response.request().postDataJSON()?.templateId === template.id,
       );
-      await startTopic(page, template.id);
-      const batch = await (await batchPromise).json();
+      const [batchResponse] = await Promise.all([
+        batchPromise,
+        startTopic(page, template.id),
+      ]).catch(async (error) => {
+        await page.screenshot({
+          path: new URL("failure.png", directory).pathname,
+        });
+        throw error;
+      });
+      const batch = await batchResponse.json();
       const problem: PublicProblem = batch.problems[0];
       assert.equal(problem.templateId, template.id);
       if (problem.response.kind !== "choice")
@@ -100,10 +120,11 @@ try {
         (option) => option.id === privateProblem.answer,
       )!;
       await page.locator(".problem-stage").waitFor();
-      if (size.width === 320)
-        await page
-          .getByRole("button", { name: "Choose an answer", exact: true })
-          .click();
+      const openAnswers = page.getByRole("button", {
+        name: "Choose an answer",
+        exact: true,
+      });
+      if (await openAnswers.isVisible()) await openAnswers.click();
       await page.getByRole("radio").first().waitFor();
       for (const option of problem.response.options) {
         assert.equal(
@@ -224,6 +245,18 @@ try {
         await page.getByRole("button", { name: "Check", exact: true }).click();
       }
       await page.locator(".feedback.incorrect").waitFor();
+      if (isPhoneLandscape(size)) {
+        const exit = await page
+          .getByRole("link", { name: "Your level", exact: true })
+          .boundingBox();
+        const feedback = await page
+          .locator(".feedback.incorrect")
+          .boundingBox();
+        assert.ok(
+          exit && feedback && exit.y + exit.height <= feedback.y,
+          `${template.id}: feedback must leave the practice exit reachable`,
+        );
+      }
       if (lostAcknowledgment) {
         assert.equal(submissions.length, 2);
         assert.deepEqual(submissions[0], submissions[1]);
@@ -274,7 +307,7 @@ try {
   }
   assert.deepEqual(errors, []);
   console.log(
-    "Choice radio, viewport, focused feedback and answer-label journeys passed at four sizes.",
+    "Choice radio, viewport, focused feedback and answer-label journeys passed at six sizes.",
   );
 } finally {
   await browser.close();

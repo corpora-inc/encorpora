@@ -365,15 +365,6 @@ header {
 .feedback .practice-tools {
   margin-top: -4px;
 }
-/* On that short screen the sheet docks to the screen, so scrolling the card
-   never carries it out of sight. */
-@media (max-height: 500px) {
-  .feedback {
-    position: fixed;
-    max-height: calc(100dvh - 24px);
-    overflow: auto;
-  }
-}
 /* Feedback surfaces come from the status tokens, so both themes keep AA text
    contrast: ink on the soft fill, the accent only on the mark and border. */
 .feedback.correct {
@@ -2055,5 +2046,17 @@ html[data-input="pointer"] :focus-visible {
     min-height: 0;
     overflow: auto;
     overscroll-behavior: contain;
+  }
+}
+
+/* Short screens keep feedback below the practice toolbar, including phones
+   whose edge-to-edge sheet otherwise overrides the height limits. */
+@media (max-height: 500px) {
+  .feedback,
+  .shell.immersive .feedback {
+    position: fixed;
+    min-height: 0;
+    max-height: calc(100dvh - 88px);
+    overflow: auto;
   }
 }
