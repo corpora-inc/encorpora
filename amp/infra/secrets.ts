@@ -4,6 +4,7 @@
  * run with and fails, naming the settings, when a declared group is missing or
  * a sign-in provider is only partly configured.
  */
+import { campaignOrigin } from "../src/analytics/campaign-routes.ts";
 import {
   authProviders,
   socialProviders,
@@ -20,6 +21,7 @@ export const settingGroups = {
     "AMP_HOSTED_PILOT_READY",
     "AMP_CONSENT_POLICY_FILE",
   ],
+  campaign: ["AMP_CAMPAIGN_SITE_ORIGIN"],
   mail: ["AMP_MAIL_RESEND_API_KEY", "AMP_MAIL_FROM"],
   stripe: [
     "AMP_STRIPE_ENABLED",
@@ -105,6 +107,14 @@ export function checkEnvironment(
       report.errors.push(
         `${group} is partly configured: missing ${missing.join(", ")} (set all or none)`,
       );
+    }
+  }
+
+  if (set("AMP_CAMPAIGN_SITE_ORIGIN")) {
+    try {
+      campaignOrigin(env.AMP_CAMPAIGN_SITE_ORIGIN);
+    } catch {
+      report.errors.push("AMP_CAMPAIGN_SITE_ORIGIN must be an HTTPS origin");
     }
   }
 

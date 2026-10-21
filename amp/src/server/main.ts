@@ -1,4 +1,8 @@
 import { isIP } from "node:net";
+import {
+  campaignOrigin,
+  registerCampaignRoutes,
+} from "../analytics/campaign-routes.js";
 import { offlineSigningConfiguration } from "../offline/signing.js";
 import { registerOfflineRoutes } from "../offline/routes.js";
 import { registerAnalyticsRoutes } from "../analytics/routes.js";
@@ -136,6 +140,10 @@ await registerOfflineRoutes(app, {
   signer: await offlineSigningConfiguration(process.env),
 });
 await registerAnalyticsRoutes(app, { pool: repository.pool });
+await registerCampaignRoutes(app, {
+  pool: repository.pool,
+  origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),
+});
 app.addHook("onClose", () => repository.close());
 for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {
