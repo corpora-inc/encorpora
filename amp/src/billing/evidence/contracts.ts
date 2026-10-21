@@ -52,6 +52,9 @@ export interface RefundFact {
 }
 export interface FinancialObservation {
   paymentMethod?: string;
+  cardLast4?: string;
+  billingName?: string;
+  invoiceCustomerName?: string;
   invoiceReason: "subscription_create" | "subscription_cycle";
   preTaxMinor: number;
   tax: TaxAmount[];
@@ -64,6 +67,9 @@ export type FinancialResult =
   | { kind: "review"; reason: string; creditNoteId?: string };
 export interface PaymentBaseline {
   paymentMethod?: string;
+  cardLast4?: string;
+  billingName?: string;
+  invoiceCustomerName?: string;
   invoiceReason: "subscription_create" | "subscription_cycle";
   invoiceId: string;
   chargeId: string;
