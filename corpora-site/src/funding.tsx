@@ -1,6 +1,6 @@
 import { StateIdentity, stateNames } from "./state-identity.js";
 import React from "./react.js";
-import type { SiteConfig } from "./config.js";
+import { formatPrice, type SiteConfig } from "./config.js";
 
 export type FundingRoute = SiteConfig["funding"][number];
 export const fundingLabels: Record<FundingRoute["kind"], string> = {
@@ -66,21 +66,37 @@ export function FundingPage({
   funding,
   supportEmail,
   appUrl,
+  plans = [],
 }: {
   funding: FundingRoute;
   supportEmail?: string;
   appUrl?: string;
+  plans?: SiteConfig["plans"];
 }) {
   const page = funding.page;
   if (!page) throw new Error("Funding page content is missing");
   const presentation = page.presentation;
+  const directPay = !!presentation && funding.kind === "classwallet-direct-pay";
+  const requestBody = directPay
+    ? [
+        "Hello Corpora,",
+        "",
+        `Please prepare an AMP Math invoice for ${funding.program}.`,
+        `Plan: ${plans.map((plan) => `${plan.interval === "year" ? "12 months" : "1 month"} (${formatPrice(plan)})`).join(" or ") || "please send available options"}`,
+        "Preferred start date: ",
+        "Email for AMP access (if different from this email): ",
+        "I have an AMP account: yes / no",
+        "",
+        "Please confirm the details needed for my invoice.",
+      ].join("\n")
+    : undefined;
   const actionHref =
     supportEmail && presentation
-      ? `mailto:${supportEmail}?subject=${encodeURIComponent(presentation.actionSubject)}`
+      ? `mailto:${supportEmail}?subject=${encodeURIComponent(presentation.actionSubject)}${requestBody ? `&body=${encodeURIComponent(requestBody)}` : ""}`
       : "/support/";
   return (
     <div
-      className={presentation ? "funding-guided" : undefined}
+      className={presentation ? `funding-guided${directPay ? " funding-directpay" : ""}` : undefined}
       data-campaign-program={presentation ? page.slug : undefined}
     >
       <nav className="breadcrumbs" aria-label="Breadcrumb">
@@ -110,7 +126,19 @@ export function FundingPage({
             </p>
           )}
           <h1>{presentation?.headline ?? funding.program}</h1>
-          <p className="lead">{page.summary}</p>
+          {!directPay && <p className="lead">{page.summary}</p>}
+          {directPay && plans.length > 0 && (
+            <div className="funding-plan-summary" aria-label="License prices">
+              <ul>
+                {plans.map((plan) => (
+                  <li key={plan.interval}>
+                    <strong>{formatPrice(plan)}</strong> / {plan.interval === "year" ? "12 months" : "1 month"}
+                  </li>
+                ))}
+              </ul>
+              <p className="fine">Per learner. Fixed access dates. No automatic renewal.</p>
+            </div>
+          )}
           {presentation && (
             <div className="funding-actions">
               <a
@@ -130,6 +158,12 @@ export function FundingPage({
               </a>
             </div>
           )}
+          {directPay && supportEmail && (
+            <p className="funding-email fine">
+              Or email <a href={actionHref}>{supportEmail}</a> with your plan and preferred start date. No AMP account required to request an invoice.
+            </p>
+          )}
+          {directPay && <p className="lead funding-purchase-summary">{page.summary}</p>}
           <p className="fine">
             Reviewed <time dateTime={page.reviewedOn}>{page.reviewedOn}</time>
           </p>
@@ -151,11 +185,11 @@ export function FundingPage({
         </aside>
         <div className="funding-article">
           <section aria-labelledby="program-eligibility">
-            <h2 id="program-eligibility">Who can use it</h2>
+            <h2 id="program-eligibility">{presentation ? "Who qualifies" : "Who can use it"}</h2>
             <p>{page.eligibility}</p>
           </section>
           <section aria-labelledby="program-steps">
-            <h2 id="program-steps">How to use this route</h2>
+            <h2 id="program-steps">{directPay ? "How to pay with EFA funds" : "How to use this route"}</h2>
             <p>{funding.instructions}</p>
             <ol className="funding-steps">
               {page.steps.map((step, i) => (
