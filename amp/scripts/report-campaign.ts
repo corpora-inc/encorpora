@@ -42,7 +42,7 @@ try {
             "Existing AMP first-touch campaign events. Purchase means a server-verified Stripe purchase, not an ESA/ClassWallet order. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
         },
         limitations: [
-          "Arkansas order totals are current states for funding requests created in the report window, not purchases attributed to an ad.",
+          "Arkansas order totals are current states for retained funding requests created in the report window, not purchases attributed to an ad. Expired unconverted requests are deleted, so request counts are not historical lead totals.",
           "Only retained offers with programId ar-efa and jurisdiction AR establish Arkansas classification. Unlinked commerce imports and email-only invoices are excluded.",
           "Prepared request records include submitted and cancelled records. Approved, settled, issued and refunded totals overlap; they are not additive sales.",
         ],

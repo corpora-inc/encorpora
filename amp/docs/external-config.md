@@ -130,8 +130,9 @@ unique people. An invoice-link click is not an invoice request, approved order
 or sale. Existing AMP campaign-attributed trial milestones and server-verified
 Stripe purchases are reported separately. Arkansas ESA order totals use only
 funding requests whose retained operator offer identifies `ar-efa` and `AR`,
-joined to imported ESA order states. These are program totals, not campaign
-attribution. Email-only invoices and unlinked imports are excluded; a click
+joined to imported ESA order states. These are current retained program records, not campaign
+attribution or historical lead totals. Expired unconverted funding requests
+are deleted by existing retention and are absent from these counts. Email-only invoices and unlinked imports are excluded; a click
 does not create a funding-request record. Approved, settled, issued and
 refunded counts overlap and must not be added as sales. No cross-domain visitor identifier is sent,
 so counts cannot establish an individual page-to-purchase journey. Reloads,
