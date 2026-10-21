@@ -32,7 +32,7 @@
         font-weight: 800;
         letter-spacing: -0.04em;
       }
-      /* Centered entry screens carry the brand inside their card. */
+      /* Header-free screens omit the first-paint brand bar too. */
       [data-frame="card"] .app-loading-bar {
         display: none;
       }
@@ -52,7 +52,7 @@
     <script>
       if (
         /^\/(sign-in|sign-up|reset-password)(\/|$)/.test(location.pathname) ||
-        /^\/try\/?$/.test(location.pathname)
+        /^\/try(?:\/map)?\/?$/.test(location.pathname)
       )
         document.documentElement.dataset.frame = "card";
     </script>
