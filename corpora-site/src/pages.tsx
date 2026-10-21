@@ -722,7 +722,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
   if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
   else if (route === "/esa/") content = <Esa config={config} />;
-  else if (funding) content = <FundingPage funding={funding} />;
+  else if (funding) content = <FundingPage funding={funding} supportEmail={config.supportEmail} />;
   else if (route === "/parents/") content = <Parents config={config} />;
   else if (route === "/schools/") content = <Schools config={config} />;
   else if (route === "/support/")

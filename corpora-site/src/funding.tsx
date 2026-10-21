@@ -61,11 +61,22 @@ export function fundingStructuredData(
     ],
   };
 }
-export function FundingPage({ funding }: { funding: FundingRoute }) {
+export function FundingPage({
+  funding,
+  supportEmail,
+}: {
+  funding: FundingRoute;
+  supportEmail?: string;
+}) {
   const page = funding.page;
   if (!page) throw new Error("Funding page content is missing");
+  const presentation = page.presentation;
+  const actionHref =
+    supportEmail && presentation
+      ? `mailto:${supportEmail}?subject=${encodeURIComponent(presentation.actionSubject)}`
+      : "/support/";
   return (
-    <>
+    <div className={presentation ? "funding-guided" : undefined}>
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <ol>
           <li>
@@ -83,10 +94,24 @@ export function FundingPage({ funding }: { funding: FundingRoute }) {
         <StateIdentity state={funding.state} />
         <div className="funding-intro-copy">
           <p className="eyebrow">
-            {stateNames[funding.state] ?? funding.state} · {fundingLabels[funding.kind]}
+            {stateNames[funding.state] ?? funding.state} ·{" "}
+            {fundingLabels[funding.kind]}
           </p>
-          <h1>{funding.program}</h1>
+          {presentation && (
+            <p className="funding-approved-label">{presentation.statusLabel}</p>
+          )}
+          <h1>{presentation?.headline ?? funding.program}</h1>
           <p className="lead">{page.summary}</p>
+          {presentation && (
+            <div className="funding-actions">
+              <a className="button" href={actionHref}>
+                {presentation.actionLabel} <span aria-hidden="true">↗</span>
+              </a>
+              <a className="funding-explore" href="/amp/">
+                Explore AMP Math <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          )}
           <p className="fine">
             Reviewed <time dateTime={page.reviewedOn}>{page.reviewedOn}</time>
           </p>
@@ -97,7 +122,9 @@ export function FundingPage({ funding }: { funding: FundingRoute }) {
           <p className="eyebrow">Before you buy</p>
           <h2 id="amp-program-status">AMP and this program</h2>
           <p>{page.ampStatus}</p>
-          <a href="/support/">Ask about your purchase ↗</a>
+          <a href={presentation ? actionHref : "/support/"}>
+            {presentation?.actionLabel ?? "Ask about your purchase"} ↗
+          </a>
           <div className="funding-product-links">
             <a href="/amp/#examples">Explore the mathematics</a>
             <a href="/amp/#coverage">See current coverage</a>
@@ -178,6 +205,6 @@ export function FundingPage({ funding }: { funding: FundingRoute }) {
           </section>
         </div>
       </div>
-    </>
+    </div>
   );
 }
