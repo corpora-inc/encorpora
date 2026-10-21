@@ -16,9 +16,11 @@ export const frameCard = styles.card;
 export function PageFrame({
   children,
   centered = false,
+  className = "",
 }: {
   children: ReactNode;
   centered?: boolean;
+  className?: string;
 }) {
   // index.html hides the first-paint bar on these screens; leaving them
   // restores it before the next screen paints.
@@ -31,12 +33,12 @@ export function PageFrame({
   }, [centered]);
   if (centered)
     return (
-      <div className={`${styles.frame} ${styles.centered}`}>
+      <div className={`${styles.frame} ${styles.centered} ${className}`}>
         <main className={styles.main}>{children}</main>
       </div>
     );
   return (
-    <div className={styles.frame}>
+    <div className={`${styles.frame} ${className}`}>
       <header className={styles.header}>
         <Link to="/" className={styles.brand} aria-label={`${brand.name} home`}>
           {brand.name}
@@ -54,7 +56,7 @@ export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
       className={`${styles.brand} ${styles.cardBrand}`}
       aria-label={`${brand.name} home`}
     >
-      {brand.name}
+      <span className={styles.wordmark}>{brand.name}</span>
       {expanded && (
         <>
           <span className={styles.brandDivider} aria-hidden="true">

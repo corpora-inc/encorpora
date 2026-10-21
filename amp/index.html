@@ -51,8 +51,10 @@
   <body>
     <script>
       if (
-        /^\/(sign-in|sign-up|reset-password)(\/|$)/.test(location.pathname) ||
-        /^\/try(?:\/map)?\/?$/.test(location.pathname)
+        /^\/(sign-in|sign-up|reset-password|start)(\/|$)/.test(
+          location.pathname,
+        ) ||
+        /^\/try(?:\/(map|plans))?\/?$/.test(location.pathname)
       )
         document.documentElement.dataset.frame = "card";
     </script>

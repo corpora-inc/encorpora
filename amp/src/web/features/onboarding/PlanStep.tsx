@@ -6,7 +6,7 @@ import { AppError } from "../../lib/AppError";
 import { chosenPlan, forgetPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { Checkbox } from "../../ui/Checkbox";
-import { frameCard } from "../../ui/PageFrame";
+import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import {
   emailConsentOptions,
@@ -86,6 +86,7 @@ export function PlanStep({
   if (failed)
     return (
       <section className={`${frameCard} ${styles.step}`} key="error">
+        <FrameBrand expanded />
         <Progress step={1} />
         <h1>Choose your plan</h1>
         <p role="alert">
@@ -110,6 +111,7 @@ export function PlanStep({
   if (available === false && emailPlus.data)
     return emailPlus.data.available ? (
       <section className={`${frameCard} ${styles.step}`} key="email-plus">
+        <FrameBrand expanded />
         <Progress step={1} />
         <h1>Confirm by email first</h1>
         <p>
@@ -124,6 +126,7 @@ export function PlanStep({
       </section>
     ) : (
       <section className={`${frameCard} ${styles.step}`} key="unavailable">
+        <FrameBrand expanded />
         <Toast message={exit.error ? exitFailed : ""} onDismiss={exit.reset} />
         <h1>Enrollment isn’t open yet</h1>
         <p>
@@ -155,6 +158,7 @@ export function PlanStep({
         key="loading"
         aria-busy="true"
       >
+        <FrameBrand expanded />
         <Progress step={1} />
         <h1>Choose your plan</h1>
         <p>Adaptive practice, lessons and printable books for one learner.</p>
@@ -176,6 +180,7 @@ export function PlanStep({
   const agreed = acknowledged === digest;
   return (
     <section className={`${frameCard} ${styles.step}`} key="ready">
+      <FrameBrand expanded />
       <Toast
         message={checkout.error?.message ?? ""}
         onDismiss={() => checkout.reset()}
