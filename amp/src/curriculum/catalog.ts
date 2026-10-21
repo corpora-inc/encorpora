@@ -506,7 +506,8 @@ geometric-modeling|geometry|modeling|Choose geometric models for design density 
 conditional-probability|geometry|probability|Calculate conditional probabilities from tables and sample spaces|compound-probability,two-way-tables|HSS,SAT.data
 independent-events|geometry|probability|Distinguish independence from mutually exclusive outcomes|conditional-probability|HSS,SAT.data
 rational-exponents|algebra-2|algebra|Connect rational exponents and radicals|exponent-laws,approximate-roots,factors-multiples|HSN,SAT.advanced-math
-radical-equations|algebra-2|algebra|Solve radical equations and reject extraneous candidates|rational-exponents,quadratic-equations|HSA,SAT.advanced-math
+square-root-equations|algebra-2|algebra|Isolate a square root and solve an equation with a constant right side|rational-exponents,linear-equations|HSA,SAT.advanced-math
+radical-equations|algebra-2|algebra|Solve radical equations and reject extraneous candidates|square-root-equations,quadratic-equations|HSA,SAT.advanced-math
 complex-numbers|algebra-2|number|Calculate with complex numbers and solve quadratics over them|quadratic-formula|HSN
 polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient and remainder|polynomial-arithmetic|HSA
 polynomial-zeros|algebra-2|algebra|Connect factors zeros and polynomial graphs|polynomial-division,complex-numbers|HSA,HSF,SAT.advanced-math
@@ -787,7 +788,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSA.REI.A.2",
     "Detect extraneous solutions",
-    "radical-equations,rational-equation-one-denominator,rational-equations",
+    "square-root-equations,radical-equations,rational-equation-one-denominator,rational-equations",
     false,
   ],
   [
@@ -3143,6 +3144,32 @@ for (const [skillId, suffix, description] of [
     "rational-equations",
     "linear-domain-check",
     "Choose all solutions for bounded linear-over-monic-linear equations, including excluded candidates, identities on the original domain and contradictions. Higher-degree and multiple denominators require separate assessment.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description: description!,
+      status: "implemented",
+    });
+
+// Bounded square-root equations; higher-degree radicands and multiple roots are separate tasks.
+for (const [skillId, suffix, description] of [
+  [
+    "square-root-equations",
+    "isolated-linear-radicand",
+    "Construct an exact rational solution when a square root of a nonconstant linear expression equals a nonnegative integer.",
+  ],
+  [
+    "square-root-equations",
+    "outside-constant",
+    "Undo an outside integer addition or subtraction, then construct an exact solution when the isolated square root equals a nonnegative integer.",
+  ],
+  [
+    "radical-equations",
+    "linear-right-side-check",
+    "Choose all real solutions of a square root of a nonconstant linear expression equaling a monic linear expression. Squaring yields two distinct integer candidates; check both, including zero, one or two valid solutions. Repeated or irrational candidates and multiple radicals are not assessed.",
   ],
 ])
   skills

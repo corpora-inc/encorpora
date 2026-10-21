@@ -1,3 +1,4 @@
+import { radicalEquationLessons } from "./radical-equation-lessons";
 import { rationalEquationLessons } from "./rational-equation-lessons";
 import { geometryProofLessons } from "./geometry-proof-lessons";
 import { rationalExpressionLessons } from "./rational-expression-lessons";
@@ -614,6 +615,7 @@ export const lessons: readonly Lesson[] = [
   ...inequalityLessons,
   ...linearSystemLessons,
   ...rationalExpressionLessons,
+  ...radicalEquationLessons,
   ...rationalEquationLessons,
   ...geometryProofLessons,
   ...nonlinearSystemLessons,

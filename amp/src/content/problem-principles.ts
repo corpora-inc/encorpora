@@ -1,3 +1,4 @@
+import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
@@ -109,6 +110,7 @@ export const principles: Record<string, string> = {
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
   ...rationalExpressionPrinciples,
+  ...radicalEquationPrinciples,
   ...rationalEquationPrinciples,
   ...geometryProofPrinciples,
   ...nonlinearSystemPrinciples,

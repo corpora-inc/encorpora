@@ -23,6 +23,36 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  "radical-equation-crossing": graph({
+    id: "g",
+    x: [-3, 5],
+    y: [-3, 5],
+    grid: 1,
+  })
+    .curve(f.sqrt(1, -2), { color: "accent" })
+    .line({ a: -1, b: 1, c: 0 }, { color: "warm" })
+    .point(2, 2, "(2, 2)")
+    .point(-1, 1, undefined, { color: "accent" })
+    .point(-1, -1, undefined, { color: "warm" })
+    .scene({
+      title:
+        "The curve y = √(x + 2) and line y = x meet at (2, 2). At x = −1 their heights are 1 and −1, so they do not meet.",
+      steps: [
+        step(
+          "The square-root curve has only nonnegative heights.",
+          act.trace("g.curve.0"),
+        ),
+        step(
+          "At $x = 2$, both sides have height 2.",
+          act.highlight("g.point.0"),
+        ),
+        step(
+          "At $x = -1$, the heights are 1 and −1. Squaring hides this difference.",
+          act.highlight("g.point.1"),
+          act.highlight("g.point.2"),
+        ),
+      ],
+    }),
   "rational-equation-crossing": graph({
     id: "g",
     x: [-2, 7],

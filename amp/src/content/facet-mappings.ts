@@ -53,6 +53,27 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "radical-equation-isolated",
+    facetId: "square-root-equations.isolated-linear-radicand",
+    extent: "partial",
+    rationale:
+      "Exact numeric solutions for bounded linear radicands and nonnegative integer root values; variable right sides and negative isolated constants require separate cases.",
+  },
+  {
+    templateId: "radical-equation-shifted",
+    facetId: "square-root-equations.outside-constant",
+    extent: "partial",
+    rationale:
+      "Undo an outside integer constant before squaring; nonnegative isolated root values only, with exact rational answers.",
+  },
+  {
+    templateId: "radical-equation-check",
+    facetId: "radical-equations.linear-right-side-check",
+    extent: "partial",
+    rationale:
+      "Select the full solution set from two distinct integer candidates, checking sign and original equality. Includes zero, one or two solutions. Does not assess constructing symbolic solution sets, repeated or irrational candidates, or multiple radicals.",
+  },
+  {
     templateId: "geometry-proof-step",
     facetId: "geometric-proof.angle-step-reasons",
     extent: "partial",
