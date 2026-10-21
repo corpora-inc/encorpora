@@ -13,6 +13,62 @@ export interface GapTask {
 /** Reconciled tasks, not an exhaustive state-standard inventory or completion claims. */
 export const initialGapTasks: readonly GapTask[] = [
   {
+    id: "proof-reasoning",
+    skillId: "geometric-proof",
+    sourceIds: ["HSG.CO.C.9", "HSG.CO.C.10"],
+    objective:
+      "Build from recognizing justified angle steps to completing short geometric proofs.",
+    existingSupport:
+      "geometry-proof-step recognizes four angle reasons from explicit givens; line/ray/segment naming already exists under lines-symmetry.",
+    acceptance: [
+      "Assess missing intermediate statements and reasons using definitions and equality properties.",
+      "Require explicit givens and check every theorem's conditions.",
+      "Distinguish reason recognition from constructing a proof.",
+    ],
+  },
+  {
+    id: "rational-equation-extension",
+    skillId: "rational-equations",
+    sourceIds: ["HSA.REI.A.2"],
+    objective:
+      "Extend original-domain checking to multiple and quadratic denominators.",
+    existingSupport:
+      "rational-equation-one-denominator constructs numeric answers; rational-equation-check distinguishes unique solutions, excluded candidates, identities on the original domain and contradictions for linear-over-linear equations.",
+    acceptance: [
+      "Add shared and distinct denominators without losing original exclusions.",
+      "Include equations producing multiple candidate roots and test each in the original equation.",
+      "Preserve exact rational arithmetic and independent original-domain checks.",
+    ],
+  },
+  {
+    id: "radians-and-unit-circle",
+    skillId: "radians-unit-circle",
+    sourceIds: ["HSF.TF.A.1", "HSF.TF.A.2"],
+    objective:
+      "Connect arc length, radian measure, unit-circle coordinates and trigonometric values.",
+    existingSupport:
+      "Arc/sector measurement and special right triangles have practice; the radian and unit-circle skill has no bound family.",
+    acceptance: [
+      "Start with angle as arc length divided by radius, then degrees/radians conversions.",
+      "Connect signed coordinates to sine and cosine, including quadrants and axis angles.",
+      "Use diagrams that preserve the angle direction, radius and labeled coordinates.",
+    ],
+  },
+  {
+    id: "radical-equation-check",
+    skillId: "radical-equations",
+    sourceIds: ["HSA.REI.A.2"],
+    objective:
+      "Solve radical equations and reject candidates introduced by squaring.",
+    existingSupport:
+      "Rational-exponent and quadratic-equation practice provides prerequisites; radical-equations has no bound family.",
+    acceptance: [
+      "Begin with one isolated square root and a constant, then a variable expression on the other side.",
+      "Check radicand domains and required signs before and after squaring.",
+      "Include no-solution cases and extraneous candidates checked in the original equation.",
+    ],
+  },
+  {
     id: "percent-points",
     skillId: "percent-change",
     sourceIds: ["7.RP.A.3"],

@@ -23,6 +23,35 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  "rational-equation-crossing": graph({
+    id: "g",
+    x: [-2, 7],
+    y: [-3, 6],
+    grid: 1,
+  })
+    .curve(f.rational([1, 1], [1, -2]), { color: "accent" })
+    .line({ a: 0, b: 1, c: 3 }, { color: "warm" })
+    .line({ a: 1, b: 0, c: 2 }, { dash: "dash", color: "warm" })
+    .point(3.5, 3, "(7/2, 3)")
+    .scene({
+      title:
+        "The curve y = (x + 1)/(x - 2) crosses y = 3 at (7/2, 3). The input x = 2 is excluded.",
+      steps: [
+        step(
+          "Trace the fraction's value $y = (x + 1)/(x - 2)$.",
+          act.trace("g.curve.0"),
+        ),
+        step(
+          "Find where the curve equals 3, on the line $y = 3$.",
+          act.highlight("g.line.0"),
+          act.highlight("g.point.0"),
+        ),
+        step(
+          "The denominator is zero at $x = 2$, so no curve point exists there.",
+          act.highlight("g.line.1"),
+        ),
+      ],
+    }),
   "rational-expression-hole": graph({
     id: "g",
     x: [-1, 7],

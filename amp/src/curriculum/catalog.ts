@@ -512,7 +512,8 @@ polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient 
 polynomial-zeros|algebra-2|algebra|Connect factors zeros and polynomial graphs|polynomial-division,complex-numbers|HSA,HSF,SAT.advanced-math
 rational-expression-domain|algebra-1|algebra|Find inputs excluded by a rational expression’s denominator|linear-equations,function-domain-range|HSA
 rational-expressions|algebra-2|algebra|Operate on rational expressions while retaining domain restrictions|rational-expression-domain,factor-quadratics,fraction-division|HSA,SAT.advanced-math
-rational-equations|algebra-2|algebra|Solve rational equations and check excluded values|rational-expressions|HSA,SAT.advanced-math
+rational-equation-one-denominator|algebra-2|algebra|Solve a rational equation with one variable denominator|rational-expression-domain,linear-equations,fraction-division|HSA,SAT.advanced-math
+rational-equations|algebra-2|algebra|Solve rational equations and check excluded values|rational-expressions,rational-equation-one-denominator|HSA,SAT.advanced-math
 nonlinear-intersection-reading|algebra-2|algebra|Read shared points of a line and parabola as simultaneous solutions|graph-solution-sets,quadratic-graphs|HSA
 nonlinear-systems|algebra-2|algebra|Solve systems involving linear and nonlinear relations|nonlinear-intersection-reading,linear-systems,quadratic-equations|HSA,SAT.advanced-math
 nonlinear-intersection-count|algebra-2|algebra|Count distinct real intersections by reducing a system to a quadratic|nonlinear-systems,quadratic-formula|HSA
@@ -786,7 +787,7 @@ const highSchoolRows: [string, string, string, boolean][] = [
   [
     "HSA.REI.A.2",
     "Detect extraneous solutions",
-    "radical-equations,rational-equations",
+    "radical-equations,rational-equation-one-denominator,rational-equations",
     false,
   ],
   [
@@ -3116,6 +3117,32 @@ for (const [skillId, suffix, description] of [
     "rational-expressions",
     "cancel-common-linear-factor",
     "Recognize a simplified quotient of bounded quadratics with one common monic linear factor, while retaining both distinct original excluded inputs. Does not assess addition, subtraction, multiplication or division of separate rational expressions.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description: description!,
+      status: "implemented",
+    });
+
+// These introductory slices do not establish full skill coverage.
+for (const [skillId, suffix, description] of [
+  [
+    "geometric-proof",
+    "angle-step-reasons",
+    "Choose a reason for one angle statement from explicit givens: vertical angles, a linear pair, corresponding angles on parallel lines, or triangle angle sum. Constructed and multistep proofs require separate assessment.",
+  ],
+  [
+    "rational-equation-one-denominator",
+    "constant-numerator",
+    "Construct an exact solution for a nonzero integer numerator over a monic linear denominator equaling a nonzero integer. Multiple denominators require separate assessment.",
+  ],
+  [
+    "rational-equations",
+    "linear-domain-check",
+    "Choose all solutions for bounded linear-over-monic-linear equations, including excluded candidates, identities on the original domain and contradictions. Higher-degree and multiple denominators require separate assessment.",
   ],
 ])
   skills

@@ -1,3 +1,5 @@
+import { rationalEquationPrinciples } from "./rational-equation-lessons";
+import { geometryProofPrinciples } from "./geometry-proof-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
@@ -107,6 +109,8 @@ export const principles: Record<string, string> = {
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
   ...rationalExpressionPrinciples,
+  ...rationalEquationPrinciples,
+  ...geometryProofPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":

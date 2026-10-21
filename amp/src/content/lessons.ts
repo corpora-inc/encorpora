@@ -1,3 +1,5 @@
+import { rationalEquationLessons } from "./rational-equation-lessons";
+import { geometryProofLessons } from "./geometry-proof-lessons";
 import { rationalExpressionLessons } from "./rational-expression-lessons";
 import { nonlinearSystemLessons } from "./nonlinear-system-lessons";
 import { areaVolumeLessons } from "./area-volume-lessons";
@@ -612,6 +614,8 @@ export const lessons: readonly Lesson[] = [
   ...inequalityLessons,
   ...linearSystemLessons,
   ...rationalExpressionLessons,
+  ...rationalEquationLessons,
+  ...geometryProofLessons,
   ...nonlinearSystemLessons,
   ...baseLessons,
   ...extendedLessons,

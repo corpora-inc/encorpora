@@ -1,4 +1,12 @@
 import {
+  rationalEquationTemplates,
+  generateRationalEquationProblem,
+} from "./rational-equation-practice";
+import {
+  geometryProofTemplates,
+  generateGeometryProofProblem,
+} from "./geometry-proof-practice";
+import {
   rationalExpressionTemplates,
   generateRationalExpressionProblem,
 } from "./rational-expression-practice";
@@ -387,6 +395,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...inequalityTemplates,
   ...linearSystemTemplates,
   ...rationalExpressionTemplates,
+  ...rationalEquationTemplates,
+  ...geometryProofTemplates,
   ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
@@ -581,6 +591,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...inequalityTemplates,
     ...linearSystemTemplates,
     ...rationalExpressionTemplates,
+    ...rationalEquationTemplates,
+    ...geometryProofTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -707,6 +719,10 @@ function generateRawProblem(
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (rationalEquationTemplates.some((t) => t.id === templateId))
+    return generateRationalEquationProblem(templateId, seed);
+  if (geometryProofTemplates.some((t) => t.id === templateId))
+    return generateGeometryProofProblem(templateId, seed);
   if (rationalExpressionTemplates.some((t) => t.id === templateId))
     return generateRationalExpressionProblem(templateId, seed);
   if (nonlinearSystemTemplates.some((t) => t.id === templateId))
