@@ -195,13 +195,18 @@ resource "aws_lambda_function" "verify" {
   function_name    = local.verify_lambda_name
   role             = aws_iam_role.verify_lambda.arn
   handler          = "verify_purchase.handler"
-  runtime          = "nodejs20.x"
+  runtime          = "nodejs22.x"
+  layers           = [aws_lambda_layer_version.tls_trust.arn]
   filename         = data.archive_file.verify_zip.output_path
   source_code_hash = data.archive_file.verify_zip.output_base64sha256
   timeout          = 10
   memory_size      = 256
   environment {
     variables = {
+      # Replace Node's bundled roots and prevent fallback to the managed CA path.
+      NODE_OPTIONS           = "--use-openssl-ca"
+      SSL_CERT_FILE          = "/opt/ca-certificates.pem"
+      SSL_CERT_DIR           = "/opt/empty-certs"
       PACK_BUCKET            = aws_s3_bucket.packs.bucket
       SECRETS_ARN            = aws_secretsmanager_secret.verify.arn
       DYNAMO_TABLE           = aws_dynamodb_table.corpan_iap.name
