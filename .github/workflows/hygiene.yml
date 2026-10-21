@@ -84,11 +84,13 @@ jobs:
           BASE: ${{ steps.range.outputs.base }}
           HEAD: ${{ steps.range.outputs.head }}
           # Exact repo-relative paths, one per line, that are allowed to carry a
-          # matching name. Empty today. Adding a line is a reviewed decision made
+          # matching name. Adding a line is a reviewed decision made
           # in the PR that needs it — the guard only looks at files a PR ADDS
           # relative to its merge base, so an entry is needed exactly once and
           # can be removed afterwards.
-          ALLOWLIST: ""
+          # Public Mozilla CA certificates, with source checksum and CA-only tests.
+          ALLOWLIST: |
+            corpan/infra/terraform/tls-trust/ca-certificates.pem
         run: |
           set -euo pipefail
           # THREE-dot. `pull_request.base.sha` is the base BRANCH TIP at event
