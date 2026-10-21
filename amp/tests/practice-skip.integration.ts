@@ -191,6 +191,50 @@ test(
         ).rows[0].n,
         1,
       );
+      // A fresh assessment must keep moving when every offered item is skipped.
+      // Use ordinary batches: a focused family intentionally bypasses selection.
+      const fresh = (
+        await app.inject({
+          method: "POST",
+          url: "/api/v1/trials",
+          payload: { birthYear: 2000 },
+        })
+      ).json();
+      const freshAuth = { authorization: `Trial ${fresh.token}` };
+      const freshBase = `/api/v1/learners/${fresh.learnerId}`;
+      const readFresh = async () =>
+        (
+          await app.inject({
+            method: "GET",
+            url: `${freshBase}/trial-progress`,
+            headers: freshAuth,
+          })
+        ).json();
+      const untested = (await readFresh()).frontier.current;
+      const seen = new Set<string>();
+      for (let i = 0; i < 7; i++) {
+        const batch = await post(`${freshBase}/batches`, freshAuth, {
+          count: 1,
+        });
+        assert.equal(batch.statusCode, 200, batch.body);
+        const offered = batch.json().problems[0];
+        assert.ok(
+          !seen.has(offered.templateId),
+          `repeated skipped opener ${offered.templateId}`,
+        );
+        seen.add(offered.templateId);
+        assert.equal(
+          (
+            await post(`${freshBase}/skips`, freshAuth, {
+              problemId: offered.id,
+            })
+          ).statusCode,
+          200,
+        );
+      }
+      const passed = await readFresh();
+      assert.equal(passed.totals.skipped, 7);
+      assert.deepEqual(passed.frontier.current, untested);
     } finally {
       await app.close();
       await repository.close();

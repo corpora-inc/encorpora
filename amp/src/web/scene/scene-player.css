@@ -77,3 +77,56 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+
+/* Short explanations keep both lines readable while the diagram guides focus. */
+.scene-player-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: start;
+  gap: var(--space-1);
+}
+.scene-player-prose {
+  display: grid;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.scene-player-prose li {
+  padding: var(--space-2);
+  border-inline-start: 2px solid transparent;
+  border-radius: var(--radius-control);
+  color: var(--color-muted-text);
+  transition:
+    color var(--motion-fast),
+    background-color var(--motion-fast),
+    border-color var(--motion-fast);
+}
+.scene-player-prose li[aria-current="step"] {
+  border-inline-start-color: var(--color-figure-accent);
+  background: var(--color-figure-accent-fill);
+  color: var(--color-on-surface-raised);
+}
+.scene-player-toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+.scene-player-toggle:hover {
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.scene-player-toggle:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

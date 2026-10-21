@@ -22,6 +22,10 @@ import {
   trialLearners,
 } from "./trial-simulation.fixture";
 import type { Outcome } from "../src/server/repository";
+import {
+  createPracticePolicy,
+  practiceParameters,
+} from "../src/learning/practice-policy";
 
 const now = Date.parse("2026-10-20T12:00:00Z");
 const nodes = new Map(skills.map((s) => [s.id, s]));
@@ -180,4 +184,114 @@ test("a skip uses a free problem by default, without changing correct or assiste
     strandEstimate(frontierOf(history), "algebra").answered,
   );
   assert.ok(Number.isFinite(targetGrade(frontierOf(history).overall)));
+});
+
+test("skipping a circle opener leaves the scripted slot and uses skip-aware selection", () => {
+  const attempts = [answer("linear-equation", 0)];
+  const frontier = frontierOf(attempts, 9);
+  const openers = Array.from({ length: 10 }, () => [
+    ["linear-equation"],
+    ["circle-equation"],
+    ["function-evaluation"],
+    ["two-way-missing"],
+  ]);
+  const options = {
+    templates,
+    skills,
+    attempts,
+    evidence: projectSkillEvidence(attempts),
+    frontier,
+    count: 1,
+    now,
+    learnerKey: "circle-skip",
+    openers,
+  };
+  assert.equal(
+    planMixedPractice({ ...options, seed: "before" })[0]!.template.id,
+    "circle-equation",
+  );
+  const skips = [skipOf("circle-equation", 30)];
+  for (let i = 0; i < 30; i++) {
+    const choice = planMixedPractice({
+      ...options,
+      skips,
+      seed: `circle-skip-${i}`,
+    })[0]!;
+    assert.notEqual(
+      choice.template.id,
+      "circle-equation",
+      "skip must leave the circle opener",
+    );
+    assert.notEqual(
+      choice.template.skillId,
+      byId.get("circle-equation")!.skillId,
+    );
+    assert.ok(
+      choice.selection,
+      "the adaptive skip rules also apply during opening questions",
+    );
+  }
+  assert.deepEqual(
+    frontierOf(attempts, 9),
+    frontier,
+    "skips do not reduce the estimate",
+  );
+});
+
+test("consecutive skips cannot pin a new learner to an opening question", () => {
+  for (let start = 0; start <= 9; start++) {
+    const skips: PracticeSkip[] = [];
+    const frontier = frontierOf([], start);
+    for (let i = 0; i < 8; i++) {
+      const choice = planMixedPractice({
+        templates,
+        skills,
+        attempts: [],
+        evidence: [],
+        frontier,
+        skips,
+        count: 1,
+        now: now + i * 60000,
+        seed: `skip-all-${start}-${i}`,
+        learnerKey: `skip-all-${start}`,
+      })[0]!;
+      assert.ok(
+        !skips.some((s) => s.templateId === choice.template.id),
+        `${start}: repeated skipped ${choice.template.id}`,
+      );
+      if (i > 0)
+        assert.ok(choice.selection, "skipping enters adaptive selection");
+      skips.push({
+        templateId: choice.template.id,
+        skillId: choice.template.skillId,
+        createdAt: new Date(now + i * 60000).toISOString(),
+      });
+    }
+    assert.equal(frontier.overall.answered, 0);
+  }
+});
+
+test("skips advance opening slots even with the recovery window disabled", () => {
+  const parameters = practiceParameters();
+  parameters.variety.skipEaseProblems = 0;
+  const attempts = [answer("linear-equation", 0)];
+  const choice = planMixedPractice({
+    policy: createPracticePolicy(parameters),
+    templates,
+    skills,
+    attempts,
+    evidence: projectSkillEvidence(attempts),
+    frontier: frontierOf(attempts, 9),
+    skips: [skipOf("circle-equation", 30)],
+    count: 1,
+    seed: "advance-skipped-opener",
+    now,
+    openers: Array.from({ length: 10 }, () => [
+      ["linear-equation"],
+      ["circle-equation"],
+      ["function-evaluation"],
+      ["two-way-missing"],
+    ]),
+  })[0]!;
+  assert.equal(choice.template.id, "function-evaluation");
 });

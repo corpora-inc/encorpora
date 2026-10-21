@@ -29,8 +29,9 @@ export const templateRole = (templateId: string): TemplateRole =>
 
 /** Placement lasts this many answers; it offers assessment items only. */
 export const PLACEMENT_ATTEMPTS = 20;
-/** The first answers follow a short scripted sequence before adaptive
- * selection takes over from the frontier. */
+/** The first problems follow a short scripted sequence before adaptive
+ * selection takes over from the frontier. Skips advance the sequence and
+ * temporarily hand selection to the adaptive skip-recovery rules. */
 export const OPENER_COUNT = 4;
 
 /** A grade band's scripted openers: OPENER_COUNT slots, each a small pool

@@ -265,18 +265,39 @@ export function planMixedPractice(options: {
   const skippedTemplates = new Set(
     session.filter((s) => s.skip).map((s) => s.templateId),
   );
+  // A neutral pass advances the opening sequence without becoming evidence.
+  const openingPosition =
+    answered + session.filter((entry) => entry.skip).length;
   for (let slot = 0; slot < options.count; slot++) {
-    const opener = openerCandidates({
-      expectedGrade: frontier.expected,
-      position: answered + slot,
-      learnerKey: options.learnerKey ?? seed,
-      slots: policy.placement.scriptedOpeners ? options.openers : [],
-    })
+    const history: Served[] = [
+      ...session,
+      ...chosen.map((c) => ({
+        templateId: c.template.id,
+        skillId: c.template.skillId,
+        strand: c.strand,
+      })),
+    ];
+    const lastSkip = history.map((s) => !!s.skip).lastIndexOf(true);
+    const recoveringFromSkip =
+      lastSkip >= 0 && history.length - lastSkip <= variety.skipEaseProblems;
+    const ease = recoveringFromSkip ? variety.skipEase : 0;
+    // Openers must not bypass the configured variety and easing after a pass.
+    const opener = (
+      recoveringFromSkip
+        ? []
+        : openerCandidates({
+            expectedGrade: frontier.expected,
+            position: openingPosition + slot,
+            learnerKey: options.learnerKey ?? seed,
+            slots: policy.placement.scriptedOpeners ? options.openers : [],
+          })
+    )
       .map((id) => pool.find((template) => template.id === id))
       .find(
         (template) =>
           !!template &&
           !attemptedTemplates.has(template.id) &&
+          (!variety.excludeSkipped || !skippedTemplates.has(template.id)) &&
           !chosen.some((entry) => entry.template.id === template.id),
       );
     if (opener) {
@@ -291,26 +312,12 @@ export function planMixedPractice(options: {
     const lastSkill = lastChoice?.template.skillId ?? latest?.skillId;
     const lastStrand =
       lastChoice?.strand ?? (latest ? strandOf(latest.skillId) : null);
-    const history: Served[] = [
-      ...session,
-      ...chosen.map((c) => ({
-        templateId: c.template.id,
-        skillId: c.template.skillId,
-        strand: c.strand,
-      })),
-    ];
     const byTemplate = recency(
       history,
       (s) => s.templateId,
       variety.templateWindow - 1,
     );
     const bySkill = recency(history, (s) => s.skillId, 0);
-    // After a skip, the next problems step slightly easier.
-    const lastSkip = history.map((s) => !!s.skip).lastIndexOf(true);
-    const ease =
-      lastSkip >= 0 && history.length - lastSkip <= variety.skipEaseProblems
-        ? variety.skipEase
-        : 0;
     // A skipped skill comes back after other work, through another template.
     const requeued = new Set(
       history
