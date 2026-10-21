@@ -105,3 +105,41 @@ A failure in any of these changes nothing in the cluster. Entra is applied by ha
 - **Google, GitHub and Apple:** create or edit their apps by hand from `infra/auth-providers.ts`, then put the client values in the environment's secret.
 - **Microsoft:** the one-time credential step above. After that, run `entra plan` and `entra apply`.
 - **Stripe keys and prices:** creating a restricted key, and any change to what AMP charges, stay in the Stripe Dashboard. A price change is a new price and a reviewed migration.
+
+## Public campaign counts
+
+`AMP_CAMPAIGN_SITE_ORIGIN` is an optional HTTPS origin for the public marketing
+site. Without it, `/api/v1/campaign-events` is not registered. Set the exact
+marketing origin in the existing external environment configuration, run
+`npm run infra -- env check --env <env>`, and deploy the API with migration
+`0026-campaign-counts.sql` before publishing the campaign client. This setting
+is not an authentication credential and must not include a path or wildcard.
+
+The endpoint accepts only a fixed Arkansas campaign vocabulary. It writes daily
+aggregate counts without browser, learner or account identifiers. CORS accepts
+only the configured origin; requests omit credentials. Browser Global Privacy
+Control and Do Not Track suppress collection and campaign-label forwarding.
+Normal request handling still receives the connection address; measurement does
+not write that address into the campaign table.
+
+Use `npm run report:campaign -- 30` with the deployment's existing database
+configuration to inspect the last 30 UTC days. The report rejects windows beyond
+the existing funnel-event retention period, so older campaign counts cannot be
+compared against deleted conversion events. Page views are page loads, not
+unique people. An invoice-link click is not an invoice request, approved order
+or sale. Existing AMP campaign-attributed trial milestones and server-verified
+Stripe purchases are reported separately. Arkansas ESA order totals use only
+funding requests whose retained operator offer identifies `ar-efa` and `AR`,
+joined to imported ESA order states. These are current retained program records, not campaign
+attribution or historical lead totals. Expired unconverted funding requests
+are deleted by existing retention and are absent from these counts. Email-only invoices and unlinked imports are excluded; a click
+does not create a funding-request record. Approved, settled, issued and
+refunded counts overlap and must not be added as sales. No cross-domain visitor identifier is sent,
+so counts cannot establish an individual page-to-purchase journey. Reloads,
+bots and browser/network blocking affect counts.
+
+Permitted launch tags are `utm_campaign=ar-efa-launch`; source `facebook`,
+`instagram`, `google`, `email` or `youtube`; and medium `paid-social`, `cpc`,
+`email` or `organic-social`. Unrecognized labels are discarded. The static
+client sends only state, program, campaign, source, medium and action, never
+full URLs, arbitrary query parameters, answers, names, birth dates or emails.

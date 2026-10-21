@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Navigate, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { CAMPAIGN_SOURCES, CAMPAIGN_MEDIA } from "../../../analytics/campaign";
+import { landingProps, trackOnce } from "../../lib/analytics";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
 import { AppError } from "../../lib/AppError";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
@@ -13,6 +15,25 @@ import styles from "./Trial.module.css";
 /** `/try`: a birth year starts anonymous free practice. A trial already
  * started on this device resumes where it left off. */
 export function TryStart() {
+  // Only this fixed campaign contract crosses from the public site. No visitor ID.
+  useEffect(() => {
+    const privacy = navigator as Navigator & { globalPrivacyControl?: boolean };
+    if (privacy.globalPrivacyControl || navigator.doNotTrack === "1") return;
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("utm_campaign") !== "ar-efa-launch") return;
+    const source = query.get("utm_source");
+    const medium = query.get("utm_medium");
+    trackOnce("landing", "landing_view", {
+      ...landingProps({ search: "", hostname: window.location.hostname }),
+      utmCampaign: "ar-efa-launch",
+      ...((CAMPAIGN_SOURCES as readonly string[]).includes(source ?? "")
+        ? { utmSource: source! }
+        : {}),
+      ...((CAMPAIGN_MEDIA as readonly string[]).includes(medium ?? "")
+        ? { utmMedium: medium! }
+        : {}),
+    });
+  }, []);
   const session = useQuery(trialSessionOptions);
   if (session.error)
     return (
