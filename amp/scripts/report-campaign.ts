@@ -1,9 +1,12 @@
+import { RETENTION } from "../src/privacy/retention-periods.js";
 import { createDatabasePool } from "../src/server/database.js";
 
 /** Aggregate campaign report. No individual visitor/account data is emitted. */
 const days = Number(process.argv[2] ?? 30);
-if (!Number.isInteger(days) || days < 1 || days > 3650)
-  throw new Error("Days must be 1–3650");
+if (!Number.isInteger(days) || days < 1 || days > RETENTION.funnelEventDays)
+  throw new Error(
+    `Days must be 1–${RETENTION.funnelEventDays}, the available funnel-retention window`,
+  );
 if (!process.env.AMP_DATABASE_URL)
   throw new Error("AMP_DATABASE_URL is required");
 const pool = createDatabasePool({

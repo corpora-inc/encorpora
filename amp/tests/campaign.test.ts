@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { spawnSync } from "node:child_process";
+import { RETENTION } from "../src/privacy/retention-periods";
 import Fastify from "fastify";
 import type { Pool } from "pg";
 import { campaignEventSchema } from "../src/analytics/campaign";
@@ -104,4 +106,18 @@ test("campaign endpoint requires configured origin and writes only validated agg
   } finally {
     await app.close();
   }
+});
+
+test("campaign report refuses a window beyond retained conversion events", () => {
+  const run = (days: number) =>
+    spawnSync(
+      process.execPath,
+      ["--import", "tsx", "scripts/report-campaign.ts", String(days)],
+      { encoding: "utf8", env: { ...process.env, AMP_DATABASE_URL: "" } },
+    );
+  const tooLong = run(RETENTION.funnelEventDays + 1);
+  assert.notEqual(tooLong.status, 0);
+  assert.match(tooLong.stderr, /available funnel-retention window/);
+  const allowed = run(RETENTION.funnelEventDays);
+  assert.match(allowed.stderr, /AMP_DATABASE_URL is required/);
 });

@@ -123,7 +123,9 @@ Normal request handling still receives the connection address; measurement does
 not write that address into the campaign table.
 
 Use `npm run report:campaign -- 30` with the deployment's existing database
-configuration to inspect the last 30 UTC days. Page views are page loads, not
+configuration to inspect the last 30 UTC days. The report rejects windows beyond
+the existing funnel-event retention period, so older campaign counts cannot be
+compared against deleted conversion events. Page views are page loads, not
 unique people. An invoice-link click is not an invoice request, approved order
 or sale. Existing AMP campaign-attributed trial milestones and server-verified
 purchases are reported separately. No cross-domain visitor identifier is sent,
