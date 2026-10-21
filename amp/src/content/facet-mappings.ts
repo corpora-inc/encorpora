@@ -53,6 +53,27 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "geometry-proof-step",
+    facetId: "geometric-proof.angle-step-reasons",
+    extent: "partial",
+    rationale:
+      "Recognize a justified angle statement in four configurations; constructed and multistep proofs require separate assessment.",
+  },
+  {
+    templateId: "rational-equation-one-denominator",
+    facetId: "rational-equation-one-denominator.constant-numerator",
+    extent: "partial",
+    rationale:
+      "Construct an exact numeric solution with one linear denominator; general rational equations require more families.",
+  },
+  {
+    templateId: "rational-equation-check",
+    facetId: "rational-equations.linear-domain-check",
+    extent: "partial",
+    rationale:
+      "Choose all solutions of a bounded linear-over-linear equation; higher-degree and multiple denominators require separate assessment.",
+  },
+  {
     templateId: "rational-expression-domain",
     facetId: "rational-expression-domain.factored-denominator",
     extent: "partial",
