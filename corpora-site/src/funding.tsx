@@ -160,7 +160,7 @@ export function FundingPage({
           )}
           {directPay && supportEmail && (
             <p className="funding-email fine">
-              Or email <a href={actionHref}>{supportEmail}</a> with your plan and preferred start date. No AMP account required to request an invoice.
+              Or email <a href={actionHref} data-campaign-action="invoice">{supportEmail}</a> with your plan and preferred start date. No AMP account required to request an invoice.
             </p>
           )}
           {directPay && <p className="lead funding-purchase-summary">{page.summary}</p>}
@@ -174,7 +174,7 @@ export function FundingPage({
           <p className="eyebrow">Before you buy</p>
           <h2 id="amp-program-status">AMP and this program</h2>
           <p>{page.ampStatus}</p>
-          <a href={presentation ? actionHref : "/support/"}>
+          <a href={presentation ? actionHref : "/support/"} data-campaign-action={presentation ? "invoice" : undefined}>
             {presentation?.actionLabel ?? "Ask about your purchase"} ↗
           </a>
           <div className="funding-product-links">

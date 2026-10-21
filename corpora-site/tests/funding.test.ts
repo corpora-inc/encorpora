@@ -178,6 +178,7 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
     assert.ok(html.includes("No automatic renewal."));
     assert.ok(html.includes("How to pay with EFA funds"));
     assert.ok(html.includes("support@example.invalid</a>"));
+    assert.equal((html.match(/data-campaign-action="invoice"/g) ?? []).length, 3);
     const href = html.match(/href="(mailto:[^"]+)"/)?.[1];
     assert.ok(href);
     const body = new URL(href.replaceAll("&amp;", "&")).searchParams.get("body");

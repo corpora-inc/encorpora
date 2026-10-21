@@ -1132,7 +1132,7 @@ footer > .fine {
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--surface)), var(--surface));
   gap: 32px;
 }
-.funding-guided .funding-intro h1 { max-width: 18ch; }
+.funding-guided .funding-intro h1 { max-width: 18ch; text-wrap: balance; }
 .funding-guided .funding-layout { margin-block-start: clamp(32px, 4vw, 56px); }
 .funding-approved-label {
   display: inline-block;
