@@ -97,6 +97,10 @@ test("financial amounts reconcile inclusive and exclusive taxes without price su
   assert.equal(inclusive.kind, "verified");
   for (const change of [
     { total_excluding_tax: null },
+    { amount_shipping: 100 },
+    { pre_payment_credit_notes_amount: 100 },
+    { post_payment_credit_notes_amount: 100 },
+    { subtotal_excluding_tax: 11900 },
     { total_taxes: [{ amount: 1, tax_behavior: "exclusive" }] },
     { post_payment_credit_notes_amount: 1 },
     { starting_balance: -1 },

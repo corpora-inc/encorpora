@@ -173,7 +173,13 @@ export async function paymentPdf(
     10,
   );
   if (y < 190) newPage();
-  text(`Amount before tax: ${paymentMoney(b.preTaxMinor)}`, 11, true);
+  // Verified invoices contain exactly one catalog item. The gateway and
+  // normalizer reject discounts, shipping, credits and additional invoice
+  // lines before a baseline is stored. These zeros are that invariant, not
+  // estimates inferred from the current catalog price.
+  text(`Subtotal before tax: ${paymentMoney(b.preTaxMinor)}`, 11, true);
+  text("Discounts: $0.00", 11);
+  text("Additional fees: $0.00", 11);
   text(
     `Tax: ${paymentMoney(b.tax.reduce((sum, item) => sum + item.amountMinor, 0))}`,
     11,
