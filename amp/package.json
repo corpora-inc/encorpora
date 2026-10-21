@@ -11,7 +11,7 @@
     "dev:api": "tsx watch src/server/main.ts",
     "start": "tsx src/server/main.ts",
     "db:migrate": "tsx scripts/migrate.ts",
-    "test": "tsx --test tests/*.test.ts",
+    "test": "node scripts/test-suite.mjs all",
     "test:placement-sim": "tsx --test tests/*.sim.ts",
     "test:db": "tsx scripts/test-database-preflight.ts && tsx --test tests/*.integration.ts",
     "test:ui": "tsx scripts/verify-ui.ts && npm run test:calculator-ui && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui",
@@ -56,7 +56,9 @@
     "test:flag-ui": "tsx scripts/verify-problem-flag-ui.ts",
     "test:skip-ui": "tsx scripts/verify-skip-ui.ts",
     "test:level-ui": "tsx scripts/verify-level-check-ui.ts",
-    "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features"
+    "test:foundation": "vitest run --environment jsdom src/web/lib/__tests__ src/web/ui/__tests__ src/web/features",
+    "test:core": "node scripts/test-suite.mjs core",
+    "test:inventory": "node scripts/test-suite.mjs inventory"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

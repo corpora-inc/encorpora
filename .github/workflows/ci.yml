@@ -29,6 +29,7 @@ jobs:
     outputs:
       corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
+      amp_inventory: ${{ steps.filter.outputs.amp_inventory }}
       amp_native: ${{ steps.filter.outputs.amp_native }}
       aha_app: ${{ steps.filter.outputs.aha_app }}
       ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
@@ -100,7 +101,13 @@ jobs:
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           # The static site imports AMP figures, content, audit and theme at build time.
           set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
-          set_output amp '^(amp/|web/io/data/apps\.json$|\.github/workflows/ci\.yml$)'
+          set_output amp '^(amp/|web/io/data/apps\.json$|\.github/scripts/(amp_inventory_paths|test_amp_inventory_paths)\.py$|\.github/workflows/ci\.yml$)'
+          # Full inventory on main/manual runs; changed input selection on PRs/queue.
+          if [ "${EVENT_NAME}" = "push" ] || [ "${run_all}" = "true" ]; then
+            echo "amp_inventory=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "amp_inventory=$(python3 .github/scripts/amp_inventory_paths.py < "${changed}")" >> "${GITHUB_OUTPUT}"
+          fi
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/(ci|adversarial-review)\.yml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
@@ -1380,7 +1387,11 @@ jobs:
       - name: Install PDF inspection tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
-      - run: npm test
+      - name: Application and focused math tests
+        run: npm run test:core
+      - name: Full independent mathematics inventory
+        if: needs.changes.outputs.amp_inventory == 'true'
+        run: npm run test:inventory
       # No color literal outside src/web/ui/tokens.css.
       - run: npm run lint:colors
       - run: npm run build

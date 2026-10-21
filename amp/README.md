@@ -39,6 +39,20 @@ Database tests require a disposable database; they create and remove their own f
 
 Publications are written to `artifacts/publications/` in Letter and A4 formats. Each workbook has a matching solution volume with the same deterministic problems. The lesson library offers authenticated PDF downloads after these artifacts have been built. PDFs and screenshots are generated artifacts, not Git source files.
 
+
+## Test suites
+
+| Command | Coverage | When required |
+| --- | --- | --- |
+| `npm run test:core` | Application unit tests and focused mathematics tests | Every AMP pull request and merge queue run |
+| `npm run test:inventory` | Full independent mathematics inventory and deliberate-corruption checks | Inventory-input changes before merge; every main/manual AMP run |
+| `npm test` | Both unit suites | Complete local verification |
+| `npm run test:db` | Database integration and access/payment isolation | Every AMP CI run; locally for affected persistence, money, consent and privacy paths |
+
+The inventory selector in `.github/scripts/amp_inventory_paths.py` exempts explicitly listed application areas, ordinary unit-test files and documentation. Mathematics, content, publications, scripts, dependencies and unknown AMP areas select the full inventory. Changes to the selector or CI workflow also select it. Keep this boundary current when adding dependencies between application and mathematics code.
+
+The existing `ci-gate` aggregates results; no path-specific job is an independent required status. Main also runs the browser and content checks. Production advances only to a main commit that passes all three AMP release jobs; failures are fixed forward through another PR.
+
 ## Architecture
 
 - `src/math` defines bounded mathematical structures, runtime contracts, deterministic template generation, and exact numeric grading.

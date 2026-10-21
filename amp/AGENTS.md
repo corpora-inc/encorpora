@@ -8,9 +8,9 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Parent/learner authorization must be enforced on the server. Development authentication is loopback-only and forbidden in production.
 - Content authors and independent reviewers are separate workers. Do not certify a generator by calling its own answer function twice.
 - Public copy explains the current product without conversation history. Provider approval requires evidence from the specific program.
-- **Local gates (fast-building stage, fail forward):** before pushing, run `npm run tsc`, `npm test`, and only the database or browser scripts for what you changed. Don't run the whole `test:family-ui` chain locally; CI runs it.
+- **Local gates (fast-building stage, fail forward):** before pushing, run `npm run tsc`, `npm run test:core`, and only the database or browser scripts for what you changed. Run `npm run test:inventory` for math, content, publication, script, dependency or other inventory-input changes; `npm test` runs both suites. The CI selector is `.github/scripts/amp_inventory_paths.py`; unknown AMP areas include the inventory check. Don't run the whole `test:family-ui` chain locally; CI runs it.
 - **CI** runs three parallel jobs through the ci-gate aggregate:
-  - `amp` (unit, build, database) gates every PR and the merge queue;
+  - `amp` (core unit, build, database, plus inventory when its inputs change) gates every PR and the merge queue; main and manual AMP runs include the full inventory;
   - `amp-browser` and `amp-content` run only after merge, on main.
 
   A red main files or updates one issue. Fix those failures forward in batches with a small PR, not a revert, unless prod is broken. Before a launch or release, everything must be green.

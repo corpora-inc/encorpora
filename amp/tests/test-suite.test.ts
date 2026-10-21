@@ -1,0 +1,38 @@
+import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import { readdirSync } from "node:fs";
+import test from "node:test";
+const runner = new URL("../scripts/test-suite.mjs", import.meta.url);
+function list(suite: string): string[] {
+  const result = spawnSync(
+    process.execPath,
+    [runner.pathname, suite, "--list"],
+    { encoding: "utf8" },
+  );
+  assert.equal(result.status, 0, result.stderr);
+  return JSON.parse(result.stdout);
+}
+test("core and inventory partition every unit test exactly once", () => {
+  const core = list("core");
+  const inventory = list("inventory");
+  const all = list("all");
+  assert.deepEqual(inventory, ["independent-review.test.ts"]);
+  assert.ok(core.length > 0);
+  assert.equal(
+    core.some((name) => inventory.includes(name)),
+    false,
+  );
+  assert.deepEqual([...core, ...inventory].sort(), all);
+  assert.deepEqual(
+    all,
+    readdirSync(new URL("./", import.meta.url))
+      .filter((name) => name.endsWith(".test.ts"))
+      .sort(),
+  );
+});
+test("unknown suites fail instead of skipping tests", () => {
+  const result = spawnSync(process.execPath, [runner.pathname, "typo"], {
+    encoding: "utf8",
+  });
+  assert.notEqual(result.status, 0);
+});
