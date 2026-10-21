@@ -137,6 +137,18 @@ export function Legal({
             deliver pages and protect the service. Links to the AMP app and
             external program websites take you to separate services.
           </p>
+          <h2>Education-fund purchase measurement</h2>
+          <p>
+            When campaign labels accompany an Arkansas funding purchase request,
+            we retain the fixed campaign, source and medium with that request
+            and count verified order, payment and refund transitions in daily
+            totals. These totals contain no parent, learner or order identifier.
+            Unconverted requests expire; linked request labels follow the
+            financial-record retention period and appear in the parent’s family
+            export. We do not send these records to an advertising platform.
+            Global Privacy Control and Do Not Track prevent capturing new
+            campaign labels with a request.
+          </p>
           <h2>Free practice</h2>
           <p>
             Free practice, a short placement followed by adaptive practice up to

@@ -7,6 +7,7 @@ import {
   fundingOfferSchema,
   presentOffer,
   FundingPurchaseError,
+  createFundingRequestSchema,
   type FundingOffer,
 } from "./contracts.js";
 import { FundingPurchaseRepository } from "./repository.js";
@@ -57,9 +58,23 @@ export async function registerFundingPurchaseRoutes(
     }));
     scope.post("/api/v1/funding/requests", async (request) => {
       const account = await options.authenticate(request);
+      let body = request.body;
+      if (
+        (request.headers["sec-gpc"] === "1" || request.headers.dnt === "1") &&
+        body !== null &&
+        typeof body === "object" &&
+        !Array.isArray(body)
+      ) {
+        const { campaignAttribution: _ignored, ...purchase } = body as Record<
+          string,
+          unknown
+        >;
+        body = purchase;
+      }
+      const input = createFundingRequestSchema.parse(body);
       return repository.present(
         account,
-        await repository.create(account, request.body),
+        await repository.create(account, input),
       );
     });
     scope.get("/api/v1/funding/requests/:id", async (request) => {

@@ -30,6 +30,12 @@ try {
     [days - 1],
   );
   const arkansasOrders = await arkansasOrderSummary(pool, days);
+  const fundedCampaign = await pool.query(
+    `SELECT day,campaign,source,medium,action,count FROM amp_funded_campaign_daily
+     WHERE day >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
+     ORDER BY day,campaign,source,medium,action`,
+    [days - 1],
+  );
   console.log(
     JSON.stringify(
       {
@@ -40,13 +46,17 @@ try {
             "Opening an email link, not an invoice request, approved order, or sale.",
           funnel:
             "Existing AMP first-touch campaign events. Purchase means a server-verified Stripe purchase, not an ESA/ClassWallet order. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
+          fundedCampaign:
+            "Historical server-verified transitions for Arkansas requests with fixed labels supplied at creation. Request preparation uses its creation date; order/refund events use their evidence date in UTC. Each action counts once per request. Labels are self-reported campaign context, not independently verified ad clicks or proof of causal lift. No ad-platform export.",
         },
         limitations: [
           "Arkansas order totals are current states for retained funding requests created in the report window, not purchases attributed to an ad. Expired unconverted requests are deleted, so request counts are not historical lead totals.",
           "Only retained offers with programId ar-efa and jurisdiction AR establish Arkansas classification. Unlinked commerce imports and email-only invoices are excluded.",
           "Prepared request records include submitted and cancelled records. Approved, settled, issued and refunded totals overlap; they are not additive sales.",
+          "Funded campaign counts include only requests created with attribution. Existing requests are not backfilled. Count of settled orders is gross; refund_completed is distinct, not revenue or net sales. Requests and payments may occur in different report windows.",
         ],
         arkansasOrders,
+        fundedCampaign: fundedCampaign.rows,
         activity: activity.rows,
         funnel: funnel.rows,
       },

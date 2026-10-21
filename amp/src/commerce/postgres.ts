@@ -1,6 +1,7 @@
 import { recordTrialEvent } from "../server/trial-progress.js";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
+import { recordFundedCampaignEvent } from "../analytics/funded-campaign.js";
 import type {
   CommerceEvent,
   CommerceState,
@@ -292,5 +293,6 @@ export async function applyCommerceEventInTransaction(
   // A conversion requires settled money, not a checkout click or a free grant.
   if (event.type === "order.settled" && event.amountMinor > 0)
     await recordTrialEvent(client, target.license.learnerId, "purchase");
+  await recordFundedCampaignEvent(client, event);
   return next;
 }

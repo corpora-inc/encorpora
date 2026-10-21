@@ -433,7 +433,7 @@ export class FamilyRepository {
       )
         datasets.push([
           "funding-request",
-          "SELECT jsonb_build_object('id',id,'learnerId',learner_id,'createdAt',created_at,'expiresAt',expires_at,'status',status,'orderId',order_id,'offer',offer_snapshot - 'approvals' - 'enabled' - 'documentPolicyReference' - 'creditAgreementReference') AS value FROM amp_funding_requests WHERE account_id=$1 ORDER BY created_at,id",
+          "SELECT jsonb_build_object('id',id,'learnerId',learner_id,'createdAt',created_at,'expiresAt',expires_at,'status',status,'orderId',order_id,'campaignAttribution',campaign_attribution,'offer',offer_snapshot - 'approvals' - 'enabled' - 'documentPolicyReference' - 'creditAgreementReference') AS value FROM amp_funding_requests WHERE account_id=$1 ORDER BY created_at,id",
         ]);
       if (
         (

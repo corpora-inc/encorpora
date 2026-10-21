@@ -1,5 +1,6 @@
 import { canonicalCommercePayload } from "../commerce/ledger.js";
 import { randomUUID } from "node:crypto";
+import { incrementFundedCampaign } from "../analytics/funded-campaign.js";
 import type { Pool, PoolClient } from "pg";
 import {
   lockLearningAccount,
@@ -98,11 +99,16 @@ export class FundingPurchaseRepository {
         (o) => o.id === data.offerId && o.revision === data.offerRevision,
       );
       if (!offer) throw new FundingPurchaseError(409, "offer_unavailable");
+      if (
+        data.campaignAttribution &&
+        (offer.programId !== "ar-efa" || offer.jurisdiction !== "AR")
+      )
+        throw new FundingPurchaseError(400, "campaign_program_mismatch");
       const expires = new Date(
         Math.min(at.getTime() + 30 * 86400000, Date.parse(offer.validUntil)),
       );
       const result = await client.query(
-        "INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",
+        "INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,campaign_attribution) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *",
         [
           randomUUID(),
           account,
@@ -113,8 +119,18 @@ export class FundingPurchaseRepository {
           JSON.stringify(offer),
           at.toISOString(),
           expires.toISOString(),
+          data.campaignAttribution
+            ? JSON.stringify(data.campaignAttribution)
+            : null,
         ],
       );
+      if (data.campaignAttribution)
+        await incrementFundedCampaign(
+          client,
+          data.campaignAttribution,
+          "request_prepared",
+          at.toISOString(),
+        );
       return fundingRequestRow(result.rows[0]);
     });
   }
