@@ -1,3 +1,7 @@
+import {
+  assertPracticePolicy,
+  type PracticePolicy,
+} from "../learning/practice-policy.js";
 import fp from "fastify-plugin";
 import { registerBookRoutes } from "../books/routes.js";
 import { readFile } from "node:fs/promises";
@@ -63,6 +67,8 @@ export function redactUrl(url: string) {
 /** Requests per minute per credential, or per address when anonymous. */
 export const GLOBAL_RATE_LIMIT = 600;
 type AppOptions = {
+  /** Trusted service configuration, never accepted from a practice request. */
+  practicePolicy?: PracticePolicy;
   repository: Repository;
   authenticate: Authenticator;
   development?: boolean;
@@ -73,6 +79,7 @@ type AppOptions = {
   trustedProxies?: readonly string[];
 };
 export function buildApp(options: AppOptions) {
+  if (options.practicePolicy) assertPracticePolicy(options.practicePolicy);
   if (options.development && process.env.NODE_ENV === "production")
     throw new Error("Development mode is forbidden in production");
   const app = Fastify({
@@ -372,6 +379,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
               "math",
           }))
         : planMixedPractice({
+            policy: options.practicePolicy,
             templates: supported,
             skills,
             attempts: await tx.recentAttempts(),

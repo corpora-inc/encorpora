@@ -1,3 +1,8 @@
+import {
+  DEFAULT_PRACTICE_POLICY,
+  assertPracticePolicy,
+  type PracticePolicy,
+} from "../learning/practice-policy.js";
 import { createHash, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import {
@@ -45,7 +50,10 @@ export class OfflineRepository {
   constructor(
     private pool: Pool,
     private signer: PackSigner,
-  ) {}
+    private practicePolicy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
+  ) {
+    assertPracticePolicy(practicePolicy);
+  }
   private async transaction<T>(
     account: string,
     learner: string,
@@ -175,6 +183,7 @@ export class OfflineRepository {
       const packId = randomUUID();
       const choices = uniquePoolChoices(
         planMixedPractice({
+          policy: this.practicePolicy,
           templates: supported,
           skills,
           attempts: await tx.recentAttempts(),

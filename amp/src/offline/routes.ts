@@ -1,3 +1,4 @@
+import type { PracticePolicy } from "../learning/practice-policy.js";
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
@@ -12,10 +13,15 @@ export async function registerOfflineRoutes(
     pool: Pool;
     authenticate: Authenticator;
     signer: PackSigner | null;
+    practicePolicy?: PracticePolicy;
   },
 ) {
   const repository = options.signer
-    ? new OfflineRepository(options.pool, options.signer)
+    ? new OfflineRepository(
+        options.pool,
+        options.signer,
+        options.practicePolicy,
+      )
     : null;
   const learnerParams = z.strictObject({ learnerId: z.string().uuid() });
   const packParams = learnerParams.extend({ packId: z.string().uuid() });

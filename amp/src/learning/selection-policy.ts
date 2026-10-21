@@ -1,18 +1,21 @@
+import {
+  DEFAULT_PRACTICE_POLICY,
+  assertPracticePolicy,
+  type PracticePolicy,
+} from "./practice-policy.js";
 import { createHash } from "node:crypto";
 import {
   CURRICULUM_MIX_VERSION,
-  familyEmphasis,
   objectiveForSkill,
-  skillEmphasis,
 } from "../curriculum/selection.js";
 
 /** All values are editorial policy parameters; scores are utility heuristics,
  * not probabilities of correctness or measured learning gains. */
-export const SELECTION_POLICY = {
-  version: "pathways-budget-v1",
-  utilityWindow: 24,
-  temperature: 12,
-} as const;
+export const SELECTION_POLICY = Object.freeze({
+  version: DEFAULT_PRACTICE_POLICY.version,
+  ...DEFAULT_PRACTICE_POLICY.sampling,
+});
+export const SELECTION_ALGORITHM_VERSION = "pathways-hierarchy-v1";
 export interface SelectionCandidate {
   template: { id: string; skillId: string };
   score: number;
@@ -26,7 +29,9 @@ export interface SelectionBudget {
   familyWeight: number;
 }
 export interface SelectionTrace {
+  algorithmVersion: string;
   policyVersion: string;
+  policyFingerprint: string;
   curriculumVersion: string;
   objectiveId: string;
   objectiveProbability: number;
@@ -45,14 +50,19 @@ export interface WeightedCandidate<T> {
  * separately gated by auditSelectionCatalog; no new skill silently ships here. */
 export function selectionBudget(
   candidate: SelectionCandidate,
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
 ): SelectionBudget {
+  assertPracticePolicy(policy);
   const { skillId, id } = candidate.template;
   const objective = objectiveForSkill(skillId);
   return {
     objectiveId: objective?.id ?? skillId,
-    importance: objective?.importance ?? 1,
-    skillWeight: skillEmphasis[skillId] ?? 1,
-    familyWeight: familyEmphasis[id] ?? 1,
+    importance:
+      policy.weights.objectives[objective?.id ?? skillId] ??
+      objective?.importance ??
+      1,
+    skillWeight: policy.weights.skills[skillId] ?? 1,
+    familyWeight: policy.weights.families[id] ?? 1,
   };
 }
 
@@ -62,8 +72,12 @@ export function selectionBudget(
  * O(n) allocation; no prerequisite traversal or learner writes in this kernel. */
 export function selectionDistribution<T extends SelectionCandidate>(
   candidates: readonly T[],
-  budgetOf: (candidate: T) => SelectionBudget = selectionBudget,
+  budgetOf?: (candidate: T) => SelectionBudget,
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
 ): WeightedCandidate<T>[] {
+  assertPracticePolicy(policy);
+  const budgetFor =
+    budgetOf ?? ((candidate: T) => selectionBudget(candidate, policy));
   if (!candidates.length) return [];
   const seen = new Set<string>();
   let best = -Infinity;
@@ -93,8 +107,8 @@ export function selectionDistribution<T extends SelectionCandidate>(
   };
   const objectives = new Map<string, Objective>();
   for (const candidate of candidates) {
-    if (candidate.score < best - SELECTION_POLICY.utilityWindow) continue;
-    const budget = budgetOf(candidate);
+    if (candidate.score < best - policy.sampling.utilityWindow) continue;
+    const budget = budgetFor(candidate);
     if (
       !budget.objectiveId ||
       [budget.importance, budget.skillWeight, budget.familyWeight].some(
@@ -131,7 +145,7 @@ export function selectionDistribution<T extends SelectionCandidate>(
     skill.entries.push({ candidate, budget, mass: 0 });
   }
   const fit = (score: number, ceiling: number) =>
-    Math.exp((score - ceiling) / SELECTION_POLICY.temperature);
+    Math.exp((score - ceiling) / policy.sampling.temperature);
   let total = 0;
   for (const objective of objectives.values()) {
     objective.mass = objective.importance * fit(objective.score, best);
@@ -164,7 +178,9 @@ export function selectionDistribution<T extends SelectionCandidate>(
         result.push({
           candidate: entry.candidate,
           trace: {
-            policyVersion: SELECTION_POLICY.version,
+            algorithmVersion: SELECTION_ALGORITHM_VERSION,
+            policyVersion: policy.version,
+            policyFingerprint: policy.fingerprint,
             curriculumVersion: CURRICULUM_MIX_VERSION,
             objectiveId,
             objectiveProbability,
@@ -204,9 +220,10 @@ function draw<T>(
 export function selectNextCandidate<T extends SelectionCandidate>(
   candidates: readonly T[],
   seed: string,
-  budgetOf: (candidate: T) => SelectionBudget = selectionBudget,
+  budgetOf?: (candidate: T) => SelectionBudget,
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
 ): WeightedCandidate<T> {
-  const distribution = selectionDistribution(candidates, budgetOf);
+  const distribution = selectionDistribution(candidates, budgetOf, policy);
   if (!distribution.length) throw new Error("No selection candidates");
   const objectives = new Map<string, WeightedCandidate<T>>();
   for (const entry of distribution)
