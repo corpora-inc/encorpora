@@ -242,6 +242,8 @@ export const clientCanDraw = (
   (!template.requiredFigureCapability ||
     client.figureCapabilities.includes(template.requiredFigureCapability));
 export interface TemplateMetadata {
+  /** Editorial local step on the curriculum-grade scale, not empirical calibration. */
+  difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: "single-choice-v1";

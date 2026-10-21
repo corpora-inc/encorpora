@@ -1,3 +1,4 @@
+import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
 import { transformationPrinciples } from "./transformation-lessons";
 import { completingSquarePrinciples } from "./completing-square-lessons";
@@ -104,6 +105,7 @@ export const principles: Record<string, string> = {
   ...percentChangePrinciples,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
+  ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":
     "One-to-one correspondence: each object is matched with exactly one counting number; the last number named is the cardinality of the set.",

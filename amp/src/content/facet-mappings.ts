@@ -52,6 +52,22 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...[
+    "nonlinear-system-read",
+    "nonlinear-system-solve",
+    "nonlinear-system-count",
+  ].map((templateId): FacetMapping => ({
+    templateId,
+    facetId:
+      templateId === "nonlinear-system-read"
+        ? "nonlinear-intersection-reading.core"
+        : templateId === "nonlinear-system-count"
+          ? "nonlinear-intersection-count.core"
+          : "nonlinear-systems.core",
+    extent: "partial",
+    rationale:
+      "Bounded line–parabola systems: read intersections, find a requested coordinate for distinct integer roots, or count real intersections. Does not assess complete constructed solution sets, other nonlinear pairs, fractional coordinates, contextual modeling or symbolic parameter conditions.",
+  })),
   ...factoringFacetMappings,
   ...volumeCoordinateFacetMappings,
   ...shapeFacetMappings,

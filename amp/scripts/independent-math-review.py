@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 from collections import Counter
 from fractions import Fraction
+from nonlinear_system_math_oracle import NONLINEAR_SYSTEM, solve_nonlinear_system, review_nonlinear_system_fixtures, review_nonlinear_system_problem
 from elementary_math_oracle import ELEMENTARY, solve_elementary
 from equal_groups_math_oracle import EQUAL_GROUPS, solve_equal_groups
 from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
@@ -86,6 +87,7 @@ SUPPORTED = frozenset({
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
 SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER | ALGEBRA_STATISTICS
+SUPPORTED |= NONLINEAR_SYSTEM
 SUPPORTED |= FACTORING
 SUPPORTED |= COMPLETING_SQUARE
 SUPPORTED |= LINEAR_FUNCTION
@@ -175,6 +177,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in NONLINEAR_SYSTEM:
+        return solve_nonlinear_system(public)
     template = public['templateId']
     if template in AREA_VOLUME:
         return solve_area_volume(public)
@@ -470,6 +474,7 @@ def solve_family(public):
 
 
 def review(stream):
+    review_nonlinear_system_fixtures()
     area_volume_fixtures = review_area_volume_fixtures()
     area_volume_mutants = review_area_volume_mutations()
     review_two_variable_fixtures()
@@ -609,6 +614,8 @@ def review(stream):
             review_two_variable_problem(problem)
         if template in LINEAR_FUNCTION:
             review_linear_function_problem(problem)
+        if template in NONLINEAR_SYSTEM:
+            review_nonlinear_system_problem(problem)
         if template in QUADRATIC_STRUCTURE:
             review_quadratic_structure_problem(problem)
         if template in FUNCTION_TOOLKIT:

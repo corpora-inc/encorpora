@@ -1,4 +1,8 @@
 import {
+  nonlinearSystemTemplates,
+  generateNonlinearSystemProblem,
+} from "./nonlinear-system-practice";
+import {
   areaVolumeTemplates,
   generateAreaVolumeProblem,
 } from "./area-volume-practice";
@@ -378,6 +382,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...percentChangeTemplates,
   ...inequalityTemplates,
   ...linearSystemTemplates,
+  ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
   ...elementaryTemplates,
@@ -570,6 +575,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...percentChangeTemplates,
     ...inequalityTemplates,
     ...linearSystemTemplates,
+    ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
@@ -695,6 +701,8 @@ function generateRawProblem(
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (nonlinearSystemTemplates.some((t) => t.id === templateId))
+    return generateNonlinearSystemProblem(templateId, seed);
   if (linearSystemTemplates.some((t) => t.id === templateId))
     return generateLinearSystemProblem(templateId, seed);
   if (inequalityTemplates.some((t) => t.id === templateId))

@@ -512,7 +512,9 @@ polynomial-division|algebra-2|algebra|Divide polynomials and interpret quotient 
 polynomial-zeros|algebra-2|algebra|Connect factors zeros and polynomial graphs|polynomial-division,complex-numbers|HSA,HSF,SAT.advanced-math
 rational-expressions|algebra-2|algebra|Operate on rational expressions while retaining domain restrictions|factor-quadratics,fraction-division|HSA,SAT.advanced-math
 rational-equations|algebra-2|algebra|Solve rational equations and check excluded values|rational-expressions|HSA,SAT.advanced-math
-nonlinear-systems|algebra-2|algebra|Solve systems involving linear and nonlinear relations|linear-systems,quadratic-equations|HSA,SAT.advanced-math
+nonlinear-intersection-reading|algebra-2|algebra|Read shared points of a line and parabola as simultaneous solutions|graph-solution-sets,quadratic-graphs|HSA
+nonlinear-systems|algebra-2|algebra|Solve systems involving linear and nonlinear relations|nonlinear-intersection-reading,linear-systems,quadratic-equations|HSA,SAT.advanced-math
+nonlinear-intersection-count|algebra-2|algebra|Count distinct real intersections by reducing a system to a quadratic|nonlinear-systems,quadratic-formula|HSA
 function-transformations|algebra-2|functions|Describe shifts scales reflections and symmetry of functions|quadratic-graphs,piecewise-functions|HSF,SAT.advanced-math
 function-composition|algebra-2|functions|Compose functions and determine valid inputs|function-domain-range,function-evaluation|HSF
 inverse-functions|algebra-2|functions|Find inverses and restrict domains where needed|function-composition|HSF
@@ -805,7 +807,12 @@ const highSchoolRows: [string, string, string, boolean][] = [
     false,
   ],
   ["HSA.REI.C.6", "Exact approximate linear systems", "linear-systems", false],
-  ["HSA.REI.C.7", "Linear quadratic intersections", "nonlinear-systems", false],
+  [
+    "HSA.REI.C.7",
+    "Linear quadratic intersections",
+    "nonlinear-intersection-reading,nonlinear-systems,nonlinear-intersection-count",
+    false,
+  ],
   ["HSA.REI.C.8", "Matrix system representation", "matrix-systems", true],
   ["HSA.REI.C.9", "Inverse matrix solutions", "matrix-systems", true],
   ["HSA.REI.D.10", "Graphs as solution sets", "graph-solution-sets", false],

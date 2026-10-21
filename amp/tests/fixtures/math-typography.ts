@@ -267,7 +267,7 @@ export function learnerTexts(): LearnerText[] {
     title(owner, "title", l.title);
     add(owner, "summary", l.summary);
     l.objectives.forEach((s) => add(owner, "objective", s));
-    l.sections.forEach((section) => {
+    [...l.sections, ...(l.closingSections ?? [])].forEach((section) => {
       title(owner, "section title", section.title);
       section.paragraphs.forEach((s) => add(owner, "paragraph", s));
     });

@@ -1676,6 +1676,19 @@ function LegacyScreen() {
                     : ""}
                 </strong>
               </section>
+              {readingLesson.closingSections?.map((s) => (
+                <section key={s.title}>
+                  <h3>{s.title}</h3>
+                  {s.paragraphs.map((p) => (
+                    <p key={p}>
+                      <PrintMathText text={p} />
+                    </p>
+                  ))}
+                  {s.illustration && (
+                    <LessonIllustration kind={s.illustration} />
+                  )}
+                </section>
+              ))}
               <h3>Things to watch for</h3>
               <ul>
                 {readingLesson.pitfalls.map((p) => (

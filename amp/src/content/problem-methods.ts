@@ -1,3 +1,4 @@
+import { nonlinearSystemMethods } from "./nonlinear-system-lessons";
 import { areaVolumeMethods } from "./area-volume-lessons";
 import { transformationMethods } from "./transformation-lessons";
 import { completingSquareMethods } from "./completing-square-lessons";
@@ -107,6 +108,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...percentChangeMethods,
   ...inequalityMethods,
   ...linearSystemMethods,
+  ...nonlinearSystemMethods,
   // Counting and early operations
   "count-objects": {
     goal: "Given a picture of dots, find how many there are.",

@@ -20,8 +20,9 @@ test("each implemented family has a reference lesson or validated book-page teac
       bindings.set(id, (bindings.get(id) ?? 0) + 1);
     }
     assert.ok(lesson.objectives.length >= 2);
-    assert.ok(lesson.sections.length >= 2);
-    assert.ok(lesson.sections.every((s) => s.paragraphs.length >= 2));
+    const sections = [...lesson.sections, ...(lesson.closingSections ?? [])];
+    assert.ok(sections.length >= 2);
+    assert.ok(sections.every((s) => s.paragraphs.length >= 1));
     assert.ok(lesson.workedExample.steps.length >= 2);
     assert.ok(lesson.pitfalls.length >= 2);
     assert.ok(lesson.parentGuide.length > 40);

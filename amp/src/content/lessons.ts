@@ -1,3 +1,4 @@
+import { nonlinearSystemLessons } from "./nonlinear-system-lessons";
 import { areaVolumeLessons } from "./area-volume-lessons";
 import { transformationLessons } from "./transformation-lessons";
 import { completingSquareLessons } from "./completing-square-lessons";
@@ -211,6 +212,8 @@ export interface Lesson {
       | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
+  /** Optional sections following the example: visual meaning, then formal statement. */
+  closingSections?: Lesson["sections"];
   workedExample: {
     prompt: string;
     steps: string[];
@@ -607,6 +610,7 @@ export const lessons: readonly Lesson[] = [
   ...percentChangeLessons,
   ...inequalityLessons,
   ...linearSystemLessons,
+  ...nonlinearSystemLessons,
   ...baseLessons,
   ...extendedLessons,
   ...graphicalLessons,
