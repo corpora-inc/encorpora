@@ -567,6 +567,8 @@ try {
     await page.getByRole('button',{name:'Allow and connect',exact:false}).click();
     await page.getByText('This is for the Free2Z account holder.',{exact:true}).waitFor();
     assert.equal(await signIns(),before,'a year that does not pass never opens the sign-in');
+    // The locked view appears before its asynchronous journal write completes.
+    await page.waitForFunction(()=>typeof window.__ahaFixture.read().journals?.['aha-ai-consent']?.lockedUntil==='string',undefined,{timeout:5_000});
     assert.ok(Date.parse((await consentRecord()).lockedUntil)>Date.now()+23*3600_000,'locked for a day');
     // As a value of its own, not a digit run inside a random id or a timestamp (which made this flaky).
     assert.doesNotMatch(JSON.stringify(await page.evaluate(()=>window.__ahaFixture.read())),/(?<![0-9a-fA-F-])2015(?![0-9a-fA-F-])/,'the year is never stored');
