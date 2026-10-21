@@ -246,18 +246,22 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn('artifact-only',output.getvalue())
         self.assertIn('no audience, upload, or delivery',output.getvalue())
 
-    def test_workflow_platform_routing_keeps_artifact_mode_android_only(self):
+    def test_workflow_platform_routing_isolates_artifacts_from_delivery(self):
         workflow=(Path(__file__).resolve().parents[2]/'.github/workflows/release-aha.yml').read_text()
         routing='\n'.join(line.strip() for line in workflow.splitlines()
-                          if line.strip().startswith(('echo "ios=', 'echo "android=', 'echo "android_upload=')))
-        expected={'both':{'ios':'true','android':'true','android_upload':'true'},
-                  'ios':{'ios':'true','android':'false','android_upload':'true'},
-                  'android':{'ios':'false','android':'true','android_upload':'true'},
-                  'android-artifact':{'ios':'false','android':'true','android_upload':'false'}}
+                          if line.strip().startswith(('echo "ios=', 'echo "ios_upload=', 'echo "android=', 'echo "android_upload=')))
+        expected={'both':{'ios':'true','ios_upload':'true','android':'true','android_upload':'true'},
+                  'ios':{'ios':'true','ios_upload':'true','android':'false','android_upload':'true'},
+                  'android':{'ios':'false','ios_upload':'true','android':'true','android_upload':'true'},
+                  'android-artifact':{'ios':'false','ios_upload':'true','android':'true','android_upload':'false'},
+                  'ios-artifact':{'ios':'true','ios_upload':'false','android':'false','android_upload':'false'}}
         for mode,values in expected.items():
             result=subprocess.run(['bash','-euc',routing],env=dict(os.environ,PLATFORMS=mode),
                                   text=True,capture_output=True,check=True)
             self.assertEqual(dict(line.split('=',1) for line in result.stdout.splitlines()),values)
+        for step in ('Require app record and an existing internal tester group', 'Upload to TestFlight',
+                     'Verify processing and existing internal tester availability', 'Set TestFlight What to Test'):
+            self.assertIn(f"      - name: {step}\n        if: needs.gate.outputs.ios_upload == 'true'\n",workflow)
 
     def test_release_notes_redact_secrets_identities_and_control_characters(self):
         raw=('Fix sums\r\nContact tester@example.com or @someone\u202e\x07\n'

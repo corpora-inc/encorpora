@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       platforms:
-        description: Internal delivery, or Android signed artifact only for initial Console setup
+        description: Internal delivery, or a signed artifact without store upload
         type: choice
-        options: [both, ios, android, android-artifact]
+        options: [both, ios, android, android-artifact, ios-artifact]
         default: both
       build_number:
         description: Optional reserved build number for one Console-attested Android release
@@ -47,6 +47,7 @@ jobs:
       number: ${{ steps.release.outputs.number }}
       started: ${{ steps.release.outputs.started }}
       ios: ${{ steps.release.outputs.ios }}
+      ios_upload: ${{ steps.release.outputs.ios_upload }}
       android: ${{ steps.release.outputs.android }}
       android_upload: ${{ steps.release.outputs.android_upload }}
       release_notes: ${{ steps.notes.outputs.release_notes }}
@@ -63,7 +64,7 @@ jobs:
           PLAY_EMAIL_AUDIENCE_ATTESTATION: ${{ inputs.play_email_audience_attestation }}
         run: |
           set -euo pipefail
-          case "$PLATFORMS" in both|ios|android|android-artifact) ;; *) exit 1 ;; esac
+          case "$PLATFORMS" in both|ios|android|android-artifact|ios-artifact) ;; *) exit 1 ;; esac
           git merge-base --is-ancestor HEAD origin/main
           VERSION=$(node -p "require('./${APP_DIR}/src-tauri/tauri.conf.json').version")
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
@@ -76,6 +77,7 @@ jobs:
           if [ -n "$PLAY_EMAIL_AUDIENCE_ATTESTATION" ] || [ -n "$RESERVED_BUILD" ]; then
             test "$GITHUB_EVENT_NAME" = workflow_dispatch
             test "$PLATFORMS" != ios
+            test "$PLATFORMS" != ios-artifact
             test "$PLATFORMS" != android-artifact
             [[ "$RESERVED_BUILD" =~ ^[1-9][0-9]{0,9}$ ]]
             test "$RESERVED_BUILD" -ge $(( NUMBER - 60 ))
@@ -87,12 +89,13 @@ jobs:
           {
             echo "number=$NUMBER"
             echo "started=$STARTED"
-            echo "ios=$([[ "$PLATFORMS" = both || "$PLATFORMS" = ios ]] && echo true || echo false)"
-            echo "android=$([ "$PLATFORMS" != ios ] && echo true || echo false)"
-            echo "android_upload=$([ "$PLATFORMS" != android-artifact ] && echo true || echo false)"
+            echo "ios=$([[ "$PLATFORMS" = both || "$PLATFORMS" = ios || "$PLATFORMS" = ios-artifact ]] && echo true || echo false)"
+            echo "ios_upload=$([ "$PLATFORMS" != ios-artifact ] && echo true || echo false)"
+            echo "android=$([[ "$PLATFORMS" != ios && "$PLATFORMS" != ios-artifact ]] && echo true || echo false)"
+            echo "android_upload=$([[ "$PLATFORMS" != android-artifact && "$PLATFORMS" != ios-artifact ]] && echo true || echo false)"
           } >> "$GITHUB_OUTPUT"
-          if [ "$PLATFORMS" = android-artifact ]; then
-            echo "AHA $VERSION Android artifact-only build requested; build $NUMBER. Signing/build pending; no store upload or tester delivery attempted." >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$PLATFORMS" = android-artifact || "$PLATFORMS" = ios-artifact ]]; then
+            echo "AHA $VERSION $PLATFORMS build requested; build $NUMBER. Signing/build pending; no store upload or tester delivery attempted." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "AHA $VERSION internal beta; build $NUMBER" >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -133,6 +136,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Require app record and an existing internal tester group
+        if: needs.gate.outputs.ios_upload == 'true'
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
@@ -274,6 +278,7 @@ jobs:
           path: ${{ steps.ipa.outputs.path }}
           retention-days: 14
       - name: Upload to TestFlight
+        if: needs.gate.outputs.ios_upload == 'true'
         uses: apple-actions/upload-testflight-build@9fd28d4e690396e43caca69cef54cccccce77034 # v3
         with:
           app-path: ${{ steps.ipa.outputs.path }}
@@ -281,6 +286,7 @@ jobs:
           api-key-id: ${{ secrets.ASC_KEY_ID }}
           api-private-key: ${{ secrets.ASC_API_KEY_P8 }}
       - name: Verify processing and existing internal tester availability
+        if: needs.gate.outputs.ios_upload == 'true'
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
@@ -291,6 +297,7 @@ jobs:
           PYTHONUNBUFFERED: '1'
         run: python aha/scripts/release_verify.py verify --platform ios --build "$BUILD" --since "$STARTED"
       - name: Set TestFlight What to Test
+        if: needs.gate.outputs.ios_upload == 'true'
         # Delivery is already verified; a notes failure is reported, not a failed release.
         continue-on-error: true
         env:
