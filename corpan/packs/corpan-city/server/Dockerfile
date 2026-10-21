@@ -15,7 +15,7 @@
 # so `import "zod"` from /app/contracts/src resolves /app/node_modules/zod, and
 # tsx/colyseus resolve the same way for the server entry under /app/server/src.
 
-FROM node:22-bookworm-slim@sha256:3ed98443660ff48413b5af19ecefce3b9d50845a901a43420d47cc63a9fddbe9
+FROM node:22.23.4-bookworm-slim@sha256:5991875dfb80938dd8a6ba3fe3e96fd04929e70792762b3319d8caadbbe229bc
 
 # Use Debian's patched trust store for npm and outbound TLS. Node's bundled
 # roots are independent and must not reintroduce the compromised authorities.

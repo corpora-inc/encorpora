@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 # AMP: one build, two images. `api` runs the Fastify server, its migrations
 # and its scheduled jobs; `web` serves the built browser app.
-ARG NODE_IMAGE=node:22-bookworm-slim@sha256:3ed98443660ff48413b5af19ecefce3b9d50845a901a43420d47cc63a9fddbe9
+ARG NODE_IMAGE=node:22.23.4-bookworm-slim@sha256:5991875dfb80938dd8a6ba3fe3e96fd04929e70792762b3319d8caadbbe229bc
 
 FROM ${NODE_IMAGE} AS node-base
 # Node's bundled roots are independent of Debian's trust store. Install the
