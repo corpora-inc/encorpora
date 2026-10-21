@@ -2,6 +2,8 @@
 from pathlib import Path
 import re
 import shutil
+import os
+import sys
 import ssl
 import subprocess
 import tempfile
@@ -110,6 +112,33 @@ class JavaTrustTests(unittest.TestCase):
         self.assertTrue(link.is_symlink())
         self.assertIn("store unchanged", self.repair().stdout)
 
+    @unittest.skipUnless(sys.platform == "linux" and os.geteuid() != 0 and shutil.which("sudo"),
+                         "requires a Linux runner with passwordless sudo")
+    def test_privileged_launcher_repairs_root_owned_symlink_target(self):
+        subprocess.run(["sudo", "-n", "true"], check=True, capture_output=True, timeout=10)
+        link = self.folder / "jdk-cacerts"
+        link.symlink_to(self.store)
+        original = self.store.read_bytes()
+        self.store.chmod(0o644)
+        self.folder.chmod(0o755)
+        self.command(["sudo", "-n", "chown", "0:0", str(self.store), str(self.folder)])
+        try:
+            with self.assertRaises(subprocess.CalledProcessError) as failure:
+                self.repair(link)
+            self.assertIn("AccessDeniedException", failure.exception.stderr)
+            self.assertEqual(self.store.read_bytes(), original)
+            self.assertFalse(self.store.with_name(self.store.name + ".before-emudhra").exists())
+            self.command(["sudo", "-n", self.java, str(SCRIPTS / "RemoveDistrustedRoots.java"), str(link)])
+            self.assertTrue(link.is_symlink())
+            self.assertEqual(self.store.stat().st_uid, 0)
+            self.assertEqual(self.store.stat().st_mode & 0o777, 0o644)
+            self.assertEqual(self.store.with_name(self.store.name + ".before-emudhra").read_bytes(), original)
+            self.assertIn("store unchanged", self.repair().stdout)
+        finally:
+            for path in (self.store, self.store.with_name(self.store.name + ".before-emudhra"), self.folder):
+                if path.exists():
+                    self.command(["sudo", "-n", "chown", str(os.geteuid()) + ":" + str(os.getegid()), str(path)])
+
     def test_backup_symlink_is_rejected_before_store_replacement(self):
         original = self.store.read_bytes()
         backup = self.store.with_name(self.store.name + ".before-emudhra")
@@ -132,7 +161,8 @@ class WorkflowJavaTrustTests(unittest.TestCase):
                     found += 1
                     repair = steps[index + 1]
                     self.assertEqual(repair.get("name"), "Remove distrusted Java CA roots")
-                    self.assertIn('RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"', repair["run"])
+                    self.assertEqual(repair["run"], 'sudo "$JAVA_HOME/bin/java" "$GITHUB_WORKSPACE/.github/scripts/RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"')
+                    self.assertEqual(job["runs-on"], "ubuntu-latest")
                     self.assertEqual(repair.get("if"), steps[index + 2].get("if"))
                     self.assertTrue(str(steps[index + 2].get("uses", "")).startswith("android-actions/setup-android@"))
             self.assertEqual(found, 1, name + ": expected one configured Android JDK")
