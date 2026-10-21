@@ -16,6 +16,8 @@ thiserror = "2"
 uuid = { version = "1", features = ["v4"] }
 parking_lot = "0.12"
 log = "0.4"
+# Keep the wrapper's transitive FFI bindings on its matching native API.
+llama-cpp-sys-2 = "=0.1.146"
 # Incremental UTF-8 decoder for streaming multi-byte tokens (e.g. Chinese hanzi
 # whose bytes can split across llama tokens). Same approach as the upstream
 # llama-cpp-2 `simple` example.
