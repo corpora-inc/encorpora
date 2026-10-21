@@ -52,6 +52,7 @@ jobs:
       shared_ts: ${{ steps.filter.outputs.shared_ts }}
       terraform: ${{ steps.filter.outputs.terraform }}
       web: ${{ steps.filter.outputs.web }}
+      amp_ads: ${{ steps.filter.outputs.amp_ads }}
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -153,6 +154,7 @@ jobs:
           # below gives its two Python helpers.
           set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$|\.github/scripts/pack_catalog_check\.js$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
+          set_output amp_ads '^(web/scripts/amp-ads/|\.github/workflows/ci\.yml$)'
           set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
 
           # Dynawalla areas. Every one of them is consumed by a job below.
@@ -774,6 +776,20 @@ jobs:
       - name: Build
         working-directory: web/io
         run: npm run build
+      - uses: actions/setup-python@v5
+        if: needs.changes.outputs.amp_ads == 'true'
+        with:
+          python-version: '3.12'
+      - name: Verify paused campaign tooling and advertising render pipeline
+        if: needs.changes.outputs.amp_ads == 'true'
+        working-directory: web/scripts/amp-ads
+        run: |
+          python -m pip install -r requirements.txt
+          python -m unittest discover -s test -p 'test_*.py' -v
+          npm ci
+          npx playwright install --with-deps chromium
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          npm test
 
   changed-packs:
     name: changed packs · test + build

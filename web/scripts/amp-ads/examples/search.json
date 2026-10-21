@@ -1,0 +1,24 @@
+{
+  "id": "efa-example",
+  "status": "PAUSED",
+  "state": "Arkansas",
+  "daily_budget_micros": 1000000,
+  "max_cpc_micros": 1000000,
+  "negative_keywords": ["jobs", "careers"],
+  "ad_groups": [
+    {
+      "id": "efa-math",
+      "url": "https://corpora.inc/esa/arkansas-efa/?utm_source=google&utm_medium=cpc&utm_campaign=ar-efa-launch&utm_content=efa-example",
+      "headlines": [
+        "Adaptive Math Pathways",
+        "Find Their Next Step in Math",
+        "Try Up to 100 Problems Free"
+      ],
+      "descriptions": [
+        "Explore adaptive math, clear lessons and printable materials with AMP.",
+        "Find your learner's starting point. Try up to 100 problems free."
+      ],
+      "keywords": [{ "text": "arkansas efa math curriculum", "match": "EXACT" }]
+    }
+  ]
+}
