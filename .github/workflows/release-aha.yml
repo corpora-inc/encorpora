@@ -342,7 +342,7 @@ jobs:
           distribution: temurin
           java-version: '17'
       - name: Remove distrusted Java CA roots
-        run: java "$GITHUB_WORKSPACE/.github/scripts/RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"
+        run: sudo "$JAVA_HOME/bin/java" "$GITHUB_WORKSPACE/.github/scripts/RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
