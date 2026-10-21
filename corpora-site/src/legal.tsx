@@ -256,14 +256,16 @@ export function Legal({
       {page === "refund" && (
         <>
           <p>
-            Request a full refund within 30 days of a payment for AMP access.
-            Tell us the parent account email and the order or receipt reference.
-            You do not need to explain why.
+            Pay directly with your own money and request a full refund within
+            30 days of payment for AMP access. You do not need to explain why.
+            Purchases paid through an education program or marketplace may have
+            different rules, explained below.
           </p>
           <h2>How to request it</h2>
           <p>
-            Contact <Contact config={config} />. Do not include card numbers or
-            a child’s learning records. We will confirm the request and process
+            Contact <Contact config={config} /> with the parent account email and
+            order or receipt reference. Do not include card numbers or a child’s
+            learning records. We will confirm the request and process
             an eligible refund to the original payment method. Bank and
             payment-provider processing times vary.
           </p>
@@ -275,13 +277,34 @@ export function Legal({
             actions. If you cannot access the portal, tell support to cancel
             renewal as part of your request.
           </p>
-          <h2>Education funds</h2>
+          <h2>Personal payments and reimbursement</h2>
           <p>
-            A refund for a program-funded purchase goes back through the
-            original payment route, not to a different personal account. If you
-            paid by card and received reimbursement, inform your program of the
-            refund and follow its reconciliation rules. Program restrictions and
-            applicable consumer rights continue to apply.
+            Our 30-day full-refund policy applies when you pay personally,
+            including when you later request or receive reimbursement. Tell us
+            and your program about the refund, correct any pending claim, and
+            follow the program’s instructions to return reimbursed funds. Do not
+            retain reimbursement for a refunded purchase.
+          </p>
+          <h2>Program and marketplace payments</h2>
+          <p>
+            For purchases paid directly through an education program or
+            marketplace, the administrator’s refund and cancellation rules
+            disclosed for that purchase take precedence over our 30-day policy
+            where they differ. A change-of-mind refund may not be available.
+            Check those rules before ordering. Contact us for help with access
+            or delivery problems and any required refund authorization.
+          </p>
+          <p>
+            Approved refunds return through the original program payment route
+            to the original funding source, never to a different personal
+            account, cash, or unrelated credit. Administrator approval and
+            processing times may apply.
+          </p>
+          <h2>Your purchase terms and rights</h2>
+          <p>
+            We honor the refund terms promised when you purchased. Later policy
+            changes do not reduce those promises. Nothing in this policy limits
+            your rights or remedies under applicable law.
           </p>
         </>
       )}
