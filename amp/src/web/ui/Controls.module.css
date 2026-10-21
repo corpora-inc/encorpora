@@ -32,6 +32,8 @@
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
+  /* A label that must wrap splits into even lines, never mid-word. */
+  text-wrap: balance;
   overflow-wrap: normal;
   word-break: normal;
   hyphens: none;

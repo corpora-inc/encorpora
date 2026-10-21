@@ -8,10 +8,10 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Parent/learner authorization must be enforced on the server. Development authentication is loopback-only and forbidden in production.
 - Content authors and independent reviewers are separate workers. Do not certify a generator by calling its own answer function twice.
 - Public copy explains the current product without conversation history. Provider approval requires evidence from the specific program.
-- **Local gates (fast-building stage, fail forward):** before pushing, run `npm run tsc`, `npm test`, and only the database or browser scripts for what you changed. Don't run the whole `test:family-ui` chain locally; CI runs it.
+- **Local gates (fast-building stage, fail forward):** before pushing, run `npm run tsc`, `npm run test:core`, and only the database or browser scripts for what you changed. `npm test` runs both unit suites when a full local check is needed. The exhaustive inventory is a post-merge content check; it is not a pre-merge gate. Don't run the whole `test:family-ui` chain locally; CI runs it.
 - **CI** runs three parallel jobs through the ci-gate aggregate:
-  - `amp` (unit, build, database) gates every PR and the merge queue;
-  - `amp-browser` and `amp-content` run only after merge, on main.
+  - `amp` (core unit, build, database) gates every PR and the merge queue;
+  - `amp-browser` and `amp-content` run after merge on main. Content checks include the full inventory and reuse only a successful result matching the exact content inputs and runner environment. Manual content runs force revalidation. The fingerprint policy is `.github/scripts/amp_inventory_paths.py`; unknown AMP inputs are included.
 
   A red main files or updates one issue. Fix those failures forward in batches with a small PR, not a revert, unless prod is broken. Before a launch or release, everything must be green.
 - **Green ships.** Production runs the newest `main` commit touching `amp/` whose `amp`, `amp-browser` and `amp-content` checks all passed; a red `main` holds production. `scripts/release-status.sh` shows what is live and why ([Releases](docs/deployment.md#releases)).

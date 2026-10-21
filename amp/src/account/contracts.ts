@@ -35,6 +35,9 @@ const accountSchema = z.object({
   id: z.string(),
   email: z.string().nullable(),
   emailVerified: z.boolean(),
+  /** The parent must confirm the address before consent or purchase. The
+   * account works meanwhile: sign-in, the free trial and Family. */
+  confirmationRequired: z.boolean().optional(),
 });
 export const meSchema = z.discriminatedUnion("signedIn", [
   z.object({ signedIn: z.literal(false), next: z.literal("sign-in") }),
@@ -67,13 +70,7 @@ export const meSchema = z.discriminatedUnion("signedIn", [
       .optional(),
     /** `try`: no purchase or consent yet, so the parent gets the anonymous
      * free trial; the plan opens when they choose to buy or reach the limit. */
-    next: z.enum([
-      "verify-email",
-      "try",
-      "add-learner",
-      "choose-plan",
-      "practice",
-    ]),
+    next: z.enum(["try", "add-learner", "choose-plan", "practice"]),
   }),
 ]);
 export type Me = z.infer<typeof meSchema>;

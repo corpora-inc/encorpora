@@ -619,6 +619,11 @@ test(
       await t.test(
         "social-only password setup uses an emailed single-use link",
         async () => {
+          // A provider sign-up has the provider's verified email.
+          await repo.pool.query(
+            'UPDATE amp_auth_users SET "emailVerified"=true WHERE id=$1',
+            [other.user],
+          );
           await addProvider(other.user, "google");
           await repo.pool.query(
             'DELETE FROM amp_auth_accounts WHERE "userId"=$1 AND "providerId"=\'credential\'',

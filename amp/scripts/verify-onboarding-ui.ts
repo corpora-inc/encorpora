@@ -11,7 +11,7 @@ import type { EnrollmentView } from "../src/billing/stripe/enrollment-contracts"
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 /**
- * First-run purchase flow against a synthetic API: verify email → plan →
+ * First-run purchase flow against a synthetic API: confirm email → plan →
  * acknowledgement → Stripe Checkout redirect → verified return → learner →
  * birth year → claim → practice; plus unavailable enrollment and every return
  * phase. Measures overflow, card geometry and layout shift.
@@ -65,7 +65,9 @@ const offers = [
 ];
 type Learner = { id: string; name: string; birthYear: number; paid: boolean };
 type State = {
-  next: "verify-email" | "choose-plan" | "add-learner" | "practice";
+  next: "try" | "choose-plan" | "add-learner" | "practice";
+  /** The parent has not confirmed the account email yet. */
+  confirm: boolean;
   consent: boolean;
   learners: Learner[];
   unassigned: boolean;
@@ -93,7 +95,8 @@ function me(state: State) {
     account: {
       id: "synthetic-parent",
       email: "parent@example.test",
-      emailVerified: state.next !== "verify-email",
+      emailVerified: !state.confirm,
+      confirmationRequired: state.confirm,
     },
     consent: {
       status: state.consent ? "active" : "none",
@@ -132,7 +135,8 @@ function me(state: State) {
 }
 function fresh(): State {
   return {
-    next: "verify-email",
+    next: "choose-plan",
+    confirm: true,
     consent: false,
     learners: [],
     unassigned: false,
@@ -385,7 +389,7 @@ try {
       await fits(page, `${tag} sign-up`);
       await page.goto(`${origin}/start`);
       await page.waitForURL("**/start/verify-email");
-      await page.getByRole("heading", { name: "Check your email" }).waitFor();
+      await page.getByRole("heading", { name: "Confirm your email" }).waitFor();
       await page.getByText("parent@example.test", { exact: true }).waitFor();
       const verify = await box(page.locator("main section").first());
       const look = (name: string, role: "button" | "link" = "button") =>
@@ -401,7 +405,7 @@ try {
         });
       const primary = await look("I confirmed my email"),
         secondary = await look("Send another email"),
-        back = await look("Back to sign in", "link");
+        back = await look("Keep practicing free", "link");
       assert.notEqual(
         primary.background,
         secondary.background,
@@ -429,7 +433,7 @@ try {
       await page.screenshot({ path: `${shots}/verify-${tag}.png` });
 
       // Confirmation follows `/me` to the plan step: never consent, never a dead end.
-      state.next = "choose-plan";
+      state.confirm = false;
       await page.getByRole("button", { name: "I confirmed my email" }).click();
       await page.waitForURL("**/start/plan");
       const plan = page.getByRole("radiogroup", { name: "Plan" });
@@ -602,7 +606,7 @@ try {
     const faults: string[] = [];
     page.on("pageerror", (error) => faults.push(error.message));
     const state = fresh();
-    state.next = "choose-plan";
+    state.confirm = false;
     await serve(page, state, faults);
     const card = page.locator("main section").first();
     let reference: Awaited<ReturnType<typeof box>> | null = null;
@@ -805,7 +809,7 @@ try {
       const faults: string[] = [];
       page.on("pageerror", (error) => faults.push(error.message));
       const state = fresh();
-      state.next = "choose-plan";
+      state.confirm = false;
       state.enrollment = {
         available: false,
         notice: null,
@@ -843,7 +847,7 @@ try {
       await context.close();
     }
   console.log(
-    "Onboarding: verify → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
+    "Onboarding: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
 } finally {
   await browser.close();

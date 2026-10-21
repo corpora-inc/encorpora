@@ -110,7 +110,8 @@ try {
     .getByRole("heading", { name: "Create your parent account" })
     .waitFor();
   await fits(page, "create");
-  await page.getByLabel("Your name").fill("Browser Parent");
+  // A passkey is the first choice; this flow uses the password option.
+  await page.getByRole("button", { name: "Use a password instead" }).click();
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Create account" }).click();

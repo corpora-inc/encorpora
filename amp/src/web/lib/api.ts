@@ -9,6 +9,8 @@ const messages: Record<string, string> = {
   family_service_unavailable: "Family details could not be loaded. Try again.",
   notice_changed:
     "The parent notice was just updated. Review it and confirm again to continue.",
+  email_unconfirmed:
+    "Confirm your email first. Open the link we sent you, then continue.",
   offer_changed:
     "The price was just updated. Review the current plan, then continue.",
   checkout_plan_conflict:

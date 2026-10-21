@@ -141,11 +141,13 @@ export function ParentConsentCenter({
             ? "This link expired. Request a new notice."
             : data.error === "confirmation_not_ready"
               ? "The confirmation is not ready. Refresh after the delivery completes."
-              : data.error === "notice_changed"
-                ? "The privacy notice changed. Refresh and review it again."
-                : data.error === "consent_link_invalid"
-                  ? "This link cannot be used for this account. Sign in to the requesting parent account or request a new notice."
-                  : "Your response could not be saved. Refresh and try again.",
+              : data.error === "email_unconfirmed"
+                ? "Confirm your email first. Open the link we sent you, then try again."
+                : data.error === "notice_changed"
+                  ? "The privacy notice changed. Refresh and review it again."
+                  : data.error === "consent_link_invalid"
+                    ? "This link cannot be used for this account. Sign in to the requesting parent account or request a new notice."
+                    : "Your response could not be saved. Refresh and try again.",
         );
       }
       const data =

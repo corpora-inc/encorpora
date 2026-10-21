@@ -21,6 +21,7 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 **Email.** `AMP_MAIL_RESEND_API_KEY` and `AMP_MAIL_FROM` send verification and reset emails.
 - In production without mail, email and password sign-in is off.
 - With mail, new password accounts must confirm their email before signing in.
+- A new parent can instead create the account with a passkey and sign in at once; the email is confirmed later, before consent or purchase ([account security](account-security.md#passkey-sign-up)). Passkey sign-up needs mail (or development) and a domain origin: WebAuthn rejects IP-address origins, so use `localhost`, not `127.0.0.1`, to try it locally.
 - In development, links are printed to the server log.
 
 **Providers.** Each provider is enabled only when all of its settings are present. `/api/v1/auth-config` lists the enabled providers, and the sign-in screens show a button only for those.
@@ -41,7 +42,7 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 - A signed-in parent may link a login that uses a different email.
 - Each provider identity belongs to one account.
 
-**New parents.** A provider sign-up creates the account with the provider's verified email and continues at `/start`, the same guided first run as an email sign-up: no consent, plan or learner step is skipped. A provider that has not verified the email cannot create an account.
+**New parents.** A provider sign-up creates the account with the provider's verified email and continues at `/start`, the same guided first run as an email or passkey sign-up: no consent, plan or learner step is skipped. A provider that has not verified the email cannot create an account.
 
 **Rate limits.** Sign-in attempts are throttled per client. The server uses the client address that `AMP_TRUSTED_PROXIES` resolves and ignores forwarded headers from untrusted peers.
 
@@ -68,7 +69,7 @@ The preview catalog exposes its reference lessons for exploration. A commercial 
 Green ships. A merge to `main` that touches `amp/` reaches production on its own: the first deploy poll (every 10 minutes) after its CI turns green builds and deploys it.
 
 1. **Merge.** CI runs on the `main` commit.
-2. **Green.** Some run of the `CI` workflow on that commit concluded `amp`, `amp-browser` and `amp-content` successful, at their latest attempt. A failed, cancelled, skipped or missing check is not green. A run cancelled because a newer push superseded it is not green either; the next commit's run tests the whole tree.
+2. **Green.** Some run of the `CI` workflow on that commit concluded `amp`, `amp-browser` and `amp-content` successful, at their latest attempt. A failed, cancelled, skipped or missing check is not green. A run cancelled because a newer push superseded it is not green either. The content job may reuse a success marker only when its exact content-input and runner-environment fingerprint matches. A failed or absent result reruns the checks; manual runs force revalidation. The core and browser jobs execute their checks.
 3. **Deploy.** Every 10 minutes the hosting repository's deploy workflow (`deploy-corpora-amp`, outside this repository) deploys the newest green `main` commit touching `amp/` wherever it is not already live. When the newest commit is red or still running, it deploys the newest earlier green one, and its log says so: `newest X is red (amp-browser failure); deploying last green Y`. The poll only moves forward: it never replaces a live release with an older commit, so a CI re-run cannot bring back a replaced release. A poll with nothing new succeeds quietly. Stage and production deploy in parallel. Each must pass smoke checks, including that `/api/v1/health` reports the commit just deployed, or it rolls back automatically.
 
 **What is live.** `amp/scripts/release-status.sh` prints `main`'s head and its CI verdict, the newest green commit, the commit stage and production run, and how far production is behind `main` and behind green. It uses only the public GitHub API and the health endpoints. Directly:
