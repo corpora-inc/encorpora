@@ -283,3 +283,80 @@ for (const program of ["ar-efa", "az-esa"] as const) {
       }),
   );
 }
+
+test(
+  "Meta isolates state reports and delivery when both programs share a payment account",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      await metaGrant(pool);
+      const sharedChannel = "synthetic-shared-program-account";
+      const ar = await esa(pool, {
+        kind: "arkansas-efa",
+        channelReference: sharedChannel,
+      });
+      const az = await esa(pool, {
+        kind: "arizona-esa",
+        channelReference: sharedChannel,
+      });
+      const all = {
+        enabled: true,
+        destination: { datasetId: "1234567890" },
+        sources: {
+          efaChannelReference: sharedChannel,
+          azEsaChannelReference: sharedChannel,
+        },
+      };
+      assert.deepEqual(await metaMeasurementBatch(pool, all, "collect"), {
+        queued: 2,
+      });
+      const arOnly = {
+        ...all,
+        sources: { efaChannelReference: sharedChannel },
+      };
+      const azOnly = {
+        ...all,
+        sources: { azEsaChannelReference: sharedChannel },
+      };
+      const azQueued = await queueMetaPayment(pool, azOnly, az.reference);
+      assert.ok("eventId" in azQueued);
+      const bodies: any[] = [];
+      const runtime = {
+        accessToken: async () => "synthetic-token",
+        fetcher: (async (_url: any, init: any) => {
+          bodies.push(JSON.parse(init.body));
+          return new Response(
+            JSON.stringify({
+              events_received: 1,
+              messages: [],
+              fbtrace_id: "synthetic",
+            }),
+          );
+        }) as typeof fetch,
+      };
+      assert.deepEqual(
+        await metaMeasurementBatch(pool, azOnly, "deliver", 20, runtime),
+        { accepted: 1 },
+      );
+      assert.equal(bodies.length, 1);
+      assert.equal(bodies[0].data[0].event_id, azQueued.eventId);
+      const arReport = await metaMeasurementReport(pool, arOnly);
+      const azReport = await metaMeasurementReport(pool, azOnly);
+      assert.deepEqual(arReport.preparations, [{ state: "ready", count: 1 }]);
+      assert.deepEqual(azReport.preparations, [{ state: "ready", count: 1 }]);
+      assert.deepEqual(arReport.attempts, []);
+      assert.deepEqual(azReport.attempts, [
+        { state: "accepted", count: 1, receipts_with_messages: 0 },
+      ]);
+      assert.deepEqual((await metaMeasurementReport(pool, all)).preparations, [
+        { state: "ready", count: 2 },
+      ]);
+      const arQueued = await queueMetaPayment(pool, arOnly, ar.reference);
+      assert.ok("eventId" in arQueued);
+      assert.equal(
+        await deliverMetaPayment(pool, azOnly, arQueued.eventId!, runtime),
+        "ineligible",
+      );
+      assert.equal(bodies.length, 1);
+    }),
+);

@@ -146,14 +146,16 @@ export async function esa(
     settled?: boolean;
     program?: string;
     owner?: string;
+    channelReference?: string;
   } = {},
 ) {
+  const channel = options.channelReference ?? sources.efaChannelReference;
   const id = randomUUID(),
     at = new Date(Date.now() - day).toISOString();
   const base = {
     orderId: id,
     channel: "esa" as const,
-    channelReference: sources.efaChannelReference,
+    channelReference: channel,
     occurredAt: at,
   };
   await applyCommerceEvent(pool, {
@@ -171,7 +173,7 @@ export async function esa(
         endsAt: new Date(Date.now() + 365 * day).toISOString(),
       },
       channel: "esa",
-      channelReference: sources.efaChannelReference,
+      channelReference: channel,
       externalOrderId: randomUUID(),
       currency: "USD",
       amountMinor: 49900,
@@ -198,7 +200,7 @@ export async function esa(
         {
           programId: options.program ?? "ar-efa",
           jurisdiction: "AR",
-          channelReference: sources.efaChannelReference,
+          channelReference: channel,
         },
         id,
       ],
