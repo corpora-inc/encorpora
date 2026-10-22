@@ -29,25 +29,25 @@ export async function registerAdvertisingPermissionRoutes(
         error && typeof error === "object" && "statusCode" in error
           ? Number(error.statusCode)
           : 503;
-      return reply
-        .code(status === 401 ? 401 : 503)
-        .send({
-          error:
-            status === 401
-              ? "sign_in_required"
-              : "purchase_measurement_unavailable",
-        });
+      return reply.code(status === 401 ? 401 : 503).send({
+        error:
+          status === 401
+            ? "sign_in_required"
+            : "purchase_measurement_unavailable",
+      });
     });
-    scope.post(
-      "/api/v1/family/purchase-measurement",
-      { bodyLimit: 1024 },
-      async (request) =>
+    for (const [provider, path] of [
+      ["google", "/api/v1/family/purchase-measurement"],
+      ["meta", "/api/v1/family/meta-purchase-measurement"],
+    ] as const)
+      scope.post(path, { bodyLimit: 1024 }, async (request) =>
         changeAdvertisingPermission(
           options.pool,
           await options.authenticate(request),
           request.body,
           advertisingOptOut(request.headers),
+          provider,
         ),
-    );
+      );
   });
 }

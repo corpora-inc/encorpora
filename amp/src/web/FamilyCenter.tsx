@@ -819,12 +819,14 @@ export function FamilyCenter({
                       "What is retained?",
                       "Understand billing, sign-in, and backups.",
                     ],
-                    ...(family.purchaseMeasurement?.available && !nativeRuntime
+                    ...((family.purchaseMeasurement?.available ||
+                      family.metaPurchaseMeasurement?.available) &&
+                    !nativeRuntime
                       ? [
                           [
                             "measurement",
                             "Purchase measurement",
-                            "Choose whether Google receives adult purchase details.",
+                            "Choose separately whether Google and Meta receive adult purchase details.",
                           ] as const,
                         ]
                       : []),
@@ -855,8 +857,20 @@ export function FamilyCenter({
               family.purchaseMeasurement?.available &&
               !nativeRuntime && (
                 <PurchaseMeasurement
-                  key={identity}
+                  key={`${identity}:google`}
                   view={family.purchaseMeasurement}
+                  token={token}
+                  identity={identity}
+                />
+              )}
+            {section === "privacy" &&
+              privacy === "measurement" &&
+              family.metaPurchaseMeasurement?.available &&
+              !nativeRuntime && (
+                <PurchaseMeasurement
+                  key={`${identity}:meta`}
+                  provider="meta"
+                  view={family.metaPurchaseMeasurement}
                   token={token}
                   identity={identity}
                 />

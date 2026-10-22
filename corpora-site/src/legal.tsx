@@ -174,7 +174,7 @@ export function Legal({
           <h2>Optional adult purchase sharing</h2>
           <p>
             In AMP’s Family privacy controls, an adult with a confirmed account
-            email can separately allow Google purchase measurement. With that
+            email can independently allow Google or Meta purchase sharing. For Google, with that
             permission, AMP may share an encoded version of the adult’s email,
             a random purchase reference, purchase date, amount and currency.
             Google can match the encoded email with its records; it is not
@@ -182,17 +182,31 @@ export function Legal({
             excluded. AMP requests measurement without ad personalization.
           </p>
           <p>
-            This optional permission lasts one year and does not affect pricing,
-            purchasing or learning access. Withdrawal stops future sharing; it
-            does not recall information already received by Google. Learning-data
-            deletion, learning-consent withdrawal, and Global Privacy Control or
-            Do Not Track received on an authenticated AMP request also withdraw
-            the preference. AMP retains the current preference for its duration
-            and up to 90 days after withdrawal or expiry. It appears in the family
-            export. Local purchase-measurement preparation records are retained
-            for up to 90 days after the purchase and included in the family export.
-            Withdrawal cancels unsent preparations. Google handles received information under its{" "}
-            <a href="https://policies.google.com/privacy">privacy policy</a>.
+            For Meta (Facebook and Instagram), the separate permission covers an
+            encoded version of the adult’s email, a random purchase reference,
+            purchase date, amount and currency. An eligible website purchase
+            also includes its purchase-page address and the browser’s user agent.
+            Meta can match the email with its records and use this information for
+            ad measurement, ad delivery and audience creation. Encoding does not
+            make it anonymous. Learner names, ages, answers, lessons and progress
+            are excluded.
+          </p>
+          <p>
+            Each optional permission lasts one year and does not affect pricing,
+            purchasing or learning access. Each can be withdrawn independently.
+            Withdrawal stops future sharing; it does not recall information
+            already received by the provider. Learning-data deletion,
+            learning-consent withdrawal, and Global Privacy Control or Do Not
+            Track received on an authenticated AMP request withdraw both
+            preferences. AMP retains each preference for its duration and up to
+            90 days after withdrawal or expiry. The family export includes the
+            preferences without their email binding digests. Local
+            purchase-measurement records are retained for up to 90 days after
+            the purchase and included in the family export. Withdrawal cancels
+            unsent preparations. Providers handle received information under
+            their own privacy policies:{" "}
+            <a href="https://policies.google.com/privacy">Google</a> and{" "}
+            <a href="https://www.facebook.com/privacy/policy/">Meta</a>.
           </p>
           <h2>Free practice</h2>
           <p>

@@ -17,6 +17,7 @@ export interface FamilyLearner {
 }
 export interface FamilySummary {
   purchaseMeasurement?: PurchaseMeasurement;
+  metaPurchaseMeasurement?: PurchaseMeasurement;
   consent: {
     status: "active" | "withdrawn" | "not-recorded" | "development";
     policyVersion: string | null;

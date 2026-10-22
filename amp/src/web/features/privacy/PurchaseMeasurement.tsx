@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import {
-  PURCHASE_MEASUREMENT_NOTICE as notice,
+  measurementNotice,
+  type AdvertisingProvider,
   purchaseMeasurementSchema,
   currentMeasurementNotice,
   type PurchaseMeasurement as View,
@@ -16,24 +17,33 @@ export function PurchaseMeasurement({
   view,
   token,
   identity,
+  provider = "google",
 }: {
   view: View;
   token: string;
   identity: string;
+  provider?: AdvertisingProvider;
 }) {
+  const notice = measurementNotice(provider);
   const [agreed, setAgreed] = useState(false);
   const [feedback, setFeedback] = useState("");
   const optedOut =
     (navigator as Navigator & { globalPrivacyControl?: boolean })
       .globalPrivacyControl === true || navigator.doNotTrack === "1";
   const mutation = useMutation({
-    mutationKey: ["account", identity, "purchase-measurement"],
+    mutationKey: ["account", identity, "purchase-measurement", provider],
     mutationFn: (body: PermissionChange) =>
-      request("/family/purchase-measurement", purchaseMeasurementSchema, {
-        token,
-        body,
-        headers: optedOut ? { DNT: "1" } : undefined,
-      }),
+      request(
+        provider === "meta"
+          ? "/family/meta-purchase-measurement"
+          : "/family/purchase-measurement",
+        purchaseMeasurementSchema,
+        {
+          token,
+          body,
+          headers: optedOut ? { DNT: "1" } : undefined,
+        },
+      ),
     onSuccess: (result) => {
       setAgreed(false);
       setFeedback(
@@ -55,7 +65,7 @@ export function PurchaseMeasurement({
   const active = view.status === "active";
   const matchingNotice = currentMeasurementNotice(view) === notice.version;
   return (
-    <section className="family-section" data-purchase-measurement>
+    <section className="family-section" data-purchase-measurement={provider}>
       <h2 tabIndex={-1}>{notice.title}</h2>
       <p>{notice.purpose}</p>
       <p>{notice.disclosure}</p>
@@ -65,11 +75,15 @@ export function PurchaseMeasurement({
         {notice.retention}{" "}
         <a
           style={{ color: "var(--color-primary)" }}
-          href="https://policies.google.com/privacy"
+          href={
+            provider === "meta"
+              ? "https://www.facebook.com/privacy/policy/"
+              : "https://policies.google.com/privacy"
+          }
           target="_blank"
           rel="noopener noreferrer"
         >
-          Google privacy policy
+          {provider === "meta" ? "Meta" : "Google"} privacy policy
         </a>
       </p>
       <p>
