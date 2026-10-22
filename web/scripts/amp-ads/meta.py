@@ -212,7 +212,7 @@ def plan(spec, c, region, media):
     key = digest({"version": VERSION, "spec": spec, "identity": identity, "region": region, "media": {k: v["sha256"] for k, v in media.items()}})
     name = f"AMP | AR | {spec['id']} | {key[:12]}"
     publisher = spec["publisher"]
-    positions = ["feed"] if spec["placement"] == "feed" else (["story", "facebook_reels"] if publisher == "facebook" else ["story", "reels"])
+    positions = ["feed"] if spec["placement"] == "feed" else (["facebook_reels"] if publisher == "facebook" else ["story", "reels"])
     return {
         "fingerprint": key,
         "campaign": {"name": name, "objective": "OUTCOME_SALES", "buying_type": "AUCTION", "status": "PAUSED", "special_ad_categories": [], "is_adset_budget_sharing_enabled": False},

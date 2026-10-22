@@ -98,6 +98,15 @@ class MetaTests(unittest.TestCase):
         self.assertIn("utm_source=instagram", p["url_tags"])
         self.assertNotIn("facebook_positions", target)
 
+    def test_facebook_vertical_does_not_require_another_publisher_or_feed(self):
+        # Meta rejects Facebook Stories without Facebook Feed or Instagram Stories.
+        # The vertical proposal must preserve its single-publisher, Reels-only scope.
+        self.spec.update(publisher="facebook", placement="vertical")
+        target = self.plan()["adset"]["targeting"]
+        self.assertEqual(target["publisher_platforms"], ["facebook"])
+        self.assertEqual(target["facebook_positions"], ["facebook_reels"])
+        self.assertNotIn("instagram_positions", target)
+
     def test_media_cannot_escape_root_or_change_after_plan(self):
         with tempfile.TemporaryDirectory() as other:
             outside = Path(other) / "outside.png"
