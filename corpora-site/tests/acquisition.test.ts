@@ -52,3 +52,35 @@ test('acquisition preserves every authored creative label and rejects arbitrary 
   const unknown=run('?gclid=Google_1&utm_campaign=ar-efa-launch&utm_content=private%40example.test');
   assert.equal(JSON.parse(unknown.sent[0].options.body).labels.creative,undefined);
 });
+
+test('AMP overview sitelinks capture owned click evidence and honor privacy',()=>{
+  const result=run('?gclid=Overview_1&utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&utm_content=homeschool-math',{},'/amp/');
+  const body=JSON.parse(result.sent[0].options.body);
+  assert.deepEqual(body.clicks,[{provider:'google',identifiers:{gclid:'Overview_1'}}]);
+  assert.equal(body.labels.creative,'homeschool-math');
+  assert.ok(!result.replaced[0].includes('gclid'));
+  const optedOut=run('?gclid=Overview_1',{globalPrivacyControl:true},'/amp/');
+  assert.deepEqual(JSON.parse(optedOut.sent[0].options.body),{optOut:true});
+  assert.equal(optedOut.replaced[0],'/amp/');
+  assert.equal(run('?gclid=Overview_1',{},'/samples/').sent.length,0);
+});
+
+test('production overview includes capture while previews and sample pages do not',async()=>{
+  const {buildSite}=await import('../src/build.js');
+  const {configSchema}=await import('../src/config.js');
+  const {mkdtemp,readFile,rm}=await import('node:fs/promises');
+  const {tmpdir}=await import('node:os');
+  const {join}=await import('node:path');
+  const dir=await mkdtemp(join(tmpdir(),'amp-overview-acquisition-'));
+  const config=configSchema.parse({mode:'production',siteUrl:'https://site.example.invalid',appUrl:'https://app.example.invalid',supportEmail:'support@example.invalid',legalReviewed:true,operator:{legalName:'Synthetic operator',postalAddress:'Synthetic address',telephone:'Synthetic telephone'},privacy:{placementBasis:'Synthetic basis',retention:'Synthetic retention',providers:[{name:'Synthetic provider',purpose:'Synthetic purpose',retention:'Synthetic retention'}]}});
+  try{
+    await buildSite(config,dir);
+    const overview=await readFile(join(dir,'amp/index.html'),'utf8');
+    assert.ok(overview.includes('data-acquisition-endpoint="https://app.example.invalid/api/v1/advertising/acquisition"'));
+    assert.ok(!overview.includes('data-campaign-endpoint'));
+    const samples=await readFile(join(dir,'samples/index.html'),'utf8');
+    assert.ok(!samples.includes('data-acquisition-endpoint'));
+    await buildSite(configSchema.parse({}),dir);
+    assert.ok(!(await readFile(join(dir,'amp/index.html'),'utf8')).includes('data-acquisition-endpoint'));
+  }finally{await rm(dir,{recursive:true,force:true});}
+});
