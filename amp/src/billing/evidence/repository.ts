@@ -284,25 +284,52 @@ export async function holdFinancialRecord(
   eventId: string,
   creditNoteId: string,
 ): Promise<void> {
-  await repository.pool.query(
-    "INSERT INTO amp_payment_holds(namespace,invoice_id,credit_note_id,source_event_id) VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING",
-    [repository.namespace, invoiceId, creditNoteId, eventId],
-  );
-  const found = await repository.pool.query(
-    "SELECT account_id FROM amp_payment_records WHERE namespace=$1 AND invoice_id=$2",
-    [repository.namespace, invoiceId],
-  );
-  if (!found.rowCount) return;
-  await repository.transaction(found.rows[0].account_id, async (client) => {
+  const insert = (client: PoolClient) =>
+    client.query(
+      "INSERT INTO amp_payment_holds(namespace,invoice_id,credit_note_id,source_event_id) VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING",
+      [repository.namespace, invoiceId, creditNoteId, eventId],
+    );
+  // An owner may not exist yet. Serialize that discovery with invoice creation;
+  // never acquire an account lock while holding the invoice lock (lock order).
+  const discovery = await repository.pool.connect();
+  let owner: string | undefined;
+  try {
+    await discovery.query("BEGIN");
+    await discovery.query("SET LOCAL lock_timeout='5s'");
+    await discovery.query("SET LOCAL statement_timeout='15s'");
+    await discovery.query(
+      "SELECT pg_advisory_xact_lock(hashtextextended($1,2))",
+      [`${repository.namespace}:${invoiceId}`],
+    );
+    owner = (
+      await discovery.query(
+        "SELECT account_id FROM amp_payment_records WHERE namespace=$1 AND invoice_id=$2",
+        [repository.namespace, invoiceId],
+      )
+    ).rows[0]?.account_id;
+    if (!owner) await insert(discovery);
+    await discovery.query("COMMIT");
+  } catch (error) {
+    await discovery.query("ROLLBACK");
+    throw error;
+  } finally {
+    discovery.release();
+  }
+  if (!owner) return;
+  await repository.transaction(owner, async (client) => {
     await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,2))", [
       `${repository.namespace}:${invoiceId}`,
     ]);
     const row = (
       await client.query(
-        "SELECT id FROM amp_payment_records WHERE namespace=$1 AND invoice_id=$2 FOR UPDATE",
+        "SELECT id,account_id FROM amp_payment_records WHERE namespace=$1 AND invoice_id=$2 FOR UPDATE",
         [repository.namespace, invoiceId],
       )
     ).rows[0];
+    if (row && row.account_id !== owner)
+      throw new BillingError("financial_owner_changed");
+    await insert(client);
+    if (!row) return; // Retain an early hold even if the prior record expired.
     const observation: FinancialResult = {
       kind: "review",
       reason: "provider_credit_note_requires_review",

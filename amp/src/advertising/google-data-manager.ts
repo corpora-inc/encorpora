@@ -12,18 +12,20 @@ const instant = z
   );
 const accountId = z.string().regex(/^\d{10}$/);
 const requestId = z.string().regex(/^[A-Za-z0-9._~:+/=-]{1,512}$/);
-const destinationSchema = z.strictObject({
+export const googleDestinationSchema = z.strictObject({
   conversionCustomerId: accountId,
   loginCustomerId: accountId.optional(),
   conversionActionId: z.string().regex(/^[1-9]\d{0,19}$/),
 });
-export type GoogleConversionDestination = z.infer<typeof destinationSchema>;
+export type GoogleConversionDestination = z.infer<
+  typeof googleDestinationSchema
+>;
 /** Logical conversion identity excludes the manager access path. Changing the
  * login manager must not allocate another transaction for the same action. */
 export function googleConversionDestinationKey(
   config: GoogleConversionDestination,
 ) {
-  const checked = parse(destinationSchema, config, "invalid_destination");
+  const checked = parse(googleDestinationSchema, config, "invalid_destination");
   return createHash("sha256")
     .update(
       JSON.stringify([
@@ -72,7 +74,7 @@ function parse<T>(schema: z.ZodType<T>, value: unknown, code: string): T {
   return result.data;
 }
 function destination(value: GoogleConversionDestination) {
-  const config = parse(destinationSchema, value, "invalid_destination");
+  const config = parse(googleDestinationSchema, value, "invalid_destination");
   return {
     operatingAccount: {
       accountType: "GOOGLE_ADS",
@@ -118,8 +120,33 @@ export function googlePurchaseRequest(
   mode: "validate" | "ingest" = "validate",
   now = new Date(),
 ) {
+  return eventRequest(config, input, mode, now, false);
+}
+
+/** Same event identity and identifiers as an already processed purchase. Zero
+ * restates value; it does not retract the conversion count. Caller proves the receipt. */
+export function googleRestatementRequest(
+  config: GoogleConversionDestination,
+  input: GooglePurchase,
+  mode: "validate" | "ingest" = "validate",
+  now = new Date(),
+) {
+  return eventRequest(config, input, mode, now, true);
+}
+function eventRequest(
+  config: GoogleConversionDestination,
+  input: GooglePurchase,
+  mode: "validate" | "ingest",
+  now: Date,
+  restatement: boolean,
+) {
   const target = destination(config);
-  const purchase = parse(purchaseSchema, input, "invalid_purchase");
+  const schema = restatement
+    ? purchaseSchema.extend({
+        amountMinor: z.number().int().nonnegative().max(100_000_000),
+      })
+    : purchaseSchema;
+  const purchase = parse(schema, input, "invalid_purchase");
   if (!Number.isFinite(+now) || !["validate", "ingest"].includes(mode))
     throw new GoogleConversionError("invalid_request", "not_sent");
   const eventAt = Date.parse(purchase.occurredAt);
@@ -244,7 +271,7 @@ export class GoogleDataManager {
     private readonly accessToken: () => Promise<string>,
     private readonly fetcher: typeof fetch = fetch,
   ) {
-    this.config = parse(destinationSchema, config, "invalid_destination");
+    this.config = parse(googleDestinationSchema, config, "invalid_destination");
     this.target = destination(this.config);
     this.destinationFingerprint = createHash("sha256")
       .update(JSON.stringify(this.target))
@@ -305,7 +332,25 @@ export class GoogleDataManager {
     mode: "validate" | "ingest" = "validate",
     now = new Date(),
   ): Promise<GoogleIngestionReceipt | GoogleValidationReceipt> {
-    const body = googlePurchaseRequest(this.config, input, mode, now);
+    return this.send(
+      googlePurchaseRequest(this.config, input, mode, now),
+      mode,
+    );
+  }
+  async restate(
+    input: GooglePurchase,
+    mode: "validate" | "ingest" = "validate",
+    now = new Date(),
+  ) {
+    return this.send(
+      googleRestatementRequest(this.config, input, mode, now),
+      mode,
+    );
+  }
+  private async send(
+    body: unknown,
+    mode: "validate" | "ingest",
+  ): Promise<GoogleIngestionReceipt | GoogleValidationReceipt> {
     const raw = await this.request("events:ingest", body);
     const result = z
       .strictObject({

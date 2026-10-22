@@ -5,6 +5,7 @@ import {
   GoogleDataManager,
   googleAdultEmailHash,
   googlePurchaseRequest,
+  googleRestatementRequest,
   type GooglePurchase,
   type GoogleIngestionReceipt,
 } from "../src/advertising/google-data-manager.js";
@@ -430,5 +431,40 @@ test("validation cannot disguise an error-shaped 200 response as success", async
   await assert.rejects(
     h.client.purchase(purchase, "validate", now),
     fail("invalid_provider_response", "unknown"),
+  );
+});
+
+test("zero is restricted to explicit restatement with original event identity and permission checks", () => {
+  const zero = { ...purchase, amountMinor: 0 };
+  assert.throws(() => googlePurchaseRequest(config, zero, "ingest", now));
+  const event = googleRestatementRequest(config, zero, "ingest", now)
+    .events[0]!;
+  assert.equal(event.conversionValue, 0);
+  assert.equal(event.transactionId, purchase.transactionId);
+  assert.deepEqual(
+    event.userData,
+    googlePurchaseRequest(config, purchase, "ingest", now).events[0]!.userData,
+  );
+  assert.throws(() =>
+    googleRestatementRequest(
+      config,
+      { ...zero, amountMinor: -1 },
+      "ingest",
+      now,
+    ),
+  );
+  assert.throws(() =>
+    googleRestatementRequest(
+      config,
+      {
+        ...zero,
+        permission: {
+          ...zero.permission,
+          expiresAt: zero.permission.grantedAt,
+        },
+      },
+      "ingest",
+      now,
+    ),
   );
 });
