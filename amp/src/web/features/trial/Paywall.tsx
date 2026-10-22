@@ -184,7 +184,7 @@ function PlansView({
               >
                 Continue
               </Button>
-              <Button variant="secondary" onClick={() => setAsking(true)}>
+              <Button variant="secondary" onClick={() => dismiss("closed")}>
                 Not now
               </Button>
             </div>
@@ -209,6 +209,9 @@ function PlansView({
             </div>
           </>
         )}
+        <Button variant="quiet" onClick={() => setAsking(true)}>
+          Give feedback
+        </Button>
         <div className={styles.esa}>
           <p>Pay with education funds</p>
           {Object.values(fundedPrograms)
@@ -232,13 +235,7 @@ function PlansView({
           </a>
         </div>
       </section>
-      <Dialog
-        open={asking}
-        onOpenChange={(open) => {
-          if (!open && asking) dismiss("closed");
-        }}
-        title="Not now"
-      >
+      <Dialog open={asking} onOpenChange={setAsking} title="Give feedback">
         <p className={styles.ask}>One tap helps us improve. What’s missing?</p>
         <div className={styles.reasons}>
           {reasons.map(([value, label]) => (
