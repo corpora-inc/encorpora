@@ -420,6 +420,17 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_google_delivery_attempts') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "purchase-measurement-delivery",
+          "SELECT jsonb_build_object('provider','Google','purchaseAt',q.occurred_at,'kind',a.kind,'amountMinor',a.amount_minor,'currency',q.currency,'state',a.state,'processing',a.processing,'errorCode',a.error_code,'diagnostics',a.diagnostics,'createdAt',a.created_at,'completedAt',a.completed_at) AS value FROM amp_google_delivery_attempts a JOIN amp_google_purchase_queue q USING(transaction_id) WHERE q.account_id=$1 ORDER BY a.created_at,a.id",
+        ]);
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_offline_packs') AS relation",
           )
         ).rows[0]?.relation

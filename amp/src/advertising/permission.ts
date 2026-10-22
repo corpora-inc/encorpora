@@ -81,7 +81,7 @@ export async function purchaseMeasurementView(
     expiresAt: row?.expires_at?.toISOString() ?? null,
   };
 }
-/** Must hold the exclusive account privacy lock, also used by future dispatchers.
+/** Must hold the exclusive account privacy lock, also used by purchase delivery.
  * Repeated withdrawal is a no-op. A new tombstone prevents an older form
  * with no revision from overriding a newly received privacy signal. */
 export async function revokeAdvertisingPermission(
