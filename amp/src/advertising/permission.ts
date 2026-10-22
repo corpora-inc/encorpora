@@ -1,4 +1,5 @@
 import { RETENTION } from "../privacy/retention-periods.js";
+import { eraseAccountAdClicks } from "./click-evidence.js";
 import { createHash, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import type { Authenticator } from "../server/auth.js";
@@ -116,6 +117,25 @@ export async function revokeAdvertisingPermission(
     if (!(await installed(client, recipient))) continue;
     const table = permissionTable(recipient);
     if (
+      (
+        await client.query(
+          "SELECT to_regclass('amp_ad_collection_withdrawals') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        "INSERT INTO amp_ad_collection_withdrawals(account_id,provider) VALUES($1,$2) ON CONFLICT DO NOTHING",
+        [account, recipient],
+      );
+    if (
+      (
+        await client.query(
+          "SELECT to_regclass('amp_ad_click_evidence') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await eraseAccountAdClicks(client, account, recipient);
+    if (
       recipient === "meta" &&
       (
         await client.query(
@@ -222,6 +242,17 @@ export async function changeAdvertisingPermission(
       ON CONFLICT(account_id) DO UPDATE SET revision=EXCLUDED.revision,notice_version=EXCLUDED.notice_version,adult_attested=true,email_digest=EXCLUDED.email_digest,granted_at=EXCLUDED.granted_at,expires_at=EXCLUDED.expires_at,withdrawn_at=NULL`,
       [account, randomUUID(), notice.version, fingerprint(email)],
     );
+    if (
+      (
+        await client.query(
+          "SELECT to_regclass('amp_ad_collection_withdrawals') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        "DELETE FROM amp_ad_collection_withdrawals WHERE account_id=$1 AND provider=$2",
+        [account, provider],
+      );
     return purchaseMeasurementView(client, account, provider);
   });
 }
