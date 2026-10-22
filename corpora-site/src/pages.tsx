@@ -838,6 +838,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/assets/site.css" />
         <link rel="stylesheet" href="/assets/katex.min.css" />
+        {fundingForPath(route, config)?.page?.presentation?.invoiceForm && <script src="/assets/invoice.js" defer />}
         {route === "/samples/" && <script src="/assets/print.js" defer />}
         {config.mode === "production" && config.appUrl && ["/esa/arkansas-efa/", "/esa/arizona-esa/"].includes(route) && (
           <>
