@@ -28,6 +28,7 @@ import { RETENTION } from "../privacy/retention-periods.js";
 
 export const googleDeliveryConfigSchema = z.strictObject({
   enabled: z.boolean().default(false),
+  matchingMode: z.enum(["click_only", "enhanced_email"]).optional(),
   destination: googleDestinationSchema,
   sources: measurementSourcesSchema,
 });
@@ -129,24 +130,31 @@ async function candidate(
     (!correction && payment.netMinor === 0)
   )
     return null;
-  const email = await confirmedAdvertisingEmail(client, row.account_id);
-  if (!email) return null;
   const click = await paymentClickEvidence(
     client,
     row.account_id,
     { kind: row.source_kind, id: row.source_id },
     "google",
   );
+  const identifiers =
+    click && Date.parse(click.observedAt) <= Date.parse(payment.occurredAt)
+      ? googleClickIdentifiersSchema.parse(click.identifiers)
+      : undefined;
+  const clickOnly = config.matchingMode === "click_only";
+  if (clickOnly && !identifiers) return { missingClick: true as const };
+  const email = clickOnly
+    ? undefined
+    : await confirmedAdvertisingEmail(client, row.account_id);
+  if (!clickOnly && !email) return null;
   const purchase: GooglePurchase = {
-    ...(click && Date.parse(click.observedAt) <= Date.parse(payment.occurredAt)
-      ? { adIdentifiers: googleClickIdentifiersSchema.parse(click.identifiers) }
-      : {}),
+    matchingMode: config.matchingMode,
+    ...(identifiers ? { adIdentifiers: identifiers } : {}),
     eventSource: row.source_kind === "stripe" ? "WEB" : "OTHER",
     transactionId: row.transaction_id,
     occurredAt: payment.occurredAt,
     amountMinor: payment.netMinor,
     currency: "USD",
-    adultEmailSha256: googleAdultEmailHash(email),
+    ...(email ? { adultEmailSha256: googleAdultEmailHash(email) } : {}),
     permission: {
       adultAttested: true,
       adUserData: true,
@@ -160,6 +168,7 @@ async function candidate(
 export type DeliveryOutcome =
   | "disabled"
   | "ineligible"
+  | "missing_click"
   | "blocked"
   | "unchanged"
   | "correction_blocked"
@@ -216,9 +225,13 @@ export async function deliverGooglePayment(
       return "blocked";
     }
     const ready = await candidate(client, row, config, !!prior);
-    if (!ready) {
+    if (!ready || "missingClick" in ready) {
       await client.query("COMMIT");
-      return prior ? "correction_blocked" : "ineligible";
+      return prior
+        ? "correction_blocked"
+        : ready
+          ? "missing_click"
+          : "ineligible";
     }
     if (prior && Number(prior.amount_minor) === ready.purchase.amountMinor) {
       await client.query("COMMIT");
@@ -236,6 +249,7 @@ export async function deliverGooglePayment(
     const checked = await candidate(client, current, config, !!prior);
     if (
       !checked ||
+      "missingClick" in checked ||
       JSON.stringify(checked.purchase) !== JSON.stringify(ready.purchase)
     ) {
       await client.query(
