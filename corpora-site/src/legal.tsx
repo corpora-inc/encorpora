@@ -171,6 +171,27 @@ export function Legal({
             continuation works across tabs on the same device; it is not sent
             to an advertising platform.
           </p>
+          <h2>Optional adult purchase sharing</h2>
+          <p>
+            In AMP’s Family privacy controls, an adult with a confirmed account
+            email can separately allow Google purchase measurement. With that
+            permission, AMP may share an encoded version of the adult’s email,
+            a random purchase reference, purchase date, amount and currency.
+            Google can match the encoded email with its records; it is not
+            anonymous. Learner names, ages, answers, lessons and progress are
+            excluded. AMP requests measurement without ad personalization.
+          </p>
+          <p>
+            This optional permission lasts one year and does not affect pricing,
+            purchasing or learning access. Withdrawal stops future sharing; it
+            does not recall information already received by Google. Learning-data
+            deletion, learning-consent withdrawal, and Global Privacy Control or
+            Do Not Track received on an authenticated AMP request also withdraw
+            the preference. AMP retains the current preference for its duration
+            and up to 90 days after withdrawal or expiry. It appears in the family
+            export. Google handles received information under its{" "}
+            <a href="https://policies.google.com/privacy">privacy policy</a>.
+          </p>
           <h2>Free practice</h2>
           <p>
             Free practice, a short placement followed by adaptive practice up to

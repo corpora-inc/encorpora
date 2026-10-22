@@ -1,3 +1,7 @@
+import {
+  purchaseMeasurementView,
+  revokeAdvertisingPermission,
+} from "../advertising/permission.js";
 import { cancelPendingConsent } from "../parent-consent/lifecycle.js";
 import { learningConsentActive } from "../server/account-access.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -107,6 +111,7 @@ export class FamilyRepository {
         this.development,
       );
       return {
+        purchaseMeasurement: await purchaseMeasurementView(client, accountId),
         consent: {
           status: consent
             ? consent.withdrawn_at
@@ -169,6 +174,7 @@ export class FamilyRepository {
       [accountId],
     );
     await cancelPendingConsent(client, accountId);
+    await revokeAdvertisingPermission(client, accountId);
   }
   async withdraw(accountId: string): Promise<void> {
     await this.transaction(accountId, async (client) => {
@@ -199,6 +205,7 @@ export class FamilyRepository {
     ).rows;
     if (learnerId && !rows.length)
       throw new FamilyError(404, "learner_not_found");
+    await revokeAdvertisingPermission(client, accountId);
     const stripe = await this.stripeTable(client);
     const funding = !!(
       await client.query(
@@ -388,6 +395,17 @@ export class FamilyRepository {
           "SELECT to_jsonb(p) - 'account_id' AS value FROM amp_privacy_events p WHERE account_id=$1 ORDER BY occurred_at,id",
         ],
       ];
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_advertising_permissions') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "purchase-measurement-permission",
+          "SELECT to_jsonb(p) - 'account_id' - 'email_digest' AS value FROM amp_advertising_permissions p WHERE account_id=$1",
+        ]);
       if (
         (
           await client.query(

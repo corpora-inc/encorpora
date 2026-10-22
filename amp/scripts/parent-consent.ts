@@ -1,3 +1,4 @@
+import { revokeAdvertisingPermission } from "../src/advertising/permission.js";
 import { cancelPendingConsent } from "../src/parent-consent/lifecycle.js";
 import { readFile } from "node:fs/promises";
 import { createDatabasePool } from "../src/server/database.js";
@@ -46,6 +47,8 @@ try {
     ],
   );
   await cancelPendingConsent(client, record.accountId);
+  if (record.withdraw)
+    await revokeAdvertisingPermission(client, record.accountId);
   await client.query("COMMIT");
   console.log("Parent consent record updated.");
 } catch (error) {

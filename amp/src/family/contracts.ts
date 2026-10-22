@@ -1,3 +1,4 @@
+import type { PurchaseMeasurement } from "../advertising/permission-contracts.js";
 import { RETENTION } from "../privacy/retention-periods.js";
 export interface FamilyLearner {
   id: string;
@@ -15,6 +16,7 @@ export interface FamilyLearner {
   canPractice?: boolean;
 }
 export interface FamilySummary {
+  purchaseMeasurement?: PurchaseMeasurement;
   consent: {
     status: "active" | "withdrawn" | "not-recorded" | "development";
     policyVersion: string | null;

@@ -1,6 +1,14 @@
 import type { z } from "zod";
 import { AppError } from "./AppError";
 const messages: Record<string, string> = {
+  purchase_measurement_changed:
+    "Your preference changed in another request. Review the updated setting and try again.",
+  purchase_measurement_email_required:
+    "Confirm your own AMP account email before allowing purchase sharing.",
+  purchase_measurement_unavailable:
+    "Your purchase preference could not be saved. Refresh and try again.",
+  invalid_purchase_measurement_request:
+    "Review the purchase-sharing notice and choose again.",
   consent_required: "Continue setup to review parent consent.",
   parental_consent_required: "Continue setup to review parent consent.",
   license_required: "Choose a plan for this learner before practicing.",
