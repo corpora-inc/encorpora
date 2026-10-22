@@ -4,7 +4,7 @@ import { commerceEventSchema } from "../commerce/postgres.js";
 
 export const paymentReferenceSchema = z
   .strictObject({
-    kind: z.enum(["stripe", "arkansas-efa"]),
+    kind: z.enum(["stripe", "arkansas-efa", "arizona-esa"]),
     id: z.string().min(1).max(500),
   })
   .superRefine((ref, ctx) => {
@@ -22,8 +22,14 @@ export const measurementSourcesSchema = z
       .regex(/^acct_[A-Za-z0-9_]+:live$/)
       .optional(),
     efaChannelReference: z.string().trim().min(1).max(500).optional(),
+    azEsaChannelReference: z.string().trim().min(1).max(500).optional(),
   })
-  .refine((v) => !!v.stripeNamespace || !!v.efaChannelReference);
+  .refine(
+    (v) =>
+      !!v.stripeNamespace ||
+      !!v.efaChannelReference ||
+      !!v.azEsaChannelReference,
+  );
 export type MeasurementSources = z.infer<typeof measurementSourcesSchema>;
 export interface VerifiedAdvertisingPayment {
   accountId: string;
@@ -122,7 +128,13 @@ export async function verifiedAdvertisingPayment(
       ),
     };
   }
-  if (!sources.efaChannelReference) return null;
+  const channel =
+    ref.kind === "arizona-esa"
+      ? sources.azEsaChannelReference
+      : sources.efaChannelReference;
+  const program = ref.kind === "arizona-esa" ? "az-esa" : "ar-efa";
+  const jurisdiction = ref.kind === "arizona-esa" ? "AZ" : "AR";
+  if (!channel) return null;
   const result = await client.query(
     `SELECT o.account_id,o.order_state->'amountMinor' AS amount,o.order_state->>'refund' AS refund,
      (SELECT jsonb_agg(e.payload ORDER BY e.sequence) FROM amp_commerce_events e
@@ -131,9 +143,9 @@ export async function verifiedAdvertisingPayment(
      FROM amp_commerce_orders o JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
      WHERE o.id=$1 AND o.channel='esa' AND o.channel_reference=$2
        AND o.order_state->>'settlement'='settled' AND o.order_state->>'currency'='USD'
-       AND r.offer_snapshot->>'programId'='ar-efa' AND r.offer_snapshot->>'jurisdiction'='AR'
+       AND r.offer_snapshot->>'programId'=$3 AND r.offer_snapshot->>'jurisdiction'=$4
        AND r.offer_snapshot->>'channelReference'=o.channel_reference`,
-    [ref.id, sources.efaChannelReference],
+    [ref.id, channel, program, jurisdiction],
   );
   const row = result.rows[0];
   if (
@@ -158,7 +170,7 @@ export async function verifiedAdvertisingPayment(
     events.some(
       (e) =>
         e.channel !== "esa" ||
-        e.channelReference !== sources.efaChannelReference ||
+        e.channelReference !== channel ||
         e.orderId !== ref.id ||
         !("amountMinor" in e) ||
         e.amountMinor !== row.amount ||
