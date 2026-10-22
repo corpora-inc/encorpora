@@ -211,6 +211,16 @@ export class FamilyRepository {
     if (learnerId && !rows.length)
       throw new FamilyError(404, "learner_not_found");
     await revokeAdvertisingPermission(client, accountId);
+    const invoiceIntents = !!(
+      await client.query(
+        "SELECT to_regclass('amp_funding_invoice_intents') AS relation",
+      )
+    ).rows[0]?.relation;
+    if (!learnerId && invoiceIntents)
+      await client.query(
+        `DELETE FROM amp_funding_invoice_intents i WHERE i.received_payment_at IS NULL AND (i.claimed_account_id=$1 OR (i.claimed_account_id IS NULL AND EXISTS (SELECT 1 FROM amp_auth_users u WHERE 'amp|' || u.id=$1 AND u."emailVerified" AND lower(trim(u.email))=i.parent_email)))`,
+        [accountId],
+      );
     const stripe = await this.stripeTable(client);
     const funding = !!(
       await client.query(
@@ -271,7 +281,9 @@ export class FamilyRepository {
       }
       if (funding)
         await client.query(
-          "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL",
+          invoiceIntents
+            ? "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL AND NOT EXISTS (SELECT 1 FROM amp_funding_invoice_intents i WHERE i.claimed_request_id=amp_funding_requests.id AND i.received_payment_at IS NOT NULL)"
+            : "DELETE FROM amp_funding_requests WHERE learner_id=$1 AND account_id=$2 AND order_id IS NULL",
           [row.id, accountId],
         );
       if (offline)
@@ -534,6 +546,17 @@ export class FamilyRepository {
         datasets.push([
           "problem-report",
           "SELECT to_jsonb(f) AS value FROM amp_problem_flags f JOIN amp_learners l ON l.id=f.learner_id WHERE l.account_id=$1 ORDER BY f.created_at,f.id",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_funding_invoice_intents') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "funding-invoice",
+          `SELECT jsonb_build_object('id',i.id,'parentEmail',i.parent_email,'studentBillingName',i.student_billing_name,'createdAt',i.created_at,'expiresAt',i.expires_at,'state',i.state,'claimedRequestId',i.claimed_request_id) AS value FROM amp_funding_invoice_intents i WHERE i.claimed_account_id=$1 OR (i.claimed_account_id IS NULL AND EXISTS (SELECT 1 FROM amp_auth_users u WHERE 'amp|' || u.id=$1 AND u."emailVerified" AND lower(trim(u.email))=i.parent_email)) ORDER BY i.created_at,i.id`,
         ]);
       if (
         (
