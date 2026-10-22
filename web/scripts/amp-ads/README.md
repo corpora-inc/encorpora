@@ -149,3 +149,9 @@ Meta account setup and authorization must be completed in Meta's supported admin
 Google's official Ads MCP is read-only; use the supported Google Ads client for mutations. Meta exposes an official Ads MCP endpoint, but dynamic client registration is not available to every client. Treat an OAuth registration rejection as an access prerequisite, not a successful connection.
 
 References: [Google Ads MCP](https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server), [Google Ads API access](https://developers.google.com/google-ads/api/docs/get-started/introduction), [Meta Ads MCP resource metadata](https://mcp.facebook.com/.well-known/oauth-protected-resource/ads), [OpenAI text-to-speech](https://platform.openai.com/docs/guides/text-to-speech).
+
+## Google purchase measurement authorization
+
+Add `--measurement` when running `auth-google.py` to request the Data Manager scope alongside Google Ads. The default continues to request Ads only. The helper refuses to overwrite a token file; preserve existing credentials and use a new approved destination when adding scopes. Neither authorization nor a validation-only API request establishes parent permission to share data.
+
+New offline-conversion integrations use Google's [Data Manager API](https://developers.google.com/data-manager/api/devguides/events/google-ads/offline). AMP's [transport contract and outstanding integration requirements](../../../amp/docs/google-purchase-measurement.md) describe the separate adult-permission, verified-payment, delivery and refund responsibilities. Campaign creation does not install this integration.

@@ -13,15 +13,19 @@ p = argparse.ArgumentParser()
 p.add_argument("--client", required=True)
 p.add_argument("--output", required=True)
 p.add_argument("--port", type=int, default=8769)
+p.add_argument("--measurement", action="store_true", help="Also authorize Data Manager API for adult purchase measurement")
 a = p.parse_args()
 output = Path(a.output).expanduser()
 if output.exists():
     raise SystemExit(
         "Refusing to overwrite existing credentials; choose a new output path."
     )
+requested_scopes = ["https://www.googleapis.com/auth/adwords"]
+if a.measurement:
+    requested_scopes.append("https://www.googleapis.com/auth/datamanager")
 flow = InstalledAppFlow.from_client_secrets_file(
     a.client,
-    scopes=["https://www.googleapis.com/auth/adwords"],
+    scopes=requested_scopes,
     autogenerate_code_verifier=True,
 )
 flow.redirect_uri = f"http://127.0.0.1:{a.port}/callback"
@@ -48,10 +52,18 @@ class Handler(BaseHTTPRequestHandler):
             return
         try:
             flow.fetch_token(code=q["code"][0])
+            credentials = flow.credentials
+            granted = credentials.granted_scopes
+            if isinstance(granted, str):
+                granted = granted.split()
+            # A measurement token must explicitly confirm both requested grants.
+            # Never infer permission from credentials.scopes (the request).
+            if a.measurement and (not granted or not set(requested_scopes).issubset(granted)):
+                raise ValueError("required_scopes_missing")
             output.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
             fd = os.open(output, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
             with os.fdopen(fd, "w") as f:
-                f.write(flow.credentials.to_json())
+                f.write(credentials.to_json())
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b"Google Ads authorization saved. You can close this tab.")
