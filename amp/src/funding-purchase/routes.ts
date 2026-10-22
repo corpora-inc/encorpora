@@ -12,6 +12,10 @@ import {
 } from "./contracts.js";
 import { FundingPurchaseRepository } from "./repository.js";
 import { renderFundingQuotePdf, validateQuoteFonts } from "./quote-pdf.js";
+import {
+  acquisitionToken,
+  linkPurchaseAcquisition,
+} from "../advertising/acquisition.js";
 export async function registerFundingPurchaseRoutes(
   app: FastifyInstance,
   options: {
@@ -72,10 +76,14 @@ export async function registerFundingPurchaseRoutes(
         body = purchase;
       }
       const input = createFundingRequestSchema.parse(body);
-      return repository.present(
+      const fundingRequest = await repository.create(account, input);
+      await linkPurchaseAcquisition(
+        options.pool,
         account,
-        await repository.create(account, input),
+        acquisitionToken(request.headers),
+        { kind: "funding-request", id: fundingRequest.id },
       );
+      return repository.present(account, fundingRequest);
     });
     scope.get("/api/v1/funding/requests/:id", async (request) => {
       const account = await options.authenticate(request);

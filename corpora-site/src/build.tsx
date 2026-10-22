@@ -32,6 +32,7 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f5f55"/><path d="M43 21a17 17 0 1 0 0 22" fill="none" stroke="#fffefa" stroke-width="7"/><circle cx="48" cy="48" r="4" fill="#fffefa"/></svg>',
   );
   await cp("src/campaign-client.js", `${output}/assets/campaign.js`);
+  await cp("src/acquisition-client.js", `${output}/assets/acquisition.js`);
   for (const route of routes) {
     const dir = `${output}${route}`;
     await mkdir(dir, { recursive: true });

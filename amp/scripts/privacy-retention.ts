@@ -1,4 +1,5 @@
 import { purgeMetaPurchaseContexts } from "../src/advertising/meta-context.js";
+import { purgeAcquisition } from "../src/advertising/acquisition.js";
 import { purgeMetaPurchaseQueue } from "../src/advertising/meta-delivery.js";
 import { purgeGooglePurchaseQueue } from "../src/advertising/purchase-queue.js";
 import { purgeAdvertisingPermissions } from "../src/advertising/permission.js";
@@ -25,6 +26,7 @@ try {
     JSON.stringify({
       ...(await purgeExpiredPrivacyRecords(pool)),
       expiredAdvertisingPermissions: await purgeAdvertisingPermissions(pool),
+      expiredAcquisitionJourneys: await purgeAcquisition(pool),
       expiredMetaPurchaseContexts: await purgeMetaPurchaseContexts(pool),
       expiredMetaPurchaseDeliveries: await purgeMetaPurchaseQueue(pool),
       expiredAdvertisingPayments: await purgeGooglePurchaseQueue(pool),
