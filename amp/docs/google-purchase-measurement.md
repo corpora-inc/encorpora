@@ -59,7 +59,7 @@ Store a reviewed configuration outside Git with mode `0600`. Replace these synth
 }
 ```
 
-`efaChannelReference` selects Arkansas EFA settlements; `azEsaChannelReference` selects Arizona ESA settlements. Each requires a linked request whose program, jurisdiction and payment channel match. An Arizona payment cannot qualify through the Arkansas setting, even if both programs use the same payment provider. Deploy migration 0041 before running the Arizona collector. Meta’s Arizona exporter uses the same verified payment source and requires migration 0042.
+`efaChannelReference` selects Arkansas EFA settlements; `azEsaChannelReference` selects Arizona ESA settlements. Each requires a linked request whose program, jurisdiction and payment channel match. An Arizona payment cannot qualify through the Arkansas setting, even if both programs use the same payment provider. Deploy migration 0041 before running the Arizona collector. Meta’s Arizona exporter uses the same verified payment source and requires migration 0043.
 
 Set `AMP_DATABASE_URL`, `AMP_GOOGLE_MEASUREMENT_CONFIG` (configuration path) and, for delivery/diagnostics, `AMP_GOOGLE_MEASUREMENT_CREDENTIALS` (the separate OAuth credential path). Files must be private regular files; symlinks, broad permissions and oversized files are rejected. Do not put credentials in command arguments or public logs.
 

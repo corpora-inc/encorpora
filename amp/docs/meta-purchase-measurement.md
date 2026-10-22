@@ -86,7 +86,7 @@ Set `AMP_META_MEASUREMENT_CONFIG` to a private regular JSON file with mode `0600
 }
 ```
 
-`efaChannelReference` selects Arkansas EFA; `azEsaChannelReference` selects Arizona ESA. Each payment must match its configured channel, retained offer, program and jurisdiction. Deploy migration 0042 before using the Arizona worker. Existing Arkansas queue identities are preserved.
+`efaChannelReference` selects Arkansas EFA; `azEsaChannelReference` selects Arizona ESA. Each payment must match its configured channel, retained offer, program and jurisdiction. Deploy migration 0043 before using the Arizona worker. Existing Arkansas queue identities are preserved.
 
 `AMP_DATABASE_URL` identifies the migrated application database. For delivery, `AMP_META_MEASUREMENT_CREDENTIALS` identifies a separate private `0600` JSON file containing only `access_token`. Never put the token in command arguments, logs or the repository. The loader rejects symlinks, non-regular files, oversized files and group/world-readable permissions, and re-reads credentials to support rotation. The dispatcher bounds credential acquisition and external response time.
 
