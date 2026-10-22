@@ -77,12 +77,15 @@ export function FundingPage({
   if (!page) throw new Error("Funding page content is missing");
   const presentation = page.presentation;
   const directPay = !!presentation && funding.kind === "classwallet-direct-pay";
+  // Funded purchase requests support twelve-month licenses. Personal monthly
+  // pricing does not establish a monthly offer through the funding program.
+  const fundedPlans = plans.filter((plan) => plan.interval === "year");
   const requestBody = directPay
     ? [
         "Hello Corpora,",
         "",
         `Please prepare an AMP Math invoice for ${funding.program}.`,
-        `Plan: ${plans.map((plan) => `${plan.interval === "year" ? "12 months" : "1 month"} (${formatPrice(plan)})`).join(" or ") || "please send available options"}`,
+        `Plan: ${fundedPlans.map((plan) => `${plan.interval === "year" ? "12 months" : "1 month"} (${formatPrice(plan)})`).join(" or ") || "please send available options"}`,
         "Preferred start date: ",
         "Email for AMP access (if different from this email): ",
         "I have an AMP account: yes / no",
@@ -127,10 +130,10 @@ export function FundingPage({
           )}
           <h1>{presentation?.headline ?? funding.program}</h1>
           {!directPay && <p className="lead">{page.summary}</p>}
-          {directPay && plans.length > 0 && (
+          {directPay && fundedPlans.length > 0 && (
             <div className="funding-plan-summary" aria-label="License prices">
               <ul>
-                {plans.map((plan) => (
+                {fundedPlans.map((plan) => (
                   <li key={plan.interval}>
                     <strong>{formatPrice(plan)}</strong> / {plan.interval === "year" ? "12 months" : "1 month"}
                   </li>
