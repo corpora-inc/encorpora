@@ -2,11 +2,18 @@
 
 AMP can prepare a PDF quote or a program-payment invoice for a parent and track its submission separately from verified approval, payment and learning access. An authenticated parent selects an owned learner and an explicitly configured program/product offer. The server fixes the price, tax, annual term and approved route in an immutable request snapshot. Preparing or reporting a request never grants access.
 
-No program offers are enabled by default. The national funding registry records research; it does not establish Corpora's vendor approval or a product's eligibility. Deployment requires documentary evidence for the merchant, exact SKU, purchasing route, payment method, annual term and document requirements. Marketplace and direct-pay routes are supported. Reimbursement and app-store purchasing are outside this request workflow.
+No program offers are enabled by default. The national funding registry records research; it does not establish Corpora's vendor approval or a product's eligibility. Deployment requires documentary evidence for the merchant, purchasing route, payment method and document requirements, plus the seller's actual product, price and term. Marketplace and direct-pay routes are supported. Reimbursement and app-store purchasing are outside this request workflow.
 
 ## Operator configuration
 
 `AMP_FUNDING_OFFERS_FILE` identifies a private, bounded JSON array validated by `loadFundingOffers`. Each entry follows `fundingOfferSchema` in `src/funding-purchase/contracts.ts`. It includes a revision, program/year, SKU, merchant details, price and tax in integer cents, verified HTTPS destination, parent instructions, validity window and private evidence references. Use a new revision when an offer changes. Synthetic fixtures in tests are not product prices or available offers.
+
+There are two purchase-review modes:
+
+- Without `purchaseReview`, the approved-offer configuration requires references for the exact SKU and annual term as well as vendor, route and payment evidence.
+- `purchaseReview: "individual-approval-required"` lets an approved DirectPay vendor prepare a named invoice for the program to review. The exact SKU and annual-term approval references may be absent because the invoice starts that review. The seller must accurately describe its product, price and annual term. This mode requires `route: "direct-pay"`, `documentPolicy: "named-student-invoice"` and `activationPolicy: "after-settlement"`. It cannot enable marketplace checkout or credit-based access.
+
+Preparing an invoice is not program approval. The family submits the invoice through its program's ordinary purchase process; no separate blanket product ruling is needed merely to generate that document. Fulfillment requires independently verified approval and full settlement for the matching invoice, correct account and learner, active consent, and the quoted price and annual term. A rejected or differently approved purchase must be reconciled; it cannot be provisioned as if the original invoice had been accepted.
 
 An offer selects one reviewed document policy:
 
