@@ -17,6 +17,10 @@ import { ConsentRepository } from "../parent-consent/repository.js";
 import { registerConsentRoutes } from "../parent-consent/routes.js";
 import { registerFundingPurchaseRoutes } from "../funding-purchase/routes.js";
 import { loadFundingOffers } from "../funding-purchase/config.js";
+import {
+  loadClassWalletPayByConfig,
+  registerClassWalletPayByRoutes,
+} from "../funding-purchase/classwallet-payby.js";
 import { registerFamilyRoutes } from "../family/routes.js";
 import { stripeConfig, stripeNamespace } from "../billing/stripe/config.js";
 import {
@@ -117,10 +121,19 @@ await registerFamilyRoutes(app, {
   development,
   billingNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
 });
+const fundingOffers = await loadFundingOffers(
+  process.env.AMP_FUNDING_OFFERS_FILE,
+);
 await registerFundingPurchaseRoutes(app, {
   pool: repository.pool,
   authenticate,
-  offers: await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE),
+  offers: fundingOffers,
+});
+await registerClassWalletPayByRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  offers: fundingOffers,
+  config: await loadClassWalletPayByConfig(process.env),
 });
 const consentConfig = await consentConfiguration(process.env);
 await registerConsentRoutes(app, {

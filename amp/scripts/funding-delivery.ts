@@ -2,6 +2,8 @@ import type { Pool } from "pg";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
 import { loadConsentPolicy } from "../src/parent-consent/policy.js";
+import { loadFundingOffers } from "../src/funding-purchase/config.js";
+import { reconcileClassWalletApprovals } from "../src/funding-purchase/classwallet-payby.js";
 import { ResendConsentTransport } from "../src/parent-consent/resend.js";
 import {
   deliverFundedActivationMail,
@@ -30,6 +32,10 @@ try {
     connectionTimeoutMillis: 5000,
     statement_timeout: 15000,
   });
+  const approvals = await reconcileClassWalletApprovals(
+    pool,
+    await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE),
+  );
   let processed = 0;
   while (
     processed < 8 &&
@@ -46,6 +52,7 @@ try {
       event: "funded-activation-delivery-job",
       processed,
       exceptions,
+      approvals,
     }),
   );
 } catch {
