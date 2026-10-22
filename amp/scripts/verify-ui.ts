@@ -371,17 +371,11 @@ try {
           `${label}: ${(await target.getAttribute("aria-label")) ?? (await target.innerText())} is ${b.width}×${b.height}`,
         );
       }
-      // Entrances and theme transitions finish before a screenshot.
+      // Capture settled styles without awaiting animation promises that reject
+      // when a loading element is removed or its transition is replaced.
       const shot = async (name: string) => {
-        await page.evaluate(() =>
-          Promise.all(
-            document
-              .getAnimations()
-              .filter((a) => a.effect?.getComputedTiming().endTime !== Infinity)
-              .map((a) => a.finished),
-          ),
-        );
         await page.screenshot({
+          animations: "disabled",
           path: new URL(
             `../artifacts/screenshots/tablet-${size.width}-${name}.png`,
             import.meta.url,
