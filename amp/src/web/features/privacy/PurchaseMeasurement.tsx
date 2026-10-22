@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import {
   PURCHASE_MEASUREMENT_NOTICE as notice,
   purchaseMeasurementSchema,
+  currentMeasurementNotice,
   type PurchaseMeasurement as View,
   type PermissionChange,
 } from "../../../advertising/permission-contracts";
@@ -52,6 +53,7 @@ export function PurchaseMeasurement({
     }
   }, [optedOut]);
   const active = view.status === "active";
+  const matchingNotice = currentMeasurementNotice(view) === notice.version;
   return (
     <section className="family-section" data-purchase-measurement>
       <h2 tabIndex={-1}>{notice.title}</h2>
@@ -90,13 +92,19 @@ export function PurchaseMeasurement({
           a withdrawal.
         </p>
       )}
+      {!matchingNotice && (
+        <p>
+          Reload to review the current purchase-sharing notice. You can always
+          withdraw permission.
+        </p>
+      )}
       {!view.eligible && (
         <p>
           A confirmed AMP account email is required to allow sharing. You can
           always withdraw an existing preference.
         </p>
       )}
-      {!active && view.eligible && !optedOut && (
+      {!active && view.eligible && !optedOut && matchingNotice && (
         <Checkbox
           checked={agreed}
           disabled={mutation.isPending}
@@ -113,7 +121,7 @@ export function PurchaseMeasurement({
           marginTop: "1rem",
         }}
       >
-        {!active && view.eligible && !optedOut && (
+        {!active && view.eligible && !optedOut && matchingNotice && (
           <Button
             disabled={!agreed || mutation.isPending}
             onClick={() =>

@@ -18,6 +18,21 @@ const destinationSchema = z.strictObject({
   conversionActionId: z.string().regex(/^[1-9]\d{0,19}$/),
 });
 export type GoogleConversionDestination = z.infer<typeof destinationSchema>;
+/** Logical conversion identity excludes the manager access path. Changing the
+ * login manager must not allocate another transaction for the same action. */
+export function googleConversionDestinationKey(
+  config: GoogleConversionDestination,
+) {
+  const checked = parse(destinationSchema, config, "invalid_destination");
+  return createHash("sha256")
+    .update(
+      JSON.stringify([
+        checked.conversionCustomerId,
+        checked.conversionActionId,
+      ]),
+    )
+    .digest("hex");
+}
 
 /** Internal transport input, never a browser or arbitrary event-upload endpoint.
  * The caller must derive this from a verified settlement and current permission.

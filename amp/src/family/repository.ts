@@ -409,6 +409,17 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_google_purchase_queue') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "purchase-measurement-preparation",
+          "SELECT jsonb_build_object('provider','Google','purchaseAt',occurred_at,'amountMinor',original_minor,'netMinor',net_minor,'currency',currency,'state',state,'holdReason',hold_reason,'cancellationReason',cancellation_reason,'noticeVersion',permission_notice,'permissionGrantedAt',permission_granted_at,'permissionExpiresAt',permission_expires_at,'createdAt',created_at,'updatedAt',updated_at) AS value FROM amp_google_purchase_queue WHERE account_id=$1 ORDER BY occurred_at,transaction_id",
+        ]);
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_offline_packs') AS relation",
           )
         ).rows[0]?.relation
