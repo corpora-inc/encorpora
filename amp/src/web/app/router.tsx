@@ -24,6 +24,7 @@ import {
   startNavigation,
 } from "../features/onboarding/guard";
 import {
+  isFundedReturn,
   campaignSearch,
   continuationSearch,
   type CampaignSearch,
@@ -31,7 +32,10 @@ import {
 import { chosenPlan } from "../lib/pending-trial";
 const searchSchema = z
   .object({
-    return: z.enum(["security", "arkansas-efa"]).optional().catch(undefined),
+    return: z
+      .enum(["security", "arkansas-efa", "new-hampshire-efa", "arizona-esa"])
+      .optional()
+      .catch(undefined),
     program: z.literal("ar-efa").optional().catch(undefined),
     token: z.string().max(2048).optional(),
     error: z.string().max(200).optional(),
@@ -125,7 +129,7 @@ async function beforeStart({
     me,
     location.pathname,
     !!chosenPlan(),
-    search.return === "arkansas-efa",
+    isFundedReturn(search.return) ? search.return : false,
   );
   if (target)
     throw redirect({ ...startNavigation(target), search, replace: true });
@@ -265,6 +269,28 @@ const funded = createRoute({
     "FundedEntry",
   ),
 });
+const fundedNewHampshire = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/new-hampshire-efa",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/funding/FundedEntry"),
+    "FundedEntry",
+  ),
+});
+const fundedArizona = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/arizona-esa",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/funding/FundedEntry"),
+    "FundedEntry",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => root,
   path: "/$",
@@ -290,6 +316,8 @@ export const router = createRouter({
     tryPlans,
     pathways,
     funded,
+    fundedNewHampshire,
+    fundedArizona,
     fallback,
   ]),
   history: nativeRuntime
