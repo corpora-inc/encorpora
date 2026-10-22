@@ -614,16 +614,18 @@ try {
       await page.getByRole("radio", { name: /Annual/ }).waitFor();
       await fits(page, `${tag} plans by choice`);
       await shoot(page, "plans-choice", tag, true);
-      await page.getByRole("button", { name: "Not now" }).click();
-      const ask = page.getByRole("dialog", { name: "Not now" });
+      await page.getByRole("button", { name: "Give feedback" }).click();
+      const ask = page.getByRole("dialog", { name: "Give feedback" });
       await ask.waitFor();
-      await fits(page, `${tag} not now`);
-      if (audit) await axe(page, "not now");
-      await shoot(page, "not-now", tag);
-      await ask
-        .getByRole("button", { name: "I want to see more first" })
-        .click();
+      await fits(page, `${tag} optional feedback`);
+      if (audit) await axe(page, "optional feedback");
+      await shoot(page, "optional-feedback", tag);
+      await page.keyboard.press("Escape");
+      await ask.waitFor({ state: "hidden" });
+      assert.match(page.url(), /\/try\/plans\?reason=choice$/);
+      await page.getByRole("button", { name: "Not now" }).click();
       await page.waitForURL("**/try/practice");
+      assert.equal(await page.getByRole("dialog").count(), 0);
 
       // A recorded answer whose response is lost retries with the same
       // request: the learner sees why, and Check resends the same answer.
@@ -742,11 +744,8 @@ try {
       await shoot(page, "paywall", tag, true);
       // "Not now" at the limit leads to the map, which offers only plans.
       await page.getByRole("button", { name: "Not now" }).click();
-      await page
-        .getByRole("dialog", { name: "Not now" })
-        .getByRole("button", { name: "The price" })
-        .click();
       await page.waitForURL("**/try/map");
+      assert.equal(await page.getByRole("dialog").count(), 0);
       await page
         .getByText(`All ${FREE} free problems are used.`, { exact: false })
         .waitFor();
