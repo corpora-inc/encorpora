@@ -1,3 +1,27 @@
+import { consentFixture } from "./parent-consent.fixture.js";
+import { installConsentPolicy } from "../src/parent-consent/policy.js";
+const notificationPolicy = {
+  ...consentFixture,
+  review: { ...consentFixture.review, paymentNotificationsReviewed: true },
+  notice: {
+    ...consentFixture.notice,
+    processors: [
+      ...consentFixture.notice.processors,
+      {
+        name: "Resend",
+        service: "Transactional email",
+        data: "Parent email",
+        purpose: "Payment notifications",
+        retention: "Fixture retention",
+      },
+    ],
+  },
+};
+import { deliverFundedActivationMail } from "../src/funding-purchase/activation-mail.js";
+import type {
+  ConsentMail,
+  ConsentTransport,
+} from "../src/parent-consent/contracts.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -114,6 +138,14 @@ test(
       assert.equal(
         (await pool.query("SELECT count(*)::int n FROM amp_commerce_orders"))
           .rows[0].n,
+        0,
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].n,
         0,
       );
       assert.deepEqual(await campaignCounts(pool), [
@@ -1236,5 +1268,147 @@ test(
       );
       for (const days of [0, -1, 1.5, NaN, 91])
         await assert.rejects(arkansasCashSummary(pool, days), /Days must/);
+    }),
+);
+
+async function notificationFixture(
+  pool: Pool,
+  repo: FundingPurchaseRepository,
+) {
+  await installConsentPolicy(pool, notificationPolicy);
+  await pool.query(`INSERT INTO amp_auth_users(id,name,email,"emailVerified") VALUES('mail','Parent','parent@example.test',true);
+    INSERT INTO amp_learners(id,account_id,name) VALUES('mail-child','amp|mail','Private learner');
+    INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|mail','fixture','verified','private')`);
+  const request = await repo.create("amp|mail", {
+    ...create(),
+    learnerId: "mail-child",
+  });
+  const input = bundle(request.id);
+  const first = input.events[0]!;
+  if (first.type !== "order.created") throw new Error("fixture");
+  first.order.account.id = "amp|mail";
+  first.order.license.accountId = "amp|mail";
+  first.order.license.learnerId = "mail-child";
+  return { request, input };
+}
+const notificationTransport = (
+  send: ConsentTransport["send"],
+): ConsentTransport => ({
+  binding: {
+    provider: "resend",
+    sender: "sender@example.test",
+    credentialFingerprint: "fixture",
+  },
+  send,
+});
+test(
+  "funded notification commits with access, replays once, leases concurrent workers and omits child data",
+  enabled,
+  () =>
+    fixture(async (pool, repo) => {
+      const { request, input } = await notificationFixture(pool, repo);
+      await provisionFundingRequest(pool, input, [offer]);
+      await provisionFundingRequest(pool, input, [offer]);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].n,
+        1,
+      );
+      const mails: ConsentMail[] = [];
+      const transport = notificationTransport(async (mail) => {
+        mails.push(mail);
+        await new Promise((resolve) => setTimeout(resolve, 30));
+        return { kind: "accepted", receipt: randomUUID() };
+      });
+      await Promise.all(
+        Array.from({ length: 4 }, () =>
+          deliverFundedActivationMail(pool, transport, notificationPolicy),
+        ),
+      );
+      assert.equal(mails.length, 1);
+      assert.equal(mails[0]!.recipient, "parent@example.test");
+      assert.match(mails[0]!.text, new RegExp(request.id));
+      assert.ok(!mails[0]!.text.includes("Private learner"));
+      assert.equal(
+        await deliverFundedActivationMail(pool, transport, notificationPolicy),
+        false,
+      );
+    }),
+);
+test(
+  "funded notification retries identical ambiguous delivery and stops after idempotency deadline",
+  enabled,
+  () =>
+    fixture(async (pool, repo) => {
+      const { input } = await notificationFixture(pool, repo);
+      await provisionFundingRequest(pool, input, [offer]);
+      const mails: ConsentMail[] = [];
+      const transport = notificationTransport(async (mail) => {
+        mails.push(mail);
+        return { kind: "unknown" };
+      });
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      await pool.query(
+        "UPDATE amp_funded_activation_outbox SET available_at=now()",
+      );
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.deepEqual(mails[0], mails[1]);
+      await pool.query(
+        "UPDATE amp_funded_activation_outbox SET available_at=now(),first_dispatch_at=now()-interval '24 hours'",
+      );
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.equal(mails.length, 2);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].stopped_reason,
+        "retry-window-ended",
+      );
+    }),
+);
+test(
+  "funded notification never follows changed recipient or withdrawn consent",
+  enabled,
+  () =>
+    fixture(async (pool, repo) => {
+      const { input } = await notificationFixture(pool, repo);
+      await provisionFundingRequest(pool, input, [offer]);
+      let count = 0;
+      const transport = notificationTransport(async () => {
+        count++;
+        return { kind: "unknown" };
+      });
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      await pool.query(
+        "UPDATE amp_funded_activation_outbox SET available_at=now(); UPDATE amp_auth_users SET email='changed@example.test'",
+      );
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.equal(count, 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].stopped_reason,
+        "binding-changed",
+      );
+      await pool.query(
+        "UPDATE amp_funded_activation_outbox SET stopped_at=NULL,stopped_reason=NULL,available_at=now(); UPDATE amp_parent_consents SET withdrawn_at=now()",
+      );
+      await deliverFundedActivationMail(pool, transport, notificationPolicy);
+      assert.equal(count, 1);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT stopped_reason FROM amp_funded_activation_outbox",
+          )
+        ).rows[0].stopped_reason,
+        "access-inactive",
+      );
     }),
 );

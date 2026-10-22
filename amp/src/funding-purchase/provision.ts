@@ -139,6 +139,10 @@ export async function provisionFundingRequest(
         "UPDATE amp_funding_requests SET order_id=$2,conversion_payload=$3 WHERE id=$1",
         [request.id, order.id, JSON.stringify(data)],
       );
+      await client.query(
+        "INSERT INTO amp_funded_activation_outbox(request_id) VALUES($1) ON CONFLICT DO NOTHING",
+        [request.id],
+      );
       for (const event of data.events)
         await recordFundedCampaignEvent(client, event);
       return { requestId: request.id, orderId: order.id };
