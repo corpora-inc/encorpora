@@ -90,7 +90,10 @@ function SignedInStart({ session }: { session: AuthSession }) {
           trial={me.next === "try"}
         />
       ) : step === "/start/purchase" ? (
-        <PurchaseStep session={session} />
+        <PurchaseStep
+          session={session}
+          metaPermission={me.family.metaPurchaseMeasurement}
+        />
       ) : (
         <LearnerSteps session={session} me={me} />
       )}

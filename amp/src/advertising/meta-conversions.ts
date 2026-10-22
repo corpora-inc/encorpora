@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 
+import { META_ENROLLMENT_CONFIRMATION_URL } from "./meta-context-contracts.js";
 import { META_PURCHASE_MEASUREMENT_NOTICE } from "./permission-contracts.js";
 
 const origin = "https://graph.facebook.com/v26.0/";
@@ -25,6 +26,7 @@ const sourceSchema = z.discriminatedUnion("actionSource", [
     // Fixed adult purchase pages only. No return tokens, queries or learner URLs.
     // A dispatcher must establish that the event actually occurred on this page.
     eventSourceUrl: z.enum([
+      META_ENROLLMENT_CONFIRMATION_URL,
       "https://amp.corpora.inc/purchase/annual",
       "https://amp.corpora.inc/purchase/funded",
       "https://amp.corpora.inc/purchase/arkansas-efa",
