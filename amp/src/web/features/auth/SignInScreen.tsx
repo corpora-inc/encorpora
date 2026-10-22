@@ -25,7 +25,8 @@ import { passkeysAvailable, signUpWithPasskey } from "./passkey";
 import {
   continuationSearch,
   continuationUrl,
-  fundedPath,
+  fundedPrograms,
+  isFundedReturn,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
 
@@ -177,12 +178,11 @@ export function SignInScreen() {
       });
     else
       await navigate({
-        to:
-          carry.return === "arkansas-efa"
-            ? fundedPath
-            : step === "create"
-              ? "/start"
-              : "/",
+        to: isFundedReturn(carry.return)
+          ? fundedPrograms[carry.return].path
+          : step === "create"
+            ? "/start"
+            : "/",
         search: carry,
         replace: true,
       });
