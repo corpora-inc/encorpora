@@ -588,3 +588,80 @@ test(
       );
     }),
 );
+
+test(
+  "Arizona paid purchases require their own channel and retain one export identity",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const ar = await esa(pool);
+      const az = await esa(pool, { kind: "arizona-esa" });
+      assert.equal(
+        (
+          await queueGooglePayment(
+            pool,
+            destination,
+            { efaChannelReference: sources.efaChannelReference },
+            az.reference,
+          )
+        ).outcome,
+        "ineligible",
+      );
+      assert.equal(
+        (
+          await queueGooglePayment(
+            pool,
+            destination,
+            { azEsaChannelReference: sources.efaChannelReference },
+            az.reference,
+          )
+        ).outcome,
+        "ineligible",
+      );
+      assert.equal(
+        (
+          await queueGooglePayment(pool, destination, sources, {
+            ...az.reference,
+            kind: "arkansas-efa",
+          })
+        ).outcome,
+        "ineligible",
+      );
+      const page = await measurementPaymentPage(pool, sources, "arizona-esa");
+      assert.deepEqual(page.references, [az.reference]);
+      assert.ok(!page.references.some((x) => x.id === ar.reference.id));
+      const first = await queueGooglePayment(
+        pool,
+        destination,
+        sources,
+        az.reference,
+      );
+      const again = await queueGooglePayment(
+        pool,
+        destination,
+        sources,
+        az.reference,
+      );
+      assert.equal(first.outcome, "queued");
+      assert.equal(again.outcome, "retained");
+      assert.ok(
+        "transactionId" in first &&
+          "transactionId" in again &&
+          first.transactionId === again.transactionId,
+      );
+      await applyCommerceEvent(pool, {
+        ...az.base,
+        id: randomUUID(),
+        occurredAt: new Date().toISOString(),
+        type: "refund.completed",
+        amountMinor: 49900,
+        currency: "USD",
+        evidence: "fixture refund returned to program",
+      });
+      assert.equal(
+        (await queueGooglePayment(pool, destination, sources, az.reference))
+          .outcome,
+        "cancelled",
+      );
+    }),
+);
