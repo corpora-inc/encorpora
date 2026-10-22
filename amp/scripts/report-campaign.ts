@@ -1,4 +1,7 @@
-import { arkansasOrderSummary } from "../src/analytics/campaign-orders.js";
+import {
+  arkansasOrderSummary,
+  arkansasCashSummary,
+} from "../src/analytics/campaign-orders.js";
 import { RETENTION } from "../src/privacy/retention-periods.js";
 import { createDatabasePool } from "../src/server/database.js";
 
@@ -30,6 +33,7 @@ try {
     [days - 1],
   );
   const arkansasOrders = await arkansasOrderSummary(pool, days);
+  const arkansasCash = await arkansasCashSummary(pool, days);
   const creatives = await pool.query(
     `SELECT day,campaign,source,medium,creative,action,count FROM amp_campaign_creative_daily
      WHERE day >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
@@ -46,6 +50,8 @@ try {
     JSON.stringify(
       {
         definitions: {
+          arkansasCash:
+            "Verified ESA settlements and completed refunds linked to retained Arkansas funding requests, grouped by UTC evidence date, currency and optional fixed campaign labels. Amounts are exact integer strings in the currency minor unit. Null labels mean unattributed; null creative does not infer an ad. Net cash is gross minus completed refunds, not profit or recognized revenue. Never sum different currencies. No ad-platform export.",
           activity:
             "Daily page loads and link clicks, not unique people. Reloads and bots can count.",
           invoice_click:
@@ -58,12 +64,14 @@ try {
             "Optional breakdown of activity and fundedCampaign by fixed authored creative label. These counts are subsets of the coarse totals, not additional conversions. Unknown or absent creatives are omitted, not inferred. No creative attribution is added to learner or assessment events.",
         },
         limitations: [
+          "Cash reporting follows settlement/refund evidence dates, regardless of request creation or import date. Refunds for older payments can make a period negative. Pending refunds, approvals and license activation are excluded. Processor fees, ad spend and unlinked payments are excluded; this is not an account reconciliation or return-on-ad-spend calculation.",
           "Arkansas order totals are current states for retained funding requests created in the report window, not purchases attributed to an ad. Expired unconverted requests are deleted, so request counts are not historical lead totals.",
           "Only retained offers with programId ar-efa and jurisdiction AR establish Arkansas classification. Unlinked commerce imports and email-only invoices are excluded.",
           "Prepared request records include submitted and cancelled records. Approved, settled, issued and refunded totals overlap; they are not additive sales.",
           "Funded campaign counts include only requests created with attribution. Existing requests are not backfilled. Count of settled orders is gross; refund_completed is distinct, not revenue or net sales. Requests and payments may occur in different report windows.",
         ],
         arkansasOrders,
+        arkansasCash,
         fundedCampaign: fundedCampaign.rows,
         creatives: creatives.rows,
         activity: activity.rows,

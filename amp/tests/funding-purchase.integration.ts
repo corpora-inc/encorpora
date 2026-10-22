@@ -11,6 +11,7 @@ import {
   annualTermEnd,
 } from "../src/funding-purchase/provision.js";
 import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
+import { arkansasCashSummary } from "../src/analytics/campaign-orders.js";
 import { applyCommerceEvent } from "../src/commerce/postgres.js";
 import type { CommerceEvent } from "../src/commerce/contracts.js";
 import { testFundingOffer as offer } from "./funding-purchase.fixture.js";
@@ -270,6 +271,7 @@ test(
         { action: "request_prepared", count: 1 },
       ]);
       const input = bundle(request.id);
+      assert.deepEqual(await arkansasCashSummary(pool, 1), []);
       await Promise.all([
         provisionFundingRequest(pool, input, [arkansasOffer]),
         provisionFundingRequest(pool, input, [arkansasOffer]),
@@ -327,6 +329,16 @@ test(
         { action: "order_settled", count: 1 },
         { action: "request_prepared", count: 1 },
       ]);
+      assert.deepEqual(
+        (await arkansasCashSummary(pool, 1)).map(
+          ({ grossMinor, refundedMinor, netMinor }) => ({
+            grossMinor,
+            refundedMinor,
+            netMinor,
+          }),
+        ),
+        [{ grossMinor: "12300", refundedMinor: "0", netMinor: "12300" }],
+      );
       const refund = {
         ...settlement,
         type: "refund.completed",
@@ -336,6 +348,16 @@ test(
       await applyCommerceEvent(pool, refund);
       await applyCommerceEvent(pool, refund);
       await provisionFundingRequest(pool, input, []);
+      assert.deepEqual(await arkansasCashSummary(pool, 1), [
+        {
+          day: occurredAt.slice(0, 10),
+          currency: "USD",
+          ...campaignAttribution,
+          grossMinor: "12300",
+          refundedMinor: "12300",
+          netMinor: "0",
+        },
+      ]);
       assert.deepEqual(await campaignCounts(pool), [
         { action: "order_created", count: 1 },
         { action: "order_settled", count: 1 },
@@ -1044,5 +1066,175 @@ test(
         ).rows[0].count,
         "2",
       );
+    }),
+);
+
+test(
+  "cash report separates evidence dates, currencies and unattributed money without exposing identifiers",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const midnight = new Date();
+      midnight.setUTCHours(0, 0, 0, 0);
+      const today = midnight.toISOString();
+      const yesterday = new Date(+midnight - 86400000).toISOString();
+      const beforeWindow = new Date(+midnight - 2 * 86400000).toISOString();
+      async function paid(options: {
+        amount: number;
+        currency?: string;
+        at?: string;
+        labels?: typeof campaignAttribution;
+        programId?: string;
+        jurisdiction?: string;
+      }) {
+        // Use the accepted ledger plus a retained request link to exercise the
+        // report's currency/precision boundary independently of today's USD-only
+        // offer catalog. The provisioning test above covers the live import path.
+        const request = { id: randomUUID() };
+        const input = bundle(request.id);
+        for (const event of input.events) event.occurredAt = beforeWindow;
+        const first = input.events[0]!;
+        if (first.type !== "order.created") throw new Error("Invalid fixture");
+        first.order.license.startsAt = beforeWindow;
+        first.order.license.endsAt = annualTermEnd(beforeWindow);
+        first.order.amountMinor = options.amount;
+        first.order.currency = options.currency ?? "USD";
+        for (const event of input.events) await applyCommerceEvent(pool, event);
+        await pool.query(
+          `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,
+          offer_id,offer_revision,offer_snapshot,status,created_at,expires_at,
+          order_id,conversion_payload,campaign_attribution)
+         VALUES($1,'owner','child',$2,'fixture-offer','v1',$3,'prepared',$4,
+          $4::timestamptz + interval '7 days',$5,'{}',$6)`,
+          [
+            request.id,
+            randomUUID(),
+            JSON.stringify({
+              programId: options.programId ?? "ar-efa",
+              jurisdiction: options.jurisdiction ?? "AR",
+            }),
+            beforeWindow,
+            first.orderId,
+            options.labels ? JSON.stringify(options.labels) : null,
+          ],
+        );
+        const settlement = {
+          id: randomUUID(),
+          orderId: first.orderId,
+          channel: "esa" as const,
+          channelReference: first.channelReference,
+          type: "order.settled" as const,
+          occurredAt: options.at ?? today,
+          amountMinor: options.amount,
+          currency: first.order.currency,
+          evidence: "private-payment-proof",
+        };
+        await applyCommerceEvent(pool, settlement);
+        return { request, settlement };
+      }
+      const old = await paid({
+        amount: 12300,
+        at: yesterday,
+        labels: campaignAttribution,
+      });
+      await applyCommerceEvent(pool, {
+        ...old.settlement,
+        id: randomUUID(),
+        type: "refund.completed",
+        occurredAt: today,
+      });
+      await paid({ amount: 7500 });
+      await paid({ amount: 9000, currency: "EUR" });
+      await paid({
+        amount: 333,
+        programId: "other-program",
+        jurisdiction: "FL",
+      });
+      await paid({ amount: 444, jurisdiction: "GA" });
+      await assert.rejects(
+        paid({
+          amount: 555,
+          at: new Date(+midnight + 86400000).toISOString(),
+        }),
+        /Future events require reconciliation/,
+      );
+      const unlinked = await paid({ amount: 666 });
+      await pool.query(
+        "UPDATE amp_funding_requests SET order_id=NULL,conversion_payload=NULL WHERE id=$1",
+        [unlinked.request.id],
+      );
+      const invalid = await paid({ amount: 500 });
+      await pool.query(
+        "UPDATE amp_funding_requests SET campaign_attribution=$2 WHERE id=$1",
+        [
+          invalid.request.id,
+          JSON.stringify({ campaign: "private-campaign@example.test" }),
+        ],
+      );
+      // Two individually exact ledger amounts exceed JS's exact aggregate range.
+      await paid({ amount: Number.MAX_SAFE_INTEGER, currency: "CAD" });
+      await paid({ amount: Number.MAX_SAFE_INTEGER, currency: "CAD" });
+      const rows = await arkansasCashSummary(pool, 1);
+      assert.equal(rows.length, 4);
+      assert.deepEqual(
+        rows.find((row) => row.campaign),
+        {
+          day: today.slice(0, 10),
+          currency: "USD",
+          ...campaignAttribution,
+          grossMinor: "0",
+          refundedMinor: "12300",
+          netMinor: "-12300",
+        },
+      );
+      assert.deepEqual(
+        rows.find((row) => row.currency === "USD" && !row.campaign),
+        {
+          day: today.slice(0, 10),
+          currency: "USD",
+          campaign: null,
+          source: null,
+          medium: null,
+          creative: null,
+          grossMinor: "8000",
+          refundedMinor: "0",
+          netMinor: "8000",
+        },
+      );
+      assert.equal(
+        rows.find((row) => row.currency === "EUR")?.netMinor,
+        "9000",
+      );
+      assert.equal(
+        rows.find((row) => row.currency === "CAD")?.netMinor,
+        "18014398509481982",
+      );
+      const history = await arkansasCashSummary(pool, 2);
+      assert.equal(history.length, 5);
+      assert.equal(
+        history.find((row) => row.day === yesterday.slice(0, 10))?.grossMinor,
+        "12300",
+      );
+      for (const row of history)
+        assert.deepEqual(
+          Object.keys(row).sort(),
+          [
+            "day",
+            "currency",
+            "campaign",
+            "source",
+            "medium",
+            "creative",
+            "grossMinor",
+            "refundedMinor",
+            "netMinor",
+          ].sort(),
+        );
+      assert.doesNotMatch(
+        JSON.stringify(history),
+        /private-|owner|child|fixture|@/,
+      );
+      for (const days of [0, -1, 1.5, NaN, 91])
+        await assert.rejects(arkansasCashSummary(pool, days), /Days must/);
     }),
 );
