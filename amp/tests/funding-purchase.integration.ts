@@ -878,3 +878,171 @@ test(
       );
     }),
 );
+
+test(
+  "named invoices enforce consent, name purpose, immutable retries, isolated downloads and retained financial records",
+  enabled,
+  () =>
+    fixture(async (pool, quoteRepo) => {
+      const namedOffer = {
+        ...arkansasOffer,
+        documentPolicy: "named-student-invoice" as const,
+      };
+      const repo = new FundingPurchaseRepository(pool, [namedOffer]);
+      const input = {
+        ...create(),
+        studentBillingName: "Zoë García",
+        campaignAttribution,
+      };
+      await assert.rejects(
+        quoteRepo.create("owner", input),
+        /invoice_student_name_not_required/,
+      );
+      await assert.rejects(
+        repo.create("owner", create()),
+        /invoice_student_name_required/,
+      );
+      await assert.rejects(
+        repo.create("owner", { ...input, studentBillingName: "学生" }),
+        /invoice_name_font_unsupported/,
+      );
+      await pool.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id='owner'",
+      );
+      await assert.rejects(
+        repo.create("owner", input),
+        /verified_consent_required/,
+      );
+      await pool.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id='owner'",
+      );
+      const [a, b] = await Promise.all([
+        repo.create("owner", input),
+        repo.create("owner", input),
+      ]);
+      assert.equal(a.id, b.id);
+      assert.equal(a.studentBillingName, "Zoë García");
+      assert.equal(
+        (await pool.query("SELECT name FROM amp_learners WHERE id='child'"))
+          .rows[0].name,
+        "Fixture",
+      );
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
+        0,
+      );
+      await assert.rejects(
+        repo.create("owner", {
+          ...input,
+          studentBillingName: "Different student",
+        }),
+        /idempotency_payload_mismatch/,
+      );
+      await assert.rejects(
+        repo.create("owner", { ...input, studentBillingName: undefined }),
+        /idempotency_payload_mismatch/,
+      );
+      await assert.rejects(repo.read("other", a.id), /request_not_found/);
+      await assert.rejects(
+        pool.query(
+          "UPDATE amp_funding_requests SET student_billing_name=NULL WHERE id=$1",
+          [a.id],
+        ),
+        /funding_invoice_student_name/,
+      );
+      const app = Fastify();
+      await registerFundingPurchaseRoutes(app, {
+        pool,
+        offers: [namedOffer],
+        authenticate: async (req) =>
+          req.headers["x-test-account"] === "other" ? "other" : "owner",
+      });
+      try {
+        const downloaded = await app.inject({
+          method: "GET",
+          url: `/api/v1/funding/requests/${a.id}/invoice`,
+        });
+        assert.equal(downloaded.statusCode, 200);
+        assert.match(
+          downloaded.headers["content-disposition"]!,
+          /education-invoice-/,
+        );
+        assert.equal(downloaded.headers["cache-control"], "no-store");
+        assert.equal(
+          (
+            await app.inject({
+              method: "GET",
+              url: `/api/v1/funding/requests/${a.id}/quote`,
+            })
+          ).statusCode,
+          404,
+        );
+        assert.equal(
+          (
+            await app.inject({
+              method: "GET",
+              url: `/api/v1/funding/requests/${a.id}/invoice`,
+              headers: { "x-test-account": "other" },
+            })
+          ).statusCode,
+          404,
+        );
+        await provisionFundingRequest(pool, bundle(a.id), [namedOffer]);
+      } finally {
+        await app.close();
+      }
+      const closedApp = Fastify();
+      await registerFundingPurchaseRoutes(closedApp, {
+        pool,
+        offers: [],
+        authenticate: async () => "owner",
+      });
+      try {
+        assert.equal(
+          (
+            await closedApp.inject({
+              method: "GET",
+              url: `/api/v1/funding/requests/${a.id}/invoice`,
+            })
+          ).statusCode,
+          200,
+        );
+      } finally {
+        await closedApp.close();
+      }
+      const { FamilyRepository } = await import("../src/family/repository.js");
+      const family = new FamilyRepository(pool);
+      const draft = await repo.create("owner", {
+        ...input,
+        idempotencyKey: randomUUID(),
+        studentBillingName: "Unconverted student",
+      });
+      let exported = "";
+      for await (const chunk of family.export("owner")) exported += chunk;
+      assert.ok(exported.includes("Zoë García"));
+      assert.ok(exported.includes("Unconverted student"));
+      assert.ok(!exported.includes("private-document-evidence"));
+      await family.deleteLearning("owner", "child");
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_funding_requests WHERE id=$1",
+            [draft.id],
+          )
+        ).rows[0].n,
+        0,
+      );
+      assert.equal(
+        (await repo.read("owner", a.id)).studentBillingName,
+        "Zoë García",
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count FROM amp_campaign_creative_daily WHERE action='request_prepared'",
+          )
+        ).rows[0].count,
+        "2",
+      );
+    }),
+);

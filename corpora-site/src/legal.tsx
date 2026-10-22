@@ -137,6 +137,17 @@ export function Legal({
             deliver pages and protect the service. Links to the AMP app and
             external program websites take you to separate services.
           </p>
+          <h2>Education-fund purchase documents</h2>
+          <p>
+            When a funding program requires a student name on an invoice, the
+            parent supplies that name for the purchase document. It is stored
+            with the funding request, included in the parent’s export, and
+            retained with verified financial transactions. It does not change
+            the learner’s profile or enter campaign reports. Unconverted
+            requests are removed under the request-retention rules; linked
+            invoices follow financial-record retention. The parent submits the
+            invoice through the program’s payment service.
+          </p>
           <h2>Education-fund purchase measurement</h2>
           <p>
             When campaign labels accompany an Arkansas funding purchase request,

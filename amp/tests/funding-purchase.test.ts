@@ -117,3 +117,51 @@ test("PDF quotes preserve Latin characters and reject unsupported glyphs before 
   for (const page of document.getPages())
     assert.deepEqual(page.getSize(), { width: 612, height: 792 });
 });
+
+test("named invoices use an explicit parent-supplied name and never imply payment or access", async () => {
+  const named = {
+    ...request,
+    offer: { ...offer, documentPolicy: "named-student-invoice" as const },
+    studentBillingName: "Zoë García <&>",
+  };
+  assert.equal(
+    fundingOfferSchema.parse(named.offer).documentPolicy,
+    "named-student-invoice",
+  );
+  const html = renderFundingQuote(named);
+  assert.match(html, /Education purchase invoice/);
+  assert.match(html, /Zoë García &lt;&amp;&gt;/);
+  assert.ok(!html.includes("opaque-student"));
+  assert.ok(!html.includes("not an invoice"));
+  assert.match(html, /not a receipt or confirmation of payment/);
+  const { renderFundingQuotePdf, validateInvoiceStudentName } =
+    await import("../src/funding-purchase/quote-pdf.js");
+  assert.equal(
+    Buffer.from(await renderFundingQuotePdf(named))
+      .subarray(0, 5)
+      .toString(),
+    "%PDF-",
+  );
+  await assert.rejects(
+    validateInvoiceStudentName("学生"),
+    /invoice_name_font_unsupported/,
+  );
+  await assert.rejects(
+    renderFundingQuotePdf({ ...named, studentBillingName: undefined }),
+    /invoice_student_name_required/,
+  );
+  assert.throws(
+    () => renderFundingQuote({ ...named, studentBillingName: undefined }),
+    /invoice_student_name_required/,
+  );
+  for (const studentBillingName of ["", " ", "a\nb", "x".repeat(181)])
+    assert.throws(() =>
+      createFundingRequestSchema.parse({
+        offerId: offer.id,
+        offerRevision: offer.revision,
+        learnerId: "child",
+        idempotencyKey: crypto.randomUUID(),
+        studentBillingName,
+      }),
+    );
+});

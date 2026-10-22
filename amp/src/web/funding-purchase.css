@@ -271,3 +271,17 @@
   flex: 1;
   grid-column: 1 / -1;
 }
+
+.funding-name-note {
+  font-size: 14px;
+  color: var(--color-muted-text);
+}
+.funding-body input {
+  width: 100%;
+  min-width: 0;
+}
+
+.funding-short-note,
+.funding-name-note {
+  overflow-wrap: anywhere;
+}

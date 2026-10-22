@@ -57,3 +57,53 @@ execFileSync("pdftoppm", [
 console.log(
   "Verified quote PDF text, Letter dimensions, exact subtotal/tax/total and rendered every page.",
 );
+
+const invoiceFile = new URL("invoice.pdf", directory).pathname;
+await writeFile(
+  invoiceFile,
+  await renderFundingQuotePdf({
+    id: "68444bca-7568-4a3f-ae47-78743116b563",
+    accountId: "private-account",
+    learnerId: "private-learner",
+    idempotencyKey: "private-key",
+    createdAt: "2026-10-17T12:00:00.000Z",
+    expiresAt: "2026-11-16T12:00:00.000Z",
+    status: "prepared",
+    orderId: null,
+    studentBillingName: "Zoë García",
+    offer: { ...offer, documentPolicy: "named-student-invoice" },
+  }),
+);
+execFileSync("pdftotext", ["-layout", invoiceFile, invoiceFile + ".txt"]);
+const invoiceText = await readFile(invoiceFile + ".txt", "utf8");
+for (const expected of [
+  "Education purchase invoice",
+  "Invoice number",
+  "Zoë García",
+  "Student name",
+  "$123.00",
+  "$8.61",
+  "$131.61",
+  "12 months",
+  "not a receipt",
+  offer.merchant.legalName,
+  offer.merchant.postalAddress,
+  offer.merchant.supportEmail,
+  offer.sku,
+])
+  assert.ok(
+    invoiceText.includes(expected),
+    `Missing invoice text: ${expected}`,
+  );
+assert.ok(!invoiceText.includes("private-"));
+assert.ok(!invoiceText.includes("not an invoice"));
+execFileSync("pdftoppm", [
+  "-scale-to",
+  "1200",
+  "-png",
+  invoiceFile,
+  new URL("invoice", directory).pathname,
+]);
+console.log(
+  "Verified named invoice text, exact charges, name preservation and no private identifiers; rendered every page.",
+);

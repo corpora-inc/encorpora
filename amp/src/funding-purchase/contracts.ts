@@ -45,7 +45,10 @@ export const fundingOfferSchema = z
     creditAgreementReference: text.optional(),
     destinationUrl: https,
     instructions: text,
-    documentPolicy: z.literal("opaque-student-reference-accepted"),
+    documentPolicy: z.enum([
+      "opaque-student-reference-accepted",
+      "named-student-invoice",
+    ]),
     documentPolicyReference: text,
     validFrom: instant,
     validUntil: instant,
@@ -72,12 +75,15 @@ export const fundingOfferSchema = z
     "Offer validity must increase",
   );
 export type FundingOffer = z.infer<typeof fundingOfferSchema>;
+/** Supplied by the parent for a program invoice, never inferred from a nickname. */
+export const studentBillingNameSchema = text.max(180);
 export const createFundingRequestSchema = z.strictObject({
   offerId: id,
   offerRevision: id,
   learnerId: text,
   idempotencyKey: z.string().uuid(),
   campaignAttribution: fundedCampaignSchema.optional(),
+  studentBillingName: studentBillingNameSchema.optional(),
 });
 export type CreateFundingRequest = z.infer<typeof createFundingRequestSchema>;
 export interface FundingRequest {
@@ -90,6 +96,7 @@ export interface FundingRequest {
   status: "prepared" | "parent-reported-submitted" | "cancelled";
   offer: FundingOffer;
   orderId: string | null;
+  studentBillingName?: string;
 }
 export class FundingPurchaseError extends Error {
   constructor(

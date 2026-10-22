@@ -100,30 +100,44 @@ export async function registerFundingPurchaseRoutes(
         ),
       );
     });
-    scope.get("/api/v1/funding/requests/:id/quote", async (request, reply) => {
-      const record = await repository.read(
-        await options.authenticate(request),
-        params.parse(request.params).id,
-      );
-      if (
-        !repository.offerAvailable(record) ||
-        record.orderId ||
-        record.status === "cancelled" ||
-        Date.parse(record.expiresAt) <= Date.now()
-      )
-        throw new FundingPurchaseError(409, "quote_unavailable");
-      return reply
-        .header(
-          "Content-Security-Policy",
-          "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'",
+    scope.get(
+      "/api/v1/funding/requests/:id/:document",
+      async (request, reply) => {
+        const documentParams = z
+          .strictObject({
+            id: z.string().uuid(),
+            document: z.enum(["quote", "invoice"]),
+          })
+          .parse(request.params);
+        const record = await repository.read(
+          await options.authenticate(request),
+          documentParams.id,
+        );
+        const invoice = record.offer.documentPolicy === "named-student-invoice";
+        if (documentParams.document !== (invoice ? "invoice" : "quote"))
+          throw new FundingPurchaseError(404, "request_not_found");
+        // Retain the original invoice for a verified order even after offer expiry.
+        if (
+          !(invoice && record.orderId) &&
+          (!repository.offerAvailable(record) ||
+            record.orderId ||
+            record.status === "cancelled" ||
+            Date.parse(record.expiresAt) <= Date.now())
         )
-        .header(
-          "Content-Disposition",
-          `attachment; filename="education-quote-${record.id}.pdf"`,
-        )
-        .type("application/pdf")
-        .send(Buffer.from(await renderFundingQuotePdf(record)));
-    });
+          throw new FundingPurchaseError(409, "quote_unavailable");
+        return reply
+          .header(
+            "Content-Security-Policy",
+            "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'",
+          )
+          .header(
+            "Content-Disposition",
+            `attachment; filename="education-${invoice ? "invoice" : "quote"}-${record.id}.pdf"`,
+          )
+          .type("application/pdf")
+          .send(Buffer.from(await renderFundingQuotePdf(record)));
+      },
+    );
   });
   return repository;
 }
