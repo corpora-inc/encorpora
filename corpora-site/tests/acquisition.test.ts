@@ -72,15 +72,36 @@ test('production overview includes capture while previews and sample pages do no
   const {tmpdir}=await import('node:os');
   const {join}=await import('node:path');
   const dir=await mkdtemp(join(tmpdir(),'amp-overview-acquisition-'));
-  const config=configSchema.parse({mode:'production',siteUrl:'https://site.example.invalid',appUrl:'https://app.example.invalid',supportEmail:'support@example.invalid',legalReviewed:true,operator:{legalName:'Synthetic operator',postalAddress:'Synthetic address',telephone:'Synthetic telephone'},privacy:{placementBasis:'Synthetic basis',retention:'Synthetic retention',providers:[{name:'Synthetic provider',purpose:'Synthetic purpose',retention:'Synthetic retention'}]}});
+  const {guidedFundingFixture}=await import('./funding-fixture.js');
+  const funding=['arkansas-efa','arizona-esa'].map(slug=>({...guidedFundingFixture,state:slug==='arkansas-efa'?'AR':'AZ',page:{...guidedFundingFixture.page,slug}}));
+  const config=configSchema.parse({funding,mode:'production',siteUrl:'https://site.example.invalid',appUrl:'https://app.example.invalid',supportEmail:'support@example.invalid',legalReviewed:true,operator:{legalName:'Synthetic operator',postalAddress:'Synthetic address',telephone:'Synthetic telephone'},privacy:{placementBasis:'Synthetic basis',retention:'Synthetic retention',providers:[{name:'Synthetic provider',purpose:'Synthetic purpose',retention:'Synthetic retention'}]}});
   try{
     await buildSite(config,dir);
     const overview=await readFile(join(dir,'amp/index.html'),'utf8');
     assert.ok(overview.includes('data-acquisition-endpoint="https://app.example.invalid/api/v1/advertising/acquisition"'));
     assert.ok(!overview.includes('data-campaign-endpoint'));
+    for(const slug of ['arkansas-efa','arizona-esa']){
+      const page=await readFile(join(dir,`esa/${slug}/index.html`),'utf8');
+      assert.ok(page.includes('data-acquisition-endpoint="https://app.example.invalid/api/v1/advertising/acquisition"'));
+      assert.ok(page.includes('data-campaign-endpoint="https://app.example.invalid/api/v1/campaign-events"'));
+      assert.ok(page.includes(`data-campaign-program="${slug}"`));
+    }
     const samples=await readFile(join(dir,'samples/index.html'),'utf8');
     assert.ok(!samples.includes('data-acquisition-endpoint'));
     await buildSite(configSchema.parse({}),dir);
     assert.ok(!(await readFile(join(dir,'amp/index.html'),'utf8')).includes('data-acquisition-endpoint'));
   }finally{await rm(dir,{recursive:true,force:true});}
+});
+
+test('Arizona and overview clicks retain Arizona identity and respect opt-out',()=>{
+ for(const path of ['/esa/arizona-esa/','/amp/']){
+  const search='?gclid=AZ_Click&utm_campaign=az-esa-launch&utm_source=google&utm_medium=cpc&utm_content=az-esa-math';
+  const result=run(search,{},path), body=JSON.parse(result.sent[0].options.body);
+  assert.equal(body.sourcePath,path);
+  assert.equal(body.labels.campaign,'az-esa-launch');
+  assert.equal(body.labels.creative,'az-esa-math');
+  assert.deepEqual(body.clicks,[{provider:'google',identifiers:{gclid:'AZ_Click'}}]);
+  assert.ok(!result.replaced[0].includes('gclid'));
+  assert.deepEqual(JSON.parse(run(search,{globalPrivacyControl:true},path).sent[0].options.body),{optOut:true});
+ }
 });
