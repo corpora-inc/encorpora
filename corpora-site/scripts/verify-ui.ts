@@ -119,7 +119,9 @@ try {
         { interval: "year", amountMinor: 1234, currency: "USD", renews: false },
         { interval: "month", amountMinor: 234, currency: "USD", renews: true },
       ],
-      funding: [fundingFixture],
+      funding: [fundingFixture, { ...fundingFixture, state: "AR", kind: "classwallet-direct-pay",
+        page: { ...fundingFixture.page, slug: "arkansas-efa",
+          presentation: { ...fundingFixture.page.presentation, invoiceForm: "arkansas-efa" } } }, { ...fundingFixture, state: "AZ", kind: "classwallet-direct-pay", page: { ...fundingFixture.page, slug: "arizona-esa", presentation: { ...fundingFixture.page.presentation, invoiceForm: "arizona-esa" } } }],
     }),
     "artifacts/production",
   );
@@ -178,6 +180,25 @@ try {
       path: `artifacts/funding-guided-${width}.png`,
       fullPage: true,
     });
+  }
+  for (const slug of ["arkansas-efa", "arizona-esa"]) for (const width of [320, 390, 768, 1280]) {
+    await fixturePage.setViewportSize({ width, height: 900 });
+    await fixturePage.goto(production.url + `/esa/${slug}/`);
+    const action = fixturePage.locator(".funding-actions .button");
+    assert.ok((await action.textContent())?.includes("Create your invoice"));
+    const destination = new URL((await action.getAttribute("href"))!);
+    assert.equal(destination.pathname, `/invoice/${slug}`);
+    assert.equal(destination.protocol, "https:");
+    assert.ok(await fixturePage.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await fixturePage.route(destination.href, route => route.fulfill({ contentType: "text/html", body: '<html><body><label>Student name<input></label><button>Download invoice</button></body></html>' }));
+    await action.click();
+    const dialog = fixturePage.getByRole("dialog");
+    await dialog.waitFor();
+    assert.equal(await dialog.evaluate(el => el.scrollWidth <= el.clientWidth), true);
+    await fixturePage.frameLocator("[data-invoice-dialog] iframe").getByRole("button", { name: "Download invoice" }).waitFor();
+    await fixturePage.screenshot({ path: `artifacts/invoice-form-${slug}-${width}.png`, fullPage: true });
+    await fixturePage.getByRole("button", { name: "Close invoice form" }).click();
+    assert.equal(await action.evaluate(el => el === document.activeElement), true);
   }
   await fixturePage.goto(production.url + "/schools/");
   const inquiry = new URL(
