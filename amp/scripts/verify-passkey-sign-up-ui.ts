@@ -206,8 +206,17 @@ try {
   // Straight into the guided first run: the free trial.
   await page.waitForURL(`${origin}/try`);
   await page
-    .getByRole("heading", { name: "What year was the learner born?" })
+    .getByRole("heading", { name: "Your math pathways start here" })
     .waitFor();
+  await page.getByRole("group", { name: "Birth year", exact: true }).waitFor();
+  assert.equal(
+    await page
+      .getByRole("group", { name: "Birth year", exact: true })
+      .getByRole("button", { name: "Adult", exact: true })
+      .isEnabled(),
+    true,
+    "the trial starting-point controls are usable after passkey signup",
+  );
   const { credentials } = await cdp.send("WebAuthn.getCredentials", {
     authenticatorId,
   });
