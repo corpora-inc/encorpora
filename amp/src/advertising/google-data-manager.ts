@@ -46,7 +46,11 @@ const purchaseSchema = z.strictObject({
   occurredAt: instant,
   amountMinor: z.number().int().positive().max(100_000_000),
   currency: z.literal("USD"),
-  adultEmailSha256: z.string().regex(/^[a-f0-9]{64}$/),
+  matchingMode: z.enum(["click_only", "enhanced_email"]).optional(),
+  adultEmailSha256: z
+    .string()
+    .regex(/^[a-f0-9]{64}$/)
+    .optional(),
   adIdentifiers: googleClickIdentifiersSchema.optional(),
   eventSource: z.enum(["WEB", "OTHER"]).optional(),
   permission: z.strictObject({
@@ -152,6 +156,12 @@ function eventRequest(
   const purchase = parse(schema, input, "invalid_purchase");
   if (!Number.isFinite(+now) || !["validate", "ingest"].includes(mode))
     throw new GoogleConversionError("invalid_request", "not_sent");
+  if (
+    purchase.matchingMode === "click_only"
+      ? !purchase.adIdentifiers || purchase.adultEmailSha256 !== undefined
+      : !purchase.adultEmailSha256
+  )
+    throw new GoogleConversionError("invalid_matching_identifiers", "not_sent");
   const eventAt = Date.parse(purchase.occurredAt);
   const grantedAt = Date.parse(purchase.permission.grantedAt);
   const expiresAt = Date.parse(purchase.permission.expiresAt);
@@ -175,9 +185,13 @@ function eventRequest(
           : {}),
         conversionValue: purchase.amountMinor / 100,
         currency: purchase.currency,
-        userData: {
-          userIdentifiers: [{ emailAddress: purchase.adultEmailSha256 }],
-        },
+        ...(purchase.adultEmailSha256
+          ? {
+              userData: {
+                userIdentifiers: [{ emailAddress: purchase.adultEmailSha256 }],
+              },
+            }
+          : {}),
         consent: {
           adUserData: "CONSENT_GRANTED",
           adPersonalization: "CONSENT_DENIED",
