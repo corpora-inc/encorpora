@@ -125,6 +125,7 @@ python meta.py validate --spec /private/path/meta.json
 python meta.py inspect --config /private/path/meta-operator.json --output /private/path/meta-inventory.json
 python meta.py plan --config /private/path/meta-operator.json --spec /private/path/meta.json --output /private/path/meta-plan.json
 python meta.py apply-paused --config /private/path/meta-operator.json --spec /private/path/meta.json --journal /private/path/meta-journal.json --output /private/path/meta-receipt.json
+python meta.py report --config /private/path/meta-operator.json --since 2026-10-01 --until 2026-10-21 --output /private/path/meta-report.json
 ```
 
 `plan` checks account identity/currency, dataset access, the Page connection, geographic lookup and local media. It does not submit mutation validation or create resources. `apply-paused` writes a private, locked journal before each mutation and reads back created resources. Fingerprints bind the exact copy, media hashes, placement, budget and account identities. Output files are private and never overwritten.
@@ -134,6 +135,8 @@ Use one operator per advertiser across machines and journals. The journal preven
 For a video still processing, rerun with the same journal after processing completes; the upload is retained. A network failure or rejected mutation leaves a pending journal entry and stops automatic retry. Inspect Ads Manager and the private account inventory to reconcile the result before changing that journal. Never discard a pending journal merely to retry: a resource may already exist. Partial campaigns remain paused; no rollback deletion is attempted. A crash while writing the journal can require manual recovery from platform inventory.
 
 Readback checks delivery status, budget, destination, identity, copy and targeting. Unexpected targeting fields stop the command for review. Platform review, billing, dataset integration, actual conversion delivery and visual previews remain separate launch checks. Tests cover request construction, pagination, interrupted writes, video processing, duplicate prevention, privacy and paused readback using synthetic responses; they do not certify live Meta access.
+
+`report` reads only campaigns whose names begin `AMP | AR | ` and exports daily ad/placement spend, impressions, reach, clicks and attributed actions/values for an inclusive date range of at most 93 days. It requests seven-day click attribution and dates actions by conversion time. Preserve the query metadata with the rows. Recent attribution can change, reach cannot be summed across rows, and platform purchase values must be reconciled with verified settlements and refunds. No parent identifiers or learner data are requested.
 
 API fields are checked against Meta's [official Python Business SDK](https://github.com/facebook/facebook-python-business-sdk/tree/main/facebook_business/adobjects), including [campaign/ad-set/upload operations](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adaccount.py) and [creative video data](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adcreativevideodata.py).
 

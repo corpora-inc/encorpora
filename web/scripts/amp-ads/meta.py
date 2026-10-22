@@ -13,6 +13,7 @@ import os
 import re
 import stat
 import sys
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 
@@ -147,6 +148,28 @@ def arkansas(graph):
     if len(matches) != 1:
         raise ValueError("Could not uniquely resolve Arkansas in Meta's geographic catalog")
     return identifier(str(matches[0]["key"]))
+
+
+def report(graph, c, inventory, since, until):
+    start, end = date.fromisoformat(since), date.fromisoformat(until)
+    if start > end or (end - start).days > 92 or start.isoformat() != since or end.isoformat() != until:
+        raise ValueError("Use an inclusive ISO date range of at most 93 days")
+    campaigns = [identifier(row["id"]) for row in inventory["campaigns"] if row["name"].startswith("AMP | AR | ")]
+    if len(campaigns) > 100:
+        raise ValueError("Report campaign limit exceeded; narrow the inventory before reporting")
+    query = {
+        "fields": "date_start,date_stop,campaign_id,campaign_name,adset_id,adset_name,ad_id,ad_name,impressions,reach,spend,clicks,inline_link_clicks,actions,action_values,cost_per_action_type",
+        "level": "ad", "time_increment": 1,
+        "time_range": {"since": since, "until": until},
+        "filtering": [{"field": "campaign.id", "operator": "IN", "value": campaigns}],
+        "breakdowns": ["publisher_platform", "platform_position"],
+        "action_attribution_windows": ["7d_click"], "action_report_time": "conversion",
+    }
+    return {
+        "api_version": VERSION, "account_id": c["account_id"], "currency": "USD",
+        "query": query, "rows": graph.all("act_" + c["account_id"] + "/insights", query) if campaigns else [],
+        "interpretation": "Platform attribution, not verified EFA settlement. Reach is not additive across rows. Incomplete recent attribution can change.",
+    }
 
 
 def media_files(spec, root, spec_dir):
@@ -342,11 +365,13 @@ def write_private(path, value):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["validate", "plan", "inspect", "apply-paused"])
+    parser.add_argument("command", choices=["validate", "plan", "inspect", "report", "apply-paused"])
     parser.add_argument("--spec")
     parser.add_argument("--config")
     parser.add_argument("--output")
     parser.add_argument("--journal")
+    parser.add_argument("--since")
+    parser.add_argument("--until")
     args = parser.parse_args()
     spec = validate(json.loads(Path(args.spec).read_text())) if args.spec else None
     if args.command == "validate":
@@ -365,6 +390,12 @@ def main():
     if args.command == "inspect":
         write_private(args.output, inventory)
         print("Account inventory written; no mutations made.")
+        return
+    if args.command == "report":
+        if not args.since or not args.until:
+            raise ValueError("Reporting requires --since and --until dates")
+        write_private(args.output, report(graph, c, inventory, args.since, args.until))
+        print("Daily ad and placement report written; no mutations made.")
         return
     if spec is None:
         raise ValueError("--spec required")

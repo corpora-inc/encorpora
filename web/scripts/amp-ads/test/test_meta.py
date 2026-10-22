@@ -232,6 +232,20 @@ class MetaTests(unittest.TestCase):
                 meta.main()
             graph.assert_not_called()
 
+    def test_report_scopes_campaigns_and_distinguishes_platform_attribution(self):
+        with patch.object(self.graph, "all", create=True, return_value=[{"spend": "1.00"}]) as read:
+            result = meta.report(self.graph, self.config, {"campaigns": [{"id": "1", "name": "AMP | AR | example"}, {"id": "2", "name": "Another product"}]}, "2026-10-01", "2026-10-21")
+            self.assertEqual(result["rows"], [{"spend": "1.00"}])
+            self.assertEqual(read.call_args.args[1]["filtering"][0]["value"], ["1"])
+            self.assertEqual(read.call_args.args[1]["action_attribution_windows"], ["7d_click"])
+            self.assertIn("not verified EFA settlement", result["interpretation"])
+            read.reset_mock()
+            self.assertEqual(meta.report(self.graph, self.config, {"campaigns": []}, "2026-10-01", "2026-10-21")["rows"], [])
+            read.assert_not_called()
+            for dates in [("2026-01-01", "2026-10-21"), ("2026-10-21", "2026-10-01"), ("20261001", "2026-10-21")]:
+                with self.assertRaises(ValueError):
+                    meta.report(self.graph, self.config, {"campaigns": []}, *dates)
+
 
 if __name__ == "__main__":
     unittest.main()
