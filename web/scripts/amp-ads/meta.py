@@ -224,7 +224,7 @@ def plan(spec, c, region, media):
             "is_dynamic_creative": False,
             "promoted_object": {"pixel_id": c["pixel_id"], "custom_event_type": "PURCHASE"},
             "attribution_spec": [{"event_type": "CLICK_THROUGH", "window_days": 7}],
-            "targeting": {"geo_locations": {"regions": [{"key": region}], "location_types": ["home", "recent"]}, "age_min": 18, "age_max": 65, "publisher_platforms": [publisher], publisher + "_positions": positions, "targeting_automation": {"advantage_audience": 0}},
+            "targeting": {"geo_locations": {"regions": [{"key": region}], "location_types": ["home", "recent", "frequently_in"]}, "age_min": 18, "age_max": 65, "publisher_platforms": [publisher], publisher + "_positions": positions, "targeting_automation": {"advantage_audience": 0}},
         },
         "media": media,
         "url_tags": urlencode({"utm_source": publisher, "utm_medium": "paid-social", "utm_campaign": "ar-efa-launch", "utm_content": spec["id"]}),
