@@ -83,7 +83,7 @@ const vite = await createServer({
   },
 });
 await vite.listen();
-const browser = await chromium.launch();
+const browser = await chromium.launch({ args: ["--no-proxy-server"] });
 const shots =
   process.env.TRIAL_SCREENS ??
   new URL("../artifacts/free-trial/", import.meta.url).pathname;
@@ -700,9 +700,23 @@ try {
       await page.getByText(`All ${FREE} free problems used`).waitFor();
       await page.getByText("30-day full refund.").waitFor();
       const esa = page.getByRole("link", {
-        name: "Paying with education savings funds?",
+        name: "Other programs",
       });
       assert.equal(await esa.getAttribute("href"), "https://corpora.inc/esa/");
+      assert.ok(
+        (
+          await page
+            .getByRole("link", { name: "Use Arkansas EFA funds" })
+            .getAttribute("href")
+        )?.startsWith("/invoice/arkansas-efa"),
+      );
+      assert.ok(
+        (
+          await page
+            .getByRole("link", { name: "Use Arizona ESA funds" })
+            .getAttribute("href")
+        )?.startsWith("/invoice/arizona-esa"),
+      );
       const annual = page.getByRole("radio", { name: /Annual/ }),
         monthly = page.getByRole("radio", { name: /Monthly/ });
       assert.match((await annual.textContent()) ?? "", /\$499\.00 per year/);
