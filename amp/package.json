@@ -39,6 +39,7 @@
     "test:choice-ui": "tsx scripts/verify-choice-ui.ts",
     "test:calculator-ui": "tsx scripts/verify-calculator-ui.ts",
     "test:funding-ui": "tsx scripts/verify-funding-ui.ts && tsx scripts/verify-funding-invoice-ui.ts",
+    "funding:deliver": "tsx scripts/funding-delivery.ts",
     "funding:import": "tsx scripts/funding-import.ts",
     "test:annual-ui": "tsx scripts/verify-annual-purchase-ui.ts",
     "test:graphical-ui": "tsx scripts/verify-graphical-ui.ts",
