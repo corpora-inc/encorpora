@@ -107,6 +107,35 @@ class MetaTests(unittest.TestCase):
         self.assertEqual(target["facebook_positions"], ["facebook_reels"])
         self.assertNotIn("instagram_positions", target)
 
+    def test_live_location_readback_is_explicit_and_still_rejects_expansion(self):
+        # Sanitized v26 response: home/recent is returned with frequently_in.
+        p = self.plan()
+        actual = copy.deepcopy(p["adset"])
+        geo = actual["targeting"]["geo_locations"]
+        geo["location_types"] = ["frequently_in", "home", "recent"]
+        geo["regions"][0].update(name="Arkansas", country="US")
+        self.graph.objects["1"] = actual
+        meta.verify(self.graph, "1", p["adset"])
+        self.assertEqual(set(p["adset"]["targeting"]["geo_locations"]["location_types"]),
+                         {"home", "recent", "frequently_in"})
+        for change in ["traveler", "duplicate", "missing", "country", "region"]:
+            with self.subTest(change=change):
+                bad = copy.deepcopy(actual)
+                locations = bad["targeting"]["geo_locations"]
+                if change == "traveler":
+                    locations["location_types"].append("travel_in")
+                elif change == "duplicate":
+                    locations["location_types"] = ["home", "home", "recent"]
+                elif change == "missing":
+                    locations["location_types"].remove("frequently_in")
+                elif change == "country":
+                    locations["countries"] = ["US"]
+                else:
+                    locations["regions"].append({"key": "888"})
+                self.graph.objects["1"] = bad
+                with self.assertRaises(RuntimeError):
+                    meta.verify(self.graph, "1", p["adset"])
+
     def test_media_cannot_escape_root_or_change_after_plan(self):
         with tempfile.TemporaryDirectory() as other:
             outside = Path(other) / "outside.png"
