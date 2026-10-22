@@ -39,6 +39,8 @@ export const fundingOfferSchema = z
     termMonths: z.literal(12),
     termPolicy: z.literal("twelve-months-from-verified-provisioning"),
     route: z.enum(["marketplace", "direct-pay"]),
+    /** Prepare a vendor invoice for the program's individual purchase review. */
+    purchaseReview: z.literal("individual-approval-required").optional(),
     activationPolicy: z
       .enum(["after-settlement", "after-approval"])
       .default("after-settlement"),
@@ -59,12 +61,21 @@ export const fundingOfferSchema = z
     }),
     approvals: z.strictObject({
       vendorReference: text,
-      skuReference: text,
+      skuReference: text.optional(),
       routeReference: text,
       paymentReference: text,
-      annualTermReference: text,
+      annualTermReference: text.optional(),
     }),
   })
+  .refine(
+    (v) =>
+      v.purchaseReview
+        ? v.route === "direct-pay" &&
+          v.documentPolicy === "named-student-invoice" &&
+          v.activationPolicy === "after-settlement"
+        : !!v.approvals.skuReference && !!v.approvals.annualTermReference,
+    "Individual purchase review requires a named DirectPay invoice and settlement before activation; approved offers require SKU and annual-term evidence",
+  )
   .refine(
     (v) =>
       v.activationPolicy !== "after-approval" || !!v.creditAgreementReference,
