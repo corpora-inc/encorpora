@@ -152,22 +152,28 @@ class BootstrapTests(unittest.TestCase):
             self.assertEqual(run.call_count, 1)
             self.assertEqual(run.call_args.args[0][-2:], ['ps', '-aq'])
 
-    def test_daemon_requires_twelve_explicit_issuer_failures_and_valid_control(self):
+    def test_daemon_requires_twelve_explicit_certificate_failures_and_valid_control(self):
         pulls = []
         def run(args):
             if 'pull' in args:
                 pulls.append(args[-1])
                 if 'registry.k8s.io' not in args[-1]:
-                    raise subprocess.CalledProcessError(1, args, stderr='x509: certificate signed by unknown authority')
+                    diagnostic = ('x509: certificate signed by unknown authority' if len(pulls) % 2 else
+                                  'Error response from daemon: Get "https://' + args[-1].split('/')[0] +
+                                  '/v2/": tls: failed to verify certificate: x509: no valid chains built\n')
+                    raise subprocess.CalledProcessError(1, args, stderr=diagnostic)
             return SimpleNamespace(stdout='')
         with patch.object(trust.shutil, 'which', return_value='/usr/bin/docker'), patch.object(trust, 'run', side_effect=run):
             result = trust.refresh_docker()
         self.assertEqual(len(pulls), 13)
-        self.assertEqual(result['incident_issuer_rejections'], 12)
+        self.assertEqual(result['incident_certificate_rejections'], 12)
         self.assertTrue(result['valid_control'])
 
     def test_daemon_acceptance_and_inconclusive_errors_stop_verification(self):
-        for diagnostic in (None, 'DNS timeout', 'certificate has expired', 'certificate is valid for another host', "invalid character '<'"):
+        for diagnostic in (None, '', 'DNS timeout', 'certificate has expired', 'certificate is valid for another host',
+                           "invalid character '<'", 'HTTP 500: x509: no valid chains built',
+                           'tls: failed to verify certificate: x509: no valid chains built: 1 candidate chains with invalid policies',
+                           'tls: failed to verify certificate: x509: no valid chains built; unrelated error'):
             def run(args):
                 if 'pull' in args and diagnostic is not None:
                     raise subprocess.CalledProcessError(1, args, stderr=diagnostic)
@@ -177,6 +183,17 @@ class BootstrapTests(unittest.TestCase):
                  patch.object(trust, 'run', side_effect=run):
                 with self.assertRaises(RuntimeError):
                     trust.refresh_docker()
+
+    def test_daemon_valid_control_failure_is_not_a_success(self):
+        def run(args):
+            if 'pull' in args:
+                raise subprocess.CalledProcessError(1, args, stderr=
+                    'tls: failed to verify certificate: x509: no valid chains built')
+            return SimpleNamespace(stdout='')
+        with patch.object(trust.shutil, 'which', return_value='/usr/bin/docker'), \
+             patch.object(trust, 'run', side_effect=run):
+            with self.assertRaises(subprocess.CalledProcessError):
+                trust.refresh_docker()
 
 
 class DistributionPermissionsTests(unittest.TestCase):
