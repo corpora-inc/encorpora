@@ -225,6 +225,13 @@ class MetaTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             meta.Graph(self.config)
 
+    def test_existing_tilde_output_stops_before_api_access(self):
+        (self.root / "existing.json").write_text("{}")
+        with patch.dict(os.environ, {"HOME": str(self.root)}), patch.object(sys, "argv", ["meta.py", "inspect", "--config", "unused.json", "--output", "~/existing.json"]), patch.object(meta, "Graph") as graph:
+            with self.assertRaisesRegex(ValueError, "Output already exists"):
+                meta.main()
+            graph.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

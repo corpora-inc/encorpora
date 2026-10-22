@@ -356,6 +356,7 @@ def main():
         return
     if not args.config or not args.output:
         raise ValueError("--config and a new private --output path are required")
+    args.output = str(Path(args.output).expanduser())
     if Path(args.output).exists():
         raise ValueError("Output already exists; select a new report path")
     c = config_load(args.config)
