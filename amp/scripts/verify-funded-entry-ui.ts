@@ -150,6 +150,8 @@ async function serve(page: Page, state: State, faults: string[]) {
   await page.route("**/api/v1/**", async (route) => {
     const req = route.request(),
       path = new URL(req.url()).pathname.replace("/api/v1", "");
+    if (path === "/funding/invoices")
+      return route.fulfill({ json: { invoices: [] } });
     if (path === "/me") return route.fulfill({ json: me(state) });
     if (path === "/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -463,7 +465,14 @@ try {
           ? campaign.replace("efa-facebook-feed-v1", "private%40example.test")
           : campaign;
     await page.goto(`${origin}/try/plans?program=ar-efa&${tags}`);
-    await page.getByRole("link", { name: "Use Arkansas EFA funds" }).click();
+    assert.ok(
+      (
+        await page
+          .getByRole("link", { name: "Use Arkansas EFA funds" })
+          .getAttribute("href")
+      )?.startsWith("/invoice/arkansas-efa"),
+    );
+    await page.goto(`${origin}/purchase/arkansas-efa?${tags}`);
     await page
       .getByRole("heading", { name: "Arkansas EFA", exact: true })
       .waitFor();

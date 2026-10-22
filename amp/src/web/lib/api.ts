@@ -1,6 +1,20 @@
 import type { z } from "zod";
 import { AppError } from "./AppError";
 const messages: Record<string, string> = {
+  confirmed_parent_email_required:
+    "Sign in and confirm the parent email used on your invoice.",
+  invoice_unavailable:
+    "This invoice needs a billing review. Contact support with your invoice number before making another payment.",
+  invoice_already_claimed:
+    "This invoice is already connected to another learner. Open your purchase history.",
+  invoice_name_font_unsupported:
+    "This PDF cannot print one of the characters in the student name. Contact support for an invoice with the correct name.",
+  offer_unavailable:
+    "This offer is unavailable. Refresh to check purchase options.",
+  invalid_funding_request: "Check the email and student name, then try again.",
+  verified_consent_required:
+    "Complete the parent notice before connecting your learner.",
+
   purchase_measurement_changed:
     "Your preference changed in another request. Review the updated setting and try again.",
   purchase_measurement_email_required:
