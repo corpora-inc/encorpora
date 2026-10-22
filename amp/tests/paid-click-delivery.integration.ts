@@ -360,3 +360,126 @@ test(
       assert.equal(bodies.length, 1);
     }),
 );
+
+for (const kind of ["arkansas-efa", "arizona-esa"] as const)
+  test(
+    `${kind}: click-only delivery omits email and retains transaction identity`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        const p = await esa(pool, { kind });
+        await clicks(pool, p.reference.id);
+        const q = await queueGooglePayment(
+          pool,
+          destination,
+          sources,
+          p.reference,
+        );
+        assert.ok("transactionId" in q);
+        const bodies: any[] = [];
+        const runtime = {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async (_url: any, init: any) => {
+            bodies.push(JSON.parse(init.body));
+            return new Response(
+              JSON.stringify({ requestId: "synthetic-click-only-receipt" }),
+            );
+          }) as typeof fetch,
+        };
+        const config = {
+          enabled: true,
+          destination,
+          sources,
+          matchingMode: "click_only" as const,
+        };
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, runtime),
+          "accepted",
+        );
+        assert.deepEqual(bodies[0].events[0].adIdentifiers, {
+          gclid: "Synthetic_ExactCase",
+        });
+        assert.equal(Object.hasOwn(bodies[0].events[0], "userData"), false);
+        await pool.query(
+          "UPDATE amp_google_delivery_attempts SET processing='success',next_poll_at=NULL WHERE transaction_id=$1",
+          [q.transactionId],
+        );
+        assert.equal(
+          await deliverGooglePayment(
+            pool,
+            { ...config, matchingMode: "enhanced_email" },
+            q.transactionId,
+            runtime,
+          ),
+          "unchanged",
+        );
+        assert.equal(bodies.length, 1);
+        const retry = await queueGooglePayment(
+          pool,
+          destination,
+          sources,
+          p.reference,
+        );
+        assert.ok("transactionId" in retry);
+        assert.equal(retry.transactionId, q.transactionId);
+        await applyCommerceEvent(pool, {
+          ...p.base,
+          id: randomUUID(),
+          type: "refund.completed",
+          occurredAt: new Date().toISOString(),
+          amountMinor: 49900,
+          currency: "USD",
+          evidence: "synthetic completed refund",
+        });
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, runtime),
+          "accepted",
+        );
+        assert.equal(bodies.length, 2);
+        assert.equal(
+          bodies[1].events[0].transactionId,
+          bodies[0].events[0].transactionId,
+        );
+        assert.equal(bodies[1].events[0].conversionValue, 0);
+        assert.equal(Object.hasOwn(bodies[1].events[0], "userData"), false);
+      }),
+  );
+
+test(
+  "click-only missing evidence never falls back to email or sends a request",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const p = await esa(pool);
+      const q = await queueGooglePayment(
+        pool,
+        destination,
+        sources,
+        p.reference,
+      );
+      assert.ok("transactionId" in q);
+      let calls = 0;
+      const outcome = await deliverGooglePayment(
+        pool,
+        { enabled: true, destination, sources, matchingMode: "click_only" },
+        q.transactionId,
+        {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async () => {
+            calls++;
+            throw new Error("unexpected HTTP");
+          }) as typeof fetch,
+        },
+      );
+      assert.equal(outcome, "missing_click");
+      assert.equal(calls, 0);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS count FROM amp_google_delivery_attempts",
+          )
+        ).rows[0].count,
+        0,
+      );
+    }),
+);

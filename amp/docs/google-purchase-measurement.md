@@ -4,13 +4,15 @@ AMP's operator-only Google measurement worker collects verified payments, prepar
 
 ## Prerequisites
 
-Establish eligibility under [Google's customer data policies](https://support.google.com/google-ads/answer/7475709?hl=en) before accepting the customer-data declaration or enabling uploads. The policy prohibits uploading data known to concern children under 13 **and data collected from a site or app directed to children under 13**. A confirmed adult email, adult attestation, permission, hashing and removal of learner fields do not by themselves establish eligibility for data collected in AMP. A parent-facing screen within the learning app is not evidence of an exception.
+Choose the matching method explicitly. `matchingMode: "click_only"` uses the original Google click identifier linked to the verified purchase and omits `userData` entirely. It sends no email hash to Google. The local permission check still verifies the confirmed adult email against its retained permission binding. Google's [offline-event identifier requirements](https://developers.google.com/data-manager/api/devguides/events/google-ads/offline/send-events#identifier-requirements) permit `adIdentifiers` without customer-provided matching data. Missing eligible click evidence returns `missing_click`, without a network event or an email fallback.
 
-Keep delivery disabled until a documented assessment of the actual collection surface and data source establishes eligibility; obtain clarification from Google where that classification is unresolved. Record the evidence privately. OAuth authorization, successful API validation and automated tests cannot establish policy eligibility. This requirement applies to validation requests carrying personal data as well as live ingestion. First-party campaign and verified-payment totals can be used without exporting customer information to Google.
+`matchingMode: "enhanced_email"` includes the confirmed adult email hash and any eligible original Google click identifier. Omission of `matchingMode` preserves this legacy behavior. Before using enhanced email matching, establish eligibility under [Google's customer data policies](https://support.google.com/google-ads/answer/7475709?hl=en), including restrictions concerning children and child-directed collection surfaces. Adult attestation, permission and hashing alone do not establish that eligibility.
+
+Both modes remain disabled until the actual source, collection surface, applicable policies, authorization and live destination have been verified. Click-only matching is not blanket policy approval and does not bypass AMP's adult permission, withdrawal or verified-payment checks. Keep the assessment private. Validation requests also disclose identifiers; local tests cannot establish platform eligibility or live attribution.
 
 Use a Data Manager API-enabled Google Cloud project and a separate OAuth grant with the `https://www.googleapis.com/auth/datamanager` scope. The advertising workbench's `auth-google.py --measurement` requests both Ads and Data Manager access without overwriting YouTube credentials. The worker accepts its private credential file, refreshes against Google's fixed OAuth endpoint and caches access tokens only in memory.
 
-Verify the conversion-owner account, its `UPLOAD_CLICKS` action, customer-data terms and enhanced-conversion settings in the actual account. OAuth alone does not establish those facts. The worker does not accept terms, create actions, activate campaigns or verify product eligibility for funding. See [Google's access restriction](https://developers.google.com/google-ads/api/docs/conversions/upload-offline) and [offline conversion setup](https://developers.google.com/data-manager/api/devguides/events/google-ads/offline/send-events).
+Verify the conversion-owner account, its `UPLOAD_CLICKS` action, applicable account requirements and, for enhanced email matching, customer-data terms and enhanced-conversion settings. OAuth alone does not establish those facts. The worker does not accept terms, create actions, activate campaigns or verify product eligibility for funding. See [Google's access restriction](https://developers.google.com/google-ads/api/docs/conversions/upload-offline) and [offline conversion setup](https://developers.google.com/data-manager/api/devguides/events/google-ads/offline/send-events).
 
 Before enabling delivery, verify the deployed adult preference, live purchase/refund flow, source namespaces, destination and retained receipts. Local tests use synthetic accounts and mocked provider responses; they do not establish live API acceptance or attribution.
 
@@ -38,7 +40,7 @@ If the process or connection fails after the durable intent, the outcome stays u
 
 `accepted` means Google returned a receipt. Diagnostics begin after 30 minutes, back off by 1.3 with small jitter to a 60-minute maximum, and stop after 24 hours. Missing, mismatched or malformed diagnostics cannot establish success. Warnings, partial success and failed processing require investigation. `success` means clean processing, not an attributed sale, causal lift or reconciled net revenue. A diagnostic lookup sends the retained request reference, not another email/event; it can complete after withdrawal. See [Google diagnostics](https://developers.google.com/data-manager/api/devguides/diagnostics).
 
-A refund correction requires a retained cleanly processed purchase, the same reference/destination and still-current original permission and email binding. Partial refunds restate the verified net value. Full refunds restate zero; this does not retract the conversion count. An unknown transaction ID can create a new conversion, so corrections cannot bypass the receipt checks. Withdrawal, changed identity, held evidence or expired records block corrections; the batch reports `correction_blocked`. Investigate these before interpreting platform values as net revenue. See [conversion adjustments](https://developers.google.com/data-manager/api/devguides/events/google-ads/conversion-adjustments).
+A refund correction requires a retained cleanly processed purchase, the same reference/destination and still-current original permission and eligible identifiers for the configured matching mode. Partial refunds restate the verified net value. Full refunds restate zero; this does not retract the conversion count. An unknown transaction ID can create a new conversion, so corrections cannot bypass the receipt checks. Withdrawal, changed identity, held evidence or expired records block corrections; the batch reports `correction_blocked`. Investigate these before interpreting platform values as net revenue. See [conversion adjustments](https://developers.google.com/data-manager/api/devguides/events/google-ads/conversion-adjustments).
 
 ## Operator commands
 
@@ -47,6 +49,7 @@ Store a reviewed configuration outside Git with mode `0600`. Replace these synth
 ```json
 {
   "enabled": false,
+  "matchingMode": "click_only",
   "destination": {
     "conversionCustomerId": "1234567890",
     "conversionActionId": "123"
@@ -75,3 +78,10 @@ npm run advertising:google -- diagnostics 20
 Each invocation is bounded to 1–200 items per source or delivery page. Durable private cursors advance only after processing a page and restart after the last page, so later sweeps find inserts behind an earlier cursor. Concurrent collectors cannot move a cursor backward. Repeat collection and delivery regularly; diagnostics enforce their own due times. The commands print only aggregate outcomes. `report` is read-only and works while disabled; other commands do nothing while disabled. It reports attempt counts, not unique purchases or attributed revenue.
 
 The low-level `GoogleDataManager.purchase` and `restate` methods default to validation. Validation still sends personal data and requires the same privacy checks as ingestion. The production worker uses trusted database references and ingestion only; it never accepts an event file or caller-supplied email/value. Do not use a direct transport invocation as a substitute for the dispatcher.
+
+Changing matching mode does not change the purchase transaction identity. A processed
+purchase with the same verified value is not sent again merely to add or remove
+matching data. A correction still requires a clean original receipt; if click-only
+evidence has expired or been erased, it returns `correction_blocked`. Batch outcome
+counts expose `missing_click` separately from other ineligible payments. These are
+processing counts, not unique purchases or proof that Google attributed an ad.
