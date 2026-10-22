@@ -12,8 +12,8 @@ import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
 import {
   continuationSearch,
-  fundedPrograms,
-  type FundedReturn,
+  fundedProgramForPath,
+  type FundedProgram,
 } from "../../lib/funded-entry";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { buttonClass } from "../../ui/Button";
@@ -30,22 +30,20 @@ const availabilitySchema = z.object({
 export function FundedEntry() {
   const { data: session } = useSuspenseQuery(sessionOptions);
   const location = useLocation();
-  const destination = (Object.keys(fundedPrograms) as FundedReturn[]).find(
-    (key) => fundedPrograms[key].path === location.pathname,
-  );
-  if (!destination) return <LoadingScreen />;
+  const program = fundedProgramForPath(location.pathname);
+  if (!program) return <LoadingScreen />;
   return session ? (
     <SignedInEntry
-      key={session.accountId + destination}
+      key={`${session.accountId}:${program.slug}`}
       session={session}
-      destination={destination}
+      program={program}
     />
   ) : (
     <Navigate
       to="/sign-up"
       search={{
         ...continuationSearch(location.search),
-        return: destination,
+        return: program.slug,
       }}
       replace
     />
@@ -54,26 +52,20 @@ export function FundedEntry() {
 
 function SignedInEntry({
   session,
-  destination,
+  program,
 }: {
   session: AuthSession;
-  destination: FundedReturn;
+  program: FundedProgram;
 }) {
-  const program = fundedPrograms[destination];
   const location = useLocation(),
     navigate = useNavigate();
   const search = {
     ...continuationSearch(location.search),
-    return: destination,
+    return: program.slug,
   };
   const me = useQuery(meOptions(session));
   const offers = useQuery({
-    queryKey: [
-      "account",
-      session.accountId,
-      "funding-availability",
-      destination,
-    ],
+    queryKey: ["account", session.accountId, "funding-availability"],
     queryFn: ({ signal }) =>
       request("/funding/offers", availabilitySchema, {
         token: session.token,
@@ -110,13 +102,11 @@ function SignedInEntry({
           <FrameBrand expanded />
           <h1>{program.name} purchase options</h1>
           <p>
-            A {program.name} offer is not available in this AMP service. No
-            purchase request has been made.
+            The {program.name} offer is unavailable. No purchase request has
+            been made.
           </p>
           <p>
-            <a href={`https://corpora.inc/esa/${destination}/`}>
-              View {program.name} purchase help
-            </a>
+            <a href={program.helpUrl}>View {program.name} purchase help</a>
           </p>
           <Link to="/try" className={buttonClass("secondary")}>
             Practice free
@@ -143,7 +133,7 @@ function SignedInEntry({
       onClose={() =>
         void navigate({
           to: "/try/plans",
-          search: { ...search, return: undefined, program: program.id },
+          search: { ...search, return: undefined },
         })
       }
     />

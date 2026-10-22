@@ -25,8 +25,8 @@ import { passkeysAvailable, signUpWithPasskey } from "./passkey";
 import {
   continuationSearch,
   continuationUrl,
+  fundedPrograms,
   isFundedReturn,
-  fundedDestination,
 } from "../../lib/funded-entry";
 import { useAuthDraft } from "./draft";
 
@@ -179,7 +179,7 @@ export function SignInScreen() {
     else
       await navigate({
         to: isFundedReturn(carry.return)
-          ? fundedDestination(carry.return)
+          ? fundedPrograms[carry.return].path
           : step === "create"
             ? "/start"
             : "/",

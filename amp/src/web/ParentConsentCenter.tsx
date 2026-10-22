@@ -1,4 +1,7 @@
-import { pendingFundedPurchase } from "./lib/funded-entry";
+import {
+  pendingFundedPurchase,
+  fundedProgramForPath,
+} from "./lib/funded-entry";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useLayoutEffect, useRef, useState } from "react";
 import type { ConsentView } from "../parent-consent/contracts.js";
@@ -407,7 +410,7 @@ export function ParentConsentCenter({
             }
           >
             {fundedReturn
-              ? "Continue to funded purchase"
+              ? `Continue to ${fundedProgramForPath(fundedReturn.split("?")[0]!)?.name ?? "education funds"}`
               : "Continue to family"}
           </button>
         ) : canStart ? (

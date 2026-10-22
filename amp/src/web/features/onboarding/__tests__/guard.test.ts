@@ -223,35 +223,40 @@ test("funded setup returns to Arkansas purchase without requiring a Stripe check
   ).toBe("/start/consent");
 });
 
-test("Arizona setup retains its destination without bypassing consent", () => {
-  const parent = me({
-    consent: { status: "active", method: "email-plus" },
-    learners: [
-      {
-        id: "sample",
-        name: "Sample",
-        birthYear: 2016,
-        entitlement: { active: false, plan: null, endsAt: null },
-      },
-    ],
-  });
-  expect(startDestination(parent, "/start", false, "arizona-esa")).toBe(
-    "/purchase/arizona-esa",
-  );
-  expect(
-    startDestination(
-      { ...parent, consent: { status: "none", method: null } },
-      "/start",
-      false,
-      "arizona-esa",
-    ),
-  ).toBe("/start/consent");
-  expect(
-    startDestination(
-      { ...parent, learners: [] },
-      "/start",
-      false,
-      "arizona-esa",
-    ),
-  ).toBe("/start/name");
+test("funded learner setup returns to its selected state without a card purchase", () => {
+  const consent = { status: "active" as const, method: "verified" };
+  const learner = {
+    id: "sample",
+    name: "Sample",
+    birthYear: 2016,
+    entitlement: { active: false, plan: null, endsAt: null },
+  };
+  for (const slug of [
+    "arkansas-efa",
+    "new-hampshire-efa",
+    "arizona-esa",
+  ] as const) {
+    expect(
+      startDestination(
+        me({ consent, learners: [learner] }),
+        "/start/consent",
+        false,
+        slug,
+      ),
+    ).toBe(`/purchase/${slug}`);
+    expect(
+      startDestination(me({ consent, learners: [] }), "/start", false, slug),
+    ).toBe("/start/name");
+    expect(
+      startDestination(
+        me({
+          consent: { status: "withdrawn", method: null },
+          learners: [learner],
+        }),
+        "/start",
+        false,
+        slug,
+      ),
+    ).toBe("/start/consent");
+  }
 });

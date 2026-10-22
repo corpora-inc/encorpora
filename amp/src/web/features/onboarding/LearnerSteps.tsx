@@ -7,8 +7,8 @@ import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
 import {
   continuationSearch,
+  fundedPrograms,
   isFundedReturn,
-  fundedDestination,
 } from "../../lib/funded-entry";
 import { clearStoredTrial, storedTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
@@ -70,7 +70,7 @@ export function LearnerSteps({
     draft.clear();
     void navigate(
       isFundedReturn(search.return)
-        ? { to: fundedDestination(search.return), search, replace: true }
+        ? { to: fundedPrograms[search.return].path, search, replace: true }
         : { to: "/$", params: { _splat: "practice" }, replace: true },
     );
   };

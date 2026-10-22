@@ -7,27 +7,46 @@ import {
   CAMPAIGN_CREATIVES,
 } from "../../analytics/campaign";
 
-export const fundedPath = "/purchase/arkansas-efa" as const;
 export const fundedPrograms = {
   "arkansas-efa": {
+    slug: "arkansas-efa",
+    path: "/purchase/arkansas-efa",
     id: "ar-efa",
     jurisdiction: "AR",
     name: "Arkansas EFA",
-    path: "/purchase/arkansas-efa",
+    helpUrl: "https://corpora.inc/esa/arkansas-efa/",
+  },
+  "new-hampshire-efa": {
+    slug: "new-hampshire-efa",
+    path: "/purchase/new-hampshire-efa",
+    id: "nh-efa",
+    jurisdiction: "NH",
+    name: "New Hampshire EFA",
+    helpUrl: "https://corpora.inc/esa/new-hampshire-efa/",
   },
   "arizona-esa": {
+    slug: "arizona-esa",
+    path: "/purchase/arizona-esa",
     id: "az-esa",
     jurisdiction: "AZ",
     name: "Arizona ESA",
-    path: "/purchase/arizona-esa",
+    helpUrl: "https://corpora.inc/esa/arizona-esa/",
   },
 } as const;
-export type FundedReturn = keyof typeof fundedPrograms;
-export function isFundedReturn(value: unknown): value is FundedReturn {
-  return value === "arkansas-efa" || value === "arizona-esa";
+export type FundedProgramSlug = keyof typeof fundedPrograms;
+export type FundedProgram = (typeof fundedPrograms)[FundedProgramSlug];
+export type FundedPath = FundedProgram["path"];
+export const fundedPath = fundedPrograms["arkansas-efa"].path;
+export const fundedReturnSchema = z.enum([
+  "arkansas-efa",
+  "new-hampshire-efa",
+  "arizona-esa",
+]);
+export function isFundedReturn(value: unknown): value is FundedProgramSlug {
+  return typeof value === "string" && Object.hasOwn(fundedPrograms, value);
 }
-export function fundedDestination(value: FundedReturn) {
-  return fundedPrograms[value].path;
+export function fundedProgramForPath(path: string): FundedProgram | undefined {
+  return Object.values(fundedPrograms).find((program) => program.path === path);
 }
 const labels = z.object({
   utm_campaign: z.enum(CAMPAIGN_NAMES),
@@ -37,7 +56,7 @@ const labels = z.object({
 });
 export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
-  return?: "security" | FundedReturn;
+  return?: "security" | FundedProgramSlug;
 };
 
 export function measurementOptOut() {
@@ -57,7 +76,7 @@ export function campaignSearch(
   return { ...required, ...(utm_content ? { utm_content } : {}) };
 }
 
-/** Only fixed internal destinations can survive authentication. */
+/** Only allowlisted internal destinations can survive authentication. */
 export function continuationSearch(
   search: Record<string, unknown>,
 ): FundedSearch {
@@ -78,7 +97,7 @@ export function continuationUrl(
     safe.return === "security"
       ? "/family/security"
       : isFundedReturn(safe.return)
-        ? fundedDestination(safe.return)
+        ? fundedPrograms[safe.return].path
         : fallback;
   const params = new URLSearchParams(
     campaignSearch(safe) as Record<string, string>,
@@ -89,17 +108,16 @@ export function continuationUrl(
 /** Recheck privacy at the moment the parent prepares the financial request. */
 export function fundedAttribution(
   search: Record<string, unknown>,
-  offer?: { programId: string; jurisdiction: string },
+  program?: { programId: string; jurisdiction: string },
 ) {
   const safe = campaignSearch(search);
-  if (offer && safe.utm_campaign) {
-    const expected = CAMPAIGN_PROGRAMS[safe.utm_campaign];
-    if (
-      offer.programId !== expected.programId ||
-      offer.jurisdiction !== expected.state
-    )
-      return undefined;
-  }
+  if (
+    program &&
+    (!safe.utm_campaign ||
+      CAMPAIGN_PROGRAMS[safe.utm_campaign].programId !== program.programId ||
+      CAMPAIGN_PROGRAMS[safe.utm_campaign].state !== program.jurisdiction)
+  )
+    return undefined;
   return safe.utm_campaign && safe.utm_source && safe.utm_medium
     ? {
         campaign: safe.utm_campaign,
@@ -114,8 +132,8 @@ const pendingPrefix = "amp.pending-funded-purchase.";
 const pendingLifetime = 7 * 24 * 60 * 60 * 1000;
 const pendingSchema = z.strictObject({
   expiresAt: z.number().finite(),
+  destination: fundedReturnSchema.optional(),
   labels: labels.partial(),
-  destination: z.enum(["arkansas-efa", "arizona-esa"]).default("arkansas-efa"),
 });
 
 /** A pending parent purchase, scoped to the authenticated account on this device.
@@ -129,10 +147,10 @@ export function rememberFundedPurchase(
       pendingPrefix + accountId,
       JSON.stringify({
         expiresAt: Date.now() + pendingLifetime,
-        labels: campaignSearch(search),
         destination: isFundedReturn(search.return)
           ? search.return
           : "arkansas-efa",
+        labels: campaignSearch(search),
       }),
     );
   } catch {
@@ -165,7 +183,10 @@ export function pendingFundedPurchase(accountId: string): string | null {
       pendingPrefix + accountId,
       JSON.stringify({ ...parsed.data, labels: safe }),
     );
-    return continuationUrl({ ...safe, return: parsed.data.destination });
+    return continuationUrl({
+      ...safe,
+      return: parsed.data.destination ?? "arkansas-efa",
+    });
   } catch {
     return null;
   }

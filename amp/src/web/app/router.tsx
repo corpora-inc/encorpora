@@ -33,7 +33,7 @@ import { chosenPlan } from "../lib/pending-trial";
 const searchSchema = z
   .object({
     return: z
-      .enum(["security", "arkansas-efa", "arizona-esa"])
+      .enum(["security", "arkansas-efa", "new-hampshire-efa", "arizona-esa"])
       .optional()
       .catch(undefined),
     program: z.enum(["ar-efa", "az-esa"]).optional().catch(undefined),
@@ -271,6 +271,17 @@ const funded = createRoute({
     "FundedEntry",
   ),
 });
+const fundedNewHampshire = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/new-hampshire-efa",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/funding/FundedEntry"),
+    "FundedEntry",
+  ),
+});
 const fundedArizona = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arizona-esa",
@@ -307,6 +318,7 @@ export const router = createRouter({
     tryPlans,
     pathways,
     funded,
+    fundedNewHampshire,
     fundedArizona,
     fallback,
   ]),
