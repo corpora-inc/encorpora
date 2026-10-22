@@ -365,8 +365,8 @@ header {
 .feedback .practice-tools {
   margin-top: -4px;
 }
-/* Feedback surfaces come from the status tokens, so both themes keep AA text
-   contrast: ink on the soft fill, the accent only on the mark and border. */
+/* Correct answers use the success surface; worked corrections use a neutral
+   reading surface with the answer comparison carrying the result. */
 .feedback.correct {
   background: color-mix(in srgb, var(--color-success) 94%, transparent);
   border-color: color-mix(
@@ -416,12 +416,8 @@ header {
   }
 }
 .feedback.incorrect {
-  background: color-mix(in srgb, var(--color-danger) 94%, transparent);
-  border-color: color-mix(
-    in srgb,
-    var(--color-danger-accent) 35%,
-    var(--color-border)
-  );
+  background: var(--color-surface-raised);
+  border-color: var(--color-border-strong);
   color: var(--color-on-surface);
 }
 /* A skip is neutral: the answer on a plain surface, no red and no mark of
@@ -450,7 +446,8 @@ header {
   background: var(--color-success-accent);
 }
 .feedback.incorrect .result-mark {
-  background: var(--color-danger-accent);
+  background: var(--color-danger);
+  color: var(--color-danger-accent);
 }
 .feedback.skipped .result-mark {
   background: var(--color-surface-sunken);
