@@ -1,11 +1,17 @@
 import type { Pool } from "pg";
 import { fundedCampaignSchema } from "./funded-campaign.js";
+import { CAMPAIGN_PROGRAMS } from "./campaign.js";
 import { RETENTION } from "../privacy/retention-periods.js";
 
 /** Current states of requests created in the window, not ad-attributed sales.
  * Program classification comes only from the retained, operator-configured offer.
  */
-export async function arkansasOrderSummary(pool: Pool, days: number) {
+export async function fundedOrderSummary(
+  pool: Pool,
+  days: number,
+  campaign: keyof typeof CAMPAIGN_PROGRAMS,
+) {
+  const program = CAMPAIGN_PROGRAMS[campaign];
   const result = await pool.query(
     `SELECT
     count(*)::int AS prepared_request_records,
@@ -19,10 +25,10 @@ export async function arkansasOrderSummary(pool: Pool, days: number) {
     count(*) FILTER (WHERE o.order_state->>'refund'='completed')::int AS refunded_orders
     FROM amp_funding_requests r
     LEFT JOIN amp_commerce_orders o ON o.id=r.order_id AND o.channel='esa'
-    WHERE r.offer_snapshot->>'programId'='ar-efa'
-      AND r.offer_snapshot->>'jurisdiction'='AR'
+    WHERE r.offer_snapshot->>'programId'=$2
+      AND r.offer_snapshot->>'jurisdiction'=$3
       AND r.created_at >= ((CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int)::timestamp AT TIME ZONE 'UTC'`,
-    [days - 1],
+    [days - 1, program.programId, program.state],
   );
   return result.rows[0];
 }
@@ -31,7 +37,12 @@ export async function arkansasOrderSummary(pool: Pool, days: number) {
  * Exact minor-unit strings avoid rounding aggregate amounts through JS numbers.
  * No identity, free text, or provider reference leaves this report boundary.
  */
-export async function arkansasCashSummary(pool: Pool, days: number) {
+export async function fundedCashSummary(
+  pool: Pool,
+  days: number,
+  campaign: keyof typeof CAMPAIGN_PROGRAMS,
+) {
+  const program = CAMPAIGN_PROGRAMS[campaign];
   if (!Number.isInteger(days) || days < 1 || days > RETENTION.funnelEventDays)
     throw new Error(`Days must be 1–${RETENTION.funnelEventDays}`);
   const result = await pool.query<{
@@ -50,8 +61,8 @@ export async function arkansasCashSummary(pool: Pool, days: number) {
      JOIN amp_funding_requests r ON r.order_id=o.id
      WHERE e.channel='esa'
        AND e.payload->>'type' IN ('order.settled','refund.completed')
-       AND r.offer_snapshot->>'programId'='ar-efa'
-       AND r.offer_snapshot->>'jurisdiction'='AR'
+       AND r.offer_snapshot->>'programId'=$2
+       AND r.offer_snapshot->>'jurisdiction'=$3
      ) SELECT evidence_at::date::text AS day,currency,campaign_attribution,
        COALESCE(sum(amount) FILTER (WHERE kind='order.settled'),0)::text AS gross_minor,
        COALESCE(sum(amount) FILTER (WHERE kind='refund.completed'),0)::text AS refunded_minor
@@ -60,7 +71,7 @@ export async function arkansasCashSummary(pool: Pool, days: number) {
        AND evidence_at < (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date + 1
      GROUP BY evidence_at::date,currency,campaign_attribution
      ORDER BY 1,2`,
-    [days - 1],
+    [days - 1, program.programId, program.state],
   );
   const groups = new Map<
     string,
@@ -101,3 +112,9 @@ export async function arkansasCashSummary(pool: Pool, days: number) {
       netMinor: (gross - refunded).toString(),
     }));
 }
+
+export const arkansasOrderSummary = (pool: Pool, days: number) =>
+  fundedOrderSummary(pool, days, "ar-efa-launch");
+
+export const arkansasCashSummary = (pool: Pool, days: number) =>
+  fundedCashSummary(pool, days, "ar-efa-launch");

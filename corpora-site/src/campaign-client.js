@@ -14,7 +14,7 @@
     source: pick("utm_source", ["facebook", "instagram", "google", "email", "youtube"], "direct"),
     medium: pick("utm_medium", ["paid-social", "cpc", "email", "organic-social"], "none"),
   };
-  const creative = pick("utm_content", ["efa-math", "homeschool-math", "efa-product-v1", "efa-facebook-feed-v1", "efa-facebook-vertical-v1", "efa-instagram-vertical-v1"], undefined);
+  const creative = pick("utm_content", ["az-esa-math","az-homeschool-math","shared-hook-ampd-portrait-v1","shared-hook-ampd-square-v1","shared-hook-next-portrait-v1","shared-hook-next-square-v1","az-hook-ampd-portrait-v1","az-hook-ampd-square-v1","az-hook-next-portrait-v1","az-hook-next-square-v1","efa-math", "homeschool-math", "efa-product-v1", "efa-facebook-feed-v1", "efa-facebook-vertical-v1", "efa-instagram-vertical-v1", "hook-ampd-efa-v2", "hook-ampd-assessment-v2", "hook-next-efa-v2", "hook-next-assessment-v2", "hook-path-efa-v2", "hook-path-assessment-v2", "hook-ampd-up-efa-v2", "hook-ampd-up-assessment-v2", "hook-plug-efa-v2", "hook-plug-assessment-v2"], undefined);
   if (fields.campaign === "ar-efa-launch" && creative) fields.creative = creative;
   const send = action => {
     try {

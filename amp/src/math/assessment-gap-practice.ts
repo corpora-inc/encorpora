@@ -81,14 +81,15 @@ export function generateAssessmentGapProblem(
       ? "the percentage of residents supporting a proposed park"
       : "the mean daily water use per household in liters";
     const unit = percentage ? "%" : " liters";
+    const marginUnit = `${percentage ? "percentage point" : "liter"}${margin === 1 ? "" : "s"}`;
     const endpoints = (lo: number, hi: number) =>
       `From ${lo}${unit} to ${hi}${unit}.`;
     const lo = estimate - margin,
       hi = estimate + margin;
     draft = {
-      prompt: `A random sample of ${sampleSize} ${percentage ? "residents" : "households"} estimates ${context} as ${estimate}${unit}. A 95% confidence interval uses a margin of error of ${margin} ${percentage ? "percentage points" : "liters"}. Which interval is produced by this estimate and margin of error?`,
+      prompt: `A random sample of ${sampleSize} ${percentage ? "residents" : "households"} estimates ${context} as ${estimate}${unit}. A 95% confidence interval uses a margin of error of ${margin} ${marginUnit}. Which interval is produced by this estimate and margin of error?`,
       answer: "",
-      hint: `Use ${estimate}${unit} as the center. The margin of error, ${margin} ${percentage ? "percentage points" : "liters"}, is the distance to each endpoint, not the full width.`,
+      hint: `Use ${estimate}${unit} as the center. The margin of error, ${margin} ${marginUnit}, is the distance to each endpoint, not the full width.`,
       choices: [
         { label: endpoints(lo, hi), correct: true },
         {
@@ -144,7 +145,7 @@ export function generateAssessmentGapProblem(
       explanation: [
         "One radian is the angle subtending an arc whose length equals the radius.",
         `Divide the arc length by the radius: $\\theta = ${arc}/${radius} = ${rational(arc, radius)}$ radians.`,
-        `Check by multiplying the angle by the radius: $${radius} \\times (${rational(arc, radius)}) = ${arc}$ cm. The length units cancel in the ratio.`,
+        `Check by multiplying the angle by the radius: $${radius} \\times \\frac{${arc}}{${radius}} = ${arc}$ cm. The length units cancel in the ratio.`,
         "The chosen counterclockwise arc determines the swept angle, including arcs larger than a semicircle.",
       ],
     };
