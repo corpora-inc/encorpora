@@ -113,7 +113,7 @@ export function FundingPage({
             <span>AMP Math · {funding.program}</span>
             <button type="button" data-invoice-close aria-label="Close invoice form">✕</button>
           </div>
-          <iframe title={`${funding.program} invoice form`} data-invoice-src={invoiceForm} referrerPolicy="no-referrer" />
+          <iframe title={`${funding.program} invoice form`} data-invoice-src={invoiceForm} allow="clipboard-write" referrerPolicy="no-referrer" />
           <p className="invoice-dialog-fallback"><a href={invoiceForm} target="_blank" rel="noopener noreferrer">Open form in a new tab</a></p>
         </dialog>
       )}
