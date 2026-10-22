@@ -169,11 +169,18 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
   try {
     await buildSite(configSchema.parse({
       supportEmail: "support@example.invalid",
-      plans: [{ interval: "year", amountMinor: 32100, currency: "USD", renews: true }],
+      plans: [
+        { interval: "year", amountMinor: 32100, currency: "USD", renews: true },
+        { interval: "month", amountMinor: 4200, currency: "USD", renews: true },
+      ],
       funding: [{ ...guidedFundingFixture, kind: "classwallet-direct-pay" }],
     }), dir);
     const html = await readFile(join(dir, "esa/synthetic-program/index.html"), "utf8");
     assert.ok(html.includes("$321.00"));
+    assert.ok(!html.includes("$42.00"));
+    assert.ok(!html.includes("1 month"));
+    const product = await readFile(join(dir, "amp/index.html"), "utf8");
+    assert.ok(product.includes("$42.00"), "personal monthly pricing remains available");
     assert.ok(html.includes("12 months"));
     assert.ok(html.includes("No automatic renewal."));
     assert.ok(html.includes("How to pay with program funds"));
@@ -182,6 +189,9 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
     const href = html.match(/href="(mailto:[^"]+)"/)?.[1];
     assert.ok(href);
     const body = new URL(href.replaceAll("&amp;", "&")).searchParams.get("body");
+    assert.ok(body?.includes("Plan: 12 months ($321.00)"));
+    assert.ok(!body?.includes("1 month"));
+    assert.ok(!body?.includes("$42.00"));
     assert.ok(body?.includes("Preferred start date:"));
     assert.ok(body?.includes("I have an AMP account: yes / no"));
     assert.ok(!body?.includes("student name"));
