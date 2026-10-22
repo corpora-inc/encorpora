@@ -104,3 +104,50 @@ test("purchase continuation belongs to one account, expires, and rechecks privac
     localStorage.getItem("amp.pending-funded-purchase.parent-a"),
   ).toBeNull();
 });
+
+test("each funded program survives authentication, new consent tabs and privacy opt-out", () => {
+  for (const slug of ["arkansas-efa", "new-hampshire-efa", "arizona-esa"]) {
+    localStorage.clear();
+    const search = { return: slug, ...campaign };
+    expect(continuationUrl(search)).toContain(`/purchase/${slug}`);
+    rememberFundedPurchase("parent-a", search);
+    expect(pendingFundedPurchase("parent-a")).toContain(`/purchase/${slug}`);
+    expect(pendingFundedPurchase("parent-b")).toBeNull();
+    vi.stubGlobal("navigator", { globalPrivacyControl: true });
+    expect(pendingFundedPurchase("parent-a")).toBe(`/purchase/${slug}`);
+    vi.unstubAllGlobals();
+  }
+  localStorage.setItem(
+    "amp.pending-funded-purchase.parent-a",
+    JSON.stringify({
+      expiresAt: Date.now() + 60000,
+      labels: {},
+      destination: "https://evil.example",
+    }),
+  );
+  expect(pendingFundedPurchase("parent-a")).toBeNull();
+});
+test("Arizona campaign labels use the same bounded continuation", () => {
+  expect(
+    continuationUrl({
+      ...campaign,
+      utm_campaign: "az-esa-launch",
+      return: "arizona-esa",
+    }),
+  ).toContain("/purchase/arizona-esa?utm_campaign=az-esa-launch");
+});
+
+test("funded attribution cannot label a different program's purchase", () => {
+  expect(
+    fundedAttribution(campaign, { programId: "nh-efa", jurisdiction: "NH" }),
+  ).toBeUndefined();
+  expect(
+    fundedAttribution(campaign, { programId: "az-esa", jurisdiction: "AZ" }),
+  ).toBeUndefined();
+  expect(
+    fundedAttribution(
+      { ...campaign, utm_campaign: "az-esa-launch" },
+      { programId: "az-esa", jurisdiction: "AZ" },
+    )?.campaign,
+  ).toBe("az-esa-launch");
+});

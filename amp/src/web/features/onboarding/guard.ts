@@ -1,3 +1,8 @@
+import {
+  fundedPrograms,
+  type FundedPath,
+  type FundedProgramSlug,
+} from "../../lib/funded-entry";
 import type { Me } from "../../../account/contracts";
 
 /** Every first-run step. The server's `me.next` alone decides which may open. */
@@ -12,12 +17,7 @@ export const startSteps = [
 export type StartStep = (typeof startSteps)[number];
 
 export type StartTarget =
-  | StartStep
-  | "/sign-in"
-  | "/purchase"
-  | "/purchase/arkansas-efa"
-  | "/practice"
-  | "/try";
+  StartStep | "/sign-in" | "/purchase" | FundedPath | "/practice" | "/try";
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
 /** Steps that record consent or take payment; they need a confirmed address. */
@@ -42,7 +42,7 @@ export function startDestination(
   me: Me,
   pathname: string,
   buying = false,
-  funded = false,
+  funded: boolean | FundedProgramSlug = false,
 ): StartTarget | null {
   if (!me.signedIn) return "/sign-in";
   if (funded) {
@@ -51,7 +51,9 @@ export function startDestination(
     if (me.consent.status !== "active")
       return pathname === "/start/consent" ? null : "/start/consent";
     if (learnerSteps.includes(pathname)) return null;
-    return me.learners.length ? "/purchase/arkansas-efa" : "/start/name";
+    return me.learners.length
+      ? fundedPrograms[funded === true ? "arkansas-efa" : funded].path
+      : "/start/name";
   }
   const confirm =
     !!me.account.confirmationRequired &&
