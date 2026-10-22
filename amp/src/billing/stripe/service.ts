@@ -2,6 +2,7 @@ import {
   queueRejectedEnrollment,
   stopRejectedEnrollmentRenewals,
 } from "./enrollment-cancellation.js";
+import { linkPurchaseAcquisition } from "../../advertising/acquisition.js";
 import {
   reserveEnrollment,
   prepareEnrollmentCheckout,
@@ -41,6 +42,7 @@ export class StripeBilling {
     acknowledgement?: PurchaseAcknowledgement,
     /** The browser's random funnel visitor ID, for purchase attribution. */
     visitorId?: string,
+    acquisitionId?: string,
   ): Promise<{ url: string }> {
     const reserve = () =>
       learnerId === null
@@ -91,6 +93,12 @@ export class StripeBilling {
       });
       checkoutId = await reserve();
     }
+    await linkPurchaseAcquisition(
+      this.repository.pool,
+      accountId,
+      acquisitionId,
+      { kind: "stripe-checkout", id: checkoutId },
+    );
     // Attribution is best effort and never blocks a checkout.
     await linkCheckoutVisitor(
       this.repository.pool,

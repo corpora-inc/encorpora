@@ -122,8 +122,8 @@ export function Legal({
           )}
           <h2>This website</h2>
           <p>
-            The site does not set advertising or analytics cookies, load
-            advertising pixels, or send answers to an analytics service. On the
+            The site does not load advertising pixels or send learning answers
+            to advertising platforms. On the
             Arkansas funding page, our own server counts page views, trial-link
             clicks and invoice-email-link clicks by day and fixed campaign
             labels. These counts contain no visitor identifier, name, email,
@@ -136,6 +136,29 @@ export function Legal({
             receive an IP address, requested URL, and browser information to
             deliver pages and protect the service. Links to the AMP app and
             external program websites take you to separate services.
+          </p>
+          <h2>Ad clicks and purchases</h2>
+          <p>
+            When you follow an ad to the Arkansas funding page, our server may
+            retain its Google or Meta click identifier, existing Meta browser
+            identifiers, the observation time and fixed campaign labels for up
+            to 90 days. A secure, host-only browser cookie contains a random
+            reference, not the ad identifiers. It lets AMP associate the visit
+            with the signed-in parent’s invoice or checkout without adding a
+            tracking step. These records are separate from learner profiles,
+            assessment answers and progress. Ad identifiers are removed from
+            the page’s address before links are shared.
+          </p>
+          <p>
+            Global Privacy Control and Do Not Track prevent this collection
+            and clear the browser reference. Identified purchase attribution
+            appears in the parent’s data export. Withdrawing a provider’s
+            purchase-sharing preference deletes that provider’s associated
+            click evidence; learning-consent withdrawal and learning-data
+            deletion remove both providers’ associated evidence. Unassociated
+            visits expire after at most 90 days. Collection does not itself
+            send a purchase or identifiers to Google or Meta; external sharing
+            requires the separate applicable permission described below.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>
@@ -198,8 +221,10 @@ export function Legal({
             already received by the provider. Learning-data deletion,
             learning-consent withdrawal, and Global Privacy Control or Do Not
             Track received on an authenticated AMP request withdraw both
-            preferences. AMP retains each preference for its duration and up to
-            90 days after withdrawal or expiry. The family export includes the
+            preferences. AMP retains permission evidence for its duration and up to
+            90 days after withdrawal or expiry. A minimal opt-out setting stays
+            until you change it, so expiry of that evidence cannot resume
+            collection. The family export includes these settings and
             preferences without their email binding digests. Local
             purchase-measurement records are retained for up to 90 days after
             the purchase and included in the family export. Withdrawal cancels

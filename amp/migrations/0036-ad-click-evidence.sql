@@ -21,6 +21,7 @@ CREATE TABLE amp_ad_click_evidence (
   observed_at timestamptz NOT NULL DEFAULT clock_timestamp(),
   CHECK(first_observed_at<=observed_at),
   source_url text NOT NULL CHECK(source_url='https://corpora.inc/esa/arkansas-efa/'),
+  campaign_labels jsonb NOT NULL DEFAULT '{}' CHECK(jsonb_typeof(campaign_labels)='object' AND octet_length(campaign_labels::text)<=512),
   UNIQUE(journey_id,provider,evidence_digest)
 );
 CREATE INDEX amp_ad_click_evidence_latest ON amp_ad_click_evidence(journey_id,provider,first_observed_at DESC,sequence DESC);
@@ -37,3 +38,14 @@ CREATE TABLE amp_ad_order_attribution (
   UNIQUE(stripe_checkout_id,provider)
 );
 CREATE INDEX amp_ad_order_attribution_account ON amp_ad_order_attribution(account_id);
+
+-- A durable preference is separate from expiring permission audit evidence.
+CREATE TABLE amp_ad_collection_withdrawals (
+  account_id text NOT NULL,
+  provider text NOT NULL CHECK(provider IN ('google','meta')),
+  PRIMARY KEY(account_id,provider)
+);
+INSERT INTO amp_ad_collection_withdrawals(account_id,provider)
+SELECT account_id,'google' FROM amp_advertising_permissions WHERE withdrawn_at IS NOT NULL
+UNION ALL
+SELECT account_id,'meta' FROM amp_meta_advertising_permissions WHERE withdrawn_at IS NOT NULL;

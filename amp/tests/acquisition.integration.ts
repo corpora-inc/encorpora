@@ -1,0 +1,502 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
+import Fastify from "fastify";
+import { fixture, enabled } from "./helpers/advertising.js";
+import {
+  registerAcquisitionRoutes,
+  acquisitionToken,
+  ACQUISITION_COOKIE,
+  linkPurchaseAcquisition,
+  purgeAcquisition,
+} from "../src/advertising/acquisition.js";
+import { orderClickEvidence } from "../src/advertising/click-evidence.js";
+import { changeAdvertisingPermission } from "../src/advertising/permission.js";
+import { FamilyRepository } from "../src/family/repository.js";
+import { registerFundingPurchaseRoutes } from "../src/funding-purchase/routes.js";
+import { testFundingOffer } from "./funding-purchase.fixture.js";
+import { registerStripeRoutes } from "../src/billing/stripe/routes.js";
+import { StripeGateway } from "../src/billing/stripe/gateway.js";
+import { config as stripeConfig } from "./stripe-fixtures.js";
+const origin = "https://corpora.inc";
+const payload = {
+  clicks: [
+    { provider: "google", identifiers: { gclid: "Synthetic_Google" } },
+    { provider: "meta", identifiers: { fbclid: "Synthetic_Meta" } },
+  ],
+  labels: {
+    campaign: "ar-efa-launch",
+    source: "google",
+    medium: "cpc",
+    creative: "efa-math",
+  },
+};
+
+test(
+  "landing capture returns only a secure cookie and binds through the real funding route",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const app = Fastify();
+      try {
+        await registerAcquisitionRoutes(app, { pool, origin });
+        await pool.query(
+          "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent','fixture','verified','synthetic')",
+        );
+        await registerFundingPurchaseRoutes(app, {
+          pool,
+          authenticate: async () => "amp|parent",
+          offers: [testFundingOffer],
+        });
+        const preflight = await app.inject({
+          method: "OPTIONS",
+          url: "/api/v1/advertising/acquisition",
+          headers: { origin },
+        });
+        assert.equal(preflight.statusCode, 204);
+        assert.equal(
+          preflight.headers["access-control-allow-credentials"],
+          "true",
+        );
+        const capture = await app.inject({
+          method: "POST",
+          url: "/api/v1/advertising/acquisition",
+          headers: { origin },
+          payload,
+        });
+        assert.equal(capture.statusCode, 204);
+        assert.equal(capture.body, "");
+        const setCookie = String(capture.headers["set-cookie"]);
+        assert.match(setCookie, /; Secure; HttpOnly; SameSite=Lax; Max-Age=/);
+        assert.ok(!setCookie.includes("Domain="));
+        assert.ok(!setCookie.includes("Synthetic"));
+        const cookie = setCookie.split(";")[0]!;
+        const token = acquisitionToken({ cookie });
+        assert.ok(token);
+        const request = {
+          offerId: testFundingOffer.id,
+          offerRevision: testFundingOffer.revision,
+          learnerId: "child",
+          idempotencyKey: randomUUID(),
+        };
+        const created = await app.inject({
+          method: "POST",
+          url: "/api/v1/funding/requests",
+          headers: { cookie },
+          payload: request,
+        });
+        assert.equal(created.statusCode, 200, created.body);
+        const rows = await pool.query(
+          "SELECT id FROM amp_funding_requests WHERE account_id='amp|parent'",
+        );
+        assert.equal(rows.rowCount, 1);
+        const target = {
+          kind: "funding-request" as const,
+          id: rows.rows[0].id,
+        };
+        const client = await pool.connect();
+        try {
+          assert.deepEqual(
+            (await orderClickEvidence(client, "amp|parent", target, "google"))
+              ?.identifiers,
+            { gclid: "Synthetic_Google" },
+          );
+        } finally {
+          client.release();
+        }
+        assert.ok(
+          !created.body.includes("Synthetic_Google") &&
+            !created.body.includes(token!),
+        );
+        const retry = await app.inject({
+          method: "POST",
+          url: "/api/v1/funding/requests",
+          headers: { cookie },
+          payload: request,
+        });
+        assert.equal(retry.statusCode, 200);
+        assert.equal(
+          (await pool.query("SELECT count(*) FROM amp_ad_order_attribution"))
+            .rows[0].count,
+          "2",
+        );
+        const exported = [];
+        for await (const line of new FamilyRepository(pool).export(
+          "amp|parent",
+        ))
+          exported.push(JSON.parse(line));
+        const acquisition = exported.filter((x) => x.type === "ad-acquisition");
+        assert.equal(acquisition.length, 2);
+        assert.equal(acquisition[0].data.campaignLabels.creative, "efa-math");
+        assert.ok(!JSON.stringify(acquisition).includes(token!));
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          { action: "withdraw" },
+          false,
+          "google",
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='google'",
+            )
+          ).rows[0].count,
+          "0",
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='meta'",
+            )
+          ).rows[0].count,
+          "1",
+        );
+        await new FamilyRepository(pool).withdraw("amp|parent");
+        assert.equal(
+          (await pool.query("SELECT count(*) FROM amp_ad_click_evidence"))
+            .rows[0].count,
+          "0",
+        );
+      } finally {
+        await app.close();
+      }
+    }),
+);
+
+test(
+  "untrusted origins, extra fields, privacy signals and duplicate cookies cannot capture",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const app = Fastify();
+      try {
+        await registerAcquisitionRoutes(app, { pool, origin });
+        for (const headers of [
+          {},
+          { origin: "https://other.example" },
+          { origin: "https://corpora.inc.attacker.example" },
+        ])
+          assert.equal(
+            (
+              await app.inject({
+                method: "POST",
+                url: "/api/v1/advertising/acquisition",
+                headers,
+                payload,
+              })
+            ).statusCode,
+            403,
+          );
+        for (const invalid of [
+          { ...payload, account: "amp|parent" },
+          { ...payload, learner: "child" },
+          { ...payload, clicks: [payload.clicks[0], payload.clicks[0]] },
+          {
+            ...payload,
+            labels: {
+              campaign: "ar-efa-launch",
+              source: "parent@example.invalid",
+              medium: "cpc",
+            },
+          },
+        ])
+          assert.equal(
+            (
+              await app.inject({
+                method: "POST",
+                url: "/api/v1/advertising/acquisition",
+                headers: { origin },
+                payload: invalid,
+              })
+            ).statusCode,
+            400,
+          );
+        for (const privacy of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+          const result = await app.inject({
+            method: "POST",
+            url: "/api/v1/advertising/acquisition",
+            headers: { origin, ...privacy },
+            payload,
+          });
+          assert.equal(result.statusCode, 204);
+          assert.match(String(result.headers["set-cookie"]), /Max-Age=0$/);
+        }
+        assert.equal(
+          (await pool.query("SELECT count(*) FROM amp_ad_click_journeys"))
+            .rows[0].count,
+          "0",
+        );
+        assert.equal(
+          acquisitionToken({
+            cookie: `${ACQUISITION_COOKIE}=${"a".repeat(64)}; ${ACQUISITION_COOKIE}=${"b".repeat(64)}`,
+          }),
+          undefined,
+        );
+        assert.equal(
+          acquisitionToken({ cookie: `${ACQUISITION_COOKIE}=invalid` }),
+          undefined,
+        );
+      } finally {
+        await app.close();
+      }
+    }),
+);
+
+test(
+  "withdrawn provider cannot be rebound; expired journeys are removed by the worker",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const app = Fastify();
+      try {
+        await registerAcquisitionRoutes(app, { pool, origin });
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          { action: "withdraw" },
+          false,
+          "google",
+        );
+        await pool.query(
+          "UPDATE amp_advertising_permissions SET withdrawn_at=clock_timestamp()-interval '91 days'",
+        );
+        const { purgeAdvertisingPermissions } =
+          await import("../src/advertising/permission.js");
+        await purgeAdvertisingPermissions(pool);
+        const result = await app.inject({
+          method: "POST",
+          url: "/api/v1/advertising/acquisition",
+          headers: { origin },
+          payload,
+        });
+        const token = acquisitionToken({
+          cookie: String(result.headers["set-cookie"]).split(";")[0],
+        });
+        assert.ok(token);
+        const id = randomUUID();
+        await pool.query(
+          "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,learner_id,request_id,closed,created_at) VALUES($1,'acct_fixture:live','amp|parent','child',$2,true,clock_timestamp())",
+          [id, randomUUID()],
+        );
+        assert.equal(
+          await linkPurchaseAcquisition(pool, "amp|other", token, {
+            kind: "stripe-checkout",
+            id,
+          }),
+          false,
+        );
+        assert.equal(
+          await linkPurchaseAcquisition(pool, "amp|parent", token, {
+            kind: "stripe-checkout",
+            id,
+          }),
+          true,
+        );
+        assert.deepEqual(
+          (
+            await pool.query("SELECT provider FROM amp_ad_order_attribution")
+          ).rows.map((x) => x.provider),
+          ["meta"],
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='google'",
+            )
+          ).rows[0].count,
+          "0",
+        );
+        await pool.query(
+          "UPDATE amp_ad_click_journeys SET created_at=statement_timestamp()-interval '91 days',expires_at=statement_timestamp()-interval '1 day'",
+        );
+        assert.equal(await purgeAcquisition(pool), 1);
+        assert.equal(
+          (await pool.query("SELECT count(*) FROM amp_ad_click_evidence"))
+            .rows[0].count,
+          "0",
+        );
+        assert.equal(
+          (await pool.query("SELECT click_id FROM amp_ad_order_attribution"))
+            .rows[0].click_id,
+          null,
+        );
+      } finally {
+        await app.close();
+      }
+    }),
+);
+
+test(
+  "the actual Stripe checkout route binds the cookie before returning its payment URL",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const app = Fastify();
+      try {
+        await registerAcquisitionRoutes(app, { pool, origin });
+        const gateway = new StripeGateway(stripeConfig);
+        gateway.verifyCatalog = async () => {};
+        gateway.createCustomer = async () => "cus_acquisition_fixture";
+        gateway.createCheckout = async () => ({
+          id: "cs_acquisition_fixture",
+          url: "https://checkout.stripe.test/acquisition",
+        });
+        gateway.checkoutStatus = async () => ({
+          status: "open",
+          url: "https://checkout.stripe.test/acquisition",
+        });
+        await registerStripeRoutes(app, {
+          pool,
+          authenticate: async () => "amp|parent",
+          config: stripeConfig,
+          gateway,
+        });
+        await pool.query(
+          "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent',$1,'fixture','synthetic')",
+          [stripeConfig.consentPolicyVersion],
+        );
+        const capture = await app.inject({
+          method: "POST",
+          url: "/api/v1/advertising/acquisition",
+          headers: { origin },
+          payload,
+        });
+        const cookie = String(capture.headers["set-cookie"]).split(";")[0]!;
+        const request = {
+          learnerId: "child",
+          requestId: randomUUID(),
+          interval: "year",
+        };
+        const paid = await app.inject({
+          method: "POST",
+          url: "/api/v1/billing/checkout",
+          headers: { cookie },
+          payload: request,
+        });
+        assert.equal(paid.statusCode, 200, paid.body);
+        assert.deepEqual(paid.json(), {
+          url: "https://checkout.stripe.test/acquisition",
+        });
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*) FROM amp_ad_order_attribution WHERE stripe_checkout_id IS NOT NULL",
+            )
+          ).rows[0].count,
+          "2",
+        );
+        const retry = await app.inject({
+          method: "POST",
+          url: "/api/v1/billing/checkout",
+          headers: { cookie },
+          payload: request,
+        });
+        assert.equal(retry.statusCode, 200);
+        assert.equal(
+          (await pool.query("SELECT count(*) FROM amp_ad_order_attribution"))
+            .rows[0].count,
+          "2",
+        );
+      } finally {
+        await app.close();
+      }
+    }),
+);
+
+test(
+  "mixed-provider replay preserves both original click times in either order",
+  enabled,
+  async () => {
+    for (const reverse of [false, true])
+      await fixture(async (pool) => {
+        const app = Fastify();
+        try {
+          await registerAcquisitionRoutes(app, { pool, origin });
+          const clicks = reverse
+            ? [...payload.clicks].reverse()
+            : payload.clicks;
+          const capture = async (cookie?: string) =>
+            app.inject({
+              method: "POST",
+              url: "/api/v1/advertising/acquisition",
+              headers: { origin, ...(cookie ? { cookie } : {}) },
+              payload: { clicks },
+            });
+          const first = await capture();
+          assert.equal(first.statusCode, 204);
+          const before = (
+            await pool.query(
+              "SELECT provider,first_observed_at FROM amp_ad_click_evidence ORDER BY provider",
+            )
+          ).rows;
+          await pool.query(
+            "UPDATE amp_ad_click_journeys SET account_id='amp|parent'",
+          );
+          const replay = await capture(
+            String(first.headers["set-cookie"]).split(";")[0],
+          );
+          assert.equal(replay.statusCode, 204);
+          const after = (
+            await pool.query(
+              "SELECT c.provider,c.first_observed_at FROM amp_ad_click_evidence c JOIN amp_ad_click_journeys j ON j.id=c.journey_id WHERE j.account_id IS NULL ORDER BY provider",
+            )
+          ).rows;
+          assert.deepEqual(after, before);
+        } finally {
+          await app.close();
+        }
+      });
+  },
+);
+
+test("retention drains more than one batch", enabled, async () =>
+  fixture(async (pool) => {
+    await pool.query(
+      "INSERT INTO amp_ad_click_journeys(id,token_digest,created_at,expires_at) SELECT gen_random_uuid(),lpad(to_hex(n),64,'0'),clock_timestamp()-interval '91 days',clock_timestamp()-interval '2 days' FROM generate_series(1,201) n",
+    );
+    assert.equal(await purgeAcquisition(pool), 201);
+    assert.equal(
+      (await pool.query("SELECT count(*)::int AS n FROM amp_ad_click_journeys"))
+        .rows[0].n,
+      0,
+    );
+  }),
+);
+
+test(
+  "permission evidence expiry cannot erase a collection withdrawal",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const { purgeAdvertisingPermissions } =
+        await import("../src/advertising/permission.js");
+      await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        { action: "withdraw" },
+        false,
+        "google",
+      );
+      await pool.query(
+        "UPDATE amp_advertising_permissions SET withdrawn_at=clock_timestamp()-interval '91 days'",
+      );
+      await purgeAdvertisingPermissions(pool);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS n FROM amp_advertising_permissions WHERE account_id='amp|parent'",
+          )
+        ).rows[0].n,
+        0,
+      );
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT provider FROM amp_ad_collection_withdrawals WHERE account_id='amp|parent'",
+          )
+        ).rows,
+        [{ provider: "google" }],
+      );
+    }),
+);

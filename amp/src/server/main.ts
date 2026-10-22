@@ -1,4 +1,5 @@
 import { registerMetaPurchaseContextRoutes } from "../advertising/meta-context.js";
+import { registerAcquisitionRoutes } from "../advertising/acquisition.js";
 import { withAdvertisingPrivacySignals } from "../advertising/permission.js";
 import { registerAdvertisingPermissionRoutes } from "../advertising/permission-routes.js";
 import { isIP } from "node:net";
@@ -157,6 +158,10 @@ await registerOfflineRoutes(app, {
 });
 await registerAnalyticsRoutes(app, { pool: repository.pool });
 await registerCampaignRoutes(app, {
+  pool: repository.pool,
+  origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),
+});
+await registerAcquisitionRoutes(app, {
   pool: repository.pool,
   origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),
 });

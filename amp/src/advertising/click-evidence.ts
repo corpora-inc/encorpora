@@ -2,6 +2,10 @@ import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import {
+  fundedCampaignSchema,
+  type FundedCampaign,
+} from "../analytics/funded-campaign.js";
+import {
   clickEvidenceSchema,
   providerClickIdentifiers,
   type ClickEvidence,
@@ -26,6 +30,8 @@ export async function retainAdClick(
   client: PoolClient,
   input: ClickEvidence,
   token?: string,
+  labels?: FundedCampaign,
+  predecessorToken?: string,
 ) {
   const parsed = clickEvidenceSchema.safeParse(input);
   if (
@@ -33,6 +39,8 @@ export async function retainAdClick(
     (token !== undefined && !tokenSchema.safeParse(token).success)
   )
     throw new Error("invalid_click_evidence");
+  const campaignLabels =
+    labels === undefined ? {} : fundedCampaignSchema.parse(labels);
   let journey = token
     ? (
         await client.query(
@@ -46,7 +54,15 @@ export async function retainAdClick(
     .now as Date;
   providerClickIdentifiers(parsed.data, now);
   if (journey && +journey.expires_at <= +now) journey = null;
-  const previousJourneyId = journey?.id ?? null;
+  const previousJourneyId =
+    predecessorToken && tokenSchema.safeParse(predecessorToken).success
+      ? ((
+          await client.query(
+            "SELECT id FROM amp_ad_click_journeys WHERE token_digest=$1 AND expires_at>clock_timestamp()",
+            [digest(predecessorToken)],
+          )
+        ).rows[0]?.id ?? null)
+      : (journey?.id ?? null);
   // An anonymous capture cannot establish who is using a previously bound
   // browser. Rotate rather than append new activity to that parent account.
   if (!journey || journey.account_id) {
@@ -108,8 +124,8 @@ export async function retainAdClick(
   )
     throw new Error("click_history_limit");
   await client.query(
-    `INSERT INTO amp_ad_click_evidence(id,journey_id,provider,identifiers,evidence_digest,observed_at,source_url,click_digest,first_observed_at)
-     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT(journey_id,provider,evidence_digest) DO NOTHING`,
+    `INSERT INTO amp_ad_click_evidence(id,journey_id,provider,identifiers,evidence_digest,observed_at,source_url,click_digest,first_observed_at,campaign_labels)
+     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT(journey_id,provider,evidence_digest) DO NOTHING`,
     [
       randomUUID(),
       journey.id,
@@ -120,6 +136,7 @@ export async function retainAdClick(
       AD_CLICK_SOURCE_URL,
       clickKey,
       firstObserved ?? now,
+      campaignLabels,
     ],
   );
   return {
@@ -137,6 +154,7 @@ export async function bindAdClicksToOrder(
   account: string,
   token: string,
   rawTarget: AttributionTarget,
+  providers: readonly ("google" | "meta")[] = ["google", "meta"],
 ) {
   const parsed = targetSchema.safeParse(rawTarget);
   if (!parsed.success || !tokenSchema.safeParse(token).success)
@@ -170,6 +188,7 @@ export async function bindAdClicksToOrder(
   );
   let bound = 0;
   for (const click of clicks.rows) {
+    if (!providers.includes(click.provider)) continue;
     const result = await client.query(
       `INSERT INTO amp_ad_order_attribution(account_id,funding_request_id,stripe_checkout_id,provider,click_id)
        VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING`,
