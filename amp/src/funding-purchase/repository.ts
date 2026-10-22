@@ -1,6 +1,9 @@
 import { canonicalCommercePayload } from "../commerce/ledger.js";
 import { randomUUID } from "node:crypto";
-import { incrementFundedCampaign } from "../analytics/funded-campaign.js";
+import {
+  incrementFundedCampaign,
+  campaignMatchesOffer,
+} from "../analytics/funded-campaign.js";
 import type { Pool, PoolClient } from "pg";
 import {
   lockLearningAccount,
@@ -116,7 +119,7 @@ export class FundingPurchaseRepository {
       }
       if (
         data.campaignAttribution &&
-        (offer.programId !== "ar-efa" || offer.jurisdiction !== "AR")
+        !campaignMatchesOffer(data.campaignAttribution, offer)
       )
         throw new FundingPurchaseError(400, "campaign_program_mismatch");
       const expires = new Date(

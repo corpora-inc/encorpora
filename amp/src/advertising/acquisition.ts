@@ -29,6 +29,9 @@ export function acquisitionToken(headers: Record<string, unknown>) {
 const cookie = (token: string, seconds: number) =>
   `${ACQUISITION_COOKIE}=${token}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=${Math.max(0, Math.floor(seconds))}`;
 const captureSchema = z.strictObject({
+  sourcePath: z
+    .enum(["/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"])
+    .optional(),
   clicks: z
     .array(clickEvidenceSchema)
     .min(1)
@@ -37,7 +40,7 @@ const captureSchema = z.strictObject({
   labels: fundedCampaignSchema.optional(),
 });
 
-/** First-party collection on the parent-facing Arkansas marketing origin only.
+/** First-party collection on the parent-facing marketing origin only.
  * This endpoint cannot accept an account, order, purchase event or learner data. */
 export async function registerAcquisitionRoutes(
   app: FastifyInstance,
@@ -114,6 +117,10 @@ export async function registerAcquisitionRoutes(
               token,
               parsed.data.labels,
               predecessorToken,
+              new URL(
+                parsed.data.sourcePath ?? "/esa/arkansas-efa/",
+                options.origin,
+              ).href,
             );
             token = retained.token;
             expiresAt = retained.expiresAt;

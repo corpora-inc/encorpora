@@ -1,6 +1,8 @@
 import type { PoolClient } from "pg";
 import { z } from "zod";
 import {
+  CAMPAIGN_NAMES,
+  CAMPAIGN_PROGRAMS,
   CAMPAIGN_MEDIA,
   CAMPAIGN_SOURCES,
   CAMPAIGN_CREATIVES,
@@ -10,12 +12,22 @@ import type { CommerceEvent } from "../commerce/contracts.js";
 
 /** Coarse first-party labels only; never ad-platform identifiers or learning data. */
 export const fundedCampaignSchema = z.strictObject({
-  campaign: z.literal("ar-efa-launch"),
+  campaign: z.enum(CAMPAIGN_NAMES),
   source: z.enum(CAMPAIGN_SOURCES),
   medium: z.enum(CAMPAIGN_MEDIA),
   creative: z.enum(CAMPAIGN_CREATIVES).optional(),
 });
 export type FundedCampaign = z.infer<typeof fundedCampaignSchema>;
+export function campaignMatchesOffer(
+  labels: FundedCampaign,
+  offer: { programId: string; jurisdiction: string },
+) {
+  const program = CAMPAIGN_PROGRAMS[labels.campaign];
+  return (
+    offer.programId === program.programId &&
+    offer.jurisdiction === program.state
+  );
+}
 type Action =
   "request_prepared" | "order_created" | "order_settled" | "refund_completed";
 
@@ -57,8 +69,8 @@ export async function recordFundedCampaignEvent(
   if (!action) return;
   const result = await client.query(
     `SELECT id,campaign_attribution,campaign_counted FROM amp_funding_requests
-     WHERE order_id=$1 AND offer_snapshot->>'programId'='ar-efa'
-       AND offer_snapshot->>'jurisdiction'='AR'
+     WHERE order_id=$1 AND ((offer_snapshot->>'programId'='ar-efa' AND offer_snapshot->>'jurisdiction'='AR')
+       OR (offer_snapshot->>'programId'='az-esa' AND offer_snapshot->>'jurisdiction'='AZ'))
        AND campaign_attribution IS NOT NULL FOR UPDATE`,
     [event.orderId],
   );

@@ -137,3 +137,30 @@ test("campaign report refuses a window beyond retained conversion events", () =>
   const allowed = run(RETENTION.funnelEventDays);
   assert.match(allowed.stderr, /AMP_DATABASE_URL is required/);
 });
+
+test("campaign state, program and name must match", () => {
+  const az = {
+    ...payload,
+    state: "AZ",
+    program: "arizona-esa",
+    campaign: "az-esa-launch",
+    creative: "az-esa-math",
+  };
+  assert.ok(campaignEventSchema.safeParse(az).success);
+  for (const mismatch of [
+    { state: "AR" },
+    { program: "arkansas-efa" },
+    { campaign: "ar-efa-launch" },
+  ])
+    assert.equal(
+      campaignEventSchema.safeParse({ ...az, ...mismatch }).success,
+      false,
+    );
+  assert.ok(
+    campaignEventSchema.safeParse({
+      ...az,
+      campaign: "none",
+      creative: undefined,
+    }).success,
+  );
+});

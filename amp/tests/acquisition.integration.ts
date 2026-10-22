@@ -32,137 +32,157 @@ const payload = {
   },
 };
 
-test(
-  "landing capture returns only a secure cookie and binds through the real funding route",
-  enabled,
-  async () =>
-    fixture(async (pool) => {
-      const app = Fastify();
-      try {
-        await registerAcquisitionRoutes(app, { pool, origin });
-        await pool.query(
-          "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent','fixture','verified','synthetic')",
-        );
-        await registerFundingPurchaseRoutes(app, {
-          pool,
-          authenticate: async () => "amp|parent",
-          offers: [testFundingOffer],
-        });
-        const preflight = await app.inject({
-          method: "OPTIONS",
-          url: "/api/v1/advertising/acquisition",
-          headers: { origin },
-        });
-        assert.equal(preflight.statusCode, 204);
-        assert.equal(
-          preflight.headers["access-control-allow-credentials"],
-          "true",
-        );
-        const capture = await app.inject({
-          method: "POST",
-          url: "/api/v1/advertising/acquisition",
-          headers: { origin },
-          payload,
-        });
-        assert.equal(capture.statusCode, 204);
-        assert.equal(capture.body, "");
-        const setCookie = String(capture.headers["set-cookie"]);
-        assert.match(setCookie, /; Secure; HttpOnly; SameSite=Lax; Max-Age=/);
-        assert.ok(!setCookie.includes("Domain="));
-        assert.ok(!setCookie.includes("Synthetic"));
-        const cookie = setCookie.split(";")[0]!;
-        const token = acquisitionToken({ cookie });
-        assert.ok(token);
-        const request = {
-          offerId: testFundingOffer.id,
-          offerRevision: testFundingOffer.revision,
-          learnerId: "child",
-          idempotencyKey: randomUUID(),
+for (const campaign of ["ar-efa-launch", "az-esa-launch"] as const)
+  test(
+    `landing capture ${campaign} returns a secure cookie and binds through the funding route`,
+    enabled,
+    async () =>
+      fixture(async (pool) => {
+        const sourcePath =
+          campaign === "ar-efa-launch"
+            ? "/esa/arkansas-efa/"
+            : "/esa/arizona-esa/";
+        const capturePayload = {
+          ...payload,
+          sourcePath,
+          labels: { ...payload.labels, campaign },
         };
-        const created = await app.inject({
-          method: "POST",
-          url: "/api/v1/funding/requests",
-          headers: { cookie },
-          payload: request,
-        });
-        assert.equal(created.statusCode, 200, created.body);
-        const rows = await pool.query(
-          "SELECT id FROM amp_funding_requests WHERE account_id='amp|parent'",
-        );
-        assert.equal(rows.rowCount, 1);
-        const target = {
-          kind: "funding-request" as const,
-          id: rows.rows[0].id,
-        };
-        const client = await pool.connect();
+        const app = Fastify();
         try {
+          await registerAcquisitionRoutes(app, { pool, origin });
+          await pool.query(
+            "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('amp|parent','fixture','verified','synthetic')",
+          );
+          await registerFundingPurchaseRoutes(app, {
+            pool,
+            authenticate: async () => "amp|parent",
+            offers: [testFundingOffer],
+          });
+          const preflight = await app.inject({
+            method: "OPTIONS",
+            url: "/api/v1/advertising/acquisition",
+            headers: { origin },
+          });
+          assert.equal(preflight.statusCode, 204);
+          assert.equal(
+            preflight.headers["access-control-allow-credentials"],
+            "true",
+          );
+          const capture = await app.inject({
+            method: "POST",
+            url: "/api/v1/advertising/acquisition",
+            headers: { origin },
+            payload: capturePayload,
+          });
+          assert.equal(capture.statusCode, 204);
+          assert.equal(capture.body, "");
+          const setCookie = String(capture.headers["set-cookie"]);
+          assert.match(setCookie, /; Secure; HttpOnly; SameSite=Lax; Max-Age=/);
+          assert.ok(!setCookie.includes("Domain="));
+          assert.ok(!setCookie.includes("Synthetic"));
+          const cookie = setCookie.split(";")[0]!;
+          const token = acquisitionToken({ cookie });
+          assert.ok(token);
+          const request = {
+            offerId: testFundingOffer.id,
+            offerRevision: testFundingOffer.revision,
+            learnerId: "child",
+            idempotencyKey: randomUUID(),
+          };
+          const created = await app.inject({
+            method: "POST",
+            url: "/api/v1/funding/requests",
+            headers: { cookie },
+            payload: request,
+          });
+          assert.equal(created.statusCode, 200, created.body);
+          const rows = await pool.query(
+            "SELECT id FROM amp_funding_requests WHERE account_id='amp|parent'",
+          );
+          assert.equal(rows.rowCount, 1);
+          const target = {
+            kind: "funding-request" as const,
+            id: rows.rows[0].id,
+          };
+          const client = await pool.connect();
+          try {
+            assert.deepEqual(
+              (await orderClickEvidence(client, "amp|parent", target, "google"))
+                ?.identifiers,
+              { gclid: "Synthetic_Google" },
+            );
+          } finally {
+            client.release();
+          }
+          assert.ok(
+            !created.body.includes("Synthetic_Google") &&
+              !created.body.includes(token!),
+          );
+          const retry = await app.inject({
+            method: "POST",
+            url: "/api/v1/funding/requests",
+            headers: { cookie },
+            payload: request,
+          });
+          assert.equal(retry.statusCode, 200);
+          assert.equal(
+            (await pool.query("SELECT count(*) FROM amp_ad_order_attribution"))
+              .rows[0].count,
+            "2",
+          );
           assert.deepEqual(
-            (await orderClickEvidence(client, "amp|parent", target, "google"))
-              ?.identifiers,
-            { gclid: "Synthetic_Google" },
+            (
+              await pool.query(
+                "SELECT DISTINCT source_url,campaign_labels->>'campaign' AS campaign FROM amp_ad_click_evidence",
+              )
+            ).rows,
+            [{ source_url: `https://corpora.inc${sourcePath}`, campaign }],
+          );
+          const exported = [];
+          for await (const line of new FamilyRepository(pool).export(
+            "amp|parent",
+          ))
+            exported.push(JSON.parse(line));
+          const acquisition = exported.filter(
+            (x) => x.type === "ad-acquisition",
+          );
+          assert.equal(acquisition.length, 2);
+          assert.equal(acquisition[0].data.campaignLabels.creative, "efa-math");
+          assert.ok(!JSON.stringify(acquisition).includes(token!));
+          await changeAdvertisingPermission(
+            pool,
+            "amp|parent",
+            { action: "withdraw" },
+            false,
+            "google",
+          );
+          assert.equal(
+            (
+              await pool.query(
+                "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='google'",
+              )
+            ).rows[0].count,
+            "0",
+          );
+          assert.equal(
+            (
+              await pool.query(
+                "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='meta'",
+              )
+            ).rows[0].count,
+            "1",
+          );
+          await new FamilyRepository(pool).withdraw("amp|parent");
+          assert.equal(
+            (await pool.query("SELECT count(*) FROM amp_ad_click_evidence"))
+              .rows[0].count,
+            "0",
           );
         } finally {
-          client.release();
+          await app.close();
         }
-        assert.ok(
-          !created.body.includes("Synthetic_Google") &&
-            !created.body.includes(token!),
-        );
-        const retry = await app.inject({
-          method: "POST",
-          url: "/api/v1/funding/requests",
-          headers: { cookie },
-          payload: request,
-        });
-        assert.equal(retry.statusCode, 200);
-        assert.equal(
-          (await pool.query("SELECT count(*) FROM amp_ad_order_attribution"))
-            .rows[0].count,
-          "2",
-        );
-        const exported = [];
-        for await (const line of new FamilyRepository(pool).export(
-          "amp|parent",
-        ))
-          exported.push(JSON.parse(line));
-        const acquisition = exported.filter((x) => x.type === "ad-acquisition");
-        assert.equal(acquisition.length, 2);
-        assert.equal(acquisition[0].data.campaignLabels.creative, "efa-math");
-        assert.ok(!JSON.stringify(acquisition).includes(token!));
-        await changeAdvertisingPermission(
-          pool,
-          "amp|parent",
-          { action: "withdraw" },
-          false,
-          "google",
-        );
-        assert.equal(
-          (
-            await pool.query(
-              "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='google'",
-            )
-          ).rows[0].count,
-          "0",
-        );
-        assert.equal(
-          (
-            await pool.query(
-              "SELECT count(*) FROM amp_ad_click_evidence WHERE provider='meta'",
-            )
-          ).rows[0].count,
-          "1",
-        );
-        await new FamilyRepository(pool).withdraw("amp|parent");
-        assert.equal(
-          (await pool.query("SELECT count(*) FROM amp_ad_click_evidence"))
-            .rows[0].count,
-          "0",
-        );
-      } finally {
-        await app.close();
-      }
-    }),
-);
+      }),
+  );
 
 test(
   "untrusted origins, extra fields, privacy signals and duplicate cookies cannot capture",
@@ -189,6 +209,9 @@ test(
             403,
           );
         for (const invalid of [
+          { ...payload, sourcePath: "/try/practice" },
+          { ...payload, sourcePath: "/amp/?email=private@example.invalid" },
+          { ...payload, sourcePath: "https://attacker.example/" },
           { ...payload, account: "amp|parent" },
           { ...payload, learner: "child" },
           { ...payload, clicks: [payload.clicks[0], payload.clicks[0]] },

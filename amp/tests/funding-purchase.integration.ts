@@ -35,7 +35,10 @@ import {
   annualTermEnd,
 } from "../src/funding-purchase/provision.js";
 import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
-import { arkansasCashSummary } from "../src/analytics/campaign-orders.js";
+import {
+  arkansasCashSummary,
+  fundedCashSummary,
+} from "../src/analytics/campaign-orders.js";
 import { applyCommerceEvent } from "../src/commerce/postgres.js";
 import type { CommerceEvent } from "../src/commerce/contracts.js";
 import { testFundingOffer as offer } from "./funding-purchase.fixture.js";
@@ -288,128 +291,169 @@ test(
     }),
 );
 
-test(
-  "funded campaign counts verified settlement/refund once, including settlement after credit activation",
-  enabled,
-  () =>
-    fixture(async (pool) => {
-      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
-      const request = await repo.create("owner", {
-        ...create(),
-        campaignAttribution,
-      });
-      await repo.update("owner", request.id, "parent-reported-submitted");
-      assert.deepEqual(await campaignCounts(pool), [
-        { action: "request_prepared", count: 1 },
-      ]);
-      const input = bundle(request.id);
-      assert.deepEqual(await arkansasCashSummary(pool, 1), []);
-      await Promise.all([
-        provisionFundingRequest(pool, input, [arkansasOffer]),
-        provisionFundingRequest(pool, input, [arkansasOffer]),
-      ]);
-      assert.deepEqual(await campaignCounts(pool), [
-        { action: "order_created", count: 1 },
-        { action: "request_prepared", count: 1 },
-      ]);
-      const event = {
-        ...input.events[0]!,
-        type: "order.settled" as const,
-        id: randomUUID(),
-        occurredAt: new Date().toISOString(),
-        evidence: "verified-fixture-payment",
-        amountMinor: 12300,
-        currency: "USD",
-      };
-      // Build the strict envelope without carrying order.created's order payload.
-      const {
-        orderId,
-        channel,
-        channelReference,
-        occurredAt,
-        id,
-        type,
-        evidence,
-        amountMinor,
-        currency,
-      } = event;
-      const settlement = {
-        orderId,
-        channel,
-        channelReference,
-        occurredAt,
-        id,
-        type,
-        evidence,
-        amountMinor,
-        currency,
-      };
-      await assert.rejects(
-        applyCommerceEvent(pool, { ...settlement, amountMinor: 1 }),
-      );
-      await Promise.all(
-        Array.from({ length: 6 }, () => applyCommerceEvent(pool, settlement)),
-      );
-      await applyCommerceEvent(pool, {
-        ...settlement,
-        type: "refund.requested",
-        id: randomUUID(),
-        occurredAt: new Date().toISOString(),
-      });
-      assert.deepEqual(await campaignCounts(pool), [
-        { action: "order_created", count: 1 },
-        { action: "order_settled", count: 1 },
-        { action: "request_prepared", count: 1 },
-      ]);
-      assert.deepEqual(
-        (await arkansasCashSummary(pool, 1)).map(
-          ({ grossMinor, refundedMinor, netMinor }) => ({
-            grossMinor,
-            refundedMinor,
-            netMinor,
-          }),
-        ),
-        [{ grossMinor: "12300", refundedMinor: "0", netMinor: "12300" }],
-      );
-      const refund = {
-        ...settlement,
-        type: "refund.completed",
-        id: randomUUID(),
-        occurredAt: new Date().toISOString(),
-      };
-      await applyCommerceEvent(pool, refund);
-      await applyCommerceEvent(pool, refund);
-      await provisionFundingRequest(pool, input, []);
-      assert.deepEqual(await arkansasCashSummary(pool, 1), [
-        {
-          day: occurredAt.slice(0, 10),
+for (const [campaign, programId, jurisdiction] of [
+  ["ar-efa-launch", "ar-efa", "AR"],
+  ["az-esa-launch", "az-esa", "AZ"],
+] as const)
+  test(
+    `funded campaign ${campaign} counts settlement/refund once after credit activation`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        const campaignAttribution = {
+          campaign,
+          source: "facebook",
+          medium: "paid-social",
+          creative: "shared-hook-ampd-portrait-v1",
+        } as const;
+        const campaignOffer = { ...offer, programId, jurisdiction };
+        const repo = new FundingPurchaseRepository(pool, [campaignOffer]);
+        const request = await repo.create("owner", {
+          ...create(),
+          campaignAttribution,
+        });
+        await repo.update("owner", request.id, "parent-reported-submitted");
+        assert.deepEqual(await campaignCounts(pool), [
+          { action: "request_prepared", count: 1 },
+        ]);
+        await assert.rejects(
+          pool.query(
+            "UPDATE amp_funding_requests SET campaign_attribution=jsonb_set(campaign_attribution,'{campaign}',$2::jsonb) WHERE id=$1",
+            [
+              request.id,
+              JSON.stringify(
+                campaign === "ar-efa-launch"
+                  ? "az-esa-launch"
+                  : "ar-efa-launch",
+              ),
+            ],
+          ),
+          /funding_campaign_program/,
+        );
+        const input = bundle(request.id);
+        assert.deepEqual(await fundedCashSummary(pool, 1, campaign), []);
+        await Promise.all([
+          provisionFundingRequest(pool, input, [campaignOffer]),
+          provisionFundingRequest(pool, input, [campaignOffer]),
+        ]);
+        assert.deepEqual(await campaignCounts(pool), [
+          { action: "order_created", count: 1 },
+          { action: "request_prepared", count: 1 },
+        ]);
+        const event = {
+          ...input.events[0]!,
+          type: "order.settled" as const,
+          id: randomUUID(),
+          occurredAt: new Date().toISOString(),
+          evidence: "verified-fixture-payment",
+          amountMinor: 12300,
           currency: "USD",
-          ...campaignAttribution,
-          grossMinor: "12300",
-          refundedMinor: "12300",
-          netMinor: "0",
-        },
-      ]);
-      assert.deepEqual(await campaignCounts(pool), [
-        { action: "order_created", count: 1 },
-        { action: "order_settled", count: 1 },
-        { action: "refund_completed", count: 1 },
-        { action: "request_prepared", count: 1 },
-      ]);
-      assert.deepEqual(
-        (
-          await pool.query(
-            "SELECT action,count::int FROM amp_campaign_creative_daily WHERE creative='efa-product-v1' ORDER BY action",
-          )
-        ).rows,
-        await campaignCounts(pool),
-      );
-      assert.equal(
-        await purgeExpiredFundingRequests(pool, new Date("2100-01-01")),
-        0,
-      );
-    }),
-);
+        };
+        // Build the strict envelope without carrying order.created's order payload.
+        const {
+          orderId,
+          channel,
+          channelReference,
+          occurredAt,
+          id,
+          type,
+          evidence,
+          amountMinor,
+          currency,
+        } = event;
+        const settlement = {
+          orderId,
+          channel,
+          channelReference,
+          occurredAt,
+          id,
+          type,
+          evidence,
+          amountMinor,
+          currency,
+        };
+        await assert.rejects(
+          applyCommerceEvent(pool, { ...settlement, amountMinor: 1 }),
+        );
+        await Promise.all(
+          Array.from({ length: 6 }, () => applyCommerceEvent(pool, settlement)),
+        );
+        await applyCommerceEvent(pool, {
+          ...settlement,
+          type: "refund.requested",
+          id: randomUUID(),
+          occurredAt: new Date().toISOString(),
+        });
+        assert.deepEqual(await campaignCounts(pool), [
+          { action: "order_created", count: 1 },
+          { action: "order_settled", count: 1 },
+          { action: "request_prepared", count: 1 },
+        ]);
+        assert.deepEqual(
+          (await fundedCashSummary(pool, 1, campaign)).map(
+            ({ grossMinor, refundedMinor, netMinor }) => ({
+              grossMinor,
+              refundedMinor,
+              netMinor,
+            }),
+          ),
+          [{ grossMinor: "12300", refundedMinor: "0", netMinor: "12300" }],
+        );
+        assert.deepEqual(
+          await fundedCashSummary(
+            pool,
+            1,
+            campaign === "ar-efa-launch" ? "az-esa-launch" : "ar-efa-launch",
+          ),
+          [],
+        );
+        assert.deepEqual(
+          (
+            await pool.query(
+              "SELECT DISTINCT campaign FROM amp_funded_campaign_daily",
+            )
+          ).rows,
+          [{ campaign }],
+        );
+        const refund = {
+          ...settlement,
+          type: "refund.completed",
+          id: randomUUID(),
+          occurredAt: new Date().toISOString(),
+        };
+        await applyCommerceEvent(pool, refund);
+        await applyCommerceEvent(pool, refund);
+        await provisionFundingRequest(pool, input, []);
+        assert.deepEqual(await fundedCashSummary(pool, 1, campaign), [
+          {
+            day: occurredAt.slice(0, 10),
+            currency: "USD",
+            ...campaignAttribution,
+            grossMinor: "12300",
+            refundedMinor: "12300",
+            netMinor: "0",
+          },
+        ]);
+        assert.deepEqual(await campaignCounts(pool), [
+          { action: "order_created", count: 1 },
+          { action: "order_settled", count: 1 },
+          { action: "refund_completed", count: 1 },
+          { action: "request_prepared", count: 1 },
+        ]);
+        assert.deepEqual(
+          (
+            await pool.query(
+              "SELECT action,count::int FROM amp_campaign_creative_daily WHERE creative='shared-hook-ampd-portrait-v1' ORDER BY action",
+            )
+          ).rows,
+          await campaignCounts(pool),
+        );
+        assert.equal(
+          await purgeExpiredFundingRequests(pool, new Date("2100-01-01")),
+          0,
+        );
+      }),
+  );
 
 test(
   "funded campaign rejects untrusted labels/programs and honors parent privacy headers",
@@ -1200,7 +1244,10 @@ test(
         "UPDATE amp_funding_requests SET campaign_attribution=$2 WHERE id=$1",
         [
           invalid.request.id,
-          JSON.stringify({ campaign: "private-campaign@example.test" }),
+          JSON.stringify({
+            campaign: "ar-efa-launch",
+            source: "private-source@example.test",
+          }),
         ],
       );
       // Two individually exact ledger amounts exceed JS's exact aggregate range.
