@@ -25,6 +25,16 @@ export const CAMPAIGN_CREATIVES = [
   "efa-facebook-feed-v1",
   "efa-facebook-vertical-v1",
   "efa-instagram-vertical-v1",
+  "hook-ampd-efa-v2",
+  "hook-ampd-assessment-v2",
+  "hook-next-efa-v2",
+  "hook-next-assessment-v2",
+  "hook-path-efa-v2",
+  "hook-path-assessment-v2",
+  "hook-ampd-up-efa-v2",
+  "hook-ampd-up-assessment-v2",
+  "hook-plug-efa-v2",
+  "hook-plug-assessment-v2",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({
