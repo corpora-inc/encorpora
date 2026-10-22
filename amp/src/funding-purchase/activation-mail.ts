@@ -11,6 +11,22 @@ import { digest } from "../parent-consent/crypto.js";
 import { learningConsentActive } from "../server/account-access.js";
 import { FundingPurchaseRepository } from "./repository.js";
 
+/** Preserve the reviewed account sender, including a display name. */
+export function fundedNotificationSender(value: unknown): string {
+  const input = z
+    .string()
+    .trim()
+    .min(1)
+    .max(320)
+    .refine((v) => !/[\r\n]/.test(v))
+    .parse(value);
+  const named = input.match(/^([^<>]+)<([^<>]+)>$/);
+  if (!named) return z.email().max(254).parse(input);
+  const name = named[1]!.trim();
+  if (!name) throw new Error("Sender display name is empty");
+  return `${name} <${z.email().max(254).parse(named[2]!.trim())}>`;
+}
+
 /** One leased notification per call. Provider acceptance is not inbox delivery.
  * Stop ambiguous sends before Resend's 24-hour idempotency window expires. */
 export async function deliverFundedActivationMail(
