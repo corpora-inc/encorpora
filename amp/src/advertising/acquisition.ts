@@ -150,10 +150,16 @@ export async function registerAcquisitionRoutes(
 export async function linkPurchaseAcquisition(
   pool: Pool,
   account: string,
-  token: string | undefined,
+  source: string | { invoiceId: string } | undefined,
   target: AttributionTarget,
 ) {
-  if (!token || !/^[a-f0-9]{64}$/.test(token)) return false;
+  if (!source) return false;
+  if (
+    typeof source === "string"
+      ? !/^[a-f0-9]{64}$/.test(source)
+      : !z.strictObject({ invoiceId: z.uuid() }).safeParse(source).success
+  )
+    return false;
   let client;
   try {
     client = await pool.connect();
@@ -175,13 +181,24 @@ export async function linkPurchaseAcquisition(
           (row) => row.provider === provider && row.withdrawn_at,
         ),
     );
-    const result = await bindAdClicksToOrder(
-      client,
-      account,
-      token,
-      target,
-      providers,
-    );
+    const retained =
+      typeof source !== "string" && target.kind === "funding-request"
+        ? (
+            await client.query(
+              "SELECT acquisition_journey_id FROM amp_funding_invoice_intents WHERE id=$1 AND claimed_account_id=$2 AND claimed_request_id=$3",
+              [source.invoiceId, account, target.id],
+            )
+          ).rows[0]?.acquisition_journey_id
+        : null;
+    const lookup =
+      typeof source === "string"
+        ? source
+        : retained
+          ? { retainedJourneyId: retained }
+          : null;
+    const result = lookup
+      ? await bindAdClicksToOrder(client, account, lookup, target, providers)
+      : { bound: 0 };
     for (const provider of ["google", "meta"] as const)
       if (!providers.includes(provider))
         await eraseAccountAdClicks(client, account, provider);
