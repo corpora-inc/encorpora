@@ -503,3 +503,29 @@ export async function purgeMetaPurchaseQueue(pool: Pool) {
     ).rowCount ?? 0
   );
 }
+
+/** Aggregate operational outcomes across every configured payment source. */
+export async function metaMeasurementReport(
+  pool: Pool,
+  rawConfig: MetaDeliveryConfig,
+) {
+  const config = metaDeliveryConfigSchema.parse(rawConfig);
+  const namespaces = [
+    config.sources.stripeNamespace,
+    config.sources.efaChannelReference
+      ? `esa:${config.sources.efaChannelReference}`
+      : null,
+  ].filter(Boolean);
+  const preparations = await pool.query(
+    "SELECT state,count(*)::int AS count FROM amp_meta_purchase_queue WHERE dataset_id=$1 AND namespace=ANY($2::text[]) GROUP BY state ORDER BY state",
+    [config.destination.datasetId, namespaces],
+  );
+  const attempts = await pool.query(
+    `SELECT a.state,count(*)::int AS count,
+ count(*) FILTER (WHERE (a.receipt->>'messageCount')::int>0)::int AS receipts_with_messages
+ FROM amp_meta_delivery_attempts a JOIN amp_meta_purchase_queue q USING(event_id)
+ WHERE q.dataset_id=$1 AND q.namespace=ANY($2::text[]) GROUP BY a.state ORDER BY a.state`,
+    [config.destination.datasetId, namespaces],
+  );
+  return { preparations: preparations.rows, attempts: attempts.rows };
+}

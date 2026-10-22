@@ -472,3 +472,30 @@ test("hung HTTP bodies time out unknown and cancel the stream", async (t) => {
   await rejected;
   assert.equal(cancelled, true);
 });
+
+test("saved Meta matching cookies are sent unchanged without raw fbclid or invented browser fields", () => {
+  const clickIdentifiers = {
+    fbc: "fb.1.1792490000000.Exact_Case",
+    fbp: "fb.1.1792490000000.12345",
+  };
+  const body = metaPurchaseRequest(
+    { ...purchase(), clickIdentifiers },
+    live,
+    now,
+  );
+  assert.equal(body.data[0]!.user_data.fbc, clickIdentifiers.fbc);
+  assert.equal(body.data[0]!.user_data.fbp, clickIdentifiers.fbp);
+  assert.equal(body.data[0]!.user_data.client_user_agent, undefined);
+  assert.throws(
+    () =>
+      metaPurchaseRequest(
+        {
+          ...purchase(),
+          clickIdentifiers: { ...clickIdentifiers, fbclid: "raw" },
+        } as MetaPurchase,
+        live,
+        now,
+      ),
+    fail("invalid_purchase"),
+  );
+});

@@ -468,3 +468,28 @@ test("zero is restricted to explicit restatement with original event identity an
     ),
   );
 });
+
+test("saved Google click identifiers retain exact bytes and reject unrelated fields", () => {
+  const ids = { gclid: "Exact_Case", gbraid: "Braid-A", wbraid: "Web-Braid" };
+  const body = googlePurchaseRequest(
+    config,
+    { ...purchase, adIdentifiers: ids, eventSource: "OTHER" },
+    "validate",
+    now,
+  );
+  assert.deepEqual(body.events[0]!.adIdentifiers, ids);
+  assert.equal(body.events[0]!.eventSource, "OTHER");
+  assert.throws(
+    () =>
+      googlePurchaseRequest(
+        config,
+        {
+          ...purchase,
+          adIdentifiers: { ...ids, learnerId: "child" },
+        } as GooglePurchase,
+        "validate",
+        now,
+      ),
+    fail("invalid_purchase"),
+  );
+});

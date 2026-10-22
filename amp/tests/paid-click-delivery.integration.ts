@@ -17,6 +17,7 @@ import {
   queueMetaPayment,
   deliverMetaPayment,
   metaMeasurementBatch,
+  metaMeasurementReport,
 } from "../src/advertising/meta-delivery.js";
 import { changeAdvertisingPermission } from "../src/advertising/permission.js";
 import { META_PURCHASE_MEASUREMENT_NOTICE as notice } from "../src/advertising/permission-contracts.js";
@@ -153,6 +154,31 @@ test(
         event.event_time,
         Math.floor(Date.parse(p.base.occurredAt) / 1000),
       );
+      const report = await metaMeasurementReport(pool, {
+        ...config,
+        enabled: false,
+        sources: { efaChannelReference: sources.efaChannelReference },
+      });
+      assert.deepEqual(report.attempts, [
+        { state: "accepted", count: 1, receipts_with_messages: 0 },
+      ]);
+      const next = await esa(pool);
+      const nextQueued = await queueMetaPayment(pool, config, next.reference);
+      assert.ok("eventId" in nextQueued);
+      const uncertain = {
+        accessToken: async () => "synthetic-token",
+        fetcher: (async () => {
+          throw new Error("connection lost");
+        }) as typeof fetch,
+      };
+      assert.equal(
+        await deliverMetaPayment(pool, config, nextQueued.eventId!, uncertain),
+        "unknown",
+      );
+      assert.deepEqual((await metaMeasurementReport(pool, config)).attempts, [
+        { state: "accepted", count: 1, receipts_with_messages: 0 },
+        { state: "unknown", count: 1, receipts_with_messages: 0 },
+      ]);
       const replay = await queueMetaPayment(pool, config, p.reference);
       assert.equal(replay.eventId, queued.eventId);
     }),
