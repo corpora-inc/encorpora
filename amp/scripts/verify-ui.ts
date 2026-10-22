@@ -714,16 +714,19 @@ try {
   await page.keyboard.press("Home");
   await page.keyboard.press("Escape");
   await familyList.waitFor({ state: "hidden" });
-  assert.ok(
-    await page.evaluate(() => {
+  // Radix restores focus in a timer after removing its portal. A hidden menu
+  // alone does not mean that restoration has completed.
+  await page.waitForFunction(
+    () => {
       const active = document.activeElement as HTMLElement | null;
       return (
         active?.getAttribute("aria-label") === "Family menu" &&
         active.matches(":focus-visible") &&
         getComputedStyle(active).outlineStyle !== "none"
       );
-    }),
-    "Escape returns a visible focus ring to the Family trigger",
+    },
+    undefined,
+    { timeout: 5_000 },
   );
   await page.getByRole("button", { name: "Family menu" }).click();
   await page
