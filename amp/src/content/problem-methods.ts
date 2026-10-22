@@ -1,3 +1,4 @@
+import { assessmentGapMethods } from "./assessment-gap-lessons";
 import { radicalEquationMethods } from "./radical-equation-lessons";
 import { rationalEquationMethods } from "./rational-equation-lessons";
 import { geometryProofMethods } from "./geometry-proof-lessons";
@@ -61,6 +62,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
+  ...assessmentGapMethods,
   ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,

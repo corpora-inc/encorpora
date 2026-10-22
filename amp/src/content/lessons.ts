@@ -1,3 +1,4 @@
+import { assessmentGapLessons } from "./assessment-gap-lessons";
 import { radicalEquationLessons } from "./radical-equation-lessons";
 import { rationalEquationLessons } from "./rational-equation-lessons";
 import { geometryProofLessons } from "./geometry-proof-lessons";
@@ -562,6 +563,7 @@ export const baseLessons: Lesson[] = [
 ];
 
 export const lessons: readonly Lesson[] = [
+  ...assessmentGapLessons,
   ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,

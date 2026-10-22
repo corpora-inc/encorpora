@@ -1,3 +1,4 @@
+import { assessmentGapIllustrations } from "./assessment-gap-illustrations";
 import {
   act,
   f,
@@ -23,6 +24,7 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  ...assessmentGapIllustrations,
   "radical-equation-crossing": graph({
     id: "g",
     x: [-3, 5],
