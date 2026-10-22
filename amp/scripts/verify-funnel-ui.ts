@@ -234,7 +234,7 @@ try {
   }
   await serve(page, faults);
   await page.goto(
-    `${origin}/?utm_source=launch&utm_medium=email&utm_campaign=fall`,
+    `${origin}/?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch`,
     {
       referer: "https://mail.google.com/",
     },
@@ -297,7 +297,11 @@ try {
   const other = await leaver.newPage();
   other.on("pageerror", (error) => faults.push(error.message));
   await serve(other, faults);
-  await other.goto(origin, { referer: "https://www.google.com/" });
+  // Unknown campaign labels are removed by routing; the coarse referrer survives.
+  await other.goto(
+    `${origin}/?utm_source=launch&utm_medium=email&utm_campaign=fall`,
+    { referer: "https://www.google.com/" },
+  );
   await other.getByRole("button", { name: "Try free" }).click();
   await milestones(other, [
     ["placement_answer", { index: 0 }],
@@ -306,6 +310,32 @@ try {
   ]);
   await settled(21 + 5);
 
+  assert.deepEqual(
+    (
+      await pool.query(
+        "SELECT utm_source,utm_medium,utm_campaign FROM amp_funnel_visitors WHERE visitor_id=$1",
+        [visitor],
+      )
+    ).rows,
+    [
+      {
+        utm_source: "facebook",
+        utm_medium: "paid-social",
+        utm_campaign: "ar-efa-launch",
+      },
+    ],
+    "the allowed campaign survives the real browser journey and first-party collection",
+  );
+  assert.deepEqual(
+    (
+      await pool.query(
+        "SELECT utm_source,utm_campaign,referrer FROM amp_funnel_visitors WHERE visitor_id<>$1",
+        [visitor],
+      )
+    ).rows,
+    [{ utm_source: null, utm_campaign: null, referrer: "search" }],
+    "unrecognized campaign values cannot become report dimensions",
+  );
   const report = await funnelReport(pool, {
     from: new Date(Date.now() - 86_400_000),
     to: new Date(Date.now() + 86_400_000),
@@ -323,7 +353,7 @@ try {
   assert.deepEqual(
     report.breakdowns.source.map((r) => [r.key, r.purchased]),
     [
-      ["launch", 1],
+      ["facebook", 1],
       ["search", 0],
     ],
   );
