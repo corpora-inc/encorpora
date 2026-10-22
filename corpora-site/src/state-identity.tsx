@@ -1,4 +1,5 @@
 import React from "./react.js";
+import { arizonaOutline } from "./arizona-outline.js";
 import { arkansasOutline } from "./arkansas-outline.js";
 
 export const stateNames: Record<string, string> = Object.fromEntries(
@@ -15,23 +16,24 @@ export function StateIdentity({
   state: string;
   compact?: boolean;
 }) {
+  const outline = state === "AR" ? arkansasOutline : state === "AZ" ? arizonaOutline : undefined;
   return (
     <span
       className={`state-identity${compact ? " state-identity-compact" : ""}`}
       aria-hidden="true"
     >
       <span className="state-identity-grid" />
-      {state === "AR" && !compact && (
+      {outline && !compact && (
         <svg
           className="state-outline"
-          viewBox={arkansasOutline.viewBox}
+          viewBox={outline.viewBox}
           focusable="false"
         >
-          <path d={arkansasOutline.path} />
+          <path d={outline.path} />
         </svg>
       )}
       <span
-        className={`state-identity-code${state === "AR" && !compact ? " state-code-small" : ""}`}
+        className={`state-identity-code${outline && !compact ? " state-code-small" : ""}`}
       >
         {state}
       </span>

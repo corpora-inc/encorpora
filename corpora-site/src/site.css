@@ -1207,3 +1207,12 @@ footer > .fine {
   .funding-directpay .state-outline { width: 88px; height: 64px; }
   .funding-directpay .funding-actions { margin-top: 20px; }
 }
+
+/* The same invoice form serves state pages and AMP checkout. */
+.invoice-dialog { padding: 0; width: min(560px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 90px #0005; }
+.invoice-dialog::backdrop { background: #10252299; backdrop-filter: blur(4px); }
+.invoice-dialog-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+.invoice-dialog-toolbar button { min-width: 44px; min-height: 44px; border: 0; border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+.invoice-dialog iframe { display: block; border: 0; width: 100%; height: min(640px, calc(100dvh - 160px)); background: var(--surface); }
+.invoice-dialog-fallback { margin: 0; padding: 8px 16px 14px; font-size: 13px; text-align: center; }
+body:has(.invoice-dialog[open]) { overflow: hidden; }
