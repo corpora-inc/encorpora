@@ -3,11 +3,11 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 import { runInNewContext } from "node:vm";
 const source = readFileSync(new URL("../src/campaign-client.js", import.meta.url), "utf8");
-function run(privacy = {}, search = "?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&email=secret@example.test") {
+function run(privacy = {}, search = "?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&email=secret@example.test", program = "arkansas-efa") {
   const sent: { url: string; options: { body: string; credentials: string; referrerPolicy: string } }[] = [];
   let click: (e: unknown) => void = () => {};
   const anchor = { href: "https://app.example.test/try/", dataset: { campaignAction: "try" } };
-  const root = { querySelectorAll: () => [anchor], contains: () => true, addEventListener: (_: string, cb: typeof click) => { click = cb; } };
+  const root = { dataset: {campaignProgram:program}, querySelectorAll: () => [anchor], contains: () => true, addEventListener: (_: string, cb: typeof click) => { click = cb; } };
   runInNewContext(source, {
     document: { querySelector: (s: string) => s.startsWith("script") ? { dataset: { campaignEndpoint: "https://app.example.test/api/v1/campaign-events" } } : root },
     navigator: privacy, location: { search }, URL, URLSearchParams,
@@ -55,4 +55,16 @@ test("the public client recognizes every server-owned creative label", () => {
     const result=run({},`?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&utm_content=${label}`);
     assert.equal(JSON.parse(result.sent[0].options.body).creative,label);
   }
+});
+
+test("Arizona activity uses its own labels and rejects Arkansas substitution", () => {
+ const result=run({},"?utm_campaign=az-esa-launch&utm_source=google&utm_medium=cpc&utm_content=az-esa-math","arizona-esa");
+ const payload=JSON.parse(result.sent[0].options.body);
+ assert.equal(payload.state,"AZ"); assert.equal(payload.program,"arizona-esa");
+ assert.equal(payload.campaign,"az-esa-launch");
+ assert.equal(new URL(result.anchor.href).searchParams.get("utm_campaign"),"az-esa-launch");
+ const wrong=run({},"?utm_campaign=ar-efa-launch&utm_content=efa-math","arizona-esa");
+ assert.equal(JSON.parse(wrong.sent[0].options.body).campaign,"none");
+ assert.equal(JSON.parse(wrong.sent[0].options.body).creative,undefined);
+ assert.equal(run({},"?utm_campaign=az-esa-launch","unknown").sent.length,0);
 });
