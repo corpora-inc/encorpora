@@ -119,6 +119,18 @@ export async function revokeAdvertisingPermission(
       recipient === "meta" &&
       (
         await client.query(
+          "SELECT to_regclass('amp_meta_purchase_queue') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        "UPDATE amp_meta_purchase_queue SET state='cancelled' WHERE account_id=$1 AND state='ready'",
+        [account],
+      );
+    if (
+      recipient === "meta" &&
+      (
+        await client.query(
           "SELECT to_regclass('amp_meta_purchase_contexts') AS relation",
         )
       ).rows[0]?.relation

@@ -1,4 +1,5 @@
 import { purgeMetaPurchaseContexts } from "../src/advertising/meta-context.js";
+import { purgeMetaPurchaseQueue } from "../src/advertising/meta-delivery.js";
 import { purgeGooglePurchaseQueue } from "../src/advertising/purchase-queue.js";
 import { purgeAdvertisingPermissions } from "../src/advertising/permission.js";
 import { purgeOfflinePacks } from "../src/offline/retention.js";
@@ -25,6 +26,7 @@ try {
       ...(await purgeExpiredPrivacyRecords(pool)),
       expiredAdvertisingPermissions: await purgeAdvertisingPermissions(pool),
       expiredMetaPurchaseContexts: await purgeMetaPurchaseContexts(pool),
+      expiredMetaPurchaseDeliveries: await purgeMetaPurchaseQueue(pool),
       expiredAdvertisingPayments: await purgeGooglePurchaseQueue(pool),
       expiredOfflinePacks: await purgeOfflinePacks(pool),
       expiredConsentRecords: await purgeConsentRecords(pool),
