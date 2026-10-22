@@ -1,3 +1,4 @@
+import { fundedNotificationSender } from "../src/funding-purchase/activation-mail.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -164,4 +165,22 @@ test("named invoices use an explicit parent-supplied name and never imply paymen
         studentBillingName,
       }),
     );
+});
+
+test("funded notifications preserve the account sender display name and reject malformed headers", () => {
+  assert.equal(
+    fundedNotificationSender("sender@example.test"),
+    "sender@example.test",
+  );
+  assert.equal(
+    fundedNotificationSender("AMP Math <sender@example.test>"),
+    "AMP Math <sender@example.test>",
+  );
+  for (const value of [
+    "AMP\r\nBcc: other@example.test <sender@example.test>",
+    "AMP <not-an-email>",
+    "<sender@example.test>",
+    "AMP <sender@example.test> <other@example.test>",
+  ])
+    assert.throws(() => fundedNotificationSender(value));
 });

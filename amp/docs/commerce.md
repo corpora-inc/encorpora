@@ -147,3 +147,42 @@ and schema-boundary tests run. Tests create and remove a fresh random PostgreSQL
 schema, exercise concurrent replay, ownership rejection, source collisions, fixed
 term projection, refund/revocation, event immutability and transaction rollback.
 They never use `AMP_DATABASE_URL` or a default production connection.
+
+## Funded activation confirmations
+
+A successful funded provisioning transaction creates one notification in
+`amp_funded_activation_outbox`. Retrying the same provisioning bundle does not
+create another notification. Failed provisioning rolls back the notification
+along with the order and learning grant.
+
+Schedule `npm run funding:deliver` independently of the consent email worker.
+The job processes up to eight notifications and logs counts, including the number
+of stopped notifications requiring operator review. Configuration requires:
+
+- `NODE_ENV=production` and `AMP_DATABASE_URL`.
+- `AMP_CONSENT_POLICY_FILE` matching the installed, enabled, current policy,
+  with payment notifications reviewed and Resend disclosed.
+- `AMP_MAIL_RESEND_API_KEY` and `AMP_MAIL_FROM`, shared with account mail.
+- `AMP_FUNDING_DELIVERY=resend` and
+  `AMP_FUNDING_MAIL_TRACKING_DISABLED=true`, after disabling tracking for the
+  configured sender in the provider.
+
+The worker sends only to the verified email of the parent account that owns the
+invoice. It never uses a payer address from a payment report. The email contains
+an invoice reference and the reviewed account URL, with no learner name or
+access token. Access and consent are checked before dispatch. A later withdrawal
+cannot recall an email already in flight; the account URL grants no authority.
+Legacy identities without a verified AMP account email are held for review.
+
+Leases prevent concurrent dispatch, and provider idempotency keys protect
+ambiguous retries. The recipient, message and transport are bound on first
+attempt. Changed bindings, revoked access, definitive rejection, eight failed
+attempts or the end of a 23-hour retry window stop automatic delivery. Operators
+must inspect stopped rows and provider evidence before any manual resend;
+clearing a stopped row does not establish that an earlier email was unsent.
+Provider acceptance is recorded separately from actual inbox delivery. Mail
+failure never undoes verified paid access. Notification records follow their
+funding request's retention lifecycle and contain no copied email address.
+
+This worker confirms access already granted by verified payment reconciliation.
+It does not fetch payment reports or interpret parent-submitted payment evidence.

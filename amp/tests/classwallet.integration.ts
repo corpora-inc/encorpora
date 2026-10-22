@@ -96,6 +96,14 @@ test(
       );
       await provisionFundingRequest(pool, replay, [offer]);
       assert.deepEqual(replay, original);
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT request_id FROM amp_funded_activation_outbox",
+          )
+        ).rows,
+        [{ request_id: first.id }],
+      );
       const reused = prepareClassWalletProvision(
         { ...row, "Invoice/Quote": second.id },
         second,
