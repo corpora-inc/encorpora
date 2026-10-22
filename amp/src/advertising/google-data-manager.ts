@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { googleClickIdentifiersSchema } from "./click-identifiers.js";
 
 const origin = "https://datamanager.googleapis.com/v1/";
 const instant = z
@@ -46,6 +47,8 @@ const purchaseSchema = z.strictObject({
   amountMinor: z.number().int().positive().max(100_000_000),
   currency: z.literal("USD"),
   adultEmailSha256: z.string().regex(/^[a-f0-9]{64}$/),
+  adIdentifiers: googleClickIdentifiersSchema.optional(),
+  eventSource: z.enum(["WEB", "OTHER"]).optional(),
   permission: z.strictObject({
     adultAttested: z.literal(true),
     adUserData: z.literal(true),
@@ -166,7 +169,10 @@ function eventRequest(
       {
         transactionId: purchase.transactionId,
         eventTimestamp: purchase.occurredAt,
-        eventSource: "WEB",
+        eventSource: purchase.eventSource ?? "WEB",
+        ...(purchase.adIdentifiers
+          ? { adIdentifiers: purchase.adIdentifiers }
+          : {}),
         conversionValue: purchase.amountMinor / 100,
         currency: purchase.currency,
         userData: {
