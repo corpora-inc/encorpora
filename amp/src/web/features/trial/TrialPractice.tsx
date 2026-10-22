@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import type { GradeBand } from "../../../curriculum/types";
 import { gradeNumber } from "../../../learning/frontier";
 import { calculatorAllowed } from "../../../math/calculator";
-import type { PublicProblem } from "../../../math/contracts";
+import type { HintedProblem } from "../../lib/problem-hints";
 import { AppError } from "../../lib/AppError";
 import { queryClient } from "../../lib/query";
 import {
@@ -59,8 +59,10 @@ type Next = Awaited<ReturnType<typeof nextProblem>>;
  * refresh asks the planner again. */
 let open: {
   learnerId: string;
-  problem: PublicProblem;
+  problem: HintedProblem;
   response: string;
+  hintText: string;
+  hintCue: { problemId: string; steps: Step[] } | null;
 } | null = null;
 
 function Practice({ session }: { session: TrialSession }) {
@@ -68,16 +70,16 @@ function Practice({ session }: { session: TrialSession }) {
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
   const kept = open?.learnerId === session.learnerId ? open : null;
-  const [problem, setProblem] = useState<PublicProblem | null>(
+  const [problem, setProblem] = useState<HintedProblem | null>(
     kept?.problem ?? null,
   );
   const [response, setResponse] = useState(kept?.response ?? "");
   const [outcome, setOutcome] = useState<TrialOutcome | null>(null);
-  const [hintText, setHint] = useState("");
+  const [hintText, setHint] = useState(kept?.hintText ?? "");
   const [hintCue, setHintCue] = useState<{
     problemId: string;
     steps: Step[];
-  } | null>(null);
+  } | null>(kept?.hintCue ?? null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [answered, setAnswered] = useState<number | null>(null);
@@ -88,6 +90,7 @@ function Practice({ session }: { session: TrialSession }) {
     problemId: string;
     requestId: string;
     response: string;
+    hintViewed?: boolean;
   } | null>(null);
   const [pending, setPending] = useState(false);
   // The level check: fetched when its problem is used, shown with the next
@@ -104,9 +107,17 @@ function Practice({ session }: { session: TrialSession }) {
   useEffect(() => {
     open =
       problem && !outcome && !pending
-        ? { learnerId: session.learnerId, problem, response }
+        ? { learnerId: session.learnerId, problem, response, hintText, hintCue }
         : null;
-  }, [problem, outcome, response, pending]);
+  }, [
+    problem,
+    outcome,
+    response,
+    pending,
+    hintText,
+    hintCue,
+    session.learnerId,
+  ]);
 
   const limits = progress.data;
   // The server's count seeds the meter once; answers then advance it here.
@@ -170,6 +181,7 @@ function Practice({ session }: { session: TrialSession }) {
     setResponse("");
     setOutcome(null);
     setHint("");
+    setHintCue(null);
   }
   // The first problem: from the planner, or the paywall if none are left.
   // Only once the count is known, so an exhausted trial navigates once.
@@ -245,6 +257,9 @@ function Practice({ session }: { session: TrialSession }) {
                     problemId: problem.id,
                     requestId: crypto.randomUUID(),
                     response,
+                    ...(problem.hintSupport && hintText
+                      ? { hintViewed: true }
+                      : {}),
                   };
             unsent.current = attempt;
             setPending(true);
@@ -336,7 +351,16 @@ function Practice({ session }: { session: TrialSession }) {
                   upcoming.current?.catch(() => undefined);
                 })
         }
-        requestHint={() =>
+        requestHint={() => {
+          if (problem.hintSupport) {
+            const data = problem.hintSupport;
+            setHint(data.hint);
+            setHintCue(
+              data.cue ? { problemId: problem.id, steps: data.cue } : null,
+            );
+            track("hint_use");
+            return;
+          }
           void run(async () => {
             const data = await hint(session, problem.id);
             setHint(data.hint);
@@ -344,8 +368,8 @@ function Practice({ session }: { session: TrialSession }) {
               data.cue ? { problemId: problem.id, steps: data.cue } : null,
             );
             track("hint_use");
-          })
-        }
+          });
+        }}
         requestLesson={async () => {
           try {
             const { lesson } = await lessonSupport(session, problem.id);

@@ -257,6 +257,11 @@ export interface TemplateMetadata {
 export type ProblemResponse =
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] };
+/** Safe teaching content delivered beside a problem; never grading data. */
+export interface ProblemHint {
+  hint: string;
+  cue?: Step[];
+}
 export interface PublicProblem {
   id: string;
   templateId: string;

@@ -14,6 +14,7 @@ import {
   figureCapabilities,
   generatedProblemSchema,
   type PublicProblem,
+  type ProblemHint,
 } from "../math/contracts";
 import {
   generateProblem,
@@ -48,6 +49,7 @@ const attemptSchema = z
     problemId: z.string().min(1).max(160),
     requestId: idSchema,
     response: z.string().trim().min(1).max(200),
+    hintViewed: z.boolean().optional(),
   })
   .strict();
 /** Strips one-time secrets (password-reset and verification tokens, OAuth
@@ -391,15 +393,23 @@ function routes(app: FastifyInstance, options: AppOptions) {
             learnerKey: learnerId,
           });
       const problems: PublicProblem[] = [];
+      const hints: Record<string, ProblemHint> = {};
       for (const choice of selected) {
         const problem: SavedProblem = generatedProblemSchema.parse(
           generateProblem(choice.template.id, randomUUID()),
         );
         await tx.saveProblem(problem);
         problems.push(problem.public);
+        hints[problem.public.id] = {
+          hint: problem.hint,
+          ...(problem.hintCue ? { cue: problem.hintCue } : {}),
+        };
       }
       return {
         problems,
+        // Keep the public-problem protocol unchanged for installed clients.
+        // Downloading help is not evidence that the learner used it.
+        hints,
         ...(trialRemaining !== null ? { trialRemaining } : {}),
         selection: selected.map((choice, i) => ({
           problemId: problems[i].id,
@@ -596,6 +606,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
           409,
           "This problem was skipped and its answer shown. Continue to the next problem.",
         );
+      // Persist locally revealed help with the answer, in this transaction.
+      // A false or missing client flag can never clear server-recorded help.
+      if (input.hintViewed && !problem.hintViewed) {
+        problem.hintViewed = true;
+        await tx.saveProblem(problem);
+      }
       const outcome: Outcome = {
         id: randomUUID(),
         problemId: input.problemId,

@@ -140,7 +140,7 @@ jobs:
           cache: npm
           cache-dependency-path: amp/package-lock.json
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium firefox
       # test:payment-ui and the print suites inspect PDFs with pdfinfo.
       - name: Install PDF inspection tools and the Android UI font
         run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
