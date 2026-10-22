@@ -1,4 +1,5 @@
 import type { Page } from "playwright";
+import { choose } from "./ui-controls";
 
 /** Leave immersive practice, if active, for home: "Your level". */
 export async function exitPractice(page: Page) {
@@ -24,7 +25,11 @@ export async function startTopic(page: Page, templateId: string) {
   const strand = await topic.evaluate(
     (element) => element.closest<HTMLElement>("[data-strand]")!.dataset.strand,
   );
-  await page.locator(`.strand-chip[data-strand="${strand}"]`).click();
+  if (!strand) throw new Error(`No math area for lesson ${templateId}`);
+  await choose(
+    page.getByRole("button", { name: "Math area", exact: true }),
+    strand,
+  );
   await topic.click();
   await page
     .getByRole("button", { name: "Practice this", exact: true })
