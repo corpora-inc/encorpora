@@ -55,8 +55,14 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   );
   assert.notEqual(corrupted.status, 0);
   assert.match(corrupted.stderr, /Mismatch/);
-  assert.notEqual(review(lines.slice(0, -1).join("\n") + "\n").status, 0);
-  const duplicate = review(exported.stdout + lines[1] + "\n");
+  const missing = review(lines.slice(0, -1).join("\n") + "\n");
+  assert.notEqual(missing.status, 0);
+  assert.match(missing.stderr, /Incomplete coverage/);
+  // Rejection checks need their adversarial record first, not another full
+  // successful pass through the cases that precede it in exporter order.
+  const duplicate = review(
+    [lines[0], lines[1], ...lines.slice(1)].join("\n") + "\n",
+  );
   assert.notEqual(duplicate.status, 0);
   assert.match(duplicate.stderr, /Duplicate case/);
   const unknown = review(
@@ -80,8 +86,9 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   graph.problem.public.figure.lines[0].m += 0.5;
   const wrongLine = review(
     [
-      ...lines.slice(0, graphIndex),
+      lines[0],
       JSON.stringify(graph),
+      ...lines.slice(1, graphIndex),
       ...lines.slice(graphIndex + 1),
     ].join("\n") + "\n",
   );
@@ -99,8 +106,9 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
     choice.problem.public.response.options[0].label;
   const duplicateChoice = review(
     [
-      ...lines.slice(0, choiceIndex),
+      lines[0],
       JSON.stringify(choice),
+      ...lines.slice(1, choiceIndex),
       ...lines.slice(choiceIndex + 1),
     ].join("\n") + "\n",
   );
@@ -110,8 +118,9 @@ test("independent exact oracle checks the complete inventory and rejects corrupt
   wrongChoice.problem.answer = "option-z";
   const choiceMismatch = review(
     [
-      ...lines.slice(0, choiceIndex),
+      lines[0],
       JSON.stringify(wrongChoice),
+      ...lines.slice(1, choiceIndex),
       ...lines.slice(choiceIndex + 1),
     ].join("\n") + "\n",
   );
