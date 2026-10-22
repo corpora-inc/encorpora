@@ -44,7 +44,11 @@ Store campaign manifests, product captures, narration, music, and exports outsid
 node render.mjs /path/to/manifest.json /path/to/exports
 ```
 
-Formats: `square` (1080×1080), `portrait` (1080×1350), `vertical` (1080×1920), and `landscape` (1920×1080). Copy must fit its format; the renderer rejects portrait copy/media/CTA overlaps. Use shorter copy for square placements.
+Formats: `square` (1080×1080), `portrait` (1080×1350), `vertical` (1080×1920), `reels` (1080×1920), and `landscape` (1920×1080). Copy must fit its format; the renderer rejects portrait copy/media/CTA overlaps. Use shorter copy for square placements.
+
+Use `reels` for Meta Reels placements. It reserves 14% at the top, 6% on each side, and 40% at the bottom, including the larger bottom exclusion for ads with disclosures. These bounds follow [Meta’s Instagram Reels guide](https://www.facebook.com/business/ads-guide/update/video/instagram-reels/outcome-engagement) and [text-overlay guidance](https://www.facebook.com/business/help/980593475366490). The generic `vertical` layout does **not** provide these placement margins.
+
+The Reels layout accepts short headlines and a 920×340 media panel. Prepare a graphic or capture that is readable in that panel; fitting an entire tall product screen can make its text too small. Branding, copy, media, CTA, details, and disclosure must fit the measured safe area. Plain-text SRT captions occupy a separate band between the media and CTA. The renderer rejects markup, overlapping or out-of-range cues, and captions taller than two lines. It renders captions through the same browser as the cards and composites the measured images into the video. The verification file records each caption’s position and timing. Platform previews remain necessary because placement controls and cropping can vary.
 
 Omit `static` to encode a video. Each scene accepts either `image` or `video`; video scenes can specify a starting offset in `start`. Top-level `voice`, `music`, and `captions` accept local audio and SRT files. Supply `voiceDisclosure` with generated narration and `musicRights` with the music's provenance. Include the appropriate disclosure in the visible `disclosure` field or the platform description; metadata alone is not an audience disclosure.
 
