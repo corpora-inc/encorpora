@@ -1,6 +1,6 @@
 # AMP advertising workbench
 
-Create reviewable AMP images and videos from real product captures, and validate or create **paused Google Search campaigns**. Campaign specifications are JSON; rendering, validation, and account operations can be invoked by a CLI, agent, or MCP wrapper. No command enables ad delivery.
+Create reviewable AMP images and videos from real product captures, and validate or create **paused Google Search and Meta Sales campaigns**. Campaign specifications are JSON; rendering, validation, and account operations can be invoked by a CLI, agent, or MCP wrapper. No command enables ad delivery.
 
 ## Install
 
@@ -96,9 +96,50 @@ Campaign names include a specification fingerprint. Repeating a specification re
 
 The readback does not certify platform approval, audience delivery, conversion tracking, or every criterion against later manual changes. Before activation, inspect all geographic, language, keyword, exclusion, budget, destination, and conversion settings in the platform. Reports contain platform-attributed conversions; these are not proof of paid or fulfilled EFA orders. Reconcile revenue with verified payment records and refunds.
 
-## Platform coverage
+## Meta Sales campaigns
 
-The workbench currently creates Google Search campaigns. It does not create Meta campaigns, provision billing, connect Instagram, install pixels, or activate campaigns. Meta account setup and authorization must be completed in Meta's supported administration surfaces before its Marketing API or Ads MCP can be used. Do not substitute browser cookies or undocumented endpoints for API credentials.
+`meta.py` uses Marketing API v26.0 over authenticated HTTPS. It uploads local PNG/JPEG images and MP4 videos, creates unpublished creatives, and creates paused campaigns, ad sets and ads. It requires an authorized Marketing API token with access to the advertiser, Page and purchase dataset. Instagram requires a connected professional account. No token acquisition, billing setup, Page/Instagram creation, pixel installation or conversion export is included.
+
+Start with [`examples/meta.json`](examples/meta.json). The example budget is nominal, not an approved spending plan. Each specification has one publisher (`facebook` or `instagram`), one placement group (`feed` or `vertical`), and one creative. `vertical` selects that publisher's Stories and Reels. `image` is the static creative or video thumbnail; optional `video` supplies the MP4. Paths are relative to the specification and must resolve inside the operator's `media_root`. Images are bounded to 20 MiB; videos to 100 MiB. Render and review media in the intended aspect ratio before upload.
+
+The campaign uses Sales, website Purchase optimization, a seven-day click attribution window, and ad-set budgeting in USD cents. Targeting resolves Arkansas from Meta's catalog, includes adults 18 and older, uses Meta's combined home/recent location semantics, and selects only the specified placements. This does not identify EFA recipients or guarantee Arkansas residency. Advantage audience is disabled. Creative enhancement and multi-advertiser enrollment are explicitly opted out. Platform acceptance and previews must confirm these settings; an offline specification is not proof of API eligibility.
+
+Store the operator configuration outside this public repository:
+
+```json
+{
+  "account_id": "000000000000000",
+  "allowed_account_ids": ["000000000000000"],
+  "page_id": "000000000000000",
+  "pixel_id": "000000000000000",
+  "credentials": "/private/path/meta-token.json",
+  "media_root": "/private/path/campaign-media",
+  "max_daily_budget_cents": 100
+}
+```
+
+Add `instagram_user_id` for Instagram. The token file contains `{"access_token":"..."}` and must have mode `600`. Keep it in approved secret storage; never commit it. The token travels in an authorization header, not URL parameters. Redirects and environment proxies are disabled, and Graph error bodies are not printed.
+
+```sh
+python meta.py validate --spec /private/path/meta.json
+python meta.py inspect --config /private/path/meta-operator.json --output /private/path/meta-inventory.json
+python meta.py plan --config /private/path/meta-operator.json --spec /private/path/meta.json --output /private/path/meta-plan.json
+python meta.py apply-paused --config /private/path/meta-operator.json --spec /private/path/meta.json --journal /private/path/meta-journal.json --output /private/path/meta-receipt.json
+```
+
+`plan` checks account identity/currency, dataset access, the Page connection, geographic lookup and local media. It does not submit mutation validation or create resources. `apply-paused` writes a private, locked journal before each mutation and reads back created resources. Fingerprints bind the exact copy, media hashes, placement, budget and account identities. Output files are private and never overwritten.
+
+Use one operator per advertiser across machines and journals. The journal prevents concurrent use of itself; it is not a distributed lock. Meta campaign names are not unique. An existing campaign with the same slug outside the journal stops creation, including a different revision. Coordinate with anyone using Ads Manager and inspect the existing browser drafts before applying a new specification.
+
+For a video still processing, rerun with the same journal after processing completes; the upload is retained. A network failure or rejected mutation leaves a pending journal entry and stops automatic retry. Inspect Ads Manager and the private account inventory to reconcile the result before changing that journal. Never discard a pending journal merely to retry: a resource may already exist. Partial campaigns remain paused; no rollback deletion is attempted. A crash while writing the journal can require manual recovery from platform inventory.
+
+Readback checks delivery status, budget, destination, identity, copy and targeting. Unexpected targeting fields stop the command for review. Platform review, billing, dataset integration, actual conversion delivery and visual previews remain separate launch checks. Tests cover request construction, pagination, interrupted writes, video processing, duplicate prevention, privacy and paused readback using synthetic responses; they do not certify live Meta access.
+
+API fields are checked against Meta's [official Python Business SDK](https://github.com/facebook/facebook-python-business-sdk/tree/main/facebook_business/adobjects), including [campaign/ad-set/upload operations](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adaccount.py) and [creative video data](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adcreativevideodata.py).
+
+## MCP access
+
+Meta account setup and authorization must be completed in Meta's supported administration surfaces before its Marketing API or Ads MCP can be used. Do not substitute browser cookies or undocumented endpoints for API credentials.
 
 Google's official Ads MCP is read-only; use the supported Google Ads client for mutations. Meta exposes an official Ads MCP endpoint, but dynamic client registration is not available to every client. Treat an OAuth registration rejection as an access prerequisite, not a successful connection.
 
