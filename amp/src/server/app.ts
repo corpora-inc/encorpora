@@ -60,7 +60,18 @@ export function redactUrl(url: string) {
     /^(\/api\/auth\/reset-password\/)[^/]+/,
     "$1[redacted]",
   );
-  for (const key of ["token", "code", "state", "callbackURL"])
+  for (const key of [
+    "token",
+    "code",
+    "state",
+    "callbackURL",
+    "gclid",
+    "gbraid",
+    "wbraid",
+    "fbclid",
+    "fbc",
+    "fbp",
+  ])
     if (parsed.searchParams.has(key))
       parsed.searchParams.set(key, "[redacted]");
   return path + (parsed.search ? decodeURIComponent(parsed.search) : "");

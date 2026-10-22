@@ -1,4 +1,5 @@
 import { registerEnrollmentRoutes } from "./enrollment-routes.js";
+import { acquisitionToken } from "../../advertising/acquisition.js";
 import {
   ConsentError,
   type ConsentPolicy,
@@ -119,6 +120,7 @@ export async function registerStripeRoutes(
         body.data.interval,
         undefined,
         funnelVisitor(request.headers),
+        acquisitionToken(request.headers),
       );
     });
     scope.post("/api/v1/billing/portal", async (request, reply) => {

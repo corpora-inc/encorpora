@@ -840,7 +840,10 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
         <link rel="stylesheet" href="/assets/katex.min.css" />
         {route === "/samples/" && <script src="/assets/print.js" defer />}
         {config.mode === "production" && config.appUrl && route === "/esa/arkansas-efa/" && (
+          <>
           <script src="/assets/campaign.js" data-campaign-endpoint={new URL("/api/v1/campaign-events", config.appUrl).href} defer />
+          <script src="/assets/acquisition.js" data-acquisition-endpoint={new URL("/api/v1/advertising/acquisition", config.appUrl).href} defer />
+          </>
         )}
       </head>
       <body>

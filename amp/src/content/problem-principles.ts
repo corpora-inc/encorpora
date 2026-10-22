@@ -1,3 +1,4 @@
+import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
@@ -58,6 +59,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
+  ...assessmentGapPrinciples,
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,

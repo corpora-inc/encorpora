@@ -1,4 +1,5 @@
 import { learningConsentActive } from "../../server/account-access.js";
+import { acquisitionToken } from "../../advertising/acquisition.js";
 import { z } from "zod";
 import type { FastifyInstance } from "fastify";
 import { claimEnrollment, purchaseAcknowledgement } from "./enrollment.js";
@@ -126,6 +127,7 @@ export function registerEnrollmentRoutes(
       body.interval,
       body.acknowledgement,
       funnelVisitor(request.headers),
+      acquisitionToken(request.headers),
     );
   });
   app.post("/api/v1/billing/enrollment/claim", async (request, reply) => {

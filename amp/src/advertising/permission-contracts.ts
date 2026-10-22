@@ -12,7 +12,7 @@ export const PURCHASE_MEASUREMENT_NOTICE = {
   choice:
     "This is optional and lasts one year. You can withdraw it here at any time. Your choice does not affect pricing, purchasing or learning access. Withdrawal stops future sharing; it does not recall information already received by Google.",
   retention:
-    "AMP keeps this preference for its duration and up to 90 days after withdrawal or expiry. Local purchase-measurement records are kept for up to 90 days after the purchase. Google handles received information under its own privacy policy.",
+    "AMP keeps permission evidence for its duration and up to 90 days after withdrawal or expiry. A minimal opt-out setting is kept until you change it so collection does not resume when evidence expires. Local purchase-measurement records are kept for up to 90 days after the purchase. Google handles received information under its own privacy policy.",
   attestation:
     "I am at least 18, this is my own email address, and I allow the purchase sharing described above.",
 } as const;
@@ -29,7 +29,7 @@ export const META_PURCHASE_MEASUREMENT_NOTICE = {
   choice:
     "This is optional and lasts one year. You can withdraw it here at any time. Your choice does not affect pricing, purchasing or learning access. Withdrawal stops future sharing; it does not recall information already received by Meta.",
   retention:
-    "AMP keeps this preference for its duration and up to 90 days after withdrawal or expiry. Local purchase-measurement records are kept for up to 90 days after the purchase. Meta handles received information under its own privacy policy.",
+    "AMP keeps permission evidence for its duration and up to 90 days after withdrawal or expiry. A minimal opt-out setting is kept until you change it so collection does not resume when evidence expires. Local purchase-measurement records are kept for up to 90 days after the purchase. Meta handles received information under its own privacy policy.",
   attestation:
     "I am at least 18, this is my own email address, and I allow the purchase sharing described above.",
 } as const;

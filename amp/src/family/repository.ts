@@ -403,6 +403,17 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_ad_collection_withdrawals') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "ad-collection-withdrawal",
+          "SELECT jsonb_build_object('provider',provider,'collectionAllowed',false) AS value FROM amp_ad_collection_withdrawals WHERE account_id=$1 ORDER BY provider",
+        ]);
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_advertising_permissions') AS relation",
           )
         ).rows[0]?.relation
@@ -410,6 +421,17 @@ export class FamilyRepository {
         datasets.push([
           "purchase-measurement-permission",
           "SELECT to_jsonb(p) - 'account_id' - 'email_digest' AS value FROM amp_advertising_permissions p WHERE account_id=$1",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_ad_click_evidence') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "ad-acquisition",
+          "SELECT jsonb_build_object('provider',c.provider,'identifiers',c.identifiers,'firstObservedAt',c.first_observed_at,'capturedAt',c.observed_at,'expiresAt',j.expires_at,'sourceUrl',c.source_url,'campaignLabels',c.campaign_labels) AS value FROM amp_ad_click_evidence c JOIN amp_ad_click_journeys j ON j.id=c.journey_id WHERE j.account_id=$1 ORDER BY c.observed_at,c.sequence",
         ]);
       if (
         (

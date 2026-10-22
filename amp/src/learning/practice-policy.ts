@@ -4,6 +4,7 @@ import { skills } from "../curriculum/catalog.js";
 import { templates } from "../math/engine.js";
 import {
   selectionObjectives,
+  objectiveExposureWeights,
   skillEmphasis,
   familyEmphasis,
 } from "../curriculum/selection.js";
@@ -171,7 +172,7 @@ export function assertPracticePolicy(policy: PracticePolicy): void {
  * set. Changing hypotheses requires a new object, not a global mutation. */
 export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
   schemaVersion: 1,
-  version: "pathways-budget-v1",
+  version: "pathways-budget-v2-assessment-emphasis",
   sampling: { utilityWindow: 24, temperature: 12 },
   target: { levelOffset: -0.5, uncertaintyWeight: 0.3, clampToAvailable: true },
   placement: { assessmentOnlyAttempts: 20, scriptedOpeners: true },
@@ -226,9 +227,9 @@ export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
     skipReturnAfter: 4,
   },
   weights: {
-    objectives: Object.fromEntries(
-      selectionObjectives.map((o) => [o.id, o.importance]),
-    ),
+    // General learning: equal editorial contributions from instructional importance
+    // and assessment emphasis. The resulting map is persisted/fingerprinted.
+    objectives: objectiveExposureWeights(0.5),
     skills: { ...skillEmphasis },
     families: { ...familyEmphasis },
   },
