@@ -84,6 +84,7 @@ Withdrawal and account-wide learning deletion cancel pending enrollment within t
 | Offline packs and offline answers | 30 days after the pack expires |
 | "Report a problem" reports | Notes: 90 days after sending (`problemFlagNoteDays`). Reports: 365 days (`problemFlagDays`). Deleting a learner's learning data, by a parent or by retention, unlinks their reports and erases the notes first |
 | Meta browser confirmation context | At most seven days after verified payment (`advertisingContextDays`), or earlier on permission expiry or withdrawal. No query strings or learner-page context are retained |
+| First-party ad acquisition | At most 90 days per browser journey; provider withdrawal removes its account-associated evidence. The privacy worker deletes expired journeys; family exports include owned evidence without cookie handles |
 | Local purchase-measurement preparation records | 90 days after the payment evidence date (`advertisingPaymentDays`); withdrawal cancels unsent records |
 | Privacy activity log | 90 days |
 | Consent contact and evidence | Uncompleted requests: the policy's `pendingContactDays` (2–14; 7 in the reviewed policy). Completed evidence: `withdrawnEvidenceDays` (1–730; 180) after withdrawal or policy replacement, then a do-not-collect flag. |
@@ -129,3 +130,8 @@ Local purchase-measurement preparations retain the financial source reference, a
 For an explicitly permitted Meta purchase, the adult first-payment confirmation screen can retain its fixed page address and browser user agent after the server verifies the live initial payment. Retention ends no later than seven days after payment; withdrawal erases this context. Family exports include the retained page address and user agent without payment, checkout or account identifiers. This local preparation does not send an event to Meta.
 
 Meta delivery history retains only financial references, destination, purchase amount/date, permission revision and redacted attempt outcomes for 90 days after payment. It contains no email hash or browser context. Withdrawal blocks unsent delivery and erases browser context; it does not erase the minimal record of an attempted disclosure. Family exports include delivery status, amount/date and receipt message count without internal routing identifiers. Accepted means the provider reported receipt, not matching, attribution or net revenue.
+
+First-party [ad acquisition](ad-click-attribution.md) is collected only on the parent-facing Arkansas marketing page and bound to owned purchase requests. It does not include learner activity. Existing purchase-sharing permissions do not authorize exporting the added click identifiers.
+
+A minimal provider opt-out setting persists until the parent changes it. Expiry
+of advertising permission evidence does not resume acquisition collection.

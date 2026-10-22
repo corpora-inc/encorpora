@@ -1,0 +1,214 @@
+import type { Pool } from "pg";
+import type { FastifyInstance } from "fastify";
+import { z } from "zod";
+import { clickEvidenceSchema } from "./click-identifiers.js";
+import {
+  retainAdClick,
+  bindAdClicksToOrder,
+  eraseAccountAdClicks,
+  purgeAdClickEvidence,
+  type AttributionTarget,
+} from "./click-evidence.js";
+import { fundedCampaignSchema } from "../analytics/funded-campaign.js";
+import { advertisingOptOut } from "./permission-contracts.js";
+
+export const ACQUISITION_COOKIE = "__Host-amp-acquisition";
+/** Host-only HTTPS cookie. No identifier is returned to application JavaScript. */
+export function acquisitionToken(headers: Record<string, unknown>) {
+  if (advertisingOptOut(headers) || typeof headers.cookie !== "string")
+    return undefined;
+  const values = headers.cookie
+    .split(";")
+    .map((x) => x.trim())
+    .filter((x) => x.startsWith(`${ACQUISITION_COOKIE}=`))
+    .map((x) => x.slice(ACQUISITION_COOKIE.length + 1));
+  return values.length === 1 && /^[a-f0-9]{64}$/.test(values[0]!)
+    ? values[0]
+    : undefined;
+}
+const cookie = (token: string, seconds: number) =>
+  `${ACQUISITION_COOKIE}=${token}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=${Math.max(0, Math.floor(seconds))}`;
+const captureSchema = z.strictObject({
+  clicks: z
+    .array(clickEvidenceSchema)
+    .min(1)
+    .max(2)
+    .refine((v) => new Set(v.map((c) => c.provider)).size === v.length),
+  labels: fundedCampaignSchema.optional(),
+});
+
+/** First-party collection on the parent-facing Arkansas marketing origin only.
+ * This endpoint cannot accept an account, order, purchase event or learner data. */
+export async function registerAcquisitionRoutes(
+  app: FastifyInstance,
+  options: { pool: Pool; origin?: string },
+) {
+  if (!options.origin) return;
+  if (options.origin !== "https://corpora.inc")
+    throw new Error("Invalid acquisition origin");
+  let inFlight = 0;
+  await app.register(async (scope) => {
+    scope.addHook("onRequest", async (request, reply) => {
+      reply
+        .header("Cache-Control", "no-store")
+        .header("Vary", "Origin")
+        .header("X-Content-Type-Options", "nosniff");
+      if (request.headers.origin !== options.origin)
+        return reply.code(403).send({ error: "origin_not_allowed" });
+      reply
+        .header("Access-Control-Allow-Origin", options.origin!)
+        .header("Access-Control-Allow-Credentials", "true");
+    });
+    scope.setErrorHandler((_error, _request, reply) =>
+      reply.code(400).send({ error: "invalid_acquisition_request" }),
+    );
+    scope.options("/api/v1/advertising/acquisition", async (_request, reply) =>
+      reply
+        .header("Access-Control-Allow-Methods", "POST")
+        .header("Access-Control-Allow-Headers", "Content-Type")
+        .header("Access-Control-Max-Age", "600")
+        .code(204)
+        .send(),
+    );
+    scope.post(
+      "/api/v1/advertising/acquisition",
+      {
+        bodyLimit: 16384,
+        config: {
+          rateLimit: {
+            max: 20,
+            timeWindow: "1 minute",
+            keyGenerator: (request) => `acquisition:${request.ip}`,
+          },
+        },
+      },
+      async (request, reply) => {
+        if (
+          advertisingOptOut(request.headers) ||
+          z.strictObject({ optOut: z.literal(true) }).safeParse(request.body)
+            .success
+        )
+          return reply.header("Set-Cookie", cookie("", 0)).code(204).send();
+        const parsed = captureSchema.safeParse(request.body);
+        if (!parsed.success)
+          return reply.code(400).send({ error: "invalid_acquisition_request" });
+        if (inFlight >= 2)
+          return reply.code(503).send({ error: "acquisition_busy" });
+        inFlight++;
+        const client = await options.pool.connect().catch(() => null);
+        if (!client) {
+          inFlight--;
+          return reply.code(503).send({ error: "acquisition_unavailable" });
+        }
+        try {
+          await client.query("BEGIN");
+          await client.query("SET LOCAL statement_timeout='5s'");
+          await client.query("SET LOCAL lock_timeout='2s'");
+          let token = acquisitionToken(request.headers);
+          const predecessorToken = token;
+          let expiresAt = "";
+          for (const click of parsed.data.clicks) {
+            const retained = await retainAdClick(
+              client,
+              click,
+              token,
+              parsed.data.labels,
+              predecessorToken,
+            );
+            token = retained.token;
+            expiresAt = retained.expiresAt;
+          }
+          await client.query("COMMIT");
+          return reply
+            .header(
+              "Set-Cookie",
+              cookie(token!, (Date.parse(expiresAt) - Date.now()) / 1000),
+            )
+            .code(204)
+            .send();
+        } catch {
+          await client.query("ROLLBACK").catch(() => {});
+          return reply.code(503).send({ error: "acquisition_unavailable" });
+        } finally {
+          client.release();
+          inFlight--;
+        }
+      },
+    );
+  });
+}
+
+/** Runs before returning the invoice/checkout to the parent. Never calls an ad
+ * provider and never permits a tracking failure to prevent a purchase. */
+export async function linkPurchaseAcquisition(
+  pool: Pool,
+  account: string,
+  token: string | undefined,
+  target: AttributionTarget,
+) {
+  if (!token || !/^[a-f0-9]{64}$/.test(token)) return false;
+  let client;
+  try {
+    client = await pool.connect();
+    await client.query("BEGIN");
+    await client.query("SET LOCAL lock_timeout='2s'");
+    await client.query("SET LOCAL statement_timeout='5s'");
+    await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))", [
+      account,
+    ]);
+    // Default-off export permission does not forbid first-party attribution.
+    // An explicit withdrawal does: it must not be undone by another checkout.
+    const preferences = await client.query(
+      "SELECT provider,true AS withdrawn_at FROM amp_ad_collection_withdrawals WHERE account_id=$1",
+      [account],
+    );
+    const providers = (["google", "meta"] as const).filter(
+      (provider) =>
+        !preferences.rows.some(
+          (row) => row.provider === provider && row.withdrawn_at,
+        ),
+    );
+    const result = await bindAdClicksToOrder(
+      client,
+      account,
+      token,
+      target,
+      providers,
+    );
+    for (const provider of ["google", "meta"] as const)
+      if (!providers.includes(provider))
+        await eraseAccountAdClicks(client, account, provider);
+    await client.query("COMMIT");
+    return result.bound > 0;
+  } catch {
+    await client?.query("ROLLBACK").catch(() => {});
+    console.warn("Advertising acquisition binding unavailable");
+    return false;
+  } finally {
+    client?.release();
+  }
+}
+
+export async function purgeAcquisition(pool: Pool) {
+  let total = 0;
+  // Commit bounded batches; a successful run must leave no expired backlog.
+  for (let batch = 0; batch < 1000; batch++) {
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query("SET LOCAL statement_timeout='10s'");
+      total += await purgeAdClickEvidence(client);
+      await client.query("COMMIT");
+      const remaining = await client.query(
+        "SELECT 1 FROM amp_ad_click_journeys WHERE expires_at<=clock_timestamp() LIMIT 1",
+      );
+      if (!remaining.rowCount) return total;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+  throw new Error("Acquisition retention incomplete: expired backlog remains");
+}
