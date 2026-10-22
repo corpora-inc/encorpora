@@ -124,7 +124,7 @@ export function Legal({
           <p>
             The site does not load advertising pixels or send learning answers
             to advertising platforms. On the
-            Arkansas funding page, our own server counts page views, trial-link
+            Arkansas and Arizona funding pages, our own server counts page views, trial-link
             clicks and invoice-email-link clicks by day and fixed campaign
             labels. These counts contain no visitor identifier, name, email,
             learning answer, or full page URL. An invoice-link click does not
@@ -139,7 +139,7 @@ export function Legal({
           </p>
           <h2>Ad clicks and purchases</h2>
           <p>
-            When you follow an ad to the AMP overview or Arkansas funding page, our server may
+            When you follow an ad to the AMP overview or an Arkansas or Arizona funding page, our server may
             retain its Google or Meta click identifier, existing Meta browser
             identifiers, the observation time and fixed campaign labels for up
             to 90 days. A secure, host-only browser cookie contains a random
@@ -173,7 +173,7 @@ export function Legal({
           </p>
           <h2>Education-fund purchase measurement</h2>
           <p>
-            When campaign labels accompany an Arkansas funding purchase request,
+            When campaign labels accompany an Arkansas or Arizona funding purchase request,
             we retain the fixed campaign, source, medium and, when supplied,
             an allowlisted ad creative label with that request
             and count verified order, payment and refund transitions in daily
