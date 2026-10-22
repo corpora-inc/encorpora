@@ -368,17 +368,52 @@ def apply(client, cid, spec, *, validate_only=False):
     }
 
 
+def export_script(spec, config, output):
+    """Serialize the shared operation builder through the real API protobuf schema."""
+    from google.ads.googleads.v26.services.types.google_ads_service import MutateOperation
+    from google.protobuf.json_format import MessageToDict
+
+    validate(spec)
+    cid = config.get("customer_id", "")
+    ceiling = config.get("max_daily_budget_micros")
+    if not re.fullmatch(r"\d{10}", cid) or cid not in config.get("allowed_customer_ids", []):
+        raise ValueError("Script customer must be a valid allowlisted advertiser")
+    if type(ceiling) is not int or not 0 < spec["daily_budget_micros"] <= ceiling <= 2**53 - 1:
+        raise ValueError("Script proposal exceeds its positive safe-integer budget ceiling")
+    if spec["max_cpc_micros"] > 2**53 - 1:
+        raise ValueError("Script bid exceeds JavaScript safe integer range")
+    bundle = {
+        "customerId": cid,
+        "maxDailyBudgetMicros": ceiling,
+        "fingerprint": fingerprint(spec),
+        "name": campaign_name(spec),
+        "spec": spec,
+        "operations": [
+            MessageToDict(MutateOperation.pb(MutateOperation(**op)))
+            for op in build_operations(spec, cid, "geoTargetConstants/0")
+        ],
+    }
+    source = Path(__file__).with_name("google-script.js").read_text()
+    source += "\nconst AMP_MODE = \"inspect\";\nconst AMP_BUNDLE = " + json.dumps(bundle, ensure_ascii=True, indent=2) + ";\n"
+    source += "function main() { return runAmpSearch(AdsApp, Logger, AMP_BUNDLE, AMP_MODE); }\n"
+    # Generated bundles contain private account IDs, never credentials. Refuse overwrite.
+    fd = os.open(output, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, "w") as file:
+        file.write(source)
+    return {"exported": True, "mode": "inspect", "platform_validated": False, "fingerprint": fingerprint(spec)}
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument(
-        "command", choices=["validate", "plan", "inspect", "apply-paused", "report"]
+        "command", choices=["validate", "plan", "inspect", "apply-paused", "report", "export-script"]
     )
     p.add_argument("--spec")
     p.add_argument("--config")
     p.add_argument("--output")
     a = p.parse_args()
     spec = validate(json.loads(Path(a.spec).read_text())) if a.spec else None
-    if a.command in ["validate", "plan", "apply-paused"] and spec is None:
+    if a.command in ["validate", "plan", "apply-paused", "export-script"] and spec is None:
         p.error("--spec required")
     if a.command == "validate":
         print(
@@ -409,6 +444,11 @@ def main():
     if not a.config:
         p.error("--config required for platform access")
     config = json.loads(Path(a.config).read_text())
+    if a.command == "export-script":
+        if not a.output:
+            p.error("--output required for a private script bundle")
+        print(json.dumps(export_script(spec, config, a.output), indent=2))
+        return
     client = client_from_config(config)
     cid = config["customer_id"]
     if a.command in ["inspect", "report"]:

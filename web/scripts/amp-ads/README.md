@@ -100,6 +100,24 @@ Campaign names include a specification fingerprint. Repeating a specification re
 
 The readback does not certify platform approval, audience delivery, conversion tracking, or every criterion against later manual changes. Before activation, inspect all geographic, language, keyword, exclusion, budget, destination, and conversion settings in the platform. Reports contain platform-attributed conversions; these are not proof of paid or fulfilled EFA orders. Reconcile revenue with verified payment records and refunds.
 
+## Google Ads Scripts route
+
+Google Ads Scripts can create the same paused Search proposal through [generic API mutations](https://developers.google.com/google-ads/scripts/docs/concepts/mutate). This route uses the advertiser’s Script authorization; it does not require the separate developer-token/OAuth setup used by the direct API CLI.
+
+Export a private, self-contained script from the same validated specification and operator allowlist/budget configuration:
+
+```sh
+python campaigns.py export-script --spec /path/to/search.json --config /private/path/operator.json --output /private/path/search-script.js
+```
+
+Export does not contact Google or read the credentials file. It serializes the shared operation builder through the v26 protobuf schema, preserves explicit network exclusions, and writes a new owner-readable file without overwriting an existing one. The generated file contains the advertiser ID and belongs outside this public repository.
+
+The bundle starts with `AMP_MODE = "inspect"`. Paste the complete bundle into a manually run Script in the intended advertiser account, authorize it, and run inspection. It checks account identity/currency, resolves Arkansas from the live geo catalog, and detects existing campaign revisions. **Inspection and Preview do not validate the mutation with Google.** They never call `mutateAll`, even when the mode is changed. Platform policy acceptance and review of landing pages and claims are separate requirements.
+
+For an authorized paused setup, review the generated operations and set `AMP_MODE` to `"apply-paused"`, then use Run rather than Preview. The script creates one campaign, its budget, criteria, paused ad groups and paused ads with `partialFailure:false`. It refuses references to existing campaign/ad-group parents. The live readback checks campaign delivery, budget, presence targeting, networks, language/location criteria, negative keywords, positive keywords, bids, URLs and ad text. An existing matching paused campaign is verified without mutation; a conflicting, active, removed or duplicate revision is refused. No mode activates delivery or exports conversions.
+
+Use one operator and one script copy per proposal; do not schedule it. This route has no durable cross-run transaction journal or distributed lock. After a timeout, unsuccessful mutation result, or failed readback, **do not rerun apply**: inspect the account and reconcile the outcome first. Google campaign names are not unique constraints, and an immediately empty search after an uncertain request is not proof that nothing was created. The script itself never retries mutations. Preserve execution logs privately, switch the mode back to inspection after setup, and check actual platform eligibility and previews before any separately authorized spending decision.
+
 ## Meta Sales campaigns
 
 `meta.py` uses Marketing API v26.0 over authenticated HTTPS. It uploads local PNG/JPEG images and MP4 videos, creates unpublished creatives, and creates paused campaigns, ad sets and ads. It requires an authorized Marketing API token with access to the advertiser, Page and purchase dataset. Instagram requires a connected professional account. No token acquisition, billing setup, Page/Instagram creation, pixel installation or conversion export is included.
