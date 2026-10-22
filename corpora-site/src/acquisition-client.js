@@ -1,7 +1,7 @@
-// First-party acquisition on the parent-facing EFA page; no learning events.
+// First-party acquisition on the parent-facing AMP and EFA pages; no learning events.
 (() => {
   const script = document.querySelector("script[data-acquisition-endpoint]");
-  if (!script || location.pathname !== "/esa/arkansas-efa/") return;
+  if (!script || !["/amp/", "/esa/arkansas-efa/"].includes(location.pathname)) return;
   const query = new URLSearchParams(location.search);
   const ids = ["gclid", "gbraid", "wbraid", "fbclid"];
   const opaque = /^[A-Za-z0-9._~+=/-]{1,2048}$/;
