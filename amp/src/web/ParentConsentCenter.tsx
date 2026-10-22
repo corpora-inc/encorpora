@@ -1,3 +1,4 @@
+import { pendingFundedPurchase } from "./lib/funded-entry";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useLayoutEffect, useRef, useState } from "react";
 import type { ConsentView } from "../parent-consent/contracts.js";
@@ -199,6 +200,9 @@ export function ParentConsentCenter({
     challenge.noticeDigest === view?.noticeDigest &&
     phase === "awaiting-confirmation"
   );
+  const fundedReturn = view?.consentActive
+    ? pendingFundedPurchase(identity)
+    : null;
   return (
     <section className="parent-consent-center" aria-label="Parent consent">
       <header>
@@ -396,8 +400,13 @@ export function ParentConsentCenter({
       </div>
       <footer>
         {view?.consentActive ? (
-          <button type="button" onClick={onClose}>
-            Continue to family
+          <button
+            type="button"
+            onClick={() =>
+              fundedReturn ? window.location.assign(fundedReturn) : onClose()
+            }
+          >
+            {fundedReturn ? "Continue to Arkansas EFA" : "Continue to family"}
           </button>
         ) : canStart ? (
           <button

@@ -167,3 +167,58 @@ test("a signed-in parent without a purchase gets the free trial; plan steps open
       "/start/plan",
     );
 });
+
+test("funded entry requires confirmation and active consent before learner details", () => {
+  for (const path of steps) {
+    const unconfirmed = me({
+      account: {
+        id: "parent",
+        email: "parent@example.test",
+        emailVerified: false,
+        confirmationRequired: true,
+      },
+    });
+    expect(startDestination(unconfirmed, path, false, true)).toBe(
+      path === "/start/verify-email" ? null : "/start/verify-email",
+    );
+    expect(startDestination(me(), path, false, true)).toBe(
+      path === "/start/consent" ? null : "/start/consent",
+    );
+  }
+  expect(
+    startDestination(
+      { signedIn: false, next: "sign-in" },
+      "/start/name",
+      false,
+      true,
+    ),
+  ).toBe("/sign-in");
+});
+test("funded setup returns to Arkansas purchase without requiring a Stripe checkout", () => {
+  const consent = { status: "active" as const, method: "verified" };
+  expect(
+    startDestination(me({ consent, next: "try" }), "/start", false, true),
+  ).toBe("/start/name");
+  const learner = {
+    id: "sample",
+    name: "Sample",
+    birthYear: 2016,
+    entitlement: { active: false, plan: null, endsAt: null },
+  };
+  const parent = me({ consent, learners: [learner] });
+  expect(startDestination(parent, "/start/consent", false, true)).toBe(
+    "/purchase/arkansas-efa",
+  );
+  expect(startDestination(parent, "/start/birth-year", false, true)).toBeNull();
+  expect(
+    startDestination(
+      me({
+        consent: { status: "withdrawn", method: null },
+        learners: [learner],
+      }),
+      "/start/birth-year",
+      false,
+      true,
+    ),
+  ).toBe("/start/consent");
+});

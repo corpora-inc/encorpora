@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { Navigate, useLocation, useNavigate } from "@tanstack/react-router";
 import type { AuthSession } from "../../auth";
@@ -6,6 +7,11 @@ import { nativeRuntime } from "../../native-runtime";
 import { ParentConsentCenter } from "../../ParentConsentCenter";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { PageFrame } from "../../ui/PageFrame";
+import {
+  continuationSearch,
+  rememberFundedPurchase,
+  forgetFundedPurchase,
+} from "../../lib/funded-entry";
 import { chosenPlan } from "../../lib/pending-trial";
 import { startDestination, startNavigation } from "./guard";
 import { LearnerSteps } from "./LearnerSteps";
@@ -26,6 +32,11 @@ function SignedInStart({ session }: { session: AuthSession }) {
     location = useLocation(),
     navigate = useNavigate();
   const me = query.data;
+  const search = continuationSearch(location.search);
+  useEffect(() => {
+    if (search.return === "arkansas-efa")
+      rememberFundedPurchase(session.accountId, search);
+  }, [session.accountId, location.searchStr]);
   if (query.error && !me)
     return (
       <RouteError error={query.error} reset={() => void query.refetch()} />
@@ -38,8 +49,14 @@ function SignedInStart({ session }: { session: AuthSession }) {
   const target =
     nativeRuntime || leaving
       ? null
-      : startDestination(me, location.pathname, !!chosenPlan());
-  if (target) return <Navigate {...startNavigation(target)} replace />;
+      : startDestination(
+          me,
+          location.pathname,
+          !!chosenPlan(),
+          search.return === "arkansas-efa",
+        );
+  if (target)
+    return <Navigate {...startNavigation(target)} search={search} replace />;
   if (!me.signedIn) return <Navigate to="/sign-in" />;
   if (leaving) return <LoadingScreen />;
   const step = location.pathname;
@@ -50,7 +67,15 @@ function SignedInStart({ session }: { session: AuthSession }) {
           token={session.token}
           identity={session.accountId}
           onChanged={() => void invalidateAccount(session.accountId)}
-          onClose={() => void navigate({ to: "/start/plan" })}
+          onClose={() => {
+            if (search.return === "arkansas-efa") {
+              forgetFundedPurchase(session.accountId);
+              void navigate({
+                to: "/try/plans",
+                search: { ...search, return: undefined, program: "ar-efa" },
+              });
+            } else void navigate({ to: "/start/plan", search });
+          }}
         />
       </div>
     );

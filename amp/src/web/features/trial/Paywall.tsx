@@ -78,6 +78,7 @@ export function Paywall() {
   return (
     <PlansView
       key={reason}
+      arkansas={search.program === "ar-efa"}
       reason={reason}
       run={run}
       catalog={catalog.data}
@@ -89,6 +90,7 @@ export function Paywall() {
 }
 
 function PlansView({
+  arkansas,
   reason,
   run,
   catalog,
@@ -96,6 +98,7 @@ function PlansView({
   signedIn,
   record,
 }: {
+  arkansas: boolean;
   reason: "limit" | "choice";
   run: TrialProgress | null;
   catalog: TrialCatalog;
@@ -163,14 +166,6 @@ function PlansView({
                 and the map move into your family account.
               </li>
             </ul>
-            <a
-              className={styles.esa}
-              href={ESA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Paying with education savings funds?
-            </a>
             <div className={styles.actions}>
               <Button
                 variant="primary"
@@ -201,8 +196,10 @@ function PlansView({
         ) : (
           <>
             <p className={styles.lede}>
-              Enrollment isn’t open yet. Your free practice stays saved on this
-              device.
+              {arkansas
+                ? "Card checkout isn’t available."
+                : "Enrollment isn’t open yet."}{" "}
+              Your free practice stays saved on this device.
             </p>
             <div className={styles.actions}>
               <Link to="/try/map" className={buttonClass("primary")}>
@@ -210,6 +207,20 @@ function PlansView({
               </Link>
             </div>
           </>
+        )}
+        {arkansas ? (
+          <Link className={styles.esa} to="/purchase/arkansas-efa">
+            Use Arkansas EFA funds
+          </Link>
+        ) : (
+          <a
+            className={styles.esa}
+            href={ESA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Paying with education savings funds?
+          </a>
         )}
       </section>
       <Dialog

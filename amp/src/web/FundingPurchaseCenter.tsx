@@ -1,3 +1,8 @@
+import {
+  forgetFundedPurchase,
+  fundedAttribution,
+  type CampaignSearch,
+} from "./lib/funded-entry";
 import { useLoggedError, requestMessage } from "./feedback";
 import { Select } from "./PremiumControls";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -15,6 +20,8 @@ interface Props {
   /** Selections made on the "how to pay" screen, used when available. */
   preferredOfferId?: string;
   preferredLearnerId?: string;
+  program?: { id: string; jurisdiction: string; name: string };
+  campaignSearch?: CampaignSearch;
 }
 const errors: Record<string, string> = {
   verified_consent_required:
@@ -63,6 +70,8 @@ export function FundingPurchaseCenter({
   onClose,
   preferredOfferId,
   preferredLearnerId,
+  program,
+  campaignSearch = {},
 }: Props) {
   const [offers, setOffers] = useState<PublicFundingOffer[]>([]),
     [requests, setRequests] = useState<PublicFundingRequest[]>([]);
@@ -151,14 +160,27 @@ export function FundingPurchaseCenter({
       json<{ requests: PublicFundingRequest[] }>("/requests"),
     ]);
     if (!current(active)) return;
-    setOffers(a.offers);
-    setRequests(b.requests);
+    const matching = a.offers.filter(
+      (offer) =>
+        !program ||
+        (offer.programId === program.id &&
+          offer.jurisdiction === program.jurisdiction),
+    );
+    setOffers(matching);
+    setRequests(
+      b.requests.filter(
+        (request) =>
+          !program ||
+          (request.offer.programId === program.id &&
+            request.offer.jurisdiction === program.jurisdiction),
+      ),
+    );
     setOfferId((old) =>
-      a.offers.some((o) => o.id === old)
+      matching.some((o) => o.id === old)
         ? old
-        : a.offers.some((o) => o.id === preferredOfferId)
+        : matching.some((o) => o.id === preferredOfferId)
           ? preferredOfferId!
-          : (a.offers[0]?.id ?? ""),
+          : (matching[0]?.id ?? ""),
     );
     setLoading(false);
   }
@@ -225,8 +247,13 @@ export function FundingPurchaseCenter({
       offerRevision: offer.revision,
       learnerId,
       idempotencyKey: key,
+      ...(offer.programId === "ar-efa" && offer.jurisdiction === "AR"
+        ? { campaignAttribution: fundedAttribution(campaignSearch) }
+        : {}),
     });
     if (!current(active)) return;
+    if (offer.programId === "ar-efa" && offer.jurisdiction === "AR")
+      forgetFundedPurchase(identity);
     await refresh();
     if (current(active)) setSelected(created.id);
   }
@@ -264,7 +291,7 @@ export function FundingPurchaseCenter({
     <section className="funding-center" aria-label="Education fund purchases">
       <header className="funding-heading">
         <h1 ref={heading} tabIndex={-1}>
-          {selected ? "Purchase request" : "Education funds"}
+          {selected ? "Purchase request" : (program?.name ?? "Education funds")}
         </h1>
         <button
           onClick={() => {
@@ -434,7 +461,7 @@ export function FundingPurchaseCenter({
               <>
                 <label htmlFor="funding-offer">Program and product</label>
                 <Select
-                  aria-label="Program and product"
+                  aria-label={`Program and product: ${offer ? `${offer.programName} · ${offer.productTitle}` : "Choose"}`}
                   id="funding-offer"
                   value={offerId}
                   onValueChange={(e) => {
@@ -451,7 +478,7 @@ export function FundingPurchaseCenter({
                 </Select>
                 <label htmlFor="funding-learner">Learner</label>
                 <Select
-                  aria-label="Learner"
+                  aria-label={`Learner: ${learners.find((entry) => entry.id === learnerId)?.name ?? "Choose"}`}
                   id="funding-learner"
                   value={learnerId}
                   onValueChange={(e) => {
@@ -494,8 +521,9 @@ export function FundingPurchaseCenter({
               </>
             ) : (
               <p>
-                No funded offers are available. Return to family access to see
-                other purchase options.
+                {program
+                  ? `No ${program.name} offers are available. Refresh to check again or return to purchase help.`
+                  : "No funded offers are available. Return to family access to see other purchase options."}
               </p>
             )}
             {!!requests.length && (

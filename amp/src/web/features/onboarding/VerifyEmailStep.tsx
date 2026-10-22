@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import type { SignedInMe } from "../../../account/contracts";
+import { continuationUrl } from "../../lib/funded-entry";
 import { accountClient } from "../../account-client";
 import { AppError } from "../../lib/AppError";
 import type { AuthSession } from "../../auth";
@@ -20,11 +21,12 @@ export function VerifyEmailStep({
   me: SignedInMe;
 }) {
   const email = me.account.email ?? "";
+  const location = useLocation();
   const verification = useMutation({
     mutationFn: async () => {
       const result = await accountClient.sendVerificationEmail({
         email,
-        callbackURL: "/start/plan",
+        callbackURL: continuationUrl(location.search, "/start/plan"),
       });
       if (result.error) {
         const error = new AppError(

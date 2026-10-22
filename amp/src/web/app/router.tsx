@@ -7,6 +7,7 @@ import {
   lazyRouteComponent,
   Outlet,
   redirect,
+  retainSearchParams,
   useRouter,
 } from "@tanstack/react-router";
 import { z } from "zod";
@@ -22,10 +23,16 @@ import {
   startDestination,
   startNavigation,
 } from "../features/onboarding/guard";
+import {
+  campaignSearch,
+  continuationSearch,
+  type CampaignSearch,
+} from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
 const searchSchema = z
   .object({
-    return: z.enum(["security"]).optional(),
+    return: z.enum(["security", "arkansas-efa"]).optional().catch(undefined),
+    program: z.literal("ar-efa").optional().catch(undefined),
     token: z.string().max(2048).optional(),
     error: z.string().max(200).optional(),
     topic: z.string().max(100).optional(),
@@ -49,7 +56,40 @@ function RouterError({ error }: { error: unknown }) {
 }
 const root = createRootRoute({
   component: Outlet,
-  validateSearch: (search) => searchSchema.parse(search),
+  validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
+    const parsed = searchSchema.parse(search);
+    const { utm_source, utm_medium, utm_campaign, ...rest } = parsed;
+    return {
+      ...rest,
+      utm_source: undefined,
+      utm_medium: undefined,
+      utm_campaign: undefined,
+      ...campaignSearch({ utm_source, utm_medium, utm_campaign }),
+    };
+  },
+  search: {
+    middlewares: [
+      ({ search, next }) => {
+        const result = retainSearchParams<typeof search>([
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "program",
+        ])({ search, next });
+        // Validation merges into raw router search. Explicitly erase rejected
+        // values after retention; omission alone would preserve them.
+        return {
+          ...result,
+          utm_source: undefined,
+          utm_medium: undefined,
+          utm_campaign: undefined,
+          ...campaignSearch(result),
+          program:
+            result.program === "ar-efa" ? ("ar-efa" as const) : undefined,
+        };
+      },
+    ],
+  },
   errorComponent: RouterError,
 });
 const legacy = lazyRouteComponent(() => import("./LegacyApp"), "LegacyApp");
@@ -64,16 +104,27 @@ const start = lazyRouteComponent(
   "StartScreen",
 );
 /** Every /start step runs the one first-run guard against `/me`. */
-async function beforeStart({ location }: { location: { pathname: string } }) {
+async function beforeStart({
+  location,
+}: {
+  location: { pathname: string; search: Record<string, unknown> };
+}) {
+  const search = continuationSearch(location.search);
   const session = await queryClient.ensureQueryData(sessionOptions);
-  if (!session) throw redirect({ to: "/sign-in" });
+  if (!session) throw redirect({ to: "/sign-in", search });
   if (nativeRuntime) return;
   const me = await queryClient.ensureQueryData({
     ...meOptions(session),
     revalidateIfStale: true,
   });
-  const target = startDestination(me, location.pathname, !!chosenPlan());
-  if (target) throw redirect({ ...startNavigation(target), replace: true });
+  const target = startDestination(
+    me,
+    location.pathname,
+    !!chosenPlan(),
+    search.return === "arkansas-efa",
+  );
+  if (target)
+    throw redirect({ ...startNavigation(target), search, replace: true });
 }
 const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
   lazyRouteComponent(() => import("../features/trial"), name);
@@ -199,6 +250,17 @@ const pathways = createRoute({
     "PathwaysScreen",
   ),
 });
+const funded = createRoute({
+  getParentRoute: () => root,
+  path: "/purchase/arkansas-efa",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/funding/FundedEntry"),
+    "FundedEntry",
+  ),
+});
 const fallback = createRoute({
   getParentRoute: () => root,
   path: "/$",
@@ -223,6 +285,7 @@ export const router = createRouter({
     tryMap,
     tryPlans,
     pathways,
+    funded,
     fallback,
   ]),
   history: nativeRuntime
