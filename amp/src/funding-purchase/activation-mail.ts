@@ -109,13 +109,15 @@ export async function deliverFundedActivationMail(
   );
   if (!claimed) return false;
   if (claimed.stopped) return true;
-  const eligible = await repository.transaction(
+  const checkedAt = performance.now();
+  const budget = await repository.transaction(
     candidate.account_id,
     async (client) => {
       await currentPolicy(client, policy);
       const check = (
         await client.query(
-          `SELECT u.email,u."emailVerified",c.grant_state,l.deleted_at
+          `SELECT u.email,u."emailVerified",c.grant_state,l.deleted_at,
+        EXTRACT(EPOCH FROM (LEAST(o.lease_until,o.first_dispatch_at+interval '23 hours')-clock_timestamp()))*1000 AS remaining
       FROM amp_funded_activation_outbox o JOIN amp_funding_requests r ON r.id=o.request_id
       JOIN amp_commerce_orders c ON c.id=r.order_id JOIN amp_learners l ON l.id=r.learner_id
       JOIN amp_auth_users u ON 'amp|' || u.id=r.account_id
@@ -125,18 +127,28 @@ export async function deliverFundedActivationMail(
           [candidate.request_id, claimed.lease],
         )
       ).rows[0];
-      return (
+      const eligible =
         !!check &&
         check.email === claimed.mail.recipient &&
         check.emailVerified === true &&
         !check.deleted_at &&
         check.grant_state?.status === "active" &&
         Date.parse(check.grant_state.endsAt) > Date.now() &&
-        (await learningConsentActive(client, candidate.account_id))
-      );
+        (await learningConsentActive(client, candidate.account_id));
+      return eligible
+        ? Math.min(
+            Number(check.remaining),
+            Date.parse(check.grant_state.endsAt) - Date.now(),
+            Date.parse(policy.review.expiresAt) - Date.now(),
+          )
+        : 0;
     },
   );
-  if (!eligible) return true;
+  const remaining = Math.min(
+    10_000,
+    budget - (performance.now() - checkedAt) - 2000,
+  );
+  if (remaining <= 0) return true;
   // Privacy changes after dispatch cannot recall a transactional message. It
   // contains no learner name, bearer token or grant authority.
   const controller = new AbortController();
@@ -149,7 +161,7 @@ export async function deliverFundedActivationMail(
         timer = setTimeout(() => {
           controller.abort();
           resolve({ kind: "unknown" });
-        }, 10_000);
+        }, remaining);
       }),
     ]);
   } catch {
