@@ -136,13 +136,13 @@ export function classWalletOrderId(transaction: string): string {
   return `classwallet:${digest(transaction)}`;
 }
 /** Exact invoice matching only. Names and email addresses are never used as identity. */
-export function prepareClassWalletProvision(
+export function validateClassWalletPayment(
   row: ClassWalletRow,
-  request: FundingRequest,
+  request: Pick<FundingRequest, "id" | "offer" | "createdAt">,
   config: ClassWalletConfig,
   at: string,
-  previous?: unknown,
 ) {
+  config = classWalletConfigSchema.parse(config);
   if (row["Status"] !== config.settledStatus) fail("not_settled");
   if (
     !z.string().uuid().safeParse(row["Invoice/Quote"]).success ||
@@ -178,14 +178,25 @@ export function prepareClassWalletProvision(
     now = instant(at);
   if (approved < request.createdAt || updated < approved || updated > now)
     fail("invalid_payment_dates");
+  const evidence = `classwallet-report:${digest([row["Transaction ID"], row["Order ID"], request.id, programs[0], gross, net, fee, approved])}`;
+  return { orderId, gross, approved, updated, now, evidence };
+}
+export function prepareClassWalletProvision(
+  row: ClassWalletRow,
+  request: FundingRequest,
+  config: ClassWalletConfig,
+  at: string,
+  previous?: unknown,
+) {
+  const { orderId, gross, approved, updated, now, evidence } =
+    validateClassWalletPayment(row, request, config, at);
   const old =
     previous === undefined ? undefined : fundedProvisionSchema.parse(previous);
-  // Repeated exports can change Last Update. Reuse the committed settlement and activation instants.
+  // Preserve the first committed economic and activation timestamps on retries.
   const activated =
     old?.events.find((e) => e.type === "license.activated")?.occurredAt ?? now;
   const settled =
     old?.events.find((e) => e.type === "order.settled")?.occurredAt ?? updated;
-  const evidence = `classwallet-report:${digest([row["Transaction ID"], row["Order ID"], request.id, programs[0], gross, net, fee, approved])}`;
   const envelope = (type: string, occurredAt: string) => ({
     id: `${orderId}:${type}`,
     orderId,

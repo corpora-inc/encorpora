@@ -1,3 +1,5 @@
+import { loadFundingOffers } from "../src/funding-purchase/config.js";
+import { reconcileClassWalletPayments } from "../src/funding-purchase/classwallet-staging.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
@@ -30,6 +32,10 @@ try {
     connectionTimeoutMillis: 5000,
     statement_timeout: 15000,
   });
+  const payments = await reconcileClassWalletPayments(
+    pool,
+    await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE),
+  );
   let processed = 0;
   while (
     processed < 8 &&
@@ -45,6 +51,7 @@ try {
     JSON.stringify({
       event: "funded-activation-delivery-job",
       processed,
+      payments,
       exceptions,
     }),
   );
