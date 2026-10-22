@@ -79,6 +79,7 @@ def fingerprint(spec):
 
 
 def client_from_config(config):
+    configure_tls()
     from google.ads.googleads.client import GoogleAdsClient
     from google.oauth2.credentials import Credentials
 
@@ -97,6 +98,18 @@ def client_from_config(config):
         use_proto_plus=True,
         version="v26",
     )
+
+
+def configure_tls():
+    """Use the maintained certifi roots for fresh workbench gRPC channels."""
+    import certifi
+    import ssl
+
+    roots = str(Path(certifi.where()).resolve(strict=True))
+    # Fail before authentication if the bundle is missing or malformed. gRPC
+    # otherwise may fall back to its independently bundled, older roots.
+    ssl.create_default_context(cafile=roots)
+    os.environ["GRPC_DEFAULT_SSL_ROOTS_FILE_PATH"] = roots
 
 
 def rows(client, cid, query):
