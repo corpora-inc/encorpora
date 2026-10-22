@@ -15,7 +15,7 @@ The original request keeps its labels across retries. Retrying an unattributed r
 | `order_settled` | The commerce ledger accepts positive settled payment | Settlement event |
 | `refund_completed` | The ledger accepts a completed positive refund | Refund event |
 
-Dates use UTC. Each action counts at most once per request, in the transaction that accepts its evidence. Replayed imports and concurrent retries cannot add a second count. Credit-approved learning access can precede settlement; neither approval nor activation counts as payment. Parent-reported submission and refund requests do not count as settled or refunded money. Counts from different date windows are not a same-cohort conversion rate. These are order counts, not gross receipts, net revenue or refund amounts.
+Dates use UTC. Each action counts at most once per request, in the transaction that accepts its evidence. Replayed imports and concurrent retries cannot add a second count. Credit-approved learning access can precede settlement; neither approval nor activation counts as payment. Parent-reported submission and refund requests do not count as settled or refunded money. Counts from different date windows are not a same-cohort conversion rate. These are order counts. Payment amounts are reported separately in `arkansasCash`.
 
 Daily aggregate rows contain only date, campaign, source, medium, action and count. Labels and deduplication markers reside on the existing funding request, separate from learning records. Unconverted requests expire under the funding-request retention rule; linked requests follow the financial-record retention period. Aggregate historical preparation totals survive deletion of an expired request. The parent’s private family export includes retained campaign labels. It does not expose the internal deduplication markers.
 
@@ -40,3 +40,11 @@ When consent starts, a pending funded-purchase continuation is stored in this br
 The public invoice CTA remains the supported email route until the live offer and consent configuration have passed a complete purchase check. This entry point does not establish live offer readiness.
 
 `npm run test:funded-entry-ui` exercises signup, email verification, consent continuation in a separate tab, learner setup, quote retries, privacy signals, unavailable offers and mobile layouts against synthetic services. Funding API database tests verify the actual authorization and financial counters separately.
+
+## Payment amounts
+
+`report:campaign` includes `arkansasCash`: daily gross settled payments, completed refunds and their difference, drawn from accepted commerce events linked to retained Arkansas EFA requests. This read-only report requires no additional migration. It includes payments for requests created before the selected window. Dates follow the evidence in UTC, not import time; today is included and future days are excluded. Replaying an accepted import does not add another payment. Approval, license activation, parent submission and pending refund requests contribute no cash.
+
+Each row contains `day`, `currency`, optional fixed `campaign`, `source`, `medium` and `creative` labels, and `grossMinor`, `refundedMinor` and `netMinor`. Amounts are exact integer strings in the currency's minor unit (USD cents); use decimal or integer arithmetic when consuming them. Sum rows only within the same currency. Null campaign labels identify unattributed payments. Missing creative labels stay null. Invalid stored attribution is treated as unattributed and cannot emit arbitrary text.
+
+These rows partition the included cash movements; the creative rows are not extra payments to add to a separate campaign total. Refunds can make a reporting period negative when settlement occurred earlier. The report excludes unlinked payments and other programs, fees and ad spend. Net cash is neither profit nor recognized revenue, and this report alone cannot establish return on ad spend or reconcile the merchant's bank account. It emits no account, learner, order, invoice or provider identifiers and sends nothing to an ad platform.
