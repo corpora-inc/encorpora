@@ -189,7 +189,7 @@ export function FundingPage({
             <p>{page.eligibility}</p>
           </section>
           <section aria-labelledby="program-steps">
-            <h2 id="program-steps">{directPay ? "How to pay with EFA funds" : "How to use this route"}</h2>
+            <h2 id="program-steps">{directPay ? "How to pay with program funds" : "How to use this route"}</h2>
             <p>{funding.instructions}</p>
             <ol className="funding-steps">
               {page.steps.map((step, i) => (
