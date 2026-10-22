@@ -20,7 +20,7 @@ Family → Privacy → Purchase measurement is optional and defaults off. It req
 
 The current permission must predate the payment and match the queued revision, notice, dates and confirmed address at delivery. Email or notice changes require a fresh grant. A regrant cannot revive a cancelled preparation or authorize older payments. The response preserves the legacy `noticeVersion` field for shipped clients; `currentNoticeVersion` carries the actual server notice. Stale forms cannot grant a newer notice or undo withdrawal.
 
-Eligible Stripe payments are verified live initial subscription invoices with matching merchant, checkout and account bindings, complete latest evidence and no reconciliation hold. Renewals, test payments and zero-net unsent purchases are excluded. Successful refunds reduce value; pending refunds block delivery. Arkansas EFA payments require a linked funding request whose retained offer identifies Arkansas and the configured namespace, plus an accepted settlement event. Approval, invoice preparation, license access and unlinked imports do not establish settlement.
+Eligible Stripe payments are verified live initial subscription invoices with matching merchant, checkout and account bindings, complete latest evidence and no reconciliation hold. Renewals, test payments and zero-net unsent purchases are excluded. Successful refunds reduce value; pending refunds block delivery. Arkansas EFA and Arizona ESA payments require a linked funding request whose retained offer identifies the matching state, program and configured payment namespace, plus an accepted settlement event. Approval, invoice preparation, license access and unlinked imports do not establish settlement.
 
 ## Data and retention
 
@@ -53,10 +53,13 @@ Store a reviewed configuration outside Git with mode `0600`. Replace these synth
   },
   "sources": {
     "stripeNamespace": "acct_example:live",
-    "efaChannelReference": "example-program-namespace"
+    "efaChannelReference": "example-arkansas-namespace",
+    "azEsaChannelReference": "example-arizona-namespace"
   }
 }
 ```
+
+`efaChannelReference` selects Arkansas EFA settlements; `azEsaChannelReference` selects Arizona ESA settlements. Each requires a linked request whose program, jurisdiction and payment channel match. An Arizona payment cannot qualify through the Arkansas setting, even if both programs use the same payment provider. Deploy migration 0041 before running the Arizona collector. Meta’s Arizona exporter requires separate support.
 
 Set `AMP_DATABASE_URL`, `AMP_GOOGLE_MEASUREMENT_CONFIG` (configuration path) and, for delivery/diagnostics, `AMP_GOOGLE_MEASUREMENT_CREDENTIALS` (the separate OAuth credential path). Files must be private regular files; symlinks, broad permissions and oversized files are rejected. Do not put credentials in command arguments or public logs.
 

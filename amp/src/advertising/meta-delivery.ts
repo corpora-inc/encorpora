@@ -153,6 +153,9 @@ export async function queueMetaPayment(
       ? { kind: "stripe", id: paymentId }
       : paymentId,
   );
+  // Arizona delivery requires its own retained source identity and collector.
+  if (reference.kind === "arizona-esa")
+    return { outcome: "ineligible" as const };
   const namespace =
     reference.kind === "stripe"
       ? config.sources.stripeNamespace

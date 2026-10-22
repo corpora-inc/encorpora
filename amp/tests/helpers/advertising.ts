@@ -13,6 +13,7 @@ export const destination = {
 export const sources = {
   stripeNamespace: "acct_fixture:live",
   efaChannelReference: "synthetic-ar-program",
+  azEsaChannelReference: "synthetic-az-program",
 };
 export const day = 86400000;
 export const paidAt = () => Math.floor((Date.now() - day) / 1000);
@@ -146,14 +147,20 @@ export async function esa(
     settled?: boolean;
     program?: string;
     owner?: string;
+    kind?: "arkansas-efa" | "arizona-esa";
   } = {},
 ) {
+  const kind = options.kind ?? "arkansas-efa";
+  const channel =
+    kind === "arizona-esa"
+      ? sources.azEsaChannelReference
+      : sources.efaChannelReference;
   const id = randomUUID(),
     at = new Date(Date.now() - day).toISOString();
   const base = {
     orderId: id,
     channel: "esa" as const,
-    channelReference: sources.efaChannelReference,
+    channelReference: channel,
     occurredAt: at,
   };
   await applyCommerceEvent(pool, {
@@ -171,7 +178,7 @@ export async function esa(
         endsAt: new Date(Date.now() + 365 * day).toISOString(),
       },
       channel: "esa",
-      channelReference: sources.efaChannelReference,
+      channelReference: channel,
       externalOrderId: randomUUID(),
       currency: "USD",
       amountMinor: 49900,
@@ -196,12 +203,13 @@ export async function esa(
         options.owner ?? "amp|parent",
         randomUUID(),
         {
-          programId: options.program ?? "ar-efa",
-          jurisdiction: "AR",
-          channelReference: sources.efaChannelReference,
+          programId:
+            options.program ?? (kind === "arizona-esa" ? "az-esa" : "ar-efa"),
+          jurisdiction: kind === "arizona-esa" ? "AZ" : "AR",
+          channelReference: channel,
         },
         id,
       ],
     );
-  return { reference: { kind: "arkansas-efa" as const, id }, base };
+  return { reference: { kind, id }, base };
 }
