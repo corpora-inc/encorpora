@@ -372,7 +372,6 @@ test(
             provider: "meta",
             identifiers: {
               fbclid: "Same_Click",
-              fbc: `fb.1.${+original + 2000}.Same_Click`,
               fbp,
             },
           },
@@ -451,5 +450,84 @@ test(
           [randomUUID(), "e".repeat(64)],
         );
       });
+    }),
+);
+
+test(
+  "concurrent capture samples its clock after the journey lock",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const seed = await transaction(pool, (client) =>
+        retainAdClick(client, {
+          provider: "meta",
+          identifiers: { fbclid: "Seed" },
+        }),
+      );
+      const a = await pool.connect();
+      const b = await pool.connect();
+      let waiting: Promise<unknown> | undefined;
+      try {
+        await a.query("BEGIN");
+        await b.query("BEGIN");
+        await b.query("SET LOCAL lock_timeout='5s'");
+        await a.query("SELECT id FROM amp_ad_click_journeys FOR UPDATE");
+        let reached!: () => void;
+        const barrier = new Promise<void>((resolve) => {
+          reached = resolve;
+        });
+        // Both operations use actual PostgreSQL clients; signal immediately before
+        // B requests the row lock held by A. No clock or SQL results are mocked.
+        const blockedClient = new Proxy(b, {
+          get(target, property) {
+            if (property === "query")
+              return (sql: string, values?: unknown[]) => {
+                if (
+                  typeof sql === "string" &&
+                  sql.includes("FROM amp_ad_click_journeys") &&
+                  sql.includes("FOR UPDATE")
+                )
+                  reached();
+                return target.query(sql, values);
+              };
+            return Reflect.get(target, property);
+          },
+        }) as PoolClient;
+        waiting = retainAdClick(
+          blockedClient,
+          { provider: "meta", identifiers: { fbclid: "Racing_Click" } },
+          seed.token,
+        );
+        // Attach an immediate rejection handler while A performs its transaction.
+        const outcome = waiting.then(
+          (value) => ({ value }),
+          (error) => ({ error }),
+        );
+        await barrier;
+        await a.query("SELECT pg_sleep(0.02)");
+        await retainAdClick(
+          a,
+          { provider: "meta", identifiers: { fbclid: "Racing_Click" } },
+          seed.token,
+        );
+        await a.query("COMMIT");
+        const result = await outcome;
+        if ("error" in result) throw result.error;
+        await b.query("COMMIT");
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*) FROM amp_ad_click_evidence WHERE identifiers->>'fbclid'='Racing_Click'",
+            )
+          ).rows[0].count,
+          "1",
+        );
+      } finally {
+        await a.query("ROLLBACK").catch(() => {});
+        await b.query("ROLLBACK").catch(() => {});
+        await waiting?.catch(() => {});
+        a.release();
+        b.release();
+      }
     }),
 );

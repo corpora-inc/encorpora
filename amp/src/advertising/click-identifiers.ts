@@ -69,14 +69,7 @@ export function providerClickIdentifiers(
     fbc && (!fbclid || fbc.split(".").slice(3).join(".") === fbclid);
   return {
     ...(matchingFbc
-      ? {
-          fbc: fbc!
-            .split(".")
-            .map((part, index) =>
-              index === 2 ? String(Math.min(Number(part), +observedAt)) : part,
-            )
-            .join("."),
-        }
+      ? { fbc }
       : fbclid
         ? { fbc: `fb.1.${+observedAt}.${fbclid}` }
         : {}),

@@ -30,8 +30,8 @@ millisecond. Clicks observed after order creation cannot be backfilled.
 
 `orderClickEvidence` resolves identifiers through the owned order. Meta `fbc`
 uses a matching captured cookie or the actual `fbclid` and original observation
-time. A matching cookie dated after the first observation is bounded to that
-observation. It never uses the settlement time as the click time and never fabricates
+time. Valid matching cookies are preserved verbatim, including when cookie
+creation follows the first server observation. It never uses the settlement time as the click time and never fabricates
 `fbp`. A captured click supersedes a cookie referring to a different click.
 
 Expiry deletes raw evidence and leaves null order bindings, preventing later

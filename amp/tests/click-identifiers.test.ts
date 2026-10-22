@@ -25,6 +25,18 @@ test("Meta fbc uses the original observed click time and never invents fbp", () 
     fbc: `fb.1.${+observed}.Actual_Click_ID`,
   });
   const fbc = `fb.1.${+observed - 1000}.Actual_Click_ID`;
+  const laterCookie = `fb.1.${+observed + 1000}.Actual_Click_ID`;
+  assert.deepEqual(
+    providerClickIdentifiers(
+      {
+        provider: "meta",
+        identifiers: { ...input.identifiers, fbc: laterCookie },
+      },
+      observed,
+      new Date(+observed + 2000),
+    ),
+    { fbc: laterCookie },
+  );
   assert.deepEqual(
     providerClickIdentifiers(
       { provider: "meta", identifiers: { ...input.identifiers, fbc } },

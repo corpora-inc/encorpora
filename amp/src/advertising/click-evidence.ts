@@ -33,18 +33,19 @@ export async function retainAdClick(
     (token !== undefined && !tokenSchema.safeParse(token).success)
   )
     throw new Error("invalid_click_evidence");
-  const now = (await client.query("SELECT clock_timestamp() AS now")).rows[0]
-    .now as Date;
-  // Validate timestamp-bearing Meta fields before persisting anything.
-  providerClickIdentifiers(parsed.data, now);
   let journey = token
     ? (
         await client.query(
-          "SELECT id,expires_at,account_id FROM amp_ad_click_journeys WHERE token_digest=$1 AND expires_at>$2 FOR UPDATE",
-          [digest(token), now],
+          "SELECT id,expires_at,account_id FROM amp_ad_click_journeys WHERE token_digest=$1 AND expires_at>clock_timestamp() FOR UPDATE",
+          [digest(token)],
         )
       ).rows[0]
     : null;
+  // Sample after the lock: another capture may have committed while we waited.
+  const now = (await client.query("SELECT clock_timestamp() AS now")).rows[0]
+    .now as Date;
+  providerClickIdentifiers(parsed.data, now);
+  if (journey && +journey.expires_at <= +now) journey = null;
   const previousJourneyId = journey?.id ?? null;
   // An anonymous capture cannot establish who is using a previously bound
   // browser. Rotate rather than append new activity to that parent account.
