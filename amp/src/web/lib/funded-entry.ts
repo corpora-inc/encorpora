@@ -1,11 +1,16 @@
 import { z } from "zod";
-import { CAMPAIGN_MEDIA, CAMPAIGN_SOURCES } from "../../analytics/campaign";
+import {
+  CAMPAIGN_MEDIA,
+  CAMPAIGN_SOURCES,
+  CAMPAIGN_CREATIVES,
+} from "../../analytics/campaign";
 
 export const fundedPath = "/purchase/arkansas-efa" as const;
 const labels = z.object({
   utm_campaign: z.literal("ar-efa-launch"),
   utm_source: z.enum(CAMPAIGN_SOURCES),
   utm_medium: z.enum(CAMPAIGN_MEDIA),
+  utm_content: z.enum(CAMPAIGN_CREATIVES).optional().catch(undefined),
 });
 export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
@@ -24,7 +29,9 @@ export function campaignSearch(
   optedOut = measurementOptOut(),
 ): CampaignSearch {
   const parsed = labels.safeParse(search);
-  return !optedOut && parsed.success ? parsed.data : {};
+  if (optedOut || !parsed.success) return {};
+  const { utm_content, ...required } = parsed.data;
+  return { ...required, ...(utm_content ? { utm_content } : {}) };
 }
 
 /** Only these two internal destinations can survive authentication. */
@@ -64,6 +71,7 @@ export function fundedAttribution(search: Record<string, unknown>) {
         campaign: safe.utm_campaign,
         source: safe.utm_source,
         medium: safe.utm_medium,
+        ...(safe.utm_content ? { creative: safe.utm_content } : {}),
       }
     : undefined;
 }

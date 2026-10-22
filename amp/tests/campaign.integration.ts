@@ -52,6 +52,47 @@ test(
         await pool.query("SELECT action,count FROM amp_campaign_daily")
       ).rows;
       assert.deepEqual(rows, [{ action: "invoice_click", count: "2" }]);
+      for (const creative of [
+        "efa-facebook-feed-v1",
+        "efa-facebook-feed-v1",
+        "efa-facebook-vertical-v1",
+      ]) {
+        assert.equal(
+          (
+            await app.inject({
+              method: "POST",
+              url: "/api/v1/campaign-events",
+              headers: { origin: "https://example.test" },
+              payload: { ...payload, creative },
+            })
+          ).statusCode,
+          202,
+        );
+      }
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT creative,count FROM amp_campaign_creative_daily ORDER BY creative",
+          )
+        ).rows,
+        [
+          { creative: "efa-facebook-feed-v1", count: "2" },
+          { creative: "efa-facebook-vertical-v1", count: "1" },
+        ],
+      );
+      assert.equal(
+        (await pool.query("SELECT count FROM amp_campaign_daily")).rows[0]
+          .count,
+        "5",
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_campaign_creative_daily WHERE day != (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date",
+          )
+        ).rows[0].n,
+        0,
+      );
       assert.equal(
         (await pool.query("SELECT count(*) FROM amp_funnel_visitors")).rows[0]
           .count,

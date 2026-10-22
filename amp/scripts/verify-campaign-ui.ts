@@ -38,7 +38,7 @@ try {
   );
   await page.goto(
     origin +
-      "/?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&email=do-not-record",
+      "/?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&utm_content=efa-facebook-feed-v1&email=do-not-record",
   );
   assert.equal((await response).status(), 202);
   await page.evaluate(() =>
@@ -61,6 +61,25 @@ try {
   ).rows;
   assert.equal(rows.length, 3);
   assert.ok(rows.every((r) => r.count === "1"));
+  const creatives = (
+    await pool.query(
+      "SELECT creative,action,count FROM amp_campaign_creative_daily ORDER BY action",
+    )
+  ).rows;
+  assert.equal(creatives.length, 3);
+  assert.ok(
+    creatives.every(
+      (r) => r.count === "1" && r.creative === "efa-facebook-feed-v1",
+    ),
+  );
+  const href = await page
+    .locator('[data-campaign-action="try"]')
+    .getAttribute("href");
+  assert.equal(
+    new URL(href!).searchParams.get("utm_content"),
+    "efa-facebook-feed-v1",
+  );
+  assert.equal(href!.includes("do-not-record"), false);
   assert.equal(
     (await pool.query("SELECT count(*) FROM amp_funnel_visitors")).rows[0]
       .count,

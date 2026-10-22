@@ -33,3 +33,26 @@ test("GPC and DNT suppress collection and campaign forwarding", () => {
     assert.equal(result.anchor.href,"https://app.example.test/try/");
   }
 });
+test("known creative labels reach the aggregate and destination, arbitrary text does not", () => {
+  const tags="?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch";
+  const known=run({},tags+"&utm_content=efa-facebook-feed-v1");
+  assert.equal(JSON.parse(known.sent[0].options.body).creative,"efa-facebook-feed-v1");
+  assert.equal(new URL(known.anchor.href).searchParams.get("utm_content"),"efa-facebook-feed-v1");
+  for (const query of [tags+"&utm_content=private%40example.test", "?utm_content=efa-math"]) {
+    const unknown=run({},query);
+    assert.equal(JSON.parse(unknown.sent[0].options.body).creative,undefined);
+    assert.equal(new URL(unknown.anchor.href).searchParams.has("utm_content"),false);
+    assert.equal(JSON.stringify(unknown.sent).includes("private"),false);
+  }
+});
+test("the public client recognizes every server-owned creative label", () => {
+  const contract=readFileSync(new URL("../../amp/src/analytics/campaign.ts",import.meta.url),"utf8");
+  const declaration=contract.match(/export const CAMPAIGN_CREATIVES = \[([\s\S]*?)\] as const/);
+  assert.ok(declaration);
+  const labels=[...declaration[1].matchAll(/"([a-z0-9-]+)"/g)].map(m=>m[1]);
+  assert.ok(labels.length>0);
+  for(const label of labels){
+    const result=run({},`?utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&utm_content=${label}`);
+    assert.equal(JSON.parse(result.sent[0].options.body).creative,label);
+  }
+});

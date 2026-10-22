@@ -14,6 +14,8 @@
     source: pick("utm_source", ["facebook", "instagram", "google", "email", "youtube"], "direct"),
     medium: pick("utm_medium", ["paid-social", "cpc", "email", "organic-social"], "none"),
   };
+  const creative = pick("utm_content", ["efa-math", "homeschool-math", "efa-product-v1", "efa-facebook-feed-v1", "efa-facebook-vertical-v1", "efa-instagram-vertical-v1"], undefined);
+  if (fields.campaign === "ar-efa-launch" && creative) fields.creative = creative;
   const send = action => {
     try {
       void fetch(script.dataset.campaignEndpoint, {
@@ -28,6 +30,7 @@
     for (const [key, value] of [["utm_source", fields.source], ["utm_medium", fields.medium], ["utm_campaign", fields.campaign]]) {
       if (value !== "none" && value !== "direct") url.searchParams.set(key, value);
     }
+    if (fields.creative) url.searchParams.set("utm_content", fields.creative);
     anchor.href = url.href;
   }
   root.addEventListener("click", event => {

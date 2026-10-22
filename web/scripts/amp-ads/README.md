@@ -138,6 +138,8 @@ Readback checks delivery status, budget, destination, identity, copy and targeti
 
 `report` reads only campaigns whose names begin `AMP | AR | ` and exports daily ad/placement spend, impressions, reach, clicks and attributed actions/values for an inclusive date range of at most 93 days. It requests seven-day click attribution and dates actions by conversion time. Preserve the query metadata with the rows. Recent attribution can change, reach cannot be summed across rows, and platform purchase values must be reconciled with verified settlements and refunds. No parent identifiers or learner data are requested.
 
+Meta specifications generate `utm_content` from the campaign slug. AMP's first-party creative breakdown accepts only the fixed labels in `amp/src/analytics/campaign.ts`; the public landing client uses the same allowlist. Add a reviewed label in both places before testing a new creative, or it will contribute only to coarse campaign counts. This attribution is distinct from Meta's own ad IDs and reporting.
+
 API fields are checked against Meta's [official Python Business SDK](https://github.com/facebook/facebook-python-business-sdk/tree/main/facebook_business/adobjects), including [campaign/ad-set/upload operations](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adaccount.py) and [creative video data](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adcreativevideodata.py).
 
 ## MCP access

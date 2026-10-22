@@ -47,6 +47,21 @@ test("privacy signals remove measurement without losing the funded destination",
     expect(fundedAttribution(campaign)).toBeUndefined();
   }
 });
+test("fixed creatives survive continuation while unknown creative text is discarded", () => {
+  const known = { ...campaign, utm_content: "efa-facebook-feed-v1" };
+  expect(campaignSearch(known)).toEqual(known);
+  expect(fundedAttribution(known)).toEqual({
+    campaign: "ar-efa-launch",
+    source: "facebook",
+    medium: "paid-social",
+    creative: "efa-facebook-feed-v1",
+  });
+  expect(
+    campaignSearch({ ...campaign, utm_content: "private@example.test" }),
+  ).toEqual(campaign);
+  vi.stubGlobal("navigator", { globalPrivacyControl: true });
+  expect(campaignSearch(known)).toEqual({});
+});
 test("authentication returns only to fixed internal paths", () => {
   for (const value of [
     "https://evil.example",
