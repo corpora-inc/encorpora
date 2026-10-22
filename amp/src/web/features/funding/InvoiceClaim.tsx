@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { z } from "zod";
@@ -122,9 +123,36 @@ export function InvoiceClaim({
                 {busy ? "Connecting…" : "Use this invoice"}
               </Button>
             )}
+            <Button
+              variant="quiet"
+              disabled={busy}
+              onClick={async () => {
+                setBusy(true);
+                setError("");
+                try {
+                  await request(
+                    `/funding/invoices/${invoice.id}/discard`,
+                    z.object({ discarded: z.boolean() }),
+                    { token: session.token, body: { notSubmitted: true } },
+                  );
+                  await invoices.refetch();
+                } catch (reason) {
+                  setError(
+                    reason instanceof Error
+                      ? reason.message
+                      : "The invoice could not be discarded.",
+                  );
+                } finally {
+                  setBusy(false);
+                }
+              }}
+            >
+              Not submitted? Discard this invoice
+            </Button>
           </div>
         ))}
         <p role="alert">{error}</p>
+        <Link to="/">Back to practice</Link>
       </section>
     </PageFrame>
   );

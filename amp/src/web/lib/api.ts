@@ -3,6 +3,8 @@ import { AppError } from "./AppError";
 const messages: Record<string, string> = {
   confirmed_parent_email_required:
     "Sign in and confirm the parent email used on your invoice.",
+  invoice_cannot_discard:
+    "This invoice cannot be discarded. Check its payment status before making another request.",
   invoice_unavailable:
     "This invoice needs a billing review. Contact support with your invoice number before making another payment.",
   invoice_already_claimed:

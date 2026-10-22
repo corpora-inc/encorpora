@@ -106,6 +106,14 @@ export async function registerFundingPurchaseRoutes(
         }),
       ),
     }));
+    scope.post("/api/v1/funding/invoices/:id/discard", async (request) => {
+      z.strictObject({ notSubmitted: z.literal(true) }).parse(request.body);
+      await invoices.discard(
+        await options.authenticate(request),
+        params.parse(request.params).id,
+      );
+      return { discarded: true };
+    });
     scope.post("/api/v1/funding/invoices/:id/claim", async (request) => {
       const account = await options.authenticate(request);
       const { learnerId } = z

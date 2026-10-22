@@ -168,6 +168,17 @@ export class FundingInvoiceRepository {
       return rows.rows.map((row) => rowIntent(row));
     });
   }
+  async discard(account: string, id: string): Promise<void> {
+    await this.funding.transaction(account, async (client) => {
+      const email = await this.verifiedEmail(client, account);
+      const result = await client.query(
+        "UPDATE amp_funding_invoice_intents SET state='cancelled' WHERE id=$1 AND parent_email=$2 AND claimed_request_id IS NULL AND received_payment_at IS NULL AND state='prepared' RETURNING id",
+        [id, email],
+      );
+      if (!result.rowCount)
+        throw new FundingPurchaseError(409, "invoice_cannot_discard");
+    });
+  }
   async claim(
     account: string,
     id: string,

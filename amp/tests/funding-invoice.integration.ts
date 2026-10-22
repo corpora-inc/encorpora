@@ -232,3 +232,31 @@ test(
       assert.ok(await invoices.readInvoiceIntent(other.id));
     }),
 );
+
+test(
+  "only matching verified parent may discard unsubmitted unpaid invoice",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      const own = await invoices.create(input());
+      await assert.rejects(
+        invoices.discard("amp|other", own.id),
+        /invoice_cannot_discard/,
+      );
+      await invoices.discard("amp|owner", own.id);
+      assert.equal((await invoices.list("amp|owner")).length, 0);
+      assert.equal(
+        (await invoices.readInvoiceIntent(own.id))?.state,
+        "cancelled",
+      );
+      const paid = await invoices.create(input());
+      await pool.query(
+        "UPDATE amp_funding_invoice_intents SET received_payment_at=now() WHERE id=$1",
+        [paid.id],
+      );
+      await assert.rejects(
+        invoices.discard("amp|owner", paid.id),
+        /invoice_cannot_discard/,
+      );
+    }),
+);
