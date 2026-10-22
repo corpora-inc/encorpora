@@ -5,7 +5,11 @@ import type { AuthSession } from "../../auth";
 import { BirthYearPrompt } from "../../BirthYearPrompt";
 import { useLearnerStore } from "../../learner-store";
 import { AppError } from "../../lib/AppError";
-import { continuationSearch, fundedPath } from "../../lib/funded-entry";
+import {
+  continuationSearch,
+  fundedPrograms,
+  isFundedReturn,
+} from "../../lib/funded-entry";
 import { clearStoredTrial, storedTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
@@ -49,7 +53,7 @@ export function LearnerSteps({
     setTrial(null);
   };
   const firstRun = me.next !== "practice";
-  const funded = search.return === "arkansas-efa";
+  const funded = isFundedReturn(search.return);
   const purchase = me.unassignedPurchase;
   const waiting = me.learners.filter((learner) => !learner.entitlement.active);
   useEffect(() => {
@@ -65,13 +69,13 @@ export function LearnerSteps({
     useLearnerStore.getState().select(learnerId);
     draft.clear();
     void navigate(
-      search.return === "arkansas-efa"
-        ? { to: fundedPath, search, replace: true }
+      isFundedReturn(search.return)
+        ? { to: fundedPrograms[search.return].path, search, replace: true }
         : { to: "/$", params: { _splat: "practice" }, replace: true },
     );
   };
   const assign = (learnerId: string) =>
-    purchase && search.return !== "arkansas-efa"
+    purchase && !isFundedReturn(search.return)
       ? claim.mutate(
           { purchaseId: purchase.id, learnerId },
           { onSuccess: () => practice(learnerId) },

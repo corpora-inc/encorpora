@@ -840,12 +840,12 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
         <link rel="stylesheet" href="/assets/katex.min.css" />
         {fundingForPath(route, config)?.page?.presentation?.invoiceForm && <script src="/assets/invoice.js" defer />}
         {route === "/samples/" && <script src="/assets/print.js" defer />}
-        {config.mode === "production" && config.appUrl && route === "/esa/arkansas-efa/" && (
+        {config.mode === "production" && config.appUrl && ["/esa/arkansas-efa/", "/esa/arizona-esa/"].includes(route) && (
           <>
           <script src="/assets/campaign.js" data-campaign-endpoint={new URL("/api/v1/campaign-events", config.appUrl).href} defer />
           </>
         )}
-        {config.mode === "production" && config.appUrl && ["/amp/", "/esa/arkansas-efa/"].includes(route) && (
+        {config.mode === "production" && config.appUrl && ["/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"].includes(route) && (
           <script src="/assets/acquisition.js" data-acquisition-endpoint={new URL("/api/v1/advertising/acquisition", config.appUrl).href} defer />
         )}
       </head>
