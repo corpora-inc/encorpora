@@ -66,7 +66,7 @@
     "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts",
     "dev:content": "tsx watch scripts/content-review.ts",
     "test:funded-entry-ui": "tsx scripts/verify-funded-entry-ui.ts",
-    "test:advertising-ui": "tsx scripts/verify-advertising-permission-ui.ts",
+    "test:advertising-ui": "tsx scripts/verify-advertising-permission-ui.ts && tsx scripts/verify-checkout-privacy-ui.ts",
     "advertising:google": "tsx scripts/google-measurement.ts"
   },
   "dependencies": {

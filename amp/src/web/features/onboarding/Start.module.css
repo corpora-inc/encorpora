@@ -151,3 +151,46 @@
 .yearContainer {
   width: min(100%, var(--width-form));
 }
+
+.purchasePrivacy {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-2);
+}
+.purchasePrivacy summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+  color: var(--color-primary);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+.purchasePrivacy summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-control);
+}
+.purchasePrivacy fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.purchasePrivacy section {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+}
+.purchasePrivacy section + section {
+  border-top: 1px solid var(--color-border);
+}
+.purchasePrivacy h2 {
+  margin: 0;
+  font-size: var(--text-body);
+}
+.privacyLegend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
