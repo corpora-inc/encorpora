@@ -22,6 +22,18 @@ import requests
 
 VERSION = "v26.0"
 
+# Individual v26 controls; standard_enhancements is rejected even with OPT_OUT.
+CREATIVE_FEATURES = (
+    "advantage_plus_creative", "adapt_to_placement", "add_text_overlay", "audio",
+    "description_automation", "dynamic_cta_text", "enhance_cta", "image_animation",
+    "image_auto_crop", "image_background_gen", "image_brightness_and_contrast",
+    "image_enhancement", "image_templates", "image_touchups", "image_uncrop",
+    "inline_comment", "music_generation", "profile_card", "text_generation",
+    "text_optimizations", "text_translation", "translate_voiceover", "video_auto_crop",
+    "video_filtering", "video_highlights", "video_to_image", "video_uncrop",
+    "video_voiceover",
+)
+
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
@@ -241,7 +253,7 @@ def creative(spec, c, p, image_hash, video_id=None):
         story["video_data"] = {**common, "video_id": video_id, "title": spec["headline"], "link_description": spec["description"]}
     else:
         story["link_data"] = {**common, "link": spec["url"], "name": spec["headline"], "description": spec["description"]}
-    return {"name": p["campaign"]["name"] + " | creative", "object_story_spec": story, "url_tags": p["url_tags"], "contextual_multi_ads": {"enroll_status": "OPT_OUT"}, "degrees_of_freedom_spec": {"creative_features_spec": {"standard_enhancements": {"enroll_status": "OPT_OUT"}, "advantage_plus_creative": {"enroll_status": "OPT_OUT"}}}}
+    return {"name": p["campaign"]["name"] + " | creative", "object_story_spec": story, "url_tags": p["url_tags"], "contextual_multi_ads": {"enroll_status": "OPT_OUT"}, "degrees_of_freedom_spec": {"creative_features_spec": {feature: {"enroll_status": "OPT_OUT"} for feature in CREATIVE_FEATURES}}}
 
 
 class Journal:
@@ -313,6 +325,12 @@ def verify(graph, resource, expected):
         target, wanted = actual["targeting"], expected["targeting"]
         if target.keys() != wanted.keys() or target["geo_locations"].keys() != wanted["geo_locations"].keys():
             raise RuntimeError("Unexpected targeting fields require manual review")
+    if "degrees_of_freedom_spec" in expected:
+        # Meta returns additional controls. Never accept an unexpected enrollment.
+        features = actual["degrees_of_freedom_spec"]["creative_features_spec"]
+        if any(not isinstance(value, dict) or value.get("enroll_status") != "OPT_OUT"
+               for value in features.values()):
+            raise RuntimeError("Creative enhancement enrollment requires manual review")
     return actual
 
 
@@ -355,6 +373,15 @@ def apply(graph, c, spec, p, inventory, journal):
             raise RuntimeError("Video processing is not ready; rerun with the same journal after processing")
     cre = creative(spec, c, p, image_hash, video_id)
     creative_id = journal.step("creative", lambda: identifier(graph.call("POST", edge + "/adcreatives", cre)["id"]))
+    # Creation may append a generated suffix. Check identity/content before the
+    # supported name update, journal it, then verify the complete specification.
+    verify(graph, creative_id, {k: v for k, v in cre.items() if k != "name"})
+    def normalize_creative_name():
+        response = graph.call("POST", creative_id, {"name": cre["name"]})
+        if response.get("success") is not True:
+            raise RuntimeError("Creative name update was not confirmed; reconcile before retrying")
+        return {"success": True}
+    journal.step("creative_name", normalize_creative_name)
     verify(graph, creative_id, cre)
     ad = {"name": p["campaign"]["name"] + " | ad", "adset_id": adset_id, "creative": {"creative_id": creative_id}, "status": "PAUSED"}
     ad_id = journal.step("ad", lambda: identifier(graph.call("POST", edge + "/ads", ad)["id"]))

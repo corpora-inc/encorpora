@@ -34,17 +34,30 @@ class FakeGraph:
         self.counter = 1000
         self.fail = None
         self.video_ready = True
+        self.extra_features = {"provider_added_control": {"enroll_status": "OPT_OUT"}}
+        self.creative_override = None
 
     def call(self, method, path, params=None, media=None):
         self.calls.append((method, path, copy.deepcopy(params)))
         if self.fail and path.endswith(self.fail):
             raise RuntimeError("Simulated uncertain response")
         if method == "POST":
+            if path.isdigit():
+                self.objects[path].update(copy.deepcopy(params))
+                return {"success": True}
             self.counter += 1
             key = str(self.counter)
             if path.endswith("/adimages"):
                 return {"images": {"image": {"hash": "a" * 32}}}
             value = copy.deepcopy(params)
+            if path.endswith("/adcreatives"):
+                features = value["degrees_of_freedom_spec"]["creative_features_spec"]
+                if "standard_enhancements" in features:
+                    raise RuntimeError("Deprecated standard_enhancements")
+                features.update(copy.deepcopy(self.extra_features))
+                value["name"] += " provider-generated-suffix"
+                if self.creative_override:
+                    self.creative_override(value)
             if path.endswith("/ads"):
                 value["creative"] = {"id": value["creative"]["creative_id"]}
             if path.endswith("/advideos"):
@@ -161,7 +174,7 @@ class MetaTests(unittest.TestCase):
         try:
             receipt = meta.apply(self.graph, self.config, self.spec, p, {"campaigns": []}, j)
             writes = [c for c in self.graph.calls if c[0] == "POST"]
-            self.assertEqual(len(writes), 5)
+            self.assertEqual(len(writes), 6)
             for _, path, params in writes:
                 if path.endswith(("/campaigns", "/adsets", "/ads")):
                     self.assertEqual(params["status"], "PAUSED")
@@ -171,6 +184,85 @@ class MetaTests(unittest.TestCase):
             self.graph.objects[receipt["campaign_id"]]["status"] = "ACTIVE"
             with self.assertRaises(RuntimeError):
                 meta.apply(self.graph, self.config, self.spec, p, inventory, j)
+        finally:
+            j.close()
+
+    def test_creative_controls_and_generated_name_are_verified_before_ad_creation(self):
+        p = self.plan()
+        j = meta.Journal(self.root / "journal", p["fingerprint"])
+        try:
+            receipt = meta.apply(self.graph, self.config, self.spec, p, {"campaigns": []}, j)
+            created = next(c[2] for c in self.graph.calls if c[1].endswith("/adcreatives"))
+            features = created["degrees_of_freedom_spec"]["creative_features_spec"]
+            self.assertNotIn("standard_enhancements", features)
+            self.assertEqual(len(features), 28)
+            self.assertTrue(all(v == {"enroll_status": "OPT_OUT"} for v in features.values()))
+            self.assertEqual(self.graph.objects[receipt["creative_id"]]["name"], created["name"])
+            self.assertEqual(j.value["steps"]["creative_name"], {"success": True})
+            rename = next(i for i, c in enumerate(self.graph.calls) if c[0] == "POST" and c[1] == receipt["creative_id"])
+            ad = next(i for i, c in enumerate(self.graph.calls) if c[1].endswith("/ads"))
+            self.assertLess(rename, ad)
+        finally:
+            j.close()
+
+    def test_unexpected_creative_enrollment_stops_before_rename_or_ad(self):
+        for status in ["OPT_IN", "UNSPECIFIED", None, "OPT_OUT_MAYBE"]:
+            with self.subTest(status=status):
+                self.graph = FakeGraph()
+                self.graph.extra_features = {"unexpected_control": {"enroll_status": status}}
+                j = meta.Journal(self.root / ("journal-" + str(status)), self.plan()["fingerprint"])
+                try:
+                    with self.assertRaisesRegex(RuntimeError, "enhancement enrollment"):
+                        meta.apply(self.graph, self.config, self.spec, self.plan(), {"campaigns": []}, j)
+                    self.assertFalse(any(c[0] == "POST" and (c[1].isdigit() or c[1].endswith("/ads")) for c in self.graph.calls))
+                finally:
+                    j.close()
+
+    def test_content_mismatch_is_not_hidden_by_name_normalization(self):
+        def tamper(value):
+            value["object_story_spec"]["page_id"] = "99999"
+        self.graph.creative_override = tamper
+        j = meta.Journal(self.root / "journal", self.plan()["fingerprint"])
+        try:
+            with self.assertRaisesRegex(RuntimeError, "readback differs"):
+                meta.apply(self.graph, self.config, self.spec, self.plan(), {"campaigns": []}, j)
+            self.assertNotIn("creative_name", j.value["steps"])
+            self.assertNotIn("ad", j.value["steps"])
+        finally:
+            j.close()
+
+    def test_uncertain_name_update_blocks_replay(self):
+        original = self.graph.call
+        def uncertain(method, path, params=None, media=None):
+            result = original(method, path, params, media)
+            if method == "POST" and path.isdigit():
+                raise RuntimeError("Lost name update response")
+            return result
+        self.graph.call = uncertain
+        path = self.root / "journal"
+        j = meta.Journal(path, self.plan()["fingerprint"])
+        try:
+            with self.assertRaisesRegex(RuntimeError, "Lost name"):
+                meta.apply(self.graph, self.config, self.spec, self.plan(), {"campaigns": []}, j)
+            self.assertEqual(j.value["pending"], "creative_name")
+            self.assertNotIn("ad", j.value["steps"])
+        finally:
+            j.close()
+        with self.assertRaisesRegex(RuntimeError, "uncertain write"):
+            meta.Journal(path, self.plan()["fingerprint"])
+
+    def test_failed_name_normalization_stops_before_ad(self):
+        original = self.graph.call
+        def ignored(method, path, params=None, media=None):
+            if method == "POST" and path.isdigit():
+                return {"success": True}
+            return original(method, path, params, media)
+        self.graph.call = ignored
+        j = meta.Journal(self.root / "journal", self.plan()["fingerprint"])
+        try:
+            with self.assertRaisesRegex(RuntimeError, "readback differs"):
+                meta.apply(self.graph, self.config, self.spec, self.plan(), {"campaigns": []}, j)
+            self.assertNotIn("ad", j.value["steps"])
         finally:
             j.close()
 
