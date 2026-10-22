@@ -104,3 +104,38 @@ test("purchase continuation belongs to one account, expires, and rechecks privac
     localStorage.getItem("amp.pending-funded-purchase.parent-a"),
   ).toBeNull();
 });
+
+test("Arizona continuation survives authentication, another consent tab and privacy changes", () => {
+  localStorage.clear();
+  const search = {
+    ...campaign,
+    utm_campaign: "az-esa-launch",
+    return: "arizona-esa",
+  };
+  expect(continuationUrl(search)).toBe(
+    "/purchase/arizona-esa?utm_campaign=az-esa-launch&utm_source=facebook&utm_medium=paid-social",
+  );
+  expect(fundedAttribution(search)?.campaign).toBe("az-esa-launch");
+  rememberFundedPurchase("az-parent", search);
+  expect(pendingFundedPurchase("az-parent")).toContain(
+    "/purchase/arizona-esa?",
+  );
+  expect(pendingFundedPurchase("other-parent")).toBeNull();
+  vi.stubGlobal("navigator", { globalPrivacyControl: true });
+  expect(pendingFundedPurchase("az-parent")).toBe("/purchase/arizona-esa");
+  expect(continuationUrl(search)).toBe("/purchase/arizona-esa");
+});
+
+test("a changed funding program drops mismatched attribution without blocking purchase", () => {
+  const az = { ...campaign, utm_campaign: "az-esa-launch" };
+  expect(
+    fundedAttribution(campaign, { programId: "az-esa", jurisdiction: "AZ" }),
+  ).toBeUndefined();
+  expect(
+    fundedAttribution(az, { programId: "ar-efa", jurisdiction: "AR" }),
+  ).toBeUndefined();
+  expect(
+    fundedAttribution(az, { programId: "az-esa", jurisdiction: "AZ" })
+      ?.campaign,
+  ).toBe("az-esa-launch");
+});

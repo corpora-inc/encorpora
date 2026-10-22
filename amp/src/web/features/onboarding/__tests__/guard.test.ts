@@ -222,3 +222,36 @@ test("funded setup returns to Arkansas purchase without requiring a Stripe check
     ),
   ).toBe("/start/consent");
 });
+
+test("Arizona setup retains its destination without bypassing consent", () => {
+  const parent = me({
+    consent: { status: "active", method: "email-plus" },
+    learners: [
+      {
+        id: "sample",
+        name: "Sample",
+        birthYear: 2016,
+        entitlement: { active: false, plan: null, endsAt: null },
+      },
+    ],
+  });
+  expect(startDestination(parent, "/start", false, "arizona-esa")).toBe(
+    "/purchase/arizona-esa",
+  );
+  expect(
+    startDestination(
+      { ...parent, consent: { status: "none", method: null } },
+      "/start",
+      false,
+      "arizona-esa",
+    ),
+  ).toBe("/start/consent");
+  expect(
+    startDestination(
+      { ...parent, learners: [] },
+      "/start",
+      false,
+      "arizona-esa",
+    ),
+  ).toBe("/start/name");
+});

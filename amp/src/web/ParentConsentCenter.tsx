@@ -406,7 +406,9 @@ export function ParentConsentCenter({
               fundedReturn ? window.location.assign(fundedReturn) : onClose()
             }
           >
-            {fundedReturn ? "Continue to Arkansas EFA" : "Continue to family"}
+            {fundedReturn
+              ? "Continue to funded purchase"
+              : "Continue to family"}
           </button>
         ) : canStart ? (
           <button

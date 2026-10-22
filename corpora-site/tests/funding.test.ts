@@ -151,7 +151,9 @@ test("ClassWallet DirectPay is labeled consistently without marketplace enrollme
   const dir = await mkdtemp(join(tmpdir(), "corpora-directpay-"));
   try {
     await buildSite(
-      configSchema.parse({ funding: [{ ...fundingFixture, kind: "classwallet-direct-pay" }] }),
+      configSchema.parse({
+        funding: [{ ...fundingFixture, kind: "classwallet-direct-pay" }],
+      }),
       dir,
     );
     for (const path of ["esa/index.html", "esa/synthetic-program/index.html"]) {
@@ -167,28 +169,52 @@ test("ClassWallet DirectPay is labeled consistently without marketplace enrollme
 test("guided DirectPay shows configured fixed-term prices and an invoice email", async () => {
   const dir = await mkdtemp(join(tmpdir(), "corpora-directpay-prices-"));
   try {
-    await buildSite(configSchema.parse({
-      supportEmail: "support@example.invalid",
-      plans: [
-        { interval: "year", amountMinor: 32100, currency: "USD", renews: true },
-        { interval: "month", amountMinor: 4200, currency: "USD", renews: true },
-      ],
-      funding: [{ ...guidedFundingFixture, kind: "classwallet-direct-pay" }],
-    }), dir);
-    const html = await readFile(join(dir, "esa/synthetic-program/index.html"), "utf8");
+    await buildSite(
+      configSchema.parse({
+        supportEmail: "support@example.invalid",
+        plans: [
+          {
+            interval: "year",
+            amountMinor: 32100,
+            currency: "USD",
+            renews: true,
+          },
+          {
+            interval: "month",
+            amountMinor: 4200,
+            currency: "USD",
+            renews: true,
+          },
+        ],
+        funding: [{ ...guidedFundingFixture, kind: "classwallet-direct-pay" }],
+      }),
+      dir,
+    );
+    const html = await readFile(
+      join(dir, "esa/synthetic-program/index.html"),
+      "utf8",
+    );
     assert.ok(html.includes("$321.00"));
     assert.ok(!html.includes("$42.00"));
     assert.ok(!html.includes("1 month"));
     const product = await readFile(join(dir, "amp/index.html"), "utf8");
-    assert.ok(product.includes("$42.00"), "personal monthly pricing remains available");
+    assert.ok(
+      product.includes("$42.00"),
+      "personal monthly pricing remains available",
+    );
     assert.ok(html.includes("12 months"));
     assert.ok(html.includes("No automatic renewal."));
     assert.ok(html.includes("How to pay with program funds"));
     assert.ok(html.includes("support@example.invalid</a>"));
-    assert.equal((html.match(/data-campaign-action="invoice"/g) ?? []).length, 3);
+    assert.equal(
+      (html.match(/data-campaign-action="invoice"/g) ?? []).length,
+      3,
+    );
     const href = html.match(/href="(mailto:[^"]+)"/)?.[1];
     assert.ok(href);
-    const body = new URL(href.replaceAll("&amp;", "&")).searchParams.get("body");
+    const body = new URL(href.replaceAll("&amp;", "&")).searchParams.get(
+      "body",
+    );
     assert.ok(body?.includes("Plan: 12 months ($321.00)"));
     assert.ok(!body?.includes("1 month"));
     assert.ok(!body?.includes("$42.00"));
@@ -200,15 +226,33 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
   }
 });
 
-test("Arkansas free practice keeps the funded purchase preference without tracking", async () => {
-  const dir = await mkdtemp(join(tmpdir(), "corpora-arkansas-entry-"));
-  try {
-    await buildSite(configSchema.parse({
-      appUrl: "https://app.example.invalid",
-      funding: [{ ...guidedFundingFixture, page: { ...guidedFundingFixture.page, slug: "arkansas-efa" } }],
-    }), dir);
-    const html = await readFile(join(dir, "esa/arkansas-efa/index.html"), "utf8");
-    assert.ok(html.includes('href="https://app.example.invalid/try?program=ar-efa"'));
-    assert.ok(!html.includes("utm_campaign="));
-  } finally { await rm(dir, { recursive: true, force: true }); }
-});
+for (const [slug, program] of [
+  ["arkansas-efa", "ar-efa"],
+  ["arizona-esa", "az-esa"],
+])
+  test(`${slug} free practice keeps the funded purchase preference without tracking`, async () => {
+    const dir = await mkdtemp(join(tmpdir(), "corpora-arkansas-entry-"));
+    try {
+      await buildSite(
+        configSchema.parse({
+          appUrl: "https://app.example.invalid",
+          funding: [
+            {
+              ...guidedFundingFixture,
+              page: { ...guidedFundingFixture.page, slug },
+            },
+          ],
+        }),
+        dir,
+      );
+      const html = await readFile(join(dir, `esa/${slug}/index.html`), "utf8");
+      assert.ok(
+        html.includes(
+          `href="https://app.example.invalid/try?program=${program}"`,
+        ),
+      );
+      assert.ok(!html.includes("utm_campaign="));
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
+  });

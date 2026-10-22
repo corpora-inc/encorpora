@@ -275,12 +275,16 @@ export function FundingPurchaseCenter({
       learnerId,
       idempotencyKey: key,
       ...(billingName ? { studentBillingName: billingName } : {}),
-      ...(offer.programId === "ar-efa" && offer.jurisdiction === "AR"
-        ? { campaignAttribution: fundedAttribution(campaignSearch) }
+      ...((offer.programId === "ar-efa" && offer.jurisdiction === "AR") ||
+      (offer.programId === "az-esa" && offer.jurisdiction === "AZ")
+        ? { campaignAttribution: fundedAttribution(campaignSearch, offer) }
         : {}),
     });
     if (!current(active)) return;
-    if (offer.programId === "ar-efa" && offer.jurisdiction === "AR")
+    if (
+      (offer.programId === "ar-efa" && offer.jurisdiction === "AR") ||
+      (offer.programId === "az-esa" && offer.jurisdiction === "AZ")
+    )
       forgetFundedPurchase(identity);
     await refresh();
     if (current(active)) setSelected(created.id);

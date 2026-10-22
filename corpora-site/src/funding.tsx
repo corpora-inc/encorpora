@@ -99,7 +99,11 @@ export function FundingPage({
       : "/support/";
   return (
     <div
-      className={presentation ? `funding-guided${directPay ? " funding-directpay" : ""}` : undefined}
+      className={
+        presentation
+          ? `funding-guided${directPay ? " funding-directpay" : ""}`
+          : undefined
+      }
       data-campaign-program={presentation ? page.slug : undefined}
     >
       <nav className="breadcrumbs" aria-label="Breadcrumb">
@@ -135,11 +139,14 @@ export function FundingPage({
               <ul>
                 {fundedPlans.map((plan) => (
                   <li key={plan.interval}>
-                    <strong>{formatPrice(plan)}</strong> / {plan.interval === "year" ? "12 months" : "1 month"}
+                    <strong>{formatPrice(plan)}</strong> /{" "}
+                    {plan.interval === "year" ? "12 months" : "1 month"}
                   </li>
                 ))}
               </ul>
-              <p className="fine">Per learner. Fixed access dates. No automatic renewal.</p>
+              <p className="fine">
+                Per learner. Fixed access dates. No automatic renewal.
+              </p>
             </div>
           )}
           {presentation && (
@@ -154,7 +161,18 @@ export function FundingPage({
               <a
                 className="funding-explore"
                 data-campaign-action={appUrl ? "try" : undefined}
-                href={appUrl ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : "/try", appUrl).href : "/amp/"}
+                href={
+                  appUrl
+                    ? new URL(
+                        page.slug === "arkansas-efa"
+                          ? "/try?program=ar-efa"
+                          : page.slug === "arizona-esa"
+                            ? "/try?program=az-esa"
+                            : "/try",
+                        appUrl,
+                      ).href
+                    : "/amp/"
+                }
               >
                 {appUrl ? "Try AMP Math" : "Explore AMP Math"}{" "}
                 <span aria-hidden="true">→</span>
@@ -163,10 +181,17 @@ export function FundingPage({
           )}
           {directPay && supportEmail && (
             <p className="funding-email fine">
-              Or email <a href={actionHref} data-campaign-action="invoice">{supportEmail}</a> with your plan and preferred start date. No AMP account required to request an invoice.
+              Or email{" "}
+              <a href={actionHref} data-campaign-action="invoice">
+                {supportEmail}
+              </a>{" "}
+              with your plan and preferred start date. No AMP account required
+              to request an invoice.
             </p>
           )}
-          {directPay && <p className="lead funding-purchase-summary">{page.summary}</p>}
+          {directPay && (
+            <p className="lead funding-purchase-summary">{page.summary}</p>
+          )}
           <p className="fine">
             Reviewed <time dateTime={page.reviewedOn}>{page.reviewedOn}</time>
           </p>
@@ -177,7 +202,10 @@ export function FundingPage({
           <p className="eyebrow">Before you buy</p>
           <h2 id="amp-program-status">AMP and this program</h2>
           <p>{page.ampStatus}</p>
-          <a href={presentation ? actionHref : "/support/"} data-campaign-action={presentation ? "invoice" : undefined}>
+          <a
+            href={presentation ? actionHref : "/support/"}
+            data-campaign-action={presentation ? "invoice" : undefined}
+          >
             {presentation?.actionLabel ?? "Ask about your purchase"} ↗
           </a>
           <div className="funding-product-links">
@@ -188,11 +216,17 @@ export function FundingPage({
         </aside>
         <div className="funding-article">
           <section aria-labelledby="program-eligibility">
-            <h2 id="program-eligibility">{presentation ? "Who qualifies" : "Who can use it"}</h2>
+            <h2 id="program-eligibility">
+              {presentation ? "Who qualifies" : "Who can use it"}
+            </h2>
             <p>{page.eligibility}</p>
           </section>
           <section aria-labelledby="program-steps">
-            <h2 id="program-steps">{directPay ? "How to pay with program funds" : "How to use this route"}</h2>
+            <h2 id="program-steps">
+              {directPay
+                ? "How to pay with program funds"
+                : "How to use this route"}
+            </h2>
             <p>{funding.instructions}</p>
             <ol className="funding-steps">
               {page.steps.map((step, i) => (

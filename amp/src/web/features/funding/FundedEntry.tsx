@@ -10,7 +10,11 @@ import type { AuthSession } from "../../auth";
 import { FundingPurchaseCenter } from "../../FundingPurchaseCenter";
 import { useLearnerStore } from "../../learner-store";
 import { request } from "../../lib/api";
-import { continuationSearch, fundedPath } from "../../lib/funded-entry";
+import {
+  continuationSearch,
+  fundedPrograms,
+  type FundedReturn,
+} from "../../lib/funded-entry";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { buttonClass } from "../../ui/Button";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
@@ -26,31 +30,50 @@ const availabilitySchema = z.object({
 export function FundedEntry() {
   const { data: session } = useSuspenseQuery(sessionOptions);
   const location = useLocation();
-  if (location.pathname !== fundedPath) return <LoadingScreen />;
+  const destination = (Object.keys(fundedPrograms) as FundedReturn[]).find(
+    (key) => fundedPrograms[key].path === location.pathname,
+  );
+  if (!destination) return <LoadingScreen />;
   return session ? (
-    <SignedInEntry key={session.accountId} session={session} />
+    <SignedInEntry
+      key={session.accountId + destination}
+      session={session}
+      destination={destination}
+    />
   ) : (
     <Navigate
       to="/sign-up"
       search={{
         ...continuationSearch(location.search),
-        return: "arkansas-efa",
+        return: destination,
       }}
       replace
     />
   );
 }
 
-function SignedInEntry({ session }: { session: AuthSession }) {
+function SignedInEntry({
+  session,
+  destination,
+}: {
+  session: AuthSession;
+  destination: FundedReturn;
+}) {
+  const program = fundedPrograms[destination];
   const location = useLocation(),
     navigate = useNavigate();
   const search = {
     ...continuationSearch(location.search),
-    return: "arkansas-efa" as const,
+    return: destination,
   };
   const me = useQuery(meOptions(session));
   const offers = useQuery({
-    queryKey: ["account", session.accountId, "arkansas-funding-availability"],
+    queryKey: [
+      "account",
+      session.accountId,
+      "funding-availability",
+      destination,
+    ],
     queryFn: ({ signal }) =>
       request("/funding/offers", availabilitySchema, {
         token: session.token,
@@ -58,7 +81,7 @@ function SignedInEntry({ session }: { session: AuthSession }) {
       }),
   });
   const selectedLearner = useLearnerStore((state) => state.learnerId);
-  if (location.pathname !== fundedPath) return <LoadingScreen />;
+  if (location.pathname !== program.path) return <LoadingScreen />;
   if (me.error || offers.error)
     return (
       <RouteError
@@ -76,21 +99,23 @@ function SignedInEntry({ session }: { session: AuthSession }) {
   if (
     (me.data.consent.status !== "active" || !me.data.learners.length) &&
     !offers.data.offers.some(
-      (offer) => offer.programId === "ar-efa" && offer.jurisdiction === "AR",
+      (offer) =>
+        offer.programId === program.id &&
+        offer.jurisdiction === program.jurisdiction,
     )
   )
     return (
       <PageFrame centered>
         <section className={frameCard}>
           <FrameBrand expanded />
-          <h1>Arkansas EFA purchase options</h1>
+          <h1>{program.name} purchase options</h1>
           <p>
-            An Arkansas EFA offer is not available in this AMP service. No
+            A {program.name} offer is not available in this AMP service. No
             purchase request has been made.
           </p>
           <p>
-            <a href="https://corpora.inc/esa/arkansas-efa/">
-              View Arkansas EFA purchase help
+            <a href={`https://corpora.inc/esa/${destination}/`}>
+              View {program.name} purchase help
             </a>
           </p>
           <Link to="/try" className={buttonClass("secondary")}>
@@ -113,12 +138,12 @@ function SignedInEntry({ session }: { session: AuthSession }) {
       learners={me.data.learners}
       consentActive={me.data.consent.status === "active"}
       preferredLearnerId={selectedLearner ?? undefined}
-      program={{ id: "ar-efa", jurisdiction: "AR", name: "Arkansas EFA" }}
+      program={program}
       campaignSearch={search}
       onClose={() =>
         void navigate({
           to: "/try/plans",
-          search: { ...search, return: undefined },
+          search: { ...search, return: undefined, program: program.id },
         })
       }
     />

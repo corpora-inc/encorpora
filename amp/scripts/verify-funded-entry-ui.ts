@@ -14,7 +14,14 @@ import { retentionNotice } from "../src/family/contracts";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import { noticeDigest } from "../src/parent-consent/crypto";
 
-const port = 4399,
+const stateProgram =
+  process.argv[2] ?? process.env.AMP_TEST_FUNDING_PROGRAM ?? "ar-efa";
+assert.ok(stateProgram === "ar-efa" || stateProgram === "az-esa");
+const stateSlug = stateProgram === "az-esa" ? "arizona-esa" : "arkansas-efa";
+const stateName = stateProgram === "az-esa" ? "Arizona ESA" : "Arkansas EFA";
+const stateCampaign =
+  stateProgram === "az-esa" ? "az-esa-launch" : "ar-efa-launch";
+const port = Number(process.env.AMP_TEST_PORT ?? 4399),
   origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const clientPath = fileURLToPath(
@@ -42,7 +49,7 @@ const vite = await createServer({
 });
 await vite.listen();
 const browser = await chromium.launch();
-const shots = "artifacts/funded-entry";
+const shots = `artifacts/funded-entry-${stateProgram}`;
 await mkdir(shots, { recursive: true });
 await writeFile(
   `${shots}/consent.html`,
@@ -52,14 +59,13 @@ await writeFile(
   `${shots}/consent.tsx`,
   `import React from 'react';import{createRoot}from'react-dom/client';import{ParentConsentCenter}from'../../src/web/ParentConsentCenter';import'../../src/web/style.css';const identity=new URLSearchParams(location.search).get('identity')||'synthetic-parent';createRoot(document.getElementById('root')!).render(<ParentConsentCenter token="synthetic" identity={identity} onClose={()=>{}}/>);`,
 );
-const campaign =
-  "utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&utm_content=efa-facebook-feed-v1";
+const campaign = `utm_source=facebook&utm_medium=paid-social&utm_campaign=${stateCampaign}&utm_content=efa-facebook-feed-v1`;
 const ar = {
   ...testFundingOffer,
   id: "ar-fixture",
-  jurisdiction: "AR",
-  programId: "ar-efa",
-  programName: "Arkansas EFA",
+  jurisdiction: stateProgram === "az-esa" ? "AZ" : "AR",
+  programId: stateProgram,
+  programName: stateName,
   productTitle: "AMP Math · one learner",
   subtotalMinor: 49900,
 };
@@ -133,7 +139,11 @@ async function serve(page: Page, state: State, faults: string[]) {
       return route.fulfill({
         json: {
           offers: [
-            presentOffer(testFundingOffer),
+            presentOffer({
+              ...testFundingOffer,
+              programId: stateProgram === "az-esa" ? "ar-efa" : "az-esa",
+              jurisdiction: stateProgram === "az-esa" ? "AR" : "AZ",
+            }),
             ...(state.offer ? [presentOffer(ar)] : []),
           ],
         },
@@ -240,7 +250,7 @@ try {
         faults: string[] = [];
       await serve(page, state, faults);
       await page.goto(
-        `${origin}/purchase/arkansas-efa?${campaign}&email=must-not-forward`,
+        `${origin}/purchase/${stateSlug}?${campaign}&email=must-not-forward`,
       );
       await page
         .getByRole("heading", { name: "Create your parent account" })
@@ -267,7 +277,7 @@ try {
       const callback = await page.evaluate(
         () => (window as any).syntheticCallback,
       );
-      assert.ok(callback.startsWith("/purchase/arkansas-efa?"));
+      assert.ok(callback.startsWith(`/purchase/${stateSlug}?`));
       assert.ok(!callback.includes("must-not-forward"));
       state.confirm = false;
       await page.getByRole("button", { name: "I confirmed my email" }).click();
@@ -295,19 +305,17 @@ try {
       const original = page;
       page = await context.newPage();
       await serve(page, state, faults);
-      await page.goto(
-        `${origin}/artifacts/funded-entry/consent.html?identity=other-parent`,
-      );
+      await page.goto(`${origin}/${shots}/consent.html?identity=other-parent`);
       await page.getByRole("button", { name: "Continue to family" }).waitFor();
       assert.equal(
         await page
-          .getByRole("button", { name: "Continue to Arkansas EFA" })
+          .getByRole("button", { name: "Continue to funded purchase" })
           .count(),
         0,
       );
-      await page.goto(`${origin}/artifacts/funded-entry/consent.html`);
+      await page.goto(`${origin}/${shots}/consent.html`);
       await page
-        .getByRole("button", { name: "Continue to Arkansas EFA" })
+        .getByRole("button", { name: "Continue to funded purchase" })
         .click();
       await original.close();
       await page.getByLabel("Learner name").fill("Sample learner");
@@ -315,7 +323,7 @@ try {
       if (!adopting)
         await page.getByRole("button", { name: "2016", exact: true }).click();
       await page
-        .getByRole("heading", { name: "Arkansas EFA", exact: true })
+        .getByRole("heading", { name: stateName, exact: true })
         .waitFor();
       assert.ok(page.url().includes("utm_source=facebook"));
       assert.equal(state.adopted, adopting);
@@ -352,7 +360,7 @@ try {
         state.payloads[1]!.idempotencyKey,
       );
       assert.deepEqual(state.payloads[1]!.campaignAttribution, {
-        campaign: "ar-efa-launch",
+        campaign: stateCampaign,
         source: "facebook",
         medium: "paid-social",
         creative: "efa-facebook-feed-v1",
@@ -375,6 +383,7 @@ try {
     "invalid",
     "invalid-creative",
     "allowed",
+    "other-state",
   ] as const) {
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
@@ -400,18 +409,26 @@ try {
         ? campaign.replace("facebook", "private%40example.test")
         : privacy === "invalid-creative"
           ? campaign.replace("efa-facebook-feed-v1", "private%40example.test")
-          : campaign;
-    await page.goto(`${origin}/try/plans?program=ar-efa&${tags}`);
-    await page.getByRole("link", { name: "Use Arkansas EFA funds" }).click();
-    await page
-      .getByRole("heading", { name: "Arkansas EFA", exact: true })
-      .waitFor();
+          : privacy === "other-state"
+            ? campaign.replace(
+                stateCampaign,
+                stateProgram === "az-esa" ? "ar-efa-launch" : "az-esa-launch",
+              )
+            : campaign;
+    await page.goto(`${origin}/try/plans?program=${stateProgram}&${tags}`);
+    await page.getByRole("link", { name: `Use ${stateName} funds` }).click();
+    await page.getByRole("heading", { name: stateName, exact: true }).waitFor();
     assert.equal(
       page.url().includes("utm_"),
-      privacy === "allowed" || privacy === "invalid-creative",
+      privacy === "allowed" ||
+        privacy === "invalid-creative" ||
+        privacy === "other-state",
       `${privacy}: router filters labels`,
     );
-    assert.equal(page.url().includes("utm_content"), privacy === "allowed");
+    assert.equal(
+      page.url().includes("utm_content"),
+      privacy === "allowed" || privacy === "other-state",
+    );
     assert.equal(page.url().includes("private"), false);
     await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
     await page
@@ -421,7 +438,7 @@ try {
       state.payloads[0]!.campaignAttribution,
       privacy === "allowed" || privacy === "invalid-creative"
         ? {
-            campaign: "ar-efa-launch",
+            campaign: stateCampaign,
             source: "facebook",
             medium: "paid-social",
             ...(privacy === "allowed"
@@ -443,12 +460,12 @@ try {
       faults: string[] = [];
     state.confirm = false;
     await serve(page, state, faults);
-    await page.goto(`${origin}/purchase/arkansas-efa?${campaign}`);
+    await page.goto(`${origin}/purchase/${stateSlug}?${campaign}`);
     await page
       .getByRole("heading", { name: "Learning consent", exact: true })
       .waitFor();
     await page.getByRole("button", { name: "Back", exact: true }).click();
-    await page.getByRole("link", { name: "Use Arkansas EFA funds" }).waitFor();
+    await page.getByRole("link", { name: `Use ${stateName} funds` }).waitFor();
     assert.equal(new URL(page.url()).pathname, "/try/plans");
     assert.equal(
       await page.evaluate(() =>
@@ -470,9 +487,9 @@ try {
       faults: string[] = [];
     state.offer = false;
     await serve(page, state, faults);
-    await page.goto(`${origin}/purchase/arkansas-efa`);
+    await page.goto(`${origin}/purchase/${stateSlug}`);
     await page
-      .getByRole("heading", { name: "Arkansas EFA purchase options" })
+      .getByRole("heading", { name: `${stateName} purchase options` })
       .waitFor();
     assert.ok(
       !(await page.locator("body").innerText()).includes("Fixture program"),
@@ -482,7 +499,7 @@ try {
     await context.close();
   }
   console.log(
-    "PASS: 8 viewport/theme journeys, retry idempotency, Arkansas filtering, GPC/DNT/invalid-label navigation, unavailable offer.",
+    "PASS: 8 viewport/theme journeys, retry idempotency, funding-program filtering, GPC/DNT/invalid-label navigation, unavailable offer.",
   );
 } finally {
   await browser.close();

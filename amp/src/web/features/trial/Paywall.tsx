@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { brand } from "../../../brand";
 import { strandNames } from "../../BirthYearPrompt";
 import { gradeName } from "../../Home";
+import { fundedPrograms } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
@@ -78,7 +79,13 @@ export function Paywall() {
   return (
     <PlansView
       key={reason}
-      arkansas={search.program === "ar-efa"}
+      program={
+        search.program === "ar-efa"
+          ? fundedPrograms["arkansas-efa"]
+          : search.program === "az-esa"
+            ? fundedPrograms["arizona-esa"]
+            : undefined
+      }
       reason={reason}
       run={run}
       catalog={catalog.data}
@@ -90,7 +97,7 @@ export function Paywall() {
 }
 
 function PlansView({
-  arkansas,
+  program,
   reason,
   run,
   catalog,
@@ -98,7 +105,7 @@ function PlansView({
   signedIn,
   record,
 }: {
-  arkansas: boolean;
+  program?: (typeof fundedPrograms)[keyof typeof fundedPrograms];
   reason: "limit" | "choice";
   run: TrialProgress | null;
   catalog: TrialCatalog;
@@ -196,7 +203,7 @@ function PlansView({
         ) : (
           <>
             <p className={styles.lede}>
-              {arkansas
+              {program
                 ? "Card checkout isn’t available."
                 : "Enrollment isn’t open yet."}{" "}
               Your free practice stays saved on this device.
@@ -208,9 +215,9 @@ function PlansView({
             </div>
           </>
         )}
-        {arkansas ? (
-          <Link className={styles.esa} to="/purchase/arkansas-efa">
-            Use Arkansas EFA funds
+        {program ? (
+          <Link className={styles.esa} to={program.path}>
+            Use {program.name} funds
           </Link>
         ) : (
           <a

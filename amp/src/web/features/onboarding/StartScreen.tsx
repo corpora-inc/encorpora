@@ -8,6 +8,8 @@ import { ParentConsentCenter } from "../../ParentConsentCenter";
 import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { PageFrame } from "../../ui/PageFrame";
 import {
+  isFundedReturn,
+  fundedPrograms,
   continuationSearch,
   rememberFundedPurchase,
   forgetFundedPurchase,
@@ -34,7 +36,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
   const me = query.data;
   const search = continuationSearch(location.search);
   useEffect(() => {
-    if (search.return === "arkansas-efa")
+    if (isFundedReturn(search.return))
       rememberFundedPurchase(session.accountId, search);
   }, [session.accountId, location.searchStr]);
   if (query.error && !me)
@@ -53,7 +55,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
           me,
           location.pathname,
           !!chosenPlan(),
-          search.return === "arkansas-efa",
+          isFundedReturn(search.return) ? search.return : false,
         );
   if (target)
     return <Navigate {...startNavigation(target)} search={search} replace />;
@@ -68,11 +70,15 @@ function SignedInStart({ session }: { session: AuthSession }) {
           identity={session.accountId}
           onChanged={() => void invalidateAccount(session.accountId)}
           onClose={() => {
-            if (search.return === "arkansas-efa") {
+            if (isFundedReturn(search.return)) {
               forgetFundedPurchase(session.accountId);
               void navigate({
                 to: "/try/plans",
-                search: { ...search, return: undefined, program: "ar-efa" },
+                search: {
+                  ...search,
+                  return: undefined,
+                  program: fundedPrograms[search.return].id,
+                },
               });
             } else void navigate({ to: "/start/plan", search });
           }}
