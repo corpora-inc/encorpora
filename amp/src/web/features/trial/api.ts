@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { stepsSchema } from "../../../math/scene/timeline";
+import { problemHintSchema, withProblemHints } from "../../lib/problem-hints";
 import { z } from "zod";
 import {
   figureCapabilities,
@@ -65,10 +65,13 @@ export const progressSchema = z.object({
     .default([]),
 });
 export type TrialProgress = z.infer<typeof progressSchema>;
-const batchSchema = z.object({
-  problems: z.array(publicProblemSchema),
-  trialRemaining: z.number().int().optional(),
-});
+const batchSchema = z
+  .object({
+    problems: z.array(publicProblemSchema),
+    trialRemaining: z.number().int().optional(),
+    hints: z.record(z.string(), problemHintSchema).optional(),
+  })
+  .transform(withProblemHints);
 export const outcomeSchema = z.object({
   id: z.string(),
   problemId: z.string(),
@@ -216,7 +219,12 @@ export async function nextProblem(session: TrialSession) {
 }
 export function answer(
   session: TrialSession,
-  input: { problemId: string; requestId: string; response: string },
+  input: {
+    problemId: string;
+    requestId: string;
+    response: string;
+    hintViewed?: boolean;
+  },
 ) {
   return request(
     `/learners/${encodeURIComponent(session.learnerId)}/attempts`,
@@ -235,7 +243,7 @@ export function skip(session: TrialSession, problemId: string) {
 export function hint(session: TrialSession, problemId: string) {
   return request(
     `/learners/${encodeURIComponent(session.learnerId)}/hints`,
-    z.object({ hint: z.string(), cue: stepsSchema.optional() }),
+    problemHintSchema,
     { trial: session.token, body: { problemId } },
   );
 }

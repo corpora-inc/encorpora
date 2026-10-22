@@ -1,4 +1,8 @@
 import {
+  assessmentGapTemplates,
+  generateAssessmentGapProblem,
+} from "./assessment-gap-practice";
+import {
   radicalEquationTemplates,
   generateRadicalEquationProblem,
 } from "./radical-equation-practice";
@@ -414,6 +418,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...factoringTemplates,
   ...distributionTemplates,
   ...inferenceTemplates,
+  ...assessmentGapTemplates,
   ...bivariateTemplates,
 ];
 
@@ -570,6 +575,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
+    ...assessmentGapTemplates,
     ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
@@ -645,6 +651,8 @@ function generateRawProblem(
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
+  if (assessmentGapTemplates.some((t) => t.id === templateId))
+    return generateAssessmentGapProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
     return generateInferenceProblem(templateId, seed);
   if (shapeTemplates.some((t) => t.id === templateId))

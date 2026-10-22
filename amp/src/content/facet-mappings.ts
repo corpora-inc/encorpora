@@ -1,3 +1,4 @@
+import { assessmentGapFacetMappings } from "./assessment-gap-coverage";
 import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
@@ -52,6 +53,7 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  ...assessmentGapFacetMappings,
   {
     templateId: "radical-equation-isolated",
     facetId: "square-root-equations.isolated-linear-radicand",
