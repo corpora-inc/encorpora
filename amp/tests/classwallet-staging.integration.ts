@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
+import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
 import { migrate } from "../scripts/migrate.js";
 import { FundingPurchaseRepository } from "../src/funding-purchase/repository.js";
 import {
@@ -248,6 +249,40 @@ test(
         "invoice_record_unavailable",
       );
       assert.equal((await pool.query("SELECT * FROM amp_grants")).rowCount, 1);
+      const paidAt = new Date().toISOString();
+      await stageClassWalletPayment(
+        pool,
+        {
+          ...row,
+          "Invoice/Quote": other.id,
+          "Transaction ID": randomUUID(),
+          "Payment Approval Date": paidAt,
+          "Last Update": paidAt,
+        },
+        config,
+        hash,
+        true,
+      );
+      await purgeExpiredFundingRequests(
+        pool,
+        new Date(Date.now() + 31 * 86400000),
+      );
+      assert.equal(
+        (
+          await pool.query("SELECT id FROM amp_funding_requests WHERE id=$1", [
+            other.id,
+          ])
+        ).rowCount,
+        1,
+      );
+      await purgeExpiredFundingRequests(
+        pool,
+        new Date(Date.now() + 8 * 366 * 86400000),
+      );
+      assert.equal(
+        (await pool.query("SELECT * FROM amp_classwallet_payments")).rowCount,
+        0,
+      );
     } finally {
       await pool.end();
       await admin.query(`DROP SCHEMA ${schema} CASCADE`);
