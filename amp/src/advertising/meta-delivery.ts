@@ -7,6 +7,7 @@ import {
   metaAdultEmailHash,
   metaDestinationSchema,
   metaPurchaseRequest,
+  metaMatchingIdentifiersSchema,
   type MetaPurchase,
 } from "./meta-conversions.js";
 import {
@@ -20,16 +21,16 @@ import {
 import {
   measurementSourcesSchema,
   verifiedAdvertisingPayment,
+  paymentReferenceSchema,
+  type PaymentReference,
 } from "./verified-payment.js";
+import { paymentClickEvidence } from "./payment-clicks.js";
 import { RETENTION } from "../privacy/retention-periods.js";
 
 export const metaDeliveryConfigSchema = z.strictObject({
   enabled: z.boolean().default(false),
   destination: metaDestinationSchema.omit({ enabled: true }),
-  // Only the verified enrollment confirmation has supported channel context.
-  sources: z.strictObject({
-    stripeNamespace: measurementSourcesSchema.shape.stripeNamespace.unwrap(),
-  }),
+  sources: measurementSourcesSchema,
 });
 export type MetaDeliveryConfig = z.infer<typeof metaDeliveryConfigSchema>;
 export interface MetaDeliveryRuntime {
@@ -51,32 +52,37 @@ async function begin(client: PoolClient, account: string) {
 async function evidence(
   client: PoolClient,
   config: MetaDeliveryConfig,
-  paymentId: string,
+  reference: PaymentReference,
   account: string,
 ) {
   const now = (await client.query("SELECT clock_timestamp() AS now")).rows[0]
     .now as Date;
-  const context = (
-    await client.query(
-      "SELECT * FROM amp_meta_purchase_contexts WHERE payment_id=$1 AND account_id=$2 AND namespace=$3 AND expires_at>$4",
-      [paymentId, account, config.sources.stripeNamespace, now],
-    )
-  ).rows[0];
-  if (!context) return null;
+  const context =
+    reference.kind === "stripe"
+      ? (
+          await client.query(
+            "SELECT * FROM amp_meta_purchase_contexts WHERE payment_id=$1 AND account_id=$2 AND namespace=$3 AND expires_at>$4",
+            [reference.id, account, config.sources.stripeNamespace, now],
+          )
+        ).rows[0]
+      : null;
+  if (reference.kind === "stripe" && !context) return null;
   const permission = await purchaseMeasurementView(client, account, "meta");
   if (
     permission.status !== "active" ||
     !permission.grantedAt ||
     !permission.expiresAt ||
-    permission.revision !== context.permission_revision ||
-    currentMeasurementNotice(permission) !== context.permission_notice ||
-    context.permission_notice !== META_PURCHASE_MEASUREMENT_NOTICE.version
+    (context &&
+      (permission.revision !== context.permission_revision ||
+        currentMeasurementNotice(permission) !== context.permission_notice)) ||
+    currentMeasurementNotice(permission) !==
+      META_PURCHASE_MEASUREMENT_NOTICE.version
   )
     return null;
   const payment = await verifiedAdvertisingPayment(
     client,
     config.sources,
-    { kind: "stripe", id: paymentId },
+    reference,
     now,
   );
   if (
@@ -84,21 +90,31 @@ async function evidence(
     payment.accountId !== account ||
     payment.netMinor <= 0 ||
     payment.refundPending ||
-    payment.occurredAt !== context.occurred_at.toISOString()
+    (context && payment.occurredAt !== context.occurred_at.toISOString())
   )
     return null;
   const email = await confirmedAdvertisingEmail(client, account);
   if (!email) return null;
+  const click = await paymentClickEvidence(client, account, reference, "meta");
   const purchase: Omit<MetaPurchase, "eventId"> = {
+    ...(click && Date.parse(click.observedAt) <= Date.parse(payment.occurredAt)
+      ? {
+          clickIdentifiers: metaMatchingIdentifiersSchema.parse(
+            click.identifiers,
+          ),
+        }
+      : {}),
     occurredAt: payment.occurredAt,
     amountMinor: payment.netMinor,
     currency: "USD",
     adultEmailSha256: metaAdultEmailHash(email),
-    source: {
-      actionSource: "website",
-      eventSourceUrl: context.event_source_url,
-      clientUserAgent: context.client_user_agent,
-    },
+    source: context
+      ? {
+          actionSource: "website",
+          eventSourceUrl: context.event_source_url,
+          clientUserAgent: context.client_user_agent,
+        }
+      : { actionSource: "other" },
     permission: {
       noticeVersion: META_PURCHASE_MEASUREMENT_NOTICE.version,
       adultAttested: true,
@@ -120,7 +136,7 @@ async function evidence(
     purchase,
     originalMinor: payment.originalMinor,
     revision: permission.revision,
-    notice: context.permission_notice as string,
+    notice: currentMeasurementNotice(permission),
   };
 }
 
@@ -129,25 +145,41 @@ async function evidence(
 export async function queueMetaPayment(
   pool: Pool,
   rawConfig: MetaDeliveryConfig,
-  paymentId: string,
+  paymentId: string | PaymentReference,
 ) {
   const config = metaDeliveryConfigSchema.parse(rawConfig);
-  z.uuid().parse(paymentId);
+  const reference = paymentReferenceSchema.parse(
+    typeof paymentId === "string"
+      ? { kind: "stripe", id: paymentId }
+      : paymentId,
+  );
+  const namespace =
+    reference.kind === "stripe"
+      ? config.sources.stripeNamespace
+      : config.sources.efaChannelReference &&
+        `esa:${config.sources.efaChannelReference}`;
+  if (!namespace) return { outcome: "ineligible" as const };
   if (!config.enabled) return { outcome: "disabled" as const };
   const client = await pool.connect();
   try {
     const owner = (
       await client.query(
-        "SELECT account_id FROM amp_meta_purchase_contexts WHERE payment_id=$1",
-        [paymentId],
+        reference.kind === "stripe"
+          ? "SELECT account_id FROM amp_meta_purchase_contexts WHERE payment_id=$1"
+          : "SELECT account_id FROM amp_commerce_orders WHERE id=$1 AND channel='esa' AND channel_reference=$2",
+        reference.kind === "stripe"
+          ? [reference.id]
+          : [reference.id, config.sources.efaChannelReference],
       )
     ).rows[0]?.account_id;
     if (!owner) return { outcome: "ineligible" as const };
     await begin(client, owner);
     const prior = (
       await client.query(
-        "SELECT * FROM amp_meta_purchase_queue WHERE payment_id=$1 FOR UPDATE",
-        [paymentId],
+        reference.kind === "stripe"
+          ? "SELECT * FROM amp_meta_purchase_queue WHERE payment_id=$1 FOR UPDATE"
+          : "SELECT * FROM amp_meta_purchase_queue WHERE efa_order_id=$1 FOR UPDATE",
+        [reference.id],
       )
     ).rows[0];
     if (prior) {
@@ -157,25 +189,26 @@ export async function queueMetaPayment(
         eventId: prior.event_id as string,
       };
     }
-    const ready = await evidence(client, config, paymentId, owner);
+    const ready = await evidence(client, config, reference, owner);
     if (!ready) {
       await client.query("COMMIT");
       return { outcome: "ineligible" as const };
     }
     const eventId = `amp_meta_${randomBytes(32).toString("hex")}`;
     await client.query(
-      `INSERT INTO amp_meta_purchase_queue(event_id,payment_id,account_id,namespace,dataset_id,occurred_at,original_minor,permission_revision,permission_notice)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+      `INSERT INTO amp_meta_purchase_queue(event_id,payment_id,account_id,namespace,dataset_id,occurred_at,original_minor,permission_revision,permission_notice,efa_order_id)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
       [
         eventId,
-        paymentId,
+        reference.kind === "stripe" ? reference.id : null,
         owner,
-        config.sources.stripeNamespace,
+        namespace,
         config.destination.datasetId,
         ready.purchase.occurredAt,
         ready.originalMinor,
         ready.revision,
         ready.notice,
+        reference.kind === "arkansas-efa" ? reference.id : null,
       ],
     );
     await client.query("COMMIT");
@@ -202,13 +235,18 @@ async function candidate(
     !row ||
     row.state !== "ready" ||
     row.dataset_id !== config.destination.datasetId ||
-    row.namespace !== config.sources.stripeNamespace
+    row.namespace !==
+      (row.efa_order_id
+        ? `esa:${config.sources.efaChannelReference}`
+        : config.sources.stripeNamespace)
   )
     return null;
   const checked = await evidence(
     client,
     config,
-    row.payment_id,
+    row.efa_order_id
+      ? { kind: "arkansas-efa", id: row.efa_order_id }
+      : { kind: "stripe", id: row.payment_id },
     row.account_id,
   );
   if (
@@ -373,12 +411,7 @@ export async function metaMeasurementBatch(
   if (operation === "deliver" && !runtime)
     throw new Error("measurement_credentials_required");
   const key = createHash("sha256")
-    .update(
-      JSON.stringify([
-        config.destination.datasetId,
-        config.sources.stripeNamespace,
-      ]),
-    )
+    .update(JSON.stringify([config.destination.datasetId, config.sources]))
     .digest("hex");
   await pool.query(
     "INSERT INTO amp_meta_collection_cursors(config_key,kind) VALUES($1,$2) ON CONFLICT DO NOTHING",
@@ -393,12 +426,30 @@ export async function metaMeasurementBatch(
   const page = (
     await pool.query(
       operation === "collect"
-        ? "SELECT payment_id::text AS id FROM amp_meta_purchase_contexts WHERE namespace=$1 AND expires_at>clock_timestamp() AND ($2::uuid IS NULL OR payment_id>$2::uuid) ORDER BY payment_id LIMIT $3"
-        : "SELECT event_id AS id FROM amp_meta_purchase_queue WHERE namespace=$1 AND ($2::text IS NULL OR event_id>$2) AND dataset_id=$4 ORDER BY event_id LIMIT $3",
+        ? `SELECT id FROM (
+           SELECT 'stripe:'||payment_id::text AS id FROM amp_meta_purchase_contexts
+             WHERE namespace=$1 AND expires_at>clock_timestamp()
+           UNION ALL
+           SELECT 'arkansas-efa:'||o.id AS id FROM amp_commerce_orders o
+             JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
+             WHERE o.channel='esa' AND o.channel_reference=$4
+               AND o.order_state->>'settlement'='settled'
+           ) candidates WHERE ($2::text IS NULL OR id>$2) ORDER BY id LIMIT $3`
+        : "SELECT event_id AS id FROM amp_meta_purchase_queue WHERE namespace=ANY($1::text[]) AND ($2::text IS NULL OR event_id>$2) AND dataset_id=$4 ORDER BY event_id LIMIT $3",
       operation === "collect"
-        ? [config.sources.stripeNamespace, cursor.after_id, limit + 1]
+        ? [
+            config.sources.stripeNamespace ?? null,
+            cursor.after_id,
+            limit + 1,
+            config.sources.efaChannelReference ?? null,
+          ]
         : [
-            config.sources.stripeNamespace,
+            [
+              config.sources.stripeNamespace,
+              config.sources.efaChannelReference
+                ? `esa:${config.sources.efaChannelReference}`
+                : null,
+            ].filter(Boolean),
             cursor.after_id,
             limit + 1,
             config.destination.datasetId,
@@ -409,7 +460,15 @@ export async function metaMeasurementBatch(
   for (const row of page.slice(0, limit)) {
     const outcome =
       operation === "collect"
-        ? (await queueMetaPayment(pool, config, row.id)).outcome
+        ? (
+            await queueMetaPayment(
+              pool,
+              config,
+              row.id.startsWith("stripe:")
+                ? { kind: "stripe", id: row.id.slice(7) }
+                : { kind: "arkansas-efa", id: row.id.slice(13) },
+            )
+          ).outcome
         : await deliverMetaPayment(pool, config, row.id, runtime!);
     counts[outcome] = (counts[outcome] ?? 0) + 1;
   }
@@ -443,4 +502,30 @@ export async function purgeMetaPurchaseQueue(pool: Pool) {
       )
     ).rowCount ?? 0
   );
+}
+
+/** Aggregate operational outcomes across every configured payment source. */
+export async function metaMeasurementReport(
+  pool: Pool,
+  rawConfig: MetaDeliveryConfig,
+) {
+  const config = metaDeliveryConfigSchema.parse(rawConfig);
+  const namespaces = [
+    config.sources.stripeNamespace,
+    config.sources.efaChannelReference
+      ? `esa:${config.sources.efaChannelReference}`
+      : null,
+  ].filter(Boolean);
+  const preparations = await pool.query(
+    "SELECT state,count(*)::int AS count FROM amp_meta_purchase_queue WHERE dataset_id=$1 AND namespace=ANY($2::text[]) GROUP BY state ORDER BY state",
+    [config.destination.datasetId, namespaces],
+  );
+  const attempts = await pool.query(
+    `SELECT a.state,count(*)::int AS count,
+ count(*) FILTER (WHERE (a.receipt->>'messageCount')::int>0)::int AS receipts_with_messages
+ FROM amp_meta_delivery_attempts a JOIN amp_meta_purchase_queue q USING(event_id)
+ WHERE q.dataset_id=$1 AND q.namespace=ANY($2::text[]) GROUP BY a.state ORDER BY a.state`,
+    [config.destination.datasetId, namespaces],
+  );
+  return { preparations: preparations.rows, attempts: attempts.rows };
 }

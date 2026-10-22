@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { metaClickIdentifiersSchema } from "./click-identifiers.js";
 
 import { META_ENROLLMENT_CONFIRMATION_URL } from "./meta-context-contracts.js";
 import { META_PURCHASE_MEASUREMENT_NOTICE } from "./permission-contracts.js";
@@ -46,6 +47,12 @@ const sourceSchema = z.discriminatedUnion("actionSource", [
  * dispatcher must derive these from current server-owned records under lock.
  * A Google permission grant does not authorize this payload.
  */
+export const metaMatchingIdentifiersSchema = z
+  .strictObject({
+    fbc: metaClickIdentifiersSchema.shape.fbc,
+    fbp: metaClickIdentifiersSchema.shape.fbp,
+  })
+  .refine((v) => !!(v.fbc || v.fbp));
 const purchaseSchema = z.strictObject({
   eventId: z.string().regex(/^amp_meta_[a-f0-9]{64}$/),
   occurredAt: instant,
@@ -53,6 +60,7 @@ const purchaseSchema = z.strictObject({
   currency: z.literal("USD"),
   adultEmailSha256: z.string().regex(/^[a-f0-9]{64}$/),
   source: sourceSchema,
+  clickIdentifiers: metaMatchingIdentifiersSchema.optional(),
   permission: z.strictObject({
     noticeVersion: z.literal(META_PURCHASE_PERMISSION_VERSION),
     adultAttested: z.literal(true),
@@ -130,6 +138,7 @@ export function metaPurchaseRequest(
           : {}),
         user_data: {
           em: [purchase.adultEmailSha256],
+          ...purchase.clickIdentifiers,
           ...(source.actionSource === "website"
             ? { client_user_agent: source.clientUserAgent }
             : {}),

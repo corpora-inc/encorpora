@@ -80,15 +80,24 @@ privacy lock. The repository does not itself authorize external disclosure.
 
 ## Provider delivery
 
-Google and Meta dispatchers do not consume these records. The Meta dispatcher
-does not support DirectPay purchases. The existing purchase-sharing notices do
-not authorize sending the new click fields. Completing provider delivery
-requires the corresponding notice and dispatcher changes, actual financial
-verification, configured destinations and delivery receipts. Collection alone
-does not enable purchase optimization.
+Google and Meta dispatchers resolve saved identifiers through the exact owned
+checkout or funding request after independently verifying payment and current
+permission. Google receives unmodified `gclid`, `gbraid` or `wbraid`; Meta receives
+actual `fbc` and any captured `fbp`. Evidence observed after the payment is not
+attached. Missing evidence leaves the permitted adult-email matching path
+available; no identifier is fabricated.
 
-A complete delivery path must verify payment separately, use current
-provider-specific permission covering the identifiers, and preserve the
+The Google v3 and Meta v2 notices disclose these fields. Older grants cannot
+authorize the expanded payload. Both workers default off and require configured
+financial sources and destinations. Meta supports verified Arkansas funded
+settlements as well as eligible Stripe enrollment confirmations. Funded events
+represent administrative settlements, using their actual timestamp with `other`
+source and no invented browser URL or user agent. They do not describe the
+parent's original ClassWallet browser action. See the provider-specific guides
+for eligibility, delivery outcomes and refund limitations.
+
+The delivery path verifies payment separately, uses current
+provider-specific permission covering the identifiers, and preserves the
 payment's real event time, value, currency and deduplication identity. Invoice
 creation is not a purchase. Provider upload windows and ad-attribution windows
 are separate: a valid delayed DirectPay sale may fall outside the original

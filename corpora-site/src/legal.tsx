@@ -200,7 +200,8 @@ export function Legal({
             email can independently allow Google or Meta purchase sharing. For Google, with that
             permission, AMP may share an encoded version of the adult’s email,
             a random purchase reference, purchase date, amount and currency.
-            Google can match the encoded email with its records; it is not
+            When available, this includes the saved Google ad click identifier.
+            Google can match the click identifier and encoded email with its records; it is not
             anonymous. Learner names, ages, answers, lessons and progress are
             excluded. AMP requests measurement without ad personalization.
           </p>
@@ -209,7 +210,8 @@ export function Legal({
             encoded version of the adult’s email, a random purchase reference,
             purchase date, amount and currency. An eligible website purchase
             also includes its purchase-page address and the browser’s user agent.
-            Meta can match the email with its records and use this information for
+            When available, this includes saved Meta ad click and browser identifiers.
+            Meta can match these identifiers and the email with its records and use this information for
             ad measurement, ad delivery and audience creation. Encoding does not
             make it anonymous. Learner names, ages, answers, lessons and progress
             are excluded.

@@ -1,6 +1,7 @@
 import {
   metaDeliveryConfigSchema,
   metaMeasurementBatch,
+  metaMeasurementReport,
 } from "../src/advertising/meta-delivery.js";
 import { metaMeasurementCredentials } from "../src/advertising/meta-credentials.js";
 import { readPrivateMeasurementJson } from "../src/advertising/google-credentials.js";
@@ -33,22 +34,11 @@ async function main() {
   });
   try {
     if (operation === "report") {
-      const preparations = await pool.query(
-        "SELECT state,count(*)::int AS count FROM amp_meta_purchase_queue WHERE dataset_id=$1 AND namespace=$2 GROUP BY state ORDER BY state",
-        [config.destination.datasetId, config.sources.stripeNamespace],
-      );
-      const attempts = await pool.query(
-        `SELECT a.state,count(*)::int AS count,
-        count(*) FILTER (WHERE (a.receipt->>'messageCount')::int>0)::int AS receipts_with_messages
-        FROM amp_meta_delivery_attempts a JOIN amp_meta_purchase_queue q USING(event_id)
-        WHERE q.dataset_id=$1 AND q.namespace=$2 GROUP BY a.state ORDER BY a.state`,
-        [config.destination.datasetId, config.sources.stripeNamespace],
-      );
+      const report = await metaMeasurementReport(pool, config);
       console.log(
         JSON.stringify({
           enabled: config.enabled,
-          preparations: preparations.rows,
-          attempts: attempts.rows,
+          ...report,
           meaning:
             "Attempt counts are not unique purchases, matched or attributed sales, or net revenue. Accepted means Meta reported receiving one event. Messages and uncertain/rejected attempts require review. Later refunds do not reverse Meta attribution; use first-party cash reports.",
         }),

@@ -1,14 +1,14 @@
 # Meta purchase measurement
 
-AMP can prepare and deliver one optional Meta `Purchase` event for a verified live initial enrollment payment with current adult Meta permission and an observed confirmation page. `src/advertising/meta-delivery.ts` provides a durable queue and bounded operator commands around the Conversions API transport. No route invokes external delivery and no schedule is installed. Configuration defaults to disabled; collecting browser context does not enable uploads.
+AMP can prepare and deliver one optional Meta `Purchase` event for a verified live initial enrollment payment with an observed confirmation page, or a linked and verified Arkansas EFA settlement. Both require current adult Meta permission. `src/advertising/meta-delivery.ts` provides a durable queue and bounded operator commands around the Conversions API transport. No route invokes external delivery and no schedule is installed. Configuration defaults to disabled; collecting browser context does not enable uploads.
 
 ## Payload and permission
 
 A request contains one `Purchase` event, its actual time, a random `amp_meta_` reference, USD amount and the confirmed adult purchaser's SHA-256 email hash. Email normalization trims the ends and lowercases; it preserves dots and plus tags. Google-specific Gmail normalization is not interchangeable.
 
-The caller must supply evidence of current adult permission naming Meta and the purpose `measurement-and-ad-delivery`. The transport requires the `meta-adult-purchase-v1` version shared with AMP’s separate Meta notice in Family → Privacy and records → Purchase measurement. The parent must explicitly attest to being at least 18 and using their own confirmed email. Google permission does not authorize Meta sharing; neither choice grants learning consent.
+The caller must supply evidence of current adult permission naming Meta and the purpose `measurement-and-ad-delivery`. The transport requires the `meta-adult-purchase-v2` version shared with AMP’s separate Meta notice in Family → Privacy and records → Purchase measurement. The parent must explicitly attest to being at least 18 and using their own confirmed email. Google permission does not authorize Meta sharing; neither choice grants learning consent.
 
-Each provider’s preference lasts one year and can be withdrawn independently. An email change or notice revision requires a fresh explicit grant. Learning-consent withdrawal, learning-data deletion, and an authenticated request carrying Global Privacy Control or Do Not Track withdraw both preferences. Withdrawal removes the local email binding; the remaining preference is retained for up to 90 days after withdrawal or expiry. The family export includes the preference without its email binding.
+Each provider’s preference lasts one year and can be withdrawn independently. An email change or notice revision requires a fresh explicit grant. Learning-consent withdrawal, learning-data deletion, and an authenticated request carrying Global Privacy Control or Do Not Track withdraw both preferences. Withdrawal removes the local email binding; permission evidence is retained for up to 90 days after withdrawal or expiry. A minimal opt-out setting persists until the parent changes it. The family export includes the preference without its email binding.
 
 The permission API is `/api/v1/family/meta-purchase-measurement`; it accepts only the authenticated account’s strict, versioned allow/withdraw request. It does not upload purchase events. A current preference is a dispatcher prerequisite, not evidence of payment or delivery. Do not promise attribution-only handling: Meta documents measurement, custom audience and optimization capabilities for all action sources.
 
@@ -16,7 +16,23 @@ A website event requires the purchaser's actual browser user agent and an allowe
 
 Non-website sources accept `email`, `phone_call`, `chat` or `other` without browser fields. Selection must come from verified purchase-channel evidence. A ClassWallet settlement webhook alone does not establish the channel where the customer converted. Do not invent a user agent, relabel a website sale, use `physical_store` to gain a longer upload window, or treat an initial payment as an automatic subscription renewal.
 
-Learner names, ages, grades, answers, lessons, progress, assessment results, account identifiers, IP addresses, cookies and click IDs are excluded. A user agent is permitted only for an eligible adult website purchase. Hashes and browser context remain personal data. Never log the builder's payload.
+Learner names, ages, grades, answers, lessons, progress, assessment results, account identifiers and IP addresses are excluded. The current notice permits actual saved Meta `fbc` and `fbp` identifiers, resolved through the owned paid order. No browser ID is fabricated. A user agent is permitted only for an eligible adult website purchase. Hashes and browser context remain personal data. Never log the builder's payload.
+
+## Verified funded settlements
+
+An Arkansas EFA event requires a funding request owned by the same parent,
+a retained offer naming Arkansas EFA and the configured financial namespace,
+and a verified settlement in the commerce ledger. An invoice, approval or
+license activation is insufficient. Its actual settlement time and USD value
+are re-read before delivery. Pending refunds block delivery and fully refunded
+unsent orders are excluded.
+
+These events represent the administrative settlement itself, using `other`
+without an AMP page or browser user agent. They do not represent the parent's
+original ClassWallet browser checkout. One immutable event reference per
+funded order prevents retries or configuration changes from creating another
+purchase. Reports include both configured card and funded sources, including
+accepted and uncertain attempts.
 
 ## Verified enrollment confirmation context
 
@@ -56,19 +72,19 @@ Zero or negative purchases are rejected. There is no refund or restatement metho
 
 ## Private operator commands
 
-Set `AMP_META_MEASUREMENT_CONFIG` to a private regular JSON file with mode `0600`. The example uses synthetic identifiers; replace them with independently verified destination and Stripe account values. Configuration accepts only the live Stripe enrollment source because funded/existing-learner purchases have no supported confirmation-context collector.
+Set `AMP_META_MEASUREMENT_CONFIG` to a private regular JSON file with mode `0600`. The example uses synthetic identifiers; replace them with independently verified destination and Stripe account values. Configure either or both financial sources. Existing-learner Stripe purchases without a supported confirmation-context collector remain ineligible.
 
 ```json
 {
   "enabled": false,
   "destination": { "datasetId": "1234567890" },
-  "sources": { "stripeNamespace": "acct_example:live" }
+  "sources": { "stripeNamespace": "acct_example:live", "efaChannelReference": "example-program-namespace" }
 }
 ```
 
 `AMP_DATABASE_URL` identifies the migrated application database. For delivery, `AMP_META_MEASUREMENT_CREDENTIALS` identifies a separate private `0600` JSON file containing only `access_token`. Never put the token in command arguments, logs or the repository. The loader rejects symlinks, non-regular files, oversized files and group/world-readable permissions, and re-reads credentials to support rotation. The dispatcher bounds credential acquisition and external response time.
 
-- `npm run advertising:meta -- collect 20` visits up to 20 eligible confirmation records and allocates immutable event references locally.
+- `npm run advertising:meta -- collect 20` visits up to 20 confirmation records or settled funded orders and allocates immutable event references locally.
 - `npm run advertising:meta -- deliver 20` visits up to 20 queued events and submits eligible, unsent events. It sends real live events when enabled; it is not a preview.
 - `npm run advertising:meta -- report` prints aggregate queue/attempt states and counts of accepted receipts with messages. It exposes no event or purchaser identifiers.
 

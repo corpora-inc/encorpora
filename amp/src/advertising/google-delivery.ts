@@ -22,6 +22,8 @@ import {
   measurementPaymentPage,
   queueGooglePayment,
 } from "./purchase-queue.js";
+import { paymentClickEvidence } from "./payment-clicks.js";
+import { googleClickIdentifiersSchema } from "./click-identifiers.js";
 import { RETENTION } from "../privacy/retention-periods.js";
 
 export const googleDeliveryConfigSchema = z.strictObject({
@@ -129,7 +131,17 @@ async function candidate(
     return null;
   const email = await confirmedAdvertisingEmail(client, row.account_id);
   if (!email) return null;
+  const click = await paymentClickEvidence(
+    client,
+    row.account_id,
+    { kind: row.source_kind, id: row.source_id },
+    "google",
+  );
   const purchase: GooglePurchase = {
+    ...(click && Date.parse(click.observedAt) <= Date.parse(payment.occurredAt)
+      ? { adIdentifiers: googleClickIdentifiersSchema.parse(click.identifiers) }
+      : {}),
+    eventSource: row.source_kind === "arkansas-efa" ? "OTHER" : "WEB",
     transactionId: row.transaction_id,
     occurredAt: payment.occurredAt,
     amountMinor: payment.netMinor,

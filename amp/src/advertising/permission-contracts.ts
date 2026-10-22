@@ -2,11 +2,11 @@ import { z } from "zod";
 
 /** Change this version whenever the recipient, purpose, fields or period changes. */
 export const PURCHASE_MEASUREMENT_NOTICE = {
-  version: "google-adult-purchase-v2",
+  version: "google-adult-purchase-v3",
   title: "Google purchase measurement",
   purpose: "Help AMP understand which Google ads lead to purchases.",
   disclosure:
-    "If you allow this, AMP may send Google an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. Google can match the encoded email with its records; encoding does not make it anonymous.",
+    "If you allow this, AMP may send Google an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. This also includes the Google ad click identifier saved when you visited our marketing page, when available. Google can match the click identifier and encoded email with its records; encoding does not make it anonymous.",
   boundary:
     "This permission covers your adult purchase information. Learner names, ages, answers, lessons and progress are excluded. AMP requests measurement without ad personalization.",
   choice:
@@ -18,12 +18,12 @@ export const PURCHASE_MEASUREMENT_NOTICE = {
 } as const;
 export type AdvertisingProvider = "google" | "meta";
 export const META_PURCHASE_MEASUREMENT_NOTICE = {
-  version: "meta-adult-purchase-v1",
+  version: "meta-adult-purchase-v2",
   title: "Meta purchase measurement and ad delivery",
   purpose:
     "Help AMP measure Facebook and Instagram ads and improve their delivery.",
   disclosure:
-    "If you allow this, AMP may send Meta an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. For an eligible website purchase, this also includes the purchase-page address and your browser's user agent. Meta can match the encoded email with its records; encoding does not make it anonymous.",
+    "If you allow this, AMP may send Meta an encoded version of your confirmed account email, a random purchase reference, the purchase date, amount and currency. For an eligible website purchase, this also includes the purchase-page address and your browser's user agent. This also includes saved Meta ad click and browser identifiers, when available. Meta can match these identifiers and the encoded email with its records; encoding does not make it anonymous.",
   boundary:
     "Meta can use this information for ad measurement, ad delivery and audience creation. This permission covers your adult purchase information. Learner names, ages, answers, lessons and progress are excluded.",
   choice:
