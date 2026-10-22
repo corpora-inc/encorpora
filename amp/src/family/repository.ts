@@ -425,6 +425,17 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_meta_purchase_contexts') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "meta-purchase-context",
+          "SELECT jsonb_build_object('provider','Meta','purchaseAt',occurred_at,'observedAt',observed_at,'expiresAt',expires_at,'noticeVersion',permission_notice,'eventSourceUrl',event_source_url,'clientUserAgent',client_user_agent) AS value FROM amp_meta_purchase_contexts WHERE account_id=$1 ORDER BY occurred_at,payment_id",
+        ]);
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_google_purchase_queue') AS relation",
           )
         ).rows[0]?.relation

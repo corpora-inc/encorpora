@@ -116,6 +116,18 @@ export async function revokeAdvertisingPermission(
     if (!(await installed(client, recipient))) continue;
     const table = permissionTable(recipient);
     if (
+      recipient === "meta" &&
+      (
+        await client.query(
+          "SELECT to_regclass('amp_meta_purchase_contexts') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        "DELETE FROM amp_meta_purchase_contexts WHERE account_id=$1",
+        [account],
+      );
+    if (
       recipient === "google" &&
       (
         await client.query(

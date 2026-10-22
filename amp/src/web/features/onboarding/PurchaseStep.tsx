@@ -1,3 +1,5 @@
+import { useMetaPurchaseContext } from "../privacy/useMetaPurchaseContext";
+import type { PurchaseMeasurement } from "../../../advertising/permission-contracts";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useLocation } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
@@ -48,7 +50,13 @@ const tone: Record<Shown, "busy" | "good" | "attention" | "info"> = {
  * polls the verified enrollment phase. Every phase is drawn in one shared grid
  * cell, so moving between phases never moves or resizes the card.
  */
-export function PurchaseStep({ session }: { session: AuthSession }) {
+export function PurchaseStep({
+  session,
+  metaPermission,
+}: {
+  session: AuthSession;
+  metaPermission?: PurchaseMeasurement;
+}) {
   const params = new URLSearchParams(useLocation().searchStr);
   const left = params.get("billing") === "canceled";
   const returned = params.get("billing");
@@ -67,6 +75,14 @@ export function PurchaseStep({ session }: { session: AuthSession }) {
   const portal = useBillingPortal(session);
   const view = enrollment.data;
   const phase = view?.purchase?.phase;
+  useMetaPurchaseContext(
+    session,
+    view?.purchase?.id,
+    phase,
+    metaPermission,
+    returnedFrom,
+    returned,
+  );
   useEffect(() => {
     if (view) refreshMeAfter(session, view);
   }, [phase]);

@@ -1,6 +1,6 @@
 # Meta purchase measurement
 
-`src/advertising/meta-conversions.ts` is an internal Conversions API transport for a verified adult purchase. It has no browser route, worker, scheduler or credential-file loader. Nothing invokes it from the running application. The default operation is a local preview, and delivery is disabled unless the destination explicitly sets `enabled: true`.
+`src/advertising/meta-conversions.ts` is an internal Conversions API transport for a verified adult purchase. It has no delivery worker, scheduler or credential-file loader. Nothing invokes this transport from the running application. A separate authenticated route collects local confirmation context as described below; it does not upload events. The default operation is a local preview, and delivery is disabled unless the destination explicitly sets `enabled: true`.
 
 ## Payload and permission
 
@@ -17,6 +17,18 @@ A website event requires the purchaser's actual browser user agent and an allowe
 Non-website sources accept `email`, `phone_call`, `chat` or `other` without browser fields. Selection must come from verified purchase-channel evidence. A ClassWallet settlement webhook alone does not establish the channel where the customer converted. Do not invent a user agent, relabel a website sale, use `physical_store` to gain a longer upload window, or treat an initial payment as an automatic subscription renewal.
 
 Learner names, ages, grades, answers, lessons, progress, assessment results, account identifiers, IP addresses, cookies and click IDs are excluded. A user agent is permitted only for an eligible adult website purchase. Hashes and browser context remain personal data. Never log the builder's payload.
+
+## Verified enrollment confirmation context
+
+On the adult `/start/purchase` screen, a confirmed `paid` phase, matching Stripe return reference and current Meta permission allow one local request to `POST /api/v1/advertising/meta/purchase-context`. Its body contains only the checkout reference. No Meta SDK is loaded, and no request goes to Meta. Processing, cancellation, learning screens, native clients and privacy signals do not trigger collection. The small first-party request uses browser keepalive so continuing to learner setup does not cancel it. Its original account token is fixed, and obsolete responses never update account or learner state.
+
+The server requires an authenticated owner, the actual matching confirmation referrer and a bounded browser user agent. It resolves the live initial-payment record itself and checks payment verification, financial holds, refunds, current confirmed email and Meta permission granted before payment under the shared account privacy lock. A browser return, client-side paid flag or referrer alone cannot establish a purchase. Renewals, test payments, other owners and existing-learner checkouts are excluded. The latter return to a different page and need their own truthful adult confirmation flow.
+
+Only the fixed `https://amp.corpora.inc/start/purchase` address is retained: queries, fragments, IP addresses and click identifiers are excluded. The first captured context is immutable across reloads. Withdrawal deletes it; the privacy worker removes it no later than seven days after payment or earlier permission expiry. Family export includes the retained address and user agent without internal financial or account references. The browser request is evidence of its reported context, not independent proof of browser identity.
+
+Meta's [official archived online CAPI example](https://github.com/fbsamples/lead-ads-webhook-sample/blob/main/postman/FB%20Conversions%20API%20%28Part%201%20-%20online%29.postman_collection.json) uses a purchase thank-you page as `event_source_url`. The AMP integration records the confirmation page actually visited. It does not label invoice preparation or a ClassWallet settlement webhook as a website conversion.
+
+A dispatcher must re-read current permission, confirmed email, financial evidence and context expiry before submission. The context row is not authorization to bypass those checks and is not a delivered event.
 
 ## Preview, test and live requests
 
@@ -54,3 +66,5 @@ The contract was checked against Meta's current documentation on 2026-10-22:
 - [Meta's EventResponse implementation](https://github.com/facebook/facebook-nodejs-business-sdk/blob/main/src/objects/serverside/event-response.js): response fields.
 
 `tests/meta-conversions.test.ts` exercises synthetic payloads and mocked HTTP only. It verifies the published email-hash vector, field exclusion, source context, permission/time boundaries, no-I/O preview, disabled delivery, token handling, response uncertainty and timeouts. It does not establish live Meta acceptance.
+
+`tests/meta-context.integration.ts` uses real PostgreSQL and authenticated routes to test evidence selection, ownership, permission boundaries, browser-field exclusion, withdrawal races, expiry and export. The onboarding browser verifier checks a matching return stays unrecorded while processing and records context only after its synthetic billing API reports payment confirmed; it does not perform a real Stripe payment.

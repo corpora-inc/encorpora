@@ -1,3 +1,4 @@
+import { registerMetaPurchaseContextRoutes } from "../advertising/meta-context.js";
 import { withAdvertisingPrivacySignals } from "../advertising/permission.js";
 import { registerAdvertisingPermissionRoutes } from "../advertising/permission-routes.js";
 import { isIP } from "node:net";
@@ -104,6 +105,11 @@ await registerAdvertisingPermissionRoutes(app, {
   authenticate,
 });
 const billingConfig = stripeConfig(process.env);
+await registerMetaPurchaseContextRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  stripeNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
+});
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
